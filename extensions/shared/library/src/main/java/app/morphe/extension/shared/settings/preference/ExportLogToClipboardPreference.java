@@ -5,15 +5,15 @@ import android.preference.Preference;
 import android.util.AttributeSet;
 
 /**
- * A custom preference that triggers exporting Morphe debug logs to the clipboard when clicked.
- * Invokes the {@link LogBufferManager#exportToClipboard} method.
+ * A custom preference that displays a preview of Morphe debug logs.
+ * Invokes the {@link LogBufferManager#showLogDialog} method.
  */
 @SuppressWarnings({"deprecation", "unused"})
 public class ExportLogToClipboardPreference extends Preference {
 
     {
         setOnPreferenceClickListener(pref -> {
-            LogBufferManager.exportToClipboard();
+            LogBufferManager.showLogDialog(getContext());
             return true;
         });
     }

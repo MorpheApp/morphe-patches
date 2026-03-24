@@ -71,13 +71,8 @@ internal fun enableDebuggingPatch(
                 SwitchPreference("morphe_debug_stacktrace"),
                 SwitchPreference("morphe_debug_toast_on_error"),
                 NonInteractivePreference(
-                    "morphe_debug_export_logs_to_clipboard",
+                    "morphe_debug_export_logs",
                     tag = "app.morphe.extension.shared.settings.preference.ExportLogToClipboardPreference",
-                    selectable = true
-                ),
-                NonInteractivePreference(
-                    "morphe_debug_logs_clear_buffer",
-                    tag = "app.morphe.extension.shared.settings.preference.ClearLogBufferPreference",
                     selectable = true
                 ),
                 NonInteractivePreference(

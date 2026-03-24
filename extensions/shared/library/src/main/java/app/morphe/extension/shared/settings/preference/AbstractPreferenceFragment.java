@@ -28,7 +28,6 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
-import android.util.AttributeSet;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -496,9 +495,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     private EditText getEditText(Context context) {
         EditText editText = new EditText(context);
         editText.setText(existingSettings);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            editText.setAutofillHints((String) null);
-        }
+        editText.setAutofillHints((String) null);
         editText.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
                 android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS |
                 android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
@@ -510,9 +507,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     public void exportActivity() {
         try {
             Setting.exportToJson(getActivity());
-
+            Context context = getActivity();
+            String appName = context.getApplicationInfo().loadLabel(context.getPackageManager()).toString();
+            String safeAppName = appName.replaceAll("\\s+", "_");
             String formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(new java.util.Date());
-            String fileName = "Morphe_Settings_" + formatDate + ".txt";
+            String fileName = safeAppName + "_Settings_" + formatDate + ".txt";
 
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -547,6 +546,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             exportTextToFile(data.getData());
         } else if (requestCode == READ_REQUEST_CODE && resultCode == android.app.Activity.RESULT_OK && data != null) {
             importTextFromFile(data.getData());
+        } else if (requestCode == LogBufferManager.WRITE_LOGS_REQUEST_CODE && resultCode == android.app.Activity.RESULT_OK && data != null) {
+            LogBufferManager.saveLogsToUri(getContext(), data.getData());
         }
     }
 
@@ -560,7 +561,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     private void exportTextToFile(android.net.Uri uri) {
         try {
-            OutputStream out = getContext().getContentResolver().openOutputStream(uri);
+            OutputStream out = getContext().getContentResolver().openOutputStream(uri, "rwt");
             if (out != null) {
                 String textToExport = existingSettings;
                 if (currentImportExportEditText != null) {
