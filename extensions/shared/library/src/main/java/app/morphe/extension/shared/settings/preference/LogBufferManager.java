@@ -271,6 +271,7 @@ public final class LogBufferManager {
             }
 
             final String allLogs = getFilteredLogs();
+            final String[] logLines = allLogs.split("\n");
 
             EditText logViewer = createLogEditText(context, allLogs);
 
@@ -297,35 +298,48 @@ public final class LogBufferManager {
 
             LinearLayout.LayoutParams searchParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
             searchParams.setMargins(0, 0, 0, margin);
             searchBar.setLayoutParams(searchParams);
 
             searchBar.addTextChangedListener(new TextWatcher() {
+                final android.os.Handler searchHandler = new android.os.Handler(android.os.Looper.getMainLooper());
+                Runnable searchRunnable;
+
                 @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
                 @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    String query = s.toString().toLowerCase(java.util.Locale.ROOT);
+                    final String query = s.toString().toLowerCase(java.util.Locale.ROOT);
 
                     Drawable clearIcon = context.getDrawable(android.R.drawable.ic_menu_close_clear_cancel);
                     if (clearIcon != null) {
                         int iconSize = (int) (20 * context.getResources().getDisplayMetrics().density);
                         clearIcon.setBounds(0, 0, iconSize, iconSize);
                     }
-
                     searchBar.setCompoundDrawables(null, null, TextUtils.isEmpty(s) ? null : clearIcon, null);
 
-                    if (query.isEmpty()) {
-                        logViewer.setText(allLogs);
-                        return;
+                    if (searchRunnable != null) {
+                        searchHandler.removeCallbacks(searchRunnable);
                     }
 
-                    StringBuilder sb = new StringBuilder();
-                    for (String line : allLogs.split("\n")) {
-                        if (line.toLowerCase(java.util.Locale.ROOT).contains(query)) {
-                            sb.append(line).append("\n");
-                        }
-                    }
-                    logViewer.setText(sb.toString().trim());
+                    searchRunnable = () -> {
+                        new Thread(() -> {
+                            final String resultText;
+                            if (query.isEmpty()) {
+                                resultText = allLogs;
+                            } else {
+                                StringBuilder sb = new StringBuilder();
+                                for (String line : logLines) { // Use the pre-split array
+                                    if (line.toLowerCase(java.util.Locale.ROOT).contains(query)) {
+                                        sb.append(line).append("\n");
+                                    }
+                                }
+                                resultText = sb.toString().trim();
+                            }
+
+                            searchHandler.post(() -> logViewer.setText(resultText));
+                        }).start();
+                    };
+
+                    searchHandler.postDelayed(searchRunnable, 300);
                 }
                 @Override public void afterTextChanged(Editable s) {}
             });
@@ -345,7 +359,6 @@ public final class LogBufferManager {
             fileButtonsContainer.setOrientation(LinearLayout.HORIZONTAL);
             LinearLayout.LayoutParams fbParams = new LinearLayout.LayoutParams(
                     LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-
             fbParams.setMargins(0, margin, 0, 0);
             fileButtonsContainer.setLayoutParams(fbParams);
 
