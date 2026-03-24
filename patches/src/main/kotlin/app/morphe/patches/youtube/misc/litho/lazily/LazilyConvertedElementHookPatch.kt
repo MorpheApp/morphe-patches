@@ -32,9 +32,7 @@ internal val lazilyConvertedElementHookPatch = bytecodePatch(
     )
 
     execute {
-        TreeNodeResultListFingerprint.match(
-            ComponentContextParserFingerprint.originalClassDef,
-        ).method.apply {
+        TreeNodeResultListFingerprint.method.apply {
             val insertIndex = implementation!!.instructions.lastIndex
             val listRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
 

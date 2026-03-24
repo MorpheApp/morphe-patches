@@ -152,13 +152,14 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         GetOldPlaybackSpeedsFingerprint.classDef.staticFields.add(instanceField)
         // Set the INSTANCE field to the instance of the class.
         // In order to prevent a conflict with another patch, add the instruction at index 1.
-        GetOldPlaybackSpeedsFingerprint.method.addInstruction(1, "sput-object p0, $instanceField")
+        GetOldPlaybackSpeedsFingerprint.method.addInstruction(
+            1,
+            "sput-object p0, $instanceField"
+        )
 
         // Get the "showOldPlaybackSpeedMenu" method.
         // This is later called on the field INSTANCE.
-        val showOldPlaybackSpeedMenuMethod = ShowOldPlaybackSpeedMenuFingerprint.match(
-            GetOldPlaybackSpeedsFingerprint.classDef,
-        ).method
+        val showOldPlaybackSpeedMenuMethod = ShowOldPlaybackSpeedMenuFingerprint.method
 
         // Insert the call to the "showOldPlaybackSpeedMenu" method on the field INSTANCE.
         ShowOldPlaybackSpeedMenuExtensionFingerprint.method.apply {

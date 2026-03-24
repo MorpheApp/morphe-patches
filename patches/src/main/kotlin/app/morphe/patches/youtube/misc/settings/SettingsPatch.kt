@@ -215,7 +215,7 @@ val settingsPatch = bytecodePatch(
         addLicensePatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = YouTubeActivityOnCreateFingerprint,
-            recommendedAppVersion = COMPATIBILITY_YOUTUBE.second.first()
+            recommendedAppVersion = COMPATIBILITY_YOUTUBE.targets!!.first { !it.isExperimental }.version!!
         ),
         initializationPatch(
             mainActivityFingerprint = YouTubeActivityOnCreateFingerprint

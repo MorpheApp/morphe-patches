@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Foder</string>
   <string name="morphe_settings_screen_04_general_title">Generelt</string>
   <string name="morphe_settings_screen_05_player_title">Afspiller</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Søg i videon</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Strygekontroller</string>
   <string name="morphe_settings_screen_11_misc_title">Diverse</string>
@@ -302,6 +303,16 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Knappen Abonnér vises</string>
   <string name="morphe_comments_screen_title">Kommentarer</string>
   <string name="morphe_comments_screen_summary">Skjul eller vis kommentarer sektion komponenter</string>
+  <string name="morphe_hide_comments_carousel_title">Aktiver kommentarkarussel filter</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Kommentarerne carousel filter er aktiveret</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Kommentarerne er deaktiveret</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Note
+
+• Sørg for at du indtaster det nøjagtige navn på karusellens element (f.eks. Spørg, Hype denne video, Lyt på YouTube Music osv.).
+• Skjuling af karusellens elementer kan have utilsigtede bivirkninger.
+• Hvis alle karusellens elementer er skjult, vil hele kommentarfeltet også være skjult."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentarer-karuselfilter</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Indtast kommentarerne navne for at filtrere efter, én pr. linje</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chatsammendrag</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI-chatsammendrag er skjult</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI-chatsammendrag vises</string>
@@ -329,6 +340,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skjul Emoji- og Tidsstempelknapper</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Emoji- og Tidsstempelknapper er skjult</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Emoji- og Tidsstempelknapper vises</string>
+  <string name="morphe_hide_comments_info_button_title">Skjul Info-knap</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Info-knappen er skjult</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Info-knappen vises</string>
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisning kommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Forhåndsvisning kommentar er skjult</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Forhåndsvis kommentar er vist</string>
@@ -676,13 +690,14 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_show_search_button_title">Vis Søgning</string>
   <string name="morphe_show_search_button_summary_on">Søgeknappen vises</string>
   <string name="morphe_show_search_button_summary_off">Søgeknappen vises ikke</string>
-  <string name="morphe_search_button_index_title">Søgknappen er skjult</string>
-  <string name="morphe_search_button_index_invalid">Søgknappen indeks skal være mindre end %s</string>
+  <string name="morphe_show_search_button_index_title">Knapindeks for søgning</string>
   <string name="morphe_show_settings_button_title">Vis Indstillinger</string>
   <string name="morphe_show_settings_button_summary_on">Indstillingsknappen vises</string>
   <string name="morphe_show_settings_button_summary_off">Indstillingsknappen vises ikke</string>
-  <string name="morphe_settings_button_index_title">Indstillingsknappens indeks</string>
-  <string name="morphe_settings_button_index_invalid">Indeks for indstillingsknap skal være mindre end %s</string>
+  <string name="morphe_show_settings_button_index_title">Indstillingsknappens indeks</string>
+  <string name="morphe_show_settings_button_type_title">Indstillingsknappen vises</string>
+  <string name="morphe_show_settings_button_type_summary_on">Tryk for at åbne Morphe-indstillinger</string>
+  <string name="morphe_show_settings_button_type_summary_off">Tryk for at åbne YouTube-indstillinger</string>
   <string name="morphe_swap_create_with_notifications_button_title">Skift Opret med notifikationer</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Opret knappen er skiftet med Notifikationer knappen</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Opret knappen er ikke skiftet med Notifikationer knappen</string>
@@ -703,6 +718,9 @@ For at få adgang til Indstillinger:
   <string name="morphe_navigation_bar_animations_title">Aktivér animationer i navigationslinjen</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigationsovergange animeres</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigationsovergange animeres ikke</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjulning af navigationslinjen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigationslinjen vil ikke automatisk blive skjult</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigationslinjen kan automatisk blive skjult</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statuslinjen er opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statuslinjen er opak eller gennemsigtig</string>
@@ -729,18 +747,15 @@ For at få adgang til Indstillinger:
   <string name="morphe_hide_toolbar_search_button_title">Skjul Søgning</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Søgeknappen er skjult</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Søgeknappen vises</string>
-  <string name="morphe_replace_toolbar_create_button_title">Erstat Opret med Indstillinger</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Opret knappen er erstattet med Indstillinger knappen</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Opret knappen er ikke udskiftet med Indstillinger knappen</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Klikadfærden for knappen Indstillinger i fanen You overskrives også.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Indstillingsknappen vises</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tryk for at åbne Morphe-indstillinger
+  <string name="morphe_show_toolbar_settings_button_title">Vis Indstillinger</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Indstillingsknappen vises</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Indstillingsknappen vises ikke</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Indstillingsknappens indeks</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Indstillingsknappen vises</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Tryk for at åbne Morphe-indstillinger
 Tryk og hold for at åbne YouTube-indstillinger"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tryk for at åbne YouTube-indstillinger
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Tryk for at åbne YouTube-indstillinger
 Tryk og hold for at åbne Morphe-indstillinger"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">Omarranger de udskiftede knapper</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Knapper er omarrangeret</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Knapper er ikke flyttet</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Udfyldningsmenu</string>
   <string name="morphe_hide_player_flyout_summary">Skjul eller vis spiller flyout menupunkter</string>
@@ -1359,6 +1374,7 @@ Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre U
   <string name="morphe_change_start_page_entry_playlists">Playlister</string>
   <string name="morphe_change_start_page_entry_search">Søg</string>
   <string name="morphe_change_start_page_entry_shopping">Køb ind</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonnementer</string>
   <string name="morphe_change_start_page_entry_trending">Populære</string>

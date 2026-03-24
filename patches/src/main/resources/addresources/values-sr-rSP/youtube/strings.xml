@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Фид</string>
   <string name="morphe_settings_screen_04_general_title">Опште</string>
   <string name="morphe_settings_screen_05_player_title">Плејер</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Трака за премотавање</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Контроле превлачења</string>
   <string name="morphe_settings_screen_11_misc_title">Разно</string>
@@ -301,6 +302,16 @@ Promene uključuju:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Дугме „Запрати” је приказано</string>
   <string name="morphe_comments_screen_title">Коментари</string>
   <string name="morphe_comments_screen_summary">Сакријте или прикажите компоненте одељка за коментаре</string>
+  <string name="morphe_hide_comments_carousel_title">Омогући филтер за ротирајућу траку коментара</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Филтер за коментаре је укључен</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Филтер за коментаре је онемогућен</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Napomena
+
+• Обавезно унесите тачан назив ставке карусела (нпр. Питај, Хвали овај видео, Слушај на YouTube Music, итд.).
+• Скривање ставки карусела може имати непредвиђене последице.
+• Ако су све ставке карусела скривене, тада ће бити скривен и цео одељак коментара."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Филтер карусела коментара</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Унесите називе караосела коментара да бисте филтрирали по њима, један по реду</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Сакриј „Резиме ћаскања који је генерисала вештачка интелигенција”</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">„Резиме ћаскања који је генерисала вештачка интелигенција” је скривен</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">„Резиме ћаскања који је генерисала вештачка интелигенција” је приказан</string>
@@ -328,6 +339,9 @@ Promene uključuju:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Сакриј дугмад емоџија и временске ознаке</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Дугмад емоџија и временске ознаке су скривена</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Дугмад емоџија и временске ознаке су приказана</string>
+  <string name="morphe_hide_comments_info_button_title">Сакриј дугме Инфо</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Дугме Инфо је скривено</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Дугме Инфо је приказано</string>
   <string name="morphe_hide_comments_preview_comment_title">Сакриј коментар за преглед</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Коментар за преглед је скривен</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Коментар за преглед је приказан</string>
@@ -675,13 +689,14 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_show_search_button_title">Покажи претрагу</string>
   <string name="morphe_show_search_button_summary_on">Дугме „Претрага” је приказано</string>
   <string name="morphe_show_search_button_summary_off">Дугме „Претрага“ није приказана</string>
-  <string name="morphe_search_button_index_title">Дугме за претрагу</string>
-  <string name="morphe_search_button_index_invalid">Индекс дугмета за претрагу мора бити мањи од %s</string>
+  <string name="morphe_show_search_button_index_title">Индекс дугмета за претрагу</string>
   <string name="morphe_show_settings_button_title">Покажи подешавања</string>
   <string name="morphe_show_settings_button_summary_on">Подешвање приказано</string>
   <string name="morphe_show_settings_button_summary_off">Подешвање није приказано</string>
-  <string name="morphe_settings_button_index_title">Поделка зацет активность</string>
-  <string name="morphe_settings_button_index_invalid">Поделка зацет активность смет не може бити мање од %s</string>
+  <string name="morphe_show_settings_button_index_title">Индекс дугмета за подешавања</string>
+  <string name="morphe_show_settings_button_type_title">Акција дугмета за подешавања</string>
+  <string name="morphe_show_settings_button_type_summary_on">Додирните да бисте отворили подешавања Morphe-а</string>
+  <string name="morphe_show_settings_button_type_summary_off">Додирните да отворите подешавања YouTube</string>
   <string name="morphe_swap_create_with_notifications_button_title">Замени дугме „Направи” дугметом „Обавештења”</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Дугме „Направи” је замењено дугметом „Обавештења”</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Дугме „Направи” није замењено дугметом „Обавештења”</string>
@@ -702,6 +717,9 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_navigation_bar_animations_title">Омогући анимације траке за навигацију</string>
   <string name="morphe_navigation_bar_animations_summary_on">Анимације прелаза у навигацији су укључене</string>
   <string name="morphe_navigation_bar_animations_summary_off">Анимације прелаза у навигацији су искључене</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Искључити аутоматско скривање траке за навигацију</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Трака за навигацију неће бити аутоматски скривена</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Трака за навигацију може бити аутоматски скривена</string>
   <string name="morphe_disable_translucent_status_bar_title">Онемогући прозирну статусну траку</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Статусна трака је непрозирна</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Статусна трака је непрозирна или прозирна</string>
@@ -728,18 +746,15 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_hide_toolbar_search_button_title">Сакрити Траку за претрагу</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Дугме „Претрага” је скривено</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Дугме „Претрага” је приказано</string>
-  <string name="morphe_replace_toolbar_create_button_title">Замени ‘Направи’ дугме Поделкама</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Дугме ‘Направи’ замењено је дугметом Поделкама</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Дугме ‘Направи’ није замењено дугметом Поделкама</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Клик говора Дугме Поделкама такође се суспендује.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Активирање Поделка Дугмета за тип</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Додир да бисте отворили Поделки Поделкама
-Додир и задржавање да бисте отворили Поделки YouTube"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Додир да бисте отворили Поделки YouTube
-Додир и задржавање да бисте отворили Поделки Поделкама"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">Реаногирајте замените дугмете</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Дугмете су поређане</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Дугмете нису поређане</string>
+  <string name="morphe_show_toolbar_settings_button_title">Подешавања</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Дугме подешавања је приказано</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Дугме подешавања није приказано</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Индекс дугмета подешавања</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Акција дугмета подешавања</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Додирните да отворите подешавања Morphe
+Додирните и задржите да отворите подешавања YouTube"</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Додирните да отворите подешавања YouTube
+Додирните и задржите да отворите подешавања Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Падајући мени</string>
   <string name="morphe_hide_player_flyout_summary">Сакријте или прикажите предмете у падајућем менију плејера</string>
@@ -1358,6 +1373,7 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_change_start_page_entry_playlists">Плејлисте</string>
   <string name="morphe_change_start_page_entry_search">Претрага</string>
   <string name="morphe_change_start_page_entry_shopping">Куповина</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Спорт</string>
   <string name="morphe_change_start_page_entry_subscriptions">Праћења</string>
   <string name="morphe_change_start_page_entry_trending">У тренду</string>

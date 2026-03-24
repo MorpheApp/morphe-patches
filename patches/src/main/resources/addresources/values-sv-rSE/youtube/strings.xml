@@ -673,13 +673,12 @@ Cookies sparas automatiskt om de är giltiga"</string>
   <string name="morphe_show_search_button_title">Visa Sök</string>
   <string name="morphe_show_search_button_summary_on">Knappen Sök visas</string>
   <string name="morphe_show_search_button_summary_off">Knappen Sök visas inte</string>
-  <string name="morphe_search_button_index_title">Index för knappen Sök</string>
-  <string name="morphe_search_button_index_invalid">Indexet för knappen Sök måste vara mindre än %s</string>
+  <string name="morphe_show_search_button_index_title">Index för knappen Sök</string>
   <string name="morphe_show_settings_button_title">Visa Inställningar</string>
   <string name="morphe_show_settings_button_summary_on">Knappen Inställningar visas</string>
   <string name="morphe_show_settings_button_summary_off">Knappen Inställningar visas inte</string>
-  <string name="morphe_settings_button_index_title">Index för knappen Inställningar</string>
-  <string name="morphe_settings_button_index_invalid">Indexet för knappen Inställningar måste vara mindre än %s</string>
+  <string name="morphe_show_settings_button_index_title">Index för knappen Inställningar</string>
+  <string name="morphe_show_settings_button_type_title">Åtgärd för knappen Inställningar</string>
   <string name="morphe_swap_create_with_notifications_button_title">Byt ut Skapa mot Aviseringar</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Knappen Skapa byts ut mot knappen Aviseringar</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Knappen Skapa byts inte ut mot knappen Aviseringar</string>
@@ -726,18 +725,15 @@ Om du vill komma åt Inställningar:
   <string name="morphe_hide_toolbar_search_button_title">Dölj Sök</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Knappen Sök är dold</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Knappen Sök visas</string>
-  <string name="morphe_replace_toolbar_create_button_title">Byt ut Skapa mot Inställningar</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Knappen Skapa byts ut mot knappen Inställningar</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Knappen Skapa byts inte ut mot knappen Inställningar</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Tryckbeteendet för knappen Inställningar i fliken Ditt YouTube åsidosätts också.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Åtgärd för knappen Inställningar</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tryck för att öppna Morphe-inställningarna
+  <string name="morphe_show_toolbar_settings_button_title">Visa Inställningar</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Knappen Inställningar visas</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Knappen Inställningar visas inte</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Index för knappen Inställningar</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Åtgärd för knappen Inställningar</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Tryck för att öppna Morphe-inställningarna
 Tryck länge för att öppna YouTube-inställningarna"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tryck för att öppna YouTube-inställningarna
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Tryck för att öppna YouTube-inställningarna
 Tryck länge för att öppna Morphe-inställningarna"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">Ändra ordning på de utbytta knapparna</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Knapparnas ordning ändras</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Knapparnas ordning ändras inte</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout-meny</string>
   <string name="morphe_hide_player_flyout_summary">Dölj eller visa objekt i spelarens flyout-meny</string>

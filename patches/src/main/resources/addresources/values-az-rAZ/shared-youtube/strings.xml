@@ -62,40 +62,40 @@ Oynatma işləməyə bilər"</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR girişi</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR-a daxil olunmayıb. Daxil olmaq üçün bura toxun</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hal-hazırda Android VR-a daxil edilmişsiniz.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Hazırda Android VR-a daxil olunub</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu funksiyanı istifadə etmək üçün, \'Zəhmət client\'ni Android VR ilə dəyişin.</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR-a daxil ol.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu xüsusiyyəti istifadə etmək üçün, \"İlkin qəbuledici\"-ni Android VR-a dəyişdir</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR-a Giriş Et</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR-a daxil olmaq bəzi istifadəçilər üçün oynatma problemlərini düzəldə bilər
 
 Daxil olmaq üçün aşağıda davam et-i vurun"</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Davam et.</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Çıxış.</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Qaydalar.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Davam et</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Çıxış et</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Təlimatlar</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivasiya kodu: %s
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivləşdirmə kodu: %s
 
-1. sayta getmək üçün aşağıdakı 'Veb saytını aç' düyməsini vurun
-2. yuxarıda göstərilən aktivasiya kodunu bufere alıb (və ya əllə yazın)
-3. Əgər xoad hạň manipulate Google-a daxil olmaq tələb olunursa. Əgər çoxlu hesablarınız var, bu YouTube hesabını seçin.
-4. 'YouTube VR' üçün icazəni vurun
-5. 'Qərar verildi' mesajına çatdıqdan sonra bu proqrama geri qayıtın."</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Veb saytını aç.</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Aktivasiya kodu vermək mümkün olmadı.</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Kimlikdəstəyi vermək mümkünsüzləşdi.</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Uğurla daxil olundu.</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Kimlikdəstəsi saxlanıldı.
+1. \"Cihazı əlaqələndir\" veb saytını açmaq üçün aşağıda \"Veb saytı aç\"-a toxun
+2. Yuxarıda görünən aktivləşdirmə şifrəsin buferdən yapışdır (yaxud kənara yaz)
+3. Təhrik olunduqda Google-a daxil olun. Çoxlu hesabınız varsa, sonra bu YouTube hesabını seçin
+4. \"YouTube VR-a Giriş-ə\" icazə ver-ə toxun
+5. \"Cihaz qoşuldu\" məlumatına çatandan sonra bu tətbiqə qayıdın"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Veb saytı aç</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Aktivləşdirmə şifrəsi buraxılışı alınmadı</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Təsdiqlənmə token-i buraxılış üçün alınmadı</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Uğurla daxil olundu</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Təsdiqlənmə saxlanıldı
 
-• Morphe tənzimlənləri Android VR kimliyəsini idxal və ixrac edə bilməz.
-• Əgər bu proqram 6 ay ərzində istifadə edilməsə, Google bu kimliyi siləcək.
-• Əgər Google parolunuzu dəyişir və ya bu cihazınızı Google tənzimlənmələrdən çıxarthersəyid, yenidən daxil olmaq lazım."</string>
-  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 müvəqqəti olaraq mövcud deyil (API vaxtı bitdi).</string>
+• Morphe tənzimləmələriniz Android VR təsdiqlənməsini idxal/ixrac etməyəcək
+• Bu tətbiq 6 ay ərzində istifadə olunmazsa, Google bu təsdiqlənməni siləcək
+• Google parolunuzu dəyişdirsəniz və ya bu cihazı Google tənzimləmələrinizdən çıxarsanız, təkrar daxil olmalı olacaqsınız"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 keçici olaraq əlçatan deyil (API vaxtı bitdi)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Android VR girişi sonlandı, VR-a təkrar daxil olmağa cəhd et</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 müvəqqəti olaraq mövcud deyil (status %d).</string>
-  <string name="morphe_oauth2_connection_failure_generic">OAuth2 müvəqqəti olaraq mövcud deyil.</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 keçici olaraq əlçatan deyil (vəziyyət %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 keçici olaraq əlçatan deyil</string>
   <string name="morphe_oauth2_connection_failure_auth_not_approved">VR-a daxil olmaq olmur, veb sayt təsdiqlənməsi qəbul edilməyib</string>
   <string name="morphe_oauth2_connection_failure_auth_error">VR-a daxil olmaq olmur: %s</string>
-  <string name="morphe_oauth2_toast_reset">Android VR-dən çıxdı.</string>
+  <string name="morphe_oauth2_toast_reset">Android VR-dan Çıxıldı</string>
   <string name="morphe_oauth2_toast_invalid">Token-dəki etibarsız VR girişi, VR-a təkrar daxil olmağa cəhd et</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Oynadıcı JavaScript yenilənməsini qapat</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Oynadıcı JavaScript yenilənməsi qapadılıb
@@ -116,14 +116,14 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_disable_drc_audio_summary_off">DRC səsi işləkdir</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Orijinal səs dilini zorla</string>
-  <string name="morphe_force_original_audio_summary_on">Orijinal səs dilini istifadə</string>
+  <string name="morphe_force_original_audio_summary_on">Orijinal səs dilini faydalanmaq</string>
   <string name="morphe_force_original_audio_summary_off">İlkin səs istifadəsi</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Bu xüsusiyyəti istifadə etmək üçün \"Video yayımların saxtalaşdır\"-ı Android Reel-ə və ya TV-yə dəyişdir</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Paylaşım linklərin təmizlə</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">İzləmə sorğusu faktoru paylaşılan linklərdən silinir</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">İzləmə sorğusu faktoru paylaşılan linklərdən silinmir</string>
+  <string name="morphe_sanitize_sharing_links_title">Paylaşım keçidlərin təmizlə</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">İzlənmə sorğusu faktoru paylaşılan linklərdən silinir</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">İzlənmə sorğusu faktoru paylaşılan linklərdən silinmir</string>
   <string name="morphe_replace_music_with_youtube_title">Paylaşma keçidlərini youtube.com-a dəyişdir</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Paylaşılan keçidlər youtube.com istifadə edir</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Paylaşılan keçidlər music.youtube.com istifadə edir</string>

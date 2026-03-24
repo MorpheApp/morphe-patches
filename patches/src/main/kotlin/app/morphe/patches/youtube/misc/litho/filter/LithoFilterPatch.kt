@@ -173,9 +173,7 @@ val lithoFilterPatch = bytecodePatch(
         // if the component is filtered then return an empty component.
 
         // Find class and methods to create an empty component.
-        val builderMethodDescriptor = EmptyComponentFingerprint.match(
-            EmptyComponentParentFingerprint.originalClassDef
-        ).method
+        val builderMethodDescriptor = EmptyComponentFingerprint.method
 
         val emptyComponentField = classDefBy(builderMethodDescriptor.returnType).fields.single()
 

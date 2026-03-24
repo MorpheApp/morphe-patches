@@ -143,6 +143,7 @@ internal object SeekbarFingerprint : Fingerprint(
 )
 
 internal object SeekbarOnDrawFingerprint : Fingerprint(
+    classFingerprint = SeekbarFingerprint,
     name = "onDraw",
     filters = listOf(
         methodCall(smali = "Ljava/lang/Math;->round(F)I"),

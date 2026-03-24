@@ -214,9 +214,7 @@ val hideShortsComponentsPatch = bytecodePatch(
         )
 
         // Set the pivotBar view.
-        SetPivotBarVisibilityFingerprint.match(
-            SetPivotBarVisibilityParentFingerprint.originalClassDef,
-        ).let { result ->
+        SetPivotBarVisibilityFingerprint.let { result ->
             result.method.apply {
                 val insertIndex = result.instructionMatches.last().index
                 val viewRegister = getInstruction<OneRegisterInstruction>(insertIndex - 1).registerA

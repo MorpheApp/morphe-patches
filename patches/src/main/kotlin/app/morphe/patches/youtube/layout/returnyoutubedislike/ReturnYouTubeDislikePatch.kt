@@ -119,12 +119,13 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // This hook handles all situations, as it's where the created Spans are stored and later reused.
 
         // Find the field name of the conversion context.
-        val textComponentConversionContextField = TextComponentConstructorFingerprint.originalClassDef.fields.find {
-            it.type == conversionContextClassDef.type
-        } ?: throw PatchException("Could not find conversion context field")
+        val textComponentConversionContextField = TextComponentConstructorFingerprint
+            .originalClassDef.fields.find {
+                it.type == conversionContextClassDef.type
+            } ?: throw PatchException("Could not find conversion context field")
 
         // Old pre 20.40 and lower hook.
-        TextComponentLookupFingerprint.match(TextComponentConstructorFingerprint.originalClassDef).let {
+        TextComponentLookupFingerprint.let {
             // 21.05 clobbers p0 (this) register.
             // Add additional registers so all parameters including p0 are free to use anywhere in the method.
             it.method.cloneMutableAndPreserveParameters().apply {
@@ -270,9 +271,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Additional text measurement method. Used if YouTube decides not to animate the likes count
         // and sometimes used for initial video load.
-        RollingNumberMeasureStaticLabelFingerprint.match(
-            RollingNumberMeasureStaticLabelParentFingerprint.originalClassDef,
-        ).let {
+        RollingNumberMeasureStaticLabelFingerprint.let {
             val measureTextIndex = it.instructionMatches.first().index + 1
             it.method.apply {
                 val freeRegister = getInstruction<TwoRegisterInstruction>(0).registerA

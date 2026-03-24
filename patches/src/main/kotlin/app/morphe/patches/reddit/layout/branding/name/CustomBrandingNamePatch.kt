@@ -20,7 +20,7 @@ private const val APP_NAME = "Reddit Morphe"
 val customBrandingNamePatch = resourcePatch(
     name = "Custom branding name for Reddit",
     description = "Changes the Reddit app name to the name specified in patch options.",
-    use = false
+    default = false
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 

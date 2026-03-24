@@ -32,9 +32,7 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 
         // region patch for hide trending today title.
 
-        SearchTypeaheadListDefaultPresentationConstructorFingerprint.match(
-            SearchTypeaheadListDefaultPresentationToStringFingerprint.classDef
-        ).method.addInstructions(
+        SearchTypeaheadListDefaultPresentationConstructorFingerprint.method.addInstructions(
             1,
             """
                 invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->removeTrendingLabel(Ljava/lang/String;)Ljava/lang/String;

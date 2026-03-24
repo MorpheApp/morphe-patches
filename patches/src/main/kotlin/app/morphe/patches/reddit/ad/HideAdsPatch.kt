@@ -61,9 +61,7 @@ val hideAdsPatch = bytecodePatch(
         val immutableListBuilderReference = ImmutableListBuilderFingerprint.instructionMatches
             .last().getInstruction<ReferenceInstruction>().reference
 
-        AdPostSectionConstructorFingerprint.match(
-            AdPostSectionToStringFingerprint.originalClassDef
-        ).let {
+        AdPostSectionConstructorFingerprint.let {
             it.method.apply {
                 val sectionIndex = it.instructionMatches.first().index
                 val sectionRegister = getInstruction<FiveRegisterInstruction>(
@@ -110,6 +108,7 @@ val hideAdsPatch = bytecodePatch(
                 .findFieldFromToString(", adsLoadCompleted=")
 
             val commentsAdStateConstructorFingerprint = Fingerprint(
+                definingClass = CommentsAdStateToStringFingerprint.originalClassDef.type,
                 name = "<init>",
                 returnType = "V",
                 filters = listOf(
@@ -120,9 +119,7 @@ val hideAdsPatch = bytecodePatch(
                 )
             )
 
-            commentsAdStateConstructorFingerprint.match(
-                CommentsAdStateToStringFingerprint.originalClassDef
-            ).let {
+            commentsAdStateConstructorFingerprint.let {
                 it.method.apply {
                     val index = it.instructionMatches.last().index
                     val register =

@@ -201,9 +201,7 @@ val seekbarColorPatch = bytecodePatch(
             val factoryStreamClass: CharSequence
             val factoryStreamName: CharSequence
             val factoryStreamReturnType: CharSequence
-            LottieCompositionFactoryFromJsonInputStreamFingerprint.match(
-                LottieCompositionFactoryZipFingerprint.originalClassDef
-            ).originalMethod.apply {
+            LottieCompositionFactoryFromJsonInputStreamFingerprint.originalMethod.apply {
                 factoryStreamClass = definingClass
                 factoryStreamName = name
                 factoryStreamReturnType = returnType

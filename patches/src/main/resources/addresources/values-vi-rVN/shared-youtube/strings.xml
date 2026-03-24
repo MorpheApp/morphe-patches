@@ -41,7 +41,7 @@ Nếu bạn muốn có trải nghiệm ổn định và ít lỗi, thì hãy &lt
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Thôi ổn định vậy</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Thông báo Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Nhật ký xem của bạn hiện không được lưu lại.&lt;br&gt;&lt;br&gt;Nguyên nhân có thể là do trình chặn quảng cáo DNS hoặc proxy mạng.&lt;br&gt;&lt;br&gt;Để khắc phục, hãy thêm &lt;b&gt;s.youtube.com&lt;/b&gt; vào danh sách cho phép, hoặc tắt tất cả trình chặn DNS và proxy.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Nhật ký xem của bạn hiện không được lưu lại.&lt;br&gt;&lt;br&gt;Nguyên nhân thường là do DNS chặn quảng cáo hoặc proxy mạng.&lt;br&gt;&lt;br&gt;Vì vậy, hãy thử thêm &lt;b&gt;s.youtube.com&lt;/b&gt; vào danh sách cho phép, hoặc tắt tất cả DNS và proxy.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Không hiện lại</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Giả mạo luồng phát video</string>
@@ -66,7 +66,7 @@ Có thể gặp lỗi khi phát."</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Để dùng tính năng này, thay đổi \'Client mặc định\' thành Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Đăng nhập vào Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Đăng nhập Android VR có thể khắc phục lỗi khi phát cho một số người dùng
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Đăng nhập Android VR có thể sửa lỗi phát cho một số người dùng
 
 Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Tiếp tục</string>

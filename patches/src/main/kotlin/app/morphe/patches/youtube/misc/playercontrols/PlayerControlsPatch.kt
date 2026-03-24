@@ -284,11 +284,7 @@ val playerControlsPatch = bytecodePatch(
             }
         }
 
-        visibilityMethodRef = WeakReference(
-            ControlsOverlayVisibilityFingerprint.match(
-                PlayerTopControlsInflateFingerprint.originalClassDef,
-            ).method
-        )
+        visibilityMethodRef = WeakReference(ControlsOverlayVisibilityFingerprint.method)
 
         // Hook the fullscreen close button. Used to fix visibility
         // when seeking and other situations.
@@ -310,7 +306,7 @@ val playerControlsPatch = bytecodePatch(
         )
         visibilityImmediateMethodRef = WeakReference(PlayerControlsExtensionHookFingerprint.method)
 
-        MotionEventFingerprint.match(YoutubeControlsOverlayFingerprint.originalClassDef).let {
+        MotionEventFingerprint.let {
             visibilityNegatedImmediateMethodRef = WeakReference(it.method)
             visibilityNegatedImmediateInsertIndex = it.instructionMatches.first().index + 1
         }

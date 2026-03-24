@@ -305,6 +305,16 @@ Promjene uključuju:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Tipka \'Prenesi\' je prikazana</string>
   <string name="morphe_comments_screen_title">Komentari</string>
   <string name="morphe_comments_screen_summary">Sakrij ili prikaži komponente odjela komentara</string>
+  <string name="morphe_hide_comments_carousel_title">Omogući filtar za carousel komentare</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Omogućen je filtar za carousel komentare</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Onemogućen je filtar za carousel komentare</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Napomena
+
+• Obavezno unesite točan naziv stavke na carouselu (npr. Pitajte, Potaknite ovaj video, Slušajte na YouTube glazbi itd.).
+• Skrivanje stavki na carouselu može imati neželjene nuspojave.
+• Ako su sve stavke na carouselu skrivene, bit će skriven i cijeli odjeljak s komentarima."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Filter za carousel komentara</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Unesite nazive komentara na carouselu za filtriranje, jedan po retku</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Komentari su skriveni</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI chat sažetak je skriven</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI komentari su skriveni</string>
@@ -488,6 +498,10 @@ Potvrdite da naziv paketa je tačan i da je aplikacija instalirana."</string>
   <string name="morphe_loop_video_button_toast_on">Petljati video je uključen</string>
   <string name="morphe_loop_video_button_toast_off">Petljati video je isključen</string>
   <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Prikaži tipku za ponovno pokretanje videa</string>
+  <string name="morphe_reload_video_summary_on">Tipka za učitavanje videozapisa je prikazana</string>
+  <string name="morphe_reload_video_summary_off">Tipka za učitavanje videozapisa nije prikazana</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID videozapisa nije dostupan. Ručno ponovno otvorite videozapis.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogu precizan pritisak</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Precizan pritisak je onemogu</string>
@@ -675,13 +689,12 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_show_search_button_title">Prikaži pretraživanje</string>
   <string name="morphe_show_search_button_summary_on">Tipka za pretraživanje je prikazana</string>
   <string name="morphe_show_search_button_summary_off">Tipka za pretraživanje nije prikazana</string>
-  <string name="morphe_search_button_index_title">Indeks tipke za pretraživanje</string>
-  <string name="morphe_search_button_index_invalid">Indeks tipke za pretraživanje mora biti manji od %s</string>
+  <string name="morphe_show_search_button_index_title">Indeks tipke za pretraživanje</string>
   <string name="morphe_show_settings_button_title">Prikaži postavke</string>
   <string name="morphe_show_settings_button_summary_on">Tipka postavki je prikazana</string>
   <string name="morphe_show_settings_button_summary_off">Tipka postavki  nije prikazana</string>
-  <string name="morphe_settings_button_index_title">Indeks tipke postavki </string>
-  <string name="morphe_settings_button_index_invalid">Indeks tipke postavki mora biti manji od %s</string>
+  <string name="morphe_show_settings_button_index_title">Indeks tipke postavki </string>
+  <string name="morphe_show_settings_button_type_title">Radnja tipke Postavke</string>
   <string name="morphe_swap_create_with_notifications_button_title">Zamijeni Stvori s Obavijesti</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Dugme Stvori je zamijenjeno s dugmom Obavijesti</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Dugme Stvori nije zamijenjeno s dugmom Obavijesti</string>
@@ -728,18 +741,15 @@ Otvorite bilo koji videozapis → Otvorite izbornik Kvaliteta → Dodirnite 'Pos
   <string name="morphe_hide_toolbar_search_button_title">Sakrij Pretraži</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Tipka za pretraživanje je skrivena</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Tipka za pretraživanje je prikazana</string>
-  <string name="morphe_replace_toolbar_create_button_title">Zamijeni Izradi s Postavkama</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Tipka Izradi zamijenjena je tipkom Postavke</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Tipka Izradi nije zamijenjena tipkom Postavke</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Ponašanje klika na tipku Postavke na kartici Vi također je poništeno.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Radnja tipke Postavke</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Dodirnite za otvaranje postavki Morphea
+  <string name="morphe_show_toolbar_settings_button_title">Prikaži postavke</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Tipka postavki je prikazana</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Tipka postavki  nije prikazana</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Indeks tipke postavki </string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Radnja tipke Postavke</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Dodirnite za otvaranje postavki Morphea
 Dodirnite i držite za otvaranje postavki YouTubea"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Dodirnite za otvaranje postavki YouTubea
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Dodirnite za otvaranje postavki YouTubea
 Dodirnite i držite za otvaranje postavki Morphea"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">Preuredite zamijenjene tipke</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Tipke su preuređene</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Tipke nisu preuređene</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout meni</string>
   <string name="morphe_hide_player_flyout_summary">Sakrij ili prikaži stavke flyout menija</string>

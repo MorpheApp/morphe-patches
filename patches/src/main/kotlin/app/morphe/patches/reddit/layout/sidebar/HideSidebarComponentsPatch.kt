@@ -33,9 +33,7 @@ val hideSidebarComponentsPatch = bytecodePatch(
     dependsOn(settingsPatch)
 
     execute {
-        CommunityDrawerBuilderFingerprint.match(
-            CommunityDrawerBuilderParentFingerprint.originalClassDef
-        ).method.addInstructions(
+        CommunityDrawerBuilderFingerprint.method.addInstructions(
             0,
             """
                 invoke-static/range { p2 .. p3 }, $EXTENSION_CLASS_DESCRIPTOR->hideComponents(Ljava/util/Collection;$EXTENSION_HEADER_ITEM_INTERFACE)Ljava/util/Collection;

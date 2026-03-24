@@ -40,10 +40,8 @@ internal object AppCompatToolbarBackButtonFingerprint : Fingerprint(
     parameters = listOf()
 )
 
-/**
- * Matches to the class found in [PivotBarConstructorFingerprint].
- */
 internal object InitializeButtonsFingerprint : Fingerprint(
+    classFingerprint = PivotBarConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(

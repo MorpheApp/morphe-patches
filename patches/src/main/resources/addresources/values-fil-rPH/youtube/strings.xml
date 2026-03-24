@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Pangkalahatan</string>
   <string name="morphe_settings_screen_05_player_title">Manlalaro</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Seekbar</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Pag-swipe ng mga kontrol</string>
   <string name="morphe_settings_screen_11_misc_title">Mga sari-sari</string>
@@ -302,6 +303,16 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Ipinapakita ang button na Mag-subscribe</string>
   <string name="morphe_comments_screen_title">Mga Komento</string>
   <string name="morphe_comments_screen_summary">Itago o ipakita ang mga bahagi ng seksyon ng komento</string>
+  <string name="morphe_hide_comments_carousel_title">Paganahin ang filter carousel ng komento</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Pinagana ang filter ng carousel ng komento</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Hindi pinagana ang filter ng carousel ng komento</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Paalala
+
+• Tiyaking ilagay ang eksaktong pangalan ng carousel item (hal. Tanong, Hype sa bidyong ito, Makinig sa YouTube Music, atbp.).
+• Ang pagtatago ng mga carousel item ay maaaring magdulot ng hindi inaasahang epekto.
+• Kung lahat ng carousel item ay nakatago, ang buong seksyon ng komento ay itatago rin."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Filter ng carousel ng komento</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Ilagay ang mga pangalan ng comments carousel na ifi-filter by, isa bawat linya</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Itago ang buod ng AI chat</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Nakatago ang buod ng AI chat</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Ipinapakita ang buod ng AI chat</string>
@@ -329,6 +340,9 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Itago ang mga button na Emoji at Timestamp</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Nakatago ang mga button na Emoji at Timestamp</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Ipinapakita ang mga button na Emoji at Timestamp</string>
+  <string name="morphe_hide_comments_info_button_title">Itago ang button na Impormasyon</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Nakatago ang button na Impormasyon</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Ipinapakita ang button na Impormasyon</string>
   <string name="morphe_hide_comments_preview_comment_title">Itago ang pasilip na komento</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Nakatago ang pasilip na komento</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Ipinapakita ang pasilip na komento</string>
@@ -676,13 +690,14 @@ Awtomatikong ise-save ang cookies kung valid ang mga ito"</string>
   <string name="morphe_show_search_button_title">Ipakita ang Paghahanap</string>
   <string name="morphe_show_search_button_summary_on">Ipinapakita ang paghahanap na button</string>
   <string name="morphe_show_search_button_summary_off">Hindi ipinapakita ang search button</string>
-  <string name="morphe_search_button_index_title">Index ng button ng paghahanap</string>
-  <string name="morphe_search_button_index_invalid">Dapat mas mababa sa %s ang index</string>
+  <string name="morphe_show_search_button_index_title">Index ng button ng paghahanap</string>
   <string name="morphe_show_settings_button_title">Ipakita ang Mga Setting</string>
   <string name="morphe_show_settings_button_summary_on">Ipinapakita ang button ng mga setting</string>
   <string name="morphe_show_settings_button_summary_off">Hindi ipinapakita ang button ng mga setting</string>
-  <string name="morphe_settings_button_index_title">Index ng buton ng Mga Setting</string>
-  <string name="morphe_settings_button_index_invalid">Dapat mas mababa sa %s ang index ng Settings button</string>
+  <string name="morphe_show_settings_button_index_title">Index ng buton ng Mga Setting</string>
+  <string name="morphe_show_settings_button_type_title">Aksyon ng buton ng Mga Setting</string>
+  <string name="morphe_show_settings_button_type_summary_on">Pindutin para buksan ang mga setting ng Morphe</string>
+  <string name="morphe_show_settings_button_type_summary_off">I-tap para buksan ang mga setting ng YouTube</string>
   <string name="morphe_swap_create_with_notifications_button_title">Swap Create with Notifications</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Ang button na lumikha ay pinalitan ng Notipikasyon na button</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Ang button na lumikha ay hindi pinalitan ng Notipikasyon na button</string>
@@ -703,6 +718,9 @@ Buksan ang anumang video → Buksan ang Quality menu → I-tap ang 'Settings &gt
   <string name="morphe_navigation_bar_animations_title">I-enable ang mga animasyon ng navigation bar</string>
   <string name="morphe_navigation_bar_animations_summary_on">Ang mga transition ng Navigation ay may animasyon</string>
   <string name="morphe_navigation_bar_animations_summary_off">Ang mga transition ng Navigation ay walang animasyon</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Huwag paganahin ang auto-hide ng navigation bar</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Ang navigation bar ay hindi mag-a-auto-hide</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Ang navigation bar ay maaaring mag-auto-hide</string>
   <string name="morphe_disable_translucent_status_bar_title">I-disable ang translucent status bar</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Ang status bar ay opaque</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Ang status bar ay opaque o translucent</string>
@@ -729,18 +747,15 @@ Buksan ang anumang video → Buksan ang Quality menu → I-tap ang 'Settings &gt
   <string name="morphe_hide_toolbar_search_button_title">Itago ang Paghahanap</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Nakatago ang paghahanap na button</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Ipinapakita ang paghahanap na button</string>
-  <string name="morphe_replace_toolbar_create_button_title">Palitan ang Create ng Settings</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Ang button na Lumikha ay pinalitan ng Settings button</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Ang button na Lumikha ay hindi pinalitan ng Settings button</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Ang pag-uugali ng pag-click sa button ng Settings sa tab na You ay binabago rin.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Aksyon ng buton ng Mga Setting</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"I-tap para buksan ang mga setting ng Morphe
+  <string name="morphe_show_toolbar_settings_button_title">Ipakita ang Mga Setting</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Ipinapakita ang buton ng Mga Setting</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Hindi ipinapakita ang buton ng Mga Setting</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Index ng buton ng Mga Setting</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Aksyon ng buton ng Mga Setting</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"I-tap para buksan ang mga setting ng Morphe
 I-tap nang matagal para buksan ang mga setting ng YouTube"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"I-tap para buksan ang mga setting ng YouTube
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"I-tap para buksan ang mga setting ng YouTube
 I-tap nang matagal para buksan ang mga setting ng Morphe"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">Ayusin muli ang mga pinapalitang button</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Inayos muli ang mga button</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Hindi inilipat-lipat ang mga button</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout menu</string>
   <string name="morphe_hide_player_flyout_summary">Itago o ipakita ang mga item ng player flyout menu</string>
@@ -1359,6 +1374,7 @@ Kung i-off ang, inirerekomenda na i-clear ang app data para maiwasan ang UI bugs
   <string name="morphe_change_start_page_entry_playlists">Mga Tala Tugtugin</string>
   <string name="morphe_change_start_page_entry_search">Hanapin</string>
   <string name="morphe_change_start_page_entry_shopping">Pamimili</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Palakasan</string>
   <string name="morphe_change_start_page_entry_subscriptions">Mga Subskripsyon</string>
   <string name="morphe_change_start_page_entry_trending">Umuusbong</string>

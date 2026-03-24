@@ -12,7 +12,19 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
+private object CommunityDrawerBuilderParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;",
+    parameters = listOf("Lcom/reddit/screens/drawer/community/HeaderItem;"),
+    filters = listOf(
+        string("<this>"),
+        methodCall("Ljava/lang/Enum;->ordinal()I"),
+        fieldAccess("Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;->ABOUT:Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;")
+    )
+)
+
 internal object CommunityDrawerBuilderFingerprint : Fingerprint(
+    classFingerprint = CommunityDrawerBuilderParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "V",
     parameters = listOf(
@@ -26,17 +38,6 @@ internal object CommunityDrawerBuilderFingerprint : Fingerprint(
     ),
     filters = listOf(
         methodCall("Ljava/util/Collection;->isEmpty()Z"),
-    )
-)
-
-internal object CommunityDrawerBuilderParentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;",
-    parameters = listOf("Lcom/reddit/screens/drawer/community/HeaderItem;"),
-    filters = listOf(
-        string("<this>"),
-        methodCall("Ljava/lang/Enum;->ordinal()I"),
-        fieldAccess("Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;->ABOUT:Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;")
     )
 )
 

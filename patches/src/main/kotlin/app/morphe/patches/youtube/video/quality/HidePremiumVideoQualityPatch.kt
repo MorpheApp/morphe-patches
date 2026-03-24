@@ -32,8 +32,8 @@ internal val hidePremiumVideoQualityPatch = bytecodePatch {
         )
 
         // Class name is obfuscated in 21.02+
-        val videoQualityArray = DefaultOverflowOverlayOnClickFingerprint.match()
-            .instructionMatches.last().instruction.getReference<FieldReference>()!!.type
+        val videoQualityArray = DefaultOverflowOverlayOnClickFingerprint.instructionMatches.last()
+            .instruction.getReference<FieldReference>()!!.type
 
         // To avoid ClassCastException, declare the new array as original video quality class instead of [EXTENSION_VIDEO_QUALITY_INTERFACE]
         HidePremiumVideoQualityGetArrayFingerprint.method.addInstructions(
@@ -45,6 +45,7 @@ internal val hidePremiumVideoQualityPatch = bytecodePatch {
         )
 
         val currentVideoFormatConstructorFingerprint = Fingerprint(
+            classFingerprint = CurrentVideoFormatToStringFingerprint,
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
             returnType = "V",
             filters = listOf(
@@ -56,9 +57,7 @@ internal val hidePremiumVideoQualityPatch = bytecodePatch {
             )
         )
 
-        currentVideoFormatConstructorFingerprint.match(
-            CurrentVideoFormatToStringFingerprint.originalClassDef
-        ).let {
+        currentVideoFormatConstructorFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA

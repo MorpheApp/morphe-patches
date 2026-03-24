@@ -130,7 +130,8 @@ internal val localesYouTube = listOf(
     AppLocale("zu-rZA", "zu"),
     // Languages not found in YouTube.
     AppLocale("ga-rIE", "ga", false),
-    AppLocale("kmr-rTR", "kmr", false)
+    AppLocale("kmr-rTR", "kmr", false),
+    AppLocale("ckb-rIR", "ckb", false)
 )
 
 internal val localesReddit = listOf(
@@ -214,7 +215,8 @@ internal val localesReddit = listOf(
     AppLocale("uz-rUZ", "uz", false),
     AppLocale("zu-rZA", "zu", false),
     AppLocale("ga-rIE", "ga", false),
-    AppLocale("kmr-rTR", "kmr", false)
+    AppLocale("kmr-rTR", "kmr", false),
+    AppLocale("ckb-rIR", "ckb", false)
 )
 
 internal val localesAll by lazy { (localesYouTube + localesReddit).distinct() }

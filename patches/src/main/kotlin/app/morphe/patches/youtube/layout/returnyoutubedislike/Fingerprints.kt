@@ -7,6 +7,7 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.layout.returnyoutubedislike.TextComponentConstructorFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -49,10 +50,8 @@ internal object RollingNumberMeasureAnimatedTextFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches to class found in [rollingNumberMeasureStaticLabelParentFingerprint].
- */
 internal object RollingNumberMeasureStaticLabelFingerprint : Fingerprint(
+    classFingerprint = RollingNumberMeasureStaticLabelParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "F",
     parameters = listOf("Ljava/lang/String;"),
@@ -64,7 +63,7 @@ internal object RollingNumberMeasureStaticLabelFingerprint : Fingerprint(
     )
 )
 
-internal object RollingNumberMeasureStaticLabelParentFingerprint : Fingerprint(
+private object RollingNumberMeasureStaticLabelParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
@@ -122,10 +121,8 @@ internal object TextComponentDataFingerprint : Fingerprint(
     }
 )
 
-/**
- * Matches against the same class found in [textComponentConstructorFingerprint].
- */
 internal object TextComponentLookupFingerprint : Fingerprint(
+    classFingerprint = TextComponentConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf("L"),

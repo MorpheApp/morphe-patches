@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Емисия </string>
   <string name="morphe_settings_screen_04_general_title">Основни</string>
   <string name="morphe_settings_screen_05_player_title">Плейър</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Лента на прогрес</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Плъзгащи контроли</string>
   <string name="morphe_settings_screen_11_misc_title">Други</string>
@@ -301,6 +302,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Бутона \'Абонамент\' на страницата на канала е показан</string>
   <string name="morphe_comments_screen_title">Коментари</string>
   <string name="morphe_comments_screen_summary">Скрийте или покажете компоненти на страницата с коментари</string>
+  <string name="morphe_hide_comments_carousel_title">Активиране на филтър за кръгли прегледи на коментари</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Филтърът за коментари е активиран</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Филтърът за коментари е изключен</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Забележка
+
+• Уверете се, че въвеждате точното име на елемента на карусела (напр. Попитай, Харесай това видео, Слушай в YouTube Music и т.н.).
+• Скриването на елементи от карусела може да има непредвидени странични ефекти.
+• Ако всички елементи от карусела са скрити, цялата секция с коментари също ще бъде скрита."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Активиране на филтър за кръгли прегледи на коментари</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Въведете имената на каруселите с коментари, за да филтрирате, едно на ред</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скрийте или покажете AI чат сумари</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI чат сумари са скрити</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI чат сумари са показани</string>
@@ -328,6 +339,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Скрийте бутони за емоджи и времевамки</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Бутоните за емоджи и времевамки са скрити</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Бутоните за емоджи и времевамки са показани</string>
+  <string name="morphe_hide_comments_info_button_title">Скрий бутона Информация</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Бутонът Информация е скрит</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Бутонът Информация е показан</string>
   <string name="morphe_hide_comments_preview_comment_title">Скрийте предварителен коментар</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Предварителен коментар е скрит</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Предварителен коментар е показан</string>
@@ -669,13 +683,14 @@ Second \"item\" text"</string>
   <string name="morphe_show_search_button_title">Покажи търсене</string>
   <string name="morphe_show_search_button_summary_on">Бутона за Търсене се показва</string>
   <string name="morphe_show_search_button_summary_off">Бутона за търсене не се показва</string>
-  <string name="morphe_search_button_index_title">Индекс на бутона за търсене</string>
-  <string name="morphe_search_button_index_invalid">Индексът на бутона за търсене трябва да е по-малък от %s</string>
+  <string name="morphe_show_search_button_index_title">Индекс на бутона за търсене</string>
   <string name="morphe_show_settings_button_title">Покажи настройки</string>
   <string name="morphe_show_settings_button_summary_on">Бутонът за настройки е показан</string>
   <string name="morphe_show_settings_button_summary_off">Бутонът за настройки не е показан</string>
-  <string name="morphe_settings_button_index_title">Показ на бутон</string>
-  <string name="morphe_settings_button_index_invalid">Индексът на бутона трябва да бъде по-малък от %s</string>
+  <string name="morphe_show_settings_button_index_title">Индекс на бутона за Настройки</string>
+  <string name="morphe_show_settings_button_type_title">Действие на бутона за Настройки</string>
+  <string name="morphe_show_settings_button_type_summary_on">Натиснете, за да отворите Настройките на Morphe</string>
+  <string name="morphe_show_settings_button_type_summary_off">Натиснете, за да отворите настройките на YouTube</string>
   <string name="morphe_swap_create_with_notifications_button_title">Размени бутона „Създаване“ с бутона „Известия“</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Бутона „Създаване“ е разменен с бутона „Известия“</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Бутона „Създаване“ не е разменен с бутона „Известия“</string>
@@ -696,6 +711,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">Превключванията на навигацията са анимирани</string>
   <string name="morphe_navigation_bar_animations_summary_on">Превключванията на навигацията не са анимирани</string>
   <string name="morphe_navigation_bar_animations_summary_off">Изключи прозрачна лента за статус</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Изключване на автоматичното скриване на навигационната лента</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Навигационната лента няма да се скрива автоматично</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Навигационната лента може да се скрива автоматично</string>
   <string name="morphe_disable_translucent_status_bar_title">Лентата за статус е непрозрачна</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Лентата за статус е непрозрачна или прозрачна</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Изключи светла прозрачна лента за навигация</string>
@@ -722,18 +740,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">Скрий Търсене</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Бутона за Търсене е скрит</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Бутона за Търсене се показва</string>
-  <string name="morphe_replace_toolbar_create_button_title">Замени Създай с Настройки</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Бутонът «Създаване» е заменен с бутона «Настройки»</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Бутонът «Създаване» не е заменен с бутона «Настройки»</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Кликването на бутона «Настройки» в раздела «За вас» също се презаписва.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Действие на бутона «Настройки»</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Натиснете, за да отворите Настройките на Morphe
-Натиснете и задръжте, за да отворите Настройките на YouTube"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Натиснете, за да отворите Настройките на YouTube
-Натиснете и задръжте, за да отворите Настройките на Morphe"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">Пренаредите заменените бутони</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Бутоните са пренаредени</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Бутоните не са пренаредени</string>
+  <string name="morphe_show_toolbar_settings_button_title">Показвай Настройки</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Бутонът за настройки се показва</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Бутонът за настройки не се показва</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Индекс на бутона за настройки</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Действие на бутона за настройки</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Натиснете, за да отворите настройките на Morphe
+Задръжте, за да отворите настройките на YouTube"</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Натиснете, за да отворите настройките на YouTube
+Задръжте, за да отворите настройките на Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Бутонът за коментари се показва</string>
   <string name="morphe_hide_player_flyout_summary">Скрий дублиране на видеа</string>
@@ -1350,6 +1365,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">Плейлисти</string>
   <string name="morphe_change_start_page_entry_search">Търсене</string>
   <string name="morphe_change_start_page_entry_shopping">Магазин</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Спорт</string>
   <string name="morphe_change_start_page_entry_subscriptions">Абонации</string>
   <string name="morphe_change_start_page_entry_trending">Трендове</string>

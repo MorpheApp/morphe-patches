@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">订阅源</string>
   <string name="morphe_settings_screen_04_general_title">常规</string>
   <string name="morphe_settings_screen_05_player_title">播放器</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">进度条</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">滑动控制</string>
   <string name="morphe_settings_screen_11_misc_title">其他</string>
@@ -301,6 +302,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">订阅按钮已显示</string>
   <string name="morphe_comments_screen_title">评论</string>
   <string name="morphe_comments_screen_summary">隐藏或显示评论部分</string>
+  <string name="morphe_hide_comments_carousel_title">启用评论轮播过滤</string>
+  <string name="morphe_hide_comments_carousel_summary_on">自定义筛选器已启用</string>
+  <string name="morphe_hide_comments_carousel_summary_off">自定义筛选器已禁用</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"注意
+
+• 确保输入轮播项的确切名称（例如，提问、热播此视频、在 YouTube Music 上收听等）。
+• 隐藏轮播项可能会产生意想不到的副作用。
+• 如果隐藏了所有轮播项，则整个评论区也会被隐藏。"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">启用评论轮播过滤</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">输入要按行筛选的评论轮播图名称</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">隐藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI 聊天摘要已隐藏</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI 聊天摘要已显示</string>
@@ -328,6 +339,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">隐藏表情符号和时间戳按钮</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">表情符号和时间戳按钮已隐藏</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">表情符号和时间戳按钮已显示</string>
+  <string name="morphe_hide_comments_info_button_title">隐藏信息按钮</string>
+  <string name="morphe_hide_comments_info_button_summary_on">信息按钮已隐藏</string>
+  <string name="morphe_hide_comments_info_button_summary_off">信息按钮已显示</string>
   <string name="morphe_hide_comments_preview_comment_title">隐藏评论预览</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">评论预览已隐藏</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">评论预览已显示</string>
@@ -675,13 +689,14 @@ Second \"item\" text"</string>
   <string name="morphe_show_search_button_title">显示搜索</string>
   <string name="morphe_show_search_button_summary_on">搜索按钮已显示</string>
   <string name="morphe_show_search_button_summary_off">搜索按钮未显示</string>
-  <string name="morphe_search_button_index_title">搜索按钮索引</string>
-  <string name="morphe_search_button_index_invalid">搜索按钮索引必须小于 %s</string>
+  <string name="morphe_show_search_button_index_title">搜索按钮索引</string>
   <string name="morphe_show_settings_button_title">显示设置</string>
   <string name="morphe_show_settings_button_summary_on">设置按钮已显示</string>
   <string name="morphe_show_settings_button_summary_off">设置按钮未显示</string>
-  <string name="morphe_settings_button_index_title">设置按钮索引</string>
-  <string name="morphe_settings_button_index_invalid">设置按钮索引必须小于 %s</string>
+  <string name="morphe_show_settings_button_index_title">设置按钮索引</string>
+  <string name="morphe_show_settings_button_type_title">设置按钮操作</string>
+  <string name="morphe_show_settings_button_type_summary_on">轻触以打开 Morphe 设置</string>
+  <string name="morphe_show_settings_button_type_summary_off">点击打开 YouTube 设置</string>
   <string name="morphe_swap_create_with_notifications_button_title">切换「创作」为「通知」按钮</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">「创作」按钮已切换为「通知」按钮</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">「创作」按钮未切换为「通知」按钮</string>
@@ -702,6 +717,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">启用导航栏动画</string>
   <string name="morphe_navigation_bar_animations_summary_on">导航过渡是动画的</string>
   <string name="morphe_navigation_bar_animations_summary_off">导航过渡没有动画</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">禁用导航栏自动隐藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">导航栏将不会自动隐藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">导航栏可能会自动隐藏</string>
   <string name="morphe_disable_translucent_status_bar_title">禁用半透明状态栏</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">状态栏为不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">状态栏为不透明或半透明</string>
@@ -728,18 +746,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">隐藏搜索</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">搜索按钮已隐藏</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">搜索按钮已显示</string>
-  <string name="morphe_replace_toolbar_create_button_title">将创建替换为设置</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">创建按钮已替换为设置按钮</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">创建按钮未替换为设置按钮</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">You 选项卡中设置按钮的点击行为也被覆盖。</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">设置按钮操作</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"点击打开 Morphe 设置
-长按点击打开 YouTube 设置"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"点击打开 YouTube 设置
-长按点击打开 Morphe 设置"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">重新排列替换后的按钮</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">按钮已重新排列</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">按钮未重新排列</string>
+  <string name="morphe_show_toolbar_settings_button_title">显示设置</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">显示设置按钮</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">未显示设置按钮</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">设置按钮索引</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">设置按钮操作</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"点击打开 Morphe 设置
+长按打开 YouTube 设置"</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"点击打开 YouTube 设置
+长按打开 Morphe 设置"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">弹出菜单</string>
   <string name="morphe_hide_player_flyout_summary">隐藏或显示播放器弹出菜单项</string>
@@ -1362,6 +1377,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">播放列表</string>
   <string name="morphe_change_start_page_entry_search">搜索</string>
   <string name="morphe_change_start_page_entry_shopping">购物</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">体育</string>
   <string name="morphe_change_start_page_entry_subscriptions">订阅</string>
   <string name="morphe_change_start_page_entry_trending">趋势</string>

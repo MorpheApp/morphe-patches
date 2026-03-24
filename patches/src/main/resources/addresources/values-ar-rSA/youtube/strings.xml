@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">الموجز</string>
   <string name="morphe_settings_screen_04_general_title">عام</string>
   <string name="morphe_settings_screen_05_player_title">المشغل</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">شريط تقدم الفيديو</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">التحكم عن طريق إيماءة التمرير</string>
   <string name="morphe_settings_screen_11_misc_title">خيارات متنوعة</string>
@@ -338,6 +339,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">إخفاء أزرار الرموز التعبيرية والطابع الزمني</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">تم إخفاء أزرار الرموز التعبيرية والطوابع الزمنية</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">يتم عرض أزرار الرموز التعبيرية والطوابع الزمنية</string>
+  <string name="morphe_hide_comments_info_button_title">إخفاء زر المعلومات</string>
+  <string name="morphe_hide_comments_info_button_summary_on">تم إخفاء زر المعلومات</string>
+  <string name="morphe_hide_comments_info_button_summary_off">يتم عرض زر المعلومات</string>
   <string name="morphe_hide_comments_preview_comment_title">إخفاء تعليق المعاينة</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">تم إخفاء تعليق المعاينة</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">يتم عرض تعليق المعاينة</string>
@@ -685,13 +689,14 @@ Second \"item\" text"</string>
   <string name="morphe_show_search_button_title">عرض البحث</string>
   <string name="morphe_show_search_button_summary_on">يتم عرض زر البحث</string>
   <string name="morphe_show_search_button_summary_off">لا يتم عرض زر البحث</string>
-  <string name="morphe_search_button_index_title">ترتيب زر البحث</string>
-  <string name="morphe_search_button_index_invalid">يجب أن يكون مؤشر زر البحث أقل من %s</string>
+  <string name="morphe_show_search_button_index_title">ترتيب زر البحث</string>
   <string name="morphe_show_settings_button_title">عرض الإعدادات</string>
   <string name="morphe_show_settings_button_summary_on">يتم عرض زر الإعدادات</string>
   <string name="morphe_show_settings_button_summary_off">لا يتم عرض زر الإعدادات</string>
-  <string name="morphe_settings_button_index_title">ترتيب زر البحث</string>
-  <string name="morphe_settings_button_index_invalid">يجب أن يكون مؤشر زر البحث أقل من %s</string>
+  <string name="morphe_show_settings_button_index_title">ترتيب زر الإعدادات</string>
+  <string name="morphe_show_settings_button_type_title">إجراء زر الإعدادات</string>
+  <string name="morphe_show_settings_button_type_summary_on">انقر لفتح إعدادات Morphe</string>
+  <string name="morphe_show_settings_button_type_summary_off">انقر لفتح إعدادات YouTube</string>
   <string name="morphe_swap_create_with_notifications_button_title">تبديل الإنشاء بالإشعارات</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">تم تبديل زر الإنشاء بزر الإشعارات</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">لا يتم تبديل زر الإنشاء بزر الإشعارات</string>
@@ -712,6 +717,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">تمكين تأثير حركة التنقل في شريط التنقل</string>
   <string name="morphe_navigation_bar_animations_summary_on">تم تمكين تأثير حركة التنقل في شريط التنقل</string>
   <string name="morphe_navigation_bar_animations_summary_off">تم تعطيل تأثير حركة التنقل في شريط التنقل</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">تعطيل إخفاء شريط التنقل تلقائيًا</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">لن يتم إخفاء شريط التنقل تلقائيًا</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">قد يتم إخفاء شريط التنقل تلقائيًا</string>
   <string name="morphe_disable_translucent_status_bar_title">تعطيل شريط الحالة الشفاف</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">شريط الحالة غير شفاف</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">شريط الحالة معتم أو شفاف</string>
@@ -738,18 +746,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">إخفاء البحث</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">تم إخفاء زر البحث</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">يتم عرض زر البحث</string>
-  <string name="morphe_replace_toolbar_create_button_title">استبدال إنشاء بـ الإعدادات</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">يتم تبديل زر إنشاء بزر الإعدادات</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">لا يتم تبديل زر إنشاء بزر الإعدادات</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">يتجاوز سلوك النقر على زر الإعدادات في علامة التبويب أنت أيضًا.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">إجراء زر الإعدادات</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"اضغط لفتح إعدادات Morphe
+  <string name="morphe_show_toolbar_settings_button_title">إظهار الإعدادات</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">يتم عرض زر الإعدادات</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">لا يتم عرض زر الإعدادات</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">ترتيب زر الإعدادات</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">إجراء زر الإعدادات</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"اضغط لفتح إعدادات Morphe
 اضغط مع الاستمرار لفتح إعدادات YouTube"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"اضغط لفتح إعدادات YouTube
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"اضغط لفتح إعدادات YouTube
 اضغط مع الاستمرار لفتح إعدادات Morphe"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">إعادة ترتيب الأزرار المستبدلة</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">تم إعادة ترتيب الأزرار</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">لم تتم إعادة ترتيب الأزرار</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">القائمة المنبثقة</string>
   <string name="morphe_hide_player_flyout_summary">إخفاء أو عرض عناصر قائمة المشغل المنبثقة</string>
@@ -1369,6 +1374,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">قوائم التشغيل</string>
   <string name="morphe_change_start_page_entry_search">البحث</string>
   <string name="morphe_change_start_page_entry_shopping">تسوق</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">الرياضة</string>
   <string name="morphe_change_start_page_entry_subscriptions">الاشتراكات</string>
   <string name="morphe_change_start_page_entry_trending">المحتوى الرائج</string>

@@ -21,7 +21,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_confirm_user_dialog_title">本当に続行してもよろしいですか？</string>
   <string name="morphe_settings_save">保存</string>
   <string name="morphe_settings_reset">リセット</string>
-  <string name="morphe_settings_reset_color">色をリセット</string>
+  <string name="morphe_settings_reset_color">色を初期化</string>
   <string name="morphe_settings_color_invalid">色の値が無効です</string>
   <string name="morphe_settings_restart_title">再起動が必要です</string>
   <string name="morphe_settings_restart_dialog_message">この変更を反映するには、アプリを再起動してください。</string>
@@ -60,12 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">アプリの言語</string>
   <string name="morphe_pref_import_export_title">インポート / エクスポート</string>
   <string name="morphe_pref_import_export_summary">Morphe の設定をインポート / エクスポートします</string>
-  <string name="morphe_settings_import_file">ファイルからインポート</string>
-  <string name="morphe_settings_import_file_success">インポート成功: [保存] を押すと反映します</string>
-  <string name="morphe_settings_import_file_failed">設定のインポートに失敗しました</string>
-  <string name="morphe_settings_export_file">ファイルにエクスポート</string>
-  <string name="morphe_settings_export_file_success">設定のエクスポートに成功しました</string>
-  <string name="morphe_settings_export_file_failed">設定のエクスポートに失敗しました</string>
+  <string name="morphe_settings_import_file">ファイル入力</string>
+  <string name="morphe_settings_import_file_success">ファイル入力: [保存] を押して設定に反映</string>
+  <string name="morphe_settings_import_file_failed">設定のファイル入力に失敗しました</string>
+  <string name="morphe_settings_export_file">ファイル出力</string>
+  <string name="morphe_settings_export_file_success">設定のファイル出力に成功しました</string>
+  <string name="morphe_settings_export_file_failed">設定のファイル出力に失敗しました</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Morphe Patches の最新バージョン &lt;i&gt;%s&lt;/i&gt; を使用しています</string>
   <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches のバージョン &lt;i&gt;%1$s&lt;/i&gt; を使用しています&lt;br&gt;&lt;br&gt;&lt;b&gt;更新が利用可能です: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;パッチを更新するには、Morphe を使ってアプリを再パッチしてください</string>
@@ -84,6 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">オープンソース ライセンス</string>
   <string name="morphe_settings_about_licenses_loading">読み込み中…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">デバッグ</string>

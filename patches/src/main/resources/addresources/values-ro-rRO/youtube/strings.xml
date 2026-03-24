@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Flux</string>
   <string name="morphe_settings_screen_04_general_title">Generalități</string>
   <string name="morphe_settings_screen_05_player_title">Jucător</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Bară de progres</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Controale glisare</string>
   <string name="morphe_settings_screen_11_misc_title">Diverse</string>
@@ -302,6 +303,16 @@ Schimbari incluse:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Butonul Abonare este afișat</string>
   <string name="morphe_comments_screen_title">Comentarii</string>
   <string name="morphe_comments_screen_summary">Ascunde sau afișează componentele secțiunii comentarii</string>
+  <string name="morphe_hide_comments_carousel_title">Activează filtru carusel comentarii</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Filtru carusel comentarii este activat</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Filtru carousel comentarii este dezactivat</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Notă
+
+• Asigurați-vă că introduceți exact numele elementului carousel (de exemplu, Întrebare, Hype acest videoclip, Ascultă pe YouTube Music, etc.).
+• Ascunderea elementelor carousel poate avea efecte secundare neintenționate.
+• Dacă toate elementele carousel sunt ascunse, întreaga secțiune de comentarii va fi, de asemenea, ascunsă."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Filtru carousel comentarii</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Introduce numele carousel-urilor de comentarii pentru a filtra, câte unul pe linie</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Ascunde rezumatul chatului AI</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Rezumatul chatului AI este ascuns</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Rezumatul chatului AI este afișat</string>
@@ -329,6 +340,9 @@ Schimbari incluse:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Ascunde butoanele Emoji și Marcaj temporal</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Butoanele Emoji și Marcaj temporal sunt ascunse</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Butoanele Emoji și Marcaj temporal sunt afișate</string>
+  <string name="morphe_hide_comments_info_button_title">Ascunde butonul Info</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Butonul Info este ascuns</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Butonul Info este afișat</string>
   <string name="morphe_hide_comments_preview_comment_title">Ascunde previzualizarea comentariului</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Previzualizarea comentariului este ascunsă</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Previzualizarea comentariului este afișată</string>
@@ -672,13 +686,14 @@ Cookie-urile vor fi salvate automatik daca sunt valide"</string>
   <string name="morphe_show_search_button_title">Afișează Căutare</string>
   <string name="morphe_show_search_button_summary_on">Butonul de căutare este afișat</string>
   <string name="morphe_show_search_button_summary_off">Butonul de căutare nu este arătat</string>
-  <string name="morphe_search_button_index_title">Butonul căutări</string>
-  <string name="morphe_search_button_index_invalid">Indexul butonului căutări trebuie să fie mai mic decăt %s</string>
+  <string name="morphe_show_search_button_index_title">Index buton de căutare</string>
   <string name="morphe_show_settings_button_title">Afișează Setări</string>
   <string name="morphe_show_settings_button_summary_on">Se afișează butonul Setări</string>
   <string name="morphe_show_settings_button_summary_off">Butonul Setări nu este afișat</string>
-  <string name="morphe_settings_button_index_title">Indexul butonului Setări</string>
-  <string name="morphe_settings_button_index_invalid">Indexul butonului Setări trebuie să fie mai mic decât %s</string>
+  <string name="morphe_show_settings_button_index_title">Index buton Setări</string>
+  <string name="morphe_show_settings_button_type_title">Acțiune buton Setări</string>
+  <string name="morphe_show_settings_button_type_summary_on">Atingeți pentru a deschide setările Morphe</string>
+  <string name="morphe_show_settings_button_type_summary_off">Atinge pentru a deschide setările YouTube</string>
   <string name="morphe_swap_create_with_notifications_button_title">Comuta Creare cu Notificări</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Butonul Creare a fost comutat cu butonul Notificări</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Butonul Creare nu este comutat cu butonul Notificări</string>
@@ -699,6 +714,9 @@ Deschideți orice videoclip → Deschideți meniul Calitate → Dați clic pe �
   <string name="morphe_navigation_bar_animations_title">Activare animații bară de navigare</string>
   <string name="morphe_navigation_bar_animations_summary_on">Tranzițiile de navigare sunt animate</string>
   <string name="morphe_navigation_bar_animations_summary_off">Tranzițiile de navigare nu sunt animate</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Dezactivează ascunderea automată a barei de navigare</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Bara de navigare nu se va ascunde automat</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Bara de navigare se poate ascunde automat</string>
   <string name="morphe_disable_translucent_status_bar_title">Dezactivează bara de stare translucidă</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bara de stare este opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bara de stare este opaca sau translucida</string>
@@ -725,18 +743,15 @@ Deschideți orice videoclip → Deschideți meniul Calitate → Dați clic pe �
   <string name="morphe_hide_toolbar_search_button_title">Ascunde Cautare</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Butonul de căutare este ascuns</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Butonul de căutare este afișat</string>
-  <string name="morphe_replace_toolbar_create_button_title">Înlocuiește Crea cu Setări</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Butonul Crea este înlocuit cu butonul Setări</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Butonul Crea nu este înlocuit cu butonul Setări</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Acțiunea butonului Setări în tab-ul You este, de asemenea, suprascrisă.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Tipul butonului Setări</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Dați clic pentru a deschide Setările Morphe
-Dați clic și țineți apăsat pentru a deschide Setările YouTube"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Dați clic pentru a deschide Setările YouTube
-Dați clic și țineți apăsat pentru a deschide Setările Morphe"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">Rearanjați butoanele înlocuite</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Butoanele sunt rearanjate</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Butoanele nu sunt rearanjate</string>
+  <string name="morphe_show_toolbar_settings_button_title">Afișează Setări</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Se afișează butonul Setări</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Butonul Setări nu este afișat</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Indexul butonului Setări</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Acțiunea butonului Setări</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Atinge pentru a deschide setările Morphe
+Apasă și menține apăsat pentru a deschide setările YouTube"</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Atinge pentru a deschide setările YouTube
+Apasă și menține apăsat pentru a deschide setările Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Meniu flyout</string>
   <string name="morphe_hide_player_flyout_summary">Ascunde sau arată elementele de meniu Flyout ale jucătorului</string>
@@ -1355,6 +1370,7 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_change_start_page_entry_playlists">Liste de redare</string>
   <string name="morphe_change_start_page_entry_search">Caută</string>
   <string name="morphe_change_start_page_entry_shopping">Cumpărături</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonamente</string>
   <string name="morphe_change_start_page_entry_trending">Populare</string>

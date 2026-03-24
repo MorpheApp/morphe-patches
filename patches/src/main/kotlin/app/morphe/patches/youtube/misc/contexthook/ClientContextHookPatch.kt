@@ -101,9 +101,7 @@ val clientContextHookPatch = bytecodePatch(
         }
 
         val osNameField : FieldReference
-        BuildClientContextBodyFingerprint.match(
-            BuildClientContextBodyConstructorFingerprint.originalClassDef
-        ).let {
+        BuildClientContextBodyFingerprint.let {
             it.method.apply {
                 val osNameIndex = it.instructionMatches[1].index
                 osNameField = getInstruction<ReferenceInstruction>(
@@ -113,9 +111,7 @@ val clientContextHookPatch = bytecodePatch(
             }
         }
 
-        val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.match(
-            ClientFormFactorEnumConstructorFingerprint.originalClassDef
-        ).method as MethodReference
+        val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.method as MethodReference
 
         val setClientFormFactorFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -158,14 +154,13 @@ val clientContextHookPatch = bytecodePatch(
                 // Use locally declared fingerprint because internally fingerprint caches the match.
                 // Could use Fingerprint.clearMatch() but creating a new instance also works.
                 val endpointRequestBodyFingerprint = Fingerprint(
+                    classFingerprint = parentFingerprint,
                     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
                     returnType = "V",
                     parameters = listOf(),
                 )
 
-                endpointRequestBodyFingerprint.match(
-                    parentFingerprint.originalClassDef
-                ).let {
+                endpointRequestBodyFingerprint.let {
                     // 21.05+ clobbers p0 register.
                     it.method.cloneMutableAndPreserveParameters().apply {
                         it.classDef.methods.add(

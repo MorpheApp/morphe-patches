@@ -30,7 +30,17 @@ internal object StartVideoInformerFingerprint : Fingerprint(
     strings = listOf("pc")
 )
 
+private object SubtitleManagerConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        string("subtitles")
+    )
+)
+
 internal object SubtitleManagerFingerprint : Fingerprint(
+    classFingerprint = SubtitleManagerConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
@@ -42,15 +52,6 @@ internal object SubtitleManagerFingerprint : Fingerprint(
             returnType = "Z"
         ),
         opcode(opcode = Opcode.IF_EQZ, location = MatchAfterWithin(3))
-    )
-)
-
-internal object SubtitleManagerConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        string("subtitles")
     )
 )
 

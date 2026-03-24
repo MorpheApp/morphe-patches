@@ -10,15 +10,12 @@ package app.morphe.patches.youtube.misc.proto
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-/**
- * Resolves using the method found in [ProtoStuffReflectionFingerprint].
- */
 internal object NewElementProtoParserFingerprint : Fingerprint(
+    classFingerprint = ProtoStuffReflectionFingerprint,
     parameters = listOf("L"),
     returnType = "[B",
     filters = listOf(
@@ -30,7 +27,7 @@ internal object NewElementProtoParserFingerprint : Fingerprint(
     }
 )
 
-internal object ProtoStuffReflectionFingerprint : Fingerprint(
+private object ProtoStuffReflectionFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     parameters = listOf(),
     returnType = "Ljava/lang/reflect/Field;",

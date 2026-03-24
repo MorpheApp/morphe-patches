@@ -25,9 +25,7 @@ val disablePreciseSeekingGesturePatch = bytecodePatch(
             SwitchPreference("morphe_disable_precise_seeking_gesture"),
         )
 
-        AllowSwipingUpGestureFingerprint.match(
-            SwipingUpGestureParentFingerprint.originalClassDef,
-        ).method.apply {
+        AllowSwipingUpGestureFingerprint.method.apply {
             addInstructionsWithLabels(
                 0,
                 """
@@ -40,9 +38,7 @@ val disablePreciseSeekingGesturePatch = bytecodePatch(
             )
         }
 
-        ShowSwipingUpGuideFingerprint.match(
-            SwipingUpGestureParentFingerprint.originalClassDef,
-        ).method.apply {
+        ShowSwipingUpGuideFingerprint.method.apply {
             addInstructionsWithLabels(
                 0,
                 """

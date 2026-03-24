@@ -146,9 +146,7 @@ val sponsorBlockPatch = bytecodePatch(
 
         // Set seekbar draw rectangle.
         val rectangleFieldName: FieldReference
-        RectangleFieldInvalidatorFingerprint.match(
-            SeekbarFingerprint.originalClassDef
-        ).let {
+        RectangleFieldInvalidatorFingerprint.let {
             it.method.apply {
                 val rectangleIndex = indexOfFirstInstructionReversedOrThrow(
                     it.instructionMatches.first().index
@@ -165,7 +163,7 @@ val sponsorBlockPatch = bytecodePatch(
         SeekbarOnDrawFingerprint.clearMatch()
         // Cannot match using original immutable class because
         // class may have been modified by other patches
-        SeekbarOnDrawFingerprint.match(SeekbarFingerprint.classDef).let {
+        SeekbarOnDrawFingerprint.let {
             it.method.apply {
                 // Set seekbar thickness.
                 val thicknessIndex = it.instructionMatches.last().index
@@ -233,7 +231,7 @@ val sponsorBlockPatch = bytecodePatch(
         onCreateHook(EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR, "initialize")
 
         // Initialize the SponsorBlock view.
-        ControlsOverlayFingerprint.match(LayoutConstructorFingerprint.originalClassDef).let {
+        ControlsOverlayFingerprint.let {
             it.method.apply {
                 val checkCastIndex = it.instructionMatches.last().index
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA

@@ -28,7 +28,6 @@ import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
-import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
@@ -127,9 +126,8 @@ val videoInformationPatch = bytecodePatch(
         playerInitInsertRegister = playerInitMethod.getInstruction<FiveRegisterInstruction>(initThisIndex).registerC
         playerInitInsertIndex = initThisIndex + 1
 
-        val seekFingerprintResultMethod = SeekFingerprint.match(PlayerInitFingerprint.originalClassDef).method
-        val seekRelativeFingerprintResultMethod =
-            SeekRelativeFingerprint.match(PlayerInitFingerprint.originalClassDef).method
+        val seekFingerprintResultMethod = SeekFingerprint.method
+        val seekRelativeFingerprintResultMethod = SeekRelativeFingerprint.method
 
         // Create extension interface methods.
         addSeekInterfaceMethods(
@@ -173,7 +171,8 @@ val videoInformationPatch = bytecodePatch(
             }
         }
 
-        val PlayerStatusFingerprint = Fingerprint(
+        val playerStatusFingerprint = Fingerprint(
+            classFingerprint = PlayerInitFingerprint,
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
             parameters = listOf(PlayerStatusEnumFingerprint.originalClassDef.type),
@@ -184,13 +183,11 @@ val videoInformationPatch = bytecodePatch(
                 methodCall(
                     definingClass = "Lj${'$'}/time/Instant;",
                     name = "plus"
-                ),
+                )
             )
         )
 
-        playerStatusMethodRef = WeakReference(
-            PlayerStatusFingerprint.match(PlayerInitFingerprint.originalClassDef).method
-        )
+        playerStatusMethodRef = WeakReference(playerStatusFingerprint.method)
 
         /*
          * Inject call for video IDs
@@ -233,7 +230,7 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Hook the user playback speed selection.
          */
-        PlaybackSpeedOnItemClickFingerprint.match(PlaybackSpeedOnItemClickParentFingerprint.classDef).method.apply {
+        PlaybackSpeedOnItemClickFingerprint.method.apply {
             val speedSelectionValueInstructionIndex = indexOfFirstInstructionOrThrow(Opcode.IGET)
 
             legacySpeedSelectionInsertMethodRef = WeakReference(this)
@@ -368,9 +365,7 @@ val videoInformationPatch = bytecodePatch(
         }
 
         // Handle new playback speed menu.
-        PlaybackSpeedMenuSpeedChangedFingerprint.match(
-            VideoQualityChangedFingerprint.originalClassDef,
-        ).let {
+        PlaybackSpeedMenuSpeedChangedFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.first().index
 
@@ -452,9 +447,7 @@ val videoInformationPatch = bytecodePatch(
         }
 
         // Detect video quality changes and override the current quality.
-        SetVideoQualityFingerprint.match(
-            VideoQualitySetterFingerprint.originalClassDef
-        ).let { match ->
+        SetVideoQualityFingerprint.let { match ->
             // This instruction refers to the field with the type that contains the setQuality method.
             val onItemClickListenerClassReference = match.method
                 .getInstruction<ReferenceInstruction>(0).reference

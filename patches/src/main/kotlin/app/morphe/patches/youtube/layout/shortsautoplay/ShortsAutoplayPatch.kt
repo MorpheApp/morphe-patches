@@ -79,9 +79,7 @@ val shortsAutoplayPatch = bytecodePatch(
             )
         }
         
-        ReelPlaybackRepeatFingerprint.match(
-            ReelPlaybackRepeatParentFingerprint.originalClassDef
-        ).method.apply {
+        ReelPlaybackRepeatFingerprint.method.apply {
             // The behavior enums are looked up from an ordinal value to an enum type.
             findInstructionIndicesReversedOrThrow(
                 if (is_21_10_or_greater) {

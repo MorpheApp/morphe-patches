@@ -24,7 +24,7 @@ Second \"item\" text"</string>
     <string name="morphe_settings_screen_03_feed_title">Feed</string>
     <string name="morphe_settings_screen_04_general_title">General</string>
     <string name="morphe_settings_screen_05_player_title">Player</string>
-    <string name="morphe_settings_screen_06_shorts_title" translatable="false">Shorts</string>
+    <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
     <string name="morphe_settings_screen_07_seekbar_title">Seekbar</string>
     <string name="morphe_settings_screen_08_swipe_controls_title">Swipe controls</string>
     <string name="morphe_settings_screen_09_return_youtube_dislike_title" translatable="false">Return YouTube Dislike</string>
@@ -349,6 +349,9 @@ Changes include:
     <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Hide Emoji and Timestamp buttons</string>
     <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Emoji and Timestamp buttons are hidden</string>
     <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Emoji and Timestamp buttons are shown</string>
+    <string name="morphe_hide_comments_info_button_title">Hide Info button</string>
+    <string name="morphe_hide_comments_info_button_summary_on">Info button is hidden</string>
+    <string name="morphe_hide_comments_info_button_summary_off">Info button is shown</string>
     <string name="morphe_hide_comments_preview_comment_title">Hide preview comment</string>
     <string name="morphe_hide_comments_preview_comment_summary_on">Preview comment is hidden</string>
     <string name="morphe_hide_comments_preview_comment_summary_off">Preview comment is shown</string>
@@ -728,13 +731,14 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_show_search_button_title">Show Search</string>
     <string name="morphe_show_search_button_summary_on">Search button is shown</string>
     <string name="morphe_show_search_button_summary_off">Search button is not shown</string>
-    <string name="morphe_search_button_index_title">Search button index</string>
-    <string name="morphe_search_button_index_invalid">Search button index must be less than %s</string>
+    <string name="morphe_show_search_button_index_title">Search button index</string>
     <string name="morphe_show_settings_button_title">Show Settings</string>
     <string name="morphe_show_settings_button_summary_on">Settings button is shown</string>
     <string name="morphe_show_settings_button_summary_off">Settings button is not shown</string>
-    <string name="morphe_settings_button_index_title">Settings button index</string>
-    <string name="morphe_settings_button_index_invalid">Settings button index must be less than %s</string>
+    <string name="morphe_show_settings_button_index_title">Settings button index</string>
+    <string name="morphe_show_settings_button_type_title">Settings button action</string>
+    <string name="morphe_show_settings_button_type_summary_on">Tap to open Morphe settings</string>
+    <string name="morphe_show_settings_button_type_summary_off">Tap to open YouTube settings</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create with Notifications</string>
     <string name="morphe_swap_create_with_notifications_button_summary_on">Create button is swapped with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_summary_off">Create button is not swapped with Notifications button</string>
@@ -755,6 +759,9 @@ Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferenc
     <string name="morphe_navigation_bar_animations_title">Enable navigation bar animations</string>
     <string name="morphe_navigation_bar_animations_summary_on">Navigation transitions are animated</string>
     <string name="morphe_navigation_bar_animations_summary_off">Navigation transitions are not animated</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_title">Disable navigation bar auto-hide</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar will not auto-hide</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar may auto-hide</string>
     <string name="morphe_disable_translucent_status_bar_title">Disable translucent status bar</string>
     <string name="morphe_disable_translucent_status_bar_summary_on">Status bar is opaque</string>
     <string name="morphe_disable_translucent_status_bar_summary_off">Status bar is opaque or translucent</string>
@@ -782,18 +789,15 @@ Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferenc
     <string name="morphe_hide_toolbar_search_button_title">Hide Search</string>
     <string name="morphe_hide_toolbar_search_button_summary_on">Search button is hidden</string>
     <string name="morphe_hide_toolbar_search_button_summary_off">Search button is shown</string>
-    <string name="morphe_replace_toolbar_create_button_title">Replace Create with Settings</string>
-    <string name="morphe_replace_toolbar_create_button_summary_on">Create button is replaced with Settings button</string>
-    <string name="morphe_replace_toolbar_create_button_summary_off">Create button is not replaced with Settings button</string>
-    <string name="morphe_replace_toolbar_create_button_user_dialog_message">The click behavior of the Settings button in You tab is also overridden.</string>
-    <string name="morphe_replace_toolbar_create_button_type_title">Settings button action</string>
-    <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open Morphe settings
+    <string name="morphe_show_toolbar_settings_button_title">Show Settings</string>
+    <string name="morphe_show_toolbar_settings_button_summary_on">Settings button is shown</string>
+    <string name="morphe_show_toolbar_settings_button_summary_off">Settings button is not shown</string>
+    <string name="morphe_show_toolbar_settings_button_index_title">Settings button index</string>
+    <string name="morphe_show_toolbar_settings_button_type_title">Settings button action</string>
+    <string name="morphe_show_toolbar_settings_button_type_summary_on">"Tap to open Morphe settings
 Tap and hold to open YouTube settings"</string>
-    <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tap to open YouTube settings
+    <string name="morphe_show_toolbar_settings_button_type_summary_off">"Tap to open YouTube settings
 Tap and hold to open Morphe settings"</string>
-    <string name="morphe_rearrange_toolbar_buttons_title">Rearrange the replaced buttons</string>
-    <string name="morphe_rearrange_toolbar_buttons_summary_on">Buttons are rearranged</string>
-    <string name="morphe_rearrange_toolbar_buttons_summary_off">Buttons are not rearranged</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
@@ -1440,7 +1444,7 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_change_start_page_entry_playlists">Playlists</string>
     <string name="morphe_change_start_page_entry_search">Search</string>
     <string name="morphe_change_start_page_entry_shopping">Shopping</string>
-    <string name="morphe_change_start_page_entry_shorts" translatable="false">Shorts</string>
+    <string name="morphe_change_start_page_entry_shorts">Shorts</string>
     <string name="morphe_change_start_page_entry_sports">Sports</string>
     <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
     <string name="morphe_change_start_page_entry_trending">Trending</string>

@@ -17,8 +17,53 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_screen_ads_title">Annonser</string>
+  <string name="morphe_hide_post_ads_title">Dölj feed-annonser</string>
+  <string name="morphe_hide_post_ads_summary">Dölj annonser i flödet</string>
+  <string name="morphe_hide_comment_ads_title">Dölj kommentarannonser</string>
+  <string name="morphe_hide_comment_ads_summary">Dölj annonser i kommentarsfältet</string>
+  <string name="morphe_disable_modern_home_title">Inaktivera modernt hem</string>
+  <string name="morphe_disable_modern_home_summary">Inaktiverar det moderna hemgränssnittet</string>
+  <string name="morphe_disable_screenshot_popup_title">Inaktivera skärmbildspopup</string>
+  <string name="morphe_disable_screenshot_popup_summary">Inaktiverar popup-fönstret som visas när du tar en skärmbild</string>
+  <string name="morphe_hide_answers_button_title">Dölj Svar-knappen</string>
+  <string name="morphe_hide_answers_button_summary">Döljer knappen Svara i navigeringsfältet</string>
+  <string name="morphe_hide_chat_button_title">Dölj Chattknapp</string>
+  <string name="morphe_hide_chat_button_summary">Gömmer Chat-knappen i navigeringsfältet</string>
   <string name="morphe_hide_create_button_title">Dölj knappen Skapa</string>
+  <string name="morphe_hide_create_button_summary">Gömmer knappen Skapa i navigeringsfältet</string>
+  <string name="morphe_hide_discover_button_title">Dölj Upptäck eller Communities-knappen</string>
+  <string name="morphe_hide_discover_button_summary">Gömmer knappen Upptäck eller Communities i navigeringsfältet</string>
+  <string name="morphe_hide_games_button_title">Dölj Spel-knappen</string>
+  <string name="morphe_hide_games_button_summary">Gömmer knappen Spel i navigeringsfältet</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Dölj nyligen besökt hylla</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Gömmer den nyligen besökta sektionen i sidofältet</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Dölj spel på Reddit-hyllan</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Gömmer spelen på Reddit-hyllan i sidofältet</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Dölj Reddit Pro-hylla</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Gömmer Reddit Pro-hyllan i sidofältet</string>
+  <string name="morphe_hide_about_shelf_title">Dölj Om-hylla</string>
+  <string name="morphe_hide_about_shelf_summary">Gömmer om \"Om\"-sektionen i sidofältet</string>
+  <string name="morphe_hide_resources_shelf_title">Dölj Resurshylla</string>
+  <string name="morphe_hide_resources_shelf_summary">Gömmer Resurser-raden i sidofältet</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Göm konstra rekommenderade communities</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Gömmer de rekommenderade communities-hyllorna i subreddits</string>
+  <string name="morphe_hide_trending_today_shelf_title">Göm \"Topp trender idag\"-sektionen</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Döljer hyllan \"Topp idag\" från sökförslag
+
+Begränsning: Visuella avstånd kan inte döljas"</string>
+  <string name="morphe_remove_notification_dialog_title">Ta bort notis-förslag dialog</string>
+  <string name="morphe_remove_notification_dialog_summary">Tar bort förslaget om notisdialogen som visas när du besöker en subreddit genom att automatiskt avvisa den</string>
+  <string name="morphe_show_view_count_title">Visa antal visningar</string>
+  <string name="morphe_show_view_count_summary">"Visar antalet visningar för inlägg.
+
+Begränsning: Visas endast om API-svaret inkluderar antalet visningar"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Ta bort NSFW-varning dialog</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Tar bort varningsdialogen för icke-säkert material (NSFW) som visas när du besöker en subreddit genom att acceptera den automatiskt</string>
   <string name="morphe_screen_miscellaneous_title">Övrigt</string>
   <string name="morphe_about_title">Om</string>
+  <string name="morphe_about_summary">Patchversion och officiella länkar</string>
   <string name="morphe_sanitize_sharing_links_title">Rensa delningslänkar</string>
+  <string name="morphe_sanitize_sharing_links_summary">Sanitiserar delningslänkar genom att ta bort spårningsparametrar i frågan</string>
+  <string name="morphe_open_links_directly_title">Öppna länkar direkt</string>
+  <string name="morphe_open_links_directly_summary">Hoppar över omdirigerings-URL:er i externa länkar</string>
 </resources>

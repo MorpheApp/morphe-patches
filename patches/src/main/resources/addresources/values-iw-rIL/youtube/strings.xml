@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">פיד</string>
   <string name="morphe_settings_screen_04_general_title">כללי</string>
   <string name="morphe_settings_screen_05_player_title">נגן</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">סרגל דילוג</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">פקדי החלקה</string>
   <string name="morphe_settings_screen_11_misc_title">שונות</string>
@@ -301,6 +302,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">לחצן הרשמה למינוי מוצג</string>
   <string name="morphe_comments_screen_title">תגובות</string>
   <string name="morphe_comments_screen_summary">הסתר או הצג רכיבי מדור תגובות</string>
+  <string name="morphe_hide_comments_carousel_title">הפעלת מסנן קרוסלת תגובות</string>
+  <string name="morphe_hide_comments_carousel_summary_on">סינון סרגל התגובות מופעל</string>
+  <string name="morphe_hide_comments_carousel_summary_off">מסנן סבוב הערות מושבת</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"הערה
+
+• הקפידו להזין את השם המדויק של הפריט בסבוב הקרוסלה (לדוגמה, שאל, הצבע על סרטון זה, האזן ב-YouTube Music וכו').
+• הסתרת פריטים בסבוב הקרוסלה עלולה לגרום לתופעות לוואי בלתי צפויות.
+• אם כל הפריטים בסבוב הקרוסלה מוסתרים, גם כל סעיף התגובות יוסתר."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">סינון סרגל תגובות</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">הזן שמות סרגל ההערות לסינון, אחד בכל שורה</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">הסתר סיכום AI של צ\'אט</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">סיכום AI של צ\'אט מוסתר</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">סיכום AI של צ\'אט מוצג</string>
@@ -328,6 +339,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">הסתר לחצני אימוג\'י וחותמת זמן</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">לחצני אימוג\'י וחותמת זמן מוסתרים</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">לחצני אימוג\'י וחותמת זמן מוצגים</string>
+  <string name="morphe_hide_comments_info_button_title">הסתר לחצן מידע</string>
+  <string name="morphe_hide_comments_info_button_summary_on">לחצן המידע מוסתר</string>
+  <string name="morphe_hide_comments_info_button_summary_off">לחצן המידע מוצג</string>
   <string name="morphe_hide_comments_preview_comment_title">הסתר תצוגה מקדימה של תגובה</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">תצוגה מקדימה של תגובה מוסתרת</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">תצוגה מקדימה של תגובה מוצגת</string>
@@ -675,13 +689,14 @@ Second \"item\" text"</string>
   <string name="morphe_show_search_button_title">הצג חיפוש</string>
   <string name="morphe_show_search_button_summary_on">לחצן החיפוש מוצג</string>
   <string name="morphe_show_search_button_summary_off">כפתור החיפוש אינו מוצג</string>
-  <string name="morphe_search_button_index_title">לחצן חיפוש</string>
-  <string name="morphe_search_button_index_invalid">ערך אינדקס לחצן חיפוש חייב להיות קטן מ-%s</string>
+  <string name="morphe_show_search_button_index_title">אינדקס לחצן חיפוש</string>
   <string name="morphe_show_settings_button_title">הצג הגדרות</string>
   <string name="morphe_show_settings_button_summary_on">לחצן הגדרות מוצג</string>
   <string name="morphe_show_settings_button_summary_off">לחצן הגדרות לא מוצג</string>
-  <string name="morphe_settings_button_index_title">אינדקס כפתור הגדרות</string>
-  <string name="morphe_settings_button_index_invalid">אינדקס כפתור ההגדרות חייב להיות קטן מ-%s</string>
+  <string name="morphe_show_settings_button_index_title">אינדקס כפתור הגדרות</string>
+  <string name="morphe_show_settings_button_type_title">פעולה של כפתור הגדרות</string>
+  <string name="morphe_show_settings_button_type_summary_on">הקישו כדי לפתוח את הגדרות Morphe</string>
+  <string name="morphe_show_settings_button_type_summary_off">הקש לפתוח את הגדרות YouTube</string>
   <string name="morphe_swap_create_with_notifications_button_title">החלף יצירה עם עדכונים</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">לחצן יצירה יוחלף עם לחצן עדכונים</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">לחצן יצירה לא יוחלף עם לחצן עדכונים</string>
@@ -702,6 +717,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">הפעלת אנימציות של שורת הניווט</string>
   <string name="morphe_navigation_bar_animations_summary_on">מעברי ניווט מונפשים</string>
   <string name="morphe_navigation_bar_animations_summary_off">מעברי ניווט אינם מונפשים</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">אתלַרִ הֲיַהִ אב-גֲיַה</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">גַהְה בְטֵר אכוֳיַה לֲיַה אב-גֲיַה</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">גַהְה בְטֵר אכוֳיַה</string>
   <string name="morphe_disable_translucent_status_bar_title">השבת שורת מצב שקופה</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">שורת מצב אטומה</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">שורת מצב אטומה או שקופה</string>
@@ -728,18 +746,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">הסתר חיפוש</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">לחצן החיפוש מוסתר</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">לחצן החיפוש מוצג</string>
-  <string name="morphe_replace_toolbar_create_button_title">החלף את צור עם הגדרות</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">לחצן יצירה הוחלף בלחצן הגדרות</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">לחצן יצירה לא יוחלף עם לחצן הגדרות</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">ההתנהגות של לחיצה על כפתור ההגדרות בלשונית You מוחלפת גם כן.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">פעולה של כפתור הגדרות</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"לגעת כדי לפתוח את הגדרות Morphe
+  <string name="morphe_show_toolbar_settings_button_title">הצג הגדרות</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">לחצן ההגדרות מוצג</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">לחצן ההגדרות אינו מוצג</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">אינדקס כפתור הגדרות</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">פעולה של כפתור הגדרות</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"לגעת כדי לפתוח את הגדרות Morphe
 לגעת ולהחזיק כדי לפתוח את הגדרות YouTube"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"הקישו לפתוח את הגדרות YouTube
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"הקישו לפתוח את הגדרות YouTube
 החזיקו כדי לפתוח את הגדרות Morphe"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">סדר מחדש את הלחצנים שהוחלפו</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">הלחצנים סודרו מחדש</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">הכפתורים לא מסודרים</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">תפריט נשלף</string>
   <string name="morphe_hide_player_flyout_summary">הסתר או הצג פריטי תפריט נשלף של נגן</string>
@@ -1358,6 +1373,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">פלייליסטים</string>
   <string name="morphe_change_start_page_entry_search">חיפוש</string>
   <string name="morphe_change_start_page_entry_shopping">שופינג</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">ספורט</string>
   <string name="morphe_change_start_page_entry_subscriptions">מינויים</string>
   <string name="morphe_change_start_page_entry_trending">הסרטונים החמים</string>

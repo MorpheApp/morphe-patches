@@ -52,7 +52,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_summary_off">不顯示設定搜尋記錄</string>
   <string name="morphe_show_menu_icons_title">顯示 Morphe 設定圖示</string>
   <string name="morphe_show_menu_icons_summary_on">已顯示設定圖示</string>
-  <string name="morphe_show_menu_icons_summary_off">未顯示設定圖示</string>
+  <string name="morphe_show_menu_icons_summary_off">不顯示「設定」圖示</string>
   <string name="morphe_language_title">Morphe 語言</string>
   <string name="morphe_language_user_dialog_message">"部分語言的翻譯可能缺少或不完整。
 
@@ -84,6 +84,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">授權聲明</string>
   <string name="morphe_settings_about_licenses_loading">載入中……</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">偵錯</string>
@@ -139,7 +140,7 @@ Second \"item\" text"</string>
   <string name="gms_core_dialog_continue_text">繼續</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">電池最佳化對話框</string>
   <string name="morphe_gms_core_battery_optimization_dialog_summary_on">顯示 MicroG 電池最佳化對話框</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">未顯示 MicroG 電池最佳化對話框</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">不顯示 MicroG 電池最佳化對話框</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"停用此功能將隱藏 MicroG 電池最佳化提示。
 
 如果未更改電池最佳化設定，您可能會遇到：

@@ -34,6 +34,7 @@ Second \"item\" text"</string>
           This button usually appears in the video player for certain videos. -->
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
+  <string name="morphe_hide_explore_section_title">Ocultar Explorar</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
@@ -88,6 +89,12 @@ Second \"item\" text"</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_show_search_button_summary_on">O botón de busca é visible</string>
+  <string name="morphe_hide_navigation_bar_title">Ocultar barra de navegación</string>
+  <string name="morphe_hide_navigation_bar_summary_on">A barra de navegación está oculta</string>
+  <string name="morphe_hide_navigation_bar_summary_off">A barra de navegación é visible</string>
+  <string name="morphe_hide_toolbar_search_button_summary_on">O botón de busca está oculto</string>
+  <string name="morphe_hide_toolbar_search_button_summary_off">O botón de busca é visible</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -154,6 +161,7 @@ Second \"item\" text"</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <string name="morphe_header_logo_entry_5">Personalizado</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->

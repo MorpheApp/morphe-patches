@@ -92,8 +92,8 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_LOOP_VIDEO,
                         "yt_outline_arrow_repeat_1_",
-                        "yt_outline_experimental_repeat1_",
-                        "yt_outline_experimental_play_circle"
+                        "yt_outline_experimental_repeat1_"
+//                        "yt_outline_experimental_play_circle"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,

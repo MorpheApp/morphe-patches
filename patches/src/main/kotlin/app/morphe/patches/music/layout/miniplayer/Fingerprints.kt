@@ -24,10 +24,8 @@ internal object MiniPlayerConstructorFingerprint : Fingerprint(
     strings = listOf("sharedToggleMenuItemMutations")
 )
 
-/**
- * Matches to the class found in [MiniPlayerConstructorFingerprint].
- */
 internal object SwitchToggleColorFingerprint : Fingerprint(
+    classFingerprint = MiniPlayerConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "J"),

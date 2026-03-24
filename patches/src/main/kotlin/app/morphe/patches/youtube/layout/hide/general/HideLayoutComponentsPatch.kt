@@ -153,6 +153,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_community_guidelines"),
                     SwitchPreference("morphe_hide_comments_create_a_short_button"),
                     SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons"),
+                    SwitchPreference("morphe_hide_comments_info_button"),
                     SwitchPreference("morphe_hide_comments_preview_comment"),
                     SwitchPreference("morphe_hide_comments_thanks_button"),
                     SwitchPreference("morphe_sanitize_comments_category_bar"),
@@ -322,9 +323,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide watermark (legacy code for old versions of YouTube)
 
-        ShowWatermarkFingerprint.match(
-            PlayerOverlayFingerprint.originalClassDef,
-        ).method.apply {
+        ShowWatermarkFingerprint.method.apply {
             val index = implementation!!.instructions.size - 5
 
             removeInstruction(index)
@@ -351,14 +350,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
             )
         }
 
-        val parentViewMethod = HideShowMoreButtonGetParentViewFingerprint.match(
-            HideShowMoreButtonSetViewFingerprint.originalClassDef
-        ).method
+        val parentViewMethod = HideShowMoreButtonGetParentViewFingerprint.method
 
         HideShowMoreButtonFingerprint.clearMatch()
-        HideShowMoreButtonFingerprint.match(
-            HideShowMoreButtonSetViewFingerprint.originalClassDef
-        ).let {
+        HideShowMoreButtonFingerprint.let {
             it.method.apply {
                 val helperMethod = ImmutableMethod(
                     definingClass,
@@ -444,11 +439,27 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region hide comment page
+        // region hide comments carousel
 
         hookElement("$COMMENTS_FILTER_CLASS_NAME->onCommentsLoaded([B)[B")
 
         // endregion
+
+        // region hide comments info button
+
+        EngagementPanelInformationButtonFingerprint.let {
+            it.method.apply {
+                val checkCastIndex = it.instructionMatches[1].index
+                val viewRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
+
+                addInstruction(
+                    checkCastIndex + 1,
+                    "invoke-static { v$viewRegister }, $COMMENTS_FILTER_CLASS_NAME->hideCommentsInfoButton(Landroid/view/View;)V"
+                )
+            }
+        }
+
+        //endregion
 
         // region hide crowdfunding box
 
@@ -465,10 +476,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide floating microphone
 
         val showFloatingMicrophoneButtonFingerprintMatch = if (is_21_11_or_greater)
-            ShowFloatingMicrophoneButtonFingerprint.match(
-                ShowFloatingMicrophoneButtonParentFingerprint.originalClassDef
-            )
-        else ShowFloatingMicrophoneButtonLegacyFingerprint.match()
+            ShowFloatingMicrophoneButtonFingerprint
+        else ShowFloatingMicrophoneButtonLegacyFingerprint
 
         showFloatingMicrophoneButtonFingerprintMatch.let {
             it.method.apply {
@@ -616,9 +625,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide you may like section
 
         if (is_20_21_or_greater) {
-            val searchSuggestionEndpointField = SearchSuggestionEndpointFingerprint.match(
-                SearchSuggestionEndpointConstructorFingerprint.originalClassDef,
-            ).instructionMatches.first().instruction.getReference<FieldReference>()!!
+            val searchSuggestionEndpointField = SearchSuggestionEndpointFingerprint
+                .instructionMatches.first().instruction.getReference<FieldReference>()!!
             val searchSuggestionEndpointClass = searchSuggestionEndpointField.definingClass
 
             SearchBoxTypingStringFingerprint.let {
@@ -746,7 +754,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide channel tab
 
         val channelTabBuilderMethod = ChannelTabBuilderFingerprint.method
-        ChannelTabRendererFingerprint.match().let { match ->
+        ChannelTabRendererFingerprint.let { match ->
             match.method.apply {
                 val iteratorIndex = indexOfFirstInstructionReversedOrThrow {
                     getReference<MethodReference>()?.name == "hasNext"
