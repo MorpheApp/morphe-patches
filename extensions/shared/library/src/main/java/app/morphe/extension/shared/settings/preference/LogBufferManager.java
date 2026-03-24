@@ -320,24 +320,22 @@ public final class LogBufferManager {
                         searchHandler.removeCallbacks(searchRunnable);
                     }
 
-                    searchRunnable = () -> {
-                        new Thread(() -> {
-                            final String resultText;
-                            if (query.isEmpty()) {
-                                resultText = allLogs;
-                            } else {
-                                StringBuilder sb = new StringBuilder();
-                                for (String line : logLines) { // Use the pre-split array
-                                    if (line.toLowerCase(java.util.Locale.ROOT).contains(query)) {
-                                        sb.append(line).append("\n");
-                                    }
+                    searchRunnable = () -> new Thread(() -> {
+                        final String resultText;
+                        if (query.isEmpty()) {
+                            resultText = allLogs;
+                        } else {
+                            StringBuilder sb = new StringBuilder();
+                            for (String line : logLines) {
+                                if (line.toLowerCase(java.util.Locale.ROOT).contains(query)) {
+                                    sb.append(line).append("\n");
                                 }
-                                resultText = sb.toString().trim();
                             }
+                            resultText = sb.toString().trim();
+                        }
 
-                            searchHandler.post(() -> logViewer.setText(resultText));
-                        }).start();
-                    };
+                        searchHandler.post(() -> logViewer.setText(resultText));
+                    }).start();
 
                     searchHandler.postDelayed(searchRunnable, 300);
                 }
