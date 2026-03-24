@@ -321,17 +321,38 @@ public final class LogBufferManager {
                     }
 
                     searchRunnable = () -> new Thread(() -> {
-                        final String resultText;
+                        final CharSequence resultText;
                         if (query.isEmpty()) {
                             resultText = allLogs;
                         } else {
-                            StringBuilder sb = new StringBuilder();
+                            android.text.SpannableStringBuilder ssb = new android.text.SpannableStringBuilder();
+
                             for (String line : logLines) {
-                                if (line.toLowerCase(java.util.Locale.ROOT).contains(query)) {
-                                    sb.append(line).append("\n");
+                                String lowerLine = line.toLowerCase(java.util.Locale.ROOT);
+
+                                if (lowerLine.contains(query)) {
+                                    int startOffset = ssb.length();
+                                    ssb.append(line).append("\n");
+
+                                    int index = lowerLine.indexOf(query);
+                                    while (index >= 0) {
+                                        int matchStart = startOffset + index;
+                                        int matchEnd = matchStart + query.length();
+
+                                        ssb.setSpan(new android.text.style.BackgroundColorSpan(android.graphics.Color.LTGRAY),
+                                                matchStart, matchEnd, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                        ssb.setSpan(new android.text.style.ForegroundColorSpan(android.graphics.Color.BLACK),
+                                                matchStart, matchEnd, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+                                        index = lowerLine.indexOf(query, index + query.length());
+                                    }
                                 }
                             }
-                            resultText = sb.toString().trim();
+
+                            if (ssb.length() > 0) {
+                                ssb.delete(ssb.length() - 1, ssb.length());
+                            }
+                            resultText = ssb;
                         }
 
                         searchHandler.post(() -> logViewer.setText(resultText));
