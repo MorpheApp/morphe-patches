@@ -30,7 +30,7 @@ val openLinksDirectlyPatch = bytecodePatch(
 
     execute {
         CustomReportsFingerprint.let {
-            it.instructionMatches[3]
+            it.instructionMatches[2]
                 .getInstruction<ReferenceInstruction>()
                 .getReference<MethodReference>()!!
                 .getMutableMethod()
