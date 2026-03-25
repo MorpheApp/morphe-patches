@@ -19,12 +19,10 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
@@ -55,11 +53,11 @@ public final class LogBufferManager {
     /**
      * A thread-safe, dynamic list of log prefixes that should be aggressively deduplicated.
      */
-    private static final Set<String> SPAMMY_PREFIXES = new CopyOnWriteArraySet<>(Arrays.asList(
+    private static final Set<String> SPAMMY_PREFIXES = Set.of(
             "LithoFilterPatch:",
             "SpoofVideoStreamsPatch:",
             "EnableDebuggingPatch:"
-    ));
+    );
 
     @NonNull
     private static String getFilteredLogs() {
