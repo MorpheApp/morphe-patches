@@ -529,6 +529,30 @@ Verify the package name is correct and the app is installed"</string>
     <string name="morphe_loop_video_button_toast_on">Loop video is on</string>
     <string name="morphe_loop_video_button_toast_off">Loop video is off</string>
 
+    <!-- interaction.playall.playAllButtonPatch -->
+    <string name="morphe_play_all_button_title">Show play all button</string>
+    <string name="morphe_play_all_button_summary_on">"Play all button is shown
+Tap to generate a playlist of all videos from channel
+Tap and hold to undo
+
+Info: May not work on live streams."</string>
+    <string name="morphe_play_all_button_summary_off">Play all button is not shown</string>
+    <string name="morphe_play_all_button_type_title">Generate playlist mode</string>
+    <string name="morphe_play_all_button_type_entry_0">All contents (Sort by time, Ascending)</string>
+    <string name="morphe_play_all_button_type_entry_1">All contents (Sort by time)</string>
+    <string name="morphe_play_all_button_type_entry_2">All contents (Sort by popular)</string>
+    <string name="morphe_play_all_button_type_entry_3">Videos only (Sort by time)</string>
+    <string name="morphe_play_all_button_type_entry_4">Videos only (Sort by popular)</string>
+    <string name="morphe_play_all_button_type_entry_5">Shorts only (Sort by time)</string>
+    <string name="morphe_play_all_button_type_entry_6">Shorts only (Sort by popular)</string>
+    <string name="morphe_play_all_button_type_entry_7">Streamed videos only (Sort by time)</string>
+    <string name="morphe_play_all_button_type_entry_8">Streamed videos only (Sort by popular)</string>
+    <string name="morphe_play_all_button_type_entry_9">All Members only contents</string>
+    <string name="morphe_play_all_button_type_entry_10">Members only videos</string>
+    <string name="morphe_play_all_button_type_entry_11">Members only Shorts</string>
+    <string name="morphe_play_all_button_type_entry_12">Members only live streams</string>
+    <string name="morphe_play_all_button_not_available_toast">Unable to generate playlist due to channel ID mismatch.</string>
+
     <!-- interaction.reload.reloadVideoPatch -->
     <string name="morphe_reload_video_title">Show reload video button</string>
     <string name="morphe_reload_video_summary_on">Reload video button is shown</string>

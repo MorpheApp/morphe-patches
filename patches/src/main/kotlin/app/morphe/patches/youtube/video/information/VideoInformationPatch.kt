@@ -66,6 +66,8 @@ private const val EXTENSION_VIDEO_QUALITY_MENU_INTERFACE =
     "Lapp/morphe/extension/youtube/patches/VideoInformation\$VideoQualityMenuInterface;"
 internal const val EXTENSION_VIDEO_QUALITY_INTERFACE =
     "Lapp/morphe/extension/youtube/patches/VideoInformation\$VideoQualityInterface;"
+private const val PLAYER_RESPONSE_MODEL_CLASS_DESCRIPTOR =
+    "Lcom/google/android/libraries/youtube/innertube/model/player/PlayerResponseModel;"
 
 private lateinit var playerInitMethodRef : WeakReference<MutableMethod>
 private var playerInitInsertIndex = -1
@@ -181,7 +183,7 @@ val videoInformationPatch = bytecodePatch(
                 // Even in sufficiently old versions, such as YT 17.34, the opcode for the first index is sget-object.
                 opcode(Opcode.SGET_OBJECT),
                 methodCall(
-                    definingClass = "Lj${'$'}/time/Instant;",
+                    definingClass = "Lj$/time/Instant;",
                     name = "plus"
                 )
             )
@@ -498,6 +500,66 @@ val videoInformationPatch = bytecodePatch(
                     move-result p2
                 """
             )
+        }
+
+        fun Fingerprint.getPlayerResponseInstruction(): String {
+            val instructions = this.method.implementation?.instructions ?: return "const-string v0, \"\""
+
+            for (ins in instructions) {
+                if (ins.opcode == Opcode.INVOKE_INTERFACE || ins.opcode == Opcode.INVOKE_VIRTUAL) {
+                    val refInstruction = ins as? ReferenceInstruction
+                    val methodRef = refInstruction?.reference as? MethodReference
+
+                    if (methodRef?.returnType == "Ljava/lang/String;") {
+                        val invokeOpcode = if (ins.opcode == Opcode.INVOKE_VIRTUAL) "invoke-virtual" else "invoke-interface"
+                        return "$invokeOpcode {p1}, ${methodRef}\nmove-result-object v0"
+                    }
+                }
+            }
+            return "const-string v0, \"\""
+        }
+
+        val channelIdMethodCall = ChannelIdFingerprint.getPlayerResponseInstruction()
+
+        fun MutableMethod.getVideoInformationMethod(): MutableMethod =
+            ImmutableMethod(
+                definingClass,
+                "setChannelInformation",
+                listOf(ImmutableMethodParameter(PLAYER_RESPONSE_MODEL_CLASS_DESCRIPTOR, annotations, null)),
+                "V",
+                AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                annotations,
+                null,
+                ImmutableMethodImplementation(
+                    3, """
+                        $channelIdMethodCall
+                        
+                        invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setChannelId(Ljava/lang/String;)V
+                        
+                        return-void
+                        """.toInstructions(),
+                    null,
+                    null
+                )
+            ).toMutable()
+
+        PlayerInitFingerprint.let { match ->
+            match.classDef.methods.add(match.method.getVideoInformationMethod())
+            match.classDef.methods.forEach { method ->
+                val isLoadVideoMethod = method.implementation?.instructions?.any { ins ->
+                    (ins as? ReferenceInstruction)?.reference?.let { ref ->
+                        ref is com.android.tools.smali.dexlib2.iface.reference.StringReference &&
+                                ref.string == "loadVideo() called on LocalDirector in wrong state"
+                    } == true
+                } == true
+
+                if (isLoadVideoMethod) {
+                    method.addInstruction(
+                        0,
+                        "invoke-direct {p0, p1}, ${match.classDef.type}->setChannelInformation($PLAYER_RESPONSE_MODEL_CLASS_DESCRIPTOR)V"
+                    )
+                }
+            }
         }
 
         onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "initialize")
