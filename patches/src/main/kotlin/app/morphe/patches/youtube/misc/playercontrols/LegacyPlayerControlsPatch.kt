@@ -10,6 +10,7 @@
 
 package app.morphe.patches.youtube.misc.playercontrols
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
@@ -18,6 +19,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.Document
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_19_35_or_greater
@@ -26,15 +28,16 @@ import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_03_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.inputStreamFromBundledResource
+import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnEarly
-import app.morphe.util.returnLate
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -196,6 +199,8 @@ internal fun initializeTopControl(descriptor: String) {
  * @param descriptor The descriptor of the method which should be called.
  */
 fun initializeBottomControl(descriptor: String) {
+    if (true) return // FIXME
+
     inflateBottomControlMethodRef.get()!!.addInstruction(
         inflateBottomControlInsertIndex++,
         "invoke-static { v$inflateBottomControlRegister }, $descriptor->initializeButton(Landroid/view/View;)V",
@@ -252,7 +257,7 @@ private var visibilityImmediateInsertIndex = 0
 private lateinit var visibilityNegatedImmediateMethodRef : WeakReference<MutableMethod>
 private var visibilityNegatedImmediateInsertIndex = 0
 
-val playerControlsPatch = bytecodePatch(
+val legacyPlayerControlsPatch = bytecodePatch(
     description = "Manages the code for the player controls of the YouTube player.",
 ) {
     dependsOn(
@@ -260,10 +265,15 @@ val playerControlsPatch = bytecodePatch(
         sharedExtensionPatch,
         resourceMappingPatch, // Used by fingerprints.
         playerControlsOverlayVisibilityPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        settingsPatch
     )
 
     execute {
+        PreferenceScreen.PLAYER.addPreferences(
+            SwitchPreference("morphe_restore_old_player_buttons")
+        )
+
         PlayerBottomControlsInflateFingerprint.let {
             it.method.apply {
                 inflateBottomControlMethodRef = WeakReference(this)
@@ -309,6 +319,81 @@ val playerControlsPatch = bytecodePatch(
         MotionEventFingerprint.let {
             visibilityNegatedImmediateMethodRef = WeakReference(it.method)
             visibilityNegatedImmediateInsertIndex = it.instructionMatches.first().index + 1
+        }
+
+        fun overrideExploderLayout(fingerprint: Fingerprint) {
+            fingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS_DESCRIPTOR->" +
+                            "usePlayerBottomControlsExploderLayout(Z)Z",
+                )
+            }
+        }
+
+        // A/B test for a slightly different bottom overlay controls,
+        // that uses layout file youtube_video_exploder_controls_bottom_ui_container.xml
+        // The change to support this is simple and only requires adding buttons to both layout files,
+        // but for now force this different layout off since it's still an experimental test.
+        if (is_19_35_or_greater) {
+            overrideExploderLayout(PlayerBottomControlsExploderFeatureFlagFingerprint)
+        }
+
+        // A/B test of different top overlay controls. Two different layouts can be used:
+        // youtube_cf_navigation_improvement_controls_layout.xml
+        // youtube_cf_minimal_impact_controls_layout.xml
+        //
+        // Flag was removed in 20.19+
+        if (is_19_25_or_greater && !is_20_19_or_greater) {
+            PlayerTopControlsExperimentalLayoutFeatureFlagFingerprint.method.apply {
+                val index = indexOfFirstInstructionOrThrow(Opcode.MOVE_RESULT_OBJECT)
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstruction(index + 1, "const-string v$register, \"default\"")
+            }
+        }
+
+        // Turn off a/b tests of ugly player buttons that don't match the style of custom player buttons.
+        if (is_20_20_or_greater) {
+            overrideExploderLayout(PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint)
+
+        }
+
+        if (is_20_28_or_greater) {
+            overrideExploderLayout(PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint)
+        }
+
+        if (is_20_30_or_greater) {
+            overrideExploderLayout(PlayerControlsButtonStrokeFeatureFlagFingerprint)
+        }
+
+        if (is_20_40_or_greater) {
+            // Clear bottom gradient.
+            // This may not be needed if the new bold player overlay icons are in use.
+            PlayerBottomGradientScrimFingerprint.let {
+                it.method.apply {
+                    val gradientFieldIndex = it.instructionMatches.last().index
+                    val gradientFieldRegister =
+                        getInstruction<TwoRegisterInstruction>(gradientFieldIndex).registerA
+
+                    val gradientViewIndex = it.instructionMatches[1].index
+                    val gradientViewRegister =
+                        getInstruction<OneRegisterInstruction>(gradientViewIndex).registerA
+
+                    // This field is Nullable, and if null, the bottom gradient is not set.
+                    addInstruction(
+                        gradientFieldIndex,
+                        "const/4 v$gradientFieldRegister, 0x0"
+                    )
+
+                    // Make the bottom gradient transparent and hide it.
+                    addInstruction(
+                        gradientViewIndex + 1,
+                        "invoke-static { v$gradientViewRegister }, " +
+                                "$EXTENSION_CLASS_DESCRIPTOR->hideBottomGradientScrim(Landroid/widget/ImageView;)V"
+                    )
+                }
+            }
         }
     }
 }

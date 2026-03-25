@@ -1611,6 +1611,11 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_announcements_connection_failed" translatable="false">Failed connecting to announcements provider</string>
     <string name="morphe_announcements_dialog_dismiss" translatable="false">Dismiss</string>
 
+    <!-- misc.playercontrols.playerControlsPatch -->
+    <string name="morphe_restore_old_player_buttons_title">Restore old player button style</string>
+    <string name="morphe_restore_old_player_buttons_summary_on">Player thin style is shown</string>
+    <string name="morphe_restore_old_player_buttons_summary_off">Player bold style is shown</string>
+
     <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
     <string name="morphe_spoof_device_dimensions_title">Spoof device dimensions</string>
     <string name="morphe_spoof_device_dimensions_summary_on">"Device dimensions spoofed

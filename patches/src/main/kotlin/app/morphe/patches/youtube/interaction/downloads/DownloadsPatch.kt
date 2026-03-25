@@ -8,10 +8,10 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.layout.playerbuttons.addPlayerBottomButton
+import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -22,7 +22,7 @@ import app.morphe.util.copyResources
 
 private val downloadsResourcePatch = resourcePatch {
     dependsOn(
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
         settingsPatch,
     )
 
@@ -63,15 +63,14 @@ val downloadsPatch = bytecodePatch(
 ) {
     dependsOn(
         downloadsResourcePatch,
-        playerControlsPatch,
         videoInformationPatch,
+        playerOverlayButtonsHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeBottomControl(BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
+        addPlayerBottomButton(BUTTON_DESCRIPTOR)
 
         // Main activity is used to launch downloader intent.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(

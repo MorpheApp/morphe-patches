@@ -370,18 +370,6 @@ public class Utils {
         return null;
     }
 
-    public static int getDrawableInt(String name) {
-        try {
-            return getContext()
-                    .getResources()
-                    .getIdentifier(name, "drawable", getContext().getPackageName());
-        } catch (Exception e) {
-            Logger.printException(() -> String.format("Cannot get the requested drawable %s", name));
-
-            return -1;
-        }
-    }
-
     @Nullable
     public static ViewParent getParentView(View view, int nthParent) {
         ViewParent parent = view.getParent();

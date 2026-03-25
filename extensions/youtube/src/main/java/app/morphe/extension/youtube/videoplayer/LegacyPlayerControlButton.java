@@ -18,7 +18,7 @@ import app.morphe.extension.youtube.shared.PlayerControlsVisibility;
 import app.morphe.extension.youtube.shared.PlayerType;
 import kotlin.Unit;
 
-public class PlayerControlButton {
+public class LegacyPlayerControlButton {
 
     public interface PlayerControlButtonStatus {
         /**
@@ -46,23 +46,23 @@ public class PlayerControlButton {
     private boolean isVisible;
     private long lastTimeSetVisible;
 
-    public PlayerControlButton(View controlsViewGroup,
-                               String buttonId,
-                               @Nullable String textOverlayId,
-                               PlayerControlButtonStatus enabledStatus,
-                               View.OnClickListener onClickListener,
-                               @Nullable View.OnLongClickListener longClickListener) {
+    public LegacyPlayerControlButton(View controlsViewGroup,
+                                     String buttonId,
+                                     @Nullable String textOverlayId,
+                                     PlayerControlButtonStatus enabledStatus,
+                                     View.OnClickListener onClickListener,
+                                     @Nullable View.OnLongClickListener longClickListener) {
         this(controlsViewGroup, buttonId, buttonId, textOverlayId,
                 enabledStatus, onClickListener, longClickListener);
     }
 
-    public PlayerControlButton(View controlsViewGroup,
-                               String viewToHide,
-                               String buttonId,
-                               @Nullable String textOverlayId,
-                               PlayerControlButtonStatus enabledStatus,
-                               View.OnClickListener onClickListener,
-                               @Nullable View.OnLongClickListener longClickListener) {
+    public LegacyPlayerControlButton(View controlsViewGroup,
+                                     String viewToHide,
+                                     String buttonId,
+                                     @Nullable String textOverlayId,
+                                     PlayerControlButtonStatus enabledStatus,
+                                     View.OnClickListener onClickListener,
+                                     @Nullable View.OnLongClickListener longClickListener) {
         View containerView = Utils.getChildViewByResourceName(controlsViewGroup, viewToHide);
         containerView.setVisibility(View.GONE);
         containerRef = new WeakReference<>(containerView);

@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.videoplayer;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -7,8 +17,8 @@ import static app.morphe.extension.shared.settings.preference.CustomDialogListPr
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED;
 import static app.morphe.extension.youtube.patches.VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE;
 import static app.morphe.extension.youtube.patches.VideoInformation.isPremiumVideoQuality;
-import static app.morphe.extension.youtube.videoplayer.PlayerControlButton.fadeInDuration;
-import static app.morphe.extension.youtube.videoplayer.PlayerControlButton.getDialogBackgroundColor;
+import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.fadeInDuration;
+import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getDialogBackgroundColor;
 
 import android.content.Context;
 import android.text.Spannable;
@@ -35,6 +45,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
+import app.morphe.extension.youtube.patches.CopyVideoURLPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.VideoInformation.VideoQualityInterface;
 import app.morphe.extension.youtube.patches.playback.quality.RememberVideoQualityPatch;
@@ -46,8 +57,7 @@ import kotlin.jvm.functions.Function1;
 @SuppressWarnings("unused")
 public class VideoQualityDialogButton {
 
-    @Nullable
-    private static PlayerControlButton instance;
+    private static WeakReference<ImageView> instance = new WeakReference<>(null);
 
     @Nullable
     private static CharSequence currentOverlayText;
@@ -69,12 +79,8 @@ public class VideoQualityDialogButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            instance = new PlayerControlButton(
-                    controlsView,
-                    "morphe_video_quality_dialog_button_container",
-                    "morphe_video_quality_dialog_button",
-                    "morphe_video_quality_dialog_button_text",
-                    Settings.VIDEO_QUALITY_DIALOG_BUTTON::get,
+            instance = new WeakReference<>(PlayerOverlayButton.addButton(controlsView,
+                    "morphe_video_quality_dialog_button_rectangle",
                     view -> {
                         try {
                             showVideoQualityDialog(view.getContext());
@@ -110,7 +116,52 @@ public class VideoQualityDialogButton {
                         }
                         return false;
                     }
+            )
             );
+
+            // FIXME
+//            instance = new LegacyPlayerControlButton(
+//                    controlsView,
+//                    "morphe_video_quality_dialog_button_container",
+//                    "morphe_video_quality_dialog_button",
+//                    "morphe_video_quality_dialog_button_text",
+//                    Settings.VIDEO_QUALITY_DIALOG_BUTTON::get,
+//                    view -> {
+//                        try {
+//                            showVideoQualityDialog(view.getContext());
+//                        } catch (Exception ex) {
+//                            Logger.printException(() -> "Video quality button onClick failure", ex);
+//                        }
+//                    },
+//                    view -> {
+//                        try {
+//                            VideoQualityInterface[] qualities = VideoInformation.getCurrentQualities();
+//                            if (qualities == null) {
+//                                Logger.printDebug(() -> "Cannot reset quality, videoQualities is null");
+//                                return true;
+//                            }
+//
+//                            // Reset to default quality.
+//                            final int defaultResolution = RememberVideoQualityPatch.getDefaultQualityResolution();
+//                            for (VideoQualityInterface quality : qualities) {
+//                                final int resolution = quality.patch_getResolution();
+//                                if (resolution != AUTOMATIC_VIDEO_QUALITY_VALUE && resolution <= defaultResolution) {
+//                                    Logger.printDebug(() -> "Resetting quality to: " + quality);
+//                                    VideoInformation.changeQuality(quality);
+//                                    return true;
+//                                }
+//                            }
+//
+//                            // Existing hook cannot set default quality to auto.
+//                            // Instead show the quality dialog.
+//                            showVideoQualityDialog(view.getContext());
+//                            return true;
+//                        } catch (Exception ex) {
+//                            Logger.printException(() -> "Video quality button reset failure", ex);
+//                        }
+//                        return false;
+//                    }
+//            );
 
             // Set initial text.
             updateButtonText(VideoInformation.getCurrentQuality());
@@ -120,37 +171,11 @@ public class VideoQualityDialogButton {
     }
 
     /**
-     * injection point.
-     */
-    public static void setVisibilityNegatedImmediate() {
-        if (instance != null) instance.setVisibilityNegatedImmediate();
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setVisibilityImmediate(boolean visible) {
-        if (instance != null) {
-            instance.setVisibilityImmediate(visible);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setVisibility(boolean visible, boolean animated) {
-        if (instance != null) {
-            instance.setVisibility(visible, animated);
-        }
-    }
-
-    /**
      * Updates the button text based on the current video quality.
      */
     public static void updateButtonText(@Nullable VideoQualityInterface quality) {
         try {
             Utils.verifyOnMainThread();
-            if (instance == null) return;
 
             final int resolution = quality == null
                     ? AUTOMATIC_VIDEO_QUALITY_VALUE // Video is still loading.
@@ -180,7 +205,8 @@ public class VideoQualityDialogButton {
                     Logger.printDebug(() -> "Ignoring stale button text update of: " + text);
                     return;
                 }
-                instance.setTextOverlay(text);
+                // FIXME
+//                instance.setTextOverlay(text);
             }, 100);
         } catch (Exception ex) {
             Logger.printException(() -> "updateButtonText failure", ex);

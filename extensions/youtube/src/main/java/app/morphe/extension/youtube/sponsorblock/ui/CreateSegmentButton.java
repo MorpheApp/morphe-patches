@@ -11,7 +11,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
-import app.morphe.extension.youtube.videoplayer.PlayerControlButton;
+import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
 @SuppressWarnings("unused")
 public class CreateSegmentButton {
@@ -23,7 +23,7 @@ public class CreateSegmentButton {
     );
 
     @Nullable
-    private static PlayerControlButton instance;
+    private static LegacyPlayerControlButton instance;
 
     public static void hideControls() {
         if (instance != null) instance.hide();
@@ -34,7 +34,7 @@ public class CreateSegmentButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            instance = new PlayerControlButton(
+            instance = new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_sb_create_segment_button",
                     null,

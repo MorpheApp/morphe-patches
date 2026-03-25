@@ -8,12 +8,12 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
-import app.morphe.extension.youtube.videoplayer.PlayerControlButton;
+import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
 @SuppressWarnings("unused")
 public class VotingButton {
     @Nullable
-    private static PlayerControlButton instance;
+    private static LegacyPlayerControlButton instance;
 
     public static void hideControls() {
         if (instance != null) instance.hide();
@@ -24,7 +24,7 @@ public class VotingButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            instance = new PlayerControlButton(
+            instance = new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_sb_voting_button",
                     null,

@@ -13,13 +13,11 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
-import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
@@ -41,7 +39,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
     )
 
     execute {
@@ -126,7 +124,7 @@ val sponsorBlockPatch = bytecodePatch(
         videoInformationPatch,
         // Used to prevent SponsorBlock from running on Shorts because SponsorBlock does not yet support Shorts.
         playerTypeHookPatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
         sponsorBlockResourcePatch,
     )
 

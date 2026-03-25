@@ -3,10 +3,8 @@ package app.morphe.patches.youtube.interaction.copyvideourl
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.youtube.misc.playercontrols.addBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
+import app.morphe.patches.youtube.layout.playerbuttons.addPlayerBottomButton
+import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -17,13 +15,13 @@ import app.morphe.util.copyResources
 private val copyVideoURLResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        playerControlsPatch,
+        playerOverlayButtonsHookPatch
     )
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_copy_video_url"),
-            SwitchPreference("morphe_copy_video_url_timestamp"),
+            SwitchPreference("morphe_copy_video_url_timestamp")
         )
 
         copyResources(
@@ -31,11 +29,9 @@ private val copyVideoURLResourcePatch = resourcePatch {
             ResourceGroup(
                 resourceDirectoryName = "drawable",
                 "morphe_yt_copy.xml",
-                "morphe_yt_copy_timestamp.xml",
-            ),
+                "morphe_yt_copy_timestamp.xml"
+            )
         )
-
-        addBottomControl("copyvideourl")
     }
 }
 
@@ -46,7 +42,7 @@ val copyVideoURLPatch = bytecodePatch(
 ) {
     dependsOn(
         copyVideoURLResourcePatch,
-        playerControlsPatch,
+        playerOverlayButtonsHookPatch,
         videoInformationPatch,
     )
 
@@ -54,14 +50,12 @@ val copyVideoURLPatch = bytecodePatch(
 
     execute {
         val extensionPlayerPackage = "Lapp/morphe/extension/youtube/videoplayer"
-        val buttonsDescriptors = listOf(
+
+        arrayOf(
             "$extensionPlayerPackage/CopyVideoURLButton;",
             "$extensionPlayerPackage/CopyVideoURLTimestampButton;",
-        )
-
-        buttonsDescriptors.forEach { descriptor ->
-            initializeBottomControl(descriptor)
-            injectVisibilityCheckCall(descriptor)
+        ).forEach { descriptor ->
+            addPlayerBottomButton(descriptor)
         }
     }
 }
