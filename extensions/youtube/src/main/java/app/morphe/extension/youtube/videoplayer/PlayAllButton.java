@@ -70,21 +70,21 @@ public class PlayAllButton {
     }
 
     /**
-     * injection point
+     * Injection point.
      */
     public static void setVisibilityNegatedImmediate() {
         if (instance != null) instance.setVisibilityNegatedImmediate();
     }
 
     /**
-     * injection point
+     * Injection point.
      */
     public static void setVisibilityImmediate(boolean visible) {
         if (instance != null) instance.setVisibilityImmediate(visible);
     }
 
     /**
-     * injection point
+     * Injection point.
      */
     public static void setVisibility(boolean visible, boolean animated) {
         if (instance != null) instance.setVisibility(visible, animated);
