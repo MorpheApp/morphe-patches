@@ -251,8 +251,14 @@ internal fun baseCustomBrandingPatch(
                     entriesKey = "morphe_custom_branding_icon_custom_entries",
                     entryValuesKey = "morphe_custom_branding_icon_custom_entry_values"
                 )
+                ListPreference(
+                    key = "morphe_custom_branding_notification_icon",
+                    entriesKey = "morphe_custom_branding_notification_icon_custom_entries",
+                    entryValuesKey = "morphe_custom_branding_notification_icon_custom_entry_values"
+                )
             } else {
                 ListPreference("morphe_custom_branding_icon")
+                ListPreference("morphe_custom_branding_notification_icon")
             }
         )
 
