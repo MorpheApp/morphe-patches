@@ -91,10 +91,6 @@ public final class LogBufferManager {
     public static void appendToLogBuffer(String message) {
         Objects.requireNonNull(message);
 
-        if (message.equals(logBuffer.peekLast())) {
-            return;
-        }
-
         // It's very important that no Settings are used in this method,
         // as this code is used when a context is not set and thus referencing
         // a setting will crash the app.
