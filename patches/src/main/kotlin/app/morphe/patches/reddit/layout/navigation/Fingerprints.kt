@@ -58,7 +58,7 @@ internal object BottomNavScreenResourceBuilderFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_DIRECT,
             parameters = listOf("Ljava/lang/String;", "L")
         ),
-        ADD_METHOD_CALL,
-        string("answersFeatures")
-    )
+        ADD_METHOD_CALL
+    ),
+    strings = listOf("answersFeatures")
 )

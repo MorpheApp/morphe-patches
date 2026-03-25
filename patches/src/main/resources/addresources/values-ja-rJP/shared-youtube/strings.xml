@@ -20,15 +20,16 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">設定を完了するには再起動してください</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">アプリ名</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">カスタム</string>
   <string name="morphe_custom_branding_icon_title">アプリアイコン</string>
   <string name="morphe_custom_branding_icon_entry_1">オリジナル</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe（ブラック）</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe（ダーク）</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe（ライト）</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">カスタム</string>
+  <string name="morphe_custom_branding_icon_entry_6">カスタム</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 実験的バージョンの警告 🚨</string>

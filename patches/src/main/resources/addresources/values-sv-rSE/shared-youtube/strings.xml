@@ -17,9 +17,10 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Starta om för att slutföra konfigureringen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Appnamn</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Anpassad</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
   <string name="morphe_custom_branding_icon_entry_1">Ursprunglig</string>
@@ -27,7 +28,7 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe mörk</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe ljus</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Anpassad</string>
+  <string name="morphe_custom_branding_icon_entry_6">Anpassad</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Obs! Experimentell version 🚨</string>
