@@ -2,14 +2,6 @@ package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
 
-import java.util.Arrays;
-import java.util.Deque;
-import java.util.Objects;
-import java.util.concurrent.ConcurrentLinkedDeque;
-import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.Set;
-
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
@@ -20,16 +12,26 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Pair;
 import android.view.Gravity;
-import android.view.View;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
+import java.util.Arrays;
+import java.util.Deque;
+import java.util.Objects;
+import java.util.Set;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.atomic.AtomicInteger;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.ui.Dim;
+
 
 /**
  * Manages a buffer for storing debug logs from {@link Logger}.
@@ -50,7 +52,8 @@ public final class LogBufferManager {
     private static final Deque<String> logBuffer = new ConcurrentLinkedDeque<>();
     private static final AtomicInteger logBufferByteSize = new AtomicInteger();
 
-    /** * A thread-safe, dynamic list of log prefixes that should be aggressively deduplicated.
+    /**
+     * A thread-safe, dynamic list of log prefixes that should be aggressively deduplicated.
      */
     private static final Set<String> SPAMMY_PREFIXES = new CopyOnWriteArraySet<>(Arrays.asList(
             "LithoFilterPatch:",
@@ -75,10 +78,10 @@ public final class LogBufferManager {
 
             if (isSpammy) {
                 if (uniqueNoisyLogs.add(log)) {
-                    filteredOutput.append(log).append("\n");
+                    filteredOutput.append(log).append('\n');
                 }
             } else {
-                filteredOutput.append(log).append("\n");
+                filteredOutput.append(log).append('\n');
             }
         }
 
@@ -121,7 +124,7 @@ public final class LogBufferManager {
                 return;
             }
 
-            if (logsToExport == null || logsToExport.trim().isEmpty()) {
+            if (logsToExport == null || logsToExport.isBlank()) {
                 Utils.showToastShort(str("morphe_debug_logs_none_found"));
                 return;
             }
@@ -153,7 +156,7 @@ public final class LogBufferManager {
 
             pendingLogsToExport = logsToExport;
 
-            String appName = context.getApplicationInfo().loadLabel(context.getPackageManager()).toString();
+            String appName = Utils.getApplicationName();
             String safeAppName = appName.replaceAll("\\s+", "_");
 
             String formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(new java.util.Date());
@@ -288,7 +291,7 @@ public final class LogBufferManager {
                     true
             );
 
-            int margin = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
+            int margin = Dim.dp(16);
 
             EditText searchBar = new EditText(context);
             searchBar.setTextSize(16);
@@ -332,7 +335,7 @@ public final class LogBufferManager {
 
                                 if (lowerLine.contains(query)) {
                                     int startOffset = ssb.length();
-                                    ssb.append(line).append("\n");
+                                    ssb.append(line).append('\n');
 
                                     int index = lowerLine.indexOf(query);
                                     while (index >= 0) {

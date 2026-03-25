@@ -507,8 +507,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     public void exportActivity() {
         try {
             Setting.exportToJson(getActivity());
-            Context context = getActivity();
-            String appName = context.getApplicationInfo().loadLabel(context.getPackageManager()).toString();
+            String appName = Utils.getApplicationName();
             String safeAppName = appName.replaceAll("\\s+", "_");
             String formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(new java.util.Date());
             String fileName = safeAppName + "_Settings_" + formatDate + ".txt";
@@ -560,15 +559,13 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
 
     private void exportTextToFile(android.net.Uri uri) {
-        try {
-            OutputStream out = getContext().getContentResolver().openOutputStream(uri, "rwt");
+        try (OutputStream out = getContext().getContentResolver().openOutputStream(uri, "rwt")) {
             if (out != null) {
                 String textToExport = existingSettings;
                 if (currentImportExportEditText != null) {
                     textToExport = currentImportExportEditText.getText().toString();
                 }
                 out.write(textToExport.getBytes(StandardCharsets.UTF_8));
-                out.close();
 
                 showLocalizedToast("morphe_settings_export_file_success", "Settings exported successfully");
             }
@@ -580,12 +577,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     @SuppressWarnings("CharsetObjectCanBeUsed")
     private void importTextFromFile(android.net.Uri uri) {
-        try {
-            InputStream in = getContext().getContentResolver().openInputStream(uri);
+        try (InputStream in = getContext().getContentResolver().openInputStream(uri)) {
             if (in != null) {
                 Scanner scanner = new Scanner(in, StandardCharsets.UTF_8.name()).useDelimiter("\\A");
                 String result = scanner.hasNext() ? scanner.next() : "";
-                in.close();
 
                 if (currentImportExportEditText != null) {
                     currentImportExportEditText.setText(result);
