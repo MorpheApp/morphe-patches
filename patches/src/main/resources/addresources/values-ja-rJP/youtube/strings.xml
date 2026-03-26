@@ -127,8 +127,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_show_more_button_summary_on">「もっと見る」ボタンは検索結果に表示されません</string>
   <string name="morphe_hide_show_more_button_summary_off">「もっと見る」ボタンは検索結果に表示されます</string>
   <string name="morphe_hide_subscribed_channels_bar_title">登録済みチャンネルの一覧を非表示</string>
-  <string name="morphe_hide_subscribed_channels_bar_summary_on">登録済みチャンネルの一覧は登録チャンネルタブのヘッダーに表示されません</string>
-  <string name="morphe_hide_subscribed_channels_bar_summary_off">登録済みチャンネルの一覧は登録チャンネルタブのヘッダーに表示されます</string>
+  <string name="morphe_hide_subscribed_channels_bar_summary_on">登録チャンネルタブのヘッダーに登録済みチャンネルの一覧は表示されません</string>
+  <string name="morphe_hide_subscribed_channels_bar_summary_off">登録チャンネルタブのヘッダーに登録済みチャンネルの一覧が表示されます</string>
   <string name="morphe_hide_surveys_title">アンケートを非表示</string>
   <string name="morphe_hide_surveys_summary_on">アンケートは表示されません</string>
   <string name="morphe_hide_surveys_summary_off">アンケートは表示されます</string>
@@ -449,7 +449,7 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">URL をクリップボードにコピーしました</string>
-  <string name="morphe_share_copy_url_timestamp_success">タイムスタンプ付きの URL をコピーしました</string>
+  <string name="morphe_share_copy_url_timestamp_success">タイムスタンプ付き URL をコピーしました</string>
   <string name="morphe_copy_video_url_title">「動画の URL をコピー」ボタンを表示</string>
   <string name="morphe_copy_video_url_summary_on">プレーヤー オーバーレイに「動画の URL をコピー」ボタンが表示されます。タップすると動画の URL が、長押しするとタイムスタンプ付きの URL がそれぞれコピーされます</string>
   <string name="morphe_copy_video_url_summary_off">プレーヤー オーバーレイに「動画の URL をコピー」ボタンは表示されません</string>
@@ -719,9 +719,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">ナビゲーション バーのアニメーションを有効化</string>
   <string name="morphe_navigation_bar_animations_summary_on">ナビゲーションの遷移がアニメーション表示されます</string>
   <string name="morphe_navigation_bar_animations_summary_off">ナビゲーションの遷移はアニメーション表示されません</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">ナビゲーション バーの自動非表示を無効にする</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">ナビゲーション バーは自動で非表示になりません</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">ナビゲーション バーが自動で非表示になる場合があります</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">ナビゲーション バーの自動非表示を無効化</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">ナビゲーション バーが自動的に非表示になることはありません</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">ナビゲーション バーが自動的に非表示になる場合があります</string>
   <string name="morphe_disable_translucent_status_bar_title">半透明ステータスバーを無効化</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">ステータスバーは透けません</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">ステータスバーは状況に応じて透けます</string>

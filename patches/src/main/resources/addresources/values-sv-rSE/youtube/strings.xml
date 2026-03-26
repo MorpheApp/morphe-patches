@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Flöde</string>
   <string name="morphe_settings_screen_04_general_title">Allmänt</string>
   <string name="morphe_settings_screen_05_player_title">Spelare</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Sökreglage</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Svepgester</string>
   <string name="morphe_settings_screen_11_misc_title">Övrigt</string>
@@ -303,6 +304,16 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Knappen Prenumerera visas</string>
   <string name="morphe_comments_screen_title">Kommentarer</string>
   <string name="morphe_comments_screen_summary">Dölj eller visa komponenter i kommentarsfältet</string>
+  <string name="morphe_hide_comments_carousel_title">Aktivera filter för kommentarsfältskarusellen</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Filter för kommentarsfältskarusellen är aktiverat</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Filter för kommentarsfältskarusellen är inaktiverat</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Obs!
+
+• Se till att ange det exakta namnet på objektet i karusellen (t.ex. Fråga, Hajpa den här videon, Lyssna på YouTube Music m.fl.).
+• Om du döljer objekt i karusellen kan det leda till oavsiktliga bieffekter.
+• Om alla objekt i karusellen har dolts döljs även hela kommentarsfältet"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Filter för kommentarsfältskarusellen</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Ange namnen på de objekt i kommentarsfältskarusellen som ska filtreras bort, ett per rad</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Dölj AI-sammanfattning av chatt</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI-sammanfattning av chatt är dold</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI-sammanfattning av chatt visas</string>
@@ -330,6 +341,9 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Dölj knappar för emoji och tidsstämpel</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Knapparna för emoji och tidsstämpel är dolda</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Knapparna för emoji och tidsstämpel visas</string>
+  <string name="morphe_hide_comments_info_button_title">Dölj knappen Info</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Knappen Info är dold</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Knappen Info visas</string>
   <string name="morphe_hide_comments_preview_comment_title">Dölj förhandsvisad kommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Förhandsvisad kommentar är dold</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Förhandsvisad kommentar visas</string>
@@ -486,6 +500,10 @@ Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
   <string name="morphe_loop_video_button_toast_on">Videoslinga är aktiverat</string>
   <string name="morphe_loop_video_button_toast_off">Videoslinga är inaktiverat</string>
   <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Visa knapp för att läsa in videon igen</string>
+  <string name="morphe_reload_video_summary_on">Knapp för att läsa in videon igen visas</string>
+  <string name="morphe_reload_video_summary_off">Knapp för att läsa in videon igen visas inte</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video-ID:t är inte tillgängligt. Öppna videon igen manuellt.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Inaktivera gest för exakt sökning</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesten är inaktiverad</string>
@@ -679,6 +697,8 @@ Cookies sparas automatiskt om de är giltiga"</string>
   <string name="morphe_show_settings_button_summary_off">Knappen Inställningar visas inte</string>
   <string name="morphe_show_settings_button_index_title">Index för knappen Inställningar</string>
   <string name="morphe_show_settings_button_type_title">Åtgärd för knappen Inställningar</string>
+  <string name="morphe_show_settings_button_type_summary_on">Tryck för att öppna Morphe-inställningarna</string>
+  <string name="morphe_show_settings_button_type_summary_off">Tryck för att öppna YouTube-inställningarna</string>
   <string name="morphe_swap_create_with_notifications_button_title">Byt ut Skapa mot Aviseringar</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Knappen Skapa byts ut mot knappen Aviseringar</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Knappen Skapa byts inte ut mot knappen Aviseringar</string>
@@ -699,6 +719,9 @@ Om du vill komma åt Inställningar:
   <string name="morphe_navigation_bar_animations_title">Aktivera animeringar för navigeringsfältet</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigeringsoverlägg animeras</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigeringsoverlägg animeras inte</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Inaktivera att navigeringsfältet döljs automatiskt</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigeringsfältet döljs inte automatiskt</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigeringsfältet kan döljas automatiskt</string>
   <string name="morphe_disable_translucent_status_bar_title">Inaktivera genomskinligt statusfält</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusfältet är ogenomskinligt</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusfältet är ogenomskinligt eller genomskinligt</string>
@@ -1295,6 +1318,21 @@ Redo att skicka in?"</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
   <string name="morphe_change_form_factor_entry_3">Surfplatta</string>
   <string name="morphe_change_form_factor_entry_4">Bil</string>
+  <string name="morphe_change_form_factor_user_dialog_message">"Ändringar som ingår:
+
+Layout för surfplatta
+• Community-inlägg döljs
+• Inställningen Uppspelning i flöden är inte tillgänglig
+• Knappen Remixa och knappen Ljud är inte tillgängliga i Shorts
+• Åtgärdsfältet för videor är inte komprimerat
+
+Billayout
+• Flödet sorteras efter ämnen och kanaler
+• Inställningen Uppspelning i flöden är inte tillgänglig
+• Knappen Remixa och knappen Ljud är inte tillgängliga i Shorts
+• Shorts-videor öppnas i vanliga spelaren
+• Åtgärdsfältet för videor är inte komprimerat
+"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Förfalska appversionen</string>
   <string name="morphe_spoof_app_version_summary_on">Versionen är förfalskad</string>
@@ -1338,6 +1376,7 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_change_start_page_entry_playlists">Spellistor</string>
   <string name="morphe_change_start_page_entry_search">Sök</string>
   <string name="morphe_change_start_page_entry_shopping">Shopping</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Prenumerationer</string>
   <string name="morphe_change_start_page_entry_trending">Populärt</string>
@@ -1350,6 +1389,9 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
 Begränsning: Bakåtknappen i verktygsfältet kanske inte fungerar"</string>
   <string name="morphe_change_start_page_always_summary_off">Startsidan byts endast vid appstart</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Inaktivera att Shorts-videor återupptas när appen startas</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts-videor återupptas inte när appen startas</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts-videor återupptas när appen startas</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Öppna Shorts-videor med</string>
   <string name="morphe_shorts_player_type_shorts">Shorts-spelare</string>
@@ -1555,7 +1597,10 @@ Om du aktiverar detta kan högre videokvaliteter låsas upp"</string>
   <string name="morphe_custom_playback_speeds_invalid">Anpassade hastigheter måste vara mindre än %s</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Ogiltiga anpassade uppspelningshastigheter</string>
   <string name="morphe_custom_playback_speeds_auto">Automatiskt</string>
-  <string name="morphe_speed_tap_and_hold_title">Anpassad hastighet för att trycka länge</string>
+  <string name="morphe_speed_tap_and_hold_title">Anpassad hastighet för långt tryck</string>
+  <string name="morphe_speed_tap_and_hold_summary">"Uppspelningshastighet mellan 0 och 8
+
+Om 0 inaktiveras hastigheten för långt tryck"</string>
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <string name="morphe_remember_playback_speed_last_selected_title">Kom ihåg ändringar av uppspelningshastigheten</string>
   <string name="morphe_remember_playback_speed_last_selected_summary_on">Ändring av uppspelningshastighet gäller för alla videor</string>

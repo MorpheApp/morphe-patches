@@ -14,11 +14,11 @@ import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 /**
  * LithoFilter for {@link OpenSystemShareSheetPatch}.
  */
-public final class OpenSystemShareSheetFilter extends Filter {
+public final class SystemShareSheetFilter extends Filter {
 
     public static volatile boolean isShareSheetVisible;
 
-    public OpenSystemShareSheetFilter() {
+    public SystemShareSheetFilter() {
         addPathCallbacks(new StringFilterGroup(
                 Settings.OPEN_SYSTEM_SHARE_SHEET,
                 "share_sheet_container."

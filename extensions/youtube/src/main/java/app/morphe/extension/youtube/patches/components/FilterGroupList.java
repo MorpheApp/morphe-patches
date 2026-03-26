@@ -74,7 +74,7 @@ final class StringFilterGroupList extends FilterGroupList<String, StringFilterGr
 
 /**
  * If searching for a single byte pattern, then it is slightly better to use
- * {@link ByteArrayFilterGroup#check(byte[])} as it uses KMP which is faster
+ * {@link ByteArrayFilterGroup#check(byte[])} as it uses BMH which is faster
  * than a prefix tree to search for only 1 pattern.
  */
 final class ByteArrayFilterGroupList extends FilterGroupList<byte[], ByteArrayFilterGroup> {

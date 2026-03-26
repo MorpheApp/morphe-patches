@@ -20,15 +20,16 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Uruchom ponownie, aby dokończyć konfigurację</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nazwa aplikacji</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Niestandardowa</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacji</string>
   <string name="morphe_custom_branding_icon_entry_1">Oryginalna</string>
   <string name="morphe_custom_branding_icon_entry_2">Czarny Morphe</string>
   <string name="morphe_custom_branding_icon_entry_3">Ciemny Morphe</string>
   <string name="morphe_custom_branding_icon_entry_4">Jasny Morphe</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Niestandardowa</string>
+  <string name="morphe_custom_branding_icon_entry_6">Niestandardowa</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Wersja Eksperymentalna 🚨</string>

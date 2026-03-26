@@ -516,13 +516,13 @@ public final class LayoutComponentsFilter extends Filter {
         }
     }
 
-    private static final boolean HIDE_DOODLES_ENABLED = Settings.HIDE_DOODLES.get();
+    private static final boolean HIDE_YOUTUBE_DOODLES_ENABLED = Settings.HIDE_YOUTUBE_DOODLES.get();
 
     /**
      * Injection point.
      */
     public static void setDoodleDrawable(ImageView imageView, Drawable original) {
-        Drawable replacement = HIDE_DOODLES_ENABLED
+        Drawable replacement = HIDE_YOUTUBE_DOODLES_ENABLED
                 ? ChangeHeaderPatch.getDrawable(original)
                 : original;
         imageView.setImageDrawable(replacement);

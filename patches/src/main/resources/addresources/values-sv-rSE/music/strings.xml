@@ -70,6 +70,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Minispelarens färg matchar helskärmsspelaren</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Minispelaren använder standardfärg</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Visa knappen Nästa i minispelaren</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Knappen Nästa visas i minispelaren</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Knappen Nästa visas inte i minispelaren</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Visa knappen Föregående i minispelaren</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Knappen Föregående visas i minispelaren</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Knappen Föregående visas inte i minispelaren</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Aktivera tvingad minispelare</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Minispelaren förblir minimerad när uppspelningen ändras</string>

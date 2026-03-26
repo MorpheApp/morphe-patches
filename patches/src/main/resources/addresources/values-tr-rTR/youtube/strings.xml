@@ -703,8 +703,8 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Oluştur düğmesi, Bildirimler düğmesiyle değiştirilmedi</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Bu ayarı değiştirmek etkili olmazsa, Gizli moda geçmeyi deneyin.</string>
   <string name="morphe_hide_navigation_button_labels_title">Gezinme düğmeleri etiketlerini gizle</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Navigasyon düğmesi etiketleri gizli</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Navigasyon düğmesi etiketleri görünür</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Gezinme düğmesi etiketleri gizli</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Gezinme düğmesi etiketleri görünür</string>
   <string name="morphe_hide_navigation_bar_title">Gezinme çubuğunu gizle</string>
   <string name="morphe_hide_navigation_bar_summary_on">Gezinme çubuğu gizli</string>
   <string name="morphe_hide_navigation_bar_summary_off">Gezinme çubuğu görünür</string>
@@ -713,20 +713,20 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
 Ayarlara erişmek için:
 Herhangi bir videoyu açın → Kalite menüsünü açın → Altta 'Ayarlar > Video Kalitesi Tercihleri'ne dokunun."</string>
   <string name="morphe_narrow_navigation_buttons_title">Dar gezinme düğmelerini etkinleştir</string>
-  <string name="morphe_narrow_navigation_buttons_summary_on">Navigasyon düğmeleri arasındaki boşluk dar</string>
-  <string name="morphe_narrow_navigation_buttons_summary_off">Navigasyon düğmeleri arasındaki boşluk normal</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Gezinme düğmeleri arasındaki boşluk dar</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Gezinme düğmeleri arasındaki boşluk normal</string>
   <string name="morphe_navigation_bar_animations_title">Gezinme çubuğu animasyonlarını etkinleştir</string>
   <string name="morphe_navigation_bar_animations_summary_on">Gezinme geçişleri animasyonludur</string>
   <string name="morphe_navigation_bar_animations_summary_off">Gezinme geçişleri animasyonlu değildir</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Gezinme çubuğunun otomatik gizlenmesi devre dışı</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Gezinme çubuğu artık otomatik olarak gizlenmeyecek</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Gezinme çubuğunun otomatik gizlenmesini devre dışı bırak</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Gezinme çubuğu otomatik olarak gizlenmeyecek</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Gezinme çubuğu otomatik olarak gizlenebilir</string>
   <string name="morphe_disable_translucent_status_bar_title">Yarı saydam durum çubuğunu devre dışı bırak</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Durum çubuğu opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Durum çubuğu opak veya yarı saydam</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Sınırlamalar:
-• Video oynatma çubuğunun üstünde siyah bir çubuğun görünebileceği olabilir.
-• Sistem navigasyon çubuğu şeffaf hale gelebilir ve videolara yorum yapmak mümkün olmayabilir."</string>
+• Video oynatıcısının üst kısmında siyah bir çubuk görünebilir.
+• Sistem gezinme çubuğu şeffaf hale gelebilir ve videolara yorum yapmak mümkün olmayabilir."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Açık temada yarı saydam çubuğu devre dışı bırak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Açık temada gezinti çubuğu opak</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Açık temada gezinti çubuğu opak veya yarı saydam</string>
