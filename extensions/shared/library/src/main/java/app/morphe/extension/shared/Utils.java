@@ -146,14 +146,12 @@ public class Utils {
             try {
                 ApplicationInfo applicationInfo = getPackageInfo().applicationInfo;
                 if (applicationInfo != null) {
-                    applicationLabel = (String) applicationInfo.loadLabel(context.getPackageManager());
-                } else {
-                    applicationLabel = "Unknown";
+                    return applicationLabel = (String) applicationInfo.loadLabel(context.getPackageManager());
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "Failed to get application name", ex);
-                applicationLabel = "Unknown";
             }
+            applicationLabel = "Unknown";
         }
 
         return applicationLabel;
@@ -752,7 +750,7 @@ public class Utils {
         }
     }
 
-    private static long lastClickTime = 0;
+    private static volatile long lastClickTime;
 
     /**
      * @return true if the action occurred within 500ms of the last recorded action.
