@@ -45,7 +45,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
-import app.morphe.extension.youtube.patches.CopyVideoURLPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.VideoInformation.VideoQualityInterface;
 import app.morphe.extension.youtube.patches.playback.quality.RememberVideoQualityPatch;
@@ -79,6 +78,10 @@ public class VideoQualityDialogButton {
      */
     public static void initializeButton(View controlsView) {
         try {
+            if (!Settings.VIDEO_QUALITY_DIALOG_BUTTON.get()) {
+                return;
+            }
+
             instance = new WeakReference<>(PlayerOverlayButton.addButton(controlsView,
                     "morphe_video_quality_dialog_button_rectangle",
                     view -> {

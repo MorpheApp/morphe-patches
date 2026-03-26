@@ -39,6 +39,10 @@ public class LoopVideoButton {
      */
     public static void initializeButton(View controlsView) {
         try {
+            if (!Settings.LOOP_VIDEO_BUTTON.get()) {
+                return;
+            }
+
             instance = new WeakReference<>(PlayerOverlayButton.addButton(controlsView,
                     "morphe_loop_video_button_off",
                     view -> updateButtonAppearance(true, view),

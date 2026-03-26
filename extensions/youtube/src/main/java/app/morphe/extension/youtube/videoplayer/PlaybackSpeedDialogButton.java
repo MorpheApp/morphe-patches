@@ -34,6 +34,10 @@ public class PlaybackSpeedDialogButton {
      */
     public static void initializeButton(View controlsView) {
         try {
+            if (!Settings.PLAYBACK_SPEED_DIALOG_BUTTON.get()) {
+                return;
+            }
+
             PlayerOverlayButton.addButton(controlsView,
                     "morphe_playback_speed_dialog_button_rectangle",
                     view -> {

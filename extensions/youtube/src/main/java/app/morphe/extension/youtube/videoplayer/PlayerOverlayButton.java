@@ -7,7 +7,6 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import android.widget.ImageView;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.util.Arrays;
 
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
@@ -29,14 +27,13 @@ public class PlayerOverlayButton {
     private static int newButtonCount;
 
     @Nullable
-    public static ImageView addButton(View sourceButton, String drawableName,
+    public static ImageView addButton(View sourceButton,
+                                      String drawableName,
                                       View.OnClickListener onClickListener,
                                       View.OnLongClickListener onLongClickListener) {
         Utils.verifyOnMainThread();
 
-        if (sourceButton != null
-                && sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup
-        ) {
+        if (sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup) {
             ViewTreeObserver observer = sourceButton.getViewTreeObserver();
             if (observer != buttonObserver.get()) {
                 newButtonCount = 0;
@@ -44,12 +41,14 @@ public class PlayerOverlayButton {
             }
             final int buttonCount = ++newButtonCount;
 
-            ImageView button = new ImageView(Utils.getContext());
+            ImageView button = new ImageView(sourceButton.getContext());
             button.setId(View.generateViewId());
             button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
             button.setImageResource(ResourceUtils.getIdentifierOrThrow(
                     ResourceType.DRAWABLE, drawableName)
             );
+            button.setOnClickListener(onClickListener);
+            button.setOnLongClickListener(onLongClickListener);
 
             observer.addOnPreDrawListener(
                     new ViewTreeObserver.OnPreDrawListener() {
@@ -108,8 +107,6 @@ public class PlayerOverlayButton {
                         }
                     }
             );
-            button.setOnClickListener(onClickListener);
-            button.setOnLongClickListener(onLongClickListener);
 
             sourceButtonViewGroup.addView(button);
 

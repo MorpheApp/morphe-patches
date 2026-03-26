@@ -475,9 +475,9 @@ Limitations:
     <string name="morphe_copy_video_url_title">Show copy video URL button</string>
     <string name="morphe_copy_video_url_summary_on">Copy video URL button is shown. Tap to copy video URL. Tap and hold to copy with timestamp</string>
     <string name="morphe_copy_video_url_summary_off">Copy video URL button is not shown</string>
-    <string name="morphe_copy_video_url_timestamp_title">Show copy timestamp URL button</string>
-    <string name="morphe_copy_video_url_timestamp_summary_on">Copy timestamp URL button is shown. Tap to copy video URL with timestamp. Tap and hold to copy without timestamp</string>
-    <string name="morphe_copy_video_url_timestamp_summary_off">Copy timestamp URL button is not shown</string>
+    <string name="morphe_copy_video_url_timestamp_title">Copy timestamp</string>
+    <string name="morphe_copy_video_url_timestamp_summary_on">Copy video url button copies with timestamp. Long press copies without timestamp</string>
+    <string name="morphe_copy_video_url_timestamp_summary_off">Copy video url button copies without timestamp. Long press copies with timestamp</string>
 
     <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
     <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>

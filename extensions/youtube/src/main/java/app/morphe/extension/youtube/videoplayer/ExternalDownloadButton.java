@@ -15,6 +15,7 @@ import android.view.View;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.patches.DownloadsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class ExternalDownloadButton {
@@ -23,7 +24,10 @@ public class ExternalDownloadButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-//            Settings.EXTERNAL_DOWNLOADER::get
+            if (!Settings.EXTERNAL_DOWNLOADER.get()) {
+                return;
+            }
+
             PlayerOverlayButton.addButton(controlsView,
                     "morphe_yt_download_button",
                     ExternalDownloadButton::onDownloadClick,

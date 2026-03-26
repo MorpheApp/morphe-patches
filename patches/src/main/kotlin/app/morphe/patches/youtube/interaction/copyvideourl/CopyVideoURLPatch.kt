@@ -2,6 +2,8 @@ package app.morphe.patches.youtube.interaction.copyvideourl
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.playerbuttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
@@ -12,6 +14,8 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
+private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplayer/CopyVideoURLButton;"
+
 private val copyVideoURLResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
@@ -20,8 +24,15 @@ private val copyVideoURLResourcePatch = resourcePatch {
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_copy_video_url"),
-            SwitchPreference("morphe_copy_video_url_timestamp")
+            PreferenceCategory(
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = setOf(
+                    SwitchPreference("morphe_copy_video_url"),
+                    SwitchPreference("morphe_copy_video_url_timestamp")
+                )
+            )
         )
 
         copyResources(
@@ -49,13 +60,6 @@ val copyVideoURLPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        val extensionPlayerPackage = "Lapp/morphe/extension/youtube/videoplayer"
-
-        arrayOf(
-            "$extensionPlayerPackage/CopyVideoURLButton;",
-            "$extensionPlayerPackage/CopyVideoURLTimestampButton;",
-        ).forEach { descriptor ->
-            addPlayerBottomButton(descriptor)
-        }
+        addPlayerBottomButton(EXTENSION_CLASS_DESCRIPTOR)
     }
 }
