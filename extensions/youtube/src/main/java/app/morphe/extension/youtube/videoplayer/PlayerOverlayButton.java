@@ -26,6 +26,12 @@ public class PlayerOverlayButton {
 
     public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
 
+    /**
+     * How much to compress/expand the existing width. Used to fit 4 buttons
+     * without overlapping the video time.
+     */
+    private static final float BUTTON_WIDTH_PERCENTAGE = 0.9f;
+
     private static WeakReference<ViewTreeObserver> buttonObserver = new WeakReference<>(null);
     private static int newButtonCount;
 
@@ -95,8 +101,8 @@ public class PlayerOverlayButton {
                                 button.setVisibility(sourceButtonVisibility);
                             }
 
-                            final float xOffset = sourceButton.getX()
-                                    - (buttonCount * (float) sourceButton.getWidth());
+                            final float xOffset = (int) (sourceButton.getX()
+                                    - (buttonCount * (BUTTON_WIDTH_PERCENTAGE * sourceButton.getWidth())));
                             if (button.getX() != xOffset) {
                                 button.setX(xOffset);
                             }
