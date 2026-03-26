@@ -264,7 +264,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_video_recommendation_labels"),
             SwitchPreference("morphe_hide_view_count"),
             SwitchPreference("morphe_hide_web_search_results"),
-            SwitchPreference("morphe_hide_doodles"),
+            SwitchPreference("morphe_hide_youtube_doodles"),
         )
 
         if (is_20_21_or_greater) {

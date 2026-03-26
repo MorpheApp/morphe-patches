@@ -35,7 +35,7 @@ Second \"item\" text"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Bật lặp lại vĩnh viễn</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Lặp lại vĩnh viễn đã được bật</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">Lặp lại vĩnh viễn đã tắt</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Lặp lại vĩnh viễn đã bị tắt</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Ẩn nút truyền</string>
   <string name="morphe_music_hide_cast_button_summary_on">Nút truyền đã bị ẩn</string>
@@ -78,8 +78,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_previous_button_summary_off">Nút quay lại không được hiển thị trong trình phát thu nhỏ</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Bật trình phát thu nhỏ bắt buộc</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">Trình phát thu nhỏ vẫn ở trạng thái thu nhỏ khi bạn thay đổi video nhạc</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">Trình phát thu nhỏ mở rộng thành toàn màn hình khi thay đổi video nhạc</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Trình phát thu nhỏ sẽ vẫn ở trạng thái thu nhỏ kể cả khi nội dung đang phát bị thay đổi</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Trình phát thu nhỏ sẽ mở rộng thành toàn màn hình khi nội dung đang phát bị thay đổi</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Thanh điều hướng</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ẩn hoặc thay đổi các nút trên thanh điều hướng</string>

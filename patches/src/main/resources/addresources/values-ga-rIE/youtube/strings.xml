@@ -145,9 +145,12 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_you_may_like_section_summary_on">B’fhéidir gur mhaith leat go bhfuil an chuid i bhfolach</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Thaispeántar B’fhéidir go mbeadh suim agat sa rannóg</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Folaigh YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Tá beochan YouTube Doodles ar an lógó i bhfolach</string>
-  <string name="morphe_hide_doodles_summary_off">Taispeántar beochan YouTube Doodles ar an lógó</string>
+  <string name="morphe_hide_youtube_doodles_title">Folaigh YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Tá beochan YouTube Doodles ar an lógó i bhfolach</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Taispeántar beochan YouTube Doodles ar an lógó</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"Tá Doodles YouTube le feiceáil cúpla lá gach bliain i bpáirteanna éagsúla den domhan.
+
+Is féidir go mbunchosc na ceannlínte custaim náisiúnta a fháil nuair a taispeánann Doodles YouTube."</string>
   <string name="morphe_hide_channel_bar_title">Folaigh barra cainéal</string>
   <string name="morphe_hide_channel_bar_summary_on">Tá an barra cainéal i bhfolach</string>
   <string name="morphe_hide_channel_bar_summary_off">Taispeántar barra an chainéil</string>
@@ -306,9 +309,8 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_carousel_title">Cumhuighneáil scáthán tráchtaí</string>
   <string name="morphe_hide_comments_carousel_summary_on">Tá scagaire cluaisín na dtuismitheoirí cumasaithe</string>
   <string name="morphe_hide_comments_carousel_summary_off">Tá scagaire na gcomhairliúchán díchumasaithe</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Nóta
-
-• Táimis ar maíniú go dtagann an t-ainm cruinneáil ar an mír carousel (e.g. Faigh, Hype an bhideó, Éist ar YouTube Music, etc.).
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Nóta:
+• Déan cinntea go dtagann an t-ainm cruinneáil ar an mír carousel (e.g. Faigh, Hype an bhideó, Éist ar YouTube Music, etc.).
 • D'fhéadfá drochthionas a bhaint le míreanna carousel a shíneadh.
 • Má bhítear ag síneadh ar gach mír carousel, déanfar an rannán comhráiteoir ar fad a shíneadh freisin."</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Scáthán léaráidí na dtuairim</string>
@@ -708,19 +710,18 @@ Sábhálfar fianáin go huathoibríoch má tá siad bailí"</string>
   <string name="morphe_hide_navigation_bar_title">Folaigh an barra nascleanúna</string>
   <string name="morphe_hide_navigation_bar_summary_on">Tá barra nascleanúna i bhfolach</string>
   <string name="morphe_hide_navigation_bar_summary_off">Taispeántar barra nascleanúna</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Is trascna na barraí gléite, lena n-áiríte an tóraoi 'You'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Aimsíonn sé seo an barr navigáide go comhoifreagrach, lena n-áirítear an 'tab' 'You'.
 
- chun Faistealaí a rochadh:
-Fhail isteach ar fíolán arbhachaidh → Fhail isteach ar margaíocht → Tába 'Settings > Rogadhí Féinchearaidh Gréasáin' i gcotharsa ag an chothrom le deithreach."</string>
+Chun tacaíocht a fháil do Shocruithe, cuimhnigh ar an gcnaipe Socruithe via Coimeád → Barrach → Seiceáil Socruithe."</string>
   <string name="morphe_narrow_navigation_buttons_title">Cumasaigh cnaipí nascleanúna caola</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Tá an spásáil idir na cnaipí nascleanúna cúng</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Is gnách go mbíonn spásáil idir cnaipí nascleanúna</string>
   <string name="morphe_navigation_bar_animations_title">Cumasaigh beochana barra nascleanúna</string>
   <string name="morphe_navigation_bar_animations_summary_on">Tá aistrithe nascleanúna beoite</string>
   <string name="morphe_navigation_bar_animations_summary_off">Ní bhíonn aistrithe nascleanúna beoite</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Deiligh uathoibriú isteach na barra naiceant</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Ní bheidh an barra naiceant ag isteach uathoibriúil</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Seans go d’oibreoidh an barra naiceant isteach uathoibriúil</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Deimhineas bainistiú uathoibríoch barr navigáide</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Ní bheidh an barr náisiúnta ag báistí agus tú ag scrolláil</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Béidh an barr náisiúnta ag báistí agus tú ag scrolláil</string>
   <string name="morphe_disable_translucent_status_bar_title">Díchumasaigh barra stádais tréshoilseach</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Tá an barra stádais teimhneach</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Tá an barra stádais teimhneach nó tréshoilseach</string>
@@ -1012,10 +1013,10 @@ Chun an roghchlár rianta fuaime a thaispeáint, athraigh 'Sruthanna físe bréi
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Tá an barra nascleanúna i bhfolach</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Taispeántar barra nascleanúna</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Folaigh físeán molta scáileáin deiridh</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Taispeánadh físeán molta ar an scáileán deiridh</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Taispeántar físeán molta ar an scáileán deiridh</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Tá an t-athsheinnm seo ag obair nuair a bhíonn 'Uathsheinnm an chéad fhíseán eile' múchta.
+  <string name="morphe_hide_end_screen_suggested_video_title">Folaigh físeán molta scáileáin deiridh</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Taispeánadh físeán molta ar an scáileán deiridh</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Taispeántar físeán molta ar an scáileán deiridh</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Tá an t-athsheinnm seo ag obair nuair a bhíonn 'Uathsheinnm an chéad fhíseán eile' múchta.
 
 Is féidir an t-athsheinnm seo a athrú i socruithe YouTube:
 Socruithe → Athsheinnm → Uathsheinnm an chéad fhíseán eile"</string>

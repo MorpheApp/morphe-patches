@@ -145,9 +145,12 @@ Schimbari incluse:
   <string name="morphe_hide_you_may_like_section_summary_on">Secţiunea \"You may like\" este ascunsă</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Secţiunea \"You may like\" este afișată</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Ascunde Doodle-urile YouTube</string>
-  <string name="morphe_hide_doodles_summary_on">Animația YouTube Doodles de pe logo este ascunsă.</string>
-  <string name="morphe_hide_doodles_summary_off">Animația Doodles YouTube pe logo este afișată</string>
+  <string name="morphe_hide_youtube_doodles_title">Ascunde Doodle-urile YouTube</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Animația YouTube Doodles de pe logo este ascunsă.</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Animația Doodles YouTube pe logo este afișată</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"Doodle-urile YouTube sunt afișate câteva zile pe an în diverse părți ale lumii.
+
+Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personalizate."</string>
   <string name="morphe_hide_channel_bar_title">Ascunde bara de canal</string>
   <string name="morphe_hide_channel_bar_summary_on">Bara de canal este ascunsă</string>
   <string name="morphe_hide_channel_bar_summary_off">Bara de canal este afișată</string>
@@ -306,8 +309,7 @@ Schimbari incluse:
   <string name="morphe_hide_comments_carousel_title">Activează filtru carusel comentarii</string>
   <string name="morphe_hide_comments_carousel_summary_on">Filtru carusel comentarii este activat</string>
   <string name="morphe_hide_comments_carousel_summary_off">Filtru carousel comentarii este dezactivat</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Notă
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Notă:
 • Asigurați-vă că introduceți exact numele elementului carousel (de exemplu, Întrebare, Hype acest videoclip, Ascultă pe YouTube Music, etc.).
 • Ascunderea elementelor carousel poate avea efecte secundare neintenționate.
 • Dacă toate elementele carousel sunt ascunse, întreaga secțiune de comentarii va fi, de asemenea, ascunsă."</string>
@@ -704,10 +706,9 @@ Cookie-urile vor fi salvate automatik daca sunt valide"</string>
   <string name="morphe_hide_navigation_bar_title">Ascunde bara de navigare</string>
   <string name="morphe_hide_navigation_bar_summary_on">Bara de navigare este ascunsă</string>
   <string name="morphe_hide_navigation_bar_summary_off">Bara de navigare este afișată</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Aceasta ascunde complet bara de navigare, inclusiv tab-ul You.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Aceasta ascunde complet bara de navigare, inclusiv fila 'You'.
 
-Pentru a accesa Setări:
-Deschideți orice videoclip → Deschideți meniul Calitate → Dați clic pe ‘Setări &gt; Preferințe de Calitate Video’ din partea de jos."</string>
+Pentru a accesa Setări, activați butonul Setări prin General → Bara de instrumente → Afișează Setări."</string>
   <string name="morphe_narrow_navigation_buttons_title">Activează butoane de navigare înguste</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Spatiul între butoane de navigare este îngust</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Spatiul între butoane de navigare este normal</string>
@@ -715,8 +716,8 @@ Deschideți orice videoclip → Deschideți meniul Calitate → Dați clic pe �
   <string name="morphe_navigation_bar_animations_summary_on">Tranzițiile de navigare sunt animate</string>
   <string name="morphe_navigation_bar_animations_summary_off">Tranzițiile de navigare nu sunt animate</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Dezactivează ascunderea automată a barei de navigare</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Bara de navigare nu se va ascunde automat</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Bara de navigare se poate ascunde automat</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Bara de navigare nu se va ascunde la derulare</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Bara de navigare se va ascunde la derulare</string>
   <string name="morphe_disable_translucent_status_bar_title">Dezactivează bara de stare translucidă</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bara de stare este opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bara de stare este opaca sau translucida</string>
@@ -1008,10 +1009,10 @@ Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'An
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Bara de navigare este ascunsă</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Bara de navigare este afișată</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Ascunde videoclipul sugerat de pe ecranul final</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Videoul sugerat de pe ecranul final este ascuns</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Videoclipul sugerat de pe ecranul final este afișat</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Această configurare funcționează doar dacă 'Reproduceți următorul video' este dezactivat.
+  <string name="morphe_hide_end_screen_suggested_video_title">Ascunde videoclipul sugerat de pe ecranul final</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Videoul sugerat de pe ecranul final este ascuns</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Videoclipul sugerat de pe ecranul final este afișat</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Această configurare funcționează doar dacă 'Reproduceți următorul video' este dezactivat.
 
 Puteți schimba aceasta în YouTube:
 Setări → Reproducere (sau Autoreproducere) → Reproduceți următorul video"</string>

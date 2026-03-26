@@ -145,9 +145,12 @@ Thay đổi bao gồm:
   <string name="morphe_hide_you_may_like_section_summary_on">Phần \'Bạn có thể thích\' đã bị ẩn</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Phần \'Bạn có thể thích\' được hiển thị</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Ẩn YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Hoạt ảnh YouTube Doodles trên logo đã bị ẩn</string>
-  <string name="morphe_hide_doodles_summary_off">Hoạt ảnh YouTube Doodles trên logo được hiển thị</string>
+  <string name="morphe_hide_youtube_doodles_title">Ẩn YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Hoạt ảnh YouTube Doodles trên logo đã bị ẩn</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Hoạt ảnh YouTube Doodles trên logo được hiển thị</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles được hiển thị vài ngày mỗi năm ở nhiều nơi trên thế giới.
+
+Hiển thị YouTube Doodles có thể ngăn chặn các tiêu đề tùy chỉnh hiển thị."</string>
   <string name="morphe_hide_channel_bar_title">Ẩn nút kênh</string>
   <string name="morphe_hide_channel_bar_summary_on">Nút kênh đã bị ẩn</string>
   <string name="morphe_hide_channel_bar_summary_off">Nút kênh được hiển thị</string>
@@ -306,8 +309,7 @@ Thay đổi bao gồm:
   <string name="morphe_hide_comments_carousel_title">Bật bộ lọc bình luận</string>
   <string name="morphe_hide_comments_carousel_summary_on">Bộ lọc bình luận đã được bật</string>
   <string name="morphe_hide_comments_carousel_summary_off">Bộ lọc bình luận đã tắt</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Lưu ý
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Lưu ý:
 • Hãy nhập chính xác tên mục (ví dụ như: Hỏi, Khuấy động video này, Nghe trên Youtube Music, v.v...).
 • Ẩn các mục cũng có thể khiến giao diện bị lỗi.
 • Nếu ẩn hết các mục, thì toàn bộ bình luận cũng ẩn theo."</string>
@@ -708,19 +710,18 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_hide_navigation_bar_title">Ẩn thanh điều hướng</string>
   <string name="morphe_hide_navigation_bar_summary_on">Thanh điều hướng đang ẩn</string>
   <string name="morphe_hide_navigation_bar_summary_off">Thanh điều hướng đang hiển thị</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Thao tác này sẽ ẩn hoàn toàn thanh điều hướng kể cả thẻ Bạn.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Tùy chọn này sẽ ẩn trên hoàn toàn thanh điều hướng, kể cả tab 'Bạn'.
 
-Để mở cài đặt:
-Mở video bất kỳ → Mở menu Chất lượng → Bấm vào 'Cài đặt &gt; Lựa chọn ưu tiên về chất lượng video' ở dưới cùng."</string>
+Để vào Cài đặt, hãy bật nút Cài đặt trong Chung → Thanh công cụ → Hiện Cài đặt."</string>
   <string name="morphe_narrow_navigation_buttons_title">Thu hẹp nút điều hướng</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Khoảng cách giữa các nút trên thanh điều hướng sẽ hẹp hơn</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Khoảng cách giữa các nút trên thanh điều hướng như bình thường</string>
   <string name="morphe_navigation_bar_animations_title">Bật hiệu ứng thanh điều hướng</string>
   <string name="morphe_navigation_bar_animations_summary_on">Chuyển điều hướng sẽ có hiệu ứng</string>
   <string name="morphe_navigation_bar_animations_summary_off">Chuyển điều hướng không có hiệu ứng</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Tắt tự ẩn thanh điều hướng</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Thanh điều hướng sẽ không tự ẩn</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Thanh điều hướng có thể tự ẩn</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Tắt tự động ẩn thanh điều hướng</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Thanh điều hướng sẽ không ẩn khi bạn lướt trang video</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Thanh điều hướng sẽ ẩn khi bạn lướt trang video</string>
   <string name="morphe_disable_translucent_status_bar_title">Vô hiệu hóa thanh trạng thái trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Thanh trạng thái sẽ không còn trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Thanh trạng thái sẽ trở nên mờ hoặc trong suốt</string>
@@ -1012,10 +1013,10 @@ Bấm giữ để mở cài đặt Morphe"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Thanh điều hướng đã bị ẩn</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Thanh điều hướng được hiển thị</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Ẩn video được đề xuất ở màn hình kết thúc</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Video đề xuất ở màn hình kết thúc đã bị ẩn</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Video đề xuất ở màn hình kết thúc được hiển thị</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Cài đặt này chỉ có hiệu lực khi 'Tự động phát video tiếp theo' đang tắt.
+  <string name="morphe_hide_end_screen_suggested_video_title">Ẩn video được đề xuất ở màn hình kết thúc</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Video đề xuất ở màn hình kết thúc đã bị ẩn</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Video đề xuất ở màn hình kết thúc được hiển thị</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Cài đặt này chỉ có hiệu lực khi 'Tự động phát video tiếp theo' đang tắt.
 
 Cách tắt 'Tự động phát video tiếp theo':
 Cài đặt → Phát (hoặc Tự động phát) → Tự động phát video tiếp theo"</string>

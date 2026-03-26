@@ -1,5 +1,5 @@
 {
-  "version": "1.22.0-dev.5",
+  "version": "1.22.0-dev.6",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -1264,8 +1264,8 @@
       "options": []
     },
     {
-      "name": "Hide player flyout menu items",
-      "description": "Adds options to hide menu items that appear when pressing the gear icon in the video player.",
+      "name": "Hide player flyout menu components",
+      "description": "Adds options to hide menu components that appear when pressing the gear icon in the video player.",
       "use": true,
       "dependencies": [
         "BytecodePatch",

@@ -1,3 +1,20 @@
+# [1.22.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.22.0-dev.5...v1.22.0-dev.6) (2026-03-26)
+
+
+### Bug Fixes
+
+* **Settings:** Improve back gesture, prevent double-clicks, and fix theme update ([#920](https://github.com/MorpheApp/morphe-patches/issues/920)) ([a2e86d2](https://github.com/MorpheApp/morphe-patches/commit/a2e86d28171e13179d672766929f9c7e9afe3003))
+
+
+### Features
+
+* Set notification icon independently of the launcher icon ([#1006](https://github.com/MorpheApp/morphe-patches/issues/1006)) ([f21c62d](https://github.com/MorpheApp/morphe-patches/commit/f21c62de9e2897c5096d1545a40cfe21c6c25f44))
+
+
+### Performance Improvements
+
+* **Litho filtering:** Use Boyer-Moore-Horspool algorithm instead of KMP ([#960](https://github.com/MorpheApp/morphe-patches/issues/960)) ([5b65548](https://github.com/MorpheApp/morphe-patches/commit/5b655488bea90372ccf0e103cdb3229b51b8bfbd))
+
 # [1.22.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.22.0-dev.4...v1.22.0-dev.5) (2026-03-24)
 
 

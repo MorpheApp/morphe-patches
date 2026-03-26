@@ -146,9 +146,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">Розділ \"Вам може сподобатися\" приховано</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Розділ \"Вам може сподобатися\" показується</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Приховати YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Анімацію YouTube Doodles на логотипі приховано</string>
-  <string name="morphe_hide_doodles_summary_off">Анімація YouTube Doodles на логотипі показується</string>
+  <string name="morphe_hide_youtube_doodles_title">Приховати YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Анімацію YouTube Doodles на логотипі приховано</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Анімація YouTube Doodles на логотипі показується</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodle показують кілька днів на рік у різних частинах світу.
+
+Показ YouTube Doodle може перешкоджати відображанню власних заголовків."</string>
   <string name="morphe_hide_channel_bar_title">Приховати панель каналу</string>
   <string name="morphe_hide_channel_bar_summary_on">Панель каналу під відеоплеєром приховано</string>
   <string name="morphe_hide_channel_bar_summary_off">Панель каналу під відеоплеєром показується</string>
@@ -307,8 +310,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">Увімкнути фільтр каруселі коментарів</string>
   <string name="morphe_hide_comments_carousel_summary_on">Фільтр каруселі коментарів увімкнено</string>
   <string name="morphe_hide_comments_carousel_summary_off">Фільтр каруселі коментарів вимкнено</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Примітка
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Примітка:
 • Обов’язково введіть точну назву елемента каруселі (наприклад, Запитати, Розрекламувати це відео, Слухати на YouTube Music тощо).
 • Приховування елементів каруселі може мати небажані побічні ефекти.
 • Якщо всі елементи каруселі приховані, весь розділ коментарів також буде прихований."</string>
@@ -709,19 +711,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">Приховати панель навігації</string>
   <string name="morphe_hide_navigation_bar_summary_on">Панель навігації приховано</string>
   <string name="morphe_hide_navigation_bar_summary_off">Панель навігації показується</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Це повністю приховує панель навігації, включаючи вкладку \"Ви\".
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Це повністю приховує навігаційну панель, включно з вкладкою «You».
 
-Щоб перейти до Налаштувань:
-Відкрити будь-яке відео → Відкрити меню Якість → Натиснути ‘Налаштування > Параметри якості відео’ у нижній частині екрана."</string>
+Щоб отримати доступ до Налаштувань, увімкніть кнопку Налаштувань через Загальне → Панель інструментів → Показати Налаштування."</string>
   <string name="morphe_narrow_navigation_buttons_title">Увімкнути вузькі кнопки навігації</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Відстань між кнопками навігації невелика</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Відстань між кнопками навігації є нормальною</string>
   <string name="morphe_navigation_bar_animations_title">Увімкнути анімації панелі навігації</string>
   <string name="morphe_navigation_bar_animations_summary_on">Переходи навігації анімовані</string>
   <string name="morphe_navigation_bar_animations_summary_off">Переходи навігації не анімовані</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Вимкнути автоматичне приховування панелі навігації</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Панель навігації не буде автоматично приховуватися</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Панель навігації може автоматично приховуватися</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Вимкнути автоприховування панелі навігації</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Панель навігації не приховуватиметься під час прокручування</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Панель навігації приховуватиметься під час прокручування</string>
   <string name="morphe_disable_translucent_status_bar_title">Вимкнути напівпрозорість рядка стану</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Рядок стану непрозорий</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Рядок стану непрозорий або напівпрозорий</string>
@@ -1013,10 +1014,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Панель навігації приховано</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Панель навігації показується</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Приховати рекомендоване відео наприкінці перегляду</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Рекомендоване відео наприкінці перегляду приховано</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Рекомендоване відео наприкінці перегляду показується</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Цей параметр працює, лише якщо вимкнено налаштування \"Автовідтворення наступного відео\".
+  <string name="morphe_hide_end_screen_suggested_video_title">Приховати рекомендоване відео наприкінці перегляду</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Рекомендоване відео наприкінці перегляду приховано</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Рекомендоване відео наприкінці перегляду показується</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Цей параметр працює, лише якщо вимкнено налаштування \"Автовідтворення наступного відео\".
 
 Ви можете змінити це в YouTube:
 Налаштування → Відтворення (або Автовідтворення) → Автовідтворення наступного відео"</string>

@@ -145,9 +145,12 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_you_may_like_section_summary_on">Saattaisit pitää -osio piilotetaan</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Saattaisit pitää -osio näytetään</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Piilota YouTube Doodlet</string>
-  <string name="morphe_hide_doodles_summary_on">Logon YouTube Doodles -animaatio piilotetaan</string>
-  <string name="morphe_hide_doodles_summary_off">Logon YouTube Doodles -animaatio näytetään</string>
+  <string name="morphe_hide_youtube_doodles_title">Piilota YouTube Doodlet</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Logon YouTube Doodles -animaatio piilotetaan</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Logon YouTube Doodles -animaatio näytetään</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles näytetään muutaman päivän ajan vuosittain eri puolilla maailmaa.
+
+YouTube Doodlen näyttäminen saattaa estää mukautettujen otsikoiden näyttämisen."</string>
   <string name="morphe_hide_channel_bar_title">Piilota kanavapalkki</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanavapalkki piilotetaan</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanavapalkki näytetään</string>
@@ -306,7 +309,7 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_comments_carousel_title">Ota kommenttikarusselin suodatin käyttöön</string>
   <string name="morphe_hide_comments_carousel_summary_on">Kommenttien karusellisuodatin on käytössä</string>
   <string name="morphe_hide_comments_carousel_summary_off">Kommenttikarusselin suodatin on poissa käytöstä</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Huomio
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Huomio:
 
 • Varmista, että syötät täsmälleen carousel-kohteen nimen (esim. Kysy, Mainosta tämä video, Kuuntele YouTubessa, jne.).
 • Carousel-kohteiden piilottamisella voi olla ei-toivottuja sivuvaikutuksia.
@@ -710,19 +713,18 @@ Evästeet tallennetaan automaattisesti, jos ne ovat kelvollisia"</string>
   <string name="morphe_hide_navigation_bar_title">Piilota navigointipalkki</string>
   <string name="morphe_hide_navigation_bar_summary_on">Navigointipalkki piilotetaan</string>
   <string name="morphe_hide_navigation_bar_summary_off">Navigointipalkki näytetään</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Tämä piilottaa kokonaan navigointipalkin, mukaan lukien 'Tilit' -välilehden.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Tämä piilottaa kokonaan navigointipalkin, mukaan lukien 'Sinun' -välilehden.
 
-Asetuksiin pääsyä varten:
-Avaa mikä tahansa video → Avaa Laadinta-valikko → Napauta 'Asetukset > Videolaadinta' alareunassa."</string>
+Saadaksesi asetukset, ota Asetukset-painike käyttöön kohdasta Yleiset → Työkalupalkki → Näytä asetukset."</string>
   <string name="morphe_narrow_navigation_buttons_title">Ota käyttöön kapeat navigointipainikkeet</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Navigaatiopainikkeiden väli on kapea</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Navigaatiopainikkeiden väli on normaali</string>
   <string name="morphe_navigation_bar_animations_title">Ota käyttöön navigaatiopalkin animaatiot</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigaatiosiirtymät animoidaan</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigaatiosiirtymiä ei animoida</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Poista navigointipalkin automaattinen piilottaminen</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigointipalkki ei piiloudu automaattisesti</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigointipalkki saattaa piiloutua automaattisesti</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Poista automaattisen piilottamisen käytöstä navigointipalkissa</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigaatiopalkki ei piilou skrollauksen aikana</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigaatiopalkki piiloutuu skrollauksen aikana</string>
   <string name="morphe_disable_translucent_status_bar_title">Poista läpikuultava tilapalkki käytöstä</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Tilapalkki on läpinäkymätön</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Tilapalkki on läpinäkymätön tai läpikuultava</string>
@@ -1014,10 +1016,10 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigointipalkki piilotetaan</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigointipalkki näytetään</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Piilota loppunäytön ehdotettu video</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Loppunäytön ehdotettu video on piilotettu</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Loppunäytön ehdotettu video näytetään</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Tämä asetus toimii vain, jos 'Toista seuraava video' on poistettu.
+  <string name="morphe_hide_end_screen_suggested_video_title">Piilota loppunäytön ehdotettu video</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Loppunäytön ehdotettu video on piilotettu</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Loppunäytön ehdotettu video näytetään</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Tämä asetus toimii vain, jos 'Toista seuraava video' on poistettu.
 
 Voit muuttaa tätä YouTubessa:
 Asetukset → Toisto (tai Autoplay) → Toista seuraava video"</string>

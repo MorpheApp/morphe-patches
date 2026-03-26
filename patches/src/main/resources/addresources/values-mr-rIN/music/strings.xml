@@ -17,19 +17,104 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- layout.branding.customBrandingPatch -->
+  <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">हेडर लोगो</string>
+  <string name="morphe_header_logo_entry_1">डीफॉल्ट</string>
+  <string name="morphe_header_logo_entry_3">कस्टम</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">अबाऊट</string>
+  <string name="morphe_settings_music_screen_1_ads_title">जाहिराती</string>
+  <string name="morphe_settings_music_screen_2_general_title">सामान्य</string>
+  <string name="morphe_settings_music_screen_3_player_title">प्लेअर</string>
+  <string name="morphe_settings_music_screen_4_misc_title">विविध</string>
   <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">व्हिडिओ जाहिराती लपवा</string>
+  <string name="morphe_music_hide_video_ads_summary_on">व्हिडिओ जाहिराती लपवल्या आहेत</string>
+  <string name="morphe_music_hide_video_ads_summary_off">व्हिडिओ जाहिराती दाखवल्या जात आहेत</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">कायमची पुनरावृत्ती सक्षम करा</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">कायमची पुनरावृत्ती सुरू आहे</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">कायमची पुनरावृत्ती बंद आहे</string>
   <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">कास्ट बटण लपवा</string>
+  <string name="morphe_music_hide_cast_button_summary_on">कास्ट बटण लपवलेले आहे</string>
+  <string name="morphe_music_hide_cast_button_summary_off">कास्ट बटण दिसत आहे</string>
+  <string name="morphe_music_hide_history_button_title">इतिहास बटण लपवा</string>
+  <string name="morphe_music_hide_history_button_summary_on">इतिहास बटण लपवलेले आहे</string>
+  <string name="morphe_music_hide_history_button_summary_off">इतिहास बटण दिसत आहे</string>
+  <string name="morphe_music_hide_notification_button_title">सूचना बटण लपवा</string>
+  <string name="morphe_music_hide_notification_button_summary_on">सूचना बटण लपवलेले आहे</string>
+  <string name="morphe_music_hide_notification_button_summary_off">सूचना बटण दिसत आहे</string>
+  <string name="morphe_music_hide_search_button_title">शोध बटण लपवा</string>
+  <string name="morphe_music_hide_search_button_summary_on">शोध बटण लपवलेले आहे</string>
+  <string name="morphe_music_hide_search_button_summary_off">शोध बटण दिसत आहे</string>
+  <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">सुरुवात पृष्ठ बदला</string>
+  <string name="morphe_change_start_page_entry_default">डीफॉल्ट</string>
+  <string name="morphe_change_start_page_entry_charts">चार्ट्स</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">नंतरसाठी एपिसोड</string>
+  <string name="morphe_change_start_page_entry_explore">एक्सप्लोर</string>
+  <string name="morphe_change_start_page_entry_history">इतिहास</string>
+  <string name="morphe_change_start_page_entry_library">लायब्ररी</string>
+  <string name="morphe_change_start_page_entry_liked_music">आवडलेले संगीत</string>
+  <string name="morphe_change_start_page_entry_playlists">प्लेलिस्ट्स</string>
+  <string name="morphe_change_start_page_entry_search">शोध</string>
+  <string name="morphe_change_start_page_entry_subscriptions">सबस्क्रिप्शन</string>
   <!-- layout.compactheader.hideCategoryBar -->
-  <!-- layout.miniplayercolor.changeMiniplayerColor -->
+  <string name="morphe_music_hide_category_bar_title">श्रेणी बार लपवा</string>
+  <string name="morphe_music_hide_category_bar_summary_on">श्रेणी बार लपवलेला आहे</string>
+  <string name="morphe_music_hide_category_bar_summary_off">श्रेणी बार दिसत आहे</string>
+  <!-- layout.miniplayer.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">मिनीप्लेअर रंग बदला</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">मिनीप्लेअर रंग पूर्ण स्क्रीन प्लेअरशी जुळतो</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">मिनीप्लेअर डीफॉल्ट रंग वापरतो</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">मिनीप्लेअरमध्ये पुढील बटण दर्शवा</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">पुढील बटण मिनीप्लेअरमध्ये दर्शविले जाते</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">पुढील बटण मिनीप्लेअरमध्ये दर्शविले जात नाही</string>
+  <string name="morphe_music_miniplayer_previous_button_title">मिनीप्लेअरमध्ये मागील बटण दर्शवा</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">मागील बटण मिनीप्लेअरमध्ये दर्शविले जाते</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">मागील बटण मिनीप्लेअरमध्ये दर्शविले जात नाही</string>
+  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">फोर्स केलेले मिनीप्लेअर सक्षम करा</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">प्लेबॅक बदलताना मिनीप्लेअर कमीतकमी ठेवलेला राहील</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">प्लेबॅक बदलताना मिनीप्लेअर फुलस्क्रीनवर विस्तारते</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">नेव्हिगेशन बार</string>
+  <string name="morphe_music_navigation_bar_screen_summary">नेव्हिगेशन बार बटणे लपवा किंवा बदला</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">होम लपवा</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">होम बटण लपवलेले आहे</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">होम बटण दिसत आहे</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">सॅम्पल्स लपवा</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">सॅम्पल्स बटण लपवलेले आहे</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">सॅम्पल्स बटण दिसत आहे</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">एक्सप्लोर लपवा</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">एक्सप्लोर बटण लपवलेले आहे</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">एक्सप्लोर बटण दिसत आहे</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">लायब्ररी लपवा</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">लायब्ररी बटण लपवलेले आहे</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">लायब्ररी बटण दिसत आहे</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">अपग्रेड लपवा</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">अपग्रेड बटण लपवलेले आहे</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">अपग्रेड बटण दर्शविले जाईल</string>
+  <string name="morphe_music_hide_navigation_bar_title">नेव्हिगेशन बार लपवा</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">नेव्हिगेशन बार लपलेला आहे</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">नेव्हिगेशन बार दर्शविला जाईल</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">नेव्हिगेशन बटण लेबले लपवा</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">लेबले लपलेले आहेत</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">लेबले दर्शविली जातील</string>
   <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\'Get Music Premium\' लेबल लपवा</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">लेबल लपलेले आहे</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">लेबल दर्शविले जाईल</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">अपग्रेड बटण लपवा</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">बटण लपलेले आहे</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">बटण दर्शविले जाईल</string>
 </resources>

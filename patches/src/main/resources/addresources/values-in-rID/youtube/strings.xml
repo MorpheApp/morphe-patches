@@ -144,9 +144,12 @@ Perubahan termasuk:
   <string name="morphe_hide_you_may_like_section_summary_on">Bagian Anda mungkin suka disembunyikan</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Bagian Anda mungkin suka ditampilkan</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Sembunyikan YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Animasi YouTube Doodles pada logo disembunyikan</string>
-  <string name="morphe_hide_doodles_summary_off">Animasi YouTube Doodles pada logo ditampilkan</string>
+  <string name="morphe_hide_youtube_doodles_title">Sembunyikan YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Animasi YouTube Doodles pada logo disembunyikan</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Animasi YouTube Doodles pada logo ditampilkan</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles ditampilkan beberapa hari setiap tahun di berbagai belahan dunia.
+
+Menampilkan YouTube Doodles mungkin mencegah menampilkan header khusus."</string>
   <string name="morphe_hide_channel_bar_title">Sembunyikan bilah saluran</string>
   <string name="morphe_hide_channel_bar_summary_on">Bilah saluran disembunyikan</string>
   <string name="morphe_hide_channel_bar_summary_off">Bilah saluran ditampilkan</string>
@@ -305,9 +308,10 @@ Perubahan termasuk:
   <string name="morphe_hide_comments_carousel_title">Aktifkan penyaring komentar yang berputar</string>
   <string name="morphe_hide_comments_carousel_summary_on">Penyaring komentar yang berputar diaktifkan</string>
   <string name="morphe_hide_comments_carousel_summary_off">Penyaring komentar yang berputar dinonaktifkan</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"• Pastikan untuk memasukkan nama item yang berputar yang tepat (misalnya: Tanya, Hype video ini, Dengarkan di YouTube Music, dll.).
-• Menyembunyikan item yang berputar mungkin memiliki efek samping yang tidak diinginkan.
-• Jika semua item yang berputar disembunyikan, seluruh bagian komentar juga akan disembunyikan."</string>
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Catatan:
+• Pastikan untuk memasukkan nama item carousel yang tepat (misalnya: Tanya, Hype video ini, Dengarkan di YouTube Music, dll.).
+• Menyembunyikan item carousel mungkin memiliki efek samping yang tidak diinginkan.
+• Jika semua item carousel disembunyikan, seluruh bagian komentar juga akan disembunyikan."</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Penyaring komentar yang berputar</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Masukkan nama komentar yang berputar untuk disaring, satu per baris</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Sembunyikan ringkasan chat AI</string>
@@ -705,19 +709,18 @@ Cookie akan disimpan secara otomatis jika sah"</string>
   <string name="morphe_hide_navigation_bar_title">Sembunyikan bilah navigasi</string>
   <string name="morphe_hide_navigation_bar_summary_on">Bilah navigasi disembunyikan</string>
   <string name="morphe_hide_navigation_bar_summary_off">Bilah navigasi ditampilkan</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ini sepenuhnya menyembunyikan bilah navigasi termasuk tab Anda.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ini sepenuhnya menyembunyikan bilah navigasi, termasuk tab 'Anda'.
 
-Untuk mengakses Pengaturan:
-Buka video apa pun → Buka menu Kualitas → Ketuk 'Pengaturan &gt; Preferensi Kualitas Video' di bagian bawah."</string>
+Untuk mengakses Pengaturan, aktifkan tombol Pengaturan melalui Umum → Bilah Alat → Tampilkan Pengaturan."</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktifkan tombol navigasi sempit</string>
   <string name="morphe_narrow_navigation_buttons_summary_on"> Jarak antara tombol navigasi cukup sempit</string>
   <string name="morphe_narrow_navigation_buttons_summary_off"> Jarak antara tombol navigasi cukup normal</string>
   <string name="morphe_navigation_bar_animations_title">Aktifkan animasi bilah navigasi</string>
   <string name="morphe_navigation_bar_animations_summary_on">Transisi navigasi dianimasikan</string>
   <string name="morphe_navigation_bar_animations_summary_off">Transisi navigasi tidak dianimasikan</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Nonaktifkan penyembunyian otomatis bilah navigasi</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Bilah navigasi tidak akan tersembunyi otomatis</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Bilah navigasi mungkin tersembunyi otomatis</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Nonaktifkan otomatis menyembunyikan bilah navigasi</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Bilah navigasi tidak akan tersembunyi saat menggulir</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Bilah navigasi akan tersembunyi saat menggulir</string>
   <string name="morphe_disable_translucent_status_bar_title">Nonaktifkan bilah status tembus cahaya</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bilah status buram</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bilah status buram atau tembus pandang</string>
@@ -1009,10 +1012,10 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Bilah navigasi disembunyikan</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Bilah navigasi ditampilkan</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Sembunyikan video yang disarankan di layar akhir</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Layar akhir video yang disarankan disembunyikan</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Video yang disarankan di layar akhir ditampilkan</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Pengaturan ini hanya berfungsi jika 'Putar otomatis video berikutnya' dimatikan.
+  <string name="morphe_hide_end_screen_suggested_video_title">Sembunyikan video yang disarankan di layar akhir</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Layar akhir video yang disarankan disembunyikan</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Video yang disarankan di layar akhir ditampilkan</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Pengaturan ini hanya berfungsi jika 'Putar otomatis video berikutnya' dimatikan.
 
 Anda dapat mengubahnya di YouTube:
 Pengaturan → Pemutaran (atau Putar otomatis) → Putar otomatis video berikutnya"</string>

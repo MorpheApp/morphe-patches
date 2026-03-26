@@ -144,9 +144,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">已隱藏「你可能會喜歡」區塊</string>
   <string name="morphe_hide_you_may_like_section_summary_off">已顯示「你可能會喜歡」區塊</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">隱藏 YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">已隱藏 YouTube 標誌上的 Doodles 動畫</string>
-  <string name="morphe_hide_doodles_summary_off">已顯示 YouTube 標誌上的 Doodles 動畫</string>
+  <string name="morphe_hide_youtube_doodles_title">隱藏 YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">已隱藏 YouTube 標誌上的 Doodles 動畫</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">已顯示 YouTube 標誌上的 Doodles 動畫</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles 在一年中的幾天內會在世界各地的不同地區顯示。
+
+顯示 YouTube Doodles 可能會阻止自訂標題顯示。"</string>
   <string name="morphe_hide_channel_bar_title">隱藏頻道欄</string>
   <string name="morphe_hide_channel_bar_summary_on">已隱藏頻道欄</string>
   <string name="morphe_hide_channel_bar_summary_off">已顯示頻道欄</string>
@@ -305,8 +308,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">啟用評論輪播過濾器</string>
   <string name="morphe_hide_comments_carousel_summary_on">「意見」回覆串已啟用</string>
   <string name="morphe_hide_comments_carousel_summary_off">「意見」回覆串已啟用</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"注意
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"注意：
 • 請務必輸入輪播項目確切的名稱（例如：詢問、熱門影片、在 YouTube Music 中聆聽等）。
 • 隱藏輪播項目可能會產生意想不到的副作用。
 • 如果所有輪播項目都被隱藏，整個評論區也會被隱藏。"</string>
@@ -707,19 +709,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">隱藏導覽列</string>
   <string name="morphe_hide_navigation_bar_summary_on">已隱藏導覽列</string>
   <string name="morphe_hide_navigation_bar_summary_off">已顯示導覽列</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"這會完全隱藏導航欄，包括「您」標籤。
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"這會完全隱藏導航欄，包括「你」標籤。
 
-要存取設定：
-開啟任何影片 → 開啟「畫質」選單 → 點擊底部「設定 > 影片畫質偏好設定」。"</string>
+要存取設定，請透過「一般」→「工具列」→「顯示設定」啟用設定按鈕。"</string>
   <string name="morphe_narrow_navigation_buttons_title">啟用窄導航按鈕</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">導航按鈕間距離狹窄</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">導航按鈕間距離正常</string>
   <string name="morphe_navigation_bar_animations_title">啟用導覽列動畫</string>
   <string name="morphe_navigation_bar_animations_summary_on">導覽轉換會進行動畫</string>
   <string name="morphe_navigation_bar_animations_summary_off">導覽轉換不會進行動畫</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">停用導覽列自動隱藏</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">導覽列將不會自動隱藏</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">導覽列可能會自動隱藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">停用自動隱藏導航欄</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">瀏覽時導航欄不會隱藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">瀏覽時導航欄會隱藏</string>
   <string name="morphe_disable_translucent_status_bar_title">停用半透明狀態列</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">狀態列為不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">狀態列為不透明或半透明</string>
@@ -1011,10 +1012,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">已隱藏導覽列</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">已顯示導覽列</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">隱藏片尾推薦影片</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">已隱藏片尾推薦影片</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">已顯示片尾推薦影片</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"此設定僅在關閉「自動播放下一影片」時有效。
+  <string name="morphe_hide_end_screen_suggested_video_title">隱藏片尾推薦影片</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">已隱藏片尾推薦影片</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">已顯示片尾推薦影片</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"此設定僅在關閉「自動播放下一影片」時有效。
 
 您可以在YouTube中更改此設定：
 設定 → 播放（或自動播放） → 自動播放下一影片"</string>

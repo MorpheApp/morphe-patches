@@ -125,9 +125,9 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_you_may_like_section_summary_on">Bəyənə bilərsiniz bölməsi gizlidir</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Bəyənə bilərsiniz bölməsi görünür</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodle-ları gizlət</string>
-  <string name="morphe_hide_doodles_summary_on">YouTube Doodles animasiyası simvolda gizlidir</string>
-  <string name="morphe_hide_doodles_summary_off">YouTube Doodles animasiyası simvolda görünür</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodle-ları gizlət</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles animasiyası simvolda gizlidir</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles animasiyası simvolda görünür</string>
   <string name="morphe_hide_channel_bar_title">Kanal çubuğunu gizlət</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanal çubuğu gizlidir</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanal çubuğu göstərilir</string>
@@ -856,8 +856,8 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Fəaliyyət çubuğu gizlidir</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Fəaliyyət çubuğu göstərilir</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Son ekran bildirilən videonu gizlət</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Son ekranda bildirilən video göstərilir</string>
+  <string name="morphe_hide_end_screen_suggested_video_title">Son ekran bildirilən videonu gizlət</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Son ekranda bildirilən video göstərilir</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">Əlaqəli videoları gizlət</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
@@ -1445,9 +1445,9 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər."</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• Video 01:00-da dayana bilər və ya bəzi bölgələrdə mövcud olmaya bilər</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Səs treki menyusu çatışmır</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodlayıcı yoxdur</string>
-  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersiv rejimi əlçatan deyil</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR geniş rejimi əlçatan deyil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit səs yoxdur</string>
-  <string name="morphe_spoof_video_streams_about_js">•  Deobfuscation qırılarsa, oynatma uğursuz ola bilər</string>
+  <string name="morphe_spoof_video_streams_about_js">• Deobfuscation pozularsa, oynatma uğursuz ola bilər</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• \"Orijinal səsi zorla\" əlçatmazdır</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Oynadıcı JavaScript seçimi</string>

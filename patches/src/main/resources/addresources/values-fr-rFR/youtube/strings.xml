@@ -146,9 +146,12 @@ Les changements incluent :
   <string name="morphe_hide_you_may_like_section_summary_on">La section \'Recommandations\' est masquée</string>
   <string name="morphe_hide_you_may_like_section_summary_off">La section \'Recommandations\' est affichée</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Masquer les Doodles YouTube</string>
-  <string name="morphe_hide_doodles_summary_on">L\'animation Doodles sur le logo YouTube est masquée</string>
-  <string name="morphe_hide_doodles_summary_off">L\'animation Doodles sur le logo YouTube est affichée</string>
+  <string name="morphe_hide_youtube_doodles_title">Masquer les Doodles YouTube</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">L\'animation Doodles sur le logo YouTube est masquée</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">L\'animation Doodles sur le logo YouTube est affichée</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"Les Doodles YouTube sont affichés quelques jours par an dans diverses régions du monde.
+
+Afficher les Doodles YouTube peut empêcher l'affichage des en-têtes personnalisés."</string>
   <string name="morphe_hide_channel_bar_title">Masquer la barre de chaîne </string>
   <string name="morphe_hide_channel_bar_summary_on">La barre de chaîne est masquée</string>
   <string name="morphe_hide_channel_bar_summary_off">La barre de chaîne est affichée</string>
@@ -307,8 +310,7 @@ Les changements incluent :
   <string name="morphe_hide_comments_carousel_title">Activer le filtre du carrousel de commentaires</string>
   <string name="morphe_hide_comments_carousel_summary_on">Le filtre du carrousel de commentaires est activé</string>
   <string name="morphe_hide_comments_carousel_summary_off">Le filtre du carrousel de commentaires est désactivé</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Remarque
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Remarque :
 • Assurez-vous de saisir le nom exact de l’élément du carrousel (par ex. Poser une question, Boostez cette vidéo, Écouter sur YouTube Music, etc.).
 • Masquer des éléments du carrousel peut entraîner des effets secondaires inattendus.
 • Si tous les éléments du carrousel sont masqués, toute la section des commentaires sera également masquée."</string>
@@ -709,10 +711,9 @@ Les cookies seront enregistrés automatiquement s'ils sont valides"</string>
   <string name="morphe_hide_navigation_bar_title">Masquer la barre de navigation</string>
   <string name="morphe_hide_navigation_bar_summary_on">La barre de navigation est masquée</string>
   <string name="morphe_hide_navigation_bar_summary_off">La barre de navigation est affichée</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Cela masque complètement la barre de navigation, y compris l’onglet 'Vous'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Cela masque complètement la barre de navigation, y compris l’onglet « Vous ».
 
-Pour accéder aux Paramètres :
-Ouvrez une vidéo → Ouvrez le menu 'Qualité' → Appuyez sur 'Paramètres &gt; Préférences de qualité vidéo' en bas."</string>
+Pour accéder aux paramètres, activez le bouton Paramètres via Général → Barre d’outils → Afficher les paramètres."</string>
   <string name="morphe_narrow_navigation_buttons_title">Activer les boutons de navigation compacts</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">L\'espacement entre les boutons de navigation sont réduit</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">L\'espacement entre les boutons de navigation sont normaux</string>
@@ -721,7 +722,7 @@ Ouvrez une vidéo → Ouvrez le menu 'Qualité' → Appuyez sur 'Paramètres &gt
   <string name="morphe_navigation_bar_animations_summary_off">Les transitions de navigation ne sont pas animées</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Désactiver le masquage automatique de la barre de navigation</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">La barre de navigation ne se masquera pas automatiquement</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barre de navigation peut se masquer automatiquement</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barre de navigation se masquera pendant le défilement</string>
   <string name="morphe_disable_translucent_status_bar_title">Désactiver la barre de notification translucide</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">La barre de notification est opaque</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barre de notification est opaque ou translucide</string>
@@ -1013,10 +1014,10 @@ Pour afficher le menu 'Pste audio', modifier 'Falsifier les flux vidéo' en 'And
   <string name="morphe_hide_shorts_navigation_bar_summary_on">La barre de navigation est masquée</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">La barre de navigation est affichée</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Masquer \'Vidéo suggéréé\' à l\'écran de fin</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">L\'écran de fin suggérant une vidéo est masqué</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">L\'écran de fin suggérant une vidéo est affiché</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ce paramètre ne fonctionne que si 'Lecture automatique de la vidéo suivante' est désactivée.
+  <string name="morphe_hide_end_screen_suggested_video_title">Masquer \'Vidéo suggéréé\' à l\'écran de fin</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">L\'écran de fin suggérant une vidéo est masqué</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">L\'écran de fin suggérant une vidéo est affiché</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Ce paramètre ne fonctionne que si 'Lecture automatique de la vidéo suivante' est désactivée.
 
 Vous pouvez modifier cela dans YouTube :
 Paramètres → Lecture (ou Lecture automatique) → Lecture automatique de vidéo suivante"</string>

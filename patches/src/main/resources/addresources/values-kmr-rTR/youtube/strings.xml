@@ -148,9 +148,10 @@ Guherînan têne xistine:
   <string name="morphe_hide_you_may_like_section_summary_on">Beşa \'Hûn dikin mêzankin\' veşartin e</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Beşa \'Hûn dikin mêzankin\' nîşandin e</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodles veşêrin</string>
-  <string name="morphe_hide_doodles_summary_on">Animasyona YouTube Doodles di logo de veşartin</string>
-  <string name="morphe_hide_doodles_summary_off">Animasyona YouTube Doodles di logo de nîşandin</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodles veşêrin</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Animasyona YouTube Doodles di logo de veşartin</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Animasyona YouTube Doodles di logo de nîşandin</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles di çend rojên salê de li qeydarên cûda yên cîhanê nîşan darê."</string>
   <string name="morphe_hide_channel_bar_title">Barê kanalê veşêrin</string>
   <string name="morphe_hide_channel_bar_summary_on">Barê kanalê veşartin</string>
   <string name="morphe_hide_channel_bar_summary_off">Barê kanalê nîşandin</string>
@@ -309,11 +310,10 @@ Guherînan têne xistine:
   <string name="morphe_hide_comments_carousel_title">Filtra karuselê komentaran çalak bike</string>
   <string name="morphe_hide_comments_carousel_summary_on">Filtra karusêla komentaran çalak kirin</string>
   <string name="morphe_hide_comments_carousel_summary_off">Filtra karusêla komentaran qut kirin</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"
-
-• Evîn bike ku navê eşerê carousel bi rastî vafre (bo nimûne, Bifikirî, Bê celebekin vîdyoyê, Gula li YouTube Music, hwd.).
-• Vebijarkirina eşerên carousel dikare bandorên ne xwezîyan hebe.
-• Ger hemû eşerên carousel veşêwirin, hemû beşa şîroveyan jî wê veşêwirin."</string>
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Tişeya girîng:
+• Heke navê rastî ya kêşoka carousel-ê binivîne (bo nimûne, Bifikirî, Bê celebekin vîdyoyê, Gula li YouTube Music, hwd.).
+• Vebijarkirina kêşokên carousel-ê dikare bandorên nedirêj hebe.
+• Heke hemû kêşokên carousel-ê veşêwirin, beşa şîroveyan jî wê veşêwirin."</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filtra karuselê komentaran çalak bike</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Navê karuselê yên komên şîroveyan da ku bi wan ve filtir bikin, yek di her rêzê de</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Xelîza xebatî ya AI veşêrin</string>
@@ -711,19 +711,18 @@ Pاشخۆى بەرامبەر ئەگەر قebul بûn, स्वतः ذخیره
   <string name="morphe_hide_navigation_bar_title">Navîgasûk veşêre</string>
   <string name="morphe_hide_navigation_bar_summary_on">Navîgasûk veşartin</string>
   <string name="morphe_hide_navigation_bar_summary_off">Navîgasûk nîşandin</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ev navîgasûkê bi tevî tabê 'We' veşandî ye.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ev tevahiya kêmbara navîgasyonê vedixwe, heta zimanê 'Hûn'.
 
-Bo aksesê Nastê:
-Sazûdefeye vîdyoyek vekin → Menuya Kvalîteyê vekin → Li jêr 'Nast &gt; Ji bo Kvalîteya Vîdyoyê' bikelî."</string>
+Ji bo ku derfetên sazkarî pêşero, rêzika 'Settings' zivirînin bi General → Toolbar → Show Settings."</string>
   <string name="morphe_narrow_navigation_buttons_title">Çavkaniyên rêznavî yên tir</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Cendê nav de rêznavî tir e</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Cendê nav de rêznavî normal e</string>
   <string name="morphe_navigation_bar_animations_title">Animasyonên barê naweşandinê çalak bike</string>
   <string name="morphe_navigation_bar_animations_summary_on">Wereyê devikê naweşandinê animasyonê</string>
   <string name="morphe_navigation_bar_animations_summary_off">Wereyê devikê naweşandinê animasyon nîne</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Navbarê rawştinê ji xeynêbûna otomatîk</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navbar ji xeynêbûna otomatîk ê nabe</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navbar dibe ku bi otomatîk veşêre</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Kêmbara otomatîk a kêmbara navîgasyonê qeybidine.</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Rêve barê navigasyonê de nebide kêşîna ekranê.</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Rêve barê navigasyonê dê kêşîna ekranê de bişewîne.</string>
   <string name="morphe_disable_translucent_status_bar_title">Barê rewşê jîyayî saz bike</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Barê rewşê zixiyayî ye</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Barê rewşê zixiyayî yan jî jîyayî ye</string>
@@ -1016,10 +1015,10 @@ Da menuya rêza dengîyê nîşandin, 'Rêzên vîdyoyê spoof bikin' ta 'Androi
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Barê navigasyonê veşîne</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Barê navigasyonê nîşan darde</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Astîna ekranê vîdyoyê pêşniyarkirîyê veşêre.</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Vîdyoya pêşniyar kirî ya ekranê dawî veşartin</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Astîna ekranê vîdyoyê pêşniyarkirîyê nîşan tê.</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ev astîyê tenê di rastiyê de dixebite ger 'Gîranbûna vîdyoyê din' qutî bûye.
+  <string name="morphe_hide_end_screen_suggested_video_title">Astîna ekranê vîdyoyê pêşniyarkirîyê veşêre.</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Vîdyoya pêşniyar kirî ya ekranê dawî veşartin</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Astîna ekranê vîdyoyê pêşniyarkirîyê nîşan tê.</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Ev astîyê tenê di rastiyê de dixebite ger 'Gîranbûna vîdyoyê din' qutî bûye.
 
 Hûn dikarin ev li YouTube biguhêrin:
 Nast → Lêxistık (an Otomatîkî) → Otomatîkî vîdyoya din vekilê"</string>

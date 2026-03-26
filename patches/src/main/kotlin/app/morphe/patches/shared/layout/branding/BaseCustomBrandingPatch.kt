@@ -24,8 +24,12 @@ import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
+import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
@@ -234,26 +238,42 @@ internal fun baseCustomBrandingPatch(
         val useCustomName = customName != null
         val useCustomIcon = customIcon != null
 
-        preferenceScreen.addPreferences(
-            if (useCustomName) {
-                ListPreference(
-                    key = "morphe_custom_branding_name",
-                    entriesKey = "morphe_custom_branding_name_custom_entries",
-                    entryValuesKey = "morphe_custom_branding_name_custom_entry_values"
-                )
-            } else {
-                ListPreference("morphe_custom_branding_name")
-            },
+        val preferences = mutableSetOf<BasePreference>()
 
-            if (useCustomIcon) {
-                ListPreference(
-                    key = "morphe_custom_branding_icon",
-                    entriesKey = "morphe_custom_branding_icon_custom_entries",
-                    entryValuesKey = "morphe_custom_branding_icon_custom_entry_values"
-                )
-            } else {
-                ListPreference("morphe_custom_branding_icon")
-            }
+        preferences += if (useCustomName) {
+            ListPreference(
+                key = "morphe_custom_branding_name",
+                entriesKey = "morphe_custom_branding_name_custom_entries",
+                entryValuesKey = "morphe_custom_branding_name_custom_entry_values"
+            )
+        } else {
+            ListPreference("morphe_custom_branding_name")
+        }
+
+        if (useCustomIcon) {
+            preferences += ListPreference(
+                key = "morphe_custom_branding_icon",
+                entriesKey = "morphe_custom_branding_icon_custom_entries",
+                entryValuesKey = "morphe_custom_branding_icon_custom_entry_values"
+            )
+            preferences += ListPreference(
+                key = "morphe_custom_branding_notification_icon",
+                entriesKey = "morphe_custom_branding_icon_custom_entries",
+                entryValuesKey = "morphe_custom_branding_notification_icon_custom_entry_values"
+            )
+        } else {
+            preferences += ListPreference("morphe_custom_branding_icon")
+            preferences += ListPreference("morphe_custom_branding_notification_icon")
+        }
+
+        preferenceScreen.addPreferences(
+            PreferenceCategory(
+                key = null,
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = preferences
+            )
         )
 
         iconStyleNames.forEach { style ->

@@ -146,9 +146,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">検索履歴の「おすすめ」セクションは表示されません</string>
   <string name="morphe_hide_you_may_like_section_summary_off">検索履歴の「おすすめ」セクションは表示されます</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodle を非表示</string>
-  <string name="morphe_hide_doodles_summary_on">ロゴの YouTube Doodle アニメーションは表示されません</string>
-  <string name="morphe_hide_doodles_summary_off">ロゴの YouTube Doodle アニメーションは表示されます</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodle を非表示</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">ロゴの YouTube Doodle アニメーションは表示されません</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">ロゴの YouTube Doodle アニメーションは表示されます</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTubeのドゥードルは、年間数日、世界各地に表示されます。
+
+YouTubeのドゥードルを表示すると、カスタムヘッダーの表示が妨げられることがあります。"</string>
   <string name="morphe_hide_channel_bar_title">チャンネルバーを非表示</string>
   <string name="morphe_hide_channel_bar_summary_on">チャンネルバーは表示されません</string>
   <string name="morphe_hide_channel_bar_summary_off">チャンネルバーは表示されます</string>
@@ -307,11 +310,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">横スライド欄のフィルタを有効化</string>
   <string name="morphe_hide_comments_carousel_summary_on">コメント セクションの横スライド欄のフィルタは有効です</string>
   <string name="morphe_hide_comments_carousel_summary_off">コメント セクションの横スライド欄のフィルタは無効です</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"注意
-
-• 横スライド欄の正確なタイトルをフィルタに入力してください。(例:「質問する」「この動画をパイプする」「YouTube Music で聴く」など)
-• 横スライド欄を非表示にすると予期せぬ副作用が発生する可能性がある。
-• すべての横スライド欄を非表示にした場合、コメント セクションごと表示されなくなる。"</string>
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"注意点：
+• カルーセル項目の正確な名前を入力してください。（例：質問する、動画を宣伝する、YouTube Musicで聴くなど）。
+• カルーセル項目を非表示にすると、予期しない副作用が発生する可能性があります。
+• すべてのカルーセル項目を非表示にした場合、コメントセクション全体も非表示になります。"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">横スライド欄のフィルタ</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">非表示にするコメント セクションの横スライド欄のタイトルを改行区切りで入力します</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI による「チャットの要約」を非表示</string>
@@ -709,19 +711,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">ナビゲーション バーを非表示</string>
   <string name="morphe_hide_navigation_bar_summary_on">ナビゲーション バーは表示されません</string>
   <string name="morphe_hide_navigation_bar_summary_off">ナビゲーション バーは表示されます</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"この機能は、マイページタブを含むナビゲーション バー全体を完全に非表示にします。
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"これにより、'You'タブを含むナビゲーションバーが完全に非表示になります。
 
-[設定] にアクセスする方法:
-任意の動画を開く → 画質メニューを開く → 一番下の「[設定] &gt; [動画の画質設定]」をタップ"</string>
+設定にアクセスするには、General → Toolbar → Show Settingsで設定ボタンを有効にします。"</string>
   <string name="morphe_narrow_navigation_buttons_title">ナビゲーション ボタンの間を詰める</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">ナビゲーション ボタンは間隔を詰めて表示されます</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">ナビゲーション ボタンは間隔を詰めずに表示されます</string>
   <string name="morphe_navigation_bar_animations_title">ナビゲーション バーのアニメーションを有効化</string>
   <string name="morphe_navigation_bar_animations_summary_on">ナビゲーションの遷移がアニメーション表示されます</string>
   <string name="morphe_navigation_bar_animations_summary_off">ナビゲーションの遷移はアニメーション表示されません</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">ナビゲーション バーの自動非表示を無効化</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">自動非表示のナビゲーションバーを無効にする</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">ナビゲーション バーが自動的に非表示になることはありません</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">ナビゲーション バーが自動的に非表示になる場合があります</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">ナビゲーション バーがスクロール中に非表示になります</string>
   <string name="morphe_disable_translucent_status_bar_title">半透明ステータスバーを無効化</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">ステータスバーは透けません</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">ステータスバーは状況に応じて透けます</string>
@@ -1013,10 +1014,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">ナビゲーション バーは表示されません</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">ナビゲーション バーは表示されます</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">終了画面の「関連動画」を非表示</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">終了画面の「関連動画」は表示されません</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">終了画面の「関連動画」は表示されます</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"この設定は、[次の動画を自動再生] がオフの場合にのみ有効です。
+  <string name="morphe_hide_end_screen_suggested_video_title">終了画面の「関連動画」を非表示</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">終了画面の「関連動画」は表示されません</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">終了画面の「関連動画」は表示されます</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"この設定は、[次の動画を自動再生] がオフの場合にのみ有効です。
 
 [次の動画を自動再生] は、YouTube の設定で変更できます:
 [設定] &gt; [再生] (または [自動再生]) &gt; [次の動画を自動再生]"</string>

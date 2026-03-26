@@ -23,7 +23,7 @@ private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/OpenSystemShareSheetPatch;"
 
 private const val FILTER_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/components/OpenSystemShareSheetFilter;"
+    "Lapp/morphe/extension/youtube/patches/components/SystemShareSheetFilter;"
 
 @Suppress("unused")
 internal fun openSystemShareSheetPatch(

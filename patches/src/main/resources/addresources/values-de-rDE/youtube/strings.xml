@@ -146,9 +146,12 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_you_may_like_section_summary_on">Der Bereich \'Sie mögen auch\' ist ausgeblendet</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Der Bereich \'Sie mögen auch\' wird angezeigt</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodles ausblenden</string>
-  <string name="morphe_hide_doodles_summary_on">YouTube Doodles-Animation auf dem Logo ist ausgeblendet</string>
-  <string name="morphe_hide_doodles_summary_off">YouTube Doodles Animation auf dem Logo wird angezeigt</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodles ausblenden</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles-Animation auf dem Logo ist ausgeblendet</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles Animation auf dem Logo wird angezeigt</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles werden einige Tage im Jahr in verschiedenen Teilen der Welt angezeigt.
+
+Das Anzeigen von YouTube Doodles kann verhindern, dass benutzerdefinierte Header angezeigt werden."</string>
   <string name="morphe_hide_channel_bar_title">Senderleiste ausblenden</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanalleiste ist ausgeblendet</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanalleiste wird angezeigt</string>
@@ -307,8 +310,7 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_comments_carousel_title">Kommentar-Karussell-Filter aktivieren</string>
   <string name="morphe_hide_comments_carousel_summary_on">Kommentar-Karussell-Filter ist aktiviert</string>
   <string name="morphe_hide_comments_carousel_summary_off">Kommentar-Karussell-Filter ist deaktiviert</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Hinweis
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Hinweis:
 • Achten Sie darauf, den genauen Namen des Karussellartikels einzugeben (z. B. Fragen, Dieses Video bewerben, Auf YouTube Music hören usw.).
 • Das Ausblenden von Karussellartikeln kann unbeabsichtigte Nebenwirkungen haben.
 • Wenn alle Karussellartikel ausgeblendet sind, wird auch der gesamte Kommentarbereich ausgeblendet."</string>
@@ -707,19 +709,18 @@ Cookies werden automatisch gespeichert, wenn sie gültig sind"</string>
   <string name="morphe_hide_navigation_bar_title">Navigationsleiste ausblenden</string>
   <string name="morphe_hide_navigation_bar_summary_on">Navigationsleiste ist ausgeblendet</string>
   <string name="morphe_hide_navigation_bar_summary_off">Navigationsleiste wird angezeigt</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dadurch wird die gesamte Navigationsleiste einschließlich des Tab 'You' ausgeblendet.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dies blendet die Navigationsleiste vollständig aus, einschließlich des 'Sie'-Tabs.
 
-Um Einstellungen aufzurufen:
-Öffnen Sie jedes Video → Öffnen Sie das Menü 'Qualität' → Tippen Sie auf 'Einstellungen > Videoqualitätsprioritäten' am unteren Bildschirmrand."</string>
+Um auf Einstellungen zuzugreifen, aktivieren Sie die Einstellungen Schaltfläche über Allgemein → Symbolleiste → Einstellungen anzeigen."</string>
   <string name="morphe_narrow_navigation_buttons_title">Schmale Navigationsknöpfe aktivieren</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Abstand zwischen Navigationsknöpfen ist schmal</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Abstand zwischen Navigationsknöpfen ist normal</string>
   <string name="morphe_navigation_bar_animations_title">Navigation bar animations aktivieren</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigationen werden animiert</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigationen werden nicht animiert</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Navigationsleiste automatisches Ausblenden deaktivieren</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigationsleiste wird nicht automatisch ausgeblendet</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigationsleiste kann sich automatisch ausblenden</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Auto-Ausblenden der Navigationsleiste deaktivieren</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Die Navigationsleiste wird beim Scrollen nicht ausgeblendet</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Die Navigationsleiste wird beim Scrollen ausgeblendet</string>
   <string name="morphe_disable_translucent_status_bar_title">Transluzente Statusleiste deaktivieren</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusleiste ist undurchsichtig</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Die Statusleiste ist undurchsichtig oder durchscheinend</string>
@@ -1011,10 +1012,10 @@ Um das Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in \"Android Re
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigationsleiste ist ausgeblendet</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigationsleiste wird angezeigt</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Vorgeschlagenes Video auf dem Endbildschirm ausblenden</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Endbildschirm-Vorschauvideo ist ausgeblendet</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Das vorgeschlagene Video auf dem Endbildschirm wird angezeigt</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Diese Einstellung funktioniert nur, wenn 'Automatisch nächsten Video abspielen' ausgeschaltet ist.
+  <string name="morphe_hide_end_screen_suggested_video_title">Vorgeschlagenes Video auf dem Endbildschirm ausblenden</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Endbildschirm-Vorschauvideo ist ausgeblendet</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Das vorgeschlagene Video auf dem Endbildschirm wird angezeigt</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Diese Einstellung funktioniert nur, wenn 'Automatisch nächsten Video abspielen' ausgeschaltet ist.
 
 Du kannst dies in YouTube ändern:
 Einstellungen → Wiedergabe (oder Automatisch abspielen) → Automatisch nächsten Video abspielen"</string>

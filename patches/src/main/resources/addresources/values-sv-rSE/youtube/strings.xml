@@ -146,9 +146,9 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_you_may_like_section_summary_on">Avsnittet Du kanske gillar är dolt</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Avsnittet Du kanske gillar visas</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Dölj YouTube-doodles</string>
-  <string name="morphe_hide_doodles_summary_on">YouTube-doodles-animation på logotypen är dold</string>
-  <string name="morphe_hide_doodles_summary_off">YouTube-doodles-animation på logotypen visas</string>
+  <string name="morphe_hide_youtube_doodles_title">Dölj YouTube-doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">YouTube-doodles-animation på logotypen är dold</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">YouTube-doodles-animation på logotypen visas</string>
   <string name="morphe_hide_channel_bar_title">Dölj kanalfält</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanalfältet är dolt</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanalfältet visas</string>
@@ -307,11 +307,6 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_comments_carousel_title">Aktivera filter för kommentarsfältskarusellen</string>
   <string name="morphe_hide_comments_carousel_summary_on">Filter för kommentarsfältskarusellen är aktiverat</string>
   <string name="morphe_hide_comments_carousel_summary_off">Filter för kommentarsfältskarusellen är inaktiverat</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Obs!
-
-• Se till att ange det exakta namnet på objektet i karusellen (t.ex. Fråga, Hajpa den här videon, Lyssna på YouTube Music m.fl.).
-• Om du döljer objekt i karusellen kan det leda till oavsiktliga bieffekter.
-• Om alla objekt i karusellen har dolts döljs även hela kommentarsfältet"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filter för kommentarsfältskarusellen</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Ange namnen på de objekt i kommentarsfältskarusellen som ska filtreras bort, ett per rad</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Dölj AI-sammanfattning av chatt</string>
@@ -709,19 +704,12 @@ Cookies sparas automatiskt om de är giltiga"</string>
   <string name="morphe_hide_navigation_bar_title">Dölj navigeringsfältet</string>
   <string name="morphe_hide_navigation_bar_summary_on">Navigeringsfältet är dolt</string>
   <string name="morphe_hide_navigation_bar_summary_off">Navigeringsfältet visas</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Det här döljer navigeringsfältet helt, inklusive fliken Ditt YouTube.
-
-Om du vill komma åt Inställningar:
-Öppna valfri video → Öppna menyn Kvalitet → Tryck på \"Inställningar &gt; Inställningar för videokvalitet\" längst ned."</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktivera smala navigeringsknappar</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Avståndet mellan navigeringsknapparna är smalt</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Avståndet mellan navigeringsknapparna är normalt</string>
   <string name="morphe_navigation_bar_animations_title">Aktivera animeringar för navigeringsfältet</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigeringsoverlägg animeras</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigeringsoverlägg animeras inte</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Inaktivera att navigeringsfältet döljs automatiskt</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigeringsfältet döljs inte automatiskt</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigeringsfältet kan döljas automatiskt</string>
   <string name="morphe_disable_translucent_status_bar_title">Inaktivera genomskinligt statusfält</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusfältet är ogenomskinligt</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusfältet är ogenomskinligt eller genomskinligt</string>
@@ -1013,10 +1001,10 @@ Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigeringsfältet är dolt</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigeringsfältet visas</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Dölj föreslagen video på slutskärmen</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Föreslagen video på slutskärmen är dold</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Föreslagen video på slutskärmen visas</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Den här inställningen fungerar endast om \"Spela upp nästa video automatiskt\" har inaktiverats.
+  <string name="morphe_hide_end_screen_suggested_video_title">Dölj föreslagen video på slutskärmen</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Föreslagen video på slutskärmen är dold</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Föreslagen video på slutskärmen visas</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Den här inställningen fungerar endast om \"Spela upp nästa video automatiskt\" har inaktiverats.
 
 Du kan ändra detta i YouTube:
 Inställningar → Uppspelning (eller Automatisk uppspelning) → Spela upp nästa video automatiskt"</string>

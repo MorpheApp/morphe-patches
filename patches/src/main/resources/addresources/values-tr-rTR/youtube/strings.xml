@@ -46,9 +46,9 @@ Bu, özel filtreler oluştururken bileşenlerin belirlenmesine yardımcı olabil
 
 Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini de günlüğe kaydeder."</string>
   <!-- layout.disableLayoutUpdatesPatch -->
-  <string name="morphe_disable_layout_updates_title">Yerleşim güncellemelerini devre dışı bırak</string>
-  <string name="morphe_disable_layout_updates_summary_on">Sunucu, yerleşimi güncellemeyecektir</string>
-  <string name="morphe_disable_layout_updates_summary_off">Sunucu, yerleşimi güncelleyecektir</string>
+  <string name="morphe_disable_layout_updates_title">Arayüz güncellemelerini devre dışı bırak</string>
+  <string name="morphe_disable_layout_updates_summary_on">Arayüz sunucu tarafından güncellemeyecek</string>
+  <string name="morphe_disable_layout_updates_summary_off">Arayüz sunucu tarafından güncellenecek</string>
   <string name="morphe_disable_layout_updates_user_dialog_message">"Uygulama ilk kurulduğunda kullanılan düzeni geri döner.
 
 Bazı sunucu tarafı düzenler geri döndürülmez olabilir.
@@ -145,9 +145,12 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_you_may_like_section_summary_on">Hoşunuza gidebilecekler kısmı gizli</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Hoşunuza gidebilecekler kısmı görünüyor</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodle\'larını gizle</string>
-  <string name="morphe_hide_doodles_summary_on">Logodaki YouTube Doodles animasyonu gizli</string>
-  <string name="morphe_hide_doodles_summary_off">Logodaki YouTube Doodles animasyonu görünür</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodle\'larını gizle</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Logodaki YouTube Doodles animasyonu gizli</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Logodaki YouTube Doodles animasyonu görünür</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles, yılın çeşitli günlerinde dünyanın çeşitli yerlerinde gösterilir.
+
+YouTube Doodles göstermek, özel başlıkların görüntülenmesini engelleyebilir."</string>
   <string name="morphe_hide_channel_bar_title">Kanal çubuğunu gizle</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanal çubuğu gizli</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanal çubuğu görünür</string>
@@ -306,11 +309,10 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_carousel_title">Kaydırmalı yorum filtresi aktifleştir</string>
   <string name="morphe_hide_comments_carousel_summary_on">Kaydırmalı yorum filtresi açık</string>
   <string name="morphe_hide_comments_carousel_summary_off">Kaydırmalı yorum filtresi kapalı.</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Kaydırmalı öğe adını tam olarak girdiğinizden emin olun (Örn: Ask, Hype this video, Listen on YouTube Music, vb.).
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Not:
+• Kaydırmalı öğenin tam adını girdiğinizden emin olun (Örn: Ask, Hype this video, Listen on YouTube Music, vb.).
 • Kaydırmalı öğeleri gizlemek beklenmedik yan etkilere neden olabilir.
-
-Tüm kaydırmalı öğeler gizlenirse, yorumlar bölümünün tamamı da gizlenecektir."</string>
+• Tüm kaydırmalı öğeler gizlenirse, yorumlar bölümünün tamamı da gizlenecektir."</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Kaydırmalı yorum filtresi</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Filtrelemek istediğiniz kaydırmalı yorum adlarını, her satıra bir tane gelecek şekilde girin.</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Yapay zeka sohbet özetini gizle</string>
@@ -319,18 +321,18 @@ Tüm kaydırmalı öğeler gizlenirse, yorumlar bölümünün tamamı da gizlene
   <string name="morphe_hide_comments_channel_guidelines_title">Kanal yönergelerini gizle</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanal yönergeleri gizli</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanal yönergeleri görünür</string>
-  <string name="morphe_hide_comments_prompts_title">Yorum teşcillerini gizle</string>
-  <string name="morphe_hide_comments_prompts_summary_on">Yorum teşcilleri gizli</string>
-  <string name="morphe_hide_comments_prompts_summary_off">Yorum teşcilleri görünür</string>
+  <string name="morphe_hide_comments_prompts_title">Yorum istemlerini gizle</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Yorum istemleri gizli</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Yorum istemleri görünür</string>
   <string name="morphe_hide_comments_by_members_header_title">\'Üyelerin yorumları\' başlığını gizle</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Üyelerin yorumları başlığı gizli</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Üyelerin yorumları başlığı görünür</string>
   <string name="morphe_hide_comments_section_title">Yorumlar kısmını gizle</string>
   <string name="morphe_hide_comments_section_summary_on">Yorumlar kısmı gizli</string>
   <string name="morphe_hide_comments_section_summary_off">Yorumlar kısmı görünür</string>
-  <string name="morphe_hide_comments_section_in_home_feed_title">Ana sayfadaki yorumlar bölümü gizle</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Ev yemekleri videosu altındaki yorumlar kısmı gizli</string>
-  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Ev yemekleri videosu altındaki yorumlar kısmı görünür</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Ana sayfa akışında yorumlar bölümünü gizle</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Ana sayfa akışında videoların altındaki yorumlar bölümü gizli</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Ana sayfa akışında videoların altındaki yorumlar bölümü görünür</string>
   <string name="morphe_hide_comments_community_guidelines_title">Topluluk kurallarını gizle</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">Topluluk kuralları gizli</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">Topluluk kuralları görünür</string>
@@ -636,7 +638,7 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
   <string name="morphe_hide_save_button_summary_off">Kaydet düğmesi görünür</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Altyazılar</string>
-  <string name="morphe_captions_screen_summary">Altyazıların otomatik olarak etkinleştirilmesini devre dışı bırakın veya altyazı çerezleri ayarlayın</string>
+  <string name="morphe_captions_screen_summary">Altyazıların otomatik olarak etkinleştirilmesini devre dışı bırakın veya altyazı çerezlerini ayarlayın</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Otomatik altyazı görünürlüğü</string>
   <string name="morphe_auto_captions_style_entry_1">Ses kapatıldığında ve kapatılmadığında göster</string>
@@ -647,11 +649,11 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Otomatik altyazıları gizle</string>
   <!-- layout.captions.captionCookiesPatch -->
   <string name="morphe_set_caption_cookies_title">Altyazı çerezleri ayarla</string>
-  <string name="morphe_set_caption_cookies_summary_on">Altyazı çerezleri ayarlanırsa</string>
-  <string name="morphe_set_caption_cookies_summary_off">"Altyazı çerezleri ayarlanmıyor
+  <string name="morphe_set_caption_cookies_summary_on">Altyazı için çerezler sağlanırsa ayarlanır</string>
+  <string name="morphe_set_caption_cookies_summary_off">"Altyazı çerezleri ayarlanmadı
 
-Otomatik altyazı çözümleyebilir olmasın"</string>
-  <string name="morphe_caption_cookies_title">Altyazı Çerezleri</string>
+Otomatik çevrilmiş altyazılar kullanılamayabilir"</string>
+  <string name="morphe_caption_cookies_title">Altyazı çerezleri</string>
   <string name="morphe_caption_cookies_summary">Zamanlı Metin API istemlerinde kullanılacak çerezler</string>
   <string name="morphe_get_caption_cookies_title">Altyazı çerezlerini alın</string>
   <string name="morphe_get_caption_cookies_summary">"Tıklayarak çerezleri alın
@@ -708,19 +710,18 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_hide_navigation_bar_title">Gezinme çubuğunu gizle</string>
   <string name="morphe_hide_navigation_bar_summary_on">Gezinme çubuğu gizli</string>
   <string name="morphe_hide_navigation_bar_summary_off">Gezinme çubuğu görünür</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Bu, Yol sekmesini de dahil olmak üzere gezinme çubuğunu tamamen gizler.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Bu, 'You' sekmesini de dahil olmak üzere, tamamen gezinme çubuğunu gizler.
 
-Ayarlara erişmek için:
-Herhangi bir videoyu açın → Kalite menüsünü açın → Altta 'Ayarlar > Video Kalitesi Tercihleri'ne dokunun."</string>
+Ayarlara erişmek için, Ayarlar düğmesini Genel → Araç Çubuğu → Ayarları Göster yoluyla etkinleştirin."</string>
   <string name="morphe_narrow_navigation_buttons_title">Dar gezinme düğmelerini etkinleştir</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Gezinme düğmeleri arasındaki boşluk dar</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Gezinme düğmeleri arasındaki boşluk normal</string>
   <string name="morphe_navigation_bar_animations_title">Gezinme çubuğu animasyonlarını etkinleştir</string>
   <string name="morphe_navigation_bar_animations_summary_on">Gezinme geçişleri animasyonludur</string>
   <string name="morphe_navigation_bar_animations_summary_off">Gezinme geçişleri animasyonlu değildir</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Gezinme çubuğunun otomatik gizlenmesini devre dışı bırak</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Gezinme çubuğu otomatik olarak gizlenmeyecek</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Gezinme çubuğu otomatik olarak gizlenebilir</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Otomatik gizleme özelliğini devre dışı bırak.</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Gezinme çubuğu kaydırma sırasında gizlenmeyecek</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Gezinme çubuğu kaydırma sırasında gizlenecek</string>
   <string name="morphe_disable_translucent_status_bar_title">Yarı saydam durum çubuğunu devre dışı bırak</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Durum çubuğu opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Durum çubuğu opak veya yarı saydam</string>
@@ -1012,10 +1013,10 @@ Ses Parçası menüsünü görüntülemek için, 'Video akışlarını taklit et
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Gezinme çubuğu gizli</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Gezinme çubuğu görünür</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Bitiş ekranı önerilen videosunu gizle</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Bitiş ekranı önerilen videosu gizlenmiş</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Bitiş ekranı önerilen videosu görünür</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Bu ayar yalnızca 'Sonraki video otomatik oynat' devre dışı bırakıldığında çalışır.
+  <string name="morphe_hide_end_screen_suggested_video_title">Bitiş ekranı önerilen videosunu gizle</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Bitiş ekranı önerilen videosu gizlenmiş</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Bitiş ekranı önerilen videosu görünür</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Bu ayar yalnızca 'Sonraki video otomatik oynat' devre dışı bırakıldığında çalışır.
 
 Bu ayar YouTube'de değiştirilebilir:
 Ayarlar → Oynatma (veya Otomatik oynat) → Sonraki video otomatik oynat"</string>
@@ -1455,8 +1456,8 @@ Genişletmek veya kapatmak için kaydırın"</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Mini oynatıcı katman opaklığı 0-100 arasında olmalıdır</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">Gradyan yükleme ekranını etkinleştir</string>
-  <string name="morphe_gradient_loading_screen_summary_on">Yükleme ekranı gradyan bir arka plana sahip olacak</string>
-  <string name="morphe_gradient_loading_screen_summary_off">Yükleme ekranı tek renk bir arka plana sahip olacak</string>
+  <string name="morphe_gradient_loading_screen_summary_on">Yükleme ekranı gradyan bir arka plana sahip</string>
+  <string name="morphe_gradient_loading_screen_summary_off">Yükleme ekranı düz bir arka plana sahip</string>
   <string name="morphe_splash_screen_animation_style_title">Açılış ekranı stili</string>
   <string name="morphe_splash_screen_animation_style_entry_1">Devre dışı</string>
   <string name="morphe_splash_screen_animation_style_entry_2">Renkli</string>

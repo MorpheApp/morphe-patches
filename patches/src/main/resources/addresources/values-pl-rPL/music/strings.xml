@@ -18,9 +18,9 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
-  <string name="morphe_header_logo_title">Logo nagłówka</string>
+  <string name="morphe_header_logo_title">Logo w nagłówku</string>
   <string name="morphe_header_logo_entry_1">Domyślne</string>
-  <string name="morphe_header_logo_entry_3">Niestandardowe</string>
+  <string name="morphe_header_logo_entry_3">Własne</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Informacje</string>
@@ -77,9 +77,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_previous_button_summary_on">Widoczny w miniodtwarzaczu</string>
   <string name="morphe_music_miniplayer_previous_button_summary_off">Ukryty w miniodtwarzaczu</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
-  <string name="morphe_music_enable_forced_miniplayer_title">Wymuszenie miniodtwarzacza</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">Włączone</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">Wyłączone</string>
+  <string name="morphe_music_enable_forced_miniplayer_title">Wymuszanie miniodtwarzacza</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Zminimalizowany po zmianie utworu</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Rozwinięty po zmianie utworu</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Pasek nawigacji</string>
   <string name="morphe_music_navigation_bar_screen_summary">Ukryj lub zmień przyciski paska nawigacji</string>

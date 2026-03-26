@@ -7,7 +7,7 @@ import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-private object InfocardsIncognitoParentFingerprint : Fingerprint(
+private object InfoCardsIncognitoParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     filters = listOf(
@@ -15,8 +15,8 @@ private object InfocardsIncognitoParentFingerprint : Fingerprint(
     )
 )
 
-internal object InfocardsIncognitoFingerprint : Fingerprint(
-    classFingerprint = InfocardsIncognitoParentFingerprint,
+internal object InfoCardsIncognitoFingerprint : Fingerprint(
+    classFingerprint = InfoCardsIncognitoParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/Boolean;",
     parameters = listOf("L", "J"),
@@ -25,7 +25,7 @@ internal object InfocardsIncognitoFingerprint : Fingerprint(
     )
 )
 
-internal object InfocardsMethodCallFingerprint : Fingerprint(
+internal object InfoCardsMethodCallFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.INVOKE_VIRTUAL,
         Opcode.IGET_OBJECT,
