@@ -41,7 +41,7 @@ private val playAllButtonResourcePatch = resourcePatch {
             "playallbutton",
             ResourceGroup(
                 "drawable",
-                "morphe_play_all_button_rectangle.xml"
+                "morphe_play_all_button.xml"
             )
         )
     }

@@ -54,9 +54,8 @@ public class PlayAllButton {
         try {
             instance = new PlayerControlButton(
                     controlsView,
-                    "morphe_play_all_button_container",
                     "morphe_play_all_button",
-                    "morphe_play_all_button_text",
+                    null,
                     PlayAllButton::isButtonEnabled,
                     PlayAllButton::onClick,
                     view -> {
