@@ -14,7 +14,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
-import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -55,7 +55,7 @@ private val reloadVideoResourcePatch = resourcePatch {
     }
 }
 
-private const val EXTENSION_BUTTON_DESCRIPTOR =
+private const val BUTTON_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/videoplayer/ReloadVideoButton;"
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -78,8 +78,8 @@ val reloadVideoPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeTopControl(EXTENSION_BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(EXTENSION_BUTTON_DESCRIPTOR)
+        initializeLegacyTopControl(BUTTON_DESCRIPTOR)
+        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
 
         // Main activity is used to launch downloader intent.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(

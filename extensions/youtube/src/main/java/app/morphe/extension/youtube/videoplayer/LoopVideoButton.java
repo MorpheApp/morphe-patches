@@ -27,6 +27,9 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class LoopVideoButton {
+    @Nullable
+    private static LegacyPlayerControlButton legacy;
+
     private static final int LOOP_VIDEO_ON = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE, "morphe_loop_video_button_on");
     private static final int LOOP_VIDEO_OFF = ResourceUtils.getIdentifierOrThrow(
@@ -39,7 +42,7 @@ public class LoopVideoButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (!Settings.LOOP_VIDEO_BUTTON.get()) {
+            if (Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !Settings.LOOP_VIDEO_BUTTON.get()) {
                 return;
             }
 
@@ -49,6 +52,30 @@ public class LoopVideoButton {
                     null
             ));
 
+            // Set icon when initializing button based on current setting
+            updateButtonAppearance(false, null);
+        } catch (Exception ex) {
+            Logger.printException(() -> "initializeButton failure", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void initializeLegacyButton(View controlsView) {
+        try {
+            if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
+                return;
+            }
+
+            legacy = new LegacyPlayerControlButton(
+                    controlsView,
+                    "morphe_loop_video_button",
+                    null,
+                    Settings.LOOP_VIDEO_BUTTON::get,
+                    v -> updateButtonAppearance(true, v),
+                    null
+            );
             // Set icon when initializing button based on current setting
             updateButtonAppearance(false, null);
         } catch (Exception ex) {
@@ -69,10 +96,9 @@ public class LoopVideoButton {
                 .scaleY(1.15f)
                 .setDuration(100)
                 .withEndAction(() -> {
-                    ImageView button = instance.get();
-                    if (button != null) {
-                        // TODO
-//                        button.setIcon(newState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
+                    // FIXME: Update non legacy
+                    if (legacy != null) {
+                        legacy.setIcon(newState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
                     }
 
                     // Fade in.
@@ -84,6 +110,44 @@ public class LoopVideoButton {
                             .start();
                 })
                 .start();
+    }
+
+    /**
+     * injection point.
+     */
+    public static void setVisibilityNegatedImmediate() {
+        if (legacy != null) legacy.setVisibilityNegatedImmediate();
+    }
+
+    /**
+     * injection point.
+     */
+    public static void setVisibilityImmediate(boolean visible) {
+        if (legacy != null) legacy.setVisibilityImmediate(visible);
+        if (visible) {
+            updateIconFromSettings();
+        }
+    }
+
+    /**
+     * injection point.
+     */
+    public static void setVisibility(boolean visible, boolean animated) {
+        if (legacy != null) legacy.setVisibility(visible, animated);
+        if (visible) {
+            updateIconFromSettings();
+        }
+    }
+
+    /**
+     * Update icon based on current setting value.
+     */
+    private static void updateIconFromSettings() {
+        LegacyPlayerControlButton localInstance = legacy;
+        if (localInstance == null) return;
+
+        final boolean currentState = Settings.LOOP_VIDEO.get();
+        localInstance.setIcon(currentState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
     }
 
     /**
@@ -111,8 +175,8 @@ public class LoopVideoButton {
                 }
             } else {
                 // Initialization - just set icon based on current state.
-                // FIXME
-//                instance.setIcon(currentState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
+                // FIXME: Update non legacy
+                legacy.setIcon(currentState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
             }
         } catch (Exception ex) {
             Logger.printException(() -> "updateButtonAppearance failure", ex);

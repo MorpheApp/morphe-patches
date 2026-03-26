@@ -58,10 +58,10 @@ private var insertElementId = "@id/player_video_heading"
  * Add a new bottom to the bottom of the YouTube player.
  */
 @Suppress("KDocUnresolvedReference")
-lateinit var addBottomControl: (String) -> Unit
+lateinit var addLegacyBottomControl: (String) -> Unit
     private set
 
-internal val playerControlsResourcePatch = resourcePatch {
+internal val legacyPlayerControlsResourcePatch = resourcePatch {
     /**
      * The element to the left of the element being added.
      */
@@ -134,7 +134,7 @@ internal val playerControlsResourcePatch = resourcePatch {
             }
         }
 
-        addBottomControl = { resourceDirectoryName ->
+        addLegacyBottomControl = { resourceDirectoryName ->
             val resourceFileName = "host/layout/youtube_controls_bottom_ui_container.xml"
             val sourceDocument = document(
                 inputStreamFromBundledResource(resourceDirectoryName, resourceFileName)
@@ -187,10 +187,10 @@ internal val playerControlsResourcePatch = resourcePatch {
  * Injects the code to initialize the controls.
  * @param descriptor The descriptor of the method which should be called.
  */
-internal fun initializeTopControl(descriptor: String) {
+internal fun initializeLegacyTopControl(descriptor: String) {
     inflateTopControlMethodRef.get()!!.addInstruction(
         inflateTopControlInsertIndex++,
-        "invoke-static { v$inflateTopControlRegister }, $descriptor->initializeButton(Landroid/view/View;)V",
+        "invoke-static { v$inflateTopControlRegister }, $descriptor->initializeLegacyButton(Landroid/view/View;)V",
     )
 }
 
@@ -199,11 +199,9 @@ internal fun initializeTopControl(descriptor: String) {
  * @param descriptor The descriptor of the method which should be called.
  */
 fun initializeBottomControl(descriptor: String) {
-    if (true) return // FIXME
-
     inflateBottomControlMethodRef.get()!!.addInstruction(
         inflateBottomControlInsertIndex++,
-        "invoke-static { v$inflateBottomControlRegister }, $descriptor->initializeButton(Landroid/view/View;)V",
+        "invoke-static { v$inflateBottomControlRegister }, $descriptor->initializeLegacyButton(Landroid/view/View;)V",
     )
 }
 
@@ -261,7 +259,7 @@ val legacyPlayerControlsPatch = bytecodePatch(
     description = "Manages the code for the player controls of the YouTube player.",
 ) {
     dependsOn(
-        playerControlsResourcePatch,
+        legacyPlayerControlsResourcePatch,
         sharedExtensionPatch,
         resourceMappingPatch, // Used by fingerprints.
         playerControlsOverlayVisibilityPatch,

@@ -19,6 +19,7 @@ import static app.morphe.extension.youtube.patches.VideoInformation.AUTOMATIC_VI
 import static app.morphe.extension.youtube.patches.VideoInformation.isPremiumVideoQuality;
 import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.fadeInDuration;
 import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getDialogBackgroundColor;
+import static app.morphe.extension.youtube.videoplayer.PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS;
 
 import android.content.Context;
 import android.text.Spannable;
@@ -59,6 +60,9 @@ public class VideoQualityDialogButton {
     private static WeakReference<ImageView> instance = new WeakReference<>(null);
 
     @Nullable
+    private static LegacyPlayerControlButton legacy;
+
+    @Nullable
     private static CharSequence currentOverlayText;
 
     static {
@@ -78,7 +82,7 @@ public class VideoQualityDialogButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (!Settings.VIDEO_QUALITY_DIALOG_BUTTON.get()) {
+            if (RESTORE_OLD_PLAYER_BUTTONS || !Settings.VIDEO_QUALITY_DIALOG_BUTTON.get()) {
                 return;
             }
 
@@ -119,52 +123,7 @@ public class VideoQualityDialogButton {
                         }
                         return false;
                     }
-            )
-            );
-
-            // FIXME
-//            instance = new LegacyPlayerControlButton(
-//                    controlsView,
-//                    "morphe_video_quality_dialog_button_container",
-//                    "morphe_video_quality_dialog_button",
-//                    "morphe_video_quality_dialog_button_text",
-//                    Settings.VIDEO_QUALITY_DIALOG_BUTTON::get,
-//                    view -> {
-//                        try {
-//                            showVideoQualityDialog(view.getContext());
-//                        } catch (Exception ex) {
-//                            Logger.printException(() -> "Video quality button onClick failure", ex);
-//                        }
-//                    },
-//                    view -> {
-//                        try {
-//                            VideoQualityInterface[] qualities = VideoInformation.getCurrentQualities();
-//                            if (qualities == null) {
-//                                Logger.printDebug(() -> "Cannot reset quality, videoQualities is null");
-//                                return true;
-//                            }
-//
-//                            // Reset to default quality.
-//                            final int defaultResolution = RememberVideoQualityPatch.getDefaultQualityResolution();
-//                            for (VideoQualityInterface quality : qualities) {
-//                                final int resolution = quality.patch_getResolution();
-//                                if (resolution != AUTOMATIC_VIDEO_QUALITY_VALUE && resolution <= defaultResolution) {
-//                                    Logger.printDebug(() -> "Resetting quality to: " + quality);
-//                                    VideoInformation.changeQuality(quality);
-//                                    return true;
-//                                }
-//                            }
-//
-//                            // Existing hook cannot set default quality to auto.
-//                            // Instead show the quality dialog.
-//                            showVideoQualityDialog(view.getContext());
-//                            return true;
-//                        } catch (Exception ex) {
-//                            Logger.printException(() -> "Video quality button reset failure", ex);
-//                        }
-//                        return false;
-//                    }
-//            );
+            ));
 
             // Set initial text.
             updateButtonText(VideoInformation.getCurrentQuality());
@@ -174,11 +133,98 @@ public class VideoQualityDialogButton {
     }
 
     /**
+     * Injection point.
+     */
+    public static void initializeLegacyButton(View controlsView) {
+        try {
+            if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
+                return;
+            }
+
+            legacy = new LegacyPlayerControlButton(
+                    controlsView,
+                    "morphe_video_quality_dialog_button_container",
+                    "morphe_video_quality_dialog_button",
+                    "morphe_video_quality_dialog_button_text",
+                    Settings.VIDEO_QUALITY_DIALOG_BUTTON::get,
+                    view -> {
+                        try {
+                            showVideoQualityDialog(view.getContext());
+                        } catch (Exception ex) {
+                            Logger.printException(() -> "Video quality button onClick failure", ex);
+                        }
+                    },
+                    view -> {
+                        try {
+                            VideoQualityInterface[] qualities = VideoInformation.getCurrentQualities();
+                            if (qualities == null) {
+                                Logger.printDebug(() -> "Cannot reset quality, videoQualities is null");
+                                return true;
+                            }
+
+                            // Reset to default quality.
+                            final int defaultResolution = RememberVideoQualityPatch.getDefaultQualityResolution();
+                            for (VideoQualityInterface quality : qualities) {
+                                final int resolution = quality.patch_getResolution();
+                                if (resolution != AUTOMATIC_VIDEO_QUALITY_VALUE && resolution <= defaultResolution) {
+                                    Logger.printDebug(() -> "Resetting quality to: " + quality);
+                                    VideoInformation.changeQuality(quality);
+                                    return true;
+                                }
+                            }
+
+                            // Existing hook cannot set default quality to auto.
+                            // Instead, show the quality dialog.
+                            showVideoQualityDialog(view.getContext());
+                            return true;
+                        } catch (Exception ex) {
+                            Logger.printException(() -> "Video quality button reset failure", ex);
+                        }
+                        return false;
+                    }
+            );
+
+            // Set initial text.
+            updateButtonText(VideoInformation.getCurrentQuality());
+        } catch (Exception ex) {
+            Logger.printException(() -> "initializeButton failure", ex);
+        }
+    }
+
+    /**
+     * injection point.
+     */
+    public static void setVisibilityNegatedImmediate() {
+        if (legacy != null) {
+            legacy.setVisibilityNegatedImmediate();
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setVisibilityImmediate(boolean visible) {
+        if (legacy != null) {
+            legacy.setVisibilityImmediate(visible);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setVisibility(boolean visible, boolean animated) {
+        if (legacy != null) {
+            legacy.setVisibility(visible, animated);
+        }
+    }
+
+    /**
      * Updates the button text based on the current video quality.
      */
     public static void updateButtonText(@Nullable VideoQualityInterface quality) {
         try {
             Utils.verifyOnMainThread();
+            if (legacy == null) return;
 
             final int resolution = quality == null
                     ? AUTOMATIC_VIDEO_QUALITY_VALUE // Video is still loading.
@@ -208,8 +254,7 @@ public class VideoQualityDialogButton {
                     Logger.printDebug(() -> "Ignoring stale button text update of: " + text);
                     return;
                 }
-                // FIXME
-//                instance.setTextOverlay(text);
+                legacy.setTextOverlay(text);
             }, 100);
         } catch (Exception ex) {
             Logger.printException(() -> "updateButtonText failure", ex);

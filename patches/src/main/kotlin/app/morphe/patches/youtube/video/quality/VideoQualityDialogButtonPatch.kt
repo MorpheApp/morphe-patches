@@ -6,12 +6,18 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.playerbuttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
 private val videoQualityButtonResourcePatch = resourcePatch {
+    dependsOn(legacyPlayerControlsPatch)
+
     execute {
         copyResources(
             "qualitybutton",
@@ -20,10 +26,12 @@ private val videoQualityButtonResourcePatch = resourcePatch {
                 "morphe_video_quality_dialog_button_rectangle.xml",
             ),
         )
+
+        addLegacyBottomControl("qualitybutton")
     }
 }
 
-private const val QUALITY_BUTTON_CLASS_DESCRIPTOR =
+private const val BUTTON_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/videoplayer/VideoQualityDialogButton;"
 
 val videoQualityDialogButtonPatch = bytecodePatch(
@@ -34,7 +42,8 @@ val videoQualityDialogButtonPatch = bytecodePatch(
         settingsPatch,
         rememberVideoQualityPatch,
         videoQualityButtonResourcePatch,
-        playerOverlayButtonsHookPatch
+        playerOverlayButtonsHookPatch,
+        legacyPlayerControlsPatch
     )
 
     execute {
@@ -42,6 +51,9 @@ val videoQualityDialogButtonPatch = bytecodePatch(
             SwitchPreference("morphe_video_quality_dialog_button"),
         )
 
-        addPlayerBottomButton(QUALITY_BUTTON_CLASS_DESCRIPTOR)
+        addPlayerBottomButton(BUTTON_DESCRIPTOR)
+
+        initializeBottomControl(BUTTON_DESCRIPTOR)
+        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
     }
 }

@@ -6,7 +6,8 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.playerbuttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playercontrols.addBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
@@ -17,6 +18,8 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
 private val playbackSpeedButtonResourcePatch = resourcePatch {
+    dependsOn(legacyPlayerControlsPatch)
+
     execute {
         copyResources(
             "speedbutton",
@@ -26,7 +29,7 @@ private val playbackSpeedButtonResourcePatch = resourcePatch {
             )
         )
 
-        addBottomControl("speedbutton")
+        addLegacyBottomControl("speedbutton")
     }
 }
 

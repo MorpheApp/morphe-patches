@@ -20,8 +20,11 @@ import java.lang.ref.WeakReference;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.settings.Settings;
 
 public class PlayerOverlayButton {
+
+    public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
 
     private static WeakReference<ViewTreeObserver> buttonObserver = new WeakReference<>(null);
     private static int newButtonCount;

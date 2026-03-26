@@ -22,7 +22,7 @@ public class VotingButton {
     /**
      * injection point.
      */
-    public static void initializeButton(View controlsView) {
+    public static void initializeLegacyButton(View controlsView) {
         try {
             instance = new LegacyPlayerControlButton(
                     controlsView,

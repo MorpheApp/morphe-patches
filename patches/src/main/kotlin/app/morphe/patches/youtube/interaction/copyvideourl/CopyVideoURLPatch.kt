@@ -7,6 +7,10 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.playerbuttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
+import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -14,12 +18,12 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplayer/CopyVideoURLButton;"
+private const val BUTTON_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplayer/CopyVideoURLButton;"
 
 private val copyVideoURLResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        playerOverlayButtonsHookPatch
+        legacyPlayerControlsPatch
     )
 
     execute {
@@ -43,6 +47,8 @@ private val copyVideoURLResourcePatch = resourcePatch {
                 "morphe_yt_copy_timestamp.xml"
             )
         )
+
+        addLegacyBottomControl("copyvideourl")
     }
 }
 
@@ -54,12 +60,16 @@ val copyVideoURLPatch = bytecodePatch(
     dependsOn(
         copyVideoURLResourcePatch,
         playerOverlayButtonsHookPatch,
+        legacyPlayerControlsPatch,
         videoInformationPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        addPlayerBottomButton(EXTENSION_CLASS_DESCRIPTOR)
+        addPlayerBottomButton(BUTTON_DESCRIPTOR)
+
+        initializeBottomControl(BUTTON_DESCRIPTOR)
+        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
     }
 }

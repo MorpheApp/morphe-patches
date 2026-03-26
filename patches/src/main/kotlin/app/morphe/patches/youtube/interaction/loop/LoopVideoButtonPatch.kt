@@ -6,14 +6,18 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.playerbuttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsResourcePatch
+import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsResourcePatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
 private val loopVideoButtonResourcePatch = resourcePatch {
-    dependsOn(playerControlsResourcePatch)
+    dependsOn(legacyPlayerControlsResourcePatch)
 
     execute {
         copyResources(
@@ -24,10 +28,12 @@ private val loopVideoButtonResourcePatch = resourcePatch {
                 "morphe_loop_video_button_off.xml"
             )
         )
+
+        addLegacyBottomControl("loopvideobutton")
     }
 }
 
-private const val LOOP_VIDEO_BUTTON_CLASS_DESCRIPTOR =
+private const val BUTTON_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/videoplayer/LoopVideoButton;"
 
 internal val loopVideoButtonPatch = bytecodePatch(
@@ -37,6 +43,7 @@ internal val loopVideoButtonPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         loopVideoButtonResourcePatch,
+        legacyPlayerControlsPatch,
         playerOverlayButtonsHookPatch
     )
 
@@ -45,6 +52,9 @@ internal val loopVideoButtonPatch = bytecodePatch(
             SwitchPreference("morphe_loop_video_button"),
         )
 
-        addPlayerBottomButton(LOOP_VIDEO_BUTTON_CLASS_DESCRIPTOR)
+        addPlayerBottomButton(BUTTON_DESCRIPTOR)
+
+        initializeBottomControl(BUTTON_DESCRIPTOR)
+        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
     }
 }

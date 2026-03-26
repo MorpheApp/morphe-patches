@@ -12,6 +12,8 @@ package app.morphe.extension.youtube.videoplayer;
 
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.patches.DownloadsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -19,12 +21,15 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class ExternalDownloadButton {
+    @Nullable
+    private static LegacyPlayerControlButton legacy;
+
     /**
      * Injection point.
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (!Settings.EXTERNAL_DOWNLOADER.get()) {
+            if (Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !Settings.EXTERNAL_DOWNLOADER.get()) {
                 return;
             }
 
@@ -33,10 +38,52 @@ public class ExternalDownloadButton {
                     ExternalDownloadButton::onDownloadClick,
                     null
             );
-
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void initializeLegacyButton(View controlsView) {
+        try {
+            if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
+                return;
+            }
+
+            legacy = new LegacyPlayerControlButton(
+                    controlsView,
+                    "morphe_external_download_button",
+                    null,
+                    Settings.EXTERNAL_DOWNLOADER::get,
+                    ExternalDownloadButton::onDownloadClick,
+                    null
+            );
+        } catch (Exception ex) {
+            Logger.printException(() -> "initializeButton failure", ex);
+        }
+    }
+
+    /**
+     * injection point.
+     */
+    public static void setVisibilityNegatedImmediate() {
+        if (legacy != null) legacy.setVisibilityNegatedImmediate();
+    }
+
+    /**
+     * injection point.
+     */
+    public static void setVisibilityImmediate(boolean visible) {
+        if (legacy != null) legacy.setVisibilityImmediate(visible);
+    }
+
+    /**
+     * injection point.
+     */
+    public static void setVisibility(boolean visible, boolean animated) {
+        if (legacy != null) legacy.setVisibility(visible, animated);
     }
 
     private static void onDownloadClick(View view) {

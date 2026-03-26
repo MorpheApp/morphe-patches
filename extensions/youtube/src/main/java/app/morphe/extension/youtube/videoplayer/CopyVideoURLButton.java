@@ -15,6 +15,8 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.os.Build;
 import android.view.View;
 
+import androidx.annotation.Nullable;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoInformation;
@@ -24,12 +26,15 @@ import app.morphe.extension.youtube.settings.Settings;
 public class CopyVideoURLButton {
     private static final boolean COPY_VIDEO_URL_TIMESTAMP = Settings.COPY_VIDEO_URL_TIMESTAMP.get();
 
+    @Nullable
+    private static LegacyPlayerControlButton legacy;
+
     /**
      * Injection point.
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (!Settings.COPY_VIDEO_URL.get()) {
+            if (Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !Settings.COPY_VIDEO_URL.get()) {
                 return;
             }
 
@@ -44,6 +49,53 @@ public class CopyVideoURLButton {
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
+    }
+
+
+    /**
+     * Injection point.
+     */
+    public static void initializeLegacyButton(View controlsView) {
+        try {
+            if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
+                return;
+            }
+
+            legacy = new LegacyPlayerControlButton(
+                    controlsView,
+                    "morphe_copy_video_url_button",
+                    null,
+                    Settings.COPY_VIDEO_URL::get,
+                    view -> copyURL(COPY_VIDEO_URL_TIMESTAMP),
+                    view -> {
+                        copyURL(!COPY_VIDEO_URL_TIMESTAMP);
+                        return true;
+                    }
+            );
+        } catch (Exception ex) {
+            Logger.printException(() -> "initializeButton failure", ex);
+        }
+    }
+
+    /**`
+     * injection point.
+     */
+    public static void setVisibilityNegatedImmediate() {
+        if (legacy != null) legacy.setVisibilityNegatedImmediate();
+    }
+
+    /**
+     * injection point.
+     */
+    public static void setVisibilityImmediate(boolean visible) {
+        if (legacy != null) legacy.setVisibilityImmediate(visible);
+    }
+
+    /**
+     * injection point.
+     */
+    public static void setVisibility(boolean visible, boolean animated) {
+        if (legacy != null) legacy.setVisibility(visible, animated);
     }
 
     public static void copyURL(boolean withTimestamp) {

@@ -32,7 +32,7 @@ public class CreateSegmentButton {
     /**
      * injection point.
      */
-    public static void initializeButton(View controlsView) {
+    public static void initializeLegacyButton(View controlsView) {
         try {
             instance = new LegacyPlayerControlButton(
                     controlsView,
@@ -43,9 +43,7 @@ public class CreateSegmentButton {
                     null
             );
 
-            if (false) {
-                // FIXME: Bold YT player icons are currently forced off.
-                //        Enable this logic when the new player icons are not forced off.
+            if (false) if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
                 ImageView icon = Utils.getChildViewByResourceName(controlsView,
                         "morphe_sb_create_segment_button");
                 icon.setImageResource(DRAWABLE_SB_LOGO);

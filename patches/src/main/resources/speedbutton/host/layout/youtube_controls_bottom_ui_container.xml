@@ -10,6 +10,7 @@
         android:id="@+id/morphe_playback_speed_dialog_button_container"
         android:layout_width="48.0dip"
         android:layout_height="60.0dip"
+        android:visibility="gone"
         yt:layout_constraintBottom_toTopOf="@+id/quick_actions_container"
         yt:layout_constraintRight_toLeftOf="@+id/fullscreen_button">
 

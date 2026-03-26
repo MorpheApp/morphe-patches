@@ -11,7 +11,8 @@
         android:layout_width="48.0dip"
         android:layout_height="60.0dip"
         yt:layout_constraintBottom_toTopOf="@+id/quick_actions_container"
-        yt:layout_constraintRight_toLeftOf="@+id/fullscreen_button">
+        yt:layout_constraintRight_toLeftOf="@+id/fullscreen_button"
+        android:visibility="gone">
 
         <com.google.android.libraries.youtube.common.ui.TouchImageView
             android:id="@+id/morphe_video_quality_dialog_button"
