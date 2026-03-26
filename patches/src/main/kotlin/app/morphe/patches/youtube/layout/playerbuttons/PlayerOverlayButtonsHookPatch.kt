@@ -20,10 +20,6 @@ private lateinit var exploderButtonMethodRef : WeakReference<MutableMethod>
 private var exploderButtonInsertIndex = -1
 private var exploderButtonInsertRegister = -1
 
-internal fun addPlayerUpperButton(descriptor: String) {
-    TODO()
-}
-
 fun addPlayerBottomButton(descriptor: String) {
     exploderButtonMethodRef.get()!!.addInstruction(
         exploderButtonInsertIndex++,
