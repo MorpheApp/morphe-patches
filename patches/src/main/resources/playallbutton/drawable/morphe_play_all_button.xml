@@ -40,51 +40,22 @@
     <target android:name="icon_group">
         <aapt:attr name="android:animation">
             <set android:ordering="together">
-                <!-- Scale animation (slight bounce) -->
                 <objectAnimator
                     android:propertyName="scaleX"
-                    android:duration="150"
+                    android:duration="100"
                     android:valueFrom="1.0"
-                    android:valueTo="1.2"
-                    android:interpolator="@android:interpolator/overshoot" />
-
-                <objectAnimator
-                    android:propertyName="scaleY"
-                    android:duration="150"
-                    android:valueFrom="1.0"
-                    android:valueTo="1.2"
-                    android:interpolator="@android:interpolator/overshoot" />
-
-                <objectAnimator
-                    android:propertyName="scaleX"
-                    android:duration="150"
-                    android:startOffset="150"
-                    android:valueFrom="1.1"
-                    android:valueTo="1.0"
-                    android:interpolator="@android:interpolator/anticipate_overshoot" />
-
-                <objectAnimator
-                    android:propertyName="scaleY"
-                    android:duration="150"
-                    android:startOffset="150"
-                    android:valueFrom="1.1"
-                    android:valueTo="1.0"
-                    android:interpolator="@android:interpolator/anticipate_overshoot" />
-
-                <!-- Translation Y - move down and back up -->
-                <objectAnimator
-                    android:propertyName="translateY"
-                    android:duration="150"
-                    android:valueFrom="0"
-                    android:valueTo="3"
+                    android:valueTo="1.1"
+                    android:repeatCount="1"
+                    android:repeatMode="reverse"
                     android:interpolator="@android:interpolator/fast_out_slow_in" />
 
                 <objectAnimator
-                    android:propertyName="translateY"
-                    android:duration="150"
-                    android:startOffset="150"
-                    android:valueFrom="3"
-                    android:valueTo="0"
+                    android:propertyName="scaleY"
+                    android:duration="100"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.1"
+                    android:repeatCount="1"
+                    android:repeatMode="reverse"
                     android:interpolator="@android:interpolator/fast_out_slow_in" />
             </set>
         </aapt:attr>
