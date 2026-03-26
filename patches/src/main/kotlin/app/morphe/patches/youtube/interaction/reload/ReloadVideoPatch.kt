@@ -14,7 +14,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
-import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyTopControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -78,7 +78,7 @@ val reloadVideoPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeLegacyTopControl(BUTTON_DESCRIPTOR)
+        initializeTopControl(BUTTON_DESCRIPTOR)
         injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
 
         // Main activity is used to launch downloader intent.

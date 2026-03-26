@@ -3,11 +3,11 @@ package app.morphe.patches.youtube.interaction.loop
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.youtube.layout.playerbuttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsResourcePatch
@@ -29,7 +29,11 @@ private val loopVideoButtonResourcePatch = resourcePatch {
             )
         )
 
-        addLegacyBottomControl("loopvideobutton")
+        addTopControl(
+            "loopvideobutton",
+            "@+id/morphe_loop_video_button",
+            "@+id/morphe_loop_video_button"
+        )
     }
 }
 
@@ -52,9 +56,7 @@ internal val loopVideoButtonPatch = bytecodePatch(
             SwitchPreference("morphe_loop_video_button"),
         )
 
-        addPlayerBottomButton(BUTTON_DESCRIPTOR)
-
-        initializeBottomControl(BUTTON_DESCRIPTOR)
+        initializeTopControl(BUTTON_DESCRIPTOR)
         injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
     }
 }

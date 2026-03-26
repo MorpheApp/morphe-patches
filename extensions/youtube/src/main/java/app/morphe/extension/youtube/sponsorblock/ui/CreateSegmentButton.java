@@ -1,5 +1,7 @@
 package app.morphe.extension.youtube.sponsorblock.ui;
 
+import static app.morphe.extension.youtube.videoplayer.PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS;
+
 import android.view.View;
 import android.widget.ImageView;
 
@@ -12,6 +14,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
+import app.morphe.extension.youtube.videoplayer.PlayerOverlayButton;
 
 @SuppressWarnings("unused")
 public class CreateSegmentButton {
@@ -43,7 +46,7 @@ public class CreateSegmentButton {
                     null
             );
 
-            if (false) if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
+            if (!PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS) {
                 ImageView icon = Utils.getChildViewByResourceName(controlsView,
                         "morphe_sb_create_segment_button");
                 icon.setImageResource(DRAWABLE_SB_LOGO);

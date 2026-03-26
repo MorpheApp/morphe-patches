@@ -34,7 +34,7 @@ public class CopyVideoURLButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !Settings.COPY_VIDEO_URL.get()) {
+            if (PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS || !Settings.COPY_VIDEO_URL.get()) {
                 return;
             }
 
@@ -57,7 +57,7 @@ public class CopyVideoURLButton {
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
+            if (!PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS) {
                 return;
             }
 

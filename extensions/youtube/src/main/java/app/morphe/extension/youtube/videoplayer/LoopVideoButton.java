@@ -17,8 +17,6 @@ import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
-import java.lang.ref.WeakReference;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
@@ -35,39 +33,11 @@ public class LoopVideoButton {
     private static final int LOOP_VIDEO_OFF = ResourceUtils.getIdentifierOrThrow(
             ResourceType.DRAWABLE,"morphe_loop_video_button_off");
 
-    private static WeakReference<ImageView> instance = new WeakReference<>(null);
-
-    /**
-     * Injection point.
-     */
-    public static void initializeButton(View controlsView) {
-        try {
-            if (Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !Settings.LOOP_VIDEO_BUTTON.get()) {
-                return;
-            }
-
-            instance = new WeakReference<>(PlayerOverlayButton.addButton(controlsView,
-                    "morphe_loop_video_button_off",
-                    view -> updateButtonAppearance(true, view),
-                    null
-            ));
-
-            // Set icon when initializing button based on current setting
-            updateButtonAppearance(false, null);
-        } catch (Exception ex) {
-            Logger.printException(() -> "initializeButton failure", ex);
-        }
-    }
-
     /**
      * Injection point.
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
-                return;
-            }
-
             legacy = new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_loop_video_button",
@@ -96,7 +66,6 @@ public class LoopVideoButton {
                 .scaleY(1.15f)
                 .setDuration(100)
                 .withEndAction(() -> {
-                    // FIXME: Update non legacy
                     if (legacy != null) {
                         legacy.setIcon(newState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
                     }
@@ -154,7 +123,7 @@ public class LoopVideoButton {
      * Updates the button's appearance.
      */
     private static void updateButtonAppearance(boolean userClickedButton, @Nullable View buttonView) {
-        if (instance == null) return;
+        if (legacy == null) return;
 
         try {
             Utils.verifyOnMainThread();
@@ -175,7 +144,6 @@ public class LoopVideoButton {
                 }
             } else {
                 // Initialization - just set icon based on current state.
-                // FIXME: Update non legacy
                 legacy.setIcon(currentState ? LOOP_VIDEO_ON : LOOP_VIDEO_OFF);
             }
         } catch (Exception ex) {

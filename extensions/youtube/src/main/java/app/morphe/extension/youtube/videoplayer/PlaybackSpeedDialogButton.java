@@ -39,7 +39,7 @@ public class PlaybackSpeedDialogButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !Settings.PLAYBACK_SPEED_DIALOG_BUTTON.get()) {
+            if (PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS || !Settings.PLAYBACK_SPEED_DIALOG_BUTTON.get()) {
                 return;
             }
 
@@ -80,7 +80,7 @@ public class PlaybackSpeedDialogButton {
 
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
+            if (!PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS) {
                 return;
             }
 

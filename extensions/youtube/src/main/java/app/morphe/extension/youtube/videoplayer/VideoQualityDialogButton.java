@@ -137,7 +137,7 @@ public class VideoQualityDialogButton {
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
+            if (!PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS) {
                 return;
             }
 

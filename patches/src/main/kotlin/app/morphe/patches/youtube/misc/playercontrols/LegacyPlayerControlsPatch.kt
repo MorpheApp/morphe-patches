@@ -48,7 +48,6 @@ import java.lang.ref.WeakReference
  * Add a new top to the bottom of the YouTube player.
  */
 @Suppress("KDocUnresolvedReference")
-// Internal until this is modified to work with any patch (and not just SponsorBlock).
 internal lateinit var addTopControl: (String, String, String) -> Unit
     private set
 
@@ -187,7 +186,7 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
  * Injects the code to initialize the controls.
  * @param descriptor The descriptor of the method which should be called.
  */
-internal fun initializeLegacyTopControl(descriptor: String) {
+internal fun initializeTopControl(descriptor: String) {
     inflateTopControlMethodRef.get()!!.addInstruction(
         inflateTopControlInsertIndex++,
         "invoke-static { v$inflateTopControlRegister }, $descriptor->initializeLegacyButton(Landroid/view/View;)V",

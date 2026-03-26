@@ -29,7 +29,7 @@ public class ExternalDownloadButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !Settings.EXTERNAL_DOWNLOADER.get()) {
+            if (PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS || !Settings.EXTERNAL_DOWNLOADER.get()) {
                 return;
             }
 
@@ -48,7 +48,7 @@ public class ExternalDownloadButton {
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!Settings.RESTORE_OLD_PLAYER_BUTTONS.get()) {
+            if (!PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS) {
                 return;
             }
 
