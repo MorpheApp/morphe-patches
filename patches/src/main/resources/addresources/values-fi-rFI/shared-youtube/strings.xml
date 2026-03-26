@@ -20,15 +20,18 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Käynnistä uudelleen valituksen suorittamiseksi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Sovelluksen nimi</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Mukautettu</string>
   <string name="morphe_custom_branding_icon_title">Sovelluskuvake</string>
   <string name="morphe_custom_branding_icon_entry_1">Alkuperäinen</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe musta</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tumma</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe vaalea</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Mukautettu</string>
+  <string name="morphe_custom_branding_icon_entry_6">Mukautettu</string>
+  <string name="morphe_custom_branding_notification_icon_title">Ilmoituksen kuvake</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Seuraa sovelluksen kuvake</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Varoitus: Kokeellinen 🚨</string>

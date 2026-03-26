@@ -146,9 +146,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">Η ενότητα που μπορείς να την προτιμήσεις είναι κρυμμένη</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Η ενότητα που μπορείς να την προτιμήσεις εμφανίζεται</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Κρυμμένα\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
-  <string name="morphe_hide_doodles_summary_off">Εμφανίζεται\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Κρυμμένα\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Εμφανίζεται\n\nΑφορά τις κινούμενες εικόνες YouTube Doodles στο λογότυπο</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"Τα Doodle της YouTube εμφανίζονται λίγες μέρες κάθε χρόνο σε διάφορα μέρη του κόσμου.
+
+Η εμφάνιση των Doodle της YouTube ενδέχεται να αποτρέψει την εμφάνιση προσαρμοσμένων επικεφαλίδων."</string>
   <string name="morphe_hide_channel_bar_title">Γραμμή καναλιού</string>
   <string name="morphe_hide_channel_bar_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_channel_bar_summary_off">Εμφανίζεται</string>
@@ -307,8 +310,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">Ενεργοποίηση φίλτρου περιφοράς σχολίων</string>
   <string name="morphe_hide_comments_carousel_summary_on">Το φίλτρο της διαφάνειας σχολίων είναι ενεργοποιημένο</string>
   <string name="morphe_hide_comments_carousel_summary_off">Το φίλτρο της διαφάνειας σχολίων είναι απενεργοποιημένο</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Σημείωση
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Σημείωση:
 • Βεβαιωθείτε ότι καταχωρείτε το ακριβές όνομα του στοιχείου του καρουζέλ (π.χ. Ρώτα, Δημιούργησε δημοσίευση, Άκουσε στο YouTube Music, κ.λπ.).
 • Η απόκρυψη στοιχείων του καρουζέλ ενδέχεται να έχει ακούσιες συνέπειες.
 • Εάν όλα τα στοιχεία του καρουζέλ είναι κρυμμένα, θα κρυφτεί και ολόκληρο το τμήμα των σχολίων."</string>
@@ -708,10 +710,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">Γραμμή πλοήγησης</string>
   <string name="morphe_hide_navigation_bar_summary_on">Η γραμμή πλοήγησης θα είναι κρυμμένη κατά την αναπαραγωγή Shorts</string>
   <string name="morphe_hide_navigation_bar_summary_off">Η γραμμή πλοήγησης εμφανίζεται κατά την αναπαραγωγή Shorts</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Αυτό κρύβει εντελώς τη γραμμή πλοήγησης, συμπεριλαμβανομένου του καρτέλας You.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Αυτό κρύβει εντελώς τη γραμμή πλοήγησης, συμπεριλαμβανομένου του 'Εγώ' tab.
 
-Για να έχετε πρόσβαση στις Ρυθμίσεις:
-Ανοίξτε οποιοδήποτε βίντεο → Ανοίξτε το μενού Ποιότητας → Πατήστε 'Ρυθμίσεις > Προτιμήσεις Ποιότητας Βίντεο' στο κάτω μέρος."</string>
+Για να έχετε πρόσβαση στις Ρυθμίσεις, ενεργοποιήστε το κουμπί Ρυθμίσεις μέσω Γενικά → Εργαλειοθήκη → Εμφάνιση Ρυθμίσεων."</string>
   <string name="morphe_narrow_navigation_buttons_title">Ενεργοποίηση στενών κουμπιών πλοήγησης</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Το διάστημα μεταξύ των κουμπιών πλοήγησης είναι στενό</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Το διάστημα μεταξύ των κουμπιών πλοήγησης είναι κανονικό</string>
@@ -719,8 +720,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary_on">Οι μεταβάσεις πλοήγησης κινούνται</string>
   <string name="morphe_navigation_bar_animations_summary_off">Οι μεταβάσεις πλοήγησης δεν κινούνται</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Απενεργοποίηση αυτόματης απόκρυψης της γραμμής πλοήγησης</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Η γραμμή πλοήγησης δεν θα αποκρύπτεται αυτόματα</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Η γραμμή πλοήγησης ενδέχεται να αποκρύπτεται αυτόματα</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Η γραμμή πλοήγησης δεν θα κρυφτεί κατά την κύλιση</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Η γραμμή πλοήγησης θα κρυφτεί κατά την κύλιση</string>
   <string name="morphe_disable_translucent_status_bar_title">Απενεργοποίηση διαφανούς γραμμής κατάστασης</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Η γραμμή κατάστασης δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Η διαφάνεια της γραμμής κατάστασης ορίζεται αυτόματα</string>
@@ -1012,10 +1013,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Η γραμμή πλοήγησης θα είναι κρυμμένη κατά την αναπαραγωγή Shorts</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Η γραμμή πλοήγησης εμφανίζεται κατά την αναπαραγωγή Shorts</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Προτεινόμενο βίντεο τελικής οθόνης</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Διαφύγεται προτεινόμενο βίντεο στο τέλος οθόνης</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Εμφανίζεται</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Αυτή η ρύθμιση λειτουργεί μόνο αν η αυτόματη αναπαραγωγή του επόμενου βίντεο είναι απενεργοποιημένη.
+  <string name="morphe_hide_end_screen_suggested_video_title">Προτεινόμενο βίντεο τελικής οθόνης</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Διαφύγεται προτεινόμενο βίντεο στο τέλος οθόνης</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Αυτή η ρύθμιση λειτουργεί μόνο αν η αυτόματη αναπαραγωγή του επόμενου βίντεο είναι απενεργοποιημένη.
 
 Μπορείς να αλλάξεις αυτήν τη ρύθμιση στο YouTube:
 Ρύθμιση → Αναπαραγωγή (ή Αυτόματη αναπαραγωγή) → Αυτόματη αναπαραγωγή επόμενου βίντεο"</string>

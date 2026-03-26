@@ -128,18 +128,16 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
      * This could use {@link TrieSearch}, but since the patterns are constantly changing
      * the overhead of updating the Trie might negate the search performance gain.
      */
-    private static boolean byteArrayContainsString(@NonNull byte[] array, @NonNull String text) {
-        for (int i = 0, lastArrayStartIndex = array.length - text.length(); i <= lastArrayStartIndex; i++) {
+    private static boolean byteArrayContainsString(@NonNull byte[] protobufBufferArray, @NonNull String videoId) {
+        for (int i = 0, lastArrayStartIndex = protobufBufferArray.length - 11; i <= lastArrayStartIndex; i++) {
             boolean found = true;
-            for (int j = 0, textLength = text.length(); j < textLength; j++) {
-                if (array[i + j] != (byte) text.charAt(j)) {
+            for (int j = 0; j < 11; j++) {
+                if (protobufBufferArray[i + j] != (byte) videoId.charAt(j)) {
                     found = false;
                     break;
                 }
             }
-            if (found) {
-                return true;
-            }
+            if (found) return true;
         }
 
         return false;

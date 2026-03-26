@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.shared.layout.branding
 
 import app.morphe.patcher.Fingerprint
@@ -14,8 +24,12 @@ import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
+import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
@@ -42,6 +56,7 @@ private val iconStyleNames = arrayOf(
     "black",
     "dark",
     "light",
+    "play",
 )
 
 private const val ORIGINAL_USER_ICON_STYLE_NAME = "original"
@@ -59,7 +74,19 @@ private val USER_CUSTOM_ADAPTIVE_FILE_NAMES = arrayOf(
 )
 
 private const val USER_CUSTOM_MONOCHROME_FILE_NAME = "${LAUNCHER_ADAPTIVE_MONOCHROME_PREFIX}_$CUSTOM_USER_ICON_STYLE_NAME.xml"
-private const val USER_CUSTOM_NOTIFICATION_ICON_FILE_NAME = "${NOTIFICATION_ICON_NAME}_$CUSTOM_USER_ICON_STYLE_NAME.xml"
+
+// Custom notification icon can be provided as an XML vector drawable or a PNG raster image.
+private const val USER_CUSTOM_NOTIFICATION_ICON_XML_FILE_NAME = "${NOTIFICATION_ICON_NAME}_$CUSTOM_USER_ICON_STYLE_NAME.xml"
+private const val USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME = "${NOTIFICATION_ICON_NAME}_$CUSTOM_USER_ICON_STYLE_NAME.png"
+
+// Drawable DPI directories for PNG notification icons.
+private val notificationIconPngDirectories = mapOf(
+    "drawable-mdpi" to "24x24 px",
+    "drawable-hdpi" to "36x36 px",
+    "drawable-xhdpi" to "48x48 px",
+    "drawable-xxhdpi" to "72x72 px",
+    "drawable-xxxhdpi" to "96x96 px",
+)
 
 internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/patches/CustomBrandingPatch;"
 
@@ -104,9 +131,14 @@ internal fun baseCustomBrandingPatch(
             The image dimensions must be as follows:
             ${mipmapDirectories.map { (dpi, dim) -> "- $dpi: $dim" }.joinToString("\n")}
 
-            Optionally, the path contains a 'drawable' folder with any of the monochrome icon files:
+            Optionally, the path contains a 'drawable' folder with a monochrome icon file:
             $USER_CUSTOM_MONOCHROME_FILE_NAME
-            $USER_CUSTOM_NOTIFICATION_ICON_FILE_NAME
+
+            Optionally, the path contains a notification icon in one of the following formats:
+            - XML vector drawable placed in 'drawable':
+              $USER_CUSTOM_NOTIFICATION_ICON_XML_FILE_NAME
+            - PNG raster images placed in the matching 'drawable-<dpi>' folders:
+              ${notificationIconPngDirectories.map { (dpi, dim) -> "- $dpi/$USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME ($dim)" }.joinToString("\n")}
         """.trimIndentMultiline()
     )
 
@@ -206,26 +238,42 @@ internal fun baseCustomBrandingPatch(
         val useCustomName = customName != null
         val useCustomIcon = customIcon != null
 
-        preferenceScreen.addPreferences(
-            if (useCustomName) {
-                ListPreference(
-                    key = "morphe_custom_branding_name",
-                    entriesKey = "morphe_custom_branding_name_custom_entries",
-                    entryValuesKey = "morphe_custom_branding_name_custom_entry_values"
-                )
-            } else {
-                ListPreference("morphe_custom_branding_name")
-            },
+        val preferences = mutableSetOf<BasePreference>()
 
-            if (useCustomIcon) {
-                ListPreference(
-                    key = "morphe_custom_branding_icon",
-                    entriesKey = "morphe_custom_branding_icon_custom_entries",
-                    entryValuesKey = "morphe_custom_branding_icon_custom_entry_values"
-                )
-            } else {
-                ListPreference("morphe_custom_branding_icon")
-            }
+        preferences += if (useCustomName) {
+            ListPreference(
+                key = "morphe_custom_branding_name",
+                entriesKey = "morphe_custom_branding_name_custom_entries",
+                entryValuesKey = "morphe_custom_branding_name_custom_entry_values"
+            )
+        } else {
+            ListPreference("morphe_custom_branding_name")
+        }
+
+        if (useCustomIcon) {
+            preferences += ListPreference(
+                key = "morphe_custom_branding_icon",
+                entriesKey = "morphe_custom_branding_icon_custom_entries",
+                entryValuesKey = "morphe_custom_branding_icon_custom_entry_values"
+            )
+            preferences += ListPreference(
+                key = "morphe_custom_branding_notification_icon",
+                entriesKey = "morphe_custom_branding_icon_custom_entries",
+                entryValuesKey = "morphe_custom_branding_notification_icon_custom_entry_values"
+            )
+        } else {
+            preferences += ListPreference("morphe_custom_branding_icon")
+            preferences += ListPreference("morphe_custom_branding_notification_icon")
+        }
+
+        preferenceScreen.addPreferences(
+            PreferenceCategory(
+                key = null,
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = preferences
+            )
         )
 
         iconStyleNames.forEach { style ->
@@ -235,6 +283,8 @@ internal fun baseCustomBrandingPatch(
                     "drawable",
                     "$LAUNCHER_ADAPTIVE_BACKGROUND_PREFIX$style.xml",
                     "$LAUNCHER_ADAPTIVE_FOREGROUND_PREFIX$style.xml",
+                    "${LAUNCHER_ADAPTIVE_MONOCHROME_PREFIX}_$style.xml",
+                    "${NOTIFICATION_ICON_NAME}_$style.xml",
                 ),
                 ResourceGroup(
                     "mipmap-anydpi",
@@ -245,23 +295,11 @@ internal fun baseCustomBrandingPatch(
 
         copyResources(
             "custom-branding",
-            // Push notification 'small' icon.
-            ResourceGroup(
-                "drawable",
-                "$NOTIFICATION_ICON_NAME.xml"
-            ),
-
-            // Monochrome launcher icon.
-            ResourceGroup(
-                "drawable",
-                "$LAUNCHER_ADAPTIVE_MONOCHROME_PREFIX.xml",
-            ),
-
             // Copy template user icon, because the aliases must be added even if no user icon is provided.
             ResourceGroup(
                 "drawable",
                 USER_CUSTOM_MONOCHROME_FILE_NAME,
-                USER_CUSTOM_NOTIFICATION_ICON_FILE_NAME
+                USER_CUSTOM_NOTIFICATION_ICON_XML_FILE_NAME,
             ),
             ResourceGroup(
                 "mipmap-anydpi",
@@ -437,7 +475,7 @@ internal fun baseCustomBrandingPatch(
 
             // For each source folder, copy the files to the target resource directories.
             iconPathFile.listFiles {
-                file -> file.isDirectory && file.name in mipmapDirectories
+                    file -> file.isDirectory && file.name in mipmapDirectories
             }!!.forEach { dpiSourceFolder ->
                 val targetDpiFolder = resourceDirectory.resolve(dpiSourceFolder.name)
                 if (!targetDpiFolder.exists()) {
@@ -462,16 +500,42 @@ internal fun baseCustomBrandingPatch(
                 }
             }
 
-            // Copy monochrome and small notification icon if it provided.
-            arrayOf(
-                USER_CUSTOM_MONOCHROME_FILE_NAME,
-                USER_CUSTOM_NOTIFICATION_ICON_FILE_NAME
-            ).forEach { fileName ->
-                val relativePath = "drawable/$fileName"
-                val file = iconPathFile.resolve(relativePath)
-                if (file.exists()) {
-                    file.copyTo(
-                        target = resourceDirectory.resolve(relativePath),
+            // Copy monochrome icon if provided.
+            val drawableSourceFolder = iconPathFile.resolve("drawable")
+            if (drawableSourceFolder.exists()) {
+                val monochromeFile = drawableSourceFolder.resolve(USER_CUSTOM_MONOCHROME_FILE_NAME)
+                if (monochromeFile.exists()) {
+                    monochromeFile.copyTo(
+                        target = resourceDirectory.resolve("drawable/$USER_CUSTOM_MONOCHROME_FILE_NAME"),
+                        overwrite = true
+                    )
+                    copiedFiles = true
+                }
+
+                // XML vector notification icon.
+                val notificationXml = drawableSourceFolder.resolve(USER_CUSTOM_NOTIFICATION_ICON_XML_FILE_NAME)
+                if (notificationXml.exists()) {
+                    notificationXml.copyTo(
+                        target = resourceDirectory.resolve("drawable/$USER_CUSTOM_NOTIFICATION_ICON_XML_FILE_NAME"),
+                        overwrite = true
+                    )
+                    copiedFiles = true
+                }
+            }
+
+            // PNG notification icons.
+            // If any DPI folder is present, copy what's available.
+            iconPathFile.listFiles { file ->
+                file.isDirectory && file.name in notificationIconPngDirectories
+            }!!.forEach { dpiSourceFolder ->
+                val pngFile = dpiSourceFolder.resolve(USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME)
+                if (pngFile.exists()) {
+                    val targetFolder = resourceDirectory.resolve(dpiSourceFolder.name)
+                    if (!targetFolder.exists()) {
+                        throw IllegalStateException("Resource directory not found: ${dpiSourceFolder.name}")
+                    }
+                    pngFile.copyTo(
+                        target = targetFolder.resolve(USER_CUSTOM_NOTIFICATION_ICON_PNG_FILE_NAME),
                         overwrite = true
                     )
                     copiedFiles = true

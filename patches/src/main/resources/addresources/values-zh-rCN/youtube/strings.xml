@@ -144,9 +144,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">“可能喜欢”部分已隐藏</string>
   <string name="morphe_hide_you_may_like_section_summary_off">“可能喜欢”部分已显示</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">隐藏 YouTube 涂鸦</string>
-  <string name="morphe_hide_doodles_summary_on">隐藏YouTube徽标上的Doodles动画</string>
-  <string name="morphe_hide_doodles_summary_off">YouTube 徽标上的 Doodles 动画已显示</string>
+  <string name="morphe_hide_youtube_doodles_title">隐藏 YouTube 涂鸦</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">隐藏YouTube徽标上的Doodles动画</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">YouTube 徽标上的 Doodles 动画已显示</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles 每年在世界各地的一些天数内会显示。
+
+显示 YouTube Doodles 可能会阻止自定义标头显示。"</string>
   <string name="morphe_hide_channel_bar_title">隐藏频道栏</string>
   <string name="morphe_hide_channel_bar_summary_on">频道栏已隐藏</string>
   <string name="morphe_hide_channel_bar_summary_off">频道栏已显示</string>
@@ -305,7 +308,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">启用评论轮播过滤</string>
   <string name="morphe_hide_comments_carousel_summary_on">自定义筛选器已启用</string>
   <string name="morphe_hide_comments_carousel_summary_off">自定义筛选器已禁用</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"注意
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"注意：
 
 • 确保输入轮播项的确切名称（例如，提问、热播此视频、在 YouTube Music 上收听等）。
 • 隐藏轮播项可能会产生意想不到的副作用。
@@ -707,19 +710,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">隐藏导航栏</string>
   <string name="morphe_hide_navigation_bar_summary_on">导航栏已隐藏</string>
   <string name="morphe_hide_navigation_bar_summary_off">导航栏已显示</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"这会完全隐藏导航栏，包括您选项卡。
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"这会完全隐藏导航栏，包括“您”标签。
 
-要访问设置：
-打开任何视频 → 打开质量菜单 → 点击底部的“设置 &gt; 视频质量偏好”"</string>
+要访问设置，请通过“常规”→“工具栏”→“显示设置”启用“设置”按钮。"</string>
   <string name="morphe_narrow_navigation_buttons_title">启用狭窄导航按钮</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">导航按钮间距狭窄</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">导航按钮间距正常</string>
   <string name="morphe_navigation_bar_animations_title">启用导航栏动画</string>
   <string name="morphe_navigation_bar_animations_summary_on">导航过渡是动画的</string>
   <string name="morphe_navigation_bar_animations_summary_off">导航过渡没有动画</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">禁用导航栏自动隐藏</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">导航栏将不会自动隐藏</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">导航栏可能会自动隐藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">禁用自动隐藏导航栏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">滚动时导航栏将不会隐藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">滚动时导航栏将隐藏</string>
   <string name="morphe_disable_translucent_status_bar_title">禁用半透明状态栏</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">状态栏为不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">状态栏为不透明或半透明</string>
@@ -1011,10 +1013,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">导航栏已隐藏</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">导航栏已显示</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">隐藏片尾画面推荐视频</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">片尾画面推荐视频已隐藏</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">显示片尾画面推荐视频</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"此设置仅在关闭\"自动播放下一个视频\"时有效。
+  <string name="morphe_hide_end_screen_suggested_video_title">隐藏片尾画面推荐视频</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">片尾画面推荐视频已隐藏</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">显示片尾画面推荐视频</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"此设置仅在关闭\"自动播放下一个视频\"时有效。
 
 您可以在YouTube中更改此设置：
 设置 → 播放（或自动播放） → 自动播放下一个视频"</string>

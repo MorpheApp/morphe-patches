@@ -145,9 +145,12 @@ Změny zahrnují:
   <string name="morphe_hide_you_may_like_section_summary_on">Sekce \"Můžete si přihlížet\" je skryta</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Sekce \"Můžete si přihlížet\" je zobrazená</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Skrýt YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Animace \"Doodles\" YouTube na logu je skrytá</string>
-  <string name="morphe_hide_doodles_summary_off">Animace YouTube Doodles na logu je zobrazena</string>
+  <string name="morphe_hide_youtube_doodles_title">Skrýt YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Animace \"Doodles\" YouTube na logu je skrytá</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Animace YouTube Doodles na logu je zobrazena</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles se zobrazují několik dní každý rok v různých částech světa.
+
+Zobrazování YouTube Doodles může zabránit zobrazení vlastních záhlaví."</string>
   <string name="morphe_hide_channel_bar_title">Skrýt kanálový panel</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanálový panel je skrytý</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanálový panel je zobrazen</string>
@@ -306,7 +309,7 @@ Změny zahrnují:
   <string name="morphe_hide_comments_carousel_title">Povolit filtr kolotoče komentářů</string>
   <string name="morphe_hide_comments_carousel_summary_on">Filtr kolotoče komentářů je povolen</string>
   <string name="morphe_hide_comments_carousel_summary_off">Filtr přehledu komentářů je zakázán</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Poznámka
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Poznámka:
 
 • Ujistěte se, že zadáváte přesný název položky otočky (např. Zeptejte se, Zdůrazněte toto video, Poslechněte si na YouTube Music atd.).
 • Skrytí položek otočky může mít neočekávané vedlejší účinky.
@@ -708,19 +711,18 @@ Cookies budou automaticky uloženy, pokud jsou platné."</string>
   <string name="morphe_hide_navigation_bar_title">Skrýt navigační panel</string>
   <string name="morphe_hide_navigation_bar_summary_on">Navigační panel je skrytý</string>
   <string name="morphe_hide_navigation_bar_summary_off">Navigační panel je zobrazen</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Toto skrývá celý navigační panel, včetně záložky You.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"To zcela skryje navigační lištu, včetně záložky 'You'.
 
-Pro přístup k Nastavení:
-Otevřete jakékoli video → Otevřete nabídku Kvality → Klepněte na 'Nastavení > Nastavení kvality videa' v dolní části obrazovky."</string>
+Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nástrojová lišta → Zobrazit Nastavení."</string>
   <string name="morphe_narrow_navigation_buttons_title">Povolit úzké tlačítka na navigaci</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Mezi tlačítky na navigaci je úzký odstup</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Mezi tlačítky na navigaci je normální odstup</string>
   <string name="morphe_navigation_bar_animations_title">Povolit animace navigační lišty</string>
   <string name="morphe_navigation_bar_animations_summary_on">Přechody navigace jsou animované</string>
   <string name="morphe_navigation_bar_animations_summary_off">Přechody navigace nejsou animované</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Vypnout automatické skrývání navigační lišty</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigační lišta se nebude automaticky skrývat</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigační lišta se může automaticky skrývat</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Vypněte automatické skrytí navigační lišty</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigační lišta se při posouvání nebude schovávat</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigační lišta se při posouvání bude schovávat</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktivovat průsvitný stavový řádek</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Stavový řádek je neprůhledný</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Stavový řádek je neprůhledný nebo průsvitný</string>
@@ -1012,10 +1014,10 @@ Abyste zobrazili menu s zvukovými stopami, změňte 'Zamaskované video proudy'
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigační panel je skrytý</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigační panel je zobrazen</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Skrýt navrhované video na konci obrazovky</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Navrhované video na konci obrazovky je skryto</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Navrhované video na konci obrazovky se zobrazuje</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Tato nastavení fungují pouze, když je 'Automatické přehrání dalšího videa' vypnuto.
+  <string name="morphe_hide_end_screen_suggested_video_title">Skrýt navrhované video na konci obrazovky</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Navrhované video na konci obrazovky je skryto</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Navrhované video na konci obrazovky se zobrazuje</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Tato nastavení fungují pouze, když je 'Automatické přehrání dalšího videa' vypnuto.
 
 Můžete to změnit v YouTube:
 Nastavení → Přehrávání (nebo Automatické přehrávání) → Automatické přehrání dalšího videa"</string>

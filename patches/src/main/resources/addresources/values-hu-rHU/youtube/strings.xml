@@ -144,9 +144,12 @@ Változások:
   <string name="morphe_hide_you_may_like_section_summary_on">A \"You may like\" szakasz elrejtve</string>
   <string name="morphe_hide_you_may_like_section_summary_off">A \"You may like\" szakasz látható</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodles elrejtése</string>
-  <string name="morphe_hide_doodles_summary_on">A YouTube Doodles animáció a logón elrejtve</string>
-  <string name="morphe_hide_doodles_summary_off">YouTube Doodles animáció látható a logón</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodles elrejtése</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">A YouTube Doodles animáció a logón elrejtve</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles animáció látható a logón</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"A YouTube Doodles néhány napon keresztül jelennek meg évente a világ különböző részein.
+
+A YouTube Doodles megjelenítése megakadályozhatja egyéni fejléc megjelenítését."</string>
   <string name="morphe_hide_channel_bar_title">Csatornasáv elrejtése</string>
   <string name="morphe_hide_channel_bar_summary_on">A csatornasáv el van rejtve</string>
   <string name="morphe_hide_channel_bar_summary_off">A csatornasáv megjelenik</string>
@@ -305,8 +308,7 @@ Változások:
   <string name="morphe_hide_comments_carousel_title">Interakciós kártyák szűrése</string>
   <string name="morphe_hide_comments_carousel_summary_on">Interakciós kártyák szűrése engedélyezve</string>
   <string name="morphe_hide_comments_carousel_summary_off">Interakciós kártyák szűrése letiltva</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Megjegyzés
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Megjegyzés:
 • Győződjön meg róla, hogy a körlátható elem nevét pontosan adja meg (pl. Kérdezz, Növeld a videó népszerűségét, Hallgass a YouTube Music-on, stb.).
 • A körlátható elemek elrejtése nem várt mellékhatásokat okozhat.
 • Ha minden körlátható elem el van rejtve, a teljes hozzászólások szekció is el fog rejtve lenni."</string>
@@ -707,19 +709,18 @@ Automatikus megfordítási megjelenítés lehetségesen nem áll rendelkezésre"
   <string name="morphe_hide_navigation_bar_title">Navigációs sáv elrejtése</string>
   <string name="morphe_hide_navigation_bar_summary_on">Navigációs sáv elrejtve</string>
   <string name="morphe_hide_navigation_bar_summary_off">A navigációs sáv megjelenik</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ez teljesen elrejteti a navigációs sávot, beleértve a ‘You’ lapot.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ez teljesen elrejti a navigációs sávot, beleértve a 'Te' fület is.
 
-Beállításokhoz való hozzáférés:
-Nyisson meg bármilyen videót → Nyissa meg a minőségi menüt → Nyomja meg a ‘Beállítások > Videóminőség beállításai’ gombot az alapon."</string>
+A Beállítások eléréséhez engedje a Beállítások gombot a Általános → Eszköztár → Mutassa meg a Beállításokat menüpontban."</string>
   <string name="morphe_narrow_navigation_buttons_title">Szeletelt navigációs gombok engedélyezése</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">A navigációs gombok közötti távolság szűk</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">A navigációs gombok közötti távolság normál</string>
   <string name="morphe_navigation_bar_animations_title">Navigációs sáv animációinak engedélyezése</string>
   <string name="morphe_navigation_bar_animations_summary_on">A navigációs átmenetek animáltak</string>
   <string name="morphe_navigation_bar_animations_summary_off">A navigációs átmenetek nem animáltak</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Navigációs sáv automatikus elrejtésének letiltása</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">A navigációs sáv nem rejtődik automatikusan</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">A navigációs sáv esetleg automatikusan elrejthető</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Kapcsold ki az automatikus elrejtést a navigációs sávra</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">A navigációs sáv nem rejtőzik el görgetés közben</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">A navigációs sáv elrejti magát görgetés közben</string>
   <string name="morphe_disable_translucent_status_bar_title">Átlátszó állapotsor letiltása</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Az állapotsor nem áttetsző</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Az állapotsor nem áttetsző vagy áttetsző</string>
@@ -1011,10 +1012,10 @@ A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et '
   <string name="morphe_hide_shorts_navigation_bar_summary_on">A navigációs sáv el van rejtve</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">A navigációs sáv megjelenik</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Javasolt videó elrejtése a befejező képernyőn</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">A befejező képernyőn látható javasolt videó</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">A befejező képernyőn lévő javasolt videó látható</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ez a beállítás csak akkor működik, ha 'Autoplay next video' ki van kapcsolva.
+  <string name="morphe_hide_end_screen_suggested_video_title">Javasolt videó elrejtése a befejező képernyőn</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">A befejező képernyőn látható javasolt videó</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">A befejező képernyőn lévő javasolt videó látható</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Ez a beállítás csak akkor működik, ha 'Autoplay next video' ki van kapcsolva.
 
 Ez megváltoztatható a YouTube-on:
 Beállítások → Lejátszás (vagy Autoplay) → Autoplay next video"</string>

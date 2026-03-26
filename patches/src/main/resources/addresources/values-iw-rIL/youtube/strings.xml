@@ -144,9 +144,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">מדור \"אולי תעניק\" מוסתר</string>
   <string name="morphe_hide_you_may_like_section_summary_off">מדור \"אולי תעניק\" מוצג</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">הסתר YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">הנפשת YouTube Doodles על הלוגו מוסתרת</string>
-  <string name="morphe_hide_doodles_summary_off">הנפשת YouTube Doodles על הלוגו מוצגת</string>
+  <string name="morphe_hide_youtube_doodles_title">הסתר YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">הנפשת YouTube Doodles על הלוגו מוסתרת</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">הנפשת YouTube Doodles על הלוגו מוצגת</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"ציורי Google מוצגים מספר ימים בשנה בחלקים שונים של העולם.
+
+הצגת ציורי Google עשויה למנוע הצגת כותרות מותאמות אישית."</string>
   <string name="morphe_hide_channel_bar_title">הסתר סרגל ערוץ</string>
   <string name="morphe_hide_channel_bar_summary_on">סרגל הערוץ מוסתר</string>
   <string name="morphe_hide_channel_bar_summary_off">סרגל הערוץ מוצג</string>
@@ -305,8 +308,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">הפעלת מסנן קרוסלת תגובות</string>
   <string name="morphe_hide_comments_carousel_summary_on">סינון סרגל התגובות מופעל</string>
   <string name="morphe_hide_comments_carousel_summary_off">מסנן סבוב הערות מושבת</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"הערה
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"שימו לב:
 • הקפידו להזין את השם המדויק של הפריט בסבוב הקרוסלה (לדוגמה, שאל, הצבע על סרטון זה, האזן ב-YouTube Music וכו').
 • הסתרת פריטים בסבוב הקרוסלה עלולה לגרום לתופעות לוואי בלתי צפויות.
 • אם כל הפריטים בסבוב הקרוסלה מוסתרים, גם כל סעיף התגובות יוסתר."</string>
@@ -707,19 +709,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">הסתר סרגל ניווט</string>
   <string name="morphe_hide_navigation_bar_summary_on">סרגל ניווט מוסתר</string>
   <string name="morphe_hide_navigation_bar_summary_off">סרגל ניווט מוצג</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"הפעולה הזו מסתירה את סרגל הניווט כולו, כולל הלשונית 'אתה'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"זה מסתיר לחלוטין את סרגל הניווט, כולל הלשונית 'אתה'.
 
-כדי לגשת להגדרות:
-פתח כלשהו → פתח תפריט 'איכות' → הקש על 'הגדרות > העדפות איכות וידאו' בתחתית."</string>
+כדי לגשת להגדרות, הפעילו את כפתור ההגדרות דרך כללי → סרגל כלים → הצג הגדרות."</string>
   <string name="morphe_narrow_navigation_buttons_title">הפעלת כפתורי ניווט צרים</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">הפרש בין כפתורי ניווט צר</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">הפרש בין כפתורי ניווט רגיל</string>
   <string name="morphe_navigation_bar_animations_title">הפעלת אנימציות של שורת הניווט</string>
   <string name="morphe_navigation_bar_animations_summary_on">מעברי ניווט מונפשים</string>
   <string name="morphe_navigation_bar_animations_summary_off">מעברי ניווט אינם מונפשים</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">אתלַרִ הֲיַהִ אב-גֲיַה</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">גַהְה בְטֵר אכוֳיַה לֲיַה אב-גֲיַה</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">גַהְה בְטֵר אכוֳיַה</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">השבת הסתרת אוטומטית של סרגל הניווט</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">סרגל הניווט לא יתכסה בזמן גלילה</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">סרגל הניווט יתכסה בזמן גלילה</string>
   <string name="morphe_disable_translucent_status_bar_title">השבת שורת מצב שקופה</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">שורת מצב אטומה</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">שורת מצב אטומה או שקופה</string>
@@ -1011,10 +1012,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">סרגל ניווט מוסתר</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">סרגל ניווט מוצג</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">הסתר סרטון מוצע של מסך סיום</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">סרטון מוצע של מסך סיום מוסתר</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">סרטון מוצע של מסך סיום מוצג</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"התצורה הזו תעבוד רק אם 'התחלת נגינה אוטומטית' מושבתת.
+  <string name="morphe_hide_end_screen_suggested_video_title">הסתר סרטון מוצע של מסך סיום</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">סרטון מוצע של מסך סיום מוסתר</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">סרטון מוצע של מסך סיום מוצג</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"התצורה הזו תעבוד רק אם 'התחלת נגינה אוטומטית' מושבתת.
 
 אתה יכול לשנות זאת ביוטיוב:
 הגדרות → נגינה (או התחלת נגינה אוטומטית) → התחלת נגינה אוטומטית הבאה"</string>

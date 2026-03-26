@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026 Morphe. This is copyrighted content, and not licensed under open source terms.
+     See https://github.com/MorpheApp/morphe-branding -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+
+    <group
+        android:scaleX="0.6"
+        android:scaleY="0.6"
+        android:translateX="102.4"
+        android:translateY="102.4">
+
+        <path
+            android:fillColor="#00AFAE"
+            android:pathData="M334.855,174.926L76,422.681c0,25.61 29.561,41.617 53.209,28.812l100.722,-54.539 104.925,-59.924 83.012,-49.939c11.3,-6.798 18.132,-18.522 18.132,-31.112c0,-12.59 -6.833,-24.314 -18.132,-31.111z"/>
+        <path
+            android:fillColor="#1E5AA8"
+            android:pathData="M176.972,86.326L129.209,60.463C110.522,50.463 86.723,58.242 78.71,76.968c-0.386,1.206 -0.766,2.414 -1.084,3.656c-0.825,2.552 -1.321,5.187 -1.476,7.85C76.101,88.854 76.043,89.231 76,89.612V422.344c1.482,19.077 13.522,33.208 34.674,33.607c32.374,0 67.217,-47.306 67.217,-66.864V97.312c0,-3.761 -0.337,-7.425 -0.92,-10.986z"/>
+        <path android:pathData="M436,255.978c0,-12.59 -6.833,-24.314 -18.132,-31.111l-83.013,-49.94C300.383,154.188 265.399,134.208 229.931,115.002L129.209,60.463C104.297,47.273 77.123,65.241 76,89.274l258.855,247.756 83.013,-49.94c11.299,-6.798 18.132,-18.522 18.132,-31.112z">
+            <aapt:attr name="android:fillColor">
+                <gradient
+                    android:endX="436"
+                    android:endY="336"
+                    android:startX="76"
+                    android:startY="56"
+                    android:type="linear">
+                    <item
+                        android:color="#1E5AA8"
+                        android:offset="0" />
+                    <item
+                        android:color="#00AFAE"
+                        android:offset="1" />
+                </gradient>
+            </aapt:attr>
+        </path>
+
+    </group>
+</vector>

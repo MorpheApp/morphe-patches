@@ -145,9 +145,12 @@ I cambiamenti includono:
   <string name="morphe_hide_you_may_like_section_summary_on">La sezione \"Potrebbe piacerti\" è nascosta</string>
   <string name="morphe_hide_you_may_like_section_summary_off">La sezione \"Potrebbe piacerti\" è visibile</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Nascondi Doodles di YouTube</string>
-  <string name="morphe_hide_doodles_summary_on">L\'animazione YouTube Doodles sul logo è nascosta</string>
-  <string name="morphe_hide_doodles_summary_off">L\'animazione di YouTube Doodles sul logo è mostrata</string>
+  <string name="morphe_hide_youtube_doodles_title">Nascondi Doodles di YouTube</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">L\'animazione YouTube Doodles sul logo è nascosta</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">L\'animazione di YouTube Doodles sul logo è mostrata</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"I Doodle di YouTube vengono mostrati per pochi giorni ogni anno in varie parti del mondo.
+
+La visualizzazione dei Doodle di YouTube potrebbe impedire la visualizzazione delle intestazioni personalizzate."</string>
   <string name="morphe_hide_channel_bar_title">Nascondi barra del canale</string>
   <string name="morphe_hide_channel_bar_summary_on">La barra del canale è nascosta</string>
   <string name="morphe_hide_channel_bar_summary_off">La barra dei canali è visibile</string>
@@ -306,10 +309,9 @@ I cambiamenti includono:
   <string name="morphe_hide_comments_carousel_title">Abilita filtro carosello commenti</string>
   <string name="morphe_hide_comments_carousel_summary_on">Il filtro personalizzato è attivo</string>
   <string name="morphe_hide_comments_carousel_summary_off">Il filtro personalizzato è disattivato</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Nota
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Nota:
 • Assicurarsi di inserire il nome esatto dell'elemento carosello (ad esempio, Chiedi, Condividi questo video, Ascolta su YouTube Music, ecc.).
-• Nascondere gli elementi carosello potrebbe avere effetti collaterali imprevisti.
+• La rimozione degli elementi carosello potrebbe avere effetti collaterali imprevisti.
 • Se tutti gli elementi carosello sono nascosti, anche l'intera sezione commenti sarà nascosta."</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Filtro carosello commenti</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Inserisci i nomi del carosello commenti da filtrare, uno per riga</string>
@@ -708,19 +710,18 @@ I cookie verranno salvati automaticamente se sono validi"</string>
   <string name="morphe_hide_navigation_bar_title">Nascondi la barra di navigazione</string>
   <string name="morphe_hide_navigation_bar_summary_on">La barra di navigazione è nascosta</string>
   <string name="morphe_hide_navigation_bar_summary_off">La barra di navigazione è visibile</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Questo nasconde l'intera barra di navigazione, inclusa la scheda You.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Questo nasconde completamente la barra di navigazione, compresa la scheda 'Tu'.
 
-Per accedere alle Impostazioni:
-Aprire qualsiasi video → Aprire il menu Qualità → Fare clic su 'Impostazioni > Preferenze della qualità video' nella parte inferiore."</string>
+Per accedere alle Impostazioni, attiva il pulsante Impostazioni tramite Generale → Barra degli strumenti → Mostra Impostazioni."</string>
   <string name="morphe_narrow_navigation_buttons_title">Attiva pulsanti di navigazione stretti</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Spaziatura tra i pulsanti di navigazione stretta</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Spaziatura tra i pulsanti di navigazione normale</string>
   <string name="morphe_navigation_bar_animations_title">Abilita animazioni della barra di navigazione</string>
   <string name="morphe_navigation_bar_animations_summary_on">Le transizioni di navigazione sono animate</string>
   <string name="morphe_navigation_bar_animations_summary_off">Le transizioni di navigazione non sono animate</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Disabilitare nascondita automatica della barra di navigazione</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">La barra di navigazione non si nasconderà automaticamente</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barra di navigazione potrebbe nascondersi automaticamente</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Disabilita la rimozione automatica della barra di navigazione</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">La barra di navigazione non si nasconderà durante lo scorrimento</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barra di navigazione si nasconderà durante lo scorrimento</string>
   <string name="morphe_disable_translucent_status_bar_title">Disabilita la barra di stato traslucida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">La barra di stato è opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barra di stato è opaca o traslucida</string>
@@ -1012,10 +1013,10 @@ Per visualizzare il menu audio, cambia 'Falsifica flussi video' in 'Android Reel
   <string name="morphe_hide_shorts_navigation_bar_summary_on">La barra di navigazione è nascosta</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">La barra di navigazione è visibile</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Nascondi video suggerito nella schermata finale</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Il video suggerito nella schermata finale è nascosto</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Il video suggerito nella schermata finale è mostrato</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Questa impostazione funziona solo se 'Autoplay next video' è disattivato.
+  <string name="morphe_hide_end_screen_suggested_video_title">Nascondi video suggerito nella schermata finale</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Il video suggerito nella schermata finale è nascosto</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Il video suggerito nella schermata finale è mostrato</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Questa impostazione funziona solo se 'Autoplay next video' è disattivato.
 
 Puoi cambiarlo su YouTube:
 Impostazioni → Riproduzione (o Autoplay) → Autoplay next video"</string>

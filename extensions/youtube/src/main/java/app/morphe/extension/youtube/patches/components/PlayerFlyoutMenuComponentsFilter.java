@@ -20,7 +20,7 @@ import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
-public class PlayerFlyoutMenuItemsFilter extends Filter {
+public class PlayerFlyoutMenuComponentsFilter extends Filter {
 
     public static final class HideAudioFlyoutMenuAvailability implements Setting.Availability {
         @Override
@@ -37,7 +37,7 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
     private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup videoQualityMenuFooter;
 
-    public PlayerFlyoutMenuItemsFilter() {
+    public PlayerFlyoutMenuComponentsFilter() {
         videoQualityMenuFooter = new StringFilterGroup(
                 Settings.HIDE_PLAYER_FLYOUT_VIDEO_QUALITY_FOOTER,
                 "quality_sheet_footer"
@@ -93,7 +93,7 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
                         Settings.HIDE_PLAYER_FLYOUT_LOOP_VIDEO,
                         "yt_outline_arrow_repeat_1_",
                         "yt_outline_experimental_repeat1_"
-//                        "yt_outline_experimental_play_circle"
+                        // "yt_outline_experimental_play_circle"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,

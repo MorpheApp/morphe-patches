@@ -20,15 +20,18 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Поново покрените да бисте завршили постављање</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Назив апликације</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Цустом</string>
   <string name="morphe_custom_branding_icon_title">Иконица апликације</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинална</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe сен</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe тамно</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe светл</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Цустом</string>
+  <string name="morphe_custom_branding_icon_entry_6">Цустом</string>
+  <string name="morphe_custom_branding_notification_icon_title">Икона обавештења</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Икона праћења апликације</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментално упозорење 🚨</string>

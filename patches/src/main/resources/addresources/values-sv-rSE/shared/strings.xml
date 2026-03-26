@@ -60,6 +60,12 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
   <string name="morphe_language_DEFAULT">Appspråk</string>
   <string name="morphe_pref_import_export_title">Importera/exportera</string>
   <string name="morphe_pref_import_export_summary">Importera/exportera Morphe-inställningar</string>
+  <string name="morphe_settings_import_file">Importera från fil</string>
+  <string name="morphe_settings_import_file_success">Inställningarna har importerats. Tryck på Spara för att verkställa</string>
+  <string name="morphe_settings_import_file_failed">Det gick inte att importera inställningarna</string>
+  <string name="morphe_settings_export_file">Exportera till fil</string>
+  <string name="morphe_settings_export_file_success">Inställningarna har exporterats</string>
+  <string name="morphe_settings_export_file_failed">Det gick inte att exportera inställningarna</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Du använder det senaste Morphe Patches version &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Du använder Morphe Patches version &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Uppdatering är tillgänglig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;För att uppdatera dina korrigeringar, använd Morphe för att korrigera den här appen igen</string>
@@ -69,9 +75,16 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
   <string name="morphe_settings_about_links_website">Webbplats</string>
   <string name="morphe_settings_about_links_donate">Donera</string>
   <string name="morphe_settings_about_links_translations">Översättningar</string>
-  <string name="morphe_settings_about_links_credits">Credits</string>
+  <string name="morphe_settings_about_links_credits">Medverkande</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Uppdaterat</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Uppdatering är tillgänglig</string>
   <string name="morphe_settings_about_contributors_current">Nuvarande utveckling</string>
   <string name="morphe_settings_about_contributors_prior">Tidigare utveckling</string>
+  <string name="morphe_settings_about_links_morphe">Aktiv utveckling</string>
+  <string name="morphe_settings_about_links_rvx">2022–2025</string>
+  <string name="morphe_settings_about_links_rv">2022–2025</string>
+  <string name="morphe_settings_about_links_vanced">2019–2022</string>
+  <string name="morphe_settings_about_links_licenses">Licensmeddelanden</string>
   <string name="morphe_settings_about_licenses_loading">Läser in ...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Felsökning</string>
@@ -125,4 +138,13 @@ Om du inaktiverar batterioptimeringar för MicroG påverkas inte batteritiden ne
 
 Tryck på knappen Fortsätt och tillåt optimeringsändringar."</string>
   <string name="gms_core_dialog_continue_text">Fortsätt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialogruta för batterioptimering</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialogrutan för MicroG-batterioptimeringar visas</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialogrutan för MicroG-batterioptimeringar visas inte</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Om du inaktiverar det här döljs meddelandet om MicroG-batterioptimeringar. 
+
+Om batterioptimeringarna inte ändras kan du uppleva att
+• appen stängs slumpmässigt
+• aviseringar inte fungerar
+• uppspelning i bakgrunden inte fungerar"</string>
 </resources>

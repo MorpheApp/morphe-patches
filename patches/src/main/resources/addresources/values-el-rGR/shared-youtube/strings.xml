@@ -20,15 +20,18 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Επανεκκίνηση για να ολοκληρωθεί η ρύθμιση</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Όνομα εφαρμογής</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Προσαρμοσμένο</string>
   <string name="morphe_custom_branding_icon_title">Εικονίδιο εφαρμογής</string>
   <string name="morphe_custom_branding_icon_entry_1">Αρχικό</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe μαύρο</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe σκοτεινό</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe φωτεινό</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Προσαρμοσμένο</string>
+  <string name="morphe_custom_branding_icon_entry_6">Προσαρμοσμένο</string>
+  <string name="morphe_custom_branding_notification_icon_title">Ειδοποίηση εικονιδίου</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Ακολουθήστε εικονίδιο εφαρμογής</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Πειραματική Ειδοποίηση 🚨</string>

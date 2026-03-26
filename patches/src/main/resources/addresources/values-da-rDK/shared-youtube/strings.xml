@@ -20,15 +20,18 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Genstart for at færdiggøre opsætningen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Appnavn</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Brugerdefineret</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe mørke</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe mørk</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe lille</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Brugerdefineret</string>
+  <string name="morphe_custom_branding_icon_entry_6">Brugerdefineret</string>
+  <string name="morphe_custom_branding_notification_icon_title">Notifikationsikon</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Følg app-ikon</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentel Advarsel 🚨</string>

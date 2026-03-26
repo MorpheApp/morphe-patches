@@ -141,9 +141,9 @@ Lêbelê, zavtana vê dê dane yên bikarhêner jî log bike, wek IP-a we."</str
   <string name="morphe_hide_you_may_like_section_summary_on">بۆ ئەوەی ڕاژەیەكى مشكەڵه‌وه‌ بێت، خاوه‌یه‌ك پێنه‌كه‌ت.</string>
   <string name="morphe_hide_you_may_like_section_summary_off">بۆ ئەوەی ڕاژەیەكى مشكەڵه‌وه‌ بێت، نەخوێنه‌ر بێت.</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">خاوێن کردنەوەی \'Doodles\' ی یوتوب</string>
-  <string name="morphe_hide_doodles_summary_on">ئەنیمەیشنی \'Doodles\' ی یوتوب خاوێتۆ دەبێت</string>
-  <string name="morphe_hide_doodles_summary_off">ئەنیمەیشنی \'Doodles\' ی یوتوب دەردەکەوێت</string>
+  <string name="morphe_hide_youtube_doodles_title">خاوێن کردنەوەی \'Doodles\' ی یوتوب</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">ئەنیمەیشنی \'Doodles\' ی یوتوب خاوێتۆ دەبێت</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">ئەنیمەیشنی \'Doodles\' ی یوتوب دەردەکەوێت</string>
   <string name="morphe_hide_channel_bar_title">خاوێن کردنەوەی بەری ڕاهێنانی کەناڵ</string>
   <string name="morphe_hide_channel_bar_summary_on">بەری ڕاهێنانی کەناڵ خاوێتۆ دەبێت</string>
   <string name="morphe_hide_channel_bar_summary_off">بەری ڕاهێنانی کەناڵ دەردەکەوێت</string>
@@ -302,11 +302,6 @@ Lêbelê, zavtana vê dê dane yên bikarhêner jî log bike, wek IP-a we."</str
   <string name="morphe_hide_comments_carousel_title">سەرچاوە ڕێکخستنەکان پێکهاتە</string>
   <string name="morphe_hide_comments_carousel_summary_on">سەرچاوە ڕێکخستنەکان ھەیە</string>
   <string name="morphe_hide_comments_carousel_summary_off">سەرچاوە ڕێکخستنەکان بێكار دەکرێت</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"دەزگیرتە:
-
-• پێشێخستنی ناوی ڕاستی پێکهاتەی ڕاوە (بەڵگە؛ باڵێز، ڕێکخستنی ڤیدئو، وھتد.).
-• ڕێکخستنی پێکهاتە سەرنوشتە فەزای ئەتوانی ئەخوازن.
-• ھەرکاتایە لەباری پێکهاتەیە ئەخوازن، تەواو ھەموو ڕژێنانە ئەخوازن نشاتدەبێتەوە."</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">خۆبوون ڕێکخستەی پێکهاتە</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">ناوەکانی پێکهاتەی ڕاوە دا تێدگیرین دەخوازن، ھەرکاته لە خەتە</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">خۆشکردنی پێشخانی چاتەکی پیشاندانی زانستی</string>
@@ -693,19 +688,12 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
   <string name="morphe_hide_navigation_bar_title">پشکنەکانی ئەخوازن</string>
   <string name="morphe_hide_navigation_bar_summary_on">پشکنەکانی ئەخوازن</string>
   <string name="morphe_hide_navigation_bar_summary_off">پشکنەکانی نمایش دەکرێت</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"ئەمانە پشکنەکانی ئەخوازن، ناوی ناوەش دەگرێتەوە.
-
-چۆنیەتێی دەگەڕێیتەوە: 
-چەوتەیەکی کراوە → خەڵەتەکان بکەوە → لە خوارەوە 'ڕێکخستەکان > پێشێخستنی  نرخەکانی ڤیدئو' دەرکە"</string>
   <string name="morphe_narrow_navigation_buttons_title">جوڵە پێکهاتەکانی دەستنیشانکردن بە پەیوەست بێن</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">جیاوازییەکانی نێوان پێکهاتەکانی دەستنیشانکردن کەمە</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">جیاوازییەکانی نێوان پێکهاتەکانی دەستنیشانکردن ئاسمانەیە</string>
   <string name="morphe_navigation_bar_animations_title">ئەوه‌تۆمەتی دەوری کردن</string>
   <string name="morphe_navigation_bar_animations_summary_on">گواستنەوەکانی دەوری کردن ئەوه‌تۆمەتین</string>
   <string name="morphe_navigation_bar_animations_summary_off">گواستنەوەکانی دەوری کردن نا ئەوه‌تۆمەتین</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">حسيسوانه إنحه مرحانه إسلحري</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">حسيسوانه إنحه مرحانه اوتو نهاقسي</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">حسيسوانه إنحه مرحانه اوتو نهاقسي</string>
   <string name="morphe_disable_translucent_status_bar_title">خۆپیشاندانی بارەگەی ڕوونی ڕەتکردنەوە</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">بارەگەی ڕوونی ڕووپێوه‌</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">بارەگەی ڕوونی ڕووپێوه‌ یان ڕوونی ھەور</string>
@@ -995,10 +983,10 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
   <string name="morphe_hide_shorts_navigation_bar_summary_on">بارەکه‌ی ڕاوێژکاری خه‌ڵه‌ت کراوه‌</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">بارەکه‌ی ڕاوێژکاری دەربخە</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">نه‌ماڵینی ڤیدۆی ڕێنمایه‌و به‌کۆتایی هاتن</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">خه‌مه‌كانی ڕاژه‌یەكی ڕاژه‌وه‌، بەشباڵه‌ هه‌ڵقه‌وێت.</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">ڤیدۆی ڕێنمایه‌و دەربخە</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"ئه‌وه به‌ جه‌ختی به‌سه‌ركه‌فتن یه‌كه‌م ده‌خه‌وێت. 
+  <string name="morphe_hide_end_screen_suggested_video_title">نه‌ماڵینی ڤیدۆی ڕێنمایه‌و به‌کۆتایی هاتن</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">خه‌مه‌كانی ڕاژه‌یەكی ڕاژه‌وه‌، بەشباڵه‌ هه‌ڵقه‌وێت.</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">ڤیدۆی ڕێنمایه‌و دەربخە</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"ئه‌وه به‌ جه‌ختی به‌سه‌ركه‌فتن یه‌كه‌م ده‌خه‌وێت. 
 
 ت گۆڕانكاری دانه‌وه‌: ومەنده‌كانی چ افتخاراتی یوتیوب:\n ڕێكخستن→په‌ینیزه‌که‌شی كردنه‌ی ڕه‌سمی →په‌ینیزه‌که‌شی ده‌سته‌به‌شكره‌ه."</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->

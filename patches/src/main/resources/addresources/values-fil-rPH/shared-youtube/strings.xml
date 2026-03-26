@@ -20,15 +20,18 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">I-restart upang tapusin ang pag-setup</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Pangalan ng aplikasyon</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Pasadya</string>
   <string name="morphe_custom_branding_icon_title">Icon ng aplikasyon</string>
   <string name="morphe_custom_branding_icon_entry_1">Orihinal</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe na itim</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe na maitim</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe na maliwanag</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Pasadya</string>
+  <string name="morphe_custom_branding_icon_entry_6">Pasadya</string>
+  <string name="morphe_custom_branding_notification_icon_title">Icon ng abiso</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Sundan ang icon ng aplikasyon</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Pang-eksperimentong Alerto 🚨</string>

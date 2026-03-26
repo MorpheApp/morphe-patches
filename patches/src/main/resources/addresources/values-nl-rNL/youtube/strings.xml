@@ -145,9 +145,12 @@ Wijzigingen zijn:
   <string name="morphe_hide_you_may_like_section_summary_on">De \'Je kunt misschien liken\' sectie is verborgen</string>
   <string name="morphe_hide_you_may_like_section_summary_off">De \'Je kunt misschien liken\' sectie is zichtbaar</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodles verbergen</string>
-  <string name="morphe_hide_doodles_summary_on">YouTube Doodles-animatie op het logo is verborgen</string>
-  <string name="morphe_hide_doodles_summary_off">YouTube Doodles-animatie op het logo wordt getoond</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodles verbergen</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles-animatie op het logo is verborgen</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles-animatie op het logo wordt getoond</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles worden een paar dagen per jaar in verschillende delen van de wereld getoond.
+
+Het tonen van YouTube Doodles kan voorkomen dat aangepaste headers worden weergegeven."</string>
   <string name="morphe_hide_channel_bar_title">Kanaalbalk verbergen</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanaalbalk is verborgen</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanaalbalk wordt getoond</string>
@@ -306,7 +309,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_comments_carousel_title">Schakel filter voor commentaarcarrousel in</string>
   <string name="morphe_hide_comments_carousel_summary_on">Commentaarcarrousel filter is ingeschakeld</string>
   <string name="morphe_hide_comments_carousel_summary_off">Commenten carrousel filter is uitgeschakeld</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Let op
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Let op:
 
 • Zorg ervoor dat u de exacte naam van het carrouselitem invoert (bijv. Vraag, Like deze video, Luister op YouTube Music, enz.).
 • Het verbergen van carrouselitems kan onbedoelde gevolgen hebben.
@@ -708,19 +711,18 @@ Cookies worden automatisch opgeslagen als ze geldig zijn"</string>
   <string name="morphe_hide_navigation_bar_title">Verberg de navigatiebalk</string>
   <string name="morphe_hide_navigation_bar_summary_on">De navigatiebalk is verborgen</string>
   <string name="morphe_hide_navigation_bar_summary_off">De navigatiebalk is zichtbaar</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dit verbergt de navigatiebalk volledig, inclusief de Tab 'U'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dit verbergt de navigatiebalk volledig, inclusief het tabblad 'Jij'.
 
-Om Instellingen te openen:
-Open een video → Open het menu Kwaliteit → Tik op 'Instellingen > Voorkeuren Video Kwaliteit' onderaan."</string>
+Om Instellingen te openen, schakelt u de knop Instellingen in via Algemeen → Werkbalk → Instellingen weergeven."</string>
   <string name="morphe_narrow_navigation_buttons_title">Schakel smalle navigatieknoppen in</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Afstand tussen navigatieknoppen is smal</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Afstand tussen navigatieknoppen is normaal</string>
   <string name="morphe_navigation_bar_animations_title">Navigatiebalkanimaties inschakelen</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigatieovergangen worden geanimeerd</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigatieovergangen worden niet geanimeerd</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Navigatiebalk automatisch verbergen uitschakelen</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">De navigatiebalk verbergt niet automatisch</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">De navigatiebalk kan automatisch worden verborgen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Automatisch verbergen van de navigatiebalk uitschakelen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">De navigatiebalk zal niet verdwijnen tijdens het scrollen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">De navigatiebalk zal verdwijnen tijdens het scrollen</string>
   <string name="morphe_disable_translucent_status_bar_title">Transparante statusbalk uitschakelen</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusbalk is ondoorzichtig</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusbalk is ondoorzichtig of doorschijnend</string>
@@ -1012,10 +1014,10 @@ Om het menu voor audio-spoor te tonen, verander 'Spoof video streams' naar 'Andr
   <string name="morphe_hide_shorts_navigation_bar_summary_on">De navigatiebalk is verborgen</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">De navigatiebalk is zichtbaar</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Voorgestelde video op eindscherm verbergen</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Voorgestelde video op eindscherm is verborgen</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Voorgestelde video op eindscherm wordt getoond</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">" Deze instelling werkt alleen als 'Automatisch volgende video afspelen' is uitgeschakeld.
+  <string name="morphe_hide_end_screen_suggested_video_title">Voorgestelde video op eindscherm verbergen</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Voorgestelde video op eindscherm is verborgen</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Voorgestelde video op eindscherm wordt getoond</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">" Deze instelling werkt alleen als 'Automatisch volgende video afspelen' is uitgeschakeld.
 
 Je kunt dit in YouTube veranderen:
 Instellingen → Afspelen (of Automatisch) → Automatisch volgende video afspelen"</string>

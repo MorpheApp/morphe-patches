@@ -144,9 +144,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">ส่วนที่คุณอาจชอบถูกซ่อนอยู่</string>
   <string name="morphe_hide_you_may_like_section_summary_off">ส่วนที่คุณอาจชอบแสดงอยู่</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">ซ่อน Doodles ของ YouTube</string>
-  <string name="morphe_hide_doodles_summary_on">ภาพเคลื่อนไหว YouTube Doodles บนโลโก้ถูกซ่อนไว้</string>
-  <string name="morphe_hide_doodles_summary_off">แสดงแอนิเมชัน Doodles ของ YouTube บนโลโก้</string>
+  <string name="morphe_hide_youtube_doodles_title">ซ่อน Doodles ของ YouTube</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">ภาพเคลื่อนไหว YouTube Doodles บนโลโก้ถูกซ่อนไว้</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">แสดงแอนิเมชัน Doodles ของ YouTube บนโลโก้</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles แสดงให้เห็นในช่วงไม่กี่วันของทุกปีในส่วนต่างๆ ของโลก
+
+การแสดง YouTube Doodles อาจป้องกันไม่ให้ส่วนหัวแบบกำหนดเองแสดงผล"</string>
   <string name="morphe_hide_channel_bar_title">ซ่อนแถบช่อง</string>
   <string name="morphe_hide_channel_bar_summary_on">แถบช่องถูกซ่อนไว้</string>
   <string name="morphe_hide_channel_bar_summary_off">แถบช่องแสดงอยู่</string>
@@ -305,7 +308,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">เปิดใช้งานตัวกรองแคโรเซิลความคิดเห็น</string>
   <string name="morphe_hide_comments_carousel_summary_on">ตัวกรองแคโรเซิลความคิดเห็นถูกเปิดใช้งาน</string>
   <string name="morphe_hide_comments_carousel_summary_off">ตัวกรองแคโรเซิลความคิดเห็นถูกปิดใช้งาน</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"หมายเหตุ
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"หมายเหตุ:
 
 • ตรวจสอบให้แน่ใจว่าคุณป้อนชื่อรายการแคโรเซิลที่ถูกต้อง (เช่น ถาม เพิ่มความนิยมให้กับวิดีโอนี้ ฟังบน YouTube Music เป็นต้น)
 • การซ่อนรายการแคโรเซิลอาจมีผลข้างเคียงที่ไม่คาดคิด
@@ -705,19 +708,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">ซ่อนแถบนำทาง</string>
   <string name="morphe_hide_navigation_bar_summary_on">ซ่อนแถบนำทางแล้ว</string>
   <string name="morphe_hide_navigation_bar_summary_off">ไม่ซ่อนแถบนำทาง</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"สิ่งนี้ซ่อนแถบนำทางทั้งหมด รวมถึงแท็บ You
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"สิ่งนี้จะซ่อนแถบนำทางอย่างสมบูรณ์ รวมถึงแท็บ 'คุณ'
 
-ในการเข้าถึงการตั้งค่า:
-เปิดวิดีโอใดๆ → เปิดเมนูคุณภาพ → แตะ 'การตั้งค่าและ > การตั้งค่าคุณภาพวิดีโอ' ที่ด้านล่าง"</string>
+หากต้องการเข้าถึงการตั้งค่า ให้เปิดใช้งานปุ่มการตั้งค่าผ่านทาง ทั่วไป → แถบเครื่องมือ → แสดงการตั้งค่า"</string>
   <string name="morphe_narrow_navigation_buttons_title">เปิดใช้งานปุ่มนำทางที่แคบ</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">ระยะห่างระหว่างปุ่มนำทางเป็นระยะแคบ</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">ระยะห่างระหว่างปุ่มนำทางเป็นระยะปกติ</string>
   <string name="morphe_navigation_bar_animations_title">เปิดใช้งานภาพเคลื่อนไหวแถบนำทาง</string>
   <string name="morphe_navigation_bar_animations_summary_on">การเปลี่ยนภาพเคลื่อนไหวจะถูกทำให้เป็นภาพเคลื่อนไหว</string>
   <string name="morphe_navigation_bar_animations_summary_off">การเปลี่ยนภาพเคลื่อนไหวจะไม่ถูกทำให้เป็นภาพเคลื่อนไหว</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">ปิดการซ่อนแถบนำทางอัตโนมัติ</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">แถบนำทางจะไม่ซ่อนโดยอัตโนมัติ</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">แถบนำทางอาจซ่อนโดยอัตโนมัติ</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">ปิดใช้งานการซ่อนแถบนำทางอัตโนมัติ</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">แถบนำทางจะไม่ซ่อนขณะเลื่อน</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">แถบนำทางจะซ่อนขณะเลื่อน</string>
   <string name="morphe_disable_translucent_status_bar_title">ปิดใช้งานแถบสถานะแบบโปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">แถบสถานะไม่โปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">แถบสถานะโปร่งแสงหรือไม่โปร่งแสง</string>
@@ -1009,10 +1011,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">ซ่อนแถบนำทางแล้ว</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">ไม่ซ่อนแถบนำทาง</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">ซ่อนวิดีโอแนะนำในหน้าจอสิ้นสุด</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">วิดีโอแนะนำในหน้าจอสิ้นสุดถูกซ่อน</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">วิดีโอแนะนำในหน้าจอสิ้นสุดจะปรากฏ</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"การตั้งค่านี้จะทำงานเฉพาะเมื่อ 'เล่นวิดีโอถัดไปอัตโนมัติ' ถูกปิด
+  <string name="morphe_hide_end_screen_suggested_video_title">ซ่อนวิดีโอแนะนำในหน้าจอสิ้นสุด</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">วิดีโอแนะนำในหน้าจอสิ้นสุดถูกซ่อน</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">วิดีโอแนะนำในหน้าจอสิ้นสุดจะปรากฏ</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"การตั้งค่านี้จะทำงานเฉพาะเมื่อ 'เล่นวิดีโอถัดไปอัตโนมัติ' ถูกปิด
 
 คุณสามารถเปลี่ยนได้ใน YouTube:
 ตั้งค่า → การเล่น (หรือเล่นอัตโนมัติ) → เล่นวิดีโอถัดไปอัตโนมัติ"</string>

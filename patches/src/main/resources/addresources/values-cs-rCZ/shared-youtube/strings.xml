@@ -20,15 +20,18 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Restartovat pro dokončení nastavení</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Název aplikace</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Vlastní</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikace</string>
   <string name="morphe_custom_branding_icon_entry_1">Původní</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe černá</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tmavý</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe světlo</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Vlastní</string>
+  <string name="morphe_custom_branding_icon_entry_6">Vlastní</string>
+  <string name="morphe_custom_branding_notification_icon_title">Oznámení</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Sledujte ikonu aplikace</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentální upozornění 🚨</string>

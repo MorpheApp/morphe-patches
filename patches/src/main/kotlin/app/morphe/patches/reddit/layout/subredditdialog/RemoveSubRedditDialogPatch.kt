@@ -6,12 +6,9 @@
  */
 package app.morphe.patches.reddit.layout.subredditdialog
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
@@ -56,11 +53,11 @@ val removeSubRedditDialogPatch = bytecodePatch(
             }
         }
 
-        listOf(
-            NSFWAlertDialogBuilderFingerprint,
-            NSFWAlertDialogInstanceFingerprint
-        ).forEach { fingerprint ->
-            fingerprint.let {
+        NSFWAlertShowDialogFingerprint.matchAll(
+            // TODO: remove classDef parameter when patcher 1.3.3+ is released.
+            NSFWAlertDialogClassFingerprint.classDef
+        ).forEach { match ->
+            match.let {
                 it.method.apply {
                     val index = it.instructionMatches.first().index
                     val moveResultIndex = index + 1

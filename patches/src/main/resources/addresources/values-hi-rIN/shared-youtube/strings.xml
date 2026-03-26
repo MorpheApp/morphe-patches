@@ -20,15 +20,18 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">सेटिंग को पूरा करने के लिए रीस्टार्ट करें</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">एप्प नैम</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">कस्टम</string>
   <string name="morphe_custom_branding_icon_title">एप्प आइकॉन</string>
   <string name="morphe_custom_branding_icon_entry_1">ओरिजिनल</string>
   <string name="morphe_custom_branding_icon_entry_2">मorphe ब्लैक</string>
   <string name="morphe_custom_branding_icon_entry_3">मorphe डार्क</string>
   <string name="morphe_custom_branding_icon_entry_4">मorphe लाइट</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">कस्टम</string>
+  <string name="morphe_custom_branding_icon_entry_6">कस्टम</string>
+  <string name="morphe_custom_branding_notification_icon_title">सूचना चिह्न</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">अनुप्रयोग चिह्न का अनुसरण करें</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 प्रायोगिक चेतावनी 🚨</string>

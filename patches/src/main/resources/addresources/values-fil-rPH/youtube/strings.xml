@@ -145,9 +145,12 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_you_may_like_section_summary_on">Nakatago ang seksyon na Baka magustuhan mo rin</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Ipinapakita ang seksyon na Baka magustuhan mo rin</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Itago ang YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Nakatago ang animation ng YouTube Doodles sa tatak</string>
-  <string name="morphe_hide_doodles_summary_off">Ipinapakita ang animation ng YouTube Doodles sa tatak</string>
+  <string name="morphe_hide_youtube_doodles_title">Itago ang YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Nakatago ang animation ng YouTube Doodles sa tatak</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Ipinapakita ang animation ng YouTube Doodles sa tatak</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"Ang mga YouTube Doodle ay ipinapakita ng ilang araw bawat taon sa iba't ibang panig ng mundo.
+
+Ang pagpapakita ng mga YouTube Doodle ay maaaring pigilan ang pagpapakita ng mga pasadyang header."</string>
   <string name="morphe_hide_channel_bar_title">Itago ang channel bar</string>
   <string name="morphe_hide_channel_bar_summary_on">Nakatago ang Channel bar</string>
   <string name="morphe_hide_channel_bar_summary_off">Ipinapakita ang Channel bar</string>
@@ -306,8 +309,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_comments_carousel_title">Paganahin ang filter carousel ng komento</string>
   <string name="morphe_hide_comments_carousel_summary_on">Pinagana ang filter ng carousel ng komento</string>
   <string name="morphe_hide_comments_carousel_summary_off">Hindi pinagana ang filter ng carousel ng komento</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Paalala
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Paalala:
 • Tiyaking ilagay ang eksaktong pangalan ng carousel item (hal. Tanong, Hype sa bidyong ito, Makinig sa YouTube Music, atbp.).
 • Ang pagtatago ng mga carousel item ay maaaring magdulot ng hindi inaasahang epekto.
 • Kung lahat ng carousel item ay nakatago, ang buong seksyon ng komento ay itatago rin."</string>
@@ -708,19 +710,18 @@ Awtomatikong ise-save ang cookies kung valid ang mga ito"</string>
   <string name="morphe_hide_navigation_bar_title">Itago ang navigation bar</string>
   <string name="morphe_hide_navigation_bar_summary_on">Nakatago ang navigation bar</string>
   <string name="morphe_hide_navigation_bar_summary_off">Ipinapakita ang navigation bar</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Itinatago nito ang navigation bar nang buo, kasama ang You tab.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Lubos na itinatago nito ang navigation bar, kabilang ang tab na 'You'.
 
-Para ma-access ang Settings:
-Buksan ang anumang video → Buksan ang Quality menu → I-tap ang 'Settings &gt; Video Quality Preferences' sa ibaba."</string>
+Upang ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng General → Toolbar → Show Settings."</string>
   <string name="morphe_narrow_navigation_buttons_title">Paganahin ang makitid na navigation button</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Makitid ang pagitan ng navigation button</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Normal ang pagitan ng navigation button</string>
   <string name="morphe_navigation_bar_animations_title">I-enable ang mga animasyon ng navigation bar</string>
   <string name="morphe_navigation_bar_animations_summary_on">Ang mga transition ng Navigation ay may animasyon</string>
   <string name="morphe_navigation_bar_animations_summary_off">Ang mga transition ng Navigation ay walang animasyon</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Huwag paganahin ang auto-hide ng navigation bar</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Ang navigation bar ay hindi mag-a-auto-hide</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Ang navigation bar ay maaaring mag-auto-hide</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">I-disable ang auto-hiding navigation bar</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Ang navigation bar ay hindi magtatago habang nag-scroll</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Ang navigation bar ay magtatago habang nag-scroll</string>
   <string name="morphe_disable_translucent_status_bar_title">I-disable ang translucent status bar</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Ang status bar ay opaque</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Ang status bar ay opaque o translucent</string>
@@ -1012,10 +1013,10 @@ Upang ipakita ang menu ng Audio track, baguhin ang 'Spoof video streams' sa 'And
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Nakatago ang navigation bar</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Ipinapakita ang navigation bar</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Itago ang suggested video ng end screen</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Nakatago ang suhestiyon ng video sa end screen</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Ipinapakita ang suggested video ng end screen</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ang setting na ito ay gagana lamang kung naka-off ang 'Autoplay next video'.
+  <string name="morphe_hide_end_screen_suggested_video_title">Itago ang suggested video ng end screen</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Nakatago ang suhestiyon ng video sa end screen</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Ipinapakita ang suggested video ng end screen</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Ang setting na ito ay gagana lamang kung naka-off ang 'Autoplay next video'.
 
 Maaari mong baguhin ito sa YouTube:
 Settings → Playback (o Autoplay) → Autoplay next video"</string>

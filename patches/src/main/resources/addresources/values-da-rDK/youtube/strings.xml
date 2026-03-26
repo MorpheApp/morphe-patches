@@ -145,9 +145,12 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_you_may_like_section_summary_on">\"Du kan like\" afsnit er skjult</string>
   <string name="morphe_hide_you_may_like_section_summary_off">\"Du kan like\" afsnit er vist</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Skjul YouTube-Doudler</string>
-  <string name="morphe_hide_doodles_summary_on">YouTube Doodles-animation på logoet er skjult</string>
-  <string name="morphe_hide_doodles_summary_off">YouTube Doodles-animation på logoet vises</string>
+  <string name="morphe_hide_youtube_doodles_title">Skjul YouTube-Doudler</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles-animation på logoet er skjult</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles-animation på logoet vises</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles vises i løbet af et par dage hvert år i forskellige dele af verden.
+
+Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at blive vist."</string>
   <string name="morphe_hide_channel_bar_title">Skjul kanallinje</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanalbjælken er skjult</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanalbjælken vises</string>
@@ -306,9 +309,8 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_carousel_title">Aktiver kommentarkarussel filter</string>
   <string name="morphe_hide_comments_carousel_summary_on">Kommentarerne carousel filter er aktiveret</string>
   <string name="morphe_hide_comments_carousel_summary_off">Kommentarerne er deaktiveret</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Note
-
-• Sørg for at du indtaster det nøjagtige navn på karusellens element (f.eks. Spørg, Hype denne video, Lyt på YouTube Music osv.).
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Bemærk:
+• Sørg for at indtaste det nøjagtige navn på karusellens element (f.eks. Spørg, Hype denne video, Lyt på YouTube Music osv.).
 • Skjuling af karusellens elementer kan have utilsigtede bivirkninger.
 • Hvis alle karusellens elementer er skjult, vil hele kommentarfeltet også være skjult."</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentarer-karuselfilter</string>
@@ -708,19 +710,18 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_hide_navigation_bar_title">Skjul navigationslinje</string>
   <string name="morphe_hide_navigation_bar_summary_on">Navigationsbjælken er skjult</string>
   <string name="morphe_hide_navigation_bar_summary_off">Navigationsbjælken vises</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler navigationslinjen helt, inklusive You-fanen.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler helt navigationslinjen, inklusive fanen 'Du'.
 
-For at få adgang til Indstillinger:
-Åbn en video → Åbn Kvalitetsmenuen → Tryk på 'Indstillinger > Video Kvalitet Præferencer' nederst."</string>
+For at få adgang til Indstillinger skal du aktivere knappen Indstillinger via Generelt → Værktøjslinje → Vis Indstillinger."</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktiver smalle navigationsknapper</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Afstanden mellem navigationsknapperne er smal</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Afstanden mellem navigationsknapperne er normal</string>
   <string name="morphe_navigation_bar_animations_title">Aktivér animationer i navigationslinjen</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigationsovergange animeres</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigationsovergange animeres ikke</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjulning af navigationslinjen</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigationslinjen vil ikke automatisk blive skjult</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigationslinjen kan automatisk blive skjult</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjuling af navigationslinjen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar vil ikke skjules ved scrolling</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar vil skjules ved scrolling</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statuslinjen er opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statuslinjen er opak eller gennemsigtig</string>
@@ -1012,10 +1013,10 @@ For at vise Lydspor-menuen, ændre 'Spoof video streams' til 'Android Reel' elle
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigationsbjælken er skjult</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigationsbjælken vises</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Skjul foreslået video på slutskærmen</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Foreslået video på slutskærmen er skjult</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Foreslået video på slutskærmen vises</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Denne indstilling fungerer kun, hvis 'Automatisk afspil næste video' er slået fra.
+  <string name="morphe_hide_end_screen_suggested_video_title">Skjul foreslået video på slutskærmen</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Foreslået video på slutskærmen er skjult</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Foreslået video på slutskærmen vises</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Denne indstilling fungerer kun, hvis 'Automatisk afspil næste video' er slået fra.
 
 Du kan ændre dette i YouTube:
 Indstillinger → Afspilning (eller Automatisk afspil) → Automatisk afspil næste video"</string>

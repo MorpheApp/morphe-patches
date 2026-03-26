@@ -9,6 +9,7 @@ package app.morphe.patches.reddit.layout.sidebar
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
@@ -27,18 +28,33 @@ internal object CommunityDrawerBuilderFingerprint : Fingerprint(
     classFingerprint = CommunityDrawerBuilderParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "V",
-    parameters = listOf(
-        "L",
-        "Ljava/util/List;",
-        "Ljava/util/Collection;",
-        "L",
-        "L",
-        "Z",
-        "I"
-    ),
     filters = listOf(
         methodCall("Ljava/util/Collection;->isEmpty()Z"),
-    )
+    ),
+    custom = { method, _ ->
+        parametersMatch(
+            method.parameters,
+            listOf(
+                "L",
+                "Ljava/util/List;",
+                "Ljava/util/Collection;",
+                "L",
+                "L",
+                "Z",
+                "I"
+            )
+        ) || parametersMatch( // 2026.12.0+
+            method.parameters,
+            listOf(
+                "Ljava/util/List;",
+                "Ljava/util/Collection;",
+                "L",
+                "L",
+                "Z",
+                "I"
+            )
+        )
+    }
 )
 
 internal object HeaderItemUiModelToStringFingerprint : Fingerprint(

@@ -22,11 +22,10 @@ internal object CustomReportsFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_STATIC,
             smali = "Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;"
         ),
-        opcode(Opcode.CHECK_CAST),
         methodCall(returnType = "V"),
         opcode(
             opcode = Opcode.RETURN_VOID,
             location = MatchAfterImmediately()
-        ),
+        )
     )
 )

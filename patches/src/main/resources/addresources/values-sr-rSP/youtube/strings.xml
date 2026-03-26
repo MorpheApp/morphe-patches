@@ -144,9 +144,12 @@ Promene uključuju:
   <string name="morphe_hide_you_may_like_section_summary_on">Одељак за могуће лике је скривен</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Одељак за могуће лике је приказан</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Сакриј YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Анимација YouTube Doodles-а на логотипу је скривена</string>
-  <string name="morphe_hide_doodles_summary_off">Анимација YouTube Doodles-а на логотипу је приказана</string>
+  <string name="morphe_hide_youtube_doodles_title">Сакриј YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Анимација YouTube Doodles-а на логотипу је скривена</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Анимација YouTube Doodles-а на логотипу је приказана</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles приказују се неколико дана сваке године у различитим деловима света.
+
+Приказивање YouTube Doodles може спречити приказ прилагођених заглавља."</string>
   <string name="morphe_hide_channel_bar_title">Сакриј траку канала</string>
   <string name="morphe_hide_channel_bar_summary_on">Трака канала је скривена</string>
   <string name="morphe_hide_channel_bar_summary_off">Трака канала је приказана</string>
@@ -305,8 +308,7 @@ Promene uključuju:
   <string name="morphe_hide_comments_carousel_title">Омогући филтер за ротирајућу траку коментара</string>
   <string name="morphe_hide_comments_carousel_summary_on">Филтер за коментаре је укључен</string>
   <string name="morphe_hide_comments_carousel_summary_off">Филтер за коментаре је онемогућен</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Napomena
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Напомена:
 • Обавезно унесите тачан назив ставке карусела (нпр. Питај, Хвали овај видео, Слушај на YouTube Music, итд.).
 • Скривање ставки карусела може имати непредвиђене последице.
 • Ако су све ставке карусела скривене, тада ће бити скривен и цео одељак коментара."</string>
@@ -707,19 +709,18 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_hide_navigation_bar_title">Сакриј траку за навигацију</string>
   <string name="morphe_hide_navigation_bar_summary_on">Трака за навигацију је скривена</string>
   <string name="morphe_hide_navigation_bar_summary_off">Трака за навигацију је приказана</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ово потпуно скрива траку за навигацију, укључујући таб ‘Ја’.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Ово потпуно скрива траку навигације, укључујући и картицу 'Ти'.
 
-Да бисте приступили Поделкама:
-Отворите било коју видео снимку → Откријте мени Качество → Уплопните ‘Поделки > Наклони уоквирење квалитета’ на дну."</string>
+Да бисте приступили Подешавањима, омогућите дугме Подешавања преко Опште → Трака алатки → Покажи Подешавања."</string>
   <string name="morphe_narrow_navigation_buttons_title">Omogući uske dugmad za navigaciju</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Razmak između dugmada za navigaciju je usak</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Razmak između dugmada za navigaciju je normalan</string>
   <string name="morphe_navigation_bar_animations_title">Омогући анимације траке за навигацију</string>
   <string name="morphe_navigation_bar_animations_summary_on">Анимације прелаза у навигацији су укључене</string>
   <string name="morphe_navigation_bar_animations_summary_off">Анимације прелаза у навигацији су искључене</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">Искључити аутоматско скривање траке за навигацију</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Трака за навигацију неће бити аутоматски скривена</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Трака за навигацију може бити аутоматски скривена</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Онемогућите аутоматско скривање траке навигације</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Пендул баруће остављати док се листа скаче</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Пендул ће скратити док се листа скаче</string>
   <string name="morphe_disable_translucent_status_bar_title">Онемогући прозирну статусну траку</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Статусна трака је непрозирна</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Статусна трака је непрозирна или прозирна</string>
@@ -1011,10 +1012,10 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Imitirati video tokove' u '
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Трака за навигацију је скривена</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Трака за навигацију је приказана</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Сакриј предложени видео на завршном екрану</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Предложени видео на завршном екрану је скривено</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Предложени видео на завршном екрану је приказан</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Ова поставка ради само ако је 'Автоматско пуштање следећег видеа' искључено.
+  <string name="morphe_hide_end_screen_suggested_video_title">Сакриј предложени видео на завршном екрану</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Предложени видео на завршном екрану је скривено</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Предложени видео на завршном екрану је приказан</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Ова поставка ради само ако је 'Автоматско пуштање следећег видеа' искључено.
 
 Можете да промените ово у Јутубу:
 Поставке → Промена (или Автоматско пуштање) → Автоматско пуштање следећег видеа"</string>
