@@ -28,7 +28,9 @@ private val loopVideoButtonResourcePatch = resourcePatch {
                 "morphe_loop_video_button_off.xml"
             )
         )
+    }
 
+    finalize {
         addTopControl(
             "loopvideobutton",
             "@+id/morphe_loop_video_button",

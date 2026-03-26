@@ -73,6 +73,15 @@ val reloadVideoPatch = bytecodePatch(
         reloadVideoResourcePatch,
         legacyPlayerControlsPatch,
         videoInformationPatch,
+        bytecodePatch {
+            finalize {
+                addTopControl(
+                    "reloadbutton",
+                    "@+id/morphe_reload_video_button",
+                    "@+id/morphe_reload_video_button"
+                )
+            }
+        }
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -128,13 +137,5 @@ val reloadVideoPatch = bytecodePatch(
                 )
             }
         }
-    }
-
-    finalize {
-        addTopControl(
-            "reloadbutton",
-            "@+id/morphe_reload_video_button",
-            "@+id/morphe_reload_video_button"
-        )
     }
 }
