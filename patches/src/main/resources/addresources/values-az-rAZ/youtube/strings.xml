@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Axın</string>
   <string name="morphe_settings_screen_04_general_title">Ümumi</string>
   <string name="morphe_settings_screen_05_player_title">Oynadıcı</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">İrəliləyiş cizgisi</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Sürüşdürmə nəzarətçiləri</string>
   <string name="morphe_settings_screen_11_misc_title">Çoxvariantlı</string>
@@ -421,6 +422,17 @@ Məhdudiyyətlər
 
 Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
   <string name="morphe_external_downloader_empty_warning">Paket adı boş ola bilməz</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
+  <string name="morphe_loop_video_summary_on">Video təkrarlanacaq</string>
+  <string name="morphe_loop_video_summary_off">Video təkrarlanmayacaq</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Video təkrarlama düyməsini göstər</string>
+  <string name="morphe_loop_video_button_summary_on">Təkrarlama video menyusu göstərilir</string>
+  <string name="morphe_loop_video_button_summary_off">Təkrarlama video menyusu göstərilir</string>
+  <string name="morphe_loop_video_button_toast_on">Video təkrarlama açıqdır</string>
+  <string name="morphe_loop_video_button_toast_off">Video təkrarlama qapalıdır</string>
+  <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dəqiq axtarış jestini qapadın</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Jest qeyri-aktiv edilib</string>
@@ -560,6 +572,9 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_auto_captions_style_legacy_entry_2">Avtomatik titrləri gizlət</string>
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
+  <string name="morphe_fix_transcript_title">Transkripti düzəlt</string>
+  <string name="morphe_fix_transcript_summary_on">Transkript əlçatandır</string>
+  <string name="morphe_fix_transcript_summary_off">İlkin status yoxlanılması uğursuzluğuna görə transkript əlçatan olmaya bilər</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">Fəaliyyət düymələri</string>
   <string name="morphe_navigation_buttons_screen_summary">Fəaliyyət cərgəsindəki düymələri gizlət və ya dəyiş</string>
@@ -1163,6 +1178,7 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_change_start_page_entry_playlists">Pleylistlər</string>
   <string name="morphe_change_start_page_entry_search">Axtarış</string>
   <string name="morphe_change_start_page_entry_shopping">Mağaza</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">İdman</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abunəliklər</string>
   <string name="morphe_change_start_page_entry_trending">Trendlər</string>
@@ -1303,16 +1319,6 @@ DeArrow haqqında ətraflı öyrənmək üçün bura toxun"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow müvəqqəti mövcud deyil (status kodu: %s) </string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow müvəqqəti olaraq mövcud deyil</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
-  <string name="morphe_loop_video_summary_on">Video təkrarlanacaq</string>
-  <string name="morphe_loop_video_summary_off">Video təkrarlanmayacaq</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Video təkrarlama düyməsini göstər</string>
-  <string name="morphe_loop_video_button_summary_on">Təkrarlama video menyusu göstərilir</string>
-  <string name="morphe_loop_video_button_summary_off">Təkrarlama video menyusu göstərilir</string>
-  <string name="morphe_loop_video_button_toast_on">Video təkrarlama açıqdır</string>
-  <string name="morphe_loop_video_button_toast_off">Video təkrarlama qapalıdır</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz ölçülərini saxtalaşdır</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Cihaz ölçüləri saxtalaşdırıldı
@@ -1418,7 +1424,13 @@ Məhdudiyyətlər:
   <string name="morphe_advanced_video_quality_menu_summary_on">Qabaqcıl video keyfiyyət siyahısı göstərilir</string>
   <string name="morphe_advanced_video_quality_menu_summary_off">Qabaqcıl video keyfiyyət siyahısı göstərilmir</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
+  <string name="morphe_hide_premium_video_quality_title">Premium keyfiyyət seçimlərini gizlət</string>
+  <string name="morphe_hide_premium_video_quality_summary_on">Premium keyfiyyət seçimləri gizlidir</string>
+  <string name="morphe_hide_premium_video_quality_summary_off">Premium keyfiyyət seçimləri görünür</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
+  <string name="morphe_prioritize_video_quality_title">Video keyfiyyətini üstələ</string>
+  <string name="morphe_prioritize_video_quality_summary_on">Video keyfiyyəti üstələnir</string>
+  <string name="morphe_prioritize_video_quality_summary_off">Video kodlayıcılar üstələnir</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1-ə icazə ver</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Video kodlayıcı AVC (H.264), VP9 və ya AV1-dir
@@ -1433,9 +1445,12 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər."</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• Video 01:00-da dayana bilər və ya bəzi bölgələrdə mövcud olmaya bilər</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Səs treki menyusu çatışmır</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodlayıcı yoxdur</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersiv rejimi əlçatan deyil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit səs yoxdur</string>
+  <string name="morphe_spoof_video_streams_about_js">•  Deobfuscation qırılarsa, oynatma uğursuz ola bilər</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• \"Orijinal səsi zorla\" əlçatmazdır</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Oynadıcı JavaScript seçimi</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">İstək üçün Statistikada göstər</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Qəbuledici növü İstək üçün statistikada göstərilir</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Qəbuledici nerd üçün Statistikada gizlidir</string>

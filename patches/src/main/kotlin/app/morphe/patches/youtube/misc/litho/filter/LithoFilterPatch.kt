@@ -24,6 +24,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
+import app.morphe.patches.youtube.misc.fix.verticalscroll.fixVerticalScrollPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
@@ -75,6 +77,8 @@ val lithoFilterPatch = bytecodePatch(
         sharedExtensionPatch,
         conversionContextPatch,
         versionCheckPatch,
+        fixBackToExitGesturePatch,
+        fixVerticalScrollPatch,
     )
 
     /**
@@ -169,9 +173,7 @@ val lithoFilterPatch = bytecodePatch(
         // if the component is filtered then return an empty component.
 
         // Find class and methods to create an empty component.
-        val builderMethodDescriptor = EmptyComponentFingerprint.match(
-            EmptyComponentParentFingerprint.originalClassDef
-        ).method
+        val builderMethodDescriptor = EmptyComponentFingerprint.method
 
         val emptyComponentField = classDefBy(builderMethodDescriptor.returnType).fields.single()
 

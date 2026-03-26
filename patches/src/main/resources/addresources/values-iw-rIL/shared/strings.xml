@@ -84,6 +84,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">הודעות רישיון</string>
+  <string name="morphe_settings_about_licenses_loading">טוען...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">איתור באגים</string>
   <string name="morphe_debug_screen_summary">הפעל או השבת אפשרויות לאיתור באגים</string>
@@ -136,4 +138,13 @@ Second \"item\" text"</string>
 
 תMouseEvent על הלחצן 'המשך' ואפשר שינויי מיטוב."</string>
   <string name="gms_core_dialog_continue_text">המשך</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">תיבת דו-שיח אופטימיזציית סוללה</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">מוצג תיבת דו-שיח אופטימיזציית סוללה של MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">לא מוצג תיבת דו-שיח אופטימיזציית סוללה של MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ביטול האפשרות יסתר את ההודעה של MicroG לאופטימיזציית הסוללה.
+
+אם הגדרות האופטימיזציה של הסוללה לא ישונו, ייתכן שתחוו:
+• האפליקציה עלולה להיסגר באופן אקראי
+• התראות עלולות לא לעבוד
+• השמעת מוזיקה ברקע עלולה לא לעבוד"</string>
 </resources>

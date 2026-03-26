@@ -142,4 +142,13 @@ Disabling battery optimizations for MicroG will not negatively affect battery us
 
 Tap the continue button and allow optimization changes."</string>
     <string name="gms_core_dialog_continue_text">Continue</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_title">Battery optimization dialog</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG battery optimization dialog is shown</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG battery optimization dialog is not shown</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabling this will hide the MicroG battery optimization prompt.
+
+If battery optimizations are not changed then you may experience:
+• App may randomly close
+• Notifications may not work
+• Background playback may not work"</string>
 </resources>

@@ -61,8 +61,10 @@ class PressToSwipeController(
         distanceX: Double,
         distanceY: Double,
     ): Boolean {
+        // cancel if not fullscreen
+        if (!controller.config.isFullscreenVideo) return false
         // cancel if not in swipe session or vertical
-        if (!isInSwipeSession || currentSwipe != SwipeDetector.SwipeDirection.VERTICAL) return false
+        if (!shouldForceInterceptEvents) return false
         return when (from.toPoint()) {
             in controller.zones.volume -> {
                 scrollVolume(distanceY)

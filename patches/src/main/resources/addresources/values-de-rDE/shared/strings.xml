@@ -84,6 +84,8 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Lizenzhinweise</string>
+  <string name="morphe_settings_about_licenses_loading">Lädt...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Fehlerbehebung</string>
   <string name="morphe_debug_screen_summary">Aktiviert oder deaktiviert Debugging-Optionen</string>
@@ -136,4 +138,13 @@ Die Deaktivierung der Akkubedienstoptimierungen für MicroG beeinflusst negativ 
 
 Tippen Sie auf die Schaltfläche „Weiter“ und erlauben Sie die OptimierungsÃderungen."</string>
   <string name="gms_core_dialog_continue_text">Weiter</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur Akkuoptimierung</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Der MicroG-Akkuoptimierungsdialog wird angezeigt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Der MicroG-Akkuoptimierungsdialog wird nicht angezeigt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Das Deaktivieren verbirgt die MicroG-Akkuoptimierungsaufforderung.
+
+Wenn die Akkuoptimierungen nicht geändert werden, kann es zu folgenden Problemen kommen:
+• Die App kann unerwartet geschlossen werden
+• Benachrichtigungen funktionieren möglicherweise nicht
+• Die Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>
 </resources>

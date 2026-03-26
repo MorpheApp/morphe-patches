@@ -3,9 +3,9 @@ package app.morphe.extension.youtube.patches.components;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class HideInfoCardsFilter extends Filter {
+public final class InfoCardsFilter extends Filter {
 
-    public HideInfoCardsFilter() {
+    public InfoCardsFilter() {
         addIdentifierCallbacks(
                 new StringFilterGroup(
                         Settings.HIDE_INFO_CARDS,

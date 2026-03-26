@@ -23,15 +23,15 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset">Sıfırla</string>
   <string name="morphe_settings_reset_color">Rəngi sıfırla</string>
   <string name="morphe_settings_color_invalid">Yanlış rəng</string>
-  <string name="morphe_settings_restart_title">Yenidən başlatma tələb olunur</string>
-  <string name="morphe_settings_restart_dialog_message">Bu dəyişikliyin təsir etməsi üçün tətbiqi yenidən başladın.</string>
+  <string name="morphe_settings_restart_title">Yenidən başlatma tələb olundu</string>
+  <string name="morphe_settings_restart_dialog_message">Bu dəyişikliyin təsir etməsi üçün tətbiqi yenidən başlat.</string>
   <string name="morphe_settings_restart">Yenidən başlat</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">İdxal et</string>
   <string name="morphe_settings_import_copy">Köçür</string>
-  <string name="morphe_settings_import_reset">Morphe tənzimləmələr standarta təyin edildi</string>
-  <string name="morphe_settings_import_success">%d tənzimləmə idxal edildi</string>
-  <string name="morphe_settings_import_failure_parse">Uğursuz idxal prosesi: %s</string>
+  <string name="morphe_settings_import_reset">Morphe tənzimləmələr standarta təyin olundu</string>
+  <string name="morphe_settings_import_success">%d tənzimləmə idxal olundu</string>
+  <string name="morphe_settings_import_failure_parse">İdxal uğursuz oldu: %s</string>
   <string name="morphe_settings_search_hint">Tənzimləmələri axtar</string>
   <string name="morphe_settings_search_no_results_title">‘%s’ üçün nəticə tapılmadı</string>
   <string name="morphe_settings_search_no_results_summary">Başqa açar sözü yoxla</string>
@@ -40,19 +40,19 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_clear_history">Axtarış tarixçəsini təmizlə</string>
   <string name="morphe_settings_search_clear_history_message">Bütün axtarış tarixçəsini təmizləmək istədiyinizə əminsiniz?</string>
   <string name="morphe_settings_search_tips_title">Axtarış Tövsiyələri</string>
-  <string name="morphe_settings_search_tips_summary">"• Buna keçmək üçün yola toxun
-• Buna keçmək üçün tənzimləməni uzun basın
-• Axtarış sorğusunu tarixçəyə qeyd etmək üçün Daxil Et düyməsini bas
+  <string name="morphe_settings_search_tips_summary">"• Onu tənzimləmək üçün keçidə toxun
+• Ona keçmək üçün tənzimləməni uzun basın
+• Axtarış sorğusunu tarixçəyə qeyd etmək üçün Daxil Et-ə bas
 • Axtarış böyük/kiçik hərfləri və durğu işarələrini nəzərə almır
-• Valideyn tənzimləmələri qapadılan uşaq tənzimləmələrin üstündə görünür"</string>
+• Valideyn tənzimləmələri qapadılan uşaq tənzimləmələri üstündə görünür"</string>
   <string name="morphe_settings_search_empty_history_title">Axtarış tarixçəsi boşdur</string>
-  <string name="morphe_settings_search_empty_history_summary">Axtarış tarixçəsini saxlamaq üçün axtarış sorğusu yazın və Daxil Et basın</string>
+  <string name="morphe_settings_search_empty_history_summary">Axtarış tarixçəsini saxlamaq üçün axtarış sorğusu yazın və Daxil Et-ə basın</string>
   <string name="morphe_settings_search_history_title">Tənzimləmə axtarış tarixçəsin göstər</string>
-  <string name="morphe_settings_search_history_summary_on">Tənzimləmə axtarış tarixçəsi göstərilir</string>
+  <string name="morphe_settings_search_history_summary_on">Tənzimləmə axtarış tarixçəsi görünür</string>
   <string name="morphe_settings_search_history_summary_off">Tənzimləmə axtarış tarixçəsi görünmür</string>
   <string name="morphe_show_menu_icons_title">Morphe tənzimləmə nişanların göstər</string>
-  <string name="morphe_show_menu_icons_summary_on">Tənzimləmə nişanları göstərilir</string>
-  <string name="morphe_show_menu_icons_summary_off">Tənzimləmə nişanları göstərilmir</string>
+  <string name="morphe_show_menu_icons_summary_on">Tənzimləmə nişanları görünür</string>
+  <string name="morphe_show_menu_icons_summary_off">Tənzimləmə nişanları görünmür</string>
   <string name="morphe_language_title">Morphe dili</string>
   <string name="morphe_language_user_dialog_message">"Bəzi dillər üçün tərcümələr yarımçıq və ya qüsurlu ola bilər.
 
@@ -60,65 +60,91 @@ Yeni dilləri tərcümə etmək və ya mövcud tərcümələri təkmilləşdirm�
   <string name="morphe_language_DEFAULT">Tətbiq dili</string>
   <string name="morphe_pref_import_export_title">İdxal/İxrac et</string>
   <string name="morphe_pref_import_export_summary">Morphe tənzimləmələrin idxal/ixrac et</string>
+  <string name="morphe_settings_import_file">Fayldan idxal et</string>
+  <string name="morphe_settings_import_file_success">Tənzimləmələr uğurla idxal olundu, tətbiq etmək üçün Saxla-ya toxun</string>
+  <string name="morphe_settings_import_file_failed">Tənzimləmələri idxal etmək olmadı</string>
+  <string name="morphe_settings_export_file">Fayla köçür</string>
+  <string name="morphe_settings_export_file_success">Tənzimləmələr uğurla köçürüldü</string>
+  <string name="morphe_settings_export_file_failed">Tənzimləmələri köçürmək olmadı</string>
   <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Siz ən son Morphe Patches versiyası &lt;i&gt;%s&lt;/i&gt; istifadə edirsiniz</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Siz Morphe Patches versiyası &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Yenilənmə mövcuddur: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Yamaqlarnızı yeniləmək üçün Morphe tətbiqinizə yenidən yamaq verin</string>
+  <string name="morphe_settings_about_links_body_version_current">Siz ən son Morphe Patches versiyasın istifadə edirsiniz &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Siz Morphe Patches-in &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt; versiyasın istifadə edirsiniz. Yenilənmə var: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt; Yamaqlarınızı yeniləmək üçün bu tətbiqi yenidən yamaqlamağa Morphe istifadə edin</string>
   <string name="morphe_settings_about_links_dev_header">Qeyd</string>
   <string name="morphe_settings_about_links_dev_body">Bu versiya ilkin buraxılışdır və gözlənilməz problemlərlə üzləşə bilərsiniz</string>
   <string name="morphe_settings_about_links_header">Rəsmi bağlantılar</string>
   <string name="morphe_settings_about_links_website">Veb sayt</string>
-  <string name="morphe_settings_about_links_donate">Ianə et</string>
+  <string name="morphe_settings_about_links_donate">İanə et</string>
   <string name="morphe_settings_about_links_translations">Tərcümələr</string>
+  <string name="morphe_settings_about_links_credits">Sərmayələr</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Yenilənib</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Yenilənmə var</string>
+  <string name="morphe_settings_about_contributors_current">Hazırkı inkişaf</string>
+  <string name="morphe_settings_about_contributors_prior">Əvvəlki inkişaf</string>
+  <string name="morphe_settings_about_links_morphe">Fəal inkişaf</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Lisenziya xəbərdarlıqları</string>
+  <string name="morphe_settings_about_licenses_loading">Yüklənilir…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Sazlama</string>
   <string name="morphe_debug_screen_summary">Sazlama seçimlərini aktiv/qeyri-aktiv et</string>
-  <string name="morphe_debug_title">Sazlama jurnalı</string>
+  <string name="morphe_debug_title">Sazlama qeydləri</string>
   <string name="morphe_debug_summary_on">Sazlama jurnalı işləkdir</string>
   <string name="morphe_debug_summary_off">Sazlama jurnalı qeyri-aktivdir</string>
   <string name="morphe_debug_stacktrace_title">Yığın izləri jurnalı</string>
-  <string name="morphe_debug_stacktrace_summary_on">Sazlama jurnalına yığın izləri daxildir</string>
-  <string name="morphe_debug_stacktrace_summary_off">Sazlama jurnalına yığın izləri daxil deyil</string>
+  <string name="morphe_debug_stacktrace_summary_on">Sazlama qeydləri yığın izləri saxlayır</string>
+  <string name="morphe_debug_stacktrace_summary_off">Sazlama qeydləri yığın izləri saxlamır</string>
   <string name="morphe_debug_toast_on_error_title">Morphe xətasında ani bildiriş göstər</string>
   <string name="morphe_debug_toast_on_error_summary_on">Xəta baş verərsə ani bildiriş görünür</string>
   <string name="morphe_debug_toast_on_error_summary_off">Xəta baş verərsə ani bildiriş görünmür</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Xəta ani bildirişlərin qapatmaq, bütün Morphe xəta bildirişlərin gizlədir.
 
 Gözlənilməz hallardan xəbərdar olmayacaqsınız."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Sazlama qeydlərini ixrac edin</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">Sazlama qeydlərini köçür</string>
   <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe sazlama qeydlərini buferə köçürür</string>
   <string name="morphe_debug_logs_disabled">Sazlama qeydi qapalıdır</string>
   <string name="morphe_debug_logs_none_found">Qeydlər tapılmadı</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Qeydlər köçürüldü</string>
-  <string name="morphe_debug_logs_failed_to_export">Qeydləri ixrac etmək alınmadı: %s</string>
+  <string name="morphe_debug_logs_failed_to_export">Qeydləri köçürmək alınmadı: %s</string>
   <string name="morphe_debug_logs_clear_buffer_title">Sazlama qeydlərini təmizlə</string>
   <string name="morphe_debug_logs_clear_buffer_summary">Saxlanılan bütün Morphe sazlama qeydlərini təmizləyir</string>
   <string name="morphe_debug_logs_clear_toast">Qeydlər silindi</string>
   <string name="morphe_debug_feature_flags_manager_title">Xüsusiyyət nişançıları idarəedicisi</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean xüsusiyyət nişançıların idarə et</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktiv nişançılar (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Bloklanmış nişançılar (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">İşlək nişançılar (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Əngəllənən nişançılar (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Nişançıları axtarın...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Nişançılar saxlandı</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Nişançılar saxlanıldı</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Nişançılar sıfırlandı</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Nişançılar buferə köçürüldü</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Uşağını yenidən başlatmaq üçün bu xüsusiyyətin istifadəsi mümkündür</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bu xüsusiyyəti istifadə etmək üçün tətbiqi yenidən başlat</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_summary">MicroG-nin əlavə parametrlərini açın</string>
+  <string name="microg_settings_summary">MicroG tənzimləmələrin aç</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG quraşdırılmayıb. Onu quraşdır.</string>
   <string name="gms_core_dialog_title">Fəaliyyət lazımdır</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG arxa planda ishləməsi üçün icazəsi yoq.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG-nin fonda işləmək icazəsi yoxdur.
 
-Telefonunuz üçün \"Don't kill my app\" bələdiyinə əməl edin və təlimatları MicroG quraşdırmanıza tətbiq edin.
+Telefonunuz üçün \"Tətbiqimi söndürməyin\" təlimatını izləyin və MicroG quraşdırmanıza təlimatları tətbiq edin.
 
-Bu, tətbiqin işləməsi üçün зoruri."</string>
+Bu, tətbiqin işləməsi üçün tələb olunur."</string>
   <string name="gms_core_dialog_open_website_text">Veb saytı aç</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Problemsiz işləməsi üçün MicroG batareya optimallaşdırmaları sıradan çıxarılmalıdır.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Problemlərə mane olmaq üçün MicroG batareya optimallaşdırmaları qeyri-aktiv edilməlidir.
 
-MicroG üçün batareya optimallaşdırmasını sıradan çıxartmaq, batareya istifadəsinə mənfi təsir etməyəcək.
+MicroG üçün batareya optimallaşdırmaların qapatmaq batareya istifadəsinə mənfi təsir etməyəcək.
 
-Davam düyməsinə toxunun və optimallaşdırma dəyişikliklərinə icazə verin."</string>
+Davam et düyməsinə toxun və optimallaşdırma dəyişikliklərinə razı ol"</string>
   <string name="gms_core_dialog_continue_text">Davam et</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Batareya optimallaşması dialoqu</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG batareya optimallaşması dialoqu görünür</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG batareya optimallaşması dialoqu görünmür</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Bunu qapatmaq MicroG batareya optimallaşması icazəsin gizlədəcək.
+
+Batareya optimallaşmaları dəyişdirilməsə, görə bilərsiniz:
+• Tətbiq təsadüfən bağlana bilər
+• Bildirişlər işləməyə bilər
+• Fon oynatması işləməyə bilər"</string>
 </resources>

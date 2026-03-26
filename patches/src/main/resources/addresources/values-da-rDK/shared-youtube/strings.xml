@@ -20,15 +20,16 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Genstart for at færdiggøre opsætningen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Appnavn</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Brugerdefineret</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe mørke</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe mørk</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe lille</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Brugerdefineret</string>
+  <string name="morphe_custom_branding_icon_entry_6">Brugerdefineret</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentel Advarsel 🚨</string>
@@ -104,8 +105,8 @@ For at indlogge, tryk på fortsæt nedenfor"</string>
 • Afspilning mislykkes, hvis JavaScript-hash for afspiller tilbagekaldes i GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">JavaScript-opdatering for afspiller er aktiveret</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Spillerens JavaScript-hashes er gyldige i cirka en måned, og forældede hashes kan tilbagekaldes af GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Spiller JavaScript hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Indtast en gyldig spiller JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Spiller JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Indtast en gyldig spiller JavaScript hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokollet</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokollet er deaktiveret</string>

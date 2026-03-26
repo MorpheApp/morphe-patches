@@ -344,7 +344,7 @@ public class StreamingDataRequest {
         handleConnectionError(str("morphe_spoof_video_streams_no_clients_toast"), null, true);
 
         var preferredClient = clientOrderToUse[0];
-        if (preferredClient != ClientType.ANDROID_VR_1_47_48 && preferredClient != ClientType.ANDROID_VR_1_54_20
+        if (preferredClient != ClientType.ANDROID_VR_1_64 && preferredClient != ClientType.ANDROID_VR_1_65
                 && !SharedYouTubeSettings.OAUTH2_REFRESH_TOKEN.get().isBlank()) {
             handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
         }

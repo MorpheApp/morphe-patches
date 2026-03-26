@@ -84,6 +84,8 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
   <string name="morphe_settings_about_links_rvx">2022 - 2025</string>
   <string name="morphe_settings_about_links_rv">2022 - 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 - 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licencje</string>
+  <string name="morphe_settings_about_licenses_loading">Wczytywanie...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugowanie</string>
   <string name="morphe_debug_screen_summary">Włącz lub wyłącz opcje debugowania</string>
@@ -101,7 +103,7 @@ Aby przetłumaczyć nowe języki lub poprawić istniejące tłumaczenia, odwied�
 Nie będziesz informowany o żadnych nieoczekiwanych zdarzeniach."</string>
   <string name="morphe_debug_export_logs_to_clipboard_title">Wyeksportuj logi debugowania</string>
   <string name="morphe_debug_export_logs_to_clipboard_summary">Kopiuje logi debugowania Morphe do schowka</string>
-  <string name="morphe_debug_logs_disabled">Wyłączone jest rejestrowanie debugowania</string>
+  <string name="morphe_debug_logs_disabled">Rejestrowanie debugowania jest wyłączone</string>
   <string name="morphe_debug_logs_none_found">Nie znaleziono logów</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Logi skopiowane</string>
   <string name="morphe_debug_logs_failed_to_export">Nie udało się wyeksportować logów: %s</string>
@@ -136,4 +138,13 @@ Wyłączenie optymalizacji baterii MicroG nie będzie negatywnie wpływało na z
 
 Stuknij przycisk Kontynuuj i zezwól na zmiany optymalizacji."</string>
   <string name="gms_core_dialog_continue_text">Kontynuuj</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Okno optymalizacji baterii</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Widoczne</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Ukryte</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Wyłączenie tej opcji spowoduje ukrycie ostrzeżeń dotyczących optymalizacji baterii dla MicroG.
+
+Jeśli ustawienia optymalizacji baterii nie zostaną zmienione, mogą wystąpić następujące problemy:
+• Aplikacja może się nieoczekiwanie zamykać
+• Powiadomienia mogą nie działać
+• Odtwarzanie w tle może nie działać"</string>
 </resources>

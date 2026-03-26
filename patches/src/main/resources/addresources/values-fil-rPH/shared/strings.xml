@@ -84,6 +84,8 @@ Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, b
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Mga paalala sa lisensya</string>
+  <string name="morphe_settings_about_licenses_loading">Naglo-load……</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugging</string>
   <string name="morphe_debug_screen_summary">Paganahin o patayin ang mga pagpipilian sa debugging</string>
@@ -136,4 +138,13 @@ Hindi makakaapekto sa paggamit ng baterya ang pagpatay sa pag-optimize ng batery
 
 Pindutin ang button na magpatuloy at payagan ang mga pagbabago sa pag-optimize."</string>
   <string name="gms_core_dialog_continue_text">Magpatuloy</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pag-uusap tungkol sa pag-optimize ng baterya</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Ipinapakita ang pag-uusap tungkol sa pag-optimize ng baterya ng MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Hindi ipinapakita ang pag-uusap tungkol sa pag-optimize ng baterya ng MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Ang hindi pag-disable nito ay itatago ang prompt ng pag-optimize ng baterya ng MicroG.
+
+Kung hindi nagbago ang pag-optimize sa baterya, maaaring makaranas ka ng:
+• Maaaring biglang magsara ang app
+• Maaaring hindi gumana ang mga notification
+• Maaaring hindi gumana ang background playback"</string>
 </resources>

@@ -14,9 +14,11 @@ import app.morphe.patches.music.misc.playservice.is_8_40_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
+import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.patches.shared.misc.initialization.initializationPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.MORPHE_SETTINGS_INTENT
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -44,7 +46,7 @@ private val settingsResourcePatch = resourcePatch {
                 IntentPreference(
                     titleKey = "morphe_settings_title",
                     summaryKey = null,
-                    intent = newIntent("morphe_settings_intent"),
+                    intent = newIntent(MORPHE_SETTINGS_INTENT),
                 ) to "settings_headers"
             ),
             preferences = preferences
@@ -90,7 +92,7 @@ val settingsPatch = bytecodePatch(
         versionCheckPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint,
-            recommendedAppVersion = COMPATIBILITY_YOUTUBE_MUSIC.second.first()
+            recommendedAppVersion = COMPATIBILITY_YOUTUBE_MUSIC.targets.first { !it.isExperimental }.version!!
         ),
         initializationPatch(
             mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint
@@ -125,8 +127,7 @@ val settingsPatch = bytecodePatch(
         )
 
         modifyActivityForSettingsInjection(
-            GoogleApiActivityFingerprint.classDef,
-            GoogleApiActivityFingerprint.method,
+            GoogleApiActivityOnCreateFingerprint,
             MUSIC_ACTIVITY_HOOK_CLASS_DESCRIPTOR,
             true
         )

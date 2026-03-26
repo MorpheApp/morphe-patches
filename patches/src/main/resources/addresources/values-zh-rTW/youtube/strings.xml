@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">推薦內容</string>
   <string name="morphe_settings_screen_04_general_title">一般</string>
   <string name="morphe_settings_screen_05_player_title">播放器</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">跳轉列</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">滑動控制</string>
   <string name="morphe_settings_screen_11_misc_title">其他</string>
@@ -301,6 +302,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">已顯示「訂閱」按鈕</string>
   <string name="morphe_comments_screen_title">留言區</string>
   <string name="morphe_comments_screen_summary">隱藏或顯示影片留言區內容</string>
+  <string name="morphe_hide_comments_carousel_title">啟用評論輪播過濾器</string>
+  <string name="morphe_hide_comments_carousel_summary_on">「意見」回覆串已啟用</string>
+  <string name="morphe_hide_comments_carousel_summary_off">「意見」回覆串已啟用</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"注意
+
+• 請務必輸入輪播項目確切的名稱（例如：詢問、熱門影片、在 YouTube Music 中聆聽等）。
+• 隱藏輪播項目可能會產生意想不到的副作用。
+• 如果所有輪播項目都被隱藏，整個評論區也會被隱藏。"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">啟用評論輪播過濾器</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">輸入要篩選的頻道標籤名稱，每行一個</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">隱藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">已隱藏 AI 聊天摘要</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">已顯示 AI 聊天摘要</string>
@@ -328,6 +339,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">隱藏表情符號和時間戳記按鈕</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">已隱藏表情符號和時間戳記按鈕</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">已顯示表情符號和時間戳記按鈕</string>
+  <string name="morphe_hide_comments_info_button_title">隱藏資訊按鈕</string>
+  <string name="morphe_hide_comments_info_button_summary_on">資訊按鈕已隱藏</string>
+  <string name="morphe_hide_comments_info_button_summary_off">資訊按鈕已顯示</string>
   <string name="morphe_hide_comments_preview_comment_title">隱藏留言預覽</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">已隱藏留言預覽</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">已顯示留言預覽</string>
@@ -473,6 +487,21 @@ Second \"item\" text"</string>
 
 請驗證套件名稱是否正確以及應用程式是否已安裝"</string>
   <string name="morphe_external_downloader_empty_warning">套件名稱不能為空</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">啟用循環播放影片</string>
+  <string name="morphe_loop_video_summary_on">影片將循環播放</string>
+  <string name="morphe_loop_video_summary_off">影片將不循環播放</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">顯示循環播放影片按鈕</string>
+  <string name="morphe_loop_video_button_summary_on">已顯示「循環播放影片」選單</string>
+  <string name="morphe_loop_video_button_summary_off">不顯示「循環播放影片」選單</string>
+  <string name="morphe_loop_video_button_toast_on">已開啟循環播放影片</string>
+  <string name="morphe_loop_video_button_toast_off">已關閉循環播放影片</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">顯示重新載入影片按鈕</string>
+  <string name="morphe_reload_video_summary_on">已顯示重新載入影片按鈕</string>
+  <string name="morphe_reload_video_summary_off">不顯示「重新載入影片」按鈕</string>
+  <string name="morphe_dismiss_player_not_available_toast">影片 ID 無法使用。請手動重新開啟影片。</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">停用精準跳轉手勢</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">已停用精準跳轉手勢</string>
@@ -659,14 +688,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_notifications_button_summary_off">已顯示「通知」按鈕</string>
   <string name="morphe_show_search_button_title">顯示搜尋</string>
   <string name="morphe_show_search_button_summary_on">已顯示「搜尋」按鈕</string>
-  <string name="morphe_show_search_button_summary_off">未顯示搜尋按鈕</string>
-  <string name="morphe_search_button_index_title">搜尋按鈕索引</string>
-  <string name="morphe_search_button_index_invalid">搜尋按鈕索引必須小於 %s</string>
+  <string name="morphe_show_search_button_summary_off">不顯示「搜尋」按鈕</string>
+  <string name="morphe_show_search_button_index_title">搜尋按鈕索引</string>
   <string name="morphe_show_settings_button_title">顯示設定</string>
   <string name="morphe_show_settings_button_summary_on">設定按鈕已顯示</string>
-  <string name="morphe_show_settings_button_summary_off">設定按鈕未顯示</string>
-  <string name="morphe_settings_button_index_title">設定按鈕索引</string>
-  <string name="morphe_settings_button_index_invalid">Settings 按鈕索引必須小於 %s</string>
+  <string name="morphe_show_settings_button_summary_off">不顯示「設定」按鈕</string>
+  <string name="morphe_show_settings_button_index_title">設定按鈕索引</string>
+  <string name="morphe_show_settings_button_type_title">設定按鈕動作</string>
+  <string name="morphe_show_settings_button_type_summary_on">點擊開啟 Morphe 設定</string>
+  <string name="morphe_show_settings_button_type_summary_off">點擊以開啟 YouTube 設定</string>
   <string name="morphe_swap_create_with_notifications_button_title">切換「建立」與「通知」按鈕</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">「建立」按鈕已與「通知」按鈕對調</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">「建立」按鈕未與「通知」按鈕對調</string>
@@ -687,6 +717,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">啟用導覽列動畫</string>
   <string name="morphe_navigation_bar_animations_summary_on">導覽轉換會進行動畫</string>
   <string name="morphe_navigation_bar_animations_summary_off">導覽轉換不會進行動畫</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">停用導覽列自動隱藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">導覽列將不會自動隱藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">導覽列可能會自動隱藏</string>
   <string name="morphe_disable_translucent_status_bar_title">停用半透明狀態列</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">狀態列為不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">狀態列為不透明或半透明</string>
@@ -713,18 +746,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">Hide Search</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">已隱藏「搜尋」按鈕</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">已顯示「搜尋」按鈕</string>
-  <string name="morphe_replace_toolbar_create_button_title">取代「建立」為「設定」</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">「建立」按鈕已替換為「設定」按鈕</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">「建立」按鈕不與「通知」按鈕對調</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">You 分頁中，設定按鈕的點擊行為也會被覆寫。</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">設定按鈕動作</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"輕觸以開啟 Morphe 設定
+  <string name="morphe_show_toolbar_settings_button_title">顯示設定</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">已顯示設定按鈕</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">不顯示「設定」按鈕</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">設定按鈕索引</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">設定按鈕動作</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"輕觸以開啟 Morphe 設定
 按住以開啟 YouTube 設定"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"輕觸以開啟 YouTube 設定
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"輕觸以開啟 YouTube 設定
 按住以開啟 Morphe 設定"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">重新排列已取代的按鈕</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">按鈕已重新排列</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">按鈕未重新排列</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">介面選單</string>
   <string name="morphe_hide_player_flyout_summary">隱藏或顯示播放器彈出式選單</string>
@@ -1044,7 +1074,7 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_compact_layout_summary_off">「喜歡」按鈕樣式設為最佳外觀</string>
   <string name="morphe_ryd_estimated_like_title">顯示預估喜歡人數</string>
   <string name="morphe_ryd_estimated_like_summary_on">已停用喜歡的影片會顯示預估的喜歡人數</string>
-  <string name="morphe_ryd_estimated_like_summary_off">未顯示預估喜歡人數</string>
+  <string name="morphe_ryd_estimated_like_summary_off">不顯示「預估喜歡人數」</string>
   <string name="morphe_ryd_toast_on_connection_error_title">若 API 無法使用，顯示提示</string>
   <string name="morphe_ryd_toast_on_connection_error_summary_on">如果 Return YouTube Dislike 無法使用，則顯示提示訊息</string>
   <string name="morphe_ryd_toast_on_connection_error_summary_off">如果 Return YouTube Dislike 無法使用，則不會顯示提示訊息</string>
@@ -1319,11 +1349,11 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary_on">開啟系統分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_off">在應用程式內開啟分享面板</string>
   <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">覆蓋YouTube Music按鈕</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music按鈕會開啟您的目標音樂應用程序</string>
+  <string name="morphe_override_youtube_music_button_title">覆蓋 YouTube Music 按鈕</string>
+  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music 按鈕會開啟您的目標音樂應用程式</string>
   <string name="morphe_override_youtube_music_button_summary_off">YouTube 音樂按鈕開啟原生應用程序</string>
-  <string name="morphe_music_package_name_title">Morphe 音樂套件名稱</string>
-  <string name="morphe_music_package_name_summary">目標音樂應用程序的套件名稱</string>
+  <string name="morphe_music_package_name_title">Morphe Music 套件名稱</string>
+  <string name="morphe_music_package_name_summary">目標 Music 應用程式的套件名稱</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">變更起始頁面</string>
   <string name="morphe_change_start_page_entry_default">預設</string>
@@ -1344,6 +1374,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">播放清單</string>
   <string name="morphe_change_start_page_entry_search">搜尋</string>
   <string name="morphe_change_start_page_entry_shopping">購物</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">運動</string>
   <string name="morphe_change_start_page_entry_subscriptions">訂閱內容</string>
   <string name="morphe_change_start_page_entry_trending">發燒影片</string>
@@ -1491,16 +1522,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow 暫時無法使用（狀態碼：%s）</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow 暫時無法使用</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">啟用循環播放影片</string>
-  <string name="morphe_loop_video_summary_on">影片將循環播放</string>
-  <string name="morphe_loop_video_summary_off">影片將不循環播放</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">顯示循環播放影片按鈕</string>
-  <string name="morphe_loop_video_button_summary_on">已顯示「循環播放影片」選單</string>
-  <string name="morphe_loop_video_button_summary_off">不顯示「循環播放影片」選單</string>
-  <string name="morphe_loop_video_button_toast_on">已開啟循環播放影片</string>
-  <string name="morphe_loop_video_button_toast_off">已關閉循環播放影片</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">偽裝裝置尺寸</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"已偽裝裝置尺寸

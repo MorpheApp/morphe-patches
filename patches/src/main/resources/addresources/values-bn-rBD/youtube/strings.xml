@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">ফিড</string>
   <string name="morphe_settings_screen_04_general_title">সাধারণ</string>
   <string name="morphe_settings_screen_05_player_title">প্লেয়ার</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">সিকবার</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">সোয়াইপ কন্ট্রোল</string>
   <string name="morphe_settings_screen_11_misc_title">বিবিধ</string>
@@ -301,6 +302,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">সদস্যতা নিন বোতাম প্রদর্শিত হয়েছে</string>
   <string name="morphe_comments_screen_title">মন্তব্য</string>
   <string name="morphe_comments_screen_summary">মন্তব্য বিভাগের উপাদানগুলি লুকান বা দেখান৷</string>
+  <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Comments carousel filter is enabled</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Comments carousel filter is disabled</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"নোট 
+
+• নিশ্চিত করুন যে আপনি ক্যারোসেল আইটেমের সঠিক নামটি প্রবেশ করেছেন (যেমন Ask, Hype this video, Listen on YouTube Music ইত্যাদি)।
+• ক্যারোসেল আইটেম লুকানো অপ্রত্যাশিত পার্শ্বপ্রতিক্রিয়া সৃষ্টি করতে পারে।
+• যদি সমস্ত ক্যারোসেল আইটেম লুকানো হয়, তাহলে মন্তব্য বিভাগও সম্পূর্ণরূপে লুকানো হবে।"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Comments carousel filter</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">একটি লাইনে ফিল্টার করার জন্য মন্তব্য ক্যারোসেলের নাম লিখুন</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">এআই চ্যাট সারাংশ লুকান</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">এআই চ্যাট সারাংশ লুকানো আছে</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">এআই চ্যাট সারাংশ দেখানো হয়েছে</string>
@@ -328,6 +339,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">ইমোজি এবং টাইমস্ট্যাম্প বোতামগুলি লুকান</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">ইমোজি এবং টাইমস্ট্যাম্প বোতামগুলি লুকানো আছে</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">ইমোজি এবং টাইমস্ট্যাম্প বোতামগুলি দেখানো আছে</string>
+  <string name="morphe_hide_comments_info_button_title">লুকান তথ্য বোতাম</string>
+  <string name="morphe_hide_comments_info_button_summary_on">তথ্য বোতামটি লুকানো হয়েছে</string>
+  <string name="morphe_hide_comments_info_button_summary_off">তথ্য বোতামটি দেখানো হয়েছে</string>
   <string name="morphe_hide_comments_preview_comment_title">মন্তব্যের পূর্বরূপ লুকান</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">মন্তব্যের পূর্বরূপ লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">মন্তব্যের পূর্বরূপ প্রদর্শিত হয়েছে</string>
@@ -473,6 +487,21 @@ Second \"item\" text"</string>
 
 প্যাকেজের নামটি সঠিক এবং অ্যাপটি ইনস্টল করা আছে কিনা তা যাচাই করুন"</string>
   <string name="morphe_external_downloader_empty_warning">প্যাকেজের নাম খালি রাখা যাবে না</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">লুপ ভিডিও সক্ষম করুন</string>
+  <string name="morphe_loop_video_summary_on">ভিডিও লুপ হবে</string>
+  <string name="morphe_loop_video_summary_off">ভিডিও লুপ হবে না</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">লুপ ভিডিও বোতাম দেখান</string>
+  <string name="morphe_loop_video_button_summary_on">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
+  <string name="morphe_loop_video_button_summary_off">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
+  <string name="morphe_loop_video_button_toast_on">লুপ ভিডিও চালু আছে</string>
+  <string name="morphe_loop_video_button_toast_off">লুপ ভিডিও বন্ধ আছে</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">পুনরায় লোড ভিডিও বোতাম দেখান</string>
+  <string name="morphe_reload_video_summary_on">পুনরায় লোড ভিডিও বোতামটি দেখানো হয়েছে</string>
+  <string name="morphe_reload_video_summary_off">পুনরায় লোড ভিডিও বোতামটি দেখানো হয়নি</string>
+  <string name="morphe_dismiss_player_not_available_toast">ভিডিও আইডি অনুপলব্ধ। অনুগ্রহ করে ম্যানুয়ালি ভিডিওটি পুনরায় খুলুন।</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">ভিডিওর নির্দিষ্ট অংশে যাওয়ার অঙ্গভঙ্গি নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">অঙ্গভঙ্গি নিষ্ক্রিয় করা হয়েছে</string>
@@ -660,13 +689,14 @@ Second \"item\" text"</string>
   <string name="morphe_show_search_button_title">অনুসন্ধান দেখান</string>
   <string name="morphe_show_search_button_summary_on">অনুসন্ধান বাটন দেখানো হয়েছে</string>
   <string name="morphe_show_search_button_summary_off">অনুসন্ধান বাটন দেখানো হয়নি</string>
-  <string name="morphe_search_button_index_title">অনুসন্ধান বাটন সূচক</string>
-  <string name="morphe_search_button_index_invalid">অনুসন্ধান বাটন সূচক %s এর চেয়ে কম হতে হবে</string>
+  <string name="morphe_show_search_button_index_title">অনুসন্ধান বাটন ইনডেক্স</string>
   <string name="morphe_show_settings_button_title">সেটিংস দেখান</string>
   <string name="morphe_show_settings_button_summary_on">সেটিংস বোতামটি দেখানো হচ্ছে</string>
   <string name="morphe_show_settings_button_summary_off">সেটিংস বোতামটি দেখানো হচ্ছে না</string>
-  <string name="morphe_settings_button_index_title">సెట్టింగ్‌ల బటన్ సూచిక</string>
-  <string name="morphe_settings_button_index_invalid">সেটিংস বোতামের সূচক %s-এর চেয়ে কম হতে হবে</string>
+  <string name="morphe_show_settings_button_index_title">సెట్టింగ్‌ల బటన్ సూచిక</string>
+  <string name="morphe_show_settings_button_type_title">সেটিংস বোতাম অ্যাকশন</string>
+  <string name="morphe_show_settings_button_type_summary_on">Morphe সেটিংস খুলতে ট্যাপ করুন</string>
+  <string name="morphe_show_settings_button_type_summary_off">ইউটিউব সেটিংস খোলার জন্য ট্যাপ করুন</string>
   <string name="morphe_swap_create_with_notifications_button_title">ক্রিয়েট বোতামকে বিজ্ঞপ্তি বোতাম দ্বারা সুইচ করুন</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">ক্রিয়েট বোতামকে বিজ্ঞপ্তি বোতাম দ্বারা সুইচ করা হয়েছে</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">ক্রিয়েট বোতামকে বিজ্ঞপ্তি বোতাম দ্বারা সুইচ করা হয়নি</string>
@@ -687,6 +717,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">নেভিগেশন বার অ্যানিমেশন সক্ষম করুন</string>
   <string name="morphe_navigation_bar_animations_summary_on">নেভিগেশন ট্রানজিশনগুলি অ্যানিমেটেড</string>
   <string name="morphe_navigation_bar_animations_summary_off">নেভিগেশন ট্রানজিশনগুলি অ্যানিমেটেড নয়</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">নেভিগেশন বার স্বয়ংক্রিয়ভাবে লুকানো নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">নেভিগেশন বার স্বয়ংক্রিয়ভাবে লুকাবে না</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">নেভিগেশন বার স্বয়ংক্রিয়ভাবে লুকানো যেতে পারে</string>
   <string name="morphe_disable_translucent_status_bar_title">অর্ধস্বচ্ছ স্থিতি বার নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">স্ট্যাটাস বারটি অস্বচ্ছ</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">স্ট্যাটাস বারটি অস্বচ্ছ বা স্বচ্ছ</string>
@@ -713,18 +746,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">Hide Search</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">অনুসন্ধান বাটন লুকানো আছে</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">অনুসন্ধান বাটন দেখানো হয়েছে</string>
-  <string name="morphe_replace_toolbar_create_button_title">Replace Create with Settings</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">তৈরি বোতামটি সেটিংস বোতামের সাথে প্রতিস্থাপিত হয়েছে</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">তৈরি বোতামটি সেটিংস বোতামের সাথে প্রতিস্থাপিত হয়েছে</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">আপনি ট্যাব-এ সেটিংস বাটনের ক্লিক আচরণও ওভাররাইড করা হয়েছে।</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">সেটিংস বোতাম অ্যাকশন</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Morphe সেটিংস খুলতে ট্যাপ করুন
+  <string name="morphe_show_toolbar_settings_button_title">সেটিংস দেখান</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">সেটিংস বোতামটি দেখানো হচ্ছে</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">সেটিংস বোতামটি দেখানো হয়নি</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">సెట్టింగ్‌ల బటన్ సూచిక</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">সেটিংস বোতাম অ্যাকশন</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Morphe সেটিংস খুলতে ট্যাপ করুন
 YouTube সেটিংস খুলতে ট্যাপ এবং ধরে রাখুন"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Morphe সেটিংস খুলতে ট্যাপ করুন
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Morphe সেটিংস খুলতে ট্যাপ করুন
 YouTube সেটিংস খুলতে ট্যাপ এবং ধরে রাখুন"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">পুনর্বিন্যাসকৃত বোতামগুলি পুনর্বিন্যাস করুন</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">বাটনগুলি পুনর্বিন্যাস করা হয়নি</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">বাটনগুলি পুনর্বিন্যাস করা হয়নি</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">ফ্লাইআউট মেনু</string>
   <string name="morphe_hide_player_flyout_summary">ফ্লাইআউট মেনুর আইটেম দেখান বা লুকান</string>
@@ -1344,6 +1374,7 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_change_start_page_entry_playlists">চ্লাস ন৊টিস্য়াসেগ</string>
   <string name="morphe_change_start_page_entry_search">অনুসন্ধান</string>
   <string name="morphe_change_start_page_entry_shopping">শোপিংগ</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">খেলাধুলা</string>
   <string name="morphe_change_start_page_entry_subscriptions">সদস্যতা</string>
   <string name="morphe_change_start_page_entry_trending">এখন জনপ্রিয়</string>
@@ -1487,16 +1518,6 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow সাময়িকভাবে উপলব্ধ নেই (স্ট্যাটাস কোড: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow সাময়িকভাবে উপলব্ধ নেই</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">লুপ ভিডিও সক্ষম করুন</string>
-  <string name="morphe_loop_video_summary_on">ভিডিও লুপ হবে</string>
-  <string name="morphe_loop_video_summary_off">ভিডিও লুপ হবে না</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">লুপ ভিডিও বোতাম দেখান</string>
-  <string name="morphe_loop_video_button_summary_on">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
-  <string name="morphe_loop_video_button_summary_off">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
-  <string name="morphe_loop_video_button_toast_on">লুপ ভিডিও চালু আছে</string>
-  <string name="morphe_loop_video_button_toast_off">লুপ ভিডিও বন্ধ আছে</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">ডিভাইস ডাইমেনশন স্পুফ করুন</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"ডিভাইসের মাত্রা ভুয়া

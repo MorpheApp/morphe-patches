@@ -2,6 +2,7 @@ package app.morphe.patches.music.layout.miniplayer
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -23,10 +24,8 @@ internal object MiniPlayerConstructorFingerprint : Fingerprint(
     strings = listOf("sharedToggleMenuItemMutations")
 )
 
-/**
- * Matches to the class found in [MiniPlayerConstructorFingerprint].
- */
 internal object SwitchToggleColorFingerprint : Fingerprint(
+    classFingerprint = MiniPlayerConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L", "J"),
@@ -38,8 +37,8 @@ internal object SwitchToggleColorFingerprint : Fingerprint(
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
-        fieldAccess(opcode = Opcode.IGET, type = "I", location = MatchAfterImmediately()),
-        opcode(Opcode.GOTO, location = MatchAfterImmediately()),
+        opcode(Opcode.GOTO, location = MatchAfterWithin(5)),
+        fieldAccess(opcode = Opcode.IGET, type = "I"),
         opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
     )
 )

@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">ฟีด</string>
   <string name="morphe_settings_screen_04_general_title">ทั่วไป</string>
   <string name="morphe_settings_screen_05_player_title">เครื่องเล่น</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">แถบเลื่อน</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">ตัวปัดควบคุม</string>
   <string name="morphe_settings_screen_11_misc_title">เบ็ดเตล็ด</string>
@@ -301,6 +302,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">ปุ่มสมัครรับข้อมูลแสดงอยู่</string>
   <string name="morphe_comments_screen_title">ความคิดเห็น</string>
   <string name="morphe_comments_screen_summary">ซ่อนหรือแสดงส่วนประกอบของส่วนความคิดเห็น</string>
+  <string name="morphe_hide_comments_carousel_title">เปิดใช้งานตัวกรองแคโรเซิลความคิดเห็น</string>
+  <string name="morphe_hide_comments_carousel_summary_on">ตัวกรองแคโรเซิลความคิดเห็นถูกเปิดใช้งาน</string>
+  <string name="morphe_hide_comments_carousel_summary_off">ตัวกรองแคโรเซิลความคิดเห็นถูกปิดใช้งาน</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"หมายเหตุ
+
+• ตรวจสอบให้แน่ใจว่าคุณป้อนชื่อรายการแคโรเซิลที่ถูกต้อง (เช่น ถาม เพิ่มความนิยมให้กับวิดีโอนี้ ฟังบน YouTube Music เป็นต้น)
+• การซ่อนรายการแคโรเซิลอาจมีผลข้างเคียงที่ไม่คาดคิด
+• หากซ่อนรายการแคโรเซิลทั้งหมด ส่วนแสดงความคิดเห็นทั้งหมดจะถูกซ่อนไปด้วย"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">ตัวกรองแคโรเซลความคิดเห็น</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">ป้อนชื่อ carousel ความคิดเห็นเพื่อกรองทีละบรรทัด</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">ซ่อนสรุปแชท AI</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">สรุปแชท AI ถูกซ่อนอยู่</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">สรุปแชท AI แสดงอยู่</string>
@@ -328,6 +339,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">ซ่อนปุ่มอีโมจิและปุ่มการประทับเวลา</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">ปุ่มอีโมจิและปุ่มการประทับเวลาถูกซ่อน</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">ปุ่มอีโมจิและปุ่มการประทับเวลาถูกแสดง</string>
+  <string name="morphe_hide_comments_info_button_title">ซ่อนปุ่มข้อมูล</string>
+  <string name="morphe_hide_comments_info_button_summary_on">ปุ่มข้อมูลถูกซ่อน</string>
+  <string name="morphe_hide_comments_info_button_summary_off">ปุ่มข้อมูลแสดงอยู่</string>
   <string name="morphe_hide_comments_preview_comment_title">ซ่อนความคิดเห็นตัวอย่าง</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">ความคิดเห็นตัวอย่างถูกซ่อนไว้</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">ความคิดเห็นตัวอย่างแสดงอยู่</string>
@@ -473,6 +487,21 @@ Second \"item\" text"</string>
 
 ตรวจสอบว่าชื่อแพ็กเกจถูกต้องและติดตั้งแอปแล้ว"</string>
   <string name="morphe_external_downloader_empty_warning">ชื่อแพ็กเกจต้องไม่ว่างเปล่า</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">เปิดใช้งานการเล่นวิดีโอซ้ำ</string>
+  <string name="morphe_loop_video_summary_on">วิดีโอจะเล่นซ้ำ</string>
+  <string name="morphe_loop_video_summary_off">วิดีโอจะไม่เล่นซ้ำ</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">แสดงปุ่มเล่นวิดีโอซ้ำ</string>
+  <string name="morphe_loop_video_button_summary_on">เมนูการวนซ้ำวิดีโอแสดงอยู่</string>
+  <string name="morphe_loop_video_button_summary_off">เมนูการวนซ้ำวิดีโอแสดงอยู่</string>
+  <string name="morphe_loop_video_button_toast_on">เปิดใช้งานการเล่นวิดีโอซ้ำแล้ว</string>
+  <string name="morphe_loop_video_button_toast_off">ปิดใช้งานการเล่นวิดีโอซ้ำแล้ว</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">แสดงปุ่มโหลดวิดีโอ</string>
+  <string name="morphe_reload_video_summary_on">ปุ่มโหลดวิดีโอแสดง</string>
+  <string name="morphe_reload_video_summary_off">ปุ่มโหลดวิดีโอไม่แสดง</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video id พร้อมใช้งาน กรุณาเปิดวิดีโอใหม่อีกครั้ง</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">ปิดใช้งานท่าทางการค้นหาแบบแม่นยำ</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">ท่าทางถูกปิดใช้งาน</string>
@@ -658,13 +687,14 @@ Second \"item\" text"</string>
   <string name="morphe_show_search_button_title">แสดงการค้นหา</string>
   <string name="morphe_show_search_button_summary_on">แสดงปุ่มค้นหาแล้ว</string>
   <string name="morphe_show_search_button_summary_off">ปุ่มค้นหาไม่ได้แสดง</string>
-  <string name="morphe_search_button_index_title">คำสั่งค้นหา</string>
-  <string name="morphe_search_button_index_invalid">ค่าแท็บคำสั่งค้นหาไม่ควรเกิน %s</string>
+  <string name="morphe_show_search_button_index_title">ดัชนีปุ่มค้นหา</string>
   <string name="morphe_show_settings_button_title">แสดงการตั้งค่า</string>
   <string name="morphe_show_settings_button_summary_on">ปุ่มการตั้งค่าแสดง</string>
   <string name="morphe_show_settings_button_summary_off">ปุ่มการตั้งค่าไม่แสดง</string>
-  <string name="morphe_settings_button_index_title">ปุ่มตั้งค่า</string>
-  <string name="morphe_settings_button_index_invalid">ดัชนีปุ่มตั้งค่าต้องน้อยกว่า %s</string>
+  <string name="morphe_show_settings_button_index_title">ดัชนีปุ่มการตั้งค่า</string>
+  <string name="morphe_show_settings_button_type_title">การดำเนินการปุ่มการตั้งค่า</string>
+  <string name="morphe_show_settings_button_type_summary_on">แตะเพื่อเปิดการตั้งค่า Morphe</string>
+  <string name="morphe_show_settings_button_type_summary_off">แตะเพื่อเปิดการตั้งค่า YouTube</string>
   <string name="morphe_swap_create_with_notifications_button_title">สลับสร้างด้วยการแจ้งเตือน</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">ปุ่มสร้างถูกสลับกับปุ่มการแจ้งเตือนแล้ว</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">ปุ่มสร้างยังไม่ถูกสลับกับปุ่มการแจ้งเตือน</string>
@@ -685,6 +715,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">เปิดใช้งานภาพเคลื่อนไหวแถบนำทาง</string>
   <string name="morphe_navigation_bar_animations_summary_on">การเปลี่ยนภาพเคลื่อนไหวจะถูกทำให้เป็นภาพเคลื่อนไหว</string>
   <string name="morphe_navigation_bar_animations_summary_off">การเปลี่ยนภาพเคลื่อนไหวจะไม่ถูกทำให้เป็นภาพเคลื่อนไหว</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">ปิดการซ่อนแถบนำทางอัตโนมัติ</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">แถบนำทางจะไม่ซ่อนโดยอัตโนมัติ</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">แถบนำทางอาจซ่อนโดยอัตโนมัติ</string>
   <string name="morphe_disable_translucent_status_bar_title">ปิดใช้งานแถบสถานะแบบโปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">แถบสถานะไม่โปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">แถบสถานะโปร่งแสงหรือไม่โปร่งแสง</string>
@@ -711,18 +744,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">ซ่อนการค้นหา</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">ซ่อนปุ่มค้นหาแล้ว</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">แสดงปุ่มค้นหาแล้ว</string>
-  <string name="morphe_replace_toolbar_create_button_title">แทนที่สร้างด้วยการตั้งค่า</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">ปุ่มสร้างถูกแทนที่ด้วยปุ่มการตั้งค่า</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">ปุ่มสร้างไม่ถูกแทนที่ด้วยปุ่มการตั้งค่า</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">การคลิกของปุ่มการตั้งค่าในแท็บ You จะถูกยกเลิกด้วยเช่นกัน</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">การกระทำของปุ่มการตั้งค่า</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"แตะเพื่อเปิดการตั้งค่า Morphe
+  <string name="morphe_show_toolbar_settings_button_title">แสดงการตั้งค่า</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">ปุ่มการตั้งค่าจะแสดง</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">ปุ่มการตั้งค่าจะไม่แสดง</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">ดัชนีปุ่มการตั้งค่า</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">การดำเนินการปุ่มการตั้งค่า</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"แตะเพื่อเปิดการตั้งค่า Morphe
 แตะค้างเพื่อเปิดการตั้งค่า YouTube"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"แตะเพื่อเปิดการตั้งค่า YouTube
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"แตะเพื่อเปิดการตั้งค่า YouTube
 แตะค้างเพื่อเปิดการตั้งค่า Morphe"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">จัดเรียงปุ่มที่ถูกแทนที่</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">ปุ่มถูกจัดเรียงใหม่</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">ปุ่มไม่ถูกจัดเรียงใหม่</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">เมนูแบบเลื่อนลง</string>
   <string name="morphe_hide_player_flyout_summary">ซ่อนหรือแสดงรายการเมนูแบบเลื่อนลงของเครื่องเล่น</string>
@@ -1340,6 +1370,7 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_change_start_page_entry_playlists">แพล่งของ</string>
   <string name="morphe_change_start_page_entry_search">ค้นหา</string>
   <string name="morphe_change_start_page_entry_shopping">ช็อปปิ้ง</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">กีฬา</string>
   <string name="morphe_change_start_page_entry_subscriptions">สมัครสมาชิก</string>
   <string name="morphe_change_start_page_entry_trending">กำลังมาแรง</string>
@@ -1483,16 +1514,6 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow ไม่พร้อมใช้งานชั่วคราว (รหัสสถานะ: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow ไม่พร้อมใช้งานชั่วคราว</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">เปิดใช้งานการเล่นวิดีโอซ้ำ</string>
-  <string name="morphe_loop_video_summary_on">วิดีโอจะเล่นซ้ำ</string>
-  <string name="morphe_loop_video_summary_off">วิดีโอจะไม่เล่นซ้ำ</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">แสดงปุ่มเล่นวิดีโอซ้ำ</string>
-  <string name="morphe_loop_video_button_summary_on">เมนูการวนซ้ำวิดีโอแสดงอยู่</string>
-  <string name="morphe_loop_video_button_summary_off">เมนูการวนซ้ำวิดีโอแสดงอยู่</string>
-  <string name="morphe_loop_video_button_toast_on">เปิดใช้งานการเล่นวิดีโอซ้ำแล้ว</string>
-  <string name="morphe_loop_video_button_toast_off">ปิดใช้งานการเล่นวิดีโอซ้ำแล้ว</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">ปลอมแปลงมิติของอุปกรณ์</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"มิติของอุปกรณ์ถูกปลอมแปลง

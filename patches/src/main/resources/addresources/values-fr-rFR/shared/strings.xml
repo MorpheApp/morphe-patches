@@ -23,7 +23,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset">Réinitialiser</string>
   <string name="morphe_settings_reset_color">Réinitialiser la couleur</string>
   <string name="morphe_settings_color_invalid">Couleur invalide</string>
-  <string name="morphe_settings_restart_title">Redémarrage requis</string>
+  <string name="morphe_settings_restart_title">Redémarrage nécessaire</string>
   <string name="morphe_settings_restart_dialog_message">Redémarrez l\'application pour que cette modification prenne effet.</string>
   <string name="morphe_settings_restart">Redémarrer</string>
   <!-- String is also duplicated in Reddit import / export preference -->
@@ -85,6 +85,8 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Mentions de licence</string>
+  <string name="morphe_settings_about_licenses_loading">Chargement...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Débogage</string>
   <string name="morphe_debug_screen_summary">Activez ou désactivez les options de débogage</string>
@@ -139,4 +141,13 @@ Appuyez sur le bouton Continuer et autorisez la modification des optimisations.
 
 "</string>
   <string name="gms_core_dialog_continue_text">Continuer</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Boîte de dialogue d\'optimisation de la batterie</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">La boîte de dialogue d\'optimisation de la batterie de MicroG est affichée</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">La boîte de dialogue d\'optimisation de la batterie de MicroG n\'est pas affichée</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Désactiver cela masquera l'invite d'optimisation de la batterie de MicroG.
+
+Si les optimisations de la batterie ne sont pas modifiées, vous pourriez rencontrer les problèmes suivants :
+• L'application peut se fermer de manière aléatoire
+• Les notifications peuvent ne pas fonctionner
+• La lecture en arrière-plan peut ne pas fonctionner"</string>
 </resources>

@@ -61,6 +61,9 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsResourcePatch -->
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
+  <!-- interaction.loop.loopVideoPatch -->
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
@@ -165,8 +168,6 @@ Second \"item\" text"</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->

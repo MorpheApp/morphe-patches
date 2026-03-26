@@ -1,5 +1,5 @@
 {
-  "version": "1.20.0-dev.2",
+  "version": "1.22.0-dev.5",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -13,6 +13,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -28,10 +29,11 @@
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -50,6 +52,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -87,6 +90,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -106,6 +110,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -126,6 +131,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -170,6 +176,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -284,6 +291,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -318,6 +326,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -337,6 +346,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -378,7 +388,7 @@
         {
           "key": "customIcon",
           "title": "Custom icon",
-          "description": "Folder with images to use as a custom icon.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n\nEach of the folders must contain all of the following files:\nmorphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n\nThe image dimensions must be as follows:\n- mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\nOptionally, the path contains a 'drawable' folder with any of the monochrome icon files:\nmorphe_adaptive_monochrome_custom.xml\nmorphe_notification_icon_custom.xml",
+          "description": "Folder with images to use as a custom icon.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n\nEach of the folders must contain all of the following files:\nmorphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n\nThe image dimensions must be as follows:\n- mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\nOptionally, the path contains a 'drawable' folder with a monochrome icon file:\nmorphe_adaptive_monochrome_custom.xml\n\nOptionally, the path contains a notification icon in one of the following formats:\n- XML vector drawable placed in 'drawable':\nmorphe_notification_icon_custom.xml\n- PNG raster images placed in the matching 'drawable-<dpi>' folders:\n- drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)",
           "required": false,
           "type": "kotlin.String",
           "default": null,
@@ -399,6 +409,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -418,7 +429,7 @@
         {
           "key": "customIcon",
           "title": "Custom icon",
-          "description": "Folder with images to use as a custom icon.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n\nEach of the folders must contain all of the following files:\nmorphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n\nThe image dimensions must be as follows:\n- mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\nOptionally, the path contains a 'drawable' folder with any of the monochrome icon files:\nmorphe_adaptive_monochrome_custom.xml\nmorphe_notification_icon_custom.xml",
+          "description": "Folder with images to use as a custom icon.\n\nThe folder must contain one or more of the following folders, depending on the DPI of the device:\n- mipmap-mdpi\n- mipmap-hdpi\n- mipmap-xhdpi\n- mipmap-xxhdpi\n- mipmap-xxxhdpi\n\nEach of the folders must contain all of the following files:\nmorphe_adaptive_background_custom.png\nmorphe_adaptive_foreground_custom.png\n\nThe image dimensions must be as follows:\n- mipmap-mdpi: 108x108 px\n- mipmap-hdpi: 162x162 px\n- mipmap-xhdpi: 216x216 px\n- mipmap-xxhdpi: 324x324 px\n- mipmap-xxxhdpi: 432x432 px\n\nOptionally, the path contains a 'drawable' folder with a monochrome icon file:\nmorphe_adaptive_monochrome_custom.xml\n\nOptionally, the path contains a notification icon in one of the following formats:\n- XML vector drawable placed in 'drawable':\nmorphe_notification_icon_custom.xml\n- PNG raster images placed in the matching 'drawable-<dpi>' folders:\n- drawable-mdpi/morphe_notification_icon_custom.png (24x24 px)\n- drawable-hdpi/morphe_notification_icon_custom.png (36x36 px)\n- drawable-xhdpi/morphe_notification_icon_custom.png (48x48 px)\n- drawable-xxhdpi/morphe_notification_icon_custom.png (72x72 px)\n- drawable-xxxhdpi/morphe_notification_icon_custom.png (96x96 px)",
           "required": false,
           "type": "kotlin.String",
           "default": null,
@@ -464,6 +475,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -500,6 +512,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -544,6 +557,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -559,10 +573,11 @@
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -578,10 +593,11 @@
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -600,6 +616,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -618,6 +635,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -652,6 +670,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -670,6 +689,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -705,6 +725,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -724,6 +745,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -741,6 +763,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -760,6 +783,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -795,10 +819,11 @@
         "ResourcePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -856,6 +881,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -871,7 +897,7 @@
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.apps.youtube.music": [
@@ -890,10 +916,11 @@
       "dependencies": [
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -935,6 +962,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -973,10 +1001,11 @@
         "BytecodePatch",
         "ResourcePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1043,12 +1072,11 @@
       "use": true,
       "dependencies": [
         "ResourcePatch",
-        "BytecodePatch",
-        "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1068,6 +1096,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1120,10 +1149,11 @@
       "dependencies": [
         "BytecodePatch",
         "ResourcePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1141,6 +1171,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1161,6 +1192,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1177,16 +1209,18 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch",
-        "ResourcePatch",
+        "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1240,6 +1274,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1256,10 +1291,11 @@
         "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1295,6 +1331,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1314,6 +1351,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1348,6 +1386,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1370,6 +1409,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1389,6 +1429,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1408,6 +1449,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1464,13 +1506,14 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1488,11 +1531,12 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch",
+        "BytecodePatch",
         "ResourcePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1526,6 +1570,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1546,6 +1591,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1564,6 +1610,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1582,6 +1629,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1627,6 +1675,27 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
+          "20.44.38",
+          "20.40.45",
+          "20.31.42",
+          "20.21.37"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Reload video",
+      "description": "Adds options to display buttons in the video player to reload video.",
+      "use": true,
+      "dependencies": [
+        "ResourcePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1664,11 +1733,12 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1703,6 +1773,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1722,10 +1793,11 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1778,6 +1850,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1798,6 +1871,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1814,10 +1888,11 @@
         "BytecodePatch",
         "BytecodePatch",
         "ResourcePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1858,6 +1933,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1874,11 +1950,12 @@
         "ResourcePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1897,6 +1974,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1932,6 +2010,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -1991,13 +2070,14 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "ResourcePatch",
+        "BytecodePatch",
         "ResourcePatch",
         "ResourcePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -2063,6 +2143,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",
@@ -2084,6 +2165,7 @@
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
+          "20.45.36",
           "20.44.38",
           "20.40.45",
           "20.31.42",

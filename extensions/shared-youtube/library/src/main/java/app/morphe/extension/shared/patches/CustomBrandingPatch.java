@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -44,16 +45,13 @@ public class CustomBrandingPatch {
     //
     // The most that can be done is to hide a theme from the UI and keep the alias with dummy data.
     public enum BrandingTheme {
-        /**
-         * Original unpatched icon.
-         */
+        /** Original unpatched icon. */
         ORIGINAL,
         LIGHT,
         DARK,
         BLACK,
-        /**
-         * User provided custom icon.
-         */
+        PLAY,
+        /**  User provided custom icon. */
         CUSTOM;
 
         private String packageAndNameIndexToClassAlias(String packageName, int appIndex) {
@@ -61,6 +59,58 @@ public class CustomBrandingPatch {
                 throw new IllegalArgumentException("App index starts at index 1");
             }
             return packageName + ".morphe_" + name().toLowerCase(Locale.US) + '_' + appIndex;
+        }
+
+        /**
+         * Returns the notification icon resource name for this theme.
+         * <p>
+         * Each built-in theme has its own XML vector drawable so the notification icon
+         * matches the selected launcher icon. The CUSTOM theme uses a separate resource
+         * that can be overridden at patch time with either an XML or a PNG supplied by
+         * the user.
+         * <p>
+         * Returns {@code null} for {@link #ORIGINAL} (no override desired).
+         */
+        @Nullable
+        String notificationIconResourceName() {
+            return switch (this) {
+                case ORIGINAL -> null;
+                case CUSTOM -> "morphe_notification_icon_custom";
+                // LIGHT, DARK, BLACK, PLAY – each has its own bundled XML.
+                default ->"morphe_notification_icon_" + name().toLowerCase(Locale.US);
+            };
+        }
+    }
+
+    /**
+     * Notification icon theme - selected independently of the launcher icon.
+     */
+    public enum NotificationIconTheme {
+        /**  * Follow the currently selected launcher icon theme. */
+        FOLLOW,
+        ORIGINAL,
+        LIGHT,
+        DARK,
+        BLACK,
+        PLAY,
+        /** * User provided custom PNG notification icon. */
+        CUSTOM;
+
+        /**
+         * Resolves the effective {@link BrandingTheme} to use for the notification icon.
+         * When {@link #FOLLOW}, delegates to the current launcher icon setting.
+         */
+        @NonNull
+        BrandingTheme resolveNotificationBrandingTheme() {
+            if (this == FOLLOW) {
+                return SharedYouTubeSettings.CUSTOM_BRANDING_ICON.get();
+            }
+            // Map 1:1 to BrandingTheme by name (both enums share the same names except FOLLOW).
+            try {
+                return BrandingTheme.valueOf(name());
+            } catch (IllegalArgumentException e) {
+                return BrandingTheme.BLACK;
+            }
         }
     }
 
@@ -76,19 +126,16 @@ public class CustomBrandingPatch {
                 return notificationSmallIcon = 0;
             }
 
-            BrandingTheme branding = SharedYouTubeSettings.CUSTOM_BRANDING_ICON.get();
-            if (branding == BrandingTheme.ORIGINAL) {
+            // Resolve the effective BrandingTheme for the notification icon.
+            NotificationIconTheme notificationTheme = SharedYouTubeSettings.CUSTOM_BRANDING_NOTIFICATION_ICON.get();
+            BrandingTheme branding = notificationTheme.resolveNotificationBrandingTheme();
+            String iconName = branding.notificationIconResourceName();
+            if (iconName == null) {
                 notificationSmallIcon = 0;
             } else {
-                // Original icon is quantum_ic_video_youtube_white_24
-                String iconName = "morphe_notification_icon";
-                if (branding == BrandingTheme.CUSTOM) {
-                    iconName += "_custom";
-                }
-
                 notificationSmallIcon = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, iconName);
                 if (notificationSmallIcon == 0) {
-                    Logger.printException(() -> "Could not load notification small icon");
+                    Logger.printException(() -> "Could not load notification small icon: " + iconName);
                 }
             }
         }
@@ -232,6 +279,11 @@ public class CustomBrandingPatch {
                 componentToEnable = defaultComponent;
                 componentsToDisable.remove(defaultComponent);
             }
+
+            // Reset cached notification icon so it is re-resolved with the current theme
+            // on the next notification. This handles the case where setBranding() is called
+            // more than once in a session (e.g. after a settings change).
+            notificationSmallIcon = null;
 
             for (ComponentName disable : componentsToDisable) {
                 pm.setComponentEnabledSetting(disable,

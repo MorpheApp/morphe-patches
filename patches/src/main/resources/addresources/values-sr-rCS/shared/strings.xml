@@ -84,6 +84,8 @@ Da biste preveli nove jezike ili poboljšali postojeće prevode, posetite morphe
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Obavesti o licensi</string>
+  <string name="morphe_settings_about_licenses_loading">Učitavanje…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Otklanjanje grešaka</string>
   <string name="morphe_debug_screen_summary">Omogućite ili onemogućite opcije za otklanjanje grešaka</string>
@@ -136,4 +138,13 @@ Onemogućavanje optimizacije baterije za MicroG neće negativno uticati na potro
 
 Dodirnite dugme \"Nastavi\" i dozvolite promene optimizacije."</string>
   <string name="gms_core_dialog_continue_text">Nastavi</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Дијалог о оптимизацији батерије</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Приказан је дијалог о оптимизацији батерије за MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Дијалог о оптимизацији батерије за MicroG није приказан</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Онеослабљивање ове опције ће скрити промпт за оптимизацију батерије за MicroG.
+
+Ако се оптимизације батерије не промене, могуће је да искусите:
+• Апликација може насумично да се затвори
+• Обавештења можда неће радити
+• Позадинска репродукција можда неће радити"</string>
 </resources>

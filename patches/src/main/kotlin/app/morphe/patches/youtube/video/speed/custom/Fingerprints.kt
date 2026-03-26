@@ -13,14 +13,42 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+internal object AudioTrackOldBottomSheetFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
+            returnType = "Z"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
+            returnType = "Z"
+        ),
+        string("AUDIO_TRACKS_MENU_BOTTOM_SHEET_FRAGMENT"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf("L", "Ljava/lang/String;"),
+            returnType = "V"
+        ),
+    )
+)
+
 internal object GetOldPlaybackSpeedsFingerprint : Fingerprint(
     parameters = listOf("[L", "I"),
     strings = listOf("menu_item_playback_speed")
 )
 
 internal object ShowOldPlaybackSpeedMenuFingerprint : Fingerprint(
+    classFingerprint = GetOldPlaybackSpeedsFingerprint,
     filters = listOf(
-        resourceLiteral(ResourceType.STRING, "varispeed_unavailable_message")
+        resourceLiteral(ResourceType.STRING, "varispeed_unavailable_message"),
+        opcode(Opcode.RETURN_VOID),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this"
+        )
     )
 )
 

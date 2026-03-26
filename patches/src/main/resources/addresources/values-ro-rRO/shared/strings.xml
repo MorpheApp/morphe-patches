@@ -84,6 +84,8 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Avertismente licen</string>
+  <string name="morphe_settings_about_licenses_loading">Se încarcă...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depanare</string>
   <string name="morphe_debug_screen_summary">Activează sau dezactivează opțiunile de depanare</string>
@@ -136,4 +138,13 @@ Dezactivarea optimizărilor bateriei pentru MicroG nu va afecta negativ utilizar
 
 Apăsați butonul Continuare și permiteți modificările de optimizare."</string>
   <string name="gms_core_dialog_continue_text">Continuă</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog de optimizare a bateriei</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialogul de optimizare a bateriei MicroG este afișat</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialogul de optimizare a bateriei MicroG nu este afișat</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Dezactivarea acestei opțiuni va ascunde solicitarea de optimizare a bateriei MicroG.
+
+Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următoarele probleme:
+• Aplicația se poate închide aleatoriu
+• Notificările pot să nu funcționeze
+• Redarea în fundal poate să nu funcționeze"</string>
 </resources>

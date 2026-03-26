@@ -32,7 +32,7 @@ val hideSeekbarPatch = bytecodePatch(
             SwitchPreference("morphe_fullscreen_large_seekbar"),
         )
 
-        SeekbarOnDrawFingerprint.match(SeekbarFingerprint.originalClassDef).method.addInstructionsWithLabels(
+        SeekbarOnDrawFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 const/4 v0, 0x0

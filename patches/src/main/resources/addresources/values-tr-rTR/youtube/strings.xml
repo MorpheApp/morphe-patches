@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Akış</string>
   <string name="morphe_settings_screen_04_general_title">Genel</string>
   <string name="morphe_settings_screen_05_player_title">Oynatıcı</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Zaman çubuğu</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Kaydırma denetimleri</string>
   <string name="morphe_settings_screen_11_misc_title">Çeşitli</string>
@@ -178,7 +179,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_quick_actions_title">Hızlı eylemleri gizle</string>
   <string name="morphe_hide_quick_actions_summary_on">Tam ekrandaki hızlı eylemler gizli</string>
   <string name="morphe_hide_quick_actions_summary_off">Tam ekrandaki hızlı eylemler görünür</string>
-  <string name="morphe_hide_quick_actions_related_videos_title">Alâkalı videolara ait hızlı eylemler gizli</string>
+  <string name="morphe_hide_quick_actions_related_videos_title">Hızlı eylemler ilgili videoları gizle</string>
   <string name="morphe_hide_quick_actions_related_videos_summary_on">Hızlı eylemlerdeki ilgili videolar gizli</string>
   <string name="morphe_hide_quick_actions_related_videos_summary_off">Hızlı eylemlerdeki ilgili videolar görünür</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Abone yönergelerini gizle</string>
@@ -262,9 +263,9 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Akışlarda gizle</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_summary_on">Akışlarda gizli</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_summary_off">Akışlarda görünür</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Alâkalı videolarda gizle</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_on">Alâkalı videolarda gizli</string>
-  <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_off">Alâkalı videolarda görünür</string>
+  <string name="morphe_hide_filter_bar_feed_in_related_videos_title">İlgili videolarda gizle</string>
+  <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_on">İlgili videolarda gizli</string>
+  <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_off">İlgili videolarda görünür</string>
   <string name="morphe_hide_filter_bar_feed_in_search_title">Arama sonuçlarında gizle</string>
   <string name="morphe_hide_filter_bar_feed_in_search_summary_on">Arama sonuçlarında gizli</string>
   <string name="morphe_hide_filter_bar_feed_in_search_summary_off">Arama sonuçlarında görünür</string>
@@ -302,6 +303,16 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Abone ol düğmesi görünür</string>
   <string name="morphe_comments_screen_title">Yorumlar</string>
   <string name="morphe_comments_screen_summary">Yorumlar kısmı bileşenlerini gizle veya göster</string>
+  <string name="morphe_hide_comments_carousel_title">Kaydırmalı yorum filtresi aktifleştir</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Kaydırmalı yorum filtresi açık</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Kaydırmalı yorum filtresi kapalı.</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"Kaydırmalı öğe adını tam olarak girdiğinizden emin olun (Örn: Ask, Hype this video, Listen on YouTube Music, vb.).
+
+• Kaydırmalı öğeleri gizlemek beklenmedik yan etkilere neden olabilir.
+
+Tüm kaydırmalı öğeler gizlenirse, yorumlar bölümünün tamamı da gizlenecektir."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Kaydırmalı yorum filtresi</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Filtrelemek istediğiniz kaydırmalı yorum adlarını, her satıra bir tane gelecek şekilde girin.</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Yapay zeka sohbet özetini gizle</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Yapay zeka sohbet özeti gizli</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Yapay zeka sohbet özeti görünür</string>
@@ -329,6 +340,9 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Emoji ve Zaman damgası düğmelerini gizle</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Emoji ve Zaman damgası düğmeleri gizli</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Emoji ve Zaman damgası düğmeleri görünür</string>
+  <string name="morphe_hide_comments_info_button_title">Bilgi düğmesini gizle</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Bilgi düğmesi gizli</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Bilgi düğmesi görünür</string>
   <string name="morphe_hide_comments_preview_comment_title">Ön izlenen yorumu gizle</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Ön izlenen yorum gizli</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Ön izlenen yorum görünür</string>
@@ -436,11 +450,11 @@ Sınırlamalar
   <string name="morphe_share_copy_url_success">URL panoya kopyalandı</string>
   <string name="morphe_share_copy_url_timestamp_success">Zaman damgalı URL kopyalandı</string>
   <string name="morphe_copy_video_url_title">Video URL\'sini kopyalama düğmesini göster</string>
-  <string name="morphe_copy_video_url_summary_on">Video URL\'sini kopyalamak için düğme gösterilir. Video URL\'sini kopyalamak için dokunun. Zaman damgasıyla kopyalamak için dokunup basılı tutun</string>
-  <string name="morphe_copy_video_url_summary_off">Video URL kopyalamak için düğme gösterilmez</string>
+  <string name="morphe_copy_video_url_summary_on">Video URL\'sini kopyalama düğmesi gösteriliyor. Video URL\'sini kopyalamak için dokunun. Zaman damgasıyla kopyalamak için basılı tutun</string>
+  <string name="morphe_copy_video_url_summary_off">Video URL\'sini kopyalama düğmesi gösterilmiyor</string>
   <string name="morphe_copy_video_url_timestamp_title">Zaman damgalı URL\'yi kopyalama düğmesini göster</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Video URL\'sini zaman damgasıyla kopyalamak için düğme gösterilir. Zaman damgasıyla kopyalamak için dokunun. Zaman damgası olmadan kopyalamak için dokunup basılı tutun</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Video URL\'sini kopyalamak için düğme gösterilmez</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Zaman damgalı URL\'yi kopyalama düğmesi gösteriliyor. Zaman damgalı video URL\'sini kopyalamak için dokunun. Zaman damgasız kopyalamak için basılı tutun</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Zaman damgalı URL\'yi kopyalama düğmesi gösterilmiyor</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">İzleyici takdiri iletişim kutusunu kaldır</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">İletişim kutusu kaldırılacak</string>
@@ -474,6 +488,21 @@ Sınırlamalar
 
 Paket adının doğru olduğunu ve uygulamanın yüklü olduğunu doğrulayın"</string>
   <string name="morphe_external_downloader_empty_warning">Paket adı boş olamaz</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Videoyu döngüye almayı etkinleştir</string>
+  <string name="morphe_loop_video_summary_on">Video döngüye girecek</string>
+  <string name="morphe_loop_video_summary_off">Video döngüye girmeyecek</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Videoyu döngüye al düğmesini göster</string>
+  <string name="morphe_loop_video_button_summary_on">Videoyu döngüye al düğmesi gösteriliyor</string>
+  <string name="morphe_loop_video_button_summary_off">Videoyu döngüye al düğmesi gösterilmiyor</string>
+  <string name="morphe_loop_video_button_toast_on">Videoyu döngüye alma açık</string>
+  <string name="morphe_loop_video_button_toast_off">Videoyu döngüye alma kapalı</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Videoyu yeniden yükle düğmesini göster</string>
+  <string name="morphe_reload_video_summary_on">Videoyu yeniden yükle düğmesi gösteriliyor</string>
+  <string name="morphe_reload_video_summary_off">Videoyu yeniden yükle düğmesi gösterilmiyor</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video kimliği kullanılamıyor. Lütfen videoyu manuel olarak yeniden açın.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Hassas sardırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Hassas sardırma hareketi devre dışı</string>
@@ -651,30 +680,31 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
   <string name="morphe_hide_create_button_summary_on">Oluştur düğmesi gizli</string>
   <string name="morphe_hide_create_button_summary_off">Oluştur düğmesi görünür</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_subscriptions_button_title">Abonelikleri gizle</string>
+  <string name="morphe_hide_subscriptions_button_title">Abonelikler\'i gizle</string>
   <string name="morphe_hide_subscriptions_button_summary_on">Abonelikler düğmesi gizli</string>
   <string name="morphe_hide_subscriptions_button_summary_off">Abonelikler düğmesi görünür</string>
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_notifications_button_title">Bildirimleri gizle</string>
+  <string name="morphe_hide_notifications_button_title">Bildirimler\'i gizle</string>
   <string name="morphe_hide_notifications_button_summary_on">Bildirimler düğmesi gizli</string>
   <string name="morphe_hide_notifications_button_summary_off">Bildirimler düğmesi görünür</string>
   <string name="morphe_show_search_button_title">Ara\'yı göster</string>
-  <string name="morphe_show_search_button_summary_on">Arama düğmesi görünür</string>
+  <string name="morphe_show_search_button_summary_on">Arama düğmesi gösteriliyor</string>
   <string name="morphe_show_search_button_summary_off">Arama düğmesi gösterilmiyor</string>
-  <string name="morphe_search_button_index_title">Arama düğmesi dizini</string>
-  <string name="morphe_search_button_index_invalid">Arama düğmesi dizini %s\'den küçük olmalıdır</string>
-  <string name="morphe_show_settings_button_title">Ayarlar Göster</string>
-  <string name="morphe_show_settings_button_summary_on">Ayarlar düğmesi görüntüleniyor</string>
-  <string name="morphe_show_settings_button_summary_off">Ayarlar düğmesi görüntülenmiyor</string>
-  <string name="morphe_settings_button_index_title">Ayarlar düğmesi indeksi</string>
-  <string name="morphe_settings_button_index_invalid">Settings button index must be less than %s</string>
-  <string name="morphe_swap_create_with_notifications_button_title">Oluştur ve Bildirimleri yer değiştir</string>
-  <string name="morphe_swap_create_with_notifications_button_summary_on">Oluştur düğmesi ile Bildirimler düğmesinin yerleri değiştirilmez</string>
-  <string name="morphe_swap_create_with_notifications_button_summary_off">Oluştur düğmesi ile Bildirimler düğmesinin yerleri değiştirilmez</string>
-  <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Bu ayar değiştirilmezse, Incognito moduna geçiş yapın.</string>
+  <string name="morphe_show_search_button_index_title">Arama düğmesi indeksi</string>
+  <string name="morphe_show_settings_button_title">Ayarlar\'ı göster</string>
+  <string name="morphe_show_settings_button_summary_on">Ayarlar düğmesi gösteriliyor</string>
+  <string name="morphe_show_settings_button_summary_off">Ayarlar düğmesi gösterilmiyor</string>
+  <string name="morphe_show_settings_button_index_title">Ayarlar düğmesi indeksi</string>
+  <string name="morphe_show_settings_button_type_title">Ayarlar düğmesi işlevi</string>
+  <string name="morphe_show_settings_button_type_summary_on">Morphe ayarlarını açmak için dokunun</string>
+  <string name="morphe_show_settings_button_type_summary_off">YouTube ayarlarını açmak için dokunun</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Oluştur\'u Bildirimler ile değiştir</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">Oluştur düğmesi, Bildirimler düğmesiyle değiştirildi</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">Oluştur düğmesi, Bildirimler düğmesiyle değiştirilmedi</string>
+  <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Bu ayarı değiştirmek etkili olmazsa, Gizli moda geçmeyi deneyin.</string>
   <string name="morphe_hide_navigation_button_labels_title">Gezinme düğmeleri etiketlerini gizle</string>
-  <string name="morphe_hide_navigation_button_labels_summary_on">Navigasyon düğmesi etiketleri gizleniyor</string>
-  <string name="morphe_hide_navigation_button_labels_summary_off">Navigasyon düğmesi etiketleri gösteriliyor</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Gezinme düğmesi etiketleri gizli</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Gezinme düğmesi etiketleri görünür</string>
   <string name="morphe_hide_navigation_bar_title">Gezinme çubuğunu gizle</string>
   <string name="morphe_hide_navigation_bar_summary_on">Gezinme çubuğu gizli</string>
   <string name="morphe_hide_navigation_bar_summary_off">Gezinme çubuğu görünür</string>
@@ -682,21 +712,24 @@ Geçerli ise otomatik olarak kaydedilecek"</string>
 
 Ayarlara erişmek için:
 Herhangi bir videoyu açın → Kalite menüsünü açın → Altta 'Ayarlar > Video Kalitesi Tercihleri'ne dokunun."</string>
-  <string name="morphe_narrow_navigation_buttons_title">Navigasyon düğmeleri dar yapılandırmayı etkinleştirin</string>
-  <string name="morphe_narrow_navigation_buttons_summary_on">Navigasyon düğmeleri arasındaki boşluk dar</string>
-  <string name="morphe_narrow_navigation_buttons_summary_off">Navigasyon düğmeleri arasındaki boşluk normal</string>
+  <string name="morphe_narrow_navigation_buttons_title">Dar gezinme düğmelerini etkinleştir</string>
+  <string name="morphe_narrow_navigation_buttons_summary_on">Gezinme düğmeleri arasındaki boşluk dar</string>
+  <string name="morphe_narrow_navigation_buttons_summary_off">Gezinme düğmeleri arasındaki boşluk normal</string>
   <string name="morphe_navigation_bar_animations_title">Gezinme çubuğu animasyonlarını etkinleştir</string>
   <string name="morphe_navigation_bar_animations_summary_on">Gezinme geçişleri animasyonludur</string>
   <string name="morphe_navigation_bar_animations_summary_off">Gezinme geçişleri animasyonlu değildir</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Gezinme çubuğunun otomatik gizlenmesini devre dışı bırak</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Gezinme çubuğu otomatik olarak gizlenmeyecek</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Gezinme çubuğu otomatik olarak gizlenebilir</string>
   <string name="morphe_disable_translucent_status_bar_title">Yarı saydam durum çubuğunu devre dışı bırak</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Durum çubuğu opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Durum çubuğu opak veya yarı saydam</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Sınırlamalar:
-• Video oynatma çubuğunun üstünde siyah bir çubuğun görünebileceği olabilir.
-• Sistem navigasyon çubuğu şeffaf hale gelebilir ve videolara yorum yapmak mümkün olmayabilir."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Aydınlık temada yarı saydam çubuğu devre dışı bırak</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Aydınlık temada gezinti çubuğu opak</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Aydınlık temada gezinti çubuğu opak veya yarı saydam</string>
+• Video oynatıcısının üst kısmında siyah bir çubuk görünebilir.
+• Sistem gezinme çubuğu şeffaf hale gelebilir ve videolara yorum yapmak mümkün olmayabilir."</string>
+  <string name="morphe_disable_translucent_navigation_bar_light_title">Açık temada yarı saydam çubuğu devre dışı bırak</string>
+  <string name="morphe_disable_translucent_navigation_bar_light_summary_on">Açık temada gezinti çubuğu opak</string>
+  <string name="morphe_disable_translucent_navigation_bar_light_summary_off">Açık temada gezinti çubuğu opak veya yarı saydam</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_title">Koyu temada yarı saydam çubuğu devre dışı bırak</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Koyu temada gezinti çubuğu opak</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Koyu temada gezinti çubuğu opak veya yarı saydam</string>
@@ -705,27 +738,24 @@ Herhangi bir videoyu açın → Kalite menüsünü açın → Altta 'Ayarlar > V
   <string name="morphe_hide_toolbar_create_button_title">Oluştur\'u gizle</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Oluştur düğmesi gizli</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Oluştur düğmesi görünür</string>
-  <string name="morphe_hide_toolbar_microphone_button_title">Mikrofonu gizle</string>
-  <string name="morphe_hide_toolbar_microphone_button_summary_on">Mikrofon düğmesi gizlenmiş</string>
-  <string name="morphe_hide_toolbar_microphone_button_summary_off">Mikrofon düğmesi gösteriliyor</string>
-  <string name="morphe_hide_toolbar_notification_button_title">Bildirimleri gizle</string>
+  <string name="morphe_hide_toolbar_microphone_button_title">Mikrofon\'u gizle</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_on">Mikrofon düğmesi gizli</string>
+  <string name="morphe_hide_toolbar_microphone_button_summary_off">Mikrofon düğmesi görünür</string>
+  <string name="morphe_hide_toolbar_notification_button_title">Bildirimler\'i gizle</string>
   <string name="morphe_hide_toolbar_notification_button_summary_on">Bildirimler düğmesi gizli</string>
   <string name="morphe_hide_toolbar_notification_button_summary_off">Bildirimler düğmesi görünür</string>
   <string name="morphe_hide_toolbar_search_button_title">Ara\'yı gizle</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Arama düğmesi gizli</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Arama düğmesi görünür</string>
-  <string name="morphe_replace_toolbar_create_button_title">Ayarları Oluştur ile değiştir</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Oluştur düğmesi ile Ayarlar düğmesinin yerleri değiştirilir</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Oluştur düğmesi ile Ayarlar düğmesinin yerleri değiştirilir</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">You sekmesindeki Ayarlar butonunun tıklama davranışı da geçersiz kılınıyor.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Ayarlar düğmesi indeksi</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Morphe ayarlarını açmak için dokunun
+  <string name="morphe_show_toolbar_settings_button_title">Ayarlar\'ı göster</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Ayarlar düğmesi gösteriliyor</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Ayarlar düğmesi gösterilmiyor</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Ayarlar düğmesi indeksi</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Ayarlar düğmesi işlevi</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Morphe ayarlarını açmak için dokunun
 YouTube ayarlarını açmak için basılı tutun"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Morphe ayarlarını açmak için dokunun
-YouTube ayarlarını açmak için basılı tutun"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">Yer değiştirilen düğmeleri yeniden düzenle</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Düğmeler yeniden düzenlendi</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Düğmeler yeniden düzenlenmedi</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"YouTube ayarlarını açmak için dokunun
+Morphe ayarlarını açmak için basılı tutun"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Açılır menü</string>
   <string name="morphe_hide_player_flyout_summary">Oynatıcı açılır menü öğelerini gizle veya göster</string>
@@ -991,8 +1021,8 @@ Bu ayar YouTube'de değiştirilebilir:
 Ayarlar → Oynatma (veya Otomatik oynat) → Sonraki video otomatik oynat"</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">İlgili videoları gizle</string>
-  <string name="morphe_hide_player_related_videos_summary_on">Alâkalı videolar gizli</string>
-  <string name="morphe_hide_player_related_videos_summary_off">İlgili videolar gösteriliyor</string>
+  <string name="morphe_hide_player_related_videos_summary_on">İlgili videolar gizli</string>
+  <string name="morphe_hide_player_related_videos_summary_off">İlgili videolar görünür</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_player_related_videos_overlay_title">İlgili videolar katmanını gizle</string>
   <string name="morphe_hide_player_related_videos_overlay_summary_on">Tam ekrandaki ilgili videolar katmanı gizli</string>
@@ -1344,6 +1374,7 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_change_start_page_entry_playlists">Oynatma listeleri</string>
   <string name="morphe_change_start_page_entry_search">Arama</string>
   <string name="morphe_change_start_page_entry_shopping">Alışveriş</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Spor</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonelikler</string>
   <string name="morphe_change_start_page_entry_trending">Trendler</string>
@@ -1428,7 +1459,7 @@ Genişletmek veya kapatmak için kaydırın"</string>
   <string name="morphe_gradient_loading_screen_summary_off">Yükleme ekranı tek renk bir arka plana sahip olacak</string>
   <string name="morphe_splash_screen_animation_style_title">Açılış ekranı stili</string>
   <string name="morphe_splash_screen_animation_style_entry_1">Devre dışı</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Renk</string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Renkli</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Siyah beyaz</string>
   <string name="morphe_seekbar_custom_color_title">Özel zaman çubuğu rengini etkinleştir</string>
   <string name="morphe_seekbar_custom_color_summary_on">Özel zaman çubuğu rengi gösterilir</string>
@@ -1487,16 +1518,6 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow geçici olarak kullanılamıyor (durum kodu: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow geçici olarak kullanılamıyor</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Videoyu döngüye almayı etkinleştir</string>
-  <string name="morphe_loop_video_summary_on">Video döngüye girecek</string>
-  <string name="morphe_loop_video_summary_off">Video döngüye girmeyecek</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Videoyu döngüye al düğmesini göster</string>
-  <string name="morphe_loop_video_button_summary_on">Videoyu döngüye al düğmesi gösterilir</string>
-  <string name="morphe_loop_video_button_summary_off">Videoyu döngüye al düğmesi gösterilmez</string>
-  <string name="morphe_loop_video_button_toast_on">Videoyu döngüye alma açık</string>
-  <string name="morphe_loop_video_button_toast_off">Videoyu döngüye alma kapalı</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz boyutlarını taklit et</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Cihaz boyutları taklit edilir
@@ -1556,12 +1577,12 @@ Bunu etkinleştirmek daha yüksek video kalitelerini açabilir"</string>
   <string name="morphe_remember_video_quality_toast_shorts">Shorts %1$s kalitesi, %2$s olarak ayarlandı</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Hız diyaloğu düğmesini göster</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">Oynatma hızını varsayılana sıfırlamak için düğme gösterilir</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">Kısım oylama düğmesi gösterilmez</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">Hız diyaloğu düğmesi gösteriliyor. Oynatma hızını varsayılana sıfırlamak için düğmeye basılı tutun</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">Hız diyaloğu düğmesi gösterilmiyor</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Video kalitesi düğmesini göster</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">Kaliteyi varsayılana sıfırlamak için düğme gösterilir</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">Video kalite menüsü gösterilir</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">Video kalitesi düğmesi gösteriliyor. Kaliteyi varsayılana sıfırlamak için düğmeye basılı tutun</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">Video kalitesi düğmesi gösterilmiyor</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Özel oynatma hızı menüsü</string>
   <string name="morphe_custom_speed_menu_summary_on">Özel oynatma hızı menüsü gösterilir</string>

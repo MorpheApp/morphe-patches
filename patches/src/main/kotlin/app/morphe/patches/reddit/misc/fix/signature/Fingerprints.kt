@@ -10,11 +10,10 @@ import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object ApplicationFingerprint : Fingerprint(
+    name = "attachBaseContext",
     returnType = "V",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Landroid/content/Context;"),
-    custom = { method, classDef ->
+    custom = { _, classDef ->
         classDef.superclass == "Landroid/app/Application;"
-                && method.name == "attachBaseContext"
     }
 )

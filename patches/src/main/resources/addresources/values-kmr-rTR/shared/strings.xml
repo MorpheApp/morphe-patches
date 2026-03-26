@@ -84,6 +84,8 @@ Da ku zimanên nû wergerînin an wergerandinên hebin baş bikin, malpera morph
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Rêxistinên destûrê</string>
+  <string name="morphe_settings_about_licenses_loading">Алпе...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug kirin</string>
   <string name="morphe_debug_screen_summary">Serdest amûrên pêşbirkaya bin</string>
@@ -136,4 +138,13 @@ Quteyîn optimîzasyonên bateriyê ji bo MicroG bê bandora berhetiyê li ser k
 
 Serzêviya pêşveçûna din bitşikîne û guherînên optimîzasyonê pêşî bînin."</string>
   <string name="gms_core_dialog_continue_text">Bidomîne</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pijdarê dovaniya optimîzasyona bateriyê</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dîyaloga optimîzasyona bateriyê ya MicroG tê nîşandin</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dîyaloga optimîzasyona bateriyê ya MicroG tê veşartin</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Birçawiya vê, dê ragirinê MicroG optimîzasyona bateriyê veşêre.
+
+Ger optimîzasyonên bateriyê neyhatin guherandin, dê we kêfa:
+• Serlo kêlî wezîneyê bigere
+• Ragirinan neçar bin
+• Lêxistinê paşverê nebêje"</string>
 </resources>

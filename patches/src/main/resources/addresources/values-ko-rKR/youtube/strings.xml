@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">피드</string>
   <string name="morphe_settings_screen_04_general_title">일반</string>
   <string name="morphe_settings_screen_05_player_title">플레이어</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">재생바</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">스와이프 제스처</string>
   <string name="morphe_settings_screen_11_misc_title">기타</string>
@@ -304,6 +305,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">구독 버튼이 표시됩니다</string>
   <string name="morphe_comments_screen_title">댓글</string>
   <string name="morphe_comments_screen_summary">댓글 섹션에서 구성요소가 숨기거나 표시할 수 있습니다</string>
+  <string name="morphe_hide_comments_carousel_title">댓글 좌우 슬라이드 필터 활성화하기</string>
+  <string name="morphe_hide_comments_carousel_summary_on">댓글 좌우 슬라이드 필터를 활성화합니다</string>
+  <string name="morphe_hide_comments_carousel_summary_off">댓글 좌우 슬라이드 필터를 비활성화합니다</string>
+  <string name="morphe_hide_comments_carousel_dialog_message">"알림:
+
+• 좌우 슬라이드 항목의 정확한 이름을 입력하세요 (예: 질문하기, 이 동영상 Hype하기, YouTube Music에서 감상하기, etc.).
+• 좌우 슬라이드 항목이 숨겨지면 의도하지 않은 부작용이 발생할 수 있습니다.
+• 좌우 슬라이드 항목이 모두 숨겨지면 전체 댓글 섹션도 숨겨집니다."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">댓글 좌우 슬라이드 필터</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">필터링할 댓글 좌우 슬라이드 이름을 줄바꿈으로 구분하여 설정하세요</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI 채팅 요약 숨기기</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI 채팅 요약이 숨겨집니다</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI 채팅 요약이 표시됩니다</string>
@@ -331,6 +342,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">이모지 및 타임스탬프 버튼 숨기기</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">이모지 및 타임스탬프 버튼이 숨겨집니다</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">이모지 및 타임스탬프 버튼이 표시됩니다</string>
+  <string name="morphe_hide_comments_info_button_title">정보 버튼 숨기기</string>
+  <string name="morphe_hide_comments_info_button_summary_on">정보 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_comments_info_button_summary_off">정보 버튼이 표시됩니다</string>
   <string name="morphe_hide_comments_preview_comment_title">댓글 미리보기 숨기기</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">댓글 미리보기가 숨겨집니다</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">댓글 미리보기가 표시됩니다</string>
@@ -437,10 +451,10 @@ Second \"item\" text"</string>
   <string name="morphe_share_copy_url_success">URL을 클립보드에 복사하였습니다</string>
   <string name="morphe_share_copy_url_timestamp_success">타임스탬프가 표기된 URL을 클립보드에 복사하였습니다</string>
   <string name="morphe_copy_video_url_title">동영상 URL 복사 버튼 표시하기</string>
-  <string name="morphe_copy_video_url_summary_on">동영상 URL 버튼을 표시합니다\n\n• 버튼을 탭하여 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬스가 표기된 동영상 URL이 복사됩니다</string>
+  <string name="morphe_copy_video_url_summary_on">동영상 URL 버튼을 표시합니다\n\n• 탭하여 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬스가 표기된 동영상 URL이 복사됩니다</string>
   <string name="morphe_copy_video_url_summary_off">동영상 URL 복사 버튼을 표시하지 않습니다</string>
   <string name="morphe_copy_video_url_timestamp_title">타임스탬프 URL 복사 버튼 표시하기</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">타임스탬프가 표기된 URL 복사 버튼을 표시합니다\n\n• 버튼을 탭하여 타임스탬프가 표기된 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기되지 않은 동영상 URL이 복 사됩니다</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">타임스탬프가 표기된 URL 복사 버튼을 표시합니다\n\n• 탭하여 타임스탬프가 표기된 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기되지 않은 동영상 URL이 복 사됩니다</string>
   <string name="morphe_copy_video_url_timestamp_summary_off">타임스탬프가 표기된 URL 복사 버튼을 표시하지 않습니다</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">시청 경고 다이얼로그 제거하기</string>
@@ -475,6 +489,21 @@ Second \"item\" text"</string>
 
 패키지 이름이 올바르고 앱이 설치되어 있는지 확인하세요"</string>
   <string name="morphe_external_downloader_empty_warning">패키지명은 비워둘 수 없습니다</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">동영상 연속 재생 활성화하기</string>
+  <string name="morphe_loop_video_summary_on">동영상을 연속 재생합니다</string>
+  <string name="morphe_loop_video_summary_off">동영상을 연속 재생하지 않습니다</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">동영상 연속 재생 버튼 표시하기</string>
+  <string name="morphe_loop_video_button_summary_on">동영상 연속 재생 버튼을 표시합니다</string>
+  <string name="morphe_loop_video_button_summary_off">동영상 연속 재생 버튼을 표시하지 않습니다</string>
+  <string name="morphe_loop_video_button_toast_on">동영상 연속 재생을 활성화합니다</string>
+  <string name="morphe_loop_video_button_toast_off">동영상 연속 재생을 비활성화합니다</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">동영상 새로고침 버튼 표시하기</string>
+  <string name="morphe_reload_video_summary_on">동영상 새로고침 버튼을 표시합니다</string>
+  <string name="morphe_reload_video_summary_off">동영상 새로고침 버튼을 표시하지 않습니다</string>
+  <string name="morphe_dismiss_player_not_available_toast">동영상 ID를 사용할 수 없습니다. 동영상을 수동으로 다시 재생하세요.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">세밀한 탐색 제스처 비활성화하기</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">세밀한 탐색 제스처를 비활성화합니다</string>
@@ -658,13 +687,14 @@ Second \"item\" text"</string>
   <string name="morphe_show_search_button_title">검색 표시하기</string>
   <string name="morphe_show_search_button_summary_on">검색 버튼이 표시됩니다</string>
   <string name="morphe_show_search_button_summary_off">검색 버튼이 표시되지 않습니다</string>
-  <string name="morphe_search_button_index_title">검색 버튼 인덱스</string>
-  <string name="morphe_search_button_index_invalid">검색 버튼 인덱스는 %s보다 작아야 합니다</string>
+  <string name="morphe_show_search_button_index_title">검색 버튼 인덱스</string>
   <string name="morphe_show_settings_button_title">설정 표시하기</string>
   <string name="morphe_show_settings_button_summary_on">설정 버튼이 표시됩니다</string>
   <string name="morphe_show_settings_button_summary_off">설정 버튼이 표시되지 않습니다</string>
-  <string name="morphe_settings_button_index_title">설정 버튼 인덱스</string>
-  <string name="morphe_settings_button_index_invalid">설정 버튼 인덱스는 %s보다 작아야 합니다</string>
+  <string name="morphe_show_settings_button_index_title">설정 버튼 인덱스</string>
+  <string name="morphe_show_settings_button_type_title">설정 버튼 동작</string>
+  <string name="morphe_show_settings_button_type_summary_on">탭하여 Morphe 설정을 열 수 있습니다</string>
+  <string name="morphe_show_settings_button_type_summary_off">탭하여 YouTube 설정을 열 수 있습니다</string>
   <string name="morphe_swap_create_with_notifications_button_title">만들기와 알림 위치 교환하기</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">만들기 버튼과 알림 버튼의 위치를 교환합니다</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">만들기 버튼과 알림 버튼의 위치를 교환하지 않습니다</string>
@@ -685,6 +715,9 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_title">하단바 애니메이션 활성화하기</string>
   <string name="morphe_navigation_bar_animations_summary_on">하단바 전환 애니메이션을 활성화합니다</string>
   <string name="morphe_navigation_bar_animations_summary_off">하단바 전환 애니메이션을 비활성화합니다</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">하단바 자동 숨김 비활성화하기</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">하단바가 자동으로 숨겨지지 않습니다</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">하단바가 자동으로 숨겨질 수 있습니다</string>
   <string name="morphe_disable_translucent_status_bar_title">반투명 상태바 비활성화하기</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">상태바가 불투명합니다</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">상태바가 불투명하거나 반투명합니다</string>
@@ -711,18 +744,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">검색 숨기기</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">검색 버튼이 숨겨집니다</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">검색 버튼이 표시됩니다</string>
-  <string name="morphe_replace_toolbar_create_button_title">만들기를 설정으로 변경하기</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">만들기 버튼을 설정 버튼으로 변경합니다</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">만들기 버튼을 설정 버튼으로 변경하지 않습니다</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">내 페이지 탭에 있는 설정 버튼에 대한 탭 동작도 재정의됩니다.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">설정 버튼 동작</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"버튼을 탭하여 Morphe 설정을 열 수 있습니다
+  <string name="morphe_show_toolbar_settings_button_title">설정 표시하기</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">설정 버튼이 표시됩니다</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">설정 버튼이 표시되지 않습니다</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">설정 버튼 인덱스</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">설정 버튼 동작</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"탭하여 Morphe 설정을 열 수 있습니다
 길게 탭하면 YouTube 설정이 열립니다"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"버튼을 탭하여 YouTube 설정을 열 수 있습니다
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"탭하여 YouTube 설정을 열 수 있습니다
 길게 탭하면 Morphe 설정이 열립니다"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">변경된 버튼 재정렬하기</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">변경된 버튼을 재정렬합니다</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">변경된 버튼을 재정렬하지 않습니다</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">메뉴 구성요소</string>
   <string name="morphe_hide_player_flyout_summary">플레이어에서 메뉴 구성요소를 숨기거나 표시할 수 있습니다</string>
@@ -904,8 +934,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">새로운 게시물 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">새로운 게시물 버튼이 표시됩니다</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">일시 정지 오버레이 버튼 숨기기</string>
-  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_on">일시 정지 오버레이 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_off">일시 정지 오버레이 버튼이 표시됩니다</string>
+  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_on">일시 정지 오버레이 버튼이 숨겨집니다\n• 구독 &amp; 라이브 &amp; 렌즈 &amp; 트렌드 &amp; 쇼핑</string>
+  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_off">일시 정지 오버레이 버튼이 표시됩니다\n• 구독 &amp; 라이브 &amp; 렌즈 &amp; 트렌드 &amp; 쇼핑</string>
   <string name="morphe_hide_shorts_preview_comment_title">댓글 미리보기 숨기기</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">댓글 미리보기가 숨겨집니다</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">댓글 미리보기가 표시됩니다</string>
@@ -1342,6 +1372,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">재생목록</string>
   <string name="morphe_change_start_page_entry_search">검색</string>
   <string name="morphe_change_start_page_entry_shopping">쇼핑</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">스포츠</string>
   <string name="morphe_change_start_page_entry_subscriptions">구독</string>
   <string name="morphe_change_start_page_entry_trending">인기 급상승</string>
@@ -1486,16 +1517,6 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow를 일시적으로 사용할 수 없습니다 (상태 코드: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow를 일시적으로 사용할 수 없습니다</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">동영상 연속 재생 활성화하기</string>
-  <string name="morphe_loop_video_summary_on">동영상을 연속 재생합니다</string>
-  <string name="morphe_loop_video_summary_off">동영상을 연속 재생하지 않습니다</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">동영상 연속 재생 버튼 표시하기</string>
-  <string name="morphe_loop_video_button_summary_on">동영상 연속 재생 버튼을 표시합니다</string>
-  <string name="morphe_loop_video_button_summary_off">동영상 연속 재생 버튼을 표시하지 않습니다</string>
-  <string name="morphe_loop_video_button_toast_on">동영상 연속 재생을 활성화합니다</string>
-  <string name="morphe_loop_video_button_toast_off">동영상 연속 재생을 비활성화합니다</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">기기 크기 정보 속이기</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"기기 크기 정보가 속여집니다

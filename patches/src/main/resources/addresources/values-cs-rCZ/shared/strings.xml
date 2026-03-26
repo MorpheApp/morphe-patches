@@ -84,6 +84,8 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licenční upozornění</string>
+  <string name="morphe_settings_about_licenses_loading">Načítání...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ladění</string>
   <string name="morphe_debug_screen_summary">Povolit nebo zakázat možnosti ladění</string>
@@ -136,4 +138,13 @@ Zakázání optimalizace baterie pro MicroG nebude mít negativní vliv na spot�
 
 Klepněte na tlačítko Pokračovat a povolte změny optimalizace."</string>
   <string name="gms_core_dialog_continue_text">Pokračovat</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog pro optimalizaci baterie</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Zobrazuje se dialog pro optimalizaci baterie MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialog pro optimalizaci baterie MicroG se nezobrazuje</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Zakázání této funkce skryje výzvu pro optimalizaci baterie MicroG.
+
+Pokud se optimalizace baterie nezmění, můžete zaznamenat:
+• Aplikace se může náhodně zavřít
+• Oznámení nemusí fungovat
+• Přehrávání na pozadí nemusí fungovat"</string>
 </resources>

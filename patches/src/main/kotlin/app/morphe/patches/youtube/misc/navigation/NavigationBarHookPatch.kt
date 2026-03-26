@@ -120,7 +120,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
             }
         }
 
-        InitializeButtonsFingerprint.match(PivotBarConstructorFingerprint.originalClassDef).method.apply {
+        InitializeButtonsFingerprint.method.apply {
             // Hook the current navigation bar enum value. Note, the 'You' tab does not have an enum value.
             val navigationEnumClassName = NavigationEnumFingerprint.classDef.type
             addHook(NavigationHook.SET_LAST_APP_NAVIGATION_ENUM) {

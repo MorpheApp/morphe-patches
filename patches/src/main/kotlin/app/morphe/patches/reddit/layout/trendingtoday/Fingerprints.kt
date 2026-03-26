@@ -10,13 +10,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal object SearchTypeaheadListDefaultPresentationConstructorFingerprint : Fingerprint(
-    name = "<init>",
-    returnType = "V",
-    parameters = listOf("Ljava/lang/String;")
-)
-
-internal object SearchTypeaheadListDefaultPresentationToStringFingerprint : Fingerprint(
+private object SearchTypeaheadListDefaultPresentationToStringFingerprint : Fingerprint(
     name = "toString",
     returnType = "Ljava/lang/String;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -24,6 +18,13 @@ internal object SearchTypeaheadListDefaultPresentationToStringFingerprint : Fing
     filters = listOf(
         string("OnSearchTypeaheadListDefaultPresentation(title=")
     )
+)
+
+internal object SearchTypeaheadListDefaultPresentationConstructorFingerprint : Fingerprint(
+    classFingerprint = SearchTypeaheadListDefaultPresentationToStringFingerprint,
+    name = "<init>",
+    returnType = "V",
+    parameters = listOf("Ljava/lang/String;")
 )
 
 internal object TrendingTodayItemFingerprint : Fingerprint(

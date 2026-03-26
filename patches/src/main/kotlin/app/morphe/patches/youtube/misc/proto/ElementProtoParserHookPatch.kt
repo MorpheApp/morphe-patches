@@ -25,9 +25,7 @@ val elementProtoParserHookPatch = bytecodePatch(
 
     execute {
 
-        NewElementProtoParserFingerprint.match(
-            ProtoStuffReflectionFingerprint.originalClassDef
-        ).let {
+        NewElementProtoParserFingerprint.let {
             it.method.apply {
                 // Not enough registers in the method. Clone the method and use the
                 // original method as an intermediate to call extension code.

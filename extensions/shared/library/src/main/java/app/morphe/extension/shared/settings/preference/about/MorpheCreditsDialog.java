@@ -176,12 +176,32 @@ class MorpheCreditsDialog extends Dialog {
                                  opacity: 0.3;
                                  line-height: 1;
                              }
+                             .link-icon {
+                                 width: 28px;
+                                 height: 28px;
+                                 border-radius: 8px;
+                                 background: linear-gradient(135deg, rgba(30, 90, 168, 0.12) 0%%, rgba(0, 175, 174, 0.12) 100%%);
+                                 display: flex;
+                                 align-items: center;
+                                 justify-content: center;
+                                 flex-shrink: 0;
+                             }
+                             .link-icon svg {
+                                 width: 16px;
+                                 height: 16px;
+                                 fill: none;
+                                 stroke: %s;
+                                 stroke-width: 1.6;
+                                 stroke-linecap: round;
+                                 stroke-linejoin: round;
+                             }
                          </style>
                         """,
                 backgroundColorHex, foregroundColorHex,
                 foregroundColorHex, foregroundColorHex,
                 foregroundColorHex, morpheBlue, morpheTeal,
-                foregroundColorHex, foregroundColorHex, foregroundColorHex
+                foregroundColorHex, foregroundColorHex, foregroundColorHex,
+                foregroundColorHex
         ));
 
         // Header.
@@ -234,6 +254,9 @@ class MorpheCreditsDialog extends Dialog {
         // In-app user-facing attribution of licenses and notices (Apache 2.0 criteria).
         html.append("<div class=\"credits-section\">");
         html.append("<a href=\"").append(ABOUT_LICENSE.url).append("\" class=\"link-button\">")
+                .append("<span class=\"link-icon\">")
+                .append("<svg viewBox='0 0 16 16'><path d='M4 1h6l3 3v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1z'/><path d='M10 1v3h3'/><line x1='5' y1='7' x2='11' y2='7'/><line x1='5' y1='10' x2='11' y2='10'/><line x1='5' y1='13' x2='8' y2='13'/></svg>")
+                .append("</span>")
                 .append("<div class=\"contributor-info\">")
                 .append("<div class=\"contributor-name\">")
                 .append(str("morphe_settings_about_links_licenses"))

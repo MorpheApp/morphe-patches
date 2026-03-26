@@ -84,6 +84,8 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licensmeddelelser</string>
+  <string name="morphe_settings_about_licenses_loading">Indlæser...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Fejlfinding</string>
   <string name="morphe_debug_screen_summary">Aktivér eller deaktiver fejlfindingsindstillinger</string>
@@ -136,4 +138,13 @@ Deaktivering af batteryoptimeringer for MicroG vil ikke negativt påvirke batter
 
 Tryk på knappen Fortsæt og tillad optimeringsskift."</string>
   <string name="gms_core_dialog_continue_text">Fortsæt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Batterioptimering-dialog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG batterioptimeringsdialog vises</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG batterioptimeringsdialog vises ikke</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering af dette skjuler MicroG batterioptimeringsprompten.
+
+Hvis batterioptimeringer ikke ændres, kan du opleve:
+• Appen kan lukke tilfældigt
+• Notifikationer virker muligvis ikke
+• Baggrundsafspilning virker muligvis ikke"</string>
 </resources>

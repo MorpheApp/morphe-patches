@@ -84,6 +84,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Обавештења о лиценцама</string>
+  <string name="morphe_settings_about_licenses_loading">Учитавање…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отклањање грешака</string>
   <string name="morphe_debug_screen_summary">Омогућите или онемогућите опције за отклањање грешака</string>
@@ -136,4 +138,13 @@ Second \"item\" text"</string>
 
 Додирните дугму \"Настави\" и дозволите промене у оптимизацији батерије."</string>
   <string name="gms_core_dialog_continue_text">Настави</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Дијалог о оптимизацији батерије</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Показан је дијалог о оптимизацији батерије MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Дијалог о оптимизацији батерије MicroG није приказан</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Онеомагућивање ове опције спречиће појаву промпта за оптимизацију батерије MicroG.
+
+Ако се оптимизације батерије не промене, може доћи до:
+• Сталног затварања апликације
+• Неисправног рада нотификација
+• Неисправног рада музичког плејера у позадини"</string>
 </resources>

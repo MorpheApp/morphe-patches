@@ -84,6 +84,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">২০২২ &#8209; ২০২৫</string>
   <string name="morphe_settings_about_links_rv">২০২২ &#8209; ২০২৫</string>
   <string name="morphe_settings_about_links_vanced">২০১৯ &#8209; ২০২২</string>
+  <string name="morphe_settings_about_links_licenses">লাইসেন্স বিজ্ঞপ্তি</string>
+  <string name="morphe_settings_about_licenses_loading">লোড হচ্ছে...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ডিবাগিং</string>
   <string name="morphe_debug_screen_summary">ডিবাগিং অপশন সক্রিয় বা নিষ্ক্রিয় করুন</string>
@@ -136,4 +138,13 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
 
 চালিয়ে যান বোতামটি ট্যাপ করুন এবং অপ্টিমাইজেশন পরিবর্তনগুলি অনুমোদন করুন।"</string>
   <string name="gms_core_dialog_continue_text">এগিয়ে যান</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">ব্যাটারি অপটিমাইজেশন ডায়ালগ</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG ব্যাটারি অপটিমাইজেশন ডায়ালগ দেখানো হচ্ছে</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG ব্যাটারি অপটিমাইজেশন ডায়ালগ দেখানো হচ্ছে না</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"এটা নিষ্ক্রিয় করলে MicroG ব্যাটারি অপটিমাইজেশন প্রম্পট লুকানো হবে।
+
+যদি ব্যাটারি অপটিমাইজেশন পরিবর্তন করা না হয়, তাহলে আপনি নিম্নলিখিত সমস্যাগুলো অনুভব করতে পারেন:
+• অ্যাপ এলোমেলোভাবে বন্ধ হয়ে যেতে পারে
+• নোটিফিকেশন কাজ নাও করতে পারে
+• ব্যাকগ্রাউন্ড প্লেব্যাক কাজ নাও করতে পারে"</string>
 </resources>

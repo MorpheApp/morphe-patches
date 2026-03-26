@@ -48,7 +48,7 @@ val settingsPatch = bytecodePatch(
         addResourcesPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
-            recommendedAppVersion = COMPATIBILITY_REDDIT.second.first()
+            recommendedAppVersion = COMPATIBILITY_REDDIT.targets!!.first { !it.isExperimental }.version!!
         ),
         resourcePatch {
             execute {

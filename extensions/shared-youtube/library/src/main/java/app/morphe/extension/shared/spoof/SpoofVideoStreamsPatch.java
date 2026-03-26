@@ -71,7 +71,7 @@ public class SpoofVideoStreamsPatch {
     @Nullable
     private static volatile AppLanguage languageOverride;
 
-    private static volatile ClientType preferredClient = ClientType.ANDROID_VR_1_47_48;
+    private static volatile ClientType preferredClient = ClientType.ANDROID_REEL;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
 

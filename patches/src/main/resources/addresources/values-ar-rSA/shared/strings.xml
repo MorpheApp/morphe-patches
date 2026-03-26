@@ -84,6 +84,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">إشعارات الترخيص</string>
+  <string name="morphe_settings_about_licenses_loading">جارٍ التحميل...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">تصحيح الأخطاء</string>
   <string name="morphe_debug_screen_summary">تمكين أو تعطيل خيارات تصحيح الأخطاء</string>
@@ -136,4 +138,13 @@ Second \"item\" text"</string>
 
  انقر على زر متابعة و اسمح بتغييرات التحسين."</string>
   <string name="gms_core_dialog_continue_text">متابعة</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">نافذة تحسين البطارية</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">يتم عرض رسالة تحسين البطارية لـ MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">لا يتم عرض رسالة تحسين البطارية لـ MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"تعطيل هذا سيخفي مطالبة تحسين البطارية لـ MicroG.
+
+إذا لم يتم تغيير تحسينات البطارية فقد تواجه:
+• قد يغلق التطبيق بشكل عشوائي
+• قد لا تعمل الإشعارات
+• قد لا يعمل التشغيل في الخلفية"</string>
 </resources>

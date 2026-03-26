@@ -109,7 +109,7 @@ internal object LottieAnimationViewSetAnimationIntFingerprint : Fingerprint(
     )
 )
 
-internal object LottieCompositionFactoryZipFingerprint : Fingerprint(
+private object LottieCompositionFactoryZipFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     parameters = listOf("Landroid/content/Context;", "Ljava/util/zip/ZipInputStream;", "Ljava/lang/String;"),
     returnType = "L",
@@ -120,11 +120,10 @@ internal object LottieCompositionFactoryZipFingerprint : Fingerprint(
 )
 
 /**
- * Resolves using class found in [lottieCompositionFactoryZipFingerprint].
- *
  * [Original method](https://github.com/airbnb/lottie-android/blob/26ad8bab274eac3f93dccccfa0cafc39f7408d13/lottie/src/main/java/com/airbnb/lottie/LottieCompositionFactory.java#L386)
  */
 internal object LottieCompositionFactoryFromJsonInputStreamFingerprint : Fingerprint(
+    classFingerprint = LottieCompositionFactoryZipFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     parameters = listOf("Ljava/io/InputStream;", "Ljava/lang/String;"),
     returnType = "L",

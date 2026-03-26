@@ -48,20 +48,21 @@ internal object ReelWatchFragmentInitPlaybackFingerprint : Fingerprint(
     )
 )
 
+private object SetPivotBarVisibilityParentFingerprint : Fingerprint(
+    parameters = listOf("Z"),
+    filters = listOf(
+        string("FEnotifications_inbox")
+    )
+)
+
 internal object SetPivotBarVisibilityFingerprint : Fingerprint(
+    classFingerprint = SetPivotBarVisibilityParentFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z"),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.CHECK_CAST,
         Opcode.IF_EQZ,
-    )
-)
-
-internal object SetPivotBarVisibilityParentFingerprint : Fingerprint(
-    parameters = listOf("Z"),
-    filters = listOf(
-        string("FEnotifications_inbox")
     )
 )
 

@@ -22,7 +22,7 @@ public class VotingButton {
     /**
      * injection point.
      */
-    public static void initialize(View controlsView) {
+    public static void initializeButton(View controlsView) {
         try {
             instance = new PlayerControlButton(
                     controlsView,
@@ -33,7 +33,7 @@ public class VotingButton {
                     null
             );
         } catch (Exception ex) {
-            Logger.printException(() -> "initialize failure", ex);
+            Logger.printException(() -> "initializeButton failure", ex);
         }
     }
 

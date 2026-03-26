@@ -40,7 +40,7 @@ val enableForcedMiniplayerPatch = bytecodePatch(
             SwitchPreference("morphe_music_enable_forced_miniplayer")
         )
 
-        MinimizedPlayerFingerprint.match().let {
+        MinimizedPlayerFingerprint.let {
             val method = it.method
             val invokeIndex = method.indexOfFirstInstructionOrThrow {
                 opcode == Opcode.INVOKE_VIRTUAL &&

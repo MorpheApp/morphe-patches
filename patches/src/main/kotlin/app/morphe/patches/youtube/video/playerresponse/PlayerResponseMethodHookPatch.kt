@@ -34,12 +34,14 @@ fun addPlayerResponseMethodHook(hook: Hook) {
 // Parameter numbers of the patched method.
 private const val PARAMETER_VIDEO_ID = 1
 private const val PARAMETER_PROTO_BUFFER = 3
+private const val PARAMETER_PLAYLIST_ID = 4
 private var parameterIsShortAndOpeningOrPlaying = -1
 
 // Registers used to pass the parameters to the extension.
 private var playerResponseMethodCopyRegisters = false
 private lateinit var registerVideoId: String
 private lateinit var registerProtoBuffer: String
+private lateinit var registerPlaylistId: String
 private lateinit var registerIsShortAndOpeningOrPlaying: String
 
 private lateinit var playerResponseMethodRef : WeakReference<MutableMethod>
@@ -86,15 +88,25 @@ val playerResponseMethodHookPatch = bytecodePatch {
         if (playerResponseMethodCopyRegisters) {
             registerVideoId = "v0"
             registerProtoBuffer = "v1"
-            registerIsShortAndOpeningOrPlaying = "v2"
+            registerPlaylistId = "v2"
+            registerIsShortAndOpeningOrPlaying = "v3"
         } else {
             registerVideoId = "p$PARAMETER_VIDEO_ID"
             registerProtoBuffer = "p$PARAMETER_PROTO_BUFFER"
+            registerPlaylistId = "p$PARAMETER_PLAYLIST_ID"
             registerIsShortAndOpeningOrPlaying = "p$parameterIsShortAndOpeningOrPlaying"
         }
     }
 
     finalize {
+        fun hookPlaylistId(hook: Hook) {
+            playerResponseMethodRef.get()!!.addInstruction(
+                0,
+                "invoke-static { $registerPlaylistId, $registerIsShortAndOpeningOrPlaying }, $hook",
+            )
+            numberOfInstructionsAdded++
+        }
+
         fun hookVideoId(hook: Hook) {
             playerResponseMethodRef.get()!!.addInstruction(
                 0,
@@ -116,11 +128,13 @@ val playerResponseMethodHookPatch = bytecodePatch {
 
         // Reverse the order in order to preserve insertion order of the hooks.
         val beforeVideoIdHooks = hooks.filterIsInstance<Hook.ProtoBufferParameterBeforeVideoId>().asReversed()
+        val playlistIdHooks = hooks.filterIsInstance<Hook.PlaylistId>().asReversed()
         val videoIdHooks = hooks.filterIsInstance<Hook.VideoId>().asReversed()
         val afterVideoIdHooks = hooks.filterIsInstance<Hook.ProtoBufferParameter>().asReversed()
 
         // Add the hooks in this specific order as they insert instructions at the beginning of the method.
         afterVideoIdHooks.forEach(::hookProtoBufferParameter)
+        playlistIdHooks.forEach(::hookPlaylistId)
         videoIdHooks.forEach(::hookVideoId)
         beforeVideoIdHooks.forEach(::hookProtoBufferParameter)
 
@@ -130,10 +144,11 @@ val playerResponseMethodHookPatch = bytecodePatch {
                 """
                     move-object/from16 $registerVideoId, p$PARAMETER_VIDEO_ID
                     move-object/from16 $registerProtoBuffer, p$PARAMETER_PROTO_BUFFER
+                    move-object/from16 $registerPlaylistId, p$PARAMETER_PLAYLIST_ID
                     move/from16        $registerIsShortAndOpeningOrPlaying, p$parameterIsShortAndOpeningOrPlaying
                 """
             )
-            numberOfInstructionsAdded += 3
+            numberOfInstructionsAdded += 4
 
             // Move the modified register back.
             playerResponseMethodRef.get()!!.addInstruction(
@@ -147,6 +162,7 @@ val playerResponseMethodHookPatch = bytecodePatch {
 }
 
 sealed class Hook(private val methodDescriptor: String) {
+    class PlaylistId(methodDescriptor: String) : Hook(methodDescriptor)
     class VideoId(methodDescriptor: String) : Hook(methodDescriptor)
 
     class ProtoBufferParameter(methodDescriptor: String) : Hook(methodDescriptor)

@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.misc.loopvideo.button
+package app.morphe.patches.youtube.interaction.loop
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch

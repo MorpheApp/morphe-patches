@@ -144,6 +144,13 @@ public class CustomPlaybackSpeedPatch {
     /**
      * Injection point.
      */
+    public static boolean restoreOldPlaybackSpeedMenu() {
+        return Settings.RESTORE_OLD_SPEED_MENU.get();
+    }
+
+    /**
+     * Injection point.
+     */
     public static boolean useNewFlyoutMenu(boolean useNewFlyout) {
         // If using old speed Turn off A/B flyout that breaks old playback speed menu.
         return useNewFlyout && !Settings.RESTORE_OLD_SPEED_MENU.get();
@@ -263,12 +270,12 @@ public class CustomPlaybackSpeedPatch {
         lastTimePlaybackMenuInvoked = now;
 
         // Dismiss View [R.id.touch_outside] is the 1st ChildView of the 4th ParentView.
-        // This only shows in phone layout.
-        var touchInsidedView = parentView4th.getChildAt(0);
-        touchInsidedView.setSoundEffectsEnabled(false);
-        touchInsidedView.performClick();
+        // This only shows in phone layout of YouTube 21.11 or lower.
+        View touchInsidedView = parentView4th.getChildAt(0);
+        touchInsidedView.callOnClick();
 
-        // In tablet layout there is no Dismiss View, instead we just hide all two parent views.
+        // In tablet layout and phone layout of YouTube 21.12 or higher,
+        // there no Dismiss View. Just hide two parent views.
         parentView3rd.setVisibility(View.GONE);
         parentView4th.setVisibility(View.GONE);
 

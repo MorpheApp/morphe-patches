@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Permanentné opakovanie prehrávania je zapnuté</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Permanentné opakovanie prehrávania je vypnuté</string>
   <!-- layout.buttons.hideButtons -->
-  <string name="morphe_music_hide_cast_button_title">Skryť tlačidlo prenosu</string>
-  <string name="morphe_music_hide_cast_button_summary_on">Tlačidlo prenosu je skryté</string>
-  <string name="morphe_music_hide_cast_button_summary_off">Tlačidlo prenosu sa zobrazuje</string>
+  <string name="morphe_music_hide_cast_button_title">Skryť tlačidlo Prenos</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Tlačidlo Prenos je skryté</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Tlačidlo Prenos sa zobrazuje</string>
   <string name="morphe_music_hide_history_button_title">Skryť tlačidlo histórie</string>
   <string name="morphe_music_hide_history_button_summary_on">Tlačidlo histórie je skryté</string>
   <string name="morphe_music_hide_history_button_summary_off">Tlačidlo histórie sa zobrazuje</string>
@@ -70,6 +70,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Farba miniprehrávača zodpovedá farbe prehrávača na celú obrazovku</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniprehrávač používa predvolenú farbu</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Zobraziť tlačidlo \'Ďalšia skladba\' v miniprehrávači</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Tlačidlo \'Ďalšia skladba\' sa zobrazuje v miniprehrávači</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Tlačidlo \'Ďalšia skladba\' sa nezobrazuje v miniprehrávači</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Zobraziť tlačidlo \'Predošlá skladba\' v miniprehrávači</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Tlačidlo \'Predošlá skladba\' sa zobrazuje v miniprehrávači</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Tlačidlo \'Predošlá skladba\' sa nezobrazuje v miniprehrávači</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Povoliť vynútenie miniprehrávača</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniprehrávač zostane aktívny aj počas zmeny prehrávania</string>

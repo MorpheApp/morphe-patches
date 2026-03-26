@@ -42,21 +42,22 @@ internal object SubmittedListingFingerprint : Fingerprint(
     )
 )
 
-internal object AdPostSectionConstructorFingerprint : Fingerprint(
-    name = "<init>",
-    returnType = "V",
-    filters = listOf(
-        string("sections")
-    )
-)
-
-internal object AdPostSectionToStringFingerprint : Fingerprint(
+private object AdPostSectionToStringFingerprint : Fingerprint(
     name = "toString",
     returnType = "Ljava/lang/String;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(),
     filters = listOf(
         string("AdPostSection(linkId=")
+    )
+)
+
+internal object AdPostSectionConstructorFingerprint : Fingerprint(
+    classFingerprint = AdPostSectionToStringFingerprint,
+    name = "<init>",
+    returnType = "V",
+    filters = listOf(
+        string("sections")
     )
 )
 
