@@ -101,6 +101,7 @@ public class SponsorBlockViewController {
                     layout,
                     "morphe_sb_skip_sponsor_button",
                     null,
+                    null,
                     () -> canShowViewElements && SegmentPlaybackController.currentlyInsideSkippableSegment(),
                     view -> {
                         SkipSponsorButton button = skipSponsorButtonRef.get();

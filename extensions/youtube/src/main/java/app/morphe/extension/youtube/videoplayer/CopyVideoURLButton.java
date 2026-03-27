@@ -39,7 +39,7 @@ public class CopyVideoURLButton {
             }
 
             PlayerOverlayButton.addButton(controlsView,
-                    COPY_VIDEO_URL_TIMESTAMP ? "morphe_yt_copy_timestamp" : "morphe_yt_copy",
+                    COPY_VIDEO_URL_TIMESTAMP ? "morphe_yt_copy_timestamp_bold" : "morphe_yt_copy_bold",
                     view -> copyURL(COPY_VIDEO_URL_TIMESTAMP),
                     view -> {
                         copyURL(!COPY_VIDEO_URL_TIMESTAMP);
@@ -65,6 +65,7 @@ public class CopyVideoURLButton {
                     controlsView,
                     "morphe_copy_video_url_button",
                     null,
+                    "morphe_yt_copy_timestamp",
                     Settings.COPY_VIDEO_URL::get,
                     view -> copyURL(COPY_VIDEO_URL_TIMESTAMP),
                     view -> {

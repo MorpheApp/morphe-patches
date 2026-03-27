@@ -32,6 +32,7 @@ public class ReloadVideoButton {
                     controlsView,
                     "morphe_reload_video_button",
                     null,
+                    "morphe_reload_video",
                     Settings.RELOAD_VIDEO::get,
                     v -> ReloadVideoPatch.reloadVideo(),
                     null

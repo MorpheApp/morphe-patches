@@ -81,14 +81,21 @@ private val sponsorBlockResourcePatch = resourcePatch {
             ResourceGroup(
                 "drawable",
                 "morphe_sb_adjust.xml",
+                "morphe_sb_adjust_bold.xml",
                 "morphe_sb_backward.xml",
+                "morphe_sb_backward_bold.xml",
                 "morphe_sb_compare.xml",
+                "morphe_sb_compare_bold.xml",
                 "morphe_sb_edit.xml",
+                "morphe_sb_edit_bold.xml",
                 "morphe_sb_forward.xml",
+                "morphe_sb_forward_bold.xml",
                 "morphe_sb_logo.xml",
                 "morphe_sb_logo_bold.xml",
                 "morphe_sb_publish.xml",
+                "morphe_sb_publish_bold.xml",
                 "morphe_sb_voting.xml",
+                "morphe_sb_voting_bold.xml",
             )
         ).forEach { resourceGroup ->
             copyResources("sponsorblock", resourceGroup)
@@ -120,9 +127,7 @@ val sponsorBlockPatch = bytecodePatch(
         sharedExtensionPatch,
         resourceMappingPatch,
         videoIdPatch,
-        // Required to skip segments on time.
         videoInformationPatch,
-        // Used to prevent SponsorBlock from running on Shorts because SponsorBlock does not yet support Shorts.
         playerTypeHookPatch,
         legacyPlayerControlsPatch,
         sponsorBlockResourcePatch,

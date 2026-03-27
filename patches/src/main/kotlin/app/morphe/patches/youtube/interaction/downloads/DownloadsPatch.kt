@@ -44,7 +44,11 @@ private val downloadsResourcePatch = resourcePatch {
 
         copyResources(
             "downloads",
-            ResourceGroup("drawable", "morphe_yt_download_button.xml"),
+            ResourceGroup(
+                "drawable",
+                "morphe_yt_download_button.xml",
+                "morphe_yt_download_button_bold.xml",
+            )
         )
     }
 

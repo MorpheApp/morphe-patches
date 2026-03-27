@@ -28,6 +28,7 @@ public class VotingButton {
                     controlsView,
                     "morphe_sb_voting_button",
                     null,
+                    "morphe_sb_voting",
                     VotingButton::isButtonEnabled,
                     v -> SponsorBlockUtils.onVotingClicked(v.getContext()),
                     null

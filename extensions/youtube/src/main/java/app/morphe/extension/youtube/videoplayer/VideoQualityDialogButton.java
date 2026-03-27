@@ -146,6 +146,7 @@ public class VideoQualityDialogButton {
                     "morphe_video_quality_dialog_button_container",
                     "morphe_video_quality_dialog_button",
                     "morphe_video_quality_dialog_button_text",
+                    null,
                     Settings.VIDEO_QUALITY_DIALOG_BUTTON::get,
                     view -> {
                         try {

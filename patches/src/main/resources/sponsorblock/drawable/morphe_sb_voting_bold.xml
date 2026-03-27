@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/google/material-design-icons/blob/13d360945bfd12cdeec837adc14f82875410584b/symbols/android/thumbs_up_down/materialsymbolsrounded/thumbs_up_down_24px.xml
+
+    Copyright 2022 Google
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M2,14 C1.44922,14,0.980469,13.8047,0.585938,13.4141 C0.195312,13.0195,0,12.5508,0,12 L0,6 C0,5.80078,0.0429688,5.60938,0.125,5.42578 C0.207031,5.24219,0.316406,5.08203,0.449219,4.94922 L3.60156,1.80078 C3.75,1.64844,3.91797,1.53906,4.10156,1.46094 C4.28516,1.38672,4.46484,1.35156,4.64844,1.35156 C5.08203,1.35156,5.45703,1.51563,5.77344,1.85156 C6.08984,2.18359,6.20703,2.60938,6.125,3.125 L5.80078,5 L11,5 C11.2852,5,11.5195,5.09766,11.7109,5.28906 C11.9023,5.48047,12,5.71484,12,6 L12,7.25 C12,7.35156,11.9922,7.44531,11.9766,7.53906 C11.957,7.62891,11.9336,7.71484,11.8984,7.80078 L9.64844,13.1016 C9.53516,13.3828,9.34766,13.6055,9.08594,13.7617 C8.82813,13.9219,8.55078,14,8.25,14 Z M7.94922,12 L10,7.14844 L10,7 L3.35156,7 L3.94922,4.30078 L2,6.19922 L2,12 Z M13,19 C12.7148,19,12.4805,18.9023,12.2891,18.7109 C12.0977,18.5195,12,18.2852,12,18 L12,16.75 C12,16.6484,12.0078,16.5547,12.0234,16.4609 C12.043,16.3711,12.0664,16.2852,12.1016,16.1992 L14.3516,10.8984 C14.4844,10.6172,14.6758,10.3945,14.9258,10.2383 C15.1758,10.0781,15.4492,10,15.75,10 L22,10 C22.5508,10,23.0195,10.1953,23.4141,10.5859 C23.8047,10.9805,24,11.4492,24,12 L24,18 C24,18.1992,23.9609,18.3867,23.8867,18.5625 C23.8125,18.7383,23.6992,18.8984,23.5508,19.0508 L20.3984,22.1992 C20.25,22.3516,20.082,22.4609,19.8984,22.5391 C19.7148,22.6133,19.5352,22.6484,19.3516,22.6484 C18.918,22.6484,18.543,22.4844,18.2266,22.1484 C17.9102,21.8164,17.793,21.3906,17.875,20.875 L18.1992,19 Z M16.0508,12 L14,16.8516 L14,17 L20.6484,17 L20.0508,19.6992 L22,17.8008 L22,12 Z M2,12 L2,6.19922 Z M22,12 L22,17.8008 Z M22,12" />
+</vector>

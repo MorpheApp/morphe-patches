@@ -88,7 +88,7 @@ public class PlaybackSpeedDialogButton {
                     controlsView,
                     "morphe_playback_speed_dialog_button_container",
                     "morphe_playback_speed_dialog_button",
-                    "morphe_playback_speed_dialog_button_text",
+                    null,
                     Settings.PLAYBACK_SPEED_DIALOG_BUTTON::get,
                     view -> {
                         try {

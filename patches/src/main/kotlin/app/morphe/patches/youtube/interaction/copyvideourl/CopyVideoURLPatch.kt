@@ -44,7 +44,9 @@ private val copyVideoURLResourcePatch = resourcePatch {
             ResourceGroup(
                 resourceDirectoryName = "drawable",
                 "morphe_yt_copy.xml",
-                "morphe_yt_copy_timestamp.xml"
+                "morphe_yt_copy_timestamp.xml",
+                "morphe_yt_copy_bold.xml",
+                "morphe_yt_copy_timestamp_bold.xml"
             )
         )
 

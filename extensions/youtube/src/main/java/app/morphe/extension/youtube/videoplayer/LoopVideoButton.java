@@ -42,6 +42,7 @@ public class LoopVideoButton {
                     controlsView,
                     "morphe_loop_video_button",
                     null,
+                    null,
                     Settings.LOOP_VIDEO_BUTTON::get,
                     v -> updateButtonAppearance(true, v),
                     null

@@ -25,7 +25,9 @@ private val loopVideoButtonResourcePatch = resourcePatch {
             ResourceGroup(
                 "drawable",
                 "morphe_loop_video_button_on.xml",
-                "morphe_loop_video_button_off.xml"
+                "morphe_loop_video_button_off.xml",
+                "morphe_loop_video_button_on_bold.xml",
+                "morphe_loop_video_button_off_bold.xml",
             )
         )
     }

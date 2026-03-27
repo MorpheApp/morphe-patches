@@ -33,6 +33,7 @@ public class ExternalDownloadButton {
                     controlsView,
                     "morphe_external_download_button",
                     null,
+                    "morphe_yt_download_button",
                     Settings.EXTERNAL_DOWNLOADER::get,
                     ExternalDownloadButton::onDownloadClick,
                     null

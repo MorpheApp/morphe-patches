@@ -25,7 +25,8 @@ private val playbackSpeedButtonResourcePatch = resourcePatch {
             "speedbutton",
             ResourceGroup(
                 "drawable",
-                "morphe_playback_speed_dialog_button_rectangle.xml"
+                "morphe_playback_speed_dialog_button_rectangle.xml",
+                "morphe_playback_speed_dialog_button_rectangle_bold.xml"
             )
         )
 

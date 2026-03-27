@@ -24,6 +24,7 @@ private val videoQualityButtonResourcePatch = resourcePatch {
             ResourceGroup(
                 "drawable",
                 "morphe_video_quality_dialog_button_rectangle.xml",
+                "morphe_video_quality_dialog_button_rectangle_bold.xml",
             ),
         )
 

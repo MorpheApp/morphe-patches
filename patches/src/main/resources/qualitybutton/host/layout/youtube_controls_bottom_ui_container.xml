@@ -23,7 +23,7 @@
             android:paddingTop="6.0dp"
             android:paddingBottom="0dp"
             android:scaleType="center"
-            android:src="@drawable/morphe_video_quality_dialog_button_rectangle" />
+            android:src="@drawable/morphe_video_quality_dialog_button_rectangle_bold" />
 
         <TextView
             android:id="@+id/morphe_video_quality_dialog_button_text"
