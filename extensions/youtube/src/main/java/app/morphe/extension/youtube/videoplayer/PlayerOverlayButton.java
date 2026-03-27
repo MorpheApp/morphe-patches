@@ -27,10 +27,18 @@ public class PlayerOverlayButton {
     public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
 
     /**
-     * How much to compress/expand the existing width. Used to fit 4 buttons
-     * without overlapping the video time.
+     * Returns the button width percentage based on the total number of buttons,
+     * so buttons don't overlap the video time bar.
      */
-    private static final float BUTTON_WIDTH_PERCENTAGE = 1.0f;
+    private static float getButtonWidthPercentage(int totalButtons) {
+        return switch (totalButtons) {
+            case 1 -> 1.0f;
+            case 2 -> 0.95f;
+            case 3 -> 0.90f;
+            case 4 -> 0.85f;
+            default -> 1.0f / totalButtons;
+        };
+    }
 
     private static WeakReference<ViewTreeObserver> buttonObserver = new WeakReference<>(null);
     private static int newButtonCount;
@@ -61,7 +69,8 @@ public class PlayerOverlayButton {
 
             observer.addOnPreDrawListener(
                     new ViewTreeObserver.OnPreDrawListener() {
-                        Drawable placeholderButtonBackground;
+                        // Track the source background instance that was used to create our copy.
+                        Drawable sourceBackgroundSnapshot;
 
                         @Override
                         public boolean onPreDraw() {
@@ -85,10 +94,17 @@ public class PlayerOverlayButton {
                             }
 
                             Drawable sourceButtonBackground = sourceButton.getBackground();
-                            if (placeholderButtonBackground != sourceButtonBackground) {
-                                Drawable mutated = sourceButtonBackground.mutate();
-                                button.setBackground(mutated);
-                                placeholderButtonBackground = mutated;
+                            if (sourceBackgroundSnapshot != sourceButtonBackground) {
+                                // Use newDrawable() instead of mutate() so each button gets a
+                                // fully independent Drawable instance with its own hotspot/ripple
+                                // state. mutate() only isolates color/alpha state but still shares
+                                // the ConstantState hotspot, causing the ripple to fire on every
+                                // button that references the same source drawable simultaneously.
+                                Drawable newBackground = sourceButtonBackground.getConstantState() != null
+                                        ? sourceButtonBackground.getConstantState().newDrawable().mutate()
+                                        : sourceButtonBackground.mutate();
+                                button.setBackground(newBackground);
+                                sourceBackgroundSnapshot = sourceButtonBackground;
                             }
 
                             final float sourceButtonAlpha = sourceButton.getAlpha();
@@ -102,7 +118,7 @@ public class PlayerOverlayButton {
                             }
 
                             final float xOffset = (int) (sourceButton.getX()
-                                    - (buttonCount * (BUTTON_WIDTH_PERCENTAGE * sourceButton.getWidth())));
+                                    - (buttonCount * (getButtonWidthPercentage(newButtonCount) * sourceButton.getWidth())));
                             if (button.getX() != xOffset) {
                                 button.setX(xOffset);
                             }
