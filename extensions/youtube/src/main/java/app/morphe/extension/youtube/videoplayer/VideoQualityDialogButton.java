@@ -57,6 +57,7 @@ import kotlin.jvm.functions.Function1;
 @SuppressWarnings("unused")
 public class VideoQualityDialogButton {
 
+    @Nullable
     private static WeakReference<TextView> overlayTextRef = new WeakReference<>(null);
 
     @Nullable
@@ -87,7 +88,6 @@ public class VideoQualityDialogButton {
             }
 
             overlayTextRef = new WeakReference<>(PlayerOverlayButton.addButtonWithTextOverlay(controlsView,
-                    "morphe_video_quality_dialog_button_rectangle_bold",
                     view -> {
                         try {
                             showVideoQualityDialog(view.getContext());
@@ -225,7 +225,9 @@ public class VideoQualityDialogButton {
     public static void updateButtonText(@Nullable VideoQualityInterface quality) {
         try {
             Utils.verifyOnMainThread();
-            if (legacy == null && overlayTextRef.get() == null) return;
+
+            final TextView overlay = overlayTextRef != null ? overlayTextRef.get() : null;
+            if (overlay == null && legacy == null) return;
 
             final int resolution = quality == null
                     ? AUTOMATIC_VIDEO_QUALITY_VALUE // Video is still loading.
@@ -255,13 +257,8 @@ public class VideoQualityDialogButton {
                     Logger.printDebug(() -> "Ignoring stale button text update of: " + text);
                     return;
                 }
-                if (legacy != null) {
-                    legacy.setTextOverlay(text);
-                }
-                TextView overlay = overlayTextRef.get();
-                if (overlay != null) {
-                    overlay.setText(text);
-                }
+                if (overlay != null) overlay.setText(text);
+                if (legacy != null) legacy.setTextOverlay(text);
             }, 100);
         } catch (Exception ex) {
             Logger.printException(() -> "updateButtonText failure", ex);

@@ -13,7 +13,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -47,11 +46,10 @@ public class PlayerOverlayButton {
     private static WeakReference<ViewTreeObserver> buttonObserver = new WeakReference<>(null);
     private static int newButtonCount;
 
-    @Nullable
-    public static ImageView addButton(View sourceButton,
-                                      String drawableName,
-                                      View.OnClickListener onClickListener,
-                                      View.OnLongClickListener onLongClickListener) {
+    public static void addButton(View sourceButton,
+                                 String drawableName,
+                                 View.OnClickListener onClickListener,
+                                 View.OnLongClickListener onLongClickListener) {
         Utils.verifyOnMainThread();
 
         if (sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup) {
@@ -141,24 +139,16 @@ public class PlayerOverlayButton {
             );
 
             sourceButtonViewGroup.addView(button);
-
-            return button;
         }
-
-        return null;
     }
 
     /**
-     * Same as {@link #addButton} but wraps the button in a {@link FrameLayout}
-     * containing both the icon and a centered {@link TextView} overlay.
-     * Visibility, alpha, and fade animations are automatically inherited
-     * by both children since they share the same container.
+     * Creates an overlay button that displays only a text label.
      *
      * @return The created {@link TextView}, or null if the button could not be added.
      */
     @Nullable
     public static TextView addButtonWithTextOverlay(View sourceButton,
-                                                    String drawableName,
                                                     View.OnClickListener onClickListener,
                                                     View.OnLongClickListener onLongClickListener) {
         Utils.verifyOnMainThread();
@@ -174,33 +164,15 @@ public class PlayerOverlayButton {
         }
         final int buttonCount = ++newButtonCount;
 
-        FrameLayout container = new FrameLayout(sourceButton.getContext());
-        container.setId(View.generateViewId());
-
-        ImageView icon = new ImageView(sourceButton.getContext());
-        icon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-        icon.setImageResource(ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, drawableName));
-        icon.setOnClickListener(onClickListener);
-        icon.setOnLongClickListener(onLongClickListener);
-        container.addView(icon, new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT,
-                FrameLayout.LayoutParams.MATCH_PARENT
-        ));
-
+        // TextView itself is the tappable surface.
         TextView textOverlay = new TextView(sourceButton.getContext());
         textOverlay.setId(View.generateViewId());
         textOverlay.setGravity(Gravity.CENTER);
-        textOverlay.setTextSize(10);
+        textOverlay.setTextSize(14);
         textOverlay.setTextColor(0xFFFFFFFF);
-        textOverlay.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
-        textOverlay.setClickable(false);
-        textOverlay.setFocusable(false);
-        textOverlay.setPadding(0, 0, 0, 0);
-        container.addView(textOverlay, new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.WRAP_CONTENT,
-                FrameLayout.LayoutParams.WRAP_CONTENT,
-                Gravity.CENTER
-        ));
+        textOverlay.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
+        textOverlay.setOnClickListener(onClickListener);
+        textOverlay.setOnLongClickListener(onLongClickListener);
 
         observer.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
             // Track the ConstantState of the source background to detect real drawable changes.
@@ -213,13 +185,13 @@ public class PlayerOverlayButton {
                 final int sourcePaddingRight = sourceButton.getPaddingRight();
                 final int sourcePaddingBottom = sourceButton.getPaddingBottom();
 
-                if (!(sourcePaddingLeft == container.getPaddingLeft()
-                        && sourcePaddingTop == container.getPaddingTop()
-                        && sourcePaddingRight == container.getPaddingRight()
-                        && sourcePaddingBottom == container.getPaddingBottom())
+                if (!(sourcePaddingLeft == textOverlay.getPaddingLeft()
+                        && sourcePaddingTop == textOverlay.getPaddingTop()
+                        && sourcePaddingRight == textOverlay.getPaddingRight()
+                        && sourcePaddingBottom == textOverlay.getPaddingBottom())
                 ) {
-                    container.setLayoutParams(sourceButton.getLayoutParams());
-                    container.setPadding(
+                    textOverlay.setLayoutParams(sourceButton.getLayoutParams());
+                    textOverlay.setPadding(
                             sourcePaddingLeft,
                             sourcePaddingTop,
                             sourcePaddingRight,
@@ -240,36 +212,36 @@ public class PlayerOverlayButton {
                     Drawable newBackground = newConstantState != null
                             ? newConstantState.newDrawable().mutate()
                             : sourceButtonBackground;
-                    container.setBackground(newBackground);
+                    textOverlay.setBackground(newBackground);
                     sourceBackgroundSnapshot = newConstantState;
                 }
 
                 final float sourceButtonAlpha = sourceButton.getAlpha();
-                if (container.getAlpha() != sourceButtonAlpha) {
-                    container.setAlpha(sourceButtonAlpha);
+                if (textOverlay.getAlpha() != sourceButtonAlpha) {
+                    textOverlay.setAlpha(sourceButtonAlpha);
                 }
 
                 final int sourceButtonVisibility = sourceButton.getVisibility();
-                if (container.getVisibility() != sourceButtonVisibility) {
-                    container.setVisibility(sourceButtonVisibility);
+                if (textOverlay.getVisibility() != sourceButtonVisibility) {
+                    textOverlay.setVisibility(sourceButtonVisibility);
                 }
 
                 final float xOffset = (int) (sourceButton.getX()
                         - (buttonCount * (getButtonWidthPercentage(newButtonCount) * sourceButton.getWidth())));
-                if (container.getX() != xOffset) {
-                    container.setX(xOffset);
+                if (textOverlay.getX() != xOffset) {
+                    textOverlay.setX(xOffset);
                 }
 
                 final float positionY = sourceButton.getY();
-                if (container.getY() != positionY) {
-                    container.setY(positionY);
+                if (textOverlay.getY() != positionY) {
+                    textOverlay.setY(positionY);
                 }
 
                 return true;
             }
         });
 
-        sourceButtonViewGroup.addView(container);
+        sourceButtonViewGroup.addView(textOverlay);
 
         return textOverlay;
     }

@@ -48,7 +48,6 @@ public class PlaybackSpeedDialogButton {
             }
 
             overlayTextRef = new WeakReference<>(PlayerOverlayButton.addButtonWithTextOverlay(controlsView,
-                    "morphe_playback_speed_dialog_button_rectangle_bold",
                     view -> {
                         try {
                             if (Settings.RESTORE_OLD_SPEED_MENU.get()) {
