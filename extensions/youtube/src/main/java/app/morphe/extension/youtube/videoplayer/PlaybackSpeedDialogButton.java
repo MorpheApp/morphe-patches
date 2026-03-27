@@ -11,9 +11,11 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import java.lang.ref.WeakReference;
 import java.text.DecimalFormat;
 
 import app.morphe.extension.shared.Logger;
@@ -27,6 +29,8 @@ public class PlaybackSpeedDialogButton {
 
     @Nullable
     private static LegacyPlayerControlButton legacy;
+
+    private static WeakReference<TextView> overlayTextRef = new WeakReference<>(null);
 
     private static final DecimalFormat speedDecimalFormatter = new DecimalFormat();
     static {
@@ -43,8 +47,8 @@ public class PlaybackSpeedDialogButton {
                 return;
             }
 
-            PlayerOverlayButton.addButton(controlsView,
-                    "morphe_playback_speed_dialog_button_rectangle",
+            overlayTextRef = new WeakReference<>(PlayerOverlayButton.addButtonWithTextOverlay(controlsView,
+                    "morphe_playback_speed_dialog_button_rectangle_bold",
                     view -> {
                         try {
                             if (Settings.RESTORE_OLD_SPEED_MENU.get()) {
@@ -69,7 +73,7 @@ public class PlaybackSpeedDialogButton {
                         }
                         return true;
                     }
-            );
+            ));
 
             // Set the appropriate icon.
             updateButtonAppearance();
@@ -89,6 +93,7 @@ public class PlaybackSpeedDialogButton {
                     "morphe_playback_speed_dialog_button_container",
                     "morphe_playback_speed_dialog_button",
                     null,
+                    "morphe_playback_speed_dialog_button",
                     Settings.PLAYBACK_SPEED_DIALOG_BUTTON::get,
                     view -> {
                         try {
@@ -161,14 +166,17 @@ public class PlaybackSpeedDialogButton {
      * Updates the button's appearance, including icon and text overlay.
      */
     private static void updateButtonAppearance() {
-        if (legacy == null) return;
-
         try {
             Utils.verifyOnMainThread();
 
             String speedText = speedDecimalFormatter.format(VideoInformation.getPlaybackSpeed());
-            // FIXME
-            legacy.setTextOverlay(speedText);
+            if (legacy != null) {
+                legacy.setTextOverlay(speedText);
+            }
+            TextView overlay = overlayTextRef.get();
+            if (overlay != null) {
+                overlay.setText(speedText);
+            }
             Logger.printDebug(() -> "Updated playback speed button text to: " + speedText);
         } catch (Exception ex) {
             Logger.printException(() -> "updateButtonAppearance failure", ex);

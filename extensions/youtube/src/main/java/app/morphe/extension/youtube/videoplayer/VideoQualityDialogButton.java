@@ -57,7 +57,7 @@ import kotlin.jvm.functions.Function1;
 @SuppressWarnings("unused")
 public class VideoQualityDialogButton {
 
-    private static WeakReference<ImageView> instance = new WeakReference<>(null);
+    private static WeakReference<TextView> overlayTextRef = new WeakReference<>(null);
 
     @Nullable
     private static LegacyPlayerControlButton legacy;
@@ -86,8 +86,8 @@ public class VideoQualityDialogButton {
                 return;
             }
 
-            instance = new WeakReference<>(PlayerOverlayButton.addButton(controlsView,
-                    "morphe_video_quality_dialog_button_rectangle",
+            overlayTextRef = new WeakReference<>(PlayerOverlayButton.addButtonWithTextOverlay(controlsView,
+                    "morphe_video_quality_dialog_button_rectangle_bold",
                     view -> {
                         try {
                             showVideoQualityDialog(view.getContext());
@@ -115,7 +115,7 @@ public class VideoQualityDialogButton {
                             }
 
                             // Existing hook cannot set default quality to auto.
-                            // Instead show the quality dialog.
+                            // Instead, show the quality dialog.
                             showVideoQualityDialog(view.getContext());
                             return true;
                         } catch (Exception ex) {
@@ -146,7 +146,7 @@ public class VideoQualityDialogButton {
                     "morphe_video_quality_dialog_button_container",
                     "morphe_video_quality_dialog_button",
                     "morphe_video_quality_dialog_button_text",
-                    null,
+                    "morphe_video_quality_dialog_button",
                     Settings.VIDEO_QUALITY_DIALOG_BUTTON::get,
                     view -> {
                         try {
@@ -225,7 +225,7 @@ public class VideoQualityDialogButton {
     public static void updateButtonText(@Nullable VideoQualityInterface quality) {
         try {
             Utils.verifyOnMainThread();
-            if (legacy == null) return;
+            if (legacy == null && overlayTextRef.get() == null) return;
 
             final int resolution = quality == null
                     ? AUTOMATIC_VIDEO_QUALITY_VALUE // Video is still loading.
@@ -255,7 +255,13 @@ public class VideoQualityDialogButton {
                     Logger.printDebug(() -> "Ignoring stale button text update of: " + text);
                     return;
                 }
-                legacy.setTextOverlay(text);
+                if (legacy != null) {
+                    legacy.setTextOverlay(text);
+                }
+                TextView overlay = overlayTextRef.get();
+                if (overlay != null) {
+                    overlay.setText(text);
+                }
             }, 100);
         } catch (Exception ex) {
             Logger.printException(() -> "updateButtonText failure", ex);

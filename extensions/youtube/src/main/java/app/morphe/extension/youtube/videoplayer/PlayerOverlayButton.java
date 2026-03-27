@@ -7,11 +7,15 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -69,8 +73,8 @@ public class PlayerOverlayButton {
 
             observer.addOnPreDrawListener(
                     new ViewTreeObserver.OnPreDrawListener() {
-                        // Track the source background instance that was used to create our copy.
-                        Drawable sourceBackgroundSnapshot;
+                        // Track the ConstantState of the source background to detect real drawable changes.
+                        Drawable.ConstantState sourceBackgroundSnapshot;
 
                         @Override
                         public boolean onPreDraw() {
@@ -80,7 +84,7 @@ public class PlayerOverlayButton {
                             final int sourcePaddingBottom = sourceButton.getPaddingBottom();
 
                             if (!(sourcePaddingLeft == button.getPaddingLeft()
-                                    && sourcePaddingTop == button.getPaddingLeft()
+                                    && sourcePaddingTop == button.getPaddingTop()
                                     && sourcePaddingRight == button.getPaddingRight()
                                     && sourcePaddingBottom == button.getPaddingBottom())
                             ) {
@@ -94,17 +98,20 @@ public class PlayerOverlayButton {
                             }
 
                             Drawable sourceButtonBackground = sourceButton.getBackground();
-                            if (sourceBackgroundSnapshot != sourceButtonBackground) {
+                            Drawable.ConstantState newConstantState = sourceButtonBackground != null
+                                    ? sourceButtonBackground.getConstantState()
+                                    : null;
+                            if (sourceBackgroundSnapshot != newConstantState) {
                                 // Use newDrawable() instead of mutate() so each button gets a
                                 // fully independent Drawable instance with its own hotspot/ripple
                                 // state. mutate() only isolates color/alpha state but still shares
                                 // the ConstantState hotspot, causing the ripple to fire on every
                                 // button that references the same source drawable simultaneously.
-                                Drawable newBackground = sourceButtonBackground.getConstantState() != null
-                                        ? sourceButtonBackground.getConstantState().newDrawable().mutate()
-                                        : sourceButtonBackground.mutate();
+                                Drawable newBackground = newConstantState != null
+                                        ? newConstantState.newDrawable().mutate()
+                                        : sourceButtonBackground;
                                 button.setBackground(newBackground);
-                                sourceBackgroundSnapshot = sourceButtonBackground;
+                                sourceBackgroundSnapshot = newConstantState;
                             }
 
                             final float sourceButtonAlpha = sourceButton.getAlpha();
@@ -139,5 +146,131 @@ public class PlayerOverlayButton {
         }
 
         return null;
+    }
+
+    /**
+     * Same as {@link #addButton} but wraps the button in a {@link FrameLayout}
+     * containing both the icon and a centered {@link TextView} overlay.
+     * Visibility, alpha, and fade animations are automatically inherited
+     * by both children since they share the same container.
+     *
+     * @return The created {@link TextView}, or null if the button could not be added.
+     */
+    @Nullable
+    public static TextView addButtonWithTextOverlay(View sourceButton,
+                                                    String drawableName,
+                                                    View.OnClickListener onClickListener,
+                                                    View.OnLongClickListener onLongClickListener) {
+        Utils.verifyOnMainThread();
+
+        if (!(sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup)) {
+            return null;
+        }
+
+        ViewTreeObserver observer = sourceButton.getViewTreeObserver();
+        if (observer != buttonObserver.get()) {
+            newButtonCount = 0;
+            buttonObserver = new WeakReference<>(observer);
+        }
+        final int buttonCount = ++newButtonCount;
+
+        FrameLayout container = new FrameLayout(sourceButton.getContext());
+        container.setId(View.generateViewId());
+
+        ImageView icon = new ImageView(sourceButton.getContext());
+        icon.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        icon.setImageResource(ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE, drawableName));
+        icon.setOnClickListener(onClickListener);
+        icon.setOnLongClickListener(onLongClickListener);
+        container.addView(icon, new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT
+        ));
+
+        TextView textOverlay = new TextView(sourceButton.getContext());
+        textOverlay.setId(View.generateViewId());
+        textOverlay.setGravity(Gravity.CENTER);
+        textOverlay.setTextSize(10);
+        textOverlay.setTextColor(0xFFFFFFFF);
+        textOverlay.setTypeface(Typeface.create("sans-serif-condensed", Typeface.NORMAL));
+        textOverlay.setClickable(false);
+        textOverlay.setFocusable(false);
+        textOverlay.setPadding(0, 0, 0, 0);
+        container.addView(textOverlay, new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT,
+                Gravity.CENTER
+        ));
+
+        observer.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            // Track the ConstantState of the source background to detect real drawable changes.
+            Drawable.ConstantState sourceBackgroundSnapshot;
+
+            @Override
+            public boolean onPreDraw() {
+                final int sourcePaddingLeft = sourceButton.getPaddingLeft();
+                final int sourcePaddingTop = sourceButton.getPaddingTop();
+                final int sourcePaddingRight = sourceButton.getPaddingRight();
+                final int sourcePaddingBottom = sourceButton.getPaddingBottom();
+
+                if (!(sourcePaddingLeft == container.getPaddingLeft()
+                        && sourcePaddingTop == container.getPaddingTop()
+                        && sourcePaddingRight == container.getPaddingRight()
+                        && sourcePaddingBottom == container.getPaddingBottom())
+                ) {
+                    container.setLayoutParams(sourceButton.getLayoutParams());
+                    container.setPadding(
+                            sourcePaddingLeft,
+                            sourcePaddingTop,
+                            sourcePaddingRight,
+                            sourcePaddingBottom
+                    );
+                }
+
+                Drawable sourceButtonBackground = sourceButton.getBackground();
+                Drawable.ConstantState newConstantState = sourceButtonBackground != null
+                        ? sourceButtonBackground.getConstantState()
+                        : null;
+                if (sourceBackgroundSnapshot != newConstantState) {
+                    // Use newDrawable() instead of mutate() so each button gets a
+                    // fully independent Drawable instance with its own hotspot/ripple
+                    // state. mutate() only isolates color/alpha state but still shares
+                    // the ConstantState hotspot, causing the ripple to fire on every
+                    // button that references the same source drawable simultaneously.
+                    Drawable newBackground = newConstantState != null
+                            ? newConstantState.newDrawable().mutate()
+                            : sourceButtonBackground;
+                    container.setBackground(newBackground);
+                    sourceBackgroundSnapshot = newConstantState;
+                }
+
+                final float sourceButtonAlpha = sourceButton.getAlpha();
+                if (container.getAlpha() != sourceButtonAlpha) {
+                    container.setAlpha(sourceButtonAlpha);
+                }
+
+                final int sourceButtonVisibility = sourceButton.getVisibility();
+                if (container.getVisibility() != sourceButtonVisibility) {
+                    container.setVisibility(sourceButtonVisibility);
+                }
+
+                final float xOffset = (int) (sourceButton.getX()
+                        - (buttonCount * (getButtonWidthPercentage(newButtonCount) * sourceButton.getWidth())));
+                if (container.getX() != xOffset) {
+                    container.setX(xOffset);
+                }
+
+                final float positionY = sourceButton.getY();
+                if (container.getY() != positionY) {
+                    container.setY(positionY);
+                }
+
+                return true;
+            }
+        });
+
+        sourceButtonViewGroup.addView(container);
+
+        return textOverlay;
     }
 }
