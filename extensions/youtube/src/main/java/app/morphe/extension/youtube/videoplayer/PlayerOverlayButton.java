@@ -30,7 +30,7 @@ public class PlayerOverlayButton {
      * How much to compress/expand the existing width. Used to fit 4 buttons
      * without overlapping the video time.
      */
-    private static final float BUTTON_WIDTH_PERCENTAGE = 0.9f;
+    private static final float BUTTON_WIDTH_PERCENTAGE = 1.0f;
 
     private static WeakReference<ViewTreeObserver> buttonObserver = new WeakReference<>(null);
     private static int newButtonCount;

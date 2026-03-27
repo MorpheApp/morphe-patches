@@ -27,31 +27,8 @@ public class ExternalDownloadButton {
     /**
      * Injection point.
      */
-    public static void initializeButton(View controlsView) {
-        try {
-            if (PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS || !Settings.EXTERNAL_DOWNLOADER.get()) {
-                return;
-            }
-
-            PlayerOverlayButton.addButton(controlsView,
-                    "morphe_yt_download_button",
-                    ExternalDownloadButton::onDownloadClick,
-                    null
-            );
-        } catch (Exception ex) {
-            Logger.printException(() -> "initializeButton failure", ex);
-        }
-    }
-
-    /**
-     * Injection point.
-     */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS) {
-                return;
-            }
-
             legacy = new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_external_download_button",

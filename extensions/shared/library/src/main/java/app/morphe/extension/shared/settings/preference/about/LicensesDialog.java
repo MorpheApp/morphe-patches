@@ -41,6 +41,8 @@ public class LicensesDialog extends Dialog {
                     "https://raw.githubusercontent.com/LSPosed/AndroidHiddenApiBypass/main/LICENSE"),
             new License("AndroidX JavaScriptEngine",
                     "https://raw.githubusercontent.com/androidx/androidx/androidx-main/LICENSE.txt"),
+            new License("Google Material Design icons",
+                    "https://raw.githubusercontent.com/google/material-design-icons/refs/heads/master/LICENSE"),
             new License("Gson",
                     "https://raw.githubusercontent.com/google/gson/main/LICENSE"),
             new License("Guava",
@@ -50,6 +52,7 @@ public class LicensesDialog extends Dialog {
                     "https://raw.githubusercontent.com/MorpheApp/morphe-patches/refs/heads/main/NOTICE"),
             new License("Protocol Buffers",
                     "https://raw.githubusercontent.com/protocolbuffers/protobuf/main/LICENSE")
+
     );
 
     private record License(String name, List<String> licenseUrls, List<String> noticeUrls) {

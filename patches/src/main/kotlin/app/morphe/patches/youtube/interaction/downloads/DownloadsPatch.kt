@@ -8,10 +8,8 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.youtube.layout.playerbuttons.addPlayerBottomButton
-import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
-import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.addTopControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -39,17 +37,21 @@ private val downloadsResourcePatch = resourcePatch {
                     TextPreference(
                         "morphe_external_downloader_name",
                         tag = "app.morphe.extension.youtube.settings.preference.ExternalDownloaderPreference",
-                    ),
-                ),
-            ),
+                    )
+                )
+            )
         )
 
         copyResources(
             "downloads",
             ResourceGroup("drawable", "morphe_yt_download_button.xml"),
         )
+    }
 
-        addLegacyBottomControl("downloads")
+    finalize {
+        addTopControl("downloads",
+            "@+id/morphe_external_download_button",
+            "@+id/morphe_external_download_button")
     }
 }
 
@@ -66,16 +68,13 @@ val downloadsPatch = bytecodePatch(
     dependsOn(
         downloadsResourcePatch,
         videoInformationPatch,
-        playerOverlayButtonsHookPatch,
         legacyPlayerControlsPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        addPlayerBottomButton(BUTTON_DESCRIPTOR)
-
-        initializeBottomControl(BUTTON_DESCRIPTOR)
+        initializeTopControl(BUTTON_DESCRIPTOR)
         injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
 
         // Main activity is used to launch downloader intent.
@@ -94,7 +93,7 @@ val downloadsPatch = bytecodePatch(
                     return-void
                     :show_native_downloader
                     nop
-                """,
+                """
             )
         }
     }
