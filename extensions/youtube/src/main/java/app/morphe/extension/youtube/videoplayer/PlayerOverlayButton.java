@@ -35,16 +35,69 @@ public class PlayerOverlayButton {
      */
     private static float getButtonWidthPercentage(int totalButtons) {
         return switch (totalButtons) {
-            case 1 -> 1.0f;
             case 2 -> 0.95f;
             case 3 -> 0.90f;
             case 4 -> 0.85f;
-            default -> 1.0f / totalButtons;
+            default -> 1.0f;
         };
     }
 
     private static WeakReference<ViewTreeObserver> buttonObserver = new WeakReference<>(null);
     private static int newButtonCount;
+
+    private static WeakReference<View> chapterTitleContainerRef = new WeakReference<>(null);
+    private static int lastChapterMarginEnd = -1;
+
+    /**
+     * Resolves the chapter title container from the source button's parent hierarchy,
+     * so its end margin can be adjusted dynamically to avoid overlap with overlay buttons.
+     */
+    private static void resolveChapterTitleContainer(ViewGroup sourceButtonViewGroup) {
+        if (chapterTitleContainerRef.get() != null) return;
+
+        final int chapterId = ResourceUtils.getIdentifier(
+                ResourceType.ID, "time_bar_chapter_title_container");
+        if (chapterId == 0) return;
+
+        // Walk up the hierarchy until we find the view or reach the root.
+        ViewGroup parent = sourceButtonViewGroup;
+        while (parent != null) {
+            View found = parent.findViewById(chapterId);
+            if (found != null) {
+                chapterTitleContainerRef = new WeakReference<>(found);
+                return;
+            }
+            if (parent.getParent() instanceof ViewGroup vg) {
+                parent = vg;
+            } else {
+                break;
+            }
+        }
+    }
+
+    /**
+     * Adjusts the end margin of the chapter title container so it doesn't overlap
+     * the overlay buttons. Called every pre-draw; skips the layout pass if unchanged.
+     */
+    private static void updateChapterContainerMargin(View sourceButton, int totalButtons) {
+        View chapterContainer = chapterTitleContainerRef.get();
+        if (chapterContainer == null) return;
+
+        final int buttonWidth = sourceButton.getWidth();
+        if (buttonWidth == 0) return;
+
+        final int reservedWidth = (int) (totalButtons
+                * getButtonWidthPercentage(totalButtons)
+                * buttonWidth);
+
+        if (lastChapterMarginEnd == reservedWidth) return;
+        lastChapterMarginEnd = reservedWidth;
+
+        if (chapterContainer.getLayoutParams() instanceof ViewGroup.MarginLayoutParams lp) {
+            lp.setMarginEnd(reservedWidth);
+            chapterContainer.setLayoutParams(lp);
+        }
+    }
 
     public static void addButton(View sourceButton,
                                  String drawableName,
@@ -53,6 +106,8 @@ public class PlayerOverlayButton {
         Utils.verifyOnMainThread();
 
         if (sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup) {
+            resolveChapterTitleContainer(sourceButtonViewGroup);
+
             ViewTreeObserver observer = sourceButton.getViewTreeObserver();
             if (observer != buttonObserver.get()) {
                 newButtonCount = 0;
@@ -133,6 +188,8 @@ public class PlayerOverlayButton {
                                 button.setY(positionY);
                             }
 
+                            updateChapterContainerMargin(sourceButton, newButtonCount);
+
                             return true;
                         }
                     }
@@ -156,6 +213,8 @@ public class PlayerOverlayButton {
         if (!(sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup)) {
             return null;
         }
+
+        resolveChapterTitleContainer(sourceButtonViewGroup);
 
         ViewTreeObserver observer = sourceButton.getViewTreeObserver();
         if (observer != buttonObserver.get()) {
@@ -236,6 +295,8 @@ public class PlayerOverlayButton {
                 if (textOverlay.getY() != positionY) {
                     textOverlay.setY(positionY);
                 }
+
+                updateChapterContainerMargin(sourceButton, newButtonCount);
 
                 return true;
             }
