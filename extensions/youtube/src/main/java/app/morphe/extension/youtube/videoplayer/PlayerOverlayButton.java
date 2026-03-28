@@ -43,61 +43,88 @@ public class PlayerOverlayButton {
         };
     }
 
-    private static WeakReference<ViewTreeObserver> buttonObserver = new WeakReference<>(null);
-    private static int totalButtonCount;
-
-    private static WeakReference<View> chapterTitleContainerRef = new WeakReference<>(null);
-    private static int lastChapterMarginEnd = -1;
-
     /**
-     * Resolves the chapter title container from the source button's parent hierarchy,
-     * so its end margin can be adjusted dynamically to avoid overlap with overlay buttons.
+     * Tracks a single container view whose end margin must be kept clear of overlay buttons.
+     * <p>
+     * Call {@link #resolve} once when a button is first added to locate the view, then call
+     * {@link #updateMargin} on every pre-draw pass to keep the margin in sync with the
+     * current button count and width.
      */
-    private static void updateChapterTitleContainer(ViewGroup sourceButtonViewGroup) {
-        if (chapterTitleContainerRef.get() != null) return;
+    private static final class MarginAdjustableContainer {
+        private final String resourceName;
+        private WeakReference<View> containerRef = new WeakReference<>(null);
+        private int lastMarginEnd = -1;
 
-        final int chapterId = ResourceUtils.getIdentifier(
-                ResourceType.ID, "time_bar_chapter_title_container");
-        if (chapterId == 0) return;
+        MarginAdjustableContainer(String resourceName) {
+            this.resourceName = resourceName;
+        }
 
-        // Walk up the hierarchy until we find the view or reach the root.
-        ViewGroup parent = sourceButtonViewGroup;
-        while (true) {
-            if (parent.getParent() instanceof ViewGroup vg) {
+        /**
+         * Walks up the view hierarchy from {@code sourceButtonViewGroup} to find the
+         * target view by resource name. No-op if already resolved or the ID is missing.
+         */
+        void resolve(ViewGroup sourceButtonViewGroup) {
+            if (containerRef.get() != null) return;
+
+            final int id = ResourceUtils.getIdentifier(ResourceType.ID, resourceName);
+            if (id == 0) return;
+
+            ViewGroup parent = sourceButtonViewGroup;
+            while (parent.getParent() instanceof ViewGroup vg) {
                 parent = vg;
-            } else {
-                break;
+                View found = parent.findViewById(id);
+                if (found != null) {
+                    containerRef = new WeakReference<>(found);
+                    return;
+                }
             }
-            View found = parent.findViewById(chapterId);
-            if (found != null) {
-                chapterTitleContainerRef = new WeakReference<>(found);
-                return;
+        }
+
+        /**
+         * Adjusts the container's end margin to reserve space for {@code totalButtons}
+         * overlay buttons of the same width as {@code sourceButton}.
+         * Skips the layout pass when the computed value hasn't changed.
+         */
+        void updateMargin(View sourceButton, int totalButtons) {
+            View container = containerRef.get();
+            if (container == null) return;
+
+            final int buttonWidth = sourceButton.getWidth();
+            if (buttonWidth == 0) return;
+
+            final int reservedWidth = (int) (totalButtons
+                    * getButtonWidthPercentage(totalButtons)
+                    * buttonWidth);
+
+            if (lastMarginEnd == reservedWidth) return;
+            lastMarginEnd = reservedWidth;
+
+            if (container.getLayoutParams() instanceof ViewGroup.MarginLayoutParams lp) {
+                lp.setMarginEnd(reservedWidth);
+                container.setLayoutParams(lp);
             }
         }
     }
 
-    /**
-     * Adjusts the end margin of the chapter title container so it doesn't overlap
-     * the overlay buttons. Called every pre-draw; skips the layout pass if unchanged.
-     */
-    private static void updateChapterContainerMargin(View sourceButton, int totalButtons) {
-        View chapterContainer = chapterTitleContainerRef.get();
-        if (chapterContainer == null) return;
+    private static WeakReference<ViewTreeObserver> buttonObserver = new WeakReference<>(null);
+    private static int totalButtonCount;
 
-        final int buttonWidth = sourceButton.getWidth();
-        if (buttonWidth == 0) return;
+    /** Bottom bar: chapter chip container ({@code time_bar_chapter_title_container}). */
+    private static final MarginAdjustableContainer chapterTitleContainer =
+            new MarginAdjustableContainer("time_bar_chapter_title_container");
 
-        final int reservedWidth = (int) (totalButtons
-                * getButtonWidthPercentage(totalButtons)
-                * buttonWidth);
+    /** Top bar: video title container ({@code player_video_heading}). */
+    private static final MarginAdjustableContainer videoHeadingContainer =
+            new MarginAdjustableContainer("player_video_heading");
 
-        if (lastChapterMarginEnd == reservedWidth) return;
-        lastChapterMarginEnd = reservedWidth;
+    private static void resolveContainers(ViewGroup sourceButtonViewGroup) {
+        chapterTitleContainer.resolve(sourceButtonViewGroup);
+        videoHeadingContainer.resolve(sourceButtonViewGroup);
+    }
 
-        if (chapterContainer.getLayoutParams() instanceof ViewGroup.MarginLayoutParams lp) {
-            lp.setMarginEnd(reservedWidth);
-            chapterContainer.setLayoutParams(lp);
-        }
+    private static void updateContainerMargins(View sourceButton, int totalButtons) {
+        chapterTitleContainer.updateMargin(sourceButton, totalButtons);
+        videoHeadingContainer.updateMargin(sourceButton, totalButtons);
     }
 
     private static ViewTreeObserver updateViewObserver(View button) {
@@ -120,7 +147,7 @@ public class PlayerOverlayButton {
             return;
         }
 
-        updateChapterTitleContainer(sourceButtonViewGroup);
+        resolveContainers(sourceButtonViewGroup);
 
         ImageView button = new ImageView(sourceButton.getContext());
         button.setId(View.generateViewId());
@@ -152,7 +179,7 @@ public class PlayerOverlayButton {
             return null;
         }
 
-        updateChapterTitleContainer(sourceButtonViewGroup);
+        resolveContainers(sourceButtonViewGroup);
 
         // TextView itself is the tappable surface.
         TextView textOverlay = new TextView(sourceButton.getContext());
@@ -192,7 +219,7 @@ public class PlayerOverlayButton {
                 View source = sourceRef.get();
                 View button = newButtonRef.get();
                 if (source == null || button == null) {
-                    Logger.printException(() ->"Player buttons is null, source: " + source
+                    Logger.printException(() -> "Player buttons is null, source: " + source
                             + " button: " + button);
                     return true;
                 }
@@ -254,7 +281,7 @@ public class PlayerOverlayButton {
                     button.setY(positionY);
                 }
 
-                updateChapterContainerMargin(source, totalButtonCount);
+                updateContainerMargins(source, totalButtonCount);
 
                 return true;
             }
