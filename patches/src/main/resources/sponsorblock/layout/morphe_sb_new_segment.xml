@@ -23,7 +23,7 @@
                 android:contentDescription="@null"
                 android:padding="14.0dip"
                 android:scaleType="fitCenter"
-                android:src="@drawable/morphe_sb_backward" />
+                android:src="@drawable/morphe_sb_backward_bold" />
 
             <ImageButton
                 android:id="@+id/morphe_sb_new_segment_forward"
@@ -33,7 +33,7 @@
                 android:contentDescription="@null"
                 android:padding="14.0dip"
                 android:scaleType="fitCenter"
-                android:src="@drawable/morphe_sb_forward" />
+                android:src="@drawable/morphe_sb_forward_bold" />
 
             <ImageButton
                 android:id="@+id/morphe_sb_new_segment_adjust"
@@ -43,7 +43,7 @@
                 android:contentDescription="@null"
                 android:padding="14.0dip"
                 android:scaleType="fitCenter"
-                android:src="@drawable/morphe_sb_adjust" />
+                android:src="@drawable/morphe_sb_adjust_bold" />
         </LinearLayout>
 
         <View
@@ -68,7 +68,7 @@
                 android:contentDescription="@null"
                 android:padding="14.0dip"
                 android:scaleType="fitCenter"
-                android:src="@drawable/morphe_sb_compare" />
+                android:src="@drawable/morphe_sb_compare_bold" />
 
             <ImageButton
                 android:id="@+id/morphe_sb_new_segment_edit"
@@ -78,7 +78,7 @@
                 android:contentDescription="@null"
                 android:padding="14.0dip"
                 android:scaleType="fitCenter"
-                android:src="@drawable/morphe_sb_edit" />
+                android:src="@drawable/morphe_sb_edit_bold" />
 
             <ImageButton
                 android:id="@+id/morphe_sb_new_segment_publish"
@@ -88,7 +88,7 @@
                 android:contentDescription="@null"
                 android:padding="14.0dip"
                 android:scaleType="fitCenter"
-                android:src="@drawable/morphe_sb_publish" />
+                android:src="@drawable/morphe_sb_publish_bold" />
         </LinearLayout>
     </LinearLayout>
 </merge>

@@ -14,7 +14,7 @@
         android:paddingTop="6.0dp"
         android:paddingBottom="0dp"
         android:scaleType="center"
-        android:src="@drawable/morphe_yt_copy"
+        android:src="@drawable/morphe_yt_copy_bold"
         yt:layout_constraintBottom_toTopOf="@+id/quick_actions_container"
         yt:layout_constraintRight_toLeftOf="@+id/fullscreen_button" />
 </android.support.constraint.ConstraintLayout>

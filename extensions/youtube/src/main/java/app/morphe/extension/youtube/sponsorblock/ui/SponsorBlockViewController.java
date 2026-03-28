@@ -115,6 +115,8 @@ public class SponsorBlockViewController {
             NewSegmentLayout newSegmentLayout = Objects.requireNonNull(layout.findViewById(
                     ResourceUtils.getIdentifier(ResourceType.ID, "morphe_sb_new_segment_view")));
             newSegmentLayoutRef = new WeakReference<>(newSegmentLayout);
+
+
             newSegmentLayout.updateLayout();
 
             newSegmentLayoutVisible = false;

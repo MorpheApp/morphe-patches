@@ -3,6 +3,7 @@ package app.morphe.extension.youtube.sponsorblock.ui;
 import static app.morphe.extension.shared.ResourceUtils.getColor;
 import static app.morphe.extension.shared.ResourceUtils.getDimensionPixelSize;
 import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
+import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.RESTORE_OLD_PLAYER_BUTTONS;
 
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -21,6 +22,7 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
+import app.morphe.extension.youtube.videoplayer.PlayerOverlayButton;
 
 public final class NewSegmentLayout extends FrameLayout {
     private static final ColorStateList rippleColorStateList = new ColorStateList(
@@ -54,6 +56,7 @@ public final class NewSegmentLayout extends FrameLayout {
         initializeButton(
                 context,
                 "morphe_sb_new_segment_rewind",
+                "morphe_sb_backward",
                 () -> VideoInformation.seekToRelative(-Settings.SB_CREATE_NEW_SEGMENT_STEP.get()),
                 "Rewind button clicked"
         );
@@ -61,6 +64,7 @@ public final class NewSegmentLayout extends FrameLayout {
         initializeButton(
                 context,
                 "morphe_sb_new_segment_forward",
+                "morphe_sb_forward",
                 () -> VideoInformation.seekToRelative(Settings.SB_CREATE_NEW_SEGMENT_STEP.get()),
                 "Forward button clicked"
         );
@@ -68,6 +72,7 @@ public final class NewSegmentLayout extends FrameLayout {
         initializeButton(
                 context,
                 "morphe_sb_new_segment_adjust",
+                "morphe_sb_adjust",
                 SponsorBlockUtils::onMarkLocationClicked,
                 "Adjust button clicked"
         );
@@ -75,6 +80,7 @@ public final class NewSegmentLayout extends FrameLayout {
         initializeButton(
                 context,
                 "morphe_sb_new_segment_compare",
+                "morphe_sb_compare",
                 SponsorBlockUtils::onPreviewClicked,
                 "Compare button clicked"
         );
@@ -82,6 +88,7 @@ public final class NewSegmentLayout extends FrameLayout {
         initializeButton(
                 context,
                 "morphe_sb_new_segment_edit",
+                "morphe_sb_edit",
                 SponsorBlockUtils::onEditByHandClicked,
                 "Edit button clicked"
         );
@@ -89,6 +96,7 @@ public final class NewSegmentLayout extends FrameLayout {
         initializeButton(
                 context,
                 "morphe_sb_new_segment_publish",
+                "morphe_sb_publish",
                 SponsorBlockUtils::onPublishClicked,
                 "Publish button clicked"
         );
@@ -105,9 +113,20 @@ public final class NewSegmentLayout extends FrameLayout {
      * @param handler                The handler for the button's click event.
      * @param debugMessage           The debug message to print when the button is clicked.
      */
-    private void initializeButton(final Context context, final String resourceIdentifierName,
-                                  final ButtonOnClickHandlerFunction handler, final String debugMessage) {
-        ImageButton button = findViewById(ResourceUtils.getIdentifierOrThrow(context, ResourceType.ID, resourceIdentifierName));
+    private void initializeButton(Context context,
+                                  String resourceIdentifierName,
+                                  String imageResourceName,
+                                  ButtonOnClickHandlerFunction handler,
+                                  String debugMessage) {
+        ImageButton button = findViewById(ResourceUtils.getIdentifierOrThrow(
+                context, ResourceType.ID, resourceIdentifierName));
+
+        final int background = ResourceUtils.getIdentifierOrThrow(
+                ResourceType.DRAWABLE,
+                RESTORE_OLD_PLAYER_BUTTONS
+                        ? imageResourceName
+                        : imageResourceName + "_bold");
+        button.setImageResource(background);
 
         // Add ripple effect
         RippleDrawable rippleDrawable = new RippleDrawable(
