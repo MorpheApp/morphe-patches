@@ -19,9 +19,10 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
+import java.util.Date;
 import java.util.Deque;
+import java.util.Locale;
 import java.util.Objects;
-import java.util.Set;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -29,7 +30,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.ui.Dim;
-
 
 /**
  * Manages a buffer for storing debug logs from {@link Logger}.
@@ -50,37 +50,11 @@ public final class LogBufferManager {
     private static final Deque<String> logBuffer = new ConcurrentLinkedDeque<>();
     private static final AtomicInteger logBufferByteSize = new AtomicInteger();
 
-    /**
-     * A thread-safe, dynamic list of log prefixes that should be aggressively deduplicated.
-     */
-    private static final Set<String> SPAMMY_PREFIXES = Set.of(
-            "LithoFilterPatch:",
-            "SpoofVideoStreamsPatch:",
-            "EnableDebuggingPatch:"
-    );
-
-    @NonNull
     private static String getFilteredLogs() {
-        java.util.LinkedHashSet<String> uniqueNoisyLogs = new java.util.LinkedHashSet<>();
-        StringBuilder filteredOutput = new StringBuilder();
+        StringBuilder filteredOutput = new StringBuilder(logBufferByteSize.get());
 
         for (String log : logBuffer) {
-            boolean isSpammy = false;
-
-            for (String prefix : SPAMMY_PREFIXES) {
-                if (log.startsWith(prefix)) {
-                    isSpammy = true;
-                    break;
-                }
-            }
-
-            if (isSpammy) {
-                if (uniqueNoisyLogs.add(log)) {
-                    filteredOutput.append(log).append('\n');
-                }
-            } else {
-                filteredOutput.append(log).append('\n');
-            }
+            filteredOutput.append(log).append('\n');
         }
 
         return filteredOutput.toString().trim();
@@ -153,7 +127,8 @@ public final class LogBufferManager {
             String appName = Utils.getApplicationName();
             String safeAppName = appName.replaceAll("\\s+", "_");
 
-            String formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(new java.util.Date());
+            String formatDate = new java.text.SimpleDateFormat("" +
+                    "yyyy-MM-dd", Locale.US).format(new Date());
             String fileName = safeAppName + "_Debug_Logs_" + formatDate + ".txt";
 
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
@@ -304,11 +279,11 @@ public final class LogBufferManager {
 
                 @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
                 @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    final String query = s.toString().toLowerCase(java.util.Locale.ROOT);
+                    final String query = s.toString().toLowerCase(Locale.ROOT);
 
                     Drawable clearIcon = context.getDrawable(android.R.drawable.ic_menu_close_clear_cancel);
                     if (clearIcon != null) {
-                        int iconSize = (int) (20 * context.getResources().getDisplayMetrics().density);
+                        final int iconSize = Dim.dp20;
                         clearIcon.setBounds(0, 0, iconSize, iconSize);
                     }
                     searchBar.setCompoundDrawables(null, null, TextUtils.isEmpty(s) ? null : clearIcon, null);
@@ -325,16 +300,16 @@ public final class LogBufferManager {
                             android.text.SpannableStringBuilder ssb = new android.text.SpannableStringBuilder();
 
                             for (String line : logLines) {
-                                String lowerLine = line.toLowerCase(java.util.Locale.ROOT);
+                                String lowerLine = line.toLowerCase(Locale.ROOT);
 
                                 if (lowerLine.contains(query)) {
-                                    int startOffset = ssb.length();
+                                    final int startOffset = ssb.length();
                                     ssb.append(line).append('\n');
 
                                     int index = lowerLine.indexOf(query);
                                     while (index >= 0) {
-                                        int matchStart = startOffset + index;
-                                        int matchEnd = matchStart + query.length();
+                                        final int matchStart = startOffset + index;
+                                        final int matchEnd = matchStart + query.length();
 
                                         ssb.setSpan(new android.text.style.BackgroundColorSpan(android.graphics.Color.LTGRAY),
                                                 matchStart, matchEnd, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);

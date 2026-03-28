@@ -54,6 +54,7 @@ import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.ui.CustomDialog;
+import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractPreferenceFragment extends PreferenceFragment {
@@ -424,9 +425,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
      */
     @NonNull
     private Button createDialogButton(Context context, String text, int marginLeft, int marginRight, View.OnClickListener listener) {
-        int height = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 36f, context.getResources().getDisplayMetrics());
-        int paddingHorizontal = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
-        float radius = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 20f, context.getResources().getDisplayMetrics());
+        final int height = Dim.dp32;
+        final int paddingHorizontal = Dim.dp16;
+        final float radius = Dim.dp20;
 
         Button btn = new Button(context, null, 0);
         btn.setText(text);
