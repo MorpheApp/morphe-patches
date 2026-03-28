@@ -11,6 +11,7 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.RESTORE_OLD_PLAYER_BUTTONS;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -29,9 +30,15 @@ public class LoopVideoButton {
     private static LegacyPlayerControlButton legacy;
 
     private static final int LOOP_VIDEO_ON = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.DRAWABLE, "morphe_loop_video_button_on");
+            ResourceType.DRAWABLE,
+            RESTORE_OLD_PLAYER_BUTTONS
+                    ? "morphe_loop_video_button_on"
+                    : "morphe_loop_video_button_on_bold");
     private static final int LOOP_VIDEO_OFF = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.DRAWABLE,"morphe_loop_video_button_off");
+            ResourceType.DRAWABLE,
+            RESTORE_OLD_PLAYER_BUTTONS
+                    ? "morphe_loop_video_button_off"
+                    : "morphe_loop_video_button_off_bold");
 
     /**
      * Injection point.

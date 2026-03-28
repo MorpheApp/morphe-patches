@@ -32,7 +32,7 @@ import kotlin.Unit;
 
 public class LegacyPlayerControlButton {
 
-    private static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
+    public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
 
     public interface PlayerControlButtonStatus {
         /**
