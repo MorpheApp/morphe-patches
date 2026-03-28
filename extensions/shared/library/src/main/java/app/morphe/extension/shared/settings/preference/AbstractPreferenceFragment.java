@@ -425,7 +425,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
      */
     @NonNull
     private Button createDialogButton(Context context, String text, int marginLeft, int marginRight, View.OnClickListener listener) {
-        final int height = Dim.dp32;
+        final int height = Dim.dp36;
         final int paddingHorizontal = Dim.dp16;
         final float radius = Dim.dp20;
 
@@ -473,12 +473,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     true // Dismiss dialog when onNeutralClick.
             );
 
-            LinearLayout fileButtonsContainer = getLinearLayout(context);
-            int margin = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 4f, context.getResources().getDisplayMetrics());
-
+            final int margin = Dim.dp4;
             Button btnExport = createDialogButton(context, str("morphe_settings_export_file"), 0, margin, v -> exportActivity());
             Button btnImport = createDialogButton(context, str("morphe_settings_import_file"), margin, 0, v -> importActivity());
 
+            LinearLayout fileButtonsContainer = getLinearLayout(context);
             fileButtonsContainer.addView(btnExport);
             fileButtonsContainer.addView(btnImport);
 
@@ -513,7 +512,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         fileButtonsContainer.setOrientation(LinearLayout.HORIZONTAL);
         LinearLayout.LayoutParams fbParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        int marginTop = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
+        final int marginTop = Dim.dp16;
         fbParams.setMargins(0, marginTop, 0, 0);
         fileButtonsContainer.setLayoutParams(fbParams);
         return fileButtonsContainer;

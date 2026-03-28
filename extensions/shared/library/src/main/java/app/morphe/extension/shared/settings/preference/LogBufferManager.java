@@ -3,17 +3,29 @@ package app.morphe.extension.shared.settings.preference;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Editable;
+import android.text.InputType;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.style.BackgroundColorSpan;
+import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
@@ -27,8 +39,11 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
@@ -45,7 +60,7 @@ public final class LogBufferManager {
 
     /** Used for the native file picker routing. */
     public static final int WRITE_LOGS_REQUEST_CODE = 44;
-    public static String pendingLogsToExport = null;
+    private static String pendingLogsToExport = null;
 
     private static final Deque<String> logBuffer = new ConcurrentLinkedDeque<>();
     private static final AtomicInteger logBufferByteSize = new AtomicInteger();
@@ -127,7 +142,7 @@ public final class LogBufferManager {
             String appName = Utils.getApplicationName();
             String safeAppName = appName.replaceAll("\\s+", "_");
 
-            String formatDate = new java.text.SimpleDateFormat("" +
+            String formatDate = new java.text.SimpleDateFormat(
                     "yyyy-MM-dd", Locale.US).format(new Date());
             String fileName = safeAppName + "_Debug_Logs_" + formatDate + ".txt";
 
@@ -138,8 +153,8 @@ public final class LogBufferManager {
 
             if (AbstractPreferenceFragment.instance != null) {
                 AbstractPreferenceFragment.instance.startActivityForResult(intent, WRITE_LOGS_REQUEST_CODE);
-            } else if (context instanceof android.app.Activity) {
-                ((android.app.Activity) context).startActivityForResult(intent, WRITE_LOGS_REQUEST_CODE);
+            } else if (context instanceof Activity) {
+                ((Activity) context).startActivityForResult(intent, WRITE_LOGS_REQUEST_CODE);
             } else {
                 Utils.showToastShort("Cannot open file manager from this context.");
             }
@@ -151,7 +166,7 @@ public final class LogBufferManager {
     /**
      * Called from AbstractPreferenceFragment after the user picks a save location.
      */
-    public static void saveLogsToUri(Context context, android.net.Uri uri) {
+    public static void saveLogsToUri(Context context, Uri uri) {
         if (pendingLogsToExport == null) return;
 
         try {
@@ -160,11 +175,12 @@ public final class LogBufferManager {
                     out.write(pendingLogsToExport.getBytes(java.nio.charset.StandardCharsets.UTF_8));
                 }
             }
-            if (app.morphe.extension.shared.ResourceUtils.getIdentifier(app.morphe.extension.shared.ResourceType.STRING, "morphe_debug_export_logs_success") != 0) {
-                Utils.showToastLong(str("morphe_debug_export_logs_success"));
-            } else {
-                Utils.showToastLong("Debug logs exported successfully");
-            }
+
+            String messageKey = "morphe_debug_export_logs_success";
+            Utils.showToastLong(
+                    ResourceUtils.getIdentifier(ResourceType.STRING, messageKey) != 0
+                            ? str(messageKey)
+                            : "Debug logs exported successfully");
         } catch (Exception e) {
             Utils.showToastLong("Failed to export debug logs");
             Logger.printException(() -> "saveLogsToUri failure", e);
@@ -200,22 +216,22 @@ public final class LogBufferManager {
     }
 
     @NonNull
-    private static android.widget.Button createDialogButton(Context context, String text, View.OnClickListener listener) {
-        int height = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 36f, context.getResources().getDisplayMetrics());
-        int paddingHorizontal = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
-        float radius = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 20f, context.getResources().getDisplayMetrics());
+    private static Button createDialogButton(Context context, String text, View.OnClickListener listener) {
+        final int height = Dim.dp36;
+        final int paddingHorizontal = Dim.dp16;
+        final float radius = Dim.dp20;
 
-        android.widget.Button btn = new android.widget.Button(context, null, 0);
+        Button btn = new Button(context, null, 0);
         btn.setText(text);
         btn.setAllCaps(false);
         btn.setTextSize(14);
         btn.setSingleLine(true);
-        btn.setEllipsize(android.text.TextUtils.TruncateAt.END);
+        btn.setEllipsize(TextUtils.TruncateAt.END);
         btn.setGravity(Gravity.CENTER);
         btn.setPadding(paddingHorizontal, 0, paddingHorizontal, 0);
-        btn.setTextColor(Utils.isDarkModeEnabled() ? android.graphics.Color.WHITE : android.graphics.Color.BLACK);
+        btn.setTextColor(Utils.isDarkModeEnabled() ? Color.WHITE : Color.BLACK);
 
-        android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable();
+        GradientDrawable bg = new GradientDrawable();
         bg.setCornerRadius(radius);
         bg.setColor(Utils.getCancelOrNeutralButtonBackgroundColor());
         btn.setBackground(bg);
@@ -247,7 +263,7 @@ public final class LogBufferManager {
 
             EditText logViewer = createLogEditText(context, allLogs);
 
-            Pair<Dialog, LinearLayout> dialogPair = app.morphe.extension.shared.ui.CustomDialog.create(
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
                     str("morphe_debug_export_logs_title"),
                     null,
@@ -274,7 +290,7 @@ public final class LogBufferManager {
             searchBar.setLayoutParams(searchParams);
 
             searchBar.addTextChangedListener(new TextWatcher() {
-                final android.os.Handler searchHandler = new android.os.Handler(android.os.Looper.getMainLooper());
+                final Handler searchHandler = new Handler(Looper.getMainLooper());
                 Runnable searchRunnable;
 
                 @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -286,7 +302,8 @@ public final class LogBufferManager {
                         final int iconSize = Dim.dp20;
                         clearIcon.setBounds(0, 0, iconSize, iconSize);
                     }
-                    searchBar.setCompoundDrawables(null, null, TextUtils.isEmpty(s) ? null : clearIcon, null);
+                    searchBar.setCompoundDrawables(null, null,
+                            TextUtils.isEmpty(s) ? null : clearIcon, null);
 
                     if (searchRunnable != null) {
                         searchHandler.removeCallbacks(searchRunnable);
@@ -297,7 +314,7 @@ public final class LogBufferManager {
                         if (query.isEmpty()) {
                             resultText = allLogs;
                         } else {
-                            android.text.SpannableStringBuilder ssb = new android.text.SpannableStringBuilder();
+                            SpannableStringBuilder ssb = new SpannableStringBuilder();
 
                             for (String line : logLines) {
                                 String lowerLine = line.toLowerCase(Locale.ROOT);
@@ -311,10 +328,10 @@ public final class LogBufferManager {
                                         final int matchStart = startOffset + index;
                                         final int matchEnd = matchStart + query.length();
 
-                                        ssb.setSpan(new android.text.style.BackgroundColorSpan(android.graphics.Color.LTGRAY),
-                                                matchStart, matchEnd, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-                                        ssb.setSpan(new android.text.style.ForegroundColorSpan(android.graphics.Color.BLACK),
-                                                matchStart, matchEnd, android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                        ssb.setSpan(new BackgroundColorSpan(Color.LTGRAY),
+                                                matchStart, matchEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                                        ssb.setSpan(new ForegroundColorSpan(Color.BLACK),
+                                                matchStart, matchEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
                                         index = lowerLine.indexOf(query, index + query.length());
                                     }
@@ -353,7 +370,7 @@ public final class LogBufferManager {
             fbParams.setMargins(0, margin, 0, 0);
             fileButtonsContainer.setLayoutParams(fbParams);
 
-            android.widget.Button btnExport = createDialogButton(context, str("morphe_debug_export_logs_file"),
+            Button btnExport = createDialogButton(context, str("morphe_debug_export_logs_file"),
                     v -> {
                         exportToFile(context, logViewer.getText().toString());
                         dialogPair.first.dismiss();
@@ -376,9 +393,9 @@ public final class LogBufferManager {
         editText.setTextIsSelectable(true);
         editText.setFocusable(false);
         editText.setFocusableInTouchMode(false);
-        editText.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
-                android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE |
-                android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT |
+                InputType.TYPE_TEXT_FLAG_MULTI_LINE |
+                InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         editText.setSingleLine(false);
         editText.setTextSize(12);
         return editText;
