@@ -9,28 +9,23 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Looper;
-import android.text.Editable;
-import android.text.InputType;
-import android.text.SpannableStringBuilder;
-import android.text.Spanned;
-import android.text.TextUtils;
-import android.text.TextWatcher;
+import android.text.*;
 import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
 import android.util.Pair;
-import android.view.Gravity;
 import android.view.MotionEvent;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
+import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Deque;
 import java.util.Locale;
@@ -142,7 +137,7 @@ public final class LogBufferManager {
             String appName = Utils.getApplicationName();
             String safeAppName = appName.replaceAll("\\s+", "_");
 
-            String formatDate = new java.text.SimpleDateFormat(
+            String formatDate = new SimpleDateFormat(
                     "yyyy-MM-dd", Locale.US).format(new Date());
             String fileName = safeAppName + "_Debug_Logs_" + formatDate + ".txt";
 
@@ -170,9 +165,9 @@ public final class LogBufferManager {
         if (pendingLogsToExport == null) return;
 
         try {
-            try (java.io.OutputStream out = context.getContentResolver().openOutputStream(uri, "rwt")) {
+            try (OutputStream out = context.getContentResolver().openOutputStream(uri, "rwt")) {
                 if (out != null) {
-                    out.write(pendingLogsToExport.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+                    out.write(pendingLogsToExport.getBytes(StandardCharsets.UTF_8));
                 }
             }
 
@@ -215,35 +210,6 @@ public final class LogBufferManager {
         clearLogBufferData();
     }
 
-    @NonNull
-    private static Button createDialogButton(Context context, String text, View.OnClickListener listener) {
-        final int height = Dim.dp36;
-        final int paddingHorizontal = Dim.dp16;
-        final float radius = Dim.dp20;
-
-        Button btn = new Button(context, null, 0);
-        btn.setText(text);
-        btn.setAllCaps(false);
-        btn.setTextSize(14);
-        btn.setSingleLine(true);
-        btn.setEllipsize(TextUtils.TruncateAt.END);
-        btn.setGravity(Gravity.CENTER);
-        btn.setPadding(paddingHorizontal, 0, paddingHorizontal, 0);
-        btn.setTextColor(Utils.isDarkModeEnabled() ? Color.WHITE : Color.BLACK);
-
-        GradientDrawable bg = new GradientDrawable();
-        bg.setCornerRadius(radius);
-        bg.setColor(Utils.getCancelOrNeutralButtonBackgroundColor());
-        btn.setBackground(bg);
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, height, 1.0f);
-        params.setMargins(0, 0, 0, 0);
-        btn.setLayoutParams(params);
-        btn.setOnClickListener(listener);
-
-        return btn;
-    }
-
     @SuppressLint("ClickableViewAccessibility")
     public static void showLogDialog(Context context) {
         try {
@@ -268,7 +234,7 @@ public final class LogBufferManager {
                     str("morphe_debug_export_logs_title"),
                     null,
                     logViewer,
-                    str("morphe_debug_export_logs_copy"),
+                    str("morphe_settings_import_copy"),
                     () -> exportToClipboard(logViewer.getText().toString()),
                     () -> {},
                     str("morphe_debug_export_logs_clear"),
@@ -370,11 +336,13 @@ public final class LogBufferManager {
             fbParams.setMargins(0, margin, 0, 0);
             fileButtonsContainer.setLayoutParams(fbParams);
 
-            Button btnExport = createDialogButton(context, str("morphe_debug_export_logs_file"),
-                    v -> {
-                        exportToFile(context, logViewer.getText().toString());
-                        dialogPair.first.dismiss();
-                    });
+            Button btnExport = CustomDialog.createButton(context, dialogPair.first,
+                    str("morphe_debug_export_logs_file"),
+                    () -> exportToFile(context, logViewer.getText().toString()),
+                    false, true);
+            LinearLayout.LayoutParams btnExportParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp36);
+            btnExport.setLayoutParams(btnExportParams);
             fileButtonsContainer.addView(btnExport);
             LinearLayout mainLayout = dialogPair.second;
             mainLayout.addView(searchBar, 1);
