@@ -52,7 +52,7 @@ public class PlayerOverlayButton {
      * Resolves the chapter title container from the source button's parent hierarchy,
      * so its end margin can be adjusted dynamically to avoid overlap with overlay buttons.
      */
-    private static void resolveChapterTitleContainer(ViewGroup sourceButtonViewGroup) {
+    private static void updateChapterTitleContainer(ViewGroup sourceButtonViewGroup) {
         if (chapterTitleContainerRef.get() != null) return;
 
         final int chapterId = ResourceUtils.getIdentifier(
@@ -106,7 +106,7 @@ public class PlayerOverlayButton {
         Utils.verifyOnMainThread();
 
         if (sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup) {
-            resolveChapterTitleContainer(sourceButtonViewGroup);
+            updateChapterTitleContainer(sourceButtonViewGroup);
 
             ViewTreeObserver observer = sourceButton.getViewTreeObserver();
             if (observer != buttonObserver.get()) {
@@ -125,74 +125,7 @@ public class PlayerOverlayButton {
             button.setOnLongClickListener(onLongClickListener);
 
             observer.addOnPreDrawListener(
-                    new ViewTreeObserver.OnPreDrawListener() {
-                        // Track the ConstantState of the source background to detect real drawable changes.
-                        Drawable.ConstantState sourceBackgroundSnapshot;
-
-                        @Override
-                        public boolean onPreDraw() {
-                            final int sourcePaddingLeft = sourceButton.getPaddingLeft();
-                            final int sourcePaddingTop = sourceButton.getPaddingTop();
-                            final int sourcePaddingRight = sourceButton.getPaddingRight();
-                            final int sourcePaddingBottom = sourceButton.getPaddingBottom();
-
-                            if (!(sourcePaddingLeft == button.getPaddingLeft()
-                                    && sourcePaddingTop == button.getPaddingTop()
-                                    && sourcePaddingRight == button.getPaddingRight()
-                                    && sourcePaddingBottom == button.getPaddingBottom())
-                            ) {
-                                button.setLayoutParams(sourceButton.getLayoutParams());
-                                button.setPadding(
-                                        sourcePaddingLeft,
-                                        sourcePaddingTop,
-                                        sourcePaddingRight,
-                                        sourcePaddingBottom
-                                );
-                            }
-
-                            Drawable sourceButtonBackground = sourceButton.getBackground();
-                            Drawable.ConstantState newConstantState = sourceButtonBackground != null
-                                    ? sourceButtonBackground.getConstantState()
-                                    : null;
-                            if (sourceBackgroundSnapshot != newConstantState) {
-                                // Use newDrawable() instead of mutate() so each button gets a
-                                // fully independent Drawable instance with its own hotspot/ripple
-                                // state. mutate() only isolates color/alpha state but still shares
-                                // the ConstantState hotspot, causing the ripple to fire on every
-                                // button that references the same source drawable simultaneously.
-                                Drawable newBackground = newConstantState != null
-                                        ? newConstantState.newDrawable().mutate()
-                                        : sourceButtonBackground;
-                                button.setBackground(newBackground);
-                                sourceBackgroundSnapshot = newConstantState;
-                            }
-
-                            final float sourceButtonAlpha = sourceButton.getAlpha();
-                            if (button.getAlpha() != sourceButtonAlpha) {
-                                button.setAlpha(sourceButtonAlpha);
-                            }
-
-                            final int sourceButtonVisibility = sourceButton.getVisibility();
-                            if (button.getVisibility() != sourceButtonVisibility) {
-                                button.setVisibility(sourceButtonVisibility);
-                            }
-
-                            final float xOffset = (int) (sourceButton.getX()
-                                    - (buttonCount * (getButtonWidthPercentage(newButtonCount) * sourceButton.getWidth())));
-                            if (button.getX() != xOffset) {
-                                button.setX(xOffset);
-                            }
-
-                            final float positionY = sourceButton.getY();
-                            if (button.getY() != positionY) {
-                                button.setY(positionY);
-                            }
-
-                            updateChapterContainerMargin(sourceButton, newButtonCount);
-
-                            return true;
-                        }
-                    }
+                    getOnPreDrawListener(sourceButton, button, buttonCount, button::setBackground)
             );
 
             sourceButtonViewGroup.addView(button);
@@ -214,7 +147,7 @@ public class PlayerOverlayButton {
             return null;
         }
 
-        resolveChapterTitleContainer(sourceButtonViewGroup);
+        updateChapterTitleContainer(sourceButtonViewGroup);
 
         ViewTreeObserver observer = sourceButton.getViewTreeObserver();
         if (observer != buttonObserver.get()) {
@@ -233,24 +166,39 @@ public class PlayerOverlayButton {
         textOverlay.setOnClickListener(onClickListener);
         textOverlay.setOnLongClickListener(onLongClickListener);
 
-        observer.addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+        observer.addOnPreDrawListener(
+                getOnPreDrawListener(sourceButton, textOverlay, buttonCount, textOverlay::setBackground)
+        );
+
+        sourceButtonViewGroup.addView(textOverlay);
+
+        return textOverlay;
+    }
+
+    private interface SetViewBackgroundInterface {
+        void setBackground(Drawable drawable);
+    }
+
+    private static ViewTreeObserver.OnPreDrawListener getOnPreDrawListener(
+            View source, View button, int buttonCount, SetViewBackgroundInterface setBackground) {
+        return new ViewTreeObserver.OnPreDrawListener() {
             // Track the ConstantState of the source background to detect real drawable changes.
             Drawable.ConstantState sourceBackgroundSnapshot;
 
             @Override
             public boolean onPreDraw() {
-                final int sourcePaddingLeft = sourceButton.getPaddingLeft();
-                final int sourcePaddingTop = sourceButton.getPaddingTop();
-                final int sourcePaddingRight = sourceButton.getPaddingRight();
-                final int sourcePaddingBottom = sourceButton.getPaddingBottom();
+                final int sourcePaddingLeft = source.getPaddingLeft();
+                final int sourcePaddingTop = source.getPaddingTop();
+                final int sourcePaddingRight = source.getPaddingRight();
+                final int sourcePaddingBottom = source.getPaddingBottom();
 
-                if (!(sourcePaddingLeft == textOverlay.getPaddingLeft()
-                        && sourcePaddingTop == textOverlay.getPaddingTop()
-                        && sourcePaddingRight == textOverlay.getPaddingRight()
-                        && sourcePaddingBottom == textOverlay.getPaddingBottom())
+                if (!(sourcePaddingLeft == button.getPaddingLeft()
+                        && sourcePaddingTop == button.getPaddingTop()
+                        && sourcePaddingRight == button.getPaddingRight()
+                        && sourcePaddingBottom == button.getPaddingBottom())
                 ) {
-                    textOverlay.setLayoutParams(sourceButton.getLayoutParams());
-                    textOverlay.setPadding(
+                    button.setLayoutParams(source.getLayoutParams());
+                    button.setPadding(
                             sourcePaddingLeft,
                             sourcePaddingTop,
                             sourcePaddingRight,
@@ -258,7 +206,7 @@ public class PlayerOverlayButton {
                     );
                 }
 
-                Drawable sourceButtonBackground = sourceButton.getBackground();
+                Drawable sourceButtonBackground = source.getBackground();
                 Drawable.ConstantState newConstantState = sourceButtonBackground != null
                         ? sourceButtonBackground.getConstantState()
                         : null;
@@ -271,39 +219,35 @@ public class PlayerOverlayButton {
                     Drawable newBackground = newConstantState != null
                             ? newConstantState.newDrawable().mutate()
                             : sourceButtonBackground;
-                    textOverlay.setBackground(newBackground);
+                    setBackground.setBackground(newBackground);
                     sourceBackgroundSnapshot = newConstantState;
                 }
 
-                final float sourceButtonAlpha = sourceButton.getAlpha();
-                if (textOverlay.getAlpha() != sourceButtonAlpha) {
-                    textOverlay.setAlpha(sourceButtonAlpha);
+                final float sourceButtonAlpha = source.getAlpha();
+                if (button.getAlpha() != sourceButtonAlpha) {
+                    button.setAlpha(sourceButtonAlpha);
                 }
 
-                final int sourceButtonVisibility = sourceButton.getVisibility();
-                if (textOverlay.getVisibility() != sourceButtonVisibility) {
-                    textOverlay.setVisibility(sourceButtonVisibility);
+                final int sourceButtonVisibility = source.getVisibility();
+                if (button.getVisibility() != sourceButtonVisibility) {
+                    button.setVisibility(sourceButtonVisibility);
                 }
 
-                final float xOffset = (int) (sourceButton.getX()
-                        - (buttonCount * (getButtonWidthPercentage(newButtonCount) * sourceButton.getWidth())));
-                if (textOverlay.getX() != xOffset) {
-                    textOverlay.setX(xOffset);
+                final float xOffset = (int) (source.getX()
+                        - (buttonCount * (getButtonWidthPercentage(newButtonCount) * source.getWidth())));
+                if (button.getX() != xOffset) {
+                    button.setX(xOffset);
                 }
 
-                final float positionY = sourceButton.getY();
-                if (textOverlay.getY() != positionY) {
-                    textOverlay.setY(positionY);
+                final float positionY = source.getY();
+                if (button.getY() != positionY) {
+                    button.setY(positionY);
                 }
 
-                updateChapterContainerMargin(sourceButton, newButtonCount);
+                updateChapterContainerMargin(source, newButtonCount);
 
                 return true;
             }
-        });
-
-        sourceButtonViewGroup.addView(textOverlay);
-
-        return textOverlay;
+        };
     }
 }
