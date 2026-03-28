@@ -353,7 +353,6 @@ val legacyPlayerControlsPatch = bytecodePatch(
         // Turn off a/b tests of ugly player buttons that don't match the style of custom player buttons.
         if (is_20_20_or_greater) {
             overrideExploderLayout(PlayerControlsFullscreenLargeButtonsFeatureFlagFingerprint)
-
         }
 
         if (is_20_28_or_greater) {

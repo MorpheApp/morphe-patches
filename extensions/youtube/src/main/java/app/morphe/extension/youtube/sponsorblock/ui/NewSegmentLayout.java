@@ -2,7 +2,7 @@ package app.morphe.extension.youtube.sponsorblock.ui;
 
 import static app.morphe.extension.shared.ResourceUtils.getColor;
 import static app.morphe.extension.shared.ResourceUtils.getDimensionPixelSize;
-import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
+import static app.morphe.extension.youtube.sponsorblock.ui.SkipSponsorButton.SB_BUTTON_EXTRA_VERTICAL_PADDING;
 import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.RESTORE_OLD_PLAYER_BUTTONS;
 
 import android.content.Context;
@@ -22,7 +22,6 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
-import app.morphe.extension.youtube.videoplayer.PlayerOverlayButton;
 
 public final class NewSegmentLayout extends FrameLayout {
     private static final ColorStateList rippleColorStateList = new ColorStateList(
@@ -101,7 +100,8 @@ public final class NewSegmentLayout extends FrameLayout {
                 "Publish button clicked"
         );
 
-        defaultBottomMargin = getDimensionPixelSize("brand_interaction_default_bottom_margin");
+        defaultBottomMargin = getDimensionPixelSize("brand_interaction_default_bottom_margin")
+                + SB_BUTTON_EXTRA_VERTICAL_PADDING;
         ctaBottomMargin = getDimensionPixelSize("brand_interaction_cta_bottom_margin");
     }
 

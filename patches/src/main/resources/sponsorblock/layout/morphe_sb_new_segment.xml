@@ -7,7 +7,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="4.0dip">
+        android:padding="0dip">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
                 android:layout_height="52.0dip"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
-                android:padding="14.0dip"
+                android:padding="10.0dip"
                 android:scaleType="fitCenter"
                 android:src="@drawable/morphe_sb_backward_bold" />
 
@@ -31,7 +31,7 @@
                 android:layout_height="52.0dip"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
-                android:padding="14.0dip"
+                android:padding="10.0dip"
                 android:scaleType="fitCenter"
                 android:src="@drawable/morphe_sb_forward_bold" />
 
@@ -41,7 +41,7 @@
                 android:layout_height="52.0dip"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
-                android:padding="14.0dip"
+                android:padding="10.0dip"
                 android:scaleType="fitCenter"
                 android:src="@drawable/morphe_sb_adjust_bold" />
         </LinearLayout>
@@ -66,7 +66,7 @@
                 android:layout_height="52.0dip"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
-                android:padding="14.0dip"
+                android:padding="10.0dip"
                 android:scaleType="fitCenter"
                 android:src="@drawable/morphe_sb_compare_bold" />
 
@@ -76,7 +76,7 @@
                 android:layout_height="52.0dip"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
-                android:padding="14.0dip"
+                android:padding="10.0dip"
                 android:scaleType="fitCenter"
                 android:src="@drawable/morphe_sb_edit_bold" />
 
@@ -86,7 +86,7 @@
                 android:layout_height="52.0dip"
                 android:background="@android:color/transparent"
                 android:contentDescription="@null"
-                android:padding="14.0dip"
+                android:padding="10.0dip"
                 android:scaleType="fitCenter"
                 android:src="@drawable/morphe_sb_publish_bold" />
         </LinearLayout>
