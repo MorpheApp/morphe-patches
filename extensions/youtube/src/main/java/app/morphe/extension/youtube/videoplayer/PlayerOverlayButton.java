@@ -20,6 +20,7 @@ import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
@@ -99,6 +100,15 @@ public class PlayerOverlayButton {
         }
     }
 
+    private static ViewTreeObserver updateViewObserver(View button) {
+        ViewTreeObserver observer = button.getViewTreeObserver();
+        if (observer != buttonObserver.get()) {
+            newButtonCount = 0;
+            buttonObserver = new WeakReference<>(observer);
+        }
+        return observer;
+    }
+
     public static void addButton(View sourceButton,
                                  String drawableName,
                                  View.OnClickListener onClickListener,
@@ -107,13 +117,6 @@ public class PlayerOverlayButton {
 
         if (sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup) {
             updateChapterTitleContainer(sourceButtonViewGroup);
-
-            ViewTreeObserver observer = sourceButton.getViewTreeObserver();
-            if (observer != buttonObserver.get()) {
-                newButtonCount = 0;
-                buttonObserver = new WeakReference<>(observer);
-            }
-            final int buttonCount = ++newButtonCount;
 
             ImageView button = new ImageView(sourceButton.getContext());
             button.setId(View.generateViewId());
@@ -124,11 +127,13 @@ public class PlayerOverlayButton {
             button.setOnClickListener(onClickListener);
             button.setOnLongClickListener(onLongClickListener);
 
-            observer.addOnPreDrawListener(
-                    getOnPreDrawListener(sourceButton, button, buttonCount, button::setBackground)
+            updateViewObserver(sourceButton).addOnPreDrawListener(
+                    getOnPreDrawListener(sourceButton, button, button::setBackground)
             );
 
             sourceButtonViewGroup.addView(button);
+        } else {
+            Logger.printException(() -> "Unknown button parent: " + sourceButton.getParent());
         }
     }
 
@@ -149,13 +154,6 @@ public class PlayerOverlayButton {
 
         updateChapterTitleContainer(sourceButtonViewGroup);
 
-        ViewTreeObserver observer = sourceButton.getViewTreeObserver();
-        if (observer != buttonObserver.get()) {
-            newButtonCount = 0;
-            buttonObserver = new WeakReference<>(observer);
-        }
-        final int buttonCount = ++newButtonCount;
-
         // TextView itself is the tappable surface.
         TextView textOverlay = new TextView(sourceButton.getContext());
         textOverlay.setId(View.generateViewId());
@@ -165,12 +163,11 @@ public class PlayerOverlayButton {
         textOverlay.setTypeface(Typeface.create("sans-serif-condensed", Typeface.BOLD));
         textOverlay.setOnClickListener(onClickListener);
         textOverlay.setOnLongClickListener(onLongClickListener);
-
-        observer.addOnPreDrawListener(
-                getOnPreDrawListener(sourceButton, textOverlay, buttonCount, textOverlay::setBackground)
-        );
-
         sourceButtonViewGroup.addView(textOverlay);
+
+        updateViewObserver(sourceButton).addOnPreDrawListener(
+                getOnPreDrawListener(sourceButton, textOverlay, textOverlay::setBackground)
+        );
 
         return textOverlay;
     }
@@ -180,7 +177,9 @@ public class PlayerOverlayButton {
     }
 
     private static ViewTreeObserver.OnPreDrawListener getOnPreDrawListener(
-            View source, View button, int buttonCount, SetViewBackgroundInterface setBackground) {
+            View source, View button, SetViewBackgroundInterface setBackground) {
+        final int buttonCount = newButtonCount;
+
         return new ViewTreeObserver.OnPreDrawListener() {
             // Track the ConstantState of the source background to detect real drawable changes.
             Drawable.ConstantState sourceBackgroundSnapshot;
