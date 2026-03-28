@@ -177,7 +177,10 @@ public class PlayerOverlayButton {
     }
 
     private static ViewTreeObserver.OnPreDrawListener getOnPreDrawListener(
-            View source, View button, SetViewBackgroundInterface setBackground) {
+            View sourceView, View newButton, SetViewBackgroundInterface setBackground) {
+        WeakReference<View> sourceRef = new WeakReference<>(sourceView);
+        WeakReference<View> newButtonRef = new WeakReference<>(newButton);
+
         final int buttonCount = newButtonCount;
 
         return new ViewTreeObserver.OnPreDrawListener() {
@@ -186,6 +189,14 @@ public class PlayerOverlayButton {
 
             @Override
             public boolean onPreDraw() {
+                View source = sourceRef.get();
+                View button = newButtonRef.get();
+                if (source == null || button == null) {
+                    Logger.printException(() ->"Player buttons is null, source: " + source
+                            + " button: " + button);
+                    return true;
+                }
+
                 final int sourcePaddingLeft = source.getPaddingLeft();
                 final int sourcePaddingTop = source.getPaddingTop();
                 final int sourcePaddingRight = source.getPaddingRight();
