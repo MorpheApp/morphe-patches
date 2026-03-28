@@ -197,7 +197,7 @@ internal fun initializeTopControl(descriptor: String) {
  * Injects the code to initialize the controls.
  * @param descriptor The descriptor of the method which should be called.
  */
-fun initializeBottomControl(descriptor: String) {
+fun initializeLegacyBottomControl(descriptor: String) {
     inflateBottomControlMethodRef.get()!!.addInstruction(
         inflateBottomControlInsertIndex++,
         "invoke-static { v$inflateBottomControlRegister }, $descriptor->initializeLegacyButton(Landroid/view/View;)V",
