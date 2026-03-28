@@ -62,16 +62,16 @@ public class PlayerOverlayButton {
 
         // Walk up the hierarchy until we find the view or reach the root.
         ViewGroup parent = sourceButtonViewGroup;
-        while (parent != null) {
-            View found = parent.findViewById(chapterId);
-            if (found != null) {
-                chapterTitleContainerRef = new WeakReference<>(found);
-                return;
-            }
+        while (true) {
             if (parent.getParent() instanceof ViewGroup vg) {
                 parent = vg;
             } else {
                 break;
+            }
+            View found = parent.findViewById(chapterId);
+            if (found != null) {
+                chapterTitleContainerRef = new WeakReference<>(found);
+                return;
             }
         }
     }
