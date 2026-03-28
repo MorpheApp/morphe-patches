@@ -44,7 +44,7 @@ public class PlayerOverlayButton {
     }
 
     private static WeakReference<ViewTreeObserver> buttonObserver = new WeakReference<>(null);
-    private static int newButtonCount;
+    private static int totalButtonCount;
 
     private static WeakReference<View> chapterTitleContainerRef = new WeakReference<>(null);
     private static int lastChapterMarginEnd = -1;
@@ -105,7 +105,7 @@ public class PlayerOverlayButton {
 
         ViewTreeObserver observer = button.getViewTreeObserver();
         if (observer != buttonObserver.get()) {
-            newButtonCount = 0;
+            totalButtonCount = 0;
             buttonObserver = new WeakReference<>(observer);
         }
         return observer;
@@ -181,7 +181,7 @@ public class PlayerOverlayButton {
         WeakReference<View> sourceRef = new WeakReference<>(sourceView);
         WeakReference<View> newButtonRef = new WeakReference<>(newButton);
 
-        final int buttonCount = newButtonCount;
+        final int buttonCount = ++totalButtonCount;
 
         return new ViewTreeObserver.OnPreDrawListener() {
             // Track the ConstantState of the source background to detect real drawable changes.
@@ -244,7 +244,7 @@ public class PlayerOverlayButton {
                 }
 
                 final float xOffset = (int) (source.getX()
-                        - (buttonCount * (getButtonWidthPercentage(newButtonCount) * source.getWidth())));
+                        - (buttonCount * (getButtonWidthPercentage(totalButtonCount) * source.getWidth())));
                 if (button.getX() != xOffset) {
                     button.setX(xOffset);
                 }
@@ -254,7 +254,7 @@ public class PlayerOverlayButton {
                     button.setY(positionY);
                 }
 
-                updateChapterContainerMargin(source, newButtonCount);
+                updateChapterContainerMargin(source, totalButtonCount);
 
                 return true;
             }
