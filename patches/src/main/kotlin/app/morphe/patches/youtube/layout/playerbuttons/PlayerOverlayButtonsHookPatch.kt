@@ -16,6 +16,8 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.lang.ref.WeakReference
 
+private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
+
 private lateinit var exploderButtonMethodRef : WeakReference<MutableMethod>
 private var exploderButtonInsertIndex = -1
 private var exploderButtonInsertRegister = -1
@@ -23,7 +25,7 @@ private var exploderButtonInsertRegister = -1
 fun addPlayerBottomButton(descriptor: String) {
     exploderButtonMethodRef.get()!!.addInstruction(
         exploderButtonInsertIndex++,
-        "invoke-static { v$exploderButtonInsertRegister }, $descriptor->initializeButton(Landroid/view/View;)V",
+        "invoke-static { v$exploderButtonInsertRegister }, $descriptor->initializeButton(Landroid/view/View;)V"
     )
 }
 
@@ -40,6 +42,14 @@ internal val playerOverlayButtonsHookPatch = bytecodePatch {
                 val index = it.instructionMatches[1].index
                 exploderButtonInsertRegister = getInstruction<OneRegisterInstruction>(index).registerA
                 exploderButtonInsertIndex = index + 1
+
+                // Fix the fullscreen button tint when the minimal miniplayer type is selected.
+                // The minimal type forces a theme where ytOverlayButtonPrimary resolves to gray
+                // instead of white, making the fullscreen button appear gray instead of white.
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$exploderButtonInsertRegister }, $EXTENSION_CLASS_DESCRIPTOR->fixMinimalMiniplayerFullscreenButtonTint(Landroid/view/View;)V"
+                )
             }
         }
     }
