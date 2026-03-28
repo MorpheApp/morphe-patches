@@ -87,42 +87,10 @@ public class VideoQualityDialogButton {
                 return;
             }
 
-            overlayTextRef = new WeakReference<>(PlayerOverlayButton.addButtonWithTextOverlay(controlsView,
-                    view -> {
-                        try {
-                            showVideoQualityDialog(view.getContext());
-                        } catch (Exception ex) {
-                            Logger.printException(() -> "Video quality button onClick failure", ex);
-                        }
-                    },
-                    view -> {
-                        try {
-                            VideoQualityInterface[] qualities = VideoInformation.getCurrentQualities();
-                            if (qualities == null) {
-                                Logger.printDebug(() -> "Cannot reset quality, videoQualities is null");
-                                return true;
-                            }
-
-                            // Reset to default quality.
-                            final int defaultResolution = RememberVideoQualityPatch.getDefaultQualityResolution();
-                            for (VideoQualityInterface quality : qualities) {
-                                final int resolution = quality.patch_getResolution();
-                                if (resolution != AUTOMATIC_VIDEO_QUALITY_VALUE && resolution <= defaultResolution) {
-                                    Logger.printDebug(() -> "Resetting quality to: " + quality);
-                                    VideoInformation.changeQuality(quality);
-                                    return true;
-                                }
-                            }
-
-                            // Existing hook cannot set default quality to auto.
-                            // Instead, show the quality dialog.
-                            showVideoQualityDialog(view.getContext());
-                            return true;
-                        } catch (Exception ex) {
-                            Logger.printException(() -> "Video quality button reset failure", ex);
-                        }
-                        return false;
-                    }
+            overlayTextRef = new WeakReference<>(PlayerOverlayButton.addButtonWithTextOverlay(
+                    controlsView,
+                    getOnClickListener(),
+                    getOnLongClickListener()
             ));
 
             // Set initial text.
@@ -130,6 +98,47 @@ public class VideoQualityDialogButton {
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
+    }
+
+    private static View.OnClickListener getOnClickListener() {
+        return view -> {
+            try {
+                showVideoQualityDialog(view.getContext());
+            } catch (Exception ex) {
+                Logger.printException(() -> "Video quality button onClick failure", ex);
+            }
+        };
+    }
+
+    private static View.OnLongClickListener getOnLongClickListener() {
+        return view -> {
+            try {
+                VideoQualityInterface[] qualities = VideoInformation.getCurrentQualities();
+                if (qualities == null) {
+                    Logger.printDebug(() -> "Cannot reset quality, videoQualities is null");
+                    return true;
+                }
+
+                // Reset to default quality.
+                final int defaultResolution = RememberVideoQualityPatch.getDefaultQualityResolution();
+                for (VideoQualityInterface quality : qualities) {
+                    final int resolution = quality.patch_getResolution();
+                    if (resolution != AUTOMATIC_VIDEO_QUALITY_VALUE && resolution <= defaultResolution) {
+                        Logger.printDebug(() -> "Resetting quality to: " + quality);
+                        VideoInformation.changeQuality(quality);
+                        return true;
+                    }
+                }
+
+                // Existing hook cannot set default quality to auto.
+                // Instead, show the quality dialog.
+                showVideoQualityDialog(view.getContext());
+                return true;
+            } catch (Exception ex) {
+                Logger.printException(() -> "Video quality button reset failure", ex);
+            }
+            return false;
+        };
     }
 
     /**
@@ -146,43 +155,10 @@ public class VideoQualityDialogButton {
                     "morphe_video_quality_dialog_button_container",
                     "morphe_video_quality_dialog_button",
                     "morphe_video_quality_dialog_button_text",
-                    "morphe_video_quality_dialog_button",
+                    null,
                     Settings.VIDEO_QUALITY_DIALOG_BUTTON::get,
-                    view -> {
-                        try {
-                            showVideoQualityDialog(view.getContext());
-                        } catch (Exception ex) {
-                            Logger.printException(() -> "Video quality button onClick failure", ex);
-                        }
-                    },
-                    view -> {
-                        try {
-                            VideoQualityInterface[] qualities = VideoInformation.getCurrentQualities();
-                            if (qualities == null) {
-                                Logger.printDebug(() -> "Cannot reset quality, videoQualities is null");
-                                return true;
-                            }
-
-                            // Reset to default quality.
-                            final int defaultResolution = RememberVideoQualityPatch.getDefaultQualityResolution();
-                            for (VideoQualityInterface quality : qualities) {
-                                final int resolution = quality.patch_getResolution();
-                                if (resolution != AUTOMATIC_VIDEO_QUALITY_VALUE && resolution <= defaultResolution) {
-                                    Logger.printDebug(() -> "Resetting quality to: " + quality);
-                                    VideoInformation.changeQuality(quality);
-                                    return true;
-                                }
-                            }
-
-                            // Existing hook cannot set default quality to auto.
-                            // Instead, show the quality dialog.
-                            showVideoQualityDialog(view.getContext());
-                            return true;
-                        } catch (Exception ex) {
-                            Logger.printException(() -> "Video quality button reset failure", ex);
-                        }
-                        return false;
-                    }
+                    getOnClickListener(),
+                    getOnLongClickListener()
             );
 
             // Set initial text.

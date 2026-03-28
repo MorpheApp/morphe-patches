@@ -48,30 +48,8 @@ public class PlaybackSpeedDialogButton {
             }
 
             overlayTextRef = new WeakReference<>(PlayerOverlayButton.addButtonWithTextOverlay(controlsView,
-                    view -> {
-                        try {
-                            if (Settings.RESTORE_OLD_SPEED_MENU.get()) {
-                                CustomPlaybackSpeedPatch.showOldPlaybackSpeedMenu();
-                            } else {
-                                CustomPlaybackSpeedPatch.showModernCustomPlaybackSpeedDialog(view.getContext());
-                            }
-                        } catch (Exception ex) {
-                            Logger.printException(() -> "speed button onClick failure", ex);
-                        }
-                    },
-                    view -> {
-                        try {
-                            final float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
-                            final float speed = (!Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED.get() ||
-                                    VideoInformation.getPlaybackSpeed() == defaultSpeed)
-                                    ? 1.0f
-                                    : defaultSpeed;
-                            VideoInformation.overridePlaybackSpeed(speed);
-                        } catch (Exception ex) {
-                            Logger.printException(() -> "speed button reset failure", ex);
-                        }
-                        return true;
-                    }
+                    getOnClickListener(),
+                    getOnLongClickListener()
             ));
 
             // Set the appropriate icon.
@@ -94,30 +72,8 @@ public class PlaybackSpeedDialogButton {
                     null,
                     "morphe_playback_speed_dialog_button",
                     Settings.PLAYBACK_SPEED_DIALOG_BUTTON::get,
-                    view -> {
-                        try {
-                            if (Settings.RESTORE_OLD_SPEED_MENU.get()) {
-                                CustomPlaybackSpeedPatch.showOldPlaybackSpeedMenu();
-                            } else {
-                                CustomPlaybackSpeedPatch.showModernCustomPlaybackSpeedDialog(view.getContext());
-                            }
-                        } catch (Exception ex) {
-                            Logger.printException(() -> "speed button onClick failure", ex);
-                        }
-                    },
-                    view -> {
-                        try {
-                            final float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
-                            final float speed = (!Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED.get() ||
-                                    VideoInformation.getPlaybackSpeed() == defaultSpeed)
-                                    ? 1.0f
-                                    : defaultSpeed;
-                            VideoInformation.overridePlaybackSpeed(speed);
-                        } catch (Exception ex) {
-                            Logger.printException(() -> "speed button reset failure", ex);
-                        }
-                        return true;
-                    }
+                    getOnClickListener(),
+                    getOnLongClickListener()
             );
 
             // Set the appropriate icon.
@@ -125,6 +81,36 @@ public class PlaybackSpeedDialogButton {
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
+    }
+
+    private static View.OnLongClickListener getOnLongClickListener() {
+        return view -> {
+            try {
+                final float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
+                final float speed = (!Settings.REMEMBER_PLAYBACK_SPEED_LAST_SELECTED.get() ||
+                        VideoInformation.getPlaybackSpeed() == defaultSpeed)
+                        ? 1.0f
+                        : defaultSpeed;
+                VideoInformation.overridePlaybackSpeed(speed);
+            } catch (Exception ex) {
+                Logger.printException(() -> "speed button long click failure", ex);
+            }
+            return true;
+        };
+    }
+
+    private static View.OnClickListener getOnClickListener() {
+        return view -> {
+            try {
+                if (Settings.RESTORE_OLD_SPEED_MENU.get()) {
+                    CustomPlaybackSpeedPatch.showOldPlaybackSpeedMenu();
+                } else {
+                    CustomPlaybackSpeedPatch.showModernCustomPlaybackSpeedDialog(view.getContext());
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "speed button onClick failure", ex);
+            }
+        };
     }
 
     /**
