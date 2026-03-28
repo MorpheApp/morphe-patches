@@ -101,6 +101,8 @@ public class PlayerOverlayButton {
     }
 
     private static ViewTreeObserver updateViewObserver(View button) {
+        Utils.verifyOnMainThread();
+
         ViewTreeObserver observer = button.getViewTreeObserver();
         if (observer != buttonObserver.get()) {
             newButtonCount = 0;
@@ -113,28 +115,27 @@ public class PlayerOverlayButton {
                                  String drawableName,
                                  View.OnClickListener onClickListener,
                                  View.OnLongClickListener onLongClickListener) {
-        Utils.verifyOnMainThread();
-
-        if (sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup) {
-            updateChapterTitleContainer(sourceButtonViewGroup);
-
-            ImageView button = new ImageView(sourceButton.getContext());
-            button.setId(View.generateViewId());
-            button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-            button.setImageResource(ResourceUtils.getIdentifierOrThrow(
-                    ResourceType.DRAWABLE, drawableName)
-            );
-            button.setOnClickListener(onClickListener);
-            button.setOnLongClickListener(onLongClickListener);
-
-            updateViewObserver(sourceButton).addOnPreDrawListener(
-                    getOnPreDrawListener(sourceButton, button, button::setBackground)
-            );
-
-            sourceButtonViewGroup.addView(button);
-        } else {
+        if (!(sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup)) {
             Logger.printException(() -> "Unknown button parent: " + sourceButton.getParent());
+            return;
         }
+
+        updateChapterTitleContainer(sourceButtonViewGroup);
+
+        ImageView button = new ImageView(sourceButton.getContext());
+        button.setId(View.generateViewId());
+        button.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
+        button.setImageResource(ResourceUtils.getIdentifierOrThrow(
+                ResourceType.DRAWABLE, drawableName)
+        );
+        button.setOnClickListener(onClickListener);
+        button.setOnLongClickListener(onLongClickListener);
+
+        updateViewObserver(sourceButton).addOnPreDrawListener(
+                getOnPreDrawListener(sourceButton, button, button::setBackground)
+        );
+
+        sourceButtonViewGroup.addView(button);
     }
 
     /**
@@ -146,9 +147,8 @@ public class PlayerOverlayButton {
     public static TextView addButtonWithTextOverlay(View sourceButton,
                                                     View.OnClickListener onClickListener,
                                                     View.OnLongClickListener onLongClickListener) {
-        Utils.verifyOnMainThread();
-
         if (!(sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup)) {
+            Logger.printException(() -> "Unknown button parent: " + sourceButton.getParent());
             return null;
         }
 
