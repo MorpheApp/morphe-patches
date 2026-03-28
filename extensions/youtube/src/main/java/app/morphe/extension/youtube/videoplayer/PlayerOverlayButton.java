@@ -118,11 +118,13 @@ public class PlayerOverlayButton {
             new MarginAdjustableContainer("player_video_heading");
 
     private static void resolveContainers(ViewGroup sourceButtonViewGroup) {
+        // Locate each container once; subsequent calls are no-ops.
         chapterTitleContainer.resolve(sourceButtonViewGroup);
         videoHeadingContainer.resolve(sourceButtonViewGroup);
     }
 
     private static void updateContainerMargins(View sourceButton, int totalButtons) {
+        // Keep both containers' end margins in sync with the current button count.
         chapterTitleContainer.updateMargin(sourceButton, totalButtons);
         videoHeadingContainer.updateMargin(sourceButton, totalButtons);
     }
@@ -138,6 +140,17 @@ public class PlayerOverlayButton {
         return observer;
     }
 
+    /**
+     * Adds an icon button to the player overlay, positioned to the left of {@code sourceButton}.
+     * <p>
+     * On first call, resolves the chapter title and video heading containers so their end margins
+     * can be kept clear of overlay buttons on every subsequent pre-draw pass.
+     *
+     * @param sourceButton        the existing player button used as a position and style anchor.
+     * @param drawableName        resource name of the drawable to display inside the button.
+     * @param onClickListener     invoked when the button is tapped.
+     * @param onLongClickListener invoked when the button is long-pressed.
+     */
     public static void addButton(View sourceButton,
                                  String drawableName,
                                  View.OnClickListener onClickListener,
@@ -166,9 +179,15 @@ public class PlayerOverlayButton {
     }
 
     /**
-     * Creates an overlay button that displays only a text label.
+     * Adds a text-only button to the player overlay, positioned to the left of {@code sourceButton}.
+     * <p>
+     * On first call, resolves the chapter title and video heading containers so their end margins
+     * can be kept clear of overlay buttons on every subsequent pre-draw pass.
      *
-     * @return The created {@link TextView}, or null if the button could not be added.
+     * @param sourceButton        the existing player button used as a position and style anchor.
+     * @param onClickListener     invoked when the button is tapped.
+     * @param onLongClickListener invoked when the button is long-pressed.
+     * @return the created {@link TextView}, or {@code null} if the button could not be added.
      */
     @Nullable
     public static TextView addButtonWithTextOverlay(View sourceButton,
