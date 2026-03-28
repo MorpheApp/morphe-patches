@@ -65,7 +65,9 @@ public class CopyVideoURLButton {
                     controlsView,
                     "morphe_copy_video_url_button",
                     null,
-                    "morphe_yt_copy_timestamp",
+                    COPY_VIDEO_URL_TIMESTAMP
+                            ? "morphe_yt_copy_timestamp"
+                            : "morphe_yt_copy",
                     Settings.COPY_VIDEO_URL::get,
                     view -> copyURL(COPY_VIDEO_URL_TIMESTAMP),
                     view -> {
