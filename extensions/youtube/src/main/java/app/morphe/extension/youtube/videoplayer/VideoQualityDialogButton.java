@@ -57,7 +57,6 @@ import kotlin.jvm.functions.Function1;
 @SuppressWarnings("unused")
 public class VideoQualityDialogButton {
 
-    @Nullable
     private static WeakReference<TextView> overlayTextRef = new WeakReference<>(null);
 
     @Nullable
@@ -99,6 +98,34 @@ public class VideoQualityDialogButton {
             Logger.printException(() -> "initializeButton failure", ex);
         }
     }
+
+    /**
+     * Injection point.
+     */
+    public static void initializeLegacyButton(View controlsView) {
+        try {
+            if (!PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS) {
+                return;
+            }
+
+            legacy = new LegacyPlayerControlButton(
+                    controlsView,
+                    "morphe_video_quality_dialog_button_container",
+                    "morphe_video_quality_dialog_button",
+                    "morphe_video_quality_dialog_button_text",
+                    null,
+                    Settings.VIDEO_QUALITY_DIALOG_BUTTON::get,
+                    getOnClickListener(),
+                    getOnLongClickListener()
+            );
+
+            // Set initial text.
+            updateButtonText(VideoInformation.getCurrentQuality());
+        } catch (Exception ex) {
+            Logger.printException(() -> "initializeButton failure", ex);
+        }
+    }
+
 
     private static View.OnClickListener getOnClickListener() {
         return view -> {
@@ -142,33 +169,6 @@ public class VideoQualityDialogButton {
     }
 
     /**
-     * Injection point.
-     */
-    public static void initializeLegacyButton(View controlsView) {
-        try {
-            if (!PlayerOverlayButton.RESTORE_OLD_PLAYER_BUTTONS) {
-                return;
-            }
-
-            legacy = new LegacyPlayerControlButton(
-                    controlsView,
-                    "morphe_video_quality_dialog_button_container",
-                    "morphe_video_quality_dialog_button",
-                    "morphe_video_quality_dialog_button_text",
-                    null,
-                    Settings.VIDEO_QUALITY_DIALOG_BUTTON::get,
-                    getOnClickListener(),
-                    getOnLongClickListener()
-            );
-
-            // Set initial text.
-            updateButtonText(VideoInformation.getCurrentQuality());
-        } catch (Exception ex) {
-            Logger.printException(() -> "initializeButton failure", ex);
-        }
-    }
-
-    /**
      * injection point.
      */
     public static void setVisibilityNegatedImmediate() {
@@ -202,7 +202,7 @@ public class VideoQualityDialogButton {
         try {
             Utils.verifyOnMainThread();
 
-            final TextView overlay = overlayTextRef != null ? overlayTextRef.get() : null;
+            final TextView overlay = overlayTextRef.get();
             if (overlay == null && legacy == null) return;
 
             final int resolution = quality == null

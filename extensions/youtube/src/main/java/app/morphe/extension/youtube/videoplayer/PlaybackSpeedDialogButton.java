@@ -47,7 +47,8 @@ public class PlaybackSpeedDialogButton {
                 return;
             }
 
-            overlayTextRef = new WeakReference<>(PlayerOverlayButton.addButtonWithTextOverlay(controlsView,
+            overlayTextRef = new WeakReference<>(PlayerOverlayButton.addButtonWithTextOverlay(
+                    controlsView,
                     getOnClickListener(),
                     getOnLongClickListener()
             ));
@@ -69,8 +70,8 @@ public class PlaybackSpeedDialogButton {
                     controlsView,
                     "morphe_playback_speed_dialog_button_container",
                     "morphe_playback_speed_dialog_button",
+                    "morphe_playback_speed_dialog_button_text",
                     null,
-                    "morphe_playback_speed_dialog_button",
                     Settings.PLAYBACK_SPEED_DIALOG_BUTTON::get,
                     getOnClickListener(),
                     getOnLongClickListener()
@@ -158,6 +159,7 @@ public class PlaybackSpeedDialogButton {
             if (legacy != null) {
                 legacy.setTextOverlay(speedText);
             }
+
             TextView overlay = overlayTextRef.get();
             if (overlay != null) {
                 overlay.setText(speedText);
