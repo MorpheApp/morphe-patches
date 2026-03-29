@@ -46,7 +46,7 @@ public class PlayerOverlayButton {
     /**
      * Tracks a single container view whose end margin must be kept clear of overlay buttons.
      * <p>
-     * Call {@link #resolve} once when a button is first added to locate the view, then call
+     * Call {@link #updateContainerRef} once when a button is first added to locate the view, then call
      * {@link #updateMargin} on every pre-draw pass to keep the margin in sync with the
      * current button count and width.
      */
@@ -63,7 +63,7 @@ public class PlayerOverlayButton {
          * Walks up the view hierarchy from {@code sourceButtonViewGroup} to find the
          * target view by resource name. No-op if already resolved or the ID is missing.
          */
-        void resolve(ViewGroup sourceButtonViewGroup) {
+        void updateContainerRef(ViewGroup sourceButtonViewGroup) {
             if (containerRef.get() != null) return;
 
             final int id = ResourceUtils.getIdentifier(ResourceType.ID, resourceName);
@@ -119,8 +119,8 @@ public class PlayerOverlayButton {
 
     private static void resolveContainers(ViewGroup sourceButtonViewGroup) {
         // Locate each container once; subsequent calls are no-ops.
-        chapterTitleContainer.resolve(sourceButtonViewGroup);
-        videoHeadingContainer.resolve(sourceButtonViewGroup);
+        chapterTitleContainer.updateContainerRef(sourceButtonViewGroup);
+        videoHeadingContainer.updateContainerRef(sourceButtonViewGroup);
     }
 
     private static void updateContainerMargins(View sourceButton, int totalButtons) {
