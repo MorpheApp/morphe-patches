@@ -51,11 +51,6 @@ public class OAuth2Requester {
     private static final String CLIENT_ID =
             "652469312169-4lvs9bnhr9lpns9v451j5oivd81vjvu1.apps.googleusercontent.com";
 
-    /**
-     * The client secret of the Android YouTube VR client.
-     * This value is unique and does not change.
-     */
-    private static final String CLIENT_SECRET = "3fTWrBJI5Uojm1TK7_iJCW5Z";
 
     /**
      * Device model enum name for the Android YouTube VR app.
@@ -250,7 +245,7 @@ public class OAuth2Requester {
 
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("client_id", CLIENT_ID);
-                jsonObject.put("client_secret", CLIENT_SECRET);
+                jsonObject;
                 jsonObject.put("code", activationCodeData.deviceCode);
                 jsonObject.put("grant_type", GRANT_TYPE_DEFAULT);
 
@@ -303,8 +298,7 @@ public class OAuth2Requester {
 
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("client_id", CLIENT_ID);
-            jsonObject.put("client_secret", CLIENT_SECRET);
-            jsonObject.put("refresh_token", refreshToken);
+                        jsonObject.put("refresh_token", refreshToken);
             jsonObject.put("grant_type", GRANT_TYPE_REFRESH);
 
             byte[] body = jsonObject.toString().getBytes(StandardCharsets.UTF_8);
