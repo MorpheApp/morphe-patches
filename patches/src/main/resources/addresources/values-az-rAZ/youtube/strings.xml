@@ -125,9 +125,9 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_you_may_like_section_summary_on">Bəyənə bilərsiniz bölməsi gizlidir</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Bəyənə bilərsiniz bölməsi görünür</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodle-ları gizlət</string>
-  <string name="morphe_hide_doodles_summary_on">YouTube Doodles animasiyası simvolda gizlidir</string>
-  <string name="morphe_hide_doodles_summary_off">YouTube Doodles animasiyası simvolda görünür</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodle-ları gizlət</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles animasiyası simvolda gizlidir</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles animasiyası simvolda görünür</string>
   <string name="morphe_hide_channel_bar_title">Kanal çubuğunu gizlət</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanal çubuğu gizlidir</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanal çubuğu göstərilir</string>
@@ -364,6 +364,9 @@ Məhdudiyyətlər
   <string name="morphe_hide_paid_promotion_label_title">Ödənişli tanıtım etiketini gizlət</string>
   <string name="morphe_hide_paid_promotion_label_summary_on">Ödənişli reklam etiketi gizlədilib</string>
   <string name="morphe_hide_paid_promotion_label_summary_off">Ödənişli reklam etiketi göstərilir</string>
+  <string name="morphe_hide_player_popup_ads_title">Oynadıcı ani açılan reklamlarını gizlət</string>
+  <string name="morphe_hide_player_popup_ads_summary_on">Oynadıcı ani açılan reklamları gizlidir</string>
+  <string name="morphe_hide_player_popup_ads_summary_off">Oynadıcı ani açılan reklamları görünür</string>
   <string name="morphe_hide_self_sponsor_ads_title">Öz-sponsorlu kartları gizlət</string>
   <string name="morphe_hide_self_sponsor_ads_summary_on">Özünə sponsorluq edilən kartlar gizlidir</string>
   <string name="morphe_hide_self_sponsor_ads_summary_off">Özünə sponsorluq edilən kartlar göstərilir</string>
@@ -374,6 +377,7 @@ Məhdudiyyətlər
   <string name="morphe_hide_view_products_banner_summary_on">Video ötürüyündə məhsullara baxış etiketinin göstərilməsi gizlədilir</string>
   <string name="morphe_hide_view_products_banner_summary_off">Video ötürüyündə məhsullara baxış etiketinin göstərilməsi göstərilir</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium reklamlarını gizlət</string>
+  <string name="morphe_hide_youtube_premium_promotions_summary_on">YouTube Premium tanıtımları gizlidir</string>
   <string name="morphe_hide_youtube_premium_promotions_summary_off">Video oynadıcı altındakı YouTube Premium elanları göstərilir</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizlət</string>
@@ -386,9 +390,6 @@ Məhdudiyyətlər
   <string name="morphe_copy_video_url_title">Video URL-i köçürmə düyməsin göstər</string>
   <string name="morphe_copy_video_url_summary_on">Düymə göstərilir. Video URL-ni köçürmək üçün toxun. Vaxt möhürü ilə köçürmək üçün basıb saxlayın</string>
   <string name="morphe_copy_video_url_summary_off">Bölümə səsvermə düyməsi göstərilmir</string>
-  <string name="morphe_copy_video_url_timestamp_title">Vaxt möhürü URL köçür düyməsi göstər</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Düymə göstərilir. Video URL-ni vaxt möhürü ilə köçürmək üçün toxun. Vaxt möhürü olmadan köçürmək üçün basıb saxlayın</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Bölümə səsvermə düyməsi göstərilmir</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">İzləyici mülahizə dialoqun sil</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Dialoq silindi</string>
@@ -433,6 +434,10 @@ Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
   <string name="morphe_loop_video_button_toast_on">Video təkrarlama açıqdır</string>
   <string name="morphe_loop_video_button_toast_off">Video təkrarlama qapalıdır</string>
   <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Videonu təkrar yüklə düyməsini göstər</string>
+  <string name="morphe_reload_video_summary_on">Videonu təkrar yüklə düyməsi görünür</string>
+  <string name="morphe_reload_video_summary_off">Videonu təkrar yüklə düyməsi görünmür</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video id əlçatmazdır. Xahiş olunur, videonu əl ilə təkrar açın.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dəqiq axtarış jestini qapadın</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Jest qeyri-aktiv edilib</string>
@@ -562,6 +567,7 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_save_button_summary_on">Saxlayın düyməsi gizlidir</string>
   <string name="morphe_hide_save_button_summary_off">Saxlayın düyməsi görünür</string>
   <!-- layout.captions.captionsPatch -->
+  <string name="morphe_captions_screen_title">Titrlər</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Avtomatik titrlərin görünüşü</string>
   <string name="morphe_auto_captions_style_entry_1">Sessiz və aktiv halda göstər</string>
@@ -571,6 +577,8 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_auto_captions_style_legacy_entry_1">Avtomatik titrləri göstər</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Avtomatik titrləri gizlət</string>
   <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_get_caption_cookies_duplicate">Bazalar artıq var</string>
+  <string name="morphe_get_caption_cookies_success">Bazalar uğurla yeniləndi</string>
   <!-- layout.captions.transcriptPatch -->
   <string name="morphe_fix_transcript_title">Transkripti düzəlt</string>
   <string name="morphe_fix_transcript_summary_on">Transkript əlçatandır</string>
@@ -678,6 +686,9 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Səs axını menyusu göstərilir</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Reel' and 'TV' must be kept untranslated. -->
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio trek menyusu gizlidir
+
+Səs treki menyusunu göstərmək üçün \"Video yayımları saxtalaşdır\"-ı 'Android Reel' yaxud 'TV'-ə dəyiş"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">\"VR-da İzləni\" gizlət</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR menyusunda izləmə gizlidir</string>
@@ -856,8 +867,8 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Fəaliyyət çubuğu gizlidir</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Fəaliyyət çubuğu göstərilir</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Son ekran bildirilən videonu gizlət</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Son ekranda bildirilən video göstərilir</string>
+  <string name="morphe_hide_end_screen_suggested_video_title">Son ekran bildirilən videonu gizlət</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Son ekranda bildirilən video göstərilir</string>
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">Əlaqəli videoları gizlət</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
@@ -1157,7 +1168,15 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_spoof_app_version_target_title">Saxta tətbiq versiyası hədəfi</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Yığılmayan video fəaliyyət cizgisin bərpa et</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
+  <string name="morphe_open_system_share_sheet_title">Sistem paylaşım səhifəsin aç</string>
+  <string name="morphe_open_system_share_sheet_summary_on">Sistem paylaşım səhifəsi açılır</string>
+  <string name="morphe_open_system_share_sheet_summary_off">Tətbiqdəki paylaşım səhifəsi açılır</string>
   <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <string name="morphe_override_youtube_music_button_title">YouTube Music düyməsin nəzərə alma</string>
+  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music düyməsi hədəf musiqi tətbiqinizi açır</string>
+  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music düyməsi yerli tətbiqi açır</string>
+  <string name="morphe_music_package_name_title">Morphe Music paketi adı</string>
+  <string name="morphe_music_package_name_summary">Hədəf musiqi tətbiqinin paket adı</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlatma səhifəsini dəyişdir</string>
   <string name="morphe_change_start_page_entry_default">İlkin</string>
@@ -1319,6 +1338,7 @@ DeArrow haqqında ətraflı öyrənmək üçün bura toxun"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow müvəqqəti mövcud deyil (status kodu: %s) </string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow müvəqqəti olaraq mövcud deyil</string>
   <!-- misc.announcements.announcementsPatch -->
+  <!-- misc.playercontrols.playerControlsPatch -->
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz ölçülərini saxtalaşdır</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Cihaz ölçüləri saxtalaşdırıldı
@@ -1445,9 +1465,9 @@ Video oynatma AV1 ilə ilişə bilər və ya kadrlar buraxıla bilər."</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• Video 01:00-da dayana bilər və ya bəzi bölgələrdə mövcud olmaya bilər</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• Səs treki menyusu çatışmır</string>
   <string name="morphe_spoof_video_streams_about_no_av1">• AV1 video kodlayıcı yoxdur</string>
-  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR immersiv rejimi əlçatan deyil</string>
+  <string name="morphe_spoof_video_streams_about_no_immersive_mode">• 360° VR geniş rejimi əlçatan deyil</string>
   <string name="morphe_spoof_video_streams_about_no_stable_volume">• Sabit səs yoxdur</string>
-  <string name="morphe_spoof_video_streams_about_js">•  Deobfuscation qırılarsa, oynatma uğursuz ola bilər</string>
+  <string name="morphe_spoof_video_streams_about_js">• Deobfuscation pozularsa, oynatma uğursuz ola bilər</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• \"Orijinal səsi zorla\" əlçatmazdır</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Oynadıcı JavaScript seçimi</string>

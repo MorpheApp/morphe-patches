@@ -45,3 +45,11 @@ internal object RecyclerViewTopScrollingFingerprint : Fingerprint(
         opcode(Opcode.GOTO, MatchAfterImmediately())
     )
 )
+
+internal object BackToRefreshFeatureFlagFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45359221)
+    )
+)

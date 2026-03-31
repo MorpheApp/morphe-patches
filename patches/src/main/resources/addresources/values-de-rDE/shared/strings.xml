@@ -18,13 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Einstellungen</string>
-  <string name="morphe_settings_confirm_user_dialog_title">Bist du sicher, dass du fortfahren möchtest?</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Sind Sie sicher, dass Sie fortfahren möchten?</string>
   <string name="morphe_settings_save">Speichern</string>
   <string name="morphe_settings_reset">Zurücksetzen</string>
   <string name="morphe_settings_reset_color">Farbe zurücksetzen</string>
   <string name="morphe_settings_color_invalid">Ungültige Farbe</string>
   <string name="morphe_settings_restart_title">Neustart erforderlich</string>
-  <string name="morphe_settings_restart_dialog_message">Starte die App neu, damit diese Änderung wirksam wird.</string>
+  <string name="morphe_settings_restart_dialog_message">Starten Sie die App neu, damit diese Änderung wirksam wird.</string>
   <string name="morphe_settings_restart">Neustart</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importieren</string>
@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_failure_parse">Import fehlgeschlagen: %s</string>
   <string name="morphe_settings_search_hint">Sucheinstellungen</string>
   <string name="morphe_settings_search_no_results_title">Keine Ergebnisse für „%s“ gefunden</string>
-  <string name="morphe_settings_search_no_results_summary">Versuche ein anderes Schlüsselwort</string>
+  <string name="morphe_settings_search_no_results_summary">Versuchen Sie ein anderes Schlüsselwort</string>
   <string name="morphe_settings_search_recent_searches">Kürzliche Suchen</string>
   <string name="morphe_settings_search_remove_message">Aus Suchverlauf entfernen?</string>
   <string name="morphe_settings_search_clear_history">Suchverlauf löschen</string>
@@ -50,9 +50,9 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_history_title">Suchverlauf der Einstellungen anzeigen</string>
   <string name="morphe_settings_search_history_summary_on">Suchverlauf der Einstellungen wird angezeigt</string>
   <string name="morphe_settings_search_history_summary_off">Der Suchverlauf der Einstellungen wird nicht angezeigt</string>
-  <string name="morphe_show_menu_icons_title">Morphe-Einstellungssymbole anzeigen</string>
-  <string name="morphe_show_menu_icons_summary_on">Einstellungssymbole werden angezeigt</string>
-  <string name="morphe_show_menu_icons_summary_off">Einstellungssymbole werden nicht angezeigt</string>
+  <string name="morphe_show_menu_icons_title">Morphe-Einstellungsicons anzeigen</string>
+  <string name="morphe_show_menu_icons_summary_on">Einstellungsicons werden angezeigt</string>
+  <string name="morphe_show_menu_icons_summary_off">Einstellungsicons werden nicht angezeigt</string>
   <string name="morphe_language_title">Morphe-Sprache</string>
   <string name="morphe_language_user_dialog_message">"Übersetzungen für einige Sprachen fehlen möglicherweise oder sind unvollständig.
 
@@ -62,13 +62,13 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_pref_import_export_summary">Morphe-Einstellungen importieren/exportieren</string>
   <string name="morphe_settings_import_file">Aus Datei importieren</string>
   <string name="morphe_settings_import_file_success">Einstellungen erfolgreich importiert, tippen Sie auf Speichern, um sie anzuwenden</string>
-  <string name="morphe_settings_import_file_failed">Einstellungen konnten nicht importiert werden</string>
+  <string name="morphe_settings_import_file_failed">Import der Einstellungen fehlgeschlagen</string>
   <string name="morphe_settings_export_file">In Datei exportieren</string>
   <string name="morphe_settings_export_file_success">Einstellungen erfolgreich exportiert</string>
-  <string name="morphe_settings_export_file_failed">Fehler beim Exportieren der Einstellungen</string>
+  <string name="morphe_settings_export_file_failed">Exportieren der Einstellungen fehlgeschlagen </string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Sie verwenden die neueste Morphe-Patches-Version &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Sie verwenden die Morphe-Patches-Version &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Update verfügbar: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Um Ihre Patches zu aktualisieren, verwenden Sie Morphe, um diese App erneut zu patchen.</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Sie verwenden die Morphe-Patches-Version &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Update verfügbar: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Um Ihre Patches zu aktualisieren, verwenden Sie Morphe, um diese App erneut zu patchen</string>
   <string name="morphe_settings_about_links_dev_header">Hinweis</string>
   <string name="morphe_settings_about_links_dev_body">Diese Version ist eine Vorabversion, es kann zu unerwarteten Problemen kommen</string>
   <string name="morphe_settings_about_links_header">Offizielle Links</string>
@@ -80,25 +80,25 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_settings_about_links_dev_header_update_available">Update verfügbar</string>
   <string name="morphe_settings_about_contributors_current">Aktuelle Entwicklung</string>
   <string name="morphe_settings_about_contributors_prior">Frühere Entwicklung</string>
-  <string name="morphe_settings_about_links_morphe">Aktuelle Entwicklung</string>
-  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
-  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
-  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_morphe">Aktive Entwicklung</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Lizenzhinweise</string>
   <string name="morphe_settings_about_licenses_loading">Lädt...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_screen_title">Fehlerbehebung</string>
+  <string name="morphe_debug_screen_title">Debugging</string>
   <string name="morphe_debug_screen_summary">Aktiviert oder deaktiviert Debugging-Optionen</string>
   <string name="morphe_debug_title">Debug-Protokollierung</string>
   <string name="morphe_debug_summary_on">Debug-Protokolle sind aktiviert</string>
   <string name="morphe_debug_summary_off">Debug-Protokolle sind deaktiviert</string>
-  <string name="morphe_debug_stacktrace_title">Stacktraces protokollieren</string>
-  <string name="morphe_debug_stacktrace_summary_on">Debug-Protokolle enthalten Stacktrace</string>
-  <string name="morphe_debug_stacktrace_summary_off">Debug-Logs enthalten keine Stack-Traces</string>
-  <string name="morphe_debug_toast_on_error_title">Toast bei Morphe Fehler anzeigen</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Ein Toast wird angezeigt, wenn ein Fehler auftritt</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Es wird keine Toast-Nachricht angezeigt, wenn ein Fehler auftritt</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Das Ausschalten von Fehler-Toasts blendet alle Benachrichtigungen über Fehler in Morphe aus.
+  <string name="morphe_debug_stacktrace_title">Stack-Traces protokollieren</string>
+  <string name="morphe_debug_stacktrace_summary_on">Debug-Protokolle enthalten Stack-Trace</string>
+  <string name="morphe_debug_stacktrace_summary_off">Debug-Logs enthalten kein Stack-Trace</string>
+  <string name="morphe_debug_toast_on_error_title">Pop-Up bei Morphe Fehler anzeigen</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Ein Pop-Up wird angezeigt, wenn ein Fehler auftritt</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Es wird kein Pop-Up angezeigt, wenn ein Fehler auftritt</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Das Ausschalten von Fehler-Pop-Ups blendet alle Benachrichtigungen über Fehler in Morphe aus.
 
 Sie werden nicht über unerwartete Ereignisse informiert."</string>
   <string name="morphe_debug_export_logs_to_clipboard_title">Debug-Protokolle exportieren</string>
@@ -106,7 +106,7 @@ Sie werden nicht über unerwartete Ereignisse informiert."</string>
   <string name="morphe_debug_logs_disabled">Debug-Protokollierung ist deaktiviert</string>
   <string name="morphe_debug_logs_none_found">Keine Protokolle gefunden</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Protokolle kopiert</string>
-  <string name="morphe_debug_logs_failed_to_export">Fehler beim Exportieren der Protokolle: %s</string>
+  <string name="morphe_debug_logs_failed_to_export">Exportieren der Protokolle fehlgeschlagen: %s</string>
   <string name="morphe_debug_logs_clear_buffer_title">Debug-Protokolle löschen</string>
   <string name="morphe_debug_logs_clear_buffer_summary">Löscht alle gespeicherten Morphe-Debug-Protokolle</string>
   <string name="morphe_debug_logs_clear_toast">Protokolle gelöscht</string>
@@ -118,7 +118,7 @@ Sie werden nicht über unerwartete Ereignisse informiert."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flags gespeichert</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flags zurückgesetzt</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flags in die Zwischenablage kopiert</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bitte starten Sie die App neu, um diese Funktion zu nutzen.</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bitte starten Sie die App neu, um diese Funktion zu nutzen</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Öffne die MicroG-Einstellungen</string>
@@ -132,18 +132,18 @@ Folgen Sie der Anleitung “Don't kill my app” für Ihr Telefon und wenden Sie
 
 Dies ist erforderlich, damit die App funktioniert."</string>
   <string name="gms_core_dialog_open_website_text">Website öffnen</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Die Akkubedienstoptimierungen müssen für MicroG deaktiviert werden, um Probleme zu vermeiden.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Die Batterieoptimierungen für MicroG müssen deaktiviert werden, um Probleme zu vermeiden.
 
-Die Deaktivierung der Akkubedienstoptimierungen für MicroG beeinflusst negativ den Akkuverbrauch nicht.
+Die Deaktivierung der Batterieoptimierungen für MicroG beeinflusst nicht negativ den Akkuverbrauch.
 
-Tippen Sie auf die Schaltfläche „Weiter“ und erlauben Sie die OptimierungsÃderungen."</string>
+Tippen Sie auf die Schaltfläche „Weiter“ und erlauben Sie die Optimierungsänderungen."</string>
   <string name="gms_core_dialog_continue_text">Weiter</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur Akkuoptimierung</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Der MicroG-Akkuoptimierungsdialog wird angezeigt</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Der MicroG-Akkuoptimierungsdialog wird nicht angezeigt</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Das Deaktivieren verbirgt die MicroG-Akkuoptimierungsaufforderung.
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur Batterieoptimierung</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Der MicroG-Batterieoptimierungsdialog wird angezeigt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Der MicroG-Batterieoptimierungsdialog wird nicht angezeigt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Das Deaktivieren verbirgt die MicroG-Batterieoptimierungsaufforderung.
 
-Wenn die Akkuoptimierungen nicht geändert werden, kann es zu folgenden Problemen kommen:
+Wenn die Batterieoptimierungen nicht geändert werden, kann es zu folgenden Problemen kommen:
 • Die App kann unerwartet geschlossen werden
 • Benachrichtigungen funktionieren möglicherweise nicht
 • Die Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>

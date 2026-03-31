@@ -151,9 +151,13 @@ Changes include:
     <string name="morphe_hide_you_may_like_section_summary_on">You may like section is hidden</string>
     <string name="morphe_hide_you_may_like_section_summary_off">You may like section is shown</string>
     <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-    <string name="morphe_hide_doodles_title">Hide YouTube Doodles</string>
-    <string name="morphe_hide_doodles_summary_on">YouTube Doodles animation on the logo is hidden</string>
-    <string name="morphe_hide_doodles_summary_off">YouTube Doodles animation on the logo is shown</string>
+    <string name="morphe_hide_youtube_doodles_title">Hide YouTube Doodles</string>
+    <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles animation on the logo is hidden</string>
+    <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles animation on the logo is shown</string>
+    <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles are shown a few days each year in various parts of the world.
+
+Showing YouTube Doodles may prevent custom headers from displaying."</string>
+
     <string name="morphe_hide_channel_bar_title">Hide channel bar</string>
     <string name="morphe_hide_channel_bar_summary_on">Channel bar is hidden</string>
     <string name="morphe_hide_channel_bar_summary_off">Channel bar is shown</string>
@@ -315,8 +319,7 @@ Changes include:
     <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
     <string name="morphe_hide_comments_carousel_summary_on">Comments carousel filter is enabled</string>
     <string name="morphe_hide_comments_carousel_summary_off">Comments carousel filter is disabled</string>
-    <string name="morphe_hide_comments_carousel_dialog_message">"Note
-
+    <string name="morphe_hide_comments_carousel_user_dialog_message">"Note:
 • Be sure to enter the exact name of the carousel item (e.g. Ask, Hype this video, Listen on YouTube Music, etc.).
 • Hiding carousel items may have unintended side effects.
 • If all carousel items are hidden, the entire comments section will also be hidden."</string>
@@ -475,9 +478,9 @@ Limitations:
     <string name="morphe_copy_video_url_title">Show copy video URL button</string>
     <string name="morphe_copy_video_url_summary_on">Copy video URL button is shown. Tap to copy video URL. Tap and hold to copy with timestamp</string>
     <string name="morphe_copy_video_url_summary_off">Copy video URL button is not shown</string>
-    <string name="morphe_copy_video_url_timestamp_title">Show copy timestamp URL button</string>
-    <string name="morphe_copy_video_url_timestamp_summary_on">Copy timestamp URL button is shown. Tap to copy video URL with timestamp. Tap and hold to copy without timestamp</string>
-    <string name="morphe_copy_video_url_timestamp_summary_off">Copy timestamp URL button is not shown</string>
+    <string name="morphe_copy_video_url_timestamp_title">Copy timestamp</string>
+    <string name="morphe_copy_video_url_timestamp_summary_on">Copy video url button copies with timestamp. Long press copies without timestamp</string>
+    <string name="morphe_copy_video_url_timestamp_summary_off">Copy video url button copies without timestamp. Long press copies with timestamp</string>
 
     <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
     <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
@@ -773,19 +776,18 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_navigation_bar_summary_on">Navigation bar is hidden</string>
     <string name="morphe_hide_navigation_bar_summary_off">Navigation bar is shown</string>
-    <string name="morphe_hide_navigation_bar_user_dialog_message">"This hides the navigation bar entirely including You tab.
+    <string name="morphe_hide_navigation_bar_user_dialog_message">"This completely hides the navigation bar, including the 'You' tab.
 
-To access Settings:
-Open any video → Open Quality menu → Tap 'Settings > Video Quality Preferences' at the bottom."</string>
+To access Settings, enable the Settings button via General → Toolbar → Show Settings."</string>
     <string name="morphe_narrow_navigation_buttons_title">Enable narrow navigation buttons</string>
     <string name="morphe_narrow_navigation_buttons_summary_on">Spacing between navigation buttons is narrow</string>
     <string name="morphe_narrow_navigation_buttons_summary_off">Spacing between navigation buttons is normal</string>
     <string name="morphe_navigation_bar_animations_title">Enable navigation bar animations</string>
     <string name="morphe_navigation_bar_animations_summary_on">Navigation transitions are animated</string>
     <string name="morphe_navigation_bar_animations_summary_off">Navigation transitions are not animated</string>
-    <string name="morphe_disable_auto_hide_navigation_bar_title">Disable navigation bar auto-hide</string>
-    <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar will not auto-hide</string>
-    <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar may auto-hide</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_title">Disable auto-hiding navigation bar</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar will not hide while scrolling</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar may hide while scrolling</string>
     <string name="morphe_disable_translucent_status_bar_title">Disable translucent status bar</string>
     <string name="morphe_disable_translucent_status_bar_summary_on">Status bar is opaque</string>
     <string name="morphe_disable_translucent_status_bar_summary_off">Status bar is opaque or translucent</string>
@@ -1088,10 +1090,10 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigation bar is shown</string>
 
     <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-    <string name="morphe_end_screen_suggested_video_title">Hide end screen suggested video</string>
-    <string name="morphe_end_screen_suggested_video_summary_on">End screen suggested video is hidden</string>
-    <string name="morphe_end_screen_suggested_video_summary_off">End screen suggested video is shown</string>
-    <string name="morphe_end_screen_suggested_video_user_dialog_message">"This setting only works if 'Autoplay next video' is turned off.
+    <string name="morphe_hide_end_screen_suggested_video_title">Hide end screen suggested video</string>
+    <string name="morphe_hide_end_screen_suggested_video_summary_on">End screen suggested video is hidden</string>
+    <string name="morphe_hide_end_screen_suggested_video_summary_off">End screen suggested video is shown</string>
+    <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"This setting only works if 'Autoplay next video' is turned off.
 
 You can change this in YouTube:
 Settings → Playback (or Autoplay) → Autoplay next video"</string>
@@ -1515,12 +1517,6 @@ Limitation: Using the back button on the toolbar may not work"</string>
     <string name="morphe_miniplayer_disable_rounded_corners_title">Disable rounded corners</string>
     <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Corners are square</string>
     <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Corners are rounded</string>
-    <string name="morphe_miniplayer_double_tap_action_title">Enable double-tap and pinch to resize</string>
-    <string name="morphe_miniplayer_double_tap_action_summary_on">"Double-tap action and pinch to resize is enabled
-
-• Double tap to increase miniplayer size
-• Double tap again to restore original size"</string>
-    <string name="morphe_miniplayer_double_tap_action_summary_off">Double-tap action and pinch to resize is disabled</string>
     <string name="morphe_miniplayer_disable_drag_and_drop_title">Disable drag and drop</string>
     <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Drag and drop is disabled</string>
     <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Drag and drop is enabled
@@ -1534,11 +1530,6 @@ Miniplayer can be dragged off-screen to the left or right"</string>
     <string name="morphe_miniplayer_hide_overlay_buttons_title">Hide overlay buttons</string>
     <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Overlay buttons are hidden</string>
     <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Overlay buttons are shown</string>
-    <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Hide expand and close buttons</string>
-    <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Buttons are hidden
-
-Swipe to expand or close"</string>
-    <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Expand and close buttons are shown</string>
     <string name="morphe_miniplayer_hide_subtext_title">Hide subtexts</string>
     <string name="morphe_miniplayer_hide_subtext_summary_on">Subtexts are hidden</string>
     <string name="morphe_miniplayer_hide_subtext_summary_off">Subtexts are shown</string>
@@ -1634,6 +1625,11 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_announcements_enabled_summary" translatable="false">Show announcements on startup</string>
     <string name="morphe_announcements_connection_failed" translatable="false">Failed connecting to announcements provider</string>
     <string name="morphe_announcements_dialog_dismiss" translatable="false">Dismiss</string>
+
+    <!-- misc.playercontrols.playerControlsPatch -->
+    <string name="morphe_restore_old_player_buttons_title">Restore old player button style</string>
+    <string name="morphe_restore_old_player_buttons_summary_on">Player thin style is shown</string>
+    <string name="morphe_restore_old_player_buttons_summary_off">Player bold style is shown</string>
 
     <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
     <string name="morphe_spoof_device_dimensions_title">Spoof device dimensions</string>

@@ -34,6 +34,8 @@ public class InitializationPatch {
         if (SharedYouTubeSettings.SETTINGS_INITIALIZED.get()) {
             return;
         }
+        // Save now in case this dialog somehow cannot be shown.
+        SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true);
 
         // TODO: Eventually remove this check.
         // Don't prompt to restart on an app upgrade from older patches that did not ask to restart.
@@ -43,7 +45,6 @@ public class InitializationPatch {
             return;
         }
 
-        runOnMainThreadDelayed(() -> SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true), 1000);
         runOnMainThreadDelayed(() -> {
             // Allow canceling if device is Android 9 or less to allow forcing
             // in-app dark mode before restarting (stock YouTube bug).

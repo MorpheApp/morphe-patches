@@ -20,11 +20,6 @@ internal val ADD_METHOD_CALL = methodCall(
     smali = "Ljava/util/List;->add(Ljava/lang/Object;)Z"
 )
 
-internal val GET_STRING_METHOD_CALL = methodCall(
-    opcode = Opcode.INVOKE_VIRTUAL,
-    smali = "Landroid/content/res/Resources;->getString(I)Ljava/lang/String;"
-)
-
 internal object BottomNavScreenListBuilderFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen;",
     returnType = "L",
@@ -53,7 +48,6 @@ internal object BottomNavScreenResourceBuilderFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf("Landroid/content/res/Resources;"),
     filters = listOf(
-        GET_STRING_METHOD_CALL,
         methodCall(
             opcode = Opcode.INVOKE_DIRECT,
             parameters = listOf("Ljava/lang/String;", "L")

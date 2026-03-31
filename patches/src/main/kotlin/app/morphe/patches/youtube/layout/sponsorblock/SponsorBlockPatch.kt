@@ -13,13 +13,11 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
-import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
@@ -41,7 +39,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
     )
 
     execute {
@@ -83,14 +81,21 @@ private val sponsorBlockResourcePatch = resourcePatch {
             ResourceGroup(
                 "drawable",
                 "morphe_sb_adjust.xml",
+                "morphe_sb_adjust_bold.xml",
                 "morphe_sb_backward.xml",
+                "morphe_sb_backward_bold.xml",
                 "morphe_sb_compare.xml",
+                "morphe_sb_compare_bold.xml",
                 "morphe_sb_edit.xml",
+                "morphe_sb_edit_bold.xml",
                 "morphe_sb_forward.xml",
+                "morphe_sb_forward_bold.xml",
                 "morphe_sb_logo.xml",
                 "morphe_sb_logo_bold.xml",
                 "morphe_sb_publish.xml",
+                "morphe_sb_publish_bold.xml",
                 "morphe_sb_voting.xml",
+                "morphe_sb_voting_bold.xml",
             )
         ).forEach { resourceGroup ->
             copyResources("sponsorblock", resourceGroup)
@@ -122,11 +127,9 @@ val sponsorBlockPatch = bytecodePatch(
         sharedExtensionPatch,
         resourceMappingPatch,
         videoIdPatch,
-        // Required to skip segments on time.
         videoInformationPatch,
-        // Used to prevent SponsorBlock from running on Shorts because SponsorBlock does not yet support Shorts.
         playerTypeHookPatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
         sponsorBlockResourcePatch,
     )
 

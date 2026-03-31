@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/google/material-design-icons/blob/13d360945bfd12cdeec837adc14f82875410584b/symbols/android/content_copy/materialsymbolsrounded/content_copy_24px.xml
+
+    Copyright 2022 Google
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M9,18 C8.44922,18,7.98047,17.8047,7.58594,17.4141 C7.19531,17.0195,7,16.5508,7,16 L7,4 C7,3.44922,7.19531,2.98047,7.58594,2.58594 C7.98047,2.19531,8.44922,2,9,2 L18,2 C18.5508,2,19.0195,2.19531,19.4141,2.58594 C19.8047,2.98047,20,3.44922,20,4 L20,16 C20,16.5508,19.8047,17.0195,19.4141,17.4141 C19.0195,17.8047,18.5508,18,18,18 Z M9,16 L18,16 L18,4 L9,4 Z M5,22 C4.44922,22,3.98047,21.8047,3.58594,21.4141 C3.19531,21.0195,3,20.5508,3,20 L3,7 C3,6.71484,3.09766,6.48047,3.28906,6.28906 C3.48047,6.09766,3.71484,6,4,6 C4.28516,6,4.51953,6.09766,4.71094,6.28906 C4.90234,6.48047,5,6.71484,5,7 L5,20 L15,20 C15.2852,20,15.5195,20.0977,15.7109,20.2891 C15.9023,20.4805,16,20.7148,16,21 C16,21.2852,15.9023,21.5195,15.7109,21.7109 C15.5195,21.9023,15.2852,22,15,22 Z M9,16 L9,4 Z M9,16" />
+</vector>

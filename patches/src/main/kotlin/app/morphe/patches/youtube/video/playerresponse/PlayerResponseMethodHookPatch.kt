@@ -16,10 +16,6 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_23_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_02_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_10_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_46_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -61,22 +57,11 @@ val playerResponseMethodHookPatch = bytecodePatch {
         } else if (is_20_26_or_greater) {
             parameterIsShortAndOpeningOrPlaying = 13
             fingerprint = PlayerParameterBuilder2026Fingerprint
-        } else if (is_20_15_or_greater) {
+        } else {
             parameterIsShortAndOpeningOrPlaying = 13
             fingerprint = PlayerParameterBuilder2015Fingerprint
-        } else if (is_20_10_or_greater) {
-            parameterIsShortAndOpeningOrPlaying = 13
-            fingerprint = PlayerParameterBuilder2010Fingerprint
-        } else if (is_20_02_or_greater) {
-            parameterIsShortAndOpeningOrPlaying = 12
-            fingerprint = PlayerParameterBuilder2002Fingerprint
-        } else if (is_19_23_or_greater) {
-            parameterIsShortAndOpeningOrPlaying = 12
-            fingerprint = PlayerParameterBuilder1925Fingerprint
-        } else {
-            parameterIsShortAndOpeningOrPlaying = 11
-            fingerprint = PlayerParameterBuilderLegacyFingerprint
         }
+
         val playerResponseMethod = fingerprint.method
         playerResponseMethodRef = WeakReference(playerResponseMethod)
 

@@ -22,10 +22,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comment_ads_title">Dölj kommentarsannonser</string>
   <string name="morphe_hide_comment_ads_summary">Döljer annonser i kommentarsfältet</string>
   <string name="morphe_screen_layout_title">Layout</string>
-  <string name="morphe_disable_modern_home_title">Inaktivera moderna start</string>
-  <string name="morphe_disable_modern_home_summary">Inaktiverar det moderna startgränssnittet</string>
-  <string name="morphe_disable_screenshot_popup_title">Inaktivera skärmbildspopup-meddelande</string>
-  <string name="morphe_disable_screenshot_popup_summary">Inaktiverar popup-meddelandet som visas när du tar en skärmbild</string>
+  <string name="morphe_disable_modern_home_title">Inaktivera modern startsida</string>
+  <string name="morphe_disable_modern_home_summary">Inaktiverar det moderna användargränssnittet för startsidan</string>
+  <string name="morphe_disable_screenshot_popup_title">Inaktivera skärmbildspopup-fönster</string>
+  <string name="morphe_disable_screenshot_popup_summary">Inaktiverar popup-fönstret som visas när du tar en skärmbild</string>
   <string name="morphe_hide_answers_button_title">Dölj knappen Svar</string>
   <string name="morphe_hide_answers_button_summary">Döljer knappen Svar i navigeringsfältet</string>
   <string name="morphe_hide_chat_button_title">Dölj knappen Chatta</string>
@@ -58,7 +58,7 @@ Begränsning: Visuella avstånd kan inte döljas"</string>
   <string name="morphe_show_view_count_summary">"Visar antalet visningar för inlägg
 
 Begränsning: Visas endast om antalet visningar ingår i API-svaret"</string>
-  <string name="morphe_remove_nsfw_dialog_title">Ta bort dialogruta för varning om 18+-innehåll</string>
+  <string name="morphe_remove_nsfw_dialog_title">Ta bort varningsdialogruta för 18+-innehåll</string>
   <string name="morphe_remove_nsfw_dialog_summary">Tar bort varningsdialogrutan för 18+-innehåll som visas när du besöker en subreddit genom att acceptera den automatiskt</string>
   <string name="morphe_screen_miscellaneous_title">Övrigt</string>
   <string name="morphe_about_title">Om</string>
@@ -66,5 +66,5 @@ Begränsning: Visas endast om antalet visningar ingår i API-svaret"</string>
   <string name="morphe_sanitize_sharing_links_title">Rensa delningslänkar</string>
   <string name="morphe_sanitize_sharing_links_summary">Rensar delningslänkar genom att ta bort spårningsfrågeparametrar</string>
   <string name="morphe_open_links_directly_title">Öppna länkar direkt</string>
-  <string name="morphe_open_links_directly_summary">Hoppar över omdirigeringswebbadresser i externa länkar</string>
+  <string name="morphe_open_links_directly_summary">Hoppar över omdirigerings-URL:er i externa länkar</string>
 </resources>

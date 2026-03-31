@@ -98,15 +98,6 @@ internal object LithoThreadExecutorFingerprint : Fingerprint(
     }
 )
 
-internal object LithoComponentNameUpbFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
-    filters = listOf(
-        literal(45631264L)
-    )
-)
-
 internal object LithoConverterBufferUpbFeatureFlagFingerprint : Fingerprint(
     returnType = "L",
     filters = listOf(

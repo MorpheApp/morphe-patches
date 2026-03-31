@@ -30,6 +30,8 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">自定义</string>
+  <string name="morphe_custom_branding_notification_icon_title">通知图标</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">关注应用图标</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 实验性提示 🚨</string>

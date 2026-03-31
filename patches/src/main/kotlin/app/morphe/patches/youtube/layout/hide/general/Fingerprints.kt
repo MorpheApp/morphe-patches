@@ -83,7 +83,7 @@ internal object HideSubscribedChannelsBarConstructorFingerprint : Fingerprint(
 )
 
 /**
- * ~ 20.21
+ * 20.21
  */
 internal object HideSubscribedChannelsBarConstructorLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
@@ -206,20 +206,6 @@ internal object RelatedChipCloudFingerprint : Fingerprint(
             returnType = "I",
         ),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately())
-    )
-)
-
-/**
- * ~ 20.09
- */
-internal object RelatedChipCloudLegacyFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = listOf(
-        resourceLiteral(ResourceType.ID, "related_chip_cloud"),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            name = "findViewById"
-        )
     )
 )
 

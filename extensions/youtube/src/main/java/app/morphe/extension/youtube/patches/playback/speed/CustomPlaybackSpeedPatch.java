@@ -11,8 +11,8 @@
 package app.morphe.extension.youtube.patches.playback.speed;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.videoplayer.PlayerControlButton.fadeInDuration;
-import static app.morphe.extension.youtube.videoplayer.PlayerControlButton.getDialogBackgroundColor;
+import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.fadeInDuration;
+import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getDialogBackgroundColor;
 
 import android.annotation.SuppressLint;
 import android.content.Context;

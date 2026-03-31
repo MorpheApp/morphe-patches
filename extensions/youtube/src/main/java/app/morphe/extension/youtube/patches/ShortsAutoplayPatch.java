@@ -95,20 +95,9 @@ public class ShortsAutoplayPatch {
      */
     public static Enum<?> changeShortsRepeatBehavior(Enum<?> original) {
         try {
-            final boolean autoplay;
-
-            if (isAppInBackgroundPiPMode()) {
-                if (!VersionCheckPatch.IS_19_34_OR_GREATER) {
-                    // 19.34+ is required to set background play behavior.
-                    Logger.printDebug(() -> "PiP Shorts not supported, using original repeat behavior");
-
-                    return original;
-                }
-
-                autoplay = Settings.SHORTS_AUTOPLAY_BACKGROUND.get();
-            } else {
-                autoplay = Settings.SHORTS_AUTOPLAY.get();
-            }
+            final boolean autoplay = isAppInBackgroundPiPMode()
+                    ? Settings.SHORTS_AUTOPLAY_BACKGROUND.get()
+                    : Settings.SHORTS_AUTOPLAY.get();
 
             ShortsLoopBehavior autoPlayBehavior = IS_21_10_OR_GREATER
                     ? ShortsLoopBehavior.AUTO_ADVANCE

@@ -37,10 +37,10 @@ public final class AdsFilter extends Filter {
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
 
-    private final StringFilterGroup promotionBanner;
-    private final ByteArrayFilterGroup promotionBannerBuffer;
     private final StringFilterGroup buyMovieAd;
     private final ByteArrayFilterGroup buyMovieAdBuffer;
+    private final StringFilterGroup promotionBanner;
+    private final ByteArrayFilterGroup promotionBannerBuffer;
 
     public AdsFilter() {
         exceptions.addPatterns(
@@ -134,14 +134,13 @@ public final class AdsFilter extends Filter {
         );
 
         promotionBanner = new StringFilterGroup(
-                Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS,
+                null,
                 "statement_banner"
         );
 
         promotionBannerBuffer = new ByteArrayFilterGroup(
                 null,
-                "img/promos/growth/", // Link, https://www.gstatic.com/youtube/img/promos/growth/ is only used for ads.
-                "SPunlimited" // Word associated with Premium, should be unique to differentiate Doodle from ad banner.
+                "EgliaWd5b29kbGU" // Base64 chunk that decodes to 'bigyoodle'
         );
 
         final var selfSponsor = new StringFilterGroup(
@@ -175,7 +174,13 @@ public final class AdsFilter extends Filter {
         }
 
         if (matchedGroup == promotionBanner) {
-            return contentIndex == 0 && promotionBannerBuffer.check(buffer).isFiltered();
+            if (contentIndex == 0) {
+                if (promotionBannerBuffer.check(buffer).isFiltered()) {
+                    return Settings.HIDE_YOUTUBE_DOODLES.get();
+                }
+                return Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get();
+            }
+            return false;
         }
 
         return !exceptions.matches(path);

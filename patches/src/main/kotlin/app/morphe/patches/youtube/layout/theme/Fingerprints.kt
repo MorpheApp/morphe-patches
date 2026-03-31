@@ -16,6 +16,12 @@ internal object UseGradientLoadingScreenFingerprint : Fingerprint(
     )
 )
 
+internal object CarbonColorThemeFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45760313)
+    )
+)
+
 internal object SplashScreenStyleFingerprint : Fingerprint(
     definingClass = YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE,
     name = "onCreate",

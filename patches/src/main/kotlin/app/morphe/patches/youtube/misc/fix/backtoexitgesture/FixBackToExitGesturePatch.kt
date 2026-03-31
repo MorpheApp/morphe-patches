@@ -19,6 +19,7 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -39,6 +40,15 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
             it.method.addInstructionsAtControlFlowLabel(
                 it.instructionMatches.last().index + 1,
                 "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->onTopView()V"
+            )
+        }
+
+        // Flag that seems to change the back button to not
+        // exit the app but instead scrolls to the top of the home feed.
+        BackToRefreshFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                false
             )
         }
 

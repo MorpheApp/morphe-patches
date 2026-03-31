@@ -27,7 +27,6 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
@@ -80,11 +79,9 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             )
         )
 
-        if (is_19_47_or_greater) {
-            settingsMenuVideoSpeedGroup.add(
-                TextPreference("morphe_speed_tap_and_hold", inputType = InputType.NUMBER_DECIMAL),
-            )
-        }
+        settingsMenuVideoSpeedGroup.add(
+            TextPreference("morphe_speed_tap_and_hold", inputType = InputType.NUMBER_DECIMAL),
+        )
 
         // Override the min/max speeds that can be used.
         (if (is_20_34_or_greater) SpeedLimiterFingerprint else SpeedLimiterLegacyFingerprint).method.apply {
@@ -312,35 +309,32 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
 
         // region Custom tap and hold 2x speed.
 
-        if (is_19_47_or_greater) {
-            TapAndHoldSpeedFingerprint.let {
-                // clearMatch() is used because it can be the same method as [tapAndHoldHapticsFingerprint].
-                it.clearMatch()
-                it.method.apply {
-                    val speedIndex = it.instructionMatches.last().index
-                    val speedRegister =
-                        getInstruction<OneRegisterInstruction>(speedIndex).registerA
+        TapAndHoldSpeedFingerprint.let {
+            // clearMatch() is used because it can be the same method as [tapAndHoldHapticsFingerprint].
+            it.clearMatch()
+            it.method.apply {
+                val speedIndex = it.instructionMatches.last().index
+                val speedRegister =
+                    getInstruction<OneRegisterInstruction>(speedIndex).registerA
 
-                    addInstructions(
-                        speedIndex + 1,
-                        """
-                            invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getTapAndHoldSpeed()F
-                            move-result v$speedRegister
-                        """
-                    )
+                addInstructions(
+                    speedIndex + 1,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getTapAndHoldSpeed()F
+                        move-result v$speedRegister
+                    """
+                )
 
-                    val enabledIndex = it.instructionMatches[3].index
-                    val enabledRegister =
-                        getInstruction<OneRegisterInstruction>(enabledIndex).registerA
+                val enabledIndex = it.instructionMatches[3].index
+                val enabledRegister = getInstruction<OneRegisterInstruction>(enabledIndex).registerA
 
-                    addInstructions(
-                        enabledIndex,
-                        """
-                            invoke-static { v$enabledRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableTapAndHoldSpeed(Z)Z
-                            move-result v$enabledRegister
-                        """
-                    )
-                }
+                addInstructions(
+                    enabledIndex,
+                    """
+                        invoke-static { v$enabledRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableTapAndHoldSpeed(Z)Z
+                        move-result v$enabledRegister
+                    """
+                )
             }
         }
 

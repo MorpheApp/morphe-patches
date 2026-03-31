@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/google/material-design-icons/blob/13d360945bfd12cdeec837adc14f82875410584b/symbols/android/content_copy/materialsymbolsrounded/content_copy_24px.xml
+    https://github.com/google/material-design-icons/blob/13d360945bfd12cdeec837adc14f82875410584b/symbols/android/schedule/materialsymbolsrounded/schedule_24px.xml
+    Changes made: This icon is the result of a combination of "Content copy" and "Schedule" icons.
+
+    Copyright 2022 Google
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M18,13 C16.6172,13,15.4375,13.4883,14.4609,14.4609 C13.4883,15.4375,13,16.6172,13,18 C13,19.3828,13.4883,20.5625,14.4609,21.5391 C15.4375,22.5117,16.6172,23,18,23 C19.3828,23,20.5625,22.5117,21.5391,21.5391 C22.5117,20.5625,23,19.3828,23,18 C23,16.6172,22.5117,15.4375,21.5391,14.4609 C20.5625,13.4883,19.3828,13,18,13 Z M18,15 C18.1328,15,18.25,15.0508,18.3516,15.1484 C18.4492,15.25,18.5,15.3672,18.5,15.5 L18.5,17.8008 L20,19.3008 C20.1016,19.3985,20.1484,19.5156,20.1484,19.6485 C20.1484,19.7852,20.1015,19.8985,20,20.0001 C19.8984,20.1017,19.7852,20.1485,19.6484,20.1485 C19.5156,20.1485,19.3984,20.1016,19.3007,20.0001 L17.8007,18.5001 C17.6992,18.3984,17.625,18.2891,17.5742,18.1641 C17.5234,18.0391,17.5,17.9102,17.5,17.7734 L17.5,15.5 C17.5,15.3672,17.5508,15.25,17.6484,15.1484 C17.75,15.0508,17.8672,15,18,15 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M4,6 C3.71484,6,3.48047,6.09766,3.28906,6.28906 C3.09766,6.48047,3,6.71484,3,7 L3,20 C3,20.5508,3.19531,21.0195,3.58594,21.4141 C3.98047,21.8047,4.44922,22,5,22 L11,22 C11.2852,22,11.5195,21.9023,11.7109,21.7109 C11.9023,21.5195,12,21.2852,12,21 C12,20.7148,11.9023,20.4805,11.7109,20.2891 C11.5195,20.0977,11.2852,20,11,20 L5,20 L5,7 C5,6.71484,4.90234,6.48047,4.71094,6.28906 C4.51953,6.09766,4.28516,6,4,6 Z" />
+    <path
+        android:fillColor="@android:color/white"
+        android:pathData="M9,2 C8.44922,2,7.98047,2.19531,7.58594,2.58594 C7.19531,2.98047,7,3.44922,7,4 L7,16 C7,16.5508,7.19531,17.0195,7.58594,17.4141 C7.98047,17.8047,8.44922,18,9,18 L10.4,18 C10.6852,18,10.9195,17.9023,11.1109,17.7109 C11.3023,17.5195,11.4,17.2852,11.4,17 C11.4,16.7148,11.3023,16.4805,11.1109,16.2891 C10.9195,16.0977,10.6852,16,10.4,16 L9,16 L9,4 L18,4 L18,10.3906 C18,10.6718,18.0977,10.9101,18.2891,11.1015 C18.4805,11.2929,18.7149,11.3906,19,11.3906 C19.2852,11.3906,19.5195,11.2968,19.7109,11.1133 C19.9023,10.9297,20,10.6992,20,10.4141 L20,4 C20,3.44922,19.8047,2.98047,19.4141,2.58594 C19.0195,2.19531,18.5508,2,18,2 Z" />
+</vector>

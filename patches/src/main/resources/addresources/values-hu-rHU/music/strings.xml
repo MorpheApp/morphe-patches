@@ -52,12 +52,12 @@ Second \"item\" text"</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Kezdőlap módosítása</string>
   <string name="morphe_change_start_page_entry_default">Alapértelmezett</string>
-  <string name="morphe_change_start_page_entry_charts">Grafikonok</string>
-  <string name="morphe_change_start_page_entry_episodes_for_later">Később nézendő epizódok</string>
+  <string name="morphe_change_start_page_entry_charts">Sikerlisták</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Epizódok későbbre</string>
   <string name="morphe_change_start_page_entry_explore">Felfedezés</string>
   <string name="morphe_change_start_page_entry_history">Előzmények</string>
   <string name="morphe_change_start_page_entry_library">Könyvtár</string>
-  <string name="morphe_change_start_page_entry_liked_music">Szeretett zene</string>
+  <string name="morphe_change_start_page_entry_liked_music">Kedvelt dalok</string>
   <string name="morphe_change_start_page_entry_playlists">Lejátszási listák</string>
   <string name="morphe_change_start_page_entry_search">Keresés</string>
   <string name="morphe_change_start_page_entry_subscriptions">Feliratkozások</string>
@@ -70,16 +70,16 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">A minilejátszó színe megegyezik a teljes képernyős lejátszóéval</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">A minilejátszó alapértelmezett színt használ</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
-  <string name="morphe_music_miniplayer_next_button_title">Mutasd a következő gombot a miniplayeren</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">A következő gomb megjelenik a miniplayeren</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">A következő gomb nem jelenik meg a miniplayeren</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Mutasd az előző gombot a miniplayeren</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">Az előző gomb látható a miniplayeren</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">Az előző gomb nem látható a miniplayeren</string>
+  <string name="morphe_music_miniplayer_next_button_title">Következő gomb megjelenítése a mini lejátszóban</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">​A következő gomb látható a mini lejátszóban</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">A következő gomb nem látható a mini lejátszóban</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Előző gomb megjelenítése a mini lejátszóban</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Az előző gomb látható a mini lejátszóban</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Az előző gomb nem látható a mini lejátszóban</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
-  <string name="morphe_music_enable_forced_miniplayer_title">Engedélyezze a kényszerített miniállítópanelet</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">A miniállítópaneel lerövidülten marad, amikor a lejátszás változik</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">A miniállítópaneel teljes képernyőre bővül, amikor a lejátszás változik</string>
+  <string name="morphe_music_enable_forced_miniplayer_title">Kényszerített mini lejátszó használata</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">A mini lejátszó kis méretű marad a lejátszás váltásakor</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">A mini lejátszó teljes képernyősre vált a lejátszás váltásakor</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigációs sáv</string>
   <string name="morphe_music_navigation_bar_screen_summary">Navigációs sáv gombjainak elrejtése vagy módosítása</string>
@@ -89,16 +89,16 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_home_button_summary_off">A Home gomb látható</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_samples_button_title">Minták elrejtése</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">A Minták gomb elrejtve</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">A Minták gomb látható</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Minták gomb elrejtve</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Minták gomb megjelenítve</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_explore_button_title">Felfedezés elrejtése</string>
   <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Felfedezés gomb elrejtve</string>
   <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">A Felfedezés gomb látható</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_library_button_title">Könyvtár elrejtése</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">A Könyvtár gomb elrejtve</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">A Könyvtár gomb látható</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">A könyvtár gomb elrejtve</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">A könyvtár gomb megjelenítve</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Frissítés elrejtése</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">A Frissítés gomb elrejtve</string>

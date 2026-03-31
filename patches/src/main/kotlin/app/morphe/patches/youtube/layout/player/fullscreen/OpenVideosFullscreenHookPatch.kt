@@ -1,12 +1,10 @@
 package app.morphe.patches.youtube.layout.player.fullscreen
 
-import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.layout.shortsplayer.openShortsInRegularPlayerPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_46_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -19,39 +17,30 @@ internal const val EXTENSION_CLASS_DESCRIPTOR =
  */
 internal val openVideosFullscreenHookPatch = bytecodePatch {
     dependsOn(
-        sharedExtensionPatch,
-        versionCheckPatch
+        sharedExtensionPatch
     )
 
     execute {
-        var fingerprint: Fingerprint
-        var insertIndex: Int
 
-        if (is_19_46_or_greater) {
-            fingerprint = OpenVideosFullscreenPortraitFingerprint
-            insertIndex = fingerprint.instructionMatches.first().index
-
-            OpenVideosFullscreenPortraitFingerprint.let {
-                // Remove A/B feature call that forces what this patch already does.
-                // Cannot use the A/B flag to accomplish the same goal because 19.50+
-                // Shorts fullscreen regular player does not use fullscreen
-                // if the player is minimized, and it must be forced using other conditional check.
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.last().index,
-                    false
-                )
-            }
-        } else {
-            fingerprint = OpenVideosFullscreenPortraitLegacyFingerprint
-            insertIndex = fingerprint.instructionMatches.last().index
+        OpenVideosFullscreenPortraitFingerprint.let {
+            // Remove A/B feature call that forces what this patch already does.
+            // Cannot use the A/B flag to accomplish the same goal because 19.50+
+            // Shorts fullscreen regular player does not use fullscreen
+            // if the player is minimized, and it must be forced using other conditional check.
+            it.method.insertLiteralOverride(
+                it.instructionMatches.last().index,
+                false
+            )
         }
 
-        fingerprint.let {
+        OpenVideosFullscreenPortraitFingerprint.let {
             it.method.apply {
-                val register = getInstruction<OneRegisterInstruction>(insertIndex).registerA
+                val register = getInstruction<OneRegisterInstruction>(
+                    it.instructionMatches.first().index
+                ).registerA
 
                 addInstructions(
-                    insertIndex + 1,
+                    it.instructionMatches.first().index + 1,
                     """
                         invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->doNotOpenVideoFullscreenPortrait(Z)Z
                         move-result v$register

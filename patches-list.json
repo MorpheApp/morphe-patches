@@ -1,5 +1,5 @@
 {
-  "version": "1.22.0-dev.5",
+  "version": "1.23.0-dev.2",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -341,6 +341,7 @@
       "use": true,
       "dependencies": [
         "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],
@@ -876,7 +877,6 @@
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
-        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1264,8 +1264,8 @@
       "options": []
     },
     {
-      "name": "Hide player flyout menu items",
-      "description": "Adds options to hide menu items that appear when pressing the gear icon in the video player.",
+      "name": "Hide player flyout menu components",
+      "description": "Adds options to hide menu components that appear when pressing the gear icon in the video player.",
       "use": true,
       "dependencies": [
         "BytecodePatch",
@@ -1444,8 +1444,7 @@
       "use": true,
       "dependencies": [
         "BytecodePatch",
-        "BytecodePatch",
-        "ResourcePatch"
+        "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.google.android.youtube": [
@@ -1691,6 +1690,7 @@
       "dependencies": [
         "ResourcePatch",
         "BytecodePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1787,7 +1787,6 @@
       "description": "Adds an option to show the dislike count of videos with Return YouTube Dislike.",
       "use": true,
       "dependencies": [
-        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",

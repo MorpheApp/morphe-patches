@@ -37,27 +37,27 @@ Second \"item\" text"</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Dauerwiederholung ist aktiviert</string>
   <string name="morphe_music_play_permanent_repeat_summary_off">Dauerwiederholung ist deaktiviert</string>
   <!-- layout.buttons.hideButtons -->
-  <string name="morphe_music_hide_cast_button_title">Übertragen-Taste ausblenden</string>
-  <string name="morphe_music_hide_cast_button_summary_on">Übertragen-Taste ist ausgeblendet</string>
-  <string name="morphe_music_hide_cast_button_summary_off">Übertragen-Taste wird angezeigt</string>
-  <string name="morphe_music_hide_history_button_title">Verlauf-Schaltfläche ausblenden</string>
-  <string name="morphe_music_hide_history_button_summary_on">Verlauf-Schaltfläche ist ausgeblendet</string>
-  <string name="morphe_music_hide_history_button_summary_off">Verlauf-Schaltfläche wird angezeigt</string>
-  <string name="morphe_music_hide_notification_button_title">Benachrichtigungsschaltfläche ausblenden</string>
-  <string name="morphe_music_hide_notification_button_summary_on">Benachrichtigungsschaltfläche wird ausgeblendet</string>
-  <string name="morphe_music_hide_notification_button_summary_off">Benachrichtigungsschaltfläche wird angezeigt</string>
-  <string name="morphe_music_hide_search_button_title">Suchschaltfläche ausblenden</string>
-  <string name="morphe_music_hide_search_button_summary_on">Suchschaltfläche wird ausgeblendet</string>
-  <string name="morphe_music_hide_search_button_summary_off">Suchschaltfläche wird angezeigt</string>
+  <string name="morphe_music_hide_cast_button_title">Übertragen-Button ausblenden</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Übertragen-Button ist ausgeblendet</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Übertragen-Button wird angezeigt</string>
+  <string name="morphe_music_hide_history_button_title">Verlauf-Button ausblenden</string>
+  <string name="morphe_music_hide_history_button_summary_on">Verlauf-Button ist ausgeblendet</string>
+  <string name="morphe_music_hide_history_button_summary_off">Verlauf-Button wird angezeigt</string>
+  <string name="morphe_music_hide_notification_button_title">Benachrichtigungs-Button ausblenden</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Benachrichtigungs-Button ist ausgeblendet</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Benachrichtigungs-Button wird angezeigt</string>
+  <string name="morphe_music_hide_search_button_title">Such-Button ausblenden</string>
+  <string name="morphe_music_hide_search_button_summary_on">Such-Button ist ausgeblendet</string>
+  <string name="morphe_music_hide_search_button_summary_off">Such-Button wird angezeigt</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startseite ändern</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>
-  <string name="morphe_change_start_page_entry_charts">Diagramme</string>
-  <string name="morphe_change_start_page_entry_episodes_for_later">Für später</string>
-  <string name="morphe_change_start_page_entry_explore">Erforschen</string>
+  <string name="morphe_change_start_page_entry_charts">Charts</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Episoden für später</string>
+  <string name="morphe_change_start_page_entry_explore">Entdecken</string>
   <string name="morphe_change_start_page_entry_history">Verlauf</string>
   <string name="morphe_change_start_page_entry_library">Bibliothek</string>
-  <string name="morphe_change_start_page_entry_liked_music">Gefällte Musik</string>
+  <string name="morphe_change_start_page_entry_liked_music">Gelikte Musik</string>
   <string name="morphe_change_start_page_entry_playlists">Playlisten</string>
   <string name="morphe_change_start_page_entry_search">Suchen</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonnements</string>
@@ -70,43 +70,43 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayer-Farbe entspricht dem Vollbild-Player</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer verwendet Standardfarbe</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
-  <string name="morphe_music_miniplayer_next_button_title">Nächster Button im Miniplayer anzeigen</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">Der Nächster Button wird im Miniplayer angezeigt</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">Der Nächster Button wird nicht im Miniplayer angezeigt</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Vorherige Schaltfläche im Miniplayer anzeigen</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">Die vorherige Schaltfläche wird im Miniplayer angezeigt</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">Die vorherige Schaltfläche wird nicht im Miniplayer angezeigt</string>
+  <string name="morphe_music_miniplayer_next_button_title">\"Nächstes\"-Button im Miniplayer anzeigen</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">\"Nächstes\"-Button wird im Miniplayer angezeigt</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">\"Nächstes\"-Button wird nicht im Miniplayer angezeigt</string>
+  <string name="morphe_music_miniplayer_previous_button_title">\"Vorheriges\"-Button im Miniplayer anzeigen</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">\"Vorheriges\"-Button wird im Miniplayer angezeigt</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">\"Vorheriges\"-Button wird nicht im Miniplayer angezeigt</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Miniplayer erzwingen aktivieren</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer bleibt minimiert, wenn die Wiedergabe wechselt</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer erweitert sich im Vollbildmodus, wenn die Wiedergabe wechselt</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer erweitert sich zum Vollbildmodus, wenn die Wiedergabe wechselt</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigationsleiste</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Navigationsleisten-Schaltflächen ausblenden oder ändern</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Navigationsleiste-Buttons ausblenden oder ändern</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">Startseite ausblenden</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Start-Schaltfläche ist ausgeblendet</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Start-Schaltfläche wird angezeigt</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Home ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Home-Button ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Home-Button wird angezeigt</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">Kurzvideos ausblenden</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Samples-Schaltfläche ist ausgeblendet</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Samples-Schaltfläche wird angezeigt</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Samples ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Samples-Button ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Samples-Button wird angezeigt</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">Erkunden ausblenden</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Entdecken-Schaltfläche ist ausgeblendet</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Entdecken-Schaltfläche wird angezeigt</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Entdecken ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Entdecken-Button ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Entdecken-Button wird angezeigt</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">Mediathek ausblenden</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Mediathek-Schaltfläche ist ausgeblendet</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Mediathek-Schaltfläche wird angezeigt</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Bibliothek ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Bibliothek-Button ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Bibliothek-Button wird angezeigt</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Upgrade ausblenden</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Upgrade-Schaltfläche ist ausgeblendet</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Upgrade-Schaltfläche wird angezeigt</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Upgrade-Button ist ausgeblendet</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Upgrade-Button wird angezeigt</string>
   <string name="morphe_music_hide_navigation_bar_title">Navigationsleiste ausblenden</string>
   <string name="morphe_music_hide_navigation_bar_summary_on">Navigationsleiste ist ausgeblendet</string>
   <string name="morphe_music_hide_navigation_bar_summary_off">Navigationsleiste wird angezeigt</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">Beschriftungen der Navigationsschaltflächen ausblenden</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Beschriftungen der Navigations-Buttons ausblenden</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Beschriftungen sind ausgeblendet</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Beschriftungen werden angezeigt</string>
   <!-- layout.premium.hideGetPremiumPatch -->

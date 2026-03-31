@@ -146,9 +146,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">Раздел Вам может понравиться скрыто</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Раздел Вам может понравиться показан</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Скрыть YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Анимация YouTube Doodles на логотипе скрыта</string>
-  <string name="morphe_hide_doodles_summary_off">Анимация YouTube Doodles на логотипе показана</string>
+  <string name="morphe_hide_youtube_doodles_title">Скрыть YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Анимация YouTube Doodles на логотипе скрыта</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Анимация YouTube Doodles на логотипе показана</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodle показывают несколько дней в году в разных частях света.
+
+Показ YouTube Doodle может препятствовать отображению собственных заголовков."</string>
   <string name="morphe_hide_channel_bar_title">Скрыть панель канала</string>
   <string name="morphe_hide_channel_bar_summary_on">Панель канала под плеером скрыта</string>
   <string name="morphe_hide_channel_bar_summary_off">Панель канала под плеером показана</string>
@@ -307,10 +310,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">Включить фильтр карусели комментариев</string>
   <string name="morphe_hide_comments_carousel_summary_on">Фильтр карусели комментариев включен</string>
   <string name="morphe_hide_comments_carousel_summary_off">Фильтр карусели комментариев выключен</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Примечание
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Примечание:
 
-• Введите точное название элемента карусели (например, Спросить, Разрекламировать это видео, Слушать на YouTube Music и т.д.).
-• Скрытие элементов карусели может иметь нежелательные побочные эффекты.
+• Убедитесь, что вы вводите точное название элемента карусели (например, Спросить, Продвигать это видео, Слушать на YouTube Music и т.д.).
+• Скрытие элементов карусели может иметь непредвиденные побочные эффекты.
 • Если все элементы карусели скрыты, весь раздел комментариев также будет скрыт."</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">Фильтр карусели комментариев</string>
   <string name="morphe_hide_comments_carousel_filter_strings_summary">Введите названия карусели комментариев для фильтрации, по одному на строчку</string>
@@ -453,9 +456,9 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_title">Показать кнопку копирования URL видео</string>
   <string name="morphe_copy_video_url_summary_on">Кнопка для копирования URL-адреса видео показана. Нажмите, чтобы скопировать URL-адрес видео. Нажмите и удерживайте, чтобы скопировать URL-адрес видео с меткой времени</string>
   <string name="morphe_copy_video_url_summary_off">Кнопка для копирования URL-адреса видео не показана</string>
-  <string name="morphe_copy_video_url_timestamp_title">Показать кнопку копирования URL видео с меткой времени</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Кнопка для копирования URL-адреса видео с меткой времени показана. Нажмите, чтобы скопировать URL-адрес видео с меткой времени. Нажмите и удерживайте, чтобы скопировать URL-адрес видео без метки времени</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Кнопка для копирования URL-адреса видео с меткой времени не показана</string>
+  <string name="morphe_copy_video_url_timestamp_title">Скопировать временную метку</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Кнопка копирования URL-адреса видео копирует вместе со временной меткой. Длительное нажатие копирует без временной метки</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Кнопка копирования URL-адреса видео копирует без временной метки. Длительное нажатие копирует вместе со временной меткой</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Скрыть диалог о нежелательном контенте</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Диалоговое окно о нежелательном контенте скрыто</string>
@@ -709,10 +712,9 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_navigation_bar_title">Скрыть панель навигации</string>
   <string name="morphe_hide_navigation_bar_summary_on">Панель навигации скрыта</string>
   <string name="morphe_hide_navigation_bar_summary_off">Панель навигации показана</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Этот параметр скрывает панель навигации полностью, включая вкладку «You».
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Это полностью скрывает панель навигации, включая вкладку \"Вы\".
 
-Чтобы получить доступ к настройкам:
-Откройте любое видео → Откройте меню Качество → Нажмите «Настройки > Настройки качества видео» внизу экрана."</string>
+Чтобы получить доступ к настройкам, включите \"Настройки\" в разделе \"Общие\" → \"Панель инструментов\" → Показать Настройки."</string>
   <string name="morphe_narrow_navigation_buttons_title">Включить узкие кнопки навигации</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Расстояние между кнопками навигации небольшое</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Расстояние между кнопками навигации нормальное</string>
@@ -720,8 +722,8 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_navigation_bar_animations_summary_on">Переходы навигации анимированы</string>
   <string name="morphe_navigation_bar_animations_summary_off">Переходы навигации не анимированы</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Выключить авто скрытие панели навигации</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Панель навигации не будет скрываться автоматически</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Панель навигации будет скрываться автоматически</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Панель навигации не будет скрываться во время прокрутки</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Панель навигации будет скрываться во время прокрутки</string>
   <string name="morphe_disable_translucent_status_bar_title">Отключить полупрозрачность строки состояния</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Строка состояния непрозрачная</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Строка состояния непрозрачная или полупрозрачная</string>
@@ -1013,10 +1015,10 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Панель навигации в Shorts скрыта</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Панель навигации в Shorts показана</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Скрыть предлагаемые видео в конце просмотра</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Рекомендуемое видео в конце просмотра скрыто</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Предлагаемые видео в конце просмотра показаны</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Этот параметр работает только при отключении настройки \"Авто воспроизведение следующего видео\".
+  <string name="morphe_hide_end_screen_suggested_video_title">Скрыть предлагаемые видео в конце просмотра</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Рекомендуемое видео в конце просмотра скрыто</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Предлагаемые видео в конце просмотра показаны</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Этот параметр работает только при отключении настройки \"Авто воспроизведение следующего видео\".
 
 Вы можете изменить это на YouTube:
 Настройки → Воспроизведение (или Авто воспроизведение) → Авто воспроизведение следующего видео"</string>
@@ -1520,6 +1522,10 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow временно недоступен (код статуса: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow временно недоступен</string>
   <!-- misc.announcements.announcementsPatch -->
+  <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">Восстановить старый стиль кнопок плеера</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">Стиль игрока в тонком отображении показан</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">Стиль игрока в жирном отображении показан</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Подменить размеры устройства</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Размеры устройства подменены

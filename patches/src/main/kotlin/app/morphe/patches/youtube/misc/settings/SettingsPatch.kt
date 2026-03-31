@@ -47,7 +47,6 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
 import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
 import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -238,11 +237,9 @@ val settingsPatch = bytecodePatch(
             selectable = true,
         )
 
-        if (is_19_34_or_greater) {
-            PreferenceScreen.GENERAL.addPreferences(
-                SwitchPreference("morphe_restore_old_settings_menus")
-            )
-        }
+        PreferenceScreen.GENERAL.addPreferences(
+            SwitchPreference("morphe_restore_old_settings_menus")
+        )
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_settings_search_history"),

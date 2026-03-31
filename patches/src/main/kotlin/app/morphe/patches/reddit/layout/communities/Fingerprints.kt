@@ -12,7 +12,6 @@ import com.android.tools.smali.dexlib2.AccessFlags
 
 private object CommunityRecommendationSectionParentFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/onboardingfeedscomponents/communityrecommendation/impl/",
-    name = "key",
     returnType = "Ljava/lang/String;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(),

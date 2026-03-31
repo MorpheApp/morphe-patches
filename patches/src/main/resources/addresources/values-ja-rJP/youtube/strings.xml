@@ -48,16 +48,16 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">レイアウトの更新を無効化</string>
   <string name="morphe_disable_layout_updates_summary_on">レイアウトはサーバーから更新されません</string>
-  <string name="morphe_disable_layout_updates_summary_off">レイアウトはサーバーから更新されます</string>
+  <string name="morphe_disable_layout_updates_summary_off">レイアウトがサーバーから更新されます</string>
   <string name="morphe_disable_layout_updates_user_dialog_message">"アプリのレイアウトは、初回インストール時に使用されていたレイアウトに戻ります。
 
 一部のサーバー側からのレイアウトの更新が初回インストールの状態に戻らない場合があります。
 
 以下の変更を伴います:
-• プレイヤーのフライアウト メニュー (または関連設定) 内のコンポーネントが動作しない場合がある。
+• プレイヤーのフライアウト メニュー (または関連設定) 内のコンポーネントが正常に動作しない場合がある。
 • 数字の回転アニメーションが表示されない。
 • マイページタブがライブラリタブに戻る。
-• 動画の概要欄の音楽セクションが動作しない場合がある。
+• 動画の概要欄の音楽セクションが正常に動作しない場合がある。
 • プレーヤーのフライアウト メニューの項目を非表示にできない。
 • ライブラリタブに「アカウントを切り替える」ボタンが表示されない場合がある。"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
@@ -146,9 +146,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">検索履歴の「おすすめ」セクションは表示されません</string>
   <string name="morphe_hide_you_may_like_section_summary_off">検索履歴の「おすすめ」セクションは表示されます</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodle を非表示</string>
-  <string name="morphe_hide_doodles_summary_on">ロゴの YouTube Doodle アニメーションは表示されません</string>
-  <string name="morphe_hide_doodles_summary_off">ロゴの YouTube Doodle アニメーションは表示されます</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodle を非表示</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">ロゴの YouTube Doodle アニメーションは表示されません</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">ロゴの YouTube Doodle アニメーションは表示されます</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodle は、世界各地で年間数日表示されます。
+
+YouTube Doodle が表示されていると、カスタマイズしたヘッダーが表示されなくなる場合があります。"</string>
   <string name="morphe_hide_channel_bar_title">チャンネルバーを非表示</string>
   <string name="morphe_hide_channel_bar_summary_on">チャンネルバーは表示されません</string>
   <string name="morphe_hide_channel_bar_summary_off">チャンネルバーは表示されます</string>
@@ -307,9 +310,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">横スライド欄のフィルタを有効化</string>
   <string name="morphe_hide_comments_carousel_summary_on">コメント セクションの横スライド欄のフィルタは有効です</string>
   <string name="morphe_hide_comments_carousel_summary_off">コメント セクションの横スライド欄のフィルタは無効です</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"注意
-
-• 横スライド欄の正確なタイトルをフィルタに入力してください。(例:「質問する」「この動画をパイプする」「YouTube Music で聴く」など)
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"注意:
+• 横スライド欄の正確なタイトルをフィルタに入力してください。(例:「質問する」「この動画をハイプする」「YouTube Music で聴く」など)
 • 横スライド欄を非表示にすると予期せぬ副作用が発生する可能性がある。
 • すべての横スライド欄を非表示にした場合、コメント セクションごと表示されなくなる。"</string>
   <string name="morphe_hide_comments_carousel_filter_strings_title">横スライド欄のフィルタ</string>
@@ -453,9 +455,9 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_title">「動画の URL をコピー」ボタンを表示</string>
   <string name="morphe_copy_video_url_summary_on">プレーヤー オーバーレイに「動画の URL をコピー」ボタンが表示されます。タップすると動画の URL が、長押しするとタイムスタンプ付きの URL がそれぞれコピーされます</string>
   <string name="morphe_copy_video_url_summary_off">プレーヤー オーバーレイに「動画の URL をコピー」ボタンは表示されません</string>
-  <string name="morphe_copy_video_url_timestamp_title">「タイムスタンプ付き URL をコピー」ボタンを表示</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">プレーヤー オーバーレイに「タイムスタンプ付き URL をコピー」ボタンが表示されます。タップするとタイムスタンプ付きの動画の URL が、長押しするとタイムスタンプなしの URL がそれぞれコピーされます</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">プレーヤー オーバーレイに「タイムスタンプ付き URL をコピー」ボタンは表示されません</string>
+  <string name="morphe_copy_video_url_timestamp_title">タイムスタンプをコピー</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">コピーするビデオURLボタンは、タイムスタンプ付きでコピーします。長押しするとタイムスタンプなしでコピーします</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">コピーするビデオURLボタンは、タイムスタンプなしでコピーします。長押しするとタイムスタンプ付きでコピーします</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">「ご自身の責任」ダイアログを削除</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">ダイアログは削除されます</string>
@@ -711,8 +713,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_summary_off">ナビゲーション バーは表示されます</string>
   <string name="morphe_hide_navigation_bar_user_dialog_message">"この機能は、マイページタブを含むナビゲーション バー全体を完全に非表示にします。
 
-[設定] にアクセスする方法:
-任意の動画を開く → 画質メニューを開く → 一番下の「[設定] &gt; [動画の画質設定]」をタップ"</string>
+[設定] にアクセスするには、以下の手順で設定ボタンを表示してください:
+[全般] &gt; [ツールバー] &gt; [設定ボタンを表示]"</string>
   <string name="morphe_narrow_navigation_buttons_title">ナビゲーション ボタンの間を詰める</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">ナビゲーション ボタンは間隔を詰めて表示されます</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">ナビゲーション ボタンは間隔を詰めずに表示されます</string>
@@ -720,8 +722,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary_on">ナビゲーションの遷移がアニメーション表示されます</string>
   <string name="morphe_navigation_bar_animations_summary_off">ナビゲーションの遷移はアニメーション表示されません</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ナビゲーション バーの自動非表示を無効化</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">ナビゲーション バーが自動的に非表示になることはありません</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">ナビゲーション バーが自動的に非表示になる場合があります</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">下にスクロールすると、ナビゲーション バーが非表示になります</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">下にスクロールしても、ナビゲーション バーは表示され続けます</string>
   <string name="morphe_disable_translucent_status_bar_title">半透明ステータスバーを無効化</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">ステータスバーは透けません</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">ステータスバーは状況に応じて透けます</string>
@@ -1013,10 +1015,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">ナビゲーション バーは表示されません</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">ナビゲーション バーは表示されます</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">終了画面の「関連動画」を非表示</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">終了画面の「関連動画」は表示されません</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">終了画面の「関連動画」は表示されます</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"この設定は、[次の動画を自動再生] がオフの場合にのみ有効です。
+  <string name="morphe_hide_end_screen_suggested_video_title">終了画面の「関連動画」を非表示</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">終了画面の「関連動画」は表示されません</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">終了画面の「関連動画」は表示されます</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"この設定は、[次の動画を自動再生] がオフの場合にのみ有効です。
 
 [次の動画を自動再生] は、YouTube の設定で変更できます:
 [設定] &gt; [再生] (または [自動再生]) &gt; [次の動画を自動再生]"</string>
@@ -1517,6 +1519,10 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow は一時的に利用できません (status code: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow は一時的に利用できません</string>
   <!-- misc.announcements.announcementsPatch -->
+  <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">古いプレイヤーボタンのスタイルを復元</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">プレイヤーの細字スタイルが表示されます</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">プレイヤーの太字スタイルが表示されます</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">デバイスの画面サイズを偽装</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"デバイスの画面サイズは偽装されています

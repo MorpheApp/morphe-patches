@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Všeobecné</string>
   <string name="morphe_settings_screen_05_player_title">Prehrávač</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Ovládanie potiahnutím</string>
   <string name="morphe_settings_screen_11_misc_title">Ostatné</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
@@ -80,9 +81,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">Sekcia \'Môže sa vám páčiť\' je skrytá</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Sekcia \'Môže sa vám páčiť\' sa zobrazuje</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Skryť YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Animácia loga YouTube Doodles je skrytá</string>
-  <string name="morphe_hide_doodles_summary_off">Animácia loga YouTube Doodles sa zobrazuje</string>
+  <string name="morphe_hide_youtube_doodles_title">Skryť YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Animácia loga YouTube Doodles je skrytá</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Animácia loga YouTube Doodles sa zobrazuje</string>
   <string name="morphe_hide_channel_bar_title">Skryť panel kanála</string>
   <string name="morphe_hide_channel_bar_summary_on">Panel kanála je skrytý</string>
   <string name="morphe_hide_channel_bar_summary_off">Panel kanála sa zobrazuje</string>
@@ -213,9 +214,6 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_title">Zobraziť tlačidlo \'Skopírovať URL videa\'</string>
   <string name="morphe_copy_video_url_summary_on">Tlačidlo \'Skopírovať URL videa\' je zobrazené. Ťuknite pre skopírovanie URL videa alebo podržte tlačidlo pre skopírovanie URL s časovou značkou.</string>
   <string name="morphe_copy_video_url_summary_off">Tlačidlo \'Skopírovať URL videa\' je skryté</string>
-  <string name="morphe_copy_video_url_timestamp_title">Zobraziť tlačidlo \'Skopírovať URL videa s časovou značkou\'</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Tlačidlo \'Skopírovať URL videa s časovou značkou\' je zobrazené. Ťuknite pre skopírovanie URL videa s časovou značkou alebo podržte tlačidlo pre skopírovanie URL bez časovej značky.</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Tlačidlo \'Skopírovať URL videa s časovou značkou\' je skryté</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">Týmto sa neobchádza overenie veku. Jednoducho ho automaticky akceptuje.</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -723,6 +721,7 @@ Ak ju neskôr vypnete, odporúča sa vymazať dáta aplikácie, aby sa predišlo
   <string name="morphe_alt_thumbnail_stills_time_entry_3">Koniec videa</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- misc.announcements.announcementsPatch -->
+  <!-- misc.playercontrols.playerControlsPatch -->
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Sfalšovať rozmery zariadenia</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Rozmery zariadenia sú falšované

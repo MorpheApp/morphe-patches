@@ -16,5 +16,55 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  
+  <string name="morphe_screen_ads_title">जाहिराती</string>
+  <string name="morphe_hide_post_ads_title">फीडमधील जाहिराती लपवा</string>
+  <string name="morphe_hide_post_ads_summary">फीडमध्ये जाहिराती लपवते</string>
+  <string name="morphe_hide_comment_ads_title">टिप्पणीमधील जाहिराती लपवा</string>
+  <string name="morphe_hide_comment_ads_summary">टिप्पणी विभागात जाहिराती लपवते</string>
+  <string name="morphe_screen_layout_title">मांडणी</string>
+  <string name="morphe_disable_modern_home_title">आधुनिक होम अक्षम करा</string>
+  <string name="morphe_disable_modern_home_summary">आधुनिक होम UI अक्षम करते</string>
+  <string name="morphe_disable_screenshot_popup_title">स्क्रीनशॉट पॉपअप अक्षम करा</string>
+  <string name="morphe_disable_screenshot_popup_summary">स्क्रीनशॉट काढताना दिसणारा पॉपअप अक्षम करते</string>
+  <string name="morphe_hide_answers_button_title">उत्तरे बटण लपवा</string>
+  <string name="morphe_hide_answers_button_summary">नेव्हिगेशन बारमधील उत्तरे बटण लपवते</string>
+  <string name="morphe_hide_chat_button_title">चॅट बटण लपवा</string>
+  <string name="morphe_hide_chat_button_summary">नेव्हिगेशन बारमधील चॅट बटण लपवते</string>
+  <string name="morphe_hide_create_button_title">तयार करा बटण लपवा</string>
+  <string name="morphe_hide_create_button_summary">नेव्हिगेशन बारमधील तयार करा बटण लपवते</string>
+  <string name="morphe_hide_discover_button_title">शोध किंवा समुदाय बटण लपवा</string>
+  <string name="morphe_hide_discover_button_summary">नेव्हिगेशन बारमधील शोध किंवा समुदाय बटण लपवते</string>
+  <string name="morphe_hide_games_button_title">गेम बटण लपवा</string>
+  <string name="morphe_hide_games_button_summary">नेव्हिगेशन बारमधील गेम बटण लपवते</string>
+  <string name="morphe_hide_recently_visited_shelf_title">अलीकडे भेट दिलेली शेल्फ लपवा</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">साइडबारमधील अलीकडे भेट दिलेली शेल्फ लपवते</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">रेडिटवरील गेम शेल्फ लपवा</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">साइडबारमधील रेडिटवरील गेम शेल्फ लपवते</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">रेडिट प्रो शेल्फ लपवा</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">साइडबारमधील रेडिट प्रो शेल्फ लपवते</string>
+  <string name="morphe_hide_about_shelf_title">अबाउट शेल्फ लपवा</string>
+  <string name="morphe_hide_about_shelf_summary">साइडबारमधील अबाउट शेल्फ लपवते</string>
+  <string name="morphe_hide_resources_shelf_title">संसाधने शेल्फ लपवा</string>
+  <string name="morphe_hide_resources_shelf_summary">साइडबारमधील संसाधने शेल्फ लपवते</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">शिफारस केलेले समुदाय लपवा</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">सबरेडिट्समधील शिफारस केलेले समुदाय शेल्फ लपवते</string>
+  <string name="morphe_hide_trending_today_shelf_title">आजचे ट्रेंडिंग शेल्फ लपवा</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"शोध सूचनांमध्ये आजचे ट्रेंडिंग शेल्फ लपवते
+
+मर्यादा: व्हिज्युअल स्पेसर्स लपवले जाणार नाहीत"</string>
+  <string name="morphe_remove_notification_dialog_title">सूचना सूचना संवाद काढून टाका</string>
+  <string name="morphe_remove_notification_dialog_summary">एखादे सबरेडिट भेटताना दिसणारा सूचना संवाद आपोआप स्वीकारून काढून टाकते</string>
+  <string name="morphe_show_view_count_title">व्ह्यू काउंट दर्शवा</string>
+  <string name="morphe_show_view_count_summary">"पोस्ट्सची व्ह्यू काउंट दर्शवते
+
+मर्यादा: केवळ API प्रतिसादामध्ये व्ह्यू काउंट समाविष्ट असल्यास दर्शविले जाते"</string>
+  <string name="morphe_remove_nsfw_dialog_title">NSFW वॉर्निंग संवाद काढून टाका</string>
+  <string name="morphe_remove_nsfw_dialog_summary">एखादे सबरेडिट भेटताना दिसणारा NSFW वॉर्निंग संवाद आपोआप स्वीकारून काढून टाकते</string>
+  <string name="morphe_screen_miscellaneous_title">विविध</string>
+  <string name="morphe_about_title">अबाउट</string>
+  <string name="morphe_about_summary">पॅच आवृत्ती आणि अधिकृत लिंक्स</string>
+  <string name="morphe_sanitize_sharing_links_title">सामायिकरण लिंक्स स्वच्छ करा</string>
+  <string name="morphe_sanitize_sharing_links_summary">ट्रॅकिंग क्वेरी पॅरामीटर्स काढून सामायिकरण लिंक्स स्वच्छ करते</string>
+  <string name="morphe_open_links_directly_title">लिंक्स थेट उघडा</string>
+  <string name="morphe_open_links_directly_summary">बाह्य लिंक्समधील पुनर्निर्देशन URL वगळा</string>
 </resources>

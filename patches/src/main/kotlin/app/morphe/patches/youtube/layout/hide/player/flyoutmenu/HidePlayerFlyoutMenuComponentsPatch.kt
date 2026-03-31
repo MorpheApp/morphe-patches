@@ -11,9 +11,9 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
 @Suppress("unused")
-val hidePlayerFlyoutMenuPatch = bytecodePatch(
-    name = "Hide player flyout menu items",
-    description = "Adds options to hide menu items that appear when pressing the gear icon in the video player.",
+val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
+    name = "Hide player flyout menu components",
+    description = "Adds options to hide menu components that appear when pressing the gear icon in the video player.",
 ) {
     dependsOn(
         lithoFilterPatch,
@@ -24,7 +24,7 @@ val hidePlayerFlyoutMenuPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        val filterClassDescriptor = "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuItemsFilter;"
+        val filterClassDescriptor = "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuComponentsFilter;"
 
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(

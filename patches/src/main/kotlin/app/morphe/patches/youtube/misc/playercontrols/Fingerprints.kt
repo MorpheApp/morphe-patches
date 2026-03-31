@@ -128,15 +128,6 @@ internal object PlayerBottomControlsExploderFeatureFlagFingerprint : Fingerprint
     )
 )
 
-internal object PlayerTopControlsExperimentalLayoutFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "I",
-    parameters = listOf(),
-    filters = listOf(
-        literal(45629424L)
-    )
-)
-
 internal object PlayerControlsLargeOverlayButtonsFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",

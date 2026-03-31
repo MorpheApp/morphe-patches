@@ -16,6 +16,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
@@ -81,6 +82,38 @@ public class CustomBrandingPatch {
         }
     }
 
+    /**
+     * Notification icon theme - selected independently of the launcher icon.
+     */
+    public enum NotificationIconTheme {
+        /**  * Follow the currently selected launcher icon theme. */
+        FOLLOW,
+        ORIGINAL,
+        LIGHT,
+        DARK,
+        BLACK,
+        PLAY,
+        /** * User provided custom PNG notification icon. */
+        CUSTOM;
+
+        /**
+         * Resolves the effective {@link BrandingTheme} to use for the notification icon.
+         * When {@link #FOLLOW}, delegates to the current launcher icon setting.
+         */
+        @NonNull
+        BrandingTheme resolveNotificationBrandingTheme() {
+            if (this == FOLLOW) {
+                return SharedYouTubeSettings.CUSTOM_BRANDING_ICON.get();
+            }
+            // Map 1:1 to BrandingTheme by name (both enums share the same names except FOLLOW).
+            try {
+                return BrandingTheme.valueOf(name());
+            } catch (IllegalArgumentException e) {
+                return BrandingTheme.BLACK;
+            }
+        }
+    }
+
     @Nullable
     private static Integer notificationSmallIcon;
 
@@ -93,7 +126,9 @@ public class CustomBrandingPatch {
                 return notificationSmallIcon = 0;
             }
 
-            BrandingTheme branding = SharedYouTubeSettings.CUSTOM_BRANDING_ICON.get();
+            // Resolve the effective BrandingTheme for the notification icon.
+            NotificationIconTheme notificationTheme = SharedYouTubeSettings.CUSTOM_BRANDING_NOTIFICATION_ICON.get();
+            BrandingTheme branding = notificationTheme.resolveNotificationBrandingTheme();
             String iconName = branding.notificationIconResourceName();
             if (iconName == null) {
                 notificationSmallIcon = 0;

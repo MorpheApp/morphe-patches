@@ -23,7 +23,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 internal var drawerResourceId = -1L
     private set
 
-private val hideInfocardsResourcePatch = resourcePatch {
+private val hideInfoCardsResourcePatch = resourcePatch {
     dependsOn(resourceMappingPatch
         )
     
@@ -43,7 +43,7 @@ val hideInfoCardsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         lithoFilterPatch,
-        hideInfocardsResourcePatch,
+        hideInfoCardsResourcePatch,
         settingsPatch,
     )
 
@@ -55,7 +55,7 @@ val hideInfoCardsPatch = bytecodePatch(
         )
 
         // Edit: This old non-litho code may be obsolete and no longer used by any supported versions.
-        InfocardsIncognitoFingerprint.method.apply {
+        InfoCardsIncognitoFingerprint.method.apply {
             val invokeInstructionIndex = implementation!!.instructions.indexOfFirst {
                 it.opcode.ordinal == Opcode.INVOKE_VIRTUAL.ordinal &&
                     ((it as ReferenceInstruction).reference.toString() == "Landroid/view/View;->setVisibility(I)V")
@@ -69,7 +69,7 @@ val hideInfoCardsPatch = bytecodePatch(
         }
 
         // Edit: This old non-litho code may be obsolete and no longer used by any supported versions.
-        InfocardsMethodCallFingerprint.let {
+        InfoCardsMethodCallFingerprint.let {
             val invokeInterfaceIndex = it.instructionMatches.last().index
             it.method.apply {
                 val register = implementation!!.registerCount - 1
@@ -90,7 +90,7 @@ val hideInfoCardsPatch = bytecodePatch(
         }
 
         // Info cards can also appear as Litho components.
-        val filterClassDescriptor = "Lapp/morphe/extension/youtube/patches/components/HideInfoCardsFilter;"
+        val filterClassDescriptor = "Lapp/morphe/extension/youtube/patches/components/InfoCardsFilter;"
         addLithoFilter(filterClassDescriptor)
     }
 }

@@ -11,8 +11,6 @@ import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoColorOverrideHook
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_19_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -90,20 +88,18 @@ val seekbarColorPatch = bytecodePatch(
         // If hiding feed seekbar thumbnails, then turn off the cairo gradient
         // of the watch history menu items as they use the same gradient as the
         // player and there is no easy way to distinguish which to use a transparent color.
-        if (is_19_34_or_greater) {
-            WatchHistoryMenuUseProgressDrawableFingerprint.let {
-                it.method.apply {
-                    val index = it.instructionMatches[1].index
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+        WatchHistoryMenuUseProgressDrawableFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                    addInstructions(
-                        index + 1,
-                        """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->showWatchHistoryProgressDrawable(Z)Z
-                            move-result v$register            
-                        """
-                    )
-                }
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->showWatchHistoryProgressDrawable(Z)Z
+                        move-result v$register            
+                    """
+                )
             }
         }
 
@@ -115,43 +111,22 @@ val seekbarColorPatch = bytecodePatch(
             """
         )
 
-        val PlayerFingerprint: Fingerprint
-        val checkGradientCoordinates: Boolean
-        if (is_19_49_or_greater) {
-            PlayerFingerprint = PlayerLinearGradientFingerprint
-            checkGradientCoordinates = true
-        } else {
-            PlayerFingerprint = PlayerLinearGradientLegacyFingerprint
-            checkGradientCoordinates = false
-        }
-
-        PlayerFingerprint.let {
+        PlayerLinearGradientFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                 addInstructions(
                     index + 1,
-                    if (checkGradientCoordinates) {
-                        """
-                           invoke-static { v$register, p0, p1 }, $EXTENSION_CLASS_DESCRIPTOR->getPlayerLinearGradient([III)[I
-                           move-result-object v$register
-                        """
-                    } else {
-                        """
-                           invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getPlayerLinearGradient([I)[I
-                           move-result-object v$register
-                        """
-                    }
+                    """
+                       invoke-static { v$register, p0, p1 }, $EXTENSION_CLASS_DESCRIPTOR->getPlayerLinearGradient([III)[I
+                       move-result-object v$register
+                    """
                 )
             }
         }
 
         // region apply seekbar custom color to splash screen animation.
-
-        if (!is_19_34_or_greater) {
-            return@execute // 19.25 does not have a cairo launch animation.
-        }
 
         // Hook the splash animation to set the seekbar color.
         YouTubeActivityOnCreateFingerprint.method.apply {
