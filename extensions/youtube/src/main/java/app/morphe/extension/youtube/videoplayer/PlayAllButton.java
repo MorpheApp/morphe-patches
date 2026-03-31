@@ -44,19 +44,16 @@ public class PlayAllButton {
         }
     }
 
-    @Nullable
-    private static PlayerControlButton instance = null;
-
     /**
      * Injection point.
      */
-    public static void initializeButton(View controlsView) {
+    public static void initializeButton(View sourceButton) {
         try {
-            instance = new PlayerControlButton(
-                    controlsView,
+            if (!isButtonEnabled()) return;
+
+            PlayerOverlayButton.addButton(
+                    sourceButton,
                     "morphe_play_all_button",
-                    null,
-                    PlayAllButton::isButtonEnabled,
                     PlayAllButton::onClick,
                     view -> {
                         onLongClick(view);
@@ -66,27 +63,6 @@ public class PlayAllButton {
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
         }
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setVisibilityNegatedImmediate() {
-        if (instance != null) instance.setVisibilityNegatedImmediate();
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setVisibilityImmediate(boolean visible) {
-        if (instance != null) instance.setVisibilityImmediate(visible);
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void setVisibility(boolean visible, boolean animated) {
-        if (instance != null) instance.setVisibility(visible, animated);
     }
 
     private static boolean isButtonEnabled() {

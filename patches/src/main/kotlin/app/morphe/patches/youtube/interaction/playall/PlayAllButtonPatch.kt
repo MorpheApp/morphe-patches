@@ -1,3 +1,5 @@
+@file:Suppress("SpellCheckingInspection")
+
 package app.morphe.patches.youtube.interaction.playall
 
 import app.morphe.patcher.patch.bytecodePatch
@@ -6,11 +8,9 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
+import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playercontrols.addBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -19,10 +19,7 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
 private val playAllButtonResourcePatch = resourcePatch {
-    dependsOn(
-        settingsPatch,
-        playerControlsPatch,
-    )
+    dependsOn(settingsPatch)
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
@@ -59,20 +56,13 @@ val playAllButtonPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         playAllButtonResourcePatch,
-        playerControlsPatch,
+        playerOverlayButtonsHookPatch,
         videoInformationPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeBottomControl(PLAY_ALL_BUTTON_CLASS_DESCRIPTOR)
-        injectVisibilityCheckCall(PLAY_ALL_BUTTON_CLASS_DESCRIPTOR)
-    }
-
-    finalize {
-        addBottomControl(
-            "playallbutton"
-        )
+        addPlayerBottomButton(PLAY_ALL_BUTTON_CLASS_DESCRIPTOR)
     }
 }
