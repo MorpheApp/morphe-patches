@@ -16,40 +16,40 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="morphe_screen_ads_title">Werbung</string>
+  <string name="morphe_screen_ads_title">Anzeigen</string>
   <string name="morphe_hide_post_ads_title">Feed-Anzeigen ausblenden</string>
   <string name="morphe_hide_post_ads_summary">Blendet Anzeigen im Feed aus</string>
   <string name="morphe_hide_comment_ads_title">Kommentar-Anzeigen ausblenden</string>
-  <string name="morphe_hide_comment_ads_summary">Anzeigen in den Kommentaren ausblenden</string>
+  <string name="morphe_hide_comment_ads_summary">Blendet Anzeigen in den Kommentaren aus</string>
   <string name="morphe_screen_layout_title">Layout</string>
-  <string name="morphe_disable_modern_home_title">Modernes Startmenü deaktivieren</string>
-  <string name="morphe_disable_modern_home_summary">Deaktiviert das moderne Startmenü-UI</string>
+  <string name="morphe_disable_modern_home_title">Modernes \"Home\" deaktivieren</string>
+  <string name="morphe_disable_modern_home_summary">Deaktiviert das moderne \"Home\"-UI</string>
   <string name="morphe_disable_screenshot_popup_title">Screenshot-Pop-up deaktivieren</string>
   <string name="morphe_disable_screenshot_popup_summary">Deaktiviert das Pop-up bei einem Screenshot</string>
   <string name="morphe_hide_answers_button_title">Antwort-Button ausblenden</string>
   <string name="morphe_hide_answers_button_summary">Blendet den Antworten-Button in der Navigationsleiste aus</string>
   <string name="morphe_hide_chat_button_title">Chat-Button ausblenden</string>
   <string name="morphe_hide_chat_button_summary">Blendet den Chat-Button in der Navigationsleiste aus</string>
-  <string name="morphe_hide_create_button_title">Erstellungs-Button ausblenden</string>
-  <string name="morphe_hide_create_button_summary">Blendet den Erstellungs-Button in der Navigationsleiste aus</string>
-  <string name="morphe_hide_discover_button_title">Entdecken- oder Community-Button ausblenden</string>
-  <string name="morphe_hide_discover_button_summary">Blendet den Entdecken- oder Community-Button in der Navigationsleiste aus</string>
+  <string name="morphe_hide_create_button_title">Erstellen-Button ausblenden</string>
+  <string name="morphe_hide_create_button_summary">Blendet den Erstellen-Button in der Navigationsleiste aus</string>
+  <string name="morphe_hide_discover_button_title">Entdecken- oder Communities-Button ausblenden</string>
+  <string name="morphe_hide_discover_button_summary">Blendet den Entdecken- oder Communities-Button in der Navigationsleiste aus</string>
   <string name="morphe_hide_games_button_title">Spiele-Button ausblenden</string>
   <string name="morphe_hide_games_button_summary">Blendet den Spiele-Button in der Navigationsleiste aus</string>
-  <string name="morphe_hide_recently_visited_shelf_title">Neu besuchte Inhalte-Reihe ausblenden</string>
-  <string name="morphe_hide_recently_visited_shelf_summary">Blendet die Reihe der neu besuchten Inhalte in der Seitenleiste aus</string>
-  <string name="morphe_hide_games_on_reddit_shelf_title">Spiele auf Reddit-Reihe ausblenden</string>
-  <string name="morphe_hide_games_on_reddit_shelf_summary">Blendet die Spiele auf Reddit-Reihe in der Seitenleiste aus</string>
-  <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro-Reihe ausblenden</string>
-  <string name="morphe_hide_reddit_pro_shelf_summary">Blendet die Reddit Pro-Reihe in der Seitenleiste aus</string>
-  <string name="morphe_hide_about_shelf_title">Info-Reihe ausblenden</string>
-  <string name="morphe_hide_about_shelf_summary">Blendet die Info-Reihe in der Seitenleiste aus</string>
-  <string name="morphe_hide_resources_shelf_title">Ressourcen-Reihe ausblenden</string>
-  <string name="morphe_hide_resources_shelf_summary">Blendet die Ressourcen-Reihe in der Seitenleiste aus</string>
+  <string name="morphe_hide_recently_visited_shelf_title">\"Kürzlich Besucht\"-Bereich ausblenden</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Blendet den \"Kürzlich Besucht\"-Bereich in der Seitenleiste aus</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">\"Spiele auf Reddit\"-Bereich ausblenden</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Blendet den \"Spiele auf Reddit\"-Bereich in der Seitenleiste aus</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">\"Reddit Pro\"-Bereich ausblenden</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Blendet den \"Reddit Pro\"-Bereich in der Seitenleiste aus</string>
+  <string name="morphe_hide_about_shelf_title">\"Über\"-Bereich ausblenden</string>
+  <string name="morphe_hide_about_shelf_summary">Blendet den \"Über\"-Bereich in der Seitenleiste aus</string>
+  <string name="morphe_hide_resources_shelf_title">\"Ressourcen\"-Bereich ausblenden</string>
+  <string name="morphe_hide_resources_shelf_summary">Blendet den \"Ressourcen\"-Bereich in der Seitenleiste aus</string>
   <string name="morphe_hide_recommended_communities_shelf_title">Empfohlene Communities ausblenden</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Blendet die Reihen mit empfohlenen Communities in Subreddits aus</string>
-  <string name="morphe_hide_trending_today_shelf_title">Trend Heute-Reihe ausblenden</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Blendet die Trend Heute-Reihe aus Suchvorschlägen aus
+  <string name="morphe_hide_recommended_communities_shelf_summary">Blendet die Bereiche der empfohlenen Communities in Subreddits aus</string>
+  <string name="morphe_hide_trending_today_shelf_title">\"Im Trend\"-Bereich ausblenden</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Blendet den \"Im Trend\"-Bereich aus Suchvorschlägen aus
 
 Einschränkung: Visuelle Abstandshalter werden möglicherweise nicht ausgeblendet"</string>
   <string name="morphe_remove_notification_dialog_title">Benachrichtigungs-Vorschlagsdialog entfernen</string>
@@ -63,8 +63,8 @@ Einschränkung: Wird nur angezeigt, wenn die API-Antwort die Anzahl der Aufrufe 
   <string name="morphe_screen_miscellaneous_title">Sonstiges</string>
   <string name="morphe_about_title">Über</string>
   <string name="morphe_about_summary">Patch-Version und offizielle Links</string>
-  <string name="morphe_sanitize_sharing_links_title">Freigabelinks säubern</string>
-  <string name="morphe_sanitize_sharing_links_summary">Bereinigt Sharing-Links, indem Tracking-Query-Parameter entfernt werden</string>
+  <string name="morphe_sanitize_sharing_links_title">Freigabe-Links säubern</string>
+  <string name="morphe_sanitize_sharing_links_summary">Bereinigt Freigabe-Links, indem Tracking-Query-Parameter entfernt werden</string>
   <string name="morphe_open_links_directly_title">Links direkt öffnen</string>
   <string name="morphe_open_links_directly_summary">Überspringt Umleitungs-URLs in externen Links</string>
 </resources>

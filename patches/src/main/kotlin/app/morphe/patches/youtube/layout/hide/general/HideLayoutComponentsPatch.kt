@@ -36,7 +36,6 @@ import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.lazily.hookTreeNodeResult
 import app.morphe.patches.youtube.misc.litho.lazily.lazilyConvertedElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -566,15 +565,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide filter bar
 
-        val filterBars = mutableMapOf(
+        arrayOf(
             FilterBarHeightFingerprint to "hideInFeed",
             SearchResultsChipBarFingerprint to "hideInSearch",
-        )
-        if (is_20_10_or_greater) {
-            filterBars += Pair(RelatedChipCloudFingerprint, "hideInRelatedVideos")
-        }
-
-        filterBars.forEach { (fingerprint, methodName) ->
+            RelatedChipCloudFingerprint to "hideInRelatedVideos"
+        ).forEach { (fingerprint, methodName) ->
             fingerprint.method.apply {
                 val moveIndex = fingerprint.instructionMatches.last().index
                 val sizeRegister = getInstruction<OneRegisterInstruction>(moveIndex).registerA
@@ -589,23 +584,17 @@ val hideLayoutComponentsPatch = bytecodePatch(
             }
         }
 
-        if (is_20_10_or_greater) {
-            RelatedChipCloudFingerprint.let {
-                it.clearMatch()
-                it.method.apply {
-                    insertLiteralOverride(
-                        it.instructionMatches[2].index,
-                        "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Z)Z"
-                    )
-                }
+        RelatedChipCloudFingerprint.let {
+            it.clearMatch()
+            it.method.apply {
+                insertLiteralOverride(
+                    it.instructionMatches[2].index,
+                    "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Z)Z"
+                )
             }
         }
 
-        val relatedChipCloudFingerprintMatch = if (is_20_10_or_greater)
-            RelatedChipCloudFingerprint
-        else RelatedChipCloudLegacyFingerprint
-
-        relatedChipCloudFingerprintMatch.let {
+        RelatedChipCloudFingerprint.let {
             it.clearMatch()
             it.method.apply {
                 val viewIndex = it.instructionMatches[1].index

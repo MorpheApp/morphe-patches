@@ -16,6 +16,7 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import java.util.logging.Logger
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/reddit/patches/RemoveSubRedditDialogPatch;"
@@ -51,6 +52,13 @@ val removeSubRedditDialogPatch = bytecodePatch(
                     )
                 }
             }
+        }
+
+        // TODO: Fix up this patch
+        if (packageMetadata.versionName >= "2026.12.0") {
+            Logger.getLogger(this::class.java.name).warning(
+                "\"Remove subreddit dialog\" does not yet fully support 2026.12.0+"
+            )
         }
 
         NSFWAlertShowDialogFingerprint.matchAll(

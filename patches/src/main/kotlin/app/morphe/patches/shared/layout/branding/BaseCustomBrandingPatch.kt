@@ -29,7 +29,6 @@ import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
-import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
@@ -258,7 +257,7 @@ internal fun baseCustomBrandingPatch(
             )
             preferences += ListPreference(
                 key = "morphe_custom_branding_notification_icon",
-                entriesKey = "morphe_custom_branding_icon_custom_entries",
+                entriesKey = "morphe_custom_branding_notification_icon_custom_entries",
                 entryValuesKey = "morphe_custom_branding_notification_icon_custom_entry_values"
             )
         } else {

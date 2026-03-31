@@ -145,9 +145,12 @@ Los cambios incluyen:
   <string name="morphe_hide_you_may_like_section_summary_on">La sección \"Quizá te guste\" está oculta</string>
   <string name="morphe_hide_you_may_like_section_summary_off">La sección \"Quizá te guste\" está visible</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Ocultar Doodles de YouTube</string>
-  <string name="morphe_hide_doodles_summary_on">La animación de los Doodles de YouTube en el logo está oculta</string>
-  <string name="morphe_hide_doodles_summary_off">La animación de los Doodles de YouTube en el logo está visible</string>
+  <string name="morphe_hide_youtube_doodles_title">Ocultar Doodles de YouTube</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">La animación de los Doodles de YouTube en el logo está oculta</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">La animación de los Doodles de YouTube en el logo está visible</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"Los Doodles de YouTube se muestran unos pocos días cada año en varias partes del mundo.
+
+Mostrar los Doodles de YouTube puede impedir que se muestren encabezados personalizados."</string>
   <string name="morphe_hide_channel_bar_title">Ocultar barra de canales</string>
   <string name="morphe_hide_channel_bar_summary_on">La barra de canales está oculta</string>
   <string name="morphe_hide_channel_bar_summary_off">La barra de canales está visible</string>
@@ -306,8 +309,7 @@ Los cambios incluyen:
   <string name="morphe_hide_comments_carousel_title">Activar filtro de carrusel de comentarios</string>
   <string name="morphe_hide_comments_carousel_summary_on">El filtro de carrusel de comentarios está activado</string>
   <string name="morphe_hide_comments_carousel_summary_off">El filtro de carrusel de comentarios está desactivado</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"Nota
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Nota:
 • Asegúrate de introducir el nombre exacto del elemento del carrusel (p. ej., Preguntar, Promocionar este vídeo, Escuchar en YouTube Music, etc.).
 • Ocultar elementos del carrusel puede tener efectos secundarios no deseados.
 • Si se ocultan todos los elementos del carrusel, también se ocultará toda la sección de comentarios."</string>
@@ -452,9 +454,9 @@ Limitaciones:
   <string name="morphe_copy_video_url_title">Mostrar botón de copiar URL del vídeo</string>
   <string name="morphe_copy_video_url_summary_on">El botón de copiar la URL del vídeo está visible. Pulsa para copiar la URL del vídeo. Mantén pulsado para copiar con la marca de tiempo</string>
   <string name="morphe_copy_video_url_summary_off">El botón de copiar la URL del vídeo está oculto</string>
-  <string name="morphe_copy_video_url_timestamp_title">Mostrar botón de copiar URL con marca de tiempo</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">El botón de copiar la URL con marca de tiempo está visible. Pulsa para copiar la URL del vídeo con la marca de tiempo. Mantén pulsado para copiar sin la marca de tiempo</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">El botón de copiar la URL con marca de tiempo está oculto</string>
+  <string name="morphe_copy_video_url_timestamp_title">Copiar marca de tiempo</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">El botón Copiar URL de video copia con marca de tiempo. Mantener pulsado copia sin marca de tiempo</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">El botón Copiar URL de video copia sin marca de tiempo. Mantener pulsado copia con marca de tiempo</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Eliminar diálogo de discreción del espectador</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">El diálogo está eliminado</string>
@@ -708,10 +710,9 @@ Las cookies se guardarán automáticamente si son válidas"</string>
   <string name="morphe_hide_navigation_bar_title">Ocultar barra de navegación</string>
   <string name="morphe_hide_navigation_bar_summary_on">La barra de navegación está oculta</string>
   <string name="morphe_hide_navigation_bar_summary_off">La barra de navegación está visible</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Esto oculta completamente la barra de navegación, incluyendo la pestaña \"Tú\".
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Esto oculta por completo la barra de navegación, incluida la pestaña \"Tú\".
 
-Para acceder a la configuración:
-Abrir cualquier vídeo → Abrir el menú Calidad → Pulsar en \"Configuración > Preferencias de calidad de vídeo\" en la parte inferior."</string>
+Para acceder a los ajustes, activa el botón de ajustes a través de General → Barra de herramientas → Mostrar ajustes."</string>
   <string name="morphe_narrow_navigation_buttons_title">Activar botones de navegación estrechos</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">El espaciado entre los botones de navegación es estrecho</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">El espaciado entre los botones de navegación es normal</string>
@@ -719,8 +720,8 @@ Abrir cualquier vídeo → Abrir el menú Calidad → Pulsar en \"Configuración
   <string name="morphe_navigation_bar_animations_summary_on">Las transiciones de navegación están animadas</string>
   <string name="morphe_navigation_bar_animations_summary_off">Las transiciones de navegación no están animadas</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Desactivar ocultación automática de la barra de navegación</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">La barra de navegación no se ocultará automáticamente</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barra de navegación podría ocultarse automáticamente</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">La barra de navegación no se ocultará al desplazarse</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barra de navegación se ocultará al desplazarse</string>
   <string name="morphe_disable_translucent_status_bar_title">Desactivar barra de estado translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">La barra de estado es opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barra de estado es opaca o translúcida</string>
@@ -1012,10 +1013,10 @@ Para mostrar el menú de pistas de audio, cambia 'Falsificar transmisiones de v�
   <string name="morphe_hide_shorts_navigation_bar_summary_on">La barra de navegación está oculta</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">La barra de navegación está visible</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Ocultar vídeo sugerido en pantalla final</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">El vídeo sugerido en la pantalla final está oculto</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">El vídeo sugerido en la pantalla final está visible</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Este ajuste solo funciona si \"Reproducción automática del siguiente vídeo\" está desactivada.
+  <string name="morphe_hide_end_screen_suggested_video_title">Ocultar vídeo sugerido en pantalla final</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">El vídeo sugerido en la pantalla final está oculto</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">El vídeo sugerido en la pantalla final está visible</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Este ajuste solo funciona si \"Reproducción automática del siguiente vídeo\" está desactivada.
 
 Puedes cambiar esto en YouTube: 
 Configuración → Reproducción → Reproducción automática del siguiente vídeo"</string>
@@ -1518,6 +1519,10 @@ Pulsa aquí para saber más sobre DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow no está disponible temporalmente (código de estado: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow no está disponible temporalmente</string>
   <!-- misc.announcements.announcementsPatch -->
+  <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">Restaurar estilo de botón del reproductor anterior</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">Se muestra el estilo de jugador delgado</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">Se muestra el estilo de jugador en negrita</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Falsificar dimensiones del dispositivo</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Las dimensiones del dispositivo están falsificadas

@@ -14,19 +14,7 @@
         android:paddingTop="6.0dp"
         android:paddingBottom="0dp"
         android:scaleType="center"
-        android:src="@drawable/morphe_yt_copy"
-        yt:layout_constraintBottom_toTopOf="@+id/quick_actions_container"
-        yt:layout_constraintRight_toLeftOf="@+id/fullscreen_button" />
-
-    <com.google.android.libraries.youtube.common.ui.TouchImageView
-        android:id="@+id/morphe_copy_video_url_timestamp_button"
-        style="@style/YouTubePlayerButton"
-        android:layout_width="48.0dip"
-        android:layout_height="60.0dip"
-        android:paddingTop="6.0dp"
-        android:paddingBottom="0dp"
-        android:scaleType="center"
-        android:src="@drawable/morphe_yt_copy_timestamp"
+        android:src="@drawable/morphe_yt_copy_bold"
         yt:layout_constraintBottom_toTopOf="@+id/quick_actions_container"
         yt:layout_constraintRight_toLeftOf="@+id/fullscreen_button" />
 </android.support.constraint.ConstraintLayout>

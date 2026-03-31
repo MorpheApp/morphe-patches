@@ -140,10 +140,6 @@ public class YouTubeActivityHook extends BaseActivityHook {
      */
     @SuppressWarnings("unused")
     public static boolean useCairoSettingsFragment(boolean original) {
-        // Early targets have layout issues and it's better to always force off.
-        if (!VersionCheckPatch.IS_19_34_OR_GREATER) {
-            return false;
-        }
         if (Settings.RESTORE_OLD_SETTINGS_MENUS.get()) {
             return false;
         }

@@ -23,8 +23,6 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.toInstructions
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_19_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
@@ -376,15 +374,14 @@ val videoInformationPatch = bytecodePatch(
         }
 
         val videoQualityClassType : String
-        (if (is_20_19_or_greater) VideoQualityFingerprint else VideoQualityLegacyFingerprint).let {
+        VideoQualityFingerprint.let {
             videoQualityClassType = it.classDef.type
 
             // Fix bad data used by YouTube.
-            val nameRegister = if (is_20_20_or_greater) "p3" else "p2"
             it.method.addInstructions(
                 0,
                 """
-                    invoke-static { $nameRegister, p1 }, $EXTENSION_CLASS_DESCRIPTOR->fixVideoQualityResolution(Ljava/lang/String;I)I    
+                    invoke-static { p3, p1 }, $EXTENSION_CLASS_DESCRIPTOR->fixVideoQualityResolution(Ljava/lang/String;I)I    
                     move-result p1
                 """
             )

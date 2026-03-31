@@ -84,19 +84,6 @@ internal object PlayerLinearGradientFingerprint : Fingerprint(
     )
 )
 
-/**
- * 19.25 - 19.47
- */
-internal object PlayerLinearGradientLegacyFingerprint : Fingerprint(
-    returnType = "V",
-    filters = listOf(
-        resourceLiteral(ResourceType.COLOR, "yt_youtube_magenta"),
-
-        opcode(Opcode.FILLED_NEW_ARRAY),
-        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately()),
-    )
-)
-
 internal const val LOTTIE_ANIMATION_VIEW_CLASS_TYPE = "Lcom/airbnb/lottie/LottieAnimationView;"
 
 internal object LottieAnimationViewSetAnimationIntFingerprint : Fingerprint(

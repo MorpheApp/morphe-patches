@@ -85,16 +85,6 @@ internal object MiniplayerModernExpandButtonFingerprint : Fingerprint(
     )
 )
 
-internal object MiniplayerModernExpandCloseDrawablesFingerprint : Fingerprint(
-    classFingerprint = MiniplayerModernViewParentFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("L"),
-    filters = listOf(
-        literal(ytOutlinePictureInPictureWhite24)
-    )
-)
-
 internal object MiniplayerModernForwardButtonFingerprint : Fingerprint(
     classFingerprint = MiniplayerModernViewParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -203,9 +193,9 @@ internal object MiniplayerOnCloseHandlerFingerprint : Fingerprint(
 internal const val YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME =
     "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;"
 
-internal object PlayerOverlaysLayoutFingerprint : Fingerprint(
-    definingClass = YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME
-)
+//internal object PlayerOverlaysLayoutFingerprint : Fingerprint(
+//    definingClass = YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME
+//)
 
 internal object MiniplayerSetIconsFingerprint : Fingerprint(
     returnType = "V",

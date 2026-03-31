@@ -126,7 +126,7 @@ public final class NavigationBarPatch {
      * Injection point.
      */
     public static boolean useAnimatedNavigationButtons(boolean original) {
-        return !IS_20_45_OR_GREATER && Settings.NAVIGATION_BAR_ANIMATIONS.get();
+        return Settings.NAVIGATION_BAR_ANIMATIONS.get();
     }
 
     /**

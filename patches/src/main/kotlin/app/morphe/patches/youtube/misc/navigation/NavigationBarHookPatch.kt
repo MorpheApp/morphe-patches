@@ -22,7 +22,6 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -258,25 +257,23 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         }
 
         // Fix YT bug of notification tab missing the filled icon.
-        if (is_19_35_or_greater) {
-            val cairoNotificationEnumReference = ImageEnumConstructorFingerprint
-                .instructionMatches.last().getInstruction<ReferenceInstruction>().reference
+        val cairoNotificationEnumReference = ImageEnumConstructorFingerprint
+            .instructionMatches.last().getInstruction<ReferenceInstruction>().reference
 
-            SetEnumMapFingerprint.let {
-                it.method.apply {
-                    val setEnumIntegerIndex = it.instructionMatches.last().index
-                    val enumMapRegister = getInstruction<FiveRegisterInstruction>(setEnumIntegerIndex).registerC
-                    val insertIndex = setEnumIntegerIndex + 1
-                    val freeRegister = findFreeRegister(insertIndex, enumMapRegister)
+        SetEnumMapFingerprint.let {
+            it.method.apply {
+                val setEnumIntegerIndex = it.instructionMatches.last().index
+                val enumMapRegister = getInstruction<FiveRegisterInstruction>(setEnumIntegerIndex).registerC
+                val insertIndex = setEnumIntegerIndex + 1
+                val freeRegister = findFreeRegister(insertIndex, enumMapRegister)
 
-                    addInstructions(
-                        insertIndex,
-                        """
-                            sget-object v$freeRegister, $cairoNotificationEnumReference
-                            invoke-static { v$enumMapRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->setCairoNotificationFilledIcon(Ljava/util/EnumMap;Ljava/lang/Enum;)V
-                        """
-                    )
-                }
+                addInstructions(
+                    insertIndex,
+                    """
+                        sget-object v$freeRegister, $cairoNotificationEnumReference
+                        invoke-static { v$enumMapRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->setCairoNotificationFilledIcon(Ljava/util/EnumMap;Ljava/lang/Enum;)V
+                    """
+                )
             }
         }
     }

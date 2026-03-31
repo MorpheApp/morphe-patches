@@ -478,9 +478,9 @@ Limitations:
     <string name="morphe_copy_video_url_title">Show copy video URL button</string>
     <string name="morphe_copy_video_url_summary_on">Copy video URL button is shown. Tap to copy video URL. Tap and hold to copy with timestamp</string>
     <string name="morphe_copy_video_url_summary_off">Copy video URL button is not shown</string>
-    <string name="morphe_copy_video_url_timestamp_title">Show copy timestamp URL button</string>
-    <string name="morphe_copy_video_url_timestamp_summary_on">Copy timestamp URL button is shown. Tap to copy video URL with timestamp. Tap and hold to copy without timestamp</string>
-    <string name="morphe_copy_video_url_timestamp_summary_off">Copy timestamp URL button is not shown</string>
+    <string name="morphe_copy_video_url_timestamp_title">Copy timestamp</string>
+    <string name="morphe_copy_video_url_timestamp_summary_on">Copy video url button copies with timestamp. Long press copies without timestamp</string>
+    <string name="morphe_copy_video_url_timestamp_summary_off">Copy video url button copies without timestamp. Long press copies with timestamp</string>
 
     <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
     <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
@@ -763,7 +763,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_navigation_bar_animations_summary_off">Navigation transitions are not animated</string>
     <string name="morphe_disable_auto_hide_navigation_bar_title">Disable auto-hiding navigation bar</string>
     <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar will not hide while scrolling</string>
-    <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar will hide while scrolling</string>
+    <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar may hide while scrolling</string>
     <string name="morphe_disable_translucent_status_bar_title">Disable translucent status bar</string>
     <string name="morphe_disable_translucent_status_bar_summary_on">Status bar is opaque</string>
     <string name="morphe_disable_translucent_status_bar_summary_off">Status bar is opaque or translucent</string>
@@ -1493,12 +1493,6 @@ Limitation: Using the back button on the toolbar may not work"</string>
     <string name="morphe_miniplayer_disable_rounded_corners_title">Disable rounded corners</string>
     <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Corners are square</string>
     <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Corners are rounded</string>
-    <string name="morphe_miniplayer_double_tap_action_title">Enable double-tap and pinch to resize</string>
-    <string name="morphe_miniplayer_double_tap_action_summary_on">"Double-tap action and pinch to resize is enabled
-
-• Double tap to increase miniplayer size
-• Double tap again to restore original size"</string>
-    <string name="morphe_miniplayer_double_tap_action_summary_off">Double-tap action and pinch to resize is disabled</string>
     <string name="morphe_miniplayer_disable_drag_and_drop_title">Disable drag and drop</string>
     <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Drag and drop is disabled</string>
     <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Drag and drop is enabled
@@ -1512,11 +1506,6 @@ Miniplayer can be dragged off-screen to the left or right"</string>
     <string name="morphe_miniplayer_hide_overlay_buttons_title">Hide overlay buttons</string>
     <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Overlay buttons are hidden</string>
     <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Overlay buttons are shown</string>
-    <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Hide expand and close buttons</string>
-    <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Buttons are hidden
-
-Swipe to expand or close"</string>
-    <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Expand and close buttons are shown</string>
     <string name="morphe_miniplayer_hide_subtext_title">Hide subtexts</string>
     <string name="morphe_miniplayer_hide_subtext_summary_on">Subtexts are hidden</string>
     <string name="morphe_miniplayer_hide_subtext_summary_off">Subtexts are shown</string>
@@ -1612,6 +1601,11 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_announcements_enabled_summary" translatable="false">Show announcements on startup</string>
     <string name="morphe_announcements_connection_failed" translatable="false">Failed connecting to announcements provider</string>
     <string name="morphe_announcements_dialog_dismiss" translatable="false">Dismiss</string>
+
+    <!-- misc.playercontrols.playerControlsPatch -->
+    <string name="morphe_restore_old_player_buttons_title">Restore old player button style</string>
+    <string name="morphe_restore_old_player_buttons_summary_on">Player thin style is shown</string>
+    <string name="morphe_restore_old_player_buttons_summary_off">Player bold style is shown</string>
 
     <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
     <string name="morphe_spoof_device_dimensions_title">Spoof device dimensions</string>

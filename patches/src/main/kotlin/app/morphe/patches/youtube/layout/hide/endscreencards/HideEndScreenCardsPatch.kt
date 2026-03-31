@@ -10,7 +10,6 @@ import app.morphe.patches.shared.misc.mapping.getResourceId
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -77,18 +76,16 @@ val hideEndScreenCardsPatch = bytecodePatch(
             }
         }
 
-        if (is_19_43_or_greater) {
-            ShowEndscreenCardsFingerprint.method.addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenCards()Z
-                    move-result v0
-                    if-eqz v0, :show
-                    return-void
-                    :show
-                    nop
-                """
-            )
-        }
+        ShowEndscreenCardsFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenCards()Z
+                move-result v0
+                if-eqz v0, :show
+                return-void
+                :show
+                nop
+            """
+        )
     }
 }

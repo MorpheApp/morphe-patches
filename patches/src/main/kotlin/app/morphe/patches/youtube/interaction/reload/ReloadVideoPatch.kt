@@ -16,7 +16,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -37,7 +37,7 @@ import com.android.tools.smali.dexlib2.util.MethodUtil
 private val reloadVideoResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
     )
 
     execute {
@@ -50,12 +50,13 @@ private val reloadVideoResourcePatch = resourcePatch {
             ResourceGroup(
                 resourceDirectoryName = "drawable",
                 "morphe_reload_video.xml",
+                "morphe_reload_video_bold.xml",
             ),
         )
     }
 }
 
-private const val EXTENSION_BUTTON_DESCRIPTOR =
+private const val BUTTON_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/videoplayer/ReloadVideoButton;"
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -71,15 +72,24 @@ val reloadVideoPatch = bytecodePatch(
 ) {
     dependsOn(
         reloadVideoResourcePatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
         videoInformationPatch,
+        bytecodePatch {
+            finalize {
+                addTopControl(
+                    "reloadbutton",
+                    "@+id/morphe_reload_video_button",
+                    "@+id/morphe_reload_video_button"
+                )
+            }
+        }
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeTopControl(EXTENSION_BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(EXTENSION_BUTTON_DESCRIPTOR)
+        initializeTopControl(BUTTON_DESCRIPTOR)
+        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
 
         // Main activity is used to launch downloader intent.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
@@ -128,13 +138,5 @@ val reloadVideoPatch = bytecodePatch(
                 )
             }
         }
-    }
-
-    finalize {
-        addTopControl(
-            "reloadbutton",
-            "@+id/morphe_reload_video_button",
-            "@+id/morphe_reload_video_button"
-        )
     }
 }

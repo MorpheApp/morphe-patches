@@ -11,7 +11,6 @@
 package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.Utils.getFilterStrings;
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_10_OR_GREATER;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.graphics.drawable.Drawable;
@@ -509,11 +508,7 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static void hideInRelatedVideos(View chipView) {
-        if (IS_20_10_OR_GREATER) {
-            Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
-        } else {
-            Utils.hideViewBy0dpUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
-        }
+        Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
     }
 
     private static final boolean HIDE_YOUTUBE_DOODLES_ENABLED = Settings.HIDE_YOUTUBE_DOODLES.get();

@@ -147,9 +147,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">추천 콘텐츠 섹션이 숨겨집니다.</string>
   <string name="morphe_hide_you_may_like_section_summary_off">추천 콘텐츠 섹션이 표시됩니다.</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodles 숨기기</string>
-  <string name="morphe_hide_doodles_summary_on">해더 로고에서 YouTube Doodles 애니메이션이 숨겨집니다</string>
-  <string name="morphe_hide_doodles_summary_off">헤더 로고에서 YouTube Doodles 애니메이션이 표시됩니다</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodles 숨기기</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">해더 로고에서 YouTube Doodles 애니메이션이 숨겨집니다</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">헤더 로고에서 YouTube Doodles 애니메이션이 표시됩니다</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles는 공휴일이나 기념일 등, 그 날에 맞춘 디자인으로 변경되는 왼쪽 상단의 YouTube 헤더를 말합니다.
+
+YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 수 있습니다."</string>
   <string name="morphe_hide_channel_bar_title">채널바 숨기기</string>
   <string name="morphe_hide_channel_bar_summary_on">채널바가 숨겨집니다</string>
   <string name="morphe_hide_channel_bar_summary_off">채널바가 표시됩니다</string>
@@ -308,8 +311,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">댓글 좌우 슬라이드 필터 활성화하기</string>
   <string name="morphe_hide_comments_carousel_summary_on">댓글 좌우 슬라이드 필터를 활성화합니다</string>
   <string name="morphe_hide_comments_carousel_summary_off">댓글 좌우 슬라이드 필터를 비활성화합니다</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"알림:
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"알림:
 • 좌우 슬라이드 항목의 정확한 이름을 입력하세요 (예: 질문하기, 이 동영상 Hype하기, YouTube Music에서 감상하기, etc.).
 • 좌우 슬라이드 항목이 숨겨지면 의도하지 않은 부작용이 발생할 수 있습니다.
 • 좌우 슬라이드 항목이 모두 숨겨지면 전체 댓글 섹션도 숨겨집니다."</string>
@@ -453,9 +455,9 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_title">동영상 URL 복사 버튼 표시하기</string>
   <string name="morphe_copy_video_url_summary_on">동영상 URL 버튼을 표시합니다\n\n• 탭하여 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬스가 표기된 동영상 URL이 복사됩니다</string>
   <string name="morphe_copy_video_url_summary_off">동영상 URL 복사 버튼을 표시하지 않습니다</string>
-  <string name="morphe_copy_video_url_timestamp_title">타임스탬프 URL 복사 버튼 표시하기</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">타임스탬프가 표기된 URL 복사 버튼을 표시합니다\n\n• 탭하여 타임스탬프가 표기된 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기되지 않은 동영상 URL이 복 사됩니다</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">타임스탬프가 표기된 URL 복사 버튼을 표시하지 않습니다</string>
+  <string name="morphe_copy_video_url_timestamp_title">타임스탬프 복사하기</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">동영상 URL 복사 버튼을 누르면 타임스탬프와 함께 복사할 수 있습니다. 길게 탭하면 타임스탬프 없이 복사됩니다</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">동영상 URL 복사 버튼을 누르면 타임스탬프 없이 복사할 수 있습니다. 길게 탭하면 타임스탬프와 함께 복사됩니다</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">시청 경고 다이얼로그 제거하기</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">일부 동영상을 시청하기 전에 표시되는 시청 경고 다이얼로그를 제거합니다</string>
@@ -705,10 +707,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">하단바 숨기기</string>
   <string name="morphe_hide_navigation_bar_summary_on">하단바가 숨겨집니다</string>
   <string name="morphe_hide_navigation_bar_summary_off">하단바가 표시됩니다</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"이 기능은 내 페이지 탭을 포함한 하단바를 완전히 숨깁니다.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"이 설정을 사용하면 ‘내 페이지’ 탭을 포함한 하단바가 완전히 숨겨집니다.
 
-설정에 접근하려면:
-아무 동영상이나 열기 → 화질 메뉴 열기 → 하단 설명에서 ‘설정 &gt; 동영상 화질 환경설정’을 탭하세요."</string>
+설정 페이지에 접근하려면 '일반 → 툴바 → 설정 표시하기'를 사용하여 설정 버튼을 활성화하세요."</string>
   <string name="morphe_narrow_navigation_buttons_title">좁은 하단바 버튼 활성화하기</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">하단바 버튼 사이의 간격이 좁아집니다</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">하단바 버튼 사이의 간격이 좁아지지 않습니다</string>
@@ -716,8 +717,8 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary_on">하단바 전환 애니메이션을 활성화합니다</string>
   <string name="morphe_navigation_bar_animations_summary_off">하단바 전환 애니메이션을 비활성화합니다</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">하단바 자동 숨김 비활성화하기</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">하단바가 자동으로 숨겨지지 않습니다</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">하단바가 자동으로 숨겨질 수 있습니다</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">피드를 스크롤할 경우에 하단바가 숨겨지지 않습니다</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">피드를 스크롤할 경우에 하단바가 숨겨집니다</string>
   <string name="morphe_disable_translucent_status_bar_title">반투명 상태바 비활성화하기</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">상태바가 불투명합니다</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">상태바가 불투명하거나 반투명합니다</string>
@@ -934,8 +935,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_on">새로운 게시물 버튼이 숨겨집니다</string>
   <string name="morphe_hide_shorts_new_posts_button_summary_off">새로운 게시물 버튼이 표시됩니다</string>
   <string name="morphe_hide_shorts_paused_overlay_buttons_title">일시 정지 오버레이 버튼 숨기기</string>
-  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_on">일시 정지 오버레이 버튼이 숨겨집니다\n• 구독 &amp; 라이브 &amp; 렌즈 &amp; 트렌드 &amp; 쇼핑</string>
-  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_off">일시 정지 오버레이 버튼이 표시됩니다\n• 구독 &amp; 라이브 &amp; 렌즈 &amp; 트렌드 &amp; 쇼핑</string>
+  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_on">플레이어 상단에서 다음 버튼들이 숨겨집니다\n• 구독 &amp; 라이브 &amp; 렌즈 &amp; 트렌드 &amp; 쇼핑</string>
+  <string name="morphe_hide_shorts_paused_overlay_buttons_summary_off">플레이어 상단에서 다음 버튼들이 표시됩니다\n• 구독 &amp; 라이브 &amp; 렌즈 &amp; 트렌드 &amp; 쇼핑</string>
   <string name="morphe_hide_shorts_preview_comment_title">댓글 미리보기 숨기기</string>
   <string name="morphe_hide_shorts_preview_comment_summary_on">댓글 미리보기가 숨겨집니다</string>
   <string name="morphe_hide_shorts_preview_comment_summary_off">댓글 미리보기가 표시됩니다</string>
@@ -1009,10 +1010,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">하단바가 숨겨집니다</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">하단바가 표시됩니다</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">최종 화면 추천 동영상 숨기기</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">최종 화면에서 추천 동영상이 숨겨집니다</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">최종 화면에서 추천 동영상이 표시됩니다</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"이 설정은 '다음 동영상 자동재생'이 꺼져 있을 경우에만 작동합니다.
+  <string name="morphe_hide_end_screen_suggested_video_title">최종 화면 추천 동영상 숨기기</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">최종 화면에서 추천 동영상이 숨겨집니다</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">최종 화면에서 추천 동영상이 표시됩니다</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"이 설정은 '다음 동영상 자동재생'이 꺼져 있을 경우에만 작동합니다.
 
 '다음 동영상 자동재생'은 YouTube 설정에서 변경할 수 있습니다:
 설정 → 재생 (또는 자동 재생) → 다음 동영상 자동재생"</string>
@@ -1517,6 +1518,10 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow를 일시적으로 사용할 수 없습니다 (상태 코드: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow를 일시적으로 사용할 수 없습니다</string>
   <!-- misc.announcements.announcementsPatch -->
+  <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">이전 플레이어 버튼 스타일 복원하기</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">얇은 플레이어 버튼 스타일이 표시됩니다</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">굵은 플레이어 버튼 스타일이 표시됩니다</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">기기 크기 정보 속이기</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"기기 크기 정보가 속여집니다

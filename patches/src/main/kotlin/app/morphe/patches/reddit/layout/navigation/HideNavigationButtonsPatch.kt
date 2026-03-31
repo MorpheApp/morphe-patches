@@ -6,7 +6,6 @@
  */
 package app.morphe.patches.reddit.layout.navigation
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -46,7 +45,7 @@ val hideNavigationButtonsPatch = bytecodePatch(
 
         // region legacy method
 
-        val navigationButtonInnerMethod = BottomNavScreenResourceBuilderFingerprint.instructionMatches[1]
+        val navigationButtonInnerMethod = BottomNavScreenResourceBuilderFingerprint.instructionMatches[0]
             .instruction.getReference<MethodReference>()!!
 
         mutableClassDefBy(navigationButtonInnerMethod.definingClass).apply {
@@ -90,24 +89,9 @@ val hideNavigationButtonsPatch = bytecodePatch(
                     index,
                     "invoke-static { v$listRegister, v$objectRegister }, " +
                             "$EXTENSION_CLASS_DESCRIPTOR->" +
-                            "hideNavigationButtons(Ljava/util/List;Ljava/lang/Object;)V"
+                            "hideNavigationButtonsLegacy(Ljava/util/List;Ljava/lang/Object;)V"
                 )
             }
-
-            findInstructionIndicesReversedOrThrow(GET_STRING_METHOD_CALL).forEach { index ->
-                val idReg = getInstruction<FiveRegisterInstruction>(index).registerD
-
-                addInstruction(
-                    index,
-                    "invoke-static { v$idReg }, $EXTENSION_CLASS_DESCRIPTOR->mapResourceId(I)V"
-                )
-            }
-
-            addInstruction(
-                0,
-                "invoke-static/range { p1 .. p1 }, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->setResources(Landroid/content/res/Resources;)V"
-            )
         }
 
         // endregion

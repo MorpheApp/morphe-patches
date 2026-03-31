@@ -21,25 +21,3 @@ internal object OpenVideosFullscreenPortraitFingerprint : Fingerprint(
         opcode(Opcode.MOVE_RESULT, location = InstructionLocation.MatchAfterWithin(10)),
     )
 )
-
-/**
- * Pre 19.46.
- */
-internal object OpenVideosFullscreenPortraitLegacyFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("L", "Lj\$/util/Optional;"),
-    filters = opcodesToFilters(
-        Opcode.GOTO,
-        Opcode.SGET_OBJECT,
-        Opcode.GOTO,
-        Opcode.SGET_OBJECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQ,
-        Opcode.IF_EQ,
-        Opcode.IGET_OBJECT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT  // Conditional check to modify.
-    )
-)

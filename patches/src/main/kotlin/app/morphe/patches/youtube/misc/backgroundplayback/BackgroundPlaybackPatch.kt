@@ -10,7 +10,6 @@ import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_29_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -98,13 +97,11 @@ val backgroundPlaybackPatch = bytecodePatch(
         KidsBackgroundPlaybackPolicyControllerFingerprint.method.returnEarly()
 
         // Fix PiP buttons not working after locking/unlocking device screen.
-        if (is_19_34_or_greater) {
-            PipInputConsumerFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    false
-                )
-            }
+        PipInputConsumerFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                false
+            )
         }
 
         if (is_20_29_or_greater) {

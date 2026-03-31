@@ -3,19 +3,20 @@ package app.morphe.patches.youtube.interaction.loop
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playercontrols.addBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.addTopControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsResourcePatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsResourcePatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
 private val loopVideoButtonResourcePatch = resourcePatch {
-    dependsOn(playerControlsResourcePatch)
+    dependsOn(legacyPlayerControlsResourcePatch)
 
     execute {
         copyResources(
@@ -23,15 +24,23 @@ private val loopVideoButtonResourcePatch = resourcePatch {
             ResourceGroup(
                 "drawable",
                 "morphe_loop_video_button_on.xml",
-                "morphe_loop_video_button_off.xml"
+                "morphe_loop_video_button_off.xml",
+                "morphe_loop_video_button_on_bold.xml",
+                "morphe_loop_video_button_off_bold.xml",
             )
         )
+    }
 
-        addBottomControl("loopvideobutton")
+    finalize {
+        addTopControl(
+            "loopvideobutton",
+            "@+id/morphe_loop_video_button",
+            "@+id/morphe_loop_video_button"
+        )
     }
 }
 
-private const val LOOP_VIDEO_BUTTON_CLASS_DESCRIPTOR =
+private const val BUTTON_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/videoplayer/LoopVideoButton;"
 
 internal val loopVideoButtonPatch = bytecodePatch(
@@ -41,7 +50,8 @@ internal val loopVideoButtonPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         loopVideoButtonResourcePatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
+        playerOverlayButtonsHookPatch
     )
 
     execute {
@@ -49,8 +59,7 @@ internal val loopVideoButtonPatch = bytecodePatch(
             SwitchPreference("morphe_loop_video_button"),
         )
 
-        // Initialize the button using standard approach.
-        initializeBottomControl(LOOP_VIDEO_BUTTON_CLASS_DESCRIPTOR)
-        injectVisibilityCheckCall(LOOP_VIDEO_BUTTON_CLASS_DESCRIPTOR)
+        initializeTopControl(BUTTON_DESCRIPTOR)
+        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
     }
 }

@@ -14,7 +14,6 @@ import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addClientVersionHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
@@ -62,17 +61,11 @@ val spoofAppVersionPatch = bytecodePatch(
                             entriesKey = "morphe_spoof_app_version_target_legacy_20_31_entries",
                             entryValuesKey = "morphe_spoof_app_version_target_legacy_20_31_entry_values"
                         )
-                    } else if (is_20_14_or_greater) {
+                    } else {
                         ListPreference(
                             key = "morphe_spoof_app_version_target",
                             entriesKey = "morphe_spoof_app_version_target_legacy_20_14_entries",
                             entryValuesKey = "morphe_spoof_app_version_target_legacy_20_14_entry_values"
-                        )
-                    } else {
-                        ListPreference(
-                            key = "morphe_spoof_app_version_target",
-                            entriesKey = "morphe_spoof_app_version_target_legacy_19_02_entries",
-                            entryValuesKey = "morphe_spoof_app_version_target_legacy_19_02_entry_values"
                         )
                     }
                 )

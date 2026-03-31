@@ -153,20 +153,6 @@ internal object PlaybackSpeedClassFingerprint : Fingerprint(
     strings = listOf("PLAYBACK_RATE_MENU_BOTTOM_SHEET_FRAGMENT")
 )
 
-/**
- * YouTube 20.19 and lower.
- */
-internal object VideoQualityLegacyFingerprint : Fingerprint(
-    definingClass = "Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    parameters = listOf(
-        "I", // Resolution.
-        "Ljava/lang/String;", // Human readable resolution: "480p", "1080p Premium", etc
-        "Z",
-        "L"
-    )
-)
-
 internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
     name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

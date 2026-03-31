@@ -145,9 +145,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">\"आपको पसंद आ सकता है\" अनुभाग छुपा हुआ है</string>
   <string name="morphe_hide_you_may_like_section_summary_off">\"आपको पसंद आ सकता है\" अनुभाग दिखाया गया है</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube के डुडल्स को छुपाएं</string>
-  <string name="morphe_hide_doodles_summary_on">YouTube के लोगो पर छिपा हुआ डुडल्स एनिमेशन है</string>
-  <string name="morphe_hide_doodles_summary_off">YouTube के लोगो पर डुडल्स एनिमेशन दिखाई देता है</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube के डुडल्स को छुपाएं</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">YouTube के लोगो पर छिपा हुआ डुडल्स एनिमेशन है</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">YouTube के लोगो पर डुडल्स एनिमेशन दिखाई देता है</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles साल में कुछ दिनों के लिए दुनिया के विभिन्न हिस्सों में दिखाए जाते हैं।
+
+YouTube Doodles दिखाने से कस्टम हेडर प्रदर्शित होने से रुक सकते हैं।"</string>
   <string name="morphe_hide_channel_bar_title">चैनल बार को छुपाएं</string>
   <string name="morphe_hide_channel_bar_summary_on">चैनल बार छुपा हुआ है</string>
   <string name="morphe_hide_channel_bar_summary_off">चैनल बार दिखाया गया है</string>
@@ -306,8 +309,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_carousel_title">टिप्पणी कैरोसेल फ़िल्टर</string>
   <string name="morphe_hide_comments_carousel_summary_on">टिप्पणी कैरोसेल फ़िल्टर सक्षम है</string>
   <string name="morphe_hide_comments_carousel_summary_off">टिप्पणी कैरोसेल फ़िल्टर निष्क्रिय किया गया है</string>
-  <string name="morphe_hide_comments_carousel_dialog_message">"ध्यान दें
-
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"ध्यान दें:
 • सुनिश्चित करें कि आप कैरोसेल आइटम का सटीक नाम दर्ज करें (जैसे, पूछें, इस वीडियो को हाइलाइट करें, YouTube Music पर सुनें, आदि)।
 • कैरोसेल आइटम को छिपाने के अप्रत्याशित दुष्प्रभाव हो सकते हैं।
 • यदि सभी कैरोसेल आइटम छिपे हुए हैं, तो पूरी कमेंट सेक्शन भी छिपी रहेगी।"</string>
@@ -452,9 +454,9 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_title">दर्शा करें वीडियो URL कॉपी बटन</string>
   <string name="morphe_copy_video_url_summary_on">वीडियो यूआरएल कॉपी बटन दिखाया गया है। टैप करके वीडियो यूआरएल कॉपी करें। लॉन्ग प्रेस करके टाइमस्टैम्प के साथ कॉपी करें</string>
   <string name="morphe_copy_video_url_summary_off">वीडियो यूआरएल कॉपी बटन नहीं दिखाया गया है</string>
-  <string name="morphe_copy_video_url_timestamp_title">दर्शा करें वीडियो URL कॉपी टाइमस्टैम्प बटन</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">वीडियो यूआरएल टाइमस्टैम्प कॉपी बटन दिखाया गया है। टैप करके वीडियो यूआरएल टाइमस्टैम्प के साथ कॉपी करें। लॉन्ग प्रेस करके टाइमस्टैम्प के बिना कॉपी करें</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">वीडियो यूआरएल टाइमस्टैम्प कॉपी बटन नहीं दिखाया गया है</string>
+  <string name="morphe_copy_video_url_timestamp_title">समय टिकट कॉपी करें</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">समय टिकट के साथ वीडियो URL कॉपी करने के लिए कॉपी वीडियो URL बटन। लंबे समय तक दबाने पर टिकट के बिना कॉपी किया जाता है।</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">समय टिकट के बिना वीडियो URL कॉपी करने के लिए कॉपी वीडियो URL बटन। लंबे समय तक दबाने पर टिकट के साथ कॉपी किया जाता है।</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">दर्शकों के लिए सावधानता डायलॉग हटाएं</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">इस डायलॉग को हटा दिया जाएगा</string>
@@ -708,19 +710,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">नेविगेशन बार छिपाएँ</string>
   <string name="morphe_hide_navigation_bar_summary_on">नेविगेशन बार छिपा हुआ है</string>
   <string name="morphe_hide_navigation_bar_summary_off">नेविगेशन बार दिखाया गया है</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"यह नेविगेशन बार को पूरी तरह से छिपा देता है, जिसमें You टैब भी शामिल है।
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"यह नेविगेशन बार को पूरी तरह से छिपा देता है, जिसमें 'You' टैब भी शामिल है।
 
-सेटिंग्स एक्सेस करने के लिए:
-कोई भी वीडियो खोलें → गुणवत्ता मेनू खोलें → नीचे 'सेटिंग्स > वीडियो गुणवत्ता प्राथमिकताएँ' पर टैप करें।"</string>
+सेटिंग्स तक पहुंचने के लिए, जनरल → टूलबार → शो सेटिंग्स के माध्यम से सेटिंग्स बटन को सक्षम करें।"</string>
   <string name="morphe_narrow_navigation_buttons_title">नarrow नैविगेशन बटनें सक्षम करें</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">नैविगेशन बटनें के बीच अंतर नarrow है</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">नैविगेशन बटन के बीच अंतर सामान्य है</string>
   <string name="morphe_navigation_bar_animations_title">नेविगेशन बार एनिमेशन सक्षम करें</string>
   <string name="morphe_navigation_bar_animations_summary_on">नेविगेशन ट्रांज़िशन एनिमेटेड हैं</string>
   <string name="morphe_navigation_bar_animations_summary_off">नेविगेशन ट्रांज़िशन एनिमेटेड नहीं हैं</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">नेविगेशन बार ऑटो-हाइड को निष्क्रिय करें</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">नेविगेशन बार ऑटो-हाइड नहीं होगा</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">नेविगेशन बार ऑटो-हाइड हो सकता है</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">ऑटो-हाइडिंग नेविगेशन बार को निष्क्रिय करें</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">स्क्रॉल करते समय नेविगेशन बार नहीं छिप जाएगा</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">स्क्रॉल करते समय नेविगेशन बार छिप जाएगा</string>
   <string name="morphe_disable_translucent_status_bar_title">Filter bar</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">स्थिति बार अपारदर्शी है</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">स्थिति बार अपारदर्शी या पारदर्शी है</string>
@@ -1012,10 +1013,10 @@ Morphe सेटिंग्स खोलने के लिए टैप औ�
   <string name="morphe_hide_shorts_navigation_bar_summary_on">नेविगेशन बार छिपा हुआ है</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">नेविगेशन बार दिखाया गया है</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">अंत स्क्रीन सुझाए गए वीडियो छुपाएं</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">एंड स्क्रीन सuggested वीडियो छुपा हुआ है</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">अंत स्क्रीन सुझाए गए वीडियो दिखाया गया है</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"यह सेटिंग केवल तब काम करती है जब 'Autoplay next video' बंद किया गया हो।
+  <string name="morphe_hide_end_screen_suggested_video_title">अंत स्क्रीन सुझाए गए वीडियो छुपाएं</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">एंड स्क्रीन सuggested वीडियो छुपा हुआ है</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">अंत स्क्रीन सुझाए गए वीडियो दिखाया गया है</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"यह सेटिंग केवल तब काम करती है जब 'Autoplay next video' बंद किया गया हो।
 
 आप यूट्यूब पर इसे बदल सकते हैं:
 Settings → Playback (or Autoplay) → Autoplay next video"</string>
@@ -1514,6 +1515,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow अस्थायी रूप से उपलब्ध नहीं है (स्थिति कोड: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow अस्थायी रूप से उपलब्ध नहीं है</string>
   <!-- misc.announcements.announcementsPatch -->
+  <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">पुराने प्लेयर बटन स्टाइल पुनर्स्थापित करें</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">प्लेयर पतली शैली दिखाई जाती है</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">प्लेयर बोल्ड शैली दिखाई जाती है</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">डिवाइस आयामों को स्पूफ करें</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"डिवाइस डिमेंशन स्पॉफ किया जाता है

@@ -29,8 +29,6 @@ import app.morphe.patches.youtube.misc.fix.verticalscroll.fixVerticalScrollPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
@@ -328,15 +326,6 @@ val lithoFilterPatch = bytecodePatch(
 
 
         // region A/B test of new Litho native code.
-
-        // Turn off native code that handles litho component names. If this feature is on then nearly
-        // all litho components have a null name and identifier/path filtering is completely broken.
-        //
-        // Flag was removed in 20.05. It appears a new flag might be used instead (45660109L),
-        // but if the flag is forced on then litho filtering still works correctly.
-        if (is_19_25_or_greater && !is_20_05_or_greater) {
-            LithoComponentNameUpbFeatureFlagFingerprint.method.returnLate(false)
-        }
 
         // Turn off a feature flag that enables native code of protobuf parsing (Upb protobuf).
         LithoConverterBufferUpbFeatureFlagFingerprint.let {

@@ -17,10 +17,134 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <!-- Settings about dialog. -->
+  <string name="morphe_settings_submenu_title">सेटिंग्ज</string>
+  <string name="morphe_settings_confirm_user_dialog_title">तुम्ही नक्की पुढे जाऊ इच्छिता?</string>
+  <string name="morphe_settings_save">जतन करा</string>
+  <string name="morphe_settings_reset">रीसेट करा</string>
+  <string name="morphe_settings_reset_color">रंग रीसेट करा</string>
+  <string name="morphe_settings_color_invalid">अवैध रंग</string>
+  <string name="morphe_settings_restart_title">पुनरारंभ आवश्यक</string>
+  <string name="morphe_settings_restart_dialog_message">हा बदल प्रभावी होण्यासाठी ॲप पुनरारंभ करा.</string>
+  <string name="morphe_settings_restart">पुनरारंभ करा</string>
+  <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">आयात करा</string>
+  <string name="morphe_settings_import_copy">कॉपी करा</string>
+  <string name="morphe_settings_import_reset">Morphe सेटिंग्ज डीफॉल्टवर रीसेट करा</string>
+  <string name="morphe_settings_import_success">%d सेटिंग्ज आयात केले</string>
+  <string name="morphe_settings_import_failure_parse">आयात अयशस्वी: %s</string>
+  <string name="morphe_settings_search_hint">सेटिंग्ज शोधा</string>
+  <string name="morphe_settings_search_no_results_title">\'%s\' साठी कोणतेही परिणाम आढळले नाहीत</string>
+  <string name="morphe_settings_search_no_results_summary">दुसरा कीवर्ड वापरून पहा</string>
+  <string name="morphe_settings_search_recent_searches">नवीनतम शोध</string>
+  <string name="morphe_settings_search_remove_message">शोध इतिहासमधून काढायचे आहे?</string>
+  <string name="morphe_settings_search_clear_history">शोध इतिहास साफ करा</string>
+  <string name="morphe_settings_search_clear_history_message">तुम्ही सर्व शोध इतिहास साफ करू इच्छिता?</string>
+  <string name="morphe_settings_search_tips_title">शोध टिप्स</string>
+  <string name="morphe_settings_search_tips_summary">"• ​​मार्गावर नेव्हिगेट करण्यासाठी त्यावर टॅप करा
+• ​​सेटिंगवर लाँग प्रेस करा
+• ​​शोध क्वेरी हिस्ट्रीमध्ये सेव्ह करण्यासाठी एंटर दाबा
+• ​​शोध केसिंग आणि विरामचिन्हे दुर्लक्षित करतो
+• ​​अक्षम चाइल्ड सेटिंग्जच्या वर पॅरेंट सेटिंग्ज दिसतात"</string>
+  <string name="morphe_settings_search_empty_history_title">शोध इतिहास रिक्त आहे</string>
+  <string name="morphe_settings_search_empty_history_summary">शोध इतिहास जतन करण्यासाठी, शोध क्वेरी टाइप करा आणि एंटर दाबा</string>
+  <string name="morphe_settings_search_history_title">शोध इतिहास दर्शवा</string>
+  <string name="morphe_settings_search_history_summary_on">सेटिंग्ज शोध इतिहास दर्शविला जातो</string>
+  <string name="morphe_settings_search_history_summary_off">सेटिंग्ज शोध इतिहास दर्शविला जात नाही</string>
+  <string name="morphe_show_menu_icons_title">Morphe सेटिंग्ज चिन्ह दर्शवा</string>
+  <string name="morphe_show_menu_icons_summary_on">सेटिंग्ज चिन्ह दर्शविले जातात</string>
+  <string name="morphe_show_menu_icons_summary_off">सेटिंग्ज चिन्ह दर्शविले जात नाहीत</string>
+  <string name="morphe_language_title">Morphe भाषा</string>
+  <string name="morphe_language_user_dialog_message">"काही भाषांसाठी भाषांतर गहाळ किंवा अपूर्ण असू शकतात.
+
+नवीन भाषांचे भाषांतर करण्यासाठी किंवा विद्यमान भाषांतरांमध्ये सुधारणा करण्यासाठी, morp.software/translate ला भेट द्या"</string>
+  <string name="morphe_language_DEFAULT">ॲप भाषा</string>
+  <string name="morphe_pref_import_export_title">आयात / निर्यात</string>
+  <string name="morphe_pref_import_export_summary">आयात / निर्यात Morphe सेटिंग्ज</string>
+  <string name="morphe_settings_import_file">फाईलमधून आयात करा</string>
+  <string name="morphe_settings_import_file_success">सेटिंग्ज यशस्वीरित्या आयात केल्या, लागू करण्यासाठी सेव्ह बटणावर टॅप करा</string>
+  <string name="morphe_settings_import_file_failed">सेटिंग्ज आयात करण्यात अयशस्वी</string>
+  <string name="morphe_settings_export_file">फाईलमध्ये एक्सपोर्ट करा</string>
+  <string name="morphe_settings_export_file_success">सेटिंग्ज यशस्वीरित्या एक्सपोर्ट केल्या</string>
+  <string name="morphe_settings_export_file_failed">सेटिंग्ज एक्सपोर्ट करण्यात अयशस्वी</string>
+  <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">तुम्ही नवीनतम मॉर्फे पॅच्स आवृत्ती &lt;i&gt;%s&lt;/i&gt; वापरत आहात</string>
+  <string name="morphe_settings_about_links_body_version_outdated">तुम्ही मॉर्फे पॅच्स आवृत्ती &lt;i&gt;%1$s&lt;/i&gt; वापरत आहात&lt;br&gt;&lt;br&gt;&lt;b&gt;अपडेट उपलब्ध: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;पॅच अपडेट करण्यासाठी, ॲप पुन्हा पॅच करण्यासाठी मॉर्फे वापरा</string>
+  <string name="morphe_settings_about_links_dev_header">टीप</string>
+  <string name="morphe_settings_about_links_dev_body">हे व्हर्जन प्री-रिलीज आहे आणि तुम्हाला अनपेक्षित समस्या येऊ शकतात</string>
+  <string name="morphe_settings_about_links_header">अधिकृत दुवे</string>
+  <string name="morphe_settings_about_links_website">वेबसाइट</string>
+  <string name="morphe_settings_about_links_donate">देणगी</string>
+  <string name="morphe_settings_about_links_translations">भाषांतर</string>
+  <string name="morphe_settings_about_links_credits">क्रेडिट्स</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">अद्ययावत</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">अपडेट उपलब्ध</string>
+  <string name="morphe_settings_about_contributors_current">सध्याचे विकास</string>
+  <string name="morphe_settings_about_contributors_prior">मागील विकास</string>
+  <string name="morphe_settings_about_links_morphe">सक्रिय विकास</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">परवाना सूचना</string>
+  <string name="morphe_settings_about_licenses_loading">लोड होत आहे...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <!-- Could be it's own resource file, but for simplicity it's shared among all apps. -->
+  <string name="morphe_debug_screen_title">डीबगिंग</string>
+  <string name="morphe_debug_screen_summary">डीबगिंग पर्याय सक्षम किंवा अक्षम करा</string>
+  <string name="morphe_debug_title">डीबग लॉगिंग</string>
+  <string name="morphe_debug_summary_on">डीबग लॉग सक्षम आहेत</string>
+  <string name="morphe_debug_summary_off">डीबग लॉग अक्षम आहेत</string>
+  <string name="morphe_debug_stacktrace_title">स्टॅक ट्रेस लॉग करा</string>
+  <string name="morphe_debug_stacktrace_summary_on">डीबग लॉगमध्ये स्टॅक ट्रेस समाविष्ट आहे</string>
+  <string name="morphe_debug_stacktrace_summary_off">डीबग लॉगमध्ये स्टॅक ट्रेस समाविष्ट नाही</string>
+  <string name="morphe_debug_toast_on_error_title">Morphe त्रुटीवर टोस्ट दर्शवा</string>
+  <string name="morphe_debug_toast_on_error_summary_on">त्रुटी आढळल्यास टोस्ट दर्शविला जातो</string>
+  <string name="morphe_debug_toast_on_error_summary_off">त्रुटी आढळल्यास टोस्ट दर्शविला जात नाही</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"त्रुटी टोस्ट बंद केल्याने सर्व Morphe त्रुटी सूचना लपतील.
+
+तुम्हाला कोणत्याही अनपेक्षित घटनांची सूचना मिळणार नाही."</string>
+  <string name="morphe_debug_export_logs_to_clipboard_title">डीबग लॉग एक्सपोर्ट करा</string>
+  <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe डीबग लॉग क्लिपबोर्डवर कॉपी केले जातात</string>
+  <string name="morphe_debug_logs_disabled">डीबग लॉगिंग अक्षम केले आहे</string>
+  <string name="morphe_debug_logs_none_found">लॉग्स आढळले नाहीत</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">लॉग्स क्लिपबोर्डवर कॉपी केले</string>
+  <string name="morphe_debug_logs_failed_to_export">लॉग्स एक्सपोर्ट करण्यात अयशस्वी: %s</string>
+  <string name="morphe_debug_logs_clear_buffer_title">डीबग लॉग्स साफ करा</string>
+  <string name="morphe_debug_logs_clear_buffer_summary">सर्व साठवलेले मॉर्फे डीबग लॉग्स साफ केले जातील</string>
+  <string name="morphe_debug_logs_clear_toast">लॉग्स साफ केले</string>
+  <string name="morphe_debug_feature_flags_manager_title">वैशिष्ट्ये व्यवस्थापन</string>
+  <string name="morphe_debug_feature_flags_manager_summary">बूलियन वैशिष्ट्ये व्यवस्थापित करा</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">सक्रिय ध्वज (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">अवरोधित ध्वज (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">ध्वजांसाठी शोधा...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">ध्वज जतन केले</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">ध्वज रीसेट केले</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">ध्वज क्लिपबोर्डवर कॉपी केले</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">हे वैशिष्ट्य वापरण्यासाठी ॲप रीस्टार्ट करा</string>
+  <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">MicroG सेटिंग्ज उघडा</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG स्थापित नाही. ते स्थापित करा.</string>
+  <string name="gms_core_dialog_title">कृती आवश्यक</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG ला पार्श्वभूमीमध्ये चाल करण्याची परवानगी नाही.
+
+आपल्या फोनसाठी \"माझ्या ॲपला मारू नका\" मार्गदर्शकाचे अनुसरण करा आणि MicroG इंस्टॉलेशनसाठी सूचना लागू करा.
+
+हे ॲपच्या कार्यासाठी आवश्यक आहे."</string>
+  <string name="gms_core_dialog_open_website_text">वेबसाइट उघडा</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG बॅटरी ऑप्टिमायझेशन अक्षम करणे आवश्यक आहे जेणेकरून समस्या उद्भवणार नाहीत.
+
+MicroG साठी बॅटरी ऑप्टिमायझेशन अक्षम केल्याने बॅटरीचा वापर नकारात्मक होणार नाही.
+
+\"Continue\" बटणावर टॅप करा आणि ऑप्टिमायझेशन बदलांना अनुमती द्या."</string>
+  <string name="gms_core_dialog_continue_text">सुरू ठेवा</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">बॅटरी ऑप्टिमायझेशन संवाद</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG बॅटरी ऑप्टिमायझेशन संवाद दर्शविला जाईल</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG बॅटरी ऑप्टिमायझेशन संवाद दर्शविला जाणार नाही</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"हे अक्षम केल्यास MicroG बॅटरी ऑप्टिमायझेशन प्रॉम्प्ट लपविला जाईल.
+
+जर बॅटरी ऑप्टिमायझेशन बदलले नाही, तर तुम्हाला खालील समस्या येऊ शकतात:
+• ॲप अनपेक्षितपणे बंद होऊ शकते
+• सूचना कार्य करू शकत नाहीत
+• पार्श्वभूमीवर प्लेबॅक कार्य करू शकत नाही"</string>
 </resources>

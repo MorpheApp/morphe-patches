@@ -33,8 +33,6 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_46_or_greater
@@ -106,22 +104,17 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_hide_navigation_bar"),
         )
 
-        if (is_19_25_or_greater) {
-            navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_light")
-            navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_dark")
+        navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_light")
+        navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_dark")
 
-            PreferenceScreen.GENERAL.addPreferences(
-                SwitchPreference("morphe_disable_translucent_status_bar")
-            )
+        PreferenceScreen.GENERAL.addPreferences(
+            SwitchPreference("morphe_disable_translucent_status_bar")
+        )
 
-            if (is_20_15_or_greater && !is_20_45_or_greater) {
-                // Feature has not worked well for a while and YT seems to have abandoned this a/b test.
-                navPreferences += SwitchPreference("morphe_navigation_bar_animations")
-            }
+        navPreferences += SwitchPreference("morphe_navigation_bar_animations")
 
-            if (is_20_31_or_greater) {
-                navPreferences += SwitchPreference("morphe_disable_auto_hide_navigation_bar")
-            }
+        if (is_20_31_or_greater) {
+            navPreferences += SwitchPreference("morphe_disable_auto_hide_navigation_bar")
         }
 
         PreferenceScreen.GENERAL.addPreferences(
@@ -159,36 +152,32 @@ val navigationBarPatch = bytecodePatch(
         addBottomBarContainerHook("$EXTENSION_CLASS_DESCRIPTOR->hideNavigationBar(Landroid/view/View;)V")
 
         // Force on/off translucent effect on status bar and navigation buttons.
-        if (is_19_25_or_greater) {
-            TranslucentNavigationStatusBarFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationStatusBar(Z)Z",
-                )
-            }
-
-            TranslucentNavigationButtonsFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
-                )
-            }
-
-            TranslucentNavigationButtonsSystemFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
-                )
-            }
+        TranslucentNavigationStatusBarFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationStatusBar(Z)Z",
+            )
         }
 
-        if (is_20_15_or_greater) {
-            AnimatedNavigationTabsFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->useAnimatedNavigationButtons(Z)Z"
-                )
-            }
+        TranslucentNavigationButtonsFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
+            )
+        }
+
+        TranslucentNavigationButtonsSystemFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
+            )
+        }
+
+        AnimatedNavigationTabsFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS_DESCRIPTOR->useAnimatedNavigationButtons(Z)Z"
+            )
         }
 
         if (is_20_46_or_greater) {

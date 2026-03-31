@@ -150,12 +150,6 @@
     <string-array name="morphe_spoof_app_version_target_legacy_20_14_entry_values">
         <item>20.13.41</item>
     </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_19_02_entries">
-        <item>19.01.34</item>
-    </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_19_02_entry_values">
-        <item>19.01.34</item>
-    </string-array>
 
     <!-- layout.formfactor.changeFormFactorPatch -->
     <string-array name="morphe_change_form_factor_entries">
@@ -262,40 +256,6 @@
         <item>MODERN_2</item>
         <item>MODERN_3</item>
         <item>MODERN_4</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_43_entries">
-        <item>@string/morphe_miniplayer_type_entry_0</item>
-        <item>@string/morphe_miniplayer_type_entry_1</item>
-        <item>@string/morphe_miniplayer_type_entry_2</item>
-        <item>@string/morphe_miniplayer_type_entry_3</item>
-        <item>@string/morphe_miniplayer_type_entry_4</item>
-        <item>@string/morphe_miniplayer_type_entry_5</item>
-        <item>@string/morphe_miniplayer_type_entry_6</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_43_entry_values">
-        <item>DISABLED</item>
-        <item>DEFAULT</item>
-        <item>MINIMAL</item>
-        <item>TABLET</item>
-        <item>MODERN_1</item>
-        <item>MODERN_2</item>
-        <item>MODERN_3</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_16_entries">
-        <item>@string/morphe_miniplayer_type_entry_1</item>
-        <item>@string/morphe_miniplayer_type_entry_2</item>
-        <item>@string/morphe_miniplayer_type_entry_3</item>
-        <item>@string/morphe_miniplayer_type_entry_4</item>
-        <item>@string/morphe_miniplayer_type_entry_5</item>
-        <item>@string/morphe_miniplayer_type_entry_6</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_16_entry_values">
-        <item>DEFAULT</item>
-        <item>MINIMAL</item>
-        <item>TABLET</item>
-        <item>MODERN_1</item>
-        <item>MODERN_2</item>
-        <item>MODERN_3</item>
     </string-array>
 
     <!-- layout.branding.header.changeHeaderPatch -->

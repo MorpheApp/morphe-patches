@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-03-24T21:29:49",
-  "description": "# [1.22.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.22.0-dev.4...v1.22.0-dev.5) (2026-03-24)\n\n\n### Bug Fixes\n\n* **Reddit - Hide sidebar components:** Update patch to work with `2026.12.0` ([bdcde63](https://github.com/MorpheApp/morphe-patches/commit/bdcde634e457912e61bce21192fd6e8d8bad3ea2))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.22.0-dev.5/patches-1.22.0-dev.5.mpp",
+  "created_at": "2026-03-30T10:50:38",
+  "description": "# [1.23.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.23.0-dev.1...v1.23.0-dev.2) (2026-03-30)\n\n\n### Bug Fixes\n\n* Notification icon entries key mismatch ([#1040](https://github.com/MorpheApp/morphe-patches/issues/1040)) ([01ef1ea](https://github.com/MorpheApp/morphe-patches/commit/01ef1ea731196325a00de060d6f34f51644a94c5))\n\n\n### Features\n\n* **Reddit:** Add experimental support for `2026.13.0` ([722f5bf](https://github.com/MorpheApp/morphe-patches/commit/722f5bf34f986c51b9631575cd09eb64dac47314))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.23.0-dev.2/patches-1.23.0-dev.2.mpp",
   "signature_download_url": "",
-  "version": "1.22.0-dev.5"
+  "version": "1.23.0-dev.2"
 }

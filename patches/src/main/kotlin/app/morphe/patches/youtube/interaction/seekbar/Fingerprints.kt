@@ -38,16 +38,6 @@ internal object AllowSwipingUpGestureFingerprint : Fingerprint(
     parameters = listOf("L")
 )
 
-internal object DisableFastForwardLegacyFingerprint : Fingerprint(
-    returnType = "Z",
-    parameters = listOf(),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.MOVE_RESULT
-    ),
-    // Intent start flag only used in the subscription activity
-    custom = customLiteral { 45411330 } // TODO: Convert this to an instruction filter
-)
-
 internal object DisableFastForwardGestureFingerprint : Fingerprint(
     definingClass = "/NextGenWatchLayout;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
