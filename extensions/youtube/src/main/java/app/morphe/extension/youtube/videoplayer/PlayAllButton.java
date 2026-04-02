@@ -70,17 +70,17 @@ public class PlayAllButton {
     }
 
     private static void onClick(View view) {
-        openVideo(Settings.PLAY_ALL_BUTTON_TYPE.get());
+        openVideo(view, Settings.PLAY_ALL_BUTTON_TYPE.get());
     }
 
     private static void onLongClick(View view) {
-        openVideo(null);
+        openVideo(view, null);
     }
 
     /**
      * Generates the YouTube URL and launches the Intent natively.
      */
-    private static void openVideo(@Nullable PlaylistIDPrefix playlistIdPrefix) {
+    private static void openVideo(View view, @Nullable PlaylistIDPrefix playlistIdPrefix) {
         try {
             String videoId = VideoInformation.getVideoId();
             long timeInSeconds = VideoInformation.getVideoTime() / 1000;
@@ -115,16 +115,15 @@ public class PlayAllButton {
                 }
             }
 
-            Context context = Utils.getContext();
-            if (context == null) {
-                Logger.printDebug(() -> "Play all button: Context is null. Cannot launch Intent.");
+            Context activityContext = view.getContext();
+            if (activityContext == null) {
+                Logger.printDebug(() -> "Play all button: Activity Context is null. Cannot launch Intent.");
                 return;
             }
 
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(sb.toString()));
-            intent.setPackage(context.getPackageName());
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
+            intent.setPackage(activityContext.getPackageName());
+            activityContext.startActivity(intent);
 
         } catch (Exception e) {
             Logger.printException(() -> "Failed to launch play all intent", e);
