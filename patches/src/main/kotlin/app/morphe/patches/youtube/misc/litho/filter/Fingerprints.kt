@@ -31,21 +31,19 @@ internal object AccessibilityIdFingerprint : Fingerprint(
     )
 )
 
-/**
- * Resolves using the method found in [EmptyComponentParentFingerprint].
- */
-internal object EmptyComponentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "L",
-    parameters = listOf("L")
-)
-
-internal object EmptyComponentParentFingerprint : Fingerprint(
+private object EmptyComponentParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.CONSTRUCTOR),
     parameters = listOf(),
     filters = listOf(
         string("EmptyComponent")
     )
+)
+
+internal object EmptyComponentFingerprint : Fingerprint(
+    classFingerprint = EmptyComponentParentFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L")
 )
 
 internal object LithoFilterFingerprint : Fingerprint(
@@ -98,15 +96,6 @@ internal object LithoThreadExecutorFingerprint : Fingerprint(
     custom = { _, classDef ->
         classDef.superclass == "Ljava/util/concurrent/ThreadPoolExecutor;"
     }
-)
-
-internal object LithoComponentNameUpbFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
-    filters = listOf(
-        literal(45631264L)
-    )
 )
 
 internal object LithoConverterBufferUpbFeatureFlagFingerprint : Fingerprint(

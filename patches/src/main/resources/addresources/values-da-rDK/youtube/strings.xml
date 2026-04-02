@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Foder</string>
   <string name="morphe_settings_screen_04_general_title">Generelt</string>
   <string name="morphe_settings_screen_05_player_title">Afspiller</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Søg i videon</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Strygekontroller</string>
   <string name="morphe_settings_screen_11_misc_title">Diverse</string>
@@ -144,9 +145,12 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_you_may_like_section_summary_on">\"Du kan like\" afsnit er skjult</string>
   <string name="morphe_hide_you_may_like_section_summary_off">\"Du kan like\" afsnit er vist</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Skjul YouTube-Doudler</string>
-  <string name="morphe_hide_doodles_summary_on">YouTube Doodles-animation på logoet er skjult</string>
-  <string name="morphe_hide_doodles_summary_off">YouTube Doodles-animation på logoet vises</string>
+  <string name="morphe_hide_youtube_doodles_title">Skjul YouTube-Doudler</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles-animation på logoet er skjult</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles-animation på logoet vises</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles vises i løbet af et par dage hvert år i forskellige dele af verden.
+
+Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at blive vist."</string>
   <string name="morphe_hide_channel_bar_title">Skjul kanallinje</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanalbjælken er skjult</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanalbjælken vises</string>
@@ -302,6 +306,15 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Knappen Abonnér vises</string>
   <string name="morphe_comments_screen_title">Kommentarer</string>
   <string name="morphe_comments_screen_summary">Skjul eller vis kommentarer sektion komponenter</string>
+  <string name="morphe_hide_comments_carousel_title">Aktiver kommentarkarussel filter</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Kommentarerne carousel filter er aktiveret</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Kommentarerne er deaktiveret</string>
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Bemærk:
+• Sørg for at indtaste det nøjagtige navn på karusellens element (f.eks. Spørg, Hype denne video, Lyt på YouTube Music osv.).
+• Skjuling af karusellens elementer kan have utilsigtede bivirkninger.
+• Hvis alle karusellens elementer er skjult, vil hele kommentarfeltet også være skjult."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentarer-karuselfilter</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Indtast kommentarerne navne for at filtrere efter, én pr. linje</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chatsammendrag</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI-chatsammendrag er skjult</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI-chatsammendrag vises</string>
@@ -329,6 +342,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Skjul Emoji- og Tidsstempelknapper</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Emoji- og Tidsstempelknapper er skjult</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Emoji- og Tidsstempelknapper vises</string>
+  <string name="morphe_hide_comments_info_button_title">Skjul Info-knap</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Info-knappen er skjult</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Info-knappen vises</string>
   <string name="morphe_hide_comments_preview_comment_title">Skjul forhåndsvisning kommentar</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Forhåndsvisning kommentar er skjult</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Forhåndsvis kommentar er vist</string>
@@ -438,9 +454,9 @@ Begrænsninger:
   <string name="morphe_copy_video_url_title">Vis kopiér video URL knap</string>
   <string name="morphe_copy_video_url_summary_on">Kopier video-URL knappen er vist. Tryk for at kopiere videoens URL. Tryk og hold for at kopiere med tidsstempel</string>
   <string name="morphe_copy_video_url_summary_off">Kopier video-URL knappen er ikke vist</string>
-  <string name="morphe_copy_video_url_timestamp_title">Vis kopi tidsstempel URL knap</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Kopier video-URL med tidsstempel knappen er vist. Tryk for at kopiere videoens URL med tidsstempel. Tryk og hold for at kopiere uden tidsstempel</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Kopier video-URL med tidsstempel knappen er ikke vist</string>
+  <string name="morphe_copy_video_url_timestamp_title">Kopiér tidsstempel</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Knappen til at kopiere videolink kopierer med tidsstempel. Langt tryk kopierer uden tidsstempel</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Knappen til at kopiere videolink kopierer uden tidsstempel. Langt tryk kopierer med tidsstempel</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Fjern visningsdialog</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Dialog vil blive fjernet</string>
@@ -474,6 +490,21 @@ Begrænsninger:
 
 Kontrollér, at pakkenavnet er korrekt, og at appen er installeret"</string>
   <string name="morphe_external_downloader_empty_warning">Pakkenavnet må ikke være tomt</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Aktiver loop-video</string>
+  <string name="morphe_loop_video_summary_on">Videoen vil loope</string>
+  <string name="morphe_loop_video_summary_off">Videoen vil ikke loope</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Vis knap for loop-video</string>
+  <string name="morphe_loop_video_button_summary_on">Loop video menu er vist</string>
+  <string name="morphe_loop_video_button_summary_off">Loop video menu er vist</string>
+  <string name="morphe_loop_video_button_toast_on">Loop-video er slået til</string>
+  <string name="morphe_loop_video_button_toast_off">Loop-video er slået fra</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Vis knap for at indlæse video</string>
+  <string name="morphe_reload_video_summary_on">Indlæs video knap vises</string>
+  <string name="morphe_reload_video_summary_off">Indlæs video knap vises ikke</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video-id er ikke tilgængelig. Åbn venligst videoen manuelt.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Deaktivér præcis søgemåde</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Bevægelse er deaktiveret</string>
@@ -661,13 +692,14 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_show_search_button_title">Vis Søgning</string>
   <string name="morphe_show_search_button_summary_on">Søgeknappen vises</string>
   <string name="morphe_show_search_button_summary_off">Søgeknappen vises ikke</string>
-  <string name="morphe_search_button_index_title">Søgknappen er skjult</string>
-  <string name="morphe_search_button_index_invalid">Søgknappen indeks skal være mindre end %s</string>
+  <string name="morphe_show_search_button_index_title">Knapindeks for søgning</string>
   <string name="morphe_show_settings_button_title">Vis Indstillinger</string>
   <string name="morphe_show_settings_button_summary_on">Indstillingsknappen vises</string>
   <string name="morphe_show_settings_button_summary_off">Indstillingsknappen vises ikke</string>
-  <string name="morphe_settings_button_index_title">Indstillingsknappens indeks</string>
-  <string name="morphe_settings_button_index_invalid">Indeks for indstillingsknap skal være mindre end %s</string>
+  <string name="morphe_show_settings_button_index_title">Indstillingsknappens indeks</string>
+  <string name="morphe_show_settings_button_type_title">Indstillingsknappen vises</string>
+  <string name="morphe_show_settings_button_type_summary_on">Tryk for at åbne Morphe-indstillinger</string>
+  <string name="morphe_show_settings_button_type_summary_off">Tryk for at åbne YouTube-indstillinger</string>
   <string name="morphe_swap_create_with_notifications_button_title">Skift Opret med notifikationer</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Opret knappen er skiftet med Notifikationer knappen</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Opret knappen er ikke skiftet med Notifikationer knappen</string>
@@ -678,16 +710,18 @@ Tekstlinjer vil blive gemt automatisk, hvis de er gyldige"</string>
   <string name="morphe_hide_navigation_bar_title">Skjul navigationslinje</string>
   <string name="morphe_hide_navigation_bar_summary_on">Navigationsbjælken er skjult</string>
   <string name="morphe_hide_navigation_bar_summary_off">Navigationsbjælken vises</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler navigationslinjen helt, inklusive You-fanen.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Dette skjuler helt navigationslinjen, inklusive fanen 'Du'.
 
-For at få adgang til Indstillinger:
-Åbn en video → Åbn Kvalitetsmenuen → Tryk på 'Indstillinger > Video Kvalitet Præferencer' nederst."</string>
+For at få adgang til Indstillinger skal du aktivere knappen Indstillinger via Generelt → Værktøjslinje → Vis Indstillinger."</string>
   <string name="morphe_narrow_navigation_buttons_title">Aktiver smalle navigationsknapper</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Afstanden mellem navigationsknapperne er smal</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Afstanden mellem navigationsknapperne er normal</string>
   <string name="morphe_navigation_bar_animations_title">Aktivér animationer i navigationslinjen</string>
   <string name="morphe_navigation_bar_animations_summary_on">Navigationsovergange animeres</string>
   <string name="morphe_navigation_bar_animations_summary_off">Navigationsovergange animeres ikke</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjuling af navigationslinjen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar vil ikke skjules ved scrolling</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar kan skjules ved scrolling</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statuslinjen er opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statuslinjen er opak eller gennemsigtig</string>
@@ -714,18 +748,15 @@ For at få adgang til Indstillinger:
   <string name="morphe_hide_toolbar_search_button_title">Skjul Søgning</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Søgeknappen er skjult</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Søgeknappen vises</string>
-  <string name="morphe_replace_toolbar_create_button_title">Erstat Opret med Indstillinger</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Opret knappen er erstattet med Indstillinger knappen</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Opret knappen er ikke udskiftet med Indstillinger knappen</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Klikadfærden for knappen Indstillinger i fanen You overskrives også.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Indstillingsknappen vises</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tryk for at åbne Morphe-indstillinger
+  <string name="morphe_show_toolbar_settings_button_title">Vis Indstillinger</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Indstillingsknappen vises</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Indstillingsknappen vises ikke</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Indstillingsknappens indeks</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Indstillingsknappen vises</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Tryk for at åbne Morphe-indstillinger
 Tryk og hold for at åbne YouTube-indstillinger"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tryk for at åbne YouTube-indstillinger
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Tryk for at åbne YouTube-indstillinger
 Tryk og hold for at åbne Morphe-indstillinger"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">Omarranger de udskiftede knapper</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Knapper er omarrangeret</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Knapper er ikke flyttet</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Udfyldningsmenu</string>
   <string name="morphe_hide_player_flyout_summary">Skjul eller vis spiller flyout menupunkter</string>
@@ -982,10 +1013,10 @@ For at vise Lydspor-menuen, ændre 'Spoof video streams' til 'Android Reel' elle
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigationsbjælken er skjult</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigationsbjælken vises</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Skjul foreslået video på slutskærmen</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Foreslået video på slutskærmen er skjult</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Foreslået video på slutskærmen vises</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Denne indstilling fungerer kun, hvis 'Automatisk afspil næste video' er slået fra.
+  <string name="morphe_hide_end_screen_suggested_video_title">Skjul foreslået video på slutskærmen</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Foreslået video på slutskærmen er skjult</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Foreslået video på slutskærmen vises</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Denne indstilling fungerer kun, hvis 'Automatisk afspil næste video' er slået fra.
 
 Du kan ændre dette i YouTube:
 Indstillinger → Afspilning (eller Automatisk afspil) → Automatisk afspil næste video"</string>
@@ -1344,6 +1375,7 @@ Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre U
   <string name="morphe_change_start_page_entry_playlists">Playlister</string>
   <string name="morphe_change_start_page_entry_search">Søg</string>
   <string name="morphe_change_start_page_entry_shopping">Køb ind</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sport</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonnementer</string>
   <string name="morphe_change_start_page_entry_trending">Populære</string>
@@ -1355,10 +1387,10 @@ Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre U
 
 Begrænsning: Brug af tilbage-knappen på værktøjslinjen fungerer muligvis ikke"</string>
   <string name="morphe_change_start_page_always_summary_off">Startsiden ændres kun ved appstart</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Deaktivér genoptagelse af Shorts spiller</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Shorts-afspilleren genoptages ikke ved app-start</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Kortspilleren vil genoptage ved app-opstart</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Deaktiver afspilning af Shorts ved opstart</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Shorts genoptages ikke ved app-start</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Shorts genoptages ved app-start</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Åbne Shorts med</string>
   <string name="morphe_shorts_player_type_shorts">Shorts-afspiller</string>
@@ -1386,12 +1418,6 @@ Begrænsning: Brug af tilbage-knappen på værktøjslinjen fungerer muligvis ikk
   <string name="morphe_miniplayer_disable_rounded_corners_title">Deaktiver afrundede hjørner</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Hjørner er firkantede</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Hjørner er afrundede</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Aktiver dobbelttryk og klemme for at ændre størrelse</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Dobbelttrykshandling og knib for at ændre størrelse er aktiveret
-
-● Dobbelttryk for at øge miniafspillerstørrelsen
-● Dobbelttryk igen for at gendanne den oprindelige størrelse"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Dobbelttryk handling og klemme for at ændre størrelse er deaktiveret</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Deaktiver træk og slip</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Træk og slip er deaktiveret</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Træk og slip er aktiveret
@@ -1405,11 +1431,6 @@ Miniafspiller kan trækkes ud over skærmen til venstre eller højre"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skjul overlay-knapper</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Overlay-knapper er skjult</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Overlay-knapper vises</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Skjul knapperne Udvid og Luk</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Knapperne er skjult
-
-Skub for at udvide eller lukke"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Knapperne Udvid og Luk vises</string>
   <string name="morphe_miniplayer_hide_subtext_title">Skjul undertekster</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Undertekster er skjult</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Undertekster er vist</string>
@@ -1487,16 +1508,10 @@ Tryk her for at lære mere om DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow er midlertidigt ikke tilgængelig (statuskode: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow er midlertidigt ikke tilgængelig</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Aktiver loop-video</string>
-  <string name="morphe_loop_video_summary_on">Videoen vil loope</string>
-  <string name="morphe_loop_video_summary_off">Videoen vil ikke loope</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Vis knap for loop-video</string>
-  <string name="morphe_loop_video_button_summary_on">Loop video menu er vist</string>
-  <string name="morphe_loop_video_button_summary_off">Loop video menu er vist</string>
-  <string name="morphe_loop_video_button_toast_on">Loop-video er slået til</string>
-  <string name="morphe_loop_video_button_toast_off">Loop-video er slået fra</string>
+  <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">Gendan knapstil for den gamle afspiller</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">Spillerens tynde stil vises</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">Spillerens fede stil vises</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Spoof enhedens dimensioner</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Enhedens dimensioner er forfalsket

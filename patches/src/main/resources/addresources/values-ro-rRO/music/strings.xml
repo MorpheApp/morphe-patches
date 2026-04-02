@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Schimbă culoarea miniplayer-ului</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Culoarea miniplayer-ului se potrivește cu player-ul pe ecran complet</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer-ul folosește culoarea implicită</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Afișează butonul următor în miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Butonul următor este afișat în miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Butonul următor nu este afișat în miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Afișează butonul anterior în miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Butonul anterior este afișat în miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Butonul anterior nu este afișat în miniplayer</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Activează miniplayer-ul forțat</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer-ul rămâne minimizat când se schimbă redarea</string>

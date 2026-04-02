@@ -15,6 +15,7 @@ import app.morphe.extension.youtube.shared.EngagementPanel;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 import app.morphe.extension.youtube.shared.PlayerType;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 final class HorizontalShelvesFilter extends Filter {
@@ -68,19 +69,16 @@ final class HorizontalShelvesFilter extends Filter {
         );
     }
 
-    private boolean hideShelves() {
+    private boolean hideShelves(ContextInterface contextInterface) {
         if (!Settings.HIDE_HORIZONTAL_SHELVES.get()) {
             return false;
         }
-        // Must check player type first, as search bar can be active behind the player.
-        if (PlayerType.getCurrent().isMaximizedOrFullscreen() || isActionBarVisible.get()) {
-            return false;
-        }
-        // Must check second, as search can be from any tab.
-        if (NavigationBar.isSearchBarActive()) {
-            return true;
-        }
-        return NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
+        return contextInterface.isHomeFeedOrRelatedVideo()
+                || PlayerType.getCurrent().isMaximizedOrFullscreen()
+                || isActionBarVisible.get()
+                || NavigationBar.isSearchBarActive()
+                || NavigationBar.isBackButtonVisible()
+                || NavigationButton.getSelectedNavigationButton() != NavigationButton.LIBRARY;
     }
 
     @Override
@@ -98,15 +96,9 @@ final class HorizontalShelvesFilter extends Filter {
         if (generalBuffers.check(buffer).isFiltered()) {
             return true;
         }
-        if (EngagementPanel.isDescription()) {
-            PlayerType playerType = PlayerType.getCurrent();
-            // PlayerType when the description panel is opened: [NONE], [HIDDEN],
-            // [WATCH_WHILE_MAXIMIZED], [WATCH_WHILE_FULLSCREEN], [WATCH_WHILE_SLIDING_MAXIMIZED_FULLSCREEN].
-            if (!playerType.isMaximizedOrFullscreen() && !playerType.isNoneOrHidden()) {
-                return false;
-            }
-            return descriptionBuffers.check(buffer).isFiltered();
+        if (descriptionBuffers.check(buffer).isFiltered()) {
+            return EngagementPanel.isDescription() || PlayerType.getCurrent().isMaximizedOrFullscreen() || isActionBarVisible.get() || ShortsPlayerState.isOpen();
         }
-        return hideShelves();
+        return hideShelves(contextInterface);
     }
 }

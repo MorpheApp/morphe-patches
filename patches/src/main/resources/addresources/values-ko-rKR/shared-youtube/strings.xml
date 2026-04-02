@@ -16,17 +16,22 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">설정을 완료하려면 다시 시작하세요</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">앱 이름</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">사용자 정의</string>
   <string name="morphe_custom_branding_icon_title">앱 아이콘</string>
   <string name="morphe_custom_branding_icon_entry_1">원본</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe Black</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe Dark</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe Light</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe Play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">사용자 정의</string>
+  <string name="morphe_custom_branding_icon_entry_6">사용자 정의</string>
+  <string name="morphe_custom_branding_notification_icon_title">알림 아이콘</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">앱 아이콘 따르기</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 실험 버전 알림 🚨</string>
@@ -98,8 +103,8 @@ YouTube Premium 사용자라면 이 설정은 필요하지 않을 수 있습니�
 • 플레이어 자바스크립트 해시가 GVS에서 취소되면 재생이 실패합니다"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">플레이어 자바스크립트 업데이트를 활성화합니다</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">플레이어 자바스크립트 해시는 약 한 달 동안 유효하며, 오래된 해시는 GVS에 의해 취소될 수 있습니다.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">플레이어 자바스크립트 해시</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">유효한 플레이어 자바스크립트 해시를 입력하세요</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">플레이어 자바스크립트 해시</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">유효한 플레이어 자바스크립트 해시를 입력하세요</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC 프로토콜 비활성화하기</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC 프로토콜을 비활성화합니다</string>

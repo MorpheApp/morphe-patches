@@ -57,7 +57,7 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_explore">Keşfet</string>
   <string name="morphe_change_start_page_entry_history">Geçmiş</string>
   <string name="morphe_change_start_page_entry_library">Kitaplık</string>
-  <string name="morphe_change_start_page_entry_liked_music">Beğenilen Müzik</string>
+  <string name="morphe_change_start_page_entry_liked_music">Beğenilen müzik</string>
   <string name="morphe_change_start_page_entry_playlists">Oynatma listeleri</string>
   <string name="morphe_change_start_page_entry_search">Arama</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonelikler</string>
@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Mini oynatıcı rengini değiştir</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Mini oynatıcı rengi tam ekran oynatıcıyla eşleşir</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Mini oynatıcı varsayılan rengi kullanır</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Mini oynatıcıda sonraki düğmesini göster</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Mini oynatıcıda sonraki düğmesi gösteriliyor</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Mini oynatıcıda sonraki düğmesi gösterilmiyor</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Mini oynatıcıda önceki düğmesini göster</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Mini oynatıcıda önceki düğmesi gösteriliyor</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Mini oynatıcıda önceki düğmesi gösterilmiyor</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Zorunlu mini oynatıcıyı etkinleştir</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Mini oynatıcı, oynatma değiştiğinde küçültülmüş durumda kalır</string>

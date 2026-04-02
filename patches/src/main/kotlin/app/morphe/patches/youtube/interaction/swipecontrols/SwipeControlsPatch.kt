@@ -9,8 +9,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_43_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -37,7 +35,7 @@ private val swipeControlsResourcePatch = resourcePatch {
         // If fullscreen swipe is enabled in newer versions the app can crash.
         // It likely is caused by conflicting experimental flags that are never enabled together.
         // Flag was completely removed in 20.34+
-        if (is_19_43_or_greater && !is_20_22_or_greater) {
+        if (!is_20_34_or_greater) {
             PreferenceScreen.SWIPE_CONTROLS.addPreferences(
                 SwitchPreference("morphe_swipe_change_video")
             )
@@ -122,7 +120,7 @@ val swipeControlsPatch = bytecodePatch(
 
         // region patch to enable/disable swipe to change video.
 
-        if (is_19_43_or_greater && !is_20_34_or_greater) {
+        if (!is_20_34_or_greater) {
             SwipeChangeVideoFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.last().index,

@@ -13,13 +13,11 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
-import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
@@ -41,7 +39,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
     )
 
     execute {
@@ -83,20 +81,31 @@ private val sponsorBlockResourcePatch = resourcePatch {
             ResourceGroup(
                 "drawable",
                 "morphe_sb_adjust.xml",
+                "morphe_sb_adjust_bold.xml",
                 "morphe_sb_backward.xml",
+                "morphe_sb_backward_bold.xml",
                 "morphe_sb_compare.xml",
+                "morphe_sb_compare_bold.xml",
                 "morphe_sb_edit.xml",
+                "morphe_sb_edit_bold.xml",
                 "morphe_sb_forward.xml",
+                "morphe_sb_forward_bold.xml",
                 "morphe_sb_logo.xml",
                 "morphe_sb_logo_bold.xml",
                 "morphe_sb_publish.xml",
+                "morphe_sb_publish_bold.xml",
                 "morphe_sb_voting.xml",
+                "morphe_sb_voting_bold.xml",
             )
         ).forEach { resourceGroup ->
             copyResources("sponsorblock", resourceGroup)
         }
 
-        addTopControl("sponsorblock")
+        addTopControl(
+            "sponsorblock",
+            "@+id/morphe_sb_voting_button",
+            "@+id/morphe_sb_create_segment_button"
+        )
     }
 }
 
@@ -118,11 +127,9 @@ val sponsorBlockPatch = bytecodePatch(
         sharedExtensionPatch,
         resourceMappingPatch,
         videoIdPatch,
-        // Required to skip segments on time.
         videoInformationPatch,
-        // Used to prevent SponsorBlock from running on Shorts because SponsorBlock does not yet support Shorts.
         playerTypeHookPatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
         sponsorBlockResourcePatch,
     )
 
@@ -142,9 +149,7 @@ val sponsorBlockPatch = bytecodePatch(
 
         // Set seekbar draw rectangle.
         val rectangleFieldName: FieldReference
-        RectangleFieldInvalidatorFingerprint.match(
-            SeekbarFingerprint.originalClassDef
-        ).let {
+        RectangleFieldInvalidatorFingerprint.let {
             it.method.apply {
                 val rectangleIndex = indexOfFirstInstructionReversedOrThrow(
                     it.instructionMatches.first().index
@@ -161,7 +166,7 @@ val sponsorBlockPatch = bytecodePatch(
         SeekbarOnDrawFingerprint.clearMatch()
         // Cannot match using original immutable class because
         // class may have been modified by other patches
-        SeekbarOnDrawFingerprint.match(SeekbarFingerprint.classDef).let {
+        SeekbarOnDrawFingerprint.let {
             it.method.apply {
                 // Set seekbar thickness.
                 val thicknessIndex = it.instructionMatches.last().index
@@ -229,9 +234,9 @@ val sponsorBlockPatch = bytecodePatch(
         onCreateHook(EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR, "initialize")
 
         // Initialize the SponsorBlock view.
-        ControlsOverlayFingerprint.match(LayoutConstructorFingerprint.originalClassDef).let {
-            val checkCastIndex = it.instructionMatches.last().index
+        ControlsOverlayFingerprint.let {
             it.method.apply {
+                val checkCastIndex = it.instructionMatches.last().index
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
                 addInstruction(
                     checkCastIndex + 1,

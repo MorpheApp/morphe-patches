@@ -60,6 +60,12 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_language_DEFAULT">Ngôn ngữ ứng dụng</string>
   <string name="morphe_pref_import_export_title">Nhập hoặc Xuất</string>
   <string name="morphe_pref_import_export_summary">Nhập hoặc xuất các cài đặt Morphe</string>
+  <string name="morphe_settings_import_file">Nhập từ tệp</string>
+  <string name="morphe_settings_import_file_success">Đã nhập cài đặt thành công, hãy bấm Lưu để áp dụng</string>
+  <string name="morphe_settings_import_file_failed">Không thể nhập cài đặt</string>
+  <string name="morphe_settings_export_file">Xuất ra tệp</string>
+  <string name="morphe_settings_export_file_success">Đã xuất cài đặt thành công</string>
+  <string name="morphe_settings_export_file_failed">Không thể xuất cài đặt</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Bạn đang dùng bản vá Morphe phiên bản &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Bạn đang dùng bản vá Morphe phiên bản &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Đã có bản cập nhật mới: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Để cập nhật các bản vá của bạn, hãy dùng Morphe để vá lại ứng dụng này</string>
@@ -69,6 +75,17 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_settings_about_links_website">Trang web</string>
   <string name="morphe_settings_about_links_donate">Ủng hộ</string>
   <string name="morphe_settings_about_links_translations">Dịch thuật</string>
+  <string name="morphe_settings_about_links_credits">Tín dụng</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Đã cập nhật</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Đã có bản cập nhật</string>
+  <string name="morphe_settings_about_contributors_current">Hiện tại</string>
+  <string name="morphe_settings_about_contributors_prior">Trước đây</string>
+  <string name="morphe_settings_about_links_morphe">Đang phát triển</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Thông tin giấy phép</string>
+  <string name="morphe_settings_about_licenses_loading">Đang tải...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Gỡ lỗi</string>
   <string name="morphe_debug_screen_summary">Bật hoặc tắt tùy chọn gỡ lỗi</string>
@@ -113,4 +130,13 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nBấm tiếp tục để tắt tối ưu hóa."</string>
   <string name="gms_core_dialog_continue_text">Tiếp tục</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Hộp thoại tối ưu hoá pin</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Hộp thoại tối ưu hoá pin MicroG đã được hiển thị</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Hộp thoại tối ưu hoá pin MicroG không được hiển thị</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tắt tùy chọn này sẽ ẩn thông báo tối ưu hoá pin cho MicroG.
+
+Nếu bạn vẫn chưa tắt tối ưu hóa pin, một số lỗi có thể xẩy ra như:
+• Ứng dụng tự tắt bất chợt
+• Không nhận được thông báo
+• Không phát được trong nền"</string>
 </resources>

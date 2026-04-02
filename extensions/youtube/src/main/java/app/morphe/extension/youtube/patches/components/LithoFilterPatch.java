@@ -139,7 +139,7 @@ public final class LithoFilterPatch {
      * 3 threads -> Device has over 6 cores and more than 6GB of memory
      * </pre>
      *
-     * Using more than 1 thread causes layout issues such as the You tab watch/playlist shelf
+     * Using more than 1 thread causes layout issues such as the 'You' tab watch/playlist shelf
      * that is sometimes incorrectly hidden (Morphe is not hiding it), and seems to
      * fix a race issue if using the active navigation tab status with litho filtering.
      */
@@ -165,8 +165,6 @@ public final class LithoFilterPatch {
                     filter.identifierCallbacks, Filter.FilterContentType.IDENTIFIER);
             filterUsingCallbacks(pathSearchTree, filter,
                     filter.pathCallbacks, Filter.FilterContentType.PATH);
-            filterUsingCallbacks(contextSearchTree, filter,
-                    filter.contextCallbacks, Filter.FilterContentType.CONTEXT);
         }
 
         Logger.printDebug(() -> "Using: "

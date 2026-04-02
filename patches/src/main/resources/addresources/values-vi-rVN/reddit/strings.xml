@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Quảng cáo</string>
+  <string name="morphe_hide_post_ads_title">Ẩn quảng cáo bảng tin</string>
+  <string name="morphe_hide_post_ads_summary">Ẩn quảng cáo trong bảng tin</string>
+  <string name="morphe_hide_comment_ads_title">Ẩn quảng cáo bình luận</string>
+  <string name="morphe_hide_comment_ads_summary">Ẩn quảng cáo trong phần bình luận</string>
+  <string name="morphe_screen_layout_title">Bố cục</string>
+  <string name="morphe_disable_modern_home_title">Tắt chế độ hiện đại</string>
+  <string name="morphe_disable_modern_home_summary">Vô hiệu giao diện hiện đại mới</string>
+  <string name="morphe_disable_screenshot_popup_title">Tắt hộp thoại chụp màn hình</string>
+  <string name="morphe_disable_screenshot_popup_summary">Vô hiệu hộp thoại xuất hiện khi chụp màn hình</string>
+  <string name="morphe_hide_answers_button_title">Ẩn nút Trả lời</string>
+  <string name="morphe_hide_answers_button_summary">Ẩn nút Trả lời trên thanh điều hướng</string>
+  <string name="morphe_hide_chat_button_title">Ẩn nút Trò chuyện</string>
+  <string name="morphe_hide_chat_button_summary">Ẩn nút Trò chuyện trên thanh điều hướng</string>
+  <string name="morphe_hide_create_button_title">Ẩn nút Tạo</string>
+  <string name="morphe_hide_create_button_summary">Ẩn nút Tạo trên thanh điều hướng</string>
+  <string name="morphe_hide_discover_button_title">Ẩn nút Khám phá hoặc nút Cộng đồng</string>
+  <string name="morphe_hide_discover_button_summary">Ẩn nút Khám phá hoặc Cộng đồng trên thanh điều hướng</string>
+  <string name="morphe_hide_games_button_title">Ẩn nút Trò chơi</string>
+  <string name="morphe_hide_games_button_summary">Ẩn nút Trò chơi trên thanh điều hướng</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Ẩn kệ Đã truy cập gần đây</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Ẩn kệ \"Đã truy cập gần đây\" trong thanh bên</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Ẩn kệ Trò chơi trên Reddit</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Ẩn kệ \"Trò chơi trên Reddit\" trong thanh bên</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Ẩn kệ Reddit Pro</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Ẩn kệ Reddit Pro trong thanh bên</string>
+  <string name="morphe_hide_about_shelf_title">Ẩn kệ Giới thiệu</string>
+  <string name="morphe_hide_about_shelf_summary">Ẩn kệ Giới thiệu trong thanh bên</string>
+  <string name="morphe_hide_resources_shelf_title">Ẩn kệ Tài nguyên</string>
+  <string name="morphe_hide_resources_shelf_summary">Ẩn kệ Tài nguyên trong thanh bên</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Ẩn các cộng đồng được đề xuất</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Ẩn kệ cộng đồng được đề xuất trong subreddit</string>
+  <string name="morphe_hide_trending_today_shelf_title">Ẩn kệ Xu hướng hôm nay</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Ẩn kệ Xu hướng hôm nay khỏi gợi ý tìm kiếm
+
+Hạn chế: Có thể không ẩn được các khoảng trống trong giao diện"</string>
+  <string name="morphe_remove_notification_dialog_title">Xóa hộp thoại gợi ý thông báo</string>
+  <string name="morphe_remove_notification_dialog_summary">Loại bỏ hộp thoại gợi ý thông báo khi vào subreddit</string>
+  <string name="morphe_show_view_count_title">Hiện số lượt xem</string>
+  <string name="morphe_show_view_count_summary">"Hiển thị số lượt xem của Bài đăng
+
+Hạn chế: Chỉ hiển thị nếu API trả về số lượt xem"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Xóa hộp thoại cảnh báo NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Loại bỏ hộp thoại cảnh báo khi vào subreddit chứa nội dung người lớn (18+)</string>
+  <string name="morphe_screen_miscellaneous_title">Khác</string>
+  <string name="morphe_about_title">Giới thiệu</string>
+  <string name="morphe_about_summary">Thông tin bản vá và liên kết chính chủ</string>
+  <string name="morphe_sanitize_sharing_links_title">Rút gọn liên kết chia sẻ</string>
+  <string name="morphe_sanitize_sharing_links_summary">Xóa các tham số theo dõi khỏi liên kết chia sẻ</string>
+  <string name="morphe_open_links_directly_title">Mở liên kết trực tiếp</string>
+  <string name="morphe_open_links_directly_summary">Bỏ qua các URL chuyển hướng khi mở các liên kết ngoài</string>
+</resources>

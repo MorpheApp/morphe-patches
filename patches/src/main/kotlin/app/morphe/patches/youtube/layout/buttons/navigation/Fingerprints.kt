@@ -52,12 +52,21 @@ internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
     )
 )
 
-internal object CollapsingToolbarLayoutFeatureFlag : Fingerprint(
+internal object CollapsingToolbarLayoutFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
     filters = listOf(
         literal(45736608L)
+    )
+)
+
+internal object AutoHideNavigationBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/support/v7/widget/RecyclerView;", "I", "I"),
+    filters = listOf(
+        literal(45677535L)
     )
 )
 
@@ -134,7 +143,7 @@ internal object WideSearchbarLayoutFingerprint : Fingerprint(
     )
 )
 
-internal object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
+private object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/CharSequence;",
     parameters = listOf(),
@@ -143,10 +152,8 @@ internal object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches to class found in [OldSearchButtonAccessibilityLabelFingerprint].
- */
 internal object OldSearchButtonVisibilityFingerprint : Fingerprint(
+    classFingerprint = OldSearchButtonAccessibilityLabelFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
@@ -169,10 +176,16 @@ internal object SearchResultButtonVisibilityFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches to class found in [SearchFragmentFingerprint].
- */
+private object SearchFragmentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    filters = listOf(
+        string("search-lens-button")
+    )
+)
+
 internal object SearchButtonsVisibilityFingerprint : Fingerprint(
+    classFingerprint = SearchFragmentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Ljava/lang/String;"),
@@ -184,14 +197,6 @@ internal object SearchButtonsVisibilityFingerprint : Fingerprint(
         SET_VISIBILITY_METHOD_CALL, // clear button.
         SET_VISIBILITY_METHOD_CALL, // microphone button.
         SET_VISIBILITY_METHOD_CALL  // lens button.
-    )
-)
-
-internal object SearchFragmentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Landroid/view/View;",
-    filters = listOf(
-        string("search-lens-button")
     )
 )
 

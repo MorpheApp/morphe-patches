@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Mainokset</string>
+  <string name="morphe_hide_post_ads_title">Piilota syötteen mainokset</string>
+  <string name="morphe_hide_post_ads_summary">Piilottaa mainokset syötteessä</string>
+  <string name="morphe_hide_comment_ads_title">Piilota kommenttimainokset</string>
+  <string name="morphe_hide_comment_ads_summary">Piilottaa mainokset kommenttiosassa</string>
+  <string name="morphe_screen_layout_title">Ulkoasu</string>
+  <string name="morphe_disable_modern_home_title">Poista moderni aloitusnäyttö käytöstä</string>
+  <string name="morphe_disable_modern_home_summary">Poistaa käytöstä modernin aloitusnäyttö UI:n</string>
+  <string name="morphe_disable_screenshot_popup_title">Poista näyttökuvapop-up käytöstä</string>
+  <string name="morphe_disable_screenshot_popup_summary">Poistaa näyttökuvan ottamisen yhteydessä näkyvän pop-upin käytöstä</string>
+  <string name="morphe_hide_answers_button_title">Piilota Vastaukset-painike</string>
+  <string name="morphe_hide_answers_button_summary">Piilottaa Vastaukset-painikkeen navigointipalkista</string>
+  <string name="morphe_hide_chat_button_title">Piilota Chat-painike</string>
+  <string name="morphe_hide_chat_button_summary">Piilottaa Chat-painikkeen navigointipalkista</string>
+  <string name="morphe_hide_create_button_title">Piilota Luo-painike</string>
+  <string name="morphe_hide_create_button_summary">Piilottaa Luo-painikkeen navigointipalkista</string>
+  <string name="morphe_hide_discover_button_title">Piilota Löydä tai Yhteisöt-painike</string>
+  <string name="morphe_hide_discover_button_summary">Piilottaa Löydä tai Yhteisöt-painikkeen navigointipalkista</string>
+  <string name="morphe_hide_games_button_title">Piilota Pelit-painike</string>
+  <string name="morphe_hide_games_button_summary">Piilottaa Pelit-painikkeen navigointipalkista</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Piilota Viimeksi vierailtu -hylly</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Piilottaa Viimeksi vierailtu -hyllyn sivupalkista</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Piilota Pelit Redditissä -hylly</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Piilottaa Pelit Redditissä -hyllyn sivupalkista</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Piilota Reddit Pro -hylly</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Piilottaa Reddit Pro -hyllyn sivupalkista</string>
+  <string name="morphe_hide_about_shelf_title">Piilota Tietoja-hylly</string>
+  <string name="morphe_hide_about_shelf_summary">Piilottaa Tietoja-hyllyn sivupalkista</string>
+  <string name="morphe_hide_resources_shelf_title">Piilota Resurssit-hylly</string>
+  <string name="morphe_hide_resources_shelf_summary">Piilottaa Resurssit-hyllyn sivupalkista</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Piilota suositellut yhteisöt</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Piilottaa suositellut yhteisöt -hyllyt alikommuniteeteista</string>
+  <string name="morphe_hide_trending_today_shelf_title">Piilota Tänään suosituimmat -hylly</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Piilottaa Tänään suosituimmat -hyllyn hakuehdotuksista
+
+Rajaus: Visuaalisia erottimia ei välttämättä piiloteta"</string>
+  <string name="morphe_remove_notification_dialog_title">Poista ilmoituspyyntödialogi</string>
+  <string name="morphe_remove_notification_dialog_summary">Poistaa ilmoitusten pyyntödialogin, joka ilmestyy alikommuniteettiin vieraillessa hylkäämällä se automaattisesti</string>
+  <string name="morphe_show_view_count_title">Näytä katselukumara</string>
+  <string name="morphe_show_view_count_summary">"Näyttää viestien katselukerrat
+
+Rajaus: Näytetään vain, jos API-vastaus sisältää katselukerrat"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Poista NSFW-varoitusdialogi</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Poistaa NSFW-varoitusdialogin, joka ilmestyy alikommuniteettiin vieraillessa hyväksymällä se automaattisesti</string>
+  <string name="morphe_screen_miscellaneous_title">Sekalaiset</string>
+  <string name="morphe_about_title">Tietoja</string>
+  <string name="morphe_about_summary">Versio ja viralliset linkit</string>
+  <string name="morphe_sanitize_sharing_links_title">Puhdista jakamislinkit</string>
+  <string name="morphe_sanitize_sharing_links_summary">Puhdistaa jakamisen linkit poistamalla seurantalinkit</string>
+  <string name="morphe_open_links_directly_title">Avaa linkit suoraan</string>
+  <string name="morphe_open_links_directly_summary">Ohittaa uudelleenohjaus-URL:t ulkoisissa linkeissä</string>
+</resources>

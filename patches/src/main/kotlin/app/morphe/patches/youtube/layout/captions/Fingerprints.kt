@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.captions
 
 import app.morphe.patcher.Fingerprint
@@ -20,14 +30,17 @@ internal object StartVideoInformerFingerprint : Fingerprint(
     strings = listOf("pc")
 )
 
-internal object StoryboardRendererDecoderRecommendedLevelFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+private object SubtitleManagerConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
-    parameters = listOf("L"),
-    strings = listOf("#-1#")
+    parameters = listOf(),
+    filters = listOf(
+        string("subtitles")
+    )
 )
 
 internal object SubtitleManagerFingerprint : Fingerprint(
+    classFingerprint = SubtitleManagerConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
@@ -39,15 +52,6 @@ internal object SubtitleManagerFingerprint : Fingerprint(
             returnType = "Z"
         ),
         opcode(opcode = Opcode.IF_EQZ, location = MatchAfterWithin(3))
-    )
-)
-
-internal object SubtitleManagerConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        string("subtitles")
     )
 )
 

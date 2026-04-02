@@ -30,8 +30,7 @@
     </string-array>
 
     <!-- layout.buttons.navigation.navigationBarPatch -->
-    <string-array name="morphe_search_button_index_entries">
-        <item>0</item>
+    <string-array name="morphe_show_search_button_index_entries">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -39,8 +38,7 @@
         <item>5</item>
         <item>6</item>
     </string-array>
-    <string-array name="morphe_search_button_index_entry_values">
-        <item>0</item>
+    <string-array name="morphe_show_search_button_index_entry_values">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -48,8 +46,7 @@
         <item>5</item>
         <item>6</item>
     </string-array>
-    <string-array name="morphe_settings_button_index_entries">
-        <item>0</item>
+    <string-array name="morphe_show_settings_button_index_entries">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -57,14 +54,23 @@
         <item>5</item>
         <item>6</item>
     </string-array>
-    <string-array name="morphe_settings_button_index_entry_values">
-        <item>0</item>
+    <string-array name="morphe_show_settings_button_index_entry_values">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
         <item>6</item>
+    </string-array>
+    <string-array name="morphe_show_toolbar_settings_button_index_entries">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="morphe_show_toolbar_settings_button_index_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 
     <!-- misc.fix.playback.spoofVideoStreamsPatch -->
@@ -78,7 +84,7 @@
     <string-array name="morphe_spoof_video_streams_client_type_entry_values">
         <item>ANDROID_REEL</item>
         <item>ANDROID_CREATOR</item>
-        <item>ANDROID_VR_1_47_48</item>
+        <item>ANDROID_VR_1_64</item>
         <item>TV</item>
         <item>VISIONOS</item>
     </string-array>
@@ -143,12 +149,6 @@
     </string-array>
     <string-array name="morphe_spoof_app_version_target_legacy_20_14_entry_values">
         <item>20.13.41</item>
-    </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_19_02_entries">
-        <item>19.01.34</item>
-    </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_19_02_entry_values">
-        <item>19.01.34</item>
     </string-array>
 
     <!-- layout.formfactor.changeFormFactorPatch -->
@@ -256,40 +256,6 @@
         <item>MODERN_2</item>
         <item>MODERN_3</item>
         <item>MODERN_4</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_43_entries">
-        <item>@string/morphe_miniplayer_type_entry_0</item>
-        <item>@string/morphe_miniplayer_type_entry_1</item>
-        <item>@string/morphe_miniplayer_type_entry_2</item>
-        <item>@string/morphe_miniplayer_type_entry_3</item>
-        <item>@string/morphe_miniplayer_type_entry_4</item>
-        <item>@string/morphe_miniplayer_type_entry_5</item>
-        <item>@string/morphe_miniplayer_type_entry_6</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_43_entry_values">
-        <item>DISABLED</item>
-        <item>DEFAULT</item>
-        <item>MINIMAL</item>
-        <item>TABLET</item>
-        <item>MODERN_1</item>
-        <item>MODERN_2</item>
-        <item>MODERN_3</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_16_entries">
-        <item>@string/morphe_miniplayer_type_entry_1</item>
-        <item>@string/morphe_miniplayer_type_entry_2</item>
-        <item>@string/morphe_miniplayer_type_entry_3</item>
-        <item>@string/morphe_miniplayer_type_entry_4</item>
-        <item>@string/morphe_miniplayer_type_entry_5</item>
-        <item>@string/morphe_miniplayer_type_entry_6</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_16_entry_values">
-        <item>DEFAULT</item>
-        <item>MINIMAL</item>
-        <item>TABLET</item>
-        <item>MODERN_1</item>
-        <item>MODERN_2</item>
-        <item>MODERN_3</item>
     </string-array>
 
     <!-- layout.branding.header.changeHeaderPatch -->

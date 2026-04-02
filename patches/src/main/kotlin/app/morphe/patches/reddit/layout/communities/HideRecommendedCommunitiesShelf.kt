@@ -25,9 +25,7 @@ val hideRecommendedCommunitiesShelf = bytecodePatch(
     dependsOn(settingsPatch)
 
     execute {
-        CommunityRecommendationSectionFingerprint.match(
-            CommunityRecommendationSectionParentFingerprint.originalClassDef
-        ).method.addInstructionsWithLabels(
+        CommunityRecommendationSectionFingerprint.method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideRecommendedCommunitiesShelf()Z

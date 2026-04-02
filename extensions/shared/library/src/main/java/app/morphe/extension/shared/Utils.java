@@ -58,7 +58,8 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
-import app.morphe.extension.shared.settings.preference.MorpheAboutPreference;
+import app.morphe.extension.shared.settings.StringSetting;
+import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference;
 import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("NewApi")
@@ -144,11 +145,13 @@ public class Utils {
         if (applicationLabel == null) {
             try {
                 ApplicationInfo applicationInfo = getPackageInfo().applicationInfo;
-                applicationLabel = (String) applicationInfo.loadLabel(context.getPackageManager());
+                if (applicationInfo != null) {
+                    return applicationLabel = (String) applicationInfo.loadLabel(context.getPackageManager());
+                }
             } catch (Exception ex) {
                 Logger.printException(() -> "Failed to get application name", ex);
-                applicationLabel = "Unknown";
             }
+            applicationLabel = "Unknown";
         }
 
         return applicationLabel;
@@ -386,6 +389,20 @@ public class Utils {
         Logger.printDebug(() -> "Could not find parent view of depth: " + nthParent
                 + " and instead found at: " + currentDepthLog + " view: " + view);
         return null;
+    }
+
+    public static List<String> getFilterStrings(StringSetting setting) {
+        String[] filterArray = setting.get().split("\\n");
+        List<String> filters = new ArrayList<>(filterArray.length);
+
+        for (String line : filterArray) {
+            String trimmed = line.trim();
+            if (!trimmed.isEmpty()) {
+                filters.add(trimmed);
+            }
+        }
+
+        return filters;
     }
 
     public static void restartApp(Context context) {
@@ -731,6 +748,20 @@ public class Utils {
         if (isCurrentlyOnMainThread()) {
             throw new IllegalStateException("Must call _off_ the main thread");
         }
+    }
+
+    private static volatile long lastClickTime;
+
+    /**
+     * @return true if the action occurred within 500ms of the last recorded action.
+     */
+    public static boolean isFastClick() {
+        long now = android.os.SystemClock.elapsedRealtime();
+        if (now - lastClickTime < 500) {
+            return true; // Ignore fast double click.
+        }
+        lastClickTime = now;
+        return false;
     }
 
     public static void openLink(String url) {

@@ -9,14 +9,6 @@ import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object LicenseActivityOnCreateFingerprint : Fingerprint(
-    definingClass = "/LicenseActivity;",
-    name = "onCreate",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("Landroid/os/Bundle;")
-)
-
 internal object SetThemeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",

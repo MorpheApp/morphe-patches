@@ -18,21 +18,103 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Logo hlavičky</string>
+  <string name="morphe_header_logo_entry_1">Predvolené</string>
+  <string name="morphe_header_logo_entry_3">Vlastné</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">O aplikácii</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Reklamy</string>
+  <string name="morphe_settings_music_screen_2_general_title">Všeobecné</string>
+  <string name="morphe_settings_music_screen_3_player_title">Prehrávač</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Ostatné</string>
   <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Skryť videoreklamy</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Videoreklamy sú skryté</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Videoreklamy sa zobrazujú</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Zapnúť permanentné opakovanie prehrávania</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Permanentné opakovanie prehrávania je zapnuté</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Permanentné opakovanie prehrávania je vypnuté</string>
   <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Skryť tlačidlo Prenos</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Tlačidlo Prenos je skryté</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Tlačidlo Prenos sa zobrazuje</string>
+  <string name="morphe_music_hide_history_button_title">Skryť tlačidlo histórie</string>
+  <string name="morphe_music_hide_history_button_summary_on">Tlačidlo histórie je skryté</string>
+  <string name="morphe_music_hide_history_button_summary_off">Tlačidlo histórie sa zobrazuje</string>
+  <string name="morphe_music_hide_notification_button_title">Skryť tlačidlo upozornení</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Tlačidlo upozornení je skryté</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Tlačidlo upozornení sa zobrazuje</string>
+  <string name="morphe_music_hide_search_button_title">Skryť tlačidlo vyhľadávania</string>
+  <string name="morphe_music_hide_search_button_summary_on">Tlačidlo vyhľadávania je skryté</string>
+  <string name="morphe_music_hide_search_button_summary_off">Tlačidlo vyhľadávania sa zobrazuje</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Zmeniť úvodnú stránku</string>
+  <string name="morphe_change_start_page_entry_default">Predvolené</string>
+  <string name="morphe_change_start_page_entry_charts">Rebríčky</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Epizódy na neskôr</string>
+  <string name="morphe_change_start_page_entry_explore">Preskúmať</string>
+  <string name="morphe_change_start_page_entry_history">História</string>
+  <string name="morphe_change_start_page_entry_library">Knižnica</string>
+  <string name="morphe_change_start_page_entry_liked_music">Obľubená hudba</string>
+  <string name="morphe_change_start_page_entry_playlists">Zoznamy</string>
+  <string name="morphe_change_start_page_entry_search">Hľadať</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Odbery</string>
   <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Skryť panel kategórií</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Panel kategórií je skrytý</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Panel kategórií sa zobrazuje</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Zmeniť farbu miniprehrávača</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Farba miniprehrávača zodpovedá farbe prehrávača na celú obrazovku</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Miniprehrávač používa predvolenú farbu</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Zobraziť tlačidlo \'Ďalšia skladba\' v miniprehrávači</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Tlačidlo \'Ďalšia skladba\' sa zobrazuje v miniprehrávači</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Tlačidlo \'Ďalšia skladba\' sa nezobrazuje v miniprehrávači</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Zobraziť tlačidlo \'Predošlá skladba\' v miniprehrávači</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Tlačidlo \'Predošlá skladba\' sa zobrazuje v miniprehrávači</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Tlačidlo \'Predošlá skladba\' sa nezobrazuje v miniprehrávači</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Povoliť vynútenie miniprehrávača</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniprehrávač zostane aktívny aj počas zmeny prehrávania</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Prehrávač prejde do režimu na celú obrazovku pri zmene prehrávania</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Navigačný panel</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Skryť alebo zmeniť tlačidlá navigačného panela</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Skryť tlačidlo Domov</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Tlačidlo Domov je skryté</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Tlačidlo Domov sa zobrazuje</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Skryť tlačidlo Samples</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Tlačidlo Samples je skryté</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Tlačidlo Samples sa zobrazuje</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Skryť tlačidlo Preskúmať</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Tlačidlo Preskúmať je skryté</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Tlačidlo Preskúmať sa zobrazuje</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Skryť tlačidlo Knižnica</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Tlačidlo Knižnica je skryté</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Tlačidlo Knižnica sa zobrazuje</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Skryť tlačidlo Povýšiť</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Tlačidlo Povýšiť je skryté</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Tlačidlo Povýšiť sa zobrazuje</string>
+  <string name="morphe_music_hide_navigation_bar_title">Skryť navigačný panel</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Navigačný panel je skrytý</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Navigačný panel sa zobrazuje</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Skryť označenia tlačidiel navigačného panela</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Označenia sú skryté</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Označenia sa zobrazujú</string>
   <!-- layout.premium.hideGetPremiumPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Skryť tlačidlo \'Získať Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Tlačidlo je skryté</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Tlačidlo sa zobrazuje</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Skryť tlačidlo Povýšiť</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Tlačidlo Povýšiť je skryté</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Tlačidlo Povýšiť sa zobrazuje</string>
 </resources>

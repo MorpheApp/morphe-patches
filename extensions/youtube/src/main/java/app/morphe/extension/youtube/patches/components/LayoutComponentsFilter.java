@@ -10,7 +10,7 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_21_OR_GREATER;
+import static app.morphe.extension.shared.Utils.getFilterStrings;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.graphics.drawable.Drawable;
@@ -25,13 +25,11 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
@@ -50,26 +48,8 @@ public final class LayoutComponentsFilter extends Filter {
             "&list="
     );
 
-    private static final List<String> channelTabFilterStrings;
-    private static final List<String> flyoutMenuFilterStrings;
-    static {
-        channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
-        flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
-    }
-
-    private static List<String> getFilterStrings(StringSetting setting) {
-        String[] filterArray = setting.get().split("\\n");
-        List<String> filters = new ArrayList<>(filterArray.length);
-
-        for (String line : filterArray) {
-            String trimmed = line.trim();
-            if (!trimmed.isEmpty()) {
-                filters.add(trimmed);
-            }
-        }
-
-        return filters;
-    }
+    private static final List<String> channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
+    private static final List<String> flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
     private final StringFilterGroup communityPosts;
@@ -83,7 +63,6 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
-    private final StringFilterGroupList communityPostStringFilterGroup;
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
@@ -137,16 +116,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "text_post_responsive_root.e",
                 "poll_post_responsive_root.e",
                 "shared_post_root.e"
-        );
-        communityPostStringFilterGroup = new StringFilterGroupList();
-        communityPostStringFilterGroup.addAll(
-                new StringFilterGroup(
-                        null,
-                        // home
-                        "horizontalCollectionSwipeProtector=null",
-                        // subscriptions
-                        "heightConstraint=null"
-                )
         );
 
         final var subscribersCommunityGuidelines = new StringFilterGroup(
@@ -414,7 +383,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == communityPosts) {
-            return communityPostStringFilterGroup.check(contextInterface.toString()).isFiltered();
+            return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
         }
 
         if (exceptions.matches(path)) return false; // Exceptions are not filtered.
@@ -488,7 +457,6 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideFloatingMicrophoneButton(final boolean original) {
-        // FIXME? Is this feature still relevant? When/where does this microphone appear?
         return original || Settings.HIDE_FLOATING_MICROPHONE_BUTTON.get();
     }
 
@@ -523,26 +491,33 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideInRelatedVideos(View chipView) {
-        // Cannot use 0dp hide with later targets, otherwise the suggested videos
-        // can be shown in full screen mode.
-        // This behavior may also be present in earlier app targets.
-        if (IS_20_21_OR_GREATER) {
-            // FIXME: The filter bar is still briefly shown when dragging the suggested videos
-            //        below the video player.
-            Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
-        } else {
-            Utils.hideViewBy0dpUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
-        }
+    public static int hideInRelatedVideos(int height) {
+        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED
+                ? 0
+                : height;
     }
 
-    private static final boolean HIDE_DOODLES_ENABLED = Settings.HIDE_DOODLES.get();
+    /**
+     * Injection point.
+     */
+    public static boolean hideInRelatedVideos(boolean original) {
+        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED || original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideInRelatedVideos(View chipView) {
+        Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
+    }
+
+    private static final boolean HIDE_YOUTUBE_DOODLES_ENABLED = Settings.HIDE_YOUTUBE_DOODLES.get();
 
     /**
      * Injection point.
      */
     public static void setDoodleDrawable(ImageView imageView, Drawable original) {
-        Drawable replacement = HIDE_DOODLES_ENABLED
+        Drawable replacement = HIDE_YOUTUBE_DOODLES_ENABLED
                 ? ChangeHeaderPatch.getDrawable(original)
                 : original;
         imageView.setImageDrawable(replacement);

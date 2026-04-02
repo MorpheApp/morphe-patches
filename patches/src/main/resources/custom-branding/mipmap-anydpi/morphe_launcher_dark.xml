@@ -3,5 +3,5 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <background android:drawable="@drawable/morphe_adaptive_background_dark" />
     <foreground android:drawable="@drawable/morphe_adaptive_foreground_dark" />
-    <monochrome android:drawable="@drawable/morphe_adaptive_monochrome" />
+    <monochrome android:drawable="@drawable/morphe_adaptive_monochrome_dark" />
 </adaptive-icon>

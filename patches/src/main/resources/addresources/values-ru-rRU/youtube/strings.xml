@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Лента</string>
   <string name="morphe_settings_screen_04_general_title">Общие</string>
   <string name="morphe_settings_screen_05_player_title">Плеер</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Полоса прогресса</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Управление жестами</string>
   <string name="morphe_settings_screen_11_misc_title">Прочие</string>
@@ -145,9 +146,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">Раздел Вам может понравиться скрыто</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Раздел Вам может понравиться показан</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Скрыть YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Анимация YouTube Doodles на логотипе скрыта</string>
-  <string name="morphe_hide_doodles_summary_off">Анимация YouTube Doodles на логотипе показана</string>
+  <string name="morphe_hide_youtube_doodles_title">Скрыть YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Анимация YouTube Doodles на логотипе скрыта</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Анимация YouTube Doodles на логотипе показана</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodle показывают несколько дней в году в разных частях света.
+
+Показ YouTube Doodle может препятствовать отображению собственных заголовков."</string>
   <string name="morphe_hide_channel_bar_title">Скрыть панель канала</string>
   <string name="morphe_hide_channel_bar_summary_on">Панель канала под плеером скрыта</string>
   <string name="morphe_hide_channel_bar_summary_off">Панель канала под плеером показана</string>
@@ -303,6 +307,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Кнопка \"Подписаться\" в Shorts показана</string>
   <string name="morphe_comments_screen_title">Комментарии</string>
   <string name="morphe_comments_screen_summary">Скрыть или показать компоненты раздела комментариев</string>
+  <string name="morphe_hide_comments_carousel_title">Включить фильтр карусели комментариев</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Фильтр карусели комментариев включен</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Фильтр карусели комментариев выключен</string>
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Примечание:
+
+• Убедитесь, что вы вводите точное название элемента карусели (например, Спросить, Продвигать это видео, Слушать на YouTube Music и т.д.).
+• Скрытие элементов карусели может иметь непредвиденные побочные эффекты.
+• Если все элементы карусели скрыты, весь раздел комментариев также будет скрыт."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Фильтр карусели комментариев</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Введите названия карусели комментариев для фильтрации, по одному на строчку</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Скрыть секцию ИИ сводки чата</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Секция ИИ сводки чата скрыта</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Секция ИИ сводки чата показана</string>
@@ -330,6 +344,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Скрыть кнопки эмодзи и метки времени</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Кнопки эмодзи и метки времени скрыты</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Кнопки эмодзи и метки времени показаны</string>
+  <string name="morphe_hide_comments_info_button_title">Скрыть кнопку \"Инфо\"</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Кнопка \"Инфо\" скрыта</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Кнопка \"Инфо\" показана</string>
   <string name="morphe_hide_comments_preview_comment_title">Скрыть предпросмотр комментария</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Предпросмотр комментария под плеером скрыт</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Предпросмотр комментария под плеером показан</string>
@@ -439,9 +456,9 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_title">Показать кнопку копирования URL видео</string>
   <string name="morphe_copy_video_url_summary_on">Кнопка для копирования URL-адреса видео показана. Нажмите, чтобы скопировать URL-адрес видео. Нажмите и удерживайте, чтобы скопировать URL-адрес видео с меткой времени</string>
   <string name="morphe_copy_video_url_summary_off">Кнопка для копирования URL-адреса видео не показана</string>
-  <string name="morphe_copy_video_url_timestamp_title">Показать кнопку копирования URL видео с меткой времени</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Кнопка для копирования URL-адреса видео с меткой времени показана. Нажмите, чтобы скопировать URL-адрес видео с меткой времени. Нажмите и удерживайте, чтобы скопировать URL-адрес видео без метки времени</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Кнопка для копирования URL-адреса видео с меткой времени не показана</string>
+  <string name="morphe_copy_video_url_timestamp_title">Копировать отметку времени</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Кнопка копирования Url видео копируется с меткой времени. Долгое нажатие копирует без отметки времени</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Кнопка копирования Url видео копируется без метки времени. Длительное нажатие копирует с меткой времени</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Скрыть диалог о нежелательном контенте</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Диалоговое окно о нежелательном контенте скрыто</string>
@@ -475,6 +492,21 @@ Second \"item\" text"</string>
 
 Убедитесь, что имя пакета указано правильно и приложение установлено"</string>
   <string name="morphe_external_downloader_empty_warning">Имя пакета не может быть пустым</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Включить повтор воспроизведения</string>
+  <string name="morphe_loop_video_summary_on">Видео будет повторяться</string>
+  <string name="morphe_loop_video_summary_off">Видео не будет повторяться</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Показать кнопку повтора воспроизведения</string>
+  <string name="morphe_loop_video_button_summary_on">Пункт \"Повтор воспроизведения\" в выдвижном меню плеера показан</string>
+  <string name="morphe_loop_video_button_summary_off">Пункт \"Повтор воспроизведения\" в выдвижном меню плеера не показан</string>
+  <string name="morphe_loop_video_button_toast_on">Повтор видео включен</string>
+  <string name="morphe_loop_video_button_toast_off">Повтор видео выключен</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Показать кнопку перезагрузки видео</string>
+  <string name="morphe_reload_video_summary_on">Кнопка перезагрузки видео показана</string>
+  <string name="morphe_reload_video_summary_off">Кнопка перезагрузки видео скрыта</string>
+  <string name="morphe_dismiss_player_not_available_toast">Идентификатор видео недоступен. Пожалуйста, откройте видео снова вручную.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Отключить жест покадровой перемотки</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Жест покадровой перемотки отключен</string>
@@ -662,13 +694,14 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_show_search_button_title">Показать поиск</string>
   <string name="morphe_show_search_button_summary_on">Кнопка поиска показана</string>
   <string name="morphe_show_search_button_summary_off">Кнопка поиска скрыта</string>
-  <string name="morphe_search_button_index_title">Индекс кнопки поиска</string>
-  <string name="morphe_search_button_index_invalid">Индекс кнопки поиска должен быть меньше %s</string>
+  <string name="morphe_show_search_button_index_title">Индекс кнопки \"Поиска\"</string>
   <string name="morphe_show_settings_button_title">Показать \"Настройки\"</string>
   <string name="morphe_show_settings_button_summary_on">Кнопка \"Настройки\" показана</string>
   <string name="morphe_show_settings_button_summary_off">Кнопка \"Настройки\" скрыта</string>
-  <string name="morphe_settings_button_index_title">Индекс кнопки настроек</string>
-  <string name="morphe_settings_button_index_invalid">Индекс кнопки настроек должен быть меньше %s</string>
+  <string name="morphe_show_settings_button_index_title">Индекс кнопки \"Настройки\"</string>
+  <string name="morphe_show_settings_button_type_title">Действие кнопки \"Настройки\"</string>
+  <string name="morphe_show_settings_button_type_summary_on">Нажмите, чтобы открыть настройки Morphe</string>
+  <string name="morphe_show_settings_button_type_summary_off">Нажмите, чтобы открыть настройки YouTube</string>
   <string name="morphe_swap_create_with_notifications_button_title">Переключить кнопки \"Создать\" и \"Уведомления\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Кнопка \"Создать\" заменена кнопкой \"Уведомления\"</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Кнопка \"Создать\" не поменяна местами с кнопкой \"Уведомления\"</string>
@@ -679,16 +712,18 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_navigation_bar_title">Скрыть панель навигации</string>
   <string name="morphe_hide_navigation_bar_summary_on">Панель навигации скрыта</string>
   <string name="morphe_hide_navigation_bar_summary_off">Панель навигации показана</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Этот параметр скрывает панель навигации полностью, включая вкладку «You».
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Это полностью скрывает панель навигации, включая вкладку \"Вы\".
 
-Чтобы получить доступ к настройкам:
-Откройте любое видео → Откройте меню Качество → Нажмите «Настройки > Настройки качества видео» внизу экрана."</string>
+Чтобы получить доступ к настройкам, включите \"Настройки\" в разделе \"Общие\" → \"Панель инструментов\" → Показать Настройки."</string>
   <string name="morphe_narrow_navigation_buttons_title">Включить узкие кнопки навигации</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Расстояние между кнопками навигации небольшое</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Расстояние между кнопками навигации нормальное</string>
   <string name="morphe_navigation_bar_animations_title">Включить анимацию панели навигации</string>
   <string name="morphe_navigation_bar_animations_summary_on">Переходы навигации анимированы</string>
   <string name="morphe_navigation_bar_animations_summary_off">Переходы навигации не анимированы</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Выключить авто скрытие панели навигации</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Панель навигации не будет скрываться во время прокрутки</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Панель навигации может скрываться во время прокрутки</string>
   <string name="morphe_disable_translucent_status_bar_title">Отключить полупрозрачность строки состояния</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Строка состояния непрозрачная</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Строка состояния непрозрачная или полупрозрачная</string>
@@ -715,18 +750,15 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_toolbar_search_button_title">Скрыть \"Поиск\"</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Кнопка \"Поиск\" скрыта</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Кнопка \"Поиск\" показана</string>
-  <string name="morphe_replace_toolbar_create_button_title">Заменить \"Создать\" на \"Настройки\"</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Кнопка \"Создать\" заменена кнопкой \"Настройки\"</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Кнопка «Создать» не заменяется кнопкой «Настройки»</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Поведение нажатия кнопки \"Настройки\" на вкладке \"Вы\" также переопределено.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Действие кнопки \"Настройки\"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Нажмите, чтобы открыть настройки Morphe
+  <string name="morphe_show_toolbar_settings_button_title">Показать \"Настройки\"</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Кнопка \"Настройки\" показана</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Кнопка \"Настройки\" скрыта</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Индекс кнопки \"Настройки\"</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Действие кнопки \"Настройки\"</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Нажмите, чтобы открыть настройки Morphe
 Нажмите и удерживайте, чтобы открыть настройки YouTube"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Нажмите, чтобы открыть настройки YouTube
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Нажмите, чтобы открыть настройки YouTube
 Нажмите и удерживайте, чтобы открыть настройки Morphe"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">Переместите замененные кнопки</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Кнопки перемещены</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Кнопки не перемещены</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Выдвижное меню плеера</string>
   <string name="morphe_hide_player_flyout_summary">Скрыть или показать пункты выдвижного меню плеера</string>
@@ -983,10 +1015,10 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Панель навигации в Shorts скрыта</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Панель навигации в Shorts показана</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Скрыть предлагаемые видео в конце просмотра</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Рекомендуемое видео в конце просмотра скрыто</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Предлагаемые видео в конце просмотра показаны</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Этот параметр работает только при отключении настройки \"Авто воспроизведение следующего видео\".
+  <string name="morphe_hide_end_screen_suggested_video_title">Скрыть предлагаемые видео в конце просмотра</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Рекомендуемое видео в конце просмотра скрыто</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Предлагаемые видео в конце просмотра показаны</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Этот параметр работает только при отключении настройки \"Авто воспроизведение следующего видео\".
 
 Вы можете изменить это на YouTube:
 Настройки → Воспроизведение (или Авто воспроизведение) → Авто воспроизведение следующего видео"</string>
@@ -1346,6 +1378,7 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_change_start_page_entry_playlists">Плейлисты</string>
   <string name="morphe_change_start_page_entry_search">Поиск</string>
   <string name="morphe_change_start_page_entry_shopping">Покупки</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Спорт</string>
   <string name="morphe_change_start_page_entry_subscriptions">Подписки</string>
   <string name="morphe_change_start_page_entry_trending">Популярные</string>
@@ -1357,10 +1390,10 @@ Cookies будут сохраняться автоматически, если �
 
 Ограничение: использование кнопки \"Назад\" на панели инструментов может не работать"</string>
   <string name="morphe_change_start_page_always_summary_off">Начальная страница изменяется только при запуске приложения</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Отключить возобновление плеера Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Возобновление плеера Shorts при запуске приложения отключено</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Возобновление плеера Shorts при запуске приложения включено</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Отключить восстановление Short при запуске</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Short не будет восстанавливаться после запуска программы</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Short будут восстанавливаться после запуска программы</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Плеер для открытия Shorts</string>
   <string name="morphe_shorts_player_type_shorts">Плеер Shorts</string>
@@ -1388,12 +1421,6 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_miniplayer_disable_rounded_corners_title">Отключить закругление углов</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Углы миниплеера квадратны</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Углы миниплеера закруглены</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Включить двойное нажатие и изменение размера щипком</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Двойное нажатие и изменение размера щипком включены
-
-• Двойное нажатие для увеличения размера миниплеера
-• Двойное нажатие еще раз для восстановления исходного размера"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Двойное нажатие и изменение размера щипком отключены</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Отключить перетаскивание</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Перетаскивание отключено</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Перетаскивание включено
@@ -1407,11 +1434,6 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Скрыть кнопки миниплеера</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Кнопки миниплеера скрыты</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Кнопки миниплеера показаны</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Скрыть кнопки разворачивания и закрытия</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Кнопки разворачивания и закрытия скрыты
-
-Проведите по миниплееру для его разворачивания или закрытия"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Кнопки разворачивания и закрытия показаны</string>
   <string name="morphe_miniplayer_hide_subtext_title">Скрыть подтексты</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Подтексты в миниплеере скрыты</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Подтексты в миниплеере показаны</string>
@@ -1489,16 +1511,10 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow временно недоступен (код статуса: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow временно недоступен</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Включить повтор воспроизведения</string>
-  <string name="morphe_loop_video_summary_on">Видео будет повторяться</string>
-  <string name="morphe_loop_video_summary_off">Видео не будет повторяться</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Показать кнопку повтора воспроизведения</string>
-  <string name="morphe_loop_video_button_summary_on">Пункт \"Повтор воспроизведения\" в выдвижном меню плеера показан</string>
-  <string name="morphe_loop_video_button_summary_off">Пункт \"Повтор воспроизведения\" в выдвижном меню плеера не показан</string>
-  <string name="morphe_loop_video_button_toast_on">Повтор видео включен</string>
-  <string name="morphe_loop_video_button_toast_off">Повтор видео выключен</string>
+  <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">Восстановить старый стиль кнопок плеера</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">Показан тонкий стиль иконок плеера</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">Показан толстый стиль иконок плеера</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Подменить размеры устройства</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Размеры устройства подменены

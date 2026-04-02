@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">Iklan</string>
+  <string name="morphe_hide_post_ads_title">Sembunyikan iklan feed</string>
+  <string name="morphe_hide_post_ads_summary">Menyembunyikan iklan di feed</string>
+  <string name="morphe_hide_comment_ads_title">Sembunyikan iklan komentar</string>
+  <string name="morphe_hide_comment_ads_summary">Menyembunyikan iklan di bagian komentar</string>
+  <string name="morphe_screen_layout_title">Tata Letak</string>
+  <string name="morphe_disable_modern_home_title">Nonaktifkan beranda modern</string>
+  <string name="morphe_disable_modern_home_summary">Menonaktifkan UI beranda modern</string>
+  <string name="morphe_disable_screenshot_popup_title">Nonaktifkan kotak dialog tangkapan layar</string>
+  <string name="morphe_disable_screenshot_popup_summary">Menonaktifkan kotak dialog yang muncul saat mengambil tangkapan layar</string>
+  <string name="morphe_hide_answers_button_title">Sembunyikan tombol Jawaban</string>
+  <string name="morphe_hide_answers_button_summary">Menyembunyikan tombol Jawaban di bilah navigasi</string>
+  <string name="morphe_hide_chat_button_title">Sembunyikan tombol Obrolan</string>
+  <string name="morphe_hide_chat_button_summary">Menyembunyikan tombol Obrolan di bilah navigasi</string>
+  <string name="morphe_hide_create_button_title">Sembunyikan tombol Buat</string>
+  <string name="morphe_hide_create_button_summary">Menyembunyikan tombol Buat di bilah navigasi</string>
+  <string name="morphe_hide_discover_button_title">Sembunyikan tombol Temukan atau Komunitas</string>
+  <string name="morphe_hide_discover_button_summary">Menyembunyikan tombol Temukan atau Komunitas di bilah navigasi</string>
+  <string name="morphe_hide_games_button_title">Sembunyikan tombol Game</string>
+  <string name="morphe_hide_games_button_summary">Menyembunyikan tombol Game di bilah navigasi</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Sembunyikan rak Baru-baru Ini Dikunjungi</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Menyembunyikan rak Baru-baru Ini Dikunjungi di bilah sisi</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Sembunyikan rak Game di Reddit</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Menyembunyikan rak Game di Reddit di bilah sisi</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Sembunyikan rak Reddit Pro</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Menyembunyikan rak Reddit Pro di bilah sisi</string>
+  <string name="morphe_hide_about_shelf_title">Sembunyikan rak Tentang</string>
+  <string name="morphe_hide_about_shelf_summary">Menyembunyikan rak Tentang di bilah sisi</string>
+  <string name="morphe_hide_resources_shelf_title">Sembunyikan rak Sumber Daya</string>
+  <string name="morphe_hide_resources_shelf_summary">Menyembunyikan rak Sumber Daya di bilah sisi</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Sembunyikan komunitas yang direkomendasikan</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Menyembunyikan rak-rak komunitas yang direkomendasikan di subreddit</string>
+  <string name="morphe_hide_trending_today_shelf_title">Sembunyikan rak Tren Hari Ini</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Menyembunyikan rak Tren Hari Ini dari saran pencarian
+
+Batasan: Spasi visual mungkin tidak disembunyikan"</string>
+  <string name="morphe_remove_notification_dialog_title">Hapus dialog saran notifikasi</string>
+  <string name="morphe_remove_notification_dialog_summary">Menghapus dialog saran notifikasi yang muncul saat mengunjungi subreddit dengan menutupnya secara otomatis</string>
+  <string name="morphe_show_view_count_title">Tampilkan hitungan tampilan</string>
+  <string name="morphe_show_view_count_summary">"Menampilkan hitungan tampilan Postingan
+
+Batasan: Hanya ditampilkan jika respons API menyertakan hitungan tampilan"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Hapus dialog peringatan NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Menghapus dialog peringatan NSFW yang muncul saat mengunjungi subreddit dengan menerimanya secara otomatis</string>
+  <string name="morphe_screen_miscellaneous_title">Lain-lain</string>
+  <string name="morphe_about_title">Tentang</string>
+  <string name="morphe_about_summary">Versi tambalan dan tautan resmi</string>
+  <string name="morphe_sanitize_sharing_links_title">Bersihkan tautan berbagi</string>
+  <string name="morphe_sanitize_sharing_links_summary">Membersihkan tautan berbagi dengan menghapus parameter pelacakan</string>
+  <string name="morphe_open_links_directly_title">Buka tautan secara langsung</string>
+  <string name="morphe_open_links_directly_summary">Melewati URL pengalihan pada tautan eksternal</string>
+</resources>

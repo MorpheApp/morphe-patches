@@ -71,13 +71,8 @@ internal fun enableDebuggingPatch(
                 SwitchPreference("morphe_debug_stacktrace"),
                 SwitchPreference("morphe_debug_toast_on_error"),
                 NonInteractivePreference(
-                    "morphe_debug_export_logs_to_clipboard",
+                    "morphe_debug_export_logs",
                     tag = "app.morphe.extension.shared.settings.preference.ExportLogToClipboardPreference",
-                    selectable = true
-                ),
-                NonInteractivePreference(
-                    "morphe_debug_logs_clear_buffer",
-                    tag = "app.morphe.extension.shared.settings.preference.ClearLogBufferPreference",
                     selectable = true
                 ),
                 NonInteractivePreference(
@@ -97,9 +92,7 @@ internal fun enableDebuggingPatch(
         )
 
         // Hook the methods that look up if a feature flag is active.
-        ExperimentalBooleanFeatureFlagFingerprint.match(
-            ExperimentFlagUtilFingerprint.originalClassDef
-        ).let {
+        ExperimentalBooleanFeatureFlagFingerprint.let {
             it.method.apply {
                 // Not enough registers in the method. Clone the method and use the
                 // original method as an intermediate to call extension code.
@@ -128,9 +121,7 @@ internal fun enableDebuggingPatch(
             }
         }
 
-        if (hookDoubleFeatureFlag()) ExperimentalDoubleFeatureFlagFingerprint.match(
-            ExperimentFlagUtilFingerprint.originalClassDef
-        ).let {
+        if (hookDoubleFeatureFlag()) ExperimentalDoubleFeatureFlagFingerprint.let {
             // 21.06+ doesn't have enough registers and needs to also clone.
             it.method.cloneMutableAndPreserveParameters().apply {
                 val helperMethod = cloneMutable(name = "patch_getDoubleFeatureFlag")
@@ -158,9 +149,7 @@ internal fun enableDebuggingPatch(
             }
         }
 
-        if (hookLongFeatureFlag()) ExperimentalLongFeatureFlagFingerprint.match(
-            ExperimentFlagUtilFingerprint.originalClassDef
-        ).let {
+        if (hookLongFeatureFlag()) ExperimentalLongFeatureFlagFingerprint.let {
             it.method.cloneMutableAndPreserveParameters().apply {
                 // Copy the method.
                 val helperMethod = cloneMutable(name = "patch_getLongFeatureFlag")
@@ -189,9 +178,7 @@ internal fun enableDebuggingPatch(
             }
         }
 
-        if (hookStringFeatureFlag()) ExperimentalStringFeatureFlagFingerprint.match(
-            ExperimentFlagUtilFingerprint.originalClassDef
-        ).let {
+        if (hookStringFeatureFlag()) ExperimentalStringFeatureFlagFingerprint.let {
             it.method.apply {
                 val helperMethod = cloneMutable(name = "patch_getStringFeatureFlag")
 

@@ -1,19 +1,34 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.misc.settings
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.all.misc.resources.localesYouTube
+import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
+import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
 import app.morphe.patches.shared.layout.branding.addLicensePatch
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
+import app.morphe.patches.shared.misc.initialization.initializationPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.MORPHE_SETTINGS_INTENT
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
@@ -32,7 +47,6 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.fix.contentprovider.fixContentProviderPatch
 import app.morphe.patches.youtube.misc.fix.likebutton.fixLikeButtonPatch
 import app.morphe.patches.youtube.misc.fix.playbackspeed.fixPlaybackSpeedWhilePlayingPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -64,7 +78,7 @@ private val settingsResourcePatch = resourcePatch {
                 IntentPreference(
                     titleKey = "morphe_settings_title",
                     summaryKey = null,
-                    intent = newIntent("morphe_settings_intent")
+                    intent = newIntent(MORPHE_SETTINGS_INTENT)
                 ) to "settings_fragment",
 
                 PreferenceCategory(
@@ -76,7 +90,7 @@ private val settingsResourcePatch = resourcePatch {
                             summaryKey = null,
                             icon = "@drawable/morphe_settings_icon_dynamic",
                             layout = "@layout/preference_with_icon",
-                            intent = newIntent("morphe_settings_intent")
+                            intent = newIntent(MORPHE_SETTINGS_INTENT)
                         )
                     )
                 ) to "settings_fragment_cairo"
@@ -146,31 +160,39 @@ private val settingsResourcePatch = resourcePatch {
             }
         }
 
-        // Modify the manifest to enhance LicenseActivity behavior:
-        // 1. Add a data intent filter with MIME type "text/plain".
-        //    Some devices crash if undeclared data is passed to an intent,
-        //    and this change appears to fix the issue.
-        // 2. Add android:configChanges="orientation|screenSize|keyboardHidden".
-        //    This prevents the activity from being recreated on configuration changes
-        //    (e.g., screen rotation), preserving its current state and fragment.
+        // Modify the manifest to enhance LicenseActivity behavior
         document("AndroidManifest.xml").use { document ->
-            val licenseElement = document.childNodes.findElementByAttributeValueOrThrow(
+            val apiActivity = document.childNodes.findElementByAttributeValueOrThrow(
                 "android:name",
-                "com.google.android.libraries.social.licenses.LicenseActivity",
+                "com.google.android.gms.common.api.GoogleApiActivity",
             )
 
-            licenseElement.setAttribute(
+            // Prevents the activity from being recreated on configuration changes
+            // (e.g., screen rotation), preserving its current state and fragment.
+            apiActivity.setAttribute(
                 "android:configChanges",
                 "orientation|screenSize|keyboardHidden"
+            )
+
+            // Use same theme as other activities. The exiting theme causes the Morphe
+            // settings to fade in and not use a transition animation. A custom theme
+            // could be used to not show any transition to match the original YT settings
+            // submenu behavior.
+            apiActivity.setAttribute(
+                "android:theme",
+                "@style/Theme.AppCompat.DayNight.NoActionBar"
             )
 
             val mimeType = document.createElement("data")
             mimeType.setAttribute("android:mimeType", "text/plain")
 
+            // Add a data intent filter with MIME type "text/plain".
+            // Some devices crash if undeclared data is passed to an intent,
+            // and this change appears to fix the issue.
             val intentFilter = document.createElement("intent-filter")
             intentFilter.appendChild(mimeType)
 
-            licenseElement.appendChild(intentFilter)
+            apiActivity.appendChild(intentFilter)
         }
     }
 }
@@ -192,11 +214,15 @@ val settingsPatch = bytecodePatch(
         addLicensePatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = YouTubeActivityOnCreateFingerprint,
-            recommendedAppVersion = COMPATIBILITY_YOUTUBE.second.first()
+            recommendedAppVersion = COMPATIBILITY_YOUTUBE.targets!!.first { !it.isExperimental }.version!!
+        ),
+        initializationPatch(
+            mainActivityFingerprint = YouTubeActivityOnCreateFingerprint
         )
     )
 
     execute {
+        setAddResourceLocale(localesYouTube)
         addAppResources("shared-youtube")
         addAppResources("youtube")
 
@@ -207,15 +233,13 @@ val settingsPatch = bytecodePatch(
             iconBold = "@drawable/morphe_settings_screen_00_about_bold",
             layout = "@layout/preference_with_icon",
             summaryKey = null,
-            tag = "app.morphe.extension.shared.settings.preference.MorpheAboutPreference",
+            tag = "app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference",
             selectable = true,
         )
 
-        if (is_19_34_or_greater) {
-            PreferenceScreen.GENERAL.addPreferences(
-                SwitchPreference("morphe_restore_old_settings_menus")
-            )
-        }
+        PreferenceScreen.GENERAL.addPreferences(
+            SwitchPreference("morphe_restore_old_settings_menus")
+        )
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_settings_search_history"),
@@ -270,8 +294,7 @@ val settingsPatch = bytecodePatch(
         }
 
         modifyActivityForSettingsInjection(
-            LicenseActivityOnCreateFingerprint.classDef,
-            LicenseActivityOnCreateFingerprint.method,
+            GoogleApiActivityOnCreateFingerprint,
             YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR,
             false
         )
@@ -285,12 +308,15 @@ val settingsPatch = bytecodePatch(
 /**
  * Modifies the activity to show Morphe settings instead of its original purpose.
  */
+context(BytecodePatchContext)
 internal fun modifyActivityForSettingsInjection(
-    activityOnCreateClass: MutableClass,
-    activityOnCreateMethod: MutableMethod,
+    activityOnCreateFingerprint: Fingerprint,
     extensionClassType: String,
     isYouTubeMusic: Boolean
 ) {
+    val activityOnCreateClass = activityOnCreateFingerprint.classDef
+    val activityOnCreateMethod = activityOnCreateFingerprint.method
+
     // Modify Activity and remove all existing layout code.
     // Must modify an existing activity and cannot add a new activity to the manifest,
     // as that fails for root installations.
@@ -362,7 +388,7 @@ internal fun modifyActivityForSettingsInjection(
  */
 fun newIntent(settingsName: String) = IntentPreference.Intent(
     data = settingsName,
-    targetClass = "com.google.android.libraries.social.licenses.LicenseActivity",
+    targetClass = "com.google.android.gms.common.api.GoogleApiActivity",
 ) {
     // The package name change has to be reflected in the intent.
     setOrGetFallbackPackageName("com.google.android.youtube")

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+  <string name="morphe_screen_ads_title">โฆษณา</string>
+  <string name="morphe_hide_post_ads_title">ซ่อนโฆษณาในฟีด</string>
+  <string name="morphe_hide_post_ads_summary">ซ่อนโฆษณาในฟีด</string>
+  <string name="morphe_hide_comment_ads_title">ซ่อนโฆษณาในความคิดเห็น</string>
+  <string name="morphe_hide_comment_ads_summary">ซ่อนโฆษณาในส่วนความคิดเห็น</string>
+  <string name="morphe_screen_layout_title">รูปแบบ</string>
+  <string name="morphe_disable_modern_home_title">ปิดใช้งานหน้าแรกแบบทันสมัย</string>
+  <string name="morphe_disable_modern_home_summary">ปิดใช้งาน UI หน้าแรกแบบทันสมัย</string>
+  <string name="morphe_disable_screenshot_popup_title">ปิดใช้งานหน้าต่างป๊อปอัพการจับภาพหน้าจอ</string>
+  <string name="morphe_disable_screenshot_popup_summary">ปิดใช้งานหน้าต่างป๊อปอัพที่ปรากฏเมื่อถ่ายภาพหน้าจอ</string>
+  <string name="morphe_hide_answers_button_title">ซ่อนปุ่มตอบคำถาม</string>
+  <string name="morphe_hide_answers_button_summary">ซ่อนปุ่มตอบคำถามในแถบนำทาง</string>
+  <string name="morphe_hide_chat_button_title">ซ่อนปุ่มแชท</string>
+  <string name="morphe_hide_chat_button_summary">ซ่อนปุ่มแชทในแถบนำทาง</string>
+  <string name="morphe_hide_create_button_title">ซ่อนปุ่มสร้าง</string>
+  <string name="morphe_hide_create_button_summary">ซ่อนปุ่มสร้างในแถบนำทาง</string>
+  <string name="morphe_hide_discover_button_title">ซ่อนปุ่มค้นพบหรือชุมชน</string>
+  <string name="morphe_hide_discover_button_summary">ซ่อนปุ่มค้นพบหรือชุมชนในแถบนำทาง</string>
+  <string name="morphe_hide_games_button_title">ซ่อนปุ่มเกม</string>
+  <string name="morphe_hide_games_button_summary">ซ่อนปุ่มเกมในแถบนำทาง</string>
+  <string name="morphe_hide_recently_visited_shelf_title">ซ่อนชั้นวางที่เยี่ยมชมล่าสุด</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">ซ่อนชั้นวางที่เยี่ยมชมล่าสุดในแถบด้านข้าง</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">ซ่อนชั้นวางเกมบนเรดดิต</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">ซ่อนชั้นวางเกมบนเรดดิตในแถบด้านข้าง</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">ซ่อนชั้นวาง Reddit Pro</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">ซ่อนชั้นวาง Reddit Pro ในแถบด้านข้าง</string>
+  <string name="morphe_hide_about_shelf_title">ซ่อนชั้นวางเกี่ยวกับ</string>
+  <string name="morphe_hide_about_shelf_summary">ซ่อนชั้นวางเกี่ยวกับในแถบด้านข้าง</string>
+  <string name="morphe_hide_resources_shelf_title">ซ่อนชั้นวางทรัพยากร</string>
+  <string name="morphe_hide_resources_shelf_summary">ซ่อนชั้นวางทรัพยากรในแถบด้านข้าง</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">ซ่อนชุมชนที่แนะนำ</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">ซ่อนชั้นวางชุมชนที่แนะนำในสับเรดดิต</string>
+  <string name="morphe_hide_trending_today_shelf_title">ซ่อนชั้นวาง \'วันนี้มาแรง\'</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"ซ่อนชั้นวาง 'วันนี้มาแรง' จากคำแนะนำในการค้นหา
+
+ข้อจำกัด: สเปซเซอร์ภาพอาจไม่ถูกซ่อน"</string>
+  <string name="morphe_remove_notification_dialog_title">นำไดอะล็อกการแจ้งเตือนออก</string>
+  <string name="morphe_remove_notification_dialog_summary">นำไดอะล็อกการแจ้งเตือนออกที่จะปรากฏเมื่อเยี่ยมชมสับเรดดิตโดยการยอมรับโดยอัตโนมัติ</string>
+  <string name="morphe_show_view_count_title">แสดงจำนวนการดู</string>
+  <string name="morphe_show_view_count_summary">"แสดงจำนวนการดูของโพสต์
+
+ข้อจำกัด: จะแสดงเฉพาะถ้าการตอบสนองของ API รวมถึงจำนวนการดู"</string>
+  <string name="morphe_remove_nsfw_dialog_title">นำไดอะล็อกคำเตือน NSFW ออก</string>
+  <string name="morphe_remove_nsfw_dialog_summary">นำไดอะล็อกคำเตือน NSFW ออกที่จะปรากฏเมื่อเยี่ยมชมสับเรดดิตโดยการยอมรับโดยอัตโนมัติ</string>
+  <string name="morphe_screen_miscellaneous_title">เบ็ดเตล็ด</string>
+  <string name="morphe_about_title">เกี่ยวกับ</string>
+  <string name="morphe_about_summary">เวอร์ชันแพตช์และลิงก์อย่างเป็นทางการ</string>
+  <string name="morphe_sanitize_sharing_links_title">ล้างข้อมูลลิงก์ที่แชร์</string>
+  <string name="morphe_sanitize_sharing_links_summary">ทำให้ลิงก์การแชร์สะอาดขึ้นโดยการลบพารามิเตอร์ติดตาม</string>
+  <string name="morphe_open_links_directly_title">เปิดลิงก์โดยตรง</string>
+  <string name="morphe_open_links_directly_summary">ข้าม URL การเปลี่ยนเส้นทางในลิงก์ภายนอก</string>
+</resources>

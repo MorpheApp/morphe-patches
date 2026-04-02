@@ -5,6 +5,8 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.all.misc.resources.localesYouTube
+import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.music.misc.extension.hooks.youTubeMusicApplicationInitOnCreateHook
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
@@ -12,8 +14,11 @@ import app.morphe.patches.music.misc.playservice.is_8_40_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.BoldIconsFeatureFlagFingerprint
+import app.morphe.patches.shared.GoogleApiActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
+import app.morphe.patches.shared.misc.initialization.initializationPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.MORPHE_SETTINGS_INTENT
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.InputType
@@ -41,7 +46,7 @@ private val settingsResourcePatch = resourcePatch {
                 IntentPreference(
                     titleKey = "morphe_settings_title",
                     summaryKey = null,
-                    intent = newIntent("morphe_settings_intent"),
+                    intent = newIntent(MORPHE_SETTINGS_INTENT),
                 ) to "settings_headers"
             ),
             preferences = preferences
@@ -87,11 +92,15 @@ val settingsPatch = bytecodePatch(
         versionCheckPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint,
-            recommendedAppVersion = COMPATIBILITY_YOUTUBE_MUSIC.second.first()
+            recommendedAppVersion = COMPATIBILITY_YOUTUBE_MUSIC.targets.first { !it.isExperimental }.version!!
+        ),
+        initializationPatch(
+            mainActivityFingerprint = youTubeMusicApplicationInitOnCreateHook.fingerprint
         )
     )
 
     execute {
+        setAddResourceLocale(localesYouTube)
         addAppResources("shared-youtube")
         addAppResources("music")
 
@@ -99,7 +108,7 @@ val settingsPatch = bytecodePatch(
         preferences += NonInteractivePreference(
             key = "morphe_settings_music_screen_0_about",
             summaryKey = null,
-            tag = "app.morphe.extension.shared.settings.preference.MorpheAboutPreference",
+            tag = "app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference",
             selectable = true,
         )
 
@@ -118,8 +127,7 @@ val settingsPatch = bytecodePatch(
         )
 
         modifyActivityForSettingsInjection(
-            GoogleApiActivityFingerprint.classDef,
-            GoogleApiActivityFingerprint.method,
+            GoogleApiActivityOnCreateFingerprint,
             MUSIC_ACTIVITY_HOOK_CLASS_DESCRIPTOR,
             true
         )

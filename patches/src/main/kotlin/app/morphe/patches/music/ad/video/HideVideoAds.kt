@@ -31,7 +31,7 @@ val hideVideoAdsPatch = bytecodePatch(
             SwitchPreference("morphe_music_hide_video_ads"),
         )
 
-        ShowVideoAdsParentFingerprint.instructionMatches[1]
+        ShowVideoAdsFingerprint.instructionMatches[1]
             .getInstruction<ReferenceInstruction>()
             .getReference<MethodReference>()!!
             .getMutableMethod()

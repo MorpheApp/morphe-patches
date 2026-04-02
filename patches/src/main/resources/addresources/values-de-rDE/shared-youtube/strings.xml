@@ -16,96 +16,101 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Neustart, um die Einrichtung abzuschließen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">App-Name</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Benutzerdefiniert</string>
-  <string name="morphe_custom_branding_icon_title">App-Symbol</string>
+  <string name="morphe_custom_branding_icon_title">App-Icon</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe\u0020Schwarz</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe Schwarz</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe dunkel</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe\u0020Helligkeit</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe Spiel</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Benutzerdefiniert</string>
+  <string name="morphe_custom_branding_icon_entry_6">Benutzerdefiniert</string>
+  <string name="morphe_custom_branding_notification_icon_title">Benachrichtigungsicon</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">App-Icon folgen</string>
   <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Experimenteller Alarm 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Sie verwenden eine experimentelle App-Version von ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+  <string name="morphe_experimental_app_version_dialog_message">"Sie verwenden die experimentelle App-Version ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-🔧 Erwarten Sie exzentrisches App-Verhalten oder nicht identifizierte Fehler, während wir die Patches für diese App-Version optimieren.
+🔧 Rechnen Sie mit ungewöhnlichem App-Verhalten oder unbekannten Fehlern, da wir die Patches für diese App-Version noch optimieren.
 &lt;br/&gt;&lt;br/&gt;
-Wenn Sie die problemfreiste Erfahrung wünschen, dann &lt;b&gt;deinstallieren&lt;/b&gt; Sie diese und patchen Sie die empfohlene App-Version von ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Wenn Sie die problemloseste Erfahrung wünschen, dann &lt;b&gt;deinstallieren&lt;/b&gt; Sie diese und patchen Sie die empfohlene App-Version ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ich möchte experimentell</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ich möchte stabil</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Hinweis</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Ihr Verlauf wird nicht gespeichert.&lt;br&gt;&lt;br&gt;Dies wird höchstwahrscheinlich durch einen DNS-Werbeblocker oder einen Netzwerkproxy verursacht.&lt;br&gt;&lt;br&gt;Um dies zu beheben, setze &lt;b&gt;s.youtube.com&lt;/b&gt; auf die Whitelist oder schalten Sie alle DNS-Blocker und Proxies aus.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Ihr Verlauf wird nicht gespeichert.&lt;br&gt;&lt;br&gt;Dies wird höchstwahrscheinlich durch einen DNS-Werbeblocker oder einen Netzwerkproxy verursacht.&lt;br&gt;&lt;br&gt;Um dies zu beheben, setzen Sie &lt;b&gt;s.youtube.com&lt;/b&gt; auf die Whitelist oder schalten Sie alle DNS-Blocker und Proxies aus.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nicht wieder anzeigen</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_screen_title">Spoofe Video-Streams</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Spoofe die Client-Video-Streams, um Wiedergabeprobleme zu verhindern</string>
-  <string name="morphe_spoof_video_streams_title">Spoofe Video-Streams</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Videostreams werden gespooft
+  <string name="morphe_spoof_video_streams_screen_title">Fälsche Video-Streams</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Fälsche die Client-Video-Streams, um Wiedergabeprobleme zu verhindern</string>
+  <string name="morphe_spoof_video_streams_title">Fälsche Video-Streams</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Videostreams werden gefälscht
 
 Wenn Sie ein YouTube Premium-Nutzer sind, ist diese Einstellung möglicherweise nicht erforderlich"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Video-Streams werden nicht gespooft
+  <string name="morphe_spoof_video_streams_summary_off">"Video-Streams werden nicht gefälscht
 
 Die Wiedergabe funktioniert möglicherweise nicht"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">Keine Client-Streams konnten abgerufen werden</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Es konnten keine Client-Streams abgerufen werden</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Das Deaktivieren dieser Einstellung kann Wiedergabeprobleme verursachen.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Versuchen Sie, dies zu aktivieren: Spoof video streams > Android VR Anmeldung</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Versuchen Sie folgendes zu aktivieren: Fälsche Video-Streams &gt; Android VR Anmeldung</string>
   <string name="morphe_spoof_video_streams_client_type_title">Standard-Client</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR Anmeldung</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Sie sind nicht bei Android VR angemeldet. Tappen Sie hier zum Anmelden</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Sie sind derzeit bei Android VR angemeldet</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Sie sind nicht bei Android VR angemeldet. Tippen Sie hier zum Anmelden</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Derzeit bei Android VR angemeldet</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Um diese Funktion zu nutzen, ändern Sie ‚Standardclient‘ zu Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Um diese Funktion zu nutzen, ändern Sie \"Standard-Client\" zu Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Bei Android VR anmelden</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Anmeldung bei Android VR kann Wiedergabeprobleme für einige Benutzer beheben
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Die Anmeldung bei Android VR kann Wiedergabeprobleme für einige Benutzer beheben
 
-Um sich anzumelden, drücken Sie auf \"Weiter unten\"."</string>
+Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Weiter</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Abmelden</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Anleitung</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivierungscode: %s
 
-1. Drücken Sie ‚Website öffnen‘ unten, um die ‚Gerät verbinden‘-Website zu öffnen
-2. Legen Sie den aus der Zwischenablage kopierten (oder selbst eingegebenen) Aktivierungscode oben ein
-3. Bei Aufforderung auf ‚Google Anmelden‘ klicken. Wenn Sie mehrere Konten haben, wählen Sie dieses YouTube-Konto
-4. Tappen Sie auf ‚YouTube VR‘ Zugriff erlauben
-5. Nach der Anzeige ‚Gerät verbunden‘ kehren Sie in diese App zurück"</string>
+1. Drücken Sie unten auf \"Website öffnen\", um die \"Ein Gerät verbinden\"-Website zu öffnen
+2. Fügen Sie den oben angezeigten Aktivierungscode aus der Zwischenablage ein (oder tippen Sie ihn ein)
+3. Bei Aufforderung bei Google anmelden. Wenn Sie mehrere Konten haben, wählen Sie dieses YouTube-Konto aus
+4. Tippen Sie auf \"YouTube VR erlauben\" Zugriff
+5. Nach der \"Gerät verbunden\"-Nachricht, kehren Sie in diese App zurück"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Website öffnen</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ausgabe eines Aktivierungs-codes fehlgeschlagen</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ausgabe eines Aktivierungscodes fehlgeschlagen</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ausgabe eines Authentifizierungstokens fehlgeschlagen</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Erfolgreich angemeldet</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentifizierung erfolgreich
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentifizierung gespeichert
 
 • Ihre Morphe-Einstellungen importieren/-exportieren keine Android VR-Authentifizierung
 • Wenn diese App 6 Monate lang nicht genutzt wird, entfernt Google diese Authentifizierung
 • Wenn Sie Ihr Google-Kennwort ändern oder dieses Gerät von Ihren Google-Einstellungen deregistrieren, müssen Sie sich erneut anmelden"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 ist vorübergehend nicht verfügbar (API Timeout)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Android VR-Anmeldung abgelaufen, versuchen Sie erneut, sich bei VR anzumelden.</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR-Anmeldung abgelaufen, versuchen Sie erneut sich bei VR anzumelden</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 ist vorübergehend nicht verfügbar (Status %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 ist vorübergehend nicht verfügbar</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Kann sich nicht bei VR anmelden, Website-Authentifizierung wurde nicht genehmigt.</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Kann nicht in VR anmelden: %s</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Eine Anmeldung bei VR ist nicht möglich, da die Website-Authentifizierung nicht genehmigt wurde</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Eine Anmeldung bei VR ist nicht möglich: %s</string>
   <string name="morphe_oauth2_toast_reset">Von Android VR abgemeldet</string>
-  <string name="morphe_oauth2_toast_invalid">Ungültiges VR-Anmelde-Token, melden Sie sich erneut in VR an</string>
+  <string name="morphe_oauth2_toast_invalid">Ungültiger VR-Anmelde-Token, melden Sie sich erneut in VR an</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">JavaScript-Update des Players deaktivieren</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"JavaScript-Update des Players ist deaktiviert
 
-• Ein gültiger Player JavaScript Hash ist erforderlich
-• Die Wiedergabe schlägt fehl, wenn der Player JavaScript Hash in GVS widerrufen wird"</string>
+• Ein gültiger Player-JavaScript-Hash ist erforderlich
+• Die Wiedergabe schlägt fehl, wenn der Player-JavaScript-Hash in GVS widerrufen wird"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">JavaScript-Update des Players ist aktiviert</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript-Hashes des Spielers sind ungefähr einen Monat gültig, und veraltete Hashes können von GVS widerrufen werden.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Spieler JavaScript Hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Geben Sie einen gültigen Spieler JavaScript Hash ein</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript-Hashes des Players sind ungefähr einen Monat gültig und veraltete Hashes können von GVS widerrufen werden.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player-JavaScript-Hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Geben Sie einen gültigen Player-JavaScript-Hash ein</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
-  <string name="morphe_disable_quic_protocol_title">Deaktivieren Sie das QUIC-Protokoll</string>
+  <string name="morphe_disable_quic_protocol_title">QUIC-Protokoll deaktivieren </string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC-Protokoll ist deaktiviert</string>
   <string name="morphe_disable_quic_protocol_summary_off">QUIC-Protokoll ist aktiviert</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
@@ -114,15 +119,15 @@ Um sich anzumelden, drücken Sie auf \"Weiter unten\"."</string>
   <string name="morphe_disable_drc_audio_summary_off">DRC-Audio ist aktiviert</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Original Audio erzwingen</string>
-  <string name="morphe_force_original_audio_summary_on">Original-Audiosprache verwenden</string>
-  <string name="morphe_force_original_audio_summary_off">Standardaudio verwenden</string>
+  <string name="morphe_force_original_audio_summary_on">Original Audio wird verwendet</string>
+  <string name="morphe_force_original_audio_summary_off">Standardaudio wird verwendet</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Um diese Funktion zu nutzen, ändere \'Spoof-Videostreams\' auf Android Reel oder TV</string>
+  <string name="morphe_force_original_audio_not_available">Um diese Funktion zu nutzen, ändern Sie \"Fälsche Video-Streams\" auf Android Reel oder TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Freigabelinks säubern</string>
+  <string name="morphe_sanitize_sharing_links_title">Freigabe-Links säubern</string>
   <string name="morphe_sanitize_sharing_links_summary_on">Tracking-Abfrageparameter wird aus freigegebenen Links entfernt</string>
   <string name="morphe_sanitize_sharing_links_summary_off">Tracking-Abfrageparameter wird nicht aus freigegebenen Links entfernt</string>
-  <string name="morphe_replace_music_with_youtube_title">Teilen-Links zu youtube.com ändern</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Geteilte Links verwenden youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Geteilte Links verwenden music.youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_title">Freigabe-Links zu youtube.com ändern</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Freigabe-Links verwenden youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Freigabe-Links verwenden music.youtube.com</string>
 </resources>

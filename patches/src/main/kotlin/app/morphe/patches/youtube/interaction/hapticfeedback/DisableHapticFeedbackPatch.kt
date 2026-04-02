@@ -90,8 +90,8 @@ val disableHapticFeedbackPatch = bytecodePatch(
             )
         }
 
-        val vibratorField = TapAndHoldHapticsHandlerFingerprint.match()
-            .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        val vibratorField = TapAndHoldHapticsHandlerFingerprint.instructionMatches.last()
+            .instruction.getReference<FieldReference>()!!
 
         val tapAndHoldHapticsFingerprint = Fingerprint(
             name = "run",

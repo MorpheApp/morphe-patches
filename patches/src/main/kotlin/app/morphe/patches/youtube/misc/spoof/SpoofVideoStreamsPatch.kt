@@ -6,10 +6,6 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.spoof.spoofVideoStreamsPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_03_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_10_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -21,14 +17,14 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     extensionClassDescriptor = "Lapp/morphe/extension/youtube/patches/spoof/SpoofVideoStreamsPatch;",
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     fixMediaFetchHotConfig = {
-        is_19_34_or_greater
+        true
     },
     fixMediaFetchHotConfigAlternative = {
         // In 20.14 the flag was merged with 20.03 start playback flag.
-        is_20_10_or_greater && !is_20_14_or_greater
+        false
     },
     fixParsePlaybackResponseFeatureFlag = {
-        is_20_03_or_greater
+        true
     },
     fixMediaSessionFeatureFlag = {
         is_20_39_or_greater
@@ -67,7 +63,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                     SwitchPreference("morphe_spoof_video_streams_av1"),
                     ListPreference("morphe_spoof_video_streams_player_js_variant"),
                     SwitchPreference("morphe_spoof_video_streams_disable_player_js_update"),
-                    TextPreference("morphe_spoof_video_streams_player_js_hash"),
+                    TextPreference("morphe_spoof_video_streams_player_js_hash_value"),
                     SwitchPreference("morphe_spoof_video_streams_stats_for_nerds"),
                 )
             )

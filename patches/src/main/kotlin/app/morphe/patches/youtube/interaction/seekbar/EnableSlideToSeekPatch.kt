@@ -6,7 +6,6 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_17_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -67,35 +66,18 @@ val enableSlideToSeekPatch = bytecodePatch(
         if (!modifiedMethods) throw PatchException("Could not find methods to modify")
 
         // Disable the double speed seek gesture.
-        if (is_19_17_or_greater) {
-            DisableFastForwardGestureFingerprint.let {
-                it.method.apply {
-                    val targetIndex = it.instructionMatches.last().index
-                    val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
+        DisableFastForwardGestureFingerprint.let {
+            it.method.apply {
+                val targetIndex = it.instructionMatches.last().index
+                val targetRegister = getInstruction<OneRegisterInstruction>(targetIndex).registerA
 
-                    addInstructions(
-                        targetIndex + 1,
-                        """
-                            invoke-static { v$targetRegister }, $extensionMethodDescriptor
-                            move-result v$targetRegister
-                        """,
-                    )
-                }
-            }
-        } else {
-            DisableFastForwardLegacyFingerprint.let {
-                it.method.apply {
-                    val insertIndex = it.instructionMatches.last().index + 1
-                    val targetRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
-
-                    addInstructions(
-                        insertIndex,
-                        """
-                            invoke-static { v$targetRegister }, $extensionMethodDescriptor
-                            move-result v$targetRegister
-                        """,
-                    )
-                }
+                addInstructions(
+                    targetIndex + 1,
+                    """
+                        invoke-static { v$targetRegister }, $extensionMethodDescriptor
+                        move-result v$targetRegister
+                    """
+                )
             }
         }
     }

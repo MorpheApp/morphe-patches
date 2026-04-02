@@ -13,7 +13,7 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object ComponentContextParserFingerprint : Fingerprint(
+private object ComponentContextParserFingerprint : Fingerprint(
     returnType = "L",
     filters = listOf(
         string("Failed to parse Element proto."),
@@ -22,6 +22,7 @@ internal object ComponentContextParserFingerprint : Fingerprint(
 )
 
 internal object TreeNodeResultListFingerprint : Fingerprint(
+    classFingerprint = ComponentContextParserFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "Ljava/util/List;",
     filters = listOf(

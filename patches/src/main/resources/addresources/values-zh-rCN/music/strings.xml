@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">更改迷你播放器颜色</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">迷你播放器颜色与全屏播放器一致</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">迷你播放器使用默认颜色</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">在迷你播放器中显示下一按钮</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">下一按钮显示在迷你播放器中</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">下一按钮未显示在迷你播放器中</string>
+  <string name="morphe_music_miniplayer_previous_button_title">显示上一首按钮在迷你播放器</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">上一首按钮显示在迷你播放器</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">上一首按钮未显示在迷你播放器</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">启用强制最小播放器</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">播放变化时最小播放器保持最小化</string>

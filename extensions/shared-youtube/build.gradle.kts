@@ -3,12 +3,15 @@ dependencies {
 }
 
 android {
-    buildTypes {
-        release {
-            // 'libj2v8.so' is already included in the patch.
-            ndk {
-                abiFilters.add("")
-            }
-        }
+    namespace = "app.morphe.extension"
+    compileSdk = 35
+
+    defaultConfig {
+        minSdk = 26
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 }

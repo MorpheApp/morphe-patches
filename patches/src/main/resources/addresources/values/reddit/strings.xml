@@ -1,0 +1,71 @@
+<!--
+
+    Strings with new lines must be raw strings where they're wrapped in quotes and new lines are not encoded.
+    Raw strings still requires escaping embedded double quotes but escaping embedded single quotes is optional.
+
+    Raw strings are required because Crowdin AI translations regularly gets confused and
+    replace \n with an encoded new line character.
+
+    Bad:
+        <string name="summary_key">First \'item\' text\nSecond \"item\" text</string>
+
+    Good:
+        <string name="summary_key">"First 'item' text
+Second \"item\" text"</string>
+
+-->
+<resources>
+    <string name="morphe_screen_ads_title">Ads</string>
+    <string name="morphe_hide_post_ads_title">Hide feed ads</string>
+    <string name="morphe_hide_post_ads_summary">Hides ads in the feed</string>
+    <string name="morphe_hide_comment_ads_title">Hide comment ads</string>
+    <string name="morphe_hide_comment_ads_summary">Hides ads in the comments section</string>
+
+    <string name="morphe_screen_layout_title">Layout</string>
+    <string name="morphe_disable_modern_home_title">Disable modern home</string>
+    <string name="morphe_disable_modern_home_summary">Disables the modern home UI</string>
+    <string name="morphe_disable_screenshot_popup_title">Disable screenshot popup</string>
+    <string name="morphe_disable_screenshot_popup_summary">Disables the popup that appears when taking a screenshot</string>
+    <string name="morphe_hide_answers_button_title">Hide Answers button</string>
+    <string name="morphe_hide_answers_button_summary">Hides the Answers button in the navigation bar</string>
+    <string name="morphe_hide_chat_button_title">Hide Chat button</string>
+    <string name="morphe_hide_chat_button_summary">Hides the Chat button in the navigation bar</string>
+    <string name="morphe_hide_create_button_title">Hide Create button</string>
+    <string name="morphe_hide_create_button_summary">Hides the Create button in the navigation bar</string>
+    <string name="morphe_hide_discover_button_title">Hide Discover or Communities button</string>
+    <string name="morphe_hide_discover_button_summary">Hides the Discover or Communities button in the navigation bar</string>
+    <string name="morphe_hide_games_button_title">Hide Games button</string>
+    <string name="morphe_hide_games_button_summary">Hides the Games button in the navigation bar</string>
+    <string name="morphe_hide_recently_visited_shelf_title">Hide Recently Visited shelf</string>
+    <string name="morphe_hide_recently_visited_shelf_summary">Hides the Recently Visited shelf in the sidebar</string>
+    <string name="morphe_hide_games_on_reddit_shelf_title">Hide Games on Reddit shelf</string>
+    <string name="morphe_hide_games_on_reddit_shelf_summary">Hides the Games on Reddit shelf in the sidebar</string>
+    <string name="morphe_hide_reddit_pro_shelf_title">Hide Reddit Pro shelf</string>
+    <string name="morphe_hide_reddit_pro_shelf_summary">Hides the Reddit Pro shelf in the sidebar</string>
+    <string name="morphe_hide_about_shelf_title">Hide About shelf</string>
+    <string name="morphe_hide_about_shelf_summary">Hides the About shelf in the sidebar</string>
+    <string name="morphe_hide_resources_shelf_title">Hide Resources shelf</string>
+    <string name="morphe_hide_resources_shelf_summary">Hides the Resources shelf in the sidebar</string>
+    <string name="morphe_hide_recommended_communities_shelf_title">Hide recommended communities</string>
+    <string name="morphe_hide_recommended_communities_shelf_summary">Hides the recommended communities shelves in subreddits</string>
+    <string name="morphe_hide_trending_today_shelf_title">Hide Trending Today shelf</string>
+    <string name="morphe_hide_trending_today_shelf_summary">"Hides the Trending Today shelf from search suggestions
+
+Limitation: Visual spacers may not be hidden"</string>
+    <string name="morphe_remove_notification_dialog_title">Remove notification suggestion dialog</string>
+    <string name="morphe_remove_notification_dialog_summary">Removes the notifications suggestion dialog that appears when visiting a subreddit by dismissing it automatically</string>
+    <string name="morphe_show_view_count_title">Show view count</string>
+    <string name="morphe_show_view_count_summary">"Shows the view count of Posts
+
+Limitation: Only shown if the API response includes the view count"</string>
+    <string name="morphe_remove_nsfw_dialog_title">Remove NSFW warning dialog</string>
+    <string name="morphe_remove_nsfw_dialog_summary">Removes the NSFW warning dialog that appears when visiting a subreddit by accepting it automatically</string>
+
+    <string name="morphe_screen_miscellaneous_title">Miscellaneous</string>
+    <string name="morphe_about_title">About</string>
+    <string name="morphe_about_summary">Patch version and official links</string>
+    <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
+    <string name="morphe_sanitize_sharing_links_summary">Sanitizes sharing links by removing tracking query parameters</string>
+    <string name="morphe_open_links_directly_title">Open links directly</string>
+    <string name="morphe_open_links_directly_summary">Skips over redirection URLs in external links</string>
+</resources>

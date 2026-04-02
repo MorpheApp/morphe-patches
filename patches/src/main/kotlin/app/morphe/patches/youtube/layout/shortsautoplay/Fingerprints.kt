@@ -20,17 +20,15 @@ internal object ReelEnumConstructorFingerprint : Fingerprint(
     )
 )
 
-internal object ReelPlaybackRepeatParentFingerprint : Fingerprint(
+private object ReelPlaybackRepeatParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("Reels[%s] Playback Time: %d ms")
     )
 )
 
-/**
- * Matches class found in [reelPlaybackRepeatParentFingerprint].
- */
 internal object ReelPlaybackRepeatFingerprint : Fingerprint(
+    classFingerprint = ReelPlaybackRepeatParentFingerprint,
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(

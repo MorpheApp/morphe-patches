@@ -38,7 +38,7 @@ internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     )
 )
 
-internal object MiniplayerDimensionsCalculatorParentFingerprint : Fingerprint(
+private object MiniplayerDimensionsCalculatorParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
@@ -47,7 +47,7 @@ internal object MiniplayerDimensionsCalculatorParentFingerprint : Fingerprint(
     )
 )
 
-internal object MiniplayerModernViewParentFingerprint : Fingerprint(
+private object MiniplayerModernViewParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
@@ -56,19 +56,15 @@ internal object MiniplayerModernViewParentFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches using the class found in [miniplayerModernViewParentFingerprint].
- */
 internal object MiniplayerModernAddViewListenerFingerprint : Fingerprint(
+    classFingerprint = MiniplayerModernViewParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/View;"),
 )
 
-/**
- * Matches using the class found in [miniplayerModernViewParentFingerprint].
- */
 internal object MiniplayerModernCloseButtonFingerprint : Fingerprint(
+    classFingerprint = MiniplayerModernViewParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(),
@@ -78,10 +74,8 @@ internal object MiniplayerModernCloseButtonFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches using the class found in [miniplayerModernViewParentFingerprint].
- */
 internal object MiniplayerModernExpandButtonFingerprint : Fingerprint(
+    classFingerprint = MiniplayerModernViewParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(),
@@ -91,22 +85,8 @@ internal object MiniplayerModernExpandButtonFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches using the class found in [miniplayerModernViewParentFingerprint].
- */
-internal object MiniplayerModernExpandCloseDrawablesFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("L"),
-    filters = listOf(
-        literal(ytOutlinePictureInPictureWhite24)
-    )
-)
-
-/**
- * Matches using the class found in [miniplayerModernViewParentFingerprint].
- */
 internal object MiniplayerModernForwardButtonFingerprint : Fingerprint(
+    classFingerprint = MiniplayerModernViewParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(),
@@ -117,6 +97,7 @@ internal object MiniplayerModernForwardButtonFingerprint : Fingerprint(
 )
 
 internal object MiniplayerModernOverlayViewFingerprint : Fingerprint(
+    classFingerprint = MiniplayerModernViewParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(),
     filters = listOf(
@@ -125,10 +106,8 @@ internal object MiniplayerModernOverlayViewFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches using the class found in [miniplayerModernViewParentFingerprint].
- */
 internal object MiniplayerModernRewindButtonFingerprint : Fingerprint(
+    classFingerprint = MiniplayerModernViewParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(),
@@ -138,10 +117,8 @@ internal object MiniplayerModernRewindButtonFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches using the class found in [miniplayerModernViewParentFingerprint].
- */
 internal object MiniplayerModernActionButtonFingerprint : Fingerprint(
+    classFingerprint = MiniplayerModernViewParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(),
@@ -180,6 +157,7 @@ internal object MiniplayerOverrideFingerprint : Fingerprint(
 )
 
 internal object MiniplayerOverrideNoContextFingerprint : Fingerprint(
+    classFingerprint = MiniplayerDimensionsCalculatorParentFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "Z",
     filters = listOf(
@@ -215,9 +193,9 @@ internal object MiniplayerOnCloseHandlerFingerprint : Fingerprint(
 internal const val YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME =
     "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;"
 
-internal object PlayerOverlaysLayoutFingerprint : Fingerprint(
-    definingClass = YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME
-)
+//internal object PlayerOverlaysLayoutFingerprint : Fingerprint(
+//    definingClass = YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME
+//)
 
 internal object MiniplayerSetIconsFingerprint : Fingerprint(
     returnType = "V",

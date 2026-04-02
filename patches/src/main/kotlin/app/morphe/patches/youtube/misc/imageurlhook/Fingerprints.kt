@@ -6,6 +6,7 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object OnFailureFingerprint : Fingerprint(
+    classFingerprint = OnResponseStartedFingerprint,
     name = "onFailed",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -16,8 +17,7 @@ internal object OnFailureFingerprint : Fingerprint(
     )
 )
 
-// Acts as a parent fingerprint.
-internal object OnResponseStartedFingerprint : Fingerprint(
+private object OnResponseStartedFingerprint : Fingerprint(
     name ="onResponseStarted",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -31,6 +31,7 @@ internal object OnResponseStartedFingerprint : Fingerprint(
 )
 
 internal object OnSucceededFingerprint : Fingerprint(
+    classFingerprint = OnResponseStartedFingerprint,
     name = "onSucceeded",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -44,12 +45,7 @@ internal object RequestFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
 )
 
-internal object MessageDigestImageURLFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    parameters = listOf("Ljava/lang/String;", "L")
-)
-
-internal object MessageDigestImageURLParentFingerprint : Fingerprint(
+private object MessageDigestImageURLParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
@@ -59,4 +55,10 @@ internal object MessageDigestImageURLParentFingerprint : Fingerprint(
             string("@#&=*+-_.,:!?()/~'%;\$[]"), // 20.38+
         )
     )
+)
+
+internal object MessageDigestImageURLFingerprint : Fingerprint(
+    classFingerprint = MessageDigestImageURLParentFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("Ljava/lang/String;", "L")
 )

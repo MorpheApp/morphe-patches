@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">Язык приложения YouTube</string>
   <string name="morphe_pref_import_export_title">Резервное копирование настроек</string>
   <string name="morphe_pref_import_export_summary">Создание и восстановление резервной копии настроек Morphe</string>
+  <string name="morphe_settings_import_file">Импорт из файла</string>
+  <string name="morphe_settings_import_file_success">Настройки успешно импортированы, нажмите \"Сохранить\", чтобы применить</string>
+  <string name="morphe_settings_import_file_failed">Не удалось импортировать настройки</string>
+  <string name="morphe_settings_export_file">Экспорт в файл</string>
+  <string name="morphe_settings_export_file_success">Настройки успешно экспортированы</string>
+  <string name="morphe_settings_export_file_failed">Не удалось экспортировать настройки</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Вы используете последнюю версию Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Вы используете Morphe Patches версии &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Доступно обновление: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Чтобы обновить ваши патчи, используйте Morphe для повторной установки этого приложения</string>
@@ -69,6 +75,17 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">Веб-сайт</string>
   <string name="morphe_settings_about_links_donate">Пожертвовать</string>
   <string name="morphe_settings_about_links_translations">Переводы</string>
+  <string name="morphe_settings_about_links_credits">Благодарности</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">В актуальном состоянии</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Доступное обновление</string>
+  <string name="morphe_settings_about_contributors_current">Текущая разработка</string>
+  <string name="morphe_settings_about_contributors_prior">Предыдущая разработка</string>
+  <string name="morphe_settings_about_links_morphe">Активная разработка</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Лицензионные уведомления</string>
+  <string name="morphe_settings_about_licenses_loading">Загрузка...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отладка</string>
   <string name="morphe_debug_screen_summary">Включить или отключить параметры отладки</string>
@@ -121,4 +138,13 @@ Second \"item\" text"</string>
 
 Нажмите кнопку \"Продолжить\" и разрешите изменения оптимизации."</string>
   <string name="gms_core_dialog_continue_text">Продолжить</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Диалоговое окно оптимизации батареи</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Диалоговое окно оптимизации батареи MicroG показано</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Диалоговое окно оптимизации батареи MicroG скрыто</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Выключение этой функции скроет запрос оптимизации батареи MicroG.
+
+Если оптимизацию батареи не изменить, вы можете столкнуться с такими проблемами:
+• Приложение может случайно закрываться
+• Уведомления могут не работать
+• Фоновое воспроизведение может не работать"</string>
 </resources>

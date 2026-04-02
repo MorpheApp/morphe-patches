@@ -45,18 +45,6 @@ internal object UserWasInShortsListenerFingerprint : Fingerprint(
 )
 
 /**
- * Pre 20.02
- */
-internal object UserWasInShortsLegacyFingerprint : Fingerprint(
-    returnType = "V",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    parameters = listOf("Ljava/lang/Object;"),
-    filters = listOf(
-        string("Failed to read user_was_in_shorts proto after successful warmup")
-    )
-)
-
-/**
  * 18.15.40+
  */
 internal object UserWasInShortsConfigFingerprint : Fingerprint(

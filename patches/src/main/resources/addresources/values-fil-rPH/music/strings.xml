@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Baguhin ang kulay ng miniplayer</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Tumutugma sa fullscreen na manlalaro ang kulay ng miniplayer</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Gumagamit ng default na kulay ang miniplayer</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Ipakita ang susunod na button sa miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Ang susunod na button ay ipinapakita sa miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Ang susunod na button ay hindi ipinapakita sa miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Ipakita ang nakaraang button sa miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Ang nakaraang button ay ipinapakita sa miniplayer</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Ang nakaraang button ay hindi ipinapakita sa miniplayer</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Paganahin ang pinilit na miniplayer</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Nanatiling minimized ang miniplayer kapag nagbago ang playback</string>
