@@ -15,6 +15,7 @@ import java.util.List;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.youtube.patches.HidePlayerFlyoutMenuPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -35,16 +36,48 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
     }
 
     private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
-    private final StringFilterGroup videoQualityMenuFooter;
+    private final StringFilterGroup qualityMenuFooter;
+    private final StringFilterGroup qualityMenuHeader;
+    private final StringFilterGroup captionsMenuHeader;
+    private final StringFilterGroup qualitySheet;
+    private final StringFilterGroup captionsSheet;
 
     public PlayerFlyoutMenuComponentsFilter() {
-        videoQualityMenuFooter = new StringFilterGroup(
-                Settings.HIDE_PLAYER_FLYOUT_VIDEO_QUALITY_FOOTER,
-                "quality_sheet_footer"
+        qualityMenuHeader = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER,
+                "quality_sheet_header"
+        );
+
+        qualityMenuFooter = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
+                "quality_sheet_footer",
+                "|divider.e"
+        );
+
+        captionsMenuHeader = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER,
+                "bottom_sheet_header",
+                "|divider.e"
+        );
+
+        qualitySheet = new StringFilterGroup(
+                null,
+                "advanced_quality_sheet_content",
+                "|divider.e"
+        );
+
+        captionsSheet = new StringFilterGroup(
+                null,
+                "captions_sheet_content",
+                "|divider.e"
         );
 
         addPathCallbacks(
-                videoQualityMenuFooter,
+                captionsMenuHeader,
+                qualityMenuFooter,
+                qualityMenuHeader,
+                qualitySheet,
+                captionsSheet,
                 new StringFilterGroup(null, "overflow_menu_item.e")
         );
 
@@ -112,7 +145,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                         "yt_outline_experimental_vr_"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_VIDEO_QUALITY,
+                        Settings.HIDE_PLAYER_FLYOUT_QUALITY,
                         "yt_outline_adjust_",
                         "yt_outline_experimental_adjust_"
                 )
@@ -128,8 +161,23 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        if (matchedGroup == videoQualityMenuFooter) {
+        if (matchedGroup == qualitySheet) {
+            HidePlayerFlyoutMenuPatch.isQualityMenuVisible = true;
+            return false;
+        } else if (matchedGroup == captionsSheet) {
+            HidePlayerFlyoutMenuPatch.isCaptionsMenuVisible = true;
+            return false;
+        }
+
+        if (matchedGroup == qualityMenuHeader)
             return true;
+
+        if (matchedGroup == qualityMenuFooter) {
+            return (path.startsWith("overflow_menu_item.e") || path.startsWith("quick_quality_sheet_content.e"));
+        }
+
+        if (matchedGroup == captionsMenuHeader) {
+            return (path.startsWith("bottom_sheet_header"));
         }
 
         if (contentIndex != 0) {

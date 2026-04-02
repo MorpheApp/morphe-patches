@@ -42,7 +42,6 @@ import java.text.Bidi;
 import java.text.Collator;
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -486,6 +485,7 @@ public class Utils {
         return str != null && !str.isEmpty();
     }
 
+    @SuppressWarnings("unused")
     public static boolean isTablet() {
         return context.getResources().getConfiguration().smallestScreenWidthDp >= 600;
     }
@@ -525,6 +525,7 @@ public class Utils {
         return  getTextDirectionString(isRightToLeftLocale());
     }
 
+    @SuppressWarnings("unused")
     public static String getTextDirectionString(Locale locale) {
         return getTextDirectionString(isRightToLeftLocale(locale));
     }
@@ -1130,7 +1131,7 @@ public class Utils {
         }
 
         // Sort the list using locale-specific collation rules.
-        Collections.sort(preferences, (pair1, pair2)
+        preferences.sort((pair1, pair2)
                 -> collator.compare(pair1.first, pair2.first));
 
         // Reassign order values to reflect the new sorted sequence
@@ -1160,9 +1161,6 @@ public class Utils {
      */
     @SuppressWarnings("deprecation")
     public static void setPreferenceTitlesToMultiLineIfNeeded(PreferenceGroup group) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            return;
-        }
 
         String morpheLocale = Utils.getContext().getResources().getConfiguration().locale.getLanguage();
         if (morpheLocale.equals(Locale.ENGLISH.getLanguage())) {
