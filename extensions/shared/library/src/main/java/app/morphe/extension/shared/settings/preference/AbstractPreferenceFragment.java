@@ -190,6 +190,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
      * so all app specific {@link Setting} instances are loaded before this method returns.
      */
     protected void initialize() {
+        // Must use utils modified language context if language override is active.
+        if (!BaseSettings.MORPHE_LANGUAGE.isSetToDefault()) {
+            ResourceUtils.useActivityContextIfAvailable = false;
+        }
+
         String preferenceResourceName;
         if (BaseSettings.SHOW_MENU_ICONS.get()) {
             preferenceResourceName = Utils.appIsUsingBoldIcons()
