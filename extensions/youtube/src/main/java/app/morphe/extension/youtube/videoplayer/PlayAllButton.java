@@ -44,19 +44,23 @@ public class PlayAllButton {
         }
     }
 
+    @Nullable
+    private static LegacyPlayerControlButton legacy;
+
     /**
      * Injection point.
      */
-    public static void initializeButton(View sourceButton) {
+    public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!isButtonEnabled()) return;
-
-            PlayerOverlayButton.addButton(
-                    sourceButton,
+            legacy = new LegacyPlayerControlButton(
+                    controlsView,
                     "morphe_play_all_button",
-                    PlayAllButton::onClick,
+                    null,
+                    "morphe_play_all_button",
+                    Settings.PLAY_ALL_BUTTON::get,
+                    view -> openVideo(view, Settings.PLAY_ALL_BUTTON_TYPE.get()),
                     view -> {
-                        onLongClick(view);
+                        openVideo(view, null);
                         return true;
                     }
             );
@@ -65,16 +69,25 @@ public class PlayAllButton {
         }
     }
 
-    private static boolean isButtonEnabled() {
-        return Settings.PLAY_ALL_BUTTON.get();
+    /**
+     * injection point.
+     */
+    public static void setVisibilityNegatedImmediate() {
+        if (legacy != null) legacy.setVisibilityNegatedImmediate();
     }
 
-    private static void onClick(View view) {
-        openVideo(view, Settings.PLAY_ALL_BUTTON_TYPE.get());
+    /**
+     * injection point.
+     */
+    public static void setVisibilityImmediate(boolean visible) {
+        if (legacy != null) legacy.setVisibilityImmediate(visible);
     }
 
-    private static void onLongClick(View view) {
-        openVideo(view, null);
+    /**
+     * injection point.
+     */
+    public static void setVisibility(boolean visible, boolean animated) {
+        if (legacy != null) legacy.setVisibility(visible, animated);
     }
 
     /**
