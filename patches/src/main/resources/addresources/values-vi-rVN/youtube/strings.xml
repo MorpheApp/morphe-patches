@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Phát nền cho Shorts đã tắt</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Phát nền cho Shorts đã bật</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Bộ đệm giao thức nhật ký</string>
-  <string name="morphe_debug_protobuffer_summary_on">Ghi nhật ký gỡ lỗi bao gồm thông tin bộ đệm nguyên mẫu</string>
-  <string name="morphe_debug_protobuffer_summary_off">Ghi nhật ký gỡ lỗi mà không có thông tin bộ đệm nguyên mẫu</string>
+  <string name="morphe_debug_protobuffer_title">Ghi nhật ký gỡ lỗi (Protocol Buffer)</string>
+  <string name="morphe_debug_protobuffer_summary_on">Nhật ký gỡ lỗi chứa cả dữ liệu protobuf</string>
+  <string name="morphe_debug_protobuffer_summary_off">Nhật ký gỡ lỗi không chứa dữ liệu protobuf</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Bật cài đặt này sẽ ghi lại dữ liệu bố cục bổ sung, bao gồm cả văn bản trên màn hình cho một số thành phần giao diện người dùng.
 
 Điều này có thể giúp xác định các thành phần khi tạo bộ lọc tùy chỉnh.
@@ -51,13 +51,13 @@ Tuy nhiên, bật tính năng này cũng sẽ ghi lại một số dữ liệu n
   <string name="morphe_disable_layout_updates_summary_off">Giao diện sẽ được máy chủ cập nhật</string>
   <string name="morphe_disable_layout_updates_user_dialog_message">"Giao diện ứng dụng sẽ trở về như lúc mới cài đặt.
 
-Một số bố cục do máy chủ áp dụng có thể không quay trở lại hoàn toàn.
+Một số thay đổi từ phía máy chủ có thể không được hoàn tác.
 
-Thay đổi bao gồm:
-• Một số mục trong menu tùy chọn có thể không hoạt động.
+Ví dụ:
+• Một số mục trong menu tùy chọn của trình phát (hoặc các cài đặt liên quan) có thể không dùng được hoặc không ẩn được.
 • Không có hiệu ứng số cuộn.
 • Thẻ Thư viện có thể hiện lại.
-• Phần âm nhạc trong mô tả video có thể không hoạt động.
+• Phần âm nhạc trong mô tả video có thể bị lỗi.
 • Nút chuyển đổi tài khoản có thể biến mất trong thẻ Thư viện."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Ẩn kệ cửa hàng của nhà sáng tạo</string>
@@ -720,8 +720,8 @@ Cookie sẽ được tự động lưu nếu hợp lệ"</string>
   <string name="morphe_navigation_bar_animations_summary_on">Chuyển điều hướng sẽ có hiệu ứng</string>
   <string name="morphe_navigation_bar_animations_summary_off">Chuyển điều hướng không có hiệu ứng</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Tắt tự động ẩn thanh điều hướng</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Thanh điều hướng sẽ không ẩn khi bạn lướt trang video</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Thanh điều hướng sẽ ẩn khi bạn lướt trang video</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Thanh điều hướng sẽ không bị ẩn trong khi bạn đang lướt trang video</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Thanh điều hướng có thể sẽ bị ẩn trong khi bạn đang lướt trang video</string>
   <string name="morphe_disable_translucent_status_bar_title">Vô hiệu hóa thanh trạng thái trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Thanh trạng thái sẽ không còn trong suốt</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Thanh trạng thái sẽ trở nên mờ hoặc trong suốt</string>
@@ -1417,12 +1417,6 @@ Hạn chế: Nút quay lại trên thanh công cụ có thể không hoạt đ�
   <string name="morphe_miniplayer_disable_rounded_corners_title">Tắt bo tròn góc</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Góc vuông</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Góc được bo tròn</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Bật chạm hai lần và chụm để thay đổi kích thước</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Thao tác chạm hai lần và chụm để thay đổi kích thước đã được bật
-
-• Chạm hai lần để tăng kích thước trình phát thu nhỏ
-• Chạm hai lần nữa để khôi phục kích thước ban đầu"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Thao tác chạm hai lần và chụm để thay đổi kích thước đã tắt</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Tắt kéo và thả</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Kéo và thả đã tắt</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Kéo và thả đã bật
@@ -1436,11 +1430,6 @@ Trình phát thu nhỏ có thể được kéo ra mép màn hình sang bên trá
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ẩn nút lớp phủ</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Các nút lớp phủ đã bị ẩn</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Các nút lớp phủ được hiển thị</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Ẩn các nút mở rộng và đóng</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Các nút đã bị ẩn
-
-Vuốt để mở rộng hoặc đóng"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Các nút mở rộng và đóng được hiển thị</string>
   <string name="morphe_miniplayer_hide_subtext_title">Ẩn văn bản phụ</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Văn bản phụ đã bị ẩn</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Văn bản phụ được hiển thị</string>

@@ -92,33 +92,36 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">การบันทึกการแก้ไขข้อบกพร่อง</string>
   <string name="morphe_debug_summary_on">การบันทึกการแก้ไขข้อบกพร่องถูกเปิดใช้งาน</string>
   <string name="morphe_debug_summary_off">การบันทึกการแก้ไขข้อบกพร่องถูกปิดใช้งาน</string>
-  <string name="morphe_debug_stacktrace_title">บันทึกการติดตามสแต็ก</string>
-  <string name="morphe_debug_stacktrace_summary_on">การบันทึกการแก้ไขข้อบกพร่องรวมถึงการติดตามสแต็ก</string>
-  <string name="morphe_debug_stacktrace_summary_off">การบันทึกการแก้ไขข้อบกพร่องไม่รวมการติดตามสแต็ก</string>
+  <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
+  <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack traces</string>
+  <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack traces</string>
   <string name="morphe_debug_toast_on_error_title">แสดง  toast  เมื่อเกิดข้อผิดพลาดของ Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Toast จะปรากฏขึ้นหากเกิดข้อผิดพลาด</string>
   <string name="morphe_debug_toast_on_error_summary_off">Toast จะไม่ปรากฏขึ้นหากเกิดข้อผิดพลาด</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"การปิดการแจ้งเตือนข้อผิดพลาดจะซ่อนการแจ้งเตือนข้อผิดพลาดของ Morphe ทั้งหมด
 
 คุณจะไม่ได้รับแจ้งเกี่ยวกับเหตุการณ์ที่ไม่คาดคิดใดๆ"</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">ส่งออกบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">คัดลอกบันทึกการแก้ไขข้อบกพร่องของ Morphe ไปยังคลิปบอร์ด</string>
+  <string name="morphe_debug_export_logs_title">ส่งออกบันทึกการแก้ไขข้อบกพร่อง</string>
+  <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
+  <string name="morphe_debug_export_logs_file">Export to file</string>
+  <string name="morphe_debug_export_logs_success">Debug logs exported successfully</string>
+  <string name="morphe_debug_export_logs_failed">Failed to export debug logs</string>
+  <string name="morphe_debug_logs_search_hint">Search debug logs...</string>
+  <string name="morphe_debug_export_logs_clear">Clear</string>
   <string name="morphe_debug_logs_disabled">ปิดใช้งานการบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_logs_none_found">ไม่พบบันทึก</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">คัดลอกบันทึกแล้ว</string>
-  <string name="morphe_debug_logs_failed_to_export">ส่งออกบันทึกไม่สำเร็จ: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">ล้างบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">ล้างบันทึกการแก้ไขข้อบกพร่องของ Morphe ที่จัดเก็บไว้ทั้งหมด</string>
-  <string name="morphe_debug_logs_clear_toast">ล้างบันทึกแล้ว</string>
+  <string name="morphe_debug_logs_none_found">No debug logs found</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Debug logs copied</string>
+  <string name="morphe_debug_logs_failed_to_export">Failed to export debug logs: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Debug logs cleared</string>
   <string name="morphe_debug_feature_flags_manager_title">แฟล็กคุณสมบัติ Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">จัดการแฟล็กคุณสมบัติบูลีน</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">แฟล็กที่ใช้งานอยู่ (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">แฟล็กที่ถูกบล็อก (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">ค้นหาแฟล็ก...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">บันทึกแฟล็กแล้ว</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">รีเซ็ตแฟล็กแล้ว</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">คัดลอกแฟล็กไปยังคลิปบอร์ดแล้ว</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">รีสตาร์ตแอปเพื่อใช้คุณสมบัตินี้</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Active feature flags (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blocked feature flags (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Search feature flags...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flags saved</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flags reset</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flags copied to clipboard</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restart the app to use this setting</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">เปิดการตั้งค่า MicroG</string>

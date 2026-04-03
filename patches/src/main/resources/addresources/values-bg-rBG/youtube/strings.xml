@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Фоновото възпроизвеждане на Shorts е деактивирано</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Фоновото възпроизвеждане на Shorts е активирано</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Буфер на протокола за дневника</string>
-  <string name="morphe_debug_protobuffer_summary_on">Файлове с дневници за грешки включват буфера</string>
-  <string name="morphe_debug_protobuffer_summary_off">Файлове с дневници за грешки не включват буфера</string>
+  <string name="morphe_debug_protobuffer_title">Протоколен буфер за отстраняване на грешки</string>
+  <string name="morphe_debug_protobuffer_summary_on">Файлове с дневници за грешки включват протоколни буфери</string>
+  <string name="morphe_debug_protobuffer_summary_off">Файлове с дневници за грешки не включват протоколни буфери</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Активирането на тази настройка ще регистрира допълнителни данни за оформлението, включително текст на екрана за някои компоненти на потребителския интерфейс.
 
 Това може да помогне за идентифициране на компоненти при създаване на персонализирани филтри.
@@ -714,7 +714,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary_off">Изключи прозрачна лента за статус</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Забрани автоматичното скриване на навигационната лента</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Навигационната лента няма да се скрива при превъртане</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Навигационната лента ще се скрива при превъртане</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Навигационната лента може да се скрие при превъртане</string>
   <string name="morphe_disable_translucent_status_bar_title">Лентата за статус е непрозрачна</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Лентата за статус е непрозрачна или прозрачна</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Изключи светла прозрачна лента за навигация</string>
@@ -1409,12 +1409,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Изключете округлини ръбове</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Ръбовете са правоъгълни</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Ръбовете са закръгли</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Включете двойно натискане и стискане за да промените размера на миниплеера</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Двойно натискане и стискане е включено
-
-• Двойно натискане за да увеличите размера на миниплеера
-• Двойно натискане отново за да върнете оригиналния размер"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Двойно натискане и стискане е изключено</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Изключете влачене и пускане</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Влачене и пускане е изключено</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Влачене и пускане е включено
@@ -1428,9 +1422,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Скрийте бутоните за надграждане</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Бутоните за надграждане са скрити</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Бутоните за надграждане са показани</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Скрийте надписи</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Надписите са скрити"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Надписите са показани</string>
   <string name="morphe_miniplayer_hide_subtext_title">Скрийте бутоните за ускоро и назад</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Бутоните за ускоро и назад са скрити</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Бутоните за ускоро и назад са показани</string>

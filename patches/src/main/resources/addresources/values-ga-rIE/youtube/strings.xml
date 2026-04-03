@@ -721,7 +721,7 @@ Chun tacaíocht a fháil do Shocruithe, cuimhnigh ar an gcnaipe Socruithe via Co
   <string name="morphe_navigation_bar_animations_summary_off">Ní bhíonn aistrithe nascleanúna beoite</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deimhineas bainistiú uathoibríoch barr navigáide</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Ní bheidh an barr náisiúnta ag báistí agus tú ag scrolláil</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Béidh an barr náisiúnta ag báistí agus tú ag scrolláil</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Feidhmíonn barr na gcinnte go dícheal go dtí go scáileadh</string>
   <string name="morphe_disable_translucent_status_bar_title">Díchumasaigh barra stádais tréshoilseach</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Tá an barra stádais teimhneach</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Tá an barra stádais teimhneach nó tréshoilseach</string>
@@ -1418,12 +1418,6 @@ Teorainn: Seans nach n-oibreoidh úsáid a bhaint as an gcnaipe cúil ar an mbar
   <string name="morphe_miniplayer_disable_rounded_corners_title">Díchumasaigh coirnéil chothromú</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Tá na coirnéil cearnach</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Tá na coirnéil cruinn</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Cumasaigh tapáil faoi dhó agus pinch chun athrú méide a dhéanamh</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Gníomh tap dúbailte agus pinch le méid a athrú cumasaithe
-
-• Tap dúbailte chun méid an mhion-imreora a mhéadú
-• Tap dúbailte arís chun an méid bunaidh a athchóiriú"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Díchumasaíodh gníomh tapáil faoi dhó agus pinch chun méid a athrú</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Díchumasaigh tarraing agus scaoil</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Tá tarraing agus scaoil díchumasaithe</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Tá tarraing agus scaoil cumasaithe
@@ -1437,11 +1431,6 @@ Is féidir an mini-imreoir a tharraingt amach as an scáileán ar chlé nó ar d
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Folaigh cnaipí forleagan</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Tá cnaipí forleagan i bhfolach</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Taispeántar cnaipí forleagan</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Folaigh cnaipí méadaithe agus dúnta</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Tá na cnaipí i bhfolach
-
-Svaip chun leathnú nó dúnadh"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Taispeántar cnaipí leathnaithe agus dúnta</string>
   <string name="morphe_miniplayer_hide_subtext_title">Folaigh fo-théacsanna</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Tá fo-théacsanna i bhfolach</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Taispeántar fo-théacsanna</string>

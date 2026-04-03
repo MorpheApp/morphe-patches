@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Přehrávání Shorts na pozadí je zakázáno</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Přehrávání Shorts na pozadí je povoleno</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Zaznamenat buffer protokolu</string>
-  <string name="morphe_debug_protobuffer_summary_on">Debugovací záznamy obsahují buffer protokolu</string>
-  <string name="morphe_debug_protobuffer_summary_off">Debugovací záznamy neobsahují buffer protokolu</string>
+  <string name="morphe_debug_protobuffer_title">Protokolový buffer pro ladění</string>
+  <string name="morphe_debug_protobuffer_summary_on">Debugovací záznamy obsahují protokolové buffery</string>
+  <string name="morphe_debug_protobuffer_summary_off">Debugovací záznamy neobsahují protokolové buffery</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Povolením tohoto nastavení se bude zaznamenávat další data rozvržení, včetně textu na obrazovce pro některé komponenty uživatelského rozhraní.
 
 To může pomoci identifikovat komponenty při vytváření vlastních filtrů.
@@ -722,7 +722,7 @@ Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nást
   <string name="morphe_navigation_bar_animations_summary_off">Přechody navigace nejsou animované</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Vypněte automatické skrytí navigační lišty</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigační lišta se při posouvání nebude schovávat</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigační lišta se při posouvání bude schovávat</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigač ní panel se mūž měž při scrollingu</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktivovat průsvitný stavový řádek</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Stavový řádek je neprůhledný</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Stavový řádek je neprůhledný nebo průsvitný</string>
@@ -1419,12 +1419,6 @@ Omezení: Použití tlačítka zpět na panelu nástrojů nemusí fungovat"</str
   <string name="morphe_miniplayer_disable_rounded_corners_title">Zakázat zaoblené rohy</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Rohy jsou čtvercové</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Rohy jsou zaoblené</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Povolit dvojitý klepnutí a přiblížení pro změnu velikosti</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Dvojitý klepnutí a přiblížení pro změnu velikosti je povoleno
-
-• Dvojitým klepnutím zvětšíte velikost minihráče
-• Dvojitým klepnutím znovu obnovíte původní velikost"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Dvojitý klepnutí a přiblížení pro změnu velikosti je zakázáno</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Zakázat přetažení</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Přetažení je zakázáno</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Přetažení je povoleno
@@ -1438,11 +1432,6 @@ Miniplayer lze přetáhnout z obrazovky doleva nebo doprava"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skrýt tlačítka překrytí</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Tlačítka překrytí jsou skrytá</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Tlačítka překrytí jsou zobrazena</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Skrýt tlačítka rozbalit a zavřít</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Tlačítka jsou skrytá
-
-Přetáhnutím rozbalit nebo zavřít"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Tlačítka rozbalit a zavřít jsou zobrazena</string>
   <string name="morphe_miniplayer_hide_subtext_title">Skrýt podtexty</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Podtexty jsou skryty</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Podtexty jsou zobrazeny</string>

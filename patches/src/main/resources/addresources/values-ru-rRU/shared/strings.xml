@@ -92,33 +92,36 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">Включить журналы отладки</string>
   <string name="morphe_debug_summary_on">Журналы отладки включены</string>
   <string name="morphe_debug_summary_off">Журналы отладки отключены</string>
-  <string name="morphe_debug_stacktrace_title">Журнал трассировки стека</string>
-  <string name="morphe_debug_stacktrace_summary_on">В журналы отладки включена трассировка стека</string>
-  <string name="morphe_debug_stacktrace_summary_off">В журналы отладки не включена трассировка стека</string>
+  <string name="morphe_debug_stacktrace_title">Трассировка стека журнала отладки</string>
+  <string name="morphe_debug_stacktrace_summary_on">Журналы отладки содержат трассировку стека</string>
+  <string name="morphe_debug_stacktrace_summary_off">Журналы отладки не содержат трассировку стека</string>
   <string name="morphe_debug_toast_on_error_title">Показать всплывающее уведомление при ошибке Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Всплывающее уведомление при возникновении ошибки Morphe показано</string>
   <string name="morphe_debug_toast_on_error_summary_off">Всплывающее уведомление при возникновении ошибки Morphe скрыто</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Отключение всплывающих уведомлений об ошибках скроет все сообщения об ошибках Morphe.
 
 Вы не будете уведомлены о каких-либо непредвиденных событиях."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Экспортировать журналы отладки</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Копирует журналы отладки Morphe в буфер обмена</string>
+  <string name="morphe_debug_export_logs_title">Экспорт журналов отладки</string>
+  <string name="morphe_debug_export_logs_summary">Экспорт журналов отладки Morphe</string>
+  <string name="morphe_debug_export_logs_file">Экспорт в файл</string>
+  <string name="morphe_debug_export_logs_success">Журналы отладки успешно экспортированы</string>
+  <string name="morphe_debug_export_logs_failed">Не удалось экспортировать журналы отладки</string>
+  <string name="morphe_debug_logs_search_hint">Поиск журналов отладки...</string>
+  <string name="morphe_debug_export_logs_clear">Очистить</string>
   <string name="morphe_debug_logs_disabled">Журналы отладки отключены</string>
-  <string name="morphe_debug_logs_none_found">Журналы не найдены</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Журналы скопированы</string>
-  <string name="morphe_debug_logs_failed_to_export">Не удалось экспортировать журналы: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Очистить журналы отладки</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Очищает все сохраненные журналы отладки Morphe</string>
-  <string name="morphe_debug_logs_clear_toast">Журналы очищены</string>
+  <string name="morphe_debug_logs_none_found">Журналы отладки не найдены</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Журналы отладки скопированы</string>
+  <string name="morphe_debug_logs_failed_to_export">Не удалось экспортировать журналы отладки: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Журналы отладки очищены</string>
   <string name="morphe_debug_feature_flags_manager_title">Флаги функций Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управление логическими флагами функций</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Активные флаги (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Заблокированные флаги (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Поиск флагов...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Флаги сохранены</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Флаги сброшены</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Флаги скопированы в буфер обмена</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустите приложение, чтобы использовать эту функцию</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Флажки активных функций (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Флажки заблокированных функций (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Поиск флажков функций...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Флажки функций сохранены</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Флажки функций сброшены</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Флажки функций скопированы в буфер обмена</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустите приложение, чтобы использовать эту настройку</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Откройте настройки MicroG</string>

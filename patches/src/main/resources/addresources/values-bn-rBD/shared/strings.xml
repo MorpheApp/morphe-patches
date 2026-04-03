@@ -92,8 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">ডিবাগ লগিং</string>
   <string name="morphe_debug_summary_on">ডিবাগ লগ সক্রিয় হয়েছে</string>
   <string name="morphe_debug_summary_off">ডিবাগ লগ নিষ্ক্রিয় হয়েছে</string>
-  <string name="morphe_debug_stacktrace_title">স্টেক ট্রেস লগ</string>
-  <string name="morphe_debug_stacktrace_summary_on">ডিবাগ লগ স্টেক ট্রেস সংযুক্ত করবে</string>
+  <string name="morphe_debug_stacktrace_title">ডিবাগ লগ স্ট্যাক ট্রেস</string>
+  <string name="morphe_debug_stacktrace_summary_on">ডিবাগ লগ স্ট্যাক ট্রেস সংযুক্ত করবে</string>
   <string name="morphe_debug_stacktrace_summary_off">ডিবাগ লগ স্টেক ট্রেস সংযুক্ত করবে না</string>
   <string name="morphe_debug_toast_on_error_title">Morphe এর ত্রুটির ক্ষেত্রে টোস্ট দেখান</string>
   <string name="morphe_debug_toast_on_error_summary_on">যদি ত্রুটি ঘটে তবে toast দেখানো হবে</string>
@@ -101,24 +101,27 @@ Second \"item\" text"</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"ত্রুটি \"toast\" বন্ধ করে Morphe ত্রুটি বিজ্ঞপ্তিগুলি লুকানো হয়।
 
 আপনি কোনও অপ্রত্যাশিত ঘটনার বিষয়ে অবহিত হবেন না।"</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">ডিবাগ লগগুলি রফতানি করুন</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">ক্লিপবোর্ডে Morphe ডিবাগ লগগুলি অনুলিপি করে</string>
+  <string name="morphe_debug_export_logs_title">ডিবাগ লগগুলি রফতানি করুন</string>
+  <string name="morphe_debug_export_logs_summary">Morphe ডিবাগ লগগুলি রফতানি করুন</string>
+  <string name="morphe_debug_export_logs_file">ফাইলে রফতানি করুন</string>
+  <string name="morphe_debug_export_logs_success">সেটিং সফলভাবে আমদানি করা হয়েছে</string>
+  <string name="morphe_debug_export_logs_failed">লগ এক্সপোর্ট করা যায়নি: %s</string>
+  <string name="morphe_debug_logs_search_hint">ডিবাগ লগ খুঁজুন...</string>
+  <string name="morphe_debug_export_logs_clear">সাফ করুন</string>
   <string name="morphe_debug_logs_disabled">ডিবাগ লগিং নিষ্ক্রিয় করা হয়েছে</string>
   <string name="morphe_debug_logs_none_found">কোনো লগ পাওয়া যায়নি</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">লগ অনুলিপি করা হয়েছে</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">ডিবাগ লগ ক্লিপবোর্ডে কপি করা হয়েছে</string>
   <string name="morphe_debug_logs_failed_to_export">লগ এক্সপোর্ট করা যায়নি: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">ডিবাগ লগগুলি সাফ করুন</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">সমস্ত সঞ্চিত Morphe ডিবাগ লগ সাফ করে</string>
-  <string name="morphe_debug_logs_clear_toast">লগ সাফ করা হয়েছে</string>
+  <string name="morphe_debug_logs_clear_toast">ডিবাগ লগ সাফ করা হয়েছে</string>
   <string name="morphe_debug_feature_flags_manager_title">ফিচার ফ্ল্যাগ Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">বুলিয়ান ফিচার ফ্ল্যাগ পরিচালনা করুন</string>
   <string name="morphe_debug_feature_flags_manager_active_header">সক্রিয় ফ্ল্যাগ (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">ব্লক করা ফ্ল্যাগ (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">ফ্ল্যাগ খুঁজুন...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">ফ্ল্যাগ সংরক্ষণ করা হয়েছে</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">ফ্ল্যাগ রিসেট করা হয়েছে</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">ফিচার ফ্ল্যাগ সেভ করা হয়েছে</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">ফিচার ফ্ল্যাগ রিসেট করা হয়েছে</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">ফ্ল্যাগ ক্লিপবোর্ডে কপি করা হয়েছে</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">অ্যাপ পুনরায় চালু করুন এই বৈশিষ্ট্য ব্যবহার করতে</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">এই সেটিং ব্যবহার করতে অ্যাপটি পুনরায় চালু করুন</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG সেটিংস খুলুন।</string>

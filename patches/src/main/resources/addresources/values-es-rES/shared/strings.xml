@@ -92,33 +92,36 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_debug_title">Registro de depuración</string>
   <string name="morphe_debug_summary_on">Los registros de depuración están habilitados</string>
   <string name="morphe_debug_summary_off">Los registros de depuración están desactivados</string>
-  <string name="morphe_debug_stacktrace_title">Registrar stack traces</string>
-  <string name="morphe_debug_stacktrace_summary_on">Los registros de depuración incluyen stack trace</string>
-  <string name="morphe_debug_stacktrace_summary_off">Los registros de depuración no incluyen stack trace</string>
+  <string name="morphe_debug_stacktrace_title">Registro de depuración de la traza de pila</string>
+  <string name="morphe_debug_stacktrace_summary_on">Los registros de depuración incluyen trazas de pila</string>
+  <string name="morphe_debug_stacktrace_summary_off">Los registros de depuración no incluyen trazas de pila</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar aviso de error en Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Se mostrará un aviso si se produce un error</string>
   <string name="morphe_debug_toast_on_error_summary_off">No se mostrará un aviso si se produce un error</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar los avisos de error oculta todas las notificaciones de error de Morphe.
 
 No se le notificará de ningún evento inesperado."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exportar registros de depuración</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Copia los registros de depuración de Morphe al portapapeles</string>
+  <string name="morphe_debug_export_logs_title">Exportar registros de depuración</string>
+  <string name="morphe_debug_export_logs_summary">Exportar registros de depuración de Morphe</string>
+  <string name="morphe_debug_export_logs_file">Exportar a archivo</string>
+  <string name="morphe_debug_export_logs_success">Registros de depuración exportados correctamente</string>
+  <string name="morphe_debug_export_logs_failed">Error al exportar los registros de depuración</string>
+  <string name="morphe_debug_logs_search_hint">Buscar registros de depuración...</string>
+  <string name="morphe_debug_export_logs_clear">Borrar</string>
   <string name="morphe_debug_logs_disabled">El registro de depuración está desactivado</string>
-  <string name="morphe_debug_logs_none_found">No se encontraron registros</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Registros copiados</string>
-  <string name="morphe_debug_logs_failed_to_export">Error al exportar registros: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Borrar registros de depuración</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Borra todos los registros de depuración de Morphe almacenados</string>
-  <string name="morphe_debug_logs_clear_toast">Registros borrados</string>
+  <string name="morphe_debug_logs_none_found">No se encontraron registros de depuración</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Registros de depuración copiados</string>
+  <string name="morphe_debug_logs_failed_to_export">Error al exportar los registros de depuración: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Registros de depuración borrados</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager de indicadores de funciones</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gestionar indicadores de funciones booleanos</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Banderas activas (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Banderas bloqueadas (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Buscar banderas...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Banderas guardadas</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Banderas restablecidas</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Banderas copiadas al portapapeles</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicia la aplicación para usar esta característica</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Indicadores de funciones activas (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Indicadores de funciones bloqueadas (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Buscar indicadores de funciones...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Indicadores de funciones guardados</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Indicadores de funciones restablecidos</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Indicadores de funciones copiados al portapapeles</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie la app para usar este ajuste</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir la configuración de MicroG</string>

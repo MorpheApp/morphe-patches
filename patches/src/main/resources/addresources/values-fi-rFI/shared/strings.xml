@@ -92,7 +92,7 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_debug_title">Virheenkorjauksen kirjaaminen</string>
   <string name="morphe_debug_summary_on">Virheenkorjauslokit ovat käytössä</string>
   <string name="morphe_debug_summary_off">Virheenkorjauslokit eivät ole käytössä</string>
-  <string name="morphe_debug_stacktrace_title">Kirjaa pinon jäljitykset</string>
+  <string name="morphe_debug_stacktrace_title">Vianetsintälokit sisältävät pinojäljet</string>
   <string name="morphe_debug_stacktrace_summary_on">Vianetsintälokit sisältävät pinojäljet</string>
   <string name="morphe_debug_stacktrace_summary_off">Vianetsintälokit eivät sisällä pinojälkiä</string>
   <string name="morphe_debug_toast_on_error_title">Näytä toast-ilmoitus Morphen virhetilanteissa</string>
@@ -101,24 +101,27 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Virheilmoitusten poistaminen käytöstä piilottaa kaikki Morphe-virheilmoitukset.
 
 Et saa ilmoituksia mistään odottamattomista tapahtumista."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Vie virheenkorjauslokit</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopioi Morphen virheenkorjauslokit leikepöydälle</string>
+  <string name="morphe_debug_export_logs_title">Vie virheenkorjauslokit</string>
+  <string name="morphe_debug_export_logs_summary">Vie virheenkorjauslokit</string>
+  <string name="morphe_debug_export_logs_file">Vie tiedostoon</string>
+  <string name="morphe_debug_export_logs_success">Asetusten tuonti onnistui</string>
+  <string name="morphe_debug_export_logs_failed">Lokien vienti epäonnistui: %s</string>
+  <string name="morphe_debug_logs_search_hint">Hae virheenkorjauslokit…</string>
+  <string name="morphe_debug_export_logs_clear">Tyhjennä</string>
   <string name="morphe_debug_logs_disabled">Virheenkorjausloki ei ole käytössä</string>
   <string name="morphe_debug_logs_none_found">Lokeja ei löytynyt</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Lokit kopioitu</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Lokit kopioitu leikepöydälle</string>
   <string name="morphe_debug_logs_failed_to_export">Lokien vienti epäonnistui: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Tyhjennä virheenkorjauslokit</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Tyhjentää kaikki tallennetut Morphe-virheenkorjauslokit</string>
-  <string name="morphe_debug_logs_clear_toast">Lokit tyhjennetty</string>
+  <string name="morphe_debug_logs_clear_toast">Virheenkorjauslokit tyhjennetty</string>
   <string name="morphe_debug_feature_flags_manager_title">Ominaisuuslippujen hallinta</string>
   <string name="morphe_debug_feature_flags_manager_summary">Hallitse totuusarvo-ominaisuuslippuja</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Aktiiviset liput (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Estetyt liput (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Hae lippuja...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Liput tallennettu</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Liput nollattu</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Hae lippuja…</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Ominaisuuslippujen tallennus onnistui</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Ominaisuuslippujen palautus</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Liput kopioitu leikepöydälle</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Käynnistä sovellus uudelleen käyttääkseen tätä ominaisuutta</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Käynnistä sovellus käyttääksesi tätä asetusta</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Avaa MicroG-asetukset</string>

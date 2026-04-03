@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Reprodução de fundo dos Shorts está desativada</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Reprodução de fundo dos Shorts está ativada</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Registro de buffer de protocolo</string>
-  <string name="morphe_debug_protobuffer_summary_on">Registro de depuração incluem buffer de protocolo</string>
-  <string name="morphe_debug_protobuffer_summary_off">Registro de depuração não incluem buffer de protocolo</string>
+  <string name="morphe_debug_protobuffer_title">Protocolo de buffer de depuração</string>
+  <string name="morphe_debug_protobuffer_summary_on">Os registros de depuração incluem buffers de protocolo</string>
+  <string name="morphe_debug_protobuffer_summary_off">Os registros de depuração não incluem buffers de protocolo</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Ativar esta configuração registrará dados de layout adicionais, incluindo texto na tela para alguns componentes da IU.
 
 Isso pode ajudar a identificar componentes ao criar filtros personalizados.
@@ -720,7 +720,7 @@ Para acessar as Configurações, ative o botão Configurações via Geral → Ba
   <string name="morphe_navigation_bar_animations_summary_off">Transições de navegação não são animadas</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Desativar ocultação automática da barra de navegação</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">A barra de navegação não será ocultada durante a rolagem</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">A barra de navegação será ocultada durante a rolagem</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">A barra de navegação pode se ocultar ao rolar</string>
   <string name="morphe_disable_translucent_status_bar_title">Desabilitar barra de status translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">A barra de status é opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">A barra de status é opaca ou translúcida</string>
@@ -1417,12 +1417,6 @@ Limitação: usar o botão Voltar na barra de ferramentas pode não funcionar"</
   <string name="morphe_miniplayer_disable_rounded_corners_title">Desativar cantos arredondados</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Os cantos são quadrados</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Os cantos são arredondados</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Ativar toque duplo e pinçar para redimensionar</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"A ação de toque duplo e beliscar para redimensionar está habilitada
-
-• Toque duas vezes para aumentar o tamanho do miniplayer 
-• Toque duas vezes novamente para restaurar o tamanho original"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Toque duplo e pinçar para redimensionar está desativado</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Desativar arrastar e soltar</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Arrastar e soltar está desativado</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Arrastar e soltar está habilitado
@@ -1436,11 +1430,6 @@ O miniplayer pode ser arrastado para fora da tela para a esquerda ou direita"</s
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ocultar botões de sobreposição</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Botões de sobreposição estão ocultos</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Botões de sobreposição são mostrados</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Ocultar botões de expandir e fechar</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Botões ocultos
-
-Deslize para expandir ou fechar"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Os botões de expandir e fechar são exibidos</string>
   <string name="morphe_miniplayer_hide_subtext_title">Ocultar subtextos</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Subtextos estão ocultos</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Subtextos são exibidos</string>

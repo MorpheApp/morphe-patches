@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">La lecture en arrière-plan des Shorts est désactivée</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">La lecture en arrière-plan des Shorts est activée</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Journaliser le protocole buffer</string>
-  <string name="morphe_debug_protobuffer_summary_on">Les journaux de débogage incluent le protocole buffer</string>
-  <string name="morphe_debug_protobuffer_summary_off">Les journaux de débogage n\'incluent pas le protocole buffer</string>
+  <string name="morphe_debug_protobuffer_title">Journal de débogage du protocol buffer</string>
+  <string name="morphe_debug_protobuffer_summary_on">Les journaux de débogage incluent les protocol buffers</string>
+  <string name="morphe_debug_protobuffer_summary_off">Les journaux de débogage n\'incluent pas les protocol buffers</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"L’activation de ce paramètre enregistrera des données supplémentaires sur la mise en page, y compris le texte affiché à l’écran pour certains composants de l’interface.
 
 Cela peut aider à identifier les composants lors de la création de filtres personnalisés.
@@ -456,8 +456,8 @@ Limitations :
   <string name="morphe_copy_video_url_summary_on">Le bouton \'Copier l\'URL de la vidéo\' est affiché. Appuyez pour copier l\'URL de la vidéo. Appuyez longuement pour copier avec horodatage.</string>
   <string name="morphe_copy_video_url_summary_off">Le bouton \'Copier l\'URL de la vidéo\' n\'est pas affiché</string>
   <string name="morphe_copy_video_url_timestamp_title">Copier l\'horodatage</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Le bouton Copier l\'URL vidéo copie avec l\'horodatage. Un appui long copie sans horodatage</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Le bouton Copier l\'URL vidéo copie sans l\'horodatage. Un appui long copie avec l\'horodatage</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Le bouton \'Copier l\'URL de la vidéo\' copie avec l\'horodatage. Un appui long copie sans horodatage</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Le bouton \'Copier l\'URL de la vidéo\' copie sans l\'horodatage. Un appui long copie avec l\'horodatage</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Supprimer le message \'Confirmer votre âge\'</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Le message sera supprimé</string>
@@ -1374,7 +1374,7 @@ Si cette option est désactivée ultérieurement, il est recommandé de vider le
   <string name="morphe_change_start_page_entry_news">Actualités</string>
   <string name="morphe_change_start_page_entry_notifications">Notifications</string>
   <string name="morphe_change_start_page_entry_playlists">Playlists</string>
-  <string name="morphe_change_start_page_entry_search">Recherche</string>
+  <string name="morphe_change_start_page_entry_search">Rechercher</string>
   <string name="morphe_change_start_page_entry_shopping">Produits</string>
   <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sports</string>
@@ -1419,12 +1419,6 @@ Limitation : Le bouton 'Retour' de la barre d'outils peut ne pas fonctionner."</
   <string name="morphe_miniplayer_disable_rounded_corners_title">Désactiver les coins arrondis</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Les coins sont carrés</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Les coins sont arrondis</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Activer le double-appui et pincer pour redimensionner</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"L'action du double appui et du pincement pour redimensionner est activée.
-
-• Double appui pour augmenter la taille du minilecteur.
-• Double appui à nouveau pour rétablir la taille d'origine."</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">L\'action du double appui et du pincement pour redimensionner est désactivée.</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Désactiver le glisser-déposer</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Le glisser-déposer est désactivé</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Le gliser-déposer est activé.
@@ -1438,11 +1432,6 @@ Le mini-lecteur peut être glissé hors de l'écran vers la gauche ou la droite"
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Masquer l\'overlay des boutons</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">L\'orvelay des boutons est masqué</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">L\'orvelay des boutons est affiché</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Masquer les boutons agrandir et fermer</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Les boutons sont masqués
-
-Balayer le mini-lecteur pour agrandir ou fermer"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Les boutons agrandir et fermer sont affichés</string>
   <string name="morphe_miniplayer_hide_subtext_title">Masquer les sous-textes</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Les sous-textes sont masqués</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Les sous-textes sont affichés</string>
@@ -1461,7 +1450,7 @@ Balayer le mini-lecteur pour agrandir ou fermer"</string>
   <string name="morphe_gradient_loading_screen_summary_off">Le fond de l\'écran de chargement sera une couleur unie</string>
   <string name="morphe_splash_screen_animation_style_title">Style de l\'écran de lancement</string>
   <string name="morphe_splash_screen_animation_style_entry_1">Désactivé</string>
-  <string name="morphe_splash_screen_animation_style_entry_2">Couleur </string>
+  <string name="morphe_splash_screen_animation_style_entry_2">Coloré</string>
   <string name="morphe_splash_screen_animation_style_entry_3">Noir et blanc</string>
   <string name="morphe_seekbar_custom_color_title">Activer une couleur perso. pour la barre de progression</string>
   <string name="morphe_seekbar_custom_color_summary_on">La couleur personnalisée de la barre de progression est activée</string>
@@ -1521,8 +1510,8 @@ Appuyez ici pour en savoir plus sur DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow est temporairement indisponible</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
-  <string name="morphe_restore_old_player_buttons_title">Restaurer le style ancien des boutons lecteur</string>
-  <string name="morphe_restore_old_player_buttons_summary_on">Le style mince du lecteur est affiché</string>
+  <string name="morphe_restore_old_player_buttons_title">Restaurer l\'ancien style de bouton du lecteur</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">Le style fin du lecteur est affiché</string>
   <string name="morphe_restore_old_player_buttons_summary_off">Le style gras du lecteur est affiché</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Falsifier les dimensions de l\'appareil</string>

@@ -40,9 +40,9 @@ Second \"item\" text"</string>
     <string name="morphe_shorts_disable_background_playback_summary_off">Shorts background play is enabled</string>
 
     <!-- misc.debugging.enableDebuggingPatch -->
-    <string name="morphe_debug_protobuffer_title">Log protocol buffer</string>
-    <string name="morphe_debug_protobuffer_summary_on">Debug logs include proto buffer</string>
-    <string name="morphe_debug_protobuffer_summary_off">Debug logs do not include proto buffer</string>
+    <string name="morphe_debug_protobuffer_title">Debug log protocol buffer</string>
+    <string name="morphe_debug_protobuffer_summary_on">Debug logs include protocol buffers</string>
+    <string name="morphe_debug_protobuffer_summary_off">Debug logs do not include protocol buffers</string>
     <string name="morphe_debug_protobuffer_user_dialog_message">"Enabling this setting will log additional layout data, including on-screen text for some UI components.
 
 This can help identify components when creating custom filters.

@@ -28,11 +28,6 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
     protected void initialize() {
         Context context = getContext();
 
-        // Must use utils modified language context if language override is active.
-        if (!BaseSettings.MORPHE_LANGUAGE.isSetToDefault()) {
-            ResourceUtils.useActivityContextIfAvailable = false;
-        }
-
         PreferenceScreen preferenceScreen = getPreferenceManager().createPreferenceScreen(context);
         setPreferenceScreen(preferenceScreen);
 

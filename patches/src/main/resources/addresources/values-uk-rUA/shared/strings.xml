@@ -92,7 +92,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">Журнал налагодження</string>
   <string name="morphe_debug_summary_on">Журнали налагодження ввімкнено</string>
   <string name="morphe_debug_summary_off">Журнали налагодження вимкнено</string>
-  <string name="morphe_debug_stacktrace_title">Реєструвати трасування стека</string>
+  <string name="morphe_debug_stacktrace_title">Журнал налагодження трасування стека</string>
   <string name="morphe_debug_stacktrace_summary_on">Журнали налагодження містять трасування стека</string>
   <string name="morphe_debug_stacktrace_summary_off">Журнали налагодження не містять трасування стека</string>
   <string name="morphe_debug_toast_on_error_title">Показати повідомлення про помилку Morphe</string>
@@ -101,24 +101,27 @@ Second \"item\" text"</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Вимкнення сповіщень про помилки приховує всі сповіщення про помилки Morphe.
 
 Ви не будете отримувати сповіщення про будь-які непередбачувані події."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Експортувати журнали налагодження</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Копіює журнали налагодження Morphe до буфера обміну</string>
+  <string name="morphe_debug_export_logs_title">Експорт журналів налагодження</string>
+  <string name="morphe_debug_export_logs_summary">Експортувати журнали налагодження Morphe</string>
+  <string name="morphe_debug_export_logs_file">Експорт до файлу</string>
+  <string name="morphe_debug_export_logs_success">Журнали налагодження успішно експортовано</string>
+  <string name="morphe_debug_export_logs_failed">Не вдалося експортувати журнали налагодження</string>
+  <string name="morphe_debug_logs_search_hint">Пошук журналів налагодження…</string>
+  <string name="morphe_debug_export_logs_clear">Очистити</string>
   <string name="morphe_debug_logs_disabled">Журнали налагодження вимкнено</string>
-  <string name="morphe_debug_logs_none_found">Журнали не знайдено</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Журнали скопійовано</string>
-  <string name="morphe_debug_logs_failed_to_export">Не вдалося експортувати журнали: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Очистити журнали налагодження</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Очищує всі збережені журнали налагодження Morphe</string>
-  <string name="morphe_debug_logs_clear_toast">Журнали очищено</string>
+  <string name="morphe_debug_logs_none_found">Журнали налагодження не знайдено</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Журнали налагодження скопійовано</string>
+  <string name="morphe_debug_logs_failed_to_export">Не вдалося експортувати журнали налагодження: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Журнали налагодження очищено</string>
   <string name="morphe_debug_feature_flags_manager_title">Менеджер експериментальних прапорців</string>
   <string name="morphe_debug_feature_flags_manager_summary">Керувати експериментальними boolean прапорцями</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Активні (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Заблоковані (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Пошук прапорців...</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Пошук прапорців…</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Прапорці збережено</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Прапорці скинуто</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Прапорці скопійовано до буфера обміну</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустіть застосунок, щоб скористатися цією функцією</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустіть застосунок, щоб використовувати це налаштування</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Відкриває налаштування MicroG</string>

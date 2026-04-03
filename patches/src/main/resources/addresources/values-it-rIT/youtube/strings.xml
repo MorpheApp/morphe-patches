@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">La riproduzione in background degli Shorts è disattivata</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">La riproduzione in background degli Shorts è abilitata</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Buffer di protocollo per log</string>
-  <string name="morphe_debug_protobuffer_summary_on">I log di debug includono proto buffer</string>
-  <string name="morphe_debug_protobuffer_summary_off">I logs di debug non includono</string>
+  <string name="morphe_debug_protobuffer_title">Protocollo buffer di debug</string>
+  <string name="morphe_debug_protobuffer_summary_on">I log di debug includono protocol buffer</string>
+  <string name="morphe_debug_protobuffer_summary_off">I log di debug non includono protocol buffer</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"L'abilitazione di questa impostazione registrerà dati di layout aggiuntivi, incluso il testo su schermo per alcuni componenti dell'interfaccia utente.
 
 Questo può aiutare a identificare i componenti durante la creazione di filtri personalizzati.
@@ -721,7 +721,7 @@ Per accedere alle Impostazioni, attiva il pulsante Impostazioni tramite Generale
   <string name="morphe_navigation_bar_animations_summary_off">Le transizioni di navigazione non sono animate</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Disabilita la rimozione automatica della barra di navigazione</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">La barra di navigazione non si nasconderà durante lo scorrimento</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barra di navigazione si nasconderà durante lo scorrimento</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barra di navigazione potrebbe nascondersi durante lo scorrimento</string>
   <string name="morphe_disable_translucent_status_bar_title">Disabilita la barra di stato traslucida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">La barra di stato è opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barra di stato è opaca o traslucida</string>
@@ -1418,12 +1418,6 @@ Limitazione: l'utilizzo del pulsante Indietro sulla barra degli strumenti potreb
   <string name="morphe_miniplayer_disable_rounded_corners_title">Disabilita angoli arrotondati</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Gli angoli sono quadrati</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Gli angoli sono arrotondati</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Abilita il doppio tocco e il pizzico per ridimensionare</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"I gesti Doppio Tocco e Pizzico per ridimensionare sono abilitati
-
-• Tocca due volte per aumentare la dimensione del riproduttore minimizzato
-• Tocca di nuovo due volte per ripristinare le dimensioni originali"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">L\'azione a doppio tocco e il pizzico da ridimensionare è disabilitato</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Disabilita trascinamento</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Trascinare e rilasciare è disabilitato</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Il gesto Trascina e Rilascia è attivato
@@ -1437,11 +1431,6 @@ Il riproduttore minimizzato può essere trascinato fuori dallo schermo a sinistr
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Nascondi i pulsanti di overlay</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">I pulsanti di overlay sono nascosti</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">I pulsanti di overlay sono visualizzati</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Nascondi i pulsanti di espansione e chiusura</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"I pulsanti sono nascosti
-
-Scorri per espandere o chiudere"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">I pulsanti di espansione e chiusura sono mostrati</string>
   <string name="morphe_miniplayer_hide_subtext_title">Nascondi sottotitoli</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">I sottotitoli sono nascosti</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">I sottotitoli sono visibili</string>

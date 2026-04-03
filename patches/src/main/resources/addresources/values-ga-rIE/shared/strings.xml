@@ -92,7 +92,7 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_debug_title">Logáil dífhabhtaithe</string>
   <string name="morphe_debug_summary_on">Tá logaí dífhabhtaithe cumasaithe</string>
   <string name="morphe_debug_summary_off">Tá logaí dífhabhtaithe díchumasaithe</string>
-  <string name="morphe_debug_stacktrace_title">Rianta cruachta loga</string>
+  <string name="morphe_debug_stacktrace_title">Rian cruachta logaí dífhabhtaithe</string>
   <string name="morphe_debug_stacktrace_summary_on">Áirítear rian cruachta i logaí dífhabhtaithe</string>
   <string name="morphe_debug_stacktrace_summary_off">Ní chuimsíonn logaí dífhabhtaithe rian cruachta</string>
   <string name="morphe_debug_toast_on_error_title">Taispeáin tósta ar earráid Morphe</string>
@@ -101,24 +101,27 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Má mhúchtar tóstaí earráide, folaítear gach fógra earráide Morphe.
 
 Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Easpórtáil logaí dífhabhtaithe</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Cóipeálann sé logaí dífhabhtaithe Morphe chuig an gearrthaisce</string>
+  <string name="morphe_debug_export_logs_title">Easpórtáil logaí dífhabhtaithe</string>
+  <string name="morphe_debug_export_logs_summary">Easpórtáil logaí dífhabhtaithe Morphe</string>
+  <string name="morphe_debug_export_logs_file">Easpórtáil go comhaid</string>
+  <string name="morphe_debug_export_logs_success">D\'éirigh leis na logaí a easpórtáil</string>
+  <string name="morphe_debug_export_logs_failed">Theip ar logaí a onnmhairiú</string>
+  <string name="morphe_debug_logs_search_hint">Cuardaigh logaí dífhabhtaithe...</string>
+  <string name="morphe_debug_export_logs_clear">Glan</string>
   <string name="morphe_debug_logs_disabled">Tá logáil dífhabhtaithe díchumasaithe</string>
-  <string name="morphe_debug_logs_none_found">Níor aimsíodh aon logaí</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Lógaí cóipeáilte</string>
+  <string name="morphe_debug_logs_none_found">Níor aimsíodh aon logaí dífhabhtaithe</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Cóipeáil logaí dífhabhtaithe</string>
   <string name="morphe_debug_logs_failed_to_export">Theip ar logaí a easpórtáil: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Glan logaí dífhabhtaithe</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Glanann sé gach loga dífhabhtaithe Morphe stóráilte</string>
-  <string name="morphe_debug_logs_clear_toast">Glanadh logaí</string>
+  <string name="morphe_debug_logs_clear_toast">Glantaíodh logaí dífhabhtaithe</string>
   <string name="morphe_debug_feature_flags_manager_title">Bainisteoir bratacha gnéithe</string>
   <string name="morphe_debug_feature_flags_manager_summary">Bainistigh bratacha gné booléacha</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Bratacha gníomhacha (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Bratacha blocáilte (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Cuardaigh bratacha...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Bratacha sábháilte</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Athshocraíodh bratacha</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Bratacha cóipeáilte chuig an ngearrthaisce</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Atosaigh an aip chun an ghné seo a úsáid</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Brataí gníomhacha (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Brataí blocáilte (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Cuardaigh brataí...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Sábhááladh bratacha gnéithe</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Arnulladh bratacha gnéithe</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Cóipeáil brataí chuig an ngearrthaisce</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Athosaigh an aip chun an socruithe seo a úsáid</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Oscail na socruithe MicroG</string>

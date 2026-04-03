@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">スワイプ コントロール</string>
   <string name="morphe_settings_screen_11_misc_title">その他</string>
   <string name="morphe_settings_screen_12_video_title">動画</string>
-  <string name="morphe_restore_old_settings_menus_title">古い設定メニューを復元</string>
+  <string name="morphe_restore_old_settings_menus_title">以前の設定メニューに戻す</string>
   <string name="morphe_restore_old_settings_menus_summary_on">古いスタイルの設定メニューが表示されます</string>
   <string name="morphe_restore_old_settings_menus_summary_off">新しいスタイルの設定メニューが表示されます</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">ショート動画のバックグラウンド再生は無効です</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">ショート動画のバックグラウンド再生は有効です</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">protocol buffer をログに保存</string>
+  <string name="morphe_debug_protobuffer_title">protocol buffer をデバッグログに保存</string>
   <string name="morphe_debug_protobuffer_summary_on">デバッグログには protocol buffer が含まれます</string>
   <string name="morphe_debug_protobuffer_summary_off">デバッグログには protocol buffer は含まれません</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"この設定を有効にすると、一部の UI コンポーネントの画面上に表示されるテキストを含む追加のレイアウト データがログに記録されるようになります。
@@ -455,9 +455,9 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_copy_video_url_title">「動画の URL をコピー」ボタンを表示</string>
   <string name="morphe_copy_video_url_summary_on">プレーヤー オーバーレイに「動画の URL をコピー」ボタンが表示されます。タップすると動画の URL が、長押しするとタイムスタンプ付きの URL がそれぞれコピーされます</string>
   <string name="morphe_copy_video_url_summary_off">プレーヤー オーバーレイに「動画の URL をコピー」ボタンは表示されません</string>
-  <string name="morphe_copy_video_url_timestamp_title">タイムスタンプをコピー</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">コピーするビデオURLボタンは、タイムスタンプ付きでコピーします。長押しするとタイムスタンプなしでコピーします</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">コピーするビデオURLボタンは、タイムスタンプなしでコピーします。長押しするとタイムスタンプ付きでコピーします</string>
+  <string name="morphe_copy_video_url_timestamp_title">タイムスタンプを付けてコピー</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">「動画の URL をコピー」ボタンはタイムスタンプ付きの URL をコピーします。長押しするとタイムスタンプなしの URL をコピーします</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">「動画の URL をコピー」ボタンはタイムスタンプなしの URL をコピーします。長押しするとタイムスタンプ付きの URL をコピーします</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">「ご自身の責任」ダイアログを削除</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">ダイアログは削除されます</string>
@@ -722,8 +722,8 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_navigation_bar_animations_summary_on">ナビゲーションの遷移がアニメーション表示されます</string>
   <string name="morphe_navigation_bar_animations_summary_off">ナビゲーションの遷移はアニメーション表示されません</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ナビゲーション バーの自動非表示を無効化</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">下にスクロールすると、ナビゲーション バーが非表示になります</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">下にスクロールしても、ナビゲーション バーは表示され続けます</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">スクロール中にナビゲーション バーは非表示になりません</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">スクロール中にナビゲーション バーが非表示になる場合があります</string>
   <string name="morphe_disable_translucent_status_bar_title">半透明ステータスバーを無効化</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">ステータスバーは透けません</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">ステータスバーは状況に応じて透けます</string>
@@ -1344,7 +1344,7 @@ Automotive レイアウト
 
 再び偽装をオフにする場合には、UI の不具合を防ぐためにアプリデータを消去することを推奨します。"</string>
   <string name="morphe_spoof_app_version_target_title">アプリバージョンの偽装先</string>
-  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 古い「再生リストに保存」を復元</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 以前の「再生リストに保存」に戻す</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - アイコンの太字表示を無効化</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - アクション ボタンの文字表示を復元</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
@@ -1420,12 +1420,6 @@ Automotive レイアウト
   <string name="morphe_miniplayer_disable_rounded_corners_title">ミニプレーヤーを直角化</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">ミニプレーヤーの角は直角です</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">ミニプレーヤーの角は丸角です</string>
-  <string name="morphe_miniplayer_double_tap_action_title">ダブルタップとピンチによるサイズ変更を有効化</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"ダブルタップとピンチによるサイズ変更は有効です
-
-• ダブルタップするとミニプレーヤーのサイズが大きくなる
-• もう一度ダブルタップすると元のサイズに戻る"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">ダブルタップとピンチによるサイズ変更は無効です</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ドラッグ＆ドロップを無効化</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">ドラッグ＆ドロップは無効です</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"ドラッグ＆ドロップは有効です
@@ -1439,11 +1433,6 @@ Automotive レイアウト
   <string name="morphe_miniplayer_hide_overlay_buttons_title">オーバーレイ ボタンを非表示</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">オーバーレイ ボタンは表示されません</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">オーバーレイ ボタンは表示されます</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">展開ボタンと閉じるボタンを非表示</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"ボタンは表示されません
-
-展開するまたは閉じるにはスワイプしてください"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">展開ボタンと閉じるボタンは表示されます</string>
   <string name="morphe_miniplayer_hide_subtext_title">サブテキストを非表示</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">サブテキストは表示されません</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">サブテキストは表示されます</string>
@@ -1520,9 +1509,9 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow は一時的に利用できません</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
-  <string name="morphe_restore_old_player_buttons_title">古いプレイヤーボタンのスタイルを復元</string>
-  <string name="morphe_restore_old_player_buttons_summary_on">プレイヤーの細字スタイルが表示されます</string>
-  <string name="morphe_restore_old_player_buttons_summary_off">プレイヤーの太字スタイルが表示されます</string>
+  <string name="morphe_restore_old_player_buttons_title">以前のプレーヤーボタンのデザインに戻す</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">プレーヤーボタンは細字デザインで表示されます</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">プレーヤーボタンは太字デザインで表示されます</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">デバイスの画面サイズを偽装</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"デバイスの画面サイズは偽装されています
@@ -1592,7 +1581,7 @@ Automotive レイアウト
   <string name="morphe_custom_speed_menu_title">カスタム再生速度メニュー</string>
   <string name="morphe_custom_speed_menu_summary_on">カスタム再生速度リストが再生速度メニューに表示されます</string>
   <string name="morphe_custom_speed_menu_summary_off">デフォルトの再生速度リストが再生速度メニューに表示されます</string>
-  <string name="morphe_restore_old_speed_menu_title">古い再生速度メニューを復元</string>
+  <string name="morphe_restore_old_speed_menu_title">以前の再生速度メニューに戻す</string>
   <string name="morphe_restore_old_speed_menu_summary_on">古いスタイルの再生速度メニューが表示されます</string>
   <string name="morphe_restore_old_speed_menu_summary_off">新しいスタイルの再生速度メニューが表示されます</string>
   <string name="morphe_custom_playback_speeds_title">カスタム再生速度リスト</string>

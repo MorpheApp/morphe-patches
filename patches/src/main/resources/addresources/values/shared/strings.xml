@@ -94,33 +94,36 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_debug_title">Debug logging</string>
     <string name="morphe_debug_summary_on">Debug logs are enabled</string>
     <string name="morphe_debug_summary_off">Debug logs are disabled</string>
-    <string name="morphe_debug_stacktrace_title">Log stack traces</string>
-    <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack trace</string>
-    <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack trace</string>
+    <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
+    <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack traces</string>
+    <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack traces</string>
     <string name="morphe_debug_toast_on_error_title">Show toast on Morphe error</string>
     <string name="morphe_debug_toast_on_error_summary_on">Toast is shown if error occurs</string>
     <string name="morphe_debug_toast_on_error_summary_off">Toast is not shown if error occurs</string>
     <string name="morphe_debug_toast_on_error_user_dialog_message">"Turning off error toasts hides all Morphe error notifications.
 
 You will not be notified of any unexpected events."</string>
-    <string name="morphe_debug_export_logs_to_clipboard_title">Export debug logs</string>
-    <string name="morphe_debug_export_logs_to_clipboard_summary">Copies Morphe debug logs to the clipboard</string>
+    <string name="morphe_debug_export_logs_title">Export debug logs</string>
+    <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
+    <string name="morphe_debug_export_logs_file">Export to file</string>
+    <string name="morphe_debug_export_logs_success">Debug logs exported successfully</string>
+    <string name="morphe_debug_export_logs_failed">Failed to export debug logs</string>
+    <string name="morphe_debug_logs_search_hint">Search debug logs...</string>
+    <string name="morphe_debug_export_logs_clear">Clear</string>
     <string name="morphe_debug_logs_disabled">Debug logging is disabled</string>
-    <string name="morphe_debug_logs_none_found">No logs found</string>
-    <string name="morphe_debug_logs_copied_to_clipboard">Logs copied</string>
-    <string name="morphe_debug_logs_failed_to_export">Failed to export logs: %s</string>
-    <string name="morphe_debug_logs_clear_buffer_title">Clear debug logs</string>
-    <string name="morphe_debug_logs_clear_buffer_summary">Clears all stored Morphe debug logs</string>
-    <string name="morphe_debug_logs_clear_toast">Logs cleared</string>
+    <string name="morphe_debug_logs_none_found">No debug logs found</string>
+    <string name="morphe_debug_logs_copied_to_clipboard">Debug logs copied</string>
+    <string name="morphe_debug_logs_failed_to_export">Failed to export debug logs: %s</string>
+    <string name="morphe_debug_logs_clear_toast">Debug logs cleared</string>
     <string name="morphe_debug_feature_flags_manager_title">Feature flags manager</string>
     <string name="morphe_debug_feature_flags_manager_summary">Manage boolean feature flags</string>
-    <string name="morphe_debug_feature_flags_manager_active_header">Active flags (%d)</string>
-    <string name="morphe_debug_feature_flags_manager_blocked_header">Blocked flags (%d)</string>
-    <string name="morphe_debug_feature_flags_manager_search_hint">Search flags...</string>
-    <string name="morphe_debug_feature_flags_manager_toast_saved">Flags saved</string>
-    <string name="morphe_debug_feature_flags_manager_toast_reset">Flags reset</string>
-    <string name="morphe_debug_feature_flags_manager_toast_copied">Flags copied to clipboard</string>
-    <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restart the app to use this feature</string>
+    <string name="morphe_debug_feature_flags_manager_active_header">Active feature flags (%d)</string>
+    <string name="morphe_debug_feature_flags_manager_blocked_header">Blocked feature flags (%d)</string>
+    <string name="morphe_debug_feature_flags_manager_search_hint">Search feature flags...</string>
+    <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flags saved</string>
+    <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flags reset</string>
+    <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flags copied to clipboard</string>
+    <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restart the app to use this setting</string>
 
     <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
     <!-- misc.gms.gmsCoreSupportResourcePatch -->

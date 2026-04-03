@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Воспроизведение Shorts в фоновом режиме отключено</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Воспроизведение Shorts в фоновом режиме включено</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Журнал буфера протоколов</string>
-  <string name="morphe_debug_protobuffer_summary_on">В журналы отладки включен буфер протоколов</string>
-  <string name="morphe_debug_protobuffer_summary_off">В журналы отладки не включен буфер протоколов</string>
+  <string name="morphe_debug_protobuffer_title">Буфер протокола журнала отладки</string>
+  <string name="morphe_debug_protobuffer_summary_on">Журналы отладки содержат буферы протоколов</string>
+  <string name="morphe_debug_protobuffer_summary_off">Журналы отладки не содержат буферов протокола</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Включение этой настройки позволит регистрировать дополнительные данные макета, включая текст на экране для некоторых компонентов пользовательского интерфейса.
 
 Это может помочь определить компоненты при создании пользовательских фильтров.
@@ -456,9 +456,9 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_title">Показать кнопку копирования URL видео</string>
   <string name="morphe_copy_video_url_summary_on">Кнопка для копирования URL-адреса видео показана. Нажмите, чтобы скопировать URL-адрес видео. Нажмите и удерживайте, чтобы скопировать URL-адрес видео с меткой времени</string>
   <string name="morphe_copy_video_url_summary_off">Кнопка для копирования URL-адреса видео не показана</string>
-  <string name="morphe_copy_video_url_timestamp_title">Скопировать временную метку</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Кнопка копирования URL-адреса видео копирует вместе со временной меткой. Длительное нажатие копирует без временной метки</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Кнопка копирования URL-адреса видео копирует без временной метки. Длительное нажатие копирует вместе со временной меткой</string>
+  <string name="morphe_copy_video_url_timestamp_title">Копировать отметку времени</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Кнопка копирования Url видео копируется с меткой времени. Долгое нажатие копирует без отметки времени</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Кнопка копирования Url видео копируется без метки времени. Длительное нажатие копирует с меткой времени</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Скрыть диалог о нежелательном контенте</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Диалоговое окно о нежелательном контенте скрыто</string>
@@ -723,7 +723,7 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_navigation_bar_animations_summary_off">Переходы навигации не анимированы</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Выключить авто скрытие панели навигации</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Панель навигации не будет скрываться во время прокрутки</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Панель навигации будет скрываться во время прокрутки</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Панель навигации может скрываться во время прокрутки</string>
   <string name="morphe_disable_translucent_status_bar_title">Отключить полупрозрачность строки состояния</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Строка состояния непрозрачная</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Строка состояния непрозрачная или полупрозрачная</string>
@@ -1421,12 +1421,6 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_miniplayer_disable_rounded_corners_title">Отключить закругление углов</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Углы миниплеера квадратны</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Углы миниплеера закруглены</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Включить двойное нажатие и изменение размера щипком</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Двойное нажатие и изменение размера щипком включены
-
-• Двойное нажатие для увеличения размера миниплеера
-• Двойное нажатие еще раз для восстановления исходного размера"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Двойное нажатие и изменение размера щипком отключены</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Отключить перетаскивание</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Перетаскивание отключено</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Перетаскивание включено
@@ -1440,11 +1434,6 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Скрыть кнопки миниплеера</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Кнопки миниплеера скрыты</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Кнопки миниплеера показаны</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Скрыть кнопки разворачивания и закрытия</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Кнопки разворачивания и закрытия скрыты
-
-Проведите по миниплееру для его разворачивания или закрытия"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Кнопки разворачивания и закрытия показаны</string>
   <string name="morphe_miniplayer_hide_subtext_title">Скрыть подтексты</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Подтексты в миниплеере скрыты</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Подтексты в миниплеере показаны</string>
@@ -1524,8 +1513,8 @@ Cookies будут сохраняться автоматически, если �
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Восстановить старый стиль кнопок плеера</string>
-  <string name="morphe_restore_old_player_buttons_summary_on">Стиль игрока в тонком отображении показан</string>
-  <string name="morphe_restore_old_player_buttons_summary_off">Стиль игрока в жирном отображении показан</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">Показан тонкий стиль иконок плеера</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">Показан толстый стиль иконок плеера</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Подменить размеры устройства</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Размеры устройства подменены

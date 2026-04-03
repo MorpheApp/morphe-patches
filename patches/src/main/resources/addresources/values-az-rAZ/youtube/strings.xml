@@ -37,9 +37,6 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts arxa plan oynatma qapalıdır</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts arxa plan oynatma aktivdir</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Bufer protokol jurnalı</string>
-  <string name="morphe_debug_protobuffer_summary_on">Sazlama jurnallarına protokol buferi daxildir</string>
-  <string name="morphe_debug_protobuffer_summary_off">Sazlama jurnallarına protokol buferi daxil deyil</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Bu seçimi aktivləşdirmə bəzi UI quruluşları üçün ekran mətni də olmaqla əlavə tərtibat bazasını daxil edəcək.
 
 Bu, xüsusi filtrlər yaradarkən quruluşları müəyyən etməyə kömək edə bilər.
@@ -1237,12 +1234,6 @@ Məhdudiyyət: Alətlər cizgisindəki geri düyməsin istifadə işləməyə bi
   <string name="morphe_miniplayer_disable_rounded_corners_title">Dəyirmi küncləri qapat</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Künclər kvadratdır</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Künclər dairəvidir</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Ölçüsünü dəyişmək üçün cüt toxunmanı və çimdikləməni aktiv et</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Ölçüsün dəyişmək üçün cüt kliklə və çimdiklə
-
-• Kiçik oynadıcı ölçüsün artırmaq üçün cüt toxun
-• Orijinal ölçünü bərpa etmək üçün təkrar cüt toxun"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Ölçüsünü dəyişdirmək üçün cüt toxunma fəaliyyəti və çimdikləmə yoxdur</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Sürüklə və burax-ı qapat</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">\"Sürüklə və burax\" aktiv deyil</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Sürüklə və burax aktivdir
@@ -1256,11 +1247,6 @@ Kiçik oynadıcı ekrandan sola və ya sağa sürüklənə bilər"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Örtük düymələrini gizlət</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Örtük düymələri gizlidir</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Örtük düymələri görünür</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Genişləndirmə və bağlama düymələrini gizlət</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Düymələr gizlənib
-
-Genişləndirmək və ya bağlamaq üçün sürüşdürün"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Genişləndirmə və bağlama düymələri göstərilir</string>
   <string name="morphe_miniplayer_hide_subtext_title">Alt mətnləri gizlət</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Alt mətnlər gizlədilir</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Alt mətnlər göstərilir</string>

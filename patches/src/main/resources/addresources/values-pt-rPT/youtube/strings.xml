@@ -721,7 +721,7 @@ Para acessar as configurações, habilite o botão Configurações via Geral →
   <string name="morphe_navigation_bar_animations_summary_off">As transições de navegação não são animadas</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Desativar ocultação automática da barra de navegação</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">A barra de navegação não se ocultará durante a rolagem</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">A barra de navegação se ocultará durante a rolagem</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">A barra de navegação pode ficar oculta durante a rolagem</string>
   <string name="morphe_disable_translucent_status_bar_title">Desativar a barra de status translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">A barra de status é opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">A barra de status é opaca ou translúcida</string>
@@ -1418,12 +1418,6 @@ Limitação: Usar o botão voltar na barra de ferramentas pode não funcionar"</
   <string name="morphe_miniplayer_disable_rounded_corners_title">Desativar cantos arredondados</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Os cantos estão quadrados</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Bordas são arredondadas</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Ativar toque duplo e pinch para redimensionar</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Hành động chạm hai lần và thu phóng bằng cử chỉ được bật
-
-• Chạm hai lần để tăng kích thước miniplayer
-• Chạm hai lần nữa để khôi phục kích thước ban đầu"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Ação de toque duplo e pinçar para redimensionar está desativado</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Desativar arrastar e soltar</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Arrastar e soltar está desativado</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Kéo và thả được bật
@@ -1437,11 +1431,6 @@ Miniplayer có thể được kéo ra khỏi màn hình sang trái hoặc phải
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ocultar botões de sobreposição</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Os botões de sobreposição estão ocultos</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Os botões de sobreposição são mostrados</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Ocultar botões de expandir e fechar</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Botões ocultos
-
-Deslize para expandir ou fechar"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Botões de expandir e fechar visíveis</string>
   <string name="morphe_miniplayer_hide_subtext_title">Ocultar subtextos</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Subtextos estão ocultos</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Subtextos são exibidos</string>

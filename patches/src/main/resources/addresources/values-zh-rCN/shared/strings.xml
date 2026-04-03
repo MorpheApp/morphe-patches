@@ -75,7 +75,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">网站</string>
   <string name="morphe_settings_about_links_donate">捐助</string>
   <string name="morphe_settings_about_links_translations">翻译</string>
-  <string name="morphe_settings_about_links_credits">积分</string>
+  <string name="morphe_settings_about_links_credits">贡献表</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">最新</string>
   <string name="morphe_settings_about_links_dev_header_update_available">有可用更新</string>
   <string name="morphe_settings_about_contributors_current">当前开发</string>
@@ -92,7 +92,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">调试日志</string>
   <string name="morphe_debug_summary_on">已启用调试日志记录</string>
   <string name="morphe_debug_summary_off">已禁用调试日志记录</string>
-  <string name="morphe_debug_stacktrace_title">记录堆栈跟踪</string>
+  <string name="morphe_debug_stacktrace_title">调试日志堆栈跟踪标题</string>
   <string name="morphe_debug_stacktrace_summary_on">调试日志包括堆栈跟踪</string>
   <string name="morphe_debug_stacktrace_summary_off">调试日志不包括堆栈跟踪</string>
   <string name="morphe_debug_toast_on_error_title">在发生 Morphe 错误时显示 Toast</string>
@@ -101,24 +101,27 @@ Second \"item\" text"</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"关闭错误 Toast 会隐藏所有 Morphe 错误通知。
 
 您不会收到任何意外事件的通知。"</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">导出调试日志</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">将 Morphe 调试日志复制到剪贴板</string>
+  <string name="morphe_debug_export_logs_title">导出调试日志</string>
+  <string name="morphe_debug_export_logs_summary">导出Morphe调试日志</string>
+  <string name="morphe_debug_export_logs_file">导出到文件</string>
+  <string name="morphe_debug_export_logs_success">调试日志导出成功</string>
+  <string name="morphe_debug_export_logs_failed">导出调试日志失败</string>
+  <string name="morphe_debug_logs_search_hint">搜索调试日志...</string>
+  <string name="morphe_debug_export_logs_clear">清除</string>
   <string name="morphe_debug_logs_disabled">调试日志记录已禁用</string>
-  <string name="morphe_debug_logs_none_found">未找到日志</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">日志已复制</string>
-  <string name="morphe_debug_logs_failed_to_export">导出日志失败：%s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">清除调试日志</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">清除所有存储的 Morphe 调试日志</string>
-  <string name="morphe_debug_logs_clear_toast">日志已清除</string>
+  <string name="morphe_debug_logs_none_found">未找到调试日志</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">调试日志已复制</string>
+  <string name="morphe_debug_logs_failed_to_export">导出调试日志失败：%s</string>
+  <string name="morphe_debug_logs_clear_toast">调试日志已清除</string>
   <string name="morphe_debug_feature_flags_manager_title">功能标志 Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">管理布尔功能标志</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">活动标志 (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">已阻止标志 (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">搜索标志...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">标志已保存</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">标志已重置</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">标志已复制到剪贴板</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">重启应用以使用此功能</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">活动功能标志 (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">已阻止的功能标志 (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">搜索功能标志...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">功能标志已保存</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">功能标志已重置</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">功能标志已复制到剪贴板</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">为了使用此设置，请重启应用</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">打开 MicroG 设置</string>

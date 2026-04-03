@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">शॉर्ट्स पार्श्वभूमी प्ले अक्षम आहे</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">शॉर्ट्स पार्श्वभूमी प्ले सक्षम आहे</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">प्रोटोकॉल बफर लॉग करा</string>
-  <string name="morphe_debug_protobuffer_summary_on">डीबग लॉगमध्ये प्रोटो बफर समाविष्ट आहे</string>
-  <string name="morphe_debug_protobuffer_summary_off">डीबग लॉगमध्ये प्रोटो बफर समाविष्ट नाही</string>
+  <string name="morphe_debug_protobuffer_title">डीबग लॉग प्रोटोकॉल बफर</string>
+  <string name="morphe_debug_protobuffer_summary_on">डीबग लॉगमध्ये प्रोटोकॉल बफर समाविष्ट आहेत</string>
+  <string name="morphe_debug_protobuffer_summary_off">डीबग लॉगमध्ये प्रोटोकॉल बफर समाविष्ट नाहीत</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"हे सेटिंग सक्षम केल्यास अतिरिक्त लेआउट डेटा लॉग केला जाईल, ज्यामध्ये काही UI घटकांसाठी स्क्रीनवरील मजकूर समाविष्ट आहे.
 
 हे कस्टम फिल्टर तयार करताना घटक ओळखण्यात मदत करू शकते.
@@ -722,7 +722,7 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_navigation_bar_animations_summary_off">नेव्हिगेशन संक्रमण एनिमेटेड नाहीत</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ऑटो-लपविणे अक्षम करा</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">स्क्रोल करताना नेव्हिगेशन बार लपणार नाही</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">स्क्रोल करताना नेव्हिगेशन बार लपवेल</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">स्क्रोल करताना नेव्हिगेशन बार लपण्याची शक्यता</string>
   <string name="morphe_disable_translucent_status_bar_title">पारदर्शक स्टेटस बार अक्षम करा</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">स्टेटस बार अपारदर्शक आहे</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">स्टेटस बार अपारदर्शक किंवा पारदर्शक आहे</string>
@@ -1415,12 +1415,6 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_miniplayer_disable_rounded_corners_title">गोलाकार कोपरे अक्षम करा</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">कोपरे चौकोनी आहेत</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">कोपरे गोलाकार आहेत</string>
-  <string name="morphe_miniplayer_double_tap_action_title">दुहेरी टॅप आणि पिंच करून आकार बदलणे सक्षम करा</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"दुहेरी टॅप क्रिया आणि पिंच करून आकार बदलणे सक्षम आहे.
-
-• मिनीप्लेअरचा आकार वाढवण्यासाठी दोन वेळा टॅप करा
-• मूळ आकार परत आणण्यासाठी पुन्हा दोन वेळा टॅप करा"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">दुहेरी टॅप क्रिया आणि पिंच करून आकार बदलणे अक्षम आहे</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ड्रॅग आणि ड्रॉप अक्षम करा</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">ड्रॅग आणि ड्रॉप अक्षम आहे</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"ड्रॅग आणि ड्रॉप सक्षम आहे
@@ -1434,11 +1428,6 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ओव्हरले बटणे लपवा</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">ओव्हरले बटणे लपविलेली आहेत</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">ओव्हरले बटणे दिसत आहेत</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">विस्तार आणि बंद बटणे लपवा</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"बटणे लपविलेली आहेत
-
-विस्तारित किंवा बंद करण्यासाठी स्वाइप करा"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">विस्तार आणि बंद बटणे दिसत आहेत</string>
   <string name="morphe_miniplayer_hide_subtext_title">सबटेक्स्ट लपवा</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">सबटेक्स्ट लपविलेले आहे</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">सबटेक्स्ट दर्शविले जातात</string>

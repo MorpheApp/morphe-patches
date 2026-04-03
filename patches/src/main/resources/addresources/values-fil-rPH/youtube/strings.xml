@@ -721,7 +721,7 @@ Upang ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gen
   <string name="morphe_navigation_bar_animations_summary_off">Ang mga transition ng Navigation ay walang animasyon</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">I-disable ang auto-hiding navigation bar</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Ang navigation bar ay hindi magtatago habang nag-scroll</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Ang navigation bar ay magtatago habang nag-scroll</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Maaaring itago ang navigation bar habang nag-scroll</string>
   <string name="morphe_disable_translucent_status_bar_title">I-disable ang translucent status bar</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Ang status bar ay opaque</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Ang status bar ay opaque o translucent</string>
@@ -1418,12 +1418,6 @@ Limitasyon: Ang paggamit ng pindutan ng back sa toolbar ay maaaring hindi gumana
   <string name="morphe_miniplayer_disable_rounded_corners_title">I-disable ang bilog na sulok</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Parisukat ang mga sulok</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Bilog ang mga sulok</string>
-  <string name="morphe_miniplayer_double_tap_action_title">I-enable ang double-tap at pinch para i-resize</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Naka-enable ang aksyon ng double-tap at pinch para i-resize
-
-• I-double tap para palakihin ang miniplayer
-• I-double tap ulit para ibalik sa orihinal na sukat"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Naka-disable ang aksyon ng double-tap at pinch para i-resize</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">I-disable ang pag-drag at drop</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Naka-disable ang pag-drag at drop</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Naka-enable ang pag-drag at drop
@@ -1437,11 +1431,6 @@ Ang miniplayer ay maaaring i-drag palabas ng screen sa kaliwa o kanan"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Itago ang mga overlay button</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Nakatago ang mga overlay button</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Ipinapakita ang mga overlay button</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Itago ang mga expand at close button</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Nakatago ang mga button
-
-I-swipe para i-expand o isara"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Ipinapakita ang mga expand at close button</string>
   <string name="morphe_miniplayer_hide_subtext_title">Itago ang mga subtext</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Nakatago ang mga subtext</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Ipinapakita ang mga subtext</string>

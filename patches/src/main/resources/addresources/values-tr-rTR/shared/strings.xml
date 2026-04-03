@@ -78,9 +78,9 @@ Yeni dilleri çevirmek veya mevcut çevirileri iyileştirmek için morphe.softwa
   <string name="morphe_settings_about_links_credits">Takdir</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Güncel</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Güncelleme mevcut</string>
-  <string name="morphe_settings_about_contributors_current">Güncel geliştirme</string>
-  <string name="morphe_settings_about_contributors_prior">Önceki geliştirme</string>
-  <string name="morphe_settings_about_links_morphe">Aktif geliştirme</string>
+  <string name="morphe_settings_about_contributors_current">MEVCUT GELİŞTİRME</string>
+  <string name="morphe_settings_about_contributors_prior">ÖNCEKİ GELİŞTİRME</string>
+  <string name="morphe_settings_about_links_morphe">AKTİF GELİŞTİRME</string>
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
@@ -92,7 +92,7 @@ Yeni dilleri çevirmek veya mevcut çevirileri iyileştirmek için morphe.softwa
   <string name="morphe_debug_title">Hata ayıklama kayıtları</string>
   <string name="morphe_debug_summary_on">Hata ayıklama kayıtları etkin</string>
   <string name="morphe_debug_summary_off">Hata ayıklama kayıtları devre dışı</string>
-  <string name="morphe_debug_stacktrace_title">Stack traces\'in kaydını tut</string>
+  <string name="morphe_debug_stacktrace_title">Hata ayıklama kaydı stack trace</string>
   <string name="morphe_debug_stacktrace_summary_on">Hata ayıklama kayıtları stack traces\'i içerir</string>
   <string name="morphe_debug_stacktrace_summary_off">Hata ayıklama kayıtları stack traces\'i içermez</string>
   <string name="morphe_debug_toast_on_error_title">Morphe hatası durumunda uyarı göster</string>
@@ -101,24 +101,27 @@ Yeni dilleri çevirmek veya mevcut çevirileri iyileştirmek için morphe.softwa
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Hata bildirimlerini kapatmak, tüm Morphe hata bildirimlerini gizler.
 
 Beklenmedik olaylar hakkında bilgilendirilmeyeceksiniz."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Hata ayıklama kayıtlarını dışa aktar</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe hata ayıklama kayıtlarını panoya kopyalar</string>
+  <string name="morphe_debug_export_logs_title">Hata ayıklama kayıtlarını dışa aktar</string>
+  <string name="morphe_debug_export_logs_summary">Morphe hata ayıklama kayıtlarını dışa aktar</string>
+  <string name="morphe_debug_export_logs_file">Dosyaya aktar</string>
+  <string name="morphe_debug_export_logs_success">Hata ayıklama kayıtları başarıyla dışa aktarıldı</string>
+  <string name="morphe_debug_export_logs_failed">Hata ayıklama kayıtlarını dışa aktarma başarısız oldu</string>
+  <string name="morphe_debug_logs_search_hint">Hata ayıklama kayıtlarını ara...</string>
+  <string name="morphe_debug_export_logs_clear">Temizle</string>
   <string name="morphe_debug_logs_disabled">Hata ayıklama kayıtları devre dışı</string>
-  <string name="morphe_debug_logs_none_found">Kayıt bulunamadı</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Kayıtlar kopyalandı</string>
-  <string name="morphe_debug_logs_failed_to_export">Kayıtlar dışa aktarılamadı: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Hata ayıklama kayıtlarını temizle</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Kaydedilmiş tüm Morphe hata ayıklama kayıtlarını temizler</string>
-  <string name="morphe_debug_logs_clear_toast">Kayıtlar temizlendi</string>
+  <string name="morphe_debug_logs_none_found">Hiçbir hata ayıklama kaydı bulunamadı</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Hata ayıklama kayıtları panoya kopyalandı</string>
+  <string name="morphe_debug_logs_failed_to_export">Hata ayıklama kayıtlarını dışa aktarma başarısız oldu: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Hata ayıklama kayıtları temizlendi</string>
   <string name="morphe_debug_feature_flags_manager_title">Özellik işaretçileri yöneticisi</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean özellik işaretçilerini yönet</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktif işaretçiler (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Engellenen işaretçiler (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">İşaretçileri ara...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">İşaretçiler kaydedildi</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">İşaretçiler sıfırlandı</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">İşaretçiler panoya kopyalandı</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bu özelliği kullanmak için uygulamayı yeniden başlatın</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktif özellik işaretçileri (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Engellenen özellik işaretçileri (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Özellik işaretçilerini ara...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Özellik işaretçileri kaydedildi</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Özellik işaretçileri sıfırlandı</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Özellik işaretçileri panoya kopyalandı</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bu ayarı kullanmak için uygulamayı yeniden başlatın</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG ayarlarını açın</string>

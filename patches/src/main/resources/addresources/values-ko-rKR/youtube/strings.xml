@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts 백그라운드 재생을 비활성화합니다</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts 백그라운드 재생을 활성화합니다\n\n알림: \n• Shorts 백그라운드 재생은 PIP 모드를 통해서만 사용할 수 있습니다</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">로그 프로토콜 버퍼</string>
+  <string name="morphe_debug_protobuffer_title">디버그 로그 프로토콜 버퍼</string>
   <string name="morphe_debug_protobuffer_summary_on">디버그 로그에 프로토콜 버퍼를 포함합니다</string>
   <string name="morphe_debug_protobuffer_summary_off">디버그 로그에 프로토콜 버퍼를 포함하지 않습니다</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"이 설정을 활성화하면 일부 UI 구성 요소에 대한 화면 텍스트를 포함한 추가 레이아웃 데이터가 기록됩니다.
@@ -453,11 +453,11 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_share_copy_url_success">URL을 클립보드에 복사하였습니다</string>
   <string name="morphe_share_copy_url_timestamp_success">타임스탬프가 표기된 URL을 클립보드에 복사하였습니다</string>
   <string name="morphe_copy_video_url_title">동영상 URL 복사 버튼 표시하기</string>
-  <string name="morphe_copy_video_url_summary_on">동영상 URL 버튼을 표시합니다\n\n• 탭하여 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬스가 표기된 동영상 URL이 복사됩니다</string>
+  <string name="morphe_copy_video_url_summary_on">동영상 URL 복사 버튼을 표시합니다</string>
   <string name="morphe_copy_video_url_summary_off">동영상 URL 복사 버튼을 표시하지 않습니다</string>
-  <string name="morphe_copy_video_url_timestamp_title">타임스탬프 복사하기</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">동영상 URL 복사 버튼을 누르면 타임스탬프와 함께 복사할 수 있습니다. 길게 탭하면 타임스탬프 없이 복사됩니다</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">동영상 URL 복사 버튼을 누르면 타임스탬프 없이 복사할 수 있습니다. 길게 탭하면 타임스탬프와 함께 복사됩니다</string>
+  <string name="morphe_copy_video_url_timestamp_title">동영상 URL 복사 버튼 동작 설정</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">• 탭하여 타임스탬프가 표기된 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기되지 않은 동영상 URL이 복사됩니다</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">• 탭하여 타임스탬프가 표기되지 않은 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기된 동영상 URL이 복사됩니다</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">시청 경고 다이얼로그 제거하기</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">일부 동영상을 시청하기 전에 표시되는 시청 경고 다이얼로그를 제거합니다</string>
@@ -717,8 +717,8 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_navigation_bar_animations_summary_on">하단바 전환 애니메이션을 활성화합니다</string>
   <string name="morphe_navigation_bar_animations_summary_off">하단바 전환 애니메이션을 비활성화합니다</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">하단바 자동 숨김 비활성화하기</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">피드를 스크롤할 경우에 하단바가 숨겨지지 않습니다</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">피드를 스크롤할 경우에 하단바가 숨겨집니다</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">피드에서 스크롤할 경우에 하단바가 숨겨지지 않습니다</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">피드에서 스크롤할 경우에 하단바가 숨겨질 수 있습니다</string>
   <string name="morphe_disable_translucent_status_bar_title">반투명 상태바 비활성화하기</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">상태바가 불투명합니다</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">상태바가 불투명하거나 반투명합니다</string>
@@ -1417,12 +1417,6 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_miniplayer_disable_rounded_corners_title">둥근 모서리 비활성화하기</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">모서리를 각지게 활성화합니다</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">모서리를 둥글게 활성화합니다</string>
-  <string name="morphe_miniplayer_double_tap_action_title">\'두 번 탭하기\' 및 \'핀치하여 크기 조정\' 활성화하기</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"'두 번 탭하기 동작' 및 '핀치하여 크기 조정'을 활성화합니다
-
-• 두 번 탭하여 미니 플레이어 크기를 늘릴 수 있습니다
-• 다시 두 번 탭하면 원래 크기로 복원됩니다"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">\'두 번 탭하기 동작\' 및 \'핀치하여 크기 조정\'을 비활성화합니다</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">드래그 &amp; 드롭 비활성화하기</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">드래그 &amp; 드롭을 비활성화합니다</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"드래그 &amp; 드롭을 활성화합니다
@@ -1436,11 +1430,6 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_miniplayer_hide_overlay_buttons_title">오버레이 버튼 숨기기</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">오버레이 버튼이 숨겨집니다.</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">오버레이 버튼이 표시됩니다.</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">\'펼치기\' &amp; \'닫기\' 버튼 숨기기</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"'펼치기' &amp; '닫기' 버튼이 숨겨집니다
-
-• 미니 플레이어를 스와이프하여 펼치거나 닫을 수 있습니다"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">\'펼치기\' &amp; \'닫기\' 버튼이 표시됩니다</string>
   <string name="morphe_miniplayer_hide_subtext_title">서브텍스트 숨기기</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">서브텍스트가 숨겨집니다</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">서브텍스트가 표시됩니다</string>

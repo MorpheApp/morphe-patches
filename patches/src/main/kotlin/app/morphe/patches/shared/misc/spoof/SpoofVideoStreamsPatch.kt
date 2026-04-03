@@ -81,8 +81,7 @@ internal fun spoofVideoStreamsPatch(
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
-    // This patch is part of the 'GmsCore support' patch.
-    // name = "Spoof video streams",
+    name = "Spoof video streams",
     description = "Adds options to spoof the client video streams to fix playback."
 ) {
     block()

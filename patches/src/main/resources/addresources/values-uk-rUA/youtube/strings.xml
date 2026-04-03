@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Фонове відтворення Shorts вимкнено</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Фонове відтворення Shorts увімкнено</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Журнал протоколу буфера</string>
-  <string name="morphe_debug_protobuffer_summary_on">Журнали налагодження містять протобуфер</string>
-  <string name="morphe_debug_protobuffer_summary_off">Журнали налагодження не містять протобуфер</string>
+  <string name="morphe_debug_protobuffer_title">Журнал налагодження протоколу буфера</string>
+  <string name="morphe_debug_protobuffer_summary_on">Журнали налагодження містять буфери протоколів</string>
+  <string name="morphe_debug_protobuffer_summary_off">Журнали налагодження не містять буферів протоколу</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Увімкнення цього налаштування реєструватиме додаткові дані про макет, зокрема текст на екрані для деяких компонентів інтерфейсу.
 
 Це може допомогти визначити компоненти під час створення користувацьких фільтрів.
@@ -722,7 +722,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary_off">Переходи навігації не анімовані</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Вимкнути автоприховування панелі навігації</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Панель навігації не приховуватиметься під час прокручування</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Панель навігації приховуватиметься під час прокручування</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Панель навігації може приховуватися під час прокручування</string>
   <string name="morphe_disable_translucent_status_bar_title">Вимкнути напівпрозорість рядка стану</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Рядок стану непрозорий</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Рядок стану непрозорий або напівпрозорий</string>
@@ -1419,12 +1419,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Вимкнути закруглені кути</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Кути квадратні</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Кути закруглені</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Подвійне натискання та зміна розміру щипком</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Подвійне натискання та зміну розміру щипком увімкнено
-
-• Двічі торкніться, щоб збільшити розмір мініплеєра
-• Двічі торкніться ще раз, щоб відновити початковий розмір"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Подвійне натискання та зміну розміру щипком вимкнено</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Вимкнути перетягування</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Перетягування вимкнено</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Перетягування увімкнено
@@ -1438,11 +1432,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Приховати кнопки накладання</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Кнопки накладання приховано</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Кнопки накладання показуються</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Приховати кнопки розгортання та закриття</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Кнопки приховано
-
-Проведіть пальцем, щоб розгорнути або закрити"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Кнопки розгортання та закриття показуються</string>
   <string name="morphe_miniplayer_hide_subtext_title">Приховати підтексти</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Підтексти в мініплеєрі приховано</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Підтексти в мініплеєрі показуються</string>

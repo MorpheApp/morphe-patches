@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Baggrundsafspilning af Shorts er deaktiveret</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Baggrundsafspilning af Shorts er aktiveret</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Logprotokolbuffer</string>
+  <string name="morphe_debug_protobuffer_title">Debug log protokolbuffer</string>
   <string name="morphe_debug_protobuffer_summary_on">Fejlfindingslogge inkluderer protobuffer</string>
   <string name="morphe_debug_protobuffer_summary_off">Fejlfindingslogge inkluderer ikke protobuffer</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Aktivering af denne indstilling logger yderligere layoutdata, inklusive tekst på skærmen for nogle UI-komponenter.
@@ -721,7 +721,7 @@ For at få adgang til Indstillinger skal du aktivere knappen Indstillinger via G
   <string name="morphe_navigation_bar_animations_summary_off">Navigationsovergange animeres ikke</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Deaktiver automatisk skjuling af navigationslinjen</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigation bar vil ikke skjules ved scrolling</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar vil skjules ved scrolling</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigation bar kan skjules ved scrolling</string>
   <string name="morphe_disable_translucent_status_bar_title">Deaktiver gennemsigtig statuslinje</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statuslinjen er opak</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statuslinjen er opak eller gennemsigtig</string>
@@ -1418,12 +1418,6 @@ Begrænsning: Brug af tilbage-knappen på værktøjslinjen fungerer muligvis ikk
   <string name="morphe_miniplayer_disable_rounded_corners_title">Deaktiver afrundede hjørner</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Hjørner er firkantede</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Hjørner er afrundede</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Aktiver dobbelttryk og klemme for at ændre størrelse</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Dobbelttrykshandling og knib for at ændre størrelse er aktiveret
-
-● Dobbelttryk for at øge miniafspillerstørrelsen
-● Dobbelttryk igen for at gendanne den oprindelige størrelse"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Dobbelttryk handling og klemme for at ændre størrelse er deaktiveret</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Deaktiver træk og slip</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Træk og slip er deaktiveret</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Træk og slip er aktiveret
@@ -1437,11 +1431,6 @@ Miniafspiller kan trækkes ud over skærmen til venstre eller højre"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skjul overlay-knapper</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Overlay-knapper er skjult</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Overlay-knapper vises</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Skjul knapperne Udvid og Luk</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Knapperne er skjult
-
-Skub for at udvide eller lukke"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Knapperne Udvid og Luk vises</string>
   <string name="morphe_miniplayer_hide_subtext_title">Skjul undertekster</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Undertekster er skjult</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Undertekster er vist</string>

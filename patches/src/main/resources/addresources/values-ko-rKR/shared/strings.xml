@@ -92,33 +92,36 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">디버그 로그</string>
   <string name="morphe_debug_summary_on">디버그 로그을 활성화합니다</string>
   <string name="morphe_debug_summary_off">디버그 로그를 비활성화합니다</string>
-  <string name="morphe_debug_stacktrace_title">로그 스택 트레이스</string>
-  <string name="morphe_debug_stacktrace_summary_on">디버그 로그에 로그 스택 트레이스를 포함합니다</string>
-  <string name="morphe_debug_stacktrace_summary_off">디버그 로그에 로그 스택 트레이스를 포함하지 않습니다</string>
+  <string name="morphe_debug_stacktrace_title">디버그 로그 스택 트레이스</string>
+  <string name="morphe_debug_stacktrace_summary_on">디버그 로그에 스택 트레이스를 포함합니다</string>
+  <string name="morphe_debug_stacktrace_summary_off">디버그 로그에 스택 트레이스를 포함하지 않습니다</string>
   <string name="morphe_debug_toast_on_error_title">Morphe 오류 메시지 표시하기</string>
   <string name="morphe_debug_toast_on_error_summary_on">오류가 발생하면 팝업 메시지를 표시합니다</string>
   <string name="morphe_debug_toast_on_error_summary_off">오류가 발생하면 팝업 메시지를 표시하지 않습니다</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"오류 메시지를 비활성화하면 모든 Morphe 오류 알림이 숨겨집니다.
 
 예상되지 않은 이벤트에 대한 알림을 받지 못할 수 있습니다."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">디버그 로그 내보내기</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe 디버그 로그를 클립보드에 복사할 수 있습니다</string>
+  <string name="morphe_debug_export_logs_title">디버그 로그 내보내기</string>
+  <string name="morphe_debug_export_logs_summary">Morphe 디버그 로그를 내보낼 수 있습니다</string>
+  <string name="morphe_debug_export_logs_file">파일로 내보내기</string>
+  <string name="morphe_debug_export_logs_success">디버그 로그를 성공적으로 내보냈습니다</string>
+  <string name="morphe_debug_export_logs_failed">디버그 로그를 내보낼 수 없습니다</string>
+  <string name="morphe_debug_logs_search_hint">디버그 로그 검색...</string>
+  <string name="morphe_debug_export_logs_clear">지우기</string>
   <string name="morphe_debug_logs_disabled">디버그 로그가 비활성화되어 있습니다</string>
   <string name="morphe_debug_logs_none_found">디버그 로그를 찾을 수 없습니다</string>
   <string name="morphe_debug_logs_copied_to_clipboard">디버그 로그를 복사하였습니다</string>
   <string name="morphe_debug_logs_failed_to_export">디버그 로그를 내보낼 수 없습니다: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">디버그 로그 지우기</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">저장된 모든 Morphe 디버그 로그를 지울 수 있습니다</string>
-  <string name="morphe_debug_logs_clear_toast">디버그 로그가 지워졌습니다</string>
+  <string name="morphe_debug_logs_clear_toast">디버그 로그를 삭제하였습니다</string>
   <string name="morphe_debug_feature_flags_manager_title">기능 플래그 관리자</string>
   <string name="morphe_debug_feature_flags_manager_summary">부울 기능 플래그를 관리할 수 있습니다</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">허용된 플래그 (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">차단된 플래그 (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">플래그 검색...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">플래그를 저장하였습니다</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">플래그를 초기화하였습니다</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">플래그를 클립보드에 복사하였습니다</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">이 기능을 사용하려면 앱을 다시 시작하세요</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">활성된 기능 플래그 (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">차단된 기능 플래그 (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">기능 플래그 검색...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">기능 플래그를 저장하였습니다</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">기능 플래그를 초기화하였습니다</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">기능 플래그를 클립보드에 복사하였습니다</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">이 설정을 사용하려면 앱을 다시 시작하세요</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG 설정을 실행할 수 있습니다</string>

@@ -92,33 +92,36 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_debug_title">Jurnal depanare</string>
   <string name="morphe_debug_summary_on">Jurnalele de depanare sunt activate</string>
   <string name="morphe_debug_summary_off">Jurnalele de depanare sunt dezactivate</string>
-  <string name="morphe_debug_stacktrace_title">Urme stive de jurnal</string>
-  <string name="morphe_debug_stacktrace_summary_on">Jurnalele depanării includ urmărirea stivelor</string>
-  <string name="morphe_debug_stacktrace_summary_off">Jurnalele de depanare nu includ urmărirea stivelor</string>
+  <string name="morphe_debug_stacktrace_title">Urmărirea stivei în jurnalul de depanare</string>
+  <string name="morphe_debug_stacktrace_summary_on">Jurnalele de depanare includ urmăriri de stive</string>
+  <string name="morphe_debug_stacktrace_summary_off">Jurnalele de depanare nu includ urmăriri de stive</string>
   <string name="morphe_debug_toast_on_error_title">Arată toast la eroare Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Se afișează un toast dacă apare o eroare</string>
   <string name="morphe_debug_toast_on_error_summary_off">Nu se afișează un toast dacă apare o eroare</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Oprirea toasturilor de eroare ascunde toate notificările de eroare Morphe.
 
 Nu veți fi notificat de niciun eveniment neașteptat."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exportare jurnale de depanare</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Copiază jurnalele de depanare Morphe în clipboard</string>
+  <string name="morphe_debug_export_logs_title">Exportare jurnale de depanare</string>
+  <string name="morphe_debug_export_logs_summary">Exportă jurnalele de depanare Morphe</string>
+  <string name="morphe_debug_export_logs_file">Exportă în fișier</string>
+  <string name="morphe_debug_export_logs_success">Jurnalele de depanare au fost exportate cu succes</string>
+  <string name="morphe_debug_export_logs_failed">Eșec la exportarea jurnalelor de depanare</string>
+  <string name="morphe_debug_logs_search_hint">Caută jurnalele de depanare...</string>
+  <string name="morphe_debug_export_logs_clear">Golește</string>
   <string name="morphe_debug_logs_disabled">Înregistrarea în jurnal de depanare este dezactivată</string>
-  <string name="morphe_debug_logs_none_found">Nu au fost găsite jurnale</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Jurnale copiate</string>
-  <string name="morphe_debug_logs_failed_to_export">Eșec la exportarea jurnalelor: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Șterge jurnalele de depanare</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Șterge toate jurnalele de depanare Morphe stocate</string>
-  <string name="morphe_debug_logs_clear_toast">Jurnale șterse</string>
+  <string name="morphe_debug_logs_none_found">Nu s-au găsit jurnale de depanare</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Jurnalele de depanare au fost copiate</string>
+  <string name="morphe_debug_logs_failed_to_export">Eșec la exportarea jurnalelor de depanare: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Jurnalele de depanare au fost șterse</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager de funcții</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gestionați funcțiile booleene</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Steaguri active (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Steaguri blocate (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Căutați steaguri...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Steaguri salvate</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Steaguri resetate</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Steaguri copiate în clipboard</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reiniţializaţi aplicaţia pentru a utiliza această funcţie</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Caută steagurile...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Steagurile au fost salvate</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Steagurile au fost resetați</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Steagurile au fost copiate în clipboard</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Repornește aplicația pentru a utiliza această setare</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Deschide setârii MicroG</string>

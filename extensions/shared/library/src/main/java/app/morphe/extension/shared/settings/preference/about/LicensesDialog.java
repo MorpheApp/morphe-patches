@@ -50,6 +50,9 @@ public class LicensesDialog extends Dialog {
             new License("Morphe",
                     "https://raw.githubusercontent.com/MorpheApp/morphe-patches/refs/heads/main/LICENSE",
                     "https://raw.githubusercontent.com/MorpheApp/morphe-patches/refs/heads/main/NOTICE"),
+            new License("Smali/multidexlib2",
+                    "https://raw.githubusercontent.com/MorpheApp/multidexlib2/refs/heads/main/LICENSE.txt",
+                    "https://raw.githubusercontent.com/MorpheApp/multidexlib2/refs/heads/main/NOTICE.txt"),
             new License("Protocol Buffers",
                     "https://raw.githubusercontent.com/protocolbuffers/protobuf/main/LICENSE")
 

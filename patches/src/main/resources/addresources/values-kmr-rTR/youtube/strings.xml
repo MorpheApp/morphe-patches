@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Aktîvîteya fonî ya Shorts-an saz nêre</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Aktîvîteya fonî ya Shorts-an saz bike</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Protokolê loga formatê binne</string>
-  <string name="morphe_debug_protobuffer_summary_on">Loga Debugê protobuffer-an diyar kirin</string>
-  <string name="morphe_debug_protobuffer_summary_off">Loga Debugê protobuffer-an ne diyar kirin</string>
+  <string name="morphe_debug_protobuffer_title">Pêşdargirtinê protokola bufferê</string>
+  <string name="morphe_debug_protobuffer_summary_on">Logên pêşdargirtinê bufferên protokolê diyar dikin</string>
+  <string name="morphe_debug_protobuffer_summary_off">Logên pêşdargirtinê bufferên protokolê nayedar dikin</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Sazkirina ev veza ji bo loga danêşîna armeğê diyar dike, û wê berêvekirina pêşandanê di binê kompontdanan de îlave dike.
 
 Ev di nav têgîdana fîltreyên qûşî de dibe alîkdar.
@@ -722,7 +722,7 @@ Ji bo ku derfetên sazkarî pêşero, rêzika 'Settings' zivirînin bi General �
   <string name="morphe_navigation_bar_animations_summary_off">Wereyê devikê naweşandinê animasyon nîne</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Kêmbara otomatîk a kêmbara navîgasyonê qeybidine.</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Rêve barê navigasyonê de nebide kêşîna ekranê.</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Rêve barê navigasyonê dê kêşîna ekranê de bişewîne.</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Bar navigasyonê de serkirinê de veşêre</string>
   <string name="morphe_disable_translucent_status_bar_title">Barê rewşê jîyayî saz bike</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Barê rewşê zixiyayî ye</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Barê rewşê zixiyayî yan jî jîyayî ye</string>
@@ -1417,9 +1417,6 @@ Hatin binveşirin, ew tê mesêr kirin ka danayê peşêbîyê şêniyel ki bug-
   <string name="morphe_miniplayer_disable_rounded_corners_title">\xe3\x83\x9c\xe3\x83\x9b\xe3\x83\xb3\xe3\x83\x88\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">\xe3\x82\xb4\xe3\x83\xbc\xe3\x83\xb3\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3\xe3\x82\xb1\xe3\x82\xb9\xe3\x82\xb7\xe3\x83\x9b\xe3\x83\xb3</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">\xe3\x82\xb4\xe3\x83\xbc\xe3\x83\xb3\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3\xe3\x82\xb1\xe3\x82\xb9\xe3\x82\xb7\xe3\x83\x9d\xe3\x82\xb5\xe3\x82\xb3\xe3\x83\x9f</string>
-  <string name="morphe_miniplayer_double_tap_action_title">\xe3\x83\x9c\xe3\x83\x9b\xe3\x83\xb3\xe3\x83\x88\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3\xe3\x81\x8c\xe3\x81\xb9\xe3\x81\xb9\xe3\x82\x93\xe3\x81\xb9\xe3\x81\xb9\xe3\x82\x93</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"\xe3\x83\x9c\xe3\x83\x9b\xe3\x83\xb3\xe3\x83\x88\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3\xe3\x81\x8c\xe3\x81\xb9\xe3\x81\xb9\xe3\x82\x93\xe3\x81\xb9\xe3\x81\xb9\xe3\x82\x93\n\n\xe3\x83\x9c\xe3\x83\x9b\xe3\x83\xb3\xe3\x83\x88\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3\xe3\x81\x8c\xe3\x81\xb9\xe3\x81\xb9\xe3\x82\x93\xe3\x81\xb9\xe3\x81\xb9\xe3\x82\x93"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">\xe3\x83\x9c\xe3\x83\x9b\xe3\x83\xb3\xe3\x83\x88\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3\xe3\x81\x8c\xe3\x81\xb9\xe3\x81\xb9\xe3\x82\x93\xe3\x81\xb9\xe3\x81\xb9\xe3\x82\x93</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">\xe3\x83\x9c\xe3\x83\x9b\xe3\x83\xb3\xe3\x83\x88\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x81\x8c\xe3\x81\xb9\xe3\x81\xb9\xe3\x82\x93</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">\xe3\x83\x9c\xe3\x83\x9b\xe3\x83\xb3\xe3\x83\x88\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x81\x8c\xe3\x81\xb9\xe3\x81\xb9\xe3\x82\x93\xe3\x81\x8a\xe3\x82\xb1\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"\xe3\x83\x9c\xe3\x83\x9b\xe3\x83\xb3\xe3\x83\x88\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3\xe3\x81\x8a\xe3\x82\xb1\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3\n\n\xe3\x83\x9d\xe3\x82\xb4\xe3\x83\xb3\xe3\x83\x9c\xe3\x83\xb3\xe3\x82\xb9\xe3\x82\xb9\xe3\x83\x9c\xe3\x83\xb3\xe3\x81\x8c\xe3\x82\xb1\xe3\x82\xb9\xe3\x83\x9b\xe3\x83\xb3\xe3\x81\x8a\xe6\x98\x8e\xe3\x81\xb9\xe3\x82\x83\xe3\x81\xb9\xe3\x82\x9b\xe6\x95\xbb\xe3\x81\xb3\xe3\x81\xb9\xe3\x82\x93"</string>
@@ -1431,11 +1428,6 @@ Miniplayer dikare li jor ekranê çapê bike serê çep an rast"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Dane serlêdanên dorpelê</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Serlêdanên dorpelê veşartine</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Serlêdanên dorpelê nîşandin</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Dane butonên berfireh bikin û bigihînin</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Buton veşartine
-
-Bo berfireh kirin an gihînin serê pêşandêrê bişîne"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Butonên berfireh bikin û gihînin nîşandin</string>
   <string name="morphe_miniplayer_hide_subtext_title">Dane metinên kêm</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Metinên kêm veşartine</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Metinên kêm nîşandin</string>

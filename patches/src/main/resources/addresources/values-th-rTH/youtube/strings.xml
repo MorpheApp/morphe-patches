@@ -37,8 +37,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">การเล่นพื้นหลัง Shorts ถูกปิดใช้งาน</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">การเล่นพื้นหลัง Shorts ถูกเปิดใช้งาน</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">บันทึกโปรโตคอลบัฟเฟอร์</string>
-  <string name="morphe_debug_protobuffer_summary_on">การบันทึกการแก้ไขข้อบกพร่องรวมถึงโปรโตคอลบัฟเฟอร์</string>
+  <string name="morphe_debug_protobuffer_title">โปรโตคอลบัฟเฟอร์บันทึกข้อมูล</string>
+  <string name="morphe_debug_protobuffer_summary_on">บันทึกการแก้ไขข้อบกพร่องรวมถึงโปรโตคอลบัฟเฟอร์</string>
   <string name="morphe_debug_protobuffer_summary_off">การบันทึกการแก้ไขข้อบกพร่องไม่รวมโปรโตคอลบัฟเฟอร์</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"การเปิดใช้งานการตั้งค่านี้จะบันทึกข้อมูลเค้าโครงเพิ่มเติม รวมถึงข้อความบนหน้าจอสำหรับส่วนประกอบ UI บางส่วน
 
@@ -719,7 +719,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary_off">การเปลี่ยนภาพเคลื่อนไหวจะไม่ถูกทำให้เป็นภาพเคลื่อนไหว</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ปิดใช้งานการซ่อนแถบนำทางอัตโนมัติ</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">แถบนำทางจะไม่ซ่อนขณะเลื่อน</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">แถบนำทางจะซ่อนขณะเลื่อน</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">แถบนำทางอาจซ่อนขณะเลื่อน</string>
   <string name="morphe_disable_translucent_status_bar_title">ปิดใช้งานแถบสถานะแบบโปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">แถบสถานะไม่โปร่งแสง</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">แถบสถานะโปร่งแสงหรือไม่โปร่งแสง</string>
@@ -1415,12 +1415,6 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_miniplayer_disable_rounded_corners_title">ปิดใช้งานมุมโค้งมน</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">มุมเป็นสี่เหลี่ยม</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">มุมโค้งมน</string>
-  <string name="morphe_miniplayer_double_tap_action_title">เปิดใช้งานการแตะสองครั้งและการบีบเพื่อปรับขนาด</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"การกระทำแตะสองครั้ง และการบีบเพื่อปรับขนาด เปิดใช้งาน
-
-• แตะสองครั้งเพื่อเพิ่มขนาด miniplayer
-• แตะสองครั้งอีกครั้งเพื่อคืนค่าขนาดเดิม"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">การแตะสองครั้งและการบีบเพื่อปรับขนาดปิดใช้งานแล้ว</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ปิดใช้งานการลากและวาง</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">การลากและวางปิดใช้งานแล้ว</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"ลากและวาง เปิดใช้งาน
@@ -1434,11 +1428,6 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ซ่อนปุ่มโอเวอร์เลย์</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">ปุ่มโอเวอร์เลย์ถูกซ่อน</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">ปุ่มโอเวอร์เลย์ถูกแสดง</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">ซ่อนปุ่มขยายและปิด</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"ปุ่มถูกซ่อน
-
-ปัดเพื่อขยายหรือปิด"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">ปุ่มขยายและปิดจะแสดงขึ้น</string>
   <string name="morphe_miniplayer_hide_subtext_title">ซ่อนข้อความย่อย</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">ข้อความย่อยถูกซ่อน</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">ข้อความย่อยแสดงอยู่</string>

@@ -92,33 +92,36 @@ Da ku zimanên nû wergerînin an wergerandinên hebin baş bikin, malpera morph
   <string name="morphe_debug_title">Înîştaînu debug</string>
   <string name="morphe_debug_summary_on">Înîştaînu debug serdest e</string>
   <string name="morphe_debug_summary_off">Înîştaînu debug serdest nê ye</string>
-  <string name="morphe_debug_stacktrace_title">Gihîna qertîna stack</string>
-  <string name="morphe_debug_stacktrace_summary_on">Înîştaînu stack trace diqebîne</string>
-  <string name="morphe_debug_stacktrace_summary_off">Înîştaînu ji stack trace nê qebîne</string>
+  <string name="morphe_debug_stacktrace_title">Rêveşeke logsê debug</string>
+  <string name="morphe_debug_stacktrace_summary_on">Logs debug tênî rêşên stackê</string>
+  <string name="morphe_debug_stacktrace_summary_off">Logs debug tênî rêşên stackê nakin</string>
   <string name="morphe_debug_toast_on_error_title">Qextinê li toastê ser Morphe error</string>
   <string name="morphe_debug_toast_on_error_summary_on">Toast diqebîne de belav bibe de serê errorê</string>
   <string name="morphe_debug_toast_on_error_summary_off">Toast nê diqebîne de belav bibe de serê errorê</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Qextinê ava toastê dixebite gelî ser bibe ê qextinê li hemû qextinê têvene.
 
 Tu nedaî belav bibe de kû dabeş bendê neqezbîn."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Debug logên kontrol/zemanê diqebîne</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe debug logên kontrol/zemanê bînin dê rêzên kontrolê</string>
+  <string name="morphe_debug_export_logs_title">иперзиполог логи жербудиз атиулеюси</string>
+  <string name="morphe_debug_export_logs_summary">Logs debug ên Morphe vekişîne</string>
+  <string name="morphe_debug_export_logs_file">Bê ser kontrolê vekişîne</string>
+  <string name="morphe_debug_export_logs_success">Logs debug bi serketî hatin vekirin</string>
+  <string name="morphe_debug_export_logs_failed">Logs debug serketin nakin vekirin</string>
+  <string name="morphe_debug_logs_search_hint">Logs debug bigere...</string>
+  <string name="morphe_debug_export_logs_clear">Paqij bike</string>
   <string name="morphe_debug_logs_disabled">Çavkaniya logê tê qutandin</string>
-  <string name="morphe_debug_logs_none_found">Tu log ne heye</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Log hatne ser lûje</string>
-  <string name="morphe_debug_logs_failed_to_export">Nêçîna eşkereyî ya logê ket: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Logên debug paqij bike</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Hemû logên debug ên Morphe hatine paqijandin</string>
-  <string name="morphe_debug_logs_clear_toast">Log hatine paqijandin</string>
+  <string name="morphe_debug_logs_none_found">Logs debug hatin dîtin nakin</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Logs debug hatin vekirin lûsteyê</string>
+  <string name="morphe_debug_logs_failed_to_export">Logs debug nakin vekirin: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Logs debug paqij kirin</string>
   <string name="morphe_debug_feature_flags_manager_title">Destwergêrê bayinatan</string>
   <string name="morphe_debug_feature_flags_manager_summary">Bayinatan booleanan sererast bike</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Bayinatan xwerê (şîrê %d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Bayinatan qutkê (şîrê %d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Bayinatan bigere...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Bayinatan hatin veşartin</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Bayinatan veşartin</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Bayinatan li ser lûje hatin veşartin</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Da ku vê taybetmendî bikarînin, sepanê ji nû ve dest pê bike</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Nîşanan xwertek karî (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Nîşanan xwertek qutî (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Nîşanan xwertek bigere...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Nîşanan xwertek hatin vekirin</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Nîşanan xwertek hatin veşartin</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Nîşanan xwertek lûsteyê hatin vekirin</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Serîlêdanê appê nûbike ku ev ayar bikarînin</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Sazîna MicroG veke</string>

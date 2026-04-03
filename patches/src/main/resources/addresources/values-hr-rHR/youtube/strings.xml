@@ -37,9 +37,6 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Reprodukcija Shorts videozapisa u pozadini onemogućena </string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Reprodukcija Shorts videozapisa u pozadini omogućena </string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Međuspremnik protokola zapisnika</string>
-  <string name="morphe_debug_protobuffer_summary_on">Zapisnici o otklanjanju pogrešaka uključuju proto međuspremnik</string>
-  <string name="morphe_debug_protobuffer_summary_off">Zapisnici o otklanjanju pogrešaka ne uključuju proto međuspremnik</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Omogućavanjem ove postavke zabilježit će se dodatni podaci o rasporedu, uključujući tekst na zaslonu za neke komponente korisničkog sučelja.
 
 To može pomoći u identificiranju komponenti prilikom izrade prilagođenih filtera.
@@ -1405,12 +1402,6 @@ Ograničenje: Koristeći dugme nazad na traci može ne funkcionirati"</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Onemogućite zaokrugljene uglove</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Uglove su kvadratne</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Uglove su zaokrugljene</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Omogući dvostruko pritisak i pinzanje da promijenite veličinu mini pregleđa</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Dvostruko pritisanje je omogućeno
-
-• Dvostrukim pritisakom se povećava veličina mini pregleđa
-• Dvostrukim pritisakom se vraća na originalnu veličinu"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Dvostavljanje dvotapni akcije i pinzanje za promjenu veličine je onemogućeno</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Onemogu drag and drop</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Drag and drop je onemogućeno</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Drag and drop je omogućeno
@@ -1424,11 +1415,6 @@ Miniplayer se može povući s lijeva ili desna strane zaslona"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Sakrij dugmice za nadogradnju</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Dugmici za nadogradnju su sakrivene</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Dugmici za nadogradnju su prikazane</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Sakrij dugmice za širenje i zatvaranje</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Dugmici su sakrivene
-
-Wipe za širenje ili zatvaranje"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Dugmice za širenje i zatvaranje su prikazane</string>
   <string name="morphe_miniplayer_hide_subtext_title">Sakrij podnaslove</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Podnaslove su sakrivene</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Podnaslove su prikazane</string>

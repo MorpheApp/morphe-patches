@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Uppspelning av Shorts-videor i bakgrunden är inaktiverad</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Uppspelning av Shorts-videor i bakgrunden är aktiverad</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Logga protokollbuffert</string>
-  <string name="morphe_debug_protobuffer_summary_on">Felsökningsloggar inkluderar protokollbuffert</string>
-  <string name="morphe_debug_protobuffer_summary_off">Felsökningsloggar inkluderar inte protokollbuffert</string>
+  <string name="morphe_debug_protobuffer_title">Protokollbuffert i felsökningsloggar</string>
+  <string name="morphe_debug_protobuffer_summary_on">Felsökningsloggar innehåller protokollbuffertar</string>
+  <string name="morphe_debug_protobuffer_summary_off">Felsökningsloggar innehåller inte protokollbuffertar</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Om du aktiverar den här inställningen loggas ytterligare layoutdata, inklusive text på skärmen för vissa komponenter i användargränssnittet.
 
 Detta kan hjälpa till att identifiera komponenter när du skapar anpassade filter.
@@ -456,8 +456,8 @@ Begränsningar:
   <string name="morphe_copy_video_url_summary_on">Knappen för att kopiera videoadress visas. Tryck för att kopiera videoadressen. Tryck länge för att kopiera med tidsstämpel</string>
   <string name="morphe_copy_video_url_summary_off">Knappen för att kopiera videoadress visas inte</string>
   <string name="morphe_copy_video_url_timestamp_title">Kopiera tidsstämpel</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Kopieringsknapp för videolänk kopierar med tidsstämpel. Långtryck kopierar utan tidsstämpel</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Kopierar videouppladdningslänk utan tidsstämpel. Långtryck kopierar med tidsstämpel</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Knapp för att kopiera videoadress kopierar med tidsstämpel. Långt tryck kopierar utan tidsstämpel</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Knapp för att kopiera videoadress kopierar utan tidsstämpel. Långt tryck kopierar med tidsstämpel</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Ta bort dialogrutan Känsliga tittare varnas</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Dialogrutan tas bort</string>
@@ -722,7 +722,7 @@ Om du vill komma åt inställningarna aktiverar du knappen Inställningar via Al
   <string name="morphe_navigation_bar_animations_summary_off">Navigeringsoverlägg animeras inte</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Inaktivera att navigeringsfältet döljs automatiskt</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Navigeringsfältet döljs inte när du skrollar</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigeringsfältet döljs när du skrollar</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Navigeringsfältet kan döljas när du skrollar</string>
   <string name="morphe_disable_translucent_status_bar_title">Inaktivera genomskinligt statusfält</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusfältet är ogenomskinligt</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusfältet är ogenomskinligt eller genomskinligt</string>
@@ -1420,12 +1420,6 @@ Begränsning: Bakåtknappen i verktygsfältet kanske inte fungerar"</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Inaktivera rundade hörn</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Hörnen är fyrkantiga</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Hörnen är rundade</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Aktivera dubbeltryck och nyp för att ändra storlek</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Dubbeltrycksåtgärd och nyp för att ändra storlek är aktiverat
-
-• Tryck snabbt två gånger för att öka minispelarens storlek
-• Tryck snabbt två gånger igen för att återställa den ursprungliga storleken"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Dubbeltrycksåtgärd och nyp för att ändra storlek är inaktiverat</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Inaktivera dra och släpp</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Dra och släpp är inaktiverat</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Dra och släpp är aktiverat
@@ -1439,11 +1433,6 @@ Minispelaren kan dras utanför skärmen till vänster eller höger"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Dölj överläggsknappar</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Överläggsknapparna är dolda</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Överläggsknapparna visas</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Dölj knappar för expandering och stängning</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Knappar dolda
-
-Svep för att expandera eller stänga"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Knappar för expandering och stängning visas</string>
   <string name="morphe_miniplayer_hide_subtext_title">Dölj undertexter</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Undertexter är dolda</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Undertexter visas</string>
@@ -1522,9 +1511,9 @@ Tryck här för att läsa mer om DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow är inte tillgängligt just nu</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
-  <string name="morphe_restore_old_player_buttons_title">Återställ gamla spelarbutton-stilen</string>
-  <string name="morphe_restore_old_player_buttons_summary_on">Spelar tunn stil visas</string>
-  <string name="morphe_restore_old_player_buttons_summary_off">Spelarens fetstil visas</string>
+  <string name="morphe_restore_old_player_buttons_title">Återställ gammal knappstil för spelaren</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">Spelare med tunn stil visas</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">Spelare med fet stil visas</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Förfalska enhetens mått</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Enhetens mått förfalskas

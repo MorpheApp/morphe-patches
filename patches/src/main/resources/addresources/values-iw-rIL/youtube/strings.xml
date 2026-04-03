@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">הפעלה ברקע של Shorts מושבתת</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">הפעלה ברקע של Shorts מופעלת</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">רשום פרוטוקול חוצץ</string>
-  <string name="morphe_debug_protobuffer_summary_on">יומני איתור באגים כוללים פרוטוקול חוצץ</string>
-  <string name="morphe_debug_protobuffer_summary_off">יומני איתור באגים אינם כוללים פרוטוקול חוצץ</string>
+  <string name="morphe_debug_protobuffer_title">Debug log protocol buffer</string>
+  <string name="morphe_debug_protobuffer_summary_on">Debug logs include protocol buffers</string>
+  <string name="morphe_debug_protobuffer_summary_off">Debug logs do not include protocol buffers</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"הפעלת הגדרה זו תתעד נתוני פריסה נוספים, כולל טקסט שעל המסך עבור רכיבי ממשק משתמש מסוימים.
 
 זה יכול לעזור לזהות רכיבים בעת יצירת מסננים מותאמים אישית.
@@ -720,7 +720,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary_off">מעברי ניווט אינם מונפשים</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">השבת הסתרת אוטומטית של סרגל הניווט</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">סרגל הניווט לא יתכסה בזמן גלילה</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">סרגל הניווט יתכסה בזמן גלילה</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">סרגל הניווט עשוי להסתתר בזמן גלילה</string>
   <string name="morphe_disable_translucent_status_bar_title">השבת שורת מצב שקופה</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">שורת מצב אטומה</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">שורת מצב אטומה או שקופה</string>
@@ -1417,12 +1417,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">בטל פינות מעוגלות</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">הפינות מרובעות</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">הפינות מעוגלות</string>
-  <string name="morphe_miniplayer_double_tap_action_title">הפעל הקשה כפולה וצביטה לשינוי גודל</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"פעולת הקשה כפולה וצביטה לשינוי גודל מופעלת
-
-• הקש פעמיים כדי להגדיל את גודל המיני-נגן
-• הקש פעמיים שוב כדי לשחזר את הגודל המקורי"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">פעולת הקשה כפולה וצביטה לשינוי גודל מושבתת</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">בטל גרירה ושחרור</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">גרירה ושחרור מושבת</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"גרירה ושחרור מופעלים
@@ -1436,11 +1430,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">הסתר לחצני שכבת-על</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">לחצני שכבת-על מוסתרים</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">לחצני שכבת-על מוצגים</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">הסתר כפתורי הרחבה וסגירה</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"הכפתורים מוסתרים
-
-החלק להרחבה או סגירה"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">כפתורי הרחבה וסגירה מוצגים</string>
   <string name="morphe_miniplayer_hide_subtext_title">הסתר תת-טקסטים</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">תת-טקסטים מוסתרים</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">תת-טקסטים מוצגים</string>

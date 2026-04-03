@@ -37,9 +37,6 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Lîstikbûna fonî ya Shorts-an saz nekirine</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Lîstikbûna fonî ya Shorts-an saz kirine</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Pêşandanê protobuffer-a log e</string>
-  <string name="morphe_debug_protobuffer_summary_on">Log-ên debug-ê ji proto buffer-ê pêk tên</string>
-  <string name="morphe_debug_protobuffer_summary_off">Log-ên debug-ê ji proto buffer-ê pêk ne tên</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Zavtana vê sazkariyê dê datexistina zêde ya qeydanan log bike, di nav de nivîsên ekranê ji bo hin komên UI.
 
 Ev dikare ji dabeşinê komponentan di damezrandina fîltiranên xwezî de bibo navendê.
@@ -1372,12 +1369,6 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
   <string name="morphe_miniplayer_disable_rounded_corners_title">خۆگرتنەوەی خوارەوەی نەچووە کار</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">دەرگەکانی چوارگۆشە</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">دەرگەکانی چۆڵاون</string>
-  <string name="morphe_miniplayer_double_tap_action_title">ئەو هەლگرتنە لەسەر دوو دەست و لاپەڕەسوک ڕەچەڵە بکە</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"ئەو هەلگرتنە لەسەر دوو دەست و لاپەڕەسوک دەوێت
-
-• دوو جار پێشاندەر بۆ زێدەبوونی خواستەکەی خوارەوە
-• دوو جار پێشاندەر دواتر ڕوونی دەبێتەوە"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">ئەو هەلگرتنە لەسەر دوو دەست و لاپەڕەسوک نەوێت</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">خۆگرتنەوەی خوارەوەی له‌ھەڵدان</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">ھەڵدانە نەخراوەتە کار</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"ھەڵدانە خۆی هەیە
@@ -1391,11 +1382,6 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
   <string name="morphe_miniplayer_hide_overlay_buttons_title">خۆگرتنەوەی پشتخاڵەکان بپارێزە</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">پشتخاڵەکان خەڵاو بون</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">پشتخاڵەکان دەبینن</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">خۆگرتنەوەی پشتخاڵەکان (کۆنە)</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"خەڵاو بون
-
-خۆڵاو کردن یان داخستن وەرگرە"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">خەڵاو نەکراون و دەبینین</string>
   <string name="morphe_miniplayer_hide_subtext_title">خۆگرتنەوەی بنەماڵەکان پاشخاڵ بپارێزە</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">بنەماڵەکان خەڵاو بون</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">بنەماڵەکان دەبینن</string>

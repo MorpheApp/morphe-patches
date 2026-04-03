@@ -15,27 +15,21 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.Bundle;
-import android.preference.EditTextPreference;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.PreferenceFragment;
-import android.preference.PreferenceGroup;
-import android.preference.PreferenceManager;
-import android.preference.PreferenceScreen;
-import android.preference.SwitchPreference;
+import android.preference.*;
+import android.text.InputType;
 import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ListView;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -43,6 +37,9 @@ import androidx.annotation.Nullable;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -54,6 +51,7 @@ import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.ui.CustomDialog;
+import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractPreferenceFragment extends PreferenceFragment {
@@ -85,13 +83,13 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             AdapterView.OnItemClickListener originalListener) implements AdapterView.OnItemClickListener {
 
         @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (Utils.isFastClick()) {
-                    return; // Ignore fast double click.
-                }
-                originalListener.onItemClick(parent, view, position, id);
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            if (Utils.isFastClick()) {
+                return; // Ignore fast double click.
             }
+            originalListener.onItemClick(parent, view, position, id);
         }
+    }
 
     @Override
     public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
@@ -136,7 +134,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Nullable
     protected static CharSequence restartDialogTitle, restartDialogMessage, restartDialogButtonText, confirmDialogTitle;
 
-    private android.content.ComponentCallbacks2 configurationListener;
+    private ComponentCallbacks2 configurationListener;
     private int currentUiMode = -1;
     private static final int READ_REQUEST_CODE = 42;
     private static final int WRITE_REQUEST_CODE = 43;
@@ -192,6 +190,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
      * so all app specific {@link Setting} instances are loaded before this method returns.
      */
     protected void initialize() {
+        // Must use utils modified language context if language override is active.
+        if (!BaseSettings.MORPHE_LANGUAGE.isSetToDefault()) {
+            ResourceUtils.useActivityContextIfAvailable = false;
+        }
+
         String preferenceResourceName;
         if (BaseSettings.SHOW_MENU_ICONS.get()) {
             preferenceResourceName = Utils.appIsUsingBoldIcons()
@@ -422,34 +425,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     /**
      * Import / Export Subroutines
      */
-    @NonNull
-    private Button createDialogButton(Context context, String text, int marginLeft, int marginRight, View.OnClickListener listener) {
-        int height = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 36f, context.getResources().getDisplayMetrics());
-        int paddingHorizontal = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
-        float radius = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 20f, context.getResources().getDisplayMetrics());
-
-        Button btn = new Button(context, null, 0);
-        btn.setText(text);
-        btn.setAllCaps(false);
-        btn.setTextSize(14);
-        btn.setSingleLine(true);
-        btn.setEllipsize(android.text.TextUtils.TruncateAt.END);
-        btn.setGravity(android.view.Gravity.CENTER);
-        btn.setPadding(paddingHorizontal, 0, paddingHorizontal, 0);
-        btn.setTextColor(Utils.isDarkModeEnabled() ? android.graphics.Color.WHITE : android.graphics.Color.BLACK);
-
-        android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable();
-        bg.setCornerRadius(radius);
-        bg.setColor(Utils.getCancelOrNeutralButtonBackgroundColor());
-        btn.setBackground(bg);
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, height, 1.0f);
-        params.setMargins(marginLeft, 0, marginRight, 0);
-        btn.setLayoutParams(params);
-        btn.setOnClickListener(listener);
-
-        return btn;
-    }
     public void showImportExportTextDialog() {
         try {
             Activity context = getActivity();
@@ -462,7 +437,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
                     str("morphe_pref_import_export_title"), // Title.
-                    null,     // No message (EditText replaces it).
+                    null, // No message (EditText replaces it).
                     currentImportExportEditText, // Pass the EditText.
                     str("morphe_settings_save"), // OK button text.
                     () -> importSettingsText(context, currentImportExportEditText.getText().toString()), // OK button action.
@@ -472,12 +447,20 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     true // Dismiss dialog when onNeutralClick.
             );
 
+            final int margin = Dim.dp4;
+
+            Button btnExport = CustomDialog.createButton(context, null, str("morphe_settings_export_file"), this::exportActivity, false, false);
+            Button btnImport = CustomDialog.createButton(context, null, str("morphe_settings_import_file"), this::importActivity, false, false);
+
+            LinearLayout.LayoutParams exportParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+            exportParams.setMargins(0, 0, margin, 0);
+            btnExport.setLayoutParams(exportParams);
+
+            LinearLayout.LayoutParams importParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+            importParams.setMargins(margin, 0, 0, 0);
+            btnImport.setLayoutParams(importParams);
+
             LinearLayout fileButtonsContainer = getLinearLayout(context);
-            int margin = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 4f, context.getResources().getDisplayMetrics());
-
-            Button btnExport = createDialogButton(context, str("morphe_settings_export_file"), 0, margin, v -> exportActivity());
-            Button btnImport = createDialogButton(context, str("morphe_settings_import_file"), margin, 0, v -> importActivity());
-
             fileButtonsContainer.addView(btnExport);
             fileButtonsContainer.addView(btnImport);
 
@@ -492,8 +475,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     currentImportExportEditText.postDelayed(() -> {
                         if (currentImportExportEditText != null) {
                             currentImportExportEditText.requestFocus();
-                            android.view.inputmethod.InputMethodManager imm = (android.view.inputmethod.InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                            if (imm != null) imm.showSoftInput(currentImportExportEditText, android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT);
+                            InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                            if (imm != null) imm.showSoftInput(currentImportExportEditText, InputMethodManager.SHOW_IMPLICIT);
                         }
                     }, 100);
                 }
@@ -512,7 +495,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         fileButtonsContainer.setOrientation(LinearLayout.HORIZONTAL);
         LinearLayout.LayoutParams fbParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        int marginTop = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
+        final int marginTop = Dim.dp16;
         fbParams.setMargins(0, marginTop, 0, 0);
         fileButtonsContainer.setLayoutParams(fbParams);
         return fileButtonsContainer;
@@ -523,9 +506,9 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         EditText editText = new EditText(context);
         editText.setText(existingSettings);
         editText.setAutofillHints((String) null);
-        editText.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
-                android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS |
-                android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT |
+                InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS |
+                InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         editText.setSingleLine(false);
         editText.setTextSize(14);
         return editText;
@@ -534,9 +517,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     public void exportActivity() {
         try {
             Setting.exportToJson(getActivity());
-
-            String formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(new java.util.Date());
-            String fileName = "Morphe_Settings_" + formatDate + ".txt";
+            String appName = Utils.getApplicationName();
+            String safeAppName = appName.replaceAll("\\s+", "_");
+            String formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
+            String fileName = safeAppName + "_Settings_" + formatDate + ".txt";
 
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -567,10 +551,12 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == WRITE_REQUEST_CODE && resultCode == android.app.Activity.RESULT_OK && data != null) {
+        if (requestCode == WRITE_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             exportTextToFile(data.getData());
-        } else if (requestCode == READ_REQUEST_CODE && resultCode == android.app.Activity.RESULT_OK && data != null) {
+        } else if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             importTextFromFile(data.getData());
+        } else if (requestCode == LogBufferManager.WRITE_LOGS_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            LogBufferManager.saveLogsToUri(getContext(), data.getData());
         }
     }
 
@@ -582,16 +568,14 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
     }
 
-    private void exportTextToFile(android.net.Uri uri) {
-        try {
-            OutputStream out = getContext().getContentResolver().openOutputStream(uri);
+    private void exportTextToFile(Uri uri) {
+        try (OutputStream out = getContext().getContentResolver().openOutputStream(uri, "rwt")) {
             if (out != null) {
                 String textToExport = existingSettings;
                 if (currentImportExportEditText != null) {
                     textToExport = currentImportExportEditText.getText().toString();
                 }
                 out.write(textToExport.getBytes(StandardCharsets.UTF_8));
-                out.close();
 
                 showLocalizedToast("morphe_settings_export_file_success", "Settings exported successfully");
             }
@@ -602,13 +586,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
 
     @SuppressWarnings("CharsetObjectCanBeUsed")
-    private void importTextFromFile(android.net.Uri uri) {
-        try {
-            InputStream in = getContext().getContentResolver().openInputStream(uri);
+    private void importTextFromFile(Uri uri) {
+        try (InputStream in = getContext().getContentResolver().openInputStream(uri)) {
             if (in != null) {
                 Scanner scanner = new Scanner(in, StandardCharsets.UTF_8.name()).useDelimiter("\\A");
                 String result = scanner.hasNext() ? scanner.next() : "";
-                in.close();
 
                 if (currentImportExportEditText != null) {
                     currentImportExportEditText.setText(result);
@@ -645,17 +627,17 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        currentUiMode = getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+        currentUiMode = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         instance = this;
 
-        configurationListener = new android.content.ComponentCallbacks2() {
+        configurationListener = new ComponentCallbacks2() {
             @SuppressLint("ChromeOsOnConfigurationChanged")
             @Override
-            public void onConfigurationChanged(@NonNull android.content.res.Configuration newConfig) {
-                int newUiMode = newConfig.uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+            public void onConfigurationChanged(@NonNull Configuration newConfig) {
+                int newUiMode = newConfig.uiMode & Configuration.UI_MODE_NIGHT_MASK;
                 if (currentUiMode != -1 && newUiMode != currentUiMode) {
                     currentUiMode = newUiMode;
-                    Utils.setIsDarkModeEnabled(newUiMode == android.content.res.Configuration.UI_MODE_NIGHT_YES);
+                    Utils.setIsDarkModeEnabled(newUiMode == Configuration.UI_MODE_NIGHT_YES);
 
                     Activity activity = getActivity();
                     if (activity != null) {

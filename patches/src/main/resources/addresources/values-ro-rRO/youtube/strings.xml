@@ -717,7 +717,7 @@ Pentru a accesa Setări, activați butonul Setări prin General → Bara de inst
   <string name="morphe_navigation_bar_animations_summary_off">Tranzițiile de navigare nu sunt animate</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Dezactivează ascunderea automată a barei de navigare</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Bara de navigare nu se va ascunde la derulare</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Bara de navigare se va ascunde la derulare</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Bara de navigare poate dispăreaă cănd derulezi</string>
   <string name="morphe_disable_translucent_status_bar_title">Dezactivează bara de stare translucidă</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Bara de stare este opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Bara de stare este opaca sau translucida</string>
@@ -1414,12 +1414,6 @@ Limitare: Utilizarea butonului Înapoi de pe bara de instrumente poate să nu fu
   <string name="morphe_miniplayer_disable_rounded_corners_title">Dezactivează colțurile rotunjite</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Colţurile sunt pătrate</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Colţurile sunt rotunjite</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Activează dublu-click și prinde pentru a redimensiona</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Acțiunea de dublu tap și pinch to resize este activată
-
-• Dublu atingeți pentru a mări dimensiunea miniplayer-ului
-• Atingeți din nou de două ori pentru a restabili dimensiunea inițială"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Atingeți de două ori și redimensionarea este dezactivată</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Dezactivează glisarea și plasarea</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Drag and drop este dezactivat</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Drag and drop este activat
@@ -1433,11 +1427,6 @@ Miniplayerul poate fi tras pe ecran spre stânga sau spre dreapta"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ascunde butoanele suprapuse</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Butoanele suprapuse sunt ascunse</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Butoanele suprapuse sunt afișate</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Ascunde butoanele de extindere și închidere</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Butoanele sunt ascunse
-
-Glisați pentru a extinde sau închide"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Butoanele de extindere și închidere sunt afișate</string>
   <string name="morphe_miniplayer_hide_subtext_title">Ascunde subtexte</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Subtexte sunt ascunse</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Subtexte sunt afișate</string>

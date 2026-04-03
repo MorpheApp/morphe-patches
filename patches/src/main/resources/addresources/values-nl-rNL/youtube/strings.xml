@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts-achtergrondafspelen is uitgeschakeld</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts-achtergrondafspelen is ingeschakeld</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Stamlogboek</string>
-  <string name="morphe_debug_protobuffer_summary_on">Debuglogboeken bevatten stamlogboek</string>
-  <string name="morphe_debug_protobuffer_summary_off">Debuglogboeken bevatten geen stamlogboek</string>
+  <string name="morphe_debug_protobuffer_title">Debuglogboek protocol buffer</string>
+  <string name="morphe_debug_protobuffer_summary_on">Debuglogboeken bevatten protocol buffers</string>
+  <string name="morphe_debug_protobuffer_summary_off">Debuglogboeken bevatten geen protocol buffers</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Als u deze instelling inschakelt, worden extra lay-outgegevens geregistreerd, waaronder tekst op het scherm voor sommige UI-componenten.
 
 Dit kan helpen bij het identificeren van componenten bij het maken van aangepaste filters.
@@ -722,7 +722,7 @@ Om Instellingen te openen, schakelt u de knop Instellingen in via Algemeen → W
   <string name="morphe_navigation_bar_animations_summary_off">Navigatieovergangen worden niet geanimeerd</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Automatisch verbergen van de navigatiebalk uitschakelen</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">De navigatiebalk zal niet verdwijnen tijdens het scrollen</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">De navigatiebalk zal verdwijnen tijdens het scrollen</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">De navigatiebalk kan verborgen worden tijdens het scrollen</string>
   <string name="morphe_disable_translucent_status_bar_title">Transparante statusbalk uitschakelen</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Statusbalk is ondoorzichtig</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Statusbalk is ondoorzichtig of doorschijnend</string>
@@ -1417,12 +1417,6 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_miniplayer_disable_rounded_corners_title">Afgeronde hoeken uitschakelen</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Hoeken zijn vierkant</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Hoeken zijn afgerond</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Schakel dubbeltikken en knijpen om te verkleinen in</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Dubbeltikactie en knijpen om te verkleinen is ingeschakeld
-
-• Dubbeltik om de miniplayer-grootte te vergroten
-• Dubbeltik opnieuw om de oorspronkelijke grootte te herstellen"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Dubbeltikken en knijpen om te verkleinen is uitgeschakeld</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Slepen en neerzetten uitschakelen</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Slepen en neerzetten is uitgeschakeld</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Sleep-en-neerzetten is ingeschakeld
@@ -1436,11 +1430,6 @@ De miniplayer kan naar links of rechts van het scherm worden gesleept"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Overlayknoppen verbergen</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Overlayknoppen zijn verborgen</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Overlayknoppen worden weergegeven</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Knop voor uitbreiden en sluiten verbergen</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Knoppen zijn verborgen
-
-Veeg om uit te breiden of te sluiten"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Knoppen voor uitbreiden en sluiten worden weergegeven</string>
   <string name="morphe_miniplayer_hide_subtext_title">Verberg subteksten</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Subteksten zijn verborgen</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Subteksten zijn zichtbaar</string>

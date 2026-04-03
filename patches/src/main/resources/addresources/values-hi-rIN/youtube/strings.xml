@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">बैकग्राउंड प्ले डिसेबल हो गया है</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">बैकग्राउंड प्ले एनबल हो गया है</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">प्रोटोकॉल बफर लॉग करें</string>
+  <string name="morphe_debug_protobuffer_title">डिबग लॉग प्रोटोकॉल बफर</string>
   <string name="morphe_debug_protobuffer_summary_on">डिबग लॉग्स प्रोटो बफर को शामिल करते हैं</string>
   <string name="morphe_debug_protobuffer_summary_off">डिबग लॉग्स प्रोटो बफर को शामिल नहीं करते हैं</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"इस सेटिंग को सक्षम करने से अतिरिक्त लेआउट डेटा रिकॉर्ड होगा, जिसमें कुछ यूआई घटकों के स्क्रीन पर पाठ शामिल होंगे।
@@ -721,7 +721,7 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_navigation_bar_animations_summary_off">नेविगेशन ट्रांज़िशन एनिमेटेड नहीं हैं</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">ऑटो-हाइडिंग नेविगेशन बार को निष्क्रिय करें</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">स्क्रॉल करते समय नेविगेशन बार नहीं छिप जाएगा</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">स्क्रॉल करते समय नेविगेशन बार छिप जाएगा</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">स्क्रॉल करते समय नेविगेशन बार छिप सकता है</string>
   <string name="morphe_disable_translucent_status_bar_title">Filter bar</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">स्थिति बार अपारदर्शी है</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">स्थिति बार अपारदर्शी या पारदर्शी है</string>
@@ -1414,12 +1414,6 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">गोल कोने बंद करें</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">कोने वर्ग हैं</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">कोने गोल हैं</string>
-  <string name="morphe_miniplayer_double_tap_action_title">आकार बदलने के लिए डबल-टैप और पिंच सक्षम करें</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"डबल-टैप एक्शन और पिंच से आकार बदलना सक्षम है
-
-• मिनीप्लेयर का आकार बढ़ाने के लिए दो बार टैप करें
-• मूल आकार को बहाल करने के लिए दोबारा टैप करें"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">डबल-टैप एक्शन और पिंच से आकार बदलना अक्षम है</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ड्रैग और ड्रॉप बंद करें</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">ड्रैग और ड्रॉप अक्षम है</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"ड्रैग और ड्रॉप सक्षम है
@@ -1433,11 +1427,6 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ओवरले बटन छुपाएं</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">ओवरले बटन छिपे हुए हैं</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">ओवरले बटन दिखाए जा रहे हैं</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">विरासत बटन छिपाएं</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"बटन छिपे हुए हैं
-
-विस्तार या बंद करने के लिए स्वाइप करें"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">विस्तार और बंद करने वाले बटन दिखाए जा रहे हैं</string>
   <string name="morphe_miniplayer_hide_subtext_title">उपपाठ छुपाएं</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">उपपाठ छिपे हुए हैं</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">उपपाठ दिखाए जा रहे हैं</string>

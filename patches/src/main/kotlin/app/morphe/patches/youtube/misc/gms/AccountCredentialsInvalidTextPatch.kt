@@ -2,6 +2,7 @@ package app.morphe.patches.youtube.misc.gms
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -23,11 +24,13 @@ internal val accountCredentialsInvalidTextPatch = bytecodePatch {
         // The user can also fix this by deleting the MicroG account but
         // MicroG accounts look almost identical to Google device accounts,
         // and it's more foolproof to instead uninstall/reinstall.
-        arrayOf(
-            SpecificNetworkErrorViewControllerFingerprint,
-            LoadingFrameLayoutControllerFingerprint
-        ).forEach { fingerprint ->
-            fingerprint.apply {
+        val matches = SpecificNetworkErrorViewControllerFingerprint.matchAll()
+        if (matches.size != 2) {
+            throw PatchException("Unexpected number of matches: " + matches.size)
+        }
+
+        matches.forEach { match ->
+            match.apply {
                 val index = instructionMatches.last().index
                 val register = method.getInstruction<OneRegisterInstruction>(index).registerA
 

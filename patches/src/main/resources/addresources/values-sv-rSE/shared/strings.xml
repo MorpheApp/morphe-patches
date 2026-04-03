@@ -92,33 +92,36 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
   <string name="morphe_debug_title">Felsökningsloggning</string>
   <string name="morphe_debug_summary_on">Felsökningsloggar är aktiverade</string>
   <string name="morphe_debug_summary_off">Felsökningsloggar är inaktiverade</string>
-  <string name="morphe_debug_stacktrace_title">Logga stackspårning</string>
-  <string name="morphe_debug_stacktrace_summary_on">Felsökningsloggar inkluderar stackspårning</string>
-  <string name="morphe_debug_stacktrace_summary_off">Felsökningsloggar inkluderar inte stackspårning</string>
+  <string name="morphe_debug_stacktrace_title">Stackspårning i felsökningsloggar</string>
+  <string name="morphe_debug_stacktrace_summary_on">Felsökningsloggar innehåller stackspårningar</string>
+  <string name="morphe_debug_stacktrace_summary_off">Felsökningsloggar innehåller inte stackspårningar</string>
   <string name="morphe_debug_toast_on_error_title">Visa ett popup-meddelande om det uppstår fel med Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Popup-meddelande visas om det uppstår fel</string>
   <string name="morphe_debug_toast_on_error_summary_off">Popup-meddelande visas inte om det uppstår fel</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Om du stänger av popup-felmeddelanden döljs alla Morphe-felmeddelanden.
 
 Du kommer inte att bli meddelad om oväntade händelser."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exportera felsökningsloggar</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopierar Morphe-felsökningsloggar till urklipp</string>
+  <string name="morphe_debug_export_logs_title">Exportera felsökningsloggar</string>
+  <string name="morphe_debug_export_logs_summary">Exportera Morphe-felsökningsloggar</string>
+  <string name="morphe_debug_export_logs_file">Exportera till fil</string>
+  <string name="morphe_debug_export_logs_success">Felsökningsloggar har exporterats</string>
+  <string name="morphe_debug_export_logs_failed">Det gick inte att exportera felsökningsloggar</string>
+  <string name="morphe_debug_logs_search_hint">Sök i felsökningsloggarna ...</string>
+  <string name="morphe_debug_export_logs_clear">Rensa</string>
   <string name="morphe_debug_logs_disabled">Felsökningsloggar är inaktiverade</string>
-  <string name="morphe_debug_logs_none_found">Inga loggar hittades</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Loggar kopierade</string>
-  <string name="morphe_debug_logs_failed_to_export">Det gick inte att exportera loggar: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Rensa felsökningsloggar</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Rensar alla lagrade Morphe-felsökningsloggar</string>
-  <string name="morphe_debug_logs_clear_toast">Loggar rensade</string>
+  <string name="morphe_debug_logs_none_found">Inga felsökningsloggar hittades</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Felsökningsloggarna kopierades</string>
+  <string name="morphe_debug_logs_failed_to_export">Det gick inte att exportera felsökningsloggar: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Felsökningsloggarna rensades</string>
   <string name="morphe_debug_feature_flags_manager_title">Funktionsflagghanterare</string>
   <string name="morphe_debug_feature_flags_manager_summary">Hantera booleska funktionsflaggor</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktiva flaggor (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blockerade flaggor (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Sök efter flaggor ...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Flaggor sparade</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Flaggor återställda</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Flaggor kopierade till urklipp</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Starta om appen för att använda denna funktionalitet</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktiva funktionsflaggor (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blockerade funktionsflaggor (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Sök efter funktionsflaggor ...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Funktionsflaggorna sparades</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Funktionsflaggorna återställdes</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Funktionsflaggorna kopierades till urklipp</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Starta om appen för att använda den här inställningen</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Öppna MicroG-inställningarna</string>

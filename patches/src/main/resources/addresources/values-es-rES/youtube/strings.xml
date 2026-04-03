@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">La reproducción en segundo plano de Shorts está desactivada</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">La reproducción en segundo plano de Shorts está activada</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Registrar búfer de protocolo</string>
-  <string name="morphe_debug_protobuffer_summary_on">Los registros de depuración incluyen el búfer de protocolo</string>
-  <string name="morphe_debug_protobuffer_summary_off">Los registros de depuración no incluyen el búfer de protocolo</string>
+  <string name="morphe_debug_protobuffer_title">Registro de depuración de búfer de protocolo</string>
+  <string name="morphe_debug_protobuffer_summary_on">Los registros de depuración incluyen búferes de protocolo</string>
+  <string name="morphe_debug_protobuffer_summary_off">Los registros de depuración no incluyen búferes de protocolo</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Si activas este ajuste, se registrarán datos de diseño adicionales, incluido el texto en pantalla de algunos componentes de la interfaz de usuario.
 
 Esto puede ayudar a identificar componentes al crear filtros personalizados.
@@ -455,8 +455,8 @@ Limitaciones:
   <string name="morphe_copy_video_url_summary_on">El botón de copiar la URL del vídeo está visible. Pulsa para copiar la URL del vídeo. Mantén pulsado para copiar con la marca de tiempo</string>
   <string name="morphe_copy_video_url_summary_off">El botón de copiar la URL del vídeo está oculto</string>
   <string name="morphe_copy_video_url_timestamp_title">Copiar marca de tiempo</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">El botón Copiar URL de video copia con marca de tiempo. Mantener pulsado copia sin marca de tiempo</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">El botón Copiar URL de video copia sin marca de tiempo. Mantener pulsado copia con marca de tiempo</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">El botón de copiar la URL del vídeo la copia con marca de tiempo. Al mantener pulsado, se copia sin marca de tiempo</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">El botón de copiar la URL del vídeo la copia sin marca de tiempo. Al mantener pulsado, se copia con marca de tiempo</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Eliminar diálogo de discreción del espectador</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">El diálogo está eliminado</string>
@@ -721,7 +721,7 @@ Para acceder a los ajustes, activa el botón de ajustes a través de General →
   <string name="morphe_navigation_bar_animations_summary_off">Las transiciones de navegación no están animadas</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Desactivar ocultación automática de la barra de navegación</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">La barra de navegación no se ocultará al desplazarse</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barra de navegación se ocultará al desplazarse</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">La barra de navegación puede ocultarse al hacer desplazamiento</string>
   <string name="morphe_disable_translucent_status_bar_title">Desactivar barra de estado translúcida</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">La barra de estado es opaca</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">La barra de estado es opaca o translúcida</string>
@@ -1418,12 +1418,6 @@ Limitación: Es posible que el uso del botón de retroceso en la barra de herram
   <string name="morphe_miniplayer_disable_rounded_corners_title">Desactivar esquinas redondeadas</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Las esquinas son cuadradas</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Las esquinas son redondeadas</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Activar doble toque y pellizco para redimensionar</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"La acción de doble toque y el pellizco para cambiar el tamaño están activados
-
-• Toca dos veces para aumentar el tamaño del reproductor en miniatura
-• Toca dos veces de nuevo para restaurar el tamaño original"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">La acción de doble toque y pellizco para redimensionar está desactivado</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Desactivar arrastrar y soltar</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Arrastrar y soltar está desactivado</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Arrastrar y soltar está activado
@@ -1437,11 +1431,6 @@ El reproductor en miniatura se puede arrastrar fuera de la pantalla hacia la izq
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ocultar botones de superposición</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Los botones de superposición están ocultos</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Los botones de superposición están visibles</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Ocultar botones de expandir y cerrar</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Los botones están ocultos
-
-Desliza para expandir o cerrar"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Los botones de expandir y cerrar están visibles</string>
   <string name="morphe_miniplayer_hide_subtext_title">Ocultar subtextos</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Los subtextos están ocultos</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Los subtextos están visibles</string>
@@ -1520,9 +1509,9 @@ Pulsa aquí para saber más sobre DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow no está disponible temporalmente</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
-  <string name="morphe_restore_old_player_buttons_title">Restaurar estilo de botón del reproductor anterior</string>
-  <string name="morphe_restore_old_player_buttons_summary_on">Se muestra el estilo de jugador delgado</string>
-  <string name="morphe_restore_old_player_buttons_summary_off">Se muestra el estilo de jugador en negrita</string>
+  <string name="morphe_restore_old_player_buttons_title">Restaurar estilo antiguo de los botones del reproductor</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">El estilo delgado del reproductor está visible</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">El estilo grueso del reproductor está visible</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Falsificar dimensiones del dispositivo</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Las dimensiones del dispositivo están falsificadas

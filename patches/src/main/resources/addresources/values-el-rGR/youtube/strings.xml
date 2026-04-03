@@ -23,23 +23,23 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Εναλλακτικές μικρογραφίες</string>
   <string name="morphe_settings_screen_03_feed_title">Ροή</string>
   <string name="morphe_settings_screen_04_general_title">Γενικά</string>
-  <string name="morphe_settings_screen_05_player_title">Οθόνη αναπαραγωγής</string>
+  <string name="morphe_settings_screen_05_player_title">Αναπαραγωγέας</string>
   <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Γραμμή προόδου</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Έλεγχος με σάρωση οθόνης</string>
   <string name="morphe_settings_screen_11_misc_title">Διάφορα</string>
   <string name="morphe_settings_screen_12_video_title">Βίντεο</string>
-  <string name="morphe_restore_old_settings_menus_title">Επαναφορά παλιών μενού ρυθμίσεων</string>
+  <string name="morphe_restore_old_settings_menus_title">Επαναφορά παλιών ρυθμίσεων μενού </string>
   <string name="morphe_restore_old_settings_menus_summary_on">Τα παλιά μενού ρυθμίσεων εμφανίζονται</string>
-  <string name="morphe_restore_old_settings_menus_summary_off">Τα νέα μενού ρυθμίσεων εμφανίζονται</string>
+  <string name="morphe_restore_old_settings_menus_summary_off">Τα παλιά μενού ρυθμίσεων δεν εμφανίζονται</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_shorts_disable_background_playback_title">Απενεργοποίηση αναπαραγωγής παρασκηνίου για τα Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Η αναπαραγωγή παρασκηνίου είναι απενεργοποιημένη για τα Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Η αναπαραγωγή παρασκηνίου είναι ενεργοποιημένη για τα Shorts</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Καταγραφή του buffer πρωτοκόλλου</string>
-  <string name="morphe_debug_protobuffer_summary_on">Τα αρχεία καταγραφής σφαλμάτων περιλαμβάνουν το buffer του πρωτοκόλλου</string>
-  <string name="morphe_debug_protobuffer_summary_off">Τα αρχεία καταγραφής σφαλμάτων δεν περιλαμβάνουν τον buffer πρωτοκόλλου</string>
+  <string name="morphe_debug_protobuffer_title">Πρωτόκολλο buffer εντοπισμού σφαλμάτων</string>
+  <string name="morphe_debug_protobuffer_summary_on">Τα αρχεία καταγραφής σφαλμάτων περιλαμβάνουν πρωτόκολλα buffer</string>
+  <string name="morphe_debug_protobuffer_summary_off">Τα αρχεία καταγραφής σφαλμάτων δεν περιλαμβάνουν πρωτόκολλα buffer</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Η ενεργοποίηση αυτής της ρύθμισης θα καταγράψει επιπλέον δεδομένα διάταξης, συμπεριλαμβανομένου του κειμένου στην οθόνη για ορισμένα στοιχεία διεπαφής χρήστη.
 
 Αυτό μπορεί να βοηθήσει στον εντοπισμό στοιχείων κατά τη δημιουργία προσαρμοσμένων φίλτρων.
@@ -64,16 +64,16 @@ Second \"item\" text"</string>
   <string name="morphe_hide_creator_store_shelf_title">Ενότητα καταστήματος δημιουργού</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Κρυμμένη\n\nΑφορά την ενότητα καταστήματος δημιουργού κάτω από την οθόνη αναπαραγωγής</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">Εμφανίζεται\n\nΑφορά την ενότητα καταστήματος δημιουργού κάτω από την οθόνη αναπαραγωγής</string>
-  <string name="morphe_hide_album_cards_title">Κάρτες άλμπουμ</string>
-  <string name="morphe_hide_album_cards_summary_on">Κρυμμένες</string>
-  <string name="morphe_hide_album_cards_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_artist_cards_title">Κάρτες καλλιτεχνών</string>
+  <string name="morphe_hide_album_cards_title">Απόκρυψη καρτών άλμπουμ</string>
+  <string name="morphe_hide_album_cards_summary_on">Οι κάρτες άλμπουμ είναι κρυμμένες</string>
+  <string name="morphe_hide_album_cards_summary_off">Οι κάρτες άλμπουμ εμφανίζονται</string>
+  <string name="morphe_hide_artist_cards_title">Απόκρυψη καρτών καλλιτεχνών</string>
   <string name="morphe_hide_artist_cards_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_artist_cards_summary_off">Εμφανίζονται</string>
   <string name="morphe_hide_chips_shelf_title">Ενότητα σχετιζόμενων λέξεων</string>
   <string name="morphe_hide_chips_shelf_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_chips_shelf_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_community_posts_title">Δημοσιεύσεις κοινότητας</string>
+  <string name="morphe_hide_community_posts_title">Απόκρυψη δημοσιεύσεων κοινότητας</string>
   <string name="morphe_hide_community_posts_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_community_posts_summary_off">Εμφανίζονται</string>
   <string name="morphe_hide_compact_banner_title">Αναγγελίες κάτω από τα βίντεο</string>
@@ -722,7 +722,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary_off">Οι μεταβάσεις πλοήγησης δεν κινούνται</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Απενεργοποίηση αυτόματης απόκρυψης της γραμμής πλοήγησης</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Η γραμμή πλοήγησης δεν θα κρυφτεί κατά την κύλιση</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Η γραμμή πλοήγησης θα κρυφτεί κατά την κύλιση</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Η γραμμή πλοήγησης ενδέχεται να εξαφανιστεί κατά την κύλιση</string>
   <string name="morphe_disable_translucent_status_bar_title">Απενεργοποίηση διαφανούς γραμμής κατάστασης</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Η γραμμή κατάστασης δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Η διαφάνεια της γραμμής κατάστασης ορίζεται αυτόματα</string>
@@ -1419,12 +1419,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Απενεργοποίηση στρογγυλεμένων γωνιών</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Οι γωνίες είναι τετράγωνες</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Οι γωνίες είναι στρογγυλεμένες</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Ενεργοποίηση διπλής πατήματος και τσιμπήματος για αλλαγή μεγέθους</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Η λειτουργία διπλού πατήματος και τσιμπήματος για αλλαγή μεγέθους είναι ενεργοποιημένη
-
-• Πατήστε δύο φορές για να αυξήσετε το μέγεθος της ελαχιστοποιημένης οθόνης
-• Πατήστε ξανά δύο φορές για επαναφορά στο αρχικό της μέγεθος"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Η λειτουργία διπλού πατήματος και τσιμπήματος για αλλαγή μεγέθους είναι απενεργοποιημένη</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Απενεργοποίηση λειτουργίας μεταφοράς και απόθεσης</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Η λειτουργία μεταφοράς και απόθεσης είναι απενεργοποιημένη</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Η λειτουργία μεταφοράς και απόθεσης είναι ενεργοποιημένη
@@ -1438,11 +1432,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Κουμπιά επικάλυψης οθόνης αναπαραγωγής</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Κρυμμένα</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Εμφανίζονται</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Απόκρυψη κουμπιών επέκτασης και κλεισίματος</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Τα κουμπιά είναι κρυμμένα
-
-Σύρετε για επέκταση ή κλείσιμο"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Τα κουμπιά επέκτασης και κλεισίματος εμφανίζονται</string>
   <string name="morphe_miniplayer_hide_subtext_title">Κείμενα οθόνης αναπαραγωγής</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Κρυμμένα</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Εμφανίζονται</string>

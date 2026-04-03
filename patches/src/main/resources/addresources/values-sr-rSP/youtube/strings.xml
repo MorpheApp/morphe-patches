@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Пуштање Shorts видеа у позадини је онемогућено</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Пуштање Shorts видеа у позадини је омогућено</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Евидентирање бафера протокола</string>
-  <string name="morphe_debug_protobuffer_summary_on">Евиденције отклањања грешака садрже бафер протокола</string>
-  <string name="morphe_debug_protobuffer_summary_off">Евиденције отклањања грешака не садрже бафер протокола</string>
+  <string name="morphe_debug_protobuffer_title">Протокол бафер за отклањање грешака</string>
+  <string name="morphe_debug_protobuffer_summary_on">Евиденције отклањања грешака садрже протокол бафере</string>
+  <string name="morphe_debug_protobuffer_summary_off">Евиденције отклањања грешака не садрже протокол бафере</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Омогућавањем ове опције ће се евидентирати додатни подаци о изгледу, укључујући текст на екрану за неке компоненте корисничког интерфејса.
 
 Ово може помоћи у идентификацији компоненти приликом прављења прилагођених филтера.
@@ -720,7 +720,7 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_navigation_bar_animations_summary_off">Анимације прелаза у навигацији су искључене</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Онемогућите аутоматско скривање траке навигације</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Пендул баруће остављати док се листа скаче</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Пендул ће скратити док се листа скаче</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Навигациона трака може да буде прикривена при листању</string>
   <string name="morphe_disable_translucent_status_bar_title">Онемогући прозирну статусну траку</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Статусна трака је непрозирна</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Статусна трака је непрозирна или прозирна</string>
@@ -1417,12 +1417,6 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">Онемогући заобљене углове</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Углови су квадратни</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Углови су заобљени</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Омогући двоструки додир и штипање за промену величине</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Радња двоструког додира и штипања за промену величине је омогућена
-
-• Двапут додирните да бисте повећали величину мини-плејера
-• Двапут додирните поново да бисте вратили оригиналну величину"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Радња двоструког додира и штипања за промену величине су онемогућени</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Онемогући превлачење и отпуштање</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Превлачење и отпуштање је онемогућено</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Превлачење и отпуштање је омогућено
@@ -1436,11 +1430,6 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Сакриј дугмад преклопа</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Дугмад преклопа су скривена</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Дугмад преклопа су приказана</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Сакриј дугмад за проширење и затварање</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Дугмад су скривена
-
-Превуците да бисте проширили или затворили"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Дугмад за проширење и затварање су приказана</string>
   <string name="morphe_miniplayer_hide_subtext_title">Сакриј подтекстове</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Подтекстови су скривени</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Подтекстови су приказани</string>

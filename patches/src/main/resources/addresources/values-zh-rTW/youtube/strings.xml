@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">已停用背景播放 Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">已啟用背景播放 Shorts</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">記錄檔協定緩衝區</string>
+  <string name="morphe_debug_protobuffer_title">除錯記錄檔協定緩衝區</string>
   <string name="morphe_debug_protobuffer_summary_on">除錯記錄檔會包含協定緩衝資訊</string>
   <string name="morphe_debug_protobuffer_summary_off">除錯記錄檔不會包含協定緩衝資訊</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"啟用這項設定將會記錄額外的版面配置資料，包括部分使用者介面元件上的螢幕文字。
@@ -720,7 +720,7 @@ Second \"item\" text"</string>
   <string name="morphe_navigation_bar_animations_summary_off">導覽轉換不會進行動畫</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">停用自動隱藏導航欄</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">瀏覽時導航欄不會隱藏</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">瀏覽時導航欄會隱藏</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">瀏覽時導覽列可能會隱藏</string>
   <string name="morphe_disable_translucent_status_bar_title">停用半透明狀態列</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">狀態列為不透明</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">狀態列為不透明或半透明</string>
@@ -1032,8 +1032,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timestamp_summary_on">已隱藏時間戳記</string>
   <string name="morphe_hide_timestamp_summary_off">已顯示時間戳記</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
-  <string name="morphe_disable_player_popup_panels_title">禁用播放器彈出面板</string>
-  <string name="morphe_disable_player_popup_panels_summary_on">已禁用播放器彈出面板</string>
+  <string name="morphe_disable_player_popup_panels_title">停用播放器彈出面板</string>
+  <string name="morphe_disable_player_popup_panels_summary_on">已停用播放器彈出面板</string>
   <string name="morphe_disable_player_popup_panels_summary_off">已啟用播放器彈出面板</string>
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">視窗模式結束後退出全螢幕</string>
@@ -1352,9 +1352,9 @@ Second \"item\" text"</string>
   <!-- layout.music.overrideYouTubeMusicActionsPatch -->
   <string name="morphe_override_youtube_music_button_title">覆蓋 YouTube Music 按鈕</string>
   <string name="morphe_override_youtube_music_button_summary_on">YouTube Music 按鈕會開啟您的目標音樂應用程式</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube 音樂按鈕開啟原生應用程序</string>
+  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music 按鈕會開啟原生應用程式</string>
   <string name="morphe_music_package_name_title">Morphe Music 套件名稱</string>
-  <string name="morphe_music_package_name_summary">目標 Music 應用程式的套件名稱</string>
+  <string name="morphe_music_package_name_summary">目標音樂應用程式的套件名稱</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">變更起始頁面</string>
   <string name="morphe_change_start_page_entry_default">預設</string>
@@ -1418,12 +1418,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">停用圓角</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">已將角落設為方角</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">已將角落設為圓角</string>
-  <string name="morphe_miniplayer_double_tap_action_title">啟用輕觸兩下動作和雙指撥動調整大小</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"已啟用輕觸兩下動作和雙指撥動調整大小
-
-• 輕觸兩下以放大迷你播放器
-• 再次輕觸兩下以還原原始大小"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">已停用輕觸兩下動作和雙指撥動調整大小</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">停用拖放</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">已停用拖曳功能</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"已啟用拖曳功能
@@ -1437,11 +1431,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">隱藏暫停時顯示的按鈕</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">已隱藏暫停時顯示的按鈕</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">已顯示暫停時顯示的按鈕</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">隱藏展開和關閉按鈕</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"已隱藏按鈕
-
-滑動即可展開或關閉"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">已顯示展開和關閉按鈕</string>
   <string name="morphe_miniplayer_hide_subtext_title">隱藏字幕</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">已隱藏字幕</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">已顯示字幕</string>

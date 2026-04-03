@@ -19,7 +19,7 @@ Second \"item\" text"</string>
   <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">設定</string>
   <string name="morphe_settings_confirm_user_dialog_title">本当に続行してもよろしいですか？</string>
-  <string name="morphe_settings_save">保存</string>
+  <string name="morphe_settings_save">適用</string>
   <string name="morphe_settings_reset">リセット</string>
   <string name="morphe_settings_reset_color">色を初期化</string>
   <string name="morphe_settings_color_invalid">色の値が無効です</string>
@@ -61,7 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_pref_import_export_title">インポート / エクスポート</string>
   <string name="morphe_pref_import_export_summary">Morphe の設定をインポート / エクスポートします</string>
   <string name="morphe_settings_import_file">ファイル入力</string>
-  <string name="morphe_settings_import_file_success">ファイル入力: [保存] を押して設定に反映</string>
+  <string name="morphe_settings_import_file_success">ファイル入力: [適用] を押して設定に反映</string>
   <string name="morphe_settings_import_file_failed">設定のファイル入力に失敗しました</string>
   <string name="morphe_settings_export_file">ファイル出力</string>
   <string name="morphe_settings_export_file_success">設定のファイル出力に成功しました</string>
@@ -92,7 +92,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">デバッグログを有効化</string>
   <string name="morphe_debug_summary_on">デバッグログは有効です</string>
   <string name="morphe_debug_summary_off">デバッグログは無効です</string>
-  <string name="morphe_debug_stacktrace_title">スタック トレースをログに保存</string>
+  <string name="morphe_debug_stacktrace_title">スタックトレースをデバッグログに保存</string>
   <string name="morphe_debug_stacktrace_summary_on">デバッグログにはスタック トレースが含まれます</string>
   <string name="morphe_debug_stacktrace_summary_off">デバッグログにはスタック トレースは含まれません</string>
   <string name="morphe_debug_toast_on_error_title">Morphe のエラー時にトーストを表示</string>
@@ -101,24 +101,27 @@ Second \"item\" text"</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"エラーのトースト通知をオフにすると、Morphe のすべてのエラー通知が表示されなくなります。
 
 予期しないイベントが発生した場合でも通知されません。"</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">デバッグログのエクスポート</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe のデバッグログをクリップボードにコピーします</string>
+  <string name="morphe_debug_export_logs_title">デバッグログのエクスポート</string>
+  <string name="morphe_debug_export_logs_summary">Morphe のデバッグログをエクスポートします</string>
+  <string name="morphe_debug_export_logs_file">ファイル出力</string>
+  <string name="morphe_debug_export_logs_success">デバッグログのエクスポートに成功しました</string>
+  <string name="morphe_debug_export_logs_failed">デバッグログのエクスポートに失敗しました</string>
+  <string name="morphe_debug_logs_search_hint">デバッグログを検索</string>
+  <string name="morphe_debug_export_logs_clear">消去</string>
   <string name="morphe_debug_logs_disabled">デバッグログが無効になっています</string>
-  <string name="morphe_debug_logs_none_found">ログが見つかりません</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">ログをコピーしました</string>
-  <string name="morphe_debug_logs_failed_to_export">ログのエクスポートに失敗しました: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">デバッグログを消去</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">保存されているすべての Morphe のデバッグログを消去します</string>
-  <string name="morphe_debug_logs_clear_toast">ログを消去しました</string>
+  <string name="morphe_debug_logs_none_found">デバッグログが見つかりません</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">デバッグログをコピーしました</string>
+  <string name="morphe_debug_logs_failed_to_export">デバッグログのエクスポートに失敗しました: %s</string>
+  <string name="morphe_debug_logs_clear_toast">デバッグログを消去しました</string>
   <string name="morphe_debug_feature_flags_manager_title">feature flag マネージャー</string>
   <string name="morphe_debug_feature_flags_manager_summary">各機能のオン / オフを制御する feature flag を管理します</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">有効な flag (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">無効な flag (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">flag を検索</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">flag を保存しました</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">flag をリセットしました</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">flag をクリップボードにコピーしました</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">この機能を使用するにはアプリを再起動してください</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">有効な feature flag (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">無効な feature flag (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">feature flag を検索</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">feature flag を保存しました</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">feature flag をリセットしました</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">feature flag をクリップボードにコピーしました</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">この機能を設定するにはアプリを再起動してください</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG の設定メニューを開く</string>
