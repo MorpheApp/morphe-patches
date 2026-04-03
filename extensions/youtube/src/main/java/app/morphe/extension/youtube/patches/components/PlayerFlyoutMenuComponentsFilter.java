@@ -39,7 +39,6 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
     private final StringFilterGroup qualityMenuFooter;
     private final StringFilterGroup qualityMenuHeader;
     private final StringFilterGroup captionsMenuHeader;
-    private final StringFilterGroup qualitySheet;
     private final StringFilterGroup captionsSheet;
 
     public PlayerFlyoutMenuComponentsFilter() {
@@ -60,23 +59,15 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                 "|divider.e"
         );
 
-        qualitySheet = new StringFilterGroup(
-                null,
-                "advanced_quality_sheet_content",
-                "|divider.e"
-        );
-
         captionsSheet = new StringFilterGroup(
                 null,
-                "captions_sheet_content",
-                "|divider.e"
+                "captions_sheet_content.e"
         );
 
         addPathCallbacks(
                 captionsMenuHeader,
                 qualityMenuFooter,
                 qualityMenuHeader,
-                qualitySheet,
                 captionsSheet,
                 new StringFilterGroup(null, "overflow_menu_item.e")
         );
@@ -161,10 +152,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        if (matchedGroup == qualitySheet) {
-            HidePlayerFlyoutMenuPatch.isQualityMenuVisible = true;
-            return false;
-        } else if (matchedGroup == captionsSheet) {
+        if (matchedGroup == captionsSheet) {
             HidePlayerFlyoutMenuPatch.isCaptionsMenuVisible = true;
             return false;
         }
@@ -173,7 +161,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
             return true;
 
         if (matchedGroup == qualityMenuFooter) {
-            return (path.startsWith("overflow_menu_item.e") || path.startsWith("quick_quality_sheet_content.e"));
+            return (path.startsWith("quality_sheet_footer"));
         }
 
         if (matchedGroup == captionsMenuHeader) {

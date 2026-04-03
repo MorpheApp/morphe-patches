@@ -1,8 +1,16 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
@@ -19,68 +27,76 @@ public final class HidePlayerFlyoutMenuPatch {
      * Injection point.
      */
     public static void onFlyoutMenuCreate(RecyclerView recyclerView) {
-        recyclerView.getViewTreeObserver().addOnDrawListener(() -> {
-            try {
-                if (!isQualityMenuVisible && !isCaptionsMenuVisible) {
-                    return;
-                }
+        if (recyclerView == null) return;
 
-                if (recyclerView.getChildCount() == 0) {
-                    return;
-                }
+        recyclerView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                try {
+                    if (!isQualityMenuVisible && !isCaptionsMenuVisible) return;
+                    if (recyclerView.getChildCount() == 0) return;
 
-                View sheetContent = recyclerView.getChildAt(0);
-                if (!(sheetContent instanceof ViewGroup viewGroup)) {
-                    return;
-                }
+                    View sheetContent = recyclerView.getChildAt(0);
+                    if (!(sheetContent instanceof ViewGroup viewGroup)) return;
 
-                int childCount = viewGroup.getChildCount();
+                    int childCount = viewGroup.getChildCount();
+                    if (childCount < 2) return;
 
-                if (childCount > 0) {
-                    if ((isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get()) ||
-                            (isCaptionsMenuVisible && Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get())) {
+                    recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
+                    int topHeightToSubtract = 0;
+                    int bottomHeightToSubtract = 0;
+
+                    boolean hideQualityFooter = isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
+                    boolean hideCaptionsFooter = isCaptionsMenuVisible && Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
+
+                    if (hideQualityFooter || hideCaptionsFooter) {
                         View footer = viewGroup.getChildAt(childCount - 1);
-                        if (footer != null) {
+                        if (footer != null && footer.getVisibility() != View.GONE) {
+                            bottomHeightToSubtract += footer.getHeight();
                             footer.setVisibility(View.GONE);
-                            footer.setPadding(0, 0, 0, 0);
+                        }
 
-                            ViewGroup.LayoutParams params = footer.getLayoutParams();
-                            if (params != null) {
-                                params.height = 0;
-                                params.width = 0;
-                                if (params instanceof ViewGroup.MarginLayoutParams marginParams) {
-                                    marginParams.setMargins(0, 0, 0, 0);
-                                }
-                                footer.setLayoutParams(params);
-                            }
+                        View bottomDivider = viewGroup.getChildAt(childCount - 2);
+                        if (bottomDivider != null && bottomDivider.getHeight() < 10) {
+                            bottomHeightToSubtract += bottomDivider.getHeight();
+                            bottomDivider.setVisibility(View.GONE);
                         }
                     }
 
-                    if (isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER.get()) {
+                    boolean hideQualityHeader = isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER.get();
+                    boolean hideCaptionsHeader = isCaptionsMenuVisible && Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER.get();
+
+                    if (hideQualityHeader || hideCaptionsHeader) {
                         View header = viewGroup.getChildAt(0);
-                        if (header != null) {
+                        if (header != null && header.getVisibility() != View.GONE) {
+                            topHeightToSubtract += header.getHeight();
                             header.setVisibility(View.GONE);
-                            header.setPadding(0, 0, 0, 0);
+                        }
 
-                            ViewGroup.LayoutParams params = header.getLayoutParams();
-                            if (params != null) {
-                                params.height = 0;
-                                params.width = 0;
-                                if (params instanceof ViewGroup.MarginLayoutParams marginParams) {
-                                    marginParams.setMargins(0, 0, 0, 0);
-                                }
-                                header.setLayoutParams(params);
-                            }
+                        View topDivider = viewGroup.getChildAt(1);
+                        if (topDivider != null && topDivider.getHeight() < 10) {
+                            topHeightToSubtract += topDivider.getHeight();
+                            topDivider.setVisibility(View.GONE);
                         }
                     }
+
+                    if (topHeightToSubtract > 0 || bottomHeightToSubtract > 0) {
+                        ViewGroup.LayoutParams params = viewGroup.getLayoutParams();
+                        if (params instanceof ViewGroup.MarginLayoutParams marginParams) {
+                            marginParams.topMargin = -topHeightToSubtract;
+                            marginParams.bottomMargin = -bottomHeightToSubtract;
+                            viewGroup.setLayoutParams(marginParams);
+                            viewGroup.requestLayout();
+                        }
+                    }
+
+                    isQualityMenuVisible = false;
+                    isCaptionsMenuVisible = false;
+
+                } catch (Exception ex) {
+                    Logger.printException(() -> "HidePlayerFlyoutMenuPatch failure", ex);
                 }
-
-                isQualityMenuVisible = false;
-                isCaptionsMenuVisible = false;
-
-            } catch (Exception ex) {
-                Logger.printException(() -> "HidePlayerFlyoutMenuPatch failure", ex);
             }
         });
     }
