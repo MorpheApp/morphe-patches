@@ -516,46 +516,47 @@ val videoInformationPatch = bytecodePatch(
             return "const-string v0, \"\""
         }
 
-        val channelIdMethodCall = ChannelIdFingerprint.getPlayerResponseInstruction()
+        ChannelInformationFingerprint.let {
+            val matches = it.matchAll()
+            if (matches.count() !in 2 .. 3) throw PatchException("Unexpected number of matches: " + matches.count())
 
-        fun MutableMethod.getVideoInformationMethod(): MutableMethod =
-            ImmutableMethod(
-                definingClass,
-                "setChannelInformation",
-                listOf(ImmutableMethodParameter(PLAYER_RESPONSE_MODEL_CLASS_DESCRIPTOR, annotations, null)),
-                "V",
-                AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
-                annotations,
-                null,
-                ImmutableMethodImplementation(
-                    3, """
-                        $channelIdMethodCall
-                        
-                        invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setChannelId(Ljava/lang/String;)V
-                        
-                        return-void
-                        """.toInstructions(),
-                    null,
-                    null
+            val channelIdMethodCall = ChannelIdFingerprint.getPlayerResponseInstruction()
+
+            matches.first().classDef.apply {
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "setChannelInformation",
+                        listOf(
+                            ImmutableMethodParameter(
+                                PLAYER_RESPONSE_MODEL_CLASS_DESCRIPTOR,
+                                annotations, null
+                            )
+                        ),
+                        "V",
+                        AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                        annotations,
+                        null,
+                        ImmutableMethodImplementation(
+                            3, """
+                                $channelIdMethodCall
+                                
+                                invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setChannelId(Ljava/lang/String;)V
+                                
+                                return-void
+                                """.toInstructions(),
+                            null,
+                            null
+                        )
+                    ).toMutable()
                 )
-            ).toMutable()
+            }
 
-        PlayerInitFingerprint.let { match ->
-            match.classDef.methods.add(match.method.getVideoInformationMethod())
-            match.classDef.methods.forEach { method ->
-                val isLoadVideoMethod = method.implementation?.instructions?.any { ins ->
-                    (ins as? ReferenceInstruction)?.reference?.let { ref ->
-                        ref is com.android.tools.smali.dexlib2.iface.reference.StringReference &&
-                                ref.string == "loadVideo() called on LocalDirector in wrong state"
-                    } == true
-                } == true
-
-                if (isLoadVideoMethod) {
-                    method.addInstruction(
-                        0,
-                        "invoke-direct {p0, p1}, ${match.classDef.type}->setChannelInformation($PLAYER_RESPONSE_MODEL_CLASS_DESCRIPTOR)V"
-                    )
-                }
+            matches.forEach { match ->
+                match.method.addInstruction(
+                    0,
+                    "invoke-direct {p0, p1}, ${match.classDef.type}->setChannelInformation($PLAYER_RESPONSE_MODEL_CLASS_DESCRIPTOR)V"
+                )
             }
         }
 

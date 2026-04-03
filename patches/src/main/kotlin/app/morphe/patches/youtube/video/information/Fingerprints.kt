@@ -42,6 +42,13 @@ internal object PlayerInitFingerprint : Fingerprint(
     )
 )
 
+internal object ChannelInformationFingerprint : Fingerprint(
+    classFingerprint = PlayerInitFingerprint,
+    filters = listOf(
+        string("loadVideo() called on LocalDirector in wrong state"),
+    )
+)
+
 internal object PlayerStatusEnumFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
@@ -57,7 +64,7 @@ internal object PlayerStatusEnumFingerprint : Fingerprint(
 )
 
 internal object SeekFingerprint : Fingerprint(
-    classFingerprint = PlayerInitFingerprint,
+    classFingerprint = ChannelInformationFingerprint,
     filters = listOf(
         anyInstruction(
             // 20.xx
@@ -125,7 +132,7 @@ internal object MdxSeekRelativeFingerprint : Fingerprint(
 )
 
 internal object SeekRelativeFingerprint : Fingerprint(
-    classFingerprint = PlayerInitFingerprint,
+    classFingerprint = ChannelInformationFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     // Return type is boolean up to 19.39, and void with 19.39+.
     parameters = listOf("J", "L"),

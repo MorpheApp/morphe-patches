@@ -538,7 +538,7 @@ Verify the package name is correct and the app is installed"</string>
 Tap to generate a playlist of all videos from channel
 Tap and hold to undo
 
-Info: May not work on live streams."</string>
+Info: May not work on live streams"</string>
     <string name="morphe_play_all_button_summary_off">Play all button is not shown</string>
     <string name="morphe_play_all_button_type_title">Generate playlist mode</string>
     <string name="morphe_play_all_button_type_entry_0">All contents (Sort by time, Ascending)</string>
@@ -554,7 +554,7 @@ Info: May not work on live streams."</string>
     <string name="morphe_play_all_button_type_entry_10">Members only videos</string>
     <string name="morphe_play_all_button_type_entry_11">Members only Shorts</string>
     <string name="morphe_play_all_button_type_entry_12">Members only live streams</string>
-    <string name="morphe_play_all_button_not_available_toast">Unable to generate playlist due to channel ID mismatch.</string>
+    <string name="morphe_play_all_button_not_available_toast">Unable to generate playlist due to channel ID mismatch</string>
 
     <!-- interaction.reload.reloadVideoPatch -->
     <string name="morphe_reload_video_title">Show reload video button</string>
