@@ -64,7 +64,7 @@ internal object PlayerStatusEnumFingerprint : Fingerprint(
 )
 
 internal object SeekFingerprint : Fingerprint(
-    classFingerprint = ChannelInformationFingerprint,
+    classFingerprint = PlayerInitFingerprint,
     filters = listOf(
         anyInstruction(
             // 20.xx
@@ -132,7 +132,7 @@ internal object MdxSeekRelativeFingerprint : Fingerprint(
 )
 
 internal object SeekRelativeFingerprint : Fingerprint(
-    classFingerprint = ChannelInformationFingerprint,
+    classFingerprint = PlayerInitFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     // Return type is boolean up to 19.39, and void with 19.39+.
     parameters = listOf("J", "L"),
