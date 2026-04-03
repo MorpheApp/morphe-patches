@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">La reproducción en segundo plano de Shorts está desactivada</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">La reproducción en segundo plano de Shorts está activada</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Registrar búfer de protocolo</string>
-  <string name="morphe_debug_protobuffer_summary_on">Los registros de depuración incluyen el búfer de protocolo</string>
-  <string name="morphe_debug_protobuffer_summary_off">Los registros de depuración no incluyen el búfer de protocolo</string>
+  <string name="morphe_debug_protobuffer_title">Registro de depuración de búfer de protocolo</string>
+  <string name="morphe_debug_protobuffer_summary_on">Los registros de depuración incluyen búferes de protocolo</string>
+  <string name="morphe_debug_protobuffer_summary_off">Los registros de depuración no incluyen búferes de protocolo</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Si activas este ajuste, se registrarán datos de diseño adicionales, incluido el texto en pantalla de algunos componentes de la interfaz de usuario.
 
 Esto puede ayudar a identificar componentes al crear filtros personalizados.

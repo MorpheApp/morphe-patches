@@ -92,7 +92,7 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_debug_title">Fejlfindingslogning</string>
   <string name="morphe_debug_summary_on">Fejlfindingslogge er aktiveret</string>
   <string name="morphe_debug_summary_off">Fejlfindingslogge er deaktiveret</string>
-  <string name="morphe_debug_stacktrace_title">Logstakspor</string>
+  <string name="morphe_debug_stacktrace_title">Fejlfindingslogge inkluderer stakspor</string>
   <string name="morphe_debug_stacktrace_summary_on">Fejlfindingslogge inkluderer stakspor</string>
   <string name="morphe_debug_stacktrace_summary_off">Fejlfindingslogge inkluderer ikke stakspor</string>
   <string name="morphe_debug_toast_on_error_title">Vis toastbesked ved Morphe-fejl</string>
@@ -101,24 +101,27 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Hvis du deaktiverer fejl-toasts, skjules alle Morphe-fejlmeddelelser.
 
 Du modtager ikke notifikationer om uventede hændelser."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Eksportér fejlsøgningslogfiler</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopierer Morphe-fejlsøgningslogfiler til udklipsholderen</string>
+  <string name="morphe_debug_export_logs_title">Eksportér fejlsøgningslogfiler</string>
+  <string name="morphe_debug_export_logs_summary">Eksportér fejlsøgningslogfiler</string>
+  <string name="morphe_debug_export_logs_file">Eksportér til fil</string>
+  <string name="morphe_debug_export_logs_success">Indstillinger importeret med succes</string>
+  <string name="morphe_debug_export_logs_failed">Kunne ikke eksportere logfiler: %s</string>
+  <string name="morphe_debug_logs_search_hint">Søg efter fejlsøgningslogfiler...</string>
+  <string name="morphe_debug_export_logs_clear">Ryd</string>
   <string name="morphe_debug_logs_disabled">Fejlsøgningslogning er deaktiveret</string>
   <string name="morphe_debug_logs_none_found">Ingen logfiler fundet</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Logfiler kopieret</string>
   <string name="morphe_debug_logs_failed_to_export">Kunne ikke eksportere logfiler: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Ryd fejlsøgningslogfiler</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Rydder alle gemte Morphe-fejlsøgningslogfiler</string>
-  <string name="morphe_debug_logs_clear_toast">Logfiler ryddet</string>
+  <string name="morphe_debug_logs_clear_toast">Fejlfindingslogge ryddet</string>
   <string name="morphe_debug_feature_flags_manager_title">Funktionsflag Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Administrer booleske funktionsflag</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Aktive flag (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Blokerede flag (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Søg flag...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Flag gemt</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Flag nulstillet</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Funktionsflag gemt</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Funktionsflag nulstillet</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flag kopieret til udklipsholder</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Genstart appen for at bruge denne funktion</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Genstart appen for at bruge denne indstilling</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Åbn MicroG-indstillingerne</string>

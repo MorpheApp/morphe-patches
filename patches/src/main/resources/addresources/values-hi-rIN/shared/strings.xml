@@ -92,33 +92,36 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">डिबगिंग</string>
   <string name="morphe_debug_summary_on">डिबग लॉग्स एनबल किए गए हैं</string>
   <string name="morphe_debug_summary_off">डिबग लॉग्स डिसेबल किए गए हैं</string>
-  <string name="morphe_debug_stacktrace_title">स्टैक ट्रेस दिखाएं</string>
-  <string name="morphe_debug_stacktrace_summary_on">डिबग लॉग्स स्टैक ट्रेस शामिल करते हैं</string>
-  <string name="morphe_debug_stacktrace_summary_off">डिबग लॉग्स स्टैक ट्रेस शामिल नहीं करते हैं</string>
+  <string name="morphe_debug_stacktrace_title">डिबग लॉग स्टैक ट्रेस</string>
+  <string name="morphe_debug_stacktrace_summary_on">डिबग लॉग्स प्रोटो बफर को शामिल करते हैं</string>
+  <string name="morphe_debug_stacktrace_summary_off">डिबग लॉग्स प्रोटो बफर को शामिल नहीं करते हैं</string>
   <string name="morphe_debug_toast_on_error_title">Morphe त्रुटि पर टोस्ट दिखाएं</string>
   <string name="morphe_debug_toast_on_error_summary_on">त्रुटि होने पर टोस्ट दिखाया जाता है</string>
   <string name="morphe_debug_toast_on_error_summary_off">त्रुटि होने पर टोस्ट नहीं दिखाया जाता है</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"त्रुटि टोस्ट्स को बंद करना मorphe त्रुटि सूचनाओं को छिपाता है।
 
 आप अप्रत्याशित घटनाओं से सूचित नहीं किए जाएंगे।"</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">डिबग लॉग्स निर्यात करें</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe डिबग लॉग्स क्लिपबोर्ड में कॉपी किए जाते हैं</string>
+  <string name="morphe_debug_export_logs_title">डीबग लॉग एक्सपोर्ट करें</string>
+  <string name="morphe_debug_export_logs_summary">Morphe डिबग लॉग्स एक्सपोर्ट करें</string>
+  <string name="morphe_debug_export_logs_file">फ़ाइल में एक्सपोर्ट करें</string>
+  <string name="morphe_debug_export_logs_success">डिबग लॉग्स सफलतापूर्वक एक्सपोर्ट किए गए</string>
+  <string name="morphe_debug_export_logs_failed">डिबग लॉग्स एक्सपोर्ट करने में विफल।</string>
+  <string name="morphe_debug_logs_search_hint">डिबग लॉग्स खोजें...</string>
+  <string name="morphe_debug_export_logs_clear">खाली करें</string>
   <string name="morphe_debug_logs_disabled">डिबगिंग डिसेबल किया गया है</string>
-  <string name="morphe_debug_logs_none_found">कोई लॉग नहीं मिला</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">लॉग्स कॉपी किए गए</string>
-  <string name="morphe_debug_logs_failed_to_export">लॉग्स निर्यात करना विफल हुआ: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">डिबग लॉग्स मिटाएं</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">सभी स्टोर किए गए Morphe डिबग लॉग्स मिटाए जाते हैं</string>
-  <string name="morphe_debug_logs_clear_toast">लॉग्स मिटाए गए</string>
+  <string name="morphe_debug_logs_none_found">डिबग लॉग्स नहीं मिले</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">डिबग लॉग्स कॉपी किए गए</string>
+  <string name="morphe_debug_logs_failed_to_export">डिबग लॉग्स एक्सपोर्ट करने में विफल: %s</string>
+  <string name="morphe_debug_logs_clear_toast">डिबग लॉग्स साफ़ किए गए</string>
   <string name="morphe_debug_feature_flags_manager_title">फ़ीचर फ़्लैग्स मैनेजर</string>
   <string name="morphe_debug_feature_flags_manager_summary">बूलियन फ़ीचर फ़्लैग्स को मैनेज करें</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">सक्रिय फ़्लैग्स (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">ब्लॉक किए गए फ़्लैग्स (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">फ़्लैग्स खोजें...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">फ़्लैग्स सहेजे गए</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">फ़्लैग्स रीसेट किए गए</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">फ़्लैग्स क्लिपबोर्ड में कॉपी किए गए</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">इस सुविधा का उपयोग करने के लिए ऐप को पुनःारंभ करें</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">सक्रिय फ़ीचर फ़्लैग (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">ब्लॉक किए गए फ़ीचर फ़्लैग (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">फ़ीचर फ़्लैग खोजें...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">फ़ीचर फ़्लैग सेव किए गए</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">फ़ीचर फ़्लैग रीसेट किए गए</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">फ़ीचर फ़्लैग क्लिपबोर्ड पर कॉपी किए गए</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">इस सेटिंग का उपयोग करने के लिए ऐप को पुनः आरंभ करें</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">माइक्रोजी सेटिंग्स खोलें</string>

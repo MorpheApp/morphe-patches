@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Reprodução de fundo dos Shorts está desativada</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Reprodução de fundo dos Shorts está ativada</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Registro de buffer de protocolo</string>
-  <string name="morphe_debug_protobuffer_summary_on">Registro de depuração incluem buffer de protocolo</string>
-  <string name="morphe_debug_protobuffer_summary_off">Registro de depuração não incluem buffer de protocolo</string>
+  <string name="morphe_debug_protobuffer_title">Protocolo de buffer de depuração</string>
+  <string name="morphe_debug_protobuffer_summary_on">Os registros de depuração incluem buffers de protocolo</string>
+  <string name="morphe_debug_protobuffer_summary_off">Os registros de depuração não incluem buffers de protocolo</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Ativar esta configuração registrará dados de layout adicionais, incluindo texto na tela para alguns componentes da IU.
 
 Isso pode ajudar a identificar componentes ao criar filtros personalizados.

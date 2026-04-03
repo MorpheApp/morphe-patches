@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Фоновото възпроизвеждане на Shorts е деактивирано</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Фоновото възпроизвеждане на Shorts е активирано</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Буфер на протокола за дневника</string>
-  <string name="morphe_debug_protobuffer_summary_on">Файлове с дневници за грешки включват буфера</string>
-  <string name="morphe_debug_protobuffer_summary_off">Файлове с дневници за грешки не включват буфера</string>
+  <string name="morphe_debug_protobuffer_title">Протоколен буфер за отстраняване на грешки</string>
+  <string name="morphe_debug_protobuffer_summary_on">Файлове с дневници за грешки включват протоколни буфери</string>
+  <string name="morphe_debug_protobuffer_summary_off">Файлове с дневници за грешки не включват протоколни буфери</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Активирането на тази настройка ще регистрира допълнителни данни за оформлението, включително текст на екрана за някои компоненти на потребителския интерфейс.
 
 Това може да помогне за идентифициране на компоненти при създаване на персонализирани филтри.

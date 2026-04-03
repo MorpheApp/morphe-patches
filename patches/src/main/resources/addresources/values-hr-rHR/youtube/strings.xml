@@ -37,9 +37,6 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Reprodukcija Shorts videozapisa u pozadini onemogućena </string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Reprodukcija Shorts videozapisa u pozadini omogućena </string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Međuspremnik protokola zapisnika</string>
-  <string name="morphe_debug_protobuffer_summary_on">Zapisnici o otklanjanju pogrešaka uključuju proto međuspremnik</string>
-  <string name="morphe_debug_protobuffer_summary_off">Zapisnici o otklanjanju pogrešaka ne uključuju proto međuspremnik</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Omogućavanjem ove postavke zabilježit će se dodatni podaci o rasporedu, uključujući tekst na zaslonu za neke komponente korisničkog sučelja.
 
 To može pomoći u identificiranju komponenti prilikom izrade prilagođenih filtera.

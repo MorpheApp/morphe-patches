@@ -92,33 +92,36 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_debug_title">Nhật ký gỡ lỗi</string>
   <string name="morphe_debug_summary_on">Nhật ký gỡ lỗi đã bật</string>
   <string name="morphe_debug_summary_off">Nhật ký gỡ lỗi đã tắt</string>
-  <string name="morphe_debug_stacktrace_title">Ghi nhật ký truy vết ngăn xếp</string>
-  <string name="morphe_debug_stacktrace_summary_on">Nhật ký gỡ lỗi bao gồm truy vết ngăn xếp</string>
-  <string name="morphe_debug_stacktrace_summary_off">Nhật ký gỡ lỗi không bao gồm truy vết ngăn xếp</string>
+  <string name="morphe_debug_stacktrace_title">Ghi nhật ký gỡ lỗi (Stack Trace)</string>
+  <string name="morphe_debug_stacktrace_summary_on">Nhật ký gỡ lỗi có chứa stack trace</string>
+  <string name="morphe_debug_stacktrace_summary_off">Nhật ký gỡ lỗi không chứa stack trace</string>
   <string name="morphe_debug_toast_on_error_title">Hiện thông báo ngắn về lỗi Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Thông báo ngắn sẽ hiện nếu xảy ra lỗi</string>
   <string name="morphe_debug_toast_on_error_summary_off">Thông báo ngắn không hiện nếu xảy ra lỗi</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Tắt thông báo lỗi sẽ ẩn mọi thông báo lỗi từ Morphe.
 
 Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Xuất nhật ký gỡ lỗi</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Sao chép nhật ký gỡ lỗi Morphe vào bảng nhớ tạm</string>
+  <string name="morphe_debug_export_logs_title">Nhật ký gỡ lỗi</string>
+  <string name="morphe_debug_export_logs_summary">Xuất nhật ký gỡ lỗi của Morphe</string>
+  <string name="morphe_debug_export_logs_file">Xuất sang tệp</string>
+  <string name="morphe_debug_export_logs_success">Xuất bản nhật ký gỡ lỗi thành công</string>
+  <string name="morphe_debug_export_logs_failed">Không thể xuất nhật ký gỡ lỗi</string>
+  <string name="morphe_debug_logs_search_hint">Tìm kiếm nhật ký gỡ lỗi...</string>
+  <string name="morphe_debug_export_logs_clear">Dọn dẹp</string>
   <string name="morphe_debug_logs_disabled">Tính năng ghi nhật ký gỡ lỗi đã tắt</string>
-  <string name="morphe_debug_logs_none_found">Không tìm thấy nhật ký</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Đã sao chép nhật ký</string>
-  <string name="morphe_debug_logs_failed_to_export">Xuất nhật ký thất bại: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Xóa nhật ký gỡ lỗi</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Xóa tất cả nhật ký gỡ lỗi Morphe đã lưu trữ</string>
-  <string name="morphe_debug_logs_clear_toast">Đã xóa nhật ký</string>
+  <string name="morphe_debug_logs_none_found">Không tìm thấy nhật ký gỡ lỗi</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Đã sao chép nhật ký gỡ lỗi</string>
+  <string name="morphe_debug_logs_failed_to_export">Không thể xuất nhật ký gỡ lỗi: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Đã xóa nhật ký gỡ lỗi</string>
   <string name="morphe_debug_feature_flags_manager_title">Trình quản lý cờ tính năng</string>
   <string name="morphe_debug_feature_flags_manager_summary">Quản lý các cờ tính năng boolean</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Cờ đang hoạt động (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Cờ bị chặn (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Tìm kiếm cờ...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Đã lưu cờ</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Đã đặt lại cờ</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Đã sao chép cờ vào bảng nhớ tạm</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Khởi động lại ứng dụng để dùng tính năng này</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Cờ tính năng đang hoạt động (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Cờ tính năng bị chặn (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Tìm kiếm cờ tính năng...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Đã lưu cờ tính năng</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Đã đặt lại cờ tính năng</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Đã sao chép cờ tính năng vào bảng nhớ tạm</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Khởi động lại ứng dụng để sử dụng cài đặt này</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Mở cài đặt microG</string>

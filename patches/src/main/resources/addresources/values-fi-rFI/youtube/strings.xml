@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shortsien taustatoisto ei ole käytössä</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shortsien taustatoisto on käytössä</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Kirjaa protokollapuskuri</string>
-  <string name="morphe_debug_protobuffer_summary_on">Virheenkorjauslokit sisältävät proto-puskurin</string>
-  <string name="morphe_debug_protobuffer_summary_off">Virheenkorjauslokit eivät sisällä proto-puskuria</string>
+  <string name="morphe_debug_protobuffer_title">Virheenkorjauksen lokiprotokollapuskuri</string>
+  <string name="morphe_debug_protobuffer_summary_on">Virheenkorjauslokit sisältävät protokollapuskureita</string>
+  <string name="morphe_debug_protobuffer_summary_off">Virheenkorjauslokit eivät sisällä protokollapuskureita</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Tämän asetuksen käyttöönotto kirjaa lisätietoja asettelusta, mm. joidenkin käyttöliittymän osien näyttötekstiä.
 
 Tämä voi auttaa komponenttien tunnistamisessa, kun luot mukautettuja suodattimia.

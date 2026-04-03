@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Воспроизведение Shorts в фоновом режиме отключено</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Воспроизведение Shorts в фоновом режиме включено</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Журнал буфера протоколов</string>
-  <string name="morphe_debug_protobuffer_summary_on">В журналы отладки включен буфер протоколов</string>
-  <string name="morphe_debug_protobuffer_summary_off">В журналы отладки не включен буфер протоколов</string>
+  <string name="morphe_debug_protobuffer_title">Буфер протокола журнала отладки</string>
+  <string name="morphe_debug_protobuffer_summary_on">Журналы отладки содержат буферы протоколов</string>
+  <string name="morphe_debug_protobuffer_summary_off">Журналы отладки не содержат буферов протокола</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Включение этой настройки позволит регистрировать дополнительные данные макета, включая текст на экране для некоторых компонентов пользовательского интерфейса.
 
 Это может помочь определить компоненты при создании пользовательских фильтров.

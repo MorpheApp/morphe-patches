@@ -92,7 +92,7 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_debug_title">Pencatatan debug</string>
   <string name="morphe_debug_summary_on">Pencatatan debug diaktifkan</string>
   <string name="morphe_debug_summary_off">Pencatatan debug dinonaktifkan</string>
-  <string name="morphe_debug_stacktrace_title">Jejak catatan stack</string>
+  <string name="morphe_debug_stacktrace_title">Jejak stack catatan debug</string>
   <string name="morphe_debug_stacktrace_summary_on">Pencatatan debug menyertakan jejak stack</string>
   <string name="morphe_debug_stacktrace_summary_off">Pencatatan debug tidak menyertakan jejak stack</string>
   <string name="morphe_debug_toast_on_error_title">Tampilkan pesan timbul pada kesalahan Morphe</string>
@@ -101,24 +101,27 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Mematikan pesan timbul kesalahan menyembunyikan semua pemberitahuan kesalahan Morphe.
 
 Anda tidak akan diberi tahu tentang kejadian yang tidak terduga."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Ekspor catatan debug</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Salin catatan debug Morphe ke papan klip</string>
+  <string name="morphe_debug_export_logs_title">Ekspor pencatatan debug</string>
+  <string name="morphe_debug_export_logs_summary">Ekspor pencatatan debug Morphe</string>
+  <string name="morphe_debug_export_logs_file">Ekspor ke berkas</string>
+  <string name="morphe_debug_export_logs_success">Pencatatan debug berhasil diekspor</string>
+  <string name="morphe_debug_export_logs_failed">Gagal mengekspor pencatatan debug</string>
+  <string name="morphe_debug_logs_search_hint">Cari pencatatan debug...</string>
+  <string name="morphe_debug_export_logs_clear">Bersihkan</string>
   <string name="morphe_debug_logs_disabled">Pencatatan debug dinonaktifkan</string>
-  <string name="morphe_debug_logs_none_found">Tidak ditemukan catatan</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Catatan disalin</string>
-  <string name="morphe_debug_logs_failed_to_export">Gagal mengekspor catatan: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Bersihkan catatan debug</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Menghapus semua catatan debug Morphe yang tersimpan</string>
-  <string name="morphe_debug_logs_clear_toast">Catatan dibersihkan</string>
+  <string name="morphe_debug_logs_none_found">Tidak ditemukan pencatatan debug</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Pencatatan debug disalin</string>
+  <string name="morphe_debug_logs_failed_to_export">Gagal mengekspor pencatatan debug: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Pencatatan debug telah dibersihkan</string>
   <string name="morphe_debug_feature_flags_manager_title">Fitur pengelolaan tanda</string>
   <string name="morphe_debug_feature_flags_manager_summary">Kelola tanda fitur boolean</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Tanda aktif (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Tanda diblokir (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Cari tanda...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Tanda disimpan</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Tanda diatur ulang</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Tanda disalin ke papan klip</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Mulai ulang aplikasi untuk menggunakan fitur ini</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Tanda fitur aktif (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Tanda fitur yang diblokir (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Cari tanda fitur...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Tanda fitur disimpan</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Tanda fitur diatur ulang</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Tanda fitur disalin ke papan klip</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Mulai ulang aplikasi untuk menggunakan pengaturan ini</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Buka pengaturan MicroG</string>

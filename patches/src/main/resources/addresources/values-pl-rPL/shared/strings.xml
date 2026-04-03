@@ -61,7 +61,7 @@ Aby przetłumaczyć aplikację na nowe języki lub poprawić istniejące tłumac
   <string name="morphe_pref_import_export_title">Import / Eksport</string>
   <string name="morphe_pref_import_export_summary">Importuj / Eksportuj ustawienia Morphe</string>
   <string name="morphe_settings_import_file">Importuj z pliku</string>
-  <string name="morphe_settings_import_file_success">Ustawienia zostały pomyślnie zaimportowane, stuknij Zapisz, aby zastosować</string>
+  <string name="morphe_settings_import_file_success">Ustawienia zaimportowane pomyślnie, stuknij Zapisz, aby zastosować</string>
   <string name="morphe_settings_import_file_failed">Nie udało się zaimportować ustawień</string>
   <string name="morphe_settings_export_file">Eksportuj do pliku</string>
   <string name="morphe_settings_export_file_success">Ustawienia wyeksportowane pomyślnie</string>
@@ -92,7 +92,7 @@ Aby przetłumaczyć aplikację na nowe języki lub poprawić istniejące tłumac
   <string name="morphe_debug_title">Logi debugowania</string>
   <string name="morphe_debug_summary_on">Włączone</string>
   <string name="morphe_debug_summary_off">Wyłączone</string>
-  <string name="morphe_debug_stacktrace_title">Logi śladów stosu</string>
+  <string name="morphe_debug_stacktrace_title">Logi debugowania śladów stosu</string>
   <string name="morphe_debug_stacktrace_summary_on">Włączone</string>
   <string name="morphe_debug_stacktrace_summary_off">Wyłączone</string>
   <string name="morphe_debug_toast_on_error_title">Komunikaty o błędach Morphe</string>
@@ -101,24 +101,27 @@ Aby przetłumaczyć aplikację na nowe języki lub poprawić istniejące tłumac
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Wyłączenie tej opcji ukrywa wszystkie komunikaty o błędach Morphe.
 
 Nie dostaniesz informacji o żadnych nieoczekiwanych zdarzeniach."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Eksportuj logi debugowania</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopiuje logi debugowania Morphe do schowka</string>
+  <string name="morphe_debug_export_logs_title">Eksportuj logi debugowania</string>
+  <string name="morphe_debug_export_logs_summary">Eksportuj logi debugowania Morphe</string>
+  <string name="morphe_debug_export_logs_file">Eksportuj do pliku</string>
+  <string name="morphe_debug_export_logs_success">Logi debugowania wyeksportowane pomyślnie</string>
+  <string name="morphe_debug_export_logs_failed">Nie udało się wyeksportować logów debugowania</string>
+  <string name="morphe_debug_logs_search_hint">Szukaj logów debugowania...</string>
+  <string name="morphe_debug_export_logs_clear">Wyczyść</string>
   <string name="morphe_debug_logs_disabled">Logi debugowania są wyłączone</string>
-  <string name="morphe_debug_logs_none_found">Nie znaleziono logów</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Logi skopiowane</string>
-  <string name="morphe_debug_logs_failed_to_export">Nie udało się wyeksportować logów: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Wyczyść logi debugowania</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Czyści wszystkie zapisane logi debugowania Morphe</string>
-  <string name="morphe_debug_logs_clear_toast">Logi wyczyszczone</string>
+  <string name="morphe_debug_logs_none_found">Nie znaleziono logów debugowania</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Skopiowano logi debugowania</string>
+  <string name="morphe_debug_logs_failed_to_export">Nie udało się wyeksportować logów debugowania: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Wyczyszczono logi debugowania</string>
   <string name="morphe_debug_feature_flags_manager_title">Menedżer flag funkcji</string>
   <string name="morphe_debug_feature_flags_manager_summary">Zarządzaj flagami funkcji</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktywne flagi (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Zablokowane flagi (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Szukaj flag...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Flagi zapisane</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Flagi zresetowane</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Flagi skopiowane do schowka</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Uruchom ponownie aplikację, aby użyć tej funkcji</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktywne flagi funkcji (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Zablokowane flagi funkcji (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Szukaj flag funkcji...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Zapisano flagi funkcji</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Zresetowano flagi funkcji</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Skopiowano flagi funkcji do schowka</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Uruchom ponownie aplikację, aby użyć tego ustawienia</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otwórz ustawienia MicroG</string>

@@ -92,33 +92,36 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">Καταγραφή εντοπισμού σφαλμάτων</string>
   <string name="morphe_debug_summary_on">Η καταγραφή εντοπισμού σφαλμάτων είναι ενεργοποιημένη</string>
   <string name="morphe_debug_summary_off">Η καταγραφή εντοπισμού σφαλμάτων είναι απενεργοποιημένη</string>
-  <string name="morphe_debug_stacktrace_title">Καταγραφή ιχνών στοίβας</string>
-  <string name="morphe_debug_stacktrace_summary_on">Τα αρχεία καταγραφής σφαλμάτων περιλαμβάνουν ίχνη στοίβας</string>
-  <string name="morphe_debug_stacktrace_summary_off">Τα αρχεία καταγραφής σφαλμάτων δεν περιλαμβάνουν ίχνη στοίβας</string>
+  <string name="morphe_debug_stacktrace_title">Ιχνηλάτης στοίβας αρχείου καταγραφής εντοπισμού σφαλμάτων</string>
+  <string name="morphe_debug_stacktrace_summary_on">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων περιλαμβάνουν ίχνη στοίβας</string>
+  <string name="morphe_debug_stacktrace_summary_off">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων δεν περιλαμβάνουν ίχνη στοίβας</string>
   <string name="morphe_debug_toast_on_error_title">Εμφάνιση μηνυμάτων σφαλμάτων Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Εμφανίζεται μήνυμα στο κάτω μέρος της οθόνης αν προκύψει σφάλμα</string>
   <string name="morphe_debug_toast_on_error_summary_off">Δεν εμφανίζεται μήνυμα στο κάτω μέρος της οθόνης αν προκύψει σφάλμα</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Η απενεργοποίηση των μηνυμάτων σφαλμάτων κρύβει όλες τις ειδοποιήσεις σφαλμάτων που αφορούν το Morphe.
 
 Δε θα ειδοποιηθείτε για τυχόν απρόβλεπτα γεγονότα."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Εξαγωγή αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Αντιγραφή των αρχείων καταγραφής εντοπισμού σφαλμάτων Morphe στο πρόχειρο</string>
+  <string name="morphe_debug_export_logs_title">Εξαγωγή αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
+  <string name="morphe_debug_export_logs_summary">Εξαγωγή αρχείων καταγραφής εντοπισμού σφαλμάτων Morphe</string>
+  <string name="morphe_debug_export_logs_file">Εξαγωγή σε αρχείο</string>
+  <string name="morphe_debug_export_logs_success">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων εξαγώθηκαν επιτυχώς</string>
+  <string name="morphe_debug_export_logs_failed">Αποτυχία εξαγωγής αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
+  <string name="morphe_debug_logs_search_hint">Αναζήτηση αρχείων καταγραφής εντοπισμού σφαλμάτων...</string>
+  <string name="morphe_debug_export_logs_clear">Εκκαθάριση</string>
   <string name="morphe_debug_logs_disabled">Η καταγραφή εντοπισμού σφαλμάτων είναι απενεργοποιημένη</string>
-  <string name="morphe_debug_logs_none_found">Δεν βρέθηκαν αρχεία καταγραφής</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Τα αρχεία καταγραφής αντιγράφηκαν</string>
-  <string name="morphe_debug_logs_failed_to_export">Αποτυχία εξαγωγής αρχείων καταγραφής: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Εκκαθάριση αρχείων καταγραφής εντοπισμού σφαλμάτων</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Εκκαθάριση όλων των αποθηκευμένων αρχειών καταγραφής εντοπισμού σφαλμάτων Morphe</string>
-  <string name="morphe_debug_logs_clear_toast">Τα αρχεία καταγραφής εκκαθαρίστηκαν</string>
+  <string name="morphe_debug_logs_none_found">Δεν βρέθηκαν αρχεία καταγραφής εντοπισμού σφαλμάτων</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων αντιγράφηκαν</string>
+  <string name="morphe_debug_logs_failed_to_export">Αποτυχία εξαγωγής αρχείων καταγραφής εντοπισμού σφαλμάτων: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων εκκαθαρίστηκαν</string>
   <string name="morphe_debug_feature_flags_manager_title">Διαχειριστής σημαιών λειτουργιών</string>
   <string name="morphe_debug_feature_flags_manager_summary">Διαχείριση των boolean σημαιών λειτουργιών</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Ενεργές σημαίες (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Αποκλεισμένες σημαίες (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Αναζήτηση σημαιών...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Οι σημαίες αποθηκεύτηκαν</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Οι σημαίες επαναφέρθηκαν</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Οι σημαίες αντιγράφηκαν στο πρόχειρο</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Επανεκκινήστε την εφαρμογή για να χρησιμοποιήσετε αυτή τη λειτουργία</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Ενεργές λειτουργίες σημαίες (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Αποκλεισμένες λειτουργίες σημαίες (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Αναζήτηση λειτουργιών σημαιών...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Οι λειτουργίες σημαιών αποθηκεύτηκαν</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Οι λειτουργίες σημαιών επαναφέρθηκαν</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Οι λειτουργίες σημαιών αντιγράφηκαν στο πρόχειρο</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Επανεκκινήστε την εφαρμογή για να χρησιμοποιήσετε αυτήν την ρύθμιση</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Άνοιγμα των ρυθμίσεων MicroG</string>

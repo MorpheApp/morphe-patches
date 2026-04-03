@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Wyłączone</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Włączone</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Logi buforów protokołu</string>
+  <string name="morphe_debug_protobuffer_title">Logi debugowania buforów protokołu</string>
   <string name="morphe_debug_protobuffer_summary_on">Włączone</string>
   <string name="morphe_debug_protobuffer_summary_off">Wyłączone</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Włączenie tej opcji spowoduje rejestrowanie dodatkowych informacji o układzie, w tym tekstu wyświetlanego w niektórych elementach interfejsu.
@@ -1175,7 +1175,7 @@ Ograniczenie: Łapki w dół mogą nie być widoczne w trybie incognito"</string
   <string name="morphe_sb_settings_copy">Kopiuj</string>
   <string name="morphe_sb_settings_ie_sum">Twoja konfiguracja JSON SponsorBlock, którą można importować / eksportować między Morphe a innymi platformami</string>
   <string name="morphe_sb_settings_ie_sum_warning">Twoja konfiguracja JSON SponsorBlock, którą można importować / eksportować między Morphe a innymi platformami. Zawiera ona Twój prywatny identyfikator użytkownika. Udostępniaj ją ostrożnie</string>
-  <string name="morphe_sb_settings_import_successful">Ustawienia zostały pomyślnie zaimportowane</string>
+  <string name="morphe_sb_settings_import_successful">Ustawienia zaimportowane pomyślnie</string>
   <string name="morphe_sb_settings_import_failed">Nie udało się zaimportować: %s</string>
   <string name="morphe_sb_settings_export_failed">Nie udało się wyeksportować: %s</string>
   <string name="morphe_sb_settings_morphe_export_user_id_warning">"Twoje ustawienia zawierają prywatny identyfikator użytkownika SponsorBlock.

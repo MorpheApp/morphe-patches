@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">已停用背景播放 Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">已啟用背景播放 Shorts</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">記錄檔協定緩衝區</string>
+  <string name="morphe_debug_protobuffer_title">除錯記錄檔協定緩衝區</string>
   <string name="morphe_debug_protobuffer_summary_on">除錯記錄檔會包含協定緩衝資訊</string>
   <string name="morphe_debug_protobuffer_summary_off">除錯記錄檔不會包含協定緩衝資訊</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"啟用這項設定將會記錄額外的版面配置資料，包括部分使用者介面元件上的螢幕文字。

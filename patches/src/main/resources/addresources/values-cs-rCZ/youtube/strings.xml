@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Přehrávání Shorts na pozadí je zakázáno</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Přehrávání Shorts na pozadí je povoleno</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Zaznamenat buffer protokolu</string>
-  <string name="morphe_debug_protobuffer_summary_on">Debugovací záznamy obsahují buffer protokolu</string>
-  <string name="morphe_debug_protobuffer_summary_off">Debugovací záznamy neobsahují buffer protokolu</string>
+  <string name="morphe_debug_protobuffer_title">Protokolový buffer pro ladění</string>
+  <string name="morphe_debug_protobuffer_summary_on">Debugovací záznamy obsahují protokolové buffery</string>
+  <string name="morphe_debug_protobuffer_summary_off">Debugovací záznamy neobsahují protokolové buffery</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Povolením tohoto nastavení se bude zaznamenávat další data rozvržení, včetně textu na obrazovce pro některé komponenty uživatelského rozhraní.
 
 To může pomoci identifikovat komponenty při vytváření vlastních filtrů.

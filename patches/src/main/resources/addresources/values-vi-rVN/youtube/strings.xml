@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Phát nền cho Shorts đã tắt</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Phát nền cho Shorts đã bật</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Bộ đệm giao thức nhật ký</string>
-  <string name="morphe_debug_protobuffer_summary_on">Ghi nhật ký gỡ lỗi bao gồm thông tin bộ đệm nguyên mẫu</string>
-  <string name="morphe_debug_protobuffer_summary_off">Ghi nhật ký gỡ lỗi mà không có thông tin bộ đệm nguyên mẫu</string>
+  <string name="morphe_debug_protobuffer_title">Ghi nhật ký gỡ lỗi (Protocol Buffer)</string>
+  <string name="morphe_debug_protobuffer_summary_on">Nhật ký gỡ lỗi chứa cả dữ liệu protobuf</string>
+  <string name="morphe_debug_protobuffer_summary_off">Nhật ký gỡ lỗi không chứa dữ liệu protobuf</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Bật cài đặt này sẽ ghi lại dữ liệu bố cục bổ sung, bao gồm cả văn bản trên màn hình cho một số thành phần giao diện người dùng.
 
 Điều này có thể giúp xác định các thành phần khi tạo bộ lọc tùy chỉnh.

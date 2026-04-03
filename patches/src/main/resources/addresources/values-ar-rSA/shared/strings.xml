@@ -92,33 +92,36 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">تسجيل تصحيح الأخطاء</string>
   <string name="morphe_debug_summary_on">تم تمكين تسجيلات تصحيح الأخطاء</string>
   <string name="morphe_debug_summary_off">تم تعطيل تسجيلات تصحيح الأخطاء</string>
-  <string name="morphe_debug_stacktrace_title">سجل تتبع المكدس</string>
-  <string name="morphe_debug_stacktrace_summary_on">تتضمن سجلات التصحيح سجل تتبع المكدس</string>
-  <string name="morphe_debug_stacktrace_summary_off">لا تتضمن سجلات التصحيح سجل تتبع المكدس</string>
+  <string name="morphe_debug_stacktrace_title">مسار التتبع في سجل التصحيح</string>
+  <string name="morphe_debug_stacktrace_summary_on">تتضمن سجلات التصحيح مسارات التتبع</string>
+  <string name="morphe_debug_stacktrace_summary_off">لا تتضمن سجلات التصحيح مسارات التتبع</string>
   <string name="morphe_debug_toast_on_error_title">عرض ملاحظة عند وجود خطأ في Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">يتم عرض ملاحظة في حالة حدوث خطأ</string>
   <string name="morphe_debug_toast_on_error_summary_off">لا يتم عرض ملاحظة في حالة حدوث خطأ</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"يؤدي إيقاف تشغيل ملاحظات الأخطاء إلى إخفاء كافة إشعارات أخطاء Morphe.
 
 لن يتم إعلامك بأي أخطاء غير متوقعة."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">تصدير سجلات تصحيح الأخطاء</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">نسخ سجلات تصحيح أخطاء Morphe إلى الحافظة</string>
+  <string name="morphe_debug_export_logs_title">تصدير سجلات تصحيح الأخطاء</string>
+  <string name="morphe_debug_export_logs_summary">تصدير سجلات تصحيح Morphe</string>
+  <string name="morphe_debug_export_logs_file">تصدير إلى ملف</string>
+  <string name="morphe_debug_export_logs_success">تم تصدير سجلات التصحيح بنجاح</string>
+  <string name="morphe_debug_export_logs_failed">فشل تصدير سجلات التصحيح</string>
+  <string name="morphe_debug_logs_search_hint">البحث في سجلات التصحيح...</string>
+  <string name="morphe_debug_export_logs_clear">مسح</string>
   <string name="morphe_debug_logs_disabled">تم تعطيل تسجيلات تصحيح الأخطاء</string>
-  <string name="morphe_debug_logs_none_found">لم يتم العثور على سجلات</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">تم نسخ السجلات</string>
-  <string name="morphe_debug_logs_failed_to_export">فشل تصدير السجلات: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">مسح سجلات تصحيح الأخطاء</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">يمسح جميع سجلات تصحيح أخطاء Morphe المخزنة</string>
-  <string name="morphe_debug_logs_clear_toast">تم مسح السجلات</string>
+  <string name="morphe_debug_logs_none_found">لم يتم العثور على سجلات تصحيح</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">تم نسخ سجلات التصحيح إلى الحافظة</string>
+  <string name="morphe_debug_logs_failed_to_export">فشل تصدير سجلات التصحيح: %s</string>
+  <string name="morphe_debug_logs_clear_toast">تم مسح سجلات التصحيح</string>
   <string name="morphe_debug_feature_flags_manager_title">مدير Feature Flags</string>
   <string name="morphe_debug_feature_flags_manager_summary">إدارة Feature Flags الثنائية</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Flags نشطة (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Flags محظورة (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">البحث عن Flags...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">تم حفظ Flags</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">تم إعادة تعيين Flags</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">تم نسخ Flags إلى الحافظة</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">إعادة تشغيل التطبيق لاستخدام هذه الميزة</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Feature Flags نشطة (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Feature Flags محظورة (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">البحث عن Feature Flags...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">تم حفظ Feature Flags</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">تمت إعادة تعيين Feature Flags</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">تم نسخ Feature Flags إلى الحافظة</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">أعد تشغيل التطبيق لاستخدام هذا الإعداد</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">فتح إعدادات microG</string>

@@ -92,33 +92,36 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">Дневник за отчетените грешки</string>
   <string name="morphe_debug_summary_on">Отчетите за грешки са включени</string>
   <string name="morphe_debug_summary_off">Отчетите за грешки са изключени</string>
-  <string name="morphe_debug_stacktrace_title">Записи на лог файловете</string>
-  <string name="morphe_debug_stacktrace_summary_on">Дневникът за отстраняване на грешки съдържа записи</string>
-  <string name="morphe_debug_stacktrace_summary_off">Дневникът за отстраняване на грешки не съдържа записи</string>
+  <string name="morphe_debug_stacktrace_title">Запис на стека на отстраняване на грешки</string>
+  <string name="morphe_debug_stacktrace_summary_on">Записите на отстраняване на грешки включват стекове</string>
+  <string name="morphe_debug_stacktrace_summary_off">Записите на отстраняване на грешки не включват стекове</string>
   <string name="morphe_debug_toast_on_error_title">Показване на уведомление при грешка в Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Съобщение ще бъде показано, ако се появи грешка</string>
   <string name="morphe_debug_toast_on_error_summary_off">Съобщение няма да бъде показано, ако се появи грешка</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Изключването на изскачащи съобщения за грешки крие всички известия за грешки на Morphe.
 
 Няма да бъдете уведомени за неочаквани събития."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Експортиране на логове за отстраняване на грешки</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Копиране на отчети за грешки на Morphe в клипборда</string>
+  <string name="morphe_debug_export_logs_title">Експортиране на логове за отстраняване на грешки</string>
+  <string name="morphe_debug_export_logs_summary">Експортиране на логове за отстраняване на грешки на Morphe</string>
+  <string name="morphe_debug_export_logs_file">Експортиране във файл</string>
+  <string name="morphe_debug_export_logs_success">Логовете за отстраняване на грешки бяха експортирани успешно</string>
+  <string name="morphe_debug_export_logs_failed">Неуспешно експортиране на логове за отстраняване на грешки: %s</string>
+  <string name="morphe_debug_logs_search_hint">Търсене на логове за отстраняване на грешки…</string>
+  <string name="morphe_debug_export_logs_clear">Изчистване</string>
   <string name="morphe_debug_logs_disabled">Отчетите за отстраняване на грешки са изключени</string>
-  <string name="morphe_debug_logs_none_found">Няма намерени логове</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Лог файловете са копирани</string>
-  <string name="morphe_debug_logs_failed_to_export">Неуспешно експортиране на логове: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Изчистване на логовете за отстраняване на грешки</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Изчиства всички съхранени отчети за грешки на Morphe</string>
-  <string name="morphe_debug_logs_clear_toast">Логовете са изтрити</string>
+  <string name="morphe_debug_logs_none_found">Не са намерени логове за отстраняване на грешки</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Логовете за отстраняване на грешки бяха копирани</string>
+  <string name="morphe_debug_logs_failed_to_export">Неуспешно експортиране на логове за отстраняване на грешки: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Логовете за отстраняване на грешки бяха изчистени</string>
   <string name="morphe_debug_feature_flags_manager_title">Мениджър на флагове на функции</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управление на флагове на логически функции</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Активни флагове (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Блокирани флагове (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Търсене на флагове...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Флаговете са запазени</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Флаговете са изтрити</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Флаговете са копирани в клипборда</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Повторете приложението, за да използвате тази функционалност</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Активни индикатори за функции (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Блокирани индикатори за функции (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Търсене на индикатори за функции…</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Индикаторите за функции бяха запазени</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Индикаторите за функции бяха нулирани</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Индикаторите за функции бяха копирани в клипборда</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Рестартирайте приложението, за да използвате тази настройка</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Отвори настройките на MicroG</string>

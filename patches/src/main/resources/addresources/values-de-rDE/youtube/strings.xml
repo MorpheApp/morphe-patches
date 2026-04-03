@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Hintergrundwiedergabe von Shorts ist deaktiviert</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Hintergrundwiedergabe von Shorts ist aktiviert</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Protokollpuffer protokollieren</string>
-  <string name="morphe_debug_protobuffer_summary_on">Debug-Protokolle enthalten Protokollpuffer</string>
-  <string name="morphe_debug_protobuffer_summary_off">Debug-Protokolle enthalten kein Protokollpuffer</string>
+  <string name="morphe_debug_protobuffer_title">Debug-Protokollpuffer</string>
+  <string name="morphe_debug_protobuffer_summary_on">Debug-Logs enthalten Protokollpuffer</string>
+  <string name="morphe_debug_protobuffer_summary_off">Debug-Logs enthalten keine Protokollpuffer</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Wenn diese Einstellung aktiv ist werden zusätzliche Layoutdaten protokolliert, einschließlich Text auf dem Bildschirm für einige UI-Komponenten.
 
 Dies kann helfen, Komponenten bei der Erstellung benutzerdefinierter Filter zu identifizieren.

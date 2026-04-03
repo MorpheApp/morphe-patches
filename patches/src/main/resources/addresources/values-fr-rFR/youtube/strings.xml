@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">La lecture en arrière-plan des Shorts est désactivée</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">La lecture en arrière-plan des Shorts est activée</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Journaliser le protocole buffer</string>
-  <string name="morphe_debug_protobuffer_summary_on">Les journaux de débogage incluent le protocole buffer</string>
-  <string name="morphe_debug_protobuffer_summary_off">Les journaux de débogage n\'incluent pas le protocole buffer</string>
+  <string name="morphe_debug_protobuffer_title">Journal de débogage du protocol buffer</string>
+  <string name="morphe_debug_protobuffer_summary_on">Les journaux de débogage incluent les protocol buffers</string>
+  <string name="morphe_debug_protobuffer_summary_off">Les journaux de débogage n\'incluent pas les protocol buffers</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"L’activation de ce paramètre enregistrera des données supplémentaires sur la mise en page, y compris le texte affiché à l’écran pour certains composants de l’interface.
 
 Cela peut aider à identifier les composants lors de la création de filtres personnalisés.
@@ -1374,7 +1374,7 @@ Si cette option est désactivée ultérieurement, il est recommandé de vider le
   <string name="morphe_change_start_page_entry_news">Actualités</string>
   <string name="morphe_change_start_page_entry_notifications">Notifications</string>
   <string name="morphe_change_start_page_entry_playlists">Playlists</string>
-  <string name="morphe_change_start_page_entry_search">Recherche</string>
+  <string name="morphe_change_start_page_entry_search">Rechercher</string>
   <string name="morphe_change_start_page_entry_shopping">Produits</string>
   <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Sports</string>

@@ -78,8 +78,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_previous_button_summary_off">Το κουμπί Προηγούμενο δεν εμφανίζεται στην ελαχιστοποιημένη οθόνη αναπαραγωγής</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Ενεργοποίηση εξαναγκαστικής ελαχιστοποίησης οθόνης αναπαραγωγής</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">Το miniplayer παραμένει ελαχιστοποιημένο κατά τη διάρκεια αλλαγών στην αναπαραγωγή</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">Το miniplayer επεκτείνεται σε πλήρη οθόνη κατά τη διάρκεια αλλαγών στην αναπαραγωγή</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Η ελαχιστοποιημένη οθόνη αναπαραγωγής παραμένει ελαχιστοποιημένη κατά τη διάρκεια αλλαγών στην αναπαραγωγή</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Η ελαχιστοποιημένη οθόνη αναπαραγωγής επεκτείνεται σε πλήρη οθόνη κατά τη διάρκεια αλλαγών στην αναπαραγωγή</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Γραμμή πλοήγησης</string>
   <string name="morphe_music_navigation_bar_screen_summary">Αποκρύψτε ή αλλάξτε τα κουμπιά στη γραμμής πλοήγησης</string>
@@ -88,33 +88,33 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Το κουμπί Αρχικής Σελίδας έχει αποκρυφτεί</string>
   <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Το κουμπί Αρχικής Σελίδας εμφανίζεται</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">Κουμπί «Δείγματα»</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Κρυμμένο</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Απόκρυψη κουμπιού Δείγματα</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Το κουμπί Δείγματα έχει αποκρυφτεί</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Το κουμπί Δείγματα εμφανίζεται</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">Κουμπί «Εξερεύνηση»</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Απόκρυψη κουμπιού Εξερεύνηση</string>
   <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Κρυμμένο</string>
   <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Εμφανίζεται</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">Κουμπί «Βιβλιοθήκη»</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Απόκρυψη κουμπιού Βιβλιοθήκη</string>
   <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Κρυμμένο</string>
   <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Εμφανίζεται</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Κουμπί «Αναβάθμιση»</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Απόκρυψη κουμπιού Αναβάθμιση</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Κρυμμένο</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_music_hide_navigation_bar_title">Γραμμή πλοήγησης</string>
+  <string name="morphe_music_hide_navigation_bar_title">Απόκρυψη Γραμμή Πλοήγησης</string>
   <string name="morphe_music_hide_navigation_bar_summary_on">Κρυμμένη</string>
   <string name="morphe_music_hide_navigation_bar_summary_off">Εμφανίζεται</string>
-  <string name="morphe_music_hide_navigation_bar_labels_title">Ονομασίες κουμπιών γραμμής πλοήγησης</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Απόκρυψη ονομάτων κουμπιών γραμμής πλοήγησης</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Κρυμμένες</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Εμφανίζονται</string>
   <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Ετικέτα «Αποκτήστε το Music Premium»</string>
+  <string name="morphe_music_hide_get_premium_label_title">Απόκρυψη ετικέτας \'Αποκτήστε Music Premium\'</string>
   <string name="morphe_music_hide_get_premium_label_summary_on">Κρυμμένη</string>
   <string name="morphe_music_hide_get_premium_label_summary_off">Εμφανίζεται</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
-  <string name="morphe_music_hide_upgrade_button_title">Κουμπί «Αναβάθμιση»</string>
+  <string name="morphe_music_hide_upgrade_button_title">Απόκρυψη κουμπιού Αναβάθμιση</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Κρυμμένο</string>
   <string name="morphe_music_hide_upgrade_button_summary_off">Εμφανίζεται</string>
 </resources>

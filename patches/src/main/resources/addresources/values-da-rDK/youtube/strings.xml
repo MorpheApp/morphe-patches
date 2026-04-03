@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Baggrundsafspilning af Shorts er deaktiveret</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Baggrundsafspilning af Shorts er aktiveret</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Logprotokolbuffer</string>
+  <string name="morphe_debug_protobuffer_title">Debug log protokolbuffer</string>
   <string name="morphe_debug_protobuffer_summary_on">Fejlfindingslogge inkluderer protobuffer</string>
   <string name="morphe_debug_protobuffer_summary_off">Fejlfindingslogge inkluderer ikke protobuffer</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Aktivering af denne indstilling logger yderligere layoutdata, inklusive tekst på skærmen for nogle UI-komponenter.

@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Puštanje Shorts videa u pozadini je onemogućeno</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Puštanje Shorts videa u pozadini je omogućeno</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Evidentiranje bafera protokola</string>
+  <string name="morphe_debug_protobuffer_title">Debug log bafer protokola</string>
   <string name="morphe_debug_protobuffer_summary_on">Evidencije otklanjanja grešaka sadrže bafer protokola</string>
   <string name="morphe_debug_protobuffer_summary_off">Evidencije otklanjanja grešaka ne sadrže bafer protokola</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Omogućavanjem ove opcije evidentiraće se dodatni podaci o izgledu, uključujući tekst na ekranu za neke komponente korisničkog interfejsa.

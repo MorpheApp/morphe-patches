@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">Réinitialisation des paramètres Morphe aux valeurs par défaut</string>
   <string name="morphe_settings_import_success">%d paramètres importés</string>
   <string name="morphe_settings_import_failure_parse">Importation échouée : %s</string>
-  <string name="morphe_settings_search_hint">Recherche de paramètres</string>
+  <string name="morphe_settings_search_hint">Rechercher de paramètres</string>
   <string name="morphe_settings_search_no_results_title">Aucun résultat trouvé pour \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Essayez un autre mot-clé</string>
   <string name="morphe_settings_search_recent_searches">Recherches récentes</string>
@@ -93,33 +93,36 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_debug_title">Journaux de débogage</string>
   <string name="morphe_debug_summary_on">Les journaux de débogage sont activés</string>
   <string name="morphe_debug_summary_off">Les journaux de débogage sont désactivés</string>
-  <string name="morphe_debug_stacktrace_title">Journaliser les traces de pile</string>
-  <string name="morphe_debug_stacktrace_summary_on">Les journaux de débogage incluent la trace de pile</string>
-  <string name="morphe_debug_stacktrace_summary_off">Les journaux de débogage n\'incluent pas la trace de pile</string>
+  <string name="morphe_debug_stacktrace_title">Journal de débogage de trace de pile</string>
+  <string name="morphe_debug_stacktrace_summary_on">Les journaux de débogage incluent les traces de pile</string>
+  <string name="morphe_debug_stacktrace_summary_off">Les journaux de débogage n\'incluent pas les traces de pile</string>
   <string name="morphe_debug_toast_on_error_title">Afficher une notification en cas d\'erreur Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Une notification toast est affiché en cas d\'erreur</string>
   <string name="morphe_debug_toast_on_error_summary_off">Aucune notification toast n\'est affiché en cas d\'erreur</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Désactiver les notifications toast d’erreur masque toutes les notifications d’erreur de Morphe.
 
 Vous ne serez plus averti en cas d’événements inattendus."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exporter les journaux de débogage</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Copie les journaux de débogage Morphe dans le presse-papiers</string>
+  <string name="morphe_debug_export_logs_title">Exporter les journaux de débogage</string>
+  <string name="morphe_debug_export_logs_summary">Exporter les journaux de débogage de Morphe</string>
+  <string name="morphe_debug_export_logs_file">Exporter vers un fichier</string>
+  <string name="morphe_debug_export_logs_success">Les journaux de débogage ont été exportés avec succès</string>
+  <string name="morphe_debug_export_logs_failed">Échec de l\'exportation des journaux de débogage</string>
+  <string name="morphe_debug_logs_search_hint">Rechercher des journaux de débogage...</string>
+  <string name="morphe_debug_export_logs_clear">Effacer</string>
   <string name="morphe_debug_logs_disabled">La journalisation de débogage est désactivée</string>
-  <string name="morphe_debug_logs_none_found">Aucun journal trouvé</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Journaux copiés</string>
-  <string name="morphe_debug_logs_failed_to_export">Échec de l\'exportation des journaux : %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Effacer les journaux de débogage</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Efface tous les journaux de débogage Morphe stockés</string>
-  <string name="morphe_debug_logs_clear_toast">Journaux effacés</string>
-  <string name="morphe_debug_feature_flags_manager_title">Gestionnaire de drapeaux de fonctionnalités</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Gérer les drapeaux de fonctionnalités booléens</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Drapeaux actifs (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Drapeaux bloqués (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des drapeaux...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Drapeaux enregistrés</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Drapeaux réinitialisés</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Drapeaux copiés dans le presse-papiers</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l\'application pour utiliser cette fonctionnalité</string>
+  <string name="morphe_debug_logs_none_found">Aucun journal de débogage trouvé</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Journaux de débogage copiés</string>
+  <string name="morphe_debug_logs_failed_to_export">Échec de l\'exportation des journaux de débogage : %s</string>
+  <string name="morphe_debug_logs_clear_toast">Journaux de débogage effacés</string>
+  <string name="morphe_debug_feature_flags_manager_title">Gestionnaire de flags de fonctionnalités</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Gérer les flags de fonctionnalités booléens</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Flags de fonctionnalités actifs (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Flags de fonctionnalités bloqués (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des flags de fonctionnalités…</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Flags de fonctionnalités enregistrés</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Flags de fonctionnalités réinitialisés</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Flags de fonctionnalités copiés dans le presse-papiers</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l’application pour appliquer ce paramètre</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Ouvrir les paramètres MicroG</string>

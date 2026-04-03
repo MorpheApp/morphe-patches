@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">शॉर्ट्स पार्श्वभूमी प्ले अक्षम आहे</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">शॉर्ट्स पार्श्वभूमी प्ले सक्षम आहे</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">प्रोटोकॉल बफर लॉग करा</string>
-  <string name="morphe_debug_protobuffer_summary_on">डीबग लॉगमध्ये प्रोटो बफर समाविष्ट आहे</string>
-  <string name="morphe_debug_protobuffer_summary_off">डीबग लॉगमध्ये प्रोटो बफर समाविष्ट नाही</string>
+  <string name="morphe_debug_protobuffer_title">डीबग लॉग प्रोटोकॉल बफर</string>
+  <string name="morphe_debug_protobuffer_summary_on">डीबग लॉगमध्ये प्रोटोकॉल बफर समाविष्ट आहेत</string>
+  <string name="morphe_debug_protobuffer_summary_off">डीबग लॉगमध्ये प्रोटोकॉल बफर समाविष्ट नाहीत</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"हे सेटिंग सक्षम केल्यास अतिरिक्त लेआउट डेटा लॉग केला जाईल, ज्यामध्ये काही UI घटकांसाठी स्क्रीनवरील मजकूर समाविष्ट आहे.
 
 हे कस्टम फिल्टर तयार करताना घटक ओळखण्यात मदत करू शकते.

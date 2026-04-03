@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Фонове відтворення Shorts вимкнено</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Фонове відтворення Shorts увімкнено</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Журнал протоколу буфера</string>
-  <string name="morphe_debug_protobuffer_summary_on">Журнали налагодження містять протобуфер</string>
-  <string name="morphe_debug_protobuffer_summary_off">Журнали налагодження не містять протобуфер</string>
+  <string name="morphe_debug_protobuffer_title">Журнал налагодження протоколу буфера</string>
+  <string name="morphe_debug_protobuffer_summary_on">Журнали налагодження містять буфери протоколів</string>
+  <string name="morphe_debug_protobuffer_summary_off">Журнали налагодження не містять буферів протоколу</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Увімкнення цього налаштування реєструватиме додаткові дані про макет, зокрема текст на екрані для деяких компонентів інтерфейсу.
 
 Це може допомогти визначити компоненти під час створення користувацьких фільтрів.

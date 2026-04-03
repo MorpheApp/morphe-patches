@@ -92,8 +92,8 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">Hibakeresési naplózás</string>
   <string name="morphe_debug_summary_on">A hibakeresési naplók engedélyezve vannak</string>
   <string name="morphe_debug_summary_off">A hibakeresési naplók le vannak tiltva</string>
-  <string name="morphe_debug_stacktrace_title">Naplóverem nyomai</string>
-  <string name="morphe_debug_stacktrace_summary_on">A hibakeresési naplók tartalmazzák a verem nyomkövetését</string>
+  <string name="morphe_debug_stacktrace_title">Hibakeresési naplók verem nyomkövetése</string>
+  <string name="morphe_debug_stacktrace_summary_on">Hibakeresési naplók tartalmazzák a verem nyomkövetését</string>
   <string name="morphe_debug_stacktrace_summary_off">A hibakeresési naplók nem tartalmazzák a verem nyomkövetését</string>
   <string name="morphe_debug_toast_on_error_title">Üzenet megjelenítése Morphe hiba esetén</string>
   <string name="morphe_debug_toast_on_error_summary_on">A \"toast\" üzenet jelenik meg, ha hiba történik</string>
@@ -101,24 +101,27 @@ Second \"item\" text"</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"A hibaüzenetek kikapcsolása elrejti az összes Morphe hibaértesítést.
 
 Nem fog értesülni semmilyen váratlan eseményről."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Hibakeresési naplók exportálása</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">A Morphe hibakeresési naplóit a vágólapra másolja</string>
+  <string name="morphe_debug_export_logs_title">Hibakeresési naplók exportálása</string>
+  <string name="morphe_debug_export_logs_summary">Morphe hibakeresési naplók exportálása</string>
+  <string name="morphe_debug_export_logs_file">Exportálás fájlba</string>
+  <string name="morphe_debug_export_logs_success">A hibakeresési naplók sikeresen exportálva</string>
+  <string name="morphe_debug_export_logs_failed">Nem sikerült exportálni a hibakeresési naplókat</string>
+  <string name="morphe_debug_logs_search_hint">Hibakeresési naplók keresése...</string>
+  <string name="morphe_debug_export_logs_clear">Törlés</string>
   <string name="morphe_debug_logs_disabled">A hibakeresési naplózás ki van kapcsolva</string>
-  <string name="morphe_debug_logs_none_found">Nem találhatók naplók</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Naplók másolva</string>
-  <string name="morphe_debug_logs_failed_to_export">Nem sikerült exportálni a naplókat: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Hibakeresési naplók törlése</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Törli az összes tárolt Morphe hibakeresési naplót</string>
-  <string name="morphe_debug_logs_clear_toast">Naplók törölve</string>
+  <string name="morphe_debug_logs_none_found">Nincs hibakeresési napló</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Hibakeresési naplók a vágólapra másolva</string>
+  <string name="morphe_debug_logs_failed_to_export">Nem sikerült exportálni a hibakeresési naplókat: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Hibakeresési naplók törölve</string>
   <string name="morphe_debug_feature_flags_manager_title">Funkciójelzők Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Logikai funkciójelzők kezelése</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktív jelzők (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokkolt jelzők (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Jelzők keresése...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Jelzők mentve</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Jelzők visszaállítva</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Jelzők vágólapra másolva</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Üjraindítsd az alkalmazást, hogy használhass a funkciót</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktív funkciójelzők (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokkolt funkciójelzők (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Funkciójelzők keresése...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Funkciójelzők mentve</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Funkciójelzők visszaállítva</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Funkciójelzők a vágólapra másolva</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Ehhez a beállításnak a beállítást használni az alkalmazás újraindítása</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Nyisson a MicroG beállításokat</string>

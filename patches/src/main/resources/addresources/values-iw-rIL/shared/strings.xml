@@ -92,7 +92,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">רישום איתור באגים</string>
   <string name="morphe_debug_summary_on">יומני איתור באגים מופעלים</string>
   <string name="morphe_debug_summary_off">יומני איתור באגים מושבתים</string>
-  <string name="morphe_debug_stacktrace_title">רשום עקבות מחסנית</string>
+  <string name="morphe_debug_stacktrace_title">עקבות מחסנית באיתור באגים</string>
   <string name="morphe_debug_stacktrace_summary_on">יומני איתור באגים כוללים עקבות מחסנית</string>
   <string name="morphe_debug_stacktrace_summary_off">יומני איתור באגים אינם כוללים עקבות מחסנית</string>
   <string name="morphe_debug_toast_on_error_title">הצג הודעה קופצת בעת שגיאת Morphe</string>
@@ -101,24 +101,27 @@ Second \"item\" text"</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"השבתת הודעות שגיאה קופצות מסתירה את כל הודעות השגיאה של Morphe.
 
 לא תקבל הודעה על אירועים בלתי צפויים."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">ייצוא יומני איתור באגים</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">מעתיק יומנים לאיתור באגים של Morphe ללוח ההעתקה</string>
+  <string name="morphe_debug_export_logs_title">ייצוא יומני איתור באגים</string>
+  <string name="morphe_debug_export_logs_summary">ייצוא יומני איתור באגים Morphe</string>
+  <string name="morphe_debug_export_logs_file">ייצוא לקובץ</string>
+  <string name="morphe_debug_export_logs_success">יומני איתור באגים יובאו בהצלחה</string>
+  <string name="morphe_debug_export_logs_failed">נכשל לייצא יומני איתור באגים: %s</string>
+  <string name="morphe_debug_logs_search_hint">חיפוש יומני איתור באגים...</string>
+  <string name="morphe_debug_export_logs_clear">נקה</string>
   <string name="morphe_debug_logs_disabled">תיעוד איתור באגים מושבת</string>
-  <string name="morphe_debug_logs_none_found">לא נמצאו יומנים</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">היומנים הועתקו</string>
-  <string name="morphe_debug_logs_failed_to_export">נכשל לייצא יומנים: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">נקה יומני איתור באגים</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">מנקה את כל היומנים לאיתור באגים של Morphe המאוחסנים</string>
-  <string name="morphe_debug_logs_clear_toast">היומנים נוקו</string>
+  <string name="morphe_debug_logs_none_found">לא נמצאו יומני איתור באגים</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">יומני איתור באגים הועתקו</string>
+  <string name="morphe_debug_logs_failed_to_export">נכשל לייצא יומני איתור באגים: %s</string>
+  <string name="morphe_debug_logs_clear_toast">יומני איתור באגים נוקו</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager דגלי תכונות</string>
   <string name="morphe_debug_feature_flags_manager_summary">נהל דגלי תכונות בוליאניים</string>
   <string name="morphe_debug_feature_flags_manager_active_header">דגלים פעילים (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">דגלים חסומים (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">חפש דגלים...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">הדגלים נשמרו</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">הדגלים אופסו</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">חיפוש דגלים...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">דגלי תכונות נשמרו</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">דגלי תכונות הוחזרו</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">הדגלים הועתקו ללוח</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">התחל את האפליקציה כדי להשתמש בתכונה זו</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">הפעל מחדש את האפליקציה כדי להשתמש בהגדרה זו</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">פתח את הגדרות MicroG</string>

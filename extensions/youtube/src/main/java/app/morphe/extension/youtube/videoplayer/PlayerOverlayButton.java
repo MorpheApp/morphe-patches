@@ -29,6 +29,7 @@ import app.morphe.extension.youtube.settings.Settings;
 public class PlayerOverlayButton {
 
     public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
+    private static final Boolean HIDE_FULLSCREEN_BUTTON_ENABLED = Settings.HIDE_FULLSCREEN_BUTTON.get();
 
     /**
      * Returns the button width percentage based on the total number of buttons,
@@ -227,7 +228,7 @@ public class PlayerOverlayButton {
         WeakReference<View> sourceRef = new WeakReference<>(sourceView);
         WeakReference<View> newButtonRef = new WeakReference<>(newButton);
 
-        final int buttonCount = ++totalButtonCount;
+        final int buttonCount = ++totalButtonCount + (HIDE_FULLSCREEN_BUTTON_ENABLED ? -1 : 0);
 
         return new ViewTreeObserver.OnPreDrawListener() {
             // Track the ConstantState of the source background to detect real drawable changes.
@@ -295,10 +296,8 @@ public class PlayerOverlayButton {
                     button.setX(xOffset);
                 }
 
-                final float positionY = source.getY();
-                if (button.getY() != positionY) {
-                    button.setY(positionY);
-                }
+                // Y position does not seem to need an update,
+                // and if fullscreen button is hidden it's Y position is off-screen.
 
                 updateContainerMargins(source, totalButtonCount);
 

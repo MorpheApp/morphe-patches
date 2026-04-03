@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Пуштање Shorts видеа у позадини је онемогућено</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Пуштање Shorts видеа у позадини је омогућено</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Евидентирање бафера протокола</string>
-  <string name="morphe_debug_protobuffer_summary_on">Евиденције отклањања грешака садрже бафер протокола</string>
-  <string name="morphe_debug_protobuffer_summary_off">Евиденције отклањања грешака не садрже бафер протокола</string>
+  <string name="morphe_debug_protobuffer_title">Протокол бафер за отклањање грешака</string>
+  <string name="morphe_debug_protobuffer_summary_on">Евиденције отклањања грешака садрже протокол бафере</string>
+  <string name="morphe_debug_protobuffer_summary_off">Евиденције отклањања грешака не садрже протокол бафере</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Омогућавањем ове опције ће се евидентирати додатни подаци о изгледу, укључујући текст на екрану за неке компоненте корисничког интерфејса.
 
 Ово може помоћи у идентификацији компоненти приликом прављења прилагођених филтера.

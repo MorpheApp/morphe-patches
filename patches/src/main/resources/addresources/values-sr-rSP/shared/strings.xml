@@ -92,33 +92,36 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">Евидентирање отклањања грешака</string>
   <string name="morphe_debug_summary_on">Евиденције отклањања грешака су омогућене</string>
   <string name="morphe_debug_summary_off">Евиденције отклањања грешака су онемогућене</string>
-  <string name="morphe_debug_stacktrace_title">Евидентирање праћења стека</string>
-  <string name="morphe_debug_stacktrace_summary_on">Евиденције отклањања грешака садрже праћење стека</string>
-  <string name="morphe_debug_stacktrace_summary_off">Евиденције отклањања грешака не садрже праћење стека</string>
+  <string name="morphe_debug_stacktrace_title">Следење стека у логу дебјуговања</string>
+  <string name="morphe_debug_stacktrace_summary_on">Логу дебјуговања укључено је више праћења стека</string>
+  <string name="morphe_debug_stacktrace_summary_off">Логу дебјуговања није укључено више праћења стека</string>
   <string name="morphe_debug_toast_on_error_title">Прикажи искачуће обавештење при грешци с Morphe-ом</string>
   <string name="morphe_debug_toast_on_error_summary_on">Искачуће обавештење је приказано, ако дође до грешке</string>
   <string name="morphe_debug_toast_on_error_summary_off">Искачуће обавештење није приказано, ако дође до грешке</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Искључивање искачућих обавештења о грешкама сакрива сва обавештења о грешкама у Morphe-у.
 
 Нећете бити обавештени ни о каквим неочекиваним догађајима."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Извези евиденције отклањања грешака</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Копира евиденције отклањања грешака Morphe-а у привремену меморију</string>
+  <string name="morphe_debug_export_logs_title">Извези евиденције отклањања грешака</string>
+  <string name="morphe_debug_export_logs_summary">Извези лог дебјуговања Morphe</string>
+  <string name="morphe_debug_export_logs_file">Извези у датотеку</string>
+  <string name="morphe_debug_export_logs_success">Лог дебјуговања успешно извезен</string>
+  <string name="morphe_debug_export_logs_failed">Неуспео извоз логова дебјуговања</string>
+  <string name="morphe_debug_logs_search_hint">Претражуј логе дебјуговања...</string>
+  <string name="morphe_debug_export_logs_clear">Очисти</string>
   <string name="morphe_debug_logs_disabled">Евидентирање отклањања грешака је онемогућено</string>
-  <string name="morphe_debug_logs_none_found">Нема пронађених евиденција</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Евиденције су копиране</string>
-  <string name="morphe_debug_logs_failed_to_export">Неуспешан извоз евиденција: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Избриши евиденције отклањања грешака</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Брише све сачуване евиденције отклањања грешака Morphe-а</string>
-  <string name="morphe_debug_logs_clear_toast">Евиденције су избрисане</string>
+  <string name="morphe_debug_logs_none_found">Није пронађено лога дебјуговања</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Лог дебјуговања копиран</string>
+  <string name="morphe_debug_logs_failed_to_export">Неуспео извоз логова дебјуговања: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Лог дебјуговања очишћен</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager ознака функција</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управљај буловским ознакама функција</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Активне заставице (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Блокиране заставице (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Претражи заставице...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Заставице сачуване</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Заставице ресетоване</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Заставице копиране у оставу</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Поново покрените апликацију да бисте користили ову функцију</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Активне ознаке функција (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Блокиране ознаке функција (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Претражуј ознаке функција...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Ознаке функција сачуване</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Ознаке функција ресетовале</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Ознаке функција копиране у оставу</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Поново покрени апликацију да бисте користили ову поставку</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvorite postavke MicroG</string>

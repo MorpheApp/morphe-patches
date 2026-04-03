@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">הפעלה ברקע של Shorts מושבתת</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">הפעלה ברקע של Shorts מופעלת</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">רשום פרוטוקול חוצץ</string>
-  <string name="morphe_debug_protobuffer_summary_on">יומני איתור באגים כוללים פרוטוקול חוצץ</string>
-  <string name="morphe_debug_protobuffer_summary_off">יומני איתור באגים אינם כוללים פרוטוקול חוצץ</string>
+  <string name="morphe_debug_protobuffer_title">Debug log protocol buffer</string>
+  <string name="morphe_debug_protobuffer_summary_on">Debug logs include protocol buffers</string>
+  <string name="morphe_debug_protobuffer_summary_off">Debug logs do not include protocol buffers</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"הפעלת הגדרה זו תתעד נתוני פריסה נוספים, כולל טקסט שעל המסך עבור רכיבי ממשק משתמש מסוימים.
 
 זה יכול לעזור לזהות רכיבים בעת יצירת מסננים מותאמים אישית.

@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">ショート動画のバックグラウンド再生は無効です</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">ショート動画のバックグラウンド再生は有効です</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">protocol buffer をログに保存</string>
+  <string name="morphe_debug_protobuffer_title">protocol buffer をデバッグログに保存</string>
   <string name="morphe_debug_protobuffer_summary_on">デバッグログには protocol buffer が含まれます</string>
   <string name="morphe_debug_protobuffer_summary_off">デバッグログには protocol buffer は含まれません</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"この設定を有効にすると、一部の UI コンポーネントの画面上に表示されるテキストを含む追加のレイアウト データがログに記録されるようになります。

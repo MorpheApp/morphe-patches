@@ -91,33 +91,15 @@ Da zanîn zimanên nû wergerin an jî wergeranên hebin çêbibin, serdana morp
   <string name="morphe_debug_title">خه‌ت ووتاره‌</string>
   <string name="morphe_debug_summary_on">خه‌ت ووتاره‌ى دروۇرته</string>
   <string name="morphe_debug_summary_off">خه‌ت ووتاره‌ى دروزمايانا</string>
-  <string name="morphe_debug_stacktrace_title">ده‌روكه‌ره‌ وتننڵүһ現場.</string>
-  <string name="morphe_debug_stacktrace_summary_on">خه‌ت ووتاره‌ى जгт चагप በսխալել ւբլ нོྭәر الآخر* sharper յոյз I.</string>
-  <string name="morphe_debug_stacktrace_summary_off">خه‌ت ووتاره‌ى नضոհะயşkܫէ,ye מאד.</string>
   <string name="morphe_debug_toast_on_error_title"> Reproducedrh जए रहखम् Յ․.“</string>
   <string name="morphe_debug_toast_on_error_summary_on">ئاگاداری دەبیندرێت ئەگەر ڕەشە بێت</string>
   <string name="morphe_debug_toast_on_error_summary_off">ئاگاداری نەبیندرێت ئەگەر ڕەشە بێت</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"خواردنی ڕەشە ئاگاداری ڕەشە ڕاخشایە.
 
 هیچ ڕاستی ڕاشخراو نەکریتەوە."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">هێنانی ڕەگەزە دەستوڕانەکان</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">خستنی ڕەگەزەکانی ڕەشە دەستوڕانە بۆ سیخێکە</string>
   <string name="morphe_debug_logs_disabled">سەرپێچوání دەستوڕانە ڕاخشابن</string>
-  <string name="morphe_debug_logs_none_found">هیچ دەستوڕانە نەدۆزرا</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">دەستوڕانە خسترانە سیخێکە</string>
-  <string name="morphe_debug_logs_failed_to_export">نەیتوانران دەستوڕانە خانە: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">پاکەدانی دەستوڕانە ڕەشەکانی ڕپەڕاندن</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">خەڵاتە دەستوڕانەکانی ڕەشە دەهیژرێن</string>
-  <string name="morphe_debug_logs_clear_toast">خەڵاتە دەستوڕانە ڕاخشابن</string>
   <string name="morphe_debug_feature_flags_manager_title">دابەرێوەبەرێ فیزەری فڵاگەکان</string>
   <string name="morphe_debug_feature_flags_manager_summary">ڕێکخستنی خەڵاتە بە ئەزموونی زمان</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">خەڵاتە وەرگرتنە (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">خەڵاتە بێ تۆمه ( %d )</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">خەڵاتە…</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">خەڵاتە دەوsplitextن</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">خەڵاتە ڕەدا ڕەشین</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">خەڵاتە سیخیکەشە خسترا</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Ji bo dananê sererîyê appê saz bike da ku ev taybetmendî bi kar bîne</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Sazkarên MicroG-ê veke</string>

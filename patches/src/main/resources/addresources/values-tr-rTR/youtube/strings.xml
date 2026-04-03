@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts\'un arka planda oynatılması devre dışı</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts\'un arka planda oynatılması etkin</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Protocol buffer\'ın kaydını tut</string>
-  <string name="morphe_debug_protobuffer_summary_on">Hata ayıklama kayıtları proto buffer\'ı içerir</string>
-  <string name="morphe_debug_protobuffer_summary_off">Hata ayıklama kayıtları proto buffer\'ı içermez</string>
+  <string name="morphe_debug_protobuffer_title">Hata ayıklama protokolü arabelleği</string>
+  <string name="morphe_debug_protobuffer_summary_on">Hata ayıklama kayıtları protokol arabelleğini içerir</string>
+  <string name="morphe_debug_protobuffer_summary_off">Hata ayıklama kayıtları protokol arabelleğini içermez</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Bu ayarın etkinleştirilmesi, bazı kullanıcı arayüzü bileşenleri için ek düzen verilerini, ekran üzerindeki metin dahil olmak üzere günlüğe kaydeder.
 
 Bu, özel filtreler oluştururken bileşenlerin belirlenmesine yardımcı olabilir.

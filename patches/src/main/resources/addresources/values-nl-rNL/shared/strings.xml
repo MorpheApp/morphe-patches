@@ -92,33 +92,36 @@ Om nieuwe talen te vertalen of bestaande vertalingen te verbeteren, bezoek morph
   <string name="morphe_debug_title">Debuglogboek</string>
   <string name="morphe_debug_summary_on">Debuglogboeken zijn ingeschakeld</string>
   <string name="morphe_debug_summary_off">Debuglogboeken zijn uitgeschakeld</string>
-  <string name="morphe_debug_stacktrace_title">Stacktraces loggen</string>
-  <string name="morphe_debug_stacktrace_summary_on">Debuglogboeken bevatten stacktrace</string>
-  <string name="morphe_debug_stacktrace_summary_off">Debuglogs bevatten geen stacktrace</string>
+  <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
+  <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack traces</string>
+  <string name="morphe_debug_stacktrace_summary_off">Debug logs bevatten geen stacktrace</string>
   <string name="morphe_debug_toast_on_error_title">Toon toastmelding bij Morphe error</string>
   <string name="morphe_debug_toast_on_error_summary_on">Toastmelding wordt weergegeven als er een fout optreedt</string>
   <string name="morphe_debug_toast_on_error_summary_off">Toastmelding wordt niet weergegeven als er een fout optreedt</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Het uitschakelen van foutmeldingen verbergt alle Morphe-foutmeldingen.
 
 U wordt niet op de hoogte gesteld van onverwachte gebeurtenissen."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Foutopsporingslogboeken exporteren</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopieert Morphe-foutopsporingslogboeken naar het klembord</string>
+  <string name="morphe_debug_export_logs_title">Foutopsporingslogboeken exporteren</string>
+  <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
+  <string name="morphe_debug_export_logs_file">Exporteren naar bestand</string>
+  <string name="morphe_debug_export_logs_success">Debuglogboeken succesvol geëxporteerd</string>
+  <string name="morphe_debug_export_logs_failed">Mislukt om debuglogboeken te exporteren</string>
+  <string name="morphe_debug_logs_search_hint">Debuglogboeken doorzoeken...</string>
+  <string name="morphe_debug_export_logs_clear">Wissen</string>
   <string name="morphe_debug_logs_disabled">Foutopsporing is uitgeschakeld</string>
-  <string name="morphe_debug_logs_none_found">Geen logboeken gevonden</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Logboeken gekopieerd</string>
-  <string name="morphe_debug_logs_failed_to_export">Mislukt om logboeken te exporteren: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Foutopsporingslogboeken wissen</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Wist alle opgeslagen Morphe-foutopsporingslogboeken</string>
-  <string name="morphe_debug_logs_clear_toast">Logboeken gewist</string>
+  <string name="morphe_debug_logs_none_found">Geen debuglogboeken gevonden</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Debuglogboeken gekopieerd</string>
+  <string name="morphe_debug_logs_failed_to_export">Mislukt om debuglogboeken te exporteren: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Debuglogboeken gewist</string>
   <string name="morphe_debug_feature_flags_manager_title">Functievlaggen Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Beheer booleaanse functievlaggen</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Actieve vlaggen (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Geblokkeerde vlaggen (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Vlaggen zoeken...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Vlaggen opgeslagen</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Vlaggen gereset</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Vlaggen gekopieerd naar klembord</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Herstart de app om deze functie te gebruiken</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Actieve functie-flags (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Geblokkeerde functie-flags (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Functie-flags zoeken...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Functie-flags opgeslagen</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Functie-flags gereset</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Functie-flags gekopieerd naar klembord</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Start de app opnieuw om deze instelling te gebruiken</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Open de MicroG-instellingen</string>

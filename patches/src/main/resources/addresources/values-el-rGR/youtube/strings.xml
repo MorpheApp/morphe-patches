@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Η αναπαραγωγή παρασκηνίου είναι απενεργοποιημένη για τα Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Η αναπαραγωγή παρασκηνίου είναι ενεργοποιημένη για τα Shorts</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Καταγραφή του buffer πρωτοκόλλου</string>
-  <string name="morphe_debug_protobuffer_summary_on">Τα αρχεία καταγραφής σφαλμάτων περιλαμβάνουν το buffer του πρωτοκόλλου</string>
-  <string name="morphe_debug_protobuffer_summary_off">Τα αρχεία καταγραφής σφαλμάτων δεν περιλαμβάνουν τον buffer πρωτοκόλλου</string>
+  <string name="morphe_debug_protobuffer_title">Πρωτόκολλο buffer εντοπισμού σφαλμάτων</string>
+  <string name="morphe_debug_protobuffer_summary_on">Τα αρχεία καταγραφής σφαλμάτων περιλαμβάνουν πρωτόκολλα buffer</string>
+  <string name="morphe_debug_protobuffer_summary_off">Τα αρχεία καταγραφής σφαλμάτων δεν περιλαμβάνουν πρωτόκολλα buffer</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Η ενεργοποίηση αυτής της ρύθμισης θα καταγράψει επιπλέον δεδομένα διάταξης, συμπεριλαμβανομένου του κειμένου στην οθόνη για ορισμένα στοιχεία διεπαφής χρήστη.
 
 Αυτό μπορεί να βοηθήσει στον εντοπισμό στοιχείων κατά τη δημιουργία προσαρμοσμένων φίλτρων.

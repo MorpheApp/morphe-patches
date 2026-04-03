@@ -68,24 +68,14 @@ Second \"item\" text"</string>
   <string name="morphe_debug_title">Rexistro de depuración</string>
   <string name="morphe_debug_summary_on">Os rexistros de depuración están activados</string>
   <string name="morphe_debug_summary_off">Os rexistros de depuración están desactivados</string>
-  <string name="morphe_debug_stacktrace_title">Pila de rexistros</string>
-  <string name="morphe_debug_stacktrace_summary_on">Os rexistros de depuración inclúen rastrexamento en pila</string>
-  <string name="morphe_debug_stacktrace_summary_off">Os rexistros de depuración non inclúen rastrexamento en pila</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar mensaxe toast en caso de erro de Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">A mensaxe toast mostraráse en caso de erro</string>
   <string name="morphe_debug_toast_on_error_summary_off">A mensaxe toast non se mostrará en caso de erro</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar as mensaxes toast en caso de erro ocultará tódalas notificacións de erros de Morphe.
 
 Non se lle notificará de ningún evento inesperado."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exportar rexistros de depuración</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Copia os rexistros de depuración de morphe ao portapapeis</string>
+  <string name="morphe_debug_export_logs_title">Exportar rexistros de depuración</string>
   <string name="morphe_debug_logs_disabled">O rexistro de depuración está desactivado</string>
-  <string name="morphe_debug_logs_none_found">Non se atoparon rexistros</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Rexistros copiados</string>
-  <string name="morphe_debug_logs_failed_to_export">Fallo ao exportar rexistros: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Limpar rexistros de depuración</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Limpar tódolos rexistros de depuración de Morphe almacenados</string>
-  <string name="morphe_debug_logs_clear_toast">Rexistros borrados</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->

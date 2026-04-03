@@ -11,11 +11,11 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class PlayerControlsPatch {
+public class LegacyPlayerControlsPatch {
 
     private static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
 
-    public static WeakReference<ImageView> fullscreenButtonRef = new WeakReference<>(null);
+    public static WeakReference<View> fullscreenButtonRef = new WeakReference<>(null);
 
     private static boolean fullscreenButtonVisibilityCallbacksExist() {
         return false; // Modified during patching if needed.
@@ -39,7 +39,7 @@ public class PlayerControlsPatch {
     /**
      * Injection point.
      */
-    public static void setFullscreenCloseButton(ImageView imageButton) {
+    public static void setFullscreenCloseButton(View imageButton) {
         fullscreenButtonRef = new WeakReference<>(imageButton);
         Logger.printDebug(() -> "Fullscreen button set");
 

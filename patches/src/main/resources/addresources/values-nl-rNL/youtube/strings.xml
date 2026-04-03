@@ -37,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts-achtergrondafspelen is uitgeschakeld</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts-achtergrondafspelen is ingeschakeld</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Stamlogboek</string>
-  <string name="morphe_debug_protobuffer_summary_on">Debuglogboeken bevatten stamlogboek</string>
-  <string name="morphe_debug_protobuffer_summary_off">Debuglogboeken bevatten geen stamlogboek</string>
+  <string name="morphe_debug_protobuffer_title">Debuglogboek protocol buffer</string>
+  <string name="morphe_debug_protobuffer_summary_on">Debuglogboeken bevatten protocol buffers</string>
+  <string name="morphe_debug_protobuffer_summary_off">Debuglogboeken bevatten geen protocol buffers</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Als u deze instelling inschakelt, worden extra lay-outgegevens geregistreerd, waaronder tekst op het scherm voor sommige UI-componenten.
 
 Dit kan helpen bij het identificeren van componenten bij het maken van aangepaste filters.

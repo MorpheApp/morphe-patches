@@ -92,33 +92,36 @@ Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, b
   <string name="morphe_debug_title">Tala ng debug</string>
   <string name="morphe_debug_summary_on">Pinagana ang mga tala sa debug</string>
   <string name="morphe_debug_summary_off">Nakapatay ang mga tala sa debug</string>
-  <string name="morphe_debug_stacktrace_title">Itala ang mga stack trace</string>
-  <string name="morphe_debug_stacktrace_summary_on">Kasama sa mga tala ng debug ang stack trace</string>
-  <string name="morphe_debug_stacktrace_summary_off">Hindi kasama sa mga tala ng debug ang stack trace</string>
+  <string name="morphe_debug_stacktrace_title">Batakan ng log ng debug</string>
+  <string name="morphe_debug_stacktrace_summary_on">Kasama sa mga log ng debug ang mga bakat ng stack</string>
+  <string name="morphe_debug_stacktrace_summary_off">Hindi kasama sa mga log ng debug ang mga bakat ng stack</string>
   <string name="morphe_debug_toast_on_error_title">Ipakita ang abiso sa pagkakamali sa Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Ipinapakita ang abiso kung may naganap na pagkakamali</string>
   <string name="morphe_debug_toast_on_error_summary_off">Hindi ipinapakita ang abiso kung may naganap na pagkakamali</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Itinatago ang lahat ng abiso ng pagkakamali sa Morphe kung nakapatay ang mga abiso ng pagkakamali.
 
 Hindi ka aabisuhan ng anumang mga hindi inaasahang pangyayari."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">I-export ang mga tala ng debug</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Kinokopya ang mga tala ng Morphe debug sa clipboard</string>
+  <string name="morphe_debug_export_logs_title">I-export ang mga tala ng debug</string>
+  <string name="morphe_debug_export_logs_summary">I-export ang mga log ng debug ng Morphe</string>
+  <string name="morphe_debug_export_logs_file">I-export sa file</string>
+  <string name="morphe_debug_export_logs_success">Matagumpay na na-export ang mga log ng debug</string>
+  <string name="morphe_debug_export_logs_failed">Nabigong i-export ang mga log ng debug</string>
+  <string name="morphe_debug_logs_search_hint">Maghanap ng mga log ng debug...</string>
+  <string name="morphe_debug_export_logs_clear">Alisin</string>
   <string name="morphe_debug_logs_disabled">Nakapatay ang pagtatala sa debug</string>
-  <string name="morphe_debug_logs_none_found">Walang nahanap na mga tala</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Kinopya ang mga tala</string>
-  <string name="morphe_debug_logs_failed_to_export">Nabigong ma-export ang mga tala: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Alisin ang mga tala ng debug</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Tinatanggal ang lahat ng nakaimbak na mga tala ng Morphe debug</string>
-  <string name="morphe_debug_logs_clear_toast">Inalis ang lahat ng mga tala</string>
+  <string name="morphe_debug_logs_none_found">Walang nahanap na mga log ng debug</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Kinopya ang mga log ng debug</string>
+  <string name="morphe_debug_logs_failed_to_export">Nabigong i-export ang mga log ng debug: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Nalinisan ang mga log ng debug</string>
   <string name="morphe_debug_feature_flags_manager_title">Tagapamahala ng mga feature flag</string>
   <string name="morphe_debug_feature_flags_manager_summary">Pamahalaan ang boolean ng mga feature flag</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Mga aktibong flag (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Mga nakaharang na flag (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Maghanap ng mga flag...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Na-save ang mga flag</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Ibinalik ang mga flag</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Mga aktibong flag ng feature (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Mga nakaharang na flag ng feature (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Maghanap ng mga flag ng feature...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Na-save ang mga flag ng feature</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Na-reset ang mga flag ng feature</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Kinopya ang mga flag sa clipboard</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">I-restart ang aplikasyon upang gamitin ang tampok na ito</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">I-restart ang app upang gamitin ang setting na ito</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Buksan ang mga pagpipilian sa MicroG</string>

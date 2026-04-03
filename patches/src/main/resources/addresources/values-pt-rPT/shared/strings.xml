@@ -92,33 +92,36 @@ Para traduzir novos idiomas ou melhorar as traduções existentes, visite morphe
   <string name="morphe_debug_title">Registo da depuração</string>
   <string name="morphe_debug_summary_on">Os registos da depuração estão ativados</string>
   <string name="morphe_debug_summary_off">Os registos da depuração estão desativados</string>
-  <string name="morphe_debug_stacktrace_title">Pilha de registos</string>
-  <string name="morphe_debug_stacktrace_summary_on">Os registos da depuração incluem stack trace</string>
-  <string name="morphe_debug_stacktrace_summary_off">Os registos da depuração não incluem stack trace</string>
+  <string name="morphe_debug_stacktrace_title">Rasto de pilha do registo de depuração</string>
+  <string name="morphe_debug_stacktrace_summary_on">Os registos da depuração incluem rastos de pilha</string>
+  <string name="morphe_debug_stacktrace_summary_off">Os registos da depuração não incluem rastos de pilha</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar toast com erro de Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">O toast é exibido se ocorrer um erro</string>
   <string name="morphe_debug_toast_on_error_summary_off">O toast não é exibido se ocorrer um erro</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"A desativação dos erros toasts oculta todas as notificações de erro do Morphe.
 
 Não será notificado de quaisquer eventos inesperados."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exportar registos de depuração</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Copia os registos de depuração do Morphe para a área de transferência</string>
+  <string name="morphe_debug_export_logs_title">Exportar registos de depuração</string>
+  <string name="morphe_debug_export_logs_summary">Exportar registos de depuração Morphe</string>
+  <string name="morphe_debug_export_logs_file">Exportar para ficheiro</string>
+  <string name="morphe_debug_export_logs_success">Registos de depuração exportados com sucesso</string>
+  <string name="morphe_debug_export_logs_failed">Falha ao exportar registos de depuração</string>
+  <string name="morphe_debug_logs_search_hint">Pesquisar registos de depuração...</string>
+  <string name="morphe_debug_export_logs_clear">Limpar</string>
   <string name="morphe_debug_logs_disabled">O registo de depuração está desativado</string>
-  <string name="morphe_debug_logs_none_found">Nenhum registo encontrado</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Registos copiados</string>
-  <string name="morphe_debug_logs_failed_to_export">Falha ao exportar registros: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Limpar registos de depuração</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Limpa todos os registos de depuração do Morphe armazenados</string>
-  <string name="morphe_debug_logs_clear_toast">Registos limpos</string>
+  <string name="morphe_debug_logs_none_found">Nenhum registo de depuração encontrado</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Registos de depuração copiados</string>
+  <string name="morphe_debug_logs_failed_to_export">Falha ao exportar registos de depuração: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Registos de depuração limpos</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager de sinalizadores de recurso</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gerenciar sinalizadores de recurso booleanos</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Sinalizadores ativos (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Sinalizadores bloqueados (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Pesquisar sinalizadores...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Sinalizadores salvos</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Sinalizadores redefinidos</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Sinalizadores copiados para a área de transferência</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie o aplicativo para usar essa funcionalidade</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Sinalizadores de recurso ativos (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Sinalizadores de recurso bloqueados (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Pesquisar sinalizadores de recurso...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Sinalizadores de recurso guardados</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Sinalizadores de recurso reiniciados</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Sinalizadores de recurso copiados para a área de transferência</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie a aplicação para usar esta configuração</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir as configurações do MicroG</string>

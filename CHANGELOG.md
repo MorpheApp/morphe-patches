@@ -1,3 +1,17 @@
+# [1.23.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.23.0-dev.3...v1.23.0-dev.4) (2026-04-03)
+
+
+### Bug Fixes
+
+* **Spoof video streams:** Expose patch to root (mount) install since the patch now works again with rooted devices ([0363d75](https://github.com/MorpheApp/morphe-patches/commit/0363d75d19ac6a6ec02319562f8f687db5027d6f))
+* **YouTube - Hide player overlay buttons:** Do not hide Morphe player buttons if hide fullscreen button is enabled ([96c5789](https://github.com/MorpheApp/morphe-patches/commit/96c5789e45ea2f5827db93319d9be7405c8cee19))
+
+
+### Features
+
+* Add search and file export to debug logs ([#997](https://github.com/MorpheApp/morphe-patches/issues/997)) ([a53a6c3](https://github.com/MorpheApp/morphe-patches/commit/a53a6c3b0c8f534e4bca4a015a25452d2c73ae8a))
+* **YouTube:** Add experimental support for `21.14.482` ([bb6f79f](https://github.com/MorpheApp/morphe-patches/commit/bb6f79f5a0ad36383a047586895d1c40212dae48))
+
 # [1.23.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.23.0-dev.2...v1.23.0-dev.3) (2026-04-02)
 
 
