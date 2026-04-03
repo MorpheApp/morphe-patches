@@ -1,8 +1,6 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
- *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches;
@@ -51,16 +49,18 @@ public final class HidePlayerFlyoutMenuPatch {
                     boolean hideCaptionsFooter = isCaptionsMenuVisible && Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
 
                     if (hideQualityFooter || hideCaptionsFooter) {
-                        View footer = viewGroup.getChildAt(childCount - 1);
-                        if (footer != null && footer.getVisibility() != View.GONE) {
-                            bottomHeightToSubtract += footer.getHeight();
-                            footer.setVisibility(View.GONE);
-                        }
+                        for (int i = childCount - 1; i >= 0; i--) {
+                            View child = viewGroup.getChildAt(i);
+                            if (child == null || child.getVisibility() == View.GONE) continue;
 
-                        View bottomDivider = viewGroup.getChildAt(childCount - 2);
-                        if (bottomDivider != null && bottomDivider.getHeight() < 10) {
-                            bottomHeightToSubtract += bottomDivider.getHeight();
-                            bottomDivider.setVisibility(View.GONE);
+                            if (child.getHeight() < 10) {
+                                bottomHeightToSubtract += child.getHeight();
+                                child.setVisibility(View.GONE);
+                            } else {
+                                bottomHeightToSubtract += child.getHeight();
+                                child.setVisibility(View.GONE);
+                                break;
+                            }
                         }
                     }
 
@@ -68,16 +68,16 @@ public final class HidePlayerFlyoutMenuPatch {
                     boolean hideCaptionsHeader = isCaptionsMenuVisible && Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER.get();
 
                     if (hideQualityHeader || hideCaptionsHeader) {
-                        View header = viewGroup.getChildAt(0);
-                        if (header != null && header.getVisibility() != View.GONE) {
-                            topHeightToSubtract += header.getHeight();
-                            header.setVisibility(View.GONE);
-                        }
+                        for (int i = 0; i < childCount; i++) {
+                            View child = viewGroup.getChildAt(i);
+                            if (child == null || child.getVisibility() == View.GONE) continue;
 
-                        View topDivider = viewGroup.getChildAt(1);
-                        if (topDivider != null && topDivider.getHeight() < 10) {
-                            topHeightToSubtract += topDivider.getHeight();
-                            topDivider.setVisibility(View.GONE);
+                            if (child.getHeight() < 10) {
+                                topHeightToSubtract += child.getHeight();
+                                child.setVisibility(View.GONE);
+                            } else {
+                                break;
+                            }
                         }
                     }
 
@@ -95,7 +95,7 @@ public final class HidePlayerFlyoutMenuPatch {
                     isCaptionsMenuVisible = false;
 
                 } catch (Exception ex) {
-                    Logger.printException(() -> "HidePlayerFlyoutMenuPatch failure", ex);
+                    Logger.printException(() -> "HidePlayerFlyoutMenuPatch Litho failure", ex);
                 }
             }
         });

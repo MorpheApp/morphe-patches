@@ -39,6 +39,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
     private final StringFilterGroup qualityMenuFooter;
     private final StringFilterGroup qualityMenuHeader;
     private final StringFilterGroup captionsMenuHeader;
+    private final StringFilterGroup advancedQualitySheet;
     private final StringFilterGroup captionsSheet;
 
     public PlayerFlyoutMenuComponentsFilter() {
@@ -59,6 +60,11 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                 "|divider.e"
         );
 
+        advancedQualitySheet = new StringFilterGroup(
+                null,
+                "advanced_quality_sheet_content"
+        );
+
         captionsSheet = new StringFilterGroup(
                 null,
                 "captions_sheet_content.e"
@@ -68,6 +74,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                 captionsMenuHeader,
                 qualityMenuFooter,
                 qualityMenuHeader,
+                advancedQualitySheet,
                 captionsSheet,
                 new StringFilterGroup(null, "overflow_menu_item.e")
         );
@@ -152,7 +159,10 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        if (matchedGroup == captionsSheet) {
+        if (matchedGroup == advancedQualitySheet) {
+            HidePlayerFlyoutMenuPatch.isQualityMenuVisible = true;
+            return false;
+        } else if (matchedGroup == captionsSheet) {
             HidePlayerFlyoutMenuPatch.isCaptionsMenuVisible = true;
             return false;
         }
