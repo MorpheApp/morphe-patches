@@ -202,9 +202,9 @@ public class PlayerOverlayButton {
      */
     private static float getButtonWidthPercentage(int totalButtons) {
         return switch (totalButtons) {
-            case 2 -> 0.95f;
-            case 3 -> 0.90f;
-            case 4 -> 0.85f;
+            case 2 -> 0.90f;
+            case 3 -> 0.80f;
+            case 4 -> 0.70f;
             default -> 1.0f;
         };
     }
