@@ -3,12 +3,12 @@ package app.morphe.extension.youtube.patches;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class LiveDvrPatch {
+public class LivestreamDvrPatch {
 
     /**
      * Injection point.
      */
-    public static boolean enableLiveDvr(boolean original) {
-        return original || Settings.FORCE_LIVE_DVR.get();
+    public static boolean enableLivestreamDvr(boolean original) {
+        return original || Settings.LIVESTREAM_DVR.get();
     }
 }

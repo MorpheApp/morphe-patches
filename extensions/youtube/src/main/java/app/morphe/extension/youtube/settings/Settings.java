@@ -54,7 +54,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("morphe_advanced_video_quality_menu", TRUE);
     public static final BooleanSetting DISABLE_HDR_VIDEO = new BooleanSetting("morphe_disable_hdr_video", FALSE);
     public static final BooleanSetting FORCE_AVC_CODEC = new BooleanSetting("morphe_force_avc_codec", FALSE, true, "morphe_force_avc_codec_user_dialog_message");
-    public static final BooleanSetting FORCE_LIVE_DVR = new BooleanSetting("morphe_force_live_dvr", FALSE);
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
     public static final BooleanSetting HIDE_PREMIUM_VIDEO_QUALITY = new BooleanSetting("morphe_hide_premium_video_quality", TRUE, true);
     public static final BooleanSetting PRIORITIZE_VIDEO_QUALITY = new BooleanSetting("morphe_prioritize_video_quality", TRUE, true);
@@ -419,6 +418,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SEEKBAR_THUMBNAIL = new BooleanSetting("morphe_hide_seekbar_thumbnail", FALSE, true);
     public static final BooleanSetting FULLSCREEN_LARGE_SEEKBAR = new BooleanSetting("morphe_fullscreen_large_seekbar", FALSE);
     public static final BooleanSetting HIDE_TIMESTAMP = new BooleanSetting("morphe_hide_timestamp", FALSE);
+    public static final BooleanSetting LIVESTREAM_DVR = new BooleanSetting("morphe_livestream_dvr", FALSE);
     public static final BooleanSetting SLIDE_TO_SEEK = new BooleanSetting("morphe_slide_to_seek", FALSE, true);
     public static final BooleanSetting TAP_TO_SEEK = new BooleanSetting("morphe_tap_to_seek", FALSE);
     public static final BooleanSetting SEEKBAR_CUSTOM_COLOR = new BooleanSetting("morphe_seekbar_custom_color", FALSE, true);
