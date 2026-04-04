@@ -12,7 +12,6 @@ import android.graphics.drawable.Drawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -28,22 +27,6 @@ import app.morphe.extension.youtube.settings.Settings;
 
 public class PlayerOverlayButton {
 
-    public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
-    private static final Boolean HIDE_FULLSCREEN_BUTTON_ENABLED = Settings.HIDE_FULLSCREEN_BUTTON.get();
-
-    /**
-     * Returns the button width percentage based on the total number of buttons,
-     * so buttons don't overlap the video time bar.
-     */
-    private static float getButtonWidthPercentage(int totalButtons) {
-        return switch (totalButtons) {
-            case 2 -> 0.95f;
-            case 3 -> 0.90f;
-            case 4 -> 0.85f;
-            default -> 1.0f;
-        };
-    }
-
     /**
      * Tracks a single container view whose end margin must be kept clear of overlay buttons.
      * <p>
@@ -51,7 +34,7 @@ public class PlayerOverlayButton {
      * {@link #updateMargin} on every pre-draw pass to keep the margin in sync with the
      * current button count and width.
      */
-    private static final class MarginAdjustableContainer {
+    private static class MarginAdjustableContainer {
         private final String resourceName;
         private WeakReference<View> containerRef = new WeakReference<>(null);
         private int lastMarginEnd = -1;
@@ -86,11 +69,10 @@ public class PlayerOverlayButton {
          * overlay buttons of the same width as {@code sourceButton}.
          * Skips the layout pass when the computed value hasn't changed.
          */
-        void updateMargin(View sourceButton, int totalButtons) {
+        void updateMargin(int buttonWidth, int totalButtons) {
             View container = containerRef.get();
             if (container == null) return;
 
-            final int buttonWidth = sourceButton.getWidth();
             if (buttonWidth == 0) return;
 
             final int reservedWidth = (int) (totalButtons
@@ -100,15 +82,106 @@ public class PlayerOverlayButton {
             if (lastMarginEnd == reservedWidth) return;
             lastMarginEnd = reservedWidth;
 
-            if (container.getLayoutParams() instanceof ViewGroup.MarginLayoutParams lp) {
-                lp.setMarginEnd(reservedWidth);
-                container.setLayoutParams(lp);
+            if (container.getLayoutParams() instanceof ViewGroup.MarginLayoutParams params) {
+                params.setMarginEnd(reservedWidth);
+                container.setLayoutParams(params);
             }
         }
     }
 
-    private static WeakReference<ViewTreeObserver> buttonObserver = new WeakReference<>(null);
-    private static int totalButtonCount;
+    private interface SetViewBackgroundInterface {
+        void setBackground(Drawable drawable);
+    }
+
+    private static class PlayerOverlayButtonController {
+        private final WeakReference<View> buttonRef;
+        private final int buttonNumber;
+        private final SetViewBackgroundInterface setBackground;
+        // Track the ConstantState of the source background to detect real drawable changes.
+        @Nullable
+        private Drawable.ConstantState sourceBackgroundSnapshot;
+
+        private PlayerOverlayButtonController(View newButton, SetViewBackgroundInterface setBackground) {
+            buttonRef = new WeakReference<>(newButton);
+            buttonNumber = ++totalLowerButtonCount + (HIDE_FULLSCREEN_BUTTON_ENABLED ? -1 : 0);
+            this.setBackground = setBackground;
+
+            newButton.getViewTreeObserver().addOnPreDrawListener(() -> {
+                updateLayoutFromSourceButton();
+                return true;
+            });
+        }
+
+        private void updateLayoutFromSourceButton() {
+            View source = ytSourceButtonRef.get();
+            View button = buttonRef.get();
+            if (source == null || button == null) {
+                Logger.printException(() -> "Player buttons is null, source: " + source
+                        + " button: " + button);
+                return;
+            }
+
+            final int sourcePaddingLeft = source.getPaddingLeft();
+            final int sourcePaddingTop = source.getPaddingTop();
+            final int sourcePaddingRight = source.getPaddingRight();
+            final int sourcePaddingBottom = source.getPaddingBottom();
+
+            if (!(sourcePaddingLeft == button.getPaddingLeft()
+                    && sourcePaddingTop == button.getPaddingTop()
+                    && sourcePaddingRight == button.getPaddingRight()
+                    && sourcePaddingBottom == button.getPaddingBottom())
+            ) {
+                button.setLayoutParams(source.getLayoutParams());
+                button.setPadding(
+                        sourcePaddingLeft,
+                        sourcePaddingTop,
+                        sourcePaddingRight,
+                        sourcePaddingBottom
+                );
+            }
+
+            final float xOffset = (int) (source.getX()
+                    - (buttonNumber * (getButtonWidthPercentage(totalLowerButtonCount) * source.getWidth())));
+            if (button.getX() != xOffset) {
+                button.setX(xOffset);
+            }
+
+            // Y position does not seem to need an update,
+            // and if fullscreen button is hidden it's Y position is off-screen.
+
+            Drawable sourceButtonBackground = source.getBackground();
+            Drawable.ConstantState newConstantState = sourceButtonBackground != null
+                    ? sourceButtonBackground.getConstantState()
+                    : null;
+            if (sourceBackgroundSnapshot != newConstantState) {
+                // Use newDrawable() instead of mutate() so each button gets a
+                // fully independent Drawable instance with its own hotspot/ripple
+                // state. mutate() only isolates color/alpha state but still shares
+                // the ConstantState hotspot, causing the ripple to fire on every
+                // button that references the same source drawable simultaneously.
+                Drawable newBackground = newConstantState != null
+                        ? newConstantState.newDrawable().mutate()
+                        : sourceButtonBackground;
+                setBackground.setBackground(newBackground);
+                sourceBackgroundSnapshot = newConstantState;
+            }
+
+            final float sourceButtonAlpha = source.getAlpha();
+            if (button.getAlpha() != sourceButtonAlpha) {
+                button.setAlpha(sourceButtonAlpha);
+            }
+
+            final int sourceButtonVisibility = source.getVisibility();
+            if (button.getVisibility() != sourceButtonVisibility) {
+                button.setVisibility(sourceButtonVisibility);
+            }
+
+            updateContainerMargins(source);
+        }
+    }
+
+    public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
+    private static final Boolean HIDE_FULLSCREEN_BUTTON_ENABLED = Settings.HIDE_FULLSCREEN_BUTTON.get();
 
     /** Bottom bar: chapter chip container ({@code time_bar_chapter_title_container}). */
     private static final MarginAdjustableContainer chapterTitleContainer =
@@ -118,27 +191,50 @@ public class PlayerOverlayButton {
     private static final MarginAdjustableContainer videoHeadingContainer =
             new MarginAdjustableContainer("player_video_heading");
 
-    private static void resolveContainers(ViewGroup sourceButtonViewGroup) {
+    private static WeakReference<View> ytSourceButtonRef = new WeakReference<>(null);
+    private static int totalLowerButtonCount;
+
+    /**
+     * Number of Morphe legacy upper buttons that are enabled.
+     */
+    private static int totalLegacyUpperButtonCount;
+
+    public static void incrementLegacyUpperButtonCount() {
+        totalLegacyUpperButtonCount++;
+    }
+
+    /**
+     * Returns the button width percentage based on the total number of buttons,
+     * so buttons don't overlap the video time bar.
+     */
+    private static float getButtonWidthPercentage(int totalButtons) {
+        return switch (totalButtons) {
+            case 2 -> 0.95f;
+            case 3 -> 0.90f;
+            case 4 -> 0.85f;
+            default -> 1.0f;
+        };
+    }
+
+    private static void updateSourceContainerRefs(ViewGroup sourceButtonViewGroup) {
         // Locate each container once; subsequent calls are no-ops.
         chapterTitleContainer.updateContainerRef(sourceButtonViewGroup);
         videoHeadingContainer.updateContainerRef(sourceButtonViewGroup);
     }
 
-    private static void updateContainerMargins(View sourceButton, int totalButtons) {
+    private static void updateContainerMargins(View lowerButtonSource) {
         // Keep both containers' end margins in sync with the current button count.
-        chapterTitleContainer.updateMargin(sourceButton, totalButtons);
-        videoHeadingContainer.updateMargin(sourceButton, totalButtons);
+        chapterTitleContainer.updateMargin(lowerButtonSource.getWidth(), totalLowerButtonCount);
+        videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, totalLegacyUpperButtonCount);
     }
 
-    private static ViewTreeObserver updateViewObserver(View button) {
+    private static void updateSourceButtonRef(View button) {
         Utils.verifyOnMainThread();
 
-        ViewTreeObserver observer = button.getViewTreeObserver();
-        if (observer != buttonObserver.get()) {
-            totalButtonCount = 0;
-            buttonObserver = new WeakReference<>(observer);
+        if (ytSourceButtonRef.get() != button) {
+            totalLowerButtonCount = 0;
+            ytSourceButtonRef = new WeakReference<>(button);
         }
-        return observer;
     }
 
     /**
@@ -161,7 +257,8 @@ public class PlayerOverlayButton {
             return;
         }
 
-        resolveContainers(sourceButtonViewGroup);
+        updateSourceButtonRef(sourceButton);
+        updateSourceContainerRefs(sourceButtonViewGroup);
 
         ImageView button = new ImageView(sourceButton.getContext());
         button.setId(View.generateViewId());
@@ -171,12 +268,9 @@ public class PlayerOverlayButton {
         );
         button.setOnClickListener(onClickListener);
         button.setOnLongClickListener(onLongClickListener);
-
-        updateViewObserver(sourceButton).addOnPreDrawListener(
-                getOnPreDrawListener(sourceButton, button, button::setBackground)
-        );
-
         sourceButtonViewGroup.addView(button);
+
+        new PlayerOverlayButtonController(button, button::setBackground);
     }
 
     /**
@@ -199,7 +293,8 @@ public class PlayerOverlayButton {
             return null;
         }
 
-        resolveContainers(sourceButtonViewGroup);
+        updateSourceButtonRef(sourceButton);
+        updateSourceContainerRefs(sourceButtonViewGroup);
 
         // TextView itself is the tappable surface.
         TextView textOverlay = new TextView(sourceButton.getContext());
@@ -212,97 +307,8 @@ public class PlayerOverlayButton {
         textOverlay.setOnLongClickListener(onLongClickListener);
         sourceButtonViewGroup.addView(textOverlay);
 
-        updateViewObserver(sourceButton).addOnPreDrawListener(
-                getOnPreDrawListener(sourceButton, textOverlay, textOverlay::setBackground)
-        );
+        new PlayerOverlayButtonController(textOverlay, textOverlay::setBackground);
 
         return textOverlay;
-    }
-
-    private interface SetViewBackgroundInterface {
-        void setBackground(Drawable drawable);
-    }
-
-    private static ViewTreeObserver.OnPreDrawListener getOnPreDrawListener(
-            View sourceView, View newButton, SetViewBackgroundInterface setBackground) {
-        WeakReference<View> sourceRef = new WeakReference<>(sourceView);
-        WeakReference<View> newButtonRef = new WeakReference<>(newButton);
-
-        final int buttonCount = ++totalButtonCount + (HIDE_FULLSCREEN_BUTTON_ENABLED ? -1 : 0);
-
-        return new ViewTreeObserver.OnPreDrawListener() {
-            // Track the ConstantState of the source background to detect real drawable changes.
-            Drawable.ConstantState sourceBackgroundSnapshot;
-
-            @Override
-            public boolean onPreDraw() {
-                View source = sourceRef.get();
-                View button = newButtonRef.get();
-                if (source == null || button == null) {
-                    Logger.printException(() -> "Player buttons is null, source: " + source
-                            + " button: " + button);
-                    return true;
-                }
-
-                final int sourcePaddingLeft = source.getPaddingLeft();
-                final int sourcePaddingTop = source.getPaddingTop();
-                final int sourcePaddingRight = source.getPaddingRight();
-                final int sourcePaddingBottom = source.getPaddingBottom();
-
-                if (!(sourcePaddingLeft == button.getPaddingLeft()
-                        && sourcePaddingTop == button.getPaddingTop()
-                        && sourcePaddingRight == button.getPaddingRight()
-                        && sourcePaddingBottom == button.getPaddingBottom())
-                ) {
-                    button.setLayoutParams(source.getLayoutParams());
-                    button.setPadding(
-                            sourcePaddingLeft,
-                            sourcePaddingTop,
-                            sourcePaddingRight,
-                            sourcePaddingBottom
-                    );
-                }
-
-                Drawable sourceButtonBackground = source.getBackground();
-                Drawable.ConstantState newConstantState = sourceButtonBackground != null
-                        ? sourceButtonBackground.getConstantState()
-                        : null;
-                if (sourceBackgroundSnapshot != newConstantState) {
-                    // Use newDrawable() instead of mutate() so each button gets a
-                    // fully independent Drawable instance with its own hotspot/ripple
-                    // state. mutate() only isolates color/alpha state but still shares
-                    // the ConstantState hotspot, causing the ripple to fire on every
-                    // button that references the same source drawable simultaneously.
-                    Drawable newBackground = newConstantState != null
-                            ? newConstantState.newDrawable().mutate()
-                            : sourceButtonBackground;
-                    setBackground.setBackground(newBackground);
-                    sourceBackgroundSnapshot = newConstantState;
-                }
-
-                final float sourceButtonAlpha = source.getAlpha();
-                if (button.getAlpha() != sourceButtonAlpha) {
-                    button.setAlpha(sourceButtonAlpha);
-                }
-
-                final int sourceButtonVisibility = source.getVisibility();
-                if (button.getVisibility() != sourceButtonVisibility) {
-                    button.setVisibility(sourceButtonVisibility);
-                }
-
-                final float xOffset = (int) (source.getX()
-                        - (buttonCount * (getButtonWidthPercentage(totalButtonCount) * source.getWidth())));
-                if (button.getX() != xOffset) {
-                    button.setX(xOffset);
-                }
-
-                // Y position does not seem to need an update,
-                // and if fullscreen button is hidden it's Y position is off-screen.
-
-                updateContainerMargins(source, totalButtonCount);
-
-                return true;
-            }
-        };
     }
 }

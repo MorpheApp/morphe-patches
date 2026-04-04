@@ -41,17 +41,9 @@ public class LegacyPlayerControlButton {
         boolean buttonEnabled();
     }
 
-    public static final int fadeInDuration;
-
-    static {
-        fadeInDuration = ResourceUtils.getInteger("fade_duration_fast");
-    }
-
-    private static final int fadeOutDuration;
-
-    static {
-        fadeOutDuration = ResourceUtils.getInteger("fade_duration_scheduled");
-    }
+    public static final int buttonWidth = (int) ResourceUtils.getDimension("controls_overlay_action_button_size");
+    public static final int fadeInDuration = ResourceUtils.getInteger("fade_duration_fast");
+    private static final int fadeOutDuration = ResourceUtils.getInteger("fade_duration_scheduled");
 
     private final WeakReference<View> containerRef;
     private final WeakReference<View> buttonRef;

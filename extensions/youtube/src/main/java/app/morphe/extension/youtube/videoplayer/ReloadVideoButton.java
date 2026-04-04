@@ -20,6 +20,13 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class ReloadVideoButton {
+
+    static {
+        if (Settings.RELOAD_VIDEO.get()) {
+            PlayerOverlayButton.incrementLegacyUpperButtonCount();
+        }
+    }
+
     @Nullable
     private static LegacyPlayerControlButton instance;
 

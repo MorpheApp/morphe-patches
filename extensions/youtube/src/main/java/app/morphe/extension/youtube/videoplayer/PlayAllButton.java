@@ -44,6 +44,12 @@ public class PlayAllButton {
         }
     }
 
+    static {
+        if (Settings.PLAY_ALL_BUTTON.get()) {
+            PlayerOverlayButton.incrementLegacyUpperButtonCount();
+        }
+    }
+
     @Nullable
     private static LegacyPlayerControlButton legacy;
 

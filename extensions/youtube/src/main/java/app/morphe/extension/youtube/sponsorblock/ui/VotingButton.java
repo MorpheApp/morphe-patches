@@ -9,9 +9,17 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
+import app.morphe.extension.youtube.videoplayer.PlayerOverlayButton;
 
 @SuppressWarnings("unused")
 public class VotingButton {
+
+    static {
+        if (Settings.SB_ENABLED.get() && Settings.SB_VOTING_BUTTON.get()) {
+            PlayerOverlayButton.incrementLegacyUpperButtonCount();
+        }
+    }
+
     @Nullable
     private static LegacyPlayerControlButton instance;
 
