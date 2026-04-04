@@ -1724,6 +1724,11 @@ Limitations:
 • HDR videos will not use AVC
 • Some devices cannot force AVC"</string>
 
+    <!-- video.livedvr.liveDvrPatch -->
+    <string name="morphe_force_live_dvr_title">Force live DVR</string>
+    <string name="morphe_force_live_dvr_summary_on">Seeking is enabled on all live streams</string>
+    <string name="morphe_force_live_dvr_summary_off">Seeking is not forced on live streams</string>
+
     <!-- video.quality.advancedVideoQualityMenuPatch -->
     <string name="morphe_advanced_video_quality_menu_title">Show advanced video quality menu</string>
     <string name="morphe_advanced_video_quality_menu_summary_on">Advanced video quality menu is shown</string>
