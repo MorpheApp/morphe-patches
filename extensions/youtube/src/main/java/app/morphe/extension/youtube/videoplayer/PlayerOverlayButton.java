@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
+import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getTotalUpperButtonCount;
+
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.Gravity;
@@ -195,15 +197,6 @@ public class PlayerOverlayButton {
     private static int totalLowerButtonCount;
 
     /**
-     * Number of Morphe legacy upper buttons that are enabled.
-     */
-    private static int totalLegacyUpperButtonCount;
-
-    public static void incrementLegacyUpperButtonCount() {
-        totalLegacyUpperButtonCount++;
-    }
-
-    /**
      * Returns the button width percentage based on the total number of buttons,
      * so buttons don't overlap the video time bar.
      */
@@ -225,7 +218,7 @@ public class PlayerOverlayButton {
     private static void updateContainerMargins(View lowerButtonSource) {
         // Keep both containers' end margins in sync with the current button count.
         chapterTitleContainer.updateMargin(lowerButtonSource.getWidth(), totalLowerButtonCount);
-        videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, totalLegacyUpperButtonCount);
+        videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, getTotalUpperButtonCount());
     }
 
     private static void updateSourceButtonRef(View button) {

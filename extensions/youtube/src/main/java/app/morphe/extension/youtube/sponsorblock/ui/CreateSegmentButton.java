@@ -8,14 +8,13 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
-import app.morphe.extension.youtube.videoplayer.PlayerOverlayButton;
 
 @SuppressWarnings("unused")
 public class CreateSegmentButton {
 
     static {
         if (Settings.SB_ENABLED.get() && Settings.SB_CREATE_NEW_SEGMENT.get()) {
-            PlayerOverlayButton.incrementLegacyUpperButtonCount();
+            LegacyPlayerControlButton.incrementUpperButtonCount();
         }
     }
 

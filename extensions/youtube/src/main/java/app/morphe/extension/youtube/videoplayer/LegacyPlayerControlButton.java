@@ -32,8 +32,6 @@ import kotlin.Unit;
 
 public class LegacyPlayerControlButton {
 
-    public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
-
     public interface PlayerControlButtonStatus {
         /**
          * @return If the button should be shown when the player overlay is visible.
@@ -41,9 +39,24 @@ public class LegacyPlayerControlButton {
         boolean buttonEnabled();
     }
 
+    /**
+     * Number of Morphe legacy upper buttons that are enabled.
+     */
+    private static int totalUpperButtonCount;
+
     public static final int buttonWidth = (int) ResourceUtils.getDimension("controls_overlay_action_button_size");
+
+    public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
     public static final int fadeInDuration = ResourceUtils.getInteger("fade_duration_fast");
     private static final int fadeOutDuration = ResourceUtils.getInteger("fade_duration_scheduled");
+
+    public static void incrementUpperButtonCount() {
+        totalUpperButtonCount++;
+    }
+
+    public static int getTotalUpperButtonCount() {
+        return totalUpperButtonCount;
+    }
 
     private final WeakReference<View> containerRef;
     private final WeakReference<View> buttonRef;

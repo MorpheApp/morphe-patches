@@ -24,7 +24,7 @@ public class ExternalDownloadButton {
 
     static {
         if (Settings.EXTERNAL_DOWNLOADER.get()) {
-            PlayerOverlayButton.incrementLegacyUpperButtonCount();
+            LegacyPlayerControlButton.incrementUpperButtonCount();
         }
     }
 

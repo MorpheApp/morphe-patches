@@ -23,7 +23,7 @@ public class ReloadVideoButton {
 
     static {
         if (Settings.RELOAD_VIDEO.get()) {
-            PlayerOverlayButton.incrementLegacyUpperButtonCount();
+            LegacyPlayerControlButton.incrementUpperButtonCount();
         }
     }
 

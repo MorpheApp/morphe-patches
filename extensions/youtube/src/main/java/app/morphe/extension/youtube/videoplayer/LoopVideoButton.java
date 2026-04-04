@@ -29,7 +29,7 @@ public class LoopVideoButton {
 
     static {
         if (Settings.LOOP_VIDEO_BUTTON.get()) {
-            PlayerOverlayButton.incrementLegacyUpperButtonCount();
+            LegacyPlayerControlButton.incrementUpperButtonCount();
         }
     }
 
