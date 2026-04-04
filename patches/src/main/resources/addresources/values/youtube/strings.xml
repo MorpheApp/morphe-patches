@@ -1747,6 +1747,8 @@ Limitations:
 • Video playback will use more internet data than VP9 or AV1
 • HDR videos will not use AVC
 • Some devices cannot force AVC"</string>
+    <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+    <string name="morphe_force_avc_codec_not_available">To use this feature, change \'Spoof video streams\' to Android VR or Android Studio</string>
 
     <!-- video.quality.advancedVideoQualityMenuPatch -->
     <string name="morphe_advanced_video_quality_menu_title">Show advanced video quality menu</string>
