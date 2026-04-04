@@ -99,7 +99,7 @@ internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
     ),
 )
 
-private object VideoStreamingDataToStringFingerprint : Fingerprint(
+internal object VideoStreamingDataToStringFingerprint : Fingerprint(
     name = "toString",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",

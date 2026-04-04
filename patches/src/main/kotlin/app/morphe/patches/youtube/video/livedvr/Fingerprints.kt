@@ -1,22 +1,18 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
 package app.morphe.patches.youtube.video.livedvr
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.literal
 import app.morphe.patcher.opcode
-import app.morphe.patcher.string
-import com.android.tools.smali.dexlib2.AccessFlags
+import app.morphe.patches.youtube.video.quality.VideoStreamingDataToStringFingerprint
 import com.android.tools.smali.dexlib2.Opcode
-
-// Copied from app.morphe.patches.youtube.video.quality.
-private object VideoStreamingDataToStringFingerprint : Fingerprint(
-    name = "toString",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    filters = listOf(
-        string("VideoStreamingData(itags=")
-    )
-)
 
 // Returns false only for playbackType 8 (non-DVR live).
 // Forcing true enables seeking on live streams.
@@ -28,6 +24,7 @@ internal object VideoStreamingDataAllowSeekingFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         literal(8),
-        opcode(Opcode.CONST_4, location = MatchAfterWithin(2)),
+        opcode(Opcode.IF_EQ, location = MatchAfterImmediately()),
+        literal(1, location = MatchAfterImmediately()),
     )
 )

@@ -9,6 +9,6 @@ public class LiveDvrPatch {
      * Injection point.
      */
     public static boolean enableLiveDvr(boolean original) {
-        return Settings.FORCE_LIVE_DVR.get() || original;
+        return original || Settings.FORCE_LIVE_DVR.get();
     }
 }

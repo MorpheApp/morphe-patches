@@ -1725,9 +1725,9 @@ Limitations:
 • Some devices cannot force AVC"</string>
 
     <!-- video.livedvr.liveDvrPatch -->
-    <string name="morphe_force_live_dvr_title">Force live DVR</string>
-    <string name="morphe_force_live_dvr_summary_on">Seeking is enabled on all live streams</string>
-    <string name="morphe_force_live_dvr_summary_off">Seeking is not forced on live streams</string>
+    <string name="morphe_force_live_dvr_title">Enable live DVR</string>
+    <string name="morphe_force_live_dvr_summary_on">Seeking is allowed on all live streams</string>
+    <string name="morphe_force_live_dvr_summary_off">Seeking may not be available on live streams</string>
 
     <!-- video.quality.advancedVideoQualityMenuPatch -->
     <string name="morphe_advanced_video_quality_menu_title">Show advanced video quality menu</string>
