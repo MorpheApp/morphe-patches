@@ -273,12 +273,13 @@ val changePackageNamePatch = resourcePatch(
 
                 val receiverNotExported = "DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
                 val androidName = "android:name"
-                val newName = "$packageName.$receiverNotExported"
+                val oldName = "$packageName.$receiverNotExported"
+                val newName = "$newPackageName.$receiverNotExported"
 
                 (permissions + usesPermissions)
                     .map { it as Element }
                     .filter {
-                        it.getAttribute(androidName) == newName
+                        it.getAttribute(androidName) == oldName
                     }
                     .forEach {
                         it.setAttribute(androidName, newName)
