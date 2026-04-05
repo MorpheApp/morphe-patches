@@ -20,6 +20,8 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -53,17 +55,19 @@ public class PlayerOverlayButton {
             if (containerRef.get() != null) return;
 
             final int id = ResourceUtils.getIdentifier(ResourceType.ID, resourceName);
-            if (id == 0) return;
-
-            ViewGroup parent = sourceButtonViewGroup;
-            while (parent.getParent() instanceof ViewGroup vg) {
-                parent = vg;
-                View found = parent.findViewById(id);
-                if (found != null) {
-                    containerRef = new WeakReference<>(found);
-                    return;
+            if (id != 0) {
+                ViewGroup parent = sourceButtonViewGroup;
+                while (parent.getParent() instanceof ViewGroup vg) {
+                    parent = vg;
+                    View found = parent.findViewById(id);
+                    if (found != null) {
+                        containerRef = new WeakReference<>(found);
+                        return;
+                    }
                 }
             }
+
+            Logger.printException(() -> "Could not find button overlay: " + resourceName);
         }
 
         /**
@@ -75,8 +79,6 @@ public class PlayerOverlayButton {
             View container = containerRef.get();
             if (container == null) return;
 
-            if (buttonWidth == 0) return;
-
             final int reservedWidth = (int) (totalButtons
                     * getButtonWidthPercentage(totalButtons)
                     * buttonWidth);
@@ -85,6 +87,7 @@ public class PlayerOverlayButton {
             lastMarginEnd = reservedWidth;
 
             if (container.getLayoutParams() instanceof ViewGroup.MarginLayoutParams params) {
+                if (params.getMarginEnd() == reservedWidth) return;
                 params.setMarginEnd(reservedWidth);
                 container.setLayoutParams(params);
             }
@@ -97,16 +100,14 @@ public class PlayerOverlayButton {
 
     private static class PlayerOverlayButtonController {
         private final WeakReference<View> buttonRef;
-        private final int buttonNumber;
         private final SetViewBackgroundInterface setBackground;
         // Track the ConstantState of the source background to detect real drawable changes.
         @Nullable
         private Drawable.ConstantState sourceBackgroundSnapshot;
 
-        private PlayerOverlayButtonController(View newButton, SetViewBackgroundInterface setBackground) {
+        private PlayerOverlayButtonController(View newButton, SetViewBackgroundInterface backgroundInterface) {
             buttonRef = new WeakReference<>(newButton);
-            buttonNumber = ++totalLowerButtonCount + (HIDE_FULLSCREEN_BUTTON_ENABLED ? -1 : 0);
-            this.setBackground = setBackground;
+            setBackground = backgroundInterface;
 
             newButton.getViewTreeObserver().addOnPreDrawListener(() -> {
                 updateLayoutFromSourceButton();
@@ -142,8 +143,10 @@ public class PlayerOverlayButton {
                 );
             }
 
+            // Convert from 0 indexing to 1 indexing.
+            final int buttonNumber = buttonControllers.indexOf(this) + (HIDE_FULLSCREEN_BUTTON_ENABLED ? 0 : 1);
             final float xOffset = (int) (source.getX()
-                    - (buttonNumber * (getButtonWidthPercentage(totalLowerButtonCount) * source.getWidth())));
+                    - (buttonNumber * (getButtonWidthPercentage(buttonControllers.size()) * source.getWidth())));
             if (button.getX() != xOffset) {
                 button.setX(xOffset);
             }
@@ -185,16 +188,16 @@ public class PlayerOverlayButton {
     public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get();
     private static final Boolean HIDE_FULLSCREEN_BUTTON_ENABLED = Settings.HIDE_FULLSCREEN_BUTTON.get();
 
-    /** Bottom bar: chapter chip container ({@code time_bar_chapter_title_container}). */
-    private static final MarginAdjustableContainer chapterTitleContainer =
-            new MarginAdjustableContainer("time_bar_chapter_title_container");
-
-    /** Top bar: video title container ({@code player_video_heading}). */
+    /** Top bar: video title container */
     private static final MarginAdjustableContainer videoHeadingContainer =
             new MarginAdjustableContainer("player_video_heading");
 
+    /** Bottom bar: chapter chip container */
+    private static final MarginAdjustableContainer chapterTitleContainer =
+            new MarginAdjustableContainer("time_bar_chapter_title_container");
+
     private static WeakReference<View> ytSourceButtonRef = new WeakReference<>(null);
-    private static int totalLowerButtonCount;
+    private static final List<PlayerOverlayButtonController> buttonControllers = new ArrayList<>();
 
     /**
      * Returns the button width percentage based on the total number of buttons,
@@ -209,25 +212,32 @@ public class PlayerOverlayButton {
         };
     }
 
-    private static void updateSourceContainerRefs(ViewGroup sourceButtonViewGroup) {
-        // Locate each container once; subsequent calls are no-ops.
-        chapterTitleContainer.updateContainerRef(sourceButtonViewGroup);
-        videoHeadingContainer.updateContainerRef(sourceButtonViewGroup);
-    }
-
     private static void updateContainerMargins(View lowerButtonSource) {
         // Keep both containers' end margins in sync with the current button count.
-        chapterTitleContainer.updateMargin(lowerButtonSource.getWidth(), totalLowerButtonCount);
+        chapterTitleContainer.updateMargin(lowerButtonSource.getWidth(), buttonControllers.size());
         videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, getTotalUpperButtonCount());
     }
 
-    private static void updateSourceButtonRef(View button) {
+
+    @Nullable
+    private static ViewGroup updateRefsFromSourceButton(View sourceButton) {
         Utils.verifyOnMainThread();
 
-        if (ytSourceButtonRef.get() != button) {
-            totalLowerButtonCount = 0;
-            ytSourceButtonRef = new WeakReference<>(button);
+        if (!(sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup)) {
+            Logger.printException(() -> "Unknown button parent: " + sourceButton.getParent());
+            return null;
         }
+
+        if (ytSourceButtonRef.get() != sourceButton) {
+            buttonControllers.clear();
+            ytSourceButtonRef = new WeakReference<>(sourceButton);
+        }
+
+        // Locate each container once; subsequent calls are no-ops.
+        chapterTitleContainer.updateContainerRef(sourceButtonViewGroup);
+        videoHeadingContainer.updateContainerRef(sourceButtonViewGroup);
+
+        return sourceButtonViewGroup;
     }
 
     /**
@@ -245,13 +255,8 @@ public class PlayerOverlayButton {
                                  String drawableName,
                                  View.OnClickListener onClickListener,
                                  View.OnLongClickListener onLongClickListener) {
-        if (!(sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup)) {
-            Logger.printException(() -> "Unknown button parent: " + sourceButton.getParent());
-            return;
-        }
-
-        updateSourceButtonRef(sourceButton);
-        updateSourceContainerRefs(sourceButtonViewGroup);
+        ViewGroup sourceButtonViewGroup = updateRefsFromSourceButton(sourceButton);
+        if (sourceButtonViewGroup == null) return;
 
         ImageView button = new ImageView(sourceButton.getContext());
         button.setId(View.generateViewId());
@@ -263,7 +268,7 @@ public class PlayerOverlayButton {
         button.setOnLongClickListener(onLongClickListener);
         sourceButtonViewGroup.addView(button);
 
-        new PlayerOverlayButtonController(button, button::setBackground);
+        buttonControllers.add(new PlayerOverlayButtonController(button, button::setBackground));
     }
 
     /**
@@ -281,13 +286,8 @@ public class PlayerOverlayButton {
     public static TextView addButtonWithTextOverlay(View sourceButton,
                                                     View.OnClickListener onClickListener,
                                                     View.OnLongClickListener onLongClickListener) {
-        if (!(sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup)) {
-            Logger.printException(() -> "Unknown button parent: " + sourceButton.getParent());
-            return null;
-        }
-
-        updateSourceButtonRef(sourceButton);
-        updateSourceContainerRefs(sourceButtonViewGroup);
+        ViewGroup sourceButtonViewGroup = updateRefsFromSourceButton(sourceButton);
+        if (sourceButtonViewGroup == null) return null;
 
         // TextView itself is the tappable surface.
         TextView textOverlay = new TextView(sourceButton.getContext());
@@ -300,7 +300,7 @@ public class PlayerOverlayButton {
         textOverlay.setOnLongClickListener(onLongClickListener);
         sourceButtonViewGroup.addView(textOverlay);
 
-        new PlayerOverlayButtonController(textOverlay, textOverlay::setBackground);
+        buttonControllers.add(new PlayerOverlayButtonController(textOverlay, textOverlay::setBackground));
 
         return textOverlay;
     }
