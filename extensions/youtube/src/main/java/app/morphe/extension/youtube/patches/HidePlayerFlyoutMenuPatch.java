@@ -70,11 +70,10 @@ public final class HidePlayerFlyoutMenuPatch {
                         }
                     }
 
-                    boolean hideAudioTrackFooter = isAudioTrackMenuVisible && Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK_FOOTER.get();
                     boolean hideCaptionsFooter = isCaptionsMenuVisible && Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
                     boolean hideQualityFooter = isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
 
-                    if (hideAudioTrackFooter || hideCaptionsFooter || hideQualityFooter) {
+                    if (hideCaptionsFooter || hideQualityFooter) {
                         boolean footerFound = false;
                         for (int i = childCount - 1; i >= 0; i--) {
                             View child = viewGroup.getChildAt(i);

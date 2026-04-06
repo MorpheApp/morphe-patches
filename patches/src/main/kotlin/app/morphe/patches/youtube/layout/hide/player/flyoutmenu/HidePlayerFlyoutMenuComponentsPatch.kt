@@ -60,10 +60,6 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
                         tag = "app.morphe.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference"
                     ),
                     SwitchPreference(
-                        key = "morphe_hide_player_flyout_audio_track_footer",
-                        tag = "app.morphe.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference"
-                    ),
-                    SwitchPreference(
                         key = "morphe_hide_player_flyout_audio_track_header",
                         tag = "app.morphe.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference"
                     ),
