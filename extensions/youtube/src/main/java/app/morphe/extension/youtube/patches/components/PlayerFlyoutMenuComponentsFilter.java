@@ -180,7 +180,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
             return true;
 
         if (matchedGroup == qualityMenuFooter) {
-            return (path.contains("quality_sheet_footer.e"));
+            return (path.startsWith("quick_quality_sheet_content.e"));
         }
 
         if (matchedGroup == captionsMenuHeader) {
