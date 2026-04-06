@@ -499,6 +499,29 @@ Verifikasi nama paket sudah benar dan aplikasi sudah terpasang"</string>
   <string name="morphe_loop_video_button_summary_off">Tombol ulangi video tidak ditampilkan</string>
   <string name="morphe_loop_video_button_toast_on">Pengulangan video aktif</string>
   <string name="morphe_loop_video_button_toast_off">Pengulangan video tidak aktif</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Tampilkan tombol putar semua</string>
+  <string name="morphe_play_all_button_summary_on">"Tombol putar semua ditampilkan
+Ketuk untuk membuat daftar putar semua video dari saluran ini
+Ketuk dan tahan untuk membatalkan
+
+Info: Mungkin tidak berfungsi pada siaran langsung"</string>
+  <string name="morphe_play_all_button_summary_off">Tombol putar semua tidak ditampilkan</string>
+  <string name="morphe_play_all_button_type_title">Membuat mode daftar putar</string>
+  <string name="morphe_play_all_button_type_entry_0">Semua konten (Urutkan berdasarkan waktu, dari yang terbaru ke yang terlama)</string>
+  <string name="morphe_play_all_button_type_entry_1">Semua konten (Urutkan berdasarkan waktu)</string>
+  <string name="morphe_play_all_button_type_entry_2">Semua konten (Urutkan berdasarkan popularitas)</string>
+  <string name="morphe_play_all_button_type_entry_3">Hanya video (Urutkan berdasarkan waktu)</string>
+  <string name="morphe_play_all_button_type_entry_4">Hanya video (Urutkan berdasarkan popularitas)</string>
+  <string name="morphe_play_all_button_type_entry_5">Hanya Shorts (Urutkan berdasarkan waktu)</string>
+  <string name="morphe_play_all_button_type_entry_6">Hanya Shorts (Urutkan berdasarkan popularitas)</string>
+  <string name="morphe_play_all_button_type_entry_7">Hanya video yang sedang ditayangkan (Urutkan berdasarkan waktu)</string>
+  <string name="morphe_play_all_button_type_entry_8">Hanya video yang sedang ditayangkan (Urutkan berdasarkan popularitas)</string>
+  <string name="morphe_play_all_button_type_entry_9">Konten hanya untuk Semua Anggota</string>
+  <string name="morphe_play_all_button_type_entry_10">Video hanya untuk anggota</string>
+  <string name="morphe_play_all_button_type_entry_11">Shorts hanya untuk Anggota</string>
+  <string name="morphe_play_all_button_type_entry_12">Siaran langsung hanya untuk Anggota</string>
+  <string name="morphe_play_all_button_not_available_toast">Tidak dapat membuat daftar putar karena ID saluran tidak cocok</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Tampilkan tombol muat ulang video</string>
   <string name="morphe_reload_video_summary_on">Tombol muat ulang video ditampilkan</string>
@@ -508,6 +531,10 @@ Verifikasi nama paket sudah benar dan aplikasi sudah terpasang"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Nonaktifkan gerakan pencarian presisi</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gerakan pencarian yang presisi dinonaktifkan</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Gerakan pencarian yang presisi diaktifkan</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Aktifkan siaran langsung DVR</string>
+  <string name="morphe_livestream_dvr_summary_on">Mencari diperbolehkan di semua siaran langsung</string>
+  <string name="morphe_livestream_dvr_summary_off">Mencari mungkin tidak tersedia di siaran langsung</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktifkan geser untuk mencari</string>
   <string name="morphe_slide_to_seek_summary_on">Geser untuk mencari diaktifkan</string>
@@ -1617,6 +1644,8 @@ Batasan:
 • Pemutaran video akan menggunakan lebih banyak data internet dibandingkan VP9 atau AV1
 • Video HDR tidak akan menggunakan AVC
 • Beberapa perangkat tidak dapat memaksakan AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Untuk menggunakan fitur ini, ubah \'Palsukan aliran video\' ke Android VR atau Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Tampilkan menu kualitas video lanjutan</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Menu kualitas video lanjutan ditampilkan</string>

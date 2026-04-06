@@ -499,6 +499,25 @@ Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."<
   <string name="morphe_loop_video_button_summary_off">A videó folyamatos ismétlése menü el van rejtve</string>
   <string name="morphe_loop_video_button_toast_on">A hurokismétlés be van kapcsolva</string>
   <string name="morphe_loop_video_button_toast_off">A hurokismétlés ki van kapcsolva</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Játsszon minden gomb megjelenítése</string>
+  <string name="morphe_play_all_button_summary_on">"A játsszon minden gomb megjelenítése\nA lejátszási lista létrehozásához koppintson az összes csatornán lévő videóhoz\nHosszú ráklikkeléssel megfordítható a művelet:\n\nInformáció: Előfordulhat, hogy a közvetlen adásokon nem működik"</string>
+  <string name="morphe_play_all_button_summary_off">A játsszon minden gomb nem jelenik meg</string>
+  <string name="morphe_play_all_button_type_title">Játsszon minden mód</string>
+  <string name="morphe_play_all_button_type_entry_0">A teljes tartalom (Rendezés idő szerint, Állórend)</string>
+  <string name="morphe_play_all_button_type_entry_1">A teljes tartalom (Rendezés idő szerint)</string>
+  <string name="morphe_play_all_button_type_entry_2">A teljes tartalom (Rendezés népszerűség szerint)</string>
+  <string name="morphe_play_all_button_type_entry_3">Csak videók (Rendezés idő szerint)</string>
+  <string name="morphe_play_all_button_type_entry_4">Csak videók (Rendezés népszerűség szerint)</string>
+  <string name="morphe_play_all_button_type_entry_5">Csak Shortok (Rendezés idő szerint)</string>
+  <string name="morphe_play_all_button_type_entry_6">Csak Shortok (Rendezés népszerűség szerint)</string>
+  <string name="morphe_play_all_button_type_entry_7">Csak streamelt videók (Rendezés idő szerint)</string>
+  <string name="morphe_play_all_button_type_entry_8">Csak streamelt videók (Rendezés népszerűség szerint)</string>
+  <string name="morphe_play_all_button_type_entry_9">Csak minden tag tartalma</string>
+  <string name="morphe_play_all_button_type_entry_10">Csak tag videók</string>
+  <string name="morphe_play_all_button_type_entry_11">Csak tag Shortok</string>
+  <string name="morphe_play_all_button_type_entry_12">Csak tag élő streamjei</string>
+  <string name="morphe_play_all_button_not_available_toast">A lejátszási listát nem sikerült létrehozni a csatornaazonosító egyeztetési hibája miatt</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Videó újraindítás gomb megjelenítése</string>
   <string name="morphe_reload_video_summary_on">A videó újraindítás gomb látható</string>
@@ -508,6 +527,10 @@ Ellenőrizze, hogy a csomagnév helyes-e, és az alkalmazás telepítve van-e."<
   <string name="morphe_disable_precise_seeking_gesture_title">Pontos keresési kézmozdulat letiltása</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">A kézmozdulat letiltva</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">A kézmozdulat engedélyezve</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Engedélyezze az élsőségi DVR-t</string>
+  <string name="morphe_livestream_dvr_summary_on">A keresés minden élsőségnél engedélyezett</string>
+  <string name="morphe_livestream_dvr_summary_off">A keresés előfordulhat, hogy nem áll rendelkezésre az élsőségnél</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Csúsztatás engedélyezése a kereséshez</string>
   <string name="morphe_slide_to_seek_summary_on">A csúsztatás a kereséshez engedélyezve van</string>
@@ -1614,6 +1637,8 @@ Korlátozások:
 • A videólejátszás több internetadatot fog használni, mint a VP9 vagy az AV1
 • A HDR videók nem fogják használni az AVC-t
 • Néhány eszköz nem tudja kikényszeríteni az AVC-t"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">A funkció használatához módosítsa a \"Videóstreamek hamisítása\" beállítást Android VR vagy Android Studio-ra</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Speciális videóminőség menü megjelenítése</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">A speciális videóminőség menü látható</string>

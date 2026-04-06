@@ -500,6 +500,25 @@ Fíoraigh go bhfuil ainm an phacáiste ceart agus go bhfuil an aip suiteáilte"<
   <string name="morphe_loop_video_button_summary_off">Ní thaispeántar roghchlár físe lúb</string>
   <string name="morphe_loop_video_button_toast_on">Tá físeán lúbtha ar siúl</string>
   <string name="morphe_loop_video_button_toast_off">Tá físeán lúbtha as siúl</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Taispeáin cnaipe play go léir</string>
+  <string name="morphe_play_all_button_summary_on">"Taispeántar cnaipe play go léir\nBhrúin chun barr a chur ar liosta filíochta as gaeilge ar fad ón gcumar\nBhrúin agus coinneáil chun a undo\n\nFógra: Seans nach féidir é a oibriú ar shruthanna beo"</string>
+  <string name="morphe_play_all_button_summary_off">Ní thaispeántar cnaipe play go léir</string>
+  <string name="morphe_play_all_button_type_title">Modh a chruthú liosta filíochta</string>
+  <string name="morphe_play_all_button_type_entry_0">Áil coincheanta (Súin de réir ama, suas)</string>
+  <string name="morphe_play_all_button_type_entry_1">Áil coincheanta (Súin de réir ama)</string>
+  <string name="morphe_play_all_button_type_entry_2">Áil coincheanta (Súin de réir clúibhithe)</string>
+  <string name="morphe_play_all_button_type_entry_3">Físeáin ach (Súin de réir ama)</string>
+  <string name="morphe_play_all_button_type_entry_4">Físeáin ach (Súin de réir clúibhithe)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts ach (Súin de réir ama)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts ach (Súin de réir clúibhithe)</string>
+  <string name="morphe_play_all_button_type_entry_7">Físeáin sreabhtha ach (Súin de réir ama)</string>
+  <string name="morphe_play_all_button_type_entry_8">Físeáin sreabhtha ach (Súin de réir clúibhithe)</string>
+  <string name="morphe_play_all_button_type_entry_9">Áil comhaltaí ach</string>
+  <string name="morphe_play_all_button_type_entry_10">Físeáin comhaltaí ach</string>
+  <string name="morphe_play_all_button_type_entry_11">Shorts comhaltaí ach</string>
+  <string name="morphe_play_all_button_type_entry_12">Sreabhán físeáin comhaltaí ach</string>
+  <string name="morphe_play_all_button_not_available_toast">Ní féidir suíomhliosta a ghnadadh de réir phort go neamhal id</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Taispeáin an cnaipín athlúnaigh físe</string>
   <string name="morphe_reload_video_summary_on">Taispeántar an cnaipín athlúnaigh físe</string>
@@ -509,6 +528,10 @@ Fíoraigh go bhfuil ainm an phacáiste ceart agus go bhfuil an aip suiteáilte"<
   <string name="morphe_disable_precise_seeking_gesture_title">Díchumasaigh gotha ​​cuardaigh beacht</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Tá gotha ​​cuardaigh chruinn díchumasaithe</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Tá gotha ​​cuardaigh chruinn cumasaithe</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Guranna livestream DVR</string>
+  <string name="morphe_livestream_dvr_summary_on">Ceadaí é an t-soilgiú ar gach livestream</string>
+  <string name="morphe_livestream_dvr_summary_off">Seans nach mbeidh an t-soilgiú ar fáil ar ghánaí beatha</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Cumasaigh sleamhnán a lorg</string>
   <string name="morphe_slide_to_seek_summary_on">Tá sleamhnán le lorg cumasaithe</string>
@@ -1618,6 +1641,8 @@ Teorainneacha:
 • Úsáidfidh athsheinm físeáin níos mó sonraí idirlín ná VP9 nó AV1
 • Ní úsáidfidh físeáin HDR AVC
 • Ní féidir le roinnt gléasanna AVC a bhrú"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Chun an gné seo a úsáid, athraigh \'Sruthanna físe bréige\' go Android VR nó Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Taispeáin roghchlár ardcháilíochta físeáin</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Taispeántar roghchlár ardchaighdeáin físe</string>

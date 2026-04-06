@@ -190,8 +190,8 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">チャンネル登録者のコミュニティ ガイドラインは表示されません</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">チャンネル登録者のコミュニティ ガイドラインは表示されます</string>
   <string name="morphe_hide_timed_reactions_title">Timed Reaction を非表示</string>
-  <string name="morphe_hide_timed_reactions_summary_on">Timed Reaction は表示されません\n\nライブ配信のチャット欄に常駐するハート マーク ボタンが非表示になります</string>
-  <string name="morphe_hide_timed_reactions_summary_off">Timed Reaction は表示されます\n\nライブ配信のチャット欄にハート マーク ボタンが常駐します</string>
+  <string name="morphe_hide_timed_reactions_summary_on">Timed Reaction は表示されません\n\nライブ配信のチャット欄に常駐するハート アイコン ボタンが非表示になります</string>
+  <string name="morphe_hide_timed_reactions_summary_off">Timed Reaction は表示されます\n\nライブ配信のチャット欄にハート アイコン ボタンが常駐します</string>
   <string name="morphe_hide_video_title_title">動画のタイトルを非表示</string>
   <string name="morphe_hide_video_title_summary_on">全画面表示モードの動画のタイトルはプレーヤー オーバーレイに表示されません</string>
   <string name="morphe_hide_video_title_summary_off">全画面表示モードの動画のタイトルはプレーヤー オーバーレイに表示されます</string>
@@ -232,7 +232,7 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_hide_feed_flyout_menu_summary_on">フィードのフライアウト メニューのフィルタは有効です</string>
   <string name="morphe_hide_feed_flyout_menu_summary_off">フィードのフライアウト メニューのフィルタは無効です</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">フィードのフライアウト メニューのフィルタ</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">非表示にするフライアウト メニューのメニュー名を改行区切りで入力します</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">非表示にするフライアウト メニューのメニュー名を改行区切りで入力してください</string>
   <string name="morphe_hide_gaming_section_title">ゲームを非表示</string>
   <string name="morphe_hide_gaming_section_summary_on">ゲーム セクションは表示されません</string>
   <string name="morphe_hide_gaming_section_summary_off">ゲーム セクションは表示されます</string>
@@ -282,7 +282,7 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_hide_channel_tab_summary_on">チャンネル ページのタブのフィルタは有効です</string>
   <string name="morphe_hide_channel_tab_summary_off">チャンネル ページのタブのフィルタは無効です</string>
   <string name="morphe_hide_channel_tab_filter_strings_title">チャンネル ページのタブのフィルタ</string>
-  <string name="morphe_hide_channel_tab_filter_strings_summary">非表示にするチャンネル ページのタブのタブ名を改行区切りで入力します</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">非表示にするチャンネル ページのタブのタブ名を改行区切りで入力してください</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_community_button_title">コミュニティ ボタンを非表示</string>
   <string name="morphe_hide_community_button_summary_on">コミュニティ ボタンは表示されません</string>
@@ -307,15 +307,15 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">チャンネル登録ボタンは表示されます</string>
   <string name="morphe_comments_screen_title">コメント</string>
   <string name="morphe_comments_screen_summary">コメント セクションのコンポーネントを表示または非表示にします</string>
-  <string name="morphe_hide_comments_carousel_title">横スライド欄のフィルタを有効化</string>
-  <string name="morphe_hide_comments_carousel_summary_on">コメント セクションの横スライド欄のフィルタは有効です</string>
-  <string name="morphe_hide_comments_carousel_summary_off">コメント セクションの横スライド欄のフィルタは無効です</string>
+  <string name="morphe_hide_comments_carousel_title">横スワイプ欄のフィルタを有効化</string>
+  <string name="morphe_hide_comments_carousel_summary_on">コメント セクションの横スワイプ欄のフィルタは有効です</string>
+  <string name="morphe_hide_comments_carousel_summary_off">コメント セクションの横スワイプ欄のフィルタは無効です</string>
   <string name="morphe_hide_comments_carousel_user_dialog_message">"注意:
-• 横スライド欄の正確なタイトルをフィルタに入力してください。(例:「質問する」「この動画をハイプする」「YouTube Music で聴く」など)
-• 横スライド欄を非表示にすると予期せぬ副作用が発生する可能性がある。
-• すべての横スライド欄を非表示にした場合、コメント セクションごと表示されなくなる。"</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_title">横スライド欄のフィルタ</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_summary">非表示にするコメント セクションの横スライド欄のタイトルを改行区切りで入力します</string>
+• 横スワイプ欄の正確なタイトルを入力してください。(例:「質問する」「この動画をハイプする」「YouTube Music で聴く」など)
+• 横スワイプ欄を非表示にすると予期せぬ副作用が発生する可能性がある。
+• すべての横スワイプ欄を非表示にした場合、コメント セクションごと表示されなくなる。"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">横スワイプ欄のフィルタ</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">非表示にするコメント セクションの横スワイプ欄のタイトルを改行区切りで入力してください</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">AI による「チャットの要約」を非表示</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI による「チャットの要約」は表示されません</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI による「チャットの要約」は表示されます</string>
@@ -501,6 +501,29 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_loop_video_button_summary_off">プレーヤー オーバーレイに「動画のループ再生」ボタンは表示されません</string>
   <string name="morphe_loop_video_button_toast_on">動画のループ再生がオンになっています</string>
   <string name="morphe_loop_video_button_toast_off">動画のループ再生がオフになっています</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">「すべて再生」ボタンを表示</string>
+  <string name="morphe_play_all_button_summary_on">"プレーヤー オーバーレイに「すべて再生」ボタンが表示されます
+タップするとチャンネルのすべての動画から成るプレイリストを生成する
+長押しすると元に戻る
+
+注意: ライブ配信では正常に動作しない場合があります"</string>
+  <string name="morphe_play_all_button_summary_off">プレーヤー オーバーレイに「すべて再生」ボタンは表示されません</string>
+  <string name="morphe_play_all_button_type_title">プレイリストの生成方法</string>
+  <string name="morphe_play_all_button_type_entry_0">すべてのコンテンツ (古い順)</string>
+  <string name="morphe_play_all_button_type_entry_1">すべてのコンテンツ (新しい順)</string>
+  <string name="morphe_play_all_button_type_entry_2">すべてのコンテンツ (人気順)</string>
+  <string name="morphe_play_all_button_type_entry_3">動画のみ (新しい順)</string>
+  <string name="morphe_play_all_button_type_entry_4">動画のみ (人気順)</string>
+  <string name="morphe_play_all_button_type_entry_5">ショート動画のみ (新しい順)</string>
+  <string name="morphe_play_all_button_type_entry_6">ショート動画のみ (人気順)</string>
+  <string name="morphe_play_all_button_type_entry_7">アーカイブ動画のみ (新しい順)</string>
+  <string name="morphe_play_all_button_type_entry_8">アーカイブ動画のみ (人気順)</string>
+  <string name="morphe_play_all_button_type_entry_9">すべてのメンバー限定コンテンツ</string>
+  <string name="morphe_play_all_button_type_entry_10">メンバー限定動画</string>
+  <string name="morphe_play_all_button_type_entry_11">メンバー限定ショート動画</string>
+  <string name="morphe_play_all_button_type_entry_12">メンバー限定ライブ配信</string>
+  <string name="morphe_play_all_button_not_available_toast">チャンネル ID が一致しないためプレイリストを生成できません</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">動画の再読み込みボタンを表示</string>
   <string name="morphe_reload_video_summary_on">プレーヤー オーバーレイに動画の再読み込みボタンが表示されます</string>
@@ -510,6 +533,10 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_disable_precise_seeking_gesture_title">精密シーク ジェスチャーを無効化</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">精密シーク ジェスチャーは無効です。シークバーを上へスワイプしても、「再生位置の細かい調整」モードにはなりません</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">精密シーク ジェスチャーは有効です。シークバーを上へスワイプすると、「再生位置の細かい調整」モードになります</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">ライブ配信で DVR を強制的に有効化</string>
+  <string name="morphe_livestream_dvr_summary_on">すべてのライブ配信でシークが可能です</string>
+  <string name="morphe_livestream_dvr_summary_off">ライブ配信でシークが利用できない場合があります</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
   <string name="morphe_slide_to_seek_summary_on">スライドによるシークは有効です。プレーヤー画面を左右にスライドすると、前後にシークします</string>
@@ -1618,6 +1645,8 @@ Automotive レイアウト
 • 動画再生時に VP9 または AV1 よりも多くの通信量を使用する
 • HDR 動画では AVC は使用されない
 • 一部のデバイスでは AVC を強制できない"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを Android VR または Android Studio に変更してください</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">画質の詳細設定メニューを表示</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">詳細設定メニューが画質メニューとして表示されます</string>

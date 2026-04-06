@@ -501,6 +501,25 @@ Tarkista, että paketin nimi on oikein ja sovellus on asennettu"</string>
   <string name="morphe_loop_video_button_summary_off">Toista videota jatkuvasti -valinta näytetään</string>
   <string name="morphe_loop_video_button_toast_on">Jatkuva toisto on käytössä</string>
   <string name="morphe_loop_video_button_toast_off">Jatkuva toisto ei ole käytössä</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Näytä soittokaikki-painike</string>
+  <string name="morphe_play_all_button_summary_on">"Soittokaikki-painiketta ei näytetä\nNapauta luodaksesi soittolistan kaikista kanavan videoista\nPidä painettuna peruuttaaksesi\n\nInfo: Ei välttämättä toimi suoratoistoissa"</string>
+  <string name="morphe_play_all_button_summary_off">Soittokaikki-painiketta ei näytetä</string>
+  <string name="morphe_play_all_button_type_title">Luo soittolistan tila</string>
+  <string name="morphe_play_all_button_type_entry_0">Kaikki sisällöt (Järjestä ajan mukaan, Nouseva)</string>
+  <string name="morphe_play_all_button_type_entry_1">Kaikki sisällöt (Järjestä ajan mukaan)</string>
+  <string name="morphe_play_all_button_type_entry_2">Kaikki sisällöt (Järjestä suosion mukaan)</string>
+  <string name="morphe_play_all_button_type_entry_3">Videot (Järjestä ajan mukaan)</string>
+  <string name="morphe_play_all_button_type_entry_4">Videot (Järjestä suosion mukaan)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shortsit (Järjestä ajan mukaan)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shortsit (Järjestä suosion mukaan)</string>
+  <string name="morphe_play_all_button_type_entry_7">Striimivideot (Järjestä ajan mukaan)</string>
+  <string name="morphe_play_all_button_type_entry_8">Striimivideot (Järjestä suosion mukaan)</string>
+  <string name="morphe_play_all_button_type_entry_9">Vain jäsenien sisällöt</string>
+  <string name="morphe_play_all_button_type_entry_10">Vain jäsenten videot</string>
+  <string name="morphe_play_all_button_type_entry_11">Vain jäsenten shortsit</string>
+  <string name="morphe_play_all_button_type_entry_12">Vain jäsenten striimivideot</string>
+  <string name="morphe_play_all_button_not_available_toast">Kanavatunnuserojen vuoksi soittolistaa ei voitu luoda</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Näytä videon uudelleenlataus -painike</string>
   <string name="morphe_reload_video_summary_on">Videon uudelleenlataus -painike näytetään</string>
@@ -510,6 +529,10 @@ Tarkista, että paketin nimi on oikein ja sovellus on asennettu"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Poista tarkka etsintäele käytöstä</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Ele ei ole käytössä</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Ele on käytössä</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Ota suoratoistinauhoitus käyttöön</string>
+  <string name="morphe_livestream_dvr_summary_on">Hakeminen on sallittu kaikissa suoratoistoissa</string>
+  <string name="morphe_livestream_dvr_summary_off">Hakeminen ei ehkä ole saatavilla suoratoistoissa</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Ota kelaus liu\'uttamalla käyttöön</string>
   <string name="morphe_slide_to_seek_summary_on">Kelaus liu\'uttamalla on käytössä</string>
@@ -1622,6 +1645,8 @@ Rajoitukset:
 • Videon toisto kuluttaa enemmän mobiilidataa kuin VP9 tai AV1
 • HDR-videot eivät käytä AVC:tä
 • Jotkin laitteet eivät voi pakottaa AVC:tä"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Käyttääksesi tätä ominaisuutta, muuta \'Naamioi videovirrat\' arvoksi Android VR tai Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Näytä edistynyt videolaatuvalikko</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Edistynyt videolaatuvalikko näytetään</string>

@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_screen_00_about_title">O Morphe</string>
+  <string name="morphe_settings_screen_01_ads_title">Reklame</string>
+  <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternativne naslovne slike</string>
+  <string name="morphe_settings_screen_03_feed_title">Feed</string>
+  <string name="morphe_settings_screen_04_general_title">Opširno</string>
+  <string name="morphe_settings_screen_05_player_title">Plejer</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -56,8 +63,10 @@ Second \"item\" text"</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
+  <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
+  <!-- interaction.seekbar.livestreamDvrPatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
@@ -173,6 +182,7 @@ Second \"item\" text"</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <!-- video.quality.prioritizeVideoQualityPatch -->

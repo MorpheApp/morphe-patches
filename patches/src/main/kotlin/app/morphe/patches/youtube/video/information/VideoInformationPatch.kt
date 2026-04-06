@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -18,6 +19,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -179,7 +181,7 @@ val videoInformationPatch = bytecodePatch(
                 // Even in sufficiently old versions, such as YT 17.34, the opcode for the first index is sget-object.
                 opcode(Opcode.SGET_OBJECT),
                 methodCall(
-                    definingClass = "Lj${'$'}/time/Instant;",
+                    definingClass = "Lj$/time/Instant;",
                     name = "plus"
                 )
             )
@@ -495,6 +497,68 @@ val videoInformationPatch = bytecodePatch(
                     move-result p2
                 """
             )
+        }
+
+        ChannelInformationFingerprint.let {
+            val matches = it.matchAll()
+            if (matches.count() !in 2 .. 3) throw PatchException("Unexpected number of matches: " + matches.count())
+
+            val playerResponseType = matches.first().method.parameterTypes.first().toString()
+
+            PlayerInitFingerprint.classDef.apply {
+                val channelIdMethodCall = Fingerprint(
+                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                    returnType = "V",
+                    parameters = listOf("Ljava/lang/Object;"),
+                    filters = listOf(
+                        methodCall(
+                            definingClass = playerResponseType,
+                            returnType = "Ljava/lang/String;"
+                        ),
+                        string(
+                            string = "com.google.android.apps.youtube.mdx.watch.LAST_MEALBAR_PROMOTED_LIVE_FEED_CHANNELS",
+                            location = MatchAfterWithin(20)
+                        )
+                    )
+                ).instructionMatches.first().getInstruction<ReferenceInstruction>().getReference<MethodReference>()
+
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "setChannelInformation",
+                        listOf(
+                            ImmutableMethodParameter(
+                                playerResponseType,
+                                annotations,
+                                null
+                            )
+                        ),
+                        "V",
+                        AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                        annotations,
+                        null,
+                        ImmutableMethodImplementation(
+                            3,
+                            """
+                                invoke-interface { p1 }, $channelIdMethodCall
+                                move-result-object v0
+                                invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setChannelId(Ljava/lang/String;)V
+
+                                return-void
+                            """.toInstructions(),
+                            null,
+                            null
+                        )
+                    ).toMutable()
+                )
+            }
+
+            matches.forEach { match ->
+                match.method.addInstruction(
+                    0,
+                    "invoke-direct { p0, p1 }, ${match.classDef.type}->setChannelInformation($playerResponseType)V"
+                )
+            }
         }
 
         onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "initialize")

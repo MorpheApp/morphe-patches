@@ -5,18 +5,19 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
-package app.morphe.patches.youtube.layout.playerbuttons
+package app.morphe.patches.youtube.layout.player.buttons
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.youtube.layout.miniplayer.EXTENSION_CLASS_DESCRIPTOR
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.lang.ref.WeakReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
+private const val PLAYER_BUTTON_OVERLAY_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplayer/PlayerOverlayButton;"
 
 private lateinit var exploderButtonMethodRef : WeakReference<MutableMethod>
 private var exploderButtonInsertIndex = -1

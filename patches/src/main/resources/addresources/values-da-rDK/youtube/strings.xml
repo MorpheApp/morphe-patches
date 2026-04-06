@@ -500,6 +500,29 @@ Kontrollér, at pakkenavnet er korrekt, og at appen er installeret"</string>
   <string name="morphe_loop_video_button_summary_off">Loop video menu er vist</string>
   <string name="morphe_loop_video_button_toast_on">Loop-video er slået til</string>
   <string name="morphe_loop_video_button_toast_off">Loop-video er slået fra</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Vis afspil alle-knap</string>
+  <string name="morphe_play_all_button_summary_on">"Afspil alle-knappen vises
+Tryk for at generere en afspilleliste over alle videoer fra kanalen
+Tryk og hold for at fortryde
+
+Info: Fungerer muligvis ikke på live-streams"</string>
+  <string name="morphe_play_all_button_summary_off">Afspil alle-knappen vises ikke</string>
+  <string name="morphe_play_all_button_type_title">Generer afspilleliste-tilstand</string>
+  <string name="morphe_play_all_button_type_entry_0">Alle indhold (Sorter efter tid, stigende)</string>
+  <string name="morphe_play_all_button_type_entry_1">Alle indhold (Sorter efter tid)</string>
+  <string name="morphe_play_all_button_type_entry_2">Alle indhold (Sorter efter popularitet)</string>
+  <string name="morphe_play_all_button_type_entry_3">Videoer (Sorter efter tid)</string>
+  <string name="morphe_play_all_button_type_entry_4">Videoer (Sorter efter popularitet)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts (Sorter efter tid)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts (Sorter efter popularitet)</string>
+  <string name="morphe_play_all_button_type_entry_7">Streamede videoer (Sorter efter tid)</string>
+  <string name="morphe_play_all_button_type_entry_8">Streamede videoer (Sorter efter popularitet)</string>
+  <string name="morphe_play_all_button_type_entry_9">Kun medlemmers indhold</string>
+  <string name="morphe_play_all_button_type_entry_10">Kun medlemmers videoer</string>
+  <string name="morphe_play_all_button_type_entry_11">Kun medlemmers Shorts</string>
+  <string name="morphe_play_all_button_type_entry_12">Kun medlemmers live streams</string>
+  <string name="morphe_play_all_button_not_available_toast">Kunne ikke generere afspilningsliste på grund af mismatch i kanal-id</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Vis knap for at indlæse video</string>
   <string name="morphe_reload_video_summary_on">Indlæs video knap vises</string>
@@ -509,6 +532,10 @@ Kontrollér, at pakkenavnet er korrekt, og at appen er installeret"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Deaktivér præcis søgemåde</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Bevægelse er deaktiveret</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Bevægelse er aktiveret</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Aktivér livestream DVR</string>
+  <string name="morphe_livestream_dvr_summary_on">Afspilning er tilladt på alle livestreams</string>
+  <string name="morphe_livestream_dvr_summary_off">Afspilning er muligvis ikke tilgængelig på livestreams</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivér dias for at søge</string>
   <string name="morphe_slide_to_seek_summary_on">Dias for at søge er aktiveret</string>
@@ -1618,6 +1645,8 @@ Begrænsninger:
 • Videoafspilning vil bruge mere internetdata end VP9 eller AV1
 • HDR-videoer vil ikke bruge AVC
 • Nogle enheder kan ikke tvinge AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">For at bruge denne funktion skal du ændre \'Spoof video streams\' til Android VR eller Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Vis avanceret menu for videokvalitet</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Avanceret menu for videokvalitet vises</string>

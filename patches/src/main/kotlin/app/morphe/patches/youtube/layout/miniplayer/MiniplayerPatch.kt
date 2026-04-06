@@ -39,7 +39,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
+internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
 
 @Suppress("unused")
 val miniplayerPatch = bytecodePatch(

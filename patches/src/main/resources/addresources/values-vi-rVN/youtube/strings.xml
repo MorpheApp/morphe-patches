@@ -500,6 +500,29 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
   <string name="morphe_loop_video_button_summary_off">Nút cho video lặp lại không được hiển thị</string>
   <string name="morphe_loop_video_button_toast_on">Lặp lại video đang bật</string>
   <string name="morphe_loop_video_button_toast_off">Lặp lại video đang tắt</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Hiện nút phát tất cả</string>
+  <string name="morphe_play_all_button_summary_on">"Nút phát tất cả đã được hiển thị
+Bấm để tạo danh sách phát gồm tất cả video trên kênh
+Bấm giữ để hoàn tác
+
+Lưu ý: Có thể không hoạt động trên video phát trực tiếp"</string>
+  <string name="morphe_play_all_button_summary_off">Nút phát tất cả không được hiển thị</string>
+  <string name="morphe_play_all_button_type_title">Chế độ tạo danh sách phát</string>
+  <string name="morphe_play_all_button_type_entry_0">Tất cả nội dung (Theo thời gian, cũ nhất)</string>
+  <string name="morphe_play_all_button_type_entry_1">Tất cả nội dung (Theo thời gian)</string>
+  <string name="morphe_play_all_button_type_entry_2">Tất cả nội dung (Theo độ phổ biến)</string>
+  <string name="morphe_play_all_button_type_entry_3">Chỉ video (Theo thời gian)</string>
+  <string name="morphe_play_all_button_type_entry_4">Chỉ video (Theo độ phổ biến)</string>
+  <string name="morphe_play_all_button_type_entry_5">Chỉ Shorts (Theo thời gian)</string>
+  <string name="morphe_play_all_button_type_entry_6">Chỉ Shorts (Theo độ phổ biến)</string>
+  <string name="morphe_play_all_button_type_entry_7">Chỉ video phát trực tiếp (Theo thời gian)</string>
+  <string name="morphe_play_all_button_type_entry_8">Chỉ video phát trực tiếp (Theo độ phổ biến)</string>
+  <string name="morphe_play_all_button_type_entry_9">Nội dung dành cho tất cả mọi người</string>
+  <string name="morphe_play_all_button_type_entry_10">Video chỉ dành cho hội viên</string>
+  <string name="morphe_play_all_button_type_entry_11">Video ngắn chỉ dành cho hội viên</string>
+  <string name="morphe_play_all_button_type_entry_12">Video phát trực tiếp chỉ dành cho hội viên</string>
+  <string name="morphe_play_all_button_not_available_toast">Không thể tạo danh sách phát do không khớp ID kênh</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Hiện nút tải lại video</string>
   <string name="morphe_reload_video_summary_on">Nút tải lại video đã được hiển thị</string>
@@ -509,6 +532,10 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
   <string name="morphe_disable_precise_seeking_gesture_title">Tắt cử chỉ tua chính xác</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Cử chỉ đã tắt</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Cử chỉ đã bật</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Bật DVR phát trực tiếp</string>
+  <string name="morphe_livestream_dvr_summary_on">Cho phép tua trên tất cả các phiên phát trực tiếp</string>
+  <string name="morphe_livestream_dvr_summary_off">Không được tua trên tất cả các phiên phát trực tiếp</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Bật vuốt để tua</string>
   <string name="morphe_slide_to_seek_summary_on">Vuốt để tua đã được bật</string>
@@ -1617,6 +1644,8 @@ Hạn chế:
 • Phát video sẽ sử dụng nhiều dữ liệu internet hơn VP9 hoặc AV1
 • Video HDR sẽ không sử dụng AVC
 • Một số thiết bị không thể buộc sử dụng AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Để dùng tính năng này, hãy đổi \'Giả mạo luồng phát video\' thành Android VR hoặc Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Hiện menu chất lượng video nâng cao</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Menu chất lượng video nâng cao được hiển thị</string>

@@ -501,6 +501,29 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_button_summary_off">Кнопка повторення відео не показується</string>
   <string name="morphe_loop_video_button_toast_on">Повторення відео ввімкнено</string>
   <string name="morphe_loop_video_button_toast_off">Повторення відео вимкнено</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Показати кнопку \"Відтворити все\"</string>
+  <string name="morphe_play_all_button_summary_on">"Кнопка \"Відтворити все\" показується
+Натисніть, щоб створити список відтворення з усіма відео з каналу
+Натисніть та утримуйте, щоб скасувати дію
+
+Інформація: Може не працювати на прямих трансляціях"</string>
+  <string name="morphe_play_all_button_summary_off">Кнопка \"Відтворити все\" не показується</string>
+  <string name="morphe_play_all_button_type_title">Режим генерації списку відтворення</string>
+  <string name="morphe_play_all_button_type_entry_0">Весь контент (Сортування за часом, за зростанням)</string>
+  <string name="morphe_play_all_button_type_entry_1">Весь контент (Сортування за часом)</string>
+  <string name="morphe_play_all_button_type_entry_2">Всі вміст (Сортувати за популярністю)</string>
+  <string name="morphe_play_all_button_type_entry_3">Лише відео (Сортування за часом)</string>
+  <string name="morphe_play_all_button_type_entry_4">Лише відео (Сортування за популярністю)</string>
+  <string name="morphe_play_all_button_type_entry_5">Лише Shorts (Сортування за часом)</string>
+  <string name="morphe_play_all_button_type_entry_6">Лише Shorts (Сортування за популярністю)</string>
+  <string name="morphe_play_all_button_type_entry_7">Лише трансляції (Сортування за часом)</string>
+  <string name="morphe_play_all_button_type_entry_8">Лише трансляції (Сортування за популярністю)</string>
+  <string name="morphe_play_all_button_type_entry_9">Лише контент для усіх спонсорів</string>
+  <string name="morphe_play_all_button_type_entry_10">Лише відео для спонсорів</string>
+  <string name="morphe_play_all_button_type_entry_11">Лише Shorts для спонсорів</string>
+  <string name="morphe_play_all_button_type_entry_12">Лише прямі трансляції для спонсорів</string>
+  <string name="morphe_play_all_button_not_available_toast">Не вдалося створити список відтворення через невідповідність ID каналу</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Кнопка перезавантаження відео</string>
   <string name="morphe_reload_video_summary_on">Кнопка перезавантаження відео показується</string>
@@ -510,6 +533,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Вимкнути жест точного перемотування</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Жест для точного покадрового перемотування вимкнено</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Жест для точного покадрового перемотування ввімкнено</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Увімкнути DVR для прямої трансляції</string>
+  <string name="morphe_livestream_dvr_summary_on">Перемотування дозволено на всіх прямих трансляціях</string>
+  <string name="morphe_livestream_dvr_summary_off">Перегрупування може бути недоступним на прямих трансляціях</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Увімкнути перемотку пересуванням</string>
   <string name="morphe_slide_to_seek_summary_on">Перемотку пересуванням увімкнено\n\nВідновлено поведінку старого інтерфейсу \"Проведіть пальцем, щоб перемотати\"</string>
@@ -1619,6 +1646,8 @@ Second \"item\" text"</string>
 • Під час відтворення відео буде витрачатися більше інтернет-трафіку, ніж із VP9 чи AV1
 • HDR-відео не використовуватимуть AVC
 • Деякі пристрої не можуть примусово використовувати AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Щоб скористатися цією функцією, змініть \"Підміна відеопотоків\" на Android VR або Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Показувати розширене меню якості відео</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Розширене меню якості відео показується</string>

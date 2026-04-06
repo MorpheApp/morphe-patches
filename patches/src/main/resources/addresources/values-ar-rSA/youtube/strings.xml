@@ -499,6 +499,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_button_summary_off">لا يتم عرض زر تكرار الفيديو</string>
   <string name="morphe_loop_video_button_toast_on">تكرار الفيديو قيد التشغيل</string>
   <string name="morphe_loop_video_button_toast_off">تكرار الفيديو متوقف</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">عرض زر تشغيل الكل</string>
+  <string name="morphe_play_all_button_summary_on">"يتم عرض زر تشغيل الكل\nاضغط لإنشاء قائمة تشغيل لجميع فيديوهات القناة\nاضغط مع الاستمرار للتراجع\n\nمعلومة: قد لا يعمل على البث المباشر"</string>
+  <string name="morphe_play_all_button_summary_off">لا يتم عرض زر تشغيل الكل</string>
+  <string name="morphe_play_all_button_type_title">وضع إنشاء قائمة تشغيل</string>
+  <string name="morphe_play_all_button_type_entry_0">كل المحتوى (فرز حسب الوقت، تصاعدي)</string>
+  <string name="morphe_play_all_button_type_entry_1">كل المحتوى (فرز حسب الوقت)</string>
+  <string name="morphe_play_all_button_type_entry_2">كل المحتوى (فرز حسب الأكثر شيوعًا)</string>
+  <string name="morphe_play_all_button_type_entry_3">الفيديوهات فقط (فرز حسب الوقت)</string>
+  <string name="morphe_play_all_button_type_entry_4">الفيديوهات فقط (فرز حسب الأكثر شيوعًا)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts فقط (فرز حسب الوقت)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts فقط (فرز حسب الأكثر شيوعًا)</string>
+  <string name="morphe_play_all_button_type_entry_7">الفيديوهات التي تم بثها فقط (فرز حسب الوقت)</string>
+  <string name="morphe_play_all_button_type_entry_8">الفيديوهات التي تم بثها فقط (فرز حسب الأكثر شيوعًا)</string>
+  <string name="morphe_play_all_button_type_entry_9">محتوى الأعضاء فقط</string>
+  <string name="morphe_play_all_button_type_entry_10">فيديوهات الأعضاء فقط</string>
+  <string name="morphe_play_all_button_type_entry_11">Shorts الأعضاء فقط</string>
+  <string name="morphe_play_all_button_type_entry_12">بث مباشر للأعضاء فقط</string>
+  <string name="morphe_play_all_button_not_available_toast">تعذر إنشاء قائمة تشغيل بسبب عدم تطابق معرّف القناة</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">عرض زر إعادة تحميل الفيديو</string>
   <string name="morphe_reload_video_summary_on">يتم عرض زر إعادة تحميل الفيديو</string>
@@ -508,6 +527,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">تعطيل إيماءة التمرير الدقيقة</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">تم تعطيل إيماءة التمرير الدقيقة</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">تم تمكين إيماءة التمرير الدقيقة</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">تمكين التنقل في البث المباشر</string>
+  <string name="morphe_livestream_dvr_summary_on">يُسمح بالتقديم والتأخير في جميع البثوث المباشرة</string>
+  <string name="morphe_livestream_dvr_summary_off">قد لا يكون التقديم والتأخير متاحًا في البثوث المباشرة</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">تمكين التمرير للتقديم أو الترجيع</string>
   <string name="morphe_slide_to_seek_summary_on">تم تمكين التمرير للتقديم أو الترجيع</string>
@@ -1617,6 +1640,8 @@ Second \"item\" text"</string>
 • تشغيل الفيديو سيستهلك المزيد من بيانات الإنترنت مقارنةً بـ VP9 أو AV1
 • لن تستخدم فيديوهات HDR ترميز AVC
 • لا يمكن لبعض الأجهزة فرض AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">لاستخدام هذه الميزة، غيّر \'Spoof video streams\' إلى Android VR أو Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">عرض قائمة جودة الفيديو المتقدمة</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">يتم عرض قائمة جودة الفيديو المتقدمة</string>

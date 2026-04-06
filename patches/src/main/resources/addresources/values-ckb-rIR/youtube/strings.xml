@@ -472,6 +472,7 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
   <string name="morphe_loop_video_button_summary_off">دگمه‌ی بژاردەی وێنە نەماوە</string>
   <string name="morphe_loop_video_button_toast_on">وەڵا پێكردنەوەی ڤیدۆ ساراوە</string>
   <string name="morphe_loop_video_button_toast_off">وەڵا پێكردنەوەی ڤیدۆ نا ساراوە</string>
+  <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">دەربازکردنی دەربۆیەکانیان،ދުళաքޅb پھیඨგთ</string>
   <string name="morphe_reload_video_summary_on">دەربۆی دەربازبوویشن ڕۆن</string>
@@ -481,6 +482,7 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
   <string name="morphe_disable_precise_seeking_gesture_title">ख़ hingē nīkhnē门గ్மंच क़फचěřा जरोए</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">खिंगē nīkhnē门గ్மंच क़फचěřा जరోए</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">چۆنکردنەوەی هەڵوێستە شارەزایەکان هەیە</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">بووه‌ جێگایه‌ جێروه‌ل</string>
   <string name="morphe_slide_to_seek_summary_on">جێروه‌ل داوه‌</string>
@@ -1559,6 +1561,7 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
 دەسبه‌سەر:
 • هەرێک لە كیفیەتی نەک وەکوو 1080p بەشە
 • ڤیدیۆی به‌گوهەر كەرنیش هەتا هێنده‌ وەك ڤ‌اندئێ هی خۆئه‌سكه‌یدە پیاه‌وسه‌رى فه رمو  ڤپی نه وه• هه‌ر ڕێکه‌س شیانه‌که‌ نه‌که‌ن هه‌ی‌په‌ر ڤیه‌رودة ده‌ربخات"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">نیشاندنه‌ پێکهاتەکلیکی که‌متره‌ ڤیدیۆکی گه‌هردار</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">خاڵی پێشاندانی پێکهاتەکلی که‌متره‌ ڤیدیۆ گه‌هردار نیشاندره‌</string>

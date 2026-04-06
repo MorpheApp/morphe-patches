@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
-  <string name="morphe_settings_screen_00_about_title">मorphe के बारे में</string>
+  <string name="morphe_settings_screen_00_about_title">इसके बारे में</string>
   <string name="morphe_settings_screen_01_ads_title">रекलाम</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">अल्टर्नेट थंबनेल्स</string>
   <string name="morphe_settings_screen_03_feed_title">खाना</string>
@@ -500,6 +500,25 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_loop_video_button_summary_off">वीडियो लूप बटन दिखाई नहीं देता है</string>
   <string name="morphe_loop_video_button_toast_on">वीडियो लूप चालू है</string>
   <string name="morphe_loop_video_button_toast_off">वीडियो लूप बंद है</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">शो प्ले ऑल बटन</string>
+  <string name="morphe_play_all_button_summary_on">"प्ले ऑल बटन दिखाया जाता है\nचैनल से सभी वीडियो की प्लेलिस्ट उत्पन्न करने के लिए टैप करें\nअनडू करने के लिए टैप और होल्ड करें\n\nजानकारी: लाइव स्ट्रीम पर काम नहीं कर सकता है"</string>
+  <string name="morphe_play_all_button_summary_off">प्ले ऑल बटन नहीं दिखाया जाता है</string>
+  <string name="morphe_play_all_button_type_title">प्लेलिस्ट जेनरेट मोड</string>
+  <string name="morphe_play_all_button_type_entry_0">सभी सामग्री (समय के अनुसार क्रमबद्ध करें, आरोही)</string>
+  <string name="morphe_play_all_button_type_entry_1">सभी सामग्री (समय के अनुसार क्रमबद्ध करें)</string>
+  <string name="morphe_play_all_button_type_entry_2">सभी सामग्री (लोकप्रियता के अनुसार क्रमबद्ध करें)</string>
+  <string name="morphe_play_all_button_type_entry_3">सिर्फ़ वीडियो (समय के अनुसार क्रमबद्ध करें)</string>
+  <string name="morphe_play_all_button_type_entry_4">सिर्फ़ वीडियो (लोकप्रियता के अनुसार क्रमबद्ध करें)</string>
+  <string name="morphe_play_all_button_type_entry_5">सिर्फ़ शॉर्ट्स (समय के अनुसार क्रमबद्ध करें)</string>
+  <string name="morphe_play_all_button_type_entry_6">सिर्फ़ शॉर्ट्स (लोकप्रियता के अनुसार क्रमबद्ध करें)</string>
+  <string name="morphe_play_all_button_type_entry_7">सिर्फ़ स्ट्रीम किए गए वीडियो (समय के अनुसार क्रमबद्ध करें)</string>
+  <string name="morphe_play_all_button_type_entry_8">सिर्फ़ स्ट्रीम किए गए वीडियो (लोकप्रियता के अनुसार क्रमबद्ध करें)</string>
+  <string name="morphe_play_all_button_type_entry_9">सभी सदस्यों की सामग्री केवल</string>
+  <string name="morphe_play_all_button_type_entry_10">केवल सदस्यों के वीडियो</string>
+  <string name="morphe_play_all_button_type_entry_11">केवल सदस्यों के शॉर्ट्स</string>
+  <string name="morphe_play_all_button_type_entry_12">केवल सदस्यों के लाइव स्ट्रीम</string>
+  <string name="morphe_play_all_button_not_available_toast">चैनल आईडी मिसमैच के कारण प्लेलिस्ट जेनरेट करने में असमर्थ</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">वीडियो रीलोड बटन दिखाएँ</string>
   <string name="morphe_reload_video_summary_on">रीलोड वीडियो बटन दिखाया गया है</string>
@@ -509,6 +528,10 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_disable_precise_seeking_gesture_title">प्रेसिस सीकिंग गेस्टर को अक्षम करना</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">प्रकृतिक खोज गेस्टर को अक्षम करना</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">प्रकृतिक खोज गेस्टर को सक्षम करना</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">लाइवस्ट्रीम DVR सक्षम करें</string>
+  <string name="morphe_livestream_dvr_summary_on">सभी लाइवस्ट्रीम पर खोजने की अनुमति है</string>
+  <string name="morphe_livestream_dvr_summary_off">लाइवस्ट्रीम पर खोजना उपलब्ध नहीं हो सकता है</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">स्लाइड टू सीक सक्षम करें</string>
   <string name="morphe_slide_to_seek_summary_on">स्लाइड टू सीक सक्षम है</string>
@@ -1614,6 +1637,8 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
 • VP9 या AV1 की तुलना में VP1 प्लेबैक को अधिक इंटरनेट डेटा का उपयोग करना होगा
 • HDR वीडियो AVC का उपयोग नहीं करेंगे
 • कुछ डिवाइस AVC को बल नहीं लगा सकते"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">इस सुविधा का उपयोग करने के लिए, \'Spoof video streams\' को Android VR या Android Studio में बदलें</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">उन्नत वीडियो गुणवत्ता मेनू दिखाएं</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">उन्नत वीडियो गुणवत्ता मेनू दिखाया गया है</string>

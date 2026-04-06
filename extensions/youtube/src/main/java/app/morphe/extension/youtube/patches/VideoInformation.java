@@ -61,7 +61,7 @@ public final class VideoInformation {
 
     private static WeakReference<PlaybackController> playerControllerRef = new WeakReference<>(null);
     private static WeakReference<PlaybackController> mdxPlayerDirectorRef = new WeakReference<>(null);
-
+    private static String channelId = "";
     private static String videoId = "";
     private static long videoLength = 0;
     private static long videoTime = -1;
@@ -126,6 +126,10 @@ public final class VideoInformation {
             playerControllerRef = new WeakReference<>(Objects.requireNonNull(playerController));
             videoTime = -1;
             videoLength = 0;
+            channelId = "";
+            String channelName = "";
+            String videoTitle = "";
+            boolean isLive = false;
             playbackSpeed = DEFAULT_YOUTUBE_PLAYBACK_SPEED;
             desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
             currentQualities = null;
@@ -147,6 +151,14 @@ public final class VideoInformation {
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to initialize MDX", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setChannelId(String cId) {
+        channelId = cId != null ? cId : "";
+        Logger.printDebug(() -> "Extracted Channel ID: " + channelId);
     }
 
     /**
@@ -356,6 +368,14 @@ public final class VideoInformation {
     }
 
     /**
+     * @return The channel ID of the current video.
+     */
+    @NonNull
+    public static String getChannelId() {
+        return channelId;
+    }
+
+    /**
      * ID of the last video opened. Includes Shorts.
      *
      * @return The ID of the video, or an empty string if no videos have been opened yet.
@@ -422,7 +442,7 @@ public final class VideoInformation {
      *         then this returns zero.
      */
     public static long getVideoLength() {
-       return videoLength;
+        return videoLength;
     }
 
     /**

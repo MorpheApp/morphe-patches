@@ -500,6 +500,25 @@ Suriin kung tama ang pangalan ng package at naka-install ang app"</string>
   <string name="morphe_loop_video_button_summary_off">Hindi ipinapakita ang button ng loop ng video</string>
   <string name="morphe_loop_video_button_toast_on">Naka-on ang loop video</string>
   <string name="morphe_loop_video_button_toast_off">Naka-off ang loop video</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Ipakita ang button na \'Play all\'</string>
+  <string name="morphe_play_all_button_summary_on">"Ipinapakita ang button na 'Play all'\nI-tap para bumuo ng playlist ng lahat ng video mula sa channel\nI-tap nang matagal para i-undo\n\nImpormasyon: Maaaring hindi gumana sa live streams"</string>
+  <string name="morphe_play_all_button_summary_off">Hindi ipinapakita ang button na \'Play all\'</string>
+  <string name="morphe_play_all_button_type_title">Mode ng pagbuo ng playlist</string>
+  <string name="morphe_play_all_button_type_entry_0">Lahat ng nilalaman (Pagbukud-bukurin ayon sa oras, Papataas)</string>
+  <string name="morphe_play_all_button_type_entry_1">Lahat ng nilalaman (Pagbukud-bukurin ayon sa oras)</string>
+  <string name="morphe_play_all_button_type_entry_2">Lahat ng nilalaman (Pagbukud-bukurin ayon sa sikat)</string>
+  <string name="morphe_play_all_button_type_entry_3">Mga bidyo lamang (Pagbukud-bukurin ayon sa oras)</string>
+  <string name="morphe_play_all_button_type_entry_4">Mga bidyo lamang (Pagbukud-bukurin ayon sa sikat)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts lamang (Pagbukud-bukurin ayon sa oras)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts lamang (Pagbukud-bukurin ayon sa sikat)</string>
+  <string name="morphe_play_all_button_type_entry_7">Mga na-stream na bidyo lamang (Pagbukud-bukurin ayon sa oras)</string>
+  <string name="morphe_play_all_button_type_entry_8">Mga na-stream na bidyo lamang (Pagbukud-bukurin ayon sa sikat)</string>
+  <string name="morphe_play_all_button_type_entry_9">Lahat ng nilalaman ng miyembro lamang</string>
+  <string name="morphe_play_all_button_type_entry_10">Mga bidyo ng miyembro lamang</string>
+  <string name="morphe_play_all_button_type_entry_11">Mga Shorts ng miyembro lamang</string>
+  <string name="morphe_play_all_button_type_entry_12">Mga live stream ng miyembro lamang</string>
+  <string name="morphe_play_all_button_not_available_toast">Hindi maaring buuin ang playlist dahil sa hindi tugmang ID ng channel</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Ipakita ang button na i-reload ang video</string>
   <string name="morphe_reload_video_summary_on">Ipinapakita ang button na i-reload ang video</string>
@@ -509,6 +528,10 @@ Suriin kung tama ang pangalan ng package at naka-install ang app"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">I-disable ang tumpak na pag-ugong ng pag-ugong</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Naka-disable ang tumpak na pag-ugong ng pag-ugong</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Naka-enable ang tumpak na pag-ugong ng pag-ugong</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">I-enable ang livestream DVR</string>
+  <string name="morphe_livestream_dvr_summary_on">Pinapayagan ang paghahanap sa lahat ng livestreams</string>
+  <string name="morphe_livestream_dvr_summary_off">Maaaring hindi available ang paghahanap sa mga livestreams</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Paganahin ang slide to seek</string>
   <string name="morphe_slide_to_seek_summary_on">Ang slide to seek ay pinagana</string>
@@ -1618,6 +1641,8 @@ Mga limitasyon:
 • Ang pag-playback ng video ay gumagamit ng mas maraming data sa internet kaysa sa VP9 o AV1
 • Ang HDR video ay hindi gagamit ng AVC
 • Ang ilang device ay hindi mapipilitan ng AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Upang gamitin ang tampok na ito, baguhin ang \'Gayahin ang mga video stream\' sa Android VR o Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Ipakita ang advanced na menu ng kalidad ng video</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Ipinapakita ang advanced na menu ng kalidad ng video</string>

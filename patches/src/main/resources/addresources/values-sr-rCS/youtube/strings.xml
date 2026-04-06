@@ -500,6 +500,25 @@ Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</str
   <string name="morphe_loop_video_button_summary_off">Dugme „Ponavljaj video” je prikazano</string>
   <string name="morphe_loop_video_button_toast_on">Ponavljanje videa je uključeno</string>
   <string name="morphe_loop_video_button_toast_off">Ponavljanje videa je isključeno</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Prikaži dugme za puštanje svih</string>
+  <string name="morphe_play_all_button_summary_on">"Dugme za puštanje svih je prikazano\nDodirnite da biste generisali listu reprodukcije svih video zapisa sa kanala\nDodirnite i držite da biste ukinuli\n\nInfo: Možda neće raditi na uživo strimingima"</string>
+  <string name="morphe_play_all_button_summary_off">Dugme za puštanje svih nije prikazano</string>
+  <string name="morphe_play_all_button_type_title">Način generisanja liste reprodukcije</string>
+  <string name="morphe_play_all_button_type_entry_0">Sadržaj (Sortiranje po vremenu, Usporedo)</string>
+  <string name="morphe_play_all_button_type_entry_1">Sadržaj (Sortiranje po vremenu)</string>
+  <string name="morphe_play_all_button_type_entry_2">Sadržaj (Sortiranje po popularnosti)</string>
+  <string name="morphe_play_all_button_type_entry_3">Video snimci (Sortiranje po vremenu)</string>
+  <string name="morphe_play_all_button_type_entry_4">Video snimci (Sortiranje po popularnosti)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts (Sortiranje po vremenu)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts (Sortiranje po popularnosti)</string>
+  <string name="morphe_play_all_button_type_entry_7">Strimovani video snimci (Sortiranje po vremenu)</string>
+  <string name="morphe_play_all_button_type_entry_8">Strimovani video snimci (Sortiranje po popularnosti)</string>
+  <string name="morphe_play_all_button_type_entry_9">Sadržaj samo članova</string>
+  <string name="morphe_play_all_button_type_entry_10">Video snimci samo članova</string>
+  <string name="morphe_play_all_button_type_entry_11">Shorts samo članova</string>
+  <string name="morphe_play_all_button_type_entry_12">Strimevi samo članova</string>
+  <string name="morphe_play_all_button_not_available_toast">Nije moguće generisati listu zbog neslaganja ID-ja kanala</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Prikaži dugme za učitavanje videa</string>
   <string name="morphe_reload_video_summary_on">Dugme za učitavanje videa je prikazano</string>
@@ -509,6 +528,10 @@ Proverite da li je naziv paketa ispravan i da li je aplikacija instalirana"</str
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogući pokret preciznog premotavanja</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Pokret preciznog premotavanja je onemogućen</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Pokret preciznog premotavanja je omogućen</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Uključi livestream DVR</string>
+  <string name="morphe_livestream_dvr_summary_on">Traženje je dozvoljeno na svim livestreamima</string>
+  <string name="morphe_livestream_dvr_summary_off">Traženje možda neće biti dostupno na livestreamima</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Omogući prevlačenje za premotavanje</string>
   <string name="morphe_slide_to_seek_summary_on">Prevlačenje za premotavanje je omogućeno</string>
@@ -1618,6 +1641,8 @@ Ograničenja:
 • Reprodukcija videa će koristiti više internet podataka nego VP9 ili AV1
 • HDR videi neće koristiti AVC
 • Neki uređaji ne mogu prisiliti AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Da biste koristili ovu funkciju, promenite opciju „Lažirani video strimovi” na Android VR ili Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Prikaži napredni meni kvaliteta videa</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Napredni meni kvaliteta videa je prikazan</string>

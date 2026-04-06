@@ -165,29 +165,29 @@ val changePackageNamePatch = resourcePatch(
         it == "Default" || it!!.matches(Regex("^[a-z]\\w*(\\.[a-z]\\w*)+\$"))
     }
 
-    val updatePermissions = booleanOption(
+    val updatePermissionsOption = booleanOption(
         key = "updatePermissions",
         default = false,
         title = "Update permissions",
         description = "Update compatibility receiver permissions. " +
             "Enabling this can fix installation errors, but this can also break features in certain apps.",
-    ).value
+    )
 
-    val updateProviders = booleanOption(
+    val updateProvidersOption = booleanOption(
         key = "updateProviders",
         default = false,
         title = "Update providers",
         description = "Update provider names declared by the app. " +
             "Enabling this can fix installation errors, but this can also break features in certain apps.",
-    ).value
+    )
 
-    val updateProvidersStrings = booleanOption(
+    val updateProvidersStringsOption = booleanOption(
         key = "updateProvidersStrings",
         default = false,
         title = "Update providers strings",
         description = "Update additional provider names declared by the app in the strings.xml file. " +
                 "Enabling this can fix installation errors, but this can also break features in certain apps.",
-    ).value
+    )
 
     fun getReplacementPackageName(originalPackageName: String) : String {
         val replacementPackageName = packageNameOption.value
@@ -245,9 +245,9 @@ val changePackageNamePatch = resourcePatch(
                 applyUpdateProvidersStrings = true
             }
             else -> {
-                applyUpdatePermissions = updatePermissions!!
-                applyUpdateProviders = updateProviders!!
-                applyUpdateProvidersStrings = updateProvidersStrings!!
+                applyUpdatePermissions = updatePermissionsOption.value!!
+                applyUpdateProviders = updateProvidersOption.value!!
+                applyUpdateProvidersStrings = updateProvidersStringsOption.value!!
             }
         }
 
@@ -273,12 +273,13 @@ val changePackageNamePatch = resourcePatch(
 
                 val receiverNotExported = "DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
                 val androidName = "android:name"
-                val newName = "$packageName.$receiverNotExported"
+                val oldName = "$packageName.$receiverNotExported"
+                val newName = "$newPackageName.$receiverNotExported"
 
                 (permissions + usesPermissions)
                     .map { it as Element }
                     .filter {
-                        it.getAttribute(androidName) == newName
+                        it.getAttribute(androidName) == oldName
                     }
                     .forEach {
                         it.setAttribute(androidName, newName)

@@ -246,11 +246,13 @@ Uistite sa, že názov balíka je správny a aplikácia je nainštalovaná"</str
   <string name="morphe_loop_video_button_summary_off">Tlačidlo opakovania videa sa nezobrazuje</string>
   <string name="morphe_loop_video_button_toast_on">Opakovanie videa je zapnuté</string>
   <string name="morphe_loop_video_button_toast_off">Opakovanie videa je vypnuté</string>
+  <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Zobraziť tlačidlo pre obnovenie videa</string>
   <string name="morphe_reload_video_summary_on">Tlačidlo obnovenia videa sa zobrazuje</string>
   <string name="morphe_reload_video_summary_off">Tlačidlo obnovenia videa sa nezobrazuje</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
+  <!-- interaction.seekbar.livestreamDvrPatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
@@ -801,6 +803,7 @@ Obmedzenia:
 • Vyššia spotreba dát pri prehrávaní videa ako VP9 alebo AV1
 • HDR videá nebudú využívať AVC
 • Niektoré zariadenia nemôžu vynútiť AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Zobraziť rozšírenú ponuku kvality videa</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Rozšírená ponuka kvality videa sa zobrazuje</string>

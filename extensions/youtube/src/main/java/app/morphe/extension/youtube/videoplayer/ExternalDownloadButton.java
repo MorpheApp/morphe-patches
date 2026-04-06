@@ -21,6 +21,13 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class ExternalDownloadButton {
+
+    static {
+        if (Settings.EXTERNAL_DOWNLOADER.get()) {
+            LegacyPlayerControlButton.incrementUpperButtonCount();
+        }
+    }
+
     @Nullable
     private static LegacyPlayerControlButton legacy;
 

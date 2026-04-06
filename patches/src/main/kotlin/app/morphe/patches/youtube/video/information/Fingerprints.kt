@@ -1,3 +1,5 @@
+@file:Suppress("SpellCheckingInspection")
+
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
@@ -37,6 +39,13 @@ internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
 internal object PlayerInitFingerprint : Fingerprint(
     filters = listOf(
         string("playVideo called on player response with no videoStreamingData."),
+    )
+)
+
+internal object ChannelInformationFingerprint : Fingerprint(
+    classFingerprint = PlayerInitFingerprint,
+    filters = listOf(
+        string("loadVideo() called on LocalDirector in wrong state"),
     )
 )
 

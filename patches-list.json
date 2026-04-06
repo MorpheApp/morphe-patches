@@ -1,5 +1,5 @@
 {
-  "version": "1.23.0-dev.4",
+  "version": "1.23.0-dev.6",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -1860,9 +1860,10 @@
     },
     {
       "name": "Seekbar",
-      "description": "Adds options to disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, and hiding the video player seekbar.",
+      "description": "Adds options to disable precise seeking when swiping up on the seekbar, slide to seek instead of playing at 2x speed when pressing and holding, tapping the player seekbar to seek, hiding the video player seekbar, and enabling seeking in livestreams.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch",

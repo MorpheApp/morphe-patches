@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Η αναπαραγωγή παρασκηνίου είναι απενεργοποιημένη για τα Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Η αναπαραγωγή παρασκηνίου είναι ενεργοποιημένη για τα Shorts</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Πρωτόκολλο buffer εντοπισμού σφαλμάτων</string>
+  <string name="morphe_debug_protobuffer_title">Εντοπισμός καταγραφής σφαλμάτων για πρωτόκολλα buffer</string>
   <string name="morphe_debug_protobuffer_summary_on">Τα αρχεία καταγραφής σφαλμάτων περιλαμβάνουν πρωτόκολλα buffer</string>
   <string name="morphe_debug_protobuffer_summary_off">Τα αρχεία καταγραφής σφαλμάτων δεν περιλαμβάνουν πρωτόκολλα buffer</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Η ενεργοποίηση αυτής της ρύθμισης θα καταγράψει επιπλέον δεδομένα διάταξης, συμπεριλαμβανομένου του κειμένου στην οθόνη για ορισμένα στοιχεία διεπαφής χρήστη.
@@ -47,88 +47,88 @@ Second \"item\" text"</string>
 Ωστόσο, η ενεργοποίηση αυτής της ρύθμισης θα καταγράψει επίσης ορισμένα δεδομένα χρήστη, όπως τη διεύθυνση IP σας."</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">Απενεργοποίηση ενημερώσεων διάταξης</string>
-  <string name="morphe_disable_layout_updates_summary_on">Η διάταξη δεν θα ενημερώνεται από τον διακομιστή</string>
+  <string name="morphe_disable_layout_updates_summary_on">Η διάταξη δε θα ενημερώνεται από τον διακομιστή</string>
   <string name="morphe_disable_layout_updates_summary_off">Η διάταξη θα ενημερώνεται από τον διακομιστή</string>
   <string name="morphe_disable_layout_updates_user_dialog_message">"Η διάταξη της εφαρμογής επαναφέρεται στη διάταξη που χρησιμοποιήθηκε όταν εγκαταστάθηκε για πρώτη φορά.
 
 Διάταξεις που είναι διαθέσιμες από τον διακομιστή μπορεί να μην επαναφερθούν.
 
 Οι αλλαγές περιλαμβάνουν:
-• Οι συστατικές στο μενού πλαισίου αναπαραγωγής (ή τις σχετικές ρυθμίσεις) μπορεί να μην λειτουργούν.
-• Οι αναμετρικές αριθμοί δεν είναι αναμείγνυνται.
+• Στοιχεία στο μενού πλαισίου αναπαραγωγής (ή τις σχετικές ρυθμίσεις) μπορεί να μην λειτουργούν.
+• Οι κυλυώμενοι αριθμοί δεν κινούνται.
 • Η καρτέλα βιβλιοθήκης εμφανίζεται.
-• Ο部分 μουσικής του περιεχομένου περιγραφής βίντεο μπορεί να μην λειτουργήσει.
+• Ο τομέας μουσικής του περιεχομένου περιγραφής βίντεο μπορεί να μην λειτουργήσει.
 • Οι επιλογές του μενού πλαισίου αναπαραγωγής δεν μπορούν να αποκρυφθούν.
-• Ο κουμπί αλλαγής λογαριασμού μπορεί να μην εμφανιστεί στη καρτέλα Βιβλιοθήκη."</string>
+• Το κουμπί αλλαγής λογαριασμού μπορεί να μην εμφανιστεί στη καρτέλα Βιβλιοθήκη."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Ενότητα καταστήματος δημιουργού</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Κρυμμένη\n\nΑφορά την ενότητα καταστήματος δημιουργού κάτω από την οθόνη αναπαραγωγής</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Εμφανίζεται\n\nΑφορά την ενότητα καταστήματος δημιουργού κάτω από την οθόνη αναπαραγωγής</string>
-  <string name="morphe_hide_album_cards_title">Απόκρυψη καρτών άλμπουμ</string>
-  <string name="morphe_hide_album_cards_summary_on">Οι κάρτες άλμπουμ είναι κρυμμένες</string>
-  <string name="morphe_hide_album_cards_summary_off">Οι κάρτες άλμπουμ εμφανίζονται</string>
-  <string name="morphe_hide_artist_cards_title">Απόκρυψη καρτών καλλιτεχνών</string>
-  <string name="morphe_hide_artist_cards_summary_on">Κρυμμένες</string>
-  <string name="morphe_hide_artist_cards_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_chips_shelf_title">Ενότητα σχετιζόμενων λέξεων</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Κρυμμένη</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_community_posts_title">Απόκρυψη δημοσιεύσεων κοινότητας</string>
-  <string name="morphe_hide_community_posts_summary_on">Κρυμμένες</string>
-  <string name="morphe_hide_community_posts_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_compact_banner_title">Αναγγελίες κάτω από τα βίντεο</string>
-  <string name="morphe_hide_compact_banner_summary_on">Κρυμμένες</string>
-  <string name="morphe_hide_compact_banner_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_expandable_card_title">Επεκτάσιμο πλαίσιο κάτω από τα βίντεο</string>
-  <string name="morphe_hide_expandable_card_summary_on">Κρυμμένο</string>
-  <string name="morphe_hide_expandable_card_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_floating_microphone_button_title">Αιωρούμενο κουμπί μικροφώνου στην αναζήτηση</string>
-  <string name="morphe_hide_floating_microphone_button_summary_on">Κρυμμένο</string>
-  <string name="morphe_hide_floating_microphone_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_horizontal_shelves_title">Οριζόντιες ενότητες προτάσεων</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Κρυμμένες
+  <string name="morphe_hide_creator_store_shelf_title">Απόκρυψη ραφιού \"Κατάστημα Δημιουργού\"</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Το ράφι \"Κατάστημα Δημιουργού\" έχει αποκρυφτεί</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Το ράφι \"Κατάστημα Δημιουργού\" εμφανίζεται</string>
+  <string name="morphe_hide_album_cards_title">Απόκρυψη \"Καρτών Άλμπουμ\"</string>
+  <string name="morphe_hide_album_cards_summary_on">Οι \"Κάρτες Άλμπουμ\" έχουν αποκρυφτεί</string>
+  <string name="morphe_hide_album_cards_summary_off">Οι \"Κάρτες Άλμπουμ\" εμφανίζονται</string>
+  <string name="morphe_hide_artist_cards_title">Απόκρυψη \"Κάρτες καλλιτεχνών\"</string>
+  <string name="morphe_hide_artist_cards_summary_on">Οι \"Κάρτες καλλιτεχνών\" έχουν αποκρυφτεί</string>
+  <string name="morphe_hide_artist_cards_summary_off">Οι \"Κάρτες καλλιτεχνών\" εμφανίζονται</string>
+  <string name="morphe_hide_chips_shelf_title">Απόκρυψη ραφιού \"Συσχετιζόμενων λέξεων\"</string>
+  <string name="morphe_hide_chips_shelf_summary_on">Το ράφι \"Συσχετιζόμενων λέξεων\" έχει αποκρυφτεί</string>
+  <string name="morphe_hide_chips_shelf_summary_off">Το ράφι \"Συσχετιζόμενων λέξεων\" εμφανίζεται</string>
+  <string name="morphe_hide_community_posts_title">Απόκρυψη \"Δημοσιεύσεις Κοινότητας\"</string>
+  <string name="morphe_hide_community_posts_summary_on">Οι \"Δημοσιεύσεις Κοινότητας\" έχουν αποκρυφτεί</string>
+  <string name="morphe_hide_community_posts_summary_off">Οι \"Δημοσιεύσεις Κοινότητας\" εμφανίζονται</string>
+  <string name="morphe_hide_compact_banner_title">Απόκρυψη \"Συμπαγή Μπάνερ\"</string>
+  <string name="morphe_hide_compact_banner_summary_on">Τα \"Συμπαγή Μπάνερ\" έχουν αποκρυφτεί</string>
+  <string name="morphe_hide_compact_banner_summary_off">Τα \"Συμπαγή Μπάνερ\" εμφανίζονται</string>
+  <string name="morphe_hide_expandable_card_title">Απόκρυψη \"Επεκτάσιμη Κάρτα\" κάτω από τα βίντεο</string>
+  <string name="morphe_hide_expandable_card_summary_on">Η \"Επεκτάσιμη Κάρτα\" κάτω από τα βίντεο έχει αποκρυφτεί</string>
+  <string name="morphe_hide_expandable_card_summary_off">Η \"Επεκτάσιμη Κάρτα\" κάτω από τα βίντεο εμφανίζεται</string>
+  <string name="morphe_hide_floating_microphone_button_title">Απόκρυψη \"Αιωρούμενο Κουμπί Μικροφώνου\" στην αναζήτηση</string>
+  <string name="morphe_hide_floating_microphone_button_summary_on">Το \"Αιωρούμενο Κουμπί Μικροφώνου\" στην αναζήτηση έχει αποκρυφτεί</string>
+  <string name="morphe_hide_floating_microphone_button_summary_off">Το \"Αιωρούμενο Κουμπί Μικροφώνου\" στην αναζήτηση εμφανίζεται</string>
+  <string name="morphe_hide_horizontal_shelves_title">Απόκρυψη \"Οριζοντίων Ραφιών\"</string>
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Τα \"Οριζόντια ράφια\" έχουν αποκρυφτεί, όπως:
 
-Αφορά τις οριζόντιες ενότητες προτάσεων, όπως:
 • Έκτακτη είδηση
-• Συνέχεια παρακολούθησης
+• Συνέχιση παρακολούθησης
 • Εξερευνήστε περισσότερα κανάλια
+• Για σένα 
 • Πιο σχετικά
-• Shopping
+• Αγορές
 • Παρακολούθηση ξανά"</string>
-  <string name="morphe_hide_horizontal_shelves_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_image_shelf_title">Ενότητα εικόνων στα αποτελέσματα αναζήτησης</string>
-  <string name="morphe_hide_image_shelf_summary_on">Κρυμμένη</string>
-  <string name="morphe_hide_image_shelf_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_latest_posts_title">Τελευταίες δημοσιεύσεις</string>
-  <string name="morphe_hide_latest_posts_summary_on">Κρυμμένες</string>
-  <string name="morphe_hide_latest_posts_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_horizontal_shelves_summary_off">Τα \"Οριζόντια ράφια\" εμφανίζονται</string>
+  <string name="morphe_hide_image_shelf_title">Απόκρυψη ραφιού \"Εικόνες\" στα αποτελέσματα αναζήτησης</string>
+  <string name="morphe_hide_image_shelf_summary_on">Το ράφι \"Εικόνες\" έχει αποκρυφτεί</string>
+  <string name="morphe_hide_image_shelf_summary_off">Το ράφι \"Εικόνες\" εμφανίζεται</string>
+  <string name="morphe_hide_latest_posts_title">Απόκρυψη \"Τελευταίες δημοσιεύσεις\"</string>
+  <string name="morphe_hide_latest_posts_summary_on">Οι \"Τελευταίες δημοσιεύσεις\" έχουν αποκρυφτεί</string>
+  <string name="morphe_hide_latest_posts_summary_off">Οι \"Τελευταίες δημοσιεύσεις\" εμφανίζονται</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
-  <string name="morphe_hide_latest_videos_button_title">Απόκρυψη κουμπιού «Τελευταία βίντεο»</string>
-  <string name="morphe_hide_latest_videos_button_summary_on">Το κουμπί «Τελευταία βίντεο» είναι κρυμμένο</string>
-  <string name="morphe_hide_latest_videos_button_summary_off">Το κουμπί «Τελευταία βίντεο» εμφανίζεται</string>
-  <string name="morphe_hide_mix_playlists_title">Λίστες αναπαραγωγής μίξης</string>
-  <string name="morphe_hide_mix_playlists_summary_on">Κρυμμένες</string>
-  <string name="morphe_hide_mix_playlists_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_movies_section_title">Ενότητα ταινιών</string>
-  <string name="morphe_hide_movies_section_summary_on">Κρυμμένη</string>
-  <string name="morphe_hide_movies_section_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_latest_videos_button_title">Απόκρυψη κουμπιού \"Τελευταία βίντεο\"</string>
+  <string name="morphe_hide_latest_videos_button_summary_on">Το κουμπί \"Τελευταία βίντεο\" έχει αποκρυφτεί</string>
+  <string name="morphe_hide_latest_videos_button_summary_off">Το κουμπί \"Τελευταία βίντεο\" εμφανίζεται</string>
+  <string name="morphe_hide_mix_playlists_title">Απόκρυψη \"Λίστες αναπαραγωγής μίξης\"</string>
+  <string name="morphe_hide_mix_playlists_summary_on">Οι \"Λίστες αναπαραγωγής μίξης\" έχουν αποκρυφτεί</string>
+  <string name="morphe_hide_mix_playlists_summary_off">Οι \"Λίστες αναπαραγωγής μίξης\" εμφανίζονται</string>
+  <string name="morphe_hide_movies_section_title">Απόκρυψη \"Ενότητας ταινιών\"</string>
+  <string name="morphe_hide_movies_section_summary_on">Η \"Ενότητα ταινιών\" έχει αποκρυφτεί</string>
+  <string name="morphe_hide_movies_section_summary_off">Η \"Ενότητα ταινιών\" εμφανίζεται</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
-  <string name="morphe_hide_notify_me_button_title">Κουμπί «Να λαμβάνω ειδοποιήσεις»</string>
-  <string name="morphe_hide_notify_me_button_summary_on">Κρυμμένο</string>
-  <string name="morphe_hide_notify_me_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_playables_title">Παιχνίδια YouTube</string>
-  <string name="morphe_hide_playables_summary_on">Κρυμμένα</string>
-  <string name="morphe_hide_playables_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_notify_me_button_title">Απόκρυψη κουμπιού \"Να λαμβάνω ειδοποιήσεις\"</string>
+  <string name="morphe_hide_notify_me_button_summary_on">Το κουμπί \"Να λαμβάνω ειδοποιήσεις\" έχει αποκρυφτεί</string>
+  <string name="morphe_hide_notify_me_button_summary_off">Το κουμπί \"Να λαμβάνω ειδοποιήσεις\" εμφανίζεται</string>
+  <string name="morphe_hide_playables_title">Απόκρυψη \"Παιχνίδια YouTube\"</string>
+  <string name="morphe_hide_playables_summary_on">Τα \"Παιχνίδια YouTube\" έχουν αποκρυφτεί</string>
+  <string name="morphe_hide_playables_summary_off">Τα \"Παιχνίδια YouTube\" εμφανίζονται</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
-  <string name="morphe_hide_show_more_button_title">Κουμπί «Εμφάνιση περισσότερων»</string>
-  <string name="morphe_hide_show_more_button_summary_on">Κρυμμένο\n\nΑφορά το κουμπί «Εμφάνιση περισσότερων» στα αποτελέσματα αναζήτησης</string>
-  <string name="morphe_hide_show_more_button_summary_off">Εμφανίζεται\n\nΑφορά το κουμπί «Εμφάνιση περισσότερων» στα αποτελέσματα αναζήτησης</string>
-  <string name="morphe_hide_subscribed_channels_bar_title">Απόκρυψη μπαρ συνδεδεμένων καναλιών</string>
-  <string name="morphe_hide_subscribed_channels_bar_summary_on">Η μπαρ συνδεδεμένων καναλιών είναι κρυμμένη</string>
-  <string name="morphe_hide_subscribed_channels_bar_summary_off">Η μπαρ συνδεδεμένων καναλιών είναι ορατή</string>
+  <string name="morphe_hide_show_more_button_title">Απόκρυψη κουμπιού \"Εμφάνιση περισσότερων\" στα αποτελέσματα αναζήτησης</string>
+  <string name="morphe_hide_show_more_button_summary_on">Το κουμπί \"Εμφάνιση περισσότερων\" έχει αποκρυφτεί</string>
+  <string name="morphe_hide_show_more_button_summary_off">Το κουμπί \"Εμφάνιση περισσότερων\" εμφανίζεται</string>
+  <string name="morphe_hide_subscribed_channels_bar_title">Απόκρυψη μπάρας \"Εγγεγραμμένων καναλιών\"</string>
+  <string name="morphe_hide_subscribed_channels_bar_summary_on">Η μπάρα Εγγεγραμμένων καναλιών\" έχει αποκρυφτεί</string>
+  <string name="morphe_hide_subscribed_channels_bar_summary_off">Η μπάρα Εγγεγραμμένων καναλιών\" εμφανίζεται</string>
   <string name="morphe_hide_surveys_title">Έρευνες</string>
   <string name="morphe_hide_surveys_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_surveys_summary_off">Εμφανίζονται</string>
@@ -501,6 +501,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_button_summary_off">Εμφανίζεται</string>
   <string name="morphe_loop_video_button_toast_on">Η επανάληψη βίντεο είναι ενεργοποιημένη</string>
   <string name="morphe_loop_video_button_toast_off">Η επανάληψη βίντεο είναι απενεργοποιημένη</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Εμφάνιση κουμπιού αναπαραγωγής όλων</string>
+  <string name="morphe_play_all_button_summary_on">"Εμφανίζεται το κουμπί αναπαραγωγής όλων.\nΠατήστε για να δημιουργήσετε μια λίστα αναπαραγωγής με όλα τα βίντεο από το κανάλι.\nΠατήστε και κρατήστε πατημένο για να αναιρέσετε.\n\nΠληροφορίες: Ίσως να μην λειτουργεί σε ζωντανές μεταδόσεις"</string>
+  <string name="morphe_play_all_button_summary_off">Δεν εμφανίζεται το κουμπί αναπαραγωγής όλων</string>
+  <string name="morphe_play_all_button_type_title">Λειτουργία δημιουργίας λίστας αναπαραγωγής</string>
+  <string name="morphe_play_all_button_type_entry_0">Όλα τα περιεχόμενα (Ταξινόμηση κατά χρόνο, Αυξανόμενη σειρά)</string>
+  <string name="morphe_play_all_button_type_entry_1">Όλα τα περιεχόμενα (Ταξινόμηση κατά χρόνο)</string>
+  <string name="morphe_play_all_button_type_entry_2">Όλα τα περιεχόμενα (Ταξινόμηση κατά δημοτικότητα)</string>
+  <string name="morphe_play_all_button_type_entry_3">Μόνο βίντεο (Ταξινόμηση κατά χρόνο)</string>
+  <string name="morphe_play_all_button_type_entry_4">Μόνο βίντεο (Ταξινόμηση κατά δημοτικότητα)</string>
+  <string name="morphe_play_all_button_type_entry_5">Μόνο Shorts (Ταξινόμηση κατά χρόνο)</string>
+  <string name="morphe_play_all_button_type_entry_6">Μόνο Shorts (Ταξινόμηση κατά δημοτικότητα)</string>
+  <string name="morphe_play_all_button_type_entry_7">Μόνο μεταδιδόμενα βίντεο (Ταξινόμηση κατά χρόνο)</string>
+  <string name="morphe_play_all_button_type_entry_8">Μόνο μεταδιδόμενα βίντεο (Ταξινόμηση κατά δημοτικότητα)</string>
+  <string name="morphe_play_all_button_type_entry_9">Μόνο περιεχόμενο μελών</string>
+  <string name="morphe_play_all_button_type_entry_10">Μόνο βίντεο μελών</string>
+  <string name="morphe_play_all_button_type_entry_11">Μόνο Shorts μελών</string>
+  <string name="morphe_play_all_button_type_entry_12">Μόνο ζωντανές μεταδόσεις μελών</string>
+  <string name="morphe_play_all_button_not_available_toast">Δεν ήταν δυνατή η δημιουργία λίστας αναπαραγωγής λόγω ασυμφωνίας αναγνωριστικού καναλιού</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Εμφάνιση κουμπιού επανεξέτασης βίντεο</string>
   <string name="morphe_reload_video_summary_on">Εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
@@ -510,6 +529,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Απενεργοποίηση ακριβής αναζήτησης</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Η χειρονομία αναζήτησης καρέ-καρέ είναι απενεργοποιημένη</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Η χειρονομία αναζήτησης καρέ-καρέ είναι ενεργοποιημένη</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Ενεργοποίηση εγγραφής ζωντανής μετάδοσης DVR</string>
+  <string name="morphe_livestream_dvr_summary_on">Η αναζήτηση επιτρέπεται σε όλες τις ζωντανές μεταδόσεις</string>
+  <string name="morphe_livestream_dvr_summary_off">Η αναζήτηση ενδέχεται να μην είναι διαθέσιμη στις ζωντανές μεταδόσεις</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Χειρονομία συρσίματος για αναζήτηση</string>
   <string name="morphe_slide_to_seek_summary_on">Η χειρονομία συρσίματος για αναζήτηση στη γραμμή προόδου είναι ενεργοποιημένη</string>
@@ -1617,6 +1640,8 @@ Second \"item\" text"</string>
 • Η αναπαραγωγή βίντεο θα χρησιμοποιεί περισσότερα δεδομένα διαδικτύου από τον VP9 ή AV1
 • Τα βίντεο HDR δεν θα χρησιμοποιούν τον κωδικοποιητή AVC
 • Ορισμένες συσκευές δεν μπορούν να επιβάλλουν τον κωδικοποιητή AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, αλλάξτε τη \"Παραποίηση ροών βίντεο\" σε Android VR ή Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Εμφάνιση προχωρημένου μενού ποιότητας βίντεο</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Εμφανίζεται το προχωρημένο μενού ποιότητας βίντεο</string>
@@ -1648,8 +1673,8 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_about_js">• Εάν η αποπερικοπή αποτύχει, η αναπαραγωγή μπορεί να αποτύχει</string>
   <!-- "Force original audio" should match the language used in 'morphe_force_original_audio_title'. -->
   <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Ο εξαναγκασμός αρχικής γλώσσας ήχου δεν είναι διαθέσιμος</string>
-  <string name="morphe_spoof_video_streams_player_js_variant_title">Παραλλαγή JavaScript του παίκτη</string>
+  <string name="morphe_spoof_video_streams_player_js_variant_title">Παραλλαγή πρόγραμμα αναπαραγωγής JavaScript</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Εμφάνιση στο μενού «Στατιστικά για σπασίκλες»</string>
-  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Το πρόγραμμα πελάτη εμφανίζεται στο μενού «Στατιστικά για σπασίκλες»</string>
-  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Το πρόγραμμα πελάτη δεν εμφανίζεται στο μενού «Στατιστικά για σπασίκλες»</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_on">Το πρόγραμμα αναπαραγωγής εμφανίζεται στο μενού «Στατιστικά για σπασίκλες»</string>
+  <string name="morphe_spoof_video_streams_stats_for_nerds_summary_off">Το πρόγραμμα αναπαραγωγής δεν εμφανίζεται στο μενού «Στατιστικά για σπασίκλες»</string>
 </resources>

@@ -501,6 +501,7 @@ Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
   <string name="morphe_loop_video_button_summary_off">Knapp för videoslinga visas inte</string>
   <string name="morphe_loop_video_button_toast_on">Videoslinga är aktiverat</string>
   <string name="morphe_loop_video_button_toast_off">Videoslinga är inaktiverat</string>
+  <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Visa knapp för att läsa in videon igen</string>
   <string name="morphe_reload_video_summary_on">Knapp för att läsa in videon igen visas</string>
@@ -510,6 +511,7 @@ Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Inaktivera gest för exakt sökning</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesten är inaktiverad</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Gesten är aktiverad</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivera Dra för att söka</string>
   <string name="morphe_slide_to_seek_summary_on">Dra för att söka är aktiverat</string>
@@ -1620,6 +1622,7 @@ Begränsningar:
 • Videouppspelning använder mer internetdata än VP9 eller AV1
 • HDR-videor använder inte AVC
 • Vissa enheter kan inte tvinga AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Visa avancerad videokvalitetsmeny</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Avancerad videokvalitetsmeny visas</string>

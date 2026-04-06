@@ -12,6 +12,12 @@ import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 @SuppressWarnings("unused")
 public class CreateSegmentButton {
 
+    static {
+        if (Settings.SB_ENABLED.get() && Settings.SB_CREATE_NEW_SEGMENT.get()) {
+            LegacyPlayerControlButton.incrementUpperButtonCount();
+        }
+    }
+
     @Nullable
     private static LegacyPlayerControlButton instance;
 

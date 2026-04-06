@@ -430,6 +430,7 @@ Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
   <string name="morphe_loop_video_button_summary_off">Təkrarlama video menyusu göstərilir</string>
   <string name="morphe_loop_video_button_toast_on">Video təkrarlama açıqdır</string>
   <string name="morphe_loop_video_button_toast_off">Video təkrarlama qapalıdır</string>
+  <!-- interaction.playall.playAllButtonPatch -->
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Videonu təkrar yüklə düyməsini göstər</string>
   <string name="morphe_reload_video_summary_on">Videonu təkrar yüklə düyməsi görünür</string>
@@ -439,6 +440,7 @@ Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Dəqiq axtarış jestini qapadın</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Jest qeyri-aktiv edilib</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Jest aktivləşdirilib</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Axtarmaq üçün sürüşdürməni aktiv et</string>
   <string name="morphe_slide_to_seek_summary_on">Axtarmaq üçün sürüşdürmə aktivdir</string>
@@ -1425,6 +1427,7 @@ Məhdudiyyətlər:
 • Video oynatma VP9 və ya AV1-dən daha çox internet məlumatı işlədəcək
 • HDR videoları AVC istifadə etməyəcək
 • Bəzi cihazlar AVC-ni zorlaya bilməz"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Qabaqcıl video keyfiyyət siyahısın göstər</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Qabaqcıl video keyfiyyət siyahısı göstərilir</string>

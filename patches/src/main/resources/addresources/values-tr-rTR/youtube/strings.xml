@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts\'un arka planda oynatılması devre dışı</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts\'un arka planda oynatılması etkin</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Hata ayıklama protokolü arabelleği</string>
+  <string name="morphe_debug_protobuffer_title">Hata ayıklama protokol arabelleği</string>
   <string name="morphe_debug_protobuffer_summary_on">Hata ayıklama kayıtları protokol arabelleğini içerir</string>
   <string name="morphe_debug_protobuffer_summary_off">Hata ayıklama kayıtları protokol arabelleğini içermez</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Bu ayarın etkinleştirilmesi, bazı kullanıcı arayüzü bileşenleri için ek düzen verilerini, ekran üzerindeki metin dahil olmak üzere günlüğe kaydeder.
@@ -500,6 +500,29 @@ Paket adının doğru olduğunu ve uygulamanın yüklü olduğunu doğrulayın"<
   <string name="morphe_loop_video_button_summary_off">Videoyu döngüye al düğmesi gösterilmiyor</string>
   <string name="morphe_loop_video_button_toast_on">Videoyu döngüye alma açık</string>
   <string name="morphe_loop_video_button_toast_off">Videoyu döngüye alma kapalı</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Oynat tüm düğmesini göster</string>
+  <string name="morphe_play_all_button_summary_on">"Oynat tüm düğmesi gösteriliyor.
+Kanalınızdaki tüm videolardan oluşan bir çalma listesi oluşturmak için dokunun.
+İptal etmek için basılı tutun.
+
+Bilgi: Canlı yayınlarda çalışmayabilir"</string>
+  <string name="morphe_play_all_button_summary_off">Oynat tüm düğmesi gösterilmiyor</string>
+  <string name="morphe_play_all_button_type_title">Çalma listesi oluşturma modu</string>
+  <string name="morphe_play_all_button_type_entry_0">Tüm içerikler (Sırayla zamana göre, Artan)</string>
+  <string name="morphe_play_all_button_type_entry_1">Tüm içerikler (Sırayla zamana göre)</string>
+  <string name="morphe_play_all_button_type_entry_2">Tüm içerikler (Sırayla popülerliğe göre)</string>
+  <string name="morphe_play_all_button_type_entry_3">Videolar sadece (Sırayla zamana göre)</string>
+  <string name="morphe_play_all_button_type_entry_4">Videolar sadece (Sırayla popülerliğe göre)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts sadece (Sırayla zamana göre)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts sadece (Sırayla popülerliğe göre)</string>
+  <string name="morphe_play_all_button_type_entry_7">Yayınlanan videolar sadece (Sırayla zamana göre)</string>
+  <string name="morphe_play_all_button_type_entry_8">Yayınlanan videolar sadece (Sırayla popülerliğe göre)</string>
+  <string name="morphe_play_all_button_type_entry_9">Tüm Üyeler sadece içerikler</string>
+  <string name="morphe_play_all_button_type_entry_10">Üyeler sadece videolar</string>
+  <string name="morphe_play_all_button_type_entry_11">Üyeler sadece Shorts</string>
+  <string name="morphe_play_all_button_type_entry_12">Üyeler sadece canlı yayınlar</string>
+  <string name="morphe_play_all_button_not_available_toast">Kanal kimlik eşleşmezliği nedeniyle oynatma listesi oluşturulamadı</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Videoyu yeniden yükle düğmesini göster</string>
   <string name="morphe_reload_video_summary_on">Videoyu yeniden yükle düğmesi gösteriliyor</string>
@@ -509,6 +532,10 @@ Paket adının doğru olduğunu ve uygulamanın yüklü olduğunu doğrulayın"<
   <string name="morphe_disable_precise_seeking_gesture_title">Hassas sardırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Hassas sardırma hareketi devre dışı</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Hassas sardırma hareketi etkin</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Canlı yayın DVR\'ı etkinleştir</string>
+  <string name="morphe_livestream_dvr_summary_on">Tüm canlı yayınlarda sardırmaya izin veriliyor</string>
+  <string name="morphe_livestream_dvr_summary_off">Canlı yayınlarda sardırma mümkün olmayabilir</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Kaydırarak sardırmayı etkinleştir</string>
   <string name="morphe_slide_to_seek_summary_on">Kaydırarak sardırma etkin</string>
@@ -1618,6 +1645,8 @@ Sınırlamalar:
 • Video oynatma, VP9 veya AV1'den daha fazla internet verisi kullanır
 • HDR videolar AVC kullanmaz
 • Bazı cihazlar AVC'yi zorlayamaz"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\' ayarını Android VR veya Android Studio olarak değiştirin</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Gelişmiş video kalitesi menüsünü göster</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Gelişmiş video kalitesi menüsü gösterilir</string>

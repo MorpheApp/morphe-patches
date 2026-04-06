@@ -41,10 +41,10 @@ Second \"item\" text"</string>
 &lt;br/&gt;&lt;br/&gt;
 Εάν θέλετε μια εμπειρία χωρίς σφάλματα, τότε &lt;b&gt; απεγκαταστήστε την &lt;/b&gt; και τροποποιήσετε την συνιστώμενη έκδοση της εφαρμογής ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Θέλω πειραματική έκδοση</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Θέλω σταθερό</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Θέλω σταθερή έκδοση</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Ειδοποίηση Morphe</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Το ιστορικό παρακολούθησης δεν αποθηκεύεται.&lt;br&gt;&lt;br&gt;Πιθανό να συμβαίνει λόγω κάποιας υπηρεσίας DNS που μπλοκάρει διαφημίσεις ή μέσω κάποιου διακομιστή μεσολάβησης δικτύου.&lt;br&gt;&lt;br&gt;Μια λύση γι\'αυτό θα ήταν να προσθέσετε σε whitelist το &lt;b&gt;s.youtube.com&lt;/b&gt; ή να απενεργοποιήστε τους DNS/proxy blockers.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Το ιστορικό παρακολούθησης δεν αποθηκεύεται.&lt;br&gt;&lt;br&gt;Πιθανό να συμβαίνει λόγω κάποιας υπηρεσίας DNS που μπλοκάρει διαφημίσεις ή μέσω κάποιου διακομιστή μεσολάβησης δικτύου.&lt;br&gt;&lt;br&gt;Μια λύση γι\'αυτό θα ήταν να προσθέσετε σε whitelist το &lt;b&gt;s.youtube.com&lt;/b&gt; ή να απενεργοποιήστε το DNS και τους διακομιστές μεσολάβησης δικτύου.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Να μην εμφανιστεί ξανά</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Παραποίηση ροών βίντεο</string>
@@ -69,7 +69,7 @@ Second \"item\" text"</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Για να χρησιμοποιήσετε αυτή τη δυνατότητα, αλλάξτε \'Το προεπιλεγμένο πρόγραμμα αναπαραγωγής\' σε Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Είσοδος στο Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Είσοδος στο Android VR μπορεί να επιλύσει προβλήματα αναπαραγωγής για ορισμένους χρήστες
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Η είσοδος στο Android VR μπορεί να επιλύσει τα προβλήματα αναπαραγωγής για ορισμένους χρήστες
 
 Για να εισέλθετε, πατήστε \"Συνέχεια\" παρακάτω"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Συνέχεια</string>
@@ -80,35 +80,35 @@ Second \"item\" text"</string>
 
 1. Πατήστε 'Άνοιγμα ιστοσελίδας' παρακάτω για να ανοίξετε την ιστοσελίδα 'Σύνδεση συσκευής'
 2. Εισάγετε από το πρόχειρο (ή πληκτρολογήστε) τον κωδικό ενεργοποίησης που εμφανίζεται παραπάνω
-3. Είσοδος στο Google εάν ζητηθεί. Εάν έχετε πολλαπλές λογαριασμούς τότε επιλέξτε αυτόν τον λογαριασμό YouTube
-4. Πατήστε 'Είσοδος YouTube VR'
+3. Εισέλθετε στο Google εάν σας ζητηθεί. Εάν έχετε πολλαπλούς λογαριασμούς τότε επιλέξτε \"YouTube account\"
+4. Πατήστε 'Allow YouTube VR' access
 5. Επιστρέψτε σε αυτήν την εφαρμογή αφού φτάσετε στο μήνυμα 'Συσκευή συνδεδεμένη'"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Άνοιγμα ιστοσελίδας</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Αποτυχία εξαγωγής κώδικα ενεργοποίησης</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Αποτυχία έκδοσης διακριτικού εξουσιοδότησης</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Είσοδος ολοκληρώθηκε με επιτυχία</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Η εγκρίνιση αποθηκεύτηκε
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Αποτυχία έκδοσης κωδικού ενεργοποίησης</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Αποτυχία έκδοσης κλειδιού ταυτοποίησης</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Η είσοδος ολοκληρώθηκε με επιτυχία</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Η ταυτοποίηση αποθηκεύτηκε
 
-• Οι ρυθμίσεις Morphe δεν θα εισάγουν/εξάγουν εγκρίνιση Android VR
-• Εάν η εφαρμογή παραμείνει αχρησιμοποίητη για 6 μήνες, η Google θα αφαιρέσει αυτή την εγκρίνιση
-• Θα χρειαστεί να συνδεθείτε ξανά εάν αλλάξετε το κωδικό πρόσβασης της Google ή να αποσυνδεθείτε αυτή την συσκευή από τις ρυθμίσεις της Google"</string>
-  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 προσωρινά μη διαθέσιμο (καθυστέρηση API)</string>
+• Οι ρυθμίσεις του Morphe δεν θα εισάγουν/εξάγουν την ταυτοποίηση Android VR
+• Εάν η εφαρμογή παραμείνει αχρησιμοποίητη για 6 μήνες, η Google θα αφαιρέσει αυτή την ταυτοποίηση
+• Θα χρειαστεί να συνδεθείτε ξανά, εάν αλλάξετε το κωδικό πρόσβασης της Google ή απεγράψετε αυτή την συσκευή από τις ρυθμίσεις της Google"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">Το OAuth2 είναι προσωρινά μη διαθέσιμο (λήξη API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Η σύνδεση Android VR έληξε, προσπαθήστε να συνδεθείτε ξανά στο VR</string>
-  <string name="morphe_oauth2_connection_failure_status">OAuth2 προσωρινά μη διαθέσιμο (καθυστέρηση %d)</string>
-  <string name="morphe_oauth2_connection_failure_generic">OAuth2 είναι προσωρινά μη διαθέσιμο</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Δεν είναι δυνατός ο έλεγχος εισόδου VR, η έγκριση διαδικασίας ελέγχου ιστοσελίδας δεν έχει επιτευχθεί</string>
+  <string name="morphe_oauth2_connection_failure_status">Το OAuth2 είναι προσωρινά μη διαθέσιμο (κατάσταση %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">Το OAuth2 είναι προσωρινά μη διαθέσιμο</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Δεν είναι δυνατή η είσοδος στο VR, η ταυτοποίηση δεν εγκρίθηκε</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Δεν είναι δυνατή η σύνδεση στο VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Έξοδος από το Android VR</string>
-  <string name="morphe_oauth2_toast_invalid">Δεν έγκειται το κωδικό εισόδου VR, προσπαθήστε να συνδεθείτε ξανά στο VR</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Απενεργοποίηση ενημέρωσης JavaScript του προγράμματος αναπαραγωγής</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Η ενημέρωση JavaScript του προγράμματος αναπαραγωγής είναι απενεργοποιημένη
+  <string name="morphe_oauth2_toast_reset">Αποσυνδεθήκατε από το Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Άκυρο κλειδί εισόδου VR, συνδεθείτε ξανά στο VR</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Απενεργοποίηση ενημέρωσης του προγράμματος αναπαραγωγής JavaScript</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Η ενημέρωση του προγράμματος αναπαραγωγής JavaScript είναι απενεργοποιημένη
 
-• Απαιτείται έγκυρο hash JavaScript του προγράμματος αναπαραγωγής.
-• Η αναπαραγωγή αποτυγχάνει εάν το hash JavaScript του προγράμματος αναπαραγωγής ανακληθεί στο GVS"</string>
+• Απαιτείται έγκυρο hash του προγράμματος αναπαραγωγής JavaScript
+• Η αναπαραγωγή αποτυγχάνει εάν το hash του προγράμματος αναπαραγωγής JavaScript ανακληθεί στο GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Η ενημέρωση JavaScript του προγράμματος αναπαραγωγής είναι ενεργοποιημένη</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Τα JavaScript hashes για τον παίκτη είναι έγκυρα για περίπου ένα μήνα, και τα устаревшая hashes ενδέχεται να ανακληθούν από το GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript παίκτη</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Εισάγετε ένα έγκυρο hash JavaScript παίκτη</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Τα hashes για το πρόγραμμα αναπαραγωγής JavaScript είναι έγκυρα για περίπου ένα μήνα, και τα απαρχαιωμένα hashes ενδέχεται να ανακληθούν από το GVS.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash προγράμματος αναπαραγωγής JavaScript</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Εισάγετε ένα έγκυρο hash για το πρόγραμμα αναπαραγωγής JavaScript</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Απενεργοποίηση πρωτοκόλλου QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Το πρωτόκολλο QUIC είναι απενεργοποιημένο</string>
@@ -122,11 +122,11 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_summary_on">Χρησιμοποιείται η αρχική γλώσσα ήχου</string>
   <string name="morphe_force_original_audio_summary_off">Χρησιμοποιείται ο προεπιλεγμένος ήχος</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, αλλάξτε το \"Παραποίηση ροών βίντεο\" σε Android Reel ή TV</string>
+  <string name="morphe_force_original_audio_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, αλλάξτε τη \"Παραποίηση ροών βίντεο\" σε Android Reel ή TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Καθαρισμός συνδέσμων κοινοποίησης</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Η παράμετρος παρακολούθησης αφαιρείται από τους συνδέσμους κατά την κοινοποίηση</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Η παράμετρος παρακολούθησης δεν αφαιρείται από τους συνδέσμους κατά την κοινοποίηση</string>
+  <string name="morphe_sanitize_sharing_links_title">Καθαρισμός συνδέσμων κατά την κοινοποίηση</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Οι παράμετροι παρακολούθησης αφαιρούνται από τους συνδέσμους κατά την κοινοποίηση</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Οι παράμετροι παρακολούθησης δεν αφαιρούνται από τους συνδέσμους κατά την κοινοποίηση</string>
   <string name="morphe_replace_music_with_youtube_title">Αλλαγή συνδέσμων κοινοποίησης σε youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Οι κοινοποιημένοι σύνδεσμοι χρησιμοποιούν το youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Οι κοινοποιημένοι σύνδεσμοι χρησιμοποιούν το music.youtube.com</string>

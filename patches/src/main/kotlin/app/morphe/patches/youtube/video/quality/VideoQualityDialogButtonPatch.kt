@@ -3,8 +3,8 @@ package app.morphe.patches.youtube.video.quality
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.youtube.layout.playerbuttons.addPlayerBottomButton
-import app.morphe.patches.youtube.layout.playerbuttons.playerOverlayButtonsHookPatch
+import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
+import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl

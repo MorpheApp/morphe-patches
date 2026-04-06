@@ -501,6 +501,29 @@ Stellen Sie sicher, dass der Paketname korrekt ist und die App installiert ist"<
   <string name="morphe_loop_video_button_summary_off">Schaltfläche „Video wiederholen“ ist ausgeblendet</string>
   <string name="morphe_loop_video_button_toast_on">Loop-Video ist aktiviert</string>
   <string name="morphe_loop_video_button_toast_off">Loop-Video ist deaktiviert</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Zeige Alle-Wiedergeben-Button</string>
+  <string name="morphe_play_all_button_summary_on">"Der Alle-Wiedergeben-Button wird angezeigt.
+Tippen Sie, um eine Wiedergabeliste mit allen Videos aus dem Kanal zu generieren.
+Tippen und halten Sie gedrückt, um die Aktion rückgängig zu machen.
+
+Info: Funktioniert möglicherweise nicht bei Live-Stream"</string>
+  <string name="morphe_play_all_button_summary_off">Der Alle-Wiedergeben-Button wird nicht angezeigt</string>
+  <string name="morphe_play_all_button_type_title">Playliste erstellen Modus</string>
+  <string name="morphe_play_all_button_type_entry_0">Alle Inhalte (Sortieren nach Zeit, Aufsteigend)</string>
+  <string name="morphe_play_all_button_type_entry_1">Alle Inhalte (Sortieren nach Zeit)</string>
+  <string name="morphe_play_all_button_type_entry_2">Alle Inhalte (Sortieren nach Beliebtheit)</string>
+  <string name="morphe_play_all_button_type_entry_3">Nur Videos (Sortieren nach Zeit)</string>
+  <string name="morphe_play_all_button_type_entry_4">Nur Videos (Sortieren nach Beliebtheit)</string>
+  <string name="morphe_play_all_button_type_entry_5">Nur Shorts (Sortieren nach Zeit)</string>
+  <string name="morphe_play_all_button_type_entry_6">Nur Shorts (Sortieren nach Beliebtheit)</string>
+  <string name="morphe_play_all_button_type_entry_7">Nur gestreamte Video (Sortieren nach Zeit)</string>
+  <string name="morphe_play_all_button_type_entry_8">Nur gestreamte Videos (Sortieren nach Beliebtheit)</string>
+  <string name="morphe_play_all_button_type_entry_9">Nur Inhalte aller Mitglieder</string>
+  <string name="morphe_play_all_button_type_entry_10">Nur Mitglieder-Videos</string>
+  <string name="morphe_play_all_button_type_entry_11">Nur Mitglieder-Shorts</string>
+  <string name="morphe_play_all_button_type_entry_12">Nur Mitglieder-Live-Streams</string>
+  <string name="morphe_play_all_button_not_available_toast">Fehler beim Generieren der Playlist aufgrund von Kanal-ID-Diskrepanz</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Video-Wiederholschaltfläche anzeigen</string>
   <string name="morphe_reload_video_summary_on">Schaltfläche „Video wiederholen“ wird angezeigt</string>
@@ -510,6 +533,10 @@ Stellen Sie sicher, dass der Paketname korrekt ist und die App installiert ist"<
   <string name="morphe_disable_precise_seeking_gesture_title">Genaue Suchgeste deaktivieren</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Geste ist deaktiviert</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Geste ist aktiviert</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Livestream-DVR aktivieren</string>
+  <string name="morphe_livestream_dvr_summary_on">Das Vorspulen ist in allen Livestreams erlaubt</string>
+  <string name="morphe_livestream_dvr_summary_off">Das Vorspulen ist in Livestreams möglicherweise nicht verfügbar</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Slide zum Suchen aktivieren</string>
   <string name="morphe_slide_to_seek_summary_on">Slide zum Suchen ist aktiviert</string>
@@ -807,7 +834,7 @@ Tippen und halten Sie, um die Morphe-Einstellungen zu öffnen"</string>
           'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menü \"Audio-Track\" ist ausgeblendet
 
-Um das Menü anzuzeigen, ändern Sie \"Video-Streams fingieren\" in \"Android Reel\" oder \"TV\""</string>
+Um das Menü anzuzeigen, ändern Sie \"Video-Streams fälschen\" in \"Android Reel\" oder \"TV\""</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">„In VR ansehen“ ausblenden</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Schaltfläche „In VR ansehen“ ist ausgeblendet</string>
@@ -1617,6 +1644,8 @@ Einschränkungen:
 • Die Videowiedergabe verbraucht mehr Internetdaten als VP9 oder AV1
 • HDR-Videos verwenden kein AVC
 • Einige Geräte können AVC nicht erzwingen"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Um diese Funktion zu nutzen, ändern Sie \"Video-Streams fälschen\" auf Android VR oder Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Erweitertes Videoqualitätsmenü anzeigen</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Erweitertes Videoqualitätsmenü wird angezeigt</string>

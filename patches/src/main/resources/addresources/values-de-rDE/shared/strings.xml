@@ -92,7 +92,7 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_debug_title">Debug-Protokollierung</string>
   <string name="morphe_debug_summary_on">Debug-Protokolle sind aktiviert</string>
   <string name="morphe_debug_summary_off">Debug-Protokolle sind deaktiviert</string>
-  <string name="morphe_debug_stacktrace_title">Debug-Protokolle Stack-Trace</string>
+  <string name="morphe_debug_stacktrace_title">Debug-Log Stack-Trace</string>
   <string name="morphe_debug_stacktrace_summary_on">Debug-Logs enthalten Stack-Traces</string>
   <string name="morphe_debug_stacktrace_summary_off">Debug-Logs enthalten keine Stack-Traces</string>
   <string name="morphe_debug_toast_on_error_title">Pop-Up bei Morphe Fehler anzeigen</string>
@@ -111,7 +111,7 @@ Sie werden nicht über unerwartete Ereignisse informiert."</string>
   <string name="morphe_debug_logs_disabled">Debug-Protokollierung ist deaktiviert</string>
   <string name="morphe_debug_logs_none_found">Keine Debug-Logs gefunden</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Debug-Logs in die Zwischenablage kopiert</string>
-  <string name="morphe_debug_logs_failed_to_export">Fehler beim Exportieren der Debug-Protokolle: %s</string>
+  <string name="morphe_debug_logs_failed_to_export">Fehler beim Exportieren der Debug-Logs: %s</string>
   <string name="morphe_debug_logs_clear_toast">Debug-Logs gelöscht</string>
   <string name="morphe_debug_feature_flags_manager_title">Feature-Flags Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolesche Feature-Flags verwalten</string>

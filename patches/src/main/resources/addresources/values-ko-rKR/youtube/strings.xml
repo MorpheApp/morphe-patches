@@ -456,8 +456,8 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_copy_video_url_summary_on">동영상 URL 복사 버튼을 표시합니다</string>
   <string name="morphe_copy_video_url_summary_off">동영상 URL 복사 버튼을 표시하지 않습니다</string>
   <string name="morphe_copy_video_url_timestamp_title">동영상 URL 복사 버튼 동작 설정</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">• 탭하여 타임스탬프가 표기된 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기되지 않은 동영상 URL이 복사됩니다</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">• 탭하여 타임스탬프가 표기되지 않은 동영상 URL을 복사할 수 있습니다\n• 길게 탭하면 타임스탬프가 표기된 동영상 URL이 복사됩니다</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">버튼을 탭하여 타임스탬프가 표기된 동영상 URL을 복사할 수 있습니다\n길게 탭하면 타임스탬프가 표기되지 않은 동영상 URL이 복사됩니다</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">버튼을 탭하여 타임스탬프가 표기되지 않은 동영상 URL을 복사할 수 있습니다\n길게 탭하면 타임스탬프가 표기된 동영상 URL이 복사됩니다</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">시청 경고 다이얼로그 제거하기</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">일부 동영상을 시청하기 전에 표시되는 시청 경고 다이얼로그를 제거합니다</string>
@@ -501,6 +501,30 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_loop_video_button_summary_off">동영상 연속 재생 버튼을 표시하지 않습니다</string>
   <string name="morphe_loop_video_button_toast_on">동영상 연속 재생을 활성화합니다</string>
   <string name="morphe_loop_video_button_toast_off">동영상 연속 재생을 비활성화합니다</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">모두 재생 버튼 표시하기</string>
+  <string name="morphe_play_all_button_summary_on">"모두 재생 버튼을 표시합니다
+버튼을 탭하여 채널의 모든 동영상 재생목록을 생성할 수 있습니다
+길게 탭하면 생성이 취소됩니다
+
+알림:
+• 실시간 스트림에서는 작동되지 않을 수 있습니다"</string>
+  <string name="morphe_play_all_button_summary_off">모두 재생 버튼을 표시하지 않습니다</string>
+  <string name="morphe_play_all_button_type_title">재생목록 생성 유형</string>
+  <string name="morphe_play_all_button_type_entry_0">모든 콘텐츠 (오래된순)</string>
+  <string name="morphe_play_all_button_type_entry_1">모든 콘텐츠 (최신순)</string>
+  <string name="morphe_play_all_button_type_entry_2">모든 콘텐츠 (인기순)</string>
+  <string name="morphe_play_all_button_type_entry_3">동영상 만 (최신순)</string>
+  <string name="morphe_play_all_button_type_entry_4">동영상 만 (인기순)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts 만 (최신순)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts 만 (인기순)</string>
+  <string name="morphe_play_all_button_type_entry_7">실시간 스트림 만 (최신순)</string>
+  <string name="morphe_play_all_button_type_entry_8">실시간 스트림 만 (인기순)</string>
+  <string name="morphe_play_all_button_type_entry_9">\'회원 전용\' 모든 콘텐츠</string>
+  <string name="morphe_play_all_button_type_entry_10">\'회원 전용\' 동영상</string>
+  <string name="morphe_play_all_button_type_entry_11">\'회원 전용\' Shorts</string>
+  <string name="morphe_play_all_button_type_entry_12">\'회원 전용\' 실시간 스트림</string>
+  <string name="morphe_play_all_button_not_available_toast">채널 ID가 일치하지 않아 재생목록을 생성할 수 없습니다</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">동영상 새로고침 버튼 표시하기</string>
   <string name="morphe_reload_video_summary_on">동영상 새로고침 버튼을 표시합니다</string>
@@ -510,6 +534,10 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_disable_precise_seeking_gesture_title">세밀한 탐색 제스처 비활성화하기</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">세밀한 탐색 제스처를 비활성화합니다</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">세밀한 탐색 제스처를 활성화합니다</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">실시간 스트림 DVR 활성화하기</string>
+  <string name="morphe_livestream_dvr_summary_on">모든 실시간 스트림에서 재생바 탐색이 허용됩니다</string>
+  <string name="morphe_livestream_dvr_summary_off">실시간 스트림에서 재생바 탐색이 불가능할 수 있습니다</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">슬라이드하여 탐색 활성화하기</string>
   <string name="morphe_slide_to_seek_summary_on">슬라이드하여 탐색을 활성화합니다</string>
@@ -695,8 +723,8 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_show_settings_button_summary_off">설정 버튼이 표시되지 않습니다</string>
   <string name="morphe_show_settings_button_index_title">설정 버튼 인덱스</string>
   <string name="morphe_show_settings_button_type_title">설정 버튼 동작</string>
-  <string name="morphe_show_settings_button_type_summary_on">탭하여 Morphe 설정을 열 수 있습니다</string>
-  <string name="morphe_show_settings_button_type_summary_off">탭하여 YouTube 설정을 열 수 있습니다</string>
+  <string name="morphe_show_settings_button_type_summary_on">버튼을 탭하여 Morphe 설정을 열 수 있습니다</string>
+  <string name="morphe_show_settings_button_type_summary_off">버튼을 탭하여 YouTube 설정을 열 수 있습니다</string>
   <string name="morphe_swap_create_with_notifications_button_title">만들기와 알림 위치 교환하기</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">만들기 버튼과 알림 버튼의 위치를 교환합니다</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">만들기 버튼과 알림 버튼의 위치를 교환하지 않습니다</string>
@@ -750,9 +778,9 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_show_toolbar_settings_button_summary_off">설정 버튼이 표시되지 않습니다</string>
   <string name="morphe_show_toolbar_settings_button_index_title">설정 버튼 인덱스</string>
   <string name="morphe_show_toolbar_settings_button_type_title">설정 버튼 동작</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary_on">"탭하여 Morphe 설정을 열 수 있습니다
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"버튼을 탭하여 Morphe 설정을 열 수 있습니다
 길게 탭하면 YouTube 설정이 열립니다"</string>
-  <string name="morphe_show_toolbar_settings_button_type_summary_off">"탭하여 YouTube 설정을 열 수 있습니다
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"버튼을 탭하여 YouTube 설정을 열 수 있습니다
 길게 탭하면 Morphe 설정이 열립니다"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">메뉴 구성요소</string>
@@ -805,7 +833,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
           'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"오디오 트랙 메뉴가 숨겨집니다
 
-오디오 트랙 메뉴를 표시하려면, '동영상 스트림 속이기'에서 '기본 클라이언트'를 'Android Reel'이나 'TV'로 변경하세요"</string>
+오디오 트랙 메뉴를 표시하려면, '동영상 스트림 속이기'에서 '기본 클라이언트'를 'Android Reel' 또는 'TV'로 변경하세요"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR로 보기 숨기기</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR로 보기 메뉴가 숨겨집니다</string>
@@ -1617,6 +1645,8 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
 • 동영상을 재생할 경우에 VP9 또는 AV1보다 더 많은 인터넷 데이터가 사용됩니다
 • HDR 동영상에서는 AVC가 사용되지 않습니다
 • 일부 기기에서는 AVC를 강제로 활성화할 수 없습니다"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">이 기능을 사용하려면, \'동영상 스트림 속이기\'에서 \'기본 클라이언트\'를 \'Android VR\' 또는 \'Android Studio\'로 변경하세요</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">고급 동영상 화질 설정 메뉴 표시하기</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">고급 동영상 화질 설정 메뉴를 표시합니다</string>

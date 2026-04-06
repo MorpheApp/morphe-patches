@@ -501,6 +501,25 @@ Doza navê pakkê rast be û sepan serdest be"</string>
   <string name="morphe_loop_video_button_summary_off">Butona pêlîstina vîdyoyê nêşerin</string>
   <string name="morphe_loop_video_button_toast_on">Loop vîdyoyê ye ser</string>
   <string name="morphe_loop_video_button_toast_off">Loop vîdyoyê ye xwer</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Butona \'hezî bînin xêrê\' nîşan bike</string>
+  <string name="morphe_play_all_button_summary_on">"Butona 'hezî bînin xêrê' nîşan diwe"</string>
+  <string name="morphe_play_all_button_summary_off">Butona \'hezî bînin xêrê\' nîşan nade</string>
+  <string name="morphe_play_all_button_type_title">Moda çêkirina rêzika lîstikê</string>
+  <string name="morphe_play_all_button_type_entry_0">Hemû pêşniyar (Sort bi demê, Reqabî)</string>
+  <string name="morphe_play_all_button_type_entry_1">Hemû pêşniyar (Sort bi demê)</string>
+  <string name="morphe_play_all_button_type_entry_2">Hemû pêşniyar (Sort bi populerî)</string>
+  <string name="morphe_play_all_button_type_entry_3">Tenan vîdyoyên (Sort bi demê)</string>
+  <string name="morphe_play_all_button_type_entry_4">Tenan vîdyoyên (Sort bi populerî)</string>
+  <string name="morphe_play_all_button_type_entry_5">Tenan Shorts (Sort bi demê)</string>
+  <string name="morphe_play_all_button_type_entry_6">Tenan Shorts (Sort bi populerî)</string>
+  <string name="morphe_play_all_button_type_entry_7">Tenan pêşbira vekirî (Sort bi demê)</string>
+  <string name="morphe_play_all_button_type_entry_8">Tenan pêşbira vekirî (Sort bi populerî)</string>
+  <string name="morphe_play_all_button_type_entry_9">Tenan pêşniyarên endam</string>
+  <string name="morphe_play_all_button_type_entry_10">Tenan vîdyoyên endam</string>
+  <string name="morphe_play_all_button_type_entry_11">Tenan Shorts-ên endam</string>
+  <string name="morphe_play_all_button_type_entry_12">Tenan pêşbiraya zindî ya endam</string>
+  <string name="morphe_play_all_button_not_available_toast">Li berxwe nebûna pêşdizgeha rêzê ji ber nakokatiya ID-ya kanalê</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Sergî rewşa videoê paşê vebike</string>
   <string name="morphe_reload_video_summary_on">Sergûşê rewşa videoê destûr e</string>
@@ -510,6 +529,10 @@ Doza navê pakkê rast be û sepan serdest be"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Tiliyê rovnêr a lêkirinê qut bikin</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Tiliyê rovnêr a lêkirinê qut kirî ye</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Tiliyê rovnêr a lêkirinê vekirî ye</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Stêrkirina DVR-ya pêşandanê serdest bike</string>
+  <string name="morphe_livestream_dvr_summary_on">Li hemû pêşandanên zindî, lêgerîkê serdest e</string>
+  <string name="morphe_livestream_dvr_summary_off">Lêgerîkê li hin pêşandanên zindî nedibê</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Slide to seek çalak bike</string>
   <string name="morphe_slide_to_seek_summary_on">Slide to seek çalak e</string>
@@ -1616,6 +1639,8 @@ Sînergirên:
 • Lêxistina video dê daneyên interneta zêdetir bikar bîne mîna VP9 an AV1
 • Video yan HDR dê AVC bikar nebin
 • Hin alav nikarên AVC zor bike"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Bo ku evîna vê taybetmendê bikaribin, \'Spoof video streams\' bibe Android VR an Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Menyûa advanced qualitya vîdyoyê nîşane bike</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Nivîsara mêjûlê ya kalîteya video tê nîşandin</string>

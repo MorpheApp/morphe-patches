@@ -16,8 +16,8 @@ import android.os.Build;
 import android.util.Pair;
 import android.widget.LinearLayout;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 
@@ -30,22 +30,25 @@ public class InitializationPatch {
      * <p>
      * To fix this, show the restart dialog when the app is installed for the first time.
      */
-    public static void onCreate(Activity activity) {
+    public static void onCreate(Activity ignored) {
         if (SharedYouTubeSettings.SETTINGS_INITIALIZED.get()) {
             return;
         }
         // Save now in case this dialog somehow cannot be shown.
         SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true);
 
-        // TODO: Eventually remove this check.
-        // Don't prompt to restart on an app upgrade from older patches that did not ask to restart.
-        if (System.currentTimeMillis() - BaseSettings.FIRST_TIME_APP_LAUNCHED.get() > (10 * 60 * 1000)) {
-            // App was first launched more than 10 minutes ago.
-            SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true);
-            return;
-        }
-
         runOnMainThreadDelayed(() -> {
+            Activity context = Utils.getActivity();
+            if (context == null) {
+                Logger.printInfo(() -> "Activity is null, skipping restart dialog");
+                return;
+            }
+
+            if (context.isFinishing()) {
+                Logger.printInfo(() -> "Activity is finishing, skipping restart dialog");
+                return;
+            }
+
             // Allow canceling if device is Android 9 or less to allow forcing
             // in-app dark mode before restarting (stock YouTube bug).
             Runnable cancel = Build.VERSION.SDK_INT <= Build.VERSION_CODES.P
@@ -53,12 +56,12 @@ public class InitializationPatch {
                     : null;
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                    activity,
+                    context,
                     str("morphe_settings_restart_title"),   // Title.
                     str("morphe_restart_first_run"),        // Message.
                     null,                                       // No EditText.
                     str("morphe_settings_restart"),         // OK button text.
-                    () -> Utils.restartApp(activity),           // OK button action.
+                    () -> Utils.restartApp(context),            // OK button action.
                     cancel,                                     // Cancel button.
                     null,                                       // No Neutral button text.
                     null,                                       // No Neutral button action.

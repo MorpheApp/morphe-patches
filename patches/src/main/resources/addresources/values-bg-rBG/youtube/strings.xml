@@ -497,6 +497,29 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_button_summary_off">Бутона за повторение на видеоклипа не е показан</string>
   <string name="morphe_loop_video_button_toast_on">Видео в цикъл е включено</string>
   <string name="morphe_loop_video_button_toast_off">Промянете стартова страница</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Показване на бутон „Пусни всички“</string>
+  <string name="morphe_play_all_button_summary_on">"Показва се бутон „Пусни всички“
+Докоснете, за да генерирате плейлист с всички видеа от канала
+Задръжте, за да отмените
+
+Информация: Възможно е да не работи при стрийми на живо"</string>
+  <string name="morphe_play_all_button_summary_off">Не се показва бутон „Пусни всички“</string>
+  <string name="morphe_play_all_button_type_title">Режим генериране на плейлист</string>
+  <string name="morphe_play_all_button_type_entry_0">Всички съдържания (Сортиране по време, във възходящ ред)</string>
+  <string name="morphe_play_all_button_type_entry_1">Всички съдържания (Сортиране по време)</string>
+  <string name="morphe_play_all_button_type_entry_2">Всички съдържания (Сортиране по популярност)</string>
+  <string name="morphe_play_all_button_type_entry_3">Само видеа (Сортиране по време)</string>
+  <string name="morphe_play_all_button_type_entry_4">Само видеа (Сортиране по популярност)</string>
+  <string name="morphe_play_all_button_type_entry_5">Само Shorts (Сортиране по време)</string>
+  <string name="morphe_play_all_button_type_entry_6">Само Shorts (Сортиране по популярност)</string>
+  <string name="morphe_play_all_button_type_entry_7">Само поточни видеа (Сортиране по време)</string>
+  <string name="morphe_play_all_button_type_entry_8">Само поточни видеа (Сортиране по популярност)</string>
+  <string name="morphe_play_all_button_type_entry_9">Само съдържание на всички членове</string>
+  <string name="morphe_play_all_button_type_entry_10">Само видеа на членове</string>
+  <string name="morphe_play_all_button_type_entry_11">Само Shorts на членове</string>
+  <string name="morphe_play_all_button_type_entry_12">Само поточни излъчвания на членове</string>
+  <string name="morphe_play_all_button_not_available_toast">Неуспешно генериране на плейлист поради несъответствие в ID на канал</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Покажи бутона за презареждане на видеото</string>
   <string name="morphe_reload_video_summary_on">Показва се бутонът за презареждане на видеото</string>
@@ -506,6 +529,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Полето за външен свалик не може да бъде празно</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Изключи прецизно сваляне на позиция</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Прецизно сваляне на позиция е изключено</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Активиране на livestream DVR</string>
+  <string name="morphe_livestream_dvr_summary_on">Търсенето е разрешено за всички livestreams</string>
+  <string name="morphe_livestream_dvr_summary_off">Търсенето може да не е налично за livestreams</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Зареждаването ще има твърд фон</string>
   <string name="morphe_slide_to_seek_summary_on">Стил на екрана</string>
@@ -1607,6 +1634,8 @@ Second \"item\" text"</string>
 • Видео възпроизвеждането ще използва повече интернет данни от VP9 или AV1
 • HDR видеа не ще използват AVC
 • Някои устройства не могат да принудят AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">За да използвате тази функция, променете \'Spoof video streams\' на Android VR или Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Непрозрачност на миниплеера трябва да бъде между 0-100</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Включете градиентен заряд за зареждане</string>

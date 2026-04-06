@@ -37,7 +37,7 @@ Second \"item\" text"</string>
   <string name="morphe_experimental_app_version_dialog_title">🚨 Deneysel Uyarı 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Deneysel bir uygulama sürümü olan ⚠️ &lt;b&gt;%1$s&lt;/b&gt; sürümünü kullanıyorsunuz
 &lt;br/&gt;&lt;br/&gt;
-🔧 Biz bu uygulama sürümü için yamaların ince ayarlarını tamamlarken, uygulamada garip davranışlar veya tanımlanmadık hatalarla karşılaşabilirsiniz.
+🔧 Biz bu uygulama sürümü için yamaların ince ayarlarını tamamlarken, uygulamada garip davranışlar veya tanımlanmamış hatalarla karşılaşabilirsiniz.
 &lt;br/&gt;&lt;br/&gt;
 En sorunsuz deneyimi istiyorsanız, bunu &lt;b&gt;kaldırın&lt;/b&gt; ve önerilen ✅ &lt;b&gt;%2$s&lt;/b&gt; sürümünü yamalayın"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Deneysel istiyorum</string>
@@ -56,18 +56,18 @@ YouTube Premium kullanıcısıysanız, bu ayar gerekli olmayabilir"</string>
   <string name="morphe_spoof_video_streams_summary_off">"Video akışları taklit edilmez
 
 Oynatma çalışmayabilir"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">Hiçbir istemci akışı alınamadı.</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Hiçbir istemci akışı alınamadı</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Bu ayarı devre dışı bırakmak oynatma sorunlarına yol açabilir.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Şunu etkinleştirmeyi dene: Video akışlarını taklit et (Spoof) > Android VR oturum açma</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Şunu etkinleştirmeyi dene: Video akışlarını taklit et &gt; Android VR oturum açma</string>
   <string name="morphe_spoof_video_streams_client_type_title">Varsayılan istemci</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR oturum açma</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR oturumu açılmadı. Oturum açmak için buraya dokunun.</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Şu anda Android VR oturumu açık.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR oturumu açılmadı. Oturum açmak için buraya dokunun</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Şu anda Android VR oturumu açık</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi Android VR olarak değiştirin.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi Android VR olarak değiştirin</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR\'da oturum aç</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR'de oturum açmak, bazı kullanıcılar için oynatma sorunlarını çözebilir.
 

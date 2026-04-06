@@ -12,6 +12,13 @@ import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
 @SuppressWarnings("unused")
 public class VotingButton {
+
+    static {
+        if (Settings.SB_ENABLED.get() && Settings.SB_VOTING_BUTTON.get()) {
+            LegacyPlayerControlButton.incrementUpperButtonCount();
+        }
+    }
+
     @Nullable
     private static LegacyPlayerControlButton instance;
 

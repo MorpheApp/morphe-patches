@@ -29,6 +29,38 @@
         <item>5</item>
     </string-array>
 
+    <!-- interaction.playall.playAllButtonPatch -->
+    <string-array name="morphe_play_all_button_type_entries">
+        <item>@string/morphe_play_all_button_type_entry_0</item>
+        <item>@string/morphe_play_all_button_type_entry_1</item>
+        <item>@string/morphe_play_all_button_type_entry_2</item>
+        <item>@string/morphe_play_all_button_type_entry_3</item>
+        <item>@string/morphe_play_all_button_type_entry_4</item>
+        <item>@string/morphe_play_all_button_type_entry_5</item>
+        <item>@string/morphe_play_all_button_type_entry_6</item>
+        <item>@string/morphe_play_all_button_type_entry_7</item>
+        <item>@string/morphe_play_all_button_type_entry_8</item>
+        <item>@string/morphe_play_all_button_type_entry_9</item>
+        <item>@string/morphe_play_all_button_type_entry_10</item>
+        <item>@string/morphe_play_all_button_type_entry_11</item>
+        <item>@string/morphe_play_all_button_type_entry_12</item>
+    </string-array>
+    <string-array name="morphe_play_all_button_type_entry_values">
+        <item>ALL_CONTENTS_WITH_TIME_ASCENDING</item>
+        <item>ALL_CONTENTS_WITH_TIME_DESCENDING</item>
+        <item>ALL_CONTENTS_WITH_POPULAR_DESCENDING</item>
+        <item>VIDEOS_ONLY_WITH_TIME_DESCENDING</item>
+        <item>VIDEOS_ONLY_WITH_POPULAR_DESCENDING</item>
+        <item>SHORTS_ONLY_WITH_TIME_DESCENDING</item>
+        <item>SHORTS_ONLY_WITH_POPULAR_DESCENDING</item>
+        <item>LIVESTREAMS_ONLY_WITH_TIME_DESCENDING</item>
+        <item>LIVESTREAMS_ONLY_WITH_POPULAR_DESCENDING</item>
+        <item>ALL_MEMBERSHIPS_CONTENTS</item>
+        <item>MEMBERSHIPS_VIDEOS_ONLY</item>
+        <item>MEMBERSHIPS_SHORTS_ONLY</item>
+        <item>MEMBERSHIPS_LIVESTREAMS_ONLY</item>
+    </string-array>
+
     <!-- layout.buttons.navigation.navigationBarPatch -->
     <string-array name="morphe_show_search_button_index_entries">
         <item>1</item>
@@ -292,7 +324,6 @@
         <item>@string/morphe_change_start_page_entry_all_subscriptions</item>
         <item>@string/morphe_change_start_page_entry_browse</item>
         <item>@string/morphe_change_start_page_entry_courses</item>
-        <item>@string/morphe_change_start_page_entry_explore</item>
         <item>@string/morphe_change_start_page_entry_fashion</item>
         <item>@string/morphe_change_start_page_entry_gaming</item>
         <item>@string/morphe_change_start_page_entry_history</item>
@@ -309,7 +340,6 @@
         <item>@string/morphe_change_start_page_entry_shorts</item>
         <item>@string/morphe_change_start_page_entry_sports</item>
         <item>@string/morphe_change_start_page_entry_subscriptions</item>
-        <item>@string/morphe_change_start_page_entry_trending</item>
         <item>@string/morphe_change_start_page_entry_virtual_reality</item>
         <item>@string/morphe_change_start_page_entry_watch_later</item>
         <item>@string/morphe_change_start_page_entry_your_clips</item>
@@ -319,7 +349,6 @@
         <item>ALL_SUBSCRIPTIONS</item>
         <item>BROWSE</item>
         <item>COURSES</item>
-        <item>EXPLORE</item>
         <item>FASHION</item>
         <item>GAMING</item>
         <item>HISTORY</item>
@@ -336,7 +365,6 @@
         <item>SHORTS</item>
         <item>SPORTS</item>
         <item>SUBSCRIPTIONS</item>
-        <item>TRENDING</item>
         <item>VIRTUAL_REALITY</item>
         <item>WATCH_LATER</item>
         <item>YOUR_CLIPS</item>

@@ -1,3 +1,23 @@
+# [1.23.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.23.0-dev.5...v1.23.0-dev.6) (2026-04-05)
+
+
+### Bug Fixes
+
+* **Change package name:** DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION is not updated correctly ([#1091](https://github.com/MorpheApp/morphe-patches/issues/1091)) ([39c5b47](https://github.com/MorpheApp/morphe-patches/commit/39c5b47cbd41163bac6fff1a397e186a8e9c567a))
+* **YouTube - Disable video codecs:** Improve setting summary if the spoof video client does not support forcing AVC ([0238d14](https://github.com/MorpheApp/morphe-patches/commit/0238d14df83198f41c9cbddd4aa4933ba995581d))
+
+
+### Features
+
+* **YouTube - Seekbar:** Add "Enable livestream DVR" setting ([#1092](https://github.com/MorpheApp/morphe-patches/issues/1092)) ([8af85d0](https://github.com/MorpheApp/morphe-patches/commit/8af85d07b68e08f8e2731a77a4a08a1931348911))
+
+# [1.23.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.23.0-dev.4...v1.23.0-dev.5) (2026-04-04)
+
+
+### Features
+
+* **Reddit:** Add experimental support for `2026.14.0` ([921fa89](https://github.com/MorpheApp/morphe-patches/commit/921fa89a37a4e318ed3ba5a0cb090b00f0a4c3af))
+
 # [1.23.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.23.0-dev.3...v1.23.0-dev.4) (2026-04-03)
 
 

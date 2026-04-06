@@ -499,6 +499,25 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_button_summary_off">不顯示「循環播放影片」選單</string>
   <string name="morphe_loop_video_button_toast_on">已開啟循環播放影片</string>
   <string name="morphe_loop_video_button_toast_off">已關閉循環播放影片</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">顯示播放全部按鈕</string>
+  <string name="morphe_play_all_button_summary_on">"顯示播放全部按鈕\n點擊以產生頻道中所有影片的播放清單\n長按以取消\n\n資訊：可能無法在直播中運作"</string>
+  <string name="morphe_play_all_button_summary_off">不顯示播放全部按鈕</string>
+  <string name="morphe_play_all_button_type_title">產生播放清單模式</string>
+  <string name="morphe_play_all_button_type_entry_0">所有內容 (依時間排序，遞增)</string>
+  <string name="morphe_play_all_button_type_entry_1">所有內容 (依時間排序)</string>
+  <string name="morphe_play_all_button_type_entry_2">所有內容 (依熱門程度排序)</string>
+  <string name="morphe_play_all_button_type_entry_3">影片內容 (依時間排序)</string>
+  <string name="morphe_play_all_button_type_entry_4">影片內容 (依熱門程度排序)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts內容 (依時間排序)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts內容 (依熱門程度排序)</string>
+  <string name="morphe_play_all_button_type_entry_7">直播影片內容 (依時間排序)</string>
+  <string name="morphe_play_all_button_type_entry_8">直播影片內容 (依熱門程度排序)</string>
+  <string name="morphe_play_all_button_type_entry_9">僅限所有會員內容</string>
+  <string name="morphe_play_all_button_type_entry_10">僅限會員影片</string>
+  <string name="morphe_play_all_button_type_entry_11">僅限會員Shorts</string>
+  <string name="morphe_play_all_button_type_entry_12">僅限會員直播</string>
+  <string name="morphe_play_all_button_not_available_toast">由於頻道 ID 資訊不符，無法產生播放清單</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">顯示重新載入影片按鈕</string>
   <string name="morphe_reload_video_summary_on">已顯示重新載入影片按鈕</string>
@@ -508,6 +527,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">停用精準跳轉手勢</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">已停用精準跳轉手勢</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">已啟用精準跳轉手勢</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">啟用直播 DVR</string>
+  <string name="morphe_livestream_dvr_summary_on">可在所有直播中尋找</string>
+  <string name="morphe_livestream_dvr_summary_off">直播中可能無法尋找</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">啟用滑動預覽</string>
   <string name="morphe_slide_to_seek_summary_on">已啟用滑動預覽</string>
@@ -1622,6 +1645,8 @@ Second \"item\" text"</string>
 • 影片播放將比 VP9 或 AV1 消耗更多網路資料
 • HDR 影片將不會使用 AVC
 • 部分裝置無法強制使用 AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">若要使用此功能，請將「偽造視訊串流」變更為 Android VR 或 Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">顯示進階影片畫質選單</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">已顯示進階影片畫質選單</string>

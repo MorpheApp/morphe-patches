@@ -499,6 +499,27 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_button_summary_off">תפריט סרטון בלופ מוצג</string>
   <string name="morphe_loop_video_button_toast_on">הפעלת סרטון בלולאה מופעלת</string>
   <string name="morphe_loop_video_button_toast_off">הפעלת סרטון בלולאה כבויה</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">הצג כפתור השמעה</string>
+  <string name="morphe_play_all_button_summary_on">"כפתור השמעה מוצג\nהקש כדי ליצור רשימת השמעה של כל הסרטונים מהערוץ\nהקש והחזק כדי לבטל פעולה
+
+מידע: ייתכן שלא יעבוד בשידורי חי"</string>
+  <string name="morphe_play_all_button_summary_off">כפתור השמעה אינו מוצג</string>
+  <string name="morphe_play_all_button_type_title">מצב יצירת רשימת השמעה</string>
+  <string name="morphe_play_all_button_type_entry_0">כל התוכן (מיון לפי זמן, עולה)</string>
+  <string name="morphe_play_all_button_type_entry_1">כל התוכן (מיון לפי זמן)</string>
+  <string name="morphe_play_all_button_type_entry_2">כל התוכן (מיון לפי פופולריות)</string>
+  <string name="morphe_play_all_button_type_entry_3">סרטונים בלבד (מיון לפי זמן)</string>
+  <string name="morphe_play_all_button_type_entry_4">סרטונים בלבד (מיון לפי פופולריות)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts בלבד (מיון לפי זמן)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts בלבד (מיון לפי פופולריות)</string>
+  <string name="morphe_play_all_button_type_entry_7">סרטונים מועברים בלבד (מיון לפי זמן)</string>
+  <string name="morphe_play_all_button_type_entry_8">סרטונים מועברים בלבד (מיון לפי פופולריות)</string>
+  <string name="morphe_play_all_button_type_entry_9">תכנים של כל החברים בלבד</string>
+  <string name="morphe_play_all_button_type_entry_10">סרטוני חברים בלבד</string>
+  <string name="morphe_play_all_button_type_entry_11">Shorts של חברים בלבד</string>
+  <string name="morphe_play_all_button_type_entry_12">שידורי חיים של חברים בלבד</string>
+  <string name="morphe_play_all_button_not_available_toast">לא ניתן ליצור רשימת השמעה עקב אי התאמת מזהה ערוץ</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">הצג לחצן טעינת סרטון</string>
   <string name="morphe_reload_video_summary_on">לחצן טעינת סרטון מוצג</string>
@@ -508,6 +529,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">השבת מחוות דילוג מדויקת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">מחווה מושבתת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">מחווה מופעלת</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">הפעל DVR לשידור חי</string>
+  <string name="morphe_livestream_dvr_summary_on">ניתן לחפש בכל שידורים חיים</string>
+  <string name="morphe_livestream_dvr_summary_off">ייתכן שלא ניתן יהיה לחפש בשידורים חיים</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">הפעל החלק כדי לדלג</string>
   <string name="morphe_slide_to_seek_summary_on">החלק כדי לדלג מופעל</string>
@@ -1616,6 +1641,8 @@ Second \"item\" text"</string>
 • הפעלת וידאו תשתמש ביותר נתוני אינטרנט מאשר VP9 או AV1
 • סרטוני HDR לא ישתמשו ב-AVC
 • התקנים מסוימים אינם יכולים לאכוף AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">כדי להשתמש בתכונה זו, שנה את \'זיוף זרמי וידאו\' ל-Android VR או Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">הצג תפריט איכות סרטון מתקדם</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">תפריט איכות סרטון מתקדם מוצג</string>

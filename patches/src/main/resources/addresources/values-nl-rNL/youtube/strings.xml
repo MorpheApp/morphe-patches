@@ -501,6 +501,25 @@ Controleer of de pakketnaam correct is en de app is geïnstalleerd"</string>
   <string name="morphe_loop_video_button_summary_off">Knop om video te herhalen wordt niet weergegeven</string>
   <string name="morphe_loop_video_button_toast_on">Loopvideo is ingeschakeld</string>
   <string name="morphe_loop_video_button_toast_off">Loopvideo is uitgeschakeld</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Afspelen alle-knop weergeven</string>
+  <string name="morphe_play_all_button_summary_on">"Afspelen alle-knop wordt weergegeven\nTik om een afspeellijst te genereren van alle video's van het kanaal\nTik en houd vast om ongedaan te maken\n\nInfo: Werkt mogelijk niet op live streams"</string>
+  <string name="morphe_play_all_button_summary_off">Afspelen alle-knop wordt niet weergegeven</string>
+  <string name="morphe_play_all_button_type_title">Afspelen alle-modus genereren</string>
+  <string name="morphe_play_all_button_type_entry_0">Alle inhoud (Sorteren op tijd, Stijgend)</string>
+  <string name="morphe_play_all_button_type_entry_1">Alle inhoud (Sorteren op tijd)</string>
+  <string name="morphe_play_all_button_type_entry_2">Alle inhoud (Sorteren op populariteit)</string>
+  <string name="morphe_play_all_button_type_entry_3">Video\'s (Sorteren op tijd)</string>
+  <string name="morphe_play_all_button_type_entry_4">Video\'s (Sorteren op populariteit)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts (Sorteren op tijd)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts (Sorteren op populariteit)</string>
+  <string name="morphe_play_all_button_type_entry_7">Gestreamde video\'s (Sorteren op tijd)</string>
+  <string name="morphe_play_all_button_type_entry_8">Gestreamde video\'s (Sorteren op populariteit)</string>
+  <string name="morphe_play_all_button_type_entry_9">Alleen inhoud van alle leden</string>
+  <string name="morphe_play_all_button_type_entry_10">Alleen ledenvideo\'s</string>
+  <string name="morphe_play_all_button_type_entry_11">Alleen leden-Shorts</string>
+  <string name="morphe_play_all_button_type_entry_12">Alleen leden live streams</string>
+  <string name="morphe_play_all_button_not_available_toast">Kan geen afspeellijst genereren vanwege verkeerd kanaal-ID</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Toon de knop voor het opnieuw laden van de video</string>
   <string name="morphe_reload_video_summary_on">De knop voor het opnieuw laden van de video wordt weergegeven</string>
@@ -510,6 +529,10 @@ Controleer of de pakketnaam correct is en de app is geïnstalleerd"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">Precisie-zoekbeweging uitschakelen</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Beweging is uitgeschakeld</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Beweging is ingeschakeld</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Livestream DVR inschakelen</string>
+  <string name="morphe_livestream_dvr_summary_on">Zoeken is toegestaan op alle livestreams</string>
+  <string name="morphe_livestream_dvr_summary_off">Zoeken is mogelijk niet beschikbaar op livestreams</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Schuiven om te zoeken inschakelen</string>
   <string name="morphe_slide_to_seek_summary_on">Schuiven om te zoeken is ingeschakeld</string>
@@ -1617,6 +1640,8 @@ Beperkingen:
 • Het afspelen van video verbruikt meer internetdata dan VP9 of AV1
 • HDR-video's gebruiken geen AVC
 • Sommige apparaten kunnen AVC niet forceren"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Om deze functie te gebruiken, wijzig \'Videostreams spoofen\' naar Android VR of Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Geavanceerd menu voor videokwaliteit weergeven</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Geavanceerd menu voor videokwaliteit wordt weergegeven</string>

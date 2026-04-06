@@ -496,6 +496,25 @@ Verificați dacă numele pachetului este corect și dacă aplicația este instal
   <string name="morphe_loop_video_button_summary_off">Meniu cu buclă video nu este afișat</string>
   <string name="morphe_loop_video_button_toast_on">Bucla video este activată</string>
   <string name="morphe_loop_video_button_toast_off">Bucla video este dezactivată</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Arată butonul de redare a tuturor</string>
+  <string name="morphe_play_all_button_summary_on">"Butonul de redare a tuturor este afișat\nApăsați pentru a genera o listă de redare cu toate videoclipurile din canal\nApăsați și țineți apăsat pentru a anula\n\nInformații: Este posibil să nu funcționeze pe fluxurile live"</string>
+  <string name="morphe_play_all_button_summary_off">Butonul de redare a tuturor nu este afișat</string>
+  <string name="morphe_play_all_button_type_title">Mod generare listă de redare</string>
+  <string name="morphe_play_all_button_type_entry_0">Toate conținuturile (Sortare după timp, Ascendent)</string>
+  <string name="morphe_play_all_button_type_entry_1">Toate conținuturile (Sortare după timp)</string>
+  <string name="morphe_play_all_button_type_entry_2">Toate conținuturile (Sortare după popularitate)</string>
+  <string name="morphe_play_all_button_type_entry_3">Doar videoclipuri (Sortare după timp)</string>
+  <string name="morphe_play_all_button_type_entry_4">Doar videoclipuri (Sortare după popularitate)</string>
+  <string name="morphe_play_all_button_type_entry_5">Doar Shorts (Sortare după timp)</string>
+  <string name="morphe_play_all_button_type_entry_6">Doar Shorts (Sortare după popularitate)</string>
+  <string name="morphe_play_all_button_type_entry_7">Doar videoclipuri transmise în direct (Sortare după timp)</string>
+  <string name="morphe_play_all_button_type_entry_8">Doar videoclipuri transmise în direct (Sortare după popularitate)</string>
+  <string name="morphe_play_all_button_type_entry_9">Doar conținut de la toți membrii</string>
+  <string name="morphe_play_all_button_type_entry_10">Doar videoclipuri pentru membri</string>
+  <string name="morphe_play_all_button_type_entry_11">Doar Shorts pentru membri</string>
+  <string name="morphe_play_all_button_type_entry_12">Doar transmisiuni în direct pentru membri</string>
+  <string name="morphe_play_all_button_not_available_toast">Nu s-a putut genera playlist-ul din cauza nepotrivirii ID-ului canalului</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Afișează butonul de reîncărcare video</string>
   <string name="morphe_reload_video_summary_on">Butonul de reîncărcare video este afișat</string>
@@ -505,6 +524,10 @@ Verificați dacă numele pachetului este corect și dacă aplicația este instal
   <string name="morphe_disable_precise_seeking_gesture_title">Dezactivează gestul de căutare precis</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gestul este dezactivat</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Gestul este activat</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Activare DVR livestream</string>
+  <string name="morphe_livestream_dvr_summary_on">Căutarea este permisă la toate livestream-urile</string>
+  <string name="morphe_livestream_dvr_summary_off">Căutarea poate să nu fie disponibilă la livestream-uri</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activează diapozitivul pentru a căuta</string>
   <string name="morphe_slide_to_seek_summary_on">Slide pentru căutare este activat</string>
@@ -1614,6 +1637,8 @@ Limitări:
 • Redarea video va utiliza mai multe date de internet decât VP9 sau AV1
 • Videoclipurile HDR nu vor utiliza AVC
 • Unele dispozitive nu pot forța AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Pentru a utiliza această funcție, modificați \"Falsificare fluxuri video\" la Android VR sau Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Afișează meniul avansat de calitate video</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Se afișează meniul avansat de calitate video</string>

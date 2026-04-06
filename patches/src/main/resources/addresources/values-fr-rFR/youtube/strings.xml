@@ -501,6 +501,29 @@ Vérifiez que le nom du package est correct et que l’application est bien inst
   <string name="morphe_loop_video_button_summary_off">Le bouton \'Lecture en boucle\' n\'est pas affiché</string>
   <string name="morphe_loop_video_button_toast_on">La lecture en boucle est activée</string>
   <string name="morphe_loop_video_button_toast_off">La lecture en boucle est désactivée</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Afficher un bouton \'Tout lire\'</string>
+  <string name="morphe_play_all_button_summary_on">"Le bouton 'Tout lire' est affiché
+Appuyez pour générer une playlist de toutes les vidéos de la chaîne
+Appuyez longuement pour annuler
+
+Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
+  <string name="morphe_play_all_button_summary_off">Le bouton \'Tout lire\' n\'est pas affiché</string>
+  <string name="morphe_play_all_button_type_title">Mode de génération de playlist</string>
+  <string name="morphe_play_all_button_type_entry_0">Tout le contenu (Tri par date, par ordre croissant)</string>
+  <string name="morphe_play_all_button_type_entry_1">Tout le contenu (Tri par date)</string>
+  <string name="morphe_play_all_button_type_entry_2">Tout le contenu (Tri par popularité)</string>
+  <string name="morphe_play_all_button_type_entry_3">Vidéos uniquement (Tri par date)</string>
+  <string name="morphe_play_all_button_type_entry_4">Vidéos uniquement (Tri par popularité)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts uniquement (Tri par date)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts uniquement (Tri par popularité)</string>
+  <string name="morphe_play_all_button_type_entry_7">Vidéos en direct uniquement (Tri par date)</string>
+  <string name="morphe_play_all_button_type_entry_8">Vidéos en direct uniquement (Tri par popularité)</string>
+  <string name="morphe_play_all_button_type_entry_9">Contenu réservé aux membres uniquement</string>
+  <string name="morphe_play_all_button_type_entry_10">Vidéos réservés aux membres uniquement</string>
+  <string name="morphe_play_all_button_type_entry_11">Shorts réservés aux membres uniquement</string>
+  <string name="morphe_play_all_button_type_entry_12">Diffusion en direct réservé aux membres uniquement</string>
+  <string name="morphe_play_all_button_not_available_toast">Impossible de générer la playlist en raison d’une incompatibilité d’identifiant de chaîne</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Afficher un bouton \'Recharger la vidéo\'</string>
   <string name="morphe_reload_video_summary_on">Le bouton \'Recharger la vidéo\' est affiché</string>
@@ -510,6 +533,10 @@ Vérifiez que le nom du package est correct et que l’application est bien inst
   <string name="morphe_disable_precise_seeking_gesture_title">Désactiver le geste de barre de progression précise</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Le geste est désactivé</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Le geste est activé</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Activer le DVR des diffusions en direct</string>
+  <string name="morphe_livestream_dvr_summary_on">La barre de progression est disponible sur toutes les diffusions en direct</string>
+  <string name="morphe_livestream_dvr_summary_off">La barre de progression peut ne pas être disponible sur les diffusions en direct</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Activer \'Faites glisser pour rechercher\'</string>
   <string name="morphe_slide_to_seek_summary_on">Faites glisser pour rechercher est activé</string>
@@ -1623,6 +1650,8 @@ Limitations :
 • Certains appareils ne permettent pas de forcer AVC
 
 "</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Pour utiliser cette fonctionnalité, remplacez \'Falsifier les flux vidéo\' par Android VR ou Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Afficher le menu de qualité vidéo avancé</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Le menu de qualité vidéo avancé est affiché</string>

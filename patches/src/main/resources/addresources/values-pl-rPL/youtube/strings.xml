@@ -61,7 +61,7 @@ Zmiany obejmują:
 • Elementy menu ustawień filmów nie mogą zostać ukryte.
 • Przycisk przełączania konta może nie pojawiać się w zakładce Biblioteka."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
-  <string name="morphe_hide_creator_store_shelf_title">Sekcja sklepu twórcy</string>
+  <string name="morphe_hide_creator_store_shelf_title">Półka ze sklepem twórcy</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Ukryta pod odtwarzaczem</string>
   <string name="morphe_hide_creator_store_shelf_summary_off">Widoczna pod odtwarzaczem</string>
   <string name="morphe_hide_album_cards_title">Karty albumów</string>
@@ -96,7 +96,7 @@ Zmiany obejmują:
 • Zakupy
 • Obejrzyj ponownie"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Widoczne</string>
-  <string name="morphe_hide_image_shelf_title">Sekcja obrazków</string>
+  <string name="morphe_hide_image_shelf_title">Półka z obrazkami</string>
   <string name="morphe_hide_image_shelf_summary_on">Ukryta w wynikach wyszukiwania</string>
   <string name="morphe_hide_image_shelf_summary_off">Widoczna w wynikach wyszukiwania</string>
   <string name="morphe_hide_latest_posts_title">Najnowsze posty</string>
@@ -132,7 +132,7 @@ Zmiany obejmują:
   <string name="morphe_hide_surveys_title">Ankiety</string>
   <string name="morphe_hide_surveys_summary_on">Ukryte</string>
   <string name="morphe_hide_surveys_summary_off">Widoczne</string>
-  <string name="morphe_hide_ticket_shelf_title">Sekcja biletów</string>
+  <string name="morphe_hide_ticket_shelf_title">Półka z biletami</string>
   <string name="morphe_hide_ticket_shelf_summary_on">Ukryta</string>
   <string name="morphe_hide_ticket_shelf_summary_off">Widoczna</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
@@ -294,7 +294,7 @@ Ich obecność może blokować widoczność własnych logo w nagłówku."</strin
   <string name="morphe_hide_links_preview_title">Podgląd linków</string>
   <string name="morphe_hide_links_preview_summary_on">Ukryty</string>
   <string name="morphe_hide_links_preview_summary_off">Widoczny</string>
-  <string name="morphe_hide_members_shelf_title">Sekcja wspierających kanał</string>
+  <string name="morphe_hide_members_shelf_title">Półka ze wspierającymi kanał</string>
   <string name="morphe_hide_members_shelf_summary_on">Ukryta</string>
   <string name="morphe_hide_members_shelf_summary_off">Widoczna</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
@@ -501,6 +501,29 @@ Sprawdź, czy nazwa pakietu jest prawidłowa i czy aplikacja jest zainstalowana"
   <string name="morphe_loop_video_button_summary_off">Ukryty</string>
   <string name="morphe_loop_video_button_toast_on">Zapętlanie filmu jest włączone</string>
   <string name="morphe_loop_video_button_toast_off">Zapętlanie filmu jest wyłączone</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Przycisk \"Odtwórz wszystko\"</string>
+  <string name="morphe_play_all_button_summary_on">"Widoczny
+Stuknij, aby wygenerować playlistę ze wszystkimi filmami z kanału
+Przytrzymaj, aby cofnąć
+
+Uwaga: Może nie działać na transmisjach na żywo"</string>
+  <string name="morphe_play_all_button_summary_off">Ukryty</string>
+  <string name="morphe_play_all_button_type_title">Tryb generowania playlisty</string>
+  <string name="morphe_play_all_button_type_entry_0">Wszystkie materiały (od najstarszych)</string>
+  <string name="morphe_play_all_button_type_entry_1">Wszystkie materiały (od najnowszych)</string>
+  <string name="morphe_play_all_button_type_entry_2">Wszystkie materiały (najpopularniejsze)</string>
+  <string name="morphe_play_all_button_type_entry_3">Tylko filmy (od najnowszych)</string>
+  <string name="morphe_play_all_button_type_entry_4">Tylko filmy (najpopularniejsze)</string>
+  <string name="morphe_play_all_button_type_entry_5">Tylko Shortsy (od najnowszych)</string>
+  <string name="morphe_play_all_button_type_entry_6">Tylko Shortsy (najpopularniejsze)</string>
+  <string name="morphe_play_all_button_type_entry_7">Tylko transmisje (od najnowszych)</string>
+  <string name="morphe_play_all_button_type_entry_8">Tylko transmisje (najpopularniejsze)</string>
+  <string name="morphe_play_all_button_type_entry_9">Wszystkie materiały tylko dla wspierających</string>
+  <string name="morphe_play_all_button_type_entry_10">Filmy tylko dla wspierających</string>
+  <string name="morphe_play_all_button_type_entry_11">Shortsy tylko dla wspierających</string>
+  <string name="morphe_play_all_button_type_entry_12">Transmisje tylko dla wspierających</string>
+  <string name="morphe_play_all_button_not_available_toast">Nie można wygenerować playlisty z powodu niezgodności identyfikatora kanału</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">Przycisk odświeżenia filmu</string>
   <string name="morphe_reload_video_summary_on">Widoczny</string>
@@ -510,6 +533,10 @@ Sprawdź, czy nazwa pakietu jest prawidłowa i czy aplikacja jest zainstalowana"
   <string name="morphe_disable_precise_seeking_gesture_title">Gest precyzyjnego przewijania</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Wyłączony</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Włączony</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Przewijanie transmisji na żywo</string>
+  <string name="morphe_livestream_dvr_summary_on">Odblokowane</string>
+  <string name="morphe_livestream_dvr_summary_off">Domyślne</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Przesunięcie, aby przewinąć</string>
   <string name="morphe_slide_to_seek_summary_on">Włączone</string>
@@ -1619,6 +1646,8 @@ Ograniczenia:
 • Odtwarzanie filmów zużyje więcej danych internetowych niż VP9 lub AV1
 • Filmy HDR nie będą korzystać z AVC
 • Niektóre urządzenia nie pozwalają na wymuszenie AVC"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Aby użyć tej funkcji, zmień \"Fałszowanie strumieni filmów\" na Android VR lub Android Studio</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Zaawansowane menu jakości filmu</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Widoczne</string>
@@ -1635,7 +1664,7 @@ Ograniczenia:
   <string name="morphe_spoof_video_streams_av1_title">Zezwól na Android VR AV1</string>
   <string name="morphe_spoof_video_streams_av1_summary_on">"Kodek filmu to AVC (H.264), VP9 lub AV1
 
-Odtwarzanie może się zacinać lub gubić klatki"</string>
+Odtwarzanie może powodować zacinanie się lub gubienie klatek"</string>
   <string name="morphe_spoof_video_streams_av1_summary_off">Kodek filmu to AVC (H.264) lub VP9</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"Włączenie tej opcji może wymusić programowe dekodowanie AV1.
 

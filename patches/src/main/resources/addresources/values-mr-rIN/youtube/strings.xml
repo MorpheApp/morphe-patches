@@ -501,6 +501,29 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_loop_video_button_summary_off">व्हिडिओ लूप बटण दिसत नाही</string>
   <string name="morphe_loop_video_button_toast_on">व्हिडिओ लूप चालू आहे</string>
   <string name="morphe_loop_video_button_toast_off">व्हिडिओ लूप बंद आहे</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">\'शो ऑल प्ले बटन\'</string>
+  <string name="morphe_play_all_button_summary_on">"सर्व प्ले बटन दर्शविले आहे
+चॅनेलवरून सर्व व्हिडिओंची प्लेलिस्ट तयार करण्यासाठी टॅप करा
+अUndo करण्यासाठी टॅप आणि होल्ड करा
+
+माहिती: लाइव्ह स्ट्रीमवर हे काम करू शकत नाही"</string>
+  <string name="morphe_play_all_button_summary_off">प्ले ऑल बटन दर्शविले नाही</string>
+  <string name="morphe_play_all_button_type_title">प्लेलिस्ट जनरेशन मोड</string>
+  <string name="morphe_play_all_button_type_entry_0">सर्व सामग्री (वेळेनुसार क्रमवारी, चढता क्रम)</string>
+  <string name="morphe_play_all_button_type_entry_1">सर्व सामग्री (वेळेनुसार क्रमवारी)</string>
+  <string name="morphe_play_all_button_type_entry_2">सर्व सामग्री (लोकप्रियतेनुसार क्रमवारी)</string>
+  <string name="morphe_play_all_button_type_entry_3">व्हिडिओ फक्त (वेळेनुसार क्रमवारी)</string>
+  <string name="morphe_play_all_button_type_entry_4">व्हिडिओ फक्त (लोकप्रियतेनुसार क्रमवारी)</string>
+  <string name="morphe_play_all_button_type_entry_5">शॉर्ट्स फक्त (वेळेनुसार क्रमवारी)</string>
+  <string name="morphe_play_all_button_type_entry_6">शॉर्ट्स फक्त (लोकप्रियतेनुसार क्रमवारी)</string>
+  <string name="morphe_play_all_button_type_entry_7">स्ट्रीम केलेले व्हिडिओ फक्त (वेळेनुसार क्रमवारी)</string>
+  <string name="morphe_play_all_button_type_entry_8">स्ट्रीम केलेले व्हिडिओ फक्त (लोकप्रियतेनुसार क्रमवारी)</string>
+  <string name="morphe_play_all_button_type_entry_9">सर्व सदस्यांच्या सामग्री फक्त</string>
+  <string name="morphe_play_all_button_type_entry_10">सदस्यांचे फक्त व्हिडिओ</string>
+  <string name="morphe_play_all_button_type_entry_11">सदस्यांचे फक्त शॉर्ट्स</string>
+  <string name="morphe_play_all_button_type_entry_12">सदस्यांचे फक्त थेट प्रवाह</string>
+  <string name="morphe_play_all_button_not_available_toast">चॅनेल आयडी जुळत नसल्यामुळे प्लेलिस्ट तयार करणे शक्य नाही</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_title">व्हिडिओ रीलोड बटण दर्शवा</string>
   <string name="morphe_reload_video_summary_on">रीलोड व्हिडिओ बटण दर्शविले जाते</string>
@@ -510,6 +533,10 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_disable_precise_seeking_gesture_title">अचूक शोधण्याची हावभाव अक्षम करा</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">अचूक शोधण्याची हावभाव अक्षम केली आहे</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">अचूक शोधण्याची हावभाव सक्षम केली आहे</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">लाइव्हस्ट्रीम DVR सक्षम करा</string>
+  <string name="morphe_livestream_dvr_summary_on">सर्व लाइव्हस्ट्रीमवर शोधण्याची परवानगी आहे</string>
+  <string name="morphe_livestream_dvr_summary_off">लाइव्हस्ट्रीमवर शोधणे उपलब्ध नसेल</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">स्लाइड टू सीक सक्षम करा</string>
   <string name="morphe_slide_to_seek_summary_on">स्लाइड टू सीक सक्षम आहे</string>
@@ -1609,6 +1636,8 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
 • व्हिडिओ प्लेबॅक VP9 किंवा AV1 पेक्षा जास्त इंटरनेट डेटा वापरेल
 • HDR व्हिडिओ AVC वापरणार नाहीत
 • काही उपकरणे AVC ला सक्ती करू शकत नाहीत"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">हे वैशिष्ट्य वापरण्यासाठी, \'Spoof व्हिडिओ स्ट्रीम\' Android VR किंवा Android Studio मध्ये बदला</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">प्रगत व्हिडिओ गुणवत्ता मेनू दर्शवा</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">प्रगत व्हिडिओ गुणवत्ता मेनू दर्शविला जातो</string>
