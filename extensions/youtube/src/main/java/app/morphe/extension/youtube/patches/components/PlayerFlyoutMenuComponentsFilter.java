@@ -46,12 +46,12 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
     public PlayerFlyoutMenuComponentsFilter() {
         qualityMenuHeader = new StringFilterGroup(
                 Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER,
-                "quality_sheet_header.e"
+                "quality_sheet_header"
         );
 
         qualityMenuFooter = new StringFilterGroup(
                 Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
-                "quality_sheet_footer.e",
+                "quality_sheet_footer",
                 "|divider.e"
         );
 
