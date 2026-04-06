@@ -36,30 +36,15 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
     }
 
     private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
-    private final StringFilterGroup qualityMenuFooter;
-    private final StringFilterGroup qualityMenuHeader;
-    private final StringFilterGroup captionsMenuHeader;
     private final StringFilterGroup audioTrackSheet;
     private final StringFilterGroup captionsSheet;
     private final StringFilterGroup qualitySheet;
+    private final StringFilterGroup audioTrackMenuFooter;
+    private final StringFilterGroup captionsMenuHeader;
+    private final StringFilterGroup qualityMenuFooter;
+    private final StringFilterGroup qualityMenuHeader;
 
     public PlayerFlyoutMenuComponentsFilter() {
-        qualityMenuHeader = new StringFilterGroup(
-                Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER,
-                "quality_sheet_header"
-        );
-
-        qualityMenuFooter = new StringFilterGroup(
-                Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
-                "quality_sheet_footer",
-                "|divider.e"
-        );
-
-        captionsMenuHeader = new StringFilterGroup(
-                Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER,
-                "bottom_sheet_header.e"
-        );
-
         audioTrackSheet = new StringFilterGroup(
                 null,
                 "audio_track_sheet_content.e"
@@ -75,13 +60,35 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                 "captions_sheet_content.e"
         );
 
+        audioTrackMenuFooter = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK_FOOTER,
+                "audio_track_sheet_footer.e"
+        );
+
+        captionsMenuHeader = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER,
+                "bottom_sheet_header.e"
+        );
+
+        qualityMenuHeader = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER,
+                "quality_sheet_header.e"
+        );
+
+        qualityMenuFooter = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
+                "quality_sheet_footer.e",
+                "|divider.e"
+        );
+
         addPathCallbacks(
-                captionsMenuHeader,
-                qualityMenuFooter,
-                qualityMenuHeader,
                 audioTrackSheet,
                 captionsSheet,
                 qualitySheet,
+                audioTrackMenuFooter,
+                captionsMenuHeader,
+                qualityMenuFooter,
+                qualityMenuHeader,
                 new StringFilterGroup(null, "overflow_menu_item.e")
         );
 
@@ -176,15 +183,11 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
             return false;
         }
 
-        if (matchedGroup == qualityMenuHeader)
+        if (matchedGroup == audioTrackMenuFooter || matchedGroup == captionsMenuHeader || matchedGroup == qualityMenuHeader)
             return true;
 
         if (matchedGroup == qualityMenuFooter) {
             return (path.startsWith("quick_quality_sheet_content.e"));
-        }
-
-        if (matchedGroup == captionsMenuHeader) {
-            return true;
         }
 
         if (contentIndex != 0) {
