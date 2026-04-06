@@ -39,8 +39,9 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
     private final StringFilterGroup qualityMenuFooter;
     private final StringFilterGroup qualityMenuHeader;
     private final StringFilterGroup captionsMenuHeader;
-    private final StringFilterGroup advancedQualitySheet;
+    private final StringFilterGroup audioTrackSheet;
     private final StringFilterGroup captionsSheet;
+    private final StringFilterGroup qualitySheet;
 
     public PlayerFlyoutMenuComponentsFilter() {
         qualityMenuHeader = new StringFilterGroup(
@@ -56,13 +57,17 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
 
         captionsMenuHeader = new StringFilterGroup(
                 Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER,
-                "bottom_sheet_header",
-                "|divider.e"
+                "bottom_sheet_header.e"
         );
 
-        advancedQualitySheet = new StringFilterGroup(
+        audioTrackSheet = new StringFilterGroup(
                 null,
-                "advanced_quality_sheet_content"
+                "audio_track_sheet_content.e"
+        );
+
+        qualitySheet = new StringFilterGroup(
+                null,
+                "advanced_quality_sheet_content.e"
         );
 
         captionsSheet = new StringFilterGroup(
@@ -74,8 +79,9 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                 captionsMenuHeader,
                 qualityMenuFooter,
                 qualityMenuHeader,
-                advancedQualitySheet,
+                audioTrackSheet,
                 captionsSheet,
+                qualitySheet,
                 new StringFilterGroup(null, "overflow_menu_item.e")
         );
 
@@ -159,11 +165,14 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        if (matchedGroup == advancedQualitySheet) {
-            HidePlayerFlyoutMenuPatch.isQualityMenuVisible = true;
+        if (matchedGroup == audioTrackSheet) {
+            HidePlayerFlyoutMenuPatch.isAudioTrackMenuVisible = true;
             return false;
         } else if (matchedGroup == captionsSheet) {
             HidePlayerFlyoutMenuPatch.isCaptionsMenuVisible = true;
+            return false;
+        } else if (matchedGroup == qualitySheet) {
+            HidePlayerFlyoutMenuPatch.isQualityMenuVisible = true;
             return false;
         }
 
@@ -171,11 +180,11 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
             return true;
 
         if (matchedGroup == qualityMenuFooter) {
-            return (path.startsWith("quality_sheet_footer"));
+            return (path.startsWith("quality_sheet_footer.e"));
         }
 
         if (matchedGroup == captionsMenuHeader) {
-            return (path.startsWith("bottom_sheet_header"));
+            return true;
         }
 
         if (contentIndex != 0) {

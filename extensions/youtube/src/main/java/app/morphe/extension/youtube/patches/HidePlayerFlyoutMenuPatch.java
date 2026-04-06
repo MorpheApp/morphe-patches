@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches;
@@ -16,8 +18,9 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class HidePlayerFlyoutMenuPatch {
 
-    public static volatile boolean isQualityMenuVisible = false;
+    public static volatile boolean isAudioTrackMenuVisible = false;
     public static volatile boolean isCaptionsMenuVisible = false;
+    public static volatile boolean isQualityMenuVisible = false;
 
     private HidePlayerFlyoutMenuPatch() {}
 
@@ -31,51 +34,60 @@ public final class HidePlayerFlyoutMenuPatch {
             @Override
             public void onGlobalLayout() {
                 try {
-                    if (!isQualityMenuVisible && !isCaptionsMenuVisible) return;
+                    if (!isAudioTrackMenuVisible && !isCaptionsMenuVisible && !isQualityMenuVisible) return;
                     if (recyclerView.getChildCount() == 0) return;
 
                     View sheetContent = recyclerView.getChildAt(0);
                     if (!(sheetContent instanceof ViewGroup viewGroup)) return;
 
                     int childCount = viewGroup.getChildCount();
-                    if (childCount < 2) return;
+                    if (childCount < 3) return;
 
                     recyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
                     int topHeightToSubtract = 0;
                     int bottomHeightToSubtract = 0;
 
-                    boolean hideQualityFooter = isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
-                    boolean hideCaptionsFooter = isCaptionsMenuVisible && Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
+                    boolean hideAudioTrackHeader = isAudioTrackMenuVisible && Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK_HEADER.get();
+                    boolean hideQualityHeader = isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER.get();
 
-                    if (hideQualityFooter || hideCaptionsFooter) {
-                        for (int i = childCount - 1; i >= 0; i--) {
+                    if (hideAudioTrackHeader || hideQualityHeader) {
+                        boolean headerFound = false;
+                        for (int i = 0; i < childCount; i++) {
                             View child = viewGroup.getChildAt(i);
                             if (child == null || child.getVisibility() == View.GONE) continue;
 
-                            if (child.getHeight() < 10) {
-                                bottomHeightToSubtract += child.getHeight();
+                            if (child.getHeight() > 0 && child.getHeight() < 10) {
+                                topHeightToSubtract += child.getHeight();
                                 child.setVisibility(View.GONE);
-                            } else {
-                                bottomHeightToSubtract += child.getHeight();
+                            } else if (child.getHeight() >= 10 && !headerFound) {
+                                topHeightToSubtract += child.getHeight();
                                 child.setVisibility(View.GONE);
+                                headerFound = true;
+                            } else if (child.getHeight() >= 10 && headerFound) {
                                 break;
                             }
                         }
                     }
 
-                    boolean hideQualityHeader = isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER.get();
-                    boolean hideCaptionsHeader = isCaptionsMenuVisible && Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER.get();
+                    boolean hideAudioTrackFooter = isAudioTrackMenuVisible && Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK_FOOTER.get();
+                    boolean hideQualityFooter = isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
+                    boolean hideCaptionsFooter = isCaptionsMenuVisible && Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
 
-                    if (hideQualityHeader || hideCaptionsHeader) {
-                        for (int i = 0; i < childCount; i++) {
+                    if (hideAudioTrackFooter || hideCaptionsFooter || hideQualityFooter) {
+                        boolean footerFound = false;
+                        for (int i = childCount - 1; i >= 0; i--) {
                             View child = viewGroup.getChildAt(i);
                             if (child == null || child.getVisibility() == View.GONE) continue;
 
-                            if (child.getHeight() < 10) {
-                                topHeightToSubtract += child.getHeight();
+                            if (child.getHeight() > 0 && child.getHeight() < 10) {
+                                bottomHeightToSubtract += child.getHeight();
                                 child.setVisibility(View.GONE);
-                            } else {
+                            } else if (child.getHeight() >= 10 && !footerFound) {
+                                bottomHeightToSubtract += child.getHeight();
+                                child.setVisibility(View.GONE);
+                                footerFound = true;
+                            } else if (child.getHeight() >= 10 && footerFound) {
                                 break;
                             }
                         }
@@ -91,11 +103,12 @@ public final class HidePlayerFlyoutMenuPatch {
                         }
                     }
 
-                    isQualityMenuVisible = false;
+                    isAudioTrackMenuVisible = false;
                     isCaptionsMenuVisible = false;
+                    isQualityMenuVisible = false;
 
                 } catch (Exception ex) {
-                    Logger.printException(() -> "HidePlayerFlyoutMenuPatch Litho failure", ex);
+                    Logger.printException(() -> "HidePlayerFlyoutMenuPatch failure", ex);
                 }
             }
         });
