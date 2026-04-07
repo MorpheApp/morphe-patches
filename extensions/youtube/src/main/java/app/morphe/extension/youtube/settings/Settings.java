@@ -114,6 +114,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_MOVIES_SECTION = new BooleanSetting("morphe_hide_movies_section", TRUE);
     public static final BooleanSetting HIDE_NOTIFY_ME_BUTTON = new BooleanSetting("morphe_hide_notify_me_button", TRUE);
     public static final BooleanSetting HIDE_PLAYABLES = new BooleanSetting("morphe_hide_playables", TRUE);
+    public static final BooleanSetting HIDE_SEARCH_TERM_THUMBNAILS = new BooleanSetting("morphe_hide_search_term_thumbnails", FALSE, true);
     public static final BooleanSetting HIDE_SHOW_MORE_BUTTON = new BooleanSetting("morphe_hide_show_more_button", TRUE, true);
     public static final BooleanSetting HIDE_SUBSCRIBED_CHANNELS_BAR = new BooleanSetting("morphe_hide_subscribed_channels_bar", FALSE, true);
     public static final BooleanSetting HIDE_SURVEYS = new BooleanSetting("morphe_hide_surveys", TRUE);

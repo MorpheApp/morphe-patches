@@ -764,6 +764,13 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Injection point.
+     */
+    public static boolean hideSearchTermThumbnails() {
+        return Settings.HIDE_SEARCH_TERM_THUMBNAILS.get();
+    }
+
+    /**
+     * Injection point.
      *
      * @param typedString   Keywords typed in the search bar.
      * @return              Whether the setting is enabled and the typed string is empty.

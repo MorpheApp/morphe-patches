@@ -48,6 +48,7 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.injectHideViewCall
 import app.morphe.util.insertLiteralOverride
@@ -255,6 +256,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_movies_section"),
             SwitchPreference("morphe_hide_notify_me_button"),
             SwitchPreference("morphe_hide_playables"),
+            SwitchPreference("morphe_hide_search_term_thumbnails"),
             SwitchPreference("morphe_hide_show_more_button"),
             SwitchPreference("morphe_hide_subscribed_channels_bar"),
             SwitchPreference("morphe_hide_surveys"),
@@ -774,6 +776,43 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 iget-object v${objectInstruction.registerA}, v${objectInstruction.registerB}, $objectReference
                 """,
                     ExternalLabel("next_iterator", getInstruction(iteratorIndex))
+                )
+            }
+        }
+
+        // endregion
+
+        // region hide search term thumbnails
+
+        CreateSearchSuggestionsFingerprint.let {
+            it.method.apply {
+                val iteratorIndex = indexOfFirstInstructionReversedOrThrow {
+                    opcode == Opcode.INVOKE_INTERFACE &&
+                            getReference<MethodReference>()?.name == "next" &&
+                            getReference<MethodReference>()?.definingClass == "Ljava/util/Iterator;"
+                }
+
+                val insertIndex = indexOfFirstInstructionOrThrow(iteratorIndex) {
+                    opcode == Opcode.INVOKE_VIRTUAL &&
+                            getReference<MethodReference>()?.toString() == "Landroid/widget/ImageView;->setVisibility(I)V"
+                } - 1
+
+                val freeRegister = getInstruction<OneRegisterInstruction>(insertIndex).registerA
+                val uriIndex = indexOfFirstInstructionOrThrow(insertIndex) {
+                    opcode == Opcode.INVOKE_STATIC &&
+                            getReference<MethodReference>()?.toString() == "Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;"
+                }
+
+                val jumpIndex = indexOfFirstInstructionOrThrow(uriIndex, Opcode.CONST_4)
+
+                addInstructionsWithLabels(
+                    insertIndex, """
+                        invoke-static { }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideSearchTermThumbnails()Z
+                        move-result v$freeRegister
+                        
+                        # if-nez means "if not zero". Since boolean true is 1, this jumps if the setting is enabled.
+                        if-nez v$freeRegister, :hidden
+                        """, ExternalLabel("hidden", getInstruction(jumpIndex))
                 )
             }
         }

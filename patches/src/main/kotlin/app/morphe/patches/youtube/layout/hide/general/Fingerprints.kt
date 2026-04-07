@@ -400,3 +400,16 @@ internal object EngagementPanelInformationButtonFingerprint : Fingerprint(
         opcode(Opcode.CHECK_CAST)
     )
 )
+
+internal object CreateSearchSuggestionsFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "I"),
+    filters = listOf(
+        string("ss_rds"),
+        methodCall(
+            opcode = Opcode.INVOKE_INTERFACE,
+            smali = "Ljava/util/Iterator;->next()Ljava/lang/Object;"
+        )
+    )
+)
