@@ -406,10 +406,35 @@ internal object CreateSearchSuggestionsFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("L", "I"),
     filters = listOf(
-        string("ss_rds"),
         methodCall(
-            opcode = Opcode.INVOKE_INTERFACE,
             smali = "Ljava/util/Iterator;->next()Ljava/lang/Object;"
+        ),
+        literal(
+            0,
+            location = MatchAfterWithin(30)
+        ),
+        methodCall(
+            smali = "Landroid/widget/ImageView;->setVisibility(I)V",
+            location = MatchAfterWithin(10)
+        ),
+        literal(
+            8,
+            location = MatchAfterWithin(10)
+        ),
+        methodCall(
+            smali = "Landroid/widget/ImageView;->setVisibility(I)V",
+            location = MatchAfterWithin(10)
+        ),
+        methodCall(
+            smali = "Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V",
+        ),
+        methodCall(
+            smali = "Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;",
+        ),
+        literal(
+            0,
+            location = MatchAfterWithin(20)
         )
-    )
+    ),
+    strings = listOf("ss_rds")
 )
