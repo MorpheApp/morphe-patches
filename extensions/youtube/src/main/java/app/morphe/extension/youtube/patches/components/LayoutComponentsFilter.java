@@ -115,7 +115,8 @@ public final class LayoutComponentsFilter extends Filter {
                 "videos_post_responsive_root.e",
                 "text_post_responsive_root.e",
                 "poll_post_responsive_root.e",
-                "shared_post_root.e"
+                "shared_post_root.e",
+                "shared_post_responsive_root.e"
         );
 
         final var subscribersCommunityGuidelines = new StringFilterGroup(
