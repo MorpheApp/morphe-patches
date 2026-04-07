@@ -102,21 +102,21 @@ public final class LayoutComponentsFilter extends Filter {
 
         communityPosts = new StringFilterGroup(
                 Settings.HIDE_COMMUNITY_POSTS,
-                "post_base_wrapper", // may be obsolete and no longer needed.
-                "text_post_root.e",
                 "images_post_root.e",
-                "images_post_slim.e", // may be obsolete and no longer needed.
                 "images_post_root_slim.e",
-                "text_post_root_slim.e",
-                "post_base_wrapper_slim.e",
-                "poll_post_root.e",
-                "videos_post_root.e",
-                "post_shelf_slim.e",
-                "videos_post_responsive_root.e",
-                "text_post_responsive_root.e",
+                "images_post_slim.e", // may be obsolete and no longer needed.
                 "poll_post_responsive_root.e",
+                "poll_post_root.e",
+                "post_base_wrapper", // may be obsolete and no longer needed.
+                "post_base_wrapper_slim.e",
+                "post_shelf_slim.e",
+                "shared_post_responsive_root.e",
                 "shared_post_root.e",
-                "shared_post_responsive_root.e"
+                "text_post_responsive_root.e",
+                "text_post_root.e",
+                "text_post_root_slim.e",
+                "videos_post_responsive_root.e",
+                "videos_post_root.e"
         );
 
         final var subscribersCommunityGuidelines = new StringFilterGroup(
