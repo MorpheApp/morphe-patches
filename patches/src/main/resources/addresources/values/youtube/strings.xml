@@ -1755,6 +1755,13 @@ Limitations:
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
     <string name="morphe_force_avc_codec_not_available">To use this feature, change \'Spoof video streams\' to Android VR or Android Studio</string>
 
+    <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
+    <string name="morphe_expand_livestream_dvr_duration_title">Expand livestream DVR duration</string>
+    <string name="morphe_expand_livestream_dvr_duration_summary_on">Livestream DVR duration is expanded up to 7 days</string>
+    <string name="morphe_expand_livestream_dvr_duration_summary_off">Livestream DVR duration is limited to the server default</string>
+    <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+    <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">This setting may cause unexpected behavior if \'Spoof video streams\' is not enabled.</string>
+
     <!-- video.quality.advancedVideoQualityMenuPatch -->
     <string name="morphe_advanced_video_quality_menu_title">Show advanced video quality menu</string>
     <string name="morphe_advanced_video_quality_menu_summary_on">Advanced video quality menu is shown</string>

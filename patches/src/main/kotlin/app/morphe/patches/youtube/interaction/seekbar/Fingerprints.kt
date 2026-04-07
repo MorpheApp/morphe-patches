@@ -9,10 +9,12 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import app.morphe.patches.youtube.video.quality.VideoStreamingDataToStringFingerprint
 import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+
 
 private object SwipingUpGestureParentFingerprint : Fingerprint(
     returnType = "Z",
@@ -136,6 +138,27 @@ internal object VideoStreamingDataAllowSeekingFingerprint : Fingerprint(
         opcode(Opcode.IF_EQ, location = MatchAfterImmediately()),
         // Another method in the same class almost matches this fingerprint but uses literal(0) here.
         literal(1, location = MatchAfterImmediately()),
+    )
+)
+
+private object FormatStreamModelClassFingerprint : Fingerprint(
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("FormatStream(itag=")
+    )
+)
+
+// DVR window duration in seconds; 0 for non-DVR streams.
+// Caller multiplies result by 1e6 with 4-hour fallback when <= 0, logs "windowMaxMediaTimeUs".
+internal object FormatStreamModelMaxDvrDurationFingerprint : Fingerprint(
+    classFingerprint = FormatStreamModelClassFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "D",
+    parameters = listOf(),
+    filters = listOf(
+        opcode(Opcode.IGET_OBJECT),
+        fieldAccess(opcode = Opcode.IGET_WIDE, type = "D", location = MatchAfterImmediately()),
+        opcode(Opcode.RETURN_WIDE, location = MatchAfterImmediately()),
     )
 )
 

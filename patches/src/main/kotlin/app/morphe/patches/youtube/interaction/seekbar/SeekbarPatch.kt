@@ -10,14 +10,16 @@ val seekbarPatch = bytecodePatch(
             "slide to seek instead of playing at 2x speed when pressing and holding, " +
             "tapping the player seekbar to seek, " +
             "hiding the video player seekbar, " +
-            "and enabling seeking in livestreams."
+            "enabling seeking in livestreams, " +
+            "and expanding the livestream DVR window."
 ) {
     dependsOn(
         disablePreciseSeekingGesturePatch,
         enableSlideToSeekPatch,
         enableTapToSeekPatch,
         hideSeekbarPatch,
-        livestreamDvrPatch
+        livestreamDvrPatch,
+        expandLivestreamDvrDurationPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
