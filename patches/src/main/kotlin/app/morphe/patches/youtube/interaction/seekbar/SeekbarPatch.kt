@@ -11,7 +11,7 @@ val seekbarPatch = bytecodePatch(
             "tapping the player seekbar to seek, " +
             "hiding the video player seekbar, " +
             "enabling seeking in livestreams, " +
-            "and expanding the livestream DVR window."
+            "and expanding the livestream DVR duration."
 ) {
     dependsOn(
         disablePreciseSeekingGesturePatch,
