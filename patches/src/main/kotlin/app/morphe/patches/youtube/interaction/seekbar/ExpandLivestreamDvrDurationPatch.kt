@@ -7,7 +7,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
@@ -27,8 +26,7 @@ val expandLivestreamDvrDurationPatch = bytecodePatch(
         )
 
         FormatStreamModelMaxDvrDurationFingerprint.method.apply {
-            val returnIndex = implementation!!.instructions
-                .indexOfFirst { it.opcode == Opcode.RETURN_WIDE }
+            val returnIndex = FormatStreamModelMaxDvrDurationFingerprint.instructionMatches.last().index
             val returnReg = getInstruction<OneRegisterInstruction>(returnIndex).registerA
 
             addInstructions(
