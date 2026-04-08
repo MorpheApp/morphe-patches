@@ -19,7 +19,6 @@ val seekbarPatch = bytecodePatch(
         enableTapToSeekPatch,
         hideSeekbarPatch,
         livestreamDvrPatch,
-        expandLivestreamDvrDurationPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
