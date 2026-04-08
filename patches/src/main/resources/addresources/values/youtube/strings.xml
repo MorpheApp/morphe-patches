@@ -572,7 +572,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_livestream_dvr_summary_on">Seeking is allowed on all livestreams</string>
     <string name="morphe_livestream_dvr_summary_off">Seeking may not be available on livestreams</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-    <string name="morphe_livestream_dvr_user_dialog_message">This setting may cause unexpected behavior if \'Spoof video streams\' is not enabled.</string>
+    <string name="morphe_livestream_dvr_user_dialog_message">Enabling this may cause unexpected livestream seeking behavior if \'Spoof video streams\' is not enabled.</string>
 
     <!-- interaction.seekbar.enableSlideToSeekPatch -->
     <string name="morphe_slide_to_seek_title">Enable slide to seek</string>
