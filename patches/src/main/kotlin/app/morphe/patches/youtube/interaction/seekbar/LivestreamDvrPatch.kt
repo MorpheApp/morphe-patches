@@ -10,6 +10,8 @@ package app.morphe.patches.youtube.interaction.seekbar
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -32,8 +34,15 @@ val livestreamDvrPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("morphe_livestream_dvr"),
-            SwitchPreference("morphe_expand_livestream_dvr_duration")
+            PreferenceCategory(
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = setOf(
+                    SwitchPreference("morphe_livestream_dvr"),
+                    SwitchPreference("morphe_expand_livestream_dvr_duration")
+                )
+            )
         )
 
         VideoStreamingDataAllowSeekingFingerprint.method.apply {
