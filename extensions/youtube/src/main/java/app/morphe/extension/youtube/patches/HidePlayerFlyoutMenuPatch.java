@@ -61,9 +61,9 @@ public final class HidePlayerFlyoutMenuPatch {
      */
     public static void hideNativeBottomSheetFooter(String path, List<Object> treeNodeResultList) {
         if (HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER || HIDE_PLAYER_FLYOUT_QUALITY_FOOTER) {
-            int size = treeNodeResultList.size();
-            if (size > 2) {
-                try {
+            try {
+                final int size = treeNodeResultList.size();
+                if (size > 2) {
                     boolean shouldRemove = false;
                     if (path.startsWith(CAPTIONS_BODY_PATH) && HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER) {
                         int i = 0;
@@ -95,9 +95,9 @@ public final class HidePlayerFlyoutMenuPatch {
                         // Hide bottom sheet divider.
                         treeNodeResultList.remove(size - 2);
                     }
-                } catch (Exception ex) {
-                    Logger.printException(() -> "Failed to remove bottom sheet footer", ex);
                 }
+            } catch (Exception ex) {
+                Logger.printException(() -> "hideNativeBottomSheetFooter failure", ex);
             }
         }
     }
@@ -110,6 +110,7 @@ public final class HidePlayerFlyoutMenuPatch {
             try {
                 var newElement = NewElement.parseFrom(bytes).toBuilder();
                 var identifier = newElement.getProperties().getIdentifierProperties().getIdentifier();
+
                 if (Utils.containsAny(identifier, PLAYER_FLYOUT_HEADER_IDENTIFIERS)) {
                     var type = newElement.getType().toBuilder();
                     var componentType = type.getComponentType().toBuilder();
@@ -119,7 +120,8 @@ public final class HidePlayerFlyoutMenuPatch {
                         var viewModel = youtubeModel.getViewModel().toBuilder();
 
                         if (viewModel.hasQuickQualitySheetContentViewModel()) {
-                            var quickQualitySheetContentViewModel = viewModel.getQuickQualitySheetContentViewModel().toBuilder();
+                            var quickQualitySheetContentViewModel = viewModel
+                                    .getQuickQualitySheetContentViewModel().toBuilder();
 
                             quickQualitySheetContentViewModel.clearQualityHeader();
 
@@ -156,7 +158,7 @@ public final class HidePlayerFlyoutMenuPatch {
                     }
                 }
             } catch (Exception ex) {
-                Logger.printException(() -> "Failed to parse newElement", ex);
+                Logger.printException(() -> "hideNativeBottomSheetHeader failure", ex);
             }
         }
 
