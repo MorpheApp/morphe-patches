@@ -30,6 +30,25 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 
     execute {
 
+        // region patch for set content languages.
+
+        LocaleLanguageManagerConstructorFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-virtual/range { p0 .. p0 }, ${LocaleLanguageManagerContentLanguagesFingerprint.method}
+                        move-result-object v0
+                        invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setContentLanguages(Ljava/util/List;)V
+                    """
+                )
+            }
+        }
+
+        // endregion
+
         // region patch for hide trending today title.
 
         SearchTypeaheadListDefaultPresentationConstructorFingerprint.method.addInstructions(
