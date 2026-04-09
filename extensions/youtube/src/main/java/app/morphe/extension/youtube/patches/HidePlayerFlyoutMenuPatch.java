@@ -18,7 +18,6 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class HidePlayerFlyoutMenuPatch {
 
-    public static volatile boolean isAudioTrackMenuVisible = false;
     public static volatile boolean isCaptionsMenuVisible = false;
     public static volatile boolean isQualityMenuVisible = false;
 
@@ -34,7 +33,7 @@ public final class HidePlayerFlyoutMenuPatch {
             @Override
             public void onGlobalLayout() {
                 try {
-                    if (!isAudioTrackMenuVisible && !isCaptionsMenuVisible && !isQualityMenuVisible) return;
+                    if (!isCaptionsMenuVisible && !isQualityMenuVisible) return;
                     if (recyclerView.getChildCount() == 0) return;
 
                     View sheetContent = recyclerView.getChildAt(0);
@@ -48,10 +47,9 @@ public final class HidePlayerFlyoutMenuPatch {
                     int topHeightToSubtract = 0;
                     int bottomHeightToSubtract = 0;
 
-                    boolean hideAudioTrackHeader = isAudioTrackMenuVisible && Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK_HEADER.get();
                     boolean hideQualityHeader = isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER.get();
 
-                    if (hideAudioTrackHeader || hideQualityHeader) {
+                    if (hideQualityHeader) {
                         boolean headerFound = false;
                         for (int i = 0; i < childCount; i++) {
                             View child = viewGroup.getChildAt(i);
@@ -102,7 +100,6 @@ public final class HidePlayerFlyoutMenuPatch {
                         }
                     }
 
-                    isAudioTrackMenuVisible = false;
                     isCaptionsMenuVisible = false;
                     isQualityMenuVisible = false;
 

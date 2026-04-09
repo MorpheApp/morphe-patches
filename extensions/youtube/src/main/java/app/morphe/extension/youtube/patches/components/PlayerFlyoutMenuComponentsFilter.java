@@ -36,7 +36,6 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
     }
 
     private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
-    private final StringFilterGroup audioTrackSheet;
     private final StringFilterGroup captionsSheet;
     private final StringFilterGroup qualitySheet;
     private final StringFilterGroup audioTrackMenuFooter;
@@ -45,11 +44,6 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
     private final StringFilterGroup qualityMenuHeader;
 
     public PlayerFlyoutMenuComponentsFilter() {
-        audioTrackSheet = new StringFilterGroup(
-                null,
-                "audio_track_sheet_content.e"
-        );
-
         qualitySheet = new StringFilterGroup(
                 null,
                 "advanced_quality_sheet_content.e"
@@ -82,7 +76,6 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
         );
 
         addPathCallbacks(
-                audioTrackSheet,
                 captionsSheet,
                 qualitySheet,
                 audioTrackMenuFooter,
@@ -172,10 +165,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        if (matchedGroup == audioTrackSheet) {
-            HidePlayerFlyoutMenuPatch.isAudioTrackMenuVisible = true;
-            return false;
-        } else if (matchedGroup == captionsSheet) {
+        if (matchedGroup == captionsSheet) {
             HidePlayerFlyoutMenuPatch.isCaptionsMenuVisible = true;
             return false;
         } else if (matchedGroup == qualitySheet) {
@@ -187,7 +177,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
             return true;
 
         if (matchedGroup == qualityMenuFooter) {
-            return (path.startsWith("quick_quality_sheet_content.e"));
+            return path.startsWith("quick_quality_sheet_content.e");
         }
 
         if (contentIndex != 0) {

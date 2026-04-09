@@ -891,9 +891,6 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_player_flyout_audio_track_footer_title">Hide Audio track footer</string>
     <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Audio track menu footer is hidden</string>
     <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Audio track menu footer is shown</string>
-    <string name="morphe_hide_player_flyout_audio_track_header_title">Hide Audio track header</string>
-    <string name="morphe_hide_player_flyout_audio_track_header_summary_on">Audio track menu header is hidden</string>
-    <string name="morphe_hide_player_flyout_audio_track_header_summary_off">Audio track menu header is shown</string>
     <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_watch_in_vr_title">Hide Watch in VR</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Watch in VR menu is hidden</string>
