@@ -15,7 +15,7 @@ interface IMethodCall {
     val definedClassName: String
     val methodName: String
     val methodParams: Array<String>
-    val returnType: String
+    val methodReturnType: String
 
     /**
      * Replaces an invoke-virtual instruction with an invoke-static instruction,
@@ -38,7 +38,7 @@ interface IMethodCall {
         method.apply {
             val args = fiveRegisters(instructionIndex)
             val replacementMethod =
-                "$methodName(${definedClassName}${methodParams.joinToString(separator = "")})$returnType"
+                "$methodName(${definedClassName}${methodParams.joinToString(separator = "")})$methodReturnType"
 
             replaceInstruction(
                 instructionIndex,
@@ -55,7 +55,7 @@ inline fun <reified E> fromMethodReference(
     search.definedClassName == methodReference.definingClass &&
         search.methodName == methodReference.name &&
         methodReference.parameterTypes.toTypedArray().contentEquals(search.methodParams) &&
-        search.returnType == methodReference.returnType
+        search.methodReturnType == methodReference.returnType
 }
 
 inline fun <reified E> filterMapInstruction35c(

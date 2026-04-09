@@ -19,7 +19,7 @@ private enum class MethodCall(
     override val definedClassName: String,
     override val methodName: String,
     override val methodParams: Array<String>,
-    override val returnType: String,
+    override val methodReturnType: String,
 ) : IMethodCall {
     PutBitmapFramework(
         "Landroid/media/MediaMetadata\$Builder;",
