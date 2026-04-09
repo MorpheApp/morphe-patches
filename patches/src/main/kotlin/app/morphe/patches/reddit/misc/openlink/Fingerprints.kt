@@ -11,7 +11,33 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+
+internal object ArticleConstructorFingerprint : Fingerprint(
+    classFingerprint = ArticleToStringFingerprint,
+    returnType = "V",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        string("url"),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "V",
+            parameters = listOf(
+                "L",
+                "Ljava/lang/String;"
+            )
+        )
+    )
+)
+
+private object ArticleToStringFingerprint : Fingerprint(
+    name = "toString",
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("Article(postId=")
+    )
+)
 
 internal object CustomReportsFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/safety/report/dialogs/customreports/",
@@ -28,4 +54,10 @@ internal object CustomReportsFingerprint : Fingerprint(
             location = MatchAfterImmediately()
         )
     )
+)
+
+internal object FbpActivityOnCreateFingerprint : Fingerprint(
+    definingClass = "Lcom/reddit/fullbleedplayer/common/FbpActivity;",
+    name = "onCreate",
+    returnType = "V"
 )

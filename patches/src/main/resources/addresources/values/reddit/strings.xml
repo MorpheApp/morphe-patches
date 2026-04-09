@@ -68,4 +68,6 @@ Limitation: Only shown if the API response includes the view count"</string>
     <string name="morphe_sanitize_sharing_links_summary">Sanitizes sharing links by removing tracking query parameters</string>
     <string name="morphe_open_links_directly_title">Open links directly</string>
     <string name="morphe_open_links_directly_summary">Skips over redirection URLs in external links</string>
+    <string name="morphe_open_links_externally_title">Open links externally</string>
+    <string name="morphe_open_links_externally_summary">Opens links in your browser instead of in the in-app-browser</string>
 </resources>
