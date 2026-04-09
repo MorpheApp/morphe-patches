@@ -13,6 +13,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 
 @SuppressWarnings("unused")
 public class LegacyPlayerControlsPatch {
@@ -25,7 +26,7 @@ public class LegacyPlayerControlsPatch {
     }
 
     public static final boolean RESTORE_OLD_PLAYER_BUTTONS =
-            Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !IS_20_31_OR_GREATER || isSpoofingToLessThan("20.31.00");
+            Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !YouTubeActivityHook.useBoldIcons(true);
 
     public static WeakReference<View> fullscreenButtonRef = new WeakReference<>(null);
 
