@@ -14,6 +14,7 @@ import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
+import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideNavigationButtonsPatch;
 import app.morphe.extension.reddit.patches.HideRecommendedCommunitiesShelf;
 import app.morphe.extension.reddit.patches.HideSidebarComponentsPatch;
@@ -33,6 +34,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     @Override
     public boolean getSettingsStatus() {
         return DisableScreenshotPopupPatch.isPatchIncluded() ||
+                HideAskButtonPatch.isPatchIncluded() ||
                 HideNavigationButtonsPatch.isPatchIncluded() ||
                 HideSidebarComponentsPatch.isPatchIncluded() ||
                 HideRecommendedCommunitiesShelf.isPatchIncluded() ||
@@ -53,6 +55,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.DISABLE_SCREENSHOT_POPUP
+            ));
+        }
+
+        if (HideAskButtonPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.HIDE_ASK_BUTTON
             ));
         }
 
