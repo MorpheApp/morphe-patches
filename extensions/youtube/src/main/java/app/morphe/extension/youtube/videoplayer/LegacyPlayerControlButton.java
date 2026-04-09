@@ -10,6 +10,8 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
+import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
+
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -25,7 +27,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.shared.PlayerControlsVisibility;
 import app.morphe.extension.youtube.shared.PlayerType;
 import kotlin.Unit;
@@ -90,7 +91,7 @@ public class LegacyPlayerControlButton {
 
         if (imageResourceName != null) {
             final int iconResourceId = ResourceUtils.getIdentifierOrThrow(ResourceType.DRAWABLE,
-                    LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
+                    RESTORE_OLD_PLAYER_BUTTONS
                             ? imageResourceName
                             : imageResourceName + "_bold"
             );

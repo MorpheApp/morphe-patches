@@ -2,6 +2,7 @@ package app.morphe.extension.youtube.sponsorblock.ui;
 
 import static app.morphe.extension.shared.ResourceUtils.getColor;
 import static app.morphe.extension.shared.ResourceUtils.getDimensionPixelSize;
+import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
 import static app.morphe.extension.youtube.sponsorblock.ui.SkipSponsorButton.SB_BUTTON_EXTRA_VERTICAL_PADDING;
 
 import android.content.Context;
@@ -18,7 +19,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
@@ -123,7 +123,7 @@ public final class NewSegmentLayout extends FrameLayout {
 
         final int background = ResourceUtils.getIdentifierOrThrow(
                 ResourceType.DRAWABLE,
-                LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
+                RESTORE_OLD_PLAYER_BUTTONS
                         ? imageResourceName
                         : imageResourceName + "_bold");
         button.setImageResource(background);

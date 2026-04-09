@@ -17,8 +17,6 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.lang.ref.WeakReference
 
-private const val PLAYER_BUTTON_OVERLAY_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplayer/PlayerOverlayButton;"
-
 private lateinit var exploderButtonMethodRef : WeakReference<MutableMethod>
 private var exploderButtonInsertIndex = -1
 private var exploderButtonInsertRegister = -1

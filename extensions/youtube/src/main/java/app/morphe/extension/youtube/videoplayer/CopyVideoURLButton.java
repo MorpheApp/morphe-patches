@@ -11,6 +11,7 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
 
 import android.os.Build;
 import android.view.View;
@@ -19,7 +20,6 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -35,8 +35,7 @@ public class CopyVideoURLButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                    || !Settings.COPY_VIDEO_URL.get()) {
+            if (RESTORE_OLD_PLAYER_BUTTONS || !Settings.COPY_VIDEO_URL.get()) {
                 return;
             }
 
@@ -59,7 +58,7 @@ public class CopyVideoURLButton {
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS) {
+            if (!RESTORE_OLD_PLAYER_BUTTONS) {
                 return;
             }
 

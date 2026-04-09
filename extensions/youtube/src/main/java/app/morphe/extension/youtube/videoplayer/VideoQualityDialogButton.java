@@ -15,6 +15,7 @@ import static app.morphe.extension.shared.settings.preference.CustomDialogListPr
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_CHECK_ICON_PLACEHOLDER;
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_ITEM_TEXT;
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.LAYOUT_MORPHE_CUSTOM_LIST_ITEM_CHECKED;
+import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
 import static app.morphe.extension.youtube.patches.VideoInformation.AUTOMATIC_VIDEO_QUALITY_VALUE;
 import static app.morphe.extension.youtube.patches.VideoInformation.isPremiumVideoQuality;
 import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.fadeInDuration;
@@ -45,7 +46,6 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.VideoInformation.VideoQualityInterface;
 import app.morphe.extension.youtube.patches.playback.quality.RememberVideoQualityPatch;
@@ -82,8 +82,7 @@ public class VideoQualityDialogButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
-                    || !Settings.VIDEO_QUALITY_DIALOG_BUTTON.get()) {
+            if (RESTORE_OLD_PLAYER_BUTTONS || !Settings.VIDEO_QUALITY_DIALOG_BUTTON.get()) {
                 return;
             }
 
@@ -105,7 +104,7 @@ public class VideoQualityDialogButton {
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
-            if (!LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS) {
+            if (!RESTORE_OLD_PLAYER_BUTTONS) {
                 return;
             }
 

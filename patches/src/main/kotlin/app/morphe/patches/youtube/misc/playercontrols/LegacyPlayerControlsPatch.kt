@@ -23,6 +23,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_30_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -261,7 +262,7 @@ val legacyPlayerControlsPatch = bytecodePatch(
     )
 
     execute {
-        if (is_20_30_or_greater) {
+        if (is_20_31_or_greater) {
             PreferenceScreen.PLAYER.addPreferences(
                 SwitchPreference("morphe_restore_old_player_buttons")
             )

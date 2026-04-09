@@ -1,5 +1,8 @@
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_31_OR_GREATER;
+import static app.morphe.extension.youtube.patches.spoof.SpoofAppVersionPatch.isSpoofingToLessThan;
+
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
@@ -8,14 +11,21 @@ import java.lang.ref.WeakReference;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class LegacyPlayerControlsPatch {
 
-    // 20.31 is first version with working buttons, but the layout is weird with oval-shaped player buttons.
-    public static final boolean RESTORE_OLD_PLAYER_BUTTONS = Settings.RESTORE_OLD_PLAYER_BUTTONS.get()
-            || !VersionCheckPatch.IS_20_31_OR_GREATER;
+    public static final class RestoreOldPlayerButtonsAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return IS_20_31_OR_GREATER && !isSpoofingToLessThan("20.31.00");
+        }
+    }
+
+    public static final boolean RESTORE_OLD_PLAYER_BUTTONS =
+            Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !IS_20_31_OR_GREATER || isSpoofingToLessThan("20.31.00");
 
     public static WeakReference<View> fullscreenButtonRef = new WeakReference<>(null);
 
@@ -84,9 +94,6 @@ public class LegacyPlayerControlsPatch {
      * Injection point.
      */
     public static boolean usePlayerBottomControlsExploderLayout(boolean original) {
-        if (RESTORE_OLD_PLAYER_BUTTONS) {
-            return false;
-        }
-        return original;
+        return !RESTORE_OLD_PLAYER_BUTTONS;
     }
 }

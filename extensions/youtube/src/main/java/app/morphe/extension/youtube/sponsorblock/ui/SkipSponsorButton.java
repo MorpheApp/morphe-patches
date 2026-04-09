@@ -3,6 +3,7 @@ package app.morphe.extension.youtube.sponsorblock.ui;
 import static app.morphe.extension.shared.ResourceUtils.getColor;
 import static app.morphe.extension.shared.ResourceUtils.getDimension;
 import static app.morphe.extension.shared.ResourceUtils.getDimensionPixelSize;
+import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -22,7 +23,6 @@ import java.util.Objects;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.ui.Dim;
-import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
 import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
@@ -30,7 +30,7 @@ import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
 public class SkipSponsorButton extends FrameLayout {
     /**
      * Adds a high contrast border around the skip button.
-     *
+     * <p>
      * This feature is not currently used.
      * If this is added, it needs an additional button width change because
      * as-is the skip button text is clipped when this is on.
@@ -43,7 +43,7 @@ public class SkipSponsorButton extends FrameLayout {
      * the bold player buttons.
      */
     public static final int SB_BUTTON_EXTRA_VERTICAL_PADDING =
-            LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS
+            RESTORE_OLD_PLAYER_BUTTONS
             ? 0
             : Dim.dp10;
     private final LinearLayout skipSponsorBtnContainer;
