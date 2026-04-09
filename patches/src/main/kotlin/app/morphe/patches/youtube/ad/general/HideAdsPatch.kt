@@ -88,7 +88,10 @@ val hideAdsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        // Hide YouTube Premium promotions
+
         hookElement("$EXTENSION_CLASS_DESCRIPTOR->hideStatementBanner([B)[B")
+
         // Hide end screen store banner
 
         FullScreenEngagementAdContainerFingerprint.let {
