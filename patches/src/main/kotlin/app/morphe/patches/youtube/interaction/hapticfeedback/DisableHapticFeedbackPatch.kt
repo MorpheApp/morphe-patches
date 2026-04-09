@@ -44,11 +44,10 @@ val disableHapticFeedbackPatch = bytecodePatch(
                 )
             },
             transform = { method, entry ->
-                val (methodType, instruction, instructionIndex) = entry
+                val (methodType, _, instructionIndex) = entry
                 methodType.replaceInvokeVirtualWithExtension(
                     EXTENSION_CLASS_DESCRIPTOR,
                     method,
-                    instruction,
                     instructionIndex,
                 )
             },

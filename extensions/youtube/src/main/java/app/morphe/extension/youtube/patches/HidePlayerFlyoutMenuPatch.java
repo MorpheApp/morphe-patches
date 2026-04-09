@@ -12,16 +12,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 
+import android.widget.ListView;
+
+import java.util.List;
+
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class HidePlayerFlyoutMenuPatch {
 
+    private static final boolean HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER = Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
+    private static final boolean HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER = Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER.get();
+    private static final boolean HIDE_PLAYER_FLYOUT_QUALITY_FOOTER = Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
+    private static final boolean HIDE_PLAYER_FLYOUT_QUALITY_HEADER = Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER.get();
+
     public static volatile boolean isCaptionsMenuVisible = false;
     public static volatile boolean isQualityMenuVisible = false;
-
-    private HidePlayerFlyoutMenuPatch() {}
 
     /**
      * Injection point.
@@ -47,7 +55,7 @@ public final class HidePlayerFlyoutMenuPatch {
                     int topHeightToSubtract = 0;
                     int bottomHeightToSubtract = 0;
 
-                    boolean hideQualityHeader = isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER.get();
+                    boolean hideQualityHeader = isQualityMenuVisible && HIDE_PLAYER_FLYOUT_QUALITY_HEADER;
 
                     if (hideQualityHeader) {
                         boolean headerFound = false;
@@ -68,8 +76,8 @@ public final class HidePlayerFlyoutMenuPatch {
                         }
                     }
 
-                    boolean hideCaptionsFooter = isCaptionsMenuVisible && Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
-                    boolean hideQualityFooter = isQualityMenuVisible && Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
+                    boolean hideCaptionsFooter = isCaptionsMenuVisible && HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER;
+                    boolean hideQualityFooter = isQualityMenuVisible && HIDE_PLAYER_FLYOUT_QUALITY_FOOTER;
 
                     if (hideCaptionsFooter || hideQualityFooter) {
                         boolean footerFound = false;
@@ -108,5 +116,51 @@ public final class HidePlayerFlyoutMenuPatch {
                 }
             }
         });
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideCaptionsOldBottomSheetFooter(ListView listView, View view, Object object, boolean bool) {
+        if (HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER) {
+            view = new View(listView.getContext());
+        }
+
+        listView.addFooterView(view, object, bool);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static View hideCaptionsOldBottomSheetHeader(View parentView, int resId) {
+        View headerView = parentView.findViewById(resId);
+        Utils.hideViewByRemovingFromParentUnderCondition(
+                HIDE_PLAYER_FLYOUT_CAPTIONS_HEADER,
+                headerView
+        );
+
+        return headerView;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideQualityOldBottomSheetFooter(ListView listView, View view, Object object, boolean bool) {
+        if (HIDE_PLAYER_FLYOUT_QUALITY_FOOTER) {
+            view = new View(listView.getContext());
+        }
+
+        listView.addFooterView(view, object, bool);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideQualityOldBottomSheetHeader(ListView listView, View view, Object object, boolean bool) {
+        if (HIDE_PLAYER_FLYOUT_QUALITY_HEADER) {
+            view = new View(listView.getContext());
+        }
+
+        listView.addHeaderView(view, object, bool);
     }
 }

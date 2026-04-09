@@ -10,6 +10,7 @@
 
 package app.morphe.patches.youtube.layout.hide.player.flyoutmenu
 
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -22,9 +23,12 @@ import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHoo
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.fiveRegisters
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/HidePlayerFlyoutMenuPatch;"
+private const val EXTENSION_FILTER_CLASS_DESCRIPTOR =
+    "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuComponentsFilter;"
 
 @Suppress("unused")
 val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
@@ -42,8 +46,6 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        val filterClassDescriptor = "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuComponentsFilter;"
-
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_hide_player_flyout",
@@ -77,6 +79,59 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
         )
 
         addRecyclerViewTreeHook(EXTENSION_CLASS_DESCRIPTOR)
-        addLithoFilter(filterClassDescriptor)
+        addLithoFilter(EXTENSION_FILTER_CLASS_DESCRIPTOR)
+
+        // region Patch for the Shorts flyout
+
+        CaptionsOldBottomSheetLayoutInflaterFingerprint.matchAll().forEach { match ->
+            match.let {
+                it.method.apply {
+                    val footerViewIndex = it.instructionMatches.last().index
+                    val footerViewArgs = fiveRegisters(footerViewIndex)
+
+                    replaceInstruction(
+                        footerViewIndex,
+                        "invoke-static { $footerViewArgs }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                                "hideCaptionsOldBottomSheetFooter(Landroid/widget/ListView;Landroid/view/View;Ljava/lang/Object;Z)V"
+                    )
+
+                    val headerViewIndex = it.instructionMatches[1].index
+                    val headerViewArgs = fiveRegisters(headerViewIndex)
+
+                    replaceInstruction(
+                        headerViewIndex,
+                        "invoke-static { $headerViewArgs }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                                "hideCaptionsOldBottomSheetHeader(Landroid/view/View;I)Landroid/view/View;"
+                    )
+                }
+            }
+        }
+
+        QualityOldBottomSheetLayoutInflaterFingerprint.matchAll().forEach { match ->
+            match.let {
+                it.method.apply {
+                    val footerViewIndex = it.instructionMatches.last().index
+                    val footerViewArgs = fiveRegisters(footerViewIndex)
+
+                    replaceInstruction(
+                        footerViewIndex,
+                        "invoke-static { $footerViewArgs }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                                "hideQualityOldBottomSheetFooter(Landroid/widget/ListView;Landroid/view/View;Ljava/lang/Object;Z)V"
+                    )
+
+                    val headerViewIndex = it.instructionMatches[1].index
+                    val headerViewArgs = fiveRegisters(headerViewIndex)
+
+                    replaceInstruction(
+                        headerViewIndex,
+                        "invoke-static { $headerViewArgs }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                                "hideQualityOldBottomSheetHeader(Landroid/widget/ListView;Landroid/view/View;Ljava/lang/Object;Z)V"
+                    )
+                }
+            }
+        }
+
+        // endregion
+
     }
 }

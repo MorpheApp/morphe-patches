@@ -39,12 +39,11 @@ val fixRecycledBitmapPatch = transformInstructionsPatch(
         )
     },
     transform = transform@{ mutableMethod, entry ->
-        val (methodCall, invokeInstruction, instructionIndex) = entry
+        val (methodCall, _, instructionIndex) = entry
         
         methodCall.replaceInvokeVirtualWithExtension(
             EXTENSION_CLASS_DESCRIPTOR,
             mutableMethod,
-            invokeInstruction,
             instructionIndex
         )
     }
