@@ -12,6 +12,7 @@ import static app.morphe.extension.youtube.shared.ConversionContext.ELEMENT_IDEN
 
 import java.util.List;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
@@ -22,18 +23,22 @@ public class TreeNodeElementPatch {
      * Injection point.
      */
     public static void onTreeNodeResultLoaded(ContextInterface contextInterface, List<Object> treeNodeResultList) {
-        if (treeNodeResultList == null || treeNodeResultList.isEmpty()) {
-            return;
-        }
-        String firstElement = treeNodeResultList.get(0).toString();
-        if (ELEMENT_IDENTIFIER_COMPONENT.equals(firstElement)) {
-            String path = contextInterface.patch_getPathBuilder().toString();
-            onComponentLoaded(path, treeNodeResultList);
-        } else if (ELEMENT_IDENTIFIER_LAZILY.equals(firstElement)) {
-            String identifier = contextInterface.patch_getIdentifier();
-            if (Utils.isNotEmpty(identifier)) {
-                onLazilyConvertedElementLoaded(identifier, treeNodeResultList);
+        try {
+            if (treeNodeResultList == null || treeNodeResultList.isEmpty()) {
+                return;
             }
+            String firstElement = treeNodeResultList.get(0).toString();
+            if (ELEMENT_IDENTIFIER_COMPONENT.equals(firstElement)) {
+                String path = contextInterface.patch_getPathBuilder().toString();
+                onComponentLoaded(path, treeNodeResultList);
+            } else if (ELEMENT_IDENTIFIER_LAZILY.equals(firstElement)) {
+                String identifier = contextInterface.patch_getIdentifier();
+                if (Utils.isNotEmpty(identifier)) {
+                    onLazilyConvertedElementLoaded(identifier, treeNodeResultList);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "onTreeNodeResultLoaded failure", ex);
         }
     }
 
