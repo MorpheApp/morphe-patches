@@ -12,14 +12,17 @@ package app.morphe.patches.youtube.layout.hide.player.flyoutmenu
 
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
+import app.morphe.patches.youtube.misc.litho.node.hookTreeNodeResult
+import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTreeHook
-import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHookPatch
+import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
+import app.morphe.patches.youtube.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -40,7 +43,9 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
         playerTypeHookPatch,
         resourceMappingPatch,
         settingsPatch,
-        recyclerViewTreeHookPatch
+        elementProtoParserHookPatch,
+        fixProtoLibraryPatch,
+        treeNodeElementHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -78,8 +83,12 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
             )
         )
 
-        addRecyclerViewTreeHook(EXTENSION_CLASS_DESCRIPTOR)
         addLithoFilter(EXTENSION_FILTER_CLASS_DESCRIPTOR)
+        hookElement("$EXTENSION_CLASS_DESCRIPTOR->hideNativeBottomSheetHeader([B)[B")
+        hookTreeNodeResult(
+            descriptor = "$EXTENSION_CLASS_DESCRIPTOR->hideNativeBottomSheetFooter",
+            isLazilyConvertedElement = false
+        )
 
         // region Patch for the Shorts flyout
 

@@ -19,8 +19,8 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
-import app.morphe.patches.youtube.misc.litho.lazily.hookTreeNodeResult
-import app.morphe.patches.youtube.misc.litho.lazily.lazilyConvertedElementHookPatch
+import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
+import app.morphe.patches.youtube.misc.litho.node.hookTreeNodeResult
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -40,7 +40,7 @@ val hideVideoActionButtonsPatch = bytecodePatch(
         settingsPatch,
         sharedExtensionPatch,
         lithoFilterPatch,
-        lazilyConvertedElementHookPatch,
+        treeNodeElementHookPatch,
         fixProtoLibraryPatch,
         videoInformationPatch,
     )

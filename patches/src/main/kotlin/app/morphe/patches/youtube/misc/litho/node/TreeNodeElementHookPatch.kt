@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
  
-package app.morphe.patches.youtube.misc.litho.lazily
+package app.morphe.patches.youtube.misc.litho.node
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -17,14 +17,16 @@ import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getFreeRegisterProvider
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import java.lang.ref.WeakReference
 
 internal const val EXTENSION_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/LazilyConvertedElementPatch;"
+    "Lapp/morphe/extension/youtube/patches/TreeNodeElementPatch;"
 
-private lateinit var lazilyConvertedElementLoadedMethod: MutableMethod
+private lateinit var componentLoadedMethodRef: WeakReference<MutableMethod>
+private lateinit var lazilyConvertedElementLoadedMethodRef: WeakReference<MutableMethod>
 
-internal val lazilyConvertedElementHookPatch = bytecodePatch(
-    description = "Hooks the LazilyConvertedElement tree node lists to the extension."
+internal val treeNodeElementHookPatch = bytecodePatch(
+    description = "Hooks the tree node element lists to the extension."
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -48,12 +50,23 @@ internal val lazilyConvertedElementHookPatch = bytecodePatch(
             )
         }
 
-        lazilyConvertedElementLoadedMethod = LazilyConvertedElementPatchFingerprint.method
+        val componentLoadedMethod = ComponentPatchFingerprint.method
+        componentLoadedMethodRef = WeakReference(componentLoadedMethod)
+
+        val lazilyConvertedElementLoadedMethod = LazilyConvertedElementPatchFingerprint.method
+        lazilyConvertedElementLoadedMethodRef = WeakReference(lazilyConvertedElementLoadedMethod)
     }
 }
 
-internal fun hookTreeNodeResult(descriptor: String) =
-    lazilyConvertedElementLoadedMethod.addInstruction(
+internal fun hookTreeNodeResult(
+    descriptor: String,
+    isLazilyConvertedElement: Boolean = true
+) {
+    val method = if (isLazilyConvertedElement) lazilyConvertedElementLoadedMethodRef.get()!!
+    else componentLoadedMethodRef.get()!!
+
+    method.addInstruction(
         0,
         "invoke-static { p0, p1 }, $descriptor(Ljava/lang/String;Ljava/util/List;)V"
     )
+}

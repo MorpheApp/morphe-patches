@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
  
-package app.morphe.patches.youtube.misc.litho.lazily
+package app.morphe.patches.youtube.misc.litho.node
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall
@@ -28,6 +28,12 @@ internal object TreeNodeResultListFingerprint : Fingerprint(
     filters = listOf(
         methodCall(name = "nCopies", opcode = Opcode.INVOKE_STATIC),
     )
+)
+
+internal object ComponentPatchFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    name = "onComponentLoaded",
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC)
 )
 
 internal object LazilyConvertedElementPatchFingerprint : Fingerprint(

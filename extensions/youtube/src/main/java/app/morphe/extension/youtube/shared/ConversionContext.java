@@ -8,6 +8,10 @@
 package app.morphe.extension.youtube.shared;
 
 public final class ConversionContext {
+    public static final String ELEMENT_IDENTIFIER_COMPONENT = "ComponentType";
+    public static final String ELEMENT_IDENTIFIER_CONTAINER = "Container";
+    public static final String ELEMENT_IDENTIFIER_LAZILY = "LazilyConvertedElement";
+
     /**
      * Interface to use obfuscated methods.
      */

@@ -7,14 +7,16 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.youtube.shared.ConversionContext.ELEMENT_IDENTIFIER_COMPONENT;
+import static app.morphe.extension.youtube.shared.ConversionContext.ELEMENT_IDENTIFIER_LAZILY;
+
 import java.util.List;
 
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 @SuppressWarnings("unused")
-public class LazilyConvertedElementPatch {
-    private static final String LAZILY_CONVERTED_ELEMENT = "LazilyConvertedElement";
+public class TreeNodeElementPatch {
 
     /**
      * Injection point.
@@ -24,13 +26,19 @@ public class LazilyConvertedElementPatch {
             return;
         }
         String firstElement = treeNodeResultList.get(0).toString();
-        if (!LAZILY_CONVERTED_ELEMENT.equals(firstElement)) {
-            return;
+        if (ELEMENT_IDENTIFIER_COMPONENT.equals(firstElement)) {
+            String path = contextInterface.patch_getPathBuilder().toString();
+            onComponentLoaded(path, treeNodeResultList);
+        } else if (ELEMENT_IDENTIFIER_LAZILY.equals(firstElement)) {
+            String identifier = contextInterface.patch_getIdentifier();
+            if (Utils.isNotEmpty(identifier)) {
+                onLazilyConvertedElementLoaded(identifier, treeNodeResultList);
+            }
         }
-        String identifier = contextInterface.patch_getIdentifier();
-        if (Utils.isNotEmpty(identifier)) {
-            onLazilyConvertedElementLoaded(identifier, treeNodeResultList);
-        }
+    }
+
+    private static void onComponentLoaded(String path, List<Object> treeNodeResultList) {
+        // Code added during patching.
     }
 
     private static void onLazilyConvertedElementLoaded(String identifier, List<Object> treeNodeResultList) {

@@ -33,8 +33,8 @@ import app.morphe.patches.youtube.layout.hide.updatescreen.hideUpdateScreenPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
-import app.morphe.patches.youtube.misc.litho.lazily.hookTreeNodeResult
-import app.morphe.patches.youtube.misc.litho.lazily.lazilyConvertedElementHookPatch
+import app.morphe.patches.youtube.misc.litho.node.hookTreeNodeResult
+import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
@@ -90,7 +90,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         hideUpdateScreenPatch,
         elementProtoParserHookPatch,
         fixProtoLibraryPatch,
-        lazilyConvertedElementHookPatch
+        treeNodeElementHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
