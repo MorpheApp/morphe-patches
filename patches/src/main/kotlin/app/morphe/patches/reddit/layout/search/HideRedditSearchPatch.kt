@@ -14,7 +14,8 @@ import app.morphe.util.findElementByAttributeValueOrThrow
 @Suppress("unused")
 val hideRedditSearchPatch = resourcePatch(
     name = "Hide Reddit search",
-    description = "Permanently hides the Reddit search in the contextual menu.",
+    description = "Permanently hides the Reddit search in the contextual menu. " +
+            "This patch does not work with root mounting",
     default = false
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
