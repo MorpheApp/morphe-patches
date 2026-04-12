@@ -30,7 +30,7 @@ import app.morphe.util.fiveRegisters
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/HidePlayerFlyoutMenuPatch;"
-private const val EXTENSION_FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuComponentsFilter;"
 
 @Suppress("unused")
@@ -83,7 +83,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
             )
         )
 
-        addLithoFilter(EXTENSION_FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
         hookElement("$EXTENSION_CLASS_DESCRIPTOR->hideNativeBottomSheetHeader([B)[B")
         hookTreeNodeResult(
             descriptor = "$EXTENSION_CLASS_DESCRIPTOR->hideNativeBottomSheetFooter",

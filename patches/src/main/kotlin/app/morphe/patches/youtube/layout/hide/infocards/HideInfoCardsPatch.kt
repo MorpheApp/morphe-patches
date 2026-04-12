@@ -18,7 +18,7 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/HideInfoCardsPatch;"
-private const val EXTENSOIN_FILTER = "Lapp/morphe/extension/youtube/patches/components/InfoCardsFilter;"
+private const val EXTENSION_FILTER = "Lapp/morphe/extension/youtube/patches/components/InfoCardsFilter;"
 
 @Suppress("unused")
 val hideInfoCardsPatch = bytecodePatch(
@@ -77,6 +77,6 @@ val hideInfoCardsPatch = bytecodePatch(
         }
 
         // Info cards can also appear as Litho components.
-        addLithoFilter(EXTENSOIN_FILTER)
+        addLithoFilter(EXTENSION_FILTER)
     }
 }

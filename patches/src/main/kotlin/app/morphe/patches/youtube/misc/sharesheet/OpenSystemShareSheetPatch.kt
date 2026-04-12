@@ -22,7 +22,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/OpenSystemShareSheetPatch;"
 
-private const val FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/SystemShareSheetFilter;"
 
 @Suppress("unused")
@@ -65,6 +65,6 @@ internal fun openSystemShareSheetPatch(
             )
         }
 
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
     }
 }

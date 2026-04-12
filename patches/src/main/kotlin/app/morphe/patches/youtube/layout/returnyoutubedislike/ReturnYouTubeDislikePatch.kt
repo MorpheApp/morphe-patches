@@ -41,7 +41,7 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/ReturnYouTubeDislikePatch;"
 
-private const val FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/ReturnYouTubeDislikeFilter;"
 
 val returnYouTubeDislikePatch = bytecodePatch(
@@ -194,10 +194,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // region Hook Shorts
 
         // Filter that parses the video ID from the UI
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
 
         // Player response video ID is needed to search for the video IDs in Shorts litho components.
-        hookPlayerResponseVideoId("$FILTER_CLASS_DESCRIPTOR->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
+        hookPlayerResponseVideoId("$EXTENSION_FILTER->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
 
         // endregion
 

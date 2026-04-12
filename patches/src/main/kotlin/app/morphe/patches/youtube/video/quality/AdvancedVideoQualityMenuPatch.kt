@@ -27,7 +27,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/youtube/patches/playback/quality/AdvancedVideoQualityMenuPatch;"
 
-private const val FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/AdvancedVideoQualityMenuFilter;"
 
 internal val advancedVideoQualityMenuPatch = bytecodePatch {
@@ -89,7 +89,7 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
         addRecyclerViewTreeHook(EXTENSION_CLASS_DESCRIPTOR)
 
         // Required to check if the video quality menu is currently shown in order to click on the "Advanced" item.
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
 
         // endregion
     }
