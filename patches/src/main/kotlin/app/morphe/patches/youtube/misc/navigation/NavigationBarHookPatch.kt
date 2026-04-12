@@ -45,7 +45,7 @@ import java.lang.ref.WeakReference
 
 internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/shared/NavigationBar;"
-internal const val EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR =
+internal const val EXTENSION_NAVIGATION_BUTTON_CLASS =
     $$"Lapp/morphe/extension/youtube/shared/NavigationBar$NavigationButton;"
 private const val EXTENSION_TOOLBAR_INTERFACE =
     $$"Lapp/morphe/extension/youtube/shared/NavigationBar$AppCompatToolbarPatchInterface;"
@@ -79,7 +79,7 @@ fun hookNavigationButtonCreated(extensionClassDescriptor: String) {
     hookNavigationButtonCreatedMethodRef.get()!!.addInstruction(
         0,
         "invoke-static { p0, p1 }, $extensionClassDescriptor->navigationTabCreated" +
-                "(${EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR}Landroid/view/View;)V",
+                "(${EXTENSION_NAVIGATION_BUTTON_CLASS}Landroid/view/View;)V",
     )
 }
 

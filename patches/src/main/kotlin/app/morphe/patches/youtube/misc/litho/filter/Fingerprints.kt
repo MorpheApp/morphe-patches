@@ -53,7 +53,7 @@ internal object LithoFilterFingerprint : Fingerprint(
         fieldAccess(
             opcode = Opcode.SPUT_OBJECT,
             definingClass = "this",
-            type = EXTENSION_FILER_ARRAY_DESCRIPTOR
+            type = EXTENSION_FILTER
         )
     )
 )

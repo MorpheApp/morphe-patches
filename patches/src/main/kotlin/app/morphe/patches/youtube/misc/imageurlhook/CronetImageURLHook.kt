@@ -55,7 +55,7 @@ val cronetImageURLHookPatch = bytecodePatch(
         } as ReferenceInstruction
 
         val urlFieldName = (urlFieldInstruction.reference as FieldReference).name
-        val definingClass = CRONET_URL_REQUEST_CLASS_DESCRIPTOR
+        val definingClass = CRONET_URL_REQUEST_CLASS
         val addedMethodName = "getHookedUrl"
         RequestFingerprint.classDef.methods.add(
             ImmutableMethod(

@@ -56,14 +56,14 @@ private val reloadVideoResourcePatch = resourcePatch {
     }
 }
 
-private const val BUTTON_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/videoplayer/ReloadVideoButton;"
-
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ReloadVideoPatch;"
 
 private const val EXTENSION_PLAYER_INTERFACE =
     $$"Lapp/morphe/extension/youtube/patches/ReloadVideoPatch$PlayerInterface;"
+
+private const val EXTENSION_BUTTON =
+    "Lapp/morphe/extension/youtube/videoplayer/ReloadVideoButton;"
 
 @Suppress("unused")
 val reloadVideoPatch = bytecodePatch(
@@ -88,8 +88,8 @@ val reloadVideoPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeTopControl(BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
+        initializeTopControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
 
         // Main activity is used to launch downloader intent.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(

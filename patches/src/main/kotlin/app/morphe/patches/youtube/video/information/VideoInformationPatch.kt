@@ -192,9 +192,9 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Inject call for video IDs
          */
-        val videoIdMethodDescriptor = "$EXTENSION_CLASS->setVideoId(Ljava/lang/String;)V"
-        hookVideoId(videoIdMethodDescriptor)
-        hookBackgroundPlayVideoId(videoIdMethodDescriptor)
+        val videoIdMethod = "$EXTENSION_CLASS->setVideoId(Ljava/lang/String;)V"
+        hookVideoId(videoIdMethod)
+        hookBackgroundPlayVideoId(videoIdMethod)
         hookPlayerResponsePlaylistId(
             "$EXTENSION_CLASS->setPlayerResponsePlaylistId(Ljava/lang/String;Z)V",
         )

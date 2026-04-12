@@ -33,8 +33,7 @@ import app.morphe.util.copyXmlNode
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 
-private const val MUSIC_ACTIVITY_HOOK_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/music/settings/MusicActivityHook;"
+private const val MUSIC_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/music/settings/MusicActivityHook;"
 
 private val preferences = mutableSetOf<BasePreference>()
 
@@ -128,7 +127,7 @@ val settingsPatch = bytecodePatch(
 
         modifyActivityForSettingsInjection(
             GoogleApiActivityOnCreateFingerprint,
-            MUSIC_ACTIVITY_HOOK_CLASS_DESCRIPTOR,
+            MUSIC_ACTIVITY_HOOK_CLASS,
             true
         )
 
@@ -137,7 +136,7 @@ val settingsPatch = bytecodePatch(
             BoldIconsFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$MUSIC_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useBoldIcons(Z)Z"
+                    "$MUSIC_ACTIVITY_HOOK_CLASS->useBoldIcons(Z)Z"
                 )
             }
         }

@@ -38,10 +38,10 @@ internal object OnSucceededFingerprint : Fingerprint(
     parameters = listOf("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;")
 )
 
-internal const val CRONET_URL_REQUEST_CLASS_DESCRIPTOR = "Lorg/chromium/net/impl/CronetUrlRequest;"
+internal const val CRONET_URL_REQUEST_CLASS = "Lorg/chromium/net/impl/CronetUrlRequest;"
 
 internal object RequestFingerprint : Fingerprint(
-    definingClass = CRONET_URL_REQUEST_CLASS_DESCRIPTOR,
+    definingClass = CRONET_URL_REQUEST_CLASS,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
 )
 

@@ -54,15 +54,14 @@ public final class ChangeStartPagePatch {
 
     private static final String ACTION_MAIN = "android.intent.action.MAIN";
 
-
-    private static final String SETTINGS_CLASS_DESCRIPTOR = "com.google.android.apps.youtube.music.settings.SettingsCompatActivity";
+    private static final String SETTINGS_CLASS = "com.google.android.apps.youtube.music.settings.SettingsCompatActivity";
     private static final String SETTINGS_ATTRIBUTION_FRAGMENT_KEY = ":android:show_fragment";
     private static final String SETTINGS_ATTRIBUTION_FRAGMENT_VALUE = "com.google.android.apps.youtube.music.settings.fragment.SettingsHeadersFragment";
     private static final String SETTINGS_ATTRIBUTION_HEADER_KEY = ":android:no_headers";
     private static final int SETTINGS_ATTRIBUTION_HEADER_VALUE = 1;
 
     private static final String SHORTCUT_ACTION = "com.google.android.youtube.music.action.shortcut";
-    private static final String SHORTCUT_CLASS_DESCRIPTOR = "com.google.android.apps.youtube.music.activities.InternalMusicActivity";
+    private static final String SHORTCUT_CLASS = "com.google.android.apps.youtube.music.activities.InternalMusicActivity";
     private static final String SHORTCUT_TYPE = "com.google.android.youtube.music.action.shortcut_type";
     private static final String SHORTCUT_ID_SEARCH = "Eh4IBRDTnQEYmgMiEwiZn+H0r5WLAxVV5OcDHcHRBmPqpd25AQA=";
     private static final int SHORTCUT_TYPE_SEARCH = 1;
@@ -84,7 +83,7 @@ public final class ChangeStartPagePatch {
         }
         Intent intent = new Intent();
         intent.setPackage(mActivity.getPackageName());
-        intent.setClassName(mActivity, SETTINGS_CLASS_DESCRIPTOR);
+        intent.setClassName(mActivity, SETTINGS_CLASS);
         intent.putExtra(SETTINGS_ATTRIBUTION_FRAGMENT_KEY, SETTINGS_ATTRIBUTION_FRAGMENT_VALUE);
         intent.putExtra(SETTINGS_ATTRIBUTION_HEADER_KEY, SETTINGS_ATTRIBUTION_HEADER_VALUE);
         mActivity.startActivity(intent);
@@ -92,7 +91,7 @@ public final class ChangeStartPagePatch {
 
     private static void setSearchIntent(Activity mActivity, Intent intent) {
         intent.setAction(SHORTCUT_ACTION);
-        intent.setClassName(mActivity, SHORTCUT_CLASS_DESCRIPTOR);
+        intent.setClassName(mActivity, SHORTCUT_CLASS);
         intent.setPackage(mActivity.getPackageName());
         intent.putExtra(SHORTCUT_TYPE, SHORTCUT_TYPE_SEARCH);
         intent.putExtra(SHORTCUT_ACTION, SHORTCUT_ID_SEARCH);

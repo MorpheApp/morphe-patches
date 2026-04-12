@@ -46,7 +46,7 @@ import java.lang.ref.WeakReference
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
 
-internal const val EXTENSION_FILER_ARRAY_DESCRIPTOR = "[Lapp/morphe/extension/youtube/patches/components/Filter;"
+internal const val EXTENSION_FILTER = "[Lapp/morphe/extension/youtube/patches/components/Filter;"
 
 // Registers used in extension helperMethod.
 private const val REGISTER_FILTER_CLASS = 0
@@ -124,7 +124,7 @@ val lithoFilterPatch = bytecodePatch(
                 // This fixes an issue with extension compiled with Android Gradle Plugin 8.3.0+.
                 val helperClass = definingClass
                 val helperName = "patch_getFilterArray"
-                val helperReturnType = EXTENSION_FILER_ARRAY_DESCRIPTOR
+                val helperReturnType = EXTENSION_FILTER
                 val helperMethod = ImmutableMethod(
                     helperClass,
                     helperName,
@@ -145,7 +145,7 @@ val lithoFilterPatch = bytecodePatch(
                 addInstructions(
                     insertIndex,
                     """
-                        invoke-static {}, $EXTENSION_CLASS->$helperName()$EXTENSION_FILER_ARRAY_DESCRIPTOR
+                        invoke-static {}, $EXTENSION_CLASS->$helperName()$EXTENSION_FILTER
                         move-result-object v$insertRegister
                     """
                 )
@@ -353,7 +353,7 @@ val lithoFilterPatch = bytecodePatch(
                 0,
                 """
                     const/16 v$REGISTER_FILTER_COUNT, $addLithoFilterCount
-                    new-array v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT, $EXTENSION_FILER_ARRAY_DESCRIPTOR
+                    new-array v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT, $EXTENSION_FILTER
                 """
             )
         }

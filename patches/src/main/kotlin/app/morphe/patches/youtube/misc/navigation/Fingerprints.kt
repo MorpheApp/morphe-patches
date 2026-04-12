@@ -58,7 +58,7 @@ internal object NavigationBarHookCallbackFingerprint : Fingerprint(
     name ="navigationTabCreatedCallback",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",
-    parameters = listOf(EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR, "Landroid/view/View;")
+    parameters = listOf(EXTENSION_NAVIGATION_BUTTON_CLASS, "Landroid/view/View;")
 )
 
 /**

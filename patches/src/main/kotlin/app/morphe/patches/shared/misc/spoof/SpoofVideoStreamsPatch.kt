@@ -67,7 +67,7 @@ private val spoofVideoStreamsResourcePatch = resourcePatch {
 }
 
 internal fun spoofVideoStreamsPatch(
-    extensionClassDescriptor: String,
+    extensionClass: String,
     mainActivityOnCreateFingerprint: Fingerprint,
     fixMediaFetchHotConfig: BytecodePatchBuilder.() -> Boolean = { false },
     fixMediaFetchHotConfigAlternative: BytecodePatchBuilder.() -> Boolean = { false },
@@ -91,7 +91,7 @@ internal fun spoofVideoStreamsPatch(
             0,
             """
                 invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setMainActivity(Landroid/app/Activity;)V       
-                invoke-static { }, $extensionClassDescriptor->setClientOrderToUse()V   
+                invoke-static { }, $extensionClass->setClientOrderToUse()V   
             """
         )
 

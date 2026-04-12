@@ -61,7 +61,7 @@ private val downloadsResourcePatch = resourcePatch {
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/DownloadsPatch;"
 
-private const val BUTTON_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplayer/ExternalDownloadButton;"
+private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/ExternalDownloadButton;"
 
 @Suppress("unused")
 val downloadsPatch = bytecodePatch(
@@ -78,8 +78,8 @@ val downloadsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeTopControl(BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
+        initializeTopControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
 
         // Main activity is used to launch downloader intent.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
