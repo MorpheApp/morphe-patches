@@ -18,7 +18,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/HideButtonsPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideButtonsPatch;"
 
 @Suppress("unused")
 val hideButtons = bytecodePatch(
@@ -57,7 +57,7 @@ val hideButtons = bytecodePatch(
                 addInstructions(
                     targetIndex,
                     """
-                        invoke-static { v$targetRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideHistoryButton(Z)Z
+                        invoke-static { v$targetRegister }, $EXTENSION_CLASS->hideHistoryButton(Z)Z
                         move-result v$targetRegister
                     """
                 )
@@ -80,7 +80,7 @@ val hideButtons = bytecodePatch(
                 addInstruction(
                     targetIndex + 1,
                     "invoke-static { v$targetRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->$methodName(Landroid/view/View;)V"
+                            "$EXTENSION_CLASS->$methodName(Landroid/view/View;)V"
                 )
             }
         }
@@ -91,7 +91,7 @@ val hideButtons = bytecodePatch(
         }.addInstructions(
             0,
             """
-                invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->hideCastButton(I)I
+                invoke-static { p1 }, $EXTENSION_CLASS->hideCastButton(I)I
                 move-result p1
             """
         )

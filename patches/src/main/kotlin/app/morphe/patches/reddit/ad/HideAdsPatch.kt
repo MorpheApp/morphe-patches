@@ -22,7 +22,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideAdsPatch;"
 
 @Suppress("unused")
@@ -50,7 +50,7 @@ val hideAdsPatch = bytecodePatch(
                     addInstructions(
                         index,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->hideOldPostAds(Ljava/util/List;)Ljava/util/List;
+                            invoke-static { v$register }, $EXTENSION_CLASS->hideOldPostAds(Ljava/util/List;)Ljava/util/List;
                             move-result-object v$register
                         """
                     )
@@ -71,7 +71,7 @@ val hideAdsPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     sectionIndex,
                     """
-                        invoke-static { v$sectionRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideNewPostAds(Ljava/util/List;)Ljava/util/List;
+                        invoke-static { v$sectionRegister }, $EXTENSION_CLASS->hideNewPostAds(Ljava/util/List;)Ljava/util/List;
                         move-result-object v$sectionRegister
                         if-nez v$sectionRegister, :ignore
                         new-instance v$sectionRegister, Ljava/util/ArrayList;
@@ -92,7 +92,7 @@ val hideAdsPatch = bytecodePatch(
         CommentsViewModelAdLoaderFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideCommentAds()Z
+                invoke-static { }, $EXTENSION_CLASS->hideCommentAds()Z
                 move-result v0
                 if-eqz v0, :show
                 return-void
@@ -128,7 +128,7 @@ val hideAdsPatch = bytecodePatch(
                     addInstructions(
                         index,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->hideCommentAds(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS->hideCommentAds(Z)Z
                             move-result v$register
                         """
                     )
@@ -138,6 +138,6 @@ val hideAdsPatch = bytecodePatch(
 
         // endregion
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

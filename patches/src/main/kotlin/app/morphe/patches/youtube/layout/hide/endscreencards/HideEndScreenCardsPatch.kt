@@ -27,7 +27,7 @@ private val hideEndScreenCardsResourcePatch = resourcePatch {
     }
 }
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideEndScreenCardsPatch;"
 
 @Suppress("unused")
@@ -56,7 +56,7 @@ val hideEndScreenCardsPatch = bytecodePatch(
                 addInstruction(
                     insertIndex,
                     "invoke-static { v$viewRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->hideEndScreenCardView(Landroid/view/View;)V",
+                            "$EXTENSION_CLASS->hideEndScreenCardView(Landroid/view/View;)V",
                 )
             }
         }
@@ -64,7 +64,7 @@ val hideEndScreenCardsPatch = bytecodePatch(
         ShowEndscreenCardsFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenCards()Z
+                invoke-static {}, $EXTENSION_CLASS->hideEndScreenCards()Z
                 move-result v0
                 if-eqz v0, :show
                 return-void

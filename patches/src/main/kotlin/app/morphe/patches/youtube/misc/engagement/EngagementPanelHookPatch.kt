@@ -13,7 +13,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import kotlin.properties.Delegates
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/shared/EngagementPanel;"
 
 var panelControllerMethod: MutableMethod by Delegates.notNull()
@@ -52,7 +52,7 @@ val engagementPanelHookPatch = bytecodePatch(
                     insertIndex,
                     """
                         $panelIdSmaliInstruction
-                        invoke-static { v$panelIdRegister }, $EXTENSION_CLASS_DESCRIPTOR->open(Ljava/lang/String;)V
+                        invoke-static { v$panelIdRegister }, $EXTENSION_CLASS->open(Ljava/lang/String;)V
                     """
                 )
             }
@@ -60,7 +60,7 @@ val engagementPanelHookPatch = bytecodePatch(
 
         EngagementPanelUpdateFingerprint.method.addInstruction(
             0,
-            "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->close()V"
+            "invoke-static { }, $EXTENSION_CLASS->close()V"
         )
     }
 }

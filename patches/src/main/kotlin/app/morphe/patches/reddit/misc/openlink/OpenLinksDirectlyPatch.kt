@@ -16,7 +16,7 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/OpenLinksDirectlyPatch;"
 
 @Suppress("unused")
@@ -35,11 +35,11 @@ val openLinksDirectlyPatch = bytecodePatch(
         screenNavigatorMethodRef.get()!!.addInstructions(
             0,
             """
-                invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->parseRedirectUri(Landroid/net/Uri;)Landroid/net/Uri;
+                invoke-static { p2 }, $EXTENSION_CLASS->parseRedirectUri(Landroid/net/Uri;)Landroid/net/Uri;
                 move-result-object p2
             """
         )
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

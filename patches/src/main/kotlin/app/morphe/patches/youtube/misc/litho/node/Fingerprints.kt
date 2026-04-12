@@ -31,13 +31,13 @@ internal object TreeNodeResultListFingerprint : Fingerprint(
 )
 
 internal object ComponentPatchFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name = "onComponentLoaded",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC)
 )
 
 internal object LazilyConvertedElementPatchFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name = "onLazilyConvertedElementLoaded",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC)
 )

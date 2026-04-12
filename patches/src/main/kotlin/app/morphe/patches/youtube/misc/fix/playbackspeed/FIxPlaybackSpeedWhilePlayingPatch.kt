@@ -11,7 +11,7 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FixPlaybackSpeedWhilePlayingPatch;"
 
 /**
@@ -44,7 +44,7 @@ val fixPlaybackSpeedWhilePlayingPatch = bytecodePatch{
             addInstructionsWithLabels(
                 insertIndex,
                 """
-                    invoke-static { v$playbackSpeedRegister }, $EXTENSION_CLASS_DESCRIPTOR->playbackSpeedChanged(F)Z
+                    invoke-static { v$playbackSpeedRegister }, $EXTENSION_CLASS->playbackSpeedChanged(F)Z
                     move-result v$freeRegister
                     if-nez v$freeRegister, :do_not_change
                 """,

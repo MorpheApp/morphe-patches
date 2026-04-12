@@ -13,7 +13,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableDoubleTapActionsPatch;"
 
 @Suppress("unused")
@@ -54,7 +54,7 @@ val disableDoubleTapActionsPatch = bytecodePatch(
         doubleTapInfoGetSeekSourceFingerprint.method.addInstructions(
             0,
             """
-                invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->disableDoubleTapChapters(Z)Z
+                invoke-static { p1 }, $EXTENSION_CLASS->disableDoubleTapChapters(Z)Z
                 move-result p1
             """
         )
@@ -64,7 +64,7 @@ val disableDoubleTapActionsPatch = bytecodePatch(
         ).method.addInstructions(
             0,
             """
-                invoke-static { p3 }, $EXTENSION_CLASS_DESCRIPTOR->disableDoubleTapChapters(Z)Z
+                invoke-static { p3 }, $EXTENSION_CLASS->disableDoubleTapChapters(Z)Z
                 move-result p3
             """
         )

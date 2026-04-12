@@ -54,7 +54,7 @@ internal object InitializeButtonsFingerprint : Fingerprint(
  * Specifically, [navigationBarPatch].
  */
 internal object NavigationBarHookCallbackFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name ="navigationTabCreatedCallback",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",

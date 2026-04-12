@@ -16,7 +16,7 @@ import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/OpenLinksExternallyPatch;"
 
 @Suppress("unused")
@@ -38,7 +38,7 @@ val openLinksExternallyPatch = bytecodePatch(
             addInstructionsWithLabels(
                 insertIndex,
                 """
-                    invoke-static { p1, p2 }, $EXTENSION_CLASS_DESCRIPTOR->openLinksExternally(Landroid/app/Activity;Landroid/net/Uri;)Z
+                    invoke-static { p1, p2 }, $EXTENSION_CLASS->openLinksExternally(Landroid/app/Activity;Landroid/net/Uri;)Z
                     move-result v0
                     if-eqz v0, :ignore
                     return-void
@@ -50,7 +50,7 @@ val openLinksExternallyPatch = bytecodePatch(
 
         FbpActivityOnCreateFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
                     "setActivity(Landroid/app/Activity;)V"
         )
 
@@ -62,13 +62,13 @@ val openLinksExternallyPatch = bytecodePatch(
 
                 addInstruction(
                     nullCheckIndex + 1,
-                    "invoke-static/range { v$stringRegister .. v$stringRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "invoke-static/range { v$stringRegister .. v$stringRegister }, $EXTENSION_CLASS->" +
                             "openLinksExternally(Ljava/lang/String;)V"
                 )
             }
         }
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }
 

@@ -15,7 +15,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/SlideToSeekPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/SlideToSeekPatch;"
 
 val enableSlideToSeekPatch = bytecodePatch(
     description = "Adds an option to enable slide to seek " +
@@ -40,7 +40,7 @@ val enableSlideToSeekPatch = bytecodePatch(
         val checkReference = SlideToSeekFingerprint.method.getInstruction(checkIndex)
             .getReference<MethodReference>()!!
 
-        val extensionMethodDescriptor = "$EXTENSION_CLASS_DESCRIPTOR->isSlideToSeekDisabled(Z)Z"
+        val extensionMethodDescriptor = "$EXTENSION_CLASS->isSlideToSeekDisabled(Z)Z"
 
         // A/B check method was only called on this class.
         SlideToSeekFingerprint.classDef.methods.forEach { method ->

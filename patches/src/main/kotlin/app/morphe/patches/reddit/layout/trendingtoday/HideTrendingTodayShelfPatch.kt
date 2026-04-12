@@ -16,7 +16,7 @@ import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideTrendingTodayShelfPatch;"
 
 @Suppress("unused")
@@ -41,7 +41,7 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
                     """
                         invoke-virtual/range { p0 .. p0 }, ${LocaleLanguageManagerContentLanguagesFingerprint.method}
                         move-result-object v0
-                        invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setContentLanguages(Ljava/util/List;)V
+                        invoke-static { v0 }, $EXTENSION_CLASS->setContentLanguages(Ljava/util/List;)V
                     """
                 )
             }
@@ -54,7 +54,7 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
         SearchTypeaheadListDefaultPresentationConstructorFingerprint.method.addInstructions(
             1,
             """
-                invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->removeTrendingLabel(Ljava/lang/String;)Ljava/lang/String;
+                invoke-static { p1 }, $EXTENSION_CLASS->removeTrendingLabel(Ljava/lang/String;)Ljava/lang/String;
                 move-result-object p1
             """
         )
@@ -67,7 +67,7 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
             method.addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideTrendingTodayShelf()Z
+                    invoke-static { }, $EXTENSION_CLASS->hideTrendingTodayShelf()Z
                     move-result v0
                     if-eqz v0, :ignore
                     return-void
@@ -86,6 +86,6 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 
         // endregion
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

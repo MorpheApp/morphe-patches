@@ -16,7 +16,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/HidePremiumVideoQualityPatch;"
 
 internal val hidePremiumVideoQualityPatch = bytecodePatch {
@@ -65,7 +65,7 @@ internal val hidePremiumVideoQualityPatch = bytecodePatch {
                 addInstructions(
                     index,
                     """
-                        invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS_DESCRIPTOR->hidePremiumVideoQuality([$EXTENSION_VIDEO_QUALITY_INTERFACE)[Ljava/lang/Object;
+                        invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->hidePremiumVideoQuality([$EXTENSION_VIDEO_QUALITY_INTERFACE)[Ljava/lang/Object;
                         move-result-object v$register
                         check-cast v$register, $videoQualityArray
                     """

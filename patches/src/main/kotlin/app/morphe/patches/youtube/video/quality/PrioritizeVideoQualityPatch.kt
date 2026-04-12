@@ -13,7 +13,7 @@ import app.morphe.util.numberOfParameterRegistersLogical
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/PrioritizeVideoQualityPatch;"
 
 internal val prioritizeVideoQualityPatch = bytecodePatch {
@@ -50,7 +50,7 @@ internal val prioritizeVideoQualityPatch = bytecodePatch {
                         iget-object v$videoIdRegister, v$videoIdRegister, $videoIdField
                         
                         # Override adaptive formats.
-                        invoke-static { v$videoIdRegister, v$adaptiveFormatsRegister }, $EXTENSION_CLASS_DESCRIPTOR->prioritizeVideoQuality(Ljava/lang/String;Ljava/util/List;)Ljava/util/List;
+                        invoke-static { v$videoIdRegister, v$adaptiveFormatsRegister }, $EXTENSION_CLASS->prioritizeVideoQuality(Ljava/lang/String;Ljava/util/List;)Ljava/util/List;
                         move-result-object v$adaptiveFormatsRegister
                     """
                 )

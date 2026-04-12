@@ -9,7 +9,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenVideosFullscreenHookPatch;"
 
 /**
@@ -42,7 +42,7 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
                 addInstructions(
                     it.instructionMatches.first().index + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->doNotOpenVideoFullscreenPortrait(Z)Z
+                        invoke-static { v$register }, $EXTENSION_CLASS->doNotOpenVideoFullscreenPortrait(Z)Z
                         move-result v$register
                     """
                 )

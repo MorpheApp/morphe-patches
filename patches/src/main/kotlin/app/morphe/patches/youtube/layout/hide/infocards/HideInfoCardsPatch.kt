@@ -17,7 +17,7 @@ import app.morphe.util.findFreeRegister
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/HideInfoCardsPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/HideInfoCardsPatch;"
 private const val EXTENSION_FILTER = "Lapp/morphe/extension/youtube/patches/components/InfoCardsFilter;"
 
 @Suppress("unused")
@@ -49,7 +49,7 @@ val hideInfoCardsPatch = bytecodePatch(
 
             addInstruction(
                 invokeInstructionIndex,
-                "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                "invoke-static { v$register }, $EXTENSION_CLASS->" +
                         "hideInfoCardsIncognito(Landroid/view/View;)V",
             )
         }
@@ -64,7 +64,7 @@ val hideInfoCardsPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     invokeInterfaceIndex,
                     """
-                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideInfoCardsMethodCall()Z
+                        invoke-static {}, $EXTENSION_CLASS->hideInfoCardsMethodCall()Z
                         move-result v$free
                         if-nez v$free, :hide_info_cards
                     """,

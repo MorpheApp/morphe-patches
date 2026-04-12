@@ -24,7 +24,7 @@ import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHoo
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/AdvancedVideoQualityMenuPatch;"
 
 private const val EXTENSION_FILTER =
@@ -54,7 +54,7 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
 
                 addInstruction(
                     checkCastIndex + 1,
-                    "invoke-static { v$listViewRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "invoke-static { v$listViewRegister }, $EXTENSION_CLASS->" +
                             "addVideoQualityListMenuListener(Landroid/widget/ListView;)V",
                 )
             }
@@ -75,7 +75,7 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
                 addInstructions(
                     insertIndex,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->forceAdvancedVideoQualityMenuCreation(Z)Z
+                        invoke-static { v$register }, $EXTENSION_CLASS->forceAdvancedVideoQualityMenuCreation(Z)Z
                         move-result v$register
                     """
                 )
@@ -86,7 +86,7 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
 
         // region Patch for the new type of the video quality menu.
 
-        addRecyclerViewTreeHook(EXTENSION_CLASS_DESCRIPTOR)
+        addRecyclerViewTreeHook(EXTENSION_CLASS)
 
         // Required to check if the video quality menu is currently shown in order to click on the "Advanced" item.
         addLithoFilter(EXTENSION_FILTER)

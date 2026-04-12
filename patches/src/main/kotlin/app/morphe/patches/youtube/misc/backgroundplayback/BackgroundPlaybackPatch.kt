@@ -24,7 +24,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/BackgroundPlaybackPatch;"
 
 val backgroundPlaybackPatch = bytecodePatch(
@@ -58,7 +58,7 @@ val backgroundPlaybackPatch = bytecodePatch(
                     addInstructionsAtControlFlowLabel(
                         index,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$integrationsMethod(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS->$integrationsMethod(Z)Z
                             move-result v$register 
                         """
                     )

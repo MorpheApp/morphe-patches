@@ -23,7 +23,7 @@ import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AutoCaptionsPatch;"
 
 internal val autoCaptionsPatch = bytecodePatch(
@@ -57,18 +57,18 @@ internal val autoCaptionsPatch = bytecodePatch(
                 addInstructions(
                     index,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableAutoCaptions(Z)Z
+                        invoke-static { v$register }, $EXTENSION_CLASS->disableAutoCaptions(Z)Z
                         move-result v$register
                     """
                 )
             }
         }
 
-        onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
+        onCreateHook(EXTENSION_CLASS, "newVideoStarted")
 
         StartVideoInformerFingerprint.method.addInstruction(
             0,
-            "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->videoInformationLoaded()V"
+            "invoke-static { }, $EXTENSION_CLASS->videoInformationLoaded()V"
         )
 
         if (is_20_26_or_greater) {
@@ -76,7 +76,7 @@ internal val autoCaptionsPatch = bytecodePatch(
                 addInstructions(
                     0,
                     """
-                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableMuteAutoCaptions()Z
+                        invoke-static {}, $EXTENSION_CLASS->disableMuteAutoCaptions()Z
                         move-result v0
                         return v0
                         nop

@@ -23,7 +23,7 @@ import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/LoopVideoPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LoopVideoPatch;"
 
 val loopVideoPatch = bytecodePatch(
     name = "Loop video",
@@ -57,7 +57,7 @@ val loopVideoPatch = bytecodePatch(
             addInstructionsWithLabels(
                 insertIndex,
                 """
-                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS_DESCRIPTOR->shouldLoopVideo(Ljava/lang/Enum;)Z
+                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->shouldLoopVideo(Ljava/lang/Enum;)Z
                     move-result v$freeRegister
                     if-eqz v$freeRegister, :do_not_loop
                     return-void

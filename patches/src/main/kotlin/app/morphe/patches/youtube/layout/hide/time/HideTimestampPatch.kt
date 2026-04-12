@@ -8,7 +8,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/HideTimestampPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/HideTimestampPatch;"
 
 val hideTimestampPatch = bytecodePatch(
     name = "Hide timestamp",
@@ -29,7 +29,7 @@ val hideTimestampPatch = bytecodePatch(
         TimeCounterFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideTimestamp()Z
+                invoke-static { }, $EXTENSION_CLASS->hideTimestamp()Z
                 move-result v0
                 if-eqz v0, :hide_time
                 return-void

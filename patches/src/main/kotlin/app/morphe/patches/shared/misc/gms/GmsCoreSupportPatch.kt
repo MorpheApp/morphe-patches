@@ -44,7 +44,7 @@ import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringRefere
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/GmsCoreSupportPatch;"
 
 /**
@@ -237,7 +237,7 @@ fun gmsCoreSupportPatch(
         // Verify GmsCore is installed and whitelisted for power optimizations and background usage.
         mainActivityOnCreateFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
                     "checkGmsCore(Landroid/app/Activity;)V"
         )
 
