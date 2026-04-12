@@ -38,7 +38,8 @@ val hideEndScreenCardsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         hideEndScreenCardsResourcePatch,
-        versionCheckPatch
+        versionCheckPatch,
+        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

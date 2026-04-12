@@ -113,7 +113,10 @@ internal object SlideToSeekFingerprint : Fingerprint(
     filters = listOf(
         opcode(Opcode.INVOKE_VIRTUAL),
         opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
-        literal(67108864, location = MatchAfterAnywhere())
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.GOTO_16, location = MatchAfterImmediately()),
+
+        literal(67108864)
     )
 )
 

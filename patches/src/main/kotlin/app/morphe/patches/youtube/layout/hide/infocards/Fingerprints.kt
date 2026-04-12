@@ -33,7 +33,7 @@ internal object InfoCardsMethodCallFingerprint : Fingerprint(
         opcode(Opcode.INVOKE_VIRTUAL),
         opcode(Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
         opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterImmediately()),
-        resourceLiteral(ResourceType.ID, "info_cards_drawer_header", location = MatchAfterAnywhere())
+        resourceLiteral(ResourceType.ID, "info_cards_drawer_header")
     ),
     strings = listOf("Missing ControlsOverlayPresenter for InfoCards to work.")
 )

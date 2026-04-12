@@ -2,6 +2,7 @@ package app.morphe.patches.youtube.interaction.seekbar
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -44,9 +45,9 @@ val enableSlideToSeekPatch = bytecodePatch(
 
         // A/B check method was only called on this class.
         SlideToSeekFingerprint.classDef.methods.forEach { method ->
-            method.findInstructionIndicesReversed {
-                opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>() == checkReference
-            }.forEach { index ->
+            method.findInstructionIndicesReversed(
+                methodCall(reference = checkReference)
+            ).forEach { index ->
                 method.apply {
                     val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
 
@@ -55,7 +56,7 @@ val enableSlideToSeekPatch = bytecodePatch(
                         """
                             invoke-static { v$register }, $extensionMethodDescriptor
                             move-result v$register
-                       """,
+                       """
                     )
                 }
 
