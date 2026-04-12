@@ -47,11 +47,11 @@ val hideButtons = bytecodePatch(
 
         // Region for hide history button in the top bar.
         arrayOf(
-            HistoryMenuItemFingerprint,
-            HistoryMenuItemOfflineTabFingerprint
-        ).forEach { fingerprint ->
+            HistoryMenuItemFingerprint to 1,
+            HistoryMenuItemOfflineTabFingerprint to 2
+        ).forEach { (fingerprint, matchIndex) ->
             fingerprint.method.apply {
-                val targetIndex = fingerprint.instructionMatches.last().index
+                val targetIndex = fingerprint.instructionMatches[matchIndex].index
                 val targetRegister = getInstruction<FiveRegisterInstruction>(targetIndex).registerD
 
                 addInstructions(
