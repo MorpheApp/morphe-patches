@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
-  <string name="morphe_settings_submenu_title">سلا</string>
+  <string name="morphe_settings_submenu_title">سازکاری</string>
   <string name="morphe_settings_confirm_user_dialog_title">ئایا خؤت به‌خۆشه‌وه‌ ده‌یه‌وێته‌رداره‌؟</string>
   <string name="morphe_settings_save">پاراوه‌ بنه‌</string>
   <string name="morphe_settings_reset">سازبکه‌</string>
@@ -98,13 +98,13 @@ Da zanîn zimanên nû wergerin an jî wergeranên hebin çêbibin, serdana morp
 
 هیچ ڕاستی ڕاشخراو نەکریتەوە."</string>
   <string name="morphe_debug_logs_disabled">سەرپێچوání دەستوڕانە ڕاخشابن</string>
-  <string name="morphe_debug_feature_flags_manager_title">دابەرێوەبەرێ فیزەری فڵاگەکان</string>
+  <string name="morphe_debug_feature_flags_manager_title">پارێژكاري فڵاگەل و مۆر</string>
   <string name="morphe_debug_feature_flags_manager_summary">ڕێکخستنی خەڵاتە بە ئەزموونی زمان</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Sazkarên MicroG-ê veke</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG نە ئە بەرنامەیە. دەخاتەوە.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG نەستاوە. ئەوەی بێخە.</string>
   <string name="gms_core_dialog_title">پێداویستی ڕێکار</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG ڕێگە نە دێت بیکه لە ڕەگەزێ. ڕێگە دێت دەربارە ڕێکاری ئەلیزانینی ڕێکار کە ڕۆژئەوسنیدي بێت.

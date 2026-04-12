@@ -1,5 +1,5 @@
 {
-  "version": "1.24.0-dev.4",
+  "version": "1.24.0-dev.5",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -437,7 +437,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -637,7 +636,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -689,7 +687,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -962,6 +959,37 @@
       "options": []
     },
     {
+      "name": "Hide Ask button",
+      "description": "Adds an option to hide Ask button in the search bar.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2025.48.0"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Hide Reddit search",
+      "description": "Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting",
+      "use": false,
+      "dependencies": [
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2025.48.0"
+        ]
+      },
+      "options": []
+    },
+    {
       "name": "Hide Shorts components",
       "description": "Adds options to hide components related to Shorts.",
       "use": true,
@@ -1015,7 +1043,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -1031,7 +1058,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -1043,6 +1069,7 @@
       "use": true,
       "dependencies": [
         "ResourcePatch",
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
@@ -1222,7 +1249,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -1281,7 +1307,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -1335,7 +1360,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -1508,12 +1532,12 @@
       "description": "Adds an option to skip over redirection URLs in external links.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -1521,7 +1545,23 @@
     },
     {
       "name": "Open links externally",
-      "description": "Adds an option to always open links in your browser instead of the in-app browser.",
+      "description": "Adds an option to always open links in your browser instead of with the in-app-browser.",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.reddit.frontpage": [
+          "2026.04.0",
+          "2025.48.0"
+        ]
+      },
+      "options": []
+    },
+    {
+      "name": "Open links externally",
+      "description": "Adds an option to always open links in your browser instead of with the in-app browser.",
       "use": true,
       "dependencies": [
         "BytecodePatch"
@@ -1729,7 +1769,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -1803,7 +1842,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -1879,7 +1917,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },
@@ -1957,7 +1994,6 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.04.0",
-          "2026.03.0",
           "2025.48.0"
         ]
       },

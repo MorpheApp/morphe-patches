@@ -854,15 +854,15 @@ Um das Menü anzuzeigen, ändern Sie \"Video-Streams fälschen\" in \"Android Re
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Schaltfläche „In VR ansehen“ ist ausgeblendet</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Schaltfläche „In VR ansehen“ wird angezeigt</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_quality_title">„Qualität“ Ausblenden</string>
-  <string name="morphe_hide_player_flyout_quality_summary_on">Menü „Qualität“ wird angezeigt</string>
-  <string name="morphe_hide_player_flyout_quality_summary_off">Menü „Qualität“ wird angezeigt</string>
-  <string name="morphe_hide_player_flyout_quality_footer_title">„Qualität“-Fußzeile Ausblenden</string>
-  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Fußzeile im Menü „Qualität“ ist ausgeblendet</string>
-  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Fußzeile im Menü „Qualität“ wird angezeigt</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">„Qualität“ Ausblenden</string>
-  <string name="morphe_hide_player_flyout_quality_header_summary_on">Fußzeile im Menü „Qualität“ ist ausgeblendet</string>
-  <string name="morphe_hide_player_flyout_quality_header_summary_off">Fußzeile im Menü „Qualität“ wird angezeigt</string>
+  <string name="morphe_hide_player_flyout_quality_title">Qualität ausblenden</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Qualität-Menü ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Qualität-Menü wird angezeigt</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Qualität-Fußzeile ausblenden</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Qualität-Menü-Fußzeile ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Qualität-Menü-Fußzeile wird angezeigt</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Qualität-Kopfzeile ausblenden</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Qualität-Menü-Kopfzeile ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Qualität-Menü-Kopfzeile wird angezeigt</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Autoplay-Vorschau ausblenden</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Autoplay-Vorschau ist ausgeblendet</string>

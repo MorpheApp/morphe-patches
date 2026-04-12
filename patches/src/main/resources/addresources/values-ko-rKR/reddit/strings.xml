@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">모던 스타일 홈 UI를 비활성화합니다</string>
   <string name="morphe_disable_screenshot_popup_title">스크린샷 팝업 비활성화하기</string>
   <string name="morphe_disable_screenshot_popup_summary">스크린샷 촬영 시 나타나는 팝업을 비활성화합니다</string>
+  <string name="morphe_hide_ask_button_title">Ask 버튼 숨기기</string>
+  <string name="morphe_hide_ask_button_summary">검색창에서 Ask 버튼을 숨깁니다</string>
   <string name="morphe_hide_answers_button_title">Answers 버튼 숨기기</string>
   <string name="morphe_hide_answers_button_summary">하단바에서 Answers 버튼을 숨깁니다</string>
   <string name="morphe_hide_chat_button_title">채팅 버튼 숨기기</string>
@@ -53,7 +55,7 @@ Second \"item\" text"</string>
 
 제한 사항: 시각적 공백은 숨기지지 않을 수 있습니다."</string>
   <string name="morphe_remove_notification_dialog_title">알림 제안 다이얼로그 제거하기</string>
-  <string name="morphe_remove_notification_dialog_summary">서브레딧 방문 시 나타나는 알림 제안 다어일로그를 자동으로 닫아서 제거합니다</string>
+  <string name="morphe_remove_notification_dialog_summary">서브레딧 방문 시 나타나는 알림 제안 다이얼로그를 자동으로 닫아서 제거합니다</string>
   <string name="morphe_show_view_count_title">조회수 표시하기</string>
   <string name="morphe_show_view_count_summary">"게시물에서 조회수를 표시합니다
 
@@ -67,4 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">링크 공유 시 URL에서 추적 쿼리 매개변수를 제거합니다</string>
   <string name="morphe_open_links_directly_title">리다이렉션 없이 링크 바로 열기</string>
   <string name="morphe_open_links_directly_summary">앱 내에서 외부 링크를 열 경우에 URL 리다이렉션을 거치지 않고 연결됩니다</string>
+  <string name="morphe_open_links_externally_title">외부 브라우저 사용하기</string>
+  <string name="morphe_open_links_externally_summary">앱 내에서 외부 링크를 열 경우에 내부 브라우저 대신 외부 브라우저를 사용합니다</string>
 </resources>

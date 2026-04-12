@@ -797,12 +797,12 @@ Appuyez longuement pour ouvrir les paramètres Morphe"</string>
   <string name="morphe_hide_player_flyout_captions_title">Masquer \'Sous-titres\'</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Le menu \'Sous-titres\' est masqué</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Le menu \'Sous-titres\' est affiché</string>
-  <string name="morphe_hide_player_flyout_captions_footer_title">Masquer la barre de pied du menu Sous-titres</string>
-  <string name="morphe_hide_player_flyout_captions_footer_summary_on">La barre de pied du menu Sous-titres est masquée</string>
-  <string name="morphe_hide_player_flyout_captions_footer_summary_off">La barre de pied du menu Sous-titres est affichée</string>
-  <string name="morphe_hide_player_flyout_captions_header_title">Masquer la barre de pied du menu Sous-titres</string>
-  <string name="morphe_hide_player_flyout_captions_header_summary_on">Le menu \'Sous-titres\' est masqué</string>
-  <string name="morphe_hide_player_flyout_captions_header_summary_off">Le menu \'Sous-titres\' est affiché</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Masquer le pied de page de \'Sous-titres\'</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Le pied de page du menu \'Sous-titres\' est masqué</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Le pied de page du menu \'Sous-titres\' est affiché</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Masquer l\'en-tête de \'Sous-titres\'</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">L\'en-tête du menu \'Sous-titres\' est masqué</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">L\'en-tête du menu \'Sous-titres\' est affiché</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Masquer \'Paramètres supplémentaires / Plus\'</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Le menu \'Paramètres supplémentaires / Plus\' est masqué</string>
@@ -848,9 +848,9 @@ Appuyez longuement pour ouvrir les paramètres Morphe"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Le menu 'Piste audio' est masqué
 
 Pour afficher le menu 'Pste audio', modifier 'Falsifier les flux vidéo' en 'Android Reel' ou en 'TV'"</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">Masquer \'Piste audio\'</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Le menu \'Piste audio\' est masqué</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Le menu \'Piste audio\' est affiché</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Masquer le pied de page de \'Piste audio\'</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Le pied de page du menu \'Piste audio\' est masqué</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Le pied de page du menu \'Piste audio\' est affiché</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Masquer \'Regarder en RV\'</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Le menu \'Regarder en RV\' est masqué</string>
@@ -859,12 +859,12 @@ Pour afficher le menu 'Pste audio', modifier 'Falsifier les flux vidéo' en 'And
   <string name="morphe_hide_player_flyout_quality_title">Masquer \'Qualité\'</string>
   <string name="morphe_hide_player_flyout_quality_summary_on">Le menu \'Qualité\' est masqué</string>
   <string name="morphe_hide_player_flyout_quality_summary_off">Le menu \'Qualité\' est affiché</string>
-  <string name="morphe_hide_player_flyout_quality_footer_title">Masquer le message du menu \'Qualité\'</string>
-  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Le message du menu \'Qualité vidéo\' est masqué</string>
-  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Le message du menu \'Qualité vidéo\' est affiché</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">Masquer \'Qualité\'</string>
-  <string name="morphe_hide_player_flyout_quality_header_summary_on">Le message du menu \'Qualité vidéo\' est masqué</string>
-  <string name="morphe_hide_player_flyout_quality_header_summary_off">Le message du menu \'Qualité vidéo\' est affiché</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Masquer le pied de page de \'Qualité\'</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Le pied de page du menu \'Qualité\' est masqué</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Le pied de page du menu \'Qualité\' est affiché</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Masquer l\'en-tête de \'Qualité\'</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">L\'en-tête du menu \'Qualité\' est masqué</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">L\'en-tête du menu \'Qualité\' est affiché</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Masquer l\'aperçu de lecture automatique</string>
   <string name="morphe_hide_autoplay_preview_summary_on">L\'aperçu de lecture automatique est masqué</string>

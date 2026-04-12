@@ -232,9 +232,7 @@ public class PlayerOverlayButton {
         final int totalLowerButtons = buttonControllers.size() - (HIDE_FULLSCREEN_BUTTON_ENABLED
                 ? 1
                 : 0);
-        if (totalLowerButtons > 0) {
-            chapterTitleContainer.updateMargin(lowerButtonSource.getWidth(), totalLowerButtons);
-        }
+        chapterTitleContainer.updateMargin(lowerButtonSource.getWidth(), totalLowerButtons);
         videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, getTotalUpperButtonCount());
     }
 

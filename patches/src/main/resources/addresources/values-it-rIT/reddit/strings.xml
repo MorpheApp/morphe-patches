@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Disabilita l\'interfaccia utente della schermata principale moderna</string>
   <string name="morphe_disable_screenshot_popup_title">Disabilita la notifica di screenshot</string>
   <string name="morphe_disable_screenshot_popup_summary">Disabilita la notifica che appare quando si esegue lo screenshot</string>
+  <string name="morphe_hide_ask_button_title">Nascondi il pulsante Chiedi</string>
+  <string name="morphe_hide_ask_button_summary">Nasconde il pulsante Chiedi nella barra di ricerca</string>
   <string name="morphe_hide_answers_button_title">Nascondi il pulsante Risposte</string>
   <string name="morphe_hide_answers_button_summary">Nasconde il pulsante Risposte nella barra di navigazione</string>
   <string name="morphe_hide_chat_button_title">Nascondi il pulsante Chat</string>
@@ -67,4 +69,6 @@ Limitazione: visualizzato solo se la risposta API include il numero di visualizz
   <string name="morphe_sanitize_sharing_links_summary">Sanifica i link di condivisione rimuovendo i parametri di tracciamento</string>
   <string name="morphe_open_links_directly_title">Apri i link direttamente</string>
   <string name="morphe_open_links_directly_summary">Salta gli URL di reindirizzamento nei link esterni</string>
+  <string name="morphe_open_links_externally_title">Apri i link esternamente</string>
+  <string name="morphe_open_links_externally_summary">Apre i link nel tuo browser invece che nel browser integrato</string>
 </resources>

@@ -790,17 +790,17 @@ Ketuk dan tahan untuk membuka pengaturan YouTube"</string>
 Ketuk dan tahan untuk membuka pengaturan YouTube"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu flyout</string>
-  <string name="morphe_hide_player_flyout_summary">Sembunyikan atau tampilkan komponen menu flyout pemain</string>
+  <string name="morphe_hide_player_flyout_summary">Sembunyikan atau tampilkan komponen menu pemutar flyout</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Sembunyikan Teks</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Menu teks disembunyikan</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Menu teks ditampilkan</string>
-  <string name="morphe_hide_player_flyout_captions_footer_title">Sembunyikan footer Teks</string>
-  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Menu teks disembunyikan</string>
-  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Menu teks ditampilkan</string>
-  <string name="morphe_hide_player_flyout_captions_header_title">Sembunyikan header Teks</string>
-  <string name="morphe_hide_player_flyout_captions_header_summary_on">Menu teks tersembunyi</string>
-  <string name="morphe_hide_player_flyout_captions_header_summary_off">Menu teks ditampilkan</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Sembunyikan footer Captions</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Menu footer Captions disembunyikan</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Menu footer Captions ditampilkan</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Sembunyikan header Captions</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Menu header Captions disembunyikan</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Menu header Captions ditampilkan</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Sembunyikan Pengaturan tambahan / Lainnya</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Pengaturan tambahan / Menu lainnya disembunyikan</string>
@@ -846,23 +846,23 @@ Ketuk dan tahan untuk membuka pengaturan YouTube"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu trek audio disembunyikan
 
 Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android Reel' atau 'TV'"</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">Sembunyikan trek Audio</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Menu trek audio disembunyikan</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Menu trek audio ditampilkan</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Sembunyikan footer trek Audio</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Menu footer trek audio disembunyikan</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Menu footer trek audio ditampilkan</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Sembunyikan Tonton di VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu tonton di VR disembunyikan</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Menu tonton di VR ditampilkan</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_quality_title">Sembunyikan menu Kualitas</string>
+  <string name="morphe_hide_player_flyout_quality_title">Sembunyikan Kualitas</string>
   <string name="morphe_hide_player_flyout_quality_summary_on">Menu kualitas disembunyikan</string>
   <string name="morphe_hide_player_flyout_quality_summary_off">Menu kualitas ditampilkan</string>
-  <string name="morphe_hide_player_flyout_quality_footer_title">Sembunyikan menu Kualitas</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Sembunyikan footer Kualitas</string>
   <string name="morphe_hide_player_flyout_quality_footer_summary_on">Footer menu kualitas video disembunyikan</string>
   <string name="morphe_hide_player_flyout_quality_footer_summary_off">Footer menu kualitas video ditampilkan</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">Sembunyikan menu Kualitas</string>
-  <string name="morphe_hide_player_flyout_quality_header_summary_on">Menu kualitas disembunyikan</string>
-  <string name="morphe_hide_player_flyout_quality_header_summary_off">Menu kualitas ditampilkan</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Sembunyikan header Kualitas</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Menu header Kualitas disembunyikan</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Menu header Kualitas ditampilkan</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Sembunyikan pratinjau putar otomatis</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Pratinjau putar otomatis disembunyikan</string>

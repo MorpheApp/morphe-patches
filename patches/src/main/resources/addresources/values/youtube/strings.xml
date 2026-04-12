@@ -75,18 +75,18 @@ Changes include:
     <string name="morphe_hide_artist_cards_title">Hide artist cards</string>
     <string name="morphe_hide_artist_cards_summary_on">Artist cards are hidden</string>
     <string name="morphe_hide_artist_cards_summary_off">Artist cards are shown</string>
-    <string name="morphe_hide_chips_shelf_title">Hide chips shelf</string>
-    <string name="morphe_hide_chips_shelf_summary_on">Chips shelf is hidden</string>
-    <string name="morphe_hide_chips_shelf_summary_off">Chips shelf is shown</string>
     <string name="morphe_hide_community_posts_title">Hide community posts</string>
     <string name="morphe_hide_community_posts_summary_on">Community posts are hidden</string>
     <string name="morphe_hide_community_posts_summary_off">Community posts are shown</string>
     <string name="morphe_hide_compact_banner_title">Hide compact banners</string>
     <string name="morphe_hide_compact_banner_summary_on">Compact banners are hidden</string>
     <string name="morphe_hide_compact_banner_summary_off">Compact banners are shown</string>
-    <string name="morphe_hide_expandable_card_title">Hide expandable card</string>
-    <string name="morphe_hide_expandable_card_summary_on">Expandable card under videos is hidden</string>
-    <string name="morphe_hide_expandable_card_summary_off">Expandable card under videos is shown</string>
+    <string name="morphe_hide_expandable_card_title">Hide expandable cards</string>
+    <string name="morphe_hide_expandable_card_entry_1">Expandable cards under videos are shown</string>
+    <string name="morphe_hide_expandable_card_entry_2">Only product card under videos is hidden</string>
+    <string name="morphe_hide_expandable_card_entry_3">Only summary card under videos is hidden</string>
+    <string name="morphe_hide_expandable_card_entry_4">Product and summary card under videos are hidden</string>
+    <string name="morphe_hide_expandable_card_entry_5">Expandable cards under videos are hidden</string>
     <string name="morphe_hide_floating_microphone_button_title">Hide floating microphone button</string>
     <string name="morphe_hide_floating_microphone_button_summary_on">Floating microphone button in search is hidden</string>
     <string name="morphe_hide_floating_microphone_button_summary_off">Floating microphone button in search is shown</string>
@@ -94,19 +94,20 @@ Changes include:
     <string name="morphe_hide_horizontal_shelves_summary_on">"Horizontal shelves are hidden, such as:
 
 • Breaking news
+• Community posts you may like
 • Continue watching
 • Explore more channels
+• Explore more topics
 • For You
+• Latest videos
 • Most relevant
+• Posts from Creator's Community
 • Shopping
 • Watch it again"</string>
     <string name="morphe_hide_horizontal_shelves_summary_off">Horizontal shelves are shown</string>
     <string name="morphe_hide_image_shelf_title">Hide image shelf</string>
     <string name="morphe_hide_image_shelf_summary_on">Image shelf in search results is hidden</string>
     <string name="morphe_hide_image_shelf_summary_off">Image shelf in search results is shown</string>
-    <string name="morphe_hide_latest_posts_title">Hide latest posts</string>
-    <string name="morphe_hide_latest_posts_summary_on">Latest posts are hidden</string>
-    <string name="morphe_hide_latest_posts_summary_off">Latest posts are shown</string>
     <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
     <string name="morphe_hide_latest_videos_button_title">Hide \'Latest videos\' button</string>
@@ -308,6 +309,9 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_members_shelf_title">Hide members shelf</string>
     <string name="morphe_hide_members_shelf_summary_on">Members shelf is hidden</string>
     <string name="morphe_hide_members_shelf_summary_off">Members shelf is shown</string>
+    <string name="morphe_hide_posts_shelf_title">Hide posts shelf</string>
+    <string name="morphe_hide_posts_shelf_summary_on">Posts shelf is hidden</string>
+    <string name="morphe_hide_posts_shelf_summary_off">Posts shelf is shown</string>
     <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_store_button_title">Hide Store button</string>
     <string name="morphe_hide_store_button_summary_on">Store button is hidden</string>

@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Désactive l’interface de la page d’accueil moderne</string>
   <string name="morphe_disable_screenshot_popup_title">Désactiver le pop-up de capture d’écran</string>
   <string name="morphe_disable_screenshot_popup_summary">Désactive le pop-up qui apparaît lors de la capture d’écran</string>
+  <string name="morphe_hide_ask_button_title">Masquer le bouton Demander</string>
+  <string name="morphe_hide_ask_button_summary">Masque le bouton Demander dans la barre de recherche</string>
   <string name="morphe_hide_answers_button_title">Masquer le bouton \'Answers\'</string>
   <string name="morphe_hide_answers_button_summary">Masque le bouton \'Answers\' dans la barre de navigation</string>
   <string name="morphe_hide_chat_button_title">Masquer le bouton \'Discuter\'</string>
@@ -67,4 +69,6 @@ Limitation : Affiché uniquement si la réponse de l’API inclut le nombre de v
   <string name="morphe_sanitize_sharing_links_summary">Nettoie les liens de partage en retirant les paramètres de suivi</string>
   <string name="morphe_open_links_directly_title">Ouvrir les liens directement</string>
   <string name="morphe_open_links_directly_summary">Ignore les URL de redirection dans les liens externes</string>
+  <string name="morphe_open_links_externally_title">Ouvrir les liens directement</string>
+  <string name="morphe_open_links_externally_summary">Ouvre les liens dans votre navigateur au lieu du navigateur intégré</string>
 </resources>

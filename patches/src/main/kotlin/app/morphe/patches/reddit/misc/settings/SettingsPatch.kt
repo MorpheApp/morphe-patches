@@ -36,6 +36,8 @@ internal const val EXTENSION_CLASS_DESCRIPTOR =
 
 var is_2026_04_or_greater = false
     private set
+var is_2026_11_or_greater = false
+    private set
 
 val settingsPatch = bytecodePatch(
     description = "Applies mandatory patches to implement Morphe settings into the application."
@@ -48,7 +50,7 @@ val settingsPatch = bytecodePatch(
         addResourcesPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
-            recommendedAppVersion = COMPATIBILITY_REDDIT.targets!!.first { !it.isExperimental }.version!!
+            recommendedAppVersion = COMPATIBILITY_REDDIT.targets.first { !it.isExperimental }.version!!
         ),
         resourcePatch {
             execute {
@@ -79,6 +81,7 @@ val settingsPatch = bytecodePatch(
             .getReference<StringReference>()!!.string.replace(".", "").toInt()
 
         is_2026_04_or_greater = 2026040 <= versionNumber
+        is_2026_11_or_greater = 2026110 <= versionNumber
 
         /**
          * Replace settings label and icon

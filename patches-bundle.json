@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-04-10T14:46:00",
-  "description": "# [1.24.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.24.0-dev.3...v1.24.0-dev.4) (2026-04-10)\n\n\n### Bug Fixes\n\n* **YouTube:** Use legacy layout parameters with older app targets ([329473a](https://github.com/MorpheApp/morphe-patches/commit/329473aadec23209800ad54aa4daa5df5a24e8f3))\n\n\n### Features\n\n* **YouTube Music:** Add experimental support for `9.14.51` ([e8c941f](https://github.com/MorpheApp/morphe-patches/commit/e8c941ff053e20e54e6303ed405ca5421a4e5768))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.24.0-dev.4/patches-1.24.0-dev.4.mpp",
+  "created_at": "2026-04-11T10:39:17",
+  "description": "# [1.24.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.24.0-dev.4...v1.24.0-dev.5) (2026-04-11)\n\n\n### Bug Fixes\n\n* **YouTube - Hide ads:** Resolve \"Hide YouTube Premium promotions\" affecting YouTube Doodles ([#1135](https://github.com/MorpheApp/morphe-patches/issues/1135)) ([881f61b](https://github.com/MorpheApp/morphe-patches/commit/881f61ba200083e3ee35b7e0cf2675ee1f7678d6))\n\n\n### Features\n\n* **Reddit:** Add `Hide Ask button` patch ([#1129](https://github.com/MorpheApp/morphe-patches/issues/1129)) ([3ff35f9](https://github.com/MorpheApp/morphe-patches/commit/3ff35f9a5288999d84b1c2323407dd533ed1db2d))\n* **Reddit:** Add `Hide Reddit search` patch ([#1128](https://github.com/MorpheApp/morphe-patches/issues/1128)) ([08a1f52](https://github.com/MorpheApp/morphe-patches/commit/08a1f528199e6dede11c8f3cc94322f669a7fac1))\n* **Reddit:** Add `Open links externally` patch ([#1131](https://github.com/MorpheApp/morphe-patches/issues/1131)) ([78be254](https://github.com/MorpheApp/morphe-patches/commit/78be254db96f39f93d9a2ac326c7907c2d836f6e))\n* **Reddit:** Add experimental support for `2026.15.0` ([784c83c](https://github.com/MorpheApp/morphe-patches/commit/784c83c676c48525fb4c4575fbce00bcf0b6c024))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.24.0-dev.5/patches-1.24.0-dev.5.mpp",
   "signature_download_url": "",
-  "version": "1.24.0-dev.4"
+  "version": "1.24.0-dev.5"
 }

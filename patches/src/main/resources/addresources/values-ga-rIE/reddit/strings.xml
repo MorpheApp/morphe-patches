@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Díchumasaíonn sé an t-urrús teach baile nua-aimseartha</string>
   <string name="morphe_disable_screenshot_popup_title">Díchumasaigh páipéar comharthaí screenshot</string>
   <string name="morphe_disable_screenshot_popup_summary">Díchumasaíonn sé an páipéar comharthaí a cumaíonnnuas nuair a ghlacann tú screenshot</string>
+  <string name="morphe_hide_ask_button_title">Folaigh cnaipe I</string>
+  <string name="morphe_hide_ask_button_summary">Folaíonn sé an cnaipe I sa barr na cuardaigh</string>
   <string name="morphe_hide_answers_button_title">Folaigh cnaipe Freagra</string>
   <string name="morphe_hide_answers_button_summary">Folaíonn sé an cnaipe Freagra sa barr navigáide</string>
   <string name="morphe_hide_chat_button_title">Folaigh cnaipe Chat</string>
@@ -67,4 +69,6 @@ Deacair: A chinn má tá an líontas radharcanna i bpointí API"</string>
   <string name="morphe_sanitize_sharing_links_summary">Lagh trí líosta do chomheascadh nuallaigh leis an bparaméad riantach traicíneachta</string>
   <string name="morphe_open_links_directly_title">Oscla hugadh go díreach</string>
   <string name="morphe_open_links_directly_summary">skip ar urlanna treoiteann i hugadh sheachtrach</string>
+  <string name="morphe_open_links_externally_title">Oscail na línte go taobh istigh</string>
+  <string name="morphe_open_links_externally_summary">Osclaíonn na línte i do brabhsálaí seachas sa brabhsálaí in-app</string>
 </resources>

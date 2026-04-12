@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Вимикає інтерфейс нового домашнього екрана</string>
   <string name="morphe_disable_screenshot_popup_title">Вимкнути спливаюче вікно знімку екрана</string>
   <string name="morphe_disable_screenshot_popup_summary">Вимикає спливаюче вікно, яке з\'являється під час створення знімка екрана</string>
+  <string name="morphe_hide_ask_button_title">Приховати кнопку \"Запитати\"</string>
+  <string name="morphe_hide_ask_button_summary">Приховує кнопку \"Запитати\" у рядку пошуку</string>
   <string name="morphe_hide_answers_button_title">Приховати кнопку \"Відповіді\"</string>
   <string name="morphe_hide_answers_button_summary">Приховує кнопку \"Відповіді\" на панелі навігації</string>
   <string name="morphe_hide_chat_button_title">Приховати кнопку \"Чат\"</string>
@@ -67,4 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">Вилучає параметри запиту відстеження з посилань під час поширення посилань</string>
   <string name="morphe_open_links_directly_title">Відкривати посилання напряму</string>
   <string name="morphe_open_links_directly_summary">Пропускає URL-переадресації у зовнішніх посиланнях</string>
+  <string name="morphe_open_links_externally_title">Відкривати посилання ззовні</string>
+  <string name="morphe_open_links_externally_summary">Відкриває посилання у вашому браузері, а не у вбудованому браузері застосунку</string>
 </resources>

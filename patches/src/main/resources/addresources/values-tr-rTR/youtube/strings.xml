@@ -687,7 +687,7 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
 Otomatik çevrilmiş altyazılar kullanılamayabilir"</string>
   <string name="morphe_caption_cookies_title">Altyazı çerezleri</string>
   <string name="morphe_caption_cookies_summary">Zamanlı Metin API istemlerinde kullanılacak çerezler</string>
-  <string name="morphe_get_caption_cookies_title">Altyazı çerezlerini alın</string>
+  <string name="morphe_get_caption_cookies_title">Altyazı çerezlerini al</string>
   <string name="morphe_get_caption_cookies_summary">"Tıklayarak çerezleri alın
 
 Geçerli ise otomatik olarak kaydedilecek"</string>
@@ -797,7 +797,7 @@ Morphe ayarlarını açmak için basılı tutun"</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Altyazılar menüsü gizli</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Altyazılar menüsü görünür</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Altyazılar alt bilgisini gizle</string>
-  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Altyazı menüsü alt bilgisi gizli</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Altyazılar menüsü alt bilgisi gizli</string>
   <string name="morphe_hide_player_flyout_captions_footer_summary_off">Altyazılar menüsü alt bilgisi görünür</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Altyazılar başlığını gizle</string>
   <string name="morphe_hide_player_flyout_captions_header_summary_on">Altyazılar menüsü başlığı gizli</string>
@@ -847,9 +847,9 @@ Morphe ayarlarını açmak için basılı tutun"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Ses Parçası menüsü gizli
 
 Ses Parçası menüsünü görüntülemek için, 'Video akışlarını taklit et'i 'Android Reel' veya 'TV' olarak değiştirin"</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">Ses parçası alt bilgisini gizle</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Ses parçası menüsü alt bilgisi gizli</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Ses parçası menüsü alt bilgisi görünür</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Ses Parçası alt bilgisini gizle</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Ses Parçası menüsü alt bilgisi gizli</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Ses Parçası menüsü alt bilgisi görünür</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR modunda izle\'yi gizle</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR modunda izle menüsü gizli</string>
@@ -873,9 +873,9 @@ Ses Parçası menüsünü görüntülemek için, 'Video akışlarını taklit et
   <string name="morphe_hide_autoplay_button_summary_on">Otomatik oynatma düğmesi gizli</string>
   <string name="morphe_hide_autoplay_button_summary_off">Otomatik oynatma düğmesi görünür</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">Altyazı düğmesini gizle</string>
-  <string name="morphe_hide_captions_button_summary_on">Altyazı düğmesi gizli</string>
-  <string name="morphe_hide_captions_button_summary_off">Altyazı düğmesi görünür</string>
+  <string name="morphe_hide_captions_button_title">Altyazılar düğmesini gizle</string>
+  <string name="morphe_hide_captions_button_summary_on">Altyazılar düğmesi gizli</string>
+  <string name="morphe_hide_captions_button_summary_off">Altyazılar düğmesi görünür</string>
   <string name="morphe_hide_cast_button_title">Yayınla düğmesini gizle</string>
   <string name="morphe_hide_cast_button_summary_on">Yayınla düğmesi gizli</string>
   <string name="morphe_hide_cast_button_summary_off">Yayınla düğmesi görünür</string>

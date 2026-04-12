@@ -13,6 +13,7 @@ import android.preference.Preference;
 import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.OpenLinksDirectlyPatch;
+import app.morphe.extension.reddit.patches.OpenLinksExternallyPatch;
 import app.morphe.extension.reddit.patches.SanitizeSharingLinksPatch;
 import app.morphe.extension.reddit.settings.Settings;
 import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
@@ -31,6 +32,7 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
     @Override
     public boolean getSettingsStatus() {
         return OpenLinksDirectlyPatch.isPatchIncluded() ||
+                OpenLinksExternallyPatch.isPatchIncluded() ||
                 SanitizeSharingLinksPatch.isPatchIncluded();
     }
 
@@ -54,6 +56,12 @@ public class MiscellaneousPreferenceCategory extends ConditionalPreferenceCatego
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.OPEN_LINKS_DIRECTLY
+            ));
+        }
+        if (OpenLinksExternallyPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.OPEN_LINKS_EXTERNALLY
             ));
         }
         if (SanitizeSharingLinksPatch.isPatchIncluded()) {

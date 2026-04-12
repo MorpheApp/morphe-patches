@@ -27,7 +27,7 @@ tasks {
     register<JavaExec>("checkStringResources") {
         description = "Checks resource strings for invalid formatting"
 
-        dependsOn(compileKotlin)
+        dependsOn(build)
 
         classpath = sourceSets["main"].runtimeClasspath
         mainClass.set("app.morphe.util.resource.CheckStringResourcesKt")

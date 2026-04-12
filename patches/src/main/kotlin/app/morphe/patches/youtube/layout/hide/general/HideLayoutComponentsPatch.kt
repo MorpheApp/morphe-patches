@@ -22,6 +22,7 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
+import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -37,6 +38,7 @@ import app.morphe.patches.youtube.misc.litho.node.hookTreeNodeResult
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
@@ -221,16 +223,24 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_join_button"),
                     SwitchPreference("morphe_hide_links_preview"),
                     SwitchPreference("morphe_hide_members_shelf"),
+                    SwitchPreference("morphe_hide_posts_shelf"),
                     SwitchPreference("morphe_hide_store_button"),
                     SwitchPreference("morphe_hide_subscribe_button_in_channel_page"),
                 ),
             ),
             SwitchPreference("morphe_hide_album_cards"),
             SwitchPreference("morphe_hide_artist_cards"),
-            SwitchPreference("morphe_hide_chips_shelf"),
             SwitchPreference("morphe_hide_community_posts"),
             SwitchPreference("morphe_hide_compact_banner"),
-            SwitchPreference("morphe_hide_expandable_card"),
+            if (is_20_26_or_greater) {
+                ListPreference("morphe_hide_expandable_card")
+            } else {
+                ListPreference(
+                    key = "morphe_hide_expandable_card",
+                    entriesKey = "morphe_hide_expandable_card_legacy_entries",
+                    entryValuesKey = "morphe_hide_expandable_card_legacy_entry_values"
+                )
+            },
             PreferenceCategory(
                 titleKey = null,
                 sorting = Sorting.UNSORTED,
@@ -249,7 +259,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
             SwitchPreference("morphe_hide_image_shelf"),
-            SwitchPreference("morphe_hide_latest_posts"),
             SwitchPreference("morphe_hide_latest_videos_button"),
             SwitchPreference("morphe_hide_mix_playlists"),
             SwitchPreference("morphe_hide_movies_section"),

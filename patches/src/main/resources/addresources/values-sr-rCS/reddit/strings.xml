@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Onemogućava moderni UI početne stranice</string>
   <string name="morphe_disable_screenshot_popup_title">Onemogući pojavni prozor za snimanje ekrana</string>
   <string name="morphe_disable_screenshot_popup_summary">Onemogućava pojavni prozor koji se pojavljuje prilikom snimanja snimka ekrana</string>
+  <string name="morphe_hide_ask_button_title">Sakrij dugme Zahtev</string>
+  <string name="morphe_hide_ask_button_summary">Skriva dugme Zahtev u traci za pretragu</string>
   <string name="morphe_hide_answers_button_title">Sakrij dugme „Odgovori”</string>
   <string name="morphe_hide_answers_button_summary">Sakriva dugme „Odgovori” u traci za navigaciju</string>
   <string name="morphe_hide_chat_button_title">Sakrij dugme „Čet”</string>
@@ -67,4 +69,6 @@ Ograničenje: Prikazuje se samo ako odgovor API-ja uključuje broj pregleda"</st
   <string name="morphe_sanitize_sharing_links_summary">Čisti linkove za deljenje uklanjanjem parametara za praćenje</string>
   <string name="morphe_open_links_directly_title">Otvaraj linkove direktno</string>
   <string name="morphe_open_links_directly_summary">Preskače URL-ove za preusmeravanje u spoljašnjim linkovima</string>
+  <string name="morphe_open_links_externally_title">Otvaraj linkove spolja</string>
+  <string name="morphe_open_links_externally_summary">Otvara linkove u tvom pregledaču umesto u pregledaču u aplikaciji</string>
 </resources>
