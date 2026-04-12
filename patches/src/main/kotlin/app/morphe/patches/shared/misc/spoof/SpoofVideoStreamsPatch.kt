@@ -48,9 +48,6 @@ import java.lang.ref.WeakReference
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
-private lateinit var buildRequestMethodRef : WeakReference<MutableMethod>
-private var buildRequestMethodURLRegister = -1
-
 private val spoofVideoStreamsResourcePatch = resourcePatch {
     execute {
         // region copy the ejs wrapper.
@@ -148,14 +145,20 @@ internal fun spoofVideoStreamsPatch(
         // region Get replacement streams at player requests.
 
         BuildRequestFingerprint.method.apply {
-            buildRequestMethodRef = WeakReference(this)
-
-            val newRequestBuilderIndex = BuildRequestFingerprint.instructionMatches.first().index
-            buildRequestMethodURLRegister = getInstruction<FiveRegisterInstruction>(newRequestBuilderIndex).registerD
-            val freeRegister = findFreeRegister(newRequestBuilderIndex, buildRequestMethodURLRegister)
+            val buildRequestMethodInsertIndex = BuildRequestFingerprint.instructionMatches.first().index
+            val buildRequestMethodURLRegister = getInstruction<FiveRegisterInstruction>(buildRequestMethodInsertIndex).registerD
 
             addInstructions(
-                newRequestBuilderIndex,
+                buildRequestMethodInsertIndex,
+                """
+                    invoke-static { v$buildRequestMethodURLRegister }, $EXTENSION_CLASS_DESCRIPTOR->blockGetAttRequest(Ljava/lang/String;)Ljava/lang/String;
+                    move-result-object v$buildRequestMethodURLRegister
+                """
+            )
+
+            val freeRegister = findFreeRegister(buildRequestMethodInsertIndex, buildRequestMethodURLRegister)
+            addInstructions(
+                buildRequestMethodInsertIndex + 1,
                 """
                     move-object v$freeRegister, p1
                     invoke-static { v$buildRequestMethodURLRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->fetchStreams(Ljava/lang/String;Ljava/util/Map;)V
@@ -237,21 +240,6 @@ internal fun spoofVideoStreamsPatch(
                         """
                     )
                 }
-            )
-        }
-
-        // endregion
-
-        // region block getAtt request
-
-        buildRequestMethodRef.get()!!.apply {
-            val insertIndex = indexOfNewUrlRequestBuilderInstruction(this)
-
-            addInstructions(
-                insertIndex, """
-                    invoke-static { v$buildRequestMethodURLRegister }, $EXTENSION_CLASS_DESCRIPTOR->blockGetAttRequest(Ljava/lang/String;)Ljava/lang/String;
-                    move-result-object v$buildRequestMethodURLRegister
-                """
             )
         }
 

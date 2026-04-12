@@ -4,6 +4,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -44,12 +46,21 @@ internal object BuildRequestFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Lorg/chromium/net/UrlRequest", // UrlRequest; or UrlRequest$Builder;
     filters = listOf(
-        methodCall(name = "newUrlRequestBuilder")
-    ), // UrlRequest; or UrlRequest$Builder;
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "Lorg/chromium/net/CronetEngine;",
+            name = "newUrlRequestBuilder",
+            parameters = listOf(
+                "Ljava/lang/String;",
+                $$"Lorg/chromium/net/UrlRequest$Callback;",
+                "Ljava/util/concurrent/Executor;"
+            )
+        )
+    ),
     custom = { methodDef, _ ->
         // Different targets have slightly different parameters
 
-        // Earlier targets have parameters = listOf(:),
+        // Earlier targets have parameters:
         // L
         // Ljava/util/Map;
         // [B
@@ -58,7 +69,7 @@ internal object BuildRequestFingerprint : Fingerprint(
         // L
         // Lorg/chromium/net/UrlRequest$Callback;
 
-        // Later targets have parameters = listOf(:),
+        // Later targets have parameters:
         // L
         // Ljava/util/Map;
         // [B
@@ -80,7 +91,6 @@ internal object BuildRequestFingerprint : Fingerprint(
         val parameterTypesSize = parameterTypes.size
         (parameterTypesSize == 6 || parameterTypesSize == 7 || parameterTypesSize == 8) &&
                 parameterTypes[1] == "Ljava/util/Map;" // URL headers.
-                && indexOfNewUrlRequestBuilderInstruction(methodDef) >= 0
     }
 )
 
@@ -94,7 +104,7 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
         Opcode.SGET_OBJECT,
         Opcode.IPUT_OBJECT,
     ),
-    custom = { method, classDef ->
+    custom = { _, classDef ->
         classDef.fields.any { field ->
             field.name == "a" && field.type.endsWith($$"/StreamingDataOuterClass$StreamingData;")
         }
@@ -183,13 +193,3 @@ internal object MediaSessionFeatureFlagFingerprint : Fingerprint(
         literal(45640404L)
     )
 )
-
-internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.indexOfFirstInstruction {
-    val reference = getReference<MethodReference>()
-    opcode == Opcode.INVOKE_VIRTUAL && reference?.definingClass == "Lorg/chromium/net/CronetEngine;"
-            && reference.name == "newUrlRequestBuilder"
-            && reference.parameterTypes.size == 3
-            && reference.parameterTypes[0] == "Ljava/lang/String;"
-            && reference.parameterTypes[1] == $$"Lorg/chromium/net/UrlRequest$Callback;"
-            && reference.parameterTypes[2] == "Ljava/util/concurrent/Executor;"
-}
