@@ -66,14 +66,15 @@ internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
     parameters = listOf("I", "L", "L"),
     filters = listOf(
         literal(5),
-        opcode(Opcode.CONST_4, location = MatchAfterWithin(10)),
-        opcode(Opcode.IF_NE, location = MatchAfterWithin(5)),
-        opcode(Opcode.SGET_OBJECT, location = MatchAfterWithin(5)),
-        opcode(Opcode.IF_NE, location = MatchAfterWithin(5)),
-        opcode(Opcode.IGET, location = MatchAfterWithin(5)),
-        opcode(Opcode.CONST_4, location = MatchAfterWithin(5)),
-        opcode(Opcode.IF_NE, location = MatchAfterWithin(5)),
-        opcode(Opcode.IGET_OBJECT, location = MatchAfterWithin(5))
+    ) + OpcodesFilter.opcodesToFilters(
+        Opcode.CONST_4,
+        Opcode.IF_NE,
+        Opcode.SGET_OBJECT,
+        Opcode.IF_NE,
+        Opcode.IGET,
+        Opcode.CONST_4,
+        Opcode.IF_NE,
+        Opcode.IGET_OBJECT,
     )
 )
 

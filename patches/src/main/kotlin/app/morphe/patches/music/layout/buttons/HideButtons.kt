@@ -37,7 +37,6 @@ val hideButtons = bytecodePatch(
         val playerOverlayChip = getResourceId(ResourceType.ID, "player_overlay_chip")
         val searchButton = getResourceId(ResourceType.LAYOUT, "search_button")
         val topBarMenuItemImageView = getResourceId(ResourceType.ID, "top_bar_menu_item_image_view")
-        val historyMenuItem = getResourceId(ResourceType.ID, "history_menu_item")
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_music_hide_cast_button"),
@@ -52,10 +51,7 @@ val hideButtons = bytecodePatch(
             HistoryMenuItemOfflineTabFingerprint
         ).forEach { fingerprint ->
             fingerprint.method.apply {
-                val resourceIndex = indexOfFirstLiteralInstructionOrThrow(historyMenuItem)
-                val findItemIndex = indexOfFirstInstructionOrThrow(resourceIndex, Opcode.INVOKE_INTERFACE)
-                val targetIndex = indexOfFirstInstructionOrThrow(findItemIndex + 1, Opcode.INVOKE_INTERFACE)
-
+                val targetIndex = fingerprint.instructionMatches.last().index
                 val targetRegister = getInstruction<FiveRegisterInstruction>(targetIndex).registerD
 
                 addInstructions(

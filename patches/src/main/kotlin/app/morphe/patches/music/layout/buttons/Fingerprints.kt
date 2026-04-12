@@ -29,8 +29,8 @@ internal object HistoryMenuItemFingerprint : Fingerprint(
     parameters = listOf("Landroid/view/Menu;"),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "history_menu_item"),
-        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterImmediately()),
-        opcode(Opcode.RETURN_VOID, MatchAfterImmediately())
+        opcode(Opcode.INVOKE_INTERFACE),
+        opcode(Opcode.INVOKE_INTERFACE),
     ),
     custom = { _, classDef ->
         classDef.methods.count() == 5 || classDef.methods.count() == 4
@@ -43,10 +43,9 @@ internal object HistoryMenuItemOfflineTabFingerprint : Fingerprint(
     parameters = listOf("Landroid/view/Menu;"),
     filters = listOf(
         resourceLiteral(ResourceType.ID, "offline_settings_menu_item"),
-        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterImmediately()),
-        resourceLiteral(ResourceType.ID, "history_menu_item", location = MatchAfterWithin(15)),
-        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterImmediately()),
-        opcode(Opcode.RETURN_VOID, location = MatchAfterImmediately())
+        resourceLiteral(ResourceType.ID, "history_menu_item"),
+        opcode(Opcode.INVOKE_INTERFACE),
+        opcode(Opcode.INVOKE_INTERFACE),
     )
 )
 
