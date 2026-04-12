@@ -46,21 +46,12 @@ internal object BuildRequestFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Lorg/chromium/net/UrlRequest", // UrlRequest; or UrlRequest$Builder;
     filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            definingClass = "Lorg/chromium/net/CronetEngine;",
-            name = "newUrlRequestBuilder",
-            parameters = listOf(
-                "Ljava/lang/String;",
-                $$"Lorg/chromium/net/UrlRequest$Callback;",
-                "Ljava/util/concurrent/Executor;"
-            )
-        )
-    ),
+        methodCall(name = "newUrlRequestBuilder")
+    ), // UrlRequest; or UrlRequest$Builder;
     custom = { methodDef, _ ->
         // Different targets have slightly different parameters
 
-        // Earlier targets have parameters:
+        // Earlier targets have parameters = listOf(:),
         // L
         // Ljava/util/Map;
         // [B
@@ -69,14 +60,14 @@ internal object BuildRequestFingerprint : Fingerprint(
         // L
         // Lorg/chromium/net/UrlRequest$Callback;
 
-        // Later targets have parameters:
+        // Later targets have parameters = listOf(:),
         // L
         // Ljava/util/Map;
         // [B
         // L
         // L
         // L
-        // Lorg/chromium/net/UrlRequest$Callback;
+        // Lorg/chromium/net/UrlRequest\$Callback;
         // L
 
         // 20.16+ uses a refactored and extracted method:
@@ -91,6 +82,7 @@ internal object BuildRequestFingerprint : Fingerprint(
         val parameterTypesSize = parameterTypes.size
         (parameterTypesSize == 6 || parameterTypesSize == 7 || parameterTypesSize == 8) &&
                 parameterTypes[1] == "Ljava/util/Map;" // URL headers.
+                && indexOfNewUrlRequestBuilderInstruction(methodDef) >= 0
     }
 )
 
@@ -193,3 +185,13 @@ internal object MediaSessionFeatureFlagFingerprint : Fingerprint(
         literal(45640404L)
     )
 )
+
+internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.indexOfFirstInstruction {
+    val reference = getReference<MethodReference>()
+    opcode == Opcode.INVOKE_VIRTUAL && reference?.definingClass == "Lorg/chromium/net/CronetEngine;"
+            && reference.name == "newUrlRequestBuilder"
+            && reference.parameterTypes.size == 3
+            && reference.parameterTypes[0] == "Ljava/lang/String;"
+            && reference.parameterTypes[1] == "Lorg/chromium/net/UrlRequest\$Callback;"
+            && reference.parameterTypes[2] == "Ljava/util/concurrent/Executor;"
+}

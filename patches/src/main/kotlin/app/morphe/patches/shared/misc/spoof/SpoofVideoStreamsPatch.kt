@@ -20,7 +20,6 @@ import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethod
@@ -43,7 +42,6 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
-import java.lang.ref.WeakReference
 
 internal const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
@@ -145,20 +143,12 @@ internal fun spoofVideoStreamsPatch(
         // region Get replacement streams at player requests.
 
         BuildRequestFingerprint.method.apply {
-            val buildRequestMethodInsertIndex = BuildRequestFingerprint.instructionMatches.first().index
-            val buildRequestMethodURLRegister = getInstruction<FiveRegisterInstruction>(buildRequestMethodInsertIndex).registerD
+            val newRequestBuilderIndex = BuildRequestFingerprint.instructionMatches.first().index
+            val buildRequestMethodURLRegister = getInstruction<FiveRegisterInstruction>(newRequestBuilderIndex).registerD
+            val freeRegister = findFreeRegister(newRequestBuilderIndex, buildRequestMethodURLRegister)
 
             addInstructions(
-                buildRequestMethodInsertIndex,
-                """
-                    invoke-static { v$buildRequestMethodURLRegister }, $EXTENSION_CLASS_DESCRIPTOR->blockGetAttRequest(Ljava/lang/String;)Ljava/lang/String;
-                    move-result-object v$buildRequestMethodURLRegister
-                """
-            )
-
-            val freeRegister = findFreeRegister(buildRequestMethodInsertIndex, buildRequestMethodURLRegister)
-            addInstructions(
-                buildRequestMethodInsertIndex + 1,
+                newRequestBuilderIndex,
                 """
                     move-object v$freeRegister, p1
                     invoke-static { v$buildRequestMethodURLRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->fetchStreams(Ljava/lang/String;Ljava/util/Map;)V
@@ -241,6 +231,26 @@ internal fun spoofVideoStreamsPatch(
                     )
                 }
             )
+        }
+
+        // endregion
+
+        // region block getAtt request
+
+        BuildRequestFingerprint.let {
+            it.method.apply {
+                val insertIndex = indexOfNewUrlRequestBuilderInstruction(this)
+                val register = it.instructionMatches.first()
+                    .getInstruction<FiveRegisterInstruction>().registerD
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->blockGetAttRequest(Ljava/lang/String;)Ljava/lang/String;
+                        move-result-object v$register
+                    """
+                )
+            }
         }
 
         // endregion
