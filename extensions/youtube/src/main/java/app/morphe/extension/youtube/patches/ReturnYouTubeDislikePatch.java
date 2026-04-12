@@ -427,7 +427,10 @@ public class ReturnYouTubeDislikePatch {
     public static void newVideoLoaded(String videoId) {
         try {
             if (!Settings.RYD_ENABLED.get()) return;
-            Objects.requireNonNull(videoId);
+            if (videoId == null || videoId.isBlank()) {
+                Logger.printDebug(() -> "Ignoring blank videoId");
+                return;
+            }
 
             PlayerType currentPlayerType = PlayerType.getCurrent();
             final boolean isNoneHiddenOrSlidingMinimized = currentPlayerType.isNoneHiddenOrSlidingMinimized();

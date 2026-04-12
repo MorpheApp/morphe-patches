@@ -1007,6 +1007,13 @@ val Method.p0Register: Int
         return totalRegs - paramRegs
     }
 
+/**
+ * Adapted from BiliRoamingX:
+ * https://github.com/BiliRoamingX/BiliRoamingX/blob/ae58109f3acdd53ec2d2b3fb439c2a2ef1886221/patches/src/main/kotlin/app/revanced/patches/bilibili/utils/Extenstions.kt#L151
+ */
+fun MutableMethod.fiveRegisters(index: Int) = getInstruction<FiveRegisterInstruction>(index)
+    .registersUsed.joinToString(",") { "v$it" }
+
 private const val RETURN_TYPE_MISMATCH = "Mismatch between override type and Method return type"
 
 /**

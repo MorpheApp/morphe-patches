@@ -787,11 +787,17 @@ Držite pritisnut da biste otvorili podešavanja YouTubea"</string>
 Držite pritisnut da biste otvorili podešavanja Morphea"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Padajući meni</string>
-  <string name="morphe_hide_player_flyout_summary">Sakrijte ili prikažite predmete u padajućem meniju plejera</string>
+  <string name="morphe_hide_player_flyout_summary">Sakrij ili prikaži komponente menija iskačućeg prozora plejera</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Sakrij meni „Titl”</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Meni „Titl” je skriven</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Meni „Titl” je prikazan</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Sakrij podnožje Titlova</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Podnožje menija Titlova je skriveno</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Podnožje menija Titlova je prikazano</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Sakrij zaglavlje Titlova</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Meni „Titl” je skriven</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Meni „Titl” je prikazan</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Sakrij meni „Dodatna podešavanja”</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Meni „Dodatna podešavanja” je skriven</string>
@@ -837,17 +843,23 @@ Držite pritisnut da biste otvorili podešavanja Morphea"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Meni sa zvučnim stazama je sakriven
 
 Da bi prikazali meni sa zvučnim stazama, promenite 'Imitiraj video tokove' u 'Android Reel' ili 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Sakrij meni „Audio snimak”</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Meni „Audio snimak” je skriven</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Meni „Audio snimak” je prikazan</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Sakrij dugme „Gledaj u VR”</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Dugme „Gledaj u VR” je skriveno</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Dugme „Gledaj u VR” je prikazano</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Sakrij meni kvaliteta videa</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Meni kvaliteta videa je skriven</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Meni kvaliteta videa je prikazan</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Sakrij podnožje menija kvaliteta videa</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Podnožje menija kvaliteta videa je skriveno</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Podnožje menija kvaliteta videa je prikazano</string>
+  <string name="morphe_hide_player_flyout_quality_title">Sakrij kvalitet</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Meni kvaliteta videa je skriven</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Meni kvaliteta videa je prikazan</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Sakrij podnožje menija kvaliteta videa</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Podnožje menija kvaliteta videa je skriveno</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Podnožje menija kvaliteta videa je prikazano</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Sakrij kvalitet</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Podnožje menija kvaliteta videa je skriveno</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Podnožje menija kvaliteta videa je prikazano</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Sakrij prikazu automatskog reproduciranja</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Prikaz automatskog reproduciranja je sakriven</string>

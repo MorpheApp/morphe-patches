@@ -786,11 +786,17 @@ Tap and hold to open YouTube settings"</string>
 Tap and hold to open Morphe settings"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Roghchlár Flyout</string>
-  <string name="morphe_hide_player_flyout_summary">Folaigh nó taispeáin míreanna roghchlár flyout an imreora</string>
+  <string name="morphe_hide_player_flyout_summary">Folaigh nó taispeáin comhpháirteanna roghchlár flyout an imreora</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Folaigh Fotheidil</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Tá roghchlár fotheidil i bhfolach</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Taispeántar roghchlár fotheidil</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Folaigh Fothesil na Fotheidil</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Tá buntásc an roghchláir folaithe</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Taispeántar buntásc an roghchláir</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Folaigh Fotheidil na Fotheidil</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Tá féadán na mbonne a bhfolach</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Taispeántar féadán na mbonne</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Folaigh socruithe breise / Tuilleadh</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Tá an roghchlár socruithe breise / Tuilleadh i bhfolach</string>
@@ -836,17 +842,23 @@ Tap and hold to open Morphe settings"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Tá roghchlár na rianta fuaime i bhfolach
 
 Chun an roghchlár rianta fuaime a thaispeáint, athraigh 'Sruthanna físe bréige' go 'Android Reel' nó 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Folaigh rian fuaime</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Tá roghchlár na rianta fuaime i bhfolach</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Taispeántar roghchlár rianta fuaime</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Folaigh Faire i VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Tá an roghchlár Féach i VR i bhfolach</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Taispeántar an roghchlár Féach i VR</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Folaigh an roghchlár Cáilíochta</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Tá an roghchlár cáilíochta i bhfolach</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Taispeántar roghchlár cáilíochta</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Folaigh buntásc an roghchláir Cáilíochta</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Tá buntásc an roghchláir cáilíochta i bhfolach</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Taispeántar buntásc an roghchláir cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_title">Folaigh roghchlár Cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Tá an roghchlár cáilíochta i bhfolach</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Taispeántar roghchlár cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Folaigh buntásc an roghchláir Cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Tá buntásc an roghchláir cáilíochta i bhfolach</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Taispeántar buntásc an roghchláir cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Folaigh an roghchlár Cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Tá buntásc an roghchláir cáilíochta i bhfolach</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Taispeántar buntásc an roghchláir cáilíochta</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Folaigh réamhamharc uath-sheinm</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Tá réamhamharc uath-sheinm i bhfolach</string>

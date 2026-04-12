@@ -788,11 +788,17 @@ Ingedrukt houden om YouTube-instellingen te openen"</string>
 Ingedrukt houden om Morphe-instellingen te openen"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Uitklapmenu</string>
-  <string name="morphe_hide_player_flyout_summary">Items in het uitklapmenu van de speler verbergen of weergeven</string>
+  <string name="morphe_hide_player_flyout_summary">Verberg of toon componenten van het speler flyout-menu</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Ondertitels verbergen</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Ondertitels-menu is verborgen</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Ondertitels-menu wordt weergegeven</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Captions-footer verbergen</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Captions-menu-footer is verborgen</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Captions-menu-footer wordt weergegeven</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Captions-header verbergen</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Ondertitels-menu is verborgen</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Ondertitels-menu wordt weergegeven</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Verberg \'Extra instellingen / Meer\'</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Menu \'Extra instellingen / Meer\' is verborgen</string>
@@ -838,17 +844,23 @@ Ingedrukt houden om Morphe-instellingen te openen"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu voor audio-spoor is verborgen
 
 Om het menu voor audio-spoor te tonen, verander 'Spoof video streams' naar 'Android Reel' of 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Verberg Audiotrack</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Menu Audiotrack is verborgen</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Menu Audiotrack wordt weergegeven</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Verberg Bekijk in VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu Bekijk in VR is verborgen</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Menu Bekijk in VR wordt weergegeven</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Verberg menu \'Kwaliteit\'</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Menu \'Kwaliteit\' is verborgen</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Menu \'Kwaliteit\' is zichtbaar</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Verberg voettekst van menu \'Kwaliteit\'</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Voettekst van menu \'Kwaliteit\' is verborgen</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Voettekst van menu \'Kwaliteit\' wordt weergegeven</string>
+  <string name="morphe_hide_player_flyout_quality_title">Kwaliteit</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Videokwaliteitsmenu is verborgen</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Videokwaliteitsmenu is zichtbaar</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Verberg voettekst van video-kwaliteitsmenu</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Voettekst van video-kwaliteitsmenu is verborgen</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Voettekst van video-kwaliteitsmenu wordt weergegeven</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Kwaliteit</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Voettekst van video-kwaliteitsmenu is verborgen</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Voettekst van video-kwaliteitsmenu wordt weergegeven</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Verberg voorbeeld autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Autoplay voorbeeld is verborgen</string>

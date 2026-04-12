@@ -786,11 +786,17 @@ Second \"item\" text"</string>
 按住以開啟 Morphe 設定"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">介面選單</string>
-  <string name="morphe_hide_player_flyout_summary">隱藏或顯示播放器彈出式選單</string>
+  <string name="morphe_hide_player_flyout_summary">隱藏或顯示播放器彈出式選單元件</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">隱藏「字幕」</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">已隱藏「字幕」選單</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">已顯示「字幕」選單</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">隱藏字幕頁尾</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">字幕選單頁尾已隱藏</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">字幕選單頁尾已顯示</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">隱藏字幕標題</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">已隱藏「字幕」選單</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">已顯示「字幕」選單</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">隱藏「其他設定」/「更多」</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">已隱藏「其他設定」/「更多」選單</string>
@@ -836,17 +842,23 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"已隱藏音訊軌道選單
 
 如要顯示「音軌」選單，請將「偽裝視訊串流」變更為「電視」"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">隱藏「音軌」</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">已隱藏「音軌」選單</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">已顯示「音軌」選單</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">隱藏「以 VR 模式觀看」</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">已隱藏「以 VR 模式觀看」</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">已顯示「以 VR 模式觀看」</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">隱藏「影片畫質」選單</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">已隱藏「影片畫質」選單</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">已顯示「影片畫質」選單</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">隱藏「影片畫質」選單頁尾</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">已隱藏「影片畫質」選單頁尾</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">已顯示「影片畫質」選單頁尾</string>
+  <string name="morphe_hide_player_flyout_quality_title">隱藏「影片畫質」選單</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">已隱藏「影片畫質」選單</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">已顯示「影片畫質」選單</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">隱藏「影片畫質」選單頁尾</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">已隱藏「影片畫質」選單頁尾</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">已顯示「影片畫質」選單頁尾</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">隱藏「影片畫質」選單</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">已隱藏「影片畫質」選單頁尾</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">已顯示「影片畫質」選單頁尾</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">隱藏自動播放預覽</string>
   <string name="morphe_hide_autoplay_preview_summary_on">已隱藏自動播放預覽</string>

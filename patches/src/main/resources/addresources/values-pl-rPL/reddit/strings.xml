@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Wyłącza nowoczesny interfejs strony głównej</string>
   <string name="morphe_disable_screenshot_popup_title">Blokowanie okienka zrzutu ekranu</string>
   <string name="morphe_disable_screenshot_popup_summary">Wyłącza okienko pojawiające się po zrobieniu zrzutu ekranu</string>
+  <string name="morphe_hide_ask_button_title">Przycisk Ukryj Pytanie</string>
+  <string name="morphe_hide_ask_button_summary">Ukrywa przycisk Pytanie na pasku wyszukiwania</string>
   <string name="morphe_hide_answers_button_title">Przycisk Odpowiedzi</string>
   <string name="morphe_hide_answers_button_summary">Ukrywa przycisk Odpowiedzi na pasku nawigacji</string>
   <string name="morphe_hide_chat_button_title">Przycisk Czaty</string>
@@ -67,4 +69,6 @@ Ograniczenie: Widoczne tylko, jeśli API zwraca te dane"</string>
   <string name="morphe_sanitize_sharing_links_summary">Usuwa parametry śledzące z udostępnianych linków</string>
   <string name="morphe_open_links_directly_title">Bezpośrednie otwieranie linków</string>
   <string name="morphe_open_links_directly_summary">Pomija przekierowania w linkach zewnętrznych</string>
+  <string name="morphe_open_links_externally_title">Otwieranie linków zewnętrznie</string>
+  <string name="morphe_open_links_externally_summary">Otwiera linki w przeglądarce, a nie w przeglądarce w aplikacji</string>
 </resources>

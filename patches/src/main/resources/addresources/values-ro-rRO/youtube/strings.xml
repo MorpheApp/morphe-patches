@@ -783,11 +783,17 @@ Apasă și menține apăsat pentru a deschide setările YouTube"</string>
 Apasă și menține apăsat pentru a deschide setările Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Meniu flyout</string>
-  <string name="morphe_hide_player_flyout_summary">Ascunde sau arată elementele de meniu Flyout ale jucătorului</string>
+  <string name="morphe_hide_player_flyout_summary">Ascunderea sau afișarea componentelor meniului Flyout al jucătorului</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Ascunde subtitrările</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Meniul subtitrărilor este ascuns</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Meniul de subtitrări este afișat</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Ascunderea antetului Subtitrări</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Meniul subtitrărilor este ascuns</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Meniul de subtitrări este afișat</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Ascunderea antetului Subtitrări</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Meniul subtitrărilor este ascuns</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Meniul de subtitrări este afișat</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Ascunde \'Setări adiționale / Mai multe\'</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Meniu setări adiționale este ascuns</string>
@@ -833,17 +839,23 @@ Apasă și menține apăsat pentru a deschide setările Morphe"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Meniu de track-uri audio este ascuns
 
 Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'Android Reel' sau 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Ascunde piesa audio</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Meniul piesei audio este ascuns</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Meniul piesei audio este afișat</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ascunde ceas în VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Vizionarea în meniul VR este ascunsă</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Vizionați în meniul VR este afișat</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Ascunde meniul de calitate video</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Meniu calitate video este ascuns</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Meniu calitate video este afișat</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Ascunde subsol meniu calitate video</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Subsol meniu calitate video este ascuns</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Subsol meniu calitate video este afișat</string>
+  <string name="morphe_hide_player_flyout_quality_title">Ascunde Calitate</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Meniul calității video este ascuns</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Meniul calității video este afișat</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Ascunde subsol meniu calitate video</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Subsolul meniului calităţii video este ascuns</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Subsolul meniului calității video este afișat</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Ascunde Calitate</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Subsolul meniului calităţii video este ascuns</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Subsolul meniului calității video este afișat</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Ascunde previzualizarea autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Previzualizarea autoplay este ascunsă</string>

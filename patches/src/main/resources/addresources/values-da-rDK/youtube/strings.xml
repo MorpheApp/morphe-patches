@@ -21,11 +21,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_00_about_title">Om</string>
   <string name="morphe_settings_screen_01_ads_title">Annoncer</string>
   <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternative miniaturebilleder</string>
-  <string name="morphe_settings_screen_03_feed_title">Foder</string>
+  <string name="morphe_settings_screen_03_feed_title">Feed</string>
   <string name="morphe_settings_screen_04_general_title">Generelt</string>
   <string name="morphe_settings_screen_05_player_title">Afspiller</string>
   <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
-  <string name="morphe_settings_screen_07_seekbar_title">Søg i videon</string>
+  <string name="morphe_settings_screen_07_seekbar_title">Fremspolingsbjælke</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Strygekontroller</string>
   <string name="morphe_settings_screen_11_misc_title">Diverse</string>
   <string name="morphe_settings_screen_12_video_title">Video</string>
@@ -37,8 +37,8 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Baggrundsafspilning af Shorts er deaktiveret</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Baggrundsafspilning af Shorts er aktiveret</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">Debug log protokolbuffer</string>
-  <string name="morphe_debug_protobuffer_summary_on">Fejlfindingslogge inkluderer protobuffer</string>
+  <string name="morphe_debug_protobuffer_title">Fejlfindingslog protokolbuffer</string>
+  <string name="morphe_debug_protobuffer_summary_on">Fejlfindingslogge inkluderer protokolbuffer</string>
   <string name="morphe_debug_protobuffer_summary_off">Fejlfindingslogge inkluderer ikke protobuffer</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Aktivering af denne indstilling logger yderligere layoutdata, inklusive tekst på skærmen for nogle UI-komponenter.
 
@@ -49,21 +49,21 @@ Aktivering af dette vil dog også logge nogle brugerdata, såsom din IP-adresse.
   <string name="morphe_disable_layout_updates_title">Deaktiver opdateringer af layout</string>
   <string name="morphe_disable_layout_updates_summary_on">Layout vil ikke blive opdateret af serveren</string>
   <string name="morphe_disable_layout_updates_summary_off">Layout vil blive opdateret af serveren</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"App layout vender tilbage til den layout, der blev brugt ved første installation.
+  <string name="morphe_disable_layout_updates_user_dialog_message">"App layout vender tilbage til det layout, der blev brugt ved første installation.
 
 Nogle server-side layouts kan ikke vende tilbage.
 
 Ændringer inkluderer:
-• Komponenter i spiller flytmenu (eller relaterede indstillinger) kan ikke fungere.
+• Komponenter i afspillerens rullemenu (eller relaterede indstillinger) kan ikke fungere.
 • Rullende tal er ikke animeret.
 • Biblioteksfladen vises.
 • Musiksektionen af videobeskrivelse kan ikke fungere.
-• Spiller flytmenu items kan ikke skjules.
-• Kontobyttesknap kan ikke vises på biblioteksfladen."</string>
+• Afspiller rullemenu elementer kan ikke skjules.
+• Kontoskifteknap kan ikke vises på biblioteksfladen."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Skjul butikshylde for skabere</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">Opretterbutikshylde under videoafspiller er skjult</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">Butikshylde for skaber under videoafspiller vises</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">Butikshylde for skabere under videoafspiller er skjult</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">Butikshylde for skabere under videoafspiller vises</string>
   <string name="morphe_hide_album_cards_title">Skjul albumkort</string>
   <string name="morphe_hide_album_cards_summary_on">Albumkort er skjult</string>
   <string name="morphe_hide_album_cards_summary_off">Albumkort vises</string>
@@ -82,7 +82,7 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_expandable_card_title">Skjul udvideligt kort</string>
   <string name="morphe_hide_expandable_card_summary_on">Udvideligt kort under videoer er skjult</string>
   <string name="morphe_hide_expandable_card_summary_off">Udvideligt kort under videoer er vist</string>
-  <string name="morphe_hide_floating_microphone_button_title">Skjul flydende mikrofonknap</string>
+  <string name="morphe_hide_floating_microphone_button_title">Skjul svævende mikrofonknap</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Svævende mikrofonknap i søgning er skjult</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Flydende mikrofonknap i søgning vises</string>
   <string name="morphe_hide_horizontal_shelves_title">Skjul vandrette hylder</string>
@@ -117,9 +117,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_notify_me_button_title">Skjul knappen \'Underret mig\'</string>
   <string name="morphe_hide_notify_me_button_summary_on">Giv mig besked-knap er skjult</string>
   <string name="morphe_hide_notify_me_button_summary_off">Giv mig besked-knap vises</string>
-  <string name="morphe_hide_playables_title">Skjul Spilleobjekter</string>
-  <string name="morphe_hide_playables_summary_on">Spilleobjekter er skjult</string>
-  <string name="morphe_hide_playables_summary_off">Afspilningstabeller vises</string>
+  <string name="morphe_hide_playables_title">Skjul Spillehjørnet</string>
+  <string name="morphe_hide_playables_summary_on">Spillehjørnet er skjult</string>
+  <string name="morphe_hide_playables_summary_off">Spillehjørnet vises</string>
   <string name="morphe_hide_search_term_thumbnails_title">Skjul miniaturebilleder for søgeord</string>
   <string name="morphe_hide_search_term_thumbnails_summary_on">Miniaturebilleder for søgeord er skjult</string>
   <string name="morphe_hide_search_term_thumbnails_summary_off">Miniaturebilleder for søgeord er vist</string>
@@ -144,17 +144,17 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_web_search_results_title">Skjul søgeresultater</string>
   <string name="morphe_hide_web_search_results_summary_on">Websøgeresultater er skjult</string>
   <string name="morphe_hide_web_search_results_summary_off">Websøgeresultater vises</string>
-  <string name="morphe_hide_you_may_like_section_title">Skjul \'Du kan måske like\' afsnit</string>
-  <string name="morphe_hide_you_may_like_section_summary_on">\"Du kan like\" afsnit er skjult</string>
-  <string name="morphe_hide_you_may_like_section_summary_off">\"Du kan like\" afsnit er vist</string>
+  <string name="morphe_hide_you_may_like_section_title">Skjul \'Du kan måske lide\' afsnit</string>
+  <string name="morphe_hide_you_may_like_section_summary_on">\"Du kan måske lide\" afsnit er skjult</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">\"Du kan måske lide\" afsnit er vist</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_youtube_doodles_title">Skjul YouTube-Doudler</string>
+  <string name="morphe_hide_youtube_doodles_title">Skjul YouTube-Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles-animation på logoet er skjult</string>
   <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles-animation på logoet vises</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles vises i løbet af et par dage hvert år i forskellige dele af verden.
 
 Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at blive vist."</string>
-  <string name="morphe_hide_channel_bar_title">Skjul kanallinje</string>
+  <string name="morphe_hide_channel_bar_title">Skjul kanalbjælken</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanalbjælken er skjult</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanalbjælken vises</string>
   <string name="morphe_hide_channel_watermark_title">Skjul kanalvandmærke</string>
@@ -171,13 +171,13 @@ Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at bliv
   <string name="morphe_hide_info_panels_summary_off">Infopaneler vises</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
-  <string name="morphe_hide_join_membership_button_title">Skjul knappen \"Deltag\"</string>
-  <string name="morphe_hide_join_membership_button_summary_on">Tilmeld-knap er skjult</string>
-  <string name="morphe_hide_join_membership_button_summary_off">Tilmeld-knap vises</string>
+  <string name="morphe_hide_join_membership_button_title">Skjul knappen \"Tilmeld\"</string>
+  <string name="morphe_hide_join_membership_button_summary_on">Deltag-knap er skjult</string>
+  <string name="morphe_hide_join_membership_button_summary_off">Deltag-knap vises</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">Skjul \'Live chat genindspilning\' knappen</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_on">Knappen \'Live chat genindspilning\' i afspilleren er skjult</string>
+  <string name="morphe_hide_live_chat_replay_button_title">Skjul \'Live chat genafspilning\' knappen</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">Knappen \'Live chat genafspilning\' i afspilleren er skjult</string>
   <string name="morphe_hide_live_chat_replay_button_summary_off">Knappen \'Live chat genindspilning\' i afspilleren er vist</string>
   <string name="morphe_hide_medical_panels_title">Skjul medicinske paneler</string>
   <string name="morphe_hide_medical_panels_summary_on">Medicinske paneler er skjult</string>
@@ -195,8 +195,8 @@ Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at bliv
   <string name="morphe_hide_timed_reactions_summary_on">Tidsreaktioner skjules</string>
   <string name="morphe_hide_timed_reactions_summary_off">Tidsreaktioner vises</string>
   <string name="morphe_hide_video_title_title">Skjul videotitel</string>
-  <string name="morphe_hide_video_title_summary_on">Videooverskrift i afspilleroverskrift er skjult</string>
-  <string name="morphe_hide_video_title_summary_off">Videooverskrift i afspilleroverskrift er vist</string>
+  <string name="morphe_hide_video_title_summary_on">Videotitel i afspilleroverlægning er skjult</string>
+  <string name="morphe_hide_video_title_summary_off">Videotitel i afspilleroverlægning er vist</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Skjul \"AI-genereret videooversigt\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">AI-genereret videooversigt er skjult</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI-genereret videooversigtssektion vises</string>
@@ -207,17 +207,17 @@ Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at bliv
   <string name="morphe_hide_attributes_section_summary_on">Fremhævede steder, spil, musik og sektioner med omtalte personer er skjult</string>
   <string name="morphe_hide_attributes_section_summary_off">Fremhævede steder, spil, musik og sektioner med omtalte personer vises</string>
   <string name="morphe_hide_chapters_section_title">Skjul kapitler</string>
-  <string name="morphe_hide_chapters_section_summary_on">Kapitler sektion er skjult</string>
-  <string name="morphe_hide_chapters_section_summary_off">Kapitel afsnit er vist</string>
-  <string name="morphe_hide_course_progress_section_title">Skjul \'Kursforgang\'</string>
-  <string name="morphe_hide_course_progress_section_summary_on">Kursforgangssektion er skjult</string>
-  <string name="morphe_hide_course_progress_section_summary_off">Kursforgangssektion er vist</string>
+  <string name="morphe_hide_chapters_section_summary_on">Kapitelsektionen er skjult</string>
+  <string name="morphe_hide_chapters_section_summary_off">Kapitelsektionen er vist</string>
+  <string name="morphe_hide_course_progress_section_title">Skjul \'Kursusfremgang\'</string>
+  <string name="morphe_hide_course_progress_section_summary_on">Kursusfremgangssektion er skjult</string>
+  <string name="morphe_hide_course_progress_section_summary_off">Kursusfremgangssektion er vist</string>
   <string name="morphe_hide_explore_section_title">Skjul Udforsk</string>
   <string name="morphe_hide_explore_section_summary_on">Udforsk dette kursus og Udforsk podcasts afsnit er skjult</string>
   <string name="morphe_hide_explore_section_summary_off">Udforsk dette kursus og Udforsk podcasts afsnit er vist</string>
   <string name="morphe_hide_explore_course_section_title">Skjul \'Udforsk dette kursus\'</string>
-  <string name="morphe_hide_explore_course_section_summary_on">Denne kursusafsnit er skjult</string>
-  <string name="morphe_hide_explore_course_section_summary_off">Denne kursusafsnit vises</string>
+  <string name="morphe_hide_explore_course_section_summary_on">Dette kursusafsnit er skjult</string>
+  <string name="morphe_hide_explore_course_section_summary_off">Dette kursusafsnit vises</string>
   <string name="morphe_hide_explore_podcast_section_title">Skjul \"Udforsk podcasten\"</string>
   <string name="morphe_hide_explore_podcast_section_summary_on">Sektionen Udforsk podcasten er skjult</string>
   <string name="morphe_hide_explore_podcast_section_summary_off">Sektionen Udforsk podcasten vises</string>
@@ -230,15 +230,15 @@ Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at bliv
   <string name="morphe_hide_featured_videos_section_title">Skjul \'Fremhævet videoer\'</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Sektionen for \'Fremhævet videoer\' er skjult</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Sektionen for \'Fremhævet videoer\' er vist</string>
-  <string name="morphe_hide_feed_flyout_menu_title">Aktiver filflytmenålteringsfilter</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_on">Filflytmenålteringsfilter er aktiveret</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_off">Filflytmenålteringsfilter er deaktiveret</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filflytmenålteringsfilter</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Angiv flyout-menunavnene, der skal filtreres, et prå linje</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Aktiver feedrullemenufilter</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">Feedrullemenufilter er aktiveret</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">Feedrullemenufilter er deaktiveret</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Feedrullemenufilter</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Angiv rullemenunavne, der skal filtreres, et per linje</string>
   <string name="morphe_hide_gaming_section_title">Skjul \'Gaming\'</string>
   <string name="morphe_hide_gaming_section_summary_on">Sektionen for \'Gaming\' er skjult</string>
   <string name="morphe_hide_gaming_section_summary_off">Sektionen for \'Gaming\' er vist</string>
-  <string name="morphe_hide_how_this_was_made_section_title">Skjul \"Hvordan dette indhold blev lavet\"</string>
+  <string name="morphe_hide_how_this_was_made_section_title">Skjul \"Sådan blev dette indhold lavet\"</string>
   <string name="morphe_hide_how_this_was_made_section_summary_on">Sektionen Sådan blev dette indhold lavet er skjult</string>
   <string name="morphe_hide_how_this_was_made_section_summary_off">Sektionen Sådan blev dette indhold lavet vises</string>
   <string name="morphe_hide_hype_points_title">Skjul Hype-point</string>
@@ -253,19 +253,19 @@ Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at bliv
   <string name="morphe_hide_music_section_title">Skjul \'Musik\'</string>
   <string name="morphe_hide_music_section_summary_on">Sektionen for \'Musik\' er skjult</string>
   <string name="morphe_hide_music_section_summary_off">Sektionen for \'Musik\' er vist</string>
-  <string name="morphe_hide_subscribe_button_title">Skjul knappen Abonner</string>
-  <string name="morphe_hide_subscribe_button_summary_on">Abonnement knappen er skjult</string>
+  <string name="morphe_hide_subscribe_button_title">Skjul knappen Abonnér</string>
+  <string name="morphe_hide_subscribe_button_summary_on">Abonnér knappen er skjult</string>
   <string name="morphe_hide_subscribe_button_summary_off">Knappen Abonnér vises</string>
-  <string name="morphe_hide_transcript_section_title">Skjul udskrift</string>
-  <string name="morphe_hide_transcript_section_summary_on">Afsnittet er skjult</string>
-  <string name="morphe_hide_transcript_section_summary_off">Afsnittet er vist</string>
+  <string name="morphe_hide_transcript_section_title">Skjul Udskrift</string>
+  <string name="morphe_hide_transcript_section_summary_on">Udskriftsafsnittet er skjult</string>
+  <string name="morphe_hide_transcript_section_summary_off">Udskriftsafsnittet er vist</string>
   <string name="morphe_hide_quizzes_section_title">Skjul quizzer</string>
   <string name="morphe_hide_quizzes_section_summary_on">Quizzer-sektion er skjult</string>
   <string name="morphe_hide_quizzes_section_summary_off">Quizzer-sektion er vist</string>
-  <string name="morphe_hide_description_components_screen_title">Video beskrivelse</string>
+  <string name="morphe_hide_description_components_screen_title">Videobeskrivelse</string>
   <string name="morphe_hide_description_components_screen_summary">Skjul eller vis komponenter til videobeskrivelse</string>
-  <string name="morphe_hide_filter_bar_screen_title">Filtrer bjælke</string>
-  <string name="morphe_hide_filter_bar_screen_summary">Skjul eller vis filterlinjen i feeds, relaterede videoer, søgeresultater og seerhistorik</string>
+  <string name="morphe_hide_filter_bar_screen_title">Filterbjælke</string>
+  <string name="morphe_hide_filter_bar_screen_summary">Skjul eller vis filterbjælken i feeds, relaterede videoer, søgeresultater og seerhistorik</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Skjul i feeds</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_summary_on">Skjult i feeds</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_summary_off">Vist i feeds</string>
@@ -280,11 +280,11 @@ Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at bliv
   <string name="morphe_hide_filter_bar_feed_in_history_summary_off">Vist i seerhistorik</string>
   <string name="morphe_channel_screen_title">Kanalside</string>
   <string name="morphe_channel_screen_summary">Skjul eller vis kanalsidekomponenter</string>
-  <string name="morphe_hide_channel_tab_title">Aktiver kanalflådefilter</string>
-  <string name="morphe_hide_channel_tab_summary_on">Kanalflådefilter er aktiveret</string>
-  <string name="morphe_hide_channel_tab_summary_off">Kanalflådefilter er deaktiveret</string>
-  <string name="morphe_hide_channel_tab_filter_strings_title">Filterkanalflade</string>
-  <string name="morphe_hide_channel_tab_filter_strings_summary">Angiv kanalfladenavne, der skal filtreres, ét pr. linje</string>
+  <string name="morphe_hide_channel_tab_title">Aktiver kanalfanefilter</string>
+  <string name="morphe_hide_channel_tab_summary_on">Kanalfanefilter er aktiveret</string>
+  <string name="morphe_hide_channel_tab_summary_off">Kanalfanefilter er deaktiveret</string>
+  <string name="morphe_hide_channel_tab_filter_strings_title">Kanalfanefilter</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">Angiv kanalfanenavne, der skal filtreres, ét per linje</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_community_button_title">Skjul \'Community\' knappen</string>
   <string name="morphe_hide_community_button_summary_on">Knappen \'Community\' er skjult</string>
@@ -304,20 +304,20 @@ Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at bliv
   <string name="morphe_hide_store_button_summary_on">Knappen \'Butik\' er skjult</string>
   <string name="morphe_hide_store_button_summary_off">Knappen \'Butik\' er vist</string>
   <!-- 'Subscribe' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_subscribe_button_in_channel_page_title">Skjul knappen Abonner</string>
-  <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">Abonnement knappen er skjult</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_title">Skjul knappen Abonnér</string>
+  <string name="morphe_hide_subscribe_button_in_channel_page_summary_on">Abonnér knappen er skjult</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Knappen Abonnér vises</string>
   <string name="morphe_comments_screen_title">Kommentarer</string>
-  <string name="morphe_comments_screen_summary">Skjul eller vis kommentarer sektion komponenter</string>
+  <string name="morphe_comments_screen_summary">Skjul eller vis kommentarsektion komponenter</string>
   <string name="morphe_hide_comments_carousel_title">Aktiver kommentarkarussel filter</string>
-  <string name="morphe_hide_comments_carousel_summary_on">Kommentarerne carousel filter er aktiveret</string>
-  <string name="morphe_hide_comments_carousel_summary_off">Kommentarerne er deaktiveret</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Kommentarkarussel filter er aktiveret</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Kommentarkarussel filter er deaktiveret</string>
   <string name="morphe_hide_comments_carousel_user_dialog_message">"Bemærk:
 • Sørg for at indtaste det nøjagtige navn på karusellens element (f.eks. Spørg, Hype denne video, Lyt på YouTube Music osv.).
 • Skjuling af karusellens elementer kan have utilsigtede bivirkninger.
 • Hvis alle karusellens elementer er skjult, vil hele kommentarfeltet også være skjult."</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentarer-karuselfilter</string>
-  <string name="morphe_hide_comments_carousel_filter_strings_summary">Indtast kommentarerne navne for at filtrere efter, én pr. linje</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Kommentarkarussel filter</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Indtast kommentarkarusselnavne at filtrere efter, én per linje</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Skjul AI-chatsammendrag</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">AI-chatsammendrag er skjult</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">AI-chatsammendrag vises</string>
@@ -791,11 +791,17 @@ Tryk og hold for at åbne YouTube-indstillinger"</string>
 Tryk og hold for at åbne Morphe-indstillinger"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Udfyldningsmenu</string>
-  <string name="morphe_hide_player_flyout_summary">Skjul eller vis spiller flyout menupunkter</string>
+  <string name="morphe_hide_player_flyout_summary">Skjul eller vis afspiller flyout menukomponenter</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Skjul Billedtekster</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Undertekster menu er skjult</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Undertekster menu er vist</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Skjul Undertekst footeren</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Undertekster menu er skjult</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Undertekster menu er vist</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Skjul Undertekst headeren</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Undertekster menu er skjult</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Undertekster menu er vist</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Skjul \'Yderligere indstillinger / Mere\'</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Yderligere indstillingsmenu er skjult</string>
@@ -841,17 +847,23 @@ Tryk og hold for at åbne Morphe-indstillinger"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Lydspor-menuen er skjult
 
 For at vise Lydspor-menuen, ændre 'Spoof video streams' til 'Android Reel' eller 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Skjul lydspor</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Menuen for lydspor er skjult</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Menuen Lydspor vises</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Skjul vagt i VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Se i VR-menuen er skjult</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Se i VR-menuen vises</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Skjul \'Kvalitet\' menu</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Videokvalitetsmenuen er skjult</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Videokvalitetsmenuen er vist</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Skjul \'Kvalitet\' menu sidefod</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Videokvalitetsmenuens sidefod er skjult</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Videokvalitetsmenuens sidefod er vist</string>
+  <string name="morphe_hide_player_flyout_quality_title">Kvalitet</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Videokvalitetsmenuen er skjult</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Videokvalitetsmenuen vises</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Skjul sidefod til videokvalitet</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Videokvalitetsmenuens sidefod er skjult</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Videokvalitet menu footer er vist</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Kvalitet</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Videokvalitetsmenuens sidefod er skjult</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Videokvalitet menu footer er vist</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Skjul forhådsvisning af autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Forhådsvisning af autoplay er skjult</string>

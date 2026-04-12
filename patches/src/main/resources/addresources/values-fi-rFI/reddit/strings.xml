@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Poistaa käytöstä modernin aloitusnäyttö UI:n</string>
   <string name="morphe_disable_screenshot_popup_title">Poista näyttökuvapop-up käytöstä</string>
   <string name="morphe_disable_screenshot_popup_summary">Poistaa näyttökuvan ottamisen yhteydessä näkyvän pop-upin käytöstä</string>
+  <string name="morphe_hide_ask_button_title">Piilota Kysy-painike</string>
+  <string name="morphe_hide_ask_button_summary">Piilottaa Kysy-painike hakupalkissa</string>
   <string name="morphe_hide_answers_button_title">Piilota Vastaukset-painike</string>
   <string name="morphe_hide_answers_button_summary">Piilottaa Vastaukset-painikkeen navigointipalkista</string>
   <string name="morphe_hide_chat_button_title">Piilota Chat-painike</string>
@@ -67,4 +69,6 @@ Rajaus: Näytetään vain, jos API-vastaus sisältää katselukerrat"</string>
   <string name="morphe_sanitize_sharing_links_summary">Puhdistaa jakamisen linkit poistamalla seurantalinkit</string>
   <string name="morphe_open_links_directly_title">Avaa linkit suoraan</string>
   <string name="morphe_open_links_directly_summary">Ohittaa uudelleenohjaus-URL:t ulkoisissa linkeissä</string>
+  <string name="morphe_open_links_externally_title">Avaa linkit ulkoisesti</string>
+  <string name="morphe_open_links_externally_summary">Avaa linkit selaimessa sovelluksen sisäisen selaimen sijaan</string>
 </resources>

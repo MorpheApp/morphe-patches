@@ -787,11 +787,17 @@ Toque e segure para abrir as configurações do YouTube"</string>
 Toque e segure para abrir as configurações do Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu suspenso</string>
-  <string name="morphe_hide_player_flyout_summary">Esconder ou mostrar itens do menu de saída do player</string>
+  <string name="morphe_hide_player_flyout_summary">Ocultar ou mostrar componentes do menu de saída do player</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Esconder legendas</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">O menu de legendas está escondido</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Menu de legendas é visível</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Ocultar rodapé de legendas</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">O menu de legendas está escondido</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Menu de legendas é visível</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Ocultar cabeçalho de legendas</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">O menu de legendas está escondido</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Menu de legendas é visível</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Ocultar configurações adicionais / Mais</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Menu de configurações adicionais / Mais está oculto</string>
@@ -837,17 +843,23 @@ Toque e segure para abrir as configurações do Morphe"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu de trilha de áudio está oculto
 
 Para exibir o menu de trilha de áudio, altere 'Spoof video streams' para 'Android Reel' ou 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Esconder faixa de áudio</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Menu de faixa de áudio escondida</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Menu da faixa de áudio visível</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Esconder relógio no VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Assista no menu VR está escondido</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Assistir no menu VR é visível</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Ocultar menu de qualidade</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Menu de qualidade está oculto</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Menu de qualidade está visível</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Ocultar rodapé do menu de qualidade</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Rodapé do menu de qualidade está oculto</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Rodapé do menu de qualidade está visível</string>
+  <string name="morphe_hide_player_flyout_quality_title">Esconder Qualidade</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">O menu de qualidade de vídeo está oculto</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">O menu de qualidade de vídeo está exibido</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Esconder rodapé do menu de qualidade de vídeo</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">O rodapé do menu de qualidade de vídeo está oculto</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Cabeçalho do menu de qualidade de vídeo mostrado</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Esconder Qualidade</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">O rodapé do menu de qualidade de vídeo está oculto</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Cabeçalho do menu de qualidade de vídeo mostrado</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Ocultar prévia de reprodução automática</string>
   <string name="morphe_hide_autoplay_preview_summary_on">A prévia de reprodução automática está oculta</string>

@@ -539,9 +539,9 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.livestreamDvrPatch -->
   <string name="morphe_livestream_dvr_title">Увімкнути DVR для прямої трансляції</string>
   <string name="morphe_livestream_dvr_summary_on">Перемотування дозволено на всіх прямих трансляціях</string>
-  <string name="morphe_livestream_dvr_summary_off">Перегрупування може бути недоступним на прямих трансляціях</string>
+  <string name="morphe_livestream_dvr_summary_off">Перемотування може бути недоступним на прямих трансляціях</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_user_dialog_message">Увімкнення цієї функції може призвести до непередбачуваної поведінки при пошуку потокового відео, якщо не ввімкнено \'Імітувати відеопотоки\'.</string>
+  <string name="morphe_livestream_dvr_user_dialog_message">Увімкнення цієї функції може призвести до неочікуваної поведінки при перемотуванні прямої трансляції, якщо \"Підміна відеопотоків\" не увімкнена.</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Увімкнути перемотку пересуванням</string>
   <string name="morphe_slide_to_seek_summary_on">Перемотку пересуванням увімкнено\n\nВідновлено поведінку старого інтерфейсу \"Проведіть пальцем, щоб перемотати\"</string>
@@ -792,11 +792,17 @@ Second \"item\" text"</string>
 Натисніть і утримуйте, щоб відкрити налаштування Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Висувне меню</string>
-  <string name="morphe_hide_player_flyout_summary">Приховати або показувати пункти висувного меню плеєра</string>
+  <string name="morphe_hide_player_flyout_summary">Приховати або показати компоненти спливаючого меню плеєра</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Приховати \"Субтитри\"</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Пункт меню \"Субтитри\" приховано</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Пункт меню \"Субтитри\" показується</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Приховати нижній колонтитул \"Субтитрів\"</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Нижній колонтитул \"Субтитрів\" приховано</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Нижній колонтитул \"Субтитрів\" показується</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Приховати заголовок \"Субтитрів\"</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Заголовок меню \"Субтитрів\" приховано</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Заголовок меню \"Субтитрів\" показується</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Приховати \"Додаткові налаштування\"</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Пункт меню \"Додаткові налаштування\" приховано</string>
@@ -842,17 +848,23 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Пункт меню \"Звукова доріжка\" приховано
 
 Для того, щоб пункт меню \"Звукова доріжка\" показувався, змініть клієнт \"Підміни відеопотоків\" на \"Android Reel\" або \"TV\""</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Приховати нижній колонтитул \"Звукової доріжки\"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Нижній колонтитул \"Звукової доріжки\" приховано</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Нижній колонтитул \"Звукової доріжки\" показується</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Приховати \"Дивитись у VR\"</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Пункт меню \"Дивитись у VR\" приховано</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Пункт меню \"Дивитись у VR\" показується</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Приховати меню якості відео</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Меню якості відео приховано</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Меню якості відео показується</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Приховати колонтитул меню якості відео</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Нижній колонтитул меню якості відео приховано</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Нижній колонтитул меню якості відео показується</string>
+  <string name="morphe_hide_player_flyout_quality_title">Приховати \"Якість\"</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Меню \"Якість\" приховано</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Меню \"Якість\" показується</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Приховати нижній колонтитул \"Якості\"</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Нижній колонтитул меню \"Якості\" приховано</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Нижній колонтитул меню \"Якості\" показується</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Приховати заголовок \"Якості\"</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Заголовок меню \"Якості\" приховано</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Заголовок меню \"Якості\" показується</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Приховати попередній перегляд</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Попередній перегляд приховано</string>
@@ -1654,11 +1666,11 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Щоб скористатися цією функцією, змініть \"Підміна відеопотоків\" на Android VR або Android Studio</string>
   <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
-  <string name="morphe_expand_livestream_dvr_duration_title">Розширити тривалість запису потокового відео</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary_on">Тривалість запису потокового відео розширена до 7 днів</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary_off">Тривалість запису потокового відео обмежена значенням за замовчуванням сервера</string>
+  <string name="morphe_expand_livestream_dvr_duration_title">Розширити тривалість DVR прямої трансляції</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_on">Тривалість DVR прямої трансляції збільшено до 7 днів</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_off">Тривалість DVR прямої трансляції обмежена значеннями сервера за замовчуванням</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">Це налаштування може призвести до непередбачуваної поведінки, якщо не ввімкнено \'Підробка відеопотоків\'.</string>
+  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">Це налаштування може призвести до неочікуваної поведінки, якщо \"Підміна відеопотоків\" не увімкнена.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Показувати розширене меню якості відео</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Розширене меню якості відео показується</string>

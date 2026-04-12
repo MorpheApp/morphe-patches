@@ -746,7 +746,6 @@ Dodirnite i držite za otvaranje postavki YouTubea"</string>
 Dodirnite i držite za otvaranje postavki Morphea"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout meni</string>
-  <string name="morphe_hide_player_flyout_summary">Sakrij ili prikaži stavke flyout menija</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Meni Captions je skriven</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Meni Captions je prikazan</string>
@@ -801,12 +800,6 @@ Za prikaz izbornika audio zapisa promijenite 'Parodija video streamova' u 'Andro
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Meni Watch in VR je prikazan</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Tipka za gledanje u VR je prikazana</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Sakrij meni \'Kvaliteta\'</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Meni \'Kvaliteta\' je skriven</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Meni \'Kvaliteta\' je prikazan</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Sakrij podnožje menija \'Kvaliteta\'</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Podnožje menija \'Kvaliteta\' je skriveno</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Podnožje menija \'Kvaliteta\' je prikazano</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Sakrij pregladu automatskog puštanja</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Automatska preglada je sakrivena</string>

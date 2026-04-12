@@ -786,11 +786,17 @@ Ertett hosszan nyomva a YouTube beállítások megnyitása"</string>
 Ertett hosszan nyomva a Morphe beállítások megnyitása"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Előugró menü</string>
-  <string name="morphe_hide_player_flyout_summary">A lejátszó előugró menüpontjainak elrejtése vagy megjelenítése</string>
+  <string name="morphe_hide_player_flyout_summary">A lejátszó előugró menü összetevőinek elrejtése vagy megjelenítése</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Feliratok elrejtése</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">A feliratok menü el van rejtve</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">A feliratok menü megjelenítve</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Felirat láblécrejtés</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">A feliratok menü el van rejtve</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">A feliratok menü megjelenítve</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Felirat fejléc elrejtése</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">A feliratok menü el van rejtve</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">A feliratok menü megjelenítve</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">További beállítások elrejtése</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">A további beállítások menü el van rejtve</string>
@@ -836,17 +842,23 @@ Ertett hosszan nyomva a Morphe beállítások megnyitása"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Hangos menü elrejtve
 
 A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et 'Android Reel'-re vagy 'TV'-re"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Hangsáv elrejtése</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">A hangsáv menü el van rejtve</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">A hangsáv menü megjelenik</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">\"Megtekintés VR-módban\" elrejtése</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">A megtekintés VR-módban menü el van rejtve</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">A „Megtekintés VR-módban” menü megjelenik</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Videóminőség menü elrejtése</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">A videóminőség menü elrejtve</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">A videóminőség menü megjelenítve</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Videóminőség menü láblécének elrejtése</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">A videóminőség menü lábléce el van rejtve</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Megjelenik a videóminőség menü lábléce</string>
+  <string name="morphe_hide_player_flyout_quality_title">Minőség</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">A videóminőség menü elrejtve</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">A videóminőség menü megjelenítve</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">A videóminőség menü láblécének elrejtése</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">A videóminőség menü lábléce el van rejtve</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Megjelenik a videóminőség menü lábléce</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Minőség</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">A videóminőség menü lábléce el van rejtve</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Megjelenik a videóminőség menü lábléce</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Automatikus előnézet elrejtése</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Az automatikus előnézet el van rejtve</string>

@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Hindi pinapagana ang modernong UI ng home</string>
   <string name="morphe_disable_screenshot_popup_title">I-disable ang screenshot popup</string>
   <string name="morphe_disable_screenshot_popup_summary">Hindi pinapagana ang popup na lumalabas kapag kumukuha ng screenshot</string>
+  <string name="morphe_hide_ask_button_title">Itago ang Ask button</string>
+  <string name="morphe_hide_ask_button_summary">Itinatago ang Ask button sa search bar</string>
   <string name="morphe_hide_answers_button_title">Itago ang Answers button</string>
   <string name="morphe_hide_answers_button_summary">Itinatago ang Answers button sa navigation bar</string>
   <string name="morphe_hide_chat_button_title">Itago ang Chat button</string>
@@ -67,4 +69,6 @@ Limitasyon: Ipinapakita lamang kung ang tugon ng API ay kinabibilangan ng view c
   <string name="morphe_sanitize_sharing_links_summary">Nililinis ang mga sharing links sa pamamagitan ng pag-aalis ng mga tracking query parameter</string>
   <string name="morphe_open_links_directly_title">Buksan ang mga links nang direkta</string>
   <string name="morphe_open_links_directly_summary">Nilalampasan ang redirection URLs sa mga external link</string>
+  <string name="morphe_open_links_externally_title">Buksan ang mga link sa labas</string>
+  <string name="morphe_open_links_externally_summary">Binubuksan ang mga link sa iyong browser sa halip na sa in-app-browser</string>
 </resources>

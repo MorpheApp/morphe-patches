@@ -27,6 +27,8 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.HidePlayerOverlayButtonsPatch;
+import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 public class PlayerOverlayButton {
@@ -134,7 +136,16 @@ public class PlayerOverlayButton {
                     && sourcePaddingRight == button.getPaddingRight()
                     && sourcePaddingBottom == button.getPaddingBottom())
             ) {
-                button.setLayoutParams(source.getLayoutParams());
+                //noinspection ExtractMethodRecommender
+                ViewGroup.LayoutParams layoutParams = source.getLayoutParams();
+                if (VersionCheckPatch.IS_21_15_OR_GREATER) {
+                    // Fullscreen button has a custom margin layout parameters class
+                    // and if used directly causes a broken layout with 21.15+
+                    // if quality and speed button are shown. Older app targets
+                    // must use the original layut otherwise app crashes with a cast exception.
+                    layoutParams = new ViewGroup.MarginLayoutParams(layoutParams);
+                }
+                button.setLayoutParams(layoutParams);
                 button.setPadding(
                         sourcePaddingLeft,
                         sourcePaddingTop,
@@ -151,8 +162,13 @@ public class PlayerOverlayButton {
                 button.setX(xOffset);
             }
 
-            // Y position does not seem to need an update,
-            // and if fullscreen button is hidden it's Y position is off-screen.
+            float positionY = source.getY();
+            if (HIDE_FULLSCREEN_BUTTON_ENABLED) {
+                positionY += HidePlayerOverlayButtonsPatch.FULLSCREEN_HIDDEN_Y_OFFSET;
+            }
+            if (button.getY() != positionY) {
+                button.setY(positionY);
+            }
 
             Drawable sourceButtonBackground = source.getBackground();
             Drawable.ConstantState newConstantState = sourceButtonBackground != null
@@ -213,7 +229,10 @@ public class PlayerOverlayButton {
 
     private static void updateContainerMargins(View lowerButtonSource) {
         // Keep both containers' end margins in sync with the current button count.
-        chapterTitleContainer.updateMargin(lowerButtonSource.getWidth(), buttonControllers.size());
+        final int totalLowerButtons = buttonControllers.size() - (HIDE_FULLSCREEN_BUTTON_ENABLED
+                ? 1
+                : 0);
+        chapterTitleContainer.updateMargin(lowerButtonSource.getWidth(), totalLowerButtons);
         videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, getTotalUpperButtonCount());
     }
 

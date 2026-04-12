@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Отключает современный интерфейс главного экрана</string>
   <string name="morphe_disable_screenshot_popup_title">Отключить всплывающее окно снимка экрана</string>
   <string name="morphe_disable_screenshot_popup_summary">Отключает всплывающее окно, которое появляется при создании снимка экрана</string>
+  <string name="morphe_hide_ask_button_title">Скрыть кнопку \"Спросить\"</string>
+  <string name="morphe_hide_ask_button_summary">Скрывает кнопку \"Спросить\" в строке поиска</string>
   <string name="morphe_hide_answers_button_title">Скрыть кнопку \"Ответы\"</string>
   <string name="morphe_hide_answers_button_summary">Скрывает кнопку \"Ответы\" в панели навигации</string>
   <string name="morphe_hide_chat_button_title">Скрыть кнопку \"Чат\"</string>
@@ -67,4 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">Очищает ссылки для обмена, удаляя параметры отслеживания</string>
   <string name="morphe_open_links_directly_title">Открывать ссылки напрямую</string>
   <string name="morphe_open_links_directly_summary">Пропускает URL-адреса перенаправления во внешних ссылках</string>
+  <string name="morphe_open_links_externally_title">Открывать ссылки в отдельных вкладках</string>
+  <string name="morphe_open_links_externally_summary">Открывает ссылку в вашем браузере, а не во встроенном браузере программы</string>
 </resources>

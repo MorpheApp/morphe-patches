@@ -788,7 +788,6 @@ Tryck länge för att öppna YouTube-inställningarna"</string>
 Tryck länge för att öppna Morphe-inställningarna"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout-meny</string>
-  <string name="morphe_hide_player_flyout_summary">Dölj eller visa objekt i spelarens flyout-meny</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Dölj Textning</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Menyn Textning är dold</string>
@@ -843,12 +842,10 @@ Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menyn Titta i VR är dold</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Menyn Titta i VR visas</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Dölj menyn Kvalitet</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Menyn Kvalitet är dold</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Menyn Kvalitet visas</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Dölj sidfot för menyn Kvalitet</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Sidfot för menyn Kvalitet är dold</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Sidfot för menyn Kvalitet visas</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Menyn Kvalitet är dold</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Menyn Kvalitet visas</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Sidfot för menyn Kvalitet är dold</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Sidfot för menyn Kvalitet visas</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Dölj förhandsgranskning för automatisk uppspelning</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Förhandsgranskning för automatisk uppspelning är dold</string>

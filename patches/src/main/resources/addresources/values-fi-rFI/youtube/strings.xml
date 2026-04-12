@@ -790,11 +790,17 @@ Pidä painettuna avataksesi YouTube-asetukset"</string>
 Pidä painettuna avataksesi Morphen asetukset"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Ponnahdusvalikko</string>
-  <string name="morphe_hide_player_flyout_summary">Piilota tai näytä soittimen ponnahdusvalikon kohteita</string>
+  <string name="morphe_hide_player_flyout_summary">Piilota tai näytä soitinvalikon komponentit</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Piilota Tekstitykset</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Tekstitysvalikko piilotetaan</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Tekstitysvalikko näytetään</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Piilota Tekstitykset -alapalkki</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Tekstitysvalikko piilotetaan</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Tekstitysvalikko näytetään</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Piilota Tekstitykset -otsikko</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Tekstitysvalikon otsikko piilotetaan</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Tekstitysvalikon otsikko näytetään</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Piilota Lisäasetukset / Lisää</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Lisäasetukset / Lisää -valikko piilotetaan</string>
@@ -840,17 +846,23 @@ Pidä painettuna avataksesi Morphen asetukset"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Ääniraitavalikko on piilotettu
 
 Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetukseksi \"Android Reel\" tai \"TV\""</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Piilota Ääniraita</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Ääniraitavalikko piilotetaan</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Ääniraitavalikko näytetään</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Piilota Katso VR-tilassa</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Katso VR-tilassa -valikko piilotetaan</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Katso VR-tilassa -valikko näytetään</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Piilota videolaatuvalikko</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Videolaatuvalikko piilotetaan</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Videolaatuvalikko näytetään</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Piilota videolaatuvalikon alatunniste</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Videolaatuvalikon alatunniste piilotetaan</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Videolaatuvalikon alatunniste näytetään</string>
+  <string name="morphe_hide_player_flyout_quality_title">Piilota Laatu</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Videolaatuvalikko piilotetaan</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Videolaatuvalikko näytetään</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Piilota videolaatuvalikon alatunniste</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Videolaatuvalikon alatunniste piilotetaan</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Videolaatuvalikon alatunniste näytetään</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Piilota Laatu otsikko</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Videolaatuvalikon alatunniste piilotetaan</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Videolaatuvalikon alatunniste näytetään</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Piilota automaattinen esikatselu</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Automaattinen esikatselu piilotetaan</string>

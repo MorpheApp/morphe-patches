@@ -787,11 +787,17 @@ I-tap nang matagal para buksan ang mga setting ng YouTube"</string>
 I-tap nang matagal para buksan ang mga setting ng Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout menu</string>
-  <string name="morphe_hide_player_flyout_summary">Itago o ipakita ang mga item ng player flyout menu</string>
+  <string name="morphe_hide_player_flyout_summary">Itago o ipakita ang mga bahagi ng player flyout menu</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Itago ang mga Caption</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Ang menu ng Caption ay nakatago</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Ang menu ng Caption ay ipinapakita</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Itago ang footer ng Captions</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Nakatagong ang footer ng menu ng Captions</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Ipinapakita ang footer ng menu ng Captions</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Itago ang header ng Captions</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Nakatago ang header ng mga caption</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Ipinapakita ang header ng mga caption</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Itago ang karagdagang mga setting / Higit pa</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Nakatago ang menu ng karagdagang mga setting / Higit pa</string>
@@ -837,17 +843,23 @@ I-tap nang matagal para buksan ang mga setting ng Morphe"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Nakatago ang menu ng audio track
 
 Upang ipakita ang menu ng Audio track, baguhin ang 'Spoof video streams' sa 'Android Reel' o 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Itago ang footer ng track ng audio</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Nakatago ang footer ng menu ng track ng audio</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Ipinapakita ang footer ng menu ng track ng audio</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Itago ang Watch in VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu ng Watch in VR ay nakatago</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Menu ng Watch in VR ay ipinapakita</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Itago ang menu ng kalidad</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Nakatago ang menu ng kalidad</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Ipinapakita ang menu ng kalidad</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Itago ang footer ng menu ng kalidad</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Nakatago ang footer ng menu ng kalidad</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Ipinapakita ang footer ng menu ng kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_title">Itago ang Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Nakatago ang menu ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Ipinapakita ang menu ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Itago ang footer ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Nakatago ang footer ng menu ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Ipinapakita ang footer ng menu ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Itago ang header ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Nakatago ang header ng menu ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Ipinapakita ang header ng menu ng Kalidad</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Itago ang autoplay preview</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Nakatago ang autoplay preview</string>

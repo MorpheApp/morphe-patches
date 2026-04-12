@@ -790,11 +790,17 @@ Tippen und halten Sie, um die YouTube-Einstellungen zu öffnen"</string>
 Tippen und halten Sie, um die Morphe-Einstellungen zu öffnen"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Einstellungs-Menü</string>
-  <string name="morphe_hide_player_flyout_summary">Einträge des Einstellungsmenüs ein- oder ausblenden</string>
+  <string name="morphe_hide_player_flyout_summary">Komponenten des Player-Flyout-Menüs ein- oder ausblenden</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">„Untertitel“ ausblenden</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Menü \"Untertitel\" ist ausgeblendet</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Menü \"Untertitel\" wird angezeigt</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Untertitel-Fußzeile ausblenden</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Untertitel-Menü-Fußzeile ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Untertitel-Menü-Fußzeile wird angezeigt</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Untertitel-Kopfzeile ausblenden</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Untertitel-Menü-Kopfzeile ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Untertitel-Menü-Kopfzeile wird angezeigt</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">\"Mehr\" Ausblenden</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Menü \"Mehr\" (Zusätzliche Einstellungen) ist ausgeblendet</string>
@@ -840,17 +846,23 @@ Tippen und halten Sie, um die Morphe-Einstellungen zu öffnen"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menü \"Audio-Track\" ist ausgeblendet
 
 Um das Menü anzuzeigen, ändern Sie \"Video-Streams fälschen\" in \"Android Reel\" oder \"TV\""</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Audiotrack-Fußzeile ausblenden</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Audiotrack-Menü-Fußzeile ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Audiotrack-Menü-Fußzeile wird angezeigt</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">„In VR ansehen“ ausblenden</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Schaltfläche „In VR ansehen“ ist ausgeblendet</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Schaltfläche „In VR ansehen“ wird angezeigt</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">„Qualität“ Ausblenden</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Menü \"Qualität\" ist ausgeblendet</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Menü „Qualität“ wird angezeigt</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">„Qualität“-Fußzeile Ausblenden</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Fußzeile im Menü „Qualität“ ist ausgeblendet</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Fußzeile im Menü „Qualität“ wird angezeigt</string>
+  <string name="morphe_hide_player_flyout_quality_title">Qualität ausblenden</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Qualität-Menü ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Qualität-Menü wird angezeigt</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Qualität-Fußzeile ausblenden</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Qualität-Menü-Fußzeile ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Qualität-Menü-Fußzeile wird angezeigt</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Qualität-Kopfzeile ausblenden</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Qualität-Menü-Kopfzeile ist ausgeblendet</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Qualität-Menü-Kopfzeile wird angezeigt</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Autoplay-Vorschau ausblenden</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Autoplay-Vorschau ist ausgeblendet</string>

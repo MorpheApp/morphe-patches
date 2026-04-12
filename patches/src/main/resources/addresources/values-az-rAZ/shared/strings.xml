@@ -109,8 +109,19 @@ Gözlənilməz hallardan xəbərdar olmayacaqsınız."</string>
   <string name="morphe_debug_logs_search_hint">Sazlama qeydlərini axtar...</string>
   <string name="morphe_debug_export_logs_clear">Təmizlə</string>
   <string name="morphe_debug_logs_disabled">Sazlama qeydi qapalıdır</string>
+  <string name="morphe_debug_logs_none_found">Sazlanma qeydləri tapılmadı</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Sazlanma qeydləri köçürüldü</string>
+  <string name="morphe_debug_logs_failed_to_export">Sazlanma qeydlərini köçürmək olmadı: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Sazlanma qeydləri təmizləndi</string>
   <string name="morphe_debug_feature_flags_manager_title">Xüsusiyyət nişançıları idarəedicisi</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean xüsusiyyət nişançıların idarə et</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">İşlək xüsusiyyət nişançıları (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Əngəllənən xüsusiyyət nişançıları (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Xüsusiyyət nişançıları axtar...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Xüsusiyyət nişançıları saxlanıldı</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Xüsusiyyət nişançıları sıfırlandı</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Xüsusiyyət nişançıları buferə köçürüldü</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bu seçimi istifadə etmək üçün tətbiqi yenidən başlat</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG tənzimləmələrin aç</string>

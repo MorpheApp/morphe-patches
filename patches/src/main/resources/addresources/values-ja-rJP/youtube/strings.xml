@@ -541,7 +541,7 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_livestream_dvr_summary_on">すべてのライブ配信でシークが可能です</string>
   <string name="morphe_livestream_dvr_summary_off">ライブ配信でシークが利用できない場合があります</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_user_dialog_message">これを有効にすると、\'Spoof video streams\'が無効な場合に、予期しないライブストリームのシーク動作が発生する可能性があります。</string>
+  <string name="morphe_livestream_dvr_user_dialog_message">[動画ストリームを偽装] が有効になっていない場合、この機能を有効にするとライブ配信のシーク中に予期せぬ問題が発生する可能性があります。</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">スライドによるシークを有効化</string>
   <string name="morphe_slide_to_seek_summary_on">スライドによるシークは有効です。プレーヤー画面を左右にスライドすると、前後にシークします</string>
@@ -793,11 +793,17 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
 長押しすると Morphe の設定を開く"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">フライアウト メニュー</string>
-  <string name="morphe_hide_player_flyout_summary">プレーヤー オーバーレイの歯車アイコンボタンから呼び出されるフライアウト メニューの項目を表示または非表示にします</string>
+  <string name="morphe_hide_player_flyout_summary">プレーヤー オーバーレイの歯車アイコンボタンから呼び出されるフライアウト メニューのコンポーネントを表示または非表示にします</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">「字幕」を非表示</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">「字幕」は表示されません</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">「字幕」は表示されます</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">字幕メニューの脚注を非表示</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">字幕メニューの脚注は表示されません</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">字幕メニューの脚注は表示されます</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">字幕メニューのヘッダーを非表示</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">字幕メニューのヘッダーは表示されません</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">字幕メニューのヘッダーは表示されます</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">「その他の設定」/「その他」を非表示</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">「その他の設定」/「その他」は表示されません</string>
@@ -843,17 +849,23 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_hide_player_flyout_audio_track_not_available">"「音声トラック」は表示されません
 
 「音声トラック」を表示するには、[動画ストリームを偽装] を「Android Reel」または「TV」に変更してください"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">音声トラック メニューの脚注を非表示</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">音声トラック メニューの脚注は表示されません</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">音声トラック メニューの脚注は表示されます</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">「VR で見る」を非表示</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">「VR で見る」は表示されません</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">「VR で見る」は表示されます</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">「画質」を非表示</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">「画質」は表示されません</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">「画質」は表示されます</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">画質メニューの脚注を非表示</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">画質メニューの脚注は表示されません</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">画質メニューの脚注は表示されます</string>
+  <string name="morphe_hide_player_flyout_quality_title">「画質」を非表示</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">「画質」は表示されません</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">「画質」は表示されます</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">画質メニューの脚注を非表示</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">画質メニューの脚注は表示されません</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">画質メニューの脚注は表示されます</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">画質メニューのヘッダーを非表示</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">画質メニューのヘッダーは表示されません</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">画質メニューのヘッダーは表示されます</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">自動再生のプレビューを非表示</string>
   <string name="morphe_hide_autoplay_preview_summary_on">自動再生の「次の動画」のプレビューは表示されません</string>
@@ -1653,11 +1665,11 @@ Automotive レイアウト
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを Android VR または Android Studio に変更してください</string>
   <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
-  <string name="morphe_expand_livestream_dvr_duration_title">ライブストリームDVRの期間を拡張する</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary_on">ライブストリームDVRの期間は最大7日間まで拡張されます</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary_off">ライブストリームDVRの期間はサーバーのデフォルトに制限されます</string>
+  <string name="morphe_expand_livestream_dvr_duration_title">ライブ配信の DVR の制限を拡張</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_on">ライブ配信でのシーク可能期間は最大 7 日前まで拡張されます</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_off">ライブ配信でのシーク可能期間はサーバー側に制限されます (通常 12 時間前まで)</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">\'Spoof video streams\'が無効になっている場合、予期しない動作が発生する可能性があります。</string>
+  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">[動画ストリームを偽装] が有効になっていない場合、この機能は予期せぬ動作をする可能性があります。</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">画質の詳細設定メニューを表示</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">詳細設定メニューが画質メニューとして表示されます</string>

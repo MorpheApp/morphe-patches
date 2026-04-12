@@ -35,18 +35,25 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
     }
 
     private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
-    private final StringFilterGroup videoQualityMenuFooter;
+    private final StringFilterGroup audioTrackMenuFooter;
+    private final StringFilterGroup qualityMenuFooter;
 
     public PlayerFlyoutMenuComponentsFilter() {
-        videoQualityMenuFooter = new StringFilterGroup(
-                Settings.HIDE_PLAYER_FLYOUT_VIDEO_QUALITY_FOOTER,
-                "quality_sheet_footer"
+        audioTrackMenuFooter = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK_FOOTER,
+                "audio_track_sheet_footer.e"
+        );
+
+        qualityMenuFooter = new StringFilterGroup(
+                Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
+                "quality_sheet_footer.e",
+                "|divider.e"
         );
 
         addPathCallbacks(
-                videoQualityMenuFooter,
-                new StringFilterGroup(null, "overflow_menu_item.e"),
-                new StringFilterGroup(null, "bottom_sheet_list_option.e")
+                audioTrackMenuFooter,
+                qualityMenuFooter,
+                new StringFilterGroup(null, "overflow_menu_item.e")
         );
 
         flyoutFilterGroupList.addAll(
@@ -93,8 +100,8 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_LOOP_VIDEO,
                         "yt_outline_arrow_repeat_1_",
-                        "yt_outline_experimental_repeat1_"
-                        // "yt_outline_experimental_play_circle"
+                        "yt_outline_experimental_repeat1_",
+                        "yt_outline_experimental_play_circle_black_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,
@@ -113,7 +120,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                         "yt_outline_experimental_vr_"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_VIDEO_QUALITY,
+                        Settings.HIDE_PLAYER_FLYOUT_QUALITY,
                         "yt_outline_adjust_",
                         "yt_outline_experimental_adjust_"
                 )
@@ -129,8 +136,12 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        if (matchedGroup == videoQualityMenuFooter) {
+        if (matchedGroup == audioTrackMenuFooter) {
             return true;
+        }
+
+        if (matchedGroup == qualityMenuFooter) {
+            return path.startsWith("quick_quality_sheet_content.e");
         }
 
         if (contentIndex != 0) {

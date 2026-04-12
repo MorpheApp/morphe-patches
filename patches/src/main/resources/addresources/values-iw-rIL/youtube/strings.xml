@@ -788,11 +788,17 @@ Second \"item\" text"</string>
 החזיקו כדי לפתוח את הגדרות Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">תפריט נשלף</string>
-  <string name="morphe_hide_player_flyout_summary">הסתר או הצג פריטי תפריט נשלף של נגן</string>
+  <string name="morphe_hide_player_flyout_summary">הסתר או הצג רכיבי תפריט נשלף של נגן</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">הסתר כתוביות</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">תפריט כתוביות מוסתר</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">תפריט כתוביות מוצג</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">הסתר תذيק כתוביות</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">תפריט כתוביות מוסתר</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">תפריט כתוביות מוצג</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">הסתר כותרת כתוביות</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">תפריט כתוביות מוסתר</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">תפריט כתוביות מוצג</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">הסתר הגדרות נוספות</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">תפריט הגדרות נוספות מוסתר</string>
@@ -838,17 +844,23 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"תפריט מסלול אודיו מוסתר
 
 כדי להראות את תפריט מסלול האודיו, שנה את 'מילוי סטריאו וידאו' ל'ריל אנדרואיד' או 'טלוויזיה'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">הסתר טראק אודיו</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">תפריט טראק אודיו מוסתר</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">תפריט טראק אודיו מוצג</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">הסתר \'צפה ב-VR\'</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">תפריט \'צפה ב-VR\' מוסתר</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">תפריט \'צפה ב-VR\' מוצג</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">הסתר תפריט איכות סרטון</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">תפריט איכות סרטון מוסתר</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">תפריט איכות סרטון מוצג</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">הסתר כותרת תחתונה של תפריט איכות סרטון</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">כותרת תחתונה של תפריט איכות סרטון מוסתרת</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">כותרת תחתונה של תפריט איכות סרטון מוצגת</string>
+  <string name="morphe_hide_player_flyout_quality_title">הסתר איכות</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">תפריט איכות סרטון מוסתר</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">תפריט איכות סרטון מוצג</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">הסתר כותרת תחתונה של תפריט איכות סרטון</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">כותרת תחתונה של תפריט איכות סרטון מוסתרת</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">כותרת תחתונה של תפריט איכות סרטון מוצגת</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">הסתר כותרת</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">כותרת תחתונה של תפריט איכות סרטון מוסתרת</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">כותרת תחתונה של תפריט איכות סרטון מוצגת</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">הסתר תצוגה מקדימה אוטומטית</string>
   <string name="morphe_hide_autoplay_preview_summary_on">תצוגה מקדימה אוטומטית מוסתרת</string>

@@ -26,22 +26,19 @@ val openLinksDirectlyPatch = bytecodePatch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch)
+    dependsOn(
+        settingsPatch,
+        screenNavigatorMethodResolverPatch
+    )
 
     execute {
-        CustomReportsFingerprint.let {
-            it.instructionMatches[2]
-                .getInstruction<ReferenceInstruction>()
-                .getReference<MethodReference>()!!
-                .getMutableMethod()
-                .addInstructions(
-                    0,
-                    """
-                        invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->parseRedirectUri(Landroid/net/Uri;)Landroid/net/Uri;
-                        move-result-object p2
-                    """
-                )
-        }
+        screenNavigatorMethodRef.get()!!.addInstructions(
+            0,
+            """
+                invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->parseRedirectUri(Landroid/net/Uri;)Landroid/net/Uri;
+                move-result-object p2
+            """
+        )
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
     }

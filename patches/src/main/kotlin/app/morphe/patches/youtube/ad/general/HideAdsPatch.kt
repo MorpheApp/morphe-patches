@@ -18,6 +18,8 @@ import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
+import app.morphe.patches.youtube.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -79,12 +81,17 @@ val hideAdsPatch = bytecodePatch(
 ) {
     dependsOn(
         hideAdsResourcePatch,
+        elementProtoParserHookPatch,
         versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        // Hide YouTube Premium promotions
+
+        hookElement("$EXTENSION_CLASS_DESCRIPTOR->hideStatementBanner([B)[B")
+
         // Hide end screen store banner
 
         FullScreenEngagementAdContainerFingerprint.let {

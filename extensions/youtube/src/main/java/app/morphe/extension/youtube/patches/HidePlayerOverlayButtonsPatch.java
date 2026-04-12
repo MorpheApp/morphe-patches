@@ -16,6 +16,7 @@ public final class HidePlayerOverlayButtonsPatch {
 
     private static final boolean HIDE_AUTOPLAY_BUTTON_ENABLED = Settings.HIDE_AUTOPLAY_BUTTON.get();
     private static final Boolean HIDE_FULLSCREEN_BUTTON_ENABLED = Settings.HIDE_FULLSCREEN_BUTTON.get();
+    public static final int FULLSCREEN_HIDDEN_Y_OFFSET = 100000;
 
     /**
      * Injection point.
@@ -125,7 +126,7 @@ public final class HidePlayerOverlayButtonsPatch {
         // Cannot remove the button because the bold overlay player buttons
         // rely on the draw updates to control fade in/out.
         // Move the button offscreen so it's not visible anymore.
-        imageView.setY(-100000);
+        imageView.setY(imageView.getY() - FULLSCREEN_HIDDEN_Y_OFFSET);
         return imageView;
     }
 

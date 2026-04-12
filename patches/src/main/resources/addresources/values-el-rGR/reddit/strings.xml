@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Απενεργοποιεί το σύγχρονο UI της αρχικής σελίδας</string>
   <string name="morphe_disable_screenshot_popup_title">Απενεργοποίηση αναδυόμενου παραθύρου στη λήψη στιγμιότυπου οθόνης</string>
   <string name="morphe_disable_screenshot_popup_summary">Απενεργοποιεί το αναδυόμενο παράθυρο που εμφανίζεται κατά τη λήψη στιγμιότυπου της οθόνης</string>
+  <string name="morphe_hide_ask_button_title">Απόκρυψη κουμπιού</string>
+  <string name="morphe_hide_ask_button_summary">Αποκρύπτει το κουμπί στην γραμμή αναζήτησης</string>
   <string name="morphe_hide_answers_button_title">Απόκρυψη κουμπιού \"Απαντήσεις\"</string>
   <string name="morphe_hide_answers_button_summary">Αποκρύπτει το κουμπί \"Απαντήσεις\" στη γραμμή πλοήγησης</string>
   <string name="morphe_hide_chat_button_title">Απόκρυψη κουμπιού \"Συνομιλία\"</string>
@@ -67,4 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">Καθαρίζει τους συνδέσμους όταν τους κοινοποιείς αφαιρώντας παραμέτρους παρακολούθησης</string>
   <string name="morphe_open_links_directly_title">Άνοιγμα συνδέσμων στην εφαρμογή</string>
   <string name="morphe_open_links_directly_summary">Παρακάμπτει τις ανακατευθύνσεις των συνδέσμων σε εξωτερικούς συνδέσμους</string>
+  <string name="morphe_open_links_externally_title">Άνοιγμα συνδέσμων εξωτερικά</string>
+  <string name="morphe_open_links_externally_summary">Άνοιγμα συνδέσμων στο πρόγραμμα περιήγησής σας αντί για το ενσωματωμένο πρόγραμμα περιήγησης</string>
 </resources>

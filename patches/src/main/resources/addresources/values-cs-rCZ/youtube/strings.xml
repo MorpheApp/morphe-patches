@@ -788,11 +788,17 @@ Podržte prst a klepněte pro otevření nastavení YouTube"</string>
 Podržte prst a klepněte pro otevření nastavení Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Vyskakovací menu</string>
-  <string name="morphe_hide_player_flyout_summary">Skrýt nebo zobrazit položky vyskakovacího menu přehrávače</string>
+  <string name="morphe_hide_player_flyout_summary">Skrýt nebo zobrazit komponenty menu vyskakovacího okna přehrávače</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Skrýt titulky</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Menu titulky je skryté</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Menu Titulky je zobrazeno</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Skrýt patičku Titulky</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Patička menu Titulky je skryta</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Patička menu Titulky je zobrazeno</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Skrýt patičku Titulky</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Skryto je hlavička nabídky Titulky</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Zobrazeno je hlavička nabídky Titulky</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Skrýt Další nastavení / Více</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Menu Další nastavení je skryto</string>
@@ -838,17 +844,23 @@ Podržte prst a klepněte pro otevření nastavení Morphe"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu s zvukovými stopami je skrytý
 
 Abyste zobrazili menu s zvukovými stopami, změňte 'Zamaskované video proudy' na 'Android Reel' nebo 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Skrýt stopu Zvuku</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Skryto je nabídka Zvuková stopa</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Zobrazeno je nabídka Zvuková stopa</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Skrýt Sledovat ve VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Nabídka Sledovat ve VR je skryta</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Nabídka Sledovat ve VR je zobrazena</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Skrýt nabídku kvality videa</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Nabídka kvality videa je skryta</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Nabídka kvality videa je zobrazena</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Skrýt zápatí menu kvality videa</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Zápatí menu kvality videa je skryto</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Zápatí menu kvality videa je zobrazeno</string>
+  <string name="morphe_hide_player_flyout_quality_title">Skrýt Kvalitu</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Skryta je nabídka kvality videa</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Zobrazena je nabídka kvality videa</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Skrýt zápatí nabídky kvality videa</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Skryto je zápatí nabídky kvality videa</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Zobrazeno je zápatí nabídky kvality videa</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Skrýt Kvalitu</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Skryta je hlavička nabídky kvality videa</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Zobrazena je hlavička nabídky kvality videa</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Skrýt náhled automatického přehrávání</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Náhled automatického přehrávání je skryt</string>

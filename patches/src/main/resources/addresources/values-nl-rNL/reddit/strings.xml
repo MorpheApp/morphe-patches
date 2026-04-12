@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Schakelt het moderne startscherm-UI uit</string>
   <string name="morphe_disable_screenshot_popup_title">Screenshot-popup uitschakelen</string>
   <string name="morphe_disable_screenshot_popup_summary">Schakelt het popup-venster uit dat verschijnt bij het maken van een screenshot</string>
+  <string name="morphe_hide_ask_button_title">AI-knop verbergen</string>
+  <string name="morphe_hide_ask_button_summary">Verbergt de knop \'Vragen\' in de zoekbalk</string>
   <string name="morphe_hide_answers_button_title">Antwoordenknop verbergen</string>
   <string name="morphe_hide_answers_button_summary">Verbergt de Antwoordenknop in de navigatiebalk</string>
   <string name="morphe_hide_chat_button_title">Chatknop verbergen</string>
@@ -67,4 +69,6 @@ Beperking: Wordt alleen getoond als de API-reactie het aantal weergaven bevat"</
   <string name="morphe_sanitize_sharing_links_summary">Sanitise deel links door tracking query parameters te verwijderen</string>
   <string name="morphe_open_links_directly_title">Links direct openen</string>
   <string name="morphe_open_links_directly_summary">Slaat omleidings-URL\'s in externe links over</string>
+  <string name="morphe_open_links_externally_title">Links extern openen</string>
+  <string name="morphe_open_links_externally_summary">Links openen in uw browser in plaats van in de in-app-browser</string>
 </resources>

@@ -787,11 +787,17 @@ Second \"item\" text"</string>
 แตะค้างเพื่อเปิดการตั้งค่า Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">เมนูแบบเลื่อนลง</string>
-  <string name="morphe_hide_player_flyout_summary">ซ่อนหรือแสดงรายการเมนูแบบเลื่อนลงของเครื่องเล่น</string>
+  <string name="morphe_hide_player_flyout_summary">ซ่อนหรือแสดงส่วนประกอบเมนูแบบเลื่อนลงของเครื่องเล่น</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">ซ่อนคำบรรยาย</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">เมนูคำบรรยายถูกซ่อน</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">เมนูคำบรรยายแสดงอยู่</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">ซ่อนส่วนท้ายคำบรรยาย</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">ส่วนท้ายเมนูคำบรรยายถูกซ่อน</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">เมนูคำบรรยายแสดงอยู่</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">ซ่อนส่วนท้ายคำบรรยาย</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">เมนูคำบรรยายถูกซ่อน</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">เมนูคำบรรยายแสดงอยู่</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">ซ่อนการตั้งค่าเพิ่มเติม</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">เมนูการตั้งค่าเพิ่มเติมซ่อนอยู่</string>
@@ -837,17 +843,23 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"เมนูแทร็กเสียงถูกซ่อน
 
 เพื่อแสดงเมนูแทร็กเสียงให้เห็น ต้องเปลี่ยน 'Spoof video streams' เป็น 'Android Reel' หรือ 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">ซ่อนแทร็กเสียง</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">เมนูแทร็กเสียงซ่อนอยู่</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">เมนูแทร็กเสียงแสดงอยู่</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">ซ่อนดูใน VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">เมนูดูใน VR ซ่อนอยู่</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">เมนูดูใน VR แสดงอยู่</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">ซ่อนเมนูคุณภาพวิดีโอ</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">เมนูคุณภาพวิดีโอถูกซ่อน</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">เมนูคุณภาพวิดีโอแสดงอยู่</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">ซ่อนส่วนท้ายเมนูคุณภาพวิดีโอ</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">ส่วนท้ายเมนูคุณภาพวิดีโอซ่อนอยู่</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">ส่วนท้ายเมนูคุณภาพวิดีโอแสดงอยู่</string>
+  <string name="morphe_hide_player_flyout_quality_title">Hide Quality</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">เมนูคุณภาพวิดีโอถูกซ่อน</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">เมนูคุณภาพวิดีโอแสดงอยู่</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">ซ่อนส่วนท้ายเมนูคุณภาพวิดีโอ</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">ส่วนท้ายเมนูคุณภาพวิดีโอซ่อนอยู่</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">ส่วนท้ายเมนูคุณภาพวิดีโอแสดงอยู่</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Hide Quality header</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">ส่วนท้ายเมนูคุณภาพวิดีโอซ่อนอยู่</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">ส่วนท้ายเมนูคุณภาพวิดีโอแสดงอยู่</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">ซ่อนตัวอย่างเล่นอัตโนมัติ</string>
   <string name="morphe_hide_autoplay_preview_summary_on">ตัวอย่างเล่นอัตโนมัติถูกซ่อน</string>

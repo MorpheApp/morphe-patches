@@ -18,6 +18,8 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">The </string>
+  <string name="morphe_header_logo_entry_1">The </string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <!-- ad.video.hideVideoAdsPatch -->

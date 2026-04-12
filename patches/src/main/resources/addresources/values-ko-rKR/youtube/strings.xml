@@ -789,11 +789,17 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
 길게 탭하면 Morphe 설정이 열립니다"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">메뉴 구성요소</string>
-  <string name="morphe_hide_player_flyout_summary">플레이어에서 메뉴 구성요소를 숨기거나 표시할 수 있습니다</string>
+  <string name="morphe_hide_player_flyout_summary">플레이어 메뉴 구성 요소를 숨기거나 표시할 수 있습니다</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">자막 숨기기</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">자막 메뉴가 숨겨집니다</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">자막 메뉴가 표시됩니다</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">자막 설정 하단 설명 숨기기</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">자막 설정 메뉴에서 하단 설명이 숨겨집니다</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">자막 설정 메뉴에서 하단 설명이 표시됩니다</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">자막 설정 헤더 숨기기</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">자막 설정 메뉴에서 헤더가 숨겨집니다</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">자막 설정 메뉴에서 헤더가 표시됩니다</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">추가 설정 / 더보기 숨기기</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">추가 설정 / 더보기 메뉴가 숨겨집니다</string>
@@ -839,17 +845,23 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_player_flyout_audio_track_not_available">"오디오 트랙 메뉴가 숨겨집니다
 
 오디오 트랙 메뉴를 표시하려면, '동영상 스트림 속이기'에서 '기본 클라이언트'를 'Android Reel' 또는 'TV'로 변경하세요"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">오디오 트랙 하단 설명 숨기기</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">오디오 트랙 메뉴에서 하단 설명이 숨겨집니다</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">오디오 트랙 메뉴에서 하단 설명이 표시됩니다</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR로 보기 숨기기</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR로 보기 메뉴가 숨겨집니다</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">VR로 보기 메뉴가 표시됩니다</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">화질 메뉴 숨기기</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">화질 메뉴가 숨겨집니다</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">화질 메뉴가 표시됩니다</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">화질 설정 메뉴 하단 설명 숨기기</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">화질 설정 메뉴에서 하단 설명이 숨겨집니다</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">화질 설정 메뉴에서 하단 설명이 표시됩니다</string>
+  <string name="morphe_hide_player_flyout_quality_title">화질 숨기기</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">화질 메뉴가 숨겨집니다</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">화질 메뉴가 표시됩니다</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">화질 설정 하단 설명 숨기기</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">화질 설정 메뉴에서 하단 설명이 숨겨집니다</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">화질 설정 메뉴에서 하단 설명이 표시됩니다</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">화질 설정 헤더 숨기기</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">화질 설정 메뉴에서 헤더가 숨겨집니다</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">화질 설정 메뉴에서 헤더가 표시됩니다</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">자동재생 미리보기 숨기기</string>
   <string name="morphe_hide_autoplay_preview_summary_on">자동재생 미리보기가 숨겨집니다</string>
@@ -910,7 +922,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_seekbar_thumbnail_title">동영상 썸네일 재생바 숨기기</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_on">동영상 썸네일 재생바가 숨겨집니다</string>
   <string name="morphe_hide_seekbar_thumbnail_summary_off">동영상 썸네일 재생바가 표시됩니다</string>
-  <string name="morphe_fullscreen_large_seekbar_title">전체 화면 두꺼운 재생바 활성하기</string>
+  <string name="morphe_fullscreen_large_seekbar_title">전체 화면 두꺼운 재생바 활성화하기</string>
   <string name="morphe_fullscreen_large_seekbar_summary_on">전체 화면에서 재생바가 두껍습니다</string>
   <string name="morphe_fullscreen_large_seekbar_summary_off">전체 화면에서 재생바가 두껍지 않습니다</string>
   <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->

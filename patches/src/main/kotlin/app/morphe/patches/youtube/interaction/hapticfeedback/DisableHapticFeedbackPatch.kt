@@ -44,11 +44,10 @@ val disableHapticFeedbackPatch = bytecodePatch(
                 )
             },
             transform = { method, entry ->
-                val (methodType, instruction, instructionIndex) = entry
+                val (methodType, _, instructionIndex) = entry
                 methodType.replaceInvokeVirtualWithExtension(
                     EXTENSION_CLASS_DESCRIPTOR,
                     method,
-                    instruction,
                     instructionIndex,
                 )
             },
@@ -133,7 +132,7 @@ private enum class MethodCall(
     override val definedClassName: String,
     override val methodName: String,
     override val methodParams: Array<String>,
-    override val returnType: String,
+    override val methodReturnType: String,
 ) : IMethodCall {
     VibrationEffect(
         "Landroid/os/Vibrator;",

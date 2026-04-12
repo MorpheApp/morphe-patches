@@ -783,11 +783,17 @@ Ji bo vekirina sazkariya YouTube-yê bigihîzîne û paqij bike"</string>
 Ji bo vekirina sazkariya Morphe bigihîzîne û paqij bike"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menûya vexwarinê</string>
-  <string name="morphe_hide_player_flyout_summary">Nîşanê itemên menûya vexwarinê peyda bike an veşêre.</string>
+  <string name="morphe_hide_player_flyout_summary">Komponenên menûya derve ya lêxistinê veşêre an nîşan bide</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Zimanbigotinên veşêre</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Menûya zimanbigotinê veşarî ye.</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Menûya zimanbigotinê nîşarî ye.</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Paya Navgotinê veşêre</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Paya menûya Navgotinê veşêye</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Paya menûya Navgotinê tê nîşandan</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Serpûşeya Navgotinê veşêre</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Serdesta menuya veşartî ye ve têveşîne.</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Serdesta menuya veşartî ye.</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Bişîniya \'Saziyên Zêde / Zêdetir\' veşêrin</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Menûya \'Saziyên Zêde / Zêdetir\' veşartin e.</string>
@@ -833,17 +839,23 @@ Ji bo vekirina sazkariya Morphe bigihîzîne û paqij bike"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menuya rêza dengî veşartin e
 
 Da menuya rêza dengîyê nîşandin, 'Rêzên vîdyoyê spoof bikin' ta 'Android Reel' an 'TV' biguhezine"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Pêşkêşîya rêzika dengîyê veşêre.</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Rêzika dengî ya menuya veşartî ye.</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Rêzika dengî ya menuya destnîşandinê ye.</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Di VR-an de temaşe bike veşêre</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menûya Di VR-an de temaşe bike veşarî ye.</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Menûya Di VR-an de temaşe bike nîşarî ye.</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Bişîniya menûya Kvalîteyê veşêrin</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Menûya Kvalîteyê veşartin e.</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Menûya Kvalîteyê vekirin nêşerîn e.</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Bişîniya fotera menûya Kvalîteyê veşêrin</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Fotera menûya Kvalîteyê veşartin e.</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Fotera menûya Kvalîteyê vekirin nêşerîn e.</string>
+  <string name="morphe_hide_player_flyout_quality_title">Xwerêzî kiştiyê.</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Menuya xwerêzî ye.</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Menuya xwerêzî destnîşandinê ye.</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Pêşkêşîya xwerêzî binêvejîre.</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Rêzika xwerêzî ya menuya veşartî ye.</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Rêzika xwerêzî ya menuya destnîşandinê ye.</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Serdesta xwerêzî binêvejîre.</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Menuya xwerêzî ya serdesta veşartî ye.</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Menuya xwerêzî ya serdesta destnîşandinê ye.</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Pêşdîyê pêşandanê veşêre</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Pêşdîyê pêşandanê veşartî ye</string>

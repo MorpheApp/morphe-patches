@@ -67,13 +67,14 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
     lateinit var bottomTargetDocument: Document
 
     execute {
-        val targetResourceName = "youtube_controls_bottom_ui_container.xml"
+        bottomTargetDocument = document("res/layout/youtube_controls_bottom_ui_container.xml")
 
-        bottomTargetDocument = document("res/layout/$targetResourceName")
+        val bottomTargetElementList = bottomTargetDocument
+            .getElementsByTagName("android.support.constraint.ConstraintLayout")
+            .takeIf { it.length > 0 }
+            ?: bottomTargetDocument.getElementsByTagName("androidx.constraintlayout.widget.ConstraintLayout")
+        val bottomTargetElement = bottomTargetElementList.item(0)
 
-        val bottomTargetElement: Node = bottomTargetDocument.getElementsByTagName(
-            "android.support.constraint.ConstraintLayout",
-        ).item(0)
 
         val bottomTargetDocumentChildNodes = bottomTargetDocument.childNodes
         var bottomInsertBeforeNode: Node = bottomTargetDocumentChildNodes.findElementByAttributeValueOrThrow(

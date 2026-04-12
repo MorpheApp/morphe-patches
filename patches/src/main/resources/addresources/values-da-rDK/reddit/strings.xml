@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Deaktiverer den moderne startsidebrugerflade</string>
   <string name="morphe_disable_screenshot_popup_title">Deaktiver skærmbilledpop-up</string>
   <string name="morphe_disable_screenshot_popup_summary">Deaktiverer pop-up\'en, der vises, når der tages et skærmbillede</string>
+  <string name="morphe_hide_ask_button_title">Skjul knappen Spørg</string>
+  <string name="morphe_hide_ask_button_summary">Skjuler knappen Spørg i søgefeltet</string>
   <string name="morphe_hide_answers_button_title">Skjul Svar-knappen</string>
   <string name="morphe_hide_answers_button_summary">Skjuler Svar-knappen i navigationslinjen</string>
   <string name="morphe_hide_chat_button_title">Skjul Chat-knappen</string>
@@ -67,4 +69,6 @@ Begrænsning: Vises kun, hvis API-svaret inkluderer antallet af visninger"</stri
   <string name="morphe_sanitize_sharing_links_summary">Saniteter delingslinks ved at fjerne sporingsforespørgsels parametre</string>
   <string name="morphe_open_links_directly_title">Åbn links direkte</string>
   <string name="morphe_open_links_directly_summary">Springer over omdirigerings-URL\'er i eksterne links</string>
+  <string name="morphe_open_links_externally_title">Åbn links eksternt</string>
+  <string name="morphe_open_links_externally_summary">Åbner links i din browser i stedet for i den interne browser</string>
 </resources>

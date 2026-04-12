@@ -19,7 +19,7 @@ private enum class MethodCall(
     override val definedClassName: String,
     override val methodName: String,
     override val methodParams: Array<String>,
-    override val returnType: String,
+    override val methodReturnType: String,
 ) : IMethodCall {
     PutBitmapFramework(
         "Landroid/media/MediaMetadata\$Builder;",
@@ -39,12 +39,11 @@ val fixRecycledBitmapPatch = transformInstructionsPatch(
         )
     },
     transform = transform@{ mutableMethod, entry ->
-        val (methodCall, invokeInstruction, instructionIndex) = entry
+        val (methodCall, _, instructionIndex) = entry
         
         methodCall.replaceInvokeVirtualWithExtension(
             EXTENSION_CLASS_DESCRIPTOR,
             mutableMethod,
-            invokeInstruction,
             instructionIndex
         )
     }

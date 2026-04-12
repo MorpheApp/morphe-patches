@@ -793,6 +793,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_captions_title">Μενού «Υπότιτλοι»</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Απόκρυψη υποτίτλων</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Απόκρυψη υποτίτλων</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Εμφανίζεται</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Κρύψε Μενού «Πρόσθετες ρυθμίσεις»</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Το μενού «Πρόσθετες ρυθμίσεις» είναι κρυμμένο</string>
@@ -838,17 +844,23 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Μενού κομματιών ήχου είναι κρυμμένο
 
 Για να δείτε το μενού κομματιών ήχου, αλλάξτε 'Spoof video streams' σε 'Android Reel' ή 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Μενού «Κομμάτι ήχου»</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Εμφανίζεται</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Μενού «Προβολή σε VR»</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Εμφανίζεται</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Κρύψε Μενού «Ποιότητα»</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Το μενού «Ποιότητα» είναι κρυμμένο</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Το μενού «Ποιότητα» εμφανίζεται</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Κρύψε Οδηγίες του μενού ποιότητας βίντεο</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Οι οδηγίες του μενού ποιότητας βίντεο είναι κρυμμένες</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Οι οδηγίες του μενού ποιότητας βίντεο εμφανίζονται</string>
+  <string name="morphe_hide_player_flyout_quality_title">Ποιότητα</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Οδηγίες του μενού ποιότητας βίντεο</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Κρυμμένες</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Εμφανίζονται</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Ποιότητα</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Κρυμμένες</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Εμφανίζονται</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Απόκρυψη προεπισκόπισης αυτόματης αναπαραγωγής</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Η προεπισκόπιση αυτόματης αναπαραγωγής είναι απόκρυφη</string>

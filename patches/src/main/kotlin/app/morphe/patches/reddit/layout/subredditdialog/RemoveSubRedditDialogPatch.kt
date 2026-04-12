@@ -13,10 +13,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import java.util.logging.Logger
 
 private const val EXTENSION_CLASS_DESCRIPTOR =
     "Lapp/morphe/extension/reddit/patches/RemoveSubRedditDialogPatch;"
@@ -54,35 +51,14 @@ val removeSubRedditDialogPatch = bytecodePatch(
             }
         }
 
-        // TODO: Fix up this patch
-        if (packageMetadata.versionName >= "2026.12.0") {
-            Logger.getLogger(this::class.java.name).warning(
-                "\"Remove subreddit dialog\" does not yet fully support 2026.12.0+"
-            )
-        }
-
-        NSFWAlertShowDialogFingerprint.matchAll(
-            // TODO: remove classDef parameter when patcher 1.3.3+ is released.
-            NSFWAlertDialogClassFingerprint.classDef
-        ).forEach { match ->
+        NSFWAlertShowDialogFingerprint.matchAll().forEach { match ->
             match.let {
                 it.method.apply {
-                    val index = it.instructionMatches.first().index
-                    val moveResultIndex = index + 1
-                    val insertIndex: Int
-                    val register: Int
-
-                    if (getInstruction(moveResultIndex).opcode != Opcode.MOVE_RESULT_OBJECT) {
-                        // 2026.10.0+
-                        insertIndex = moveResultIndex
-                        register = getInstruction<FiveRegisterInstruction>(index).registerC
-                    } else {
-                        insertIndex = moveResultIndex + 1
-                        register = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
-                    }
+                    val index = it.instructionMatches[3].index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                     addInstruction(
-                        insertIndex,
+                        index + 1,
                         "invoke-static { v$register }, " +
                                 "$EXTENSION_CLASS_DESCRIPTOR->dismissNSFWDialog(Ljava/lang/Object;)V"
                     )

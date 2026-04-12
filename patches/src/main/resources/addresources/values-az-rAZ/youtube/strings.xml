@@ -639,7 +639,6 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_toolbar_search_button_summary_off">Axtarış düyməsi görünür</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Açılan menyu</string>
-  <string name="morphe_hide_player_flyout_summary">Oynadıcı açılan menyu elementlərini gizlət və ya göstər</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Titrləri Gizlət</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Titrlər menyusu gizlidir</string>
@@ -694,12 +693,6 @@ Səs treki menyusunu göstərmək üçün \"Video yayımları saxtalaşdır\"-ı
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR menyusunda izləmə gizlidir</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">VR menyusunda izləmə göstərilir</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Video keyfiyyət menyusunu gizlət</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Video keyfiyyət menyusu gizlidir</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Video keyfiyyət menyusu görünür</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Video keyfiyyət menyusu alt məlumatını gizlət</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Video keyfiyyət menyusu alt məlumatı gizlidir</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Video keyfiyyət menyusu alt məlumatı göstərilir</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Avtomatik önizləmə önizlənməsini gizlət</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Avtomatik önizləmə önizlənməsi gizlidir</string>

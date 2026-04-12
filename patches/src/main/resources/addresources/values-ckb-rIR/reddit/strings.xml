@@ -16,8 +16,7 @@ Second \"item\" text"</string>
 
 -->
 <resources>
-  <string name="morphe_screen_ads_title">Ads</string>
-  <string name="morphe_hide_post_ads_title">دابەزاندنی ڕاوەستێنانی بابەتەکان</string>
+  <string name="morphe_hide_post_ads_title">هێڵپەڕەکانی بڵاوکردنەوە قایپ بکه</string>
   <string name="morphe_hide_post_ads_summary">دابەزاندنی ڕاوەستێنانی بابەتەکان لە بابەتەکاندا</string>
   <string name="morphe_hide_comment_ads_title">دابەزاندنی ڕاوەستێنانی کۆمێنتەکان</string>
   <string name="morphe_hide_comment_ads_summary">دابەزاندنی ڕاوەستێنانی کۆمێنتەکان لە بەشێک کۆمێنتەکاندا</string>
@@ -26,6 +25,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">خۆراکێکی نۆڤی ڕاگەخشاوە، UI</string>
   <string name="morphe_disable_screenshot_popup_title">خۆراکێکی ڕەخساوییەکە ڕاگەخشاوە</string>
   <string name="morphe_disable_screenshot_popup_summary">خۆراکێکی ڕەخساوییەکە ڕاگەخشاوە دێت کاتێک تۆ دەگرێتە ڕەسی ڕەخساو</string>
+  <string name="morphe_hide_ask_button_title">دۆزینەوەی پەیامگە دەربخۆ</string>
+  <string name="morphe_hide_ask_button_summary">امبوتنه دوتونه جودهءه دوته</string>
   <string name="morphe_hide_answers_button_title">خۆراکێکی زانینی ڕاوەستێنە</string>
   <string name="morphe_hide_answers_button_summary">ڕاوەستێنانی زانین لە بارەگای ناڤیگەیشن</string>
   <string name="morphe_hide_chat_button_title">خۆراکێکی چا پیشاندە</string>
@@ -65,4 +66,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">سەنکارى کەروکە ڕێگەگەرانى کۆتەنەکەش مەسز ئەڤە ڕحسەکەنە دە سەنگار یەکە و ڕێگەگەران نەگەلشۆتا ڕحسەکەی ئادەکس فیلمەکە شەگەل</string>
   <string name="morphe_open_links_directly_title">ڕێگەڕوگەشاندنى سەککە</string>
   <string name="morphe_open_links_directly_summary">ڕکەت ئەکە دەخه‌ سەر ڕو یەک بچرکە ڕێکە پێش پێش وانگەشاندن ڕیفەکەن دە وۆچ</string>
+  <string name="morphe_open_links_externally_title">لینکەکان لە دەرەوە بکرێنەوە</string>
+  <string name="morphe_open_links_externally_summary">لینکەکان لەگەڵ ڕاوبردنی قوتابخانە دەکرێنەوە، نا لە ناو ڕاوبردنێکی نێو کۆمپانیا</string>
 </resources>

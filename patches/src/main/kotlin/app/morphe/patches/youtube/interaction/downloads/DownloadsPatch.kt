@@ -91,7 +91,7 @@ val downloadsPatch = bytecodePatch(
             addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static/range {p3 .. p3}, $EXTENSION_CLASS_DESCRIPTOR->inAppDownloadButtonOnClick(Ljava/lang/String;)Z
+                    invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS_DESCRIPTOR->inAppDownloadButtonOnClick(Ljava/lang/String;)Z
                     move-result v0
                     if-eqz v0, :show_native_downloader
                     return-void

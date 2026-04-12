@@ -98,7 +98,7 @@ val reloadVideoPatch = bytecodePatch(
         )
 
         val dismissPlayerInnerMethod = MiniAppOpenYtContentCommandEndpointFingerprint
-            .instructionMatches[2]
+            .instructionMatches.last()
             .getInstruction<ReferenceInstruction>()
             .getReference<MethodReference>()!!
 

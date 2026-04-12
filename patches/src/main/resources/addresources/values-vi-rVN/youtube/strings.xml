@@ -540,7 +540,7 @@ Lưu ý: Có thể không hoạt động trên video phát trực tiếp"</strin
   <string name="morphe_livestream_dvr_summary_on">Cho phép tua trên tất cả các phiên phát trực tiếp</string>
   <string name="morphe_livestream_dvr_summary_off">Không được tua trên tất cả các phiên phát trực tiếp</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_user_dialog_message">Việc bật tính năng này có thể gây ra hành vi tìm kiếm livestream không mong muốn nếu \'Spoof video streams\' không được bật.</string>
+  <string name="morphe_livestream_dvr_user_dialog_message">Bật cài đặt này có thể gây ra lỗi khi tua video phát trực tiếp nếu bạn chưa bật \'Giả lập luồng phát video\'.</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Bật vuốt để tua</string>
   <string name="morphe_slide_to_seek_summary_on">Vuốt để tua đã được bật</string>
@@ -791,11 +791,17 @@ Bấm giữ để mở cài đặt YouTube"</string>
 Bấm giữ để mở cài đặt Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menu tuỳ chọn</string>
-  <string name="morphe_hide_player_flyout_summary">Ẩn hoặc hiện các mục menu tuỳ chọn trên trình phát</string>
+  <string name="morphe_hide_player_flyout_summary">Ẩn hoặc hiện các thành phần menu tuỳ chọn trên trình phát</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Ẩn Phụ đề</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Menu phụ đề đã bị ẩn</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Menu phụ đề được hiển thị</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Ẩn chân trang Phụ đề</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Chân menu Phụ đề đã bị ẩn</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Chân menu Phụ đề được hiển thị</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Ẩn tiêu đề Phụ đề</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Tiêu đề menu phụ đề bị ẩn</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Tiêu đề menu phụ đề được hiển thị</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Ẩn Tùy chọn khác</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Menu tùy chọn khác đã bị ẩn</string>
@@ -841,17 +847,23 @@ Bấm giữ để mở cài đặt Morphe"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu bản âm thanh bị ẩn
 
 Để hiển thị menu bản âm thanh, hãy đổi 'Giả mạo luồng phát video' thành 'Android Reel' hoặc 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Ẩn chân menu Bản âm thanh</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Chân menu bản âm thanh đã bị ẩn</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Chân menu bản âm thanh được hiển thị</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ẩn Xem ở chế độ thực tế ảo</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu xem ở chế độ thực tế ảo đã bị ẩn</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Menu xem ở chế độ thực tế ảo được hiển thị</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Ẩn Chất lượng video</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Menu chất lượng video đã bị ẩn</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Menu chất lượng video được hiển thị</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Ẩn chân menu Chất lượng video</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Chân menu chất lượng video đã bị ẩn</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Chân menu chất lượng video được hiển thị</string>
+  <string name="morphe_hide_player_flyout_quality_title">Ẩn Chất lượng video</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Menu chất lượng video đã bị ẩn</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Menu chất lượng video được hiển thị</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Ẩn chân trang Chất lượng</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Chân menu chất lượng video đã bị ẩn</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Chân menu chất lượng video được hiển thị</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Ẩn tiêu đề Chất lượng video</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Tiêu đề menu Chất lượng video đã bị ẩn</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Tiêu đề menu Chất lượng video được hiển thị</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Ẩn phần xem trước tự động phát</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Phần xem trước tự động phát xuất hiện ở cuối video (khung ở góc trên bên trái) đã bị ẩn.</string>
@@ -861,7 +873,7 @@ Bấm giữ để mở cài đặt Morphe"</string>
   <string name="morphe_hide_autoplay_button_summary_on">Nút tự động phát đã bị ẩn</string>
   <string name="morphe_hide_autoplay_button_summary_off">Nút tự động phát được hiển thị</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">Ẩn nút Chú thích</string>
+  <string name="morphe_hide_captions_button_title">Ẩn nút Phụ đề</string>
   <string name="morphe_hide_captions_button_summary_on">Nút phụ đề đã bị ẩn</string>
   <string name="morphe_hide_captions_button_summary_off">Nút phụ đề được hiển thị</string>
   <string name="morphe_hide_cast_button_title">Ẩn nút truyền</string>
@@ -1652,11 +1664,11 @@ Hạn chế:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Để dùng tính năng này, hãy đổi \'Giả mạo luồng phát video\' thành Android VR hoặc Android Studio</string>
   <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
-  <string name="morphe_expand_livestream_dvr_duration_title">Mở rộng thời lượng DVR phát trực tiếp</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary_on">Thời lượng DVR phát trực tiếp đã được mở rộng lên đến 7 ngày</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary_off">Thời lượng DVR phát trực tiếp bị giới hạn ở cài đặt mặc định của máy chủ</string>
+  <string name="morphe_expand_livestream_dvr_duration_title">Tăng thời lượng DVR phát trực tiếp</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_on">Thời lượng DVR phát trực tiếp đã được tăng lên đến 7 ngày</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_off">Thời gian DVR phát trực tiếp bị giới hạn theo mặc định của máy chủ</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">Cài đặt này có thể gây ra hành vi không mong muốn nếu \'Spoof video streams\' chưa được bật.</string>
+  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">Cài đặt này có thể gây ra lỗi không mong muốn nếu bạn chưa bật \'Giả lập luồng phát video\'.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Hiện menu chất lượng video nâng cao</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Menu chất lượng video nâng cao được hiển thị</string>
