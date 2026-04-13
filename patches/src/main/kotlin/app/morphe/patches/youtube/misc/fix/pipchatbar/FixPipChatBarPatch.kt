@@ -19,7 +19,7 @@ val fixPipChatBarPatch = bytecodePatch(
 
     execute {
         PipModeChangedFingerprint.method.addInstruction(
-            1,
+            0,
             "invoke-static { p0, p1 }, $EXTENSION_CLASS_DESCRIPTOR->onPipModeChanged(Landroid/app/Activity;Z)V"
         )
     }
