@@ -60,9 +60,7 @@ public class OverrideYouTubeMusicActionsPatch {
         }
 
         String uriString = uri.toString();
-        if (uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME) ||
-                (uriString.startsWith("market://") && uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME)) ||
-                (uriString.contains("play.google.com/store/apps") && uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME))) {
+        if (uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME)) {
 
             String target = Settings.MORPHE_MUSIC_PACKAGE_NAME.get().trim();
             if (Utils.isNotEmpty(target) && isAppInstalled(target)) {
