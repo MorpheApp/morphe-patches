@@ -30,22 +30,17 @@ private fun overrideYouTubeMusicManifestPatch() = resourcePatch{
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        val targetPackage = "app.morphe.android.apps.youtube.music"
         val manifestFile = get("AndroidManifest.xml")
         var manifestContent = manifestFile.readText()
+        val permissionTag = "<uses-permission android:name=\"android.permission.QUERY_ALL_PACKAGES\"/>"
 
-        manifestContent = if (manifestContent.contains("</queries>")) {
-            manifestContent.replace(
-                "</queries>",
-                "<package android:name=\"$targetPackage\"/></queries>"
+        if (!manifestContent.contains(permissionTag)) {
+            manifestContent = manifestContent.replace(
+                "<application",
+                "$permissionTag\n    <application"
             )
-        } else {
-            manifestContent.replace(
-                "</manifest>",
-                "<queries><package android:name=\"$targetPackage\"/></queries>\n</manifest>"
-            )
+            manifestFile.writeText(manifestContent)
         }
-        manifestFile.writeText(manifestContent)
     }
 }
 

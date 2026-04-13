@@ -8,6 +8,7 @@
 package app.morphe.extension.youtube.patches;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
@@ -16,6 +17,7 @@ import app.morphe.extension.youtube.settings.Settings;
 public class OverrideYouTubeMusicActionsPatch {
 
     private static final String YOUTUBE_MUSIC_PACKAGE_NAME = "com.google.android.apps.youtube.music";
+    private static final String HIJACK_FLAG = "morphe_hijacked";
 
     public static Intent overrideSetPackage(Intent intent, String packageName) {
         if (intent == null) return null;
@@ -24,12 +26,26 @@ public class OverrideYouTubeMusicActionsPatch {
             return intent.setPackage(packageName);
         }
 
-        if (YOUTUBE_MUSIC_PACKAGE_NAME.equals(packageName)) {
-            String target = Settings.MORPHE_MUSIC_PACKAGE_NAME.get();
-            if (Utils.isNotEmpty(target) && Utils.isPackageEnabled(target)) {
-                return intent.setPackage(target);
-            }
+        if (intent.getBooleanExtra(HIJACK_FLAG, false)) {
+            return intent;
+        }
 
+        if (YOUTUBE_MUSIC_PACKAGE_NAME.equals(packageName)) {
+            String target = Settings.MORPHE_MUSIC_PACKAGE_NAME.get().trim();
+
+            if (Utils.isNotEmpty(target) && isAppInstalled(target)) {
+                PackageManager pm = Utils.getContext().getPackageManager();
+                Intent launchIntent = pm.getLaunchIntentForPackage(target);
+
+                if (launchIntent != null) {
+                    intent.setAction(launchIntent.getAction());
+                    intent.setComponent(launchIntent.getComponent());
+                    intent.setPackage(target);
+                    intent.putExtra(HIJACK_FLAG, true);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    return intent;
+                }
+            }
             return intent.setPackage(null);
         }
 
@@ -44,22 +60,41 @@ public class OverrideYouTubeMusicActionsPatch {
         }
 
         String uriString = uri.toString();
-        if (uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME)) {
-            if (uriString.startsWith("market://") || uriString.contains("play.google.com/store/apps")) {
+        if (uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME) ||
+                (uriString.startsWith("market://") && uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME)) ||
+                (uriString.contains("play.google.com/store/apps") && uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME))) {
 
-                intent.setData(Uri.parse("https://music.youtube.com/"));
+            String target = Settings.MORPHE_MUSIC_PACKAGE_NAME.get().trim();
+            if (Utils.isNotEmpty(target) && isAppInstalled(target)) {
 
-                String target = Settings.MORPHE_MUSIC_PACKAGE_NAME.get();
-                if (Utils.isNotEmpty(target) && Utils.isPackageEnabled(target)) {
-
-                    intent.setPackage(target);
-                } else {
-                    intent.setPackage(null);
+                Uri musicUri = Uri.parse("https://music.youtube.com/");
+                if (!uriString.contains("play.google.com") && !uriString.startsWith("market://")) {
+                    musicUri = uri;
                 }
+
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.setData(musicUri);
+                intent.setPackage(target);
+                intent.setComponent(null);
+                intent.putExtra(HIJACK_FLAG, true);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 return intent;
             }
+
+            intent.setData(Uri.parse("https://music.youtube.com/"));
+            intent.setPackage(null);
+            intent.setComponent(null);
+            return intent;
         }
 
         return intent.setData(uri);
+    }
+
+    private static boolean isAppInstalled(String packageName) {
+        try {
+            return Utils.getContext().getPackageManager().getLaunchIntentForPackage(packageName) != null;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }
