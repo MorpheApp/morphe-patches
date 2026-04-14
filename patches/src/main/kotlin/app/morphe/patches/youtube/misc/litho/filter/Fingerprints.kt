@@ -47,13 +47,13 @@ internal object EmptyComponentFingerprint : Fingerprint(
 )
 
 internal object LithoFilterFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.SPUT_OBJECT,
             definingClass = "this",
-            type = EXTENSION_FILER_ARRAY_DESCRIPTOR
+            type = EXTENSION_FILTER
         )
     )
 )

@@ -18,7 +18,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object FrequentUpdatesHandlerFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/screens/pager/FrequentUpdatesHandler\$handleFrequentUpdates$",
+    definingClass = $$"Lcom/reddit/screens/pager/FrequentUpdatesHandler$handleFrequentUpdates$",
     name = "invokeSuspend",
     returnType = "Ljava/lang/Object;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -87,8 +87,8 @@ internal object NSFWAlertShowDialogFingerprint : Fingerprint(
             returnType = "L",
             parameters = listOf(
                 "Landroid/content/Context;",
-                "Landroid/content/DialogInterface\$OnClickListener;",
-                "Landroid/content/DialogInterface\$OnClickListener;"
+                $$"Landroid/content/DialogInterface$OnClickListener;",
+                $$"Landroid/content/DialogInterface$OnClickListener;"
             )
         ),
         opcode(

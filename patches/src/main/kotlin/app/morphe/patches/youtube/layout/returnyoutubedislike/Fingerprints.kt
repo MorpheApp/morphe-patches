@@ -34,7 +34,7 @@ internal object RemoveLikeFingerprint : Fingerprint(
 
 internal object RollingNumberMeasureAnimatedTextFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "Lj\$/util/Optional;",
+    returnType = "Lj$/util/Optional;",
     parameters = listOf("L", "Ljava/lang/String;", "L"),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.IGET, // First instruction of method
@@ -157,7 +157,7 @@ internal object LithoSpannableStringCreationFingerprint : Fingerprint(
 
         methodCall(
             name = "addOnLayoutChangeListener",
-            parameters = listOf("Landroid/view/View\$OnLayoutChangeListener;"),
+            parameters = listOf($$"Landroid/view/View$OnLayoutChangeListener;"),
         )
     )
 )

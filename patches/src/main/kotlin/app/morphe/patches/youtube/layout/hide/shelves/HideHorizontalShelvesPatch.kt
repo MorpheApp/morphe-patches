@@ -16,7 +16,7 @@ import app.morphe.patches.youtube.misc.litho.observer.layoutReloadObserverPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 
-private const val FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/HorizontalShelvesFilter;"
 
 internal val hideHorizontalShelvesPatch = bytecodePatch {
@@ -30,6 +30,6 @@ internal val hideHorizontalShelvesPatch = bytecodePatch {
     )
 
     execute {
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
     }
 }

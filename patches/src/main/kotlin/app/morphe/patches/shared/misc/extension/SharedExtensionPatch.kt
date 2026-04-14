@@ -45,7 +45,7 @@ import com.android.tools.smali.dexlib2.iface.Method
 import java.net.URLDecoder
 import java.util.jar.JarFile
 
-internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/Utils;"
+internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/Utils;"
 
 /**
  * A patch to extend with an extension shared with multiple patches.
@@ -78,12 +78,12 @@ fun sharedExtensionPatch(
 
     execute {
         // Verify the extension class exists.
-        classDefBy(EXTENSION_CLASS_DESCRIPTOR)
+        classDefBy(EXTENSION_CLASS)
     }
 
     finalize {
         // The hooks are made in finalize to ensure that the context is hooked before any other patches.
-        hooks.forEach { hook -> hook(EXTENSION_CLASS_DESCRIPTOR) }
+        hooks.forEach { hook -> hook(EXTENSION_CLASS) }
 
         // Modify Utils method to include the patches release version.
         MorpheUtilsPatchesVersionFingerprint.method.apply {
@@ -131,11 +131,11 @@ open class ExtensionHook(
     private val insertIndexResolver: BytecodePatchContext.(Method) -> Int = { 0 },
     private val contextRegisterResolver: BytecodePatchContext.(Method) -> String = { "p0" },
 ) {
-    context(BytecodePatchContext)
+    context(patchContext: BytecodePatchContext)
     operator fun invoke(extensionClassDescriptor: String) {
         fingerprint.method.apply {
-            val insertIndex = insertIndexResolver(this)
-            val contextRegister = contextRegisterResolver(this)
+            val insertIndex = patchContext.insertIndexResolver(this)
+            val contextRegister = patchContext.contextRegisterResolver(this)
 
             addInstruction(
                 insertIndex,

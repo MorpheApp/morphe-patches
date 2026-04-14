@@ -36,7 +36,6 @@
 
 package app.morphe.patches.all.misc.packagename
 
-import app.morphe.patcher.PackageMetadata
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
@@ -82,16 +81,16 @@ fun setOrGetFallbackPackageName(fallbackPackageName: String): String {
 /**
  * Selectively changes usage of Context.getPackageName() to the original package name.
  */
-context(BytecodePatchContext)
+context(patchContext: BytecodePatchContext)
 private fun applyGetPackageName(oldPackageName: String, vararg classesToChange: String) {
-    classDefForEach { classDef ->
+    patchContext.classDefForEach { classDef ->
         if (!classesToChange.any { classToChange ->
                 classDef.type.startsWith(classToChange)
             }
         ) return@classDefForEach
 
         val mutableClass by lazy {
-            mutableClassDefBy(classDef)
+            patchContext.mutableClassDefBy(classDef)
         }
 
         classDef.methods.forEach { method ->
@@ -129,9 +128,9 @@ private fun applyGetPackageName(oldPackageName: String, vararg classesToChange: 
 }
 
 
-context(ResourcePatchContext)
+context(patchContext: ResourcePatchContext)
 private fun applyProvidersStrings(oldPackageName: String, newPackageName: String) {
-    document("res/values/strings.xml").use { document ->
+    patchContext.document("res/values/strings.xml").use { document ->
         val children = document.documentElement.childNodes
         for (i in 0 until children.length) {
             val node = children.item(i) as? Element ?: continue
@@ -162,7 +161,7 @@ val changePackageNamePatch = resourcePatch(
         description = "The name of the package to rename the app to.",
         required = true,
     ) {
-        it == "Default" || it!!.matches(Regex("^[a-z]\\w*(\\.[a-z]\\w*)+\$"))
+        it == "Default" || it!!.matches(Regex("^[a-z]\\w*(\\.[a-z]\\w*)+$"))
     }
 
     val updatePermissionsOption = booleanOption(

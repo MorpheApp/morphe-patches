@@ -11,7 +11,7 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.findFreeRegister
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/PermanentRepeatPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/PermanentRepeatPatch;"
 
 @Suppress("unused")
 val permanentRepeatPatch = bytecodePatch(
@@ -41,7 +41,7 @@ val permanentRepeatPatch = bytecodePatch(
             addInstructionsWithLabels(
                 startIndex,
                 """
-                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->permanentRepeat()Z
+                    invoke-static { }, $EXTENSION_CLASS->permanentRepeat()Z
                     move-result v$freeRegister
                     if-nez v$freeRegister, :repeat 
                 """,

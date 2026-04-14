@@ -65,15 +65,15 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-private const val LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR =
+private const val LAYOUT_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/LayoutComponentsFilter;"
-private const val DESCRIPTION_COMPONENTS_FILTER_CLASS_NAME =
+private const val DESCRIPTION_COMPONENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/DescriptionComponentsFilter;"
-private const val COMMENTS_FILTER_CLASS_NAME =
+private const val COMMENTS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/CommentsFilter;"
-private const val CUSTOM_FILTER_CLASS_NAME =
+private const val CUSTOM_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/CustomFilter;"
-private const val KEYWORD_FILTER_CLASS_NAME =
+private const val KEYWORD_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/KeywordContentFilter;"
 
 val hideLayoutComponentsPatch = bytecodePatch(
@@ -293,12 +293,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
             ),
         )
 
-        addLithoFilter(LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR)
-        addLithoFilter(DESCRIPTION_COMPONENTS_FILTER_CLASS_NAME)
-        addLithoFilter(COMMENTS_FILTER_CLASS_NAME)
-        addLithoFilter(KEYWORD_FILTER_CLASS_NAME)
-        addLithoFilter(CUSTOM_FILTER_CLASS_NAME)
-        hookTreeNodeResult("$COMMENTS_FILTER_CLASS_NAME->sanitizeCommentsCategoryBar")
+        addLithoFilter(LAYOUT_COMPONENTS_FILTER)
+        addLithoFilter(DESCRIPTION_COMPONENTS_FILTER)
+        addLithoFilter(COMMENTS_FILTER)
+        addLithoFilter(KEYWORD_FILTER)
+        addLithoFilter(CUSTOM_FILTER)
+        hookTreeNodeResult("$COMMENTS_FILTER->sanitizeCommentsCategoryBar")
 
         // region hide mix playlists
 
@@ -315,7 +315,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 addInstructionsAtControlFlowLabel(
                     insertIndex,
                     """
-                        invoke-static { $byteArrayParameter }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->filterMixPlaylists([B)Z
+                        invoke-static { $byteArrayParameter }, $LAYOUT_COMPONENTS_FILTER->filterMixPlaylists([B)Z
                         move-result v$freeRegister 
                         if-eqz v$freeRegister, :show
                         move-object v$returnEmptyComponentRegister, p1   # Required for 19.47
@@ -339,7 +339,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             addInstructions(
                 index,
                 """
-                    invoke-static {}, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->showWatermark()Z
+                    invoke-static {}, $LAYOUT_COMPONENTS_FILTER->showWatermark()Z
                     move-result p2
                 """,
             )
@@ -382,7 +382,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                             move-result-object v1
                             iget-object v2, v0, $buttonContainerField
                             iget-object v3, v0, $textViewField
-                            invoke-static { v1, v2, v3 }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideShowMoreButton(Landroid/view/View;Landroid/view/View;Landroid/widget/TextView;)V
+                            invoke-static { v1, v2, v3 }, $LAYOUT_COMPONENTS_FILTER->hideShowMoreButton(Landroid/view/View;Landroid/view/View;Landroid/widget/TextView;)V
                             return-void
                         """
                     )
@@ -411,7 +411,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         constructorFingerprint.let {
             it.method.injectHideViewCall(
                 it.instructionMatches[1].index,
-                LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+                LAYOUT_COMPONENTS_FILTER,
                 "hideSubscribedChannelsBar"
             )
         }
@@ -427,7 +427,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideSubscribedChannelsBar(I)I
+                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideSubscribedChannelsBar(I)I
                         move-result v$register
                     """
                 )
@@ -441,7 +441,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         AlbumCardsFingerprint.let {
             it.method.injectHideViewCall(
                 it.instructionMatches.last().index,
-                LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+                LAYOUT_COMPONENTS_FILTER,
                 "hideAlbumCard"
             )
         }
@@ -450,7 +450,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide comments carousel
 
-        hookElement("$COMMENTS_FILTER_CLASS_NAME->onCommentsLoaded([B)[B")
+        hookElement("$COMMENTS_FILTER->onCommentsLoaded([B)[B")
 
         // endregion
 
@@ -463,7 +463,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
                 addInstruction(
                     checkCastIndex + 1,
-                    "invoke-static { v$viewRegister }, $COMMENTS_FILTER_CLASS_NAME->hideCommentsInfoButton(Landroid/view/View;)V"
+                    "invoke-static { v$viewRegister }, $COMMENTS_FILTER->hideCommentsInfoButton(Landroid/view/View;)V"
                 )
             }
         }
@@ -475,7 +475,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         CrowdfundingBoxFingerprint.let {
             it.method.injectHideViewCall(
                 it.instructionMatches.last().index,
-                LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+                LAYOUT_COMPONENTS_FILTER,
                 "hideCrowdfundingBox"
             )
         }
@@ -496,7 +496,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFloatingMicrophoneButton(Z)Z
+                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideFloatingMicrophoneButton(Z)Z
                         move-result v$register
                     """
                 )
@@ -514,7 +514,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             fingerprint.let {
                 it.method.injectHideViewCall(
                     it.instructionMatches.last().index,
-                    LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+                    LAYOUT_COMPONENTS_FILTER,
                     "hideLatestVideosButton"
                 )
             }
@@ -533,7 +533,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
                 replaceInstruction(
                     insertIndex,
-                    "invoke-static { v$imageViewRegister, v$drawableRegister }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->" +
+                    "invoke-static { v$imageViewRegister, v$drawableRegister }, $LAYOUT_COMPONENTS_FILTER->" +
                             "setDoodleDrawable(Landroid/widget/ImageView;Landroid/graphics/drawable/Drawable;)V"
                 )
             }
@@ -565,7 +565,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             addInstructions(
                 applyDimensionIndex - 1,
                 """
-                    invoke-static { v$returnStringRegister, v$floatDimensionRegister }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->modifyFeedSubtitleSpan(Landroid/text/SpannableString;F)Landroid/text/SpannableString;
+                    invoke-static { v$returnStringRegister, v$floatDimensionRegister }, $LAYOUT_COMPONENTS_FILTER->modifyFeedSubtitleSpan(Landroid/text/SpannableString;F)Landroid/text/SpannableString;
                     move-result-object v$returnStringRegister
                 """
             )
@@ -587,7 +587,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 addInstructions(
                     moveIndex + 1,
                     """
-                        invoke-static { v$sizeRegister }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->$methodName(I)I
+                        invoke-static { v$sizeRegister }, $LAYOUT_COMPONENTS_FILTER->$methodName(I)I
                         move-result v$sizeRegister
                     """
                 )
@@ -599,7 +599,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             it.method.apply {
                 insertLiteralOverride(
                     it.instructionMatches[2].index,
-                    "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideInRelatedVideos(Z)Z"
+                    "$LAYOUT_COMPONENTS_FILTER->hideInRelatedVideos(Z)Z"
                 )
             }
         }
@@ -613,7 +613,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 injectHideViewCall(
                     viewIndex,
                     viewRegister,
-                    LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR,
+                    LAYOUT_COMPONENTS_FILTER,
                     "hideInRelatedVideos"
                 )
             }
@@ -660,7 +660,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                                 iget-object v1, v0, $typedStringField
                                 
                                 # Check if the setting is enabled and if the typed string is empty.
-                                invoke-static { v1 }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideYouMayLikeSection(Ljava/lang/String;)Z
+                                invoke-static { v1 }, $LAYOUT_COMPONENTS_FILTER->hideYouMayLikeSection(Ljava/lang/String;)Z
                                 move-result v1
                                 
                                 # If the setting is disabled or the typed string is not empty, do nothing.
@@ -686,7 +686,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                                 # Each search suggestion has a command endpoint.
                                 # If the search suggestion is the search history, the command includes the keyword '/delete'.
                                 iget-object v4, v3, $searchSuggestionEndpointField
-                                invoke-static { v3, v4 }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->isSearchHistory(Ljava/lang/Object;Ljava/lang/String;)Z
+                                invoke-static { v3, v4 }, $LAYOUT_COMPONENTS_FILTER->isSearchHistory(Ljava/lang/Object;Ljava/lang/String;)Z
                                 move-result v3
                                 
                                 # If this search suggestion is the search history, do nothing.
@@ -728,7 +728,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFlyoutMenu(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideFlyoutMenu(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                         move-result-object v$register      
                     """
                 )
@@ -743,7 +743,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 addInstruction(
                     index + 1,
                     "invoke-static { v${targetInstruction.registerC}, v${targetInstruction.registerD} }, " +
-                            "$LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideFlyoutMenu(Landroid/widget/TextView;Ljava/lang/CharSequence;)V"
+                            "$LAYOUT_COMPONENTS_FILTER->hideFlyoutMenu(Landroid/widget/TextView;Ljava/lang/CharSequence;)V"
                 )
             }
         }
@@ -775,7 +775,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     objectIndex + 1,
                     """
-                        invoke-static { v${objectInstruction.registerA} }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideChannelTab(Ljava/lang/String;)Z
+                        invoke-static { v${objectInstruction.registerA} }, $LAYOUT_COMPONENTS_FILTER->hideChannelTab(Ljava/lang/String;)Z
                         move-result v${objectInstruction.registerA}
                         if-eqz v${objectInstruction.registerA}, :ignore
                         invoke-interface { v$iteratorRegister }, Ljava/util/Iterator;->remove()V
@@ -801,7 +801,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     insertIndex,
                     """
-                        invoke-static { }, $LAYOUT_COMPONENTS_FILTER_CLASS_DESCRIPTOR->hideSearchTermThumbnails()Z
+                        invoke-static { }, $LAYOUT_COMPONENTS_FILTER->hideSearchTermThumbnails()Z
                         move-result v$freeRegister
                         
                         if-nez v$freeRegister, :hidden

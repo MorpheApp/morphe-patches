@@ -16,7 +16,7 @@ import app.morphe.util.cloneMutable
 import app.morphe.util.cloneMutableAndPreserveParameters
 import app.morphe.util.copyResources
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/patches/EnableDebuggingPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/EnableDebuggingPatch;"
 
 /**
  * Patch shared with YouTube and YT Music.
@@ -111,7 +111,7 @@ internal fun enableDebuggingPatch(
                         move-result p0
                         
                         # Redefine boolean in the extension.
-                        invoke-static { p0, p1, p2 }, $EXTENSION_CLASS_DESCRIPTOR->isBooleanFeatureFlagEnabled(ZJ)Z
+                        invoke-static { p0, p1, p2 }, $EXTENSION_CLASS->isBooleanFeatureFlagEnabled(ZJ)Z
                         move-result p0
                         
                         # Since the copied method (helper method) has already been invoked, it just returns.
@@ -139,7 +139,7 @@ internal fun enableDebuggingPatch(
                         move-wide v2, p1
                         move-wide v4, p3
 
-                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS_DESCRIPTOR->isDoubleFeatureFlagEnabled(DJD)D
+                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS->isDoubleFeatureFlagEnabled(DJD)D
                         move-result-wide v0
 
                         # Since the copied method (helper method) has already been invoked, it just returns.
@@ -168,7 +168,7 @@ internal fun enableDebuggingPatch(
                         move-wide v2, p1
                         move-wide v4, p3
 
-                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS_DESCRIPTOR->isLongFeatureFlagEnabled(JJJ)J
+                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS->isLongFeatureFlagEnabled(JJJ)J
                         move-result-wide v0
 
                         # Since the copied method (helper method) has already been invoked, it just returns.
@@ -190,7 +190,7 @@ internal fun enableDebuggingPatch(
                         invoke-static { p0, p1, p2, p3 }, $helperMethod
                         move-result-object p0
                         
-                        invoke-static { p0, p1, p2, p3 }, $EXTENSION_CLASS_DESCRIPTOR->isStringFeatureFlagEnabled(Ljava/lang/String;JLjava/lang/String;)Ljava/lang/String;
+                        invoke-static { p0, p1, p2, p3 }, $EXTENSION_CLASS->isStringFeatureFlagEnabled(Ljava/lang/String;JLjava/lang/String;)Ljava/lang/String;
                         move-result-object p0
                         
                         return-object p0

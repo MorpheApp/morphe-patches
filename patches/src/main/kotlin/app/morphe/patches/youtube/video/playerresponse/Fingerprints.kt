@@ -26,7 +26,7 @@ internal object PlayerParameterBuilderFingerprint : Fingerprint(
         "Z", // Appears to indicate if the video ID is being opened or is currently playing.
         "Z",
         "Z",
-        "Lj\$/time/Duration;"
+        "Lj$/time/Duration;"
     )
 )
 
@@ -52,7 +52,7 @@ internal object PlayerParameterBuilder2026Fingerprint : Fingerprint(
         "Z", // Appears to indicate if the video ID is being opened or is currently playing.
         "Z",
         "Z",
-        "Lj\$/time/Duration;"
+        "Lj$/time/Duration;"
     ),
     filters = listOf(
         string("psps")

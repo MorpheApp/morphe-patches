@@ -31,7 +31,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import org.w3c.dom.Element
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/MiniplayerPreviousNextButtonsPatch;"
 
 private const val IMAGE_VIEW_TAG =
@@ -142,7 +142,7 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
                         const v$freeReg, $viewId
                         invoke-virtual { v$parentRegister, v$freeReg }, Landroid/view/View;->findViewById(I)Landroid/view/View;
                         move-result-object v$freeReg
-                        invoke-static { v$freeReg }, $EXTENSION_CLASS_DESCRIPTOR->$extensionMethod(Landroid/view/View;)V
+                        invoke-static { v$freeReg }, $EXTENSION_CLASS->$extensionMethod(Landroid/view/View;)V
                     """
                 )
             }
@@ -181,7 +181,7 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
                         const v$freeReg, $viewId
                         invoke-virtual { v$thisRegister, v$freeReg }, $definingClass->findViewById(I)Landroid/view/View;
                         move-result-object v$freeReg
-                        invoke-static { v$freeReg }, $EXTENSION_CLASS_DESCRIPTOR->$extensionMethod(Landroid/view/View;)V
+                        invoke-static { v$freeReg }, $EXTENSION_CLASS->$extensionMethod(Landroid/view/View;)V
                     """
                 )
             }
@@ -201,7 +201,7 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
             addInstructions(
                 arrayPassIndex,
                 """
-                    invoke-static { v$viewArrayRegister }, $EXTENSION_CLASS_DESCRIPTOR->getViewArray([Landroid/view/View;)[Landroid/view/View;
+                    invoke-static { v$viewArrayRegister }, $EXTENSION_CLASS->getViewArray([Landroid/view/View;)[Landroid/view/View;
                     move-result-object v$viewArrayRegister
                 """
             )

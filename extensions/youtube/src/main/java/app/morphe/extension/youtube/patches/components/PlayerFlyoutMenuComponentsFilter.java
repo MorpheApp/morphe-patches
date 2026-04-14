@@ -15,6 +15,7 @@ import java.util.List;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -166,7 +167,9 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
 
         // 21.x+ fix.
-        if (path.contains("bottom_sheet_list_option.e")) return false;
+        if (VersionCheckPatch.IS_20_31_OR_GREATER && path.contains("bottom_sheet_list_option.e")) {
+            return false;
+        }
 
         return flyoutFilterGroupList.check(buffer).isFiltered();
     }

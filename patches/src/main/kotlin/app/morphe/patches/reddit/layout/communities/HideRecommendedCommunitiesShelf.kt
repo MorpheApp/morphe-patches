@@ -12,7 +12,7 @@ import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideRecommendedCommunitiesShelf;"
 
 @Suppress("unused")
@@ -28,7 +28,7 @@ val hideRecommendedCommunitiesShelf = bytecodePatch(
         CommunityRecommendationSectionFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideRecommendedCommunitiesShelf()Z
+                invoke-static { }, $EXTENSION_CLASS->hideRecommendedCommunitiesShelf()Z
                 move-result v0
                 if-eqz v0, :off
                 return-void
@@ -37,6 +37,6 @@ val hideRecommendedCommunitiesShelf = bytecodePatch(
             """
         )
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

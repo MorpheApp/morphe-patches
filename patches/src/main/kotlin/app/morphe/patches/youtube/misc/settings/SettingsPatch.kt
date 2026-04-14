@@ -67,8 +67,8 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
-private const val BASE_ACTIVITY_HOOK_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/settings/BaseActivityHook;"
-private const val YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/settings/YouTubeActivityHook;"
+private const val BASE_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/shared/settings/BaseActivityHook;"
+private const val YOUTUBE_ACTIVITY_HOOK_CLASS = "Lapp/morphe/extension/youtube/settings/YouTubeActivityHook;"
 
 private val preferences = mutableSetOf<BasePreference>()
 
@@ -275,7 +275,7 @@ val settingsPatch = bytecodePatch(
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
                 addInstructionsAtControlFlowLabel(
                     index,
-                    "invoke-static { v$register }, ${YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR}->updateLightDarkModeStatus(Ljava/lang/Enum;)V",
+                    "invoke-static { v$register }, ${YOUTUBE_ACTIVITY_HOOK_CLASS}->updateLightDarkModeStatus(Ljava/lang/Enum;)V",
                 )
             }
         }
@@ -283,7 +283,7 @@ val settingsPatch = bytecodePatch(
         // Add setting to force Cairo settings fragment on/off.
         CairoFragmentConfigFingerprint.method.insertLiteralOverride(
             CairoFragmentConfigFingerprint.instructionMatches.first().index,
-            "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useCairoSettingsFragment(Z)Z"
+            "$YOUTUBE_ACTIVITY_HOOK_CLASS->useCairoSettingsFragment(Z)Z"
         )
 
         // Bold icon resources are found starting in 20.23, but many YT icons are not bold.
@@ -292,14 +292,14 @@ val settingsPatch = bytecodePatch(
             BoldIconsFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->useBoldIcons(Z)Z"
+                    "$YOUTUBE_ACTIVITY_HOOK_CLASS->useBoldIcons(Z)Z"
                 )
             }
         }
 
         modifyActivityForSettingsInjection(
             GoogleApiActivityOnCreateFingerprint,
-            YOUTUBE_ACTIVITY_HOOK_CLASS_DESCRIPTOR,
+            YOUTUBE_ACTIVITY_HOOK_CLASS,
             false
         )
     }
@@ -312,7 +312,7 @@ val settingsPatch = bytecodePatch(
 /**
  * Modifies the activity to show Morphe settings instead of its original purpose.
  */
-context(BytecodePatchContext)
+context(patchContext: BytecodePatchContext)
 internal fun modifyActivityForSettingsInjection(
     activityOnCreateFingerprint: Fingerprint,
     extensionClassType: String,
@@ -350,8 +350,9 @@ internal fun modifyActivityForSettingsInjection(
         MutableMethodImplementation(3),
     ).toMutable().apply {
         addInstructions(
+            0,
             """
-                invoke-static { p1 }, $BASE_ACTIVITY_HOOK_CLASS_DESCRIPTOR->getAttachBaseContext(Landroid/content/Context;)Landroid/content/Context;
+                invoke-static { p1 }, $BASE_ACTIVITY_HOOK_CLASS->getAttachBaseContext(Landroid/content/Context;)Landroid/content/Context;
                 move-result-object p1
                 invoke-super { p0, p1 }, ${activityOnCreateClass.superclass}->attachBaseContext(Landroid/content/Context;)V
                 return-void
@@ -375,6 +376,7 @@ internal fun modifyActivityForSettingsInjection(
         val invokeFinishOpcode = if (isYouTubeMusic) "invoke-super" else "invoke-virtual"
 
         addInstructions(
+            0,
             """
                 invoke-static {}, $extensionClassType->$extensionMethodName()Z
                 move-result v0

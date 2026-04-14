@@ -19,7 +19,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/ForceOriginalAudioPatch;"
 
 /**
@@ -57,7 +57,7 @@ internal fun forceOriginalAudioPatch(
         if (fixUseLocalizedAudioTrackFlag()) {
             SelectAudioStreamFingerprint.method.insertLiteralOverride(
                 SelectAudioStreamFingerprint.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->ignoreDefaultAudioStream(Z)Z"
+                "$EXTENSION_CLASS->ignoreDefaultAudioStream(Z)Z"
             )
         }
 
@@ -120,7 +120,7 @@ internal fun forceOriginalAudioPatch(
                             invoke-virtual { p0 }, $audioTrackDisplayNameMethod
                             move-result-object v$free2
         
-                            invoke-static { v$originalResultRegister, v$free1, v$free2 }, $EXTENSION_CLASS_DESCRIPTOR->isDefaultAudioStream(ZLjava/lang/String;Ljava/lang/String;)Z
+                            invoke-static { v$originalResultRegister, v$free1, v$free2 }, $EXTENSION_CLASS->isDefaultAudioStream(ZLjava/lang/String;Ljava/lang/String;)Z
                             move-result v$free1
                             
                             invoke-static { v$free1 }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;

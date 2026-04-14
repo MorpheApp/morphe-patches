@@ -19,10 +19,10 @@ import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHoo
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenSystemShareSheetPatch;"
 
-private const val FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/SystemShareSheetFilter;"
 
 @Suppress("unused")
@@ -46,14 +46,14 @@ internal fun openSystemShareSheetPatch(
             SwitchPreference("morphe_open_system_share_sheet")
         )
 
-        addRecyclerViewTreeHook(EXTENSION_CLASS_DESCRIPTOR)
+        addRecyclerViewTreeHook(EXTENSION_CLASS)
 
         QueryIntentListFingerprint.method.apply {
 
             addInstructions(
                 0,
                 """
-                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->openSystemShareSheetEnabled()Z
+                    invoke-static {}, $EXTENSION_CLASS->openSystemShareSheetEnabled()Z
                     move-result v0
                     if-eqz v0, :ignore
                     new-instance v0, Ljava/util/ArrayList;
@@ -65,6 +65,6 @@ internal fun openSystemShareSheetPatch(
             )
         }
 
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
     }
 }

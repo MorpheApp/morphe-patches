@@ -13,7 +13,7 @@ import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/ShowViewCountPatch;"
 
 @Suppress("unused")
@@ -30,8 +30,8 @@ val showViewCountPatch = bytecodePatch(
 
     execute {
 
-        hookFeatureFlag("$EXTENSION_CLASS_DESCRIPTOR->showViewCount")
+        hookFeatureFlag("$EXTENSION_CLASS->showViewCount")
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

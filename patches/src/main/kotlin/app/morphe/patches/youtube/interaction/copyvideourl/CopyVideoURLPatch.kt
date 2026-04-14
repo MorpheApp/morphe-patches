@@ -18,7 +18,7 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
-private const val BUTTON_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplayer/CopyVideoURLButton;"
+private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/CopyVideoURLButton;"
 
 private val copyVideoURLResourcePatch = resourcePatch {
     dependsOn(
@@ -69,9 +69,9 @@ val copyVideoURLPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        addPlayerBottomButton(BUTTON_DESCRIPTOR)
+        addPlayerBottomButton(EXTENSION_BUTTON)
 
-        initializeLegacyBottomControl(BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
+        initializeLegacyBottomControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
     }
 }

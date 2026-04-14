@@ -19,7 +19,7 @@ import app.morphe.util.getFreeRegisterProvider
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import java.lang.ref.WeakReference
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/TreeNodeElementPatch;"
 
 private lateinit var componentLoadedMethodRef: WeakReference<MutableMethod>
@@ -45,7 +45,7 @@ internal val treeNodeElementHookPatch = bytecodePatch(
                 insertIndex,
                 """
                     move-object/from16 v$freeRegister, p2
-                    invoke-static { v$freeRegister, v$listRegister }, $EXTENSION_CLASS_DESCRIPTOR->onTreeNodeResultLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/util/List;)V
+                    invoke-static { v$freeRegister, v$listRegister }, $EXTENSION_CLASS->onTreeNodeResultLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/util/List;)V
                 """
             )
         }

@@ -38,10 +38,10 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ReturnYouTubeDislikePatch;"
 
-private const val FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/ReturnYouTubeDislikeFilter;"
 
 val returnYouTubeDislikePatch = bytecodePatch(
@@ -82,10 +82,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // region Inject newVideoLoaded event handler to update dislikes when a new video is loaded.
 
-        hookVideoId("$EXTENSION_CLASS_DESCRIPTOR->newVideoLoaded(Ljava/lang/String;)V")
+        hookVideoId("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
 
         // Hook the player response video ID, to start loading RYD sooner in the background.
-        hookPlayerResponseVideoId("$EXTENSION_CLASS_DESCRIPTOR->preloadVideoId(Ljava/lang/String;Z)V")
+        hookPlayerResponseVideoId("$EXTENSION_CLASS->preloadVideoId(Ljava/lang/String;Z)V")
 
         // endregion
 
@@ -100,7 +100,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 0,
                 """
                     const/4 v0, ${vote.value}
-                    invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->sendVote(I)V
+                    invoke-static { v0 }, $EXTENSION_CLASS->sendVote(I)V
                 """
             )
         }
@@ -147,7 +147,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                         # Copy conversion context.
                         move-object/from16 v$conversionContext, p0
                         iget-object v$conversionContext, v$conversionContext, $textComponentConversionContextField
-                        invoke-static { v$conversionContext, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        invoke-static { v$conversionContext, v$charSequenceRegister }, $EXTENSION_CLASS->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                         move-result-object v$charSequenceRegister
                         
                         :ignore
@@ -161,7 +161,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         TextComponentFeatureFlagFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->useNewLithoTextCreation(Z)Z"
+                "$EXTENSION_CLASS->useNewLithoTextCreation(Z)Z"
             )
         }
 
@@ -182,7 +182,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                     """
                         move-object/from16 v$conversionContextRegister, p0
                         iget-object v$conversionContextRegister, v$conversionContextRegister, $conversionContextField
-                        invoke-static { v$conversionContextRegister, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        invoke-static { v$conversionContextRegister, v$charSequenceRegister }, $EXTENSION_CLASS->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                         move-result-object v$charSequenceRegister
                     """
                 )
@@ -194,10 +194,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // region Hook Shorts
 
         // Filter that parses the video ID from the UI
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
 
         // Player response video ID is needed to search for the video IDs in Shorts litho components.
-        hookPlayerResponseVideoId("$FILTER_CLASS_DESCRIPTOR->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
+        hookPlayerResponseVideoId("$EXTENSION_FILTER->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
 
         // endregion
 
@@ -219,7 +219,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 insertIndex,
                 """
                     iget-object v$freeRegister, v$charSequenceInstanceRegister, $charSequenceFieldReference
-                    invoke-static { v$conversionContextRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$conversionContextRegister, v$freeRegister }, $EXTENSION_CLASS->onRollingNumberLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$freeRegister
                     iput-object v$freeRegister, v$charSequenceInstanceRegister, $charSequenceFieldReference
                 """
@@ -239,7 +239,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 addInstructions(
                     endIndex + 1,
                     """
-                        invoke-static { p1, v$measuredTextWidthRegister }, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberMeasured(Ljava/lang/String;F)F
+                        invoke-static { p1, v$measuredTextWidthRegister }, $EXTENSION_CLASS->onRollingNumberMeasured(Ljava/lang/String;F)F
                         move-result v$measuredTextWidthRegister
                     """
                 )
@@ -257,7 +257,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                     measureTextIndex + 1,
                     """
                         move-result v$freeRegister
-                        invoke-static { p1, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberMeasured(Ljava/lang/String;F)F
+                        invoke-static { p1, v$freeRegister }, $EXTENSION_CLASS->onRollingNumberMeasured(Ljava/lang/String;F)F
                     """
                 )
             }
@@ -283,7 +283,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 addInstructions(
                     setTextIndex,
                     """
-                        invoke-static { v$textViewRegister, v$textSpanRegister }, $EXTENSION_CLASS_DESCRIPTOR->updateRollingNumber(Landroid/widget/TextView;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        invoke-static { v$textViewRegister, v$textSpanRegister }, $EXTENSION_CLASS->updateRollingNumber(Landroid/widget/TextView;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                         move-result-object v$textSpanRegister
                     """
                 )
