@@ -9,8 +9,6 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_43_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -25,7 +23,7 @@ import app.morphe.util.traverseClassHierarchy
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
-internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/swipecontrols/SwipeControlsHostActivity;"
+internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/swipecontrols/SwipeControlsHostActivity;"
 
 private val swipeControlsResourcePatch = resourcePatch {
     dependsOn(
@@ -37,7 +35,7 @@ private val swipeControlsResourcePatch = resourcePatch {
         // If fullscreen swipe is enabled in newer versions the app can crash.
         // It likely is caused by conflicting experimental flags that are never enabled together.
         // Flag was completely removed in 20.34+
-        if (is_19_43_or_greater && !is_20_22_or_greater) {
+        if (!is_20_34_or_greater) {
             PreferenceScreen.SWIPE_CONTROLS.addPreferences(
                 SwitchPreference("morphe_swipe_change_video")
             )
@@ -122,11 +120,11 @@ val swipeControlsPatch = bytecodePatch(
 
         // region patch to enable/disable swipe to change video.
 
-        if (is_19_43_or_greater && !is_20_34_or_greater) {
+        if (!is_20_34_or_greater) {
             SwipeChangeVideoFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.last().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->allowSwipeChangeVideo(Z)Z"
+                    "$EXTENSION_CLASS->allowSwipeChangeVideo(Z)Z"
                 )
             }
         }

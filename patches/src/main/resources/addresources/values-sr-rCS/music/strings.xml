@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">Promeni boju mini-plejera</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Boja mini-plejera odgovara plejeru preko celog ekrana</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Mini-plejer koristi podrazumevanu boju</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Prikaži dugme sledeće u mini playeru</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Dugme sledeće je prikazano u mini playeru</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Dugme sledeće nije prikazano u mini playeru</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Prikaži prethodnu dugmad u mini playeru</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Prethodno dugme je prikazano u mini playeru</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Prethodno dugme nije prikazano u mini playeru</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Omogući prisilni miniplejer</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplejer ostaje umanjen kada se promeni reprodukcija</string>

@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.misc.navigation
@@ -38,10 +40,8 @@ internal object AppCompatToolbarBackButtonFingerprint : Fingerprint(
     parameters = listOf()
 )
 
-/**
- * Matches to the class found in [PivotBarConstructorFingerprint].
- */
 internal object InitializeButtonsFingerprint : Fingerprint(
+    classFingerprint = PivotBarConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
@@ -54,11 +54,11 @@ internal object InitializeButtonsFingerprint : Fingerprint(
  * Specifically, [navigationBarPatch].
  */
 internal object NavigationBarHookCallbackFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name ="navigationTabCreatedCallback",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",
-    parameters = listOf(EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR, "Landroid/view/View;")
+    parameters = listOf(EXTENSION_NAVIGATION_BUTTON_CLASS, "Landroid/view/View;")
 )
 
 /**
@@ -156,7 +156,7 @@ internal object InitializeBottomBarContainerFingerprint : Fingerprint(
         resourceLiteral(ResourceType.ID, "bottom_bar_container"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View\$OnLayoutChangeListener;)V"
+            smali = $$"Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View$OnLayoutChangeListener;)V"
         )
     )
 )

@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
  
 package app.morphe.extension.youtube.patches;
@@ -46,9 +48,11 @@ public class LayoutReloadObserverPatch {
             return;
         }
 
-        if (PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MINIMIZED &&
-                isActionBarVisible.compareAndSet(false, true)) {
-            Utils.runOnMainThreadDelayed(() -> isActionBarVisible.compareAndSet(true, false), 500);
+        PlayerType playerType = PlayerType.getCurrent();
+        if (playerType == PlayerType.WATCH_WHILE_MINIMIZED || playerType == PlayerType.WATCH_WHILE_PICTURE_IN_PICTURE) {
+            if (isActionBarVisible.compareAndSet(false, true)) {
+                Utils.runOnMainThreadDelayed(() -> isActionBarVisible.compareAndSet(true, false), 250);
+            }
         }
     }
 

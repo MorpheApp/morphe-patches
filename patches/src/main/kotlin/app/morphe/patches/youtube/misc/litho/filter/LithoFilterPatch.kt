@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 @file:Suppress("SpellCheckingInspection")
@@ -23,17 +25,17 @@ import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.fix.backtoexitgesture.fixBackToExitGesturePatch
+import app.morphe.patches.youtube.misc.fix.verticalscroll.fixVerticalScrollPatch
 import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_25_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_15_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
-import app.morphe.util.returnLate
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -42,9 +44,9 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import java.lang.ref.WeakReference
 
-internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
+internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
 
-internal const val EXTENSION_FILER_ARRAY_DESCRIPTOR = "[Lapp/morphe/extension/youtube/patches/components/Filter;"
+internal const val EXTENSION_FILTER = "[Lapp/morphe/extension/youtube/patches/components/Filter;"
 
 // Registers used in extension helperMethod.
 private const val REGISTER_FILTER_CLASS = 0
@@ -73,6 +75,8 @@ val lithoFilterPatch = bytecodePatch(
         sharedExtensionPatch,
         conversionContextPatch,
         versionCheckPatch,
+        fixBackToExitGesturePatch,
+        fixVerticalScrollPatch,
     )
 
     /**
@@ -120,7 +124,7 @@ val lithoFilterPatch = bytecodePatch(
                 // This fixes an issue with extension compiled with Android Gradle Plugin 8.3.0+.
                 val helperClass = definingClass
                 val helperName = "patch_getFilterArray"
-                val helperReturnType = EXTENSION_FILER_ARRAY_DESCRIPTOR
+                val helperReturnType = EXTENSION_FILTER
                 val helperMethod = ImmutableMethod(
                     helperClass,
                     helperName,
@@ -141,7 +145,7 @@ val lithoFilterPatch = bytecodePatch(
                 addInstructions(
                     insertIndex,
                     """
-                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->$helperName()$EXTENSION_FILER_ARRAY_DESCRIPTOR
+                        invoke-static {}, $EXTENSION_CLASS->$helperName()$EXTENSION_FILTER
                         move-result-object v$insertRegister
                     """
                 )
@@ -154,7 +158,7 @@ val lithoFilterPatch = bytecodePatch(
             // Non-native buffer.
             ProtobufBufferReferenceFingerprint.method.addInstruction(
                 0,
-                "invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->setProtoBuffer(Ljava/nio/ByteBuffer;)V",
+                "invoke-static { p2 }, $EXTENSION_CLASS->setProtoBuffer(Ljava/nio/ByteBuffer;)V",
             )
         }
 
@@ -167,9 +171,7 @@ val lithoFilterPatch = bytecodePatch(
         // if the component is filtered then return an empty component.
 
         // Find class and methods to create an empty component.
-        val builderMethodDescriptor = EmptyComponentFingerprint.match(
-            EmptyComponentParentFingerprint.originalClassDef
-        ).method
+        val builderMethodDescriptor = EmptyComponentFingerprint.method
 
         val emptyComponentField = classDefBy(builderMethodDescriptor.returnType).fields.single()
 
@@ -263,7 +265,7 @@ val lithoFilterPatch = bytecodePatch(
 
                         :hook
                         move-object/from16 v$contextRegister, p2
-                        invoke-static { v$contextRegister, v$bufferRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, $EXTENSION_CLASS_DESCRIPTOR->isFiltered(${EXTENSION_CONTEXT_INTERFACE}[BLjava/lang/String;Ljava/lang/String;)Z
+                        invoke-static { v$contextRegister, v$bufferRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, $EXTENSION_CLASS->isFiltered(${EXTENSION_CONTEXT_INTERFACE}[BLjava/lang/String;Ljava/lang/String;)Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :unfiltered
                         
@@ -313,9 +315,9 @@ val lithoFilterPatch = bytecodePatch(
         LithoThreadExecutorFingerprint.method.addInstructions(
             0,
             """
-                invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->getExecutorCorePoolSize(I)I
+                invoke-static { p1 }, $EXTENSION_CLASS->getExecutorCorePoolSize(I)I
                 move-result p1
-                invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->getExecutorMaxThreads(I)I
+                invoke-static { p2 }, $EXTENSION_CLASS->getExecutorMaxThreads(I)I
                 move-result p2
             """
         )
@@ -325,23 +327,16 @@ val lithoFilterPatch = bytecodePatch(
 
         // region A/B test of new Litho native code.
 
-        // Turn off native code that handles litho component names. If this feature is on then nearly
-        // all litho components have a null name and identifier/path filtering is completely broken.
-        //
-        // Flag was removed in 20.05. It appears a new flag might be used instead (45660109L),
-        // but if the flag is forced on then litho filtering still works correctly.
-        if (is_19_25_or_greater && !is_20_05_or_greater) {
-            LithoComponentNameUpbFeatureFlagFingerprint.method.returnLate(false)
-        }
-
         // Turn off a feature flag that enables native code of protobuf parsing (Upb protobuf).
-        LithoConverterBufferUpbFeatureFlagFingerprint.let {
-            // 20.22 the flag is still enabled in one location, but what it does is not known.
-            // Disable it anyway.
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                false
-            )
+        if (!is_21_15_or_greater) {
+            LithoConverterBufferUpbFeatureFlagFingerprint.let {
+                // 20.22 the flag is still enabled in one location, but what it does is not known.
+                // Disable it anyway. Flag was removed in 21.15+
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    false
+                )
+            }
         }
 
         // endregion
@@ -358,7 +353,7 @@ val lithoFilterPatch = bytecodePatch(
                 0,
                 """
                     const/16 v$REGISTER_FILTER_COUNT, $addLithoFilterCount
-                    new-array v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT, $EXTENSION_FILER_ARRAY_DESCRIPTOR
+                    new-array v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT, $EXTENSION_FILTER
                 """
             )
         }

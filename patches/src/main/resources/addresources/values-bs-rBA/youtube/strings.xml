@@ -18,6 +18,13 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_screen_00_about_title">O Morphe</string>
+  <string name="morphe_settings_screen_01_ads_title">Reklame</string>
+  <string name="morphe_settings_screen_02_alt_thumbnails_title">Alternativne naslovne slike</string>
+  <string name="morphe_settings_screen_03_feed_title">Feed</string>
+  <string name="morphe_settings_screen_04_general_title">Opširno</string>
+  <string name="morphe_settings_screen_05_player_title">Plejer</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -54,7 +61,13 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsResourcePatch -->
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
+  <!-- interaction.loop.loopVideoPatch -->
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <!-- interaction.playall.playAllButtonPatch -->
+  <!-- interaction.reload.reloadVideoPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
@@ -142,7 +155,7 @@ Second \"item\" text"</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- layout.music.overrideYouTubeMusicActionsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
@@ -157,8 +170,7 @@ Second \"item\" text"</string>
   <!-- 'You' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
+  <!-- misc.playercontrols.playerControlsPatch -->
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
@@ -171,6 +183,9 @@ Second \"item\" text"</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <!-- video.speed.remember.rememberPlaybackSpeedPatch -->
   <!-- video.codecs.disableVideoCodecsPatch -->
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <!-- video.quality.prioritizeVideoQualityPatch -->

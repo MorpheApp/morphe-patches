@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.layout.buttons.navigation
@@ -50,12 +52,21 @@ internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
     )
 )
 
-internal object CollapsingToolbarLayoutFeatureFlag : Fingerprint(
+internal object CollapsingToolbarLayoutFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
     filters = listOf(
         literal(45736608L)
+    )
+)
+
+internal object AutoHideNavigationBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/support/v7/widget/RecyclerView;", "I", "I"),
+    filters = listOf(
+        literal(45677535L)
     )
 )
 
@@ -132,7 +143,7 @@ internal object WideSearchbarLayoutFingerprint : Fingerprint(
     )
 )
 
-internal object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
+private object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/CharSequence;",
     parameters = listOf(),
@@ -141,10 +152,8 @@ internal object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches to class found in [OldSearchButtonAccessibilityLabelFingerprint].
- */
 internal object OldSearchButtonVisibilityFingerprint : Fingerprint(
+    classFingerprint = OldSearchButtonAccessibilityLabelFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
@@ -162,15 +171,21 @@ internal object SearchResultButtonVisibilityFingerprint : Fingerprint(
         literal(45423782L), // lens search button feature flags.
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/view/View;->setOnClickListener(Landroid/view/View\$OnClickListener;)V"
+            smali = $$"Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V"
         ),
     )
 )
 
-/**
- * Matches to class found in [SearchFragmentFingerprint].
- */
+private object SearchFragmentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    filters = listOf(
+        string("search-lens-button")
+    )
+)
+
 internal object SearchButtonsVisibilityFingerprint : Fingerprint(
+    classFingerprint = SearchFragmentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Ljava/lang/String;"),
@@ -185,18 +200,10 @@ internal object SearchButtonsVisibilityFingerprint : Fingerprint(
     )
 )
 
-internal object SearchFragmentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Landroid/view/View;",
-    filters = listOf(
-        string("search-lens-button")
-    )
-)
-
 internal object PivotBarRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     parameters = listOf("L"),
-    returnType = "Lj\$/util/Optional;",
+    returnType = "Lj$/util/Optional;",
     filters = listOf(
         literal(117501096L),
         opcode(Opcode.IF_NE),

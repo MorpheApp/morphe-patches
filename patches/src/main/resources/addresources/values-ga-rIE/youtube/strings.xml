@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">Fotha</string>
   <string name="morphe_settings_screen_04_general_title">Ginearálta</string>
   <string name="morphe_settings_screen_05_player_title">Seinnteoir</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">Barra Cuardaigh</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">Rialuithe Svaidhpeála</string>
   <string name="morphe_settings_screen_11_misc_title">Ilghnéitheach</string>
@@ -69,37 +70,38 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_artist_cards_title">Folaigh cártaí ealaíontóra</string>
   <string name="morphe_hide_artist_cards_summary_on">Tá cártaí ealaíontóirí i bhfolach</string>
   <string name="morphe_hide_artist_cards_summary_off">Taispeántar cártaí ealaíonta</string>
-  <string name="morphe_hide_chips_shelf_title">Folaigh seilf sceallóga</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Tá seilf scagairí i bhfolach</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Taispeántar seilf scagairí</string>
   <string name="morphe_hide_community_posts_title">Folaigh poist phobail</string>
   <string name="morphe_hide_community_posts_summary_on">Tá poist phobail i bhfolach</string>
   <string name="morphe_hide_community_posts_summary_off">Taispeántar poist phobail</string>
   <string name="morphe_hide_compact_banner_title">Folaigh meirgí dlúth</string>
   <string name="morphe_hide_compact_banner_summary_on">Tá meirgí dlúth i bhfolach</string>
   <string name="morphe_hide_compact_banner_summary_off">Taispeántar meirgí dlúth</string>
-  <string name="morphe_hide_expandable_card_title">Folaigh cárta inleathnaithe</string>
-  <string name="morphe_hide_expandable_card_summary_on">Tá cárta insínte faoi fhíseáin i bhfolach</string>
-  <string name="morphe_hide_expandable_card_summary_off">Taispeántar cárta inleathnaithe faoi fhíseáin</string>
+  <string name="morphe_hide_expandable_card_title">Folaigh cártaí inleathnaithe</string>
+  <string name="morphe_hide_expandable_card_entry_1">Taispeántar cártaí inleathnaithe faoi bhfíseáin</string>
+  <string name="morphe_hide_expandable_card_entry_2">Tá cárta insínte faoi fhíseáin i bhfolach</string>
+  <string name="morphe_hide_expandable_card_entry_3">Tá cárta insínte faoi fhíseáin i bhfolach</string>
+  <string name="morphe_hide_expandable_card_entry_4">Tá cárta insínte faoi fhíseáin i bhfolach</string>
+  <string name="morphe_hide_expandable_card_entry_5">Tá cártaí insínte faoi fhíseáin i bhfolach</string>
   <string name="morphe_hide_floating_microphone_button_title">Folaigh an cnaipe micreafón ar snámh</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Cnaipe micreafóin ar snámh sa chuardach i bhfolach</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Taispeántar cnaipe micreafóin ar snámh sa chuardach</string>
   <string name="morphe_hide_horizontal_shelves_title">Folaigh seilfeanna cothrománacha</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Tá seilfeanna cothrománacha i bhfolach, amhail:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Fíontaí sléata horizontal, amhail:
 
-• Nuacht is déanaí
-• Lean ar aghaidh ag féachaint
-• Déan iniúchadh ar níos mó cainéal
-• Is ábhartha
-• Siopadóireacht
-• Féach arís air"</string>
+• Nuacht bheaga
+• Ríomh ardochlúchán cosúil leat
+• Fan ag breathnú
+• Iniúchadh ar níos mó de chainteoirí
+• Iniúchadh ar níos mó áití
+• DHE ro ghá
+• Físeáin nua
+• Is iomadach
+• Foilseacháin ón Rialtas
+• Ceannaigh"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Taispeántar seilfeanna cothrománacha</string>
   <string name="morphe_hide_image_shelf_title">Folaigh seilf íomhá</string>
   <string name="morphe_hide_image_shelf_summary_on">Tá seilf íomhá i dtorthaí cuardaigh i bhfolach</string>
   <string name="morphe_hide_image_shelf_summary_off">Taispeántar seilf íomhánna i dtorthaí cuardaigh</string>
-  <string name="morphe_hide_latest_posts_title">Folaigh na poist is déanaí</string>
-  <string name="morphe_hide_latest_posts_summary_on">Tá na poist is déanaí i bhfolach</string>
-  <string name="morphe_hide_latest_posts_summary_off">Taispeántar na poist is déanaí</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Folaigh an cnaipe \'Físeáin is déanaí\'</string>
@@ -119,6 +121,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_playables_title">Folaigh na heilimintí inseinnte</string>
   <string name="morphe_hide_playables_summary_on">Tá na heilimintí inseinnte i bhfolach</string>
   <string name="morphe_hide_playables_summary_off">Taispeántar na heilimintí inseinnte</string>
+  <string name="morphe_hide_search_term_thumbnails_title">Íoc go bhféadfá urlisí téarmaí ​​suite</string>
+  <string name="morphe_hide_search_term_thumbnails_summary_on">Tá fabhtanna ceardaigh ar fáil agus iad i bhfolach</string>
+  <string name="morphe_hide_search_term_thumbnails_summary_off">Tá fabhtanna ceardaigh ar taispeán</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Folaigh an cnaipe \'Taispeáin níos mó\'</string>
@@ -144,9 +149,12 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_you_may_like_section_summary_on">B’fhéidir gur mhaith leat go bhfuil an chuid i bhfolach</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Thaispeántar B’fhéidir go mbeadh suim agat sa rannóg</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">Folaigh YouTube Doodles</string>
-  <string name="morphe_hide_doodles_summary_on">Tá beochan YouTube Doodles ar an lógó i bhfolach</string>
-  <string name="morphe_hide_doodles_summary_off">Taispeántar beochan YouTube Doodles ar an lógó</string>
+  <string name="morphe_hide_youtube_doodles_title">Folaigh YouTube Doodles</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">Tá beochan YouTube Doodles ar an lógó i bhfolach</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">Taispeántar beochan YouTube Doodles ar an lógó</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"Tá Doodles YouTube le feiceáil cúpla lá gach bliain i bpáirteanna éagsúla den domhan.
+
+Is féidir go mbunchosc na ceannlínte custaim náisiúnta a fháil nuair a taispeánann Doodles YouTube."</string>
   <string name="morphe_hide_channel_bar_title">Folaigh barra cainéal</string>
   <string name="morphe_hide_channel_bar_summary_on">Tá an barra cainéal i bhfolach</string>
   <string name="morphe_hide_channel_bar_summary_off">Taispeántar barra an chainéil</string>
@@ -292,6 +300,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_members_shelf_title">Folaigh seilf na mball</string>
   <string name="morphe_hide_members_shelf_summary_on">Tá seilf na mball i bhfolach</string>
   <string name="morphe_hide_members_shelf_summary_off">Taispeántar seilf na gcomhaltaí</string>
+  <string name="morphe_hide_posts_shelf_title">Folaigh seilf posts</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Tá seilf posts i bhfolach</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Taispeántar seilf posts</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Folaigh an cnaipe \'Store\'</string>
   <string name="morphe_hide_store_button_summary_on">Tá an cnaipe \'Store\' i bhfolach</string>
@@ -302,6 +313,15 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Taispeántar cnaipe Liostáil</string>
   <string name="morphe_comments_screen_title">Tráchtanna</string>
   <string name="morphe_comments_screen_summary">Folaigh nó taispeáin comhpháirteanna na rannóige tráchtanna</string>
+  <string name="morphe_hide_comments_carousel_title">Cumhuighneáil scáthán tráchtaí</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Tá scagaire cluaisín na dtuismitheoirí cumasaithe</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Tá scagaire na gcomhairliúchán díchumasaithe</string>
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Nóta:
+• Déan cinntea go dtagann an t-ainm cruinneáil ar an mír carousel (e.g. Faigh, Hype an bhideó, Éist ar YouTube Music, etc.).
+• D'fhéadfá drochthionas a bhaint le míreanna carousel a shíneadh.
+• Má bhítear ag síneadh ar gach mír carousel, déanfar an rannán comhráiteoir ar fad a shíneadh freisin."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Scáthán léaráidí na dtuairim</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Ioscur na hainmneacha rollaí na mblianaí chun scagadh a dháanamh orthu, ceann amháin in aghaidh na líne</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Folaigh achoimre comhrá IS</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Tá achoimre comhrá IS i bhfolach</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Taispeántar achoimre ar chomhrá IS</string>
@@ -329,6 +349,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Folaigh cnaipí Emoji agus Stampa Ama</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Tá cnaipí Emoji agus Stampa Ama i bhfolach</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Taispeántar cnaipí Emoji agus Stampa Ama</string>
+  <string name="morphe_hide_comments_info_button_title">Folaigh an cnaipe Eolas</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Tá an cnaipe Eolas i bhfolach</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Taispeántar cnaipe Eolas</string>
   <string name="morphe_hide_comments_preview_comment_title">Folaigh trácht réamhamharc</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Tá an trácht réamhamhairc i bhfolach</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Taispeántar réamhamharc tráchta</string>
@@ -438,9 +461,9 @@ Teorainneacha:
   <string name="morphe_copy_video_url_title">Taispeáin an cnaipe cóipeála URL an fhíseáin</string>
   <string name="morphe_copy_video_url_summary_on">Taispeántar an cnaipe Cóipeáil URL an fhíseáin. Tapáil chun URL an fhíseáin a chóipeáil. Tapáil agus coinnigh síos chun cóipeáil leis an stampa ama.</string>
   <string name="morphe_copy_video_url_summary_off">Ní thaispeántar an cnaipe Cóipeáil URL an fhíseáin</string>
-  <string name="morphe_copy_video_url_timestamp_title">Taispeáin cnaipe cóipeála URL stampa ama</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Taispeántar an cnaipe Cóipeáil URL stampa ama. Tapáil chun URL an fhíseáin a chóipeáil leis an stampa ama. Tapáil agus coinnigh síos chun cóipeáil gan stampa ama.</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Ní thaispeántar an cnaipe Cóipeáil URL stampa ama</string>
+  <string name="morphe_copy_video_url_timestamp_title">Cóip amMarc</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Copann url fideo ag úsáid ammarc. Brú fada chun copann gan ammarc</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Copann url fideo gan ammarc. Brú fada chun copann ag úsáid ammarc</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Bain an dialóg rogha lucht féachana</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Bainfear an dialóg</string>
@@ -474,10 +497,49 @@ Teorainneacha:
 
 Fíoraigh go bhfuil ainm an phacáiste ceart agus go bhfuil an aip suiteáilte"</string>
   <string name="morphe_external_downloader_empty_warning">Ní féidir ainm an phacáiste a fhágáil folamh</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">Cumasaigh físeán lúbtha</string>
+  <string name="morphe_loop_video_summary_on">Lúbfar an físeán</string>
+  <string name="morphe_loop_video_summary_off">Ní lúbfar an físeán</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Taispeáin an cnaipe físeáin lúbtha</string>
+  <string name="morphe_loop_video_button_summary_on">Taispeántar roghchlár físe lúb</string>
+  <string name="morphe_loop_video_button_summary_off">Ní thaispeántar roghchlár físe lúb</string>
+  <string name="morphe_loop_video_button_toast_on">Tá físeán lúbtha ar siúl</string>
+  <string name="morphe_loop_video_button_toast_off">Tá físeán lúbtha as siúl</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Taispeáin cnaipe play go léir</string>
+  <string name="morphe_play_all_button_summary_on">"Taispeántar cnaipe play go léir\nBhrúin chun barr a chur ar liosta filíochta as gaeilge ar fad ón gcumar\nBhrúin agus coinneáil chun a undo\n\nFógra: Seans nach féidir é a oibriú ar shruthanna beo"</string>
+  <string name="morphe_play_all_button_summary_off">Ní thaispeántar cnaipe play go léir</string>
+  <string name="morphe_play_all_button_type_title">Modh a chruthú liosta filíochta</string>
+  <string name="morphe_play_all_button_type_entry_0">Áil coincheanta (Súin de réir ama, suas)</string>
+  <string name="morphe_play_all_button_type_entry_1">Áil coincheanta (Súin de réir ama)</string>
+  <string name="morphe_play_all_button_type_entry_2">Áil coincheanta (Súin de réir clúibhithe)</string>
+  <string name="morphe_play_all_button_type_entry_3">Físeáin ach (Súin de réir ama)</string>
+  <string name="morphe_play_all_button_type_entry_4">Físeáin ach (Súin de réir clúibhithe)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts ach (Súin de réir ama)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts ach (Súin de réir clúibhithe)</string>
+  <string name="morphe_play_all_button_type_entry_7">Físeáin sreabhtha ach (Súin de réir ama)</string>
+  <string name="morphe_play_all_button_type_entry_8">Físeáin sreabhtha ach (Súin de réir clúibhithe)</string>
+  <string name="morphe_play_all_button_type_entry_9">Áil comhaltaí ach</string>
+  <string name="morphe_play_all_button_type_entry_10">Físeáin comhaltaí ach</string>
+  <string name="morphe_play_all_button_type_entry_11">Shorts comhaltaí ach</string>
+  <string name="morphe_play_all_button_type_entry_12">Sreabhán físeáin comhaltaí ach</string>
+  <string name="morphe_play_all_button_not_available_toast">Ní féidir suíomhliosta a ghnadadh de réir phort go neamhal id</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">Taispeáin an cnaipín athlúnaigh físe</string>
+  <string name="morphe_reload_video_summary_on">Taispeántar an cnaipín athlúnaigh físe</string>
+  <string name="morphe_reload_video_summary_off">Ní thaispeántar an cnaipín athlúnaigh físe</string>
+  <string name="morphe_dismiss_player_not_available_toast">Tá roghchlár ID físe nach bhfuil ar fáil. Léime an físe arís go láimhe, le do thoil.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Díchumasaigh gotha ​​cuardaigh beacht</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Tá gotha ​​cuardaigh chruinn díchumasaithe</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Tá gotha ​​cuardaigh chruinn cumasaithe</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Guranna livestream DVR</string>
+  <string name="morphe_livestream_dvr_summary_on">Ceadaí é an t-soilgiú ar gach livestream</string>
+  <string name="morphe_livestream_dvr_summary_off">Seans nach mbeidh an t-soilgiú ar fáil ar ghánaí beatha</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Cumasaigh sleamhnán a lorg</string>
   <string name="morphe_slide_to_seek_summary_on">Tá sleamhnán le lorg cumasaithe</string>
@@ -661,13 +723,14 @@ Sábhálfar fianáin go huathoibríoch má tá siad bailí"</string>
   <string name="morphe_show_search_button_title">Taispeáin cufsach</string>
   <string name="morphe_show_search_button_summary_on">Taispeántar an cnaipe cuardaigh</string>
   <string name="morphe_show_search_button_summary_off">Ní thaispeántar an cnaipe cuardaigh</string>
-  <string name="morphe_search_button_index_title">Innéacs na gcnaipí cuardaigh</string>
-  <string name="morphe_search_button_index_invalid">Ní mór innéacs na gcnaipe cuardaigh a bheith níos lú ná %s</string>
+  <string name="morphe_show_search_button_index_title">Innéacs na gcnaipí cuardaigh</string>
   <string name="morphe_show_settings_button_title">Taispeáin Socruithe</string>
   <string name="morphe_show_settings_button_summary_on">Tá an cnaipe Socruithe á taispeánadh</string>
   <string name="morphe_show_settings_button_summary_off">Ní féidir Socruithe a chhairgris</string>
-  <string name="morphe_settings_button_index_title">Innéacs na gcnaipí cuardaigh</string>
-  <string name="morphe_settings_button_index_invalid">Ní mór innéacs na gcnaipe cuardaigh a bheith níos lú ná %s</string>
+  <string name="morphe_show_settings_button_index_title">Íonad cnaipéad Settings</string>
+  <string name="morphe_show_settings_button_type_title">Gníomh cnaipéad Settings</string>
+  <string name="morphe_show_settings_button_type_summary_on">Bainisteoir le oscailt Socruithe Morphe</string>
+  <string name="morphe_show_settings_button_type_summary_off">Tap to open YouTube settings</string>
   <string name="morphe_swap_create_with_notifications_button_title">Athraigh Cruthaigh le Fógraí</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">Tá an cnaipe Cruthaigh malartaithe leis an gcnaipe Fógraí</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">Níl an cnaipe Cruthaigh malartaithe leis an gcnaipe Fógraí</string>
@@ -678,16 +741,18 @@ Sábhálfar fianáin go huathoibríoch má tá siad bailí"</string>
   <string name="morphe_hide_navigation_bar_title">Folaigh an barra nascleanúna</string>
   <string name="morphe_hide_navigation_bar_summary_on">Tá barra nascleanúna i bhfolach</string>
   <string name="morphe_hide_navigation_bar_summary_off">Taispeántar barra nascleanúna</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"Is trascna na barraí gléite, lena n-áiríte an tóraoi 'You'.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Aimsíonn sé seo an barr navigáide go comhoifreagrach, lena n-áirítear an 'tab' 'You'.
 
- chun Faistealaí a rochadh:
-Fhail isteach ar fíolán arbhachaidh → Fhail isteach ar margaíocht → Tába 'Settings > Rogadhí Féinchearaidh Gréasáin' i gcotharsa ag an chothrom le deithreach."</string>
+Chun tacaíocht a fháil do Shocruithe, cuimhnigh ar an gcnaipe Socruithe via Coimeád → Barrach → Seiceáil Socruithe."</string>
   <string name="morphe_narrow_navigation_buttons_title">Cumasaigh cnaipí nascleanúna caola</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Tá an spásáil idir na cnaipí nascleanúna cúng</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Is gnách go mbíonn spásáil idir cnaipí nascleanúna</string>
   <string name="morphe_navigation_bar_animations_title">Cumasaigh beochana barra nascleanúna</string>
   <string name="morphe_navigation_bar_animations_summary_on">Tá aistrithe nascleanúna beoite</string>
   <string name="morphe_navigation_bar_animations_summary_off">Ní bhíonn aistrithe nascleanúna beoite</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Deimhineas bainistiú uathoibríoch barr navigáide</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Ní bheidh an barr náisiúnta ag báistí agus tú ag scrolláil</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Feidhmíonn barr na gcinnte go dícheal go dtí go scáileadh</string>
   <string name="morphe_disable_translucent_status_bar_title">Díchumasaigh barra stádais tréshoilseach</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Tá an barra stádais teimhneach</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Tá an barra stádais teimhneach nó tréshoilseach</string>
@@ -714,25 +779,28 @@ Fhail isteach ar fíolán arbhachaidh → Fhail isteach ar margaíocht → Tába
   <string name="morphe_hide_toolbar_search_button_title">Folaigh Comhroinn</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Tá cnaipe cuardaigh i bhfolach</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Taispeántar an cnaipe cuardaigh</string>
-  <string name="morphe_replace_toolbar_create_button_title">Nuair a theastaíonn ceannú, asgoigh an eitilt</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">Tá an cnaipe Cruthaigh malartaithe leis an gcnaipe Fógraí</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">Níl an cnaipe Cruthaigh malartaithe leis an gcnaipe Fógraí</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">Is tairiscneadh athriall ar chomháineamh an cnaipéad Socruití sa tab You freisin.</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">Morphe</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Tap to open Morphe settings
+  <string name="morphe_show_toolbar_settings_button_title">Show Settings</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Taispeántar an cnaipe socruithe</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Ní thaispeántar an cnaipe socruithe</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Innéacs na gcnaipí socruithe</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Cnaipéad socruithe</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Tap to open Morphe settings
 Tap and hold to open YouTube settings"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Tap to open YouTube settings
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Tap to open YouTube settings
 Tap and hold to open Morphe settings"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">An práinneáil na cnaipeí suidéartha</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">Tá na cnaipeí suidéartha déanta</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">Níl na cnaipeí suidéartha déanta</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Roghchlár Flyout</string>
-  <string name="morphe_hide_player_flyout_summary">Folaigh nó taispeáin míreanna roghchlár flyout an imreora</string>
+  <string name="morphe_hide_player_flyout_summary">Folaigh nó taispeáin comhpháirteanna roghchlár flyout an imreora</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Folaigh Fotheidil</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Tá roghchlár fotheidil i bhfolach</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Taispeántar roghchlár fotheidil</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Folaigh Fothesil na Fotheidil</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Tá buntásc an roghchláir folaithe</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Taispeántar buntásc an roghchláir</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Folaigh Fotheidil na Fotheidil</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Tá féadán na mbonne a bhfolach</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Taispeántar féadán na mbonne</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Folaigh socruithe breise / Tuilleadh</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Tá an roghchlár socruithe breise / Tuilleadh i bhfolach</string>
@@ -778,17 +846,23 @@ Tap and hold to open Morphe settings"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Tá roghchlár na rianta fuaime i bhfolach
 
 Chun an roghchlár rianta fuaime a thaispeáint, athraigh 'Sruthanna físe bréige' go 'Android Reel' nó 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Folaigh rian fuaime</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Tá roghchlár na rianta fuaime i bhfolach</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Taispeántar roghchlár rianta fuaime</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Folaigh Faire i VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Tá an roghchlár Féach i VR i bhfolach</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Taispeántar an roghchlár Féach i VR</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Folaigh an roghchlár Cáilíochta</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Tá an roghchlár cáilíochta i bhfolach</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Taispeántar roghchlár cáilíochta</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Folaigh buntásc an roghchláir Cáilíochta</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Tá buntásc an roghchláir cáilíochta i bhfolach</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Taispeántar buntásc an roghchláir cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_title">Folaigh roghchlár Cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Tá an roghchlár cáilíochta i bhfolach</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Taispeántar roghchlár cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Folaigh buntásc an roghchláir Cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Tá buntásc an roghchláir cáilíochta i bhfolach</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Taispeántar buntásc an roghchláir cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Folaigh an roghchlár Cáilíochta</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Tá buntásc an roghchláir cáilíochta i bhfolach</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Taispeántar buntásc an roghchláir cáilíochta</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Folaigh réamhamharc uath-sheinm</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Tá réamhamharc uath-sheinm i bhfolach</string>
@@ -982,10 +1056,10 @@ Chun an roghchlár rianta fuaime a thaispeáint, athraigh 'Sruthanna físe bréi
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Tá an barra nascleanúna i bhfolach</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Taispeántar barra nascleanúna</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">Folaigh físeán molta scáileáin deiridh</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">Taispeánadh físeán molta ar an scáileán deiridh</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">Taispeántar físeán molta ar an scáileán deiridh</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"Tá an t-athsheinnm seo ag obair nuair a bhíonn 'Uathsheinnm an chéad fhíseán eile' múchta.
+  <string name="morphe_hide_end_screen_suggested_video_title">Folaigh físeán molta scáileáin deiridh</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">Taispeánadh físeán molta ar an scáileán deiridh</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">Taispeántar físeán molta ar an scáileán deiridh</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"Tá an t-athsheinnm seo ag obair nuair a bhíonn 'Uathsheinnm an chéad fhíseán eile' múchta.
 
 Is féidir an t-athsheinnm seo a athrú i socruithe YouTube:
 Socruithe → Athsheinnm → Uathsheinnm an chéad fhíseán eile"</string>
@@ -1344,6 +1418,7 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_change_start_page_entry_playlists">Liostaí seinnte</string>
   <string name="morphe_change_start_page_entry_search">Cuardaigh</string>
   <string name="morphe_change_start_page_entry_shopping">Siopadóireacht</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">Spóirt</string>
   <string name="morphe_change_start_page_entry_subscriptions">Síntiúis</string>
   <string name="morphe_change_start_page_entry_trending">Ag treocht</string>
@@ -1355,10 +1430,10 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
 
 Teorainn: Seans nach n-oibreoidh úsáid a bhaint as an gcnaipe cúil ar an mbarra uirlisí"</string>
   <string name="morphe_change_start_page_always_summary_off">Ní athraítear an leathanach tosaigh ach amháin nuair a thosaítear an aip</string>
-  <!-- layout.startupshortsreset.disableResumingShortsOnStartupPatch -->
-  <string name="morphe_disable_resuming_shorts_player_title">Díchumasaigh atosú seinnteoir Shorts</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_on">Ní atosóidh seinnteoir Shorts nuair a thosófar an aip</string>
-  <string name="morphe_disable_resuming_shorts_player_summary_off">Atosóidh seinnteoir Shorts nuair a thosóidh an aip arís</string>
+  <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
+  <string name="morphe_disable_shorts_resuming_on_startup_title">Deisigh Shorts ag tosú arís ag tús</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_on">Ní hatosóidh Shorts nuair a thosófar an aip</string>
+  <string name="morphe_disable_shorts_resuming_on_startup_summary_off">Atosóidh Shorts nuair a thosóidh an aip arís</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <string name="morphe_shorts_player_type_title">Oscail Shorts le</string>
   <string name="morphe_shorts_player_type_shorts">Shorts seinnteoir</string>
@@ -1386,12 +1461,6 @@ Teorainn: Seans nach n-oibreoidh úsáid a bhaint as an gcnaipe cúil ar an mbar
   <string name="morphe_miniplayer_disable_rounded_corners_title">Díchumasaigh coirnéil chothromú</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">Tá na coirnéil cearnach</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">Tá na coirnéil cruinn</string>
-  <string name="morphe_miniplayer_double_tap_action_title">Cumasaigh tapáil faoi dhó agus pinch chun athrú méide a dhéanamh</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"Gníomh tap dúbailte agus pinch le méid a athrú cumasaithe
-
-• Tap dúbailte chun méid an mhion-imreora a mhéadú
-• Tap dúbailte arís chun an méid bunaidh a athchóiriú"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">Díchumasaíodh gníomh tapáil faoi dhó agus pinch chun méid a athrú</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">Díchumasaigh tarraing agus scaoil</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">Tá tarraing agus scaoil díchumasaithe</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"Tá tarraing agus scaoil cumasaithe
@@ -1405,11 +1474,6 @@ Is féidir an mini-imreoir a tharraingt amach as an scáileán ar chlé nó ar d
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Folaigh cnaipí forleagan</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">Tá cnaipí forleagan i bhfolach</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">Taispeántar cnaipí forleagan</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">Folaigh cnaipí méadaithe agus dúnta</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"Tá na cnaipí i bhfolach
-
-Svaip chun leathnú nó dúnadh"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">Taispeántar cnaipí leathnaithe agus dúnta</string>
   <string name="morphe_miniplayer_hide_subtext_title">Folaigh fo-théacsanna</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Tá fo-théacsanna i bhfolach</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Taispeántar fo-théacsanna</string>
@@ -1487,16 +1551,10 @@ Brúigh anseo chun tuilleadh eolais a fháil faoi DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_error">Níl DeArrow ar fáil go sealadach (cód stádais: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">Níl DeArrow ar fáil go sealadach</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">Cumasaigh físeán lúbtha</string>
-  <string name="morphe_loop_video_summary_on">Lúbfar an físeán</string>
-  <string name="morphe_loop_video_summary_off">Ní lúbfar an físeán</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Taispeáin an cnaipe físeáin lúbtha</string>
-  <string name="morphe_loop_video_button_summary_on">Taispeántar roghchlár físe lúb</string>
-  <string name="morphe_loop_video_button_summary_off">Ní thaispeántar roghchlár físe lúb</string>
-  <string name="morphe_loop_video_button_toast_on">Tá físeán lúbtha ar siúl</string>
-  <string name="morphe_loop_video_button_toast_off">Tá físeán lúbtha as siúl</string>
+  <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">Athshaoir stíle cnaipí an t-seicheamhóir seans</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">Taispeántar stíl tanaí an imreoir</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">Taispeántar stíl trom an imreoir</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Toisí gléas a fhalsú</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"Toisí na ngléasanna falsaithe
@@ -1603,6 +1661,14 @@ Teorainneacha:
 • Úsáidfidh athsheinm físeáin níos mó sonraí idirlín ná VP9 nó AV1
 • Ní úsáidfidh físeáin HDR AVC
 • Ní féidir le roinnt gléasanna AVC a bhrú"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Chun an gné seo a úsáid, athraigh \'Sruthanna físe bréige\' go Android VR nó Android Studio</string>
+  <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
+  <string name="morphe_expand_livestream_dvr_duration_title">Scail séadacha DPV tirsdheanta</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_on">Tá DPV tirsdheanta le faighteamh go dtí 7 lá</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_off">Tá DPV tirsdheanta teoranta go dtí an treochaomhacht ar an gcuideachta freiceadóra</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">Féadfaidh an socruithe seo a bheith ina gcúis le rud ar bith neamhdlistear i gcás nach bhfuil \'Sruthanna fíodáin faisceacha\' áibithe.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Taispeáin roghchlár ardcháilíochta físeáin</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Taispeántar roghchlár ardchaighdeáin físe</string>

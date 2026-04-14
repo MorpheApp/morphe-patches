@@ -1,15 +1,19 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 package app.morphe.extension.reddit.patches;
 
-import android.content.res.Resources;
+import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.shared.ResourceUtils;
 
 @SuppressWarnings("unused")
 public final class HideNavigationButtonsPatch {
@@ -21,8 +25,18 @@ public final class HideNavigationButtonsPatch {
         String patch_getLabel();
     }
 
-    private static final List<String> labels = new ArrayList<>(10);
-    private static Resources mResources;
+    private static final Map<String, NavigationButtonLegacy> labelToButtonLegacy = new HashMap<>();
+    private static final Map<String, NavigationButton> labelToButton = new HashMap<>();
+
+    static {
+        for (NavigationButtonLegacy button : NavigationButtonLegacy.values()) {
+            labelToButtonLegacy.put(button.label, button);
+        }
+
+        for (NavigationButton button : NavigationButton.values()) {
+            labelToButton.put(button.name(), button);
+        }
+    }
 
     /**
      * @return If this patch was included during patching.
@@ -34,50 +48,68 @@ public final class HideNavigationButtonsPatch {
     /**
      * Injection point.
      */
-    public static void setResources(Resources resources) {
-        labels.clear();
-        mResources = resources;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void mapResourceId(int id) {
-        String resourceName = mResources.getResourceEntryName(id);
-        for (NavigationButton button : NavigationButton.values()) {
-            if (button.label.equals(resourceName) && button.shouldHide) {
-                labels.add(mResources.getString(id));
-            }
+    public static void hideNavigationButtonsLegacy(List<Object> list, Object object) {
+        if (list == null) {
+            return;
         }
-    }
 
-    /**
-     * Injection point.
-     */
-    public static void hideNavigationButtons(List<Object> list, Object object) {
-        if (list != null) {
-            if (object instanceof NavigationButtonInterface button) {
-                String label = button.patch_getLabel();
-                if (label != null && labels.contains(label)) {
+        if (object instanceof NavigationButtonInterface button) {
+            String label = button.patch_getLabel();
+            if (label != null) {
+                NavigationButtonLegacy buttonEnum = labelToButtonLegacy.get(label);
+                if (buttonEnum != null && buttonEnum.shouldHide) {
                     return;
                 }
             }
-            list.add(object);
         }
+
+        list.add(object);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideNavigationTab(@Nullable Enum<?> tab) {
+        if (tab == null) {
+            return false;
+        }
+
+        NavigationButton button = labelToButton.get(tab.name());
+        return button != null && button.shouldHide;
     }
 
     private enum NavigationButton {
+        Answers(Settings.HIDE_ANSWERS_BUTTON.get()),
+        Chat(Settings.HIDE_CHAT_BUTTON.get()),
+        Communities(Settings.HIDE_DISCOVER_BUTTON.get()),
+        Games(Settings.HIDE_GAMES_BUTTON.get()),
+        Home(false),
+        Inbox(false),
+        MyCommunities(Settings.HIDE_DISCOVER_BUTTON.get()),
+        Post(Settings.HIDE_CREATE_BUTTON.get()),
+        Profile(false),
+        UnifiedInbox(false);
+
+        final boolean shouldHide;
+
+        NavigationButton(boolean shouldHide) {
+            this.shouldHide = shouldHide;
+        }
+    }
+
+    private enum NavigationButtonLegacy {
         ANSWERS(Settings.HIDE_ANSWERS_BUTTON.get(), "answers_label"),
         CHAT(Settings.HIDE_CHAT_BUTTON.get(), "label_chat"),
         CREATE(Settings.HIDE_CREATE_BUTTON.get(), "action_create"),
         DISCOVER(Settings.HIDE_DISCOVER_BUTTON.get(), "communities_label"),
         GAMES(Settings.HIDE_GAMES_BUTTON.get(), "label_games");
-        private final boolean shouldHide;
-        private final String label;
 
-        NavigationButton(final boolean shouldHide, final String label) {
+        final boolean shouldHide;
+        final String label;
+
+        NavigationButtonLegacy(boolean shouldHide, String resourceName) {
             this.shouldHide = shouldHide;
-            this.label = label;
+            this.label = ResourceUtils.getString(resourceName);
         }
     }
 }

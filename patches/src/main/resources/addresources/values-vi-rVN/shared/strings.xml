@@ -60,6 +60,12 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_language_DEFAULT">Ngôn ngữ ứng dụng</string>
   <string name="morphe_pref_import_export_title">Nhập hoặc Xuất</string>
   <string name="morphe_pref_import_export_summary">Nhập hoặc xuất các cài đặt Morphe</string>
+  <string name="morphe_settings_import_file">Nhập từ tệp</string>
+  <string name="morphe_settings_import_file_success">Đã nhập cài đặt thành công, hãy bấm Lưu để áp dụng</string>
+  <string name="morphe_settings_import_file_failed">Không thể nhập cài đặt</string>
+  <string name="morphe_settings_export_file">Xuất ra tệp</string>
+  <string name="morphe_settings_export_file_success">Đã xuất cài đặt thành công</string>
+  <string name="morphe_settings_export_file_failed">Không thể xuất cài đặt</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Bạn đang dùng bản vá Morphe phiên bản &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Bạn đang dùng bản vá Morphe phiên bản &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Đã có bản cập nhật mới: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Để cập nhật các bản vá của bạn, hãy dùng Morphe để vá lại ứng dụng này</string>
@@ -69,39 +75,53 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_settings_about_links_website">Trang web</string>
   <string name="morphe_settings_about_links_donate">Ủng hộ</string>
   <string name="morphe_settings_about_links_translations">Dịch thuật</string>
+  <string name="morphe_settings_about_links_credits">Tín dụng</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Đã cập nhật</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Đã có bản cập nhật</string>
+  <string name="morphe_settings_about_contributors_current">Hiện tại</string>
+  <string name="morphe_settings_about_contributors_prior">Trước đây</string>
+  <string name="morphe_settings_about_links_morphe">Đang phát triển</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Thông tin giấy phép</string>
+  <string name="morphe_settings_about_licenses_loading">Đang tải...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Gỡ lỗi</string>
   <string name="morphe_debug_screen_summary">Bật hoặc tắt tùy chọn gỡ lỗi</string>
   <string name="morphe_debug_title">Nhật ký gỡ lỗi</string>
   <string name="morphe_debug_summary_on">Nhật ký gỡ lỗi đã bật</string>
   <string name="morphe_debug_summary_off">Nhật ký gỡ lỗi đã tắt</string>
-  <string name="morphe_debug_stacktrace_title">Ghi nhật ký truy vết ngăn xếp</string>
-  <string name="morphe_debug_stacktrace_summary_on">Nhật ký gỡ lỗi bao gồm truy vết ngăn xếp</string>
-  <string name="morphe_debug_stacktrace_summary_off">Nhật ký gỡ lỗi không bao gồm truy vết ngăn xếp</string>
+  <string name="morphe_debug_stacktrace_title">Ghi nhật ký gỡ lỗi (Stack Trace)</string>
+  <string name="morphe_debug_stacktrace_summary_on">Nhật ký gỡ lỗi có chứa stack trace</string>
+  <string name="morphe_debug_stacktrace_summary_off">Nhật ký gỡ lỗi không chứa stack trace</string>
   <string name="morphe_debug_toast_on_error_title">Hiện thông báo ngắn về lỗi Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Thông báo ngắn sẽ hiện nếu xảy ra lỗi</string>
   <string name="morphe_debug_toast_on_error_summary_off">Thông báo ngắn không hiện nếu xảy ra lỗi</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Tắt thông báo lỗi sẽ ẩn mọi thông báo lỗi từ Morphe.
 
 Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Xuất nhật ký gỡ lỗi</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Sao chép nhật ký gỡ lỗi Morphe vào bảng nhớ tạm</string>
+  <string name="morphe_debug_export_logs_title">Nhật ký gỡ lỗi</string>
+  <string name="morphe_debug_export_logs_summary">Xuất nhật ký gỡ lỗi của Morphe</string>
+  <string name="morphe_debug_export_logs_file">Xuất sang tệp</string>
+  <string name="morphe_debug_export_logs_success">Xuất bản nhật ký gỡ lỗi thành công</string>
+  <string name="morphe_debug_export_logs_failed">Không thể xuất nhật ký gỡ lỗi</string>
+  <string name="morphe_debug_logs_search_hint">Tìm kiếm nhật ký gỡ lỗi...</string>
+  <string name="morphe_debug_export_logs_clear">Dọn dẹp</string>
   <string name="morphe_debug_logs_disabled">Tính năng ghi nhật ký gỡ lỗi đã tắt</string>
-  <string name="morphe_debug_logs_none_found">Không tìm thấy nhật ký</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Đã sao chép nhật ký</string>
-  <string name="morphe_debug_logs_failed_to_export">Xuất nhật ký thất bại: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Xóa nhật ký gỡ lỗi</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Xóa tất cả nhật ký gỡ lỗi Morphe đã lưu trữ</string>
-  <string name="morphe_debug_logs_clear_toast">Đã xóa nhật ký</string>
+  <string name="morphe_debug_logs_none_found">Không tìm thấy nhật ký gỡ lỗi</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Đã sao chép nhật ký gỡ lỗi</string>
+  <string name="morphe_debug_logs_failed_to_export">Không thể xuất nhật ký gỡ lỗi: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Đã xóa nhật ký gỡ lỗi</string>
   <string name="morphe_debug_feature_flags_manager_title">Trình quản lý cờ tính năng</string>
   <string name="morphe_debug_feature_flags_manager_summary">Quản lý các cờ tính năng boolean</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Cờ đang hoạt động (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Cờ bị chặn (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Tìm kiếm cờ...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Đã lưu cờ</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Đã đặt lại cờ</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Đã sao chép cờ vào bảng nhớ tạm</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Khởi động lại ứng dụng để dùng tính năng này</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Cờ tính năng đang hoạt động (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Cờ tính năng bị chặn (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Tìm kiếm cờ tính năng...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Đã lưu cờ tính năng</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Đã đặt lại cờ tính năng</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Đã sao chép cờ tính năng vào bảng nhớ tạm</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Khởi động lại ứng dụng để sử dụng cài đặt này</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Mở cài đặt microG</string>
@@ -113,4 +133,22 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nBấm tiếp tục để tắt tối ưu hóa."</string>
   <string name="gms_core_dialog_continue_text">Tiếp tục</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Hộp thoại tối ưu hoá pin</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Hộp thoại tối ưu hoá pin MicroG đã được hiển thị</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Hộp thoại tối ưu hoá pin MicroG không được hiển thị</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tắt tùy chọn này sẽ ẩn thông báo tối ưu hoá pin cho MicroG.
+
+Nếu bạn vẫn chưa tắt tối ưu hóa pin, một số lỗi có thể xẩy ra như:
+• Ứng dụng tự tắt bất chợt
+• Không nhận được thông báo
+• Không phát được trong nền"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Cảnh báo thử nghiệm 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Bạn đang dùng phiên bản thử nghiệm là &lt;b&gt;%1$s&lt;/b&gt; ⚠️
+&lt;br/&gt;&lt;br/&gt;
+🔧 Ứng dụng có thể hoạt động không ổn định hoặc gặp lỗi không xác định, vì các bản vá chưa được tinh chỉnh cho phiên bản này.
+&lt;br/&gt;&lt;br/&gt;
+Nếu bạn muốn có trải nghiệm ổn định và ít lỗi, thì hãy &lt;b&gt;gỡ cài đặt&lt;/b&gt; phiên bản này và  vá phiên bản đề xuất là &lt;b&gt;%2$s&lt;/b&gt; ✅"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Tôi muốn thử</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Thôi ổn định vậy</string>
 </resources>

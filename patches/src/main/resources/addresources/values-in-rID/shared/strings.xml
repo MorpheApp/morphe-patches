@@ -30,7 +30,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import">Impor</string>
   <string name="morphe_settings_import_copy">Salin</string>
   <string name="morphe_settings_import_reset">Pengaturan Morphe diatur ke bawaan</string>
-  <string name="morphe_settings_import_success">%d Setelan terimpor</string>
+  <string name="morphe_settings_import_success">%d Pengaturan diimpor</string>
   <string name="morphe_settings_import_failure_parse">Impor gagal: %s</string>
   <string name="morphe_settings_search_hint">Pengaturan pencarian</string>
   <string name="morphe_settings_search_no_results_title">Tidak ada hasil yang ditemukan untuk \'%s\'</string>
@@ -59,7 +59,13 @@ Second \"item\" text"</string>
 Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kunjungi morphe.software/translate"</string>
   <string name="morphe_language_DEFAULT">Bahasa aplikasi</string>
   <string name="morphe_pref_import_export_title">Impor / Ekspor</string>
-  <string name="morphe_pref_import_export_summary">Impor / Ekspor setelan Morphe</string>
+  <string name="morphe_pref_import_export_summary">Impor / Ekspor pengaturan Morphe</string>
+  <string name="morphe_settings_import_file">Impor dari berkas</string>
+  <string name="morphe_settings_import_file_success">Pengaturan berhasil diimpor, ketuk Simpan untuk menerapkan</string>
+  <string name="morphe_settings_import_file_failed">Gagal mengimpor pengaturan</string>
+  <string name="morphe_settings_export_file">Ekspor ke berkas</string>
+  <string name="morphe_settings_export_file_success">Pengaturan berhasil diekspor</string>
+  <string name="morphe_settings_export_file_failed">Gagal mengekspor pengaturan</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Anda menggunakan Tambalan Morphe terbaru versi &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Anda menggunakan Tambalan Morphe versi &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Pembaruan tersedia: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Untuk memperbarui tambalan Anda, gunakan Morphe untuk menambal ulang aplikasi ini</string>
@@ -69,13 +75,24 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_settings_about_links_website">Situs Web</string>
   <string name="morphe_settings_about_links_donate">Donasi</string>
   <string name="morphe_settings_about_links_translations">Terjemahan</string>
+  <string name="morphe_settings_about_links_credits">Kredit</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Terbaru</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Pembaruan tersedia</string>
+  <string name="morphe_settings_about_contributors_current">Pengembangan saat ini</string>
+  <string name="morphe_settings_about_contributors_prior">Pengembangan sebelumnya</string>
+  <string name="morphe_settings_about_links_morphe">Pengembangan aktif</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Pemberitahuan lisensi</string>
+  <string name="morphe_settings_about_licenses_loading">Memuat...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
   <string name="morphe_debug_screen_summary">Aktifkan atau nonaktifkan pilihan debugging</string>
   <string name="morphe_debug_title">Pencatatan debug</string>
   <string name="morphe_debug_summary_on">Pencatatan debug diaktifkan</string>
   <string name="morphe_debug_summary_off">Pencatatan debug dinonaktifkan</string>
-  <string name="morphe_debug_stacktrace_title">Jejak catatan stack</string>
+  <string name="morphe_debug_stacktrace_title">Jejak stack catatan debug</string>
   <string name="morphe_debug_stacktrace_summary_on">Pencatatan debug menyertakan jejak stack</string>
   <string name="morphe_debug_stacktrace_summary_off">Pencatatan debug tidak menyertakan jejak stack</string>
   <string name="morphe_debug_toast_on_error_title">Tampilkan pesan timbul pada kesalahan Morphe</string>
@@ -84,24 +101,27 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Mematikan pesan timbul kesalahan menyembunyikan semua pemberitahuan kesalahan Morphe.
 
 Anda tidak akan diberi tahu tentang kejadian yang tidak terduga."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Ekspor catatan debug</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Salin catatan debug Morphe ke papan klip</string>
+  <string name="morphe_debug_export_logs_title">Ekspor pencatatan debug</string>
+  <string name="morphe_debug_export_logs_summary">Ekspor pencatatan debug Morphe</string>
+  <string name="morphe_debug_export_logs_file">Ekspor ke berkas</string>
+  <string name="morphe_debug_export_logs_success">Pencatatan debug berhasil diekspor</string>
+  <string name="morphe_debug_export_logs_failed">Gagal mengekspor pencatatan debug</string>
+  <string name="morphe_debug_logs_search_hint">Cari pencatatan debug...</string>
+  <string name="morphe_debug_export_logs_clear">Bersihkan</string>
   <string name="morphe_debug_logs_disabled">Pencatatan debug dinonaktifkan</string>
-  <string name="morphe_debug_logs_none_found">Tidak ditemukan catatan</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Catatan disalin</string>
-  <string name="morphe_debug_logs_failed_to_export">Gagal mengekspor catatan: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Bersihkan catatan debug</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Menghapus semua catatan debug Morphe yang tersimpan</string>
-  <string name="morphe_debug_logs_clear_toast">Catatan dibersihkan</string>
+  <string name="morphe_debug_logs_none_found">Tidak ditemukan pencatatan debug</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Pencatatan debug disalin</string>
+  <string name="morphe_debug_logs_failed_to_export">Gagal mengekspor pencatatan debug: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Pencatatan debug telah dibersihkan</string>
   <string name="morphe_debug_feature_flags_manager_title">Fitur pengelolaan tanda</string>
   <string name="morphe_debug_feature_flags_manager_summary">Kelola tanda fitur boolean</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Tanda aktif (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Tanda diblokir (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Cari tanda...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Tanda disimpan</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Tanda diatur ulang</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Tanda disalin ke papan klip</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Mulai ulang aplikasi untuk menggunakan fitur ini</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Tanda fitur aktif (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Tanda fitur yang diblokir (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Cari tanda fitur...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Tanda fitur disimpan</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Tanda fitur diatur ulang</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Tanda fitur disalin ke papan klip</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Mulai ulang aplikasi untuk menggunakan pengaturan ini</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Buka pengaturan MicroG</string>
@@ -121,4 +141,22 @@ Menonaktifkan pengoptimalan MicroG tidak akan berdampak buruk pada penggunaan ba
 
 Ketuk tombol lanjutkan dan izinkan perubahan pengoptimalan."</string>
   <string name="gms_core_dialog_continue_text">Lanjutkan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog optimasi baterai</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialog optimasi baterai MicroG ditampilkan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialog optimasi baterai MicroG tidak ditampilkan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Menonaktifkan ini akan menyembunyikan perintah optimasi baterai MicroG.
+
+Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
+• Aplikasi mungkin secara acak tertutup
+• Pemberitahuan mungkin tidak berfungsi
+• Pemutaran latar belakang mungkin tidak berfungsi"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Peringatan Uji Coba 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Anda menggunakan versi aplikasi uji coba ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Harap bersiap dengan perilaku aplikasi yang tidak biasa atau bug yang belum teridentifikasi saat kami menyempurnakan tambalan untuk versi aplikasi ini.
+&lt;br/&gt;&lt;br/&gt;
+Jika Anda ingin pengalaman yang paling bebas masalah, maka &lt;b&gt;hapus pemasangan&lt;/b&gt; ini dan tambal versi aplikasi yang direkomendasikan ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Saya ingin versi uji coba</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Saya ingin versi stabil</string>
 </resources>

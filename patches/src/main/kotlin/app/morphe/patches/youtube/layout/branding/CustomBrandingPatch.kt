@@ -17,7 +17,7 @@ val customBrandingPatch = baseCustomBrandingPatch(
     numberOfPresetAppNames = 5,
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
     mainActivityName = YOUTUBE_MAIN_ACTIVITY_NAME,
-    activityAliasNameWithIntents = "com.google.android.youtube.app.honeycomb.Shell\$HomeActivity",
+    activityAliasNameWithIntents = $$"com.google.android.youtube.app.honeycomb.Shell$HomeActivity",
     preferenceScreen = PreferenceScreen.GENERAL,
 
     block = {

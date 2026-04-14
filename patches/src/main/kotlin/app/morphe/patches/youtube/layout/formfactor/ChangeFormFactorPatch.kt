@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.layout.formfactor
@@ -26,7 +28,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ChangeFormFactorPatch;"
 
 @Suppress("unused")
@@ -70,7 +72,7 @@ val changeFormFactorPatch = bytecodePatch(
                 addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getUniversalFormFactor(I)I
+                        invoke-static { v$register }, $EXTENSION_CLASS->getUniversalFormFactor(I)I
                         move-result v$register
                     """
                 )
@@ -85,7 +87,7 @@ val changeFormFactorPatch = bytecodePatch(
         ).forEach { endpoint ->
             addClientFormFactorHook(
                 endpoint,
-                "$EXTENSION_CLASS_DESCRIPTOR->replaceBrokenFormFactor(I)I",
+                "$EXTENSION_CLASS->replaceBrokenFormFactor(I)I",
             )
         }
     }

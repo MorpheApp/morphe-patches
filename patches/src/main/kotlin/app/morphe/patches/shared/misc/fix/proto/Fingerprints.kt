@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
 package app.morphe.patches.shared.misc.fix.proto
@@ -35,7 +37,7 @@ internal object ProtobufClassParseByteArrayFingerprint : Fingerprint(
 )
 
 internal object StreamingDataOuterClassFingerprint : Fingerprint(
-    definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;",
+    definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),

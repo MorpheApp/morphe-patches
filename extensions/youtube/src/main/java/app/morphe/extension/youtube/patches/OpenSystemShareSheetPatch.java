@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
 package app.morphe.extension.youtube.patches;
@@ -12,7 +14,7 @@ import android.view.ViewGroup;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.components.OpenSystemShareSheetFilter;
+import app.morphe.extension.youtube.patches.components.SystemShareSheetFilter;
 import app.morphe.extension.youtube.settings.Settings;
 
 /**
@@ -33,7 +35,7 @@ public final class OpenSystemShareSheetPatch {
         recyclerView.getViewTreeObserver().addOnPreDrawListener(new android.view.ViewTreeObserver.OnPreDrawListener() {
             @Override
             public boolean onPreDraw() {
-                if (!OpenSystemShareSheetFilter.isShareSheetVisible) {
+                if (!SystemShareSheetFilter.isShareSheetVisible) {
 
                     recyclerView.getViewTreeObserver().removeOnPreDrawListener(this);
                     return true;
@@ -50,7 +52,7 @@ public final class OpenSystemShareSheetPatch {
                             View shareWithOtherAppsView = parentView.getChildAt(0);
 
                             if (shareWithOtherAppsView != null) {
-                                OpenSystemShareSheetFilter.isShareSheetVisible = false;
+                                SystemShareSheetFilter.isShareSheetVisible = false;
 
                                 View rootView = recyclerView.getRootView();
                                 Objects.requireNonNullElse(rootView, recyclerView).setVisibility(View.GONE);

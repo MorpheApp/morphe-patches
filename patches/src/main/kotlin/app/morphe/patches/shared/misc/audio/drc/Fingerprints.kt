@@ -10,9 +10,19 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
- * Matches class found in [FormatStreamModelConstructorFingerprint].
+ * com.google.android.libraries.youtube.innertube.model.media.FormatStreamModel
+ * Class names have been obfuscated in the latest YouTube or YouTube Music.
  */
+object FormatStreamModelConstructorFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    returnType = "V",
+    filters = listOf(
+        literal(45374643L)
+    )
+)
+
 internal object CompressionRatioFingerprint : Fingerprint(
+    classFingerprint = FormatStreamModelConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Lj$/util/Optional;",
     parameters = listOf(),
@@ -32,18 +42,6 @@ internal object CompressionRatioFingerprint : Fingerprint(
             opcode = Opcode.INVOKE_STATIC,
             smali = "Ljava/lang/Math;->min(FF)F"
         )
-    )
-)
-
-/**
- * com.google.android.libraries.youtube.innertube.model.media.FormatStreamModel
- * Class names have been obfuscated in the latest YouTube or YouTube Music.
- */
-internal object FormatStreamModelConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    filters = listOf(
-        literal(45374643L)
     )
 )
 

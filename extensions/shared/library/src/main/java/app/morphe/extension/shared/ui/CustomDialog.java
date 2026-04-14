@@ -14,11 +14,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.ScrollView;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -241,17 +237,17 @@ public class CustomDialog {
 
         // Create buttons in order: Neutral, Cancel, OK.
         if (neutralButtonText != null && onNeutralClick != null) {
-            Button neutralButton = createButton(neutralButtonText, onNeutralClick, false, dismissDialogOnNeutralClick);
+            Button neutralButton = createButton(context, dialog, neutralButtonText, onNeutralClick, false, dismissDialogOnNeutralClick);
             buttons.add(neutralButton);
             buttonWidths.add(measureButtonWidth(neutralButton));
         }
         if (onCancelClick != null) {
-            Button cancelButton = createButton(context.getString(android.R.string.cancel), onCancelClick, false, true);
+            Button cancelButton = createButton(context, dialog, context.getString(android.R.string.cancel), onCancelClick, false, true);
             buttons.add(cancelButton);
             buttonWidths.add(measureButtonWidth(cancelButton));
         }
         if (onOkClick != null) {
-            Button okButton = createButton(
+            Button okButton = createButton(context, dialog,
                     okButtonText != null ? okButtonText : context.getString(android.R.string.ok),
                     onOkClick, true, true);
             buttons.add(okButton);
@@ -264,15 +260,20 @@ public class CustomDialog {
     }
 
     /**
-     * Creates a styled button with customizable text, click behavior, and appearance.
+     * Creates a styled button for use inside a {@link CustomDialog} layout.
+     * Can be called externally to create additional buttons that match the dialog's visual style.
      *
-     * @param text         The button text to display.
-     * @param onClick      The action to perform on button click.
-     * @param isOkButton   If this is the OK button, which uses distinct styling.
-     * @param dismissDialog If the dialog should dismiss when the button is clicked.
+     * @param context       Context used to create the button.
+     * @param dialog        The dialog to dismiss on click, or null if no dismissal is needed.
+     * @param text          The button text to display.
+     * @param onClick       The action to perform on button click, or null for no action.
+     * @param isOkButton    If true, uses the OK button style (accent background); otherwise uses the secondary style.
+     * @param dismissDialog If true, dismisses the dialog when the button is clicked.
      * @return The created Button.
      */
-    private Button createButton(CharSequence text, Runnable onClick, boolean isOkButton, boolean dismissDialog) {
+    public static Button createButton(Context context, @Nullable Dialog dialog,
+                                      CharSequence text, @Nullable Runnable onClick,
+                                      boolean isOkButton, boolean dismissDialog) {
         Button button = new Button(context, null, 0);
         button.setText(text);
         button.setTextSize(14);
@@ -281,10 +282,12 @@ public class CustomDialog {
         button.setEllipsize(TextUtils.TruncateAt.END);
         button.setGravity(Gravity.CENTER);
         // Set internal padding.
-        button.setPadding(Dim.dp16, 0, Dim.dp16, 0);
+        button.setPadding(Dim.dp8, 0, Dim.dp8, 0);
+        // Clear theme-imposed minimum width so text is never clipped with ellipsis.
+        button.setMinWidth(0);
+        button.setMinimumWidth(0);
 
-        // Background color for OK button (inversion).
-        // Background color for Cancel or Neutral buttons.
+        // Background color for OK button (inversion) and Cancel/Neutral buttons.
         ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
                 Dim.roundedCorners(20), null, null));
         background.getPaint().setColor(isOkButton
@@ -298,17 +301,27 @@ public class CustomDialog {
 
         button.setOnClickListener(v -> {
             if (onClick != null) onClick.run();
-            if (dismissDialog) dialog.dismiss();
+            if (dismissDialog && dialog != null) dialog.dismiss();
         });
 
         return button;
     }
 
     /**
-     * Measures the width of a button.
+     * Returns the usable pixel width available for buttons inside the dialog.
+     * Dialog window = 90% of screen width; mainLayout horizontal padding = dp24 * 2.
+     */
+    private int buttonAreaWidth() {
+        return (int) (Dim.SCREEN_WIDTH * 0.9f) - Dim.dp24 * 2;
+    }
+
+    /**
+     * Measures the intrinsic width of a button, capped at the available button area.
      */
     private int measureButtonWidth(Button button) {
-        button.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        int widthSpec = View.MeasureSpec.makeMeasureSpec(buttonAreaWidth(), View.MeasureSpec.AT_MOST);
+        int heightSpec = View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED);
+        button.measure(widthSpec, heightSpec);
         return button.getMeasuredWidth();
     }
 
@@ -335,7 +348,7 @@ public class CustomDialog {
         // Single button: stretch to full width.
         if (buttons.size() == 1) {
             layoutSingleButton(buttonContainer, buttons.get(0));
-        } else if (totalWidth <= Dim.pctWidth(80)) {
+        } else if (totalWidth <= buttonAreaWidth()) {
             // Single row: Neutral, Cancel, OK.
             layoutButtonsInRow(buttonContainer, buttons, buttonWidths);
         } else {

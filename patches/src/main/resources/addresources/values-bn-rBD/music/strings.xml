@@ -69,6 +69,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_title">মিনিপ্লেয়ারের রঙ পরিবর্তন করুন</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">মিনিপ্লেয়ারের রঙ ফুলস্ক্রিন প্লেয়ারের সাথে মেলে</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">মিনিপ্লেয়ার ডিফল্ট রঙ ব্যবহার করে</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">নিচের বোতামটি মিনিপ্লেয়ারে দেখান</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">মিনিপ্লেয়ারে পরবর্তী বোতামটি দেখানো হচ্ছে</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">মিনিপ্লেয়ারে পরবর্তী বোতামটি দেখানো হচ্ছে না</string>
+  <string name="morphe_music_miniplayer_previous_button_title">মিউজিক মিনিপ্লেয়ারে আগের বোতাম</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">মিনিপ্লেয়ারে আগের বোতাম দেখানো হচ্ছে</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">মিনিপ্লেয়ারে আগের বোতাম দেখানো হচ্ছে না</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title"> compelled মিনিপ্লেয়ার সক্রিয় করুন</string>
   <string name="morphe_music_enable_forced_miniplayer_summary_on">প্লেব্যাক পরিবর্তনের সময় মিনিপ্লেয়ার ছোট অবস্থায় থাকে</string>

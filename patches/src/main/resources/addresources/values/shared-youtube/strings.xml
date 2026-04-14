@@ -15,29 +15,24 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+    <!-- misc.initialization.initializationPatch -->
+    <string name="morphe_restart_first_run">Restart to finish setting up</string>
+
     <!-- layout.branding.baseCustomBrandingPatch -->
     <string name="morphe_custom_branding_name_title">App name</string>
 
-    <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+    <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
     <string name="morphe_custom_branding_name_entry_5">Custom</string>
     <string name="morphe_custom_branding_icon_title">App icon</string>
     <string name="morphe_custom_branding_icon_entry_1">Original</string>
     <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
     <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
     <string name="morphe_custom_branding_icon_entry_4">Morphe light</string>
+    <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
     <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-    <string name="morphe_custom_branding_icon_entry_5">Custom</string>
-
-    <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-    <!-- misc.checks.experimentalAppNoticePatch -->
-    <string name="morphe_experimental_app_version_dialog_title">🚨 Experimental Alert 🚨</string>
-    <string name="morphe_experimental_app_version_dialog_message">"You are using an experimental app version of ⚠️ &lt;b>%1$s&lt;/b>
-&lt;br/>&lt;br/>
-🔧 Expect quirky app behavior or unidentified bugs as we fine tune the patches for this app version.
-&lt;br/>&lt;br/>
-If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
-    <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
-    <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
+    <string name="morphe_custom_branding_icon_entry_6">Custom</string>
+    <string name="morphe_custom_branding_notification_icon_title">Notification icon</string>
+    <string name="morphe_custom_branding_notification_icon_entry_1">Follow app icon</string>
 
     <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
     <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>
@@ -105,9 +100,8 @@ To sign in, press continue below"</string>
 • Playback fails if the Player JavaScript hash is revoked in GVS"</string>
     <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Player JavaScript update is enabled</string>
     <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Player JavaScript hashes are valid for approximately one month, and outdated hashes may be revoked by GVS.</string>
-    <string name="morphe_spoof_video_streams_player_js_hash_title">Player JavaScript hash</string>
-    <string name="morphe_spoof_video_streams_player_js_hash_summary">Enter a valid player JavaScript hash</string>
-
+    <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player JavaScript hash</string>
+    <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Enter a valid player JavaScript hash</string>
 
     <!-- misc.quic.disableQUICProtocolPatch -->
     <string name="morphe_disable_quic_protocol_title">Disable QUIC protocol</string>

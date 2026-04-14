@@ -4,7 +4,7 @@ import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object MorpheUtilsPatchesVersionFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name = "getPatchesReleaseVersion",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Ljava/lang/String;",

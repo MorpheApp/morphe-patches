@@ -1,13 +1,25 @@
 package app.morphe.patches.youtube.layout.hide.infocards
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.InstructionLocation.MatchAfterAnywhere
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.util.customLiteral
+import app.morphe.patches.shared.misc.mapping.ResourceType
+import app.morphe.patches.shared.misc.mapping.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object InfocardsIncognitoFingerprint : Fingerprint(
+private object InfoCardsIncognitoParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    filters = listOf(
+        string("player_overlay_info_card_teaser")
+    )
+)
+
+internal object InfoCardsIncognitoFingerprint : Fingerprint(
+    classFingerprint = InfoCardsIncognitoParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/Boolean;",
     parameters = listOf("L", "J"),
@@ -16,20 +28,12 @@ internal object InfocardsIncognitoFingerprint : Fingerprint(
     )
 )
 
-internal object InfocardsIncognitoParentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
+internal object InfoCardsMethodCallFingerprint : Fingerprint(
     filters = listOf(
-        string("player_overlay_info_card_teaser")
-    )
-)
-
-internal object InfocardsMethodCallFingerprint : Fingerprint(
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.IGET_OBJECT,
-        Opcode.INVOKE_INTERFACE,
+        opcode(Opcode.INVOKE_VIRTUAL),
+        opcode(Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_INTERFACE, location = MatchAfterImmediately()),
+        resourceLiteral(ResourceType.ID, "info_cards_drawer_header")
     ),
-    strings = listOf ("Missing ControlsOverlayPresenter for InfoCards to work."),
-    custom = customLiteral { drawerResourceId } // TODO: Convert this to an instruction filter
+    strings = listOf("Missing ControlsOverlayPresenter for InfoCards to work.")
 )

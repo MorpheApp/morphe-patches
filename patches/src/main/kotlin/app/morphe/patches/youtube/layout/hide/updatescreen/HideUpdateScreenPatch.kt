@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.layout.hide.updatescreen
@@ -25,10 +27,9 @@ val hideUpdateScreenPatch = bytecodePatch(
         // Only disable update screen for 20.21 and lower. This can be later adjusted if desired.
         if (!is_20_22_or_greater) {
             Fingerprint(
+                classFingerprint = AppBlockingCheckResultToStringFingerprint,
                 accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
                 parameters = listOf("Landroid/content/Intent;", "Z")
-            ).match(
-                AppBlockingCheckResultToStringFingerprint.originalClassDef
             ).method.addInstructions(
                 1,
                 "const/4 p1, 0x0"

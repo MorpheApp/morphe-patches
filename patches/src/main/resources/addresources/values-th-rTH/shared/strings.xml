@@ -60,6 +60,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">ภาษาของแอป</string>
   <string name="morphe_pref_import_export_title">นำเข้า / ส่งออก</string>
   <string name="morphe_pref_import_export_summary">นำเข้า / ส่งออกการตั้งค่า Morphe</string>
+  <string name="morphe_settings_import_file">นำเข้าจากไฟล์</string>
+  <string name="morphe_settings_import_file_success">การตั้งค่าถูกนำเข้าเรียบร้อยแล้ว แตะที่บันทึกเพื่อใช้</string>
+  <string name="morphe_settings_import_file_failed">ไม่สามารถนำเข้าการตั้งค่า</string>
+  <string name="morphe_settings_export_file">ส่งออกไปยังไฟล์</string>
+  <string name="morphe_settings_export_file_success">การส่งออกการตั้งค่าสำเร็จ</string>
+  <string name="morphe_settings_export_file_failed">การส่งออกการตั้งค่าล้มเหลว</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">คุณกำลังใช้ Morphe Patches เวอร์ชัน &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;อัพเดตใหม่พร้อมให้ใช้: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;เพื่ออัพเดตแพทช์ของคุณ ให้ใช้ Morphe เพื่อแพทช์แอปพลิเคชันนี้ใหม่</string>
@@ -69,39 +75,53 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_website">เว็บไซต์</string>
   <string name="morphe_settings_about_links_donate">บริจาค</string>
   <string name="morphe_settings_about_links_translations">การแปลภาษา</string>
+  <string name="morphe_settings_about_links_credits">เครดิต</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">เป็นปัจจุบัน</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">มีการอัปเดตพร้อมใช้งาน</string>
+  <string name="morphe_settings_about_contributors_current">กำลังพัฒนาอยู่</string>
+  <string name="morphe_settings_about_contributors_prior">การพัฒนาในช่วงก่อนหน้า</string>
+  <string name="morphe_settings_about_links_morphe">การพัฒนาในปัจจุบัน</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">ข้อความแจ้งลิขสิทธิ์</string>
+  <string name="morphe_settings_about_licenses_loading">กำลังโหลด...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ดีบัก</string>
   <string name="morphe_debug_screen_summary">เปิดใช้งานหรือปิดใช้งานตัวเลือกการแก้ไขข้อบกพร่อง</string>
   <string name="morphe_debug_title">การบันทึกการแก้ไขข้อบกพร่อง</string>
   <string name="morphe_debug_summary_on">การบันทึกการแก้ไขข้อบกพร่องถูกเปิดใช้งาน</string>
   <string name="morphe_debug_summary_off">การบันทึกการแก้ไขข้อบกพร่องถูกปิดใช้งาน</string>
-  <string name="morphe_debug_stacktrace_title">บันทึกการติดตามสแต็ก</string>
-  <string name="morphe_debug_stacktrace_summary_on">การบันทึกการแก้ไขข้อบกพร่องรวมถึงการติดตามสแต็ก</string>
-  <string name="morphe_debug_stacktrace_summary_off">การบันทึกการแก้ไขข้อบกพร่องไม่รวมการติดตามสแต็ก</string>
+  <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
+  <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack traces</string>
+  <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack traces</string>
   <string name="morphe_debug_toast_on_error_title">แสดง  toast  เมื่อเกิดข้อผิดพลาดของ Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Toast จะปรากฏขึ้นหากเกิดข้อผิดพลาด</string>
   <string name="morphe_debug_toast_on_error_summary_off">Toast จะไม่ปรากฏขึ้นหากเกิดข้อผิดพลาด</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"การปิดการแจ้งเตือนข้อผิดพลาดจะซ่อนการแจ้งเตือนข้อผิดพลาดของ Morphe ทั้งหมด
 
 คุณจะไม่ได้รับแจ้งเกี่ยวกับเหตุการณ์ที่ไม่คาดคิดใดๆ"</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">ส่งออกบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">คัดลอกบันทึกการแก้ไขข้อบกพร่องของ Morphe ไปยังคลิปบอร์ด</string>
+  <string name="morphe_debug_export_logs_title">ส่งออกบันทึกการแก้ไขข้อบกพร่อง</string>
+  <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
+  <string name="morphe_debug_export_logs_file">Export to file</string>
+  <string name="morphe_debug_export_logs_success">Debug logs exported successfully</string>
+  <string name="morphe_debug_export_logs_failed">Failed to export debug logs</string>
+  <string name="morphe_debug_logs_search_hint">Search debug logs...</string>
+  <string name="morphe_debug_export_logs_clear">Clear</string>
   <string name="morphe_debug_logs_disabled">ปิดใช้งานการบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_logs_none_found">ไม่พบบันทึก</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">คัดลอกบันทึกแล้ว</string>
-  <string name="morphe_debug_logs_failed_to_export">ส่งออกบันทึกไม่สำเร็จ: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">ล้างบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">ล้างบันทึกการแก้ไขข้อบกพร่องของ Morphe ที่จัดเก็บไว้ทั้งหมด</string>
-  <string name="morphe_debug_logs_clear_toast">ล้างบันทึกแล้ว</string>
+  <string name="morphe_debug_logs_none_found">No debug logs found</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Debug logs copied</string>
+  <string name="morphe_debug_logs_failed_to_export">Failed to export debug logs: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Debug logs cleared</string>
   <string name="morphe_debug_feature_flags_manager_title">แฟล็กคุณสมบัติ Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">จัดการแฟล็กคุณสมบัติบูลีน</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">แฟล็กที่ใช้งานอยู่ (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">แฟล็กที่ถูกบล็อก (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">ค้นหาแฟล็ก...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">บันทึกแฟล็กแล้ว</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">รีเซ็ตแฟล็กแล้ว</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">คัดลอกแฟล็กไปยังคลิปบอร์ดแล้ว</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">รีสตาร์ตแอปเพื่อใช้คุณสมบัตินี้</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Active feature flags (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blocked feature flags (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Search feature flags...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flags saved</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flags reset</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flags copied to clipboard</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restart the app to use this setting</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">เปิดการตั้งค่า MicroG</string>
@@ -121,4 +141,22 @@ Second \"item\" text"</string>
 
 แตะปุ่มตกลง และอนุญาตการเปลี่ยนแปลงการปรับแต่ง"</string>
   <string name="gms_core_dialog_continue_text">ดำเนินการต่อ</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">กล่องข้อความเพิ่มประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">มีการแสดงกล่องข้อความ MicroG เพิ่มประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">ไม่มีการแสดงกล่องข้อความ MicroG เพิ่มประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"การปิดใช้งานนี้จะซ่อนข้อความแจ้ง MicroG เพิ่มประสิทธิภาพแบตเตอรี่
+
+หากการเพิ่มประสิทธิภาพแบตเตอรี่ไม่ได้มีการเปลี่ยนแปลง คุณอาจพบ:
+• แอปพลิเคชันอาจปิดโดยสุ่ม
+• การแจ้งเตือนอาจใช้งานไม่ได้
+• การเล่นเพลง/วิดีโอขณะอยู่เบื้องหลังอาจใช้งานไม่ได้"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 คำเตือนแบบทดลอง 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"คุณกำลังใช้แอปเวอร์ชันทดลองของ ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 คาดหวังพฤติกรรมที่แปลกประหลาดของแอปหรือข้อผิดพลาดที่ไม่รู้จักในขณะที่เราปรับปรุงแพตช์สำหรับแอปเวอร์ชันนี้
+&lt;br/&gt;&lt;br/&gt;
+หากคุณต้องการประสบการณ์ที่ไม่ยุ่งยากเท่าที่จะเป็นไปได้ ให้ &lt;b&gt;ถอนการติดตั้ง&lt;/b&gt; และแพตช์แอปเวอร์ชันที่แนะนำของ ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ ผมต้องการเวอร์ชันทดลอง</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ ผมต้องการเวอร์ชันที่เสถียร</string>
 </resources>

@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.misc.imageurlhook
@@ -39,20 +41,11 @@ val cronetImageURLHookPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch)
 
     execute {
-        loadImageURLMethodRef = WeakReference(
-            MessageDigestImageURLFingerprint
-                .match(MessageDigestImageURLParentFingerprint.originalClassDef).method
-        )
+        loadImageURLMethodRef = WeakReference(MessageDigestImageURLFingerprint.method)
 
-        loadImageSuccessCallbackMethodRef = WeakReference(
-            OnSucceededFingerprint
-                .match(OnResponseStartedFingerprint.originalClassDef).method
-        )
+        loadImageSuccessCallbackMethodRef = WeakReference(OnSucceededFingerprint.method)
 
-        loadImageErrorCallbackMethodRef = WeakReference(
-            OnFailureFingerprint
-                .match(OnResponseStartedFingerprint.originalClassDef).method
-        )
+        loadImageErrorCallbackMethodRef = WeakReference(OnFailureFingerprint.method)
 
         // The URL is required for the failure callback hook, but the URL field is obfuscated.
         // Add a helper get method that returns the URL field.
@@ -62,7 +55,7 @@ val cronetImageURLHookPatch = bytecodePatch(
         } as ReferenceInstruction
 
         val urlFieldName = (urlFieldInstruction.reference as FieldReference).name
-        val definingClass = CRONET_URL_REQUEST_CLASS_DESCRIPTOR
+        val definingClass = CRONET_URL_REQUEST_CLASS
         val addedMethodName = "getHookedUrl"
         RequestFingerprint.classDef.methods.add(
             ImmutableMethod(

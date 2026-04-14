@@ -9,7 +9,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_PLAYER_CONTROLS_VISIBILITY_HOOK_CLASS_DESCRIPTOR =
+private const val EXTENSION_PLAYER_CONTROLS_VISIBILITY_HOOK_CLASS =
     "Lapp/morphe/extension/youtube/patches/PlayerControlsVisibilityHookPatch;"
 
 val playerControlsOverlayVisibilityPatch = bytecodePatch {
@@ -32,7 +32,7 @@ val playerControlsOverlayVisibilityPatch = bytecodePatch {
                             iget v$targetRegister, v$targetRegister, $iGetReference
                             invoke-static { v$targetRegister }, $staticReference
                             move-result-object v$targetRegister
-                            invoke-static { v$targetRegister }, $EXTENSION_PLAYER_CONTROLS_VISIBILITY_HOOK_CLASS_DESCRIPTOR->setPlayerControlsVisibility(Ljava/lang/Enum;)V
+                            invoke-static { v$targetRegister }, $EXTENSION_PLAYER_CONTROLS_VISIBILITY_HOOK_CLASS->setPlayerControlsVisibility(Ljava/lang/Enum;)V
                         """
                     )
                 }

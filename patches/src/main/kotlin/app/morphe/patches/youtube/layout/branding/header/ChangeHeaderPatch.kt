@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.layout.branding.header
@@ -34,7 +36,7 @@ private val targetResourceDirectoryNames = mapOf(
 
 private val logoResourceNames = arrayOf("morphe_header")
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/ChangeHeaderPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChangeHeaderPatch;"
 
 private val changeHeaderBytecodePatch = bytecodePatch {
     dependsOn(resourceMappingPatch)
@@ -61,7 +63,7 @@ private val changeHeaderBytecodePatch = bytecodePatch {
                 addInstructions(
                     literalIndex + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getHeaderAttributeId(I)I
+                        invoke-static { v$register }, $EXTENSION_CLASS->getHeaderAttributeId(I)I
                         move-result v$register    
                     """
                 )

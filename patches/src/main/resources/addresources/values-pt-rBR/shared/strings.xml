@@ -60,6 +60,12 @@ Para traduzir novos idiomas ou melhorar as traduções existentes, visite morphe
   <string name="morphe_language_DEFAULT">Idioma do aplicativo</string>
   <string name="morphe_pref_import_export_title">Importar / Exportar</string>
   <string name="morphe_pref_import_export_summary">Importar / Exportar Configurações do Morphe</string>
+  <string name="morphe_settings_import_file">Importar do arquivo</string>
+  <string name="morphe_settings_import_file_success">Configurações importadas com sucesso, toque em Salvar para aplicar</string>
+  <string name="morphe_settings_import_file_failed">Falha ao importar as configurações</string>
+  <string name="morphe_settings_export_file">Exportar para arquivo</string>
+  <string name="morphe_settings_export_file_success">Configurações exportadas com sucesso</string>
+  <string name="morphe_settings_export_file_failed">Falha ao exportar as configurações</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Você está usando a última versão dos Patches Morphe &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Você está usando os Patches Morphe versão &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Atualização disponível: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Para atualizar seus patches, use o Morphe para reaplicá-los neste aplicativo</string>
@@ -69,39 +75,53 @@ Para traduzir novos idiomas ou melhorar as traduções existentes, visite morphe
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Doar</string>
   <string name="morphe_settings_about_links_translations">Traduções</string>
+  <string name="morphe_settings_about_links_credits">Créditos</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Atualizado</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Atualização disponível</string>
+  <string name="morphe_settings_about_contributors_current">Desenvolvimento atual</string>
+  <string name="morphe_settings_about_contributors_prior">Desenvolvimento anterior</string>
+  <string name="morphe_settings_about_links_morphe">Desenvolvimento ativo</string>
+  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Avisos de licença</string>
+  <string name="morphe_settings_about_licenses_loading">Carregando...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuração</string>
   <string name="morphe_debug_screen_summary">Ativar ou desativar opções de depuração</string>
   <string name="morphe_debug_title">Registro de depuração</string>
   <string name="morphe_debug_summary_on">Registro de depuração está ativado</string>
   <string name="morphe_debug_summary_off">Registro de depuração está desativado</string>
-  <string name="morphe_debug_stacktrace_title">Registro de rastreamento em pilha</string>
-  <string name="morphe_debug_stacktrace_summary_on">Registro de depuração incluem rastreamento em pilha</string>
-  <string name="morphe_debug_stacktrace_summary_off">Registro de depuração não incluem rastreamento em pilha</string>
+  <string name="morphe_debug_stacktrace_title">Rastreamento de pilha do registro de depuração</string>
+  <string name="morphe_debug_stacktrace_summary_on">Registro de depuração incluem rastreamentos em pilha</string>
+  <string name="morphe_debug_stacktrace_summary_off">Registro de depuração não incluem rastreamentos em pilha</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar notificação flutuante de erro do Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">O toast é exibido se ocorrer um erro</string>
   <string name="morphe_debug_toast_on_error_summary_off">O toast não é exibido se ocorrer um erro</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desligar as notificações de erro oculta todas as notificações de erro do Morphe.
 
 Você não será notificado sobre nenhum evento inesperado."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exportar registros de depuração</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Copia os registros de depuração do Morphe para a área de transferência</string>
+  <string name="morphe_debug_export_logs_title">Exportar registros de depuração</string>
+  <string name="morphe_debug_export_logs_summary">Exportar registros de depuração Morphe</string>
+  <string name="morphe_debug_export_logs_file">Exportar para arquivo</string>
+  <string name="morphe_debug_export_logs_success">Registros de depuração exportados com sucesso</string>
+  <string name="morphe_debug_export_logs_failed">Falha ao exportar registros de depuração</string>
+  <string name="morphe_debug_logs_search_hint">Pesquisar registros de depuração...</string>
+  <string name="morphe_debug_export_logs_clear">Limpar</string>
   <string name="morphe_debug_logs_disabled">O registro de depuração está desativado</string>
-  <string name="morphe_debug_logs_none_found">Nenhum registro encontrado</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Registros copiados</string>
-  <string name="morphe_debug_logs_failed_to_export">Falha ao exportar registros: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Limpar registros de depuração</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Limpa todos os registros de depuração do Morphe armazenados</string>
-  <string name="morphe_debug_logs_clear_toast">Registros limpos</string>
+  <string name="morphe_debug_logs_none_found">Nenhum registro de depuração encontrado</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Registros de depuração copiados</string>
+  <string name="morphe_debug_logs_failed_to_export">Falha ao exportar registros de depuração: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Registros de depuração limpos</string>
   <string name="morphe_debug_feature_flags_manager_title">Gerenciador de sinalizadores de recursos</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gerenciar sinalizadores de recursos booleanos</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Flags ativas (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Flags bloqueadas (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Pesquisar flags...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Flags salvas</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Flags redefinidas</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Flags copiadas para a área de transferência</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie o app para usar esta funcionalidade</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Flags de recurso ativas (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Flags de recurso bloqueadas (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Pesquisar flags de recurso...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Flags de recurso salvas</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Flags de recurso redefinidas</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Flags de recurso copiadas para a área de transferência</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie o aplicativo para usar esta configuração</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir as configurações do MicroG</string>
@@ -121,4 +141,22 @@ Desabilitar as otimizações de bateria para o MicroG não afetará negativament
 
 Toque no botão continuar e permita as mudanças de otimização."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Diálogo de otimização da bateria</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">O diálogo de otimização da bateria do MicroG é exibido</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">O diálogo de otimização da bateria do MicroG não é exibido</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Desativar isso ocultará o prompt de otimização da bateria do MicroG.
+
+Se as otimizações de bateria não forem alteradas, você poderá ter:
+• O aplicativo pode fechar aleatoriamente
+• As notificações podem não funcionar
+• A reprodução em segundo plano pode não funcionar"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Alerta Experimental 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Você está usando uma versão experimental do app ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Espere comportamentos estranhos do app ou bugs não identificados enquanto ajustamos as correções para esta versão do app.
+&lt;br/&gt;&lt;br/&gt;
+Se você deseja a experiência mais tranquila, então &lt;b&gt;desinstale&lt;/b&gt; este e utilize a versão recomendada do app ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
 </resources>

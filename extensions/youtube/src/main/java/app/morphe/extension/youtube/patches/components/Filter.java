@@ -23,18 +23,12 @@ import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 abstract class Filter {
 
     public enum FilterContentType {
-        CONTEXT,
         IDENTIFIER,
         PATH,
         ACCESSIBILITY,
         PROTOBUFFER
     }
 
-    /**
-     * Context callbacks. Do not add to this instance,
-     * and instead use {@link #addContextCallbacks(StringFilterGroup...)}.
-     */
-    protected final List<StringFilterGroup> contextCallbacks = new ArrayList<>();
     /**
      * Identifier callbacks.  Do not add to this instance,
      * and instead use {@link #addIdentifierCallbacks(StringFilterGroup...)}.
@@ -45,14 +39,6 @@ abstract class Filter {
      * and instead use {@link #addPathCallbacks(StringFilterGroup...)}.
      */
     protected final List<StringFilterGroup> pathCallbacks = new ArrayList<>();
-
-    /**
-     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
-     * if any of the groups are found.
-     */
-    protected final void addContextCallbacks(StringFilterGroup... groups) {
-        contextCallbacks.addAll(Arrays.asList(groups));
-    }
 
     /**
      * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], StringFilterGroup, FilterContentType, int)}

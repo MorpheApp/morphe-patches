@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    https://github.com/google/material-design-icons/blob/13d360945bfd12cdeec837adc14f82875410584b/symbols/android/playlist_play/materialsymbolsoutlined/playlist_play_wght200gradN25_24px.xml
+    Changes made: Icon has been resized and animated.
+
+    Copyright 2022 Google
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="24"
+            android:viewportHeight="24">
+            <group
+                android:name="icon_group"
+                android:pivotX="12"
+                android:pivotY="12">
+                <path
+                    android:fillColor="@android:color/white"
+                    android:pathData="M4,15.7695 L4,14.7695 L11.0195,14.7695 L11.0195,15.7695 Z M4,11.7695 L4,10.7695 L14.9609,10.7695 L14.9609,11.7695 Z M4,7.76953 L4,6.76953 L14.9609,6.76953 L14.9609,7.76953 Z M16.4414,20 L16.4414,14.0586 L21.0195,17.0391 Z M16.4414,20" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="icon_group">
+        <aapt:attr name="android:animation">
+            <set android:ordering="together">
+                <objectAnimator
+                    android:propertyName="scaleX"
+                    android:duration="100"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.1"
+                    android:repeatCount="1"
+                    android:repeatMode="reverse"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+
+                <objectAnimator
+                    android:propertyName="scaleY"
+                    android:duration="100"
+                    android:valueFrom="1.0"
+                    android:valueTo="1.1"
+                    android:repeatCount="1"
+                    android:repeatMode="reverse"
+                    android:interpolator="@android:interpolator/fast_out_slow_in" />
+            </set>
+        </aapt:attr>
+    </target>
+</animated-vector>

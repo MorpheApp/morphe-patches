@@ -42,7 +42,6 @@ import java.text.Bidi;
 import java.text.Collator;
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -58,7 +57,8 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
-import app.morphe.extension.shared.settings.preference.MorpheAboutPreference;
+import app.morphe.extension.shared.settings.StringSetting;
+import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference;
 import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("NewApi")
@@ -144,11 +144,13 @@ public class Utils {
         if (applicationLabel == null) {
             try {
                 ApplicationInfo applicationInfo = getPackageInfo().applicationInfo;
-                applicationLabel = (String) applicationInfo.loadLabel(context.getPackageManager());
+                if (applicationInfo != null) {
+                    return applicationLabel = (String) applicationInfo.loadLabel(context.getPackageManager());
+                }
             } catch (Exception ex) {
                 Logger.printException(() -> "Failed to get application name", ex);
-                applicationLabel = "Unknown";
             }
+            applicationLabel = "Unknown";
         }
 
         return applicationLabel;
@@ -388,6 +390,20 @@ public class Utils {
         return null;
     }
 
+    public static List<String> getFilterStrings(StringSetting setting) {
+        String[] filterArray = setting.get().split("\\n");
+        List<String> filters = new ArrayList<>(filterArray.length);
+
+        for (String line : filterArray) {
+            String trimmed = line.trim();
+            if (!trimmed.isEmpty()) {
+                filters.add(trimmed);
+            }
+        }
+
+        return filters;
+    }
+
     public static void restartApp(Context context) {
         String packageName = context.getPackageName();
         Intent intent = Objects.requireNonNull(context.getPackageManager().getLaunchIntentForPackage(packageName));
@@ -469,6 +485,7 @@ public class Utils {
         return str != null && !str.isEmpty();
     }
 
+    @SuppressWarnings("unused")
     public static boolean isTablet() {
         return context.getResources().getConfiguration().smallestScreenWidthDp >= 600;
     }
@@ -508,6 +525,7 @@ public class Utils {
         return  getTextDirectionString(isRightToLeftLocale());
     }
 
+    @SuppressWarnings("unused")
     public static String getTextDirectionString(Locale locale) {
         return getTextDirectionString(isRightToLeftLocale(locale));
     }
@@ -731,6 +749,20 @@ public class Utils {
         if (isCurrentlyOnMainThread()) {
             throw new IllegalStateException("Must call _off_ the main thread");
         }
+    }
+
+    private static volatile long lastClickTime;
+
+    /**
+     * @return true if the action occurred within 500ms of the last recorded action.
+     */
+    public static boolean isFastClick() {
+        long now = android.os.SystemClock.elapsedRealtime();
+        if (now - lastClickTime < 500) {
+            return true; // Ignore fast double click.
+        }
+        lastClickTime = now;
+        return false;
     }
 
     public static void openLink(String url) {
@@ -1099,7 +1131,7 @@ public class Utils {
         }
 
         // Sort the list using locale-specific collation rules.
-        Collections.sort(preferences, (pair1, pair2)
+        preferences.sort((pair1, pair2)
                 -> collator.compare(pair1.first, pair2.first));
 
         // Reassign order values to reflect the new sorted sequence
@@ -1129,9 +1161,6 @@ public class Utils {
      */
     @SuppressWarnings("deprecation")
     public static void setPreferenceTitlesToMultiLineIfNeeded(PreferenceGroup group) {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            return;
-        }
 
         String morpheLocale = Utils.getContext().getResources().getConfiguration().locale.getLanguage();
         if (morpheLocale.equals(Locale.ENGLISH.getLanguage())) {

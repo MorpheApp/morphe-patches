@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
 package app.morphe.patches.music.layout.startpage
@@ -20,7 +22,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/ChangeStartPagePatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ChangeStartPagePatch;"
 
 val changeStartPagePatch = bytecodePatch(
     name = "Change start page",
@@ -72,7 +74,7 @@ val changeStartPagePatch = bytecodePatch(
                     val browseIdRegister = (instructions[browseIdIndex] as com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction).registerA
                     addInstructions(
                         browseIdIndex + 1,
-                        "invoke-static/range { v$browseIdRegister .. v$browseIdRegister }, $EXTENSION_CLASS_DESCRIPTOR->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;\n" +
+                        "invoke-static/range { v$browseIdRegister .. v$browseIdRegister }, $EXTENSION_CLASS->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;\n" +
                                 "move-result-object v$browseIdRegister"
                     )
                 } else {
@@ -84,7 +86,7 @@ val changeStartPagePatch = bytecodePatch(
                         val returnRegister = getInstruction<OneRegisterInstruction>(returnIndex).registerA
                         addInstructions(
                             returnIndex,
-                            "invoke-static/range { v$returnRegister .. v$returnRegister }, $EXTENSION_CLASS_DESCRIPTOR->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;\n" +
+                            "invoke-static/range { v$returnRegister .. v$returnRegister }, $EXTENSION_CLASS->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;\n" +
                                     "move-result-object v$returnRegister"
                         )
                     }
@@ -99,7 +101,7 @@ val changeStartPagePatch = bytecodePatch(
 
                 addInstruction(
                     0,
-                    "invoke-static/range { v$p0 .. v$p1 }, $EXTENSION_CLASS_DESCRIPTOR->overrideIntentActionOnCreate(Landroid/app/Activity;Landroid/os/Bundle;)V"
+                    "invoke-static/range { v$p0 .. v$p1 }, $EXTENSION_CLASS->overrideIntentActionOnCreate(Landroid/app/Activity;Landroid/os/Bundle;)V"
                 )
             }
         }

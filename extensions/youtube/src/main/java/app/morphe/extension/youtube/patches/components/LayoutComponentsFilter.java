@@ -4,11 +4,13 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches.components;
 
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_21_OR_GREATER;
+import static app.morphe.extension.shared.Utils.getFilterStrings;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.graphics.drawable.Drawable;
@@ -23,13 +25,11 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
@@ -48,26 +48,8 @@ public final class LayoutComponentsFilter extends Filter {
             "&list="
     );
 
-    private static final List<String> channelTabFilterStrings;
-    private static final List<String> flyoutMenuFilterStrings;
-    static {
-        channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
-        flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
-    }
-
-    private static List<String> getFilterStrings(StringSetting setting) {
-        String[] filterArray = setting.get().split("\\n");
-        List<String> filters = new ArrayList<>(filterArray.length);
-
-        for (String line : filterArray) {
-            String trimmed = line.trim();
-            if (!trimmed.isEmpty()) {
-                filters.add(trimmed);
-            }
-        }
-
-        return filters;
-    }
+    private static final List<String> channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
+    private static final List<String> flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
 
     private final StringTrieSearch exceptions = new StringTrieSearch();
     private final StringFilterGroup communityPosts;
@@ -75,13 +57,22 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup notifyMe;
     private final StringFilterGroup singleItemInformationPanel;
     private final StringFilterGroup expandableMetadata;
+    private final ByteArrayFilterGroup productCardBuffer;
+    private final ByteArrayFilterGroup summaryCardBuffer;
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
-    private final StringFilterGroupList communityPostStringFilterGroup;
+
+    public enum ExpandableCardStyle {
+        SHOW_ALL,
+        HIDE_PRODUCT_ONLY,
+        HIDE_SUMMARY_ONLY,
+        HIDE_PRODUCT_AND_SUMMARY,
+        HIDE_ALL
+    }
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
@@ -101,8 +92,8 @@ public final class LayoutComponentsFilter extends Filter {
                 "cell_divider"
         );
 
-        final var chipsShelf = new StringFilterGroup(
-                Settings.HIDE_CHIPS_SHELF,
+        final var exploreTopicsShelf = new StringFilterGroup(
+                Settings.HIDE_HORIZONTAL_SHELVES,
                 "chips_shelf"
         );
 
@@ -113,7 +104,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         addIdentifierCallbacks(
                 cellDivider,
-                chipsShelf,
+                exploreTopicsShelf,
                 liveChatReplay
         );
 
@@ -121,30 +112,21 @@ public final class LayoutComponentsFilter extends Filter {
 
         communityPosts = new StringFilterGroup(
                 Settings.HIDE_COMMUNITY_POSTS,
-                "post_base_wrapper", // may be obsolete and no longer needed.
-                "text_post_root.e",
                 "images_post_root.e",
-                "images_post_slim.e", // may be obsolete and no longer needed.
                 "images_post_root_slim.e",
-                "text_post_root_slim.e",
-                "post_base_wrapper_slim.e",
-                "poll_post_root.e",
-                "videos_post_root.e",
-                "post_shelf_slim.e",
-                "videos_post_responsive_root.e",
-                "text_post_responsive_root.e",
+                "images_post_slim.e", // may be obsolete and no longer needed.
                 "poll_post_responsive_root.e",
-                "shared_post_root.e"
-        );
-        communityPostStringFilterGroup = new StringFilterGroupList();
-        communityPostStringFilterGroup.addAll(
-                new StringFilterGroup(
-                        null,
-                        // home
-                        "horizontalCollectionSwipeProtector=null",
-                        // subscriptions
-                        "heightConstraint=null"
-                )
+                "poll_post_root.e",
+                "post_base_wrapper", // may be obsolete and no longer needed.
+                "post_base_wrapper_slim.e",
+                "post_shelf_slim.e",
+                "shared_post_responsive_root.e",
+                "shared_post_root.e",
+                "text_post_responsive_root.e",
+                "text_post_root.e",
+                "text_post_root_slim.e",
+                "videos_post_responsive_root.e",
+                "videos_post_root.e"
         );
 
         final var subscribersCommunityGuidelines = new StringFilterGroup(
@@ -209,8 +191,8 @@ public final class LayoutComponentsFilter extends Filter {
                 "single_item_information_panel"
         );
 
-        final var latestPosts = new StringFilterGroup(
-                Settings.HIDE_LATEST_POSTS,
+        final var postsShelf = new StringFilterGroup(
+                Settings.HIDE_POSTS_SHELF,
                 "post_shelf"
         );
 
@@ -241,8 +223,18 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         expandableMetadata = new StringFilterGroup(
-                Settings.HIDE_EXPANDABLE_CARD,
-                "inline_expander"
+                null,
+                "expandable_metadata"
+        );
+
+        productCardBuffer = new ByteArrayFilterGroup(
+                null,
+                "gstatic.com/shopping"
+        );
+
+        summaryCardBuffer = new ByteArrayFilterGroup(
+                null,
+                "PAfeedback_genai"
         );
 
         final var compactChannelBar = new StringFilterGroup(
@@ -365,11 +357,11 @@ public final class LayoutComponentsFilter extends Filter {
                 forYouShelf,
                 imageShelf,
                 infoPanel,
-                latestPosts,
                 medicalPanel,
                 notifyMe,
                 paidPromotion,
                 playables,
+                postsShelf,
                 quickActions,
                 relatedVideos,
                 singleItemInformationPanel,
@@ -403,8 +395,29 @@ public final class LayoutComponentsFilter extends Filter {
 
         // The groups are excluded from the filter due to the exceptions list below.
         // Filter them separately here.
-        if (matchedGroup == notifyMe || matchedGroup == surveys || matchedGroup == expandableMetadata) {
+        if (matchedGroup == notifyMe || matchedGroup == surveys) {
             return true;
+        }
+
+        if (matchedGroup == expandableMetadata) {
+            ExpandableCardStyle style = Settings.HIDE_EXPANDABLE_CARD.get();
+            switch (style) {
+                case HIDE_ALL -> {
+                    return true;
+                }
+                case HIDE_PRODUCT_ONLY -> {
+                    return productCardBuffer.check(buffer).isFiltered();
+                }
+                case HIDE_SUMMARY_ONLY -> {
+                    return summaryCardBuffer.check(buffer).isFiltered();
+                }
+                case HIDE_PRODUCT_AND_SUMMARY -> {
+                    return summaryCardBuffer.check(buffer).isFiltered() || productCardBuffer.check(buffer).isFiltered();
+                }
+                default -> {
+                    return false;
+                }
+            }
         }
 
         if (matchedGroup == channelProfile) {
@@ -412,7 +425,7 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (matchedGroup == communityPosts) {
-            return communityPostStringFilterGroup.check(contextInterface.toString()).isFiltered();
+            return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
         }
 
         if (exceptions.matches(path)) return false; // Exceptions are not filtered.
@@ -486,7 +499,6 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideFloatingMicrophoneButton(final boolean original) {
-        // FIXME? Is this feature still relevant? When/where does this microphone appear?
         return original || Settings.HIDE_FLOATING_MICROPHONE_BUTTON.get();
     }
 
@@ -521,26 +533,33 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideInRelatedVideos(View chipView) {
-        // Cannot use 0dp hide with later targets, otherwise the suggested videos
-        // can be shown in full screen mode.
-        // This behavior may also be present in earlier app targets.
-        if (IS_20_21_OR_GREATER) {
-            // FIXME: The filter bar is still briefly shown when dragging the suggested videos
-            //        below the video player.
-            Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
-        } else {
-            Utils.hideViewBy0dpUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
-        }
+    public static int hideInRelatedVideos(int height) {
+        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED
+                ? 0
+                : height;
     }
 
-    private static final boolean HIDE_DOODLES_ENABLED = Settings.HIDE_DOODLES.get();
+    /**
+     * Injection point.
+     */
+    public static boolean hideInRelatedVideos(boolean original) {
+        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED || original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideInRelatedVideos(View chipView) {
+        Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
+    }
+
+    private static final boolean HIDE_YOUTUBE_DOODLES_ENABLED = Settings.HIDE_YOUTUBE_DOODLES.get();
 
     /**
      * Injection point.
      */
     public static void setDoodleDrawable(ImageView imageView, Drawable original) {
-        Drawable replacement = HIDE_DOODLES_ENABLED
+        Drawable replacement = HIDE_YOUTUBE_DOODLES_ENABLED
                 ? ChangeHeaderPatch.getDrawable(original)
                 : original;
         imageView.setImageDrawable(replacement);
@@ -783,6 +802,13 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         return false;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideSearchTermThumbnails() {
+        return Settings.HIDE_SEARCH_TERM_THUMBNAILS.get();
     }
 
     /**

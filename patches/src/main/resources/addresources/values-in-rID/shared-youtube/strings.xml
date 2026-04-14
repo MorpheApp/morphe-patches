@@ -16,27 +16,22 @@ Second \"item\" text"</string>
 
 -->
 <resources>
+  <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Mulai ulang untuk menyelesaikan penyiapan</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nama aplikasi</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Khusus</string>
   <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
   <string name="morphe_custom_branding_icon_entry_1">Asli</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe hitam</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe gelap</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe terang</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Kustom</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Peringatan Uji Coba 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Anda menggunakan versi aplikasi uji coba ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Harap bersiap dengan perilaku aplikasi yang tidak biasa atau bug yang belum teridentifikasi saat kami menyempurnakan tambalan untuk versi aplikasi ini.
-&lt;br/&gt;&lt;br/&gt;
-Jika Anda ingin pengalaman yang paling bebas masalah, maka &lt;b&gt;hapus pemasangan&lt;/b&gt; ini dan tambal versi aplikasi yang direkomendasikan ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Saya ingin versi uji coba</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Saya ingin versi stabil</string>
+  <string name="morphe_custom_branding_icon_entry_6">Kustom</string>
+  <string name="morphe_custom_branding_notification_icon_title">Ikon pemberitahuan</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Ikuti ikon aplikasi</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Pemberitahuan Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Riwayat tontonan Anda tidak sedang disimpan.&lt;br&gt;&lt;br&gt;Hal ini kemungkinan besar disebabkan oleh pemblokir iklan DNS atau proksi jaringan.&lt;br&gt;&lt;br&gt;Untuk memperbaikinya, masukkan daftar putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua pemblokir DNS dan proksi.</string>
@@ -47,7 +42,7 @@ Jika Anda ingin pengalaman yang paling bebas masalah, maka &lt;b&gt;hapus pemasa
   <string name="morphe_spoof_video_streams_title">Palsukan aliran video</string>
   <string name="morphe_spoof_video_streams_summary_on">"Aliran video dipalsukan
 
-Jika Anda adalah pengguna YouTube Premium, setelan ini mungkin tidak diperlukan"</string>
+Jika Anda adalah pengguna YouTube Premium, pengaturan ini mungkin tidak diperlukan"</string>
   <string name="morphe_spoof_video_streams_summary_off">"Aliran video tidak dipalsukan
 
 Pemutaran mungkin tidak berfungsi"</string>
@@ -102,8 +97,8 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
 • Pemutaran gagal jika hash pemutar JavaScript dicabut di GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Pembaruan pemutar JavaScript diaktifkan</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Pemutar hash JavaScript berlaku selama kurang lebih satu bulan, dan hash yang kedaluwarsa mungkin dicabut oleh GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash pemutar JavaScript</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Masukkan hash pemutar JavaScript yang sah</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash pemutar JavaScript</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Masukkan hash pemutar JavaScript yang sah</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Nonaktifkan protokol QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC dinonaktifkan</string>

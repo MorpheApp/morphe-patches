@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.misc.contexthook
@@ -99,9 +101,7 @@ val clientContextHookPatch = bytecodePatch(
         }
 
         val osNameField : FieldReference
-        BuildClientContextBodyFingerprint.match(
-            BuildClientContextBodyConstructorFingerprint.originalClassDef
-        ).let {
+        BuildClientContextBodyFingerprint.let {
             it.method.apply {
                 val osNameIndex = it.instructionMatches[1].index
                 osNameField = getInstruction<ReferenceInstruction>(
@@ -111,9 +111,7 @@ val clientContextHookPatch = bytecodePatch(
             }
         }
 
-        val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.match(
-            ClientFormFactorEnumConstructorFingerprint.originalClassDef
-        ).method as MethodReference
+        val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.method as MethodReference
 
         val setClientFormFactorFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -122,7 +120,7 @@ val clientContextHookPatch = bytecodePatch(
             filters = listOf(
                 fieldAccess(
                     opcode = Opcode.IGET,
-                    definingClass = CLIENT_INFO_CLASS_DESCRIPTOR,
+                    definingClass = CLIENT_INFO_CLASS,
                     type = "I"
                 ),
                 methodCall(
@@ -156,14 +154,13 @@ val clientContextHookPatch = bytecodePatch(
                 // Use locally declared fingerprint because internally fingerprint caches the match.
                 // Could use Fingerprint.clearMatch() but creating a new instance also works.
                 val endpointRequestBodyFingerprint = Fingerprint(
+                    classFingerprint = parentFingerprint,
                     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
                     returnType = "V",
                     parameters = listOf(),
                 )
 
-                endpointRequestBodyFingerprint.match(
-                    parentFingerprint.originalClassDef
-                ).let {
+                endpointRequestBodyFingerprint.let {
                     // 21.05+ clobbers p0 register.
                     it.method.cloneMutableAndPreserveParameters().apply {
                         it.classDef.methods.add(

@@ -60,6 +60,13 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_language_DEFAULT">App language</string>
     <string name="morphe_pref_import_export_title">Import / Export</string>
     <string name="morphe_pref_import_export_summary">Import / Export Morphe settings</string>
+    <string name="morphe_settings_import_file">Import from file</string>
+    <string name="morphe_settings_import_file_success">Settings imported successfully, tap Save to apply</string>
+    <string name="morphe_settings_import_file_failed">Failed to import settings</string>
+    <string name="morphe_settings_export_file">Export to file</string>
+    <string name="morphe_settings_export_file_success">Settings exported successfully</string>
+    <string name="morphe_settings_export_file_failed">Failed to export settings</string>
+
     <!-- String is also duplicated in Reddit about preference -->
     <string name="morphe_settings_about_links_body_version_current">You are using the latest Morphe Patches version &lt;i>%s&lt;/i></string>
     <string name="morphe_settings_about_links_body_version_outdated">You are using Morphe Patches version &lt;i>%1$s&lt;/i>&lt;br>&lt;br>&lt;b>Update available: &lt;i>%2$s&lt;/i>&lt;/b>&lt;br>&lt;br>To update your patches, use Morphe to repatch this app</string>
@@ -69,6 +76,17 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_settings_about_links_website">Website</string>
     <string name="morphe_settings_about_links_donate">Donate</string>
     <string name="morphe_settings_about_links_translations">Translations</string>
+    <string name="morphe_settings_about_links_credits">Credits</string>
+    <string name="morphe_settings_about_links_dev_header_up_to_date">Up to date</string>
+    <string name="morphe_settings_about_links_dev_header_update_available">Update available</string>
+    <string name="morphe_settings_about_contributors_current">Current development</string>
+    <string name="morphe_settings_about_contributors_prior">Prior development</string>
+    <string name="morphe_settings_about_links_morphe">Active development</string>
+    <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+    <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+    <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+    <string name="morphe_settings_about_links_licenses">License notices</string>
+    <string name="morphe_settings_about_licenses_loading">Loading...</string>
 
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_screen_title">Debugging</string>
@@ -76,33 +94,36 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_debug_title">Debug logging</string>
     <string name="morphe_debug_summary_on">Debug logs are enabled</string>
     <string name="morphe_debug_summary_off">Debug logs are disabled</string>
-    <string name="morphe_debug_stacktrace_title">Log stack traces</string>
-    <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack trace</string>
-    <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack trace</string>
+    <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
+    <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack traces</string>
+    <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack traces</string>
     <string name="morphe_debug_toast_on_error_title">Show toast on Morphe error</string>
     <string name="morphe_debug_toast_on_error_summary_on">Toast is shown if error occurs</string>
     <string name="morphe_debug_toast_on_error_summary_off">Toast is not shown if error occurs</string>
     <string name="morphe_debug_toast_on_error_user_dialog_message">"Turning off error toasts hides all Morphe error notifications.
 
 You will not be notified of any unexpected events."</string>
-    <string name="morphe_debug_export_logs_to_clipboard_title">Export debug logs</string>
-    <string name="morphe_debug_export_logs_to_clipboard_summary">Copies Morphe debug logs to the clipboard</string>
+    <string name="morphe_debug_export_logs_title">Export debug logs</string>
+    <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
+    <string name="morphe_debug_export_logs_file">Export to file</string>
+    <string name="morphe_debug_export_logs_success">Debug logs exported successfully</string>
+    <string name="morphe_debug_export_logs_failed">Failed to export debug logs</string>
+    <string name="morphe_debug_logs_search_hint">Search debug logs...</string>
+    <string name="morphe_debug_export_logs_clear">Clear</string>
     <string name="morphe_debug_logs_disabled">Debug logging is disabled</string>
-    <string name="morphe_debug_logs_none_found">No logs found</string>
-    <string name="morphe_debug_logs_copied_to_clipboard">Logs copied</string>
-    <string name="morphe_debug_logs_failed_to_export">Failed to export logs: %s</string>
-    <string name="morphe_debug_logs_clear_buffer_title">Clear debug logs</string>
-    <string name="morphe_debug_logs_clear_buffer_summary">Clears all stored Morphe debug logs</string>
-    <string name="morphe_debug_logs_clear_toast">Logs cleared</string>
+    <string name="morphe_debug_logs_none_found">No debug logs found</string>
+    <string name="morphe_debug_logs_copied_to_clipboard">Debug logs copied</string>
+    <string name="morphe_debug_logs_failed_to_export">Failed to export debug logs: %s</string>
+    <string name="morphe_debug_logs_clear_toast">Debug logs cleared</string>
     <string name="morphe_debug_feature_flags_manager_title">Feature flags manager</string>
     <string name="morphe_debug_feature_flags_manager_summary">Manage boolean feature flags</string>
-    <string name="morphe_debug_feature_flags_manager_active_header">Active flags (%d)</string>
-    <string name="morphe_debug_feature_flags_manager_blocked_header">Blocked flags (%d)</string>
-    <string name="morphe_debug_feature_flags_manager_search_hint">Search flags...</string>
-    <string name="morphe_debug_feature_flags_manager_toast_saved">Flags saved</string>
-    <string name="morphe_debug_feature_flags_manager_toast_reset">Flags reset</string>
-    <string name="morphe_debug_feature_flags_manager_toast_copied">Flags copied to clipboard</string>
-    <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restart the app to use this feature</string>
+    <string name="morphe_debug_feature_flags_manager_active_header">Active feature flags (%d)</string>
+    <string name="morphe_debug_feature_flags_manager_blocked_header">Blocked feature flags (%d)</string>
+    <string name="morphe_debug_feature_flags_manager_search_hint">Search feature flags...</string>
+    <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flags saved</string>
+    <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flags reset</string>
+    <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flags copied to clipboard</string>
+    <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restart the app to use this setting</string>
 
     <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
     <!-- misc.gms.gmsCoreSupportResourcePatch -->
@@ -124,4 +145,23 @@ Disabling battery optimizations for MicroG will not negatively affect battery us
 
 Tap the continue button and allow optimization changes."</string>
     <string name="gms_core_dialog_continue_text">Continue</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_title">Battery optimization dialog</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG battery optimization dialog is shown</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG battery optimization dialog is not shown</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabling this will hide the MicroG battery optimization prompt.
+
+If battery optimizations are not changed then you may experience:
+• App may randomly close
+• Notifications may not work
+• Background playback may not work"</string>
+
+    <!-- misc.checks.experimentalAppNoticePatch -->
+    <string name="morphe_experimental_app_version_dialog_title">🚨 Experimental Alert 🚨</string>
+    <string name="morphe_experimental_app_version_dialog_message">"You are using an experimental app version of ⚠️ &lt;b>%1$s&lt;/b>
+&lt;br/>&lt;br/>
+🔧 Expect quirky app behavior or unidentified bugs as we fine tune the patches for this app version.
+&lt;br/>&lt;br/>
+If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
+    <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
+    <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
 </resources>

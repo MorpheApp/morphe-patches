@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 package app.morphe.patches.reddit.layout.subredditdialog
 
@@ -11,11 +13,9 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/RemoveSubRedditDialogPatch;"
 
 @Suppress("unused")
@@ -43,7 +43,7 @@ val removeSubRedditDialogPatch = bytecodePatch(
                     addInstructions(
                         index,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$methodName(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS->$methodName(Z)Z
                             move-result v$register
                         """
                     )
@@ -51,37 +51,21 @@ val removeSubRedditDialogPatch = bytecodePatch(
             }
         }
 
-        listOf(
-            NSFWAlertDialogBuilderFingerprint,
-            NSFWAlertDialogInstanceFingerprint
-        ).forEach { fingerprint ->
-            fingerprint.match(
-                NSFWAlertDialogParentFingerprint.originalClassDef
-            ).let {
+        NSFWAlertShowDialogFingerprint.matchAll().forEach { match ->
+            match.let {
                 it.method.apply {
-                    val index = it.instructionMatches.first().index
-                    val moveResultIndex = index + 1
-                    val insertIndex: Int
-                    val register: Int
-
-                    if (getInstruction(moveResultIndex).opcode != Opcode.MOVE_RESULT_OBJECT) {
-                        // 2026.10.0+
-                        insertIndex = moveResultIndex
-                        register = getInstruction<FiveRegisterInstruction>(index).registerC
-                    } else {
-                        insertIndex = moveResultIndex + 1
-                        register = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
-                    }
+                    val index = it.instructionMatches[3].index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                     addInstruction(
-                        insertIndex,
+                        index + 1,
                         "invoke-static { v$register }, " +
-                                "$EXTENSION_CLASS_DESCRIPTOR->dismissNSFWDialog(Ljava/lang/Object;)V"
+                                "$EXTENSION_CLASS->dismissNSFWDialog(Ljava/lang/Object;)V"
                     )
                 }
             }
         }
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

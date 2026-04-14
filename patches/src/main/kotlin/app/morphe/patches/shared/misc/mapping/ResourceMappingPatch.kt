@@ -46,7 +46,6 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
 import com.android.tools.smali.dexlib2.iface.instruction.WideLiteralInstruction
 import org.w3c.dom.Element
-import java.util.Collections
 
 enum class ResourceType(val value: String) {
     ANIM("anim"),
@@ -97,11 +96,6 @@ private fun setResourceId(type: ResourceType, name: String, id: Long) {
  */
 fun getResourceId(type: ResourceType, name: String) = resourceMappings[type.value + name]?.id
     ?: throw PatchException("Could not find resource type: $type name: $name")
-
-/**
- * @return All resource elements. If a single resource id is needed instead use [getResourceId].
- */
-fun getResourceElements() = Collections.unmodifiableCollection(resourceMappings.values)
 
 /**
  * @return If the resource exists.
@@ -161,7 +155,7 @@ fun resourceLiteral(
 val resourceMappingPatch = resourcePatch {
     execute {
         // Use a stream of the file, since no modifications are done
-        // and using a File parameter causes the file to be re-wrote when closed.
+        // and using a File parameter causes the file to be re-written when closed.
         document(get("res/values/public.xml").inputStream()).use { document ->
             val resources = document.documentElement.childNodes
             val resourcesLength = resources.length

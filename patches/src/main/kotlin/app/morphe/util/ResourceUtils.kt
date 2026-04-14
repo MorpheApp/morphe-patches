@@ -34,6 +34,8 @@
  * applicable to this file.
  */
 
+@file:Suppress("unused")
+
 package app.morphe.util
 
 import app.morphe.patcher.patch.PatchException
@@ -119,10 +121,10 @@ fun ResourcePatchContext.copyResources(
 
             val resourceFile = "${resourceGroup.resourceDirectoryName}/$resource"
             val stream = inputStreamFromBundledResource(sourceResourceDirectory, resourceFile)
-            if (stream == null) {
-                throw IllegalArgumentException("Could not find resource: $resourceFile " +
-                        "in directory: $sourceResourceDirectory")
-            }
+                ?: throw IllegalArgumentException(
+                    "Could not find resource: $resourceFile " +
+                            "in directory: $sourceResourceDirectory"
+                )
             Files.copy(
                 stream,
                 targetResourceDirectory.resolve(resourceFile).toPath(),
@@ -237,17 +239,6 @@ internal fun Element.copyAttributesFrom(oldContainer: Element) {
         setAttribute(attr.name, attr.value)
     }
 }
-
-/**
- * @return The play store services version.
- */
-internal fun ResourcePatchContext.findPlayStoreServicesVersion(): Int =
-    document("res/values/integers.xml").use { document ->
-        document.documentElement.childNodes.findElementByAttributeValueOrThrow(
-            "name",
-            "google_play_services_version",
-        ).textContent.toInt()
-    }
 
 internal fun String.trimIndentMultiline() =
     this.split("\n")

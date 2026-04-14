@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
 package app.morphe.patches.music.layout.branding.header
@@ -32,7 +34,7 @@ private val headerDrawableNames = arrayOf(
     "ytm_logo_ringo2"
 )
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/ChangeHeaderPatch;"
 
 private val changeHeaderBytecodePatch = bytecodePatch {
@@ -48,7 +50,7 @@ private val changeHeaderBytecodePatch = bytecodePatch {
                 addInstructions(
                     literalIndex + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getHeaderDrawableId(I)I
+                        invoke-static { v$register }, $EXTENSION_CLASS->getHeaderDrawableId(I)I
                         move-result v$register
                     """
                 )

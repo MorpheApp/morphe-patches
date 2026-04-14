@@ -19,7 +19,7 @@ import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.spoof.spoofVideoStreamsPatch
 
 val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
-    extensionClassDescriptor = "Lapp/morphe/extension/music/patches/spoof/SpoofVideoStreamsPatch;",
+    extensionClass = "Lapp/morphe/extension/music/patches/spoof/SpoofVideoStreamsPatch;",
     mainActivityOnCreateFingerprint = MusicActivityOnCreateFingerprint,
     fixMediaFetchHotConfig = { is_7_16_or_greater },
     fixMediaFetchHotConfigAlternative = { is_8_11_or_greater && !is_8_15_or_greater },
@@ -52,7 +52,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         selectable = true,
                     ),
                     SwitchPreference("morphe_spoof_video_streams_disable_player_js_update"),
-                    TextPreference("morphe_spoof_video_streams_player_js_hash"),
+                    TextPreference("morphe_spoof_video_streams_player_js_hash_value"),
                 )
             )
         )

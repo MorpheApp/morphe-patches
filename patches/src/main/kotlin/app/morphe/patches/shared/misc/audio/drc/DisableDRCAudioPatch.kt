@@ -17,7 +17,7 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/DisableDRCAudioPatch;"
 
 @Suppress("unused")
@@ -36,9 +36,7 @@ internal fun disableDRCAudioPatch(
             SwitchPreference("morphe_disable_drc_audio")
         )
 
-        val compressionRatioInstructionMatches = CompressionRatioFingerprint.match(
-            FormatStreamModelConstructorFingerprint.originalClassDef
-        ).instructionMatches
+        val compressionRatioInstructionMatches = CompressionRatioFingerprint.instructionMatches
 
         val formatField =
             compressionRatioInstructionMatches.first().instruction.getReference<FieldReference>()!!
@@ -60,7 +58,7 @@ internal fun disableDRCAudioPatch(
                     addInstructionsWithLabels(
                         0,
                         """
-                            invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableDrcAudio()Z
+                            invoke-static {}, $EXTENSION_CLASS->disableDrcAudio()Z
                             move-result v0
                             if-eqz v0, :exit
 
@@ -95,7 +93,7 @@ internal fun disableDRCAudioPatch(
         VolumeNormalizationConfigFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->disableDrcAudioFeatureFlag(Z)Z"
+                "$EXTENSION_CLASS->disableDrcAudioFeatureFlag(Z)Z"
             )
         }
     }

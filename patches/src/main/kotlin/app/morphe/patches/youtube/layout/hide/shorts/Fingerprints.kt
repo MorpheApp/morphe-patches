@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.layout.hide.shorts
@@ -46,20 +48,21 @@ internal object ReelWatchFragmentInitPlaybackFingerprint : Fingerprint(
     )
 )
 
+private object SetPivotBarVisibilityParentFingerprint : Fingerprint(
+    parameters = listOf("Z"),
+    filters = listOf(
+        string("FEnotifications_inbox")
+    )
+)
+
 internal object SetPivotBarVisibilityFingerprint : Fingerprint(
+    classFingerprint = SetPivotBarVisibilityParentFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z"),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.CHECK_CAST,
         Opcode.IF_EQZ,
-    )
-)
-
-internal object SetPivotBarVisibilityParentFingerprint : Fingerprint(
-    parameters = listOf("Z"),
-    filters = listOf(
-        string("FEnotifications_inbox")
     )
 )
 

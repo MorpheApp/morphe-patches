@@ -1,4 +1,18 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches;
+
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -11,7 +25,7 @@ public class AutoCaptionsPatch {
         WITHOUT_VOLUME_ONLY
     }
 
-    private static volatile boolean captionsButtonStatus;
+    private static final AtomicBoolean captionsButtonStatus = new AtomicBoolean(false);
 
     /**
      * Injection point.
@@ -25,7 +39,7 @@ public class AutoCaptionsPatch {
             // Disable auto-captioning only
             // when 'withVolumeAutoCaptioningEnabled'
             // field is false
-            return !captionsButtonStatus || original;
+            return !captionsButtonStatus.get() || original;
         }
 
         return original;
@@ -47,8 +61,17 @@ public class AutoCaptionsPatch {
 
     /**
      * Injection point.
+     * Called before {@link #disableAutoCaptions(boolean)}.
      */
-    public static void setCaptionsButtonStatus(boolean status) {
-        captionsButtonStatus = status;
+    public static void newVideoStarted(VideoInformation.PlaybackController ignoredPlayerController) {
+        captionsButtonStatus.set(false);
+    }
+
+    /**
+     * Injection point.
+     * Called after {@link #disableAutoCaptions(boolean)}.
+     */
+    public static void videoInformationLoaded() {
+        Utils.runOnMainThreadDelayed(() -> captionsButtonStatus.compareAndSet(false, true), 150);
     }
 }

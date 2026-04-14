@@ -8,7 +8,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/spoof/SpoofDeviceDimensionsPatch;"
 
 val spoofDeviceDimensionsPatch = bytecodePatch(
@@ -39,7 +39,7 @@ val spoofDeviceDimensionsPatch = bytecodePatch(
                     4 to "MaxHeightOrWidth", // p4 = max width
                 ).map { (parameter, method) ->
                     """
-                        invoke-static { p$parameter }, $EXTENSION_CLASS_DESCRIPTOR->get$method(I)I
+                        invoke-static { p$parameter }, $EXTENSION_CLASS->get$method(I)I
                         move-result p$parameter
                     """
                 }.joinToString("\n") { it },

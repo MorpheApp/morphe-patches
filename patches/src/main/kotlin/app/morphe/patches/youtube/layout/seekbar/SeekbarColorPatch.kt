@@ -11,8 +11,6 @@ import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoColorOverrideHook
 import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_34_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_19_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -29,7 +27,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/theme/SeekbarColorPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/SeekbarColorPatch;"
 
 val seekbarColorPatch = bytecodePatch(
     description = "Hide or set a custom seekbar color",
@@ -45,7 +43,7 @@ val seekbarColorPatch = bytecodePatch(
         fun MutableMethod.addColorChangeInstructions(index: Int) {
             insertLiteralOverride(
                 index,
-                "$EXTENSION_CLASS_DESCRIPTOR->getVideoPlayerSeekbarColor(I)I"
+                "$EXTENSION_CLASS->getVideoPlayerSeekbarColor(I)I"
             )
         }
 
@@ -68,14 +66,14 @@ val seekbarColorPatch = bytecodePatch(
                 addInstructions(
                     0,
                     """
-                        invoke-static { v$colorRegister }, $EXTENSION_CLASS_DESCRIPTOR->getVideoPlayerSeekbarClickedColor(I)I
+                        invoke-static { v$colorRegister }, $EXTENSION_CLASS->getVideoPlayerSeekbarClickedColor(I)I
                         move-result v$colorRegister
                     """
                 )
             }
         }
 
-        lithoColorOverrideHook(EXTENSION_CLASS_DESCRIPTOR, "getLithoColor")
+        lithoColorOverrideHook(EXTENSION_CLASS, "getLithoColor")
 
         // 19.25+ changes
 
@@ -90,68 +88,45 @@ val seekbarColorPatch = bytecodePatch(
         // If hiding feed seekbar thumbnails, then turn off the cairo gradient
         // of the watch history menu items as they use the same gradient as the
         // player and there is no easy way to distinguish which to use a transparent color.
-        if (is_19_34_or_greater) {
-            WatchHistoryMenuUseProgressDrawableFingerprint.let {
-                it.method.apply {
-                    val index = it.instructionMatches[1].index
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+        WatchHistoryMenuUseProgressDrawableFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches[1].index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                    addInstructions(
-                        index + 1,
-                        """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->showWatchHistoryProgressDrawable(Z)Z
-                            move-result v$register            
-                        """
-                    )
-                }
+                addInstructions(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->showWatchHistoryProgressDrawable(Z)Z
+                        move-result v$register            
+                    """
+                )
             }
         }
 
         LithoLinearGradientFingerprint.method.addInstructions(
             0,
             """
-                invoke-static/range { p4 .. p5 },  $EXTENSION_CLASS_DESCRIPTOR->getLithoLinearGradient([I[F)[I
+                invoke-static/range { p4 .. p5 },  $EXTENSION_CLASS->getLithoLinearGradient([I[F)[I
                 move-result-object p4   
             """
         )
 
-        val PlayerFingerprint: Fingerprint
-        val checkGradientCoordinates: Boolean
-        if (is_19_49_or_greater) {
-            PlayerFingerprint = PlayerLinearGradientFingerprint
-            checkGradientCoordinates = true
-        } else {
-            PlayerFingerprint = PlayerLinearGradientLegacyFingerprint
-            checkGradientCoordinates = false
-        }
-
-        PlayerFingerprint.let {
+        PlayerLinearGradientFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                 addInstructions(
                     index + 1,
-                    if (checkGradientCoordinates) {
-                        """
-                           invoke-static { v$register, p0, p1 }, $EXTENSION_CLASS_DESCRIPTOR->getPlayerLinearGradient([III)[I
-                           move-result-object v$register
-                        """
-                    } else {
-                        """
-                           invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getPlayerLinearGradient([I)[I
-                           move-result-object v$register
-                        """
-                    }
+                    """
+                       invoke-static { v$register, p0, p1 }, $EXTENSION_CLASS->getPlayerLinearGradient([III)[I
+                       move-result-object v$register
+                    """
                 )
             }
         }
 
         // region apply seekbar custom color to splash screen animation.
-
-        if (!is_19_34_or_greater) {
-            return@execute // 19.25 does not have a cairo launch animation.
-        }
 
         // Hook the splash animation to set the seekbar color.
         YouTubeActivityOnCreateFingerprint.method.apply {
@@ -168,7 +143,7 @@ val seekbarColorPatch = bytecodePatch(
                 replaceInstruction(
                     index,
                     "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->setSplashAnimationLottie(Lcom/airbnb/lottie/LottieAnimationView;I)V"
+                        "$EXTENSION_CLASS->setSplashAnimationLottie(Lcom/airbnb/lottie/LottieAnimationView;I)V"
                 )
             }
         }
@@ -191,6 +166,7 @@ val seekbarColorPatch = bytecodePatch(
                 MutableMethodImplementation(2),
             ).toMutable().apply {
                 addInstructions(
+                    0,
                     """
                         invoke-virtual { p0, p1 }, Lcom/airbnb/lottie/LottieAnimationView;->$setAnimationIntName(I)V
                         return-void
@@ -201,9 +177,7 @@ val seekbarColorPatch = bytecodePatch(
             val factoryStreamClass: CharSequence
             val factoryStreamName: CharSequence
             val factoryStreamReturnType: CharSequence
-            LottieCompositionFactoryFromJsonInputStreamFingerprint.match(
-                LottieCompositionFactoryZipFingerprint.originalClassDef
-            ).originalMethod.apply {
+            LottieCompositionFactoryFromJsonInputStreamFingerprint.originalMethod.apply {
                 factoryStreamClass = definingClass
                 factoryStreamName = name
                 factoryStreamReturnType = returnType
@@ -235,6 +209,7 @@ val seekbarColorPatch = bytecodePatch(
                 val methodOpcode = if (is_21_02_or_greater) "invoke-direct" else "invoke-virtual"
 
                 addInstructions(
+                    0,
                     """
                         invoke-static { p1, p2 }, $factoryStreamClass->$factoryStreamName(Ljava/io/InputStream;Ljava/lang/String;)$factoryStreamReturnType
                         move-result-object v0

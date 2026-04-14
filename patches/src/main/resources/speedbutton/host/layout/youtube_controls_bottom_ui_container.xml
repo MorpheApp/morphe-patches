@@ -18,7 +18,6 @@
             style="@style/YouTubePlayerButton"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:longClickable="false"
             android:paddingTop="6.0dp"
             android:paddingBottom="0dp"
             android:scaleType="center"

@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.layout.hide.shelves
@@ -14,7 +16,7 @@ import app.morphe.patches.youtube.misc.litho.observer.layoutReloadObserverPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 
-private const val FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/HorizontalShelvesFilter;"
 
 internal val hideHorizontalShelvesPatch = bytecodePatch {
@@ -28,6 +30,6 @@ internal val hideHorizontalShelvesPatch = bytecodePatch {
     )
 
     execute {
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
     }
 }

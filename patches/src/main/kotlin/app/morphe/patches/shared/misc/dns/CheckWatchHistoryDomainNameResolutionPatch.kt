@@ -6,7 +6,7 @@ import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/CheckWatchHistoryDomainNameResolutionPatch;"
 
 /**
@@ -27,7 +27,7 @@ internal fun checkWatchHistoryDomainNameResolutionPatch(
 
         mainActivityFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->checkDnsResolver(Landroid/app/Activity;)V",
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->checkDnsResolver(Landroid/app/Activity;)V",
         )
     }
 }

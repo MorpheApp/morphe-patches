@@ -22,6 +22,13 @@ internal object PrimeMethodFingerprint : Fingerprint(
 // YouTube / YT Music fingerprints
 //
 
+internal object GoogleApiActivityOnCreateFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/gms/common/api/GoogleApiActivity;",
+    name = "onCreate",
+    returnType = "V",
+    parameters = listOf("Landroid/os/Bundle;")
+)
+
 // Flag is present in YT 20.23, but bold icons are missing and forcing them crashes the app.
 // 20.31 is the first target with all the bold icons present.
 internal object BoldIconsFeatureFlagFingerprint : Fingerprint(

@@ -2,6 +2,7 @@ package app.morphe.patches.all.misc.transformation
 
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
+import app.morphe.util.fiveRegisters
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.ClassDef
 import com.android.tools.smali.dexlib2.iface.instruction.Instruction
@@ -14,7 +15,7 @@ interface IMethodCall {
     val definedClassName: String
     val methodName: String
     val methodParams: Array<String>
-    val returnType: String
+    val methodReturnType: String
 
     /**
      * Replaces an invoke-virtual instruction with an invoke-static instruction,
@@ -32,20 +33,18 @@ interface IMethodCall {
     fun replaceInvokeVirtualWithExtension(
         definingClassDescriptor: String,
         method: MutableMethod,
-        instruction: Instruction35c,
         instructionIndex: Int,
     ) {
-        val args = with(instruction) {
-            arrayOf(registerC, registerD, registerE, registerF, registerG)
-                .take(registerCount).joinToString(", ") { "v$it" }
-        }
-        val replacementMethod =
-            "$methodName(${definedClassName}${methodParams.joinToString(separator = "")})$returnType"
+        method.apply {
+            val args = fiveRegisters(instructionIndex)
+            val replacementMethod =
+                "$methodName(${definedClassName}${methodParams.joinToString(separator = "")})$methodReturnType"
 
-        method.replaceInstruction(
-            instructionIndex,
-            "invoke-static { $args }, $definingClassDescriptor->$replacementMethod",
-        )
+            replaceInstruction(
+                instructionIndex,
+                "invoke-static { $args }, $definingClassDescriptor->$replacementMethod",
+            )
+        }
     }
 }
 
@@ -56,7 +55,7 @@ inline fun <reified E> fromMethodReference(
     search.definedClassName == methodReference.definingClass &&
         search.methodName == methodReference.name &&
         methodReference.parameterTypes.toTypedArray().contentEquals(search.methodParams) &&
-        search.returnType == methodReference.returnType
+        search.methodReturnType == methodReference.returnType
 }
 
 inline fun <reified E> filterMapInstruction35c(

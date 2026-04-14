@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 package app.morphe.patches.reddit.ad
 
@@ -20,7 +22,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideAdsPatch;"
 
 @Suppress("unused")
@@ -48,7 +50,7 @@ val hideAdsPatch = bytecodePatch(
                     addInstructions(
                         index,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->hideOldPostAds(Ljava/util/List;)Ljava/util/List;
+                            invoke-static { v$register }, $EXTENSION_CLASS->hideOldPostAds(Ljava/util/List;)Ljava/util/List;
                             move-result-object v$register
                         """
                     )
@@ -59,9 +61,7 @@ val hideAdsPatch = bytecodePatch(
         val immutableListBuilderReference = ImmutableListBuilderFingerprint.instructionMatches
             .last().getInstruction<ReferenceInstruction>().reference
 
-        AdPostSectionConstructorFingerprint.match(
-            AdPostSectionToStringFingerprint.originalClassDef
-        ).let {
+        AdPostSectionConstructorFingerprint.let {
             it.method.apply {
                 val sectionIndex = it.instructionMatches.first().index
                 val sectionRegister = getInstruction<FiveRegisterInstruction>(
@@ -71,7 +71,7 @@ val hideAdsPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     sectionIndex,
                     """
-                        invoke-static { v$sectionRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideNewPostAds(Ljava/util/List;)Ljava/util/List;
+                        invoke-static { v$sectionRegister }, $EXTENSION_CLASS->hideNewPostAds(Ljava/util/List;)Ljava/util/List;
                         move-result-object v$sectionRegister
                         if-nez v$sectionRegister, :ignore
                         new-instance v$sectionRegister, Ljava/util/ArrayList;
@@ -92,7 +92,7 @@ val hideAdsPatch = bytecodePatch(
         CommentsViewModelAdLoaderFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideCommentAds()Z
+                invoke-static { }, $EXTENSION_CLASS->hideCommentAds()Z
                 move-result v0
                 if-eqz v0, :show
                 return-void
@@ -108,6 +108,7 @@ val hideAdsPatch = bytecodePatch(
                 .findFieldFromToString(", adsLoadCompleted=")
 
             val commentsAdStateConstructorFingerprint = Fingerprint(
+                definingClass = CommentsAdStateToStringFingerprint.originalClassDef.type,
                 name = "<init>",
                 returnType = "V",
                 filters = listOf(
@@ -118,9 +119,7 @@ val hideAdsPatch = bytecodePatch(
                 )
             )
 
-            commentsAdStateConstructorFingerprint.match(
-                CommentsAdStateToStringFingerprint.originalClassDef
-            ).let {
+            commentsAdStateConstructorFingerprint.let {
                 it.method.apply {
                     val index = it.instructionMatches.last().index
                     val register =
@@ -129,7 +128,7 @@ val hideAdsPatch = bytecodePatch(
                     addInstructions(
                         index,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->hideCommentAds(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS->hideCommentAds(Z)Z
                             move-result v$register
                         """
                     )
@@ -139,6 +138,6 @@ val hideAdsPatch = bytecodePatch(
 
         // endregion
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

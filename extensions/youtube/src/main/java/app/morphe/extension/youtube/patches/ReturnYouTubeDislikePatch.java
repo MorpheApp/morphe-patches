@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches;
@@ -425,7 +427,10 @@ public class ReturnYouTubeDislikePatch {
     public static void newVideoLoaded(String videoId) {
         try {
             if (!Settings.RYD_ENABLED.get()) return;
-            Objects.requireNonNull(videoId);
+            if (videoId == null || videoId.isBlank()) {
+                Logger.printDebug(() -> "Ignoring blank videoId");
+                return;
+            }
 
             PlayerType currentPlayerType = PlayerType.getCurrent();
             final boolean isNoneHiddenOrSlidingMinimized = currentPlayerType.isNoneHiddenOrSlidingMinimized();

@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 package app.morphe.patches.reddit.layout.trendingtoday
 
@@ -14,7 +16,7 @@ import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideTrendingTodayShelfPatch;"
 
 @Suppress("unused")
@@ -28,14 +30,31 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 
     execute {
 
+        // region patch for set content languages.
+
+        LocaleLanguageManagerConstructorFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-virtual/range { p0 .. p0 }, ${LocaleLanguageManagerContentLanguagesFingerprint.method}
+                        move-result-object v0
+                        invoke-static { v0 }, $EXTENSION_CLASS->setContentLanguages(Ljava/util/List;)V
+                    """
+                )
+            }
+        }
+
+        // endregion
+
         // region patch for hide trending today title.
 
-        SearchTypeaheadListDefaultPresentationConstructorFingerprint.match(
-            SearchTypeaheadListDefaultPresentationToStringFingerprint.classDef
-        ).method.addInstructions(
+        SearchTypeaheadListDefaultPresentationConstructorFingerprint.method.addInstructions(
             1,
             """
-                invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->removeTrendingLabel(Ljava/lang/String;)Ljava/lang/String;
+                invoke-static { p1 }, $EXTENSION_CLASS->removeTrendingLabel(Ljava/lang/String;)Ljava/lang/String;
                 move-result-object p1
             """
         )
@@ -48,7 +67,7 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
             method.addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideTrendingTodayShelf()Z
+                    invoke-static { }, $EXTENSION_CLASS->hideTrendingTodayShelf()Z
                     move-result v0
                     if-eqz v0, :ignore
                     return-void
@@ -67,6 +86,6 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 
         // endregion
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

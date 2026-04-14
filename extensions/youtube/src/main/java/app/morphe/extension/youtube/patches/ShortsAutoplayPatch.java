@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.extension.youtube.patches;
@@ -93,20 +95,9 @@ public class ShortsAutoplayPatch {
      */
     public static Enum<?> changeShortsRepeatBehavior(Enum<?> original) {
         try {
-            final boolean autoplay;
-
-            if (isAppInBackgroundPiPMode()) {
-                if (!VersionCheckPatch.IS_19_34_OR_GREATER) {
-                    // 19.34+ is required to set background play behavior.
-                    Logger.printDebug(() -> "PiP Shorts not supported, using original repeat behavior");
-
-                    return original;
-                }
-
-                autoplay = Settings.SHORTS_AUTOPLAY_BACKGROUND.get();
-            } else {
-                autoplay = Settings.SHORTS_AUTOPLAY.get();
-            }
+            final boolean autoplay = isAppInBackgroundPiPMode()
+                    ? Settings.SHORTS_AUTOPLAY_BACKGROUND.get()
+                    : Settings.SHORTS_AUTOPLAY.get();
 
             ShortsLoopBehavior autoPlayBehavior = IS_21_10_OR_GREATER
                     ? ShortsLoopBehavior.AUTO_ADVANCE

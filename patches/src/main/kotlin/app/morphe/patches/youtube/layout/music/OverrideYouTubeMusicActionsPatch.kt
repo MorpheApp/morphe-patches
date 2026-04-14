@@ -1,6 +1,8 @@
 /*
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
 package app.morphe.patches.youtube.layout.music
@@ -22,7 +24,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicActionsPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicActionsPatch;"
 
 private fun overrideYouTubeMusicManifestPatch() = resourcePatch{
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -70,7 +72,7 @@ val overrideYouTubeMusicActionsPatch = bytecodePatch(
         )
 
         classDefForEach { classDef ->
-            if (classDef.type == EXTENSION_CLASS_DESCRIPTOR) return@classDefForEach
+            if (classDef.type == EXTENSION_CLASS) return@classDefForEach
             var needsPatch = false
             classDef.methods.forEach { method ->
                 if (method.implementation?.instructions?.any {
@@ -115,7 +117,7 @@ val overrideYouTubeMusicActionsPatch = bytecodePatch(
 
                             mutableMethod.replaceInstruction(
                                 index,
-                                "$invokeString, $EXTENSION_CLASS_DESCRIPTOR->$methodDescriptor"
+                                "$invokeString, $EXTENSION_CLASS->$methodDescriptor"
                             )
                         }
                     }

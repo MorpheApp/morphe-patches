@@ -23,7 +23,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset">Réinitialiser</string>
   <string name="morphe_settings_reset_color">Réinitialiser la couleur</string>
   <string name="morphe_settings_color_invalid">Couleur invalide</string>
-  <string name="morphe_settings_restart_title">Redémarrage requis</string>
+  <string name="morphe_settings_restart_title">Redémarrage nécessaire</string>
   <string name="morphe_settings_restart_dialog_message">Redémarrez l\'application pour que cette modification prenne effet.</string>
   <string name="morphe_settings_restart">Redémarrer</string>
   <!-- String is also duplicated in Reddit import / export preference -->
@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import_reset">Réinitialisation des paramètres Morphe aux valeurs par défaut</string>
   <string name="morphe_settings_import_success">%d paramètres importés</string>
   <string name="morphe_settings_import_failure_parse">Importation échouée : %s</string>
-  <string name="morphe_settings_search_hint">Recherche de paramètres</string>
+  <string name="morphe_settings_search_hint">Rechercher des paramètres</string>
   <string name="morphe_settings_search_no_results_title">Aucun résultat trouvé pour \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Essayez un autre mot-clé</string>
   <string name="morphe_settings_search_recent_searches">Recherches récentes</string>
@@ -61,6 +61,12 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_language_DEFAULT">Langue de l\'application</string>
   <string name="morphe_pref_import_export_title">Importer / Exporter</string>
   <string name="morphe_pref_import_export_summary">Importer / Exporter les paramètres Morphe</string>
+  <string name="morphe_settings_import_file">Importer depuis un fichier</string>
+  <string name="morphe_settings_import_file_success">Paramètres importés avec succès, appuyez sur Enregistrer pour appliquer</string>
+  <string name="morphe_settings_import_file_failed">Échec de l\'importation des paramètres</string>
+  <string name="morphe_settings_export_file">Exporter vers un fichier</string>
+  <string name="morphe_settings_export_file_success">Paramètres exportés avec succès</string>
+  <string name="morphe_settings_export_file_failed">Échec de l\'exportation des paramètres</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Vous utilisez la dernière version des Patchs Morphe &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Vous utilisez la version des Patchs Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Mise à jour disponible : &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pour mettre à jour vos patchs, utilisez Morphe pour repatcher cette application</string>
@@ -70,39 +76,53 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_settings_about_links_website">Site Web</string>
   <string name="morphe_settings_about_links_donate">Faire un don</string>
   <string name="morphe_settings_about_links_translations">Traductions</string>
+  <string name="morphe_settings_about_links_credits">Crédits</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">À jour</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Mise à jour disponible</string>
+  <string name="morphe_settings_about_contributors_current">Développement en cours</string>
+  <string name="morphe_settings_about_contributors_prior">Développements antérieurs</string>
+  <string name="morphe_settings_about_links_morphe">Développement actif</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Mentions de licence</string>
+  <string name="morphe_settings_about_licenses_loading">Chargement...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Débogage</string>
   <string name="morphe_debug_screen_summary">Activez ou désactivez les options de débogage</string>
   <string name="morphe_debug_title">Journaux de débogage</string>
   <string name="morphe_debug_summary_on">Les journaux de débogage sont activés</string>
   <string name="morphe_debug_summary_off">Les journaux de débogage sont désactivés</string>
-  <string name="morphe_debug_stacktrace_title">Journaliser les traces de pile</string>
-  <string name="morphe_debug_stacktrace_summary_on">Les journaux de débogage incluent la trace de pile</string>
-  <string name="morphe_debug_stacktrace_summary_off">Les journaux de débogage n\'incluent pas la trace de pile</string>
+  <string name="morphe_debug_stacktrace_title">Journal de débogage de trace de pile</string>
+  <string name="morphe_debug_stacktrace_summary_on">Les journaux de débogage incluent les traces de pile</string>
+  <string name="morphe_debug_stacktrace_summary_off">Les journaux de débogage n\'incluent pas les traces de pile</string>
   <string name="morphe_debug_toast_on_error_title">Afficher une notification en cas d\'erreur Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Une notification toast est affiché en cas d\'erreur</string>
   <string name="morphe_debug_toast_on_error_summary_off">Aucune notification toast n\'est affiché en cas d\'erreur</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Désactiver les notifications toast d’erreur masque toutes les notifications d’erreur de Morphe.
 
 Vous ne serez plus averti en cas d’événements inattendus."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exporter les journaux de débogage</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Copie les journaux de débogage Morphe dans le presse-papiers</string>
+  <string name="morphe_debug_export_logs_title">Exporter les journaux de débogage</string>
+  <string name="morphe_debug_export_logs_summary">Exporter les journaux de débogage de Morphe</string>
+  <string name="morphe_debug_export_logs_file">Exporter vers un fichier</string>
+  <string name="morphe_debug_export_logs_success">Les journaux de débogage ont été exportés avec succès</string>
+  <string name="morphe_debug_export_logs_failed">Échec de l\'exportation des journaux de débogage</string>
+  <string name="morphe_debug_logs_search_hint">Rechercher des journaux de débogage...</string>
+  <string name="morphe_debug_export_logs_clear">Effacer</string>
   <string name="morphe_debug_logs_disabled">La journalisation de débogage est désactivée</string>
-  <string name="morphe_debug_logs_none_found">Aucuns journaux trouvés</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Journaux copiés</string>
-  <string name="morphe_debug_logs_failed_to_export">Échec de l\'exportation des journaux : %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Effacer les journaux de débogage</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Efface tous les journaux de débogage Morphe stockés</string>
-  <string name="morphe_debug_logs_clear_toast">Journaux effacés</string>
-  <string name="morphe_debug_feature_flags_manager_title">Gestionnaire de drapeaux de fonctionnalités</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Gérer les drapeaux de fonctionnalités booléens</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Drapeaux actifs (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Drapeaux bloqués (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des drapeaux...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Drapeaux enregistrés</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Drapeaux réinitialisés</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Drapeaux copiés dans le presse-papiers</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l\'application pour utiliser cette fonctionnalité</string>
+  <string name="morphe_debug_logs_none_found">Aucun journal de débogage trouvé</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Journaux de débogage copiés</string>
+  <string name="morphe_debug_logs_failed_to_export">Échec de l\'exportation des journaux de débogage : %s</string>
+  <string name="morphe_debug_logs_clear_toast">Journaux de débogage effacés</string>
+  <string name="morphe_debug_feature_flags_manager_title">Gestionnaire de flags de fonctionnalités</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Gérer les flags de fonctionnalités booléens</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Flags de fonctionnalités actifs (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Flags de fonctionnalités bloqués (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des flags de fonctionnalités…</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Flags de fonctionnalités enregistrés</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Flags de fonctionnalités réinitialisés</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Flags de fonctionnalités copiés dans le presse-papiers</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l’application pour appliquer ce paramètre</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Ouvrir les paramètres MicroG</string>
@@ -114,7 +134,7 @@ Vous ne serez plus averti en cas d’événements inattendus."</string>
 
 Suivez le guide 'Don’t kill my app' pour votre téléphone et appliquez les instructions à votre installation de MicroG.
 
-Cela est indispensable pour que l’application fonctionne correctement."</string>
+Cela est nécessaire pour que l’application fonctionne correctement."</string>
   <string name="gms_core_dialog_open_website_text">Ouvrir le site Web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Les optimisations de la batterie doivent être désactivées pour MicroG pour éviter des problèmes.
 
@@ -124,4 +144,22 @@ Appuyez sur le bouton Continuer et autorisez la modification des optimisations.
 
 "</string>
   <string name="gms_core_dialog_continue_text">Continuer</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Boîte de dialogue d\'optimisation de la batterie</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">La boîte de dialogue d\'optimisation de la batterie de MicroG est affichée</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">La boîte de dialogue d\'optimisation de la batterie de MicroG n\'est pas affichée</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Désactiver cela masquera l'invite d'optimisation de la batterie de MicroG.
+
+Si les optimisations de la batterie ne sont pas modifiées, vous pourriez rencontrer les problèmes suivants :
+• L'application peut se fermer de manière aléatoire
+• Les notifications peuvent ne pas fonctionner
+• La lecture en arrière-plan peut ne pas fonctionner"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Alerte expérimentale 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Vous utilisez une version expérimentale de l’application ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Attendez-vous à des comportements inhabituels ou à des bugs non identifiés pendant que nous peaufinons les patchs pour cette version de l’application.
+&lt;br/&gt;&lt;br/&gt;
+Si vous souhaitez une expérience la plus stable possible, &lt;b&gt;désinstallez&lt;/b&gt; cette version et patchez la version recommandée de l’application ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Je veux l\'expérimentale</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Je veux la stable</string>
 </resources>

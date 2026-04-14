@@ -4,6 +4,8 @@
  *
  * Original hard forked code:
  * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
 package app.morphe.patches.youtube.video.quality
@@ -27,7 +29,7 @@ import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/RememberVideoQualityPatch;"
 
 val rememberVideoQualityPatch = bytecodePatch {
@@ -67,12 +69,13 @@ val rememberVideoQualityPatch = bytecodePatch {
             SwitchPreference("morphe_remember_video_quality_last_selected_toast")
         ))
 
-        onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
+        onCreateHook(EXTENSION_CLASS, "newVideoStarted")
 
         val initialResolutionField = PlaybackStartParametersToStringFingerprint.method
                 .findFieldFromToString(FIXED_RESOLUTION_STRING)
 
         val playbackStartParametersConstructorFingerprint = Fingerprint(
+            classFingerprint = PlaybackStartParametersToStringFingerprint,
             name = "<init>",
             filters = listOf(
                 fieldAccess(
@@ -83,9 +86,7 @@ val rememberVideoQualityPatch = bytecodePatch {
         )
 
         // Inject a call to override initial video quality.
-        playbackStartParametersConstructorFingerprint.match(
-            PlaybackStartParametersToStringFingerprint.classDef
-        ).let {
+        playbackStartParametersConstructorFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index
                 val register = getInstruction<TwoRegisterInstruction>(index).registerA
@@ -93,7 +94,7 @@ val rememberVideoQualityPatch = bytecodePatch {
                 addInstructions(
                     index,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getInitialVideoQuality(Lj$/util/Optional;)Lj$/util/Optional;
+                        invoke-static { v$register }, $EXTENSION_CLASS->getInitialVideoQuality(Lj$/util/Optional;)Lj$/util/Optional;
                         move-result-object v$register
                     """
                 )
@@ -101,11 +102,9 @@ val rememberVideoQualityPatch = bytecodePatch {
         }
 
         // Inject a call to remember the selected quality for Shorts.
-        VideoQualityItemOnClickFingerprint.match(
-            VideoQualityItemOnClickParentFingerprint.classDef
-        ).method.addInstruction(
+        VideoQualityItemOnClickFingerprint.method.addInstruction(
             0,
-            "invoke-static { p3 }, $EXTENSION_CLASS_DESCRIPTOR->userChangedShortsQuality(I)V"
+            "invoke-static { p3 }, $EXTENSION_CLASS->userChangedShortsQuality(I)V"
         )
 
         // Inject a call to remember the user selected quality for regular videos.
@@ -116,7 +115,7 @@ val rememberVideoQualityPatch = bytecodePatch {
 
                 addInstruction(
                     index + 1,
-                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->userChangedQuality(I)V",
+                    "invoke-static { v$register }, $EXTENSION_CLASS->userChangedQuality(I)V",
                 )
             }
         }

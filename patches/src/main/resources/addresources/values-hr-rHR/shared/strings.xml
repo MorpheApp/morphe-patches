@@ -60,6 +60,12 @@ Za prevođenje novih jezika ili poboljšanje postojećih prijevoda posjetite mor
   <string name="morphe_language_DEFAULT">Jezik aplikacije</string>
   <string name="morphe_pref_import_export_title">Uvoz / Izvoz</string>
   <string name="morphe_pref_import_export_summary">Uvoz / Izvoz Morphe postavki</string>
+  <string name="morphe_settings_import_file">Uvezi iz datoteke</string>
+  <string name="morphe_settings_import_file_success">Postavke su uspješno uvezene, dodirnite Spremi za primjenu</string>
+  <string name="morphe_settings_import_file_failed">Uvoz postavki nije uspio</string>
+  <string name="morphe_settings_export_file">Izvezi u datoteku</string>
+  <string name="morphe_settings_export_file_success">Postavke su uspješno izvezene</string>
+  <string name="morphe_settings_export_file_failed">Izvoz postavki nije uspio</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Koristite najnoviju verziju Morphe Patcheva &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Koristite verziju Morphe Patcheva &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Dostupno ažuriranje: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Za ažuriranje patcheva, koristite Morphe za ponovno patchanje ove aplikacije</string>
@@ -69,39 +75,33 @@ Za prevođenje novih jezika ili poboljšanje postojećih prijevoda posjetite mor
   <string name="morphe_settings_about_links_website">Web stranica</string>
   <string name="morphe_settings_about_links_donate">Donirajte</string>
   <string name="morphe_settings_about_links_translations">Prijevod</string>
+  <string name="morphe_settings_about_links_credits">Zasluge</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Ažurno</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Dostupno ažuriranje</string>
+  <string name="morphe_settings_about_contributors_current">Trenutni razvoj</string>
+  <string name="morphe_settings_about_contributors_prior">Prijašnji razvoj</string>
+  <string name="morphe_settings_about_links_morphe">Aktivni razvoj</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Otklanjanje pogrešaka</string>
   <string name="morphe_debug_screen_summary">Omogućite ili onemogućite opcije otklanjanja pogrešaka</string>
   <string name="morphe_debug_title">Zapisivanje otklanjanja grešaka</string>
   <string name="morphe_debug_summary_on">Zapisivanje otklanjanja grešaka omogućeno</string>
   <string name="morphe_debug_summary_off">Zapisivanje otklanjanja grešaka onemogućeno</string>
-  <string name="morphe_debug_stacktrace_title">Tragovi stoga zapisnika</string>
-  <string name="morphe_debug_stacktrace_summary_on">Zapisnici o otklanjanju pogrešaka uključuju trag stoga</string>
-  <string name="morphe_debug_stacktrace_summary_off">Zapisnici o otklanjanju pogrešaka ne uključuju trag stoga</string>
   <string name="morphe_debug_toast_on_error_title">Prikaži obavijest o Morphe pogrešci</string>
   <string name="morphe_debug_toast_on_error_summary_on">Obavijest se pojavljuje ako se pojavi pogreška</string>
   <string name="morphe_debug_toast_on_error_summary_off">Obavijest se ne pojavljuje ako se pojavi pogreška</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Isključivanjem obavijesti o pogreškama skrivaju se sve Morphe obavijesti o pogreškama.
 
 Nećete biti obaviješteni ni o kakvim neočekivanim događajima."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Izvoz zapisnika o otklanjanju pogrešaka</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Kopira Morphe zapisnike za otklanjanje grešaka u međuspremnik</string>
+  <string name="morphe_debug_export_logs_title">Izvoz zapisnika o otklanjanju pogrešaka</string>
+  <string name="morphe_debug_export_logs_file">Izvezi u datoteku</string>
+  <string name="morphe_debug_export_logs_clear">Izbriši</string>
   <string name="morphe_debug_logs_disabled">Zapisivanje otklanjanja grešaka onemogućeno</string>
-  <string name="morphe_debug_logs_none_found">Zapisnici nisu pronađeni</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Zapisnici su kopirani</string>
-  <string name="morphe_debug_logs_failed_to_export">Izvoz zapisnika nije uspio: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Izbriši zapise o otklanjanju grešaka</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Briše sve pohranjene Morphe zapise otklanjanja grešaka</string>
-  <string name="morphe_debug_logs_clear_toast">Zapisnici su izbrisani</string>
   <string name="morphe_debug_feature_flags_manager_title">Upravitelj zastavica značajki</string>
   <string name="morphe_debug_feature_flags_manager_summary">Upravljanje zastavicama logičkih značajki</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktivne zastavice (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokirane zastavice (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Pretraži zastavice...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Zastavice spremljene</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Zastavice resetirane</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Zastavice kopirane u međuspremnik</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Ponovo pokrenite aplikaciju da biste koristili ovu značajku</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otvorite MicroG postavke </string>
@@ -121,4 +121,6 @@ Onemogućavanje optimizacija baterije za MicroG neće negativno utjecati na potr
 
 Dodirnite tipku za nastavak i dopustite promjene optimizacije."</string>
   <string name="gms_core_dialog_continue_text">Nastavi</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentalno upozorenje 🚨</string>
 </resources>
