@@ -24,7 +24,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicActionsPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicButtonsPatch;"
 
 private fun overrideYouTubeMusicManifestPatch() = resourcePatch{
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -45,9 +45,9 @@ private fun overrideYouTubeMusicManifestPatch() = resourcePatch{
 }
 
 @Suppress("unused")
-val overrideYouTubeMusicActionsPatch = bytecodePatch(
-    name = "Override YouTube Music actions",
-    description = "Overrides the YouTube Music button to open Morphe Music directly.",
+val overrideYouTubeMusicButtonsPatch = bytecodePatch(
+    name = "Override YouTube Music buttons",
+    description = "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",
 ) {
     dependsOn(settingsPatch)
     dependsOn(overrideYouTubeMusicManifestPatch())
@@ -60,7 +60,7 @@ val overrideYouTubeMusicActionsPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
-                    SwitchPreference(key = "morphe_override_youtube_music_button"),
+                    SwitchPreference(key = "morphe_override_youtube_music_buttons"),
                     TextPreference(key = "morphe_music_package_name")
                 )
             )

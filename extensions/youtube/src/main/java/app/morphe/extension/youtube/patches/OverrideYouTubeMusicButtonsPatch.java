@@ -14,7 +14,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class OverrideYouTubeMusicActionsPatch {
+public class OverrideYouTubeMusicButtonsPatch {
 
     private static final String YOUTUBE_MUSIC_PACKAGE_NAME = "com.google.android.apps.youtube.music";
     private static final String HIJACK_FLAG = "morphe_hijacked";
@@ -22,7 +22,7 @@ public class OverrideYouTubeMusicActionsPatch {
     public static Intent overrideSetPackage(Intent intent, String packageName) {
         if (intent == null) return null;
 
-        if (!Settings.OVERRIDE_YOUTUBE_MUSIC_BUTTON.get()) {
+        if (!Settings.OVERRIDE_YOUTUBE_MUSIC_BUTTONS.get()) {
             return intent.setPackage(packageName);
         }
 
@@ -55,7 +55,7 @@ public class OverrideYouTubeMusicActionsPatch {
     public static Intent overrideSetData(Intent intent, Uri uri) {
         if (intent == null) return null;
         if (uri == null) return intent.setData(null);
-        if (!Settings.OVERRIDE_YOUTUBE_MUSIC_BUTTON.get()) {
+        if (!Settings.OVERRIDE_YOUTUBE_MUSIC_BUTTONS.get()) {
             return intent.setData(uri);
         }
 
