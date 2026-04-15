@@ -205,6 +205,9 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_video_title_title">Hide video title</string>
     <string name="morphe_hide_video_title_summary_on">Video title in player overlay is hidden</string>
     <string name="morphe_hide_video_title_summary_off">Video title in player overlay is shown</string>
+
+    <string name="morphe_hide_description_components_screen_title">Video description</string>
+    <string name="morphe_hide_description_components_screen_summary">Hide or show video description components</string>
     <string name="morphe_hide_ai_generated_video_summary_section_title">Hide \'AI-generated video summary\'</string>
     <string name="morphe_hide_ai_generated_video_summary_section_summary_on">AI-generated video summary section is hidden</string>
     <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI-generated video summary section is shown</string>
@@ -261,17 +264,18 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_music_section_title">Hide Music</string>
     <string name="morphe_hide_music_section_summary_on">Music section is hidden</string>
     <string name="morphe_hide_music_section_summary_off">Music section is shown</string>
+    <string name="morphe_hide_quizzes_section_title">Hide Quizzes</string>
+    <string name="morphe_hide_quizzes_section_summary_on">Quizzes section is hidden</string>
+    <string name="morphe_hide_quizzes_section_summary_off">Quizzes section is shown</string>
     <string name="morphe_hide_subscribe_button_title">Hide Subscribe button</string>
     <string name="morphe_hide_subscribe_button_summary_on">Subscribe button is hidden</string>
     <string name="morphe_hide_subscribe_button_summary_off">Subscribe button is shown</string>
     <string name="morphe_hide_transcript_section_title">Hide Transcript</string>
     <string name="morphe_hide_transcript_section_summary_on">Transcript section is hidden</string>
     <string name="morphe_hide_transcript_section_summary_off">Transcript section is shown</string>
-    <string name="morphe_hide_quizzes_section_title">Hide Quizzes</string>
-    <string name="morphe_hide_quizzes_section_summary_on">Quizzes section is hidden</string>
-    <string name="morphe_hide_quizzes_section_summary_off">Quizzes section is shown</string>
-    <string name="morphe_hide_description_components_screen_title">Video description</string>
-    <string name="morphe_hide_description_components_screen_summary">Hide or show video description components</string>
+    <string name="morphe_hide_video_details_section_title">Hide \'Video details\'</string>
+    <string name="morphe_hide_video_details_section_summary_on">Video details section is hidden</string>
+    <string name="morphe_hide_video_details_section_summary_off">Video details section is shown</string>
 
     <string name="morphe_hide_filter_bar_screen_title">Filter bar</string>
     <string name="morphe_hide_filter_bar_screen_summary">Hide or show the filter bar in feeds, related videos, search results, and watch history</string>

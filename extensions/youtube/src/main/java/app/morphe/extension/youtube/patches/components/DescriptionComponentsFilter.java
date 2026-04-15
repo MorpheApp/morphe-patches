@@ -82,6 +82,11 @@ final class DescriptionComponentsFilter extends Filter {
                 "hype_points_factoid"
         );
 
+        final StringFilterGroup videoDetails = new StringFilterGroup(
+                Settings.HIDE_VIDEO_DETAILS_SECTION,
+                "linear_layout.e"
+        );
+
         final StringFilterGroup infoCardsSection = new StringFilterGroup(
                 Settings.HIDE_INFO_CARDS_SECTION,
                 INFOCARDS_SECTION_PATH
@@ -123,7 +128,8 @@ final class DescriptionComponentsFilter extends Filter {
                 macroMarkersCarousel,
                 playlistSection,
                 subscribeButton,
-                transcriptSection
+                transcriptSection,
+                videoDetails
         );
     }
 
