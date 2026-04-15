@@ -30,11 +30,13 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/VideoActionButtonsFilter;"
+private const val QUICK_ACTIONS_FILTER =
+    "Lapp/morphe/extension/youtube/patches/components/QuickActionButtonsFilter;"
 
 @Suppress("unused")
 val hideVideoActionButtonsPatch = bytecodePatch(
     name = "Hide video action buttons",
-    description = "Adds options to hide action buttons (such as the Download button) under videos."
+    description = "Adds options to hide quick actions and video action buttons (such as the Download button) under videos."
 ) {
     dependsOn(
         settingsPatch,
@@ -69,10 +71,29 @@ val hideVideoActionButtonsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_stop_ads_button"),
                     SwitchPreference("morphe_hide_thanks_button"),
                 )
+            ),
+            PreferenceScreenPreference(
+                key = "morphe_quick_actions_screen",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_hide_quick_actions_ask_button"),
+                    SwitchPreference("morphe_hide_quick_actions_comment_button"),
+                    SwitchPreference("morphe_hide_quick_actions_dislike_button"),
+                    SwitchPreference("morphe_hide_quick_actions_like_button"),
+                    SwitchPreference("morphe_hide_quick_actions_live_chat_button"),
+                    SwitchPreference("morphe_hide_quick_actions_mix_playlist_button"),
+                    SwitchPreference("morphe_hide_quick_actions_more_button"),
+                    SwitchPreference("morphe_hide_quick_actions_more_videos_button"),
+                    SwitchPreference("morphe_hide_quick_actions_playlist_button"),
+                    SwitchPreference("morphe_hide_quick_actions_save_button"),
+                    SwitchPreference("morphe_hide_quick_actions_share_button"),
+                    SwitchPreference("morphe_hide_quick_actions")
+                )
             )
         )
 
         addLithoFilter(EXTENSION_FILTER)
+        addLithoFilter(QUICK_ACTIONS_FILTER)
 
         hookTreeNodeResult("$EXTENSION_FILTER->onLazilyConvertedElementLoaded")
 
