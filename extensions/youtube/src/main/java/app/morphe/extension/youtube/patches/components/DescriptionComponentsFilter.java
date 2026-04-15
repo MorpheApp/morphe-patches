@@ -20,6 +20,8 @@ final class DescriptionComponentsFilter extends Filter {
     private final StringFilterGroup featuredLinksSection;
     private final StringFilterGroup featuredVideosSection;
     private final StringFilterGroup subscribeButton;
+    private final StringFilterGroup videoDetails;
+    private final ByteArrayFilterGroup videoDetailsBuffer;
 
     public DescriptionComponentsFilter() {
         final StringFilterGroup aiGeneratedVideoSummarySection = new StringFilterGroup(
@@ -82,11 +84,6 @@ final class DescriptionComponentsFilter extends Filter {
                 "hype_points_factoid"
         );
 
-        final StringFilterGroup videoDetails = new StringFilterGroup(
-                Settings.HIDE_VIDEO_DETAILS_SECTION,
-                "linear_layout.e"
-        );
-
         final StringFilterGroup infoCardsSection = new StringFilterGroup(
                 Settings.HIDE_INFO_CARDS_SECTION,
                 INFOCARDS_SECTION_PATH
@@ -114,6 +111,16 @@ final class DescriptionComponentsFilter extends Filter {
                         "learning_concept_macro_markers_carousel_shelf",
                         "learning-concept"
                 )
+        );
+
+        videoDetails = new StringFilterGroup(
+                null,
+                "linear_layout.e"
+        );
+
+        videoDetailsBuffer = new ByteArrayFilterGroup(
+                Settings.HIDE_VIDEO_DETAILS_SECTION,
+                "section_header"
         );
 
         addPathCallbacks(
@@ -155,6 +162,10 @@ final class DescriptionComponentsFilter extends Filter {
         if (matchedGroup == playlistSection) {
             if (contentIndex != 0) return false;
             return Settings.HIDE_EXPLORE_SECTION.get() || playlistSectionGroupList.check(buffer).isFiltered();
+        }
+
+        if (matchedGroup == videoDetails) {
+            return videoDetailsBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == macroMarkersCarousel) {
