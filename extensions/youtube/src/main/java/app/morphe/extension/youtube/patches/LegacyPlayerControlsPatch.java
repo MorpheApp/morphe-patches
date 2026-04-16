@@ -37,6 +37,13 @@ public class LegacyPlayerControlsPatch {
     /**
      * Injection point.
      */
+    public static boolean useNullBottomGradient() {
+        return RESTORE_OLD_PLAYER_BUTTONS;
+    }
+
+    /**
+     * Injection point.
+     */
     public static void hideBottomGradientScrim(ImageView bottomGradientScrim) {
         if (!RESTORE_OLD_PLAYER_BUTTONS) {
             return;
@@ -95,6 +102,9 @@ public class LegacyPlayerControlsPatch {
      * Injection point.
      */
     public static boolean usePlayerBottomControlsExploderLayout(boolean original) {
-        return !RESTORE_OLD_PLAYER_BUTTONS;
+        if (RESTORE_OLD_PLAYER_BUTTONS) {
+            return false;
+        }
+        return original;
     }
 }

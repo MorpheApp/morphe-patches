@@ -1395,12 +1395,12 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_open_system_share_sheet_title">Otevířet systémový panel sdílení</string>
   <string name="morphe_open_system_share_sheet_summary_on">Otevírá systémový panel sdílení</string>
   <string name="morphe_open_system_share_sheet_summary_off">Otevírá panel sdílení v aplikaci</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Přepsat tlačítko YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Tlačítko YouTube Music otevře váš cílový hudební aplikaci</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Tlačítko YouTube Music otevře nativní aplikaci</string>
-  <string name="morphe_music_package_name_title">Název balíku Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Název balíku cílové hudební aplikace</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Přepsání tlačítek YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Tlačítka YouTube Music otevřou vaši cílovou hudební aplikaci</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Tlačítka YouTube Music otevřou oficiální aplikaci</string>
+  <string name="morphe_music_package_name_title">Název balíčku cílové hudební aplikace</string>
+  <string name="morphe_music_package_name_summary">Název balíčku vaší nainstalované cílové hudební aplikace</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Změnit úvodní stránku</string>
   <string name="morphe_change_start_page_entry_default">Výchozí</string>

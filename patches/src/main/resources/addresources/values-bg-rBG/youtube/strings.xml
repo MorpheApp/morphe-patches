@@ -1390,12 +1390,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">Отвори общия табло за споделяне</string>
   <string name="morphe_open_system_share_sheet_summary_on">Отваря общия табло за споделяне</string>
   <string name="morphe_open_system_share_sheet_summary_off">Отваря вътрешно табло за споделяне</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Презапиши бутонът YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Бутонът YouTube Music отваря вашето целево приложение за музика</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Думата за YouTube Music отваря приложението</string>
-  <string name="morphe_music_package_name_title">Име на пакета на Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Име на пакета на целова музикалното приложение</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Замени бутоните на YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Бутоните на YouTube Music отварят целевото ви музикално приложение</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Бутоните на YouTube Music отварят официалното приложение</string>
+  <string name="morphe_music_package_name_title">Име на пакета на целевото музикално приложение</string>
+  <string name="morphe_music_package_name_summary">Име на пакета на инсталираното приложение за музика</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промянете стартова страница</string>
   <string name="morphe_change_start_page_entry_default">По подразбиране</string>

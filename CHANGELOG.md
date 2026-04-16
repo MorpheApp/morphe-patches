@@ -1,3 +1,23 @@
+# [1.24.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.24.0-dev.8...v1.24.0-dev.9) (2026-04-16)
+
+
+### Features
+
+* **YouTube Music:** Add `Track crossfade` patch ([#1065](https://github.com/MorpheApp/morphe-patches/issues/1065)) ([697c794](https://github.com/MorpheApp/morphe-patches/commit/697c79412dd74ffd09dfedbc8458ba7ce3e2938b))
+
+# [1.24.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.24.0-dev.7...v1.24.0-dev.8) (2026-04-15)
+
+
+### Bug Fixes
+
+* **YouTube - Override YouTube Music buttons:** Support launching arbitrary third-party music clients ([#1177](https://github.com/MorpheApp/morphe-patches/issues/1177)) ([7514bf7](https://github.com/MorpheApp/morphe-patches/commit/7514bf7a7e8f0377f7804c420eeaf02106617f2d))
+
+
+### Features
+
+* **Reddit:** Add experimental support for `2026.15.1` ([2a6442e](https://github.com/MorpheApp/morphe-patches/commit/2a6442ebbad12d858b30fb2f2594cb06c2e4a0d0))
+* **YouTube Music:** Add experimental support for `9.15.50` ([2399828](https://github.com/MorpheApp/morphe-patches/commit/239982892abbffd6e8e25d310692fb2e860b2c24))
+
 # [1.24.0-dev.7](https://github.com/MorpheApp/morphe-patches/compare/v1.24.0-dev.6...v1.24.0-dev.7) (2026-04-14)
 
 

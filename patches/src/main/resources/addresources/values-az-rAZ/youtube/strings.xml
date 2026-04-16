@@ -1155,12 +1155,7 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_open_system_share_sheet_title">Sistem paylaşım səhifəsin aç</string>
   <string name="morphe_open_system_share_sheet_summary_on">Sistem paylaşım səhifəsi açılır</string>
   <string name="morphe_open_system_share_sheet_summary_off">Tətbiqdəki paylaşım səhifəsi açılır</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">YouTube Music düyməsin nəzərə alma</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music düyməsi hədəf musiqi tətbiqinizi açır</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music düyməsi yerli tətbiqi açır</string>
-  <string name="morphe_music_package_name_title">Morphe Music paketi adı</string>
-  <string name="morphe_music_package_name_summary">Hədəf musiqi tətbiqinin paket adı</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlatma səhifəsini dəyişdir</string>
   <string name="morphe_change_start_page_entry_default">İlkin</string>

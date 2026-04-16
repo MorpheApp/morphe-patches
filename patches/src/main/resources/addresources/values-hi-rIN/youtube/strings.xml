@@ -1390,12 +1390,12 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_open_system_share_sheet_title">शेयरशीट खोलें</string>
   <string name="morphe_open_system_share_sheet_summary_on">सिस्टम शेयरशीट खोलता है</string>
   <string name="morphe_open_system_share_sheet_summary_off">अपनै शेयरशीट खोलता है</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">ओवरराइड यूट्यूब म्यूजिक बटन</string>
-  <string name="morphe_override_youtube_music_button_summary_on">यूट्यूब म्यूजिक बटन आपकी लक्षित म्यूजिक एप्प पर खुलता है</string>
-  <string name="morphe_override_youtube_music_button_summary_off">यूट्यूब म्यूज़िक बटन नेटिव एप्प को खोलता है</string>
-  <string name="morphe_music_package_name_title">मॉर्फ़ म्यूज़िक पैकेज नाम</string>
-  <string name="morphe_music_package_name_summary">टार्गेट म्यूज़िक एप्प के पैकेज नाम</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">YouTube Music बटन ओवरराइड करें</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music बटन आपके लक्ष्य संगीत ऐप को खोलते हैं</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music बटन आधिकारिक ऐप को खोलते हैं</string>
+  <string name="morphe_music_package_name_title">लक्ष्य संगीत ऐप पैकेज नाम</string>
+  <string name="morphe_music_package_name_summary">आपकी स्थापित लक्ष्य संगीत ऐप का पैकेज नाम</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">पृष्ठ बदलने की शुरुआत</string>
   <string name="morphe_change_start_page_entry_default">डिफ़ॉल्ट</string>

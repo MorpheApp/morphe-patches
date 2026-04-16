@@ -79,8 +79,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_expandable_card_title">動画下の展開可能なカードの表示</string>
   <string name="morphe_hide_expandable_card_entry_1">すべて表示</string>
   <string name="morphe_hide_expandable_card_entry_2">商品のカードのみ非表示</string>
-  <string name="morphe_hide_expandable_card_entry_3">AI による概要のカードのみ非表示</string>
-  <string name="morphe_hide_expandable_card_entry_4">商品のカード &amp; AI による概要のカードのみ非表示</string>
+  <string name="morphe_hide_expandable_card_entry_3">概要 (AI) のカードのみ非表示</string>
+  <string name="morphe_hide_expandable_card_entry_4">商品のカード &amp; 概要 (AI) のカードのみ非表示</string>
   <string name="morphe_hide_expandable_card_entry_5">すべて非表示</string>
   <string name="morphe_hide_floating_microphone_button_title">音声入力のフローティング ボタンを非表示</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">検索時の音声入力のフローティング ボタン (マイクアイコン) は表示されません</string>
@@ -1399,12 +1399,12 @@ Automotive レイアウト
   <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
   <string name="morphe_open_system_share_sheet_summary_on">システムの共有メニューを開きます</string>
   <string name="morphe_open_system_share_sheet_summary_off">アプリ内の共有メニューを開きます</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">YouTube Music ボタンの動作を上書き</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music ボタンは、設定した音楽アプリを呼び出します</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music ボタンは、純正アプリを呼び出します</string>
-  <string name="morphe_music_package_name_title">Morphe Music のパッケージ名</string>
-  <string name="morphe_music_package_name_summary">YouTube Music の代わりに呼び出す音楽アプリのパッケージ名</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">YouTube Music ボタンの動作を上書き</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music ボタンは設定した音楽アプリを呼び出します</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music ボタンは純正アプリを呼び出します</string>
+  <string name="morphe_music_package_name_title">音楽アプリのパッケージ名</string>
+  <string name="morphe_music_package_name_summary">YouTube Music の代わりに呼び出すインストール済みの音楽アプリのパッケージ名</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">スタート画面を変更</string>
   <string name="morphe_change_start_page_entry_default">デフォルト</string>

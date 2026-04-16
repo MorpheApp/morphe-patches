@@ -7,7 +7,7 @@ import org.w3c.dom.Element
 internal val enableAndroidDebuggingPatch = resourcePatch(
     // name = "Enable Android debugging",
     description = "Enables Android developer debugging capabilities. Including this patch can slow down the app.",
-    default = false
+    default = true
 ) {
     execute {
         document("AndroidManifest.xml").use { document ->

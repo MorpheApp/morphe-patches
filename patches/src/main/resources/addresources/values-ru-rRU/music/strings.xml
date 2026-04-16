@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Скрыть видеорекламу</string>
   <string name="morphe_music_hide_video_ads_summary_on">Видеореклама в плеере скрыта</string>
   <string name="morphe_music_hide_video_ads_summary_off">Видеореклама в плеере показана</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Плавный переход</string>
+  <string name="morphe_music_crossfade_screen_summary">Плавное переключение между треками</string>
+  <string name="morphe_music_crossfade_enabled_title">Включить переход с затуханием</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Треки плавно переходят один в другой</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Переход с затуханием отключен</string>
+  <string name="morphe_music_crossfade_curve_title">Кривая сглаживания</string>
+  <string name="morphe_music_crossfade_curve_summary">Как изменяется громкость между треками</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Равномерная мощность</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Нежное удержание</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Мягкое изменение</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Плавная S-образная кривая</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Длительность перекрестного сглаживания</string>
+  <string name="morphe_crossfade_duration_250ms">250 миллисекунд</string>
+  <string name="morphe_crossfade_duration_500ms">500 миллисекунд</string>
+  <string name="morphe_crossfade_duration_750ms">750 миллисекунд</string>
+  <string name="morphe_crossfade_duration_1000ms">1 секунда</string>
+  <string name="morphe_crossfade_duration_2000ms">2 секунды</string>
+  <string name="morphe_crossfade_duration_3000ms">3 секунды</string>
+  <string name="morphe_crossfade_duration_4000ms">4 секунды</string>
+  <string name="morphe_crossfade_duration_5000ms">5 секунд</string>
+  <string name="morphe_crossfade_duration_6000ms">6 секунд</string>
+  <string name="morphe_crossfade_duration_7000ms">7 секунд</string>
+  <string name="morphe_crossfade_duration_8000ms">8 секунд</string>
+  <string name="morphe_crossfade_duration_9000ms">9 секунд</string>
+  <string name="morphe_crossfade_duration_10000ms">10 секунд</string>
+  <string name="morphe_music_crossfade_on_skip_title">Перекрестное сглаживание при ручном пропуске</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Перекрестное сглаживание воспроизводится при ручном пропуске треков</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Ручные пропуски не будут использовать перекрестное сглаживание</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Перекрестное сглаживание при автоматическом переходе</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Перекрестное сглаживание воспроизводится, когда трек заканчивается и переходит к следующему</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Автоматическое переключение не будет использовать перекрестное сглаживание</string>
+  <string name="morphe_music_crossfade_session_control_title">Управление сеансом</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Долгое нажатие на кнопку перемешивания позволяет приостановить или возобновить перекрестное сглаживание"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Управление сеансом отключено</string>
+  <string name="morphe_music_crossfade_about_title">Об интеграции</string>
+  <string name="morphe_music_crossfade_about_summary">"Перекрестное сглаживание доступно с YouTube Music 8.x
+
+Долгое нажатие на кнопку перемешивания позволяет отключить/включить
+
+Разработка функции VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Включить постоянный повтор</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Постоянный повтор включен</string>

@@ -1398,12 +1398,12 @@ Hvis det senere slås fra, anbefales det at rydde app-dataene for at forhindre U
   <string name="morphe_open_system_share_sheet_title">Åbne systemdelingsark</string>
   <string name="morphe_open_system_share_sheet_summary_on">Åbner systemdelingsark</string>
   <string name="morphe_open_system_share_sheet_summary_off">Åbner delingsark i appen</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Overwrite YouTube Music button</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music-knappen åbner dit mål musikapp</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music knappen åbner den indbyggede app</string>
-  <string name="morphe_music_package_name_title">Morphe Music pakkenavn</string>
-  <string name="morphe_music_package_name_summary">Pakkenavn for den målrettede musik-app</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Omskriv YouTube Music-knapper</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music-knapper åbner din målægningsmusik-app</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music-knapper åbner den officielle app</string>
+  <string name="morphe_music_package_name_title">Mål musikapps pakkens navn</string>
+  <string name="morphe_music_package_name_summary">Pakkenavn på din installerede mål musik app</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Skift startside</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>

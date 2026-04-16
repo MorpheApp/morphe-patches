@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Reklamên wîdyoyê veşêre</string>
   <string name="morphe_music_hide_video_ads_summary_on">Reklamên wîdyoyê veşartin</string>
   <string name="morphe_music_hide_video_ads_summary_off">Reklamên wîdyoyê nîşan darın</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Gerhezkirin</string>
+  <string name="morphe_music_crossfade_screen_summary">Şanîyên te serreke biçin hev</string>
+  <string name="morphe_music_crossfade_enabled_title">Gerhezkirin çêbike</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Şanîyên te serreke biçin hev</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Gerhezkirin qewî ye</string>
+  <string name="morphe_music_crossfade_curve_title">Pêwaya girîng</string>
+  <string name="morphe_music_crossfade_curve_summary">Fêrbûna sesê di nav rêzên odeyê de çawa ye</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Hêz yekser</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Dûrî kêmasî</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Saçek ku pêşveçûye</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">S-dûrî xemilî</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Dirêjahiya girtina firqeyî</string>
+  <string name="morphe_crossfade_duration_250ms">250 mîlîseconde</string>
+  <string name="morphe_crossfade_duration_500ms">500 mîlîseconde</string>
+  <string name="morphe_crossfade_duration_750ms">750 mîlîseconde</string>
+  <string name="morphe_crossfade_duration_1000ms">1 saniye</string>
+  <string name="morphe_crossfade_duration_2000ms">2 senîye</string>
+  <string name="morphe_crossfade_duration_3000ms">3 senîye</string>
+  <string name="morphe_crossfade_duration_4000ms">4 senîye</string>
+  <string name="morphe_crossfade_duration_5000ms">5 senîye</string>
+  <string name="morphe_crossfade_duration_6000ms">6 çerk</string>
+  <string name="morphe_crossfade_duration_7000ms">7 senîye</string>
+  <string name="morphe_crossfade_duration_8000ms">8 senîye</string>
+  <string name="morphe_crossfade_duration_9000ms">9 senîye</string>
+  <string name="morphe_crossfade_duration_10000ms">10 senîye</string>
+  <string name="morphe_music_crossfade_on_skip_title">Veşartinê ser dîmenê destûrî</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Girtina firqeyî dide xwarê de dîmenê destûrî lê werin ser fereh</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Dîmenê destûrî wê girtina firqeyî nebêje</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Veşartinê ser pêşandanê otomatîk</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Girtina firqeyî dide xwarê de pêşandanê otomatîk lê werin ser fereh</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Pêşandanê otomatîk wê girtina firqeyî nebêje</string>
+  <string name="morphe_music_crossfade_session_control_title">Kontrola seansê</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Dirêja şilikeki dirêj ser butona pêşveçûyî bitarîne da pêşbazîyê rawestîne anê ferman bike"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Kontrola seansê neyê tu pêştirin</string>
+  <string name="morphe_music_crossfade_about_title">Derbarê</string>
+  <string name="morphe_music_crossfade_about_summary">"Girtina firqeyî bi YouTube Music 8.x re heye
+
+Dirêja şilikeki dirêj ser butona pêşveçûyî da tu pêştirîne/veşartinê bikin
+
+Birkirina taybetî bi VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Tekrar davim berdewam bike</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Tekrar davim berdewam kirin</string>

@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Videoadvertenties verbergen</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videoadvertenties zijn verborgen</string>
   <string name="morphe_music_hide_video_ads_summary_off">Videoadvertenties worden weergegeven</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Crossfade</string>
+  <string name="morphe_music_crossfade_screen_summary">Naadloos nummers in elkaar laten overgaan</string>
+  <string name="morphe_music_crossfade_enabled_title">Crossfade inschakelen</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Nummers crossfaden in elkaar</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Crossfade staat uitgeschakeld</string>
+  <string name="morphe_music_crossfade_curve_title">Fade curve</string>
+  <string name="morphe_music_crossfade_curve_summary">Hoe het volume tussen nummers overgaat</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Gelijke verdeling</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtiele vertraging</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Zachte overgang</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Soepele S-curve</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Crossfade-duur</string>
+  <string name="morphe_crossfade_duration_250ms">250 milliseconden</string>
+  <string name="morphe_crossfade_duration_500ms">500 milliseconden</string>
+  <string name="morphe_crossfade_duration_750ms">750 milliseconden</string>
+  <string name="morphe_crossfade_duration_1000ms">1 seconde</string>
+  <string name="morphe_crossfade_duration_2000ms">2 seconden</string>
+  <string name="morphe_crossfade_duration_3000ms">3 seconden</string>
+  <string name="morphe_crossfade_duration_4000ms">4 seconden</string>
+  <string name="morphe_crossfade_duration_5000ms">5 seconden</string>
+  <string name="morphe_crossfade_duration_6000ms">6 seconden</string>
+  <string name="morphe_crossfade_duration_7000ms">7 seconden</string>
+  <string name="morphe_crossfade_duration_8000ms">8 seconden</string>
+  <string name="morphe_crossfade_duration_9000ms">9 seconden</string>
+  <string name="morphe_crossfade_duration_10000ms">10 seconden</string>
+  <string name="morphe_music_crossfade_on_skip_title">Crossfade bij handmatig overslaan</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Crossfade speelt af wanneer handmatig nummers worden overgeslagen</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Handmatig overslaan zonder crossfade</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Crossfade bij automatisch doorspoelen</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Crossfade speelt af wanneer een nummer eindigt en doorspoelt naar het volgende</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Automatisch doorspoelen zonder crossfade</string>
+  <string name="morphe_music_crossfade_session_control_title">Sessiebediening</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Lang indrukken op de shuffle-knop om crossfade te pauzeren of te hervatten"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Sessiebediening is uitgeschakeld</string>
+  <string name="morphe_music_crossfade_about_title">Over</string>
+  <string name="morphe_music_crossfade_about_summary">"Crossfade beschikbaar met YouTube Music 8.x
+
+Lang indrukken op de shuffle-knop om crossfade uit/aan te zetten.
+
+Feature implementatie door VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Permanent herhalen inschakelen</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Permanent herhalen is ingeschakeld</string>

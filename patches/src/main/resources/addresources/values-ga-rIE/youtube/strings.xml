@@ -1392,12 +1392,12 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_open_system_share_sheet_title">Ainm clár comhroinnt an chórais</string>
   <string name="morphe_open_system_share_sheet_summary_on">Oscail clár comhroinnt an chórais</string>
   <string name="morphe_open_system_share_sheet_summary_off">Oscail clár comhroinnt sa chóras</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Sáraigh cnaipe gníomhaíochta YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Cnaipe YouTube Music a oscailte do do app ceol</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Gníomh YouTube Music atáirgeann an app dúchais</string>
-  <string name="morphe_music_package_name_title">Ainmhe an pacáiste Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Ainm an pacáiste an app ceol do tharlaíonn</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Réaltaí YouTube Music a leasú</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Osclaíocht na gnólachtaí YouTube Music chuig do app ceannúsach</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Osclaíocht na gnólachtaí YouTube Music chuig an app oifigiúil</string>
+  <string name="morphe_music_package_name_title">Ainm pacáiste de app ceannúsach</string>
+  <string name="morphe_music_package_name_summary">Ainm an phacáiste de d\'aip cheoil suiteáilte</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Athraigh an leathanach tosaigh</string>
   <string name="morphe_change_start_page_entry_default">Réamhshocrú</string>

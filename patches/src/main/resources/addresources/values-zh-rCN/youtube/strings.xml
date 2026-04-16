@@ -1403,12 +1403,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">打开系统分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_on">打开系统分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_off">打开应用内分享面板</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">覆盖YouTube Music按钮</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music按钮打开您的目标音乐应用</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube 音乐按钮打开原生应用</string>
-  <string name="morphe_music_package_name_title">Morphe 音乐包名</string>
-  <string name="morphe_music_package_name_summary">目标音乐应用的包名</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">覆盖 YouTube Music 按钮</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music 按钮打开您的目标音乐应用</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music 按钮打开官方应用</string>
+  <string name="morphe_music_package_name_title">目标音乐应用包名</string>
+  <string name="morphe_music_package_name_summary">您已安装的目标音乐应用的包名</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">更改起始页</string>
   <string name="morphe_change_start_page_entry_default">默认</string>

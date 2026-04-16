@@ -19,6 +19,8 @@ dependencies {
     // Required due to smali, or build fails. Can be removed once smali is bumped.
     implementation(libs.guava)
 
+    implementation(libs.morphe.patches.library)
+
     // Android API stubs defined here.
     compileOnly(project(":patches:stub"))
 }

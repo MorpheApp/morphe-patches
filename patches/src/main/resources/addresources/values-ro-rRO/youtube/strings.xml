@@ -1390,12 +1390,12 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_open_system_share_sheet_title">Deschide meniul de partajare al sistemului</string>
   <string name="morphe_open_system_share_sheet_summary_on">Deschide meniul de partajare al sistemului</string>
   <string name="morphe_open_system_share_sheet_summary_off">Deschide meniul de partajare intern</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Suprascrie butonul YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Butonul YouTube Music deschide aplicația ta de muzică țintă</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Butonul YouTube Music deschide aplicația nativă</string>
-  <string name="morphe_music_package_name_title">Numele pachetului Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Numele pachetului aplicației de muzică țintă</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Suprascrie butoanele YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Butoanele YouTube Music deschid aplicația ta de muzică țintă</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Butoanele YouTube Music deschid aplicația oficială</string>
+  <string name="morphe_music_package_name_title">Numele pachetului aplicației de muzică țintă</string>
+  <string name="morphe_music_package_name_summary">Numele pachetului aplicației dvs. de descărcare externă instalate</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Schimbă pagina de start</string>
   <string name="morphe_change_start_page_entry_default">Implicit</string>

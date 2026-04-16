@@ -1388,12 +1388,12 @@ Hatin binveşirin, ew tê mesêr kirin ka danayê peşêbîyê şêniyel ki bug-
   <string name="morphe_open_system_share_sheet_title">Kaşeta parvekirina sistemê vekin</string>
   <string name="morphe_open_system_share_sheet_summary_on">Kaşeta parvekirina sistemê vedike</string>
   <string name="morphe_open_system_share_sheet_summary_off">Kaşeta parvekirina navîn vedike</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Butona YouTube Music serdest bike</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Butona YouTube Music sepan muzîkî we bo sererîş dike</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Butona YouTube Music sepanê natîv ve dike</string>
-  <string name="morphe_music_package_name_title">Navê pakêtê Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Navê pakêtê ya sepan muzîkî bo sererîş</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Butonên YouTube Music-ê serdike </string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Butonên YouTube Music-ê sepanê muzîkê hedefa wezêre vedike</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Butonên YouTube Music-ê sepanê fermî vedike</string>
+  <string name="morphe_music_package_name_title">Navê pakêtê sepeya muzîkê hedef</string>
+  <string name="morphe_music_package_name_summary">Navê pakêta sepanê ya muzîkê ya ku we saz kiriye</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Guherîna rûpelê destpêkê</string>
   <string name="morphe_change_start_page_entry_default">Bixwe</string>

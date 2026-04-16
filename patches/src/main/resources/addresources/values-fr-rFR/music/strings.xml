@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Masquer les publicités vidéo</string>
   <string name="morphe_music_hide_video_ads_summary_on">Les publicités vidéo sont masquées</string>
   <string name="morphe_music_hide_video_ads_summary_off">Les publicités vidéo sont affichées</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Effacer la transition</string>
+  <string name="morphe_music_crossfade_screen_summary">Fusionner les pistes en douceur</string>
+  <string name="morphe_music_crossfade_enabled_title">Activer l\'effacement de transition</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Les pistes s\'effacent en douceur</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">L\'effacement de transition est désactivé</string>
+  <string name="morphe_music_crossfade_curve_title">Courbe d\'atténuation</string>
+  <string name="morphe_music_crossfade_curve_summary">Comment le volume passe-t-il d\'un morceau à l\'autre</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Puissance égale</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Maintien subtil</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Atténuation douce</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Courbe S fluide</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Durée du fondu croisé</string>
+  <string name="morphe_crossfade_duration_250ms">250 millisecondes</string>
+  <string name="morphe_crossfade_duration_500ms">500 millisecondes</string>
+  <string name="morphe_crossfade_duration_750ms">750 millisecondes</string>
+  <string name="morphe_crossfade_duration_1000ms">1 seconde</string>
+  <string name="morphe_crossfade_duration_2000ms">2 secondes</string>
+  <string name="morphe_crossfade_duration_3000ms">3 secondes</string>
+  <string name="morphe_crossfade_duration_4000ms">4 secondes</string>
+  <string name="morphe_crossfade_duration_5000ms">5 secondes</string>
+  <string name="morphe_crossfade_duration_6000ms">6 secondes</string>
+  <string name="morphe_crossfade_duration_7000ms">7 secondes</string>
+  <string name="morphe_crossfade_duration_8000ms">8 secondes</string>
+  <string name="morphe_crossfade_duration_9000ms">9 secondes</string>
+  <string name="morphe_crossfade_duration_10000ms">10 secondes</string>
+  <string name="morphe_music_crossfade_on_skip_title">Fondu croisé sur passage manuel</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Le fondu croisé se produit lorsque vous sautez manuellement vers la piste suivante</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Les passages manuels ne provoqueront pas de fondu croisé</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Fondu croisé sur passage automatique</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Le fondu croisé se produit lorsqu\'une piste se termine et passe à la suivante</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Le passage automatique ne provoquera pas de fondu croisé</string>
+  <string name="morphe_music_crossfade_session_control_title">Contrôle de session</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Appuyez longuement sur le bouton aléatoire pour mettre en pause ou reprendre le fondu croisé"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Le contrôle de session est désactivé</string>
+  <string name="morphe_music_crossfade_about_title">À propos</string>
+  <string name="morphe_music_crossfade_about_summary">"Le fondu croisé est disponible avec YouTube Music 8.x
+
+Appuyez longuement sur le bouton aléatoire pour désactiver/activer
+
+Implémentation de la fonctionnalité par VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activer la lecture en boucle permanente</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">La lecture en boucle permanente est activée</string>

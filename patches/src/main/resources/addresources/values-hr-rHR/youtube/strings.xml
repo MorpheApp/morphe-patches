@@ -1311,12 +1311,7 @@ Ako se kasnije isključi, preporuke za UI mogu se izbjeći čišćenjem podataka
   <string name="morphe_open_system_share_sheet_title">Otvori tablicu dijeljenja sustava</string>
   <string name="morphe_open_system_share_sheet_summary_on">Otvara tablicu dijeljenja sustava</string>
   <string name="morphe_open_system_share_sheet_summary_off">Otvara tablicu dijeljenja u aplikaciji</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Nadjačaj tipku YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Tipka YouTube Music otvara vašu ciljanu glazbenu aplikaciju</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Tipka YouTube Music otvara vašu izvornu aplikaciju</string>
-  <string name="morphe_music_package_name_title">Morphe Music ime paketa</string>
-  <string name="morphe_music_package_name_summary">Naziv paketa ciljne glazbene aplikacije</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Promijenite početnu stranicu</string>
   <string name="morphe_change_start_page_entry_default">Zadano</string>

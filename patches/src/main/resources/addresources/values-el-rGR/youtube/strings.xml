@@ -1394,12 +1394,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">Ανοίξτε το σύστημα μοιρασμένοι φύλλο</string>
   <string name="morphe_open_system_share_sheet_summary_on">Ανοίγει το σύστημα μοιρασμένοι φύλλο</string>
   <string name="morphe_open_system_share_sheet_summary_off">Ανοίγει το μοιρασμένοι φύλλο της εφαρμογής</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Αλλαγή λειτουργίας κουμπιού YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Το κουμπί YouTube Music ανοίγει την εφαρμογή μουσικής που επιλέξατε</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Πulshtag YouTube Music button opens the native app</string>
-  <string name="morphe_music_package_name_title">Morphe Music package name</string>
-  <string name="morphe_music_package_name_summary">Package name of the target music app</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Υπέρβαση των κουμπιών YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Τα κουμπιά YouTube Music ανοίγουν την εφαρμογή στόχου μουσικής σας</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Τα κουμπιά YouTube Music ανοίγουν την επίσημη εφαρμογή</string>
+  <string name="morphe_music_package_name_title">Όνομα πακέτου της εφαρμογής μουσικής στόχου</string>
+  <string name="morphe_music_package_name_summary">Το όνομα πακέτου της εγκατεστημένης σας εφαρμογής μουσικής</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Αλλαγή αρχικής σελίδας</string>
   <string name="morphe_change_start_page_entry_default">Προεπιλογή</string>

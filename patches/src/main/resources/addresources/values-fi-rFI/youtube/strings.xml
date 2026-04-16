@@ -1398,12 +1398,12 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
   <string name="morphe_open_system_share_sheet_title">Avaa järjestelmän jakosivun</string>
   <string name="morphe_open_system_share_sheet_summary_on">Avaa järjestelmän jakosivun</string>
   <string name="morphe_open_system_share_sheet_summary_off">Avaa sovelluksen jakosivun</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Korvaa YouTube Music -nappi</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music -nappi avaa kohdetusi musiikkisovellus</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music -nappi avaa alkuperäisen sovelluksen</string>
-  <string name="morphe_music_package_name_title">Morphe Music -paketin nimi</string>
-  <string name="morphe_music_package_name_summary">Kohdealun musiikkisovelluksen paketin nimi</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Ohita YouTube Musicin painikkeet</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Musicin painikkeet avaavat kohdemusiikkisovelluksesi</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Musicin painikkeet avaavat virallisen sovelluksen</string>
+  <string name="morphe_music_package_name_title">Kohdemusiikkisovelluksen pakkausnimi</string>
+  <string name="morphe_music_package_name_summary">Asennetun kohdemusiikkisovelluksen paketin nimi</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Vaihda aloitussivua</string>
   <string name="morphe_change_start_page_entry_default">Oletus</string>

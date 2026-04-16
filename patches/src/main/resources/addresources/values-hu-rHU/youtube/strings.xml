@@ -1393,12 +1393,12 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_open_system_share_sheet_title">Nyissa meg a rendszerosztásos menüt</string>
   <string name="morphe_open_system_share_sheet_summary_on">Nyitja meg a rendszerosztásos menüt</string>
   <string name="morphe_open_system_share_sheet_summary_off">Nyitja meg az alkalmazásosztásos menüt</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">YouTube Music gomb felülírása</string>
-  <string name="morphe_override_youtube_music_button_summary_on">A YouTube Music gomb nyitja meg a célzási zenei alkalmazódat</string>
-  <string name="morphe_override_youtube_music_button_summary_off">A YouTube Music gomb a belső alkalmazást nyitja</string>
-  <string name="morphe_music_package_name_title">A Morphe Music csomagnév</string>
-  <string name="morphe_music_package_name_summary">A célzott zenei alkalmazás csomagnéve</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">A YouTube Music gombok felülbírálása</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">A YouTube Music gombok a célzenéldrás alkalmazás megnyitását teszik lehetővé</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">A YouTube Music gombok a hivatalos alkalmazást nyitják meg</string>
+  <string name="morphe_music_package_name_title">A célzenéldrás alkalmazás csomagnév</string>
+  <string name="morphe_music_package_name_summary">A telepített célzengealkalmazás csomagneve</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Kezdőlap módosítása</string>
   <string name="morphe_change_start_page_entry_default">Alapértelmezett</string>

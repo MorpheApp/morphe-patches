@@ -1394,12 +1394,12 @@ Kung i-off ang, inirerekomenda na i-clear ang app data para maiwasan ang UI bugs
   <string name="morphe_open_system_share_sheet_title">Buksan ang system share sheet</string>
   <string name="morphe_open_system_share_sheet_summary_on">Binubuksan ang system share sheet</string>
   <string name="morphe_open_system_share_sheet_summary_off">Binubuksan ang in-app share sheet</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Override YouTube Music button</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Binubuksan ng YouTube Music button ang iyong target na music app</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Binubuksan ng YouTube Music button ang native app</string>
-  <string name="morphe_music_package_name_title">Morphe Music package name</string>
-  <string name="morphe_music_package_name_summary">Package name ng target na music app</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">I-override ang mga butones ng YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Binubuksan ng mga butones ng YouTube Music ang iyong target na music app</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Binubuksan ng mga butones ng YouTube Music ang opisyal na app</string>
+  <string name="morphe_music_package_name_title">Pangalan ng package ng target na music app</string>
+  <string name="morphe_music_package_name_summary">Pangalan ng package ng iyong naka-install na target na music app</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Baguhin ang start page</string>
   <string name="morphe_change_start_page_entry_default">Panimula</string>

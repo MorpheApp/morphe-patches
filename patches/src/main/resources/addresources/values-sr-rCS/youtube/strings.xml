@@ -1394,12 +1394,12 @@ Ako se kasnije isključi, preporučuje se da izbrišete podatke aplikacije da bi
   <string name="morphe_open_system_share_sheet_title">Otvori okvir za deljenje sistema</string>
   <string name="morphe_open_system_share_sheet_summary_on">Otvara okvir za deljenje sistema</string>
   <string name="morphe_open_system_share_sheet_summary_off">Otvara okvir za deljenje unutar aplikacije</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Prebaci dugme YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Dugme YouTube Music otvara vašu ciljnu aplikaciju za muziku</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Dugme YouTube Music otvara nativnu aplikaciju</string>
-  <string name="morphe_music_package_name_title">Paket ime Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Paket ime ciljne muzičke aplikacije</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Prekrivač YouTube Music dugmadi</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music dugmad otvaraju tvoju ciljanu muzičku aplikaciju</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music dugmad otvaraju zvaničnu aplikaciju</string>
+  <string name="morphe_music_package_name_title">Ime paketa ciljane muzičke aplikacije</string>
+  <string name="morphe_music_package_name_summary">Naziv paketa vaše instalirane aplikacije za muziku</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Promena polazne stranice</string>
   <string name="morphe_change_start_page_entry_default">Podrazumevana</string>

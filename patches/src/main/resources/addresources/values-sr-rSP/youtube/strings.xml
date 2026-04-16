@@ -1394,12 +1394,12 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_open_system_share_sheet_title">Отвори системски спредшит</string>
   <string name="morphe_open_system_share_sheet_summary_on">Отвара системски спредшит</string>
   <string name="morphe_open_system_share_sheet_summary_off">Отвара у-ап спредшит</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Замени дугме Јутуб Мјузик</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Дугме Јутуб Мјузик отвара вашу циљану музичку апликацију</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Дугме YouTube Music отвара примарни андроид ап</string>
-  <string name="morphe_music_package_name_title">Назив пакета Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Назив пакета циљане музичке апликације</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Препоредите дугмице YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Дугмице YouTube Music отвара вашу циљну музичку апликацију</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Дугмице YouTube Music отвара званичну апликацију</string>
+  <string name="morphe_music_package_name_title">Назив пакета циљне музичке апликације</string>
+  <string name="morphe_music_package_name_summary">Назив пакета вашег инсталираног програма за музику</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промена полазне странице</string>
   <string name="morphe_change_start_page_entry_default">Подразумевана</string>

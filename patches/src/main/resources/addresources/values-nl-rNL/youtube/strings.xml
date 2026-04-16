@@ -1395,12 +1395,12 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_open_system_share_sheet_title">Open systeem delenblad</string>
   <string name="morphe_open_system_share_sheet_summary_on">Opent systeem delenblad</string>
   <string name="morphe_open_system_share_sheet_summary_off">Opent in-app delenblad</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">YouTube Music knop overschrijven</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music knop opent je doelmuziekapp</string>
-  <string name="morphe_override_youtube_music_button_summary_off">De YouTube Music-knoppen opent de ingebouwde app</string>
-  <string name="morphe_music_package_name_title">Pakketnaam van Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Pakketnaam van de doelmuziekapp</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">YouTube-muziekknopen overschrijven</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube-muziekknopen openen je doelmuziek-app</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube-muziekknopen openen de officiële app</string>
+  <string name="morphe_music_package_name_title">Pakketnaam van de doelmuziek-app</string>
+  <string name="morphe_music_package_name_summary">Pakketnaam van uw geïnstalleerde doelmuziek-app</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startpagina wijzigen</string>
   <string name="morphe_change_start_page_entry_default">Standaard</string>

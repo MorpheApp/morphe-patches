@@ -58,13 +58,15 @@ public final class HideTrendingTodayShelfPatch {
      */
     public static void setContentLanguages(List<Locale> locales) {
         if (trendingLabels == null || trendingLabels.length == 0) {
-            Set<String> newTrendingLabels = new HashSet<>(locales.size());
+            Set<String> newTrendingLabels = new HashSet<>(2 * locales.size());
             newTrendingLabels.add(TRENDING_LABEL);
 
             for (Locale locale : locales) {
-                String localizedTrendingLabel = ResourceUtils.getStringByLocale(TRENDING_LABEL_KEY, locale);
-                if (localizedTrendingLabel != null && !TRENDING_LABEL_KEY.equals(localizedTrendingLabel)) {
-                    newTrendingLabels.add(localizedTrendingLabel);
+                if (ResourceUtils.getStringIdentifier(TRENDING_LABEL_KEY) != 0) {
+                    String localizedTrendingLabel = ResourceUtils.getStringByLocale(TRENDING_LABEL_KEY, locale);
+                    if (localizedTrendingLabel != null && !TRENDING_LABEL_KEY.equals(localizedTrendingLabel)) {
+                        newTrendingLabels.add(localizedTrendingLabel);
+                    }
                 }
             }
 

@@ -1394,12 +1394,12 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_open_system_share_sheet_title">सिस्टम शेअर शीट उघडा</string>
   <string name="morphe_open_system_share_sheet_summary_on">सिस्टम शेअर शीट उघडते</string>
   <string name="morphe_open_system_share_sheet_summary_off">ॲपमध्ये शेअर शीट उघडते</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">YouTube Music बटण ओव्हरराइड करा</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music बटण तुमच्या लक्ष्यित संगीत ॲप उघडते</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music बटण मूळ ॲप उघडते</string>
-  <string name="morphe_music_package_name_title">मorphe संगीत पॅकेजचे नाव</string>
-  <string name="morphe_music_package_name_summary">लक्ष्य संगीत ॲपचे पॅकेज नाव</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">YouTube Music बटणांना ओव्हरराइड करा</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music बटणांमुळे तुमच्या लक्ष्यित संगीत ॲपमध्ये उघडते</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music बटणांमुळे अधिकृत ॲप उघडते</string>
+  <string name="morphe_music_package_name_title">लक्ष्यित संगीत ॲपचे पॅकेज नाव</string>
+  <string name="morphe_music_package_name_summary">तुमच्या स्थापित लक्ष्य संगीत ॲपचे पॅकेज नाव</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">सुरुवात पृष्ठ बदला</string>
   <string name="morphe_change_start_page_entry_default">डीफॉल्ट</string>
