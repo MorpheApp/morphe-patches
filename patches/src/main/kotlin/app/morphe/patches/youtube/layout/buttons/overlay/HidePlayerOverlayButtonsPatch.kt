@@ -49,28 +49,13 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            PreferenceScreenPreference(
-                key = "morphe_overlay_buttons_screen",
-                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
-                preferences = setOf(
-                    SwitchPreference("morphe_hide_autoplay_button"),
-                    SwitchPreference("morphe_hide_captions_button"),
-                    SwitchPreference("morphe_hide_cast_button"),
-                    SwitchPreference("morphe_hide_collapse_button"),
-                    SwitchPreference("morphe_hide_fullscreen_button"),
-                    SwitchPreference("morphe_hide_player_control_buttons_background"),
-                    SwitchPreference("morphe_hide_player_previous_next_buttons"),
-                    TextPreference("morphe_player_overlay_opacity", inputType = InputType.NUMBER),
-                    SwitchPreference("morphe_copy_video_url_button"),
-                    SwitchPreference("morphe_copy_video_url_button_timestamp"),
-                    SwitchPreference("morphe_loop_video_button"),
-                    SwitchPreference("morphe_play_all_button"),
-                    ListPreference("morphe_play_all_button_type"),
-                    SwitchPreference("morphe_reload_video_button"),
-                    SwitchPreference("morphe_playback_speed_dialog_button"),
-                    SwitchPreference("morphe_video_quality_dialog_button"),
-                )
-            )
+            SwitchPreference("morphe_hide_autoplay_button"),
+            SwitchPreference("morphe_hide_captions_button"),
+            SwitchPreference("morphe_hide_cast_button"),
+            SwitchPreference("morphe_hide_collapse_button"),
+            SwitchPreference("morphe_hide_fullscreen_button"),
+            SwitchPreference("morphe_hide_player_control_buttons_background"),
+            SwitchPreference("morphe_hide_player_previous_next_buttons"),
         )
 
         // region Hide player next/previous button.

@@ -2,7 +2,11 @@ package app.morphe.patches.youtube.interaction.copyvideourl
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.youtube.layout.buttons.overlay.hidePlayerOverlayButtonsPatch
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
@@ -24,7 +28,6 @@ private val copyVideoURLButtonResourcePatch = resourcePatch {
     )
 
     execute {
-
         copyResources(
             "copyvideourlbutton",
             ResourceGroup(
@@ -47,7 +50,7 @@ val copyVideoURLButtonPatch = bytecodePatch(
 ) {
     dependsOn(
         copyVideoURLButtonResourcePatch,
-        hidePlayerOverlayButtonsPatch,
+        playerOverlayButtonsSettingsPatch,
         playerOverlayButtonsHookPatch,
         legacyPlayerControlsPatch,
         videoInformationPatch,
@@ -56,6 +59,18 @@ val copyVideoURLButtonPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        addPlayerOverlayPreferences(
+            PreferenceCategory(
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = setOf(
+                    SwitchPreference("morphe_copy_video_url_button"),
+                    SwitchPreference("morphe_copy_video_url_button_timestamp")
+                )
+            )
+        )
+
         addPlayerBottomButton(EXTENSION_BUTTON)
 
         initializeLegacyBottomControl(EXTENSION_BUTTON)

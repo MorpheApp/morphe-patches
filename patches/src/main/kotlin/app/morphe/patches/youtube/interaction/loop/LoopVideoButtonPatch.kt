@@ -2,7 +2,9 @@ package app.morphe.patches.youtube.interaction.loop
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.youtube.layout.buttons.overlay.hidePlayerOverlayButtonsPatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
@@ -49,12 +51,15 @@ internal val loopVideoButtonPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         loopVideoButtonResourcePatch,
+        playerOverlayButtonsSettingsPatch,
         legacyPlayerControlsPatch,
-        hidePlayerOverlayButtonsPatch,
         playerOverlayButtonsHookPatch
     )
 
     execute {
+        addPlayerOverlayPreferences(
+            SwitchPreference("morphe_loop_video_button")
+        )
 
         initializeTopControl(EXTENSION_BUTTON)
         injectVisibilityCheckCall(EXTENSION_BUTTON)

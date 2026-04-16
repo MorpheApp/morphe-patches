@@ -28,7 +28,7 @@ import app.morphe.patches.youtube.shared.WatchNextResponseParserFingerprint
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_FILTER =
+private const val VIDEO_ACTION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/VideoActionButtonsFilter;"
 private const val QUICK_ACTIONS_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/QuickActionButtonsFilter;"
@@ -87,15 +87,14 @@ val hideVideoActionButtonsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_quick_actions_playlist_button"),
                     SwitchPreference("morphe_hide_quick_actions_save_button"),
                     SwitchPreference("morphe_hide_quick_actions_share_button"),
-                    SwitchPreference("morphe_hide_quick_actions")
                 )
             )
         )
 
-        addLithoFilter(EXTENSION_FILTER)
+        addLithoFilter(VIDEO_ACTION_FILTER)
         addLithoFilter(QUICK_ACTIONS_FILTER)
 
-        hookTreeNodeResult("$EXTENSION_FILTER->onLazilyConvertedElementLoaded")
+        hookTreeNodeResult("$VIDEO_ACTION_FILTER->onLazilyConvertedElementLoaded")
 
         WatchNextResponseParserFingerprint.let {
             it.clearMatch() // Fingerprint is shared and indexes may no longer be correct.
@@ -105,7 +104,7 @@ val hideVideoActionButtonsPatch = bytecodePatch(
 
                 addInstruction(
                     index + 1,
-                    "invoke-static { v$register }, $EXTENSION_FILTER->" +
+                    "invoke-static { v$register }, $VIDEO_ACTION_FILTER->" +
                             "onSingleColumnWatchNextResultsLoaded(Lcom/google/protobuf/MessageLite;)V"
                 )
             }

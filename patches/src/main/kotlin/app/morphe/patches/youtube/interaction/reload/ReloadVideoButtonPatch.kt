@@ -12,7 +12,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.youtube.layout.buttons.overlay.hidePlayerOverlayButtonsPatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
@@ -68,9 +70,9 @@ val reloadVideoButtonPatch = bytecodePatch(
 ) {
     dependsOn(
         reloadVideoButtonResourcePatch,
-        hidePlayerOverlayButtonsPatch,
         legacyPlayerControlsPatch,
         videoInformationPatch,
+        playerOverlayButtonsSettingsPatch,
         bytecodePatch {
             finalize {
                 addTopControl(
@@ -85,6 +87,10 @@ val reloadVideoButtonPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        addPlayerOverlayPreferences(
+            SwitchPreference("morphe_reload_video_button")
+        )
+
         initializeTopControl(EXTENSION_BUTTON)
         injectVisibilityCheckCall(EXTENSION_BUTTON)
 
