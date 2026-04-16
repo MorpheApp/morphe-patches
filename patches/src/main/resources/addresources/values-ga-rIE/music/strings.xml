@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Folaigh fógraí físe</string>
   <string name="morphe_music_hide_video_ads_summary_on">Tá fógraí físe i bhfolach</string>
   <string name="morphe_music_hide_video_ads_summary_off">Taispeántar fógraí físe</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Trasfhadú crossfade</string>
+  <string name="morphe_music_crossfade_screen_summary">Measctar na rianta go réidh le chéile</string>
+  <string name="morphe_music_crossfade_enabled_title">Cumás crossfade a chumasú</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Measctar na rianta le chéile trí chrosfhadú</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Tá crossfade díchumasaithe</string>
+  <string name="morphe_music_crossfade_curve_title">Curve fad</string>
+  <string name="morphe_music_crossfade_curve_summary">Conas a n-athruithe an teagmhaill idir rianta</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Comhionas</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Faoi stiall úr</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Fás geal</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Curve S slán</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Spionaid fad trucail</string>
+  <string name="morphe_crossfade_duration_250ms">250 milleasoicind</string>
+  <string name="morphe_crossfade_duration_500ms">500 milleasoicind</string>
+  <string name="morphe_crossfade_duration_750ms">750 milleasoicind</string>
+  <string name="morphe_crossfade_duration_1000ms">1 soicind</string>
+  <string name="morphe_crossfade_duration_2000ms">2 soicind</string>
+  <string name="morphe_crossfade_duration_3000ms">3 soicind</string>
+  <string name="morphe_crossfade_duration_4000ms">4 soicind</string>
+  <string name="morphe_crossfade_duration_5000ms">5 soicind</string>
+  <string name="morphe_crossfade_duration_6000ms">6 soicind</string>
+  <string name="morphe_crossfade_duration_7000ms">7 soicind</string>
+  <string name="morphe_crossfade_duration_8000ms">8 soicind</string>
+  <string name="morphe_crossfade_duration_9000ms">9 soicind</string>
+  <string name="morphe_crossfade_duration_10000ms">10 soicind</string>
+  <string name="morphe_music_crossfade_on_skip_title">Trucáil ar bhalaigh láimhe</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Trucáil á sheinmhíniúnuint nuair a bhíonn rianta á láimhseáil go láimhe</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Níl trucáil ag teacht i gcrích le lámhsighí</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Trucáil ar bhalaigh féinrialach</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Trucáil á sheinmhíniúnuint nuair a chríochaidh riant agus é á scaipeadh go riant eile</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Níl an féinrialtas ag trucáil</string>
+  <string name="morphe_music_crossfade_session_control_title">Riachtanas seans</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Brúigh fada ar búnán tréanaithe chun trucáil a chur ar cheal nó a chur ar ais"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Tá riachtanas seans teorann</string>
+  <string name="morphe_music_crossfade_about_title">Maidir</string>
+  <string name="morphe_music_crossfade_about_summary">"Tá trucáil ar fáil le YouTube Music 8.x
+
+Brúigh fada ar búnán tréanaithe chun trucáil a dhícheal nó a chumas
+
+Cruthaíodh cur chun cinn ag VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Cumasaigh athrá buan</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Tá athrá buan cumasaithe</string>

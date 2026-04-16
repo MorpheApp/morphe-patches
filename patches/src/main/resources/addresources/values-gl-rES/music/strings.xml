@@ -32,6 +32,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Ocultar anuncios de vídeo</string>
   <string name="morphe_music_hide_video_ads_summary_on">Os anuncios de vídeo están ocultos</string>
   <string name="morphe_music_hide_video_ads_summary_off">Os anuncios de vídeo son visibles</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_about_title">Acerca de</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activar repetición permanente</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">A repetición permanente está activada</string>

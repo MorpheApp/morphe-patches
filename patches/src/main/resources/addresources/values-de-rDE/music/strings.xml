@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Videowerbungen ausblenden</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videowerbungen sind ausgeblendet</string>
   <string name="morphe_music_hide_video_ads_summary_off">Videoanzeigen werden angezeigt</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Nahtlose Wiedergabe</string>
+  <string name="morphe_music_crossfade_screen_summary">Gib die Titel nahtlos wieder</string>
+  <string name="morphe_music_crossfade_enabled_title">Nahtlose Wiedergabe aktivieren</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Titel werden nahtlos wiedergegeben</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Nahtlose Wiedergabe ist deaktiviert</string>
+  <string name="morphe_music_crossfade_curve_title">Einblend-Niveau</string>
+  <string name="morphe_music_crossfade_curve_summary">Wie der Lautstärkeübergang zwischen Titeln erfolgt</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Gleiche Lautstärke</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Sanftes Anhalten</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Sanfter Übergang</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Glatte S-Kurve</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Nahtlose Wiedergabe-Dauer</string>
+  <string name="morphe_crossfade_duration_250ms">250 Millisekunden</string>
+  <string name="morphe_crossfade_duration_500ms">500 Millisekunden</string>
+  <string name="morphe_crossfade_duration_750ms">750 Millisekunden</string>
+  <string name="morphe_crossfade_duration_1000ms">1 Sekunde</string>
+  <string name="morphe_crossfade_duration_2000ms">2 Sekunden</string>
+  <string name="morphe_crossfade_duration_3000ms">3 Sekunden</string>
+  <string name="morphe_crossfade_duration_4000ms">4 Sekunden</string>
+  <string name="morphe_crossfade_duration_5000ms">5 Sekunden</string>
+  <string name="morphe_crossfade_duration_6000ms">6 Sekunden</string>
+  <string name="morphe_crossfade_duration_7000ms">7 Sekunden</string>
+  <string name="morphe_crossfade_duration_8000ms">8 Sekunden</string>
+  <string name="morphe_crossfade_duration_9000ms">9 Sekunden</string>
+  <string name="morphe_crossfade_duration_10000ms">10 Sekunden</string>
+  <string name="morphe_music_crossfade_on_skip_title">Nahtlose Wiedergabe bei manuellem Überspringen</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Nahtlose Wiedergabe wird beim manuellen Überspringen von Titeln abgespielt</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Manuelle Übersprünge verwenden keine nahtlose Wiedergabe</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Nahtlose Wiedergabe bei automatischer Wiedergabe</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Nahtlose Wiedergabe wird abgespielt, wenn ein Titel endet und automatisch zum nächsten übergeht</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Automatische Wiedergabe verwendet keine nahtlose Wiedergabe</string>
+  <string name="morphe_music_crossfade_session_control_title">Sitzungssteuerung</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Langes Drücken der Shuffle-Taste zum Anhalten oder Fortsetzen der nahtlosen Wiedergabe"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Sitzungssteuerung ist deaktiviert</string>
+  <string name="morphe_music_crossfade_about_title">Über</string>
+  <string name="morphe_music_crossfade_about_summary">"Nahtlose Wiedergabe ist mit YouTube Music 8.x verfügbar
+
+Wischen Sie lange über die Shuffle-Taste zum deaktivieren/aktivieren
+
+Feature-Implementierung von VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Dauerwiederholung aktivieren</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Dauerwiederholung ist aktiviert</string>

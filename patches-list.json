@@ -1,5 +1,5 @@
 {
-  "version": "1.24.0-dev.8",
+  "version": "1.24.0-dev.9",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -2261,6 +2261,26 @@
           }
         }
       ]
+    },
+    {
+      "name": "Track crossfade",
+      "description": "Adds a true dual-player crossfade between consecutive tracks. This patch currently requires YouTube 8.x",
+      "use": true,
+      "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": {
+        "com.google.android.apps.youtube.music": [
+          "8.47.56",
+          "8.44.54",
+          "8.40.54",
+          "8.10.52",
+          "7.29.52"
+        ]
+      },
+      "options": []
     },
     {
       "name": "Video ads",

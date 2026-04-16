@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Nascondi annunci video</string>
   <string name="morphe_music_hide_video_ads_summary_on">Gli annunci video sono nascosti</string>
   <string name="morphe_music_hide_video_ads_summary_off">Gli annunci video sono mostrati</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Crossfade</string>
+  <string name="morphe_music_crossfade_screen_summary">Unisci in modo uniforme i brani tra loro</string>
+  <string name="morphe_music_crossfade_enabled_title">Abilita crossfade</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">I brani si fondono l\'uno nell\'altro</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Crossfade è disattivato</string>
+  <string name="morphe_music_crossfade_curve_title">Curva di dissolvenza</string>
+  <string name="morphe_music_crossfade_curve_summary">Come il volume passa da un brano all\'altro</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Potenza uguale</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Attesa discreta</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Facilità delicata</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Curva S fluida</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Durata del crossfade</string>
+  <string name="morphe_crossfade_duration_250ms">250 millisecondi</string>
+  <string name="morphe_crossfade_duration_500ms">500 millisecondi</string>
+  <string name="morphe_crossfade_duration_750ms">750 millisecondi</string>
+  <string name="morphe_crossfade_duration_1000ms">1 secondo</string>
+  <string name="morphe_crossfade_duration_2000ms">2 secondi</string>
+  <string name="morphe_crossfade_duration_3000ms">3 secondi</string>
+  <string name="morphe_crossfade_duration_4000ms">4 secondi</string>
+  <string name="morphe_crossfade_duration_5000ms">5 secondi</string>
+  <string name="morphe_crossfade_duration_6000ms">6 secondi</string>
+  <string name="morphe_crossfade_duration_7000ms">7 secondi</string>
+  <string name="morphe_crossfade_duration_8000ms">8 secondi</string>
+  <string name="morphe_crossfade_duration_9000ms">9 secondi</string>
+  <string name="morphe_crossfade_duration_10000ms">10 secondi</string>
+  <string name="morphe_music_crossfade_on_skip_title">Crossfade durante il salto manuale</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Il crossfade viene riprodotto quando si salta manualmente i brani</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">I salti manuali non effettuano il crossfade</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Crossfade durante l\'avanzamento automatico</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Il crossfade viene riprodotto quando un brano termina e passa al successivo</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">L\'avanzamento automatico non effettua il crossfade</string>
+  <string name="morphe_music_crossfade_session_control_title">Controllo della sessione</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Lungo tocco sul pulsante di miscelazione per mettere in pausa o riprendere il crossfade"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Il controllo della sessione è disabilitato</string>
+  <string name="morphe_music_crossfade_about_title">A proposito di</string>
+  <string name="morphe_music_crossfade_about_summary">"Il crossfade è disponibile con YouTube Music 8.x
+
+Premi a lungo il pulsante di miscelazione per disabilitare/abilitare
+
+Implementazione della funzione da VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Abilita ripetizione permanente</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">La ripetizione permanente è abilitata</string>

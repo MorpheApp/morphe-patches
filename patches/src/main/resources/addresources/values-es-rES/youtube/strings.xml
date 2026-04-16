@@ -1399,11 +1399,11 @@ Si se desactiva posteriormente, se recomienda borrar los datos de la aplicación
   <string name="morphe_open_system_share_sheet_summary_on">Se abre la hoja de compartir del sistema</string>
   <string name="morphe_open_system_share_sheet_summary_off">Se abre la hoja de compartir de la aplicación</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
-  <string name="morphe_override_youtube_music_buttons_title">Anular botones de YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_title">Reemplazar botones de YouTube Music</string>
   <string name="morphe_override_youtube_music_buttons_summary_on">Los botones de YouTube Music abren tu app de música de destino</string>
   <string name="morphe_override_youtube_music_buttons_summary_off">Los botones de YouTube Music abren la app oficial</string>
   <string name="morphe_music_package_name_title">Nombre del paquete de la app de música de destino</string>
-  <string name="morphe_music_package_name_summary">Nombre del paquete de la app de música de destino</string>
+  <string name="morphe_music_package_name_summary">Nombre del paquete de tu app de música de destino que tienes instalada</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Cambiar página de inicio</string>
   <string name="morphe_change_start_page_entry_default">Predeterminado</string>

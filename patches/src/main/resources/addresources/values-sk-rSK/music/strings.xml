@@ -32,6 +32,19 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Skryť videoreklamy</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videoreklamy sú skryté</string>
   <string name="morphe_music_hide_video_ads_summary_off">Videoreklamy sa zobrazujú</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_crossfade_duration_1000ms">1 sekunda</string>
+  <string name="morphe_crossfade_duration_2000ms">2 sekundy</string>
+  <string name="morphe_crossfade_duration_3000ms">3 sekundy</string>
+  <string name="morphe_crossfade_duration_4000ms">4 sekundy</string>
+  <string name="morphe_crossfade_duration_5000ms">5 sekúnd</string>
+  <string name="morphe_crossfade_duration_6000ms">6 sekúnd</string>
+  <string name="morphe_crossfade_duration_7000ms">7 sekúnd</string>
+  <string name="morphe_crossfade_duration_8000ms">8 sekúnd</string>
+  <string name="morphe_crossfade_duration_9000ms">9 sekúnd</string>
+  <string name="morphe_crossfade_duration_10000ms">10 sekúnd</string>
+  <string name="morphe_music_crossfade_about_title">O aplikácii</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Zapnúť permanentné opakovanie prehrávania</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Permanentné opakovanie prehrávania je zapnuté</string>

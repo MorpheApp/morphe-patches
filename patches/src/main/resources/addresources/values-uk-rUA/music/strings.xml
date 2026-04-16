@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Приховати відеорекламу</string>
   <string name="morphe_music_hide_video_ads_summary_on">Відеорекламу приховано</string>
   <string name="morphe_music_hide_video_ads_summary_off">Відеореклама показується</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Плавний перехід</string>
+  <string name="morphe_music_crossfade_screen_summary">Плавно зводити треки один в один</string>
+  <string name="morphe_music_crossfade_enabled_title">Увімкнути плавний перехід</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Треки плавно зводяться один в один</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Плавний перехід вимкнено</string>
+  <string name="morphe_music_crossfade_curve_title">Крива згасання</string>
+  <string name="morphe_music_crossfade_curve_summary">Як змінюється гучність між треками</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Рівномірна потужність</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Незначна затримка</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">М’яке згладжування</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Плавна S-крива</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Тривалість плавного переходу</string>
+  <string name="morphe_crossfade_duration_250ms">250 мілісекунд</string>
+  <string name="morphe_crossfade_duration_500ms">500 мілісекунд</string>
+  <string name="morphe_crossfade_duration_750ms">750 мілісекунд</string>
+  <string name="morphe_crossfade_duration_1000ms">1 секунда</string>
+  <string name="morphe_crossfade_duration_2000ms">2 секунди</string>
+  <string name="morphe_crossfade_duration_3000ms">3 секунди</string>
+  <string name="morphe_crossfade_duration_4000ms">4 секунди</string>
+  <string name="morphe_crossfade_duration_5000ms">5 секунд</string>
+  <string name="morphe_crossfade_duration_6000ms">6 секунд</string>
+  <string name="morphe_crossfade_duration_7000ms">7 секунд</string>
+  <string name="morphe_crossfade_duration_8000ms">8 секунд</string>
+  <string name="morphe_crossfade_duration_9000ms">9 секунд</string>
+  <string name="morphe_crossfade_duration_10000ms">10 секунд</string>
+  <string name="morphe_music_crossfade_on_skip_title">Плавний перехід при ручному перемиканні</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Плавний перехід використовується при ручному перемиканні треків</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Ручне перемикання не буде використовувати плавний перехід</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Плавний перехід при автоматичному переході</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Плавний перехід використовується, коли трек закінчується і починається наступний</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Автоматичний перехід не буде використовувати плавний перехід</string>
+  <string name="morphe_music_crossfade_session_control_title">Керування сесією</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Тривале натискання кнопки перемішування призупиняє або відновлює плавний перехід"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Керування сесією вимкнено</string>
+  <string name="morphe_music_crossfade_about_title">Інформація</string>
+  <string name="morphe_music_crossfade_about_summary">"Плавний перехід доступний з YouTube Music 8.x
+
+Тривале натискання кнопки перемішування вмикає або вимикає цю функцію
+
+Автор реалізації функції: VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Увімкнути постійний повтор</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Постійний повтор увімкнено</string>
