@@ -30,7 +30,7 @@ public class YouTubePreferenceFragment extends ToolbarPreferenceFragment {
 
         try {
             preferenceScreen = getPreferenceScreen();
-            Utils.sortPreferenceGroups(preferenceScreen);
+            sortPreferenceGroups(preferenceScreen);
             setPreferenceScreenToolbar(preferenceScreen);
 
             // Clunky work around until preferences are custom classes that manage themselves.

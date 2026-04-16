@@ -31,10 +31,10 @@
  * applicable to this file.
  */
 
-package app.morphe.util.resource
+package app.morphe.patches.util.resource
 
-import app.morphe.patches.all.misc.resources.StringResourceSanitizer.sanitizeAndroidResourceString
 import app.morphe.patches.all.misc.resources.localesAll
+import app.morphe.patches.util.resource.StringResourceSanitizer.sanitizeAndroidResourceString
 import app.morphe.util.inputStreamFromBundledResource
 import org.w3c.dom.Element
 import org.w3c.dom.Node

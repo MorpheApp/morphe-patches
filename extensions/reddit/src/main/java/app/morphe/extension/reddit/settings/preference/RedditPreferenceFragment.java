@@ -14,8 +14,6 @@ import android.widget.ListView;
 import app.morphe.extension.reddit.settings.preference.categories.AdsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.LayoutPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.MiscellaneousPreferenceCategory;
-import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 /**

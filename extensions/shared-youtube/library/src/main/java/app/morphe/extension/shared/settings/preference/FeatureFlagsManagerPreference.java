@@ -43,6 +43,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.patches.EnableDebuggingPatch;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
