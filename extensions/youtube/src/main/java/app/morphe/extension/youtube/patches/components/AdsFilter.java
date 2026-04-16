@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.ByteTrieSearch.convertStringsToBytes;
@@ -15,6 +25,7 @@ import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
@@ -205,7 +216,7 @@ public final class AdsFilter extends Filter {
      */
     public static void closeFullscreenAd(Object customDialog, @Nullable byte[] buffer) {
         try {
-            if (!Settings.HIDE_FULLSCREEN_ADS.get()) {
+            if (!SharedYouTubeSettings.HIDE_FULLSCREEN_ADS.get()) {
                 return;
             }
 

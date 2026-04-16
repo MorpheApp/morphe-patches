@@ -35,6 +35,11 @@ Second \"item\" text"</string>
     <string name="morphe_settings_music_screen_3_player_title">Player</string>
     <string name="morphe_settings_music_screen_4_misc_title">Miscellaneous</string>
 
+    <!-- ad.general.hideAdsPatch -->
+    <string name="morphe_music_hide_get_premium_label_title">Hide \'Get Music Premium\' label</string>
+    <string name="morphe_music_hide_get_premium_label_summary_on">Get Music Premium label is hidden</string>
+    <string name="morphe_music_hide_get_premium_label_summary_off">Get Music Premium label is shown</string>
+
     <!-- ad.video.hideVideoAdsPatch -->
     <string name="morphe_music_hide_video_ads_title">Hide video ads</string>
     <string name="morphe_music_hide_video_ads_summary_on">Video ads are hidden</string>
@@ -168,11 +173,6 @@ Feature implementation by VazerOG"</string>
     <string name="morphe_music_hide_navigation_bar_labels_title">Hide navigation button labels</string>
     <string name="morphe_music_hide_navigation_bar_labels_summary_on">Labels are hidden</string>
     <string name="morphe_music_hide_navigation_bar_labels_summary_off">Labels are shown</string>
-
-    <!-- layout.premium.hideGetPremiumPatch -->
-    <string name="morphe_music_hide_get_premium_label_title">Hide \'Get Music Premium\' label</string>
-    <string name="morphe_music_hide_get_premium_label_summary_on">Label is hidden</string>
-    <string name="morphe_music_hide_get_premium_label_summary_off">Label is shown</string>
 
     <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
     <string name="morphe_music_hide_upgrade_button_title">Hide upgrade button</string>
