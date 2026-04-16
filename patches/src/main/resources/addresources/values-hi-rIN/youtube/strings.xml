@@ -70,37 +70,39 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">अल्बम कार्ड छुपाएं</string>
   <string name="morphe_hide_artist_cards_summary_on">अर्टिस्ट कार्ड छिपे हुए हैं</string>
   <string name="morphe_hide_artist_cards_summary_off">अर्टिस्ट कार्ड दिखाए जाते हैं</string>
-  <string name="morphe_hide_chips_shelf_title">छिपाएं चिप्स शेल्फ</string>
-  <string name="morphe_hide_chips_shelf_summary_on">चिप्स शेल्फ छुपा हुआ है</string>
-  <string name="morphe_hide_chips_shelf_summary_off">चिप्स शेल्फ दिखाई देता है</string>
   <string name="morphe_hide_community_posts_title">समुदाय पोस्ट छुपाएं</string>
   <string name="morphe_hide_community_posts_summary_on">समुदाय पोस्ट छिपाई गई हैं</string>
   <string name="morphe_hide_community_posts_summary_off">समुदाय पोस्ट दिखाई जाती हैं</string>
   <string name="morphe_hide_compact_banner_title">छुपाएं संक्षिप्त बैनर</string>
   <string name="morphe_hide_compact_banner_summary_on">कम्पैक्ट बैनर छिपाए गए हैं</string>
   <string name="morphe_hide_compact_banner_summary_off">कम्पैक्ट बैनर दिखाई दिए हैं</string>
-  <string name="morphe_hide_expandable_card_title">छुपाएं विस्तार योग्य कार्ड</string>
-  <string name="morphe_hide_expandable_card_summary_on">विडियो के नीचे विस्तार्य कार्ड छुपा हुआ है</string>
-  <string name="morphe_hide_expandable_card_summary_off">विडियो के नीचे विस्तार्य कार्ड दिखाई देता है</string>
+  <string name="morphe_hide_expandable_card_title">छिपाएं विस्तार योग्य कार्ड</string>
+  <string name="morphe_hide_expandable_card_entry_1">विडियो के नीचे विस्तार्य कार्ड दिखाई देता है</string>
+  <string name="morphe_hide_expandable_card_entry_2">विडियो के नीचे विस्तार्य कार्ड छुपा हुआ है</string>
+  <string name="morphe_hide_expandable_card_entry_3">विडियो के नीचे विस्तार्य कार्ड छुपा हुआ है</string>
+  <string name="morphe_hide_expandable_card_entry_4">उत्पाद और सारांश कार्ड वीडियो के नीचे छिपे हुए हैं</string>
+  <string name="morphe_hide_expandable_card_entry_5">वीडियो के नीचे विस्तार्य कार्ड छिपे हुए हैं</string>
   <string name="morphe_hide_floating_microphone_button_title">छुपाएं तैरती माइक्रोफोन बटन</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">माइक्रोफोन बटन को खोज में छिपा दिया गया है</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">माइक्रोफोन बटन को खोज में दिखाया गया है</string>
   <string name="morphe_hide_horizontal_shelves_title">छुपाएं क्षैतिज रैक</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"वर्टिकल शेल्फ्स छुपे हुए हैं, जैसे:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"क्षैतिज शेल्फ छिपे हुए हैं, जैसे:
 
 • ब्रेकिंग न्यूज़
-• कंटीन्यू वॉचिंग
-• मोर चैनल्स एक्स्प्लोर
-• मोर रिलेवेंट
-• शॉपिंग
-• वॉच इट एगेन"</string>
+• आप को पसंद आ सकने वाले समुदाय पोस्ट
+• देखना जारी रखें
+• और चैनल एक्सप्लोर करें
+• और विषयों को एक्सप्लोर करें
+• आपके लिए
+• नवीनतम वीडियो
+• सबसे प्रासंगिक
+• निर्माता समुदाय के पोस्ट
+• खरीदारी
+• इसे फिर से देखें"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">रैखिक शैलियों को दिखाया गया है</string>
   <string name="morphe_hide_image_shelf_title">छिपाएं चित्र शेल्फ</string>
   <string name="morphe_hide_image_shelf_summary_on">आईमेज शेल्फ को सर्च रिजल्ट्स में छुपा दिया गया है</string>
   <string name="morphe_hide_image_shelf_summary_off">आईमेज शेल्फ को सर्च रिजल्ट्स में दिखाया जाता है</string>
-  <string name="morphe_hide_latest_posts_title">लेटेस्ट पोस्ट छुपाएं</string>
-  <string name="morphe_hide_latest_posts_summary_on">नवीन पोस्ट छिपाई गई हैं</string>
-  <string name="morphe_hide_latest_posts_summary_off">नवीन पोस्ट दिखाई जाती हैं</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">छुपाएं \'नवीन वीडियो\' बटन</string>
@@ -299,6 +301,9 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_hide_members_shelf_title">छुपाएं सदस्य शेल्फ</string>
   <string name="morphe_hide_members_shelf_summary_on">सदस्य शेल्फ छुपा हुआ है</string>
   <string name="morphe_hide_members_shelf_summary_off">सदस्य शेल्फ दिखाया जाता है</string>
+  <string name="morphe_hide_posts_shelf_title">पोस्ट शेल्फ छिपाएं</string>
+  <string name="morphe_hide_posts_shelf_summary_on">पोस्ट शेल्फ छिपा हुआ है</string>
+  <string name="morphe_hide_posts_shelf_summary_off">पोस्ट शेल्फ दिखाया गया है</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">स्टोर बटन छुपाएं</string>
   <string name="morphe_hide_store_button_summary_on">स्टोर बटन छुपा हुआ है</string>
@@ -1385,12 +1390,12 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_open_system_share_sheet_title">शेयरशीट खोलें</string>
   <string name="morphe_open_system_share_sheet_summary_on">सिस्टम शेयरशीट खोलता है</string>
   <string name="morphe_open_system_share_sheet_summary_off">अपनै शेयरशीट खोलता है</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">ओवरराइड यूट्यूब म्यूजिक बटन</string>
-  <string name="morphe_override_youtube_music_button_summary_on">यूट्यूब म्यूजिक बटन आपकी लक्षित म्यूजिक एप्प पर खुलता है</string>
-  <string name="morphe_override_youtube_music_button_summary_off">यूट्यूब म्यूज़िक बटन नेटिव एप्प को खोलता है</string>
-  <string name="morphe_music_package_name_title">मॉर्फ़ म्यूज़िक पैकेज नाम</string>
-  <string name="morphe_music_package_name_summary">टार्गेट म्यूज़िक एप्प के पैकेज नाम</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">YouTube Music बटन ओवरराइड करें</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music बटन आपके लक्ष्य संगीत ऐप को खोलते हैं</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music बटन आधिकारिक ऐप को खोलते हैं</string>
+  <string name="morphe_music_package_name_title">लक्ष्य संगीत ऐप पैकेज नाम</string>
+  <string name="morphe_music_package_name_summary">आपकी स्थापित लक्ष्य संगीत ऐप का पैकेज नाम</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">पृष्ठ बदलने की शुरुआत</string>
   <string name="morphe_change_start_page_entry_default">डिफ़ॉल्ट</string>

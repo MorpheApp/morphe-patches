@@ -70,37 +70,39 @@ Wijzigingen zijn:
   <string name="morphe_hide_artist_cards_title">Verberg artistkaarten</string>
   <string name="morphe_hide_artist_cards_summary_on">De artistkaarten zijn verborgen</string>
   <string name="morphe_hide_artist_cards_summary_off">De artistkaarten worden weergegeven</string>
-  <string name="morphe_hide_chips_shelf_title">Chipsrek verbergen</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Chipsrek is verborgen</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Chip Schap Zichtbaar</string>
   <string name="morphe_hide_community_posts_title">Community berichten verbergen</string>
   <string name="morphe_hide_community_posts_summary_on">Community berichten zijn verborgen</string>
   <string name="morphe_hide_community_posts_summary_off">Community berichten worden weergegeven</string>
   <string name="morphe_hide_compact_banner_title">Verberg compacte banners</string>
   <string name="morphe_hide_compact_banner_summary_on">Compacte banners zijn verborgen</string>
   <string name="morphe_hide_compact_banner_summary_off">Compacte banners worden weergegeven</string>
-  <string name="morphe_hide_expandable_card_title">Uitklapbare kaart verbergen</string>
-  <string name="morphe_hide_expandable_card_summary_on">Uitklapbare kaart onder video\'s is verborgen</string>
-  <string name="morphe_hide_expandable_card_summary_off">Uitklapbare kaart onder video\'s is getoond</string>
+  <string name="morphe_hide_expandable_card_title">Uitklapbare kaarten verbergen</string>
+  <string name="morphe_hide_expandable_card_entry_1">Uitklapbare kaarten onder video\'s worden weergegeven</string>
+  <string name="morphe_hide_expandable_card_entry_2">Alleen de productkaart onder video’s is verborgen</string>
+  <string name="morphe_hide_expandable_card_entry_3">Alleen de samenvattingskaart onder video’s is verborgen</string>
+  <string name="morphe_hide_expandable_card_entry_4">Product- en samenvattingskaart onder video\'s zijn verborgen</string>
+  <string name="morphe_hide_expandable_card_entry_5">Uitklapbare kaarten onder video\'s zijn verborgen</string>
   <string name="morphe_hide_floating_microphone_button_title">Verberg zwevende microfoonknop</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Zwevende microfoonknop in zoeken is verborgen</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Zwevende microfoonknop in zoeken wordt getoond</string>
   <string name="morphe_hide_horizontal_shelves_title">Horizontale planken verbergen</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Horizontale planken zijn verborgen, zoals:
 
-• Breaking news
-• Verder kijken
-• Meer kanalen ontdekken
+• Actueel nieuws
+• Community-berichten die je mogelijk leuk vindt
+• Vervolg met kijken
+• Bekijk meer kanalen
+• Bekijk meer onderwerpen
+• Voor jou
+• Laatste video's
 • Meest relevant
+• Berichten uit de Creator's Community
 • Winkelen
-• Opnieuw bekijken"</string>
+• Bekijk het opnieuw"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Horizontale planken worden getoond</string>
   <string name="morphe_hide_image_shelf_title">Afbeeldingenplank verbergen</string>
   <string name="morphe_hide_image_shelf_summary_on">Afbeeldingenplank in zoekresultaten is verborgen</string>
   <string name="morphe_hide_image_shelf_summary_off">Afbeeldingenplank in zoekresultaten is getoond</string>
-  <string name="morphe_hide_latest_posts_title">Nieuwste berichten verbergen</string>
-  <string name="morphe_hide_latest_posts_summary_on">Nieuwste berichten zijn verborgen</string>
-  <string name="morphe_hide_latest_posts_summary_off">Nieuwste berichten worden weergegeven</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Verberg \'Laatste video\'s\' knop</string>
@@ -299,6 +301,9 @@ Het tonen van YouTube Doodles kan voorkomen dat aangepaste headers worden weerge
   <string name="morphe_hide_members_shelf_title">Ledenplank verbergen</string>
   <string name="morphe_hide_members_shelf_summary_on">Ledenplank is verborgen</string>
   <string name="morphe_hide_members_shelf_summary_off">Ledenplank wordt weergegeven</string>
+  <string name="morphe_hide_posts_shelf_title">Berichtenplank verbergen</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Berichtenplank is verborgen</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Berichtenplank is zichtbaar</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Verberg \'Winkel\' knop</string>
   <string name="morphe_hide_store_button_summary_on">Knop \'Winkel\' is verborgen</string>
@@ -1390,12 +1395,12 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_open_system_share_sheet_title">Open systeem delenblad</string>
   <string name="morphe_open_system_share_sheet_summary_on">Opent systeem delenblad</string>
   <string name="morphe_open_system_share_sheet_summary_off">Opent in-app delenblad</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">YouTube Music knop overschrijven</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music knop opent je doelmuziekapp</string>
-  <string name="morphe_override_youtube_music_button_summary_off">De YouTube Music-knoppen opent de ingebouwde app</string>
-  <string name="morphe_music_package_name_title">Pakketnaam van Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Pakketnaam van de doelmuziekapp</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">YouTube-muziekknopen overschrijven</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube-muziekknopen openen je doelmuziek-app</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube-muziekknopen openen de officiële app</string>
+  <string name="morphe_music_package_name_title">Pakketnaam van de doelmuziek-app</string>
+  <string name="morphe_music_package_name_summary">Pakketnaam van uw geïnstalleerde doelmuziek-app</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Startpagina wijzigen</string>
   <string name="morphe_change_start_page_entry_default">Standaard</string>

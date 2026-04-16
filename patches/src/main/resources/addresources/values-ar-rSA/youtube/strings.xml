@@ -70,36 +70,39 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">إخفاء بطاقات الفنان</string>
   <string name="morphe_hide_artist_cards_summary_on">تم إخفاء بطاقات الفنان</string>
   <string name="morphe_hide_artist_cards_summary_off">يتم عرض بطاقات الفنان</string>
-  <string name="morphe_hide_chips_shelf_title">إخفاء رف الشرائح</string>
-  <string name="morphe_hide_chips_shelf_summary_on">تم إخفاء رف الشرائح</string>
-  <string name="morphe_hide_chips_shelf_summary_off">يتم عرض رف الشرائح</string>
   <string name="morphe_hide_community_posts_title">إخفاء مشاركات المجتمع</string>
   <string name="morphe_hide_community_posts_summary_on">تم إخفاء مشاركات المجتمع</string>
   <string name="morphe_hide_community_posts_summary_off">يتم عرض مشاركات المجتمع</string>
   <string name="morphe_hide_compact_banner_title">إخفاء اللافتات المصغرة</string>
   <string name="morphe_hide_compact_banner_summary_on">تم إخفاء اللافتات المصغرة</string>
   <string name="morphe_hide_compact_banner_summary_off">يتم عرض اللافتات المصغرة</string>
-  <string name="morphe_hide_expandable_card_title">إخفاء البطاقة القابلة للتوسع</string>
-  <string name="morphe_hide_expandable_card_summary_on">تم إخفاء البطاقة القابلة للتوسع أسفل مقاطع الفيديو</string>
-  <string name="morphe_hide_expandable_card_summary_off">يتم عرض البطاقة القابلة للتوسع أسفل مقاطع الفيديو</string>
+  <string name="morphe_hide_expandable_card_title">إخفاء البطاقات القابلة للتوسع</string>
+  <string name="morphe_hide_expandable_card_entry_1">يتم عرض البطاقات القابلة للتوسع أسفل الفيديوهات</string>
+  <string name="morphe_hide_expandable_card_entry_2">تم إخفاء بطاقة المنتج فقط أسفل الفيديوهات</string>
+  <string name="morphe_hide_expandable_card_entry_3">تم إخفاء بطاقة الملخص فقط أسفل الفيديوهات</string>
+  <string name="morphe_hide_expandable_card_entry_4">تم إخفاء بطاقة المنتج والملخص أسفل الفيديوهات</string>
+  <string name="morphe_hide_expandable_card_entry_5">تم إخفاء البطاقات القابلة للتوسع أسفل الفيديوهات</string>
   <string name="morphe_hide_floating_microphone_button_title">إخفاء زر الميكروفون العائم</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">تم إخفاء زر الميكروفون العائم في البحث</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">يتم عرض زر الميكروفون العائم في البحث</string>
   <string name="morphe_hide_horizontal_shelves_title">إخفاء الرفوف الأفقية</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"تم إخفاء الأرفف الأفقية، مثل:
+
 • الأخبار العاجلة
+• منشورات المجتمع التي قد تعجبك
 • متابعة المشاهدة
-• استكشاف المزيد من القنوات
+• استكشف المزيد من القنوات
+• استكشف المزيد من المواضيع
+• من أجلك
+• أحدث الفيديوهات
 • الأكثر صلة
+• منشورات من مجتمع المبدعين
 • التسوق
 • أريد أن أشاهدها مرة أخرى"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">يتم عرض الأرفف الأفقية</string>
   <string name="morphe_hide_image_shelf_title">إخفاء رف الصور</string>
   <string name="morphe_hide_image_shelf_summary_on">تم إخفاء رف الصور في نتائج البحث</string>
   <string name="morphe_hide_image_shelf_summary_off">يتم عرض رف الصور في نتائج البحث</string>
-  <string name="morphe_hide_latest_posts_title">إخفاء آخر المشاركات</string>
-  <string name="morphe_hide_latest_posts_summary_on">تم إخفاء أحدث المشاركات</string>
-  <string name="morphe_hide_latest_posts_summary_off">يتم عرض أحدث المشاركات</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">إخفاء زر \'أحدث الفيديوهات\'</string>
@@ -263,8 +266,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_quizzes_section_summary_off">يتم عرض قسم الاختبارات</string>
   <string name="morphe_hide_description_components_screen_title">وصف الفيديو</string>
   <string name="morphe_hide_description_components_screen_summary">إخفاء أو عرض مكونات وصف الفيديو</string>
-  <string name="morphe_hide_filter_bar_screen_title">شريط التصفية</string>
-  <string name="morphe_hide_filter_bar_screen_summary">إخفاء أو عرض شريط الفلترة في الموجزات والفيديوهات ذات الصلة ونتائج البحث وسجل المشاهدة</string>
+  <string name="morphe_hide_filter_bar_screen_title">شريط الفئة</string>
+  <string name="morphe_hide_filter_bar_screen_summary">إخفاء أو عرض شريط الفئة في الموجزات، الفيديوهات ذات الصلة، نتائج البحث، والسجلّ</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">إخفاء في الموجز</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_summary_on">مخفي في الموجز</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_summary_off">يُعرض في الموجز</string>
@@ -298,6 +301,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_shelf_title">إخفاء رف الأعضاء</string>
   <string name="morphe_hide_members_shelf_summary_on">تم إخفاء رف الأعضاء</string>
   <string name="morphe_hide_members_shelf_summary_off">يتم عرض رف الأعضاء</string>
+  <string name="morphe_hide_posts_shelf_title">إخفاء رف المنشورات</string>
+  <string name="morphe_hide_posts_shelf_summary_on">تم إخفاء رف المنشورات</string>
+  <string name="morphe_hide_posts_shelf_summary_off">يتم عرض رف المنشورات</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">إخفاء زر المتجر</string>
   <string name="morphe_hide_store_button_summary_on">تم إخفاء زر المتجر</string>
@@ -803,9 +809,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">تم إخفاء قائمة إعدادات إضافية</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_off">يتم عرض قائمة إعدادات إضافية</string>
   <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_sleep_timer_title">إخفاء مؤقِّت إيقاف التشغيل</string>
-  <string name="morphe_hide_player_flyout_sleep_timer_summary_on">تم إخفاء قائمة مؤقِّت إيقاف التشغيل</string>
-  <string name="morphe_hide_player_flyout_sleep_timer_summary_off">يتم عرض قائمة مؤقِّت إيقاف التشغيل</string>
+  <string name="morphe_hide_player_flyout_sleep_timer_title">إخفاء مؤقت النوم</string>
+  <string name="morphe_hide_player_flyout_sleep_timer_summary_on">تم إخفاء قائمة مؤقت النوم</string>
+  <string name="morphe_hide_player_flyout_sleep_timer_summary_off">يتم عرض قائمة مؤقت النوم</string>
   <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_loop_video_title">إخفاء تكرار الفيديو</string>
   <string name="morphe_hide_player_flyout_loop_video_summary_on">تم إخفاء قائمة تكرار الفيديو</string>
@@ -827,9 +833,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_speed_summary_on">تم إخفاء قائمة سرعة التشغيل</string>
   <string name="morphe_hide_player_flyout_speed_summary_off">يتم عرض قائمة سرعة التشغيل</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">إخفاء شاشة القفل</string>
-  <string name="morphe_hide_player_flyout_lock_screen_summary_on">تم إخفاء قائمة شاشة القفل</string>
-  <string name="morphe_hide_player_flyout_lock_screen_summary_off">يتم عرض قائمة شاشة القفل</string>
+  <string name="morphe_hide_player_flyout_lock_screen_title">إخفاء قفل الشاشة</string>
+  <string name="morphe_hide_player_flyout_lock_screen_summary_on">تم إخفاء قائمة قفل الشاشة</string>
+  <string name="morphe_hide_player_flyout_lock_screen_summary_off">يتم عرض قائمة قفل الشاشة</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">إخفاء الاستماع مع YouTube Music</string>
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_summary_on">تم إخفاء قائمة الاستماع مع YouTube Music</string>
@@ -847,7 +853,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">تم إخفاء النص السفلي لقائمة المقطع الصوتي</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">يتم عرض النص السفلي لقائمة المقطع الصوتي</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_watch_in_vr_title">إخفاء المشاهدة في VR</string>
+  <string name="morphe_hide_player_flyout_watch_in_vr_title">إخفاء المشاهدة في الوضع الافتراضي</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">تم إخفاء قائمة المشاهدة في الوضع الافتراضي</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">يتم عرض قائمة المشاهدة في الوضع الافتراضي</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -1390,11 +1396,11 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">فتح قائمة مشاركة النظام</string>
   <string name="morphe_open_system_share_sheet_summary_on">يفتح قائمة مشاركة النظام</string>
   <string name="morphe_open_system_share_sheet_summary_off">يفتح في قائمة مشاركة الخاصة بالتطبيق</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">تجاوز زر YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">زر YouTube Music يفتح تطبيق الموسيقى المستهدف</string>
-  <string name="morphe_override_youtube_music_button_summary_off">زر موسيقى YouTube يفتح التطبيق الأصلي</string>
-  <string name="morphe_music_package_name_title">اسم حزمة Morphe Music</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">تجاوز أزرار YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">أزرار YouTube Music تفتح تطبيق الموسيقى المستهدف</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">أزرار YouTube Music تفتح التطبيق الأصلي</string>
+  <string name="morphe_music_package_name_title">اسم حزمة تطبيق الموسيقى المستهدف</string>
   <string name="morphe_music_package_name_summary">اسم الحزمة لتطبيق الموسيقى المستهدف</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">تغيير صفحة البداية</string>

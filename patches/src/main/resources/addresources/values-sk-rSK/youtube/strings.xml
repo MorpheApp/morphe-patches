@@ -44,9 +44,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">Skryť plávajúce tlačidlo mikrofónu</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Plávajúce tlačidlo mikrofónu vo vyhľadávaní je skryté</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Plávajúce tlačidlo mikrofónu vo vyhľadávaní je zobrazené</string>
-  <string name="morphe_hide_latest_posts_title">Skryť najnovšie príspevky</string>
-  <string name="morphe_hide_latest_posts_summary_on">Najnovšie príspevky sú skryté</string>
-  <string name="morphe_hide_latest_posts_summary_off">Najnovšie príspevky sa zobrazujú</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Skryť tlačidlo \'Najnovšie videá\'</string>
@@ -651,7 +648,7 @@ Ak ju neskôr vypnete, odporúča sa vymazať dáta aplikácie, aby sa predišlo
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré ukladanie do zoznamu videí</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Obnoví nerozbalenú ponuku akcií videa</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Zmeniť úvodnú stránku</string>
   <string name="morphe_change_start_page_entry_default">Predvolená</string>

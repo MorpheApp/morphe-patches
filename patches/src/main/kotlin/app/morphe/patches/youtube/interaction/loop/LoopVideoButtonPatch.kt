@@ -40,7 +40,7 @@ private val loopVideoButtonResourcePatch = resourcePatch {
     }
 }
 
-private const val BUTTON_DESCRIPTOR =
+private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/LoopVideoButton;"
 
 internal val loopVideoButtonPatch = bytecodePatch(
@@ -59,7 +59,7 @@ internal val loopVideoButtonPatch = bytecodePatch(
             SwitchPreference("morphe_loop_video_button"),
         )
 
-        initializeTopControl(BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
+        initializeTopControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
     }
 }

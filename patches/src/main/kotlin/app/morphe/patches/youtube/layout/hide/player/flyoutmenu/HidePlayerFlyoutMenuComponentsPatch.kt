@@ -28,9 +28,9 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.fiveRegisters
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HidePlayerFlyoutMenuPatch;"
-private const val EXTENSION_FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/PlayerFlyoutMenuComponentsFilter;"
 
 @Suppress("unused")
@@ -83,10 +83,10 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
             )
         )
 
-        addLithoFilter(EXTENSION_FILTER_CLASS_DESCRIPTOR)
-        hookElement("$EXTENSION_CLASS_DESCRIPTOR->hideNativeBottomSheetHeader([B)[B")
+        addLithoFilter(EXTENSION_FILTER)
+        hookElement("$EXTENSION_CLASS->hideNativeBottomSheetHeader([B)[B")
         hookTreeNodeResult(
-            descriptor = "$EXTENSION_CLASS_DESCRIPTOR->hideNativeBottomSheetFooter",
+            descriptor = "$EXTENSION_CLASS->hideNativeBottomSheetFooter",
             isLazilyConvertedElement = false
         )
 
@@ -100,7 +100,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
 
                     replaceInstruction(
                         footerViewIndex,
-                        "invoke-static { $footerViewArgs }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                        "invoke-static { $footerViewArgs }, $EXTENSION_CLASS->" +
                                 "hideCaptionsOldBottomSheetFooter(Landroid/widget/ListView;Landroid/view/View;Ljava/lang/Object;Z)V"
                     )
 
@@ -109,7 +109,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
 
                     replaceInstruction(
                         headerViewIndex,
-                        "invoke-static { $headerViewArgs }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                        "invoke-static { $headerViewArgs }, $EXTENSION_CLASS->" +
                                 "hideCaptionsOldBottomSheetHeader(Landroid/view/View;I)Landroid/view/View;"
                     )
                 }
@@ -124,7 +124,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
 
                     replaceInstruction(
                         footerViewIndex,
-                        "invoke-static { $footerViewArgs }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                        "invoke-static { $footerViewArgs }, $EXTENSION_CLASS->" +
                                 "hideQualityOldBottomSheetFooter(Landroid/widget/ListView;Landroid/view/View;Ljava/lang/Object;Z)V"
                     )
 
@@ -133,7 +133,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
 
                     replaceInstruction(
                         headerViewIndex,
-                        "invoke-static { $headerViewArgs }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                        "invoke-static { $headerViewArgs }, $EXTENSION_CLASS->" +
                                 "hideQualityOldBottomSheetHeader(Landroid/widget/ListView;Landroid/view/View;Ljava/lang/Object;Z)V"
                     )
                 }

@@ -44,9 +44,9 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import java.lang.ref.WeakReference
 
-internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
+internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/components/LithoFilterPatch;"
 
-internal const val EXTENSION_FILER_ARRAY_DESCRIPTOR = "[Lapp/morphe/extension/youtube/patches/components/Filter;"
+internal const val EXTENSION_FILTER = "[Lapp/morphe/extension/youtube/patches/components/Filter;"
 
 // Registers used in extension helperMethod.
 private const val REGISTER_FILTER_CLASS = 0
@@ -124,7 +124,7 @@ val lithoFilterPatch = bytecodePatch(
                 // This fixes an issue with extension compiled with Android Gradle Plugin 8.3.0+.
                 val helperClass = definingClass
                 val helperName = "patch_getFilterArray"
-                val helperReturnType = EXTENSION_FILER_ARRAY_DESCRIPTOR
+                val helperReturnType = EXTENSION_FILTER
                 val helperMethod = ImmutableMethod(
                     helperClass,
                     helperName,
@@ -145,7 +145,7 @@ val lithoFilterPatch = bytecodePatch(
                 addInstructions(
                     insertIndex,
                     """
-                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->$helperName()$EXTENSION_FILER_ARRAY_DESCRIPTOR
+                        invoke-static {}, $EXTENSION_CLASS->$helperName()$EXTENSION_FILTER
                         move-result-object v$insertRegister
                     """
                 )
@@ -158,7 +158,7 @@ val lithoFilterPatch = bytecodePatch(
             // Non-native buffer.
             ProtobufBufferReferenceFingerprint.method.addInstruction(
                 0,
-                "invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->setProtoBuffer(Ljava/nio/ByteBuffer;)V",
+                "invoke-static { p2 }, $EXTENSION_CLASS->setProtoBuffer(Ljava/nio/ByteBuffer;)V",
             )
         }
 
@@ -265,7 +265,7 @@ val lithoFilterPatch = bytecodePatch(
 
                         :hook
                         move-object/from16 v$contextRegister, p2
-                        invoke-static { v$contextRegister, v$bufferRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, $EXTENSION_CLASS_DESCRIPTOR->isFiltered(${EXTENSION_CONTEXT_INTERFACE}[BLjava/lang/String;Ljava/lang/String;)Z
+                        invoke-static { v$contextRegister, v$bufferRegister, v$accessibilityIdRegister, v$accessibilityTextRegister }, $EXTENSION_CLASS->isFiltered(${EXTENSION_CONTEXT_INTERFACE}[BLjava/lang/String;Ljava/lang/String;)Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :unfiltered
                         
@@ -315,9 +315,9 @@ val lithoFilterPatch = bytecodePatch(
         LithoThreadExecutorFingerprint.method.addInstructions(
             0,
             """
-                invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->getExecutorCorePoolSize(I)I
+                invoke-static { p1 }, $EXTENSION_CLASS->getExecutorCorePoolSize(I)I
                 move-result p1
-                invoke-static { p2 }, $EXTENSION_CLASS_DESCRIPTOR->getExecutorMaxThreads(I)I
+                invoke-static { p2 }, $EXTENSION_CLASS->getExecutorMaxThreads(I)I
                 move-result p2
             """
         )
@@ -353,7 +353,7 @@ val lithoFilterPatch = bytecodePatch(
                 0,
                 """
                     const/16 v$REGISTER_FILTER_COUNT, $addLithoFilterCount
-                    new-array v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT, $EXTENSION_FILER_ARRAY_DESCRIPTOR
+                    new-array v$REGISTER_FILTER_ARRAY, v$REGISTER_FILTER_COUNT, $EXTENSION_FILTER
                 """
             )
         }

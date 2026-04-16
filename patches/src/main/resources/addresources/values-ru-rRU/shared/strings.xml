@@ -150,4 +150,13 @@ Second \"item\" text"</string>
 • Приложение может случайно закрываться
 • Уведомления могут не работать
 • Фоновое воспроизведение может не работать"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Экспериментальное предупреждение 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Вы используете экспериментальную версию программы⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Ожидайте странного поведения программы или необнаруженных ошибок, пока мы усовершенствуем патчи для этой версии программы.
+&lt;br/&gt;&lt;br/&gt;
+Если вы хотите получить максимально беспроблемный опыт, тогда &lt;b&gt;удалите&lt;/b&gt; это и пропатчите рекомендованную версию программы ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Я хочу экспериментальную</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Я хочу стабильную</string>
 </resources>

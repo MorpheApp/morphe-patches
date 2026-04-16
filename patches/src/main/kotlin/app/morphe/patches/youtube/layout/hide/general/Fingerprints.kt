@@ -73,7 +73,7 @@ internal object HideSubscribedChannelsBarConstructorFingerprint : Fingerprint(
     filters = listOf(
         resourceLiteral(ResourceType.ID, "parent_container"),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
-        newInstance("Landroid/widget/LinearLayout\$LayoutParams;", location = MatchAfterWithin(5))
+        newInstance($$"Landroid/widget/LinearLayout$LayoutParams;", location = MatchAfterWithin(5))
     ),
     custom = { _, classDef ->
         classDef.fields.any { field ->
@@ -90,7 +90,7 @@ internal object HideSubscribedChannelsBarConstructorLegacyFingerprint : Fingerpr
     filters = listOf(
         resourceLiteral(ResourceType.ID, "parent_container"),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(3)),
-        newInstance("Landroid/widget/LinearLayout\$LayoutParams;", location = MatchAfterWithin(5))
+        newInstance($$"Landroid/widget/LinearLayout$LayoutParams;", location = MatchAfterWithin(5))
     )
 )
 
@@ -246,7 +246,7 @@ internal object ShowFloatingMicrophoneButtonParentFingerprint : Fingerprint(
     parameters = listOf("Z"),
     strings = listOf("Current FAB View Wrapper does not support this operation. Text: "),
     custom = { _, classDef ->
-        !classDef.interfaces.contains("Landroid/view/View\$OnClickListener;")
+        !classDef.interfaces.contains($$"Landroid/view/View$OnClickListener;")
     }
 )
 

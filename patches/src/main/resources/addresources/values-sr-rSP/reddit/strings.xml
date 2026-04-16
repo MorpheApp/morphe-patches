@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Искаљује модеран кориснички интерфејс почетног екрана</string>
   <string name="morphe_disable_screenshot_popup_title">Искаљује дијалог за снимак екрана</string>
   <string name="morphe_disable_screenshot_popup_summary">Искаљује дијалог који се појављује приликом снимања снимка екрана</string>
+  <string name="morphe_hide_ask_button_title">Сакриј дугме „Захтев”</string>
+  <string name="morphe_hide_ask_button_summary">Скрива дугме „Захтев” у траци прегледа.</string>
   <string name="morphe_hide_answers_button_title">Sakrij dugme „Odgovori”</string>
   <string name="morphe_hide_answers_button_summary">Sakrij dugme „Odgovori” u траци навигације</string>
   <string name="morphe_hide_chat_button_title">Sakrij dugme „Ћаскање”</string>
@@ -65,4 +67,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">Чисти линкове за дељење уклањањем параметра за праћење</string>
   <string name="morphe_open_links_directly_title">Отвори линкове директно</string>
   <string name="morphe_open_links_directly_summary">Прескаче URL-ове за пренаправљање у екстерним линковима</string>
+  <string name="morphe_open_links_externally_title">Отвори линкове спољашње</string>
+  <string name="morphe_open_links_externally_summary">Овај постер отвара везе у вашем прегледачу, уместо у унутрашњем прегледачу.</string>
 </resources>

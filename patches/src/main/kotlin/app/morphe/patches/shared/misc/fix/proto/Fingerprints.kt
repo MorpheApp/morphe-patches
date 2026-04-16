@@ -37,7 +37,7 @@ internal object ProtobufClassParseByteArrayFingerprint : Fingerprint(
 )
 
 internal object StreamingDataOuterClassFingerprint : Fingerprint(
-    definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;",
+    definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),

@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Dezactivează interfața modernă a paginii principale</string>
   <string name="morphe_disable_screenshot_popup_title">Dezactivează fereastra de notificare pentru capturi de ecran</string>
   <string name="morphe_disable_screenshot_popup_summary">Dezactivează fereastra care apare când faci o captură de ecran</string>
+  <string name="morphe_hide_ask_button_title">Ascunde butonul Ask</string>
+  <string name="morphe_hide_ask_button_summary">Ascunde butonul Ask în bara de căutare</string>
   <string name="morphe_hide_answers_button_title">Ascunde butonul Răspunsuri</string>
   <string name="morphe_hide_answers_button_summary">Ascunde butonul Răspunsuri în bara de navigare</string>
   <string name="morphe_hide_chat_button_title">Ascunde butonul Chat</string>
@@ -67,4 +69,6 @@ Limitare: Se afișează doar dacă răspunsul API include numărul de vizualiză
   <string name="morphe_sanitize_sharing_links_summary">Optimizează link-urile de partajare prin eliminarea parametrilor de urmărire</string>
   <string name="morphe_open_links_directly_title">Deschide link-uri direct</string>
   <string name="morphe_open_links_directly_summary">Ocolește URL-urile de redirecționare în link-urile externe</string>
+  <string name="morphe_open_links_externally_title">Deschide link-uri extern</string>
+  <string name="morphe_open_links_externally_summary">Deschide link-uri în browserul tău, în loc de browserul în aplicație</string>
 </resources>

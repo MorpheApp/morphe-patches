@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Müasir əsas UI-ni qapadır</string>
   <string name="morphe_disable_screenshot_popup_title">Ekran görüntüsü ani görüntüsün qapat</string>
   <string name="morphe_disable_screenshot_popup_summary">Ekran görüntüsü çəkərkən görünən ani görüntünü qapadır</string>
+  <string name="morphe_hide_ask_button_title">Soruş düyməsini gizlət</string>
+  <string name="morphe_hide_ask_button_summary">Axtarış cərgəsindəki Soruş düyməsi gizlədilir</string>
   <string name="morphe_hide_answers_button_title">Cavablar düyməsin gizlət</string>
   <string name="morphe_hide_answers_button_summary">Fəaliyyət cizgisində Cavablar düyməsi gizlədilir</string>
   <string name="morphe_hide_chat_button_title">Söhbət düyməsin gizlət</string>
@@ -67,4 +69,6 @@ Məhdudiyyət: Yalnız API cavabı baxış sayını daxil edərsə görünür"</
   <string name="morphe_sanitize_sharing_links_summary">İzlənmə sorğusu faktorların silməklə paylaşma bağlantıların təmizləyir</string>
   <string name="morphe_open_links_directly_title">Keçidləri birbaşa açın</string>
   <string name="morphe_open_links_directly_summary">Xarici keçidlərdə yönləndirmə URL-lərindən yan keçir</string>
+  <string name="morphe_open_links_externally_title">Xarici olan keçidləri aç</string>
+  <string name="morphe_open_links_externally_summary">Linklər tətbiqdaxili brauzer əvəzinə, brauzerinizdə açılır</string>
 </resources>

@@ -21,7 +21,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch;"
 
 @Suppress("unused")
 val changeMiniplayerColor = bytecodePatch(
@@ -68,7 +68,7 @@ val changeMiniplayerColor = bytecodePatch(
                 addInstructionsAtControlFlowLabel(
                     insertIndex,
                     """
-                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->changeMiniplayerColor()Z
+                        invoke-static {}, $EXTENSION_CLASS->changeMiniplayerColor()Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :off
                         invoke-virtual { p1 }, $colorMathPlayerInvokeVirtualReference

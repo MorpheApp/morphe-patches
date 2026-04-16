@@ -18,6 +18,8 @@ import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
+import app.morphe.patches.youtube.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -35,7 +37,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
 
 internal var adAttributionId = -1L
@@ -65,8 +67,8 @@ private val hideAdsResourcePatch = resourcePatch {
             SwitchPreference("morphe_hide_youtube_premium_promotions"),
         )
 
-        addLithoFilter(EXTENSION_CLASS_DESCRIPTOR)
-        addEngagementPanelIdHook("$EXTENSION_CLASS_DESCRIPTOR->hidePlayerPopupAds(Ljava/lang/String;)Z")
+        addLithoFilter(EXTENSION_CLASS)
+        addEngagementPanelIdHook("$EXTENSION_CLASS->hidePlayerPopupAds(Ljava/lang/String;)Z")
 
         adAttributionId = getResourceId(ResourceType.ID, "ad_attribution")
     }
@@ -79,12 +81,17 @@ val hideAdsPatch = bytecodePatch(
 ) {
     dependsOn(
         hideAdsResourcePatch,
+        elementProtoParserHookPatch,
         versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        // Hide YouTube Premium promotions
+
+        hookElement("$EXTENSION_CLASS->hideStatementBanner([B)[B")
+
         // Hide end screen store banner
 
         FullScreenEngagementAdContainerFingerprint.let {
@@ -96,7 +103,7 @@ val hideAdsPatch = bytecodePatch(
 
                 replaceInstruction(
                     insertIndex,
-                    "invoke-static { v$listRegister, v$objectRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "invoke-static { v$listRegister, v$objectRegister }, $EXTENSION_CLASS->" +
                             "hideEndScreenStoreBanner(Ljava/util/List;Ljava/lang/Object;)V"
                 )
             }
@@ -123,7 +130,7 @@ val hideAdsPatch = bytecodePatch(
                     insertIndex,
                     """
                         move-object/from16 v$freeRegister, p1
-                        invoke-static { v$insertRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->closeFullscreenAd(Ljava/lang/Object;[B)V
+                        invoke-static { v$insertRegister, v$freeRegister }, $EXTENSION_CLASS->closeFullscreenAd(Ljava/lang/Object;[B)V
                     """
                 )
             }
@@ -143,7 +150,7 @@ val hideAdsPatch = bytecodePatch(
                 startIndex + 2,
                 """
                     # Override the internal measurement of the layout with zero values.
-                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideGetPremiumView()Z
+                    invoke-static {}, $EXTENSION_CLASS->hideGetPremiumView()Z
                     move-result v$tempRegister
                     if-eqz v$tempRegister, :allow
                     const/4 v$measuredWidthRegister, 0x0
@@ -160,7 +167,7 @@ val hideAdsPatch = bytecodePatch(
         PlayerOverlayTimelyShelfFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideAds()Z
+                invoke-static {}, $EXTENSION_CLASS->hideAds()Z
                 move-result v0
                 if-eqz v0, :show
                 return-void
@@ -198,7 +205,7 @@ val hideAdsPatch = bytecodePatch(
                                 .injectHideViewCall(
                                     insertIndex,
                                     viewRegister,
-                                    EXTENSION_CLASS_DESCRIPTOR,
+                                    EXTENSION_CLASS,
                                     "hideAdAttributionView",
                                 )
                         }
@@ -214,7 +221,7 @@ val hideAdsPatch = bytecodePatch(
         ).forEach { endpoint ->
             addOSNameHook(
                 endpoint,
-                "$EXTENSION_CLASS_DESCRIPTOR->hideAds(Ljava/lang/String;)Ljava/lang/String;",
+                "$EXTENSION_CLASS->hideAds(Ljava/lang/String;)Ljava/lang/String;",
             )
         }
     }

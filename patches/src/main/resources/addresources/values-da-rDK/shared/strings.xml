@@ -62,28 +62,28 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_pref_import_export_summary">Importér/Eksportér Morphe-indstillinger</string>
   <string name="morphe_settings_import_file">Importér fra fil</string>
   <string name="morphe_settings_import_file_success">Indstillinger importeret med succes, tryk på Gem for at anvende</string>
-  <string name="morphe_settings_import_file_failed">Mislykkedes at importere indstillinger</string>
+  <string name="morphe_settings_import_file_failed">Importering af indstillinger mislykkedes</string>
   <string name="morphe_settings_export_file">Eksportér til fil</string>
-  <string name="morphe_settings_export_file_success">Indstillingerne er eksporteret med succes</string>
-  <string name="morphe_settings_export_file_failed">Mislykkedes med at eksportere indstillinger</string>
+  <string name="morphe_settings_export_file_success">Indstillingerne blev eksporteret med succes</string>
+  <string name="morphe_settings_export_file_failed">Eksportering af indstillinger mislykkedes</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Du bruger den nyeste Morphe Patches-version &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Du bruger Morphe Patches-versionen &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Opdatering tilgængelig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;For at opdatere dine patches, brug Morphe til at genpatche denne app</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Du bruger Morphe Patches-version &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Opdatering tilgængelig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;For at opdatere dine patches, brug Morphe til at genpatche denne app</string>
   <string name="morphe_settings_about_links_dev_header">Bemærk</string>
   <string name="morphe_settings_about_links_dev_body">Denne version er en pre-release, og du kan opleve uventede problemer</string>
   <string name="morphe_settings_about_links_header">Officielle links</string>
   <string name="morphe_settings_about_links_website">Website</string>
   <string name="morphe_settings_about_links_donate">Donér</string>
   <string name="morphe_settings_about_links_translations">Oversættelser</string>
-  <string name="morphe_settings_about_links_credits">Fortjenester</string>
+  <string name="morphe_settings_about_links_credits">Credits</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Opdateret</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Opdatering tilgængelig</string>
   <string name="morphe_settings_about_contributors_current">Aktuel udvikling</string>
   <string name="morphe_settings_about_contributors_prior">Tidligere udvikling</string>
   <string name="morphe_settings_about_links_morphe">Aktiv udvikling</string>
-  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
-  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
-  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <string name="morphe_settings_about_links_licenses">Licensmeddelelser</string>
   <string name="morphe_settings_about_licenses_loading">Indlæser...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
@@ -101,47 +101,47 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Hvis du deaktiverer fejl-toasts, skjules alle Morphe-fejlmeddelelser.
 
 Du modtager ikke notifikationer om uventede hændelser."</string>
-  <string name="morphe_debug_export_logs_title">Eksportér fejlsøgningslogfiler</string>
-  <string name="morphe_debug_export_logs_summary">Eksportér fejlsøgningslogfiler</string>
+  <string name="morphe_debug_export_logs_title">Eksportér fejlfindingslogfiler</string>
+  <string name="morphe_debug_export_logs_summary">Eksportér Morphe fejlfindingslogfiler</string>
   <string name="morphe_debug_export_logs_file">Eksportér til fil</string>
-  <string name="morphe_debug_export_logs_success">Indstillinger importeret med succes</string>
+  <string name="morphe_debug_export_logs_success">Fejlfindingslogge eksporteret med succes</string>
   <string name="morphe_debug_export_logs_failed">Kunne ikke eksportere logfiler: %s</string>
-  <string name="morphe_debug_logs_search_hint">Søg efter fejlsøgningslogfiler...</string>
+  <string name="morphe_debug_logs_search_hint">Søg efter fejlfindingslogfiler...</string>
   <string name="morphe_debug_export_logs_clear">Ryd</string>
-  <string name="morphe_debug_logs_disabled">Fejlsøgningslogning er deaktiveret</string>
+  <string name="morphe_debug_logs_disabled">Fejlfindingslogning er deaktiveret</string>
   <string name="morphe_debug_logs_none_found">Ingen logfiler fundet</string>
   <string name="morphe_debug_logs_copied_to_clipboard">Logfiler kopieret</string>
   <string name="morphe_debug_logs_failed_to_export">Kunne ikke eksportere logfiler: %s</string>
   <string name="morphe_debug_logs_clear_toast">Fejlfindingslogge ryddet</string>
   <string name="morphe_debug_feature_flags_manager_title">Funktionsflag Manager</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Administrer booleske funktionsflag</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktive flag (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokerede flag (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Søg flag...</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Administrer boolean funktionsflag</string>
+  <string name="morphe_debug_feature_flags_manager_active_header"> Aktive funktionsflag (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokerede funktionsflag (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Søg i funktionsflag...</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Funktionsflag gemt</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Funktionsflag nulstillet</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Flag kopieret til udklipsholder</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Funktionsflag kopieret til udklipsholder</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Genstart appen for at bruge denne indstilling</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Åbn MicroG-indstillingerne</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="gms_core_toast_not_installed_message">MicroG er ikke installeret. Install det.</string>
+  <string name="gms_core_toast_not_installed_message">MicroG er ikke installeret. Installer den.</string>
   <string name="gms_core_dialog_title">Handling påkrævet</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG har ikke tilladelse til at kjøre i baggrunden.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG har ikke tilladelse til at køre i baggrunden.
 
-Følg den engsprogede vejledning \"Don't kill my app\" for din telefon, og anvend instruktionerne på din MicroG-installation.
+Følg vejledningen \"Don't kill my app\" til din telefon, og anvend instruktionerne på din MicroG-installation.
 
 Dette er nødvendigt for, at appen fungerer."</string>
   <string name="gms_core_dialog_open_website_text">Åbn hjemmeside</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Batteryoptimeringer for MicroG skal deaktiveres for at undgå problemer.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Batterioptimeringer for MicroG skal deaktiveres for at undgå problemer.
 
-Deaktivering af batteryoptimeringer for MicroG vil ikke negativt påvirke batteribrugen.
+Deaktivering af batterioptimeringer for MicroG vil ikke negativt påvirke batteriforbrug.
 
-Tryk på knappen Fortsæt og tillad optimeringsskift."</string>
+Tryk på knappen Fortsæt og tillad optimeringsændringer."</string>
   <string name="gms_core_dialog_continue_text">Fortsæt</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Batterioptimering-dialog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Batterioptimeringsdialog</string>
   <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG batterioptimeringsdialog vises</string>
   <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG batterioptimeringsdialog vises ikke</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering af dette skjuler MicroG batterioptimeringsprompten.
@@ -150,4 +150,13 @@ Hvis batterioptimeringer ikke ændres, kan du opleve:
 • Appen kan lukke tilfældigt
 • Notifikationer virker muligvis ikke
 • Baggrundsafspilning virker muligvis ikke"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentel Advarsel 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Du bruger en eksperimentel app-version af ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Forvent mærkelige app-adfærd eller uidentificerede fejl, mens vi finjusterer rettelserne til denne app-version.
+&lt;br/&gt;&lt;br/&gt;
+Hvis du ønsker den mest problemfrie oplevelse, så &lt;b&gt;afinstaller&lt;/b&gt; denne og opdater den anbefalede app-version af ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jeg vil have eksperimentel</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jeg vil have stabil</string>
 </resources>

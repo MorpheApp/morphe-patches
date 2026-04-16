@@ -61,27 +61,27 @@ Second \"item\" text"</string>
 • プレーヤーのフライアウト メニューの項目を非表示にできない。
 • ライブラリタブに「アカウントを切り替える」ボタンが表示されない場合がある。"</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
-  <string name="morphe_hide_creator_store_shelf_title">クリエイターのストア欄を非表示</string>
-  <string name="morphe_hide_creator_store_shelf_summary_on">動画プレーヤー下のクリエイターのストア欄は表示されません</string>
-  <string name="morphe_hide_creator_store_shelf_summary_off">動画プレーヤー下のクリエイターのストア欄は表示されます</string>
+  <string name="morphe_hide_creator_store_shelf_title">「\"チャンネル名\" のストア」欄を非表示</string>
+  <string name="morphe_hide_creator_store_shelf_summary_on">動画プレーヤー下の「\"チャンネル名\" のストア」欄は表示されません</string>
+  <string name="morphe_hide_creator_store_shelf_summary_off">動画プレーヤー下の「\"チャンネル名\" のストア」欄は表示されます</string>
   <string name="morphe_hide_album_cards_title">アルバムカードを非表示</string>
   <string name="morphe_hide_album_cards_summary_on">アルバムカードはアーティストの概要欄の下に表示されません</string>
   <string name="morphe_hide_album_cards_summary_off">アルバムカードはアーティストの概要欄の下に表示されます</string>
   <string name="morphe_hide_artist_cards_title">アーティスト カードを非表示</string>
   <string name="morphe_hide_artist_cards_summary_on">アーティスト カードは表示されません</string>
   <string name="morphe_hide_artist_cards_summary_off">アーティスト カードは表示されます</string>
-  <string name="morphe_hide_chips_shelf_title">チップ欄を非表示</string>
-  <string name="morphe_hide_chips_shelf_summary_on">チップ欄は表示されません</string>
-  <string name="morphe_hide_chips_shelf_summary_off">チップ欄は表示されます</string>
   <string name="morphe_hide_community_posts_title">コミュニティ投稿を非表示</string>
   <string name="morphe_hide_community_posts_summary_on">コミュニティ投稿は表示されません</string>
   <string name="morphe_hide_community_posts_summary_off">コミュニティ投稿は表示されます</string>
   <string name="morphe_hide_compact_banner_title">コンパクトなバナーを非表示</string>
   <string name="morphe_hide_compact_banner_summary_on">コンパクトなバナーは表示されません</string>
   <string name="morphe_hide_compact_banner_summary_off">コンパクトなバナーは表示されます</string>
-  <string name="morphe_hide_expandable_card_title">展開可能なカードを非表示</string>
-  <string name="morphe_hide_expandable_card_summary_on">動画下の展開可能なカードは表示されません</string>
-  <string name="morphe_hide_expandable_card_summary_off">動画下の展開可能なカードは表示されます</string>
+  <string name="morphe_hide_expandable_card_title">動画下の展開可能なカードの表示</string>
+  <string name="morphe_hide_expandable_card_entry_1">すべて表示</string>
+  <string name="morphe_hide_expandable_card_entry_2">商品のカードのみ非表示</string>
+  <string name="morphe_hide_expandable_card_entry_3">概要 (AI) のカードのみ非表示</string>
+  <string name="morphe_hide_expandable_card_entry_4">商品のカード &amp; 概要 (AI) のカードのみ非表示</string>
+  <string name="morphe_hide_expandable_card_entry_5">すべて非表示</string>
   <string name="morphe_hide_floating_microphone_button_title">音声入力のフローティング ボタンを非表示</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">検索時の音声入力のフローティング ボタン (マイクアイコン) は表示されません</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">検索時の音声入力のフローティング ボタン (マイクアイコン) は表示されます</string>
@@ -89,19 +89,20 @@ Second \"item\" text"</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"横スクロール欄は表示されません
 例:
 • ニュース速報
+• おすすめのコミュニティ投稿
 • 続きを見る
 • 他のチャンネルを探す
+• その他のトピック
 • おすすめ
+• 新着動画
 • 関連が強い
+• \"チャンネル名\" のコミュニティの投稿
 • ショッピング
 • もう一度見る"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">横スクロール欄は表示されます</string>
   <string name="morphe_hide_image_shelf_title">画像欄を非表示</string>
   <string name="morphe_hide_image_shelf_summary_on">検索結果の画像欄は表示されません</string>
   <string name="morphe_hide_image_shelf_summary_off">検索結果の画像欄は表示されます</string>
-  <string name="morphe_hide_latest_posts_title">「最新の投稿」欄を非表示</string>
-  <string name="morphe_hide_latest_posts_summary_on">「最新の投稿」欄は表示されません</string>
-  <string name="morphe_hide_latest_posts_summary_off">「最新の投稿」欄は表示されます</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">「新着動画」ボタンを非表示</string>
@@ -300,6 +301,9 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_hide_members_shelf_title">メンバー欄を非表示</string>
   <string name="morphe_hide_members_shelf_summary_on">メンバー欄は表示されません</string>
   <string name="morphe_hide_members_shelf_summary_off">メンバー欄は表示されます</string>
+  <string name="morphe_hide_posts_shelf_title">「投稿」欄を非表示</string>
+  <string name="morphe_hide_posts_shelf_summary_on">「投稿」欄は表示されません</string>
+  <string name="morphe_hide_posts_shelf_summary_off">「投稿」欄は表示されます</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">ストアボタンを非表示</string>
   <string name="morphe_hide_store_button_summary_on">ストアボタンは表示されません</string>
@@ -793,16 +797,16 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
 長押しすると Morphe の設定を開く"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">フライアウト メニュー</string>
-  <string name="morphe_hide_player_flyout_summary">プレーヤー フライアウト メニュー コンポーネントを非表示または表示します</string>
+  <string name="morphe_hide_player_flyout_summary">プレーヤー オーバーレイの歯車アイコンボタンから呼び出されるフライアウト メニューのコンポーネントを表示または非表示にします</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">「字幕」を非表示</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">「字幕」は表示されません</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">「字幕」は表示されます</string>
-  <string name="morphe_hide_player_flyout_captions_footer_title">字幕フッターを非表示にする</string>
-  <string name="morphe_hide_player_flyout_captions_footer_summary_on">字幕メニューのフッターは非表示です</string>
-  <string name="morphe_hide_player_flyout_captions_footer_summary_off">字幕メニューのフッターは表示されています</string>
-  <string name="morphe_hide_player_flyout_captions_header_title">字幕ヘッダーを非表示にする</string>
-  <string name="morphe_hide_player_flyout_captions_header_summary_on">字幕メニューのヘッダーは非表示です</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">字幕メニューの脚注を非表示</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">字幕メニューの脚注は表示されません</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">字幕メニューの脚注は表示されます</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">字幕メニューのヘッダーを非表示</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">字幕メニューのヘッダーは表示されません</string>
   <string name="morphe_hide_player_flyout_captions_header_summary_off">字幕メニューのヘッダーは表示されます</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">「その他の設定」/「その他」を非表示</string>
@@ -849,22 +853,22 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_hide_player_flyout_audio_track_not_available">"「音声トラック」は表示されません
 
 「音声トラック」を表示するには、[動画ストリームを偽装] を「Android Reel」または「TV」に変更してください"</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">音声トラックのフッターを非表示にする</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">音声トラックメニューのフッターは非表示です</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">音声トラックメニューのフッターは表示されます</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">音声トラック メニューの脚注を非表示</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">音声トラック メニューの脚注は表示されません</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">音声トラック メニューの脚注は表示されます</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">「VR で見る」を非表示</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">「VR で見る」は表示されません</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">「VR で見る」は表示されます</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_quality_title">画質を非表示にする</string>
+  <string name="morphe_hide_player_flyout_quality_title">「画質」を非表示</string>
   <string name="morphe_hide_player_flyout_quality_summary_on">「画質」は表示されません</string>
   <string name="morphe_hide_player_flyout_quality_summary_off">「画質」は表示されます</string>
-  <string name="morphe_hide_player_flyout_quality_footer_title">画質のフッターを非表示にする</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">画質メニューの脚注を非表示</string>
   <string name="morphe_hide_player_flyout_quality_footer_summary_on">画質メニューの脚注は表示されません</string>
   <string name="morphe_hide_player_flyout_quality_footer_summary_off">画質メニューの脚注は表示されます</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">画質のヘッダーを非表示にする</string>
-  <string name="morphe_hide_player_flyout_quality_header_summary_on">画質メニューのヘッダーは非表示です</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">画質メニューのヘッダーを非表示</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">画質メニューのヘッダーは表示されません</string>
   <string name="morphe_hide_player_flyout_quality_header_summary_off">画質メニューのヘッダーは表示されます</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">自動再生のプレビューを非表示</string>
@@ -1395,10 +1399,10 @@ Automotive レイアウト
   <string name="morphe_open_system_share_sheet_title">システムの共有メニューを開く</string>
   <string name="morphe_open_system_share_sheet_summary_on">システムの共有メニューを開きます</string>
   <string name="morphe_open_system_share_sheet_summary_off">アプリ内の共有メニューを開きます</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">YouTube Music ボタンの動作を上書き</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music ボタンは、設定した音楽アプリを呼び出します</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music ボタンは、純正アプリを呼び出します</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">YouTube Music ボタンの動作を上書き</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music ボタンは、設定した音楽アプリを呼び出します</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music ボタンは、純正アプリを呼び出します</string>
   <string name="morphe_music_package_name_title">Morphe Music のパッケージ名</string>
   <string name="morphe_music_package_name_summary">YouTube Music の代わりに呼び出す音楽アプリのパッケージ名</string>
   <!-- layout.startpage.changeStartPagePatch -->
@@ -1427,7 +1431,7 @@ Automotive レイアウト
   <string name="morphe_change_start_page_entry_trending">急上昇</string>
   <string name="morphe_change_start_page_entry_virtual_reality">バーチャル リアリティ</string>
   <string name="morphe_change_start_page_entry_watch_later">後で見る</string>
-  <string name="morphe_change_start_page_entry_your_clips">自分のクリップ</string>
+  <string name="morphe_change_start_page_entry_your_clips">クリップ</string>
   <string name="morphe_change_start_page_always_title">スタート画面の変更を常時適用</string>
   <string name="morphe_change_start_page_always_summary_on">"スタート画面の変更は常時適用されます
 
@@ -1464,9 +1468,9 @@ Automotive レイアウト
   <string name="morphe_miniplayer_disable_rounded_corners_title">ミニプレーヤーを直角化</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">ミニプレーヤーの角は直角です</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">ミニプレーヤーの角は丸角です</string>
-  <string name="morphe_miniplayer_disable_drag_and_drop_title">ドラッグ＆ドロップを無効化</string>
-  <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">ドラッグ＆ドロップは無効です</string>
-  <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"ドラッグ＆ドロップは有効です
+  <string name="morphe_miniplayer_disable_drag_and_drop_title">ドラッグ &amp; ドロップを無効化</string>
+  <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">ドラッグ &amp; ドロップは無効です</string>
+  <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"ドラッグ &amp; ドロップは有効です
 
 ミニプレーヤーをドラッグして画面の四隅に移動できます"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">横方向ドラッグ ジェスチャーを無効化</string>

@@ -46,7 +46,7 @@ internal object MotionEventFingerprint : Fingerprint(
 )
 
 internal object PlayerControlsExtensionHookListenersExistFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name = "fullscreenButtonVisibilityCallbacksExist",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
@@ -54,7 +54,7 @@ internal object PlayerControlsExtensionHookListenersExistFingerprint : Fingerpri
 )
 
 internal object PlayerControlsExtensionHookFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name = "fullscreenButtonVisibilityChanged",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",

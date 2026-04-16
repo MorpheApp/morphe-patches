@@ -70,9 +70,6 @@ Zmiany obejmują:
   <string name="morphe_hide_artist_cards_title">Karty artystów</string>
   <string name="morphe_hide_artist_cards_summary_on">Ukryte</string>
   <string name="morphe_hide_artist_cards_summary_off">Widoczne</string>
-  <string name="morphe_hide_chips_shelf_title">Pasek kategorii</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Ukryty</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Widoczny</string>
   <string name="morphe_hide_community_posts_title">Posty</string>
   <string name="morphe_hide_community_posts_summary_on">Ukryte</string>
   <string name="morphe_hide_community_posts_summary_off">Widoczne</string>
@@ -80,8 +77,11 @@ Zmiany obejmują:
   <string name="morphe_hide_compact_banner_summary_on">Ukryte</string>
   <string name="morphe_hide_compact_banner_summary_off">Widoczne</string>
   <string name="morphe_hide_expandable_card_title">Rozwijane karty pod filmami</string>
-  <string name="morphe_hide_expandable_card_summary_on">Ukryte</string>
-  <string name="morphe_hide_expandable_card_summary_off">Widoczne</string>
+  <string name="morphe_hide_expandable_card_entry_1">Wszystkie widoczne</string>
+  <string name="morphe_hide_expandable_card_entry_2">Ukryte tylko produkty</string>
+  <string name="morphe_hide_expandable_card_entry_3">Ukryte tylko podsumowanie</string>
+  <string name="morphe_hide_expandable_card_entry_4">Ukryte produkty i podsumowanie</string>
+  <string name="morphe_hide_expandable_card_entry_5">Wszystkie ukryte</string>
   <string name="morphe_hide_floating_microphone_button_title">Pływający przycisk mikrofonu</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Ukryty w wyszukiwarce</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Widoczny w wyszukiwarce</string>
@@ -89,19 +89,20 @@ Zmiany obejmują:
   <string name="morphe_hide_horizontal_shelves_summary_on">"Ukryte, takie jak:
 
 • Najważniejsze wiadomości
+• Posty, które mogą Cię zainteresować
 • Kontynuuj oglądanie
 • Odkryj więcej kanałów
+• Odkryj więcej tematów
 • Dla Ciebie
+• Najnowsze filmy
 • Najbardziej istotne
+• Posty ze Społeczności twórcy
 • Zakupy
 • Obejrzyj ponownie"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Widoczne</string>
   <string name="morphe_hide_image_shelf_title">Półka z obrazkami</string>
   <string name="morphe_hide_image_shelf_summary_on">Ukryta w wynikach wyszukiwania</string>
   <string name="morphe_hide_image_shelf_summary_off">Widoczna w wynikach wyszukiwania</string>
-  <string name="morphe_hide_latest_posts_title">Najnowsze posty</string>
-  <string name="morphe_hide_latest_posts_summary_on">Ukryte</string>
-  <string name="morphe_hide_latest_posts_summary_off">Widoczne</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Przycisk \"Najnowsze filmy\"</string>
@@ -300,6 +301,9 @@ Ich obecność może blokować widoczność własnych logo w nagłówku."</strin
   <string name="morphe_hide_members_shelf_title">Półka ze wspierającymi kanał</string>
   <string name="morphe_hide_members_shelf_summary_on">Ukryta</string>
   <string name="morphe_hide_members_shelf_summary_off">Widoczna</string>
+  <string name="morphe_hide_posts_shelf_title">Półka z postami</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Ukryta</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Widoczna</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Przycisk Sklep</string>
   <string name="morphe_hide_store_button_summary_on">Ukryty</string>
@@ -1394,11 +1398,11 @@ Jeśli później zostanie to wyłączone, zalecane jest usunięcie danych aplika
   <string name="morphe_open_system_share_sheet_title">Wygląd panelu udostępniania</string>
   <string name="morphe_open_system_share_sheet_summary_on">Systemowy</string>
   <string name="morphe_open_system_share_sheet_summary_off">Aplikacji</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Aplikacja otwierana przyciskiem YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Docelowa</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Natywna</string>
-  <string name="morphe_music_package_name_title">Nazwa pakietu Morphe Music</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Przejmij kontrolę nad przyciskami YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Przyciski YouTube Music otwierają docelową aplikację muzyczną</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Przyciski YouTube Music otwierają oficjalną aplikację</string>
+  <string name="morphe_music_package_name_title">Nazwa pakietu docelowej aplikacji muzycznej</string>
   <string name="morphe_music_package_name_summary">Nazwa pakietu docelowej aplikacji muzycznej</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Strona startowa</string>

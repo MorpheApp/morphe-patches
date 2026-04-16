@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Özel</string>
   <string name="morphe_custom_branding_notification_icon_title">Bildirim simgesi</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Uygulama simgesini takip et</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Deneysel Uyarı 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Deneysel bir uygulama sürümü olan ⚠️ &lt;b&gt;%1$s&lt;/b&gt; sürümünü kullanıyorsunuz
-&lt;br/&gt;&lt;br/&gt;
-🔧 Biz bu uygulama sürümü için yamaların ince ayarlarını tamamlarken, uygulamada garip davranışlar veya tanımlanmamış hatalarla karşılaşabilirsiniz.
-&lt;br/&gt;&lt;br/&gt;
-En sorunsuz deneyimi istiyorsanız, bunu &lt;b&gt;kaldırın&lt;/b&gt; ve önerilen ✅ &lt;b&gt;%2$s&lt;/b&gt; sürümünü yamalayın"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Deneysel istiyorum</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Stabil istiyorum</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirimi</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">İzleme geçmişiniz kaydedilmiyor.&lt;br&gt;&lt;br&gt;Bu büyük ihtimalle bir reklam engelleyici DNS\'den veya proxy\'den kaynaklanıyor.&lt;br&gt;&lt;br&gt;Bunu düzeltmek için, &lt;b&gt;s.youtube.com&lt;/b&gt; adresini beyaz listeye ekleyin veya bütün engelleyici DNSleri ve proxy\'leri kapatın.</string>

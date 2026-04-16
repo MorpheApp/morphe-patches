@@ -24,35 +24,30 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicActionsPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/OverrideYouTubeMusicButtonsPatch;"
 
 private fun overrideYouTubeMusicManifestPatch() = resourcePatch{
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        val targetPackage = "app.morphe.android.apps.youtube.music"
         val manifestFile = get("AndroidManifest.xml")
         var manifestContent = manifestFile.readText()
+        val permissionTag = "<uses-permission android:name=\"android.permission.QUERY_ALL_PACKAGES\"/>"
 
-        manifestContent = if (manifestContent.contains("</queries>")) {
-            manifestContent.replace(
-                "</queries>",
-                "<package android:name=\"$targetPackage\"/></queries>"
+        if (!manifestContent.contains(permissionTag)) {
+            manifestContent = manifestContent.replace(
+                "<application",
+                "$permissionTag\n    <application"
             )
-        } else {
-            manifestContent.replace(
-                "</manifest>",
-                "<queries><package android:name=\"$targetPackage\"/></queries>\n</manifest>"
-            )
+            manifestFile.writeText(manifestContent)
         }
-        manifestFile.writeText(manifestContent)
     }
 }
 
 @Suppress("unused")
-val overrideYouTubeMusicActionsPatch = bytecodePatch(
-    name = "Override YouTube Music actions",
-    description = "Overrides the YouTube Music button to open Morphe Music directly.",
+val overrideYouTubeMusicButtonsPatch = bytecodePatch(
+    name = "Override YouTube Music buttons",
+    description = "Overrides YouTube Music buttons to open Morphe Music or any compatible third-party client.",
 ) {
     dependsOn(settingsPatch)
     dependsOn(overrideYouTubeMusicManifestPatch())
@@ -65,14 +60,14 @@ val overrideYouTubeMusicActionsPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
-                    SwitchPreference(key = "morphe_override_youtube_music_button"),
+                    SwitchPreference(key = "morphe_override_youtube_music_buttons"),
                     TextPreference(key = "morphe_music_package_name")
                 )
             )
         )
 
         classDefForEach { classDef ->
-            if (classDef.type == EXTENSION_CLASS_DESCRIPTOR) return@classDefForEach
+            if (classDef.type == EXTENSION_CLASS) return@classDefForEach
             var needsPatch = false
             classDef.methods.forEach { method ->
                 if (method.implementation?.instructions?.any {
@@ -117,7 +112,7 @@ val overrideYouTubeMusicActionsPatch = bytecodePatch(
 
                             mutableMethod.replaceInstruction(
                                 index,
-                                "$invokeString, $EXTENSION_CLASS_DESCRIPTOR->$methodDescriptor"
+                                "$invokeString, $EXTENSION_CLASS->$methodDescriptor"
                             )
                         }
                     }

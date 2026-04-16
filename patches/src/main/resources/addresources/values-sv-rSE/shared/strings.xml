@@ -150,4 +150,13 @@ Om batterioptimeringarna inte ändras kan du uppleva att
 • appen stängs slumpmässigt
 • aviseringar inte fungerar
 • uppspelning i bakgrunden inte fungerar"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Obs! Experimentell version 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Du använder en experimentell appversion av ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Förvänta dig lustigt beteende av appen eller okända fel medan vi finslipar korrigeringarna för den här appversionen.
+&lt;br/&gt;&lt;br/&gt;
+Om du vill ha den mest problemfria upplevelsen &lt;b&gt;avinstallerar&lt;/b&gt; du den här och korrigerar den rekommenderade appversionen av ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jag vill ha experimentellt</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jag vill ha stabilt</string>
 </resources>

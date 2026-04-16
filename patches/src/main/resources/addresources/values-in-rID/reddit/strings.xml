@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Menonaktifkan UI beranda modern</string>
   <string name="morphe_disable_screenshot_popup_title">Nonaktifkan kotak dialog tangkapan layar</string>
   <string name="morphe_disable_screenshot_popup_summary">Menonaktifkan kotak dialog yang muncul saat mengambil tangkapan layar</string>
+  <string name="morphe_hide_ask_button_title">Sembunyikan tombol Tanya</string>
+  <string name="morphe_hide_ask_button_summary">Menyembunyikan tombol Tanya di bilah pencarian</string>
   <string name="morphe_hide_answers_button_title">Sembunyikan tombol Jawaban</string>
   <string name="morphe_hide_answers_button_summary">Menyembunyikan tombol Jawaban di bilah navigasi</string>
   <string name="morphe_hide_chat_button_title">Sembunyikan tombol Obrolan</string>
@@ -67,4 +69,6 @@ Batasan: Hanya ditampilkan jika respons API menyertakan hitungan tampilan"</stri
   <string name="morphe_sanitize_sharing_links_summary">Membersihkan tautan berbagi dengan menghapus parameter pelacakan</string>
   <string name="morphe_open_links_directly_title">Buka tautan secara langsung</string>
   <string name="morphe_open_links_directly_summary">Melewati URL pengalihan pada tautan eksternal</string>
+  <string name="morphe_open_links_externally_title">Buka tautan secara eksternal</string>
+  <string name="morphe_open_links_externally_summary">Membuka tautan di peramban Anda, bukan di peramban dalam aplikasi</string>
 </resources>

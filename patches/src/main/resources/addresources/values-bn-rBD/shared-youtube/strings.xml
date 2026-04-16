@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">কাস্টম</string>
   <string name="morphe_custom_branding_notification_icon_title">নোটিফিকেশন আইকন</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">অ্যাপ আইকন অনুসরণ করুন</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 পরীক্ষামূলক সতর্কতা 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"আপনি একটি পরীক্ষামূলক অ্যাপ সংস্করণ ব্যবহার করছেন ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 এই অ্যাপ সংস্করণের জন্য প্যাচগুলি আমরা পরিমার্জন করছি, তাই অদ্ভুত অ্যাপ আচরণ বা অজানা বাগ আশা করুন।
-&lt;br/&gt;&lt;br/&gt;
-যদি আপনি সবচেয়ে ঝামেলা-মুক্ত অভিজ্ঞতা পেতে চান, তাহলে এই অ্যাপটি &lt;b&gt;আনইনস্টল করুন&lt;/b&gt; এবং ✅ &lt;b&gt;%2$s&lt;/b&gt; এর প্রস্তাবিত অ্যাপ সংস্করণটি ইনস্টল করুন।"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ আমি পরীক্ষামূলক চাচ্ছি</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ আমি স্থিতিশীল চাচ্ছি</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe নোটিশ</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">আপনার দেখার ইতিহাস সংরক্ষিত হচ্ছে না।&lt;br&gt;&lt;br&gt;এটি সম্ভবত DNS অ্যাড ব্লকার অথবা নেটওয়ার্ক প্রক্সির কারণে।&lt;br&gt;&lt;br&gt;এটি ঠিক করার জন্য, &lt;b&gt;s.youtube.com&lt;/b&gt;  সাদা তালিকাভুক্ত করুন অথবা সকল DNS ব্লকার এবং প্রক্সি বন্ধ করুন।</string>

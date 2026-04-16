@@ -150,4 +150,13 @@ Wenn die Batterieoptimierungen nicht geändert werden, kann es zu folgenden Prob
 • Die App kann unerwartet geschlossen werden
 • Benachrichtigungen funktionieren möglicherweise nicht
 • Die Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Experimenteller Alarm 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Sie verwenden die experimentelle App-Version ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Rechnen Sie mit ungewöhnlichem App-Verhalten oder unbekannten Fehlern, da wir die Patches für diese App-Version noch optimieren.
+&lt;br/&gt;&lt;br/&gt;
+Wenn Sie die problemloseste Erfahrung wünschen, dann &lt;b&gt;deinstallieren&lt;/b&gt; Sie diese und patchen Sie die empfohlene App-Version ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ich möchte experimentell</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ich möchte stabil</string>
 </resources>

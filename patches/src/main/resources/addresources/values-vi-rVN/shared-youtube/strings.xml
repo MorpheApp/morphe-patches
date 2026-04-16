@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Morphe tỉ lệ</string>
   <string name="morphe_custom_branding_notification_icon_title">Biểu tượng thông báo</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Theo biểu tượng ứng dụng</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Cảnh báo thử nghiệm 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Bạn đang dùng phiên bản thử nghiệm là &lt;b&gt;%1$s&lt;/b&gt; ⚠️
-&lt;br/&gt;&lt;br/&gt;
-🔧 Ứng dụng có thể hoạt động không ổn định hoặc gặp lỗi không xác định, vì các bản vá chưa được tinh chỉnh cho phiên bản này.
-&lt;br/&gt;&lt;br/&gt;
-Nếu bạn muốn có trải nghiệm ổn định và ít lỗi, thì hãy &lt;b&gt;gỡ cài đặt&lt;/b&gt; phiên bản này và  vá phiên bản đề xuất là &lt;b&gt;%2$s&lt;/b&gt; ✅"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Tôi muốn thử</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Thôi ổn định vậy</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Thông báo Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Nhật ký xem của bạn hiện không được lưu lại.&lt;br&gt;&lt;br&gt;Nguyên nhân thường là do DNS chặn quảng cáo hoặc proxy mạng.&lt;br&gt;&lt;br&gt;Vì vậy, hãy thử thêm &lt;b&gt;s.youtube.com&lt;/b&gt; vào danh sách cho phép, hoặc tắt tất cả DNS và proxy.</string>

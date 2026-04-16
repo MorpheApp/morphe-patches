@@ -70,9 +70,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">隐藏艺人卡片</string>
   <string name="morphe_hide_artist_cards_summary_on">艺人卡片已隐藏</string>
   <string name="morphe_hide_artist_cards_summary_off">艺人卡片已显示</string>
-  <string name="morphe_hide_chips_shelf_title">隐藏标签展示栏</string>
-  <string name="morphe_hide_chips_shelf_summary_on">标签展示栏已隐藏</string>
-  <string name="morphe_hide_chips_shelf_summary_off">标签展示栏已显示</string>
   <string name="morphe_hide_community_posts_title">隐藏社区帖子</string>
   <string name="morphe_hide_community_posts_summary_on">社区帖子已隐藏</string>
   <string name="morphe_hide_community_posts_summary_off">社区帖子已显示</string>
@@ -80,26 +77,32 @@ Second \"item\" text"</string>
   <string name="morphe_hide_compact_banner_summary_on">紧凑横幅已隐藏</string>
   <string name="morphe_hide_compact_banner_summary_off">紧凑横幅已显示</string>
   <string name="morphe_hide_expandable_card_title">隐藏可展开卡片</string>
-  <string name="morphe_hide_expandable_card_summary_on">视频下方的可展开卡片已隐藏</string>
-  <string name="morphe_hide_expandable_card_summary_off">视频下方的可展开卡片已显示</string>
+  <string name="morphe_hide_expandable_card_entry_1">视频下方的可展开卡片已显示</string>
+  <string name="morphe_hide_expandable_card_entry_2">视频下方的可展开卡片已隐藏</string>
+  <string name="morphe_hide_expandable_card_entry_3">视频下方的可展开卡片已隐藏</string>
+  <string name="morphe_hide_expandable_card_entry_4">产品和摘要卡片在视频下方被隐藏</string>
+  <string name="morphe_hide_expandable_card_entry_5">可展开卡片在视频下方被隐藏</string>
   <string name="morphe_hide_floating_microphone_button_title">隐藏浮动麦克风按钮</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">搜索中的浮动麦克风按钮已隐藏</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">搜索中的浮动麦克风按钮已显示</string>
   <string name="morphe_hide_horizontal_shelves_title">隐藏横排展示架</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"水平货架已隐藏，例如：
+  <string name="morphe_hide_horizontal_shelves_summary_on">"水平层级被隐藏，例如：
+
 • 突发新闻
+• 您可能喜欢的社区帖子
 • 继续观看
 • 探索更多频道
+• 探索更多主题
+• 供您使用
+• 最新视频
 • 最相关
+• 创作者社区的帖子
 • 购物
 • 再次观看"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">横向内容架已显示</string>
   <string name="morphe_hide_image_shelf_title">隐藏图片专区</string>
   <string name="morphe_hide_image_shelf_summary_on">搜索结果中的图片专区已隐藏</string>
   <string name="morphe_hide_image_shelf_summary_off">搜索结果中的图片专区已显示</string>
-  <string name="morphe_hide_latest_posts_title">隐藏「最新帖子」</string>
-  <string name="morphe_hide_latest_posts_summary_on">最新帖子已隐藏</string>
-  <string name="morphe_hide_latest_posts_summary_off">最新帖子已显示</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">隐藏「最新视频」按钮</string>
@@ -298,6 +301,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_shelf_title">隐藏会员专区</string>
   <string name="morphe_hide_members_shelf_summary_on">会员专区已隐藏</string>
   <string name="morphe_hide_members_shelf_summary_off">成员货架已显示</string>
+  <string name="morphe_hide_posts_shelf_title">隐藏帖子层级</string>
+  <string name="morphe_hide_posts_shelf_summary_on">帖子层级被隐藏</string>
+  <string name="morphe_hide_posts_shelf_summary_off">帖子层级已显示</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">隐藏「分享」按钮</string>
   <string name="morphe_hide_store_button_summary_on">「分享」按钮已隐藏</string>
@@ -640,7 +646,7 @@ Second \"item\" text"</string>
   <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on videos uploaded by the logged-in user. -->
   <string name="morphe_hide_hype_button_title">隐藏热度</string>
-  <string name="morphe_hide_hype_button_summary_on">浮夸按钮已隐藏</string>
+  <string name="morphe_hide_hype_button_summary_on">热度按钮已隐藏</string>
   <string name="morphe_hide_hype_button_summary_off">热度按钮已显示</string>
   <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_promote_button_title">隐藏推广</string>
@@ -1397,12 +1403,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">打开系统分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_on">打开系统分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_off">打开应用内分享面板</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">覆盖YouTube Music按钮</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music按钮打开您的目标音乐应用</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube 音乐按钮打开原生应用</string>
-  <string name="morphe_music_package_name_title">Morphe 音乐包名</string>
-  <string name="morphe_music_package_name_summary">目标音乐应用的包名</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">覆盖 YouTube Music 按钮</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music 按钮打开您的目标音乐应用</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music 按钮打开官方应用</string>
+  <string name="morphe_music_package_name_title">目标音乐应用包名</string>
+  <string name="morphe_music_package_name_summary">您已安装的目标音乐应用的包名</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">更改起始页</string>
   <string name="morphe_change_start_page_entry_default">默认</string>
@@ -1558,8 +1564,8 @@ Second \"item\" text"</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">恢复旧播放器按钮样式</string>
-  <string name="morphe_restore_old_player_buttons_summary_on">玩家细体式显示</string>
-  <string name="morphe_restore_old_player_buttons_summary_off">玩家粗体式显示</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">播放器按钮细体式显示</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">播放器按钮粗体式显示</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">伪装设备尺寸</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"已伪装设备尺寸
@@ -1624,7 +1630,7 @@ Second \"item\" text"</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">显示视频质量按钮</string>
   <string name="morphe_video_quality_dialog_button_summary_on">按钮已显示。点按并按住以将画质重置为默认值</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">视频质量菜单已显示</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">视频质量按钮未显示</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">自定义播放速度菜单</string>
   <string name="morphe_custom_speed_menu_summary_on">显示自定义速度菜单</string>

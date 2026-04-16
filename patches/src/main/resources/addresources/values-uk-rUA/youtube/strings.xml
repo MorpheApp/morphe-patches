@@ -70,38 +70,39 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">Приховати картки виконавця</string>
   <string name="morphe_hide_artist_cards_summary_on">Картки виконавця приховано</string>
   <string name="morphe_hide_artist_cards_summary_off">Картки виконавця показуються</string>
-  <string name="morphe_hide_chips_shelf_title">Приховати полицю фішок</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Полицю фішок приховано</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Полиця фішок показується</string>
   <string name="morphe_hide_community_posts_title">Приховати публікації спільноти</string>
   <string name="morphe_hide_community_posts_summary_on">Публікації спільноти приховано</string>
   <string name="morphe_hide_community_posts_summary_off">Публікації спільноти показуються</string>
   <string name="morphe_hide_compact_banner_title">Приховати компактні банери</string>
   <string name="morphe_hide_compact_banner_summary_on">Компактні банери приховано</string>
   <string name="morphe_hide_compact_banner_summary_off">Компактні банери показуються</string>
-  <string name="morphe_hide_expandable_card_title">Приховати розширювану картку</string>
-  <string name="morphe_hide_expandable_card_summary_on">Розширювану картку під відео приховано</string>
-  <string name="morphe_hide_expandable_card_summary_off">Розширювана картка під відео показується</string>
+  <string name="morphe_hide_expandable_card_title">Приховати розширювальні картки</string>
+  <string name="morphe_hide_expandable_card_entry_1">Розширювальні картки під відео показуються</string>
+  <string name="morphe_hide_expandable_card_entry_2">Приховано тільки картку товару під відео</string>
+  <string name="morphe_hide_expandable_card_entry_3">Приховано тільки картку підсумку під відео</string>
+  <string name="morphe_hide_expandable_card_entry_4">Приховано картки товару та підсумку під відео</string>
+  <string name="morphe_hide_expandable_card_entry_5">Розширювальні картки під відео приховано</string>
   <string name="morphe_hide_floating_microphone_button_title">Приховати плаваючу кнопку мікрофона</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Плаваючу кнопку мікрофона в пошуку приховано</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Плаваюча кнопка мікрофона в пошуку показується</string>
   <string name="morphe_hide_horizontal_shelves_title">Приховати горизонтальні полиці</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Горизонтальні полиці приховано:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Горизонтальні полиці приховані, наприклад:
 
-• Гарячі новини
+• Останні новини
+• Рекомендовані дописи спільноти
 • Продовжити перегляд
-• Переглянути більше каналів
+• Перегляньте більше каналів
+• Перегляньте більше тем
 • Для вас
-• Найдоречніші
+• Останні відео
+• Найбільш релевантні
+• Дописи зі спільноти автора
 • Покупки
-• Дивитися знову"</string>
+• Переглянути знову"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Горизонтальні полиці показуються</string>
   <string name="morphe_hide_image_shelf_title">Приховати полицю із зображеннями</string>
   <string name="morphe_hide_image_shelf_summary_on">Полицю із зображеннями в результатах пошуку приховано</string>
   <string name="morphe_hide_image_shelf_summary_off">Полиця із зображеннями в результатах пошуку показується</string>
-  <string name="morphe_hide_latest_posts_title">Приховати останні публікації</string>
-  <string name="morphe_hide_latest_posts_summary_on">Останні публікації приховано</string>
-  <string name="morphe_hide_latest_posts_summary_off">Останні публікації показуються</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Приховати кнопку \"Найновіші відео\"</string>
@@ -300,6 +301,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_shelf_title">Приховати полицю учасників</string>
   <string name="morphe_hide_members_shelf_summary_on">Полицю учасників приховано</string>
   <string name="morphe_hide_members_shelf_summary_off">Полиця учасників показується</string>
+  <string name="morphe_hide_posts_shelf_title">Приховати полицю з дописами</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Полицю з дописами приховано</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Полиця з дописами показується</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Приховати кнопку \"Магазин\"</string>
   <string name="morphe_hide_store_button_summary_on">Кнопку \"Магазин\" приховано</string>
@@ -1394,12 +1398,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">Відкрити системний діалог поширення</string>
   <string name="morphe_open_system_share_sheet_summary_on">Відкриває системний діалог поширення</string>
   <string name="morphe_open_system_share_sheet_summary_off">Відкриває вбудований діалог поширення</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Замінити кнопку YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Кнопка YouTube Music відкриває ваш цільовий музичний застосунок</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Кнопка YouTube Music відкриває вбудований застосунок</string>
-  <string name="morphe_music_package_name_title">Назва пакета Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Назва пакета цільового музичного застосунку</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Перевизначити кнопки YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Кнопки YouTube Music відкривають цільовий музичний додаток</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Кнопки YouTube Music відкривають офіційний додаток</string>
+  <string name="morphe_music_package_name_title">Назва пакета цільового музичного додатка</string>
+  <string name="morphe_music_package_name_summary">Назва пакета встановленого вами цільового музичного додатка</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Змінити початкову сторінку</string>
   <string name="morphe_change_start_page_entry_default">За замовчуванням</string>

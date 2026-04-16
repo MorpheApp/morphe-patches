@@ -1,6 +1,7 @@
 package app.morphe.patches.youtube.interaction.seekbar
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterAnywhere
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
@@ -11,10 +12,8 @@ import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.youtube.video.quality.VideoStreamingDataToStringFingerprint
-import app.morphe.util.customLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-
 
 private object SwipingUpGestureParentFingerprint : Fingerprint(
     returnType = "Z",
@@ -93,13 +92,13 @@ internal object TapToSeekFingerprint : Fingerprint(
             location = MatchAfterImmediately()
         ),
         methodCall(
-            smali = "Lj\$/util/Optional;->of(Ljava/lang/Object;)Lj\$/util/Optional;",
+            smali = "Lj$/util/Optional;->of(Ljava/lang/Object;)Lj$/util/Optional;",
             location = MatchAfterImmediately()
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
-            type = "Lj\$/util/Optional;",
+            type = "Lj$/util/Optional;",
             location = MatchAfterImmediately()
         ),
 
@@ -111,13 +110,14 @@ internal object SlideToSeekFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/view/View;", "F"),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQZ,
-        Opcode.GOTO_16,
-    ),
-    custom = customLiteral { 67108864 } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        opcode(Opcode.INVOKE_VIRTUAL),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.GOTO_16, location = MatchAfterImmediately()),
+
+        literal(67108864)
+    )
 )
 
 internal object FullscreenLargeSeekbarFeatureFlagFingerprint : Fingerprint(
@@ -161,4 +161,3 @@ internal object FormatStreamModelMaxDvrDurationFingerprint : Fingerprint(
         opcode(Opcode.RETURN_WIDE, location = MatchAfterImmediately()),
     )
 )
-

@@ -64,7 +64,6 @@ public final class HidePlayerFlyoutMenuPatch {
             try {
                 final int size = treeNodeResultList.size();
                 if (size > 2) {
-                    boolean shouldRemove = false;
                     if (path.startsWith(CAPTIONS_BODY_PATH) && HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER) {
                         int i = 0;
                         for (Object object : treeNodeResultList) {
@@ -78,21 +77,16 @@ public final class HidePlayerFlyoutMenuPatch {
                             i++;
                         }
 
-                        shouldRemove = true;
-                    } else if (path.startsWith(ADVANCED_VIDEO_QUALITY_BODY_PATH) && HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER) {
+                        treeNodeResultList.remove(size - 1);
+
+                    } else if (path.startsWith(ADVANCED_VIDEO_QUALITY_BODY_PATH) && HIDE_PLAYER_FLYOUT_QUALITY_FOOTER) {
                         for (Object object : treeNodeResultList) {
                             if (!ELEMENT_IDENTIFIER_COMPONENT.equals(object.toString())) {
                                 return;
                             }
                         }
 
-                        shouldRemove = true;
-                    }
-
-                    if (shouldRemove) {
-                        // Hide bottom sheet footer.
                         treeNodeResultList.remove(size - 1);
-                        // Hide bottom sheet divider.
                         treeNodeResultList.remove(size - 2);
                     }
                 }

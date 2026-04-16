@@ -70,36 +70,39 @@ Promene uključuju:
   <string name="morphe_hide_artist_cards_title">Сакриј картице извођача</string>
   <string name="morphe_hide_artist_cards_summary_on">Картице извођача су скривене</string>
   <string name="morphe_hide_artist_cards_summary_off">Картице извођача су приказане</string>
-  <string name="morphe_hide_chips_shelf_title">Сакриј полицу ознака сличних видеа</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Полица ознака сличних видеа је скривена</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Полица ознака сличних видеа је приказана</string>
   <string name="morphe_hide_community_posts_title">Сакриј објаве заједнице</string>
   <string name="morphe_hide_community_posts_summary_on">Објаве заједнице су скривене</string>
   <string name="morphe_hide_community_posts_summary_off">Објаве заједнице су приказане</string>
   <string name="morphe_hide_compact_banner_title">Сакриј компактне банере</string>
   <string name="morphe_hide_compact_banner_summary_on">Компактни банери су скривени</string>
   <string name="morphe_hide_compact_banner_summary_off">Компактни банери су приказани</string>
-  <string name="morphe_hide_expandable_card_title">Сакриј прошириву картицу</string>
-  <string name="morphe_hide_expandable_card_summary_on">Проширива картица испод видеа је скривена</string>
-  <string name="morphe_hide_expandable_card_summary_off">Развучена картица испод видео снимака је приказана</string>
+  <string name="morphe_hide_expandable_card_title">Сакриј прошириве картице</string>
+  <string name="morphe_hide_expandable_card_entry_1">Развучене картице испод видео снимака су приказане</string>
+  <string name="morphe_hide_expandable_card_entry_2">Проширива картица испод видеа је скривена</string>
+  <string name="morphe_hide_expandable_card_entry_3">Проширива картица испод видеа је скривена</string>
+  <string name="morphe_hide_expandable_card_entry_4">Проширива картица испод видеа је скривена</string>
+  <string name="morphe_hide_expandable_card_entry_5">Проширива картице испод видеа су скривене</string>
   <string name="morphe_hide_floating_microphone_button_title">Сакриј плутајуће дугме микрофона</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Плутајуће дугме микрофона у претрази је скривено</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Плутајуће дугме микрофона у претрази је приказано</string>
   <string name="morphe_hide_horizontal_shelves_title">Сакриј хоризонталне полице</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Хоризонталне полице су скривене, као што су:
-• Ударне вести
+
+• Новости у реалном времену
+• Објаве заједнице које вам се могу допасти
 • Наставите да гледате
 • Истражите више канала
-• Најрелевантније
+• Истражите више тема
+• За вас
+• Последњи видеи
+• Најрелевантнији
+• Објаве из Заједнице креатора
 • Куповина
-• Гледајте поново"</string>
+• Погледајте то поново"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Хоризонталне полице су приказане</string>
   <string name="morphe_hide_image_shelf_title">Сакриј полицу са сликама</string>
   <string name="morphe_hide_image_shelf_summary_on">Полица са сликама у резултатима претраге је скривена</string>
   <string name="morphe_hide_image_shelf_summary_off">Полица са сликама у резултатима претраге је приказана</string>
-  <string name="morphe_hide_latest_posts_title">Сакриј најновије објаве</string>
-  <string name="morphe_hide_latest_posts_summary_on">Најновије објаве су скривене</string>
-  <string name="morphe_hide_latest_posts_summary_off">Најновије објаве су приказане</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Сакриј дугме \'Најновије видео\'</string>
@@ -298,6 +301,9 @@ Promene uključuju:
   <string name="morphe_hide_members_shelf_title">Сакриј полицу чланова</string>
   <string name="morphe_hide_members_shelf_summary_on">Полица чланова је скривена</string>
   <string name="morphe_hide_members_shelf_summary_off">Полица чланова је приказана</string>
+  <string name="morphe_hide_posts_shelf_title">Сакриј полицу објава</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Полица објава је скривена</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Полица објава је приказана</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Сакриј дугме „Магазин”</string>
   <string name="morphe_hide_store_button_summary_on">Дугме „Магазин” је скривено</string>
@@ -1388,12 +1394,12 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_open_system_share_sheet_title">Отвори системски спредшит</string>
   <string name="morphe_open_system_share_sheet_summary_on">Отвара системски спредшит</string>
   <string name="morphe_open_system_share_sheet_summary_off">Отвара у-ап спредшит</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Замени дугме Јутуб Мјузик</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Дугме Јутуб Мјузик отвара вашу циљану музичку апликацију</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Дугме YouTube Music отвара примарни андроид ап</string>
-  <string name="morphe_music_package_name_title">Назив пакета Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Назив пакета циљане музичке апликације</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Препоредите дугмице YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Дугмице YouTube Music отвара вашу циљну музичку апликацију</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Дугмице YouTube Music отвара званичну апликацију</string>
+  <string name="morphe_music_package_name_title">Назив пакета циљне музичке апликације</string>
+  <string name="morphe_music_package_name_summary">Назив пакета вашег инсталираног програма за музику</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Промена полазне странице</string>
   <string name="morphe_change_start_page_entry_default">Подразумевана</string>

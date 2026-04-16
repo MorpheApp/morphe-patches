@@ -69,38 +69,20 @@ Promjene uključuju:
   <string name="morphe_hide_artist_cards_title">Sakrij kartice izvođača</string>
   <string name="morphe_hide_artist_cards_summary_on">Kartice izvođača su skrivene</string>
   <string name="morphe_hide_artist_cards_summary_off">Kartice izvođača su prikazane</string>
-  <string name="morphe_hide_chips_shelf_title">Sakrij karticu čipovi</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Kartice čipovi su skrivene</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Kartice čipovi su prikazane</string>
   <string name="morphe_hide_community_posts_title">Sakrij postove zajednice</string>
   <string name="morphe_hide_community_posts_summary_on">Postovi zajednice su skriveni</string>
   <string name="morphe_hide_community_posts_summary_off">Postovi zajednice su prikazani</string>
   <string name="morphe_hide_compact_banner_title">Sakrij kompaktne banere</string>
   <string name="morphe_hide_compact_banner_summary_on">Kompaktni banneri su skriveni</string>
   <string name="morphe_hide_compact_banner_summary_off">Kompaktni banneri su prikazani</string>
-  <string name="morphe_hide_expandable_card_title">Sakrij karticu Proširi</string>
-  <string name="morphe_hide_expandable_card_summary_on">Kartica Proširi ispod videozapisa je skrivena</string>
-  <string name="morphe_hide_expandable_card_summary_off">Kartica Proširi ispod videozapisa je prikazana</string>
   <string name="morphe_hide_floating_microphone_button_title">Sakrij tipku plivajući mikrofon</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Plutajuća tipka mikrofona u pretraživanju je skrivena</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Plutajuća tipka mikrofona u pretraživanju je prikazana</string>
   <string name="morphe_hide_horizontal_shelves_title">Sakrij vodoravne kartice</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Vodoravne police su skrivene, kao što su:
-
-• Najnovije vijesti
-• Nastavi gledanje
-• Istraži više kanala
-• Za vas
-• Najrelevantnije
-• Kupovina
-• Gledaj ponovno"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Prikazane su horizontalne police</string>
   <string name="morphe_hide_image_shelf_title">Sakrij policu slika</string>
   <string name="morphe_hide_image_shelf_summary_on">Informativne kartice su skriveni</string>
   <string name="morphe_hide_image_shelf_summary_off">Informativne kartice su prikazane</string>
-  <string name="morphe_hide_latest_posts_title">Sakrij \'Prikaži više\' tipku</string>
-  <string name="morphe_hide_latest_posts_summary_on">Tipka \'Prikaži više\' u rezultatima pretrage je skrivena</string>
-  <string name="morphe_hide_latest_posts_summary_off">Tipka \'Prikaži više\' u rezultatima pretrage je prikazana</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Sakrij dugme \'Latest videos\'</string>
@@ -1329,12 +1311,7 @@ Ako se kasnije isključi, preporuke za UI mogu se izbjeći čišćenjem podataka
   <string name="morphe_open_system_share_sheet_title">Otvori tablicu dijeljenja sustava</string>
   <string name="morphe_open_system_share_sheet_summary_on">Otvara tablicu dijeljenja sustava</string>
   <string name="morphe_open_system_share_sheet_summary_off">Otvara tablicu dijeljenja u aplikaciji</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Nadjačaj tipku YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Tipka YouTube Music otvara vašu ciljanu glazbenu aplikaciju</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Tipka YouTube Music otvara vašu izvornu aplikaciju</string>
-  <string name="morphe_music_package_name_title">Morphe Music ime paketa</string>
-  <string name="morphe_music_package_name_summary">Naziv paketa ciljne glazbene aplikacije</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Promijenite početnu stranicu</string>
   <string name="morphe_change_start_page_entry_default">Zadano</string>

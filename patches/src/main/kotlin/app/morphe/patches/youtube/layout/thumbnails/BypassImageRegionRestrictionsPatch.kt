@@ -9,7 +9,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/BypassImageRegionRestrictionsPatch;"
 
 val bypassImageRegionRestrictionsPatch = bytecodePatch(
@@ -32,6 +32,6 @@ val bypassImageRegionRestrictionsPatch = bytecodePatch(
 
         // A priority hook is not needed, as the image URLs of interest are not modified
         // by AlternativeThumbnails or any other patch in this repo.
-        addImageURLHook(EXTENSION_CLASS_DESCRIPTOR)
+        addImageURLHook(EXTENSION_CLASS)
     }
 }

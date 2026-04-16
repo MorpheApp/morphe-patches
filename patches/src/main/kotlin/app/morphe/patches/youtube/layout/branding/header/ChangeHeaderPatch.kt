@@ -36,7 +36,7 @@ private val targetResourceDirectoryNames = mapOf(
 
 private val logoResourceNames = arrayOf("morphe_header")
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/ChangeHeaderPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChangeHeaderPatch;"
 
 private val changeHeaderBytecodePatch = bytecodePatch {
     dependsOn(resourceMappingPatch)
@@ -63,7 +63,7 @@ private val changeHeaderBytecodePatch = bytecodePatch {
                 addInstructions(
                     literalIndex + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getHeaderAttributeId(I)I
+                        invoke-static { v$register }, $EXTENSION_CLASS->getHeaderAttributeId(I)I
                         move-result v$register    
                     """
                 )

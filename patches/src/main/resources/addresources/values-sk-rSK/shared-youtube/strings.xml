@@ -30,16 +30,6 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Vlastná</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikona upozornenia</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentálna výstraha 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Používate experimentálnu verziu aplikácie ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Očakávajte zvláštne správanie aplikácie alebo neidentifikované chyby, keďže ešte dolaďujeme záplaty pre túto verziu aplikácie.
-&lt;br/&gt;&lt;br/&gt;
-Ak sa chcete vyvarovať zbytočným problémom, potom toto radšej &lt;b&gt;odinštalujte&lt;/b&gt; a zaplátajte odporúčanú verziu aplikácie ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chcem experimentálnu verziu</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chcem stabilnú verziu</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornenie Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša história sledovania sa neukladá.&lt;br&gt;&lt;br&gt;Toto je s najväčšou pravdepodobnosťou spôsobené DNS blokovačom reklám alebo sieťovým proxy.&lt;br&gt;&lt;br&gt;Ak to chcete vyriešiť, pridajte &lt;b&gt;s.youtube.com&lt;/b&gt; do whitelistu alebo vypnite všetky DNS blokovače a proxy servery.</string>

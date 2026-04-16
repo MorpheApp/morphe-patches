@@ -70,37 +70,38 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_artist_cards_title">Folaigh cártaí ealaíontóra</string>
   <string name="morphe_hide_artist_cards_summary_on">Tá cártaí ealaíontóirí i bhfolach</string>
   <string name="morphe_hide_artist_cards_summary_off">Taispeántar cártaí ealaíonta</string>
-  <string name="morphe_hide_chips_shelf_title">Folaigh seilf sceallóga</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Tá seilf scagairí i bhfolach</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Taispeántar seilf scagairí</string>
   <string name="morphe_hide_community_posts_title">Folaigh poist phobail</string>
   <string name="morphe_hide_community_posts_summary_on">Tá poist phobail i bhfolach</string>
   <string name="morphe_hide_community_posts_summary_off">Taispeántar poist phobail</string>
   <string name="morphe_hide_compact_banner_title">Folaigh meirgí dlúth</string>
   <string name="morphe_hide_compact_banner_summary_on">Tá meirgí dlúth i bhfolach</string>
   <string name="morphe_hide_compact_banner_summary_off">Taispeántar meirgí dlúth</string>
-  <string name="morphe_hide_expandable_card_title">Folaigh cárta inleathnaithe</string>
-  <string name="morphe_hide_expandable_card_summary_on">Tá cárta insínte faoi fhíseáin i bhfolach</string>
-  <string name="morphe_hide_expandable_card_summary_off">Taispeántar cárta inleathnaithe faoi fhíseáin</string>
+  <string name="morphe_hide_expandable_card_title">Folaigh cártaí inleathnaithe</string>
+  <string name="morphe_hide_expandable_card_entry_1">Taispeántar cártaí inleathnaithe faoi bhfíseáin</string>
+  <string name="morphe_hide_expandable_card_entry_2">Tá cárta insínte faoi fhíseáin i bhfolach</string>
+  <string name="morphe_hide_expandable_card_entry_3">Tá cárta insínte faoi fhíseáin i bhfolach</string>
+  <string name="morphe_hide_expandable_card_entry_4">Tá cárta insínte faoi fhíseáin i bhfolach</string>
+  <string name="morphe_hide_expandable_card_entry_5">Tá cártaí insínte faoi fhíseáin i bhfolach</string>
   <string name="morphe_hide_floating_microphone_button_title">Folaigh an cnaipe micreafón ar snámh</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Cnaipe micreafóin ar snámh sa chuardach i bhfolach</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Taispeántar cnaipe micreafóin ar snámh sa chuardach</string>
   <string name="morphe_hide_horizontal_shelves_title">Folaigh seilfeanna cothrománacha</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Tá seilfeanna cothrománacha i bhfolach, amhail:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Fíontaí sléata horizontal, amhail:
 
-• Nuacht is déanaí
-• Lean ar aghaidh ag féachaint
-• Déan iniúchadh ar níos mó cainéal
-• Is ábhartha
-• Siopadóireacht
-• Féach arís air"</string>
+• Nuacht bheaga
+• Ríomh ardochlúchán cosúil leat
+• Fan ag breathnú
+• Iniúchadh ar níos mó de chainteoirí
+• Iniúchadh ar níos mó áití
+• DHE ro ghá
+• Físeáin nua
+• Is iomadach
+• Foilseacháin ón Rialtas
+• Ceannaigh"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Taispeántar seilfeanna cothrománacha</string>
   <string name="morphe_hide_image_shelf_title">Folaigh seilf íomhá</string>
   <string name="morphe_hide_image_shelf_summary_on">Tá seilf íomhá i dtorthaí cuardaigh i bhfolach</string>
   <string name="morphe_hide_image_shelf_summary_off">Taispeántar seilf íomhánna i dtorthaí cuardaigh</string>
-  <string name="morphe_hide_latest_posts_title">Folaigh na poist is déanaí</string>
-  <string name="morphe_hide_latest_posts_summary_on">Tá na poist is déanaí i bhfolach</string>
-  <string name="morphe_hide_latest_posts_summary_off">Taispeántar na poist is déanaí</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Folaigh an cnaipe \'Físeáin is déanaí\'</string>
@@ -299,6 +300,9 @@ Is féidir go mbunchosc na ceannlínte custaim náisiúnta a fháil nuair a tais
   <string name="morphe_hide_members_shelf_title">Folaigh seilf na mball</string>
   <string name="morphe_hide_members_shelf_summary_on">Tá seilf na mball i bhfolach</string>
   <string name="morphe_hide_members_shelf_summary_off">Taispeántar seilf na gcomhaltaí</string>
+  <string name="morphe_hide_posts_shelf_title">Folaigh seilf posts</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Tá seilf posts i bhfolach</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Taispeántar seilf posts</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Folaigh an cnaipe \'Store\'</string>
   <string name="morphe_hide_store_button_summary_on">Tá an cnaipe \'Store\' i bhfolach</string>
@@ -1388,12 +1392,12 @@ Má mhúchtar é níos déanaí, moltar sonraí na haipe a ghlanadh chun fabhtan
   <string name="morphe_open_system_share_sheet_title">Ainm clár comhroinnt an chórais</string>
   <string name="morphe_open_system_share_sheet_summary_on">Oscail clár comhroinnt an chórais</string>
   <string name="morphe_open_system_share_sheet_summary_off">Oscail clár comhroinnt sa chóras</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Sáraigh cnaipe gníomhaíochta YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Cnaipe YouTube Music a oscailte do do app ceol</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Gníomh YouTube Music atáirgeann an app dúchais</string>
-  <string name="morphe_music_package_name_title">Ainmhe an pacáiste Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Ainm an pacáiste an app ceol do tharlaíonn</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Réaltaí YouTube Music a leasú</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Osclaíocht na gnólachtaí YouTube Music chuig do app ceannúsach</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Osclaíocht na gnólachtaí YouTube Music chuig an app oifigiúil</string>
+  <string name="morphe_music_package_name_title">Ainm pacáiste de app ceannúsach</string>
+  <string name="morphe_music_package_name_summary">Ainm an phacáiste de d\'aip cheoil suiteáilte</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Athraigh an leathanach tosaigh</string>
   <string name="morphe_change_start_page_entry_default">Réamhshocrú</string>

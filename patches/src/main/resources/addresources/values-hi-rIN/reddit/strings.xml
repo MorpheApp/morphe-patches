@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">आधुनिक होम यूआई को अक्षम करता है</string>
   <string name="morphe_disable_screenshot_popup_title">स्क्रीनशॉट पॉपअप अक्षम करें</string>
   <string name="morphe_disable_screenshot_popup_summary">स्क्रीनशॉट लेने पर दिखाई देने वाले पॉपअप को अक्षम करता है</string>
+  <string name="morphe_hide_ask_button_title">छुपाएं \'पूछो\' बटन</string>
+  <string name="morphe_hide_ask_button_summary">यह खोज बार में \'पूछो\' बटन को छुपाता है</string>
   <string name="morphe_hide_answers_button_title">उत्तर बटन छुपाएं</string>
   <string name="morphe_hide_answers_button_summary">नेविगेशन बार में उत्तर बटन छुपाता है</string>
   <string name="morphe_hide_chat_button_title">चैट बटन छुपाएं</string>
@@ -67,4 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">साझाकरण लिंक को ट्रैकिंग क्वेरी पैरामीटर हटाकर साफ़ करता है</string>
   <string name="morphe_open_links_directly_title">लिंक सीधे खोलें</string>
   <string name="morphe_open_links_directly_summary">बाहरी लिंक में रीडायरेक्शन यूआरएल को छोड़ देता है</string>
+  <string name="morphe_open_links_externally_title">बाहरी लिंक खोलें</string>
+  <string name="morphe_open_links_externally_summary">लिंक आपके ब्राउज़र में, इन-ऐप ब्राउज़र में नहीं खुलते हैं</string>
 </resources>

@@ -70,37 +70,39 @@ I cambiamenti includono:
   <string name="morphe_hide_artist_cards_title">Nascondi le schede artista</string>
   <string name="morphe_hide_artist_cards_summary_on">Le schede artista sono nascoste</string>
   <string name="morphe_hide_artist_cards_summary_off">Le schede artista sono visibili</string>
-  <string name="morphe_hide_chips_shelf_title">Nascondi la sezione chip</string>
-  <string name="morphe_hide_chips_shelf_summary_on">La sezione dei chip è nascosta</string>
-  <string name="morphe_hide_chips_shelf_summary_off">La sezione dei chip è visibile</string>
   <string name="morphe_hide_community_posts_title">Nascondi i post della community</string>
   <string name="morphe_hide_community_posts_summary_on">I post della community sono nascosti</string>
   <string name="morphe_hide_community_posts_summary_off">I post della community sono visibili</string>
   <string name="morphe_hide_compact_banner_title">Nascondi i banner compatti</string>
   <string name="morphe_hide_compact_banner_summary_on">I banner compatti sono nascosti</string>
   <string name="morphe_hide_compact_banner_summary_off">I banner compatti sono visibili</string>
-  <string name="morphe_hide_expandable_card_title">Nascondi scheda espandibile</string>
-  <string name="morphe_hide_expandable_card_summary_on">La scheda espandibile sotto i video è nascosta</string>
-  <string name="morphe_hide_expandable_card_summary_off">La scheda espandibile sotto i video è mostrata</string>
+  <string name="morphe_hide_expandable_card_title">Nascondi schede espandibili</string>
+  <string name="morphe_hide_expandable_card_entry_1">Schede espandibili sotto i video sono mostrate</string>
+  <string name="morphe_hide_expandable_card_entry_2">Solo la scheda prodotto sotto i video è nascosta</string>
+  <string name="morphe_hide_expandable_card_entry_3">Solo la scheda riepilogo sotto i video è nascosta</string>
+  <string name="morphe_hide_expandable_card_entry_4">La scheda espandibile sotto i video è nascosta</string>
+  <string name="morphe_hide_expandable_card_entry_5">Le schede espandibili sotto i video sono nascoste</string>
   <string name="morphe_hide_floating_microphone_button_title">Nascondi il pulsante flottante del microfono</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Il pulsante del microfono fluttuante nella ricerca è nascosto</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Il pulsante del microfono fluttuante nella ricerca è mostrato</string>
   <string name="morphe_hide_horizontal_shelves_title">Nascondi sezioni orizzontali</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"I ripiani orizzontali sono nascosti, come:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Le menzioni sono nascoste, come ad esempio:
 
-• Ultime notizie
+• Notizie in evidenza
+• Post della community che potrebbero interessarti
 • Continua a guardare
 • Esplora altri canali
+• Esplora altri argomenti
+• Per te
+• Ulteriori video
 • Più pertinenti
+• Post dalla Community del Creatore
 • Shopping
-• Guarda di nuovo"</string>
+• Riguarda"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Le scaffalature orizzontali sono mostrate</string>
   <string name="morphe_hide_image_shelf_title">Nascondi sezione immagini</string>
   <string name="morphe_hide_image_shelf_summary_on">La sezione immagini nei risultati di ricerca è nascosta</string>
   <string name="morphe_hide_image_shelf_summary_off">La sezione immagini nei risultati di ricerca è mostrata</string>
-  <string name="morphe_hide_latest_posts_title">Nascondi i post più recenti</string>
-  <string name="morphe_hide_latest_posts_summary_on">I post più recenti sono nascosti</string>
-  <string name="morphe_hide_latest_posts_summary_off">I post più recenti sono visibili</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Nascondi il pulsante \'Video recenti\'</string>
@@ -299,6 +301,9 @@ La visualizzazione dei Doodle di YouTube potrebbe impedire la visualizzazione de
   <string name="morphe_hide_members_shelf_title">Nascondi sezione membri</string>
   <string name="morphe_hide_members_shelf_summary_on">La sezione membri è nascosta</string>
   <string name="morphe_hide_members_shelf_summary_off">La sezione Membri è mostrata</string>
+  <string name="morphe_hide_posts_shelf_title">Nascondi la sezione dei post</string>
+  <string name="morphe_hide_posts_shelf_summary_on">La sezione dei post è nascosta</string>
+  <string name="morphe_hide_posts_shelf_summary_off">La sezione dei post è visibile</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Nascondi il pulsante Condividi</string>
   <string name="morphe_hide_store_button_summary_on">Il pulsante Condividi è nascosto</string>
@@ -1391,12 +1396,12 @@ Se in seguito verrà disattivato, si consiglia di cancellare i dati dell'app per
   <string name="morphe_open_system_share_sheet_title">Apri il pannello di condivisione del sistema</string>
   <string name="morphe_open_system_share_sheet_summary_on">Apri il pannello di condivisione del sistema</string>
   <string name="morphe_open_system_share_sheet_summary_off">Apri il pannello di condivisione dell\'app</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Sovrascrivi pulsante YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Il pulsante YouTube Music apre la tua app musicale target</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Pulsante YouTube Music apre l\'app nativa</string>
-  <string name="morphe_music_package_name_title">Nome pacchetto Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Nome pacchetto dell\'app musicale di destinazione</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Sovrascrivi i pulsanti di YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">I pulsanti di YouTube Music aprono la tua app musicale di destinazione</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">I pulsanti di YouTube Music aprono l\'app ufficiale</string>
+  <string name="morphe_music_package_name_title">Nome del pacchetto dell\'app musicale di destinazione</string>
+  <string name="morphe_music_package_name_summary">Nome del pacchetto della tua app di musica installata</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Cambia pagina iniziale</string>
   <string name="morphe_change_start_page_entry_default">Predefinito</string>

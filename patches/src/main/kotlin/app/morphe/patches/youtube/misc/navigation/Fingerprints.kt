@@ -54,11 +54,11 @@ internal object InitializeButtonsFingerprint : Fingerprint(
  * Specifically, [navigationBarPatch].
  */
 internal object NavigationBarHookCallbackFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name ="navigationTabCreatedCallback",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "V",
-    parameters = listOf(EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR, "Landroid/view/View;")
+    parameters = listOf(EXTENSION_NAVIGATION_BUTTON_CLASS, "Landroid/view/View;")
 )
 
 /**
@@ -156,7 +156,7 @@ internal object InitializeBottomBarContainerFingerprint : Fingerprint(
         resourceLiteral(ResourceType.ID, "bottom_bar_container"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View\$OnLayoutChangeListener;)V"
+            smali = $$"Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View$OnLayoutChangeListener;)V"
         )
     )
 )

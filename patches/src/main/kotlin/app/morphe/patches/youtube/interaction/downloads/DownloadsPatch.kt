@@ -59,9 +59,9 @@ private val downloadsResourcePatch = resourcePatch {
     }
 }
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/DownloadsPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/DownloadsPatch;"
 
-private const val BUTTON_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplayer/ExternalDownloadButton;"
+private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/ExternalDownloadButton;"
 
 @Suppress("unused")
 val downloadsPatch = bytecodePatch(
@@ -78,20 +78,20 @@ val downloadsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeTopControl(BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
+        initializeTopControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
 
         // Main activity is used to launch downloader intent.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, ${EXTENSION_CLASS_DESCRIPTOR}->setMainActivity(Landroid/app/Activity;)V"
+            "invoke-static/range { p0 .. p0 }, ${EXTENSION_CLASS}->setMainActivity(Landroid/app/Activity;)V"
         )
 
         OfflineVideoEndpointFingerprint.method.apply {
             addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS_DESCRIPTOR->inAppDownloadButtonOnClick(Ljava/lang/String;)Z
+                    invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/lang/String;)Z
                     move-result v0
                     if-eqz v0, :show_native_downloader
                     return-void

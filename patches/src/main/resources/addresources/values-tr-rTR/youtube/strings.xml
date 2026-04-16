@@ -40,9 +40,9 @@ Second \"item\" text"</string>
   <string name="morphe_debug_protobuffer_title">Hata ayıklama protokol arabelleği</string>
   <string name="morphe_debug_protobuffer_summary_on">Hata ayıklama kayıtları protokol arabelleğini içerir</string>
   <string name="morphe_debug_protobuffer_summary_off">Hata ayıklama kayıtları protokol arabelleğini içermez</string>
-  <string name="morphe_debug_protobuffer_user_dialog_message">"Bu ayarın etkinleştirilmesi, bazı kullanıcı arayüzü bileşenleri için ek düzen verilerini, ekran üzerindeki metin dahil olmak üzere günlüğe kaydeder.
+  <string name="morphe_debug_protobuffer_user_dialog_message">"Bu ayarı etkinleştirmek, bazı kullanıcı arayüzü bileşenleri için ekrandaki metin de dahil olmak üzere ek düzen verilerini günlüğe kaydeder.
 
-Bu, özel filtreler oluştururken bileşenlerin belirlenmesine yardımcı olabilir.
+Bu, özel filtreler oluştururken bileşenleri tanımlamaya yardımcı olabilir.
 
 Ancak, bunun etkinleştirilmesi IP adresiniz gibi bazı kullanıcı verilerini de günlüğe kaydeder."</string>
   <!-- layout.disableLayoutUpdatesPatch -->
@@ -70,37 +70,39 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_artist_cards_title">Sanatçı kartlarını gizle</string>
   <string name="morphe_hide_artist_cards_summary_on">Sanatçı kartları gizli</string>
   <string name="morphe_hide_artist_cards_summary_off">Sanatçı kartları görünür</string>
-  <string name="morphe_hide_chips_shelf_title">Çip rafını gizle</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Çip rafı gizli</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Çip rafı görünür</string>
   <string name="morphe_hide_community_posts_title">Topluluk gönderilerini gizle</string>
   <string name="morphe_hide_community_posts_summary_on">Topluluk gönderileri gizli</string>
   <string name="morphe_hide_community_posts_summary_off">Topluluk gönderileri görünür</string>
   <string name="morphe_hide_compact_banner_title">Kompakt afişleri gizle</string>
   <string name="morphe_hide_compact_banner_summary_on">Kompakt afişler gizli</string>
   <string name="morphe_hide_compact_banner_summary_off">Kompakt afişler görünür</string>
-  <string name="morphe_hide_expandable_card_title">Genişletilebilir kartı gizle</string>
-  <string name="morphe_hide_expandable_card_summary_on">Videoların altındaki genişletilebilir kart gizli</string>
-  <string name="morphe_hide_expandable_card_summary_off">Videoların altındaki genişletilebilir kart görünür</string>
+  <string name="morphe_hide_expandable_card_title">Genişletilebilir kartları gizle</string>
+  <string name="morphe_hide_expandable_card_entry_1">Videoların altındaki genişletilebilir kartlar görünür</string>
+  <string name="morphe_hide_expandable_card_entry_2">Videoların altındaki sadece ürün kartı gizli</string>
+  <string name="morphe_hide_expandable_card_entry_3">Videoların altındaki sadece özet kartı gizli</string>
+  <string name="morphe_hide_expandable_card_entry_4">Videoların altındaki ürün ve özet kartı gizli</string>
+  <string name="morphe_hide_expandable_card_entry_5">Videoların altındaki genişletilebilir kartlar gizli</string>
   <string name="morphe_hide_floating_microphone_button_title">Yüzen mikrofon düğmesini gizle</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Aramadaki yüzen mikrofon düğmesi gizli</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Aramadaki yüzen mikrofon düğmesi görünür</string>
   <string name="morphe_hide_horizontal_shelves_title">Yatay rafları gizle</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Yatay raflar gizlenir, örneğin:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Yatay raflar gizlenmiş, örneğin:
 
-• Son dakika haberleri
-• İzlemeyi devam ettirin
-• Daha fazla kanala keşfedin
-• En ilgili
+• Çıkartılan haberler
+• Beğenebileceğiniz topluluk gönderileri
+• İzlemeye devam et
+• Daha fazla kanal keşfet
+• Daha fazla konu keşfet
+• Öneriler
+• Son videolar
+• En alakalılar
+• Oluşturucunun Topluluğu'ndan gönderiler
 • Alışveriş
-• Tekrar izleyin"</string>
+• Tekrar izle"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Yatay raflar görünür</string>
   <string name="morphe_hide_image_shelf_title">Resim rafını gizle</string>
   <string name="morphe_hide_image_shelf_summary_on">Arama sonuçlarındaki resim rafı gizli</string>
   <string name="morphe_hide_image_shelf_summary_off">Arama sonuçlarındaki resim rafı görünür</string>
-  <string name="morphe_hide_latest_posts_title">Son gönderileri gizle</string>
-  <string name="morphe_hide_latest_posts_summary_on">Son gönderiler gizli</string>
-  <string name="morphe_hide_latest_posts_summary_off">Son gönderiler görünür</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Son videolar düğmesini gizle</string>
@@ -299,6 +301,9 @@ YouTube Doodles göstermek, özel başlıkların görüntülenmesini engelleyebi
   <string name="morphe_hide_members_shelf_title">Üyeler rafını gizle</string>
   <string name="morphe_hide_members_shelf_summary_on">Üyeler rafı gizli</string>
   <string name="morphe_hide_members_shelf_summary_off">Üyeler rafı görünür</string>
+  <string name="morphe_hide_posts_shelf_title">Gönderiler rafını gizle</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Gönderiler rafı gizli</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Gönderiler rafı görünür</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Mağaza düğmesini gizle</string>
   <string name="morphe_hide_store_button_summary_on">Mağaza düğmesi gizli</string>
@@ -687,7 +692,7 @@ Ekranın sağ tarafında dikey olarak kaydırarak sesi ayarlayın"</string>
 Otomatik çevrilmiş altyazılar kullanılamayabilir"</string>
   <string name="morphe_caption_cookies_title">Altyazı çerezleri</string>
   <string name="morphe_caption_cookies_summary">Zamanlı Metin API istemlerinde kullanılacak çerezler</string>
-  <string name="morphe_get_caption_cookies_title">Altyazı çerezlerini alın</string>
+  <string name="morphe_get_caption_cookies_title">Altyazı çerezlerini al</string>
   <string name="morphe_get_caption_cookies_summary">"Tıklayarak çerezleri alın
 
 Geçerli ise otomatik olarak kaydedilecek"</string>
@@ -797,7 +802,7 @@ Morphe ayarlarını açmak için basılı tutun"</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Altyazılar menüsü gizli</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Altyazılar menüsü görünür</string>
   <string name="morphe_hide_player_flyout_captions_footer_title">Altyazılar alt bilgisini gizle</string>
-  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Altyazı menüsü alt bilgisi gizli</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Altyazılar menüsü alt bilgisi gizli</string>
   <string name="morphe_hide_player_flyout_captions_footer_summary_off">Altyazılar menüsü alt bilgisi görünür</string>
   <string name="morphe_hide_player_flyout_captions_header_title">Altyazılar başlığını gizle</string>
   <string name="morphe_hide_player_flyout_captions_header_summary_on">Altyazılar menüsü başlığı gizli</string>
@@ -847,9 +852,9 @@ Morphe ayarlarını açmak için basılı tutun"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Ses Parçası menüsü gizli
 
 Ses Parçası menüsünü görüntülemek için, 'Video akışlarını taklit et'i 'Android Reel' veya 'TV' olarak değiştirin"</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">Ses parçası alt bilgisini gizle</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Ses parçası menüsü alt bilgisi gizli</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Ses parçası menüsü alt bilgisi görünür</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Ses Parçası alt bilgisini gizle</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Ses Parçası menüsü alt bilgisi gizli</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Ses Parçası menüsü alt bilgisi görünür</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR modunda izle\'yi gizle</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR modunda izle menüsü gizli</string>
@@ -873,9 +878,9 @@ Ses Parçası menüsünü görüntülemek için, 'Video akışlarını taklit et
   <string name="morphe_hide_autoplay_button_summary_on">Otomatik oynatma düğmesi gizli</string>
   <string name="morphe_hide_autoplay_button_summary_off">Otomatik oynatma düğmesi görünür</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">Altyazı düğmesini gizle</string>
-  <string name="morphe_hide_captions_button_summary_on">Altyazı düğmesi gizli</string>
-  <string name="morphe_hide_captions_button_summary_off">Altyazı düğmesi görünür</string>
+  <string name="morphe_hide_captions_button_title">Altyazılar düğmesini gizle</string>
+  <string name="morphe_hide_captions_button_summary_on">Altyazılar düğmesi gizli</string>
+  <string name="morphe_hide_captions_button_summary_off">Altyazılar düğmesi görünür</string>
   <string name="morphe_hide_cast_button_title">Yayınla düğmesini gizle</string>
   <string name="morphe_hide_cast_button_summary_on">Yayınla düğmesi gizli</string>
   <string name="morphe_hide_cast_button_summary_off">Yayınla düğmesi görünür</string>
@@ -1393,12 +1398,12 @@ Daha sonra kapatılırsa, arayüz hatalarını önlemek için uygulama verilerin
   <string name="morphe_open_system_share_sheet_title">Sistem paylaşım çubuğunu aç</string>
   <string name="morphe_open_system_share_sheet_summary_on">Sistem paylaşım çubuğunu açar</string>
   <string name="morphe_open_system_share_sheet_summary_off">Uygulama içi paylaşım çubuğunu açar</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">YouTube Music düğmesini geçersiz kıl</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music düğmesi hedef müzik uygulamanızı açar</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music düğmesi yerel uygulamayı açar</string>
-  <string name="morphe_music_package_name_title">Morphe Müzik paket adı</string>
-  <string name="morphe_music_package_name_summary">Hedef müzik uygulamasının paket adı</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">YouTube Müzik düğmelerini geçersiz kıl</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Müzik düğmeleri hedef müzik uygulamanızı açar</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Müzik düğmeleri resmi uygulamayı açar</string>
+  <string name="morphe_music_package_name_title">Hedef müzik uygulamasının paket adı</string>
+  <string name="morphe_music_package_name_summary">Yüklü hedef müzik uygulamanızın paket adı</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlangıç sayfasını değiştir</string>
   <string name="morphe_change_start_page_entry_default">Varsayılan</string>

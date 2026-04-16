@@ -11,7 +11,7 @@ import app.morphe.patches.all.misc.transformation.IMethodCall
 import app.morphe.patches.all.misc.transformation.filterMapInstruction35c
 import app.morphe.patches.all.misc.transformation.transformInstructionsPatch
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/FixRecycledBitmapPatch;"
 
 @Suppress("unused")
@@ -22,10 +22,10 @@ private enum class MethodCall(
     override val methodReturnType: String,
 ) : IMethodCall {
     PutBitmapFramework(
-        "Landroid/media/MediaMetadata\$Builder;",
+        $$"Landroid/media/MediaMetadata$Builder;",
         "putBitmap",
         arrayOf("Ljava/lang/String;", "Landroid/graphics/Bitmap;"),
-        "Landroid/media/MediaMetadata\$Builder;",
+        $$"Landroid/media/MediaMetadata$Builder;",
     );
 }
 
@@ -42,7 +42,7 @@ val fixRecycledBitmapPatch = transformInstructionsPatch(
         val (methodCall, _, instructionIndex) = entry
         
         methodCall.replaceInvokeVirtualWithExtension(
-            EXTENSION_CLASS_DESCRIPTOR,
+            EXTENSION_CLASS,
             mutableMethod,
             instructionIndex
         )

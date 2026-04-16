@@ -11,7 +11,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/CustomPlayerOverlayOpacityPatch;"
 
 @Suppress("unused")
@@ -38,7 +38,7 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
                 addInstruction(
                     viewRegisterIndex + 1,
                     "invoke-static { v$viewRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->changeOpacity(Landroid/widget/ImageView;)V",
+                            "$EXTENSION_CLASS->changeOpacity(Landroid/widget/ImageView;)V",
                 )
             }
         }

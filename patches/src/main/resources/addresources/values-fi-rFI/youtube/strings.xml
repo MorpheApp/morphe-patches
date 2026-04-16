@@ -70,9 +70,6 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_artist_cards_title">Piilota artistikortit</string>
   <string name="morphe_hide_artist_cards_summary_on">Artistikortit piilotetaan</string>
   <string name="morphe_hide_artist_cards_summary_off">Artistikortit näytetään</string>
-  <string name="morphe_hide_chips_shelf_title">Piilota siruhylly</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Siruhylly piilotetaan</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Siruhylly näytetään</string>
   <string name="morphe_hide_community_posts_title">Piilota yhteisöpostaukset</string>
   <string name="morphe_hide_community_posts_summary_on">Yhteisöpostaukset piilotetaan</string>
   <string name="morphe_hide_community_posts_summary_off">Yhteisöpostaukset näytetään</string>
@@ -80,27 +77,32 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_compact_banner_summary_on">Kompaktit bannerit piilotetaan</string>
   <string name="morphe_hide_compact_banner_summary_off">Kompaktit bannerit näytetään</string>
   <string name="morphe_hide_expandable_card_title">Piilota laajennettava kortti</string>
-  <string name="morphe_hide_expandable_card_summary_on">Laajennettava kortti videoiden alla piilotetaan</string>
-  <string name="morphe_hide_expandable_card_summary_off">Laajennettava kortti näytetään videoiden alla</string>
+  <string name="morphe_hide_expandable_card_entry_1">Laajennettava kortti näytetään videoiden alla</string>
+  <string name="morphe_hide_expandable_card_entry_2">Laajennettava kortti videoiden alla piilotetaan</string>
+  <string name="morphe_hide_expandable_card_entry_3">Laajennettava kortti videoiden alla piilotetaan</string>
+  <string name="morphe_hide_expandable_card_entry_4">Tuotekortti ja yhteenvetokortti videoiden alla on piilotettu</string>
+  <string name="morphe_hide_expandable_card_entry_5">Laajennettavat kortit videoiden alla on piilotettu</string>
   <string name="morphe_hide_floating_microphone_button_title">Piilota kelluva mikrofonipainike</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Kelluva mikrofonipainike piilotetaan haussa</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Kelluva mikrofonipainike näytetään haussa</string>
   <string name="morphe_hide_horizontal_shelves_title">Piilota vaakasuuntaiset hyllyt</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Vaakahyllyt piilotetaan:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Vaakatiskit on piilotettu, kuten:
 
-• Uutiset
-• Jatka katselua
-• Tutustu muihin kanaviin
-• Osuvimmat
-• Ostokset
+• Ajankohtaiset uutiset
+• Voit tykkäämisesi yhteisön julkaisut
+• Jatkaisitko katselu
+• Tutustu lisää kanaviin
+• Tutustu lisää aiheisiin
+• Sinulle
+• Uusimmat videot
+• Tärkeimmät
+• Yhteisön julkaisut
+• Ostopalvelut
 • Katso uudelleen"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Vaakasuuntaiset hyllyt näytetään</string>
   <string name="morphe_hide_image_shelf_title">Piilota kuvahylly</string>
   <string name="morphe_hide_image_shelf_summary_on">Kuvahylly piilotetaan hakutuloksissa</string>
   <string name="morphe_hide_image_shelf_summary_off">Kuvahylly näytetään hakutuloksissa</string>
-  <string name="morphe_hide_latest_posts_title">Piilota uusimmat postaukset</string>
-  <string name="morphe_hide_latest_posts_summary_on">Uusimmat postaukset piilotetaan</string>
-  <string name="morphe_hide_latest_posts_summary_off">Uusimmat postaukset näytetään</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Piilota \"Uusimmat videot\" -nappi</string>
@@ -299,6 +301,9 @@ YouTube Doodlen näyttäminen saattaa estää mukautettujen otsikoiden näyttäm
   <string name="morphe_hide_members_shelf_title">Piilota jäsenet-hylly</string>
   <string name="morphe_hide_members_shelf_summary_on">Jäsenet-hylly piilotetaan</string>
   <string name="morphe_hide_members_shelf_summary_off">Jäsenet-hylly näytetään</string>
+  <string name="morphe_hide_posts_shelf_title">Piilota julkaisujen tiski</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Julkaisujen tiski on piilotettu</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Julkaisujen tiski on näytettävä</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Piilota Kauppa-painike</string>
   <string name="morphe_hide_store_button_summary_on">Kauppa-painike piilotetaan</string>
@@ -1393,12 +1398,12 @@ Jos tämä poistetaan myöhemmin käytöstä, on suositeltavaa tyhjentää sovel
   <string name="morphe_open_system_share_sheet_title">Avaa järjestelmän jakosivun</string>
   <string name="morphe_open_system_share_sheet_summary_on">Avaa järjestelmän jakosivun</string>
   <string name="morphe_open_system_share_sheet_summary_off">Avaa sovelluksen jakosivun</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Korvaa YouTube Music -nappi</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music -nappi avaa kohdetusi musiikkisovellus</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music -nappi avaa alkuperäisen sovelluksen</string>
-  <string name="morphe_music_package_name_title">Morphe Music -paketin nimi</string>
-  <string name="morphe_music_package_name_summary">Kohdealun musiikkisovelluksen paketin nimi</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Ohita YouTube Musicin painikkeet</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Musicin painikkeet avaavat kohdemusiikkisovelluksesi</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Musicin painikkeet avaavat virallisen sovelluksen</string>
+  <string name="morphe_music_package_name_title">Kohdemusiikkisovelluksen pakkausnimi</string>
+  <string name="morphe_music_package_name_summary">Asennetun kohdemusiikkisovelluksen paketin nimi</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Vaihda aloitussivua</string>
   <string name="morphe_change_start_page_entry_default">Oletus</string>

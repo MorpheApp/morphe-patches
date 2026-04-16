@@ -15,6 +15,7 @@ import java.util.List;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
@@ -36,6 +37,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
 
     private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
     private final StringFilterGroup audioTrackMenuFooter;
+    private final StringFilterGroup divider;
     private final StringFilterGroup qualityMenuFooter;
 
     public PlayerFlyoutMenuComponentsFilter() {
@@ -44,14 +46,19 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                 "audio_track_sheet_footer.e"
         );
 
+        divider = new StringFilterGroup(
+                null,
+                "|divider.e"
+        );
+
         qualityMenuFooter = new StringFilterGroup(
                 Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
-                "quality_sheet_footer.e",
-                "|divider.e"
+                "quality_sheet_footer.e"
         );
 
         addPathCallbacks(
                 audioTrackMenuFooter,
+                divider,
                 qualityMenuFooter,
                 new StringFilterGroup(null, "overflow_menu_item.e")
         );
@@ -136,12 +143,18 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        if (matchedGroup == audioTrackMenuFooter) {
+        if (matchedGroup == audioTrackMenuFooter || matchedGroup == qualityMenuFooter) {
             return true;
         }
 
-        if (matchedGroup == qualityMenuFooter) {
-            return path.startsWith("quick_quality_sheet_content.e");
+        if (matchedGroup == divider) {
+            if (path.contains("captions_sheet_content.e")) {
+                return Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
+            }
+            if (path.contains("quick_quality_sheet_content.e")) {
+                return Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
+            }
+            return false;
         }
 
         if (contentIndex != 0) {
@@ -154,7 +167,9 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
         }
 
         // 21.x+ fix.
-        if (path.contains("bottom_sheet_list_option.e")) return false;
+        if (VersionCheckPatch.IS_20_31_OR_GREATER && path.contains("bottom_sheet_list_option.e")) {
+            return false;
+        }
 
         return flyoutFilterGroupList.check(buffer).isFiltered();
     }

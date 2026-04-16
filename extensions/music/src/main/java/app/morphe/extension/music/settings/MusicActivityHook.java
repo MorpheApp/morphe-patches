@@ -18,7 +18,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 
 /**
- * Hooks {@link com.google.android.gms.common.api.GoogleApiActivity}
+ * Hooks {@code com.google.android.gms.common.api.GoogleApiActivity}
  * to inject a custom {@link MusicPreferenceFragment} with a toolbar and search.
  */
 public class MusicActivityHook extends BaseActivityHook {

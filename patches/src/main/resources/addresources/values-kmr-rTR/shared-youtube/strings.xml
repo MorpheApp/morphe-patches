@@ -31,15 +31,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Xwerî</string>
   <string name="morphe_custom_branding_notification_icon_title">Aîkona notifikasyonê</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Îkona sepanê bişîne</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">⚠️ Xwer pêşbira eksperimentalê 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Hûn ji ⚠️ &lt;b&gt;%1$s&lt;/b&gt; karanîna sepan eksperimentalê îlavên &lt;br/&gt;&lt;br/&gt;
-🔧 Tişta bi nexuş bêkêr be an karanîna bêserneweyî yan bibînin, çima me ji bo holweşana ev sepan saz kiriye.
-&lt;br/&gt;&lt;br/&gt;
-Ger ez kêmtir zirar be, wê demê &lt;b&gt;serbûna&lt;/b&gt; ev û holweşana pêşniyarîya sepanê ✅ &lt;b&gt;%2$s&lt;/b&gt; bikêr ke."</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">Ez vê eksperimental be nêzîkê bikîm</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Min holweşana serbaz be nêzîkê bikîm</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Îlanê Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Sergûzastên we têne parvekirin.&lt;br&gt;&lt;br&gt;Ev bi girîngî ji hêla pêşgirê DNS an proxy-ya danînê ve tê bandor kirin.&lt;br&gt;&lt;br&gt;Ji bo çareserî, s.youtube.com veşêre an hemû pêşgirên DNS û proxy-yên vegirtêrê vanqandin.</string>

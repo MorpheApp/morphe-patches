@@ -43,12 +43,12 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
 import java.lang.ref.WeakReference
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/shared/NavigationBar;"
-internal const val EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/shared/NavigationBar\$NavigationButton;"
+internal const val EXTENSION_NAVIGATION_BUTTON_CLASS =
+    $$"Lapp/morphe/extension/youtube/shared/NavigationBar$NavigationButton;"
 private const val EXTENSION_TOOLBAR_INTERFACE =
-    "Lapp/morphe/extension/youtube/shared/NavigationBar${'$'}AppCompatToolbarPatchInterface;"
+    $$"Lapp/morphe/extension/youtube/shared/NavigationBar$AppCompatToolbarPatchInterface;"
 
 private lateinit var hookNavigationButtonCreatedMethodRef : WeakReference<MutableMethod>
 
@@ -79,7 +79,7 @@ fun hookNavigationButtonCreated(extensionClassDescriptor: String) {
     hookNavigationButtonCreatedMethodRef.get()!!.addInstruction(
         0,
         "invoke-static { p0, p1 }, $extensionClassDescriptor->navigationTabCreated" +
-                "(${EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR}Landroid/view/View;)V",
+                "(${EXTENSION_NAVIGATION_BUTTON_CLASS}Landroid/view/View;)V",
     )
 }
 
@@ -114,7 +114,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
                 addInstruction(
                     insertIndex,
                     "invoke-static { v$register }, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->${hook.methodName}(${hook.parameters})V",
+                        "$EXTENSION_CLASS->${hook.methodName}(${hook.parameters})V",
                 )
             }
         }
@@ -165,7 +165,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
                 addInstruction(
                     index + 1,
                     "invoke-static { v$viewRegister, v$isSelectedRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->navigationTabSelected(Landroid/view/View;Z)V",
+                            "$EXTENSION_CLASS->navigationTabSelected(Landroid/view/View;Z)V",
                 )
             }
         }
@@ -174,7 +174,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         // Litho filtering based on navigation tab before the tab is updated.
         YouTubeMainActivityOnBackPressedFingerprint.method.addInstruction(
             0,
-            "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onBackPressed(Landroid/app/Activity;)V",
+            "invoke-static { p0 }, $EXTENSION_CLASS->onBackPressed(Landroid/app/Activity;)V",
         )
 
         // Hook the search bar.
@@ -191,7 +191,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
                 addInstruction(
                     instructionIndex,
                     "invoke-static { v$viewRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->searchBarResultsViewLoaded(Landroid/view/View;)V",
+                            "$EXTENSION_CLASS->searchBarResultsViewLoaded(Landroid/view/View;)V",
                 )
             }
         }
@@ -205,7 +205,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
 
                 addInstruction(
                     index + 1,
-                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->setToolbar(Landroid/widget/FrameLayout;)V"
+                    "invoke-static { v$register }, $EXTENSION_CLASS->setToolbar(Landroid/widget/FrameLayout;)V"
                 )
             }
         }
@@ -271,7 +271,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
                     insertIndex,
                     """
                         sget-object v$freeRegister, $cairoNotificationEnumReference
-                        invoke-static { v$enumMapRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->setCairoNotificationFilledIcon(Ljava/util/EnumMap;Ljava/lang/Enum;)V
+                        invoke-static { v$enumMapRegister, v$freeRegister }, $EXTENSION_CLASS->setCairoNotificationFilledIcon(Ljava/util/EnumMap;Ljava/lang/Enum;)V
                     """
                 )
             }

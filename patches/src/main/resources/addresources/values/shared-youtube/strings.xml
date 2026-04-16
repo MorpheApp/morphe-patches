@@ -34,17 +34,6 @@ Second \"item\" text"</string>
     <string name="morphe_custom_branding_notification_icon_title">Notification icon</string>
     <string name="morphe_custom_branding_notification_icon_entry_1">Follow app icon</string>
 
-    <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-    <!-- misc.checks.experimentalAppNoticePatch -->
-    <string name="morphe_experimental_app_version_dialog_title">🚨 Experimental Alert 🚨</string>
-    <string name="morphe_experimental_app_version_dialog_message">"You are using an experimental app version of ⚠️ &lt;b>%1$s&lt;/b>
-&lt;br/>&lt;br/>
-🔧 Expect quirky app behavior or unidentified bugs as we fine tune the patches for this app version.
-&lt;br/>&lt;br/>
-If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
-    <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
-    <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
-
     <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
     <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>
     <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br>&lt;br>This most likely is caused by a DNS ad blocker or network proxy.&lt;br>&lt;br>To fix this, whitelist &lt;b>s.youtube.com&lt;/b> or turn off all DNS blockers and proxies.</string>

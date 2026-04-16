@@ -150,4 +150,13 @@ Second \"item\" text"</string>
 • האפליקציה עלולה להיסגר באופן אקראי
 • התראות עלולות לא לעבוד
 • השמעת מוזיקה ברקע עלולה לא לעבוד"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 התראה ניסיונית 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"אתה משתמש בגרסה ניסיונית של האפליקציה ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 צפה להתנהגות מוזרה באפליקציה או באגים בלתי מזוהים בזמן שאנו מכוונים את התיקונים עבור גרסת האפליקציה הזו.
+&lt;br/&gt;&lt;br/&gt;
+אם אתה רוצה את החוויה הנטולת הבעיות ביותר, אז &lt;b&gt;הסר התקנה&lt;/b&gt; של זה ותקן את גרסת האפליקציה המומלצת ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ אני רוצה ניסיונית</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ אני רוצה יציבה</string>
 </resources>

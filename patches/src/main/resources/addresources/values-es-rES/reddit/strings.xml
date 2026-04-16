@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Desactiva la interfaz de usuario moderna de la pantalla de inicio</string>
   <string name="morphe_disable_screenshot_popup_title">Desactivar ventana emergente de captura de pantalla</string>
   <string name="morphe_disable_screenshot_popup_summary">Desactiva la ventana emergente que aparece al tomar una captura de pantalla</string>
+  <string name="morphe_hide_ask_button_title">Ocultar botón de preguntar</string>
+  <string name="morphe_hide_ask_button_summary">Oculta el botón de preguntar en la barra de búsqueda</string>
   <string name="morphe_hide_answers_button_title">Ocultar botón \"Respuestas\"</string>
   <string name="morphe_hide_answers_button_summary">Oculta el botón \"Respuestas\" en la barra de navegación</string>
   <string name="morphe_hide_chat_button_title">Ocultar botón \"Chat\"</string>
@@ -67,4 +69,6 @@ Limitación: Solo se muestra si la respuesta de la API incluye el recuento de vi
   <string name="morphe_sanitize_sharing_links_summary">Desinfecta los enlaces compartidos eliminando los parámetros de consulta de seguimiento</string>
   <string name="morphe_open_links_directly_title">Abrir enlaces directamente</string>
   <string name="morphe_open_links_directly_summary">Omite las URL de redirección en los enlaces externos</string>
+  <string name="morphe_open_links_externally_title">Abrir enlaces externamente</string>
+  <string name="morphe_open_links_externally_summary">Abre los enlaces en tu navegador en lugar de en el navegador interno de la aplicación</string>
 </resources>

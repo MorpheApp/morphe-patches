@@ -228,7 +228,7 @@ fun injectVisibilityCheckCall(descriptor: String) {
     )
 }
 
-internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/LegacyPlayerControlsPatch;"
+internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LegacyPlayerControlsPatch;"
 
 private lateinit var inflateTopControlMethodRef : WeakReference<MutableMethod>
 private var inflateTopControlInsertIndex = -1
@@ -303,7 +303,7 @@ val legacyPlayerControlsPatch = bytecodePatch(
                 addInstruction(
                     index,
                     "invoke-static { v$register }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->setFullscreenCloseButton(Landroid/view/View;)V",
+                            "$EXTENSION_CLASS->setFullscreenCloseButton(Landroid/view/View;)V",
                 )
             }
         }
@@ -322,7 +322,7 @@ val legacyPlayerControlsPatch = bytecodePatch(
             fingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->" +
+                    "$EXTENSION_CLASS->" +
                             "usePlayerBottomControlsExploderLayout(Z)Z",
                 )
             }
@@ -368,7 +368,7 @@ val legacyPlayerControlsPatch = bytecodePatch(
                     addInstruction(
                         gradientViewIndex + 1,
                         "invoke-static { v$gradientViewRegister }, " +
-                                "$EXTENSION_CLASS_DESCRIPTOR->hideBottomGradientScrim(Landroid/widget/ImageView;)V"
+                                "$EXTENSION_CLASS->hideBottomGradientScrim(Landroid/widget/ImageView;)V"
                     )
                 }
             }

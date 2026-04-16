@@ -70,9 +70,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">הסתר כרטיסי אמן</string>
   <string name="morphe_hide_artist_cards_summary_on">כרטיסי אמן מוסתרים</string>
   <string name="morphe_hide_artist_cards_summary_off">כרטיסי אמן מוצגים</string>
-  <string name="morphe_hide_chips_shelf_title">הסתר מדף צ\'יפים</string>
-  <string name="morphe_hide_chips_shelf_summary_on">מדף צ\'יפים מוסתר</string>
-  <string name="morphe_hide_chips_shelf_summary_off">מדף צ\'יפים מוצג</string>
   <string name="morphe_hide_community_posts_title">הסתר פוסטים קהילתיים</string>
   <string name="morphe_hide_community_posts_summary_on">פוסטים קהילתיים מוסתרים</string>
   <string name="morphe_hide_community_posts_summary_off">פוסטים קהילתיים מוצגים</string>
@@ -80,26 +77,32 @@ Second \"item\" text"</string>
   <string name="morphe_hide_compact_banner_summary_on">כרזות קומפקטיות מוסתרות</string>
   <string name="morphe_hide_compact_banner_summary_off">כרזות קומפקטיות מוצגות</string>
   <string name="morphe_hide_expandable_card_title">הסתר כרטיס הניתן להרחבה</string>
-  <string name="morphe_hide_expandable_card_summary_on">כרטיס הניתן להרחבה מתחת לסרטונים מוסתר</string>
-  <string name="morphe_hide_expandable_card_summary_off">כרטיס הניתן להרחבה מתחת לסרטונים מוצג</string>
+  <string name="morphe_hide_expandable_card_entry_1">כרטיס הניתן להרחבה מתחת לסרטונים מוצג</string>
+  <string name="morphe_hide_expandable_card_entry_2">כרטיס הניתן להרחבה מתחת לסרטונים מוסתר</string>
+  <string name="morphe_hide_expandable_card_entry_3">כרטיס הניתן להרחבה מתחת לסרטונים מוסתר</string>
+  <string name="morphe_hide_expandable_card_entry_4">כרטיס הניתן להרחבה מתחת לסרטונים מוסתר</string>
+  <string name="morphe_hide_expandable_card_entry_5">כרטיסים הניתנים להרחבה מתחת לסרטונים מוסתרים</string>
   <string name="morphe_hide_floating_microphone_button_title">הסתר לחצן מיקרופון צף</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">לחצן מיקרופון צף בחיפוש מוסתר</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">לחצן מיקרופון צף בחיפוש מוצג</string>
   <string name="morphe_hide_horizontal_shelves_title">הסתר מדפים אופקיים</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"מדפים אופקיים מוסתרים, כגון:
-• מבזקי חדשות
+
+• חדשות אחרונות
+• פוסטים מהקהילה שאתם עשויים לאהוב
 • המשך צפייה
-• גלה עוד ערוצים
-• רלוונטיות
+• גלו עוד ערוצים
+• גלו עוד נושאים
+• עבורך
+• סרטונים אחרונים
+• הרלוונטי ביותר
+• פוסטים מקהילת היוצרים
 • קניות
 • צפה שוב"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">מדפים אופקיים מוצגים</string>
   <string name="morphe_hide_image_shelf_title">הסתר מדף תמונות</string>
   <string name="morphe_hide_image_shelf_summary_on">מדף תמונות בתוצאות חיפוש מוסתר</string>
   <string name="morphe_hide_image_shelf_summary_off">מדף תמונות בתוצאות חיפוש מוצג</string>
-  <string name="morphe_hide_latest_posts_title">הסתר פוסטים אחרונים</string>
-  <string name="morphe_hide_latest_posts_summary_on">הפוסטים האחרונים מוסתרים</string>
-  <string name="morphe_hide_latest_posts_summary_off">הפוסטים האחרונים מוצגים</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">הסתר את לחצן \'וידאו אחרון\'</string>
@@ -298,6 +301,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_shelf_title">הסתר מדף חברים</string>
   <string name="morphe_hide_members_shelf_summary_on">מדף חברים מוסתר</string>
   <string name="morphe_hide_members_shelf_summary_off">מדף חברים מוצג</string>
+  <string name="morphe_hide_posts_shelf_title">הסתר מדף פוסטים</string>
+  <string name="morphe_hide_posts_shelf_summary_on">מדף פוסטים מוסתר</string>
+  <string name="morphe_hide_posts_shelf_summary_off">מדף פוסטים מוצג</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">הסתר לחצן שיתוף</string>
   <string name="morphe_hide_store_button_summary_on">לחצן שיתוף מוסתר</string>
@@ -1390,12 +1396,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">פתיחת תפריט שיתוף מערכת</string>
   <string name="morphe_open_system_share_sheet_summary_on">פתיחת תפריט שיתוף מערכת</string>
   <string name="morphe_open_system_share_sheet_summary_off">פתיחת תפריט שיתוף בתוך האפליקציה</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">עקוף כפתור יוטיוב מיוזיק</string>
-  <string name="morphe_override_youtube_music_button_summary_on">כפתור יוטיוב מיוזיק יפתח את אפליקציית המוזיקה שלך</string>
-  <string name="morphe_override_youtube_music_button_summary_off">כפתור YouTube Music נפתח את האפליקציה המקורית</string>
-  <string name="morphe_music_package_name_title">שם החבילה של Morphe Music</string>
-  <string name="morphe_music_package_name_summary">שם החבילה של האפליקציה המוזיקלית היעד</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">הַפֲיְה בטוב׸יַּ הְתַָֽה</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">לחצני YouTube Music פותחים את אפליקת המוזיקה שאליה אתם מכוונים</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">הַפֲיְה בטוב׸יַּ הְתַָֽה ינהַולו אהֳוָק הָרַט הָדולותֽ</string>
+  <string name="morphe_music_package_name_title">ינהַולו הְתַָֽה ש־ן הָיְב</string>
+  <string name="morphe_music_package_name_summary">שם החבילה של יישום המוזיקה המותקן שלך</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">שנה את דף ההתחלה</string>
   <string name="morphe_change_start_page_entry_default">ברירת מחדל</string>

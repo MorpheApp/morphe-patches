@@ -12,7 +12,7 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/HideGetPremiumPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideGetPremiumPatch;"
 
 @Suppress("unused")
 val hideGetPremiumPatch = bytecodePatch(
@@ -53,7 +53,7 @@ val hideGetPremiumPatch = bytecodePatch(
         MembershipSettingsFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideGetPremiumLabel()Z
+                invoke-static { }, $EXTENSION_CLASS->hideGetPremiumLabel()Z
                 move-result v0
                 if-eqz v0, :show
                 const/4 v0, 0x0

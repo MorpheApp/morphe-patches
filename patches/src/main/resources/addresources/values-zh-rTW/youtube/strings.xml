@@ -70,9 +70,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">隱藏藝人資訊卡</string>
   <string name="morphe_hide_artist_cards_summary_on">已隱藏藝人資訊卡</string>
   <string name="morphe_hide_artist_cards_summary_off">已顯示藝人資訊卡</string>
-  <string name="morphe_hide_chips_shelf_title">隱藏標籤列</string>
-  <string name="morphe_hide_chips_shelf_summary_on">已隱藏標籤列</string>
-  <string name="morphe_hide_chips_shelf_summary_off">已顯示標籤列</string>
   <string name="morphe_hide_community_posts_title">隱藏社群貼文</string>
   <string name="morphe_hide_community_posts_summary_on">已隱藏社群貼文</string>
   <string name="morphe_hide_community_posts_summary_off">已顯示社群貼文</string>
@@ -80,26 +77,32 @@ Second \"item\" text"</string>
   <string name="morphe_hide_compact_banner_summary_on">已隱藏精簡橫幅</string>
   <string name="morphe_hide_compact_banner_summary_off">已顯示精簡橫幅</string>
   <string name="morphe_hide_expandable_card_title">隱藏可展開卡片</string>
-  <string name="morphe_hide_expandable_card_summary_on">已隱藏影片下方可展開的卡片</string>
-  <string name="morphe_hide_expandable_card_summary_off">已顯示影片下方可展開的卡片</string>
+  <string name="morphe_hide_expandable_card_entry_1">影片下方已顯示可展開的卡片</string>
+  <string name="morphe_hide_expandable_card_entry_2">影片下方已隱藏可展開的卡片</string>
+  <string name="morphe_hide_expandable_card_entry_3">影片下方已隱藏可展開的卡片</string>
+  <string name="morphe_hide_expandable_card_entry_4">產品和摘要卡片在影片下方會被隱藏</string>
+  <string name="morphe_hide_expandable_card_entry_5">可展開的卡片在影片下方會被隱藏</string>
   <string name="morphe_hide_floating_microphone_button_title">隱藏「懸浮麥克風」按鈕</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">已隱藏搜尋中的浮動麥克風按鈕</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">已顯示搜尋中的浮動麥克風按鈕</string>
   <string name="morphe_hide_horizontal_shelves_title">隱藏橫向區塊</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"已隱藏橫向區塊，例如：
-• 即時新聞
+  <string name="morphe_hide_horizontal_shelves_summary_on">"水平層級會被隱藏，例如：
+
+• 突發新聞
+• 您可能會喜歡的社群貼文
 • 繼續觀看
 • 探索更多頻道
+• 探索更多主題
+• 為您推薦
+• 最新影片
 • 最相關
+• 創作者社群中的貼文
 • 購物
-• 再看一次"</string>
+• 再次觀看"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">已顯示橫向區塊</string>
   <string name="morphe_hide_image_shelf_title">隱藏圖庫</string>
   <string name="morphe_hide_image_shelf_summary_on">已隱藏搜尋結果中的圖片列</string>
   <string name="morphe_hide_image_shelf_summary_off">已顯示搜尋結果中的圖片列</string>
-  <string name="morphe_hide_latest_posts_title">隱藏最新貼文</string>
-  <string name="morphe_hide_latest_posts_summary_on">已隱藏最新貼文</string>
-  <string name="morphe_hide_latest_posts_summary_off">已顯示最新貼文</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">隱藏「最新影片」按鈕</string>
@@ -298,6 +301,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_shelf_title">隱藏會員專屬區塊</string>
   <string name="morphe_hide_members_shelf_summary_on">已隱藏會員專屬區塊</string>
   <string name="morphe_hide_members_shelf_summary_off">已顯示會員專屬區塊</string>
+  <string name="morphe_hide_posts_shelf_title">隱藏貼文層級</string>
+  <string name="morphe_hide_posts_shelf_summary_on">貼文層級會被隱藏</string>
+  <string name="morphe_hide_posts_shelf_summary_off">貼文層級會顯示</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">隱藏「商店」按鈕</string>
   <string name="morphe_hide_store_button_summary_on">已隱藏「商店」按鈕</string>
@@ -1389,10 +1395,10 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">開啟系統分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_on">開啟系統分享面板</string>
   <string name="morphe_open_system_share_sheet_summary_off">在應用程式內開啟分享面板</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">覆蓋 YouTube Music 按鈕</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music 按鈕會開啟您的目標音樂應用程式</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music 按鈕會開啟原生應用程式</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">覆蓋 YouTube Music 按鈕</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music 按鈕會開啟您的目標音樂應用程式</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music 按鈕會開啟原生應用程式</string>
   <string name="morphe_music_package_name_title">Morphe Music 套件名稱</string>
   <string name="morphe_music_package_name_summary">目標音樂應用程式的套件名稱</string>
   <!-- layout.startpage.changeStartPagePatch -->

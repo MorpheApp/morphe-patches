@@ -24,7 +24,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FixBackToExitGesturePatch;"
 
 internal val fixBackToExitGesturePatch = bytecodePatch(
@@ -39,7 +39,7 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
         RecyclerViewTopScrollingFingerprint.let {
             it.method.addInstructionsAtControlFlowLabel(
                 it.instructionMatches.last().index + 1,
-                "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->onTopView()V"
+                "invoke-static { }, $EXTENSION_CLASS->onTopView()V"
             )
         }
 
@@ -65,7 +65,7 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
 
                     addInstruction(
                         index,
-                        "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->onScrollingViews()V"
+                        "invoke-static { }, $EXTENSION_CLASS->onScrollingViews()V"
                     )
                 }
         }
@@ -77,7 +77,7 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
 
                 addInstructionsAtControlFlowLabel(
                     index,
-                    "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onBackPressed(Landroid/app/Activity;)V"
+                    "invoke-static { p0 }, $EXTENSION_CLASS->onBackPressed(Landroid/app/Activity;)V"
                 )
             }
         }

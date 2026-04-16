@@ -12,7 +12,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/BypassURLRedirectsPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/BypassURLRedirectsPatch;"
 
 val bypassURLRedirectsPatch = bytecodePatch(
     name = "Bypass URL redirects",
@@ -51,7 +51,7 @@ val bypassURLRedirectsPatch = bytecodePatch(
 
                 replaceInstruction(
                     insertIndex,
-                    "invoke-static { v$uriStringRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "invoke-static { v$uriStringRegister }, $EXTENSION_CLASS->" +
                             "parseRedirectUri(Ljava/lang/String;)Landroid/net/Uri;",
                 )
             }

@@ -20,7 +20,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import java.lang.ref.WeakReference
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ToolBarPatch;"
 
 private lateinit var toolbarMethod : WeakReference<MutableMethod>
@@ -50,7 +50,7 @@ val toolBarHookPatch = bytecodePatch(
                     insertIndex,
                     """
                         iget-object v$freeRegister, p0, $imageViewReference
-                        invoke-static { v$enumRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->hookToolBar(Ljava/lang/Enum;Landroid/widget/ImageView;)V
+                        invoke-static { v$enumRegister, v$freeRegister }, $EXTENSION_CLASS->hookToolBar(Ljava/lang/Enum;Landroid/widget/ImageView;)V
                     """
                 )
             }

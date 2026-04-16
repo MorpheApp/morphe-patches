@@ -154,4 +154,14 @@ If battery optimizations are not changed then you may experience:
 • App may randomly close
 • Notifications may not work
 • Background playback may not work"</string>
+
+    <!-- misc.checks.experimentalAppNoticePatch -->
+    <string name="morphe_experimental_app_version_dialog_title">🚨 Experimental Alert 🚨</string>
+    <string name="morphe_experimental_app_version_dialog_message">"You are using an experimental app version of ⚠️ &lt;b>%1$s&lt;/b>
+&lt;br/>&lt;br/>
+🔧 Expect quirky app behavior or unidentified bugs as we fine tune the patches for this app version.
+&lt;br/>&lt;br/>
+If you want the most trouble free experience, then &lt;b>uninstall&lt;/b> this and patch the recommended app version of ✅ &lt;b>%2$s&lt;/b>"</string>
+    <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
+    <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
 </resources>

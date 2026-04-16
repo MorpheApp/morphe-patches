@@ -15,7 +15,7 @@ import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/RemoveSubRedditDialogPatch;"
 
 @Suppress("unused")
@@ -43,7 +43,7 @@ val removeSubRedditDialogPatch = bytecodePatch(
                     addInstructions(
                         index,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$methodName(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS->$methodName(Z)Z
                             move-result v$register
                         """
                     )
@@ -60,12 +60,12 @@ val removeSubRedditDialogPatch = bytecodePatch(
                     addInstruction(
                         index + 1,
                         "invoke-static { v$register }, " +
-                                "$EXTENSION_CLASS_DESCRIPTOR->dismissNSFWDialog(Ljava/lang/Object;)V"
+                                "$EXTENSION_CLASS->dismissNSFWDialog(Ljava/lang/Object;)V"
                     )
                 }
             }
         }
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

@@ -31,7 +31,7 @@ private val videoQualityButtonResourcePatch = resourcePatch {
     }
 }
 
-private const val BUTTON_DESCRIPTOR =
+private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/VideoQualityDialogButton;"
 
 val videoQualityDialogButtonPatch = bytecodePatch(
@@ -51,9 +51,9 @@ val videoQualityDialogButtonPatch = bytecodePatch(
             SwitchPreference("morphe_video_quality_dialog_button"),
         )
 
-        addPlayerBottomButton(BUTTON_DESCRIPTOR)
+        addPlayerBottomButton(EXTENSION_BUTTON)
 
-        initializeLegacyBottomControl(BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
+        initializeLegacyBottomControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
     }
 }

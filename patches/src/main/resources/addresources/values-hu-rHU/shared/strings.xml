@@ -150,4 +150,13 @@ Ha nem módosítják az akkumulátor-optimalizálást, akkor előfordulhat:
 • Az alkalmazás véletlenszerűen lezárulhat
 • Az értesítések nem működhetnek
 • A háttérbeli lejátszás nem működhet"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Kísérleti Figyelmeztetés 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Kísérleti alkalmazás verzióját használja, a ⚠️ &lt;b&gt;%1$s&lt;/b&gt;.
+&lt;br/&gt;&lt;br/&gt;
+🔧 Várhatóan furcsa alkalmazás működés vagy azonosítatlan hibák fordulhatnak elő, amíg finomhangoljuk a javításokat ehhez az alkalmazás verzióhoz.
+&lt;br/&gt;&lt;br/&gt;
+A legkényelmesebb élmény érdekében &lt;b&gt;eltávolítsa&lt;/b&gt; ezt, és javítsa a ✅ &lt;b&gt;%2$s&lt;/b&gt; ajánlott alkalmazás verzióját."</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Szeretném kísérleti</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Szeretném stabil</string>
 </resources>

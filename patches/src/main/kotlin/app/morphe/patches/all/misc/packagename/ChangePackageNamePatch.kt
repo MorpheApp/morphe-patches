@@ -36,7 +36,6 @@
 
 package app.morphe.patches.all.misc.packagename
 
-import app.morphe.patcher.PackageMetadata
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
@@ -82,15 +81,16 @@ fun setOrGetFallbackPackageName(fallbackPackageName: String): String {
 /**
  * Selectively changes usage of Context.getPackageName() to the original package name.
  */
-private fun applyGetPackageName(ctx: BytecodePatchContext, oldPackageName: String, vararg classesToChange: String) {
-    ctx.classDefForEach { classDef ->
+context(patchContext: BytecodePatchContext)
+private fun applyGetPackageName(oldPackageName: String, vararg classesToChange: String) {
+    patchContext.classDefForEach { classDef ->
         if (!classesToChange.any { classToChange ->
                 classDef.type.startsWith(classToChange)
             }
         ) return@classDefForEach
 
         val mutableClass by lazy {
-            ctx.mutableClassDefBy(classDef)
+            patchContext.mutableClassDefBy(classDef)
         }
 
         classDef.methods.forEach { method ->
@@ -128,8 +128,9 @@ private fun applyGetPackageName(ctx: BytecodePatchContext, oldPackageName: Strin
 }
 
 
-private fun applyProvidersStrings(ctx: ResourcePatchContext, oldPackageName: String, newPackageName: String) {
-    ctx.document("res/values/strings.xml").use { document ->
+context(patchContext: ResourcePatchContext)
+private fun applyProvidersStrings(oldPackageName: String, newPackageName: String) {
+    patchContext.document("res/values/strings.xml").use { document ->
         val children = document.documentElement.childNodes
         for (i in 0 until children.length) {
             val node = children.item(i) as? Element ?: continue
@@ -160,7 +161,7 @@ val changePackageNamePatch = resourcePatch(
         description = "The name of the package to rename the app to.",
         required = true,
     ) {
-        it == "Default" || it!!.matches(Regex("^[a-z]\\w*(\\.[a-z]\\w*)+\$"))
+        it == "Default" || it!!.matches(Regex("^[a-z]\\w*(\\.[a-z]\\w*)+$"))
     }
 
     val updatePermissionsOption = booleanOption(
@@ -202,7 +203,6 @@ val changePackageNamePatch = resourcePatch(
                 when (val originalPackageName = packageMetadata.packageName) {
                     PACKAGE_NAME_REDDIT -> {
                         applyGetPackageName(
-                            this,
                             originalPackageName,
                             "Lcom/google/android/recaptcha/internal"
                         )
@@ -251,7 +251,7 @@ val changePackageNamePatch = resourcePatch(
         }
 
         if (applyUpdateProvidersStrings) {
-            applyProvidersStrings(this, packageName, newPackageName)
+            applyProvidersStrings(packageName, newPackageName)
         }
 
         document("AndroidManifest.xml").use { document ->

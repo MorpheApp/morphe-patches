@@ -14,7 +14,7 @@ import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/DisableScreenshotPopupPatch;"
 
 @Suppress("unused")
@@ -41,7 +41,7 @@ val disableScreenshotPopupPatch = bytecodePatch(
                     addInstructions(
                         booleanIndex + 1,
                         """
-                            invoke-static { v$booleanRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableScreenshotPopup(Ljava/lang/Boolean;)Ljava/lang/Boolean;
+                            invoke-static { v$booleanRegister }, $EXTENSION_CLASS->disableScreenshotPopup(Ljava/lang/Boolean;)Ljava/lang/Boolean;
                             move-result-object v$booleanRegister
                             """
                     )
@@ -49,6 +49,6 @@ val disableScreenshotPopupPatch = bytecodePatch(
             }
         }
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

@@ -70,9 +70,6 @@ Změny zahrnují:
   <string name="morphe_hide_artist_cards_title">Skrýt karty umělců</string>
   <string name="morphe_hide_artist_cards_summary_on">Karty umělců jsou skryté</string>
   <string name="morphe_hide_artist_cards_summary_off">Karty umělců jsou zobrazeny</string>
-  <string name="morphe_hide_chips_shelf_title">Skrýt police s čipy</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Police s čipy je skrytá</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Police s čipy je zobrazena</string>
   <string name="morphe_hide_community_posts_title">Skrýt příspěvky komunity</string>
   <string name="morphe_hide_community_posts_summary_on">Příspěvky komunity jsou skryté</string>
   <string name="morphe_hide_community_posts_summary_off">Příspěvky komunity jsou zobrazeny</string>
@@ -80,27 +77,32 @@ Změny zahrnují:
   <string name="morphe_hide_compact_banner_summary_on">Kompaktní bannery jsou skryté</string>
   <string name="morphe_hide_compact_banner_summary_off">Kompaktní bannery jsou zobrazeny</string>
   <string name="morphe_hide_expandable_card_title">Skrýt rozbalitelnou kartu</string>
-  <string name="morphe_hide_expandable_card_summary_on">Rozbalitelná karta pod videi je skryta</string>
-  <string name="morphe_hide_expandable_card_summary_off">Rozbalitelná karta pod videi je zobrazena</string>
+  <string name="morphe_hide_expandable_card_entry_1">Rozbalitelná karta pod videi je zobrazena</string>
+  <string name="morphe_hide_expandable_card_entry_2">Rozbalitelná karta pod videi je skryta</string>
+  <string name="morphe_hide_expandable_card_entry_3">Rozbalitelná karta pod videi je skryta</string>
+  <string name="morphe_hide_expandable_card_entry_4">Produktová a shrnující karta pod videi jsou skryté</string>
+  <string name="morphe_hide_expandable_card_entry_5">Rozbalitelné karty pod videi jsou skryté</string>
   <string name="morphe_hide_floating_microphone_button_title">Skrýt plovoucí tlačítko mikrofonu</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Plovoucí tlačítko mikrofonu ve vyhledávání je skryto</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Plovoucí tlačítko mikrofonu ve vyhledávání je zobrazeno</string>
   <string name="morphe_hide_horizontal_shelves_title">Skrýt horizontální police</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Vodorovné police jsou skryté, například:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Horizontální police jsou skryté, například:
 
-• Nejnovější zprávy
+• Aktuality
+• Příspěvky ze Společenství, které se vám mohou líbit
 • Pokračovat ve sledování
 • Prozkoumat další kanály
-• Nejvhodnější
+• Prozkoumat další témata
+• Pro vás
+• Nejnovější videa
+• Nejrelevantnější
+• Příspěvky ze Společenství tvůrců
 • Nakupování
-• Znovu zhlédnout"</string>
+• Znovu si to pusťte"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Vodorovné police jsou zobrazeny</string>
   <string name="morphe_hide_image_shelf_title">Skrýt poličku s obrázky</string>
   <string name="morphe_hide_image_shelf_summary_on">Polička s obrázky ve výsledcích vyhledávání je skrytá</string>
   <string name="morphe_hide_image_shelf_summary_off">Polička s obrázky ve výsledcích vyhledávání je zobrazena</string>
-  <string name="morphe_hide_latest_posts_title">Skrýt nejnovější příspěvky</string>
-  <string name="morphe_hide_latest_posts_summary_on">Nejnovější příspěvky jsou skryté</string>
-  <string name="morphe_hide_latest_posts_summary_off">Nejnovější příspěvky jsou zobrazené</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Skrýt tlačítko \'Nejnovější videa\'</string>
@@ -299,6 +301,9 @@ Zobrazování YouTube Doodles může zabránit zobrazení vlastních záhlaví."
   <string name="morphe_hide_members_shelf_title">Skrýt poličku členů</string>
   <string name="morphe_hide_members_shelf_summary_on">Polička členů je skryta</string>
   <string name="morphe_hide_members_shelf_summary_off">Polička členů je zobrazena</string>
+  <string name="morphe_hide_posts_shelf_title">Skrýt police s příspěvky</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Police s příspěvky je skrytá</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Police s příspěvky je zobrazená</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Skrýt tlačítko Obchod</string>
   <string name="morphe_hide_store_button_summary_on">Tlačítko Obchodu je skryté</string>
@@ -1390,12 +1395,12 @@ Pokud bude později vypnuta, doporučujeme vymazat data aplikace, aby se zabrán
   <string name="morphe_open_system_share_sheet_title">Otevířet systémový panel sdílení</string>
   <string name="morphe_open_system_share_sheet_summary_on">Otevírá systémový panel sdílení</string>
   <string name="morphe_open_system_share_sheet_summary_off">Otevírá panel sdílení v aplikaci</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Přepsat tlačítko YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Tlačítko YouTube Music otevře váš cílový hudební aplikaci</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Tlačítko YouTube Music otevře nativní aplikaci</string>
-  <string name="morphe_music_package_name_title">Název balíku Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Název balíku cílové hudební aplikace</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Přepsání tlačítek YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Tlačítka YouTube Music otevřou vaši cílovou hudební aplikaci</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Tlačítka YouTube Music otevřou oficiální aplikaci</string>
+  <string name="morphe_music_package_name_title">Název balíčku cílové hudební aplikace</string>
+  <string name="morphe_music_package_name_summary">Název balíčku vaší nainstalované cílové hudební aplikace</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Změnit úvodní stránku</string>
   <string name="morphe_change_start_page_entry_default">Výchozí</string>

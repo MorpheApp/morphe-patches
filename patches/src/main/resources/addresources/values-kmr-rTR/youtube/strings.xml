@@ -72,38 +72,39 @@ Guherînan têne xistine:
   <string name="morphe_hide_artist_cards_title">Kartên hunermend hidin</string>
   <string name="morphe_hide_artist_cards_summary_on">Kartên hunermend hidin</string>
   <string name="morphe_hide_artist_cards_summary_off">Kartên hunermend nîşandin</string>
-  <string name="morphe_hide_chips_shelf_title">Şelfa chips bidin veqêşînin</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Şelfa chips ê hidin</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Şelfa chips nîşandin</string>
   <string name="morphe_hide_community_posts_title">Postanên civakî hidin</string>
   <string name="morphe_hide_community_posts_summary_on">Postanên civakî hidin</string>
   <string name="morphe_hide_community_posts_summary_off">Postanên civakî nîşandin</string>
   <string name="morphe_hide_compact_banner_title">Bannereyên kompakt hidin</string>
   <string name="morphe_hide_compact_banner_summary_on">Bannereyên kompakt hidin</string>
   <string name="morphe_hide_compact_banner_summary_off">Bannereyên kompakt nîşandin</string>
-  <string name="morphe_hide_expandable_card_title">Karta vezirkirî bidin veqêşînin</string>
-  <string name="morphe_hide_expandable_card_summary_on">Karta vezirkirî di binê vîdyoyan de hidin</string>
-  <string name="morphe_hide_expandable_card_summary_off">Karta vezirkirî di binê vîdyoyan de nîşandin</string>
+  <string name="morphe_hide_expandable_card_title">Kartên berfireh veşêre</string>
+  <string name="morphe_hide_expandable_card_entry_1">Kartên berfireh di bin vîdyoyên de nîşandin</string>
+  <string name="morphe_hide_expandable_card_entry_2">Tenê karta hilberê di bin vîdyoyên de veşêre</string>
+  <string name="morphe_hide_expandable_card_entry_3">Tenê karta xûlîsê di bin vîdyoyên de veşêre</string>
+  <string name="morphe_hide_expandable_card_entry_4">Kart û xebatanê di bin vîdyoyên de veşartin</string>
+  <string name="morphe_hide_expandable_card_entry_5">Kertan tê xebat û vîdyoyên veşartin</string>
   <string name="morphe_hide_floating_microphone_button_title">Bicikên dirêj ên mikrifonê bidin veqêşînin</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Bicikên dirêj ên mikrifonê di lêgerînê de ê hidin</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Bicikên dirêj ên mikrifonê di lêgerînê de nîşandin</string>
   <string name="morphe_hide_horizontal_shelves_title">Şelfeyên qereziya nîşandinê hidin</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Şermên zengîn neyên veşartin,
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Şelfey horizontal veşartin, mîna:
 
-• Nûçeyên darvekirî
-• Hûn temaşe dikin
-• Kanalan dinore
-• Bo we
-• Ha bes tê
-• Bazigarî
-• Vê vegere"</string>
+• Nûçeyên tund
+• posta civakê ku hûn jê hezdar in
+• li dar vezîne binavê wî
+• Kanala din biguhezîne
+• Topîkên din biguhezîne
+• Ji bo we
+• Vîdyoyên nû
+• Çêtirîn
+• posta Civata Afurînerê
+• Bazaran
+• serdestiya dinê bibîne"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Şelfeyên qereziya nîşandinê nîşandin</string>
   <string name="morphe_hide_image_shelf_title">Şelfa wênekê bidin veqêşînin</string>
   <string name="morphe_hide_image_shelf_summary_on">Sernaketin lêgerînê veşartin</string>
   <string name="morphe_hide_image_shelf_summary_off">Sernaketin lêgerînê nîşandin</string>
-  <string name="morphe_hide_latest_posts_title">Postên nû rasterast veşêrin</string>
-  <string name="morphe_hide_latest_posts_summary_on">Postên nû veşartin</string>
-  <string name="morphe_hide_latest_posts_summary_off">Postên nû nîşandin</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">\'Vîdyoîên نوێ\' قایپە</string>
@@ -300,6 +301,9 @@ Guherînan têne xistine:
   <string name="morphe_hide_members_shelf_title">Şerfa endam veşêrin</string>
   <string name="morphe_hide_members_shelf_summary_on">Şerfa endam veşartin</string>
   <string name="morphe_hide_members_shelf_summary_off">Şerfa endam nîşandin</string>
+  <string name="morphe_hide_posts_shelf_title">Şelfa posta veşêre</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Şelfa posta veşartin</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Şelfa posta nîşan darde</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Bişîniya butona \'Store\' veşêrin</string>
   <string name="morphe_hide_store_button_summary_on">Butona \'Store\' veşartin e.</string>
@@ -1384,12 +1388,12 @@ Hatin binveşirin, ew tê mesêr kirin ka danayê peşêbîyê şêniyel ki bug-
   <string name="morphe_open_system_share_sheet_title">Kaşeta parvekirina sistemê vekin</string>
   <string name="morphe_open_system_share_sheet_summary_on">Kaşeta parvekirina sistemê vedike</string>
   <string name="morphe_open_system_share_sheet_summary_off">Kaşeta parvekirina navîn vedike</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Butona YouTube Music serdest bike</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Butona YouTube Music sepan muzîkî we bo sererîş dike</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Butona YouTube Music sepanê natîv ve dike</string>
-  <string name="morphe_music_package_name_title">Navê pakêtê Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Navê pakêtê ya sepan muzîkî bo sererîş</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Butonên YouTube Music-ê serdike </string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Butonên YouTube Music-ê sepanê muzîkê hedefa wezêre vedike</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Butonên YouTube Music-ê sepanê fermî vedike</string>
+  <string name="morphe_music_package_name_title">Navê pakêtê sepeya muzîkê hedef</string>
+  <string name="morphe_music_package_name_summary">Navê pakêta sepanê ya muzîkê ya ku we saz kiriye</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Guherîna rûpelê destpêkê</string>
   <string name="morphe_change_start_page_entry_default">Bixwe</string>

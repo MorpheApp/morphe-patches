@@ -254,7 +254,7 @@ internal class AppLocale(
         return result
     }
 
-    private companion object {
+    companion object {
         private fun getValuesFolderName(localeName: String): String {
             val folderName = "values"
 
@@ -268,7 +268,7 @@ internal class AppLocale(
 }
 
 private enum class BundledResourceType {
-    // Add more resource xml files as needed.
+    // Add more resource XML files as needed.
     ARRAYS,
     COLORS,
     STRINGS;
@@ -300,7 +300,7 @@ internal val addResourcesPatch = resourcePatch(
     val defaultResourcesAdded = mutableSetOf<String>()
 
     finalize {
-        fun getLogger(): Logger = Logger.getLogger(AppLocale.javaClass.name)
+        fun getLogger(): Logger = Logger.getLogger(AppLocale.Companion::class.java.name)
 
         fun addResourcesFromFile(
             appId: String,

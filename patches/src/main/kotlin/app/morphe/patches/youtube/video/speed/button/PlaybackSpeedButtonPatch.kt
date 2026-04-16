@@ -35,7 +35,7 @@ private val playbackSpeedButtonResourcePatch = resourcePatch {
     }
 }
 
-private const val SPEED_BUTTON_CLASS_DESCRIPTOR =
+private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/PlaybackSpeedDialogButton;"
 
 val playbackSpeedButtonPatch = bytecodePatch(
@@ -55,12 +55,12 @@ val playbackSpeedButtonPatch = bytecodePatch(
             SwitchPreference("morphe_playback_speed_dialog_button"),
         )
 
-        addPlayerBottomButton(SPEED_BUTTON_CLASS_DESCRIPTOR)
+        addPlayerBottomButton(EXTENSION_BUTTON)
 
-        initializeLegacyBottomControl(SPEED_BUTTON_CLASS_DESCRIPTOR)
-        injectVisibilityCheckCall(SPEED_BUTTON_CLASS_DESCRIPTOR)
+        initializeLegacyBottomControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
 
-        videoSpeedChangedHook(SPEED_BUTTON_CLASS_DESCRIPTOR, "videoSpeedChanged")
-        userSelectedPlaybackSpeedHook(SPEED_BUTTON_CLASS_DESCRIPTOR, "videoSpeedChanged")
+        videoSpeedChangedHook(EXTENSION_BUTTON, "videoSpeedChanged")
+        userSelectedPlaybackSpeedHook(EXTENSION_BUTTON, "videoSpeedChanged")
     }
 }

@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Deaktiviert das moderne \"Home\"-UI</string>
   <string name="morphe_disable_screenshot_popup_title">Screenshot-Pop-up deaktivieren</string>
   <string name="morphe_disable_screenshot_popup_summary">Deaktiviert das Pop-up bei einem Screenshot</string>
+  <string name="morphe_hide_ask_button_title">Frage-Button ausblenden</string>
+  <string name="morphe_hide_ask_button_summary">Blendet den Frage-Button in der Suchleiste aus</string>
   <string name="morphe_hide_answers_button_title">Antwort-Button ausblenden</string>
   <string name="morphe_hide_answers_button_summary">Blendet den Antworten-Button in der Navigationsleiste aus</string>
   <string name="morphe_hide_chat_button_title">Chat-Button ausblenden</string>
@@ -67,4 +69,6 @@ Einschränkung: Wird nur angezeigt, wenn die API-Antwort die Anzahl der Aufrufe 
   <string name="morphe_sanitize_sharing_links_summary">Bereinigt Freigabe-Links, indem Tracking-Query-Parameter entfernt werden</string>
   <string name="morphe_open_links_directly_title">Links direkt öffnen</string>
   <string name="morphe_open_links_directly_summary">Überspringt Umleitungs-URLs in externen Links</string>
+  <string name="morphe_open_links_externally_title">Links extern öffnen</string>
+  <string name="morphe_open_links_externally_summary">Öffnet Links in Ihrem Browser anstatt im In-App-Browser</string>
 </resources>

@@ -70,9 +70,6 @@ Változások:
   <string name="morphe_hide_artist_cards_title">Előadó kártyák elrejtése</string>
   <string name="morphe_hide_artist_cards_summary_on">Előadó kártyák elrejtve</string>
   <string name="morphe_hide_artist_cards_summary_off">A előadó kártyák láthatók</string>
-  <string name="morphe_hide_chips_shelf_title">Vágások polc elrejtése</string>
-  <string name="morphe_hide_chips_shelf_summary_on">A vágások polc el van rejtve</string>
-  <string name="morphe_hide_chips_shelf_summary_off">A részletek polc meg van jelenítve</string>
   <string name="morphe_hide_community_posts_title">Közösségi posztok elrejtése</string>
   <string name="morphe_hide_community_posts_summary_on">Közösségi bejegyzések elrejtve</string>
   <string name="morphe_hide_community_posts_summary_off">A közösségi bejegyzések megjelennek</string>
@@ -80,26 +77,32 @@ Változások:
   <string name="morphe_hide_compact_banner_summary_on">A kompakt bannerek el vannak rejtve</string>
   <string name="morphe_hide_compact_banner_summary_off">A kompakt bannerek meg vannak jelenítve</string>
   <string name="morphe_hide_expandable_card_title">Kibontható kártya elrejtése</string>
-  <string name="morphe_hide_expandable_card_summary_on">Videók alatti kibontható kártya elrejtve</string>
-  <string name="morphe_hide_expandable_card_summary_off">A videók alatti kibontható kártya megjelenik</string>
+  <string name="morphe_hide_expandable_card_entry_1">A videók alatti kibontható kártya megjelenik</string>
+  <string name="morphe_hide_expandable_card_entry_2">Videók alatti kibontható kártya elrejtve</string>
+  <string name="morphe_hide_expandable_card_entry_3">Videók alatti kibontható kártya elrejtve</string>
+  <string name="morphe_hide_expandable_card_entry_4">A videók alatti kibontható kártya elrejtve</string>
+  <string name="morphe_hide_expandable_card_entry_5">A videók alatti kibontható kártyák elrejtve</string>
   <string name="morphe_hide_floating_microphone_button_title">Lebegő mikrofon gomb elrejtése</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Lebegő mikrofon gomb a keresésben elrejtve</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">A lebegő mikrofon gomb megjelenik a keresésben</string>
   <string name="morphe_hide_horizontal_shelves_title">Vízszintes polcok elrejtése</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Vízszintes polcok rejtettek, mint például:
-• Friss hírek
-• Folytassa a megtekintést
-• Fedezzen fel további csatornakat
-• Legrelevánsabb
+  <string name="morphe_hide_horizontal_shelves_summary_on">"A vízszintes polcok el vannak rejtve, mint például:
+
+• Törzshírek
+• Olyan bejegyzések, amelyek tetszeni szoktak
+• További megtekintés
+• További csatornák felfedezése
+• További témák felfedezése
+• Számodra
+• Legfrissebb videók
+• Legnagyobb relevancia
+• A Közösségi oldalakról származó bejegyzések
 • Vásárlás
-• Nézze meg újra"</string>
+• Nézd újra"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">A vízszintes polcok láthatók</string>
   <string name="morphe_hide_image_shelf_title">Képpolc elrejtése</string>
   <string name="morphe_hide_image_shelf_summary_on">A keresési eredményekben lévő képpolc el van rejtve</string>
   <string name="morphe_hide_image_shelf_summary_off">A keresési eredményekben lévő képpolc meg van jelenítve</string>
-  <string name="morphe_hide_latest_posts_title">Legutóbbi bejegyzések elrejtése</string>
-  <string name="morphe_hide_latest_posts_summary_on">A legutóbbi bejegyzések elrejtve</string>
-  <string name="morphe_hide_latest_posts_summary_off">A legutóbbi bejegyzések láthatóak</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Rejt \'Legfrissebb videók\' gombot</string>
@@ -298,6 +301,9 @@ A YouTube Doodles megjelenítése megakadályozhatja egyéni fejléc megjelenít
   <string name="morphe_hide_members_shelf_title">Tagok polcának elrejtése</string>
   <string name="morphe_hide_members_shelf_summary_on">A tagok polca el van rejtve</string>
   <string name="morphe_hide_members_shelf_summary_off">Tagok polca látható</string>
+  <string name="morphe_hide_posts_shelf_title">Rejtse el a bejegyzés polcát</string>
+  <string name="morphe_hide_posts_shelf_summary_on">A bejegyzések polca el van rejtve</string>
+  <string name="morphe_hide_posts_shelf_summary_off">A bejegyzések polca látható</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Fiók gomb elrejtése</string>
   <string name="morphe_hide_store_button_summary_on">A fiók gomb el van rejtve</string>
@@ -1387,12 +1393,12 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_open_system_share_sheet_title">Nyissa meg a rendszerosztásos menüt</string>
   <string name="morphe_open_system_share_sheet_summary_on">Nyitja meg a rendszerosztásos menüt</string>
   <string name="morphe_open_system_share_sheet_summary_off">Nyitja meg az alkalmazásosztásos menüt</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">YouTube Music gomb felülírása</string>
-  <string name="morphe_override_youtube_music_button_summary_on">A YouTube Music gomb nyitja meg a célzási zenei alkalmazódat</string>
-  <string name="morphe_override_youtube_music_button_summary_off">A YouTube Music gomb a belső alkalmazást nyitja</string>
-  <string name="morphe_music_package_name_title">A Morphe Music csomagnév</string>
-  <string name="morphe_music_package_name_summary">A célzott zenei alkalmazás csomagnéve</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">A YouTube Music gombok felülbírálása</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">A YouTube Music gombok a célzenéldrás alkalmazás megnyitását teszik lehetővé</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">A YouTube Music gombok a hivatalos alkalmazást nyitják meg</string>
+  <string name="morphe_music_package_name_title">A célzenéldrás alkalmazás csomagnév</string>
+  <string name="morphe_music_package_name_summary">A telepített célzengealkalmazás csomagneve</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Kezdőlap módosítása</string>
   <string name="morphe_change_start_page_entry_default">Alapértelmezett</string>
