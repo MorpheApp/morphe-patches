@@ -12,13 +12,14 @@ package app.morphe.patches.youtube.misc.playercontrols
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.Document
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
@@ -31,6 +32,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
+import app.morphe.util.findFreeRegister
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnEarly
@@ -358,10 +360,19 @@ val legacyPlayerControlsPatch = bytecodePatch(
                     val gradientViewRegister =
                         getInstruction<OneRegisterInstruction>(gradientViewIndex).registerA
 
+                    val free = findFreeRegister(gradientFieldIndex, gradientFieldRegister)
+
                     // This field is Nullable, and if null, the bottom gradient is not set.
-                    addInstruction(
+                    addInstructionsWithLabels(
                         gradientFieldIndex,
-                        "const/4 v$gradientFieldRegister, 0x0"
+                        """
+                            invoke-static { }, $EXTENSION_CLASS->useNullBottomGradient()Z
+                            move-result v$free
+                            if-eqz v$free, :show
+                            const/4 v$gradientFieldRegister, 0x0
+                            :show
+                            nop
+                        """
                     )
 
                     // Make the bottom gradient transparent and hide it.

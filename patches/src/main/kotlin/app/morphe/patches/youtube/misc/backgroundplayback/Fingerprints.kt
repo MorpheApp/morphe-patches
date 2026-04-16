@@ -5,8 +5,8 @@ import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.opcode
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 

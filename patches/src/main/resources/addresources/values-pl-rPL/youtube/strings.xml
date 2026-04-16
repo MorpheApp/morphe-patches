@@ -1399,11 +1399,11 @@ Jeśli później zostanie to wyłączone, zalecane jest usunięcie danych aplika
   <string name="morphe_open_system_share_sheet_summary_on">Systemowy</string>
   <string name="morphe_open_system_share_sheet_summary_off">Aplikacji</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
-  <string name="morphe_override_youtube_music_buttons_title">Przejmij kontrolę nad przyciskami YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary_on">Przyciski YouTube Music otwierają docelową aplikację muzyczną</string>
-  <string name="morphe_override_youtube_music_buttons_summary_off">Przyciski YouTube Music otwierają oficjalną aplikację</string>
-  <string name="morphe_music_package_name_title">Nazwa pakietu docelowej aplikacji muzycznej</string>
-  <string name="morphe_music_package_name_summary">Nazwa pakietu docelowej aplikacji muzycznej</string>
+  <string name="morphe_override_youtube_music_buttons_title">Aplikacja otwierana przyciskami YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Docelowa</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Oficjalna</string>
+  <string name="morphe_music_package_name_title">Nazwa pakietu docelowej aplikacji</string>
+  <string name="morphe_music_package_name_summary">Pakiet docelowej aplikacji muzycznej</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Strona startowa</string>
   <string name="morphe_change_start_page_entry_default">Domyślna</string>

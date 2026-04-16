@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">隐藏视频广告</string>
   <string name="morphe_music_hide_video_ads_summary_on">视频广告已隐藏</string>
   <string name="morphe_music_hide_video_ads_summary_off">视频广告已显示</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">淡入淡出</string>
+  <string name="morphe_music_crossfade_screen_summary">平滑地过渡曲目</string>
+  <string name="morphe_music_crossfade_enabled_title">启用淡入淡出</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">曲目平滑地过渡</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">已禁用淡入淡出</string>
+  <string name="morphe_music_crossfade_curve_title">淡入曲线</string>
+  <string name="morphe_music_crossfade_curve_summary">轨道之间的音量过渡方式</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">平均功率</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">微妙的延迟</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">平缓的过渡</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">平滑的S曲线</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">淡入时长</string>
+  <string name="morphe_crossfade_duration_250ms">250 毫秒</string>
+  <string name="morphe_crossfade_duration_500ms">500 毫秒</string>
+  <string name="morphe_crossfade_duration_750ms">750 毫秒</string>
+  <string name="morphe_crossfade_duration_1000ms">1 秒</string>
+  <string name="morphe_crossfade_duration_2000ms">2 秒</string>
+  <string name="morphe_crossfade_duration_3000ms">3 秒</string>
+  <string name="morphe_crossfade_duration_4000ms">4 秒</string>
+  <string name="morphe_crossfade_duration_5000ms">5秒</string>
+  <string name="morphe_crossfade_duration_6000ms">6 秒</string>
+  <string name="morphe_crossfade_duration_7000ms">7 秒</string>
+  <string name="morphe_crossfade_duration_8000ms">8 秒</string>
+  <string name="morphe_crossfade_duration_9000ms">9 秒</string>
+  <string name="morphe_crossfade_duration_10000ms">10 秒</string>
+  <string name="morphe_music_crossfade_on_skip_title">手动跳过时启用淡入</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">手动跳过轨道时启用淡入</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">手动跳过时禁用淡入</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">自动播放时启用淡入</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">一首曲子播放完毕并自动播放下一首时启用淡入</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">自动播放时禁用淡入</string>
+  <string name="morphe_music_crossfade_session_control_title">会话控制</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"长按随机播放按钮暂停或恢复淡入"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">会话控制已禁用</string>
+  <string name="morphe_music_crossfade_about_title">关于</string>
+  <string name="morphe_music_crossfade_about_summary">"YouTube Music 8.x版本支持淡入
+
+长按随机播放按钮启用/禁用
+
+由VazerOG实现"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">启用永久重复播放</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">已启用永久重复播放</string>

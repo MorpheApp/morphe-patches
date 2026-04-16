@@ -3,7 +3,7 @@ package app.morphe.extension.shared.checks;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.settings.SharedSettings;
 
 abstract class Check {
     private static final int NUMBER_OF_TIMES_TO_IGNORE_WARNING_BEFORE_DISABLING = 2;
@@ -25,11 +25,11 @@ abstract class Check {
     /**
      * For debugging and development only.
      * Forces all checks to be performed and the check failed dialog to be shown.
-     * Can be enabled by importing settings text with {@link BaseSettings#CHECK_ENVIRONMENT_WARNINGS_ISSUED}
+     * Can be enabled by importing settings text with {@link SharedSettings#CHECK_ENVIRONMENT_WARNINGS_ISSUED}
      * set to -1.
      */
     static boolean debugAlwaysShowWarning() {
-        final boolean alwaysShowWarning = BaseSettings.CHECK_ENVIRONMENT_WARNINGS_ISSUED.get() < 0;
+        final boolean alwaysShowWarning = SharedSettings.CHECK_ENVIRONMENT_WARNINGS_ISSUED.get() < 0;
         if (alwaysShowWarning) {
             Logger.printInfo(() -> "Debug forcing environment check warning to show");
         }
@@ -38,13 +38,13 @@ abstract class Check {
     }
 
     static boolean shouldRun() {
-        return BaseSettings.CHECK_ENVIRONMENT_WARNINGS_ISSUED.get()
+        return SharedSettings.CHECK_ENVIRONMENT_WARNINGS_ISSUED.get()
                 < NUMBER_OF_TIMES_TO_IGNORE_WARNING_BEFORE_DISABLING;
     }
 
     static void disableForever() {
         Logger.printInfo(() -> "Environment checks disabled forever");
 
-        BaseSettings.CHECK_ENVIRONMENT_WARNINGS_ISSUED.save(Integer.MAX_VALUE);
+        SharedSettings.CHECK_ENVIRONMENT_WARNINGS_ISSUED.save(Integer.MAX_VALUE);
     }
 }

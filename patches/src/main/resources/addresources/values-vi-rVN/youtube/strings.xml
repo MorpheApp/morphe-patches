@@ -1397,11 +1397,11 @@ Nếu tắt đi sau đó, bạn nên xóa dữ liệu ứng dụng để tránh 
   <string name="morphe_open_system_share_sheet_summary_on">Khi bấm chia sẻ sẽ mở bảng chia sẻ của hệ thống</string>
   <string name="morphe_open_system_share_sheet_summary_off">Khi bấm chia sẻ sẽ mở bảng chia sẻ tích hợp trong ứng dụng</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
-  <string name="morphe_override_youtube_music_buttons_title">Gỡ bỏ các nút YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary_on">Các nút YouTube Music sẽ mở ứng dụng âm nhạc mục tiêu của bạn</string>
-  <string name="morphe_override_youtube_music_buttons_summary_off">Các nút YouTube Music sẽ mở ứng dụng chính thức</string>
-  <string name="morphe_music_package_name_title">Tên gói ứng dụng âm nhạc mục tiêu</string>
-  <string name="morphe_music_package_name_summary">Tên gói của ứng dụng nhạc mà bạn muốn chọn</string>
+  <string name="morphe_override_youtube_music_buttons_title">Ghi đè chức năng nút YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Bấm nút YouTube Music sẽ mở ứng dụng âm nhạc mà bạn đã chọn</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Bấm nút YouTube Music sẽ mở ứng dụng chính thức</string>
+  <string name="morphe_music_package_name_title">Tên gói ứng dụng âm nhạc</string>
+  <string name="morphe_music_package_name_summary">Nhập tên gói của ứng dụng âm nhạc mà bạn muốn mở</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Thay đổi trang bắt đầu</string>
   <string name="morphe_change_start_page_entry_default">Mặc định</string>

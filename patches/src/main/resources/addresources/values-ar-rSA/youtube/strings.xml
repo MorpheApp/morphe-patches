@@ -1397,11 +1397,11 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_summary_on">يفتح قائمة مشاركة النظام</string>
   <string name="morphe_open_system_share_sheet_summary_off">يفتح في قائمة مشاركة الخاصة بالتطبيق</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
-  <string name="morphe_override_youtube_music_buttons_title">تجاوز أزرار YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary_on">أزرار YouTube Music تفتح تطبيق الموسيقى المستهدف</string>
-  <string name="morphe_override_youtube_music_buttons_summary_off">أزرار YouTube Music تفتح التطبيق الأصلي</string>
+  <string name="morphe_override_youtube_music_buttons_title">تغيير وظيفة أزرار YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">تفتح أزرار YouTube Music تطبيق الموسيقى الذي تختاره</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">تفتح أزرار YouTube Music التطبيق الرسمي</string>
   <string name="morphe_music_package_name_title">اسم حزمة تطبيق الموسيقى المستهدف</string>
-  <string name="morphe_music_package_name_summary">اسم الحزمة لتطبيق الموسيقى المستهدف</string>
+  <string name="morphe_music_package_name_summary">اسم حزمة تطبيق الموسيقى المستهدف المثبت لديك</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">تغيير صفحة البداية</string>
   <string name="morphe_change_start_page_entry_default">الافتراضي</string>

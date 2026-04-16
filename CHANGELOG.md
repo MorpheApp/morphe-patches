@@ -1,3 +1,10 @@
+# [1.24.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.24.0-dev.8...v1.24.0-dev.9) (2026-04-16)
+
+
+### Features
+
+* **YouTube Music:** Add `Track crossfade` patch ([#1065](https://github.com/MorpheApp/morphe-patches/issues/1065)) ([697c794](https://github.com/MorpheApp/morphe-patches/commit/697c79412dd74ffd09dfedbc8458ba7ce3e2938b))
+
 # [1.24.0-dev.8](https://github.com/MorpheApp/morphe-patches/compare/v1.24.0-dev.7...v1.24.0-dev.8) (2026-04-15)
 
 

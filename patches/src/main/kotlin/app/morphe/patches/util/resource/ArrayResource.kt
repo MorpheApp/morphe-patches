@@ -1,4 +1,4 @@
-package app.morphe.util.resource
+package app.morphe.patches.util.resource
 
 import app.morphe.util.childElementsSequence
 import org.w3c.dom.Document

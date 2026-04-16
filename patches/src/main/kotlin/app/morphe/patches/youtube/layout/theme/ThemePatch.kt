@@ -11,7 +11,7 @@ import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_LIGHT_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference

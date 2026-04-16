@@ -1401,10 +1401,10 @@ Automotive レイアウト
   <string name="morphe_open_system_share_sheet_summary_off">アプリ内の共有メニューを開きます</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music ボタンの動作を上書き</string>
-  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music ボタンは、設定した音楽アプリを呼び出します</string>
-  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music ボタンは、純正アプリを呼び出します</string>
-  <string name="morphe_music_package_name_title">Morphe Music のパッケージ名</string>
-  <string name="morphe_music_package_name_summary">YouTube Music の代わりに呼び出す音楽アプリのパッケージ名</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music ボタンは設定した音楽アプリを呼び出します</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music ボタンは純正アプリを呼び出します</string>
+  <string name="morphe_music_package_name_title">音楽アプリのパッケージ名</string>
+  <string name="morphe_music_package_name_summary">YouTube Music の代わりに呼び出すインストール済みの音楽アプリのパッケージ名</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">スタート画面を変更</string>
   <string name="morphe_change_start_page_entry_default">デフォルト</string>

@@ -11,7 +11,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel

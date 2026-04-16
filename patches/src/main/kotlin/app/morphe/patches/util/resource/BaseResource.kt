@@ -1,4 +1,4 @@
-package app.morphe.util.resource
+package app.morphe.patches.util.resource
 
 import org.w3c.dom.Document
 import org.w3c.dom.Element

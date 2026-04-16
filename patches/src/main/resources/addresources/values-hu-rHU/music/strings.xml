@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Videóhirdetések elrejtése</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videóhirdetések elrejtve</string>
   <string name="morphe_music_hide_video_ads_summary_off">A videóhirdetések láthatók</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Átváltozás</string>
+  <string name="morphe_music_crossfade_screen_summary">Simán keverje össze a zeneszámokat egymással</string>
+  <string name="morphe_music_crossfade_enabled_title">Engedje be az átváltozást</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">A zeneszámok átváltoznak egymásba</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Az átváltozás ki van kapcsolva</string>
+  <string name="morphe_music_crossfade_curve_title">Halványulási görbe</string>
+  <string name="morphe_music_crossfade_curve_summary">A zeneszámok közötti hangerőszint átmenete hogyan történik</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Egyenlő erő</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Finom tartás</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Gyengéd lelassulás</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Simább S-görbe</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Áthallás időtartama</string>
+  <string name="morphe_crossfade_duration_250ms">250 ezredmásodperc</string>
+  <string name="morphe_crossfade_duration_500ms">500 ezredmásodperc</string>
+  <string name="morphe_crossfade_duration_750ms">750 ezredmásodperc</string>
+  <string name="morphe_crossfade_duration_1000ms">1 másodperc</string>
+  <string name="morphe_crossfade_duration_2000ms">2 másodperc</string>
+  <string name="morphe_crossfade_duration_3000ms">3 másodperc</string>
+  <string name="morphe_crossfade_duration_4000ms">4 másodperc</string>
+  <string name="morphe_crossfade_duration_5000ms">5 másodperc</string>
+  <string name="morphe_crossfade_duration_6000ms">6 másodperc</string>
+  <string name="morphe_crossfade_duration_7000ms">7 másodperc</string>
+  <string name="morphe_crossfade_duration_8000ms">8 másodperc</string>
+  <string name="morphe_crossfade_duration_9000ms">9 másodperc</string>
+  <string name="morphe_crossfade_duration_10000ms">10 másodperc</string>
+  <string name="morphe_music_crossfade_on_skip_title">Áthallás manuális ugráskor</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Ha manuálisan ugrasz, az áthallás lejátszódik</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Manuális ugrások nem okoznak áthallást</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Áthallás automatikus lejátszáson</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Áthallás lejátszódik, ha egy zeneszám véget ér, és a következőre ugorasz</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Az automatikus lejátszás nem okoz áthallást</string>
+  <string name="morphe_music_crossfade_session_control_title">Műveleti vezérlés</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Hosszan nyomd meg a keverési gombot a kereszthallás szüneteltetéséhez vagy folytatásához"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">A műveleti vezérlés le van tiltva</string>
+  <string name="morphe_music_crossfade_about_title">Névjegy</string>
+  <string name="morphe_music_crossfade_about_summary">"A kereszthallás a YouTube Music 8.x verziójában elérhető.
+
+Hosszan nyomd meg a keverési gombot a kereszthallás letiltásához/engedélyezéséhez.
+
+Megvalósította: VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Állandó ismétlés engedélyezése</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Állandó ismétlés engedélyezve</string>

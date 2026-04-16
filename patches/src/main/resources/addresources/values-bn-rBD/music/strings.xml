@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">ভিডিও বিজ্ঞাপন লুকান</string>
   <string name="morphe_music_hide_video_ads_summary_on">ভিডিও বিজ্ঞাপন লুকানো আছে</string>
   <string name="morphe_music_hide_video_ads_summary_off">ভিডিও বিজ্ঞাপন দেখানো আছে</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">ক্রসফেইড</string>
+  <string name="morphe_music_crossfade_screen_summary">গানগুলিকে মসৃণভাবে একে অপরের সাথে মিশিয়ে দিন</string>
+  <string name="morphe_music_crossfade_enabled_title">ক্রসফেইড চালু করুন</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">গানগুলি একে অপরের সাথে মিশে যায়</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">ক্রসফেইড নিষ্ক্রিয় করা হয়েছে</string>
+  <string name="morphe_music_crossfade_curve_title">ফেড কার্ভ</string>
+  <string name="morphe_music_crossfade_curve_summary">Трековের মধ্যে ভলিউম কিভাবে পরিবর্তন হচ্ছে</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">সমান ক্ষমতা</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">সূক্ষ্ম বিলম্ব</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">নরম কোমলতা</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">স্মুথ এস-কার্ভ</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">ক্রসফেড সময়কাল</string>
+  <string name="morphe_crossfade_duration_250ms">২৫০ মিলিসেকেন্ড</string>
+  <string name="morphe_crossfade_duration_500ms">৫০০ মিলিসেকেন্ড</string>
+  <string name="morphe_crossfade_duration_750ms">৭৫০ মিলিসেকেন্ড</string>
+  <string name="morphe_crossfade_duration_1000ms">১ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_2000ms">২ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_3000ms">৩ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_4000ms">৪ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_5000ms">৫ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_6000ms">৬ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_7000ms">৭ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_8000ms">৮ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_9000ms">৯ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_10000ms">১০ সেকেন্ড</string>
+  <string name="morphe_music_crossfade_on_skip_title">ম্যানুয়াল স্কিপে ক্রসফেড</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">ম্যানুয়ালি ট্র্যাক স্কিপ করলে ক্রসফেড চলবে</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">ম্যানুয়াল স্কিপগুলিতে ক্রসফেড হবে না</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">অটো-অ্যাডভান্সে ক্রসফেড</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">একটি ট্র্যাক শেষ হয়ে গেলে এবং পরবর্তীটিতে গেলে ক্রসফেড চলবে</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">অটো-অ্যাডভান্সে ক্রসফেড হবে না</string>
+  <string name="morphe_music_crossfade_session_control_title">সেশন কন্ট্রোল</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"সোয়াইপ কন্ট্রোল"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">সেশন কন্ট্রোল নিষ্ক্রিয় করা আছে</string>
+  <string name="morphe_music_crossfade_about_title">মর্ফ সম্পর্কে</string>
+  <string name="morphe_music_crossfade_about_summary">"ইউটিউব মিউজিক ৮.x এর সাথে ক্রসফেড পাওয়া যাচ্ছে।
+
+ডিসেবেল/ইনেবল করার জন্য শাফেল বোতামটি দীর্ঘক্ষণ চাপুন।
+
+VazerOG কর্তৃক ফিচার বাস্তবায়ন।"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">স্থায়ী পুনরাবৃত্তি সক্ষম করুন</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">স্থায়ী পুনরাবৃত্তি সক্ষম করা হয়েছে</string>

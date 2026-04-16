@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">동영상 광고 숨기기</string>
   <string name="morphe_music_hide_video_ads_summary_on">동영상 광고가 숨겨집니다</string>
   <string name="morphe_music_hide_video_ads_summary_off">동영상 광고가 표시됩니다</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">크로스페이드</string>
+  <string name="morphe_music_crossfade_screen_summary">트랙을 서로 부드럽게 이어지도록 재생합니다</string>
+  <string name="morphe_music_crossfade_enabled_title">크로스페이드 활성화</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">트랙이 서로 크로스페이드로 이어집니다</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">크로스페이드를 비활성화합니다</string>
+  <string name="morphe_music_crossfade_curve_title">페이드 곡선</string>
+  <string name="morphe_music_crossfade_curve_summary">트랙 간 볼륨 전환 방식을 설정하세요</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">동일한 음량</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">미묘한 홀드</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">부드러운 완화</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">부드러운 S-곡선</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">크로스페이드 지속 시간</string>
+  <string name="morphe_crossfade_duration_250ms">250 밀리초</string>
+  <string name="morphe_crossfade_duration_500ms">500 밀리초</string>
+  <string name="morphe_crossfade_duration_750ms">750 밀리초</string>
+  <string name="morphe_crossfade_duration_1000ms">1 초</string>
+  <string name="morphe_crossfade_duration_2000ms">2 초</string>
+  <string name="morphe_crossfade_duration_3000ms">3 초</string>
+  <string name="morphe_crossfade_duration_4000ms">4 초</string>
+  <string name="morphe_crossfade_duration_5000ms">5 초</string>
+  <string name="morphe_crossfade_duration_6000ms">6 초</string>
+  <string name="morphe_crossfade_duration_7000ms">7 초</string>
+  <string name="morphe_crossfade_duration_8000ms">8 초</string>
+  <string name="morphe_crossfade_duration_9000ms">9 초</string>
+  <string name="morphe_crossfade_duration_10000ms">10 초</string>
+  <string name="morphe_music_crossfade_on_skip_title">수동 트랙 넘김 시 크로스페이드</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">수동으로 다음 트랙으로 넘어갈 경우에 크로스페이드를 적용합니다</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">수동으로 다음 트랙으로 넘어갈 경우에 크로스페이드를 적용하지 않습니다</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">자동 트랙 넘김 시 크로스페이드</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">자동으로 다음 트랙으로 넘어갈 경우에 크로스페이드을 적용합니다</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">자동으로 다음 트랙으로 넘어갈 경우에 크로스페이드을 적용하지 않습니다</string>
+  <string name="morphe_music_crossfade_session_control_title">세션 제어</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"셔플 버튼을 길게 탭하여 크로스페이드를 일시정지하거나 다시 실행할 수 있습니다"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">세션 제어를 비활성화합니다</string>
+  <string name="morphe_music_crossfade_about_title">정보</string>
+  <string name="morphe_music_crossfade_about_summary">"크로스페이드는 YouTube Music 8.x에서 사용할 수 있습니다
+
+셔플 버튼을 길게 탭하여 활성화 또는 비활성화할 수 있습니다
+
+VazerOG에 의해 기능이 구현되었습니다"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">영구적인 반복 활성화하기</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">영구적인 반복을 활성화합니다</string>
