@@ -144,3 +144,11 @@ internal object RenderNextUIFeatureFlagFingerprint : Fingerprint(
         literal(45649743L)
     )
 )
+
+internal object ShortsPlaybackStartDescriptorFeatureFlagFingerprint : Fingerprint(
+    parameters = listOf(),
+    returnType = "Z",
+    filters = listOf(
+        literal(45665455L)
+    )
+)

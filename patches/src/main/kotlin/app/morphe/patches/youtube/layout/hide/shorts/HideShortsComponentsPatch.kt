@@ -17,6 +17,7 @@ import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_19_41_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_20_03_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_22_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_45_or_greater
@@ -290,6 +291,11 @@ val hideShortsComponentsPatch = bytecodePatch(
         // Flags might be present in earlier targets, but they are not found in 19.47.53.
         // If these flags are forced on, the experimental layout is still not used and
         // it appears the features requires additional server side data to fully use.
+        if (is_20_03_or_greater) {
+            // Flag breaks Shorts playback when enabled via A/B test.
+            ShortsPlaybackStartDescriptorFeatureFlagFingerprint.method.returnLate(false)
+        }
+
         if (is_20_07_or_greater) {
             // Experimental Shorts player uses Android native buttons and not Litho,
             // and the layout is provided by the server.
