@@ -192,6 +192,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_QUICK_ACTIONS_RELATED_VIDEOS = new BooleanSetting("morphe_hide_quick_actions_related_videos", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_PLAYER_RELATED_VIDEOS = new BooleanSetting("morphe_hide_player_related_videos", FALSE, true);
     public static final BooleanSetting HIDE_PLAYER_RELATED_VIDEOS_OVERLAY = new BooleanSetting("morphe_hide_player_related_videos_overlay", FALSE, true);
+    public static final BooleanSetting HIDE_SETTINGS_BUTTON = new BooleanSetting("morphe_hide_settings_button", FALSE, true);
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_hide_subscribers_community_guidelines", TRUE);
     public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("morphe_hide_timed_reactions", TRUE);
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("morphe_hide_video_title", FALSE);
@@ -276,7 +277,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_MUSIC_SECTION = new BooleanSetting("morphe_hide_music_section", FALSE);
     public static final BooleanSetting HIDE_QUIZZES_SECTION = new BooleanSetting("morphe_hide_quizzes_section", FALSE);
     public static final BooleanSetting HIDE_TRANSCRIPT_SECTION = new BooleanSetting("morphe_hide_transcript_section", FALSE);
-    public static final BooleanSetting HIDE_VIDEO_DETAILS_SECTION = new BooleanSetting("morphe_hide_video_details_section", FALSE);
 
     // Action buttons
     public static final BooleanSetting DISABLE_LIKE_SUBSCRIBE_GLOW = new BooleanSetting("morphe_disable_like_subscribe_glow", FALSE);

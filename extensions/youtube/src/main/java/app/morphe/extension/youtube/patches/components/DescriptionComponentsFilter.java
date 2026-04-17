@@ -20,8 +20,6 @@ final class DescriptionComponentsFilter extends Filter {
     private final StringFilterGroup featuredLinksSection;
     private final StringFilterGroup featuredVideosSection;
     private final StringFilterGroup subscribeButton;
-    private final StringFilterGroup videoDetails;
-    private final ByteArrayFilterGroup videoDetailsBuffer;
 
     public DescriptionComponentsFilter() {
         final StringFilterGroup aiGeneratedVideoSummarySection = new StringFilterGroup(
@@ -113,16 +111,6 @@ final class DescriptionComponentsFilter extends Filter {
                 )
         );
 
-        videoDetails = new StringFilterGroup(
-                null,
-                "linear_layout.e"
-        );
-
-        videoDetailsBuffer = new ByteArrayFilterGroup(
-                Settings.HIDE_VIDEO_DETAILS_SECTION,
-                "section_header"
-        );
-
         addPathCallbacks(
                 aiGeneratedVideoSummarySection,
                 askSection,
@@ -135,8 +123,7 @@ final class DescriptionComponentsFilter extends Filter {
                 macroMarkersCarousel,
                 playlistSection,
                 subscribeButton,
-                transcriptSection,
-                videoDetails
+                transcriptSection
         );
     }
 
@@ -162,10 +149,6 @@ final class DescriptionComponentsFilter extends Filter {
         if (matchedGroup == playlistSection) {
             if (contentIndex != 0) return false;
             return Settings.HIDE_EXPLORE_SECTION.get() || playlistSectionGroupList.check(buffer).isFiltered();
-        }
-
-        if (matchedGroup == videoDetails) {
-            return videoDetailsBuffer.check(buffer).isFiltered();
         }
 
         if (matchedGroup == macroMarkersCarousel) {

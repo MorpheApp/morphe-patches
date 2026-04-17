@@ -88,7 +88,8 @@ public final class LayoutComponentsFilter extends Filter {
 
         final var cellDivider = new StringFilterGroup(
                 Settings.HIDE_COMPACT_BANNER,
-                // Empty padding and a relic from very old YT versions. Not related to compact banner but included here to avoid adding another setting.
+                // Empty padding and a relic from very old YT versions.
+                // Not related to compact banner but included here to avoid adding another setting.
                 "cell_divider"
         );
 

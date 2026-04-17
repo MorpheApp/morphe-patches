@@ -110,6 +110,26 @@ public final class HidePlayerOverlayButtonsPatch {
         });
     }
 
+    private static final int PLAYER_OVERFLOW_BUTTON_CONTAINER_ID = getIdentifierOrThrow(
+            ResourceType.ID, "player_overflow_button_container");
+
+    private static final int PLAYER_OVERFLOW_BUTTON_ID = getIdentifierOrThrow(
+            ResourceType.ID, "player_overflow_button");
+
+    /**
+     * Injection point.
+     */
+    public static void hideSettingsButton(View parentView) {
+        if (!Settings.HIDE_SETTINGS_BUTTON.get()) {
+            return;
+        }
+
+        Utils.runOnMainThread(() -> {
+            hideView(parentView, PLAYER_OVERFLOW_BUTTON_CONTAINER_ID);
+            hideView(parentView, PLAYER_OVERFLOW_BUTTON_ID);
+        });
+    }
+
     /**
      * Injection point.
      */

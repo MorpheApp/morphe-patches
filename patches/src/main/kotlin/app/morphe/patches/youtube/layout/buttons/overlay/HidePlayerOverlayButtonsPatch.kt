@@ -52,9 +52,10 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_fullscreen_button"),
             SwitchPreference("morphe_hide_player_control_buttons_background"),
             SwitchPreference("morphe_hide_player_previous_next_buttons"),
+            SwitchPreference("morphe_hide_settings_button"),
         )
 
-        // region Hide player next/previous button.
+        // region Hide player previous/next & settings button.
 
         LayoutConstructorFingerprint.let {
             it.clearMatch() // Fingerprint is shared with other patches.
@@ -67,6 +68,12 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                     insertIndex,
                     "invoke-static { v$viewRegister }, $EXTENSION_CLASS" +
                             "->hidePreviousNextButtons(Landroid/view/View;)V",
+                )
+
+                addInstruction(
+                    insertIndex,
+                    "invoke-static { v$viewRegister }, $EXTENSION_CLASS" +
+                            "->hideSettingsButton(Landroid/view/View;)V",
                 )
             }
         }

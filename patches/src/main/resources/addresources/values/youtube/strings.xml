@@ -273,9 +273,6 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_transcript_section_title">Hide Transcript</string>
     <string name="morphe_hide_transcript_section_summary_on">Transcript section is hidden</string>
     <string name="morphe_hide_transcript_section_summary_off">Transcript section is shown</string>
-    <string name="morphe_hide_video_details_section_title">Hide \'Video details\'</string>
-    <string name="morphe_hide_video_details_section_summary_on">Video details section is hidden</string>
-    <string name="morphe_hide_video_details_section_summary_off">Video details section is shown</string>
 
     <string name="morphe_hide_filter_bar_screen_title">Filter bar</string>
     <string name="morphe_hide_filter_bar_screen_summary">Hide or show the filter bar in feeds, related videos, search results, and watch history</string>
@@ -947,6 +944,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_player_previous_next_buttons_title">Hide Previous &amp; Next buttons</string>
     <string name="morphe_hide_player_previous_next_buttons_summary_on">Previous &amp; Next buttons are hidden</string>
     <string name="morphe_hide_player_previous_next_buttons_summary_off">Previous &amp; Next buttons are shown</string>
+    <string name="morphe_hide_settings_button_title">Hide Settings button</string>
+    <string name="morphe_hide_settings_button_summary_on">Settings button is hidden</string>
+    <string name="morphe_hide_settings_button_summary_off">Settings button is shown</string>
 
     <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
     <string name="morphe_hide_end_screen_cards_title">Hide end screen cards</string>
