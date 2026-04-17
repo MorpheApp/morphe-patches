@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Video reklamlarını gizle</string>
   <string name="morphe_music_hide_video_ads_summary_on">Video reklamları gizli</string>
   <string name="morphe_music_hide_video_ads_summary_off">Video reklamları görünür</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Geçiş</string>
+  <string name="morphe_music_crossfade_screen_summary">Parçaları yumuşak bir şekilde birbirine karıştırır</string>
+  <string name="morphe_music_crossfade_enabled_title">Geçişi etkinleştir</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Parçalar birbirine karıştırılır</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Geçiş devre dışı</string>
+  <string name="morphe_music_crossfade_curve_title">Solma eğrisi</string>
+  <string name="morphe_music_crossfade_curve_summary">Parçalar arasında sesin nasıl geçiş yaptığı</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Eşit güç</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Hafif tutma</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Yumuşak geçiş</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Pürüzsüz S-eğrisi</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Geçiş süresi</string>
+  <string name="morphe_crossfade_duration_250ms">250 milisaniye</string>
+  <string name="morphe_crossfade_duration_500ms">500 milisaniye</string>
+  <string name="morphe_crossfade_duration_750ms">750 milisaniye</string>
+  <string name="morphe_crossfade_duration_1000ms">1 saniye</string>
+  <string name="morphe_crossfade_duration_2000ms">2 saniye</string>
+  <string name="morphe_crossfade_duration_3000ms">3 saniye</string>
+  <string name="morphe_crossfade_duration_4000ms">4 saniye</string>
+  <string name="morphe_crossfade_duration_5000ms">5 saniye</string>
+  <string name="morphe_crossfade_duration_6000ms">6 saniye</string>
+  <string name="morphe_crossfade_duration_7000ms">7 saniye</string>
+  <string name="morphe_crossfade_duration_8000ms">8 saniye</string>
+  <string name="morphe_crossfade_duration_9000ms">9 saniye</string>
+  <string name="morphe_crossfade_duration_10000ms">10 saniye</string>
+  <string name="morphe_music_crossfade_on_skip_title">Manuel atlama sırasında geçiş</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Şarkılar manuel olarak atlandığında geçiş oynatılır</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Manuel atlamalar geçiş yapmaz</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Otomatik ilerlemede geçiş</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Bir şarkı bittiğinde ve bir sonrakine geçtiğinde geçiş oynatılır</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Otomatik ilerleme geçiş yapmaz</string>
+  <string name="morphe_music_crossfade_session_control_title">Oturum kontrolü</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Kaydırma kontrolleri"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Oturum kontrolü devre dışı</string>
+  <string name="morphe_music_crossfade_about_title">Hakkında</string>
+  <string name="morphe_music_crossfade_about_summary">"Geçiş YouTube Music 8.x ile kullanılabilir.
+
+Karıştırma düğmesini uzun süre basılı tutarak devre dışı bırak/etkinleştir
+
+VazerOG tarafından özellik uygulaması"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Kalıcı tekrarı etkinleştir</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Kalıcı tekrar etkin</string>

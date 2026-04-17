@@ -1,8 +1,8 @@
 package app.morphe.patches.youtube.layout.hide.relatedvideooverlay
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 
 private object RelatedEndScreenResultsParentFingerprint : Fingerprint(
     returnType = "V",

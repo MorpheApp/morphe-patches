@@ -23,13 +23,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Cache Gradle
-        uses: burrunan/gradle-cache-action@v3
+      #- name: Cache Gradle
+      #  uses: burrunan/gradle-cache-action@v3
 
       - name: Build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew :patches:buildAndroid --no-daemon
+        run: ./gradlew clean :patches:buildAndroid --no-daemon
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v7

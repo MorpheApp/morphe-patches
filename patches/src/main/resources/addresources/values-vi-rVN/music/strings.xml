@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Ẩn video quảng cáo</string>
   <string name="morphe_music_hide_video_ads_summary_on">Video quảng cáo đã bị ẩn</string>
   <string name="morphe_music_hide_video_ads_summary_off">Video quảng cáo được hiển thị</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Chồng chéo</string>
+  <string name="morphe_music_crossfade_screen_summary">Pha trộn mượt mà các bản nhạc vào nhau</string>
+  <string name="morphe_music_crossfade_enabled_title">Bật chồng chéo</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Các bản nhạc chồng chéo vào nhau</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Chồng chéo bị tắt</string>
+  <string name="morphe_music_crossfade_curve_title">Đường cong mờ dần</string>
+  <string name="morphe_music_crossfade_curve_summary">Âm lượng chuyển đổi giữa các bài hát như thế nào</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Công suất bằng nhau</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Giữ lại tinh tế</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Easing nhẹ nhàng</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Đường S mượt mà</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Thời lượng mờ dần</string>
+  <string name="morphe_crossfade_duration_250ms">250 mili-giây</string>
+  <string name="morphe_crossfade_duration_500ms">500 mili-giây</string>
+  <string name="morphe_crossfade_duration_750ms">750 mili-giây</string>
+  <string name="morphe_crossfade_duration_1000ms">1 giây</string>
+  <string name="morphe_crossfade_duration_2000ms">2 giây</string>
+  <string name="morphe_crossfade_duration_3000ms">3 giây</string>
+  <string name="morphe_crossfade_duration_4000ms">4 giây</string>
+  <string name="morphe_crossfade_duration_5000ms">5 giây</string>
+  <string name="morphe_crossfade_duration_6000ms">6 giây</string>
+  <string name="morphe_crossfade_duration_7000ms">7 giây</string>
+  <string name="morphe_crossfade_duration_8000ms">8 giây</string>
+  <string name="morphe_crossfade_duration_9000ms">9 giây</string>
+  <string name="morphe_crossfade_duration_10000ms">10 giây</string>
+  <string name="morphe_music_crossfade_on_skip_title">Mờ dần khi bỏ qua thủ công</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Mờ dần phát lại khi bỏ qua thủ công</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Bỏ qua thủ công sẽ không mờ dần</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Mờ dần khi tự động chuyển bài</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Mờ dần phát lại khi một bài hát kết thúc và chuyển sang bài tiếp theo</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Tự động chuyển bài sẽ không mờ dần</string>
+  <string name="morphe_music_crossfade_session_control_title">Điều khiển phiên</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Nhấn giữ nút phát ngẫu nhiên để tạm dừng hoặc tiếp tục mờ dần"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Điều khiển phiên bị tắt</string>
+  <string name="morphe_music_crossfade_about_title">Giới thiệu</string>
+  <string name="morphe_music_crossfade_about_summary">"Mờ dần có sẵn với YouTube Music 8.x
+
+Nhấn giữ nút phát ngẫu nhiên để tắt/bật
+
+Tính năng triển khai bởi VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Bật lặp lại vĩnh viễn</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Lặp lại vĩnh viễn đã được bật</string>

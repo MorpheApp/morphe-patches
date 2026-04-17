@@ -37,9 +37,9 @@ import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
+import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("unused")
@@ -170,7 +170,7 @@ public class GmsCoreSupportPatch {
             } else if (batteryOptimizationsEnabled(context)) {
                 Logger.printInfo(() -> "GmsCore is not whitelisted from battery optimizations");
 
-                if (BaseSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
+                if (SharedSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
                     showBatteryOptimizationDialog(context,
                             "gms_core_dialog_not_whitelisted_using_battery_optimizations_message",
                             "gms_core_dialog_continue_text",
@@ -186,7 +186,7 @@ public class GmsCoreSupportPatch {
                 if (client == null) {
                     Logger.printInfo(() -> "GmsCore is not running in the background");
 
-                    if (BaseSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
+                    if (SharedSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
                         checkIfDontKillMyAppSupportsManufacturer();
 
                         showBatteryOptimizationDialog(context,

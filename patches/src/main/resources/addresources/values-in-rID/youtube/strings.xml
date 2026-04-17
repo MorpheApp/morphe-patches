@@ -1398,11 +1398,11 @@ Jika kemudian dimatikan, disarankan untuk menghapus data aplikasi untuk mencegah
   <string name="morphe_open_system_share_sheet_summary_on">Membuka lembar berbagi sistem</string>
   <string name="morphe_open_system_share_sheet_summary_off">Membuka lembar berbagi dalam aplikasi</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
-  <string name="morphe_override_youtube_music_buttons_title">Mengganti tombol YouTube Music</string>
-  <string name="morphe_override_youtube_music_buttons_summary_on">Tombol YouTube Music membuka aplikasi musik target Anda</string>
+  <string name="morphe_override_youtube_music_buttons_title">Ganti tombol YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Tombol YouTube Music membuka aplikasi musik pilihan Anda</string>
   <string name="morphe_override_youtube_music_buttons_summary_off">Tombol YouTube Music membuka aplikasi resmi</string>
-  <string name="morphe_music_package_name_title">Nama paket aplikasi musik target</string>
-  <string name="morphe_music_package_name_summary">Nama paket aplikasi musik target yang telah Anda pasang</string>
+  <string name="morphe_music_package_name_title">Nama paket aplikasi musik pilihan</string>
+  <string name="morphe_music_package_name_summary">Nama paket aplikasi musik pilihan yang telah Anda pasang</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Ubah halaman awal</string>
   <string name="morphe_change_start_page_entry_default">Bawaan</string>

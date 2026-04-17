@@ -32,6 +32,48 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Ascunde anunțurile video</string>
   <string name="morphe_music_hide_video_ads_summary_on">Anunțurile video sunt ascunse</string>
   <string name="morphe_music_hide_video_ads_summary_off">Anunțurile video sunt afișate</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Estompare încrucișată</string>
+  <string name="morphe_music_crossfade_screen_summary">Amestecă fără probleme piesele muzicale unele în altele</string>
+  <string name="morphe_music_crossfade_enabled_title">Activează estomparea încrucișată</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Piesele se estompează încrucișat unele în altele</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Estomparea încrucișată este dezactivată</string>
+  <string name="morphe_music_crossfade_curve_title">Curba de estompare</string>
+  <string name="morphe_music_crossfade_curve_summary">Cum se face tranziția volumului între piese</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Putere egală</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Pauză subtilă</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Uărmăreare blăndă</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Curba S lină</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Durata estompării</string>
+  <string name="morphe_crossfade_duration_250ms">250 milisecunde</string>
+  <string name="morphe_crossfade_duration_500ms">500 milisecunde</string>
+  <string name="morphe_crossfade_duration_750ms">750 milisecunde</string>
+  <string name="morphe_crossfade_duration_1000ms">1 secundă</string>
+  <string name="morphe_crossfade_duration_2000ms">2 secunde</string>
+  <string name="morphe_crossfade_duration_3000ms">3 secunde</string>
+  <string name="morphe_crossfade_duration_4000ms">4 secunde</string>
+  <string name="morphe_crossfade_duration_5000ms">5 secunde</string>
+  <string name="morphe_crossfade_duration_6000ms">6 secunde</string>
+  <string name="morphe_crossfade_duration_7000ms">7 secunde</string>
+  <string name="morphe_crossfade_duration_8000ms">8 secunde</string>
+  <string name="morphe_crossfade_duration_9000ms">9 secunde</string>
+  <string name="morphe_crossfade_duration_10000ms">10 secunde</string>
+  <string name="morphe_music_crossfade_on_skip_title">Estompare la salt manual</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Estomparea se produce la saltul manual învre piese.</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Salturile manuale nu vor estompa.</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Estompare la avansare automată</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Crossfade se redă când o piesă se termină și avansează la următoarea</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Avansarea automată nu va estompa.</string>
+  <string name="morphe_music_crossfade_session_control_title">Controlul sesiunii</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Apăsați lung butonul shuffle pentru a pauza sau a relua estomparea."</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Controlul sesiunii este dezactivat.</string>
+  <string name="morphe_music_crossfade_about_title">Despre</string>
+  <string name="morphe_music_crossfade_about_summary">"Estomparea este disponibilă cu YouTube Music 8.x
+
+Apăsați lung butonul shuffle pentru a dezactiva/activa
+
+Implementare a funcționalității de către VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activează repetarea permanentă</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Repetarea permanentă este activată</string>

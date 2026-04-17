@@ -2,8 +2,8 @@ package app.morphe.patches.youtube.layout.shortsplayer
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object ShortsPlaybackIntentFingerprint : Fingerprint(

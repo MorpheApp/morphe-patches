@@ -6,14 +6,12 @@
  */
 package app.morphe.patches.reddit.misc.extension.hooks
 
-import app.morphe.patches.shared.misc.extension.activityOnCreateExtensionHook
+import app.morphe.patches.all.misc.extension.activityOnCreateExtensionHook
 
 internal val redditActivityOnCreateHook = activityOnCreateExtensionHook(
-    activityClassType = "Lcom/reddit/launch/main/MainActivity;",
-    targetBundleMethod = true,
+    activityClassType = "Lcom/reddit/launch/main/MainActivity;"
 )
 
 internal val redditApplicationOnCreateHook = activityOnCreateExtensionHook(
-    activityClassType = "Lcom/reddit/frontpage/FrontpageApplication;",
-    targetBundleMethod = false,
+    activityClassType = "Lcom/reddit/frontpage/FrontpageApplication;"
 )
