@@ -27,7 +27,6 @@ private const val EXTENSION_CLASS =
 internal fun hideFullscreenAdsPatch(
     preferenceScreen: BasePreferenceScreen.Screen
 ) = bytecodePatch(
-    name = "Hide fullscreen ads",
     description = "Adds an option to hide fullscreen premium popup ads."
 ) {
     dependsOn(resourceMappingPatch)
@@ -51,8 +50,8 @@ internal fun hideFullscreenAdsPatch(
                 addInstructionsAtControlFlowLabel(
                     insertIndex,
                     """
-                    move-object/from16 v$freeRegister, p1
-                    invoke-static { v$insertRegister, v$freeRegister }, $EXTENSION_CLASS->closeFullscreenAd(Ljava/lang/Object;[B)V
+                        move-object/from16 v$freeRegister, p1
+                        invoke-static { v$insertRegister, v$freeRegister }, $EXTENSION_CLASS->closeFullscreenAd(Ljava/lang/Object;[B)V
                     """
                 )
             }

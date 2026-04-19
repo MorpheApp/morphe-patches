@@ -47,7 +47,7 @@ public class HideAdsPatch {
 
             if (buffer == null) return;
 
-            if (FULLSCREEN_AD_SEARCH.matches(buffer) && customDialog instanceof Dialog dialog) {
+            if (customDialog instanceof Dialog dialog && FULLSCREEN_AD_SEARCH.matches(buffer)) {
                 Logger.printDebug(() -> "Closing YT Music fullscreen ad");
 
                 Window window = dialog.getWindow();
