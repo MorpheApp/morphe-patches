@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    https://github.com/google/material-design-icons/blob/9beae745bb758f3ad56654fb377ea5cf62be4915/symbols/android/volume_mute/materialsymbolsoutlined/volume_mute_wght300_24px.xml
+    https://github.com/google/material-design-icons/blob/13d360945bfd12cdeec837adc14f82875410584b/symbols/android/volume_up/materialsymbolsrounded/volume_up_24px.xml
     Changes made: The icon has been moved to the left relative to the center.
 
     Copyright 2022 Google
@@ -25,5 +25,5 @@
 
     <path
         android:fillColor="@android:color/white"
-        android:pathData="M3.8,14.5 L3.8,9.5 L7.5,9.5 L11.8,5.2 L11.8,18.8 L7.5,14.5 Z M5.3,13 L8.15,13 L10.3,15.15 L10.3,8.85 L8.15,11 L5.3,11 Z M7.8,12 Z"/>
+        android:pathData="M10.9473,5.39453 C10.7139,5.40002,10.4986,5.50146,10.3008,5.69922 L7,9 L4,9 C3.71484,9,3.48047,9.09766,3.28906,9.28906 C3.09766,9.48047,3,9.71484,3,10 L3,14 C3,14.2852,3.09766,14.5195,3.28906,14.7109 C3.48047,14.9023,3.71484,15,4,15 L7,15 L10.3008,18.3008 C10.6172,18.6172,10.9805,18.6875,11.3867,18.5117 C11.7969,18.3359,12,18.0234,12,17.5742 L12,6.42578 C12,5.97656,11.7969,5.66406,11.3867,5.48828 C11.2344,5.42236,11.0873,5.39123,10.9472,5.39453 Z M10,8.85156 L10,15.1484 L7.85156,13 L5,13 L5,11 L7.85156,11 Z" />
 </vector>

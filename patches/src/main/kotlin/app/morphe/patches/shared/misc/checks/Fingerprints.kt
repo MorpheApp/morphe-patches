@@ -7,5 +7,5 @@ internal object PatchInfoFingerprint : Fingerprint(
 )
 
 internal object PatchInfoBuildFingerprint : Fingerprint(
-    definingClass = "Lapp/morphe/extension/shared/checks/PatchInfo\$Build;"
+    definingClass = $$"Lapp/morphe/extension/shared/checks/PatchInfo$Build;"
 )

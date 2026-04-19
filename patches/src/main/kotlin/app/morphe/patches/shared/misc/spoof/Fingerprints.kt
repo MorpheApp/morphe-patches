@@ -4,6 +4,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -13,7 +15,7 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
-    returnType = "Lorg/chromium/net/UrlRequest\$Builder;",
+    returnType = $$"Lorg/chromium/net/UrlRequest$Builder;",
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.IGET_OBJECT, // Moves the request URI string to a register to build the request with.
@@ -94,9 +96,9 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
         Opcode.SGET_OBJECT,
         Opcode.IPUT_OBJECT,
     ),
-    custom = { method, classDef ->
+    custom = { _, classDef ->
         classDef.fields.any { field ->
-            field.name == "a" && field.type.endsWith("/StreamingDataOuterClass\$StreamingData;")
+            field.name == "a" && field.type.endsWith($$"/StreamingDataOuterClass$StreamingData;")
         }
     }
 )

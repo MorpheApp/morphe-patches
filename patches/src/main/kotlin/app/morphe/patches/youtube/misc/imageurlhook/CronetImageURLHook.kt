@@ -41,20 +41,11 @@ val cronetImageURLHookPatch = bytecodePatch(
     dependsOn(sharedExtensionPatch)
 
     execute {
-        loadImageURLMethodRef = WeakReference(
-            MessageDigestImageURLFingerprint
-                .match(MessageDigestImageURLParentFingerprint.originalClassDef).method
-        )
+        loadImageURLMethodRef = WeakReference(MessageDigestImageURLFingerprint.method)
 
-        loadImageSuccessCallbackMethodRef = WeakReference(
-            OnSucceededFingerprint
-                .match(OnResponseStartedFingerprint.originalClassDef).method
-        )
+        loadImageSuccessCallbackMethodRef = WeakReference(OnSucceededFingerprint.method)
 
-        loadImageErrorCallbackMethodRef = WeakReference(
-            OnFailureFingerprint
-                .match(OnResponseStartedFingerprint.originalClassDef).method
-        )
+        loadImageErrorCallbackMethodRef = WeakReference(OnFailureFingerprint.method)
 
         // The URL is required for the failure callback hook, but the URL field is obfuscated.
         // Add a helper get method that returns the URL field.
@@ -64,7 +55,7 @@ val cronetImageURLHookPatch = bytecodePatch(
         } as ReferenceInstruction
 
         val urlFieldName = (urlFieldInstruction.reference as FieldReference).name
-        val definingClass = CRONET_URL_REQUEST_CLASS_DESCRIPTOR
+        val definingClass = CRONET_URL_REQUEST_CLASS
         val addedMethodName = "getHookedUrl"
         RequestFingerprint.classDef.methods.add(
             ImmutableMethod(

@@ -15,7 +15,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AlternativeThumbnailsPatch;"
 
 val alternativeThumbnailsPatch = bytecodePatch(
@@ -73,8 +73,8 @@ val alternativeThumbnailsPatch = bytecodePatch(
             ListPreference("morphe_alt_thumbnail_stills_time"),
         )
 
-        addImageURLHook(EXTENSION_CLASS_DESCRIPTOR)
-        addImageURLSuccessCallbackHook(EXTENSION_CLASS_DESCRIPTOR)
-        addImageURLErrorCallbackHook(EXTENSION_CLASS_DESCRIPTOR)
+        addImageURLHook(EXTENSION_CLASS)
+        addImageURLSuccessCallbackHook(EXTENSION_CLASS)
+        addImageURLErrorCallbackHook(EXTENSION_CLASS)
     }
 }

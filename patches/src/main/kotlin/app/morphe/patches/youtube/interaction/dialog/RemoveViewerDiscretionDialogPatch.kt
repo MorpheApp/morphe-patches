@@ -16,7 +16,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/RemoveViewerDiscretionDialogPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/RemoveViewerDiscretionDialogPatch;"
 
 val removeViewerDiscretionDialogPatch = bytecodePatch(
     name = "Remove viewer discretion dialog",
@@ -42,7 +42,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
 
                 replaceInstructions(
                     showDialogIndex,
-                    "invoke-static { v$dialogRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "invoke-static { v$dialogRegister }, $EXTENSION_CLASS->" +
                             "confirmDialog(Landroid/app/AlertDialog;)V",
                 )
             }
@@ -55,8 +55,8 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
 
                 replaceInstructions(
                     showDialogIndex,
-                    "invoke-static { v$dialogRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
-                            "confirmDialog(Landroid/app/AlertDialog\$Builder;)Landroid/app/AlertDialog;",
+                    "invoke-static { v$dialogRegister }, $EXTENSION_CLASS->" +
+                            $$"confirmDialog(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;",
                 )
 
                 val dialogStyleIndex = it.instructionMatches.first().index
@@ -65,14 +65,15 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
                 addInstructions(
                     dialogStyleIndex + 1,
                     """
-                        invoke-static { v$dialogStyleRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableModernDialog(Z)Z
+                        invoke-static { v$dialogStyleRegister }, $EXTENSION_CLASS->disableModernDialog(Z)Z
                         move-result v$dialogStyleRegister
                     """
                 )
             }
         }
 
-        val PlayabilityStatusFingerprint = Fingerprint(
+        val playabilityStatusFingerprint = Fingerprint(
+            classFingerprint = BackgroundPlaybackManagerShortsFingerprint,
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
             returnType = "Z",
             parameters = listOf(PlayabilityStatusEnumFingerprint.originalClassDef.type),
@@ -83,11 +84,9 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             }
         )
 
-        PlayabilityStatusFingerprint.match(
-            BackgroundPlaybackManagerShortsFingerprint.originalClassDef
-        ).method.addInstruction(
+        playabilityStatusFingerprint.method.addInstruction(
             0,
-            "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
+            "invoke-static { p0 }, $EXTENSION_CLASS->" +
                     "setPlayabilityStatus(Ljava/lang/Enum;)V"
         )
     }

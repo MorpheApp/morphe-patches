@@ -9,35 +9,52 @@ package app.morphe.patches.reddit.layout.sidebar
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
-internal object CommunityDrawerBuilderFingerprint : Fingerprint(
+private object CommunityDrawerBuilderParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "V",
-    parameters = listOf(
-        "L",
-        "Ljava/util/List;",
-        "Ljava/util/Collection;",
-        "L",
-        "L",
-        "Z",
-        "I"
-    ),
+    returnType = $$"Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics$Section;",
+    parameters = listOf("Lcom/reddit/screens/drawer/community/HeaderItem;"),
     filters = listOf(
-        methodCall("Ljava/util/Collection;->isEmpty()Z"),
+        methodCall("Ljava/lang/Enum;->ordinal()I"),
+        fieldAccess($$"Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics$Section;->" +
+                $$"ABOUT:Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics$Section;")
     )
 )
 
-internal object CommunityDrawerBuilderParentFingerprint : Fingerprint(
+internal object CommunityDrawerBuilderFingerprint : Fingerprint(
+    classFingerprint = CommunityDrawerBuilderParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;",
-    parameters = listOf("Lcom/reddit/screens/drawer/community/HeaderItem;"),
+    returnType = "V",
     filters = listOf(
-        string("<this>"),
-        methodCall("Ljava/lang/Enum;->ordinal()I"),
-        fieldAccess("Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;->ABOUT:Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics\$Section;")
-    )
+        methodCall("Ljava/util/Collection;->isEmpty()Z"),
+    ),
+    custom = { method, _ ->
+        parametersMatch(
+            method.parameters,
+            listOf(
+                "L",
+                "Ljava/util/List;",
+                "Ljava/util/Collection;",
+                "L",
+                "L",
+                "Z",
+                "I"
+            )
+        ) || parametersMatch( // 2026.12.0+
+            method.parameters,
+            listOf(
+                "Ljava/util/List;",
+                "Ljava/util/Collection;",
+                "L",
+                "L",
+                "Z",
+                "I"
+            )
+        )
+    }
 )
 
 internal object HeaderItemUiModelToStringFingerprint : Fingerprint(

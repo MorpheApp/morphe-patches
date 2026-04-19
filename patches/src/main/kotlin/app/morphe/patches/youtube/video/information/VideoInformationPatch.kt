@@ -11,6 +11,7 @@
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
@@ -18,20 +19,20 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.string
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.toInstructions
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_19_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_49_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
+import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
 import app.morphe.patches.youtube.video.playerresponse.Hook
 import app.morphe.patches.youtube.video.playerresponse.addPlayerResponseMethodHook
 import app.morphe.patches.youtube.video.playerresponse.playerResponseMethodHookPatch
 import app.morphe.patches.youtube.video.videoid.hookBackgroundPlayVideoId
+import app.morphe.patches.youtube.video.videoid.hookPlayerResponsePlaylistId
 import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
@@ -57,14 +58,14 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
 import java.lang.ref.WeakReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/VideoInformation;"
 private const val EXTENSION_PLAYER_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/VideoInformation\$PlaybackController;"
+    $$"Lapp/morphe/extension/youtube/patches/VideoInformation$PlaybackController;"
 private const val EXTENSION_VIDEO_QUALITY_MENU_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/VideoInformation\$VideoQualityMenuInterface;"
+    $$"Lapp/morphe/extension/youtube/patches/VideoInformation$VideoQualityMenuInterface;"
 internal const val EXTENSION_VIDEO_QUALITY_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/VideoInformation\$VideoQualityInterface;"
+    $$"Lapp/morphe/extension/youtube/patches/VideoInformation$VideoQualityInterface;"
 
 private lateinit var playerInitMethodRef : WeakReference<MutableMethod>
 private var playerInitInsertIndex = -1
@@ -125,9 +126,8 @@ val videoInformationPatch = bytecodePatch(
         playerInitInsertRegister = playerInitMethod.getInstruction<FiveRegisterInstruction>(initThisIndex).registerC
         playerInitInsertIndex = initThisIndex + 1
 
-        val seekFingerprintResultMethod = SeekFingerprint.match(PlayerInitFingerprint.originalClassDef).method
-        val seekRelativeFingerprintResultMethod =
-            SeekRelativeFingerprint.match(PlayerInitFingerprint.originalClassDef).method
+        val seekFingerprintResultMethod = SeekFingerprint.method
+        val seekRelativeFingerprintResultMethod = SeekRelativeFingerprint.method
 
         // Create extension interface methods.
         addSeekInterfaceMethods(
@@ -147,7 +147,7 @@ val videoInformationPatch = bytecodePatch(
             mdxInitInsertIndex = initThisIndex + 1
 
             // Hook the MDX director for use through the extension.
-            onCreateHookMDX(EXTENSION_CLASS_DESCRIPTOR, "initializeMDX")
+            onCreateHookMDX(EXTENSION_CLASS, "initializeMDX")
 
             val mdxSeekFingerprintResultMethod = MdxSeekFingerprint.match(classDef).method
             val mdxSeekRelativeFingerprintResultMethod = MdxSeekRelativeFingerprint.match(classDef).method
@@ -166,12 +166,13 @@ val videoInformationPatch = bytecodePatch(
                 addInstruction(
                     videoLengthMethodMatch.instructionMatches.last().index,
                     "invoke-static {v$videoLengthRegister, v$dummyRegisterForLong}, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->setVideoLength(J)V",
+                        "$EXTENSION_CLASS->setVideoLength(J)V",
                 )
             }
         }
 
-        val PlayerStatusFingerprint = Fingerprint(
+        val playerStatusFingerprint = Fingerprint(
+            classFingerprint = PlayerInitFingerprint,
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
             parameters = listOf(PlayerStatusEnumFingerprint.originalClassDef.type),
@@ -180,30 +181,31 @@ val videoInformationPatch = bytecodePatch(
                 // Even in sufficiently old versions, such as YT 17.34, the opcode for the first index is sget-object.
                 opcode(Opcode.SGET_OBJECT),
                 methodCall(
-                    definingClass = "Lj${'$'}/time/Instant;",
+                    definingClass = "Lj$/time/Instant;",
                     name = "plus"
-                ),
+                )
             )
         )
 
-        playerStatusMethodRef = WeakReference(
-            PlayerStatusFingerprint.match(PlayerInitFingerprint.originalClassDef).method
-        )
+        playerStatusMethodRef = WeakReference(playerStatusFingerprint.method)
 
         /*
          * Inject call for video IDs
          */
-        val videoIdMethodDescriptor = "$EXTENSION_CLASS_DESCRIPTOR->setVideoId(Ljava/lang/String;)V"
-        hookVideoId(videoIdMethodDescriptor)
-        hookBackgroundPlayVideoId(videoIdMethodDescriptor)
+        val videoIdMethod = "$EXTENSION_CLASS->setVideoId(Ljava/lang/String;)V"
+        hookVideoId(videoIdMethod)
+        hookBackgroundPlayVideoId(videoIdMethod)
+        hookPlayerResponsePlaylistId(
+            "$EXTENSION_CLASS->setPlayerResponsePlaylistId(Ljava/lang/String;Z)V",
+        )
         hookPlayerResponseVideoId(
-            "$EXTENSION_CLASS_DESCRIPTOR->setPlayerResponseVideoId(Ljava/lang/String;Z)V",
+            "$EXTENSION_CLASS->setPlayerResponseVideoId(Ljava/lang/String;Z)V",
         )
         // Call before any other video ID hooks,
         // so they can use VideoInformation and check if the video ID is for a Short.
         addPlayerResponseMethodHook(
             Hook.ProtoBufferParameterBeforeVideoId(
-                "$EXTENSION_CLASS_DESCRIPTOR->" +
+                "$EXTENSION_CLASS->" +
                     "newPlayerResponseSignature(Ljava/lang/String;Ljava/lang/String;Z)Ljava/lang/String;",
             ),
         )
@@ -221,14 +223,14 @@ val videoInformationPatch = bytecodePatch(
         /*
          * Hook the methods which set the time
          */
-        videoTimeHook(EXTENSION_CLASS_DESCRIPTOR, "setVideoTime")
+        videoTimeHook(EXTENSION_CLASS, "setVideoTime")
 
         val setPlaybackSpeedMethodReference: MethodReference
 
         /*
          * Hook the user playback speed selection.
          */
-        OnPlaybackSpeedItemClickFingerprint.match(OnPlaybackSpeedItemClickParentFingerprint.classDef).method.apply {
+        PlaybackSpeedOnItemClickFingerprint.method.apply {
             val speedSelectionValueInstructionIndex = indexOfFirstInstructionOrThrow(Opcode.IGET)
 
             legacySpeedSelectionInsertMethodRef = WeakReference(this)
@@ -293,7 +295,7 @@ val videoInformationPatch = bytecodePatch(
             setPlaybackSpeedMethodIndex = 0
 
             // Add override playback speed method.
-            OnPlaybackSpeedItemClickFingerprint.classDef.methods.add(
+            PlaybackSpeedOnItemClickParentFingerprint.classDef.methods.add(
                 ImmutableMethod(
                     definingClass,
                     "overridePlaybackSpeed",
@@ -341,7 +343,7 @@ val videoInformationPatch = bytecodePatch(
             // Set playback speed class.
             addInstructionsAtControlFlowLabel(
                 index,
-                "sput-object v$register, $EXTENSION_CLASS_DESCRIPTOR->playbackSpeedClass:$playbackSpeedClass"
+                "sput-object v$register, $EXTENSION_CLASS->playbackSpeedClass:$playbackSpeedClass"
             )
 
             val smaliInstructions =
@@ -354,7 +356,7 @@ val videoInformationPatch = bytecodePatch(
                 """
 
             addStaticFieldToExtension(
-                EXTENSION_CLASS_DESCRIPTOR,
+                EXTENSION_CLASS,
                 "overridePlaybackSpeed",
                 "playbackSpeedClass",
                 playbackSpeedClass,
@@ -363,9 +365,7 @@ val videoInformationPatch = bytecodePatch(
         }
 
         // Handle new playback speed menu.
-        PlaybackSpeedMenuSpeedChangedFingerprint.match(
-            VideoQualityChangedFingerprint.originalClassDef,
-        ).let {
+        PlaybackSpeedMenuSpeedChangedFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.first().index
 
@@ -376,15 +376,14 @@ val videoInformationPatch = bytecodePatch(
         }
 
         val videoQualityClassType : String
-        (if (is_20_19_or_greater) VideoQualityFingerprint else VideoQualityLegacyFingerprint).let {
+        VideoQualityFingerprint.let {
             videoQualityClassType = it.classDef.type
 
             // Fix bad data used by YouTube.
-            val nameRegister = if (is_20_20_or_greater) "p3" else "p2"
             it.method.addInstructions(
                 0,
                 """
-                    invoke-static { $nameRegister, p1 }, $EXTENSION_CLASS_DESCRIPTOR->fixVideoQualityResolution(Ljava/lang/String;I)I    
+                    invoke-static { p3, p1 }, $EXTENSION_CLASS->fixVideoQualityResolution(Ljava/lang/String;I)I    
                     move-result p1
                 """
             )
@@ -447,9 +446,7 @@ val videoInformationPatch = bytecodePatch(
         }
 
         // Detect video quality changes and override the current quality.
-        SetVideoQualityFingerprint.match(
-            VideoQualitySetterFingerprint.originalClassDef
-        ).let { match ->
+        SetVideoQualityFingerprint.let { match ->
             // This instruction refers to the field with the type that contains the setQuality method.
             val onItemClickListenerClassReference = match.method
                 .getInstruction<ReferenceInstruction>(0).reference
@@ -496,15 +493,77 @@ val videoInformationPatch = bytecodePatch(
                     iget-object v0, p0, $onItemClickListenerClassReference
                     iget-object v0, v0, $setQualityFieldReference
                     
-                    invoke-static { p1, v0, p2 }, $EXTENSION_CLASS_DESCRIPTOR->setVideoQuality([$EXTENSION_VIDEO_QUALITY_INTERFACE${EXTENSION_VIDEO_QUALITY_MENU_INTERFACE}I)I
+                    invoke-static { p1, v0, p2 }, $EXTENSION_CLASS->setVideoQuality([$EXTENSION_VIDEO_QUALITY_INTERFACE${EXTENSION_VIDEO_QUALITY_MENU_INTERFACE}I)I
                     move-result p2
                 """
             )
         }
 
-        onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "initialize")
-        videoSpeedChangedHook(EXTENSION_CLASS_DESCRIPTOR, "videoSpeedChanged")
-        userSelectedPlaybackSpeedHook(EXTENSION_CLASS_DESCRIPTOR, "userSelectedPlaybackSpeed")
+        ChannelInformationFingerprint.let {
+            val matches = it.matchAll()
+            if (matches.count() !in 2 .. 3) throw PatchException("Unexpected number of matches: " + matches.count())
+
+            val playerResponseType = matches.first().method.parameterTypes.first().toString()
+
+            PlayerInitFingerprint.classDef.apply {
+                val channelIdMethodCall = Fingerprint(
+                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+                    returnType = "V",
+                    parameters = listOf("Ljava/lang/Object;"),
+                    filters = listOf(
+                        methodCall(
+                            definingClass = playerResponseType,
+                            returnType = "Ljava/lang/String;"
+                        ),
+                        string(
+                            string = "com.google.android.apps.youtube.mdx.watch.LAST_MEALBAR_PROMOTED_LIVE_FEED_CHANNELS",
+                            location = MatchAfterWithin(20)
+                        )
+                    )
+                ).instructionMatches.first().getInstruction<ReferenceInstruction>().getReference<MethodReference>()
+
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "setChannelInformation",
+                        listOf(
+                            ImmutableMethodParameter(
+                                playerResponseType,
+                                annotations,
+                                null
+                            )
+                        ),
+                        "V",
+                        AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                        annotations,
+                        null,
+                        ImmutableMethodImplementation(
+                            3,
+                            """
+                                invoke-interface { p1 }, $channelIdMethodCall
+                                move-result-object v0
+                                invoke-static { v0 }, $EXTENSION_CLASS->setChannelId(Ljava/lang/String;)V
+
+                                return-void
+                            """.toInstructions(),
+                            null,
+                            null
+                        )
+                    ).toMutable()
+                )
+            }
+
+            matches.forEach { match ->
+                match.method.addInstruction(
+                    0,
+                    "invoke-direct { p0, p1 }, ${match.classDef.type}->setChannelInformation($playerResponseType)V"
+                )
+            }
+        }
+
+        onCreateHook(EXTENSION_CLASS, "initialize")
+        videoSpeedChangedHook(EXTENSION_CLASS, "videoSpeedChanged")
+        userSelectedPlaybackSpeedHook(EXTENSION_CLASS, "userSelectedPlaybackSpeed")
     }
 }
 

@@ -21,8 +21,8 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -94,6 +94,13 @@ internal object YouTubeMainActivityOnBackPressedFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_SUPER,
+            name = "onBackPressed"
+        ),
+        opcode(Opcode.RETURN_VOID)
+    )
 )
 
 internal object YouTubeActivityOnCreateFingerprint : Fingerprint(
@@ -136,6 +143,7 @@ internal object SeekbarFingerprint : Fingerprint(
 )
 
 internal object SeekbarOnDrawFingerprint : Fingerprint(
+    classFingerprint = SeekbarFingerprint,
     name = "onDraw",
     filters = listOf(
         methodCall(smali = "Ljava/lang/Math;->round(F)I"),
@@ -175,6 +183,27 @@ internal object ToolBarButtonFingerprint : Fingerprint(
             location = MatchAfterWithin(4)
         )
     )
+)
+
+internal object PlaybackSpeedOnItemClickParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+    returnType = "L",
+    parameters = listOf("L", "Ljava/lang/String;"),
+    filters = listOf(
+        methodCall(name = "getSupportFragmentManager", location = MatchFirst()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        methodCall(
+            returnType = "L",
+            parameters = listOf("Ljava/lang/String;"),
+            location = MatchAfterImmediately()
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
+    ),
+    custom = { _, classDef ->
+        classDef.methods.count() == 8
+    }
 )
 
 internal object VideoQualityChangedFingerprint : Fingerprint(

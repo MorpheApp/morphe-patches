@@ -56,7 +56,7 @@ Second \"item\" text"</string>
   <string name="morphe_language_title">Morphe dili</string>
   <string name="morphe_language_user_dialog_message">"Bazı diller için çeviriler eksik veya tamamlanmamış olabilir.
 
-Yeni dilleri çevirmek veya mevcut çevirileri geliştirmek için morphe.software/translate adresini ziyaret edin."</string>
+Yeni dilleri çevirmek veya mevcut çevirileri iyileştirmek için morphe.software/translate adresini ziyaret edin"</string>
   <string name="morphe_language_DEFAULT">Uygulama dili</string>
   <string name="morphe_pref_import_export_title">İçe / Dışa aktar</string>
   <string name="morphe_pref_import_export_summary">Morphe ayarlarını içe / dışa aktar</string>
@@ -78,19 +78,21 @@ Yeni dilleri çevirmek veya mevcut çevirileri geliştirmek için morphe.softwar
   <string name="morphe_settings_about_links_credits">Takdir</string>
   <string name="morphe_settings_about_links_dev_header_up_to_date">Güncel</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Güncelleme mevcut</string>
-  <string name="morphe_settings_about_contributors_current">Güncel geliştirme</string>
-  <string name="morphe_settings_about_contributors_prior">Önceki geliştirme</string>
-  <string name="morphe_settings_about_links_morphe">Etkin geliştirme</string>
-  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
-  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
-  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_contributors_current">MEVCUT GELİŞTİRME</string>
+  <string name="morphe_settings_about_contributors_prior">ÖNCEKİ GELİŞTİRME</string>
+  <string name="morphe_settings_about_links_morphe">Aktif Geliştirme</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Lisans bildirimleri</string>
+  <string name="morphe_settings_about_licenses_loading">Yükleniyor...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Hata ayıklama</string>
   <string name="morphe_debug_screen_summary">Hata ayıklama seçeneklerini etkinleştir veya devre dışı bırak</string>
   <string name="morphe_debug_title">Hata ayıklama kayıtları</string>
   <string name="morphe_debug_summary_on">Hata ayıklama kayıtları etkin</string>
   <string name="morphe_debug_summary_off">Hata ayıklama kayıtları devre dışı</string>
-  <string name="morphe_debug_stacktrace_title">Stack traces\'in kaydını tut</string>
+  <string name="morphe_debug_stacktrace_title">Hata ayıklama kaydı stack trace</string>
   <string name="morphe_debug_stacktrace_summary_on">Hata ayıklama kayıtları stack traces\'i içerir</string>
   <string name="morphe_debug_stacktrace_summary_off">Hata ayıklama kayıtları stack traces\'i içermez</string>
   <string name="morphe_debug_toast_on_error_title">Morphe hatası durumunda uyarı göster</string>
@@ -99,24 +101,27 @@ Yeni dilleri çevirmek veya mevcut çevirileri geliştirmek için morphe.softwar
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Hata bildirimlerini kapatmak, tüm Morphe hata bildirimlerini gizler.
 
 Beklenmedik olaylar hakkında bilgilendirilmeyeceksiniz."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Hata ayıklama kayıtlarını dışa aktar</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe hata ayıklama kayıtlarını panoya kopyalar</string>
+  <string name="morphe_debug_export_logs_title">Hata ayıklama kayıtlarını dışa aktar</string>
+  <string name="morphe_debug_export_logs_summary">Morphe hata ayıklama kayıtlarını dışa aktar</string>
+  <string name="morphe_debug_export_logs_file">Dosyaya aktar</string>
+  <string name="morphe_debug_export_logs_success">Hata ayıklama kayıtları başarıyla dışa aktarıldı</string>
+  <string name="morphe_debug_export_logs_failed">Hata ayıklama kayıtlarını dışa aktarma başarısız oldu</string>
+  <string name="morphe_debug_logs_search_hint">Hata ayıklama kayıtlarını ara...</string>
+  <string name="morphe_debug_export_logs_clear">Temizle</string>
   <string name="morphe_debug_logs_disabled">Hata ayıklama kayıtları devre dışı</string>
-  <string name="morphe_debug_logs_none_found">Kayıt bulunamadı</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Kayıtlar kopyalandı</string>
-  <string name="morphe_debug_logs_failed_to_export">Kayıtlar dışa aktarılamadı: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Hata ayıklama kayıtlarını temizle</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Kaydedilmiş tüm Morphe hata ayıklama kayıtlarını temizler</string>
-  <string name="morphe_debug_logs_clear_toast">Kayıtlar temizlendi</string>
+  <string name="morphe_debug_logs_none_found">Hiçbir hata ayıklama kaydı bulunamadı</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Hata ayıklama kayıtları panoya kopyalandı</string>
+  <string name="morphe_debug_logs_failed_to_export">Hata ayıklama kayıtlarını dışa aktarma başarısız oldu: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Hata ayıklama kayıtları temizlendi</string>
   <string name="morphe_debug_feature_flags_manager_title">Özellik işaretçileri yöneticisi</string>
   <string name="morphe_debug_feature_flags_manager_summary">Boolean özellik işaretçilerini yönet</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktif işaretçiler (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Engellenen işaretçiler (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">İşaretçileri ara...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">İşaretçiler kaydedildi</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">İşaretçiler sıfırlandı</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">İşaretçiler panoya kopyalandı</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bu özelliği kullanmak için uygulamayı yeniden başlatın</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktif özellik işaretçileri (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Engellenen özellik işaretçileri (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Özellik işaretçilerini ara...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Özellik işaretçileri kaydedildi</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Özellik işaretçileri sıfırlandı</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Özellik işaretçileri panoya kopyalandı</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Bu ayarı kullanmak için uygulamayı yeniden başlatın</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG ayarlarını açın</string>
@@ -136,4 +141,22 @@ MicroG için pil optimizasyonlarını devre dışı bırakmak, pil kullanımın�
 
 Devam düğmesine dokunun ve optimizasyon değişikliklerine izin verin."</string>
   <string name="gms_core_dialog_continue_text">Devam et</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pil optimizasyonu iletişim kutusu</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG pil optimizasyonu iletişim kutusu gösteriliyor</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG pil optimizasyonu iletişim kutusu gösterilmiyor</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Bunu devre dışı bırakmak MicroG pil optimizasyonları istemini gizleyecektir.
+
+Pil optimizasyonları değiştirilmezse aşağıdaki sorunlarla karşılaşabilirsiniz:
+• Uygulama rastgele kapanabilir
+• Bildirimler çalışmayabilir
+• Arka planda oynatma çalışmayabilir"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Deneysel Uyarı 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Deneysel bir uygulama sürümü olan ⚠️ &lt;b&gt;%1$s&lt;/b&gt; sürümünü kullanıyorsunuz
+&lt;br/&gt;&lt;br/&gt;
+🔧 Biz bu uygulama sürümü için yamaların ince ayarlarını tamamlarken, uygulamada garip davranışlar veya tanımlanmamış hatalarla karşılaşabilirsiniz.
+&lt;br/&gt;&lt;br/&gt;
+En sorunsuz deneyimi istiyorsanız, bunu &lt;b&gt;kaldırın&lt;/b&gt; ve önerilen ✅ &lt;b&gt;%2$s&lt;/b&gt; sürümünü yamalayın"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Deneysel istiyorum</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Stabil istiyorum</string>
 </resources>

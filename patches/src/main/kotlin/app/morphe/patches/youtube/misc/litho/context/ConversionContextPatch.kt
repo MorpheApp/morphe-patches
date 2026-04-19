@@ -25,7 +25,7 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 internal const val EXTENSION_CONTEXT_INTERFACE =
-    "Lapp/morphe/extension/youtube/shared/ConversionContext\$ContextInterface;"
+    $$"Lapp/morphe/extension/youtube/shared/ConversionContext$ContextInterface;"
 
 internal lateinit var conversionContextClassDef: MutableClass
 
@@ -90,6 +90,7 @@ val conversionContextPatch = bytecodePatch(
 
             // Since fields cannot be accessed directly in an abstract class, abstract methods are linked.
             val conversionContextIdentifierFingerprint = Fingerprint(
+                definingClass = conversionContextClassDef.type,
                 parameters = listOf(),
                 returnType = STRING_TYPE,
                 filters = listOf(
@@ -104,6 +105,7 @@ val conversionContextPatch = bytecodePatch(
                 )
             )
             val conversionContextStringBuilderFingerprint = Fingerprint(
+                definingClass = conversionContextClassDef.type,
                 parameters = listOf(),
                 returnType = STRING_BUILDER_TYPE,
                 filters = listOf(
@@ -118,10 +120,8 @@ val conversionContextPatch = bytecodePatch(
                 )
             )
 
-            val stringBuilderMethodName =
-                conversionContextStringBuilderFingerprint.match(conversionContextClassDef).method.name
-            val identifierMethodName =
-                conversionContextIdentifierFingerprint.match(conversionContextClassDef).method.name
+            val stringBuilderMethodName = conversionContextStringBuilderFingerprint.method.name
+            val identifierMethodName = conversionContextIdentifierFingerprint.method.name
 
             conversionContextClassDef = mutableClassDefBy(conversionContextClassDef.superclass!!)
 

@@ -18,14 +18,16 @@ Second \"item\" text"</string>
 <resources>
   <string name="morphe_screen_ads_title">Annoncer</string>
   <string name="morphe_hide_post_ads_title">Skjul annoncefeed</string>
-  <string name="morphe_hide_post_ads_summary">Skjuler annoncer i feedet</string>
-  <string name="morphe_hide_comment_ads_title">Skjul annoncekommentarer</string>
+  <string name="morphe_hide_post_ads_summary">Skjuler annoncer i feed</string>
+  <string name="morphe_hide_comment_ads_title">Skjul kommentarannoncer</string>
   <string name="morphe_hide_comment_ads_summary">Skjuler annoncer i kommentarfeltet</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_disable_modern_home_title">Deaktiver moderne startside</string>
   <string name="morphe_disable_modern_home_summary">Deaktiverer den moderne startsidebrugerflade</string>
   <string name="morphe_disable_screenshot_popup_title">Deaktiver skærmbilledpop-up</string>
   <string name="morphe_disable_screenshot_popup_summary">Deaktiverer pop-up\'en, der vises, når der tages et skærmbillede</string>
+  <string name="morphe_hide_ask_button_title">Skjul Spørg-knappen</string>
+  <string name="morphe_hide_ask_button_summary">Skjuler Spørg-knappen i søgefeltet</string>
   <string name="morphe_hide_answers_button_title">Skjul Svar-knappen</string>
   <string name="morphe_hide_answers_button_summary">Skjuler Svar-knappen i navigationslinjen</string>
   <string name="morphe_hide_chat_button_title">Skjul Chat-knappen</string>
@@ -47,24 +49,26 @@ Second \"item\" text"</string>
   <string name="morphe_hide_resources_shelf_title">Skjul Ressourcer hylde</string>
   <string name="morphe_hide_resources_shelf_summary">Skjuler Ressourcer hylde i sidepanelet</string>
   <string name="morphe_hide_recommended_communities_shelf_title">Skjul anbefalede fællesskaber</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Skjuler de anbefalede fællesskabers hylder i subreddits</string>
-  <string name="morphe_hide_trending_today_shelf_title">Skjul Trending i dag hylde</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Skjuler Trending i dag hylde fra søgeforslag
+  <string name="morphe_hide_recommended_communities_shelf_summary">Skjuler anbefalede fællesskaber hylder i subreddits</string>
+  <string name="morphe_hide_trending_today_shelf_title">Skjul Trender i dag hylde</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Skjuler Trender i dag hylde fra søgeforslag
 
 Begrænsning: Visuelle afstandsstykker vises muligvis ikke"</string>
-  <string name="morphe_remove_notification_dialog_title">Fjern meddelelsesforslagsdialog</string>
-  <string name="morphe_remove_notification_dialog_summary">Fjerner meddelelsesforslagsdialogen, der vises, når man besøger en subreddit ved automatisk at acceptere den</string>
+  <string name="morphe_remove_notification_dialog_title">Fjern notifikationsforslagsdialog</string>
+  <string name="morphe_remove_notification_dialog_summary">Fjerner notifikationsforslagsdialogen, der vises, når man besøger et subreddit ved automatisk at afvise den</string>
   <string name="morphe_show_view_count_title">Vis antal visninger</string>
   <string name="morphe_show_view_count_summary">"Viser antallet af visninger for Indlæg
 
 Begrænsning: Vises kun, hvis API-svaret inkluderer antallet af visninger"</string>
   <string name="morphe_remove_nsfw_dialog_title">Fjern NSFW-advarselsdialog</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Fjerner NSFW-advarselsdialogen, der vises, når man besøger en subreddit ved automatisk at acceptere den</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Fjerner NSFW-advarselsdialogen, der vises, når man besøger et subreddit ved automatisk at acceptere den</string>
   <string name="morphe_screen_miscellaneous_title">Diverse</string>
   <string name="morphe_about_title">Om</string>
   <string name="morphe_about_summary">Patch version og officielle links</string>
   <string name="morphe_sanitize_sharing_links_title">Rens delingslinks</string>
-  <string name="morphe_sanitize_sharing_links_summary">Saniteter delingslinks ved at fjerne sporingsforespørgsels parametre</string>
+  <string name="morphe_sanitize_sharing_links_summary">Renser delingslinks ved at fjerne sporingsforespørgselsparametre</string>
   <string name="morphe_open_links_directly_title">Åbn links direkte</string>
   <string name="morphe_open_links_directly_summary">Springer over omdirigerings-URL\'er i eksterne links</string>
+  <string name="morphe_open_links_externally_title">Åbn links eksternt</string>
+  <string name="morphe_open_links_externally_summary">Åbner links i din browser i stedet for i den interne browser</string>
 </resources>

@@ -3,11 +3,13 @@ package app.morphe.patches.youtube.video.speed.button
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
+import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playercontrols.addBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHook
@@ -18,7 +20,7 @@ import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
 private val playbackSpeedButtonResourcePatch = resourcePatch {
-    dependsOn(playerControlsPatch)
+    dependsOn(legacyPlayerControlsPatch)
 
     execute {
         copyResources(
@@ -29,11 +31,11 @@ private val playbackSpeedButtonResourcePatch = resourcePatch {
             )
         )
 
-        addBottomControl("speedbutton")
+        addLegacyBottomControl("speedbutton")
     }
 }
 
-private const val SPEED_BUTTON_CLASS_DESCRIPTOR =
+private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/PlaybackSpeedDialogButton;"
 
 val playbackSpeedButtonPatch = bytecodePatch(
@@ -44,7 +46,7 @@ val playbackSpeedButtonPatch = bytecodePatch(
         settingsPatch,
         customPlaybackSpeedPatch,
         playbackSpeedButtonResourcePatch,
-        playerControlsPatch,
+        playerOverlayButtonsHookPatch,
         videoInformationPatch,
     )
 
@@ -53,10 +55,12 @@ val playbackSpeedButtonPatch = bytecodePatch(
             SwitchPreference("morphe_playback_speed_dialog_button"),
         )
 
-        initializeBottomControl(SPEED_BUTTON_CLASS_DESCRIPTOR)
-        injectVisibilityCheckCall(SPEED_BUTTON_CLASS_DESCRIPTOR)
+        addPlayerBottomButton(EXTENSION_BUTTON)
 
-        videoSpeedChangedHook(SPEED_BUTTON_CLASS_DESCRIPTOR, "videoSpeedChanged")
-        userSelectedPlaybackSpeedHook(SPEED_BUTTON_CLASS_DESCRIPTOR, "videoSpeedChanged")
+        initializeLegacyBottomControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
+
+        videoSpeedChangedHook(EXTENSION_BUTTON, "videoSpeedChanged")
+        userSelectedPlaybackSpeedHook(EXTENSION_BUTTON, "videoSpeedChanged")
     }
 }

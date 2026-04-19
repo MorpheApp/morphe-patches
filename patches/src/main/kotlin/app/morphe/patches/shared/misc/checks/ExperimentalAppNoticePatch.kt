@@ -6,7 +6,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.RecommendedAppVersionUtilsFingerprint
 import app.morphe.util.returnEarly
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/patches/ExperimentalAppNoticePatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/ExperimentalAppNoticePatch;"
 
 internal fun experimentalAppNoticePatch(
     mainActivityFingerprint: Fingerprint,
@@ -19,7 +19,7 @@ internal fun experimentalAppNoticePatch(
 
         mainActivityFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->showExperimentalNoticeIfNeeded(Landroid/app/Activity;)V",
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->showExperimentalNoticeIfNeeded(Landroid/app/Activity;)V",
         )
     }
 }

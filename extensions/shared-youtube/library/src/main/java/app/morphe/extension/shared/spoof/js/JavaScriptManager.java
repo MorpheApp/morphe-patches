@@ -86,7 +86,7 @@ public final class JavaScriptManager {
      * JavaScript hash setting.
      */
     private static final StringSetting PLAYER_JS_HASH =
-            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_HASH;
+            SharedYouTubeSettings.SPOOF_VIDEO_STREAMS_PLAYER_JS_HASH_VALUE;
     /**
      * Variant of JavaScript url.
      */

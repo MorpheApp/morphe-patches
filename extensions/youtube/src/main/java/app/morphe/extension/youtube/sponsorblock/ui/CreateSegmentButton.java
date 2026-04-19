@@ -1,29 +1,25 @@
 package app.morphe.extension.youtube.sponsorblock.ui;
 
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
-import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
-import app.morphe.extension.youtube.videoplayer.PlayerControlButton;
+import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
 @SuppressWarnings("unused")
 public class CreateSegmentButton {
 
-    private static final int DRAWABLE_SB_LOGO = ResourceUtils.getIdentifierOrThrow(
-            ResourceType.DRAWABLE, Utils.appIsUsingBoldIcons()
-                    ? "morphe_sb_logo_bold"
-                    : "morphe_sb_logo"
-    );
+    static {
+        if (Settings.SB_ENABLED.get() && Settings.SB_CREATE_NEW_SEGMENT.get()) {
+            LegacyPlayerControlButton.incrementUpperButtonCount();
+        }
+    }
 
     @Nullable
-    private static PlayerControlButton instance;
+    private static LegacyPlayerControlButton instance;
 
     public static void hideControls() {
         if (instance != null) instance.hide();
@@ -32,26 +28,19 @@ public class CreateSegmentButton {
     /**
      * injection point.
      */
-    public static void initialize(View controlsView) {
+    public static void initializeLegacyButton(View controlsView) {
         try {
-            instance = new PlayerControlButton(
+            instance = new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_sb_create_segment_button",
                     null,
+                    "morphe_sb_logo",
                     CreateSegmentButton::isButtonEnabled,
                     v -> SponsorBlockViewController.toggleNewSegmentLayoutVisibility(),
                     null
             );
-
-            // FIXME: Bold YT player icons are currently forced off.
-            //        Enable this logic when the new player icons are not forced off.
-            ImageView icon = Utils.getChildViewByResourceName(controlsView,
-                    "morphe_sb_create_segment_button");
-            if (false) {
-                icon.setImageResource(DRAWABLE_SB_LOGO);
-            }
         } catch (Exception ex) {
-            Logger.printException(() -> "initialize failure", ex);
+            Logger.printException(() -> "initializeButton failure", ex);
         }
     }
 

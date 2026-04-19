@@ -20,25 +20,18 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">設定を完了するには再起動してください</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">アプリ名</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">カスタム</string>
   <string name="morphe_custom_branding_icon_title">アプリアイコン</string>
   <string name="morphe_custom_branding_icon_entry_1">オリジナル</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe（ブラック）</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe（ダーク）</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe（ライト）</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">カスタム</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 実験的バージョンの警告 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"あなたは現在、実験的アプリ バージョンである ⚠️ &lt;b&gt;%1$s&lt;/b&gt; を使用しています。
-&lt;br/&gt;&lt;br/&gt;
-🔧 このバージョンへのパッチの適用は調整中のため、動作が不安定になったり未確認の不具合が発生する可能性があります。
-&lt;br/&gt;&lt;br/&gt;
-できるだけ問題の少ない環境を希望する場合は、このアプリを &lt;b&gt;アンインストール&lt;/b&gt; して推奨アプリ バージョンである ✅ &lt;b&gt;%2$s&lt;/b&gt; にパッチを適用してください。"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 実験版にします</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 安定版にします</string>
+  <string name="morphe_custom_branding_icon_entry_6">カスタム</string>
+  <string name="morphe_custom_branding_notification_icon_title">通知アイコン</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">アプリアイコンに合わせる</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からの通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これはおそらく、DNS 広告ブロッカーまたはネットワーク プロキシが原因です。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください。</string>
@@ -104,8 +97,8 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
 • 設定した「JavaScript 版プレーヤーのハッシュ」が GVS 側で無効にされた場合、再生に失敗する"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">JavaScript 版プレーヤーの更新が有効になっています</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript 版プレーヤーのハッシュはおよそ1ヶ月間有効です。古くなったハッシュは GVS 側で無効にされる可能性があります。</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">JavaScript 版プレーヤーのハッシュ</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">有効な「JavaScript 版プレーヤーのハッシュ」を入力します</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">JavaScript 版プレーヤーのハッシュ</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">有効な「JavaScript 版プレーヤーのハッシュ」を入力してください</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC プロトコルを無効化</string>
   <string name="morphe_disable_quic_protocol_summary_on">QUIC プロトコルは無効です</string>
@@ -118,6 +111,10 @@ YouTube Premium ユーザーの場合、この設定は必要ない可能性が�
   <string name="morphe_force_original_audio_title">オリジナルの音声を強制的に使用</string>
   <string name="morphe_force_original_audio_summary_on">オリジナルの音声トラック (言語) を使用します\n\nオートダビングを含む吹き替えの音声トラックは使用されません</string>
   <string name="morphe_force_original_audio_summary_off">アプリが選択した音声トラック (言語) を使用します\n\nオートダビングを含む吹き替えの音声トラックが使用される場合があります</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">全画面広告を非表示</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">全画面広告は表示されません</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">全画面広告は表示されます</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">この機能を使用するには、[動画ストリームを偽装] のクライアントを Android Reel または TV に変更してください</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

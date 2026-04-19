@@ -6,7 +6,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FixContentProviderPatch;"
 
 /**
@@ -27,7 +27,7 @@ internal val fixContentProviderPatch = bytecodePatch{
 
                 it.method.addInstruction(
                     insertIndex,
-                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->removeNullMapEntries(Ljava/util/Map;)V"
+                    "invoke-static { v$register }, $EXTENSION_CLASS->removeNullMapEntries(Ljava/util/Map;)V"
                 )
             }
         }

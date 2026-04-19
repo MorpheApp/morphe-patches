@@ -25,6 +25,7 @@ import app.morphe.extension.shared.ui.Dim;
 @SuppressWarnings({"deprecation", "NewApi"})
 public abstract class BaseActivityHook extends Activity {
 
+    public static final String MORPHE_SETTINGS_INTENT = "morphe_settings_intent";
     private static final int ID_MORPHE_SETTINGS_FRAGMENTS =
             getIdentifierOrThrow(ResourceType.ID, "morphe_settings_fragments");
     private static final int ID_MORPHE_TOOLBAR_PARENT =
@@ -49,6 +50,12 @@ public abstract class BaseActivityHook extends Activity {
     }
 
     /**
+     * Set this to true in the future if stock YouTube ever fully implements
+     * Android's predictive back gestures for its settings menus.
+     */
+    private static final boolean ENABLE_PREDICTIVE_BACK_ANIMATION = false;
+
+    /**
      * Initializes the activity by setting the theme, content view and injecting a PreferenceFragment.
      */
     public static void initialize(BaseActivityHook hook, Activity activity) {
@@ -58,9 +65,16 @@ public abstract class BaseActivityHook extends Activity {
 
             // Sanity check.
             String dataString = activity.getIntent().getDataString();
-            if (!"morphe_settings_intent".equals(dataString)) {
+            if (!MORPHE_SETTINGS_INTENT.equals(dataString)) {
                 Logger.printException(() -> "Unknown intent: " + dataString);
                 return;
+            }
+
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU && !ENABLE_PREDICTIVE_BACK_ANIMATION) {
+                activity.getOnBackInvokedDispatcher().registerOnBackInvokedCallback(
+                        android.window.OnBackInvokedDispatcher.PRIORITY_DEFAULT,
+                        activity::finish
+                );
             }
 
             PreferenceFragment fragment = hook.createPreferenceFragment();

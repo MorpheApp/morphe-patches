@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -26,9 +36,12 @@ import java.net.URL;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
+import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("unused")
@@ -53,7 +66,7 @@ public class GmsCoreSupportPatch {
     private static volatile Boolean DONT_KILL_MY_APP_MANUFACTURER_SUPPORTED;
 
     private static String getOriginalPackageName() {
-       return null; // Modified during patching.
+        return null; // Modified during patching.
     }
 
     /**
@@ -126,16 +139,21 @@ public class GmsCoreSupportPatch {
             // Verify the user has not included GmsCore for a root installation.
             // GmsCore Support changes the package name, but with a mounted installation
             // all manifest changes are ignored and the original package name is used.
-            if (isPackageNameOriginal()) {
+            // Must check both original package name and if resources load correctly
+            // to allow changing to original package name with YT Music.
+            if (isPackageNameOriginal() && ResourceUtils.getIdentifier(
+                    ResourceType.STRING, "gms_core_dialog_title") == 0) {
                 Logger.printInfo(() -> "App is mounted with root, but GmsCore patch was included");
                 // Cannot use localize text here, since the app will load resources
                 // from the unpatched app and all patch strings are missing.
-                Utils.showToastLong("The 'GmsCore support' patch breaks mount installations");
+                Utils.showToastLong("Do not include 'GmsCore support' patch with root install");
 
                 // Do not exit. If the app exits before launch completes (and without
                 // opening another activity), then on some devices such as Pixel phone Android 10
                 // no toast will be shown and the app will continually relaunch
                 // with the appearance of a hung app.
+                open("https://morphe.software");
+                return;
             }
 
             // Verify GmsCore is installed.
@@ -159,11 +177,13 @@ public class GmsCoreSupportPatch {
             } else if (batteryOptimizationsEnabled(context)) {
                 Logger.printInfo(() -> "GmsCore is not whitelisted from battery optimizations");
 
-                showBatteryOptimizationDialog(context,
-                        "gms_core_dialog_not_whitelisted_using_battery_optimizations_message",
-                        "gms_core_dialog_continue_text",
-                        (dialog, id) -> openGmsCoreDisableBatteryOptimizationsIntent(context));
-                return;
+                if (SharedSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
+                    showBatteryOptimizationDialog(context,
+                            "gms_core_dialog_not_whitelisted_using_battery_optimizations_message",
+                            "gms_core_dialog_continue_text",
+                            (dialog, id) -> openGmsCoreDisableBatteryOptimizationsIntent(context));
+                    return;
+                }
             }
 
             // Check if GmsCore is currently running in the background.
@@ -172,12 +192,15 @@ public class GmsCoreSupportPatch {
             try {
                 if (client == null) {
                     Logger.printInfo(() -> "GmsCore is not running in the background");
-                    checkIfDontKillMyAppSupportsManufacturer();
 
-                    showBatteryOptimizationDialog(context,
-                            "gms_core_dialog_not_whitelisted_not_allowed_in_background_message",
-                            "gms_core_dialog_open_website_text",
-                            (dialog, id) -> openDontKillMyApp());
+                    if (SharedSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
+                        checkIfDontKillMyAppSupportsManufacturer();
+
+                        showBatteryOptimizationDialog(context,
+                                "gms_core_dialog_not_whitelisted_not_allowed_in_background_message",
+                                "gms_core_dialog_open_website_text",
+                                (dialog, id) -> openDontKillMyApp());
+                    }
                 }
             } finally {
                 if (client != null) client.close();

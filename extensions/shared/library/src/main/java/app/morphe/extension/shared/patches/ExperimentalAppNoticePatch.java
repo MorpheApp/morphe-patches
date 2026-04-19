@@ -1,6 +1,5 @@
 package app.morphe.extension.shared.patches;
 
-import static app.morphe.extension.shared.StringRef.StringKeyLookup;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
@@ -9,45 +8,13 @@ import android.text.Html;
 import android.util.Pair;
 import android.widget.LinearLayout;
 
-import java.util.Map;
-
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
+import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 
-@SuppressWarnings("unused")
+@SuppressWarnings({"deprecation", "unused"})
 public class ExperimentalAppNoticePatch {
-
-    // Backup strings for Reddit. Remove this when Reddit gets resource patching or localized strings.
-    private static final StringKeyLookup strings = new StringKeyLookup(
-            Map.of("morphe_experimental_app_version_dialog_title",
-                    "🚨 Experimental Alert 🚨",
-
-                    "morphe_experimental_app_version_dialog_message",
-                    """
-                    You are using an experimental app version of ⚠️ <b>%s</b>
-                    <br/><br/>
-                    🔧 Expect quirky app behavior or unidentified bugs as we fine tune the patches for this app version.
-                    <br/><br/>
-                    If you want the most trouble free experience, then <b>uninstall</b> this and patch the recommended app version of ✅ <b>%s</b>""",
-
-                    "morphe_experimental_app_version_dialog_confirm",
-                    "⚠️ I want experimental",
-
-                    "morphe_experimental_app_version_dialog_open_homepage",
-                    "✅ I want stable"
-            )
-    );
-
-    private static String getString(String key, Object... args) {
-        if (ResourceUtils.getIdentifier(ResourceType.STRING, key) == 0) {
-            return strings.getString(key, args);
-        }
-        return str(key, args);
-    }
 
     public static boolean experimentalNoticeShouldBeShown() {
         String appVersionName = Utils.getAppVersionName();
@@ -60,7 +27,7 @@ public class ExperimentalAppNoticePatch {
         }
 
         // User already confirmed experimental.
-        return !BaseSettings.EXPERIMENTAL_APP_CONFIRMED.get().equals(appVersionName);
+        return !SharedSettings.EXPERIMENTAL_APP_CONFIRMED.get().equals(appVersionName);
     }
 
     /**
@@ -79,17 +46,17 @@ public class ExperimentalAppNoticePatch {
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     activity,
-                    getString("morphe_experimental_app_version_dialog_title"), // Title.
-                    Html.fromHtml(getString("morphe_experimental_app_version_dialog_message", appVersionName, recommendedAppVersion)), // Message.
+                    str("morphe_experimental_app_version_dialog_title"), // Title.
+                    Html.fromHtml(str("morphe_experimental_app_version_dialog_message", appVersionName, recommendedAppVersion)), // Message.
                     null, // No EditText.
-                    getString("morphe_experimental_app_version_dialog_open_homepage"), // OK button text.
+                    str("morphe_experimental_app_version_dialog_open_homepage"), // OK button text.
                     () -> {
                         Utils.openLink("https://morphe.software"); // TODO? Send users to a unique page.
                         activity.finishAndRemoveTask(); // Shutdown the app. More proper than calling System.exit().
                     }, // OK button action.
                     null, // Cancel button action.
-                    getString("morphe_experimental_app_version_dialog_confirm"), // Neutral button text.
-                    () -> BaseSettings.EXPERIMENTAL_APP_CONFIRMED.save(appVersionName), // Neutral button action.
+                    str("morphe_experimental_app_version_dialog_confirm"), // Neutral button text.
+                    () -> SharedSettings.EXPERIMENTAL_APP_CONFIRMED.save(appVersionName), // Neutral button action.
                     true // Dismiss dialog on Neutral button click.
             );
 

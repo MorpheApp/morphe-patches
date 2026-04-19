@@ -37,6 +37,9 @@ public class RemoveSubRedditDialogPatch {
      */
     public static void dismissNSFWDialog(Object customDialog) {
         if (REMOVE_NSFW_DIALOG && customDialog instanceof Dialog dialog) {
+            if (!dialog.isShowing()) {
+                dialog.show();
+            }
             Window window = dialog.getWindow();
             if (window != null) {
                 WindowManager.LayoutParams params = window.getAttributes();

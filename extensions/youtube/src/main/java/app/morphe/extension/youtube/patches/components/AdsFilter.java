@@ -1,4 +1,16 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches.components;
+
+import static app.morphe.extension.shared.ByteTrieSearch.convertStringsToBytes;
 
 import android.app.Dialog;
 import android.view.View;
@@ -9,9 +21,11 @@ import androidx.annotation.Nullable;
 
 import java.util.List;
 
+import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
@@ -35,10 +49,14 @@ public final class AdsFilter extends Filter {
     private static final boolean HIDE_END_SCREEN_STORE_BANNER =
             Settings.HIDE_END_SCREEN_STORE_BANNER.get();
 
+    private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
+    private static final ByteTrieSearch statementBannerSearch = new ByteTrieSearch(
+            convertStringsToBytes("statement_banner"));
+    private static final ByteTrieSearch yoodleSearch = new ByteTrieSearch(
+            convertStringsToBytes("EgliaWd5b29kbGU")); // Base64 chunk that decodes to 'bigyoodle'
+
     private final StringTrieSearch exceptions = new StringTrieSearch();
 
-    private final StringFilterGroup promotionBanner;
-    private final ByteArrayFilterGroup promotionBannerBuffer;
     private final StringFilterGroup buyMovieAd;
     private final ByteArrayFilterGroup buyMovieAdBuffer;
 
@@ -133,17 +151,6 @@ public final class AdsFilter extends Filter {
                 "shopping_carousel.e" // Channel profile shopping shelf.
         );
 
-        promotionBanner = new StringFilterGroup(
-                Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS,
-                "statement_banner"
-        );
-
-        promotionBannerBuffer = new ByteArrayFilterGroup(
-                null,
-                "img/promos/growth/", // Link, https://www.gstatic.com/youtube/img/promos/growth/ is only used for ads.
-                "SPunlimited" // Word associated with Premium, should be unique to differentiate Doodle from ad banner.
-        );
-
         final var selfSponsor = new StringFilterGroup(
                 Settings.HIDE_SELF_SPONSOR,
                 "cta_shelf_card"
@@ -154,7 +161,6 @@ public final class AdsFilter extends Filter {
                 generalAds,
                 merchandise,
                 movieAds,
-                promotionBanner,
                 selfSponsor,
                 shoppingLinks,
                 viewProducts
@@ -174,20 +180,44 @@ public final class AdsFilter extends Filter {
             return contentIndex == 0 && buyMovieAdBuffer.check(buffer).isFiltered();
         }
 
-        if (matchedGroup == promotionBanner) {
-            return contentIndex == 0 && promotionBannerBuffer.check(buffer).isFiltered();
+        return !exceptions.matches(path);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static byte[] hideStatementBanner(byte[] bytes) {
+        try {
+            if (statementBannerSearch.matches(bytes)) {
+                final boolean isDoodle = yoodleSearch.matches(bytes);
+
+                if (isDoodle) {
+                    if (Settings.HIDE_YOUTUBE_DOODLES.get()) {
+                        Logger.printDebug(() -> "Hiding YouTube Doodles");
+                        return EMPTY_BYTE_ARRAY;
+                    }
+                } else {
+                    if (Settings.HIDE_YOUTUBE_PREMIUM_PROMOTIONS.get()) {
+                        Logger.printDebug(() -> "Hiding YouTube Premium promotions");
+                        return EMPTY_BYTE_ARRAY;
+                    }
+                }
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "hideStatementBanner failure", ex);
         }
 
-        return !exceptions.matches(path);
+        return bytes;
     }
 
     /**
      * Injection point.
      * Called from a different place then the other filters.
      */
+    // TODO: Extract this into a youtube-shared patch
     public static void closeFullscreenAd(Object customDialog, @Nullable byte[] buffer) {
         try {
-            if (!Settings.HIDE_FULLSCREEN_ADS.get()) {
+            if (!SharedYouTubeSettings.HIDE_FULLSCREEN_ADS.get()) {
                 return;
             }
 
@@ -196,8 +226,7 @@ public final class AdsFilter extends Filter {
                 return;
             }
 
-            if (fullscreenAd.check(buffer).isFiltered() &&
-                    customDialog instanceof Dialog dialog) {
+            if (customDialog instanceof Dialog dialog && fullscreenAd.check(buffer).isFiltered()) {
                 Logger.printDebug(() -> "Closing fullscreen ad");
 
                 Window window = dialog.getWindow();

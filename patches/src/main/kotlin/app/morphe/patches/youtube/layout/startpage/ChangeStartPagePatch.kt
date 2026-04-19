@@ -14,7 +14,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/ChangeStartPagePatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ChangeStartPagePatch;"
 
 val changeStartPagePatch = bytecodePatch(
     name = "Change start page",
@@ -52,7 +52,7 @@ val changeStartPagePatch = bytecodePatch(
                 addInstructions(
                     browseIdIndex + 1,
                     """
-                        invoke-static { v$browseIdRegister }, $EXTENSION_CLASS_DESCRIPTOR->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;
+                        invoke-static { v$browseIdRegister }, $EXTENSION_CLASS->overrideBrowseId(Ljava/lang/String;)Ljava/lang/String;
                         move-result-object v$browseIdRegister
                     """
                 )
@@ -63,7 +63,7 @@ val changeStartPagePatch = bytecodePatch(
         // Just hook the Intent action.
         IntentActionFingerprint.method.addInstruction(
             0,
-            "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->overrideIntentAction(Landroid/content/Intent;)V",
+            "invoke-static { p1 }, $EXTENSION_CLASS->overrideIntentAction(Landroid/content/Intent;)V",
         )
     }
 }

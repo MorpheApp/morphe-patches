@@ -29,7 +29,7 @@ import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/speed/RememberPlaybackSpeedPatch;"
 
 internal val rememberPlaybackSpeedPatch = bytecodePatch {
@@ -55,10 +55,10 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
             )
         )
 
-        onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
+        onCreateHook(EXTENSION_CLASS, "newVideoStarted")
 
         userSelectedPlaybackSpeedHook(
-            EXTENSION_CLASS_DESCRIPTOR,
+            EXTENSION_CLASS,
             "userSelectedPlaybackSpeed",
         )
 
@@ -73,7 +73,7 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
             addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getPlaybackSpeedOverride()F
+                    invoke-static { }, $EXTENSION_CLASS->getPlaybackSpeedOverride()F
                     move-result v0
                     
                     # Check if the playback speed is not auto (-2.0f)

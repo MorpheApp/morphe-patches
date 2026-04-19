@@ -1,17 +1,18 @@
 package app.morphe.patches.music.layout.compactheader
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
-import app.morphe.util.customLiteral
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.opcode
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object ChipCloudFingerprint : Fingerprint(
     returnType = "V",
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.CONST,
-        Opcode.CONST_4,
-        Opcode.INVOKE_STATIC,
-        Opcode.MOVE_RESULT_OBJECT
-    ),
-    custom = customLiteral { chipCloud } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "chip_cloud"),
+        opcode(Opcode.CONST_4, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_STATIC, location = MatchAfterImmediately()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
 )

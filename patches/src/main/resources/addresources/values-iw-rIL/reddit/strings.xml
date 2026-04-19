@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">משביתה את ממשק הבית המודרני</string>
   <string name="morphe_disable_screenshot_popup_title">השבתת חלון הצידודית של צילום מסך</string>
   <string name="morphe_disable_screenshot_popup_summary">משביתה את החלון הצידודית שמופיע בעת לקיחת צילום מסך</string>
+  <string name="morphe_hide_ask_button_title">הסתר לחצן שאלה</string>
+  <string name="morphe_hide_ask_button_summary">מסתיר את לחצן השאלה בשורת החיפוש</string>
   <string name="morphe_hide_answers_button_title">הסתרת כפתור תשובות</string>
   <string name="morphe_hide_answers_button_summary">מסתירה את כפתור התשובות בסרגל הניווט</string>
   <string name="morphe_hide_chat_button_title">הסתרת כפתור צ\'אט</string>
@@ -67,4 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">טיהור קישורי שיתוף על ידי הסרת פרמטרי מעקב</string>
   <string name="morphe_open_links_directly_title">פתיחת קישורים ישירות</string>
   <string name="morphe_open_links_directly_summary">דילוג על כתובות URL של הפניות בקישורים חיצוניים</string>
+  <string name="morphe_open_links_externally_title">פתיחת קישורים מחוץ לאפליקציה</string>
+  <string name="morphe_open_links_externally_summary">פותח קישורים בדפדפן החיצוני שלך במקום בדפדפן המובנה באפליקציה</string>
 </resources>

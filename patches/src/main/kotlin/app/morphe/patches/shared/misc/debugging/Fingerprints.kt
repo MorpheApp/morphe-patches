@@ -21,6 +21,7 @@ internal object ExperimentFlagUtilFingerprint : Fingerprint(
 )
 
 internal object ExperimentalBooleanFeatureFlagFingerprint : Fingerprint(
+    classFingerprint = ExperimentFlagUtilFingerprint,
     returnType = "Z",
     parameters = listOf("L", "J", "Z"),
     custom = { method, _ ->
@@ -31,6 +32,7 @@ internal object ExperimentalBooleanFeatureFlagFingerprint : Fingerprint(
 )
 
 internal object ExperimentalDoubleFeatureFlagFingerprint : Fingerprint(
+    classFingerprint = ExperimentFlagUtilFingerprint,
     returnType = "D",
     parameters = listOf("L", "J", "D"),
     custom = { method, _ ->
@@ -39,6 +41,7 @@ internal object ExperimentalDoubleFeatureFlagFingerprint : Fingerprint(
 )
 
 internal object ExperimentalLongFeatureFlagFingerprint : Fingerprint(
+    classFingerprint = ExperimentFlagUtilFingerprint,
     returnType = "J",
     parameters = listOf("L", "J", "J"),
     custom = { method, _ ->
@@ -47,6 +50,7 @@ internal object ExperimentalLongFeatureFlagFingerprint : Fingerprint(
 )
 
 internal object ExperimentalStringFeatureFlagFingerprint : Fingerprint(
+    classFingerprint = ExperimentFlagUtilFingerprint,
     returnType = "Ljava/lang/String;",
     parameters = listOf("L", "J", "Ljava/lang/String;"),
     custom = { method, _ ->

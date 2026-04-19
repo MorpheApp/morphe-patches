@@ -6,6 +6,7 @@ import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object OnFailureFingerprint : Fingerprint(
+    classFingerprint = OnResponseStartedFingerprint,
     name = "onFailed",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -16,8 +17,7 @@ internal object OnFailureFingerprint : Fingerprint(
     )
 )
 
-// Acts as a parent fingerprint.
-internal object OnResponseStartedFingerprint : Fingerprint(
+private object OnResponseStartedFingerprint : Fingerprint(
     name ="onResponseStarted",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -31,32 +31,34 @@ internal object OnResponseStartedFingerprint : Fingerprint(
 )
 
 internal object OnSucceededFingerprint : Fingerprint(
+    classFingerprint = OnResponseStartedFingerprint,
     name = "onSucceeded",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Lorg/chromium/net/UrlRequest;", "Lorg/chromium/net/UrlResponseInfo;")
 )
 
-internal const val CRONET_URL_REQUEST_CLASS_DESCRIPTOR = "Lorg/chromium/net/impl/CronetUrlRequest;"
+internal const val CRONET_URL_REQUEST_CLASS = "Lorg/chromium/net/impl/CronetUrlRequest;"
 
 internal object RequestFingerprint : Fingerprint(
-    definingClass = CRONET_URL_REQUEST_CLASS_DESCRIPTOR,
+    definingClass = CRONET_URL_REQUEST_CLASS,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR)
 )
 
-internal object MessageDigestImageURLFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    parameters = listOf("Ljava/lang/String;", "L")
-)
-
-internal object MessageDigestImageURLParentFingerprint : Fingerprint(
+private object MessageDigestImageURLParentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
     filters = listOf(
         anyInstruction(
-            string("@#&=*+-_.,:!?()/~'%;\$"),
-            string("@#&=*+-_.,:!?()/~'%;\$[]"), // 20.38+
+            string("@#&=*+-_.,:!?()/~'%;$"),
+            string("@#&=*+-_.,:!?()/~'%;$[]"), // 20.38+
         )
     )
+)
+
+internal object MessageDigestImageURLFingerprint : Fingerprint(
+    classFingerprint = MessageDigestImageURLParentFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("Ljava/lang/String;", "L")
 )

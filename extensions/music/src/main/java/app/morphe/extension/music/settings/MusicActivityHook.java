@@ -18,7 +18,8 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 
 /**
- * Hooks GoogleApiActivity to inject a custom {@link MusicPreferenceFragment} with a toolbar and search.
+ * Hooks {@code com.google.android.gms.common.api.GoogleApiActivity}
+ * to inject a custom {@link MusicPreferenceFragment} with a toolbar and search.
  */
 public class MusicActivityHook extends BaseActivityHook {
 
@@ -46,6 +47,13 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @SuppressWarnings("unused")
     public static void initialize(Activity parentActivity) {
+
+        // Prevent opening multiple settings activities if menu is double tapped quickly.
+        if (Utils.isFastClick()) {
+            parentActivity.finish();
+            return;
+        }
+
         // Must touch the Music settings to ensure the settings class is loaded and
         // the values can be found when setting the UI preferences.
         // Logging anything under non debug ensures this is set.

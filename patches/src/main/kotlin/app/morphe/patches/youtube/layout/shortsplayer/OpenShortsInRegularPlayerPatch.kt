@@ -7,7 +7,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -33,7 +33,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenShortsInRegularPlayerPatch;"
 
 @Suppress("unused")
@@ -60,7 +60,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         // Activity is used as the context to launch an Intent.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
                     "setMainActivity(Landroid/app/Activity;)V",
         )
 
@@ -80,7 +80,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                 
                 invoke-virtual { v0 }, ${PlaybackStartDescriptorToStringFingerprint.classDef}->$playbackStartVideoIdMethodName()Ljava/lang/String;
                 move-result-object v1
-                invoke-static { v1 }, $EXTENSION_CLASS_DESCRIPTOR->openShort(Ljava/lang/String;)Z
+                invoke-static { v1 }, $EXTENSION_CLASS->openShort(Ljava/lang/String;)Z
                 move-result v1
                 if-eqz v1, :disabled
                 return-void
@@ -108,7 +108,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                         addInstructionsAtControlFlowLabel(
                             index,
                             """
-                                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit()Z
+                                invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
                                 move-result v$freeRegister      
                                 if-eqz v$freeRegister, :doNotCallActivityFinish
                                 return-void   
@@ -123,7 +123,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                         addInstructionsAtControlFlowLabel(
                             index,
                             """
-                                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit()Z
+                                invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
                                 move-result v$freeRegister      
                                 if-eqz v$freeRegister, :doNotCallActivityFinish
                             """, ExternalLabel(
@@ -156,7 +156,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
             addInstructions(
                 getBooleanFieldIndex + 1,
                 """
-                    invoke-static { v$booleanRegister }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit(Z)Z    
+                    invoke-static { v$booleanRegister }, $EXTENSION_CLASS->overrideBackPressToExit(Z)Z    
                     move-result v$booleanRegister
                 """
             )
@@ -175,7 +175,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
             addInstructionsAtControlFlowLabel(
                 finishIndexFirst,
                 """
-                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->overrideBackPressToExit()Z
+                    invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
                     move-result v$freeRegister
                     if-eqz v$freeRegister, :doNotCallActivityFinish
                 """,

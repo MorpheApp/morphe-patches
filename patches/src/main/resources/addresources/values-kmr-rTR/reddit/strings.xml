@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Malê nû paqij bike</string>
   <string name="morphe_disable_screenshot_popup_title">Dema çêkirina ekranê, ragihîner azad bike</string>
   <string name="morphe_disable_screenshot_popup_summary">Dema çêkirina ekranê, ragihîner azad bike</string>
+  <string name="morphe_hide_ask_button_title">Dîmena Butona Pirsîn</string>
+  <string name="morphe_hide_ask_button_summary">Butona Pirsînê di çendera lêgerînê de veşartin</string>
   <string name="morphe_hide_answers_button_title">Bikutana \'Bersiv\'ê ji holê erxe</string>
   <string name="morphe_hide_answers_button_summary">Bikutana \'Bersiv\'ê ji holê erxe</string>
   <string name="morphe_hide_chat_button_title">Bikutana \'Çat\'ê ji holê erxe</string>
@@ -67,4 +69,6 @@ Sînorkar: Tenê dema ku bersivên API hejmara dîtinê diyar bikin, nîşan tê
   <string name="morphe_sanitize_sharing_links_summary">Lînkên parvekirinê paqij bike, bi avakirinê ya parametrikên îzbarê</string>
   <string name="morphe_open_links_directly_title">Lînkên bi rastî veke</string>
   <string name="morphe_open_links_directly_summary">Dema ku lînkên derve têne pêşîn, URL\'yên veqefandinê bişîne</string>
+  <string name="morphe_open_links_externally_title">Linskan derve evîn veşartîne</string>
+  <string name="morphe_open_links_externally_summary">Girêjkan di navigînerek tarîstikê de çêdike, ne di tarîstikê navîn de</string>
 </resources>

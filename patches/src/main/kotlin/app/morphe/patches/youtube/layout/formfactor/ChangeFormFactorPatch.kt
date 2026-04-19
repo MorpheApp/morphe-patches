@@ -28,7 +28,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ChangeFormFactorPatch;"
 
 @Suppress("unused")
@@ -72,7 +72,7 @@ val changeFormFactorPatch = bytecodePatch(
                 addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getUniversalFormFactor(I)I
+                        invoke-static { v$register }, $EXTENSION_CLASS->getUniversalFormFactor(I)I
                         move-result v$register
                     """
                 )
@@ -87,7 +87,7 @@ val changeFormFactorPatch = bytecodePatch(
         ).forEach { endpoint ->
             addClientFormFactorHook(
                 endpoint,
-                "$EXTENSION_CLASS_DESCRIPTOR->replaceBrokenFormFactor(I)I",
+                "$EXTENSION_CLASS->replaceBrokenFormFactor(I)I",
             )
         }
     }

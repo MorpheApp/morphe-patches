@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">يُعطل واجهة المستخدم الحديثة للصفحة الرئيسية</string>
   <string name="morphe_disable_screenshot_popup_title">تعطيل نافذة التقاط الشاشة المنبثقة</string>
   <string name="morphe_disable_screenshot_popup_summary">يُعطل النافذة المنبثقة التي تظهر عند التقاط لقطة شاشة</string>
+  <string name="morphe_hide_ask_button_title">إخفاء زر طرح سؤال</string>
+  <string name="morphe_hide_ask_button_summary">يخفي زر طرح سؤال في شريط البحث</string>
   <string name="morphe_hide_answers_button_title">إخفاء زر الإجابات</string>
   <string name="morphe_hide_answers_button_summary">يخفي زر الإجابات في شريط التنقل</string>
   <string name="morphe_hide_chat_button_title">إخفاء زر الدردشة</string>
@@ -67,4 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">تنظيف روابط المشاركة عن طريق إزالة معلمات التتبع</string>
   <string name="morphe_open_links_directly_title">فتح الروابط مباشرةً</string>
   <string name="morphe_open_links_directly_summary">تجاوز عناوين URL لإعادة التوجيه في الروابط الخارجية</string>
+  <string name="morphe_open_links_externally_title">فتح الروابط خارجيًا</string>
+  <string name="morphe_open_links_externally_summary">يفتح الروابط في متصفحك بدلًا من المتصفح داخل التطبيق</string>
 </resources>

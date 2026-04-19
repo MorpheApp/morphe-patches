@@ -26,6 +26,8 @@ Second \"item\" text"</string>
     <string name="morphe_disable_modern_home_summary">Disables the modern home UI</string>
     <string name="morphe_disable_screenshot_popup_title">Disable screenshot popup</string>
     <string name="morphe_disable_screenshot_popup_summary">Disables the popup that appears when taking a screenshot</string>
+    <string name="morphe_hide_ask_button_title">Hide Ask button</string>
+    <string name="morphe_hide_ask_button_summary">Hides the Ask button in the search bar</string>
     <string name="morphe_hide_answers_button_title">Hide Answers button</string>
     <string name="morphe_hide_answers_button_summary">Hides the Answers button in the navigation bar</string>
     <string name="morphe_hide_chat_button_title">Hide Chat button</string>
@@ -68,4 +70,6 @@ Limitation: Only shown if the API response includes the view count"</string>
     <string name="morphe_sanitize_sharing_links_summary">Sanitizes sharing links by removing tracking query parameters</string>
     <string name="morphe_open_links_directly_title">Open links directly</string>
     <string name="morphe_open_links_directly_summary">Skips over redirection URLs in external links</string>
+    <string name="morphe_open_links_externally_title">Open links externally</string>
+    <string name="morphe_open_links_externally_summary">Opens links in your browser instead of in the in-app-browser</string>
 </resources>

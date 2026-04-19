@@ -5,24 +5,14 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_43_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-
-internal var layoutCircle = -1L
-    private set
-internal var layoutIcon = -1L
-    private set
-internal var layoutVideo = -1L
-    private set
 
 private val hideEndScreenCardsResourcePatch = resourcePatch {
     dependsOn(
@@ -34,16 +24,10 @@ private val hideEndScreenCardsResourcePatch = resourcePatch {
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_hide_end_screen_cards"),
         )
-
-        fun idOf(name: String) = getResourceId(ResourceType.LAYOUT, "endscreen_element_layout_$name")
-
-        layoutCircle = idOf("circle")
-        layoutIcon = idOf("icon")
-        layoutVideo = idOf("video")
     }
 }
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideEndScreenCardsPatch;"
 
 @Suppress("unused")
@@ -54,7 +38,8 @@ val hideEndScreenCardsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         hideEndScreenCardsResourcePatch,
-        versionCheckPatch
+        versionCheckPatch,
+        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -72,23 +57,21 @@ val hideEndScreenCardsPatch = bytecodePatch(
                 addInstruction(
                     insertIndex,
                     "invoke-static { v$viewRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->hideEndScreenCardView(Landroid/view/View;)V",
+                            "$EXTENSION_CLASS->hideEndScreenCardView(Landroid/view/View;)V",
                 )
             }
         }
 
-        if (is_19_43_or_greater) {
-            ShowEndscreenCardsFingerprint.method.addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenCards()Z
-                    move-result v0
-                    if-eqz v0, :show
-                    return-void
-                    :show
-                    nop
-                """
-            )
-        }
+        ShowEndscreenCardsFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static {}, $EXTENSION_CLASS->hideEndScreenCards()Z
+                move-result v0
+                if-eqz v0, :show
+                return-void
+                :show
+                nop
+            """
+        )
     }
 }
