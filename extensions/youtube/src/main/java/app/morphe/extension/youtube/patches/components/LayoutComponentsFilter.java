@@ -55,7 +55,6 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup communityPosts;
     private final StringFilterGroup surveys;
     private final StringFilterGroup notifyMe;
-    private final StringFilterGroup singleItemInformationPanel;
     private final StringFilterGroup expandableMetadata;
     private final ByteArrayFilterGroup productCardBuffer;
     private final ByteArrayFilterGroup summaryCardBuffer;
@@ -186,7 +185,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "publisher_transparency_panel"
         );
 
-        singleItemInformationPanel = new StringFilterGroup(
+        final var singleItemInformationPanel = new StringFilterGroup(
                 Settings.HIDE_INFO_PANELS,
                 "single_item_information_panel"
         );
@@ -385,14 +384,6 @@ public final class LayoutComponentsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        // This identifier is used not only in players but also in search results:
-        // Until 2024, medical information panels such as Covid-19 also used this identifier and were shown in the search results.
-        // From 2025, the medical information panel is no longer shown in the search results.
-        // Therefore, this identifier does not filter when the search bar is activated.
-        if (matchedGroup == singleItemInformationPanel) {
-            return PlayerType.getCurrent().isMaximizedOrFullscreen() || !NavigationBar.isSearchBarActive();
-        }
-
         // The groups are excluded from the filter due to the exceptions list below.
         // Filter them separately here.
         if (matchedGroup == notifyMe || matchedGroup == surveys) {
