@@ -18,7 +18,6 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/PermanentRepeatPatch;"
@@ -46,16 +45,14 @@ val permanentRepeatPatch = bytecodePatch(
         RepeatTrackFingerprint.method.apply {
             // Start index is at a branch, but the same
             // register is clobbered in both branch paths.
-            val freeRegister = findFreeRegister(startIndex)
             val targetRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
             addInstructionsWithLabels(
                 startIndex,
                 """
+                    if-nez v$targetRegister, :skip_override
                     invoke-static { }, $EXTENSION_CLASS->permanentRepeat()Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :skip_override
-                    const/16 v$targetRegister, 0x1
+                    move-result v$targetRegister
                     :skip_override
                     nop
                 """
