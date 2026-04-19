@@ -32,7 +32,7 @@ val hideAdsPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        hideFullscreenAdsPatch(EXTENSION_CLASS, PreferenceScreen.ADS),
+        hideFullscreenAdsPatch(PreferenceScreen.ADS),
         settingsPatch,
     )
 
