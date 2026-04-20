@@ -272,6 +272,24 @@ val crossfadePatch = bytecodePatch(
             """,
         )
 
+        val musicActivityClass = mutableClassDefBy(
+            "Lcom/google/android/apps/youtube/music/activities/MusicActivity;",
+        )
+        musicActivityClass.methods.first { it.name == "onStop" && it.parameterTypes.isEmpty() }
+            .addInstructions(
+                0,
+                """
+                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->onActivityStop()V
+                """,
+            )
+        musicActivityClass.methods.first { it.name == "onStart" && it.parameterTypes.isEmpty() }
+            .addInstructions(
+                0,
+                """
+                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->onActivityStart()V
+                """,
+            )
+
         // -------------------------------------------------------------- //
         //  Discover obfuscated classes and fields                         //
         // -------------------------------------------------------------- //
