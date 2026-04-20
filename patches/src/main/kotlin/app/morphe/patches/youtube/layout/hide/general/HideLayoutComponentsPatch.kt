@@ -483,7 +483,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // endregion
 
-        // region hide livechat donators bar
+        // region hide live chat donators bar
 
         LiveChatDonatorsBarFingerprint.let {
             it.method.injectHideViewCall(
