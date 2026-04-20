@@ -150,4 +150,13 @@ Jeśli ustawienia optymalizacji baterii nie zostaną zmienione, mogą wystąpić
 • Aplikacja może się nieoczekiwanie zamykać
 • Powiadomienia mogą nie działać
 • Odtwarzanie w tle może nie działać"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Wersja eksperymentalna 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Używasz eksperymentalnej wersji ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Spodziewaj się niestabilnego działania aplikacji lub nieznanych błędów, ponieważ dopracowujemy modyfikacje dla tej wersji aplikacji.
+&lt;br/&gt;&lt;br/&gt;
+Jeśli zależy Ci na stabilności, &lt;b&gt;odinstaluj&lt;/b&gt; obecną aplikację i zmodyfikuj zalecaną wersję ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Wybieram eksperymentalną</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Wybieram stabilną</string>
 </resources>

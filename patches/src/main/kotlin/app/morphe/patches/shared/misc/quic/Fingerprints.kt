@@ -11,7 +11,7 @@ import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
 internal object CronetEngineBuilderFingerprint : Fingerprint(
-    definingClass = "/CronetEngine\$Builder;",
+    definingClass = $$"/CronetEngine$Builder;",
     name = "enableQuic",
     accessFlags = listOf(AccessFlags.PUBLIC),
     returnType = "L",
@@ -19,7 +19,7 @@ internal object CronetEngineBuilderFingerprint : Fingerprint(
 )
 
 internal object ExperimentalCronetEngineBuilderFingerprint : Fingerprint(
-    definingClass = "/ExperimentalCronetEngine\$Builder;",
+    definingClass = $$"/ExperimentalCronetEngine$Builder;",
     name = "enableQuic",
     accessFlags = listOf(AccessFlags.PUBLIC),
     returnType = "L",

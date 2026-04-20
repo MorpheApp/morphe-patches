@@ -70,9 +70,6 @@ Zmiany obejmują:
   <string name="morphe_hide_artist_cards_title">Karty artystów</string>
   <string name="morphe_hide_artist_cards_summary_on">Ukryte</string>
   <string name="morphe_hide_artist_cards_summary_off">Widoczne</string>
-  <string name="morphe_hide_chips_shelf_title">Pasek kategorii</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Ukryty</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Widoczny</string>
   <string name="morphe_hide_community_posts_title">Posty</string>
   <string name="morphe_hide_community_posts_summary_on">Ukryte</string>
   <string name="morphe_hide_community_posts_summary_off">Widoczne</string>
@@ -80,8 +77,11 @@ Zmiany obejmują:
   <string name="morphe_hide_compact_banner_summary_on">Ukryte</string>
   <string name="morphe_hide_compact_banner_summary_off">Widoczne</string>
   <string name="morphe_hide_expandable_card_title">Rozwijane karty pod filmami</string>
-  <string name="morphe_hide_expandable_card_summary_on">Ukryte</string>
-  <string name="morphe_hide_expandable_card_summary_off">Widoczne</string>
+  <string name="morphe_hide_expandable_card_entry_1">Wszystkie widoczne</string>
+  <string name="morphe_hide_expandable_card_entry_2">Ukryte tylko produkty</string>
+  <string name="morphe_hide_expandable_card_entry_3">Ukryte tylko podsumowanie</string>
+  <string name="morphe_hide_expandable_card_entry_4">Ukryte produkty i podsumowanie</string>
+  <string name="morphe_hide_expandable_card_entry_5">Wszystkie ukryte</string>
   <string name="morphe_hide_floating_microphone_button_title">Pływający przycisk mikrofonu</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Ukryty w wyszukiwarce</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Widoczny w wyszukiwarce</string>
@@ -89,19 +89,20 @@ Zmiany obejmują:
   <string name="morphe_hide_horizontal_shelves_summary_on">"Ukryte, takie jak:
 
 • Najważniejsze wiadomości
+• Posty, które mogą Cię zainteresować
 • Kontynuuj oglądanie
 • Odkryj więcej kanałów
+• Odkryj więcej tematów
 • Dla Ciebie
+• Najnowsze filmy
 • Najbardziej istotne
+• Posty ze Społeczności twórcy
 • Zakupy
 • Obejrzyj ponownie"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Widoczne</string>
   <string name="morphe_hide_image_shelf_title">Półka z obrazkami</string>
   <string name="morphe_hide_image_shelf_summary_on">Ukryta w wynikach wyszukiwania</string>
   <string name="morphe_hide_image_shelf_summary_off">Widoczna w wynikach wyszukiwania</string>
-  <string name="morphe_hide_latest_posts_title">Najnowsze posty</string>
-  <string name="morphe_hide_latest_posts_summary_on">Ukryte</string>
-  <string name="morphe_hide_latest_posts_summary_off">Widoczne</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Przycisk \"Najnowsze filmy\"</string>
@@ -198,6 +199,8 @@ Ich obecność może blokować widoczność własnych logo w nagłówku."</strin
   <string name="morphe_hide_video_title_title">Tytuł filmu</string>
   <string name="morphe_hide_video_title_summary_on">Ukryty w odtwarzaczu</string>
   <string name="morphe_hide_video_title_summary_off">Widoczny w odtwarzaczu</string>
+  <string name="morphe_hide_description_components_screen_title">Opis filmu</string>
+  <string name="morphe_hide_description_components_screen_summary">Ukryj lub pokaż elementy opisu filmu</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Podsumowanie filmu wygenerowane przez AI</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Ukryte</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Widoczne</string>
@@ -254,17 +257,15 @@ Ich obecność może blokować widoczność własnych logo w nagłówku."</strin
   <string name="morphe_hide_music_section_title">Sekcja muzyki</string>
   <string name="morphe_hide_music_section_summary_on">Ukryta</string>
   <string name="morphe_hide_music_section_summary_off">Widoczna</string>
+  <string name="morphe_hide_quizzes_section_title">Sekcja quizów</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Ukryta</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Widoczna</string>
   <string name="morphe_hide_subscribe_button_title">Przycisk Subskrybuj</string>
   <string name="morphe_hide_subscribe_button_summary_on">Ukryty</string>
   <string name="morphe_hide_subscribe_button_summary_off">Widoczny</string>
   <string name="morphe_hide_transcript_section_title">Sekcja transkrypcji</string>
   <string name="morphe_hide_transcript_section_summary_on">Ukryta</string>
   <string name="morphe_hide_transcript_section_summary_off">Widoczna</string>
-  <string name="morphe_hide_quizzes_section_title">Sekcja quizów</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Ukryta</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Widoczna</string>
-  <string name="morphe_hide_description_components_screen_title">Opis filmu</string>
-  <string name="morphe_hide_description_components_screen_summary">Ukryj lub pokaż elementy opisu filmu</string>
   <string name="morphe_hide_filter_bar_screen_title">Pasek filtrów</string>
   <string name="morphe_hide_filter_bar_screen_summary">Ukryj lub pokaż pasek filtrów na stronie głównej, w powiązanych filmach, wynikach wyszukiwania i historii oglądania</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Na stronie głównej</string>
@@ -300,6 +301,9 @@ Ich obecność może blokować widoczność własnych logo w nagłówku."</strin
   <string name="morphe_hide_members_shelf_title">Półka ze wspierającymi kanał</string>
   <string name="morphe_hide_members_shelf_summary_on">Ukryta</string>
   <string name="morphe_hide_members_shelf_summary_off">Widoczna</string>
+  <string name="morphe_hide_posts_shelf_title">Półka z postami</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Ukryta</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Widoczna</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Przycisk Sklep</string>
   <string name="morphe_hide_store_button_summary_on">Ukryty</string>
@@ -420,9 +424,6 @@ Ograniczenia:
   <string name="morphe_hide_end_screen_store_banner_title">Baner sklepowy po zakończeniu filmu</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Ukryty</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Widoczny</string>
-  <string name="morphe_hide_fullscreen_ads_title">Pełnoekranowe reklamy</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Ukryte</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Widoczne</string>
   <string name="morphe_hide_general_ads_title">Ogólne reklamy</string>
   <string name="morphe_hide_general_ads_summary_on">Ukryte</string>
   <string name="morphe_hide_general_ads_summary_off">Widoczne</string>
@@ -455,7 +456,7 @@ Ograniczenia:
   <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
   <string name="morphe_share_copy_url_success">Skopiowano link do schowka</string>
   <string name="morphe_share_copy_url_timestamp_success">Skopiowano link z czasem</string>
-  <string name="morphe_copy_video_url_title">Przycisk kopiowania linku do filmu</string>
+  <string name="morphe_copy_video_url_title">Przycisk Kopiuj link do filmu</string>
   <string name="morphe_copy_video_url_summary_on">Widoczny. Stuknij, aby skopiować link do filmu. Przytrzymaj, aby skopiować link do filmu z czasem</string>
   <string name="morphe_copy_video_url_summary_off">Ukryty</string>
   <string name="morphe_copy_video_url_timestamp_title">Kopiowanie linku</string>
@@ -505,7 +506,7 @@ Sprawdź, czy nazwa pakietu jest prawidłowa i czy aplikacja jest zainstalowana"
   <string name="morphe_loop_video_button_toast_on">Zapętlanie filmu jest włączone</string>
   <string name="morphe_loop_video_button_toast_off">Zapętlanie filmu jest wyłączone</string>
   <!-- interaction.playall.playAllButtonPatch -->
-  <string name="morphe_play_all_button_title">Przycisk \"Odtwórz wszystko\"</string>
+  <string name="morphe_play_all_button_title">Przycisk Odtwórz wszystko</string>
   <string name="morphe_play_all_button_summary_on">"Widoczny
 Stuknij, aby wygenerować playlistę ze wszystkimi filmami z kanału
 Przytrzymaj, aby cofnąć
@@ -528,7 +529,7 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_play_all_button_type_entry_12">Transmisje tylko dla wspierających</string>
   <string name="morphe_play_all_button_not_available_toast">Nie można wygenerować playlisty z powodu niezgodności identyfikatora kanału</string>
   <!-- interaction.reload.reloadVideoPatch -->
-  <string name="morphe_reload_video_title">Przycisk odświeżenia filmu</string>
+  <string name="morphe_reload_video_title">Przycisk Odśwież film</string>
   <string name="morphe_reload_video_summary_on">Widoczny</string>
   <string name="morphe_reload_video_summary_off">Ukryty</string>
   <string name="morphe_dismiss_player_not_available_toast">Film jest niedostępny. Otwórz film ponownie ręcznie.</string>
@@ -797,6 +798,12 @@ Przytrzymaj, aby otworzyć ustawienia Morphe"</string>
   <string name="morphe_hide_player_flyout_captions_title">Menu napisów</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Ukryte</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Widoczne</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Opis menu napisów</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Ukryty</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Widoczny</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Nagłówek menu napisów</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Ukryty</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Widoczny</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Menu dodatkowych ustawień</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Ukryte</string>
@@ -842,17 +849,23 @@ Przytrzymaj, aby otworzyć ustawienia Morphe"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Ukryte
 
 Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Fałszowanie strumieni filmów\" na \"Android Reel\" lub \"TV\""</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Opis menu ścieżki dźwiękowej</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Ukryty</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Widoczny</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Menu oglądania w VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Ukryte</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Widoczne</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Menu jakości filmu</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Ukryte</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Widoczne</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Opis menu jakości</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Ukryty</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Widoczny</string>
+  <string name="morphe_hide_player_flyout_quality_title">Menu jakości filmu</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Ukryte</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Widoczne</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Opis menu jakości filmu</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Ukryty</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Widoczny</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Nagłówek menu jakości filmu</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Ukryty</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Widoczny</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Podgląd autoodtwarzania</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Ukryty</string>
@@ -880,6 +893,9 @@ Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Fałszowanie strumieni fi
   <string name="morphe_hide_player_previous_next_buttons_title">Przyciski Poprzedni i Następny</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Ukryte</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Widoczne</string>
+  <string name="morphe_hide_settings_button_title">Przycisk Ustawienia</string>
+  <string name="morphe_hide_settings_button_summary_on">Ukryty</string>
+  <string name="morphe_hide_settings_button_summary_off">Widoczny</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Karty końcowe w filmach</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Ukryte</string>
@@ -1382,12 +1398,12 @@ Jeśli później zostanie to wyłączone, zalecane jest usunięcie danych aplika
   <string name="morphe_open_system_share_sheet_title">Wygląd panelu udostępniania</string>
   <string name="morphe_open_system_share_sheet_summary_on">Systemowy</string>
   <string name="morphe_open_system_share_sheet_summary_off">Aplikacji</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Aplikacja otwierana przyciskiem YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Docelowa</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Natywna</string>
-  <string name="morphe_music_package_name_title">Nazwa pakietu Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Nazwa pakietu docelowej aplikacji muzycznej</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Aplikacja otwierana przyciskami YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Docelowa</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Oficjalna</string>
+  <string name="morphe_music_package_name_title">Nazwa pakietu docelowej aplikacji</string>
+  <string name="morphe_music_package_name_summary">Pakiet docelowej aplikacji muzycznej</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Strona startowa</string>
   <string name="morphe_change_start_page_entry_default">Domyślna</string>

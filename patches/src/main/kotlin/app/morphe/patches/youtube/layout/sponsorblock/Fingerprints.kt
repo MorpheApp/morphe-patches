@@ -6,8 +6,8 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFingerprint
 import app.morphe.patches.youtube.misc.playercontrols.PlayerBottomGradientScrimFingerprint
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint

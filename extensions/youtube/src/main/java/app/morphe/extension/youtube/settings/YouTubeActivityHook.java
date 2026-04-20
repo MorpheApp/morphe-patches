@@ -83,10 +83,14 @@ public class YouTubeActivityHook extends BaseActivityHook {
      */
     @Override
     protected int getToolbarBackgroundColor() {
-        final String colorName = Utils.isDarkModeEnabled()
+        final boolean darkModeEnabled = Utils.isDarkModeEnabled();
+        final String colorName = darkModeEnabled
                 ? "yt_black3"
                 : "yt_white1";
-        return Utils.getColorFromString(colorName);
+        final int defaultColor = darkModeEnabled
+                ? 0xFFFFFF
+                : 0x000000;
+        return ResourceUtils.getColor(colorName, defaultColor);
     }
 
     /**

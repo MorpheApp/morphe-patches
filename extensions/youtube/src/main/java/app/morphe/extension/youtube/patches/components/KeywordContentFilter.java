@@ -335,20 +335,24 @@ final class KeywordContentFilter extends Filter {
 
     public static boolean isValidUtf8(byte[] data, int startIndex, int numberOfBytes) {
         switch (numberOfBytes) {
-            case 1: // 0xxxxxxx (ASCII)
-                return (data[startIndex] & 0x80) == 0;
-            case 2: // 110xxxxx, 10xxxxxx
+            case 1 -> {
+                return (data[startIndex] & 0x80) == 0; // 0xxxxxxx (ASCII)
+            }
+            case 2 -> {
                 return (data[startIndex] & 0xE0) == 0xC0
-                        && (data[startIndex + 1] & 0xC0) == 0x80;
-            case 3: // 1110xxxx, 10xxxxxx, 10xxxxxx
+                        && (data[startIndex + 1] & 0xC0) == 0x80; // 110xxxxx, 10xxxxxx
+            }
+            case 3 -> {
                 return (data[startIndex] & 0xF0) == 0xE0
                         && (data[startIndex + 1] & 0xC0) == 0x80
-                        && (data[startIndex + 2] & 0xC0) == 0x80;
-            case 4: // 11110xxx, 10xxxxxx, 10xxxxxx, 10xxxxxx
+                        && (data[startIndex + 2] & 0xC0) == 0x80; // 1110xxxx, 10xxxxxx, 10xxxxxx
+            }
+            case 4 -> {
                 return (data[startIndex] & 0xF8) == 0xF0
                         && (data[startIndex + 1] & 0xC0) == 0x80
                         && (data[startIndex + 2] & 0xC0) == 0x80
                         && (data[startIndex + 3] & 0xC0) == 0x80;
+            }
         }
 
         throw new IllegalArgumentException("numberOfBytes: " + numberOfBytes);
@@ -356,20 +360,24 @@ final class KeywordContentFilter extends Filter {
 
     public static int decodeUtf8ToCodePoint(byte[] data, int startIndex, int numberOfBytes) {
         switch (numberOfBytes) {
-            case 1:
+            case 1 -> {
                 return data[startIndex];
-            case 2:
+            }
+            case 2 -> {
                 return ((data[startIndex] & 0x1F) << 6) |
                         (data[startIndex + 1] & 0x3F);
-            case 3:
+            }
+            case 3 -> {
                 return ((data[startIndex] & 0x0F) << 12) |
                         ((data[startIndex + 1] & 0x3F) << 6) |
                         (data[startIndex + 2] & 0x3F);
-            case 4:
+            }
+            case 4 -> {
                 return ((data[startIndex] & 0x07) << 18) |
                         ((data[startIndex + 1] & 0x3F) << 12) |
                         ((data[startIndex + 2] & 0x3F) << 6) |
                         (data[startIndex + 3] & 0x3F);
+            }
         }
         throw new IllegalArgumentException("numberOfBytes: " + numberOfBytes);
     }

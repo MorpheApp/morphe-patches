@@ -44,9 +44,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">Skryť plávajúce tlačidlo mikrofónu</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Plávajúce tlačidlo mikrofónu vo vyhľadávaní je skryté</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Plávajúce tlačidlo mikrofónu vo vyhľadávaní je zobrazené</string>
-  <string name="morphe_hide_latest_posts_title">Skryť najnovšie príspevky</string>
-  <string name="morphe_hide_latest_posts_summary_on">Najnovšie príspevky sú skryté</string>
-  <string name="morphe_hide_latest_posts_summary_off">Najnovšie príspevky sa zobrazujú</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Skryť tlačidlo \'Najnovšie videá\'</string>
@@ -105,6 +102,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_title">Skryť názov videa</string>
   <string name="morphe_hide_video_title_summary_on">Názov videa sa v rozložení prehrávača nezobrazuje</string>
   <string name="morphe_hide_video_title_summary_off">Názov videa sa zobrazuje v rozložení prehrávača</string>
+  <string name="morphe_hide_description_components_screen_title">Popis videa</string>
+  <string name="morphe_hide_description_components_screen_summary">Skryť alebo zobraziť komponenty popisu videa</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Skryť zhrnutie videa vygenerované pomocou AI</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Zhrnutie videa vygenerované pomocou AI je skryté</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Zhrnutie videa vygenerované pomocou AI sa zobrazuje</string>
@@ -118,8 +117,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_title">Skryť tlačidlo Odoberať</string>
   <string name="morphe_hide_subscribe_button_summary_on">Tlačidlo Odoberať je skryté</string>
   <string name="morphe_hide_subscribe_button_summary_off">Tlačidlo Odoberať sa zobrazuje</string>
-  <string name="morphe_hide_description_components_screen_title">Popis videa</string>
-  <string name="morphe_hide_description_components_screen_summary">Skryť alebo zobraziť komponenty popisu videa</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_title">Skryť v súvisiacich videách</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_on">Skryté v súvisiacich videách</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_summary_off">Zobrazuje sa v súvisiacich videách</string>
@@ -185,9 +182,6 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- ad.general.hideAdsResourcePatch -->
-  <string name="morphe_hide_fullscreen_ads_title">Skryť reklamy na celú obrazovku</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Reklamy na celú obrazovku sú skryté</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Reklamy na celú obrazovku sa zobrazujú</string>
   <string name="morphe_hide_general_ads_title">Skryť všeobecné reklamy</string>
   <string name="morphe_hide_general_ads_summary_on">Všeobecné reklamy sú skryté</string>
   <string name="morphe_hide_general_ads_summary_off">Všeobecné reklamy sa zobrazujú</string>
@@ -395,9 +389,8 @@ Hlasitosť možno zmeniť vertikálnym potiahnutím v pravej časti obrazovky"</
           'Android Reel' and 'TV' must be kept untranslated. -->
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Skryť tlačidlo Kvalita</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Menu kvality videa je skryté</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Menu kvality videa sa zobrazuje</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Menu kvality videa je skryté</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Menu kvality videa sa zobrazuje</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
@@ -407,6 +400,7 @@ Hlasitosť možno zmeniť vertikálnym potiahnutím v pravej časti obrazovky"</
   <string name="morphe_hide_cast_button_title">Skryť tlačidlo Prenos</string>
   <string name="morphe_hide_cast_button_summary_on">Tlačidlo Prenos je skryté</string>
   <string name="morphe_hide_cast_button_summary_off">Tlačidlo Prenos sa zobrazuje</string>
+  <string name="morphe_hide_settings_button_summary_off">Tlačidlo Nastavenia sa zobrazuje</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <!-- layout.hide.ambientmode.ambientModePatch -->
   <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
@@ -652,7 +646,7 @@ Ak ju neskôr vypnete, odporúča sa vymazať dáta aplikácie, aby sa predišlo
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Obnoví staré ukladanie do zoznamu videí</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Obnoví nerozbalenú ponuku akcií videa</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Zmeniť úvodnú stránku</string>
   <string name="morphe_change_start_page_entry_default">Predvolená</string>

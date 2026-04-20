@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">モダンホームUIを無効にします</string>
   <string name="morphe_disable_screenshot_popup_title">スクリーンショットポップアップを無効化</string>
   <string name="morphe_disable_screenshot_popup_summary">スクリーンショットを撮影したときに表示されるポップアップを無効にします</string>
+  <string name="morphe_hide_ask_button_title">質問ボタンを非表示</string>
+  <string name="morphe_hide_ask_button_summary">検索バー内の質問ボタンを非表示にします</string>
   <string name="morphe_hide_answers_button_title">Answersボタンを非表示</string>
   <string name="morphe_hide_answers_button_summary">ナビゲーションバーのAnswersボタンを非表示にします</string>
   <string name="morphe_hide_chat_button_title">Chatボタンを非表示</string>
@@ -67,4 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">共有リンクのトラッキングクエリパラメータを削除してクリーンアップします</string>
   <string name="morphe_open_links_directly_title">リンクを直接開く</string>
   <string name="morphe_open_links_directly_summary">外部リンクのリダイレクトURLをスキップします</string>
+  <string name="morphe_open_links_externally_title">外部ブラウザでリンクを開く</string>
+  <string name="morphe_open_links_externally_summary">アプリ内ブラウザではなく、ブラウザでリンクを開きます</string>
 </resources>

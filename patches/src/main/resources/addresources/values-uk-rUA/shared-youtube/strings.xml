@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Користувацька</string>
   <string name="morphe_custom_branding_notification_icon_title">Іконка сповіщення</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Слідувати іконці застосунку</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментальне сповіщення 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Ви використовуєте експериментальну версію застосунку ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Очікуйте дивної поведінки застосунку або невиявлених помилок, поки ми вдосконалюємо патчі для цієї версії.
-&lt;br/&gt;&lt;br/&gt;
-Якщо ви хочете отримати максимально безпроблемний досвід, тоді &lt;b&gt;видаліть&lt;/b&gt; це і пропатчіть рекомендовану версію застосунку ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Я хочу експериментальну</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Я хочу стабільну</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Повідомлення Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша історія переглядів не зберігається.&lt;br&gt;&lt;br&gt;Швидше за все, це спричинено блокувальником реклами DNS або мережевим проксі.&lt;br&gt;&lt;br&gt;Щоб це виправити, додайте &lt;b&gt;s.youtube.com&lt;/b&gt; у білий список блокувальника або вимкніть усі DNS блокувальники та проксі.</string>
@@ -121,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">Примусово оригінальна мова звукової доріжки</string>
   <string name="morphe_force_original_audio_summary_on">Використовується оригінальна мова звукової доріжки</string>
   <string name="morphe_force_original_audio_summary_off">Використовується звукова доріжка за замовчуванням</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Приховати повноекранну рекламу</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Повноекранну рекламу приховано</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Повноекранна реклама показується</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Щоб використати цю функцію, змініть \"Підміна відео потоків\" на Android Reel або TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

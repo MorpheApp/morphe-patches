@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">सानुकूल</string>
   <string name="morphe_custom_branding_notification_icon_title">सूचना चिन्ह</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">ॲप चिन्ह फॉलो करा</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 प्रायोगिक সতর্কতা 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"तुम्ही ⚠️ &lt;b&gt;%1$s&lt;/b&gt; या प्रायोगिक ॲप आवृत्ती वापरत आहात
-&lt;br/&gt;&lt;br/&gt;
-🔧 या ॲप आवृत्तीसाठी पॅच ट्यून करताना क्विर्की ॲप बिहेवियर किंवा अनआयडेंटिफाइड बग्स अपेक्षित आहेत.
-&lt;br/&gt;&lt;br/&gt;
-तुम्हाला सर्वात त्रास-मुक्त अनुभव हवा असल्यास, हे अनइंस्टॉल करा आणि ✅ &lt;b&gt;%2$s&lt;/b&gt; या शिफारस केलेल्या ॲप आवृत्तीमध्ये पॅच करा."</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">मला प्रायोगिक आवृत्ती हवी आहे</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">मला स्टेबल आवृत्ती हवी आहे</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">मॉर्फे सूचना</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">तुमचा पाहण्याचा इतिहास जतन होत नाही.&lt;br&gt;&lt;br&gt;हे बहुधा डीएनए ब्लॉक किंवा नेटवर्क प्रॉक्सीमुळे झाले आहे.&lt;br&gt;&lt;br&gt;हे ठीक करण्यासाठी, &lt;b&gt;s.youtube.com&lt;/b&gt;ला व्हाईटलिस्ट करा किंवा सर्व डीएनए ब्लॉकर्स आणि प्रॉक्सी बंद करा.</string>
@@ -121,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">मूळ ऑडिओ भाषेचा वापर करा</string>
   <string name="morphe_force_original_audio_summary_on">मूळ ऑडिओ भाषेचा वापर केला जात आहे</string>
   <string name="morphe_force_original_audio_summary_off">डीफॉल्ट ऑडिओचा वापर केला जात आहे</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">पूर्ण स्क्रीन जाहिराती लपवा</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">पूर्ण स्क्रीन जाहिराती लपवल्या आहेत</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">पूर्ण स्क्रीन जाहिराती दिसत आहेत</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">हे वैशिष्ट्य वापरण्यासाठी, \'Spoof व्हिडिओ स्ट्रीम\' Android Reel किंवा TV मध्ये बदला</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

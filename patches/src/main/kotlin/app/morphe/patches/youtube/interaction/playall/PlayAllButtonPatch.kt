@@ -56,7 +56,7 @@ private val playAllButtonResourcePatch = resourcePatch {
     }
 }
 
-private const val BUTTON_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplayer/PlayAllButton;"
+private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/PlayAllButton;"
 
 @Suppress("unused")
 val playAllButtonPatch = bytecodePatch(
@@ -73,7 +73,7 @@ val playAllButtonPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeTopControl(BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
+        initializeTopControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
     }
 }

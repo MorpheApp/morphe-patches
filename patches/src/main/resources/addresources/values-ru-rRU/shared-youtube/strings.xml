@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Пользовательский</string>
   <string name="morphe_custom_branding_notification_icon_title">Значок уведомления</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Следить за иконкой приложения</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Экспериментальное оповещение 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Вы используете экспериментальную версию программы⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Ожидайте странного поведения программы или необнаруженных ошибок, пока мы усовершенствуем исправление для этой версии программы.
-&lt;br/&gt;&lt;br/&gt;
-Если вы хотите получить максимально беспроблемный опыт, тогда &lt;b&gt;удалите&lt;/b&gt; это и пропатчите рекомендованную версию программы ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Я хочу экспериментальную</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Я хочу стабильную</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша история просмотра не сохраняется.&lt;br&gt;&lt;br&gt; Вероятнее всего это вызвано DNS блокировщиком рекламы или сетевым прокси.&lt;br&gt;&lt;br&gt; Чтобы это исправить, добавьте &lt;b&gt;s.youtube.com&lt;/b&gt; в белый список блокировщика рекламы или отключите все блокировщики DNS и прокси.</string>
@@ -121,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">Принудительно оригинальная звуковая дорожка</string>
   <string name="morphe_force_original_audio_summary_on">Используется оригинальная звуковая дорожка</string>
   <string name="morphe_force_original_audio_summary_off">Используется звуковая дорожка по умолчанию</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Скрыть полноэкранную рекламу</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Полноэкранная реклама скрыта</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Полноэкранная реклама при запуске приложения показана</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Чтобы использовать эту функцию, измените \"Подмена видео потоков\" на Android Reel или TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

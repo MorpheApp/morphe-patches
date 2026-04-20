@@ -17,7 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
-  <string name="morphe_restart_first_run">Athlé go dtí a chríochnaidh sé an socrú</string>
+  <string name="morphe_restart_first_run">Atosaigh chun an socrú a chríochnú</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Ainm an aip</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
@@ -30,18 +30,8 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Saincheaptha</string>
-  <string name="morphe_custom_branding_notification_icon_title">Icon fógra</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Icon aip</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Foláireamh Turgnamhach 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Tá leagan turgnamhach den aip de ⚠️ &lt;b&gt;%1$s&lt;/b&gt; in úsáid agat
-&lt;br/&gt;&lt;br/&gt;
-🔧 Bí ag súil le hiompar aisteach nó fabhtanna anaithnid agus muid ag feabhsú na paistí don leagan seo den aip.
-&lt;br/&gt;&lt;br/&gt;
-Más mian leat an taithí is saoire, ansin &lt;b&gt;díshuiteáil&lt;/b&gt; seo agus paisteáil an leagan molta den aip de ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ba mhaith liom turgnamhach</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ba mhaith liom cobhsaíocht</string>
+  <string name="morphe_custom_branding_notification_icon_title">Deilbhín fógra</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Lean deilbhín an aip</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Fógra Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair faire á sábháil.&lt;br&gt;&lt;br&gt;Is dóichí gur bacadóir fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt;Chun seo a shocrú, cuir &lt;b&gt;s.youtube.com&lt;/b&gt; ar an liosta bán nó múch gach bacadóir agus seachfhreastalaí DNS.</string>
@@ -100,15 +90,15 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Ní féidir síniú isteach i VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Logáilte amach as Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Comhartha síniú isteach VR neamhbhailí, déan iarracht síniú isteach i VR arís</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title"></string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Díchumasaigh nuashonrú JavaScript an imreora</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Tá nuashonrú JavaScript an imreora díchumasaithe
 
-• Tá hash JavaScript imreora slànacha deartha
-• Gan fhiosrú cineálacha nuair a tugtar isteach hash JavaScript imreora sa GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Tá nuashonruithe JavaScript imreora ar fáil</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Tá JavaScript hashanna an t-seanspiseach bailí go tioramháil timpeall mí naoi, agus d’fhéadfá aisghabháil a dhéanamh ar hashanna as dáta ag GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript an imreoir</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Iosgail hash JavaScript an imreora a bhíonn ceart</string>
+• Tá hais JavaScript bailí ag teastáil don imreoir
+• Teipfidh ar an athsheinm má chúlghairtear hais JavaScript an imreora i GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Tá nuashonrú JavaScript an imreora cumasaithe</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Bíonn haiseanna JavaScript imreora bailí ar feadh thart ar mhí amháin, agus féadfaidh GVS haiseanna atá as dáta a chúlghairm.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hais JavaScript an imreora</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Cuir isteach hais JavaScript imreora bailí</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Díchumasaigh prótacal QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">Tá prótacal QUIC díchumasaithe</string>
@@ -121,6 +111,10 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_force_original_audio_title">Fórsaigh teanga fuaime bhunaidh</string>
   <string name="morphe_force_original_audio_summary_on">Ag baint úsáide as an teanga fuaime bhunaidh</string>
   <string name="morphe_force_original_audio_summary_off">Ag baint úsáide as fuaim réamhshocraithe</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Folaigh fógraí lánscáileáin</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Tá fógraí lánscáileáin i bhfolach</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Taispeántar fógraí lánscáileáin</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Chun an gné seo a úsáid, athraigh \'Sruthanna físe bréige\' go Android Reel nó TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

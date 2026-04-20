@@ -12,7 +12,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableShortsResumingOnStartupPatch;"
 
 @Suppress("unused")
@@ -43,7 +43,7 @@ val disableShortsResumingOnStartupPatch = bytecodePatch(
                     addInstructions(
                         match.index,
                         """
-                            invoke-static { v$zMRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableShortsResumingOnStartup(Z)Z
+                            invoke-static { v$zMRegister }, $EXTENSION_CLASS->disableShortsResumingOnStartup(Z)Z
                             move-result v$zMRegister
                         """
                     )
@@ -59,7 +59,7 @@ val disableShortsResumingOnStartupPatch = bytecodePatch(
                     addInstructions(
                         insertIndex,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableShortsResumingOnStartup(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS->disableShortsResumingOnStartup(Z)Z
                             move-result v$register
                         """
                     )
@@ -70,7 +70,7 @@ val disableShortsResumingOnStartupPatch = bytecodePatch(
         UserWasInShortsConfigFingerprint.method.addInstructions(
             0,
             """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->disableShortsResumingOnStartup()Z
+                invoke-static {}, $EXTENSION_CLASS->disableShortsResumingOnStartup()Z
                 move-result v0
                 if-eqz v0, :show
                 const/4 v0, 0x0

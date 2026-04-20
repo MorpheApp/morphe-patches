@@ -1,6 +1,6 @@
 package app.morphe.patches.shared.misc.settings.preference
 
-import app.morphe.util.resource.BaseResource
+import app.morphe.patches.util.resource.BaseResource
 import org.w3c.dom.Document
 
 /**

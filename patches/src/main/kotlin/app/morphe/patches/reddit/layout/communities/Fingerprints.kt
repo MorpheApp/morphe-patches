@@ -7,11 +7,11 @@
 package app.morphe.patches.reddit.layout.communities
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.literal
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 
 private object CommunityRecommendationSectionParentFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/onboardingfeedscomponents/communityrecommendation/impl/",
     returnType = "Ljava/lang/String;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(),
@@ -20,7 +20,18 @@ private object CommunityRecommendationSectionParentFingerprint : Fingerprint(
     )
 )
 
+// 2026.16.0+
 internal object CommunityRecommendationSectionFingerprint : Fingerprint(
+    classFingerprint = CommunityRecommendationSectionParentFingerprint,
+    returnType = "V",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    filters = listOf(
+        literal(2140398383),
+        literal(2043119215)
+    )
+)
+
+internal object CommunityRecommendationSectionLegacyFingerprint : Fingerprint(
     classFingerprint = CommunityRecommendationSectionParentFingerprint,
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

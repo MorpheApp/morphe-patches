@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Aangepast</string>
   <string name="morphe_custom_branding_notification_icon_title">Meldingen</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Volg app-icoon</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentele Waarschuwing 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Je gebruikt een experimentele app-versie van ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 verwacht quirky app-gedrag of onidentificeerde buggen omdat we de patches voor deze app-versie afstemmen.
-&lt;br/&gt;&lt;br/&gt;
-Als je de meest probleemloze ervaring wilt hebben, dan &lt;b&gt;deinstalleer&lt;/b&gt; dit en patch de aanbevolen app-versie van ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ik wil experimentel</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ik wil stabiel</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Melding</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Uw kijkgeschiedenis wordt niet opgeslagen.&lt;br&gt;&lt;br&gt;Dit wordt hoogstwaarschijnlijk veroorzaakt door een DNS-adblocker of netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit te verhelpen, voegt u &lt;b&gt;s.youtube.com&lt;/b&gt; toe aan de witte lijst of schakelt u alle DNS-blokkers en proxies uit.</string>
@@ -115,6 +105,10 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_force_original_audio_title">Forceer de originele audiotaal</string>
   <string name="morphe_force_original_audio_summary_on">De oorspronkelijke audiotaal gebruiken</string>
   <string name="morphe_force_original_audio_summary_off">Standaard audio gebruiken</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Volledig scherm advertenties verbergen</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Volledig scherm advertenties worden verborgen</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Volledig scherm advertenties worden getoond</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Om deze functie te gebruiken, wijzig \'Spoof video streams\' naar Android Reel of TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

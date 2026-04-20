@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Egyéni</string>
   <string name="morphe_custom_branding_notification_icon_title">Értesítési ikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Kövesse az alkalmazás ikonját</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Kísérleti figyelmeztetés 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"⚠️ Kísérleti alkalmazás verzióját használja: &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Rogyás alkalmazás viselkedést vagy azonosítatlan hibákat várhat, ahogy finomítjuk a címkéket ehhez az alkalmazás verzióhoz.
-&lt;br/&gt;&lt;br/&gt;
-A legstabilabb tapasztalatért &lt;b&gt;törölje&lt;/b&gt; ezt és telepítse a ajánlott alkalmazás verzióját: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Kísérleti verziót akarok</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Stabil verziót akarok</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Értesítés</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">A megtekintési előzmények mentése nem történik meg.&lt;br&gt;&lt;br&gt;Ezt valószínűleg egy DNS-hirdetésblokkoló vagy hálózati proxy okozza.&lt;br&gt;&lt;br&gt;A probléma megoldásához vegye fel az engedélyezőlistára az &lt;b&gt;s.youtube.com&lt;/b&gt; domaint vagy kapcsolja ki az összes DNS-blokkolót és proxyt.</string>
@@ -121,6 +111,10 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_force_original_audio_title">Eredeti hang kikényszerítése</string>
   <string name="morphe_force_original_audio_summary_on">Eredeti hang használata a hang nyelvén</string>
   <string name="morphe_force_original_audio_summary_off">Alapértelmezett hang használata</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Teljesképernyős-hirdetések elrejtése</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Teljesképernyős-hirdetések elrejtve</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">A teljesképernyős-hirdetések megjelennek</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">A funkció használatához módosítsa a \"Videóstreamek hamisítása\" beállítást Android Reel vagy TV-re</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

@@ -11,7 +11,7 @@ import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_LIGHT_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -33,10 +33,10 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import org.w3c.dom.Element
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
 val themePatch = baseThemePatch(
-    extensionClassDescriptor = EXTENSION_CLASS_DESCRIPTOR,
+    extensionClassDescriptor = EXTENSION_CLASS,
 
     block = {
         val lightThemeBackgroundColor by stringOption(
@@ -226,7 +226,7 @@ val themePatch = baseThemePatch(
         UseGradientLoadingScreenFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->gradientLoadingScreenEnabled(Z)Z"
+                "$EXTENSION_CLASS->gradientLoadingScreenEnabled(Z)Z"
             )
         }
 
@@ -243,7 +243,7 @@ val themePatch = baseThemePatch(
         SplashScreenStyleFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->getLoadingScreenType(I)I"
+                "$EXTENSION_CLASS->getLoadingScreenType(I)I"
             )
         }
 
@@ -255,7 +255,7 @@ val themePatch = baseThemePatch(
                 addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->showSplashScreen(Z)Z
+                        invoke-static { v$register }, $EXTENSION_CLASS->showSplashScreen(Z)Z
                         move-result v$register
                     """
                 )
@@ -272,7 +272,7 @@ val themePatch = baseThemePatch(
                 addInstructions(
                     insertIndex,
                     """
-                        invoke-static { v$registerA, v$registerB }, $EXTENSION_CLASS_DESCRIPTOR->showSplashScreen(II)I
+                        invoke-static { v$registerA, v$registerB }, $EXTENSION_CLASS->showSplashScreen(II)I
                         move-result v$registerA
                     """
                 )

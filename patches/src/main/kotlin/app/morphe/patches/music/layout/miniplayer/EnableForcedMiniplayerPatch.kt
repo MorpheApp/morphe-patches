@@ -21,7 +21,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/EnableForcedMiniplayerPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/EnableForcedMiniplayerPatch;"
 
 @Suppress("unused")
 val enableForcedMiniplayerPatch = bytecodePatch(
@@ -54,7 +54,7 @@ val enableForcedMiniplayerPatch = bytecodePatch(
             method.addInstructions(
                 moveResultIndex + 1,
                 """
-                    invoke-static {v$targetRegister}, $EXTENSION_CLASS_DESCRIPTOR->enableForcedMiniplayerPatch(Z)Z
+                    invoke-static {v$targetRegister}, $EXTENSION_CLASS->enableForcedMiniplayerPatch(Z)Z
                     move-result v$targetRegister
                 """
             )

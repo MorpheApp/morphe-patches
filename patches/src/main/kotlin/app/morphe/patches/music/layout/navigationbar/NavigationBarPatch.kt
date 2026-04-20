@@ -8,14 +8,14 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/NavigationBarPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/NavigationBarPatch;"
 
 @Suppress("unused")
 val navigationBarPatch = bytecodePatch(
@@ -73,7 +73,7 @@ val navigationBarPatch = bytecodePatch(
 
                 addInstruction(
                     pivotTabIndex,
-                    "invoke-static { v$pivotTabRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideNavigationButton(Landroid/view/View;)V"
+                    "invoke-static { v$pivotTabRegister }, $EXTENSION_CLASS->hideNavigationButton(Landroid/view/View;)V"
                 )
 
 
@@ -83,7 +83,7 @@ val navigationBarPatch = bytecodePatch(
 
                 addInstruction(
                     enumIndex + 1,
-                    "invoke-static { v$enumRegister }, $EXTENSION_CLASS_DESCRIPTOR->setLastAppNavigationEnum(Ljava/lang/Enum;)V"
+                    "invoke-static { v$enumRegister }, $EXTENSION_CLASS->setLastAppNavigationEnum(Ljava/lang/Enum;)V"
                 )
 
 
@@ -94,7 +94,7 @@ val navigationBarPatch = bytecodePatch(
 
                 addInstruction(
                     labelIndex + 1,
-                    "invoke-static { v$targetRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideNavigationLabel(Landroid/widget/TextView;)V"
+                    "invoke-static { v$targetRegister }, $EXTENSION_CLASS->hideNavigationLabel(Landroid/widget/TextView;)V"
                 )
             }
         }

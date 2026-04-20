@@ -150,4 +150,13 @@ Second \"item\" text"</string>
 • แอปพลิเคชันอาจปิดโดยสุ่ม
 • การแจ้งเตือนอาจใช้งานไม่ได้
 • การเล่นเพลง/วิดีโอขณะอยู่เบื้องหลังอาจใช้งานไม่ได้"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 คำเตือนแบบทดลอง 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"คุณกำลังใช้แอปเวอร์ชันทดลองของ ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 คาดหวังพฤติกรรมที่แปลกประหลาดของแอปหรือข้อผิดพลาดที่ไม่รู้จักในขณะที่เราปรับปรุงแพตช์สำหรับแอปเวอร์ชันนี้
+&lt;br/&gt;&lt;br/&gt;
+หากคุณต้องการประสบการณ์ที่ไม่ยุ่งยากเท่าที่จะเป็นไปได้ ให้ &lt;b&gt;ถอนการติดตั้ง&lt;/b&gt; และแพตช์แอปเวอร์ชันที่แนะนำของ ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ ผมต้องการเวอร์ชันทดลอง</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ ผมต้องการเวอร์ชันที่เสถียร</string>
 </resources>

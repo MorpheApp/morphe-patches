@@ -5,7 +5,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -25,7 +25,7 @@ import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/spoof/SpoofAppVersionPatch;"
 
 val spoofAppVersionPatch = bytecodePatch(
@@ -99,7 +99,7 @@ val spoofAppVersionPatch = bytecodePatch(
             method.addInstructions(
                 index + 1,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getUniversalAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$register }, $EXTENSION_CLASS->getUniversalAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$register
                 """
             )
@@ -115,7 +115,7 @@ val spoofAppVersionPatch = bytecodePatch(
             // the Shorts endpoint will use app version 20.30.40 to fix the Shorts no overlay.
             addClientVersionHook(
                 Endpoint.REEL,
-                "$EXTENSION_CLASS_DESCRIPTOR->getShortsAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
+                "$EXTENSION_CLASS->getShortsAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
             )
         } else if (is_20_31_or_greater) {
             // There are an experimental flags in YouTube 20.31 to 21.04, so simply turn it off.
@@ -126,7 +126,7 @@ val spoofAppVersionPatch = bytecodePatch(
                 fingerprint.let {
                     it.method.insertLiteralOverride(
                         it.instructionMatches.first().index,
-                        "$EXTENSION_CLASS_DESCRIPTOR->disableShortsBoldIcons(Z)Z"
+                        "$EXTENSION_CLASS->disableShortsBoldIcons(Z)Z"
                     )
                 }
             }

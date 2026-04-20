@@ -70,38 +70,26 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_artist_cards_title">Dölj artistkort</string>
   <string name="morphe_hide_artist_cards_summary_on">Artistkort är dolda</string>
   <string name="morphe_hide_artist_cards_summary_off">Artistkort visas</string>
-  <string name="morphe_hide_chips_shelf_title">Dölj hylla med brickor</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Hylla med brickor är dold</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Hylla med brickor visas</string>
   <string name="morphe_hide_community_posts_title">Dölj community-inlägg</string>
   <string name="morphe_hide_community_posts_summary_on">Community-inlägg är dolda</string>
   <string name="morphe_hide_community_posts_summary_off">Community-inlägg visas</string>
   <string name="morphe_hide_compact_banner_title">Dölj kompakta banners</string>
   <string name="morphe_hide_compact_banner_summary_on">Kompakta banners är dolda</string>
   <string name="morphe_hide_compact_banner_summary_off">Kompakta banners visas</string>
-  <string name="morphe_hide_expandable_card_title">Dölj expanderbart kort</string>
-  <string name="morphe_hide_expandable_card_summary_on">Expanderbart kort under videor är dolt</string>
-  <string name="morphe_hide_expandable_card_summary_off">Expanderbart kort under videor visas</string>
+  <string name="morphe_hide_expandable_card_title">Dölj expanderbara kort</string>
+  <string name="morphe_hide_expandable_card_entry_1">Expanderbara kort under videor visas</string>
+  <string name="morphe_hide_expandable_card_entry_2">Endast produktkortet under videor är dolt</string>
+  <string name="morphe_hide_expandable_card_entry_3">Endast översiktskortet under videor är dolt</string>
+  <string name="morphe_hide_expandable_card_entry_4">Produktkortet och översiktskortet under videor är dolda</string>
+  <string name="morphe_hide_expandable_card_entry_5">Expanderbara kort under videor är dolda</string>
   <string name="morphe_hide_floating_microphone_button_title">Dölj flytande mikrofonknapp</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Flytande mikrofonknapp i sökning är dold</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Flytande mikrofonknapp i sökning visas</string>
   <string name="morphe_hide_horizontal_shelves_title">Dölj horisontella hyllor</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Horisontella hyllor är dolda, till exempel:
-
-• Senaste nytt
-• Fortsätt att titta
-• Utforska fler kanaler
-• För dig
-• Mest relevanta
-• Shopping
-• Titta igen"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Horisontella hyllor visas</string>
   <string name="morphe_hide_image_shelf_title">Dölj bildhylla</string>
   <string name="morphe_hide_image_shelf_summary_on">Bildhylla i sökresultat är dold</string>
   <string name="morphe_hide_image_shelf_summary_off">Bildhylla i sökresultat visas</string>
-  <string name="morphe_hide_latest_posts_title">Dölj senaste inlägg</string>
-  <string name="morphe_hide_latest_posts_summary_on">Senaste inlägg är dolda</string>
-  <string name="morphe_hide_latest_posts_summary_off">Senaste inlägg visas</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Dölj knappen Senaste videorna</string>
@@ -121,6 +109,9 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_playables_title">Dölj Spelhörna</string>
   <string name="morphe_hide_playables_summary_on">Spelhörna är dold</string>
   <string name="morphe_hide_playables_summary_off">Spelhörna visas</string>
+  <string name="morphe_hide_search_term_thumbnails_title">Dölj miniatyrbilder för söktermer</string>
+  <string name="morphe_hide_search_term_thumbnails_summary_on">Miniatyrbilder för söktermer är dolda</string>
+  <string name="morphe_hide_search_term_thumbnails_summary_off">Miniatyrbilder för söktermer visas</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">Dölj knappen Visa mer</string>
@@ -195,6 +186,8 @@ Om YouTube-doodles visas kan det hindra anpassade sidhuvuden från att visas."</
   <string name="morphe_hide_video_title_title">Dölj videotitel</string>
   <string name="morphe_hide_video_title_summary_on">Videotiteln i spelaröverlägget är dold</string>
   <string name="morphe_hide_video_title_summary_off">Videotiteln i spelaröverlägget visas</string>
+  <string name="morphe_hide_description_components_screen_title">Videobeskrivning</string>
+  <string name="morphe_hide_description_components_screen_summary">Dölj eller visa komponenter i videobeskrivningen</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Dölj AI-genererad videoöversikt</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Avsnittet AI-genererad videoöversikt är dolt</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Avsnittet AI-genererad videoöversikt visas</string>
@@ -251,17 +244,15 @@ Om YouTube-doodles visas kan det hindra anpassade sidhuvuden från att visas."</
   <string name="morphe_hide_music_section_title">Dölj Musik</string>
   <string name="morphe_hide_music_section_summary_on">Avsnittet Musik är dolt</string>
   <string name="morphe_hide_music_section_summary_off">Avsnittet Musik visas</string>
+  <string name="morphe_hide_quizzes_section_title">Dölj Quiz</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Avsnittet Quiz är dolt</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Avsnittet Quiz visas</string>
   <string name="morphe_hide_subscribe_button_title">Dölj knappen Prenumerera</string>
   <string name="morphe_hide_subscribe_button_summary_on">Knappen Prenumerera är dold</string>
   <string name="morphe_hide_subscribe_button_summary_off">Knappen Prenumerera visas</string>
   <string name="morphe_hide_transcript_section_title">Dölj Manuskript</string>
   <string name="morphe_hide_transcript_section_summary_on">Avsnittet Manuskript är dolt</string>
   <string name="morphe_hide_transcript_section_summary_off">Avsnittet Manuskript visas</string>
-  <string name="morphe_hide_quizzes_section_title">Dölj Quiz</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Avsnittet Quiz är dolt</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Avsnittet Quiz visas</string>
-  <string name="morphe_hide_description_components_screen_title">Videobeskrivning</string>
-  <string name="morphe_hide_description_components_screen_summary">Dölj eller visa komponenter i videobeskrivningen</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterfält</string>
   <string name="morphe_hide_filter_bar_screen_summary">Dölj eller visa filterfältet i flödena, liknande videor, sökresultaten och visningshistoriken</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Dölj i flöden</string>
@@ -297,6 +288,9 @@ Om YouTube-doodles visas kan det hindra anpassade sidhuvuden från att visas."</
   <string name="morphe_hide_members_shelf_title">Dölj medlemshylla</string>
   <string name="morphe_hide_members_shelf_summary_on">Medlemshyllan är dold</string>
   <string name="morphe_hide_members_shelf_summary_off">Medlemshyllan visas</string>
+  <string name="morphe_hide_posts_shelf_title">Dölj inläggshylla</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Inläggshylla är dold</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Inläggshylla visas</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Dölj knappen Butik</string>
   <string name="morphe_hide_store_button_summary_on">Knappen Butik är dold</string>
@@ -417,9 +411,6 @@ Begränsningar:
   <string name="morphe_hide_end_screen_store_banner_title">Dölj butiksbanner på slutskärmen</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Butiksbanner på slutskärmen är dold</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Butiksbanner på slutskärmen visas</string>
-  <string name="morphe_hide_fullscreen_ads_title">Dölj helskärmsannonser</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Helskärmsannonser är dolda</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Helskärmsannonser visas</string>
   <string name="morphe_hide_general_ads_title">Dölj allmänna annonser</string>
   <string name="morphe_hide_general_ads_summary_on">Allmänna annonser är dolda</string>
   <string name="morphe_hide_general_ads_summary_off">Allmänna annonser visas</string>
@@ -538,6 +529,7 @@ Information: Kanske inte fungerar i livestreamar"</string>
   <string name="morphe_livestream_dvr_summary_on">Sökning tillåts i alla livestreamar</string>
   <string name="morphe_livestream_dvr_summary_off">Sökning är eventuellt inte tillgänglig i livestreamar</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_livestream_dvr_user_dialog_message">Om du aktiverar det här kan det orsaka oväntat sökningsbeteende i livestreamar om Förfalska videoströmmar inte är aktiverat.</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Aktivera Dra för att söka</string>
   <string name="morphe_slide_to_seek_summary_on">Dra för att söka är aktiverat</string>
@@ -788,11 +780,17 @@ Tryck länge för att öppna YouTube-inställningarna"</string>
 Tryck länge för att öppna Morphe-inställningarna"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout-meny</string>
-  <string name="morphe_hide_player_flyout_summary">Dölj eller visa objekt i spelarens flyout-meny</string>
+  <string name="morphe_hide_player_flyout_summary">Dölj eller visa komponenter i spelarens flyout-meny</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Dölj Textning</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Menyn Textning är dold</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Menyn Textning visas</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Dölj sidfot för Textning</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Sidfot för menyn Textning är dold</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Sidfot för menyn Textning visas</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Dölj sidhuvud för Textning</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Sidhuvud för menyn Textning är dold</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Sidhuvud för menyn Textning visas</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Dölj Fler inställningar/Mer</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Menyn Fler inställningar/Mer är dold</string>
@@ -838,17 +836,23 @@ Tryck länge för att öppna Morphe-inställningarna"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menyn Ljudspår är dold
 
 Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\" till \"Android Reel\" eller \"TV\""</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Dölj sidfot för Ljudspår</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Sidfot för menyn Ljudspår är dold</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Sidfot för menyn Ljudspår visas</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Dölj Titta i VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menyn Titta i VR är dold</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Menyn Titta i VR visas</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Dölj menyn Kvalitet</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Menyn Kvalitet är dold</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Menyn Kvalitet visas</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Dölj sidfot för menyn Kvalitet</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Sidfot för menyn Kvalitet är dold</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Sidfot för menyn Kvalitet visas</string>
+  <string name="morphe_hide_player_flyout_quality_title">Dölj Kvalitet</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Menyn Kvalitet är dold</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Menyn Kvalitet visas</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Dölj sidfot för Kvalitet</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Sidfot för menyn Kvalitet är dold</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Sidfot för menyn Kvalitet visas</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Dölj sidhuvud för Kvalitet</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Sidhuvud för menyn Kvalitet är dold</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Sidhuvud för menyn Kvalitet visas</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Dölj förhandsgranskning för automatisk uppspelning</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Förhandsgranskning för automatisk uppspelning är dold</string>
@@ -876,6 +880,7 @@ Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\
   <string name="morphe_hide_player_previous_next_buttons_title">Dölj knapparna Föregående och Nästa</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Knapparna Föregående och Nästa är dolda</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Knapparna Föregående och Nästa visas</string>
+  <string name="morphe_hide_settings_button_summary_off">Knappen Inställningar visas</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Dölj slutskärmskort</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Slutskärmskort är dolda</string>
@@ -1379,12 +1384,7 @@ Om du senare inaktiverar det rekommenderar vi att rensa appens data för att fö
   <string name="morphe_open_system_share_sheet_title">Öppna systemets delningsblad</string>
   <string name="morphe_open_system_share_sheet_summary_on">Öppnar systemets delningsblad</string>
   <string name="morphe_open_system_share_sheet_summary_off">Öppnar appens delningsblad</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Åsidosatt YouTube Music-knappen</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music-knappen öppnar målappen för musik</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music-knappen öppnar den ursprungliga appen</string>
-  <string name="morphe_music_package_name_title">Morphe Music-paketnamn</string>
-  <string name="morphe_music_package_name_summary">Paketnamn på målappen för musik</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Byt startsida</string>
   <string name="morphe_change_start_page_entry_default">Standard</string>
@@ -1651,7 +1651,11 @@ Begränsningar:
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Om du vill använda den här funktionen ändrar du \"Förfalska videoströmmar\" till Android VR eller Android Studio</string>
   <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
+  <string name="morphe_expand_livestream_dvr_duration_title">Förläng varaktighet för DVR för livestreamar</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_on">Varaktighet för DVR för livestreamar förlängs till upp till 7 dagar</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_off">Varaktighet för DVR för livestreamar begränsas till serverns standard</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">Den här inställningen kan orsaka oväntat beteende om Förfalska videoströmmar inte är aktiverat.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Visa avancerad videokvalitetsmeny</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Avancerad videokvalitetsmeny visas</string>

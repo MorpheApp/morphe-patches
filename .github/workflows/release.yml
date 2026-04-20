@@ -2,6 +2,11 @@ name: Release
 
 on:
   workflow_dispatch:
+    inputs:
+      send_fcm:
+        description: 'Send FCM push notification'
+        type: boolean
+        default: true
   push:
     branches:
       - main
@@ -28,11 +33,6 @@ jobs:
 
       - name: Cache Gradle
         uses: burrunan/gradle-cache-action@v3
-
-      - name: Build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew :patches:buildAndroid generatePatchesList clean
 
       - name: Setup Node.js
         uses: actions/setup-node@v6
@@ -61,7 +61,7 @@ jobs:
         id: app-token
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ vars.MORPHE_AAMATT_APP_ID }}
+          client-id: ${{ vars.MORPHE_AAMATT_APP_ID }}
           private-key: ${{ secrets.WEBSITE_DISPATCH_TOKEN }}
           owner: MorpheApp
 
@@ -78,17 +78,17 @@ jobs:
             })
 
       - name: Wait before sending FCM
-        if: steps.release.outputs.new_release_published == 'true'
+        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false
         run: sleep 300
 
       - name: Setup Python for FCM
-        if: steps.release.outputs.new_release_published == 'true'
+        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
       - name: Send FCM push notification
-        if: steps.release.outputs.new_release_published == 'true'
+        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false
         env:
           FCM_PROJECT_ID: ${{ secrets.FCM_PROJECT_ID }}
           FCM_SERVICE_ACCOUNT_JSON: ${{ secrets.FCM_SERVICE_ACCOUNT_JSON }}

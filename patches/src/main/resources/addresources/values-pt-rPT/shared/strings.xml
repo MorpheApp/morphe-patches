@@ -150,4 +150,13 @@ Se as otimizações de bateria não forem alteradas, você poderá experimentar:
 • O aplicativo pode fechar aleatoriamente
 • As notificações podem não funcionar
 • A reprodução em segundo plano pode não funcionar"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Alerta Experimental 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Você está usando uma versão experimental do aplicativo ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Espere comportamentos estranhos do aplicativo ou bugs não identificados enquanto ajustamos os patches para esta versão do aplicativo.
+&lt;br/&gt;&lt;br/&gt;
+Se você deseja a experiência mais tranquila, então &lt;b&gt;desinstale&lt;/b&gt; este e atualize a versão recomendada do aplicativo ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ I want experimental</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ I want stable</string>
 </resources>

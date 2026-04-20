@@ -13,7 +13,7 @@ import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.util.insertLiteralOverride
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/HideSeekbarPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/HideSeekbarPatch;"
 
 val hideSeekbarPatch = bytecodePatch(
     description = "Adds an option to hide the seekbar.",
@@ -36,7 +36,7 @@ val hideSeekbarPatch = bytecodePatch(
             0,
             """
                 const/4 v0, 0x0
-                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideSeekbar()Z
+                invoke-static { }, $EXTENSION_CLASS->hideSeekbar()Z
                 move-result v0
                 if-eqz v0, :hide_seekbar
                 return-void
@@ -49,7 +49,7 @@ val hideSeekbarPatch = bytecodePatch(
             FullscreenLargeSeekbarFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->useFullscreenLargeSeekbar(Z)Z"
+                    "$EXTENSION_CLASS->useFullscreenLargeSeekbar(Z)Z"
                 )
             }
         }

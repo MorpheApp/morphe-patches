@@ -69,38 +69,20 @@ Promjene uključuju:
   <string name="morphe_hide_artist_cards_title">Sakrij kartice izvođača</string>
   <string name="morphe_hide_artist_cards_summary_on">Kartice izvođača su skrivene</string>
   <string name="morphe_hide_artist_cards_summary_off">Kartice izvođača su prikazane</string>
-  <string name="morphe_hide_chips_shelf_title">Sakrij karticu čipovi</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Kartice čipovi su skrivene</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Kartice čipovi su prikazane</string>
   <string name="morphe_hide_community_posts_title">Sakrij postove zajednice</string>
   <string name="morphe_hide_community_posts_summary_on">Postovi zajednice su skriveni</string>
   <string name="morphe_hide_community_posts_summary_off">Postovi zajednice su prikazani</string>
   <string name="morphe_hide_compact_banner_title">Sakrij kompaktne banere</string>
   <string name="morphe_hide_compact_banner_summary_on">Kompaktni banneri su skriveni</string>
   <string name="morphe_hide_compact_banner_summary_off">Kompaktni banneri su prikazani</string>
-  <string name="morphe_hide_expandable_card_title">Sakrij karticu Proširi</string>
-  <string name="morphe_hide_expandable_card_summary_on">Kartica Proširi ispod videozapisa je skrivena</string>
-  <string name="morphe_hide_expandable_card_summary_off">Kartica Proširi ispod videozapisa je prikazana</string>
   <string name="morphe_hide_floating_microphone_button_title">Sakrij tipku plivajući mikrofon</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Plutajuća tipka mikrofona u pretraživanju je skrivena</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Plutajuća tipka mikrofona u pretraživanju je prikazana</string>
   <string name="morphe_hide_horizontal_shelves_title">Sakrij vodoravne kartice</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Vodoravne police su skrivene, kao što su:
-
-• Najnovije vijesti
-• Nastavi gledanje
-• Istraži više kanala
-• Za vas
-• Najrelevantnije
-• Kupovina
-• Gledaj ponovno"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Prikazane su horizontalne police</string>
   <string name="morphe_hide_image_shelf_title">Sakrij policu slika</string>
   <string name="morphe_hide_image_shelf_summary_on">Informativne kartice su skriveni</string>
   <string name="morphe_hide_image_shelf_summary_off">Informativne kartice su prikazane</string>
-  <string name="morphe_hide_latest_posts_title">Sakrij \'Prikaži više\' tipku</string>
-  <string name="morphe_hide_latest_posts_summary_on">Tipka \'Prikaži više\' u rezultatima pretrage je skrivena</string>
-  <string name="morphe_hide_latest_posts_summary_off">Tipka \'Prikaži više\' u rezultatima pretrage je prikazana</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Sakrij dugme \'Latest videos\'</string>
@@ -191,6 +173,8 @@ Promjene uključuju:
   <string name="morphe_hide_video_title_title">Sakrij naslov videa</string>
   <string name="morphe_hide_video_title_summary_on">Naslov videa u pregledu je sakriven</string>
   <string name="morphe_hide_video_title_summary_off">Naslov videa u pregledu je prikazan</string>
+  <string name="morphe_hide_description_components_screen_title">Video opis</string>
+  <string name="morphe_hide_description_components_screen_summary">Sakrij ili prikaži komponente opisa videa</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Odjel \'AI generirano video sažete\' je prikazano</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Sakrij \'Prikaži\' tipku</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Tipka za emitiranje je prikazana</string>
@@ -247,17 +231,15 @@ Promjene uključuju:
   <string name="morphe_hide_music_section_title">Sakrij \'Glazba\'</string>
   <string name="morphe_hide_music_section_summary_on">Odjeljak \'Glazba\' je skriven</string>
   <string name="morphe_hide_music_section_summary_off">Odjeljak \'Glazba\' je prikazan</string>
+  <string name="morphe_hide_quizzes_section_title">Sakrij Kvizovi</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Odjeljak Kvizovi je sakriven</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Odjeljak Kvizovi je prikazan</string>
   <string name="morphe_hide_subscribe_button_title">Sakrij tipku \'Pretplati se\'</string>
   <string name="morphe_hide_subscribe_button_summary_on">Tipka \'Pretplati se\' je skrivena</string>
   <string name="morphe_hide_subscribe_button_summary_off">Tipka \'Pretplati se\' je prikazana</string>
   <string name="morphe_hide_transcript_section_title">Sakrij \'Transkripte\' odjel</string>
   <string name="morphe_hide_transcript_section_summary_on">Odjel \'Transkripte\' je skriveno</string>
   <string name="morphe_hide_transcript_section_summary_off">Odjel \'Transkripte\' je prikazano</string>
-  <string name="morphe_hide_quizzes_section_title">Sakrij Kvizovi</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Odjeljak Kvizovi je sakriven</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Odjeljak Kvizovi je prikazan</string>
-  <string name="morphe_hide_description_components_screen_title">Video opis</string>
-  <string name="morphe_hide_description_components_screen_summary">Sakrij ili prikaži komponente opisa videa</string>
   <string name="morphe_hide_filter_bar_screen_title">Sakrij ili prikaži filter bar u feedovima, videoz, pretraživanjima i povratku</string>
   <string name="morphe_hide_filter_bar_screen_summary">Filter bar je skrivena u feedovima</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Filter bar je prikazana u feedovima</string>
@@ -409,9 +391,6 @@ Ograničenja:
   <string name="morphe_hide_end_screen_store_banner_title">Sakrij dugme za pretraživanje</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Dugme za pretraživanje je skriveno</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Dugme za pretraživanje je prikazano</string>
-  <string name="morphe_hide_fullscreen_ads_title">Sakrij punoprogresne oglase</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Prikazne oglase su sakrivene</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Punoprogresne oglase su prikazane</string>
   <string name="morphe_hide_general_ads_title">Sakrij video oglase</string>
   <string name="morphe_hide_general_ads_summary_on">Video oglase su skrivene</string>
   <string name="morphe_hide_general_ads_summary_off">Video oglase su prikazane</string>
@@ -746,7 +725,6 @@ Dodirnite i držite za otvaranje postavki YouTubea"</string>
 Dodirnite i držite za otvaranje postavki Morphea"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout meni</string>
-  <string name="morphe_hide_player_flyout_summary">Sakrij ili prikaži stavke flyout menija</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Meni Captions je skriven</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Meni Captions je prikazan</string>
@@ -801,12 +779,6 @@ Za prikaz izbornika audio zapisa promijenite 'Parodija video streamova' u 'Andro
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Meni Watch in VR je prikazan</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Tipka za gledanje u VR je prikazana</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Sakrij meni \'Kvaliteta\'</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Meni \'Kvaliteta\' je skriven</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Meni \'Kvaliteta\' je prikazan</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Sakrij podnožje menija \'Kvaliteta\'</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Podnožje menija \'Kvaliteta\' je skriveno</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Podnožje menija \'Kvaliteta\' je prikazano</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Sakrij pregladu automatskog puštanja</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Automatska preglada je sakrivena</string>
@@ -834,6 +806,7 @@ Za prikaz izbornika audio zapisa promijenite 'Parodija video streamova' u 'Andro
   <string name="morphe_hide_player_previous_next_buttons_title">Tipka za Cast je prikazana</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Tipka za Cast je skrivena</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Tipka za Cast je prikazana</string>
+  <string name="morphe_hide_settings_button_summary_off">Tipka postavki je prikazana</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Tipka za Cast je skrivena</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Tipka za Cast je prikazana</string>
@@ -1336,12 +1309,7 @@ Ako se kasnije isključi, preporuke za UI mogu se izbjeći čišćenjem podataka
   <string name="morphe_open_system_share_sheet_title">Otvori tablicu dijeljenja sustava</string>
   <string name="morphe_open_system_share_sheet_summary_on">Otvara tablicu dijeljenja sustava</string>
   <string name="morphe_open_system_share_sheet_summary_off">Otvara tablicu dijeljenja u aplikaciji</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Nadjačaj tipku YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Tipka YouTube Music otvara vašu ciljanu glazbenu aplikaciju</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Tipka YouTube Music otvara vašu izvornu aplikaciju</string>
-  <string name="morphe_music_package_name_title">Morphe Music ime paketa</string>
-  <string name="morphe_music_package_name_summary">Naziv paketa ciljne glazbene aplikacije</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Promijenite početnu stranicu</string>
   <string name="morphe_change_start_page_entry_default">Zadano</string>

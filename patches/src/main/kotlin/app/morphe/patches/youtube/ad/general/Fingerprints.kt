@@ -5,8 +5,8 @@ import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -46,19 +46,6 @@ internal object GetPremiumViewFingerprint : Fingerprint(
         Opcode.ADD_INT_2ADDR,
         Opcode.INVOKE_VIRTUAL,
         Opcode.RETURN_VOID,
-    )
-)
-
-internal object LithoDialogBuilderFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("[B", "L"),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            name = "show"
-        ),
-        resourceLiteral(ResourceType.STYLE, "SlidingDialogAnimation"),
     )
 )
 

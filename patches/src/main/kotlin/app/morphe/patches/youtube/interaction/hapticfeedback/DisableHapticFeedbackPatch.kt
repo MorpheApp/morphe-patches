@@ -22,10 +22,10 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR_PREFIX =
+private const val EXTENSION_CLASS_PREFIX =
     "Lapp/morphe/extension/youtube/patches/DisableHapticFeedbackPatch"
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "$EXTENSION_CLASS_DESCRIPTOR_PREFIX;"
+private const val EXTENSION_CLASS = "$EXTENSION_CLASS_PREFIX;"
 
 @Suppress("unused")
 val disableHapticFeedbackPatch = bytecodePatch(
@@ -37,18 +37,17 @@ val disableHapticFeedbackPatch = bytecodePatch(
         transformInstructionsPatch(
             filterMap = { classDef, _, instruction, instructionIndex ->
                 filterMapInstruction35c<MethodCall>(
-                    EXTENSION_CLASS_DESCRIPTOR_PREFIX,
+                    EXTENSION_CLASS_PREFIX,
                     classDef,
                     instruction,
                     instructionIndex,
                 )
             },
             transform = { method, entry ->
-                val (methodType, instruction, instructionIndex) = entry
+                val (methodType, _, instructionIndex) = entry
                 methodType.replaceInvokeVirtualWithExtension(
-                    EXTENSION_CLASS_DESCRIPTOR,
+                    EXTENSION_CLASS,
                     method,
-                    instruction,
                     instructionIndex,
                 )
             },
@@ -80,7 +79,7 @@ val disableHapticFeedbackPatch = bytecodePatch(
             fingerprint.method.addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->$methodName()Z
+                    invoke-static {}, $EXTENSION_CLASS->$methodName()Z
                     move-result v0
                     if-eqz v0, :vibrate
                     return-void
@@ -118,7 +117,7 @@ val disableHapticFeedbackPatch = bytecodePatch(
                 addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableTapAndHoldVibrate(Ljava/lang/Object;)Ljava/lang/Object;
+                        invoke-static { v$register }, $EXTENSION_CLASS->disableTapAndHoldVibrate(Ljava/lang/Object;)Ljava/lang/Object;
                         move-result-object v$register
                     """
                 )
@@ -133,7 +132,7 @@ private enum class MethodCall(
     override val definedClassName: String,
     override val methodName: String,
     override val methodParams: Array<String>,
-    override val returnType: String,
+    override val methodReturnType: String,
 ) : IMethodCall {
     VibrationEffect(
         "Landroid/os/Vibrator;",

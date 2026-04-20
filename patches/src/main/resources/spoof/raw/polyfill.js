@@ -7,6 +7,19 @@ if (!Object.hasOwn) {
   };
 }
 
+if (typeof console === 'undefined') {
+  globalThis.console = {
+    log: function () { },
+    info: function () { },
+    warn: function () { },
+    error: function () { }
+  }
+}
+
+if (typeof console.error === 'undefined') {
+  console.error = console.log;
+}
+
 if (typeof URL === 'undefined') {
   globalThis.URL = function (url) {
     this.href = url;
@@ -77,4 +90,17 @@ if (typeof navigator === 'undefined') {
     language: 'en-US',
     // add more properties if needed
   };
+}
+
+console.log("Navigator userAgent: " + navigator.userAgent);
+
+try {
+  var _num = 1;
+  _num.toLocaleString("en", { style: 'percent' });
+} catch (e) {
+  console.info("Intl support is missing, patching Number.toLocaleString to ignore options and locales");
+  (console.error || console.log).call(console, e.stack || e);
+  Number.prototype.toLocaleString = function (locales, options) {
+    return this.toString();
+  }
 }

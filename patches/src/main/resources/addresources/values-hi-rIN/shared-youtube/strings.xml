@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">कस्टम</string>
   <string name="morphe_custom_branding_notification_icon_title">सूचना चिह्न</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">अनुप्रयोग चिह्न का अनुसरण करें</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 प्रायोगिक चेतावनी 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"आप एक प्रयोगशील ऐप संस्करण का उपयोग कर रहे हैं ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 अपेक्षित है कि ऐप व्यवहार में अजीबोगरीबता होगी या अनदेखा बग आएंगे क्योंकि हम इस ऐप संस्करण के लिए पैच को सटीक बनाते हैं
-&lt;br/&gt;&lt;br/&gt;
-अगर आप सबसे अधिक समस्या मुक्त अनुभव चाहते हैं, तो &lt;b&gt;इसका अनइंस्टॉल करें&lt;/b&gt; और सिफारिशित ऐप संस्करण का पैच करें ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ मैं प्रयोगशील चाहता हूँ</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ मैं स्थिर चाहता हूँ</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">मorphe नोटिस</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">आपकी देखने की जानकारी सहेजी नहीं जा रही है.&lt;br&gt;&lt;br&gt;यह बहुत अधिक संभावना है कि यह DNS विज्ञापन अवरोधक या नेटवर्क प्रॉक्सी के कारण है.&lt;br&gt;&lt;br&gt;इस समस्या को ठीक करने के लिए, &lt;b&gt;s.youtube.com&lt;/b&gt; को व्हाइटलिस्ट करें या सभी DNS अवरोधकों और प्रॉक्सी को बंद कर दें।</string>
@@ -121,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">ओरिजिनल ऑडियो भाषा को मजबूर करें</string>
   <string name="morphe_force_original_audio_summary_on">ओरिजिनल ऑडियो भाषा का उपयोग किया जा रहा है</string>
   <string name="morphe_force_original_audio_summary_off">डिफ़ॉल्ट ऑडियो का उपयोग किया जा रहा है</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">छुपाएं फुलस्क्रीन विज्ञापन</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">फ़ुलस्क्रीन एड्स छुपाए गए हैं</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">फ़ुलस्क्रीन एड्स दिखाई दिए हैं</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">इस सुविधा का उपयोग करने के लिए, \'Spoof वीडियो स्ट्रीम\' को Android Reel या TV में बदलें</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

@@ -150,4 +150,13 @@ Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următo
 • Aplicația se poate închide aleatoriu
 • Notificările pot să nu funcționeze
 • Redarea în fundal poate să nu funcționeze"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Alertă Experimentală 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Folosiți o versiune experimentală a aplicației ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Așteptați un comportament ciudat al aplicației sau erori neidentificate, deoarece ajustăm remedierile pentru această versiune a aplicației.
+&lt;br/&gt;&lt;br/&gt;
+Dacă doriți o experiență cât mai bună, atunci &lt;b&gt;dezinstalați&lt;/b&gt; această aplicație și actualizați versiunea recomandată a aplicației ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Vreau experimental</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Vreau stabil</string>
 </resources>

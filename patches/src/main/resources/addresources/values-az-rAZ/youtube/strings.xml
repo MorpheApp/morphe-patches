@@ -56,18 +56,12 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_artist_cards_title">Sənətçi kartlarını gizlət</string>
   <string name="morphe_hide_artist_cards_summary_on">Sənətçi kartları gizlidir</string>
   <string name="morphe_hide_artist_cards_summary_off">Sənətçi kartları göstərilir</string>
-  <string name="morphe_hide_chips_shelf_title">Çip bölməsin gizlət</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Çip bölməsi gizlidir</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Çip bölməsi göstərilir</string>
   <string name="morphe_hide_community_posts_title">İcma elanların gizlət</string>
   <string name="morphe_hide_community_posts_summary_on">İcma elanları gizlədilib</string>
   <string name="morphe_hide_community_posts_summary_off">İcma elanları göstərilir</string>
   <string name="morphe_hide_compact_banner_title">Yığcam afişaları gizlət</string>
   <string name="morphe_hide_compact_banner_summary_on">Yığcam afişalar gizlidir</string>
   <string name="morphe_hide_compact_banner_summary_off">Yığcam afişalar görünür</string>
-  <string name="morphe_hide_expandable_card_title">Genişlənən kartı gizlət</string>
-  <string name="morphe_hide_expandable_card_summary_on">Videoların aşağısında genişlənən kart gizlidir</string>
-  <string name="morphe_hide_expandable_card_summary_off">Videoların altında genişlənən kart görünür</string>
   <string name="morphe_hide_floating_microphone_button_title">Üzən mikrofon düyməsini gizlət</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Axtarışda üzən mikrofon düyməsi gizlidir</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Üzən mikrofon düyməsi axtarışda göstərilir</string>
@@ -76,9 +70,6 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_image_shelf_title">Şəkil cərgəsin gizlət</string>
   <string name="morphe_hide_image_shelf_summary_on">Şəkil cərgəsi axtarış nəticələrində gizlidir</string>
   <string name="morphe_hide_image_shelf_summary_off">Şəkil cərgəsi axtarış nəticələrində görünür</string>
-  <string name="morphe_hide_latest_posts_title">Son elanları gizlət</string>
-  <string name="morphe_hide_latest_posts_summary_on">Ən son elanlar gizlədilib</string>
-  <string name="morphe_hide_latest_posts_summary_off">Ən son elanlar göstərilir</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Gizlət \'Son videolar\' düyməsini</string>
@@ -167,6 +158,8 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_video_title_title">Video başlığını gizlət</string>
   <string name="morphe_hide_video_title_summary_on">Video başlığı oynatma örtüsündə gizlidir</string>
   <string name="morphe_hide_video_title_summary_off">Video başlığı oynatma örtüsündə göstərilir</string>
+  <string name="morphe_hide_description_components_screen_title">Video təsviri</string>
+  <string name="morphe_hide_description_components_screen_summary">Video təsviri elementlərini gizlət və ya göstər</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\"AI ilə yaradılan video xülasəsini\" gizlət</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Sİ ilə yaradılan video xülasə bölməsi gizlədilib</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Sİ ilə yaradılan video xülasə bölməsi görünür</string>
@@ -224,8 +217,6 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_transcript_section_title">Transkript-i Gizlət</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkripsiya bölməsi gizlidir</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkripsiya bölməsi göstərilir</string>
-  <string name="morphe_hide_description_components_screen_title">Video təsviri</string>
-  <string name="morphe_hide_description_components_screen_summary">Video təsviri elementlərini gizlət və ya göstər</string>
   <string name="morphe_hide_filter_bar_screen_title">Filtr çubuğu</string>
   <string name="morphe_hide_filter_bar_screen_summary">Axınlar, əlaqəli videolar, axtarış nəticələri və baxış tarixçəsində filtr cərgəsin gizlət və ya göstər</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Axınlarda gizlət</string>
@@ -349,9 +340,6 @@ Məhdudiyyətlər
   <string name="morphe_hide_end_screen_store_banner_title">Son ekran mağaza afişasın gizlət</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Son ekran mağaza afişası gizlidir</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Son ekran mağaza afişası görünür</string>
-  <string name="morphe_hide_fullscreen_ads_title">Tam ekran reklamlarını gizlət</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Tam ekran reklamları gizlənir</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Tam ekran reklamları göstərilir</string>
   <string name="morphe_hide_general_ads_title">Ümumi reklamları gizlət</string>
   <string name="morphe_hide_general_ads_summary_on">Ümumi reklamlar gizlidir</string>
   <string name="morphe_hide_general_ads_summary_off">Ümumi reklamlar göstərilir</string>
@@ -639,7 +627,6 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_toolbar_search_button_summary_off">Axtarış düyməsi görünür</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Açılan menyu</string>
-  <string name="morphe_hide_player_flyout_summary">Oynadıcı açılan menyu elementlərini gizlət və ya göstər</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Titrləri Gizlət</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Titrlər menyusu gizlidir</string>
@@ -694,12 +681,6 @@ Səs treki menyusunu göstərmək üçün \"Video yayımları saxtalaşdır\"-ı
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR menyusunda izləmə gizlidir</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">VR menyusunda izləmə göstərilir</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Video keyfiyyət menyusunu gizlət</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Video keyfiyyət menyusu gizlidir</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Video keyfiyyət menyusu görünür</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Video keyfiyyət menyusu alt məlumatını gizlət</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Video keyfiyyət menyusu alt məlumatı gizlidir</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Video keyfiyyət menyusu alt məlumatı göstərilir</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Avtomatik önizləmə önizlənməsini gizlət</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Avtomatik önizləmə önizlənməsi gizlidir</string>
@@ -1171,12 +1152,7 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_open_system_share_sheet_title">Sistem paylaşım səhifəsin aç</string>
   <string name="morphe_open_system_share_sheet_summary_on">Sistem paylaşım səhifəsi açılır</string>
   <string name="morphe_open_system_share_sheet_summary_off">Tətbiqdəki paylaşım səhifəsi açılır</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">YouTube Music düyməsin nəzərə alma</string>
-  <string name="morphe_override_youtube_music_button_summary_on">YouTube Music düyməsi hədəf musiqi tətbiqinizi açır</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube Music düyməsi yerli tətbiqi açır</string>
-  <string name="morphe_music_package_name_title">Morphe Music paketi adı</string>
-  <string name="morphe_music_package_name_summary">Hədəf musiqi tətbiqinin paket adı</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Başlatma səhifəsini dəyişdir</string>
   <string name="morphe_change_start_page_entry_default">İlkin</string>

@@ -20,7 +20,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
@@ -49,11 +49,11 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
-private const val FILTER_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/components/PlaybackSpeedMenuFilter;"
-
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/speed/CustomPlaybackSpeedPatch;"
+
+private const val EXTENSION_FILTER =
+    "Lapp/morphe/extension/youtube/patches/components/PlaybackSpeedMenuFilter;"
 
 internal val customPlaybackSpeedPatch = bytecodePatch(
     description = "Adds custom playback speed options.",
@@ -107,7 +107,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         SpeedArrayGeneratorFingerprint.let {
             val matches = it.instructionMatches
             it.method.apply {
-                val playbackSpeedsArrayType = "$EXTENSION_CLASS_DESCRIPTOR->customPlaybackSpeeds:[F"
+                val playbackSpeedsArrayType = "$EXTENSION_CLASS->customPlaybackSpeeds:[F"
                 // Apply changes from last index to first to preserve indexes.
 
                 val originalArrayFetchIndex = matches[5].index
@@ -276,7 +276,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
                         addInstructionsAtControlFlowLabel(
                             index,
                             """
-                                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->restoreOldPlaybackSpeedMenu()Z
+                                invoke-static { }, $EXTENSION_CLASS->restoreOldPlaybackSpeedMenu()Z
                                 move-result v$register
                                 if-eqz v$register, :ignore
                                 invoke-direct { p0 }, $helperMethod
@@ -292,7 +292,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             FlyoutMenuNonLegacyFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->useNewFlyoutMenu(Z)Z"
+                    "$EXTENSION_CLASS->useNewFlyoutMenu(Z)Z"
                 )
             }
         }
@@ -300,10 +300,10 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         // endregion
 
         // Close the unpatched playback dialog and show the custom speeds.
-        addRecyclerViewTreeHook(EXTENSION_CLASS_DESCRIPTOR)
+        addRecyclerViewTreeHook(EXTENSION_CLASS)
 
         // Required to check if the playback speed menu is currently shown.
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
 
         // endregion
 
@@ -320,7 +320,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
                 addInstructions(
                     speedIndex + 1,
                     """
-                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getTapAndHoldSpeed()F
+                        invoke-static { }, $EXTENSION_CLASS->getTapAndHoldSpeed()F
                         move-result v$speedRegister
                     """
                 )
@@ -331,7 +331,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
                 addInstructions(
                     enabledIndex,
                     """
-                        invoke-static { v$enabledRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableTapAndHoldSpeed(Z)Z
+                        invoke-static { v$enabledRegister }, $EXTENSION_CLASS->disableTapAndHoldSpeed(Z)Z
                         move-result v$enabledRegister
                     """
                 )

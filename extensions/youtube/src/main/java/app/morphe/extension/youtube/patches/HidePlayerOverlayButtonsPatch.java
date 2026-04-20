@@ -14,6 +14,8 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class HidePlayerOverlayButtonsPatch {
 
+    public static final int FULLSCREEN_HIDDEN_Y_OFFSET = 100000;
+
     private static final boolean HIDE_AUTOPLAY_BUTTON_ENABLED = Settings.HIDE_AUTOPLAY_BUTTON.get();
     private static final Boolean HIDE_FULLSCREEN_BUTTON_ENABLED = Settings.HIDE_FULLSCREEN_BUTTON.get();
 
@@ -109,6 +111,22 @@ public final class HidePlayerOverlayButtonsPatch {
         });
     }
 
+
+    private static final int PLAYER_OVERFLOW_BUTTON_ID = getIdentifierOrThrow(
+            ResourceType.ID, "player_overflow_button");
+    /**
+     * Injection point.
+     */
+    public static void hideSettingsButton(View parentView) {
+        if (!Settings.HIDE_SETTINGS_BUTTON.get()) {
+            return;
+        }
+
+        Utils.runOnMainThread(() -> {
+            hideView(parentView, PLAYER_OVERFLOW_BUTTON_ID);
+        });
+    }
+
     /**
      * Injection point.
      */
@@ -125,7 +143,7 @@ public final class HidePlayerOverlayButtonsPatch {
         // Cannot remove the button because the bold overlay player buttons
         // rely on the draw updates to control fade in/out.
         // Move the button offscreen so it's not visible anymore.
-        imageView.setY(-100000);
+        imageView.setY(imageView.getY() - FULLSCREEN_HIDDEN_Y_OFFSET);
         return imageView;
     }
 

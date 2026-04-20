@@ -45,6 +45,7 @@ public class RedditActivityHook {
             initialize(activity);
             return true;
         }
+
         return false;
     }
 

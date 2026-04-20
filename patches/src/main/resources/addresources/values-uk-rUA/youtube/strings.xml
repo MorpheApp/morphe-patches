@@ -70,38 +70,39 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">Приховати картки виконавця</string>
   <string name="morphe_hide_artist_cards_summary_on">Картки виконавця приховано</string>
   <string name="morphe_hide_artist_cards_summary_off">Картки виконавця показуються</string>
-  <string name="morphe_hide_chips_shelf_title">Приховати полицю фішок</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Полицю фішок приховано</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Полиця фішок показується</string>
   <string name="morphe_hide_community_posts_title">Приховати публікації спільноти</string>
   <string name="morphe_hide_community_posts_summary_on">Публікації спільноти приховано</string>
   <string name="morphe_hide_community_posts_summary_off">Публікації спільноти показуються</string>
   <string name="morphe_hide_compact_banner_title">Приховати компактні банери</string>
   <string name="morphe_hide_compact_banner_summary_on">Компактні банери приховано</string>
   <string name="morphe_hide_compact_banner_summary_off">Компактні банери показуються</string>
-  <string name="morphe_hide_expandable_card_title">Приховати розширювану картку</string>
-  <string name="morphe_hide_expandable_card_summary_on">Розширювану картку під відео приховано</string>
-  <string name="morphe_hide_expandable_card_summary_off">Розширювана картка під відео показується</string>
+  <string name="morphe_hide_expandable_card_title">Приховати розширювальні картки</string>
+  <string name="morphe_hide_expandable_card_entry_1">Розширювальні картки під відео показуються</string>
+  <string name="morphe_hide_expandable_card_entry_2">Приховано тільки картку товару під відео</string>
+  <string name="morphe_hide_expandable_card_entry_3">Приховано тільки картку підсумку під відео</string>
+  <string name="morphe_hide_expandable_card_entry_4">Приховано картки товару та підсумку під відео</string>
+  <string name="morphe_hide_expandable_card_entry_5">Розширювальні картки під відео приховано</string>
   <string name="morphe_hide_floating_microphone_button_title">Приховати плаваючу кнопку мікрофона</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Плаваючу кнопку мікрофона в пошуку приховано</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Плаваюча кнопка мікрофона в пошуку показується</string>
   <string name="morphe_hide_horizontal_shelves_title">Приховати горизонтальні полиці</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Горизонтальні полиці приховано:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Горизонтальні полиці приховані, наприклад:
 
-• Гарячі новини
+• Останні новини
+• Рекомендовані дописи спільноти
 • Продовжити перегляд
-• Переглянути більше каналів
+• Перегляньте більше каналів
+• Перегляньте більше тем
 • Для вас
-• Найдоречніші
+• Останні відео
+• Найбільш релевантні
+• Дописи зі спільноти автора
 • Покупки
-• Дивитися знову"</string>
+• Переглянути знову"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Горизонтальні полиці показуються</string>
   <string name="morphe_hide_image_shelf_title">Приховати полицю із зображеннями</string>
   <string name="morphe_hide_image_shelf_summary_on">Полицю із зображеннями в результатах пошуку приховано</string>
   <string name="morphe_hide_image_shelf_summary_off">Полиця із зображеннями в результатах пошуку показується</string>
-  <string name="morphe_hide_latest_posts_title">Приховати останні публікації</string>
-  <string name="morphe_hide_latest_posts_summary_on">Останні публікації приховано</string>
-  <string name="morphe_hide_latest_posts_summary_off">Останні публікації показуються</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Приховати кнопку \"Найновіші відео\"</string>
@@ -198,6 +199,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_title">Приховати назву відео</string>
   <string name="morphe_hide_video_title_summary_on">Назву відео в плеєрі приховано</string>
   <string name="morphe_hide_video_title_summary_off">Назва відео в плеєрі показується</string>
+  <string name="morphe_hide_description_components_screen_title">Опис відео</string>
+  <string name="morphe_hide_description_components_screen_summary">Приховати або показувати компоненти опису відео</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Приховати секцію \"Короткий переказ від ШІ\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Секцію короткого переказу відео, згенерованого ШІ, приховано</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Секція короткого переказу відео, згенерованого ШІ, показується</string>
@@ -254,17 +257,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_music_section_title">Приховати \"Музику\"</string>
   <string name="morphe_hide_music_section_summary_on">Секцію \"Музики\" приховано</string>
   <string name="morphe_hide_music_section_summary_off">Секція \"Музики\" показується</string>
+  <string name="morphe_hide_quizzes_section_title">Приховати \"Вікторини\"</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Розділ \"Вікторини\" приховано</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Розділ \"Вікторини\" показується</string>
   <string name="morphe_hide_subscribe_button_title">Приховати \"Підписатися\"</string>
   <string name="morphe_hide_subscribe_button_summary_on">Кнопку \"Підписатися\" приховано</string>
   <string name="morphe_hide_subscribe_button_summary_off">Кнопка \"Підписатися\" показується</string>
   <string name="morphe_hide_transcript_section_title">Приховати секцію \"Текст відео\"</string>
   <string name="morphe_hide_transcript_section_summary_on">Секцію \"Текст відео\" приховано</string>
   <string name="morphe_hide_transcript_section_summary_off">Секція \"Текст відео\" показується</string>
-  <string name="morphe_hide_quizzes_section_title">Приховати \"Вікторини\"</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Розділ \"Вікторини\" приховано</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Розділ \"Вікторини\" показується</string>
-  <string name="morphe_hide_description_components_screen_title">Опис відео</string>
-  <string name="morphe_hide_description_components_screen_summary">Приховати або показувати компоненти опису відео</string>
   <string name="morphe_hide_filter_bar_screen_title">Панель фільтрів</string>
   <string name="morphe_hide_filter_bar_screen_summary">Приховати або показувати панель фільтрів у стрічках, пов\'язаних відео, результатах пошуку та історії</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Приховати у стрічках</string>
@@ -300,6 +301,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_shelf_title">Приховати полицю учасників</string>
   <string name="morphe_hide_members_shelf_summary_on">Полицю учасників приховано</string>
   <string name="morphe_hide_members_shelf_summary_off">Полиця учасників показується</string>
+  <string name="morphe_hide_posts_shelf_title">Приховати полицю з дописами</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Полицю з дописами приховано</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Полиця з дописами показується</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Приховати кнопку \"Магазин\"</string>
   <string name="morphe_hide_store_button_summary_on">Кнопку \"Магазин\" приховано</string>
@@ -420,9 +424,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">Приховати банер магазину на кінцевому екрані</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Банер магазину на кінцевому екрані приховано</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Банер магазину на кінцевому екрані показується</string>
-  <string name="morphe_hide_fullscreen_ads_title">Приховати повноекранну рекламу</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Повноекранна реклама прихована</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Повноекранна реклама показується</string>
   <string name="morphe_hide_general_ads_title">Приховати загальну рекламу</string>
   <string name="morphe_hide_general_ads_summary_on">Загальну рекламу приховано</string>
   <string name="morphe_hide_general_ads_summary_off">Загальна реклама показується</string>
@@ -459,8 +460,8 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_summary_on">Кнопка копіювання URL-адреси відео показується. Натисніть, щоб скопіювати URL-адресу відео. Натисніть і утримуйте, щоб скопіювати з позначкою часу</string>
   <string name="morphe_copy_video_url_summary_off">Кнопка копіювання URL-адреси відео не показується</string>
   <string name="morphe_copy_video_url_timestamp_title">Копіювати позначку часу</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Кнопка копіювання URL-адреси відео копіює позначку часу. Довге натискання копіює без позначки часу</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Кнопка копіювання URL-адреси відео копіює без позначки часу. Довге натискання копіює позначку часу</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Кнопка копіювання URL-адреси відео копіює позначку часу. Тривале натискання копіює без позначки часу</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Кнопка копіювання URL-адреси відео копіює без позначки часу. Тривале натискання копіює позначку часу</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Вилучити діалог про неприйнятний контент</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Діалогове вікно про неприйнятний контент буде видалено</string>
@@ -539,9 +540,9 @@ Second \"item\" text"</string>
   <!-- interaction.seekbar.livestreamDvrPatch -->
   <string name="morphe_livestream_dvr_title">Увімкнути DVR для прямої трансляції</string>
   <string name="morphe_livestream_dvr_summary_on">Перемотування дозволено на всіх прямих трансляціях</string>
-  <string name="morphe_livestream_dvr_summary_off">Перегрупування може бути недоступним на прямих трансляціях</string>
+  <string name="morphe_livestream_dvr_summary_off">Перемотування може бути недоступним на прямих трансляціях</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_user_dialog_message">Увімкнення цієї функції може призвести до непередбачуваної поведінки при пошуку потокового відео, якщо не ввімкнено \'Імітувати відеопотоки\'.</string>
+  <string name="morphe_livestream_dvr_user_dialog_message">Увімкнення цієї функції може призвести до неочікуваної поведінки при перемотуванні прямої трансляції, якщо \"Підміна відеопотоків\" не увімкнена.</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Увімкнути перемотку пересуванням</string>
   <string name="morphe_slide_to_seek_summary_on">Перемотку пересуванням увімкнено\n\nВідновлено поведінку старого інтерфейсу \"Проведіть пальцем, щоб перемотати\"</string>
@@ -792,11 +793,17 @@ Second \"item\" text"</string>
 Натисніть і утримуйте, щоб відкрити налаштування Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Висувне меню</string>
-  <string name="morphe_hide_player_flyout_summary">Приховати або показувати пункти висувного меню плеєра</string>
+  <string name="morphe_hide_player_flyout_summary">Приховати або показати компоненти спливаючого меню плеєра</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Приховати \"Субтитри\"</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Пункт меню \"Субтитри\" приховано</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Пункт меню \"Субтитри\" показується</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Приховати нижній колонтитул \"Субтитрів\"</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Нижній колонтитул \"Субтитрів\" приховано</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Нижній колонтитул \"Субтитрів\" показується</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Приховати заголовок \"Субтитрів\"</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Заголовок меню \"Субтитрів\" приховано</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Заголовок меню \"Субтитрів\" показується</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Приховати \"Додаткові налаштування\"</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Пункт меню \"Додаткові налаштування\" приховано</string>
@@ -842,17 +849,23 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Пункт меню \"Звукова доріжка\" приховано
 
 Для того, щоб пункт меню \"Звукова доріжка\" показувався, змініть клієнт \"Підміни відеопотоків\" на \"Android Reel\" або \"TV\""</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Приховати нижній колонтитул \"Звукової доріжки\"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Нижній колонтитул \"Звукової доріжки\" приховано</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Нижній колонтитул \"Звукової доріжки\" показується</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Приховати \"Дивитись у VR\"</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Пункт меню \"Дивитись у VR\" приховано</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Пункт меню \"Дивитись у VR\" показується</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Приховати меню якості відео</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Меню якості відео приховано</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Меню якості відео показується</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Приховати колонтитул меню якості відео</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Нижній колонтитул меню якості відео приховано</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Нижній колонтитул меню якості відео показується</string>
+  <string name="morphe_hide_player_flyout_quality_title">Приховати \"Якість\"</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Меню \"Якість\" приховано</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Меню \"Якість\" показується</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Приховати нижній колонтитул \"Якості\"</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Нижній колонтитул меню \"Якості\" приховано</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Нижній колонтитул меню \"Якості\" показується</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Приховати заголовок \"Якості\"</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Заголовок меню \"Якості\" приховано</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Заголовок меню \"Якості\" показується</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Приховати попередній перегляд</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Попередній перегляд приховано</string>
@@ -880,6 +893,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Приховати кнопки Попереднє та Наступне</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Кнопки попереднього та наступного відео приховано</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Кнопки попереднього та наступного відео показуються</string>
+  <string name="morphe_hide_settings_button_title">Приховати кнопку \"Налаштування\"</string>
+  <string name="morphe_hide_settings_button_summary_on">Кнопку \"Налаштування\" приховано</string>
+  <string name="morphe_hide_settings_button_summary_off">Кнопка \"Налаштування\" показується</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Приховати картки на кінцевому екрані</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Картки на кінцевому екрані приховано</string>
@@ -1382,12 +1398,12 @@ Second \"item\" text"</string>
   <string name="morphe_open_system_share_sheet_title">Відкрити системний діалог поширення</string>
   <string name="morphe_open_system_share_sheet_summary_on">Відкриває системний діалог поширення</string>
   <string name="morphe_open_system_share_sheet_summary_off">Відкриває вбудований діалог поширення</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Замінити кнопку YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Кнопка YouTube Music відкриває ваш цільовий музичний застосунок</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Кнопка YouTube Music відкриває вбудований застосунок</string>
-  <string name="morphe_music_package_name_title">Назва пакета Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Назва пакета цільового музичного застосунку</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Перевизначити кнопки YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Кнопки YouTube Music відкривають цільовий музичний застосунок</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Кнопки YouTube Music відкривають офіційний застосунок</string>
+  <string name="morphe_music_package_name_title">Назва пакета цільового музичного застосунку</string>
+  <string name="morphe_music_package_name_summary">Назва пакета встановленого вами цільового музичного застосунку</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Змінити початкову сторінку</string>
   <string name="morphe_change_start_page_entry_default">За замовчуванням</string>
@@ -1654,11 +1670,11 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_avc_codec_not_available">Щоб скористатися цією функцією, змініть \"Підміна відеопотоків\" на Android VR або Android Studio</string>
   <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
-  <string name="morphe_expand_livestream_dvr_duration_title">Розширити тривалість запису потокового відео</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary_on">Тривалість запису потокового відео розширена до 7 днів</string>
-  <string name="morphe_expand_livestream_dvr_duration_summary_off">Тривалість запису потокового відео обмежена значенням за замовчуванням сервера</string>
+  <string name="morphe_expand_livestream_dvr_duration_title">Розширити тривалість DVR прямої трансляції</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_on">Тривалість DVR прямої трансляції збільшено до 7 днів</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_off">Тривалість DVR прямої трансляції обмежена значеннями сервера за замовчуванням</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">Це налаштування може призвести до непередбачуваної поведінки, якщо не ввімкнено \'Підробка відеопотоків\'.</string>
+  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">Це налаштування може призвести до неочікуваної поведінки, якщо \"Підміна відеопотоків\" не увімкнена.</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">Показувати розширене меню якості відео</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">Розширене меню якості відео показується</string>

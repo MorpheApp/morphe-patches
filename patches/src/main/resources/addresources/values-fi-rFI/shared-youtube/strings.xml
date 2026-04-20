@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Mukautettu</string>
   <string name="morphe_custom_branding_notification_icon_title">Ilmoituksen kuvake</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Seuraa sovelluksen kuvake</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Varoitus: Kokeellinen 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Käytät kokeellista sovellusversiota: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Varaudu erikoiseen käytökseen tai tunnistamattomiin virheisiin, sillä hienosäädämme parhaillaan muokkauksia tälle sovellusversiolle.
-&lt;br/&gt;&lt;br/&gt;
-Jos haluat mahdollisimman toimintavarman kokemuksen, &lt;b&gt;poista&lt;/b&gt; tämä asennus ja muokkaa suositeltu sovellusversio: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Haluan kokeellisen</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Haluan vakaan</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-huomautus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Katseluhistoriaasi ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä johtuu todennäköisesti DNS-mainostenestosta tai verkkovälityspalvelimesta.&lt;br&gt;&lt;br&gt;Korjaa ongelma lisäämällä &lt;b&gt;s.youtube.com&lt;/b&gt; sallittujen listalle tai kytke kaikki DNS-estot ja välityspalvelimet pois päältä.</string>
@@ -121,6 +111,10 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_force_original_audio_title">Pakota alkuperäinen äänen kieli</string>
   <string name="morphe_force_original_audio_summary_on">Käytetään alkuperäistä äänen kieltä</string>
   <string name="morphe_force_original_audio_summary_off">Käytetään oletusääntä</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Piilota koko näytön mainokset</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Koko näytön mainokset piilotetaan</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Koko näytön mainokset näytetään</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Käyttääksesi tätä ominaisuutta, muuta \'Naamioi videovirrat\' Android Reel tai TV:ksi</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

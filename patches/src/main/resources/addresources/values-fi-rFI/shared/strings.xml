@@ -150,4 +150,13 @@ Jos akun optimointeja ei muuteta, voit kokea:
 • Sovellus saattaa sulkeutua satunnaisesti
 • Ilmoitukset eivät välttämättä toimi
 • Taustalla toistaminen ei välttämättä toimi"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Varoitus: Kokeellinen 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Käytät kokeellista sovellusversiota: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Varaudu erikoiseen käytökseen tai tunnistamattomiin virheisiin, sillä hienosäädämme parhaillaan muokkauksia tälle sovellusversiolle.
+&lt;br/&gt;&lt;br/&gt;
+Jos haluat mahdollisimman toimintavarman kokemuksen, &lt;b&gt;poista&lt;/b&gt; tämä asennus ja muokkaa suositeltu sovellusversio: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Haluan kokeellisen</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Haluan vakaan</string>
 </resources>

@@ -9,8 +9,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -39,7 +39,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
+internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
 
 @Suppress("unused")
 val miniplayerPatch = bytecodePatch(
@@ -95,7 +95,7 @@ val miniplayerPatch = bytecodePatch(
             addInstructions(
                 index,
                 """
-                    invoke-static {v$register}, $EXTENSION_CLASS_DESCRIPTOR->$methodName(Z)Z
+                    invoke-static {v$register}, $EXTENSION_CLASS->$methodName(Z)Z
                     move-result v$register
                 """
             )
@@ -122,7 +122,7 @@ val miniplayerPatch = bytecodePatch(
             extensionMethod: String,
         ) = method.insertLiteralOverride(
             literal,
-            "$EXTENSION_CLASS_DESCRIPTOR->$extensionMethod(Z)Z"
+            "$EXTENSION_CLASS->$extensionMethod(Z)Z"
         )
 
         fun Fingerprint.insertMiniplayerFeatureFlagFloatOverride(
@@ -137,7 +137,7 @@ val miniplayerPatch = bytecodePatch(
                 addInstructions(
                     targetIndex + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$extensionMethod(F)F
+                        invoke-static { v$register }, $EXTENSION_CLASS->$extensionMethod(F)F
                         move-result v$register
                     """
                 )
@@ -153,7 +153,7 @@ val miniplayerPatch = bytecodePatch(
             addInstructionsAtControlFlowLabel(
                 iPutIndex,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getModernMiniplayerOverrideType(I)I
+                    invoke-static { v$register }, $EXTENSION_CLASS->getModernMiniplayerOverrideType(I)I
                     move-result v$register
                 """
             )
@@ -222,7 +222,7 @@ val miniplayerPatch = bytecodePatch(
             "getModernMiniplayerOverride",
         )
 
-        MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+        MiniplayerModernFeatureFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
             MINIPLAYER_MODERN_FEATURE_KEY,
             "getModernFeatureFlagsActiveOverride",
         )
@@ -242,7 +242,7 @@ val miniplayerPatch = bytecodePatch(
             addInstructions(
                 targetIndex + 1,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getMiniplayerDefaultSize(I)I
+                    invoke-static { v$register }, $EXTENSION_CLASS->getMiniplayerDefaultSize(I)I
                     move-result v$register
                 """
             )
@@ -297,7 +297,7 @@ val miniplayerPatch = bytecodePatch(
                     addInstructions(
                         index + 2,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->allowBoldIcons(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS->allowBoldIcons(Z)Z
                             move-result v$register
                         """
                     )
@@ -323,14 +323,14 @@ val miniplayerPatch = bytecodePatch(
 
                 addInstruction(
                     index + 1,
-                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$methodName(Landroid/view/View;)V",
+                    "invoke-static { v$register }, $EXTENSION_CLASS->$methodName(Landroid/view/View;)V",
                 )
             }
         }
 
         MiniplayerModernAddViewListenerFingerprint.method.addInstruction(
             0,
-            "invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->" +
+            "invoke-static { p1 }, $EXTENSION_CLASS->" +
                 "hideMiniplayerSubTexts(Landroid/view/View;)V",
         )
 

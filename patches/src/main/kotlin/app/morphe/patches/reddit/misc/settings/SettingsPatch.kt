@@ -20,22 +20,18 @@ import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
+import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.cloneMutableAndPreserveParameters
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
-
-var is_2026_04_or_greater = false
-    private set
 
 val settingsPatch = bytecodePatch(
     description = "Applies mandatory patches to implement Morphe settings into the application."
@@ -45,10 +41,11 @@ val settingsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         disablePlayStoreUpdatesPatch,
+        spoofSignaturePatch,
         addResourcesPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
-            recommendedAppVersion = COMPATIBILITY_REDDIT.targets!!.first { !it.isExperimental }.version!!
+            recommendedAppVersion = COMPATIBILITY_REDDIT.targets.first { !it.isExperimental }.version!!
         ),
         resourcePatch {
             execute {
@@ -73,14 +70,6 @@ val settingsPatch = bytecodePatch(
         addAppResources("reddit")
 
         /**
-         * Set version info
-         */
-        val versionNumber = RedditInternalFeaturesFingerprint.instructionMatches[1].instruction
-            .getReference<StringReference>()!!.string.replace(".", "").toInt()
-
-        is_2026_04_or_greater = 2026040 <= versionNumber
-
-        /**
          * Replace settings label and icon
          */
         PreferenceManagerFingerprint.let {
@@ -92,7 +81,7 @@ val settingsPatch = bytecodePatch(
                 addInstructions(
                     labelIndex + 1,
                     """
-                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getSettingLabel()Ljava/lang/String;
+                        invoke-static { }, $EXTENSION_CLASS->getSettingLabel()Ljava/lang/String;
                         move-result-object v$labelRegister
                     """
                 )
@@ -104,7 +93,7 @@ val settingsPatch = bytecodePatch(
                 addInstructions(
                     iconIndex + 1,
                     """
-                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getSettingIcon()Landroid/graphics/drawable/Drawable;
+                        invoke-static { }, $EXTENSION_CLASS->getSettingIcon()Landroid/graphics/drawable/Drawable;
                         move-result-object v$iconRegister
                     """
                 )
@@ -134,13 +123,13 @@ val settingsPatch = bytecodePatch(
             it.method.cloneMutableAndPreserveParameters().addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS_DESCRIPTOR->isAcknowledgment(Ljava/lang/Enum;)Z
+                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->isAcknowledgment(Ljava/lang/Enum;)Z
                     move-result v0
                     if-eqz v0, :ignore
                     
                     invoke-virtual { p0 }, $getActivityMethod
                     move-result-object v0
-                    invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->initializeByIntent(Landroid/content/Context;)Landroid/content/Intent;
+                    invoke-static { v0 }, $EXTENSION_CLASS->initializeByIntent(Landroid/content/Context;)Landroid/content/Intent;
                     move-result-object v0
                     
                     const/4 v1, -1
@@ -160,9 +149,9 @@ val settingsPatch = bytecodePatch(
                 val freeRegister = findFreeRegister(insertIndex)
 
                 addInstructionsWithLabels(
-                    insertIndex,
+                    insertIndex + 1,
                     """
-                        invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->hook(Landroid/app/Activity;)Z
+                        invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->hook(Landroid/app/Activity;)Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :ignore
                         return-void

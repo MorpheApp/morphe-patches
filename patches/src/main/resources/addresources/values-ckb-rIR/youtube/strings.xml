@@ -67,33 +67,20 @@ Lêbelê, zavtana vê dê dane yên bikarhêner jî log bike, wek IP-a we."</str
   <string name="morphe_hide_artist_cards_title">Kertan ên hunermend veşêre</string>
   <string name="morphe_hide_artist_cards_summary_on">Kertan ên hunermend veşêrîn</string>
   <string name="morphe_hide_artist_cards_summary_off">Kertan ên hunermend nîşandin</string>
-  <string name="morphe_hide_chips_shelf_title">Kertay shelf-a chip-an veşêre</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Kertay shelf-a chip-an veşêrîn</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Kertay shelf-a chip-an nîşandin</string>
   <string name="morphe_hide_community_posts_title">Postên civakê veşêre</string>
   <string name="morphe_hide_community_posts_summary_on">Postên civakê veşêrîn</string>
   <string name="morphe_hide_community_posts_summary_off">Postên civakê nîşandin</string>
   <string name="morphe_hide_compact_banner_title">Banjên kûçık veşêre</string>
   <string name="morphe_hide_compact_banner_summary_on">Banjên kûçık veşêrîn</string>
   <string name="morphe_hide_compact_banner_summary_off">Banjên kûçık nîşandin</string>
-  <string name="morphe_hide_expandable_card_title">Kartê veşêre ku tê rakirin</string>
-  <string name="morphe_hide_expandable_card_summary_on">Kartê ku tê rakirin, di bin video-yan de veşêrîn</string>
-  <string name="morphe_hide_expandable_card_summary_off">Kartê ku tê rakirin, di bin video-yan de nîşandin</string>
   <string name="morphe_hide_floating_microphone_button_title">Bûtona mikrofonê ya levkirî veşêre</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Bûtona mikrofonê ya levkirî di lêgerînê de veşêrîn</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Bûtona mikrofonê ya levkirî di lêgerînê de nîşandin</string>
   <string name="morphe_hide_horizontal_shelves_title">Shelf-a xwerziyê veşêre</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"سەری دەكەوێتە تۆرەكان لە كاتدا:\n
-• ڕاگەیاندنی دەبێت.
-• خۆڕاوه‌یه‌ك خۆی لە ڕا خۆ بوونة. 
-• سەرچاوه‌بی ژووره‌كانی كه‌ركاته‌ ته‌ ڤوه‌ بەرگه‌هه‌."</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Shelf-a xwerziyê nîşandin</string>
   <string name="morphe_hide_image_shelf_title">Shelf-a wêne veşêre</string>
   <string name="morphe_hide_image_shelf_summary_on">Shelf-a wêne di navencê encamên lêgerînê de veşêrîn</string>
   <string name="morphe_hide_image_shelf_summary_off">Shelf-a wêne di navencê encamên lêgerînê de nîşandin</string>
-  <string name="morphe_hide_latest_posts_title">Postên herî dawîn veşêre</string>
-  <string name="morphe_hide_latest_posts_summary_on">Postên herî dawîn veşêrîn</string>
-  <string name="morphe_hide_latest_posts_summary_off">Postên herî dawîn nîşandin</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">دەستنیشانەی \"ڤیدۆی تازە\" قایم بێت</string>
@@ -184,6 +171,8 @@ Lêbelê, zavtana vê dê dane yên bikarhêner jî log bike, wek IP-a we."</str
   <string name="morphe_hide_video_title_title">سەرنیشانی ڤیدۆ دەبێتە قایم</string>
   <string name="morphe_hide_video_title_summary_on">سەرنیشانی ڤیدۆ لە قەڵەبی ڕاگیراو قایمە</string>
   <string name="morphe_hide_video_title_summary_off">سەرنیشانی ڤیدۆ لە قەڵەبی ڕاگیراو دەردەکەوێت</string>
+  <string name="morphe_hide_description_components_screen_title"> پێشكەشەى وتە</string>
+  <string name="morphe_hide_description_components_screen_summary">خۆپاراستن یاخود وەشاندنى پێشكەشەى توشە</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">خۆپاراستن بۆ ئەڵقەی ڕیزبەندەكانی ڤیدۆكەی دروستكراو لەلایەن ئه‌ڵقه‌</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">ئەڵقەی ڕیزبەندەكانی ڤیدۆكەی دروستكراو لەلایەن ئه‌ڵقه‌ خاوەندن</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">ئەڵقەی ڕیزبەندەكانی ڤیدۆكەی دروستكراو لەلایەن ئه‌ڵقه‌ دەربارەن</string>
@@ -240,17 +229,15 @@ Lêbelê, zavtana vê dê dane yên bikarhêner jî log bike, wek IP-a we."</str
   <string name="morphe_hide_music_section_title">هۆ و زيان ڕا ساذێت</string>
   <string name="morphe_hide_music_section_summary_on">زیان ڕا ساذێت</string>
   <string name="morphe_hide_music_section_summary_off">زیان ڕا دەني</string>
+  <string name="morphe_hide_quizzes_section_title">هێڵبژاردنەکانی بینه‌رەكان-ی فۆشێنه‌</string>
+  <string name="morphe_hide_quizzes_section_summary_on">هێڵبژاردنەکانی بینه‌رەكان فۆشێنه‌</string>
+  <string name="morphe_hide_quizzes_section_summary_off">هێڵبژاردنەکانی بینه‌رەكان نمایش ده‌كرێت</string>
   <string name="morphe_hide_subscribe_button_title">هۆو دەربارەی ڕەهین چۆن دكان دەكرێت</string>
   <string name="morphe_hide_subscribe_button_summary_on">Rewa هەشتا چۆن دەدرێت</string>
   <string name="morphe_hide_subscribe_button_summary_off">Rewa هەشتا ڕا دەني،</string>
   <string name="morphe_hide_transcript_section_title">خۆپاراستن بۆ ڕیزنامە</string>
   <string name="morphe_hide_transcript_section_summary_on">ئەڵقەی ڕیزنامە خاوەندن</string>
   <string name="morphe_hide_transcript_section_summary_off">ئەڵقەی ڕیزنامە دەربارەن</string>
-  <string name="morphe_hide_quizzes_section_title">هێڵبژاردنەکانی بینه‌رەكان-ی فۆشێنه‌</string>
-  <string name="morphe_hide_quizzes_section_summary_on">هێڵبژاردنەکانی بینه‌رەكان فۆشێنه‌</string>
-  <string name="morphe_hide_quizzes_section_summary_off">هێڵبژاردنەکانی بینه‌رەكان نمایش ده‌كرێت</string>
-  <string name="morphe_hide_description_components_screen_title"> پێشكەشەى وتە</string>
-  <string name="morphe_hide_description_components_screen_summary">خۆپاراستن یاخود وەشاندنى پێشكەشەى توشە</string>
   <string name="morphe_hide_filter_bar_screen_title">بارەكانى فیلترین</string>
   <string name="morphe_hide_filter_bar_screen_summary">خۆپاراستن یاخود وەشاندنى بارەكانى فیلترین لە ڕیزگەكان، ڕازى بوون، ئەنجامەكان و سه‌رچاوه‌ى بینه‌ر</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">خۆپاراستن لە ڕیزگەكان</string>
@@ -399,9 +386,6 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
   <string name="morphe_hide_end_screen_store_banner_title">خفەت کردن هەبێت دەرެو ئیدمەكە کاری یەكمةلە</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">دەرެو ئیدمەكە کاری یەكمةلە خفەت دەینی</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">دەرެو ئیدمەكە کاری یەكمةلە دەینی</string>
-  <string name="morphe_hide_fullscreen_ads_title">خفەت کردن iklan ک年にはی</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">ئەسكێتك ده‌سته‌كफ़ێ ده‌درێتە دەكثێت.</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off"> iklan ک年にはی دەینی</string>
   <string name="morphe_hide_general_ads_title">خفەت کردن iklan general</string>
   <string name="morphe_hide_general_ads_summary_on"> iklan general خفەت دەینی</string>
   <string name="morphe_hide_general_ads_summary_off"> iklan general دەینی</string>
@@ -732,7 +716,6 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
 پاڵەوێستن و پاشخۆناندنی بۆ کراوە ڕێکخستەکانی Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">خەڵەتە ڕیزكارییەكە</string>
-  <string name="morphe_hide_player_flyout_summary">پێشێڵکردنی یا زانیوانێکەکانی خۆفوشارۆکە</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">زانیوانەکان قایپێکە دەربخرا</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">خۆفوشاری زانیوانەکان پێشێڵکراوە</string>
@@ -786,12 +769,6 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">ڕێنمایی بینینی VR سەرپێچراو</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">ڕێنمایی بینینی VR دەردەکەوێتەوە</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">خەڵەتە بۆ منوی کیفیت</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">منوی کیفیت خەڵەتە</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">منوی کیفیت دەردەکەوێت</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">خەڵەتە بۆ پێ بڕیاری منوی کیفیت</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">پێ بڕیاری منوی کیفیت خەڵەتە</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">پێ بڕیاری منوی کیفیت دەردەکەوێت</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">پیشۆخێزیی خۆکار قایم بێت</string>
   <string name="morphe_hide_autoplay_preview_summary_on">پیشۆخێزیی خۆکار قایمە</string>
@@ -1306,10 +1283,7 @@ dەستەکان دەتوانن ناوی کەناڵ بێت یان هەر نووس
   <string name="morphe_open_system_share_sheet_title">كرنەوەی لۆمەی بەڵگە پێشكێش كردنی سیستەم</string>
   <string name="morphe_open_system_share_sheet_summary_on">دەركردنی لۆمەی بەڵگە پێشكێش كردنی سیستەم</string>
   <string name="morphe_open_system_share_sheet_summary_off">دەركردنی لۆمەی بەڵگە پێشكێش كردنی ناو ئەپ</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_summary_on">دکۆی YouTube Music دەربارەتە سەرژمێرەی دەنگ دەربخۆت</string>
-  <string name="morphe_music_package_name_title">פּاكیژی ئه‌زلی Morphe</string>
-  <string name="morphe_music_package_name_summary">ناوهۆكاری خۆشكاریی په‌روه‌ره‌كانی ڕەگەكی خۆراكیه‌.</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">گۆرینی پەڕی دەستپێکردن</string>
   <string name="morphe_change_start_page_entry_default">بونیاد</string>

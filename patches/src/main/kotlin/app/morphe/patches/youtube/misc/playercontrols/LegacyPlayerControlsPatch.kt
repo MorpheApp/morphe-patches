@@ -12,13 +12,14 @@ package app.morphe.patches.youtube.misc.playercontrols
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.Document
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
@@ -31,6 +32,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.copyXmlNode
 import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findElementByAttributeValueOrThrow
+import app.morphe.util.findFreeRegister
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnEarly
@@ -228,7 +230,7 @@ fun injectVisibilityCheckCall(descriptor: String) {
     )
 }
 
-internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/LegacyPlayerControlsPatch;"
+internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LegacyPlayerControlsPatch;"
 
 private lateinit var inflateTopControlMethodRef : WeakReference<MutableMethod>
 private var inflateTopControlInsertIndex = -1
@@ -303,7 +305,7 @@ val legacyPlayerControlsPatch = bytecodePatch(
                 addInstruction(
                     index,
                     "invoke-static { v$register }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->setFullscreenCloseButton(Landroid/view/View;)V",
+                            "$EXTENSION_CLASS->setFullscreenCloseButton(Landroid/view/View;)V",
                 )
             }
         }
@@ -322,7 +324,7 @@ val legacyPlayerControlsPatch = bytecodePatch(
             fingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->" +
+                    "$EXTENSION_CLASS->" +
                             "usePlayerBottomControlsExploderLayout(Z)Z",
                 )
             }
@@ -358,17 +360,26 @@ val legacyPlayerControlsPatch = bytecodePatch(
                     val gradientViewRegister =
                         getInstruction<OneRegisterInstruction>(gradientViewIndex).registerA
 
+                    val free = findFreeRegister(gradientFieldIndex, gradientFieldRegister)
+
                     // This field is Nullable, and if null, the bottom gradient is not set.
-                    addInstruction(
+                    addInstructionsWithLabels(
                         gradientFieldIndex,
-                        "const/4 v$gradientFieldRegister, 0x0"
+                        """
+                            invoke-static { }, $EXTENSION_CLASS->useNullBottomGradient()Z
+                            move-result v$free
+                            if-eqz v$free, :show
+                            const/4 v$gradientFieldRegister, 0x0
+                            :show
+                            nop
+                        """
                     )
 
                     // Make the bottom gradient transparent and hide it.
                     addInstruction(
                         gradientViewIndex + 1,
                         "invoke-static { v$gradientViewRegister }, " +
-                                "$EXTENSION_CLASS_DESCRIPTOR->hideBottomGradientScrim(Landroid/widget/ImageView;)V"
+                                "$EXTENSION_CLASS->hideBottomGradientScrim(Landroid/widget/ImageView;)V"
                     )
                 }
             }

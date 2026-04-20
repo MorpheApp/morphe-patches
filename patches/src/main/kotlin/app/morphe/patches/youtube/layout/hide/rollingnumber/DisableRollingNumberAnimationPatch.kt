@@ -13,7 +13,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.RollingNumberTextViewAnimationUpdateFingerprint
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableRollingNumberAnimationsPatch;"
 
 val disableRollingNumberAnimationPatch = bytecodePatch(
@@ -48,7 +48,7 @@ val disableRollingNumberAnimationPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     blockStartIndex,
                     """
-                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disableRollingNumberAnimations()Z
+                        invoke-static { }, $EXTENSION_CLASS->disableRollingNumberAnimations()Z
                         move-result v$freeRegister
                         if-nez v$freeRegister, :disable_animations
                     """,

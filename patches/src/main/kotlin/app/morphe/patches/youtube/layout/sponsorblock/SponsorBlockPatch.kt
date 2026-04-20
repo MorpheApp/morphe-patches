@@ -5,7 +5,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -109,13 +109,13 @@ private val sponsorBlockResourcePatch = resourcePatch {
     }
 }
 
-internal const val EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR =
+internal const val EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/SegmentPlaybackController;"
-private const val EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS_DESCRIPTOR =
+private const val EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/CreateSegmentButton;"
-private const val EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS_DESCRIPTOR =
+private const val EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/VotingButton;"
-private const val EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS_DESCRIPTOR =
+private const val EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/SponsorBlockViewController;"
 
 @Suppress("unused")
@@ -138,12 +138,12 @@ val sponsorBlockPatch = bytecodePatch(
     execute {
         // Hook the video time methods.
         videoTimeHook(
-            EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR,
+            EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS,
             "setVideoTime",
         )
 
         hookBackgroundPlayVideoId(
-            EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR +
+            EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS +
                 "->setCurrentVideoId(Ljava/lang/String;)V",
         )
 
@@ -174,7 +174,7 @@ val sponsorBlockPatch = bytecodePatch(
                 addInstruction(
                     thicknessIndex + 1,
                     "invoke-static { v$thicknessRegister }, " +
-                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR->setSeekbarThickness(I)V",
+                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setSeekbarThickness(I)V",
                 )
 
                 // Find the drawCircle call and draw the segment before it.
@@ -188,7 +188,7 @@ val sponsorBlockPatch = bytecodePatch(
                 addInstruction(
                     drawCircleIndex,
                     "invoke-static { v$canvasInstanceRegister, v$centerYRegister }, " +
-                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR->" +
+                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->" +
                             "drawSegmentTimeBars(Landroid/graphics/Canvas;F)V",
                 )
 
@@ -198,21 +198,21 @@ val sponsorBlockPatch = bytecodePatch(
                     """
                         move-object/from16 v0, p0
                         iget-object v0, v0, $rectangleFieldName
-                        invoke-static { v0 }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR->setSeekbarRectangle(Landroid/graphics/Rect;)V
+                        invoke-static { v0 }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setSeekbarRectangle(Landroid/graphics/Rect;)V
                     """
                 )
             }
         }
 
         // Change visibility of the buttons.
-        initializeTopControl(EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS_DESCRIPTOR)
-        injectVisibilityCheckCall(EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS_DESCRIPTOR)
+        initializeTopControl(EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS)
+        injectVisibilityCheckCall(EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS)
 
-        initializeTopControl(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS_DESCRIPTOR)
-        injectVisibilityCheckCall(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS_DESCRIPTOR)
+        initializeTopControl(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS)
+        injectVisibilityCheckCall(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS)
 
         // Show skip button when player overlay is active.
-        injectVisibilityCheckCall(EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS_DESCRIPTOR)
+        injectVisibilityCheckCall(EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS)
 
         // Append the new time to the player layout.
         AppendTimeFingerprint.let {
@@ -223,7 +223,7 @@ val sponsorBlockPatch = bytecodePatch(
                 addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR->appendTimeWithoutSegments(Ljava/lang/String;)Ljava/lang/String;
+                        invoke-static { v$register }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->appendTimeWithoutSegments(Ljava/lang/String;)Ljava/lang/String;
                         move-result-object v$register
                     """
                 )
@@ -231,7 +231,7 @@ val sponsorBlockPatch = bytecodePatch(
         }
 
         // Initialize the player controller.
-        onCreateHook(EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR, "initialize")
+        onCreateHook(EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS, "initialize")
 
         // Initialize the SponsorBlock view.
         ControlsOverlayFingerprint.let {
@@ -240,7 +240,7 @@ val sponsorBlockPatch = bytecodePatch(
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
                 addInstruction(
                     checkCastIndex + 1,
-                    "invoke-static {v$frameLayoutRegister}, $EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS_DESCRIPTOR->initialize(Landroid/view/ViewGroup;)V",
+                    "invoke-static {v$frameLayoutRegister}, $EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS->initialize(Landroid/view/ViewGroup;)V",
                 )
             }
         }
@@ -251,7 +251,7 @@ val sponsorBlockPatch = bytecodePatch(
 
             addInstructionsAtControlFlowLabel(
                 index,
-                "invoke-static { v$register }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR->setAdProgressTextVisibility(I)V"
+                "invoke-static { v$register }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setAdProgressTextVisibility(I)V"
             )
         }
     }

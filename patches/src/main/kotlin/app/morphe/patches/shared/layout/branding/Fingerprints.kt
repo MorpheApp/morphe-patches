@@ -9,7 +9,7 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object NumberOfPresetAppNamesExtensionFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name = "numberOfPresetAppNames",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "I",
@@ -17,7 +17,7 @@ internal object NumberOfPresetAppNamesExtensionFingerprint : Fingerprint(
 )
 
 internal object UserProvidedCustomNameExtensionFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name = "userProvidedCustomName",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
@@ -25,7 +25,7 @@ internal object UserProvidedCustomNameExtensionFingerprint : Fingerprint(
 )
 
 internal object UserProvidedCustomIconExtensionFingerprint : Fingerprint(
-    definingClass = EXTENSION_CLASS_DESCRIPTOR,
+    definingClass = EXTENSION_CLASS,
     name = "userProvidedCustomIcon",
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
     returnType = "Z",
@@ -40,12 +40,12 @@ internal object NotificationBuilderFingerprint : Fingerprint(
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/app/Notification\$Builder;->setSmallIcon(II)Landroid/app/Notification\$Builder;"
+            smali = $$"Landroid/app/Notification$Builder;->setSmallIcon(II)Landroid/app/Notification$Builder;"
         ),
         string("key_action_priority"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/app/Notification\$Builder;->setColor(I)Landroid/app/Notification\$Builder;"
+            smali = $$"Landroid/app/Notification$Builder;->setColor(I)Landroid/app/Notification$Builder;"
         ),
     )
 )

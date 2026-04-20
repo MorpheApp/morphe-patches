@@ -59,6 +59,30 @@ message TertiaryContents {
     ElementRenderer elementRenderer = 153515154;
 }
 
+message Commands {
+    ShowSheetCommand showSheetCommand = 443434441;
+}
+
+message ShowSheetCommand {
+    PanelLoadingStrategy panelLoadingStrategy = 1;
+}
+
+message PanelLoadingStrategy {
+    InlineContent inlineContent = 1;
+}
+
+message InlineContent {
+    PanelContentRenderer panelContentRenderer = 441573002;
+}
+
+message PanelContentRenderer {
+    PanelHeader panelHeader = 1;
+}
+
+message PanelHeader {
+    ElementRenderer elementRenderer = 153515154;
+}
+
 message ElementRenderer {
     NewElement newElement = 172660663;
 }
@@ -86,10 +110,19 @@ message ComponentType {
 
 message Model {
     oneof data {
+        BottomSheetHeaderModel bottomSheetHeaderModel = 269594834;
         VideoActionBarModel videoActionBarModel = 389155117;
         VideoMetadataCarouselModel videoMetadataCarouselModel = 408379376;
         YoutubeModel youtubeModel = 413471385;
     }
+}
+
+message BottomSheetHeaderModel {
+    HeaderContent headerContent = 1;
+}
+
+message HeaderContent {
+    string titleText = 1;
 }
 
 // region video metadata carousel
@@ -119,11 +152,44 @@ message YoutubeModel {
 }
 
 message ViewModel {
-    CompactifyVideoActionBarViewModel compactifyVideoActionBarViewModel = 2185;
+    oneof data {
+        CompactifyVideoActionBarViewModel compactifyVideoActionBarViewModel = 2185;
+        QualitySheetHeaderViewModel qualitySheetHeaderViewModel = 449024803;
+        QuickQualitySheetContentViewModel quickQualitySheetContentViewModel = 449854123;
+        CaptionsSheetContentViewModel captionsSheetContentViewModel = 461956826;
+    }
 }
 
 message CompactifyVideoActionBarViewModel {
     repeated ActionButtons actionButtons = 1;
+}
+
+message QualitySheetHeaderViewModel {
+}
+
+message QuickQualitySheetContentViewModel {
+    QualityHeader qualityHeader = 1;
+    QualityFooter qualityFooter = 8;
+    bool enablePlayerAdapter = 9;
+}
+
+message QualityHeader {
+}
+
+message QualityFooter {
+    QualitySheetFooterViewModel qualitySheetFooterViewModel = 514785317;
+}
+
+message QualitySheetFooterViewModel {
+}
+
+message CaptionsSheetContentViewModel {
+    SettingsCtaText SettingsCtaText = 6;
+    bool enablePlayerAdapter1 = 10;
+    bool enablePlayerAdapter2 = 11;
+}
+
+message SettingsCtaText {
 }
 
 // endregion

@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">停用現代首頁 UI</string>
   <string name="morphe_disable_screenshot_popup_title">停用截圖彈出視窗</string>
   <string name="morphe_disable_screenshot_popup_summary">停用截圖彈出視窗</string>
+  <string name="morphe_hide_ask_button_title">隱藏詢問按鈕</string>
+  <string name="morphe_hide_ask_button_summary">隱藏搜尋列中的詢問按鈕</string>
   <string name="morphe_hide_answers_button_title">隱藏回覆按鈕</string>
   <string name="morphe_hide_answers_button_summary">隱藏回覆按鈕在導覽欄中</string>
   <string name="morphe_hide_chat_button_title">隱藏聊天按鈕</string>
@@ -67,4 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">清除分享連結中的追蹤查詢參數</string>
   <string name="morphe_open_links_directly_title">直接開啟連結</string>
   <string name="morphe_open_links_directly_summary">外部連結時略過重定向網址</string>
+  <string name="morphe_open_links_externally_title">開啟外部連結</string>
+  <string name="morphe_open_links_externally_summary">連結會在瀏覽器中開啟，而不是在應用程式內建瀏覽器中</string>
 </resources>

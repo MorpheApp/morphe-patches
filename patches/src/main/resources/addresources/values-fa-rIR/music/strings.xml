@@ -25,10 +25,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">عمومی</string>
   <string name="morphe_settings_music_screen_3_player_title">پلیر</string>
   <string name="morphe_settings_music_screen_4_misc_title">متفرقه</string>
+  <!-- ad.general.hideAdsPatch -->
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">مخفی کردن تبلیغات ویدیویی</string>
   <string name="morphe_music_hide_video_ads_summary_on">تبلیغات ویدیویی مخفی هستند</string>
   <string name="morphe_music_hide_video_ads_summary_off">تبلیغات ویدیویی نمایش داده می شوند</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_about_title">درباره</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">فعال سازی تکرار دائمی</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">تکرار دائمی فعال است</string>
@@ -49,6 +53,5 @@ Second \"item\" text"</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <!-- layout.premium.hideGetPremiumPatch -->
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
 </resources>

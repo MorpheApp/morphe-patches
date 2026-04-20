@@ -21,7 +21,7 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/LivestreamDvrPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/LivestreamDvrPatch;"
 
 @Suppress("unused")
 val livestreamDvrPatch = bytecodePatch(
@@ -52,7 +52,7 @@ val livestreamDvrPatch = bytecodePatch(
                 addInstructionsAtControlFlowLabel(
                     returnIndex,
                     """
-                        invoke-static { v$returnRegister }, $EXTENSION_CLASS_DESCRIPTOR->enableLivestreamDvr(Z)Z
+                        invoke-static { v$returnRegister }, $EXTENSION_CLASS->enableLivestreamDvr(Z)Z
                         move-result v$returnRegister
                     """
                 )
@@ -66,7 +66,7 @@ val livestreamDvrPatch = bytecodePatch(
             addInstructions(
                 index,
                 """
-                    invoke-static { v$register, v${register + 1} }, $EXTENSION_CLASS_DESCRIPTOR->overrideMaxDvrDurationSec(D)D
+                    invoke-static { v$register, v${register + 1} }, $EXTENSION_CLASS->overrideMaxDvrDurationSec(D)D
                     move-result-wide v$register
                 """
             )

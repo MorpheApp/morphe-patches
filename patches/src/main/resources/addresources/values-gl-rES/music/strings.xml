@@ -28,10 +28,15 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Xeral</string>
   <string name="morphe_settings_music_screen_3_player_title">Reprodutor</string>
   <string name="morphe_settings_music_screen_4_misc_title">Miscelánea</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Ocultar etiqueta \'Obter Music Premium\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Ocultar anuncios de vídeo</string>
   <string name="morphe_music_hide_video_ads_summary_on">Os anuncios de vídeo están ocultos</string>
   <string name="morphe_music_hide_video_ads_summary_off">Os anuncios de vídeo son visibles</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_about_title">Acerca de</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activar repetición permanente</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">A repetición permanente está activada</string>
@@ -103,10 +108,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ocultar etiquetas dos botóns de navegación</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">As etiquetas están ocultas</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">As etiquetas son visibles</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Ocultar etiqueta \'Obter Music Premium\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">A etiqueta está oculta</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">A etiqueta é visible</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Ocultar botón Premium</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">O botón Premium está oculto</string>

@@ -34,7 +34,6 @@ import app.morphe.patches.youtube.misc.navigation.addBottomBarContainerHook
 import app.morphe.patches.youtube.misc.navigation.hookNavigationButtonCreated
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_45_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_46_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -63,11 +62,11 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/NavigationBarPatch;"
 
 private const val EXTENSION_SETTING_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/NavigationBarPatch\$SettingsController;"
+    $$"Lapp/morphe/extension/youtube/patches/NavigationBarPatch$SettingsController;"
 
 val navigationBarPatch = bytecodePatch(
     name = "Navigation bar",
@@ -128,7 +127,7 @@ val navigationBarPatch = bytecodePatch(
         // Swap create with notifications button.
         addOSNameHook(
             Endpoint.GUIDE,
-            "$EXTENSION_CLASS_DESCRIPTOR->swapCreateWithNotificationButton(Ljava/lang/String;)Ljava/lang/String;",
+            "$EXTENSION_CLASS->swapCreateWithNotificationButton(Ljava/lang/String;)Ljava/lang/String;",
         )
 
         // Hide navigation button labels.
@@ -140,43 +139,43 @@ val navigationBarPatch = bytecodePatch(
                 addInstruction(
                     setTextIndex,
                     "invoke-static { v$targetRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->hideNavigationButtonLabels(Landroid/widget/TextView;)V",
+                            "$EXTENSION_CLASS->hideNavigationButtonLabels(Landroid/widget/TextView;)V",
                 )
             }
         }
 
         // Hook navigation button created, in order to hide them.
-        hookNavigationButtonCreated(EXTENSION_CLASS_DESCRIPTOR)
+        hookNavigationButtonCreated(EXTENSION_CLASS)
 
         // Hide navigation bar
-        addBottomBarContainerHook("$EXTENSION_CLASS_DESCRIPTOR->hideNavigationBar(Landroid/view/View;)V")
+        addBottomBarContainerHook("$EXTENSION_CLASS->hideNavigationBar(Landroid/view/View;)V")
 
         // Force on/off translucent effect on status bar and navigation buttons.
         TranslucentNavigationStatusBarFeatureFlagFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationStatusBar(Z)Z",
+                "$EXTENSION_CLASS->useTranslucentNavigationStatusBar(Z)Z",
             )
         }
 
         TranslucentNavigationButtonsFeatureFlagFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
+                "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z",
             )
         }
 
         TranslucentNavigationButtonsSystemFeatureFlagFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->useTranslucentNavigationButtons(Z)Z",
+                "$EXTENSION_CLASS->useTranslucentNavigationButtons(Z)Z",
             )
         }
 
         AnimatedNavigationTabsFeatureFlagFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->useAnimatedNavigationButtons(Z)Z"
+                "$EXTENSION_CLASS->useAnimatedNavigationButtons(Z)Z"
             )
         }
 
@@ -185,7 +184,7 @@ val navigationBarPatch = bytecodePatch(
             CollapsingToolbarLayoutFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->allowCollapsingToolbarLayout(Z)Z"
+                    "$EXTENSION_CLASS->allowCollapsingToolbarLayout(Z)Z"
                 )
             }
         }
@@ -202,7 +201,7 @@ val navigationBarPatch = bytecodePatch(
                     addInstructions(
                         targetIndex + 1,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->enableNarrowNavigationButton(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS->enableNarrowNavigationButton(Z)Z
                             move-result v$register
                         """
                     )
@@ -214,7 +213,7 @@ val navigationBarPatch = bytecodePatch(
             AutoHideNavigationBarFingerprint.method.addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disableAutoHidingNavigationBar()Z
+                    invoke-static { }, $EXTENSION_CLASS->disableAutoHidingNavigationBar()Z
                     move-result v0      
                     if-eqz v0, :show
                     return-void      
@@ -235,7 +234,7 @@ val navigationBarPatch = bytecodePatch(
 
                 addInstruction(
                     index + 1,
-                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "invoke-static { v$register }, $EXTENSION_CLASS->" +
                             "searchQueryViewLoaded(Landroid/widget/TextView;)V"
                 )
             }
@@ -261,7 +260,7 @@ val navigationBarPatch = bytecodePatch(
                         move-object/16 v$backupRegister, v$messageLiteRegister
         
                         # --- 1. SEARCH BUTTON ---
-                        invoke-static { v$messageLiteRegister }, $EXTENSION_CLASS_DESCRIPTOR->parsePivotBarItemRenderer(Lcom/google/protobuf/MessageLite;)[B
+                        invoke-static { v$messageLiteRegister }, $EXTENSION_CLASS->parsePivotBarItemRenderer(Lcom/google/protobuf/MessageLite;)[B
                         move-result-object v$pivotBarRendererConstructorStartRegister
                         if-eqz v$pivotBarRendererConstructorStartRegister, :ignore_search
 
@@ -273,14 +272,14 @@ val navigationBarPatch = bytecodePatch(
                         new-instance v$pivotBarRendererConstructorStartRegister, ${pivotBarRendererConstructorReference.definingClass}
                         invoke-direct/range { v$pivotBarRendererConstructorStartRegister .. v$pivotBarRendererConstructorEndRegister }, $pivotBarRendererConstructorReference
         
-                        invoke-static { v$pivotBarRendererConstructorStartRegister }, $EXTENSION_CLASS_DESCRIPTOR->setPivotBarRenderer(Ljava/lang/Object;)V
+                        invoke-static { v$pivotBarRendererConstructorStartRegister }, $EXTENSION_CLASS->setPivotBarRenderer(Ljava/lang/Object;)V
                         :ignore_search
         
                         # Restore MessageLite register for the next check
                         move-object/16 v$messageLiteRegister, v$backupRegister
 
                         # --- 2. SETTINGS BUTTON ---
-                        invoke-static { v$messageLiteRegister }, $EXTENSION_CLASS_DESCRIPTOR->parseSettingsPivotBarItemRenderer(Lcom/google/protobuf/MessageLite;)[B
+                        invoke-static { v$messageLiteRegister }, $EXTENSION_CLASS->parseSettingsPivotBarItemRenderer(Lcom/google/protobuf/MessageLite;)[B
                         move-result-object v$pivotBarRendererConstructorStartRegister
                         if-eqz v$pivotBarRendererConstructorStartRegister, :ignore_settings
 
@@ -292,7 +291,7 @@ val navigationBarPatch = bytecodePatch(
                         new-instance v$pivotBarRendererConstructorStartRegister, ${pivotBarRendererConstructorReference.definingClass}
                         invoke-direct/range { v$pivotBarRendererConstructorStartRegister .. v$pivotBarRendererConstructorEndRegister }, $pivotBarRendererConstructorReference
         
-                        invoke-static { v$pivotBarRendererConstructorStartRegister }, $EXTENSION_CLASS_DESCRIPTOR->setPivotBarSettingsRenderer(Ljava/lang/Object;)V
+                        invoke-static { v$pivotBarRendererConstructorStartRegister }, $EXTENSION_CLASS->setPivotBarSettingsRenderer(Ljava/lang/Object;)V
                         :ignore_settings
         
                         # Restore MessageLite register one last time for safety
@@ -321,7 +320,7 @@ val navigationBarPatch = bytecodePatch(
                     insertIndex,
                     """
                         # If there are objects copied to the extension, they are added to the list.
-                        invoke-static { v$insertRegister }, $EXTENSION_CLASS_DESCRIPTOR->getPivotBarRendererList(Ljava/util/List;)Ljava/util/List;
+                        invoke-static { v$insertRegister }, $EXTENSION_CLASS->getPivotBarRendererList(Ljava/util/List;)Ljava/util/List;
                         move-result-object v$insertRegister
                         
                         # Convert to proto list.
@@ -345,7 +344,7 @@ val navigationBarPatch = bytecodePatch(
                 addInstruction(
                     copiedButtonRendererIndex + 1,
                     "invoke-static { v$copiedButtonRendererRegister, v$onClickListenerRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View\$OnClickListener;)V"
+                            $$"$$EXTENSION_CLASS->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View$OnClickListener;)V"
                 )
             }
         }
@@ -376,9 +375,9 @@ val navigationBarPatch = bytecodePatch(
             )
         )
 
-        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideCreateButton")
-        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideNotificationButton")
-        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->hideSearchButton")
+        hookToolBar("$EXTENSION_CLASS->hideCreateButton")
+        hookToolBar("$EXTENSION_CLASS->hideNotificationButton")
+        hookToolBar("$EXTENSION_CLASS->hideSearchButton")
 
         // Hide old search button
         //
@@ -393,7 +392,7 @@ val navigationBarPatch = bytecodePatch(
                 replaceInstruction(
                     index,
                     "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->hideOldSearchButton(Landroid/view/MenuItem;I)V"
+                            "$EXTENSION_CLASS->hideOldSearchButton(Landroid/view/MenuItem;I)V"
                 )
             }
         }
@@ -407,7 +406,7 @@ val navigationBarPatch = bytecodePatch(
                 replaceInstruction(
                     index,
                     "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->hideMicrophoneButton(Landroid/view/View;I)V"
+                            "$EXTENSION_CLASS->hideMicrophoneButton(Landroid/view/View;I)V"
                 )
             }
         }
@@ -420,7 +419,7 @@ val navigationBarPatch = bytecodePatch(
 
                 addInstruction(
                     index + 1,
-                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "invoke-static { v$register }, $EXTENSION_CLASS->" +
                             "hideMicrophoneButton(Landroid/view/View;)V"
                 )
             }
@@ -429,7 +428,7 @@ val navigationBarPatch = bytecodePatch(
         //
         // Show settings button
         //
-        hookToolBar("$EXTENSION_CLASS_DESCRIPTOR->setToolbarSettingsOnClickListener")
+        hookToolBar("$EXTENSION_CLASS->setToolbarSettingsOnClickListener")
 
         SettingIntentFingerprint.let {
             it.classDef.apply {
@@ -465,7 +464,7 @@ val navigationBarPatch = bytecodePatch(
 
                     addInstruction(
                         index,
-                        "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->setSettingsController($EXTENSION_SETTING_INTERFACE)V"
+                        "invoke-static { p0 }, $EXTENSION_CLASS->setSettingsController($EXTENSION_SETTING_INTERFACE)V"
                     )
                 }
             }
@@ -486,7 +485,7 @@ val navigationBarPatch = bytecodePatch(
                 addInstruction(
                     copiedButtonRendererIndex + 1,
                     "invoke-static { v$copiedButtonRendererRegister, v$onClickListenerRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View\$OnClickListener;)V"
+                            $$"$$EXTENSION_CLASS->setSearchBarOnClickListener(Lcom/google/protobuf/MessageLite;Landroid/view/View$OnClickListener;)V"
                 )
             }
         }
@@ -523,11 +522,11 @@ val navigationBarPatch = bytecodePatch(
                         move-result-object v$protoListRegister
                         
                         # Generate Settings Button Bytes (BEFORE modifying list)
-                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS_DESCRIPTOR->createToolbarSettingsButton(Ljava/util/List;)[B
+                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS->createToolbarSettingsButton(Ljava/util/List;)[B
                         move-result-object v$byteRegister
                         
                         # Modify list (removes hidden buttons to free up layout space)
-                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS_DESCRIPTOR->modifyToolbarButtons(Ljava/util/List;)V
+                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS->modifyToolbarButtons(Ljava/util/List;)V
                         
                         if-eqz v$byteRegister, :immutable
 
@@ -541,7 +540,7 @@ val navigationBarPatch = bytecodePatch(
                         invoke-interface { v$protoListRegister, v$protoListFreeRegister }, Ljava/util/List;->add(Ljava/lang/Object;)Z
                         
                         # Move to preferred index
-                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS_DESCRIPTOR->applyToolbarSettingsButtonIndex(Ljava/util/List;)V
+                        invoke-static { v$protoListRegister }, $EXTENSION_CLASS->applyToolbarSettingsButtonIndex(Ljava/util/List;)V
 
                         :immutable
                         nop
@@ -575,7 +574,7 @@ val navigationBarPatch = bytecodePatch(
                         addInstructionsAtControlFlowLabel(
                             index,
                             """
-                            invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->enableWideSearchbar(Z)Z
+                            invoke-static { v$register }, ${EXTENSION_CLASS}->enableWideSearchbar(Z)Z
                             move-result v$register
                         """
                         )
@@ -594,7 +593,7 @@ val navigationBarPatch = bytecodePatch(
 
                     addInstruction(
                         inflateIndex + 2,
-                        "invoke-static { v$register }, ${EXTENSION_CLASS_DESCRIPTOR}->setActionBar(Landroid/view/View;)V"
+                        "invoke-static { v$register }, ${EXTENSION_CLASS}->setActionBar(Landroid/view/View;)V"
                     )
                 }
             }

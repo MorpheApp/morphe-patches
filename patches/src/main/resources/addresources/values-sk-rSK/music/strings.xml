@@ -28,10 +28,25 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Všeobecné</string>
   <string name="morphe_settings_music_screen_3_player_title">Prehrávač</string>
   <string name="morphe_settings_music_screen_4_misc_title">Ostatné</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Skryť tlačidlo \'Získať Music Premium\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Skryť videoreklamy</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videoreklamy sú skryté</string>
   <string name="morphe_music_hide_video_ads_summary_off">Videoreklamy sa zobrazujú</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_crossfade_duration_1000ms">1 sekunda</string>
+  <string name="morphe_crossfade_duration_2000ms">2 sekundy</string>
+  <string name="morphe_crossfade_duration_3000ms">3 sekundy</string>
+  <string name="morphe_crossfade_duration_4000ms">4 sekundy</string>
+  <string name="morphe_crossfade_duration_5000ms">5 sekúnd</string>
+  <string name="morphe_crossfade_duration_6000ms">6 sekúnd</string>
+  <string name="morphe_crossfade_duration_7000ms">7 sekúnd</string>
+  <string name="morphe_crossfade_duration_8000ms">8 sekúnd</string>
+  <string name="morphe_crossfade_duration_9000ms">9 sekúnd</string>
+  <string name="morphe_crossfade_duration_10000ms">10 sekúnd</string>
+  <string name="morphe_music_crossfade_about_title">O aplikácii</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Zapnúť permanentné opakovanie prehrávania</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Permanentné opakovanie prehrávania je zapnuté</string>
@@ -109,10 +124,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skryť označenia tlačidiel navigačného panela</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Označenia sú skryté</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Označenia sa zobrazujú</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Skryť tlačidlo \'Získať Music Premium\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Tlačidlo je skryté</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Tlačidlo sa zobrazuje</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Skryť tlačidlo Povýšiť</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Tlačidlo Povýšiť je skryté</string>

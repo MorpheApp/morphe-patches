@@ -28,10 +28,57 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Ogólne</string>
   <string name="morphe_settings_music_screen_3_player_title">Odtwarzacz</string>
   <string name="morphe_settings_music_screen_4_misc_title">Pozostałe</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Etykieta subskrypcji Music Premium</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Ukryta</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Widoczna</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Reklamy w filmach</string>
   <string name="morphe_music_hide_video_ads_summary_on">Ukryte</string>
   <string name="morphe_music_hide_video_ads_summary_off">Widoczne</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Przenikanie utworów</string>
+  <string name="morphe_music_crossfade_screen_summary">Płynne przejścia między utworami</string>
+  <string name="morphe_music_crossfade_enabled_title">Przenikanie utworów</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Włączone</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Wyłączone</string>
+  <string name="morphe_music_crossfade_curve_title">Krzywa przenikania</string>
+  <string name="morphe_music_crossfade_curve_summary">Określa sposób zmiany głośności między utworami</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Stała moc</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtelne przytrzymanie</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Łagodne przejście</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Płynna krzywa S</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Czas trwania przenikania</string>
+  <string name="morphe_crossfade_duration_250ms">250 milisekund</string>
+  <string name="morphe_crossfade_duration_500ms">500 milisekund</string>
+  <string name="morphe_crossfade_duration_750ms">750 milisekund</string>
+  <string name="morphe_crossfade_duration_1000ms">1 sekunda</string>
+  <string name="morphe_crossfade_duration_2000ms">2 sekundy</string>
+  <string name="morphe_crossfade_duration_3000ms">3 sekundy</string>
+  <string name="morphe_crossfade_duration_4000ms">4 sekundy</string>
+  <string name="morphe_crossfade_duration_5000ms">5 sekund</string>
+  <string name="morphe_crossfade_duration_6000ms">6 sekund</string>
+  <string name="morphe_crossfade_duration_7000ms">7 sekund</string>
+  <string name="morphe_crossfade_duration_8000ms">8 sekund</string>
+  <string name="morphe_crossfade_duration_9000ms">9 sekund</string>
+  <string name="morphe_crossfade_duration_10000ms">10 sekund</string>
+  <string name="morphe_music_crossfade_on_skip_title">Przy ręcznym pomijaniu</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Włączone</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Wyłączone</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Przy automatycznym przejściu</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Włączone</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Wyłączone</string>
+  <string name="morphe_music_crossfade_session_control_title">Sterowanie w odtwarzaczu</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Włączone
+Przytrzymaj przycisk losowania, aby wstrzymać lub wznowić przenikanie"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Wyłączone</string>
+  <string name="morphe_music_crossfade_about_title">Informacje</string>
+  <string name="morphe_music_crossfade_about_summary">"Przenikanie jest dostępne od wersji YouTube Music 8.x
+
+Przytrzymaj przycisk losowania, aby włączyć lub wyłączyć
+
+Implementacja funkcji przez VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Ciągłe zapętlanie</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Włączone</string>
@@ -70,10 +117,10 @@ Second \"item\" text"</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Dopasowany do odtwarzacza pełnoekranowego</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Domyślny</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
-  <string name="morphe_music_miniplayer_next_button_title">Przycisk następnego utworu</string>
+  <string name="morphe_music_miniplayer_next_button_title">Przycisk Następny utwór</string>
   <string name="morphe_music_miniplayer_next_button_summary_on">Widoczny w miniodtwarzaczu</string>
   <string name="morphe_music_miniplayer_next_button_summary_off">Ukryty w miniodtwarzaczu</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Przycisk poprzedniego utworu</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Przycisk Poprzedni utwór</string>
   <string name="morphe_music_miniplayer_previous_button_summary_on">Widoczny w miniodtwarzaczu</string>
   <string name="morphe_music_miniplayer_previous_button_summary_off">Ukryty w miniodtwarzaczu</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
@@ -109,10 +156,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Etykiety przycisków nawigacji</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Ukryte</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Widoczne</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Etykieta subskrypcji Music Premium</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Ukryta</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Widoczna</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Przycisk YouTube Premium</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Ukryty</string>

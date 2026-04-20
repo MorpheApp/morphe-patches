@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Kustom</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikon pemberitahuan</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Ikuti ikon aplikasi</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Peringatan Uji Coba 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Anda menggunakan versi aplikasi uji coba ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Harap bersiap dengan perilaku aplikasi yang tidak biasa atau bug yang belum teridentifikasi saat kami menyempurnakan tambalan untuk versi aplikasi ini.
-&lt;br/&gt;&lt;br/&gt;
-Jika Anda ingin pengalaman yang paling bebas masalah, maka &lt;b&gt;hapus pemasangan&lt;/b&gt; ini dan tambal versi aplikasi yang direkomendasikan ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Saya ingin versi uji coba</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Saya ingin versi stabil</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Pemberitahuan Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Riwayat tontonan Anda tidak sedang disimpan.&lt;br&gt;&lt;br&gt;Hal ini kemungkinan besar disebabkan oleh pemblokir iklan DNS atau proksi jaringan.&lt;br&gt;&lt;br&gt;Untuk memperbaikinya, masukkan daftar putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua pemblokir DNS dan proksi.</string>
@@ -121,6 +111,10 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_force_original_audio_title">Paksa bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary_on">Menggunakan bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary_off">Menggunakan audio bawaan</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Sembunyikan iklan layar penuh</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Iklan layar penuh disembunyikan</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Iklan layar penuh ditampilkan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Untuk menggunakan fitur ini, ubah \'Palsukan aliran video\' ke Android Reel atau TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

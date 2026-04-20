@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">自訂</string>
   <string name="morphe_custom_branding_notification_icon_title">通知圖示</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">追蹤應用程式圖示</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 實驗性提示 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"您正在使用⚠️ &lt;b&gt;%1$s&lt;/b&gt;應用程式的實驗性版本。
-&lt;br/&gt;&lt;br/&gt;
-🔧 我們仍在微調這個版本的修補程式，預計會出現一些奇怪行為或非發現的程式錯誤。
-&lt;br/&gt;&lt;br/&gt;
-假如您想要最穩定的體驗，請&lt;b&gt;解除安裝&lt;/b&gt;此版本，並改用 ✅ &lt;b&gt;%2$s&lt;/b&gt;應用程式的推薦版本。"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我要用實驗版本</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我要用穩定版本</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">你的觀看記錄未被儲存。&lt;br&gt;&lt;br&gt;這很可能是由 DNS 廣告封鎖器或網路代理所導致。&lt;br&gt;&lt;br&gt;若要解決此問題，請將 &lt;b&gt;s.youtube.com&lt;/b&gt; 加入白名單，或關閉所有 DNS 封鎖器和代理。</string>
@@ -121,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">強制使用原始音訊語言</string>
   <string name="morphe_force_original_audio_summary_on">正在使用原始音訊語言</string>
   <string name="morphe_force_original_audio_summary_off">使用預設音訊</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">隱藏全螢幕廣告</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">全螢幕廣告已隱藏</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">已顯示全螢幕廣告</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">若要使用此功能，請將「偽造視訊串流」變更為 Android Reel 或 TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

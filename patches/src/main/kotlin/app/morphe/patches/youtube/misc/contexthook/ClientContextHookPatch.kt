@@ -120,7 +120,7 @@ val clientContextHookPatch = bytecodePatch(
             filters = listOf(
                 fieldAccess(
                     opcode = Opcode.IGET,
-                    definingClass = CLIENT_INFO_CLASS_DESCRIPTOR,
+                    definingClass = CLIENT_INFO_CLASS,
                     type = "I"
                 ),
                 methodCall(

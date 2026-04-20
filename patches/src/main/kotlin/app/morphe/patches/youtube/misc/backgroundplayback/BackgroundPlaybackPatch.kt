@@ -4,9 +4,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
@@ -27,10 +27,7 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal var prefBackgroundAndOfflineCategoryId = -1L
-    private set
-
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/BackgroundPlaybackPatch;"
 
 val backgroundPlaybackPatch = bytecodePatch(
@@ -38,13 +35,13 @@ val backgroundPlaybackPatch = bytecodePatch(
     description = "Removes restrictions on background playback, including playing kids videos in the background.",
 ) {
     dependsOn(
-        resourceMappingPatch,
         sharedExtensionPatch,
         playerTypeHookPatch,
         videoInformationPatch,
         settingsPatch,
         versionCheckPatch,
         fixRecycledBitmapPatch,
+        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -52,11 +49,6 @@ val backgroundPlaybackPatch = bytecodePatch(
     execute {
         PreferenceScreen.SHORTS.addPreferences(
             SwitchPreference("morphe_shorts_disable_background_playback")
-        )
-
-        prefBackgroundAndOfflineCategoryId = getResourceId(
-            ResourceType.STRING,
-            "pref_background_and_offline_category"
         )
 
         arrayOf(
@@ -70,7 +62,7 @@ val backgroundPlaybackPatch = bytecodePatch(
                     addInstructionsAtControlFlowLabel(
                         index,
                         """
-                            invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$integrationsMethod(Z)Z
+                            invoke-static { v$register }, $EXTENSION_CLASS->$integrationsMethod(Z)Z
                             move-result v$register 
                         """
                     )

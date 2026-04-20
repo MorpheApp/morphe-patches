@@ -153,4 +153,13 @@ Si les optimisations de la batterie ne sont pas modifiées, vous pourriez rencon
 • L'application peut se fermer de manière aléatoire
 • Les notifications peuvent ne pas fonctionner
 • La lecture en arrière-plan peut ne pas fonctionner"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Alerte expérimentale 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Vous utilisez une version expérimentale de l’application ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Attendez-vous à des comportements inhabituels ou à des bugs non identifiés pendant que nous peaufinons les patchs pour cette version de l’application.
+&lt;br/&gt;&lt;br/&gt;
+Si vous souhaitez une expérience la plus stable possible, &lt;b&gt;désinstallez&lt;/b&gt; cette version et patchez la version recommandée de l’application ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Je veux l\'expérimentale</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Je veux la stable</string>
 </resources>

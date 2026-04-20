@@ -29,7 +29,7 @@ import app.morphe.util.findFieldFromToString
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/RememberVideoQualityPatch;"
 
 val rememberVideoQualityPatch = bytecodePatch {
@@ -69,7 +69,7 @@ val rememberVideoQualityPatch = bytecodePatch {
             SwitchPreference("morphe_remember_video_quality_last_selected_toast")
         ))
 
-        onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
+        onCreateHook(EXTENSION_CLASS, "newVideoStarted")
 
         val initialResolutionField = PlaybackStartParametersToStringFingerprint.method
                 .findFieldFromToString(FIXED_RESOLUTION_STRING)
@@ -94,7 +94,7 @@ val rememberVideoQualityPatch = bytecodePatch {
                 addInstructions(
                     index,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getInitialVideoQuality(Lj$/util/Optional;)Lj$/util/Optional;
+                        invoke-static { v$register }, $EXTENSION_CLASS->getInitialVideoQuality(Lj$/util/Optional;)Lj$/util/Optional;
                         move-result-object v$register
                     """
                 )
@@ -104,7 +104,7 @@ val rememberVideoQualityPatch = bytecodePatch {
         // Inject a call to remember the selected quality for Shorts.
         VideoQualityItemOnClickFingerprint.method.addInstruction(
             0,
-            "invoke-static { p3 }, $EXTENSION_CLASS_DESCRIPTOR->userChangedShortsQuality(I)V"
+            "invoke-static { p3 }, $EXTENSION_CLASS->userChangedShortsQuality(I)V"
         )
 
         // Inject a call to remember the user selected quality for regular videos.
@@ -115,7 +115,7 @@ val rememberVideoQualityPatch = bytecodePatch {
 
                 addInstruction(
                     index + 1,
-                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->userChangedQuality(I)V",
+                    "invoke-static { v$register }, $EXTENSION_CLASS->userChangedQuality(I)V",
                 )
             }
         }

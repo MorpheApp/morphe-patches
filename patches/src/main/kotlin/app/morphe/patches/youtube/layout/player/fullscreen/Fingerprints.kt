@@ -13,7 +13,7 @@ import com.android.tools.smali.dexlib2.Opcode
  */
 internal object OpenVideosFullscreenPortraitFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("L", "Lj\$/util/Optional;"),
+    parameters = listOf("L", "Lj$/util/Optional;"),
     filters = listOf(
         opcode(Opcode.MOVE_RESULT), // Conditional check to modify.
         // Open videos fullscreen portrait feature flag.

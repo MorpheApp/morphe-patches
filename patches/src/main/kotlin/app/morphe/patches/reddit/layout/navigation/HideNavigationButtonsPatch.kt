@@ -15,6 +15,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -26,11 +27,11 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideNavigationButtonsPatch;"
 
 private const val EXTENSION_HEADER_ITEM_INTERFACE =
-    "Lapp/morphe/extension/reddit/patches/HideNavigationButtonsPatch\$NavigationButtonInterface;"
+    $$"Lapp/morphe/extension/reddit/patches/HideNavigationButtonsPatch$NavigationButtonInterface;"
 
 @Suppress("unused")
 val hideNavigationButtonsPatch = bytecodePatch(
@@ -88,7 +89,7 @@ val hideNavigationButtonsPatch = bytecodePatch(
                 replaceInstruction(
                     index,
                     "invoke-static { v$listRegister, v$objectRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->" +
+                            "$EXTENSION_CLASS->" +
                             "hideNavigationButtonsLegacy(Ljava/util/List;Ljava/lang/Object;)V"
                 )
             }
@@ -100,27 +101,24 @@ val hideNavigationButtonsPatch = bytecodePatch(
 
         BottomNavScreenListBuilderFingerprint.let {
             it.method.apply {
-                val enumIndex = it.instructionMatches[2].index
-                val enumRegister =
-                    getInstruction<TwoRegisterInstruction>(enumIndex).registerA
-
-                val freeIndex = it.instructionMatches.last().index
-                val freeRegister =
-                    getInstruction<OneRegisterInstruction>(freeIndex).registerA
+                val enumIndex = it.instructionMatches.last().index
+                val enumRegister = getInstruction<TwoRegisterInstruction>(enumIndex).registerA
+                val freeRegister = findFreeRegister(enumIndex, enumRegister)
 
                 addInstructionsWithLabels(
                     enumIndex + 1,
                     """
-                        invoke-static { v$enumRegister }, $EXTENSION_CLASS_DESCRIPTOR->hideNavigationTab(Ljava/lang/Enum;)Z
+                        invoke-static { v$enumRegister }, $EXTENSION_CLASS->hideNavigationTab(Ljava/lang/Enum;)Z
                         move-result v$freeRegister
                         if-nez v$freeRegister, :jump
-                    """, ExternalLabel("jump", it.instructionMatches[1].instruction)
+                    """,
+                    ExternalLabel("jump", it.instructionMatches[1].instruction)
                 )
             }
         }
 
         // endregion
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

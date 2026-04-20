@@ -150,4 +150,13 @@ Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
 • Aplikasi mungkin secara acak tertutup
 • Pemberitahuan mungkin tidak berfungsi
 • Pemutaran latar belakang mungkin tidak berfungsi"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Peringatan Uji Coba 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Anda menggunakan versi aplikasi uji coba ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Harap bersiap dengan perilaku aplikasi yang tidak biasa atau bug yang belum teridentifikasi saat kami menyempurnakan tambalan untuk versi aplikasi ini.
+&lt;br/&gt;&lt;br/&gt;
+Jika Anda ingin pengalaman yang paling bebas masalah, maka &lt;b&gt;hapus pemasangan&lt;/b&gt; ini dan tambal versi aplikasi yang direkomendasikan ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Saya ingin versi uji coba</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Saya ingin versi stabil</string>
 </resources>

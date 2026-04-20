@@ -31,15 +31,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Xwerî</string>
   <string name="morphe_custom_branding_notification_icon_title">Aîkona notifikasyonê</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Îkona sepanê bişîne</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">⚠️ Xwer pêşbira eksperimentalê 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Hûn ji ⚠️ &lt;b&gt;%1$s&lt;/b&gt; karanîna sepan eksperimentalê îlavên &lt;br/&gt;&lt;br/&gt;
-🔧 Tişta bi nexuş bêkêr be an karanîna bêserneweyî yan bibînin, çima me ji bo holweşana ev sepan saz kiriye.
-&lt;br/&gt;&lt;br/&gt;
-Ger ez kêmtir zirar be, wê demê &lt;b&gt;serbûna&lt;/b&gt; ev û holweşana pêşniyarîya sepanê ✅ &lt;b&gt;%2$s&lt;/b&gt; bikêr ke."</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">Ez vê eksperimental be nêzîkê bikîm</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Min holweşana serbaz be nêzîkê bikîm</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Îlanê Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Sergûzastên we têne parvekirin.&lt;br&gt;&lt;br&gt;Ev bi girîngî ji hêla pêşgirê DNS an proxy-ya danînê ve tê bandor kirin.&lt;br&gt;&lt;br&gt;Ji bo çareserî, s.youtube.com veşêre an hemû pêşgirên DNS û proxy-yên vegirtêrê vanqandin.</string>
@@ -117,6 +108,10 @@ Da ku teqezîya nêzîkê bikin, li jêr bidixin 'bidin pêşbaz'."</string>
   <string name="morphe_force_original_audio_title">Zimanê dengê orjinal timê bike</string>
   <string name="morphe_force_original_audio_summary_on">Zimanê dengê orjinal tê bikaranîn</string>
   <string name="morphe_force_original_audio_summary_off">Dengê default tê bikaranîn</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Rekel kiradên ekranê tam</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Reklamên bi ekranê tam veşartin</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Reklamên bi ekranê tam nîşandin</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Bo tem vêjîna vî taybetmendari, \'Qîrkirina rêgên wîdyoyê\' bibe Android Reel an TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

@@ -14,7 +14,7 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/SanitizeSharingLinksPatch;"
 
 /**
@@ -59,7 +59,7 @@ internal fun sanitizeSharingLinksPatch(
             method.addInstructions(
                 index + 1,
                 """
-                    invoke-static { v$urlRegister }, $EXTENSION_CLASS_DESCRIPTOR->sanitize(Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$urlRegister }, $EXTENSION_CLASS->sanitize(Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$urlRegister
                 """
             )
@@ -72,7 +72,7 @@ internal fun sanitizeSharingLinksPatch(
             method.addInstructionsAtControlFlowLabel(
                 index,
                 """
-                    invoke-static { v$urlRegister }, $EXTENSION_CLASS_DESCRIPTOR->sanitize(Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$urlRegister }, $EXTENSION_CLASS->sanitize(Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$urlRegister
                 """
             )

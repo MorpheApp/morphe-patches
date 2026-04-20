@@ -1,9 +1,12 @@
 package app.morphe.patches.youtube.misc.backgroundplayback
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
-import app.morphe.util.customLiteral
+import app.morphe.patcher.opcode
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -44,23 +47,25 @@ internal object BackgroundPlaybackSettingsFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT,
-        Opcode.IF_EQZ,
-        Opcode.IF_NEZ,
-        Opcode.GOTO,
-    ),
-    custom = customLiteral { prefBackgroundAndOfflineCategoryId } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        opcode(Opcode.INVOKE_VIRTUAL),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(Opcode.IF_NEZ, location = MatchAfterImmediately()),
+        opcode(Opcode.GOTO, location = MatchAfterImmediately()),
+        resourceLiteral(ResourceType.STRING, "pref_background_and_offline_category")
+    )
 )
 
 internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("I", "L", "L"),
-    filters = OpcodesFilter.opcodesToFilters(
+    filters = listOf(
+        literal(5),
+    ) + OpcodesFilter.opcodesToFilters(
         Opcode.CONST_4,
         Opcode.IF_NE,
         Opcode.SGET_OBJECT,
@@ -69,8 +74,7 @@ internal object KidsBackgroundPlaybackPolicyControllerFingerprint : Fingerprint(
         Opcode.CONST_4,
         Opcode.IF_NE,
         Opcode.IGET_OBJECT,
-    ),
-    custom = customLiteral { 5 } // TODO: Convert this to an instruction filter
+    )
 )
 
 internal object ShortsBackgroundPlaybackFeatureFlagFingerprint : Fingerprint(

@@ -8,11 +8,10 @@ package app.morphe.patches.reddit.misc.extension
 
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.hooks.redditApplicationOnCreateHook
-import app.morphe.patches.shared.misc.extension.sharedExtensionPatch
+import app.morphe.patches.all.misc.extension.sharedExtensionPatch
 
 val sharedExtensionPatch = sharedExtensionPatch(
-    "reddit",
-    false,
+    listOf("reddit"),
     redditActivityOnCreateHook,
     redditApplicationOnCreateHook
 )

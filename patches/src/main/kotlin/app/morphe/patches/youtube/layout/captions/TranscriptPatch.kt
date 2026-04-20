@@ -9,7 +9,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/TranscriptPatch;"
 
 internal val transcriptPatch = bytecodePatch(
@@ -29,7 +29,7 @@ internal val transcriptPatch = bytecodePatch(
 
         addClientVersionHook(
             Endpoint.TRANSCRIPT,
-            "$EXTENSION_CLASS_DESCRIPTOR->getTranscriptAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
+            "$EXTENSION_CLASS->getTranscriptAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
         )
     }
 }

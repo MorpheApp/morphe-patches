@@ -25,7 +25,7 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 internal const val EXTENSION_CONTEXT_INTERFACE =
-    "Lapp/morphe/extension/youtube/shared/ConversionContext\$ContextInterface;"
+    $$"Lapp/morphe/extension/youtube/shared/ConversionContext$ContextInterface;"
 
 internal lateinit var conversionContextClassDef: MutableClass
 

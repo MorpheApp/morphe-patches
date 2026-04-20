@@ -56,14 +56,14 @@ private val reloadVideoResourcePatch = resourcePatch {
     }
 }
 
-private const val BUTTON_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/videoplayer/ReloadVideoButton;"
-
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ReloadVideoPatch;"
 
 private const val EXTENSION_PLAYER_INTERFACE =
-    "Lapp/morphe/extension/youtube/patches/ReloadVideoPatch\$PlayerInterface;"
+    $$"Lapp/morphe/extension/youtube/patches/ReloadVideoPatch$PlayerInterface;"
+
+private const val EXTENSION_BUTTON =
+    "Lapp/morphe/extension/youtube/videoplayer/ReloadVideoButton;"
 
 @Suppress("unused")
 val reloadVideoPatch = bytecodePatch(
@@ -88,13 +88,13 @@ val reloadVideoPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeTopControl(BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
+        initializeTopControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
 
         // Main activity is used to launch downloader intent.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->setMainActivity(Landroid/app/Activity;)V"
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setMainActivity(Landroid/app/Activity;)V"
         )
 
         val dismissPlayerInnerMethod = MiniAppOpenYtContentCommandEndpointFingerprint
@@ -134,7 +134,7 @@ val reloadVideoPatch = bytecodePatch(
 
                 addInstruction(
                     index,
-                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->initialize($EXTENSION_PLAYER_INTERFACE)V"
+                    "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->initialize($EXTENSION_PLAYER_INTERFACE)V"
                 )
             }
         }

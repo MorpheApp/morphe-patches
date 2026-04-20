@@ -70,37 +70,39 @@ I cambiamenti includono:
   <string name="morphe_hide_artist_cards_title">Nascondi le schede artista</string>
   <string name="morphe_hide_artist_cards_summary_on">Le schede artista sono nascoste</string>
   <string name="morphe_hide_artist_cards_summary_off">Le schede artista sono visibili</string>
-  <string name="morphe_hide_chips_shelf_title">Nascondi la sezione chip</string>
-  <string name="morphe_hide_chips_shelf_summary_on">La sezione dei chip è nascosta</string>
-  <string name="morphe_hide_chips_shelf_summary_off">La sezione dei chip è visibile</string>
   <string name="morphe_hide_community_posts_title">Nascondi i post della community</string>
   <string name="morphe_hide_community_posts_summary_on">I post della community sono nascosti</string>
   <string name="morphe_hide_community_posts_summary_off">I post della community sono visibili</string>
   <string name="morphe_hide_compact_banner_title">Nascondi i banner compatti</string>
   <string name="morphe_hide_compact_banner_summary_on">I banner compatti sono nascosti</string>
   <string name="morphe_hide_compact_banner_summary_off">I banner compatti sono visibili</string>
-  <string name="morphe_hide_expandable_card_title">Nascondi scheda espandibile</string>
-  <string name="morphe_hide_expandable_card_summary_on">La scheda espandibile sotto i video è nascosta</string>
-  <string name="morphe_hide_expandable_card_summary_off">La scheda espandibile sotto i video è mostrata</string>
+  <string name="morphe_hide_expandable_card_title">Nascondi schede espandibili</string>
+  <string name="morphe_hide_expandable_card_entry_1">Schede espandibili sotto i video sono mostrate</string>
+  <string name="morphe_hide_expandable_card_entry_2">Solo la scheda prodotto sotto i video è nascosta</string>
+  <string name="morphe_hide_expandable_card_entry_3">Solo la scheda riepilogo sotto i video è nascosta</string>
+  <string name="morphe_hide_expandable_card_entry_4">La scheda espandibile sotto i video è nascosta</string>
+  <string name="morphe_hide_expandable_card_entry_5">Le schede espandibili sotto i video sono nascoste</string>
   <string name="morphe_hide_floating_microphone_button_title">Nascondi il pulsante flottante del microfono</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Il pulsante del microfono fluttuante nella ricerca è nascosto</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Il pulsante del microfono fluttuante nella ricerca è mostrato</string>
   <string name="morphe_hide_horizontal_shelves_title">Nascondi sezioni orizzontali</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"I ripiani orizzontali sono nascosti, come:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Le menzioni sono nascoste, come ad esempio:
 
-• Ultime notizie
+• Notizie in evidenza
+• Post della community che potrebbero interessarti
 • Continua a guardare
 • Esplora altri canali
+• Esplora altri argomenti
+• Per te
+• Ulteriori video
 • Più pertinenti
+• Post dalla Community del Creatore
 • Shopping
-• Guarda di nuovo"</string>
+• Riguarda"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Le scaffalature orizzontali sono mostrate</string>
   <string name="morphe_hide_image_shelf_title">Nascondi sezione immagini</string>
   <string name="morphe_hide_image_shelf_summary_on">La sezione immagini nei risultati di ricerca è nascosta</string>
   <string name="morphe_hide_image_shelf_summary_off">La sezione immagini nei risultati di ricerca è mostrata</string>
-  <string name="morphe_hide_latest_posts_title">Nascondi i post più recenti</string>
-  <string name="morphe_hide_latest_posts_summary_on">I post più recenti sono nascosti</string>
-  <string name="morphe_hide_latest_posts_summary_off">I post più recenti sono visibili</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Nascondi il pulsante \'Video recenti\'</string>
@@ -197,6 +199,8 @@ La visualizzazione dei Doodle di YouTube potrebbe impedire la visualizzazione de
   <string name="morphe_hide_video_title_title">Nascondi il titolo del video</string>
   <string name="morphe_hide_video_title_summary_on">Il titolo del video nella sovrapposizione del lettore video è nascosto</string>
   <string name="morphe_hide_video_title_summary_off">Il titolo del video nella sovrapposizione del lettore video è visibile</string>
+  <string name="morphe_hide_description_components_screen_title">Descrizione del video</string>
+  <string name="morphe_hide_description_components_screen_summary">Mostra o nascondi i componenti della descrizione del video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Nascondi \"Riepilogo video generato dall\'AI\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">La sezione del riepilogo video generato dall\'IA è nascosta</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Sezione di riepilogo video generata dall\'IA mostrata</string>
@@ -253,17 +257,15 @@ La visualizzazione dei Doodle di YouTube potrebbe impedire la visualizzazione de
   <string name="morphe_hide_music_section_title">Nascondi richiesta</string>
   <string name="morphe_hide_music_section_summary_on">La sezione film è nascosta</string>
   <string name="morphe_hide_music_section_summary_off">La sezione film è visibile</string>
+  <string name="morphe_hide_quizzes_section_title">Nascondi Quiz</string>
+  <string name="morphe_hide_quizzes_section_summary_on">La sezione Quiz è nascosta</string>
+  <string name="morphe_hide_quizzes_section_summary_off">La sezione Quiz è visibile</string>
   <string name="morphe_hide_subscribe_button_title">Nascondi il pulsante Iscriviti</string>
   <string name="morphe_hide_subscribe_button_summary_on">Il pulsante Iscriviti è nascosto</string>
   <string name="morphe_hide_subscribe_button_summary_off">Il pulsante Iscriviti è visibile</string>
   <string name="morphe_hide_transcript_section_title">Nascondi Trascrizione</string>
   <string name="morphe_hide_transcript_section_summary_on">La sezione Trascrizione è nascosta</string>
   <string name="morphe_hide_transcript_section_summary_off">La sezione Trascrizione è visibile</string>
-  <string name="morphe_hide_quizzes_section_title">Nascondi Quiz</string>
-  <string name="morphe_hide_quizzes_section_summary_on">La sezione Quiz è nascosta</string>
-  <string name="morphe_hide_quizzes_section_summary_off">La sezione Quiz è visibile</string>
-  <string name="morphe_hide_description_components_screen_title">Descrizione del video</string>
-  <string name="morphe_hide_description_components_screen_summary">Mostra o nascondi i componenti della descrizione del video</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra dei filtri</string>
   <string name="morphe_hide_filter_bar_screen_summary">Nascondi o mostra la barra dei filtri nei feed, nei video correlati, nei risultati di ricerca e nella cronologia delle visualizzazioni</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Nascondi nei feed</string>
@@ -299,6 +301,9 @@ La visualizzazione dei Doodle di YouTube potrebbe impedire la visualizzazione de
   <string name="morphe_hide_members_shelf_title">Nascondi sezione membri</string>
   <string name="morphe_hide_members_shelf_summary_on">La sezione membri è nascosta</string>
   <string name="morphe_hide_members_shelf_summary_off">La sezione Membri è mostrata</string>
+  <string name="morphe_hide_posts_shelf_title">Nascondi la sezione dei post</string>
+  <string name="morphe_hide_posts_shelf_summary_on">La sezione dei post è nascosta</string>
+  <string name="morphe_hide_posts_shelf_summary_off">La sezione dei post è visibile</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Nascondi il pulsante Condividi</string>
   <string name="morphe_hide_store_button_summary_on">Il pulsante Condividi è nascosto</string>
@@ -419,9 +424,6 @@ Limitazioni:
   <string name="morphe_hide_end_screen_store_banner_title">Nascondi banner del negozio della schermata finale</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Il banner del negozio nella schermata finale è nascosto</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Il banner del negozio nella schermata finale è mostrato</string>
-  <string name="morphe_hide_fullscreen_ads_title">Nascondi le pubblicità a schermo intero</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Gli annunci a schermo intero sono nascosti</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Le pubblicità a schermo intero sono visibili</string>
   <string name="morphe_hide_general_ads_title">Nascondi pubblicità generali</string>
   <string name="morphe_hide_general_ads_summary_on">Le pubblicità generali sono nascoste</string>
   <string name="morphe_hide_general_ads_summary_off">Le pubblicità generali sono visibili</string>
@@ -789,11 +791,17 @@ Tenere premuto per aprire le impostazioni di YouTube"</string>
 Tenere premuto per aprire le impostazioni di Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menù a comparsa</string>
-  <string name="morphe_hide_player_flyout_summary">Mostra o nascondi le voci del menu di flyout del player</string>
+  <string name="morphe_hide_player_flyout_summary">Nascondi o mostra i componenti del menu a comparsa del lettore</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Nascondi Sottotitoli</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Il menu Sottotitoli è nascosto</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Il menu Sottotitoli è visibile</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Nascondi il piè di pagina dei Sottotitoli</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Il piè di pagina del menu dei Sottotitoli è nascosto</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Il piè di pagina del menu dei Sottotitoli è visibile</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Nascondi l\'intestazione dei Sottotitoli</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Il menu Sottotitoli è nascosto</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Il menu Sottotitoli è visibile</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Nascondi Impostazioni aggiuntive</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Il menu Impostazioni aggiuntive è nascosto</string>
@@ -839,17 +847,23 @@ Tenere premuto per aprire le impostazioni di Morphe"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menu audio nascosto
 
 Per visualizzare il menu audio, cambia 'Falsifica flussi video' in 'Android Reel' o 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Nascondi Traccia audio</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Il menu Traccia audio è nascosto</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Il menu Traccia audio è visibile</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Nascondi Guarda in VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Il menu Guarda in VR è nascosto</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Il menu Guarda in VR è visibile</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Nascondi menu qualità video</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Il menu della qualità video è nascosto</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Il menu della qualità video è visualizzato</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Nascondi piè di pagina del menu qualità video</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Il piè di pagina del menu di qualità video è nascosto</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Il piè di pagina del menu di qualità video è visibile</string>
+  <string name="morphe_hide_player_flyout_quality_title">Nascondi Qualità</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Il menu della qualità video è nascosto</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Il menu della qualità video è visualizzato</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Nascondi piè di pagina del menu qualità video</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Il piè di pagina del menu di qualità video è nascosto</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Il piè di pagina del menu di qualità video è visibile</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Nascondi Intestazione Qualità</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Il piè di pagina del menu di qualità video è nascosto</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Il piè di pagina del menu di qualità video è visibile</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Nascondi anteprima autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Anteprima autoplay nascosta</string>
@@ -877,6 +891,9 @@ Per visualizzare il menu audio, cambia 'Falsifica flussi video' in 'Android Reel
   <string name="morphe_hide_player_previous_next_buttons_title">Nascondi i pulsanti Precedente e Successivo</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">I pulsanti Precedente e Successivo sono nascosti.</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">I pulsanti Precedente e Successivo sono mostrati</string>
+  <string name="morphe_hide_settings_button_title">Nascondi il pulsante Impostazioni</string>
+  <string name="morphe_hide_settings_button_summary_on">Il pulsante Impostazioni è nascosto</string>
+  <string name="morphe_hide_settings_button_summary_off">Il pulsante Impostazioni è visibile</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Nascondi le schede della schermata finale</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Le schede della schermata finale sono nascoste</string>
@@ -1379,12 +1396,12 @@ Se in seguito verrà disattivato, si consiglia di cancellare i dati dell'app per
   <string name="morphe_open_system_share_sheet_title">Apri il pannello di condivisione del sistema</string>
   <string name="morphe_open_system_share_sheet_summary_on">Apri il pannello di condivisione del sistema</string>
   <string name="morphe_open_system_share_sheet_summary_off">Apri il pannello di condivisione dell\'app</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Sovrascrivi pulsante YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Il pulsante YouTube Music apre la tua app musicale target</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Pulsante YouTube Music apre l\'app nativa</string>
-  <string name="morphe_music_package_name_title">Nome pacchetto Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Nome pacchetto dell\'app musicale di destinazione</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Sovrascrivi i pulsanti di YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">I pulsanti di YouTube Music aprono la tua app musicale di destinazione</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">I pulsanti di YouTube Music aprono l\'app ufficiale</string>
+  <string name="morphe_music_package_name_title">Nome del pacchetto dell\'app musicale di destinazione</string>
+  <string name="morphe_music_package_name_summary">Nome del pacchetto della tua app di musica installata</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Cambia pagina iniziale</string>
   <string name="morphe_change_start_page_entry_default">Predefinito</string>

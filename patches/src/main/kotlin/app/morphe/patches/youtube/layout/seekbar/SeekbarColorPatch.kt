@@ -9,7 +9,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoColorOverrideHook
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
@@ -27,7 +27,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/theme/SeekbarColorPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/SeekbarColorPatch;"
 
 val seekbarColorPatch = bytecodePatch(
     description = "Hide or set a custom seekbar color",
@@ -43,7 +43,7 @@ val seekbarColorPatch = bytecodePatch(
         fun MutableMethod.addColorChangeInstructions(index: Int) {
             insertLiteralOverride(
                 index,
-                "$EXTENSION_CLASS_DESCRIPTOR->getVideoPlayerSeekbarColor(I)I"
+                "$EXTENSION_CLASS->getVideoPlayerSeekbarColor(I)I"
             )
         }
 
@@ -66,14 +66,14 @@ val seekbarColorPatch = bytecodePatch(
                 addInstructions(
                     0,
                     """
-                        invoke-static { v$colorRegister }, $EXTENSION_CLASS_DESCRIPTOR->getVideoPlayerSeekbarClickedColor(I)I
+                        invoke-static { v$colorRegister }, $EXTENSION_CLASS->getVideoPlayerSeekbarClickedColor(I)I
                         move-result v$colorRegister
                     """
                 )
             }
         }
 
-        lithoColorOverrideHook(EXTENSION_CLASS_DESCRIPTOR, "getLithoColor")
+        lithoColorOverrideHook(EXTENSION_CLASS, "getLithoColor")
 
         // 19.25+ changes
 
@@ -96,7 +96,7 @@ val seekbarColorPatch = bytecodePatch(
                 addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->showWatchHistoryProgressDrawable(Z)Z
+                        invoke-static { v$register }, $EXTENSION_CLASS->showWatchHistoryProgressDrawable(Z)Z
                         move-result v$register            
                     """
                 )
@@ -106,7 +106,7 @@ val seekbarColorPatch = bytecodePatch(
         LithoLinearGradientFingerprint.method.addInstructions(
             0,
             """
-                invoke-static/range { p4 .. p5 },  $EXTENSION_CLASS_DESCRIPTOR->getLithoLinearGradient([I[F)[I
+                invoke-static/range { p4 .. p5 },  $EXTENSION_CLASS->getLithoLinearGradient([I[F)[I
                 move-result-object p4   
             """
         )
@@ -119,7 +119,7 @@ val seekbarColorPatch = bytecodePatch(
                 addInstructions(
                     index + 1,
                     """
-                       invoke-static { v$register, p0, p1 }, $EXTENSION_CLASS_DESCRIPTOR->getPlayerLinearGradient([III)[I
+                       invoke-static { v$register, p0, p1 }, $EXTENSION_CLASS->getPlayerLinearGradient([III)[I
                        move-result-object v$register
                     """
                 )
@@ -143,7 +143,7 @@ val seekbarColorPatch = bytecodePatch(
                 replaceInstruction(
                     index,
                     "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->setSplashAnimationLottie(Lcom/airbnb/lottie/LottieAnimationView;I)V"
+                        "$EXTENSION_CLASS->setSplashAnimationLottie(Lcom/airbnb/lottie/LottieAnimationView;I)V"
                 )
             }
         }
@@ -166,6 +166,7 @@ val seekbarColorPatch = bytecodePatch(
                 MutableMethodImplementation(2),
             ).toMutable().apply {
                 addInstructions(
+                    0,
                     """
                         invoke-virtual { p0, p1 }, Lcom/airbnb/lottie/LottieAnimationView;->$setAnimationIntName(I)V
                         return-void
@@ -208,6 +209,7 @@ val seekbarColorPatch = bytecodePatch(
                 val methodOpcode = if (is_21_02_or_greater) "invoke-direct" else "invoke-virtual"
 
                 addInstructions(
+                    0,
                     """
                         invoke-static { p1, p2 }, $factoryStreamClass->$factoryStreamName(Ljava/io/InputStream;Ljava/lang/String;)$factoryStreamReturnType
                         move-result-object v0

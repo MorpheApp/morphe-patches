@@ -19,7 +19,7 @@ import app.morphe.extension.reddit.settings.preference.BooleanSettingPreference;
 public class AdsPreferenceCategory extends ConditionalPreferenceCategory {
     public AdsPreferenceCategory(Context context, PreferenceScreen screen) {
         super(context, screen);
-        setTitle(str("morphe_screen_layout_title"));
+        setTitle(str("morphe_screen_ads_title"));
     }
 
     @Override

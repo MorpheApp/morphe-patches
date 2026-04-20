@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Inaktiverar det moderna användargränssnittet för startsidan</string>
   <string name="morphe_disable_screenshot_popup_title">Inaktivera skärmbildspopup-fönster</string>
   <string name="morphe_disable_screenshot_popup_summary">Inaktiverar popup-fönstret som visas när du tar en skärmbild</string>
+  <string name="morphe_hide_ask_button_title">Dölj knappen Fråga</string>
+  <string name="morphe_hide_ask_button_summary">Döljer knappen Fråga i sökfältet</string>
   <string name="morphe_hide_answers_button_title">Dölj knappen Svar</string>
   <string name="morphe_hide_answers_button_summary">Döljer knappen Svar i navigeringsfältet</string>
   <string name="morphe_hide_chat_button_title">Dölj knappen Chatta</string>
@@ -67,4 +69,6 @@ Begränsning: Visas endast om antalet visningar ingår i API-svaret"</string>
   <string name="morphe_sanitize_sharing_links_summary">Rensar delningslänkar genom att ta bort spårningsfrågeparametrar</string>
   <string name="morphe_open_links_directly_title">Öppna länkar direkt</string>
   <string name="morphe_open_links_directly_summary">Hoppar över omdirigerings-URL:er i externa länkar</string>
+  <string name="morphe_open_links_externally_title">Öppna länkar externt</string>
+  <string name="morphe_open_links_externally_summary">Öppnar länkar i din webbläsare istället för webbläsaren i appen</string>
 </resources>

@@ -317,16 +317,10 @@ public class VideoQualityDialogButton {
             );
 
             // Add title with current quality.
-            TextView titleView = new TextView(context);
-            titleView.setText(spannableTitle);
-            titleView.setTextSize(16);
-            // Remove setTextColor since color is handled by SpannableStringBuilder.
-            LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
-            titleParams.setMargins(Dim.dp12, Dim.dp16, 0, Dim.dp16);
-            titleView.setLayoutParams(titleParams);
-            mainLayout.addView(titleView);
+            if (!Settings.HIDE_PLAYER_FLYOUT_QUALITY_HEADER.get()) {
+                TextView titleView = getTextView(context, spannableTitle);
+                mainLayout.addView(titleView);
+            }
 
             // Create ListView for quality selection.
             ListView listView = new ListView(context);
@@ -384,6 +378,20 @@ public class VideoQualityDialogButton {
         } catch (Exception ex) {
             Logger.printException(() -> "showVideoQualityDialog failure", ex);
         }
+    }
+
+    @NonNull
+    private static TextView getTextView(Context context, SpannableStringBuilder spannableTitle) {
+        TextView titleView = new TextView(context);
+        titleView.setText(spannableTitle);
+        titleView.setTextSize(16);
+        // Remove setTextColor since color is handled by SpannableStringBuilder.
+        LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        titleParams.setMargins(Dim.dp12, Dim.dp16, 0, Dim.dp16);
+        titleView.setLayoutParams(titleParams);
+        return titleView;
     }
 
     private static class CustomQualityAdapter extends ArrayAdapter<String> {

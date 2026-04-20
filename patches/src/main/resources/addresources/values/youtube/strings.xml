@@ -75,18 +75,18 @@ Changes include:
     <string name="morphe_hide_artist_cards_title">Hide artist cards</string>
     <string name="morphe_hide_artist_cards_summary_on">Artist cards are hidden</string>
     <string name="morphe_hide_artist_cards_summary_off">Artist cards are shown</string>
-    <string name="morphe_hide_chips_shelf_title">Hide chips shelf</string>
-    <string name="morphe_hide_chips_shelf_summary_on">Chips shelf is hidden</string>
-    <string name="morphe_hide_chips_shelf_summary_off">Chips shelf is shown</string>
     <string name="morphe_hide_community_posts_title">Hide community posts</string>
     <string name="morphe_hide_community_posts_summary_on">Community posts are hidden</string>
     <string name="morphe_hide_community_posts_summary_off">Community posts are shown</string>
     <string name="morphe_hide_compact_banner_title">Hide compact banners</string>
     <string name="morphe_hide_compact_banner_summary_on">Compact banners are hidden</string>
     <string name="morphe_hide_compact_banner_summary_off">Compact banners are shown</string>
-    <string name="morphe_hide_expandable_card_title">Hide expandable card</string>
-    <string name="morphe_hide_expandable_card_summary_on">Expandable card under videos is hidden</string>
-    <string name="morphe_hide_expandable_card_summary_off">Expandable card under videos is shown</string>
+    <string name="morphe_hide_expandable_card_title">Hide expandable cards</string>
+    <string name="morphe_hide_expandable_card_entry_1">Expandable cards under videos are shown</string>
+    <string name="morphe_hide_expandable_card_entry_2">Only product card under videos is hidden</string>
+    <string name="morphe_hide_expandable_card_entry_3">Only summary card under videos is hidden</string>
+    <string name="morphe_hide_expandable_card_entry_4">Product and summary card under videos are hidden</string>
+    <string name="morphe_hide_expandable_card_entry_5">Expandable cards under videos are hidden</string>
     <string name="morphe_hide_floating_microphone_button_title">Hide floating microphone button</string>
     <string name="morphe_hide_floating_microphone_button_summary_on">Floating microphone button in search is hidden</string>
     <string name="morphe_hide_floating_microphone_button_summary_off">Floating microphone button in search is shown</string>
@@ -94,19 +94,20 @@ Changes include:
     <string name="morphe_hide_horizontal_shelves_summary_on">"Horizontal shelves are hidden, such as:
 
 • Breaking news
+• Community posts you may like
 • Continue watching
 • Explore more channels
+• Explore more topics
 • For You
+• Latest videos
 • Most relevant
+• Posts from Creator's Community
 • Shopping
 • Watch it again"</string>
     <string name="morphe_hide_horizontal_shelves_summary_off">Horizontal shelves are shown</string>
     <string name="morphe_hide_image_shelf_title">Hide image shelf</string>
     <string name="morphe_hide_image_shelf_summary_on">Image shelf in search results is hidden</string>
     <string name="morphe_hide_image_shelf_summary_off">Image shelf in search results is shown</string>
-    <string name="morphe_hide_latest_posts_title">Hide latest posts</string>
-    <string name="morphe_hide_latest_posts_summary_on">Latest posts are hidden</string>
-    <string name="morphe_hide_latest_posts_summary_off">Latest posts are shown</string>
     <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
     <string name="morphe_hide_latest_videos_button_title">Hide \'Latest videos\' button</string>
@@ -204,6 +205,9 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_video_title_title">Hide video title</string>
     <string name="morphe_hide_video_title_summary_on">Video title in player overlay is hidden</string>
     <string name="morphe_hide_video_title_summary_off">Video title in player overlay is shown</string>
+
+    <string name="morphe_hide_description_components_screen_title">Video description</string>
+    <string name="morphe_hide_description_components_screen_summary">Hide or show video description components</string>
     <string name="morphe_hide_ai_generated_video_summary_section_title">Hide \'AI-generated video summary\'</string>
     <string name="morphe_hide_ai_generated_video_summary_section_summary_on">AI-generated video summary section is hidden</string>
     <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI-generated video summary section is shown</string>
@@ -260,17 +264,15 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_music_section_title">Hide Music</string>
     <string name="morphe_hide_music_section_summary_on">Music section is hidden</string>
     <string name="morphe_hide_music_section_summary_off">Music section is shown</string>
+    <string name="morphe_hide_quizzes_section_title">Hide Quizzes</string>
+    <string name="morphe_hide_quizzes_section_summary_on">Quizzes section is hidden</string>
+    <string name="morphe_hide_quizzes_section_summary_off">Quizzes section is shown</string>
     <string name="morphe_hide_subscribe_button_title">Hide Subscribe button</string>
     <string name="morphe_hide_subscribe_button_summary_on">Subscribe button is hidden</string>
     <string name="morphe_hide_subscribe_button_summary_off">Subscribe button is shown</string>
     <string name="morphe_hide_transcript_section_title">Hide Transcript</string>
     <string name="morphe_hide_transcript_section_summary_on">Transcript section is hidden</string>
     <string name="morphe_hide_transcript_section_summary_off">Transcript section is shown</string>
-    <string name="morphe_hide_quizzes_section_title">Hide Quizzes</string>
-    <string name="morphe_hide_quizzes_section_summary_on">Quizzes section is hidden</string>
-    <string name="morphe_hide_quizzes_section_summary_off">Quizzes section is shown</string>
-    <string name="morphe_hide_description_components_screen_title">Video description</string>
-    <string name="morphe_hide_description_components_screen_summary">Hide or show video description components</string>
 
     <string name="morphe_hide_filter_bar_screen_title">Filter bar</string>
     <string name="morphe_hide_filter_bar_screen_summary">Hide or show the filter bar in feeds, related videos, search results, and watch history</string>
@@ -308,6 +310,9 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_members_shelf_title">Hide members shelf</string>
     <string name="morphe_hide_members_shelf_summary_on">Members shelf is hidden</string>
     <string name="morphe_hide_members_shelf_summary_off">Members shelf is shown</string>
+    <string name="morphe_hide_posts_shelf_title">Hide posts shelf</string>
+    <string name="morphe_hide_posts_shelf_summary_on">Posts shelf is hidden</string>
+    <string name="morphe_hide_posts_shelf_summary_off">Posts shelf is shown</string>
     <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_store_button_title">Hide Store button</string>
     <string name="morphe_hide_store_button_summary_on">Store button is hidden</string>
@@ -430,9 +435,6 @@ Limitations:
     <string name="morphe_hide_end_screen_store_banner_title">Hide end screen store banner</string>
     <string name="morphe_hide_end_screen_store_banner_summary_on">End screen store banner is hidden</string>
     <string name="morphe_hide_end_screen_store_banner_summary_off">End screen store banner is shown</string>
-    <string name="morphe_hide_fullscreen_ads_title">Hide fullscreen ads</string>
-    <string name="morphe_hide_fullscreen_ads_summary_on">Fullscreen ads are hidden</string>
-    <string name="morphe_hide_fullscreen_ads_summary_off">Fullscreen ads are shown</string>
     <string name="morphe_hide_general_ads_title">Hide general ads</string>
     <string name="morphe_hide_general_ads_summary_on">General ads are hidden</string>
     <string name="morphe_hide_general_ads_summary_off">General ads are shown</string>
@@ -837,11 +839,17 @@ Tap and hold to open Morphe settings"</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
-    <string name="morphe_hide_player_flyout_summary">Hide or show player flyout menu items</string>
+    <string name="morphe_hide_player_flyout_summary">Hide or show player flyout menu components</string>
     <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_captions_title">Hide Captions</string>
     <string name="morphe_hide_player_flyout_captions_summary_on">Captions menu is hidden</string>
     <string name="morphe_hide_player_flyout_captions_summary_off">Captions menu is shown</string>
+    <string name="morphe_hide_player_flyout_captions_footer_title">Hide Captions footer</string>
+    <string name="morphe_hide_player_flyout_captions_footer_summary_on">Captions menu footer is hidden</string>
+    <string name="morphe_hide_player_flyout_captions_footer_summary_off">Captions menu footer is shown</string>
+    <string name="morphe_hide_player_flyout_captions_header_title">Hide Captions header</string>
+    <string name="morphe_hide_player_flyout_captions_header_summary_on">Captions menu header is hidden</string>
+    <string name="morphe_hide_player_flyout_captions_header_summary_off">Captions menu header is shown</string>
     <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_additional_settings_title">Hide Additional settings / More</string>
     <string name="morphe_hide_player_flyout_additional_settings_summary_on">Additional settings / More menu is hidden</string>
@@ -887,17 +895,23 @@ Tap and hold to open Morphe settings"</string>
     <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio track menu is hidden
 
 To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\' or \'TV\'"</string>
+    <string name="morphe_hide_player_flyout_audio_track_footer_title">Hide Audio track footer</string>
+    <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Audio track menu footer is hidden</string>
+    <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Audio track menu footer is shown</string>
     <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_watch_in_vr_title">Hide Watch in VR</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Watch in VR menu is hidden</string>
     <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Watch in VR menu is shown</string>
     <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_video_quality_title">Hide Quality menu</string>
-    <string name="morphe_hide_player_flyout_video_quality_summary_on">Quality menu is hidden</string>
-    <string name="morphe_hide_player_flyout_video_quality_summary_off">Quality menu is shown</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_title">Hide Quality menu footer</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Quality menu footer is hidden</string>
-    <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Quality menu footer is shown</string>
+    <string name="morphe_hide_player_flyout_quality_title">Hide Quality</string>
+    <string name="morphe_hide_player_flyout_quality_summary_on">Quality menu is hidden</string>
+    <string name="morphe_hide_player_flyout_quality_summary_off">Quality menu is shown</string>
+    <string name="morphe_hide_player_flyout_quality_footer_title">Hide Quality footer</string>
+    <string name="morphe_hide_player_flyout_quality_footer_summary_on">Quality menu footer is hidden</string>
+    <string name="morphe_hide_player_flyout_quality_footer_summary_off">Quality menu footer is shown</string>
+    <string name="morphe_hide_player_flyout_quality_header_title">Hide Quality header</string>
+    <string name="morphe_hide_player_flyout_quality_header_summary_on">Quality menu header is hidden</string>
+    <string name="morphe_hide_player_flyout_quality_header_summary_off">Quality menu header is shown</string>
 
     <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
     <string name="morphe_hide_autoplay_preview_title">Hide autoplay preview</string>
@@ -927,6 +941,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_player_previous_next_buttons_title">Hide Previous &amp; Next buttons</string>
     <string name="morphe_hide_player_previous_next_buttons_summary_on">Previous &amp; Next buttons are hidden</string>
     <string name="morphe_hide_player_previous_next_buttons_summary_off">Previous &amp; Next buttons are shown</string>
+    <string name="morphe_hide_settings_button_title">Hide Settings button</string>
+    <string name="morphe_hide_settings_button_summary_on">Settings button is hidden</string>
+    <string name="morphe_hide_settings_button_summary_off">Settings button is shown</string>
 
     <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
     <string name="morphe_hide_end_screen_cards_title">Hide end screen cards</string>
@@ -1453,12 +1470,12 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_open_system_share_sheet_summary_on">Opens system share sheet</string>
     <string name="morphe_open_system_share_sheet_summary_off">Opens in-app share sheet</string>
 
-    <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-    <string name="morphe_override_youtube_music_button_title">Override YouTube Music button</string>
-    <string name="morphe_override_youtube_music_button_summary_on">YouTube Music button opens your target music app</string>
-    <string name="morphe_override_youtube_music_button_summary_off">YouTube Music button opens the native app</string>
-    <string name="morphe_music_package_name_title">Morphe Music package name</string>
-    <string name="morphe_music_package_name_summary">Package name of the target music app</string>
+    <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+    <string name="morphe_override_youtube_music_buttons_title">Override YouTube Music buttons</string>
+    <string name="morphe_override_youtube_music_buttons_summary_on">YouTube Music buttons open your target music app</string>
+    <string name="morphe_override_youtube_music_buttons_summary_off">YouTube Music buttons open the official app</string>
+    <string name="morphe_music_package_name_title">Target music app package name</string>
+    <string name="morphe_music_package_name_summary">Package name of your installed target music app</string>
 
     <!-- layout.startpage.changeStartPagePatch -->
     <string name="morphe_change_start_page_title">Change start page</string>

@@ -57,12 +57,22 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup notifyMe;
     private final StringFilterGroup singleItemInformationPanel;
     private final StringFilterGroup expandableMetadata;
+    private final ByteArrayFilterGroup productCardBuffer;
+    private final ByteArrayFilterGroup summaryCardBuffer;
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
+
+    public enum ExpandableCardStyle {
+        SHOW_ALL,
+        HIDE_PRODUCT_ONLY,
+        HIDE_SUMMARY_ONLY,
+        HIDE_PRODUCT_AND_SUMMARY,
+        HIDE_ALL
+    }
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
@@ -78,12 +88,13 @@ public final class LayoutComponentsFilter extends Filter {
 
         final var cellDivider = new StringFilterGroup(
                 Settings.HIDE_COMPACT_BANNER,
-                // Empty padding and a relic from very old YT versions. Not related to compact banner but included here to avoid adding another setting.
+                // Empty padding and a relic from very old YT versions.
+                // Not related to compact banner but included here to avoid adding another setting.
                 "cell_divider"
         );
 
-        final var chipsShelf = new StringFilterGroup(
-                Settings.HIDE_CHIPS_SHELF,
+        final var exploreTopicsShelf = new StringFilterGroup(
+                Settings.HIDE_HORIZONTAL_SHELVES,
                 "chips_shelf"
         );
 
@@ -94,7 +105,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         addIdentifierCallbacks(
                 cellDivider,
-                chipsShelf,
+                exploreTopicsShelf,
                 liveChatReplay
         );
 
@@ -181,8 +192,8 @@ public final class LayoutComponentsFilter extends Filter {
                 "single_item_information_panel"
         );
 
-        final var latestPosts = new StringFilterGroup(
-                Settings.HIDE_LATEST_POSTS,
+        final var postsShelf = new StringFilterGroup(
+                Settings.HIDE_POSTS_SHELF,
                 "post_shelf"
         );
 
@@ -213,8 +224,18 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         expandableMetadata = new StringFilterGroup(
-                Settings.HIDE_EXPANDABLE_CARD,
-                "inline_expander"
+                null,
+                "expandable_metadata"
+        );
+
+        productCardBuffer = new ByteArrayFilterGroup(
+                null,
+                "gstatic.com/shopping"
+        );
+
+        summaryCardBuffer = new ByteArrayFilterGroup(
+                null,
+                "PAfeedback_genai"
         );
 
         final var compactChannelBar = new StringFilterGroup(
@@ -337,11 +358,11 @@ public final class LayoutComponentsFilter extends Filter {
                 forYouShelf,
                 imageShelf,
                 infoPanel,
-                latestPosts,
                 medicalPanel,
                 notifyMe,
                 paidPromotion,
                 playables,
+                postsShelf,
                 quickActions,
                 relatedVideos,
                 singleItemInformationPanel,
@@ -375,8 +396,29 @@ public final class LayoutComponentsFilter extends Filter {
 
         // The groups are excluded from the filter due to the exceptions list below.
         // Filter them separately here.
-        if (matchedGroup == notifyMe || matchedGroup == surveys || matchedGroup == expandableMetadata) {
+        if (matchedGroup == notifyMe || matchedGroup == surveys) {
             return true;
+        }
+
+        if (matchedGroup == expandableMetadata) {
+            ExpandableCardStyle style = Settings.HIDE_EXPANDABLE_CARD.get();
+            switch (style) {
+                case HIDE_ALL -> {
+                    return true;
+                }
+                case HIDE_PRODUCT_ONLY -> {
+                    return productCardBuffer.check(buffer).isFiltered();
+                }
+                case HIDE_SUMMARY_ONLY -> {
+                    return summaryCardBuffer.check(buffer).isFiltered();
+                }
+                case HIDE_PRODUCT_AND_SUMMARY -> {
+                    return summaryCardBuffer.check(buffer).isFiltered() || productCardBuffer.check(buffer).isFiltered();
+                }
+                default -> {
+                    return false;
+                }
+            }
         }
 
         if (matchedGroup == channelProfile) {

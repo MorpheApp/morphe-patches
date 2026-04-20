@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Zakáže moderní domovské rozhraní</string>
   <string name="morphe_disable_screenshot_popup_title">Zakázat vyskakovací okno pro screenshot</string>
   <string name="morphe_disable_screenshot_popup_summary">Zakáže vyskakovací okno, které se zobrazí při pořízení screenshotu</string>
+  <string name="morphe_hide_ask_button_title">Skrýt tlačítko Zeptej se</string>
+  <string name="morphe_hide_ask_button_summary">Skryje tlačítko Zeptej se v vyhledávacím řádku</string>
   <string name="morphe_hide_answers_button_title">Skrýt tlačítko Odpovědi</string>
   <string name="morphe_hide_answers_button_summary">Skrývá tlačítko Odpovědi v navigační liště</string>
   <string name="morphe_hide_chat_button_title">Skrýt tlačítko Chatu</string>
@@ -67,4 +69,6 @@ Omezení: Zobrazuje se pouze pokud API odpověď zahrnuje počet zhlédnutí"</s
   <string name="morphe_sanitize_sharing_links_summary">Čistí sdílecí odkazy odstraněním parametrů sledování</string>
   <string name="morphe_open_links_directly_title">Otevírat odkazy přímo</string>
   <string name="morphe_open_links_directly_summary">Přeskakuje přes URL adresy přesměrování ve vnějších odkazech</string>
+  <string name="morphe_open_links_externally_title">Otevřít odkazy externě</string>
+  <string name="morphe_open_links_externally_summary">Otevírá odkazy ve vašem prohlížeči, nikoli v interním prohlížeči</string>
 </resources>

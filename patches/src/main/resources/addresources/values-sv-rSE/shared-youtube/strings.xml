@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Anpassad</string>
   <string name="morphe_custom_branding_notification_icon_title">Aviseringsikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Följ appikon</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Obs! Experimentell version 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Du använder en experimentell appversion av ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Förvänta dig lustigt beteende av appen eller okända fel medan vi finslipar korrigeringarna för den här appversionen.
-&lt;br/&gt;&lt;br/&gt;
-Om du vill ha den mest problemfria upplevelsen &lt;b&gt;avinstallerar&lt;/b&gt; du den här och korrigerar den rekommenderade appversionen av ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jag vill ha experimentellt</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jag vill ha stabilt</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-meddelande</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din visningshistorik sparas inte.&lt;br&gt;&lt;br&gt;Detta orsakas troligen av en DNS-annonsblockerare eller nätverksproxy.&lt;br&gt;&lt;br&gt;För att åtgärda detta, vitlista &lt;b&gt;s.youtube.com&lt;/b&gt; eller stäng av alla DNS-blockerare och proxyer.</string>
@@ -121,6 +111,9 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_force_original_audio_title">Tvinga ursprungligt ljudspråk</string>
   <string name="morphe_force_original_audio_summary_on">Använder ursprungligt ljudspråk</string>
   <string name="morphe_force_original_audio_summary_off">Använder standardljud</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Dölj helskärmsannonser</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Helskärmsannonser visas</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Om du vill använda den här funktionen ändrar du Förfalska videoströmmar till Android Reel eller TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

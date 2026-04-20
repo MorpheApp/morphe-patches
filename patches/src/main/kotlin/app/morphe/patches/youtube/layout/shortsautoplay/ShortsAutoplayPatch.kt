@@ -7,7 +7,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
@@ -29,7 +29,7 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/ShortsAutoplayPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ShortsAutoplayPatch;"
 
 val shortsAutoplayPatch = bytecodePatch(
     name = "Shorts autoplay",
@@ -56,7 +56,7 @@ val shortsAutoplayPatch = bytecodePatch(
         // Main activity is used to check if app is in pip mode.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->setMainActivity(Landroid/app/Activity;)V",
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setMainActivity(Landroid/app/Activity;)V",
         )
 
         var reelEnumClass : String
@@ -70,7 +70,7 @@ val shortsAutoplayPatch = bytecodePatch(
                     # Pass the first enum value to extension.
                     # Any enum value of this type will work.
                     sget-object v0, $reelEnumClass->a:$reelEnumClass
-                    invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->setYTShortsRepeatEnum(Ljava/lang/Enum;)V
+                    invoke-static { v0 }, $EXTENSION_CLASS->setYTShortsRepeatEnum(Ljava/lang/Enum;)V
                 """
             )
         }
@@ -96,7 +96,7 @@ val shortsAutoplayPatch = bytecodePatch(
                 addInstructions(
                     index + 2,
                     """
-                        invoke-static {v$register}, $EXTENSION_CLASS_DESCRIPTOR->changeShortsRepeatBehavior(Ljava/lang/Enum;)Ljava/lang/Enum;
+                        invoke-static {v$register}, $EXTENSION_CLASS->changeShortsRepeatBehavior(Ljava/lang/Enum;)Ljava/lang/Enum;
                         move-result-object v$register
                     """
                 )
@@ -115,7 +115,7 @@ val shortsAutoplayPatch = bytecodePatch(
             // Find the first call modified by extension code above.
             val extensionReturnResultIndex = indexOfFirstInstructionOrThrow {
                 opcode == Opcode.INVOKE_STATIC &&
-                        getReference<MethodReference>()?.definingClass == EXTENSION_CLASS_DESCRIPTOR
+                        getReference<MethodReference>()?.definingClass == EXTENSION_CLASS
             } + 1
             val enumRegister = getInstruction<OneRegisterInstruction>(extensionReturnResultIndex).registerA
             val getReelSequenceControllerIndex = indexOfFirstInstructionOrThrow {
@@ -146,7 +146,7 @@ val shortsAutoplayPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     0,
                     """
-                        invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->isAutoPlay(Ljava/lang/Enum;)Z
+                        invoke-static { p1 }, $EXTENSION_CLASS->isAutoPlay(Ljava/lang/Enum;)Z
                         move-result v0
                         if-eqz v0, :ignore
                         new-instance v0, ${userActionMethodReference.definingClass}

@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Προσαρμοσμένο</string>
   <string name="morphe_custom_branding_notification_icon_title">Εικονίδιο ειδοποίησης</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Ακολουθήστε το εικονίδιο της εφαρμογής</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Πειραματική Ειδοποίηση 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Χρησιμοποιείτε μια πειραματική έκδοση της εφαρμογής ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Περιμένετε αρρυθμία στην συμπεριφορά της εφαρμογής ή ακαθόριστα σφάλματα καθώς προσαρμόζουμε τις τροποποιήσεις για αυτήν την έκδοση της εφαρμογής.
-&lt;br/&gt;&lt;br/&gt;
-Εάν θέλετε μια εμπειρία χωρίς σφάλματα, τότε &lt;b&gt; απεγκαταστήστε την &lt;/b&gt; και τροποποιήσετε την συνιστώμενη έκδοση της εφαρμογής ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Θέλω πειραματική έκδοση</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Θέλω σταθερή έκδοση</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Ειδοποίηση Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Το ιστορικό παρακολούθησης δεν αποθηκεύεται.&lt;br&gt;&lt;br&gt;Πιθανό να συμβαίνει λόγω κάποιας υπηρεσίας DNS που μπλοκάρει διαφημίσεις ή μέσω κάποιου διακομιστή μεσολάβησης δικτύου.&lt;br&gt;&lt;br&gt;Μια λύση γι\'αυτό θα ήταν να προσθέσετε σε whitelist το &lt;b&gt;s.youtube.com&lt;/b&gt; ή να απενεργοποιήστε το DNS και τους διακομιστές μεσολάβησης δικτύου.</string>
@@ -121,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">Εξαναγκασμός αρχικής γλώσσας ήχου</string>
   <string name="morphe_force_original_audio_summary_on">Χρησιμοποιείται η αρχική γλώσσα ήχου</string>
   <string name="morphe_force_original_audio_summary_off">Χρησιμοποιείται ο προεπιλεγμένος ήχος</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Διαφημίσεις πλήρους οθόνης</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Οι διαφημίσεις πλήρους οθόνης είναι κρυφές</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Οι διαφημίσεις πλήρους οθόνης εμφανίζονται</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, αλλάξτε τη \"Παραποίηση ροών βίντεο\" σε Android Reel ή TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

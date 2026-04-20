@@ -10,6 +10,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.playservice.is_8_05_or_greater
 import app.morphe.patches.music.misc.playservice.is_9_00_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -159,10 +160,10 @@ val crossfadePatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        val log = Logger.getLogger("CrossfadePatch")
-        if (is_9_00_or_greater) {
+        val log = Logger.getLogger(this::class.java.name)
+        if (!is_8_05_or_greater || is_9_00_or_greater) {
             return@execute log.warning(
-                "Track crossfade is disabled for YouTube Music 9.x - not supported yet. " +
+                "Track crossfade is not yet available for YouTube Music 9.x. " +
                     "Patch YouTube Music 8.44.54–8.50.51 for crossfade.",
             )
         }

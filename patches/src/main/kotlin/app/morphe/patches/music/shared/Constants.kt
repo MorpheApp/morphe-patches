@@ -5,7 +5,6 @@ import app.morphe.patcher.patch.AppTarget
 import app.morphe.patcher.patch.Compatibility
 
 internal object Constants {
-    // TODO: Rename to COMPATIBILITY_YT_MUSIC
     val COMPATIBILITY_YOUTUBE_MUSIC = Compatibility(
         name = "YouTube Music",
         packageName = "com.google.android.apps.youtube.music",
@@ -19,17 +18,12 @@ internal object Constants {
         ),
         targets = listOf(
             AppTarget(
-                version = "9.13.50",
+                version = "9.15.50",
                 minSdk = 26,
                 isExperimental = true,
             ),
             AppTarget(
-                version = "9.12.51",
-                minSdk = 26,
-                isExperimental = true,
-            ),
-            AppTarget(
-                version = "9.11.54",
+                version = "9.14.51",
                 minSdk = 26,
                 isExperimental = true,
             ),
@@ -39,15 +33,11 @@ internal object Constants {
                 isExperimental = true,
             ),
             AppTarget(
+                version = "8.47.56",
+                minSdk = 26,
+            ),
+            AppTarget(
                 version = "8.44.54",
-                minSdk = 26,
-            ),
-            AppTarget(
-                version = "8.40.54",
-                minSdk = 26,
-            ),
-            AppTarget(
-                version = "8.10.52",
                 minSdk = 26,
             ),
             AppTarget(

@@ -9,6 +9,7 @@ package app.morphe.patches.reddit.misc.settings
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
@@ -62,18 +63,7 @@ internal object PreferenceManagerFingerprint : Fingerprint(
             Opcode.MOVE_RESULT_OBJECT,
             location = MatchAfterImmediately()
         ),
-        newInstance("Lcom/reddit/screen/settings/preferences/PreferencesPresenter\$checkIfShouldShowImpressumOption$")
-    )
-)
-
-internal object RedditInternalFeaturesFingerprint : Fingerprint(
-    returnType = "V",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = listOf(
-        opcode(Opcode.CONST_4),
-        opcode(Opcode.CONST_STRING),
-        string("%s.%d"),
-        string("RELEASE")
+        newInstance($$"Lcom/reddit/screen/settings/preferences/PreferencesPresenter$checkIfShouldShowImpressumOption$")
     )
 )
 
@@ -82,7 +72,10 @@ internal object WebBrowserActivityOnCreateFingerprint : Fingerprint(
     name = "onCreate",
     returnType = "V",
     filters = listOf(
-        methodCall(smali = "Landroid/app/Activity;->getIntent()Landroid/content/Intent;")
+        anyInstruction(
+            opcode(Opcode.INVOKE_SUPER),
+            opcode(Opcode.INVOKE_SUPER_RANGE),
+        )
     ),
     strings = listOf("com.reddit.extra.initial_url")
 )

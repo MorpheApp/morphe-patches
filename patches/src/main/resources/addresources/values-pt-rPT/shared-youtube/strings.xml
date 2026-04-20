@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Personalizado</string>
   <string name="morphe_custom_branding_notification_icon_title">Ícone de notificação</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Ícone de acompanhamento do aplicativo</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Alerta Experimental 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Você está usando uma versão experimental do aplicativo ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Espere comportamentos estranhos do aplicativo ou bugs não identificados enquanto ajustamos os patches para esta versão do aplicativo.
-&lt;br/&gt;&lt;br/&gt;
-Se você deseja a experiência mais tranquila, então &lt;b&gt;desinstale&lt;/b&gt; este e atualize a versão recomendada do aplicativo ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quero experimental</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quero estável</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso do Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">O teu histórico de visualização não está a ser guardado.&lt;br&gt;&lt;br&gt;Isto é mais provávelmente causado por um bloqueador de anúncios DNS ou proxy de rede.&lt;br&gt;&lt;br&gt;Para reparar isto, adiciona às exceções &lt;b&gt;s.youtube.com&lt;/b&gt; ou desativa todos os bloqueadores DNS e proxies.</string>
@@ -121,6 +111,10 @@ Para entrar, pressione continuar abaixo"</string>
   <string name="morphe_force_original_audio_title">Forçar idioma original do áudio</string>
   <string name="morphe_force_original_audio_summary_on">Usando o idioma de áudio original</string>
   <string name="morphe_force_original_audio_summary_off">Usando o áudio predefinido</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Esconder anúncios em ecrã cheio</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Os anúncios são ocultados em ecrã cheia</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Os anúncios são visíveis em ecrã cheia</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Para usar este recurso, altere \'Falsificar streams de vídeo\' para Android Reel ou TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

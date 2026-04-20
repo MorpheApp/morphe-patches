@@ -307,11 +307,16 @@ public class SegmentPlaybackController {
      */
     public static void setCurrentVideoId(@Nullable String videoId) {
         try {
+            if (videoId == null || videoId.isBlank()) {
+                Logger.printDebug(() -> "Ignoring blank videoId");
+                return;
+            }
+
             if (Objects.equals(currentVideoId, videoId)) {
                 return;
             }
             clearData();
-            if (videoId == null || !Settings.SB_ENABLED.get()) {
+            if (!Settings.SB_ENABLED.get()) {
                 return;
             }
             // Cannot use PlayerType to check because on some newer targets

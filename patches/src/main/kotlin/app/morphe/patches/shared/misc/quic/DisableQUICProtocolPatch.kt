@@ -13,7 +13,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/DisableQUICProtocolPatch;"
 
 internal fun disableQUICProtocolPatch(
@@ -38,7 +38,7 @@ internal fun disableQUICProtocolPatch(
             fingerprint.method.addInstructions(
                 0,
                 """
-                    invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->disableQUICProtocol(Z)Z
+                    invoke-static { p1 }, $EXTENSION_CLASS->disableQUICProtocol(Z)Z
                     move-result p1
                 """
             )

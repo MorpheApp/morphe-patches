@@ -70,18 +70,18 @@ Schimbari incluse:
   <string name="morphe_hide_artist_cards_title">Ascunde cărțile artistului</string>
   <string name="morphe_hide_artist_cards_summary_on">Cartonaşele artistice sunt ascunse</string>
   <string name="morphe_hide_artist_cards_summary_off">Cardurile artistului sunt afișate</string>
-  <string name="morphe_hide_chips_shelf_title">Ascunde raftul cipurilor</string>
-  <string name="morphe_hide_chips_shelf_summary_on">Raftul cipurilor este ascuns</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Se afișează raftul cipurilor</string>
   <string name="morphe_hide_community_posts_title">Ascunde postările comunității</string>
   <string name="morphe_hide_community_posts_summary_on">Posturile comunitare sunt ascunse</string>
   <string name="morphe_hide_community_posts_summary_off">Posturile comunitare sunt afișate</string>
   <string name="morphe_hide_compact_banner_title">Ascunde bannere compacte</string>
   <string name="morphe_hide_compact_banner_summary_on">Bannerele compacte sunt ascunse</string>
   <string name="morphe_hide_compact_banner_summary_off">Banner-ele compacte sunt afișate</string>
-  <string name="morphe_hide_expandable_card_title">Ascunde cardul extins</string>
-  <string name="morphe_hide_expandable_card_summary_on">Cardul extins sub videoclipuri este ascuns</string>
-  <string name="morphe_hide_expandable_card_summary_off">Cardul extins sub videoclipuri este afișat</string>
+  <string name="morphe_hide_expandable_card_title">Ascunde cardurile extensibile</string>
+  <string name="morphe_hide_expandable_card_entry_1">Cardurile extensibile sub videoclipuri sunt afișate</string>
+  <string name="morphe_hide_expandable_card_entry_2">Doar cardul produsului sub videoclipuri este ascuns</string>
+  <string name="morphe_hide_expandable_card_entry_3">Doar cardul sumarizator este ascuns sub videoclipuri</string>
+  <string name="morphe_hide_expandable_card_entry_4">Cardul și sumarul de sub videoclipuri sunt ascunse</string>
+  <string name="morphe_hide_expandable_card_entry_5">Cardurile extinse de sub videoclipuri sunt ascunse</string>
   <string name="morphe_hide_floating_microphone_button_title">Ascunderea butonului microfon plutitor</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Butonul microfon plutitor din căutare este ascuns.</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Butonul microfonului plutitor din căutare este afișat</string>
@@ -89,18 +89,20 @@ Schimbari incluse:
   <string name="morphe_hide_horizontal_shelves_summary_on">"Rafturile orizontale sunt ascunse, cum ar fi:
 
 • Știri de ultimă oră
-• Continuă vizionarea
+• Postări din comunitate care îți pot plăcea
+• Continuă să vizionezi
 • Explorează mai multe canale
+• Explorează mai multe subiecte
+• Pentru tine
+• Cele mai recente videoclipuri
 • Cele mai relevante
+• Postări din Comunitatea Creatorului
 • Cumpărături
-• Vizionează din nou"</string>
+• Urmărește-l din nou"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Sertarele orizontale sunt afișate.</string>
   <string name="morphe_hide_image_shelf_title">Ascunde raftul de imagini</string>
   <string name="morphe_hide_image_shelf_summary_on">Raftul de imagini în rezultatele căutării este ascuns</string>
   <string name="morphe_hide_image_shelf_summary_off">Raftul de imagini în rezultatele căutării este afișat</string>
-  <string name="morphe_hide_latest_posts_title">Ascunde cele mai recente postări</string>
-  <string name="morphe_hide_latest_posts_summary_on">Ultimele postări sunt ascunse</string>
-  <string name="morphe_hide_latest_posts_summary_off">Ultimele postări sunt afișate</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Ascunde butonul \'Ultimul video\'</string>
@@ -197,6 +199,8 @@ Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personaliz
   <string name="morphe_hide_video_title_title">Ascunde titlul videoclipului</string>
   <string name="morphe_hide_video_title_summary_on">Titlul video-ului în superpunere de player este ascuns</string>
   <string name="morphe_hide_video_title_summary_off">Titlul video-ului în superpunere de player este afișat</string>
+  <string name="morphe_hide_description_components_screen_title">Descriere video</string>
+  <string name="morphe_hide_description_components_screen_summary">Ascunde sau afișează componentele descrierii video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ascundeți \"Rezumat video generat de AI\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Secțiunea de rezumat video generată de AI este ascunsă</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Secțiunea de rezumat video generată de AI este afișată</string>
@@ -253,17 +257,15 @@ Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personaliz
   <string name="morphe_hide_music_section_title">Ascunde Muzică</string>
   <string name="morphe_hide_music_section_summary_on">Sectiunea Muzică este ascunsă</string>
   <string name="morphe_hide_music_section_summary_off">Sectiunea Muzică este afișată</string>
+  <string name="morphe_hide_quizzes_section_title">Ascunde Quizuri</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Secțiunea Quizuri este ascunsă</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Secțiunea Quizuri este afișată</string>
   <string name="morphe_hide_subscribe_button_title">Ascunde butonul Abonează-te</string>
   <string name="morphe_hide_subscribe_button_summary_on">Butonul Abonare este ascuns</string>
   <string name="morphe_hide_subscribe_button_summary_off">Butonul Abonare este afișat</string>
   <string name="morphe_hide_transcript_section_title">Ascunde Transcriere</string>
   <string name="morphe_hide_transcript_section_summary_on">Secțiunea de transcriere este ascunsă</string>
   <string name="morphe_hide_transcript_section_summary_off">Secțiunea de Transcriere este afișată</string>
-  <string name="morphe_hide_quizzes_section_title">Ascunde Quizuri</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Secțiunea Quizuri este ascunsă</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Secțiunea Quizuri este afișată</string>
-  <string name="morphe_hide_description_components_screen_title">Descriere video</string>
-  <string name="morphe_hide_description_components_screen_summary">Ascunde sau afișează componentele descrierii video</string>
   <string name="morphe_hide_filter_bar_screen_title">Bară de filtrare</string>
   <string name="morphe_hide_filter_bar_screen_summary">Ascunde sau afișează bara de filtre în fluxuri, videoclipuri similare, rezultate ale căutării și istoricul vizionărilor</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Ascunde în feeduri</string>
@@ -299,6 +301,9 @@ Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personaliz
   <string name="morphe_hide_members_shelf_title">Ascunde raftul membrilor</string>
   <string name="morphe_hide_members_shelf_summary_on">Raftul membrilor este ascuns</string>
   <string name="morphe_hide_members_shelf_summary_off">Raftul Membrilor este afișat</string>
+  <string name="morphe_hide_posts_shelf_title">Ascunde raftul postărilor</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Raftul postărilor este ascuns</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Raftul postărilor este afișat</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Ascunde butonul \'Magazin\'</string>
   <string name="morphe_hide_store_button_summary_on">Butonul \'Magazin\' este ascuns</string>
@@ -415,9 +420,6 @@ Limitări:
   <string name="morphe_hide_end_screen_store_banner_title">Ascunde bannerul magazinului de la finalul ecranului</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Bannerul magazinului de pe ecranul final este ascuns.</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Bannerul magazinului de pe ecranul final este afișat.</string>
-  <string name="morphe_hide_fullscreen_ads_title">Ascunde reclame pe tot ecranul</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Reclamele pe ecran complet sunt ascunse</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Reclame pe ecran complet sunt afișate</string>
   <string name="morphe_hide_general_ads_title">Ascunde reclamele generale</string>
   <string name="morphe_hide_general_ads_summary_on">Anunțurile generale sunt ascunse</string>
   <string name="morphe_hide_general_ads_summary_off">Anunțurile generale sunt afișate</string>
@@ -783,11 +785,17 @@ Apasă și menține apăsat pentru a deschide setările YouTube"</string>
 Apasă și menține apăsat pentru a deschide setările Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Meniu flyout</string>
-  <string name="morphe_hide_player_flyout_summary">Ascunde sau arată elementele de meniu Flyout ale jucătorului</string>
+  <string name="morphe_hide_player_flyout_summary">Ascunderea sau afișarea componentelor meniului Flyout al jucătorului</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Ascunde subtitrările</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Meniul subtitrărilor este ascuns</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Meniul de subtitrări este afișat</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Ascunderea antetului Subtitrări</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Meniul subtitrărilor este ascuns</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Meniul de subtitrări este afișat</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Ascunderea antetului Subtitrări</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Meniul subtitrărilor este ascuns</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Meniul de subtitrări este afișat</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Ascunde \'Setări adiționale / Mai multe\'</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Meniu setări adiționale este ascuns</string>
@@ -833,17 +841,23 @@ Apasă și menține apăsat pentru a deschide setările Morphe"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Meniu de track-uri audio este ascuns
 
 Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'Android Reel' sau 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Ascunde piesa audio</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Meniul piesei audio este ascuns</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Meniul piesei audio este afișat</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Ascunde ceas în VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Vizionarea în meniul VR este ascunsă</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Vizionați în meniul VR este afișat</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Ascunde meniul de calitate video</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Meniu calitate video este ascuns</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Meniu calitate video este afișat</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Ascunde subsol meniu calitate video</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Subsol meniu calitate video este ascuns</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Subsol meniu calitate video este afișat</string>
+  <string name="morphe_hide_player_flyout_quality_title">Ascunde Calitate</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Meniul calității video este ascuns</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Meniul calității video este afișat</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Ascunde subsol meniu calitate video</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Subsolul meniului calităţii video este ascuns</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Subsolul meniului calității video este afișat</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Ascunde Calitate</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Subsolul meniului calităţii video este ascuns</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Subsolul meniului calității video este afișat</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Ascunde previzualizarea autoplay</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Previzualizarea autoplay este ascunsă</string>
@@ -871,6 +885,9 @@ Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'An
   <string name="morphe_hide_player_previous_next_buttons_title">Ascunde butoanele Anterior &amp; Următorul</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Butoanele Precedent &amp; Următor sunt ascunse</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Butoanele Precedent &amp; Următor sunt afișate</string>
+  <string name="morphe_hide_settings_button_title">Ascunderea butonului Setări</string>
+  <string name="morphe_hide_settings_button_summary_on">Butonul Setări este ascuns</string>
+  <string name="morphe_hide_settings_button_summary_off">Se afișează butonul Setări</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Ascunde cardurile ecranului final</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Cardurile de pe ecranul de închidere sunt ascunse</string>
@@ -1373,12 +1390,12 @@ Dacă este dezactivat ulterior, se recomandă să ștergeți datele aplicației 
   <string name="morphe_open_system_share_sheet_title">Deschide meniul de partajare al sistemului</string>
   <string name="morphe_open_system_share_sheet_summary_on">Deschide meniul de partajare al sistemului</string>
   <string name="morphe_open_system_share_sheet_summary_off">Deschide meniul de partajare intern</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Suprascrie butonul YouTube Music</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Butonul YouTube Music deschide aplicația ta de muzică țintă</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Butonul YouTube Music deschide aplicația nativă</string>
-  <string name="morphe_music_package_name_title">Numele pachetului Morphe Music</string>
-  <string name="morphe_music_package_name_summary">Numele pachetului aplicației de muzică țintă</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">Suprascrie butoanele YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Butoanele YouTube Music deschid aplicația ta de muzică țintă</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Butoanele YouTube Music deschid aplicația oficială</string>
+  <string name="morphe_music_package_name_title">Numele pachetului aplicației de muzică țintă</string>
+  <string name="morphe_music_package_name_summary">Numele pachetului aplicației dvs. de descărcare externă instalate</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Schimbă pagina de start</string>
   <string name="morphe_change_start_page_entry_default">Implicit</string>

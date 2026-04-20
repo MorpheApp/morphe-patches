@@ -28,10 +28,25 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Allmänt</string>
   <string name="morphe_settings_music_screen_3_player_title">Spelare</string>
   <string name="morphe_settings_music_screen_4_misc_title">Övrigt</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Dölj etiketten Skaffa Music Premium</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Dölj videoannonser</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videoannonser är dolda</string>
   <string name="morphe_music_hide_video_ads_summary_off">Videoannonser visas</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_crossfade_duration_1000ms">1 sekund</string>
+  <string name="morphe_crossfade_duration_2000ms">2 sekunder</string>
+  <string name="morphe_crossfade_duration_3000ms">3 sekunder</string>
+  <string name="morphe_crossfade_duration_4000ms">4 sekunder</string>
+  <string name="morphe_crossfade_duration_5000ms">5 sekunder</string>
+  <string name="morphe_crossfade_duration_6000ms">6 sekunder</string>
+  <string name="morphe_crossfade_duration_7000ms">7 sekunder</string>
+  <string name="morphe_crossfade_duration_8000ms">8 sekunder</string>
+  <string name="morphe_crossfade_duration_9000ms">9 sekunder</string>
+  <string name="morphe_crossfade_duration_10000ms">10 sekunder</string>
+  <string name="morphe_music_crossfade_about_title">Om</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktivera permanent upprepning</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Permanent upprepning är aktiverad</string>
@@ -109,10 +124,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Dölj etiketter för navigeringsknappar</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Etiketter är dolda</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Etiketter visas</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Dölj etiketten Skaffa Music Premium</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Etiketten är dold</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Etiketten visas</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Dölj uppgraderingsknappen</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Knappen är dold</string>

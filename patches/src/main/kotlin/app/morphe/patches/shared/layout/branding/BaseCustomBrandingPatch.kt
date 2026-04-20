@@ -23,7 +23,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.fix.bitmap.fixRecycledBitmapPatch
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -87,7 +87,7 @@ private val notificationIconPngDirectories = mapOf(
     "drawable-xxxhdpi" to "96x96 px",
 )
 
-internal const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/patches/CustomBrandingPatch;"
+internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/CustomBrandingPatch;"
 
 /**
  * Shared custom branding patch for YouTube and YT Music.
@@ -150,7 +150,7 @@ internal fun baseCustomBrandingPatch(
             execute {
                 mainActivityOnCreateFingerprint.method.addInstruction(
                     0,
-                    "invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->setBranding()V"
+                    "invoke-static { }, $EXTENSION_CLASS->setBranding()V"
                 )
 
                 NumberOfPresetAppNamesExtensionFingerprint.method.returnEarly(numberOfPresetAppNames)
@@ -169,7 +169,7 @@ internal fun baseCustomBrandingPatch(
                             addInstructions(
                                 index,
                                 """
-                                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->$methodName(I)I
+                                    invoke-static { v$register }, $EXTENSION_CLASS->$methodName(I)I
                                     move-result v$register                                
                                 """
                             )
@@ -185,7 +185,7 @@ internal fun baseCustomBrandingPatch(
                         addInstructions(
                             index,
                             """
-                                invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getSmallIcon(I)I
+                                invoke-static { v$register }, $EXTENSION_CLASS->getSmallIcon(I)I
                                 move-result v$register                                
                             """
                         )

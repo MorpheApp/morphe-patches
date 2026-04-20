@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">مُخصّص</string>
   <string name="morphe_custom_branding_notification_icon_title">رمز الإشعار</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">يتبع أيقونة التطبيق</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨  تنبيه تجريبية 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"أنت تستخدم نسخة تجريبية من التطبيق ⚠️&lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 توقع سلوكًا غريبًا للتطبيق أو أخطاءً غير معروفة بينما نقوم بتحسين التعديلات لهذا الإصدار من التطبيق.
-&lt;br/&gt;&lt;br/&gt;
-إذا كنت تريد تجربة خالية من المتاعب قدر الإمكان، فقم بـ &lt;b&gt;إلغاء تثبيت&lt;/b&gt; هذا ثم طبِّق التعديل على إصدار التطبيق الموصى به من ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ أريد نسخة تجريبية</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ أريد نسخة مستقرة</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">إشعار Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">لم يتم حفظ سجل المشاهدة الخاص بك.&lt;br&gt;&lt;br&gt;من المرجح أن يكون السبب في ذلك هو مانع إعلانات DNS أو وكيل الشبكة.&lt;br&gt;&lt;br&gt;لإصلاح هذه المشكلة، قم بإضافة &lt;b&gt;s.youtube.com&lt;/b&gt; إلى القائمة البيضاء أو قم بإيقاف تشغيل جميع أدوات حظر DNS ووكلاء البروكسي.</string>
@@ -121,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">فرض لغة الصوت الأصلية</string>
   <string name="morphe_force_original_audio_summary_on">استخدام لغة الصوت الأصلية</string>
   <string name="morphe_force_original_audio_summary_off">استخدام الصوت الافتراضي</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">إخفاء إعلانات ملء الشاشة</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">تم إخفاء إعلانات ملء الشاشة</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">يتم عرض إعلانات ملء الشاشة</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">لاستخدام هذه الميزة، غيّر \'Spoof Video Streams\' إلى Android Reel أو TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

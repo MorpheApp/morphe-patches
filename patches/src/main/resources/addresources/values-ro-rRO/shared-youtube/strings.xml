@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Personalizat</string>
   <string name="morphe_custom_branding_notification_icon_title">Icon de notificare</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Urmărește pictograma aplicației</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Alertă experimentală 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Folosiți o versiune experimentală a aplicației ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Așteptați un comportament ciudat al aplicației sau erori neidentificate, deoarece ajustăm remedierile pentru această versiune a aplicației.
-&lt;br/&gt;&lt;br/&gt;
-Dacă doriți o experiență cât mai bună, atunci &lt;b&gt;dezinstalați&lt;/b&gt; această aplicație și actualizați versiunea recomandată a aplicației ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Vreau experimental</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Vreau stabil</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Notificare Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Istoricul de vizionare nu este salvat.&lt;br&gt;&lt;br&gt;Cel mai probabil este cauzată de un DNS de blocare a anunțurilor sau de un proxy de rețea.&lt;br&gt;&lt;br&gt;Pentru a remedia acest lucru, lista albă &lt;b&gt;s.youtube.com&lt;/b&gt; sau pentru a opri toate blocantele DNS și proxy-urile.</string>
@@ -121,6 +111,10 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_force_original_audio_title">Forțează limba audio originală</string>
   <string name="morphe_force_original_audio_summary_on">Folosind limba audio originală</string>
   <string name="morphe_force_original_audio_summary_off">Utilizează audio implicit</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Ascunde reclame pe tot ecranul</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Reclamele pe ecran complet sunt ascunse</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Reclame pe ecran complet sunt afișate</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Pentru a utiliza această funcție, modificați \"Falsificare fluxuri video\" la Android Reel sau TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

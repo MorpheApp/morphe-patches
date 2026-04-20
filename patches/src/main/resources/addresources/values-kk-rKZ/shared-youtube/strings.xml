@@ -20,8 +20,6 @@ Second \"item\" text"</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -32,6 +30,7 @@ Second \"item\" text"</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <!-- ad.hideFullscreenAdsPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
 </resources>

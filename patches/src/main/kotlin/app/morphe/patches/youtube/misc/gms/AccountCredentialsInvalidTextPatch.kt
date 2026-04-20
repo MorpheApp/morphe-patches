@@ -7,7 +7,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AccountCredentialsInvalidTextPatch;"
 
 internal val accountCredentialsInvalidTextPatch = bytecodePatch {
@@ -37,7 +37,7 @@ internal val accountCredentialsInvalidTextPatch = bytecodePatch {
                 method.addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getOfflineNetworkErrorString(Ljava/lang/String;)Ljava/lang/String;
+                        invoke-static { v$register }, $EXTENSION_CLASS->getOfflineNetworkErrorString(Ljava/lang/String;)Ljava/lang/String;
                         move-result-object v$register  
                     """
                 )

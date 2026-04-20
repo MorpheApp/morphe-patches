@@ -379,6 +379,7 @@ public final class VideoInformation {
      * ID of the last video opened. Includes Shorts.
      *
      * @return The ID of the video, or an empty string if no videos have been opened yet.
+     *         With 21.15+ this returns an empty string if no video is currently opened.
      */
     @NonNull
     public static String getVideoId() {

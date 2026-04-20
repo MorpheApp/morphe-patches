@@ -150,4 +150,13 @@ Second \"item\" text"</string>
 • ऐप बेतरतीब ढंग से बंद हो सकता है
 • सूचनाएं काम नहीं कर सकती हैं
 • पृष्ठभूमि प्लेबैक काम नहीं कर सकता है"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 प्रयोगात्मक चेतावनी 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"आप ⚠️ &lt;b&gt;%1$s&lt;/b&gt; के प्रायोगिक ऐप संस्करण का उपयोग कर रहे हैं।
+&lt;br/&gt;&lt;br/&gt;
+🔧 इस ऐप संस्करण के लिए पैच को ठीक करते समय हमें अजीब ऐप व्यवहार या अज्ञात बग की अपेक्षा है।
+&lt;br/&gt;&lt;br/&gt;
+यदि आप सबसे परेशानी मुक्त अनुभव चाहते हैं, तो इस ऐप को &lt;b&gt;अनइंस्टॉल&lt;/b&gt; कर दें और ✅ &lt;b&gt;%2$s&lt;/b&gt; के अनुशंसित ऐप संस्करण को पैच करें।"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ मुझे प्रायोगिक चाहिए</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ मुझे स्थिर चाहिए</string>
 </resources>

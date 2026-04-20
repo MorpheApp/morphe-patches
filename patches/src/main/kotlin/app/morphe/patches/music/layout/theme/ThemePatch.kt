@@ -8,11 +8,11 @@ import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/theme/ThemePatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/theme/ThemePatch;"
 
 @Suppress("unused")
 val themePatch = baseThemePatch(
-    extensionClassDescriptor = EXTENSION_CLASS_DESCRIPTOR,
+    extensionClassDescriptor = EXTENSION_CLASS,
 
     block = {
         dependsOn(

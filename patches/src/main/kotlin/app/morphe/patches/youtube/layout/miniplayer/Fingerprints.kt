@@ -11,8 +11,8 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -30,6 +30,14 @@ internal const val MINIPLAYER_DISABLED_FEATURE_KEY = 45657015L
 internal const val MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY = 45644360L
 // In later targets this feature flag does nothing and is dead code.
 internal const val MINIPLAYER_MODERN_FEATURE_LEGACY_KEY = 45630429L
+
+// 2026.16+ matches to a feature flag method.
+// Earlier targets match to the miniplayer constructor.
+internal object MiniplayerModernFeatureFingerprint : Fingerprint(
+    filters = listOf(
+        literal(MINIPLAYER_MODERN_FEATURE_KEY)
+    )
+)
 
 internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),

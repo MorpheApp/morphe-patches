@@ -23,7 +23,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AmbientModePatch;"
 
 @Suppress("unused")
@@ -64,7 +64,7 @@ val ambientModePatch = bytecodePatch(
 
                 replaceInstruction(
                     index,
-                    "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->" +
                             "bypassAmbientModeRestrictions(Landroid/os/PowerManager;)Z",
                 )
             }
@@ -104,7 +104,7 @@ val ambientModePatch = bytecodePatch(
         AmbientModeFeatureFlagFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->disableAmbientMode(Z)Z"
+                "$EXTENSION_CLASS->disableAmbientMode(Z)Z"
             )
         }
 
@@ -120,7 +120,7 @@ val ambientModePatch = bytecodePatch(
             addInstructions(
                 insertIndex,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getFullScreenBackgroundColor(I)I
+                    invoke-static { v$register }, $EXTENSION_CLASS->getFullScreenBackgroundColor(I)I
                     move-result v$register
                 """,
             )

@@ -32,15 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Pasadya</string>
   <string name="morphe_custom_branding_notification_icon_title">Icon ng abiso</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Sundan ang icon ng aplikasyon</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Pang-eksperimentong Alerto 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Gumagamit ka ng pang-eksperimentong bersyon ng aplikasyon ng ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Asahan ang kakaibang kilos ng aplikasyon o hindi natukoy na mga bug habang inaayos namin ang mga patch para sa bersyon ng aplikasyong ito.
-&lt;br/&gt;&lt;br/&gt; Kung gusto mo ang pinakawalang bagabag na karanasan, pagkatapos ay &lt;b&gt;burahin&lt;/b&gt; ito at i-patch ang inirerekomendang bersyon ng aplikasyon ng ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Gusto ko ng pang-eksperimento</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Gusto ko ng katatagan</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Paunawa ng Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Hindi sine-save ang iyong kasaysayan ng panonood.&lt;br&gt;&lt;br&gt;Malamang na ito ay sanhi ng isang DNS ad blocker o network proxy.&lt;br&gt;&lt;br&gt;Upang ayusin ito, i-whitelist ang &lt;b&gt;s.youtube.com&lt;/b&gt; o patayin ang lahat ng DNS blocker at proxy.</string>
@@ -120,6 +111,10 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_force_original_audio_title">Puwersahan ang orihinal na tunog ng wika</string>
   <string name="morphe_force_original_audio_summary_on">Ginagamit ang orihinal na tunog ng wika</string>
   <string name="morphe_force_original_audio_summary_off">Ginagamit ang default na tunog</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Itago ang mga patalastas sa fullscreen</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Nakatago ang mga patalastas sa fullscreen</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Ipinapakita ang mga patalastas sa fullscreen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Para magamit ang feature na ito, baguhin ang \'Gayahin ang mga video stream\' sa Android Reel o TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

@@ -18,6 +18,11 @@ internal object Constants {
         ),
         targets = listOf(
             AppTarget(
+                version = "21.16.240",
+                minSdk = 28,
+                isExperimental = true
+            ),
+            AppTarget(
                 version = "21.15.282",
                 minSdk = 28,
                 isExperimental = true
@@ -28,26 +33,16 @@ internal object Constants {
                 isExperimental = true
             ),
             AppTarget(
-                version = "21.13.163",
-                minSdk = 28,
-                isExperimental = true
-            ),
-            AppTarget(
                 version = "21.05.265",
                 minSdk = 28,
                 isExperimental = true
             ),
             AppTarget(
-                version = "20.50.40",
-                minSdk = 28,
-                isExperimental = true
-            ),
-            AppTarget(
-                version = "20.45.36",
+                version = "20.47.62",
                 minSdk = 28
             ),
             AppTarget(
-                version = "20.40.45",
+                version = "20.45.36",
                 minSdk = 28
             ),
             AppTarget(

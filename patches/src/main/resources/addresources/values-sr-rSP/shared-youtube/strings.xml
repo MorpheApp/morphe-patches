@@ -32,16 +32,6 @@ Second \"item\" text"</string>
   <string name="morphe_custom_branding_icon_entry_6">Цустом</string>
   <string name="morphe_custom_branding_notification_icon_title">Икона обавештења</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Икона праћења апликације</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментално упозорење 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Користите експерименталну верзију апликације ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Очекујте неочекиване понашање апликације или неидентификоване грешке док ми фино уређујемо пачеве за ову верзију апликације.
-&lt;br/&gt;&lt;br/&gt;
-Ако желите најстабилније искуство, онда &lt;b&gt;деинсталирајте&lt;/b&gt; ову и пачете препоручену верзију апликације ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Желим експериментално</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Желим стабилно</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe обавештење</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша историја гледања се не чува.&lt;br&gt;&lt;br&gt;Ово је највероватније узроковано DNS блокатором огласа или мрежним проксијем.&lt;br&gt;&lt;br&gt;Да бисте ово поправили, ставите на белу листу &lt;b&gt;s.youtube.com&lt;/b&gt; или искључите све DNS блокаторе и проксије.</string>
@@ -121,6 +111,10 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_force_original_audio_title">Присили оригинални језик звука</string>
   <string name="morphe_force_original_audio_summary_on">Коришћење оригиналног језика звука</string>
   <string name="morphe_force_original_audio_summary_off">Коришћење подразумеваног звука</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Сакриј огласе преко целог екрана</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Огласи преко целог екрана су приказани</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Огласи преко целог екрана су приказани</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Да бисте користили ову функцију, промените ‘Лажирани видео снимци’ на Андроид Риел или ТВ</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

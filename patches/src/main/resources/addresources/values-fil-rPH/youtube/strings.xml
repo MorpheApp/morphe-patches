@@ -70,9 +70,6 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_artist_cards_title">Itago ang mga artist card</string>
   <string name="morphe_hide_artist_cards_summary_on">Nakatago ang mga artist card</string>
   <string name="morphe_hide_artist_cards_summary_off">Ipinapakita ang mga artist card</string>
-  <string name="morphe_hide_chips_shelf_title">Itago ang chips shelf </string>
-  <string name="morphe_hide_chips_shelf_summary_on">Nakatago ang chips shelf</string>
-  <string name="morphe_hide_chips_shelf_summary_off">Ipinapakita ang chips shelf</string>
   <string name="morphe_hide_community_posts_title">Itago ang mga post ng komunidad</string>
   <string name="morphe_hide_community_posts_summary_on">Nakatago ang mga post ng komunidad</string>
   <string name="morphe_hide_community_posts_summary_off">Ipinapakita ang mga post ng komunidad</string>
@@ -80,27 +77,32 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_compact_banner_summary_on">Nakatago ang mga compact banner</string>
   <string name="morphe_hide_compact_banner_summary_off">Ipinapakita ang mga compact banner</string>
   <string name="morphe_hide_expandable_card_title">Itago ang expandable card</string>
-  <string name="morphe_hide_expandable_card_summary_on">Nakatago ang mga expandable card sa ilalim ng video</string>
-  <string name="morphe_hide_expandable_card_summary_off">Ipinapakita ang mga expandable card sa ilalim ng video</string>
+  <string name="morphe_hide_expandable_card_entry_1">Ipinapakita ang mga expandable card sa ilalim ng video</string>
+  <string name="morphe_hide_expandable_card_entry_2">Nakatago ang mga expandable card sa ilalim ng video</string>
+  <string name="morphe_hide_expandable_card_entry_3">Nakatago ang mga expandable card sa ilalim ng video</string>
+  <string name="morphe_hide_expandable_card_entry_4">Nakatago ang produktong card at summary card sa ilalim ng mga video</string>
+  <string name="morphe_hide_expandable_card_entry_5">Nakatago ang mga expandable card sa ilalim ng mga video</string>
   <string name="morphe_hide_floating_microphone_button_title">Itago ang button ng lumulutang na mikropono</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Nakatago ang button ng lumulutang na mikropono sa paghahanap</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Ipinapakita ang button ng lumulutang na mikropono sa paghahanap</string>
   <string name="morphe_hide_horizontal_shelves_title">Itago ang mga horizontal shelf</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Nakatago ang mga horizontal shelf, tulad ng:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Nakatago ang mga pahalang na shelves, tulad ng:
 
-• Nagbabagang balita
-• Ipagpatuloy ang panonood
-• Galugarin ng higit pang mga channel
-• Pinaka-kaugnay
-• Pagbili
-• Panoorin ito muli"</string>
+• Breaking news
+• Community posts you may like
+• Continue watching
+• Explore more channels
+• Explore more topics
+• For You
+• Latest videos
+• Most relevant
+• Posts from Creator's Community
+• Shopping
+• Watch it again"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Ipinapakita ang mga horizontal shelf</string>
   <string name="morphe_hide_image_shelf_title">Itago ang image shelf</string>
   <string name="morphe_hide_image_shelf_summary_on">Nakatago ang image shelf sa mga paghahanap</string>
   <string name="morphe_hide_image_shelf_summary_off">Ipinapakita ang image shelf sa mga paghahanap</string>
-  <string name="morphe_hide_latest_posts_title">Itago ang mga pinakabagong post</string>
-  <string name="morphe_hide_latest_posts_summary_on">Nakatago ang mga pinakabagong post</string>
-  <string name="morphe_hide_latest_posts_summary_off">Ipinapakita ang mga pinakabagong post</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Itago ang button na \'Mga pinakabagong video\'</string>
@@ -197,6 +199,8 @@ Ang pagpapakita ng mga YouTube Doodle ay maaaring pigilan ang pagpapakita ng mga
   <string name="morphe_hide_video_title_title">Itago ang pamagat ng video</string>
   <string name="morphe_hide_video_title_summary_on">Nakatago ang pamagat ng video sa video overlay</string>
   <string name="morphe_hide_video_title_summary_off">Ipinapakita ang pamagat ng video sa video overlay</string>
+  <string name="morphe_hide_description_components_screen_title">Paglalarawan sa Video</string>
+  <string name="morphe_hide_description_components_screen_summary">Itago o ipakita ang mga bahagi ng paglalarawan sa video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Itago ang \'Buod ng video na binuo ng AI\'</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Nakatago ang Buod ng video na binuo ng AI</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Ipinapakita ang Buod ng video na binuo ng AI</string>
@@ -253,17 +257,15 @@ Ang pagpapakita ng mga YouTube Doodle ay maaaring pigilan ang pagpapakita ng mga
   <string name="morphe_hide_music_section_title">Itago ang Musika</string>
   <string name="morphe_hide_music_section_summary_on">Nakatago ang seksyon na Musika</string>
   <string name="morphe_hide_music_section_summary_off">Ipinapakita ang seksyon na Musika</string>
+  <string name="morphe_hide_quizzes_section_title">Itago ang Mga Pagsusulit</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Nakatago ang seksyon na Pagsusulit</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Ipinapakita ang seksyon na Pagsusulit</string>
   <string name="morphe_hide_subscribe_button_title">Itago ang button na Mag-subscribe</string>
   <string name="morphe_hide_subscribe_button_summary_on">Nakatago ang button na Mag-subscribe</string>
   <string name="morphe_hide_subscribe_button_summary_off">Ipinapakita ang button na Mag-subscribe</string>
   <string name="morphe_hide_transcript_section_title">Itago ang Transcript</string>
   <string name="morphe_hide_transcript_section_summary_on">Nakatago ang seksyon na Transcript</string>
   <string name="morphe_hide_transcript_section_summary_off">Ipinapakita ang seksyon na Transcript</string>
-  <string name="morphe_hide_quizzes_section_title">Itago ang Mga Pagsusulit</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Nakatago ang seksyon na Pagsusulit</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Ipinapakita ang seksyon na Pagsusulit</string>
-  <string name="morphe_hide_description_components_screen_title">Paglalarawan sa Video</string>
-  <string name="morphe_hide_description_components_screen_summary">Itago o ipakita ang mga bahagi ng paglalarawan sa video</string>
   <string name="morphe_hide_filter_bar_screen_title">Filter bar</string>
   <string name="morphe_hide_filter_bar_screen_summary">Itago o ipakita ang filter bar sa mga feed, mga kaugnay na video, resulta sa paghahanap, at kasaysayan ng panonood</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Itago sa mga feed</string>
@@ -299,6 +301,9 @@ Ang pagpapakita ng mga YouTube Doodle ay maaaring pigilan ang pagpapakita ng mga
   <string name="morphe_hide_members_shelf_title">Itago ang mga miyembro shelf</string>
   <string name="morphe_hide_members_shelf_summary_on">Nakatago ang Mga Miyembro shelf</string>
   <string name="morphe_hide_members_shelf_summary_off">Ipinapakita ang Mga Miyembro shelf</string>
+  <string name="morphe_hide_posts_shelf_title">Itago ang posts shelf</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Nakatago ang posts shelf</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Ipinapakita ang posts shelf</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Itago ang button na Tindahan</string>
   <string name="morphe_hide_store_button_summary_on">Nakatago ang button na Tindahan</string>
@@ -419,9 +424,6 @@ Mga Limitasyon:
   <string name="morphe_hide_end_screen_store_banner_title">Itago ang banner ng end screen store</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Nakatago ang banner ng end screen store</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Ipinapakita ang banner ng end screen store</string>
-  <string name="morphe_hide_fullscreen_ads_title">Itago ang mga patalastas sa fullscreen</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Nakatago ang mga patalastas sa fullscreen</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Ipinapakita ang mga patalastas sa fullscreen</string>
   <string name="morphe_hide_general_ads_title">Itago ang mga pangkalahatang patalastas</string>
   <string name="morphe_hide_general_ads_summary_on">Nakatago ang mga pangkalahatang patalastas</string>
   <string name="morphe_hide_general_ads_summary_off">Ipinapakita ang mga pangkalahatang patalastas</string>
@@ -787,11 +789,17 @@ I-tap nang matagal para buksan ang mga setting ng YouTube"</string>
 I-tap nang matagal para buksan ang mga setting ng Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Flyout menu</string>
-  <string name="morphe_hide_player_flyout_summary">Itago o ipakita ang mga item ng player flyout menu</string>
+  <string name="morphe_hide_player_flyout_summary">Itago o ipakita ang mga bahagi ng player flyout menu</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Itago ang mga Caption</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Ang menu ng Caption ay nakatago</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">Ang menu ng Caption ay ipinapakita</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">Itago ang footer ng Captions</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">Nakatagong ang footer ng menu ng Captions</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">Ipinapakita ang footer ng menu ng Captions</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">Itago ang header ng Captions</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">Nakatago ang header ng mga caption</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">Ipinapakita ang header ng mga caption</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">Itago ang karagdagang mga setting / Higit pa</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">Nakatago ang menu ng karagdagang mga setting / Higit pa</string>
@@ -837,17 +845,23 @@ I-tap nang matagal para buksan ang mga setting ng Morphe"</string>
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Nakatago ang menu ng audio track
 
 Upang ipakita ang menu ng Audio track, baguhin ang 'Spoof video streams' sa 'Android Reel' o 'TV'"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">Itago ang footer ng track ng audio</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Nakatago ang footer ng menu ng track ng audio</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Ipinapakita ang footer ng menu ng track ng audio</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">Itago ang Watch in VR</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">Menu ng Watch in VR ay nakatago</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">Menu ng Watch in VR ay ipinapakita</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">Itago ang menu ng kalidad</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">Nakatago ang menu ng kalidad</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">Ipinapakita ang menu ng kalidad</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">Itago ang footer ng menu ng kalidad</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">Nakatago ang footer ng menu ng kalidad</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">Ipinapakita ang footer ng menu ng kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_title">Itago ang Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Nakatago ang menu ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Ipinapakita ang menu ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">Itago ang footer ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">Nakatago ang footer ng menu ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">Ipinapakita ang footer ng menu ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Itago ang header ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">Nakatago ang header ng menu ng Kalidad</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">Ipinapakita ang header ng menu ng Kalidad</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Itago ang autoplay preview</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Nakatago ang autoplay preview</string>
@@ -875,6 +889,9 @@ Upang ipakita ang menu ng Audio track, baguhin ang 'Spoof video streams' sa 'And
   <string name="morphe_hide_player_previous_next_buttons_title">Itago ang mga button na Previous &amp; Next</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Ang mga button na Previous &amp; Next ay nakatago</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Ang mga button na Previous &amp; Next ay ipinapakita</string>
+  <string name="morphe_hide_settings_button_title">Itago ang button na Mga Setting</string>
+  <string name="morphe_hide_settings_button_summary_on">Nakatago ang button ng Mga Setting</string>
+  <string name="morphe_hide_settings_button_summary_off">Nakikita ang button ng Mga Setting</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Itago ang mga card ng end screen</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Ang mga card ng end screen ay nakatago</string>
@@ -1377,12 +1394,12 @@ Kung i-off ang, inirerekomenda na i-clear ang app data para maiwasan ang UI bugs
   <string name="morphe_open_system_share_sheet_title">Buksan ang system share sheet</string>
   <string name="morphe_open_system_share_sheet_summary_on">Binubuksan ang system share sheet</string>
   <string name="morphe_open_system_share_sheet_summary_off">Binubuksan ang in-app share sheet</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">Override YouTube Music button</string>
-  <string name="morphe_override_youtube_music_button_summary_on">Binubuksan ng YouTube Music button ang iyong target na music app</string>
-  <string name="morphe_override_youtube_music_button_summary_off">Binubuksan ng YouTube Music button ang native app</string>
-  <string name="morphe_music_package_name_title">Morphe Music package name</string>
-  <string name="morphe_music_package_name_summary">Package name ng target na music app</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">I-override ang mga butones ng YouTube Music</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">Binubuksan ng mga butones ng YouTube Music ang iyong target na music app</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">Binubuksan ng mga butones ng YouTube Music ang opisyal na app</string>
+  <string name="morphe_music_package_name_title">Pangalan ng package ng target na music app</string>
+  <string name="morphe_music_package_name_summary">Pangalan ng package ng iyong naka-install na target na music app</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">Baguhin ang start page</string>
   <string name="morphe_change_start_page_entry_default">Panimula</string>

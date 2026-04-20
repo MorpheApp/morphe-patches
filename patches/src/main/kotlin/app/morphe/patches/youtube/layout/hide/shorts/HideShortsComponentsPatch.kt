@@ -16,9 +16,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
@@ -154,7 +154,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
     }
 }
 
-private const val FILTER_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/components/ShortsFilter;"
+private const val EXTENSION_FILTER = "Lapp/morphe/extension/youtube/patches/components/ShortsFilter;"
 
 @Suppress("unused")
 val hideShortsComponentsPatch = bytecodePatch(
@@ -178,7 +178,7 @@ val hideShortsComponentsPatch = bytecodePatch(
     hideShortsWidgetOption()
 
     execute {
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
 
         // region Hide sound button.
 
@@ -195,7 +195,7 @@ val hideShortsComponentsPatch = bytecodePatch(
                 addInstructions(
                     targetIndex + 1,
                     """
-                        invoke-static { v$sizeRegister }, $FILTER_CLASS_DESCRIPTOR->getSoundButtonSize(I)I
+                        invoke-static { v$sizeRegister }, $EXTENSION_FILTER->getSoundButtonSize(I)I
                         move-result v$sizeRegister
                     """
                 )
@@ -208,7 +208,7 @@ val hideShortsComponentsPatch = bytecodePatch(
 
         // Set the bottom bar container view.
         addBottomBarContainerHook(
-            descriptor = "$FILTER_CLASS_DESCRIPTOR->setBottomBarContainer(Landroid/view/View;)V",
+            descriptor = "$EXTENSION_FILTER->setBottomBarContainer(Landroid/view/View;)V",
             highPriority = true
         )
 
@@ -221,7 +221,7 @@ val hideShortsComponentsPatch = bytecodePatch(
                 addInstruction(
                     insertIndex,
                     "invoke-static {v$viewRegister}," +
-                            "$FILTER_CLASS_DESCRIPTOR->setPivotBar(Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;)V",
+                            "$EXTENSION_FILTER->setPivotBar(Lcom/google/android/libraries/youtube/rendering/ui/pivotbar/PivotBar;)V",
                 )
             }
         }
@@ -233,7 +233,7 @@ val hideShortsComponentsPatch = bytecodePatch(
             .getMutableMethod()
             .addInstruction(
                 0,
-                "invoke-static { p1 }, $FILTER_CLASS_DESCRIPTOR->hidePivotBar(Ljava/lang/String;)V",
+                "invoke-static { p1 }, $EXTENSION_FILTER->hidePivotBar(Ljava/lang/String;)V",
             )
 
         // Hide the bottom bar container of the Shorts player.
@@ -245,7 +245,7 @@ val hideShortsComponentsPatch = bytecodePatch(
                 addInstructions(
                     targetIndex + 1,
                     """
-                        invoke-static { v$heightRegister }, $FILTER_CLASS_DESCRIPTOR->getNavigationBarHeight(I)I
+                        invoke-static { v$heightRegister }, $EXTENSION_FILTER->getNavigationBarHeight(I)I
                         move-result v$heightRegister
                     """
                 )

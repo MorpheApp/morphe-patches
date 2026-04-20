@@ -150,4 +150,13 @@ Second \"item\" text"</string>
 • Η εφαρμογή ενδέχεται να κλείνει τυχαία
 • Οι ειδοποιήσεις ενδέχεται να μην λειτουργούν
 • Η αναπαραγωγή στο παρασκήνιο ενδέχεται να μην λειτουργεί"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Πειραματική Ειδοποίηση 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Χρησιμοποιείτε μια πειραματική έκδοση της εφαρμογής ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Περιμένετε αρρυθμία στην συμπεριφορά της εφαρμογής ή ακαθόριστα σφάλματα καθώς προσαρμόζουμε τις τροποποιήσεις για αυτήν την έκδοση της εφαρμογής.
+&lt;br/&gt;&lt;br/&gt;
+Εάν θέλετε μια εμπειρία χωρίς σφάλματα, τότε &lt;b&gt; απεγκαταστήστε την &lt;/b&gt; και τροποποιήσετε την συνιστώμενη έκδοση της εφαρμογής ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Θέλω πειραματική έκδοση</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Θέλω σταθερή έκδοση</string>
 </resources>

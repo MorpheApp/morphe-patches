@@ -25,7 +25,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FixPreferenceIconPatch;"
 
 /**
@@ -65,7 +65,7 @@ internal val fixPreferenceIconPatch = bytecodePatch{
                     addInstructionsWithLabels(
                         0,
                         """
-                            invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->removePreferenceIcon()Z
+                            invoke-static { }, $EXTENSION_CLASS->removePreferenceIcon()Z
                             move-result v0
 
                             if-eqz v0, :exit

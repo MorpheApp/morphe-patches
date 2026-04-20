@@ -150,4 +150,13 @@ Second \"item\" text"</string>
 • 應用程式可能隨機關閉
 • 通知可能無法正常運作
 • 背景播放可能無法正常運作"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 實驗性提示 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"您正在使用⚠️ &lt;b&gt;%1$s&lt;/b&gt;應用程式的實驗性版本。
+&lt;br/&gt;&lt;br/&gt;
+🔧 我們仍在微調這個版本的修補程式，預計會出現一些奇怪行為或非發現的程式錯誤。
+&lt;br/&gt;&lt;br/&gt;
+假如您想要最穩定的體驗，請&lt;b&gt;解除安裝&lt;/b&gt;此版本，並改用 ✅ &lt;b&gt;%2$s&lt;/b&gt;應用程式的推薦版本。"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 我要用實驗版本</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 我要用穩定版本</string>
 </resources>
