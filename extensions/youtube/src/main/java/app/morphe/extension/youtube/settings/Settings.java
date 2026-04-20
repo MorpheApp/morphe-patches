@@ -176,7 +176,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_CHANNEL_BAR = new BooleanSetting("morphe_hide_channel_bar", FALSE);
     public static final BooleanSetting HIDE_CHANNEL_WATERMARK = new BooleanSetting("morphe_hide_channel_watermark", TRUE);
     public static final BooleanSetting HIDE_CROWDFUNDING_BOX = new BooleanSetting("morphe_hide_crowdfunding_box", FALSE, true);
-    public static final BooleanSetting HIDE_LIVE_CHAT_DONATORS_BAR = new BooleanSetting("morphe_hide_live_chat_donators_bar", FALSE, true);
     public static final BooleanSetting HIDE_EMERGENCY_BOX = new BooleanSetting("morphe_hide_emergency_box", TRUE);
     public static final BooleanSetting HIDE_END_SCREEN_CARDS = new BooleanSetting("morphe_hide_end_screen_cards", FALSE);
     public static final BooleanSetting HIDE_END_SCREEN_SUGGESTED_VIDEO = new BooleanSetting("morphe_hide_end_screen_suggested_video", FALSE, true,
@@ -185,6 +184,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_INFO_CARDS = new BooleanSetting("morphe_hide_info_cards", FALSE);
     public static final BooleanSetting HIDE_INFO_PANELS = new BooleanSetting("morphe_hide_info_panels", TRUE);
     public static final BooleanSetting HIDE_JOIN_MEMBERSHIP_BUTTON = new BooleanSetting("morphe_hide_join_membership_button", TRUE, parentNot(HIDE_CHANNEL_BAR));
+    public static final BooleanSetting HIDE_LIVE_CHAT_DONATORS_BAR = new BooleanSetting("morphe_hide_live_chat_donators_bar", FALSE, true);
     public static final BooleanSetting HIDE_LIVE_CHAT_REPLAY_BUTTON = new BooleanSetting("morphe_hide_live_chat_replay_button", FALSE);
     public static final BooleanSetting HIDE_MEDICAL_PANELS = new BooleanSetting("morphe_hide_medical_panels", TRUE);
     public static final BooleanSetting HIDE_PLAYER_CONTROL_BUTTONS_BACKGROUND = new BooleanSetting("morphe_hide_player_control_buttons_background", FALSE, true);
