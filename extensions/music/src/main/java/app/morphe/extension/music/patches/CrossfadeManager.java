@@ -89,7 +89,6 @@ public class CrossfadeManager {
         Object patch_getSharedState();
         Object patch_getSharedCallback();
         Object patch_getVideoSurface();
-        Object patch_getPlayerListener();
     }
 
     /**
@@ -103,7 +102,6 @@ public class CrossfadeManager {
         void patch_setVolume(float volume);
         void patch_setPlayWhenReady(boolean play);
         void patch_release();
-        void patch_addPlayerListener(Object listener);
         Object patch_getListenerSet();
         Object patch_getInternalListener();
         void patch_setDltCallback(Object dlt);
