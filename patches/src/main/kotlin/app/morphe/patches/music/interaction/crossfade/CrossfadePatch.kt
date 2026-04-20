@@ -16,6 +16,7 @@ import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -273,9 +274,7 @@ val crossfadePatch = bytecodePatch(
             """,
         )
 
-        val musicActivityClass = mutableClassDefBy(
-            "Lcom/google/android/apps/youtube/music/activities/MusicActivity;",
-        )
+        val musicActivityClass = MusicActivityOnCreateFingerprint.classDef
         musicActivityClass.methods.first { it.name == "onStop" && it.parameterTypes.isEmpty() }
             .addInstructions(
                 0,
@@ -455,38 +454,6 @@ val crossfadePatch = bytecodePatch(
                 !AccessFlags.CONSTRUCTOR.isSet(method.accessFlags)
             }
         ).method.name
-
-        // addListener - single interface-typed parameter (Player.Listener).
-        val addListenerMethodDef = Fingerprint(
-            definingClass = playerInterfaceType,
-            returnType = "V",
-            custom = { method, _ ->
-                method.parameterTypes.size == 1
-                    && method.parameterTypes[0].toString().let { t ->
-                        t.startsWith("L") && !t.contains("ImageOutput")
-                    }
-                    && try {
-                        AccessFlags.INTERFACE.isSet(
-                            classDefBy(method.parameterTypes[0].toString()).accessFlags
-                        )
-                    } catch (_: Exception) { false }
-            }
-        ).method
-        val addListenerName = addListenerMethodDef.name
-        val listenerType = addListenerMethodDef.parameterTypes[0].toString()
-
-        // Listener field on coordinator - uses the listener type discovered above.
-        // Optional: the coordinator may not hold the listener directly; the
-        // extension code null-checks this at runtime.
-        val listenerField = coordinatorClass.fields.firstOrNull {
-            it.type == listenerType
-        }
-        if (listenerField == null) {
-            log.warning(
-                "Listener field of type $listenerType not found on ${coordinatorClass.type} " +
-                        "- listener transfer will be skipped",
-            )
-        }
 
         // PlaybackInfo class (crf) - field on ExoPlayer impl hierarchy with >=3 int + >=1 long fields
         // and no interfaces (rules out the inner engine handler cqb which also matches field counts).
@@ -759,7 +726,6 @@ val crossfadePatch = bytecodePatch(
                 dltOnExo       = $dltFieldOnExo
                 internalLsnr   = $internalListenerField
                 listenerWrap   = $listenerWrapperField → $listenerSetInWrapper
-                listenerField  = $listenerField
                 playerChain    = $playerChainField
             """.trimIndent()
         }
@@ -778,30 +744,6 @@ val crossfadePatch = bytecodePatch(
         coordinatorClass.addFieldGetter("patch_getSharedCallback", sharedCallbackFieldRef)
 
         coordinatorClass.addFieldGetter("patch_getVideoSurface", videoSurfaceField)
-        if (listenerField != null) {
-            coordinatorClass.addFieldGetter("patch_getPlayerListener", listenerField)
-        } else {
-            coordinatorClass.methods.add(
-                ImmutableMethod(
-                    coordinatorClass.type,
-                    "patch_getPlayerListener",
-                    listOf(),
-                    "Ljava/lang/Object;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(2)
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            const/4 v0, 0x0
-                            return-object v0
-                        """
-                    )
-                }
-            )
-        }
 
         // --- ExoPlayerAccess on cpp ---
         exoPlayerImplClass.interfaces.add(EXO_PLAYER_INTERFACE)
@@ -910,33 +852,6 @@ val crossfadePatch = bytecodePatch(
         exoPlayerImplClass.addExoBridgeVoid("patch_setVolume", setVolumeName, "F")
         exoPlayerImplClass.addExoBridgeVoid("patch_setPlayWhenReady", setPlayWhenReadyName, "Z")
         exoPlayerImplClass.addExoBridgeVoid("patch_release", releaseName)
-
-        // addListener - takes Object, casts to the listener interface type.
-        exoPlayerImplClass.methods.add(
-            ImmutableMethod(
-                exoPlayerImplClass.type,
-                "patch_addPlayerListener",
-                listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
-                "V",
-                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                null,
-                null,
-                MutableMethodImplementation(2)
-            ).toMutable().apply {
-                val target = exoImplMethods.firstOrNull {
-                    it.name == addListenerName && it.parameterTypes.toList() == listOf(listenerType)
-                } ?: error("addListener $addListenerName($listenerType) not found in ${exoPlayerImplClass.type} hierarchy")
-
-                addInstructions(
-                    0,
-                    """
-                        check-cast p1, $listenerType
-                        invoke-virtual { p0, p1 }, $target
-                        return-void
-                    """
-                )
-            }
-        )
 
         // patch_getListenerSet navigates through the wrapper: cpp.h → cau.c
         exoPlayerImplClass.methods.add(
