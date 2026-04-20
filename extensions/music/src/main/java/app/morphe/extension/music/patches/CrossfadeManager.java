@@ -245,6 +245,7 @@ public class CrossfadeManager {
     private static volatile long manualToggleSuppressionUntil = 0;
     private static volatile boolean crossfadeInProgress = false;
     private static volatile boolean audioModeWasForced = false;
+    private static volatile boolean activityRunning = false;
 
     private static final Handler mainHandler = new Handler(Looper.getMainLooper());
 
@@ -371,6 +372,7 @@ public class CrossfadeManager {
 
         if (isFromTaskRemoval()) {
             logDebug("stopVideo(5): skip — triggered by onTaskRemoved (activity killed)");
+            if (crossfadeInProgress) cleanupAllPlayers();
             return false;
         }
 
@@ -597,7 +599,7 @@ public class CrossfadeManager {
         tryAttachLongPressHandler();
 
         if (!isEnabled() || sessionPaused || getCrossfadeDurationMs() <= 0
-                || crossfadeInProgress) {
+                || crossfadeInProgress || !activityRunning) {
             return;
         }
 
@@ -818,7 +820,7 @@ public class CrossfadeManager {
         autoAdvanceMonitorRunnable = new Runnable() {
             @Override
             public void run() {
-                if (!isEnabled() || sessionPaused
+                if (!isEnabled() || sessionPaused || !activityRunning
                         || !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()
                         || crossfadeInProgress) {
                     return;
@@ -1249,6 +1251,26 @@ public class CrossfadeManager {
     // ------------------------------------------------------------------ //
     //  Settings                                                           //
     // ------------------------------------------------------------------ //
+
+    // ------------------------------------------------------------------ //
+    //  Activity lifecycle                                                 //
+    // ------------------------------------------------------------------ //
+
+    public static void onActivityStop() {
+        activityRunning = false;
+        stopAutoAdvanceMonitor();
+        if (crossfadeInProgress) {
+            logInfo("onActivityStop: aborting crossfade");
+            abortCrossfadeNow();
+        }
+    }
+
+    public static void onActivityStart() {
+        activityRunning = true;
+        if (isEnabled() && !sessionPaused) {
+            startAutoAdvanceMonitor();
+        }
+    }
 
     public static boolean isSessionPaused() {
         return sessionPaused;
