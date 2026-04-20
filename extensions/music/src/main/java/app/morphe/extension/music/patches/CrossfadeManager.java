@@ -600,7 +600,6 @@ public class CrossfadeManager {
 
         if (!isEnabled() || sessionPaused || getCrossfadeDurationMs() <= 0
                 || crossfadeInProgress || !activityRunning) {
-                || crossfadeInProgress) {
             return;
         }
 
@@ -822,7 +821,6 @@ public class CrossfadeManager {
             @Override
             public void run() {
                 if (!isEnabled() || sessionPaused || !activityRunning
-                if (!isEnabled() || sessionPaused
                         || !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()
                         || crossfadeInProgress) {
                     return;
