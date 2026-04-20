@@ -502,7 +502,7 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static void hideLiveChatDonatorsBar(View view) {
-        if (view == null || !Settings.HIDE_LIVECHAT_DONATORS_BAR.get()) {
+        if (view == null || !Settings.HIDE_LIVE_CHAT_DONATORS_BAR.get()) {
             return;
         }
 

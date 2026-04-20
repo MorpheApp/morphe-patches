@@ -171,9 +171,6 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_crowdfunding_box_title">Hide crowdfunding box</string>
     <string name="morphe_hide_crowdfunding_box_summary_on">Crowdfunding box is hidden</string>
     <string name="morphe_hide_crowdfunding_box_summary_off">Crowdfunding box is shown</string>
-    <string name="morphe_hide_livechat_donators_bar_title">Hide live chat donators bar</string>
-    <string name="morphe_hide_livechat_donators_bar_summary_on">Live chat donators bar is hidden</string>
-    <string name="morphe_hide_livechat_donators_bar_summary_off">Live chat donators bar is shown</string>
     <string name="morphe_hide_emergency_box_title">Hide emergency boxes</string>
     <string name="morphe_hide_emergency_box_summary_on">Emergency boxes are hidden</string>
     <string name="morphe_hide_emergency_box_summary_off">Emergency boxes are shown</string>
@@ -185,6 +182,9 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_join_membership_button_title">Hide Join button</string>
     <string name="morphe_hide_join_membership_button_summary_on">Join button is hidden</string>
     <string name="morphe_hide_join_membership_button_summary_off">Join button is shown</string>
+    <string name="morphe_hide_live_chat_donators_bar_title">Hide live chat donators bar</string>
+    <string name="morphe_hide_live_chat_donators_bar_summary_on">Live chat donators bar is hidden</string>
+    <string name="morphe_hide_live_chat_donators_bar_summary_off">Live chat donators bar is shown</string>
     <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the player overlay for live streamed videos after opening live chat. -->
     <string name="morphe_hide_live_chat_replay_button_title">Hide \'Live chat replay\' button</string>
