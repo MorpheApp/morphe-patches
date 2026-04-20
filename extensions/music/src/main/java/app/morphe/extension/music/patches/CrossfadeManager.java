@@ -254,6 +254,9 @@ public class CrossfadeManager {
     private static final int REASON_DIRECTOR_RESET = 5;
     private static final long AUTO_ADVANCE_THRESHOLD_MS = 5000;
     private static final long MONITOR_POLL_MS = 100;
+    // Extra lead time to absorb poll granularity + new-player READY latency (~120-200ms typical).
+    // Ensures the fade-out completes before the old track's audio content runs out.
+    private static final long AUTO_ADVANCE_TRIGGER_BUFFER_MS = 300;
     private static final int QUICK_FADE_MS = 400;
 
     private static volatile SharedCallbackAccess activeSharedCallback = null;
@@ -270,6 +273,7 @@ public class CrossfadeManager {
     private static WeakReference<Object> lastAtadRef = new WeakReference<>(null);
     private static WeakReference<Object> lastNbaRef = new WeakReference<>(null);
     private static volatile boolean internalToggle = false;
+    private static volatile boolean internalPlayNext = false;
     private static Runnable autoAdvanceMonitorRunnable = null;
 
     private static int playersCreated = 0;
@@ -592,18 +596,34 @@ public class CrossfadeManager {
     //  Public hook: playNextInQueue (gapless auto-advance)                //
     // ------------------------------------------------------------------ //
 
-    public static void onBeforePlayNext(Object coordinatorInstance) {
+    /**
+     * Returns true to BLOCK the native playNextInQueue, false to allow it.
+     *
+     * Strategy: we block the original call, set up our crossfade state, then
+     * invoke playNextInQueue again via patch_playNextInQueue with internalPlayNext=true.
+     * That second call passes through immediately (returns false), allowing the native
+     * to load the next track onto our new player. We then synchronously re-enforce
+     * volume=0 right after the native returns — eliminating the blip that occurred
+     * in the void-hook design where the native ran in the 100ms poll window.
+     */
+    public static boolean onBeforePlayNext(Object coordinatorInstance) {
+        // Internal re-invoke: let native through immediately.
+        if (internalPlayNext) {
+            internalPlayNext = false;
+            return false;
+        }
+
         logInfo("onBeforePlayNext called");
         tryAttachLongPressHandler();
 
         if (!isEnabled() || sessionPaused || getCrossfadeDurationMs() <= 0
                 || crossfadeInProgress || !activityRunning) {
-            return;
+            return false;
         }
 
         if (!Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
             logDebug("PlayNext: skip — auto-advance crossfade disabled");
-            return;
+            return false;
         }
 
         try {
@@ -613,14 +633,14 @@ public class CrossfadeManager {
                     (PlayerCoordinatorAccess) coordinatorInstance;
 
             ExoPlayerAccess currentExo = (ExoPlayerAccess) coordinator.patch_getExoPlayer();
-            if (currentExo == null) return;
+            if (currentExo == null) return false;
 
             int currentState = currentExo.patch_getPlaybackState();
             logDebug("PlayNext: current player state=" + currentState
                     + " wasInVideo=" + wasInVideoMode);
 
             ExoPlayerAccess newExo = createNewPlayer(coordinator);
-            if (newExo == null) return;
+            if (newExo == null) return false;
 
             newExo.patch_setVolume(0.0f);
 
@@ -644,8 +664,29 @@ public class CrossfadeManager {
                 logInfo("PlayNext: forced audio mode for incoming track (was in video mode)");
             }
 
+            // Re-invoke natively so the next track actually loads onto the new player.
+            // internalPlayNext=true causes the hook to pass through immediately.
+            // We then re-enforce volume=0 synchronously, before any poll tick.
+            Object atad = lastAtadRef.get();
+            if (atad instanceof MedialibPlayerAccess) {
+                internalPlayNext = true;
+                try {
+                    ((MedialibPlayerAccess) atad).patch_playNextInQueue();
+                } catch (Exception e) {
+                    internalPlayNext = false;
+                    logWarn("PlayNext: re-invoke threw: " + e.getMessage());
+                }
+                try {
+                    newExo.patch_setVolume(0.0f);
+                    logInfo("PlayNext: volume re-enforced to 0 after native");
+                } catch (Exception ignored) {}
+            } else {
+                logWarn("PlayNext: atad ref lost — cannot re-invoke native");
+            }
+
             logInfo("PlayNext: old player preserved, polling for new track ready");
             pollForNewTrackReady(newExo);
+            return true; // block original call
 
         } catch (Exception e) {
             logError("onBeforePlayNext error", e);
@@ -654,6 +695,7 @@ public class CrossfadeManager {
                 audioModeWasForced = false;
                 restoreVideoModeSilently();
             }
+            return false;
         }
     }
 
@@ -718,6 +760,11 @@ public class CrossfadeManager {
                 if (!crossfadeInProgress) return;
                 if (newPlayer != pendingInPlayer) return;
 
+                // Keep new player silent while waiting for READY. The native
+                // playNextInQueue (auto-advance) runs after our void hook and
+                // resets the player to volume 1.0 — re-enforce on every tick.
+                try { newPlayer.patch_setVolume(0.0f); } catch (Exception ignored) {}
+
                 try {
                     int state = newPlayer.patch_getPlaybackState();
                     if (state == STATE_READY) {
@@ -775,10 +822,32 @@ public class CrossfadeManager {
 
         ExoPlayerAccess outgoing = pendingOutPlayer;
         if (outgoing != null) {
-            fadingOutPlayers.add(new FadingPlayer(outgoing, fadeDuration, curve));
+            // Match fade-out duration to actual remaining audio on the outgoing track.
+            // This is critical for auto-advance: the trigger fires 300ms+ before the
+            // configured fade duration, but READY latency is variable (100-500ms+).
+            // Without this adjustment, the fade-out may start too late, causing the
+            // outgoing track to end at non-zero volume (perceptible cutoff).
+            long fadeOutDuration = fadeDuration;
+            try {
+                long pos = outgoing.patch_getCurrentPosition();
+                long dur = outgoing.patch_getDuration();
+                if (dur > 0 && pos >= 0) {
+                    long actualRemaining = dur - pos;
+                    logInfo("onPendingPlayerReady: outgoing remaining=" + actualRemaining
+                            + "ms fadeDuration=" + fadeDuration + "ms");
+                    if (actualRemaining < fadeDuration) {
+                        fadeOutDuration = Math.max(150, actualRemaining);
+                        logInfo("Fade-out shortened to " + fadeOutDuration
+                                + "ms to match remaining audio (was " + fadeDuration + "ms)");
+                    }
+                }
+            } catch (Exception e) {
+                logDebug("Could not read outgoing remaining time: " + e.getMessage());
+            }
+            fadingOutPlayers.add(new FadingPlayer(outgoing, fadeOutDuration, curve));
             pendingOutPlayer = null;
             logInfo("Original outgoing player @" + System.identityHashCode(outgoing)
-                    + " → fade-out list (full crossfade, " + fadeDuration + "ms)");
+                    + " → fade-out list (" + fadeOutDuration + "ms)");
         }
 
         ExoPlayerAccess prevIncoming = crossfadeInPlayer;
@@ -862,15 +931,15 @@ public class CrossfadeManager {
                     if (remaining % 5000 < MONITOR_POLL_MS) {
                         logDebug("Auto-advance monitor: pos=" + pos
                                 + "ms dur=" + dur + "ms remaining=" + remaining
-                                + "ms trigger@" + fadeDuration + "ms");
+                                + "ms trigger@" + (fadeDuration + AUTO_ADVANCE_TRIGGER_BUFFER_MS) + "ms");
                     }
 
-                    if (dur <= fadeDuration) {
+                    if (dur <= fadeDuration + AUTO_ADVANCE_TRIGGER_BUFFER_MS) {
                         mainHandler.postDelayed(this, MONITOR_POLL_MS);
                         return;
                     }
 
-                    if (remaining <= fadeDuration && remaining > 0) {
+                    if (remaining <= fadeDuration + AUTO_ADVANCE_TRIGGER_BUFFER_MS && remaining > 0) {
                         logInfo("Auto-advance: triggering playNextInQueue"
                                 + " at remaining=" + remaining
                                 + "ms (fadeDuration=" + fadeDuration + "ms)");
@@ -973,6 +1042,18 @@ public class CrossfadeManager {
      * Self-terminates if this player is superseded by a chained skip.
      */
     private static void animateCrossfade(final ExoPlayerAccess inPlayer) {
+        // Re-enforce volume=0 before unmuting the player. For auto-advance,
+        // the native playNextInQueue runs after our hook and may reset the
+        // volume to 1.0. For manual-skip the native is blocked, so the
+        // initial patch_setVolume(0) holds — but we re-enforce here for both.
+        try {
+            inPlayer.patch_setVolume(0.0f);
+            logInfo("fade-in pre-start: @" + System.identityHashCode(inPlayer)
+                    + " volume enforced to 0 before setPlayWhenReady");
+        } catch (Exception e) {
+            logWarn("fade-in pre-start: failed to zero volume: " + e.getMessage());
+        }
+
         try { inPlayer.patch_setPlayWhenReady(true); } catch (Exception ignored) {}
 
         final long startTime = System.currentTimeMillis();
@@ -1227,8 +1308,21 @@ public class CrossfadeManager {
             while (it.hasNext()) {
                 FadingPlayer fp = it.next();
                 float vol = fp.currentVolume();
-                try { fp.player.patch_setVolume(Math.max(0.0f, vol)); }
-                catch (Exception ignored) {}
+                int playerState = -1;
+                try { playerState = fp.player.patch_getPlaybackState(); } catch (Exception ignored) {}
+                try {
+                    fp.player.patch_setVolume(Math.max(0.0f, vol));
+                    long elapsed = System.currentTimeMillis() - fp.startTimeMs;
+                    if (elapsed % 500 < TICK_MS) {
+                        logDebug(String.format(
+                                "fade-out: @%d vol=%.2f state=%d elapsed=%dms",
+                                System.identityHashCode(fp.player), vol, playerState, elapsed));
+                    }
+                } catch (Exception e) {
+                    logWarn("fade-out setVolume threw: " + e.getMessage()
+                            + " player=@" + System.identityHashCode(fp.player)
+                            + " state=" + playerState);
+                }
 
                 if (fp.isComplete()) {
                     try { fp.player.patch_setVolume(0.0f); } catch (Exception ignored) {}

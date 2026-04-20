@@ -239,7 +239,12 @@ val crossfadePatch = bytecodePatch(
         PlayNextInQueueFingerprint.method.addInstructions(
             0,
             """
-                invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onBeforePlayNext(Ljava/lang/Object;)V
+                invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onBeforePlayNext(Ljava/lang/Object;)Z
+                move-result v0
+                if-eqz v0, :allow_next
+                return-void
+                :allow_next
+                nop
             """
         )
 
