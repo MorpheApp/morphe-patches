@@ -274,7 +274,7 @@ val crossfadePatch = bytecodePatch(
             """,
         )
 
-        val musicActivityClass = MusicActivityOnCreateFingerprint.classDef
+        val musicActivityClass = mutableClassDefBy(MusicActivityOnCreateFingerprint.classDef.type)
         musicActivityClass.methods.first { it.name == "onStop" && it.parameterTypes.isEmpty() }
             .addInstructions(
                 0,
