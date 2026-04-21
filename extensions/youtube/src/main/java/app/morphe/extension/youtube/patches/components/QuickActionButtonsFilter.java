@@ -43,7 +43,7 @@ public final class QuickActionButtonsFilter extends Filter {
                 ),
                 new StringFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_COMMENT_BUTTON,
-                        "comments_entry_point_button"
+                        "|comments_entry_point_button"
                 ),
                 new StringFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_SAVE_BUTTON,
@@ -73,8 +73,8 @@ public final class QuickActionButtonsFilter extends Filter {
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_LIVE_CHAT_BUTTON,
-                        "yt_outline_message_bubble_overlap",
-                        "yt_outline_experimental_message_bubble_overlap"
+                        "yt_outline_experimental_bubble_stack",
+                        "yt_outline_message_bubble_overlap"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_MIX_PLAYLIST_BUTTON,
@@ -83,8 +83,8 @@ public final class QuickActionButtonsFilter extends Filter {
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_PLAYLIST_BUTTON,
-                        "yt_outline_list_play_arrow",
-                        "yt_outline_experimental_list_play_arrow"
+                        "yt_outline_experimental_playlist",
+                        "yt_outline_list_play_arrow"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_SHARE_BUTTON,
