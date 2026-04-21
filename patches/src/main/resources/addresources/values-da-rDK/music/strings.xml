@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Generelt</string>
   <string name="morphe_settings_music_screen_3_player_title">Afspiller</string>
   <string name="morphe_settings_music_screen_4_misc_title">Diverse</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Skjul \'Få Music Premium\'-etiket</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Get Music Premium-mærke er skjult</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Get Music Premium-mærke er vist</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Skjul videoannoncer</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videoannoncer er skjult</string>
@@ -99,7 +103,7 @@ Feature implementering af VazerOG"</string>
   <string name="morphe_change_start_page_entry_explore">Udforsk</string>
   <string name="morphe_change_start_page_entry_history">Historik</string>
   <string name="morphe_change_start_page_entry_library">Bibliotek</string>
-  <string name="morphe_change_start_page_entry_liked_music">Låede musik</string>
+  <string name="morphe_change_start_page_entry_liked_music">Liked musik</string>
   <string name="morphe_change_start_page_entry_playlists">Playlister</string>
   <string name="morphe_change_start_page_entry_search">Søg</string>
   <string name="morphe_change_start_page_entry_subscriptions">Abonnementer</string>
@@ -112,16 +116,16 @@ Feature implementering af VazerOG"</string>
   <string name="morphe_music_change_miniplayer_color_summary_on">Miniafspillerfarven matcher fuldskærmsafspilleren</string>
   <string name="morphe_music_change_miniplayer_color_summary_off">Miniafspilleren bruger standardfarven</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
-  <string name="morphe_music_miniplayer_next_button_title">Vis næste knap i miniplayer</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">Næste knap vises i miniplayer</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">Næste knap vises ikke i miniplayer</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Vis forrige knap i mini afspiller</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">Forrige knap vises i mini afspiller</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">Forrige knap vises ikke i mini afspiller</string>
+  <string name="morphe_music_miniplayer_next_button_title">Vis næste-knap i miniafspiller</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Næste-knap vises i miniafspiller</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Næste-knap vises ikke i miniafspiller</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Vis forrige-knap i miniafspiller</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Forrige-knap vises i miniafspiller</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Forrige-knap vises ikke i miniafspiller</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
-  <string name="morphe_music_enable_forced_miniplayer_title">Aktivér tvungen minimapspiller</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">Minimapsspilleren forbliver minimeret ved afspilningsændringer</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">Minimapsspilleren udvides til fuldskærm ved afspilningsændringer</string>
+  <string name="morphe_music_enable_forced_miniplayer_title">Aktivér tvungen miniafspiller</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniafspiller forbliver minimeret når afspilning ændres</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniafspiller udvides til fuldskærm når afspilning ændres</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigationslinje</string>
   <string name="morphe_music_navigation_bar_screen_summary">Skjul eller skift navigationslinjeknapper</string>
@@ -151,10 +155,6 @@ Feature implementering af VazerOG"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skjul etiketter for navigationsknapper</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Etiketter er skjult</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Etiketter vises</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Skjul \'Få Music Premium\'-etiket</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Etiketten er skjult</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Etiketten vises</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Skjul opgraderingsknap</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Knappen er skjult</string>

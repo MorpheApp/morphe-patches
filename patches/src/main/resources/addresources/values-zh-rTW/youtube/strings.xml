@@ -199,6 +199,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_title">隱藏影片標題</string>
   <string name="morphe_hide_video_title_summary_on">已隱藏播放器覆蓋層影片標題</string>
   <string name="morphe_hide_video_title_summary_off">已顯示播放器覆蓋層影片標題</string>
+  <string name="morphe_hide_description_components_screen_title">影片說明</string>
+  <string name="morphe_hide_description_components_screen_summary">隱藏或顯示影片說明元件</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">隱藏「AI 產生的影片摘要」</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">已隱藏 AI 生成的影片摘要區塊</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">已顯示 AI 生成的影片摘要區塊</string>
@@ -255,17 +257,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_music_section_title">隱藏「音樂」</string>
   <string name="morphe_hide_music_section_summary_on">已隱藏音樂區塊</string>
   <string name="morphe_hide_music_section_summary_off">已顯示音樂區塊</string>
+  <string name="morphe_hide_quizzes_section_title">隱藏「測驗」</string>
+  <string name="morphe_hide_quizzes_section_summary_on">已隱藏測驗版面</string>
+  <string name="morphe_hide_quizzes_section_summary_off">已顯示測驗版面</string>
   <string name="morphe_hide_subscribe_button_title">隱藏「訂閱」按鈕</string>
   <string name="morphe_hide_subscribe_button_summary_on">已隱藏「訂閱」按鈕</string>
   <string name="morphe_hide_subscribe_button_summary_off">已顯示「訂閱」按鈕</string>
   <string name="morphe_hide_transcript_section_title">隱藏轉錄稿</string>
   <string name="morphe_hide_transcript_section_summary_on">已隱藏轉錄稿區塊</string>
   <string name="morphe_hide_transcript_section_summary_off">已顯示轉錄稿區塊</string>
-  <string name="morphe_hide_quizzes_section_title">隱藏「測驗」</string>
-  <string name="morphe_hide_quizzes_section_summary_on">已隱藏測驗版面</string>
-  <string name="morphe_hide_quizzes_section_summary_off">已顯示測驗版面</string>
-  <string name="morphe_hide_description_components_screen_title">影片說明</string>
-  <string name="morphe_hide_description_components_screen_summary">隱藏或顯示影片說明元件</string>
   <string name="morphe_hide_filter_bar_screen_title">篩選列</string>
   <string name="morphe_hide_filter_bar_screen_summary">在推薦內容、相關影片、搜尋結果和觀看記錄中隱藏或顯示篩選欄</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">在動態中隱藏</string>
@@ -424,9 +424,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">隱藏片尾商店橫幅</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">已隱藏片尾的商店橫幅</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">已顯示片尾的商店橫幅</string>
-  <string name="morphe_hide_fullscreen_ads_title">隱藏全螢幕廣告</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">已隱藏全螢幕廣告</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">已顯示全螢幕廣告</string>
   <string name="morphe_hide_general_ads_title">隱藏一般廣告</string>
   <string name="morphe_hide_general_ads_summary_on">已隱藏一般廣告</string>
   <string name="morphe_hide_general_ads_summary_off">已顯示一般廣告</string>
@@ -892,6 +889,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">隱藏「上一部」和「下一部」按鈕</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">已隱藏「上一部」和「下一部」按鈕</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">已顯示「上一部」和「下一部」按鈕</string>
+  <string name="morphe_hide_settings_button_title">隱藏設定按鈕</string>
+  <string name="morphe_hide_settings_button_summary_on">已隱藏設定按鈕</string>
+  <string name="morphe_hide_settings_button_summary_off">不顯示設定按鈕</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">隱藏片尾資訊卡</string>
   <string name="morphe_hide_end_screen_cards_summary_on">已隱藏片尾資訊卡</string>

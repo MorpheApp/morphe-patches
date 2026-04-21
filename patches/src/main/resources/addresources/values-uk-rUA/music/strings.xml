@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Загальні</string>
   <string name="morphe_settings_music_screen_3_player_title">Плеєр</string>
   <string name="morphe_settings_music_screen_4_misc_title">Різне</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Приховати пункт \"Підписатися на Music Premium\"</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Пункт \"Підписатися на Music Premium\" приховано</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Пункт \"Підписатися на Music Premium\" показується</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Приховати відеорекламу</string>
   <string name="morphe_music_hide_video_ads_summary_on">Відеорекламу приховано</string>
@@ -151,10 +155,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Приховати підписи кнопок навігації</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Підписи кнопок навігації приховано</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Підписи кнопок навігації показуються</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Приховати Пункт \"Підписатися на Music Premium\"</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Пункт приховано</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Пункт показується</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Приховати кнопку \"Підписка\"</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Кнопку приховано</string>

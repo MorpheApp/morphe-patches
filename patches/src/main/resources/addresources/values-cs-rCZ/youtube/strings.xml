@@ -199,6 +199,8 @@ Zobrazování YouTube Doodles může zabránit zobrazení vlastních záhlaví."
   <string name="morphe_hide_video_title_title">Skrýt název videa</string>
   <string name="morphe_hide_video_title_summary_on">Nadpis videa v přehrávači je skryt</string>
   <string name="morphe_hide_video_title_summary_off">Nadpis videa v přehrávači je zobrazen</string>
+  <string name="morphe_hide_description_components_screen_title">Popis videa</string>
+  <string name="morphe_hide_description_components_screen_summary">Skrýt nebo zobrazit komponenty popisu videa</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Skrýt „Souhrn videa generovaný pomocí AI“</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Sekce souhrnu videa generovaná AI je skrytá</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Sekce souhrnu videa generovaného AI je zobrazena</string>
@@ -255,17 +257,15 @@ Zobrazování YouTube Doodles může zabránit zobrazení vlastních záhlaví."
   <string name="morphe_hide_music_section_title">Skrýt Hudbu</string>
   <string name="morphe_hide_music_section_summary_on">Sekce Hudby je skryta</string>
   <string name="morphe_hide_music_section_summary_off">Sekce Hudby je zobrazená</string>
+  <string name="morphe_hide_quizzes_section_title">Skrýt testy</string>
+  <string name="morphe_hide_quizzes_section_summary_on"> Sekce testů je skryta.</string>
+  <string name="morphe_hide_quizzes_section_summary_off"> Sekce testů je zobrazená.</string>
   <string name="morphe_hide_subscribe_button_title">Skrýt tlačítko Odebírat</string>
   <string name="morphe_hide_subscribe_button_summary_on">Tlačítko Odebírat je skryto</string>
   <string name="morphe_hide_subscribe_button_summary_off">Tlačítko Odebírat je zobrazeno</string>
   <string name="morphe_hide_transcript_section_title">Skrýt přepis</string>
   <string name="morphe_hide_transcript_section_summary_on">Sekce přepisu je skrytá</string>
   <string name="morphe_hide_transcript_section_summary_off">Sekce přepisu je zobrazena</string>
-  <string name="morphe_hide_quizzes_section_title">Skrýt testy</string>
-  <string name="morphe_hide_quizzes_section_summary_on"> Sekce testů je skryta.</string>
-  <string name="morphe_hide_quizzes_section_summary_off"> Sekce testů je zobrazená.</string>
-  <string name="morphe_hide_description_components_screen_title">Popis videa</string>
-  <string name="morphe_hide_description_components_screen_summary">Skrýt nebo zobrazit komponenty popisu videa</string>
   <string name="morphe_hide_filter_bar_screen_title">Lišta filtrů</string>
   <string name="morphe_hide_filter_bar_screen_summary">Skrýt nebo zobrazit lištu filtru ve zdrojích, souvisejících videích, výsledcích vyhledávání a historii sledování</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Skrýt v kanálech</string>
@@ -425,9 +425,6 @@ Omezení:
   <string name="morphe_hide_end_screen_store_banner_title">Skrýt koncový banner obchodu</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Banner obchodu na závěrečné obrazovce je skryt</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Banner obchodu na závěrečné obrazovce je zobrazen</string>
-  <string name="morphe_hide_fullscreen_ads_title">Skrýt celostránkové reklamy</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Celostránkové reklamy jsou skryty</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Celostránkové reklamy jsou zobrazeny</string>
   <string name="morphe_hide_general_ads_title">Skrýt běžné reklamy</string>
   <string name="morphe_hide_general_ads_summary_on">Běžné reklamy jsou skryté</string>
   <string name="morphe_hide_general_ads_summary_off">Běžné reklamy jsou zobrazeny</string>
@@ -893,6 +890,9 @@ Abyste zobrazili menu s zvukovými stopami, změňte 'Zamaskované video proudy'
   <string name="morphe_hide_player_previous_next_buttons_title">Skrýt tlačítka Předchozí &amp; Další</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Tlačítka Předchozí &amp; Další jsou skryta</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Tlačítka Předchozí &amp; Další jsou zobrazena</string>
+  <string name="morphe_hide_settings_button_title">Skrýt tlačítko Nastavení</string>
+  <string name="morphe_hide_settings_button_summary_on">Tlačítko Nastavení je skryto</string>
+  <string name="morphe_hide_settings_button_summary_off">Tlačítko Nastavení je zobrazeno</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Skrýt karty s informacemi o videu</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Karty s informacemi o videu jsou skryty</string>

@@ -199,6 +199,8 @@ La visualizzazione dei Doodle di YouTube potrebbe impedire la visualizzazione de
   <string name="morphe_hide_video_title_title">Nascondi il titolo del video</string>
   <string name="morphe_hide_video_title_summary_on">Il titolo del video nella sovrapposizione del lettore video è nascosto</string>
   <string name="morphe_hide_video_title_summary_off">Il titolo del video nella sovrapposizione del lettore video è visibile</string>
+  <string name="morphe_hide_description_components_screen_title">Descrizione del video</string>
+  <string name="morphe_hide_description_components_screen_summary">Mostra o nascondi i componenti della descrizione del video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Nascondi \"Riepilogo video generato dall\'AI\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">La sezione del riepilogo video generato dall\'IA è nascosta</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Sezione di riepilogo video generata dall\'IA mostrata</string>
@@ -255,17 +257,15 @@ La visualizzazione dei Doodle di YouTube potrebbe impedire la visualizzazione de
   <string name="morphe_hide_music_section_title">Nascondi richiesta</string>
   <string name="morphe_hide_music_section_summary_on">La sezione film è nascosta</string>
   <string name="morphe_hide_music_section_summary_off">La sezione film è visibile</string>
+  <string name="morphe_hide_quizzes_section_title">Nascondi Quiz</string>
+  <string name="morphe_hide_quizzes_section_summary_on">La sezione Quiz è nascosta</string>
+  <string name="morphe_hide_quizzes_section_summary_off">La sezione Quiz è visibile</string>
   <string name="morphe_hide_subscribe_button_title">Nascondi il pulsante Iscriviti</string>
   <string name="morphe_hide_subscribe_button_summary_on">Il pulsante Iscriviti è nascosto</string>
   <string name="morphe_hide_subscribe_button_summary_off">Il pulsante Iscriviti è visibile</string>
   <string name="morphe_hide_transcript_section_title">Nascondi Trascrizione</string>
   <string name="morphe_hide_transcript_section_summary_on">La sezione Trascrizione è nascosta</string>
   <string name="morphe_hide_transcript_section_summary_off">La sezione Trascrizione è visibile</string>
-  <string name="morphe_hide_quizzes_section_title">Nascondi Quiz</string>
-  <string name="morphe_hide_quizzes_section_summary_on">La sezione Quiz è nascosta</string>
-  <string name="morphe_hide_quizzes_section_summary_off">La sezione Quiz è visibile</string>
-  <string name="morphe_hide_description_components_screen_title">Descrizione del video</string>
-  <string name="morphe_hide_description_components_screen_summary">Mostra o nascondi i componenti della descrizione del video</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra dei filtri</string>
   <string name="morphe_hide_filter_bar_screen_summary">Nascondi o mostra la barra dei filtri nei feed, nei video correlati, nei risultati di ricerca e nella cronologia delle visualizzazioni</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Nascondi nei feed</string>
@@ -424,9 +424,6 @@ Limitazioni:
   <string name="morphe_hide_end_screen_store_banner_title">Nascondi banner del negozio della schermata finale</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Il banner del negozio nella schermata finale è nascosto</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Il banner del negozio nella schermata finale è mostrato</string>
-  <string name="morphe_hide_fullscreen_ads_title">Nascondi le pubblicità a schermo intero</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Gli annunci a schermo intero sono nascosti</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Le pubblicità a schermo intero sono visibili</string>
   <string name="morphe_hide_general_ads_title">Nascondi pubblicità generali</string>
   <string name="morphe_hide_general_ads_summary_on">Le pubblicità generali sono nascoste</string>
   <string name="morphe_hide_general_ads_summary_off">Le pubblicità generali sono visibili</string>
@@ -894,6 +891,9 @@ Per visualizzare il menu audio, cambia 'Falsifica flussi video' in 'Android Reel
   <string name="morphe_hide_player_previous_next_buttons_title">Nascondi i pulsanti Precedente e Successivo</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">I pulsanti Precedente e Successivo sono nascosti.</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">I pulsanti Precedente e Successivo sono mostrati</string>
+  <string name="morphe_hide_settings_button_title">Nascondi il pulsante Impostazioni</string>
+  <string name="morphe_hide_settings_button_summary_on">Il pulsante Impostazioni è nascosto</string>
+  <string name="morphe_hide_settings_button_summary_off">Il pulsante Impostazioni è visibile</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Nascondi le schede della schermata finale</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Le schede della schermata finale sono nascoste</string>

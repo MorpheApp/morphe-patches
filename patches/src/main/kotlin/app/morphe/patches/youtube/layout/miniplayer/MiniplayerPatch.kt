@@ -222,7 +222,7 @@ val miniplayerPatch = bytecodePatch(
             "getModernMiniplayerOverride",
         )
 
-        MiniplayerModernConstructorFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
+        MiniplayerModernFeatureFingerprint.insertMiniplayerFeatureFlagBooleanOverride(
             MINIPLAYER_MODERN_FEATURE_KEY,
             "getModernFeatureFlagsActiveOverride",
         )

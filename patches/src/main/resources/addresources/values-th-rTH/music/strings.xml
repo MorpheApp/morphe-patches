@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">ทั่วไป</string>
   <string name="morphe_settings_music_screen_3_player_title">เครื่องเล่น</string>
   <string name="morphe_settings_music_screen_4_misc_title">เบ็ดเตล็ด</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">ซ่อนป้าย \'รับ Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">ป้าย Get Music Premium ถูกซ่อน</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">ป้าย Get Music Premium ถูกแสดง</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
   <string name="morphe_music_hide_video_ads_summary_on">ซ่อนโฆษณาวิดีโอแล้ว</string>
@@ -151,10 +155,6 @@ Feature implementation by VazerOG"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">ซ่อนป้ายกำกับแล้ว</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">แสดงป้ายกำกับแล้ว</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">ซ่อนป้าย \'รับ Music Premium\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">ซ่อนป้ายแล้ว</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">แสดงป้ายแล้ว</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">ซ่อนปุ่มอัปเกรด</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">ซ่อนปุ่มแล้ว</string>

@@ -111,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">บังคับใช้ภาษาเสียงต้นฉบับ</string>
   <string name="morphe_force_original_audio_summary_on">กำลังใช้ภาษาเสียงต้นฉบับ</string>
   <string name="morphe_force_original_audio_summary_off">กำลังใช้ออดิโอเริ่มต้น</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">ซ่อนโฆษณาแบบเต็มหน้าจอ</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">โฆษณาแบบเต็มหน้าจอจะถูกซ่อน</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">โฆษณาแบบเต็มหน้าจอจะแสดง</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">หากต้องการใช้คุณสมบัตินี้ ให้เปลี่ยน \'Spoof video streams\' เป็น Android Reel หรือ TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

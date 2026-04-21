@@ -9,8 +9,9 @@ package app.morphe.patches.reddit.misc.openlink
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
-import app.morphe.patches.reddit.misc.settings.is_2026_11_or_greater
 import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.misc.version.is_2026_11_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -23,7 +24,7 @@ lateinit var screenNavigatorMethodRef: WeakReference<MutableMethod>
 val screenNavigatorMethodResolverPatch = bytecodePatch(
     description = "screenNavigatorMethodResolverPatch"
 ) {
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
         var targetMethod: MutableMethod = CustomReportsFingerprint
@@ -33,7 +34,7 @@ val screenNavigatorMethodResolverPatch = bytecodePatch(
             .getMutableMethod()
 
         targetMethod.apply {
-            if (is_2026_11_or_greater) {
+            if (is_2026_11_0_or_greater) {
                 val targetIndex = indexOfFirstInstructionOrThrow {
                     val targetReference = getReference<MethodReference>()
                     targetReference?.returnType == "V" &&

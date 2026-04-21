@@ -199,6 +199,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_title">Скриване на заглавието на видеото</string>
   <string name="morphe_hide_video_title_summary_on">Заглавието на видеото в прегледа е скрито</string>
   <string name="morphe_hide_video_title_summary_off">Заглавието на видеото в прегледа е показано</string>
+  <string name="morphe_hide_description_components_screen_title">Видеоописание</string>
+  <string name="morphe_hide_description_components_screen_summary">Скрийте или покажете компоненти за видеоописание</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Скрийте \'AI-генерация на видеосъобщение\'</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Разделът за AI-генерация на видеосъобщение е скрит</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Разделът за AI-генерация на видеосъобщение е показан</string>
@@ -255,17 +257,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_music_section_title">Скриване на \'Музика\'</string>
   <string name="morphe_hide_music_section_summary_on">Сеcció с музика е скрита</string>
   <string name="morphe_hide_music_section_summary_off">Сеcció с музика е показана</string>
+  <string name="morphe_hide_quizzes_section_title">Скриване на тестовете</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Разделът за тестове е скрит</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Разделът за тестове е показан</string>
   <string name="morphe_hide_subscribe_button_title">Скриване на бутона \'Абонамент\'</string>
   <string name="morphe_hide_subscribe_button_summary_on">Бутона \'Абонамент\' е скрит</string>
   <string name="morphe_hide_subscribe_button_summary_off">Бутона \'Абонамент\' е показан</string>
   <string name="morphe_hide_transcript_section_title">Скрийте \'Транскрипт\'</string>
   <string name="morphe_hide_transcript_section_summary_on">Разделът \'Транскрипт\' е скрит</string>
   <string name="morphe_hide_transcript_section_summary_off">Разделът \'Транскрипт\' е показан</string>
-  <string name="morphe_hide_quizzes_section_title">Скриване на тестовете</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Разделът за тестове е скрит</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Разделът за тестове е показан</string>
-  <string name="morphe_hide_description_components_screen_title">Видеоописание</string>
-  <string name="morphe_hide_description_components_screen_summary">Скрийте или покажете компоненти за видеоописание</string>
   <string name="morphe_hide_filter_bar_screen_title">Филтрите филтрите и търсенето в домакинството</string>
   <string name="morphe_hide_filter_bar_screen_summary">Скрийте или покажете филтрите в домакинството, свързани видеоклипове, резултати от търсене и история на гледане</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Скрити в домакинството</string>
@@ -424,9 +424,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">Скрийте банера за крайни екрани</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Банерата за крайни екрани са скрити</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Банерата за крайни екрани са показани</string>
-  <string name="morphe_hide_fullscreen_ads_title">Скрийте пълноекран видеореклами</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Пълноекранни реклами са скрити</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Пълноекран видеореклами са показани</string>
   <string name="morphe_hide_general_ads_title">Скрийте общни видеореклами</string>
   <string name="morphe_hide_general_ads_summary_on">Общните видеореклами са скрити</string>
   <string name="morphe_hide_general_ads_summary_off">Общните видеореклами са показани</string>
@@ -890,6 +887,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Скрий дублиране на видеа</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Дублирането на видеа е скрито</string>
+  <string name="morphe_hide_settings_button_title">Скрий бутона Настройки</string>
+  <string name="morphe_hide_settings_button_summary_on">Бутонът Настройки е скрит</string>
+  <string name="morphe_hide_settings_button_summary_off">Бутонът Настройки е показан</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Скрий дублиране на видеа</string>

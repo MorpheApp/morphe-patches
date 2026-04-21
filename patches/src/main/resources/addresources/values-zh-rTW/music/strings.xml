@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">一般</string>
   <string name="morphe_settings_music_screen_3_player_title">播放器</string>
   <string name="morphe_settings_music_screen_4_misc_title">其他</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">隱藏「取得 Music Premium」標籤</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Get Music Premium 標籤已隱藏</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Get Music Premium 標籤已顯示</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">隱藏影片廣告</string>
   <string name="morphe_music_hide_video_ads_summary_on">影片廣告已隱藏</string>
@@ -151,10 +155,6 @@ VazerOG實作此功能"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">隱藏導覽列按鈕標籤</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">已隱藏「標籤」</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">已顯示「標籤」</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">隱藏「取得 Music Premium」標籤</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">已隱藏標籤</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">已顯示標籤</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">隱藏升級按鈕</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">已隱藏按鈕</string>

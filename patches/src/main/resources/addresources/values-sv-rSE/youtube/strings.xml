@@ -186,6 +186,8 @@ Om YouTube-doodles visas kan det hindra anpassade sidhuvuden från att visas."</
   <string name="morphe_hide_video_title_title">Dölj videotitel</string>
   <string name="morphe_hide_video_title_summary_on">Videotiteln i spelaröverlägget är dold</string>
   <string name="morphe_hide_video_title_summary_off">Videotiteln i spelaröverlägget visas</string>
+  <string name="morphe_hide_description_components_screen_title">Videobeskrivning</string>
+  <string name="morphe_hide_description_components_screen_summary">Dölj eller visa komponenter i videobeskrivningen</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Dölj AI-genererad videoöversikt</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Avsnittet AI-genererad videoöversikt är dolt</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Avsnittet AI-genererad videoöversikt visas</string>
@@ -242,17 +244,15 @@ Om YouTube-doodles visas kan det hindra anpassade sidhuvuden från att visas."</
   <string name="morphe_hide_music_section_title">Dölj Musik</string>
   <string name="morphe_hide_music_section_summary_on">Avsnittet Musik är dolt</string>
   <string name="morphe_hide_music_section_summary_off">Avsnittet Musik visas</string>
+  <string name="morphe_hide_quizzes_section_title">Dölj Quiz</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Avsnittet Quiz är dolt</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Avsnittet Quiz visas</string>
   <string name="morphe_hide_subscribe_button_title">Dölj knappen Prenumerera</string>
   <string name="morphe_hide_subscribe_button_summary_on">Knappen Prenumerera är dold</string>
   <string name="morphe_hide_subscribe_button_summary_off">Knappen Prenumerera visas</string>
   <string name="morphe_hide_transcript_section_title">Dölj Manuskript</string>
   <string name="morphe_hide_transcript_section_summary_on">Avsnittet Manuskript är dolt</string>
   <string name="morphe_hide_transcript_section_summary_off">Avsnittet Manuskript visas</string>
-  <string name="morphe_hide_quizzes_section_title">Dölj Quiz</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Avsnittet Quiz är dolt</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Avsnittet Quiz visas</string>
-  <string name="morphe_hide_description_components_screen_title">Videobeskrivning</string>
-  <string name="morphe_hide_description_components_screen_summary">Dölj eller visa komponenter i videobeskrivningen</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterfält</string>
   <string name="morphe_hide_filter_bar_screen_summary">Dölj eller visa filterfältet i flödena, liknande videor, sökresultaten och visningshistoriken</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Dölj i flöden</string>
@@ -411,9 +411,6 @@ Begränsningar:
   <string name="morphe_hide_end_screen_store_banner_title">Dölj butiksbanner på slutskärmen</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Butiksbanner på slutskärmen är dold</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Butiksbanner på slutskärmen visas</string>
-  <string name="morphe_hide_fullscreen_ads_title">Dölj helskärmsannonser</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Helskärmsannonser är dolda</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Helskärmsannonser visas</string>
   <string name="morphe_hide_general_ads_title">Dölj allmänna annonser</string>
   <string name="morphe_hide_general_ads_summary_on">Allmänna annonser är dolda</string>
   <string name="morphe_hide_general_ads_summary_off">Allmänna annonser visas</string>
@@ -883,6 +880,7 @@ Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\
   <string name="morphe_hide_player_previous_next_buttons_title">Dölj knapparna Föregående och Nästa</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Knapparna Föregående och Nästa är dolda</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Knapparna Föregående och Nästa visas</string>
+  <string name="morphe_hide_settings_button_summary_off">Knappen Inställningar visas</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Dölj slutskärmskort</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Slutskärmskort är dolda</string>

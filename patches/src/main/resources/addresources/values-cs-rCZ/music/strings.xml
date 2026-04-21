@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Obecné</string>
   <string name="morphe_settings_music_screen_3_player_title">Přehrávač</string>
   <string name="morphe_settings_music_screen_4_misc_title">Různé</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Skrýt štítek „Získat Music Premium“</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Popisek Hudby Premium je skrytý</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Popisek Hudby Premium je zobrazen</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Skrýt reklamy ve videu</string>
   <string name="morphe_music_hide_video_ads_summary_on">Reklamy ve videu jsou skryty</string>
@@ -151,10 +155,6 @@ Implementace funkce VazerOG"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skrýt štítky navigačních tlačítek</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Štítky jsou skryté</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Štítky jsou zobrazeny</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Skrýt štítek „Získat Music Premium“</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Štítek je skrytý</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Štítek je zobrazen</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Skrýt tlačítko pro upgrade</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Tlačítko je skryto</string>

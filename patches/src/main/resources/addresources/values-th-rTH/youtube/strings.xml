@@ -199,6 +199,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_title">ซ่อนชื่อวิดีโอ</string>
   <string name="morphe_hide_video_title_summary_on">ชื่อวิดีโอในโอเวอร์เลย์เครื่องเล่นซ่อนอยู่</string>
   <string name="morphe_hide_video_title_summary_off">ชื่อวิดีโอในโอเวอร์เลย์เครื่องเล่นแสดงอยู่</string>
+  <string name="morphe_hide_description_components_screen_title">คำอธิบายวิดีโอ</string>
+  <string name="morphe_hide_description_components_screen_summary">ซ่อนหรือแสดงส่วนประกอบของคำอธิบายวิดีโอ</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">ซ่อน \",สรุปวิดีโอที่สร้างโดย AI\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">ส่วนสรุปวิดีโอที่สร้างโดย AI ถูกซ่อนอยู่</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">แสดงส่วนสรุปวิดีโอที่สร้างโดย AI</string>
@@ -255,17 +257,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_music_section_title">ซ่อนปุ่มถาม</string>
   <string name="morphe_hide_music_section_summary_on">ส่วนภาพยนตร์ถูกซ่อนไว้</string>
   <string name="morphe_hide_music_section_summary_off">ส่วนภาพยนตร์แสดงอยู่</string>
+  <string name="morphe_hide_quizzes_section_title">ซ่อนคำถาม</string>
+  <string name="morphe_hide_quizzes_section_summary_on">ส่วนคำถามถูกซ่อนไว้</string>
+  <string name="morphe_hide_quizzes_section_summary_off">ส่วนคำถามแสดงอยู่</string>
   <string name="morphe_hide_subscribe_button_title">ซ่อนปุ่มสมัครใช้</string>
   <string name="morphe_hide_subscribe_button_summary_on">ปุ่มสมัครรับข้อมูลซ่อนอยู่</string>
   <string name="morphe_hide_subscribe_button_summary_off">ปุ่มสมัครรับข้อมูลแสดงอยู่</string>
   <string name="morphe_hide_transcript_section_title">ซ่อนบทถอดเสียง</string>
   <string name="morphe_hide_transcript_section_summary_on">ส่วนคำอธิบายถูกซ่อนไว้</string>
   <string name="morphe_hide_transcript_section_summary_off">ส่วนคำอธิบายแสดงอยู่</string>
-  <string name="morphe_hide_quizzes_section_title">ซ่อนคำถาม</string>
-  <string name="morphe_hide_quizzes_section_summary_on">ส่วนคำถามถูกซ่อนไว้</string>
-  <string name="morphe_hide_quizzes_section_summary_off">ส่วนคำถามแสดงอยู่</string>
-  <string name="morphe_hide_description_components_screen_title">คำอธิบายวิดีโอ</string>
-  <string name="morphe_hide_description_components_screen_summary">ซ่อนหรือแสดงส่วนประกอบของคำอธิบายวิดีโอ</string>
   <string name="morphe_hide_filter_bar_screen_title">แถบตัวกรอง</string>
   <string name="morphe_hide_filter_bar_screen_summary">ซ่อนหรือแสดงแถบตัวกรองในฟีด วิดีโอที่เกี่ยวข้อง ผลการค้นหา และประวัติการดู</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">ซ่อนในฟีด</string>
@@ -425,9 +425,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">ซ่อนแบนเนอร์ร้านค้าท้ายจอ</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">แบนเนอร์ร้านค้าท้ายหน้าจอถูกซ่อนไว้</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">แบนเนอร์ร้านค้าท้ายหน้าจอแสดงอยู่</string>
-  <string name="morphe_hide_fullscreen_ads_title">ซ่อนโฆษณาแบบเต็มหน้าจอ</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">โฆษณาแบบเต็มหน้าจอจะถูกซ่อน</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">โฆษณาแบบเต็มหน้าจอจะแสดง</string>
   <string name="morphe_hide_general_ads_title">ซ่อนโฆษณาโดยทั่วไป</string>
   <string name="morphe_hide_general_ads_summary_on">โฆษณาโดยทั่วไปถูกซ่อน</string>
   <string name="morphe_hide_general_ads_summary_off">โฆษณาโดยทั่วไปจะแสดง</string>
@@ -893,6 +890,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">ซ่อนปุ่มก่อนหน้า &amp; ถัดไป</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">ปุ่มก่อนหน้า &amp; ถัดไปถูกซ่อน</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">ปุ่มก่อนหน้า &amp; ถัดไปแสดงอยู่</string>
+  <string name="morphe_hide_settings_button_title">ซ่อนปุ่มการตั้งค่า</string>
+  <string name="morphe_hide_settings_button_summary_on">ปุ่มการตั้งค่าถูกซ่อน</string>
+  <string name="morphe_hide_settings_button_summary_off">ปุ่มการตั้งค่าแสดงอยู่</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">ซ่อนการ์ดหน้าจอสิ้นสุด</string>
   <string name="morphe_hide_end_screen_cards_summary_on">การ์ดหน้าจอสิ้นสุดซ่อนอยู่</string>

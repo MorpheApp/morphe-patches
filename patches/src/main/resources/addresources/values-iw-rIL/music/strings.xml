@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">כללי</string>
   <string name="morphe_settings_music_screen_3_player_title">נגן</string>
   <string name="morphe_settings_music_screen_4_misc_title">שונות</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">הסתר תווית \'קבל Premium למוזיקה\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">תווית \"Music Premium\" מוסתרת</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">תווית \"Music Premium\" מוצגת</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">הסתר מודעות וידאו</string>
   <string name="morphe_music_hide_video_ads_summary_on">מודעות הווידאו מוסתרות</string>
@@ -151,10 +155,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">הסתר תוויות לחצני ניווט</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">התוויות מוסתרות</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">התוויות מוצגות</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">הסתר תווית \'קבל Premium למוזיקה\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">התווית מוסתרת</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">התווית מוצגת</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">הסתר לחצן שדרוג</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">הלחצן מוסתר</string>

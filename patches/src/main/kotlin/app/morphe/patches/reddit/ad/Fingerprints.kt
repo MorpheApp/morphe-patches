@@ -9,7 +9,6 @@ package app.morphe.patches.reddit.ad
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
-import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -17,35 +16,46 @@ import com.android.tools.smali.dexlib2.Opcode
 internal object ListingFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/domain/model/listing/Listing;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
     filters = listOf(
-        string("children"),
-        string("uxExperiences"),
-        opcode(Opcode.INVOKE_DIRECT),
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
-            definingClass = "this",
-            name = "children"
+            smali = "Lcom/reddit/domain/model/listing/Listing;->children:Ljava/util/List;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            smali = "Lcom/reddit/domain/model/listing/Listing;->after:Ljava/lang/String;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            smali = "Lcom/reddit/domain/model/listing/Listing;->before:Ljava/lang/String;"
         )
     )
 )
 
+// Class appears to be removed in 2026.16.0+
 internal object SubmittedListingFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/domain/model/listing/SubmittedListing;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
     filters = listOf(
-        string("children"),
-        string("videoUploads"),
-        opcode(Opcode.INVOKE_DIRECT),
-        opcode(Opcode.IPUT_OBJECT),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            smali = "Lcom/reddit/domain/model/listing/SubmittedListing;->children:Ljava/util/List;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            smali = "Lcom/reddit/domain/model/listing/SubmittedListing;->videoUploads:Ljava/util/List;"
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            smali = "Lcom/reddit/domain/model/listing/SubmittedListing;->after:Ljava/lang/String;"
+        )
     )
 )
 
 private object AdPostSectionToStringFingerprint : Fingerprint(
     name = "toString",
-    returnType = "Ljava/lang/String;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
     parameters = listOf(),
     filters = listOf(
         string("AdPostSection(linkId=")
@@ -55,10 +65,7 @@ private object AdPostSectionToStringFingerprint : Fingerprint(
 internal object AdPostSectionConstructorFingerprint : Fingerprint(
     classFingerprint = AdPostSectionToStringFingerprint,
     name = "<init>",
-    returnType = "V",
-    filters = listOf(
-        string("sections")
-    )
+    returnType = "V"
 )
 
 /**

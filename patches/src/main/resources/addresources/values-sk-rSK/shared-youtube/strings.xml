@@ -109,6 +109,10 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <string name="morphe_force_original_audio_title">Vynútiť pôvodný jazyk zvukovej stopy</string>
   <string name="morphe_force_original_audio_summary_on">Používa sa pôvodný jazyk zvukovej stopy</string>
   <string name="morphe_force_original_audio_summary_off">Používa sa predvolená zvuková stopa</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Skryť reklamy na celú obrazovku</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Reklamy na celú obrazovku sú skryté</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Reklamy na celú obrazovku sa zobrazujú</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Na používanie tejto funkcie zmeňte \'Falšovanie toku videa\' na Android Reel alebo TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

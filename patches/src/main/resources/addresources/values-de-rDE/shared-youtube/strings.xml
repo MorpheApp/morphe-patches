@@ -111,6 +111,10 @@ Um sich anzumelden, drücken Sie unten auf \"Weiter\""</string>
   <string name="morphe_force_original_audio_title">Original Audio erzwingen</string>
   <string name="morphe_force_original_audio_summary_on">Original Audio wird verwendet</string>
   <string name="morphe_force_original_audio_summary_off">Standardaudio wird verwendet</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Vollbild-Werbung ausblenden</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Vollbildanzeigen werden ausgeblendet</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Vollbild-Anzeigen werden angezeigt</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Um diese Funktion zu nutzen, ändern Sie \"Fälsche Video-Streams\" auf Android Reel oder TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

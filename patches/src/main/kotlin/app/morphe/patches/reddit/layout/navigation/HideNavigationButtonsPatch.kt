@@ -15,6 +15,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.setExtensionIsPatchIncluded
@@ -100,13 +101,9 @@ val hideNavigationButtonsPatch = bytecodePatch(
 
         BottomNavScreenListBuilderFingerprint.let {
             it.method.apply {
-                val enumIndex = it.instructionMatches[2].index
-                val enumRegister =
-                    getInstruction<TwoRegisterInstruction>(enumIndex).registerA
-
-                val freeIndex = it.instructionMatches.last().index
-                val freeRegister =
-                    getInstruction<OneRegisterInstruction>(freeIndex).registerA
+                val enumIndex = it.instructionMatches.last().index
+                val enumRegister = getInstruction<TwoRegisterInstruction>(enumIndex).registerA
+                val freeRegister = findFreeRegister(enumIndex, enumRegister)
 
                 addInstructionsWithLabels(
                     enumIndex + 1,
@@ -114,7 +111,8 @@ val hideNavigationButtonsPatch = bytecodePatch(
                         invoke-static { v$enumRegister }, $EXTENSION_CLASS->hideNavigationTab(Ljava/lang/Enum;)Z
                         move-result v$freeRegister
                         if-nez v$freeRegister, :jump
-                    """, ExternalLabel("jump", it.instructionMatches[1].instruction)
+                    """,
+                    ExternalLabel("jump", it.instructionMatches[1].instruction)
                 )
             }
         }

@@ -111,6 +111,10 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_force_original_audio_title">Pakota alkuperäinen äänen kieli</string>
   <string name="morphe_force_original_audio_summary_on">Käytetään alkuperäistä äänen kieltä</string>
   <string name="morphe_force_original_audio_summary_off">Käytetään oletusääntä</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Piilota koko näytön mainokset</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Koko näytön mainokset piilotetaan</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Koko näytön mainokset näytetään</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Käyttääksesi tätä ominaisuutta, muuta \'Naamioi videovirrat\' Android Reel tai TV:ksi</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

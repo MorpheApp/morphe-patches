@@ -199,6 +199,8 @@ YouTube Doodles göstermek, özel başlıkların görüntülenmesini engelleyebi
   <string name="morphe_hide_video_title_title">Video başlığını gizle</string>
   <string name="morphe_hide_video_title_summary_on">Oynatıcıdaki video başlığı gizli</string>
   <string name="morphe_hide_video_title_summary_off">Oynatıcıdaki video başlığı görünür</string>
+  <string name="morphe_hide_description_components_screen_title">Video açıklaması</string>
+  <string name="morphe_hide_description_components_screen_summary">Video açıklamasındaki öğeleri gizle veya göster</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'Yapay zeka tarafından oluşturulmuş video özeti\'ni gizle</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Yapay zeka tarafından oluşturulmuş video özeti kısmı gizli</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Yapay zeka tarafından oluşturulmuş video özeti kısmı görünür</string>
@@ -255,17 +257,15 @@ YouTube Doodles göstermek, özel başlıkların görüntülenmesini engelleyebi
   <string name="morphe_hide_music_section_title">Müzik\'i gizle</string>
   <string name="morphe_hide_music_section_summary_on">Müzik bölümü gizli</string>
   <string name="morphe_hide_music_section_summary_off">Müzik bölümü görünür</string>
+  <string name="morphe_hide_quizzes_section_title">Testler\'i gizle</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Testler kısmı gizli</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Testler kısmı görünür</string>
   <string name="morphe_hide_subscribe_button_title">Abone ol düğmesini gizle</string>
   <string name="morphe_hide_subscribe_button_summary_on">Abone ol düğmesi gizli</string>
   <string name="morphe_hide_subscribe_button_summary_off">Abone ol düğmesi görünür</string>
   <string name="morphe_hide_transcript_section_title">Transkript\'i gizle</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkript kısmı gizli</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkript kısmı görünür</string>
-  <string name="morphe_hide_quizzes_section_title">Testler\'i gizle</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Testler kısmı gizli</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Testler kısmı görünür</string>
-  <string name="morphe_hide_description_components_screen_title">Video açıklaması</string>
-  <string name="morphe_hide_description_components_screen_summary">Video açıklamasındaki öğeleri gizle veya göster</string>
   <string name="morphe_hide_filter_bar_screen_title">Filtreleme çubuğu</string>
   <string name="morphe_hide_filter_bar_screen_summary">Akışlarda, ilgili videolarda, arama sonuçlarında ve izleme geçmişinde filtre çubuğunu gizle veya göster</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Akışta gizle</string>
@@ -424,9 +424,6 @@ Sınırlamalar
   <string name="morphe_hide_end_screen_store_banner_title">Bitiş ekranındaki mağaza afişini gizle</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Bitiş ekranı mağaza afişi gizli</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Bitiş ekranı mağaza afişi görünür</string>
-  <string name="morphe_hide_fullscreen_ads_title">Tam ekran reklamları gizle</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Tam ekran reklamlar gizli</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Tam ekran reklamlar görünür</string>
   <string name="morphe_hide_general_ads_title">Genel reklamları gizle</string>
   <string name="morphe_hide_general_ads_summary_on">Genel reklamlar gizli</string>
   <string name="morphe_hide_general_ads_summary_off">Genel reklamlar görünür</string>
@@ -896,6 +893,9 @@ Ses Parçası menüsünü görüntülemek için, 'Video akışlarını taklit et
   <string name="morphe_hide_player_previous_next_buttons_title">Önceki &amp; Sonraki düğmelerini gizle</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Önceki &amp; Sonraki düğmeleri gizli</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Önceki &amp; Sonraki düğmeleri görünür</string>
+  <string name="morphe_hide_settings_button_title">Ayarlar düğmesini gizle</string>
+  <string name="morphe_hide_settings_button_summary_on">Ayarlar düğmesi gizli</string>
+  <string name="morphe_hide_settings_button_summary_off">Ayarlar düğmesi görünür</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Bitiş ekranı kartlarını gizle</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Bitiş ekranı kartları gizli</string>
@@ -1101,7 +1101,7 @@ Ayarlar → Oynatma (veya Otomatik oynat) → Sonraki video otomatik oynat"</str
   <string name="morphe_player_overlay_opacity_invalid_toast">Oynatıcı katmanı opaklığı 0-100 arasında olmalıdır</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_ryd_failure_connection_timeout">Beğenmemeler geçici olarak kullanılamıyor (API zaman aşımına uğradı)</string>
+  <string name="morphe_ryd_failure_connection_timeout">Beğenmemeler geçici olarak kullanılamıyor (API zaman aşımı)</string>
   <string name="morphe_ryd_failure_connection_status_code">Beğenilmemeler kullanılamıyor (durum %d)</string>
   <string name="morphe_ryd_failure_client_rate_limit_requested">Beğenilmemeler kullanılamıyor (istemci API sınırı)</string>
   <string name="morphe_ryd_failure_generic">Beğenilmemeler kullanılamıyor (%s)</string>
@@ -1298,10 +1298,10 @@ Kullanıcı kimliğiniz bir parola gibidir ve asla paylaşılmamalıdır."</stri
 Aynısı mevcut"</string>
   <string name="morphe_sb_submit_succeeded">Kısım başarıyla gönderildi</string>
   <!-- Notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
-  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock geçici olarak kullanılamıyor (API zaman aşımına uğradı)</string>
+  <string name="morphe_sb_sponsorblock_connection_failure_timeout">SponsorBlock geçici olarak kullanılamıyor (API zaman aşımı)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_status">SponsorBlock geçici olarak kullanılamıyor (durum %d)</string>
   <string name="morphe_sb_sponsorblock_connection_failure_generic">SponsorBlock geçici olarak kullanılamıyor</string>
-  <string name="morphe_sb_vote_failed_timeout">Kısım oylanamıyor (API zaman aşımına uğradı)</string>
+  <string name="morphe_sb_vote_failed_timeout">Kısım oylanamıyor (API zaman aşımı)</string>
   <string name="morphe_sb_vote_failed_unknown_error">Kısım oylanamıyor (durum %1$d %2$s)</string>
   <string name="morphe_sb_vote_failed_forbidden">Kısım oylanamıyor: %s</string>
   <string name="morphe_sb_vote_upvote">Olumlu oy</string>
@@ -1337,7 +1337,7 @@ Göndermeye hazır mısınız?"</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Geçersiz süre girildi</string>
   <string name="morphe_sb_stats_title">İstatistikler</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
-  <string name="morphe_sb_stats_connection_failure">İstatistikler geçici olarak kullanılamıyor (API kapalı)</string>
+  <string name="morphe_sb_stats_connection_failure">İstatistikler geçici olarak kullanılamıyor (API çalışmıyor)</string>
   <string name="morphe_sb_stats_loading">Yükleniyor...</string>
   <string name="morphe_sb_stats_sb_disabled">SponsorBlock devre dışı</string>
   <string name="morphe_sb_stats_username">Kullanıcı adınız: &lt;b&gt;%s&lt;/b&gt;</string>
@@ -1558,7 +1558,7 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow geçici olarak kullanılamıyor</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
-  <string name="morphe_restore_old_player_buttons_title">Eski oynatıcı düğmesi stilini geri yükle</string>
+  <string name="morphe_restore_old_player_buttons_title">Eski oynatıcı düğmesi stilini geri getir</string>
   <string name="morphe_restore_old_player_buttons_summary_on">Oynatıcı ince tarzı gösterilir</string>
   <string name="morphe_restore_old_player_buttons_summary_off">Oynatıcı kalın tarzı gösterilir</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->

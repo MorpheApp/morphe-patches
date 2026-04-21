@@ -111,6 +111,10 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_force_original_audio_title">Orijinal ses dilini zorla</string>
   <string name="morphe_force_original_audio_summary_on">Orijinal ses dili kullanılıyor</string>
   <string name="morphe_force_original_audio_summary_off">Varsayılan ses kullanılıyor</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Tam ekran reklamları gizle</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Tam ekran reklamlar gizli</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Tam ekran reklamlar görünür</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\' ayarını Android Reel veya TV olarak değiştirin</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

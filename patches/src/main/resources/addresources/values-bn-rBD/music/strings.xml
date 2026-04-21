@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">সাধারণ</string>
   <string name="morphe_settings_music_screen_3_player_title">প্লেয়ার</string>
   <string name="morphe_settings_music_screen_4_misc_title">বিবিধ</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\'গেট মিউজিক প্রিমিয়াম\' লেবেল লুকান</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">\"Get Music Premium\" লেবেলটি লুকানো হয়েছে</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">\"Get Music Premium\" লেবেলটি দেখানো হচ্ছে</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">ভিডিও বিজ্ঞাপন লুকান</string>
   <string name="morphe_music_hide_video_ads_summary_on">ভিডিও বিজ্ঞাপন লুকানো আছে</string>
@@ -151,10 +155,6 @@ VazerOG কর্তৃক ফিচার বাস্তবায়ন।"</s
   <string name="morphe_music_hide_navigation_bar_labels_title">নেভিগেশন বোতামের লেবেলগুলি লুকান</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">লেবেলগুলি লুকানো আছে</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">লেবেলগুলি দেখানো আছে</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">\'গেট মিউজিক প্রিমিয়াম\' লেবেল লুকান</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">লেবেল লুকানো আছে</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">লেবেল দেখানো আছে</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">আপগ্রেড বাটন লুকান</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">বাটন লুকানো আছে</string>

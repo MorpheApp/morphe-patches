@@ -111,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">强制使用原始音频语言</string>
   <string name="morphe_force_original_audio_summary_on">使用原始音频语言</string>
   <string name="morphe_force_original_audio_summary_off">正在使用默认音频</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">隐藏全屏广告</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">全屏广告已隐藏</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">全屏广告已显示</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">要使用此功能，请将“伪造视频流”更改为 Android Reel 或 TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

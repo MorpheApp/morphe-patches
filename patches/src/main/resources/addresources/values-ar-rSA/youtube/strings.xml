@@ -199,6 +199,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_title">إخفاء عنوان الفيديو</string>
   <string name="morphe_hide_video_title_summary_on">تم إخفاء عنوان الفيديو في واجهة المشغل</string>
   <string name="morphe_hide_video_title_summary_off">يتم عرض عنوان الفيديو في واجهة المشغل</string>
+  <string name="morphe_hide_description_components_screen_title">وصف الفيديو</string>
+  <string name="morphe_hide_description_components_screen_summary">إخفاء أو عرض مكونات وصف الفيديو</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">إخفاء \'ملخص الفيديو الذي تم إنشاؤه بواسطة الذكاء الاصطناعي\'</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">تم إخفاء قسم ملخص الفيديو الذي تم إنشاؤه بواسطة AI</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">يتم عرض قسم ملخص الفيديو الذي تم إنشاؤه بواسطة AI</string>
@@ -255,17 +257,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_music_section_title">إخفاء الموسيقى</string>
   <string name="morphe_hide_music_section_summary_on">تم إخفاء قسم الموسيقى</string>
   <string name="morphe_hide_music_section_summary_off">يتم عرض قسم الموسيقى</string>
+  <string name="morphe_hide_quizzes_section_title">إخفاء الاختبارات</string>
+  <string name="morphe_hide_quizzes_section_summary_on">تم إخفاء قسم الاختبارات</string>
+  <string name="morphe_hide_quizzes_section_summary_off">يتم عرض قسم الاختبارات</string>
   <string name="morphe_hide_subscribe_button_title">إخفاء زر اشتراك</string>
   <string name="morphe_hide_subscribe_button_summary_on">تم إخفاء زر اشتراك</string>
   <string name="morphe_hide_subscribe_button_summary_off">يتم عرض زر اشتراك</string>
   <string name="morphe_hide_transcript_section_title">إخفاء النص</string>
   <string name="morphe_hide_transcript_section_summary_on">تم إخفاء قسم النص</string>
   <string name="morphe_hide_transcript_section_summary_off">يتم عرض قسم النص</string>
-  <string name="morphe_hide_quizzes_section_title">إخفاء الاختبارات</string>
-  <string name="morphe_hide_quizzes_section_summary_on">تم إخفاء قسم الاختبارات</string>
-  <string name="morphe_hide_quizzes_section_summary_off">يتم عرض قسم الاختبارات</string>
-  <string name="morphe_hide_description_components_screen_title">وصف الفيديو</string>
-  <string name="morphe_hide_description_components_screen_summary">إخفاء أو عرض مكونات وصف الفيديو</string>
   <string name="morphe_hide_filter_bar_screen_title">شريط الفئة</string>
   <string name="morphe_hide_filter_bar_screen_summary">إخفاء أو عرض شريط الفئة في الموجزات، الفيديوهات ذات الصلة، نتائج البحث، والسجلّ</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">إخفاء في الموجز</string>
@@ -424,9 +424,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">إخفاء لافتة شاشة المتجر النهائية</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">تم إخفاء لافتة المتجر بالشاشة النهائية</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">يتم عرض لافتة المتجر بالشاشة النهائية</string>
-  <string name="morphe_hide_fullscreen_ads_title">إخفاء إعلانات ملء الشاشة</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">تم إخفاء إعلانات ملء الشاشة</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">يتم عرض إعلانات ملء الشاشة</string>
   <string name="morphe_hide_general_ads_title">إخفاء الإعلانات العامة</string>
   <string name="morphe_hide_general_ads_summary_on">تم إخفاء الإعلانات بشكل عام</string>
   <string name="morphe_hide_general_ads_summary_off">يتم عرض الإعلانات العامة</string>
@@ -893,6 +890,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">إخفاء أزرار السابق &amp; التالي</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">تم إخفاء أزرار السابق &amp; التالي</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">يتم عرض أزرار السابق &amp; التالي</string>
+  <string name="morphe_hide_settings_button_title">إخفاء زر الإعدادات</string>
+  <string name="morphe_hide_settings_button_summary_on">تم إخفاء زر الإعدادات</string>
+  <string name="morphe_hide_settings_button_summary_off">يتم عرض زر الإعدادات</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">إخفاء بطاقات شاشة النهاية</string>
   <string name="morphe_hide_end_screen_cards_summary_on">تم إخفاء بطاقات شاشة النهاية</string>

@@ -111,6 +111,10 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_force_original_audio_title">Eredeti hang kikényszerítése</string>
   <string name="morphe_force_original_audio_summary_on">Eredeti hang használata a hang nyelvén</string>
   <string name="morphe_force_original_audio_summary_off">Alapértelmezett hang használata</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Teljesképernyős-hirdetések elrejtése</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Teljesképernyős-hirdetések elrejtve</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">A teljesképernyős-hirdetések megjelennek</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">A funkció használatához módosítsa a \"Videóstreamek hamisítása\" beállítást Android Reel vagy TV-re</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

@@ -198,6 +198,8 @@ Menampilkan YouTube Doodles mungkin mencegah menampilkan header khusus."</string
   <string name="morphe_hide_video_title_title">Sembunyikan judul video</string>
   <string name="morphe_hide_video_title_summary_on">Judul video di hamparan pemutar disembunyikan</string>
   <string name="morphe_hide_video_title_summary_off">Judul video di hamparan pemutar ditampilkan</string>
+  <string name="morphe_hide_description_components_screen_title">Keterangan video</string>
+  <string name="morphe_hide_description_components_screen_summary">Sembunyikan atau tampilkan komponen keterangan video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Sembunyikan \'Ringkasan video yang dibuat AI\'</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Bagian ringkasan video buatan AI disembunyikan</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Bagian ringkasan video buatan AI ditampilkan</string>
@@ -254,17 +256,15 @@ Menampilkan YouTube Doodles mungkin mencegah menampilkan header khusus."</string
   <string name="morphe_hide_music_section_title">Sembunyikan Musik</string>
   <string name="morphe_hide_music_section_summary_on">Bagian musik disembunyikan</string>
   <string name="morphe_hide_music_section_summary_off">Bagian musik ditampilkan</string>
+  <string name="morphe_hide_quizzes_section_title">Sembunyikan Kuis</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Bagian Kuis disembunyikan</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Bagian Kuis ditampilkan</string>
   <string name="morphe_hide_subscribe_button_title">Sembunyikan tombol Berlangganan</string>
   <string name="morphe_hide_subscribe_button_summary_on">Tombol berlangganan disembunyikan</string>
   <string name="morphe_hide_subscribe_button_summary_off">Tombol berlangganan ditampilkan</string>
   <string name="morphe_hide_transcript_section_title">Sembunyikan Transkrip</string>
   <string name="morphe_hide_transcript_section_summary_on">Bagian transkrip disembunyikan</string>
   <string name="morphe_hide_transcript_section_summary_off">Bagian transkrip ditampilkan</string>
-  <string name="morphe_hide_quizzes_section_title">Sembunyikan Kuis</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Bagian Kuis disembunyikan</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Bagian Kuis ditampilkan</string>
-  <string name="morphe_hide_description_components_screen_title">Keterangan video</string>
-  <string name="morphe_hide_description_components_screen_summary">Sembunyikan atau tampilkan komponen keterangan video</string>
   <string name="morphe_hide_filter_bar_screen_title">Bilah saring</string>
   <string name="morphe_hide_filter_bar_screen_summary">Sembunyikan atau tampilkan bilah penyaring di feeds, video terkait, hasil pencarian, dan riwayat tontonan</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Sembunyikan di feeds</string>
@@ -423,9 +423,6 @@ Keterbatasan
   <string name="morphe_hide_end_screen_store_banner_title">Sembunyikan spanduk toko di layar akhir</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Spanduk toko layar akhir disembunyikan</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Spanduk toko layar akhir ditampilkan</string>
-  <string name="morphe_hide_fullscreen_ads_title">Sembunyikan iklan layar penuh</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Iklan layar penuh disembunyikan</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Iklan layar penuh ditampilkan</string>
   <string name="morphe_hide_general_ads_title">Sembunyikan iklan umum</string>
   <string name="morphe_hide_general_ads_summary_on">Iklan umum disembunyikan</string>
   <string name="morphe_hide_general_ads_summary_off">Iklan umum ditampilkan</string>
@@ -895,6 +892,9 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_hide_player_previous_next_buttons_title">Sembunyikan tombol Sebelumnya &amp; Berikutnya</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Tombol Sebelumnya &amp; Berikutnya disembunyikan</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Tombol Sebelumnya &amp; Berikutnya ditampilkan</string>
+  <string name="morphe_hide_settings_button_title">Sembunyikan tombol Pengaturan</string>
+  <string name="morphe_hide_settings_button_summary_on">Tombol Pengaturan disembunyikan</string>
+  <string name="morphe_hide_settings_button_summary_off">Tombol Pengaturan ditampilkan</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Sembunyikan kartu layar akhir</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Kartu layar akhir disembunyikan</string>

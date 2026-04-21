@@ -111,6 +111,10 @@ Da bi se prijavili, pritisnite nastavi ispod"</string>
   <string name="morphe_force_original_audio_title">Prisili originalni jezik zvuka</string>
   <string name="morphe_force_original_audio_summary_on">Korišćenje originalnog jezika zvuka</string>
   <string name="morphe_force_original_audio_summary_off">Korišćenje podrazumevanog zvuka</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Sakrij oglase preko celog ekrana</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Oglasi preko celog ekrana su skriveni</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Oglasi preko celog ekrana su prikazani</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Da biste koristili ovu funkciju, promenite \'Lažirani video strimovi\' na Android Reel ili TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

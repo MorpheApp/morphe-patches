@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.ad.general
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -8,6 +18,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
@@ -23,31 +34,20 @@ import app.morphe.patches.youtube.misc.proto.hookElement
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findFreeRegister
 import app.morphe.util.findMutableMethodOf
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.injectHideViewCall
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction31i
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
-
-internal var adAttributionId = -1L
-    private set
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
 
 private val hideAdsResourcePatch = resourcePatch {
     dependsOn(
         lithoFilterPatch,
         settingsPatch,
-        resourceMappingPatch,
         clientContextHookPatch,
         engagementPanelHookPatch,
         hideHorizontalShelvesPatch,
@@ -56,7 +56,6 @@ private val hideAdsResourcePatch = resourcePatch {
     execute {
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("morphe_hide_end_screen_store_banner"),
-            SwitchPreference("morphe_hide_fullscreen_ads"),
             SwitchPreference("morphe_hide_general_ads"),
             SwitchPreference("morphe_hide_merchandise_banners"),
             SwitchPreference("morphe_hide_paid_promotion_label"),
@@ -69,8 +68,6 @@ private val hideAdsResourcePatch = resourcePatch {
 
         addLithoFilter(EXTENSION_CLASS)
         addEngagementPanelIdHook("$EXTENSION_CLASS->hidePlayerPopupAds(Ljava/lang/String;)Z")
-
-        adAttributionId = getResourceId(ResourceType.ID, "ad_attribution")
     }
 }
 
@@ -82,7 +79,9 @@ val hideAdsPatch = bytecodePatch(
     dependsOn(
         hideAdsResourcePatch,
         elementProtoParserHookPatch,
-        versionCheckPatch
+        resourceMappingPatch,
+        versionCheckPatch,
+        hideFullscreenAdsPatch(PreferenceScreen.ADS)
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -105,33 +104,6 @@ val hideAdsPatch = bytecodePatch(
                     insertIndex,
                     "invoke-static { v$listRegister, v$objectRegister }, $EXTENSION_CLASS->" +
                             "hideEndScreenStoreBanner(Ljava/util/List;Ljava/lang/Object;)V"
-                )
-            }
-        }
-
-        // Hide fullscreen ad
-
-        LithoDialogBuilderFingerprint.let {
-            it.method.apply {
-                // Find the class name of the custom dialog
-                val dialogClass = it.instructionMatches.first().instruction.getReference<MethodReference>()!!.definingClass
-
-                // The dialog can be closed after dialog.show(),
-                // and it is better to close the dialog after the layout of the dialog has changed
-                val insertIndex = indexOfFirstInstructionReversedOrThrow {
-                    opcode == Opcode.IPUT_OBJECT &&
-                            getReference<FieldReference>()?.type == dialogClass
-                }
-                val insertRegister =
-                    getInstruction<TwoRegisterInstruction>(insertIndex).registerA
-                val freeRegister = findFreeRegister(insertIndex, insertRegister)
-
-                addInstructionsAtControlFlowLabel(
-                    insertIndex,
-                    """
-                        move-object/from16 v$freeRegister, p1
-                        invoke-static { v$insertRegister, v$freeRegister }, $EXTENSION_CLASS->closeFullscreenAd(Ljava/lang/Object;[B)V
-                    """
                 )
             }
         }
@@ -176,10 +148,19 @@ val hideAdsPatch = bytecodePatch(
             """
         )
 
-        // Hide ad views
+        // Hide ad views.
+
+        var adAttributionId = getResourceId(ResourceType.ID, "ad_attribution")
 
         classDefForEach { classDef ->
+            val mutableClassDef by lazy {
+                mutableClassDefBy(classDef)
+            }
             classDef.methods.forEach { method ->
+                val mutableMethod by lazy {
+                    mutableClassDef.findMutableMethodOf(method)
+                }
+
                 with(method.implementation) {
                     this?.instructions?.forEachIndexed { index, instruction ->
                         if (instruction.opcode != Opcode.CONST) {
@@ -200,14 +181,12 @@ val hideAdsPatch = bytecodePatch(
 
                             // Hide the view
                             val viewRegister = (this as Instruction35c).registerC
-                            mutableClassDefBy(classDef)
-                                .findMutableMethodOf(method)
-                                .injectHideViewCall(
-                                    insertIndex,
-                                    viewRegister,
-                                    EXTENSION_CLASS,
-                                    "hideAdAttributionView",
-                                )
+                            mutableMethod.injectHideViewCall(
+                                insertIndex,
+                                viewRegister,
+                                EXTENSION_CLASS,
+                                "hideAdAttributionView",
+                            )
                         }
                     }
                 }

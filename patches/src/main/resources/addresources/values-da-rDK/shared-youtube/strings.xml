@@ -111,6 +111,10 @@ For at logge ind, tryk på fortsæt nedenfor"</string>
   <string name="morphe_force_original_audio_title">Tving originalt lydsprog</string>
   <string name="morphe_force_original_audio_summary_on">Bruger originalt lydsprog</string>
   <string name="morphe_force_original_audio_summary_off">Brug standard lyd</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Skjul fuldskærmsannoncer</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Fuldskærmsannoncer er skjulte</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Fuldskærmsannoncer vises</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">For at bruge denne funktion, skal du ændre \'Spoof video streams\' til Android Reel eller TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

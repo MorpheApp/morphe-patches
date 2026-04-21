@@ -111,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">Εξαναγκασμός αρχικής γλώσσας ήχου</string>
   <string name="morphe_force_original_audio_summary_on">Χρησιμοποιείται η αρχική γλώσσα ήχου</string>
   <string name="morphe_force_original_audio_summary_off">Χρησιμοποιείται ο προεπιλεγμένος ήχος</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Διαφημίσεις πλήρους οθόνης</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Οι διαφημίσεις πλήρους οθόνης είναι κρυφές</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Οι διαφημίσεις πλήρους οθόνης εμφανίζονται</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, αλλάξτε τη \"Παραποίηση ροών βίντεο\" σε Android Reel ή TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

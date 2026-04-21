@@ -111,6 +111,10 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_force_original_audio_title">Paksa bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary_on">Menggunakan bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary_off">Menggunakan audio bawaan</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Sembunyikan iklan layar penuh</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Iklan layar penuh disembunyikan</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Iklan layar penuh ditampilkan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Untuk menggunakan fitur ini, ubah \'Palsukan aliran video\' ke Android Reel atau TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

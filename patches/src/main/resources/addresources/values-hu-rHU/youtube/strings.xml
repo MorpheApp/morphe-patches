@@ -199,6 +199,8 @@ A YouTube Doodles megjelenítése megakadályozhatja egyéni fejléc megjelenít
   <string name="morphe_hide_video_title_title">Videó címének elrejtése</string>
   <string name="morphe_hide_video_title_summary_on">A videó címe a lejátszó felületén elrejtve</string>
   <string name="morphe_hide_video_title_summary_off">A videó címe a lejátszó felületén megjelenik</string>
+  <string name="morphe_hide_description_components_screen_title">Videóleírás</string>
+  <string name="morphe_hide_description_components_screen_summary">A videóleírás komponenseinek elrejtése vagy megjelenítése</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">„AI-generált videó összefoglaló” elrejtése</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Az MI által generált videó összefoglaló szakasz elrejtve</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">AI által generált videó összefoglaló szakasz megjelenítve</string>
@@ -255,17 +257,15 @@ A YouTube Doodles megjelenítése megakadályozhatja egyéni fejléc megjelenít
   <string name="morphe_hide_music_section_title">Zene elrejtése</string>
   <string name="morphe_hide_music_section_summary_on">A zene szakció el van rejtve</string>
   <string name="morphe_hide_music_section_summary_off">A zene szakció látható</string>
+  <string name="morphe_hide_quizzes_section_title">Rejtett kérdések</string>
+  <string name="morphe_hide_quizzes_section_summary_on">A kérdések szakasza el van rejtve</string>
+  <string name="morphe_hide_quizzes_section_summary_off">A kérdések szakasza látható</string>
   <string name="morphe_hide_subscribe_button_title">Feliratkozás gomb elrejtése</string>
   <string name="morphe_hide_subscribe_button_summary_on">A feliratkozás gomb el van rejtve</string>
   <string name="morphe_hide_subscribe_button_summary_off">A feliratkozás gomb látható</string>
   <string name="morphe_hide_transcript_section_title">Átirat elrejtése</string>
   <string name="morphe_hide_transcript_section_summary_on">Az átirat rész el van rejtve</string>
   <string name="morphe_hide_transcript_section_summary_off">Az átirat rész megjelenik</string>
-  <string name="morphe_hide_quizzes_section_title">Rejtett kérdések</string>
-  <string name="morphe_hide_quizzes_section_summary_on">A kérdések szakasza el van rejtve</string>
-  <string name="morphe_hide_quizzes_section_summary_off">A kérdések szakasza látható</string>
-  <string name="morphe_hide_description_components_screen_title">Videóleírás</string>
-  <string name="morphe_hide_description_components_screen_summary">A videóleírás komponenseinek elrejtése vagy megjelenítése</string>
   <string name="morphe_hide_filter_bar_screen_title">Szűrősáv</string>
   <string name="morphe_hide_filter_bar_screen_summary">A szűrősáv elrejtése vagy megjelenítése a feedekben, kapcsolódó videókban, keresési eredményekben és a megtekintési előzményekben</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Elrejtés a feedekben</string>
@@ -424,9 +424,6 @@ Korlátozások
   <string name="morphe_hide_end_screen_store_banner_title">A befejező képernyőn lévő üzletbanner elrejtése</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">A végképernyő bolt banner elrejtve</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">A végképernyő bolt banner látható</string>
-  <string name="morphe_hide_fullscreen_ads_title">Teljesképernyős-hirdetések elrejtése</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Teljesképernyős-hirdetések elrejtve</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">A teljesképernyős-hirdetések megjelennek</string>
   <string name="morphe_hide_general_ads_title">Általános hirdetések elrejtése</string>
   <string name="morphe_hide_general_ads_summary_on">Általános hirdetések elrejtve</string>
   <string name="morphe_hide_general_ads_summary_off">Az általános hirdetések megjelennek</string>
@@ -892,6 +889,9 @@ A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et '
   <string name="morphe_hide_player_previous_next_buttons_title">Előző &amp; Következő gombok elrejtése</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Az Előző &amp; Következő gombok el vannak rejtve</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Az Előző &amp; Következő gombok megjelennek</string>
+  <string name="morphe_hide_settings_button_title">Elrejtés gomb</string>
+  <string name="morphe_hide_settings_button_summary_on">Elrejtve a beállítások gomb</string>
+  <string name="morphe_hide_settings_button_summary_off">Látható a beállítások gomb</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Záróképernyő kártyák elrejtése</string>
   <string name="morphe_hide_end_screen_cards_summary_on">A záróképernyő kártyák el vannak rejtve</string>

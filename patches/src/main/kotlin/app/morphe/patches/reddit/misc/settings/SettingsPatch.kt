@@ -20,24 +20,18 @@ import app.morphe.patches.all.misc.resources.setAddResourceLocale
 import app.morphe.patches.all.misc.updates.disablePlayStoreUpdatesPatch
 import app.morphe.patches.reddit.misc.extension.hooks.redditActivityOnCreateHook
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
+import app.morphe.patches.reddit.misc.fix.signature.spoofSignaturePatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.patches.shared.misc.checks.experimentalAppNoticePatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.cloneMutableAndPreserveParameters
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
 internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/settings/RedditActivityHook;"
-
-var is_2026_04_or_greater = false
-    private set
-var is_2026_11_or_greater = false
-    private set
 
 val settingsPatch = bytecodePatch(
     description = "Applies mandatory patches to implement Morphe settings into the application."
@@ -47,6 +41,7 @@ val settingsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         disablePlayStoreUpdatesPatch,
+        spoofSignaturePatch,
         addResourcesPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,
@@ -73,15 +68,6 @@ val settingsPatch = bytecodePatch(
         setAddResourceLocale(localesReddit)
         addAppResources("shared")
         addAppResources("reddit")
-
-        /**
-         * Set version info
-         */
-        val versionNumber = RedditInternalFeaturesFingerprint.instructionMatches[1].instruction
-            .getReference<StringReference>()!!.string.replace(".", "").toInt()
-
-        is_2026_04_or_greater = 2026040 <= versionNumber
-        is_2026_11_or_greater = 2026110 <= versionNumber
 
         /**
          * Replace settings label and icon

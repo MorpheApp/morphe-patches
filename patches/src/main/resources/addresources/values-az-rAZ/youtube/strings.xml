@@ -158,6 +158,8 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_video_title_title">Video başlığını gizlət</string>
   <string name="morphe_hide_video_title_summary_on">Video başlığı oynatma örtüsündə gizlidir</string>
   <string name="morphe_hide_video_title_summary_off">Video başlığı oynatma örtüsündə göstərilir</string>
+  <string name="morphe_hide_description_components_screen_title">Video təsviri</string>
+  <string name="morphe_hide_description_components_screen_summary">Video təsviri elementlərini gizlət və ya göstər</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\"AI ilə yaradılan video xülasəsini\" gizlət</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Sİ ilə yaradılan video xülasə bölməsi gizlədilib</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Sİ ilə yaradılan video xülasə bölməsi görünür</string>
@@ -215,8 +217,6 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_transcript_section_title">Transkript-i Gizlət</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkripsiya bölməsi gizlidir</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkripsiya bölməsi göstərilir</string>
-  <string name="morphe_hide_description_components_screen_title">Video təsviri</string>
-  <string name="morphe_hide_description_components_screen_summary">Video təsviri elementlərini gizlət və ya göstər</string>
   <string name="morphe_hide_filter_bar_screen_title">Filtr çubuğu</string>
   <string name="morphe_hide_filter_bar_screen_summary">Axınlar, əlaqəli videolar, axtarış nəticələri və baxış tarixçəsində filtr cərgəsin gizlət və ya göstər</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Axınlarda gizlət</string>
@@ -340,9 +340,6 @@ Məhdudiyyətlər
   <string name="morphe_hide_end_screen_store_banner_title">Son ekran mağaza afişasın gizlət</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Son ekran mağaza afişası gizlidir</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Son ekran mağaza afişası görünür</string>
-  <string name="morphe_hide_fullscreen_ads_title">Tam ekran reklamlarını gizlət</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Tam ekran reklamları gizlənir</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Tam ekran reklamları göstərilir</string>
   <string name="morphe_hide_general_ads_title">Ümumi reklamları gizlət</string>
   <string name="morphe_hide_general_ads_summary_on">Ümumi reklamlar gizlidir</string>
   <string name="morphe_hide_general_ads_summary_off">Ümumi reklamlar göstərilir</string>

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Geral</string>
   <string name="morphe_settings_music_screen_3_player_title">Reprodutor</string>
   <string name="morphe_settings_music_screen_4_misc_title">Diversos</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Ocultar o rótulo \"Obter Music Premium\"</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">O rótulo \"Get Music Premium\" está oculto</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">O rótulo \"Get Music Premium\" está visível</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Ocultar anúncios em vídeo</string>
   <string name="morphe_music_hide_video_ads_summary_on">Anúncios em vídeo estão ocultos</string>
@@ -151,10 +155,6 @@ Implementação do recurso por VazerOG"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ocultar rótulos dos botões de navegação</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Rótulos estão ocultos</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Rótulos estão exibidos</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Ocultar o rótulo \"Obter Music Premium\"</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Rótulo está oculto</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Rótulo está exibido</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Ocultar botão de atualização</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Botão está oculto</string>
