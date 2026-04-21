@@ -511,10 +511,8 @@ public final class LayoutComponentsFilter extends Filter {
             public void onGlobalLayout() {
                 view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 
-                ViewParent shelfContainer = view.getParent();
-
-                if (shelfContainer instanceof RecyclerView) {
-                    ((RecyclerView) shelfContainer).setVisibility(RecyclerView.GONE);
+                if (view.getParent() instanceof RecyclerView shelfContainerRecycleView) {
+                    shelfContainerRecycleView.setVisibility(RecyclerView.GONE);
                 }
             }
         });
