@@ -77,16 +77,17 @@ val hideVideoActionButtonsPatch = bytecodePatch(
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_hide_quick_actions_ask_button"),
-                    SwitchPreference("morphe_hide_quick_actions_comment_button"),
+                    SwitchPreference("morphe_hide_quick_actions_comments_button"),
                     SwitchPreference("morphe_hide_quick_actions_dislike_button"),
                     SwitchPreference("morphe_hide_quick_actions_like_button"),
                     SwitchPreference("morphe_hide_quick_actions_live_chat_button"),
-                    SwitchPreference("morphe_hide_quick_actions_mix_playlist_button"),
+                    SwitchPreference("morphe_hide_quick_actions_mix_button"),
                     SwitchPreference("morphe_hide_quick_actions_more_button"),
                     SwitchPreference("morphe_hide_quick_actions_more_videos_button"),
                     SwitchPreference("morphe_hide_quick_actions_playlist_button"),
                     SwitchPreference("morphe_hide_quick_actions_save_button"),
                     SwitchPreference("morphe_hide_quick_actions_share_button"),
+                    SwitchPreference("morphe_hide_quick_actions"),
                 )
             )
         )

@@ -28,8 +28,7 @@ public final class QuickActionButtonsFilter extends Filter {
 
         buttonFilterPath = new StringFilterGroup(
                 null,
-                "|ContainerType|button.e",
-                "|fullscreen_video_action_button.e"
+                "|ContainerType|button.e"
         );
 
         addPathCallbacks(
@@ -42,10 +41,6 @@ public final class QuickActionButtonsFilter extends Filter {
                         "|dislike_button"
                 ),
                 new StringFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_COMMENT_BUTTON,
-                        "|comments_entry_point_button"
-                ),
-                new StringFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_SAVE_BUTTON,
                         "|save_to_playlist_button"
                 ),
@@ -55,7 +50,7 @@ public final class QuickActionButtonsFilter extends Filter {
                 ),
                 new StringFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_MORE_VIDEOS_BUTTON,
-                        "fullscreen_related_videos"
+                        "|fullscreen_related_videos"
                 ),
                 buttonFilterPath
         );
@@ -67,7 +62,7 @@ public final class QuickActionButtonsFilter extends Filter {
                         "yt_fill_spark"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_COMMENT_BUTTON,
+                        Settings.HIDE_QUICK_ACTIONS_COMMENTS_BUTTON,
                         "yt_outline_experimental_text_bubble",
                         "yt_outline_message_bubble"
                 ),
@@ -77,7 +72,7 @@ public final class QuickActionButtonsFilter extends Filter {
                         "yt_outline_message_bubble_overlap"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_MIX_PLAYLIST_BUTTON,
+                        Settings.HIDE_QUICK_ACTIONS_MIX_BUTTON,
                         "yt_outline_experimental_mix",
                         "yt_outline_youtube_mix"
                 ),

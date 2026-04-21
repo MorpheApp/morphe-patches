@@ -476,7 +476,7 @@ Limitations:
     <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
     <string name="morphe_share_copy_url_button_success">URL copied to clipboard</string>
     <string name="morphe_share_copy_url_button_timestamp_success">URL with timestamp copied to clipboard</string>
-    <string name="morphe_copy_video_url_button_title">Show copy video URL button</string>
+    <string name="morphe_copy_video_url_button_title">Show Copy video URL</string>
     <string name="morphe_copy_video_url_button_summary_on">Copy video URL button is shown. Tap to copy video URL. Tap and hold to copy with timestamp</string>
     <string name="morphe_copy_video_url_button_summary_off">Copy video URL button is not shown</string>
     <string name="morphe_copy_video_url_button_timestamp_title">Copy timestamp</string>
@@ -527,17 +527,15 @@ Verify the package name is correct and the app is installed"</string>
     <string name="morphe_loop_video_summary_off">Video will not loop</string>
 
     <!-- interaction.loop.loopVideoButtonPatch -->
-    <string name="morphe_loop_video_button_title">Show loop video button</string>
+    <string name="morphe_loop_video_button_title">Show Loop video</string>
     <string name="morphe_loop_video_button_summary_on">Loop video button is shown</string>
     <string name="morphe_loop_video_button_summary_off">Loop video button is not shown</string>
     <string name="morphe_loop_video_button_toast_on">Loop video is on</string>
     <string name="morphe_loop_video_button_toast_off">Loop video is off</string>
 
     <!-- interaction.playall.playAllButtonPatch -->
-    <string name="morphe_play_all_button_title">Show play all button</string>
-    <string name="morphe_play_all_button_summary_on">"Play all button is shown
-Tap to generate a playlist of all videos from channel
-Tap and hold to undo
+    <string name="morphe_play_all_button_title">Show Play all</string>
+    <string name="morphe_play_all_button_summary_on">"Play all button is shown. Tap to generate a playlist of all videos from channel.Tap and hold to undo
 
 Info: May not work on live streams"</string>
     <string name="morphe_play_all_button_summary_off">Play all button is not shown</string>
@@ -558,7 +556,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_play_all_button_not_available_toast">Unable to generate playlist due to channel ID mismatch</string>
 
     <!-- interaction.reload.reloadVideoPatch -->
-    <string name="morphe_reload_video_button_title">Show reload video button</string>
+    <string name="morphe_reload_video_button_title">Show Reload video</string>
     <string name="morphe_reload_video_button_summary_on">Reload video button is shown</string>
     <string name="morphe_reload_video_button_summary_off">Reload video button is not shown</string>
     <string name="morphe_dismiss_player_not_available_toast">Video ID is unavailable. Please manually reload the video</string>
@@ -948,9 +946,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_quick_actions_ask_button_title">Hide Ask</string>
     <string name="morphe_hide_quick_actions_ask_button_summary_on">Ask button is hidden</string>
     <string name="morphe_hide_quick_actions_ask_button_summary_off">Ask button is shown</string>
-    <string name="morphe_hide_quick_actions_comment_button_title">Hide Comment</string>
-    <string name="morphe_hide_quick_actions_comment_button_summary_on">Comment button is hidden</string>
-    <string name="morphe_hide_quick_actions_comment_button_summary_off">Comment button is shown</string>
+    <string name="morphe_hide_quick_actions_comments_button_title">Hide Comments</string>
+    <string name="morphe_hide_quick_actions_comments_button_summary_on">Comments button is hidden</string>
+    <string name="morphe_hide_quick_actions_comments_button_summary_off">Comments button is shown</string>
     <string name="morphe_hide_quick_actions_dislike_button_title">Hide Dislike</string>
     <string name="morphe_hide_quick_actions_dislike_button_summary_on">Dislike button is hidden</string>
     <string name="morphe_hide_quick_actions_dislike_button_summary_off">Dislike button is shown</string>
@@ -960,19 +958,19 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_quick_actions_live_chat_button_title">Hide \'Live chat\'</string>
     <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Live chat button is hidden</string>
     <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Live chat button is shown</string>
-    <string name="morphe_hide_quick_actions_mix_playlist_button_title">Hide \'Mix playlist\'</string>
-    <string name="morphe_hide_quick_actions_mix_playlist_button_summary_on">Mix playlist button is hidden</string>
-    <string name="morphe_hide_quick_actions_mix_playlist_button_summary_off">Mix playlist button is shown</string>
+    <string name="morphe_hide_quick_actions_mix_button_title">Hide Mix</string>
+    <string name="morphe_hide_quick_actions_mix_button_summary_on">Mix button is hidden</string>
+    <string name="morphe_hide_quick_actions_mix_button_summary_off">Mix button is shown</string>
     <string name="morphe_hide_quick_actions_more_button_title">Hide More</string>
     <string name="morphe_hide_quick_actions_more_button_summary_on">More button is hidden</string>
     <string name="morphe_hide_quick_actions_more_button_summary_off">More button is shown</string>
     <string name="morphe_hide_quick_actions_more_videos_button_title">Hide \'More videos\'</string>
     <string name="morphe_hide_quick_actions_more_videos_button_summary_on">More videos button is hidden</string>
     <string name="morphe_hide_quick_actions_more_videos_button_summary_off">More videos button is shown</string>
-    <string name="morphe_hide_quick_actions_playlist_button_title">Hide playlist</string>
+    <string name="morphe_hide_quick_actions_playlist_button_title">Hide Playlist</string>
     <string name="morphe_hide_quick_actions_playlist_button_summary_on">Playlist button is hidden</string>
     <string name="morphe_hide_quick_actions_playlist_button_summary_off">Playlist button is shown</string>
-    <string name="morphe_hide_quick_actions_title">Hide quick actions</string>
+    <string name="morphe_hide_quick_actions_title">Hide Quick actions</string>
     <string name="morphe_hide_quick_actions_summary_on">Quick actions are hidden</string>
     <string name="morphe_hide_quick_actions_summary_off">Quick actions are shown</string>
     <string name="morphe_hide_quick_actions_save_button_title">Hide Save</string>
@@ -1759,14 +1757,14 @@ Enabling this can unlock higher video qualities"</string>
     <string name="morphe_remember_video_quality_toast_shorts">Changed Shorts %1$s quality to: %2$s</string>
 
     <!-- video.speed.button.playbackSpeedButtonPatch -->
-    <string name="morphe_playback_speed_dialog_button_title">Show playback speed dialog button</string>
-    <string name="morphe_playback_speed_dialog_button_summary_on">Playback speed dialog button is shown. Tap and hold to reset playback speed to default</string>
-    <string name="morphe_playback_speed_dialog_button_summary_off">Playback speed dialog button is not shown</string>
+    <string name="morphe_playback_speed_dialog_button_title">Show Playback speed</string>
+    <string name="morphe_playback_speed_dialog_button_summary_on">Playback speed button is shown. Tap and hold to reset playback speed to default</string>
+    <string name="morphe_playback_speed_dialog_button_summary_off">Playback speed button is not shown</string>
 
     <!-- video.quality.button.videoQualityDialogButtonPatch -->
-    <string name="morphe_video_quality_dialog_button_title">Show video quality button</string>
-    <string name="morphe_video_quality_dialog_button_summary_on">Video quality button is shown. Tap and hold to reset quality to default</string>
-    <string name="morphe_video_quality_dialog_button_summary_off">Video quality button is not shown</string>
+    <string name="morphe_video_quality_dialog_button_title">Show Quality</string>
+    <string name="morphe_video_quality_dialog_button_summary_on">Quality button is shown. Tap and hold to reset quality to default</string>
+    <string name="morphe_video_quality_dialog_button_summary_off">Quality button is not shown</string>
 
     <!-- video.speed.custom.customPlaybackSpeedPatch -->
     <string name="morphe_custom_speed_menu_title">Custom playback speed menu</string>

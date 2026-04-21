@@ -212,11 +212,11 @@ public class Settings extends SharedYouTubeSettings {
     // Quick actions
     public static final BooleanSetting HIDE_QUICK_ACTIONS = new BooleanSetting("morphe_hide_quick_actions", FALSE);
     public static final BooleanSetting HIDE_QUICK_ACTIONS_ASK_BUTTON = new BooleanSetting("morphe_hide_quick_actions_ask_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
-    public static final BooleanSetting HIDE_QUICK_ACTIONS_COMMENT_BUTTON = new BooleanSetting("morphe_hide_quick_actions_comment_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_COMMENTS_BUTTON = new BooleanSetting("morphe_hide_quick_actions_comments_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_QUICK_ACTIONS_DISLIKE_BUTTON = new BooleanSetting("morphe_hide_quick_actions_dislike_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_QUICK_ACTIONS_LIKE_BUTTON = new BooleanSetting("morphe_hide_quick_actions_like_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_QUICK_ACTIONS_LIVE_CHAT_BUTTON = new BooleanSetting("morphe_hide_quick_actions_live_chat_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
-    public static final BooleanSetting HIDE_QUICK_ACTIONS_MIX_PLAYLIST_BUTTON = new BooleanSetting("morphe_hide_quick_actions_mix_playlist_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final BooleanSetting HIDE_QUICK_ACTIONS_MIX_BUTTON = new BooleanSetting("morphe_hide_quick_actions_mix_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_QUICK_ACTIONS_MORE_BUTTON = new BooleanSetting("morphe_hide_quick_actions_more_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_QUICK_ACTIONS_MORE_VIDEOS_BUTTON = new BooleanSetting("morphe_hide_quick_actions_more_videos_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_QUICK_ACTIONS_PLAYLIST_BUTTON = new BooleanSetting("morphe_hide_quick_actions_playlist_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
