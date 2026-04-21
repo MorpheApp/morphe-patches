@@ -1,5 +1,6 @@
 package app.morphe.extension.music.patches;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -9,12 +10,13 @@ import android.os.Vibrator;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import android.annotation.SuppressLint;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
 
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
@@ -187,30 +189,6 @@ public class CrossfadeManager {
     //  Constants and fields                                                //
     // ------------------------------------------------------------------ //
 
-    private static void logDebug(String msg) {
-        Logger.printDebug(() -> msg);
-    }
-
-    private static void logInfo(String msg) {
-        Logger.printInfo(() -> msg);
-    }
-
-    private static void logError(String msg) {
-        Logger.printException(() -> msg);
-    }
-
-    private static void logError(String msg, Exception e) {
-        Logger.printException(() -> msg, e);
-    }
-
-    private static void logWarn(String msg) {
-        Logger.printInfo(() -> msg);
-    }
-
-    private static void logWarn(String msg, Exception e) {
-        Logger.printInfo(() -> msg, e);
-    }
-
     /**
      * Fade curve profiles available for crossfade.
      * Uses switch instead of abstract methods to avoid anonymous inner classes,
@@ -224,12 +202,12 @@ public class CrossfadeManager {
         SMOOTHSTEP;
 
         public float out(float t) {
-            switch (this) {
-                case EASE_OUT_CUBIC: return 1.0f - t * t * t;
-                case EASE_OUT_QUAD:  return (1.0f - t) * (1.0f - t);
-                case SMOOTHSTEP:    return 1.0f - (3.0f * t * t - 2.0f * t * t * t);
-                default:            return (float) Math.cos(t * Math.PI / 2.0);
-            }
+            return switch (this) {
+                case EASE_OUT_CUBIC -> 1.0f - t * t * t;
+                case EASE_OUT_QUAD -> (1.0f - t) * (1.0f - t);
+                case SMOOTHSTEP -> 1.0f - (3.0f * t * t - 2.0f * t * t * t);
+                default -> (float) Math.cos(t * Math.PI / 2.0);
+            };
         }
 
         public float in(float t) {
@@ -266,8 +244,7 @@ public class CrossfadeManager {
     private static volatile PlayerCoordinatorAccess activeCoordinator = null;
     private static volatile float currentFadeInVolume = 0.0f;
 
-    private static final java.util.List<FadingPlayer> fadingOutPlayers =
-            java.util.Collections.synchronizedList(new java.util.ArrayList<>());
+    private static final List<FadingPlayer> fadingOutPlayers = Collections.synchronizedList(new ArrayList<>());
     private static volatile boolean fadingLoopRunning = false;
 
     private static WeakReference<Object> lastAtadRef = new WeakReference<>(null);
@@ -278,8 +255,7 @@ public class CrossfadeManager {
 
     private static int playersCreated = 0;
     private static int playersReleased = 0;
-    private static final java.util.List<WeakReference<View>> longPressRefs =
-            new java.util.ArrayList<>();
+    private static final List<WeakReference<View>> longPressRefs = new ArrayList<>();
 
     /**
      * Tracks a single player's fade-out animation.
@@ -340,7 +316,7 @@ public class CrossfadeManager {
             if (reason == REASON_DIRECTOR_RESET) {
                 return handleChainedSkip(atadInstance);
             }
-            logDebug("stopVideo(" + reason + "): BLOCKED — crossfade in progress");
+            Logger.printDebug(() -> "stopVideo(" + reason + "): BLOCKED — crossfade in progress");
             return true;
         }
 
@@ -349,10 +325,10 @@ public class CrossfadeManager {
                 suppressedReasonCount++;
             } else {
                 if (suppressedReasonCount > 0) {
-                    logDebug("  (suppressed " + suppressedReasonCount
-                            + " duplicate reason=" + lastLoggedReason + " entries)");
+                    Logger.printDebug(() -> "  (suppressed " + suppressedReasonCount
+                                        + " duplicate reason=" + lastLoggedReason + " entries)");
                 }
-                logDebug("stopVideo reason=" + reason + " — not a skip, ignoring");
+                Logger.printDebug(() -> "stopVideo reason=" + reason + " — not a skip, ignoring");
                 lastLoggedReason = reason;
                 suppressedReasonCount = 0;
             }
@@ -362,18 +338,18 @@ public class CrossfadeManager {
         suppressedReasonCount = 0;
 
         if (System.currentTimeMillis() < manualToggleSuppressionUntil) {
-            logInfo("stopVideo(5): skip — within manual toggle suppression window");
+            Logger.printDebug(() -> "stopVideo(5): skip — within manual toggle suppression window");
             return false;
         }
 
         if (!isEnabled() || sessionPaused || getCrossfadeDurationMs() <= 0) {
-            logDebug("stopVideo(5): skip [enabled=" + isEnabled()
+            Logger.printDebug(() -> "stopVideo(5): skip [enabled=" + isEnabled()
                     + " paused=" + sessionPaused + " inVideo=" + isCurrentlyInVideoMode() + "]");
             return false;
         }
 
         if (isFromTaskRemoval()) {
-            logDebug("stopVideo(5): skip — triggered by onTaskRemoved (activity killed)");
+            Logger.printDebug(() -> "stopVideo(5): skip — triggered by onTaskRemoved (activity killed)");
             if (crossfadeInProgress) cleanupAllPlayers();
             return false;
         }
@@ -381,13 +357,13 @@ public class CrossfadeManager {
         try {
             PlayerCoordinatorAccess coordinator = getCoordinatorFromAtad(atadInstance);
             if (coordinator == null) {
-                logError("Could not find coordinator from atad");
+                Logger.printException(() -> "Could not find coordinator from atad");
                 return false;
             }
 
             ExoPlayerAccess currentExo = (ExoPlayerAccess) coordinator.patch_getExoPlayer();
             if (currentExo == null) {
-                logError("Coordinator ExoPlayer is null");
+                Logger.printException(() -> "Coordinator ExoPlayer is null");
                 return false;
             }
 
@@ -398,35 +374,35 @@ public class CrossfadeManager {
                 long remaining = (duration > 0) ? duration - pos : Long.MAX_VALUE;
                 isAutoAdvance = duration > 0 && remaining >= 0
                         && remaining < AUTO_ADVANCE_THRESHOLD_MS;
-                logDebug("stopVideo(5): pos=" + pos + "ms dur=" + duration
-                        + "ms remaining=" + remaining
-                        + "ms → " + (isAutoAdvance ? "AUTO-ADVANCE" : "MANUAL SKIP"));
-            } catch (Exception e) {
-                logWarn("Could not read position/duration, assuming manual skip", e);
+                final boolean finalIsAutoAdvance = isAutoAdvance;
+                Logger.printDebug(() -> "stopVideo(5): pos=" + pos + "ms dur=" + duration
+                        + "ms remaining=" + remaining + "ms → "
+                        + (finalIsAutoAdvance ? "AUTO-ADVANCE" : "MANUAL SKIP"));
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not read position/duration, assuming manual skip", ex);
             }
 
             if (isAutoAdvance && !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
-                logDebug("stopVideo(5): skip — auto-advance crossfade disabled");
+                Logger.printDebug(() -> "stopVideo(5): skip — auto-advance crossfade disabled");
                 return false;
             }
             if (!isAutoAdvance && !Settings.CROSSFADE_ON_SKIP.get()) {
-                logDebug("stopVideo(5): skip — manual skip crossfade disabled");
+                Logger.printDebug(() -> "stopVideo(5): skip — manual skip crossfade disabled");
                 return false;
             }
 
             boolean wasInVideoMode = isCurrentlyInVideoMode();
 
-            logInfo("stopVideo(5): STARTING crossfade [enabled=" + isEnabled()
+            Logger.printDebug(() -> "stopVideo(5): STARTING crossfade [enabled=" + isEnabled()
                     + " paused=" + sessionPaused
                     + " wasInVideo=" + wasInVideoMode + "]");
 
-            int currentState = currentExo.patch_getPlaybackState();
-            logDebug("Current player state=" + currentState
+            Logger.printDebug(() -> "Current player state=" + currentExo.patch_getPlaybackState()
                     + " class=" + currentExo.getClass().getName());
 
             if (wasInVideoMode) {
                 forceAudioModeIfNeeded();
-                logInfo("Silent audio mode set BEFORE factory (video→audio, no nmi broadcast)");
+                Logger.printDebug(() -> "Silent audio mode set BEFORE factory (video→audio, no nmi broadcast)");
             }
 
             ExoPlayerAccess newExo = createNewPlayer(coordinator);
@@ -440,22 +416,22 @@ public class CrossfadeManager {
             crossfadeInProgress = true;
 
             coordinator.patch_setExoPlayer(newExo);
-            logInfo("Swapped coordinator ExoPlayer → new player");
+            Logger.printDebug(() -> "Swapped coordinator ExoPlayer → new player");
 
             VideoSurfaceAccess surface = (VideoSurfaceAccess) coordinator.patch_getVideoSurface();
             if (surface != null) {
                 surface.patch_setPlayerReference(newExo);
-                logDebug("Updated video surface → new player");
+                Logger.printDebug(() -> "Updated video surface → new player");
             }
 
-            logInfo("Old player preserved (keeps playing), polling for new track ready"
-                    + " — BLOCKING native stopVideo");
+            Logger.printDebug(() -> "Old player preserved (keeps playing), polling for new track ready"
+                        + " - BLOCKING native stopVideo");
             pollForNewTrackReady(newExo);
 
             return true;
 
-        } catch (Exception e) {
-            logError("onBeforeStopVideo error", e);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onBeforeStopVideo error", ex);
             cleanupAllPlayers();
             if (audioModeWasForced) {
                 audioModeWasForced = false;
@@ -472,10 +448,10 @@ public class CrossfadeManager {
      * naturally loads the next track onto it.
      */
     private static boolean handleChainedSkip(Object atadInstance) {
-        logInfo("stopVideo(5): CHAINED SKIP — creating new player, deferring demotion until READY");
+        Logger.printDebug(() -> "stopVideo(5): CHAINED SKIP — creating new player, deferring demotion until READY");
 
         if (!isEnabled() || sessionPaused || getCrossfadeDurationMs() <= 0) {
-            logDebug("Chained skip: crossfade now disabled/paused — aborting crossfade");
+            Logger.printDebug(() -> "Chained skip: crossfade now disabled/paused — aborting crossfade");
             abortCrossfadeNow();
             return false;
         }
@@ -485,7 +461,7 @@ public class CrossfadeManager {
             if (coordinator == null) {
                 coordinator = getCoordinatorFromAtad(atadInstance);
                 if (coordinator == null) {
-                    logError("Chained skip: coordinator null — aborting");
+                    Logger.printException(() -> "Chained skip: coordinator null — aborting");
                     abortCrossfadeNow();
                     return false;
                 }
@@ -493,7 +469,7 @@ public class CrossfadeManager {
 
             ExoPlayerAccess oldPending = pendingInPlayer;
             if (oldPending != null) {
-                logInfo("Chained skip: releasing previous pending player @"
+                Logger.printDebug(() -> "Chained skip: releasing previous pending player @"
                         + System.identityHashCode(oldPending)
                         + " (never reached READY)");
                 releasePlayer(oldPending);
@@ -501,7 +477,7 @@ public class CrossfadeManager {
 
             ExoPlayerAccess newExo = createNewPlayer(coordinator);
             if (newExo == null) {
-                logError("Chained skip: factory failed — aborting crossfade");
+                Logger.printException(() -> "Chained skip: factory failed — aborting crossfade");
                 abortCrossfadeNow();
                 return false;
             }
@@ -511,7 +487,7 @@ public class CrossfadeManager {
             activeCoordinator = coordinator;
 
             coordinator.patch_setExoPlayer(newExo);
-            logInfo("Chained skip: swapped coordinator → new player @"
+            Logger.printDebug(() -> "Chained skip: swapped coordinator → new player @"
                     + System.identityHashCode(newExo)
                     + " (current animation continues uninterrupted)");
 
@@ -523,8 +499,8 @@ public class CrossfadeManager {
             pollForNewTrackReady(newExo);
 
             return true;
-        } catch (Exception e) {
-            logError("handleChainedSkip error", e);
+        } catch (Exception ex) {
+            Logger.printException(() -> "handleChainedSkip error", ex);
             abortCrossfadeNow();
             return false;
         }
@@ -538,31 +514,41 @@ public class CrossfadeManager {
     private static ExoPlayerAccess createNewPlayer(PlayerCoordinatorAccess coordinator) {
         try {
             SessionAccess session = (SessionAccess) coordinator.patch_getSession();
-            if (session == null) { logError("createNewPlayer: session null"); return null; }
+            if (session == null) {
+                Logger.printException(() -> "createNewPlayer: session null");
+                return null; }
 
             PlayerFactoryAccess factory = (PlayerFactoryAccess) session.patch_getFactory();
-            if (factory == null) { logError("createNewPlayer: factory null"); return null; }
+            if (factory == null) {
+                Logger.printException(() -> "createNewPlayer: factory null");
+                return null; }
 
             Object loadControl = coordinator.patch_getLoadControl();
-            if (loadControl == null) { logError("createNewPlayer: loadControl null"); return null; }
+            if (loadControl == null) {
+                Logger.printException(() -> "createNewPlayer: loadControl null");
+                return null; }
 
             SharedStateAccess sharedState = (SharedStateAccess) coordinator.patch_getSharedState();
-            if (sharedState == null) { logError("createNewPlayer: sharedState null"); return null; }
+            if (sharedState == null) {
+                Logger.printException(() -> "createNewPlayer: sharedState null");
+                return null; }
 
             SharedCallbackAccess sharedCallback =
                     (SharedCallbackAccess) coordinator.patch_getSharedCallback();
-            if (sharedCallback == null) { logError("createNewPlayer: sharedCallback null"); return null; }
+            if (sharedCallback == null) {
+                Logger.printException(() -> "createNewPlayer: sharedCallback null");
+                return null; }
             activeSharedCallback = sharedCallback;
 
             Object oldTimeline = sharedState.patch_getTimeline();
             Object oldCqb = sharedCallback.patch_getCqb();
-            logDebug("Pre-factory shared state: cqb=" + (oldCqb != null));
+            Logger.printDebug(() -> "Pre-factory shared state: cqb=" + (oldCqb != null));
             sharedState.patch_setTimeline(null);
             sharedCallback.patch_setCqb(null);
 
             ExoPlayerAccess newExo = createPlayerViaFactory(factory, coordinator, loadControl);
             if (newExo == null) {
-                logError("Factory returned null — restoring");
+                Logger.printException(() -> "Factory returned null — restoring");
                 sharedState.patch_setTimeline(oldTimeline);
                 sharedCallback.patch_setCqb(oldCqb);
                 return null;
@@ -570,24 +556,24 @@ public class CrossfadeManager {
 
             Object postTimeline = sharedState.patch_getTimeline();
             Object postCqb = sharedCallback.patch_getCqb();
-            logDebug("Post-factory shared state: cqb=" + (postCqb != null)
+            Logger.printDebug(() -> "Post-factory shared state: cqb=" + (postCqb != null)
                     + " newExo=" + System.identityHashCode(newExo));
             if (postTimeline == null) {
-                logError("Factory failed to set timeline — aborting");
+                Logger.printException(() -> "Factory failed to set timeline — aborting");
                 sharedState.patch_setTimeline(oldTimeline);
                 sharedCallback.patch_setCqb(oldCqb);
                 return null;
             }
             if (postCqb == null) {
-                logError("Factory failed to set cqb — aborting");
+                Logger.printException(() -> "Factory failed to set cqb — aborting");
                 sharedState.patch_setTimeline(oldTimeline);
                 sharedCallback.patch_setCqb(oldCqb);
                 return null;
             }
 
             return newExo;
-        } catch (Exception e) {
-            logError("createNewPlayer error", e);
+        } catch (Exception ex) {
+            Logger.printException(() -> "createNewPlayer error", ex);
             return null;
         }
     }
@@ -613,7 +599,7 @@ public class CrossfadeManager {
             return false;
         }
 
-        logInfo("onBeforePlayNext called");
+        Logger.printDebug(() -> "onBeforePlayNext called");
         tryAttachLongPressHandler();
 
         if (!isEnabled() || sessionPaused || getCrossfadeDurationMs() <= 0
@@ -622,7 +608,7 @@ public class CrossfadeManager {
         }
 
         if (!Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
-            logDebug("PlayNext: skip — auto-advance crossfade disabled");
+            Logger.printDebug(() -> "PlayNext: skip — auto-advance crossfade disabled");
             return false;
         }
 
@@ -636,8 +622,8 @@ public class CrossfadeManager {
             if (currentExo == null) return false;
 
             int currentState = currentExo.patch_getPlaybackState();
-            logDebug("PlayNext: current player state=" + currentState
-                    + " wasInVideo=" + wasInVideoMode);
+            Logger.printDebug(() -> "PlayNext: current player state=" + currentState
+                        + " wasInVideo=" + wasInVideoMode);
 
             ExoPlayerAccess newExo = createNewPlayer(coordinator);
             if (newExo == null) return false;
@@ -650,46 +636,48 @@ public class CrossfadeManager {
             crossfadeInProgress = true;
 
             coordinator.patch_setExoPlayer(newExo);
-            logInfo("PlayNext: swapped coordinator ExoPlayer → new player");
+            Logger.printDebug(() -> "PlayNext: swapped coordinator ExoPlayer → new player");
 
             VideoSurfaceAccess surface =
                     (VideoSurfaceAccess) coordinator.patch_getVideoSurface();
             if (surface != null) {
                 surface.patch_setPlayerReference(newExo);
-                logDebug("PlayNext: updated video surface → new player");
+                Logger.printDebug(() -> "PlayNext: updated video surface → new player");
             }
 
             if (wasInVideoMode) {
                 forceAudioModeIfNeeded();
-                logInfo("PlayNext: forced audio mode for incoming track (was in video mode)");
+                Logger.printDebug(() -> "PlayNext: forced audio mode for incoming track (was in video mode)");
             }
 
             // Re-invoke natively so the next track actually loads onto the new player.
             // internalPlayNext=true causes the hook to pass through immediately.
             // We then re-enforce volume=0 synchronously, before any poll tick.
             Object atad = lastAtadRef.get();
-            if (atad instanceof MedialibPlayerAccess) {
+            if (atad instanceof MedialibPlayerAccess medialibPlayerAccessObj) {
                 internalPlayNext = true;
                 try {
-                    ((MedialibPlayerAccess) atad).patch_playNextInQueue();
-                } catch (Exception e) {
+                    medialibPlayerAccessObj.patch_playNextInQueue();
+                } catch (Exception ex) {
                     internalPlayNext = false;
-                    logWarn("PlayNext: re-invoke threw: " + e.getMessage());
+                    Logger.printDebug(() -> "PlayNext: re-invoke threw exception", ex);
                 }
                 try {
                     newExo.patch_setVolume(0.0f);
-                    logInfo("PlayNext: volume re-enforced to 0 after native");
-                } catch (Exception ignored) {}
+                    Logger.printDebug(() -> "PlayNext: volume re-enforced to 0 after native");
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Ignoring patch_setVolume exception", ex);
+                }
             } else {
-                logWarn("PlayNext: atad ref lost — cannot re-invoke native");
+                Logger.printDebug(() -> "PlayNext: atad ref lost — cannot re-invoke native");
             }
 
-            logInfo("PlayNext: old player preserved, polling for new track ready");
+            Logger.printDebug(() -> "PlayNext: old player preserved, polling for new track ready");
             pollForNewTrackReady(newExo);
             return true; // block original call
 
-        } catch (Exception e) {
-            logError("onBeforePlayNext error", e);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onBeforePlayNext error", ex);
             cleanupAllPlayers();
             if (audioModeWasForced) {
                 audioModeWasForced = false;
@@ -720,7 +708,7 @@ public class CrossfadeManager {
             return false;
         }
 
-        logInfo("onPauseVideo during crossfade — aborting crossfade, allowing pause");
+        Logger.printDebug(() -> "onPauseVideo during crossfade — aborting crossfade, allowing pause");
         abortCrossfadeNow();
         return false;
     }
@@ -737,7 +725,7 @@ public class CrossfadeManager {
             lastAtadRef = new WeakReference<>(atadInstance);
         }
 
-        logDebug("onPlayVideo [crossfading=" + crossfadeInProgress
+        Logger.printDebug(() -> "onPlayVideo [crossfading=" + crossfadeInProgress
                 + ", atad=" + (atadInstance != null) + "]");
         if (!crossfadeInProgress) {
             startAutoAdvanceMonitor();
@@ -763,18 +751,22 @@ public class CrossfadeManager {
                 // Keep new player silent while waiting for READY. The native
                 // playNextInQueue (auto-advance) runs after our void hook and
                 // resets the player to volume 1.0 — re-enforce on every tick.
-                try { newPlayer.patch_setVolume(0.0f); } catch (Exception ignored) {}
+                try {
+                    newPlayer.patch_setVolume(0.0f);
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Ignoring pollForNewTrackReady exception", ex);
+                }
 
                 try {
                     int state = newPlayer.patch_getPlaybackState();
                     if (state == STATE_READY) {
-                        logInfo("Pending track READY — promoting to crossfade");
+                        Logger.printDebug(() -> "Pending track READY — promoting to crossfade");
                         onPendingPlayerReady(newPlayer);
                         return;
                     }
 
                     if (state == 4) {
-                        logError("Pending player ENDED unexpectedly — aborting");
+                        Logger.printException(() -> "Pending player ENDED unexpectedly — aborting");
                         cleanupAllPlayers();
                         if (audioModeWasForced) {
                             audioModeWasForced = false;
@@ -784,12 +776,12 @@ public class CrossfadeManager {
                     }
 
                     if (state != lastPollState) {
-                        logDebug("Poll: state → " + state);
+                        Logger.printDebug(() -> "Poll: state → " + state);
                         lastPollState = state;
                     }
 
                     if (System.currentTimeMillis() > deadline) {
-                        logError("Timeout waiting for new track");
+                        Logger.printException(() -> "Timeout waiting for new track");
                         cleanupAllPlayers();
                         if (audioModeWasForced) {
                             audioModeWasForced = false;
@@ -799,8 +791,8 @@ public class CrossfadeManager {
                     }
 
                     mainHandler.postDelayed(this, READY_POLL_MS);
-                } catch (Exception e) {
-                    logError("Poll error", e);
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Poll error", ex);
                     cleanupAllPlayers();
                     if (audioModeWasForced) {
                         audioModeWasForced = false;
@@ -833,21 +825,24 @@ public class CrossfadeManager {
                 long dur = outgoing.patch_getDuration();
                 if (dur > 0 && pos >= 0) {
                     long actualRemaining = dur - pos;
-                    logInfo("onPendingPlayerReady: outgoing remaining=" + actualRemaining
-                            + "ms fadeDuration=" + fadeDuration + "ms");
+                    Logger.printDebug(() -> "onPendingPlayerReady: outgoing remaining=" + actualRemaining
+                                        + "ms fadeDuration=" + fadeDuration + "ms");
                     if (actualRemaining < fadeDuration) {
                         fadeOutDuration = Math.max(150, actualRemaining);
-                        logInfo("Fade-out shortened to " + fadeOutDuration
-                                + "ms to match remaining audio (was " + fadeDuration + "ms)");
+                        final long fadeOutDurationFinal = fadeOutDuration;
+                        Logger.printDebug(() -> "Fade-out shortened to " + fadeOutDurationFinal
+                                                + "ms to match remaining audio (was " + fadeOutDurationFinal + "ms)");
                     }
                 }
-            } catch (Exception e) {
-                logDebug("Could not read outgoing remaining time: " + e.getMessage());
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not read outgoing remaining time", ex);
             }
             fadingOutPlayers.add(new FadingPlayer(outgoing, fadeOutDuration, curve));
             pendingOutPlayer = null;
-            logInfo("Original outgoing player @" + System.identityHashCode(outgoing)
-                    + " → fade-out list (" + fadeOutDuration + "ms)");
+
+            final long fadeOutDurationFinal = fadeOutDuration;
+            Logger.printDebug(() -> "Original outgoing player @" + System.identityHashCode(outgoing)
+                    + " → fade-out list (" + fadeOutDurationFinal + "ms)");
         }
 
         ExoPlayerAccess prevIncoming = crossfadeInPlayer;
@@ -856,13 +851,13 @@ public class CrossfadeManager {
             long quickDuration = Math.max(200, (long) (QUICK_FADE_MS * vol));
             if (vol > 0.01f) {
                 fadingOutPlayers.add(new FadingPlayer(prevIncoming, vol, quickDuration));
-                logInfo("Previous incoming player @"
+                Logger.printDebug(() -> "Previous incoming player @"
                         + System.identityHashCode(prevIncoming)
-                        + " → quick fade-out from " + String.format("%.2f", vol)
+                        + " → quick fade-out from " + String.format(Locale.US, "%.2f", vol)
                         + " over " + quickDuration + "ms");
             } else {
                 releasePlayer(prevIncoming);
-                logInfo("Previous incoming player @"
+                Logger.printDebug(() -> "Previous incoming player @"
                         + System.identityHashCode(prevIncoming)
                         + " → released (vol ≈ 0)");
             }
@@ -929,9 +924,9 @@ public class CrossfadeManager {
                     long fadeDuration = getCrossfadeDurationMs();
 
                     if (remaining % 5000 < MONITOR_POLL_MS) {
-                        logDebug("Auto-advance monitor: pos=" + pos
-                                + "ms dur=" + dur + "ms remaining=" + remaining
-                                + "ms trigger@" + (fadeDuration + AUTO_ADVANCE_TRIGGER_BUFFER_MS) + "ms");
+                        Logger.printDebug(() -> "Auto-advance monitor: pos=" + pos
+                                                + "ms dur=" + dur + "ms remaining=" + remaining
+                                                + "ms trigger@" + (fadeDuration + AUTO_ADVANCE_TRIGGER_BUFFER_MS) + "ms");
                     }
 
                     if (dur <= fadeDuration + AUTO_ADVANCE_TRIGGER_BUFFER_MS) {
@@ -940,27 +935,27 @@ public class CrossfadeManager {
                     }
 
                     if (remaining <= fadeDuration + AUTO_ADVANCE_TRIGGER_BUFFER_MS && remaining > 0) {
-                        logInfo("Auto-advance: triggering playNextInQueue"
-                                + " at remaining=" + remaining
-                                + "ms (fadeDuration=" + fadeDuration + "ms)");
+                        Logger.printDebug(() -> "Auto-advance: triggering playNextInQueue"
+                                                + " at remaining=" + remaining
+                                                + "ms (fadeDuration=" + fadeDuration + "ms)");
                         stopAutoAdvanceMonitor();
                         try {
                             ((MedialibPlayerAccess) atad).patch_playNextInQueue();
-                        } catch (Exception e) {
-                            logWarn("playNextInQueue threw: " + e.getMessage());
+                        } catch (Exception ex) {
+                            Logger.printDebug(() -> "Ignoring playNextInQueue exceptoin", ex);
                         }
                         return;
                     }
 
                     mainHandler.postDelayed(this, MONITOR_POLL_MS);
-                } catch (Exception e) {
-                    logWarn("Auto-advance monitor error", e);
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Auto-advance monitor error", ex);
                     mainHandler.postDelayed(this, MONITOR_POLL_MS * 2);
                 }
             }
         };
         mainHandler.postDelayed(autoAdvanceMonitorRunnable, MONITOR_POLL_MS);
-        logInfo("Auto-advance monitor started");
+        Logger.printDebug(() -> "Auto-advance monitor started");
     }
 
     private static void stopAutoAdvanceMonitor() {
@@ -985,13 +980,19 @@ public class CrossfadeManager {
         ExoPlayerAccess bestPlayer = null;
         boolean inpReady = false;
         if (inp != null) {
-            try { inpReady = inp.patch_getPlaybackState() == STATE_READY; }
-            catch (Exception ignored) {}
+            try {
+                inpReady = inp.patch_getPlaybackState() == STATE_READY;
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Ignoring in.patch_getPlaybackState exception", ex);
+            }
         }
         boolean pendingReady = false;
         if (pending != null) {
-            try { pendingReady = pending.patch_getPlaybackState() == STATE_READY; }
-            catch (Exception ignored) {}
+            try {
+                pendingReady = pending.patch_getPlaybackState() == STATE_READY;
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Ignoring pending.patch_getPlaybackState exception", ex);
+            }
         }
 
         if (pendingReady) {
@@ -1003,8 +1004,9 @@ public class CrossfadeManager {
         }
 
         if (bestPlayer != null && coord != null) {
-            logInfo("abortCrossfadeNow: snapping to player @"
-                    + System.identityHashCode(bestPlayer));
+            final ExoPlayerAccess bestPlayerFinal = bestPlayer;
+            Logger.printDebug(() -> "abortCrossfadeNow: snapping to player @"
+                    + System.identityHashCode(bestPlayerFinal));
             try {
                 bestPlayer.patch_setVolume(1.0f);
                 bestPlayer.patch_setPlayWhenReady(true);
@@ -1012,8 +1014,8 @@ public class CrossfadeManager {
                 VideoSurfaceAccess surface =
                         (VideoSurfaceAccess) coord.patch_getVideoSurface();
                 if (surface != null) surface.patch_setPlayerReference(bestPlayer);
-            } catch (Exception e) {
-                logWarn("abortCrossfadeNow: snap failed: " + e.getMessage());
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "abortCrossfadeNow: snap failed", ex);
             }
         }
 
@@ -1048,18 +1050,22 @@ public class CrossfadeManager {
         // initial patch_setVolume(0) holds — but we re-enforce here for both.
         try {
             inPlayer.patch_setVolume(0.0f);
-            logInfo("fade-in pre-start: @" + System.identityHashCode(inPlayer)
+            Logger.printDebug(() -> "fade-in pre-start: @" + System.identityHashCode(inPlayer)
                     + " volume enforced to 0 before setPlayWhenReady");
-        } catch (Exception e) {
-            logWarn("fade-in pre-start: failed to zero volume: " + e.getMessage());
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "fade-in pre-start: failed to zero volume", ex);
         }
 
-        try { inPlayer.patch_setPlayWhenReady(true); } catch (Exception ignored) {}
+        try {
+            inPlayer.patch_setPlayWhenReady(true);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Ignoring inPlayer.patch_setPlayWhenReady exception", ex);
+        }
 
         final long startTime = System.currentTimeMillis();
         final long duration = getCrossfadeDurationMs();
 
-        logInfo("Crossfade fade-in started for @" + System.identityHashCode(inPlayer)
+        Logger.printDebug(() -> "Crossfade fade-in started for @" + System.identityHashCode(inPlayer)
                 + ", duration=" + duration + "ms"
                 + ", fading-out players=" + fadingOutPlayers.size());
 
@@ -1080,21 +1086,25 @@ public class CrossfadeManager {
                     inPlayer.patch_setVolume(inVol);
                     if (elapsed % 500 < TICK_MS) {
                         int inState = inPlayer.patch_getPlaybackState();
-                        logDebug(String.format(
+                        Logger.printDebug(() -> String.format(Locale.US,
                                 "fade-in: t=%.2f inVol=%.2f(st=%d) fadingOut=%d",
                                 t, inVol, inState, fadingOutPlayers.size()));
                     }
-                } catch (Exception e) {
-                    logError("Fade-in tick error", e);
+                } catch (Exception ex) {
+                    Logger.printException(() -> "Fade-in tick error", ex);
                 }
 
                 if (t < 1.0f) {
                     mainHandler.postDelayed(this, TICK_MS);
                 } else {
-                    logInfo("Fade-in complete for @" + System.identityHashCode(inPlayer));
+                    Logger.printDebug(() -> "Fade-in complete for @" + System.identityHashCode(inPlayer));
                     inVideoMode = false;
                     currentFadeInVolume = 1.0f;
-                    try { inPlayer.patch_setVolume(1.0f); } catch (Exception ignored) {}
+                    try {
+                        inPlayer.patch_setVolume(1.0f);
+                    } catch (Exception ex) {
+                        Logger.printDebug(() -> "Ignoring inPlayer.patch_setVolume exception", ex);
+                    }
 
                     if (pendingInPlayer == null) {
                         crossfadeInProgress = false;
@@ -1111,7 +1121,7 @@ public class CrossfadeManager {
 
                         startAutoAdvanceMonitor();
                     } else {
-                        logDebug("Fade-in complete but pending player exists — "
+                        Logger.printDebug(() -> "Fade-in complete but pending player exists - "
                                 + "waiting for it to reach READY");
                     }
                 }
@@ -1131,7 +1141,7 @@ public class CrossfadeManager {
             Object player = factory.patch_createPlayer(coordinator, loadControl, 0);
             if (player != null) {
                 playersCreated++;
-                logInfo("Factory created player @"
+                Logger.printDebug(() -> "Factory created player @"
                         + System.identityHashCode(player)
                         + " [created=" + playersCreated
                         + " released=" + playersReleased
@@ -1139,8 +1149,8 @@ public class CrossfadeManager {
                         + (playersCreated - playersReleased) + "]");
             }
             return (ExoPlayerAccess) player;
-        } catch (Exception e) {
-            logError("createPlayerViaFactory failed", e);
+        } catch (Exception ex) {
+            Logger.printException(() -> "createPlayerViaFactory failed", ex);
             return null;
         }
     }
@@ -1179,7 +1189,8 @@ public class CrossfadeManager {
                 return (PlayerCoordinatorAccess) chain;
             }
             return null;
-        } catch (Exception e) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "getCoordinatorQuiet failure", ex);
             return null;
         }
     }
@@ -1194,7 +1205,7 @@ public class CrossfadeManager {
             MedialibPlayerAccess atad = (MedialibPlayerAccess) atadInstance;
             Object chain = atad.patch_getPlayerChain();
             if (chain == null) {
-                logError("atad player chain is null");
+                Logger.printException(() -> "atad player chain is null");
                 return null;
             }
 
@@ -1206,18 +1217,22 @@ public class CrossfadeManager {
                 depth++;
             }
 
-            logDebug("Traversed " + depth + " delegates → "
-                    + chain.getClass().getName());
+
+            final int depthFinal = depth;
+            final Object chainFinal = chain;
+            Logger.printDebug(() -> "Traversed " + depthFinal + " delegates → "
+                    + chainFinal.getClass().getName());
 
             if (chain instanceof PlayerCoordinatorAccess) {
                 return (PlayerCoordinatorAccess) chain;
             }
 
-            logError("Innermost class is not a PlayerCoordinatorAccess: "
-                    + chain.getClass().getName());
+            final Object chainFinal2 = chain;
+            Logger.printException(() -> "Innermost class is not a PlayerCoordinatorAccess: "
+                    + chainFinal2.getClass().getName());
             return null;
-        } catch (Exception e) {
-            logError("getCoordinatorFromAtad error", e);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getCoordinatorFromAtad error", ex);
             return null;
         }
     }
@@ -1230,7 +1245,7 @@ public class CrossfadeManager {
         if (p == null) return;
 
         playersReleased++;
-        logInfo("releasePlayer: @" + System.identityHashCode(p)
+        Logger.printDebug(() -> "releasePlayer: @" + System.identityHashCode(p)
                 + " [created=" + playersCreated + " released=" + playersReleased
                 + " outstanding=" + (playersCreated - playersReleased) + "]");
 
@@ -1241,12 +1256,16 @@ public class CrossfadeManager {
             savedDlt = callback.patch_getDlt();
         }
 
-        try { p.patch_setDltCallback(null); } catch (Exception ignored) {}
+        try {
+            p.patch_setDltCallback(null);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Ignoring p.patch_setDltCallback exception", ex);
+        }
 
         try {
             p.patch_release();
-        } catch (Exception e) {
-            logDebug("releasePlayer: release() threw: " + e.getMessage());
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "releasePlayer: release() threw exception", ex);
         }
 
         if (callback != null) {
@@ -1254,11 +1273,11 @@ public class CrossfadeManager {
             Object postDlt = callback.patch_getDlt();
             if (savedCqb != null && postCqb == null) {
                 callback.patch_setCqb(savedCqb);
-                logDebug("releasePlayer: restored shared cqb");
+                Logger.printDebug(() -> "releasePlayer: restored shared cqb");
             }
             if (savedDlt != null && postDlt == null) {
                 callback.patch_setDlt(savedDlt);
-                logDebug("releasePlayer: restored shared dlt");
+                Logger.printDebug(() -> "releasePlayer: restored shared dlt");
             }
         }
     }
@@ -1266,7 +1285,11 @@ public class CrossfadeManager {
     private static void releaseAllFadingPlayers() {
         synchronized (fadingOutPlayers) {
             for (FadingPlayer fp : fadingOutPlayers) {
-                try { fp.player.patch_setVolume(0.0f); } catch (Exception ignored) {}
+                try {
+                    fp.player.patch_setVolume(0.0f);
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Ignoring fp.player.patch_setVolume exception", ex);
+                }
                 releasePlayer(fp.player);
             }
             fadingOutPlayers.clear();
@@ -1281,9 +1304,15 @@ public class CrossfadeManager {
     private static void cleanupAllPlayers() {
         releaseAllFadingPlayers();
         ExoPlayerAccess pi = pendingInPlayer;
-        if (pi != null) { releasePlayer(pi); pendingInPlayer = null; }
+        if (pi != null) {
+            releasePlayer(pi);
+            pendingInPlayer = null;
+        }
         ExoPlayerAccess po = pendingOutPlayer;
-        if (po != null) { releasePlayer(po); pendingOutPlayer = null; }
+        if (po != null) {
+            releasePlayer(po);
+            pendingOutPlayer = null;
+        }
         crossfadeInPlayer = null;
         activeCoordinator = null;
         crossfadeInProgress = false;
@@ -1309,23 +1338,33 @@ public class CrossfadeManager {
                 FadingPlayer fp = it.next();
                 float vol = fp.currentVolume();
                 int playerState = -1;
-                try { playerState = fp.player.patch_getPlaybackState(); } catch (Exception ignored) {}
+                try {
+                    playerState = fp.player.patch_getPlaybackState();
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Ignoring fp.player.patch_getPlaybackState exception", ex);
+                }
+                final int playerStateFinal = playerState;
+
                 try {
                     fp.player.patch_setVolume(Math.max(0.0f, vol));
                     long elapsed = System.currentTimeMillis() - fp.startTimeMs;
                     if (elapsed % 500 < TICK_MS) {
-                        logDebug(String.format(
+                        Logger.printDebug(() -> String.format(Locale.US,
                                 "fade-out: @%d vol=%.2f state=%d elapsed=%dms",
-                                System.identityHashCode(fp.player), vol, playerState, elapsed));
+                                System.identityHashCode(fp.player), vol, playerStateFinal, elapsed));
                     }
-                } catch (Exception e) {
-                    logWarn("fade-out setVolume threw: " + e.getMessage()
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "fade-out setVolume threw: " + ex.getMessage()
                             + " player=@" + System.identityHashCode(fp.player)
-                            + " state=" + playerState);
+                            + " state=" + playerStateFinal);
                 }
 
                 if (fp.isComplete()) {
-                    try { fp.player.patch_setVolume(0.0f); } catch (Exception ignored) {}
+                    try {
+                        fp.player.patch_setVolume(0.0f);
+                    } catch (Exception ex) {
+                        Logger.printDebug(() -> "Ignoring fp.player.patch_setVolume exception", ex);
+                    }
                     releasePlayer(fp.player);
                     it.remove();
                 }
@@ -1336,7 +1375,7 @@ public class CrossfadeManager {
             mainHandler.postDelayed(CrossfadeManager::tickFadingLoop, TICK_MS);
         } else {
             fadingLoopRunning = false;
-            logDebug("Fading loop stopped — all fade-outs complete");
+            Logger.printDebug(() -> "Fading loop stopped — all fade-outs complete");
         }
     }
 
@@ -1352,7 +1391,7 @@ public class CrossfadeManager {
         activityRunning = false;
         stopAutoAdvanceMonitor();
         if (crossfadeInProgress) {
-            logInfo("onActivityStop: aborting crossfade");
+            Logger.printDebug(() -> "onActivityStop: aborting crossfade");
             abortCrossfadeNow();
         }
     }
@@ -1370,7 +1409,7 @@ public class CrossfadeManager {
 
     public static void toggleSessionPause() {
         sessionPaused = !sessionPaused;
-        logInfo("Session " + (sessionPaused ? "PAUSED" : "RESUMED")
+        Logger.printDebug(() -> "Session " + (sessionPaused ? "PAUSED" : "RESUMED")
                 + " [inVideo=" + isCurrentlyInVideoMode()
                 + " inProgress=" + crossfadeInProgress + "]");
 
@@ -1389,13 +1428,13 @@ public class CrossfadeManager {
                 if (vib != null && vib.hasVibrator()) {
                     vib.vibrate(100);
                 }
-            } catch (Exception ignored) {}
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Ignoring vibration exception", ex);
+            }
 
-            String msg = sessionPaused
+            Utils.showToastShort(sessionPaused
                     ? "Crossfade paused for this session"
-                    : "Crossfade resumed";
-            new Handler(Looper.getMainLooper()).post(() ->
-                    Toast.makeText(ctx, msg, Toast.LENGTH_SHORT).show());
+                    : "Crossfade resumed");
         }
     }
 
@@ -1416,7 +1455,7 @@ public class CrossfadeManager {
             VideoToggleAccess toggle = (VideoToggleAccess) nba;
             boolean isAudioMode = toggle.patch_isAudioMode();
 
-            logInfo("videoToggle: isAudioMode=" + isAudioMode
+            Logger.printDebug(() -> "videoToggle: isAudioMode=" + isAudioMode
                     + " enabled=" + isEnabled() + " paused=" + sessionPaused
                     + " inVideoMode(before)=" + inVideoMode);
 
@@ -1424,36 +1463,24 @@ public class CrossfadeManager {
                 if (!isAudioMode) {
                     manualToggleSuppressionUntil = System.currentTimeMillis() + 500;
                 }
-                logInfo("videoToggle → ALLOW (crossfade inactive)");
+                Logger.printDebug(() -> "videoToggle → ALLOW (crossfade inactive)");
                 return false;
             }
 
             if (isAudioMode) {
-                logInfo("videoToggle → BLOCK (audio→video while crossfade active)");
-                showVideoBlockedToast();
+                Logger.printDebug(() -> "videoToggle → BLOCK (audio→video while crossfade active)");
+                Utils.showToastShort("Video mode is not available while crossfade is enabled");
                 return true;
             }
 
             inVideoMode = false;
             manualToggleSuppressionUntil = System.currentTimeMillis() + 500;
-            logInfo("videoToggle → ALLOW (video→audio, suppressing crossfade for 500ms)");
+            Logger.printDebug(() -> "videoToggle → ALLOW (video→audio, suppressing crossfade for 500ms)");
             return false;
-        } catch (Exception e) {
-            logWarn("Could not check video toggle state", e);
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not check video toggle state", ex);
             return false;
         }
-    }
-
-    private static void showVideoBlockedToast() {
-        try {
-            Context ctx = Utils.getContext();
-            if (ctx == null) return;
-            new Handler(Looper.getMainLooper()).post(() ->
-                Toast.makeText(ctx,
-                    "Video mode is not available while crossfade is enabled",
-                    Toast.LENGTH_SHORT).show()
-            );
-        } catch (Exception ignored) {}
     }
 
     private static void forceAudioModeIfNeeded() {
@@ -1465,10 +1492,10 @@ public class CrossfadeManager {
                 toggle.patch_forceAudioModeSilent();
                 inVideoMode = false;
                 audioModeWasForced = true;
-                logInfo("Silently forced audio mode (no reactive broadcast to nmi)");
+                Logger.printDebug(() -> "Silently forced audio mode (no reactive broadcast to nmi)");
             }
-        } catch (Exception e) {
-            logWarn("Could not force audio mode: " + e.getMessage());
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not force audio mode", ex);
         }
     }
 
@@ -1478,9 +1505,9 @@ public class CrossfadeManager {
         try {
             ((VideoToggleAccess) nba).patch_restoreVideoModeSilent();
             inVideoMode = true;
-            logInfo("Silently restored video mode preference (ready for next crossfade)");
-        } catch (Exception e) {
-            logWarn("Could not restore video mode: " + e.getMessage());
+            Logger.printDebug(() -> "Silently restored video mode preference (ready for next crossfade)");
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not restore video mode", ex);
         }
     }
 
@@ -1492,8 +1519,8 @@ public class CrossfadeManager {
                 boolean isAudio = toggle.patch_isAudioMode();
                 inVideoMode = !isAudio;
                 return !isAudio;
-            } catch (Exception e) {
-                logDebug("Could not query live video mode: " + e.getMessage());
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Could not query live video mode", ex);
             }
         }
         return inVideoMode;
@@ -1551,17 +1578,17 @@ public class CrossfadeManager {
                 Resources res = activity.getResources();
                 String pkg = activity.getPackageName();
 
-                java.util.List<View> allButtons = new java.util.ArrayList<>();
+                List<View> allButtons = new ArrayList<>();
                 for (String idName : SHUFFLE_IDS) {
                     int id = res.getIdentifier(idName, "id", pkg);
                     if (id == 0) {
-                        logDebug("  shuffle id '" + idName + "' → not found in resources");
+                        Logger.printDebug(() -> "  shuffle id '" + idName + "' → not found in resources");
                         continue;
                     }
-                    java.util.List<View> matched = new java.util.ArrayList<>();
+                    List<View> matched = new ArrayList<>();
                     findAllViewsById(decorView, id, matched);
                     for (View v : matched) {
-                        logDebug("  shuffle id '" + idName + "' → "
+                        Logger.printDebug(() -> "  shuffle id '" + idName + "' → "
                                 + v.getClass().getSimpleName()
                                 + " vis=" + v.getVisibility()
                                 + " attached=" + v.isAttachedToWindow()
@@ -1571,7 +1598,7 @@ public class CrossfadeManager {
                     allButtons.addAll(matched);
                 }
 
-                logDebug("Found " + allButtons.size()
+                Logger.printDebug(() -> "Found " + allButtons.size()
                         + " shuffle button instances");
 
                 longPressRefs.clear();
@@ -1586,18 +1613,17 @@ public class CrossfadeManager {
                         longPressRefs.add(new WeakReference<>(parent));
                     }
                 }
-            } catch (Exception e) {
-                logDebug("Long-press attach skipped: " + e.getMessage());
+            } catch (Exception ex) {
+                Logger.printDebug(() -> "Long-press attach skipped", ex);
             }
         });
     }
 
     private static void findAllViewsById(View root, int id,
-                                          java.util.List<View> out) {
+                                          List<View> out) {
         if (root.getId() == id) out.add(root);
-        if (root instanceof ViewGroup) {
-            ViewGroup vg = (ViewGroup) root;
-            for (int i = 0; i < vg.getChildCount(); i++) {
+        if (root instanceof ViewGroup vg) {
+            for (int i = 0, childCount = vg.getChildCount(); i < childCount; i++) {
                 findAllViewsById(vg.getChildAt(i), id, out);
             }
         }
@@ -1622,8 +1648,8 @@ public class CrossfadeManager {
                         longPressHandled = true;
                         longPressTriggered[0] = true;
                         toggleSessionPause();
-                        logInfo("Shuffle long-press fired ("
-                                + getLongPressThresholdMs() + "ms)");
+                        Logger.printDebug(() -> "Shuffle long-press fired ("
+                                                + getLongPressThresholdMs() + "ms)");
                     };
                     mainHandler.postDelayed(pendingLongPress,
                             getLongPressThresholdMs());
