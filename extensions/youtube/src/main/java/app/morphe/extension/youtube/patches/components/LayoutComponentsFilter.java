@@ -28,6 +28,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
@@ -57,7 +58,7 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup notifyMe;
     private final StringFilterGroup searchFriction;
     private final StringFilterGroup singleItemInformationPanel;
-    private static volatile int singleItemInformationPanelIndex = -1;
+    private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup expandableMetadata;
     private final ByteArrayFilterGroup productCardBuffer;
     private final ByteArrayFilterGroup summaryCardBuffer;
@@ -387,15 +388,16 @@ public final class LayoutComponentsFilter extends Filter {
         // From 2025, the medical information panel is no longer shown in the search results.
         // Therefore, this identifier does not filter when the search bar is activated.
         if (matchedGroup == searchFriction) {
-            singleItemInformationPanelIndex = 0;
+            singleItemInformationPanelIndex.set(0);
             return false;
         }
         if (matchedGroup == singleItemInformationPanel) {
-            if (singleItemInformationPanelIndex >= 0) {
-                if (singleItemInformationPanelIndex < 9) {
-                    singleItemInformationPanelIndex++;
+            int currentIndex = singleItemInformationPanelIndex.get();
+            if (currentIndex >= 0) {
+                if (currentIndex < 9) {
+                    singleItemInformationPanelIndex.incrementAndGet();
                 } else {
-                    singleItemInformationPanelIndex = -1;
+                    singleItemInformationPanelIndex.set(-1);
                 }
                 return false;
             } else {
