@@ -1381,6 +1381,7 @@ public class CrossfadeManager {
         return sessionPaused.get();
     }
 
+    @SuppressLint("MissingPermission")
     public static void toggleSessionPause() {
         boolean current;
         boolean isNowPaused;
