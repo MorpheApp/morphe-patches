@@ -37,9 +37,7 @@ public final class QuickActionButtonsFilter extends Filter {
         exceptions.addPatterns(
                 "|like_button",
                 "|dislike_button",
-                "|save_to_playlist_button",
-                "|overflow_menu_button",
-                "|fullscreen_related_videos"
+                "|overflow_menu_button"
         );
 
         addPathCallbacks(
