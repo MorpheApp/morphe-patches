@@ -74,7 +74,6 @@ val hideVideoActionButtonsPatch = bytecodePatch(
             ),
             PreferenceScreenPreference(
                 key = "morphe_quick_actions_screen",
-                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     SwitchPreference("morphe_hide_quick_actions_ask_button"),
                     SwitchPreference("morphe_hide_quick_actions_comments_button"),

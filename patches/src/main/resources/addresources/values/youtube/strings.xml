@@ -637,7 +637,7 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
 
     <!-- layout.buttons.action.hideButtonsPatch -->
     <string name="morphe_hide_buttons_screen_title">Action buttons</string>
-    <string name="morphe_hide_buttons_screen_summary">Hide or show buttons under videos</string>
+    <string name="morphe_hide_buttons_screen_summary">Hide or show action buttons under videos</string>
     <string name="morphe_disable_like_subscribe_glow_title">Disable Like and Subscribe glow</string>
     <string name="morphe_disable_like_subscribe_glow_summary_on">Like and Subscribe button will not glow when mentioned</string>
     <string name="morphe_disable_like_subscribe_glow_summary_off">Like and Subscribe button will glow when mentioned</string>
@@ -808,7 +808,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Dark mode navigation bar is opaque or translucent</string>
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
-    <string name="morphe_toolbar_screen_summary">Hide or change toolbar components</string>
+    <string name="morphe_toolbar_screen_summary">Hide or show toolbar components</string>
     <string name="morphe_hide_toolbar_create_button_title">Hide Create</string>
     <string name="morphe_hide_toolbar_create_button_summary_on">Create button is hidden</string>
     <string name="morphe_hide_toolbar_create_button_summary_off">Create button is shown</string>
@@ -942,7 +942,7 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_settings_button_summary_off">Settings button is shown</string>
 
     <string name="morphe_quick_actions_screen_title">Quick actions</string>
-    <string name="morphe_quick_actions_screen_summary">Hide or show fullscreen quick actions related components</string>
+    <string name="morphe_quick_actions_screen_summary">Hide or show quick actions in fullscreen under seekbar</string>
     <string name="morphe_hide_quick_actions_ask_button_title">Hide Ask</string>
     <string name="morphe_hide_quick_actions_ask_button_summary_on">Ask button is hidden</string>
     <string name="morphe_hide_quick_actions_ask_button_summary_off">Ask button is shown</string>
