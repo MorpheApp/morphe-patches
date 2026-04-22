@@ -16,7 +16,7 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/DisableModernHomePatch;"
 
 @Suppress("unused")
@@ -37,13 +37,13 @@ val disableModernHomePatch = bytecodePatch(
                 addInstructionsAtControlFlowLabel(
                     index,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->disableModernHome(Z)Z
+                        invoke-static { v$register }, $EXTENSION_CLASS->disableModernHome(Z)Z
                         move-result v$register 
                     """
                 )
             }
         }
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

@@ -23,6 +23,7 @@ message MobileTopbarRenderer {
 message Buttons {
     oneof data {
         ButtonRenderer buttonRenderer = 65153809;
+        TopbarButtonRenderer topbarButtonRenderer = 322055134;
     }
 }
 
@@ -31,6 +32,9 @@ message ButtonRenderer {
     NavigationEndpoint navigationEndpoint = 9;
     optional ButtonRendererAccessibilityData buttonRendererAccessibilityData = 10;
     optional RendererAccessibilityData rendererAccessibilityData = 16;
+}
+
+message TopbarButtonRenderer {
 }
 
 message RendererAccessibilityData {

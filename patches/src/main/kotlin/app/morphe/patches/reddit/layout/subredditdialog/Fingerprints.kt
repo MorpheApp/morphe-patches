@@ -8,15 +8,17 @@ package app.morphe.patches.reddit.layout.subredditdialog
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterRange
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object FrequentUpdatesHandlerFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/screens/pager/FrequentUpdatesHandler\$handleFrequentUpdates$",
+    definingClass = $$"Lcom/reddit/screens/pager/FrequentUpdatesHandler$handleFrequentUpdates$",
     name = "invokeSuspend",
     returnType = "Ljava/lang/Object;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -68,32 +70,43 @@ internal object NSFWAlertEmitFingerprint : Fingerprint(
     )
 )
 
-internal object NSFWAlertDialogBuilderFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf("Z"),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            name = "show"
-        )
-    )
-)
-
-internal object NSFWAlertDialogInstanceFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf("L"),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            name = "show"
-        )
-    )
-)
-
-internal object NSFWAlertDialogParentFingerprint : Fingerprint(
+private object NSFWAlertDialogClassFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
         string("NsfwAlertDialogScreenDelegate")
+    )
+)
+
+internal object NSFWAlertShowDialogFingerprint : Fingerprint(
+    classFingerprint = NSFWAlertDialogClassFingerprint,
+    returnType = "V",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            returnType = "L",
+            parameters = listOf(
+                "Landroid/content/Context;",
+                $$"Landroid/content/DialogInterface$OnClickListener;",
+                $$"Landroid/content/DialogInterface$OnClickListener;"
+            )
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT_OBJECT,
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            returnType = "L",
+            location = MatchAfterWithin(5)
+        ),
+        opcode(
+            opcode = Opcode.MOVE_RESULT_OBJECT,
+            location = MatchAfterImmediately()
+        ),
+        newInstance(
+            type = "Ljava/lang/ref/WeakReference;",
+            location = MatchAfterWithin(5)
+        )
     )
 )

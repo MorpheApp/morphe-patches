@@ -61,11 +61,12 @@ public final class VideoInformation {
 
     private static WeakReference<PlaybackController> playerControllerRef = new WeakReference<>(null);
     private static WeakReference<PlaybackController> mdxPlayerDirectorRef = new WeakReference<>(null);
-
+    private static String channelId = "";
     private static String videoId = "";
     private static long videoLength = 0;
     private static long videoTime = -1;
 
+    private static volatile String playerResponsePlaylistId = "";
     private static volatile String playerResponseVideoId = "";
     private static volatile boolean playerResponseVideoIdIsShort;
     private static volatile boolean videoIdIsShort;
@@ -125,6 +126,10 @@ public final class VideoInformation {
             playerControllerRef = new WeakReference<>(Objects.requireNonNull(playerController));
             videoTime = -1;
             videoLength = 0;
+            channelId = "";
+            String channelName = "";
+            String videoTitle = "";
+            boolean isLive = false;
             playbackSpeed = DEFAULT_YOUTUBE_PLAYBACK_SPEED;
             desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
             currentQualities = null;
@@ -146,6 +151,14 @@ public final class VideoInformation {
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to initialize MDX", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setChannelId(String cId) {
+        channelId = cId != null ? cId : "";
+        Logger.printDebug(() -> "Extracted Channel ID: " + channelId);
     }
 
     /**
@@ -180,6 +193,24 @@ public final class VideoInformation {
             }
         }
         return signature; // Return the original value since we are observing and not modifying.
+    }
+
+    /**
+     * Injection point.  Called off the main thread.
+     *
+     * @param playlistId The ID of the last playlist loaded.
+     */
+    public static void setPlayerResponsePlaylistId(@Nullable String playlistId, boolean isShortAndOpeningOrPlaying) {
+        if (!playerResponseVideoIdIsShort) {
+            if (playlistId == null) {
+                playlistId = "";
+            }
+            if (!playerResponsePlaylistId.equals(playlistId)) {
+                String finalPlaylistId = playlistId;
+                Logger.printDebug(() -> "New player response playlist ID: " + finalPlaylistId);
+                playerResponsePlaylistId = playlistId;
+            }
+        }
     }
 
     /**
@@ -337,13 +368,32 @@ public final class VideoInformation {
     }
 
     /**
+     * @return The channel ID of the current video.
+     */
+    @NonNull
+    public static String getChannelId() {
+        return channelId;
+    }
+
+    /**
      * ID of the last video opened. Includes Shorts.
      *
      * @return The ID of the video, or an empty string if no videos have been opened yet.
+     *         With 21.15+ this returns an empty string if no video is currently opened.
      */
     @NonNull
     public static String getVideoId() {
         return videoId;
+    }
+
+    /**
+     * This is the playlistId of the player response, but since Shorts does not support playlists, it is the same as the current playlistId.
+     *
+     * @return The playlist id of the video.
+     */
+    @NonNull
+    public static String getPlaylistId() {
+        return playerResponsePlaylistId;
     }
 
     /**
@@ -393,7 +443,7 @@ public final class VideoInformation {
      *         then this returns zero.
      */
     public static long getVideoLength() {
-       return videoLength;
+        return videoLength;
     }
 
     /**

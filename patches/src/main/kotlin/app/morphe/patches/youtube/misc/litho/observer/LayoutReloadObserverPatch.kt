@@ -11,10 +11,10 @@ package app.morphe.patches.youtube.misc.litho.observer
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.litho.lazily.hookTreeNodeResult
-import app.morphe.patches.youtube.misc.litho.lazily.lazilyConvertedElementHookPatch
+import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
+import app.morphe.patches.youtube.misc.litho.node.hookTreeNodeResult
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/LayoutReloadObserverPatch;"
 
 val layoutReloadObserverPatch = bytecodePatch(
@@ -22,10 +22,10 @@ val layoutReloadObserverPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        lazilyConvertedElementHookPatch
+        treeNodeElementHookPatch
     )
 
     execute {
-        hookTreeNodeResult("$EXTENSION_CLASS_DESCRIPTOR->onLazilyConvertedElementLoaded")
+        hookTreeNodeResult("$EXTENSION_CLASS->onLazilyConvertedElementLoaded")
     }
 }

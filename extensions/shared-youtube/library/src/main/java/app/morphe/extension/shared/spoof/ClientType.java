@@ -85,7 +85,7 @@ public enum ClientType {
      * AV1 codec available.
      */
     // https://dumps.tadiphone.dev/dumps/oculus/eureka
-    ANDROID_VR_1_54_20(
+    ANDROID_VR_1_65(
             28,
             "ANDROID_VR",
             "com.google.android.apps.youtube.vr.oculus",
@@ -95,7 +95,7 @@ public enum ClientType {
             "14",
             "34",
             "UP1A.231005.007.A1",
-            "1.54.20",
+            "1.65.10",
             null,
             false,
             false,
@@ -103,32 +103,32 @@ public enum ClientType {
             true,
             false,
             true,
-            "Android VR 1.54"
+            "Android VR 1.65"
     ),
     /**
      * Uses non adaptive bitrate.
      * AV1 codec not available.
      */
     // https://dumps.tadiphone.dev/dumps/oculus/monterey
-    ANDROID_VR_1_47_48(
-            ANDROID_VR_1_54_20.id,
-            ANDROID_VR_1_54_20.clientName,
-            Objects.requireNonNull(ANDROID_VR_1_54_20.packageName),
-            ANDROID_VR_1_54_20.deviceMake,
+    ANDROID_VR_1_64(
+            ANDROID_VR_1_65.id,
+            ANDROID_VR_1_65.clientName,
+            Objects.requireNonNull(ANDROID_VR_1_65.packageName),
+            ANDROID_VR_1_65.deviceMake,
             "Quest",
-            ANDROID_VR_1_54_20.osName,
+            ANDROID_VR_1_65.osName,
             "10",
             "29",
             "QQ3A.200805.001",
-            "1.47.48",
-            ANDROID_VR_1_54_20.clientPlatform,
-            ANDROID_VR_1_54_20.canLogin,
-            ANDROID_VR_1_54_20.requireLogin,
-            ANDROID_VR_1_54_20.supportsMultiAudioTracks,
-            ANDROID_VR_1_54_20.supportsOAuth2,
-            ANDROID_VR_1_54_20.requireJS,
-            ANDROID_VR_1_54_20.usePlayerEndpoint,
-            "Android VR 1.47"
+            "1.64.34",
+            ANDROID_VR_1_65.clientPlatform,
+            ANDROID_VR_1_65.canLogin,
+            ANDROID_VR_1_65.requireLogin,
+            ANDROID_VR_1_65.supportsMultiAudioTracks,
+            ANDROID_VR_1_65.supportsOAuth2,
+            ANDROID_VR_1_65.requireJS,
+            ANDROID_VR_1_65.usePlayerEndpoint,
+            "Android VR 1.64"
     ),
     /**
      * Video not playable: Livestream.

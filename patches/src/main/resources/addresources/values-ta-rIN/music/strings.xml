@@ -20,7 +20,11 @@ Second \"item\" text"</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <!-- ad.general.hideAdsPatch -->
   <!-- ad.video.hideVideoAdsPatch -->
+  <!-- interaction.crossfade.crossfadePatch -->
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_about_title">விபரம்</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <!-- layout.buttons.hideButtons -->
   <!-- layout.startpage.changeStartPagePatch -->
@@ -34,6 +38,5 @@ Second \"item\" text"</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <!-- layout.premium.hideGetPremiumPatch -->
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
 </resources>

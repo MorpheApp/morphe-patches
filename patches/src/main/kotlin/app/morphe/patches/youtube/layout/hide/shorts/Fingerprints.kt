@@ -17,8 +17,8 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -48,20 +48,21 @@ internal object ReelWatchFragmentInitPlaybackFingerprint : Fingerprint(
     )
 )
 
+private object SetPivotBarVisibilityParentFingerprint : Fingerprint(
+    parameters = listOf("Z"),
+    filters = listOf(
+        string("FEnotifications_inbox")
+    )
+)
+
 internal object SetPivotBarVisibilityFingerprint : Fingerprint(
+    classFingerprint = SetPivotBarVisibilityParentFingerprint,
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Z"),
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.CHECK_CAST,
         Opcode.IF_EQZ,
-    )
-)
-
-internal object SetPivotBarVisibilityParentFingerprint : Fingerprint(
-    parameters = listOf("Z"),
-    filters = listOf(
-        string("FEnotifications_inbox")
     )
 )
 

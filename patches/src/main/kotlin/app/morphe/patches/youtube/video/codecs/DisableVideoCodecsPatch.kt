@@ -13,7 +13,7 @@ import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisableVideoCodecsPatch;"
 
 @Suppress("unused")
@@ -34,7 +34,7 @@ val disableVideoCodecsPatch = bytecodePatch(
                 }
 
                 val reference = instruction.getReference<MethodReference>()
-                if (reference?.definingClass =="Landroid/view/Display\$HdrCapabilities;"
+                if (reference?.definingClass == $$"Landroid/view/Display$HdrCapabilities;"
                     && reference.name == "getSupportedHdrTypes") {
                     return@filterMap instruction to instructionIndex
                 }
@@ -46,8 +46,8 @@ val disableVideoCodecsPatch = bytecodePatch(
 
                 method.replaceInstruction(
                     index,
-                    "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
-                            "disableHdrVideo(Landroid/view/Display\$HdrCapabilities;)[I",
+                    "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->" +
+                            $$"disableHdrVideo(Landroid/view/Display$HdrCapabilities;)[I",
                 )
             }
         )
@@ -58,13 +58,16 @@ val disableVideoCodecsPatch = bytecodePatch(
     execute {
         PreferenceScreen.VIDEO.addPreferences(
             SwitchPreference("morphe_disable_hdr_video"),
-            SwitchPreference("morphe_force_avc_codec")
+            SwitchPreference(
+                key ="morphe_force_avc_codec",
+                tag = "app.morphe.extension.youtube.settings.preference.ForceAVCSwitchPreference"
+            )
         )
 
         Vp9CapabilityFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->allowVP9()Z
+                invoke-static {}, $EXTENSION_CLASS->allowVP9()Z
                 move-result v0
                 if-nez v0, :default
                 return v0

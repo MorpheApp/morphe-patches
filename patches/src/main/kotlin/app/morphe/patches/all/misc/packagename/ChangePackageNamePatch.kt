@@ -2,14 +2,40 @@
  * Copyright 2026 Morphe.
  * https://github.com/MorpheApp/morphe-patches
  *
- * Original hard forked code:
- * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ * Original code hard forked from:
+ * https://github.com/ReVanced/revanced-patches/blob/724e6d61b2ecd868c1a9a37d465a688e83a74799/patches/src/main/kotlin/app/revanced/patches/all/misc/packagename/ChangePackageNamePatch.kt
  *
- * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ * File-Specific License Notice (GPLv3 Section 7 Terms)
+ *
+ * This file is part of the Morphe patches project and is licensed under
+ * the GNU General Public License version 3 (GPLv3), with the Additional
+ * Terms under Section 7 described in the Morphe patches
+ * LICENSE file: https://github.com/MorpheApp/morphe-patches/blob/main/NOTICE
+ *
+ * https://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * File-Specific Exception to Section 7b:
+ * -------------------------------------
+ * Section 7b (Attribution Requirement) of the Morphe patches LICENSE
+ * does not apply to THIS FILE. Use of this file does NOT require any
+ * user-facing, in-application, or UI-visible attribution.
+ *
+ * For this file only, attribution under Section 7b is satisfied by
+ * retaining this comment block in the source code of this file.
+ *
+ * Distribution and Derivative Works:
+ * ----------------------------------
+ * This comment block MUST be preserved in all copies, distributions,
+ * and derivative works of this file, whether in source or modified
+ * form.
+ *
+ * All other terms of the Morphe Patches LICENSE, including Section 7c
+ * (Project Name Restriction) and the GPLv3 itself, remain fully
+ * applicable to this file.
  */
+
 package app.morphe.patches.all.misc.packagename
 
-import app.morphe.patcher.PackageMetadata
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
@@ -55,16 +81,16 @@ fun setOrGetFallbackPackageName(fallbackPackageName: String): String {
 /**
  * Selectively changes usage of Context.getPackageName() to the original package name.
  */
-context(BytecodePatchContext)
+context(patchContext: BytecodePatchContext)
 private fun applyGetPackageName(oldPackageName: String, vararg classesToChange: String) {
-    classDefForEach { classDef ->
+    patchContext.classDefForEach { classDef ->
         if (!classesToChange.any { classToChange ->
                 classDef.type.startsWith(classToChange)
             }
         ) return@classDefForEach
 
         val mutableClass by lazy {
-            mutableClassDefBy(classDef)
+            patchContext.mutableClassDefBy(classDef)
         }
 
         classDef.methods.forEach { method ->
@@ -102,9 +128,9 @@ private fun applyGetPackageName(oldPackageName: String, vararg classesToChange: 
 }
 
 
-context(ResourcePatchContext)
+context(patchContext: ResourcePatchContext)
 private fun applyProvidersStrings(oldPackageName: String, newPackageName: String) {
-    document("res/values/strings.xml").use { document ->
+    patchContext.document("res/values/strings.xml").use { document ->
         val children = document.documentElement.childNodes
         for (i in 0 until children.length) {
             val node = children.item(i) as? Element ?: continue
@@ -125,7 +151,7 @@ val changePackageNamePatch = resourcePatch(
     name = "Change package name",
     description = "Appends \".morphe\" to the package name by default. " +
             "Changing the package name of the app can lead to unexpected issues.",
-    use = false
+    default = false
 ) {
     packageNameOption = stringOption(
         key = "packageName",
@@ -135,32 +161,32 @@ val changePackageNamePatch = resourcePatch(
         description = "The name of the package to rename the app to.",
         required = true,
     ) {
-        it == "Default" || it!!.matches(Regex("^[a-z]\\w*(\\.[a-z]\\w*)+\$"))
+        it == "Default" || it!!.matches(Regex("^[a-z]\\w*(\\.[a-z]\\w*)+$"))
     }
 
-    val updatePermissions = booleanOption(
+    val updatePermissionsOption = booleanOption(
         key = "updatePermissions",
         default = false,
         title = "Update permissions",
         description = "Update compatibility receiver permissions. " +
             "Enabling this can fix installation errors, but this can also break features in certain apps.",
-    ).value
+    )
 
-    val updateProviders = booleanOption(
+    val updateProvidersOption = booleanOption(
         key = "updateProviders",
         default = false,
         title = "Update providers",
         description = "Update provider names declared by the app. " +
             "Enabling this can fix installation errors, but this can also break features in certain apps.",
-    ).value
+    )
 
-    val updateProvidersStrings = booleanOption(
+    val updateProvidersStringsOption = booleanOption(
         key = "updateProvidersStrings",
         default = false,
         title = "Update providers strings",
         description = "Update additional provider names declared by the app in the strings.xml file. " +
                 "Enabling this can fix installation errors, but this can also break features in certain apps.",
-    ).value
+    )
 
     fun getReplacementPackageName(originalPackageName: String) : String {
         val replacementPackageName = packageNameOption.value
@@ -218,9 +244,9 @@ val changePackageNamePatch = resourcePatch(
                 applyUpdateProvidersStrings = true
             }
             else -> {
-                applyUpdatePermissions = updatePermissions!!
-                applyUpdateProviders = updateProviders!!
-                applyUpdateProvidersStrings = updateProvidersStrings!!
+                applyUpdatePermissions = updatePermissionsOption.value!!
+                applyUpdateProviders = updateProvidersOption.value!!
+                applyUpdateProvidersStrings = updateProvidersStringsOption.value!!
             }
         }
 
@@ -246,12 +272,13 @@ val changePackageNamePatch = resourcePatch(
 
                 val receiverNotExported = "DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
                 val androidName = "android:name"
-                val newName = "$packageName.$receiverNotExported"
+                val oldName = "$packageName.$receiverNotExported"
+                val newName = "$newPackageName.$receiverNotExported"
 
                 (permissions + usesPermissions)
                     .map { it as Element }
                     .filter {
-                        it.getAttribute(androidName) == newName
+                        it.getAttribute(androidName) == oldName
                     }
                     .forEach {
                         it.setAttribute(androidName, newName)

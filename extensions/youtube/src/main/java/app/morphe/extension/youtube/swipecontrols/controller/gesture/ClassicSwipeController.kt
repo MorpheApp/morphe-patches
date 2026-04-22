@@ -100,8 +100,10 @@ class ClassicSwipeController(
         distanceX: Double,
         distanceY: Double,
     ): Boolean {
+        // cancel if not fullscreen
+        if (!controller.config.isFullscreenVideo) return false
         // cancel if not vertical
-        if (currentSwipe != SwipeDetector.SwipeDirection.VERTICAL) return false
+        if (!shouldForceInterceptEvents) return false
         return when (from.toPoint()) {
             in controller.zones.volume -> {
                 scrollVolume(distanceY)

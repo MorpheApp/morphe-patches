@@ -3,6 +3,7 @@ package app.morphe.extension.youtube.sponsorblock.ui;
 import static app.morphe.extension.shared.ResourceUtils.getColor;
 import static app.morphe.extension.shared.ResourceUtils.getDimension;
 import static app.morphe.extension.shared.ResourceUtils.getDimensionPixelSize;
+import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -21,6 +22,7 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
 import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
@@ -28,12 +30,22 @@ import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
 public class SkipSponsorButton extends FrameLayout {
     /**
      * Adds a high contrast border around the skip button.
-     *
+     * <p>
      * This feature is not currently used.
      * If this is added, it needs an additional button width change because
      * as-is the skip button text is clipped when this is on.
      */
     private static final boolean highContrast = false;
+    /**
+     * Extra vertical padding for SB buttons when using bold player layouts.
+     * YT seems to use the same skip button vertical padding for both the old and
+     * new player layouts, and it's not enough for the bold layout and the SB buttons clip
+     * the bold player buttons.
+     */
+    public static final int SB_BUTTON_EXTRA_VERTICAL_PADDING =
+            RESTORE_OLD_PLAYER_BUTTONS
+            ? 0
+            : Dim.dp10;
     private final LinearLayout skipSponsorBtnContainer;
     private final TextView skipSponsorTextView;
     private final Paint background;
@@ -57,23 +69,27 @@ public class SkipSponsorButton extends FrameLayout {
     public SkipSponsorButton(Context context, AttributeSet attributeSet, int defStyleAttr, int defStyleRes) {
         super(context, attributeSet, defStyleAttr, defStyleRes);
 
-        LayoutInflater.from(context).inflate(ResourceUtils.getIdentifierOrThrow(context, ResourceType.LAYOUT, "morphe_sb_skip_sponsor_button"), this, true);  // layout:skip_ad_button
-        setMinimumHeight(getDimensionPixelSize("ad_skip_ad_button_min_height"));  // dimen:ad_skip_ad_button_min_height
+        LayoutInflater.from(context).inflate(ResourceUtils.getIdentifierOrThrow(context,
+                        ResourceType.LAYOUT, "morphe_sb_skip_sponsor_button"),
+                this, true);
+        setMinimumHeight(getDimensionPixelSize("ad_skip_ad_button_min_height"));
         skipSponsorBtnContainer = Objects.requireNonNull(findViewById(ResourceUtils.getIdentifierOrThrow(
-                context, ResourceType.ID, "morphe_sb_skip_sponsor_button_container")));  // id:skip_ad_button_container
+                context, ResourceType.ID, "morphe_sb_skip_sponsor_button_container")));
 
         background = new Paint();
-        background.setColor(getColor("skip_ad_button_background_color"));  // color:skip_ad_button_background_color);
+        background.setColor(getColor("skip_ad_button_background_color"));
         background.setStyle(Paint.Style.FILL);
 
         border = new Paint();
-        border.setColor(getColor("skip_ad_button_border_color"));  // color:skip_ad_button_border_color);
-        border.setStrokeWidth(getDimension("ad_skip_ad_button_border_width"));  // dimen:ad_skip_ad_button_border_width);
+        border.setColor(getColor("skip_ad_button_border_color"));
+        border.setStrokeWidth(getDimension("ad_skip_ad_button_border_width"));
         border.setStyle(Paint.Style.STROKE);
 
-        skipSponsorTextView = Objects.requireNonNull(findViewById(ResourceUtils.getIdentifier(context, ResourceType.ID, "morphe_sb_skip_sponsor_button_text")));  // id:skip_ad_button_text;
-        defaultBottomMargin = getDimensionPixelSize("skip_button_default_bottom_margin");  // dimen:skip_button_default_bottom_margin
-        ctaBottomMargin = getDimensionPixelSize("skip_button_cta_bottom_margin");  // dimen:skip_button_cta_bottom_margin
+        skipSponsorTextView = Objects.requireNonNull(findViewById(ResourceUtils.getIdentifier(context,
+                ResourceType.ID, "morphe_sb_skip_sponsor_button_text")));
+        ctaBottomMargin = getDimensionPixelSize("skip_button_cta_bottom_margin"); // Same as skip_button_default_portrait_bottom_margin
+        defaultBottomMargin = getDimensionPixelSize("skip_button_default_bottom_margin")
+                + SB_BUTTON_EXTRA_VERTICAL_PADDING;
 
         updateLayout();
 

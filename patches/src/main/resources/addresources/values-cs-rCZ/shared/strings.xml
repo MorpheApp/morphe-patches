@@ -84,14 +84,16 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">Licenční upozornění</string>
+  <string name="morphe_settings_about_licenses_loading">Načítání...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ladění</string>
   <string name="morphe_debug_screen_summary">Povolit nebo zakázat možnosti ladění</string>
   <string name="morphe_debug_title">Záznamy ladění</string>
   <string name="morphe_debug_summary_on">Záznamy ladění jsou povoleny</string>
   <string name="morphe_debug_summary_off">Záznamy ladění jsou zakázány</string>
-  <string name="morphe_debug_stacktrace_title">Protokolovat trasování zásobníku</string>
-  <string name="morphe_debug_stacktrace_summary_on">Protokoly ladění obsahují trasování zásobníku</string>
+  <string name="morphe_debug_stacktrace_title">Sledování zásobníku ladění</string>
+  <string name="morphe_debug_stacktrace_summary_on">Ladící protokoly obsahují sledování zásobníku</string>
   <string name="morphe_debug_stacktrace_summary_off">Ladící protokoly nezahrnují sledování zásobníku</string>
   <string name="morphe_debug_toast_on_error_title">Zobrazit oznámení v případě chyby Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Zobrazí se oznámení, pokud dojde k chybě</string>
@@ -99,24 +101,27 @@ Chcete-li přeložit nové jazyky nebo zlepšit stávající překlady, navštiv
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Vypnutí chybových oznámení skryje všechna chybová oznámení Morphe.
 
 Nebudete informováni o žádné neočekávané události."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exportovat ladicí protokoly</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Zkopíruje ladicí protokoly Morphe do schránky</string>
+  <string name="morphe_debug_export_logs_title">Exportovat ladicí protokoly</string>
+  <string name="morphe_debug_export_logs_summary">Exportovat protokoly ladění Morphe</string>
+  <string name="morphe_debug_export_logs_file">Exportovat do souboru</string>
+  <string name="morphe_debug_export_logs_success">Protokoly ladění byly úspěšně exportovány</string>
+  <string name="morphe_debug_export_logs_failed">Nepodařilo se exportovat protokoly ladění: %s</string>
+  <string name="morphe_debug_logs_search_hint">Vyhledat protokoly ladění...</string>
+  <string name="morphe_debug_export_logs_clear">Vymazat</string>
   <string name="morphe_debug_logs_disabled">Ladění je vypnuto</string>
-  <string name="morphe_debug_logs_none_found">Nebyly nalezeny žádné protokoly</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Protokoly zkopírovány</string>
-  <string name="morphe_debug_logs_failed_to_export">Nepodařilo se exportovat protokoly: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Vymazat ladicí protokoly</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Vymaže všechny uložené ladicí protokoly Morphe</string>
-  <string name="morphe_debug_logs_clear_toast">Protokoly vymazány</string>
+  <string name="morphe_debug_logs_none_found">Nebyla nalezena žádná protokola ladění</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Protokoly ladění zkopírovány</string>
+  <string name="morphe_debug_logs_failed_to_export">Nepodařilo se exportovat protokoly ladění: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Protokoly ladění vymazány</string>
   <string name="morphe_debug_feature_flags_manager_title">Správce příznaků funkcí</string>
   <string name="morphe_debug_feature_flags_manager_summary">Spravovat logické příznaky funkcí</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Aktivní příznaky (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokované příznaky (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Hledat příznaky...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Příznaky uloženy</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Příznaky resetovány</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Příznaky zkopírovány do schránky</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Zahlašte aplikaci pro použití této funkce</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktivní příznaky funkcí (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Zablokované příznaky funkcí (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Vyhledat příznaky funkcí...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Příznaky funkcí uloženy</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Příznaky funkcí resetovány</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Příznaky funkcí zkopírovány do schránky</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Restartujte aplikaci, abyste použili toto nastavení</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Otevřte nastavení MicroG</string>
@@ -136,4 +141,22 @@ Zakázání optimalizace baterie pro MicroG nebude mít negativní vliv na spot�
 
 Klepněte na tlačítko Pokračovat a povolte změny optimalizace."</string>
   <string name="gms_core_dialog_continue_text">Pokračovat</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog pro optimalizaci baterie</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Zobrazuje se dialog pro optimalizaci baterie MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialog pro optimalizaci baterie MicroG se nezobrazuje</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Zakázání této funkce skryje výzvu pro optimalizaci baterie MicroG.
+
+Pokud se optimalizace baterie nezmění, můžete zaznamenat:
+• Aplikace se může náhodně zavřít
+• Oznámení nemusí fungovat
+• Přehrávání na pozadí nemusí fungovat"</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentální upozornění 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Používáte experimentální verzi aplikace ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Očekávejte neobvyklé chování aplikace nebo neidentifikované chyby, protože dolaďujeme opravy pro tuto verzi aplikace.
+&lt;br/&gt;&lt;br/&gt;
+Pokud chcete mít co nejméně problémů, &lt;b&gt;odinstalujte&lt;/b&gt; tuto aplikaci a aktualizujte doporučenou verzi aplikace ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Chci experimentální</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Chci stabilní</string>
 </resources>

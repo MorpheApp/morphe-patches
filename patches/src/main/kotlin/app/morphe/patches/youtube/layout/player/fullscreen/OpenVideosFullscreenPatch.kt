@@ -24,6 +24,6 @@ val openVideosFullscreenPatch = bytecodePatch(
             SwitchPreference("morphe_open_videos_fullscreen_portrait")
         )
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

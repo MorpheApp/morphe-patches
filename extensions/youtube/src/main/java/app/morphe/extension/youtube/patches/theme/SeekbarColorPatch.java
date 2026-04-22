@@ -213,14 +213,6 @@ public final class SeekbarColorPatch {
         if (HIDE_SEEKBAR_THUMBNAIL_ENABLED && x0 == 0 && y1 == 0) {
             return HIDDEN_SEEKBAR_GRADIENT_COLORS;
         }
-        return getPlayerLinearGradient(original);
-    }
-
-    /**
-     * Injection point.
-     * Pre 19.49
-     */
-    public static int[] getPlayerLinearGradient(int[] original) {
         return SEEKBAR_CUSTOM_COLOR_ENABLED
                 ? customSeekbarColorGradient
                 : original;

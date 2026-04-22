@@ -52,11 +52,14 @@ jobs:
           fetch-depth: 0
           clean: true
 
+      - name: Cache Gradle
+        uses: burrunan/gradle-cache-action@v3
+
       # Step 2: Run string checks on the crowdin branch
       - name: Check strings on crowdin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew clean checkStringResources
+        run: ./gradlew checkStringResources -PnoProguard
 
       # Step 3: Checkout dev branch to prepare for merging
       - name: Checkout dev branch for merge

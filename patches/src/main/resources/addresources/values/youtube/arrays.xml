@@ -29,9 +29,40 @@
         <item>5</item>
     </string-array>
 
+    <!-- interaction.playall.playAllButtonPatch -->
+    <string-array name="morphe_play_all_button_type_entries">
+        <item>@string/morphe_play_all_button_type_entry_0</item>
+        <item>@string/morphe_play_all_button_type_entry_1</item>
+        <item>@string/morphe_play_all_button_type_entry_2</item>
+        <item>@string/morphe_play_all_button_type_entry_3</item>
+        <item>@string/morphe_play_all_button_type_entry_4</item>
+        <item>@string/morphe_play_all_button_type_entry_5</item>
+        <item>@string/morphe_play_all_button_type_entry_6</item>
+        <item>@string/morphe_play_all_button_type_entry_7</item>
+        <item>@string/morphe_play_all_button_type_entry_8</item>
+        <item>@string/morphe_play_all_button_type_entry_9</item>
+        <item>@string/morphe_play_all_button_type_entry_10</item>
+        <item>@string/morphe_play_all_button_type_entry_11</item>
+        <item>@string/morphe_play_all_button_type_entry_12</item>
+    </string-array>
+    <string-array name="morphe_play_all_button_type_entry_values">
+        <item>ALL_CONTENTS_WITH_TIME_ASCENDING</item>
+        <item>ALL_CONTENTS_WITH_TIME_DESCENDING</item>
+        <item>ALL_CONTENTS_WITH_POPULAR_DESCENDING</item>
+        <item>VIDEOS_ONLY_WITH_TIME_DESCENDING</item>
+        <item>VIDEOS_ONLY_WITH_POPULAR_DESCENDING</item>
+        <item>SHORTS_ONLY_WITH_TIME_DESCENDING</item>
+        <item>SHORTS_ONLY_WITH_POPULAR_DESCENDING</item>
+        <item>LIVESTREAMS_ONLY_WITH_TIME_DESCENDING</item>
+        <item>LIVESTREAMS_ONLY_WITH_POPULAR_DESCENDING</item>
+        <item>ALL_MEMBERSHIPS_CONTENTS</item>
+        <item>MEMBERSHIPS_VIDEOS_ONLY</item>
+        <item>MEMBERSHIPS_SHORTS_ONLY</item>
+        <item>MEMBERSHIPS_LIVESTREAMS_ONLY</item>
+    </string-array>
+
     <!-- layout.buttons.navigation.navigationBarPatch -->
-    <string-array name="morphe_search_button_index_entries">
-        <item>0</item>
+    <string-array name="morphe_show_search_button_index_entries">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -39,8 +70,7 @@
         <item>5</item>
         <item>6</item>
     </string-array>
-    <string-array name="morphe_search_button_index_entry_values">
-        <item>0</item>
+    <string-array name="morphe_show_search_button_index_entry_values">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -48,8 +78,7 @@
         <item>5</item>
         <item>6</item>
     </string-array>
-    <string-array name="morphe_settings_button_index_entries">
-        <item>0</item>
+    <string-array name="morphe_show_settings_button_index_entries">
         <item>1</item>
         <item>2</item>
         <item>3</item>
@@ -57,14 +86,23 @@
         <item>5</item>
         <item>6</item>
     </string-array>
-    <string-array name="morphe_settings_button_index_entry_values">
-        <item>0</item>
+    <string-array name="morphe_show_settings_button_index_entry_values">
         <item>1</item>
         <item>2</item>
         <item>3</item>
         <item>4</item>
         <item>5</item>
         <item>6</item>
+    </string-array>
+    <string-array name="morphe_show_toolbar_settings_button_index_entries">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+    <string-array name="morphe_show_toolbar_settings_button_index_entry_values">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
     </string-array>
 
     <!-- misc.fix.playback.spoofVideoStreamsPatch -->
@@ -78,7 +116,7 @@
     <string-array name="morphe_spoof_video_streams_client_type_entry_values">
         <item>ANDROID_REEL</item>
         <item>ANDROID_CREATOR</item>
-        <item>ANDROID_VR_1_47_48</item>
+        <item>ANDROID_VR_1_64</item>
         <item>TV</item>
         <item>VISIONOS</item>
     </string-array>
@@ -144,12 +182,6 @@
     <string-array name="morphe_spoof_app_version_target_legacy_20_14_entry_values">
         <item>20.13.41</item>
     </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_19_02_entries">
-        <item>19.01.34</item>
-    </string-array>
-    <string-array name="morphe_spoof_app_version_target_legacy_19_02_entry_values">
-        <item>19.01.34</item>
-    </string-array>
 
     <!-- layout.formfactor.changeFormFactorPatch -->
     <string-array name="morphe_change_form_factor_entries">
@@ -181,7 +213,31 @@
         <item>FPS_60_BLACK_AND_WHITE</item>
     </string-array>
 
-    <!-- layout.autocaptions.autoCaptionsPatch -->
+    <!-- layout.hide.general.hideLayoutComponentsPatch -->
+    <string-array name="morphe_hide_expandable_card_entries">
+        <item>@string/morphe_hide_expandable_card_entry_1</item>
+        <item>@string/morphe_hide_expandable_card_entry_2</item>
+        <item>@string/morphe_hide_expandable_card_entry_3</item>
+        <item>@string/morphe_hide_expandable_card_entry_4</item>
+        <item>@string/morphe_hide_expandable_card_entry_5</item>
+    </string-array>
+    <string-array name="morphe_hide_expandable_card_entry_values">
+        <item>SHOW_ALL</item>
+        <item>HIDE_PRODUCT_ONLY</item>
+        <item>HIDE_SUMMARY_ONLY</item>
+        <item>HIDE_PRODUCT_AND_SUMMARY</item>
+        <item>HIDE_ALL</item>
+    </string-array>
+    <string-array name="morphe_hide_expandable_card_legacy_entries">
+        <item>@string/morphe_hide_expandable_card_entry_1</item>
+        <item>@string/morphe_hide_expandable_card_entry_5</item>
+    </string-array>
+    <string-array name="morphe_hide_expandable_card_legacy_entry_values">
+        <item>SHOW_ALL</item>
+        <item>HIDE_ALL</item>
+    </string-array>
+
+    <!-- layout.captions.autoCaptionsPatch -->
     <string-array name="morphe_auto_captions_style_entries">
         <item>@string/morphe_auto_captions_style_entry_1</item>
         <item>@string/morphe_auto_captions_style_entry_2</item>
@@ -257,40 +313,6 @@
         <item>MODERN_3</item>
         <item>MODERN_4</item>
     </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_43_entries">
-        <item>@string/morphe_miniplayer_type_entry_0</item>
-        <item>@string/morphe_miniplayer_type_entry_1</item>
-        <item>@string/morphe_miniplayer_type_entry_2</item>
-        <item>@string/morphe_miniplayer_type_entry_3</item>
-        <item>@string/morphe_miniplayer_type_entry_4</item>
-        <item>@string/morphe_miniplayer_type_entry_5</item>
-        <item>@string/morphe_miniplayer_type_entry_6</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_43_entry_values">
-        <item>DISABLED</item>
-        <item>DEFAULT</item>
-        <item>MINIMAL</item>
-        <item>TABLET</item>
-        <item>MODERN_1</item>
-        <item>MODERN_2</item>
-        <item>MODERN_3</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_16_entries">
-        <item>@string/morphe_miniplayer_type_entry_1</item>
-        <item>@string/morphe_miniplayer_type_entry_2</item>
-        <item>@string/morphe_miniplayer_type_entry_3</item>
-        <item>@string/morphe_miniplayer_type_entry_4</item>
-        <item>@string/morphe_miniplayer_type_entry_5</item>
-        <item>@string/morphe_miniplayer_type_entry_6</item>
-    </string-array>
-    <string-array name="morphe_miniplayer_type_legacy_19_16_entry_values">
-        <item>DEFAULT</item>
-        <item>MINIMAL</item>
-        <item>TABLET</item>
-        <item>MODERN_1</item>
-        <item>MODERN_2</item>
-        <item>MODERN_3</item>
-    </string-array>
 
     <!-- layout.branding.header.changeHeaderPatch -->
     <string-array name="morphe_header_logo_entries">
@@ -326,7 +348,6 @@
         <item>@string/morphe_change_start_page_entry_all_subscriptions</item>
         <item>@string/morphe_change_start_page_entry_browse</item>
         <item>@string/morphe_change_start_page_entry_courses</item>
-        <item>@string/morphe_change_start_page_entry_explore</item>
         <item>@string/morphe_change_start_page_entry_fashion</item>
         <item>@string/morphe_change_start_page_entry_gaming</item>
         <item>@string/morphe_change_start_page_entry_history</item>
@@ -343,7 +364,6 @@
         <item>@string/morphe_change_start_page_entry_shorts</item>
         <item>@string/morphe_change_start_page_entry_sports</item>
         <item>@string/morphe_change_start_page_entry_subscriptions</item>
-        <item>@string/morphe_change_start_page_entry_trending</item>
         <item>@string/morphe_change_start_page_entry_virtual_reality</item>
         <item>@string/morphe_change_start_page_entry_watch_later</item>
         <item>@string/morphe_change_start_page_entry_your_clips</item>
@@ -353,7 +373,6 @@
         <item>ALL_SUBSCRIPTIONS</item>
         <item>BROWSE</item>
         <item>COURSES</item>
-        <item>EXPLORE</item>
         <item>FASHION</item>
         <item>GAMING</item>
         <item>HISTORY</item>
@@ -370,7 +389,6 @@
         <item>SHORTS</item>
         <item>SPORTS</item>
         <item>SUBSCRIPTIONS</item>
-        <item>TRENDING</item>
         <item>VIRTUAL_REALITY</item>
         <item>WATCH_LATER</item>
         <item>YOUR_CLIPS</item>

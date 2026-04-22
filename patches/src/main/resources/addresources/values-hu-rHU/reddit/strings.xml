@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Letiltja a modern kezdőlap felhasználói felületet</string>
   <string name="morphe_disable_screenshot_popup_title">Képernyőfotó-felugró párbeszéd letiltása</string>
   <string name="morphe_disable_screenshot_popup_summary">Letiltja a képernyőfotó készítésekor megjelenő felugró párbeszédet</string>
+  <string name="morphe_hide_ask_button_title">Kérdezz gomb elrejtése</string>
+  <string name="morphe_hide_ask_button_summary">Elrejti a Kérdezz gombot a keresősávban</string>
   <string name="morphe_hide_answers_button_title">Válasz gomb elrejtése</string>
   <string name="morphe_hide_answers_button_summary">Elrejtjük a Válasz gombot a navigációs sávban</string>
   <string name="morphe_hide_chat_button_title">Csevegés gomb elrejtése</string>
@@ -67,4 +69,6 @@ Korlátozás: Csak akkor jelenik meg, ha az API válasz tartalmazza a megtekint�
   <string name="morphe_sanitize_sharing_links_summary">Tisztítjuk a megosztási linkeket a nyomkövető lekérdezés paraméterek eltávolításával</string>
   <string name="morphe_open_links_directly_title">Linkek közvetlenül megnyitása</string>
   <string name="morphe_open_links_directly_summary">Kikerüljük az átirányítási URL-eket a külső linkekben</string>
+  <string name="morphe_open_links_externally_title">Nyitott linkek külső böngészőben</string>
+  <string name="morphe_open_links_externally_summary">A linkek a rendszerböngésződben nyílnak meg, nem az alkalmazáson belüli böngészőben</string>
 </resources>

@@ -13,7 +13,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/TapToSeekPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/TapToSeekPatch;"
 
 val enableTapToSeekPatch = bytecodePatch(
     description = "Adds an option to enable tap to seek on the seekbar of the video player.",
@@ -61,7 +61,7 @@ val enableTapToSeekPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     insertIndex,
                     """
-                        invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->tapToSeekEnabled()Z
+                        invoke-static { }, $EXTENSION_CLASS->tapToSeekEnabled()Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :disabled
                         invoke-virtual { v$thisInstanceRegister, v$xAxisRegister }, $oMethod

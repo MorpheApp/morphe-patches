@@ -17,54 +17,58 @@ Second \"item\" text"</string>
 -->
 <resources>
   <string name="morphe_screen_ads_title">Fógraí</string>
-  <string name="morphe_hide_post_ads_title">Folaigh fógraí feadáin</string>
-  <string name="morphe_hide_post_ads_summary">Folaíonn fógraí san fheadáin</string>
-  <string name="morphe_hide_comment_ads_title">Folaigh fógraí tráchtanna</string>
-  <string name="morphe_hide_comment_ads_summary">Folaíonn fógraí sa roinn comhrá</string>
-  <string name="morphe_screen_layout_title">Cur sulaibh</string>
-  <string name="morphe_disable_modern_home_title">Díchumasaigh teach baile nua-aimseartha</string>
-  <string name="morphe_disable_modern_home_summary">Díchumasaíonn sé an t-urrús teach baile nua-aimseartha</string>
-  <string name="morphe_disable_screenshot_popup_title">Díchumasaigh páipéar comharthaí screenshot</string>
-  <string name="morphe_disable_screenshot_popup_summary">Díchumasaíonn sé an páipéar comharthaí a cumaíonnnuas nuair a ghlacann tú screenshot</string>
-  <string name="morphe_hide_answers_button_title">Folaigh cnaipe Freagra</string>
-  <string name="morphe_hide_answers_button_summary">Folaíonn sé an cnaipe Freagra sa barr navigáide</string>
-  <string name="morphe_hide_chat_button_title">Folaigh cnaipe Chat</string>
-  <string name="morphe_hide_chat_button_summary">Folaíonn sé an cnaipe Chat sa barr navigáide</string>
+  <string name="morphe_hide_post_ads_title">Folaigh fógraí beatha</string>
+  <string name="morphe_hide_post_ads_summary">Folaíonn sé fógraí sa bheatha</string>
+  <string name="morphe_hide_comment_ads_title">Folaigh fógraí tráchta</string>
+  <string name="morphe_hide_comment_ads_summary">Folaíonn sé fógraí sa chuid tuairimí</string>
+  <string name="morphe_screen_layout_title">Leagan Amach</string>
+  <string name="morphe_disable_modern_home_title">Díchumasaigh baile nua-aimseartha</string>
+  <string name="morphe_disable_modern_home_summary">Díchumasaíonn sé an comhéadan úsáideora baile nua-aimseartha</string>
+  <string name="morphe_disable_screenshot_popup_title">Díchumasaigh seat scáileán preab aníos</string>
+  <string name="morphe_disable_screenshot_popup_summary">Díchumasaíonn sé an preab aníos a thaispeántar agus seat scáileán á thógáil</string>
+  <string name="morphe_hide_ask_button_title">Folaigh an cnaipe Iarr</string>
+  <string name="morphe_hide_ask_button_summary">Folaíonn sé an cnaipe Iarr sa bharra cuardaigh</string>
+  <string name="morphe_hide_answers_button_title">Cnaipe Folaigh Freagraí</string>
+  <string name="morphe_hide_answers_button_summary">Folaíonn sé an cnaipe Freagraí sa bharra nascleanúna</string>
+  <string name="morphe_hide_chat_button_title">Folaigh cnaipe Comhrá</string>
+  <string name="morphe_hide_chat_button_summary">Folaíonn sé an cnaipe Comhrá sa bharra nascleanúna</string>
   <string name="morphe_hide_create_button_title">Folaigh an cnaipe Cruthaigh</string>
-  <string name="morphe_hide_create_button_summary">Folaíonn sé an cnaipe Cruthaigh sa barr navigáide</string>
-  <string name="morphe_hide_discover_button_title">Folaigh cnaipe Faomhadh nó Comhphobail</string>
-  <string name="morphe_hide_discover_button_summary">Folaíonn sé an cnaipe Faomhadh nó Comhphobail sa barr navigáide</string>
+  <string name="morphe_hide_create_button_summary">Folaíonn sé an cnaipe Cruthaigh sa bharra nascleanúna</string>
+  <string name="morphe_hide_discover_button_title">Folaigh an cnaipe Faigh amach nó Pobail</string>
+  <string name="morphe_hide_discover_button_summary">Folaíonn sé an cnaipe Faigh amach nó Pobail sa bharra nascleanúna.</string>
   <string name="morphe_hide_games_button_title">Folaigh cnaipe Cluichí</string>
-  <string name="morphe_hide_games_button_summary">Folaíonn sé an cnaipe Cluichí sa barr navigáide</string>
-  <string name="morphe_hide_recently_visited_shelf_title">Coige Scáthán na Tríchaidh go fóill</string>
-  <string name="morphe_hide_recently_visited_shelf_summary">Folaíonn sé an seilfe Ghaeilge le haghaidh Féachaint sa lánbheart</string>
-  <string name="morphe_hide_games_on_reddit_shelf_title">Folaigh cluichí ar Reddit seilfe</string>
-  <string name="morphe_hide_games_on_reddit_shelf_summary">Folaíonn sé cluichí ar Reddit seilfe sa lánbheart</string>
-  <string name="morphe_hide_reddit_pro_shelf_title">Folaigh Seilfe Reddit Pro</string>
-  <string name="morphe_hide_reddit_pro_shelf_summary">Folaíonn sé an Seilfe Reddit Pro sa lánbheart</string>
-  <string name="morphe_hide_about_shelf_title">Folaigh seilfe Faoin</string>
-  <string name="morphe_hide_about_shelf_summary">Folaíonn sé an seilfe Faoin sa lánbheart</string>
-  <string name="morphe_hide_resources_shelf_title">Folaigh seilfe Acmhainneacha</string>
-  <string name="morphe_hide_resources_shelf_summary">Folaíonn sé an seilfe Acmhainneacha sa lánbheart</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Folaigh comhphobail molta</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Folaíonn sé na seilfe comhphobail molta i ríthe subRedditanna</string>
-  <string name="morphe_hide_trending_today_shelf_title">Folaigh seilfe Inniu ar Rí</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Folaíonn sé an seilfe Inniu ar Rí ón bpaintíne tionscadal fuiliú 
+  <string name="morphe_hide_games_button_summary">Folaíonn sé an cnaipe Cluichí sa bharra nascleanúna</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Folaigh an tseilf a ndearnadh cuairt uirthi le déanaí</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Folaíonn sé an tseilf a ndearnadh cuairt uirthi le déanaí sa bharra taoibh</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Folaigh Cluichí ar sheilf Reddit</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Folaíonn sé seilf na gCluichí ar Reddit sa bharra taoibh</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Folaigh seilf Reddit Pro</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Folaíonn sé seilf Reddit Pro sa bharra taoibh</string>
+  <string name="morphe_hide_about_shelf_title">Folaigh seilf Maidir Linn</string>
+  <string name="morphe_hide_about_shelf_summary">Folaíonn sé an tseilf Maidir Linn sa bharra taoibh</string>
+  <string name="morphe_hide_resources_shelf_title">Folaigh seilf na nAcmhainní</string>
+  <string name="morphe_hide_resources_shelf_summary">Folaíonn sé an tseilf Acmhainní sa bharra taoibh</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Folaigh pobail mholta</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Folaíonn sé seilfeanna na bpobal molta i bhfo-reddits</string>
+  <string name="morphe_hide_trending_today_shelf_title">Folaigh seilf Treochta Inniu</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Folaíonn sé an tseilf Treochta Inniu ó mholtaí cuardaigh
 
-Deacair: Seispéasóirí amhail faisnéise nár bhfeicfidh a n-éirí ar shuighne"</string>
-  <string name="morphe_remove_notification_dialog_title">Bain dialog molta fógraí isteach</string>
-  <string name="morphe_remove_notification_dialog_summary">Bain an dialog molta fógraí a cumaíonnnuas nuair a cícheáilidh tú rí leis an dlítiú éigeantach</string>
-  <string name="morphe_show_view_count_title">Seiceáil líontas radharcanna</string>
-  <string name="morphe_show_view_count_summary">"Seiceáil líontas radharcanna i bPostaí
+Teorainn: Ní féidir spásairí amhairc a cheilt"</string>
+  <string name="morphe_remove_notification_dialog_title">Bain an dialóg moladh fógra</string>
+  <string name="morphe_remove_notification_dialog_summary">Baintear an dialóg moltaí fógraí a thaispeántar nuair a thugtar cuairt ar fho-reddit trína dhíbhe go huathoibríoch</string>
+  <string name="morphe_show_view_count_title">Taispeáin líon na n-amharcanna</string>
+  <string name="morphe_show_view_count_summary">"Taispeánann sé líon na n-amharc ar Phoist
 
-Deacair: A chinn má tá an líontas radharcanna i bpointí API"</string>
-  <string name="morphe_remove_nsfw_dialog_title">Bain dialog rabhaidh NSFW isteach</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Bain an dialog rabhaidh NSFW a cumaíonnnuas nuair a cícheáilidh tú rí leis an dlítiú éigeantach</string>
+Teorainn: Ní thaispeántar é ach amháin má chuimsíonn an freagra API líon na n-amharc"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Bain an comhrá rabhaidh NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Baintear an dialóg rabhaidh NSFW a thaispeántar nuair a thugtar cuairt ar fho-reddit trí ghlacadh leis go huathoibríoch.</string>
   <string name="morphe_screen_miscellaneous_title">Ilghnéitheach</string>
   <string name="morphe_about_title">Maidir</string>
-  <string name="morphe_about_summary">Leagan le hathrú agus líostáil oifigiúla</string>
+  <string name="morphe_about_summary">Leagan paiste agus naisc oifigiúla</string>
   <string name="morphe_sanitize_sharing_links_title">Glanadh naisc chomhroinnte</string>
-  <string name="morphe_sanitize_sharing_links_summary">Lagh trí líosta do chomheascadh nuallaigh leis an bparaméad riantach traicíneachta</string>
-  <string name="morphe_open_links_directly_title">Oscla hugadh go díreach</string>
-  <string name="morphe_open_links_directly_summary">skip ar urlanna treoiteann i hugadh sheachtrach</string>
+  <string name="morphe_sanitize_sharing_links_summary">Glanann sé naisc chomhroinnte trí pharaiméadair fiosrúcháin rianaithe a bhaint</string>
+  <string name="morphe_open_links_directly_title">Oscail naisc go díreach</string>
+  <string name="morphe_open_links_directly_summary">Léimeann thar URLanna atreoraithe i naisc sheachtracha</string>
+  <string name="morphe_open_links_externally_title">Oscail naisc go seachtrach</string>
+  <string name="morphe_open_links_externally_summary">Osclaíonn sé naisc i do bhrabhsálaí seachas sa bhrabhsálaí san aip</string>
 </resources>

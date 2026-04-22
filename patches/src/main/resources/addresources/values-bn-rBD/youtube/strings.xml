@@ -24,6 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">ফিড</string>
   <string name="morphe_settings_screen_04_general_title">সাধারণ</string>
   <string name="morphe_settings_screen_05_player_title">প্লেয়ার</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">সিকবার</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">সোয়াইপ কন্ট্রোল</string>
   <string name="morphe_settings_screen_11_misc_title">বিবিধ</string>
@@ -36,9 +37,9 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts ব্যাকগ্রাউন্ড প্লে অক্ষম করা হয়েছে</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts ব্যাকগ্রাউন্ড প্লে সক্ষম করা হয়েছে</string>
   <!-- misc.debugging.enableDebuggingPatch -->
-  <string name="morphe_debug_protobuffer_title">প্রটোকল বাফার লগ</string>
-  <string name="morphe_debug_protobuffer_summary_on">ডিবাগ লগ প্রটোকল বাফার সংযুক্ত করবে</string>
-  <string name="morphe_debug_protobuffer_summary_off">ডিবাগ লগ প্রটোকল বাফার সংযুক্ত করবে না</string>
+  <string name="morphe_debug_protobuffer_title">ডিবাগ লগ প্রোটোকল বাফার</string>
+  <string name="morphe_debug_protobuffer_summary_on">ডিবাগ লগ-এ প্রোটোকল বাফার সংযুক্ত হবে</string>
+  <string name="morphe_debug_protobuffer_summary_off">ডিবাগ লগ-এ প্রোটোকল বাফার সংযুক্ত হবে না</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"এই সেটিংস সক্ষম করলে কিছু UI উপাদানের জন্য অন-স্ক্রীন পাঠ্য সহ অতিরিক্ত লেআউট ডেটা লগ করা হবে।
 
 এটি কাস্টম ফিল্টার তৈরি করার সময় উপাদান সনাক্ত করতে সাহায্য করতে পারে।
@@ -69,9 +70,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">আর্টিস্ট কার্ড লুকান</string>
   <string name="morphe_hide_artist_cards_summary_on">আর্টিস্ট কার্ড লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_artist_cards_summary_off">আর্টিস্ট কার্ড প্রদর্শিত হয়েছে</string>
-  <string name="morphe_hide_chips_shelf_title">চিপ শেলপ লুকান</string>
-  <string name="morphe_hide_chips_shelf_summary_on">চিপ শেলপ লুকিয়ে রয়েছে</string>
-  <string name="morphe_hide_chips_shelf_summary_off">চিপ শেলপ প্রদর্শিত হয়েছে</string>
   <string name="morphe_hide_community_posts_title">সম্প্রদায় পোস্ট লুকান</string>
   <string name="morphe_hide_community_posts_summary_on">সম্প্রদায় পোস্ট লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_community_posts_summary_off">সম্প্রদায় পোস্ট প্রদর্শিত হয়েছে</string>
@@ -79,26 +77,32 @@ Second \"item\" text"</string>
   <string name="morphe_hide_compact_banner_summary_on">সংক্ষিপ্ত ব্যানার লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_compact_banner_summary_off">সংক্ষিপ্ত ব্যানার প্রদর্শিত হয়েছে</string>
   <string name="morphe_hide_expandable_card_title">প্রসারিত কার্ড লুকান</string>
-  <string name="morphe_hide_expandable_card_summary_on">ভিডিওর নিচে প্রসারিত কার্ড লুকানো আছে</string>
-  <string name="morphe_hide_expandable_card_summary_off">ভিডিওর নিচে প্রসারিত কার্ড দেখানো আছে</string>
+  <string name="morphe_hide_expandable_card_entry_1">ভিডিওর নিচে প্রসারিত কার্ড দেখানো আছে</string>
+  <string name="morphe_hide_expandable_card_entry_2">ভিডিওর নিচে প্রসারিত কার্ড লুকানো আছে</string>
+  <string name="morphe_hide_expandable_card_entry_3">ভিডিওর নিচে প্রসারিত কার্ড লুকানো আছে</string>
+  <string name="morphe_hide_expandable_card_entry_4">ভিডিওর নিচে প্রসারিত কার্ড লুকানো আছে</string>
+  <string name="morphe_hide_expandable_card_entry_5">ভিডিওর নিচে প্রসারিত কার্ড লুকানো আছে</string>
   <string name="morphe_hide_floating_microphone_button_title">ভাসমান মাইক্রোফোন বোতাম লুকান</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">অনুসন্ধানে ফ্লোটিং মাইক্রোফোন বোতাম লুকানো আছে</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">অনুসন্ধানে ভাসমান মাইক্রোফোন বোতাম দেখানো হয়</string>
   <string name="morphe_hide_horizontal_shelves_title">আনুভূমিক শেলফ লুকান</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"অনুভূমিক তাকগুলি লুকানো আছে, যেমন:
+  <string name="morphe_hide_horizontal_shelves_summary_on">"অনুভূমিক শেলফগুলি লুকানো হয়েছে, যেমন:
+
 • ব্রেকিং নিউজ
+• আপনি পছন্দ করতে পারেন এমন কমিউনিটি পোস্ট
 • দেখা চালিয়ে যান
-• আরও চ্যানেল এক্সপ্লোর করুন
-• সবচেয়ে প্রাসঙ্গিক
-• কেনাকাটা
+• আরও চ্যানেল দেখুন
+• আরও বিষয়বস্তু দেখুন
+• আপনার জন্য
+• নতুন ভিডিও
+• সর্বাধিক প্রাসঙ্গিক
+• ক্রিয়েটরের কমিউনিটি থেকে পোস্ট
+• শপিং
 • আবার দেখুন"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">অনুভূমিক শেলফগুলি দেখানো হয়েছে</string>
   <string name="morphe_hide_image_shelf_title">ছবি শেল্ফ লুকান</string>
   <string name="morphe_hide_image_shelf_summary_on">সার্চ ফলাফলে ছবি শেল্ফ লুকানো আছে</string>
   <string name="morphe_hide_image_shelf_summary_off">সার্চ ফলাফলে ছবি শেল্ফ দেখানো আছে</string>
-  <string name="morphe_hide_latest_posts_title">সর্বশেষ পোস্ট লুকান</string>
-  <string name="morphe_hide_latest_posts_summary_on">সর্বশেষ পোস্ট লুকিয়ে রয়েছে</string>
-  <string name="morphe_hide_latest_posts_summary_off">সর্বশেষ পোস্ট প্রদর্শিত হয়েছে</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">লুকান \'সর্বশেষ ভিডিও\' বোতাম</string>
@@ -118,6 +122,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_playables_title">খেলার উপযুক্ত লুকান</string>
   <string name="morphe_hide_playables_summary_on">খেলার উপযুক্ত লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_playables_summary_off">খেলার উপযুক্ত প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_search_term_thumbnails_title">অনুসন্ধান শর্তাবলীর থাম্বনেইল লুকানো</string>
+  <string name="morphe_hide_search_term_thumbnails_summary_on">অনুসন্ধান শর্তাবলীর থাম্বনেইল লুকানো হয়েছে</string>
+  <string name="morphe_hide_search_term_thumbnails_summary_off">অনুসন্ধান শর্তাবলীর থাম্বনেইল দেখানো হচ্ছে</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'আরও দেখান\' বোতাম লুকান</string>
@@ -143,9 +150,12 @@ Second \"item\" text"</string>
   <string name="morphe_hide_you_may_like_section_summary_on">আপনি পছন্দ করতে পারে বিভাগ লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_you_may_like_section_summary_off">আপনি পছন্দ করতে পারে বিভাগ প্রদর্শিত হয়েছে</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
-  <string name="morphe_hide_doodles_title">YouTube Doodles छिपाएँ</string>
-  <string name="morphe_hide_doodles_summary_on">লোগোতে YouTube Doodles অ্যানিমেশন লুকানো আছে</string>
-  <string name="morphe_hide_doodles_summary_off">লোগোতে YouTube Doodles অ্যানিমেশন দেখানো হয়</string>
+  <string name="morphe_hide_youtube_doodles_title">YouTube Doodles छिपाएँ</string>
+  <string name="morphe_hide_youtube_doodles_summary_on">লোগোতে YouTube Doodles অ্যানিমেশন লুকানো আছে</string>
+  <string name="morphe_hide_youtube_doodles_summary_off">লোগোতে YouTube Doodles অ্যানিমেশন দেখানো হয়</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles বছর কয়েক দিনের জন্য বিশ্বের বিভিন্ন স্থানে দেখানো হয়।
+
+YouTube Doodles দেখানো কাস্টম হেডার প্রদর্শন বন্ধ করতে পারে।"</string>
   <string name="morphe_hide_channel_bar_title">চ্যানেল বার লুকান</string>
   <string name="morphe_hide_channel_bar_summary_on">চ্যানেল বার লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_channel_bar_summary_off">চ্যানেল বার প্রদর্শিত হয়েছে</string>
@@ -189,6 +199,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_title">ভিডিওর শিরোনাম লুকান</string>
   <string name="morphe_hide_video_title_summary_on">ভিডিও খেলার ওভারলে ভিডিও শিরোনাম লুকানো</string>
   <string name="morphe_hide_video_title_summary_off">ভিডিও খেলার ওভারলে ভিডিও শিরোনাম প্রদর্শিত</string>
+  <string name="morphe_hide_description_components_screen_title">ভিডিওর বিবরণ</string>
+  <string name="morphe_hide_description_components_screen_summary">ভিডিও বিবরণ এর উপাদান লুকান বা প্রদর্শন করুন</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'AI-জেনারেটেড ভিডিও সারসংক্ষেপ\' লুকান</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">এআই-জেনারেটেড ভিডিও সারাংশ বিভাগ লুকানো আছে</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">এআই-জেনারেটেড ভিডিও সারাংশ বিভাগ দেখানো হয়েছে</string>
@@ -245,17 +257,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_music_section_title">জিজ্ঞাসা লুকান</string>
   <string name="morphe_hide_music_section_summary_on">মিউজিক বিভাগ লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_music_section_summary_off">মিউজিক বিভাগ প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_quizzes_section_title">লুকান কুইজ</string>
+  <string name="morphe_hide_quizzes_section_summary_on">কুইজ বিভাগ লুকিয়ে রয়েছে</string>
+  <string name="morphe_hide_quizzes_section_summary_off">কুইজ বিভাগ প্রদর্শিত হয়েছে</string>
   <string name="morphe_hide_subscribe_button_title">সাবস্ক্রাইব  বোতামটি লুকান</string>
   <string name="morphe_hide_subscribe_button_summary_on">সদস্যতা নিন বোতাম লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_subscribe_button_summary_off">সদস্যতা নিন বোতাম প্রদর্শিত হয়েছে</string>
   <string name="morphe_hide_transcript_section_title">নথি লুকান</string>
   <string name="morphe_hide_transcript_section_summary_on">ট্রান্সস্ক্রিপ্ট বিভাগ লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_transcript_section_summary_off">ট্রান্সস্ক্রিপ্ট বিভাগ প্রদর্শিত হয়েছে</string>
-  <string name="morphe_hide_quizzes_section_title">লুকান কুইজ</string>
-  <string name="morphe_hide_quizzes_section_summary_on">কুইজ বিভাগ লুকিয়ে রয়েছে</string>
-  <string name="morphe_hide_quizzes_section_summary_off">কুইজ বিভাগ প্রদর্শিত হয়েছে</string>
-  <string name="morphe_hide_description_components_screen_title">ভিডিওর বিবরণ</string>
-  <string name="morphe_hide_description_components_screen_summary">ভিডিও বিবরণ এর উপাদান লুকান বা প্রদর্শন করুন</string>
   <string name="morphe_hide_filter_bar_screen_title">ফিল্টার বার</string>
   <string name="morphe_hide_filter_bar_screen_summary">ফিড, সম্পর্কিত ভিডিও, অনুসন্ধান ফলাফল এবং দেখার ইতিহাসে ফিল্টার বার লুকান বা দেখান</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">ফিডে লুকান</string>
@@ -291,6 +301,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_members_shelf_title">সদস্য শেল্ফ লুকান</string>
   <string name="morphe_hide_members_shelf_summary_on">সদস্য শেল্ফ লুকানো আছে</string>
   <string name="morphe_hide_members_shelf_summary_off">সদস্যদের শেল্ফ দেখানো হয়েছে</string>
+  <string name="morphe_hide_posts_shelf_title">পোস্ট শেলপ লুকান</string>
+  <string name="morphe_hide_posts_shelf_summary_on">পোস্ট শেলপ লুকানো হয়েছে</string>
+  <string name="morphe_hide_posts_shelf_summary_off">পোস্ট শেলপ দেখানো হয়েছে</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">\'স্টোর\' বোতামটি লুকান</string>
   <string name="morphe_hide_store_button_summary_on">শেয়ার করুন বোতাম লুকিয়ে রয়েছে</string>
@@ -301,6 +314,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">সদস্যতা নিন বোতাম প্রদর্শিত হয়েছে</string>
   <string name="morphe_comments_screen_title">মন্তব্য</string>
   <string name="morphe_comments_screen_summary">মন্তব্য বিভাগের উপাদানগুলি লুকান বা দেখান৷</string>
+  <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Comments carousel filter is enabled</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Comments carousel filter is disabled</string>
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"নোট:
+• ক্যারোসেল আইটেমের সঠিক নাম অবশ্যই লিখতে হবে (যেমন। জিজ্ঞাসা করুন, এই ভিডিওটি হাইলাইট করুন, YouTube Music-এ শুনুন ইত্যাদি)।
+• ক্যারোসেল আইটেম লুকানো অপ্রত্যাশিত পার্শ্ব প্রতিক্রিয়া ফেলতে পারে।
+• যদি সমস্ত ক্যারোসেল আইটেম লুকানো হয়, তাহলে সম্পূর্ণ কমেন্ট বিভাগও লুকানো হবে।"</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Comments carousel filter</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">একটি লাইনে ফিল্টার করার জন্য মন্তব্য ক্যারোসেলের নাম লিখুন</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">এআই চ্যাট সারাংশ লুকান</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">এআই চ্যাট সারাংশ লুকানো আছে</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">এআই চ্যাট সারাংশ দেখানো হয়েছে</string>
@@ -328,6 +350,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">ইমোজি এবং টাইমস্ট্যাম্প বোতামগুলি লুকান</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">ইমোজি এবং টাইমস্ট্যাম্প বোতামগুলি লুকানো আছে</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">ইমোজি এবং টাইমস্ট্যাম্প বোতামগুলি দেখানো আছে</string>
+  <string name="morphe_hide_comments_info_button_title">লুকান তথ্য বোতাম</string>
+  <string name="morphe_hide_comments_info_button_summary_on">তথ্য বোতামটি লুকানো হয়েছে</string>
+  <string name="morphe_hide_comments_info_button_summary_off">তথ্য বোতামটি দেখানো হয়েছে</string>
   <string name="morphe_hide_comments_preview_comment_title">মন্তব্যের পূর্বরূপ লুকান</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">মন্তব্যের পূর্বরূপ লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">মন্তব্যের পূর্বরূপ প্রদর্শিত হয়েছে</string>
@@ -399,9 +424,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">শেষ পর্দার স্টোর ব্যানার লুকান</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">এন্ড স্ক্রিন স্টোর ব্যানার লুকানো আছে</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">এন্ড স্ক্রিন স্টোর ব্যানার দেখানো হয়েছে</string>
-  <string name="morphe_hide_fullscreen_ads_title">পূর্ণ স্ক্রীন প্যানেল লুকান</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">পূর্ণ স্ক্রীন বিজ্ঞাপন লুকানো হয়েছে</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">পূর্ণ স্ক্রীন বিজ্ঞাপন প্রদর্শিত হয়েছে</string>
   <string name="morphe_hide_general_ads_title">সাধারণ বিজ্ঞাপন লুকান</string>
   <string name="morphe_hide_general_ads_summary_on">সাধারণ বিজ্ঞাপন লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_general_ads_summary_off">সাধারণ বিজ্ঞাপন প্রদর্শিত হয়েছে</string>
@@ -437,9 +459,9 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_title">ভিডিও URL অনুলিপি বোতাম দেখান</string>
   <string name="morphe_copy_video_url_summary_on">ভিডিও URL কপি বোতামটি দেখানো হয়েছে। ভিডিও URL কপি করতে আলতো চাপুন। টাইমস্ট্যাম্প সহ কপি করতে টিপুন এবং ধরে রাখুন।</string>
   <string name="morphe_copy_video_url_summary_off">ভিডিও URL কপি বোতাম প্রদর্শিত হয়নি</string>
-  <string name="morphe_copy_video_url_timestamp_title">টাইমস্ট্যাম্প URL অনুলিপি বোতাম দেখান</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">ভিডিও URL কপি বোতামটি দেখানো হয়েছে। টাইমস্ট্যাম্প সহ ভিডিও URL কপি করতে আলতো চাপুন। টাইমস্ট্যাম্প ছাড়া কপি করতে টিপুন এবং ধরে রাখুন।</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">ভিডিও URL কপি বোতাম প্রদর্শিত হয়নি</string>
+  <string name="morphe_copy_video_url_timestamp_title">টাইমস্ট্যাম্প কপি করুন</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">কপি ভিডিও ইউআরএল বাটন টাইমস্ট্যাম্প সহ কপি করে। লম্বা চাপ দিলে টাইমস্ট্যাম্প ছাড়া কপি করে</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">কপি ভিডিও ইউআরএল বাটন টাইমস্ট্যাম্প ছাড়া কপি করে। লম্বা চাপ দিলে টাইমস্ট্যাম্প সহ কপি করে</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">দর্শকের বিচক্ষণতা ডায়ালগ সরান</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">ডায়ালগ সরানো হবে</string>
@@ -473,10 +495,54 @@ Second \"item\" text"</string>
 
 প্যাকেজের নামটি সঠিক এবং অ্যাপটি ইনস্টল করা আছে কিনা তা যাচাই করুন"</string>
   <string name="morphe_external_downloader_empty_warning">প্যাকেজের নাম খালি রাখা যাবে না</string>
+  <!-- interaction.loop.loopVideoPatch -->
+  <string name="morphe_loop_video_title">লুপ ভিডিও সক্ষম করুন</string>
+  <string name="morphe_loop_video_summary_on">ভিডিও লুপ হবে</string>
+  <string name="morphe_loop_video_summary_off">ভিডিও লুপ হবে না</string>
+  <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">লুপ ভিডিও বোতাম দেখান</string>
+  <string name="morphe_loop_video_button_summary_on">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
+  <string name="morphe_loop_video_button_summary_off">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
+  <string name="morphe_loop_video_button_toast_on">লুপ ভিডিও চালু আছে</string>
+  <string name="morphe_loop_video_button_toast_off">লুপ ভিডিও বন্ধ আছে</string>
+  <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">খেলুন সব বোতাম দেখান</string>
+  <string name="morphe_play_all_button_summary_on">"খেলুন সব বোতাম দেখানো হচ্ছে
+চ্যানেলের সমস্ত ভিডিওর প্লেলিস্ট তৈরি করতে ট্যাপ করুন
+আনডু করতে লং প্রেস করুন
+
+তথ্য: লাইভ স্ট্রিমে এটি কাজ নাও করতে পারে"</string>
+  <string name="morphe_play_all_button_summary_off">খেলুন সব বোতাম দেখানো হয়নি</string>
+  <string name="morphe_play_all_button_type_title">প্লেলিস্ট তৈরি মোড</string>
+  <string name="morphe_play_all_button_type_entry_0">সমস্ত কনটেন্ট (সময় অনুসারে সাজানো, ঊর্ধ্বমুখী)</string>
+  <string name="morphe_play_all_button_type_entry_1">সমস্ত কনটেন্ট (সময় অনুসারে সাজানো)</string>
+  <string name="morphe_play_all_button_type_entry_2">সমস্ত কনটেন্ট (জনপ্রিয়তা অনুসারে সাজানো)</string>
+  <string name="morphe_play_all_button_type_entry_3">ভিডিওগুলি மட்டும் (সময় অনুসারে সাজানো)</string>
+  <string name="morphe_play_all_button_type_entry_4">ভিডিওগুলি மட்டும் (জনপ্রিয়তা অনুসারে সাজানো)</string>
+  <string name="morphe_play_all_button_type_entry_5">শর্টসগুলি மட்டும் (সময় অনুসারে সাজানো)</string>
+  <string name="morphe_play_all_button_type_entry_6">শর্টসগুলি மட்டும் (জনপ্রিয়তা অনুসারে সাজানো)</string>
+  <string name="morphe_play_all_button_type_entry_7">স্ট্রিমিং ভিডিওগুলি மட்டும் (সময় অনুসারে সাজানো)</string>
+  <string name="morphe_play_all_button_type_entry_8">স্ট্রিমিং ভিডিওগুলি மட்டும் (জনপ্রিয়তা অনুসারে সাজানো)</string>
+  <string name="morphe_play_all_button_type_entry_9">শুধুমাত্র সকল সদস্যদের কনটেন্ট</string>
+  <string name="morphe_play_all_button_type_entry_10">সদস্যদের জন্য ভিডিও</string>
+  <string name="morphe_play_all_button_type_entry_11">সদস্যদের জন্য শর্টস</string>
+  <string name="morphe_play_all_button_type_entry_12">সদস্যদের জন্য লাইভ স্ট্রীম</string>
+  <string name="morphe_play_all_button_not_available_toast">চ্যানেল আইডি না মিলப்பதால் প্লেলিস্ট তৈরি করা যায়নি</string>
+  <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_title">পুনরায় লোড ভিডিও বোতাম দেখান</string>
+  <string name="morphe_reload_video_summary_on">পুনরায় লোড ভিডিও বোতামটি দেখানো হয়েছে</string>
+  <string name="morphe_reload_video_summary_off">পুনরায় লোড ভিডিও বোতামটি দেখানো হয়নি</string>
+  <string name="morphe_dismiss_player_not_available_toast">ভিডিও আইডি অনুপলব্ধ। অনুগ্রহ করে ম্যানুয়ালি ভিডিওটি পুনরায় খুলুন।</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">ভিডিওর নির্দিষ্ট অংশে যাওয়ার অঙ্গভঙ্গি নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">অঙ্গভঙ্গি নিষ্ক্রিয় করা হয়েছে</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">অঙ্গভঙ্গি সক্রিয় করা হয়েছে</string>
+  <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">লাইভস্ট্রিম ডিভিআর সক্রিয় করুন</string>
+  <string name="morphe_livestream_dvr_summary_on">সব লাইভস্ট্রিমেই খোঁজা যাবে</string>
+  <string name="morphe_livestream_dvr_summary_off">লাইভস্ট্রিমগুলোতে খোঁজা নাও যেতে পারে</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_livestream_dvr_user_dialog_message">এটি সক্রিয় করলে \'Spoof ভিডিও স্ট্রিম\' সক্রিয় না থাকলে অপ্রত্যাশিত লাইভস্ট্রিম খোঁজার ঘটনা ঘটতে পারে।</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">ভিডিওর নির্দিষ্ট অংশে যেতে টানুন সক্রিয় করুন</string>
   <string name="morphe_slide_to_seek_summary_on">ভিডিওর নির্দিষ্ট অংশে যেতে টানুন সক্রিয় করা হয়েছে</string>
@@ -660,13 +726,14 @@ Second \"item\" text"</string>
   <string name="morphe_show_search_button_title">অনুসন্ধান দেখান</string>
   <string name="morphe_show_search_button_summary_on">অনুসন্ধান বাটন দেখানো হয়েছে</string>
   <string name="morphe_show_search_button_summary_off">অনুসন্ধান বাটন দেখানো হয়নি</string>
-  <string name="morphe_search_button_index_title">অনুসন্ধান বাটন সূচক</string>
-  <string name="morphe_search_button_index_invalid">অনুসন্ধান বাটন সূচক %s এর চেয়ে কম হতে হবে</string>
+  <string name="morphe_show_search_button_index_title">অনুসন্ধান বাটন ইনডেক্স</string>
   <string name="morphe_show_settings_button_title">সেটিংস দেখান</string>
   <string name="morphe_show_settings_button_summary_on">সেটিংস বোতামটি দেখানো হচ্ছে</string>
   <string name="morphe_show_settings_button_summary_off">সেটিংস বোতামটি দেখানো হচ্ছে না</string>
-  <string name="morphe_settings_button_index_title">సెట్టింగ్‌ల బటన్ సూచిక</string>
-  <string name="morphe_settings_button_index_invalid">সেটিংস বোতামের সূচক %s-এর চেয়ে কম হতে হবে</string>
+  <string name="morphe_show_settings_button_index_title">సెట్టింగ్‌ల బటన్ సూచిక</string>
+  <string name="morphe_show_settings_button_type_title">সেটিংস বোতাম অ্যাকশন</string>
+  <string name="morphe_show_settings_button_type_summary_on">Morphe সেটিংস খুলতে ট্যাপ করুন</string>
+  <string name="morphe_show_settings_button_type_summary_off">ইউটিউব সেটিংস খোলার জন্য ট্যাপ করুন</string>
   <string name="morphe_swap_create_with_notifications_button_title">ক্রিয়েট বোতামকে বিজ্ঞপ্তি বোতাম দ্বারা সুইচ করুন</string>
   <string name="morphe_swap_create_with_notifications_button_summary_on">ক্রিয়েট বোতামকে বিজ্ঞপ্তি বোতাম দ্বারা সুইচ করা হয়েছে</string>
   <string name="morphe_swap_create_with_notifications_button_summary_off">ক্রিয়েট বোতামকে বিজ্ঞপ্তি বোতাম দ্বারা সুইচ করা হয়নি</string>
@@ -677,16 +744,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_navigation_bar_title">নেভিগেশন বার লুকান</string>
   <string name="morphe_hide_navigation_bar_summary_on">নেভিগেশন বার লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_navigation_bar_summary_off">পনেভিগেশন বার প্রদর্শিত হয়েছে</string>
-  <string name="morphe_hide_navigation_bar_user_dialog_message">"এটি নেভিগেশন বার সম্পূর্ণরূপে লুকিয়ে দেবে, כולל You ট্যাব.
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"এটি সম্পূর্ণভাবে নেভিগেশন বার গোপন করে, যার মধ্যে 'You' ট্যাবও অন্তর্ভুক্ত।
 
-সেটিংস অ্যাক্সেস করতে:
-যেকোনো ভিডিও খুলুন → গুণমান মেনু খুলুন → নিচে 'সেটিংস > ভিডিও গুণমান পছন্দ' এ ট্যাপ করুন।"</string>
+সেটিংস অ্যাক্সেস করতে, জেনারেল → টুলবার → সেটিংস দেখান -এর মাধ্যমে সেটিংস বোতামটি সক্রিয় করুন।"</string>
   <string name="morphe_narrow_navigation_buttons_title">নেভিগেশন বাটনগুলোকে সংকুচিত করুন</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">নেভিগেশন বাটনগুলোর মাঝে দূরত্ব সংকুচিত</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">নেভিগেশন বাটনগুলোর মাঝে দূরত্ব স্বাভাবিক</string>
   <string name="morphe_navigation_bar_animations_title">নেভিগেশন বার অ্যানিমেশন সক্ষম করুন</string>
   <string name="morphe_navigation_bar_animations_summary_on">নেভিগেশন ট্রানজিশনগুলি অ্যানিমেটেড</string>
   <string name="morphe_navigation_bar_animations_summary_off">নেভিগেশন ট্রানজিশনগুলি অ্যানিমেটেড নয়</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">স্বয়ংক্রিয়ভাবে নেভিগেশন বার লুকানো নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">স্ক্রোল করার সময় নেভিগেশন বারটি লুকানো থাকবে না</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">স্ক্রোল করার সময় নেভিগেশন বার লুকানো হতে পারে</string>
   <string name="morphe_disable_translucent_status_bar_title">অর্ধস্বচ্ছ স্থিতি বার নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">স্ট্যাটাস বারটি অস্বচ্ছ</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">স্ট্যাটাস বারটি অস্বচ্ছ বা স্বচ্ছ</string>
@@ -713,25 +782,28 @@ Second \"item\" text"</string>
   <string name="morphe_hide_toolbar_search_button_title">Hide Search</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">অনুসন্ধান বাটন লুকানো আছে</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">অনুসন্ধান বাটন দেখানো হয়েছে</string>
-  <string name="morphe_replace_toolbar_create_button_title">Replace Create with Settings</string>
-  <string name="morphe_replace_toolbar_create_button_summary_on">তৈরি বোতামটি সেটিংস বোতামের সাথে প্রতিস্থাপিত হয়েছে</string>
-  <string name="morphe_replace_toolbar_create_button_summary_off">তৈরি বোতামটি সেটিংস বোতামের সাথে প্রতিস্থাপিত হয়েছে</string>
-  <string name="morphe_replace_toolbar_create_button_user_dialog_message">আপনি ট্যাব-এ সেটিংস বাটনের ক্লিক আচরণও ওভাররাইড করা হয়েছে।</string>
-  <string name="morphe_replace_toolbar_create_button_type_title">সেটিংস বোতাম অ্যাকশন</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_on">"Morphe সেটিংস খুলতে ট্যাপ করুন
+  <string name="morphe_show_toolbar_settings_button_title">সেটিংস দেখান</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">সেটিংস বোতামটি দেখানো হচ্ছে</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">সেটিংস বোতামটি দেখানো হয়নি</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">సెట్టింగ్‌ల బటన్ సూచిక</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">সেটিংস বোতাম অ্যাকশন</string>
+  <string name="morphe_show_toolbar_settings_button_type_summary_on">"Morphe সেটিংস খুলতে ট্যাপ করুন
 YouTube সেটিংস খুলতে ট্যাপ এবং ধরে রাখুন"</string>
-  <string name="morphe_replace_toolbar_create_button_type_summary_off">"Morphe সেটিংস খুলতে ট্যাপ করুন
+  <string name="morphe_show_toolbar_settings_button_type_summary_off">"Morphe সেটিংস খুলতে ট্যাপ করুন
 YouTube সেটিংস খুলতে ট্যাপ এবং ধরে রাখুন"</string>
-  <string name="morphe_rearrange_toolbar_buttons_title">পুনর্বিন্যাসকৃত বোতামগুলি পুনর্বিন্যাস করুন</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_on">বাটনগুলি পুনর্বিন্যাস করা হয়নি</string>
-  <string name="morphe_rearrange_toolbar_buttons_summary_off">বাটনগুলি পুনর্বিন্যাস করা হয়নি</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">ফ্লাইআউট মেনু</string>
-  <string name="morphe_hide_player_flyout_summary">ফ্লাইআউট মেনুর আইটেম দেখান বা লুকান</string>
+  <string name="morphe_hide_player_flyout_summary">প্লেয়ার ফ্লাইআউট মেনু কম্পোনেন্ট লুকান বা দেখান</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">ক্যাপশন লুকান</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">ক্যাপশন মেনু লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_player_flyout_captions_summary_off">ক্যাপশন মেনু প্রদর্শিত হয়েছে</string>
+  <string name="morphe_hide_player_flyout_captions_footer_title">ক্যাপশন ফুটার লুকান</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_on">ক্যাপশন মেনু ফুটার লুকানো আছে</string>
+  <string name="morphe_hide_player_flyout_captions_footer_summary_off">ক্যাপশন মেনু ফুটার দেখানো হয়েছে</string>
+  <string name="morphe_hide_player_flyout_captions_header_title">ক্যাপশন হেডার লুকান</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">ক্যাপশন মেনু লুকানো রয়েছে</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">ক্যাপশন মেনু প্রদর্শিত হয়েছে</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">আরও সেটিংস দেখুন লুকান</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">আরও সেটিংস দেখুন মেনু লুকিয়ে রয়েছে</string>
@@ -777,17 +849,23 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_hide_player_flyout_audio_track_not_available">"ওডিও ট্র্যাক মেন্যু লুকানো আছে
 
 ওডিও ট্র্যাক মেন্যু দেখানোর জন্য, 'স্ক্যাম ভিডিও স্ট্রিম' কে 'এন্ড্রয়েড রিল' বা 'টিভি' এ পরিবর্তন করুন।"</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">অডিও ট্র্যাক লুকান</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">অডিও ট্র্যাক মেনু লুকানো আছে</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">অডিও ট্র্যাক মেনু দেখানো হয়</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">ভিআর-এ ঘড়ি লুকান</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">ভিআর মেনুতে দেখুন লুকানো আছে</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">ভিআর মেনুতে দেখুন দেখানো হয়েছে</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_video_quality_title">ভিডিও গুণমান মেনু লুকান</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_on">ভিডিও মানের মেনু লুকানো আছে</string>
-  <string name="morphe_hide_player_flyout_video_quality_summary_off">ভিডিও মানের মেনু দেখানো হয়েছে</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_title">ভিডিও গুণমান মেনুর ফুটার লুকান</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_on">ভিডিও গুণমান মেনু ফুটার লুকানো আছে</string>
-  <string name="morphe_hide_player_flyout_video_quality_footer_summary_off">ভিডিও গুণমান মেনু ফুটার দেখানো হচ্ছে</string>
+  <string name="morphe_hide_player_flyout_quality_title">গুণমান লুকান</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">ভিডিও মানের মেনু লুকানো আছে</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">ভিডিও মানের মেনু দেখানো হয়েছে</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">ভিডিও গুণমান মেনুর ফুটার লুকান</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">ভিডিও গুণমান মেনু ফুটার লুকানো আছে</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">ভিডিও গুণমান মেনু ফুটার দেখানো হচ্ছে</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">গুণমান লুকান</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">ভিডিও গুণমান মেনু ফুটার লুকানো আছে</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">ভিডিও গুণমান মেনু ফুটার দেখানো হচ্ছে</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">অটোপ্লে প্রিভিউ লুকান</string>
   <string name="morphe_hide_autoplay_preview_summary_on">অটোপ্লে প্রিভিউ লুকানো আছে</string>
@@ -815,6 +893,9 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_hide_player_previous_next_buttons_title">পূর্ববর্তী লুকান &amp; পরবর্তী বোতাম</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">পূর্ববর্তী &amp; পরবর্তী বাটন লুকানো আছে</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">পূর্ববর্তী &amp; পরবর্তী বাটন দেখানো হয়েছে</string>
+  <string name="morphe_hide_settings_button_title"> configuraèè নিèপুন লুকান</string>
+  <string name="morphe_hide_settings_button_summary_on"> configuraèè নিèপুন লুকানো হয়েছে</string>
+  <string name="morphe_hide_settings_button_summary_off"> configuraèè নিèপুন দেখানো হচ্ছে</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">শেষ স্ক্রীন কার্ড লুকান</string>
   <string name="morphe_hide_end_screen_cards_summary_on">শেষ স্ক্রীন কার্ড লুকিয়ে রয়েছে</string>
@@ -981,10 +1062,10 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_hide_shorts_navigation_bar_summary_on">নেভিগেশন বার লুকিয়ে রয়েছে</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">পনেভিগেশন বার প্রদর্শিত হয়েছে</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
-  <string name="morphe_end_screen_suggested_video_title">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও লুকানো হবে</string>
-  <string name="morphe_end_screen_suggested_video_summary_on">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও দেখানো হয়েছে</string>
-  <string name="morphe_end_screen_suggested_video_summary_off">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও দেখানো হয়েছে</string>
-  <string name="morphe_end_screen_suggested_video_user_dialog_message">"এই সেটিং শুধুমাত্র 'অটোপ্লেয় পরবর্তী ভিডিও' বন্ধ হলে কাজ করে।
+  <string name="morphe_hide_end_screen_suggested_video_title">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও লুকানো হবে</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_on">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও দেখানো হয়েছে</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary_off">শেষ স্ক্রীনে প্রস্তাবিত ভিডিও দেখানো হয়েছে</string>
+  <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"এই সেটিং শুধুমাত্র 'অটোপ্লেয় পরবর্তী ভিডিও' বন্ধ হলে কাজ করে।
 
 ইউটিউবে পরিবর্তন করতে পারেন:
 সেটিংস → প্লেয়ব্যাক (অথবা অটোপ্লেয়) → অটোপ্লেয় পরবর্তী ভিডিও"</string>
@@ -1318,12 +1399,12 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_open_system_share_sheet_title">সিস্টেম শেয়ার শিট খুলুন</string>
   <string name="morphe_open_system_share_sheet_summary_on">সিস্টেম শেয়ার শিট খুলে</string>
   <string name="morphe_open_system_share_sheet_summary_off">অ্যাপের ভিতরে শেয়ার শিট খুলে</string>
-  <!-- layout.music.overrideYouTubeMusicActionsPatch -->
-  <string name="morphe_override_youtube_music_button_title">ইউটিউব মিউজিক বোতাম ওভাররাইড করুন</string>
-  <string name="morphe_override_youtube_music_button_summary_on">ইউটিউব মিউজিক বোতাম আপনার লক্ষ্য মিউজিক অ্যাপ খুলে ফেলবে</string>
-  <string name="morphe_override_youtube_music_button_summary_off">YouTube মিউজিক বাটন নেটিভ অ্যাপ খুলে</string>
-  <string name="morphe_music_package_name_title">মর্ফে মিউজিক প্যাকেজ নাম</string>
-  <string name="morphe_music_package_name_summary"> Target মিউজিক অ্যাপের প্যাকেজ নাম</string>
+  <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
+  <string name="morphe_override_youtube_music_buttons_title">ইউটিউব মিউজিক বোতামগুলি প্রতিস্থাপন করুন</string>
+  <string name="morphe_override_youtube_music_buttons_summary_on">ইউটিউব মিউজিক বোতামগুলি আপনার টার্গেট মিউজিক অ্যাপ খুলবে</string>
+  <string name="morphe_override_youtube_music_buttons_summary_off">ইউটিউব মিউজিক বোতামগুলি অফিসিয়াল অ্যাপ খুলবে</string>
+  <string name="morphe_music_package_name_title">টার্গেট মিউজিক অ্যাপ প্যাকেজ নাম</string>
+  <string name="morphe_music_package_name_summary">আপনার ইনস্টল করা টার্গেট মিউজিক অ্যাপের প্যাকেজের নাম</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">শুরুর পৃষ্ঠা পরিবর্তন করুন</string>
   <string name="morphe_change_start_page_entry_default">পূর্ব-নির্ধারিত</string>
@@ -1344,6 +1425,7 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_change_start_page_entry_playlists">চ্লাস ন৊টিস্য়াসেগ</string>
   <string name="morphe_change_start_page_entry_search">অনুসন্ধান</string>
   <string name="morphe_change_start_page_entry_shopping">শোপিংগ</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <string name="morphe_change_start_page_entry_sports">খেলাধুলা</string>
   <string name="morphe_change_start_page_entry_subscriptions">সদস্যতা</string>
   <string name="morphe_change_start_page_entry_trending">এখন জনপ্রিয়</string>
@@ -1386,12 +1468,6 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_miniplayer_disable_rounded_corners_title">গোলাকার কোণা নিষ্ক্রিয় করুন</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_on">কোণগুলি বর্গাকার</string>
   <string name="morphe_miniplayer_disable_rounded_corners_summary_off">কোণগুলি গোলাকার</string>
-  <string name="morphe_miniplayer_double_tap_action_title">ডাবল-ট্যাপ এবং পিঞ্চ টু রিসাইজ সক্ষম করুন</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_on">"ডাবল-ট্যাপ করার ক্রিয়া এবং আকার পরিবর্তন করার জন্য চিমটি দেওয়া সক্রিয়
-
-• miniplayer আকার বৃদ্ধি করতে ডাবল ট্যাপ করুন
-• মূল আকার পুনরুদ্ধার করতে আবার ডাবল ট্যাপ করুন"</string>
-  <string name="morphe_miniplayer_double_tap_action_summary_off">ডাবল-ট্যাপ অ্যাকশন এবং পিঞ্চ টু রিসাইজ অক্ষম</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">টেনে-ছেড়ে দেওয়া নিষ্ক্রিয় করুন</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_on">ড্র্যাগ এবং ড্রপ অক্ষম</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_summary_off">"ড্র্যাগ এবং ড্রপ সক্রিয়
@@ -1405,11 +1481,6 @@ Miniplayer স্ক্রিন থেকে বামে বা ডানে �
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ওভারলে বোতাম লুকান</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_on">ওভারলে বোতাম লুকানো আছে</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_summary_off">ওভারলে বোতাম দেখানো হয়েছে</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_title">এক্সপ্যান্ড এবং ক্লোজ বোতাম লুকান</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_on">"বোতাম লুকানো আছে
-
-এক্সপ্যান্ড বা ক্লোজ করতে সোয়াইপ করুন"</string>
-  <string name="morphe_miniplayer_hide_overlay_buttons_legacy_summary_off">এক্সপ্যান্ড এবং ক্লোজ বোতাম দেখানো হচ্ছে</string>
   <string name="morphe_miniplayer_hide_subtext_title">উপপাঠ লুকান</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">উপপাঠ লুকিয়ে রয়েছে</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">উপপাঠ প্রদর্শিত হয়েছে</string>
@@ -1487,16 +1558,10 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow সাময়িকভাবে উপলব্ধ নেই (স্ট্যাটাস কোড: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow সাময়িকভাবে উপলব্ধ নেই</string>
   <!-- misc.announcements.announcementsPatch -->
-  <!-- misc.loopvideo.loopVideoPatch -->
-  <string name="morphe_loop_video_title">লুপ ভিডিও সক্ষম করুন</string>
-  <string name="morphe_loop_video_summary_on">ভিডিও লুপ হবে</string>
-  <string name="morphe_loop_video_summary_off">ভিডিও লুপ হবে না</string>
-  <!-- misc.loopvideo.button.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">লুপ ভিডিও বোতাম দেখান</string>
-  <string name="morphe_loop_video_button_summary_on">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
-  <string name="morphe_loop_video_button_summary_off">ভিডিও লুপ করুন মেনু প্রদর্শিত হয়েছে</string>
-  <string name="morphe_loop_video_button_toast_on">লুপ ভিডিও চালু আছে</string>
-  <string name="morphe_loop_video_button_toast_off">লুপ ভিডিও বন্ধ আছে</string>
+  <!-- misc.playercontrols.playerControlsPatch -->
+  <string name="morphe_restore_old_player_buttons_title">পুরানো প্লেয়ারের বোতামের স্টাইল পুনরুদ্ধার করুন</string>
+  <string name="morphe_restore_old_player_buttons_summary_on">প্লেয়ারের পাতলা স্টাইল দেখানো হয়েছে</string>
+  <string name="morphe_restore_old_player_buttons_summary_off">প্লেয়ারের গাঢ় স্টাইল দেখানো হয়েছে</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">ডিভাইস ডাইমেনশন স্পুফ করুন</string>
   <string name="morphe_spoof_device_dimensions_summary_on">"ডিভাইসের মাত্রা ভুয়া
@@ -1603,6 +1668,14 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
 • VP9 বা AV1 এর চেয়ে ভিডিও প্লেব্যাকে বেশি ইন্টারনেট ডেটা ব্যবহার হবে
 • HDR ভিডিও AVC ব্যবহার করবে না
 • কিছু ডিভাইস AVC জোর করে ব্যবহার করতে পারে না"</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'Spoof ভিডিও স্ট্রিম\' অ্যান্ড্রয়েড VR অথবা অ্যান্ড্রয়েড স্টুডিওতে পরিবর্তন করুন</string>
+  <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
+  <string name="morphe_expand_livestream_dvr_duration_title">লাইভস্ট্রিম ডিভিআর সময়কাল বাড়ান</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_on">লাইভস্ট্রিম ডিভিআর সময়কাল ৭ দিন পর্যন্ত বাড়ানো হয়েছে</string>
+  <string name="morphe_expand_livestream_dvr_duration_summary_off">লাইভস্ট্রিম ডিভিআর সময়কাল সার্ভারের ডিফল্টে সীমাবদ্ধ</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">যদি \'স্পুফ ভিডিও স্ট্রিম\' সক্রিয় করা না হয় তবে এই সেটিংসের কারণে অপ্রত্যাশিত আচরণ হতে পারে।</string>
   <!-- video.quality.advancedVideoQualityMenuPatch -->
   <string name="morphe_advanced_video_quality_menu_title">উন্নত ভিডিও গুণমান মেনু দেখান</string>
   <string name="morphe_advanced_video_quality_menu_summary_on">উন্নত ভিডিও গুণমান মেনু দেখানো হয়েছে</string>

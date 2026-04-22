@@ -18,7 +18,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/CaptionCookiesPatch;"
 
 internal val captionCookiesPatch = bytecodePatch(
@@ -49,7 +49,7 @@ internal val captionCookiesPatch = bytecodePatch(
                     "patch_setUrlRequestHeaders",
                     listOf(
                         ImmutableMethodParameter(
-                            "Lorg/chromium/net/UrlRequest\$Builder;",
+                            $$"Lorg/chromium/net/UrlRequest$Builder;",
                             null,
                             null
                         )
@@ -63,19 +63,19 @@ internal val captionCookiesPatch = bytecodePatch(
                     addInstructionsWithLabels(
                         0,
                         """
-                            invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getRequireCookies()Z
+                            invoke-static { }, $EXTENSION_CLASS->getRequireCookies()Z
                             move-result v0
                             if-eqz v0, :disabled
                             
                             # Set Cookie.
                             const-string v0, "Cookie"
-                            invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getCookies()Ljava/lang/String;
+                            invoke-static { }, $EXTENSION_CLASS->getCookies()Ljava/lang/String;
                             move-result-object v1
                             invoke-virtual { p1, v0, v1 }, Lorg/chromium/net/UrlRequest${'$'}Builder;->addHeader(Ljava/lang/String;Ljava/lang/String;)Lorg/chromium/net/UrlRequest${'$'}Builder;
 
                             # Set User-Agent.
                             const-string v0, "User-Agent"
-                            invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getUserAgent()Ljava/lang/String;
+                            invoke-static { }, $EXTENSION_CLASS->getUserAgent()Ljava/lang/String;
                             move-result-object v1
 
                             # Set Header.
@@ -103,7 +103,7 @@ internal val captionCookiesPatch = bytecodePatch(
 
                 addInstruction(
                     urlIndex,
-                    "invoke-static { v$urlRegister }, $EXTENSION_CLASS_DESCRIPTOR->setRequireCookies(Ljava/lang/String;)V"
+                    "invoke-static { v$urlRegister }, $EXTENSION_CLASS->setRequireCookies(Ljava/lang/String;)V"
                 )
             }
         }

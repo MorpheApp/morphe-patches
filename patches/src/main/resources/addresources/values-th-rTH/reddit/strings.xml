@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">ปิดใช้งาน UI หน้าแรกแบบทันสมัย</string>
   <string name="morphe_disable_screenshot_popup_title">ปิดใช้งานหน้าต่างป๊อปอัพการจับภาพหน้าจอ</string>
   <string name="morphe_disable_screenshot_popup_summary">ปิดใช้งานหน้าต่างป๊อปอัพที่ปรากฏเมื่อถ่ายภาพหน้าจอ</string>
+  <string name="morphe_hide_ask_button_title">ซ่อนปุ่มถาม</string>
+  <string name="morphe_hide_ask_button_summary">ซ่อนปุ่มถามในแถบค้นหา</string>
   <string name="morphe_hide_answers_button_title">ซ่อนปุ่มตอบคำถาม</string>
   <string name="morphe_hide_answers_button_summary">ซ่อนปุ่มตอบคำถามในแถบนำทาง</string>
   <string name="morphe_hide_chat_button_title">ซ่อนปุ่มแชท</string>
@@ -67,4 +69,6 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_summary">ทำให้ลิงก์การแชร์สะอาดขึ้นโดยการลบพารามิเตอร์ติดตาม</string>
   <string name="morphe_open_links_directly_title">เปิดลิงก์โดยตรง</string>
   <string name="morphe_open_links_directly_summary">ข้าม URL การเปลี่ยนเส้นทางในลิงก์ภายนอก</string>
+  <string name="morphe_open_links_externally_title">เปิดลิงก์ภายนอก</string>
+  <string name="morphe_open_links_externally_summary">เปิดลิงก์ในเบราว์เซอร์ของคุณแทนที่จะเปิดในเบราว์เซอร์ในแอป</string>
 </resources>

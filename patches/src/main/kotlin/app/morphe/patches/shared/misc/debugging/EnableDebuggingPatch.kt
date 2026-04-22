@@ -16,7 +16,7 @@ import app.morphe.util.cloneMutable
 import app.morphe.util.cloneMutableAndPreserveParameters
 import app.morphe.util.copyResources
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/patches/EnableDebuggingPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/EnableDebuggingPatch;"
 
 /**
  * Patch shared with YouTube and YT Music.
@@ -71,13 +71,8 @@ internal fun enableDebuggingPatch(
                 SwitchPreference("morphe_debug_stacktrace"),
                 SwitchPreference("morphe_debug_toast_on_error"),
                 NonInteractivePreference(
-                    "morphe_debug_export_logs_to_clipboard",
+                    "morphe_debug_export_logs",
                     tag = "app.morphe.extension.shared.settings.preference.ExportLogToClipboardPreference",
-                    selectable = true
-                ),
-                NonInteractivePreference(
-                    "morphe_debug_logs_clear_buffer",
-                    tag = "app.morphe.extension.shared.settings.preference.ClearLogBufferPreference",
                     selectable = true
                 ),
                 NonInteractivePreference(
@@ -97,9 +92,7 @@ internal fun enableDebuggingPatch(
         )
 
         // Hook the methods that look up if a feature flag is active.
-        ExperimentalBooleanFeatureFlagFingerprint.match(
-            ExperimentFlagUtilFingerprint.originalClassDef
-        ).let {
+        ExperimentalBooleanFeatureFlagFingerprint.let {
             it.method.apply {
                 // Not enough registers in the method. Clone the method and use the
                 // original method as an intermediate to call extension code.
@@ -118,7 +111,7 @@ internal fun enableDebuggingPatch(
                         move-result p0
                         
                         # Redefine boolean in the extension.
-                        invoke-static { p0, p1, p2 }, $EXTENSION_CLASS_DESCRIPTOR->isBooleanFeatureFlagEnabled(ZJ)Z
+                        invoke-static { p0, p1, p2 }, $EXTENSION_CLASS->isBooleanFeatureFlagEnabled(ZJ)Z
                         move-result p0
                         
                         # Since the copied method (helper method) has already been invoked, it just returns.
@@ -128,9 +121,7 @@ internal fun enableDebuggingPatch(
             }
         }
 
-        if (hookDoubleFeatureFlag()) ExperimentalDoubleFeatureFlagFingerprint.match(
-            ExperimentFlagUtilFingerprint.originalClassDef
-        ).let {
+        if (hookDoubleFeatureFlag()) ExperimentalDoubleFeatureFlagFingerprint.let {
             // 21.06+ doesn't have enough registers and needs to also clone.
             it.method.cloneMutableAndPreserveParameters().apply {
                 val helperMethod = cloneMutable(name = "patch_getDoubleFeatureFlag")
@@ -148,7 +139,7 @@ internal fun enableDebuggingPatch(
                         move-wide v2, p1
                         move-wide v4, p3
 
-                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS_DESCRIPTOR->isDoubleFeatureFlagEnabled(DJD)D
+                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS->isDoubleFeatureFlagEnabled(DJD)D
                         move-result-wide v0
 
                         # Since the copied method (helper method) has already been invoked, it just returns.
@@ -158,9 +149,7 @@ internal fun enableDebuggingPatch(
             }
         }
 
-        if (hookLongFeatureFlag()) ExperimentalLongFeatureFlagFingerprint.match(
-            ExperimentFlagUtilFingerprint.originalClassDef
-        ).let {
+        if (hookLongFeatureFlag()) ExperimentalLongFeatureFlagFingerprint.let {
             it.method.cloneMutableAndPreserveParameters().apply {
                 // Copy the method.
                 val helperMethod = cloneMutable(name = "patch_getLongFeatureFlag")
@@ -179,7 +168,7 @@ internal fun enableDebuggingPatch(
                         move-wide v2, p1
                         move-wide v4, p3
 
-                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS_DESCRIPTOR->isLongFeatureFlagEnabled(JJJ)J
+                        invoke-static/range { v0 .. v5 }, $EXTENSION_CLASS->isLongFeatureFlagEnabled(JJJ)J
                         move-result-wide v0
 
                         # Since the copied method (helper method) has already been invoked, it just returns.
@@ -189,9 +178,7 @@ internal fun enableDebuggingPatch(
             }
         }
 
-        if (hookStringFeatureFlag()) ExperimentalStringFeatureFlagFingerprint.match(
-            ExperimentFlagUtilFingerprint.originalClassDef
-        ).let {
+        if (hookStringFeatureFlag()) ExperimentalStringFeatureFlagFingerprint.let {
             it.method.apply {
                 val helperMethod = cloneMutable(name = "patch_getStringFeatureFlag")
 
@@ -203,7 +190,7 @@ internal fun enableDebuggingPatch(
                         invoke-static { p0, p1, p2, p3 }, $helperMethod
                         move-result-object p0
                         
-                        invoke-static { p0, p1, p2, p3 }, $EXTENSION_CLASS_DESCRIPTOR->isStringFeatureFlagEnabled(Ljava/lang/String;JLjava/lang/String;)Ljava/lang/String;
+                        invoke-static { p0, p1, p2, p3 }, $EXTENSION_CLASS->isStringFeatureFlagEnabled(Ljava/lang/String;JLjava/lang/String;)Ljava/lang/String;
                         move-result-object p0
                         
                         return-object p0

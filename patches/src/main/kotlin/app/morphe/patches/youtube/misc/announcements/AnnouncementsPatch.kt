@@ -8,7 +8,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/announcements/AnnouncementsPatch;"
 
 val announcementsPatch = bytecodePatch(
@@ -29,7 +29,7 @@ val announcementsPatch = bytecodePatch(
 
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->showAnnouncement(Landroid/app/Activity;)V",
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->showAnnouncement(Landroid/app/Activity;)V",
         )
     }
 }

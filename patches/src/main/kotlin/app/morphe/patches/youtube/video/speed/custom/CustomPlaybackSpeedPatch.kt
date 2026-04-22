@@ -17,34 +17,43 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableField
 import app.morphe.patcher.util.proxy.mutableTypes.MutableField.Companion.toMutable
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_47_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.addRecyclerViewTreeHook
 import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHookPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
+import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableField
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
-private const val FILTER_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/patches/components/PlaybackSpeedMenuFilter;"
-
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/speed/CustomPlaybackSpeedPatch;"
+
+private const val EXTENSION_FILTER =
+    "Lapp/morphe/extension/youtube/patches/components/PlaybackSpeedMenuFilter;"
 
 internal val customPlaybackSpeedPatch = bytecodePatch(
     description = "Adds custom playback speed options.",
@@ -70,11 +79,9 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             )
         )
 
-        if (is_19_47_or_greater) {
-            settingsMenuVideoSpeedGroup.add(
-                TextPreference("morphe_speed_tap_and_hold", inputType = InputType.NUMBER_DECIMAL),
-            )
-        }
+        settingsMenuVideoSpeedGroup.add(
+            TextPreference("morphe_speed_tap_and_hold", inputType = InputType.NUMBER_DECIMAL),
+        )
 
         // Override the min/max speeds that can be used.
         (if (is_20_34_or_greater) SpeedLimiterFingerprint else SpeedLimiterLegacyFingerprint).method.apply {
@@ -100,7 +107,7 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         SpeedArrayGeneratorFingerprint.let {
             val matches = it.instructionMatches
             it.method.apply {
-                val playbackSpeedsArrayType = "$EXTENSION_CLASS_DESCRIPTOR->customPlaybackSpeeds:[F"
+                val playbackSpeedsArrayType = "$EXTENSION_CLASS->customPlaybackSpeeds:[F"
                 // Apply changes from last index to first to preserve indexes.
 
                 val originalArrayFetchIndex = matches[5].index
@@ -142,13 +149,14 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         GetOldPlaybackSpeedsFingerprint.classDef.staticFields.add(instanceField)
         // Set the INSTANCE field to the instance of the class.
         // In order to prevent a conflict with another patch, add the instruction at index 1.
-        GetOldPlaybackSpeedsFingerprint.method.addInstruction(1, "sput-object p0, $instanceField")
+        GetOldPlaybackSpeedsFingerprint.method.addInstruction(
+            1,
+            "sput-object p0, $instanceField"
+        )
 
         // Get the "showOldPlaybackSpeedMenu" method.
         // This is later called on the field INSTANCE.
-        val showOldPlaybackSpeedMenuMethod = ShowOldPlaybackSpeedMenuFingerprint.match(
-            GetOldPlaybackSpeedsFingerprint.classDef,
-        ).method
+        val showOldPlaybackSpeedMenuMethod = ShowOldPlaybackSpeedMenuFingerprint.method
 
         // Insert the call to the "showOldPlaybackSpeedMenu" method on the field INSTANCE.
         ShowOldPlaybackSpeedMenuExtensionFingerprint.method.apply {
@@ -164,11 +172,127 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
             )
         }
 
-        if (is_21_02_or_greater) {
+        // Fix restore old playback speed menu.
+        if (is_21_12_or_greater) {
+            val onItemClickClass: String
+            val fragmentIdField: MutableField
+            val fragmentManagerMethod : MethodReference
+            PlaybackSpeedOnItemClickParentFingerprint.let {
+                it.method.apply {
+                    // Add a fragment id instance field to the class.
+                    fragmentIdField = ImmutableField(
+                        definingClass,
+                        "INSTANCE",
+                        "Ljava/lang/String;",
+                        AccessFlags.PUBLIC.value,
+                        null,
+                        null,
+                        null,
+                    ).toMutable()
+                    it.classDef.instanceFields.add(fragmentIdField)
+
+                    onItemClickClass = definingClass
+                    fragmentManagerMethod = it.instructionMatches.first()
+                        .instruction.getReference<MethodReference>()!!
+
+                    val insertIndex = implementation!!.instructions.lastIndex
+
+                    addInstruction(
+                        insertIndex,
+                        "iput-object p1, p0, $fragmentIdField"
+                    )
+                }
+            }
+
+            val bottomSheetAvailabilityPrimaryMethodCall : String
+            val bottomSheetAvailabilitySecondaryMethodCall : String
+            val bottomSheetBuilderMethodCall : String
+            AudioTrackOldBottomSheetFingerprint.instructionMatches.apply {
+                fun getMethodCall(offset: Int):String {
+                    val methodReference =
+                        this[offset].instruction.getReference<MethodReference>()!!
+
+                    return methodReference.toString()
+                        .replace(methodReference.definingClass, onItemClickClass)
+                }
+                bottomSheetAvailabilityPrimaryMethodCall = getMethodCall(0)
+                bottomSheetAvailabilitySecondaryMethodCall = getMethodCall(1)
+                bottomSheetBuilderMethodCall = getMethodCall(3)
+            }
+
+            ShowOldPlaybackSpeedMenuFingerprint.let {
+                it.classDef.apply {
+                    val onItemClickField = fields.single { field ->
+                        field.type == onItemClickClass
+                    }
+                    val fragmentManagerField = fields.single { field ->
+                        field.type == fragmentManagerMethod.definingClass
+                    }
+                    val helperMethod = ImmutableMethod(
+                        type,
+                        "patch_showOldPlaybackSpeedMenu",
+                        listOf(),
+                        "V",
+                        AccessFlags.PRIVATE.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(4),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                # Check if the bottom sheet is available.
+                                iget-object v0, p0, $onItemClickField
+                                invoke-virtual { v0 }, $bottomSheetAvailabilityPrimaryMethodCall
+                                move-result v1
+                                if-nez v1, :ignore
+
+                                # Check if the bottom sheet is available.
+                                invoke-virtual { v0 }, $bottomSheetAvailabilitySecondaryMethodCall
+                                move-result v1
+                                if-nez v1, :ignore
+
+                                # Check if the fragment ID is not null.
+                                iget-object v2, v0, $fragmentIdField
+                                if-eqz v2, :ignore
+
+                                # Shows the bottom sheet dialog.
+                                iget-object v1, p0, $fragmentManagerField
+                                invoke-virtual { v1 }, $fragmentManagerMethod
+                                move-result-object v1
+                                invoke-virtual { v0, v1, v2 }, $bottomSheetBuilderMethodCall
+
+                                :ignore
+                                return-void
+                            """
+                        )
+                    }
+                    methods.add(helperMethod)
+
+                    it.method.apply {
+                        val index = it.instructionMatches.last().index
+                        val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                        addInstructionsAtControlFlowLabel(
+                            index,
+                            """
+                                invoke-static { }, $EXTENSION_CLASS->restoreOldPlaybackSpeedMenu()Z
+                                move-result v$register
+                                if-eqz v$register, :ignore
+                                invoke-direct { p0 }, $helperMethod
+                                return-void
+                                :ignore
+                                nop
+                            """
+                        )
+                    }
+                }
+            }
+        } else if (is_21_02_or_greater) {
             FlyoutMenuNonLegacyFeatureFlagFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->useNewFlyoutMenu(Z)Z"
+                    "$EXTENSION_CLASS->useNewFlyoutMenu(Z)Z"
                 )
             }
         }
@@ -176,44 +300,41 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
         // endregion
 
         // Close the unpatched playback dialog and show the custom speeds.
-        addRecyclerViewTreeHook(EXTENSION_CLASS_DESCRIPTOR)
+        addRecyclerViewTreeHook(EXTENSION_CLASS)
 
         // Required to check if the playback speed menu is currently shown.
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
 
         // endregion
 
         // region Custom tap and hold 2x speed.
 
-        if (is_19_47_or_greater) {
-            TapAndHoldSpeedFingerprint.let {
-                // clearMatch() is used because it can be the same method as [tapAndHoldHapticsFingerprint].
-                it.clearMatch()
-                it.method.apply {
-                    val speedIndex = it.instructionMatches.last().index
-                    val speedRegister =
-                        getInstruction<OneRegisterInstruction>(speedIndex).registerA
+        TapAndHoldSpeedFingerprint.let {
+            // clearMatch() is used because it can be the same method as [tapAndHoldHapticsFingerprint].
+            it.clearMatch()
+            it.method.apply {
+                val speedIndex = it.instructionMatches.last().index
+                val speedRegister =
+                    getInstruction<OneRegisterInstruction>(speedIndex).registerA
 
-                    addInstructions(
-                        speedIndex + 1,
-                        """
-                            invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getTapAndHoldSpeed()F
-                            move-result v$speedRegister
-                        """
-                    )
+                addInstructions(
+                    speedIndex + 1,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->getTapAndHoldSpeed()F
+                        move-result v$speedRegister
+                    """
+                )
 
-                    val enabledIndex = it.instructionMatches[3].index
-                    val enabledRegister =
-                        getInstruction<OneRegisterInstruction>(enabledIndex).registerA
+                val enabledIndex = it.instructionMatches[3].index
+                val enabledRegister = getInstruction<OneRegisterInstruction>(enabledIndex).registerA
 
-                    addInstructions(
-                        enabledIndex,
-                        """
-                            invoke-static { v$enabledRegister }, $EXTENSION_CLASS_DESCRIPTOR->disableTapAndHoldSpeed(Z)Z
-                            move-result v$enabledRegister
-                        """
-                    )
-                }
+                addInstructions(
+                    enabledIndex,
+                    """
+                        invoke-static { v$enabledRegister }, $EXTENSION_CLASS->disableTapAndHoldSpeed(Z)Z
+                        move-result v$enabledRegister
+                    """
+                )
             }
         }
 

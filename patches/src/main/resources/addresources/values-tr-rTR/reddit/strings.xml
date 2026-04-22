@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Modern kullanıcı arayüzünü devre dışı bırakır</string>
   <string name="morphe_disable_screenshot_popup_title">Ekran görüntüsü açılır penceresini devre dışı bırak</string>
   <string name="morphe_disable_screenshot_popup_summary">Ekran görüntüsü alındığında görünen açılır pencereyi devre dışı bırakır</string>
+  <string name="morphe_hide_ask_button_title">Sor düğmesini gizle</string>
+  <string name="morphe_hide_ask_button_summary">Arama çubuğundaki \"Sor\" düğmesini gizler</string>
   <string name="morphe_hide_answers_button_title">Cevaplar düğmesini gizle</string>
   <string name="morphe_hide_answers_button_summary">Cevaplar düğmesini gezinme çubuğunda gizler</string>
   <string name="morphe_hide_chat_button_title">Sohbet düğmesini gizle</string>
@@ -62,9 +64,11 @@ Sınırlama: Sadece API yanıtı görüntü sayısını içeriyorsa gösterilir"
   <string name="morphe_remove_nsfw_dialog_summary">Bir alt başlığı ziyaret ederken görünen NSFW uyarı iletişim kutusunu otomatik olarak kabul ederek kaldırır</string>
   <string name="morphe_screen_miscellaneous_title">Çeşitli</string>
   <string name="morphe_about_title">Hakkında</string>
-  <string name="morphe_about_summary">Sürüm ve resmi bağlantılar</string>
+  <string name="morphe_about_summary">Yama sürümü ve resmi bağlantılar</string>
   <string name="morphe_sanitize_sharing_links_title">Paylaşım bağlantılarını temizle</string>
   <string name="morphe_sanitize_sharing_links_summary">Paylaşım bağlantılarını izleme sorgu parametrelerini kaldırarak temizler</string>
   <string name="morphe_open_links_directly_title">Bağlantıları doğrudan aç</string>
   <string name="morphe_open_links_directly_summary">Harici bağlantılardaki yönlendirme URL\'lerini atlar</string>
+  <string name="morphe_open_links_externally_title">Bağlantıları harici olarak aç</string>
+  <string name="morphe_open_links_externally_summary">Bağlantıları uygulama içi tarayıcı yerine tarayıcınızda açar</string>
 </resources>

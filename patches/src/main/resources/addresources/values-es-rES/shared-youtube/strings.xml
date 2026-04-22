@@ -20,25 +20,18 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Reiniciar para finalizar la configuración</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nombre de la aplicación</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizado</string>
   <string name="morphe_custom_branding_icon_title">Icono de la aplicación</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe negro</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe oscuro</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe luz</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Personalizado</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 ¡Alerta experimental! 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Estás usando una versión experimental de la app: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Puede que la app se comporte de forma extraña o que se produzcan errores no identificados mientras afinamos los parches para esta versión de la app.
-&lt;br/&gt;&lt;br/&gt;
-Si deseas disfrutar de una experiencia sin problemas, &lt;b&gt;desinstala&lt;/b&gt; esta versión y actualiza la app a la versión recomendada: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quiero experimental</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quiero estable</string>
+  <string name="morphe_custom_branding_icon_entry_6">Personalizado</string>
+  <string name="morphe_custom_branding_notification_icon_title">Icono de notificación</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Seguir icono de la aplicación</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Aviso de Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Tu historial no está siendo guardado.&lt;br&gt;&lt;br&gt;Esto puede ser por un bloqueador de anuncios DNS o Proxy.&lt;br&gt;&lt;br&gt;Para arreglarlo, permita el dominio &lt;b&gt;s.youtube.com&lt;/b&gt; o desactive el bloqueador DNS o Proxy.</string>
@@ -104,8 +97,8 @@ Para iniciar sesión, pulsa en \"Continuar\" a continuación"</string>
 • La reproducción fallará si el hash JavaScript del reproductor es revocado por GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">La actualización de JavaScript del reproductor está activada</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Los hashes JavaScript del reproductor son válidos aproximadamente un mes, y los hashes obsoletos pueden ser revocados por GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Hash JavaScript del reproductor</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Introduzca un hash JavaScript del reproductor válido</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript del reproductor</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Introduzca un hash JavaScript del reproductor válido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Desactivar protocolo QUIC</string>
   <string name="morphe_disable_quic_protocol_summary_on">El protocolo QUIC está desactivado</string>
@@ -118,6 +111,10 @@ Para iniciar sesión, pulsa en \"Continuar\" a continuación"</string>
   <string name="morphe_force_original_audio_title">Forzar idioma de audio original</string>
   <string name="morphe_force_original_audio_summary_on">Usar el idioma de audio original</string>
   <string name="morphe_force_original_audio_summary_off">Utilizando audio predeterminado</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Ocultar anuncios en pantalla completa</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Los anuncios en pantalla completa están ocultos</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Los anuncios en pantalla completa están visibles</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Para usar esta función, cambia \'Falsificar transmisiones de vídeo\' a Android Reel o TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

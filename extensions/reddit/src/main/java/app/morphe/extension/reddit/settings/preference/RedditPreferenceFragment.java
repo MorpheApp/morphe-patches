@@ -14,8 +14,6 @@ import android.widget.ListView;
 import app.morphe.extension.reddit.settings.preference.categories.AdsPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.LayoutPreferenceCategory;
 import app.morphe.extension.reddit.settings.preference.categories.MiscellaneousPreferenceCategory;
-import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 
 /**
@@ -27,11 +25,6 @@ public class RedditPreferenceFragment extends AbstractPreferenceFragment {
     @Override
     protected void initialize() {
         Context context = getContext();
-
-        // Must use utils modified language context if language override is active.
-        if (!BaseSettings.MORPHE_LANGUAGE.isSetToDefault()) {
-            ResourceUtils.useActivityContextIfAvailable = false;
-        }
 
         PreferenceScreen preferenceScreen = getPreferenceManager().createPreferenceScreen(context);
         setPreferenceScreen(preferenceScreen);

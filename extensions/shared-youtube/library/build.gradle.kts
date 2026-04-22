@@ -4,8 +4,8 @@ plugins {
 }
 
 android {
-    namespace = "app.morphe.extension"
-    compileSdk = 35
+    namespace = "app.morphe.extension.shared.youtube"
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 26
@@ -18,6 +18,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.morphe.extensions.library)
     implementation(libs.androidx.javascriptengine)
     implementation(libs.gson)
     implementation(libs.protobuf.javalite)

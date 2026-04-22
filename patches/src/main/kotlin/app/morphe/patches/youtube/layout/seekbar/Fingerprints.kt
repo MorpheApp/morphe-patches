@@ -9,8 +9,8 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -84,19 +84,6 @@ internal object PlayerLinearGradientFingerprint : Fingerprint(
     )
 )
 
-/**
- * 19.25 - 19.47
- */
-internal object PlayerLinearGradientLegacyFingerprint : Fingerprint(
-    returnType = "V",
-    filters = listOf(
-        resourceLiteral(ResourceType.COLOR, "yt_youtube_magenta"),
-
-        opcode(Opcode.FILLED_NEW_ARRAY),
-        opcode(Opcode.MOVE_RESULT_OBJECT, MatchAfterImmediately()),
-    )
-)
-
 internal const val LOTTIE_ANIMATION_VIEW_CLASS_TYPE = "Lcom/airbnb/lottie/LottieAnimationView;"
 
 internal object LottieAnimationViewSetAnimationIntFingerprint : Fingerprint(
@@ -109,7 +96,7 @@ internal object LottieAnimationViewSetAnimationIntFingerprint : Fingerprint(
     )
 )
 
-internal object LottieCompositionFactoryZipFingerprint : Fingerprint(
+private object LottieCompositionFactoryZipFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     parameters = listOf("Landroid/content/Context;", "Ljava/util/zip/ZipInputStream;", "Ljava/lang/String;"),
     returnType = "L",
@@ -120,11 +107,10 @@ internal object LottieCompositionFactoryZipFingerprint : Fingerprint(
 )
 
 /**
- * Resolves using class found in [lottieCompositionFactoryZipFingerprint].
- *
  * [Original method](https://github.com/airbnb/lottie-android/blob/26ad8bab274eac3f93dccccfa0cafc39f7408d13/lottie/src/main/java/com/airbnb/lottie/LottieCompositionFactory.java#L386)
  */
 internal object LottieCompositionFactoryFromJsonInputStreamFingerprint : Fingerprint(
+    classFingerprint = LottieCompositionFactoryZipFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     parameters = listOf("Ljava/io/InputStream;", "Ljava/lang/String;"),
     returnType = "L",

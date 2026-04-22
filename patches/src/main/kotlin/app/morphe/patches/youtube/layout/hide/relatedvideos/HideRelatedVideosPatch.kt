@@ -35,7 +35,7 @@ import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideRelatedVideosPatch;"
 
 @Suppress("unused")
@@ -158,7 +158,7 @@ val hideRelatedVideosPatch = bytecodePatch(
                     addInstructionsWithLabels(
                         0,
                         """
-                            invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideRelatedVideos()Z
+                            invoke-static { }, $EXTENSION_CLASS->hideRelatedVideos()Z
                             move-result v0
 
                             if-eqz v0, :ignore
@@ -186,7 +186,7 @@ val hideRelatedVideosPatch = bytecodePatch(
                             check-cast v2, ${itemSectionRendererField.definingClass}
 
                             # Checks whether ItemSectionRenderer is a related item.
-                            invoke-static { v2 }, $EXTENSION_CLASS_DESCRIPTOR->isRelatedItems(Lcom/google/protobuf/MessageLite;)Z
+                            invoke-static { v2 }, $EXTENSION_CLASS->isRelatedItems(Lcom/google/protobuf/MessageLite;)Z
                             move-result v3
                             if-eqz v3, :is_not_related_item
                             
@@ -198,7 +198,7 @@ val hideRelatedVideosPatch = bytecodePatch(
                             :is_not_related_item
                             
                             # Checks whether ShelfRenderer is a related item.
-                            invoke-static { v2 }, $EXTENSION_CLASS_DESCRIPTOR->isShelfRenderer(Lcom/google/protobuf/MessageLite;)Z
+                            invoke-static { v2 }, $EXTENSION_CLASS->isShelfRenderer(Lcom/google/protobuf/MessageLite;)Z
                             move-result v3
                             if-eqz v3, :is_not_shelf_renderer
                             
@@ -212,7 +212,7 @@ val hideRelatedVideosPatch = bytecodePatch(
                             goto :loop
 
                             :exit
-                            invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->isFiltered()Z
+                            invoke-static { }, $EXTENSION_CLASS->isFiltered()Z
                             move-result v2
                             if-eqz v2, :ignore
 

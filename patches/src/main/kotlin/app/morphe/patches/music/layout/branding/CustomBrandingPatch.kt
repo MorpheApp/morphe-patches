@@ -9,11 +9,11 @@ import app.morphe.patches.music.misc.gms.Constants.MUSIC_PACKAGE_NAME
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
-import app.morphe.patches.shared.layout.branding.EXTENSION_CLASS_DESCRIPTOR
+import app.morphe.patches.shared.layout.branding.EXTENSION_CLASS
 import app.morphe.patches.shared.layout.branding.baseCustomBrandingPatch
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
@@ -47,7 +47,7 @@ private val disableSplashAnimationPatch = bytecodePatch {
             addInstructions(
                 checkCastIndex,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getLottieViewOrNull(Landroid/view/View;)Landroid/view/View;
+                    invoke-static { v$register }, $EXTENSION_CLASS->getLottieViewOrNull(Landroid/view/View;)Landroid/view/View;
                     move-result-object v$register
                 """
             )

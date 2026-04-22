@@ -6,8 +6,12 @@ import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patches.youtube.layout.player.overlay.CreatePlayerOverviewFingerprint
+import app.morphe.patches.youtube.misc.playercontrols.PlayerBottomGradientScrimFingerprint
+import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
+import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversed
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -27,7 +31,11 @@ internal object AppendTimeFingerprint : Fingerprint(
     )
 )
 
+/**
+ * Matches same method as [CreatePlayerOverviewFingerprint] and [PlayerBottomGradientScrimFingerprint].
+ */
 internal object ControlsOverlayFingerprint : Fingerprint(
+    classFingerprint = LayoutConstructorFingerprint,
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
@@ -36,10 +44,8 @@ internal object ControlsOverlayFingerprint : Fingerprint(
     )
 )
 
-/**
- * Resolves to the class found in [seekbarFingerprint].
- */
 internal object RectangleFieldInvalidatorFingerprint : Fingerprint(
+    classFingerprint = SeekbarFingerprint,
     returnType = "V",
     parameters = listOf(),
     filters = listOf(

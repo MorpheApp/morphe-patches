@@ -8,7 +8,7 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
@@ -21,7 +21,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ChangeMiniplayerColorPatch;"
 
 @Suppress("unused")
 val changeMiniplayerColor = bytecodePatch(
@@ -41,20 +41,12 @@ val changeMiniplayerColor = bytecodePatch(
             SwitchPreference("morphe_music_change_miniplayer_color"),
         )
 
-        SwitchToggleColorFingerprint.match(MiniPlayerConstructorFingerprint.classDef).let {
-            val relativeIndex = it.instructionMatches.last().index + 1
+        SwitchToggleColorFingerprint.let {
+            val colorMathPlayerInvokeVirtualReference = it.instructionMatches.last()
+                .getInstruction<ReferenceInstruction>().reference
 
-            val invokeVirtualIndex = it.method.indexOfFirstInstructionOrThrow(
-                relativeIndex, Opcode.INVOKE_VIRTUAL
-            )
-            val colorMathPlayerInvokeVirtualReference = it.method
-                .getInstruction<ReferenceInstruction>(invokeVirtualIndex).reference
-
-            val iGetIndex = it.method.indexOfFirstInstructionOrThrow(
-                relativeIndex, Opcode.IGET
-            )
-            val colorMathPlayerIGetReference = it.method
-                .getInstruction<ReferenceInstruction>(iGetIndex).reference as FieldReference
+            val colorMathPlayerIGetReference = it.instructionMatches[4]
+                .getInstruction<ReferenceInstruction>().reference  as FieldReference
 
             val colorGreyIndex = MiniPlayerConstructorFingerprint.method.indexOfFirstInstructionReversedOrThrow {
                 getReference<MethodReference>()?.name == "getColor"
@@ -76,7 +68,7 @@ val changeMiniplayerColor = bytecodePatch(
                 addInstructionsAtControlFlowLabel(
                     insertIndex,
                     """
-                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->changeMiniplayerColor()Z
+                        invoke-static {}, $EXTENSION_CLASS->changeMiniplayerColor()Z
                         move-result v$freeRegister
                         if-eqz v$freeRegister, :off
                         invoke-virtual { p1 }, $colorMathPlayerInvokeVirtualReference

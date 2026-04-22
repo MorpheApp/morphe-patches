@@ -11,7 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/shared/patches/InitializationPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/InitializationPatch;"
 
 internal fun initializationPatch(
     mainActivityFingerprint: Fingerprint
@@ -21,7 +21,7 @@ internal fun initializationPatch(
     execute {
         mainActivityFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->onCreate(Landroid/app/Activity;)V",
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onCreate(Landroid/app/Activity;)V",
         )
     }
 }
