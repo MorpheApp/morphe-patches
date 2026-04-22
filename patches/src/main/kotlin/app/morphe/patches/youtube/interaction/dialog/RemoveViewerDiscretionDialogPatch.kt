@@ -1,20 +1,23 @@
 package app.morphe.patches.youtube.interaction.dialog
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.replaceInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.literal
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.shared.BackgroundPlaybackManagerShortsFingerprint
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.cloneMutableAndPreserveParameters
+import app.morphe.util.findInstructionIndicesReversed
+import app.morphe.util.getMutableMethod
+import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/RemoveViewerDiscretionDialogPatch;"
 
@@ -35,59 +38,51 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             SwitchPreference("morphe_remove_viewer_discretion_dialog"),
         )
 
-        CreateDialogFingerprint.let {
-            it.method.apply {
-                val showDialogIndex = it.instructionMatches.last().index
-                val dialogRegister = getInstruction<FiveRegisterInstruction>(showDialogIndex).registerC
+        AllowControversialContentFingerprint.apply {
+            val allowControversialContentMethod = instructionMatches[2]
+                .getInstruction<ReferenceInstruction>()
+                .getReference<MethodReference>()!!
+                .getMutableMethod()
 
-                replaceInstructions(
-                    showDialogIndex,
-                    "invoke-static { v$dialogRegister }, $EXTENSION_CLASS->" +
-                            "confirmDialog(Landroid/app/AlertDialog;)V",
-                )
+            allowControversialContentMethod.apply {
+                findInstructionIndicesReversed(Opcode.RETURN).forEach { index ->
+                    addInstructionsWithLabels(
+                        index,
+                        """
+                            invoke-static {}, $EXTENSION_CLASS->hideViewDiscretionDialog()Z
+                            move-result v0
+                            if-eqz v0, :show_controversial_content_confirmation_box
+                            return v0
+                            :show_controversial_content_confirmation_box
+                            nop
+                        """
+                    )
+                }
             }
+
+            val allowAdultContentFingerprint = Fingerprint(
+                definingClass = allowControversialContentMethod.definingClass,
+                accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+                returnType = "Ljava/lang/Boolean;",
+                parameters = listOf(),
+                filters = listOf(
+                    literal(0),
+                    methodCall("Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;"),
+                )
+            )
+
+            allowAdultContentFingerprint.method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static {}, $EXTENSION_CLASS->hideViewDiscretionDialog()Z
+                    move-result v0
+                    if-eqz v0, :show_adult_content_confirmation_box
+                    sget-object v0, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
+                    return-object v0
+                    :show_adult_content_confirmation_box
+                    nop
+                """
+            )
         }
-
-        CreateModernDialogFingerprint.let {
-            it.method.apply {
-                val showDialogIndex = it.instructionMatches.last().index
-                val dialogRegister = getInstruction<FiveRegisterInstruction>(showDialogIndex).registerC
-
-                replaceInstructions(
-                    showDialogIndex,
-                    "invoke-static { v$dialogRegister }, $EXTENSION_CLASS->" +
-                            $$"confirmDialog(Landroid/app/AlertDialog$Builder;)Landroid/app/AlertDialog;",
-                )
-
-                val dialogStyleIndex = it.instructionMatches.first().index
-                val dialogStyleRegister = getInstruction<OneRegisterInstruction>(dialogStyleIndex).registerA
-
-                addInstructions(
-                    dialogStyleIndex + 1,
-                    """
-                        invoke-static { v$dialogStyleRegister }, $EXTENSION_CLASS->disableModernDialog(Z)Z
-                        move-result v$dialogStyleRegister
-                    """
-                )
-            }
-        }
-
-        val playabilityStatusFingerprint = Fingerprint(
-            classFingerprint = BackgroundPlaybackManagerShortsFingerprint,
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-            returnType = "Z",
-            parameters = listOf(PlayabilityStatusEnumFingerprint.originalClassDef.type),
-            custom = { method, _ ->
-                // There's another similar method that's difficult to identify with a typical fingerprint.
-                // Instruction counter is used to identify the target method.
-                method.implementation!!.instructions.count() < 10
-            }
-        )
-
-        playabilityStatusFingerprint.method.addInstruction(
-            0,
-            "invoke-static { p0 }, $EXTENSION_CLASS->" +
-                    "setPlayabilityStatus(Ljava/lang/Enum;)V"
-        )
     }
 }

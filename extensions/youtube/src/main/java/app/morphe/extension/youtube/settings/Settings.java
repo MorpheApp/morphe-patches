@@ -164,7 +164,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_SEEK_UNDO = new BooleanSetting("morphe_disable_haptic_feedback_seek_undo", FALSE);
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_TAP_AND_HOLD = new BooleanSetting("morphe_disable_haptic_feedback_tap_and_hold", FALSE);
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_ZOOM = new BooleanSetting("morphe_disable_haptic_feedback_zoom", FALSE);
-    public static final BooleanSetting HIDE_RESTRICTED_VIDEO_BOX = new BooleanSetting("morphe_hide_watch_restricted_video_box", FALSE);
     public static final BooleanSetting DISABLE_PLAYER_POPUP_PANELS = new BooleanSetting("morphe_disable_player_popup_panels", FALSE);
     public static final BooleanSetting DISABLE_ROLLING_NUMBER_ANIMATIONS = new BooleanSetting("morphe_disable_rolling_number_animations", FALSE);
     public static final EnumSetting<FullscreenMode> EXIT_FULLSCREEN = new EnumSetting<>("morphe_exit_fullscreen", FullscreenMode.DISABLED);
