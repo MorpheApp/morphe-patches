@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
@@ -14,11 +15,10 @@ import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 public final class QuickActionButtonsFilter extends Filter {
     private static final String QUICK_ACTIONS_PATH = "quick_actions.e";
 
+    private final StringTrieSearch exceptions = new StringTrieSearch();
     private final StringFilterGroup quickActions;
     private final StringFilterGroup buttonFilterPath;
     private final ByteArrayFilterGroupList bufferButtonsGroupList = new ByteArrayFilterGroupList();
-    private final StringFilterGroup playlistFilterPath;
-    private final ByteArrayFilterGroupList bufferPlaylistGroupList = new ByteArrayFilterGroupList();
 
     public QuickActionButtonsFilter() {
         quickActions = new StringFilterGroup(
@@ -30,12 +30,16 @@ public final class QuickActionButtonsFilter extends Filter {
 
         buttonFilterPath = new StringFilterGroup(
                 null,
-                "|ContainerType|button.e"
+                "|ContainerType|button.e",
+                "|fullscreen_video_action_button.e"
         );
 
-        playlistFilterPath = new StringFilterGroup(
-                null,
-                "|fullscreen_video_action_button.e"
+        exceptions.addPatterns(
+                "|like_button",
+                "|dislike_button",
+                "|save_to_playlist_button",
+                "|overflow_menu_button",
+                "|fullscreen_related_videos"
         );
 
         addPathCallbacks(
@@ -59,8 +63,7 @@ public final class QuickActionButtonsFilter extends Filter {
                         Settings.HIDE_QUICK_ACTIONS_MORE_VIDEOS_BUTTON,
                         "|fullscreen_related_videos"
                 ),
-                buttonFilterPath,
-                playlistFilterPath
+                buttonFilterPath
         );
 
         bufferButtonsGroupList.addAll(
@@ -80,14 +83,6 @@ public final class QuickActionButtonsFilter extends Filter {
                         "yt_outline_message_bubble_overlap"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_QUICK_ACTIONS_SHARE_BUTTON,
-                        "yt_outline_experimental_share",
-                        "yt_outline_share"
-                )
-        );
-
-        bufferPlaylistGroupList.addAll(
-                new ByteArrayFilterGroup(
                         Settings.HIDE_QUICK_ACTIONS_MIX_BUTTON,
                         "yt_outline_experimental_mix",
                         "yt_outline_youtube_mix"
@@ -96,6 +91,11 @@ public final class QuickActionButtonsFilter extends Filter {
                         Settings.HIDE_QUICK_ACTIONS_PLAYLIST_BUTTON,
                         "yt_outline_experimental_playlist",
                         "yt_outline_list_play_arrow"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_QUICK_ACTIONS_SHARE_BUTTON,
+                        "yt_outline_experimental_share",
+                        "yt_outline_share"
                 )
         );
     }
@@ -110,10 +110,6 @@ public final class QuickActionButtonsFilter extends Filter {
         }
 
         for (ByteArrayFilterGroup group : bufferButtonsGroupList) {
-            if (!group.isEnabled()) return false;
-        }
-
-        for (ByteArrayFilterGroup group : bufferPlaylistGroupList) {
             if (!group.isEnabled()) return false;
         }
 
@@ -139,17 +135,10 @@ public final class QuickActionButtonsFilter extends Filter {
         }
 
         if (matchedGroup == buttonFilterPath) {
-            if (path.contains("like_button") || path.contains("dislike_button")) { // For bold icon layouts
+            if (exceptions.matches(path)) {
                 return false;
             }
             return bufferButtonsGroupList.check(buffer).isFiltered();
-        }
-
-        if (matchedGroup == playlistFilterPath) {
-            if (path.contains("overflow_menu_button")) { // For thin icon layouts
-                return false;
-            }
-            return bufferPlaylistGroupList.check(buffer).isFiltered();
         }
 
         return true;
