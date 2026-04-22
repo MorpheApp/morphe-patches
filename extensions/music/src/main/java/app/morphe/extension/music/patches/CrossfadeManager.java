@@ -216,6 +216,8 @@ public class CrossfadeManager {
         }
     }
 
+    private static final boolean CROSSFADE_ENABLED = Settings.CROSSFADE_ENABLED.get();
+
     private static volatile boolean sessionPaused = false;
     private static volatile boolean inVideoMode = false;
     private static volatile long manualToggleSuppressionUntil = 0;
@@ -308,7 +310,12 @@ public class CrossfadeManager {
     private static int lastLoggedReason = -1;
     private static int suppressedReasonCount = 0;
 
+    /**
+     * Injection point.
+     */
     public static boolean onBeforeStopVideo(Object atadInstance, int reason) {
+        if (!CROSSFADE_ENABLED) return false;
+
         lastAtadRef = new WeakReference<>(atadInstance);
         tryAttachLongPressHandler();
 
@@ -342,9 +349,9 @@ public class CrossfadeManager {
             return false;
         }
 
-        if (!isEnabled() || sessionPaused || getCrossfadeDurationMs() <= 0) {
-            Logger.printDebug(() -> "stopVideo(5): skip [enabled=" + isEnabled()
-                    + " paused=" + sessionPaused + " inVideo=" + isCurrentlyInVideoMode() + "]");
+        if (sessionPaused || getCrossfadeDurationMs() <= 0) {
+            Logger.printDebug(() -> "stopVideo(5): skip [paused=" + sessionPaused
+                    + " inVideo=" + isCurrentlyInVideoMode() + "]");
             return false;
         }
 
@@ -393,8 +400,7 @@ public class CrossfadeManager {
 
             boolean wasInVideoMode = isCurrentlyInVideoMode();
 
-            Logger.printDebug(() -> "stopVideo(5): STARTING crossfade [enabled=" + isEnabled()
-                    + " paused=" + sessionPaused
+            Logger.printDebug(() -> "stopVideo(5): STARTING crossfade [paused=" + sessionPaused
                     + " wasInVideo=" + wasInVideoMode + "]");
 
             Logger.printDebug(() -> "Current player state=" + currentExo.patch_getPlaybackState()
@@ -450,7 +456,7 @@ public class CrossfadeManager {
     private static boolean handleChainedSkip(Object atadInstance) {
         Logger.printDebug(() -> "stopVideo(5): CHAINED SKIP — creating new player, deferring demotion until READY");
 
-        if (!isEnabled() || sessionPaused || getCrossfadeDurationMs() <= 0) {
+        if (sessionPaused || getCrossfadeDurationMs() <= 0) {
             Logger.printDebug(() -> "Chained skip: crossfade now disabled/paused — aborting crossfade");
             abortCrossfadeNow();
             return false;
@@ -583,6 +589,8 @@ public class CrossfadeManager {
     // ------------------------------------------------------------------ //
 
     /**
+     * Injection point.
+     *
      * Returns true to BLOCK the native playNextInQueue, false to allow it.
      *
      * Strategy: we block the original call, set up our crossfade state, then
@@ -593,6 +601,8 @@ public class CrossfadeManager {
      * in the void-hook design where the native ran in the 100ms poll window.
      */
     public static boolean onBeforePlayNext(Object coordinatorInstance) {
+        if (!CROSSFADE_ENABLED) return false;
+
         // Internal re-invoke: let native through immediately.
         if (internalPlayNext) {
             internalPlayNext = false;
@@ -602,7 +612,7 @@ public class CrossfadeManager {
         Logger.printDebug(() -> "onBeforePlayNext called");
         tryAttachLongPressHandler();
 
-        if (!isEnabled() || sessionPaused || getCrossfadeDurationMs() <= 0
+        if (sessionPaused || getCrossfadeDurationMs() <= 0
                 || crossfadeInProgress || !activityRunning) {
             return false;
         }
@@ -695,11 +705,15 @@ public class CrossfadeManager {
     private static long lastPlayEventMs = 0;
     private static final long EVENT_DEDUP_WINDOW_MS = 100;
 
-    /**
+     /**
+     * Injection point.
+     *
      * Hooked at the top of MedialibPlayer.pauseVideo.
      * Returns true to BLOCK the pause, false to allow.
      */
     public static boolean onPauseVideo() {
+        if (!CROSSFADE_ENABLED) return false;
+
         long now = System.currentTimeMillis();
         if (now - lastPauseEventMs < EVENT_DEDUP_WINDOW_MS) return false;
         lastPauseEventMs = now;
@@ -714,9 +728,13 @@ public class CrossfadeManager {
     }
 
     /**
+     * Injection point.
+     *
      * Hooked at the top of MedialibPlayer.playVideo.
      */
     public static void onPlayVideo(Object atadInstance) {
+        if (!CROSSFADE_ENABLED) return;
+
         long now = System.currentTimeMillis();
         if (now - lastPlayEventMs < EVENT_DEDUP_WINDOW_MS) return;
         lastPlayEventMs = now;
@@ -877,12 +895,12 @@ public class CrossfadeManager {
 
     private static void startAutoAdvanceMonitor() {
         stopAutoAdvanceMonitor();
-        if (!isEnabled() || !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) return;
+        if (!Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) return;
 
         autoAdvanceMonitorRunnable = new Runnable() {
             @Override
             public void run() {
-                if (!isEnabled() || sessionPaused || !activityRunning
+                if (sessionPaused || !activityRunning
                         || !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()
                         || crossfadeInProgress) {
                     return;
@@ -1387,7 +1405,12 @@ public class CrossfadeManager {
     //  Activity lifecycle                                                 //
     // ------------------------------------------------------------------ //
 
+    /**
+     * Injection point.
+     */
     public static void onActivityStop() {
+        if (!CROSSFADE_ENABLED) return;
+
         activityRunning = false;
         stopAutoAdvanceMonitor();
         if (crossfadeInProgress) {
@@ -1396,9 +1419,14 @@ public class CrossfadeManager {
         }
     }
 
+    /**
+     * Injection point.
+     */
     public static void onActivityStart() {
+        if (!CROSSFADE_ENABLED) return;
+
         activityRunning = true;
-        if (isEnabled() && !sessionPaused) {
+        if (!sessionPaused) {
             startAutoAdvanceMonitor();
         }
     }
@@ -1439,15 +1467,18 @@ public class CrossfadeManager {
     }
 
     public static boolean isCrossfadeActive() {
-        return isEnabled() && !sessionPaused;
+        return !sessionPaused;
     }
 
     /**
+     * Injection point.
      * Called by the bytecode hook on the audio/video toggle.
      * Blocks audio→video transitions when crossfade is active.
      * Video→audio transitions are always allowed.
      */
     public static boolean shouldBlockVideoToggle(Object nba) {
+        if (!CROSSFADE_ENABLED) return false;
+
         lastNbaRef = new WeakReference<>(nba);
         if (internalToggle) return false;
         tryAttachLongPressHandler();
@@ -1456,10 +1487,9 @@ public class CrossfadeManager {
             boolean isAudioMode = toggle.patch_isAudioMode();
 
             Logger.printDebug(() -> "videoToggle: isAudioMode=" + isAudioMode
-                    + " enabled=" + isEnabled() + " paused=" + sessionPaused
-                    + " inVideoMode(before)=" + inVideoMode);
+                    + " paused=" + sessionPaused + " inVideoMode(before)=" + inVideoMode);
 
-            if (!isEnabled() || sessionPaused) {
+            if (sessionPaused) {
                 if (!isAudioMode) {
                     manualToggleSuppressionUntil = System.currentTimeMillis() + 500;
                 }
@@ -1526,10 +1556,6 @@ public class CrossfadeManager {
         return inVideoMode;
     }
 
-    private static boolean isEnabled() {
-        return Settings.CROSSFADE_ENABLED.get();
-    }
-
     private static boolean isSessionControlEnabled() {
         return Settings.CROSSFADE_SESSION_CONTROL.get();
     }
@@ -1557,7 +1583,7 @@ public class CrossfadeManager {
     private static volatile boolean longPressHandled = false;
 
     private static void tryAttachLongPressHandler() {
-        if (!isSessionControlEnabled() || !isEnabled()) return;
+        if (!isSessionControlEnabled()) return;
 
         boolean allAlive = !longPressRefs.isEmpty();
         for (WeakReference<View> ref : longPressRefs) {
