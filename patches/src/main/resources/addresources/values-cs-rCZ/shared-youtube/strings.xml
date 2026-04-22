@@ -111,6 +111,10 @@ Pro přihlášení stiskněte pokračovat níže"</string>
   <string name="morphe_force_original_audio_title">Vynutit původní jazyk zvuku</string>
   <string name="morphe_force_original_audio_summary_on">Používá se původní jazyk zvuku</string>
   <string name="morphe_force_original_audio_summary_off">Používá se výchozí zvuk</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Skrýt celostránkové reklamy</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Celostránkové reklamy jsou skryté</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Celostránkové reklamy jsou zobrazeny</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Pro použití této funkce změňte \'Zfalšovat video streamy\' na Android Reel nebo TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

@@ -9,6 +9,8 @@ package app.morphe.patches.reddit.layout.communities
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.misc.version.is_2026_16_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
 
@@ -22,10 +24,11 @@ val hideRecommendedCommunitiesShelf = bytecodePatch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
-        CommunityRecommendationSectionFingerprint.method.addInstructionsWithLabels(
+        (if (is_2026_16_0_or_greater) CommunityRecommendationSectionFingerprint
+        else CommunityRecommendationSectionLegacyFingerprint).method.addInstructionsWithLabels(
             0,
             """
                 invoke-static { }, $EXTENSION_CLASS->hideRecommendedCommunitiesShelf()Z

@@ -14,7 +14,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.equalsAny;
 import static app.morphe.extension.shared.Utils.hideViewUnderCondition;
 import static app.morphe.extension.shared.settings.BaseActivityHook.MORPHE_SETTINGS_INTENT;
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_45_OR_GREATER;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.app.Activity;

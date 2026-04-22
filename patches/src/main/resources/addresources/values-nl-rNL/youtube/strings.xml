@@ -199,6 +199,8 @@ Het tonen van YouTube Doodles kan voorkomen dat aangepaste headers worden weerge
   <string name="morphe_hide_video_title_title">Verberg de videotitel</string>
   <string name="morphe_hide_video_title_summary_on">Video titel in de afspeelbalk is verborgen</string>
   <string name="morphe_hide_video_title_summary_off">Video titel in de afspeelbalk is zichtbaar</string>
+  <string name="morphe_hide_description_components_screen_title">Videobeschrijving</string>
+  <string name="morphe_hide_description_components_screen_summary">Skjul eller vis komponentene i videoens beskrivelse</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'AI-gegenereerde videosamenvatting\' verbergen</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">AI-gegenereerde videosamenvattingssectie is verborgen</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Sectie met door AI gegenereerde videosamenvatting wordt getoond</string>
@@ -255,17 +257,15 @@ Het tonen van YouTube Doodles kan voorkomen dat aangepaste headers worden weerge
   <string name="morphe_hide_music_section_title">Verberg Muziek</string>
   <string name="morphe_hide_music_section_summary_on">Sectie Muziek is verborgen</string>
   <string name="morphe_hide_music_section_summary_off">Sectie Muziek is zichtbaar</string>
+  <string name="morphe_hide_quizzes_section_title">Verberg Quizzen</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Quizzen sectie is verborgen</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Quizzen sectie is zichtbaar</string>
   <string name="morphe_hide_subscribe_button_title">Verberg de knop \"Abonneren\"</string>
   <string name="morphe_hide_subscribe_button_summary_on">Abonneerknop is verborgen</string>
   <string name="morphe_hide_subscribe_button_summary_off">Abonneerknop wordt weergegeven</string>
   <string name="morphe_hide_transcript_section_title">Transcript verbergen</string>
   <string name="morphe_hide_transcript_section_summary_on">Transcriptgedeelte is verborgen</string>
   <string name="morphe_hide_transcript_section_summary_off">Transcriptgedeelte is zichtbaar</string>
-  <string name="morphe_hide_quizzes_section_title">Verberg Quizzen</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Quizzen sectie is verborgen</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Quizzen sectie is zichtbaar</string>
-  <string name="morphe_hide_description_components_screen_title">Videobeschrijving</string>
-  <string name="morphe_hide_description_components_screen_summary">Skjul eller vis komponentene i videoens beskrivelse</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterbaren</string>
   <string name="morphe_hide_filter_bar_screen_summary">Filterbalk verbergen of tonen in feeds, gerelateerde video\'s, zoekresultaten en kijkgeschiedenis</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Verbergen in feeds</string>
@@ -425,9 +425,6 @@ Beperkingen:
   <string name="morphe_hide_end_screen_store_banner_title">Verberg de Store-banner op het eindscherm</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Eindscherm winkelbanner is verborgen</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Eindscherm winkelbanner wordt getoond</string>
-  <string name="morphe_hide_fullscreen_ads_title">Volledig scherm advertenties verbergen</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Volledige schermadvertenties worden verborgen</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Volledig scherm advertenties worden getoond</string>
   <string name="morphe_hide_general_ads_title">Algemene advertenties verbergen</string>
   <string name="morphe_hide_general_ads_summary_on">Algemene advertenties zijn verborgen</string>
   <string name="morphe_hide_general_ads_summary_off">Algemene advertenties worden getoond</string>
@@ -893,6 +890,9 @@ Om het menu voor audio-spoor te tonen, verander 'Spoof video streams' naar 'Andr
   <string name="morphe_hide_player_previous_next_buttons_title">Verberg Vorige &amp; Volgende knoppen</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Knoppen Vorige &amp; Volgende zijn verborgen</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Knoppen Vorige &amp; Volgende worden getoond</string>
+  <string name="morphe_hide_settings_button_title">Verberg Instellingenknop</string>
+  <string name="morphe_hide_settings_button_summary_on">Instellingenknop is verborgen</string>
+  <string name="morphe_hide_settings_button_summary_off">Instellingenknop wordt weergegeven</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Verberg eindschermkaarten</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Eindschermkaarten zijn verborgen</string>

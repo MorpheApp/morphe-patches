@@ -199,6 +199,8 @@ Ich obecność może blokować widoczność własnych logo w nagłówku."</strin
   <string name="morphe_hide_video_title_title">Tytuł filmu</string>
   <string name="morphe_hide_video_title_summary_on">Ukryty w odtwarzaczu</string>
   <string name="morphe_hide_video_title_summary_off">Widoczny w odtwarzaczu</string>
+  <string name="morphe_hide_description_components_screen_title">Opis filmu</string>
+  <string name="morphe_hide_description_components_screen_summary">Ukryj lub pokaż elementy opisu filmu</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Podsumowanie filmu wygenerowane przez AI</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Ukryte</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Widoczne</string>
@@ -255,17 +257,15 @@ Ich obecność może blokować widoczność własnych logo w nagłówku."</strin
   <string name="morphe_hide_music_section_title">Sekcja muzyki</string>
   <string name="morphe_hide_music_section_summary_on">Ukryta</string>
   <string name="morphe_hide_music_section_summary_off">Widoczna</string>
+  <string name="morphe_hide_quizzes_section_title">Sekcja quizów</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Ukryta</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Widoczna</string>
   <string name="morphe_hide_subscribe_button_title">Przycisk Subskrybuj</string>
   <string name="morphe_hide_subscribe_button_summary_on">Ukryty</string>
   <string name="morphe_hide_subscribe_button_summary_off">Widoczny</string>
   <string name="morphe_hide_transcript_section_title">Sekcja transkrypcji</string>
   <string name="morphe_hide_transcript_section_summary_on">Ukryta</string>
   <string name="morphe_hide_transcript_section_summary_off">Widoczna</string>
-  <string name="morphe_hide_quizzes_section_title">Sekcja quizów</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Ukryta</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Widoczna</string>
-  <string name="morphe_hide_description_components_screen_title">Opis filmu</string>
-  <string name="morphe_hide_description_components_screen_summary">Ukryj lub pokaż elementy opisu filmu</string>
   <string name="morphe_hide_filter_bar_screen_title">Pasek filtrów</string>
   <string name="morphe_hide_filter_bar_screen_summary">Ukryj lub pokaż pasek filtrów na stronie głównej, w powiązanych filmach, wynikach wyszukiwania i historii oglądania</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Na stronie głównej</string>
@@ -424,9 +424,6 @@ Ograniczenia:
   <string name="morphe_hide_end_screen_store_banner_title">Baner sklepowy po zakończeniu filmu</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Ukryty</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Widoczny</string>
-  <string name="morphe_hide_fullscreen_ads_title">Pełnoekranowe reklamy</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Ukryte</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Widoczne</string>
   <string name="morphe_hide_general_ads_title">Ogólne reklamy</string>
   <string name="morphe_hide_general_ads_summary_on">Ukryte</string>
   <string name="morphe_hide_general_ads_summary_off">Widoczne</string>
@@ -896,6 +893,9 @@ Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Fałszowanie strumieni fi
   <string name="morphe_hide_player_previous_next_buttons_title">Przyciski Poprzedni i Następny</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Ukryte</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Widoczne</string>
+  <string name="morphe_hide_settings_button_title">Przycisk Ustawienia</string>
+  <string name="morphe_hide_settings_button_summary_on">Ukryty</string>
+  <string name="morphe_hide_settings_button_summary_off">Widoczny</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Karty końcowe w filmach</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Ukryte</string>

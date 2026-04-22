@@ -1,5 +1,5 @@
 {
-  "version": "1.24.0-dev.10",
+  "version": "1.24.0",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -454,8 +454,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": [
@@ -663,8 +662,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -717,8 +715,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1014,8 +1011,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1030,8 +1026,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1091,8 +1086,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1102,13 +1096,13 @@
       "description": "Adds options to hide ads.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1309,8 +1303,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1365,13 +1358,13 @@
       "description": "Adds an option to hide the recommended communities shelves in subreddits.",
       "use": true,
       "dependencies": [
+        "BytecodePatch",
         "BytecodePatch"
       ],
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1426,8 +1419,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1613,8 +1605,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1630,8 +1621,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1856,8 +1846,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -1933,8 +1922,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -2012,8 +2000,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []
@@ -2093,8 +2080,7 @@
       "compatiblePackages": {
         "com.reddit.frontpage": [
           "2026.10.0",
-          "2026.04.0",
-          "2025.48.0"
+          "2026.04.0"
         ]
       },
       "options": []

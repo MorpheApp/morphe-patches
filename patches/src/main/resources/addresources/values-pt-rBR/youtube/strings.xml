@@ -198,6 +198,8 @@ Exibir Doodles do YouTube pode impedir que os cabeçalhos personalizados sejam e
   <string name="morphe_hide_video_title_title">Ocultar título do vídeo</string>
   <string name="morphe_hide_video_title_summary_on">Título do vídeo na sobreposição do player está oculto</string>
   <string name="morphe_hide_video_title_summary_off">Título do vídeo na sobreposição do player está visível</string>
+  <string name="morphe_hide_description_components_screen_title">Descrição do vídeo</string>
+  <string name="morphe_hide_description_components_screen_summary">Ocultar ou mostrar componentes de descrição do vídeo</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ocultar \"Resumo de vídeo gerado por IA\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">A seção de resumo de vídeo gerada por IA está oculta</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">A seção de resumo de vídeo gerado por IA é exibida</string>
@@ -254,17 +256,15 @@ Exibir Doodles do YouTube pode impedir que os cabeçalhos personalizados sejam e
   <string name="morphe_hide_music_section_title">Ocultar Música</string>
   <string name="morphe_hide_music_section_summary_on">Seção de Música está oculta</string>
   <string name="morphe_hide_music_section_summary_off">Seção de Música está visível</string>
+  <string name="morphe_hide_quizzes_section_title">Ocultar Quiz</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Seção de Quiz está oculto</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Seção de Quiz é mostrada</string>
   <string name="morphe_hide_subscribe_button_title">Ocultar botão Inscrever-se</string>
   <string name="morphe_hide_subscribe_button_summary_on">Botão inscreva-se está oculto</string>
   <string name="morphe_hide_subscribe_button_summary_off">Botão inscreva-se não está oculto</string>
   <string name="morphe_hide_transcript_section_title">Ocultar transcrição</string>
   <string name="morphe_hide_transcript_section_summary_on">Seção de transcrição está oculta</string>
   <string name="morphe_hide_transcript_section_summary_off">A seção de transcrição é mostrada</string>
-  <string name="morphe_hide_quizzes_section_title">Ocultar Quiz</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Seção de Quiz está oculto</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Seção de Quiz é mostrada</string>
-  <string name="morphe_hide_description_components_screen_title">Descrição do vídeo</string>
-  <string name="morphe_hide_description_components_screen_summary">Ocultar ou mostrar componentes de descrição do vídeo</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra de filtro</string>
   <string name="morphe_hide_filter_bar_screen_summary">Ocultar ou mostrar a barra de filtro em feeds, vídeos relacionados, resultados de pesquisa e histórico de exibição</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Ocultar em feeds</string>
@@ -423,9 +423,6 @@ Limitações:
   <string name="morphe_hide_end_screen_store_banner_title">Ocultar banners da loja na tela final</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">O banner da loja na tela final está oculto</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">O banner da loja na tela final é exibido</string>
-  <string name="morphe_hide_fullscreen_ads_title">Ocultar anúncios em tela cheia</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Anúncios em tela cheia estão ocultos</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Anúncios em tela cheia não estão ocultos</string>
   <string name="morphe_hide_general_ads_title">Ocultar anúncios gerais</string>
   <string name="morphe_hide_general_ads_summary_on">Anúncios gerais estão ocultos</string>
   <string name="morphe_hide_general_ads_summary_off">Os anúncios gerais são mostrados</string>
@@ -891,6 +888,9 @@ Para mostrar o menu de faixas de áudio, mude 'Spoof video streams' para 'Androi
   <string name="morphe_hide_player_previous_next_buttons_title">Ocultar botões Anterior &amp; Próximo</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Botões Anterior &amp; Próximo estão ocultos</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Botões Anterior &amp; Próximo estão visíveis</string>
+  <string name="morphe_hide_settings_button_title">Ocultar botão Configurações</string>
+  <string name="morphe_hide_settings_button_summary_on">Botão Configurações está oculto</string>
+  <string name="morphe_hide_settings_button_summary_off">Botão Configurações está visível</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Ocultar cartões de tela final</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Cartões de tela final estão ocultos</string>

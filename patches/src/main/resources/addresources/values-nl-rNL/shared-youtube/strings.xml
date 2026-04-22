@@ -105,6 +105,10 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_force_original_audio_title">Forceer de originele audiotaal</string>
   <string name="morphe_force_original_audio_summary_on">De oorspronkelijke audiotaal gebruiken</string>
   <string name="morphe_force_original_audio_summary_off">Standaard audio gebruiken</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Volledig scherm advertenties verbergen</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Volledig scherm advertenties worden verborgen</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Volledig scherm advertenties worden getoond</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Om deze functie te gebruiken, wijzig \'Spoof video streams\' naar Android Reel of TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

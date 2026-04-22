@@ -199,6 +199,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_title">Τίτλος του βίντεο</string>
   <string name="morphe_hide_video_title_summary_on">Κρυμμένη η επιγραφή τίτλου βίντεο στο επάνω μέρος του παίκτη</string>
   <string name="morphe_hide_video_title_summary_off">Εμφανίζεται η επιγραφή τίτλου βίντεο στο επάνω μέρος του παίκτη</string>
+  <string name="morphe_hide_description_components_screen_title">Περιγραφή βίντεο</string>
+  <string name="morphe_hide_description_components_screen_summary">Απόκρυψη ή εμφάνιση στοιχείων περιγραφής βίντεο</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Σύνοψη βίντεο που δημιουργήθηκε από AI</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Εμφανίζεται</string>
@@ -255,17 +257,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_music_section_title">Κρύψε Μουσική</string>
   <string name="morphe_hide_music_section_summary_on">Η ενότητα Μουσικής είναι κρυμμένη</string>
   <string name="morphe_hide_music_section_summary_off">Η ενότητα Μουσικής εμφανίζεται</string>
+  <string name="morphe_hide_quizzes_section_title">Απόκρυψη Ερωτήσεων</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Η ενότητα Ερωτήσεων είναι κρυμμένη</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Η ενότητα Ερωτήσεων είναι ορατή</string>
   <string name="morphe_hide_subscribe_button_title">Κουμπί «Εγγραφή»</string>
   <string name="morphe_hide_subscribe_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_subscribe_button_summary_off">Εμφανίζεται</string>
   <string name="morphe_hide_transcript_section_title">Ενότητα «Μεταγραφή»</string>
   <string name="morphe_hide_transcript_section_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_transcript_section_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_quizzes_section_title">Απόκρυψη Ερωτήσεων</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Η ενότητα Ερωτήσεων είναι κρυμμένη</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Η ενότητα Ερωτήσεων είναι ορατή</string>
-  <string name="morphe_hide_description_components_screen_title">Περιγραφή βίντεο</string>
-  <string name="morphe_hide_description_components_screen_summary">Απόκρυψη ή εμφάνιση στοιχείων περιγραφής βίντεο</string>
   <string name="morphe_hide_filter_bar_screen_title">Γραμμή φίλτρων</string>
   <string name="morphe_hide_filter_bar_screen_summary">Απόκρυψη ή εμφάνιση της γραμμής φίλτρων στις ροές, στα σχετικά βίντεο, στα αποτελέσματα αναζήτησης και στο ιστορικό παρακολούθησης</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Γραμμή φίλτρων στις ροές</string>
@@ -424,9 +424,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ετικέτα καταστήματος στην τελική οθόνη</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_fullscreen_ads_title">Διαφημίσεις πλήρους οθόνης</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Οι διαφημίσεις πλήρους οθόνης είναι κρυμμένες</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Οι διαφημίσεις πλήρους οθόνης εμφανίζονται</string>
   <string name="morphe_hide_general_ads_title">Γενικές διαφημίσεις</string>
   <string name="morphe_hide_general_ads_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_general_ads_summary_off">Εμφανίζονται</string>
@@ -892,6 +889,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Κουμπιά προηγούμενου &amp; επόμενου βίντεο</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Τα κουμπιά Προηγούμενο &amp; Επόμενο είναι κρυφό</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Τα κουμπιά Προηγούμενο &amp; Επόμενο εμφανίζονται</string>
+  <string name="morphe_hide_settings_button_title">Κουμπί Απόκρυψης Ρυθμίσεων</string>
+  <string name="morphe_hide_settings_button_summary_on">Το κουμπί Ρυθμίσεων είναι κρυμμένο</string>
+  <string name="morphe_hide_settings_button_summary_off">Το κουμπί Ρυθμίσεων είναι εμφανές</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Κάρτες τελικής οθόνης</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Κρυμμένες</string>

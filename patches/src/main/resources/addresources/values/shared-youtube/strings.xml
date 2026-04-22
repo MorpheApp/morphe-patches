@@ -118,6 +118,11 @@ To sign in, press continue below"</string>
     <string name="morphe_force_original_audio_summary_on">Using original audio language</string>
     <string name="morphe_force_original_audio_summary_off">Using default audio</string>
 
+    <!-- ad.hideFullscreenAdsPatch -->
+    <string name="morphe_hide_fullscreen_ads_title">Hide fullscreen ads</string>
+    <string name="morphe_hide_fullscreen_ads_summary_on">Fullscreen ads are hidden</string>
+    <string name="morphe_hide_fullscreen_ads_summary_off">Fullscreen ads are shown</string>
+
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
     <string name="morphe_force_original_audio_not_available">To use this feature, change \'Spoof video streams\' to Android Reel or TV</string>
 

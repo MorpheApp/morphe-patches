@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">通用</string>
   <string name="morphe_settings_music_screen_3_player_title">播放器</string>
   <string name="morphe_settings_music_screen_4_misc_title">杂项</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">隐藏“获取音乐高级版”标签</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">获取音乐高级会员标签已隐藏</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">获取音乐高级会员标签已显示</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">隐藏视频广告</string>
   <string name="morphe_music_hide_video_ads_summary_on">视频广告已隐藏</string>
@@ -151,10 +155,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">隐藏导航按钮标签</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">标签已隐藏</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">标签已显示</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">隐藏“获取音乐高级版”标签</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">标签已隐藏</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">标签已显示</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">隐藏升级按钮</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">按钮已隐藏</string>

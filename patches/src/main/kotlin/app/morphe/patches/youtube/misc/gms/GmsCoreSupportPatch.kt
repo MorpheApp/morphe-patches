@@ -26,6 +26,7 @@ val gmsCoreSupportPatch = gmsCoreSupportPatch(
     gmsCoreSupportResourcePatchFactory = ::gmsCoreSupportResourcePatch,
 ) {
     dependsOn(
+        sharedExtensionPatch,
         hidePlayerOverlayButtonsPatch, // Hide non-functional cast button.
         spoofVideoStreamsPatch,
     )

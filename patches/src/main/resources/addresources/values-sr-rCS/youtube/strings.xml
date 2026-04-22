@@ -199,6 +199,8 @@ Prikazivanje YouTube Doodles može sprečiti prikazivanje korisničkih zaglavlja
   <string name="morphe_hide_video_title_title">Sakrij naslov Shorts videa</string>
   <string name="morphe_hide_video_title_summary_on">Naslov videa u preklapnom okviru je sakriven</string>
   <string name="morphe_hide_video_title_summary_off">Naslov videa u preklapnom okviru je prikazan</string>
+  <string name="morphe_hide_description_components_screen_title">Opis videa</string>
+  <string name="morphe_hide_description_components_screen_summary">Sakrijte ili prikažite komponente opisa videa</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Sakrij „Rezime videa koji je generisala veštačka inteligencija”</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Odeljak „Rezime videa koji je generisala veštačka inteligencija” je skriven</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Odeljak „Rezime videa koji je generisala veštačka inteligencija” je prikazan</string>
@@ -255,17 +257,15 @@ Prikazivanje YouTube Doodles može sprečiti prikazivanje korisničkih zaglavlja
   <string name="morphe_hide_music_section_title">Sakrij dugme „Pitaj”</string>
   <string name="morphe_hide_music_section_summary_on">Odeljak za filmove je skriven</string>
   <string name="morphe_hide_music_section_summary_off">Odeljak za filmove je prikazan</string>
+  <string name="morphe_hide_quizzes_section_title">Sakrij kvizove</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Odeljak kvizovi je skriven</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Odeljak kvizovi je prikazan</string>
   <string name="morphe_hide_subscribe_button_title">Sakrij dugme „Zaprati”</string>
   <string name="morphe_hide_subscribe_button_summary_on">Dugme „Zaprati” je skriveno</string>
   <string name="morphe_hide_subscribe_button_summary_off">Dugme „Zaprati” je prikazano</string>
   <string name="morphe_hide_transcript_section_title">Sakrij transkript</string>
   <string name="morphe_hide_transcript_section_summary_on">Odeljak za transkripciju je skriven</string>
   <string name="morphe_hide_transcript_section_summary_off">Odeljak za transkripciju je prikazan</string>
-  <string name="morphe_hide_quizzes_section_title">Sakrij kvizove</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Odeljak kvizovi je skriven</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Odeljak kvizovi je prikazan</string>
-  <string name="morphe_hide_description_components_screen_title">Opis videa</string>
-  <string name="morphe_hide_description_components_screen_summary">Sakrijte ili prikažite komponente opisa videa</string>
   <string name="morphe_hide_filter_bar_screen_title">Traka filtera</string>
   <string name="morphe_hide_filter_bar_screen_summary">Sakrijte ili prikažite traku filtera u fidovima, srodnim videima, rezultatima pretrage i istoriji gledanja</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Sakrij u fidovima</string>
@@ -424,9 +424,6 @@ Ograničenja:
   <string name="morphe_hide_end_screen_store_banner_title">Sakrij baner prodavnice na završnom ekranu</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Baner prodavnice na završnom ekranu je skriven</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Baner prodavnice na završnom ekranu je prikazan</string>
-  <string name="morphe_hide_fullscreen_ads_title">Sakrij oglase preko celog ekrana</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Oglasi preko celog ekrana su sakriveni</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Oglasi preko celog ekrana su prikazani</string>
   <string name="morphe_hide_general_ads_title">Sakrij opšte oglase</string>
   <string name="morphe_hide_general_ads_summary_on">Opšti oglasi su skriveni</string>
   <string name="morphe_hide_general_ads_summary_off">Opšti oglasi su prikazani</string>
@@ -892,6 +889,9 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Imitiraj video tokove' u 'A
   <string name="morphe_hide_player_previous_next_buttons_title">Sakrij dugmad Prethodno &amp; Sledeće</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Dugmad Prethodno &amp; Sledeće su skrivena</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Dugmad Prethodno &amp; Sledeće su prikazana</string>
+  <string name="morphe_hide_settings_button_title">Sakrij dugme Podešavanja</string>
+  <string name="morphe_hide_settings_button_summary_on">Dugme Podešavanja je skriveno</string>
+  <string name="morphe_hide_settings_button_summary_off">Dugme Podešavanja je prikazano</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Sakrij kartice završnog ekrana</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Kartice završnog ekrana su skrivene</string>

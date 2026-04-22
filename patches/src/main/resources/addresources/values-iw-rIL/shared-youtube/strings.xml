@@ -111,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">כפה שפת שמע מקורית</string>
   <string name="morphe_force_original_audio_summary_on">שימוש בשפת שמע מקורית</string>
   <string name="morphe_force_original_audio_summary_off">שימוש בשמע ברירת מחדל</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">הסתר מודעות מסך מלא</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">מודעות מסך מלא מוסתרות</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">מודעות מסך מלא מוצגות</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">כדי להשתמש בתכונה זו, שנה \'זיוף זרמי וידאו\' ל-Android Reel או TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

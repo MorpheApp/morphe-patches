@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Γενικά</string>
   <string name="morphe_settings_music_screen_3_player_title">Αναπαραγωγέας</string>
   <string name="morphe_settings_music_screen_4_misc_title">Διάφορα</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Απόκρυψη ετικέτας \'Get Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Η ετικέτα Get Music Premium είναι κρυμμένη</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Η ετικέτα Get Music Premium είναι εμφανής</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Απόκρυψη διαφημίσεων βίντεο</string>
   <string name="morphe_music_hide_video_ads_summary_on">Οι διαφημίσεις βίντεο είναι κρυμμένες</string>
@@ -151,10 +155,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Απόκρυψη Ονομάτων κουμπιών Γραμμής Πλοήγησης</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Τα Ονόματα έχουν αποκρυφτεί</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Τα Ονόματα εμφανίζονται</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Απόκρυψη ετικέτας \'Get Music Premium\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">H Ετικέτα έχει αποκρυφτεί</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">H Ετικέτα εμφανίζεται</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Απόκρυψη κουμπιού Αναβάθμιση</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Το κουμπί Αναβάθμιση έχει αποκρυφτεί</string>

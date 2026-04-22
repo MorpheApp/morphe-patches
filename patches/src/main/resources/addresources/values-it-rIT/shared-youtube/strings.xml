@@ -111,6 +111,10 @@ Per accedere, premi Continua di seguito"</string>
   <string name="morphe_force_original_audio_title">Forza la lingua audio originale</string>
   <string name="morphe_force_original_audio_summary_on">Utilizza la lingua audio originale</string>
   <string name="morphe_force_original_audio_summary_off">Utilizzo audio predefinito</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Nascondi le pubblicità a schermo intero</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Gli annunci a schermo intero sono nascosti</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Le pubblicità a schermo intero sono visibili</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Per usare questa funzionalità, cambia \"Falsifica i flussi video\" a Android Reel o TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

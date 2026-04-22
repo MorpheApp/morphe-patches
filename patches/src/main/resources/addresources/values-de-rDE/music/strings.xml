@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Allgemein</string>
   <string name="morphe_settings_music_screen_3_player_title">Player</string>
   <string name="morphe_settings_music_screen_4_misc_title">Sonstiges</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\"Music Premium holen\"-Label ausblenden</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Das Label \"Get Music Premium\" ist ausgeblendet</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Das Label \"Get Music Premium\" wird angezeigt</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Videowerbungen ausblenden</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videowerbungen sind ausgeblendet</string>
@@ -151,10 +155,6 @@ Feature-Implementierung von VazerOG"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Beschriftungen der Navigations-Buttons ausblenden</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Beschriftungen sind ausgeblendet</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Beschriftungen werden angezeigt</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">\"Music Premium holen\"-Label ausblenden</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Label ist ausgeblendet</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Label wird angezeigt</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Upgrade-Button ausblenden</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Button ist ausgeblendet</string>

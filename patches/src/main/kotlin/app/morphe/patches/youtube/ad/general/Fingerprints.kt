@@ -49,19 +49,6 @@ internal object GetPremiumViewFingerprint : Fingerprint(
     )
 )
 
-internal object LithoDialogBuilderFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("[B", "L"),
-    filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            name = "show"
-        ),
-        resourceLiteral(ResourceType.STYLE, "SlidingDialogAnimation"),
-    )
-)
-
 internal object PlayerOverlayTimelyShelfFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",

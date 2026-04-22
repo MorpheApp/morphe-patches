@@ -18,9 +18,9 @@ private object CommunityDrawerBuilderParentFingerprint : Fingerprint(
     returnType = $$"Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics$Section;",
     parameters = listOf("Lcom/reddit/screens/drawer/community/HeaderItem;"),
     filters = listOf(
-        string("<this>"),
         methodCall("Ljava/lang/Enum;->ordinal()I"),
-        fieldAccess($$"Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics$Section;->ABOUT:Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics$Section;")
+        fieldAccess($$"Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics$Section;->" +
+                $$"ABOUT:Lcom/reddit/navdrawer/analytics/CommunityDrawerAnalytics$Section;")
     )
 )
 

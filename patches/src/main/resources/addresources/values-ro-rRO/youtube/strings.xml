@@ -199,6 +199,8 @@ Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personaliz
   <string name="morphe_hide_video_title_title">Ascunde titlul videoclipului</string>
   <string name="morphe_hide_video_title_summary_on">Titlul video-ului în superpunere de player este ascuns</string>
   <string name="morphe_hide_video_title_summary_off">Titlul video-ului în superpunere de player este afișat</string>
+  <string name="morphe_hide_description_components_screen_title">Descriere video</string>
+  <string name="morphe_hide_description_components_screen_summary">Ascunde sau afișează componentele descrierii video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ascundeți \"Rezumat video generat de AI\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Secțiunea de rezumat video generată de AI este ascunsă</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Secțiunea de rezumat video generată de AI este afișată</string>
@@ -255,17 +257,15 @@ Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personaliz
   <string name="morphe_hide_music_section_title">Ascunde Muzică</string>
   <string name="morphe_hide_music_section_summary_on">Sectiunea Muzică este ascunsă</string>
   <string name="morphe_hide_music_section_summary_off">Sectiunea Muzică este afișată</string>
+  <string name="morphe_hide_quizzes_section_title">Ascunde Quizuri</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Secțiunea Quizuri este ascunsă</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Secțiunea Quizuri este afișată</string>
   <string name="morphe_hide_subscribe_button_title">Ascunde butonul Abonează-te</string>
   <string name="morphe_hide_subscribe_button_summary_on">Butonul Abonare este ascuns</string>
   <string name="morphe_hide_subscribe_button_summary_off">Butonul Abonare este afișat</string>
   <string name="morphe_hide_transcript_section_title">Ascunde Transcriere</string>
   <string name="morphe_hide_transcript_section_summary_on">Secțiunea de transcriere este ascunsă</string>
   <string name="morphe_hide_transcript_section_summary_off">Secțiunea de Transcriere este afișată</string>
-  <string name="morphe_hide_quizzes_section_title">Ascunde Quizuri</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Secțiunea Quizuri este ascunsă</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Secțiunea Quizuri este afișată</string>
-  <string name="morphe_hide_description_components_screen_title">Descriere video</string>
-  <string name="morphe_hide_description_components_screen_summary">Ascunde sau afișează componentele descrierii video</string>
   <string name="morphe_hide_filter_bar_screen_title">Bară de filtrare</string>
   <string name="morphe_hide_filter_bar_screen_summary">Ascunde sau afișează bara de filtre în fluxuri, videoclipuri similare, rezultate ale căutării și istoricul vizionărilor</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Ascunde în feeduri</string>
@@ -420,9 +420,6 @@ Limitări:
   <string name="morphe_hide_end_screen_store_banner_title">Ascunde bannerul magazinului de la finalul ecranului</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Bannerul magazinului de pe ecranul final este ascuns.</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Bannerul magazinului de pe ecranul final este afișat.</string>
-  <string name="morphe_hide_fullscreen_ads_title">Ascunde reclame pe tot ecranul</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Reclamele pe ecran complet sunt ascunse</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Reclame pe ecran complet sunt afișate</string>
   <string name="morphe_hide_general_ads_title">Ascunde reclamele generale</string>
   <string name="morphe_hide_general_ads_summary_on">Anunțurile generale sunt ascunse</string>
   <string name="morphe_hide_general_ads_summary_off">Anunțurile generale sunt afișate</string>
@@ -888,6 +885,9 @@ Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'An
   <string name="morphe_hide_player_previous_next_buttons_title">Ascunde butoanele Anterior &amp; Următorul</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Butoanele Precedent &amp; Următor sunt ascunse</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Butoanele Precedent &amp; Următor sunt afișate</string>
+  <string name="morphe_hide_settings_button_title">Ascunderea butonului Setări</string>
+  <string name="morphe_hide_settings_button_summary_on">Butonul Setări este ascuns</string>
+  <string name="morphe_hide_settings_button_summary_off">Se afișează butonul Setări</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Ascunde cardurile ecranului final</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Cardurile de pe ecranul de închidere sunt ascunse</string>

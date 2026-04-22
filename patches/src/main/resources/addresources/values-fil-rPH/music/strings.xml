@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Pangkalahatan</string>
   <string name="morphe_settings_music_screen_3_player_title">Manlalaro</string>
   <string name="morphe_settings_music_screen_4_misc_title">Mga sari-sari</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Itago ang \'Kumuha ng Music Premium\' na tatak</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Nakatago ang label na Kumuha ng Music Premium</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Ipinapakita ang label na Kumuha ng Music Premium</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Itago ang mga patalastas sa video</string>
   <string name="morphe_music_hide_video_ads_summary_on">Nakatago ang mga patalastas sa video</string>
@@ -151,10 +155,6 @@ Feature implementation by VazerOG"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Itago ang mga tatak ng navigation button</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Nakatago ang mga tatak</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Ipinapakita ang mga tatak</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Itago ang \'Kumuha ng Music Premium\' na tatak</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Nakatago ang tatak</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Ipinapakita ang tatak</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Itago ang upgrade button</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Nakatago ang button</string>

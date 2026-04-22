@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Generalități</string>
   <string name="morphe_settings_music_screen_3_player_title">Jucător</string>
   <string name="morphe_settings_music_screen_4_misc_title">Diverse</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Ascunde eticheta „Obține Music Premium”</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Eticheta Get Music Premium este ascunsă</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Eticheta Get Music Premium este afișată</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Ascunde anunțurile video</string>
   <string name="morphe_music_hide_video_ads_summary_on">Anunțurile video sunt ascunse</string>
@@ -151,10 +155,6 @@ Implementare a funcționalității de către VazerOG"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Ascundeți etichetele butoanelor de navigare</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Etichetele sunt ascunse</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Etichetele sunt afișate</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Ascunde eticheta „Obține Music Premium”</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Eticheta este ascunsă</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Eticheta este afișată</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Ascunde butonul de upgrade</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Butonul este ascuns</string>

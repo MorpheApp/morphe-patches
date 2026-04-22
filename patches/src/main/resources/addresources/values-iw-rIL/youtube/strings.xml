@@ -199,6 +199,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_title">הסתר כותרת סרטון</string>
   <string name="morphe_hide_video_title_summary_on">כותרת וידאו בשכבה של נגן היחבאת</string>
   <string name="morphe_hide_video_title_summary_off">כותרת וידאו בשכבה של נגן מוצג</string>
+  <string name="morphe_hide_description_components_screen_title">תיאור סרטון</string>
+  <string name="morphe_hide_description_components_screen_summary">הסתר או הצג רכיבי תיאור סרטון</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">הסתר את \'סיכום הווידאו שנוצר על ידי בינה מלאכותית\'</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">קטע סיכום סרטון הנוצר על ידי AI מוסתר</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">קטע סיכום סרטון הנוצר על ידי AI מוצג</string>
@@ -255,17 +257,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_music_section_title">הסתר קליפ</string>
   <string name="morphe_hide_music_section_summary_on">מדור הסרטים מוסתר</string>
   <string name="morphe_hide_music_section_summary_off">מדור הסרטים מוצג</string>
+  <string name="morphe_hide_quizzes_section_title">הסתר חידות</string>
+  <string name="morphe_hide_quizzes_section_summary_on">המחלקה חידות מוסתר</string>
+  <string name="morphe_hide_quizzes_section_summary_off">המחלקה חידות מוצג</string>
   <string name="morphe_hide_subscribe_button_title">הסתר לחצן הרשמה למינוי</string>
   <string name="morphe_hide_subscribe_button_summary_on">לחצן הרשמה למינוי מוסתר</string>
   <string name="morphe_hide_subscribe_button_summary_off">לחצן הרשמה למינוי מוצג</string>
   <string name="morphe_hide_transcript_section_title">הסתר תמליל</string>
   <string name="morphe_hide_transcript_section_summary_on">מדור התמליל מוסתר</string>
   <string name="morphe_hide_transcript_section_summary_off">מדור התמליל מוצג</string>
-  <string name="morphe_hide_quizzes_section_title">הסתר חידות</string>
-  <string name="morphe_hide_quizzes_section_summary_on">המחלקה חידות מוסתר</string>
-  <string name="morphe_hide_quizzes_section_summary_off">המחלקה חידות מוצג</string>
-  <string name="morphe_hide_description_components_screen_title">תיאור סרטון</string>
-  <string name="morphe_hide_description_components_screen_summary">הסתר או הצג רכיבי תיאור סרטון</string>
   <string name="morphe_hide_filter_bar_screen_title">סרגל סינון</string>
   <string name="morphe_hide_filter_bar_screen_summary">הסתר או הצג את סרגל הסינון בפידים, סרטונים קשורים, תוצאות חיפוש, והיסטוריית צפייה</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">הסתר בפידים</string>
@@ -424,9 +424,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">הסתר כרזת חנות של מסך סיום</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">באנר החנות של מסך סיום מוסתר</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">באנר החנות של מסך הסיום מוצג</string>
-  <string name="morphe_hide_fullscreen_ads_title">הסתר מודעות מסך מלא</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">מודעות מסך מלא מוסתרות</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">מודעות מסך מלא מוצגות</string>
   <string name="morphe_hide_general_ads_title">הסתר מודעות כלליות</string>
   <string name="morphe_hide_general_ads_summary_on">מודעות כלליות מוסתרות</string>
   <string name="morphe_hide_general_ads_summary_off">מודעות כלליות מוצגות</string>
@@ -894,6 +891,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">הסתר לחצני הקודם &amp; הבא</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">כפתורי \'קודם\' ו-\'הבא\' מוסתרים</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">כפתורי \"קודם\" ו-\"הבא\" מוצגים</string>
+  <string name="morphe_hide_settings_button_title">הסתר לחצן הגדרות</string>
+  <string name="morphe_hide_settings_button_summary_on">לחצן הגדרות מוסתר</string>
+  <string name="morphe_hide_settings_button_summary_off">לחצן הגדרות מוצג</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">הסתר כרטיסי מסך סיום</string>
   <string name="morphe_hide_end_screen_cards_summary_on">כרטיסי מסך מסיום מוסתרים</string>

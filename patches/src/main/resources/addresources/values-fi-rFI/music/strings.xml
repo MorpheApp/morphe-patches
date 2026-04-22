@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Yleiset</string>
   <string name="morphe_settings_music_screen_3_player_title">Soitin</string>
   <string name="morphe_settings_music_screen_4_misc_title">Sekalaiset</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Piilota \"Hanki Music Premium\" -tunniste</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">””</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">””</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Piilota videomainokset</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videomainokset piilotetaan</string>
@@ -151,10 +155,6 @@ Ominaisuuden toteutus VazerOG:n toimesta"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Piilota navigointipainikkeiden tunnisteet</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Tunnisteet on piilotettu</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Tunnisteet näytetään</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Piilota \"Hanki Music Premium\" -tunniste</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Tunniste piilotetaan</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Tunniste näytetään</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Piilota päivitä-painike</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Painike piilotetaan</string>

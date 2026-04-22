@@ -199,6 +199,8 @@ YouTube Doodlen näyttäminen saattaa estää mukautettujen otsikoiden näyttäm
   <string name="morphe_hide_video_title_title">Piilota videon otsikko</string>
   <string name="morphe_hide_video_title_summary_on">Videon otsikko piilotetaan soittimen peittokuvasta</string>
   <string name="morphe_hide_video_title_summary_off">Videon otsikko näytetään soittimen peittokuvassa</string>
+  <string name="morphe_hide_description_components_screen_title">Videon kuvaus</string>
+  <string name="morphe_hide_description_components_screen_summary">Piilota tai näytä videon kuvauksen osia</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Piilota \"tekoälyn luoma videoyhteenveto\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Tekoälyn luoma videon yhteenveto -osio piilotetaan</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Tekoälyn luoma videon yhteenveto -osio näytetään</string>
@@ -255,17 +257,15 @@ YouTube Doodlen näyttäminen saattaa estää mukautettujen otsikoiden näyttäm
   <string name="morphe_hide_music_section_title">Piilota Musiikki</string>
   <string name="morphe_hide_music_section_summary_on">Musiikki-osio piilotetaan</string>
   <string name="morphe_hide_music_section_summary_off">Musiikki-osio näytetään</string>
+  <string name="morphe_hide_quizzes_section_title">Piilota tietovisat</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Tietovisat-osio piilotetaan</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Tietovisat-osio näytetään</string>
   <string name="morphe_hide_subscribe_button_title">Piilota Tilaa-painike</string>
   <string name="morphe_hide_subscribe_button_summary_on">Tilaa-painike piilotetaan</string>
   <string name="morphe_hide_subscribe_button_summary_off">Tilaa-painike näytetään</string>
   <string name="morphe_hide_transcript_section_title">Piilota transkriptio</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkriptio-osio piilotetaan</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkriptio-osio näytetään</string>
-  <string name="morphe_hide_quizzes_section_title">Piilota tietovisat</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Tietovisat-osio piilotetaan</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Tietovisat-osio näytetään</string>
-  <string name="morphe_hide_description_components_screen_title">Videon kuvaus</string>
-  <string name="morphe_hide_description_components_screen_summary">Piilota tai näytä videon kuvauksen osia</string>
   <string name="morphe_hide_filter_bar_screen_title">Suodatinpalkki</string>
   <string name="morphe_hide_filter_bar_screen_summary">Piilota tai näytä suodatinpalkki syötteissä, liittyvissä videoissa, hakutuloksissa ja katseluhistoriassa</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Piilota syötteissä</string>
@@ -425,9 +425,6 @@ Rajoitukset:
   <string name="morphe_hide_end_screen_store_banner_title">Piilota loppunäytön kauppabanneri</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Loppunäytön kauppabanneri piilotetaan</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Loppunäytön kauppabanneri näytetään</string>
-  <string name="morphe_hide_fullscreen_ads_title">Piilota koko näytön mainokset</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Koko näytön mainokset piilotetaan</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Koko näytön mainokset näytetään</string>
   <string name="morphe_hide_general_ads_title">Piilota yleiset mainokset</string>
   <string name="morphe_hide_general_ads_summary_on">Yleiset mainokset piilotetaan</string>
   <string name="morphe_hide_general_ads_summary_off">Yleiset mainokset näytetään</string>
@@ -895,6 +892,9 @@ Jos haluat näyttää ääniraitavalikon, vaihda \"Naamioi videovirrat\" -asetuk
   <string name="morphe_hide_player_previous_next_buttons_title">Piilota Edellinen ja Seuraava -painikkeeet</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Edellinen- ja Seuraava-painikkeet piilotetaan</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Edellinen- ja Seuraava-painikkeet näytetään</string>
+  <string name="morphe_hide_settings_button_title">Piilota Asetukset -painike</string>
+  <string name="morphe_hide_settings_button_summary_on">Asetukset-painike on piilotettu</string>
+  <string name="morphe_hide_settings_button_summary_off">Asetukset-painike on näytössä</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Piilota loppunäytön kortit</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Loppunäytön kortit piilotetaan</string>

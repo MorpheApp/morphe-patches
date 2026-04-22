@@ -111,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">Принудително оригинален аудио език</string>
   <string name="morphe_force_original_audio_summary_on">Използване на оригиналния език на аудиото</string>
   <string name="morphe_force_original_audio_summary_off">Използване на аудио по подразбиране</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Скриване на целите реклами</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Целите реклами са скрити</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Целите реклами се показват</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">За да използвате тази функция, променете \'Имитиране на видео потоци\' на Android Reel или TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

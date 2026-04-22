@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Sazî</string>
   <string name="morphe_settings_music_screen_3_player_title">Lîstikvan</string>
   <string name="morphe_settings_music_screen_4_misc_title">Cûre</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\'Get Music Premium\' etîketê veşêre</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Label Premium-êve</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Label Premium-îve</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Reklamên wîdyoyê veşêre</string>
   <string name="morphe_music_hide_video_ads_summary_on">Reklamên wîdyoyê veşartin</string>
@@ -151,10 +155,6 @@ Birkirina taybetî bi VazerOG"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Etîketên barê navigasyonê veşêre</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Etîket veşê ye</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Etîket nîşan dide</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">\'Get Music Premium\' etîketê veşêre</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Etîket veşê ye</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Etîket nîşan dide</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Bişevêna barê veşêre</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Bişevê nîşan tê xerxwezandin</string>

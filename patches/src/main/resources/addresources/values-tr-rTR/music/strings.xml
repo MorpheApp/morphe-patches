@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Genel</string>
   <string name="morphe_settings_music_screen_3_player_title">Oynatıcı</string>
   <string name="morphe_settings_music_screen_4_misc_title">Çeşitli</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\'Music Premium üyesi olun\' etiketini gizle</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Music Premium üyesi olun etiketi gizli</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Music Premium üyesi olun etiketi görünür</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Video reklamlarını gizle</string>
   <string name="morphe_music_hide_video_ads_summary_on">Video reklamları gizli</string>
@@ -36,7 +40,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_screen_title">Geçiş</string>
   <string name="morphe_music_crossfade_screen_summary">Parçaları yumuşak bir şekilde birbirine karıştırır</string>
   <string name="morphe_music_crossfade_enabled_title">Geçişi etkinleştir</string>
-  <string name="morphe_music_crossfade_enabled_summary_on">Parçalar birbirine karıştırılır</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Parçalar birbirine geçiş yapar</string>
   <string name="morphe_music_crossfade_enabled_summary_off">Geçiş devre dışı</string>
   <string name="morphe_music_crossfade_curve_title">Solma eğrisi</string>
   <string name="morphe_music_crossfade_curve_summary">Parçalar arasında sesin nasıl geçiş yaptığı</string>
@@ -59,21 +63,21 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 saniye</string>
   <string name="morphe_crossfade_duration_9000ms">9 saniye</string>
   <string name="morphe_crossfade_duration_10000ms">10 saniye</string>
-  <string name="morphe_music_crossfade_on_skip_title">Manuel atlama sırasında geçiş</string>
-  <string name="morphe_music_crossfade_on_skip_summary_on">Şarkılar manuel olarak atlandığında geçiş oynatılır</string>
+  <string name="morphe_music_crossfade_on_skip_title">Manuel atlamada geçiş</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Parçalar manuel olarak atlandığında geçişli oynatılır</string>
   <string name="morphe_music_crossfade_on_skip_summary_off">Manuel atlamalar geçiş yapmaz</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Otomatik ilerlemede geçiş</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Bir şarkı bittiğinde ve bir sonrakine geçtiğinde geçiş oynatılır</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Bir parça bittiğinde ve bir sonraki parçaya geçildiğinde geçişli oynatılır</string>
   <string name="morphe_music_crossfade_on_auto_advance_summary_off">Otomatik ilerleme geçiş yapmaz</string>
   <string name="morphe_music_crossfade_session_control_title">Oturum kontrolü</string>
-  <string name="morphe_music_crossfade_session_control_summary_on">"Kaydırma kontrolleri"</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Karıştırma düğmesine uzun basarak geçiş duraklatılır veya devam ettirilir"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Oturum kontrolü devre dışı</string>
   <string name="morphe_music_crossfade_about_title">Hakkında</string>
-  <string name="morphe_music_crossfade_about_summary">"Geçiş YouTube Music 8.x ile kullanılabilir.
+  <string name="morphe_music_crossfade_about_summary">"Geçiş YouTube Music 8.x ile kullanılabilir
 
-Karıştırma düğmesini uzun süre basılı tutarak devre dışı bırak/etkinleştir
+Karıştırma düğmesine uzun basarak devre dışı bırak/etkinleştir
 
-VazerOG tarafından özellik uygulaması"</string>
+VazerOG'den özellik uyarlaması"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Kalıcı tekrarı etkinleştir</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Kalıcı tekrar etkin</string>
@@ -151,10 +155,6 @@ VazerOG tarafından özellik uygulaması"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Gezinme düğmeleri etiketlerini gizle</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Etiketler gizli</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Etiketler görünür</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">\'Music Premium üyesi olun\' etiketini gizle</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Etiket gizli</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Etiket görünür</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Yükseltme düğmesini gizle</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Düğme gizli</string>

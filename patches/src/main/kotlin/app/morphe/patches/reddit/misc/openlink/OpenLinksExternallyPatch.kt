@@ -8,13 +8,10 @@ package app.morphe.patches.reddit.misc.openlink
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
-import app.morphe.util.indexOfFirstStringInstructionOrThrow
 import app.morphe.util.setExtensionIsPatchIncluded
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/OpenLinksExternallyPatch;"
@@ -33,10 +30,8 @@ val openLinksExternallyPatch = bytecodePatch(
 
     execute {
         screenNavigatorMethodRef.get()!!.apply {
-            val insertIndex = indexOfFirstStringInstructionOrThrow("uri") + 2
-
             addInstructionsWithLabels(
-                insertIndex,
+                0,
                 """
                     invoke-static { p1, p2 }, $EXTENSION_CLASS->openLinksExternally(Landroid/app/Activity;Landroid/net/Uri;)Z
                     move-result v0
@@ -56,13 +51,9 @@ val openLinksExternallyPatch = bytecodePatch(
 
         ArticleConstructorFingerprint.let {
             it.method.apply {
-                val nullCheckIndex = it.instructionMatches.last().index
-                val stringRegister =
-                    getInstruction<FiveRegisterInstruction>(nullCheckIndex).registerC
-
                 addInstruction(
-                    nullCheckIndex + 1,
-                    "invoke-static/range { v$stringRegister .. v$stringRegister }, $EXTENSION_CLASS->" +
+                    0,
+                    "invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->" +
                             "openLinksExternally(Ljava/lang/String;)V"
                 )
             }

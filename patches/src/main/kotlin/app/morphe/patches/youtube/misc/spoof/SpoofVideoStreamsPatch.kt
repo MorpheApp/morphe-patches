@@ -6,6 +6,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.spoof.spoofVideoStreamsPatch
+import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -34,6 +35,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
         compatibleWith(COMPATIBILITY_YOUTUBE)
 
         dependsOn(
+            sharedExtensionPatch,
             userAgentClientSpoofPatch,
             settingsPatch,
             versionCheckPatch

@@ -28,6 +28,8 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">ئاسماني</string>
   <string name="morphe_settings_music_screen_3_player_title">خۆسەر</string>
   <string name="morphe_settings_music_screen_4_misc_title">تشتەکان</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\'هێنانی مۆزیکی پریمیم\' لامی پنهان بکە</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">ڤیدیۆ ئەلکان قایم بێت</string>
   <string name="morphe_music_hide_video_ads_summary_on">ڤیدیۆ ئەلکان قەبارە</string>
@@ -112,10 +114,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">لامەکانی دەربنێ پنهان بکە</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">لامەکان پنهانن</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">لامەکان نیشانە دەردەکەون</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">\'هێنانی مۆزیکی پریمیم\' لامی پنهان بکە</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">لامەکە پنهانە</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">لامەکە نیشانە دەردەکەوێت</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">زیادکردنەکە پنهان بکە</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">دگمه‌کە پنهانە</string>

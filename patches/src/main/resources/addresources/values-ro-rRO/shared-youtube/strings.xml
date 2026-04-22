@@ -111,6 +111,10 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_force_original_audio_title">Forțează limba audio originală</string>
   <string name="morphe_force_original_audio_summary_on">Folosind limba audio originală</string>
   <string name="morphe_force_original_audio_summary_off">Utilizează audio implicit</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Ascunde reclame pe tot ecranul</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Reclamele pe ecran complet sunt ascunse</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Reclame pe ecran complet sunt afișate</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Pentru a utiliza această funcție, modificați \"Falsificare fluxuri video\" la Android Reel sau TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

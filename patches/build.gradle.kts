@@ -32,7 +32,7 @@ tasks {
         dependsOn(build)
 
         classpath = sourceSets["main"].runtimeClasspath
-        mainClass.set("app.morphe.util.resource.CheckStringResourcesKt")
+        mainClass.set("app.morphe.patches.util.resource.CheckStringResourcesKt")
     }
 
     register<JavaExec>("generatePatchesList") {

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">सामान्य</string>
   <string name="morphe_settings_music_screen_3_player_title">प्लेयर</string>
   <string name="morphe_settings_music_screen_4_misc_title">मिसलेनियस</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\'गेट म्यूज़िक प्रीमियम\' लेबल छिपाएं</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">म्यूजिक प्रीमियम लेबल छिपा हुआ है</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">म्यूजिक प्रीमियम लेबल दिखाया जा रहा है</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">विडियो विज्ञापन छिपाएं</string>
   <string name="morphe_music_hide_video_ads_summary_on">विडियो विज्ञापन छिपे हैं</string>
@@ -151,10 +155,6 @@ VazerOG द्वारा फीचर कार्यान्वयन"</stri
   <string name="morphe_music_hide_navigation_bar_labels_title">नविगेशन बटन लेबल छिपाएं</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">लेबल छिपे हैं</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">लेबल दिखाए जाते हैं</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">\'गेट म्यूज़िक प्रीमियम\' लेबल छिपाएं</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">लेबल छिपा है</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">लेबल दिखाया जाता है</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">अपग्रेड बटन छिपाएं</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">बटन छिपा है</string>

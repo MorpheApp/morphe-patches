@@ -12,13 +12,14 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.reddit.misc.settings.is_2026_04_or_greater
 import app.morphe.patches.reddit.misc.settings.settingsPatch
+import app.morphe.patches.reddit.misc.version.is_2026_04_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_16_0_or_greater
+import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findFieldFromToString
 import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
@@ -32,19 +33,16 @@ val hideAdsPatch = bytecodePatch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(settingsPatch)
+    dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
 
         // region Filter promoted ads (does not work in popular or latest feed)
 
-        listOf(
-            ListingFingerprint,
-            SubmittedListingFingerprint
-        ).forEach { fingerprint ->
+        fun hideOldAds(fingerprint: Fingerprint) {
             fingerprint.let {
                 it.method.apply {
-                    val index = it.instructionMatches.last().index
+                    val index = it.instructionMatches.first().index
                     val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
                     addInstructions(
@@ -58,26 +56,29 @@ val hideAdsPatch = bytecodePatch(
             }
         }
 
+        hideOldAds(ListingFingerprint)
+
+        if (!is_2026_16_0_or_greater) {
+            hideOldAds(SubmittedListingFingerprint)
+        }
+
         val immutableListBuilderReference = ImmutableListBuilderFingerprint.instructionMatches
             .last().getInstruction<ReferenceInstruction>().reference
 
         AdPostSectionConstructorFingerprint.let {
             it.method.apply {
-                val sectionIndex = it.instructionMatches.first().index
-                val sectionRegister = getInstruction<FiveRegisterInstruction>(
-                    sectionIndex + 1
-                ).registerC
+                val sectionRegister = "p5"
 
                 addInstructionsWithLabels(
-                    sectionIndex,
+                    0,
                     """
-                        invoke-static { v$sectionRegister }, $EXTENSION_CLASS->hideNewPostAds(Ljava/util/List;)Ljava/util/List;
-                        move-result-object v$sectionRegister
-                        if-nez v$sectionRegister, :ignore
-                        new-instance v$sectionRegister, Ljava/util/ArrayList;
-                        invoke-direct { v$sectionRegister }, Ljava/util/ArrayList;-><init>()V
-                        invoke-static { v$sectionRegister }, $immutableListBuilderReference
-                        move-result-object v$sectionRegister
+                        invoke-static { $sectionRegister }, $EXTENSION_CLASS->hideNewPostAds(Ljava/util/List;)Ljava/util/List;
+                        move-result-object $sectionRegister
+                        if-nez $sectionRegister, :ignore
+                        new-instance $sectionRegister, Ljava/util/ArrayList;
+                        invoke-direct { $sectionRegister }, Ljava/util/ArrayList;-><init>()V
+                        invoke-static { $sectionRegister }, $immutableListBuilderReference
+                        move-result-object $sectionRegister
                         :ignore
                         nop
                     """
@@ -103,7 +104,7 @@ val hideAdsPatch = bytecodePatch(
 
         // As of Reddit 2026.04+, placeholders are not hidden unless 'adsLoadCompleted' is false.
         // Hide placeholders by overriding 'adsLoadCompleted' to true.
-        if (is_2026_04_or_greater) {
+        if (is_2026_04_0_or_greater) {
             val adsLoadCompletedField = CommentsAdStateToStringFingerprint.method
                 .findFieldFromToString(", adsLoadCompleted=")
 

@@ -12,8 +12,10 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_11_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_16_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
+import app.morphe.util.findFreeRegister
 import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
@@ -32,16 +34,20 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 
         // region patch for set content languages.
 
-        LocaleLanguageManagerConstructorFingerprint.let {
+        (if (is_2026_16_0_or_greater) LocaleLanguageManagerConstructorFingerprint
+        else LocaleLanguageManagerConstructorLegacyFingerprint).let {
+            val languageMethod = LocaleLanguageManagerContentLanguagesFingerprint.match(it.classDef).method
+
             it.method.apply {
                 val index = it.instructionMatches.last().index
+                val free = findFreeRegister(index)
 
                 addInstructions(
                     index,
                     """
-                        invoke-virtual/range { p0 .. p0 }, ${LocaleLanguageManagerContentLanguagesFingerprint.method}
-                        move-result-object v0
-                        invoke-static { v0 }, $EXTENSION_CLASS->setContentLanguages(Ljava/util/List;)V
+                        invoke-virtual/range { p0 .. p0 }, $languageMethod
+                        move-result-object v$free
+                        invoke-static { v$free }, $EXTENSION_CLASS->setContentLanguages(Ljava/util/List;)V
                     """
                 )
             }

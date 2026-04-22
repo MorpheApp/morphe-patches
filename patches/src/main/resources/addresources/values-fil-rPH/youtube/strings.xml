@@ -199,6 +199,8 @@ Ang pagpapakita ng mga YouTube Doodle ay maaaring pigilan ang pagpapakita ng mga
   <string name="morphe_hide_video_title_title">Itago ang pamagat ng video</string>
   <string name="morphe_hide_video_title_summary_on">Nakatago ang pamagat ng video sa video overlay</string>
   <string name="morphe_hide_video_title_summary_off">Ipinapakita ang pamagat ng video sa video overlay</string>
+  <string name="morphe_hide_description_components_screen_title">Paglalarawan sa Video</string>
+  <string name="morphe_hide_description_components_screen_summary">Itago o ipakita ang mga bahagi ng paglalarawan sa video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Itago ang \'Buod ng video na binuo ng AI\'</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Nakatago ang Buod ng video na binuo ng AI</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Ipinapakita ang Buod ng video na binuo ng AI</string>
@@ -255,17 +257,15 @@ Ang pagpapakita ng mga YouTube Doodle ay maaaring pigilan ang pagpapakita ng mga
   <string name="morphe_hide_music_section_title">Itago ang Musika</string>
   <string name="morphe_hide_music_section_summary_on">Nakatago ang seksyon na Musika</string>
   <string name="morphe_hide_music_section_summary_off">Ipinapakita ang seksyon na Musika</string>
+  <string name="morphe_hide_quizzes_section_title">Itago ang Mga Pagsusulit</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Nakatago ang seksyon na Pagsusulit</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Ipinapakita ang seksyon na Pagsusulit</string>
   <string name="morphe_hide_subscribe_button_title">Itago ang button na Mag-subscribe</string>
   <string name="morphe_hide_subscribe_button_summary_on">Nakatago ang button na Mag-subscribe</string>
   <string name="morphe_hide_subscribe_button_summary_off">Ipinapakita ang button na Mag-subscribe</string>
   <string name="morphe_hide_transcript_section_title">Itago ang Transcript</string>
   <string name="morphe_hide_transcript_section_summary_on">Nakatago ang seksyon na Transcript</string>
   <string name="morphe_hide_transcript_section_summary_off">Ipinapakita ang seksyon na Transcript</string>
-  <string name="morphe_hide_quizzes_section_title">Itago ang Mga Pagsusulit</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Nakatago ang seksyon na Pagsusulit</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Ipinapakita ang seksyon na Pagsusulit</string>
-  <string name="morphe_hide_description_components_screen_title">Paglalarawan sa Video</string>
-  <string name="morphe_hide_description_components_screen_summary">Itago o ipakita ang mga bahagi ng paglalarawan sa video</string>
   <string name="morphe_hide_filter_bar_screen_title">Filter bar</string>
   <string name="morphe_hide_filter_bar_screen_summary">Itago o ipakita ang filter bar sa mga feed, mga kaugnay na video, resulta sa paghahanap, at kasaysayan ng panonood</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Itago sa mga feed</string>
@@ -424,9 +424,6 @@ Mga Limitasyon:
   <string name="morphe_hide_end_screen_store_banner_title">Itago ang banner ng end screen store</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Nakatago ang banner ng end screen store</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Ipinapakita ang banner ng end screen store</string>
-  <string name="morphe_hide_fullscreen_ads_title">Itago ang mga patalastas sa fullscreen</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Nakatago ang mga patalastas sa fullscreen</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Ipinapakita ang mga patalastas sa fullscreen</string>
   <string name="morphe_hide_general_ads_title">Itago ang mga pangkalahatang patalastas</string>
   <string name="morphe_hide_general_ads_summary_on">Nakatago ang mga pangkalahatang patalastas</string>
   <string name="morphe_hide_general_ads_summary_off">Ipinapakita ang mga pangkalahatang patalastas</string>
@@ -892,6 +889,9 @@ Upang ipakita ang menu ng Audio track, baguhin ang 'Spoof video streams' sa 'And
   <string name="morphe_hide_player_previous_next_buttons_title">Itago ang mga button na Previous &amp; Next</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Ang mga button na Previous &amp; Next ay nakatago</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Ang mga button na Previous &amp; Next ay ipinapakita</string>
+  <string name="morphe_hide_settings_button_title">Itago ang button na Mga Setting</string>
+  <string name="morphe_hide_settings_button_summary_on">Nakatago ang button ng Mga Setting</string>
+  <string name="morphe_hide_settings_button_summary_off">Nakikita ang button ng Mga Setting</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Itago ang mga card ng end screen</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Ang mga card ng end screen ay nakatago</string>

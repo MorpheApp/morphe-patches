@@ -102,9 +102,6 @@ public class LegacyPlayerControlsPatch {
      * Injection point.
      */
     public static boolean usePlayerBottomControlsExploderLayout(boolean original) {
-        if (RESTORE_OLD_PLAYER_BUTTONS) {
-            return false;
-        }
-        return original;
+        return !RESTORE_OLD_PLAYER_BUTTONS;
     }
 }

@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Generale</string>
   <string name="morphe_settings_music_screen_3_player_title">Lettore</string>
   <string name="morphe_settings_music_screen_4_misc_title">Varie</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Nascondi l\'etichetta \'Ottieni Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">L\'etichetta Get Music Premium è nascosta</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">L\'etichetta Get Music Premium è visualizzata</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Nascondi annunci video</string>
   <string name="morphe_music_hide_video_ads_summary_on">Gli annunci video sono nascosti</string>
@@ -151,10 +155,6 @@ Implementazione della funzione da VazerOG"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Nascondi le etichette dei pulsanti di navigazione</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Le etichette sono nascoste</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Le etichette sono mostrate</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Nascondi l\'etichetta \'Ottieni Music Premium\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">L\'etichetta è nascosta</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">L\'etichetta è mostrata</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Nascondi pulsante di aggiornamento</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Il pulsante è nascosto</string>

@@ -1,4 +1,14 @@
-package app.morphe.patches.music.layout.premium
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
+package app.morphe.patches.music.ad.general
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -9,18 +19,20 @@ import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
+import app.morphe.patches.shared.ad.hideFullscreenAdsPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideGetPremiumPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideAdsPatch;"
 
 @Suppress("unused")
-val hideGetPremiumPatch = bytecodePatch(
-    name = "Hide 'Get Music Premium'",
-    description = "Adds an option to hide the \"Get Music Premium\" label in the settings and account menu.",
+val hideAdsPatch = bytecodePatch(
+    name = "Hide ads",
+    description = "Adds options to hide ads such as the fullscreen Premium popup and \"Get Music Premium\" label.",
 ) {
     dependsOn(
         sharedExtensionPatch,
+        hideFullscreenAdsPatch(PreferenceScreen.ADS),
         settingsPatch,
     )
 
@@ -31,6 +43,7 @@ val hideGetPremiumPatch = bytecodePatch(
             SwitchPreference("morphe_music_hide_get_premium_label"),
         )
 
+        // Hide 'Get Music Premium' label
         HideGetPremiumFingerprint.method.apply {
             val insertIndex = HideGetPremiumFingerprint.instructionMatches.last().index
 
@@ -46,7 +59,7 @@ val hideGetPremiumPatch = bytecodePatch(
             addInstruction(
                 insertIndex + 1,
                 "invoke-virtual {v$getPremiumViewRegister, v$visibilityRegister}, " +
-                    "Landroid/view/View;->setVisibility(I)V",
+                        "Landroid/view/View;->setVisibility(I)V",
             )
         }
 

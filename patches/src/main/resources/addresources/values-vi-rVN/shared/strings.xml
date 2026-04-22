@@ -30,10 +30,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_import">Nhập</string>
   <string name="morphe_settings_import_copy">Sao chép</string>
   <string name="morphe_settings_import_reset">Đặt lại cài đặt Morphe về mặc định</string>
-  <string name="morphe_settings_import_success">Đã nhập cài đặt %d</string>
+  <string name="morphe_settings_import_success">Đã nhập %d cài đặt</string>
   <string name="morphe_settings_import_failure_parse">Không thể nhập: %s</string>
   <string name="morphe_settings_search_hint">Tìm kiếm cài đặt</string>
-  <string name="morphe_settings_search_no_results_title">Không tìm thấy kết quả nào cho \'%s\'</string>
+  <string name="morphe_settings_search_no_results_title">Không tìm thấy kết quả nào cho \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Hãy thử từ khóa khác</string>
   <string name="morphe_settings_search_recent_searches">Tìm kiếm gần đây</string>
   <string name="morphe_settings_search_remove_message">Xóa khỏi lịch sử tìm kiếm?</string>
@@ -61,7 +61,7 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_pref_import_export_title">Nhập hoặc Xuất</string>
   <string name="morphe_pref_import_export_summary">Nhập hoặc xuất các cài đặt Morphe</string>
   <string name="morphe_settings_import_file">Nhập từ tệp</string>
-  <string name="morphe_settings_import_file_success">Đã nhập cài đặt thành công, hãy bấm Lưu để áp dụng</string>
+  <string name="morphe_settings_import_file_success">Đã nhập cài đặt thành công, bấm Lưu để áp dụng</string>
   <string name="morphe_settings_import_file_failed">Không thể nhập cài đặt</string>
   <string name="morphe_settings_export_file">Xuất ra tệp</string>
   <string name="morphe_settings_export_file_success">Đã xuất cài đặt thành công</string>
@@ -129,7 +129,7 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <string name="gms_core_toast_not_installed_message">microG chưa được cài đặt. Hãy cài đặt nó đi.</string>
   <string name="gms_core_dialog_title">Yêu cầu thực hiện</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG không có quyền chạy nền.\n\nHãy làm theo hướng dẫn \"Don't kill my app\" dành cho điện thoại của bạn và áp dụng các bước đó cho cài đặt microG.\n\nĐiều này cần thiết cho ứng dụng hoạt động."</string>
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"microG không có quyền chạy nền.\n\nHãy làm theo hướng dẫn \"Don\"t kill my app\" dành cho điện thoại của bạn và áp dụng các bước đó cho cài đặt microG.\n\nĐiều này cần thiết cho ứng dụng hoạt động."</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nBấm tiếp tục để tắt tối ưu hóa."</string>
   <string name="gms_core_dialog_continue_text">Tiếp tục</string>

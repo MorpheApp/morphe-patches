@@ -28,6 +28,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Опште</string>
   <string name="morphe_settings_music_screen_3_player_title">Плејер</string>
   <string name="morphe_settings_music_screen_4_misc_title">Разно</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Сакриј ознаку „Набавите Music Premium”</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Етикета \"Music Premium\" је скривена</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Етикета \"Music Premium\" је приказана</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Сакриј видео огласе</string>
   <string name="morphe_music_hide_video_ads_summary_on">Видео огласи су скривени</string>
@@ -151,10 +155,6 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Сакриј ознаке дугмади за навигацију</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_on">Ознаке су скривене</string>
   <string name="morphe_music_hide_navigation_bar_labels_summary_off">Ознаке су приказане</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Сакриј ознаку „Набавите Music Premium”</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Ознака је скривена</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Ознака је приказана</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Сакриј дугме за надоградњу</string>
   <string name="morphe_music_hide_upgrade_button_summary_on">Дугме је скривено</string>

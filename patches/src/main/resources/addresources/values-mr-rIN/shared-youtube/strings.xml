@@ -111,6 +111,10 @@ Second \"item\" text"</string>
   <string name="morphe_force_original_audio_title">मूळ ऑडिओ भाषेचा वापर करा</string>
   <string name="morphe_force_original_audio_summary_on">मूळ ऑडिओ भाषेचा वापर केला जात आहे</string>
   <string name="morphe_force_original_audio_summary_off">डीफॉल्ट ऑडिओचा वापर केला जात आहे</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">पूर्ण स्क्रीन जाहिराती लपवा</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">पूर्ण स्क्रीन जाहिराती लपवल्या आहेत</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">पूर्ण स्क्रीन जाहिराती दिसत आहेत</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">हे वैशिष्ट्य वापरण्यासाठी, \'Spoof व्हिडिओ स्ट्रीम\' Android Reel किंवा TV मध्ये बदला</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->

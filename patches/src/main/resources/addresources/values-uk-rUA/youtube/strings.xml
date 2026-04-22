@@ -199,6 +199,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_title_title">Приховати назву відео</string>
   <string name="morphe_hide_video_title_summary_on">Назву відео в плеєрі приховано</string>
   <string name="morphe_hide_video_title_summary_off">Назва відео в плеєрі показується</string>
+  <string name="morphe_hide_description_components_screen_title">Опис відео</string>
+  <string name="morphe_hide_description_components_screen_summary">Приховати або показувати компоненти опису відео</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Приховати секцію \"Короткий переказ від ШІ\"</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_on">Секцію короткого переказу відео, згенерованого ШІ, приховано</string>
   <string name="morphe_hide_ai_generated_video_summary_section_summary_off">Секція короткого переказу відео, згенерованого ШІ, показується</string>
@@ -255,17 +257,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_music_section_title">Приховати \"Музику\"</string>
   <string name="morphe_hide_music_section_summary_on">Секцію \"Музики\" приховано</string>
   <string name="morphe_hide_music_section_summary_off">Секція \"Музики\" показується</string>
+  <string name="morphe_hide_quizzes_section_title">Приховати \"Вікторини\"</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Розділ \"Вікторини\" приховано</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Розділ \"Вікторини\" показується</string>
   <string name="morphe_hide_subscribe_button_title">Приховати \"Підписатися\"</string>
   <string name="morphe_hide_subscribe_button_summary_on">Кнопку \"Підписатися\" приховано</string>
   <string name="morphe_hide_subscribe_button_summary_off">Кнопка \"Підписатися\" показується</string>
   <string name="morphe_hide_transcript_section_title">Приховати секцію \"Текст відео\"</string>
   <string name="morphe_hide_transcript_section_summary_on">Секцію \"Текст відео\" приховано</string>
   <string name="morphe_hide_transcript_section_summary_off">Секція \"Текст відео\" показується</string>
-  <string name="morphe_hide_quizzes_section_title">Приховати \"Вікторини\"</string>
-  <string name="morphe_hide_quizzes_section_summary_on">Розділ \"Вікторини\" приховано</string>
-  <string name="morphe_hide_quizzes_section_summary_off">Розділ \"Вікторини\" показується</string>
-  <string name="morphe_hide_description_components_screen_title">Опис відео</string>
-  <string name="morphe_hide_description_components_screen_summary">Приховати або показувати компоненти опису відео</string>
   <string name="morphe_hide_filter_bar_screen_title">Панель фільтрів</string>
   <string name="morphe_hide_filter_bar_screen_summary">Приховати або показувати панель фільтрів у стрічках, пов\'язаних відео, результатах пошуку та історії</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Приховати у стрічках</string>
@@ -424,9 +424,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_end_screen_store_banner_title">Приховати банер магазину на кінцевому екрані</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Банер магазину на кінцевому екрані приховано</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Банер магазину на кінцевому екрані показується</string>
-  <string name="morphe_hide_fullscreen_ads_title">Приховати повноекранну рекламу</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Повноекранна реклама прихована</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Повноекранна реклама показується</string>
   <string name="morphe_hide_general_ads_title">Приховати загальну рекламу</string>
   <string name="morphe_hide_general_ads_summary_on">Загальну рекламу приховано</string>
   <string name="morphe_hide_general_ads_summary_off">Загальна реклама показується</string>
@@ -463,8 +460,8 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_summary_on">Кнопка копіювання URL-адреси відео показується. Натисніть, щоб скопіювати URL-адресу відео. Натисніть і утримуйте, щоб скопіювати з позначкою часу</string>
   <string name="morphe_copy_video_url_summary_off">Кнопка копіювання URL-адреси відео не показується</string>
   <string name="morphe_copy_video_url_timestamp_title">Копіювати позначку часу</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Кнопка копіювання URL-адреси відео копіює позначку часу. Довге натискання копіює без позначки часу</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Кнопка копіювання URL-адреси відео копіює без позначки часу. Довге натискання копіює позначку часу</string>
+  <string name="morphe_copy_video_url_timestamp_summary_on">Кнопка копіювання URL-адреси відео копіює позначку часу. Тривале натискання копіює без позначки часу</string>
+  <string name="morphe_copy_video_url_timestamp_summary_off">Кнопка копіювання URL-адреси відео копіює без позначки часу. Тривале натискання копіює позначку часу</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Вилучити діалог про неприйнятний контент</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Діалогове вікно про неприйнятний контент буде видалено</string>
@@ -896,6 +893,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_previous_next_buttons_title">Приховати кнопки Попереднє та Наступне</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Кнопки попереднього та наступного відео приховано</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Кнопки попереднього та наступного відео показуються</string>
+  <string name="morphe_hide_settings_button_title">Приховати кнопку \"Налаштування\"</string>
+  <string name="morphe_hide_settings_button_summary_on">Кнопку \"Налаштування\" приховано</string>
+  <string name="morphe_hide_settings_button_summary_off">Кнопка \"Налаштування\" показується</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
   <string name="morphe_hide_end_screen_cards_title">Приховати картки на кінцевому екрані</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Картки на кінцевому екрані приховано</string>
