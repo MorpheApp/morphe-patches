@@ -44,3 +44,6 @@ Morphe Patches are licensed under the [GNU General Public License v3.0](LICENSE)
   Derivatives must adopt a distinct identity unrelated to "Morphe."
 
 See the [LICENSE](LICENSE) file for the full GPLv3 terms and the [NOTICE](NOTICE) file for full conditions of GPLv3 Section 7
+
+
+<!-- Fix #1259 -->
