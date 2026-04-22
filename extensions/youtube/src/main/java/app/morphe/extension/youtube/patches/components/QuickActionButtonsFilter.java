@@ -139,11 +139,14 @@ public final class QuickActionButtonsFilter extends Filter {
         }
 
         if (matchedGroup == buttonFilterPath) {
+            if (path.contains("like_button") || path.contains("dislike_button")) { // For bold icon layouts
+                return false;
+            }
             return bufferButtonsGroupList.check(buffer).isFiltered();
         }
 
         if (matchedGroup == playlistFilterPath) {
-            if (path.contains("overflow_menu_button")) {
+            if (path.contains("overflow_menu_button")) { // For thin icon layouts
                 return false;
             }
             return bufferPlaylistGroupList.check(buffer).isFiltered();
