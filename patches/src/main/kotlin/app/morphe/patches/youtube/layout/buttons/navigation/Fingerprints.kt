@@ -48,7 +48,8 @@ internal object CastMenuItemInitializeFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
-        resourceLiteral(ResourceType.LAYOUT, "castmediaroutebutton")
+        resourceLiteral(ResourceType.LAYOUT, "castmediaroutebutton"),
+        methodCall(name = "setShowAsAction")
     )
 )
 

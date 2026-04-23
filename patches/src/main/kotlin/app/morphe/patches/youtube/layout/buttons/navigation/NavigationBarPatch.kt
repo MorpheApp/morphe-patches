@@ -387,21 +387,35 @@ val navigationBarPatch = bytecodePatch(
             it.method.apply {
                 val index = indexOfFirstInstructionOrThrow {
                     getReference<MethodReference>()?.name == "setShowAsAction"
-                } + 1
+                }
+
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
+                val menuItemRegister = instruction.registerC
 
                 addInstruction(
                     index,
-                    "invoke-static { p1 }, $EXTENSION_CLASS->hideCastButton(Landroid/view/MenuItem;)V"
+                    "invoke-static { v$menuItemRegister }, $EXTENSION_CLASS->hideCastButton(Landroid/view/MenuItem;)V"
                 )
             }
         }
 
-        CastMenuItemVisibilityFingerprint.method.addInstructions(
-            0, """
-                invoke-static { p1 }, $EXTENSION_CLASS->hideCastButton(Z)Z
-                move-result p1
-                """
-        )
+        CastMenuItemVisibilityFingerprint.let {
+            it.method.apply {
+                val index = indexOfFirstInstructionOrThrow {
+                    getReference<MethodReference>()?.name == "setVisible"
+                }
+
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
+                val visibilityRegister = instruction.registerD
+
+                addInstructions(
+                    index, """
+                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(Z)Z
+                        move-result v$visibilityRegister
+                        """
+                )
+            }
+        }
 
         //
         // Hide old search button
