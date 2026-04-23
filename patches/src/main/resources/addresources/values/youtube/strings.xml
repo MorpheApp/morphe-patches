@@ -848,6 +848,9 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Hide or show toolbar components</string>
+    <string name="morphe_hide_toolbar_cast_button_title">Hide Cast</string>
+    <string name="morphe_hide_toolbar_cast_button_summary_on">Cast button is hidden</string>
+    <string name="morphe_hide_toolbar_cast_button_summary_off">Cast button is shown</string>
     <string name="morphe_hide_toolbar_create_button_title">Hide Create</string>
     <string name="morphe_hide_toolbar_create_button_summary_on">Create button is hidden</string>
     <string name="morphe_hide_toolbar_create_button_summary_off">Create button is shown</string>

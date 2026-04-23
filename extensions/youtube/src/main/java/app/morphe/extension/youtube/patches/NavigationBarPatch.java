@@ -414,6 +414,23 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
+    public static void hideCastButton(MenuItem menuItem) {
+        if (Settings.HIDE_TOOLBAR_CAST_BUTTON.get() && menuItem != null) {
+            menuItem.setVisible(false);
+            menuItem.setEnabled(false);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideCastButton(boolean original) {
+        return !Settings.HIDE_TOOLBAR_CAST_BUTTON.get() && original;
+    }
+
+    /**
+     * Injection point.
+     */
     public static void hideCreateButton(String enumName, View parentView, ImageView imageView) {
         boolean shouldHide = HIDE_TOOLBAR_CREATE_BUTTON && equalsAny(enumName, CREATE_BUTTON_ENUMS);
         hideViewUnderCondition(shouldHide, parentView);

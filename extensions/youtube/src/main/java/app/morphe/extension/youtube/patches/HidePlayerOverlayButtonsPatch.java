@@ -4,7 +4,9 @@ import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ActionMenuView;
 import android.widget.ImageView;
+import android.widget.Toolbar;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -29,17 +31,34 @@ public final class HidePlayerOverlayButtonsPatch {
     /**
      * Injection point.
      */
-    public static int getCastButtonOverrideV2(int original) {
-        return Settings.HIDE_CAST_BUTTON.get() ? View.GONE : original;
+    public static int getGlobalCastButtonOverride(View view, int original) {
+        boolean isToolbar = false;
+        if (view != null && view.getParent() != null) {
+            var parent = view.getParent();
+            if (parent instanceof ActionMenuView || parent instanceof Toolbar) {
+                isToolbar = true;
+            }
+        }
+
+        if (isToolbar) {
+            return Settings.HIDE_TOOLBAR_CAST_BUTTON.get() ? View.GONE : original;
+        } else {
+            return Settings.HIDE_CAST_BUTTON.get() ? View.GONE : original;
+        }
     }
 
     /**
      * Injection point.
      */
-    public static boolean getCastButtonOverrideV2(boolean original) {
-        if (Settings.HIDE_CAST_BUTTON.get()) return false;
+    public static boolean getPlayerCastButtonOverride(boolean original) {
+        return !Settings.HIDE_CAST_BUTTON.get() && original;
+    }
 
-        return original;
+    /**
+     * Injection point.
+     */
+    public static int getPlayerCastButtonVisibility(int original) {
+        return Settings.HIDE_CAST_BUTTON.get() ? View.GONE : original;
     }
 
     /**
@@ -122,9 +141,7 @@ public final class HidePlayerOverlayButtonsPatch {
             return;
         }
 
-        Utils.runOnMainThread(() -> {
-            hideView(parentView, PLAYER_OVERFLOW_BUTTON_ID);
-        });
+        Utils.runOnMainThread(() -> hideView(parentView, PLAYER_OVERFLOW_BUTTON_ID));
     }
 
     /**

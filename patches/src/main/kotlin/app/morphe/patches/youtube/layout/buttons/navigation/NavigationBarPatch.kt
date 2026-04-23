@@ -355,6 +355,7 @@ val navigationBarPatch = bytecodePatch(
         //
 
         val toolbarPreferences = mutableSetOf(
+            SwitchPreference("morphe_hide_toolbar_cast_button"),
             SwitchPreference("morphe_hide_toolbar_create_button"),
             SwitchPreference("morphe_hide_toolbar_microphone_button"),
             SwitchPreference("morphe_hide_toolbar_notification_button"),
@@ -379,6 +380,42 @@ val navigationBarPatch = bytecodePatch(
         hookToolBar("$EXTENSION_CLASS->hideNotificationButton")
         hookToolBar("$EXTENSION_CLASS->hideSearchButton")
 
+        //
+        // Hide cast button
+        //
+        CastMenuItemInitializeFingerprint.let {
+            it.method.apply {
+                val index = indexOfFirstInstructionOrThrow {
+                    getReference<MethodReference>()?.name == "setShowAsAction"
+                } + 1
+
+                addInstruction(
+                    index,
+                    "invoke-static { p1 }, $EXTENSION_CLASS->hideCastButton(Landroid/view/MenuItem;)V"
+                )
+            }
+        }
+
+        CastMenuItemVisibilityFingerprint.let {
+            it.method.apply {
+                val index = indexOfFirstInstructionOrThrow {
+                    getReference<MethodReference>()?.name == "setVisible"
+                }
+
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
+                val visibilityRegister = instruction.registerD
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(Z)Z
+                        move-result v$visibilityRegister
+                    """
+                )
+            }
+        }
+
+        //
         // Hide old search button
         //
         // Old search button appears in the Library tab when the app is first installed,
