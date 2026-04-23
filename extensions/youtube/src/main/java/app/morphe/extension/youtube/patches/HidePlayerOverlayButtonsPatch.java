@@ -4,10 +4,7 @@ import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewParent;
-import android.widget.ActionMenuView;
 import android.widget.ImageView;
-import android.widget.Toolbar;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -32,27 +29,9 @@ public final class HidePlayerOverlayButtonsPatch {
     /**
      * Injection point.
      */
-    public static int getGlobalCastButtonOverride(View view, int original) {
-        boolean isToolbar = false;
-
-        if (view != null) {
-            ViewParent parent = view.getParent();
-            int depth = 0;
-            while (parent != null && depth < 5) {
-                if (parent instanceof ActionMenuView || parent instanceof Toolbar) {
-                    isToolbar = true;
-                    break;
-                }
-                parent = parent.getParent();
-                depth++;
-            }
-        }
-
-        if (isToolbar) {
-            return Settings.HIDE_TOOLBAR_CAST_BUTTON.get() ? View.GONE : original;
-        } else {
-            return Settings.HIDE_CAST_BUTTON.get() ? View.GONE : original;
-        }
+    public static int getGlobalCastButtonOverride(int original) {
+        return (Settings.HIDE_CAST_BUTTON.get()
+                && Settings.HIDE_TOOLBAR_CAST_BUTTON.get()) ? View.GONE : original;
     }
 
     /**
