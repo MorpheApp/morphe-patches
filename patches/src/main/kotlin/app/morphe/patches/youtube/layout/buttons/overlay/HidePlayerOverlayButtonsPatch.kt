@@ -107,7 +107,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 val visibilityRegister = instruction.registerD
 
                 addInstructions(
-                    index + 1, """
+                    index, """
                 invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(I)I
                 move-result v$visibilityRegister
             """
