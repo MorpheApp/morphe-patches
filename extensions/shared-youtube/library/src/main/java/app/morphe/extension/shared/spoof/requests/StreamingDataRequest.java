@@ -179,7 +179,18 @@ public class StreamingDataRequest {
 
         try {
             Route.CompiledRoute route = clientType.usePlayerEndpoint ? GET_PLAYER_STREAMING_DATA : GET_REEL_STREAMING_DATA;
-            HttpURLConnection connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(route, clientType);
+            HttpURLConnection connection =
+                PlayerRoutes.getPlayerResponseConnectionFromRoute(
+                    route,
+
+                    Arrays.asList(
+                        clientType.userAgent,
+
+                        String.valueOf(clientType.id),
+
+                        clientType.clientVersion
+                    )
+                );
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
 

@@ -20,6 +20,8 @@ import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.shared.spoof.requests.VideoDetailsRequest;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -103,7 +105,38 @@ public class CopyVideoURLButton {
     }
 
     public static void copyURL(boolean withTimestamp) {
+        //TODO -> Move the following new button to a new location and restore the previous
+
         try {
+            if (SpoofVideoStreamsPatch.currentVideoRequestHeader != null) {
+                Object defaultAudioTrackNameRequest = new VideoDetailsRequest(
+                    VideoInformation.getVideoId(),
+
+                    SpoofVideoStreamsPatch.currentVideoRequestHeader,
+
+                    "saveVideoToWatchLater"
+                )
+                .getRequestedInfo();
+
+                if (defaultAudioTrackNameRequest instanceof String responseRequest) {
+                    Logger.printInfo(() -> responseRequest);
+
+                    if (responseRequest.contains("STATUS_SUCCEEDED")) {
+                        if (responseRequest.contains("\"playlistEditResults\"")) {
+                            Logger.printInfo(() -> "OK - Video saved");
+                        } else {
+                            Logger.printInfo(() -> "ERROR - Video already saved in watch later playlist");
+                        }
+                    }
+
+                    Logger.printInfo(() -> responseRequest);
+                }
+            }
+        } catch (Exception e) {
+            Logger.printException(() -> "Failed to save video in watch later playlist", e);
+        }
+
+        /*try {
             StringBuilder builder = new StringBuilder("https://youtu.be/");
             builder.append(VideoInformation.getVideoId());
             final long currentVideoTimeInSeconds = appendCurrentVideoTimeInSeconds(withTimestamp, builder);
@@ -120,7 +153,7 @@ public class CopyVideoURLButton {
             }
         } catch (Exception e) {
             Logger.printException(() -> "Failed to generate video URL", e);
-        }
+        }*/
     }
 
     private static long appendCurrentVideoTimeInSeconds(boolean withTimestamp, StringBuilder builder) {

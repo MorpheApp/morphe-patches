@@ -15,6 +15,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.util.List;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
@@ -133,14 +134,14 @@ final class PlayerRoutes {
     }
 
     @SuppressWarnings("SameParameterValue")
-    static HttpURLConnection getPlayerResponseConnectionFromRoute(Route.CompiledRoute route, ClientType clientType) throws IOException {
+    static HttpURLConnection getPlayerResponseConnectionFromRoute(Route.CompiledRoute route, List<Object> clientTypeInfo) throws IOException {
         var connection = Requester.getConnectionFromCompiledRoute(YT_API_URL, route);
 
         connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("User-Agent", clientType.userAgent);
+        connection.setRequestProperty("User-Agent", (String) clientTypeInfo.get(0));
         // Not a typo. "Client-Name" uses the client type id.
-        connection.setRequestProperty("X-YouTube-Client-Name", String.valueOf(clientType.id));
-        connection.setRequestProperty("X-YouTube-Client-Version", clientType.clientVersion);
+        connection.setRequestProperty("X-YouTube-Client-Name", (String) clientTypeInfo.get(1));
+        connection.setRequestProperty("X-YouTube-Client-Version", (String) clientTypeInfo.get(2));
 
         connection.setUseCaches(false);
         connection.setDoOutput(true);

@@ -8,12 +8,14 @@ import android.text.TextUtils;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.innertube.PlayerResponseOuterClass;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
@@ -22,6 +24,7 @@ import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
+    public static Map<String, String> currentVideoRequestHeader;
 
     public static final class JavaScriptClientAvailability implements Setting.Availability {
         @Override
@@ -296,6 +299,8 @@ public class SpoofVideoStreamsPatch {
                     Logger.printException(() -> "Ignoring request with no ID: " + url);
                     return;
                 }
+
+                currentVideoRequestHeader = requestHeaders;
 
                 StreamingDataRequest.fetchRequest(id, requestHeaders);
             } catch (Exception ex) {
