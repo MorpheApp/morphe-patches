@@ -1,10 +1,13 @@
 package app.morphe.patches.youtube.layout.shortsplayer
 
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
@@ -94,96 +97,99 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         ExitVideoPlayerFingerprint.method.apply {
             // TODO: Check if this logic works for older app targets as well.
             if (is_21_07_or_greater) {
-                findInstructionIndicesReversedOrThrow(
-                    methodCall(name = "finish", parameters = listOf())
-                ).forEach {index ->
-                    val returnIndex = indexOfFirstInstructionOrThrow(
-                        index, Opcode.RETURN_VOID
+                val finishInvokePatterns = listOf(
+                    Fingerprint(
+                        filters = OpcodesFilter.opcodesToFilters(
+                            Opcode.IF_NEZ,
+                            Opcode.INVOKE_INTERFACE,
+                            Opcode.MOVE_RESULT_OBJECT,
+                            Opcode.CHECK_CAST,
+                            Opcode.IGET_OBJECT,
+                            Opcode.IGET_OBJECT,
+                            Opcode.SGET_OBJECT,
+                            Opcode.IF_EQ,
+                            Opcode.INVOKE_INTERFACE
+                        )
+                    ),
+
+                    Fingerprint(
+                        filters = OpcodesFilter.opcodesToFilters(
+                            Opcode.IF_EQZ,
+                            Opcode.INVOKE_VIRTUAL,
+                            Opcode.RETURN_VOID,
+                            Opcode.INVOKE_INTERFACE,
+                            Opcode.MOVE_RESULT_OBJECT,
+                            Opcode.CHECK_CAST,
+                            Opcode.INVOKE_INTERFACE,
+                            Opcode.MOVE_RESULT,
+                            Opcode.IF_NEZ
+                        )
                     )
-
-                    if (returnIndex == this.implementation!!.instructions.lastIndex) {
-                        val freeRegister = findFreeRegister(index)
-
-                        // Jumps to last index
-                        addInstructionsAtControlFlowLabel(
-                            index,
-                            """
-                                invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
-                                move-result v$freeRegister      
-                                if-eqz v$freeRegister, :doNotCallActivityFinish
-                                return-void   
-                                :doNotCallActivityFinish
-                                nop      
-                            """
-                        )
-                    } else {
-                        // Must check free register after the return index.
-                        val freeRegister = findFreeRegister(returnIndex + 1)
-
-                        addInstructionsAtControlFlowLabel(
-                            index,
-                            """
-                                invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
-                                move-result v$freeRegister      
-                                if-eqz v$freeRegister, :doNotCallActivityFinish
-                            """, ExternalLabel(
-                                "doNotCallActivityFinish",
-                                getInstruction(returnIndex + 1)
-                            )
-                        )
-                    }
-                }
-                return@apply
-            }
-
-            // Method call for Activity.finish()
-            val finishIndexFirst = indexOfFirstInstructionOrThrow {
-                val reference = getReference<MethodReference>()
-                reference?.name == "finish"
-            }
-
-            // Second Activity.finish() call. Has been present since 19.x but started
-            // to interfere with back to exit fullscreen around 20.47.
-            val finishIndexSecond = indexOfFirstInstruction(finishIndexFirst + 1) {
-                val reference = getReference<MethodReference>()
-                reference?.name == "finish"
-            }
-            val getBooleanFieldIndex = indexOfFirstInstructionReversedOrThrow(finishIndexSecond) {
-                opcode == Opcode.IGET_BOOLEAN
-            }
-            val booleanRegister = getInstruction<TwoRegisterInstruction>(getBooleanFieldIndex).registerA
-
-            addInstructions(
-                getBooleanFieldIndex + 1,
-                """
-                    invoke-static { v$booleanRegister }, $EXTENSION_CLASS->overrideBackPressToExit(Z)Z    
-                    move-result v$booleanRegister
-                """
-            )
-
-            // Surround first activity.finish() and return-void with conditional check.
-            val returnVoidIndex = indexOfFirstInstructionOrThrow(
-                finishIndexFirst, Opcode.RETURN_VOID
-            )
-            // Find free register using index after return void (new control flow path added below).
-            val freeRegister = findFreeRegister(
-                returnVoidIndex + 1,
-                // Exclude all registers used by only instruction we will skip over.
-                getInstruction(finishIndexFirst).registersUsed
-            )
-
-            addInstructionsAtControlFlowLabel(
-                finishIndexFirst,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :doNotCallActivityFinish
-                """,
-                ExternalLabel(
-                    "doNotCallActivityFinish",
-                    getInstruction(returnVoidIndex + 1)
                 )
-            )
+
+                finishInvokePatterns.forEach { fingerprint ->
+                    val instructionIndex = fingerprint.match(this).instructionMatches[0].index
+
+                    addInstructionsAtControlFlowLabel(
+                        instructionIndex,
+                        """
+                        invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
+                        move-result v${getInstruction(instructionIndex).registersUsed[0]}
+                    """
+                    )
+                }
+            } else {
+                // Method call for Activity.finish()
+                val finishIndexFirst = indexOfFirstInstructionOrThrow {
+                    val reference = getReference<MethodReference>()
+                    reference?.name == "finish"
+                }
+
+                // Second Activity.finish() call. Has been present since 19.x but started
+                // to interfere with back to exit fullscreen around 20.47.
+                val finishIndexSecond = indexOfFirstInstruction(finishIndexFirst + 1) {
+                    val reference = getReference<MethodReference>()
+                    reference?.name == "finish"
+                }
+                val getBooleanFieldIndex =
+                    indexOfFirstInstructionReversedOrThrow(finishIndexSecond) {
+                        opcode == Opcode.IGET_BOOLEAN
+                    }
+                val booleanRegister =
+                    getInstruction<TwoRegisterInstruction>(getBooleanFieldIndex).registerA
+
+                addInstructions(
+                    getBooleanFieldIndex + 1,
+                    """
+                        invoke-static { v$booleanRegister }, $EXTENSION_CLASS->overrideBackPressToExit(Z)Z    
+                        move-result v$booleanRegister
+                    """
+                )
+
+                // Surround first activity.finish() and return-void with conditional check.
+                val returnVoidIndex = indexOfFirstInstructionOrThrow(
+                    finishIndexFirst, Opcode.RETURN_VOID
+                )
+                // Find free register using index after return void (new control flow path added below).
+                val freeRegister = findFreeRegister(
+                    returnVoidIndex + 1,
+                    // Exclude all registers used by only instruction we will skip over.
+                    getInstruction(finishIndexFirst).registersUsed
+                )
+
+                addInstructionsAtControlFlowLabel(
+                    finishIndexFirst,
+                    """
+                        invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
+                        move-result v$freeRegister
+                        if-eqz v$freeRegister, :doNotCallActivityFinish
+                    """,
+                    ExternalLabel(
+                        "doNotCallActivityFinish",
+                        getInstruction(returnVoidIndex + 1)
+                    )
+                )
+            }
         }
     }
 }
