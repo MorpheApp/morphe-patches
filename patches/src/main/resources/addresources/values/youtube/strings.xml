@@ -1556,6 +1556,11 @@ Limitation: Using the back button on the toolbar may not work"</string>
     <string name="morphe_shorts_player_type_regular_player">Regular player</string>
     <string name="morphe_shorts_player_type_regular_player_fullscreen">Regular player fullscreen</string>
 
+    <!-- layout.shortsplayer.shortsDoubleTapToLikePatch -->
+    <string name="morphe_shorts_double_tap_to_like_title">Disable Shorts double tap to like</string>
+    <string name="morphe_shorts_double_tap_to_like_summary_on">Shorts double tap to like is blocked</string>
+    <string name="morphe_shorts_double_tap_to_like_summary_off">Shorts double tap to like is allowed</string>
+
     <!-- layout.shortsautoplay.shortsAutoplayPatch -->
     <string name="morphe_shorts_autoplay_title">Autoplay Shorts</string>
     <string name="morphe_shorts_autoplay_summary_on">Shorts will autoplay</string>
