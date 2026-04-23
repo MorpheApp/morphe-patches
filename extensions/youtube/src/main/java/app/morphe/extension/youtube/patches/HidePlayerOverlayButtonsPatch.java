@@ -29,23 +29,19 @@ public final class HidePlayerOverlayButtonsPatch {
     /**
      * Injection point.
      */
-    public static int getGlobalCastButtonOverride(int original) {
-        return (Settings.HIDE_CAST_BUTTON.get()
-                && Settings.HIDE_TOOLBAR_CAST_BUTTON.get()) ? View.GONE : original;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static boolean getPlayerCastButtonOverride(boolean original) {
-        return !Settings.HIDE_CAST_BUTTON.get() && original;
-    }
-
-    /**
-     * Injection point.
-     */
-    public static int getPlayerCastButtonVisibility(int original) {
+    public static int hideCastButton(int original) {
         return Settings.HIDE_CAST_BUTTON.get() ? View.GONE : original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean getCastButtonOverride(boolean original) {
+        if (Settings.HIDE_CAST_BUTTON.get()) {
+            return false;
+        }
+
+        return original;
     }
 
     /**

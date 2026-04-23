@@ -396,24 +396,12 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
-        CastMenuItemVisibilityFingerprint.let {
-            it.method.apply {
-                val index = indexOfFirstInstructionOrThrow {
-                    getReference<MethodReference>()?.name == "setVisible"
-                }
-
-                val instruction = getInstruction<FiveRegisterInstruction>(index)
-                val visibilityRegister = instruction.registerD
-
-                addInstructions(
-                    index,
-                    """
-                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(Z)Z
-                        move-result v$visibilityRegister
-                    """
-                )
-            }
-        }
+        CastMenuItemVisibilityFingerprint.method.addInstructions(
+            0, """
+                invoke-static { p1 }, $EXTENSION_CLASS->hideCastButton(Z)Z
+                move-result p1
+                """
+        )
 
         //
         // Hide old search button

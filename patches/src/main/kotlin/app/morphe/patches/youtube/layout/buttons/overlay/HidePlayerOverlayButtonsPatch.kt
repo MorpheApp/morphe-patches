@@ -98,13 +98,22 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide cast button.
 
-        MediaRouteButtonFingerprint.method.addInstructions(
-            0,
+        PlayerButtonFingerprint.let {
+            it.method.apply {
+                val index = indexOfFirstInstructionOrThrow {
+                    getReference<MethodReference>()?.name == "setVisibility"
+                }
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
+                val visibilityRegister = instruction.registerD
+
+                addInstructions(
+                    index + 1, """
+                invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(I)I
+                move-result v$visibilityRegister
             """
-                invoke-static { p0, p1 }, $EXTENSION_CLASS->getGlobalCastButtonOverride(Landroid/view/View;I)I
-                move-result p1
-            """
-        )
+                )
+            }
+        }
 
         if (is_20_28_or_greater) {
             arrayOf(
@@ -114,7 +123,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 fingerprint.let {
                     it.method.insertLiteralOverride(
                         it.instructionMatches.first().index,
-                        "$EXTENSION_CLASS->getPlayerCastButtonOverride(Z)Z"
+                        "$EXTENSION_CLASS->getCastButtonOverride(Z)Z"
                     )
                 }
             }

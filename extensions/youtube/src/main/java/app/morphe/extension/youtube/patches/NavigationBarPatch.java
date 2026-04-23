@@ -414,18 +414,18 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
-    public static void hideCastButton(MenuItem menuItem) {
-        if (Settings.HIDE_TOOLBAR_CAST_BUTTON.get() && menuItem != null) {
-            menuItem.setVisible(false);
-            menuItem.setEnabled(false);
-        }
+    public static boolean hideCastButton(boolean original) {
+        return !Settings.HIDE_TOOLBAR_CAST_BUTTON.get() && original;
     }
 
     /**
      * Injection point.
      */
-    public static boolean hideCastButton(boolean original) {
-        return !Settings.HIDE_TOOLBAR_CAST_BUTTON.get() && original;
+    public static void hideCastButton(MenuItem menuItem) {
+        if (Settings.HIDE_TOOLBAR_CAST_BUTTON.get()) {
+            menuItem.setVisible(false);
+            menuItem.setEnabled(false);
+        }
     }
 
     /**
