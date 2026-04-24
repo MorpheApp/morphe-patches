@@ -385,12 +385,8 @@ val navigationBarPatch = bytecodePatch(
         //
         CastMenuItemInitializeFingerprint.let {
             it.method.apply {
-                val index = indexOfFirstInstructionOrThrow {
-                    getReference<MethodReference>()?.name == "setShowAsAction"
-                }
-
-                val instruction = getInstruction<FiveRegisterInstruction>(index)
-                val menuItemRegister = instruction.registerC
+                val index = it.instructionMatches.last().index
+                val menuItemRegister = getInstruction<FiveRegisterInstruction>(index).registerC
 
                 addInstruction(
                     index,
@@ -401,18 +397,15 @@ val navigationBarPatch = bytecodePatch(
 
         CastMenuItemVisibilityFingerprint.let {
             it.method.apply {
-                val index = indexOfFirstInstructionOrThrow {
-                    getReference<MethodReference>()?.name == "setVisible"
-                }
-
-                val instruction = getInstruction<FiveRegisterInstruction>(index)
-                val visibilityRegister = instruction.registerD
+                val index = it.instructionMatches.last().index
+                val visibilityRegister = getInstruction<FiveRegisterInstruction>(index).registerD
 
                 addInstructions(
-                    index, """
+                    index,
+                    """
                         invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(Z)Z
                         move-result v$visibilityRegister
-                        """
+                    """
                 )
             }
         }

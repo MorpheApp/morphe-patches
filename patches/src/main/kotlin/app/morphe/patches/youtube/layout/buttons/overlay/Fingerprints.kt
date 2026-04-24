@@ -15,6 +15,7 @@ internal object PlayerButtonFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
+        methodCall(name = "setVisibility"),
         literal(11208L)
     )
 )

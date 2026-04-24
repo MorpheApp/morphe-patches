@@ -100,17 +100,15 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         PlayerButtonFingerprint.let {
             it.method.apply {
-                val index = indexOfFirstInstructionOrThrow {
-                    getReference<MethodReference>()?.name == "setVisibility"
-                }
-                val instruction = getInstruction<FiveRegisterInstruction>(index)
-                val visibilityRegister = instruction.registerD
+                val index = it.instructionMatches.first().index
+                val visibilityRegister = getInstruction<FiveRegisterInstruction>(index).registerD
 
                 addInstructions(
-                    index, """
-                invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(I)I
-                move-result v$visibilityRegister
-            """
+                    index,
+                    """
+                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(I)I
+                        move-result v$visibilityRegister
+                    """
                 )
             }
         }
