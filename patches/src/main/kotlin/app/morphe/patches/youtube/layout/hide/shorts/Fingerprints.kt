@@ -89,14 +89,13 @@ internal object DoubleTapToLikeLogicFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf("Landroid/view/MotionEvent;"),
     filters = listOf(
-        methodCall("Landroid/view/MotionEvent;->getPointerCount()I"),
         literal(255),
         methodCall("Landroid/view/MotionEvent;->getEventTime()J"),
         methodCall("Ljava/lang/Math;->hypot(DD)D"),
         fieldAccess(
             opcode = Opcode.IGET_BOOLEAN,
             definingClass = "this",
-            location = MatchAfterWithin(15)
+            location = MatchAfterWithin(25)
         ),
         opcode(Opcode.IF_EQZ, location = MatchAfterWithin(5))
     )
