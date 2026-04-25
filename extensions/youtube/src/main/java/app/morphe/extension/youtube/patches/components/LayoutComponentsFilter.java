@@ -14,11 +14,13 @@ import static app.morphe.extension.shared.Utils.getFilterStrings;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +28,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
@@ -33,8 +36,6 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
-import app.morphe.extension.youtube.shared.NavigationBar;
-import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
@@ -55,7 +56,9 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup communityPosts;
     private final StringFilterGroup surveys;
     private final StringFilterGroup notifyMe;
+    private final StringFilterGroup searchFriction;
     private final StringFilterGroup singleItemInformationPanel;
+    private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup expandableMetadata;
     private final ByteArrayFilterGroup productCardBuffer;
     private final ByteArrayFilterGroup summaryCardBuffer;
@@ -187,6 +190,11 @@ public final class LayoutComponentsFilter extends Filter {
                 "publisher_transparency_panel"
         );
 
+        searchFriction = new StringFilterGroup(
+                Settings.HIDE_INFO_PANELS,
+                "search_friction"
+        );
+
         singleItemInformationPanel = new StringFilterGroup(
                 Settings.HIDE_INFO_PANELS,
                 "single_item_information_panel"
@@ -243,20 +251,10 @@ public final class LayoutComponentsFilter extends Filter {
                 "compact_channel_bar"
         );
 
-        final var relatedVideos = new StringFilterGroup(
-                Settings.HIDE_QUICK_ACTIONS_RELATED_VIDEOS,
-                "fullscreen_related_videos"
-        );
-
         final var playables = new StringFilterGroup(
                 Settings.HIDE_PLAYABLES,
                 "horizontal_gaming_shelf.e",
                 "mini_game_card.e"
-        );
-
-        final var quickActions = new StringFilterGroup(
-                Settings.HIDE_QUICK_ACTIONS,
-                "quick_actions"
         );
 
         final var imageShelf = new StringFilterGroup(
@@ -363,8 +361,7 @@ public final class LayoutComponentsFilter extends Filter {
                 paidPromotion,
                 playables,
                 postsShelf,
-                quickActions,
-                relatedVideos,
+                searchFriction,
                 singleItemInformationPanel,
                 subscribedChannelsBar,
                 subscribersCommunityGuidelines,
@@ -390,8 +387,22 @@ public final class LayoutComponentsFilter extends Filter {
         // Until 2024, medical information panels such as Covid-19 also used this identifier and were shown in the search results.
         // From 2025, the medical information panel is no longer shown in the search results.
         // Therefore, this identifier does not filter when the search bar is activated.
+        if (matchedGroup == searchFriction) {
+            singleItemInformationPanelIndex.set(0);
+            return false;
+        }
         if (matchedGroup == singleItemInformationPanel) {
-            return PlayerType.getCurrent().isMaximizedOrFullscreen() || !NavigationBar.isSearchBarActive();
+            int currentIndex = singleItemInformationPanelIndex.get();
+            if (currentIndex >= 0) {
+                if (currentIndex < 9) {
+                    singleItemInformationPanelIndex.incrementAndGet();
+                } else {
+                    singleItemInformationPanelIndex.set(-1);
+                }
+                return false;
+            } else {
+                return true;
+            }
         }
 
         // The groups are excluded from the filter due to the exceptions list below.
@@ -494,6 +505,26 @@ public final class LayoutComponentsFilter extends Filter {
      */
     public static void hideCrowdfundingBox(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_CROWDFUNDING_BOX, view);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatDonatorsBar(View view) {
+        if (view == null || !Settings.HIDE_LIVE_CHAT_DONATORS_BAR.get()) {
+            return;
+        }
+
+        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                if (view.getParent() instanceof RecyclerView shelfContainerRecycleView) {
+                    shelfContainerRecycleView.setVisibility(RecyclerView.GONE);
+                }
+            }
+        });
     }
 
     /**

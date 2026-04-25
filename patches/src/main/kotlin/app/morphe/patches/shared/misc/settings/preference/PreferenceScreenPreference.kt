@@ -61,7 +61,7 @@ open class PreferenceScreenPreference(
         UNSORTED("_sort_by_unsorted");
 
         /**
-         * @return The key with this sort type appended to to the end,
+         * @return The key with this sort type appended to the end,
          *         or if key is null then null is returned.
          */
         fun appendSortType(key: String?): String? {

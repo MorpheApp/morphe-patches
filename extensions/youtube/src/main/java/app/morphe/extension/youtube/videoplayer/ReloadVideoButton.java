@@ -22,7 +22,7 @@ import app.morphe.extension.youtube.settings.Settings;
 public class ReloadVideoButton {
 
     static {
-        if (Settings.RELOAD_VIDEO.get()) {
+        if (Settings.RELOAD_VIDEO_BUTTON.get()) {
             LegacyPlayerControlButton.incrementUpperButtonCount();
         }
     }
@@ -39,8 +39,8 @@ public class ReloadVideoButton {
                     controlsView,
                     "morphe_reload_video_button",
                     null,
-                    "morphe_reload_video",
-                    Settings.RELOAD_VIDEO::get,
+                    "morphe_reload_video_button",
+                    Settings.RELOAD_VIDEO_BUTTON::get,
                     v -> ReloadVideoPatch.reloadVideo(),
                     null
             );

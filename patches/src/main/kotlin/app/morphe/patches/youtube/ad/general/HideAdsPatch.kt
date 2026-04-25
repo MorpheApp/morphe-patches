@@ -42,17 +42,12 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction31i
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
-
-internal var adAttributionId = -1L
-    private set
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/components/AdsFilter;"
 
 private val hideAdsResourcePatch = resourcePatch {
     dependsOn(
         lithoFilterPatch,
         settingsPatch,
-        resourceMappingPatch,
         clientContextHookPatch,
         engagementPanelHookPatch,
         hideHorizontalShelvesPatch,
@@ -61,7 +56,6 @@ private val hideAdsResourcePatch = resourcePatch {
     execute {
         PreferenceScreen.ADS.addPreferences(
             SwitchPreference("morphe_hide_end_screen_store_banner"),
-            SwitchPreference("morphe_hide_fullscreen_ads"),
             SwitchPreference("morphe_hide_general_ads"),
             SwitchPreference("morphe_hide_merchandise_banners"),
             SwitchPreference("morphe_hide_paid_promotion_label"),
@@ -74,8 +68,6 @@ private val hideAdsResourcePatch = resourcePatch {
 
         addLithoFilter(EXTENSION_CLASS)
         addEngagementPanelIdHook("$EXTENSION_CLASS->hidePlayerPopupAds(Ljava/lang/String;)Z")
-
-        adAttributionId = getResourceId(ResourceType.ID, "ad_attribution")
     }
 }
 
@@ -86,9 +78,10 @@ val hideAdsPatch = bytecodePatch(
 ) {
     dependsOn(
         hideAdsResourcePatch,
-        hideFullscreenAdsPatch(PreferenceScreen.ADS),
         elementProtoParserHookPatch,
-        versionCheckPatch
+        resourceMappingPatch,
+        versionCheckPatch,
+        hideFullscreenAdsPatch(PreferenceScreen.ADS)
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -155,10 +148,19 @@ val hideAdsPatch = bytecodePatch(
             """
         )
 
-        // Hide ad views
+        // Hide ad views.
+
+        var adAttributionId = getResourceId(ResourceType.ID, "ad_attribution")
 
         classDefForEach { classDef ->
+            val mutableClassDef by lazy {
+                mutableClassDefBy(classDef)
+            }
             classDef.methods.forEach { method ->
+                val mutableMethod by lazy {
+                    mutableClassDef.findMutableMethodOf(method)
+                }
+
                 with(method.implementation) {
                     this?.instructions?.forEachIndexed { index, instruction ->
                         if (instruction.opcode != Opcode.CONST) {
@@ -179,14 +181,12 @@ val hideAdsPatch = bytecodePatch(
 
                             // Hide the view
                             val viewRegister = (this as Instruction35c).registerC
-                            mutableClassDefBy(classDef)
-                                .findMutableMethodOf(method)
-                                .injectHideViewCall(
-                                    insertIndex,
-                                    viewRegister,
-                                    EXTENSION_CLASS,
-                                    "hideAdAttributionView",
-                                )
+                            mutableMethod.injectHideViewCall(
+                                insertIndex,
+                                viewRegister,
+                                EXTENSION_CLASS,
+                                "hideAdAttributionView",
+                            )
                         }
                     }
                 }

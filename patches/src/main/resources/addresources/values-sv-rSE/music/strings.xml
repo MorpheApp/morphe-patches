@@ -30,12 +30,29 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_misc_title">Övrigt</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Dölj etiketten Skaffa Music Premium</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Etiketten Skaffa Music Premium är dold</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Etiketten Skaffa Music Premium visas</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Dölj videoannonser</string>
   <string name="morphe_music_hide_video_ads_summary_on">Videoannonser är dolda</string>
   <string name="morphe_music_hide_video_ads_summary_off">Videoannonser visas</string>
   <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Övertoningar</string>
+  <string name="morphe_music_crossfade_screen_summary">Smidiga övertoningar mellan låtar</string>
+  <string name="morphe_music_crossfade_enabled_title">Aktivera övertoningar</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Låtar tonas in i varandra</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Övertoningar är inaktiverade</string>
+  <string name="morphe_music_crossfade_curve_title">Övertoningskurva</string>
+  <string name="morphe_music_crossfade_curve_summary">Hur volymen tonas in och ut mellan låtar</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Lika effekt</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtil dröjning</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Gradvis minskning</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Mjuk S-kurva</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Övertoningens längd</string>
+  <string name="morphe_crossfade_duration_250ms">250 millisekunder</string>
+  <string name="morphe_crossfade_duration_500ms">500 millisekunder</string>
+  <string name="morphe_crossfade_duration_750ms">750 millisekunder</string>
   <string name="morphe_crossfade_duration_1000ms">1 sekund</string>
   <string name="morphe_crossfade_duration_2000ms">2 sekunder</string>
   <string name="morphe_crossfade_duration_3000ms">3 sekunder</string>
@@ -46,7 +63,21 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 sekunder</string>
   <string name="morphe_crossfade_duration_9000ms">9 sekunder</string>
   <string name="morphe_crossfade_duration_10000ms">10 sekunder</string>
+  <string name="morphe_music_crossfade_on_skip_title">Övertoning vid manuell överhoppning</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Övertoningar spelas när låtar hoppas över manuellt</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Manuella överhoppningar tonas inte</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Övertoning vid automatisk fortsättning</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Övertoningar spelas när en låt tar slut och fortsätter till nästa</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Automatisk fortsättning tonas inte</string>
+  <string name="morphe_music_crossfade_session_control_title">Sessionskontroll</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Tryck länge på knappen Shuffla för att pausa eller återuppta övertoningar"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Sessionskontroll är inaktiverad</string>
   <string name="morphe_music_crossfade_about_title">Om</string>
+  <string name="morphe_music_crossfade_about_summary">"Övertoningar är tillgängliga med YouTube Music 8.x
+
+Tryck länge på knappen Shuffla för att inaktivera/aktivera
+
+Funktionen implementerades av VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktivera permanent upprepning</string>
   <string name="morphe_music_play_permanent_repeat_summary_on">Permanent upprepning är aktiverad</string>

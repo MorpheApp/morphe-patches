@@ -9,11 +9,12 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
-import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
@@ -39,6 +40,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        playerOverlayButtonsSettingsPatch,
         resourceMappingPatch, // Used by fingerprints.
         versionCheckPatch
     )
@@ -46,15 +48,22 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_autoplay_button"),
-            SwitchPreference("morphe_hide_captions_button"),
-            SwitchPreference("morphe_hide_cast_button"),
-            SwitchPreference("morphe_hide_collapse_button"),
-            SwitchPreference("morphe_hide_fullscreen_button"),
-            SwitchPreference("morphe_hide_player_control_buttons_background"),
-            SwitchPreference("morphe_hide_player_previous_next_buttons"),
-            SwitchPreference("morphe_hide_settings_button"),
+        addPlayerOverlayPreferences(
+            PreferenceCategory(
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = setOf(
+                    SwitchPreference("morphe_hide_autoplay_button"),
+                    SwitchPreference("morphe_hide_captions_button"),
+                    SwitchPreference("morphe_hide_cast_button"),
+                    SwitchPreference("morphe_hide_collapse_button"),
+                    SwitchPreference("morphe_hide_fullscreen_button"),
+                    SwitchPreference("morphe_hide_player_control_buttons_background"),
+                    SwitchPreference("morphe_hide_player_previous_next_buttons"),
+                    SwitchPreference("morphe_hide_settings_button"),
+                )
+            )
         )
 
         // region Hide player previous/next & settings button.
@@ -89,13 +98,20 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
         // region Hide cast button.
 
-        MediaRouteButtonFingerprint.method.addInstructions(
-            0,
-            """
-                invoke-static { p1 }, $EXTENSION_CLASS->getCastButtonOverrideV2(I)I
-                move-result p1
-            """
-        )
+        PlayerButtonFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val visibilityRegister = getInstruction<FiveRegisterInstruction>(index).registerD
+
+                addInstructions(
+                    index,
+                    """
+                        invoke-static { v$visibilityRegister }, $EXTENSION_CLASS->hideCastButton(I)I
+                        move-result v$visibilityRegister
+                    """
+                )
+            }
+        }
 
         if (is_20_28_or_greater) {
             arrayOf(
@@ -105,7 +121,7 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 fingerprint.let {
                     it.method.insertLiteralOverride(
                         it.instructionMatches.first().index,
-                        "$EXTENSION_CLASS->getCastButtonOverrideV2(Z)Z"
+                        "$EXTENSION_CLASS->getCastButtonOverride(Z)Z"
                     )
                 }
             }

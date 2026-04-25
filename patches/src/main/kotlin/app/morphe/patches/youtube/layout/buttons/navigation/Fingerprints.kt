@@ -44,6 +44,24 @@ internal object CreatePivotBarFingerprint : Fingerprint(
     )
 )
 
+internal object CastMenuItemInitializeFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "castmediaroutebutton"),
+        methodCall(name = "setShowAsAction")
+    )
+)
+
+internal object CastMenuItemVisibilityFingerprint : Fingerprint(
+    classFingerprint = CastMenuItemInitializeFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        methodCall(name = "setVisible")
+    )
+)
+
 internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",

@@ -86,11 +86,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">सर्चमधील फ्लोटिंग मायक्रोफोन बटण लपविलेले आहे</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">सर्चमधील फ्लोटिंग मायक्रोफोन बटण दर्शविले जाते</string>
   <string name="morphe_hide_horizontal_shelves_title">horizontal शेल्फ लपवा</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"क्षैतिज शेल्फ लपविलेले आहेत, जसे की:
-
+  <string name="morphe_hide_horizontal_shelves_summary_on">"क्षितीज समांतर शेल्फ लपवले आहेत, जसे की:
 • ब्रेकिंग न्यूज
-• तुम्हाला आवडतील अशा कम्युनिटी पोस्ट्स
-• पुढे पहाणे
+• तुम्हाला आवडतील असे कम्युनिटी पोस्ट्स
+• पुढे पाहणे सुरू ठेवा
 • अधिक चॅनेल एक्सप्लोर करा
 • अधिक विषय एक्सप्लोर करा
 • तुमच्यासाठी
@@ -98,7 +97,7 @@ Second \"item\" text"</string>
 • सर्वात संबंधित
 • क्रिएटरच्या कम्युनिटीमधील पोस्ट्स
 • शॉपिंग
-• ते पुन्हा पहा"</string>
+• पुन्हा पहा"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Horizontal शेल्फ दर्शविले जातात</string>
   <string name="morphe_hide_image_shelf_title">इमेज शेल्फ लपवा</string>
   <string name="morphe_hide_image_shelf_summary_on">शोध परिणामांमध्ये प्रतिमा शेल्फ लपविला गेला आहे</string>
@@ -176,20 +175,17 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_hide_join_membership_button_title">\'जवळपास सामील व्हा\' बटण लपवा</string>
   <string name="morphe_hide_join_membership_button_summary_on">\'जवळपास सामील व्हा\' बटण लपविलेले आहे</string>
   <string name="morphe_hide_join_membership_button_summary_off">\'जवळपास सामील व्हा\' बटण दर्शविलेले आहे</string>
+  <string name="morphe_hide_live_chat_donators_bar_title">लाइव्ह चॅट देणगीदारांचा बार लपवा</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_on">लाइव्ह चॅट देणगीदारांचा बार लपलेला आहे</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_off">लाइव्ह चॅट देणगीदारांचा बार दिसत आहे</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the player overlay for live streamed videos after opening live chat. -->
+          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">\'लाइव्ह चॅट रीप्ले\' बटण लपवा</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_on">लाइव्ह चॅट रीप्ले बटण प्लेयर ओव्हरलेमध्ये लपवले आहे</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_off">लाइव्ह चॅट रीप्ले बटण प्लेयर ओव्हरलेमध्ये दर्शविले आहे</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">फुलस्क्रीनमध्ये लाईव्ह चॅट रिप्ले बटण लपलेले आहे</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">फुलस्क्रीनमध्ये लाईव्ह चॅट रिप्ले बटण दर्शविले जात आहे</string>
   <string name="morphe_hide_medical_panels_title">वैद्यकीय पॅनेल लपवा</string>
   <string name="morphe_hide_medical_panels_summary_on">वैद्यकीय पॅनेल लपवले आहेत</string>
   <string name="morphe_hide_medical_panels_summary_off">वैद्यकीय पॅनेल दर्शवले आहेत</string>
-  <string name="morphe_hide_quick_actions_title">त्वरित क्रिया लपवा</string>
-  <string name="morphe_hide_quick_actions_summary_on">पूर्ण स्क्रीनमध्ये त्वरित क्रिया लपवल्या आहेत</string>
-  <string name="morphe_hide_quick_actions_summary_off">पूर्ण स्क्रीनमध्ये त्वरित क्रिया दर्शविल्या आहेत</string>
-  <string name="morphe_hide_quick_actions_related_videos_title">संबंधित व्हिडिओंचे त्वरित क्रिया लपवा</string>
-  <string name="morphe_hide_quick_actions_related_videos_summary_on">त्वरित क्रियांमधील संबंधित व्हिडिओ लपवले आहेत</string>
-  <string name="morphe_hide_quick_actions_related_videos_summary_off">त्वरित क्रियांमधील संबंधित व्हिडिओ दर्शविले आहेत</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">सदस्य मार्गदर्शक तत्त्वे लपवा</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">सदस्यांसाठी समुदाय मार्गदर्शक तत्त्वे लपवली आहेत</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">सदस्यांसाठी समुदाय मार्गदर्शक तत्त्वे दर्शविली आहेत</string>
@@ -197,8 +193,8 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_hide_timed_reactions_summary_on">वेळेनुसार प्रतिक्रिया लपवल्या आहेत</string>
   <string name="morphe_hide_timed_reactions_summary_off">वेळेनुसार प्रतिक्रिया दर्शविल्या आहेत</string>
   <string name="morphe_hide_video_title_title">व्हिडिओ शीर्षक लपवा</string>
-  <string name="morphe_hide_video_title_summary_on">प्लेअर ओव्हरलेमध्ये व्हिडिओ शीर्षक लपविलेले आहे</string>
-  <string name="morphe_hide_video_title_summary_off">प्लेअर ओव्हरलेमध्ये व्हिडिओ शीर्षक दिसत आहे</string>
+  <string name="morphe_hide_video_title_summary_on">फुलस्क्रीनमध्ये व्हिडिओ शीर्षक लपलेले आहे</string>
+  <string name="morphe_hide_video_title_summary_off">फुलस्क्रीनमध्ये व्हिडिओ शीर्षक दर्शविले जात आहे</string>
   <string name="morphe_hide_description_components_screen_title">व्हिडिओ वर्णन</string>
   <string name="morphe_hide_description_components_screen_summary">व्हिडिओ वर्णन घटक लपवा किंवा दर्शवा</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'एआय-व्युत्पन्न व्हिडिओ सारांश\' लपवा</string>
@@ -385,7 +381,7 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_hide_upload_time_user_dialog_message">"मर्यादा:
 • शॉर्ट्स शेल्फ, चॅनेल पृष्ठे आणि शोध निकालांमध्ये अपलोडचे वेळापत्रक दिसू शकते.
 • हे वैशिष्ट्य ऑटोमोटिव्ह फॉर्म फॅक्टरमध्ये कार्य करत नाही."</string>
-  <string name="morphe_hide_keyword_content_screen_title">कीवर्ड सामग्री लपवा</string>
+  <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फिल्टर</string>
   <string name="morphe_hide_keyword_content_screen_summary">कीवर्ड फिल्टर वापरून feed आणि शोध व्हिडिओ लपवा</string>
   <string name="morphe_hide_keyword_content_home_title">कीवर्डद्वारे होम व्हिडिओ लपवा</string>
   <string name="morphe_hide_keyword_content_home_summary_on">होम टॅबमधील व्हिडिओ कीवर्डद्वारे फिल्टर केलेले आहेत</string>
@@ -420,7 +416,7 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_hide_keyword_toast_invalid_conflicting">कीवर्डची विरोधाभासी घोषणा आहे: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">कीवर्ड खूप लहान आहे आणि अवतरण आवश्यक आहेत: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">कीवर्ड सर्व व्हिडिओ लपवेल: %s</string>
-  <!-- ad.general.hideAdsResourcePatch -->
+  <!-- ad.general.hideAdsPatch -->
   <string name="morphe_hide_end_screen_store_banner_title">एंड स्क्रीन स्टोअर बॅनर लपवा</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">एंड स्क्रीन स्टोअर बॅनर लपलेला आहे</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">एंड स्क्रीन स्टोअर बॅनर दर्शविला जातो</string>
@@ -453,15 +449,15 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_hide_video_ads_summary_on">व्हिडिओ जाहिराती लपवलेल्या आहेत</string>
   <string name="morphe_hide_video_ads_summary_off">व्हिडिओ जाहिराती दाखवल्या जातात</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
-  <string name="morphe_share_copy_url_success">URL क्लिपबोर्डवर कॉपी केले</string>
-  <string name="morphe_share_copy_url_timestamp_success">वेळ टिकटसह URL कॉपी केले</string>
-  <string name="morphe_copy_video_url_title">कॉपी व्हिडिओ URL बटण दाखवा</string>
-  <string name="morphe_copy_video_url_summary_on">व्हिडिओ URL कॉपी बटण दिसत आहे. व्हिडिओ URL कॉपी करण्यासाठी टॅप करा. टाइमस्टॅम्पसह कॉपी करण्यासाठी दाबून ठेवा</string>
-  <string name="morphe_copy_video_url_summary_off">व्हिडिओ URL कॉपी बटण दिसत नाही</string>
-  <string name="morphe_copy_video_url_timestamp_title">टाइमस्टॅम्प कॉपी करा</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">कॉपी व्हिडिओ यूआरएल बटण टाइमस्टॅम्पसह कॉपी करते. दीर्घकाळ दाबल्यास टाइमस्टॅम्पशिवाय कॉपी होते</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">कॉपी व्हिडिओ यूआरएल बटण टाइमस्टॅम्पशिवाय कॉपी करते. दीर्घकाळ दाबल्यास टाइमस्टॅम्पसह कॉपी होते</string>
+  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
+  <string name="morphe_share_copy_url_button_success">URL क्लिपबोर्डवर कॉपी केले</string>
+  <string name="morphe_share_copy_url_button_timestamp_success">टाइमस्टॅम्पसह URL क्लिपबोर्डवर कॉपी केले</string>
+  <string name="morphe_copy_video_url_button_title">व्हिडिओ URL कॉपी करा दर्शवा</string>
+  <string name="morphe_copy_video_url_button_summary_on">व्हिडिओ URL कॉपी बटण दिसत आहे. व्हिडिओ URL कॉपी करण्यासाठी टॅप करा. टाइमस्टॅम्पसह कॉपी करण्यासाठी दाबून ठेवा</string>
+  <string name="morphe_copy_video_url_button_summary_off">व्हिडिओ URL कॉपी बटण दिसत नाही</string>
+  <string name="morphe_copy_video_url_button_timestamp_title">टाइमस्टॅम्प कॉपी करा</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_on">व्हिडिओ URL कॉपी बटण टाइमस्टॅम्पसह कॉपी करते. लांब दाबल्यास टाइमस्टॅम्पशिवाय कॉपी होते</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_off">व्हिडिओ URL कॉपी बटण टाइमस्टॅम्पशिवाय कॉपी करते. लांब दाबल्यास टाइमस्टॅम्पसह कॉपी होते</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">व्ह्यूअर डिसक्रेसन संवाद काढून टाका</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">संवाद काढून टाकला जाईल</string>
@@ -475,7 +471,7 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_disable_chapter_skip_double_tap_title">डबल टॅप चॅप्टर स्किप अक्षम करा</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">डबल टॅप कधीही पुढील/मागील अध्यायात स्किप ट्रिगर करू शकत नाही</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">डबल टॅप कधीकधी पुढील/मागील अध्यायात स्किप ट्रिगर करू शकते</string>
-  <!-- interaction.downloads.downloadsResourcePatch -->
+  <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">बाह्य डाउनलोड्स</string>
   <string name="morphe_external_downloader_screen_summary">बाह्य डाउनलोडर वापरण्यासाठी सेटिंग्ज</string>
   <string name="morphe_external_downloader_title">डाउनलोड बटण दाखवा</string>
@@ -500,20 +496,18 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_loop_video_summary_on">व्हिडिओ लूप होईल</string>
   <string name="morphe_loop_video_summary_off">व्हिडिओ लूप होणार नाही</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">व्हिडिओ लूप बटण दर्शवा</string>
+  <string name="morphe_loop_video_button_title">लूप व्हिडिओ दर्शवा</string>
   <string name="morphe_loop_video_button_summary_on">व्हिडिओ लूप बटण दिसत आहे</string>
   <string name="morphe_loop_video_button_summary_off">व्हिडिओ लूप बटण दिसत नाही</string>
   <string name="morphe_loop_video_button_toast_on">व्हिडिओ लूप चालू आहे</string>
   <string name="morphe_loop_video_button_toast_off">व्हिडिओ लूप बंद आहे</string>
   <!-- interaction.playall.playAllButtonPatch -->
-  <string name="morphe_play_all_button_title">\'शो ऑल प्ले बटन\'</string>
-  <string name="morphe_play_all_button_summary_on">"सर्व प्ले बटन दर्शविले आहे
-चॅनेलवरून सर्व व्हिडिओंची प्लेलिस्ट तयार करण्यासाठी टॅप करा
-अUndo करण्यासाठी टॅप आणि होल्ड करा
+  <string name="morphe_play_all_button_title">प्ले ऑल दर्शवा</string>
+  <string name="morphe_play_all_button_summary_on">"प्ले ऑल बटण दर्शविले जात आहे. चॅनेलवरील सर्व व्हिडिओंची प्लेलिस्ट तयार करण्यासाठी टॅप करा. पूर्ववत करण्यासाठी टॅप आणि होल्ड करा
 
-माहिती: लाइव्ह स्ट्रीमवर हे काम करू शकत नाही"</string>
+माहिती: हे लाईव्ह स्ट्रीमवर कार्य करू शकत नाही"</string>
   <string name="morphe_play_all_button_summary_off">प्ले ऑल बटन दर्शविले नाही</string>
-  <string name="morphe_play_all_button_type_title">प्लेलिस्ट जनरेशन मोड</string>
+  <string name="morphe_play_all_button_type_title">प्लेलिस्ट तयार करा मोड</string>
   <string name="morphe_play_all_button_type_entry_0">सर्व सामग्री (वेळेनुसार क्रमवारी, चढता क्रम)</string>
   <string name="morphe_play_all_button_type_entry_1">सर्व सामग्री (वेळेनुसार क्रमवारी)</string>
   <string name="morphe_play_all_button_type_entry_2">सर्व सामग्री (लोकप्रियतेनुसार क्रमवारी)</string>
@@ -529,10 +523,10 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_play_all_button_type_entry_12">सदस्यांचे फक्त थेट प्रवाह</string>
   <string name="morphe_play_all_button_not_available_toast">चॅनेल आयडी जुळत नसल्यामुळे प्लेलिस्ट तयार करणे शक्य नाही</string>
   <!-- interaction.reload.reloadVideoPatch -->
-  <string name="morphe_reload_video_title">व्हिडिओ रीलोड बटण दर्शवा</string>
-  <string name="morphe_reload_video_summary_on">रीलोड व्हिडिओ बटण दर्शविले जाते</string>
-  <string name="morphe_reload_video_summary_off">रीलोड व्हिडिओ बटण दर्शविले जात नाही</string>
-  <string name="morphe_dismiss_player_not_available_toast">व्हिडिओ आयडी उपलब्ध नाही. कृपया व्हिडिओ पुन्हा मॅन्युअली उघडा.</string>
+  <string name="morphe_reload_video_button_title">व्हिडिओ रीलोड करा दर्शवा</string>
+  <string name="morphe_reload_video_button_summary_on">रीलोड व्हिडिओ बटण दर्शविले जाते</string>
+  <string name="morphe_reload_video_button_summary_off">रीलोड व्हिडिओ बटण दर्शविले जात नाही</string>
+  <string name="morphe_dismiss_player_not_available_toast">व्हिडिओ आयडी उपलब्ध नाही. कृपया व्हिडिओ व्यक्तिचलितपणे रीलोड करा</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">अचूक शोधण्याची हावभाव अक्षम करा</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">अचूक शोधण्याची हावभाव अक्षम केली आहे</string>
@@ -542,7 +536,7 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_livestream_dvr_summary_on">सर्व लाइव्हस्ट्रीमवर शोधण्याची परवानगी आहे</string>
   <string name="morphe_livestream_dvr_summary_off">लाइव्हस्ट्रीमवर शोधणे उपलब्ध नसेल</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_user_dialog_message">हे सक्षम केल्याने \'Spoof व्हिडिओ स्ट्रीम\' सक्षम नसेल, तर अनपेक्षित थेट प्रवाह शोध वर्तणूक होऊ शकते.</string>
+  <string name="morphe_livestream_dvr_user_dialog_message">हे सक्षम केल्यामुळे ‘स्पूफ व्हिडिओ स्ट्रीम’ सक्षम नसल्यास, लाईव्हस्ट्रीम शोधण्यात अनपेक्षित वर्तन होऊ शकते.</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">स्लाइड टू सीक सक्षम करा</string>
   <string name="morphe_slide_to_seek_summary_on">स्लाइड टू सीक सक्षम आहे</string>
@@ -551,7 +545,7 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_tap_to_seek_title">टॅप टू सीक सक्षम करा</string>
   <string name="morphe_tap_to_seek_summary_on">टॅप टू सीक सक्षम आहे</string>
   <string name="morphe_tap_to_seek_summary_off">टॅप टू सीक अक्षम आहे</string>
-  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
+  <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_brightness_title">ब्राइटनेस हावभाव सक्षम करा</string>
   <string name="morphe_swipe_brightness_summary_on">"फुलस्क्रीन ब्राइटनेस स्वाइप सक्षम आहे
 
@@ -603,8 +597,9 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_swipe_change_video_summary_on">फुलस्क्रीन मोडमध्ये स्वॅप केल्यास पुढील/मागील व्हिडिओमध्ये बदल होईल</string>
   <string name="morphe_swipe_change_video_summary_off">फुलस्क्रीन मोडमध्ये स्वॅप केल्यास पुढील/मागील व्हिडिओमध्ये बदल होणार नाही</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">ॲक्शन बटणे</string>
-  <string name="morphe_hide_buttons_screen_summary">व्हिडिओ अंतर्गत बटणे लपवा किंवा दर्शवा</string>
+  <string name="morphe_action_buttons_screen_title">ॲक्शन बटणे</string>
+  <string name="morphe_action_buttons_screen_summary">फुलस्क्रीन आणि पोर्ट्रेटमध्ये ॲक्शन बटणे लपवा किंवा दर्शवा</string>
+  <string name="morphe_portrait_buttons">पोर्ट्रेट बटणे</string>
   <string name="morphe_disable_like_subscribe_glow_title">लाईक आणि सबस्क्राईब चमक अक्षम करा</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">उल्लेख केल्यास लाईक आणि सबस्क्राईब बटण चमकणार नाही</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">उल्लेख केल्यास लाईक आणि सबस्क्राईब बटण चमकते</string>
@@ -670,6 +665,43 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_hide_save_button_title">सेव्ह बटण लपवा</string>
   <string name="morphe_hide_save_button_summary_on">सेव्ह बटण लपविलेले आहे</string>
   <string name="morphe_hide_save_button_summary_off">सेव्ह बटण दर्शविले जाईल</string>
+  <string name="morphe_fullscreen_buttons">फुलस्क्रीन बटणे</string>
+  <string name="morphe_hide_quick_actions_title">क्रिया बार लपवा</string>
+  <string name="morphe_hide_quick_actions_summary_on">क्रिया बार लपलेली आहे</string>
+  <string name="morphe_hide_quick_actions_summary_off">क्रिया बार दिसत आहे</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">आस्क लपवा</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">आस्क बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">आस्क बटण दर्शविले जात आहे</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">कॉमेंट्स लपवा</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">कॉमेंट्स बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">कॉमेंट्स बटण दर्शविले जात आहे</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">डिस्लाईक लपवा</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">डिस्लाईक बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">डिस्लाईक बटण दर्शविले जात आहे</string>
+  <string name="morphe_hide_quick_actions_like_button_title">लाईक लपवा</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">लाईक बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">लाईक बटण दर्शविले जात आहे</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">\'लाईव्ह चॅट\' लपवा</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">लाईव्ह चॅट बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">लाईव्ह चॅट बटण दर्शविले जात आहे</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">मिक्स लपवा</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">मिक्स बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">मिक्स बटण दर्शविले जात आहे</string>
+  <string name="morphe_hide_quick_actions_more_button_title">अधिक लपवा</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">अधिक बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">अधिक बटण दर्शविले जात आहे</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">\'अधिक व्हिडिओ\' लपवा</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">अधिक व्हिडिओ बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">अधिक व्हिडिओ बटण दर्शविले जात आहे</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">प्लेलिस्ट लपवा</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">प्लेलिस्ट बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">प्लेलिस्ट बटण दर्शविले जात आहे</string>
+  <string name="morphe_hide_quick_actions_save_button_title">सेव्ह लपवा</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">सेव्ह बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">सेव्ह बटण दर्शविले जात आहे</string>
+  <string name="morphe_hide_quick_actions_share_button_title">शेअर लपवा</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">शेअर बटण लपलेले आहे</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">शेअर बटण दर्शविले जात आहे</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">लेबल्स</string>
   <string name="morphe_captions_screen_summary">स्वयंचलितपणे सक्षम होण्यापासून किंवा कॅप्शन कुकीज सेट करण्यापासून अक्षम करा</string>
@@ -769,7 +801,10 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">गडद मोडमधील नेव्हिगेशन बार अपारदर्शक आहे</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">गडद मोडमधील नेव्हिगेशन बार अपारदर्शक किंवा पारदर्शक आहे</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
-  <string name="morphe_toolbar_screen_summary">टूलबार घटक लपवा किंवा बदला</string>
+  <string name="morphe_toolbar_screen_summary">टूलबार घटक लपवा किंवा दाखवा</string>
+  <string name="morphe_hide_toolbar_cast_button_title">कास्ट लपवा</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">कास्ट बटण लपलेले आहे</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">कास्ट बटण दिसत आहे</string>
   <string name="morphe_hide_toolbar_create_button_title">तयार लपवा</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">क्रिएट बटन लपविलेले आहे</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">क्रिएट बटन दिसत आहे</string>
@@ -793,7 +828,7 @@ YouTube सेटिंग्ज उघडण्यासाठी टॅप क
 Morphe सेटिंग्ज उघडण्यासाठी टॅप करा आणि होल्ड करा"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">पॉपआउट मेनू</string>
-  <string name="morphe_hide_player_flyout_summary">प्लेअर फ्लायआउट मेनू घटक लपवा किंवा दर्शवा</string>
+  <string name="morphe_hide_player_flyout_summary">फ्लायआउट मेनू घटक लपवा किंवा दर्शवा</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">सबटायटल्स लपवा</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">सबटायटल्स मेनू लपलेला आहे</string>
@@ -802,8 +837,8 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_hide_player_flyout_captions_footer_summary_on">कॅपशन्स मेनू फुटर लपविलेले आहे</string>
   <string name="morphe_hide_player_flyout_captions_footer_summary_off">कॅपशन्स मेनू फुटर दर्शविला गेला आहे</string>
   <string name="morphe_hide_player_flyout_captions_header_title">कॅपशन्स हेडर लपवा</string>
-  <string name="morphe_hide_player_flyout_captions_header_summary_on">कप्शन्स मेनू हेडर लपविलेले आहे</string>
-  <string name="morphe_hide_player_flyout_captions_header_summary_off">कप्शन्स मेनू हेडर दिसत आहे</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_on">कॅप्शन मेनू हेडर लपलेले आहे</string>
+  <string name="morphe_hide_player_flyout_captions_header_summary_off">कॅप्शन्स मेनू हेडर दाखवले जाते</string>
   <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_additional_settings_title">अतिरिक्त सेटिंग्ज / अधिक लपवा</string>
   <string name="morphe_hide_player_flyout_additional_settings_summary_on">अतिरिक्त सेटिंग्ज / अधिक मेनू लपविलेले आहे</string>
@@ -849,54 +884,56 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_hide_player_flyout_audio_track_not_available">"ऑडिओ ट्रॅक मेनू लपविला गेला आहे.
 
 ऑडिओ ट्रॅक मेनू दर्शविण्यासाठी, 'Spoof व्हिडिओ स्ट्रीम' 'Android Reel' किंवा 'TV' वर बदला."</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_title">ऑडिओ ट्रॅकfooter लपवा</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">ऑडिओ ट्रॅक मेनू footer लपविलेले आहे</string>
-  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">ऑडिओ ट्रॅक मेनू footer दिसत आहे</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_title">ऑडिओ ट्रॅक फुटर लपवा</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">ऑडिओ ट्रॅक मेनू फूटर लपवलेले आहे</string>
+  <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">ऑडिओ ट्रॅक मेनू फूटर दाखवले आहे</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_watch_in_vr_title">VR मध्ये पहा लपवा</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR मध्ये पहा मेनू लपलेला आहे</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">VR मध्ये पहा मेनू दिसत आहे</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_quality_title">गुणवत्ता लपवा</string>
-  <string name="morphe_hide_player_flyout_quality_summary_on">गुणवत्ता मेनू लपविलेले आहे</string>
-  <string name="morphe_hide_player_flyout_quality_summary_off">गुणवत्ता मेनू दिसत आहे</string>
-  <string name="morphe_hide_player_flyout_quality_footer_title">गुणवत्ता footer लपवा</string>
-  <string name="morphe_hide_player_flyout_quality_footer_summary_on">गुणवत्ता मेनू footer लपविलेले आहे</string>
-  <string name="morphe_hide_player_flyout_quality_footer_summary_off">गुणवत्ता मेनू footer दिसत आहे</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">गुणवत्ता हेडर लपवा</string>
-  <string name="morphe_hide_player_flyout_quality_header_summary_on">गुणवत्ता मेनू हेडर लपविलेले आहे</string>
-  <string name="morphe_hide_player_flyout_quality_header_summary_off">गुणवत्ता मेनू हेडर दिसत आहे</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">क्वालिटी मेनू लपवलेला आहे</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">क्वालिटी मेनू दाखवला जातो</string>
+  <string name="morphe_hide_player_flyout_quality_footer_title">क्वालिटी फूटर लपवा</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_on">क्वालिटी मेनू फूटर लपलेले आहे</string>
+  <string name="morphe_hide_player_flyout_quality_footer_summary_off">क्वालिटी मेनू फूटर दाखवले जाते</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">क्वालिटी हेडर लपवा</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_on">क्वालिटी मेनू हेडर लपलेले आहे</string>
+  <string name="morphe_hide_player_flyout_quality_header_summary_off">क्वालिटी मेनू हेडर दाखवले जाते</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">ऑटोपले प्रिव्ह्यू लपवा</string>
   <string name="morphe_hide_autoplay_preview_summary_on">ऑटोपले प्रिव्ह्यू लपविलेले आहे</string>
   <string name="morphe_hide_autoplay_preview_summary_off">ऑटोपले प्रिव्ह्यू दिसत आहे</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">ऑटोकॉम बटण लपवा</string>
+  <string name="morphe_overlay_buttons_screen_title">ओव्हरले बटणे</string>
+  <string name="morphe_overlay_buttons_screen_summary">ओव्हरले बटणे संबंधित घटक लपवा किंवा दर्शवा</string>
+  <string name="morphe_hide_autoplay_button_title">ऑटोप्ले लपवा</string>
   <string name="morphe_hide_autoplay_button_summary_on">ऑटोकॉम बटण लपलेले आहे</string>
   <string name="morphe_hide_autoplay_button_summary_off">ऑटोकॉम बटण दिसत आहे</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">कॅपशन्स बटण लपवा</string>
+  <string name="morphe_hide_captions_button_title">कॅपशन्स लपवा</string>
   <string name="morphe_hide_captions_button_summary_on">कॅपशन्स बटण लपवले आहे</string>
   <string name="morphe_hide_captions_button_summary_off">कॅपशन्स बटण दिसत आहे</string>
-  <string name="morphe_hide_cast_button_title">कास्ट बटण लपवा</string>
+  <string name="morphe_hide_cast_button_title">कास्ट लपवा</string>
   <string name="morphe_hide_cast_button_summary_on">कास्ट बटण लपवले आहे</string>
   <string name="morphe_hide_cast_button_summary_off">कास्ट बटण दिसत आहे</string>
-  <string name="morphe_hide_collapse_button_title">कॉलॅप्स बटण लपवा</string>
+  <string name="morphe_hide_collapse_button_title">कोलॅप्स लपवा</string>
   <string name="morphe_hide_collapse_button_summary_on">कॉलॅप्स बटण लपविलेले आहे</string>
   <string name="morphe_hide_collapse_button_summary_off">कॉलॅप्स बटण दर्शविलेले आहे</string>
-  <string name="morphe_hide_fullscreen_button_title">फुलस्क्रीन बटण लपवा</string>
+  <string name="morphe_hide_fullscreen_button_title">फुलस्क्रीन लपवा</string>
   <string name="morphe_hide_fullscreen_button_summary_on">फुलस्क्रीन बटण लपविलेले आहे</string>
   <string name="morphe_hide_fullscreen_button_summary_off">फुलस्क्रीन बटण दर्शविलेले आहे</string>
   <string name="morphe_hide_player_control_buttons_background_title">प्लेअर नियंत्रणांचे पार्श्वभूमी लपवा</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">प्लेअर नियंत्रणांचे पार्श्वभूमी लपवले आहे</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">प्लेअर नियंत्रणांचे पार्श्वभूमी दिसत आहे</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">मागील &amp; पुढील बटणे लपवा</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">मागील आणि पुढील लपवा</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">मागील &amp; पुढील बटणे लपवली आहेत</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">मागील &amp; पुढील बटणे दिसत आहेत</string>
-  <string name="morphe_hide_settings_button_title">hide_settings_button</string>
-  <string name="morphe_hide_settings_button_summary_on">settings_button_isHidden</string>
-  <string name="morphe_hide_settings_button_summary_off">settings_button_isShown</string>
-  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
+  <string name="morphe_hide_settings_button_title">सेटिंग्ज लपवा</string>
+  <string name="morphe_hide_settings_button_summary_on">सेटिंग्ज बटण लपवले आहे</string>
+  <string name="morphe_hide_settings_button_summary_off">सेटिंग्ज बटण दर्शविले जात आहे</string>
+  <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">अंतिम स्क्रीन कार्ड्स लपवा</string>
   <string name="morphe_hide_end_screen_cards_summary_on">अंतिम स्क्रीन कार्ड्स लपवलेले आहेत</string>
   <string name="morphe_hide_end_screen_cards_summary_off">अंतिम स्क्रीन कार्ड्स दिसत आहेत</string>
@@ -913,7 +950,7 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_disable_fullscreen_ambient_mode_title">पूर्ण स्क्रीनमध्ये एंबियंट मोड अक्षम करा</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">फुलस्क्रीनमध्ये ॲम्बियंट मोड अक्षम केला आहे</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">फुलस्क्रीनमध्ये ॲम्बियंट मोड सक्षम आहे</string>
-  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
+  <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">माहिती कार्ड्स लपवा</string>
   <string name="morphe_hide_info_cards_summary_on">माहिती कार्ड्स लपवलेले आहेत</string>
   <string name="morphe_hide_info_cards_summary_off">माहिती कार्ड्स दिसत आहेत</string>
@@ -932,7 +969,7 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_fullscreen_large_seekbar_title">पूर्ण स्क्रीन मोठ्या सिकबार सक्षम करा</string>
   <string name="morphe_fullscreen_large_seekbar_summary_on">पूर्ण स्क्रीन सिकबार मोठा आकार का आहे</string>
   <string name="morphe_fullscreen_large_seekbar_summary_off">पूर्ण स्क्रीन सिकबार सामान्य आकार का आहे</string>
-  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
+  <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_shorts_player_screen_title">शॉर्ट्स प्लेयर</string>
   <string name="morphe_shorts_player_screen_summary">शॉर्ट्स प्लेयर घटक लपवा किंवा दर्शवा</string>
   <string name="morphe_hide_shorts_channel_title">चॅनेल पृष्ठावर शॉर्ट्स लपवा</string>
@@ -1095,7 +1132,7 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_open_videos_fullscreen_portrait_title">पूर्णस्क्रीन पोर्ट्रेटमध्ये व्हिडिओ उघडा</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">व्हिडिओ पूर्णस्क्रीन मोडमध्ये उघडतात</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">व्हिडिओ पूर्णस्क्रीन मोडमध्ये उघडत नाहीत</string>
-  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
+  <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">प्लेअर ओव्हरले अपारदर्शकता</string>
   <string name="morphe_player_overlay_opacity_summary">0-100 दरम्यान अपारदर्शकता मूल्य, जेथे 0 म्हणजे पारदर्शक</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">प्लेअर ओव्हरले अपारदर्शकता 0-100 दरम्यान असावी</string>
@@ -1151,7 +1188,7 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_wide_searchbar_title">रुंद शोध बार सक्षम करा</string>
   <string name="morphe_wide_searchbar_summary_on">रुंद शोध बार सक्षम आहे</string>
   <string name="morphe_wide_searchbar_summary_off">रुंद शोध बार अक्षम आहे</string>
-  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
+  <!-- layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_sb_enable_sb">SponsorBlock सक्षम करा</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock हे YouTube व्हिडिओंच्या त्रासदायक भागांना वगळण्यासाठी एक समुदाया-आधारित प्रणाली आहे</string>
   <string name="morphe_sb_appearance_category">स्वरूपण</string>
@@ -1609,26 +1646,26 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_remember_video_quality_toast">डीफॉल्ट %1$s गुणवत्ता बदलली: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">शॉर्ट्स %1$s गुणवत्ता बदलली: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
-  <string name="morphe_playback_speed_dialog_button_title">गती संवाद बटण दर्शवा</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">स्पीड डायलॉग बटण दिसत आहे. डीफॉल्टवर प्लेबॅक स्पीड रीसेट करण्यासाठी दाबून ठेवा</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">स्पीड डायलॉग बटण दिसत नाही</string>
+  <string name="morphe_playback_speed_dialog_button_title">प्लेबॅक स्पीड दर्शवा</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">प्लेबॅक स्पीड बटण दर्शविले जात आहे. डीफॉल्ट प्लेबॅक स्पीडवर रीसेट करण्यासाठी टॅप आणि होल्ड करा</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">प्लेबॅक स्पीड बटण दर्शविले जात नाही</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
-  <string name="morphe_video_quality_dialog_button_title">व्हिडिओ गुणवत्ता बटण दर्शवा</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">व्हिडिओ गुणवत्ता बटण दिसत आहे. डीफॉल्टवर गुणवत्ता रीसेट करण्यासाठी दाबून ठेवा</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">व्हिडिओ गुणवत्ता बटण दिसत नाही</string>
+  <string name="morphe_video_quality_dialog_button_title">क्वालिटी दर्शवा</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">क्वालिटी बटण दर्शविले जात आहे. डीफॉल्ट क्वालिटीवर रीसेट करण्यासाठी टॅप आणि होल्ड करा</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">क्वालिटी बटण दर्शविले जात नाही</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">कस्टम प्लेबॅक गती मेनू</string>
-  <string name="morphe_custom_speed_menu_summary_on">कस्टम गती मेनू दर्शविला जातो</string>
-  <string name="morphe_custom_speed_menu_summary_off">कस्टम गती मेनू दर्शविला जात नाही</string>
+  <string name="morphe_custom_speed_menu_summary_on">कस्टम प्लेबॅक स्पीड मेनू दर्शविला जात आहे</string>
+  <string name="morphe_custom_speed_menu_summary_off">कस्टम प्लेबॅक स्पीड मेनू दर्शविला जात नाही</string>
   <string name="morphe_restore_old_speed_menu_title">जुना प्लेबॅक गती मेनू पुनर्संचयित करा</string>
-  <string name="morphe_restore_old_speed_menu_summary_on">जुना गती मेनू दर्शविला जातो</string>
-  <string name="morphe_restore_old_speed_menu_summary_off">आधुनिक गती मेनू दर्शविला जातो</string>
+  <string name="morphe_restore_old_speed_menu_summary_on">जुना प्लेबॅक स्पीड मेनू दर्शविला जात आहे</string>
+  <string name="morphe_restore_old_speed_menu_summary_off">आधुनिक प्लेबॅक स्पीड मेनू दर्शविला जात आहे</string>
   <string name="morphe_custom_playback_speeds_title">कस्टम प्लेबॅक गती</string>
   <string name="morphe_custom_playback_speeds_summary">कस्टम प्लेबॅक गती जोडा किंवा बदला</string>
-  <string name="morphe_custom_playback_speeds_invalid">कस्टम गती %s पेक्षा कमी असावी</string>
+  <string name="morphe_custom_playback_speeds_invalid">कस्टम प्लेबॅक स्पीड %s पेक्षा कमी असावे</string>
   <string name="morphe_custom_playback_speeds_parse_exception">अवैध कस्टम प्लेबॅक गती</string>
   <string name="morphe_custom_playback_speeds_auto">स्वयंचलित</string>
-  <string name="morphe_speed_tap_and_hold_title">कस्टम टॅप आणि होल्ड गती</string>
+  <string name="morphe_speed_tap_and_hold_title">कस्टम टॅप आणि होल्ड प्लेबॅक स्पीड</string>
   <string name="morphe_speed_tap_and_hold_summary">"0-8 दरम्यान प्लेबॅक गती
 
 जर 0 असेल, तर टॅप आणि होल्ड गती अक्षम केली जाईल"</string>
@@ -1640,7 +1677,7 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">डीफॉल्ट प्लेबॅक गती बदलल्यास सूचना दर्शविली जाते</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">डीफॉल्ट प्लेबॅक गती बदलल्यास सूचना दर्शविली जात नाही</string>
   <string name="morphe_playback_speed_default_title">डीफॉल्ट प्लेबॅक गती</string>
-  <string name="morphe_remember_playback_speed_toast">डीफॉल्ट गती बदलली: %s</string>
+  <string name="morphe_remember_playback_speed_toast">डीफॉल्ट प्लेबॅक स्पीड बदलला: %s</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">एचडीआर व्हिडिओ अक्षम करा</string>
   <string name="morphe_disable_hdr_video_summary_on">एचडीआर व्हिडिओ अक्षम केला आहे</string>

@@ -26,6 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Vypne moderné UI domovskej obrazovky</string>
   <string name="morphe_disable_screenshot_popup_title">Vypnúť zobrazovanie upozornenia na snímku obrazovky</string>
   <string name="morphe_disable_screenshot_popup_summary">Vypne upozornenie, ktoré sa zobrazí pri vytváraní snímky obrazovky</string>
+  <string name="morphe_hide_ask_button_title">Skryť tlačidlo \'Opýtať sa\'</string>
+  <string name="morphe_hide_ask_button_summary">Skryje tlačidlo \'Opýtať sa\' v vyhľadávacom paneli</string>
   <string name="morphe_hide_answers_button_title">Skryť tlačidlo Odpovede</string>
   <string name="morphe_hide_answers_button_summary">Skryje tlačidlo Answers v navigačnom paneli</string>
   <string name="morphe_hide_chat_button_title">Skryť tlačidlo Chat</string>
@@ -67,4 +69,6 @@ Obmedzenie: Zobrazuje sa len ak odpoveď z API zahŕňa počet zhliadnutí"</str
   <string name="morphe_sanitize_sharing_links_summary">Vyčistí odkazy na zdieľanie odstránením sledovacích prvkov</string>
   <string name="morphe_open_links_directly_title">Otvárať odkazy priamo</string>
   <string name="morphe_open_links_directly_summary">Preskočí presmerovacie URL v externých odkazoch</string>
+  <string name="morphe_open_links_externally_title">Otvárať odkazy externe</string>
+  <string name="morphe_open_links_externally_summary">Otvára odkazy vo vašom prehliadači namiesto prehliadača v aplikácii</string>
 </resources>

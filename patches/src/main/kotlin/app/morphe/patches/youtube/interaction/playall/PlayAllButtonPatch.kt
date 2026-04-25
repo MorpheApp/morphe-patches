@@ -8,12 +8,13 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
-import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.videoInformationPatch
@@ -27,17 +28,6 @@ private val playAllButtonResourcePatch = resourcePatch {
     )
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_play_all_button"),
-                    ListPreference("morphe_play_all_button_type")
-                )
-            )
-        )
 
         copyResources(
             "playallbutton",
@@ -67,12 +57,25 @@ val playAllButtonPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         playAllButtonResourcePatch,
+        playerOverlayButtonsSettingsPatch,
         videoInformationPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        addPlayerOverlayPreferences(
+            PreferenceCategory(
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = setOf(
+                    SwitchPreference("morphe_play_all_button"),
+                    ListPreference("morphe_play_all_button_type")
+                )
+            )
+        )
+
         initializeTopControl(EXTENSION_BUTTON)
         injectVisibilityCheckCall(EXTENSION_BUTTON)
     }

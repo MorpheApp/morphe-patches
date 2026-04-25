@@ -167,10 +167,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_emergency_box"),
             SwitchPreference("morphe_hide_info_panels"),
             SwitchPreference("morphe_hide_join_membership_button"),
+            SwitchPreference("morphe_hide_live_chat_donators_bar"),
             SwitchPreference("morphe_hide_live_chat_replay_button"),
             SwitchPreference("morphe_hide_medical_panels"),
-            SwitchPreference("morphe_hide_quick_actions"),
-            SwitchPreference("morphe_hide_quick_actions_related_videos"),
             SwitchPreference("morphe_hide_subscribers_community_guidelines"),
             SwitchPreference("morphe_hide_timed_reactions"),
             SwitchPreference("morphe_hide_video_title"),
@@ -477,6 +476,18 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 it.instructionMatches.last().index,
                 LAYOUT_COMPONENTS_FILTER,
                 "hideCrowdfundingBox"
+            )
+        }
+
+        // endregion
+
+        // region hide live chat donators bar
+
+        LiveChatDonatorsBarFingerprint.let {
+            it.method.injectHideViewCall(
+                it.instructionMatches.last().index,
+                LAYOUT_COMPONENTS_FILTER,
+                "hideLiveChatDonatorsBar"
             )
         }
 

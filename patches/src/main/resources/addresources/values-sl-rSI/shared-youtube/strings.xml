@@ -17,20 +17,111 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Za dokončanje nastavitve znova zaženite</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Ime aplikacije</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <string name="morphe_custom_branding_name_entry_5">Prilagojeno</string>
+  <string name="morphe_custom_branding_icon_title">Ikona aplikacije</string>
+  <string name="morphe_custom_branding_icon_entry_1">Izvirno</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe temno</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe svetlo</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_6">Prilagojeno</string>
+  <string name="morphe_custom_branding_notification_icon_title">Vsebnik ikone obvestila</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Ikona aplikacije Follow</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Opozorilo</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša zgodovina ogleda se ne shrani.&lt;br&gt;&lt;br&gt;To je verjetno posledica blokatorja DNS ali omrežnega posrednika.&lt;br&gt;&lt;br&gt;Da to popravite, dovolite &lt;b&gt;s.youtube.com&lt;/b&gt; ali izklopite vse blokatorje DNS in posrednike.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj več</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Posnemanje video pretočnih poti</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Posnemajte video pretočne poti, da preprečite težave pri predvajanju</string>
+  <string name="morphe_spoof_video_streams_title">Posnemanje video pretočnih poti</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Video pretočne poti so posnemanje. 
+
+Če ste uporabnik YouTube Premium, ta nastavitev morda ne bo potrebna"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Video pretočne poti niso posnemanje.
+
+Predvajanje morda ne bo delovalo"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Ni mogoče pridobiti nobenih pretočnih poti stranke</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Onemogočanje te nastavitve lahko povzroči težave pri predvajanju.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Poskusite omogočiti: Posnemanje video pretočnih poti &gt; Prijava v Android VR</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Privzeti odjemalec</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava v Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Niste prijavljeni v Android VR. Dotaknite se tukaj za prijavo</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Trenutno prijavljeni v Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Če želite uporabljati to funkcijo, spremenite \'Privzetni odjemalec\' v Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prijava v Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijava v VR lahko odpravi težave pri predvajanju za nekatere uporabnike
+
+Pritisnite nadaljujte, da se prijavite"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Naprej</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odjava</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Navodila</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivacijski koda: %s
+
+1. Dotaknite 'Odprite spletno mesto' spodaj, da odprete spletno mesto 'Povežite napravo'.
+2. Prilepite iz odložišča (ali vnesti ročno) aktivacijski kodo, prikazano zgoraj.
+3. Prijavite se v Google, če vas pozove. Če imate več računov, izberite ta račun YouTube.
+4. Dotaknite 'Dovolj YouTube VR' dostopa.
+5. Vrnite se v to aplikacijo po prejetju sporočila 'Naprava je povezana'."</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Odprite spletno mesto</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ni bilo mogoče izpisati aktivacijskega kode</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ni bilo mogoče izpisati avtentikacijskega znaka</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Uspešno prijavljeni</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Shranjeni so avtentikacijski podatki
+
+• Vaše nastavitve Morphe se ne bodo uvažale/izvažale v VR.
+• Če to aplikacijo ne boste uporabljali 6 mesecev, Google bo izbrisal to avtentikacijo.
+• Ponovno se boste morali prijaviti, če spremenite geslo Google ali odstranite napravo iz nastavitev Google"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 je začasno nedostopen (API je potekel)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Iztek priјаve v VR, poskusite znova priјаve v VR</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 je začasno nedostopen (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 je začasno nedostopen</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ni mogoče priјаvati v VR, avtentikacija na spletnem mestu ni bilaodobrena</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Ni mogoče priјаvati v VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Odjavljeni iz VR</string>
+  <string name="morphe_oauth2_toast_invalid">Neveljavni znak priјаve v VR, poskusite znova priјаve v VR</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Onemogoči posodobitev JavaScript predvajalnika</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Posodobitev JavaScript predvajalnika je onemogočena
+
+• Zahteva se veljaven hash JavaScript predvajalnika
+• Predvajanje ne bo potekalo, če je hash JavaScript predvajalnika preklican v GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Posodobitev JavaScript predvajalnika je omogočena</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hashi JavaScript predvajalnika veljajo približno en mesec, izčrpani hashji pa jih lahko prekliče GVS.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript predvajalnika</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Vnesite veljaven hash JavaScript predvajalnika</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Onemogoči protokol QUIC</string>
+  <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC je onemogočen</string>
+  <string name="morphe_disable_quic_protocol_summary_off">Protokol QUIC je omogočen</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Onemogoči zvok DRC</string>
+  <string name="morphe_disable_drc_audio_summary_on">Zvok DRC je onemogočen</string>
+  <string name="morphe_disable_drc_audio_summary_off">Zvok DRC je omogočen</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Sili izvorno jezikovno sledi</string>
+  <string name="morphe_force_original_audio_summary_on">Uporaba izvorne jezikovne sledi</string>
+  <string name="morphe_force_original_audio_summary_off">Uporaba privzeto jezikovne sledi</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Onemogoči oglas s polnim zaslonom</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Oglas s polnim zaslonom je skrit</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Oglas s polnim zaslonom je prikazan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Če želite uporabiti to funkcijo, spremenite \'Namigovanje video pretočnih signalov\' v Android Reel ali TV.</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Čisti povezave za deljenje</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Parameter za sledenje je odstranjen iz deljenih povezav</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Parameter za sledenje ni odstranjen iz deljenih povezav</string>
+  <string name="morphe_replace_music_with_youtube_title">Spremeni povezave za deljenje v youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Deljene povezave uporabljajo youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Deljene povezave uporabljajo music.youtube.com</string>
 </resources>

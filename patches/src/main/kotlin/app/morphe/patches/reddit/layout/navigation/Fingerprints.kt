@@ -40,7 +40,6 @@ internal object BottomNavScreenResourceBuilderFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/launch/bottomnav/BottomNavScreen;",
     returnType = "L",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    parameters = listOf("Landroid/content/res/Resources;"),
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_DIRECT,

@@ -18,24 +18,145 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Logotip glave</string>
+  <string name="morphe_header_logo_entry_1">Privzeto</string>
+  <string name="morphe_header_logo_entry_3">Prilagojeno</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">O aplikaciji</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Oglasi</string>
+  <string name="morphe_settings_music_screen_2_general_title">Splošno</string>
+  <string name="morphe_settings_music_screen_3_player_title">Predvajalnik</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Razno</string>
   <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Skrij oznako \'Get Music Premium\'</string>
+  <string name="morphe_music_hide_get_premium_label_summary_on">Označevalec \'Get Music Premium\' je skrit</string>
+  <string name="morphe_music_hide_get_premium_label_summary_off">Označevalec \'Get Music Premium\' je prikazan</string>
   <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Skrij video oglase</string>
+  <string name="morphe_music_hide_video_ads_summary_on">Video oglasi so skriti</string>
+  <string name="morphe_music_hide_video_ads_summary_off">Video oglasi so prikazani</string>
   <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Prehod</string>
+  <string name="morphe_music_crossfade_screen_summary">Gladko združite skladbe druga z drugo</string>
+  <string name="morphe_music_crossfade_enabled_title">Omogoči prehod</string>
+  <string name="morphe_music_crossfade_enabled_summary_on">Skladbe se gladko združijo</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Prehod je onemogočen</string>
+  <string name="morphe_music_crossfade_curve_title">Kriva prehoda</string>
+  <string name="morphe_music_crossfade_curve_summary">Kako se glasba prenaša med skladbami</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Enaka moč</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtilno zadržanje</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Nežen lahek ton</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Gladka S-kriva</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Trajanje prehoda</string>
+  <string name="morphe_crossfade_duration_250ms">250 milisekund</string>
+  <string name="morphe_crossfade_duration_500ms">500 milisekund</string>
+  <string name="morphe_crossfade_duration_750ms">750 milisekund</string>
+  <string name="morphe_crossfade_duration_1000ms">1 sekunda</string>
+  <string name="morphe_crossfade_duration_2000ms">2 sekundi</string>
+  <string name="morphe_crossfade_duration_3000ms">3 sekunde</string>
+  <string name="morphe_crossfade_duration_4000ms">4 sekunde</string>
+  <string name="morphe_crossfade_duration_5000ms">5 sekund</string>
+  <string name="morphe_crossfade_duration_6000ms">6 sekund</string>
+  <string name="morphe_crossfade_duration_7000ms">7 sekund</string>
+  <string name="morphe_crossfade_duration_8000ms">8 sekund</string>
+  <string name="morphe_crossfade_duration_9000ms">9 sekund</string>
+  <string name="morphe_crossfade_duration_10000ms">10 sekund</string>
+  <string name="morphe_music_crossfade_on_skip_title">Vklop križnega zameglitve ob ročnem preskok</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Križno zameglitev ponavlja, ko ročno preskačete skladbe</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Ročni preskoki ne bodo povzročili križnega zameglitve</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Vklop križnega zameglitve ob samodebnem preskoku</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Križno zameglitev ponavlja, ko se skladba konča in preide na naslednjo</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Samodebni preskoki ne bodo povzročili križnega zameglitve</string>
+  <string name="morphe_music_crossfade_session_control_title">Upravljanje seje</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Dolgo pritisnite gumb za pomikanje, da začnete ali ustavite križno zameglitev"</string>
+  <string name="morphe_music_crossfade_session_control_summary_off">Upravljanje seje je onemogočeno</string>
+  <string name="morphe_music_crossfade_about_title">O aplikaciji</string>
+  <string name="morphe_music_crossfade_about_summary">"Križno zameglitev je na voljo z YouTube Music 8.x
+
+Dolgo pritisnite gumb za pomikanje, da onemogočite/omogočite
+
+Implementacija funkcije s strani VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Omogoči trajno ponavljanje</string>
+  <string name="morphe_music_play_permanent_repeat_summary_on">Trajno ponavljanje je omogočeno</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">Trajno ponavljanje je onemogočeno</string>
   <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Skrij gumb za predvajanje</string>
+  <string name="morphe_music_hide_cast_button_summary_on">Gumb za predvajanje je skrit</string>
+  <string name="morphe_music_hide_cast_button_summary_off">Gumb za predvajanje je prikazan</string>
+  <string name="morphe_music_hide_history_button_title">Skrij gumb zgodovine</string>
+  <string name="morphe_music_hide_history_button_summary_on">Gumb zgodovine je skrit</string>
+  <string name="morphe_music_hide_history_button_summary_off">Gumb zgodovine je prikazan</string>
+  <string name="morphe_music_hide_notification_button_title">Skrij gumb obvestila</string>
+  <string name="morphe_music_hide_notification_button_summary_on">Gumb obvestila je skrit</string>
+  <string name="morphe_music_hide_notification_button_summary_off">Gumb obvestila je prikazan</string>
+  <string name="morphe_music_hide_search_button_title">Skrij gumb za iskanje</string>
+  <string name="morphe_music_hide_search_button_summary_on">Gumb za iskanje je skrit</string>
+  <string name="morphe_music_hide_search_button_summary_off">Gumb za iskanje je prikazan</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Spremeni začetno stran</string>
+  <string name="morphe_change_start_page_entry_default">Privzeto</string>
+  <string name="morphe_change_start_page_entry_charts">Grafi</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Epizode za kasneje</string>
+  <string name="morphe_change_start_page_entry_explore">Raziskovanje</string>
+  <string name="morphe_change_start_page_entry_history">Zgodovina</string>
+  <string name="morphe_change_start_page_entry_library">Knjižnica</string>
+  <string name="morphe_change_start_page_entry_liked_music">Všečljiva glasba</string>
+  <string name="morphe_change_start_page_entry_playlists">Seznami predvajanja</string>
+  <string name="morphe_change_start_page_entry_search">Iskanje</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Naročnine</string>
   <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Skrij vrstico s kategorijami</string>
+  <string name="morphe_music_hide_category_bar_summary_on">Vrstica s kategorijami je skrita</string>
+  <string name="morphe_music_hide_category_bar_summary_off">Vrstica s kategorijami je prikazana</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Spremeni barvo mini predvajalnika</string>
+  <string name="morphe_music_change_miniplayer_color_summary_on">Barva mini predvajalnika ujemlje barvo celozaslonskega predvajalnika</string>
+  <string name="morphe_music_change_miniplayer_color_summary_off">Mini predvajalnik uporablja privzeto barvo</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Pokaži gumb za naslednjo skladbo v mini predvajalniku</string>
+  <string name="morphe_music_miniplayer_next_button_summary_on">Gumb za naslednjo skladbo je prikazan v mini predvajalniku</string>
+  <string name="morphe_music_miniplayer_next_button_summary_off">Gumb za naslednjo skladbo ni prikazan v mini predvajalniku</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Pokaži gumb za prejšnjo skladbo v mini predvajalniku</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_on">Gumb za prejšnjo skladbo je prikazan v mini predvajalniku</string>
+  <string name="morphe_music_miniplayer_previous_button_summary_off">Gumb za prejšnjo skladbo ni prikazan v mini predvajalniku</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Omogoči prisilni mini predvajalnik</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">Mini predvajalnik ostane zmanjšan, ko se spremeni predvajanje</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Mini predvajalnik se razširi v celozaslon, ko se spremeni predvajanje</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Vrstica za navigacijo</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Skrij ali spremeni gumbe vrstice za navigacijo</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Skrij Domov</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Gumb Domov je skrit</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Gumb Domov je prikazan</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Skrij Vzorce</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Gumb Vzorce je skrit</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Gumb Vzorce je prikazan</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Skrij Raziskanje</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Gumb Raziskanje je skrit</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Gumb Raziskanje je prikazan</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Skrij Knjižnico</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Gumb Knjižnice je skrit</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Gumb Knjižnice je prikazan</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Skrij Nadgradnjo</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Gumb Nadgradnje je skrit</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Gumb za nadgradnjo je prikazan</string>
+  <string name="morphe_music_hide_navigation_bar_title">Skrij navigacijsko vrstico</string>
+  <string name="morphe_music_hide_navigation_bar_summary_on">Navigacijska vrstica je skrita</string>
+  <string name="morphe_music_hide_navigation_bar_summary_off">Navigacijska vrstica je prikazana</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Skrij oznake navigacijske vrstice</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Oznake so skrite</string>
+  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Oznake so prikazane</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Skrij gumb za nadgradnjo</string>
+  <string name="morphe_music_hide_upgrade_button_summary_on">Gumb je skrit</string>
+  <string name="morphe_music_hide_upgrade_button_summary_off">Gumb je prikazan</string>
 </resources>

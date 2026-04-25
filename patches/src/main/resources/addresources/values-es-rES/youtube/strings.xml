@@ -87,7 +87,6 @@ Los cambios incluyen:
   <string name="morphe_hide_floating_microphone_button_summary_off">El botón flotante del micrófono en la búsqueda está visible</string>
   <string name="morphe_hide_horizontal_shelves_title">Ocultar estantes horizontales</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Las estanterías horizontales están ocultas, por ejemplo:
-
 • Últimas noticias
 • Publicaciones de la comunidad que te pueden gustar
 • Seguir viendo
@@ -176,20 +175,17 @@ Mostrar los Doodles de YouTube puede impedir que se muestren encabezados persona
   <string name="morphe_hide_join_membership_button_title">Ocultar botón \"Unirme\"</string>
   <string name="morphe_hide_join_membership_button_summary_on">El botón \"Unirme\" está oculto</string>
   <string name="morphe_hide_join_membership_button_summary_off">El botón \"Unirme\" está visible</string>
+  <string name="morphe_hide_live_chat_donators_bar_title">Ocultar barra de donantes del chat en directo</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_on">La barra de donantes del chat en directo está oculta</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_off">La barra de donantes del chat en directo está visible</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the player overlay for live streamed videos after opening live chat. -->
+          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Ocultar botón \"Repetición del chat en directo\"</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_on">El botón \"Repetición del chat en directo\" en la superposición del reproductor está oculto</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_off">El botón \"Repetición del chat en directo\" en la superposición del reproductor está visible</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">El botón de repetición del chat en directo en pantalla completa está oculto</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">El botón de repetición del chat en vivo en pantalla completa está visible</string>
   <string name="morphe_hide_medical_panels_title">Ocultar paneles médicos</string>
   <string name="morphe_hide_medical_panels_summary_on">Los paneles médicos están ocultos</string>
   <string name="morphe_hide_medical_panels_summary_off">Los paneles médicos están visibles</string>
-  <string name="morphe_hide_quick_actions_title">Ocultar acciones rápidas</string>
-  <string name="morphe_hide_quick_actions_summary_on">Las acciones rápidas en pantalla completa están ocultas</string>
-  <string name="morphe_hide_quick_actions_summary_off">Las acciones rápidas en pantalla completa están visibles</string>
-  <string name="morphe_hide_quick_actions_related_videos_title">Ocultar acciones rápidas de vídeos relacionados</string>
-  <string name="morphe_hide_quick_actions_related_videos_summary_on">Los vídeos relacionados en acciones rápidas están ocultos</string>
-  <string name="morphe_hide_quick_actions_related_videos_summary_off">Los vídeos relacionados en acciones rápidas están visibles</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ocultar normas para suscriptores</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Las normas de la comunidad de suscriptores están ocultas</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Las normas de la comunidad de suscriptores están visibles</string>
@@ -197,8 +193,8 @@ Mostrar los Doodles de YouTube puede impedir que se muestren encabezados persona
   <string name="morphe_hide_timed_reactions_summary_on">Las reacciones en tiempo están ocultas</string>
   <string name="morphe_hide_timed_reactions_summary_off">Las reacciones en tiempo están visibles</string>
   <string name="morphe_hide_video_title_title">Ocultar título de vídeo</string>
-  <string name="morphe_hide_video_title_summary_on">El título del vídeo en la superposición del reproductor está oculto</string>
-  <string name="morphe_hide_video_title_summary_off">El título del vídeo en la superposición del reproductor está visible</string>
+  <string name="morphe_hide_video_title_summary_on">El título del vídeo en pantalla completa está oculto</string>
+  <string name="morphe_hide_video_title_summary_off">El título del vídeo en pantalla completa está visible</string>
   <string name="morphe_hide_description_components_screen_title">Descripción del vídeo</string>
   <string name="morphe_hide_description_components_screen_summary">Ocultar o mostrar componentes de la descripción del vídeo</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ocultar \"Resumen de vídeo generado por IA\"</string>
@@ -385,7 +381,7 @@ Mostrar los Doodles de YouTube puede impedir que se muestren encabezados persona
   <string name="morphe_hide_upload_time_user_dialog_message">"Limitaciones:
 • Los estantes de Shorts, las páginas de los canales y los resultados de búsqueda pueden seguir mostrando los tiempos de subida.
 • Esta función no funciona con el factor de forma automotriz."</string>
-  <string name="morphe_hide_keyword_content_screen_title">Ocultar contenido de palabra clave</string>
+  <string name="morphe_hide_keyword_content_screen_title">Filtro de palabras clave</string>
   <string name="morphe_hide_keyword_content_screen_summary">Ocultar videos de búsqueda y feed usando filtros de palabras clave</string>
   <string name="morphe_hide_keyword_content_home_title">Ocultar vídeos de inicio por palabras clave</string>
   <string name="morphe_hide_keyword_content_home_summary_on">Los vídeos en la pestaña \"Inicio\" son filtrados por palabras clave</string>
@@ -420,7 +416,7 @@ Limitaciones:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">La palabra clave tiene declaraciones conflictivas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">La palabra clave es demasiado corta y requiere comillas: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">La palabra clave ocultará todos los vídeos: %s</string>
-  <!-- ad.general.hideAdsResourcePatch -->
+  <!-- ad.general.hideAdsPatch -->
   <string name="morphe_hide_end_screen_store_banner_title">Ocultar banner de tienda en pantalla final</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">El banner de la tienda en la pantalla final está oculto</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">El banner de la tienda en la pantalla final está visible</string>
@@ -453,15 +449,15 @@ Limitaciones:
   <string name="morphe_hide_video_ads_summary_on">Los anuncios de vídeo están ocultos</string>
   <string name="morphe_hide_video_ads_summary_off">Los anuncios de vídeo están visibles</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
-  <string name="morphe_share_copy_url_success">URL copiada al portapapeles</string>
-  <string name="morphe_share_copy_url_timestamp_success">URL con marca de tiempo copiada</string>
-  <string name="morphe_copy_video_url_title">Mostrar botón de copiar URL del vídeo</string>
-  <string name="morphe_copy_video_url_summary_on">El botón de copiar la URL del vídeo está visible. Pulsa para copiar la URL del vídeo. Mantén pulsado para copiar con la marca de tiempo</string>
-  <string name="morphe_copy_video_url_summary_off">El botón de copiar la URL del vídeo está oculto</string>
-  <string name="morphe_copy_video_url_timestamp_title">Copiar marca de tiempo</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">El botón de copiar la URL del vídeo la copia con marca de tiempo. Al mantener pulsado, se copia sin marca de tiempo</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">El botón de copiar la URL del vídeo la copia sin marca de tiempo. Al mantener pulsado, se copia con marca de tiempo</string>
+  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
+  <string name="morphe_share_copy_url_button_success">URL copiada al portapapeles</string>
+  <string name="morphe_share_copy_url_button_timestamp_success">URL con marca de tiempo copiada al portapapeles</string>
+  <string name="morphe_copy_video_url_button_title">Mostrar Copiar URL del vídeo</string>
+  <string name="morphe_copy_video_url_button_summary_on">El botón de copiar la URL del vídeo está visible. Pulsa para copiar la URL del vídeo. Mantén pulsado para copiar con la marca de tiempo</string>
+  <string name="morphe_copy_video_url_button_summary_off">El botón de copiar la URL del vídeo está oculto</string>
+  <string name="morphe_copy_video_url_button_timestamp_title">Copiar marca de tiempo</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_on">El botón de copiar la URL del vídeo la copia con marca de tiempo. Al mantener pulsado, se copia sin marca de tiempo</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_off">El botón de copiar la URL del vídeo la copia sin marca de tiempo. Al mantener pulsado, se copia con marca de tiempo</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Eliminar diálogo de discreción del espectador</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">El diálogo está eliminado</string>
@@ -475,7 +471,7 @@ Limitaciones:
   <string name="morphe_disable_chapter_skip_double_tap_title">Desactivar salto de capítulo con doble toque</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">El doble toque nunca puede activar un salto al capítulo siguiente/anterior</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">El doble toque puede ocasionalmente activar un salto al capítulo siguiente/anterior</string>
-  <!-- interaction.downloads.downloadsResourcePatch -->
+  <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Descargas externas</string>
   <string name="morphe_external_downloader_screen_summary">Configuración para el uso de un descargador externo</string>
   <string name="morphe_external_downloader_title">Mostrar botón de descarga externa</string>
@@ -500,18 +496,16 @@ Verifica que el nombre del paquete sea correcto y que la aplicación esté insta
   <string name="morphe_loop_video_summary_on">El vídeo se repetirá</string>
   <string name="morphe_loop_video_summary_off">El vídeo no se repetirá</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Mostrar botón de vídeo en bucle</string>
+  <string name="morphe_loop_video_button_title">Mostrar Vídeo en bucle</string>
   <string name="morphe_loop_video_button_summary_on">El botón de vídeo en bucle está visible</string>
   <string name="morphe_loop_video_button_summary_off">El botón de vídeo en bucle está oculto</string>
   <string name="morphe_loop_video_button_toast_on">El vídeo en bucle está activado</string>
   <string name="morphe_loop_video_button_toast_off">El vídeo en bucle está desactivado</string>
   <!-- interaction.playall.playAllButtonPatch -->
-  <string name="morphe_play_all_button_title">Mostrar botón \"Reproducir todo\"</string>
-  <string name="morphe_play_all_button_summary_on">"El botón \"Reproducir todo\" está visible
-Pulse para generar una lista de reproducción con todos los vídeos del canal
-Mantén pulsado para deshacer
+  <string name="morphe_play_all_button_title">Mostrar Reproducir todo</string>
+  <string name="morphe_play_all_button_summary_on">"El botón de reproducir todo está visible. Púlsalo para generar una lista de reproducción con todos los vídeos del canal. Mantenlo pulsado para deshacer la acción
 
-Información: Es posible que no funcione en transmisiones en directo"</string>
+Información: Es posible que no funcione en los directos"</string>
   <string name="morphe_play_all_button_summary_off">El botón \"Reproducir todo\" está oculto</string>
   <string name="morphe_play_all_button_type_title">Modo generar lista de reproducción</string>
   <string name="morphe_play_all_button_type_entry_0">Todos los contenidos (ordenados por tiempo, ascendente)</string>
@@ -529,10 +523,10 @@ Información: Es posible que no funcione en transmisiones en directo"</string>
   <string name="morphe_play_all_button_type_entry_12">Transmisiones en vivo solo para miembros</string>
   <string name="morphe_play_all_button_not_available_toast">No se puede generar la lista de reproducción porque el ID del canal no coincide</string>
   <!-- interaction.reload.reloadVideoPatch -->
-  <string name="morphe_reload_video_title">Mostrar botón de recargar vídeo</string>
-  <string name="morphe_reload_video_summary_on">El botón de recargar vídeo está visible</string>
-  <string name="morphe_reload_video_summary_off">El botón de recargar vídeo está oculto</string>
-  <string name="morphe_dismiss_player_not_available_toast">El ID del vídeo no está disponible. Por favor, vuelva a abrir el vídeo manualmente.</string>
+  <string name="morphe_reload_video_button_title">Mostrar Recargar vídeo</string>
+  <string name="morphe_reload_video_button_summary_on">El botón de recargar vídeo está visible</string>
+  <string name="morphe_reload_video_button_summary_off">El botón de recargar vídeo está oculto</string>
+  <string name="morphe_dismiss_player_not_available_toast">El ID del vídeo no está disponible. Vuelve a cargar el vídeo manualmente.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Desactivar gesto de búsqueda precisa</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">El gesto de búsqueda precisa está desactivado</string>
@@ -551,7 +545,7 @@ Información: Es posible que no funcione en transmisiones en directo"</string>
   <string name="morphe_tap_to_seek_title">Activar tocar para buscar</string>
   <string name="morphe_tap_to_seek_summary_on">Tocar para buscar está activado</string>
   <string name="morphe_tap_to_seek_summary_off">Tocar para buscar está desactivado</string>
-  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
+  <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_brightness_title">Activar gesto de brillo</string>
   <string name="morphe_swipe_brightness_summary_on">"El deslizamiento de brillo en pantalla completa está activado
 
@@ -603,8 +597,9 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
   <string name="morphe_swipe_change_video_summary_on">Deslizar en modo de pantalla completa cambiará al video siguiente/anterior</string>
   <string name="morphe_swipe_change_video_summary_off">Deslizar en modo de pantalla completa no cambiará al video siguiente/anterior</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Botones de acción</string>
-  <string name="morphe_hide_buttons_screen_summary">Oculta o muestra botones debajo de los vídeos</string>
+  <string name="morphe_action_buttons_screen_title">Botones de acción</string>
+  <string name="morphe_action_buttons_screen_summary">Ocultar o mostrar los botones de acción en pantalla completa y vertical</string>
+  <string name="morphe_portrait_buttons">Botones verticales</string>
   <string name="morphe_disable_like_subscribe_glow_title">Desactivar brillo de \"Me gusta\" y \"Suscribirme\"</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Los botones \"Me gusta\" y \"Suscribirme\" no brillarán cuando se pulsen</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Los botones \"Me gusta\" y \"Suscribirme\" brillarán cuando se pulsen</string>
@@ -670,6 +665,43 @@ Ajusta el volumen deslizando verticalmente en el lado derecho de la pantalla"</s
   <string name="morphe_hide_save_button_title">Ocultar \"Guardar\"</string>
   <string name="morphe_hide_save_button_summary_on">El botón \"Guardar\" está oculto</string>
   <string name="morphe_hide_save_button_summary_off">El botón \"Guardar\" está visible</string>
+  <string name="morphe_fullscreen_buttons">Botones de pantalla completa</string>
+  <string name="morphe_hide_quick_actions_title">Ocultar la barra de acción</string>
+  <string name="morphe_hide_quick_actions_summary_on">La barra de acción está oculta</string>
+  <string name="morphe_hide_quick_actions_summary_off">La barra de acción está visible</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Ocultar \"Preguntar\"</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">El botón \"Preguntar\" está oculto</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">El botón \"Preguntar\" está visible</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Ocultar \"Comentarios\"</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">El botón \"Comentarios\" está oculto</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">El botón \"Comentarios\" está visible</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Ocultar No me gusta</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">El botón \"No me gusta\" está oculto</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">El botón \"No me gusta\" está visible</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Ocultar Me gusta</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">El botón \"Me gusta\" está oculto</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">El botón \"Me gusta\" está visible</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Ocultar Chat en directo</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">El botón de chat en directo está oculto</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">El botón de chat en directo está visible</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Ocultar Mezclar</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">El botón de mezclar está oculto</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">El botón de mezclar está visible</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Ocultar Más</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">El botón Más está oculto</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">El botón Más está visible</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Ocultar Más vídeos</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">El botón Más vídeos está oculto</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">El botón Más vídeos está visible</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Ocultar Lista de reproducción</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">El botón de lista de reproducción está oculto</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">El botón de lista de reproducción está visible</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Ocultar \"Guardar\"</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">El botón \"Guardar\" está oculto</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">El botón \"Guardar\" está visible</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Ocultar \"Compartir\"</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">El botón \"Compartir\" está oculto</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">El botón \"Compartir\" está visible</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtítulos</string>
   <string name="morphe_captions_screen_summary">Desactivar automáticamente los subtítulos o establecer cookies de subtítulos</string>
@@ -769,7 +801,10 @@ Para acceder a los ajustes, activa el botón de ajustes a través de General →
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">La barra de navegación en modo oscuro es opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">La barra de navegación en modo oscuro es opaca o translúcida</string>
   <string name="morphe_toolbar_screen_title">Barra de herramientas</string>
-  <string name="morphe_toolbar_screen_summary">Ocultar o cambiar los componentes de la barra de herramientas</string>
+  <string name="morphe_toolbar_screen_summary">Ocultar o mostrar los componentes de la barra de herramientas</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Ocultar Transmitir</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">El botón de transmitir está oculto</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">El botón de transmitir está visible</string>
   <string name="morphe_hide_toolbar_create_button_title">Ocultar \"Crear\"</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">El botón \"Crear\" está oculto</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">El botón \"Crear\" está visible</string>
@@ -793,7 +828,7 @@ Mantener pulsado para abrir la configuración de YouTube"</string>
 Mantener pulsado para abrir los ajustes de Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Menú desplegable</string>
-  <string name="morphe_hide_player_flyout_summary">Ocultar o mostrar componentes del menú desplegable del reproductor</string>
+  <string name="morphe_hide_player_flyout_summary">Ocultar o mostrar componentes del menú desplegable</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Ocultar \"Subtítulos\"</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">El menú \"Subtítulos\" está oculto</string>
@@ -871,32 +906,34 @@ Para mostrar el menú de pistas de audio, cambia 'Falsificar transmisiones de v�
   <string name="morphe_hide_autoplay_preview_summary_on">La vista previa automática está oculta</string>
   <string name="morphe_hide_autoplay_preview_summary_off">La vista previa automática está visible</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Ocultar botón de reproducción automática</string>
+  <string name="morphe_overlay_buttons_screen_title">Botones superpuestos</string>
+  <string name="morphe_overlay_buttons_screen_summary">Ocultar o mostrar componentes relacionados con botones superpuestos</string>
+  <string name="morphe_hide_autoplay_button_title">Ocultar Reproducción automática</string>
   <string name="morphe_hide_autoplay_button_summary_on">El botón de reproducción automática está oculto</string>
   <string name="morphe_hide_autoplay_button_summary_off">El botón de reproducción automática está visible</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">Ocultar botón de subtítulos</string>
+  <string name="morphe_hide_captions_button_title">Ocultar \"Subtítulos\"</string>
   <string name="morphe_hide_captions_button_summary_on">El botón de subtítulos está oculto</string>
   <string name="morphe_hide_captions_button_summary_off">El botón de subtítulos está visible</string>
-  <string name="morphe_hide_cast_button_title">Ocultar botón de transmitir</string>
+  <string name="morphe_hide_cast_button_title">Ocultar Transmitir</string>
   <string name="morphe_hide_cast_button_summary_on">El botón de transmitir está oculto</string>
   <string name="morphe_hide_cast_button_summary_off">El botón de transmitir está visible</string>
-  <string name="morphe_hide_collapse_button_title">Ocultar botón de contraer</string>
+  <string name="morphe_hide_collapse_button_title">Ocultar Contraer</string>
   <string name="morphe_hide_collapse_button_summary_on">El botón de contraer está oculto</string>
   <string name="morphe_hide_collapse_button_summary_off">El botón de contraer está visible</string>
-  <string name="morphe_hide_fullscreen_button_title">Ocultar botón de pantalla completa</string>
+  <string name="morphe_hide_fullscreen_button_title">Ocultar Pantalla completa</string>
   <string name="morphe_hide_fullscreen_button_summary_on">El botón de pantalla completa está oculto</string>
   <string name="morphe_hide_fullscreen_button_summary_off">El botón de pantalla completa está visible</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ocultar fondo de controles del reproductor</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">El fondo de los controles del reproductor está oculto</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">El fondo de los controles del reproductor está visible</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">Ocultar botones \"Anterior\" y \"Siguiente\"</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">Ocultar Anterior y Siguiente</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Los botones \"Anterior\" y \"Siguiente\" están ocultos</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Los botones \"Anterior\" y \"Siguiente\" están visibles</string>
-  <string name="morphe_hide_settings_button_title">Ocultar botón de configuración</string>
+  <string name="morphe_hide_settings_button_title">Ocultar Configuración</string>
   <string name="morphe_hide_settings_button_summary_on">El botón de configuración está oculto</string>
   <string name="morphe_hide_settings_button_summary_off">El botón de configuración está visible</string>
-  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
+  <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Ocultar tarjetas de pantalla final</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Las tarjetas de pantalla final están ocultas</string>
   <string name="morphe_hide_end_screen_cards_summary_off">Las tarjetas de pantalla final están visibles</string>
@@ -913,7 +950,7 @@ Para mostrar el menú de pistas de audio, cambia 'Falsificar transmisiones de v�
   <string name="morphe_disable_fullscreen_ambient_mode_title">Desactivar modo ambiente en pantalla completa</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">El modo ambiente en pantalla completa está desactivado</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">El modo ambiente en pantalla completa está activado</string>
-  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
+  <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ocultar tarjetas de información</string>
   <string name="morphe_hide_info_cards_summary_on">Las tarjetas de información están ocultas</string>
   <string name="morphe_hide_info_cards_summary_off">Las tarjetas de información están visibles</string>
@@ -932,7 +969,7 @@ Para mostrar el menú de pistas de audio, cambia 'Falsificar transmisiones de v�
   <string name="morphe_fullscreen_large_seekbar_title">Activar barra de progreso grande en pantalla completa</string>
   <string name="morphe_fullscreen_large_seekbar_summary_on">La barra de progreso en pantalla completa es de tamaño grande</string>
   <string name="morphe_fullscreen_large_seekbar_summary_off">La barra de progreso en pantalla completa es de tamaño normal</string>
-  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
+  <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_shorts_player_screen_title">Reproductor de Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ocultar o mostrar componentes del reproductor de Shorts</string>
   <string name="morphe_hide_shorts_channel_title">Ocultar Shorts en la página del canal</string>
@@ -1095,7 +1132,7 @@ Configuración → Reproducción → Reproducción automática del siguiente ví
   <string name="morphe_open_videos_fullscreen_portrait_title">Abrir vídeos en pantalla completa en vertical</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">Los vídeos se abren en modo de pantalla completa</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">Los vídeos no se abren en modo de pantalla completa</string>
-  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
+  <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Opacidad de superposición del reproductor</string>
   <string name="morphe_player_overlay_opacity_summary">Valor de opacidad entre 0 y 100, donde 0 es transparente</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">La opacidad de la superposición del reproductor debe ser entre 0 y 100</string>
@@ -1151,7 +1188,7 @@ Limitación: Es posible que los \"No me gusta\" no aparezcan en modo incógnito"
   <string name="morphe_wide_searchbar_title">Activar barra de búsqueda amplia</string>
   <string name="morphe_wide_searchbar_summary_on">La barra de búsqueda amplia está activada</string>
   <string name="morphe_wide_searchbar_summary_off">La barra de búsqueda amplia está desactivada</string>
-  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
+  <!-- layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_sb_enable_sb">Activar SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock es un sistema de colaboración abierta para omitir partes molestas de los vídeos de YouTube</string>
   <string name="morphe_sb_appearance_category">Apariencia</string>
@@ -1619,26 +1656,26 @@ Activar esto puede desbloquear calidades de vídeo más altas"</string>
   <string name="morphe_remember_video_quality_toast">Se ha cambiado la calidad %1$s predeterminada a: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Se ha cambiado la calidad %1$s de los Shorts a: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
-  <string name="morphe_playback_speed_dialog_button_title">Mostrar botón de diálogo de velocidad</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">El botón de diálogo de velocidad está visible. Mantén pulsado para restablecer la velocidad predeterminada de reproducción</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">El botón de diálogo de velocidad está oculto</string>
+  <string name="morphe_playback_speed_dialog_button_title">Mostrar Velocidad de reproducción</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">El botón de velocidad de reproducción está visible. Mantenlo pulsado para restablecer la velocidad de reproducción predeterminada</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">El botón de velocidad de reproducción está oculto</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
-  <string name="morphe_video_quality_dialog_button_title">Mostrar botón de calidad de vídeo</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">El botón de calidad de vídeo está visible. Mantén pulsado para restablecer la calidad predeterminada</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">El botón de calidad de vídeo está oculto</string>
+  <string name="morphe_video_quality_dialog_button_title">Mostrar Calidad</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">El botón de calidad está visible. Mantenlo pulsado para restablecer la calidad predeterminada</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">El botón de calidad está oculto</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Menú de velocidad personalizada de reproducción</string>
-  <string name="morphe_custom_speed_menu_summary_on">El menú de velocidad personalizada está visible</string>
-  <string name="morphe_custom_speed_menu_summary_off">El menú de velocidad personalizada está oculto</string>
+  <string name="morphe_custom_speed_menu_summary_on">El menú de velocidad de reproducción personalizada está visible</string>
+  <string name="morphe_custom_speed_menu_summary_off">El menú de velocidad de reproducción personalizada está oculto</string>
   <string name="morphe_restore_old_speed_menu_title">Restaurar menú antiguo de velocidad de reproducción</string>
-  <string name="morphe_restore_old_speed_menu_summary_on">El menú antiguo de velocidad está visible</string>
-  <string name="morphe_restore_old_speed_menu_summary_off">El menú moderno de velocidad está visible</string>
+  <string name="morphe_restore_old_speed_menu_summary_on">El menú antiguo de la velocidad de reproducción está visible</string>
+  <string name="morphe_restore_old_speed_menu_summary_off">El menú moderno de la velocidad de reproducción está visible</string>
   <string name="morphe_custom_playback_speeds_title">Velocidades personalizadas de reproducción</string>
   <string name="morphe_custom_playback_speeds_summary">Añadir o cambiar las velocidades personalizadas de reproducción</string>
-  <string name="morphe_custom_playback_speeds_invalid">Las velocidades personalizadas deben ser menores que %s</string>
+  <string name="morphe_custom_playback_speeds_invalid">Las velocidades de reproducción personalizadas deben ser inferiores a %s</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Velocidades personalizadas de reproducción no válidas</string>
   <string name="morphe_custom_playback_speeds_auto">Automático</string>
-  <string name="morphe_speed_tap_and_hold_title">Velocidad personalizada al mantener pulsado</string>
+  <string name="morphe_speed_tap_and_hold_title">Velocidad de reproducción personalizada al mantener pulsado</string>
   <string name="morphe_speed_tap_and_hold_summary">"Velocidad de reproducción entre 0 y 8
 
 Si es 0, tocar y mantener pulsado desactiva la velocidad"</string>
@@ -1650,7 +1687,7 @@ Si es 0, tocar y mantener pulsado desactiva la velocidad"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">Se muestra una notificación cuando se cambia la velocidad predeterminada de reproducción</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">No se muestra una notificación cuando se cambia la velocidad predeterminada de reproducción</string>
   <string name="morphe_playback_speed_default_title">Velocidad predeterminada de reproducción</string>
-  <string name="morphe_remember_playback_speed_toast">Se ha cambiado la velocidad predeterminada a: %s</string>
+  <string name="morphe_remember_playback_speed_toast">Se ha cambiado la velocidad de reproducción predeterminada a: %s</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Desactivar vídeo HDR</string>
   <string name="morphe_disable_hdr_video_summary_on">El vídeo HDR está desactivado</string>

@@ -13,11 +13,12 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
-import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
@@ -34,23 +35,20 @@ import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
-private val reloadVideoResourcePatch = resourcePatch {
+private val reloadVideoButtonResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch,
     )
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_reload_video"),
-        )
 
         copyResources(
             "reloadbutton",
             ResourceGroup(
                 resourceDirectoryName = "drawable",
-                "morphe_reload_video.xml",
-                "morphe_reload_video_bold.xml",
+                "morphe_reload_video_button.xml",
+                "morphe_reload_video_button_bold.xml",
             ),
         )
     }
@@ -66,14 +64,15 @@ private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/ReloadVideoButton;"
 
 @Suppress("unused")
-val reloadVideoPatch = bytecodePatch(
+val reloadVideoButtonPatch = bytecodePatch(
     name = "Reload video",
     description = "Adds an option to display reload video button in the video player.",
 ) {
     dependsOn(
-        reloadVideoResourcePatch,
+        reloadVideoButtonResourcePatch,
         legacyPlayerControlsPatch,
         videoInformationPatch,
+        playerOverlayButtonsSettingsPatch,
         bytecodePatch {
             finalize {
                 addTopControl(
@@ -88,6 +87,10 @@ val reloadVideoPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        addPlayerOverlayPreferences(
+            SwitchPreference("morphe_reload_video_button")
+        )
+
         initializeTopControl(EXTENSION_BUTTON)
         injectVisibilityCheckCall(EXTENSION_BUTTON)
 

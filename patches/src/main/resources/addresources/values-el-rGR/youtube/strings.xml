@@ -86,19 +86,18 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Το \"Αιωρούμενο Κουμπί Μικροφώνου\" στην αναζήτηση έχει αποκρυφτεί</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Το \"Αιωρούμενο Κουμπί Μικροφώνου\" στην αναζήτηση εμφανίζεται</string>
   <string name="morphe_hide_horizontal_shelves_title">Απόκρυψη \"Οριζοντίων Ραφιών\"</string>
-  <string name="morphe_hide_horizontal_shelves_summary_on">"Τα οριζόντια ράφια έχουν κρυφτεί, όπως:
-
-• Επικαιρότητα
-• Δημοσιεύσεις κοινότητας που μπορεί να σας αρέσουν
-• Συνέχιση παρακολούθησης
-• Εξερευνήστε περισσότερα κανάλια
-• Εξερευνήστε περισσότερα θέματα
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Οι οριζόντιες ράφες είναι κρυμμένες, όπως:
+• Ειδήματα τελευταίας στιγμής
+• Δημοσιεύσεις κοινότητας που ενδέχεται να σας αρέσουν
+• Συνέχεια προβολής
+• Εξερεύνηση περισσότερων καναλιών
+• Εξερεύνηση περισσότερων θεμάτων
 • Για εσάς
 • Τελευταία βίντεο
-• Τα πιο σχετικά
-• Δημοσιεύσεις από την Κοινότητα του Δημιουργού
-• Αγορές
-• Παρακολουθήστε το ξανά"</string>
+• Πιο σχετικά
+• Δημοσιεύσεις από την κοινότητα του δημιουργού
+• Shopping
+• Δείτε το ξανά"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Τα \"Οριζόντια ράφια\" εμφανίζονται</string>
   <string name="morphe_hide_image_shelf_title">Απόκρυψη ραφιού \"Εικόνες\" στα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_image_shelf_summary_on">Το ράφι \"Εικόνες\" έχει αποκρυφτεί</string>
@@ -176,20 +175,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_join_membership_button_title">Κουμπί «Συμμετοχή»</string>
   <string name="morphe_hide_join_membership_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_join_membership_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_live_chat_donators_bar_title">Απόκρυψη της μπάρας χορηγών ζωντανής συνομιλίας</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_on">Η μπάρα χορηγών ζωντανής συνομιλίας είναι κρυμμένη</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_off">Η μπάρα χορηγών ζωντανής συνομιλίας είναι ορατή</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the player overlay for live streamed videos after opening live chat. -->
+          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Απόκρυψη κουμπιού «Επανάληψη συζήτησης ζωντανής μετάδοσης»</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_on">Το κουμπί «Επανάληψη συζήτησης ζωντανής μετάδοσης» στο επάνω μέρος του παίκτη είναι κρυμμένο</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_off">Το κουμπί «Επανάληψη συζήτησης ζωντανής μετάδοσης» στο επάνω μέρος του παίκτη είναι ορατό</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">Το κουμπί αναπαραγωγής της ζωντανής συνομιλίας σε πλήρη οθόνη είναι κρυφό</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">Το κουμπί αναπαραγωγής της ζωντανής συνομιλίας σε πλήρη οθόνη είναι ορατό</string>
   <string name="morphe_hide_medical_panels_title">Πάνελ ιατρικών πληροφοριών</string>
   <string name="morphe_hide_medical_panels_summary_on">Κρυμμένα</string>
   <string name="morphe_hide_medical_panels_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_quick_actions_title">Γρήγορες ενέργειες</string>
-  <string name="morphe_hide_quick_actions_summary_on">Κρυμμένες</string>
-  <string name="morphe_hide_quick_actions_summary_off">Εμφανίζονται</string>
-  <string name="morphe_hide_quick_actions_related_videos_title">Γραμμή φίλτρων στα σχετικά βίντεο</string>
-  <string name="morphe_hide_quick_actions_related_videos_summary_on">Κρυμμένα</string>
-  <string name="morphe_hide_quick_actions_related_videos_summary_off">Εμφανίζονται</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Οδηγίες συνδρομητών</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Εμφανίζονται</string>
@@ -197,8 +193,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_timed_reactions_summary_off">Εμφανίζονται</string>
   <string name="morphe_hide_video_title_title">Τίτλος του βίντεο</string>
-  <string name="morphe_hide_video_title_summary_on">Κρυμμένη η επιγραφή τίτλου βίντεο στο επάνω μέρος του παίκτη</string>
-  <string name="morphe_hide_video_title_summary_off">Εμφανίζεται η επιγραφή τίτλου βίντεο στο επάνω μέρος του παίκτη</string>
+  <string name="morphe_hide_video_title_summary_on">Ο τίτλος του βίντεο σε πλήρη οθόνη είναι κρυμμένος</string>
+  <string name="morphe_hide_video_title_summary_off">Ο τίτλος του βίντεο σε πλήρη οθόνη είναι ορατός</string>
   <string name="morphe_hide_description_components_screen_title">Περιγραφή βίντεο</string>
   <string name="morphe_hide_description_components_screen_summary">Απόκρυψη ή εμφάνιση στοιχείων περιγραφής βίντεο</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Σύνοψη βίντεο που δημιουργήθηκε από AI</string>
@@ -385,7 +381,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_user_dialog_message">"Περιορισμοί:
 • Οι ενότητες Shorts, οι σελίδες καναλιών και τα αποτελέσματα αναζήτησης ενδέχονται να εξακολουθούν να εμφανίζουν τον χρόνο μεταφόρτωση
 • Αυτή η λειτουργία δεν λειτουργεί με την διάταξη αυτοκινήτου."</string>
-  <string name="morphe_hide_keyword_content_screen_title">Απόκρυψη περιεχομένου λέξεων-κλειδιών</string>
+  <string name="morphe_hide_keyword_content_screen_title">Φίλτρο λέξεων-κλειδιών</string>
   <string name="morphe_hide_keyword_content_screen_summary">Απόκρυψη βίντεο ροής και αναζήτησης χρησιμοποιώντας φίλτρα λέξεων-κλειδιών</string>
   <string name="morphe_hide_keyword_content_home_title">Φιλτράρισμα αρχικής ροής</string>
   <string name="morphe_hide_keyword_content_home_summary_on">Τα βίντεο στην αρχική ροή φιλτράρονται με τη χρήση λέξεων-κλειδιών</string>
@@ -420,7 +416,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Λέξη-κλειδί έχει αντικρουόμενες δηλώσεις: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Η λέξη-κλειδί είναι πολύ σύντομη και απαιτεί εισαγωγικά: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Θα κρυφτούν όλα τα βίντεο με την λέξη-κλειδί: %s</string>
-  <!-- ad.general.hideAdsResourcePatch -->
+  <!-- ad.general.hideAdsPatch -->
   <string name="morphe_hide_end_screen_store_banner_title">Ετικέτα καταστήματος στην τελική οθόνη</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Εμφανίζεται</string>
@@ -453,15 +449,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_video_ads_summary_off">Εμφανίζονται</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
-  <string name="morphe_share_copy_url_success">Η διεύθυνση URL αντιγράφηκε στο πρόχειρο</string>
-  <string name="morphe_share_copy_url_timestamp_success">Η διεύθυνση URL αντιγράφηκε με χρονική σήμανση</string>
-  <string name="morphe_copy_video_url_title">Εμφάνιση κουμπιού αντιγραφής URL του βίντεο</string>
-  <string name="morphe_copy_video_url_summary_on">Το κουμπί εμφανίζεται. Πατήστε για να αντιγράψετε τη διεύθυνση URL του βίντεο. Πατήστε παρατεταμένα για να αντιγράψετε τη διεύθυνση URL με χρονική σήμανση</string>
-  <string name="morphe_copy_video_url_summary_off">Δεν εμφανίζεται το κουμπί αντιγραφής διεύθυνσης βίντεο</string>
-  <string name="morphe_copy_video_url_timestamp_title">Αντιγραφή χρονοσήμανσης</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Το κουμπί Αντιγραφή διεύθυνσης URL βίντεο αντιγράφει με χρονοσήμανση. Το πατινέ αντιγράφει χωρίς χρονοσήμανση</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Το κουμπί Αντιγραφή διεύθυνσης URL βίντεο αντιγράφει χωρίς χρονοσήμανση. Το πατινέ αντιγράφει με χρονοσήμανση</string>
+  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
+  <string name="morphe_share_copy_url_button_success">Η διεύθυνση URL αντιγράφηκε στο πρόχειρο</string>
+  <string name="morphe_share_copy_url_button_timestamp_success">Η διεύθυνση URL με τη χρονική σήμανση αντιγράφηκε στο πρόχειρο</string>
+  <string name="morphe_copy_video_url_button_title">Εμφάνιση αντιγραφής URL βίντεο</string>
+  <string name="morphe_copy_video_url_button_summary_on">Το κουμπί εμφανίζεται. Πατήστε για να αντιγράψετε τη διεύθυνση URL του βίντεο. Πατήστε παρατεταμένα για να αντιγράψετε τη διεύθυνση URL με χρονική σήμανση</string>
+  <string name="morphe_copy_video_url_button_summary_off">Δεν εμφανίζεται το κουμπί αντιγραφής διεύθυνσης βίντεο</string>
+  <string name="morphe_copy_video_url_button_timestamp_title">Αντιγραφή χρονοσήμανσης</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_on">Το κουμπί αντιγραφής URL βίντεο αντιγράφει με χρονική σήμανση. Πατήστε παρατεταμένα για να αντιγράψετε χωρίς χρονική σήμανση</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_off">Το κουμπί αντιγραφής URL βίντεο αντιγράφει χωρίς χρονική σήμανση. Πατήστε παρατεταμένα για να αντιγράψετε με χρονική σήμανση</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Παράθυρο ηλικιακού περιορισμού</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Κρυμμένο</string>
@@ -475,7 +471,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">Απενεργοποίηση παράλειψης κεφαλαίου με διπλό πάτημα</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Το διπλό πάτημα δεν παραλείπει ποτέ στο επόμενο/προηγούμενο κεφάλαιο</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">Το διπλό πάτημα μπορεί περιστασιακά να παραλείψει στο επόμενο/προηγούμενο κεφάλαιο</string>
-  <!-- interaction.downloads.downloadsResourcePatch -->
+  <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Εξωτερικές λήψεις</string>
   <string name="morphe_external_downloader_screen_summary">Ρυθμίσεις για χρήση εξωτερικής εφαρμογής λήψης</string>
   <string name="morphe_external_downloader_title">Εμφάνιση κουμπιού εξωτερικής λήψης</string>
@@ -500,14 +496,16 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_summary_on">Το βίντεο θα αναπαράγεται σε επανάληψη</string>
   <string name="morphe_loop_video_summary_off">Το βίντεο δεν θα επαναληφθεί</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Εμφάνιση κουμπιού επανάληψης βίντεο</string>
+  <string name="morphe_loop_video_button_title">Εμφάνιση επανάληψης βίντεο</string>
   <string name="morphe_loop_video_button_summary_on">Εμφανίζεται</string>
   <string name="morphe_loop_video_button_summary_off">Εμφανίζεται</string>
   <string name="morphe_loop_video_button_toast_on">Η επανάληψη βίντεο είναι ενεργοποιημένη</string>
   <string name="morphe_loop_video_button_toast_off">Η επανάληψη βίντεο είναι απενεργοποιημένη</string>
   <!-- interaction.playall.playAllButtonPatch -->
-  <string name="morphe_play_all_button_title">Εμφάνιση κουμπιού αναπαραγωγής όλων</string>
-  <string name="morphe_play_all_button_summary_on">"Εμφανίζεται το κουμπί αναπαραγωγής όλων.\nΠατήστε για να δημιουργήσετε μια λίστα αναπαραγωγής με όλα τα βίντεο από το κανάλι.\nΠατήστε και κρατήστε πατημένο για να αναιρέσετε.\n\nΠληροφορίες: Ίσως να μην λειτουργεί σε ζωντανές μεταδόσεις"</string>
+  <string name="morphe_play_all_button_title">Εμφάνιση Αναπαραγωγής όλων</string>
+  <string name="morphe_play_all_button_summary_on">"Το κουμπί αναπαραγωγής όλων είναι ορατό. Πατήστε για να δημιουργήσετε μια λίστα αναπαραγωγής με όλα τα βίντεο από το κανάλι. Πατήστε και κρατήστε πατημένο για να αναιρέσετε.
+
+Πληροφορίες: Ίσως να μην λειτουργεί σε ζωντανές ροές"</string>
   <string name="morphe_play_all_button_summary_off">Δεν εμφανίζεται το κουμπί αναπαραγωγής όλων</string>
   <string name="morphe_play_all_button_type_title">Λειτουργία δημιουργίας λίστας αναπαραγωγής</string>
   <string name="morphe_play_all_button_type_entry_0">Όλα τα περιεχόμενα (Ταξινόμηση κατά χρόνο, Αυξανόμενη σειρά)</string>
@@ -525,10 +523,10 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_12">Μόνο ζωντανές μεταδόσεις μελών</string>
   <string name="morphe_play_all_button_not_available_toast">Δεν ήταν δυνατή η δημιουργία λίστας αναπαραγωγής λόγω ασυμφωνίας αναγνωριστικού καναλιού</string>
   <!-- interaction.reload.reloadVideoPatch -->
-  <string name="morphe_reload_video_title">Εμφάνιση κουμπιού επανεξέτασης βίντεο</string>
-  <string name="morphe_reload_video_summary_on">Εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
-  <string name="morphe_reload_video_summary_off">Δεν εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
-  <string name="morphe_dismiss_player_not_available_toast">Το αναγνωριστικό βίντεο δεν είναι διαθέσιμο. Παρακαλώ ανοίξτε ξανά το βίντεο χειροκίνητα.</string>
+  <string name="morphe_reload_video_button_title">Εμφάνιση ανανέωσης βίντεο</string>
+  <string name="morphe_reload_video_button_summary_on">Εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
+  <string name="morphe_reload_video_button_summary_off">Δεν εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
+  <string name="morphe_dismiss_player_not_available_toast">Το ID του βίντεο δεν είναι διαθέσιμο. Παρακαλώ ανανεώστε το βίντεο χειροκίνητα</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Απενεργοποίηση ακριβής αναζήτησης</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Η χειρονομία αναζήτησης καρέ-καρέ είναι απενεργοποιημένη</string>
@@ -547,7 +545,7 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">Πάτημα για αναζήτηση στη γραμμή προόδου</string>
   <string name="morphe_tap_to_seek_summary_on">Το πάτημα για αναζήτηση στη γραμμή προόδου είναι ενεργοποιημένο</string>
   <string name="morphe_tap_to_seek_summary_off">Το πάτημα για αναζήτηση στη γραμμή προόδου είναι απενεργοποιημένο</string>
-  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
+  <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_brightness_title">Σάρωση οθόνης για φωτεινότητα</string>
   <string name="morphe_swipe_brightness_summary_on">"Η χειρονομία σάρωσης για αλλαγή φωτεινότητας στην πλήρη οθόνη είναι ενεργοποιημένη
 
@@ -599,8 +597,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">Σάρωση αριστερά/δεξιά κατά τη λειτουργία πλήρους οθόνης για αλλαγή σε επόμενο/προηγούμενο βίντεο</string>
   <string name="morphe_swipe_change_video_summary_off">Η χειρονομία αλλαγής βίντεο κατά τη λειτουργία πλήρους οθόνης είναι ανενεργή</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Κουμπιά ενεργειών</string>
-  <string name="morphe_hide_buttons_screen_summary">Απόκρυψη ή εμφάνιση κουμπιών κάτω από βίντεο</string>
+  <string name="morphe_action_buttons_screen_title">Κουμπιά ενεργειών</string>
+  <string name="morphe_action_buttons_screen_summary">Απόκρυψη ή εμφάνιση κουμπιών ενεργειών σε πλήρη οθόνη και πορτραίτο</string>
+  <string name="morphe_portrait_buttons">Κουμπιά πορτραίτο</string>
   <string name="morphe_disable_like_subscribe_glow_title">Απενεργοποίηση λάμψης κουμπιών «Μου αρέσει» και «Εγγραφή»</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Τα κουμπιά «Μου αρέσει» και «Εγγραφή» δεν θα λάμπουν όταν αναφέρονται</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Τα κουμπιά «Μου αρέσει» και «Εγγραφή» θα λάμπουν όταν αναφέρονται</string>
@@ -666,6 +665,43 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">Κουμπί «Αποθήκευση»</string>
   <string name="morphe_hide_save_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_save_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_fullscreen_buttons">Κουμπιά πλήρους οθόνης</string>
+  <string name="morphe_hide_quick_actions_title">Απόκρυψη γραμμής ενεργειών</string>
+  <string name="morphe_hide_quick_actions_summary_on">Η γραμμή ενεργειών είναι κρυφή</string>
+  <string name="morphe_hide_quick_actions_summary_off">Η γραμμή ενεργειών είναι ορατή</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Κουμπί «Ερώτηση»</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Απόκρυψη σχολίων</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Απόκρυψη «Δεν μου αρέσει»</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Απόκρυψη «Μου αρέσει»</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Απόκρυψη «Ζωντανή συνομιλία»</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Το κουμπί ζωντανής συνομιλίας είναι κρυφό</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Το κουμπί ζωντανής συνομιλίας είναι ορατό</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Απόκρυψη Mix</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Το κουμπί Mix είναι κρυφό</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Το κουμπί Mix είναι ορατό</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Απόκρυψη Περισσότερα</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Το κουμπί Περισσότερα είναι κρυφό</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Το κουμπί Περισσότερα είναι ορατό</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Απόκρυψη «Περισσότερα βίντεο»</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Το κουμπί Περισσότερα βίντεο είναι κρυφό</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Το κουμπί Περισσότερα βίντεο είναι ορατό</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Απόκρυψη λίστας αναπαραγωγής</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Το κουμπί λίστας αναπαραγωγής είναι κρυφό</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Το κουμπί λίστας αναπαραγωγής είναι ορατό</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Κουμπί «Αποθήκευση»</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Κουμπί «Κοινοποίηση»</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Κρυμμένο</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Εμφανίζεται</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Υπότιτλοι</string>
   <string name="morphe_captions_screen_summary">Απενεργοποιήστε την αυτόματη ενεργοποίηση των υπότιτλων ή ορίστε κουκί για υπότιτλους</string>
@@ -765,7 +801,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Η γραμμή πλοήγησης στο σκούρο θέμα δεν είναι διαφανής</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Η διαφάνεια της γραμμής πλοήγησης στο σκούρο θέμα ορίζεται αυτόματα</string>
   <string name="morphe_toolbar_screen_title">Γραμμή εργαλείων</string>
-  <string name="morphe_toolbar_screen_summary">Απόκρυψη ή αλλαγή στοιχείων της γραμμής εργαλείων</string>
+  <string name="morphe_toolbar_screen_summary">Απόκρυψη ή εμφάνιση στοιχείων της εργαλειοθήκης</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Απόκρυψη Μετάδοσης</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Το κουμπί μετάδοσης έχει αποκρυφτεί</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Το κουμπί μετάδοσης εμφανίζεται</string>
   <string name="morphe_hide_toolbar_create_button_title">Κουμπί «Δημιουργία»</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Εμφανίζεται</string>
@@ -789,7 +828,7 @@ Second \"item\" text"</string>
 Πατήστε και κράτηστε πατημένο για να ανοίξετε τις ρυθμίσεις Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Αναδυόμενο μενού ρυθμίσεων</string>
-  <string name="morphe_hide_player_flyout_summary">Απόκρυψη ή εμφάνιση στοιχείων του αναδυόμενου μενού στην οθόνη αναπαραγωγής</string>
+  <string name="morphe_hide_player_flyout_summary">Απόκρυψη ή εμφάνιση στοιχείων του πλευρικού μενού</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Μενού «Υπότιτλοι»</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Κρυμμένο</string>
@@ -867,32 +906,34 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Η προεπισκόπιση αυτόματης αναπαραγωγής είναι απόκρυφη</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Η προεπισκόπιση αυτόματης αναπαραγωγής είναι ορατή</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Κουμπί αυτόματης αναπαραγωγής</string>
+  <string name="morphe_overlay_buttons_screen_title">Κουμπιά επικάλυψης</string>
+  <string name="morphe_overlay_buttons_screen_summary">Απόκρυψη ή εμφάνιση στοιχείων που σχετίζονται με τα κουμπιά επικάλυψης</string>
+  <string name="morphe_hide_autoplay_button_title">Απόκρυψη αυτόματης αναπαραγωγής</string>
   <string name="morphe_hide_autoplay_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_autoplay_button_summary_off">Εμφανίζεται</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">Κουμπί υπότιτλων</string>
+  <string name="morphe_hide_captions_button_title">Μενού «Υπότιτλοι»</string>
   <string name="morphe_hide_captions_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_captions_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_cast_button_title">Κουμπί μετάδοσης</string>
+  <string name="morphe_hide_cast_button_title">Απόκρυψη Cast</string>
   <string name="morphe_hide_cast_button_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_cast_button_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_collapse_button_title">Κρυφή κουμπή συρρίκνωσης</string>
+  <string name="morphe_hide_collapse_button_title">Απόκρυψη συρρίκνωσης</string>
   <string name="morphe_hide_collapse_button_summary_on">Η κουμπή συρρίκνωσης είναι κρυμμένη</string>
   <string name="morphe_hide_collapse_button_summary_off">Η κουμπή συρρίκνωσης εμφανίζεται</string>
-  <string name="morphe_hide_fullscreen_button_title">Κρυφή κουμπί πλήρους οθόνης</string>
+  <string name="morphe_hide_fullscreen_button_title">Απόκρυψη πλήρους οθόνης</string>
   <string name="morphe_hide_fullscreen_button_summary_on">Κρυμμένη κουμπή πλήρους οθόνης</string>
   <string name="morphe_hide_fullscreen_button_summary_off">Εμφανίζεται κουμπή πλήρους οθόνης</string>
   <string name="morphe_hide_player_control_buttons_background_title">Φόντο κουμπιών ελέγχου οθόνης αναπαραγωγής</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Κρυμμένο</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Εμφανίζεται</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">Κουμπιά προηγούμενου &amp; επόμενου βίντεο</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">Απόκρυψη προηγούμενου &amp; επόμενου</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Τα κουμπιά Προηγούμενο &amp; Επόμενο είναι κρυφό</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Τα κουμπιά Προηγούμενο &amp; Επόμενο εμφανίζονται</string>
-  <string name="morphe_hide_settings_button_title">Κουμπί Απόκρυψης Ρυθμίσεων</string>
+  <string name="morphe_hide_settings_button_title">Απόκρυψη ρυθμίσεων</string>
   <string name="morphe_hide_settings_button_summary_on">Το κουμπί Ρυθμίσεων είναι κρυμμένο</string>
   <string name="morphe_hide_settings_button_summary_off">Το κουμπί Ρυθμίσεων είναι εμφανές</string>
-  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
+  <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Κάρτες τελικής οθόνης</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_end_screen_cards_summary_off">Εμφανίζονται</string>
@@ -909,7 +950,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">Απενεργοποίηση λειτουργίας περιβάλλοντος σε πλήρη οθόνη</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Η λειτουργία περιβάλλοντος σε ολόφωνο είναι απενεργοποιημένη</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Η λειτουργία περιβάλλοντος σε ολόφωνο είναι ενεργοποιημένη</string>
-  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
+  <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Κάρτες πληροφοριών</string>
   <string name="morphe_hide_info_cards_summary_on">Κρυμμένες</string>
   <string name="morphe_hide_info_cards_summary_off">Εμφανίζονται</string>
@@ -928,7 +969,7 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_large_seekbar_title">Ενεργοποίηση γραμμής αναζήτησης πλήρους οθόνης</string>
   <string name="morphe_fullscreen_large_seekbar_summary_on">Η γραμμή αναζήτησης πλήρους οθόνης είναι μεγάλου μεγέθους</string>
   <string name="morphe_fullscreen_large_seekbar_summary_off">Η γραμμή αναζήτησης πλήρους οθόνης είναι κανονικού μεγέθους</string>
-  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
+  <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_shorts_player_screen_title">Οθόνη αναπαραγωγής Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Απόκρυψη ή εμφάνιση στοιχείων στην οθόνη αναπαραγωγής Shorts</string>
   <string name="morphe_hide_shorts_channel_title">Απόκρυψη Shorts στην σελίδα καναλιού</string>
@@ -1091,7 +1132,7 @@ Second \"item\" text"</string>
   <string name="morphe_open_videos_fullscreen_portrait_title">Άνοιγμα των βίντεο σε πλήρη οθόνη με κατακόρυφη προβολή</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">Τα βίντεο ανοίγουν αυτόματα σε λειτουργία πλήρους οθόνης</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">Τα βίντεο δεν ανοίγουν αυτόματα σε λειτουργία πλήρους οθόνης</string>
-  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
+  <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Αδιαφάνεια φόντου οθόνης αναπαραγωγής</string>
   <string name="morphe_player_overlay_opacity_summary">Τιμή αδιαφάνειας μεταξύ 0-100, όπου το 0 είναι διαφανές</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Η αδιαφάνεια φόντου οθόνης αναπαραγωγής πρέπει να είναι μεταξύ 0-100</string>
@@ -1147,7 +1188,7 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">Ευρεία γραμμή αναζήτησης</string>
   <string name="morphe_wide_searchbar_summary_on">Η ευρεία γραμμή αναζήτησης είναι ενεργοποιημένη</string>
   <string name="morphe_wide_searchbar_summary_off">Η ευρεία γραμμή αναζήτησης είναι απενεργοποιημένη</string>
-  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
+  <!-- layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_sb_enable_sb">Ενεργοποίηση του SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">Το SponsorBlock είναι ένα σύστημα που προέρχεται από το κοινό για παράλειψη ενοχλητικών τμημάτων σε βίντεο YouTube</string>
   <string name="morphe_sb_appearance_category">Εμφάνιση</string>
@@ -1613,23 +1654,23 @@ Second \"item\" text"</string>
   <string name="morphe_remember_video_quality_toast">Η προεπιλεγμένη ποιότητα %1$s άλλαξε σε: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Η ποιότητα Shorts με %1$s άλλαξε σε: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
-  <string name="morphe_playback_speed_dialog_button_title">Εμφάνιση κουμπιού αλλαγής ταχύτητας</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">Το κουμπί εμφανίζεται. Πατήστε παρατεταμένα για επαναφορά της ταχύτητας αναπαραγωγής στην προεπιλογή</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">Το κουμπί ψηφοφορίας τμημάτων δεν εμφανίζεται</string>
+  <string name="morphe_playback_speed_dialog_button_title">Εμφάνιση ταχύτητας αναπαραγωγής</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">Το κουμπί ταχύτητας αναπαραγωγής είναι ορατό. Πατήστε και κρατήστε πατημένο για να επαναφέρετε την ταχύτητα αναπαραγωγής στην προεπιλογή</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">Το κουμπί ταχύτητας αναπαραγωγής δεν είναι ορατό</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
-  <string name="morphe_video_quality_dialog_button_title">Εμφάνιση κουμπιού αλλαγής ποιότητας βίντεο</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">Το κουμπί εμφανίζεται. Πατήστε παρατεταμένα για επαναφορά της ποιότητας στην προεπιλογή</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">Εμφανίζεται</string>
+  <string name="morphe_video_quality_dialog_button_title">Εμφάνιση ποιότητας</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">Το κουμπί ποιότητας είναι ορατό. Πατήστε και κρατήστε πατημένο για να επαναφέρετε την ποιότητα στην προεπιλογή</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">Το κουμπί ποιότητας δεν είναι ορατό</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Μενού προσαρμοσμένης ταχύτητας αναπαραγωγής</string>
-  <string name="morphe_custom_speed_menu_summary_on">Το μενού προσαρμοσμένης ταχύτητας αναπαραγωγής εμφανίζεται</string>
-  <string name="morphe_custom_speed_menu_summary_off">Το μενού προσαρμοσμένης ταχύτητας αναπαραγωγής δεν εμφανίζεται</string>
+  <string name="morphe_custom_speed_menu_summary_on">Εμφανίζεται το προσαρμοσμένο μενού ταχύτητας αναπαραγωγής</string>
+  <string name="morphe_custom_speed_menu_summary_off">Δεν εμφανίζεται το προσαρμοσμένο μενού ταχύτητας αναπαραγωγής</string>
   <string name="morphe_restore_old_speed_menu_title">Επαναφορά παλιού μενού ταχύτητας αναπαραγωγής</string>
-  <string name="morphe_restore_old_speed_menu_summary_on">Το παλιό μενού ταχύτητας εμφανίζεται</string>
-  <string name="morphe_restore_old_speed_menu_summary_off">Το σύγχρονο μενού ταχύτητας εμφανίζεται</string>
+  <string name="morphe_restore_old_speed_menu_summary_on">Εμφανίζεται το παλιό μενού ταχύτητας αναπαραγωγής</string>
+  <string name="morphe_restore_old_speed_menu_summary_off">Εμφανίζεται το σύγχρονο μενού ταχύτητας αναπαραγωγής</string>
   <string name="morphe_custom_playback_speeds_title">Προσαρμοσμένες ταχύτητες αναπαραγωγής</string>
   <string name="morphe_custom_playback_speeds_summary">Προσθέστε ή αλλάξτε τις προσαρμοσμένες ταχύτητες αναπαραγωγής</string>
-  <string name="morphe_custom_playback_speeds_invalid">Οι ταχύτητες πρέπει να είναι μικρότερες από %sx</string>
+  <string name="morphe_custom_playback_speeds_invalid">Οι προσαρμοσμένες ταχύτητες αναπαραγωγής πρέπει να είναι μικρότερες από %s</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Μη έγκυρες προσαρμοσμένες ταχύτητες αναπαραγωγής</string>
   <string name="morphe_custom_playback_speeds_auto">Αυτόματη</string>
   <string name="morphe_speed_tap_and_hold_title">Προσαρμοσμένη ταχύτητα παρατεταμένου πατήματος</string>
@@ -1644,7 +1685,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">Εμφανίζεται μήνυμα στο κάτω μέρος της οθόνης όταν αλλάζει η προεπιλεγμένη ταχύτητα αναπαραγωγής</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Δεν εμφανίζεται μήνυμα στο κάτω μέρος της οθόνης όταν αλλάζει η προεπιλεγμένη ταχύτητα αναπαραγωγής</string>
   <string name="morphe_playback_speed_default_title">Προεπιλεγμένη ταχύτητα αναπαραγωγής</string>
-  <string name="morphe_remember_playback_speed_toast">Η προεπιλεγμένη ταχύτητα άλλαξε σε: %s</string>
+  <string name="morphe_remember_playback_speed_toast">Η προεπιλεγμένη ταχύτητα αναπαραγωγής άλλαξε σε: %s</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Απενεργοποίηση βίντεο HDR</string>
   <string name="morphe_disable_hdr_video_summary_on">Τα βίντεο HDR είναι απενεργοποιημένα</string>

@@ -38,9 +38,8 @@ Second \"item\" text"</string>
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_about_title">دربارە</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
-  <string name="morphe_music_play_permanent_repeat_title">ئەوەه کۆمەڵ پێوه‌ردانی گه‌وره‌یان دروستی بێت</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">ئەوەه کۆمەڵ پێوه‌ردانی گه‌وره‌یان پێوه‌ردراوه‌</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">ئەوەه کۆمەڵ پێوه‌ردانی گه‌وره‌یان نه‌پێوه‌ردراون</string>
+  <string name="morphe_music_play_permanent_repeat_title">چالاککردنی دووبارەبوونی هەمیشەیی</string>
+  <string name="morphe_music_play_permanent_repeat_summary_off">دووبارەبوونەوەی بەردەوام ناگوزەرێت</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">گۆشتنی پاشکی خوارە</string>
   <string name="morphe_music_hide_cast_button_summary_on">گۆشتنی پاشکی خوارە قایمە</string>
@@ -82,9 +81,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_miniplayer_previous_button_summary_on">دگمه‌کەی پێشەوە دەربنمە</string>
   <string name="morphe_music_miniplayer_previous_button_summary_off">دگمه‌کەی پێشەوە ناتەوانە دەربنمە</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
-  <string name="morphe_music_enable_forced_miniplayer_title">هەڵبژاردنێکە بۆ نیشاندانی مینىپڵەی وەڕ گنجمانە</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">مینىپڵەی سیە هەسارایە کە دەبێتە سەرگۆی بازگەردان</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">مینىپڵەی هەر هەسارایە لە کاتی دەستپێشاندن پێشگرتە هەسارە</string>
+  <string name="morphe_music_enable_forced_miniplayer_title">چالاککردنی مینیپڵەیەرە زۆرینە</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">مینیپلەیرەکە کەمتر دەبێتەوە کاتێک چڕاندنەوە دەگۆڕێت</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer دەبێتە تەواو کاتێک لێدانی میوزیک دەگۆڕێت</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">ناوەڕۆکی ڕاهێتەاند</string>
   <string name="morphe_music_navigation_bar_screen_summary">خوارێ یان گۆرینی پەیوەندی خۆڵە</string>
@@ -107,7 +106,7 @@ Second \"item\" text"</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_upgrade_button_title">خۆڵەی زیادكاری قایم بێت</string>
   <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">خۆڵەی زیادكاری هەڵە</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">دگمه‌که‌ی زیادکردن نیشانە دەردەکەوێت</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">دوگمەی نوێکردنەوە نیشان دەدرێت</string>
   <string name="morphe_music_hide_navigation_bar_title">سەرشێوەی بارەگای دەربنێ</string>
   <string name="morphe_music_hide_navigation_bar_summary_on">بارەگای دەربنێ هەیە</string>
   <string name="morphe_music_hide_navigation_bar_summary_off">بارەگای دەربنێ نیشانە دەردەکەوێت</string>

@@ -92,6 +92,9 @@ Ak chcete prekladať nové jazyky alebo vylepšiť existujúce preklady, navšt�
   <string name="morphe_debug_title">Zaznamenávanie ladiacich informácií</string>
   <string name="morphe_debug_summary_on">Záznamy ladenia sú povolené</string>
   <string name="morphe_debug_summary_off">Záznamy ladenia nie sú povolené</string>
+  <string name="morphe_debug_stacktrace_title">Záznamy ladenia budú obsahovať trasovacie stopy</string>
+  <string name="morphe_debug_stacktrace_summary_on">Záznamy ladenia budú obsahovať trasovacie stopy</string>
+  <string name="morphe_debug_stacktrace_summary_off">Záznamy ladenia nebudú obsahovať trasovacie stopy</string>
   <string name="morphe_debug_toast_on_error_title">Zobraziť oznámenie v prípade chyby Morphe</string>
   <string name="morphe_debug_toast_on_error_summary_on">Ak sa vyskytne chyba, zobrazí sa upozornenie</string>
   <string name="morphe_debug_toast_on_error_summary_off">Ak sa vyskytne chyba, nezobrazí sa upozornenie</string>
@@ -112,6 +115,12 @@ Nebudete informovaný o žiadnych nečakaných udalostiach."</string>
   <string name="morphe_debug_logs_clear_toast">Záznamy ladenia boli vymazané</string>
   <string name="morphe_debug_feature_flags_manager_title">Správca príznakov funkcií</string>
   <string name="morphe_debug_feature_flags_manager_summary">Spravovať príznaky booleovských funkcií</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktívne príznaky funkcií (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokované príznaky funkcií (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Prehľadávať príznaky funkcií...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Príznaky funkcií uložené</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Príznaky funkcií resetované</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Príznaky funkcií skopírované do schránky</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reštartujte aplikáciu, aby ste mohli použiť toto nastavenie</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->

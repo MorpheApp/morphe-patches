@@ -3,6 +3,8 @@ package app.morphe.patches.youtube.interaction.loop
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
@@ -10,7 +12,6 @@ import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsResourcePatch
-import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
@@ -50,13 +51,14 @@ internal val loopVideoButtonPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         loopVideoButtonResourcePatch,
+        playerOverlayButtonsSettingsPatch,
         legacyPlayerControlsPatch,
         playerOverlayButtonsHookPatch
     )
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_loop_video_button"),
+        addPlayerOverlayPreferences(
+            SwitchPreference("morphe_loop_video_button")
         )
 
         initializeTopControl(EXTENSION_BUTTON)

@@ -87,18 +87,17 @@ Schimbari incluse:
   <string name="morphe_hide_floating_microphone_button_summary_off">Butonul microfonului plutitor din căutare este afișat</string>
   <string name="morphe_hide_horizontal_shelves_title">Ascunde rafturile orizontale</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"Rafturile orizontale sunt ascunse, cum ar fi:
-
 • Știri de ultimă oră
-• Postări din comunitate care îți pot plăcea
-• Continuă să vizionezi
+• Postări din comunitate care ți-ar putea plăcea
+• Continuă vizionarea
 • Explorează mai multe canale
 • Explorează mai multe subiecte
 • Pentru tine
 • Cele mai recente videoclipuri
 • Cele mai relevante
-• Postări din Comunitatea Creatorului
-• Cumpărături
-• Urmărește-l din nou"</string>
+• Postări din comunitatea creatorului
+• Shopping
+• Vezi din nou"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Sertarele orizontale sunt afișate.</string>
   <string name="morphe_hide_image_shelf_title">Ascunde raftul de imagini</string>
   <string name="morphe_hide_image_shelf_summary_on">Raftul de imagini în rezultatele căutării este ascuns</string>
@@ -176,20 +175,17 @@ Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personaliz
   <string name="morphe_hide_join_membership_button_title">Ascunde butonul Alătură-te</string>
   <string name="morphe_hide_join_membership_button_summary_on">Butonul \"Devino membru\" este ascuns.</string>
   <string name="morphe_hide_join_membership_button_summary_off">Butonul \"Devino membru\" este afișat.</string>
+  <string name="morphe_hide_live_chat_donators_bar_title">Ascunde bara donatorilor chat live</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_on">Bara donatorilor chat live este ascunsă</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_off">Bara donatorilor chat live este afișată</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the player overlay for live streamed videos after opening live chat. -->
+          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">Ascunde butonul \'Rejucătează conversație în direct\'</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_on">Butonul \'Rejucătează conversație în direct\' din overlay-ul player-ului este ascuns</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_off">Butonul \'Rejucătează conversație în direct\' din overlay-ul player-ului este afișat</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">Butonul de redare a chatului live este ascuns în ecran complet</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">Butonul de redare a chatului live este afișat în ecran complet</string>
   <string name="morphe_hide_medical_panels_title">Ascunde panourile medicale</string>
   <string name="morphe_hide_medical_panels_summary_on">Panouri medicale sunt ascunse</string>
   <string name="morphe_hide_medical_panels_summary_off">Panourile medicale sunt prezentate</string>
-  <string name="morphe_hide_quick_actions_title">Ascunde acțiunile rapide</string>
-  <string name="morphe_hide_quick_actions_summary_on">Acțiunile rapide în ecran complet sunt ascunse</string>
-  <string name="morphe_hide_quick_actions_summary_off">Acțiunile rapide în ecran complet sunt afișate</string>
-  <string name="morphe_hide_quick_actions_related_videos_title">Ascunde acțiunile rapide legate de videoclipuri</string>
-  <string name="morphe_hide_quick_actions_related_videos_summary_on">Videoclipurile similare în acțiunile rapide sunt ascunse</string>
-  <string name="morphe_hide_quick_actions_related_videos_summary_off">Videoclipurile similare în acțiunile rapide sunt afișate</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ascunde ghidurile comunității abonaților</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">Instrucțiunile comunității abonaților sunt ascunse</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">Recomandările comunității abonaților sunt afișate</string>
@@ -197,8 +193,8 @@ Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personaliz
   <string name="morphe_hide_timed_reactions_summary_on">Reacţiile cronologice sunt ascunse</string>
   <string name="morphe_hide_timed_reactions_summary_off">Reacţiile cronologice sunt evidenţiate</string>
   <string name="morphe_hide_video_title_title">Ascunde titlul videoclipului</string>
-  <string name="morphe_hide_video_title_summary_on">Titlul video-ului în superpunere de player este ascuns</string>
-  <string name="morphe_hide_video_title_summary_off">Titlul video-ului în superpunere de player este afișat</string>
+  <string name="morphe_hide_video_title_summary_on">Titlul videoclipului este ascuns în ecran complet</string>
+  <string name="morphe_hide_video_title_summary_off">Titlul videoclipului este afișat în ecran complet</string>
   <string name="morphe_hide_description_components_screen_title">Descriere video</string>
   <string name="morphe_hide_description_components_screen_summary">Ascunde sau afișează componentele descrierii video</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">Ascundeți \"Rezumat video generat de AI\"</string>
@@ -381,7 +377,7 @@ Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personaliz
   <string name="morphe_hide_upload_time_summary_off">Ora de încărcare este afișată în feed și în rezultatele căutării</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
   <string name="morphe_hide_upload_time_user_dialog_message">"Limitări:\n• Secțiunile Shorts, paginile canalelor și rezultatele căutării pot afișa în continuare orele de încărcare\n• Această funcție nu funcționează cu factorul de formă auto."</string>
-  <string name="morphe_hide_keyword_content_screen_title">Ascundeți conținutul cuvântului cheie</string>
+  <string name="morphe_hide_keyword_content_screen_title">Filtru de cuvinte cheie</string>
   <string name="morphe_hide_keyword_content_screen_summary">Ascundeți căutarea și hrănirea videoclipurilor folosind filtre de cuvinte cheie</string>
   <string name="morphe_hide_keyword_content_home_title">Ascunde videoclipurile de acasă după cuvintele cheie</string>
   <string name="morphe_hide_keyword_content_home_summary_on">Videoclipurile din fila principală sunt filtrate de cuvinte cheie</string>
@@ -416,7 +412,7 @@ Limitări:
   <string name="morphe_hide_keyword_toast_invalid_conflicting">Cuvântul-cheie are declarații contradictorii: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">Cuvântul cheie este prea scurt și necesită oferte: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">Cuvântul cheie va ascunde toate videoclipurile: %s</string>
-  <!-- ad.general.hideAdsResourcePatch -->
+  <!-- ad.general.hideAdsPatch -->
   <string name="morphe_hide_end_screen_store_banner_title">Ascunde bannerul magazinului de la finalul ecranului</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">Bannerul magazinului de pe ecranul final este ascuns.</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">Bannerul magazinului de pe ecranul final este afișat.</string>
@@ -449,15 +445,15 @@ Limitări:
   <string name="morphe_hide_video_ads_summary_on">Anunțurile video sunt ascunse</string>
   <string name="morphe_hide_video_ads_summary_off">Anunțurile video sunt afișate</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
-  <string name="morphe_share_copy_url_success">URL copiat în clipboard</string>
-  <string name="morphe_share_copy_url_timestamp_success">URL cu marcaj de timp copiat</string>
-  <string name="morphe_copy_video_url_title">Afișare buton copie URL</string>
-  <string name="morphe_copy_video_url_summary_on">Butonul de copiere a adresei URL a videoclipului este afișat. Atingeți pentru a copia adresa URL a videoclipului. Atingeți și mențineți apăsat pentru a copia cu marcaj temporal</string>
-  <string name="morphe_copy_video_url_summary_off">Butonul de copiere a adresei URL a videoclipului nu este afișat</string>
-  <string name="morphe_copy_video_url_timestamp_title">Copiază marcajul temporal</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">Butonul Copiază adresa URL a videoclipului copiază cu marcajul temporal. Apăsarea lungă copiază fără marcaj temporal</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">Butonul Copiază adresa URL a videoclipului copiază fără marcaj temporal. Apăsarea lungă copiază cu marcaj temporal</string>
+  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
+  <string name="morphe_share_copy_url_button_success">URL copiat în clipboard</string>
+  <string name="morphe_share_copy_url_button_timestamp_success">Adresa URL cu marcaj de timp a fost copiată în clipboard</string>
+  <string name="morphe_copy_video_url_button_title">Afișează Copiere URL video</string>
+  <string name="morphe_copy_video_url_button_summary_on">Butonul de copiere a adresei URL a videoclipului este afișat. Atingeți pentru a copia adresa URL a videoclipului. Atingeți și mențineți apăsat pentru a copia cu marcaj temporal</string>
+  <string name="morphe_copy_video_url_button_summary_off">Butonul de copiere a adresei URL a videoclipului nu este afișat</string>
+  <string name="morphe_copy_video_url_button_timestamp_title">Copiază marcajul temporal</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_on">Butonul Copiere URL video copiază cu marcaj de timp. Apăsare lungă copiază fără marcaj de timp</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_off">Butonul Copiere URL video copiază fără marcaj de timp. Apăsare lungă copiază cu marcaj de timp</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Eliminați dialogul discreționar al vizualizatorului</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Dialogul va fi șters</string>
@@ -471,7 +467,7 @@ Limitări:
   <string name="morphe_disable_chapter_skip_double_tap_title">Dezactivare omisiune capitol prin atingere dublă</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">Atingerea dublă nu va declanșa niciodată sărirea la capitolul următor/anterior</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">Atingerea dublă poate declanșa ocazional sărirea la capitolul următor/anterior</string>
-  <!-- interaction.downloads.downloadsResourcePatch -->
+  <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">Descărcări externe</string>
   <string name="morphe_external_downloader_screen_summary">Setări pentru utilizarea unui downloader extern</string>
   <string name="morphe_external_downloader_title">Arată butonul extern de descărcare</string>
@@ -496,14 +492,16 @@ Verificați dacă numele pachetului este corect și dacă aplicația este instal
   <string name="morphe_loop_video_summary_on">Videoclipul se va repeta în buclă</string>
   <string name="morphe_loop_video_summary_off">Videoclipul nu se va repeta în buclă</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Afișează butonul de buclă video</string>
+  <string name="morphe_loop_video_button_title">Afișează Repetare video</string>
   <string name="morphe_loop_video_button_summary_on">Meniu cu buclă video este afișat</string>
   <string name="morphe_loop_video_button_summary_off">Meniu cu buclă video nu este afișat</string>
   <string name="morphe_loop_video_button_toast_on">Bucla video este activată</string>
   <string name="morphe_loop_video_button_toast_off">Bucla video este dezactivată</string>
   <!-- interaction.playall.playAllButtonPatch -->
-  <string name="morphe_play_all_button_title">Arată butonul de redare a tuturor</string>
-  <string name="morphe_play_all_button_summary_on">"Butonul de redare a tuturor este afișat\nApăsați pentru a genera o listă de redare cu toate videoclipurile din canal\nApăsați și țineți apăsat pentru a anula\n\nInformații: Este posibil să nu funcționeze pe fluxurile live"</string>
+  <string name="morphe_play_all_button_title">Afișează Redare tot</string>
+  <string name="morphe_play_all_button_summary_on">"Butonul Redare tot este afișat. Atingeți pentru a genera o listă de redare cu toate videoclipurile din canal. Atingeți și mențineți apăsat pentru a anula.
+
+Informații: este posibil să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_play_all_button_summary_off">Butonul de redare a tuturor nu este afișat</string>
   <string name="morphe_play_all_button_type_title">Mod generare listă de redare</string>
   <string name="morphe_play_all_button_type_entry_0">Toate conținuturile (Sortare după timp, Ascendent)</string>
@@ -521,10 +519,10 @@ Verificați dacă numele pachetului este corect și dacă aplicația este instal
   <string name="morphe_play_all_button_type_entry_12">Doar transmisiuni în direct pentru membri</string>
   <string name="morphe_play_all_button_not_available_toast">Nu s-a putut genera playlist-ul din cauza nepotrivirii ID-ului canalului</string>
   <!-- interaction.reload.reloadVideoPatch -->
-  <string name="morphe_reload_video_title">Afișează butonul de reîncărcare video</string>
-  <string name="morphe_reload_video_summary_on">Butonul de reîncărcare video este afișat</string>
-  <string name="morphe_reload_video_summary_off">Butonul de reîncărcare video nu este afișat</string>
-  <string name="morphe_dismiss_player_not_available_toast">ID-ul videoclipului nu este disponibil. Te rugăm să redeschizi manual videoclipul.</string>
+  <string name="morphe_reload_video_button_title">Afișează Reîncarcă video</string>
+  <string name="morphe_reload_video_button_summary_on">Butonul de reîncărcare video este afișat</string>
+  <string name="morphe_reload_video_button_summary_off">Butonul de reîncărcare video nu este afișat</string>
+  <string name="morphe_dismiss_player_not_available_toast">ID-ul video nu este disponibil. Vă rugăm să reîncărcați manual videoclipul</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dezactivează gestul de căutare precis</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gestul este dezactivat</string>
@@ -543,7 +541,7 @@ Verificați dacă numele pachetului este corect și dacă aplicația este instal
   <string name="morphe_tap_to_seek_title">Activează atingerea pentru a căuta</string>
   <string name="morphe_tap_to_seek_summary_on">Atingeți pentru a activa căutarea</string>
   <string name="morphe_tap_to_seek_summary_off">Atingerea pentru a căuta este dezactivată</string>
-  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
+  <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_brightness_title">Activează gestul de luminozitate</string>
   <string name="morphe_swipe_brightness_summary_on">"Tragerea luminozității pe tot ecranul este activată
 
@@ -595,8 +593,9 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
   <string name="morphe_swipe_change_video_summary_on">Glisarea în modul pe ecran complet va trece la următorul/anteriorul videoclip</string>
   <string name="morphe_swipe_change_video_summary_off">Glisarea în modul pe ecran complet nu va trece la următorul/anteriorul videoclip</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Butoane de acţiune</string>
-  <string name="morphe_hide_buttons_screen_summary">Ascunde sau arată butoanele sub videoclipuri</string>
+  <string name="morphe_action_buttons_screen_title">Butoane de acţiune</string>
+  <string name="morphe_action_buttons_screen_summary">Ascunde sau afișează butoanele de acțiune în modul ecran complet și în modul portret</string>
+  <string name="morphe_portrait_buttons">Butoane modul portret</string>
   <string name="morphe_disable_like_subscribe_glow_title">Dezactivați luminozitatea butonului Like and Subscribe</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Butonul Like and Subscribe nu va străluci când este menționat</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Butonul Like and Subscribe va străluci când este menționat</string>
@@ -662,6 +661,43 @@ Reglați volumul glisând vertical pe partea dreaptă a ecranului"</string>
   <string name="morphe_hide_save_button_title">Ascunde Salvare</string>
   <string name="morphe_hide_save_button_summary_on">Butonul Salvare este ascuns</string>
   <string name="morphe_hide_save_button_summary_off">Butonul Salvare este afișat</string>
+  <string name="morphe_fullscreen_buttons">Butoane modul ecran complet</string>
+  <string name="morphe_hide_quick_actions_title">Ascunde bara de acțiune</string>
+  <string name="morphe_hide_quick_actions_summary_on">Bara de acțiune este ascunsă</string>
+  <string name="morphe_hide_quick_actions_summary_off">Bara de acțiune este afișată</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Ascunde \"Întreabă\"</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Butonul Întreabă este ascuns</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Butonul Întreabă este afișat</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Ascunde comentariile</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Butonul de comentarii este ascuns</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Butonul pentru comentarii este afișat</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Ascunde Dezaprobare</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Butonul nu este ascuns</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Butonul nu este afișat</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Ascunde Apreciere</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Butonul Like este ascuns</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Butonul Like este afișat</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Ascunde \'Chat live\'</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Butonul \'Chat live\' este ascuns</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Butonul \'Chat live\' este afișat</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Ascunde Mix</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Butonul Mix este ascuns</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Butonul Mix este afișat</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Ascunde Mai multe</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Butonul Mai multe este ascuns</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Butonul Mai multe este afișat</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Ascunde \'Mai multe videoclipuri\'</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Butonul \'Mai multe videoclipuri\' este ascuns</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Butonul \'Mai multe videoclipuri\' este afișat</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Ascunde Listă de redare</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Butonul Listă de redare este ascuns</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Butonul Listă de redare este afișat</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Ascunde Salvare</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Butonul Salvare este ascuns</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Butonul Salvare este afișat</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Ascunde Partajarea</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Butonul de distribuire este ascuns</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Butonul Distribuie este afișat</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Subtitrare</string>
   <string name="morphe_captions_screen_summary"> Dezactivați automată activarea sau setarea cuvântului cheie pentru subtitrare</string>
@@ -761,7 +797,10 @@ Pentru a accesa Setări, activați butonul Setări prin General → Bara de inst
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Bara de navigare în modul întunecat este opacă</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Bara de navigare în modul întunecat este opaca sau translucida</string>
   <string name="morphe_toolbar_screen_title">Bara de navigare</string>
-  <string name="morphe_toolbar_screen_summary">Ascunde sau schimbă componentele barei de navigare</string>
+  <string name="morphe_toolbar_screen_summary">Ascunde sau afișează componentele barei de instrumente</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Ascunde Transmisia</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Butonul de distribuție este ascuns</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Butonul de execuție este afișat</string>
   <string name="morphe_hide_toolbar_create_button_title">Ascunde Creare</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Butonul de creare este ascuns</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Butonul Creare este afișat</string>
@@ -785,7 +824,7 @@ Apasă și menține apăsat pentru a deschide setările YouTube"</string>
 Apasă și menține apăsat pentru a deschide setările Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Meniu flyout</string>
-  <string name="morphe_hide_player_flyout_summary">Ascunderea sau afișarea componentelor meniului Flyout al jucătorului</string>
+  <string name="morphe_hide_player_flyout_summary">Ascunde sau afișează componentele meniului flyout</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">Ascunde subtitrările</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">Meniul subtitrărilor este ascuns</string>
@@ -863,32 +902,34 @@ Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'An
   <string name="morphe_hide_autoplay_preview_summary_on">Previzualizarea autoplay este ascunsă</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Previzualizarea autoplay este afișată</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">Ascunde butonul Redare automată</string>
+  <string name="morphe_overlay_buttons_screen_title">Butoane suprapuse</string>
+  <string name="morphe_overlay_buttons_screen_summary">Ascunde sau afișează componentele aferente butoanelor suprapuse</string>
+  <string name="morphe_hide_autoplay_button_title">Ascunde Redare automată</string>
   <string name="morphe_hide_autoplay_button_summary_on">Butonul Autoplay este ascuns</string>
   <string name="morphe_hide_autoplay_button_summary_off">Butonul Auto-redare este afișat</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">Ascunderea butonului Subtitrări</string>
+  <string name="morphe_hide_captions_button_title">Ascunde subtitrările</string>
   <string name="morphe_hide_captions_button_summary_on">Butonul subtitrari este ascuns</string>
   <string name="morphe_hide_captions_button_summary_off">Se afișează butonul de subtitrări</string>
-  <string name="morphe_hide_cast_button_title">Ascunde butonul Distribuție</string>
+  <string name="morphe_hide_cast_button_title">Ascunde Distribuire</string>
   <string name="morphe_hide_cast_button_summary_on">Butonul de distribuție este ascuns</string>
   <string name="morphe_hide_cast_button_summary_off">Butonul de execuție este afișat</string>
-  <string name="morphe_hide_collapse_button_title">Ascunde butonul Colapse</string>
+  <string name="morphe_hide_collapse_button_title">Ascunde Reducere</string>
   <string name="morphe_hide_collapse_button_summary_on">Butonul Colapse este ascuns</string>
   <string name="morphe_hide_collapse_button_summary_off">Butonul Colapse este afișat</string>
-  <string name="morphe_hide_fullscreen_button_title">Ascunde butonul ecranân</string>
+  <string name="morphe_hide_fullscreen_button_title">Ascunde Ecran complet</string>
   <string name="morphe_hide_fullscreen_button_summary_on">Butonul ecranân este ascuns</string>
   <string name="morphe_hide_fullscreen_button_summary_off">Butonul ecranân este afièat</string>
   <string name="morphe_hide_player_control_buttons_background_title">Ascunde fundalul controalelor playerului</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">Fundalul comenzilor playerului este ascuns</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">Fundalul comenzilor playerului este afișat</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">Ascunde butoanele Anterior &amp; Următorul</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">Ascunde Anterior și Următorul</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Butoanele Precedent &amp; Următor sunt ascunse</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Butoanele Precedent &amp; Următor sunt afișate</string>
-  <string name="morphe_hide_settings_button_title">Ascunderea butonului Setări</string>
+  <string name="morphe_hide_settings_button_title">Ascunde Setări</string>
   <string name="morphe_hide_settings_button_summary_on">Butonul Setări este ascuns</string>
   <string name="morphe_hide_settings_button_summary_off">Se afișează butonul Setări</string>
-  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
+  <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Ascunde cardurile ecranului final</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Cardurile de pe ecranul de închidere sunt ascunse</string>
   <string name="morphe_hide_end_screen_cards_summary_off">Cardurile de închidere ecran sunt afișate</string>
@@ -905,7 +946,7 @@ Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'An
   <string name="morphe_disable_fullscreen_ambient_mode_title">Dezactivați modul Ambient în ecran complet</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">Modul ambient în ecran complet este dezactivat</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">Modul ambient în ecran complet este activat</string>
-  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
+  <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">Ascunde cardurile cu informații</string>
   <string name="morphe_hide_info_cards_summary_on">Cardurile de informații sunt ascunse</string>
   <string name="morphe_hide_info_cards_summary_off">Cardurile de informații sunt afișate</string>
@@ -924,7 +965,7 @@ Pentru a afișa meniul de track-uri audio, schimba 'Spoof video streams' în 'An
   <string name="morphe_fullscreen_large_seekbar_title">Activare bară de căutare mare în ecran complet</string>
   <string name="morphe_fullscreen_large_seekbar_summary_on">Bara de căutare în ecran complet are dimensiune mare</string>
   <string name="morphe_fullscreen_large_seekbar_summary_off">Bara de căutare în ecran complet are dimensiune normală</string>
-  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
+  <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_shorts_player_screen_title">Player Shorts</string>
   <string name="morphe_shorts_player_screen_summary">Ascunde sau afișează componentele playerului Shorts</string>
   <string name="morphe_hide_shorts_channel_title">Ascunde Shorts-urile din pagina canalului.</string>
@@ -1087,7 +1128,7 @@ Setări → Reproducere (sau Autoreproducere) → Reproduceți următorul video"
   <string name="morphe_open_videos_fullscreen_portrait_title">Deschide videoclipurile în modul ecran complet</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">Videoclipuri deschide tot ecranul</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">Videoclipurile nu deschid tot ecranul</string>
-  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
+  <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">Opacitate suprapusă jucătorului</string>
   <string name="morphe_player_overlay_opacity_summary">Valoarea Opacității între 0-100, unde 0 este transparent</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">Opacitatea suportată de jucător trebuie să fie între 0-100</string>
@@ -1143,7 +1184,7 @@ Limitare: Este posibil ca aprecierile negative să nu apară în modul incognito
   <string name="morphe_wide_searchbar_title">Activează bara de căutare largă</string>
   <string name="morphe_wide_searchbar_summary_on">Bara de căutare largă este activată</string>
   <string name="morphe_wide_searchbar_summary_off">Bara de căutare largă este dezactivată</string>
-  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
+  <!-- layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_sb_enable_sb">Activează SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">SponsorBlock este un sistem bazat pe crowdsourcing pentru a sări peste părțile enervante din videoclipurile de pe YouTube</string>
   <string name="morphe_sb_appearance_category">Aspect</string>
@@ -1611,23 +1652,23 @@ Activarea acestei opțiuni poate debloca calități video mai mari"</string>
   <string name="morphe_remember_video_quality_toast">Calitate %1$s modificată implicit: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Calitatea Shorts %1$s a fost modificată la: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
-  <string name="morphe_playback_speed_dialog_button_title">Arată butonul de dialog de viteză</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">Butonul este afișat. Atingeți și mențineți apăsat pentru a reseta viteza de redare la cea implicită</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">Butonul de vot nu este afișat</string>
+  <string name="morphe_playback_speed_dialog_button_title">Afișează Viteza de redare</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">Butonul Viteza de redare este afișat. Atingeți și mențineți apăsat pentru a reseta viteza de redare la valoarea implicită</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">Butonul Viteza de redare nu este afișat</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
-  <string name="morphe_video_quality_dialog_button_title">Afișați butonul de calitate video</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">Butonul este afișat. Atingeți și mențineți apăsat pentru a reseta calitatea la valoarea implicită</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">Meniul calității video este afișat</string>
+  <string name="morphe_video_quality_dialog_button_title">Afișează Calitate</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">Butonul Calitate este afișat. Atingeți și mențineți apăsat pentru a reseta calitatea la valoarea implicită</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">Butonul Calitate nu este afișat</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">Meniu de redare personalizat</string>
-  <string name="morphe_custom_speed_menu_summary_on">Meniul de viteză personalizat este afișat</string>
-  <string name="morphe_custom_speed_menu_summary_off">Meniul de viteză personalizat nu este afișat</string>
+  <string name="morphe_custom_speed_menu_summary_on">Meniul de viteză de redare personalizat este afișat</string>
+  <string name="morphe_custom_speed_menu_summary_off">Meniul de viteză de redare personalizat nu este afișat</string>
   <string name="morphe_restore_old_speed_menu_title">Restaurare meniu vechi de viteză de redare</string>
-  <string name="morphe_restore_old_speed_menu_summary_on">Meniul vechi de viteză este afișat</string>
-  <string name="morphe_restore_old_speed_menu_summary_off">Meniul modern de viteză este afișat</string>
+  <string name="morphe_restore_old_speed_menu_summary_on">Meniul vechi de viteză de redare este afișat</string>
+  <string name="morphe_restore_old_speed_menu_summary_off">Meniul modern de viteză de redare este afișat</string>
   <string name="morphe_custom_playback_speeds_title">Viteze de redare personalizate</string>
   <string name="morphe_custom_playback_speeds_summary">Adaugă sau modifică vitezele de redare personalizate</string>
-  <string name="morphe_custom_playback_speeds_invalid">Vitezele personalizate trebuie să fie mai mici de %s</string>
+  <string name="morphe_custom_playback_speeds_invalid">Vitezele de redare personalizate trebuie să fie mai mici de %s</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Viteze de redare personalizate nevalide</string>
   <string name="morphe_custom_playback_speeds_auto">Automat</string>
   <string name="morphe_speed_tap_and_hold_title">Viteză personalizată de apăsare și menținere</string>
@@ -1642,7 +1683,7 @@ Dacă 0, atingerea lungă pentru a activa viteza este dezactivată"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">O notificare rapidă este afișată când viteza de redare implicită este modificată</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">Un mesaj de tip toast nu se afișează când viteza de redare implicită este modificată</string>
   <string name="morphe_playback_speed_default_title">Viteza de redare implicită</string>
-  <string name="morphe_remember_playback_speed_toast">Viteza implicită a fost modificată la: %s</string>
+  <string name="morphe_remember_playback_speed_toast">Viteza de redare implicită a fost modificată la: %s</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Dezactivați videoclipurile HDR</string>
   <string name="morphe_disable_hdr_video_summary_on">Videoclipurile HDR sunt dezactivate</string>

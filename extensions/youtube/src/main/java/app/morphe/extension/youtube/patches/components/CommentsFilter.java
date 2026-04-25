@@ -37,7 +37,8 @@ public class CommentsFilter extends Filter {
 
     private final StringFilterGroup comments;
     private final StringFilterGroup emojiAndTimestampButtons;
-
+    private final StringFilterGroup previewCommentDotsSelector;
+    
     public CommentsFilter() {
         var chatSummary = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_AI_CHAT_SUMMARY,
@@ -90,6 +91,11 @@ public class CommentsFilter extends Filter {
                 "comments_entry_point_simplebox"
         );
 
+        previewCommentDotsSelector = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_PREVIEW_COMMENT,
+                VIDEO_METADATA_CAROUSEL_PATH
+        );
+
         var thanksButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_THANKS_BUTTON,
                 "super_thanks_button.e"
@@ -105,6 +111,7 @@ public class CommentsFilter extends Filter {
                 createAShort,
                 emojiAndTimestampButtons,
                 previewComment,
+                previewCommentDotsSelector,
                 thanksButton
 
         );
@@ -119,6 +126,12 @@ public class CommentsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
+        if (matchedGroup == previewCommentDotsSelector) {
+            return path.contains("carousel_header")
+                        &&
+                    path.endsWith("|ContainerType|ContainerType|ContainerType|");
+        }
+
         if (matchedGroup == comments) {
             if (path.startsWith(VIDEO_LOCKUP_WITH_ATTACHMENT_PATH)) {
                 return Settings.HIDE_COMMENTS_SECTION_IN_HOME_FEED.get();

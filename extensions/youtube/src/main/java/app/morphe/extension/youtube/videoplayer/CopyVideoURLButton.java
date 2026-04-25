@@ -25,7 +25,7 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class CopyVideoURLButton {
-    private static final boolean COPY_VIDEO_URL_TIMESTAMP = Settings.COPY_VIDEO_URL_TIMESTAMP.get();
+    private static final boolean COPY_VIDEO_URL_BUTTON_TIMESTAMP = Settings.COPY_VIDEO_URL_BUTTON_TIMESTAMP.get();
 
     @Nullable
     private static LegacyPlayerControlButton legacy;
@@ -35,15 +35,15 @@ public class CopyVideoURLButton {
      */
     public static void initializeButton(View controlsView) {
         try {
-            if (RESTORE_OLD_PLAYER_BUTTONS || !Settings.COPY_VIDEO_URL.get()) {
+            if (RESTORE_OLD_PLAYER_BUTTONS || !Settings.COPY_VIDEO_URL_BUTTON.get()) {
                 return;
             }
 
             PlayerOverlayButton.addButton(controlsView,
-                    COPY_VIDEO_URL_TIMESTAMP ? "morphe_yt_copy_timestamp_bold" : "morphe_yt_copy_bold",
-                    view -> copyURL(COPY_VIDEO_URL_TIMESTAMP),
+                    COPY_VIDEO_URL_BUTTON_TIMESTAMP ? "morphe_yt_copy_timestamp_bold" : "morphe_yt_copy_bold",
+                    view -> copyURL(COPY_VIDEO_URL_BUTTON_TIMESTAMP),
                     view -> {
-                        copyURL(!COPY_VIDEO_URL_TIMESTAMP);
+                        copyURL(!COPY_VIDEO_URL_BUTTON_TIMESTAMP);
                         return true;
                     }
             );
@@ -66,13 +66,13 @@ public class CopyVideoURLButton {
                     controlsView,
                     "morphe_copy_video_url_button",
                     null,
-                    COPY_VIDEO_URL_TIMESTAMP
+                    COPY_VIDEO_URL_BUTTON_TIMESTAMP
                             ? "morphe_yt_copy_timestamp"
                             : "morphe_yt_copy",
-                    Settings.COPY_VIDEO_URL::get,
-                    view -> copyURL(COPY_VIDEO_URL_TIMESTAMP),
+                    Settings.COPY_VIDEO_URL_BUTTON::get,
+                    view -> copyURL(COPY_VIDEO_URL_BUTTON_TIMESTAMP),
                     view -> {
-                        copyURL(!COPY_VIDEO_URL_TIMESTAMP);
+                        copyURL(!COPY_VIDEO_URL_BUTTON_TIMESTAMP);
                         return true;
                     }
             );
@@ -115,8 +115,8 @@ public class CopyVideoURLButton {
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.S_V2
                     || (withTimestamp && currentVideoTimeInSeconds > 0)) {
                 Utils.showToastShort(withTimestamp && currentVideoTimeInSeconds > 0
-                        ? str("morphe_share_copy_url_timestamp_success")
-                        : str("morphe_share_copy_url_success"));
+                        ? str("morphe_share_copy_url_button_timestamp_success")
+                        : str("morphe_share_copy_url_button_success"));
             }
         } catch (Exception e) {
             Logger.printException(() -> "Failed to generate video URL", e);

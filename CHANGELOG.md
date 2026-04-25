@@ -1,3 +1,31 @@
+# [1.25.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.25.0-dev.1...v1.25.0-dev.2) (2026-04-24)
+
+
+### Bug Fixes
+
+* **YouTube:** prevent related video hiding with restricted video confirmation watching ([#1235](https://github.com/MorpheApp/morphe-patches/issues/1235)) ([7005f13](https://github.com/MorpheApp/morphe-patches/commit/7005f13aa385768bb9c5852ee395cb028fa21d79))
+
+
+### Features
+
+* **YouTube - Navigation bar:** Add "Hide Cast button" setting ([#1268](https://github.com/MorpheApp/morphe-patches/issues/1268)) ([53dd12c](https://github.com/MorpheApp/morphe-patches/commit/53dd12c0b25587f6cf5ea5c54f2a7b3924b03d75))
+* **YouTube:** Add experimental support for `21.17.480` ([1bb6403](https://github.com/MorpheApp/morphe-patches/commit/1bb64036c33ce225d0f172d1e865e68b3f25ae72))
+
+# [1.25.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.24.0...v1.25.0-dev.1) (2026-04-22)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** "Hide info panel" does not work in search results ([#1229](https://github.com/MorpheApp/morphe-patches/issues/1229)) ([a846ce3](https://github.com/MorpheApp/morphe-patches/commit/a846ce3096484aed65b2a3f7bf5b1a4a67cb6ecb))
+* **YouTube - Hide layout components:** Hide preview comment dots ([#1208](https://github.com/MorpheApp/morphe-patches/issues/1208)) ([8a2b63b](https://github.com/MorpheApp/morphe-patches/commit/8a2b63be46400113b4556a5ef73156b44aacde9a))
+* **YouTube - Hide layout components:** Resolve "Hide How this was made" not working in Shorts description ([#1257](https://github.com/MorpheApp/morphe-patches/issues/1257)) ([1a188de](https://github.com/MorpheApp/morphe-patches/commit/1a188de4e374ca659f90c0d1b955fe1080974138))
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide live chat donators bar" setting ([#1236](https://github.com/MorpheApp/morphe-patches/issues/1236)) ([d058745](https://github.com/MorpheApp/morphe-patches/commit/d0587451c26e80cead531a19843852bdca641c53))
+* **YouTube - Hide video action buttons:** Add "Hide quick actions" settings ([#1118](https://github.com/MorpheApp/morphe-patches/issues/1118)) ([590033f](https://github.com/MorpheApp/morphe-patches/commit/590033f9db845a5807e4456b03c7c5bad655e5b8))
+
 # [1.24.0](https://github.com/MorpheApp/morphe-patches/compare/v1.23.0...v1.24.0) (2026-04-20)
 
 

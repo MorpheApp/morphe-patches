@@ -15,4 +15,60 @@
 Second \"item\" text"</string>
 
 -->
-<resources></resources>
+<resources>
+  <string name="morphe_screen_ads_title">Oglasi</string>
+  <string name="morphe_hide_post_ads_title">Skrij oglase v viru</string>
+  <string name="morphe_hide_post_ads_summary">Skrije oglase v viru</string>
+  <string name="morphe_hide_comment_ads_title">Skrij oglas v komentarjih</string>
+  <string name="morphe_hide_comment_ads_summary">Skrije oglase v komentarjih</string>
+  <string name="morphe_screen_layout_title">Postavitev</string>
+  <string name="morphe_disable_modern_home_title">Onemogoči moderno domačo stran</string>
+  <string name="morphe_disable_modern_home_summary">Onemogoča moderno domačo stran UI</string>
+  <string name="morphe_disable_screenshot_popup_title">Onemogoči pojavno okno s posnetkom zaslona</string>
+  <string name="morphe_disable_screenshot_popup_summary">Onemogoča pojavno okno, ki se pojavi ob fotografiranju zaslona</string>
+  <string name="morphe_hide_ask_button_title">Skrij gumb Vprašanje</string>
+  <string name="morphe_hide_ask_button_summary">Skrije gumb Vprašanje v vrstici za iskanje</string>
+  <string name="morphe_hide_answers_button_title">Skrij gumb Pripis</string>
+  <string name="morphe_hide_answers_button_summary">Skrije gumb Pripis v navigacijski vrstici</string>
+  <string name="morphe_hide_chat_button_title">Skrij gumb Klemen</string>
+  <string name="morphe_hide_chat_button_summary">Skrije gumb Klemen v navigacijski vrstici</string>
+  <string name="morphe_hide_create_button_title">Skrij gumb Ustvari</string>
+  <string name="morphe_hide_create_button_summary">Skrije gumb Ustvari v navigacijski vrstici</string>
+  <string name="morphe_hide_discover_button_title">Skrij gumb Odkrij ali Skupnosti</string>
+  <string name="morphe_hide_discover_button_summary">Skrije gumb Odkrij ali Skupnosti v navigacijski vrstici</string>
+  <string name="morphe_hide_games_button_title">Skrij gumb Igre</string>
+  <string name="morphe_hide_games_button_summary">Skrije gumb Igre v navigacijski vrstici</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Skrij polico Nedavno obiskani</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Skrije polico Nedavno obiskani v stranski vrstici</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Skrij polico Igre na Reddit</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Skrije polico Igre na Reddit v stranski vrstici</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Skrij polico Reddit Pro</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Skrije polico Reddit Pro v stranski vrstici</string>
+  <string name="morphe_hide_about_shelf_title">Skrij polico O nas</string>
+  <string name="morphe_hide_about_shelf_summary">Skrije polico O nas v stranski vrstici</string>
+  <string name="morphe_hide_resources_shelf_title">Skrij polico Virov</string>
+  <string name="morphe_hide_resources_shelf_summary">Skrije polico Virov v stranski vrstici</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Skrij priporočene skupnosti</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Skrije priporočene skupnosti v podredditih</string>
+  <string name="morphe_hide_trending_today_shelf_title">Skrij polico Dan danes</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Skrije polico Dan danes iz predlogov iskanja
+
+Omejitev: Vizualni razdelilci se ne morejo skriti"</string>
+  <string name="morphe_remove_notification_dialog_title">Odstrani dialog za predlog obvestil</string>
+  <string name="morphe_remove_notification_dialog_summary">Odstrani dialog za predlog obvestil, ki se pojavi ob obisku podreddita z njegovo samodejnim sprejemanjem</string>
+  <string name="morphe_show_view_count_title">Pokaži prikazovalec številke ogledov</string>
+  <string name="morphe_show_view_count_summary">"Pokaže prikazovalec številke ogledov za objave
+
+Omejitev: Prikazano samo, če API odgovor vsebuje številko ogledov"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Odstrani dialog za opozorilo NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Odstrani dialog za opozorilo NSFW, ki se pojavi ob obisku podreddita z njegovo samodejnim sprejemanjem</string>
+  <string name="morphe_screen_miscellaneous_title">Razno</string>
+  <string name="morphe_about_title">O</string>
+  <string name="morphe_about_summary">Različica popravka in uradni povezave</string>
+  <string name="morphe_sanitize_sharing_links_title">Očiščevanje delitvenih povezav</string>
+  <string name="morphe_sanitize_sharing_links_summary">Očišči delitvene povezave z odstranjevanjem parametrov za sledenje</string>
+  <string name="morphe_open_links_directly_title">Odpiraj povezave neposredno</string>
+  <string name="morphe_open_links_directly_summary">Preskoči URL-je za preusmerjanje v zunanjih povezavah</string>
+  <string name="morphe_open_links_externally_title">Odpiraj povezave zunaj aplikacije</string>
+  <string name="morphe_open_links_externally_summary">Povezave se odpirajo v vašem brskalniku, namesto v brskalniku znotraj aplikacije</string>
+</resources>

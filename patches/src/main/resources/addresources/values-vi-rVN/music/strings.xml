@@ -37,12 +37,12 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_summary_on">Video quảng cáo đã bị ẩn</string>
   <string name="morphe_music_hide_video_ads_summary_off">Video quảng cáo được hiển thị</string>
   <!-- interaction.crossfade.crossfadePatch -->
-  <string name="morphe_music_crossfade_screen_title">Chuyển bài mượt</string>
+  <string name="morphe_music_crossfade_screen_title">Chuyển bài</string>
   <string name="morphe_music_crossfade_screen_summary">Trộn các bài hát với nhau khi chuyển bài</string>
-  <string name="morphe_music_crossfade_enabled_title">Bật hiệu ứng chuyển bài mượt</string>
+  <string name="morphe_music_crossfade_enabled_title">Bật hiệu ứng chuyển bài</string>
   <string name="morphe_music_crossfade_enabled_summary_on">Các bài hát được trộn với nhau</string>
-  <string name="morphe_music_crossfade_enabled_summary_off">Chuyển bài mượt đã tắt</string>
-  <string name="morphe_music_crossfade_curve_title">Hiệu ứng làm mờ dần âm thanh</string>
+  <string name="morphe_music_crossfade_enabled_summary_off">Hiệu ứng chuyển bài đã tắt</string>
+  <string name="morphe_music_crossfade_curve_title">Hiệu ứng làm mờ âm thanh</string>
   <string name="morphe_music_crossfade_curve_summary">Cách âm lượng thay đổi khi chuyển giữa các bài</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Âm lượng cân bằng</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Duy trì nhẹ</string>
@@ -50,9 +50,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Đường cong S mượt</string>
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_duration_title">Thời gian chuyển bài</string>
-  <string name="morphe_crossfade_duration_250ms">250 mili-giây</string>
-  <string name="morphe_crossfade_duration_500ms">500 mili-giây</string>
-  <string name="morphe_crossfade_duration_750ms">750 mili-giây</string>
+  <string name="morphe_crossfade_duration_250ms">250 mili giây</string>
+  <string name="morphe_crossfade_duration_500ms">500 mili giây</string>
+  <string name="morphe_crossfade_duration_750ms">750 mili giây</string>
   <string name="morphe_crossfade_duration_1000ms">1 giây</string>
   <string name="morphe_crossfade_duration_2000ms">2 giây</string>
   <string name="morphe_crossfade_duration_3000ms">3 giây</string>
@@ -63,17 +63,17 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 giây</string>
   <string name="morphe_crossfade_duration_9000ms">9 giây</string>
   <string name="morphe_crossfade_duration_10000ms">10 giây</string>
-  <string name="morphe_music_crossfade_on_skip_title">Chuyển bài mượt khi chuyển bài thủ công</string>
-  <string name="morphe_music_crossfade_on_skip_summary_on">Hiệu ứng chuyển bài mượt được áp dụng khi bạn chủ động chuyển bài</string>
-  <string name="morphe_music_crossfade_on_skip_summary_off">Hiệu ứng chuyển bài mượt không được áp dụng khi bạn chủ động chuyển bài</string>
-  <string name="morphe_music_crossfade_on_auto_advance_title">Chuyển bài mượt khi tự động chuyển bài</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Hiệu ứng chuyển bài mượt được áp dụng khi một bài hát kết thúc và chuyển sang bài tiếp theo</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Hiệu ứng chuyển bài mượt không được áp dụng khi tự động chuyển bài</string>
+  <string name="morphe_music_crossfade_on_skip_title">Hiệu ứng khi chuyển bài thủ công</string>
+  <string name="morphe_music_crossfade_on_skip_summary_on">Hiệu ứng chuyển bài sẽ được áp dụng khi bạn chủ động chuyển bài</string>
+  <string name="morphe_music_crossfade_on_skip_summary_off">Hiệu ứng chuyển bài không được áp dụng khi bạn chủ động chuyển bài</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Hiệu ứng khi tự động chuyển bài</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Hiệu ứng chuyển bài sẽ được áp dụng khi một bài hát kết thúc và chuyển sang bài tiếp theo</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Hiệu ứng chuyển bài không được áp dụng khi tự động chuyển bài</string>
   <string name="morphe_music_crossfade_session_control_title">Điều khiển phiên phát</string>
-  <string name="morphe_music_crossfade_session_control_summary_on">"Bấm giữ nút trộn bài để tạm dừng hoặc tiếp tục hiệu ứng chuyển bài mượt"</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"Bấm giữ nút trộn bài để tạm dừng hoặc tiếp tục hiệu ứng chuyển bài"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Điều khiển phiên phát đã tắt</string>
   <string name="morphe_music_crossfade_about_title">Giới thiệu</string>
-  <string name="morphe_music_crossfade_about_summary">"Hiệu ứng chuyển bài mượt hiện chỉ có trên YouTube Music 8.x
+  <string name="morphe_music_crossfade_about_summary">"Hiệu ứng chuyển bài hiện chỉ có trên YouTube Music 8.x
 
 Bấm giữ nút trộn bài để tắt hoặc bật hiệu ứng
 

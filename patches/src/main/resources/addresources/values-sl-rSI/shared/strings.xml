@@ -17,12 +17,146 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Nastavitve</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Ali ste prepričani, da želite nadaljevati?</string>
+  <string name="morphe_settings_save">Shrani</string>
+  <string name="morphe_settings_reset">Ponastavi</string>
+  <string name="morphe_settings_reset_color">Ponastavi barvo</string>
+  <string name="morphe_settings_color_invalid">Neveljavna barva</string>
+  <string name="morphe_settings_restart_title">Ponovni zagon je potreben</string>
+  <string name="morphe_settings_restart_dialog_message">Za uveljavitev te spremembe je treba znova zagnati aplikacijo.</string>
+  <string name="morphe_settings_restart">Ponovni zagon</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Uvozi</string>
+  <string name="morphe_settings_import_copy">Kopiraj</string>
+  <string name="morphe_settings_import_reset">Nastavitve Morphe so ponastavljene na privzete</string>
+  <string name="morphe_settings_import_success">Uvoženi %d nastavitve</string>
+  <string name="morphe_settings_import_failure_parse">Uvoz je spodletel: %s</string>
+  <string name="morphe_settings_search_hint">Iskanje nastavitve</string>
+  <string name="morphe_settings_search_no_results_title">Ni rezultatov za \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">Poskusite z drugim ključno besedo</string>
+  <string name="morphe_settings_search_recent_searches">Nedavne iskanja</string>
+  <string name="morphe_settings_search_remove_message">Odstraniti iz zgodovine iskanj?</string>
+  <string name="morphe_settings_search_clear_history">Počistiti zgodovino iskanj</string>
+  <string name="morphe_settings_search_clear_history_message">Ali res želite izbrisati celotno zgodovino iskanj?</string>
+  <string name="morphe_settings_search_tips_title">Nasveti za iskanje</string>
+  <string name="morphe_settings_search_tips_summary">"• Dotaknite se poti, če želite do nje pomladiti
+• Pritisnite dolgo, da se pomaknete do nastavitve
+• Pritisnite Enter, da shranite iskalni poizvedbi v zgodovino
+• Iškanje ignorira male in velike črke ter ločila
+• Nastavitve nadrejene skupine se pojavijo nad onemogočenimi nastavitvami podrejenih skupin"</string>
+  <string name="morphe_settings_search_empty_history_title">Zgodovina iskanj je prazna</string>
+  <string name="morphe_settings_search_empty_history_summary">Če želite shraniti zgodovino iskanj, vnesite iskalno poizvedbo in pritisnite Enter</string>
+  <string name="morphe_settings_search_history_title">Prikaži zgodovino iskanj nastavitve</string>
+  <string name="morphe_settings_search_history_summary_on">Prikaže se zgodovina iskanj nastavitve</string>
+  <string name="morphe_settings_search_history_summary_off">Zgodovina iskanj nastavitve se ne prikazuje</string>
+  <string name="morphe_show_menu_icons_title">Prikaži ikone nastavitev Morphe</string>
+  <string name="morphe_show_menu_icons_summary_on">Prikažejo se ikone nastavitev</string>
+  <string name="morphe_show_menu_icons_summary_off">Ikone nastavitev se ne prikazujejo</string>
+  <string name="morphe_language_title">Jezik Morphe</string>
+  <string name="morphe_language_user_dialog_message">"Prevodi za nekatera jezika morda manjajo ali so nepopolni.
+
+Za prevajanje novih jezikov ali izboljšanje že obstoječih prevodov obiščite morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">Jezik aplikacije</string>
+  <string name="morphe_pref_import_export_title">Uvozi/Izvozi</string>
+  <string name="morphe_pref_import_export_summary">Uvozi/Izvozi nastavitve Morphe</string>
+  <string name="morphe_settings_import_file">Uvozi iz datoteke</string>
+  <string name="morphe_settings_import_file_success">Nastavitve so bile uspešno uvožene, za uporabo tapnite Shrani</string>
+  <string name="morphe_settings_import_file_failed">Uvoz nastavitev je spodletel</string>
+  <string name="morphe_settings_export_file">Izvozi v datoteko</string>
+  <string name="morphe_settings_export_file_success">Nastavitve so bile uspešno izvožene</string>
+  <string name="morphe_settings_export_file_failed">Izvoz nastavitev je spodletel</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Uporabljate najnovejšo različico Morphe popravkov &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Uporabljate različico Morphe popravkov &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Na voljo je posodobitev: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Za posodobitev popravkov uporabite Morphe za ponovno popravljanje te aplikacije</string>
+  <string name="morphe_settings_about_links_dev_header">Opomba</string>
+  <string name="morphe_settings_about_links_dev_body">Ta različica je predizpustna različica in vam lahko povzroči nepričakovane težave</string>
+  <string name="morphe_settings_about_links_header">Uradne povezave</string>
+  <string name="morphe_settings_about_links_website">Spletno mesto</string>
+  <string name="morphe_settings_about_links_donate">Doniraj</string>
+  <string name="morphe_settings_about_links_translations">Prevodi</string>
+  <string name="morphe_settings_about_links_credits">Zasluge</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Na dan</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Na voljo posodobitev</string>
+  <string name="morphe_settings_about_contributors_current">Trenutna razvojanost</string>
+  <string name="morphe_settings_about_contributors_prior">Pretekla razvojanost</string>
+  <string name="morphe_settings_about_links_morphe">Aktivna razvojanost</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Obvestila o licencah</string>
+  <string name="morphe_settings_about_licenses_loading">Pehna...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Odmevanje</string>
+  <string name="morphe_debug_screen_summary">Omogoči ali onemogoči možnosti odmevanja</string>
+  <string name="morphe_debug_title">Odmevanje beleženja</string>
+  <string name="morphe_debug_summary_on">Odmevanje beleženja je omogočeno</string>
+  <string name="morphe_debug_summary_off">Odmevanje beleženja je onemogočeno</string>
+  <string name="morphe_debug_stacktrace_title">Sledi / sporočila o napakah</string>
+  <string name="morphe_debug_stacktrace_summary_on">Sporočila o napakah vključujejo sledi</string>
+  <string name="morphe_debug_stacktrace_summary_off">Sporočila o napakah ne vključujejo sledi</string>
+  <string name="morphe_debug_toast_on_error_title">Prikaži pojavno okno z napako Morphe</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Prikaže se pojavno okno, če pride do napake</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Pojavno okno se ne prikazuje, če pride do napake</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Onemogočanje pojavnih oken z napakami skrije vsa obvestila o napakah Morphe.
+
+Pričakujete dogodke."</string>
+  <string name="morphe_debug_export_logs_title">Izvozi strežilnik za hrošče</string>
+  <string name="morphe_debug_export_logs_summary">Izvozi strežilnik za hrošče Morphe</string>
+  <string name="morphe_debug_export_logs_file">Izvozi v datoteko</string>
+  <string name="morphe_debug_export_logs_success">Strežilnik za hrošče je bil uspešno izvožen</string>
+  <string name="morphe_debug_export_logs_failed">Izvoz strežilnika za hrošče je spodletel</string>
+  <string name="morphe_debug_logs_search_hint">Poiščite strežilnik za hrošče...</string>
+  <string name="morphe_debug_export_logs_clear">Počistiti</string>
+  <string name="morphe_debug_logs_disabled">Odmevanje beleženja je onemogočeno</string>
+  <string name="morphe_debug_logs_none_found">Ni najdenih strežilnikov za hrošče</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Strežilnik za hrošče je kopiran</string>
+  <string name="morphe_debug_logs_failed_to_export">Zapis med naravnost z napakami je onemogočen: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Odstranjevanje beleženja napak</string>
+  <string name="morphe_debug_feature_flags_manager_title">Upravljalec zastav funkcij</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Upravljajte logičnimi zastavami funkcij</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktivne funkcije (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokirane funkcije (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Iskanje funkcij...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Funkcije so shranjene</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Funkcije so obnovljene</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Funkcije so kopirane v odložišče</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Za uporabo te nastavitve znova zaženite aplikacijo</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">Odprite nastavitve MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG ni nameščen. Namestite ga.</string>
+  <string name="gms_core_dialog_title">Akcija potrebna</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG nima dovoljenja za delovanje v ozadju.
+
+Sledite navodilom \"Don't kill my app\" za vaš telefon in jih uporabite za namestitev MicroG.
+
+To je potrebno za delovanje aplikacije."</string>
+  <string name="gms_core_dialog_open_website_text">Odprite spletno mesto</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Optimizacije baterije za MicroG morajo biti onemogočene, da se preprečijo težave.
+
+Onemogočanje optimizacij baterije za MicroG ne bo negativno vplivalo na porabo baterije.
+
+Tapnite gumb Nadaljuj in dovolite spremembe optimizacij."</string>
+  <string name="gms_core_dialog_continue_text">Nadaljuj</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pogovorno okno za optimizacijo baterije</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Prikazano je pogovorno okno za optimizacijo baterije MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Prikazano ni pogovorno okno za optimizacijo baterije MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Onemogočanje tega bo skrile okno za optimizacijo baterije MicroG.
+
+Če spremembe optimizacij niso spremenjene, lahko izberete:
+• Aplikacija se lahko nenadoma zapre
+• Obvestila morda ne delujejo
+• Ozadna predvajanja morda ne deluje"</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentalno opozorilo 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Uporabljate eksperimentalno različico aplikacije ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Pričakujte nenavadno obnašanje aplikacije ali neznane napake, ko popravljamo popravke za to različico aplikacije.
+&lt;br/&gt;&lt;br/&gt;
+Če želite najbolj brezhibno izkušnjo, potem &lt;b&gt;odinstalirajte&lt;/b&gt; to in posodobite priporočeno različico aplikacije ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Želim eksperimentalno</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Želim stabilno</string>
 </resources>

@@ -87,7 +87,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">يتم عرض زر الميكروفون العائم في البحث</string>
   <string name="morphe_hide_horizontal_shelves_title">إخفاء الرفوف الأفقية</string>
   <string name="morphe_hide_horizontal_shelves_summary_on">"تم إخفاء الأرفف الأفقية، مثل:
-
 • الأخبار العاجلة
 • منشورات المجتمع التي قد تعجبك
 • متابعة المشاهدة
@@ -176,20 +175,17 @@ Second \"item\" text"</string>
   <string name="morphe_hide_join_membership_button_title">إخفاء زر الانضمام</string>
   <string name="morphe_hide_join_membership_button_summary_on">تم إخفاء زر الانضمام</string>
   <string name="morphe_hide_join_membership_button_summary_off">يتم عرض زر الانضمام</string>
+  <string name="morphe_hide_live_chat_donators_bar_title">إخفاء شريط مُتبرِّعي المحادثة المباشرة</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_on">تم إخفاء شريط مُتبرِّعي المحادثة المباشرة</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_off">يتم عرض شريط مُتبرِّعي المحادثة المباشرة</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
-          This button usually appears in the player overlay for live streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">إخفاء زر \'إعادة عرض المحادثات المباشرة\'</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_on">تم إخفاء زر إعادة تشغيل المحادثات المباشرة في واجهة المشغل</string>
-  <string name="morphe_hide_live_chat_replay_button_summary_off">يتم عرض زر إعادة تشغيل المحادثات المباشرة في واجهة المشغل</string>
+          This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
+  <string name="morphe_hide_live_chat_replay_button_title">إخفاء زر \'إعادة عرض المحادثة المباشرة\'</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">تم إخفاء زر إعادة تشغيل المحادثة المباشرة في وضع ملء الشاشة</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">يتم عرض زر إعادة تشغيل المحادثة المباشرة في وضع ملء الشاشة</string>
   <string name="morphe_hide_medical_panels_title">إخفاء اللوحات الطبية</string>
   <string name="morphe_hide_medical_panels_summary_on">تم إخفاء اللوحات الطبية</string>
   <string name="morphe_hide_medical_panels_summary_off">يتم عرض اللوحات الطبية</string>
-  <string name="morphe_hide_quick_actions_title">إخفاء الإجراءات السريعة</string>
-  <string name="morphe_hide_quick_actions_summary_on">تم إخفاء الإجراءات السريعة في ملء الشاشة</string>
-  <string name="morphe_hide_quick_actions_summary_off">يتم عرض الإجراءات السريعة في ملء الشاشة</string>
-  <string name="morphe_hide_quick_actions_related_videos_title">إخفاء الإجراءات السريعة المرتبطة بالفيديوهات</string>
-  <string name="morphe_hide_quick_actions_related_videos_summary_on">تم إخفاء الفيديوهات ذات الصلة في الإجراءات السريعة</string>
-  <string name="morphe_hide_quick_actions_related_videos_summary_off">يتم عرض الفيديوهات ذات الصلة في الإجراءات السريعة</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">إخفاء إرشادات المشتركين</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_on">تم إخفاء إرشادات مجتمع المشتركين</string>
   <string name="morphe_hide_subscribers_community_guidelines_summary_off">يتم عرض إرشادات مجتمع المشتركين</string>
@@ -197,8 +193,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_timed_reactions_summary_on">تم إخفاء ردود الفعل المؤقتة</string>
   <string name="morphe_hide_timed_reactions_summary_off">يتم عرض ردود الفعل المؤقتة</string>
   <string name="morphe_hide_video_title_title">إخفاء عنوان الفيديو</string>
-  <string name="morphe_hide_video_title_summary_on">تم إخفاء عنوان الفيديو في واجهة المشغل</string>
-  <string name="morphe_hide_video_title_summary_off">يتم عرض عنوان الفيديو في واجهة المشغل</string>
+  <string name="morphe_hide_video_title_summary_on">تم إخفاء عنوان الفيديو في وضع ملء الشاشة</string>
+  <string name="morphe_hide_video_title_summary_off">يتم عرض عنوان الفيديو في وضع ملء الشاشة</string>
   <string name="morphe_hide_description_components_screen_title">وصف الفيديو</string>
   <string name="morphe_hide_description_components_screen_summary">إخفاء أو عرض مكونات وصف الفيديو</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">إخفاء \'ملخص الفيديو الذي تم إنشاؤه بواسطة الذكاء الاصطناعي\'</string>
@@ -385,7 +381,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_upload_time_user_dialog_message">"القيود:
 • قد تظل أرفف Shorts، صفحات القنوات، ونتائج البحث تُظهر أوقات التحميل.
 • هذه الميزة لا تعمل مع عامل الشكل Automotive."</string>
-  <string name="morphe_hide_keyword_content_screen_title">إخفاء محتوى بالكلمات المفتاحية</string>
+  <string name="morphe_hide_keyword_content_screen_title">تصفية الكلمات المفتاحية</string>
   <string name="morphe_hide_keyword_content_screen_summary">إخفاء فيديوهات البحث والموجز باستخدام فلاتر الكلمات المفتاحية</string>
   <string name="morphe_hide_keyword_content_home_title">إخفاء فيديوهات الصفحة الرئيسية بواسطة الكلمات المفتاحية</string>
   <string name="morphe_hide_keyword_content_home_summary_on">تتم تصفية الفيديوهات في علامة التبويب \'الصفحة الرئيسية\' حسب الكلمات المفتاحية</string>
@@ -420,7 +416,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_toast_invalid_conflicting">الكلمة المفتاحية بها تعريفات متعارضة: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_length">الكلمة المفتاحية قصيرة جدًا وتتطلب اقتباسات: %s</string>
   <string name="morphe_hide_keyword_toast_invalid_broad">الكلمة المفتاحية سوف تخفي جميع الفيديوهات: %s</string>
-  <!-- ad.general.hideAdsResourcePatch -->
+  <!-- ad.general.hideAdsPatch -->
   <string name="morphe_hide_end_screen_store_banner_title">إخفاء لافتة شاشة المتجر النهائية</string>
   <string name="morphe_hide_end_screen_store_banner_summary_on">تم إخفاء لافتة المتجر بالشاشة النهائية</string>
   <string name="morphe_hide_end_screen_store_banner_summary_off">يتم عرض لافتة المتجر بالشاشة النهائية</string>
@@ -453,15 +449,15 @@ Second \"item\" text"</string>
   <string name="morphe_hide_video_ads_summary_on">تم إخفاء إعلانات الفيديو</string>
   <string name="morphe_hide_video_ads_summary_off">يتم عرض إعلانات الفيديو</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourl.copyVideoURLResourcePatch -->
-  <string name="morphe_share_copy_url_success">تم نسخ URL إلى الحافظة</string>
-  <string name="morphe_share_copy_url_timestamp_success">تم نسخ عنوان URL مع الطابع الزمني</string>
-  <string name="morphe_copy_video_url_title">عرض زر نسخ عنوان URL للفيديو</string>
-  <string name="morphe_copy_video_url_summary_on">يتم عرض الزر. انقر لنسخ عنوان URL للفيديو. انقر مع الاستمرار للنسخ مع الطابع الزمني</string>
-  <string name="morphe_copy_video_url_summary_off">لا يتم عرض زر نسخ رابط الفيديو</string>
-  <string name="morphe_copy_video_url_timestamp_title">نسخ الطابع الزمني</string>
-  <string name="morphe_copy_video_url_timestamp_summary_on">ينسخ زر رابط الفيديو الرابط مع الطابع الزمني. اضغط مطوّلًا للنسخ بدونه</string>
-  <string name="morphe_copy_video_url_timestamp_summary_off">ينسخ زر رابط الفيديو الرابط بدون الطابع الزمني. اضغط مطوّلًا للنسخ مع الطابع الزمني</string>
+  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
+  <string name="morphe_share_copy_url_button_success">تم نسخ URL إلى الحافظة</string>
+  <string name="morphe_share_copy_url_button_timestamp_success">تم نسخ عنوان URL مع الطابع الزمني إلى الحافظة</string>
+  <string name="morphe_copy_video_url_button_title">عرض نسخ عنوان URL للفيديو</string>
+  <string name="morphe_copy_video_url_button_summary_on">يتم عرض الزر. انقر لنسخ عنوان URL للفيديو. انقر مع الاستمرار للنسخ مع الطابع الزمني</string>
+  <string name="morphe_copy_video_url_button_summary_off">لا يتم عرض زر نسخ رابط الفيديو</string>
+  <string name="morphe_copy_video_url_button_timestamp_title">نسخ الطابع الزمني</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_on">ينسخ زر رابط الفيديو الرابط مع الطابع الزمني. اضغط مطوّلًا للنسخ بدونه</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_off">ينسخ زر رابط الفيديو الرابط بدون الطابع الزمني. اضغط مطوّلًا للنسخ مع الطابع الزمني</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">إزالة مربع حوار تقدير المشاهد</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">سيتم إزالة مربع الحوار</string>
@@ -475,7 +471,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_chapter_skip_double_tap_title">تعطيل تخطي الفصل بالنقر المزدوج</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_on">لا يمكن للنقر المزدوج مطلقًا أن يؤدي إلى تخطي الفصل التالي/السابق</string>
   <string name="morphe_disable_chapter_skip_double_tap_summary_off">يمكن للنقر المزدوج أن يؤدي أحيانًا إلى تخطي الفصل التالي/السابق</string>
-  <!-- interaction.downloads.downloadsResourcePatch -->
+  <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">التنزيلات الخارجية</string>
   <string name="morphe_external_downloader_screen_summary">إعدادات لاستخدام أداة التنزيل الخارجية</string>
   <string name="morphe_external_downloader_title">عرض زر التنزيل الخارجي</string>
@@ -500,14 +496,14 @@ Second \"item\" text"</string>
   <string name="morphe_loop_video_summary_on">سيتم تكرار الفيديو</string>
   <string name="morphe_loop_video_summary_off">لن يتم تكرار الفيديو</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">عرض زر تكرار الفيديو</string>
+  <string name="morphe_loop_video_button_title">عرض تكرار الفيديو</string>
   <string name="morphe_loop_video_button_summary_on">يتم عرض زر تكرار الفيديو</string>
   <string name="morphe_loop_video_button_summary_off">لا يتم عرض زر تكرار الفيديو</string>
   <string name="morphe_loop_video_button_toast_on">تكرار الفيديو قيد التشغيل</string>
   <string name="morphe_loop_video_button_toast_off">تكرار الفيديو متوقف</string>
   <!-- interaction.playall.playAllButtonPatch -->
-  <string name="morphe_play_all_button_title">عرض زر تشغيل الكل</string>
-  <string name="morphe_play_all_button_summary_on">"يتم عرض زر تشغيل الكل\nاضغط لإنشاء قائمة تشغيل لجميع فيديوهات القناة\nاضغط مع الاستمرار للتراجع\n\nمعلومة: قد لا يعمل على البث المباشر"</string>
+  <string name="morphe_play_all_button_title">عرض تشغيل الكل</string>
+  <string name="morphe_play_all_button_summary_on">"يتم عرض زر تشغيل الكل.\nاضغط لإنشاء قائمة تشغيل لجميع فيديوهات القناة.\nاضغط مع الاستمرار للتراجع.\n\nمعلومة: قد لا يعمل على البث المباشر"</string>
   <string name="morphe_play_all_button_summary_off">لا يتم عرض زر تشغيل الكل</string>
   <string name="morphe_play_all_button_type_title">وضع إنشاء قائمة تشغيل</string>
   <string name="morphe_play_all_button_type_entry_0">كل المحتوى (فرز حسب الوقت، تصاعدي)</string>
@@ -525,17 +521,17 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_entry_12">بث مباشر للأعضاء فقط</string>
   <string name="morphe_play_all_button_not_available_toast">تعذر إنشاء قائمة تشغيل بسبب عدم تطابق معرّف القناة</string>
   <!-- interaction.reload.reloadVideoPatch -->
-  <string name="morphe_reload_video_title">عرض زر إعادة تحميل الفيديو</string>
-  <string name="morphe_reload_video_summary_on">يتم عرض زر إعادة تحميل الفيديو</string>
-  <string name="morphe_reload_video_summary_off">لا يتم عرض زر إعادة تحميل الفيديو</string>
-  <string name="morphe_dismiss_player_not_available_toast">معرف الفيديو غير متاح. يرجى إعادة فتح الفيديو يدويًا.</string>
+  <string name="morphe_reload_video_button_title">عرض إعادة تحميل الفيديو</string>
+  <string name="morphe_reload_video_button_summary_on">يتم عرض زر إعادة تحميل الفيديو</string>
+  <string name="morphe_reload_video_button_summary_off">لا يتم عرض زر إعادة تحميل الفيديو</string>
+  <string name="morphe_dismiss_player_not_available_toast">معرف الفيديو غير متاح. يرجى إعادة تحميل الفيديو يدويًا</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">تعطيل إيماءة التمرير الدقيقة</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">تم تعطيل إيماءة التمرير الدقيقة</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">تم تمكين إيماءة التمرير الدقيقة</string>
   <!-- interaction.seekbar.livestreamDvrPatch -->
   <string name="morphe_livestream_dvr_title">تمكين التنقل في البث المباشر</string>
-  <string name="morphe_livestream_dvr_summary_on">يُسمح بالتقديم والتأخير في جميع البثوث المباشرة</string>
+  <string name="morphe_livestream_dvr_summary_on">يُسمح بالتقديم والتأخير في كل البثوث المباشرة</string>
   <string name="morphe_livestream_dvr_summary_off">قد لا يكون التقديم والتأخير متاحًا في البثوث المباشرة</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_user_dialog_message">تمكين هذا قد يتسبب في سلوك غير متوقع أثناء التنقل في البث المباشر إذا لم يتم تمكين \'Spoof Video Streams\'.</string>
@@ -547,7 +543,7 @@ Second \"item\" text"</string>
   <string name="morphe_tap_to_seek_title">تمكين النقر للتمرير</string>
   <string name="morphe_tap_to_seek_summary_on">تم تمكين النقر للتمرير</string>
   <string name="morphe_tap_to_seek_summary_off">تم تعطيل النقر للتمرير</string>
-  <!-- interaction.swipecontrols.swipeControlsResourcePatch -->
+  <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_brightness_title">تمكين إيماءة السطوع</string>
   <string name="morphe_swipe_brightness_summary_on">"تم تمكين إيماءة مستوى السطوع في وضع ملء الشاشة
 
@@ -599,8 +595,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">سيؤدي التمرير في وضع ملء الشاشة إلى التغيير للفيديو التالي/السابق</string>
   <string name="morphe_swipe_change_video_summary_off">لن يؤدي التمرير في وضع ملء الشاشة إلى التغيير للفيديو التالي/السابق</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">أزرار الإجراء</string>
-  <string name="morphe_hide_buttons_screen_summary">إخفاء أو عرض الأزرار تحت الفيديوهات</string>
+  <string name="morphe_action_buttons_screen_title">أزرار الإجراءات</string>
+  <string name="morphe_action_buttons_screen_summary">إخفاء أو عرض أزرار الإجراء في ملء الشاشة والوضع الطولي</string>
+  <string name="morphe_portrait_buttons">أزرار الوضع الطولي</string>
   <string name="morphe_disable_like_subscribe_glow_title">تعطيل توهج الإعجاب واشتراك</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">لن يتوهج زر أعجبني واشتراك عند الإشارة إليه</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">سيتوهَّج زر أعجبني واشتراك عند الإشارة إليه </string>
@@ -666,6 +663,43 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">إخفاء حفظ</string>
   <string name="morphe_hide_save_button_summary_on">تم إخفاء زر حفظ</string>
   <string name="morphe_hide_save_button_summary_off">يتم عرض زر حفظ</string>
+  <string name="morphe_fullscreen_buttons">أزرار ملء الشاشة</string>
+  <string name="morphe_hide_quick_actions_title">إخفاء شريط الإجراءات</string>
+  <string name="morphe_hide_quick_actions_summary_on">تم إخفاء شريط الإجراءات</string>
+  <string name="morphe_hide_quick_actions_summary_off">يتم عرض شريط الإجراءات</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">إخفاء طرح سؤال</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">تم إخفاء زر طرح سؤال</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">يتم عرض زر طرح سؤال</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">إخفاء التعليقات</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">تم إخفاء زر التعليقات</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">يتم عرض زر التعليقات</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">إخفاء لم يعجبني</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">تم إخفاء زر لم يعجبني</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">يتم عرض زر لم يعجبني</string>
+  <string name="morphe_hide_quick_actions_like_button_title">إخفاء أعجبني</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">تم إخفاء زر أعجبني</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">يتم عرض زر أعجبني</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">إخفاء \'المحادثة المباشرة\'</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">تم إخفاء زر المحادثة المباشرة</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">يتم عرض زر المحادثة المباشرة</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">إخفاء التشكيلة</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">تم إخفاء زر التشكيلة</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">يتم عرض زر التشكيلة</string>
+  <string name="morphe_hide_quick_actions_more_button_title">إخفاء المزيد</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">تم إخفاء زر المزيد</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">يتم عرض زر المزيد</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">إخفاء \'المزيد من الفيديوهات\'</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">تم إخفاء زر المزيد من الفيديوهات</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">يتم عرض زر المزيد من الفيديوهات</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">إخفاء قائمة التشغيل</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">تم إخفاء زر قائمة التشغيل</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">يتم عرض زر قائمة التشغيل</string>
+  <string name="morphe_hide_quick_actions_save_button_title">إخفاء حفظ</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">تم إخفاء زر حفظ</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">يتم عرض زر حفظ</string>
+  <string name="morphe_hide_quick_actions_share_button_title">إخفاء مشاركة</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">تم إخفاء زر مشاركة</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">يتم عرض زر مشاركة</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">الترجمة</string>
   <string name="morphe_captions_screen_summary">إيقاف تمكين الترجمة تلقائيًا أو تعيين ملفات تعريف ارتباط الترجمة</string>
@@ -766,7 +800,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">شريط التنقل في الوضع الداكن غير شفاف</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">شريط التنقل في الوضع الداكن معتم او شفاف</string>
   <string name="morphe_toolbar_screen_title">شريط الأدوات</string>
-  <string name="morphe_toolbar_screen_summary">إخفاء أو تغيير مكونات شريط الأدوات</string>
+  <string name="morphe_toolbar_screen_summary">إخفاء أو عرض مكونات شريط الأدوات</string>
+  <string name="morphe_hide_toolbar_cast_button_title">إخفاء البث</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">تم إخفاء زر البث</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">يتم عرض زر البث</string>
   <string name="morphe_hide_toolbar_create_button_title">إخفاء إنشاء</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">تم إخفاء زر الإنشاء</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">يتم عرض زر الإنشاء</string>
@@ -790,7 +827,7 @@ Second \"item\" text"</string>
 اضغط مع الاستمرار لفتح إعدادات Morphe"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">القائمة المنبثقة</string>
-  <string name="morphe_hide_player_flyout_summary">إخفاء أو عرض مكونات قائمة المشغل المنبثقة</string>
+  <string name="morphe_hide_player_flyout_summary">إخفاء أو عرض مكونات القائمة المنبثقة</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">إخفاء الترجمة</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">تم إخفاء قائمة الترجمة</string>
@@ -868,32 +905,34 @@ Second \"item\" text"</string>
   <string name="morphe_hide_autoplay_preview_summary_on">تم إخفاء معاينة التشغيل التلقائي</string>
   <string name="morphe_hide_autoplay_preview_summary_off">يتم عرض معاينة التشغيل التلقائي</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
-  <string name="morphe_hide_autoplay_button_title">إخفاء زر التشغيل التلقائي</string>
+  <string name="morphe_overlay_buttons_screen_title">أزرار الواجهة</string>
+  <string name="morphe_overlay_buttons_screen_summary">إخفاء أو عرض المكونات المتعلقة بأزرار الواجهة</string>
+  <string name="morphe_hide_autoplay_button_title">إخفاء التشغيل التلقائي</string>
   <string name="morphe_hide_autoplay_button_summary_on">تم إخفاء زر التشغيل التلقائي</string>
   <string name="morphe_hide_autoplay_button_summary_off">يتم عرض زر التشغيل التلقائي</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
-  <string name="morphe_hide_captions_button_title">إخفاء زر الترجمة</string>
+  <string name="morphe_hide_captions_button_title">إخفاء الترجمة</string>
   <string name="morphe_hide_captions_button_summary_on">تم إخفاء زر الترجمة</string>
   <string name="morphe_hide_captions_button_summary_off">يتم عرض زر الترجمة</string>
-  <string name="morphe_hide_cast_button_title">إخفاء زر البث</string>
+  <string name="morphe_hide_cast_button_title">إخفاء البث</string>
   <string name="morphe_hide_cast_button_summary_on">تم إخفاء زر البث</string>
   <string name="morphe_hide_cast_button_summary_off">يتم عرض زر البث</string>
-  <string name="morphe_hide_collapse_button_title">إخفاء زر الطَيّ</string>
+  <string name="morphe_hide_collapse_button_title">إخفاء الطَيّ</string>
   <string name="morphe_hide_collapse_button_summary_on">تم إخفاء زر الطَيّ</string>
   <string name="morphe_hide_collapse_button_summary_off">يتم عرض زر الطَيّ</string>
-  <string name="morphe_hide_fullscreen_button_title">إخفاء زر ملء الشاشة</string>
+  <string name="morphe_hide_fullscreen_button_title">إخفاء ملء الشاشة</string>
   <string name="morphe_hide_fullscreen_button_summary_on">تم إخفاء زر ملء الشاشة</string>
   <string name="morphe_hide_fullscreen_button_summary_off">يتم عرض زر ملء الشاشة</string>
   <string name="morphe_hide_player_control_buttons_background_title">إخفاء خلفية عناصر التحكم بالمشغل</string>
   <string name="morphe_hide_player_control_buttons_background_summary_on">تم إخفاء خلفية عناصر تحكم المشغل</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">يتم عرض خلفية عناصر تحكم المشغل</string>
-  <string name="morphe_hide_player_previous_next_buttons_title">إخفاء أزرار السابق &amp; التالي</string>
+  <string name="morphe_hide_player_previous_next_buttons_title">إخفاء السابق &amp; التالي</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">تم إخفاء أزرار السابق &amp; التالي</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">يتم عرض أزرار السابق &amp; التالي</string>
-  <string name="morphe_hide_settings_button_title">إخفاء زر الإعدادات</string>
+  <string name="morphe_hide_settings_button_title">إخفاء الإعدادات</string>
   <string name="morphe_hide_settings_button_summary_on">تم إخفاء زر الإعدادات</string>
   <string name="morphe_hide_settings_button_summary_off">يتم عرض زر الإعدادات</string>
-  <!-- layout.hide.endscreencards.hideEndScreenCardsResourcePatch -->
+  <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">إخفاء بطاقات شاشة النهاية</string>
   <string name="morphe_hide_end_screen_cards_summary_on">تم إخفاء بطاقات شاشة النهاية</string>
   <string name="morphe_hide_end_screen_cards_summary_off">يتم عرض بطاقات شاشة النهاية</string>
@@ -910,7 +949,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_fullscreen_ambient_mode_title">تعطيل وضع الإضاءة السينمائية في ملء الشاشة</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_on">تم تعطيل وضع الإضاءة السينمائية في ملء الشاشة</string>
   <string name="morphe_disable_fullscreen_ambient_mode_summary_off">تم تمكين وضع الإضاءة السينمائية في ملء الشاشة</string>
-  <!-- layout.hide.infocards.hideInfocardsResourcePatch -->
+  <!-- layout.hide.infocards.hideInfocardsPatch -->
   <string name="morphe_hide_info_cards_title">إخفاء بطاقات المعلومات</string>
   <string name="morphe_hide_info_cards_summary_on">تم إخفاء بطاقات المعلومات</string>
   <string name="morphe_hide_info_cards_summary_off">يتم عرض بطاقات المعلومات</string>
@@ -929,7 +968,7 @@ Second \"item\" text"</string>
   <string name="morphe_fullscreen_large_seekbar_title">تمكين شريط التقدم الكبير بملء الشاشة</string>
   <string name="morphe_fullscreen_large_seekbar_summary_on">شريط التقدم بملء الشاشة كبير الحجم</string>
   <string name="morphe_fullscreen_large_seekbar_summary_off">شريط التقدم بملء الشاشة بالحجم العادي</string>
-  <!-- layout.hide.shorts.hideShortsComponentsResourcePatch -->
+  <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_shorts_player_screen_title">مشغل Shorts</string>
   <string name="morphe_shorts_player_screen_summary">إخفاء أو عرض مكونات مشغل Shorts</string>
   <string name="morphe_hide_shorts_channel_title">إخفاء فيديوهات Shorts في صفحة القناة</string>
@@ -1092,7 +1131,7 @@ Second \"item\" text"</string>
   <string name="morphe_open_videos_fullscreen_portrait_title">فتح الفيديوهات في ملء الشاشة</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_on">يتم فتح الفيديوهات في وضع ملء الشاشة</string>
   <string name="morphe_open_videos_fullscreen_portrait_summary_off">لا يتم فتح الفيديوهات في وضع ملء الشاشة</string>
-  <!-- layout.player.overlay.customPlayerOverlayOpacityResourcePatch -->
+  <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">شفافية واجهة المشغل</string>
   <string name="morphe_player_overlay_opacity_summary">قيمة الشفافية بين 0-100، حيث يكون 0 شفاف</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">شفافية واجهة المشغل يجب أن تكون بين 0-100</string>
@@ -1148,7 +1187,7 @@ Second \"item\" text"</string>
   <string name="morphe_wide_searchbar_title">تمكين شريط البحث العريض</string>
   <string name="morphe_wide_searchbar_summary_on">تم تمكين شريط البحث العريض</string>
   <string name="morphe_wide_searchbar_summary_off">تم تعطيل شريط البحث العريض</string>
-  <!-- layout.sponsorblock.sponsorBlockResourcePatch -->
+  <!-- layout.sponsorblock.sponsorBlockPatch -->
   <string name="morphe_sb_enable_sb">تمكين SponsorBlock</string>
   <string name="morphe_sb_enable_sb_sum">مانع الرُعَاة هو نظام جماعي لتخطي الأجزاء المزعجة من فيديوهات YouTube</string>
   <string name="morphe_sb_appearance_category">المظهر</string>
@@ -1617,13 +1656,13 @@ Second \"item\" text"</string>
   <string name="morphe_remember_video_quality_toast">تم تغيير جودة %1$s الافتراضية إلى: %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">تم تغيير جودة Shorts %1$s إلى: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
-  <string name="morphe_playback_speed_dialog_button_title">عرض زر مربع حوار السرعة</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">يتم عرض الزر. انقر مع الاستمرار لإعادة ضبط سرعة التشغيل إلى الوضع الافتراضي</string>
-  <string name="morphe_playback_speed_dialog_button_summary_off">لا يتم عرض زر مربع حوار السرعة</string>
+  <string name="morphe_playback_speed_dialog_button_title">عرض سرعة التشغيل</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">يتم عرض زر سرعة التشغيل. اضغط مع الاستمرار لإعادة ضبط سرعة التشغيل إلى الوضع الافتراضي</string>
+  <string name="morphe_playback_speed_dialog_button_summary_off">لا يتم عرض زر سرعة التشغيل</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
-  <string name="morphe_video_quality_dialog_button_title">عرض زر جودة الفيديو</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">يتم عرض الزر. انقر مع الاستمرار لإعادة تعيين الجودة إلى الوضع الافتراضي</string>
-  <string name="morphe_video_quality_dialog_button_summary_off">لا يتم عرض قائمة جودة الفيديو</string>
+  <string name="morphe_video_quality_dialog_button_title">عرض الجودة</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">يتم عرض زر الجودة. اضغط مع الاستمرار لإعادة ضبط الجودة إلى الوضع الافتراضي</string>
+  <string name="morphe_video_quality_dialog_button_summary_off">لا يتم عرض زر الجودة</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">قائمة سرعة التشغيل المخصصة</string>
   <string name="morphe_custom_speed_menu_summary_on">يتم عرض قائمة سرعة التشغيل المخصصة</string>
@@ -1646,7 +1685,7 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">يتم عرض ملاحظة عند تغيير سرعة التشغيل الافتراضية</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">لا يتم عرض ملاحظة عند تغيير سرعة التشغيل الافتراضية</string>
   <string name="morphe_playback_speed_default_title">سرعة التشغيل الافتراضية</string>
-  <string name="morphe_remember_playback_speed_toast">تغيير السرعة الافتراضية إلى: %s</string>
+  <string name="morphe_remember_playback_speed_toast">تم تغيير سرعة التشغيل الافتراضية إلى: %s</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">تعطيل فيديو HDR</string>
   <string name="morphe_disable_hdr_video_summary_on">تم تعطيل فيديو HDR</string>
