@@ -650,10 +650,6 @@ public final class ShortsFilter extends Filter {
      * Injection point.
      */
     public static boolean allowDoubleTapToLike(boolean originalValue) {
-        if (Settings.DISABLE_SHORTS_DOUBLE_TAP_TO_LIKE.get()) {
-            return false;
-        }
-
-        return originalValue;
+        return originalValue && !Settings.DISABLE_SHORTS_DOUBLE_TAP_TO_LIKE.get();
     }
 }
