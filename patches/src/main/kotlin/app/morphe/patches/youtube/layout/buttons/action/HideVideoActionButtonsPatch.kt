@@ -14,6 +14,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -36,7 +37,7 @@ private const val QUICK_ACTIONS_FILTER =
 @Suppress("unused")
 val hideVideoActionButtonsPatch = bytecodePatch(
     name = "Hide video action buttons",
-    description = "Adds options to hide quick actions and video action buttons (such as the Download button) under videos."
+    description = "Adds options to hide video action buttons in fullscreen and portrait modes."
 ) {
     dependsOn(
         settingsPatch,
@@ -52,42 +53,46 @@ val hideVideoActionButtonsPatch = bytecodePatch(
     execute {
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
-                key = "morphe_hide_buttons_screen",
+                key = "morphe_action_buttons_screen",
                 preferences = setOf(
-                    SwitchPreference("morphe_disable_like_subscribe_glow"),
-                    SwitchPreference("morphe_hide_action_bar"),
-                    SwitchPreference("morphe_hide_ask_button"),
-                    SwitchPreference("morphe_hide_clip_button"),
-                    SwitchPreference("morphe_hide_comments_button"),
-                    SwitchPreference("morphe_hide_download_button"),
-                    SwitchPreference("morphe_hide_hype_button"),
-                    SwitchPreference("morphe_hide_like_dislike_button"),
-                    SwitchPreference("morphe_hide_promote_button"),
-                    SwitchPreference("morphe_hide_remix_button"),
-                    SwitchPreference("morphe_hide_report_button"),
-                    SwitchPreference("morphe_hide_save_button"),
-                    SwitchPreference("morphe_hide_share_button"),
-                    SwitchPreference("morphe_hide_shop_button"),
-                    SwitchPreference("morphe_hide_stop_ads_button"),
-                    SwitchPreference("morphe_hide_thanks_button"),
-                )
-            ),
-            PreferenceScreenPreference(
-                key = "morphe_quick_actions_screen",
-                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
-                preferences = setOf(
-                    SwitchPreference("morphe_hide_quick_actions_ask_button"),
-                    SwitchPreference("morphe_hide_quick_actions_comments_button"),
-                    SwitchPreference("morphe_hide_quick_actions_dislike_button"),
-                    SwitchPreference("morphe_hide_quick_actions_like_button"),
-                    SwitchPreference("morphe_hide_quick_actions_live_chat_button"),
-                    SwitchPreference("morphe_hide_quick_actions_mix_button"),
-                    SwitchPreference("morphe_hide_quick_actions_more_button"),
-                    SwitchPreference("morphe_hide_quick_actions_more_videos_button"),
-                    SwitchPreference("morphe_hide_quick_actions_playlist_button"),
-                    SwitchPreference("morphe_hide_quick_actions_save_button"),
-                    SwitchPreference("morphe_hide_quick_actions_share_button"),
-                    SwitchPreference("morphe_hide_quick_actions"),
+                    PreferenceCategory(
+                        titleKey = "morphe_portrait_buttons",
+                        preferences = setOf(
+                            SwitchPreference("morphe_disable_like_subscribe_glow"),
+                            SwitchPreference("morphe_hide_action_bar"),
+                            SwitchPreference("morphe_hide_ask_button"),
+                            SwitchPreference("morphe_hide_clip_button"),
+                            SwitchPreference("morphe_hide_comments_button"),
+                            SwitchPreference("morphe_hide_download_button"),
+                            SwitchPreference("morphe_hide_hype_button"),
+                            SwitchPreference("morphe_hide_like_dislike_button"),
+                            SwitchPreference("morphe_hide_promote_button"),
+                            SwitchPreference("morphe_hide_remix_button"),
+                            SwitchPreference("morphe_hide_report_button"),
+                            SwitchPreference("morphe_hide_save_button"),
+                            SwitchPreference("morphe_hide_share_button"),
+                            SwitchPreference("morphe_hide_shop_button"),
+                            SwitchPreference("morphe_hide_stop_ads_button"),
+                            SwitchPreference("morphe_hide_thanks_button"),
+                        )
+                    ),
+                    PreferenceCategory(
+                        titleKey = "morphe_fullscreen_buttons",
+                        preferences = setOf(
+                            SwitchPreference("morphe_hide_quick_actions"),
+                            SwitchPreference("morphe_hide_quick_actions_ask_button"),
+                            SwitchPreference("morphe_hide_quick_actions_comments_button"),
+                            SwitchPreference("morphe_hide_quick_actions_dislike_button"),
+                            SwitchPreference("morphe_hide_quick_actions_like_button"),
+                            SwitchPreference("morphe_hide_quick_actions_live_chat_button"),
+                            SwitchPreference("morphe_hide_quick_actions_mix_button"),
+                            SwitchPreference("morphe_hide_quick_actions_more_button"),
+                            SwitchPreference("morphe_hide_quick_actions_more_videos_button"),
+                            SwitchPreference("morphe_hide_quick_actions_playlist_button"),
+                            SwitchPreference("morphe_hide_quick_actions_save_button"),
+                            SwitchPreference("morphe_hide_quick_actions_share_button"),
+                        )
+                    )
                 )
             )
         )

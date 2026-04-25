@@ -89,7 +89,7 @@ Perubahan termasuk:
 • Berita terkini
 • Postingan komunitas yang mungkin Anda sukai
 • Lanjutkan menonton
-• Jelajahi lebih banyak channel
+• Jelajahi lebih banyak saluran
 • Jelajahi lebih banyak topik
 • Untuk Anda
 • Video terbaru
@@ -380,7 +380,7 @@ Menampilkan YouTube Doodles mungkin mencegah menampilkan header khusus."</string
   <string name="morphe_hide_upload_time_user_dialog_message">"Batasan:
 • Rak Shorts, halaman saluran, dan hasil pencarian mungkin masih menampilkan waktu unggah.
 • Fitur ini tidak berfungsi dengan faktor bentuk otomotif."</string>
-  <string name="morphe_hide_keyword_content_screen_title">Filter Kata Kunci</string>
+  <string name="morphe_hide_keyword_content_screen_title">Penyaring kata kunci</string>
   <string name="morphe_hide_keyword_content_screen_summary">Sembunyikan pencarian dan feed video menggunakan penyaring kata kunci</string>
   <string name="morphe_hide_keyword_content_home_title">Sembunyikan video beranda dengan kata kunci</string>
   <string name="morphe_hide_keyword_content_home_summary_on">Video di tab beranda disaring berdasarkan kata kunci</string>
@@ -502,9 +502,7 @@ Verifikasi nama paket sudah benar dan aplikasi sudah terpasang"</string>
   <string name="morphe_loop_video_button_toast_off">Pengulangan video tidak aktif</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Tampilkan Putar semua</string>
-  <string name="morphe_play_all_button_summary_on">"Tombol putar semua ditampilkan
-Ketuk untuk membuat daftar putar semua video dari saluran ini
-Ketuk dan tahan untuk membatalkan
+  <string name="morphe_play_all_button_summary_on">"Tombol putar semua ditampilkan. Ketuk untuk membuat daftar putar semua video dari saluran ini. Ketuk dan tahan untuk membatalkan
 
 Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_play_all_button_summary_off">Tombol putar semua tidak ditampilkan</string>
@@ -598,8 +596,9 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_swipe_change_video_summary_on">Mengusap dalam mode layar penuh akan beralih ke video berikutnya/sebelumnya</string>
   <string name="morphe_swipe_change_video_summary_off">Mengusap dalam mode layar penuh tidak akan beralih ke video berikutnya/sebelumnya</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Tombol tindakan</string>
-  <string name="morphe_hide_buttons_screen_summary">Sembunyikan atau tampilkan tombol di bawah video</string>
+  <string name="morphe_action_buttons_screen_title">Tombol tindakan</string>
+  <string name="morphe_action_buttons_screen_summary">Sembunyikan atau tampilkan tombol tindakan dalam mode layar penuh dan potret</string>
+  <string name="morphe_portrait_buttons">Tombol potret</string>
   <string name="morphe_disable_like_subscribe_glow_title">Nonaktifkan kilauan Suka dan Langganan</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Tombol Suka dan Berlangganan tidak akan berkilau saat disebut</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Tombol Suka dan Berlangganan akan berkilau saat disebut</string>
@@ -665,6 +664,43 @@ Menyesuaikan volume dengan mengusap secara vertikal di sisi kanan layar"</string
   <string name="morphe_hide_save_button_title">Sembunyikan Simpan</string>
   <string name="morphe_hide_save_button_summary_on">Tombol Simpan disembunyikan</string>
   <string name="morphe_hide_save_button_summary_off">Tombol Simpan ditampilkan</string>
+  <string name="morphe_fullscreen_buttons">Tombol layar penuh</string>
+  <string name="morphe_hide_quick_actions_title">Sembunyikan bilah tindakan</string>
+  <string name="morphe_hide_quick_actions_summary_on">Bilah tindakan disembunyikan</string>
+  <string name="morphe_hide_quick_actions_summary_off">Bilah tindakan ditampilkan</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Sembunyikan Tanya</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Tombol Tanya disembunyikan</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Tombol Tanya ditampilkan</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Sembunyikan Komentar</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Tombol komentar disembunyikan</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Tombol komentar ditampilkan</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Sembunyikan Tidak Suka</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Tombol tidak suka disembunyikan</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Tombol tidak suka ditampilkan</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Sembunyikan Suka</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Tombol suka disembunyikan</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Tombol suka ditampilkan</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Sembunyikan \'Obrolan Langsung\'</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Tombol obrolan langsung disembunyikan</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Tombol obrolan langsung ditampilkan</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Sembunyikan Campuran</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Tombol campuran disembunyikan</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Tombol campuran ditampilkan</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Sembunyikan Lainnya</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Tombol lainnya disembunyikan</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Tombol lainnya ditampilkan</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Sembunyikan \'Lebih banyak video\'</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Tombol lebih banyak video disembunyikan</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Tombol lebih banyak video ditampilkan</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Sembunyikan Daftar Putar</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Tombol daftar putar disembunyikan</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Tombol daftar putar ditampilkan</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Sembunyikan Simpan</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Tombol Simpan disembunyikan</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Tombol Simpan ditampilkan</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Sembunyikan Bagikan</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Tombol bagikan disembunyikan</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Tombol bagikan ditampilkan</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Teks</string>
   <string name="morphe_captions_screen_summary">Nonaktifkan teks untuk mencegah diaktifkan secara otomatis atau atur cookie teks</string>
@@ -764,7 +800,10 @@ Untuk mengakses Pengaturan, aktifkan tombol Pengaturan melalui Umum → Bilah Al
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Bilah navigasi mode gelap adalah buram</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Bilah navigasi mode gelap buram atau tembus pandang</string>
   <string name="morphe_toolbar_screen_title">Bilah alat</string>
-  <string name="morphe_toolbar_screen_summary">Sembunyikan atau ubah komponen bilah alat</string>
+  <string name="morphe_toolbar_screen_summary">Sembunyikan atau tampilkan komponen bilah alat</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Sembunyikan Cast</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Tombol transmisi disembunyikan</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Tombol transmisi ditampilkan</string>
   <string name="morphe_hide_toolbar_create_button_title">Sembunyikan Buat</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Tombol buat disembunyikan</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Tombol buat ditampilkan</string>
@@ -893,44 +932,6 @@ Untuk menampilkan menu trek audio, ubah 'Palsukan aliran video' menjadi 'Android
   <string name="morphe_hide_settings_button_title">Sembunyikan Pengaturan</string>
   <string name="morphe_hide_settings_button_summary_on">Tombol Pengaturan disembunyikan</string>
   <string name="morphe_hide_settings_button_summary_off">Tombol Pengaturan ditampilkan</string>
-  <string name="morphe_quick_actions_screen_title">Tindakan cepat</string>
-  <string name="morphe_quick_actions_screen_summary">Sembunyikan atau tampilkan komponen terkait tindakan cepat layar penuh</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Sembunyikan Tanya</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Tombol Tanya disembunyikan</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">Tombol Tanya ditampilkan</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Sembunyikan Komentar</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Tombol komentar disembunyikan</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">Tombol komentar ditampilkan</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Sembunyikan Tidak Suka</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Tombol tidak suka disembunyikan</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Tombol tidak suka ditampilkan</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Sembunyikan Suka</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">Tombol suka disembunyikan</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">Tombol suka ditampilkan</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Sembunyikan \'Obrolan Langsung\'</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Tombol obrolan langsung disembunyikan</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Tombol obrolan langsung ditampilkan</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Sembunyikan Campuran</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">Tombol campuran disembunyikan</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">Tombol campuran ditampilkan</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Sembunyikan Lainnya</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">Tombol lainnya disembunyikan</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">Tombol lainnya ditampilkan</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Sembunyikan \'Lebih banyak video\'</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Tombol lebih banyak video disembunyikan</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Tombol lebih banyak video ditampilkan</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Sembunyikan Daftar Putar</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Tombol daftar putar disembunyikan</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Tombol daftar putar ditampilkan</string>
-  <string name="morphe_hide_quick_actions_title">Sembunyikan Tindakan Cepat</string>
-  <string name="morphe_hide_quick_actions_summary_on">Tindakan cepat disembunyikan</string>
-  <string name="morphe_hide_quick_actions_summary_off">Tindakan cepat ditampilkan</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Sembunyikan Simpan</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">Tombol Simpan disembunyikan</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">Tombol Simpan ditampilkan</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Sembunyikan Bagikan</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Tombol bagikan disembunyikan</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Tombol bagikan ditampilkan</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Sembunyikan kartu layar akhir</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Kartu layar akhir disembunyikan</string>
@@ -1655,7 +1656,7 @@ Mengaktifkan ini dapat membuka kualitas video yang lebih tinggi"</string>
   <string name="morphe_remember_video_quality_toast_shorts">Kualitas Shorts %1$s diubah menjadi: %2$s</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">Tampilkan Kecepatan pemutaran</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">Tombol kecepatan pemutaran ditampilkan. Ketuk dan tahan untuk mengatur ulang kecepatan pemutaran ke default</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">Tombol kecepatan pemutaran ditampilkan. Ketuk dan tahan untuk mengatur ulang kecepatan pemutaran ke bawaan</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">Tombol kecepatan pemutaran tidak ditampilkan</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">Tampilkan Kualitas</string>
@@ -1673,7 +1674,7 @@ Mengaktifkan ini dapat membuka kualitas video yang lebih tinggi"</string>
   <string name="morphe_custom_playback_speeds_invalid">Kecepatan pemutaran khusus harus kurang dari %s</string>
   <string name="morphe_custom_playback_speeds_parse_exception">Kecepatan pemutaran khusus tidak sah</string>
   <string name="morphe_custom_playback_speeds_auto">Otomatis</string>
-  <string name="morphe_speed_tap_and_hold_title">Kecepatan ketuk dan tahan khusus</string>
+  <string name="morphe_speed_tap_and_hold_title">Kecepatan ketuk dan tahan pemutaran khusus</string>
   <string name="morphe_speed_tap_and_hold_summary">"Kecepatan pemutaran antara 0-8
 
 Jika 0, ketuk dan tahan kecepatan dinonaktifkan"</string>

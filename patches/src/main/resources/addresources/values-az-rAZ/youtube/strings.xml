@@ -475,8 +475,7 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_swipe_change_video_summary_on">Tam ekran rejimində sürüşdürmə növbəti/əvvəlki videoya ötürəcək</string>
   <string name="morphe_swipe_change_video_summary_off">Tam ekran rejimində sürüşdürmə növbəti/əvvəlki videoya ötürməyəcək</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Fəaliyyət düymələri</string>
-  <string name="morphe_hide_buttons_screen_summary">Videonun altındakı düymələri gizlət və ya göstər</string>
+  <string name="morphe_action_buttons_screen_title">Fəaliyyət düymələri</string>
   <string name="morphe_disable_like_subscribe_glow_title">Bəyən və Abunə Ol parıltısını söndür</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Bəyən və Abunə ol düyməsinə toxunanda parlamayacaq</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Bəyən və Abunə ol düyməsinə toxunanda parlayacaq</string>
@@ -539,6 +538,22 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_save_button_title">Saxlayın-ı Gizlət</string>
   <string name="morphe_hide_save_button_summary_on">Saxlayın düyməsi gizlidir</string>
   <string name="morphe_hide_save_button_summary_off">Saxlayın düyməsi görünür</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Soruş\'u Gizlət</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Soruş düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">\"Soruş\" düyməsi göstərilir</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Şərhləri Gizlət</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Şərhlər düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Şərhlər düyməsi göstərilir</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Bəyənməmə düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Bəyənməmə düyməsi göstərilir</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Bəyənmə düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Bəyənmə düyməsi göstərilir</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Saxlayın-ı Gizlət</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Saxlayın düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Saxlayın düyməsi görünür</string>
+  <string name="morphe_hide_quick_actions_share_button_title">\"Paylaş\"ı gizlət</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Paylaş düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Paylaş düyməsi göstərilir</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Titrlər</string>
   <!-- layout.captions.autoCaptionsPatch -->
@@ -601,7 +616,8 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Qaranlıq rejimdə fəaliyyət cərgəsi qeyri-şəffafdır</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Qaranlıq rejim fəaliyyət cərgəsi qeyri-şəffaf və ya şəffafdır</string>
   <string name="morphe_toolbar_screen_title">Alətlər çubuğu</string>
-  <string name="morphe_toolbar_screen_summary">Alətlər çubuğunun komponentlərini gizlət və ya dəyiş</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Yayım düyməsi gizlidir</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Yayım düyməsi görünür</string>
   <string name="morphe_hide_toolbar_create_button_title">\"Yarat\"ı gizlət</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Yarat düyməsi gizlidir</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Yarat düyməsi göstərilir</string>
@@ -684,22 +700,6 @@ Səs treki menyusunu göstərmək üçün \"Video yayımları saxtalaşdır\"-ı
   <string name="morphe_hide_player_control_buttons_background_summary_off">Oynadıcı idarəetmə fonu görünür</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_on">Əvvəlki &amp; Sonrakı düymələri gizlənib</string>
   <string name="morphe_hide_player_previous_next_buttons_summary_off">Əvvəlki &amp; Sonrakı düymələri göstərilib</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Soruş\'u Gizlət</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Soruş düyməsi gizlidir</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">\"Soruş\" düyməsi göstərilir</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Şərhləri Gizlət</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Şərhlər düyməsi gizlidir</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">Şərhlər düyməsi göstərilir</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Bəyənməmə düyməsi gizlidir</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Bəyənməmə düyməsi göstərilir</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">Bəyənmə düyməsi gizlidir</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">Bəyənmə düyməsi göstərilir</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Saxlayın-ı Gizlət</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">Saxlayın düyməsi gizlidir</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">Saxlayın düyməsi görünür</string>
-  <string name="morphe_hide_quick_actions_share_button_title">\"Paylaş\"ı gizlət</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Paylaş düyməsi gizlidir</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Paylaş düyməsi göstərilir</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Son ekran kartlarını gizlət</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Son ekran kartları gizlidir</string>
