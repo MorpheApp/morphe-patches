@@ -147,7 +147,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_web_search_results_summary_off">Резултатите от уеб търсенето са показани</string>
   <string name="morphe_hide_you_may_like_section_title">Скриване на раздела \'Може да се интересувате\'</string>
   <string name="morphe_hide_you_may_like_section_summary_on">Разделът \"Може би да ти се харесат\" е скрит</string>
-  <string name="morphe_hide_you_may_like_section_summary_off">Разделът \"Може би да ти се харесат\" е показан</string>
+  <string name="morphe_hide_you_may_like_section_summary_off">Може да харесате секцията е показана</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles</string>
   <string name="morphe_hide_youtube_doodles_summary_on">Анимацията \"Doodles\" на логото на YouTube е скрита</string>
@@ -591,14 +591,15 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">Свайпване в пълноекранен режим ще променя на следващо/предишно видео</string>
   <string name="morphe_swipe_change_video_summary_off">Свайпване в пълноекранен режим не ще променя на следващо/предишно видео</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Думиращи бутони</string>
-  <string name="morphe_hide_buttons_screen_summary">Скриване или показване на бутоните под видеа</string>
+  <string name="morphe_action_buttons_screen_title">Бутони за действие</string>
+  <string name="morphe_action_buttons_screen_summary">Скриване или показване на бутоните за действие в цял екран и портретен режим</string>
+  <string name="morphe_portrait_buttons">Бутони за портретен режим</string>
   <string name="morphe_disable_like_subscribe_glow_title">Изключване на светене на бутоните \"Like\" и \"Subscribe\"</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Бутоните \"Like\" и \"Subscribe\" няма да светят при спомена</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Бутоните \"Like\" и \"Subscribe\" ще светят при спомена</string>
   <string name="morphe_hide_action_bar_title">Скриване на действие бар</string>
-  <string name="morphe_hide_action_bar_summary_on">Действие бар е скрито</string>
-  <string name="morphe_hide_action_bar_summary_off">Действие бар е показано</string>
+  <string name="morphe_hide_action_bar_summary_on">Лентата с действия е скрита</string>
+  <string name="morphe_hide_action_bar_summary_off">Действието се показва</string>
   <string name="morphe_hide_like_dislike_button_title">Скриване на бутон \"Like\" и \"Dislike\"</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Бутоните \"Like\" и \"Dislike\" са скрити</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Бутоните \"Like\" и \"Dislike\" са показани</string>
@@ -658,6 +659,43 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">Скриване на бутон \"Save\"</string>
   <string name="morphe_hide_save_button_summary_on">Бутонът \"Save\" е скрит</string>
   <string name="morphe_hide_save_button_summary_off">Бутонът \"Save\" е показан</string>
+  <string name="morphe_fullscreen_buttons">Бутони за цял екран</string>
+  <string name="morphe_hide_quick_actions_title">Скриване на лентата с действия</string>
+  <string name="morphe_hide_quick_actions_summary_on">Лентата с действия е скрита</string>
+  <string name="morphe_hide_quick_actions_summary_off">Лентата с действия е показана</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Скриване на „Попитай“</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Бутонът „Попитай“ е скрит</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Бутонът „Попитай“ се показва</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Скриване на коментари</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Бутонът за коментари е скрит</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Бутонът за коментари се показва</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Скриване на „Не ми харесва“</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Бутонът „Не ми харесва“ е скрит</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Бутонът „Не ми харесва“ се показва</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Скриване на „Харесва ми“</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Бутонът „Харесва ми“ е скрит</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Бутонът „Харесва ми“ се показва</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Скриване на „Чат на живо“</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Бутонът за чат на живо е скрит</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Бутонът за чат на живо се показва</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Скриване на „Микс“</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Бутонът „Микс“ е скрит</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Бутонът „Микс“ се показва</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Скриване на „Още“</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Бутонът „Още“ е скрит</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Бутонът „Още“ се показва</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Скриване на „Повече видеоклипове“</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Бутонът „Повече видеоклипове“ е скрит</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Бутонът „Повече видеоклипове“ се показва</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Скриване на плейлист</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Бутонът за плейлист е скрит</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Бутонът за плейлист се показва</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Скриване на „Запазване“</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Бутонът „Запазване“ е скрит</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Бутонът „Запазване“ се показва</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Скриване на „Споделяне“</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Бутонът „Споделяне“ е скрит</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Бутонът „Споделяне“ се показва</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Заглавия</string>
   <string name="morphe_captions_screen_summary">Изключване на автоматичното включване на заглавия или поставяне на бисквитки за заглавия</string>
@@ -757,7 +795,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Скрий или покажи бутоните в панела за плеер</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Бутонът за коментари е скрит</string>
   <string name="morphe_toolbar_screen_title">Тойбър</string>
-  <string name="morphe_toolbar_screen_summary">Скриване или промяна на компонентите на toolbar</string>
+  <string name="morphe_toolbar_screen_summary">Скриване или показване на компонентите на лентата с инструменти</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Скрий предаването</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Бутонът за предаване е скрит</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Бутонът за предаване се показва</string>
   <string name="morphe_hide_toolbar_create_button_title">Скрий Създай</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Бутона за Създаване е скрит</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Бутона за Създаване е виден</string>
@@ -834,9 +875,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_audio_track_summary_off">Скрий дублиране на видеа</string>
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Reel' and 'TV' must be kept untranslated. -->
-  <string name="morphe_hide_player_flyout_audio_track_not_available">"Меню за аудио трак е скрито
+  <string name="morphe_hide_player_flyout_audio_track_not_available">"Менюто за аудио пистите е скрито
 
-За да покажете менюто за аудио трак, промените 'Споф на видеопоток' на 'Андроид Рил' или 'ТВ'"</string>
+За да покажете менюто за аудио писти, променете 'Подправяне на видео потоци' на 'Android Reel' или 'ТВ'."</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Скрий долния край на аудио пистата</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Долният край на менюто за аудио пистата е скрит</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Долният край на менюто за аудио пистата е показан</string>
@@ -851,7 +892,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_quality_footer_title">Скрий долния край на качеството</string>
   <string name="morphe_hide_player_flyout_quality_footer_summary_on">Долният край на менюто за качество е скрит</string>
   <string name="morphe_hide_player_flyout_quality_footer_summary_off">Долният край на менюто за качество е показан</string>
-  <string name="morphe_hide_player_flyout_quality_header_title">Скрий качеството (заглавие)</string>
+  <string name="morphe_hide_player_flyout_quality_header_title">Скрий заглавие \"Качество\"</string>
   <string name="morphe_hide_player_flyout_quality_header_summary_on">Заглавието на менюто за качество е скрито</string>
   <string name="morphe_hide_player_flyout_quality_header_summary_off">Заглавието на менюто за качество е показано</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
@@ -886,44 +927,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_settings_button_title">Скриване на настройки</string>
   <string name="morphe_hide_settings_button_summary_on">Бутонът Настройки е скрит</string>
   <string name="morphe_hide_settings_button_summary_off">Бутонът Настройки е показан</string>
-  <string name="morphe_quick_actions_screen_title">Бързи действия</string>
-  <string name="morphe_quick_actions_screen_summary">Скриване или показване на компоненти, свързани с бързите действия в пълен екран</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Скриване на „Попитай“</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Бутонът „Попитай“ е скрит</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">Бутонът „Попитай“ се показва</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Скриване на коментари</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Бутонът за коментари е скрит</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">Бутонът за коментари се показва</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Скриване на „Не ми харесва“</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Бутонът „Не ми харесва“ е скрит</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Бутонът „Не ми харесва“ се показва</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Скриване на „Харесва ми“</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">Бутонът „Харесва ми“ е скрит</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">Бутонът „Харесва ми“ се показва</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Скриване на „Чат на живо“</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Бутонът за чат на живо е скрит</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Бутонът за чат на живо се показва</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Скриване на „Микс“</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">Бутонът „Микс“ е скрит</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">Бутонът „Микс“ се показва</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Скриване на „Още“</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">Бутонът „Още“ е скрит</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">Бутонът „Още“ се показва</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Скриване на „Повече видеоклипове“</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Бутонът „Повече видеоклипове“ е скрит</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Бутонът „Повече видеоклипове“ се показва</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Скриване на плейлист</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Бутонът за плейлист е скрит</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Бутонът за плейлист се показва</string>
-  <string name="morphe_hide_quick_actions_title">Скриване на бързи действия</string>
-  <string name="morphe_hide_quick_actions_summary_on">Бързите действия са скрити</string>
-  <string name="morphe_hide_quick_actions_summary_off">Бързите действия се показват</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Скриване на „Запазване“</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">Бутонът „Запазване“ е скрит</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">Бутонът „Запазване“ се показва</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Скриване на „Споделяне“</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Бутонът „Споделяне“ е скрит</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Бутонът „Споделяне“ се показва</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Дублирането на видеа се показва</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Скрий дублиране на видеа</string>
@@ -1692,7 +1695,7 @@ Second \"item\" text"</string>
 • HDR видеа не ще използват AVC
 • Някои устройства не могат да принудят AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">За да използвате тази функция, променете \'Spoof video streams\' на Android VR или Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">За да използвате тази функция, променете \'Имитиране на видео потоци\' на Android VR или Android Studio</string>
   <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
   <string name="morphe_expand_livestream_dvr_duration_title">Разширете продължителността на livestream DVR</string>
   <string name="morphe_expand_livestream_dvr_duration_summary_on">Продължителността на livestream DVR е разширена до 7 дни</string>

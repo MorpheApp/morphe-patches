@@ -103,22 +103,6 @@ public final class QuickActionButtonsFilter extends Filter {
         );
     }
 
-    /**
-     * Checks if all child elements of the Quick Actions menu are set to be hidden.
-     * If they are, we can just hide the parent container entirely.
-     */
-    private boolean isEveryFilterGroupEnabled() {
-        for (StringFilterGroup group : pathCallbacks) {
-            if (!group.isEnabled()) return false;
-        }
-
-        for (ByteArrayFilterGroup group : bufferButtonsGroupList) {
-            if (!group.isEnabled()) return false;
-        }
-
-        return true;
-    }
-
     @Override
     boolean isFiltered(ContextInterface contextInterface,
                        String identifier,
@@ -133,8 +117,8 @@ public final class QuickActionButtonsFilter extends Filter {
             return false;
         }
 
-        if (matchedGroup == quickActions && !isEveryFilterGroupEnabled()) {
-            return false;
+        if (matchedGroup == quickActions) {
+            return true;
         }
 
         if (matchedGroup == buttonFilterPath) {

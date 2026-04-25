@@ -636,8 +636,9 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_swipe_change_video_summary_off">Swiping in fullscreen mode will not change to the next/previous video</string>
 
     <!-- layout.buttons.action.hideButtonsPatch -->
-    <string name="morphe_hide_buttons_screen_title">Action buttons</string>
-    <string name="morphe_hide_buttons_screen_summary">Hide or show buttons under videos</string>
+    <string name="morphe_action_buttons_screen_title">Action buttons</string>
+    <string name="morphe_action_buttons_screen_summary">Hide or show action buttons in fullscreen and portrait</string>
+    <string name="morphe_portrait_buttons">Portrait buttons</string>
     <string name="morphe_disable_like_subscribe_glow_title">Disable Like and Subscribe glow</string>
     <string name="morphe_disable_like_subscribe_glow_summary_on">Like and Subscribe button will not glow when mentioned</string>
     <string name="morphe_disable_like_subscribe_glow_summary_off">Like and Subscribe button will glow when mentioned</string>
@@ -703,6 +704,44 @@ Adjust volume by swiping vertically on the right side of the screen"</string>
     <string name="morphe_hide_save_button_title">Hide Save</string>
     <string name="morphe_hide_save_button_summary_on">Save button is hidden</string>
     <string name="morphe_hide_save_button_summary_off">Save button is shown</string>
+
+    <string name="morphe_fullscreen_buttons">Fullscreen buttons</string>
+    <string name="morphe_hide_quick_actions_title">Hide action bar</string>
+    <string name="morphe_hide_quick_actions_summary_on">Action bar is hidden</string>
+    <string name="morphe_hide_quick_actions_summary_off">Action bar is shown</string>
+    <string name="morphe_hide_quick_actions_ask_button_title">Hide Ask</string>
+    <string name="morphe_hide_quick_actions_ask_button_summary_on">Ask button is hidden</string>
+    <string name="morphe_hide_quick_actions_ask_button_summary_off">Ask button is shown</string>
+    <string name="morphe_hide_quick_actions_comments_button_title">Hide Comments</string>
+    <string name="morphe_hide_quick_actions_comments_button_summary_on">Comments button is hidden</string>
+    <string name="morphe_hide_quick_actions_comments_button_summary_off">Comments button is shown</string>
+    <string name="morphe_hide_quick_actions_dislike_button_title">Hide Dislike</string>
+    <string name="morphe_hide_quick_actions_dislike_button_summary_on">Dislike button is hidden</string>
+    <string name="morphe_hide_quick_actions_dislike_button_summary_off">Dislike button is shown</string>
+    <string name="morphe_hide_quick_actions_like_button_title">Hide Like</string>
+    <string name="morphe_hide_quick_actions_like_button_summary_on">Like button is hidden</string>
+    <string name="morphe_hide_quick_actions_like_button_summary_off">Like button is shown</string>
+    <string name="morphe_hide_quick_actions_live_chat_button_title">Hide \'Live chat\'</string>
+    <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Live chat button is hidden</string>
+    <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Live chat button is shown</string>
+    <string name="morphe_hide_quick_actions_mix_button_title">Hide Mix</string>
+    <string name="morphe_hide_quick_actions_mix_button_summary_on">Mix button is hidden</string>
+    <string name="morphe_hide_quick_actions_mix_button_summary_off">Mix button is shown</string>
+    <string name="morphe_hide_quick_actions_more_button_title">Hide More</string>
+    <string name="morphe_hide_quick_actions_more_button_summary_on">More button is hidden</string>
+    <string name="morphe_hide_quick_actions_more_button_summary_off">More button is shown</string>
+    <string name="morphe_hide_quick_actions_more_videos_button_title">Hide \'More videos\'</string>
+    <string name="morphe_hide_quick_actions_more_videos_button_summary_on">More videos button is hidden</string>
+    <string name="morphe_hide_quick_actions_more_videos_button_summary_off">More videos button is shown</string>
+    <string name="morphe_hide_quick_actions_playlist_button_title">Hide Playlist</string>
+    <string name="morphe_hide_quick_actions_playlist_button_summary_on">Playlist button is hidden</string>
+    <string name="morphe_hide_quick_actions_playlist_button_summary_off">Playlist button is shown</string>
+    <string name="morphe_hide_quick_actions_save_button_title">Hide Save</string>
+    <string name="morphe_hide_quick_actions_save_button_summary_on">Save button is hidden</string>
+    <string name="morphe_hide_quick_actions_save_button_summary_off">Save button is shown</string>
+    <string name="morphe_hide_quick_actions_share_button_title">Hide Share</string>
+    <string name="morphe_hide_quick_actions_share_button_summary_on">Share button is hidden</string>
+    <string name="morphe_hide_quick_actions_share_button_summary_off">Share button is shown</string>
 
     <!-- layout.captions.captionsPatch -->
     <string name="morphe_captions_screen_title">Captions</string>
@@ -808,7 +847,10 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Dark mode navigation bar is opaque or translucent</string>
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
-    <string name="morphe_toolbar_screen_summary">Hide or change toolbar components</string>
+    <string name="morphe_toolbar_screen_summary">Hide or show toolbar components</string>
+    <string name="morphe_hide_toolbar_cast_button_title">Hide Cast</string>
+    <string name="morphe_hide_toolbar_cast_button_summary_on">Cast button is hidden</string>
+    <string name="morphe_hide_toolbar_cast_button_summary_off">Cast button is shown</string>
     <string name="morphe_hide_toolbar_create_button_title">Hide Create</string>
     <string name="morphe_hide_toolbar_create_button_summary_on">Create button is hidden</string>
     <string name="morphe_hide_toolbar_create_button_summary_off">Create button is shown</string>
@@ -940,45 +982,6 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_settings_button_title">Hide Settings</string>
     <string name="morphe_hide_settings_button_summary_on">Settings button is hidden</string>
     <string name="morphe_hide_settings_button_summary_off">Settings button is shown</string>
-
-    <string name="morphe_quick_actions_screen_title">Quick actions</string>
-    <string name="morphe_quick_actions_screen_summary">Hide or show fullscreen quick actions related components</string>
-    <string name="morphe_hide_quick_actions_ask_button_title">Hide Ask</string>
-    <string name="morphe_hide_quick_actions_ask_button_summary_on">Ask button is hidden</string>
-    <string name="morphe_hide_quick_actions_ask_button_summary_off">Ask button is shown</string>
-    <string name="morphe_hide_quick_actions_comments_button_title">Hide Comments</string>
-    <string name="morphe_hide_quick_actions_comments_button_summary_on">Comments button is hidden</string>
-    <string name="morphe_hide_quick_actions_comments_button_summary_off">Comments button is shown</string>
-    <string name="morphe_hide_quick_actions_dislike_button_title">Hide Dislike</string>
-    <string name="morphe_hide_quick_actions_dislike_button_summary_on">Dislike button is hidden</string>
-    <string name="morphe_hide_quick_actions_dislike_button_summary_off">Dislike button is shown</string>
-    <string name="morphe_hide_quick_actions_like_button_title">Hide Like</string>
-    <string name="morphe_hide_quick_actions_like_button_summary_on">Like button is hidden</string>
-    <string name="morphe_hide_quick_actions_like_button_summary_off">Like button is shown</string>
-    <string name="morphe_hide_quick_actions_live_chat_button_title">Hide \'Live chat\'</string>
-    <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Live chat button is hidden</string>
-    <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Live chat button is shown</string>
-    <string name="morphe_hide_quick_actions_mix_button_title">Hide Mix</string>
-    <string name="morphe_hide_quick_actions_mix_button_summary_on">Mix button is hidden</string>
-    <string name="morphe_hide_quick_actions_mix_button_summary_off">Mix button is shown</string>
-    <string name="morphe_hide_quick_actions_more_button_title">Hide More</string>
-    <string name="morphe_hide_quick_actions_more_button_summary_on">More button is hidden</string>
-    <string name="morphe_hide_quick_actions_more_button_summary_off">More button is shown</string>
-    <string name="morphe_hide_quick_actions_more_videos_button_title">Hide \'More videos\'</string>
-    <string name="morphe_hide_quick_actions_more_videos_button_summary_on">More videos button is hidden</string>
-    <string name="morphe_hide_quick_actions_more_videos_button_summary_off">More videos button is shown</string>
-    <string name="morphe_hide_quick_actions_playlist_button_title">Hide Playlist</string>
-    <string name="morphe_hide_quick_actions_playlist_button_summary_on">Playlist button is hidden</string>
-    <string name="morphe_hide_quick_actions_playlist_button_summary_off">Playlist button is shown</string>
-    <string name="morphe_hide_quick_actions_title">Hide Quick actions</string>
-    <string name="morphe_hide_quick_actions_summary_on">Quick actions are hidden</string>
-    <string name="morphe_hide_quick_actions_summary_off">Quick actions are shown</string>
-    <string name="morphe_hide_quick_actions_save_button_title">Hide Save</string>
-    <string name="morphe_hide_quick_actions_save_button_summary_on">Save button is hidden</string>
-    <string name="morphe_hide_quick_actions_save_button_summary_off">Save button is shown</string>
-    <string name="morphe_hide_quick_actions_share_button_title">Hide Share</string>
-    <string name="morphe_hide_quick_actions_share_button_summary_on">Share button is hidden</string>
-    <string name="morphe_hide_quick_actions_share_button_summary_off">Share button is shown</string>
 
     <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
     <string name="morphe_hide_end_screen_cards_title">Hide end screen cards</string>

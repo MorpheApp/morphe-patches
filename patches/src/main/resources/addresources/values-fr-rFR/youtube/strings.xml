@@ -381,7 +381,7 @@ L’affichage des YouTube Doodles peut empêcher l’affichage des en-têtes per
   <string name="morphe_hide_upload_time_user_dialog_message">"Limitations :
 • Les étagères Shorts, les pages de chaînes et les résultats de recherche peuvent encore afficher les heures de mise en ligne
 • Cette fonctionnalité ne fonctionne pas avec le format automobile."</string>
-  <string name="morphe_hide_keyword_content_screen_title">Filtre de mots-clés</string>
+  <string name="morphe_hide_keyword_content_screen_title">Filtre par mots clés</string>
   <string name="morphe_hide_keyword_content_screen_summary">Filtrer les vidéos par mot-clé dans les recherches et le flux</string>
   <string name="morphe_hide_keyword_content_home_title">Filtrer les vidéos dans l\'onglet \'Accueil\' par mot-clé</string>
   <string name="morphe_hide_keyword_content_home_summary_on">Les vidéos de l’onglet \'Accueil\' sont filtrées par mots-clés</string>
@@ -452,7 +452,7 @@ Limitations :
   <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
   <string name="morphe_share_copy_url_button_success">URL copiée dans le presse-papiers</string>
   <string name="morphe_share_copy_url_button_timestamp_success">URL avec horodatage copiée dans le presse-papiers</string>
-  <string name="morphe_copy_video_url_button_title">Afficher un bouton \'Copier l\'URL de la vidéo\'</string>
+  <string name="morphe_copy_video_url_button_title">Afficher \'Copier l\'URL de la vidéo\'</string>
   <string name="morphe_copy_video_url_button_summary_on">Le bouton \'Copier l\'URL de la vidéo\' est affiché. Appuyez pour copier l\'URL de la vidéo. Appuyez longuement pour copier avec horodatage.</string>
   <string name="morphe_copy_video_url_button_summary_off">Le bouton \'Copier l\'URL de la vidéo\' n\'est pas affiché</string>
   <string name="morphe_copy_video_url_button_timestamp_title">Copier l\'horodatage</string>
@@ -496,13 +496,13 @@ Vérifiez que le nom du package est correct et que l’application est bien inst
   <string name="morphe_loop_video_summary_on">La vidéo sera lue en boucle</string>
   <string name="morphe_loop_video_summary_off">La vidéo ne sera pas lue en boucle</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
-  <string name="morphe_loop_video_button_title">Afficher un bouton \'Lecture en boucle\'</string>
+  <string name="morphe_loop_video_button_title">Afficher \'Lecture en boucle\'</string>
   <string name="morphe_loop_video_button_summary_on">Le bouton \'Lecture en boucle\' est affiché</string>
   <string name="morphe_loop_video_button_summary_off">Le bouton \'Lecture en boucle\' n\'est pas affiché</string>
   <string name="morphe_loop_video_button_toast_on">La lecture en boucle est activée</string>
   <string name="morphe_loop_video_button_toast_off">La lecture en boucle est désactivée</string>
   <!-- interaction.playall.playAllButtonPatch -->
-  <string name="morphe_play_all_button_title">Afficher un bouton \'Tout lire\'</string>
+  <string name="morphe_play_all_button_title">Afficher \'Tout lire\'</string>
   <string name="morphe_play_all_button_summary_on">"Le bouton 'Tout lire' est affiché. Appuyez pour générer une playlist de toutes les vidéos de la chaîne. Appuyez longuement pour annuler
 
 Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
@@ -523,7 +523,7 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_play_all_button_type_entry_12">Diffusion en direct réservé aux membres uniquement</string>
   <string name="morphe_play_all_button_not_available_toast">Impossible de générer la playlist en raison d’une incompatibilité d’identifiant de chaîne</string>
   <!-- interaction.reload.reloadVideoPatch -->
-  <string name="morphe_reload_video_button_title">Afficher un bouton \'Recharger la vidéo\'</string>
+  <string name="morphe_reload_video_button_title">Afficher \'Recharger la vidéo\'</string>
   <string name="morphe_reload_video_button_summary_on">Le bouton \'Recharger la vidéo\' est affiché</string>
   <string name="morphe_reload_video_button_summary_off">Le bouton \'Recharger la vidéo\' n\'est pas affiché</string>
   <string name="morphe_dismiss_player_not_available_toast">L\'identifiant de la vidéo est indisponible. Veuillez rouvrir la vidéo manuellement</string>
@@ -597,8 +597,9 @@ Réglez le volume en balayant verticalement sur le côté droit de l’écran"</
   <string name="morphe_swipe_change_video_summary_on">Le balayage en mode plein écran permet de passer à la vidéo suivante/précédente</string>
   <string name="morphe_swipe_change_video_summary_off">Le balayage en mode plein écran ne  permet pas de passer à la vidéo suivante/précédente</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Boutons sous la vidéo</string>
-  <string name="morphe_hide_buttons_screen_summary">Masquer ou afficher les boutons sous les vidéos</string>
+  <string name="morphe_action_buttons_screen_title">Boutons d\'action</string>
+  <string name="morphe_action_buttons_screen_summary">Masquer ou afficher les boutons d’action en mode plein écran et en mode portrait</string>
+  <string name="morphe_portrait_buttons">Boutons en mode portrait</string>
   <string name="morphe_disable_like_subscribe_glow_title">Désactiver la lueur des \'J\'aime\' et \'S\'abonner\'</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Les boutons \'J\'aime\' et \'S\'abonner\' ne s\'illuminerons pas lorsqu\'ils seront mentionnés</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Les boutons \'J\'aime\' et \'S\'abonner\' s\'illuminerons lorsqu\'ils seront mentionnés</string>
@@ -664,6 +665,43 @@ Réglez le volume en balayant verticalement sur le côté droit de l’écran"</
   <string name="morphe_hide_save_button_title">Masquer \'Enregistrer\'</string>
   <string name="morphe_hide_save_button_summary_on">Le bouton \'Enregistrer\' est masqué</string>
   <string name="morphe_hide_save_button_summary_off">Le bouton \'Enregistrer\' est affiché</string>
+  <string name="morphe_fullscreen_buttons">Boutons en plein écran</string>
+  <string name="morphe_hide_quick_actions_title">Masquer la barre d\'action</string>
+  <string name="morphe_hide_quick_actions_summary_on">La barre d\'action est masquée</string>
+  <string name="morphe_hide_quick_actions_summary_off">La barre d\'action est affichée</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Masquer \'Demander\'</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Le bouton \'Demander\' est masqué</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Le bouton \'Demander\' est affiché</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Masquer \'Commentaires\'</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Le bouton \'Commentaires\' est masqué</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Le bouton \'Commentaires\' est affiché</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Masquer \'Je n\'aime pas\'</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Le bouton \'Je n\'aime pas\' est masqué</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Le bouton \'Je n\'aime pas\' est affiché</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Masquer \'J\'aime\'</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Le bouton \'J\'aime\' est masqué</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Le bouton \'J\'aime\' est affiché</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Masquer \'Chat en direct\'</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Le bouton \'Chat en direct\' est masqué</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Le bouton \'Chat en direct\' est affiché</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Masquer \'Mix\'</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Le bouton \'Mix\' est masqué</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Le bouton \'Mix\' est affiché</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Masquer \'Plus\'</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Le bouton \'Plus\' est masqué</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Le bouton \'Plus\' est affiché</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Masquer \'Plus de vidéos\'</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Le bouton \'Plus de vidéos\' est masqué</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Le bouton \'Plus de vidéos\' est affiché</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Masquer \'Playlist\'</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Le bouton \'Playlist\' est masqué</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Le bouton \'Playlist\' est affiché</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Masquer \'Enregistrer\'</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Le bouton \'Enregistrer\' est masqué</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Le bouton \'Enregistrer\' est affiché</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Masquer \'Partager\'</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Le bouton \'Partager\' est masqué</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Le bouton \'Partager\' est affiché</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Sous-titres</string>
   <string name="morphe_captions_screen_summary">Désactiver l\'activation automatique des sous-titres ou définir des cookies de sous-titres</string>
@@ -764,6 +802,9 @@ Pour accéder aux paramètres, activez le bouton 'Paramètres' via Général →
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">La barre de navigation en mode sombre est opaque ou translucide</string>
   <string name="morphe_toolbar_screen_title">Barre d\'outils</string>
   <string name="morphe_toolbar_screen_summary">Masquer ou modifier les composants de la barre d\'outils</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Masquer \'Caster\'</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Le bouton \'Caster\' est masqué</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Le bouton \'Caster\' est affiché</string>
   <string name="morphe_hide_toolbar_create_button_title">Masquer \'Créer\'</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Le bouton \'Créer\' est masqué</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Le bouton \'Créer\' est affiché</string>
@@ -874,7 +915,7 @@ Pour afficher le menu 'Pste audio', modifier 'Falsifier les flux vidéo' en 'And
   <string name="morphe_hide_captions_button_title">Masquer \'Sous-titres\'</string>
   <string name="morphe_hide_captions_button_summary_on">Le bouton \'Sous-titres\' est masqué</string>
   <string name="morphe_hide_captions_button_summary_off">Le bouton \'Sous-titres\' est affiché</string>
-  <string name="morphe_hide_cast_button_title">Masquer \'Castee\'</string>
+  <string name="morphe_hide_cast_button_title">Masquer \'Caster\'</string>
   <string name="morphe_hide_cast_button_summary_on">Le bouton \'Caster\' est masqué</string>
   <string name="morphe_hide_cast_button_summary_off">Le bouton \'Caster\' est affiché</string>
   <string name="morphe_hide_collapse_button_title">Masquer \'Réduire\'</string>
@@ -892,44 +933,6 @@ Pour afficher le menu 'Pste audio', modifier 'Falsifier les flux vidéo' en 'And
   <string name="morphe_hide_settings_button_title">Masquer \'Paramètres\'</string>
   <string name="morphe_hide_settings_button_summary_on">Le bouton \'Paramètres\' est masqué</string>
   <string name="morphe_hide_settings_button_summary_off">Le bouton \'Paramètres\' est affiché</string>
-  <string name="morphe_quick_actions_screen_title">Actions rapides</string>
-  <string name="morphe_quick_actions_screen_summary">Masquer ou afficher les composants liés aux actions rapides en plein écran</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Masquer \'Demander\'</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Le bouton \'Demander\' est masqué</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">Le bouton \'Demander\' est affiché</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Masquer \'Commentaires\'</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Le bouton \'Commentaires\' est masqué</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">Le bouton \'Commentaires\' est affiché</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Masquer \'Je n\'aime pas\'</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Le bouton \'Je n\'aime pas\' est masqué</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Le bouton \'Je n\'aime pas\' est affiché</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Masquer \'J\'aime\'</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">Le bouton \'J\'aime\' est masqué</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">Le bouton \'J\'aime\' est affiché</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Masquer \'Chat en direct\'</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Le bouton \'Chat en direct\' est masqué</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Le bouton \'Chat en direct\' est affiché</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Masquer \'Mix\'</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">Le bouton \'Mix\' est masqué</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">Le bouton \'Mix\' est affiché</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Masquer \'Plus\'</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">Le bouton \'Plus\' est masqué</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">Le bouton \'Plus\' est affiché</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Masquer \'Plus de vidéos\'</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Le bouton \'Plus de vidéos\' est masqué</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Le bouton \'Plus de vidéos\' est affiché</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Masquer \'Playlist\'</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Le bouton \'Playlist\' est masqué</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Le bouton \'Playlist\' est affiché</string>
-  <string name="morphe_hide_quick_actions_title">Masquer \'Actions rapides\'</string>
-  <string name="morphe_hide_quick_actions_summary_on">Les actions rapides sont masquées</string>
-  <string name="morphe_hide_quick_actions_summary_off">Les actions rapides sont affichées</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Masquer \'Enregistrer\'</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">Le bouton \'Enregistrer\' est masqué</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">Le bouton \'Enregistrer\' est affiché</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Masquer \'Partager\'</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Le bouton \'Partager\' est masqué</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Le bouton \'Partager\' est affiché</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Masquer les cartes d\'écran de fin</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Les cartes d\'écran de fin sont masqués</string>
@@ -1655,11 +1658,11 @@ Activer ceci peut débloquer des qualités vidéo plus élevées
   <string name="morphe_remember_video_quality_toast">Qualité par défaut %1$s modifiée en : %2$s</string>
   <string name="morphe_remember_video_quality_toast_shorts">Qualité des Shorts %1$s modifiée en : %2$s.</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
-  <string name="morphe_playback_speed_dialog_button_title">Afficher un bouton \'Vitesse de lecture\'</string>
+  <string name="morphe_playback_speed_dialog_button_title">Afficher \'Vitesse de lecture\'</string>
   <string name="morphe_playback_speed_dialog_button_summary_on">Le bouton \'Vitesse de lecture\' est affiché. Appuyez longuement pour réinitialiser la vitesse de lecture par défaut</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">Le bouton \'Vitesse de lecture\' n\'est pas affiché</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
-  <string name="morphe_video_quality_dialog_button_title">Afficher un bouton \'Qualité\'</string>
+  <string name="morphe_video_quality_dialog_button_title">Afficher \'Qualité\'</string>
   <string name="morphe_video_quality_dialog_button_summary_on">Le bouton \'Qualité\' est affiché. Appuyez longuement pour réinitialiser la qualité par défaut</string>
   <string name="morphe_video_quality_dialog_button_summary_off">Le bouton \'Qualité\' n\'est pas affiché</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->

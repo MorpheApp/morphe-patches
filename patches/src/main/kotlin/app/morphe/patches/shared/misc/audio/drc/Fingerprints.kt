@@ -46,8 +46,6 @@ internal object CompressionRatioFingerprint : Fingerprint(
 )
 
 internal object VolumeNormalizationConfigFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf("F"),
     filters = listOf(
         literal(45425391L)
     )

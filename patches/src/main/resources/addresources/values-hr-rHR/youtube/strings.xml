@@ -525,8 +525,6 @@ Prilagodite zvuk pretraživanjem vertikalno na desnoj strani zaslona"</string>
   <string name="morphe_swipe_change_video_summary_on">Swiping u punoprogrednom načinu će promijeniti na sljedeći/prethodni video</string>
   <string name="morphe_swipe_change_video_summary_off">Swiping u punoprogrednom načinu neće promijeniti na sljedeći/prethodni video</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Dugmici</string>
-  <string name="morphe_hide_buttons_screen_summary">Sakri ili prikaži dugmice ispod videozapisa</string>
   <string name="morphe_disable_like_subscribe_glow_title">Onemogu ili prikaže dugmice ispod videozapisa</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Onemogu otprezanje na Like i Subscribe dugmice</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Like i Subscribe dugmice će se svijetati kada se spominju</string>
@@ -592,6 +590,9 @@ Prilagodite zvuk pretraživanjem vertikalno na desnoj strani zaslona"</string>
   <string name="morphe_hide_save_button_title">Sakrij Save</string>
   <string name="morphe_hide_save_button_summary_on">Tipka za Save je skrivena</string>
   <string name="morphe_hide_save_button_summary_off">Tipka za Save je prikazana</string>
+  <string name="morphe_hide_quick_actions_title">Sakrij traku radnji</string>
+  <string name="morphe_hide_quick_actions_summary_on">Traka radnji je skrivena</string>
+  <string name="morphe_hide_quick_actions_summary_off">Traka radnji je prikazana</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Podnaslovi</string>
   <string name="morphe_captions_screen_summary">Onemogući automatsko omogućavanje podnaslovima ili postavite kapke za podnaslove</string>
@@ -685,7 +686,8 @@ Kapke će biti automatski spremljene ako su ispravne"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Tamna transluzentna navigacijska traka je opaka ili transluzentna</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Tamna moda navigacijska traka ili opaka</string>
   <string name="morphe_toolbar_screen_title">Traka</string>
-  <string name="morphe_toolbar_screen_summary">Sakrij ili promijeni komponente trake</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Tipka za emitiranje je skrivena</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Tipka za emitiranje je prikazana</string>
   <string name="morphe_hide_toolbar_create_button_title">Sakrij Izradi</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Tipka \'Stvori\' je sakrivena</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Tipka \'Stvori\' je prikazana</string>

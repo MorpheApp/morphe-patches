@@ -41,7 +41,16 @@ public class ShortsAutoplayPatch {
          * Play once, then advanced to the next Short.
          * Only found in 21.10+
          */
-        AUTO_ADVANCE;
+        AUTO_ADVANCE,
+        /**
+         * Additional auto advance types, only found in 21.17+
+         * Enum suggests the Short plays more than once then advances,
+         * but forcing this with 21.17+ does not seem to work (YT code may not be complete).
+         */
+        AUTO_ADVANCE_POST_TWO_LOOPS,
+        AUTO_ADVANCE_POST_THREE_LOOPS,
+        AUTO_ADVANCE_POST_FOUR_LOOPS,
+        AUTO_ADVANCE_POST_FIVE_LOOPS;
 
         static void setYTEnumValue(Enum<?> ytBehavior) {
             for (ShortsLoopBehavior rvBehavior : values()) {

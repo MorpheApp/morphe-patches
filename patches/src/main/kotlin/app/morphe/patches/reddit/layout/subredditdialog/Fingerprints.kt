@@ -8,8 +8,8 @@ package app.morphe.patches.reddit.layout.subredditdialog
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.InstructionLocation.MatchAfterRange
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
@@ -45,18 +45,29 @@ internal object FrequentUpdatesHandlerFingerprint : Fingerprint(
 )
 
 internal object NSFWAlertEmitFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/screens/pager/v2/",
-    name = "emit",
     returnType = "Ljava/lang/Object;",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Lcom/reddit/domain/model/Subreddit;->getOver18()Ljava/lang/Boolean;"
+        anyInstruction(
+            // Many classes have a method named getOver18()
+            methodCall(
+                opcode = Opcode.INVOKE_VIRTUAL,
+                smali = "Lcom/reddit/domain/model/Subreddit;->getOver18()Ljava/lang/Boolean;"
+            ),
+            methodCall( // 2026.17.0+
+                opcode = Opcode.INVOKE_VIRTUAL,
+                smali = "Lcom/reddit/domain/model/UserSubreddit;->getOver18()Ljava/lang/Boolean;"
+            )
         ),
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Lcom/reddit/domain/model/Subreddit;->getHasBeenVisited()Z"
+        anyInstruction(
+            // Many classes have a method named getHasBeenVisited()
+            methodCall(
+                opcode = Opcode.INVOKE_VIRTUAL,
+                smali = "Lcom/reddit/domain/model/Subreddit;->getHasBeenVisited()Z"
+            ),
+            methodCall( // 2026.17.0+
+                opcode = Opcode.INVOKE_VIRTUAL,
+                smali = "Lcom/reddit/domain/model/UserSubreddit;->getHasBeenVisited()Z"
+            )
         ),
         opcode(
             Opcode.IF_NEZ,

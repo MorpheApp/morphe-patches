@@ -464,7 +464,7 @@ val crossfadePatch = bytecodePatch(
             it.type == listenerType
         }
         if (listenerField == null) {
-            log.warning(
+            if (false) /* FIXME */ log.warning(
                 "Listener field of type $listenerType not found on ${coordinatorClass.type} " +
                         "- listener transfer will be skipped",
             )
