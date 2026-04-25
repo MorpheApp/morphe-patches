@@ -1150,6 +1150,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_shorts_full_video_link_label_title">Hide video link label</string>
     <string name="morphe_hide_shorts_full_video_link_label_summary_on">Video link label is hidden</string>
     <string name="morphe_hide_shorts_full_video_link_label_summary_off">Video link label is shown</string>
+    <string name="morphe_disable_shorts_double_tap_to_like_title">Disable Shorts double tap to like</string>
+    <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Shorts double tap to like is ignored</string>
+    <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Shorts double tap to like is allowed</string>
     <string name="morphe_hide_shorts_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigation bar is hidden</string>
     <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigation bar is shown</string>
@@ -1558,11 +1561,6 @@ Limitation: Using the back button on the toolbar may not work"</string>
     <string name="morphe_shorts_player_type_shorts">Shorts player</string>
     <string name="morphe_shorts_player_type_regular_player">Regular player</string>
     <string name="morphe_shorts_player_type_regular_player_fullscreen">Regular player fullscreen</string>
-
-    <!-- layout.shortsplayer.shortsDoubleTapToLikePatch -->
-    <string name="morphe_shorts_double_tap_to_like_title">Disable Shorts double tap to like</string>
-    <string name="morphe_shorts_double_tap_to_like_summary_on">Shorts double tap to like is blocked</string>
-    <string name="morphe_shorts_double_tap_to_like_summary_off">Shorts double tap to like is allowed</string>
 
     <!-- layout.shortsautoplay.shortsAutoplayPatch -->
     <string name="morphe_shorts_autoplay_title">Autoplay Shorts</string>
