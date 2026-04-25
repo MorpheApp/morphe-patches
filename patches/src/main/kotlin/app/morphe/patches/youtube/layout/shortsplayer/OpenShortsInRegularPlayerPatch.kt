@@ -129,12 +129,13 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
 
                 finishInvokePatterns.forEach { fingerprint ->
                     val instructionIndex = fingerprint.match(this).instructionMatches[0].index
+                    val instructionRegister = getInstruction(instructionIndex).registersUsed[0]
 
                     addInstructionsAtControlFlowLabel(
                         instructionIndex,
                         """
-                        invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
-                        move-result v${getInstruction(instructionIndex).registersUsed[0]}
+                        invoke-static { v${instructionRegister} }, $EXTENSION_CLASS->overrideBackPressToExit(Z)Z
+                        move-result v${instructionRegister}
                     """
                     )
                 }
