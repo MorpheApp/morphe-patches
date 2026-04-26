@@ -218,7 +218,8 @@ public class SponsorBlockUtils {
                     null,
                     str("morphe_sb_new_segment_mark_start"),
                     () -> newSponsorSegmentStartMillis = newSponsorSegmentDialogShownMillis,
-                    true
+                    true,
+                    false
             );
             dialogPair.first.show();
         } catch (Exception ex) {
@@ -330,7 +331,8 @@ public class SponsorBlockUtils {
                             newSponsorSegmentEndMillis = capturedStart;
                             submitNewSegment();
                         },
-                        true
+                        true,
+                        false
                 );
                 dialogPair.first.show();
                 return;
@@ -504,7 +506,8 @@ public class SponsorBlockUtils {
                     null,
                     str("morphe_sb_new_segment_mark_start"),
                     () -> showEditByHandInputDialog(true, context),
-                    true
+                    true,
+                    false
             );
             dialogPair.first.show();
         } catch (Exception ex) {
