@@ -94,9 +94,8 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         )
 
         // Fix issue with back button exiting the app instead of minimizing the player.
-        //
-        // Note: this patch must be applied on the 'if checks' outermost to the finish() call
-        // to avoid blocking the player minimization code after pressing the back button.
+        // Note: this patch must be applied on the conditional instructions that contains the return
+        // instruction, to avoid to block the code that minimize the video player.
         ExitVideoPlayerFingerprint.method.apply {
             val expectedChanges = 2
             var changesMade = 0
