@@ -217,15 +217,23 @@ public class SponsorBlockUtils {
             final String videoId = VideoInformation.getVideoId();
             final long videoLength = VideoInformation.getVideoLength();
             final SegmentCategory segmentCategory = newUserCreatedSegmentCategory;
-            if (start < 0 || end < 0 || start >= end || videoLength <= 0 || videoId.isEmpty() || segmentCategory == null) {
+            final boolean isHighlight = segmentCategory == SegmentCategory.HIGHLIGHT;
+
+            if (start < 0 || end < 0 || videoLength <= 0 || videoId.isEmpty() || segmentCategory == null) {
+                Logger.printException(() -> "invalid parameters");
+                return;
+            }
+            if (!isHighlight && start >= end) {
                 Logger.printException(() -> "invalid parameters");
                 return;
             }
 
+            final String actionType = isHighlight ? "poi" : "skip";
+
             clearUnsubmittedSegmentTimes();
             Utils.runOnBackgroundThread(() -> {
                 try {
-                    SBRequester.submitSegments(videoId, segmentCategory.keyValue, start, end, videoLength);
+                    SBRequester.submitSegments(videoId, segmentCategory.keyValue, actionType, start, end, videoLength);
                     SegmentPlaybackController.executeDownloadSegments(videoId);
                 } catch (Exception ex) {
                     Logger.printException(() -> "submitNewSegment failure", ex);
@@ -257,24 +265,100 @@ public class SponsorBlockUtils {
     public static void onPublishClicked() {
         try {
             Utils.verifyOnMainThread();
-            if (newSponsorSegmentStartMillis < 0 || newSponsorSegmentEndMillis < 0) {
-                Utils.showToastShort(str("morphe_sb_new_segment_mark_locations_first"));
-            } else if (newSponsorSegmentStartMillis >= newSponsorSegmentEndMillis) {
-                Utils.showToastShort(str("morphe_sb_new_segment_start_is_before_end"));
-            } else if (!newSponsorSegmentPreviewed && newSponsorSegmentStartMillis != 0) {
-                Utils.showToastLong(str("morphe_sb_new_segment_preview_segment_first"));
-            } else {
-                final long segmentLength = (newSponsorSegmentEndMillis - newSponsorSegmentStartMillis) / 1000;
+
+            final boolean hasStart = newSponsorSegmentStartMillis >= 0;
+            final boolean hasEnd = newSponsorSegmentEndMillis >= 0;
+
+            if (!hasStart && !hasEnd) {
+                // Neither point marked - offer to submit as highlight using current time,
+                // or cancel to mark a second location first.
+                final long currentTime = VideoInformation.getVideoTime();
                 new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
-                        .setTitle(str("morphe_sb_new_segment_confirm_title"))
-                        .setMessage(str("morphe_sb_new_segment_confirm_content",
-                                formatSegmentTime(newSponsorSegmentStartMillis),
-                                formatSegmentTime(newSponsorSegmentEndMillis),
-                                getTimeSavedString(segmentLength)))
-                        .setNegativeButton(android.R.string.no, null)
-                        .setPositiveButton(android.R.string.yes, segmentReadyDialogButtonListener)
+                        .setTitle(str("morphe_sb_new_segment_highlight_title"))
+                        .setMessage(str("morphe_sb_new_segment_highlight_confirm_single",
+                                formatSegmentTime(currentTime)))
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .setPositiveButton(str("morphe_sb_new_segment_highlight_submit"), (dialog, which) -> {
+                            newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
+                            newSponsorSegmentStartMillis = currentTime;
+                            newSponsorSegmentEndMillis = currentTime;
+                            submitNewSegment();
+                        })
                         .show();
+                return;
             }
+
+            if (hasStart && !hasEnd) {
+                // Only start marked - offer to submit start as highlight.
+                new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
+                        .setTitle(str("morphe_sb_new_segment_highlight_title"))
+                        .setMessage(str("morphe_sb_new_segment_highlight_confirm_single",
+                                formatSegmentTime(newSponsorSegmentStartMillis)))
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .setPositiveButton(str("morphe_sb_new_segment_highlight_submit"), (dialog, which) -> {
+                            newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
+                            newSponsorSegmentEndMillis = newSponsorSegmentStartMillis;
+                            submitNewSegment();
+                        })
+                        .show();
+                return;
+            }
+
+            if (!hasStart) {
+                // Only end marked - offer to submit end as highlight.
+                new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
+                        .setTitle(str("morphe_sb_new_segment_highlight_title"))
+                        .setMessage(str("morphe_sb_new_segment_highlight_confirm_single",
+                                formatSegmentTime(newSponsorSegmentEndMillis)))
+                        .setNegativeButton(android.R.string.cancel, null)
+                        .setPositiveButton(str("morphe_sb_new_segment_highlight_submit"), (dialog, which) -> {
+                            newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
+                            newSponsorSegmentStartMillis = newSponsorSegmentEndMillis;
+                            submitNewSegment();
+                        })
+                        .show();
+                return;
+            }
+
+            // Both start and end marked.
+            if (newSponsorSegmentStartMillis >= newSponsorSegmentEndMillis) {
+                Utils.showToastShort(str("morphe_sb_new_segment_start_is_before_end"));
+                return;
+            }
+            if (!newSponsorSegmentPreviewed && newSponsorSegmentStartMillis != 0) {
+                // Both points set and not a highlight - require preview first.
+                // But give the user the option to submit as highlight without previewing.
+                new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
+                        .setTitle(str("morphe_sb_new_segment_highlight_title"))
+                        .setMessage(str("morphe_sb_new_segment_highlight_choose_timestamp",
+                                formatSegmentTime(newSponsorSegmentStartMillis),
+                                formatSegmentTime(newSponsorSegmentEndMillis)))
+                        .setNegativeButton(str("morphe_sb_new_segment_highlight_use_start"), (dialog, which) -> {
+                            newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
+                            newSponsorSegmentEndMillis = newSponsorSegmentStartMillis;
+                            submitNewSegment();
+                        })
+                        .setNeutralButton(android.R.string.cancel, null)
+                        .setPositiveButton(str("morphe_sb_new_segment_highlight_use_end"), (dialog, which) -> {
+                            newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
+                            newSponsorSegmentStartMillis = newSponsorSegmentEndMillis;
+                            submitNewSegment();
+                        })
+                        .show();
+                return;
+            }
+
+            // Normal segment submit flow - show confirm then category picker.
+            final long segmentLength = (newSponsorSegmentEndMillis - newSponsorSegmentStartMillis) / 1000;
+            new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
+                    .setTitle(str("morphe_sb_new_segment_confirm_title"))
+                    .setMessage(str("morphe_sb_new_segment_confirm_content",
+                            formatSegmentTime(newSponsorSegmentStartMillis),
+                            formatSegmentTime(newSponsorSegmentEndMillis),
+                            getTimeSavedString(segmentLength)))
+                    .setNegativeButton(android.R.string.no, null)
+                    .setPositiveButton(android.R.string.yes, segmentReadyDialogButtonListener)
+                    .show();
         } catch (Exception ex) {
             Logger.printException(() -> "onPublishClicked failure", ex);
         }

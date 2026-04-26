@@ -1444,6 +1444,12 @@ Ready to submit?"</string>
     <string name="morphe_sb_new_segment_edit_by_hand_title">Edit timing of segment manually</string>
     <string name="morphe_sb_new_segment_edit_by_hand_content">Do you want to edit the timing for the start or end of the segment?</string>
     <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Invalid time given</string>
+    <string name="morphe_sb_new_segment_highlight_title">Submit highlight</string>
+    <string name="morphe_sb_new_segment_highlight_confirm_single">Is the highlight timestamp correct?\n\n%s\n\nIf you\'re not submitting a highlight, tap Cancel and mark the second location</string>
+    <string name="morphe_sb_new_segment_highlight_choose_timestamp">Which timestamp is the highlight?\n\nStart: %1$s\nEnd: %2$s\n\nIf you\'re not submitting a highlight, tap Cancel and preview the segment first</string>
+    <string name="morphe_sb_new_segment_highlight_submit">Submit</string>
+    <string name="morphe_sb_new_segment_highlight_use_start">Use start</string>
+    <string name="morphe_sb_new_segment_highlight_use_end">Use end</string>
     <string name="morphe_sb_stats_title">Stats</string>
     <!-- Shown in the settings preferences, and translations can be any text length. -->
     <string name="morphe_sb_stats_connection_failure">Stats are temporarily not available (API is down)</string>

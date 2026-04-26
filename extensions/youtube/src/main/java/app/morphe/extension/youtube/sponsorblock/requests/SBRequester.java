@@ -163,7 +163,7 @@ public class SBRequester {
         return segments.toArray(new SponsorSegment[0]);
     }
 
-    public static void submitSegments(String videoId, String category,
+    public static void submitSegments(String videoId, String category, String actionType,
                                       long startTime, long endTime, long videoLength) {
         Utils.verifyOffMainThread();
 
@@ -174,7 +174,7 @@ public class SBRequester {
             String duration = String.format(Locale.US, TIME_TEMPLATE, videoLength / 1000f);
 
             HttpURLConnection connection = getConnectionFromRoute(SBRoutes.SUBMIT_SEGMENTS,
-                    privateUserID, videoId, category, start, end, duration);
+                    privateUserID, videoId, category, start, end, duration, actionType);
             final int responseCode = connection.getResponseCode();
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
