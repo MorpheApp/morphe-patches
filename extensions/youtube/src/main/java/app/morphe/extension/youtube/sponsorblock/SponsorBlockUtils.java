@@ -3,6 +3,7 @@ package app.morphe.extension.youtube.sponsorblock;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -11,7 +12,9 @@ import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
+import android.util.Pair;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 import java.lang.ref.WeakReference;
 import java.text.NumberFormat;
@@ -23,6 +26,7 @@ import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour;
@@ -46,22 +50,6 @@ public class SponsorBlockUtils {
     private static long newSponsorSegmentStartMillis = -1;
     private static long newSponsorSegmentEndMillis = -1;
     private static boolean newSponsorSegmentPreviewed;
-    private static final DialogInterface.OnClickListener newSponsorSegmentDialogListener = new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            switch (which) {
-                case DialogInterface.BUTTON_NEGATIVE:
-                    // Start.
-                    newSponsorSegmentStartMillis = newSponsorSegmentDialogShownMillis;
-                    break;
-                case DialogInterface.BUTTON_POSITIVE:
-                    // End.
-                    newSponsorSegmentEndMillis = newSponsorSegmentDialogShownMillis;
-                    break;
-            }
-            dialog.dismiss();
-        }
-    };
     private static SegmentCategory newUserCreatedSegmentCategory;
     private static final DialogInterface.OnClickListener segmentTypeListener = new DialogInterface.OnClickListener() {
         @Override
@@ -85,70 +73,39 @@ public class SponsorBlockUtils {
             }
         }
     };
-    private static final DialogInterface.OnClickListener segmentReadyDialogButtonListener = new DialogInterface.OnClickListener() {
-        @Override
-        public void onClick(DialogInterface dialog, int which) {
-            try {
-                SponsorBlockViewController.hideNewSegmentLayout();
-                Context context = ((AlertDialog) dialog).getContext();
-                dialog.dismiss();
-
-                SegmentCategory[] categories = SegmentCategory.categoriesWithoutHighlights();
-                CharSequence[] titles = new CharSequence[categories.length];
-                for (int i = 0, length = categories.length; i < length; i++) {
-                    titles[i] = categories[i].getTitleWithColorDot();
-                }
-
-                newUserCreatedSegmentCategory = null;
-                new AlertDialog.Builder(context)
-                        .setTitle(str("morphe_sb_new_segment_choose_category"))
-                        .setSingleChoiceItems(titles, -1, segmentTypeListener)
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .setPositiveButton(android.R.string.ok, segmentCategorySelectedDialogListener)
-                        .show()
-                        .getButton(DialogInterface.BUTTON_POSITIVE)
-                        .setEnabled(false);
-            } catch (Exception ex) {
-                Logger.printException(() -> "segmentReadyDialogButtonListener failure", ex);
-            }
-        }
-    };
     private static final DialogInterface.OnClickListener segmentCategorySelectedDialogListener = (dialog, which) -> {
         dialog.dismiss();
         submitNewSegment();
     };
     private static final EditByHandSaveDialogListener editByHandSaveDialogListener = new EditByHandSaveDialogListener();
-    private static final DialogInterface.OnClickListener editByHandDialogListener = (dialog, which) -> {
-        try {
-            Context context = ((AlertDialog) dialog).getContext();
-
-            final boolean isStart = DialogInterface.BUTTON_NEGATIVE == which;
-
-            final EditText textView = new EditText(context);
-            textView.setHint(MANUAL_EDIT_TIME_TEXT_HINT);
-            if (isStart) {
-                if (newSponsorSegmentStartMillis >= 0)
-                    textView.setText(formatSegmentTime(newSponsorSegmentStartMillis));
-            } else {
-                if (newSponsorSegmentEndMillis >= 0)
-                    textView.setText(formatSegmentTime(newSponsorSegmentEndMillis));
-            }
-
-            editByHandSaveDialogListener.settingStart = isStart;
-            editByHandSaveDialogListener.editTextRef = new WeakReference<>(textView);
-            new AlertDialog.Builder(context)
-                    .setTitle(str(isStart ? "morphe_sb_new_segment_time_start" : "morphe_sb_new_segment_time_end"))
-                    .setView(textView)
-                    .setNegativeButton(android.R.string.cancel, null)
-                    .setNeutralButton(str("morphe_sb_new_segment_now"), editByHandSaveDialogListener)
-                    .setPositiveButton(android.R.string.ok, editByHandSaveDialogListener)
-                    .show();
-
-            dialog.dismiss();
-        } catch (Exception ex) {
-            Logger.printException(() -> "editByHandDialogListener failure", ex);
+    private static void showEditByHandInputDialog(boolean isStart, Context context) {
+        final EditText textView = new EditText(context);
+        textView.setHint(MANUAL_EDIT_TIME_TEXT_HINT);
+        if (isStart) {
+            if (newSponsorSegmentStartMillis >= 0)
+                textView.setText(formatSegmentTime(newSponsorSegmentStartMillis));
+        } else {
+            if (newSponsorSegmentEndMillis >= 0)
+                textView.setText(formatSegmentTime(newSponsorSegmentEndMillis));
         }
-    };
+
+        editByHandSaveDialogListener.settingStart = isStart;
+        editByHandSaveDialogListener.editTextRef = new WeakReference<>(textView);
+
+        Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                context,
+                str(isStart ? "morphe_sb_new_segment_time_start" : "morphe_sb_new_segment_time_end"),
+                null,
+                textView,
+                null,
+                () -> editByHandSaveDialogListener.saveTime(false),
+                null,
+                str("morphe_sb_new_segment_now"),
+                () -> editByHandSaveDialogListener.saveTime(true),
+                true
+        );
+        dialogPair.first.show();
+    }
     private static final DialogInterface.OnClickListener segmentVoteClickListener = (dialog, which) -> {
         try {
             final Context context = ((AlertDialog) dialog).getContext();
@@ -248,15 +205,22 @@ public class SponsorBlockUtils {
         try {
             Utils.verifyOnMainThread();
             newSponsorSegmentDialogShownMillis = VideoInformation.getVideoTime();
+            Context context = SponsorBlockViewController.getOverLaysViewGroupContext();
 
-            new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
-                    .setTitle(str("morphe_sb_new_segment_title"))
-                    .setMessage(str("morphe_sb_new_segment_mark_time_as_question",
-                            formatSegmentTime(newSponsorSegmentDialogShownMillis)))
-                    .setNeutralButton(android.R.string.cancel, null)
-                    .setNegativeButton(str("morphe_sb_new_segment_mark_start"), newSponsorSegmentDialogListener)
-                    .setPositiveButton(str("morphe_sb_new_segment_mark_end"), newSponsorSegmentDialogListener)
-                    .show();
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                    context,
+                    str("morphe_sb_new_segment_title"),
+                    str("morphe_sb_new_segment_mark_time_as_question",
+                            formatSegmentTime(newSponsorSegmentDialogShownMillis)),
+                    null,
+                    str("morphe_sb_new_segment_mark_end"),
+                    () -> newSponsorSegmentEndMillis = newSponsorSegmentDialogShownMillis,
+                    null,
+                    str("morphe_sb_new_segment_mark_start"),
+                    () -> newSponsorSegmentStartMillis = newSponsorSegmentDialogShownMillis,
+                    true
+            );
+            dialogPair.first.show();
         } catch (Exception ex) {
             Logger.printException(() -> "onMarkLocationClicked failure", ex);
         }
@@ -265,6 +229,7 @@ public class SponsorBlockUtils {
     public static void onPublishClicked() {
         try {
             Utils.verifyOnMainThread();
+            Context context = SponsorBlockViewController.getOverLaysViewGroupContext();
 
             final boolean hasStart = newSponsorSegmentStartMillis >= 0;
             final boolean hasEnd = newSponsorSegmentEndMillis >= 0;
@@ -273,50 +238,62 @@ public class SponsorBlockUtils {
                 // Neither point marked - offer to submit as highlight using current time,
                 // or cancel to mark a second location first.
                 final long currentTime = VideoInformation.getVideoTime();
-                new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
-                        .setTitle(str("morphe_sb_new_segment_highlight_title"))
-                        .setMessage(str("morphe_sb_new_segment_highlight_confirm_single",
-                                formatSegmentTime(currentTime)))
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .setPositiveButton(str("morphe_sb_new_segment_highlight_submit"), (dialog, which) -> {
+                Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                        context,
+                        str("morphe_sb_new_segment_highlight_title"),
+                        str("morphe_sb_new_segment_highlight_confirm_single",
+                                formatSegmentTime(currentTime)),
+                        null,
+                        str("morphe_sb_new_segment_highlight_submit"),
+                        () -> {
                             newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
                             newSponsorSegmentStartMillis = currentTime;
                             newSponsorSegmentEndMillis = currentTime;
                             submitNewSegment();
-                        })
-                        .show();
+                        },
+                        null, null, null, true
+                );
+                dialogPair.first.show();
                 return;
             }
 
             if (hasStart && !hasEnd) {
                 // Only start marked - offer to submit start as highlight.
-                new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
-                        .setTitle(str("morphe_sb_new_segment_highlight_title"))
-                        .setMessage(str("morphe_sb_new_segment_highlight_confirm_single",
-                                formatSegmentTime(newSponsorSegmentStartMillis)))
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .setPositiveButton(str("morphe_sb_new_segment_highlight_submit"), (dialog, which) -> {
+                Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                        context,
+                        str("morphe_sb_new_segment_highlight_title"),
+                        str("morphe_sb_new_segment_highlight_confirm_single",
+                                formatSegmentTime(newSponsorSegmentStartMillis)),
+                        null,
+                        str("morphe_sb_new_segment_highlight_submit"),
+                        () -> {
                             newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
                             newSponsorSegmentEndMillis = newSponsorSegmentStartMillis;
                             submitNewSegment();
-                        })
-                        .show();
+                        },
+                        null, null, null, true
+                );
+                dialogPair.first.show();
                 return;
             }
 
             if (!hasStart) {
                 // Only end marked - offer to submit end as highlight.
-                new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
-                        .setTitle(str("morphe_sb_new_segment_highlight_title"))
-                        .setMessage(str("morphe_sb_new_segment_highlight_confirm_single",
-                                formatSegmentTime(newSponsorSegmentEndMillis)))
-                        .setNegativeButton(android.R.string.cancel, null)
-                        .setPositiveButton(str("morphe_sb_new_segment_highlight_submit"), (dialog, which) -> {
+                Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                        context,
+                        str("morphe_sb_new_segment_highlight_title"),
+                        str("morphe_sb_new_segment_highlight_confirm_single",
+                                formatSegmentTime(newSponsorSegmentEndMillis)),
+                        null,
+                        str("morphe_sb_new_segment_highlight_submit"),
+                        () -> {
                             newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
                             newSponsorSegmentStartMillis = newSponsorSegmentEndMillis;
                             submitNewSegment();
-                        })
-                        .show();
+                        },
+                        null, null, null, true
+                );
+                dialogPair.first.show();
                 return;
             }
 
@@ -325,40 +302,71 @@ public class SponsorBlockUtils {
                 Utils.showToastShort(str("morphe_sb_new_segment_start_is_before_end"));
                 return;
             }
+
             if (!newSponsorSegmentPreviewed && newSponsorSegmentStartMillis != 0) {
                 // Both points set and not a highlight - require preview first.
                 // But give the user the option to submit as highlight without previewing.
-                new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
-                        .setTitle(str("morphe_sb_new_segment_highlight_title"))
-                        .setMessage(str("morphe_sb_new_segment_highlight_choose_timestamp",
-                                formatSegmentTime(newSponsorSegmentStartMillis),
-                                formatSegmentTime(newSponsorSegmentEndMillis)))
-                        .setNegativeButton(str("morphe_sb_new_segment_highlight_use_start"), (dialog, which) -> {
+                final long capturedStart = newSponsorSegmentStartMillis;
+                final long capturedEnd = newSponsorSegmentEndMillis;
+                Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                        context,
+                        str("morphe_sb_new_segment_highlight_title"),
+                        str("morphe_sb_new_segment_highlight_choose_timestamp",
+                                formatSegmentTime(capturedStart),
+                                formatSegmentTime(capturedEnd)),
+                        null,
+                        str("morphe_sb_new_segment_highlight_use_end"),
+                        () -> {
                             newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
-                            newSponsorSegmentEndMillis = newSponsorSegmentStartMillis;
+                            newSponsorSegmentStartMillis = capturedEnd;
+                            newSponsorSegmentEndMillis = capturedEnd;
                             submitNewSegment();
-                        })
-                        .setNeutralButton(android.R.string.cancel, null)
-                        .setPositiveButton(str("morphe_sb_new_segment_highlight_use_end"), (dialog, which) -> {
+                        },
+                        null,
+                        str("morphe_sb_new_segment_highlight_use_start"),
+                        () -> {
                             newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
-                            newSponsorSegmentStartMillis = newSponsorSegmentEndMillis;
+                            newSponsorSegmentStartMillis = capturedStart;
+                            newSponsorSegmentEndMillis = capturedStart;
                             submitNewSegment();
-                        })
-                        .show();
+                        },
+                        true
+                );
+                dialogPair.first.show();
                 return;
             }
 
             // Normal segment submit flow - show confirm then category picker.
             final long segmentLength = (newSponsorSegmentEndMillis - newSponsorSegmentStartMillis) / 1000;
-            new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
-                    .setTitle(str("morphe_sb_new_segment_confirm_title"))
-                    .setMessage(str("morphe_sb_new_segment_confirm_content",
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                    context,
+                    str("morphe_sb_new_segment_confirm_title"),
+                    str("morphe_sb_new_segment_confirm_content",
                             formatSegmentTime(newSponsorSegmentStartMillis),
                             formatSegmentTime(newSponsorSegmentEndMillis),
-                            getTimeSavedString(segmentLength)))
-                    .setNegativeButton(android.R.string.no, null)
-                    .setPositiveButton(android.R.string.yes, segmentReadyDialogButtonListener)
-                    .show();
+                            getTimeSavedString(segmentLength)),
+                    null,
+                    str("morphe_sb_new_segment_highlight_submit"),
+                    () -> {
+                        SponsorBlockViewController.hideNewSegmentLayout();
+                        SegmentCategory[] categories = SegmentCategory.categoriesWithoutHighlights();
+                        CharSequence[] titles = new CharSequence[categories.length];
+                        for (int i = 0, length = categories.length; i < length; i++) {
+                            titles[i] = categories[i].getTitleWithColorDot();
+                        }
+                        newUserCreatedSegmentCategory = null;
+                        new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
+                                .setTitle(str("morphe_sb_new_segment_choose_category"))
+                                .setSingleChoiceItems(titles, -1, segmentTypeListener)
+                                .setNegativeButton(android.R.string.cancel, null)
+                                .setPositiveButton(android.R.string.ok, segmentCategorySelectedDialogListener)
+                                .show()
+                                .getButton(DialogInterface.BUTTON_POSITIVE)
+                                .setEnabled(false);
+                    },
+                    null, null, null, true
+            );
+            dialogPair.first.show();
         } catch (Exception ex) {
             Logger.printException(() -> "onPublishClicked failure", ex);
         }
@@ -467,25 +475,38 @@ public class SponsorBlockUtils {
     }
 
     public static void showErrorDialog(String dialogMessage) {
-        Utils.runOnMainThreadNowOrLater(() ->
-                new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
-                        .setMessage(dialogMessage)
-                        .setPositiveButton(android.R.string.ok, null)
-                        .setCancelable(false)
-                        .show()
-        );
+        Utils.runOnMainThreadNowOrLater(() -> {
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                    SponsorBlockViewController.getOverLaysViewGroupContext(),
+                    null,
+                    dialogMessage,
+                    null,
+                    null,
+                    () -> {},
+                    null, null, null, true
+            );
+            dialogPair.first.setCancelable(false);
+            dialogPair.first.show();
+        });
     }
 
     public static void onEditByHandClicked() {
         try {
             Utils.verifyOnMainThread();
-            new AlertDialog.Builder(SponsorBlockViewController.getOverLaysViewGroupContext())
-                    .setTitle(str("morphe_sb_new_segment_edit_by_hand_title"))
-                    .setMessage(str("morphe_sb_new_segment_edit_by_hand_content"))
-                    .setNeutralButton(android.R.string.cancel, null)
-                    .setNegativeButton(str("morphe_sb_new_segment_mark_start"), editByHandDialogListener)
-                    .setPositiveButton(str("morphe_sb_new_segment_mark_end"), editByHandDialogListener)
-                    .show();
+            Context context = SponsorBlockViewController.getOverLaysViewGroupContext();
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
+                    context,
+                    str("morphe_sb_new_segment_edit_by_hand_title"),
+                    str("morphe_sb_new_segment_edit_by_hand_content"),
+                    null,
+                    str("morphe_sb_new_segment_mark_end"),
+                    () -> showEditByHandInputDialog(false, context),
+                    null,
+                    str("morphe_sb_new_segment_mark_start"),
+                    () -> showEditByHandInputDialog(true, context),
+                    true
+            );
+            dialogPair.first.show();
         } catch (Exception ex) {
             Logger.printException(() -> "onEditByHandClicked failure", ex);
         }
@@ -582,12 +603,16 @@ public class SponsorBlockUtils {
 
         @Override
         public void onClick(DialogInterface dialog, int which) {
+            saveTime(which == DialogInterface.BUTTON_NEUTRAL);
+        }
+
+        public void saveTime(boolean useCurrentTime) {
             try {
                 final EditText editText = editTextRef.get();
                 if (editText == null) return;
 
                 final long time;
-                if (which == DialogInterface.BUTTON_NEUTRAL) {
+                if (useCurrentTime) {
                     time = VideoInformation.getVideoTime();
                 } else {
                     time = parseSegmentTime(editText.getText().toString());
@@ -603,10 +628,9 @@ public class SponsorBlockUtils {
                     newSponsorSegmentEndMillis = time;
                 }
 
-                if (which == DialogInterface.BUTTON_NEUTRAL)
-                    editByHandDialogListener.onClick(dialog, settingStart ?
-                            DialogInterface.BUTTON_NEGATIVE :
-                            DialogInterface.BUTTON_POSITIVE);
+                if (useCurrentTime) {
+                    showEditByHandInputDialog(settingStart, editText.getContext());
+                }
             } catch (Exception ex) {
                 Logger.printException(() -> "EditByHandSaveDialogListener failure", ex);
             }
