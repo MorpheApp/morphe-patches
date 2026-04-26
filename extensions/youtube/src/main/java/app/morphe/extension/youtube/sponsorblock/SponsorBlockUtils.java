@@ -251,7 +251,7 @@ public class SponsorBlockUtils {
                             newSponsorSegmentEndMillis = currentTime;
                             submitNewSegment();
                         },
-                        null, null, null, true
+                        () -> {}, null, null, true
                 );
                 dialogPair.first.show();
                 return;
@@ -271,7 +271,7 @@ public class SponsorBlockUtils {
                             newSponsorSegmentEndMillis = newSponsorSegmentStartMillis;
                             submitNewSegment();
                         },
-                        null, null, null, true
+                        () -> {}, null, null, true
                 );
                 dialogPair.first.show();
                 return;
@@ -291,7 +291,7 @@ public class SponsorBlockUtils {
                             newSponsorSegmentStartMillis = newSponsorSegmentEndMillis;
                             submitNewSegment();
                         },
-                        null, null, null, true
+                        () -> {}, null, null, true
                 );
                 dialogPair.first.show();
                 return;
