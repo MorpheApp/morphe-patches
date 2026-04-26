@@ -1,11 +1,19 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.shortsplayer
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.methodCall
+import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
@@ -20,11 +28,13 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
-import app.morphe.util.registersUsed
+import app.morphe.util.indexOfFirstInstructionReversed
+import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.BuilderOffsetInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -59,14 +69,12 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                     "setMainActivity(Landroid/app/Activity;)V",
         )
 
-        val playbackStartVideoIdMethodName : String
-        PlaybackStartDescriptorToStringFingerprint.let {
-            playbackStartVideoIdMethodName = it.instructionMatches[1]
-                .getInstruction<ReferenceInstruction>()
-                .getReference<MethodReference>()!!
-                .getMutableMethod()
-                .name
-        }
+        val playbackStartVideoIdMethodName = PlaybackStartDescriptorToStringFingerprint
+            .instructionMatches[1]
+            .getInstruction<ReferenceInstruction>()
+            .getReference<MethodReference>()!!
+            .getMutableMethod()
+            .name
 
         ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
             0,
@@ -90,76 +98,48 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         // Note: this patch must be applied on the 'if checks' outermost to the finish() call
         // to avoid blocking the player minimization code after pressing the back button.
         ExitVideoPlayerFingerprint.method.apply {
-            var isTopFinishInvoke = false
-            val lastFinishCallOpcodeMatchFor21xx = Fingerprint(
-                filters = OpcodesFilter.opcodesToFilters(
-                    Opcode.IF_NEZ,
-                    Opcode.INVOKE_INTERFACE,
-                    Opcode.MOVE_RESULT_OBJECT,
-                    Opcode.CHECK_CAST,
-                    Opcode.IGET_OBJECT,
-                    Opcode.IGET_OBJECT,
-                    Opcode.SGET_OBJECT,
-                    Opcode.IF_EQ,
-                    Opcode.INVOKE_INTERFACE
-                )
-            ).match(this).instructionMatches.firstOrNull()
-            val patchMap = mutableMapOf<Int, Int>()
-            fun validateInstruction(index: Int): Int {
-                val targetInstruction = getInstruction(index)
+            val expectedChanges = 2
+            var changesMade = 0
+            var finishIndex = this.instructions.size
 
-                if (targetInstruction.opcode == Opcode.IF_EQZ || targetInstruction.opcode == Opcode.IF_NEZ) {
-                    return targetInstruction.registersUsed[0]
+            while (true) {
+                finishIndex = indexOfFirstInstructionReversed(finishIndex - 1) {
+                    val reference = getReference<MethodReference>()
+                    reference?.name == "finish" && reference.parameterTypes.isEmpty()
+                }
+                if (finishIndex < 0) {
+                    break
                 }
 
-                return -1
-            }
-
-            findInstructionIndicesReversedOrThrow(
-                methodCall(name = "finish", parameters = listOf())
-            ).forEach { index ->
-                var targetInstructionIndex = -1
-                var targetInstructionRegister = -1
-
-                // Iterate over previous 2 indexes, to detect the target conditional instruction to
-                // patch, starting from the first (with top-to-bottom sorting) finish() call.
-                for (currentTargetSubIndex in 1..2) {
-                    targetInstructionIndex = index - currentTargetSubIndex
-                    targetInstructionRegister = validateInstruction(targetInstructionIndex)
-                    if (targetInstructionRegister > -1) {
-                        break
+                val finishLabels = getInstruction(finishIndex).location.labels
+                val equalsIndex = if (finishLabels.isNotEmpty()) {
+                    // Find conditional instruction that jumps to this instruction.
+                    indexOfFirstInstructionReversedOrThrow(finishIndex - 1) {
+                        if (this !is BuilderOffsetInstruction) {
+                            return@indexOfFirstInstructionReversedOrThrow false
+                        }
+                        val labels = this.target.location.labels
+                        labels.any { finishLabels.contains(it) }
+                    }
+                } else {
+                    indexOfFirstInstructionReversedOrThrow(finishIndex) {
+                        opcode == Opcode.IF_EQZ || opcode == Opcode.IF_NEZ
                     }
                 }
 
-                // If previous attempts fail to find a conditional instruction before the last (with top-to-bottom sorting)
-                // finish() call (mean that you're targeting version 21.xx), then this further attempt detect if a
-                // return-void preceding the instruction and will apply a different searching logic.
-                if (targetInstructionRegister == -1 && !isTopFinishInvoke && lastFinishCallOpcodeMatchFor21xx != null) {
-                    targetInstructionIndex = lastFinishCallOpcodeMatchFor21xx.index
-                    targetInstructionRegister = validateInstruction(targetInstructionIndex)
-                }
-
-                if (targetInstructionRegister > -1) {
-                    patchMap[targetInstructionIndex] = targetInstructionRegister
-
-                    isTopFinishInvoke = true
-                }
+                val register = getInstruction<OneRegisterInstruction>(equalsIndex).registerA
+                addInstructionsAtControlFlowLabel(
+                    equalsIndex,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->overrideBackPressToExit(Z)Z
+                        move-result v$register      
+                    """
+                )
+                changesMade++
             }
 
-            // Not all versions can be always patched with a reversed code indices. Then the following
-            // code will check which patch have the lower index (to apply it as last).
-            if (patchMap.count() == 2) {
-                patchMap.toSortedMap(compareByDescending { it }).forEach { (index, register) ->
-                    addInstructionsAtControlFlowLabel(
-                        index,
-                        """
-                            invoke-static { v$register }, $EXTENSION_CLASS->overrideBackPressToExit(Z)Z
-                            move-result v$register      
-                        """
-                    )
-                }
-            } else {
-                throw PatchException("Failed: not all finish() invokes has been patched")
+            if (changesMade != expectedChanges) {
+                throw PatchException("Expected $expectedChanges changes but instead found: $changesMade")
             }
         }
     }
