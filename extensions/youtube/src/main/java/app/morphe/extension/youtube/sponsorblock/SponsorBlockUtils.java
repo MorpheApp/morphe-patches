@@ -19,6 +19,8 @@ import android.widget.LinearLayout;
 import java.lang.ref.WeakReference;
 import java.text.NumberFormat;
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
@@ -106,17 +108,8 @@ public class SponsorBlockUtils {
         );
         dialogPair.first.show();
     }
-    private static final DialogInterface.OnClickListener segmentVoteClickListener = (dialog, which) -> {
+    private static void onSegmentVoteClicked(Context context, SponsorSegment segment) {
         try {
-            final Context context = ((AlertDialog) dialog).getContext();
-            SponsorSegment[] segments = SegmentPlaybackController.getSegments();
-            if (segments == null || segments.length == 0) {
-                // should never be reached
-                Logger.printException(() -> "Segment is no longer available on the client");
-                return;
-            }
-            SponsorSegment segment = segments[which];
-
             SegmentVote[] voteOptions = (segment.category == SegmentCategory.HIGHLIGHT)
                     ? SegmentVote.voteTypesWithoutCategoryChange // Highlight segments cannot change category.
                     : SegmentVote.values();
@@ -149,9 +142,9 @@ public class SponsorBlockUtils {
                 }
             }).show();
         } catch (Exception ex) {
-            Logger.printException(() -> "segmentVoteClickListener failure", ex);
+            Logger.printException(() -> "onSegmentVoteClicked failure", ex);
         }
-    };
+    }
 
     private SponsorBlockUtils() {
     }
@@ -387,9 +380,9 @@ public class SponsorBlockUtils {
             }
 
             final int numberOfSegments = segments.length;
-            CharSequence[] titles = new CharSequence[numberOfSegments];
-            for (int i = 0; i < numberOfSegments; i++) {
-                SponsorSegment segment = segments[i];
+            List<CharSequence> titleList = new ArrayList<>(numberOfSegments);
+            List<SponsorSegment> segmentList = new ArrayList<>(numberOfSegments);
+            for (SponsorSegment segment : segments) {
                 if (segment.category == SegmentCategory.UNSUBMITTED) {
                     continue;
                 }
@@ -408,18 +401,23 @@ public class SponsorBlockUtils {
                     spannableBuilder.append(toFromString);
                 }
 
-                if (i + 1 != numberOfSegments) {
-                    // Prevents trailing new line after last segment.
-                    spannableBuilder.append('\n');
-                }
-
                 spannableBuilder.setSpan(new StyleSpan(android.graphics.Typeface.BOLD),
                         0, spannableBuilder.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-                titles[i] = spannableBuilder;
+                titleList.add(spannableBuilder);
+                segmentList.add(segment);
             }
 
-            new AlertDialog.Builder(context).setItems(titles, segmentVoteClickListener).show();
+            if (titleList.isEmpty()) {
+                Utils.showToastShort(str("morphe_sb_vote_no_segments"));
+                return;
+            }
+
+            CharSequence[] titles = titleList.toArray(new CharSequence[0]);
+            SponsorSegment[] filteredSegments = segmentList.toArray(new SponsorSegment[0]);
+
+            new AlertDialog.Builder(context).setItems(titles, (dialog, which) ->
+                    onSegmentVoteClicked(context, filteredSegments[which])).show();
         } catch (Exception ex) {
             Logger.printException(() -> "onVotingClicked failure", ex);
         }
