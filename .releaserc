@@ -24,6 +24,12 @@
         }
       }
     ],
+    [
+      "@semantic-release/exec",
+      {
+        "successCmd": "python3 .github/scripts/generate_patches_readme.py ${nextRelease.version} patches-list.json README.md"
+      }
+    ],
     "gradle-semantic-release-plugin",
     [
       "@semantic-release/exec",
@@ -38,7 +44,8 @@
           "CHANGELOG.md",
           "gradle.properties",
           "patches-bundle.json",
-          "patches-list.json"
+          "patches-list.json",
+          "README.md"
         ],
         "message": "chore: Release v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
       }

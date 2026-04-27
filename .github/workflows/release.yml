@@ -51,19 +51,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Update README patches section
-        if: steps.release.outputs.new_release_published == 'true'
-        run: |
-          python3 .github/scripts/generate_patches_readme.py \
-            ${{ github.ref_name }} \
-            patches-list.json \
-            README.md
-          git config --local user.name "github-actions[bot]"
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add README.md
-          git diff --cached --quiet || git commit -m "docs: Update patches list for v${{ steps.release.outputs.new_release_version }}"
-          git push
-
       - name: Attest
         if: steps.release.outputs.new_release_published == 'true'
         uses: actions/attest-build-provenance@v3
