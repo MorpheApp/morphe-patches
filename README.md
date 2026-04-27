@@ -142,17 +142,6 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Force original audio](#force-original-audio) | Adds an option to always use the original audio track. |  |
 | [GmsCore support](#gmscore-support) | Allows the app to work without root by using a different package name when patched using a GmsCore instead of Google Play Services. |  |
 | [Hide ads](#hide-ads) | Adds options to hide ads such as the fullscreen Premium popup and "Get Music Premium" label. |  |
-| [Hide buttons](#hide-buttons) | Adds options to hide the cast, history, notification, and search buttons. |  |
-| [Hide category bar](#hide-category-bar) | Adds an option to hide the category bar at the top of the homepage. |  |
-| [Hide music video ads](#hide-music-video-ads) | Adds an option to hide ads that appear while listening to or streaming music videos, podcasts, or songs. |  |
-| [Miniplayer previous and next buttons](#miniplayer-previous-and-next-buttons) | Adds options to show previous and next track buttons in the miniplayer. |  |
-| [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons. |  |
-| [Permanent repeat](#permanent-repeat) | Adds an option to always repeat even if the playlist ends or another track is played. |  |
-| [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
-| [Sanitize sharing links](#sanitize-sharing-links) | Removes the tracking query parameters from shared links. |  |
-| [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
-| [Theme](#theme) | Adds options for theming and applies a custom background theme (dark background theme defaults to pure black). | • Dark theme background color |
-| [Track crossfade](#track-crossfade) | Adds a true dual-player crossfade between consecutive tracks. This patch currently requires YouTube 8.x |  |
 
 </details>
 
@@ -177,12 +166,6 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Hide navigation buttons](#hide-navigation-buttons) | Adds options to hide buttons in the navigation bar. |  |
 | [Hide recommended communities shelf](#hide-recommended-communities-shelf) | Adds an option to hide the recommended communities shelves in subreddits. |  |
 | [Hide sidebar components](#hide-sidebar-components) | Adds options to hide the sidebar components. |  |
-| [Open links directly](#open-links-directly) | Adds an option to skip over redirection URLs in external links. |  |
-| [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app-browser. |  |
-| [Remove subreddit dialog](#remove-subreddit-dialog) | Adds options to remove the NSFW community warning and notifications suggestion dialogs by dismissing them automatically. |  |
-| [Sanitize sharing links](#sanitize-sharing-links) | Adds an option to sanitize sharing links by removing tracking query parameters. |  |
-| [Show view count](#show-view-count) | Adds an option to show the view count of Posts. |  |
-| [Spoof signature](#spoof-signature) | Spoofs the signature of the app to fix notification issues. |  |
 
 </details>
 
@@ -194,7 +177,6 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 |----------|----------------|-----------|
 | [Change package name](#change-package-name) | Appends ".morphe" to the package name by default. Changing the package name of the app can lead to unexpected issues. | • Package name<br>• Update permissions<br>• Update providers<br>• Update providers strings |
 | [Disable Play Store updates](#disable-play-store-updates) | Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps. |  |
-| [Override certificate pinning](#override-certificate-pinning) | Overrides certificate pinning, allowing to inspect traffic via a proxy. |  |
 
 </details>
 
