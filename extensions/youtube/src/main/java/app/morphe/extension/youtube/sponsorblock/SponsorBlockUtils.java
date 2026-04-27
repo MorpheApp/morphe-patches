@@ -366,7 +366,7 @@ public class SponsorBlockUtils {
                                 .getButton(DialogInterface.BUTTON_POSITIVE)
                                 .setEnabled(false);
                     },
-                    null, null, null, true
+                    () -> {}, null, null, true
             );
             dialogPair.first.show();
         } catch (Exception ex) {
