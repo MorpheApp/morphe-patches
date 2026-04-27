@@ -248,6 +248,7 @@ public class SBRequester {
                 switch (responseCode) {
                     case HTTP_STATUS_CODE_SUCCESS:
                         Logger.printDebug(() -> "Vote success for segment: " + segment);
+                        Utils.showToastShort(str("morphe_sb_vote_submitted"));
                         return;
                     case 403:
                         userMessage = str("morphe_sb_vote_failed_forbidden",
