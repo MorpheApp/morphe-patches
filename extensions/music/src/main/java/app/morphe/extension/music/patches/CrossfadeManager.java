@@ -225,7 +225,6 @@ public class CrossfadeManager {
     private static final int READY_TIMEOUT_MS = 10000;
     private static final int STATE_READY = 3;
     private static final int REASON_DIRECTOR_RESET = 5;
-    private static final long AUTO_ADVANCE_THRESHOLD_MS = 5000;
     private static final long MONITOR_POLL_MS = 100;
     // Extra lead time to absorb poll granularity + new-player READY latency (~120-200ms typical).
     // Ensures the fade-out completes before the old track's audio content runs out.
@@ -363,26 +362,10 @@ public class CrossfadeManager {
                 return false;
             }
 
-            boolean isAutoAdvance = false;
-            try {
-                long pos = currentExo.patch_getCurrentPosition();
-                long duration = currentExo.patch_getDuration();
-                long remaining = (duration > 0) ? duration - pos : Long.MAX_VALUE;
-                isAutoAdvance = duration > 0 && remaining >= 0
-                        && remaining < AUTO_ADVANCE_THRESHOLD_MS;
-                final boolean finalIsAutoAdvance = isAutoAdvance;
-                Logger.printDebug(() -> "stopVideo(5): pos=" + pos + "ms dur=" + duration
-                        + "ms remaining=" + remaining + "ms → "
-                        + (finalIsAutoAdvance ? "AUTO-ADVANCE" : "MANUAL SKIP"));
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Could not read position/duration, assuming manual skip", ex);
-            }
-
-            if (isAutoAdvance && !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
-                Logger.printDebug(() -> "stopVideo(5): skip — auto-advance crossfade disabled");
-                return false;
-            }
-            if (!isAutoAdvance && !Settings.CROSSFADE_ON_SKIP.get()) {
+            // onBeforeStopVideo is always a manual skip — true auto-advance is handled
+            // exclusively by onBeforePlayNext. The position-based isAutoAdvance heuristic
+            // caused CROSSFADE_ON_SKIP to be bypassed for skips near the end of a track.
+            if (!Settings.CROSSFADE_ON_SKIP.get()) {
                 Logger.printDebug(() -> "stopVideo(5): skip — manual skip crossfade disabled");
                 return false;
             }
@@ -598,7 +581,7 @@ public class CrossfadeManager {
         tryAttachLongPressHandler();
 
         if (sessionPaused.get() || getCrossfadeDurationMs() <= 0
-                || crossfadeInProgress || !activityRunning) {
+                || crossfadeInProgress) {
             return false;
         }
 
@@ -874,7 +857,7 @@ public class CrossfadeManager {
         autoAdvanceMonitorRunnable = new Runnable() {
             @Override
             public void run() {
-                if (sessionPaused.get() || !activityRunning
+                if (sessionPaused.get()
                         || !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()
                         || crossfadeInProgress) {
                     return;
@@ -1358,7 +1341,8 @@ public class CrossfadeManager {
         if (!CROSSFADE_ENABLED) return;
 
         activityRunning = false;
-        stopAutoAdvanceMonitor();
+        // Do not stop the auto-advance monitor here — crossfade must continue
+        // working when the screen is locked or the player is minimized (#1311).
         if (crossfadeInProgress) {
             Logger.printDebug(() -> "onActivityStop: aborting crossfade");
             abortCrossfadeNow();
