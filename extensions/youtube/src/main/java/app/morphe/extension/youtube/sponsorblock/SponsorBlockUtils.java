@@ -36,6 +36,7 @@ import app.morphe.extension.youtube.sponsorblock.objects.SegmentCategory;
 import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
 import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment.SegmentVote;
 import app.morphe.extension.youtube.sponsorblock.requests.SBRequester;
+import app.morphe.extension.youtube.sponsorblock.requests.SBRequester.SBSubmitSegmentAction;
 import app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockViewController;
 
 /**
@@ -168,6 +169,7 @@ public class SponsorBlockUtils {
             final long videoLength = VideoInformation.getVideoLength();
             final SegmentCategory segmentCategory = newUserCreatedSegmentCategory;
             final boolean isHighlight = segmentCategory == SegmentCategory.HIGHLIGHT;
+            SBSubmitSegmentAction submitType = isHighlight ? SBSubmitSegmentAction.HIGHLIGHT : SBSubmitSegmentAction.SKIP;
 
             if (start < 0 || end < 0 || videoLength <= 0 || videoId.isEmpty() || segmentCategory == null) {
                 Logger.printException(() -> "invalid parameters");
@@ -178,12 +180,10 @@ public class SponsorBlockUtils {
                 return;
             }
 
-            final String actionType = isHighlight ? "poi" : "skip";
-
             clearUnsubmittedSegmentTimes();
             Utils.runOnBackgroundThread(() -> {
                 try {
-                    SBRequester.submitSegments(videoId, segmentCategory.keyValue, actionType, start, end, videoLength);
+                    SBRequester.submitSegments(videoId, segmentCategory, submitType, start, end, videoLength);
                     SegmentPlaybackController.executeDownloadSegments(videoId);
                 } catch (Exception ex) {
                     Logger.printException(() -> "submitNewSegment failure", ex);
