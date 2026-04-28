@@ -238,7 +238,7 @@ public class SponsorBlockUtils {
                 Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                         context,
                         str("morphe_sb_new_segment_highlight_title"),
-                        str("morphe_sb_new_segment_highlight_confirm_single",
+                        str("morphe_sb_new_segment_highlight_content",
                                 formatSegmentTime(newSponsorSegmentStartMillis)),
                         null,
                         str("morphe_sb_new_segment_highlight_submit"),
@@ -274,7 +274,7 @@ public class SponsorBlockUtils {
                             formatSegmentTime(newSponsorSegmentEndMillis),
                             getTimeSavedString(segmentLength)),
                     null,
-                    str("morphe_sb_new_segment_submit"),
+                    str("morphe_sb_new_segment_confirm_submit"),
                     () -> {
                         SponsorBlockViewController.hideNewSegmentLayout();
                         SegmentCategory[] categories = SegmentCategory.categoriesWithoutUnsubmitted();
