@@ -144,7 +144,7 @@ public final class VideoInformation {
      *
      * @param mdxPlayerDirector MDX player director object (casting mode).
      */
-    public static void initializeMDX(@NonNull PlaybackController mdxPlayerDirector) {
+    public static void initializeMDX(PlaybackController mdxPlayerDirector) {
         try {
             mdxPlayerDirectorRef = new WeakReference<>(Objects.requireNonNull(mdxPlayerDirector));
         } catch (Exception ex) {
@@ -436,26 +436,42 @@ public final class VideoInformation {
     }
 
     /**
-     * Playback time of the current video playing.  Includes Shorts.
-     * <p>
-     * Value will lag behind the actual playback time by a variable amount based on the playback speed.
-     * <p>
-     * If playback speed is 2.0x, this value may be up to 2000ms behind the actual playback time.
-     * If playback speed is 1.0x, this value may be up to 1000ms behind the actual playback time.
-     * If playback speed is 0.5x, this value may be up to 500ms behind the actual playback time.
-     * Etc.
+     * @return The current non casting player time. Value is zero if casting.
+     */
+    private static long getPlayerVideoTime() {
+        PlaybackController controller = playerControllerRef.get();
+        return controller != null
+                ? controller.patch_getVideoTime()
+                : -1;
+    }
+
+    /**
+     * @return The current casting player time. Value is zero if not casting.
+     */
+    private static long getMdxVideoTime() {
+        PlaybackController controller = mdxPlayerDirectorRef.get();
+        return controller != null
+                ? controller.patch_getVideoTime()
+                : -1;
+    }
+
+    /**
+     * Playback time of the current video playing. Includes Shorts.
+     * If casting then the time is always rounded down to the nearest whole second.
      *
-     * @return The time of the video in milliseconds. -1 if not set yet.
+     * @return The time of the video in milliseconds, or -1 if not the player is not available.
      */
     public static long getVideoTime() {
-        PlaybackController controller = playerControllerRef.get();
-        if (controller == null) {
-            controller = mdxPlayerDirectorRef.get();
-            if (controller == null) {
-                return -1;
-            }
+        final long playerTime = getPlayerVideoTime();
+        // If time is zero, then playback may be casting.
+        if (playerTime > 0) {
+            return playerTime;
         }
-        return controller.patch_getVideoTime();
+
+        final long mdxTime = getMdxVideoTime();
+        return mdxTime >= 0
+                ? mdxTime
+                : playerTime;
     }
 
     /**
