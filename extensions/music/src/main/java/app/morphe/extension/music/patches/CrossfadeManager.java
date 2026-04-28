@@ -1516,6 +1516,7 @@ public class CrossfadeManager {
 
     private static Runnable pendingLongPress;
     private static volatile boolean longPressHandled = false;
+    private static Runnable longPressAttachRetry;
 
     private static void tryAttachLongPressHandler() {
         if (!isSessionControlEnabled()) return;
@@ -1530,55 +1531,103 @@ public class CrossfadeManager {
         }
         if (allAlive && !longPressRefs.isEmpty()) return;
 
-        mainHandler.post(() -> {
-            try {
-                Activity activity = Utils.getActivity();
-                if (activity == null || activity.getWindow() == null) return;
+        // Cancel any pending retry before scheduling a fresh attempt.
+        if (longPressAttachRetry != null) {
+            mainHandler.removeCallbacks(longPressAttachRetry);
+        }
+        longPressAttachRetry = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Activity activity = Utils.getActivity();
+                    if (activity == null || activity.getWindow() == null) return;
 
-                View decorView = activity.getWindow().getDecorView();
-                Resources res = activity.getResources();
-                String pkg = activity.getPackageName();
+                    Resources res = activity.getResources();
+                    String pkg = activity.getPackageName();
 
-                List<View> allButtons = new ArrayList<>();
-                for (String idName : SHUFFLE_IDS) {
-                    @SuppressLint("DiscouragedApi")
-                    int id = res.getIdentifier(idName, "id", pkg);
-                    if (id == 0) {
-                        Logger.printDebug(() -> "  shuffle id '" + idName + "' → not found in resources");
-                        continue;
+                    // Collect all root views across every open window (main activity +
+                    // any BottomSheetDialogs or overlays). The queue panel opens in its
+                    // own Window, so activity.getWindow().getDecorView() alone misses it.
+                    List<View> roots = getAllWindowRoots(activity);
+
+                    List<View> allButtons = new ArrayList<>();
+                    for (String idName : SHUFFLE_IDS) {
+                        @SuppressLint("DiscouragedApi")
+                        int id = res.getIdentifier(idName, "id", pkg);
+                        if (id == 0) {
+                            Logger.printDebug(() -> "  shuffle id '" + idName + "' → not found in resources");
+                            continue;
+                        }
+                        for (View root : roots) {
+                            List<View> matched = new ArrayList<>();
+                            findAllViewsById(root, id, matched);
+                            for (View v : matched) {
+                                Logger.printDebug(() -> "  shuffle id '" + idName + "' → "
+                                        + v.getClass().getSimpleName()
+                                        + " vis=" + v.getVisibility()
+                                        + " attached=" + v.isAttachedToWindow()
+                                        + " parent=" + (v.getParent() != null
+                                            ? v.getParent().getClass().getSimpleName() : "null"));
+                                if (v.isAttachedToWindow()) {
+                                    allButtons.add(v);
+                                }
+                            }
+                        }
                     }
-                    List<View> matched = new ArrayList<>();
-                    findAllViewsById(decorView, id, matched);
-                    for (View v : matched) {
-                        Logger.printDebug(() -> "  shuffle id '" + idName + "' → "
-                                + v.getClass().getSimpleName()
-                                + " vis=" + v.getVisibility()
-                                + " attached=" + v.isAttachedToWindow()
-                                + " parent=" + (v.getParent() != null
-                                    ? v.getParent().getClass().getSimpleName() : "null"));
+
+                    Logger.printDebug(() -> "Found " + allButtons.size()
+                            + " attached shuffle button instances");
+
+                    if (allButtons.isEmpty()) {
+                        // No attached buttons found — retry in 500ms in case the
+                        // queue panel is still opening or the view hasn't attached yet.
+                        mainHandler.postDelayed(this, 500);
+                        return;
                     }
-                    allButtons.addAll(matched);
+
+                    longPressRefs.clear();
+                    longPressAttachRetry = null;
+
+                    for (View shuffleBtn : allButtons) {
+                        attachTouchLongPress(shuffleBtn);
+                        longPressRefs.add(new WeakReference<>(shuffleBtn));
+
+                        View parent = (View) shuffleBtn.getParent();
+                        if (parent != null && parent.getParent() != null) {
+                            attachTouchLongPress(parent);
+                            longPressRefs.add(new WeakReference<>(parent));
+                        }
+                    }
+                } catch (Exception ex) {
+                    Logger.printDebug(() -> "Long-press attach skipped", ex);
                 }
-
-                Logger.printDebug(() -> "Found " + allButtons.size()
-                        + " shuffle button instances");
-
-                longPressRefs.clear();
-
-                for (View shuffleBtn : allButtons) {
-                    attachTouchLongPress(shuffleBtn);
-                    longPressRefs.add(new WeakReference<>(shuffleBtn));
-
-                    View parent = (View) shuffleBtn.getParent();
-                    if (parent != null && parent != decorView) {
-                        attachTouchLongPress(parent);
-                        longPressRefs.add(new WeakReference<>(parent));
-                    }
-                }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Long-press attach skipped", ex);
             }
-        });
+        };
+        mainHandler.post(longPressAttachRetry);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<View> getAllWindowRoots(Activity activity) {
+        List<View> roots = new ArrayList<>();
+        // Always include the main activity window.
+        if (activity.getWindow() != null) {
+            roots.add(activity.getWindow().getDecorView());
+        }
+        try {
+            // WindowManagerGlobal.mViews holds the root view of every open Window
+            // (dialogs, bottom sheets, etc.) in this process.
+            Class<?> wmg = Class.forName("android.view.WindowManagerGlobal");
+            Object instance = wmg.getMethod("getInstance").invoke(null);
+            java.lang.reflect.Field mViews = wmg.getDeclaredField("mViews");
+            mViews.setAccessible(true);
+            List<View> allViews = (List<View>) mViews.get(instance);
+            if (allViews != null) {
+                roots.addAll(allViews);
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "getAllWindowRoots: reflection failed", ex);
+        }
+        return roots;
     }
 
     private static void findAllViewsById(View root, int id,
