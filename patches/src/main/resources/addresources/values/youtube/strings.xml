@@ -35,6 +35,9 @@ Second \"item\" text"</string>
     <string name="morphe_restore_old_settings_menus_summary_off">Old settings menus are not shown</string>
 
     <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+    <string name="morphe_remove_background_playback_restrictions_title">Remove background play restrictions</string>
+    <string name="morphe_remove_background_playback_restrictions_summary_on">Background playback is unrestricted</string>
+    <string name="morphe_remove_background_playback_restrictions_summary_off">Background playback is restricted</string>
     <string name="morphe_shorts_disable_background_playback_title">Disable Shorts background play</string>
     <string name="morphe_shorts_disable_background_playback_summary_on">Shorts background play is disabled</string>
     <string name="morphe_shorts_disable_background_playback_summary_off">Shorts background play is enabled</string>
