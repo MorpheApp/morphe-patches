@@ -128,12 +128,17 @@ val videoInformationPatch = bytecodePatch(
 
         val seekFingerprintResultMethod = SeekFingerprint.method
         val seekRelativeFingerprintResultMethod = SeekRelativeFingerprint.method
+        val getVideoTimeMethodName = GetVideoTimeFingerprint.instructionMatches.first()
+            .getInstruction<ReferenceInstruction>()
+            .getReference<MethodReference>()!!
+            .getMutableMethod().name
 
         // Create extension interface methods.
-        addSeekInterfaceMethods(
+        addPlayerInterfaceMethods(
             PlayerInitFingerprint.classDef,
             seekFingerprintResultMethod,
             seekRelativeFingerprintResultMethod,
+            getVideoTimeMethodName
         )
 
         with(MdxPlayerDirectorSetVideoStageFingerprint) {
@@ -152,7 +157,12 @@ val videoInformationPatch = bytecodePatch(
             val mdxSeekFingerprintResultMethod = MdxSeekFingerprint.match(classDef).method
             val mdxSeekRelativeFingerprintResultMethod = MdxSeekRelativeFingerprint.match(classDef).method
 
-            addSeekInterfaceMethods(classDef, mdxSeekFingerprintResultMethod, mdxSeekRelativeFingerprintResultMethod)
+            addPlayerInterfaceMethods(
+                classDef,
+                mdxSeekFingerprintResultMethod,
+                mdxSeekRelativeFingerprintResultMethod,
+                getVideoTimeMethodName
+            )
         }
 
         with(CreateVideoPlayerSeekbarFingerprint) {
@@ -219,11 +229,6 @@ val videoInformationPatch = bytecodePatch(
                 .getReference<MethodReference>()!!
                 .getMutableMethod()
         )
-
-        /*
-         * Hook the methods which set the time
-         */
-        videoTimeHook(EXTENSION_CLASS, "setVideoTime")
 
         val setPlaybackSpeedMethodReference: MethodReference
 
@@ -567,7 +572,12 @@ val videoInformationPatch = bytecodePatch(
     }
 }
 
-private fun addSeekInterfaceMethods(targetClass: MutableClass, seekToMethod: Method, seekToRelativeMethod: Method) {
+private fun addPlayerInterfaceMethods(
+    targetClass: MutableClass,
+    seekToMethod: Method,
+    seekToRelativeMethod: Method,
+    getVideoTimeMethodName: String
+) {
     // Add the interface and methods that extension calls.
     targetClass.interfaces.add(EXTENSION_PLAYER_INTERFACE)
 
@@ -613,6 +623,28 @@ private fun addSeekInterfaceMethods(targetClass: MutableClass, seekToMethod: Met
 
         targetClass.methods.add(interfaceImplementation)
     }
+
+    targetClass.methods.add(
+        ImmutableMethod(
+            targetClass.type,
+            "patch_getVideoTime",
+            listOf(),
+            "J",
+            AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+            null,
+            null,
+            MutableMethodImplementation(3),
+        ).toMutable().apply {
+            addInstructions(
+                0,
+                """
+                    invoke-virtual { p0 }, ${targetClass.type}->$getVideoTimeMethodName()J 
+                    move-result-wide v0
+                    return-wide v0
+                """
+            )
+        }
+    )
 }
 
 private fun MutableMethod.insert(insertIndex: Int, register: String, descriptor: String) =

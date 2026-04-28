@@ -3,10 +3,12 @@
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.string
 import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
@@ -139,6 +141,21 @@ internal object SeekRelativeFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.ADD_LONG_2ADDR,
         Opcode.INVOKE_VIRTUAL,
+    )
+)
+
+internal object GetVideoTimeFingerprint : Fingerprint(
+    classFingerprint = PlayerInitFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "V",
+    filters = listOf(
+        methodCall(  // getVideoTime()
+            definingClass = "this",
+            returnType = "J",
+            parameters = listOf(),
+        ),
+        literal(69, location = MatchAfterWithin(5))
     )
 )
 

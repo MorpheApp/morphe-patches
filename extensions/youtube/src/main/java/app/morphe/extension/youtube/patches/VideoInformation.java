@@ -23,6 +23,7 @@ public final class VideoInformation {
         // Methods are added during patching.
         boolean patch_seekTo(long videoTime);
         void patch_seekToRelative(long videoTimeOffset);
+        long patch_getVideoTime();
     }
 
     /**
@@ -64,7 +65,6 @@ public final class VideoInformation {
     private static String channelId = "";
     private static String videoId = "";
     private static long videoLength = 0;
-    private static long videoTime = -1;
 
     private static volatile String playerResponsePlaylistId = "";
     private static volatile String playerResponseVideoId = "";
@@ -124,7 +124,6 @@ public final class VideoInformation {
             Logger.printDebug(() -> "newVideoStarted");
 
             playerControllerRef = new WeakReference<>(Objects.requireNonNull(playerController));
-            videoTime = -1;
             videoLength = 0;
             channelId = "";
             String channelName = "";
@@ -256,16 +255,6 @@ public final class VideoInformation {
             Logger.printDebug(() -> "Current video length: " + length);
             videoLength = length;
         }
-    }
-
-    /**
-     * Injection point.
-     * Called on the main thread every 1000ms.
-     *
-     * @param currentPlaybackTime The current playback time of the video in milliseconds.
-     */
-    public static void setVideoTime(final long currentPlaybackTime) {
-        videoTime = currentPlaybackTime;
     }
 
     /**
@@ -459,7 +448,14 @@ public final class VideoInformation {
      * @return The time of the video in milliseconds. -1 if not set yet.
      */
     public static long getVideoTime() {
-        return videoTime;
+        PlaybackController controller = playerControllerRef.get();
+        if (controller == null) {
+            controller = mdxPlayerDirectorRef.get();
+            if (controller == null) {
+                return -1;
+            }
+        }
+        return controller.patch_getVideoTime();
     }
 
     /**
@@ -474,7 +470,7 @@ public final class VideoInformation {
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean isAtEndOfVideo() {
-        return videoTime >= videoLength && videoLength > 0;
+        return getVideoTime() >= videoLength && videoLength > 0;
     }
 
     /**
