@@ -229,25 +229,7 @@ public class SponsorBlockUtils {
             final boolean hasEnd = newSponsorSegmentEndMillis >= 0;
 
             if (!hasStart && !hasEnd) {
-                // Neither point marked - offer to submit as highlight using current time,
-                // or cancel to mark a second location first.
-                final long currentTime = VideoInformation.getVideoTime();
-                Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                        context,
-                        str("morphe_sb_new_segment_highlight_title"),
-                        str("morphe_sb_new_segment_highlight_confirm_single",
-                                formatSegmentTime(currentTime)),
-                        null,
-                        str("morphe_sb_new_segment_highlight_submit"),
-                        () -> {
-                            newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
-                            newSponsorSegmentStartMillis = currentTime;
-                            newSponsorSegmentEndMillis = currentTime;
-                            submitNewSegment();
-                        },
-                        () -> {}, null, null, true
-                );
-                dialogPair.first.show();
+                Utils.showToastShort(str("morphe_sb_new_segment_mark_locations_first"));
                 return;
             }
 
@@ -263,26 +245,6 @@ public class SponsorBlockUtils {
                         () -> {
                             newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
                             newSponsorSegmentEndMillis = newSponsorSegmentStartMillis;
-                            submitNewSegment();
-                        },
-                        () -> {}, null, null, true
-                );
-                dialogPair.first.show();
-                return;
-            }
-
-            if (!hasStart) {
-                // Only end marked - offer to submit end as highlight.
-                Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                        context,
-                        str("morphe_sb_new_segment_highlight_title"),
-                        str("morphe_sb_new_segment_highlight_confirm_single",
-                                formatSegmentTime(newSponsorSegmentEndMillis)),
-                        null,
-                        str("morphe_sb_new_segment_highlight_submit"),
-                        () -> {
-                            newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
-                            newSponsorSegmentStartMillis = newSponsorSegmentEndMillis;
                             submitNewSegment();
                         },
                         () -> {}, null, null, true
