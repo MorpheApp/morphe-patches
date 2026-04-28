@@ -36,7 +36,7 @@ import app.morphe.extension.youtube.sponsorblock.objects.SegmentCategory;
 import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
 import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment.SegmentVote;
 import app.morphe.extension.youtube.sponsorblock.requests.SBRequester;
-import app.morphe.extension.youtube.sponsorblock.requests.SBRequester.SBSubmitSegmentAction;
+import app.morphe.extension.youtube.sponsorblock.requests.SBRequester.SegmentSubmitAction;
 import app.morphe.extension.youtube.sponsorblock.ui.SponsorBlockViewController;
 
 /**
@@ -58,7 +58,7 @@ public class SponsorBlockUtils {
         @Override
         public void onClick(DialogInterface dialog, int which) {
             try {
-                SegmentCategory category = SegmentCategory.categoriesWithoutHighlights()[which];
+                SegmentCategory category = SegmentCategory.categoriesWithoutUnsubmitted()[which];
                 final boolean enableButton;
                 if (category.behaviour == CategoryBehaviour.IGNORE) {
                     Utils.showToastLong(str("morphe_sb_new_segment_disabled_category"));
@@ -163,20 +163,20 @@ public class SponsorBlockUtils {
     private static void submitNewSegment() {
         try {
             Utils.verifyOnMainThread();
-            final long start = newSponsorSegmentStartMillis;
-            final long end = newSponsorSegmentEndMillis;
-            final String videoId = VideoInformation.getVideoId();
-            final long videoLength = VideoInformation.getVideoLength();
             final SegmentCategory segmentCategory = newUserCreatedSegmentCategory;
             final boolean isHighlight = segmentCategory == SegmentCategory.HIGHLIGHT;
-            SBSubmitSegmentAction submitType = isHighlight ? SBSubmitSegmentAction.HIGHLIGHT : SBSubmitSegmentAction.SKIP;
+            final long start = newSponsorSegmentStartMillis;
+            final long end = (isHighlight ? start : newSponsorSegmentEndMillis);
+            final String videoId = VideoInformation.getVideoId();
+            final long videoLength = VideoInformation.getVideoLength();
+            SegmentSubmitAction submitType = isHighlight ? SegmentSubmitAction.HIGHLIGHT : SegmentSubmitAction.SKIP;
 
             if (start < 0 || end < 0 || videoLength <= 0 || videoId.isEmpty() || segmentCategory == null) {
-                Logger.printException(() -> "invalid parameters");
+                Logger.printException(() -> "Invalid parameters");
                 return;
             }
             if (!isHighlight && start >= end) {
-                Logger.printException(() -> "invalid parameters");
+                Logger.printException(() -> "Invalid parameters");
                 return;
             }
 
@@ -297,37 +297,8 @@ public class SponsorBlockUtils {
                 return;
             }
 
-            if (!newSponsorSegmentPreviewed && newSponsorSegmentStartMillis != 0) {
-                // Both points set and not a highlight - require preview first.
-                // But give the user the option to submit as highlight without previewing.
-                final long capturedStart = newSponsorSegmentStartMillis;
-                final long capturedEnd = newSponsorSegmentEndMillis;
-                Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                        context,
-                        str("morphe_sb_new_segment_highlight_title"),
-                        str("morphe_sb_new_segment_highlight_choose_timestamp",
-                                formatSegmentTime(capturedStart),
-                                formatSegmentTime(capturedEnd)),
-                        null,
-                        str("morphe_sb_new_segment_highlight_use_end"),
-                        () -> {
-                            newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
-                            newSponsorSegmentStartMillis = capturedEnd;
-                            newSponsorSegmentEndMillis = capturedEnd;
-                            submitNewSegment();
-                        },
-                        null,
-                        str("morphe_sb_new_segment_highlight_use_start"),
-                        () -> {
-                            newUserCreatedSegmentCategory = SegmentCategory.HIGHLIGHT;
-                            newSponsorSegmentStartMillis = capturedStart;
-                            newSponsorSegmentEndMillis = capturedStart;
-                            submitNewSegment();
-                        },
-                        true,
-                        false
-                );
-                dialogPair.first.show();
+            if (!newSponsorSegmentPreviewed) {
+                Utils.showToastShort(str("morphe_sb_new_segment_preview_segment_first"));
                 return;
             }
 
@@ -341,10 +312,10 @@ public class SponsorBlockUtils {
                             formatSegmentTime(newSponsorSegmentEndMillis),
                             getTimeSavedString(segmentLength)),
                     null,
-                    str("morphe_sb_new_segment_highlight_submit"),
+                    str("morphe_sb_new_segment_submit"),
                     () -> {
                         SponsorBlockViewController.hideNewSegmentLayout();
-                        SegmentCategory[] categories = SegmentCategory.categoriesWithoutHighlights();
+                        SegmentCategory[] categories = SegmentCategory.categoriesWithoutUnsubmitted();
                         CharSequence[] titles = new CharSequence[categories.length];
                         for (int i = 0, length = categories.length; i < length; i++) {
                             titles[i] = categories[i].getTitleWithColorDot();
