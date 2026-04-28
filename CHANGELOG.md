@@ -1,3 +1,17 @@
+# [1.25.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.25.0-dev.5...v1.25.0-dev.6) (2026-04-27)
+
+
+### Features
+
+* Show a list of patches in the GitHub readme ([#1304](https://github.com/MorpheApp/morphe-patches/issues/1304)) ([73beef5](https://github.com/MorpheApp/morphe-patches/commit/73beef5ddf1b535161e2a3cd7e6799d129b761af))
+
+# [1.25.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.25.0-dev.4...v1.25.0-dev.5) (2026-04-27)
+
+
+### Bug Fixes
+
+* **YouTube - Open Shorts in regular player:** Back button does not work when viewing Shorts in the regular player ([#1269](https://github.com/MorpheApp/morphe-patches/issues/1269)) ([3976592](https://github.com/MorpheApp/morphe-patches/commit/3976592a983234e2d9470bfe82496d64aed6ddde))
+
 # [1.25.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.25.0-dev.3...v1.25.0-dev.4) (2026-04-26)
 
 
