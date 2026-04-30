@@ -3,6 +3,9 @@ package app.morphe.patches.youtube.misc.medianotification
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -13,33 +16,36 @@ private const val EXTENSION_CLASS =
 
 val mediaNotificationControlsPatch = bytecodePatch(
     name = "Media notification controls",
-    description = "Adds options to disable the seekbar and next/previous buttons in the media notification and headphone controls.",
+    description = "Adds options to disable the seekbar and previous/next buttons in the " +
+            "media notification and headphone controls.",
 ) {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        playerOverlayButtonsSettingsPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        // Intercept every setPlaybackState call site so all playback states
-        // (playing, paused, buffering) have their action flags filtered.
-        MediaSessionSetPlaybackStateFingerprint.matchAll().forEach { match ->
-            match.method.apply {
-                val matchIndex = match.instructionMatches.first().index
-                // invoke-virtual {vC=session, vD=playbackState} — vD is the argument to filter.
-                val playbackStateReg = getInstruction<FiveRegisterInstruction>(matchIndex).registerD
+        addPlayerOverlayPreferences(
+            SwitchPreference("morphe_hide_notification_media_prev_next"),
+            SwitchPreference("morphe_hide_notification_media_seekbar"),
+        )
+
+        MediaSessionSetPlaybackStateFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<FiveRegisterInstruction>(index).registerD
 
                 addInstructions(
-                    matchIndex,
+                    index,
                     """
-                        invoke-static { v$playbackStateReg }, $EXTENSION_CLASS->filterPlaybackState(Landroid/media/session/PlaybackState;)Landroid/media/session/PlaybackState;
-                        move-result-object v$playbackStateReg
-                    """,
+                        invoke-static { v$register }, $EXTENSION_CLASS->changePlaybackState(Landroid/media/session/PlaybackState;)Landroid/media/session/PlaybackState;
+                        move-result-object v$register
+                    """
                 )
             }
         }
-
     }
 }

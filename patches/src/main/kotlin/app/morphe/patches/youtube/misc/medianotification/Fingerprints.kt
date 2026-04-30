@@ -8,6 +8,7 @@ internal object MediaSessionSetPlaybackStateFingerprint : Fingerprint(
         methodCall(
             definingClass = "Landroid/media/session/MediaSession;",
             name = "setPlaybackState",
-        ),
-    ),
+            parameters = listOf("Landroid/media/session/PlaybackState;")
+        )
+    )
 )

@@ -61,8 +61,6 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_fullscreen_button"),
                     SwitchPreference("morphe_hide_player_control_buttons_background"),
                     SwitchPreference("morphe_hide_player_previous_next_buttons"),
-                    SwitchPreference("morphe_hide_notification_media_prev_next"),
-                    SwitchPreference("morphe_hide_notification_media_seekbar"),
                     SwitchPreference("morphe_hide_settings_button"),
                 )
             )
