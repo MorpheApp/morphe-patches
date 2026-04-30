@@ -3,6 +3,7 @@ package app.morphe.patches.youtube.misc.medianotification
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
@@ -14,6 +15,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/MediaNotificationControlsPatch;"
 
+@Suppress("unused")
 val mediaNotificationControlsPatch = bytecodePatch(
     name = "Media notification controls",
     description = "Adds options to disable the seekbar and previous/next buttons in the " +
@@ -29,8 +31,14 @@ val mediaNotificationControlsPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_hide_notification_media_prev_next"),
-            SwitchPreference("morphe_hide_notification_media_seekbar"),
+            PreferenceCategory(
+                titleKey = null,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = setOf(
+                    SwitchPreference("morphe_hide_notification_media_prev_next"),
+                    SwitchPreference("morphe_hide_notification_media_seekbar"),
+                )
+            )
         )
 
         MediaSessionSetPlaybackStateFingerprint.let {
