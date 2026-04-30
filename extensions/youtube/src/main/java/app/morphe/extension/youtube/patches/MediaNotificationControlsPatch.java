@@ -8,7 +8,7 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public class MediaNotificationControlsPatch {
 
-    public static final Boolean HIDE_NOTIFICATIONS_MEDIA_SEEKBAR = Settings.HIDE_NOTIFICATION_MEDIA_SEEKBAR.get();
+    public static final Boolean HIDE_NOTIFICATIONS_MEDIA_SEEKBAR = Settings.DISABLE_NOTIFICATION_MEDIA_SEEKBAR.get();
     public static final Boolean HIDE_NOTIFICATION_MEDIA_PREV_NEXT = Settings.HIDE_NOTIFICATION_MEDIA_PREV_NEXT.get();
 
     /**

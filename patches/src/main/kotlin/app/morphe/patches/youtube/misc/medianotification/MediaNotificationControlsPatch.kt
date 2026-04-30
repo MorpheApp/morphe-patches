@@ -3,11 +3,10 @@ package app.morphe.patches.youtube.misc.medianotification
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
-import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -23,20 +22,18 @@ val mediaNotificationControlsPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        settingsPatch,
-        playerOverlayButtonsSettingsPatch
+        settingsPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        addPlayerOverlayPreferences(
-            PreferenceCategory(
-                titleKey = null,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+        PreferenceScreen.PLAYER.addPreferences(
+            PreferenceScreenPreference(
+                key = "morphe_notification_media_screen",
                 preferences = setOf(
                     SwitchPreference("morphe_hide_notification_media_prev_next"),
-                    SwitchPreference("morphe_hide_notification_media_seekbar"),
+                    SwitchPreference("morphe_disable_notification_media_seekbar"),
                 )
             )
         )

@@ -1737,12 +1737,14 @@ Enabling this can unlock higher video qualities"</string>
     <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoom haptics is enabled</string>
 
     <!-- misc.medianotification.mediaNotificationControlsPatch -->
-    <string name="morphe_hide_notification_media_prev_next_title">Hide Prev/Next in notification</string>
-    <string name="morphe_hide_notification_media_prev_next_summary_on">Previous &amp; Next buttons are disabled in media notification, lockscreen, and headphone controls</string>
-    <string name="morphe_hide_notification_media_prev_next_summary_off">Previous &amp; Next buttons are enabled in notification, lockscreen, and headphone controls</string>
-    <string name="morphe_hide_notification_media_seekbar_title">Disable Seekbar in notification</string>
-    <string name="morphe_hide_notification_media_seekbar_summary_on">Seekbar in media notification and lockscreen is read-only</string>
-    <string name="morphe_hide_notification_media_seekbar_summary_off">Seekbar in media notification and lockscreen is draggable</string>
+    <string name="morphe_notification_media_screen_title">Notification media controls</string>
+    <string name="morphe_notification_media_screen_summary">Hide lock screen media control components</string>
+    <string name="morphe_hide_notification_media_prev_next_title">Hide Prev &amp; Next buttons</string>
+    <string name="morphe_hide_notification_media_prev_next_summary_on">Previous &amp; Next buttons are hidden in media notification, lockscreen, and headphone controls</string>
+    <string name="morphe_hide_notification_media_prev_next_summary_off">Previous &amp; Next buttons are shown in notification, lockscreen, and headphone controls</string>
+    <string name="morphe_disable_notification_media_seekbar_title">Disable seekbar</string>
+    <string name="morphe_disable_notification_media_seekbar_summary_on">Seekbar in media notification and lockscreen is read-only</string>
+    <string name="morphe_disable_notification_media_seekbar_summary_off">Seekbar in media notification and lockscreen is draggable</string>
 
     <!-- misc.gms.accountCredentialsInvalidTextPatch -->
     <string name="microg_offline_account_login_error">If you recently changed your account login details, then uninstall and reinstall MicroG.</string>
