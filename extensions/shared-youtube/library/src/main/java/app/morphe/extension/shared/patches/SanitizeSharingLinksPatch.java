@@ -1,5 +1,10 @@
 package app.morphe.extension.shared.patches;
 
+import android.net.Uri;
+
+import java.util.List;
+
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.privacy.LinkSanitizer;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
@@ -27,6 +32,43 @@ public final class SanitizeSharingLinksPatch {
             url = url.replace("music.youtube.com", "youtube.com");
         }
 
+        if (SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER.get()) {
+            url = replaceWithShortenedUrl(url);
+        }
+
         return url;
+    }
+
+    private static String replaceWithShortenedUrl(String url) {
+        try {
+            Uri uri = Uri.parse(url);
+            String host = uri.getHost();
+            if (host == null || (!host.equals("youtube.com") && !host.endsWith(".youtube.com"))) {
+                return url;
+            }
+            List<String> segments = uri.getPathSegments();
+            if (segments.size() < 2) {
+                return url;
+            }
+            String pathType = segments.get(0);
+            if (!pathType.equals("live") && !pathType.equals("shorts")) {
+                return url;
+            }
+            String videoId = segments.get(1);
+            if (videoId.isEmpty()) {
+                return url;
+            }
+            return new Uri.Builder()
+                    .scheme("https")
+                    .authority("youtu.be")
+                    .appendPath(videoId)
+                    .encodedQuery(uri.getEncodedQuery())
+                    .encodedFragment(uri.getEncodedFragment())
+                    .build()
+                    .toString();
+        } catch (Exception ex) {
+            Logger.printException(() -> "replaceWithShortenedUrl failure: " + url, ex);
+            return url;
+        }
     }
 }
