@@ -1,11 +1,11 @@
 package app.morphe.extension.youtube.patches.spoof;
 
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_CREATOR;
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_REEL;
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_64;
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_65;
-import static app.morphe.extension.shared.spoof.ClientType.TV;
-import static app.morphe.extension.shared.spoof.ClientType.VISIONOS;
+import static app.morphe.extension.shared.spoof.ClientType.Stream.ANDROID_CREATOR;
+import static app.morphe.extension.shared.spoof.ClientType.Stream.ANDROID_REEL;
+import static app.morphe.extension.shared.spoof.ClientType.Stream.ANDROID_VR_1_64;
+import static app.morphe.extension.shared.spoof.ClientType.Stream.ANDROID_VR_1_65;
+import static app.morphe.extension.shared.spoof.ClientType.Stream.TV;
+import static app.morphe.extension.shared.spoof.ClientType.Stream.VISIONOS;
 
 import java.util.List;
 
@@ -33,7 +33,7 @@ public class SpoofVideoStreamsPatch {
      * Injection point.
      */
     public static void setClientOrderToUse() {
-        ClientType client = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
+        ClientType.Stream client = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
 
         // Use VR 1.65 client that has AV1 if user settings allow it.
         // AVC cannot be forced with VR 1.65 because it uses VP9 and AV1.
@@ -44,7 +44,7 @@ public class SpoofVideoStreamsPatch {
         }
 
         // For some users No SDK can fail at 1 minute. Only use it if the user has explicitly set it.
-        List<ClientType> availableClients = List.of(
+        List<ClientType.Stream> availableClients = List.of(
                 ANDROID_REEL,
                 TV,
                 ANDROID_VR_1_64,

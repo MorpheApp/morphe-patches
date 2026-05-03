@@ -32,7 +32,7 @@ import app.morphe.extension.youtube.settings.Settings;
 public class SpoofVideoStreamsSideEffectsPreference extends Preference {
 
     @Nullable
-    private ClientType currentClientType;
+    private ClientType.Stream currentClientType;
 
     private final SharedPreferences.OnSharedPreferenceChangeListener listener = (sharedPreferences, str) -> {
         // Because this listener may run before the Morphe settings fragment updates Settings,
@@ -81,7 +81,7 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
     }
 
     private void updateUI() {
-        ClientType clientType = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
+        ClientType.Stream clientType = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
         if (currentClientType == clientType) {
             return;
         }
@@ -117,7 +117,7 @@ public class SpoofVideoStreamsSideEffectsPreference extends Preference {
         }
 
         // Only Android Reel and Android VR supports 360° VR immersive mode.
-        if (!clientType.name().startsWith("ANDROID_VR") && clientType != ClientType.ANDROID_REEL) {
+        if (!clientType.name().startsWith("ANDROID_VR") && clientType != ClientType.Stream.ANDROID_REEL) {
             summary += '\n' + str("morphe_spoof_video_streams_about_no_immersive_mode");
         }
 

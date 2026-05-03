@@ -23,10 +23,10 @@ public class ForceAVCSwitchPreference extends SwitchPreference {
     // Spoof stream patch is not included/enabled, or is spoofing to a client that forcing AVC works.
     private static final boolean available = !SpoofVideoStreamsPatch.isPatchIncluded()
             || !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() || List.of(
-            ClientType.ANDROID_CREATOR,
-            ClientType.ANDROID_VR_1_65,
-            ClientType.ANDROID_VR_1_64,
-            ClientType.VISIONOS).contains(SpoofVideoStreamsPatch.getPreferredClient());
+            ClientType.Stream.ANDROID_CREATOR,
+            ClientType.Stream.ANDROID_VR_1_65,
+            ClientType.Stream.ANDROID_VR_1_64,
+            ClientType.Stream.VISIONOS).contains(SpoofVideoStreamsPatch.getPreferredClient());
 
     {
         if (!available) {

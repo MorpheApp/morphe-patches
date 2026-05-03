@@ -10,6 +10,9 @@
 
 package app.morphe.extension.shared.spoof.requests;
 
+import androidx.core.util.Pair;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -17,16 +20,22 @@ import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.util.List;
 import java.util.Locale;
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.AppLanguage;
-import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 
 final class PlayerRoutes {
+    static final Route.CompiledRoute GET_CHANNEL_FROM_ID = new Route(
+            Route.Method.POST,
+            "player" +
+                    "?prettyPrint=false" +
+                    "&fields=videoDetails.channelId"
+    ).compile();
     static final Route.CompiledRoute GET_PLAYER_STREAMING_DATA = new Route(
             Route.Method.POST,
             "player" +
@@ -41,6 +50,12 @@ final class PlayerRoutes {
                     "&alt=proto"
     ).compile();
 
+    static final Route.CompiledRoute SEND_SAVE_VIDEO_TO_PLAYLIST = new Route(
+            Route.Method.POST,
+            "browse/edit_playlist" +
+                    "?fields=status,playlistEditResults"
+    ).compile();
+
     private static final String YT_API_URL = "https://youtubei.googleapis.com/youtubei/v1/";
 
     /**
@@ -51,7 +66,7 @@ final class PlayerRoutes {
     private PlayerRoutes() {
     }
 
-    static String createInnertubeBody(ClientType clientType, String videoId) {
+    static String createInnertubeBody(String detailsToFetch, List<Pair<String, Boolean>> clientTypeInfo, String videoId) {
         JSONObject innerTubeBody = new JSONObject();
 
         try {
@@ -65,28 +80,48 @@ final class PlayerRoutes {
             Locale streamLocale = language.getLocale();
 
             JSONObject client = new JSONObject();
-            client.put("deviceMake", clientType.deviceMake);
-            client.put("deviceModel", clientType.deviceModel);
-            client.put("clientName", clientType.clientName);
-            client.put("clientVersion", clientType.clientVersion);
-            client.put("osName", clientType.osName);
-            client.put("osVersion", clientType.osVersion);
-            if (clientType.androidSdkVersion != null) {
-                client.put("androidSdkVersion", clientType.androidSdkVersion);
+            client.put("deviceMake", clientTypeInfo.get(0).first);
+            client.put("deviceModel", clientTypeInfo.get(1).first);
+            client.put("clientName", clientTypeInfo.get(2).first);
+            client.put("clientVersion", clientTypeInfo.get(3).first);
+            client.put("osName", clientTypeInfo.get(4).first);
+            client.put("osVersion", clientTypeInfo.get(5).first);
+            String androidSdkVersion = clientTypeInfo.get(6).first;
+            if (androidSdkVersion != null && !androidSdkVersion.isEmpty()) {
+                client.put("androidSdkVersion", androidSdkVersion);
             }
-            if (clientType.clientPlatform != null) {
-                client.put("platform", clientType.clientPlatform);
+            String platform = clientTypeInfo.get(7).first;
+            if (platform != null && !platform.isEmpty()) {
+                client.put("platform", platform);
             }
-            client.put("hl", streamLocale.getLanguage());
-            client.put("gl", streamLocale.getCountry());
+            JSONObject user = new JSONObject();
+            user.put("lockedSafetyMode", false);
+            if (detailsToFetch.isEmpty()) {
+                client.put("hl", streamLocale.getLanguage());
+                client.put("gl", streamLocale.getCountry());
+            } else {
+                context.put("user", user);
+            }
             context.put("client", client);
 
-            innerTubeBody.put("context", context);
-
-            if (clientType.usePlayerEndpoint) {
+            boolean usePlayerEndpoint = Boolean.TRUE.equals(clientTypeInfo.get(8).second);
+            if (usePlayerEndpoint) {
                 innerTubeBody.put("contentCheckOk", true);
                 innerTubeBody.put("racyCheckOk", true);
                 innerTubeBody.put("videoId", videoId);
+                if (Objects.equals(detailsToFetch, StreamingDataRequest.saveToWatchLaterDetailsName)) {
+                    innerTubeBody.put("playlistId", "WL");
+                    innerTubeBody.put("excludeWatchLater", false);
+
+                    JSONObject action = new JSONObject();
+                    action.put("action", "ACTION_ADD_VIDEO");
+                    action.put("addedVideoId", videoId);
+
+                    JSONArray actions = new JSONArray();
+                    actions.put(action);
+
+                    innerTubeBody.put("actions", actions);
+                }
             } else {
                 JSONObject playerRequest = new JSONObject();
                 playerRequest.put("contentCheckOk", true);
@@ -96,13 +131,12 @@ final class PlayerRoutes {
                 innerTubeBody.put("disablePlayerResponse", false);
             }
 
-            if (clientType.requireJS) {
+            boolean requireJS = Boolean.TRUE.equals(clientTypeInfo.get(9).second);
+            if (requireJS) {
                 JSONObject configInfo = new JSONObject();
                 configInfo.put("appInstallData", "");
                 client.put("configInfo", configInfo);
 
-                JSONObject user = new JSONObject();
-                user.put("lockedSafetyMode", false);
                 context.put("user", user);
 
                 JSONObject contentPlaybackContext = new JSONObject();
@@ -126,6 +160,8 @@ final class PlayerRoutes {
 
                 innerTubeBody.put("playbackContext", playbackContext);
             }
+
+            innerTubeBody.put("context", context);
         } catch (JSONException e) {
             Logger.printException(() -> "Failed to create innerTubeBody", e);
         }
@@ -134,14 +170,14 @@ final class PlayerRoutes {
     }
 
     @SuppressWarnings("SameParameterValue")
-    static HttpURLConnection getPlayerResponseConnectionFromRoute(Route.CompiledRoute route, List<Object> clientTypeInfo) throws IOException {
+    static HttpURLConnection getPlayerResponseConnectionFromRoute(Route.CompiledRoute route, List<String> clientInfo) throws IOException {
         var connection = Requester.getConnectionFromCompiledRoute(YT_API_URL, route);
 
         connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("User-Agent", (String) clientTypeInfo.get(0));
+        connection.setRequestProperty("User-Agent", clientInfo.get(0));
         // Not a typo. "Client-Name" uses the client type id.
-        connection.setRequestProperty("X-YouTube-Client-Name", (String) clientTypeInfo.get(1));
-        connection.setRequestProperty("X-YouTube-Client-Version", (String) clientTypeInfo.get(2));
+        connection.setRequestProperty("X-YouTube-Client-Name", clientInfo.get(1));
+        connection.setRequestProperty("X-YouTube-Client-Version", clientInfo.get(2));
 
         connection.setUseCaches(false);
         connection.setDoOutput(true);

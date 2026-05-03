@@ -207,6 +207,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting PLAYER_OVERLAY_OPACITY = new IntegerSetting("morphe_player_overlay_opacity", 100, true);
     public static final BooleanSetting RELOAD_VIDEO_BUTTON = new BooleanSetting("morphe_reload_video_button", FALSE);
     public static final BooleanSetting RESTORE_OLD_PLAYER_BUTTONS = new BooleanSetting("morphe_restore_old_player_buttons", FALSE, true, new RestoreOldPlayerButtonsAvailability());
+    public static final BooleanSetting SAVE_TO_WATCH_LATER_BUTTON = new BooleanSetting("morphe_save_to_watch_later_button", FALSE);
     public static final BooleanSetting VIDEO_QUALITY_DIALOG_BUTTON = new BooleanSetting("morphe_video_quality_dialog_button", FALSE, true);
 
     // Quick actions
@@ -455,7 +456,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting EXTERNAL_BROWSER = new BooleanSetting("morphe_external_browser", TRUE, true);
     public static final BooleanSetting SPOOF_DEVICE_DIMENSIONS = new BooleanSetting("morphe_spoof_device_dimensions", FALSE, true,
             "morphe_spoof_device_dimensions_user_dialog_message");
-    public static final EnumSetting<ClientType> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type", ClientType.ANDROID_REEL, true, parent(SPOOF_VIDEO_STREAMS));
+    public static final EnumSetting<ClientType.Stream> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type", ClientType.Stream.ANDROID_REEL, true, parent(SPOOF_VIDEO_STREAMS));
     public static final BooleanSetting SPOOF_VIDEO_STREAMS_AV1 = new BooleanSetting("morphe_spoof_video_streams_av1", FALSE, true,
             "morphe_spoof_video_streams_av1_user_dialog_message", new SpoofClientAv1Availability());
     public static final BooleanSetting DEBUG_PROTOBUFFER = new BooleanSetting("morphe_debug_protobuffer", FALSE, false,
@@ -592,14 +593,14 @@ public class Settings extends SharedYouTubeSettings {
         }
 
         // VR 1.65 is not selectable in the settings, and it's selected by spoof stream patch if needed.
-        if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.ANDROID_VR_1_65) {
+        if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.Stream.ANDROID_VR_1_65) {
             SPOOF_VIDEO_STREAMS_CLIENT_TYPE.resetToDefault();
         }
 
         // TV Simply may require PoToken
-        if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.TV_SIMPLY) {
+        if (SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get() == ClientType.Stream.TV_SIMPLY) {
             Logger.printInfo(() -> "Migrating from TV Simply to TV");
-            SPOOF_VIDEO_STREAMS_CLIENT_TYPE.save(ClientType.TV);
+            SPOOF_VIDEO_STREAMS_CLIENT_TYPE.save(ClientType.Stream.TV);
         }
 
         // endregion

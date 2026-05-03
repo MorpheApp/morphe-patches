@@ -8,14 +8,12 @@ import android.text.TextUtils;
 import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.innertube.PlayerResponseOuterClass;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
@@ -74,7 +72,7 @@ public class SpoofVideoStreamsPatch {
     @Nullable
     private static volatile AppLanguage languageOverride;
 
-    private static volatile ClientType preferredClient = ClientType.ANDROID_REEL;
+    private static volatile ClientType.Stream preferredClient = ClientType.Stream.ANDROID_REEL;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
 
@@ -108,12 +106,12 @@ public class SpoofVideoStreamsPatch {
         languageOverride = language;
     }
 
-    public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
+    public static void setClientsToUse(List<ClientType.Stream> availableClients, ClientType.Stream client) {
         preferredClient = Objects.requireNonNull(client);
         StreamingDataRequest.setClientOrderToUse(availableClients, client);
     }
 
-    public static ClientType getPreferredClient() {
+    public static ClientType.Stream getPreferredClient() {
         return preferredClient;
     }
 
@@ -302,7 +300,7 @@ public class SpoofVideoStreamsPatch {
 
                 currentVideoRequestHeader = requestHeaders;
 
-                StreamingDataRequest.fetchRequest(id, requestHeaders);
+                StreamingDataRequest.fetchStreamRequest(id, currentVideoRequestHeader);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }
@@ -318,21 +316,21 @@ public class SpoofVideoStreamsPatch {
     public static byte[] getStreamingData(String videoId) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
-                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
+                StreamingDataRequest request = StreamingDataRequest.getStreamRequestForVideoId(videoId);
                 if (request != null) {
                     // This hook is always called off the main thread,
                     // but this can later be called for the same video ID from the main thread.
                     // This is not a concern, since the fetch will always be finished
                     // and never block the main thread.
                     // But if debugging, then still verify this is the situation.
-                    if (BaseSettings.DEBUG.get() && !request.fetchCompleted() && Utils.isCurrentlyOnMainThread()) {
+                    if (BaseSettings.DEBUG.get() && !request.fetchStreamDetailsCompleted() && Utils.isCurrentlyOnMainThread()) {
                         Logger.printException(() -> "Error: Blocking main thread");
                     }
 
-                    var stream = request.getStream();
+                    var stream = request.getStreamDetails();
                     if (stream != null) {
                         Logger.printDebug(() -> "Overriding video stream: " + videoId);
-                        return stream;
+                        return (byte[]) stream;
                     }
                 }
 
@@ -340,6 +338,32 @@ public class SpoofVideoStreamsPatch {
             } catch (Exception ex) {
                 Logger.printException(() -> "getStreamingData failure", ex);
             }
+        }
+
+        return null;
+    }
+
+    public static void fetchDetails(String detailsToFetch, String videoId) {
+        if (currentVideoRequestHeader != null) {
+            StreamingDataRequest.fetchDetailsRequest(detailsToFetch, videoId, currentVideoRequestHeader);
+        }
+    }
+
+    @Nullable
+    public static String getDetailsData(String videoId) {
+        try {
+            StreamingDataRequest request = StreamingDataRequest.getDetailsRequestForVideoId(videoId);
+            if (request != null) {
+                var details = request.getStreamDetails();
+                if (details != null) {
+                    Logger.printDebug(() -> "Successfully retrieving details for: " + videoId);
+                    return (String) details;
+                }
+            }
+
+            Logger.printDebug(() -> "Cannot retrieve details data (video details is null): " + videoId);
+        } catch (Exception ex) {
+            Logger.printException(() -> "getDetailsData failure", ex);
         }
 
         return null;

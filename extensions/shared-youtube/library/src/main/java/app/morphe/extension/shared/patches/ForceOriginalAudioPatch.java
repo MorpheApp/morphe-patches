@@ -12,7 +12,7 @@ public class ForceOriginalAudioPatch {
 
     private static volatile boolean enabled;
 
-    public static void setEnabled(boolean isEnabled, ClientType client) {
+    public static void setEnabled(boolean isEnabled, ClientType.Stream client) {
         enabled = isEnabled;
 
         if (isEnabled && !client.canLogin && !client.supportsMultiAudioTracks) {

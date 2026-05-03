@@ -561,6 +561,14 @@ Info: May not work on live streams"</string>
     <string name="morphe_reload_video_button_summary_off">Reload video button is not shown</string>
     <string name="morphe_dismiss_player_not_available_toast">Video ID is unavailable. Please manually reload the video</string>
 
+    <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+    <string name="morphe_save_to_watch_later_button_title">Show Save to watch later</string>
+    <string name="morphe_save_to_watch_later_button_summary_on">Save to watch later button is shown</string>
+    <string name="morphe_save_to_watch_later_button_summary_off">Save to watch later button is not shown</string>
+    <string name="morphe_save_to_watch_later_success_toast">Video successfully saved in watch later playlist</string>
+    <string name="morphe_save_to_watch_later_already_exists_toast">This video is already saved in watch later playlist</string>
+    <string name="morphe_save_to_watch_later_error_toast">Cannot save this video in watch later playlist</string>
+
     <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
     <string name="morphe_disable_precise_seeking_gesture_title">Disable precise seeking gesture</string>
     <string name="morphe_disable_precise_seeking_gesture_summary_on">Precise seeking gesture is disabled</string>
