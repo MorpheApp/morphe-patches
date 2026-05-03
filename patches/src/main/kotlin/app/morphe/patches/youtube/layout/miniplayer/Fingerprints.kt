@@ -198,13 +198,6 @@ internal object MiniplayerOnCloseHandlerFingerprint : Fingerprint(
     )
 )
 
-internal const val YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME =
-    "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;"
-
-//internal object PlayerOverlaysLayoutFingerprint : Fingerprint(
-//    definingClass = YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME
-//)
-
 internal object MiniplayerSetIconsFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("I", "Ljava/lang/Runnable;"),

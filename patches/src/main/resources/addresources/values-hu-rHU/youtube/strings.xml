@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">A régi beállítások menü jelenik meg</string>
   <string name="morphe_restore_old_settings_menus_summary_off">A régi beállítások menü nem jelenik meg</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">A háttérlejátszás korlátozásainak eltávolítása</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">A háttérlejátszás nem korlátozott</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">A háttérlejátszás korlátozott</string>
   <string name="morphe_shorts_disable_background_playback_title">A Shorts háttérben történő lejátszásának letiltása</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">A Shorts háttérben történő lejátszása le van tiltva</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">A Shorts háttérben történő lejátszása engedélyezve van</string>
@@ -597,8 +600,9 @@ A hangerő a képernyő jobb oldalán függőlegesen húzva állítható be"</st
   <string name="morphe_swipe_change_video_summary_on">Teljes képernyős módban történő ujjbegyújtás megváltoztatja a következő/előző videóra</string>
   <string name="morphe_swipe_change_video_summary_off">Teljes képernyős módban történő ujjbegyújtás nem változtatja meg a következő/előző videóra</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Művelet gombok</string>
-  <string name="morphe_hide_buttons_screen_summary">Gombok megjelenítése vagy elrejtése a videók alatt</string>
+  <string name="morphe_action_buttons_screen_title">Művelet gombok</string>
+  <string name="morphe_action_buttons_screen_summary">Rejtse el vagy jelenítse meg az akciógombokat teljes képernyős és portré módban</string>
+  <string name="morphe_portrait_buttons">Portré gombok</string>
   <string name="morphe_disable_like_subscribe_glow_title">A tetszik és feliratkozás gomb fényének kikapcsolása</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">A tetszik és feliratkozás gombok nem világítanak, ha megemlítik őket</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">A tetszik és feliratkozás gombok világítanak, ha megemlítik őket</string>
@@ -664,6 +668,43 @@ A hangerő a képernyő jobb oldalán függőlegesen húzva állítható be"</st
   <string name="morphe_hide_save_button_title">Mentés elrejtése</string>
   <string name="morphe_hide_save_button_summary_on">A mentés gomb rejtett</string>
   <string name="morphe_hide_save_button_summary_off">A mentés gomb látható</string>
+  <string name="morphe_fullscreen_buttons">Teljes képernyős gombok</string>
+  <string name="morphe_hide_quick_actions_title">A műveletsáv elrejtése</string>
+  <string name="morphe_hide_quick_actions_summary_on">A műveletsáv elrejtve</string>
+  <string name="morphe_hide_quick_actions_summary_off">A műveletsáv megjelenik</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Ask elrejtése</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Az Ask gomb el van rejtve</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Az Ask gomb látható</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Hozzászólások elrejtése</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">A megjegyzések gomb el van rejtve</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">A megjegyzések gomb megjelenik</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Nem tetszik elrejtése</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">A nem tetszik gomb elrejtve</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">A nem tetszik gomb látható</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Tetszik elrejtése</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">A tetszik gomb elrejtve</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">A tetszik gomb megjelenik</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">\'Élő chat\' elrejtése</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Az élő chat gomb elrejtve</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Az élő chat gomb megjelenik</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Mix elrejtése</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">A Mix gomb elrejtve</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">A Mix gomb megjelenik</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Több elrejtése</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">A Több gomb elrejtve</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">A Több gomb megjelenik</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">\'Több videó\' elrejtése</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">A Több videó gomb elrejtve</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">A Több videó gomb megjelenik</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Lejátszási lista elrejtése</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">A lejátszási lista gomb elrejtve</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">A lejátszási lista gomb megjelenik</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Mentés elrejtése</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">A mentés gomb rejtett</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">A mentés gomb látható</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Megosztás elrejtése</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">A megosztás gomb el van rejtve</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">A megosztás gomb látható</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Feliratok</string>
   <string name="morphe_captions_screen_summary">A feliratok automatikus bekapcsolódását tiltja vagy beállítja a felirat sütiket</string>
@@ -763,7 +804,10 @@ A Beállítások eléréséhez engedje a Beállítások gombot a Általános →
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Sötét módban az átlátszó navigációs sáv átlátszatlan</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">A sötét módú navigációs sáv nem áttetsző vagy áttetsző</string>
   <string name="morphe_toolbar_screen_title">Eszközevek sorozata</string>
-  <string name="morphe_toolbar_screen_summary">Eszközevek elrejtése vagy módosítása</string>
+  <string name="morphe_toolbar_screen_summary">Az eszköztár komponenseinek elrejtése vagy megjelenítése</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Elrejteni a vetítést</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Az átküldés gomb el van rejtve</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Az átküldés gomb látható</string>
   <string name="morphe_hide_toolbar_create_button_title">Létrehozás elrejtése</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">A létrehozás gomb el van rejtve</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">A létrehozás gomb látható</string>
@@ -892,44 +936,6 @@ A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et '
   <string name="morphe_hide_settings_button_title">Beállítások elrejtése</string>
   <string name="morphe_hide_settings_button_summary_on">Elrejtve a beállítások gomb</string>
   <string name="morphe_hide_settings_button_summary_off">Látható a beállítások gomb</string>
-  <string name="morphe_quick_actions_screen_title">Gyors műveletek</string>
-  <string name="morphe_quick_actions_screen_summary">A teljes képernyős gyors műveletekhez kapcsolódó komponensek elrejtése vagy megjelenítése</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Ask elrejtése</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Az Ask gomb el van rejtve</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">Az Ask gomb látható</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Hozzászólások elrejtése</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">A megjegyzések gomb el van rejtve</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">A megjegyzések gomb megjelenik</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Nem tetszik elrejtése</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">A nem tetszik gomb elrejtve</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">A nem tetszik gomb látható</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Tetszik elrejtése</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">A tetszik gomb elrejtve</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">A tetszik gomb megjelenik</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">\'Élő chat\' elrejtése</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Az élő chat gomb elrejtve</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Az élő chat gomb megjelenik</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Mix elrejtése</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">A Mix gomb elrejtve</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">A Mix gomb megjelenik</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Több elrejtése</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">A Több gomb elrejtve</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">A Több gomb megjelenik</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">\'Több videó\' elrejtése</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">A Több videó gomb elrejtve</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">A Több videó gomb megjelenik</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Lejátszási lista elrejtése</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">A lejátszási lista gomb elrejtve</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">A lejátszási lista gomb megjelenik</string>
-  <string name="morphe_hide_quick_actions_title">Gyors műveletek elrejtése</string>
-  <string name="morphe_hide_quick_actions_summary_on">A gyors műveletek elrejtve</string>
-  <string name="morphe_hide_quick_actions_summary_off">A gyors műveletek megjelennek</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Mentés elrejtése</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">A mentés gomb rejtett</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">A mentés gomb látható</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Megosztás elrejtése</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">A megosztás gomb el van rejtve</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">A megosztás gomb látható</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Záróképernyő kártyák elrejtése</string>
   <string name="morphe_hide_end_screen_cards_summary_on">A záróképernyő kártyák el vannak rejtve</string>
@@ -1092,6 +1098,9 @@ A Hangos menü megjelenítéséhez változtassa meg a 'Spoof video streams'-et '
   <string name="morphe_hide_shorts_full_video_link_label_title">Videóhivatkozás címkéjének elrejtése</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">A teljes videólink címke el van rejtve</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">A teljes videólink címke megjelenik</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Letiltja a Shorts dupla koppintásos lájkolását</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">A Shorts dupla koppintásos lájkolása figyelmen kívül hagyva</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">A Shorts videók duplaérintéses lájkolása engedélyezett</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Navigációs sáv elrejtése</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">A navigációs sáv el van rejtve</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">A navigációs sáv megjelenik</string>
@@ -1362,12 +1371,20 @@ Már létezik"</string>
 (%3$s)
 
 Készen állsz a beküldésre?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Beküldés</string>
   <string name="morphe_sb_new_segment_start_is_before_end">A kezdetnek a vége előtt kell lennie</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Előbb jelöljön meg két pontot az idősávon</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Először jelölj ki egy pozíciót az idővonalon</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Szakasz előnézete a zökkenőmentesen kihagyás érdekében</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">A szakasz időzítésének kézi beállítása</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Akarja szerkeszteni a rész kezdetének vagy végének időzítését?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Érvénytelen idő van megadva</string>
+  <string name="morphe_sb_new_segment_highlight_title">Kiemelés beküldése</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Helyes a kiemelés időpontja?
+
+%s
+
+Ha nem szeretne kiemelést küldeni, nyomja meg a Mégse gombot, és jelölje meg a második helyszínt."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Kiemelés küldése</string>
   <string name="morphe_sb_stats_title">Statisztikák</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">A statisztikák átmenetileg nem érhetők el (az API nem működik)</string>
@@ -1619,6 +1636,15 @@ Ez a beállítás lehetővé teszi a magasabb videóminőségek feloldását"</s
   <string name="morphe_disable_haptic_feedback_zoom_title">Haptikus zoom letiltása</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Haptikus zoom le van tiltva</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Haptikus zoom be van kapcsolva</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Értesítési médiavezérlők</string>
+  <string name="morphe_notification_media_screen_summary">Rejtse el a zárlákon lévő médiavezérlő komponenseket</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Elrejteni a \'Előző\' és \'Következő\' gombokat</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Az \'Előző\' és \'Következő\' gombok el vannak rejtve a médiaértesítésben, a zárlaképernyőn és a fejhallgató vezérlőin</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Az \'Előző\' és \'Következő\' gombok megjelennek az értesítésben, a zárlaképernyőn és a fejhallgató vezérlőin</string>
+  <string name="morphe_disable_notification_media_seekbar_title">A keresősáv letiltása</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">A médiaértesítés és a zárlaképernyő keresősávja csak olvasható</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">A médiaértesítés és a zárlaképernyő keresősávja húzható</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ha nemrég módosította a fiókja bejelentkezési adatait, távolítsa el, majd telepítse újra a MicroG-t.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

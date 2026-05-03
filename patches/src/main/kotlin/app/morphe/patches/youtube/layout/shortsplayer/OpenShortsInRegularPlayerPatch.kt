@@ -1,18 +1,26 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.shortsplayer
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.methodCall
+import app.morphe.patcher.extensions.InstructionExtensions.instructions
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_21_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -20,17 +28,14 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.findFreeRegister
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstruction
-import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstInstructionReversed
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import app.morphe.util.registersUsed
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.builder.BuilderOffsetInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
@@ -64,14 +69,12 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                     "setMainActivity(Landroid/app/Activity;)V",
         )
 
-        val playbackStartVideoIdMethodName : String
-        PlaybackStartDescriptorToStringFingerprint.let {
-            playbackStartVideoIdMethodName = it.instructionMatches[1]
-                .getInstruction<ReferenceInstruction>()
-                .getReference<MethodReference>()!!
-                .getMutableMethod()
-                .name
-        }
+        val playbackStartVideoIdMethodName = PlaybackStartDescriptorToStringFingerprint
+            .instructionMatches[1]
+            .getInstruction<ReferenceInstruction>()
+            .getReference<MethodReference>()!!
+            .getMutableMethod()
+            .name
 
         ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
             0,
@@ -91,99 +94,52 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         )
 
         // Fix issue with back button exiting the app instead of minimizing the player.
+        // Note: this patch must be applied on the conditional instructions that contains the return
+        // instruction, to avoid to block the code that minimize the video player.
         ExitVideoPlayerFingerprint.method.apply {
-            // TODO: Check if this logic works for older app targets as well.
-            if (is_21_07_or_greater) {
-                findInstructionIndicesReversedOrThrow(
-                    methodCall(name = "finish", parameters = listOf())
-                ).forEach {index ->
-                    val returnIndex = indexOfFirstInstructionOrThrow(
-                        index, Opcode.RETURN_VOID
-                    )
+            val expectedChanges = 2
+            var changesMade = 0
+            var finishIndex = this.instructions.size
 
-                    if (returnIndex == this.implementation!!.instructions.lastIndex) {
-                        val freeRegister = findFreeRegister(index)
+            while (true) {
+                finishIndex = indexOfFirstInstructionReversed(finishIndex - 1) {
+                    val reference = getReference<MethodReference>()
+                    reference?.name == "finish" && reference.parameterTypes.isEmpty()
+                }
+                if (finishIndex < 0) {
+                    break
+                }
 
-                        // Jumps to last index
-                        addInstructionsAtControlFlowLabel(
-                            index,
-                            """
-                                invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
-                                move-result v$freeRegister      
-                                if-eqz v$freeRegister, :doNotCallActivityFinish
-                                return-void   
-                                :doNotCallActivityFinish
-                                nop      
-                            """
-                        )
-                    } else {
-                        // Must check free register after the return index.
-                        val freeRegister = findFreeRegister(returnIndex + 1)
-
-                        addInstructionsAtControlFlowLabel(
-                            index,
-                            """
-                                invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
-                                move-result v$freeRegister      
-                                if-eqz v$freeRegister, :doNotCallActivityFinish
-                            """, ExternalLabel(
-                                "doNotCallActivityFinish",
-                                getInstruction(returnIndex + 1)
-                            )
-                        )
+                val finishLabels = getInstruction(finishIndex).location.labels
+                val equalsIndex = if (finishLabels.isNotEmpty()) {
+                    // Find conditional instruction that jumps to this instruction.
+                    indexOfFirstInstructionReversedOrThrow(finishIndex - 1) {
+                        if (this !is BuilderOffsetInstruction) {
+                            return@indexOfFirstInstructionReversedOrThrow false
+                        }
+                        val labels = this.target.location.labels
+                        labels.any { finishLabels.contains(it) }
+                    }
+                } else {
+                    indexOfFirstInstructionReversedOrThrow(finishIndex) {
+                        opcode == Opcode.IF_EQZ || opcode == Opcode.IF_NEZ
                     }
                 }
-                return@apply
-            }
 
-            // Method call for Activity.finish()
-            val finishIndexFirst = indexOfFirstInstructionOrThrow {
-                val reference = getReference<MethodReference>()
-                reference?.name == "finish"
-            }
-
-            // Second Activity.finish() call. Has been present since 19.x but started
-            // to interfere with back to exit fullscreen around 20.47.
-            val finishIndexSecond = indexOfFirstInstruction(finishIndexFirst + 1) {
-                val reference = getReference<MethodReference>()
-                reference?.name == "finish"
-            }
-            val getBooleanFieldIndex = indexOfFirstInstructionReversedOrThrow(finishIndexSecond) {
-                opcode == Opcode.IGET_BOOLEAN
-            }
-            val booleanRegister = getInstruction<TwoRegisterInstruction>(getBooleanFieldIndex).registerA
-
-            addInstructions(
-                getBooleanFieldIndex + 1,
-                """
-                    invoke-static { v$booleanRegister }, $EXTENSION_CLASS->overrideBackPressToExit(Z)Z    
-                    move-result v$booleanRegister
-                """
-            )
-
-            // Surround first activity.finish() and return-void with conditional check.
-            val returnVoidIndex = indexOfFirstInstructionOrThrow(
-                finishIndexFirst, Opcode.RETURN_VOID
-            )
-            // Find free register using index after return void (new control flow path added below).
-            val freeRegister = findFreeRegister(
-                returnVoidIndex + 1,
-                // Exclude all registers used by only instruction we will skip over.
-                getInstruction(finishIndexFirst).registersUsed
-            )
-
-            addInstructionsAtControlFlowLabel(
-                finishIndexFirst,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->overrideBackPressToExit()Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :doNotCallActivityFinish
-                """,
-                ExternalLabel(
-                    "doNotCallActivityFinish",
-                    getInstruction(returnVoidIndex + 1)
+                val register = getInstruction<OneRegisterInstruction>(equalsIndex).registerA
+                addInstructionsAtControlFlowLabel(
+                    equalsIndex,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->overrideBackPressToExit(Z)Z
+                        move-result v$register      
+                    """
                 )
-            )
+                changesMade++
+            }
+
+            if (changesMade != expectedChanges) {
+                throw PatchException("Expected $expectedChanges changes but instead found: $changesMade")
+            }
         }
     }
 }

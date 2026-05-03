@@ -67,8 +67,8 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
   <string name="morphe_settings_export_file_success">Inställningarna har exporterats</string>
   <string name="morphe_settings_export_file_failed">Det gick inte att exportera inställningarna</string>
   <!-- String is also duplicated in Reddit about preference -->
-  <string name="morphe_settings_about_links_body_version_current">Du använder det senaste Morphe Patches version &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Du använder Morphe Patches version &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Uppdatering är tillgänglig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;För att uppdatera dina korrigeringar, använd Morphe för att korrigera den här appen igen</string>
+  <string name="morphe_settings_about_links_body_version_current">Du använder den senaste Morphe Patches-versionen &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Du använder Morphe Patches-versionen &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Uppdatering är tillgänglig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Om du vill uppdatera dina tillägg använder du Morphe för att modifiera den här appen igen</string>
   <string name="morphe_settings_about_links_dev_header">Obs!</string>
   <string name="morphe_settings_about_links_dev_body">Den här versionen är en förhandsversion och du kan uppleva oväntade problem</string>
   <string name="morphe_settings_about_links_header">Officiella länkar</string>
@@ -154,9 +154,9 @@ Om batterioptimeringarna inte ändras kan du uppleva att
   <string name="morphe_experimental_app_version_dialog_title">🚨 Obs! Experimentell version 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Du använder en experimentell appversion av ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-🔧 Förvänta dig lustigt beteende av appen eller okända fel medan vi finslipar korrigeringarna för den här appversionen.
+🔧 Förvänta dig lustigt appbeteende eller okända fel medan vi finjusterar tilläggen för den här appversionen.
 &lt;br/&gt;&lt;br/&gt;
-Om du vill ha den mest problemfria upplevelsen &lt;b&gt;avinstallerar&lt;/b&gt; du den här och korrigerar den rekommenderade appversionen av ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Om du vill ha den mest problemfria upplevelsen &lt;b&gt;avinstallerar&lt;/b&gt; du den här och modifierar den rekommenderade appversionen av ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jag vill ha experimentellt</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jag vill ha stabilt</string>
 </resources>

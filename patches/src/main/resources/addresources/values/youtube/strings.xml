@@ -35,6 +35,9 @@ Second \"item\" text"</string>
     <string name="morphe_restore_old_settings_menus_summary_off">Old settings menus are not shown</string>
 
     <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+    <string name="morphe_remove_background_playback_restrictions_title">Remove background play restrictions</string>
+    <string name="morphe_remove_background_playback_restrictions_summary_on">Background playback is unrestricted</string>
+    <string name="morphe_remove_background_playback_restrictions_summary_off">Background playback is restricted</string>
     <string name="morphe_shorts_disable_background_playback_title">Disable Shorts background play</string>
     <string name="morphe_shorts_disable_background_playback_summary_on">Shorts background play is disabled</string>
     <string name="morphe_shorts_disable_background_playback_summary_off">Shorts background play is enabled</string>
@@ -848,6 +851,9 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
 
     <string name="morphe_toolbar_screen_title">Toolbar</string>
     <string name="morphe_toolbar_screen_summary">Hide or show toolbar components</string>
+    <string name="morphe_hide_toolbar_cast_button_title">Hide Cast</string>
+    <string name="morphe_hide_toolbar_cast_button_summary_on">Cast button is hidden</string>
+    <string name="morphe_hide_toolbar_cast_button_summary_off">Cast button is shown</string>
     <string name="morphe_hide_toolbar_create_button_title">Hide Create</string>
     <string name="morphe_hide_toolbar_create_button_summary_on">Create button is hidden</string>
     <string name="morphe_hide_toolbar_create_button_summary_off">Create button is shown</string>
@@ -1147,6 +1153,9 @@ To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\'
     <string name="morphe_hide_shorts_full_video_link_label_title">Hide video link label</string>
     <string name="morphe_hide_shorts_full_video_link_label_summary_on">Video link label is hidden</string>
     <string name="morphe_hide_shorts_full_video_link_label_summary_off">Video link label is shown</string>
+    <string name="morphe_disable_shorts_double_tap_to_like_title">Disable Shorts double tap to like</string>
+    <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Shorts double tap to like is ignored</string>
+    <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Shorts double tap to like is allowed</string>
     <string name="morphe_hide_shorts_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigation bar is hidden</string>
     <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigation bar is shown</string>
@@ -1432,12 +1441,20 @@ to
 (%3$s)
 
 Ready to submit?"</string>
+    <string name="morphe_sb_new_segment_confirm_submit">Submit</string>
     <string name="morphe_sb_new_segment_start_is_before_end">Start must be before the end</string>
-    <string name="morphe_sb_new_segment_mark_locations_first">Mark two locations on the time bar first</string>
+    <string name="morphe_sb_new_segment_mark_locations_first">First mark a location on the time bar</string>
     <string name="morphe_sb_new_segment_preview_segment_first">Preview the segment, and ensure it skips smoothly</string>
     <string name="morphe_sb_new_segment_edit_by_hand_title">Edit timing of segment manually</string>
     <string name="morphe_sb_new_segment_edit_by_hand_content">Do you want to edit the timing for the start or end of the segment?</string>
     <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Invalid time given</string>
+    <string name="morphe_sb_new_segment_highlight_title">Submit highlight</string>
+    <string name="morphe_sb_new_segment_highlight_content">"Is the highlight time correct?
+
+%s
+
+If you\'re not submitting a highlight, tap Cancel and mark the second location"</string>
+    <string name="morphe_sb_new_segment_highlight_submit">Submit highlight</string>
     <string name="morphe_sb_stats_title">Stats</string>
     <!-- Shown in the settings preferences, and translations can be any text length. -->
     <string name="morphe_sb_stats_connection_failure">Stats are temporarily not available (API is down)</string>
@@ -1721,6 +1738,16 @@ Enabling this can unlock higher video qualities"</string>
     <string name="morphe_disable_haptic_feedback_zoom_title">Disable zoom haptics</string>
     <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoom haptics is disabled</string>
     <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoom haptics is enabled</string>
+
+    <!-- misc.medianotification.mediaNotificationControlsPatch -->
+    <string name="morphe_notification_media_screen_title">Notification media controls</string>
+    <string name="morphe_notification_media_screen_summary">Hide lock screen media control components</string>
+    <string name="morphe_hide_notification_media_prev_next_title">Hide Prev &amp; Next buttons</string>
+    <string name="morphe_hide_notification_media_prev_next_summary_on">Previous &amp; Next buttons are hidden in media notification, lockscreen, and headphone controls</string>
+    <string name="morphe_hide_notification_media_prev_next_summary_off">Previous &amp; Next buttons are shown in notification, lockscreen, and headphone controls</string>
+    <string name="morphe_disable_notification_media_seekbar_title">Disable seekbar</string>
+    <string name="morphe_disable_notification_media_seekbar_summary_on">Seekbar in media notification and lockscreen is read-only</string>
+    <string name="morphe_disable_notification_media_seekbar_summary_off">Seekbar in media notification and lockscreen is draggable</string>
 
     <!-- misc.gms.accountCredentialsInvalidTextPatch -->
     <string name="microg_offline_account_login_error">If you recently changed your account login details, then uninstall and reinstall MicroG.</string>

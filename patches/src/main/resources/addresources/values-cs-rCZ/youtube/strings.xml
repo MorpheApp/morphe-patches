@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Staré menu nastavení se zobrazují</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Staré menu nastavení se nezobrazují</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Odstranit omezení přehrávání na pozadí</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Přehrávání na pozadí není omezeno</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Přehrávání na pozadí je omezené</string>
   <string name="morphe_shorts_disable_background_playback_title">Zakázat přehrávání Shorts na pozadí</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Přehrávání Shorts na pozadí je zakázáno</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Přehrávání Shorts na pozadí je povoleno</string>
@@ -598,8 +601,9 @@ Upravte hlasitost svislým přejetím po pravé straně obrazovky"</string>
   <string name="morphe_swipe_change_video_summary_on">Přejetí prstem v režimu celé obrazovky změní video na další/předchozí</string>
   <string name="morphe_swipe_change_video_summary_off">Přejetí prstem v režimu celé obrazovky nebude video měnit na další/předchozí</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Akční tlačítka</string>
-  <string name="morphe_hide_buttons_screen_summary">Skrýt nebo zobrazit tlačítka pod videi</string>
+  <string name="morphe_action_buttons_screen_title">Akční tlačítka</string>
+  <string name="morphe_action_buttons_screen_summary">Skrýt nebo zobrazit akční tlačítka v režimu celé obrazovky a na výšku</string>
+  <string name="morphe_portrait_buttons">Tlačítka na výšku</string>
   <string name="morphe_disable_like_subscribe_glow_title">Deaktivovat zvýraznění tlačítek Like a Subscribe</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Tlačítka Like a Subscribe po zmínce nebudou zvýrazněna</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Tlačítka Like a Subscribe po zmínce budou zvýrazněna</string>
@@ -665,6 +669,43 @@ Upravte hlasitost svislým přejetím po pravé straně obrazovky"</string>
   <string name="morphe_hide_save_button_title">Skrýt Uložit</string>
   <string name="morphe_hide_save_button_summary_on">Tlačítko Uložit je skryté</string>
   <string name="morphe_hide_save_button_summary_off">Tlačítko Uložit je zobrazeno</string>
+  <string name="morphe_fullscreen_buttons">Tlačítka v režimu celé obrazovky</string>
+  <string name="morphe_hide_quick_actions_title">Skrýt panel akcí</string>
+  <string name="morphe_hide_quick_actions_summary_on">Panel akcí je skrytý</string>
+  <string name="morphe_hide_quick_actions_summary_off">Panel akcí je zobrazen</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Skrýt Zeptat se</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Tlačítko Zeptat se je skryté</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Tlačítko Zeptat se je zobrazeno</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Skrýt komentáře</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Tlačítko komentářů je skryté</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Tlačítko komentářů je zobrazeno</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Skrýt Nelíbí se mi to</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Tlačítko nelíbí se je skryté</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Tlačítko nelíbí se je zobrazeno</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Skrýt To se mi líbí</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Tlačítko lajku je skryté</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Tlačítko lajku je zobrazeno</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Skrýt \"Živý chat\"</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Tlačítko živého chatu je skryté</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Tlačítko živého chatu je zobrazeno</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Skrýt Mix</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Tlačítko Mix je skryté</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Tlačítko Mix je zobrazeno</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Skrýt Více</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Tlačítko Více je skryto</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Tlačítko Více je zobrazeno</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Skrýt \"Více videí\"</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Tlačítko Více videí je skryto</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Tlačítko Více videí je zobrazeno</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Skrýt playlist</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Tlačítko playlistu je skryto</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Tlačítko playlistu je zobrazeno</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Skrýt Uložit</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Tlačítko Uložit je skryté</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Tlačítko Uložit je zobrazeno</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Skrýt Sdílení</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Tlačítko sdílení je skryté</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Tlačítko sdílení je zobrazeno</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Připojení</string>
   <string name="morphe_captions_screen_summary">Zakázat automatické zapínání titulků nebo nastavit cookies pro titulky</string>
@@ -764,7 +805,10 @@ Pro přístup k Nastavení povolte tlačítko Nastavení přes Obecné → Nást
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Navigační panel v tmavém režimu je neprůhledný</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Navigační lišta v tmavém režimu je neprůhledná nebo průsvitná</string>
   <string name="morphe_toolbar_screen_title">Nárazovka</string>
-  <string name="morphe_toolbar_screen_summary">Skrýt nebo změnit součástky nárazovky</string>
+  <string name="morphe_toolbar_screen_summary">Skrýt nebo zobrazit komponenty panelu nástrojů</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Skrýt Cast</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Tlačítko pro odesílání je skryto</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Tlačítko vysílání je viditelné</string>
   <string name="morphe_hide_toolbar_create_button_title">Skrýt Vytvořit</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Tlačítko Vytvořit je skryto</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Tlačítko Vytvořit je zobrazeno</string>
@@ -893,44 +937,6 @@ Abyste zobrazili menu s zvukovými stopami, změňte 'Zamaskované video proudy'
   <string name="morphe_hide_settings_button_title">Skrýt Nastavení</string>
   <string name="morphe_hide_settings_button_summary_on">Tlačítko Nastavení je skryto</string>
   <string name="morphe_hide_settings_button_summary_off">Tlačítko Nastavení je zobrazeno</string>
-  <string name="morphe_quick_actions_screen_title">Rychlé akce</string>
-  <string name="morphe_quick_actions_screen_summary">Skrýt nebo zobrazit související komponenty rychlých akcí v režimu celé obrazovky</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Skrýt Zeptat se</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Tlačítko Zeptat se je skryté</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">Tlačítko Zeptat se je zobrazeno</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Skrýt komentáře</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Tlačítko komentářů je skryté</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">Tlačítko komentářů je zobrazeno</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Skrýt Nelíbí se mi to</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Tlačítko nelíbí se je skryté</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Tlačítko nelíbí se je zobrazeno</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Skrýt To se mi líbí</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">Tlačítko lajku je skryté</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">Tlačítko lajku je zobrazeno</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Skrýt \"Živý chat\"</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Tlačítko živého chatu je skryté</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Tlačítko živého chatu je zobrazeno</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Skrýt Mix</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">Tlačítko Mix je skryté</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">Tlačítko Mix je zobrazeno</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Skrýt Více</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">Tlačítko Více je skryto</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">Tlačítko Více je zobrazeno</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Skrýt \"Více videí\"</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Tlačítko Více videí je skryto</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Tlačítko Více videí je zobrazeno</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Skrýt playlist</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Tlačítko playlistu je skryto</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Tlačítko playlistu je zobrazeno</string>
-  <string name="morphe_hide_quick_actions_title">Skrýt rychlé akce</string>
-  <string name="morphe_hide_quick_actions_summary_on">Rychlé akce jsou skryty</string>
-  <string name="morphe_hide_quick_actions_summary_off">Rychlé akce jsou zobrazeny</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Skrýt Uložit</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">Tlačítko Uložit je skryté</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">Tlačítko Uložit je zobrazeno</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Skrýt Sdílení</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Tlačítko sdílení je skryté</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Tlačítko sdílení je zobrazeno</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Skrýt karty s informacemi o videu</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Karty s informacemi o videu jsou skryty</string>
@@ -1093,6 +1099,9 @@ Abyste zobrazili menu s zvukovými stopami, změňte 'Zamaskované video proudy'
   <string name="morphe_hide_shorts_full_video_link_label_title">Skrýt popisek odkazu na video</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">Štítek odkazu na video je skrytý</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">Štítek odkazu na video je zobrazen</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Vypnout dvojité klepnutí na Shorts pro označení lajkem</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Dvojité klepnutí na Shorts pro označení lajkem je ignorováno</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Dvojité klepnutí na Shorts pro označení lajkem je povoleno</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Skrýt navigační panel</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigační panel je skrytý</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigační panel je zobrazen</string>
@@ -1364,12 +1373,20 @@ do
 (%3$s)
 
 Připraveni k odeslání?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Odeslat</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Začátek musí být před koncem</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Nejprve označte dvě místa na časové liště</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Nejdříve označte polohu na časové ose</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Zobrazte náhled segmentu a ujistěte se, že přeskakuje plynule</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Upravit načasování segmentu ručně</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Chcete upravit načasování pro začátek nebo konec segmentu?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Zadán neplatný čas</string>
+  <string name="morphe_sb_new_segment_highlight_title">Odeslat zvýraznění</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Je čas zvýraznění správný?
+
+%s
+
+Pokud neodesíláte zvýraznění, klepněte na Zrušit a označte druhou polohu."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Odeslat zvýraznění</string>
   <string name="morphe_sb_stats_title">Statistiky</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistiky jsou dočasně nedostupné (API je mimo provoz)</string>
@@ -1623,6 +1640,15 @@ Povolením této funkce lze odemknout vyšší kvality videa"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Zakázat haptiku pro zoom</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Haptika zoomu je vypnutá</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Haptika zoomu je zapnutá</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Ovládací prvky médií pro oznámení</string>
+  <string name="morphe_notification_media_screen_summary">Skrýt ovládací prvky médií na zamykací obrazovce</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skrýt tlačítka Předchozí a Další</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Tlačítka Předchozí a Další jsou skrytá v oznamovací liště, na uzamčené obrazovce a v ovládání sluchátek</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Tlačítka Předchozí a Další jsou zobrazená v oznamovací liště, na uzamčené obrazovce a v ovládání sluchátek</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Zakázat posuvník</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Posuvník v oznamovací liště a na uzamčené obrazovce je jen pro čtení</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Posuvník v oznamovací liště a na uzamčené obrazovce je posouván</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Pokud jste nedávno změnili přihlašovací údaje svého účtu, odinstalujte a znovu nainstalujte MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

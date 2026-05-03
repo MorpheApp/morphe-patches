@@ -165,22 +165,28 @@ val themePatch = baseThemePatch(
                     THEME_DEFAULT_DARK_COLOR_NAMES + if (is_21_06_or_greater)
                         setOf(
                             // yt_ref_color_constants_baseline_black_black0
-                            "yt_sys_color_baseline_dark_menu_background",
                             // yt_ref_color_constants_baseline_black_black1
+                            // yt_ref_color_constants_baseline_black_black3
+                            "yt_sys_color_baseline_dark_menu_background",
                             "yt_sys_color_baseline_dark_static_black",
                             "yt_sys_color_baseline_dark_raised_background",
-                            // yt_ref_color_constants_baseline_black_black3
                             "yt_sys_color_baseline_dark_base_background",
                             "yt_sys_color_baseline_dark_static_black",
                             "yt_sys_color_baseline_light_inverted_background",
                             "yt_sys_color_baseline_light_static_black",
-                        ) else emptySet()
+                            // 21.17+
+                            "yt_sys_color_baseline_mobile_dark_default_base_background",
+                            "yt_sys_color_baseline_mobile_dark_default_raised_background"
+                            ) else emptySet()
                 },
                 lightColorNames = {
                     THEME_DEFAULT_LIGHT_COLOR_NAMES + if (is_21_06_or_greater)
                         setOf(
                             "yt_sys_color_baseline_light_base_background",
-                            "yt_sys_color_baseline_light_raised_background"
+                            "yt_sys_color_baseline_light_raised_background",
+                            // 21.17+
+                            "yt_sys_color_baseline_mobile_light_default_base_background",
+                            "yt_sys_color_baseline_mobile_light_default_raised_background",
                         )
                     else emptySet()
                 }

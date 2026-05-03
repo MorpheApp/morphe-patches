@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">이전 설정 메뉴를 표시합니다</string>
   <string name="morphe_restore_old_settings_menus_summary_off">이전 설정 메뉴를 표시하지 않습니다</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">백그라운드 재생 제한 제거하기</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">백그라운드 재생이 제한되지 않습니다</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">백그라운드 재생이 제한됩니다</string>
   <string name="morphe_shorts_disable_background_playback_title">Shorts 백그라운드 재생 비활성화하기</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts 백그라운드 재생을 비활성화합니다</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts 백그라운드 재생을 활성화합니다\n\n알림: \n• Shorts 백그라운드 재생은 PIP 모드를 통해서만 사용할 수 있습니다</string>
@@ -451,10 +454,10 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
   <string name="morphe_share_copy_url_button_success">URL을 클립보드에 복사하였습니다</string>
   <string name="morphe_share_copy_url_button_timestamp_success">타임스탬프가 표기된 URL을 클립보드에 복사하였습니다</string>
-  <string name="morphe_copy_video_url_button_title">동영상 URL 복사 버튼 표시하기</string>
+  <string name="morphe_copy_video_url_button_title">동영상 URL 복사 표시하기</string>
   <string name="morphe_copy_video_url_button_summary_on">동영상 URL 복사 버튼을 표시합니다</string>
   <string name="morphe_copy_video_url_button_summary_off">동영상 URL 복사 버튼을 표시하지 않습니다</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">동영상 URL 복사 버튼 동작 설정</string>
+  <string name="morphe_copy_video_url_button_timestamp_title">동영상 URL 복사 동작 설정</string>
   <string name="morphe_copy_video_url_button_timestamp_summary_on">버튼을 탭하여 타임스탬프가 표기된 동영상 URL을 복사할 수 있습니다\n길게 탭하면 타임스탬프가 표기되지 않은 동영상 URL이 복사됩니다</string>
   <string name="morphe_copy_video_url_button_timestamp_summary_off">버튼을 탭하여 타임스탬프가 표기되지 않은 동영상 URL을 복사할 수 있습니다\n길게 탭하면 타임스탬프가 표기된 동영상 URL이 복사됩니다</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
@@ -528,7 +531,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_reload_video_button_title">동영상 새로고침 표시하기</string>
   <string name="morphe_reload_video_button_summary_on">동영상 새로고침 버튼을 표시합니다</string>
   <string name="morphe_reload_video_button_summary_off">동영상 새로고침 버튼을 표시하지 않습니다</string>
-  <string name="morphe_dismiss_player_not_available_toast">동영상 ID를 사용할 수 없습니다. 동영상을 수동으로 다시 재생하세요</string>
+  <string name="morphe_dismiss_player_not_available_toast">동영상 ID를 사용할 수 없습니다. 동영상을 수동으로 다시 불러오세요</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">세밀한 탐색 제스처 비활성화하기</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">세밀한 탐색 제스처를 비활성화합니다</string>
@@ -595,8 +598,9 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_swipe_change_video_summary_on">전체 화면 중앙에서 위로/아래로 스와이프하여 다음/이전 동영상으로 전환합니다</string>
   <string name="morphe_swipe_change_video_summary_off">전체 화면 중앙에서 위로/아래로 스와이프하여 다음/이전 동영상으로 전환하지 않습니다</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">동작 버튼</string>
-  <string name="morphe_hide_buttons_screen_summary">플레이어 하단에서 동작 버튼을 숨기거나 표시할 수 있습니다</string>
+  <string name="morphe_action_buttons_screen_title">동작 버튼</string>
+  <string name="morphe_action_buttons_screen_summary">전체 화면 및 세로 모드에서 동작 버튼을 숨기거나 표시할 수 있습니다</string>
+  <string name="morphe_portrait_buttons">세로 모드 버튼</string>
   <string name="morphe_disable_like_subscribe_glow_title">빛나는 \'좋아요\' / \'구독\' 비활성화하기</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">동영상에서 \'Like (좋아요)\' 또는 \'Subscribe (구독)\' 버튼이 언급되었을 때, 해당 버튼에 빛나는 애니메이션을 적용하지 않습니다</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">동영상에서 \'Like (좋아요)\' 또는 \'Subscribe (구독)\' 버튼이 언급되었을 때, 해당 버튼에 빛나는 애니메이션을 적용합니다</string>
@@ -662,6 +666,43 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_save_button_title">저장 숨기기</string>
   <string name="morphe_hide_save_button_summary_on">저장 버튼이 숨겨집니다</string>
   <string name="morphe_hide_save_button_summary_off">저장 버튼이 표시됩니다</string>
+  <string name="morphe_fullscreen_buttons">전체 화면 버튼</string>
+  <string name="morphe_hide_quick_actions_title">동작 버튼바 숨기기</string>
+  <string name="morphe_hide_quick_actions_summary_on">동작 버튼바가 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_summary_off">동작 버튼바가 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">\'질문하기\' 숨기기</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">\'질문하기\' 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">\'질문하기\' 버튼이 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">댓글 숨기기</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">댓글 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">댓글 버튼이 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">싫어요 숨기기</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">싫어요 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">싫어요 버튼이 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_like_button_title">좋아요 숨기기</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">좋아요 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">좋아요 버튼이 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">실시간 채팅 숨기기</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">실시간 채팅 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">실시간 채팅 버튼이 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">믹스 재생목록 숨기기</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">믹스 재생목록 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">믹스 재생목록 버튼이 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_more_button_title">\'메뉴 더보기\' 숨기기</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">\'메뉴 더보기\' 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">\'메뉴 더보기\' 버튼이 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">\'동영상 더보기\' 숨기기</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">\'동영상 더보기\' 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">\'동영상 더보기\' 버튼이 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">재생목록 숨기기</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">재생목록 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">재생목록 버튼이 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_save_button_title">\'재생목록에 저장\' 숨기기</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">\'재생목록에 저장\' 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">\'재생목록에 저장\' 버튼이 표시됩니다</string>
+  <string name="morphe_hide_quick_actions_share_button_title">공유 숨기기</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">공유 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">공유 버튼이 표시됩니다</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">자막</string>
   <string name="morphe_captions_screen_summary">자동 자막을 비활성화하거나 자막 쿠키를 설정할 수 있습니다</string>
@@ -745,7 +786,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_navigation_bar_animations_title">하단바 애니메이션 활성화하기</string>
   <string name="morphe_navigation_bar_animations_summary_on">하단바 전환 애니메이션을 활성화합니다</string>
   <string name="morphe_navigation_bar_animations_summary_off">하단바 전환 애니메이션을 비활성화합니다</string>
-  <string name="morphe_disable_auto_hide_navigation_bar_title">하단바 자동 숨김 비활성화하기</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">하단바 자동 숨기기 비활성화하기</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_on">피드에서 스크롤할 경우에 하단바가 숨겨지지 않습니다</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary_off">피드에서 스크롤할 경우에 하단바가 숨겨질 수 있습니다</string>
   <string name="morphe_disable_translucent_status_bar_title">반투명 상태바 비활성화하기</string>
@@ -761,7 +802,10 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">어두운 테마에서 하단바가 불투명합니다</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">어두운 테마에서 하단바가 불투명하거나 반투명합니다</string>
   <string name="morphe_toolbar_screen_title">툴바</string>
-  <string name="morphe_toolbar_screen_summary">툴바 구성요소를 숨기거나 변경할 수 있습니다</string>
+  <string name="morphe_toolbar_screen_summary">툴바 구성요소를 숨기거나 표시할 수 있습니다</string>
+  <string name="morphe_hide_toolbar_cast_button_title">크롬캐스트 숨기기</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">크롬캐스트 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">크롬캐스트 버튼이 표시됩니다</string>
   <string name="morphe_hide_toolbar_create_button_title">만들기 숨기기</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">만들기 버튼이 숨겨집니다</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">만들기 버튼이 표시됩니다</string>
@@ -785,7 +829,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
 길게 탭하면 Morphe 설정이 열립니다"</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">메뉴 구성요소</string>
-  <string name="morphe_hide_player_flyout_summary">플레이어 메뉴 구성 요소를 숨기거나 표시할 수 있습니다</string>
+  <string name="morphe_hide_player_flyout_summary">플레이어 메뉴 구성요소를 숨기거나 표시할 수 있습니다</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_captions_title">자막 숨기기</string>
   <string name="morphe_hide_player_flyout_captions_summary_on">자막 메뉴가 숨겨집니다</string>
@@ -883,49 +927,11 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_player_control_buttons_background_summary_on">플레이어 컨트롤 버튼 배경이 숨겨집니다</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">플레이어 컨트롤 버튼 배경이 표시됩니다</string>
   <string name="morphe_hide_player_previous_next_buttons_title">이전 &amp; 다음 숨기기</string>
-  <string name="morphe_hide_player_previous_next_buttons_summary_on">이전 &amp; 다음 동영상 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_player_previous_next_buttons_summary_off">이전 &amp; 다음 동영상 버튼이 표시됩니다</string>
+  <string name="morphe_hide_player_previous_next_buttons_summary_on">이전 &amp; 다음 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_player_previous_next_buttons_summary_off">이전 &amp; 다음 버튼이 표시됩니다</string>
   <string name="morphe_hide_settings_button_title">설정 숨기기</string>
   <string name="morphe_hide_settings_button_summary_on">설정 버튼이 숨겨집니다</string>
   <string name="morphe_hide_settings_button_summary_off">설정 버튼이 표시됩니다</string>
-  <string name="morphe_quick_actions_screen_title">빠른 동작 컨테이너</string>
-  <string name="morphe_quick_actions_screen_summary">전체 화면 빠른 동작 컨테이너와 관련된 구성요소를 숨기거나 표시할 수 있습니다</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">\'질문하기\' 숨기기</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">\'질문하기\' 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">\'질문하기\' 버튼이 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">댓글 숨기기</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">댓글 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">댓글 버튼이 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">싫어요 숨기기</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">싫어요 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">싫어요 버튼이 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_like_button_title">좋아요 숨기기</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">좋아요 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">좋아요 버튼이 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">실시간 채팅 숨기기</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">실시간 채팅 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">실시간 채팅 버튼이 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">믹스 재생목록 숨기기</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">믹스 재생목록 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">믹스 재생목록 버튼이 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_more_button_title">\'메뉴 더보기\' 숨기기</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">\'메뉴 더보기\' 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">\'메뉴 더보기\' 버튼이 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">\'동영상 더보기\' 숨기기</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">\'동영상 더보기\' 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">\'동영상 더보기\' 버튼이 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">재생목록 숨기기</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">재생목록 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">재생목록 버튼이 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_title">빠른 동작 컨테이너 숨기기</string>
-  <string name="morphe_hide_quick_actions_summary_on">빠른 동작 컨테이너가 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_summary_off">빠른 동작 컨테이너가 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_save_button_title">\'재생목록에 저장\' 숨기기</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">\'재생목록에 저장\' 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">\'재생목록에 저장\' 버튼이 표시됩니다</string>
-  <string name="morphe_hide_quick_actions_share_button_title">공유 숨기기</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">공유 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">공유 버튼이 표시됩니다</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">최종 화면 카드 숨기기</string>
   <string name="morphe_hide_end_screen_cards_summary_on">최종 화면 카드가 숨겨집니다</string>
@@ -1088,6 +1094,9 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_shorts_full_video_link_label_title">동영상 링크 라벨 숨기기</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">동영상 링크 라벨이 숨겨집니다</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">동영상 링크 라벨이 표시됩니다</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Shorts 두 번 탭하여 좋아요 비활성화하기</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Shorts에서 두 번 탭하면 좋아요가 되지 않습니다</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Shorts에서 두 번 탭하면 좋아요가 됩니다</string>
   <string name="morphe_hide_shorts_navigation_bar_title">하단바 숨기기</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">하단바가 숨겨집니다</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">하단바가 표시됩니다</string>
@@ -1360,12 +1369,20 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
 (%3$s) 까지 입니다
 
 이렇게 제출하시겠습니까?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">제출</string>
   <string name="morphe_sb_new_segment_start_is_before_end">구간의 시작 또는 끝을 잘못 설정하였습니다</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">먼저 재생바에서 시작 지점과 끝 지점을 표시하세요</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">먼저 재생바에서 구간을 표시하세요</string>
   <string name="morphe_sb_new_segment_preview_segment_first">구간 미리 보기 버튼을 탭하여 설정한 구간이 정상적으로 건너뛰기가 되는지 확인하세요</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">직접 시간 구간 편집하기</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">구간의 시작이나 끝을 편집하시겠습니까?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">잘못된 시간 형식입니다</string>
+  <string name="morphe_sb_new_segment_highlight_title">하이라이트 제출</string>
+  <string name="morphe_sb_new_segment_highlight_content">"하이라이트 구간이 정확한가요?
+
+%s
+
+하이라이트를 제출하지 않으려면 ‘취소’를 탭하고 두 번째 구간을 표시하세요"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">하이라이트 제출</string>
   <string name="morphe_sb_stats_title">기록</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">기록을 일시적으로 가져올 수 없습니다 (응답 시간 초과)</string>
@@ -1620,6 +1637,15 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">동영상 확대 진동 피드백 비활성화하기</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">동영상 확대 진동 피드백을 비활성화합니다</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">동영상 확대 진동 피드백을 활성화합니다</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">알림 미디어 컨트롤</string>
+  <string name="morphe_notification_media_screen_summary">잠금 화면 미디어 컨트롤 구성요소를 숨길 수 있습니다</string>
+  <string name="morphe_hide_notification_media_prev_next_title">이전 &amp; 다음 버튼 숨기기</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">미디어 알림, 잠금 화면 그리고 헤드폰 컨트롤에서 이전 &amp; 다음 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">미디어 알림, 잠금 화면 그리고 헤드폰 컨트롤에서 이전 &amp; 다음 버튼이 표시됩니다</string>
+  <string name="morphe_disable_notification_media_seekbar_title">재생바 비활성화하기</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">미디어 알림 및 잠금 화면에서 재생바를 조작할 수 없습니다</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">미디어 알림 및 잠금 화면에서 재생바를 조작할 수 있습니다</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">최근에 계정 로그인 정보를 변경했다면 MicroG를 제거하고 다시 설치하세요.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->
@@ -1652,11 +1678,11 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_remember_video_quality_toast_shorts">%1$s 이용 시 기본 Shorts 화질 값을 %2$s 로 변경하였습니다</string>
   <!-- video.speed.button.playbackSpeedButtonPatch -->
   <string name="morphe_playback_speed_dialog_button_title">동영상 재생 속도 표시하기</string>
-  <string name="morphe_playback_speed_dialog_button_summary_on">재생 속도 버튼이 표시됩니다. 길게 탭하여 재생 속도를 기본값으로 재설정합니다</string>
+  <string name="morphe_playback_speed_dialog_button_summary_on">동영상 재생 속도 버튼을 표시합니다\n버튼을 길게 탭하면 동영상 재생 속도가 기본값으로 초기화됩니다</string>
   <string name="morphe_playback_speed_dialog_button_summary_off">동영상 재생 속도 버튼을 표시하지 않습니다</string>
   <!-- video.quality.button.videoQualityDialogButtonPatch -->
   <string name="morphe_video_quality_dialog_button_title">동영상 화질 표시하기</string>
-  <string name="morphe_video_quality_dialog_button_summary_on">동영상 화질 버튼이 표시됩니다. 버튼을 길게 탭하여 화질을 기본값으로 재설정합니다</string>
+  <string name="morphe_video_quality_dialog_button_summary_on">동영상 화질 버튼을 표시합니다\n버튼을 길게 탭하면 동영상 화질이 기본값으로 초기화됩니다</string>
   <string name="morphe_video_quality_dialog_button_summary_off">동영상 화질 버튼을 표시하지 않습니다</string>
   <!-- video.speed.custom.customPlaybackSpeedPatch -->
   <string name="morphe_custom_speed_menu_title">사용자 정의 동영상 재생 속도 활성화하기</string>
@@ -1682,7 +1708,7 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_on">기본 동영상 재생 속도 값을 변경할 때마다 팝업 메시지를 표시합니다</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary_off">기본 동영상 재생 속도 값을 변경할 때마다 팝업 메시지를 표시하지 않습니다</string>
   <string name="morphe_playback_speed_default_title">기본 동영상 재생 속도</string>
-  <string name="morphe_remember_playback_speed_toast">기본 동영상 재생 속도 값을 %s 로 변경하였습니다</string>
+  <string name="morphe_remember_playback_speed_toast">기본 동영상 재생 속도 값을 %s로 변경하였습니다</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 동영상 비활성화하기</string>
   <string name="morphe_disable_hdr_video_summary_on">HDR 동영상을 비활성화합니다</string>

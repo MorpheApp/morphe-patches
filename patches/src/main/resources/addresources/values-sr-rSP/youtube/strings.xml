@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Приказују се стари менији подешавања</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Не приказују се стари менији подешавања</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Уклоните ограничења за репродукцију у позадини</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Репродукција у позадини није ограничена</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Пуштање у позадини је ограничено</string>
   <string name="morphe_shorts_disable_background_playback_title">Онемогући пуштање Shorts видеа у позадини</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Пуштање Shorts видеа у позадини је онемогућено</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Пуштање Shorts видеа у позадини је омогућено</string>
@@ -594,8 +597,9 @@ Promene uključuju:
   <string name="morphe_swipe_change_video_summary_on">Превлачење у режиму целог екрана ће променити на следећи/претходни видео</string>
   <string name="morphe_swipe_change_video_summary_off">Превлачење у режиму целог екрана неће променити на следећи/претходни видео</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Дугмад радњи</string>
-  <string name="morphe_hide_buttons_screen_summary">Сакријте или прикажите дугмад испод видеа</string>
+  <string name="morphe_action_buttons_screen_title">Дугмад радњи</string>
+  <string name="morphe_action_buttons_screen_summary">Прикажи или сакриј дугмад за рад у пуном екрану и портретном режиму</string>
+  <string name="morphe_portrait_buttons">Дугмад у портретном режиму</string>
   <string name="morphe_disable_like_subscribe_glow_title">Онемогући сјај дугмади „Свиђање” и „Запрати”</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Дугмад „Свиђање” и „Запрати” неће светлети при додиру</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Дугмад „Свиђање” и „Запрати” ће светлети при додиру</string>
@@ -661,6 +665,43 @@ Promene uključuju:
   <string name="morphe_hide_save_button_title">Сакриј дугме „Сачувај”</string>
   <string name="morphe_hide_save_button_summary_on">Дугме „Сачувај” је скривено</string>
   <string name="morphe_hide_save_button_summary_off">Дугме „Сачувај” је приказано</string>
+  <string name="morphe_fullscreen_buttons">Дугмад у пуном екрану</string>
+  <string name="morphe_hide_quick_actions_title">Сакриј траку са акцијама</string>
+  <string name="morphe_hide_quick_actions_summary_on">Трака са акцијама је сакривена</string>
+  <string name="morphe_hide_quick_actions_summary_off">Трака са акцијама је приказана</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Сакриј дугме „Питај”</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Дугме „Питај” је скривено</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Дугме „Питај” је приказано</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Сакриј дугме „Коментари”</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Дугме „Коментари” је скривено</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Дугме „Коментари” је приказано</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Сакриј не свиђа се</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Дугме „Несвиђање” је скривено</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Дугме „Несвиђање” је приказано</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Сакриј свиђа се</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Дугме „Свиђање” је скривено</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Дугме „Свиђање” је приказано</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Сакриј \'Уживо\'</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Дугме „Уживо“ је сакривено</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Дугме „Уживо“ је приказано</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Сакриј микс</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Дугме „Микс“ је сакривено</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Дугме „Микс“ је приказано</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Сакриј више</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Дугме „Више“ је сакривено</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Дугме „Више“ је приказано</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Сакриј \'Више видеа\'</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Дугме „Више видеа“ је сакривено</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Дугме „Више видеа“ је приказано</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Сакриј листу за репродукцију</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Дугме „Листа за репродукцију“ је сакривено</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Дугме „Листа за репродукцију“ је приказано</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Сакриј дугме „Сачувај”</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Дугме „Сачувај” је скривено</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Дугме „Сачувај” је приказано</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Сакриј дугме „Дели”</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Дугме „Дели” је скривено</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Дугме „Дели” је приказано</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Наслов</string>
   <string name="morphe_captions_screen_summary">Онемогутити аутоматско омогућавање наслова или постављање кукија за наслове</string>
@@ -760,7 +801,10 @@ Cookies će biti automatski sačuvani ako su ispravni"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Трака за навигацију у тамном режиму је непрозирна</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Трака за навигацију у тамном режиму је непрозирна или прозирна</string>
   <string name="morphe_toolbar_screen_title">Traka za alatke</string>
-  <string name="morphe_toolbar_screen_summary">Sakrijte ili promenite komponente trake za alatke</string>
+  <string name="morphe_toolbar_screen_summary">Сакриј или прикажи компоненте траке са алаткама</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Сакриј Каст</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Дугме „Пребацуј” је скривено</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Дугме „Пребацуј” је приказано</string>
   <string name="morphe_hide_toolbar_create_button_title">Сакриј дугме „Направи”</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Дугме „Направи” је скривено</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Дугме „Направи” је приказано</string>
@@ -889,44 +933,6 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Imitirati video tokove' u '
   <string name="morphe_hide_settings_button_title">Сакриј подешавања</string>
   <string name="morphe_hide_settings_button_summary_on">Дугме Подешавања је скривено</string>
   <string name="morphe_hide_settings_button_summary_off">Дугме Подешавања је приказано</string>
-  <string name="morphe_quick_actions_screen_title">Брзе радње</string>
-  <string name="morphe_quick_actions_screen_summary">Прикажи или сакриј компоненте брзих радњи у пуном режиму</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Сакриј дугме „Питај”</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Дугме „Питај” је скривено</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">Дугме „Питај” је приказано</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Сакриј дугме „Коментари”</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Дугме „Коментари” је скривено</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">Дугме „Коментари” је приказано</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Сакриј не свиђа се</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Дугме „Несвиђање” је скривено</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Дугме „Несвиђање” је приказано</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Сакриј свиђа се</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">Дугме „Свиђање” је скривено</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">Дугме „Свиђање” је приказано</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Сакриј \'Уживо\'</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Дугме „Уживо“ је сакривено</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Дугме „Уживо“ је приказано</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Сакриј микс</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">Дугме „Микс“ је сакривено</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">Дугме „Микс“ је приказано</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Сакриј више</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">Дугме „Више“ је сакривено</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">Дугме „Више“ је приказано</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Сакриј \'Више видеа\'</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Дугме „Више видеа“ је сакривено</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Дугме „Више видеа“ је приказано</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Сакриј листу за репродукцију</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Дугме „Листа за репродукцију“ је сакривено</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Дугме „Листа за репродукцију“ је приказано</string>
-  <string name="morphe_hide_quick_actions_title">Сакриј брзе радње</string>
-  <string name="morphe_hide_quick_actions_summary_on">Брзе радње су сакривене</string>
-  <string name="morphe_hide_quick_actions_summary_off">Брзе радње су приказане</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Сакриј дугме „Сачувај”</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">Дугме „Сачувај” је скривено</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">Дугме „Сачувај” је приказано</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Сакриј дугме „Дели”</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Дугме „Дели” је скривено</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Дугме „Дели” је приказано</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Сакриј картице завршног екрана</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Картице завршног екрана су скривене</string>
@@ -1089,6 +1095,9 @@ Da bi prikazali meni sa zvučnim stazama, promenite 'Imitirati video tokove' u '
   <string name="morphe_hide_shorts_full_video_link_label_title">Сакриј ознаку линка видеа</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">Ознака линка Shorts видеа је скривена</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">Ознака линка Shorts видеа је приказана</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Онемогући дупли тап на Shorts за лајковање</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Дупли тап на Shorts за лајковање се игнорише</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Дозвољено је дупло кликање на Shorts за лајковање</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Сакриј траку за навигацију</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Трака за навигацију је скривена</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Трака за навигацију је приказана</string>
@@ -1360,12 +1369,20 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
 (%3$s)
 
 Спреман за подношење?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Потврди</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Почетак мора бити пре краја</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Прво означите два места на временској траци</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Прво означите локацију на временској траци</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Прегледајте сегмент и уверите се да глатко прескаче</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Ручно измените време сегмента</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Желите ли да измените време почетка или краја сегмента?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Дато је неважеће време</string>
+  <string name="morphe_sb_new_segment_highlight_title">Пошаљи истакнуто</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Да ли је време истакнутог дела тачно?
+
+%s
+
+Ако не шаљете истакнути део, додирните Откажи и означите другу локацију"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Пошаљи истакнути део</string>
   <string name="morphe_sb_stats_title">Статистика</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Статистике привремено нису доступне (API не ради)</string>
@@ -1619,6 +1636,15 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Онемогући вибрацију при увеличавању</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Вибрација при увеличавању је онемогућена</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Вибрација при увеличавању је омогућена</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Контроле медија за обавештења</string>
+  <string name="morphe_notification_media_screen_summary">Сакриј компоненте контрола медија на закључаном екрану</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Сакај дугмад за претходни и следећи видео</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Дугмад за претходни и следећи видео су сакривена у медија извештају, на екрану за закључавање и у контролама слушалица</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Дугмад за претходни и следећи видео се приказују у медија извештају, на екрану за закључавање и у контролама слушалица</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Онемогући траку за подешавање гласноће</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Трака за подешавање гласноће у медија извештају и на екрану за закључавање је само за читање</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Трака за подешавање гласноће у медија извештају и на екрану за закључавање је подесива</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ако сте недавно променили податке за пријаву на налог, деинсталирајте и поново инсталирајте MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

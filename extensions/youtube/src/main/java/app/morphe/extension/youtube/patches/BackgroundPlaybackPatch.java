@@ -7,10 +7,41 @@ import app.morphe.extension.youtube.shared.ShortsPlayerState;
 @SuppressWarnings("unused")
 public class BackgroundPlaybackPatch {
 
+    private static final boolean REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS
+            = Settings.REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS.get();
+
+    private static final boolean REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS_SHORTS
+            = !Settings.DISABLE_SHORTS_BACKGROUND_PLAYBACK.get();
+
+    /**
+     * Injection point.
+     */
+    public static boolean isPatchEnabled() {
+        return REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean enableFeatureFlag(boolean original) {
+        if (REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS) return true;
+        return original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean disableFeatureFlag(boolean original) {
+        if (REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS) return false;
+        return original;
+    }
+
     /**
      * Injection point.
      */
     public static boolean isBackgroundPlaybackAllowed(boolean original) {
+        if (!REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS) return original;
+
         if (original) return true;
 
         // Steps to verify most edge cases (with Shorts background playback set to off):
@@ -37,6 +68,6 @@ public class BackgroundPlaybackPatch {
      * Injection point.
      */
     public static boolean isBackgroundShortsPlaybackAllowed(boolean original) {
-        return !Settings.DISABLE_SHORTS_BACKGROUND_PLAYBACK.get();
+        return REMOVE_BACKGROUND_PLAYBACK_RESTRICTIONS_SHORTS;
     }
 }
