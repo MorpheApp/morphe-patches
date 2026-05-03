@@ -33,6 +33,7 @@ import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.forEachLiteralValueInstruction
 import app.morphe.util.getMutableMethod
@@ -75,6 +76,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
             SwitchPreference("morphe_hide_shorts_subscriptions"),
             SwitchPreference("morphe_hide_shorts_video_description"),
             SwitchPreference("morphe_hide_shorts_history"),
+            SwitchPreference("morphe_disable_shorts_double_tap_to_like"),
 
             PreferenceScreenPreference(
                 key = "morphe_shorts_player_screen",
@@ -125,7 +127,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     SwitchPreference("morphe_hide_shorts_video_title"),
                     SwitchPreference("morphe_hide_shorts_sound_metadata_label"),
                     SwitchPreference("morphe_hide_shorts_navigation_bar"),
-                ),
+                )
             )
         )
 
@@ -275,5 +277,20 @@ val hideShortsComponentsPatch = bytecodePatch(
         RenderNextUIFeatureFlagFingerprint.method.returnLate(false)
 
         // endregion
+
+        DoubleTapToLikeLogicFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    """
+                        invoke-static { v$register }, $EXTENSION_FILTER->allowDoubleTapToLike(Z)Z
+                        move-result v$register
+                    """
+                )
+            }
+        }
     }
 }

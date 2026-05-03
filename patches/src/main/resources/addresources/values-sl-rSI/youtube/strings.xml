@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Stari meniji nastavitve so prikazani</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Stari meniji nastavitve niso prikazani</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Odstrani omejitve predvajanja v ozadju</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Predvajanje v ozadju ni omejeno</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Predvajanje v ozadju je omejeno</string>
   <string name="morphe_shorts_disable_background_playback_title">Onemogoči predvajanje ozadja za Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Predvajanje ozadja Shorts je onemogočeno</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Predvajanje ozadja Shorts je omogočeno</string>
@@ -597,8 +600,9 @@ Nastavite glasnost z drženjem navpično na desni strani zaslona"</string>
   <string name="morphe_swipe_change_video_summary_on">Drsenje v na pol zaslonu bo preklopilo na naslednji/prejšnji videoposnetek</string>
   <string name="morphe_swipe_change_video_summary_off">Drsenje v na pol zaslonu ne bo preklopilo na naslednji/prejšnji videoposnetek</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Gumbki za ukaze</string>
-  <string name="morphe_hide_buttons_screen_summary">Skrij ali prikaži gumbe pod videoposnetki</string>
+  <string name="morphe_action_buttons_screen_title">Akcijski gumbi</string>
+  <string name="morphe_action_buttons_screen_summary">Skrij ali prikaži akcijske gumbe v celozaslonskem načinu in portretnem načinu</string>
+  <string name="morphe_portrait_buttons">Gumbi v portretnem načinu</string>
   <string name="morphe_disable_like_subscribe_glow_title">Onemogoči svetlobo gumba Všeč mi je in Naroči</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Gumb Všeč mi je in Naroči ne bo svetil, ko se omenja</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Gumb Všeč mi je in Naroči bo svetil, ko se omenja</string>
@@ -664,6 +668,43 @@ Nastavite glasnost z drženjem navpično na desni strani zaslona"</string>
   <string name="morphe_hide_save_button_title">Skrij in shranjuj</string>
   <string name="morphe_hide_save_button_summary_on">Gumb za shranje je skrit</string>
   <string name="morphe_hide_save_button_summary_off">Gumb za shranje je prikazan</string>
+  <string name="morphe_fullscreen_buttons">Gumbi v celozaslonskem načinu</string>
+  <string name="morphe_hide_quick_actions_title">Skrij akcijsko vrstico</string>
+  <string name="morphe_hide_quick_actions_summary_on">Akcijska vrstica je skrita</string>
+  <string name="morphe_hide_quick_actions_summary_off">Akcijska vrstica je prikazana</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Skrij Vprašaj</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Gumb Vprašaj je skrit</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Gumb Vprašaj je prikazan</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Skrij Komentarje</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Gumb Komentarji je skrit</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Gumb Komentarji je prikazan</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Skrij Ne maram</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Gumb Ne maram je skrit</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Gumb Ne maram je prikazan</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Skrij Všeč mi je</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Gumb Všeč mi je je skrit</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Gumb Všeč mi je je prikazan</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Skrij \'Klepet v živo\'</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Gumb Klepet v živo je skrit</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Gumb Klepet v živo je prikazan</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Skrij Mešaj</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Gumb Mešaj je skrit</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Gumb Mešaj je prikazan</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Skrij Več</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Gumb Več je skrit</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Gumb Več je prikazan</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Skrij \'Več videoposnetkov\'</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Gumb Več videoposnetkov je skrit</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Gumb Več videoposnetkov je prikazan</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Skrij Seznam predvajanja</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Gumb Seznam predvajanja je skrit</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Gumb Seznam predvajanja je prikazan</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Skrij Shrani</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Gumb Shrani je skrit</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Gumb Shrani je prikazan</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Skrij Deli</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Gumb Deli je skrit</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Gumb Deli je prikazan</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Napiski</string>
   <string name="morphe_captions_screen_summary">Onemogoči samodejno omogočanje napisov ali nastavljanje piškotkov z napisi</string>
@@ -763,7 +804,10 @@ Za dostop do Nastavitev omogočite gumb Nastavitve prek Splošno → Vrstica →
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Temna navigacijska vrstica je opazna</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Temna navigacijska vrstica je opazna ali prosojna</string>
   <string name="morphe_toolbar_screen_title">Orodje.</string>
-  <string name="morphe_toolbar_screen_summary">Skrij ali spremenite komponente orodne vrstice</string>
+  <string name="morphe_toolbar_screen_summary">Skrij ali prikaži komponente orodne vrstice</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Skrij oddajanje</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Gumb za oddajanje je skrit</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Gumb za oddajanje je prikazan</string>
   <string name="morphe_hide_toolbar_create_button_title">Skrij Ustvarjanje</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Gumb Ustvari je skrit</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Gumb Ustvari je prikazan</string>
@@ -892,44 +936,6 @@ Da prikažete meni zvočnih skladb, spremenite 'Športni video tokove' v 'Androi
   <string name="morphe_hide_settings_button_title">Skrij Nastavitve</string>
   <string name="morphe_hide_settings_button_summary_on">Skrit je gumb Nastavitve</string>
   <string name="morphe_hide_settings_button_summary_off">Prikazan je gumb Nastavitve</string>
-  <string name="morphe_quick_actions_screen_title">Hitre akcije</string>
-  <string name="morphe_quick_actions_screen_summary">Prikaži ali skrij komponente, povezane s hitrimi akcijami v celozaslonskem načinu</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Skrij Vprašaj</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Gumb Vprašaj je skrit</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">Gumb Vprašaj je prikazan</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Skrij Komentarje</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Gumb Komentarji je skrit</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">Gumb Komentarji je prikazan</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Skrij Ne maram</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Gumb Ne maram je skrit</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Gumb Ne maram je prikazan</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Skrij Všeč mi je</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">Gumb Všeč mi je je skrit</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">Gumb Všeč mi je je prikazan</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Skrij \'Klepet v živo\'</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Gumb Klepet v živo je skrit</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Gumb Klepet v živo je prikazan</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Skrij Mešaj</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">Gumb Mešaj je skrit</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">Gumb Mešaj je prikazan</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Skrij Več</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">Gumb Več je skrit</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">Gumb Več je prikazan</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Skrij \'Več videoposnetkov\'</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Gumb Več videoposnetkov je skrit</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Gumb Več videoposnetkov je prikazan</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Skrij Seznam predvajanja</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Gumb Seznam predvajanja je skrit</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Gumb Seznam predvajanja je prikazan</string>
-  <string name="morphe_hide_quick_actions_title">Skrij Hitre akcije</string>
-  <string name="morphe_hide_quick_actions_summary_on">Hitre akcije so skrite</string>
-  <string name="morphe_hide_quick_actions_summary_off">Hitre akcije so prikazane</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Skrij Shrani</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">Gumb Shrani je skrit</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">Gumb Shrani je prikazan</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Skrij Deli</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Gumb Deli je skrit</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Gumb Deli je prikazan</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Skrij kartice končnega zaslona</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Kartice končnega zaslona so skrite</string>
@@ -1092,6 +1098,9 @@ Da prikažete meni zvočnih skladb, spremenite 'Športni video tokove' v 'Androi
   <string name="morphe_hide_shorts_full_video_link_label_title">Skrij oznako povezave do videa</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">Oznaka povezave do videa je skrita</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">Oznaka povezave do videa je prikazana</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Onemogoči dvojni dotik na Shorts za všeček</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Dvojni dotik na Shorts za všeček je ignoriran</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Dvojni tap za všeček na Shorts je dovoljen</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Skrij navigacijsko vrstico</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigacijska vrstica je skrita</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigacijska vrstica je prikazana</string>
@@ -1363,12 +1372,20 @@ do
 (%3$s)
 
 Pripravljeni na oddajo?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Pošlji</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Začetek mora biti pred koncem</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Najprej označite dve lokaciji na časovnici</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Najprej označi lokacijo na časovni vrstici</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Predogled segmenta in zagotovite gladko preskok</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Ročno uredite čas segmenta</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Želite urediti čas za začetek ali konec segmenta?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Napačen čas</string>
+  <string name="morphe_sb_new_segment_highlight_title">Potrdi izpostavljanje</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Je čas osvetlitve pravilen?
+
+%s
+
+Če ne oddajate posnetka, tapnite Prekliči in označite drugo lokacijo."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Pošlji posnetek</string>
   <string name="morphe_sb_stats_title">Statistika</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistika je začasno nedostopna (API je izklopljen)</string>
@@ -1622,6 +1639,15 @@ Omogočanje tega lahko odblokira višje kvalitete videa"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Onemogoči dotik za prilagajanje</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Dotik za prilagajanje je onemogočen</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Dotik za prilagajanje je omogočen</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Nadzorna plošča za medije v obvestilih</string>
+  <string name="morphe_notification_media_screen_summary">Skrij komponente za nadzor medijev na zaklenjenem zaslonu</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skrij gumba \"Predhodna\" in \"Naslednja\"</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Gumba \"Predhodna\" in \"Naslednja\" sta skrita v obvestilu o medijih, na zaklenjenem zaslonu in v nadzorih za slušalke</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Gumba \"Predhodna\" in \"Naslednja\" sta prikazana v obvestilu, na zaklenjenem zaslonu in v nadzorih za slušalke</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Onemogoči drsnik</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Drsnik v obvestilu o medijih in na zaklenjenem zaslonu je samo za branje</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Drsnik v obvestilu o medijih in na zaklenjenem zaslonu je povlečen</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Če ste nedavno spremenili podatke za prijavo v račun, namestite in ponovno namestite MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

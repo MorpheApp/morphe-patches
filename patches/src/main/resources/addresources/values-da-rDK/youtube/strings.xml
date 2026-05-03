@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Gamle indstillingsmenuer er vist</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Gamle indstillingsmenuer er ikke vist</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Fjern restriktioner for afspilning i baggrunden</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Afsspilning i baggrunden er ikke begrænset</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Baggrundsafspilning er begrænset</string>
   <string name="morphe_shorts_disable_background_playback_title">Deaktiver baggrundsafspilning af Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Baggrundsafspilning af Shorts er deaktiveret</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Baggrundsafspilning af Shorts er aktiveret</string>
@@ -598,8 +601,9 @@ Juster lydstyrken ved at swipe lodret i højre side af skærmen"</string>
   <string name="morphe_swipe_change_video_summary_on">Strygning i fuldskærmstilstand vil skifte til den næste/forrige video</string>
   <string name="morphe_swipe_change_video_summary_off">Strygning i fuldskærmstilstand vil ikke ændre til den næste/forrige video</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Handlingsknapper</string>
-  <string name="morphe_hide_buttons_screen_summary">Skjul eller vis knapper under videoer</string>
+  <string name="morphe_action_buttons_screen_title">Handlingsknapper</string>
+  <string name="morphe_action_buttons_screen_summary">Skjul eller vis handlingknapper i fuldskærm og portrættilstand</string>
+  <string name="morphe_portrait_buttons">Portrættilstand-knapper</string>
   <string name="morphe_disable_like_subscribe_glow_title">Deaktiver glød på Like og Abonnér-knappen </string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Like og Abonnér-knappen gløder ikke, når den nævnes</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Like og Abonnér-knappen gløder, når den nævnes</string>
@@ -665,6 +669,43 @@ Juster lydstyrken ved at swipe lodret i højre side af skærmen"</string>
   <string name="morphe_hide_save_button_title">Skjul Gem</string>
   <string name="morphe_hide_save_button_summary_on">Gem-knappen er skjult</string>
   <string name="morphe_hide_save_button_summary_off">Gem-knappen vises</string>
+  <string name="morphe_fullscreen_buttons">Fuldskærm-knapper</string>
+  <string name="morphe_hide_quick_actions_title">Skjul aktionslinjen</string>
+  <string name="morphe_hide_quick_actions_summary_on">Aktionslinjen er skjult</string>
+  <string name="morphe_hide_quick_actions_summary_off">Aktionslinjen vises</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Skjul Spørg</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Spørg-knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Spørg-knappen vises</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Skjul kommentarer</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Kommentar-knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Kommentar-knappen vises</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Skjul Dislike</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Dislike-knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Dislike-knappen er vist</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Skjul Like</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Like-knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Like-knap vises</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Skjul \'Live chat\'</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Live chat knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Live chat knappen vises</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Skjul Mix</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Mix knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Mix knappen vises</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Skjul Mere</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Mere knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Mere knappen vises</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Skjul \'Flere videoer\'</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Flere videoer knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Flere videoer knappen vises</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Skjul Playlist</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Playlist knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Playlist knappen vises</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Skjul Gem</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Gem-knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Gem-knappen vises</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Skjul Del</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Del-knappen er skjult</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Del-knappen vises</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Undertekster</string>
   <string name="morphe_captions_screen_summary">Deaktiver at undertekster aktiveres automatisk eller indstiller undertekst-cookies</string>
@@ -764,7 +805,10 @@ For at få adgang til Indstillinger skal du aktivere knappen Indstillinger via G
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Navigationslinjen i mørk tilstand er ikke gennemsigtig</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Mørk tilstand navigationslinjen er opak eller gennemsigtig</string>
   <string name="morphe_toolbar_screen_title">Værktøjslinje</string>
-  <string name="morphe_toolbar_screen_summary">Skjul eller ændre værktøjslinje-komponenter</string>
+  <string name="morphe_toolbar_screen_summary">Skjul eller vis værktøjslinjekomponenter</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Skjul Cast</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Cast knap er skjult</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Cast knap er vist</string>
   <string name="morphe_hide_toolbar_create_button_title">Skjul Opret</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Opret knap er skjult</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Opret knap vises</string>
@@ -893,44 +937,6 @@ For at vise Lydspor-menuen, ændre 'Spoof video streams' til 'Android Reel' elle
   <string name="morphe_hide_settings_button_title">Skjul Indstillinger</string>
   <string name="morphe_hide_settings_button_summary_on">Indstillinger-knappen er skjult</string>
   <string name="morphe_hide_settings_button_summary_off">Indstillinger-knappen vises</string>
-  <string name="morphe_quick_actions_screen_title">Hurtige handlinger</string>
-  <string name="morphe_quick_actions_screen_summary">Skjul eller vis fuldskærm hurtige handlinger relaterede komponenter</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Skjul Spørg</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Spørg-knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">Spørg-knappen vises</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Skjul kommentarer</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Kommentar-knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">Kommentar-knappen vises</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Skjul Dislike</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Dislike-knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Dislike-knappen er vist</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Skjul Like</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">Like-knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">Like-knap vises</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Skjul \'Live chat\'</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Live chat knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Live chat knappen vises</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Skjul Mix</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">Mix knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">Mix knappen vises</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Skjul Mere</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">Mere knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">Mere knappen vises</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Skjul \'Flere videoer\'</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Flere videoer knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Flere videoer knappen vises</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Skjul Playlist</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Playlist knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Playlist knappen vises</string>
-  <string name="morphe_hide_quick_actions_title">Skjul hurtige handlinger</string>
-  <string name="morphe_hide_quick_actions_summary_on">Hurtige handlinger er skjult</string>
-  <string name="morphe_hide_quick_actions_summary_off">Hurtige handlinger vises</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Skjul Gem</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">Gem-knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">Gem-knappen vises</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Skjul Del</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Del-knappen er skjult</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Del-knappen vises</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Skjul slutskærmkort</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Slutskærmskort er skjult</string>
@@ -1093,6 +1099,9 @@ For at vise Lydspor-menuen, ændre 'Spoof video streams' til 'Android Reel' elle
   <string name="morphe_hide_shorts_full_video_link_label_title">Skjul videolinketiket</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">Videolinketiket er skjult</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">Videolinketiket vises</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Deaktiver dobbelt tap på Shorts for at like</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Dobbelt tap på Shorts for at like ignoreres</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Dobbelt tap for at kunne lide er tilladt på Shorts</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Skjul navigationsbjælken</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigationsbjælken er skjult</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigationsbjælken vises</string>
@@ -1364,12 +1373,20 @@ til
 (%3$s)
 
 Klar til at indsende?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Indsend</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Start skal være før slutningen</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Markér to steder på tidslinjen først</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Markér først et sted på tidslinjen</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Gennemse segmentet, og sikre en glat overgang</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Rediger timing af segment manuelt</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Vil du redigere timingen for start eller afslutning af segmentet?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Ugyldig tid givet</string>
+  <string name="morphe_sb_new_segment_highlight_title">Indsend fremhævelse</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Er fremhævningstiden korrekt?
+
+%s
+
+Hvis du ikke sender en fremhævning, skal du trykke på Annuller og markere den anden placering"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Send fremhævning</string>
   <string name="morphe_sb_stats_title">Statistik</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistikker er midlertidigt ikke tilgængelige (API er nede)</string>
@@ -1623,6 +1640,15 @@ Aktivering af dette kan låse op for højere videokvalitet"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Deaktivér zoom haptics</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoom haptics er deaktiveret</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoom haptics er aktiveret</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Underretningsmedie-kontroller</string>
+  <string name="morphe_notification_media_screen_summary">Skjul låseskærmsmedie-kontrolkomponenter</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skjul Forrige &amp; Næste knapper</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Forrige &amp; Næste knapper er skjult i medienotifikation, låseskærm og hovedtelefonstyring</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Forrige &amp; Næste knapper vises i notifikation, låseskærm og hovedtelefonstyring</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Deaktiver søgefelt</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Søgefeltet i medienotifikation og låseskærm er skrivebeskyttet</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Søgefeltet i medienotifikation og låseskærm kan trækkes i</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Hvis du for nylig har ændret dine kontooplysninger, skal du afinstallere og geninstallere MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Старое меню настроек включено</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Новое меню настроек включено</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Убрать ограничения на фоновое воспроизведение</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Фоновое воспроизведение не ограничено</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Воспроизведение в фоновом режиме ограничено</string>
   <string name="morphe_shorts_disable_background_playback_title">Отключить воспроизведение Shorts в фоновом режиме</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Воспроизведение Shorts в фоновом режиме отключено</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Воспроизведение Shorts в фоновом режиме включено</string>
@@ -600,8 +603,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">Жест в полноэкранном режиме переключает на следующее/предыдущее видео</string>
   <string name="morphe_swipe_change_video_summary_off">Жест в полноэкранном режиме не переключает на следующее/предыдущее видео</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Кнопки действий</string>
-  <string name="morphe_hide_buttons_screen_summary">Скрыть или показать кнопки действий под плеером</string>
+  <string name="morphe_action_buttons_screen_title">Кнопки действий</string>
+  <string name="morphe_action_buttons_screen_summary">Скрыть или показать кнопки действий в полноэкранном и портретном режимах</string>
+  <string name="morphe_portrait_buttons">Кнопки в портретном режиме</string>
   <string name="morphe_disable_like_subscribe_glow_title">Отключить подсветку кнопок \"Лайк\" и \"Подписаться\"</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Кнопки \"Лайк\" и \"Подписаться\" при упоминании не подсвечиваются</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Кнопки \"Лайк\" и \"Подписаться\" при упоминании подсвечиваются</string>
@@ -667,6 +671,43 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">Скрыть кнопку \"Сохранить\"</string>
   <string name="morphe_hide_save_button_summary_on">Кнопка \"Сохранить\" скрыта</string>
   <string name="morphe_hide_save_button_summary_off">Кнопка \"Сохранить\" показана</string>
+  <string name="morphe_fullscreen_buttons">Кнопки в полноэкранном режиме</string>
+  <string name="morphe_hide_quick_actions_title">Скрыть панель действий</string>
+  <string name="morphe_hide_quick_actions_summary_on">Панель действий скрыта</string>
+  <string name="morphe_hide_quick_actions_summary_off">Панель действий показана</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Скрыть кнопку \"Спросить\"</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Кнопка \"Спросить\" скрыта</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Кнопка \"Спросить\" показана</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Скрыть комментарии</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Кнопка \"Комментарии\" в Shorts скрыта</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Кнопка \"Комментарии\" в Shorts показана</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Скрыть «Не понравилось»</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Кнопка \"Дизлайк\" в Shorts скрыта</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Кнопка \"Дизлайк\" в Shorts показана</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Скрыть «Понравилось»</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Кнопка \"Лайк\" в Shorts скрыта</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Кнопка \"Лайк\" в Shorts показана</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Скрыть «Чат»</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Кнопка чата скрыта</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Кнопка чата отображается</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Скрыть «Ремикс»</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Кнопка «Ремикс» скрыта</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Кнопка «Ремикс» отображается</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Скрыть «Другие»</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Кнопка «Другие» скрыта</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Кнопка «Другие» отображается</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Скрыть «Другие видео»</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Кнопка «Другие видео» скрыта</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Кнопка «Другие видео» отображается</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Скрыть «Список воспроизведения»</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Кнопка «Список воспроизведения» скрыта</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Кнопка «Список воспроизведения» отображается</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Скрыть кнопку \"Сохранить\"</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Кнопка \"Сохранить\" скрыта</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Кнопка \"Сохранить\" показана</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Скрыть кнопку \"Поделиться\"</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Кнопка \"Поделиться\" в Shorts скрыта</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Кнопка \"Поделиться\" в Shorts показана</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Субтитры</string>
   <string name="morphe_captions_screen_summary">Отключить автоматическое включение субтитров или установить файлы cookie субтитров</string>
@@ -767,6 +808,9 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Панель навигации при темной теме непрозрачная или полупрозрачная</string>
   <string name="morphe_toolbar_screen_title">Панель инструментов</string>
   <string name="morphe_toolbar_screen_summary">Скрыть или изменить компоненты панели инструментов</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Скрыть трансляцию</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Кнопка \"Трансляции\" скрыта</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Кнопка \"Трансляции\" показана</string>
   <string name="morphe_hide_toolbar_create_button_title">Скрыть \"Создать\"</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Кнопка \"Создать\" скрыта</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Кнопка \"Создать\" показана</string>
@@ -895,44 +939,6 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_settings_button_title">Скрыть настройки</string>
   <string name="morphe_hide_settings_button_summary_on">Кнопка \"Настройки\" скрыта</string>
   <string name="morphe_hide_settings_button_summary_off">Кнопка \"Настройки\" показана</string>
-  <string name="morphe_quick_actions_screen_title">Быстрые действия</string>
-  <string name="morphe_quick_actions_screen_summary">Скрыть или показать компоненты быстрых действий в полноэкранном режиме</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Скрыть кнопку \"Спросить\"</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Кнопка \"Спросить\" скрыта</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">Кнопка \"Спросить\" показана</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Скрыть комментарии</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Кнопка \"Комментарии\" в Shorts скрыта</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">Кнопка \"Комментарии\" в Shorts показана</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Скрыть «Не понравилось»</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Кнопка \"Дизлайк\" в Shorts скрыта</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Кнопка \"Дизлайк\" в Shorts показана</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Скрыть «Понравилось»</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">Кнопка \"Лайк\" в Shorts скрыта</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">Кнопка \"Лайк\" в Shorts показана</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Скрыть «Чат»</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Кнопка чата скрыта</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Кнопка чата отображается</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Скрыть «Ремикс»</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">Кнопка «Ремикс» скрыта</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">Кнопка «Ремикс» отображается</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Скрыть «Другие»</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">Кнопка «Другие» скрыта</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">Кнопка «Другие» отображается</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Скрыть «Другие видео»</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Кнопка «Другие видео» скрыта</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Кнопка «Другие видео» отображается</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Скрыть «Список воспроизведения»</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Кнопка «Список воспроизведения» скрыта</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Кнопка «Список воспроизведения» отображается</string>
-  <string name="morphe_hide_quick_actions_title">Скрыть быстрые действия</string>
-  <string name="morphe_hide_quick_actions_summary_on">Быстрые действия скрыты</string>
-  <string name="morphe_hide_quick_actions_summary_off">Быстрые действия отображаются</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Скрыть кнопку \"Сохранить\"</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">Кнопка \"Сохранить\" скрыта</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">Кнопка \"Сохранить\" показана</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Скрыть кнопку \"Поделиться\"</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Кнопка \"Поделиться\" в Shorts скрыта</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Кнопка \"Поделиться\" в Shorts показана</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Скрыть заставки следующих видео</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Заставки следующих видео в конце просмотра скрыты</string>
@@ -1095,6 +1101,9 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_hide_shorts_full_video_link_label_title">Скрыть метку ссылки на видео</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">Метка ссылки на полное видео в Shorts скрыта</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">Метка ссылки на полное видео в Shorts показана</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Отключить двойное нажатие для отметки «Нравится» в Shorts</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Двойное нажатие для отметки «Нравится» в Shorts игнорируется</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Двойное нажатие для отметки «Нравится» в Shorts разрешено</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Скрыть панель навигации</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Панель навигации в Shorts скрыта</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Панель навигации в Shorts показана</string>
@@ -1367,12 +1376,20 @@ Cookies будут сохраняться автоматически, если �
 (%3$s)
 
 Готов к отправке?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Отправить</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Начало должно быть перед окончанием</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Сначала отметьте два места на шкале времени</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Сначала отметьте местоположение на временной шкале</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Просмотрите сегмент и убедитесь, что пропуск происходит плавно</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Изменить время сегмента вручную</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Вы хотите изменить время начала или окончания сегмента?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Указано неверное время</string>
+  <string name="morphe_sb_new_segment_highlight_title">Отправить выделенное</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Корректно ли выбрано время выделения?
+
+%s
+
+Если вы не отправляете выделенный момент, нажмите «Отмена» и отметьте второе местоположение"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Отправить выделенный момент</string>
   <string name="morphe_sb_stats_title">Статистика</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Статистика временно недоступна (API отключен)</string>
@@ -1626,6 +1643,15 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_disable_haptic_feedback_zoom_title">Отключить виброотклик при масштабировании</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Виброотклик при масштабировании отключен</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Виброотклик при масштабировании включен</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Элементы управления воспроизведением в уведомлениях</string>
+  <string name="morphe_notification_media_screen_summary">Скрыть компоненты управления воспроизведением на заблокированном экране</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Скрыть кнопки «Предыдущий» и «Следующий»</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Кнопки \"Предыдущий\" и \"Следующий\" скрыты в медиа-уведомлении, на экране блокировки и в элементах управления наушников</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Кнопки \"Предыдущий\" и \"Следующий\" отображаются в медиа-уведомлении, на экране блокировки и в элементах управления наушников</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Отключить полосу прокрутки</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Полоса прокрутки в медиа-уведомлении и на экране блокировки доступна только для чтения</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Полоса прокрутки в медиа-уведомлении и на экране блокировки перемещаема</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Если Вы недавно изменили данные для входа в свою учетную запись, удалите и переустановите MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

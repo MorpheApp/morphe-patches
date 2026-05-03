@@ -17,20 +17,111 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Herbegin om die opstelling te voltooi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Program naam</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <string name="morphe_custom_branding_name_entry_5">Pasgemaak</string>
+  <string name="morphe_custom_branding_icon_title">Program ikoon</string>
+  <string name="morphe_custom_branding_icon_entry_1">Oorspronklik</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe swart</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe donker</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe lig</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe speel</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_6">Pasgemaak</string>
+  <string name="morphe_custom_branding_notification_icon_title">Kennisgewingikoon</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Volg app-ikoon</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Kennisgewing</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">U kykgeskiedenis word nie gestoor nie.&lt;br&gt;&lt;br&gt;Dit word heel waarskynlik veroorsaak deur \'n DNS-advertensieblokkeerder of \'n netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit op te los, voeg &lt;b&gt;s.youtube.com&lt;/b&gt; by die witlys of skakel alle DNS-blokkeerders en -proxies af.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Moenie weer wys nie</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Verfraai videostrome</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Verfraai die kliënt videostrome om speelprobleme te voorkom</string>
+  <string name="morphe_spoof_video_streams_title">Verfraai videostrome</string>
+  <string name="morphe_spoof_video_streams_summary_on">"Videostrome word verfraai
+
+As u 'n YouTube Premium-gebruiker is, is hierdie instelling dalk nie nodig nie"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"Videostrome word nie verfraai nie
+
+Speel kan dalk nie werk nie"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Kon nie enige kliëntstrome ophaal nie</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Om hierdie instelling af te skakel, kan dit speelprobleme veroorsaak.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Probeer om dit te aktiveer: Verfraai videostrome &gt; Android VR aanteken</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Standaard kliënt</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR aanteken</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nie by Android VR aangeteken nie. Tik hier om aan te teken</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Tans by Android VR aangeteken</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Om hierdie funksie te gebruik, verander \'Standaard kliënt\' na Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Teken by Android VR aan</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Om by Android VR aan te meld, kan speelprobleme vir sommige gebruikers oplos.
+
+Om aan te meld, druk voort hieronder"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Gaan voort</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Uitlog</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instruksies</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktiveringskode: %s
+
+1. Tik 'Webwerf oopmaak' hieronder om die 'Toestel verbind'-webwerf oop te maak.
+2. Plak vanaf die knipbord (of tik) die aktiveringskode hierbo.
+3. Teken aan by Google indien gevra. Indien u verskeie rekeninge het, kies u YouTube-rekening.
+4. Tik 'YouTube VR toestemming verleen'.
+5. Keer na hierdie app terug nadat u die boodskap 'Toestel verbind' bereik het."</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Webwerf oopmaak</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Mislukte poging om \'n aktiveringskode uit te reik</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Kon nie \'n verifikasietokken genereer nie</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Suksesvol annteken</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Verifikasie is gestoor
+
+• U Morphe-instellings sal nie Android VR-verifikasie invoer/uitvoer nie.
+• Indien hierdie app vir 6 maande nie gebruik word nie, sal Google hierdie verifikasie verwyder nie.
+• U moet weer aanteken indien u u Google-wagwoord verander of hierdie toestel van u Google-instellings deregistreer."</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is tans nie beskikbaar (API het tydperk verstryk)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR-aanmelding het verstryk, probeer om weer by VR aan te meld</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 is tans nie beskikbaar (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 is tans nie beskikbaar</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan nie by VR aanteken nie: webwerfverifikasie is nie goedgekeur nie</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Kan nie by VR aanteken nie: %s</string>
+  <string name="morphe_oauth2_toast_reset">Uitgeklok by Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Ongeldige VR-aantekentokken, probeer om weer by VR aan te teken</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Skakel speler JavaScript-opdatering uit</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Speler JavaScript-opdatering is deaktiveer
+
+• 'n Geldige speler JavaScript-hash is vereis
+• Afspeelings misluk as die Speler JavaScript-hash in GVS ingetrek word"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Speler JavaScript-opdatering is geaktiveer</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Speler JavaScript-hashes is ongeveer een maand geldig, en verouderde hashes kan deur GVS ingetrek word.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Speler JavaScript-hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Voer \'n geldige speler JavaScript-hash in</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Deaktiveer QUIC-protokol</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokol is gedeaktiveer</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC-protokol is geaktiveer</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Deaktiveer DRC-oudio</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC-oudio is gedeaktiveer</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC-oudio is geaktiveer</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Dwing oorspronklike oudiotaal af</string>
+  <string name="morphe_force_original_audio_summary_on">Gebruik oorspronklike oudiotaal</string>
+  <string name="morphe_force_original_audio_summary_off">Gebruik standaard oudio</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Verberg volskermadvertensies</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">Volskermadvertensies is verberg</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">Volskermadvertensies word gewys</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Om hierdie funksie te gebruik, verander \'Verfraai videostrome\' na Android Reel of TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Ontsmet deel skakels</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">Dopnavraagparameter word uit gedeelde skakels verwyder</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">Dopnavraagparameter word nie uit gedeelde skakels verwyder nie</string>
+  <string name="morphe_replace_music_with_youtube_title">Verander deel skakels na youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">Gedeelde skakels gebruik youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">Gedeelde skakels gebruik music.youtube.com</string>
 </resources>

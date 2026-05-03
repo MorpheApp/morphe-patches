@@ -17,12 +17,146 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Instellings</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Is jy seker dat jy wil voortgaan?</string>
+  <string name="morphe_settings_save">Stoor</string>
+  <string name="morphe_settings_reset">Herstel</string>
+  <string name="morphe_settings_reset_color">Herstel kleur</string>
+  <string name="morphe_settings_color_invalid">Ongeldige kleur</string>
+  <string name="morphe_settings_restart_title">Herbegin benodig</string>
+  <string name="morphe_settings_restart_dialog_message">Herstart die program sodat hierdie verandering in werking kan tree.</string>
+  <string name="morphe_settings_restart">Herbegin</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Invoer</string>
+  <string name="morphe_settings_import_copy">Kopie</string>
+  <string name="morphe_settings_import_reset">Morphe instellings is teruggesit na verstek</string>
+  <string name="morphe_settings_import_success">%d instellings ingevoer</string>
+  <string name="morphe_settings_import_failure_parse">Invoer misluk: %s</string>
+  <string name="morphe_settings_search_hint">Soek instellings</string>
+  <string name="morphe_settings_search_no_results_title">Geen resultate gevind vir \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">Probeer \'n ander sleutelwoord</string>
+  <string name="morphe_settings_search_recent_searches">Onlangse soektogte</string>
+  <string name="morphe_settings_search_remove_message">Verwyder uit soekgeskiedenis?</string>
+  <string name="morphe_settings_search_clear_history">Vee soekgeskiedenis uit</string>
+  <string name="morphe_settings_search_clear_history_message">Is jy seker dat jy alle soekgeskiedenis wil uitvee?</string>
+  <string name="morphe_settings_search_tips_title">Soektip</string>
+  <string name="morphe_settings_search_tips_summary">"• Tik op 'n pad om daaroor te navigeer
+• Druk lank op 'n instelling om daaroor te navigeer
+• Druk Enter om 'n soekversoek aan die geskiedenis te voeg
+• Soektogte ignoreer hoofletters en punte
+• Ouerinstellings verskyn bo afgeskakelede ondergeskiede instellings"</string>
+  <string name="morphe_settings_search_empty_history_title">Soekgeskiedenis is leeg</string>
+  <string name="morphe_settings_search_empty_history_summary">Om soekgeskiedenis te stoor, tik \'n soekversoek en druk Enter</string>
+  <string name="morphe_settings_search_history_title">Wys soekgeskiedenis</string>
+  <string name="morphe_settings_search_history_summary_on">Soekgeskiedenis word gewys</string>
+  <string name="morphe_settings_search_history_summary_off">Soekgeskiedenis word nie gewys nie</string>
+  <string name="morphe_show_menu_icons_title">Wys Morphe instellingsikone</string>
+  <string name="morphe_show_menu_icons_summary_on">Instellingsikone word gewys</string>
+  <string name="morphe_show_menu_icons_summary_off">Instellingsikone word nie gewys nie</string>
+  <string name="morphe_language_title">Morphe taal</string>
+  <string name="morphe_language_user_dialog_message">"Vertalings vir sommige tale is dalk ontbrekend of onvolledig.
+
+Om nuwe tale te vertaal of bestaande vertalings te verbeter, besoek morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">Program taal</string>
+  <string name="morphe_pref_import_export_title">Invoer / Uitvoer</string>
+  <string name="morphe_pref_import_export_summary">Importeer / Voer Morphe instellings uit</string>
+  <string name="morphe_settings_import_file">Invoer vanaf vyl</string>
+  <string name="morphe_settings_import_file_success">Instellings is suksesvol ingevoer, tik Stoor om toe te pas</string>
+  <string name="morphe_settings_import_file_failed">Instellings kon nie ingevoer word nie</string>
+  <string name="morphe_settings_export_file">Uitvoer na vyl</string>
+  <string name="morphe_settings_export_file_success">Instellings is suksesvol uitgevoer</string>
+  <string name="morphe_settings_export_file_failed">Instellings kon nie uitgevoer word nie</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Jy gebruik die nuutste Morphe Patches weergawe &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Jy gebruik Morphe Verandering weergawe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Opdatering beskikbaar: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Om jou veranderinge op te dateer, gebruik Morphe om hierdie program weer te herverander.</string>
+  <string name="morphe_settings_about_links_dev_header">Let wel</string>
+  <string name="morphe_settings_about_links_dev_body">Hierdie weergawe is \'n voorvrystelling en jy mag onverwags probleme ervaar</string>
+  <string name="morphe_settings_about_links_header">Amptelike skakels</string>
+  <string name="morphe_settings_about_links_website">Webwerf</string>
+  <string name="morphe_settings_about_links_donate">Skenk</string>
+  <string name="morphe_settings_about_links_translations">Vertalings</string>
+  <string name="morphe_settings_about_links_credits">Erkenning</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Op datum</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Opdatering beskikbaar</string>
+  <string name="morphe_settings_about_contributors_current">Huidige ontwikkeling</string>
+  <string name="morphe_settings_about_contributors_prior">Vorige ontwikkeling</string>
+  <string name="morphe_settings_about_links_morphe">Aktiewe ontwikkeling</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Lisensiekennisgewings</string>
+  <string name="morphe_settings_about_licenses_loading">Laai tans...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Ontfouting</string>
+  <string name="morphe_debug_screen_summary">Skakel foutopsporingsopsies in of uit</string>
+  <string name="morphe_debug_title">Ontfouting logboek</string>
+  <string name="morphe_debug_summary_on">Ontfouting protokolle is geaktiveer</string>
+  <string name="morphe_debug_summary_off">Ontfouting protokolle is gedeaktiveer</string>
+  <string name="morphe_debug_stacktrace_title">Ontfouting logboek stapelspoor</string>
+  <string name="morphe_debug_stacktrace_summary_on">Ontfouting logboeke sluit stapelspore in</string>
+  <string name="morphe_debug_stacktrace_summary_off">Ontfouting logboeke sluit nie stapelspore in nie</string>
+  <string name="morphe_debug_toast_on_error_title">Wys rooster op Morphe fout</string>
+  <string name="morphe_debug_toast_on_error_summary_on">Rooster word gewys as fout voorkom</string>
+  <string name="morphe_debug_toast_on_error_summary_off">Rooster word nie gewys as fout voorkom nie</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Om foutrooster uit te skakel, verberg dit al Morphe foutkennisgewings.
+
+Jy sal nie van enige onverwags gebeurtenisse in kennis gestel word nie."</string>
+  <string name="morphe_debug_export_logs_title">Voer ontfouting protokolle uit</string>
+  <string name="morphe_debug_export_logs_summary">Voer Morphe ontfouting protokolle uit</string>
+  <string name="morphe_debug_export_logs_file">Uitvoer na vyl</string>
+  <string name="morphe_debug_export_logs_success">Ontfouting logboeke is suksesvol uitgevoer</string>
+  <string name="morphe_debug_export_logs_failed">Ontfouting logboeke kon nie uitgevoer word nie</string>
+  <string name="morphe_debug_logs_search_hint">Soek ontfouting logboeke...</string>
+  <string name="morphe_debug_export_logs_clear">Klar</string>
+  <string name="morphe_debug_logs_disabled">Ontfouting logboeke is gedeaktiveer</string>
+  <string name="morphe_debug_logs_none_found">Geen ontfouting logboeke gevind nie</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Ontfouting logboeke gekopieer</string>
+  <string name="morphe_debug_logs_failed_to_export">Ontfouting logboeke kon nie uitgevoer word nie: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Ontfouting logboeke skoongemaak</string>
+  <string name="morphe_debug_feature_flags_manager_title">Kenmerkvlae bestuurder</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Bestuur booleaanse kenmerkvlae</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktiewe kenmerkvlae (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Geblokkeerde kenmerkvlae (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Soek kenmerkvlae...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Kenmerkvlae is gered</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Kenmerkvlae is teruggesit</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Kenmerkvlae gekopieer na knipbord</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Herstart die program om hierdie instelling te gebruik</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">Maak MicroG instellings oop</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG is nie geïnstalleer nie. Installeer dit.</string>
+  <string name="gms_core_dialog_title">Aandag benodig</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG het nie toestemming om op die agtergrond te loop nie.
+
+Volg die \"Moenie my program doodmaak nie\" begeleiding vir jou foon, en pas die instruksies toe op jou MicroG installasie.
+
+Dit is benodig vir die program om te werk."</string>
+  <string name="gms_core_dialog_open_website_text">Maak webwerf oop</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG battery optimerings moet afgeskakel word om probleme te voorkom.
+
+Deaktivering van battery optimerings vir MicroG sal nie batterygebruik negatief beïnvloed nie.
+
+Tik die voortgaan knoppie en laat optimeringsveranderings toe."</string>
+  <string name="gms_core_dialog_continue_text">Gaan voort</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Battery optimerings dialoog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG battery optimerings dialoog word gewys</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG battery optimerings dialoog word nie gewys nie</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering hiervan sal die MicroG battery optimerings prompt verberg.
+
+As battery optimerings nie verander word nie dan mag jy ervaar:
+• Program kan willekeurig sluit
+• Kennisgewings werk dalk nie
+• Agtergrondterugspeel werk dalk nie"</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentele Waarskuwing 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Jy gebruik 'n eksperimentele program weergawe van ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Verwag vreemde programgedrag of ongeïdentifiseerde foute soos ons die veranderinge vir hierdie program weergawe afstel.
+&lt;br/&gt;&lt;br/&gt;
+As jy die mees probleemvrye ervaring wil hê, dan &lt;b&gt;deïnstalleer&lt;/b&gt; dit en herverander die aanbevole program weergawe van ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ek wil eksperimenteel hê</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ek wil stabiel hê</string>
 </resources>

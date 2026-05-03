@@ -13,6 +13,7 @@ package app.morphe.patches.youtube.layout.hide.shorts
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -81,5 +82,21 @@ internal object RenderNextUIFeatureFlagFingerprint : Fingerprint(
     parameters = listOf(),
     filters = listOf(
         literal(45649743L)
+    )
+)
+
+internal object DoubleTapToLikeLogicFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf("Landroid/view/MotionEvent;"),
+    filters = listOf(
+        literal(255),
+        methodCall("Landroid/view/MotionEvent;->getEventTime()J"),
+        methodCall("Ljava/lang/Math;->hypot(DD)D"),
+        fieldAccess(
+            opcode = Opcode.IGET_BOOLEAN,
+            definingClass = "this",
+            location = MatchAfterWithin(25)
+        ),
+        opcode(Opcode.IF_EQZ, location = MatchAfterWithin(5))
     )
 )

@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Ipinapakita ang mga lumang menu ng pagpipilian</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Hindi ipinapakita ang mga lumang menu ng pagpipilian</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Alisin ang mga paghihigpit sa pagtugtog sa likuran</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Walang paghihigpit ang pagtugtog sa likuran</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Pinaghihigpitan ang pagpapatugtog sa background</string>
   <string name="morphe_shorts_disable_background_playback_title">Patayin ang pag-play ng Shorts sa likuran</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Nakapatay ang pag-play ng Shorts sa likuran</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Pinagana ang pag-play ng Shorts sa likuran</string>
@@ -597,8 +600,9 @@ Ayusin ang volume sa pamamagitan ng pag-swipe pababa nang patayo sa kanang bahag
   <string name="morphe_swipe_change_video_summary_on">Ang pag-swipe sa fullscreen mode ay magpapalit sa susunod/nakaraang video</string>
   <string name="morphe_swipe_change_video_summary_off">Ang pag-swipe sa fullscreen mode ay hindi magpapalit sa susunod/nakaraang video</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Mga button ng aksyon</string>
-  <string name="morphe_hide_buttons_screen_summary">Itago o ipakita ang mga button sa ilalim ng mga video</string>
+  <string name="morphe_action_buttons_screen_title">Mga button ng pagkilos</string>
+  <string name="morphe_action_buttons_screen_summary">Itago o ipakita ang mga button ng pagkilos sa fullscreen at portrait</string>
+  <string name="morphe_portrait_buttons">Mga button ng portrait</string>
   <string name="morphe_disable_like_subscribe_glow_title">I-disable ang glow ng Like at Subscribe</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Ang button ng Like at Subscribe ay hindi magliliwanag kapag nabanggit</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Ang button ng Like at Subscribe ay magliliwanag kapag nabanggit</string>
@@ -664,6 +668,43 @@ Ayusin ang volume sa pamamagitan ng pag-swipe pababa nang patayo sa kanang bahag
   <string name="morphe_hide_save_button_title">Itago ang I-save</string>
   <string name="morphe_hide_save_button_summary_on">Nakatago ang button na I-save</string>
   <string name="morphe_hide_save_button_summary_off">Ipinapakita ang button na I-save</string>
+  <string name="morphe_fullscreen_buttons">Mga button ng fullscreen</string>
+  <string name="morphe_hide_quick_actions_title">Itago ang action bar</string>
+  <string name="morphe_hide_quick_actions_summary_on">Nakatago ang action bar</string>
+  <string name="morphe_hide_quick_actions_summary_off">Ipinapakita ang action bar</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Itago ang Magtanong</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">Nakatago ang button na Ask</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">Ipinapakita ang button na Ask</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Itago ang Comments</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Nakatago ang button na Comments</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">Ipinapakita ang button na Comments</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Itago ang Dislike</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Nakatago ang button na Dislike</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Ipinapakita ang button na Dislike</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Itago ang Like</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">Nakatago ang button na Like</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">Ipinapakita ang button na Like</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Itago ang \'Live chat\'</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Nakatago ang button na Live chat</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Ipinapakita ang button na Live chat</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Itago ang Mix</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Nakatago ang button na Mix</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Ipinapakita ang button na Mix</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Itago ang More</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Nakatago ang button na More</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Ipinapakita ang button na More</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Itago ang \'More videos\'</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Nakatago ang button na More videos</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Ipinapakita ang button na More videos</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Itago ang Playlist</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Nakatago ang button na Playlist</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Ipinapakita ang button na Playlist</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Itago ang Save</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">Nakatago ang button na Save</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">Ipinapakita ang button na Save</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Itago ang Share</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Nakatago ang button na Share</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Ipinapakita ang button na Share</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Mga Pamagat</string>
   <string name="morphe_captions_screen_summary">Huwag paganahin ang auto-enable ng captions o i-set ang caption cookies</string>
@@ -763,7 +804,10 @@ Upang ma-access ang Settings, i-enable ang Settings button sa pamamagitan ng Gen
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Ang dark mode navigation bar ay opaque</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Ang dark mode navigation bar ay opaque o translucent</string>
   <string name="morphe_toolbar_screen_title">Toolbar</string>
-  <string name="morphe_toolbar_screen_summary">Itago o baguhin ang mga bahagi ng toolbar</string>
+  <string name="morphe_toolbar_screen_summary">Itago o ipakita ang mga bahagi ng toolbar</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Itago ang Paghahagis</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Nakatago ang Cast button</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Ipinapakita ang Cast button</string>
   <string name="morphe_hide_toolbar_create_button_title">Itago ang Lumikha</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">Nakatago ang button na lumikha</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Ipinapakita ang button na lumikha</string>
@@ -892,44 +936,6 @@ Upang ipakita ang menu ng Audio track, baguhin ang 'Spoof video streams' sa 'And
   <string name="morphe_hide_settings_button_title">Itago ang Settings</string>
   <string name="morphe_hide_settings_button_summary_on">Nakatago ang button ng Mga Setting</string>
   <string name="morphe_hide_settings_button_summary_off">Nakikita ang button ng Mga Setting</string>
-  <string name="morphe_quick_actions_screen_title">Mga mabilisang aksyon</string>
-  <string name="morphe_quick_actions_screen_summary">Itago o ipakita ang mga kaugnay na bahagi ng fullscreen quick actions</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Itago ang Magtanong</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">Nakatago ang button na Ask</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">Ipinapakita ang button na Ask</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Itago ang Comments</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Nakatago ang button na Comments</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">Ipinapakita ang button na Comments</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Itago ang Dislike</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Nakatago ang button na Dislike</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Ipinapakita ang button na Dislike</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Itago ang Like</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">Nakatago ang button na Like</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">Ipinapakita ang button na Like</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Itago ang \'Live chat\'</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Nakatago ang button na Live chat</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Ipinapakita ang button na Live chat</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Itago ang Mix</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">Nakatago ang button na Mix</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">Ipinapakita ang button na Mix</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Itago ang More</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">Nakatago ang button na More</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">Ipinapakita ang button na More</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Itago ang \'More videos\'</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Nakatago ang button na More videos</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Ipinapakita ang button na More videos</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Itago ang Playlist</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Nakatago ang button na Playlist</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Ipinapakita ang button na Playlist</string>
-  <string name="morphe_hide_quick_actions_title">Itago ang Quick actions</string>
-  <string name="morphe_hide_quick_actions_summary_on">Nakatago ang Quick actions</string>
-  <string name="morphe_hide_quick_actions_summary_off">Ipinapakita ang Quick actions</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Itago ang Save</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">Nakatago ang button na Save</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">Ipinapakita ang button na Save</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Itago ang Share</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Nakatago ang button na Share</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Ipinapakita ang button na Share</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Itago ang mga card ng end screen</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Ang mga card ng end screen ay nakatago</string>
@@ -1092,6 +1098,9 @@ Upang ipakita ang menu ng Audio track, baguhin ang 'Spoof video streams' sa 'And
   <string name="morphe_hide_shorts_full_video_link_label_title">Itago ang label ng video link</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">Nakatago ang label ng video link</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">Ipinapakita ang label ng video link</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Huwag paganahin ang dobleng pagtapik sa Shorts para mag-like</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Hindi pinapansin ang dobleng pagtapik sa Shorts para mag-like</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Pinapayagan ang dobleng pag-tap sa Shorts para magustuhan</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Itago ang navigation bar</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Nakatago ang navigation bar</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Ipinapakita ang navigation bar</string>
@@ -1363,12 +1372,20 @@ Na umiiral na"</string>
 (%3$s)
 
 Handa nang isumite?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Isumite</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Dapat bago ang simula kaysa dulo</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Markahan muna ang dalawang lokasyon sa time bar</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Magmarka muna ng lokasyon sa time bar</string>
   <string name="morphe_sb_new_segment_preview_segment_first">I-preview ang segment, at tiyakin na ito ay maayos na nag-skip</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">I-edit ng mano-mano ang timing ng segment</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Gusto mo bang i-edit ang timing para sa simula o dulo ng segment?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Hindi wastong oras ang ibinigay</string>
+  <string name="morphe_sb_new_segment_highlight_title">Isumite ang highlight</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Tama ba ang oras ng highlight?
+
+%s
+
+Kung hindi ka nagsumite ng highlight, pindutin ang Kanselahin at markahan ang pangalawang lokasyon"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Isumite ang highlight</string>
   <string name="morphe_sb_stats_title">Stats</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Pansamantalang hindi magagamit ang stats (pababa ang API)</string>
@@ -1622,6 +1639,15 @@ Ang pag-enable nito ay maaaring mag-unlock ng mas mataas na kalidad ng video"</s
   <string name="morphe_disable_haptic_feedback_zoom_title">I-disable ang haptics ng pag-zoom</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Hindi pinagana ang haptics ng pag-zoom</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Pinagana ang haptics ng pag-zoom</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Mga kontrol sa media ng abiso</string>
+  <string name="morphe_notification_media_screen_summary">Itago ang mga bahagi ng kontrol sa media sa lock screen</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Itago ang Prev &amp; Next na mga button</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Nakatago ang mga Previous &amp; Next na button sa media notification, lockscreen, at headphone controls</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Ipinapakita ang mga Previous &amp; Next na button sa notification, lockscreen, at headphone controls</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Huwag paganahin ang seekbar</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Ang seekbar sa media notification at lockscreen ay read-only</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Ang seekbar sa media notification at lockscreen ay draggable</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Kung kamakailan mo binago ang iyong mga detalye sa pag-login ng account, i-uninstall at i-reinstall ang MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

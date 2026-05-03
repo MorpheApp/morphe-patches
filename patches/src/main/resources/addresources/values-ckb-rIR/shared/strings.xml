@@ -54,44 +54,29 @@ Second \"item\" text"</string>
   <string name="morphe_show_menu_icons_summary_on">نیشانەکانی ڕێکدالەکان دەبیندرێن</string>
   <string name="morphe_show_menu_icons_summary_off">نیشانەکانی ڕێکدالەکان نەبیندرێن</string>
   <string name="morphe_language_title">زمانی مورفە</string>
-  <string name="morphe_language_user_dialog_message">"Wergeran ji bo hin zimanan gengashtekane an nakamîl in.
-
-Da zanîn zimanên nû wergerin an jî wergeranên hebin çêbibin, serdana morphe.software/translate bike"</string>
+  <string name="morphe_language_user_dialog_message">"فريتة‌ي بة‌شي‌كه‌ي زوانه‌كانيش نه‌بوون، يان بة‌تەواوه‌ نه‌كه‌ون.\n\nبۆ وه‌رگێڕانێكی زوانه‌ تازه‌كان ياخود باشكردنێكی وه‌رگێڕانه‌كانی ئێستا، سه‌رداني morphe.software/translate بكه‌"</string>
   <string name="morphe_language_DEFAULT">زمانی ئەپ</string>
   <string name="morphe_pref_import_export_title">هێنانی / ئەگەڕانەوە</string>
   <string name="morphe_pref_import_export_summary">هێنانی / ئەگەڕانەوە ڕێکدالەکانی مورفە</string>
-  <string name="morphe_settings_import_file">Ji pelê wergirin</string>
-  <string name="morphe_settings_import_file_success">Sazkar ji pelê serketin, kilîna Çeke da bi kar bîne</string>
-  <string name="morphe_settings_import_file_failed">ຂ້ອຍບໍ່ສາມາດຈະເບິ່ງຫຍັງໄດ້</string>
-  <string name="morphe_settings_export_file">Bo pelê derxistin</string>
+  <string name="morphe_settings_import_file_failed">نەگەشت بە هاتنەوەی ڕێکخستنەکان</string>
   <string name="morphe_settings_export_file_success">ئەم فێڵانەی دەستخاتن سەرکەوتێت</string>
   <string name="morphe_settings_export_file_failed">\"نەگەشت بە دەربازبوونی ڕێکخستنەکان\"</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">هاتوو ئەڤدە ئەڤ ژ هەند سەركەفتو  %s <i> </i>ڕشتە هەبوو</string>
   <string name="morphe_settings_about_links_dev_header">نوسین</string>
-  <string name="morphe_settings_about_links_dev_body">هاتوو وەختە پیشۆخ و ڕاگەخاویی نەبێت</string>
+  <string name="morphe_settings_about_links_dev_body">صورو اين عميادي هستني استماران إسباقريانها إسباقالدها</string>
   <string name="morphe_settings_about_links_header">سەرچاوەکانی ڕەسمی</string>
-  <string name="morphe_settings_about_links_website">Malpera</string>
-  <string name="morphe_settings_about_links_donate">Xance</string>
-  <string name="morphe_settings_about_links_translations">Wergerandan</string>
-  <string name="morphe_settings_about_links_credits">Credit</string>
-  <string name="morphe_settings_about_links_dev_header_up_to_date">Sererîyê</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Nûkirin peyda bûye</string>
-  <string name="morphe_settings_about_contributors_current">Pêşxistinên heyî</string>
-  <string name="morphe_settings_about_contributors_prior">Pêşxistinên berê</string>
-  <string name="morphe_settings_about_links_morphe">Pêşxistina çalak</string>
-  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
-  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
-  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
-  <string name="morphe_settings_about_links_licenses">Ragihandinên bandora qanûni</string>
-  <string name="morphe_settings_about_licenses_loading">Barkirin...</string>
+  <string name="morphe_settings_about_links_donate">خۆڵبەخش</string>
+  <string name="morphe_settings_about_links_credits">کۆددان</string>
+  <string name="morphe_settings_about_links_licenses">دەربارەی نوسینەکانی لایسەنسی</string>
+  <string name="morphe_settings_about_licenses_loading">ءنتفائورك،</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">سەرپێچوان</string>
   <string name="morphe_debug_screen_summary">هەرێمێک دەوێت دەخاتەوە یا ڕا دەخاتەوە</string>
   <string name="morphe_debug_title">خه‌ت ووتاره‌</string>
   <string name="morphe_debug_summary_on">خه‌ت ووتاره‌ى دروۇرته</string>
   <string name="morphe_debug_summary_off">خه‌ت ووتاره‌ى دروزمايانا</string>
-  <string name="morphe_debug_toast_on_error_title"> Reproducedrh जए रहखम् Յ․.“</string>
+  <string name="morphe_debug_toast_on_error_title">نیشاندانی ڕێوشوێنی Morphe-ی نیشاده</string>
   <string name="morphe_debug_toast_on_error_summary_on">ئاگاداری دەبیندرێت ئەگەر ڕەشە بێت</string>
   <string name="morphe_debug_toast_on_error_summary_off">ئاگاداری نەبیندرێت ئەگەر ڕەشە بێت</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"خواردنی ڕەشە ئاگاداری ڕەشە ڕاخشایە.
@@ -102,14 +87,15 @@ Da zanîn zimanên nû wergerin an jî wergeranên hebin çêbibin, serdana morp
   <string name="morphe_debug_feature_flags_manager_summary">ڕێکخستنی خەڵاتە بە ئەزموونی زمان</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_summary">Sazkarên MicroG-ê veke</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG نەستاوە. ئەوەی بێخە.</string>
-  <string name="gms_core_dialog_title">پێداویستی ڕێکار</string>
+  <string name="gms_core_dialog_title">پێویستییه کار</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG ڕێگە نە دێت بیکه لە ڕەگەزێ. ڕێگە دێت دەربارە ڕێکاری ئەلیزانینی ڕێکار کە ڕۆژئەوسنیدي بێت.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG ڕێگە بەوە نادات لە پشتەوە کار بکات.
 
-ئەو خاسانەیە پێویستە ئەپ کارکێ."</string>
+ئامۆژگاری \"ئەپیم مەکوێشت بە پاشەوە کارکات\" بۆ مۆبایڵی خۆت ببینە و ڕێنماییەکانی دابخە سەر ناسیناوەی MicroG-ت.
+
+ئەوە بۆ ئەوە پێویستە کە ئەپ کار بکاتەوە."</string>
   <string name="gms_core_dialog_open_website_text">بکە وبسایتێک تێکده</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"مەتباری بەتاڕی ژیانی MicroG دەبێت راشراو بۆ ئەوەی ڕێگای ڕەشە کار نییە.
 

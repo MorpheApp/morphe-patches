@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">แสดงเมนูการตั้งค่าแบบเก่า</string>
   <string name="morphe_restore_old_settings_menus_summary_off">ไม่แสดงเมนูการตั้งค่าแบบเก่า</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">ลบข้อจำกัดการเล่นในพื้นหลัง</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">การเล่นในพื้นหลังไม่ถูกจำกัด</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">การเล่นเพลงในเบื้องหลังถูกจำกัด</string>
   <string name="morphe_shorts_disable_background_playback_title">ปิดการเล่นพื้นหลัง Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">การเล่นพื้นหลัง Shorts ถูกปิดใช้งาน</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">การเล่นพื้นหลัง Shorts ถูกเปิดใช้งาน</string>
@@ -596,8 +599,9 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_change_video_summary_on">การปัดในโหมดเต็มหน้าจอจะเปลี่ยนไปเป็นวิดีโอถัดไป/ก่อนหน้า</string>
   <string name="morphe_swipe_change_video_summary_off">การปัดในโหมดเต็มหน้าจอจะไม่เปลี่ยนเป็นวิดีโอถัดไป/ก่อนหน้า</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">ปุ่มการกระทำ</string>
-  <string name="morphe_hide_buttons_screen_summary">ซ่อนหรือแสดงปุ่มใต้วิดีโอ</string>
+  <string name="morphe_action_buttons_screen_title">ปุ่มการกระทำ</string>
+  <string name="morphe_action_buttons_screen_summary">ซ่อนหรือแสดงปุ่มดำเนินการในโหมดเต็มหน้าจอและแนวตั้ง</string>
+  <string name="morphe_portrait_buttons">ปุ่มในโหมดแนวตั้ง</string>
   <string name="morphe_disable_like_subscribe_glow_title">ปิดการเรืองแสงถูกใจและติดตาม</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">ปุ่มถูกใจและกดติดตามจะไม่เรืองแสงเมื่อกล่าวถึง</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">ปุ่มถูกใจและกดติดตามจะเรืองแสงเมื่อกล่าวถึง</string>
@@ -663,6 +667,43 @@ Second \"item\" text"</string>
   <string name="morphe_hide_save_button_title">ซ่อนบันทึก</string>
   <string name="morphe_hide_save_button_summary_on">ปุ่มบันทึกถูกซ่อน</string>
   <string name="morphe_hide_save_button_summary_off">ปุ่มบันทึกถูกแสดง</string>
+  <string name="morphe_fullscreen_buttons">ปุ่มในโหมดเต็มหน้าจอ</string>
+  <string name="morphe_hide_quick_actions_title">ซ่อนแถบแอ็กชัน</string>
+  <string name="morphe_hide_quick_actions_summary_on">ซ่อนแถบแอ็กชันแล้ว</string>
+  <string name="morphe_hide_quick_actions_summary_off">แสดงแถบแอ็กชัน</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">ซ่อนปุ่มถาม</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">ปุ่มถามถูกซ่อนอยู่</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">ปุ่มถามแสดงอยู่</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">ซ่อนความคิดเห็น</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">ปุ่มความคิดเห็นถูกซ่อนอยู่</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">ปุ่มความคิดเห็นถูกแสดงอยู่</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">ซ่อนปุ่มไม่ถูกใจ</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">ปุ่ม \'ไม่ชอบ\' ถูกซ่อนอยู่</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">ปุ่ม \'ไม่ชอบ\' ถูกแสดงอยู่</string>
+  <string name="morphe_hide_quick_actions_like_button_title">ซ่อนปุ่มถูกใจ</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">ปุ่มไลก์ถูกซ่อนไว้</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">ปุ่ม Like  เปิดใช้งาน</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">ซ่อน \'แชทสด\'</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">ปุ่มแชทสดถูกซ่อนไว้</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">ปุ่มแชทสดแสดงอยู่</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">ซ่อนการ Mix</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">ปุ่ม Mix ถูกซ่อนไว้</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">ปุ่ม Mix แสดงอยู่</string>
+  <string name="morphe_hide_quick_actions_more_button_title">ซ่อน \'เพิ่มเติม\'</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">ปุ่ม \'เพิ่มเติม\' ถูกซ่อนไว้</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">ปุ่ม \'เพิ่มเติม\' แสดงอยู่</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">ซ่อน \'วิดีโอเพิ่มเติม\'</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">ปุ่ม \'วิดีโอเพิ่มเติม\' ถูกซ่อนไว้</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">ปุ่ม \'วิดีโอเพิ่มเติม\' แสดงอยู่</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">ซ่อนเพลย์ลิสต์</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">ปุ่มเพลย์ลิสต์ถูกซ่อนไว้</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">ปุ่มเพลย์ลิสต์แสดงอยู่</string>
+  <string name="morphe_hide_quick_actions_save_button_title">ซ่อนบันทึก</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">ปุ่มบันทึกถูกซ่อน</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">ปุ่มบันทึกถูกแสดง</string>
+  <string name="morphe_hide_quick_actions_share_button_title">ซ่อนแบ่งปัน</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">ปุ่มแชร์ถูกซ่อน</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">\"แชร์\" ปุ่มแสดง</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">คำบรรยาย</string>
   <string name="morphe_captions_screen_summary">ห้ามเปิดคำบรรยายอัตโนมัติหรือตั้งคุกกี้คำบรรยาย</string>
@@ -762,7 +803,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">แถบนำทางโหมดมืดเป็นแบบทึบแสง</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">แถบนำทางโหมดมืดโปร่งแสงหรือไม่โปร่งแสง</string>
   <string name="morphe_toolbar_screen_title">แถบเครื่องมือ</string>
-  <string name="morphe_toolbar_screen_summary">ซ่อนหรือเปลี่ยนส่วนประกอบแถบเครื่องมือ</string>
+  <string name="morphe_toolbar_screen_summary">ซ่อนหรือแสดงส่วนประกอบแถบเครื่องมือ</string>
+  <string name="morphe_hide_toolbar_cast_button_title">ซ่อนการแคสต์</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">ปุ่มแคสต์ซ่อนอยู่</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">ปุ่มแคสต์แสดงอยู่</string>
   <string name="morphe_hide_toolbar_create_button_title">ซ่อนสร้าง</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">ปุ่มสร้างถูกซ่อน</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">ปุ่มสร้างถูกแสดง</string>
@@ -891,44 +935,6 @@ Second \"item\" text"</string>
   <string name="morphe_hide_settings_button_title">ซ่อนการตั้งค่า</string>
   <string name="morphe_hide_settings_button_summary_on">ปุ่มการตั้งค่าถูกซ่อน</string>
   <string name="morphe_hide_settings_button_summary_off">ปุ่มการตั้งค่าแสดงอยู่</string>
-  <string name="morphe_quick_actions_screen_title">การดำเนินการด่วน</string>
-  <string name="morphe_quick_actions_screen_summary">ซ่อนหรือแสดงส่วนประกอบที่เกี่ยวข้องกับการดำเนินการด่วนในโหมดเต็มจอ</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">ซ่อนปุ่มถาม</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">ปุ่มถามถูกซ่อนอยู่</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">ปุ่มถามแสดงอยู่</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">ซ่อนความคิดเห็น</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">ปุ่มความคิดเห็นถูกซ่อนอยู่</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">ปุ่มความคิดเห็นถูกแสดงอยู่</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">ซ่อนปุ่มไม่ถูกใจ</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">ปุ่ม \'ไม่ชอบ\' ถูกซ่อนอยู่</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">ปุ่ม \'ไม่ชอบ\' ถูกแสดงอยู่</string>
-  <string name="morphe_hide_quick_actions_like_button_title">ซ่อนปุ่มถูกใจ</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">ปุ่มไลก์ถูกซ่อนไว้</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">ปุ่ม Like  เปิดใช้งาน</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">ซ่อน \'แชทสด\'</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">ปุ่มแชทสดถูกซ่อนไว้</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">ปุ่มแชทสดแสดงอยู่</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">ซ่อนการ Mix</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">ปุ่ม Mix ถูกซ่อนไว้</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">ปุ่ม Mix แสดงอยู่</string>
-  <string name="morphe_hide_quick_actions_more_button_title">ซ่อน \'เพิ่มเติม\'</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">ปุ่ม \'เพิ่มเติม\' ถูกซ่อนไว้</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">ปุ่ม \'เพิ่มเติม\' แสดงอยู่</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">ซ่อน \'วิดีโอเพิ่มเติม\'</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">ปุ่ม \'วิดีโอเพิ่มเติม\' ถูกซ่อนไว้</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">ปุ่ม \'วิดีโอเพิ่มเติม\' แสดงอยู่</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">ซ่อนเพลย์ลิสต์</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">ปุ่มเพลย์ลิสต์ถูกซ่อนไว้</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">ปุ่มเพลย์ลิสต์แสดงอยู่</string>
-  <string name="morphe_hide_quick_actions_title">ซ่อนการดำเนินการด่วน</string>
-  <string name="morphe_hide_quick_actions_summary_on">การดำเนินการด่วนถูกซ่อนไว้</string>
-  <string name="morphe_hide_quick_actions_summary_off">การดำเนินการด่วนแสดงอยู่</string>
-  <string name="morphe_hide_quick_actions_save_button_title">ซ่อนบันทึก</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">ปุ่มบันทึกถูกซ่อน</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">ปุ่มบันทึกถูกแสดง</string>
-  <string name="morphe_hide_quick_actions_share_button_title">ซ่อนแบ่งปัน</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">ปุ่มแชร์ถูกซ่อน</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">\"แชร์\" ปุ่มแสดง</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">ซ่อนการ์ดหน้าจอสิ้นสุด</string>
   <string name="morphe_hide_end_screen_cards_summary_on">การ์ดหน้าจอสิ้นสุดซ่อนอยู่</string>
@@ -1091,6 +1097,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_full_video_link_label_title">ซ่อนป้ายกำกับลิงก์วิดีโอ</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">ซ่อนป้ายชื่อลิงก์วิดีโอเต็ม</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">แสดงป้ายชื่อลิงก์วิดีโอเต็ม</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">ปิดการแตะสองครั้งเพื่อชอบวิดีโอ Shorts</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">การแตะสองครั้งเพื่อชอบวิดีโอ Shorts จะถูกเพิกเฉย</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">อนุญาตให้แตะสองครั้งเพื่อชอบวิดีโอ Shorts</string>
   <string name="morphe_hide_shorts_navigation_bar_title">ซ่อนแถบนำทาง</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">ซ่อนแถบนำทางแล้ว</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">ไม่ซ่อนแถบนำทาง</string>
@@ -1361,12 +1370,20 @@ User id ของคุณเหมือนกับรหัสผ่าน �
 (%3$s)
 
 พร้อมที่จะส่งหรือยัง?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">ส่ง</string>
   <string name="morphe_sb_new_segment_start_is_before_end">จุดเริ่มต้นต้องอยู่ก่อนจุดสิ้นสุด</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">กำหนดจุดบนเส้นเวลาก่อน</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">ระบุตำแหน่งบนแถบเวลาขั้นแรก</string>
   <string name="morphe_sb_new_segment_preview_segment_first">ดูตัวอย่างส่วน และตรวจสอบ</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">แก้ไขส่วนแบบมือ</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">คุณต้องการแก้ไขจุดเริ่มต้นและจุดจบของส่วนนี้ไหม?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">ค่าเวลาที่ให้มาผิดพลาด</string>
+  <string name="morphe_sb_new_segment_highlight_title">ส่งไฮไลต์</string>
+  <string name="morphe_sb_new_segment_highlight_content">"เวลาไฮไลท์ถูกต้องหรือไม่?
+
+%s
+
+หากคุณไม่ได้ส่งไฮไลท์ ให้แตะยกเลิกและทำเครื่องหมายที่ตำแหน่งที่สอง"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">ส่งไฮไลท์</string>
   <string name="morphe_sb_stats_title">สถิติ</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">สถิติไม่พร้อมใช้งานชั่วคราว (API ไม่ทำงาน)</string>
@@ -1620,6 +1637,15 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_disable_haptic_feedback_zoom_title">ปิดใช้งานแฮปติกซูม</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">ปิดใช้งานแฮปติกซูม</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">เปิดใช้งานแฮปติกซูม</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">ตัวควบคุมสื่อการแจ้งเตือน</string>
+  <string name="morphe_notification_media_screen_summary">ซ่อนส่วนประกอบการควบคุมสื่อบนหน้าจอล็อค</string>
+  <string name="morphe_hide_notification_media_prev_next_title">ซ่อนปุ่มก่อนหน้า &amp; ถัดไป</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">ปุ่มก่อนหน้า &amp; ถัดไปจะถูกซ่อนไว้ในการแจ้งเตือน, หน้าจอล็อค และการควบคุมหูฟัง</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">ปุ่มก่อนหน้า &amp; ถัดไปจะแสดงในการแจ้งเตือน, หน้าจอล็อค และการควบคุมหูฟัง</string>
+  <string name="morphe_disable_notification_media_seekbar_title">ปิดใช้งานแถบเลื่อน</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">แถบเลื่อนในการแจ้งเตือนสื่อและหน้าจอล็อคจะอ่านได้อย่างเดียว</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">แถบเลื่อนในการแจ้งเตือนสื่อและหน้าจอล็อคสามารถลากได้</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">หากคุณเพิ่งเปลี่ยนรายละเอียดการเข้าสู่ระบบบัญชีของคุณ ให้ถอนการติดตั้งและติดตั้ง MicroG ใหม่อีกครั้ง</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

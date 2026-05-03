@@ -15,4 +15,60 @@
 Second \"item\" text"</string>
 
 -->
-<resources></resources>
+<resources>
+  <string name="morphe_screen_ads_title">Advertensies</string>
+  <string name="morphe_hide_post_ads_title">Verberg strokie-advertensies</string>
+  <string name="morphe_hide_post_ads_summary">Verberg advertensies in die strokie</string>
+  <string name="morphe_hide_comment_ads_title">Verberg kommentaar-advertensies</string>
+  <string name="morphe_hide_comment_ads_summary">Verberg advertensies in die kommentaarafdeling</string>
+  <string name="morphe_screen_layout_title">Uitleg</string>
+  <string name="morphe_disable_modern_home_title">Deaktiveer moderne tuisblad</string>
+  <string name="morphe_disable_modern_home_summary">Deaktiveer die moderne tuisblad-UI</string>
+  <string name="morphe_disable_screenshot_popup_title">Skakel kiekie-opspringkassie af</string>
+  <string name="morphe_disable_screenshot_popup_summary">Deaktiveer die opspringkassie wat verskyn wanneer \'n skermkiekie geneem word</string>
+  <string name="morphe_hide_ask_button_title">Verberg Vra-knoppie</string>
+  <string name="morphe_hide_ask_button_summary">Verberg die Vra-knoppie in die soekbalk</string>
+  <string name="morphe_hide_answers_button_title">Verberg Antwoorde-knoppie</string>
+  <string name="morphe_hide_answers_button_summary">Verberg die Antwoorde-knoppie in die navigasiebalk</string>
+  <string name="morphe_hide_chat_button_title">Verberg Chat-knoppie</string>
+  <string name="morphe_hide_chat_button_summary">Verberg die Chat-knoppie in die navigasiebalk</string>
+  <string name="morphe_hide_create_button_title">Verberg Skep-knoppie</string>
+  <string name="morphe_hide_create_button_summary">Verberg die Skep-knoppie in die navigasiebalk</string>
+  <string name="morphe_hide_discover_button_title">Verberg Ontdek of Gemeenskappe-knoppie</string>
+  <string name="morphe_hide_discover_button_summary">Verberg die Ontdek of Gemeenskappe-knoppie in die navigasiebalk</string>
+  <string name="morphe_hide_games_button_title">Verberg Speletjies-knoppie</string>
+  <string name="morphe_hide_games_button_summary">Verberg die Speletjies-knoppie in die navigasiebalk</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Verberg Onlangs Besoekte-rak</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Verberg die Onlangs Besoekte-rak in die sybalk</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Verberg Speletjies op Reddit-rak</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Verberg die Speletjies op Reddit-rak in die sidebar</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Verberg Reddit Pro-rak</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Verberg die Reddit Pro-rak in die sybalk</string>
+  <string name="morphe_hide_about_shelf_title">Verberg Inligting-rak</string>
+  <string name="morphe_hide_about_shelf_summary">Verberg die Inligting-rak in die sidebar</string>
+  <string name="morphe_hide_resources_shelf_title">Verberg Hulpbron-rak</string>
+  <string name="morphe_hide_resources_shelf_summary">Verberg die Hulpbron-rak in die sybalk</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Verberg aanbevole gemeenskappe</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Verberg die aanbevole gemeenskappe-rakke in subreddits</string>
+  <string name="morphe_hide_trending_today_shelf_title">Verberg Trending Vandag-rak</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Verberg die Trending vandag-rak uit soekvoorstelle
+
+Beperking: Visuele afstandhouers kan nie weggesteek word nie"</string>
+  <string name="morphe_remove_notification_dialog_title">Verwyder kennisgewing-voorstel-dialoog</string>
+  <string name="morphe_remove_notification_dialog_summary">Verwyder die kennisgewing-voorstel-dialoog wat verskyn wanneer \'n subreddit besoek word deur dit outomaties af te wys</string>
+  <string name="morphe_show_view_count_title">Wys vertoon telling</string>
+  <string name="morphe_show_view_count_summary">"Wys die vertoon telling van Plakkate
+
+Beperking: Word slegs gewys as die API-antwoord die vertoon telling insluit"</string>
+  <string name="morphe_remove_nsfw_dialog_title">Verwyder NSFW waarskuwing-dialoog</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Verwyder die NSFW waarskuwing-dialoog wat verskyn wanneer \'n subreddit besoek word deur dit outomaties te aanvaar</string>
+  <string name="morphe_screen_miscellaneous_title">Diverse</string>
+  <string name="morphe_about_title">Inligting</string>
+  <string name="morphe_about_summary">Verandering weergawe en amptelike skakels</string>
+  <string name="morphe_sanitize_sharing_links_title">Ontsmet deel skakels</string>
+  <string name="morphe_sanitize_sharing_links_summary">Ontsmet deel skakels deur dopnavraagparameters te verwyder</string>
+  <string name="morphe_open_links_directly_title">Maak skakels direk oop</string>
+  <string name="morphe_open_links_directly_summary">Slaan oordirigering-URL\'s in eksterne skakels oor</string>
+  <string name="morphe_open_links_externally_title">Maak skakels ekstern oop</string>
+  <string name="morphe_open_links_externally_summary">Maak skakels in jou blaaier oop in plaas van in die in-app-blaaier</string>
+</resources>

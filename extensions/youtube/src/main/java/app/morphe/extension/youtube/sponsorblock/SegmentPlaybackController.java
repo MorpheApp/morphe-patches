@@ -622,12 +622,12 @@ public class SegmentPlaybackController {
                         }
                     }, delayUntilSkip);
                 }
+            }
 
-                // Clear undo range if video time is outside the segment.  Must check last.
-                if (undoAutoSkipRange != null && !undoAutoSkipRange.contains(millis)) {
-                    Logger.printDebug(() -> "Clearing undo range as current time is now outside range: " + undoAutoSkipRange);
-                    undoAutoSkipRange = null;
-                }
+            // Clear undo range if video time is outside the segment. Must check last.
+            if (undoAutoSkipRange != null && !undoAutoSkipRange.contains(millis)) {
+                Logger.printDebug(() -> "Clearing undo range as current time is now outside range: " + undoAutoSkipRange);
+                undoAutoSkipRange = null;
             }
         } catch (Exception e) {
             Logger.printException(() -> "setVideoTime failure", e);
@@ -709,6 +709,8 @@ public class SegmentPlaybackController {
             }
 
             // Set or update undo skip range.
+            Range<Long> oldRange = undoAutoSkipRange;
+            Range<Long> oldUndoAutoSkipRangeToast = undoAutoSkipRangeToast;
             Range<Long> range = segmentToSkip.getUndoRange();
             if (undoAutoSkipRange == null) {
                 Logger.printDebug(() -> "Setting new undo range to: " + range);
@@ -726,6 +728,10 @@ public class SegmentPlaybackController {
             if (!seekSuccessful) {
                 // Can happen when switching videos and is normal.
                 Logger.printDebug(() -> "Could not skip segment (seek unsuccessful): " + segmentToSkip);
+                // Must restore prior undo otherwise manually seeking into
+                // an auto skip always segment breaks always autoskip with newer app targets.
+                undoAutoSkipRange = oldRange;
+                undoAutoSkipRangeToast = oldUndoAutoSkipRangeToast;
                 return;
             }
 

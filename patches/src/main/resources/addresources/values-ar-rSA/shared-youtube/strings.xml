@@ -38,24 +38,24 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">لا تعرض مرة أخرى</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Spoof Video Streams</string>
-  <string name="morphe_spoof_video_streams_screen_summary">تزييف بثوث الفيديو الخاصة بالعميل لمنع مشكلات التشغيل</string>
+  <string name="morphe_spoof_video_streams_screen_summary">ضبط تدفقات الفيديو الخاصة بالعميل لمنع مشكلات التشغيل</string>
   <string name="morphe_spoof_video_streams_title">Spoof Video Streams</string>
-  <string name="morphe_spoof_video_streams_summary_on">"يتم تزييف تدفقات الفيديو
+  <string name="morphe_spoof_video_streams_summary_on">"يتم ضبط تدفقات الفيديو
 
 إذا كنت مستخدمًا لـ YouTube Premium، فقد لا يكون هذا الإعداد مطلوبًا"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"لا يتم تزييف تدفقات الفيديو
+  <string name="morphe_spoof_video_streams_summary_off">"لا يتم ضبط تدفقات الفيديو
 
 قد لا يعمل تشغيل الفيديو"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">تعذر جلب أي تدفقات عميل</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">قد يؤدي إيقاف تشغيل هذا الإعداد إلى مشكلات في التشغيل.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">جرب تمكين: تضمين تدفقات الفيديو &gt; تسجيل الدخول إلى Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">جرب تمكين: Spoof Video Streams &gt; تسجيل الدخول إلى Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">العميل الافتراضي</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">تسجيل الدخول إلى Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">لم يتم تسجيل الدخول إلى Android VR. انقر هنا لتسجيل الدخول</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">مسجل حالياً في Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">مسجل حاليًا في Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">للحصول على هذه الميزة، غيّر \'العميل الافتراضي\' إلى Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">تسجيل الدخول إلى Android VR</string>
@@ -118,9 +118,9 @@ Second \"item\" text"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">لاستخدام هذه الميزة، غيّر \'Spoof Video Streams\' إلى Android Reel أو TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">تطهير روابط المشاركة</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">تمت إزالة معلمة استعلام التتبع من الروابط عند المشاركة</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">لم تتم إزالة معلمة استعلام التتبع من الروابط عند المشاركة</string>
+  <string name="morphe_sanitize_sharing_links_title">تنظيف روابط المشاركة</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">تمت إزالة وسيط التتبع من الروابط عند المشاركة</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">لم تتم إزالة وسيط التتبع من الروابط عند المشاركة</string>
   <string name="morphe_replace_music_with_youtube_title">تغيير روابط المشاركة إلى youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">تستخدم روابط المشاركة youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">تستخدم روابط المشاركة music.youtube.com</string>

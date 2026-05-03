@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.KeyEvent
 import android.view.MotionEvent
 import android.view.ViewGroup
+import android.view.WindowInsets
 import app.morphe.extension.shared.Logger.printDebug
 import app.morphe.extension.shared.Logger.printException
 import app.morphe.extension.youtube.patches.VersionCheckPatch
@@ -21,6 +22,7 @@ import app.morphe.extension.youtube.swipecontrols.controller.gesture.core.Gestur
 import app.morphe.extension.youtube.swipecontrols.misc.Rectangle
 import app.morphe.extension.youtube.swipecontrols.views.SwipeControlsOverlayLayout
 import java.lang.ref.WeakReference
+import kotlin.concurrent.Volatile
 
 /**
  * The main controller for volume and brightness swipe controls.
@@ -67,6 +69,12 @@ class SwipeControlsHostActivity : Activity() {
      */
     private val contentRoot
         get() = window.decorView.findViewById<ViewGroup>(android.R.id.content)
+
+    /**
+     * whether the status bar is visible on Android 15+ (edge-to-edge display)
+     */
+    @Volatile
+    var statusBarVisible: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -155,6 +163,18 @@ class SwipeControlsHostActivity : Activity() {
 
         // set current instance reference
         currentHost = WeakReference(this)
+
+        // fix edge-to-edge display
+        // see: https://github.com/MorpheApp/morphe-patches/issues/658
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.VANILLA_ICE_CREAM) {
+            val rootView = contentRoot.parent
+            if (rootView is ViewGroup) {
+                rootView.setOnApplyWindowInsetsListener { _, insets ->
+                    statusBarVisible = insets.isVisible(WindowInsets.Type.statusBars())
+                    insets
+                }
+            }
+        }
     }
 
     /**

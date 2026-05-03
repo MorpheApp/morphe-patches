@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">पुराने सेटिंग्स मेनू दिखाए जाते हैं</string>
   <string name="morphe_restore_old_settings_menus_summary_off">पुराने सेटिंग्स मेनू नहीं दिखाए जाते हैं</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">पृष्ठभूमि प्लेबैक प्रतिबंध हटाएं</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">पृष्ठभूमि प्लेबैक अप्रतिबंधित है</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">पृष्ठभूमि प्लेबैक प्रतिबंधित है</string>
   <string name="morphe_shorts_disable_background_playback_title">डिसेबल शॉर्ट्स बैकग्राउंड प्ले</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">बैकग्राउंड प्ले डिसेबल हो गया है</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">बैकग्राउंड प्ले एनबल हो गया है</string>
@@ -597,8 +600,9 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_swipe_change_video_summary_on">फुलस्क्रीन मोड में स्वाइप करना अगले/पिछले वीडियो पर जाएगी</string>
   <string name="morphe_swipe_change_video_summary_off">फुलस्क्रीन मोड में ஸ्लाइड करना अगले/पिछले वीडियो को बदलने के लिए नहीं जाएगा।</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">क्रिया बटन</string>
-  <string name="morphe_hide_buttons_screen_summary">वीडियो के नीचे बटन छुपाएं या दिखाएं</string>
+  <string name="morphe_action_buttons_screen_title">क्रिया बटन</string>
+  <string name="morphe_action_buttons_screen_summary">फ़ुलस्क्रीन और पोर्ट्रेट में एक्शन बटन छिपाएँ या दिखाएँ</string>
+  <string name="morphe_portrait_buttons">पोर्ट्रेट बटन</string>
   <string name="morphe_disable_like_subscribe_glow_title">लाइक और सबस्क्राइब ग्लो को डिसेबल करें</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">लाइक और सब्सक्राइब बटन रोशनी नहीं होगी जब कहा जाएगा</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">लाइक और सब्सक्राइब बटन रोशनी होगी जब कहा जाएगा</string>
@@ -664,6 +668,43 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_hide_save_button_title">सेव छिपाएं</string>
   <string name="morphe_hide_save_button_summary_on">सेव बटन छिपा है</string>
   <string name="morphe_hide_save_button_summary_off">सेव बटन दिख रहा है</string>
+  <string name="morphe_fullscreen_buttons">फ़ुलस्क्रीन बटन</string>
+  <string name="morphe_hide_quick_actions_title">एक्शन बार छिपाएं</string>
+  <string name="morphe_hide_quick_actions_summary_on">एक्शन बार छिपा हुआ है</string>
+  <string name="morphe_hide_quick_actions_summary_off">एक्शन बार दिखाया गया है</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">पूछ ताछ छुपाएं </string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">पूछ ताछ बटन छुपा हुआ है</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">पूछ ताछ बटन दिख रहा है</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">टिप्पणियाँ को छिपाएं</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">कमेंट्स बटन छुपा हुआ है</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">टिप्पणियों की बटन दिखाई दी है</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">डिस्लाइक छुपाएं</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">डिस्लाइक बटन छिपा है</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">डिस्लाइक बटन दिखाया गया है</string>
+  <string name="morphe_hide_quick_actions_like_button_title">लाइक छुपाएं</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">लाइक बटन छिपा है</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">लाइक बटन दिखाया गया है</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">\'लाइव चैट\' छुपाएं</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">लाइव चैट बटन छिपा है</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">लाइव चैट बटन दिखाया गया है</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">मिश्रण छुपाएं</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">मिश्रण बटन छिपा है</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">मिश्रण बटन दिखाया गया है</string>
+  <string name="morphe_hide_quick_actions_more_button_title">अधिक छुपाएं</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">अधिक बटन छिपा है</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">अधिक बटन दिखाया गया है</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">\'अधिक वीडियो\' छुपाएं</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">अधिक वीडियो बटन छिपा है</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">अधिक वीडियो बटन दिखाया गया है</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">प्लेलिस्ट छुपाएं</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">प्लेलिस्ट बटन छिपा है</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">प्लेलिस्ट बटन दिखाया गया है</string>
+  <string name="morphe_hide_quick_actions_save_button_title">सेव छिपाएं</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">सेव बटन छिपा है</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">सेव बटन दिख रहा है</string>
+  <string name="morphe_hide_quick_actions_share_button_title">छिपाएं शेयर</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">शेयर बटन छुपा हुआ है</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">शेयर बटन दिखाया गया है</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">शीर्षक</string>
   <string name="morphe_captions_screen_summary">शीर्षकों को स्वचालित रूप से सक्षम होने से रोकें या कप्शन कुकीज़ सेट करें</string>
@@ -763,7 +804,10 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">डार्क मोड का नेविगेशन बार अपारदर्शी है</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">डार्क मोड का नेविगेशन बार अपारदर्शी या पारदर्शी है</string>
   <string name="morphe_toolbar_screen_title">टूलबार</string>
-  <string name="morphe_toolbar_screen_summary">टूलबार घटकों को छुपाएं या बदलें</string>
+  <string name="morphe_toolbar_screen_summary">टूलबार घटकों को छुपाएं या दिखाएं</string>
+  <string name="morphe_hide_toolbar_cast_button_title">कास्ट छुपाएं</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">कास्ट बटन छिपा हुआ है</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">कास्ट बटन दिख रहा है</string>
   <string name="morphe_hide_toolbar_create_button_title">छुपाएं बनाएं</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">सृजना बटन छुपा हुआ है</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">सृजना बटन दिखाया जाता है</string>
@@ -892,44 +936,6 @@ Morphe सेटिंग्स खोलने के लिए टैप औ�
   <string name="morphe_hide_settings_button_title">सेटिंग्स छुपाएं</string>
   <string name="morphe_hide_settings_button_summary_on">सेटिंग्स बटन छुपा हुआ है</string>
   <string name="morphe_hide_settings_button_summary_off">सेटिंग्स बटन दिखाया गया है</string>
-  <string name="morphe_quick_actions_screen_title">त्वरित क्रियाएँ</string>
-  <string name="morphe_quick_actions_screen_summary">फ़ुलस्क्रीन त्वरित क्रियाओं से संबंधित घटकों को छुपाएं या दिखाएं</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">पूछ ताछ छुपाएं </string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">पूछ ताछ बटन छुपा हुआ है</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">पूछ ताछ बटन दिख रहा है</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">टिप्पणियाँ को छिपाएं</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">कमेंट्स बटन छुपा हुआ है</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">टिप्पणियों की बटन दिखाई दी है</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">डिस्लाइक छुपाएं</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">डिस्लाइक बटन छिपा है</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">डिस्लाइक बटन दिखाया गया है</string>
-  <string name="morphe_hide_quick_actions_like_button_title">लाइक छुपाएं</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">लाइक बटन छिपा है</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">लाइक बटन दिखाया गया है</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">\'लाइव चैट\' छुपाएं</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">लाइव चैट बटन छिपा है</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">लाइव चैट बटन दिखाया गया है</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">मिश्रण छुपाएं</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">मिश्रण बटन छिपा है</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">मिश्रण बटन दिखाया गया है</string>
-  <string name="morphe_hide_quick_actions_more_button_title">अधिक छुपाएं</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">अधिक बटन छिपा है</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">अधिक बटन दिखाया गया है</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">\'अधिक वीडियो\' छुपाएं</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">अधिक वीडियो बटन छिपा है</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">अधिक वीडियो बटन दिखाया गया है</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">प्लेलिस्ट छुपाएं</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">प्लेलिस्ट बटन छिपा है</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">प्लेलिस्ट बटन दिखाया गया है</string>
-  <string name="morphe_hide_quick_actions_title">त्वरित क्रियाएँ छुपाएं</string>
-  <string name="morphe_hide_quick_actions_summary_on">त्वरित क्रियाएँ छिपी हैं</string>
-  <string name="morphe_hide_quick_actions_summary_off">त्वरित क्रियाएँ दिखाई जा रही हैं</string>
-  <string name="morphe_hide_quick_actions_save_button_title">सेव छिपाएं</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">सेव बटन छिपा है</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">सेव बटन दिख रहा है</string>
-  <string name="morphe_hide_quick_actions_share_button_title">छिपाएं शेयर</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">शेयर बटन छुपा हुआ है</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">शेयर बटन दिखाया गया है</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">एंड स्क्रीन कार्ड छिपाएं</string>
   <string name="morphe_hide_end_screen_cards_summary_on">एंड स्क्रीन कार्ड छिपे हुए हैं</string>
@@ -1092,6 +1098,9 @@ Morphe सेटिंग्स खोलने के लिए टैप औ�
   <string name="morphe_hide_shorts_full_video_link_label_title">वीडियो लिंक लेबल छुपाएं</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">वीडियो लिंक लेबल छिपा हुआ है</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">वीडियो लिंक लेबल दिखाया गया है</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">शॉर्ट्स पर डबल टैप से लाइक बंद करें</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">शॉर्ट्स पर डबल टैप से लाइक को अनदेखा किया जाता है</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">शॉर्ट्स पर डबल टैप करके लाइक करने की अनुमति है</string>
   <string name="morphe_hide_shorts_navigation_bar_title">नेविगेशन बार छिपाएं</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">नेविगेशन बार छिपा हुआ है</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">नेविगेशन बार दिखाया गया है</string>
@@ -1359,12 +1368,20 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
 (%3$s)
 
 क्या सबमिट करने के लिए तैयार हैं?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">जमा करें</string>
   <string name="morphe_sb_new_segment_start_is_before_end">शुरू अंत से पहले होना चाहिए</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">समय पट्टी पर पहले दो स्थान चिह्नित करें</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">पहले समय बार पर एक स्थान चिह्नित करें</string>
   <string name="morphe_sb_new_segment_preview_segment_first">खंड का पूर्वावलोकन करें, और सुनिश्चित करें कि यह सुचारू रूप से छोड़ देता है</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">खंड के समय को मैन्युअल रूप से संपादित करें</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">क्या आप खंड के आरंभ या अंत के समय को संपादित करना चाहेंगे?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">अमान्य समय दिया गया</string>
+  <string name="morphe_sb_new_segment_highlight_title">हाइलाइट जमा करें</string>
+  <string name="morphe_sb_new_segment_highlight_content">"क्या हाइलाइट का समय सही है?
+
+%s
+
+यदि आप हाइलाइट सबमिट नहीं कर रहे हैं, तो रद्द करें पर टैप करें और दूसरा स्थान चिह्नित करें।"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">हाइलाइट सबमिट करें</string>
   <string name="morphe_sb_stats_title">आंकड़े</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">आंकड़े अस्थायी रूप से उपलब्ध नहीं हैं (API डाउन)</string>
@@ -1618,6 +1635,15 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">ज़ूम haptिक्स अक्षम करें</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">ज़ूम haptिक्स अक्षम है</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">ज़ूम haptिक्स सक्षम है</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">सूचना मीडिया नियंत्रण</string>
+  <string name="morphe_notification_media_screen_summary">लॉक स्क्रीन मीडिया नियंत्रण घटकों को छिपाएं</string>
+  <string name="morphe_hide_notification_media_prev_next_title">छिपाएँ पिछला और अगला बटन</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">मीडिया सूचना, लॉकस्क्रीन और हेडफ़ोन नियंत्रण में पिछला और अगला बटन छिपाए गए हैं</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">मीडिया सूचना, लॉकस्क्रीन और हेडफ़ोन नियंत्रण में पिछला और अगला बटन दिखाए जाते हैं</string>
+  <string name="morphe_disable_notification_media_seekbar_title">सीकबार अक्षम करें</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">मीडिया सूचना और लॉकस्क्रीन में Seekbar केवल पढ़ने के लिए है</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">मीडिया सूचना और लॉकस्क्रीन में Seekbar ड्रैग करने योग्य है</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">यदि आपने हाल ही में अपना खाता लॉगिन विवरण बदल दिया है, तो MicroG को अनइंस्टॉल और फिर से इंस्टॉल करें।</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

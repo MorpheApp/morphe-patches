@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Os menus de configurações antigos são mostrados</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Os menus de configurações antigos não são mostrados</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Remover restrições de reprodução em segundo plano</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">A reprodução em segundo plano não possui restrições</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">A reprodução em segundo plano está restrita</string>
   <string name="morphe_shorts_disable_background_playback_title">Desativar reprodução de fundo de Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Reprodução de fundo de Shorts está desativada</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Reprodução de fundo de Shorts está ativa</string>
@@ -597,8 +600,9 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_swipe_change_video_summary_on">Deslizar no modo de ecrã inteiro mudará para o vídeo seguinte/anterior</string>
   <string name="morphe_swipe_change_video_summary_off">Deslizar no modo de ecrã inteiro não mudará para o vídeo seguinte/anterior</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_hide_buttons_screen_title">Botões de ação</string>
-  <string name="morphe_hide_buttons_screen_summary">Esconder ou mostrar botões sob vídeos</string>
+  <string name="morphe_action_buttons_screen_title">Botões de ação</string>
+  <string name="morphe_action_buttons_screen_summary">Ocultar ou exibir botões de ação em tela cheia e modo retrato</string>
+  <string name="morphe_portrait_buttons">Botões em modo retrato</string>
   <string name="morphe_disable_like_subscribe_glow_title">Desativar o brilho de \"Gostar\" e \"Subscrever\"</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Os botões “Gosto” e “Subscrever” não brilham quando são mencionados</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">O botão de gostar e subscrever brilhará quando mencionado</string>
@@ -664,6 +668,43 @@ Ajuste o volume deslizando verticalmente no lado direito da tela"</string>
   <string name="morphe_hide_save_button_title">Ocultar Salvar</string>
   <string name="morphe_hide_save_button_summary_on">O botão Salvar está oculto</string>
   <string name="morphe_hide_save_button_summary_off">O botão Salvar está exibido</string>
+  <string name="morphe_fullscreen_buttons">Botões em tela cheia</string>
+  <string name="morphe_hide_quick_actions_title">Ocultar barra de ação</string>
+  <string name="morphe_hide_quick_actions_summary_on">A barra de ação está oculta</string>
+  <string name="morphe_hide_quick_actions_summary_off">A barra de ação está visível</string>
+  <string name="morphe_hide_quick_actions_ask_button_title">Ocultar Perguntar</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_on">O botão Perguntar está oculto</string>
+  <string name="morphe_hide_quick_actions_ask_button_summary_off">O botão Perguntar está visível</string>
+  <string name="morphe_hide_quick_actions_comments_button_title">Ocultar Comentários</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_on">Botão de comentários está escondido</string>
+  <string name="morphe_hide_quick_actions_comments_button_summary_off">O botão Comentários está visível</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Ocultar Não Gostei</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Botão não curtir está escondido</string>
+  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Botão não curtir é visível</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Ocultar Gostei</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_on">O botão curtir está escondido</string>
+  <string name="morphe_hide_quick_actions_like_button_summary_off">O botão curtir está visível</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">Ocultar \'Chat ao vivo\'</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">O botão de chat ao vivo está oculto</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">O botão de chat ao vivo está visível</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Ocultar Mix</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">O botão de Mix está oculto</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">O botão de Mix está visível</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Ocultar Mais</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">O botão Mais está oculto</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">O botão Mais está visível</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">Ocultar \'Mais vídeos\'</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">O botão \'Mais vídeos\' está oculto</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">O botão \'Mais vídeos\' está visível</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Ocultar Playlist</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">O botão Playlist está oculto</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">O botão Playlist está visível</string>
+  <string name="morphe_hide_quick_actions_save_button_title">Ocultar Salvar</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_on">O botão Salvar está oculto</string>
+  <string name="morphe_hide_quick_actions_save_button_summary_off">O botão Salvar está exibido</string>
+  <string name="morphe_hide_quick_actions_share_button_title">Esconder compartilhamento</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_on">Botão Partilhar está escondido</string>
+  <string name="morphe_hide_quick_actions_share_button_summary_off">Botão Partilhar está visível</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Legendas</string>
   <string name="morphe_captions_screen_summary">Desativar legendas de serem automaticamente ativadas ou definir cookies de legenda</string>
@@ -763,7 +804,10 @@ Para acessar as configurações, habilite o botão Configurações via Geral →
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">A barra de navegação no modo escuro é opaca</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">A barra de navegação em modo escuro é opaca ou translúcida</string>
   <string name="morphe_toolbar_screen_title">Barra de ferramentas</string>
-  <string name="morphe_toolbar_screen_summary">Ocultar ou alterar componentes da barra de ferramentas</string>
+  <string name="morphe_toolbar_screen_summary">Ocultar ou mostrar componentes da barra de ferramentas</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Ocultar Transmissão</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_on">Botão \"Transmitir\" está escondido</string>
+  <string name="morphe_hide_toolbar_cast_button_summary_off">Botão \"Transmitir\" é visível</string>
   <string name="morphe_hide_toolbar_create_button_title">Esconder Criar</string>
   <string name="morphe_hide_toolbar_create_button_summary_on">O botão criar está escondido</string>
   <string name="morphe_hide_toolbar_create_button_summary_off">Botão criar é visível</string>
@@ -892,44 +936,6 @@ Para exibir o menu de trilha de áudio, altere 'Spoof video streams' para 'Andro
   <string name="morphe_hide_settings_button_title">Ocultar Configurações</string>
   <string name="morphe_hide_settings_button_summary_on">O botão de configurações está oculto</string>
   <string name="morphe_hide_settings_button_summary_off">Botão de configurações é visível</string>
-  <string name="morphe_quick_actions_screen_title">Ações rápidas</string>
-  <string name="morphe_quick_actions_screen_summary">Ocultar ou mostrar os componentes relacionados às ações rápidas em tela cheia</string>
-  <string name="morphe_hide_quick_actions_ask_button_title">Ocultar Perguntar</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_on">O botão Perguntar está oculto</string>
-  <string name="morphe_hide_quick_actions_ask_button_summary_off">O botão Perguntar está visível</string>
-  <string name="morphe_hide_quick_actions_comments_button_title">Ocultar Comentários</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_on">Botão de comentários está escondido</string>
-  <string name="morphe_hide_quick_actions_comments_button_summary_off">O botão Comentários está visível</string>
-  <string name="morphe_hide_quick_actions_dislike_button_title">Ocultar Não Gostei</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_on">Botão não curtir está escondido</string>
-  <string name="morphe_hide_quick_actions_dislike_button_summary_off">Botão não curtir é visível</string>
-  <string name="morphe_hide_quick_actions_like_button_title">Ocultar Gostei</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_on">O botão curtir está escondido</string>
-  <string name="morphe_hide_quick_actions_like_button_summary_off">O botão curtir está visível</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_title">Ocultar \'Chat ao vivo\'</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">O botão de chat ao vivo está oculto</string>
-  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">O botão de chat ao vivo está visível</string>
-  <string name="morphe_hide_quick_actions_mix_button_title">Ocultar Mix</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_on">O botão de Mix está oculto</string>
-  <string name="morphe_hide_quick_actions_mix_button_summary_off">O botão de Mix está visível</string>
-  <string name="morphe_hide_quick_actions_more_button_title">Ocultar Mais</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_on">O botão Mais está oculto</string>
-  <string name="morphe_hide_quick_actions_more_button_summary_off">O botão Mais está visível</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_title">Ocultar \'Mais vídeos\'</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">O botão \'Mais vídeos\' está oculto</string>
-  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">O botão \'Mais vídeos\' está visível</string>
-  <string name="morphe_hide_quick_actions_playlist_button_title">Ocultar Playlist</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_on">O botão Playlist está oculto</string>
-  <string name="morphe_hide_quick_actions_playlist_button_summary_off">O botão Playlist está visível</string>
-  <string name="morphe_hide_quick_actions_title">Ocultar Ações rápidas</string>
-  <string name="morphe_hide_quick_actions_summary_on">As ações rápidas estão ocultas</string>
-  <string name="morphe_hide_quick_actions_summary_off">As ações rápidas estão visíveis</string>
-  <string name="morphe_hide_quick_actions_save_button_title">Ocultar Salvar</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_on">O botão Salvar está oculto</string>
-  <string name="morphe_hide_quick_actions_save_button_summary_off">O botão Salvar está exibido</string>
-  <string name="morphe_hide_quick_actions_share_button_title">Esconder compartilhamento</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_on">Botão Partilhar está escondido</string>
-  <string name="morphe_hide_quick_actions_share_button_summary_off">Botão Partilhar está visível</string>
   <!-- layout.hide.endscreencards.hideEndScreenCardsPatch -->
   <string name="morphe_hide_end_screen_cards_title">Esconder cartões de ecrã final</string>
   <string name="morphe_hide_end_screen_cards_summary_on">Cartões de fim de ecrã estão escondidos</string>
@@ -1092,6 +1098,9 @@ Para exibir o menu de trilha de áudio, altere 'Spoof video streams' para 'Andro
   <string name="morphe_hide_shorts_full_video_link_label_title">Ocultar rótulo de link do vídeo</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">Rótulo de link do vídeo está escondido</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">Rótulo do link do vídeo é visível</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Desativar toque duplo nos Shorts para curtir</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">O toque duplo nos Shorts para curtir está sendo ignorado</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Permitir toque duplo em Shorts para curtir</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Esconder barra de navegação</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">A barra de navegação está escondida</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Barra de navegação exibida</string>
@@ -1363,12 +1372,20 @@ para
 (%3$s)
 
 Pronto para enviar?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Enviar</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Iniciar deve ser antes do fim</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Marcar dois locais na barra de tempo</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Marque primeiro um local na barra de tempo</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Pré-visualizar o segmento e garantir que pula suavemente</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Editar tempo de segmento manualmente</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Você deseja editar o tempo para o início ou o fim do segmento?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Data inválida</string>
+  <string name="morphe_sb_new_segment_highlight_title">Enviar realce</string>
+  <string name="morphe_sb_new_segment_highlight_content">"O tempo de destaque está correto?
+
+%s
+
+Se você não estiver enviando um destaque, toque em Cancelar e marque a segunda localização."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Enviar destaque</string>
   <string name="morphe_sb_stats_title">Estatísticas</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">As estatísticas não estão disponíveis temporariamente (API está em baixo)</string>
@@ -1622,6 +1639,15 @@ Bật tính năng này có thể mở khóa chất lượng video cao hơn"</str
   <string name="morphe_disable_haptic_feedback_zoom_title">Desativar zoom haptics</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoom haptics está desativado</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoom haptics está ativado</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Controles de mídia de notificação</string>
+  <string name="morphe_notification_media_screen_summary">Ocultar componentes de controle de mídia da tela de bloqueio</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ocultar botões Anterior e Próximo</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Os botões Anterior e Próximo estão ocultos na notificação de mídia, tela de bloqueio e controles de fone de ouvido</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Os botões Anterior e Próximo são exibidos na notificação, tela de bloqueio e controles de fone de ouvido</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Desativar barra de busca</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">A barra de busca na notificação de mídia e na tela de bloqueio é somente leitura</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">A barra de busca na notificação de mídia e na tela de bloqueio é arrastável</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Se você alterou recentemente os detalhes de login da sua conta, desinstale e reinstale o MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

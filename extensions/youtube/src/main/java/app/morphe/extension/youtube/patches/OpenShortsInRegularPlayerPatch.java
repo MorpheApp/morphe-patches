@@ -34,13 +34,6 @@ public class OpenShortsInRegularPlayerPatch {
     /**
      * Injection point.
      */
-    public static boolean overrideBackPressToExit() {
-        return overrideBackPressToExit(true);
-    }
-
-    /**
-     * Injection point.
-     */
     public static boolean overrideBackPressToExit(boolean original) {
         if (overrideBackPressToExit) {
             Logger.printDebug(() -> "Overriding back press to exit activity");
@@ -77,7 +70,7 @@ public class OpenShortsInRegularPlayerPatch {
                 overrideBackPressToExit = false;
                 return false;
             }
-            
+
             if (NavigationButton.getSelectedNavigationButton() == NavigationButton.SHORTS) {
                 overrideBackPressToExit = false;
                 return false; // Always use Shorts player for the Shorts nav button.
