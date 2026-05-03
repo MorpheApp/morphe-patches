@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
@@ -219,7 +220,7 @@ class MorpheCreditsDialog extends Dialog {
                     <div class="section-label">%s</div>
                 """, StringRef.str("morphe_settings_about_contributors_current")));
         for (WebLink link : WORKS_LINKS_CURRENT) {
-            String initial = link.name.substring(0, 1).toUpperCase();
+            String initial = link.name.substring(0, 1).toUpperCase(Locale.getDefault());
             html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
                     .append("<div class=\"avatar\">").append(initial).append("</div>")
                     .append("<div class=\"contributor-info\">")
@@ -237,7 +238,7 @@ class MorpheCreditsDialog extends Dialog {
                     <div class="section-label">%s</div>
                 """, StringRef.str("morphe_settings_about_contributors_prior")));
         for (WebLink link : getWorksLinksPrior()) {
-            String initial = link.name.substring(0, 1).toUpperCase();
+            String initial = link.name.substring(0, 1).toUpperCase(Locale.getDefault());
             html.append("<a href=\"").append(link.url).append("\" class=\"link-button\">")
                     .append("<div class=\"avatar\">").append(initial).append("</div>")
                     .append("<div class=\"contributor-info\">")

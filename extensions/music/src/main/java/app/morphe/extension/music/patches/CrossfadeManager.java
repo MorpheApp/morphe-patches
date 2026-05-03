@@ -1606,27 +1606,12 @@ public class CrossfadeManager {
         mainHandler.post(longPressAttachRetry);
     }
 
-    @SuppressWarnings("unchecked")
     private static List<View> getAllWindowRoots(Activity activity) {
         List<View> roots = new ArrayList<>();
-        // Always include the main activity window.
-        if (activity.getWindow() != null) {
+        if (activity != null && activity.getWindow() != null) {
             roots.add(activity.getWindow().getDecorView());
         }
-        try {
-            // WindowManagerGlobal.mViews holds the root view of every open Window
-            // (dialogs, bottom sheets, etc.) in this process.
-            Class<?> wmg = Class.forName("android.view.WindowManagerGlobal");
-            Object instance = wmg.getMethod("getInstance").invoke(null);
-            java.lang.reflect.Field mViews = wmg.getDeclaredField("mViews");
-            mViews.setAccessible(true);
-            List<View> allViews = (List<View>) mViews.get(instance);
-            if (allViews != null) {
-                roots.addAll(allViews);
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "getAllWindowRoots: reflection failed", ex);
-        }
+
         return roots;
     }
 
