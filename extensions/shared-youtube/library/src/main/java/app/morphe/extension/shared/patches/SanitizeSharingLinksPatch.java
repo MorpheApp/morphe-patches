@@ -1,6 +1,7 @@
 package app.morphe.extension.shared.patches;
 
 import android.net.Uri;
+import android.text.TextUtils;
 
 import java.util.List;
 
@@ -51,11 +52,11 @@ public final class SanitizeSharingLinksPatch {
                 return url;
             }
             String pathType = segments.get(0);
-            if (!pathType.equals("live") && !pathType.equals("shorts")) {
+            if (!"live".equals(pathType) && !"shorts".equals(pathType)) {
                 return url;
             }
             String videoId = segments.get(1);
-            if (videoId.isEmpty()) {
+            if (TextUtils.isEmpty(videoId)) {
                 return url;
             }
             return new Uri.Builder()
