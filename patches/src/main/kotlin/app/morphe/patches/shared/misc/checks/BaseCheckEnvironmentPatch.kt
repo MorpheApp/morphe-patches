@@ -20,7 +20,6 @@ import android.os.Build.TYPE
 import android.os.Build.USER
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.patch.Compatibility
 import app.morphe.patcher.patch.Patch
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.encodedValue.MutableEncodedValue
@@ -41,12 +40,9 @@ fun checkEnvironmentPatch(
     @Suppress("unused")
     mainActivityOnCreateFingerprint: Fingerprint,
     extensionPatch: Patch<*>,
-    vararg compatiblePackages: String,
 ) = bytecodePatch(
     description = "Checks, where the application was patched by, otherwise warns the user.",
 ) {
-    val compatibilities = compatiblePackages.map { Compatibility(it) }.toTypedArray()
-    compatibleWith(*compatibilities)
 
     dependsOn(
         extensionPatch,

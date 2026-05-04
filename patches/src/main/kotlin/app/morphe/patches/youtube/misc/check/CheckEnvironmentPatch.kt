@@ -6,6 +6,5 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 
 internal val checkEnvironmentPatch = checkEnvironmentPatch(
     mainActivityOnCreateFingerprint = YouTubeActivityOnCreateFingerprint,
-    extensionPatch = sharedExtensionPatch,
-    "com.google.android.youtube",
+    extensionPatch = sharedExtensionPatch
 )
