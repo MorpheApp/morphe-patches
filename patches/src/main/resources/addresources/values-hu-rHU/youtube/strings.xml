@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">A régi beállítások menü jelenik meg</string>
   <string name="morphe_restore_old_settings_menus_summary_off">A régi beállítások menü nem jelenik meg</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">A háttérlejátszás korlátozásainak eltávolítása</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">A háttérlejátszás nem korlátozott</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">A háttérlejátszás korlátozott</string>
   <string name="morphe_shorts_disable_background_playback_title">A Shorts háttérben történő lejátszásának letiltása</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">A Shorts háttérben történő lejátszása le van tiltva</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">A Shorts háttérben történő lejátszása engedélyezve van</string>
@@ -1368,12 +1371,20 @@ Már létezik"</string>
 (%3$s)
 
 Készen állsz a beküldésre?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Beküldés</string>
   <string name="morphe_sb_new_segment_start_is_before_end">A kezdetnek a vége előtt kell lennie</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Előbb jelöljön meg két pontot az idősávon</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Először jelölj ki egy pozíciót az idővonalon</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Szakasz előnézete a zökkenőmentesen kihagyás érdekében</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">A szakasz időzítésének kézi beállítása</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Akarja szerkeszteni a rész kezdetének vagy végének időzítését?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Érvénytelen idő van megadva</string>
+  <string name="morphe_sb_new_segment_highlight_title">Kiemelés beküldése</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Helyes a kiemelés időpontja?
+
+%s
+
+Ha nem szeretne kiemelést küldeni, nyomja meg a Mégse gombot, és jelölje meg a második helyszínt."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Kiemelés küldése</string>
   <string name="morphe_sb_stats_title">Statisztikák</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">A statisztikák átmenetileg nem érhetők el (az API nem működik)</string>
@@ -1625,6 +1636,15 @@ Ez a beállítás lehetővé teszi a magasabb videóminőségek feloldását"</s
   <string name="morphe_disable_haptic_feedback_zoom_title">Haptikus zoom letiltása</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Haptikus zoom le van tiltva</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Haptikus zoom be van kapcsolva</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Értesítési médiavezérlők</string>
+  <string name="morphe_notification_media_screen_summary">Rejtse el a zárlákon lévő médiavezérlő komponenseket</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Elrejteni a \'Előző\' és \'Következő\' gombokat</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Az \'Előző\' és \'Következő\' gombok el vannak rejtve a médiaértesítésben, a zárlaképernyőn és a fejhallgató vezérlőin</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Az \'Előző\' és \'Következő\' gombok megjelennek az értesítésben, a zárlaképernyőn és a fejhallgató vezérlőin</string>
+  <string name="morphe_disable_notification_media_seekbar_title">A keresősáv letiltása</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">A médiaértesítés és a zárlaképernyő keresősávja csak olvasható</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">A médiaértesítés és a zárlaképernyő keresősávja húzható</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ha nemrég módosította a fiókja bejelentkezési adatait, távolítsa el, majd telepítse újra a MicroG-t.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

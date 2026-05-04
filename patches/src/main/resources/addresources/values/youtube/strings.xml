@@ -35,6 +35,9 @@ Second \"item\" text"</string>
     <string name="morphe_restore_old_settings_menus_summary_off">Old settings menus are not shown</string>
 
     <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+    <string name="morphe_remove_background_playback_restrictions_title">Remove background play restrictions</string>
+    <string name="morphe_remove_background_playback_restrictions_summary_on">Background playback is unrestricted</string>
+    <string name="morphe_remove_background_playback_restrictions_summary_off">Background playback is restricted</string>
     <string name="morphe_shorts_disable_background_playback_title">Disable Shorts background play</string>
     <string name="morphe_shorts_disable_background_playback_summary_on">Shorts background play is disabled</string>
     <string name="morphe_shorts_disable_background_playback_summary_off">Shorts background play is enabled</string>
@@ -1579,6 +1582,11 @@ Limitation: Using the back button on the toolbar may not work"</string>
     <string name="morphe_shorts_autoplay_background_summary_off">Shorts background play will repeat</string>
 
     <!-- layout.miniplayer.miniplayerPatch -->
+    <string name="morphe_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
+    <string name="morphe_miniplayer_disable_resuming_summary_on">\'Continue watching\' will not show on app startup</string>
+    <string name="morphe_miniplayer_disable_resuming_summary_off">\'Continue watching\' can show on app startup</string>
+    <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Continue watching' is a YouTube Premium feature
+• This setting cannot force on this Premium feature"</string>
     <string name="morphe_miniplayer_screen_title">Miniplayer</string>
     <string name="morphe_miniplayer_screen_summary">Change the style of the in-app minimized player</string>
     <string name="morphe_miniplayer_type_title">Miniplayer type</string>
@@ -1735,6 +1743,16 @@ Enabling this can unlock higher video qualities"</string>
     <string name="morphe_disable_haptic_feedback_zoom_title">Disable zoom haptics</string>
     <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoom haptics is disabled</string>
     <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoom haptics is enabled</string>
+
+    <!-- misc.medianotification.mediaNotificationControlsPatch -->
+    <string name="morphe_notification_media_screen_title">Notification media controls</string>
+    <string name="morphe_notification_media_screen_summary">Hide lock screen media control components</string>
+    <string name="morphe_hide_notification_media_prev_next_title">Hide Prev &amp; Next buttons</string>
+    <string name="morphe_hide_notification_media_prev_next_summary_on">Previous &amp; Next buttons are hidden in media notification, lockscreen, and headphone controls</string>
+    <string name="morphe_hide_notification_media_prev_next_summary_off">Previous &amp; Next buttons are shown in notification, lockscreen, and headphone controls</string>
+    <string name="morphe_disable_notification_media_seekbar_title">Disable seekbar</string>
+    <string name="morphe_disable_notification_media_seekbar_summary_on">Seekbar in media notification and lockscreen is read-only</string>
+    <string name="morphe_disable_notification_media_seekbar_summary_off">Seekbar in media notification and lockscreen is draggable</string>
 
     <!-- misc.gms.accountCredentialsInvalidTextPatch -->
     <string name="microg_offline_account_login_error">If you recently changed your account login details, then uninstall and reinstall MicroG.</string>

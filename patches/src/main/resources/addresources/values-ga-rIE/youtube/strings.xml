@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Taispeántar sean-roghchláir socruithe</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Ní thaispeántar sean-roghchláir socruithe</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Bain srianta súgartha cúlra</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Tá athsheinm cúlra gan srian</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Tá srian ar athsheinm cúlra</string>
   <string name="morphe_shorts_disable_background_playback_title">Díchumasaigh seinnte Cúlra Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Tá seinm chúlra Shorts díchumasaithe</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Tá seinm chúlra Shorts cumasaithe</string>
@@ -1369,12 +1372,20 @@ go
 (%3$s)
 
 Réidh le cur isteach?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Cuir isteach</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Caithfidh an tús a bheith roimh an deireadh</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Marcáil dhá shuíomh ar an mbarra ama ar dtús</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Marcáil suíomh ar an mbarra ama ar dtús</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Féach ar an deighleog agus cinntigh léim réidh</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Cuir am an deighleog in eagar de láimh</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Ar mhaith leat an t-am a chur in eagar do thús nó deireadh an deighleog?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Am neamhbhailí tugtha</string>
+  <string name="morphe_sb_new_segment_highlight_title">Cuir buaicphointe isteach</string>
+  <string name="morphe_sb_new_segment_highlight_content">"An bhfuil an t-am buaicphointí ceart?
+
+%s
+
+Mura bhfuil buaicphointe á chur isteach agat, tapáil Cealaigh agus marcáil an dara hionad"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Cuir buaicphointe isteach</string>
   <string name="morphe_sb_stats_title">Staitisticí</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Níl staitisticí ar fáil faoi láthair (tá an API síos)</string>
@@ -1628,6 +1639,15 @@ D’fhéadfadh cáilíochtaí físe níos airde a bheith díghlasáilte ach d’
   <string name="morphe_disable_haptic_feedback_zoom_title">Díchumasaigh haptaic súmála</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Tá haptaic súmála díchumasaithe</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Tá haptaic súmála cumasaithe</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Rialuithe meán fógra</string>
+  <string name="morphe_notification_media_screen_summary">Folaigh comhpháirteanna rialaithe meáin scáileáin glasála</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Folaigh Roimhe &amp; Cnaipí seo chugainn</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Tá cnaipí Roimhe seo &amp; Ar Aghaidh i bhfolach i bhfógra meán, scáileán glas, agus rialuithe cluasáin</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Taispeántar cnaipí Roimhe &amp; Ar Aghaidh i rialuithe fógraí, glasscáileáin agus cluasáin</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Díchumasaigh barra cuardaigh</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Tá barra cuardaigh i bhfógra meán agus scáileán glas inléite amháin</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Is féidir barra cuardaigh i bhfógra meán agus glasscáileán a tharraingt</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Má d’athraigh tú sonraí logála isteach do chuntais le déanaí, ansin díshuiteáil agus athshuiteáil MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

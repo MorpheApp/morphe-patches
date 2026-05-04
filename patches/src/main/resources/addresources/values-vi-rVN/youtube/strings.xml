@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Các menu cài đặt cũ đã được hiển thị</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Các menu cài đặt cũ không được hiển thị</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Bỏ hạn chế phát nền</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Phát nền không bị hạn chế</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Phát nền bị hạn chế</string>
   <string name="morphe_shorts_disable_background_playback_title">Tắt phát nền cho Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Phát nền cho Shorts đã tắt</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Phát nền cho Shorts đã bật</string>
@@ -1367,12 +1370,20 @@ Cứ tưởng tượng mã này như mật khẩu Facebook đi, đừng chia s�
 (%3$s)
 
 Bạn đã sẵn sàng gửi?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Gửi</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Thời gian bắt đầu phải trước thời gian kết thúc</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Đánh dấu hai vị trí trên thanh thời gian trước</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Trước tiên, hãy đánh dấu một vị trí trên thanh thời gian</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Hãy xem trước phân đoạn để đảm bảo rằng nó bỏ qua suôn sẻ</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Chỉnh sửa thời gian của phân đoạn thủ công</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Bạn có muốn thay đổi thời gian bắt đầu hoặc kết thúc của phân đoạn không?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Thời gian đã đặt không hợp lệ</string>
+  <string name="morphe_sb_new_segment_highlight_title">Gửi đoạn nổi bật</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Mốc thời gian của đoạn nổi bật đã đúng chưa?
+
+%s
+
+Nếu bạn chưa muốn gửi đoạn nổi bật, hãy bấm Hủy và đánh dấu vị trí thứ hai"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Gửi đoạn nổi bật</string>
   <string name="morphe_sb_stats_title">Thống kê</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Số liệu thống kê tạm thời không khả dụng (API ngừng hoạt động)</string>
@@ -1626,6 +1637,15 @@ Bật tính năng này có thể mở khóa chất lượng video cao hơn"</str
   <string name="morphe_disable_haptic_feedback_zoom_title">Tắt phản hồi xúc giác khi thu phóng</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Phản hồi xúc giác khi thu phóng đã tắt</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Phản hồi xúc giác khi thu phóng đã bật</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Điều khiển phát nhạc/video trên thông báo</string>
+  <string name="morphe_notification_media_screen_summary">Ẩn các thành phần điều khiển phát nhạc/video trên màn hình khóa</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ẩn nút Trước &amp; Tiếp theo</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Các nút Trước &amp; Tiếp theo đã bị ẩn trong thông báo, màn hình khóa và điều khiển tai nghe</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Các nút Trước &amp; Tiếp theo được hiển thị trong thông báo, màn hình khóa và điều khiển tai nghe</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Tắt thanh tiến trình</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Thanh tiến trình trong thông báo và màn hình khóa chỉ có thể xem</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Thanh tiến trình trong thông báo và màn hình khóa có thể kéo thả</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Nếu gần đây bạn đã cập nhật thông tin đăng nhập tài khoản của mình, hãy gỡ và cài đặt lại microG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

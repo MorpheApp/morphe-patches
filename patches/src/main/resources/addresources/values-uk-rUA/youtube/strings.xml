@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Показується старе меню налаштувань</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Показується нове меню налаштувань</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Зняти обмеження фонового відтворення</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Фонове відтворення не обмежене</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Фонове відтворення обмежене</string>
   <string name="morphe_shorts_disable_background_playback_title">Вимкнути фонове відтворення Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Фонове відтворення Shorts вимкнено</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Фонове відтворення Shorts увімкнено</string>
@@ -1209,7 +1212,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_on">Кнопка пропуску автоматично приховується після декількох секунд</string>
   <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_off">Кнопка пропуску показується для всього сегменту</string>
   <string name="morphe_sb_auto_hide_skip_button_duration">Тривалість кнопки пропуску</string>
-  <string name="morphe_sb_auto_hide_skip_button_duration_sum">Як довго показувати кнопки пропуску та переходу до основного моменту до автоматичного приховування</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_sum">Як довго показувати кнопки пропуску та переходу до найцікавішого моменту до автоматичного приховування</string>
   <string name="morphe_sb_general_skiptoast">Показувати повідомлення скасування пропуску</string>
   <string name="morphe_sb_general_skiptoast_sum_on">Повідомлення показується, коли сегмент автоматично пропускається. Натисніть на нього, щоб скасувати пропуск</string>
   <string name="morphe_sb_general_skiptoast_sum_off">Повідомлення не показується</string>
@@ -1277,7 +1280,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_selfpromo_sum">Схоже на \"Спонсор\", але для безплатної реклами та самореклами. Включає сегменти про товари, пожертвування або інформацію про тих, разом з ким було зроблено відео</string>
   <string name="morphe_sb_segments_interaction">Нагадування про взаємодію (Підписка)</string>
   <string name="morphe_sb_segments_interaction_sum">Коротке нагадування про вподобання, підписатися на канал або в соцмережах в середині вмісту. Якщо ця вставка тривала або про щось конкретне, вона повинна класифікуватися як самореклама</string>
-  <string name="morphe_sb_segments_highlight">Основний момент</string>
+  <string name="morphe_sb_segments_highlight">Найцікавіший момент</string>
   <string name="morphe_sb_segments_highlight_sum">Частина відео, яку шукає більшість людей</string>
   <string name="morphe_sb_segments_intro">Пауза / Заставка</string>
   <string name="morphe_sb_segments_intro_sum">Частина відео без значущого контенту. Може бути паузою, статичним кадром або повторюваною анімацією. Не включає переходи, що містять інформацію</string>
@@ -1292,11 +1295,11 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_nomusic">Музика: Сегмент без музики</string>
   <string name="morphe_sb_segments_nomusic_sum">Тільки для використання в музичних відео. Сегменти музичних відео без музики, які не належать до іншої категорії</string>
   <string name="morphe_sb_skip_button_compact">Пропустити</string>
-  <string name="morphe_sb_skip_button_compact_highlight">Основний момент</string>
+  <string name="morphe_sb_skip_button_compact_highlight">Найцікавіший момент</string>
   <string name="morphe_sb_skip_button_sponsor">Пропустити спонсор</string>
   <string name="morphe_sb_skip_button_selfpromo">Пропустити саморекламу</string>
   <string name="morphe_sb_skip_button_interaction">Пропустити взаємодію</string>
-  <string name="morphe_sb_skip_button_highlight">Перейти до основного</string>
+  <string name="morphe_sb_skip_button_highlight">Перейти до найцікавішого</string>
   <string name="morphe_sb_skip_button_intro_beginning">Пропустити вступ</string>
   <string name="morphe_sb_skip_button_intro_middle">Пропустити паузу</string>
   <string name="morphe_sb_skip_button_intro_end">Пропустити паузу</string>
@@ -1311,7 +1314,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skipped_sponsor">Пропущено спонсорську вставку</string>
   <string name="morphe_sb_skipped_selfpromo">Пропущено саморекламу</string>
   <string name="morphe_sb_skipped_interaction">Пропущено дратівливе нагадування</string>
-  <string name="morphe_sb_skipped_highlight">Пропущено до основного моменту</string>
+  <string name="morphe_sb_skipped_highlight">Пропущено до найцікавішого моменту</string>
   <string name="morphe_sb_skipped_intro_beginning">Пропущено вступ</string>
   <string name="morphe_sb_skipped_intro_middle">Пропущено паузу</string>
   <string name="morphe_sb_skipped_intro_end">Пропущено паузу</string>
@@ -1329,11 +1332,11 @@ Second \"item\" text"</string>
   <string name="morphe_sb_skip_showbutton">Показувати кнопку пропуску</string>
   <string name="morphe_sb_skip_seekbaronly">Показувати в панелі прогресу</string>
   <string name="morphe_sb_skip_ignore">Вимкнути</string>
-  <string name="morphe_sb_submit_failed_invalid">Неможливо відправити сегмент: %s</string>
+  <string name="morphe_sb_submit_failed_invalid">Неможливо надіслати сегмент: %s</string>
   <string name="morphe_sb_submit_failed_timeout">SponsorBlock тимчасово не працює</string>
   <string name="morphe_sb_submit_failed_unknown_error">Не вдалося надіслати сегмент (статус: %1$d %2$s)</string>
-  <string name="morphe_sb_submit_failed_rate_limit">Неможливо відправити сегмент. Частота обмежена (занадто багато від одного користувача або IP)</string>
-  <string name="morphe_sb_submit_failed_forbidden">Неможливо відправити сегмент: %s</string>
+  <string name="morphe_sb_submit_failed_rate_limit">Неможливо надіслати сегмент. Частота обмежена (занадто багато від одного користувача або IP)</string>
+  <string name="morphe_sb_submit_failed_forbidden">Неможливо надіслати сегмент: %s</string>
   <string name="morphe_sb_submit_failed_duplicate">"Неможливо надіслати сегмент.
 Він вже існує"</string>
   <string name="morphe_sb_submit_succeeded">Сегмент успішно надіслано</string>
@@ -1368,13 +1371,21 @@ Second \"item\" text"</string>
 
 (%3$s)
 
-Готові відправити?"</string>
+Готові надіслати?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Надіслати</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Початок має бути перед кінцем</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Спочатку позначте дві позиції на панелі часу</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Спочатку позначте місце на часовій шкалі</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Попередній перегляд сегменту для забезпечення плавного пропуску</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Редагувати час сегмента вручну</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Ви хочете змінити час початку чи кінця сегмента?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Вказано неправильний час</string>
+  <string name="morphe_sb_new_segment_highlight_title">Надіслати найцікавіший момент</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Чи правильний час найцікавішого моменту?
+
+%s
+
+Якщо ви не надсилаєте найцікавіший момент, натисніть Скасувати та позначте друге місце"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Надіслати найцікавіший момент</string>
   <string name="morphe_sb_stats_title">Статистика</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Статистика тимчасово недоступна (API не працює)</string>
@@ -1628,6 +1639,15 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Вимкнути вібрацію при масштабуванні</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Вібрацію при масштабуванні вимкнено</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Вібрацію при масштабуванні ввімкнено</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Елементи керування медіа у сповіщеннях</string>
+  <string name="morphe_notification_media_screen_summary">Приховати елементи керування медіа на екрані блокування</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Приховати кнопки Попереднє та Наступне</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Кнопки Попереднє та Наступне приховано в медіасповіщенні, на екрані блокування та в керуванні навушниками</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Кнопки Попереднє та Наступне показуються в медіасповіщенні, на екрані блокування та в керуванні навушниками</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Вимкнути панель прогресу</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Панель прогресу в медіасповіщенні та на екрані блокування доступна лише для перегляду</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Панель прогресу в медіасповіщенні та на екрані блокування доступна для перемотування</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Якщо Ви нещодавно змінили дані для входу у свій обліковий запис, видаліть і повторно встановіть MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

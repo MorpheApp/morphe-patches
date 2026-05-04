@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">পুরাতন সেটিংস মেনু দেখানো হচ্ছে</string>
   <string name="morphe_restore_old_settings_menus_summary_off">পুরাতন সেটিংস মেনু দেখানো হচ্ছে না</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">পটভূমির প্লেব্যাক সীমাবদ্ধতা সরান</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">পটভূমির প্লেব্যাক সীমাবদ্ধতা নেই</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">ব্যাকগ্রাউন্ড প্লেব্যাক সীমিত করা হয়েছে</string>
   <string name="morphe_shorts_disable_background_playback_title">Shorts ব্যাকগ্রাউন্ড প্লে অক্ষম করুন</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts ব্যাকগ্রাউন্ড প্লে অক্ষম করা হয়েছে</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts ব্যাকগ্রাউন্ড প্লে সক্ষম করা হয়েছে</string>
@@ -1370,12 +1373,20 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
 
 (%3$s)
 জমা দিতে প্রস্তুত।"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">জমা দিন</string>
   <string name="morphe_sb_new_segment_start_is_before_end">শুরু অবশ্যই শেষের আগে হতে হবে</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">আগে সময় বারে দুটি অবস্থান চিহ্নিত করুন</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">প্রথমে টাইমবারে একটি স্থান চিহ্নিত করুন</string>
   <string name="morphe_sb_new_segment_preview_segment_first">সেগমেন্টটি পূর্বরূপ দেখুন এবং নিশ্চিত হোন যে এটি মসৃণভাবে এড়িয়ে যাচ্ছে</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">সেগমেন্টের সময় ম্যানুয়ালি সম্পাদনা করুন</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">আপনি কি সেগমেন্টের শুরু বা শেষের সময় সম্পাদনা করতে চান?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">ভুল সময় দেয়া হয়েছে</string>
+  <string name="morphe_sb_new_segment_highlight_title">হাইলাইট জমা দিন</string>
+  <string name="morphe_sb_new_segment_highlight_content">"হাইলাইট করার সময় সঠিক আছে?
+
+%s
+
+যদি আপনি হাইলাইট জমা না দেন, তাহলে বাতিল করুন এবং দ্বিতীয় লোকেশনটি চিহ্নিত করুন।"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">হাইলাইট জমা দিন</string>
   <string name="morphe_sb_stats_title">পরিসংখ্যান</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">পরিসংখ্যান সাময়িকভাবে উপলব্ধ নেই (API ডাউন)</string>
@@ -1629,6 +1640,15 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="morphe_disable_haptic_feedback_zoom_title">জুম করার কম্পন নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">জুম করার কম্পন নিষ্ক্রিয় করা হয়েছে</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">জুম করার কম্পন সক্রিয় করা হয়েছে</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">নোটিফিকেশন মিডিয়া কন্ট্রোল</string>
+  <string name="morphe_notification_media_screen_summary">লক স্ক্রীন মিডিয়া কন্ট্রোল উপাদানগুলি লুকান</string>
+  <string name="morphe_hide_notification_media_prev_next_title">পূর্ববর্তী ও পরবর্তী বোতাম লুকান</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">মিডিয়া নোটিফিকেশন, লকস্ক্রিন এবং হেডফোন কন্ট্রোলে পূর্ববর্তী ও পরবর্তী বোতামগুলি লুকানো আছে</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">মিডিয়া নোটিফিকেশন, লকস্ক্রিন এবং হেডফোন কন্ট্রোলে পূর্ববর্তী ও পরবর্তী বোতামগুলি দেখানো হচ্ছে</string>
+  <string name="morphe_disable_notification_media_seekbar_title">সিকবার নিষ্ক্রিয় করুন</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">মিডিয়া নোটিফিকেশন এবং লকস্ক্রিনে সিকবারটি শুধুমাত্র পাঠযোগ্য</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">মিডিয়া নোটিফিকেশন এবং লকস্ক্রিনে সিকবারটি ড্র্যাগ করা যায়</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">আপনি যদি সম্প্রতি আপনার অ্যাকাউন্ট লগইন বিশদ পরিবর্তন করে থাকেন, তবে MicroG আনইনস্টল করুন এবং পুনরায় ইনস্টল করুন।</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

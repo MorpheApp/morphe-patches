@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">يتم عرض قوائم الإعدادات القديمة</string>
   <string name="morphe_restore_old_settings_menus_summary_off">لا يتم عرض قوائم الإعدادات القديمة</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">إزالة قيود التشغيل في الخلفية</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">التشغيل في الخلفية غير مقيد</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">تم تقييد التشغيل في الخلفية</string>
   <string name="morphe_shorts_disable_background_playback_title">تعطيل تشغيل فيديوهات Shorts في الخلفية</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">تم تعطيل تشغيل Shorts بالخلفية</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">تم تمكين تشغيل Shorts بالخلفية</string>
@@ -459,9 +462,9 @@ Second \"item\" text"</string>
   <string name="morphe_copy_video_url_button_timestamp_summary_on">ينسخ زر رابط الفيديو الرابط مع الطابع الزمني. اضغط مطوّلًا للنسخ بدونه</string>
   <string name="morphe_copy_video_url_button_timestamp_summary_off">ينسخ زر رابط الفيديو الرابط بدون الطابع الزمني. اضغط مطوّلًا للنسخ مع الطابع الزمني</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
-  <string name="morphe_remove_viewer_discretion_dialog_title">إزالة مربع حوار تقدير المشاهد</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary_on">سيتم إزالة مربع الحوار</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary_off">سيتم عرض مربع الحوار</string>
+  <string name="morphe_remove_viewer_discretion_dialog_title">إزالة نافذة تحذير تقدير المشاهد</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary_on">سيتم إزالة النافذة</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary_off">سيتم عرض النافذة</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">وهذا لا يتجاوز قيود السن. بل يقبلها تلقائيًا.</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">تعطيل نافذة \'تسجيل الدخول إلى التلفزيون\'</string>
@@ -478,7 +481,7 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_summary_on">يتم عرض زر التنزيل في المشغل</string>
   <string name="morphe_external_downloader_summary_off">لا يتم عرض زر التنزيل في المشغل</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
-  <string name="morphe_external_downloader_action_button_title">تجاوز زر إجراء زر التنزيل</string>
+  <string name="morphe_external_downloader_action_button_title">وظيفة زر إجراء التنزيل</string>
   <string name="morphe_external_downloader_action_button_summary_on">يفتح زر التنزيل أداة التنزيل الخارجية</string>
   <string name="morphe_external_downloader_action_button_summary_off">يفتح زر التنزيل أداة التنزيل الأصلية داخل التطبيق</string>
   <string name="morphe_external_downloader_name_title">اسم حزمة أداة التنزيل</string>
@@ -526,9 +529,9 @@ Second \"item\" text"</string>
   <string name="morphe_reload_video_button_summary_off">لا يتم عرض زر إعادة تحميل الفيديو</string>
   <string name="morphe_dismiss_player_not_available_toast">معرف الفيديو غير متاح. يرجى إعادة تحميل الفيديو يدويًا</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
-  <string name="morphe_disable_precise_seeking_gesture_title">تعطيل إيماءة التمرير الدقيقة</string>
-  <string name="morphe_disable_precise_seeking_gesture_summary_on">تم تعطيل إيماءة التمرير الدقيقة</string>
-  <string name="morphe_disable_precise_seeking_gesture_summary_off">تم تمكين إيماءة التمرير الدقيقة</string>
+  <string name="morphe_disable_precise_seeking_gesture_title">تعطيل التحكّم الدقيق بالتمرير</string>
+  <string name="morphe_disable_precise_seeking_gesture_summary_on">تم تعطيل التحكّم الدقيق بالتمرير</string>
+  <string name="morphe_disable_precise_seeking_gesture_summary_off">تم تمكين التحكّم الدقيق بالتمرير</string>
   <!-- interaction.seekbar.livestreamDvrPatch -->
   <string name="morphe_livestream_dvr_title">تمكين التنقل في البث المباشر</string>
   <string name="morphe_livestream_dvr_summary_on">يُسمح بالتقديم والتأخير في كل البثوث المباشرة</string>
@@ -608,7 +611,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_like_dislike_button_summary_on">تم إخفاء أزرار أعجبني ولم يعجبني</string>
   <string name="morphe_hide_like_dislike_button_summary_off">يتم عرض أزرار أعجبني ولم يعجبني</string>
   <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
-  <string name="morphe_hide_share_button_title">إخفاء المشاركة</string>
+  <string name="morphe_hide_share_button_title">إخفاء مشاركة</string>
   <string name="morphe_hide_share_button_summary_on">تم إخفاء زر مشاركة</string>
   <string name="morphe_hide_share_button_summary_off">يتم عرض زر مشاركة</string>
   <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
@@ -901,7 +904,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_flyout_quality_header_summary_on">تم إخفاء عنوان قائمة جودة الفيديو الحالي</string>
   <string name="morphe_hide_player_flyout_quality_header_summary_off">يتم عرض عنوان قائمة جودة الفيديو الحالي</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
-  <string name="morphe_hide_autoplay_preview_title">إخفاء معاينة التشغيل التلقائي</string>
+  <string name="morphe_hide_autoplay_preview_title">إخفاء عرض التشغيل التلقائي</string>
   <string name="morphe_hide_autoplay_preview_summary_on">تم إخفاء معاينة التشغيل التلقائي</string>
   <string name="morphe_hide_autoplay_preview_summary_off">يتم عرض معاينة التشغيل التلقائي</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
@@ -955,8 +958,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_info_cards_summary_off">يتم عرض بطاقات المعلومات</string>
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <string name="morphe_disable_rolling_number_animations_title">تعطيل عدد مرات المشاهدة والإعجابات في الوقت الفعلي</string>
-  <string name="morphe_disable_rolling_number_animations_summary_on">عدد مرات المشاهدة والإعجابات غير متحركة</string>
-  <string name="morphe_disable_rolling_number_animations_summary_off">عدد مرات المشاهدة والإعجابات متحركة</string>
+  <string name="morphe_disable_rolling_number_animations_summary_on">عدد مرات المشاهدة والإعجابات ثابتة</string>
+  <string name="morphe_disable_rolling_number_animations_summary_off">عدد مرات المشاهدة والإعجابات متغيرة</string>
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">إخفاء شريط تقدم مشغل الفيديو</string>
   <string name="morphe_hide_seekbar_summary_on">تم إخفاء شريط تقدم الفيديو</string>
@@ -976,21 +979,21 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_channel_summary_off">تُعرض في صفحة القناة</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">إخفاء Shorts في الصفحة الرئيسية</string>
-  <string name="morphe_hide_shorts_home_summary_on">مخفي في موجز الصفحة الرئيسية والفيديوهات ذات الصلة</string>
-  <string name="morphe_hide_shorts_home_summary_off">يُعرض في موجز الصفحة الرئيسية والفيديوهات ذات الصلة</string>
+  <string name="morphe_hide_shorts_home_summary_on">مخفية في موجز الصفحة الرئيسية والفيديوهات ذات الصلة</string>
+  <string name="morphe_hide_shorts_home_summary_off">تُعرض في موجز الصفحة الرئيسية والفيديوهات ذات الصلة</string>
   <string name="morphe_hide_shorts_search_title">إخفاء Shorts في نتائج البحث</string>
-  <string name="morphe_hide_shorts_search_summary_on">مخفي في نتائج البحث</string>
-  <string name="morphe_hide_shorts_search_summary_off">يُعرض في نتائج البحث</string>
+  <string name="morphe_hide_shorts_search_summary_on">مخفية في نتائج البحث</string>
+  <string name="morphe_hide_shorts_search_summary_off">تُعرض في نتائج البحث</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_subscriptions_title">إخفاء Shorts في موجز الاشتراكات</string>
-  <string name="morphe_hide_shorts_subscriptions_summary_on">مخفي في موجز الاشتراكات</string>
-  <string name="morphe_hide_shorts_subscriptions_summary_off">يُعرض في موجز الاشتراكات</string>
+  <string name="morphe_hide_shorts_subscriptions_summary_on">مخفية في موجز الاشتراكات</string>
+  <string name="morphe_hide_shorts_subscriptions_summary_off">تُعرض في موجز الاشتراكات</string>
   <string name="morphe_hide_shorts_video_description_title">إخفاء Shorts في وصف الفيديو</string>
-  <string name="morphe_hide_shorts_video_description_summary_on">مخفي في وصف الفيديو</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">مخفية في وصف الفيديو</string>
   <string name="morphe_hide_shorts_video_description_summary_off">تُعرض في وصف الفيديو</string>
   <string name="morphe_hide_shorts_history_title">إخفاء Shorts في السجلّ</string>
-  <string name="morphe_hide_shorts_history_summary_on">مخفي في السجلّ</string>
-  <string name="morphe_hide_shorts_history_summary_off">يُعرض في السجلّ</string>
+  <string name="morphe_hide_shorts_history_summary_on">مخفية في السجلّ</string>
+  <string name="morphe_hide_shorts_history_summary_off">تُعرض في السجلّ</string>
   <string name="morphe_hide_shorts_ai_button_title">إخفاء زر الذكاء الاصطناعي</string>
   <string name="morphe_hide_shorts_ai_button_summary_on">تم إخفاء زر الذكاء الاصطناعي</string>
   <string name="morphe_hide_shorts_ai_button_summary_off">يتم عرض زر الذكاء الاصطناعي</string>
@@ -1013,9 +1016,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_join_button_title">إخفاء زر الانضمام</string>
   <string name="morphe_hide_shorts_join_button_summary_on">تم إخفاء زر الانضمام</string>
   <string name="morphe_hide_shorts_join_button_summary_off">يتم عرض زر الانضمام</string>
-  <string name="morphe_hide_shorts_live_preview_title">إخفاء معاينة الروابط</string>
-  <string name="morphe_hide_shorts_live_preview_summary_on">تم إخفاء معاينة الروابط</string>
-  <string name="morphe_hide_shorts_live_preview_summary_off">يتم عرض معاينة الروابط</string>
+  <string name="morphe_hide_shorts_live_preview_title">إخفاء عرض البث المباشر</string>
+  <string name="morphe_hide_shorts_live_preview_summary_on">تم إخفاء عرض البث المباشر</string>
+  <string name="morphe_hide_shorts_live_preview_summary_off">يتم إظهار عرض البث المباشر</string>
   <string name="morphe_hide_shorts_location_label_title">إخفاء تسمية الموقع</string>
   <string name="morphe_hide_shorts_location_label_summary_on">تم إخفاء تسمية الموقع</string>
   <string name="morphe_hide_shorts_location_label_summary_off">يتم عرض تسمية الموقع</string>
@@ -1232,7 +1235,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_enable_create_segment_sum_on">يتم عرض زر إنشاء مقطع جديد</string>
   <string name="morphe_sb_enable_create_segment_sum_off">لا يتم عرض زر إنشاء مقطع جديد</string>
   <string name="morphe_sb_general_adjusting">تعديل تقديم او تأخير المقطع الجديد</string>
-  <string name="morphe_sb_general_adjusting_sum">أجزاء الثانية في الوقت الذي تتحرك فيها أزرار ضبط الوقت عند إنشاء مقاطع جديدة</string>
+  <string name="morphe_sb_general_adjusting_sum">أجزاء الثانية التي تنتقل إليها أزرار ضبط الوقت عند إنشاء مقاطع جديدة</string>
   <string name="morphe_sb_general_adjusting_invalid">يجب أن تكون القيمة رقمًا موجبًا</string>
   <string name="morphe_sb_guidelines_preference_title">عرض الإرشادات</string>
   <string name="morphe_sb_guidelines_preference_sum">الإرشادات تتضمن قواعد ونصائح لإنشاء مقاطع جديدة</string>
@@ -1369,12 +1372,20 @@ Second \"item\" text"</string>
 (%3$s)
 
 هل أنت مستعد للإرسال؟"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">إرسال</string>
   <string name="morphe_sb_new_segment_start_is_before_end">يجب أن تكون البداية قبل النهاية</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">ضع علامة على موقعين في شريط الوقت أولًا</string>
-  <string name="morphe_sb_new_segment_preview_segment_first">معاينة المقطع، والتأكد من تخطيه بسلاسة</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">حدد موقعًا على شريط الوقت أولًا</string>
+  <string name="morphe_sb_new_segment_preview_segment_first">عاين المقطع وتأكد من أن التخطي يتم بسلاسة</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">تعديل توقيت المقطع يدويًا</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">هل تود تعديل التوقيت لبداية أو نهاية المقطع؟</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">الوقت المحدد غير صحيح</string>
+  <string name="morphe_sb_new_segment_highlight_title">إرسال المقطع الأبرز</string>
+  <string name="morphe_sb_new_segment_highlight_content">"هل وقت المقطع الأبرز صحيح؟
+
+%s
+
+إذا لم تكن تريد إرسال المقطع الأبرز، اضغط إلغاء وحدد الموقع الثاني"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">إرسال المقطع الأبرز</string>
   <string name="morphe_sb_stats_title">إحصائيات</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">الإحصائيات غير متوفرة مؤقتًا (API معطل)</string>
@@ -1560,7 +1571,7 @@ Second \"item\" text"</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">استخدام مضيف الصورة yt4.ggpht.com</string>
   <string name="morphe_bypass_image_region_restrictions_summary_off">"استخدام مضيف الصور الأصلي
 
-تمكين هذا يمكن إصلاح الصور المفقودة التي يتم حظرها في بعض المناطق"</string>
+تمكين هذا الخيار يمكّن إصلاح الصور المفقودة التي يتم حظرها في بعض المناطق"</string>
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_home_title">علامة التبويب الصفحة الرئيسية</string>
@@ -1602,13 +1613,13 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_player_buttons_summary_on">يتم عرض نمط المشغل النحيف</string>
   <string name="morphe_restore_old_player_buttons_summary_off">يتم عرض نمط المشغل العريض</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
-  <string name="morphe_spoof_device_dimensions_title">تزوير أبعاد الجهاز</string>
-  <string name="morphe_spoof_device_dimensions_summary_on">"تم تزييف أبعاد الجهاز
+  <string name="morphe_spoof_device_dimensions_title">تمويه أبعاد الجهاز</string>
+  <string name="morphe_spoof_device_dimensions_summary_on">"تم تمويه أبعاد الجهاز
 
 قد يتم فتح قفل جودات الفيديو العالية، ولكن قد تواجه تقطعًا في تشغيل الفيديو، وعمر بطارية أسوأ، وتأثيرات جانبية غير معروفة"</string>
-  <string name="morphe_spoof_device_dimensions_summary_off">"أبعاد الجهاز غير مزيفة
+  <string name="morphe_spoof_device_dimensions_summary_off">"أبعاد الجهاز غير مموّهة
 
-تمكين هذا يمكن أن يفتح جودات فيديو أعلى"</string>
+تمكين هذا الخيار يمكن أن يفتح جودات فيديو أعلى"</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">قد يؤدي تمكين هذا إلى تباطؤ تشغيل الفيديو وتدهور عمر البطارية وآثار جانبية غير معروفة.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">الاهتزاز عند الضغط</string>
@@ -1628,6 +1639,15 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">تعطيل الاهتزاز عند التكبير</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">تم تعطيل الاهتزاز عند التكبير</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">تم تمكين الاهتزاز عند التكبير</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">عناصر تحكم الوسائط في الإشعارات</string>
+  <string name="morphe_notification_media_screen_summary">إخفاء عناصر تحكم الوسائط في شاشة القفل</string>
+  <string name="morphe_hide_notification_media_prev_next_title">إخفاء أزرار السابق &amp; التالي </string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">تم إخفاء أزرار السابق &amp; التالي في إشعارات الوسائط، شاشة القفل، وعناصر التحكم في سماعة الرأس</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">يتم عرض أزرار السابق &amp; التالي في إشعارات الوسائط، شاشة القفل، وعناصر التحكم في سماعة الرأس</string>
+  <string name="morphe_disable_notification_media_seekbar_title">تعطيل شريط التقدم</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">شريط التقدم في إشعارات الوسائط وشاشة القفل للقراءة فقط</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">شريط التقدم في إشعارات الوسائط وشاشة القفل قابل للسحب</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">إذا قمت مؤخرًا بتغيير تفاصيل تسجيل الدخول إلى حسابك، فقم بإلغاء تثبيت MicroG وإعادة تثبيته.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->
@@ -1734,7 +1754,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_av1_user_dialog_message">"قد يؤدي تمكين هذا الإعداد إلى استخدام فك تشفير AV1 البرمجي.
 
 قد يتسبب تشغيل الفيديو باستخدام AV1 في التقطيع أو إسقاط الإطارات."</string>
-  <string name="morphe_spoof_video_streams_about_title">التأثيرات الجانبية للتزييف</string>
+  <string name="morphe_spoof_video_streams_about_title">التأثيرات الجانبية للضبط</string>
   <string name="morphe_spoof_video_streams_about_experimental">• عميل تجريبي وقد يتوقف عن العمل في أي وقت</string>
   <string name="morphe_spoof_video_streams_about_playback_failure">• قد يتوقف الفيديو عند 1:00، أو قد لا يكون متاحًا في بعض المناطق</string>
   <string name="morphe_spoof_video_streams_about_no_audio_tracks">• قائمة المقطع الصوتي مفقودة</string>

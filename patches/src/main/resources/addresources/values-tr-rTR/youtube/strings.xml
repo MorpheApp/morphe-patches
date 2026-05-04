@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Eski ayarlar menüsü gösteriliyor</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Eski ayarlar menüsü gösterilmiyor</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Arka plan oynatma kısıtlamalarını kaldır</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Arka plan oynatma kısıtlanmamış</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Arka plan oynatma kısıtlanmış</string>
   <string name="morphe_shorts_disable_background_playback_title">Shorts\'un arka planda oynatılmasını devre dışı bırak</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts\'un arka planda oynatılması devre dışı</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts\'un arka planda oynatılması etkin</string>
@@ -1369,12 +1372,20 @@ ile
 (%3$s)
 
 Göndermeye hazır mısınız?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Gönder</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Başlangıç bitişten önce olmalıdır</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Önce zaman çubuğunda iki yer işaretleyin</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Öncelikle zaman çubuğunda bir konum işaretleyin</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Kısmı ön izleyin ve sorunsuz bir şekilde atladığından emin olun</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Kısmın zamanlamasını el ile ayarlayın</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Kısmın başlangıcını mı, bitişini mi düzenlemek istiyorsunuz?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Geçersiz süre girildi</string>
+  <string name="morphe_sb_new_segment_highlight_title">Vurguyu gönder</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Vurgu zamanı doğru mu?
+
+%s
+
+Bir vurgu göndermiyorsanız, İptal'e dokunun ve ikinci konumu işaretleyin"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Vurguyu gönder</string>
   <string name="morphe_sb_stats_title">İstatistikler</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">İstatistikler geçici olarak kullanılamıyor (API çalışmıyor)</string>
@@ -1628,6 +1639,15 @@ Bunu etkinleştirmek daha yüksek video kalitelerini açabilir"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Yakınlaştırma titreşimini devre dışı bırak</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Yakınlaştırma titreşimi devre dışı</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Yakınlaştırma titreşimi etkin</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Bildirim medya kontrolleri</string>
+  <string name="morphe_notification_media_screen_summary">Kilit ekranı medya kontrol bileşenlerini gizle</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Önceki &amp; Sonraki düğmelerini gizle</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Medya bildiriminde, kilit ekranında ve kulaklık kontrollerinde Önceki &amp; Sonraki düğmeleri gizlidir</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Önceki &amp; Sonraki düğmeleri bildirimde, kilit ekranında ve kulaklık kontrollerinde gösterilir</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Arama çubuğunu devre dışı bırak</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Medya bildirimindeki ve kilit ekranındaki arama çubuğu salt okunurdur</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Medya bildirimindeki ve kilit ekranındaki arama çubuğu sürüklenebilir</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Yakın zamanda hesap giriş bilgilerinizi değiştirdiyseniz MicroG\'yi kaldırıp yeniden yükleyin.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

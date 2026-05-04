@@ -1098,7 +1098,6 @@ ilə
 
 Təqdim etməyə hazırdır?"</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Başlanğıc sondan əvvəl olmalıdır</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Əvvəlcə vaxt cizgisində iki yeri doldur</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Bölümü izləyin, düzgün ötürüldüyünə əmin olun</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Bölüm vaxtına əl ilə düzəliş et</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Bölümün başlanğıc və ya bitiş vaxtlarına düzəliş etmək istəyirsiniz?</string>
@@ -1326,6 +1325,7 @@ Bunu aktivləşdirmə daha yüksək video keyfiyyətləri əngəlin silə bilər
   <string name="morphe_disable_haptic_feedback_zoom_title">Yaxınlaşdırma reaksiyasın qapat</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Yaxınlaşdırma reaksiyası qapalıdır</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Yaxınlaşdırma reaksiyası aktivdir</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Bu yaxınlarda hesabınıza giriş məlumatlarınızı dəyişmisinizsə, MicroG-ni silin və təkrar quraşdırın.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

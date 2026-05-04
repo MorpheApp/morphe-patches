@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Alte Einstellungsmenüs werden angezeigt</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Alte Einstellungsmenüs werden nicht angezeigt</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Einschränkungen für Hintergrundwiedergabe entfernen</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Hintergrundwiedergabe ist uneingeschränkt</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Hintergrundwiedergabe ist eingeschränkt</string>
   <string name="morphe_shorts_disable_background_playback_title">Hintergrundwiedergabe von Shorts deaktivieren</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Hintergrundwiedergabe von Shorts ist deaktiviert</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Hintergrundwiedergabe von Shorts ist aktiviert</string>
@@ -597,8 +600,8 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
   <string name="morphe_swipe_change_video_summary_on">Im Vollbildmodus wischen, um zum nächsten/vorherigen Video zu wechseln</string>
   <string name="morphe_swipe_change_video_summary_off">Im Vollbildmodus wischen, um nicht zum nächsten/vorherigen Video zu wechseln</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
-  <string name="morphe_action_buttons_screen_title">Aktionstasten</string>
-  <string name="morphe_action_buttons_screen_summary">Aktionstasten in Vollbild und im Hochformat ein- oder ausblenden</string>
+  <string name="morphe_action_buttons_screen_title">Aktionsbuttons</string>
+  <string name="morphe_action_buttons_screen_summary">Aktionsbuttons in Vollbild und im Hochformat ein- oder ausblenden</string>
   <string name="morphe_portrait_buttons">Hochformat-Tasten</string>
   <string name="morphe_disable_like_subscribe_glow_title">Like und Subscribe Button leuchten nicht mehr, wenn sie erwähnt werden</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Like- und Subscribe-Button leuchten nicht, wenn sie erwähnt werden</string>
@@ -665,7 +668,7 @@ Passen Sie die Helligkeit an, indem Sie auf der linken Seite des Bildschirms ver
   <string name="morphe_hide_save_button_title">Speichern ausblenden</string>
   <string name="morphe_hide_save_button_summary_on">Schaltfläche \"Speichern\" ist ausgeblendet</string>
   <string name="morphe_hide_save_button_summary_off">Schaltfläche \"Speichern\" ist sichtbar</string>
-  <string name="morphe_fullscreen_buttons">Vollbild-Tasten</string>
+  <string name="morphe_fullscreen_buttons">Vollbild-Buttons</string>
   <string name="morphe_hide_quick_actions_title">Aktionsleiste ausblenden</string>
   <string name="morphe_hide_quick_actions_summary_on">Aktionsleiste ist ausgeblendet</string>
   <string name="morphe_hide_quick_actions_summary_off">Aktionsleiste wird angezeigt</string>
@@ -1095,7 +1098,7 @@ Um das Menü anzuzeigen, ändern Sie \"Video-Streams fälschen\" in \"Android Re
   <string name="morphe_hide_shorts_full_video_link_label_title">Video-Link-Label ausblenden</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">Video-Link-Label ist ausgeblendet</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">Video-Link-Label wird angezeigt</string>
-  <string name="morphe_disable_shorts_double_tap_to_like_title">Deaktivieren Sie Doppeltippen auf Shorts, um zu gefallen</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Deaktiviert Doppeltes Tippen auf Shorts zum Liken</string>
   <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Doppeltippen auf Shorts zum Liken wird ignoriert</string>
   <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Doppeltes Tippen auf Shorts zum Liken ist erlaubt</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Navigationsleiste ausblenden</string>
@@ -1369,12 +1372,20 @@ nach
 (%3$s)
 
 Bereit zum Einreichen?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Absenden</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Start muss vor dem Ende sein</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Markieren sie zuerst zwei Punkte auf der Zeitleiste</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Markieren Sie zuerst einen Zeitpunkt auf der Zeitleiste</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Vorschau des Segments und sorgt dafür, dass es reibungslos überspringt</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Timing des Segments manuell bearbeiten</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Möchtest du den Zeitpunkt für den Anfang oder das Ende des Segments bearbeiten?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Ungültige Zeit angegeben</string>
+  <string name="morphe_sb_new_segment_highlight_title">Hervorhebung übermitteln</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Ist die Markierung korrekt?
+
+%s
+
+Wenn Sie keine Markierung senden, tippen Sie auf Abbrechen und markieren Sie die zweite Position"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Markierung senden</string>
   <string name="morphe_sb_stats_title">Statistiken</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistiken sind vorübergehend nicht verfügbar (API ist ausgefallen)</string>
@@ -1628,6 +1639,15 @@ Durch Aktivieren dieser Option können höhere Videoqualitäten freigeschaltet w
   <string name="morphe_disable_haptic_feedback_zoom_title">Zoomhaptik deaktivieren</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoomhaptik ist deaktiviert</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoomhaptik ist aktiviert</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Benachrichtigung Mediensteuerung</string>
+  <string name="morphe_notification_media_screen_summary">Mediensteuerelemente auf dem Sperrbildschirm ausblenden</string>
+  <string name="morphe_hide_notification_media_prev_next_title">\"Vorheriger\"- &amp; \"Nächster\"-Buttons ausblenden</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">\"Vorheriger\"- &amp; \"Nächster\"-Buttons sind in der Medienbenachrichtigung, auf dem Sperrbildschirm und in der Kopfhörersteuerung ausgeblendet</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">\"Vorheriger\"- &amp; \"Nächster\"-Buttons werden in der Medienbenachrichtigung, auf dem Sperrbildschirm und in der Kopfhörersteuerung angezeigt</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Suchleiste deaktivieren</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Suchleiste in der Medienbenachrichtigung und auf dem Sperrbildschirm ist schreibgeschützt</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Suchleiste in der Medienbenachrichtigung und auf dem Sperrbildschirm ist verschiebbar</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Wenn Sie kürzlich Ihre Kontoanmeldedaten geändert haben, deinstallieren Sie MicroG und installieren Sie es erneut.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

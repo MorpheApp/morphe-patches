@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Meniurile de setări vechi sunt afișate</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Meniurile de setări vechi nu sunt afișate</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Elimină restricțiile de redare în fundal</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Redarea în fundal nu este restricționată</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Redarea în fundal este restricționată</string>
   <string name="morphe_shorts_disable_background_playback_title">Dezactivează redarea în fundal a Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Redarea în fundal a Shorts este dezactivată</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Redarea Shorts în fundal este activată</string>
@@ -1365,12 +1368,20 @@ până în
 (%3$s)
 
 Ești gata să trimiți?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Trimite</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Începe trebuie să fie înainte de sfârșit</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Marchează mai întâi două locații pe bara de timp</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Marchează mai întâi o locație pe bara de timp</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Previzualizați segmentul și asigurați-vă că sare fără probleme</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Editați sincronizarea segmentului manual</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Doriți să editați sincronizarea pentru începutul sau sfârșitul segmentului?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Oră nevalidă dată</string>
+  <string name="morphe_sb_new_segment_highlight_title">Trimite evidențiere</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Este corectă perioada de evidențiere?
+
+%s
+
+Dacă nu trimiteți o evidențiere, apăsați Anulare și marcați a doua locație"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Trimite evidențiere</string>
   <string name="morphe_sb_stats_title">Statistici</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statisticile nu sunt disponibile temporar (API este defect)</string>
@@ -1624,6 +1635,15 @@ Activarea acestei opțiuni poate debloca calități video mai mari"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Dezactivare haptics zoom</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Haptica zoom este dezactivată</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Haptica zoom este activată</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Comenzi media pentru notificări</string>
+  <string name="morphe_notification_media_screen_summary">Ascunde componentele de control media de pe ecranul de blocare</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ascunde butoanele Anterior &amp; Următorul</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Butoanele Anterior &amp; Următorul sunt ascunse în notificarea media, pe ecranul de blocare și în comenzile căștilor</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Butoanele Anterior &amp; Următorul sunt afișate în notificare, pe ecranul de blocare și în comenzile căștilor</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Dezactivează bara de căutare</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Bara de căutare din notificarea media și de pe ecranul de blocare este doar pentru citire</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Bara de căutare din notificarea media și de pe ecranul de blocare este mobilă</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Dacă ți-ai schimbat recent detaliile de conectare la cont, dezinstalează și reinstalează MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

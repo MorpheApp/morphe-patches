@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">古いスタイルの設定メニューが表示されます</string>
   <string name="morphe_restore_old_settings_menus_summary_off">新しいスタイルの設定メニューが表示されます</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">バックグラウンド再生の制限を解除</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">バックグラウンド再生は解放されています</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">バックグラウンド再生は解放されていません</string>
   <string name="morphe_shorts_disable_background_playback_title">ショートのバックグラウンド再生を無効化</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">ショート動画のバックグラウンド再生は無効です</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">ショート動画のバックグラウンド再生は有効です</string>
@@ -175,7 +178,7 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_hide_join_membership_button_title">「メンバーになる」ボタンを非表示</string>
   <string name="morphe_hide_join_membership_button_summary_on">「メンバーになる」ボタンは表示されません</string>
   <string name="morphe_hide_join_membership_button_summary_off">「メンバーになる」ボタンは表示されます</string>
-  <string name="morphe_hide_live_chat_donators_bar_title">チャット欄の寄付者名表示を無効化</string>
+  <string name="morphe_hide_live_chat_donators_bar_title">チャット欄の投げ銭表示を無効化</string>
   <string name="morphe_hide_live_chat_donators_bar_summary_on">チャット欄のヘッダーに、投げ銭をした視聴者のユーザー名は表示されません</string>
   <string name="morphe_hide_live_chat_donators_bar_summary_off">チャット欄のヘッダーに、投げ銭をした視聴者のユーザー名が表示されます</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
@@ -1096,7 +1099,7 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_hide_shorts_full_video_link_label_title">関連動画へのリンクを非表示</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">関連動画へのリンクは表示されません</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">関連動画へのリンクは表示されます</string>
-  <string name="morphe_disable_shorts_double_tap_to_like_title">ショート動画でのダブルタップによる高評価を無効化</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">ショートでのダブルタップによる高評価を無効化</string>
   <string name="morphe_disable_shorts_double_tap_to_like_summary_on">ショート動画でのダブルタップによる高評価は無効です</string>
   <string name="morphe_disable_shorts_double_tap_to_like_summary_off">ショート動画でのダブルタップによる高評価は有効です</string>
   <string name="morphe_hide_shorts_navigation_bar_title">ナビゲーション バーを非表示</string>
@@ -1370,12 +1373,20 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
 (%3$s)
 
 送信しますか？"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">送信</string>
   <string name="morphe_sb_new_segment_start_is_before_end">開始位置を終了位置よりも前にしてください</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">先に開始位置と終了位置を設定してください</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">先に位置 (時間) を指定してください</string>
   <string name="morphe_sb_new_segment_preview_segment_first">セグメントのテスト機能でスムーズにスキップすることを確認してください</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">セグメントの範囲を手動で編集</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">セグメントの開始位置または終了位置を編集しますか？</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">時間 (位置) の値が無効です</string>
+  <string name="morphe_sb_new_segment_highlight_title">ハイライトを送信</string>
+  <string name="morphe_sb_new_segment_highlight_content">"ハイライトの開始位置は正確ですか？
+
+%s
+
+ハイライト以外を送信する場合は、[キャンセル] をタップして 2 つ目の位置 (時間) を指定してください"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">ハイライトを送信</string>
   <string name="morphe_sb_stats_title">統計</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">統計情報は一時的に利用できません (API がダウンしています)</string>
@@ -1627,6 +1638,15 @@ Automotive レイアウト
   <string name="morphe_disable_haptic_feedback_zoom_title">ズームの触覚フィードバックを無効化</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">ズームの触覚フィードバックは無効です</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">ズームの触覚フィードバックは有効です</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">ロック画面のメディア コントロール</string>
+  <string name="morphe_notification_media_screen_summary">通知パネルとロック画面に表示されるメディア コントロールのコンポーネントを非表示にします</string>
+  <string name="morphe_hide_notification_media_prev_next_title">前の動画ボタンと次の動画ボタンを非表示</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">通知パネルおよびロック画面のメディア コントロールには、前の動画ボタンと次の動画ボタンが表示されません。ヘッドホンからの操作による前の動画 / 次の動画機能も無効です</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">通知パネルおよびロック画面のメディア コントロールには、前の動画ボタンと次の動画ボタンが表示されます。ヘッドホンからの操作による前の動画 / 次の動画機能も有効です</string>
+  <string name="morphe_disable_notification_media_seekbar_title">シークバーを無効化</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">通知パネルおよびロック画面のメディア コントロールのシークバーはシーク操作が無効です</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">通知パネルおよびロック画面のメディア コントロールのシークバーはシーク操作が有効です</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">最近アカウントのログイン情報を変更した場合は、MicroG をアンインストールして再インストールしてください。</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Staré menu nastavení se zobrazují</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Staré menu nastavení se nezobrazují</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Odstranit omezení přehrávání na pozadí</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Přehrávání na pozadí není omezeno</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Přehrávání na pozadí je omezené</string>
   <string name="morphe_shorts_disable_background_playback_title">Zakázat přehrávání Shorts na pozadí</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Přehrávání Shorts na pozadí je zakázáno</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Přehrávání Shorts na pozadí je povoleno</string>
@@ -1370,12 +1373,20 @@ do
 (%3$s)
 
 Připraveni k odeslání?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Odeslat</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Začátek musí být před koncem</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Nejprve označte dvě místa na časové liště</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Nejdříve označte polohu na časové ose</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Zobrazte náhled segmentu a ujistěte se, že přeskakuje plynule</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Upravit načasování segmentu ručně</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Chcete upravit načasování pro začátek nebo konec segmentu?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Zadán neplatný čas</string>
+  <string name="morphe_sb_new_segment_highlight_title">Odeslat zvýraznění</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Je čas zvýraznění správný?
+
+%s
+
+Pokud neodesíláte zvýraznění, klepněte na Zrušit a označte druhou polohu."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Odeslat zvýraznění</string>
   <string name="morphe_sb_stats_title">Statistiky</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistiky jsou dočasně nedostupné (API je mimo provoz)</string>
@@ -1629,6 +1640,15 @@ Povolením této funkce lze odemknout vyšší kvality videa"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Zakázat haptiku pro zoom</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Haptika zoomu je vypnutá</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Haptika zoomu je zapnutá</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Ovládací prvky médií pro oznámení</string>
+  <string name="morphe_notification_media_screen_summary">Skrýt ovládací prvky médií na zamykací obrazovce</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skrýt tlačítka Předchozí a Další</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Tlačítka Předchozí a Další jsou skrytá v oznamovací liště, na uzamčené obrazovce a v ovládání sluchátek</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Tlačítka Předchozí a Další jsou zobrazená v oznamovací liště, na uzamčené obrazovce a v ovládání sluchátek</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Zakázat posuvník</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Posuvník v oznamovací liště a na uzamčené obrazovce je jen pro čtení</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Posuvník v oznamovací liště a na uzamčené obrazovce je posouván</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Pokud jste nedávno změnili přihlašovací údaje svého účtu, odinstalujte a znovu nainstalujte MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

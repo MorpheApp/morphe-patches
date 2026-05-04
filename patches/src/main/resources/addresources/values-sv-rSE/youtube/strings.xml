@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Gamla inställningsmenyer visas</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Gamla inställningsmenyer visas inte</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Ta bort begränsningar för uppspelning i bakgrunden</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Uppspelning i bakgrunden är obegränsad</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Uppspelning i bakgrunden är begränsad</string>
   <string name="morphe_shorts_disable_background_playback_title">Inaktivera uppspelning av Shorts-videor i bakgrunden</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Uppspelning av Shorts-videor i bakgrunden är inaktiverad</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Uppspelning av Shorts-videor i bakgrunden är aktiverad</string>
@@ -983,9 +986,9 @@ Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\
   <string name="morphe_hide_shorts_search_summary_on">Döljs i sökresultat</string>
   <string name="morphe_hide_shorts_search_summary_off">Visas i sökresultat</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_subscriptions_title">Dölj Shorts-videor i flödet Prenumerationer</string>
-  <string name="morphe_hide_shorts_subscriptions_summary_on">Döljs i flödet Prenumerationer</string>
-  <string name="morphe_hide_shorts_subscriptions_summary_off">Visas i flödet Prenumerationer</string>
+  <string name="morphe_hide_shorts_subscriptions_title">Dölj Shorts-videor i prenumerationsflödet</string>
+  <string name="morphe_hide_shorts_subscriptions_summary_on">Döljs i prenumerationsflödet</string>
+  <string name="morphe_hide_shorts_subscriptions_summary_off">Visas i prenumerationsflödet</string>
   <string name="morphe_hide_shorts_video_description_title">Dölj Shorts-videor i videobeskrivningen</string>
   <string name="morphe_hide_shorts_video_description_summary_on">Döljs i videobeskrivningen</string>
   <string name="morphe_hide_shorts_video_description_summary_off">Visas i videobeskrivningen</string>
@@ -1095,6 +1098,9 @@ Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\
   <string name="morphe_hide_shorts_full_video_link_label_title">Dölj etikett för videolänk</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_on">Etikett för videolänk är dold</string>
   <string name="morphe_hide_shorts_full_video_link_label_summary_off">Etikett för videolänk visas</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_title">Inaktivera dubbeltryck för att gilla i Shorts</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_on">Dubbeltryck för att gilla i Shorts ignoreras</string>
+  <string name="morphe_disable_shorts_double_tap_to_like_summary_off">Dubbeltryck för att gilla i Shorts tillåts</string>
   <string name="morphe_hide_shorts_navigation_bar_title">Dölj navigeringsfältet</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_on">Navigeringsfältet är dolt</string>
   <string name="morphe_hide_shorts_navigation_bar_summary_off">Navigeringsfältet visas</string>
@@ -1366,12 +1372,20 @@ till
 (%3$s)
 
 Redo att skicka in?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Skicka in</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Starten måste infalla före slutet</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Markera två platser i tidsfältet först</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Markera först en plats på tidsreglaget</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Förhandsgranska segmentet och se till att det hoppar över smidigt</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Redigera tid för segment manuellt</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Vill du ändra tidpunkten för starten eller slutet av segmentet?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Ogiltig tid angiven</string>
+  <string name="morphe_sb_new_segment_highlight_title">Skicka in höjdpunkt</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Är tiden för höjdpunkten korrekt?
+
+%s
+
+Om du inte vill skicka in en höjdpunkt trycker du på Avbryt och markerar den andra platsen"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Skicka in höjdpunkt</string>
   <string name="morphe_sb_stats_title">Statistik</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistik är för tillfället inte tillgänglig (API ligger nere)</string>
@@ -1626,6 +1640,15 @@ Om du aktiverar detta kan högre videokvaliteter låsas upp"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Inaktivera zoomhaptik</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoomhaptik är inaktiverad</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoomhaptik är aktiverad</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Mediekontroller i aviseringar</string>
+  <string name="morphe_notification_media_screen_summary">Dölj komponenter för mediekontroll på låsskärmen</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Dölj knapparna Föregående och Nästa</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Knapparna Föregående och Nästa är dolda i medieaviseringen, på låsskärmen och i hörlurskontroller</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Knapparna Föregående och Nästa visas i aviseringen, på låsskärmen och i hörlurskontroller</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Inaktivera sökreglaget</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Sökreglaget i medieaviseringen och på låsskärmen går inte att dra</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Sökreglaget i medieaviseringen och på låsskärmen går inte att dra</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Om du nyligen har ändrat dina inloggningsuppgifter, avinstallera och installera om MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

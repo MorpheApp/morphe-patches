@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Zobrazuje sa staré menu nastavení</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Staré menu nastavení sa nezobrazuje</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Odstrániť obmedzenia prehrávania na pozadí</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Prehrávanie na pozadí nie je obmedzené</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Prehrávanie na pozadí je obmedzené</string>
   <string name="morphe_shorts_disable_background_playback_title">Zakázať prehrávanie Shorts na pozadí</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Prehrávanie Shorts na pozadí je zakázané</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Prehrávanie Shorts na pozadí je povolené</string>
@@ -1369,12 +1372,20 @@ a
 (%3$s)
 
 Chcete to odoslať?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Odoslať</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Začiatok musí byť pred koncom</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Najprv označte dve miesta na časovej lište</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Najprv označte miesto na časovej osi</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Skontrolujte segment a uistite sa, že preskočí plynulo</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Manuálne upravte časovanie segmentu</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Chcete upraviť časovanie pre začiatok alebo koniec segmentu?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Zadali ste nesprávny čas</string>
+  <string name="morphe_sb_new_segment_highlight_title">Odoslať zvýraznenie</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Je čas zvýraznenia správny?
+
+%s
+
+Ak neodosielate zvýraznenie, klepnite na Zrušiť a označte druhú polohu"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Odoslať zvýraznenie</string>
   <string name="morphe_sb_stats_title">Štatistiky</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Štatistiky sú dočasne nedostupné (API je nedostupné)</string>
@@ -1628,6 +1639,15 @@ Povolením tejto možnosti môžete odomknúť vyššiu kvalitu videa"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Zakázať haptickú spätnú väzbu pre zoom</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Haptická spätná väzba pre zoom je zakázaná</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Haptická spätná väzba pre zoom je povolená</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Ovládacie prvky médií v upozorneniach</string>
+  <string name="morphe_notification_media_screen_summary">Skryť komponenty ovládania médií na uzamknutej obrazovke</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skryť tlačidlá Predchádzajúca &amp; Ďalej</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Tlačidlá Predchádzajúca &amp; Ďalej sú skryté v oznamovaní médií, na uzamknutej obrazovke a v ovládaniach slúchadiel</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Tlačidlá Predchádzajúca &amp; Ďalej sú zobrazené v oznamovaní médií, na uzamknutej obrazovke a v ovládaniach slúchadiel</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Zakázať ukazovateľ priebehu (seekbar)</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Ukazovateľ priebehu (seekbar) v oznamovaní médií a na uzamknutej obrazovke je v režime iba na čítanie</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Ukazovateľ priebehu (seekbar) v oznamovaní médií a na uzamknutej obrazovke je možné ťahať</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ak ste nedávno zmenili svoje prihlasovacie údaje k účtu, odinštalujte a znovu nainštalujte microG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

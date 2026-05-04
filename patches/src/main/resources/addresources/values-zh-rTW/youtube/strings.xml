@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">已顯示舊版設定選單</string>
   <string name="morphe_restore_old_settings_menus_summary_off">不顯示舊版設定選單</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">移除背景播放限制</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">背景播放已取消限制</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">背景播放受到限制</string>
   <string name="morphe_shorts_disable_background_playback_title">停用背景播放 Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">已停用背景播放 Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">已啟用背景播放 Shorts</string>
@@ -1370,12 +1373,20 @@ Second \"item\" text"</string>
 (%3$s)
 
 準備提交？"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">提交</string>
   <string name="morphe_sb_new_segment_start_is_before_end">起始點必須在終點之前</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">首先在時間欄上標記兩個位置</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">首先在時間軸上標記一個位置</string>
   <string name="morphe_sb_new_segment_preview_segment_first">預覽片段，確保能順利跳過</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">手動編輯片段的時間</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">您想編輯片段開始或結束的時間嗎？</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">所選擇的時間無效</string>
+  <string name="morphe_sb_new_segment_highlight_title">提交重點</string>
+  <string name="morphe_sb_new_segment_highlight_content">"高光時段是否正確？
+
+%s
+
+如果您未提交高光片段，請點擊「取消」並標記第二個位置。"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">提交高光片段</string>
   <string name="morphe_sb_stats_title">統計</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">統計資料暫時不可用（API 離線）</string>
@@ -1633,6 +1644,15 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">停用縮放震動</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">已停用縮放觸覺回饋</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">已啟用縮放觸覺回饋</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">通知媒體控制項</string>
+  <string name="morphe_notification_media_screen_summary">隱藏鎖定畫面媒體控制元件</string>
+  <string name="morphe_hide_notification_media_prev_next_title">隱藏上一曲和下一曲按鈕</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">上一曲和下一曲按鈕在媒體通知、鎖定畫面和耳機控制中已隱藏</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">上一曲和下一曲按鈕在通知、鎖定畫面和耳機控制中可見</string>
+  <string name="morphe_disable_notification_media_seekbar_title">停用搜尋條</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">媒體通知和鎖定畫面中的搜尋條為唯讀模式</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">媒體通知和鎖定畫面中的搜尋條可拖曳</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">如果您最近變更了帳戶登入詳細資訊，請解除安裝並重新安裝 MicroG。</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

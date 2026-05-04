@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">이전 설정 메뉴를 표시합니다</string>
   <string name="morphe_restore_old_settings_menus_summary_off">이전 설정 메뉴를 표시하지 않습니다</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">백그라운드 재생 제한 제거하기</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">백그라운드 재생이 제한되지 않습니다</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">백그라운드 재생이 제한됩니다</string>
   <string name="morphe_shorts_disable_background_playback_title">Shorts 백그라운드 재생 비활성화하기</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts 백그라운드 재생을 비활성화합니다</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts 백그라운드 재생을 활성화합니다\n\n알림: \n• Shorts 백그라운드 재생은 PIP 모드를 통해서만 사용할 수 있습니다</string>
@@ -924,8 +927,8 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_player_control_buttons_background_summary_on">플레이어 컨트롤 버튼 배경이 숨겨집니다</string>
   <string name="morphe_hide_player_control_buttons_background_summary_off">플레이어 컨트롤 버튼 배경이 표시됩니다</string>
   <string name="morphe_hide_player_previous_next_buttons_title">이전 &amp; 다음 숨기기</string>
-  <string name="morphe_hide_player_previous_next_buttons_summary_on">이전 &amp; 다음 동영상 버튼이 숨겨집니다</string>
-  <string name="morphe_hide_player_previous_next_buttons_summary_off">이전 &amp; 다음 동영상 버튼이 표시됩니다</string>
+  <string name="morphe_hide_player_previous_next_buttons_summary_on">이전 &amp; 다음 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_player_previous_next_buttons_summary_off">이전 &amp; 다음 버튼이 표시됩니다</string>
   <string name="morphe_hide_settings_button_title">설정 숨기기</string>
   <string name="morphe_hide_settings_button_summary_on">설정 버튼이 숨겨집니다</string>
   <string name="morphe_hide_settings_button_summary_off">설정 버튼이 표시됩니다</string>
@@ -1366,12 +1369,20 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
 (%3$s) 까지 입니다
 
 이렇게 제출하시겠습니까?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">제출</string>
   <string name="morphe_sb_new_segment_start_is_before_end">구간의 시작 또는 끝을 잘못 설정하였습니다</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">먼저 재생바에서 시작 지점과 끝 지점을 표시하세요</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">먼저 재생바에서 구간을 표시하세요</string>
   <string name="morphe_sb_new_segment_preview_segment_first">구간 미리 보기 버튼을 탭하여 설정한 구간이 정상적으로 건너뛰기가 되는지 확인하세요</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">직접 시간 구간 편집하기</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">구간의 시작이나 끝을 편집하시겠습니까?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">잘못된 시간 형식입니다</string>
+  <string name="morphe_sb_new_segment_highlight_title">하이라이트 제출</string>
+  <string name="morphe_sb_new_segment_highlight_content">"하이라이트 구간이 정확한가요?
+
+%s
+
+하이라이트를 제출하지 않으려면 ‘취소’를 탭하고 두 번째 구간을 표시하세요"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">하이라이트 제출</string>
   <string name="morphe_sb_stats_title">기록</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">기록을 일시적으로 가져올 수 없습니다 (응답 시간 초과)</string>
@@ -1626,6 +1637,15 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">동영상 확대 진동 피드백 비활성화하기</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">동영상 확대 진동 피드백을 비활성화합니다</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">동영상 확대 진동 피드백을 활성화합니다</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">알림 미디어 컨트롤</string>
+  <string name="morphe_notification_media_screen_summary">잠금 화면 미디어 컨트롤 구성요소를 숨길 수 있습니다</string>
+  <string name="morphe_hide_notification_media_prev_next_title">이전 &amp; 다음 버튼 숨기기</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">미디어 알림, 잠금 화면 그리고 헤드폰 컨트롤에서 이전 &amp; 다음 버튼이 숨겨집니다</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">미디어 알림, 잠금 화면 그리고 헤드폰 컨트롤에서 이전 &amp; 다음 버튼이 표시됩니다</string>
+  <string name="morphe_disable_notification_media_seekbar_title">재생바 비활성화하기</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">미디어 알림 및 잠금 화면에서 재생바를 조작할 수 없습니다</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">미디어 알림 및 잠금 화면에서 재생바를 조작할 수 있습니다</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">최근에 계정 로그인 정보를 변경했다면 MicroG를 제거하고 다시 설치하세요.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">แสดงเมนูการตั้งค่าแบบเก่า</string>
   <string name="morphe_restore_old_settings_menus_summary_off">ไม่แสดงเมนูการตั้งค่าแบบเก่า</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">ลบข้อจำกัดการเล่นในพื้นหลัง</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">การเล่นในพื้นหลังไม่ถูกจำกัด</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">การเล่นเพลงในเบื้องหลังถูกจำกัด</string>
   <string name="morphe_shorts_disable_background_playback_title">ปิดการเล่นพื้นหลัง Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">การเล่นพื้นหลัง Shorts ถูกปิดใช้งาน</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">การเล่นพื้นหลัง Shorts ถูกเปิดใช้งาน</string>
@@ -1367,12 +1370,20 @@ User id ของคุณเหมือนกับรหัสผ่าน �
 (%3$s)
 
 พร้อมที่จะส่งหรือยัง?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">ส่ง</string>
   <string name="morphe_sb_new_segment_start_is_before_end">จุดเริ่มต้นต้องอยู่ก่อนจุดสิ้นสุด</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">กำหนดจุดบนเส้นเวลาก่อน</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">ระบุตำแหน่งบนแถบเวลาขั้นแรก</string>
   <string name="morphe_sb_new_segment_preview_segment_first">ดูตัวอย่างส่วน และตรวจสอบ</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">แก้ไขส่วนแบบมือ</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">คุณต้องการแก้ไขจุดเริ่มต้นและจุดจบของส่วนนี้ไหม?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">ค่าเวลาที่ให้มาผิดพลาด</string>
+  <string name="morphe_sb_new_segment_highlight_title">ส่งไฮไลต์</string>
+  <string name="morphe_sb_new_segment_highlight_content">"เวลาไฮไลท์ถูกต้องหรือไม่?
+
+%s
+
+หากคุณไม่ได้ส่งไฮไลท์ ให้แตะยกเลิกและทำเครื่องหมายที่ตำแหน่งที่สอง"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">ส่งไฮไลท์</string>
   <string name="morphe_sb_stats_title">สถิติ</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">สถิติไม่พร้อมใช้งานชั่วคราว (API ไม่ทำงาน)</string>
@@ -1626,6 +1637,15 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_disable_haptic_feedback_zoom_title">ปิดใช้งานแฮปติกซูม</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">ปิดใช้งานแฮปติกซูม</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">เปิดใช้งานแฮปติกซูม</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">ตัวควบคุมสื่อการแจ้งเตือน</string>
+  <string name="morphe_notification_media_screen_summary">ซ่อนส่วนประกอบการควบคุมสื่อบนหน้าจอล็อค</string>
+  <string name="morphe_hide_notification_media_prev_next_title">ซ่อนปุ่มก่อนหน้า &amp; ถัดไป</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">ปุ่มก่อนหน้า &amp; ถัดไปจะถูกซ่อนไว้ในการแจ้งเตือน, หน้าจอล็อค และการควบคุมหูฟัง</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">ปุ่มก่อนหน้า &amp; ถัดไปจะแสดงในการแจ้งเตือน, หน้าจอล็อค และการควบคุมหูฟัง</string>
+  <string name="morphe_disable_notification_media_seekbar_title">ปิดใช้งานแถบเลื่อน</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">แถบเลื่อนในการแจ้งเตือนสื่อและหน้าจอล็อคจะอ่านได้อย่างเดียว</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">แถบเลื่อนในการแจ้งเตือนสื่อและหน้าจอล็อคสามารถลากได้</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">หากคุณเพิ่งเปลี่ยนรายละเอียดการเข้าสู่ระบบบัญชีของคุณ ให้ถอนการติดตั้งและติดตั้ง MicroG ใหม่อีกครั้ง</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Menuên serdest ên kevnar nîşankarîne</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Menuên serdest ên kevnar nîşankarîne</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Hilbijartina parastina ji bo lîstikê di binê de tunekirin</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Lîstik kirina paşnavê ne mafe girtî ye</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Lêkirina fonê sînordar e</string>
   <string name="morphe_shorts_disable_background_playback_title">Aktîvîteya fonî ya Shorts-an saz nêre</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Aktîvîteya fonî ya Shorts-an saz nêre</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Aktîvîteya fonî ya Shorts-an saz bike</string>
@@ -1300,12 +1303,20 @@ heta
 (%3$s)
 
 Amade ye ji bo weşandinê?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Şandin</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Destpêk pêşberê astengiyê be</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Yek dest û yek astengî li ser tîrosê hinê marke bike</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Berê li ser bareya demê cihêkî işaret bike</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Segmentî pêşdîbike û pê ewle bûne ku ji bilêv pêşdîbike</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Editê weqta segmentê bi destan bike</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Dixerî ku weqta destpêkê aniya astengiyê ya segmentê edit bike?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Weqta serdest tê dayîn</string>
+  <string name="morphe_sb_new_segment_highlight_title">Şandina ronahîkirinê</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Ma demêna ronahîkirinê rast e?
+
+%s
+
+Ger hûn ne dixwin ronahîyek, bikirtînin Betal kirin û cîhê duyemîn nîşan bikin."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Ronahîkirinê bişînin</string>
   <string name="morphe_sb_stats_title">Stats</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Stats di wextê din de pêşbîn naben (API xurt e)</string>
@@ -1553,6 +1564,15 @@ Ev dikare bişîne asta bilind a keyfiyetên vîdyoyê"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Jêbire gava jêbirina zoomê</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoom ya jêbirinê ye xwer</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoom ya jêbirinê ye ser</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Kontrolên medyaya notifîkasyonê</string>
+  <string name="morphe_notification_media_screen_summary">Veqedînîn kontrolên medyaya ekranê yê girtî</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Butonên Berê &amp; Paşê veşêrin</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Butonên Berê &amp; Paşê di notîfîkasyona medyayê, tîkêya kilîtê, û kontrolên gulîhêrê de veşartî ne</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Butonên Berê &amp; Paşê di notîfîkasyonê, tîkêya kilîtê, û kontrolên gulîhêrê de xuya dikin</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Barê barkirinê neçalak bike</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Barê barkirinê di notîfîkasyona medyayê û tîkêya kilîtê de tenê dixwîne</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Barê barkirinê di notîfîkasyona medyayê û tîkêya kilîtê de dikare bê guheztin</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Dibe ku nûvekirina detalên login-a hesabê xwe kir, MicroG-yê saz bike û ji nûve saz bike.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

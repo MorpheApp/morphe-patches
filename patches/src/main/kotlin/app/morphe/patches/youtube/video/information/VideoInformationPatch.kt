@@ -48,6 +48,7 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ThreeRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -162,18 +163,14 @@ val videoInformationPatch = bytecodePatch(
             )
         }
 
-        with(CreateVideoPlayerSeekbarFingerprint) {
-            val videoLengthMethodMatch = VideoLengthFingerprint.match(originalClassDef)
+        VideoLengthFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<ThreeRegisterInstruction>(index).registerB
 
-            videoLengthMethodMatch.method.apply {
-                val videoLengthRegisterIndex = videoLengthMethodMatch.instructionMatches.last().index - 2
-                val videoLengthRegister = getInstruction<OneRegisterInstruction>(videoLengthRegisterIndex).registerA
-                val dummyRegisterForLong = videoLengthRegister + 1 // required for long values since they are wide
-
-                addInstruction(
-                    videoLengthMethodMatch.instructionMatches.last().index,
-                    "invoke-static {v$videoLengthRegister, v$dummyRegisterForLong}, " +
-                        "$EXTENSION_CLASS->setVideoLength(J)V",
+                addInstructionsAtControlFlowLabel(
+                    index,
+                    "invoke-static { v$register, v${register + 1} }, $EXTENSION_CLASS->setVideoLength(J)V",
                 )
             }
         }

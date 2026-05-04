@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Prikazuju se stari meniji podešavanja</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Ne prikazuju se stari meniji podešavanja</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Ukloni ograničenja reprodukcije u pozadini</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Reprodukcija u pozadini nije ograničena</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Reprodukcija u pozadini je ograničena</string>
   <string name="morphe_shorts_disable_background_playback_title">Onemogući puštanje Shorts videa u pozadini</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Puštanje Shorts videa u pozadini je onemogućeno</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Puštanje Shorts videa u pozadini je omogućeno</string>
@@ -1369,12 +1372,20 @@ do
 (%3$s)
 
 Spreman za podnošenje?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Potvrdi</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Početak mora biti pre kraja</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Prvo označite dva mesta na vremenskoj traci</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Prvo označite lokaciju na vremenskoj traci</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Pregledajte segment i uverite se da glatko preskače</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Ručno izmenite vreme segmenta</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Želite li da izmenite vreme početka ili kraja segmenta?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Dato je nevažeće vreme</string>
+  <string name="morphe_sb_new_segment_highlight_title">Pošalji isticanje</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Da li je vreme za isticanje ispravno?
+
+%s
+
+Ako ne šaljete isticanje, dodirnite Otkaži i označite drugu lokaciju."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Pošalji isticanje</string>
   <string name="morphe_sb_stats_title">Statistika</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistike privremeno nisu dostupne (API ne radi)</string>
@@ -1628,6 +1639,15 @@ Ako ovo omogućite, mogu biti otključani viši kvaliteti videa"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Onemogući vibraciju pri uveličavanju</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Vibracija pri uveličavanju je onemogućena</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Vibracija pri uveličavanju je omogućena</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Kontrole medija za obaveštenja</string>
+  <string name="morphe_notification_media_screen_summary">Sakrij komponente za kontrolu medija na zaključanom ekranu</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Sakrij prethodne i sledeće dugmad</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Dugmad za prethodnu i sledeću numeru su sakrivena u obaveštenjima, na zaključanom ekranu i kontrolama za slušalice</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Dugmad za prethodnu i sledeću numeru su prikazana u obaveštenjima, na zaključanom ekranu i kontrolama za slušalice</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Onemogući traku za traženje</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Traka za traženje u obaveštenjima i na zaključanom ekranu je samo za čitanje</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Traka za traženje u obaveštenjima i na zaključanom ekranu se može povlačiti</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ako ste nedavno promenili podatke za prijavu na nalog, deinstalirajte i ponovo instalirajte MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

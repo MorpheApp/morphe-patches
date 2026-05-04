@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">תפריטי הגדרות ישנים מוצגים</string>
   <string name="morphe_restore_old_settings_menus_summary_off">תפריטי הגדרות ישנים אינם מוצגים</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">הסר הגבלות השמעת רקע</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">השמעת רקע אינה מוגבלת</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">השמעת רקע מוגבלת</string>
   <string name="morphe_shorts_disable_background_playback_title">השבת הפעלה ברקע של Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">הפעלה ברקע של Shorts מושבתת</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">הפעלה ברקע של Shorts מופעלת</string>
@@ -1369,12 +1372,20 @@ Second \"item\" text"</string>
 (%3$s)
 
 מוכן להגיש?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">שלח</string>
   <string name="morphe_sb_new_segment_start_is_before_end">התחלה חייבת להיות לפני הסוף</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">סמן שני מיקומים על סרגל הזמן תחילה</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">סמן תחילה מיקום על ציר הזמן</string>
   <string name="morphe_sb_new_segment_preview_segment_first">צפה מראש במקטע, וודא שהוא מדלג בצורה חלקה</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">ערוך את תזמון המקטע באופן ידני</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">האם ברצונך לערוך את התזמון עבור ההתחלה או הסיום של המקטע?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">ניתן זמן לא חוקי</string>
+  <string name="morphe_sb_new_segment_highlight_title">שלח הדגשה</string>
+  <string name="morphe_sb_new_segment_highlight_content">"האם זמן ההדגשה נכון?
+
+%s
+
+אם אינך שולח הדגשה, הקש על ביטול וסמן את המיקום השני"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">שלח הדגשה</string>
   <string name="morphe_sb_stats_title">סטטיסטיקה</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">סטטיסטיקה אינה זמינה באופן זמני (API מושבת)</string>
@@ -1627,6 +1638,15 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">השבת משוב זום ברטט</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">משוב ברטט עבור זום מושבת</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">משוב ברטט עבור זום מופעל</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">פקדי מדיה בהתראות</string>
+  <string name="morphe_notification_media_screen_summary">הסתר רכיבי בקרה של מדיה במסך הנעילה</string>
+  <string name="morphe_hide_notification_media_prev_next_title">הסתר כפתורי קודם &amp; הבא</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">כפתורי הקודם &amp; הבא מוסתרים בהתראות מדיה, במסך הנעילה ובפקדי אוזניות</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">כפתורי הקודם &amp; הבא מוצגים בהתראות, במסך הנעילה ובפקדי אוזניות</string>
+  <string name="morphe_disable_notification_media_seekbar_title">השבת סרגל חיפוש</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">סרגל החיפוש בהתראות מדיה ובמסך הנעילה הוא לקריאה בלבד</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">ניתן לגרור את סרגל החיפוש בהתראות מדיה ובמסך הנעילה</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">אם פרטי הכניסה לחשבונך השתנו לאחרונה, אז יש להסיר ולהתקין מחדש את MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

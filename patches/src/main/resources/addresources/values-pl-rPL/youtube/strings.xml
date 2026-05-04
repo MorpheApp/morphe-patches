@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Włączone</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Wyłączone</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Odtwarzanie w tle bez ograniczeń</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Włączone</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Wyłączone</string>
   <string name="morphe_shorts_disable_background_playback_title">Odtwarzanie Shortsów w tle</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Wyłączone</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Włączone</string>
@@ -1209,7 +1212,7 @@ Ograniczenie: Łapki w dół mogą nie być widoczne w trybie incognito"</string
   <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_on">Znika po kilku sekundach</string>
   <string name="morphe_sb_enable_auto_hide_skip_segment_button_sum_off">Widoczny przez cały segment</string>
   <string name="morphe_sb_auto_hide_skip_button_duration">Czas wyświetlania przycisku Pomiń</string>
-  <string name="morphe_sb_auto_hide_skip_button_duration_sum">Określa czas wyświetlania się przycisków Pomiń i Pomiń do najważniejszej części przed automatycznym ukryciem</string>
+  <string name="morphe_sb_auto_hide_skip_button_duration_sum">Określa czas wyświetlania się przycisków Pomiń i Pomiń do wyróżnienia przed automatycznym ukryciem</string>
   <string name="morphe_sb_general_skiptoast">Komunikaty po automatycznych pominięciach</string>
   <string name="morphe_sb_general_skiptoast_sum_on">Widoczne. Stuknij komunikat, aby cofnąć pominięcie</string>
   <string name="morphe_sb_general_skiptoast_sum_off">Ukryte</string>
@@ -1274,15 +1277,15 @@ Twój identyfikator działa jak hasło i nigdy nie powinien być udostępniany."
   <string name="morphe_sb_segments_sponsor">Treści sponsorowane</string>
   <string name="morphe_sb_segments_sponsor_sum">Płatna promocja, płatne rekomendacje oraz bezpośrednie reklamy. Nie do autoreklam ani darmowych wyrazów uznania dla idei / twórców / stron / produktów, które im się podobają</string>
   <string name="morphe_sb_segments_selfpromo">Nieopłacona / Autoreklama</string>
-  <string name="morphe_sb_segments_selfpromo_sum">Podobne do treści sponsorowanych, z wyjątkiem nieopłaconych lub autoreklam. Obejmuje to sekcje o własnych towarach, darowiznach czy informacjach o tym, z kim współpracowali</string>
+  <string name="morphe_sb_segments_selfpromo_sum">Podobne do treści sponsorowanych, z wyjątkiem nieopłaconych lub autoreklam. Obejmuje to sekcje o własnych produktach, dotacjach czy informacjach o tym, z kim współpracowali</string>
   <string name="morphe_sb_segments_interaction">Przypomnienie o interakcji (Subskrybuj)</string>
-  <string name="morphe_sb_segments_interaction_sum">Krótkie przypomnienie o polubieniu, subskrypcji lub obserwowaniu. Dłuższe wstawki o konkretnej tematyce są klasyfikowane jako autopromocja</string>
-  <string name="morphe_sb_segments_highlight">Najważniejsza część</string>
+  <string name="morphe_sb_segments_interaction_sum">Krótkie przypomnienie o polubieniu, subskrypcji lub obserwowaniu. Dłuższe wstawki o konkretnej tematyce są klasyfikowane jako autoreklama</string>
+  <string name="morphe_sb_segments_highlight">Wyróżnione</string>
   <string name="morphe_sb_segments_highlight_sum">Część filmu, która interesuje większość osób</string>
-  <string name="morphe_sb_segments_intro">Przerywnik / Animowane intro</string>
+  <string name="morphe_sb_segments_intro">Przerwa / Animowane intro</string>
   <string name="morphe_sb_segments_intro_sum">Fragment bez faktycznej treści. Może to być pauza, statyczna klatka lub powtarzająca się animacja. Nie dotyczy przejść zawierających informacje</string>
-  <string name="morphe_sb_segments_outro">Karty / Napisy końcowe</string>
-  <string name="morphe_sb_segments_outro_sum">Napisy końcowe lub moment pojawienia się kart końcowych. Nie dotyczy merytorycznego podsumowania filmu</string>
+  <string name="morphe_sb_segments_outro">Ekran końcowy / Napisy</string>
+  <string name="morphe_sb_segments_outro_sum">Napisy końcowe lub moment pojawienia się ekranu końcowego. Nie dotyczy merytorycznego podsumowania filmu</string>
   <string name="morphe_sb_segments_hook">Wstęp / Przywitanie</string>
   <string name="morphe_sb_segments_hook_sum">Zapowiedzi nadchodzącego filmu, przywitania i pożegnania. Nie obejmuje sekcji zawierających dodatkową treść</string>
   <string name="morphe_sb_segments_preview">Zapowiedź / Podsumowanie</string>
@@ -1292,15 +1295,15 @@ Twój identyfikator działa jak hasło i nigdy nie powinien być udostępniany."
   <string name="morphe_sb_segments_nomusic">Muzyka: Sekcja bez muzyki</string>
   <string name="morphe_sb_segments_nomusic_sum">Do użytku jedynie w teledyskach. Sekcje teledysków pozbawione muzyki, które nie wpisują się w inne kategorie</string>
   <string name="morphe_sb_skip_button_compact">Pomiń</string>
-  <string name="morphe_sb_skip_button_compact_highlight">Najważniejsza część</string>
+  <string name="morphe_sb_skip_button_compact_highlight">Wyróżnione</string>
   <string name="morphe_sb_skip_button_sponsor">Pomiń treści sponsorowane</string>
   <string name="morphe_sb_skip_button_selfpromo">Pomiń autoreklamę</string>
   <string name="morphe_sb_skip_button_interaction">Pomiń przypomnienie o interakcji</string>
-  <string name="morphe_sb_skip_button_highlight">Pomiń do najważniejszej części</string>
+  <string name="morphe_sb_skip_button_highlight">Pomiń do wyróżnienia</string>
   <string name="morphe_sb_skip_button_intro_beginning">Pomiń intro</string>
-  <string name="morphe_sb_skip_button_intro_middle">Pomiń przerywnik</string>
-  <string name="morphe_sb_skip_button_intro_end">Pomiń przerywnik</string>
-  <string name="morphe_sb_skip_button_outro">Pomiń zakończenie</string>
+  <string name="morphe_sb_skip_button_intro_middle">Pomiń przerwę</string>
+  <string name="morphe_sb_skip_button_intro_end">Pomiń przerwę</string>
+  <string name="morphe_sb_skip_button_outro">Pomiń outro</string>
   <string name="morphe_sb_skip_button_hook">Pomiń wstęp</string>
   <string name="morphe_sb_skip_button_preview_beginning">Pomiń zapowiedź</string>
   <string name="morphe_sb_skip_button_preview_middle">Pomiń zapowiedź</string>
@@ -1311,11 +1314,11 @@ Twój identyfikator działa jak hasło i nigdy nie powinien być udostępniany."
   <string name="morphe_sb_skipped_sponsor">Pominięto treści sponsorowane</string>
   <string name="morphe_sb_skipped_selfpromo">Pominięto autoreklamę</string>
   <string name="morphe_sb_skipped_interaction">Pominięto irytujące przypomnienie</string>
-  <string name="morphe_sb_skipped_highlight">Pominięto do najważniejszej części</string>
+  <string name="morphe_sb_skipped_highlight">Pominięto do wyróżnienia</string>
   <string name="morphe_sb_skipped_intro_beginning">Pominięto intro</string>
-  <string name="morphe_sb_skipped_intro_middle">Pominięto przerywnik</string>
-  <string name="morphe_sb_skipped_intro_end">Pominięto przerywnik</string>
-  <string name="morphe_sb_skipped_outro">Pominięto zakończenie</string>
+  <string name="morphe_sb_skipped_intro_middle">Pominięto przerwę</string>
+  <string name="morphe_sb_skipped_intro_end">Pominięto przerwę</string>
+  <string name="morphe_sb_skipped_outro">Pominięto outro</string>
   <string name="morphe_sb_skipped_hook">Pominięto wstęp</string>
   <string name="morphe_sb_skipped_preview_beginning">Pominięto zapowiedź</string>
   <string name="morphe_sb_skipped_preview_middle">Pominięto zapowiedź</string>
@@ -1369,12 +1372,20 @@ do
 (%3$s)
 
 Wysłać?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Wyślij</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Początek musi być przed końcem</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Najpierw zaznacz dwa miejsca na pasku postępu filmu</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Najpierw zaznacz punkt na pasku postępu</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Obejrzyj podgląd i upewnij się, że segment pomijany jest płynnie</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Edytuj ręcznie czas segmentu</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Czy chcesz edytować czas rozpoczęcia czy zakończenia segmentu?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Podano nieprawidłowy format czasu</string>
+  <string name="morphe_sb_new_segment_highlight_title">Wyślij wyróżnienie</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Czy czas wyróżnienia jest poprawny?
+
+%s
+
+Jeśli nie wysyłasz wyróżnienia, stuknij Anuluj i zaznacz drugi punkt"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Wyślij wyróżnienie</string>
   <string name="morphe_sb_stats_title">Statystyki</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statystyki są niedostępne (API nie reaguje)</string>
@@ -1628,6 +1639,15 @@ Włączenie tej opcji może odblokować wyższe jakości filmów"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Wibracje podczas przybliżania filmu</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Wyłączone</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Włączone</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Sterowanie multimediami</string>
+  <string name="morphe_notification_media_screen_summary">Ukryj elementy na ekranie blokady i w powiadomieniach</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Przyciski Poprzedni i Następny</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Ukryte</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Widoczne</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Pasek postępu</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Zablokowany</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Aktywny</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Wystąpił błąd logowania, jeśli Twoje hasło zostało zmienione, spróbuj przeinstalować MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

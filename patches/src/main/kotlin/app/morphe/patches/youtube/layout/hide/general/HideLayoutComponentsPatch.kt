@@ -731,18 +731,20 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide flyout menu items
 
-        BottomSheetMenuItemBuilderFingerprint.let {
-            it.method.apply {
-                val index = it.instructionMatches[1].index
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
+        BottomSheetMenuItemBuilderFingerprint.matchAll().forEach { match ->
+            match.let {
+                it.method.apply {
+                    val index = it.instructionMatches[1].index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                addInstructions(
-                    index + 1,
-                    """
-                        invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideFlyoutMenu(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                        move-result-object v$register      
-                    """
-                )
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideFlyoutMenu(Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                            move-result-object v$register      
+                        """
+                    )
+                }
             }
         }
 

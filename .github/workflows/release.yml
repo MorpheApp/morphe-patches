@@ -69,7 +69,7 @@ jobs:
 
       - name: Trigger website deploy
         if: steps.release.outputs.new_release_published == 'true'
-        uses: actions/github-script@v8
+        uses: actions/github-script@v9
         with:
           github-token: ${{ steps.app-token.outputs.token }}
           script: |

@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Gamle indstillingsmenuer er vist</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Gamle indstillingsmenuer er ikke vist</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Fjern restriktioner for afspilning i baggrunden</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Afsspilning i baggrunden er ikke begrænset</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Baggrundsafspilning er begrænset</string>
   <string name="morphe_shorts_disable_background_playback_title">Deaktiver baggrundsafspilning af Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Baggrundsafspilning af Shorts er deaktiveret</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Baggrundsafspilning af Shorts er aktiveret</string>
@@ -1370,12 +1373,20 @@ til
 (%3$s)
 
 Klar til at indsende?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Indsend</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Start skal være før slutningen</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Markér to steder på tidslinjen først</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Markér først et sted på tidslinjen</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Gennemse segmentet, og sikre en glat overgang</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Rediger timing af segment manuelt</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Vil du redigere timingen for start eller afslutning af segmentet?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Ugyldig tid givet</string>
+  <string name="morphe_sb_new_segment_highlight_title">Indsend fremhævelse</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Er fremhævningstiden korrekt?
+
+%s
+
+Hvis du ikke sender en fremhævning, skal du trykke på Annuller og markere den anden placering"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Send fremhævning</string>
   <string name="morphe_sb_stats_title">Statistik</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistikker er midlertidigt ikke tilgængelige (API er nede)</string>
@@ -1629,6 +1640,15 @@ Aktivering af dette kan låse op for højere videokvalitet"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Deaktivér zoom haptics</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoom haptics er deaktiveret</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoom haptics er aktiveret</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Underretningsmedie-kontroller</string>
+  <string name="morphe_notification_media_screen_summary">Skjul låseskærmsmedie-kontrolkomponenter</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skjul Forrige &amp; Næste knapper</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Forrige &amp; Næste knapper er skjult i medienotifikation, låseskærm og hovedtelefonstyring</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Forrige &amp; Næste knapper vises i notifikation, låseskærm og hovedtelefonstyring</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Deaktiver søgefelt</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Søgefeltet i medienotifikation og låseskærm er skrivebeskyttet</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Søgefeltet i medienotifikation og låseskærm kan trækkes i</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Hvis du for nylig har ændret dine kontooplysninger, skal du afinstallere og geninstallere MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

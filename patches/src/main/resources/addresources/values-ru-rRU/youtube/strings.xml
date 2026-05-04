@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Старое меню настроек включено</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Новое меню настроек включено</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Убрать ограничения на фоновое воспроизведение</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Фоновое воспроизведение не ограничено</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Воспроизведение в фоновом режиме ограничено</string>
   <string name="morphe_shorts_disable_background_playback_title">Отключить воспроизведение Shorts в фоновом режиме</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Воспроизведение Shorts в фоновом режиме отключено</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Воспроизведение Shorts в фоновом режиме включено</string>
@@ -1373,12 +1376,20 @@ Cookies будут сохраняться автоматически, если �
 (%3$s)
 
 Готов к отправке?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Отправить</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Начало должно быть перед окончанием</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Сначала отметьте два места на шкале времени</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Сначала отметьте местоположение на временной шкале</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Просмотрите сегмент и убедитесь, что пропуск происходит плавно</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Изменить время сегмента вручную</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Вы хотите изменить время начала или окончания сегмента?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Указано неверное время</string>
+  <string name="morphe_sb_new_segment_highlight_title">Отправить выделенное</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Корректно ли выбрано время выделения?
+
+%s
+
+Если вы не отправляете выделенный момент, нажмите «Отмена» и отметьте второе местоположение"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Отправить выделенный момент</string>
   <string name="morphe_sb_stats_title">Статистика</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Статистика временно недоступна (API отключен)</string>
@@ -1632,6 +1643,15 @@ Cookies будут сохраняться автоматически, если �
   <string name="morphe_disable_haptic_feedback_zoom_title">Отключить виброотклик при масштабировании</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Виброотклик при масштабировании отключен</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Виброотклик при масштабировании включен</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Элементы управления воспроизведением в уведомлениях</string>
+  <string name="morphe_notification_media_screen_summary">Скрыть компоненты управления воспроизведением на заблокированном экране</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Скрыть кнопки «Предыдущий» и «Следующий»</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Кнопки \"Предыдущий\" и \"Следующий\" скрыты в медиа-уведомлении, на экране блокировки и в элементах управления наушников</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Кнопки \"Предыдущий\" и \"Следующий\" отображаются в медиа-уведомлении, на экране блокировки и в элементах управления наушников</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Отключить полосу прокрутки</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Полоса прокрутки в медиа-уведомлении и на экране блокировки доступна только для чтения</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Полоса прокрутки в медиа-уведомлении и на экране блокировки перемещаема</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Если Вы недавно изменили данные для входа в свою учетную запись, удалите и переустановите MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

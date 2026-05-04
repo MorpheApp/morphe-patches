@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Stari meniji nastavitve so prikazani</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Stari meniji nastavitve niso prikazani</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Odstrani omejitve predvajanja v ozadju</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Predvajanje v ozadju ni omejeno</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Predvajanje v ozadju je omejeno</string>
   <string name="morphe_shorts_disable_background_playback_title">Onemogoči predvajanje ozadja za Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Predvajanje ozadja Shorts je onemogočeno</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Predvajanje ozadja Shorts je omogočeno</string>
@@ -1369,12 +1372,20 @@ do
 (%3$s)
 
 Pripravljeni na oddajo?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Pošlji</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Začetek mora biti pred koncem</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Najprej označite dve lokaciji na časovnici</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Najprej označi lokacijo na časovni vrstici</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Predogled segmenta in zagotovite gladko preskok</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Ročno uredite čas segmenta</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Želite urediti čas za začetek ali konec segmenta?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Napačen čas</string>
+  <string name="morphe_sb_new_segment_highlight_title">Potrdi izpostavljanje</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Je čas osvetlitve pravilen?
+
+%s
+
+Če ne oddajate posnetka, tapnite Prekliči in označite drugo lokacijo."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Pošlji posnetek</string>
   <string name="morphe_sb_stats_title">Statistika</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Statistika je začasno nedostopna (API je izklopljen)</string>
@@ -1628,6 +1639,15 @@ Omogočanje tega lahko odblokira višje kvalitete videa"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Onemogoči dotik za prilagajanje</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Dotik za prilagajanje je onemogočen</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Dotik za prilagajanje je omogočen</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Nadzorna plošča za medije v obvestilih</string>
+  <string name="morphe_notification_media_screen_summary">Skrij komponente za nadzor medijev na zaklenjenem zaslonu</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Skrij gumba \"Predhodna\" in \"Naslednja\"</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Gumba \"Predhodna\" in \"Naslednja\" sta skrita v obvestilu o medijih, na zaklenjenem zaslonu in v nadzorih za slušalke</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Gumba \"Predhodna\" in \"Naslednja\" sta prikazana v obvestilu, na zaklenjenem zaslonu in v nadzorih za slušalke</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Onemogoči drsnik</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Drsnik v obvestilu o medijih in na zaklenjenem zaslonu je samo za branje</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Drsnik v obvestilu o medijih in na zaklenjenem zaslonu je povlečen</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Če ste nedavno spremenili podatke za prijavo v račun, namestite in ponovno namestite MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

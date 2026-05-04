@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Os menus de configurações antigos são mostrados.</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Os menus de configurações antigos não são mostrados.</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Remover restrições de reprodução em segundo plano</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">A reprodução em segundo plano não possui restrições</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">A reprodução em segundo plano está restrita</string>
   <string name="morphe_shorts_disable_background_playback_title">Desativar reprodução de fundo dos Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Reprodução de fundo dos Shorts está desativada</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Reprodução de fundo dos Shorts está ativada</string>
@@ -1368,12 +1371,20 @@ para
 (%3$s)
 
 Pronto para enviar?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Enviar</string>
   <string name="morphe_sb_new_segment_start_is_before_end">O início deve ser antes do fim</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Marque dois locais na barra de tempo primeiro</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Marque primeiro uma localização na barra de tempo</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Visualize o segmento e certifique-se de que ele pule sem problemas</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Editar tempo do segmento manualmente</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Deseja editar o tempo de início ou fim do segmento?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Tempo inserido inválido</string>
+  <string name="morphe_sb_new_segment_highlight_title">Enviar destaque</string>
+  <string name="morphe_sb_new_segment_highlight_content">"O tempo do destaque está correto?
+
+%s
+
+Se você não estiver enviando um destaque, toque em Cancelar e marque a segunda localização."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Enviar destaque</string>
   <string name="morphe_sb_stats_title">Estatísticas</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">As estatísticas não estão disponíveis temporariamente (API está inativa)</string>
@@ -1627,6 +1638,15 @@ Habilitar isso pode desbloquear qualidades de vídeo mais altas"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Desativar zoom tátil</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">O zoom tátil está desativado</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">O zoom tátil está ativado</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Controles de mídia da notificação</string>
+  <string name="morphe_notification_media_screen_summary">Ocultar componentes de controle de mídia da tela de bloqueio</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Ocultar botões Anterior e Próximo</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Os botões Anterior e Próximo estão ocultos na notificação de mídia, tela de bloqueio e controles de fone de ouvido</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Os botões Anterior e Próximo são exibidos na notificação, tela de bloqueio e controles de fone de ouvido</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Desativar barra de busca</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">A barra de busca na notificação de mídia e na tela de bloqueio é somente leitura</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">A barra de busca na notificação de mídia e na tela de bloqueio é arrastável</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Se você alterou recentemente os detalhes de login da sua conta, desinstale e reinstale o MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

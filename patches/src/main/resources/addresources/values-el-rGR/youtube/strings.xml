@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Τα παλιά μενού ρυθμίσεων εμφανίζονται</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Τα παλιά μενού ρυθμίσεων δεν εμφανίζονται</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Κατάργηση περιορισμών αναπαραγωγής στο παρασκήνιο</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Η αναπαραγωγή στο παρασκήνιο δεν έχει περιορισμούς</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Η αναπαραγωγή στο παρασκήνιο είναι περιορισμένη</string>
   <string name="morphe_shorts_disable_background_playback_title">Απενεργοποίηση αναπαραγωγής παρασκηνίου για τα Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Η αναπαραγωγή παρασκηνίου είναι απενεργοποιημένη για τα Shorts</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Η αναπαραγωγή παρασκηνίου είναι ενεργοποιημένη για τα Shorts</string>
@@ -1369,12 +1372,20 @@ Second \"item\" text"</string>
 (%3$s)
 
 Είστε έτοιμοι για υποβολή;"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Υποβολή</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Η αρχή πρέπει να είναι πριν από το τέλος</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Σημειώστε δύο σημεία στην γραμμή προόδου πρώτα</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Πρώτα, επιλέξτε μια θέση στη χρονογραμμή</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Κάντε προεπισκόπηση του τμήματος, και σιγουρευτείτε ότι παραλείπεται σωστά</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Επεξεργασία χρονισμού του τμήματος χειροκίνητα</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Θέλετε να επεξεργαστείτε τον χρονισμό του τμήματος από την αρχή ή από το τέλος του τμήματος;</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Δόθηκε μη έγκυρος χρόνος</string>
+  <string name="morphe_sb_new_segment_highlight_title">Υποβολή επισήμανσης</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Είναι σωστή η ώρα επισήμανσης;
+
+%s
+
+Αν δεν υποβάλλετε μια επισήμανση, πατήστε Ακύρωση και σημειώστε τη δεύτερη τοποθεσία"</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Υποβολή επισήμανσης</string>
   <string name="morphe_sb_stats_title">Στατιστικά</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Στατιστικά προσωρινά μη διαθέσιμα (API εκτός λειτουργίας)</string>
@@ -1626,6 +1637,15 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Απενεργοποίηση απόκρισης δόνησης χειρονομίας ζουμ</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Η απόκριση δόνησης της χειρονομίας ζουμ είναι απενεργοποιημένη</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Η απόκριση δόνησης της χειρονομίας ζουμ είναι ενεργοποιημένη</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Έλεγχοι αναπαραγωγής πολυμέσων ειδοποίησης</string>
+  <string name="morphe_notification_media_screen_summary">Απόκρυψη στοιχείων ελέγχου πολυμέσων στην οθόνη κλειδώματος</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Απόκρυψη κουμπιών Προηγούμενο &amp; Επόμενο</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Τα κουμπιά Προηγούμενο &amp; Επόμενο είναι κρυμμένα στην ειδοποίηση πολυμέσων, στην οθόνη κλειδώματος και στα χειριστήρια ακουστικών</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Τα κουμπιά Προηγούμενο &amp; Επόμενο εμφανίζονται στην ειδοποίηση, στην οθόνη κλειδώματος και στα χειριστήρια ακουστικών</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Απενεργοποίηση γραμμής αναζήτησης</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Η γραμμή αναζήτησης στην ειδοποίηση πολυμέσων και στην οθόνη κλειδώματος είναι μόνο για ανάγνωση</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Η γραμμή αναζήτησης στην ειδοποίηση πολυμέσων και στην οθόνη κλειδώματος είναι μετακινητή</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Εάν αλλάξατε πρόσφατα τα στοιχεία σύνδεσης του λογαριασμού σας, απεγκαταστήστε και εγκαταστήστε ξανά το MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

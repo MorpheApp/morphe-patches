@@ -33,6 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Старите менюта с настройки се показват</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Старите менюта с настройки не се показват</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Премахване на ограниченията за възпроизвеждане във фонов режим</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Възпроизвеждането във фонов режим не е ограничено</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Възпроизвеждането във фонов режим е ограничено</string>
   <string name="morphe_shorts_disable_background_playback_title">Възпроизвеждане на  Shorts в фонов режим</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Фоновото възпроизвеждане на Shorts е деактивирано</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Фоновото възпроизвеждане на Shorts е активирано</string>
@@ -1361,12 +1364,20 @@ Second \"item\" text"</string>
 (%3$s)
 
 Готови да се поднесе?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">Потвърждавам</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Началото трябва да е преди края</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Маркирайте две позиции на времевата лента преди</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">Първо маркирайте място на времевата лента</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Предвижте сегмента и убедете се, че той преминава гладко</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Редактирайте времето на сегмента ръчно</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Искате ли да редактирате времето за началото или края на сегмента?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">Невалидно време е въведено</string>
+  <string name="morphe_sb_new_segment_highlight_title">Изпращане на акцент</string>
+  <string name="morphe_sb_new_segment_highlight_content">"Вярно ли е времето на отметката?
+
+%s
+
+Ако не изпращате отметка, натиснете \"Отказ\" и маркирайте втората локация."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">Изпрати отметка</string>
   <string name="morphe_sb_stats_title">Съобщения</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">Съобщенията са временно недостъпни (API е изпаднал)</string>
@@ -1618,6 +1629,15 @@ Second \"item\" text"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Плейлисти</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Търсене</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Магазин</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">Управление на мултимедия от известията</string>
+  <string name="morphe_notification_media_screen_summary">Скрий компонентите за управление на мултимедия на заключения екран</string>
+  <string name="morphe_hide_notification_media_prev_next_title">Скрий предишни и следващи бутони</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Предишни и следващи бутони са скрити в медийното известие, заключен екран и контролите за слушалки</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Предишни и следващи бутони са видими в известието, заключен екран и контролите за слушалки</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Деактивирай лентата за търсене</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Лентата за търсене в медийното известие и заключения екран е само за четене</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Лентата за търсене в медийното известие и заключения екран е подвижна</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Спорт</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

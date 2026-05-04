@@ -24,7 +24,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_03_feed_title">फीड</string>
   <string name="morphe_settings_screen_04_general_title">सामान्य</string>
   <string name="morphe_settings_screen_05_player_title">प्लेअर</string>
-  <string name="morphe_settings_screen_06_shorts_title">शॉर्ट्स</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
   <string name="morphe_settings_screen_07_seekbar_title">सर्च बार</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">स्वाइप नियंत्रणे</string>
   <string name="morphe_settings_screen_11_misc_title">विविध</string>
@@ -33,9 +33,11 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">जुने सेटिंग्ज मेनू दर्शविले जातील</string>
   <string name="morphe_restore_old_settings_menus_summary_off">जुने सेटिंग्ज मेनू दर्शविले जाणार नाहीत</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
-  <string name="morphe_shorts_disable_background_playback_title">शॉर्ट्स पार्श्वभूमी प्ले अक्षम करा</string>
-  <string name="morphe_shorts_disable_background_playback_summary_on">शॉर्ट्स पार्श्वभूमी प्ले अक्षम आहे</string>
-  <string name="morphe_shorts_disable_background_playback_summary_off">शॉर्ट्स पार्श्वभूमी प्ले सक्षम आहे</string>
+  <string name="morphe_remove_background_playback_restrictions_title">पार्श्वभूमीतील प्ले निर्बंध काढून टाका</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">पार्श्वभूमीतील प्ले अनियंत्रित आहे</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">पार्श्वभूमी प्लेबॅक प्रतिबंधित आहे</string>
+  <string name="morphe_shorts_disable_background_playback_summary_on">Shorts पार्श्वभूमीवर प्ले अक्षम केले आहे</string>
+  <string name="morphe_shorts_disable_background_playback_summary_off">Shorts पार्श्वभूमी प्ले सक्षम आहे</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">डीबग लॉग प्रोटोकॉल बफर</string>
   <string name="morphe_debug_protobuffer_summary_on">डीबग लॉगमध्ये प्रोटोकॉल बफर समाविष्ट आहेत</string>
@@ -371,16 +373,10 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_hide_view_count_summary_on">फीड आणि शोध परिणामांमध्ये व्ह्यू काउंट लपलेला आहे</string>
   <string name="morphe_hide_view_count_summary_off">फीड आणि शोध परिणामांमध्ये व्ह्यू काउंट दर्शविला जातो</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
-  <string name="morphe_hide_view_count_user_dialog_message">"मर्यादा:
-• शॉर्ट्स शेल्फ, चॅनेल पृष्ठे आणि शोध निकालांमध्ये व्ह्यू काउंट्स दिसू शकतात.
-• हे वैशिष्ट्य ऑटोमोटिव्ह फॉर्म फॅक्टरमध्ये कार्य करत नाही."</string>
   <string name="morphe_hide_upload_time_title">अपलोड वेळ लपवा</string>
   <string name="morphe_hide_upload_time_summary_on">फीड आणि शोध परिणामांमध्ये अपलोड वेळ लपलेला आहे</string>
   <string name="morphe_hide_upload_time_summary_off">फीड आणि शोध परिणामांमध्ये अपलोड वेळ दर्शविला जातो</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
-  <string name="morphe_hide_upload_time_user_dialog_message">"मर्यादा:
-• शॉर्ट्स शेल्फ, चॅनेल पृष्ठे आणि शोध निकालांमध्ये अपलोडचे वेळापत्रक दिसू शकते.
-• हे वैशिष्ट्य ऑटोमोटिव्ह फॉर्म फॅक्टरमध्ये कार्य करत नाही."</string>
   <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फिल्टर</string>
   <string name="morphe_hide_keyword_content_screen_summary">कीवर्ड फिल्टर वापरून feed आणि शोध व्हिडिओ लपवा</string>
   <string name="morphe_hide_keyword_content_home_title">कीवर्डद्वारे होम व्हिडिओ लपवा</string>
@@ -401,12 +397,6 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
 
 मध्यभागी मोठे अक्षरे असलेले शब्द त्याच केसिंगमध्ये (उदा: iPhone, TikTok, LeBlanc) प्रविष्ट करणे आवश्यक आहे"</string>
   <string name="morphe_hide_keyword_content_about_title">कीवर्ड फिल्टरिंगबद्दल</string>
-  <string name="morphe_hide_keyword_content_about_summary">"मुख्यपृष्ठ / सदस्यता / शोध परिणाम अशा कीवर्ड वाक्यांशांशी जुळणारे सामग्री लपविण्यासाठी फिल्टर केलेले आहे.
-
-मर्यादा:
-• चॅनेलच्या नावाने शॉर्ट्स लपवता येत नाहीत
-• काही UI घटक लपविले जाणार नाहीत.
-• कीवर्ड शोधल्यास कोणतेही परिणाम दिसत नाहीत"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">संपूर्ण शब्द जुळवा</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">कीवर्ड/वाक्यांशला दुहेरी अवतरणांमध्ये टाकल्यास व्हिडिओ शीर्षक आणि चॅनेल नावांचे आंशिक जुळण टाळता येईल&lt;br&gt;&lt;br&gt;उदाहरणार्थ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; व्हिडिओ लपवेल: &lt;b&gt;AI कसे कार्य करते?&lt;/b&gt;&lt;br&gt;पण लपवणार नाही: &lt;b&gt; fair use चा अर्थ काय आहे?&lt;/b&gt;</string>
@@ -513,13 +503,12 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_play_all_button_type_entry_2">सर्व सामग्री (लोकप्रियतेनुसार क्रमवारी)</string>
   <string name="morphe_play_all_button_type_entry_3">व्हिडिओ फक्त (वेळेनुसार क्रमवारी)</string>
   <string name="morphe_play_all_button_type_entry_4">व्हिडिओ फक्त (लोकप्रियतेनुसार क्रमवारी)</string>
-  <string name="morphe_play_all_button_type_entry_5">शॉर्ट्स फक्त (वेळेनुसार क्रमवारी)</string>
-  <string name="morphe_play_all_button_type_entry_6">शॉर्ट्स फक्त (लोकप्रियतेनुसार क्रमवारी)</string>
+  <string name="morphe_play_all_button_type_entry_5">Shorts फक्त (वेळेनुसार क्रमवारी लावा)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts फक्त (लोकप्रियतेनुसार क्रमवारी)</string>
   <string name="morphe_play_all_button_type_entry_7">स्ट्रीम केलेले व्हिडिओ फक्त (वेळेनुसार क्रमवारी)</string>
   <string name="morphe_play_all_button_type_entry_8">स्ट्रीम केलेले व्हिडिओ फक्त (लोकप्रियतेनुसार क्रमवारी)</string>
   <string name="morphe_play_all_button_type_entry_9">सर्व सदस्यांच्या सामग्री फक्त</string>
   <string name="morphe_play_all_button_type_entry_10">सदस्यांचे फक्त व्हिडिओ</string>
-  <string name="morphe_play_all_button_type_entry_11">सदस्यांचे फक्त शॉर्ट्स</string>
   <string name="morphe_play_all_button_type_entry_12">सदस्यांचे फक्त थेट प्रवाह</string>
   <string name="morphe_play_all_button_not_available_toast">चॅनेल आयडी जुळत नसल्यामुळे प्लेलिस्ट तयार करणे शक्य नाही</string>
   <!-- interaction.reload.reloadVideoPatch -->
@@ -740,9 +729,6 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_hide_home_button_summary_on">होम बटण लपविलेले आहे</string>
   <string name="morphe_hide_home_button_summary_off">होम बटण दर्शविले जाईल</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_button_title">शॉर्ट्स बटण लपवा</string>
-  <string name="morphe_hide_shorts_button_summary_on">शॉर्ट्स बटण लपविलेले आहे</string>
-  <string name="morphe_hide_shorts_button_summary_off">शॉर्ट्स बटण दर्शविले जाईल</string>
   <!-- 'Create' has no display name. Translate normally. -->
   <string name="morphe_hide_create_button_title">क्रिएट बटण लपवा</string>
   <string name="morphe_hide_create_button_summary_on">क्रिएट बटण लपविलेले आहे</string>
@@ -970,30 +956,23 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_fullscreen_large_seekbar_summary_on">पूर्ण स्क्रीन सिकबार मोठा आकार का आहे</string>
   <string name="morphe_fullscreen_large_seekbar_summary_off">पूर्ण स्क्रीन सिकबार सामान्य आकार का आहे</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
-  <string name="morphe_shorts_player_screen_title">शॉर्ट्स प्लेयर</string>
-  <string name="morphe_shorts_player_screen_summary">शॉर्ट्स प्लेयर घटक लपवा किंवा दर्शवा</string>
-  <string name="morphe_hide_shorts_channel_title">चॅनेल पृष्ठावर शॉर्ट्स लपवा</string>
-  <string name="morphe_hide_shorts_channel_summary_on">चॅनेल पृष्ठावर लपविलेले</string>
+  <string name="morphe_hide_shorts_channel_summary_on">चॅनेल पृष्ठात लपलेले</string>
   <string name="morphe_hide_shorts_channel_summary_off">चॅनेल पृष्ठावर दर्शविलेले</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_home_title">होम फीडमध्ये शॉर्ट्स लपवा</string>
-  <string name="morphe_hide_shorts_home_summary_on">होम फीड आणि संबंधित व्हिडिओमध्ये लपलेले</string>
-  <string name="morphe_hide_shorts_home_summary_off">होम फीड आणि संबंधित व्हिडिओमध्ये दर्शविलेले</string>
-  <string name="morphe_hide_shorts_search_title">शोध परिणामांमध्ये शॉर्ट्स लपवा</string>
-  <string name="morphe_hide_shorts_search_summary_on">शोध परिणामांमध्ये लपलेले</string>
-  <string name="morphe_hide_shorts_search_summary_off">शोध परिणामांमध्ये दर्शविलेले</string>
+  <string name="morphe_hide_shorts_home_title">Shorts लपवा मुख्य पानावर</string>
+  <string name="morphe_hide_shorts_home_summary_on">হোম ফিড এবং সম্পর্কিত ভিডিওগুলিতে লুকানো হয়েছে</string>
+  <string name="morphe_hide_shorts_home_summary_off">हे होम फीड आणि संबंधित व्हिडिओमध्ये दिसते</string>
+  <string name="morphe_hide_shorts_search_title">Shorts शोध परिणामांमध्ये लपवा</string>
+  <string name="morphe_hide_shorts_search_summary_on">सेकेर् सारेप सायावान्यार हाधनिवा रुनेन</string>
+  <string name="morphe_hide_shorts_search_summary_off">शोध परिणामांमध्ये दर्शविले</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_subscriptions_title">सदस्यता फीडमध्ये शॉर्ट्स लपवा</string>
   <string name="morphe_hide_shorts_subscriptions_summary_on">सदस्यता फीडमध्ये लपलेले</string>
   <string name="morphe_hide_shorts_subscriptions_summary_off">सदस्यता फीडमध्ये दर्शविलेले</string>
-  <string name="morphe_hide_shorts_video_description_title">व्हिडिओ वर्णनात शॉर्ट्स लपवा</string>
-  <string name="morphe_hide_shorts_video_description_summary_on">व्हिडिओ वर्णनात लपविलेले</string>
-  <string name="morphe_hide_shorts_video_description_summary_off">व्हिडिओ वर्णनात दर्शविलेले</string>
-  <string name="morphe_hide_shorts_history_title">वॉच हिस्ट्रीमध्ये शॉर्ट्स लपवा</string>
-  <string name="morphe_hide_shorts_history_summary_on">वॉच हिस्ट्रीमध्ये लपलेले</string>
-  <string name="morphe_hide_shorts_history_summary_off">दृश्यात दाखवले</string>
-  <string name="morphe_hide_shorts_ai_button_title">एआय बटण लपवा</string>
-  <string name="morphe_hide_shorts_ai_button_summary_on">एआय बटण लपविलेले आहे</string>
+  <string name="morphe_hide_shorts_video_description_summary_on">व्हिडिओच्या वर्णनात लपलेले</string>
+  <string name="morphe_hide_shorts_video_description_summary_off">व्हिडिओ वर्णनात दर्शविले</string>
+  <string name="morphe_hide_shorts_history_summary_on">स्नेते लैयारे लुपे स्नेते लैयार शाधान्म स्नेते</string>
+  <string name="morphe_hide_shorts_history_summary_off">वॉच हिस्ट्री मध्ये दाखवले जाते</string>
+  <string name="morphe_hide_shorts_ai_button_summary_on">एआय बटण लपवले आहे</string>
   <string name="morphe_hide_shorts_ai_button_summary_off">एआय बटण दर्शविलेले आहे</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_title">\'ऑटो-डब\' लेबल लपवा</string>
   <string name="morphe_hide_shorts_auto_dubbed_label_summary_on">ऑटो-डब डेटा लेबल लपविलेले आहे</string>
@@ -1365,12 +1344,20 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
 (%3$s)
 
 सादर करण्यासाठी तयार आहात?"</string>
+  <string name="morphe_sb_new_segment_confirm_submit">सबमिट करा</string>
   <string name="morphe_sb_new_segment_start_is_before_end">सुरुवात शेवट पेक्षा आधी असायला हवी</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">पहिला दोन स्थाने वेळेच्या स्केल वर चिन्हांकित करा</string>
+  <string name="morphe_sb_new_segment_mark_locations_first">प्रथम टाइम बारवर स्थान चिन्हांकित करा</string>
   <string name="morphe_sb_new_segment_preview_segment_first">विभाग पूर्वावलोकन करा, आणि तो सहजपणे वगळतो याची खात्री करा</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">विभाग वेळानुसार व्यक्तिचलितपणे संपादा करा</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">तुम्ही विभागाच्या सुरुवातीसाठी किंवा शेवटच्या वेळेत बदल करू इच्छिता?</string>
   <string name="morphe_sb_new_segment_edit_by_hand_parse_error">अवैध वेळ दिला गेला</string>
+  <string name="morphe_sb_new_segment_highlight_title">हायलाइट सबमिट करा</string>
+  <string name="morphe_sb_new_segment_highlight_content">"हायलाइट वेळ बरोबर आहे का?
+
+%s
+
+जर तुम्ही हायलाइट सबमिट करत नसाल, तर रद्द करा आणि दुसरे स्थान चिन्हांकित करा."</string>
+  <string name="morphe_sb_new_segment_highlight_submit">हायलाइट सबमिट करा</string>
   <string name="morphe_sb_stats_title">आकडेवारी</string>
   <!-- Shown in the settings preferences, and translations can be any text length. -->
   <string name="morphe_sb_stats_connection_failure">आकडेवारी सध्या उपलब्ध नाही (API बंद आहे)</string>
@@ -1618,6 +1605,15 @@ Morphe सेटिंग्ज उघडण्यासाठी टॅप क�
   <string name="morphe_disable_haptic_feedback_zoom_title">Zoom Haptics अक्षम करा</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoom Haptics अक्षम आहे</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoom Haptics सक्षम आहे</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
+  <string name="morphe_notification_media_screen_title">सूचना माध्यम नियंत्रणे</string>
+  <string name="morphe_notification_media_screen_summary">लॉक स्क्रीन माध्यम नियंत्रण घटक लपवा</string>
+  <string name="morphe_hide_notification_media_prev_next_title">मागील आणि पुढील बटणे लपवा</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">मागील आणि पुढील बटणे मीडिया नोटिफिकेशन, लॉकस्क्रीन आणि हेडफोन नियंत्रणांमध्ये लपलेली आहेत</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">मागील आणि पुढील बटणे नोटिफिकेशन, लॉकस्क्रीन आणि हेडफोन नियंत्रणांमध्ये दर्शविली जातात</string>
+  <string name="morphe_disable_notification_media_seekbar_title">सीकबार अक्षम करा</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">मीडिया नोटिफिकेशन आणि लॉकस्क्रीनमधील सीकबार फक्त वाचनीय आहे</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">मीडिया नोटिफिकेशन आणि लॉकस्क्रीनमधील सीकबार ड्रॅगेबल आहे</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">तुम्ही नुकतेच तुमचे खाते लॉगिन तपशील बदलले असल्यास, MicroG अनइंस्टॉल आणि रीइंस्टॉल करा.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

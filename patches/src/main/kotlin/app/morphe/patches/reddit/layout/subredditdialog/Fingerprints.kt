@@ -45,7 +45,6 @@ internal object FrequentUpdatesHandlerFingerprint : Fingerprint(
 )
 
 internal object NSFWAlertEmitFingerprint : Fingerprint(
-    returnType = "Ljava/lang/Object;",
     filters = listOf(
         anyInstruction(
             // Many classes have a method named getOver18()
@@ -71,13 +70,13 @@ internal object NSFWAlertEmitFingerprint : Fingerprint(
         ),
         opcode(
             Opcode.IF_NEZ,
-            location = MatchAfterWithin(3)
+            location = MatchAfterWithin(8)
         ),
         string("nsfwAlertDelegate"),
         methodCall(
             opcode = Opcode.INVOKE_INTERFACE,
             smali = "Lcom/reddit/session/Session;->isIncognito()Z"
-        ),
+        )
     )
 )
 

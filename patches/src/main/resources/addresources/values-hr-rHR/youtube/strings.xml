@@ -1221,7 +1221,6 @@ do
 
 Gotovo je li spreman za slanje?"</string>
   <string name="morphe_sb_new_segment_start_is_before_end">Početak mora biti prije kraja</string>
-  <string name="morphe_sb_new_segment_mark_locations_first">Označite dva mjesta na traci prije</string>
   <string name="morphe_sb_new_segment_preview_segment_first">Pregledajte segment i provjerite da se preskači glatko</string>
   <string name="morphe_sb_new_segment_edit_by_hand_title">Uređivanje vremena segmenta ručno</string>
   <string name="morphe_sb_new_segment_edit_by_hand_content">Da li želite uredati vrijeme početka ili kraja segmenata?</string>
@@ -1471,6 +1470,7 @@ Omogućava se otključivanje viših video kvaliteta"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">Onemogu dugmice za zoom</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Dugmice za zoom su onemogućene</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Dugmice za zoom su omogućene</string>
+  <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ako nedavno ste promijenili računski prijavne detalje, morate deinstalirati i ponovo instalirati MicroG.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

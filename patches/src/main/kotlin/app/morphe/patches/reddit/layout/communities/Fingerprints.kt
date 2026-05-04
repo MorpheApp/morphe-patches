@@ -20,8 +20,17 @@ private object CommunityRecommendationSectionParentFingerprint : Fingerprint(
     )
 )
 
-// 2026.16.0+
-internal object CommunityRecommendationSectionFingerprint : Fingerprint(
+internal object CommunityRecommendationSection_2026_18_Fingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "L", "I"),
+    strings = listOf(
+        "section_title",
+        "recommendation_chaining"
+    )
+)
+
+internal object CommunityRecommendationSection_2026_16_Fingerprint : Fingerprint(
     classFingerprint = CommunityRecommendationSectionParentFingerprint,
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
