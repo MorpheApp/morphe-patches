@@ -1,3 +1,10 @@
+# [1.26.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.26.0-dev.1...v1.26.0-dev.2) (2026-05-03)
+
+
+### Bug Fixes
+
+* **YouTube - Hide layout components:** Hide flyout menu items for experimental app targets ([#1358](https://github.com/MorpheApp/morphe-patches/issues/1358)) ([d2c324f](https://github.com/MorpheApp/morphe-patches/commit/d2c324f2d25130ac6250539a006b9ccd10d04429))
+
 # [1.26.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.25.0...v1.26.0-dev.1) (2026-05-03)
 
 

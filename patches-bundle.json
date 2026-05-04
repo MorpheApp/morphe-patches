@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-05-03T08:23:33",
-  "description": "# [1.26.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.25.0...v1.26.0-dev.1) (2026-05-03)\n\n\n### Bug Fixes\n\n* **YouTube - Swipe controls:** 2x speed action is triggered when the status bar is visible on Android 15+ ([#1341](https://github.com/MorpheApp/morphe-patches/issues/1341)) ([e0005d3](https://github.com/MorpheApp/morphe-patches/commit/e0005d38ac9140a0a4209a28bdf9601ac9759034))\n\n\n### Features\n\n* **YouTube:** Add experimental support for `21.18.163` ([1bc264a](https://github.com/MorpheApp/morphe-patches/commit/1bc264af775087244c2fa50f66b76999cad48fa0))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.26.0-dev.1/patches-1.26.0-dev.1.mpp",
+  "created_at": "2026-05-03T21:04:12",
+  "description": "# [1.26.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.26.0-dev.1...v1.26.0-dev.2) (2026-05-03)\n\n\n### Bug Fixes\n\n* **YouTube - Hide layout components:** Hide flyout menu items for experimental app targets ([#1358](https://github.com/MorpheApp/morphe-patches/issues/1358)) ([d2c324f](https://github.com/MorpheApp/morphe-patches/commit/d2c324f2d25130ac6250539a006b9ccd10d04429))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.26.0-dev.2/patches-1.26.0-dev.2.mpp",
   "signature_download_url": "",
-  "version": "1.26.0-dev.1"
+  "version": "1.26.0-dev.2"
 }

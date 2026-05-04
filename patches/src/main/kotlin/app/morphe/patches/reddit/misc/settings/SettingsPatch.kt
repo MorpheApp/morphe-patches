@@ -13,6 +13,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.string
+import app.morphe.patches.all.misc.fix.openurllinks.removeLinkVerification
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.all.misc.resources.localesReddit
@@ -42,6 +43,7 @@ val settingsPatch = bytecodePatch(
         sharedExtensionPatch,
         disablePlayStoreUpdatesPatch,
         spoofSignaturePatch,
+        removeLinkVerification,
         addResourcesPatch,
         experimentalAppNoticePatch(
             mainActivityFingerprint = redditActivityOnCreateHook.fingerprint,

@@ -38,7 +38,6 @@ import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.addStaticFieldToExtension
-import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -130,9 +129,7 @@ val videoInformationPatch = bytecodePatch(
         val seekFingerprintResultMethod = SeekFingerprint.method
         val seekRelativeFingerprintResultMethod = SeekRelativeFingerprint.method
         val getVideoTimeMethodName = GetVideoTimeFingerprint.instructionMatches.first()
-            .getInstruction<ReferenceInstruction>()
-            .getReference<MethodReference>()!!
-            .getMutableMethod().name
+            .getMethodCalled().name
 
         // Create extension interface methods.
         addPlayerInterfaceMethods(
@@ -222,9 +219,7 @@ val videoInformationPatch = bytecodePatch(
          */
         timeMethodRef = WeakReference(
             PlayerControllerSetTimeReferenceFingerprint.instructionMatches.first()
-                .getInstruction<ReferenceInstruction>()
-                .getReference<MethodReference>()!!
-                .getMutableMethod()
+                .getMethodCalled()
         )
 
         val setPlaybackSpeedMethodReference: MethodReference
@@ -502,8 +497,7 @@ val videoInformationPatch = bytecodePatch(
         }
 
         ChannelInformationFingerprint.let {
-            val matches = it.matchAll()
-            if (matches.count() !in 2 .. 3) throw PatchException("Unexpected number of matches: " + matches.count())
+            val matches = it.matchAll(2 .. 3)
 
             val playerResponseType = matches.first().method.parameterTypes.first().toString()
 

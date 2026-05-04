@@ -115,6 +115,9 @@ public final class MiniplayerPatch {
         MINIPLAYER_SIZE = dipWidth;
     }
 
+    private static final boolean DISABLE_RESUMING_MINIPLAYER =
+            Settings.MINIPLAYER_DISABLE_RESUMING.get();
+
     private static final MiniplayerType CURRENT_TYPE = Settings.MINIPLAYER_TYPE.get();
 
     /**
@@ -227,6 +230,13 @@ public final class MiniplayerPatch {
         public List<Setting<?>> getParentSettings() {
             return List.of(Settings.MINIPLAYER_TYPE);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean disableResumingStartupMiniPlayer(boolean original) {
+        return !DISABLE_RESUMING_MINIPLAYER && original;
     }
 
     /**

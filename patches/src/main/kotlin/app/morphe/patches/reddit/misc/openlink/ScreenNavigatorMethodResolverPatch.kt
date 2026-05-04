@@ -27,11 +27,7 @@ val screenNavigatorMethodResolverPatch = bytecodePatch(
     dependsOn(settingsPatch, versionCheckPatch)
 
     execute {
-        var targetMethod: MutableMethod = CustomReportsFingerprint
-            .instructionMatches[2]
-            .getInstruction<ReferenceInstruction>()
-            .getReference<MethodReference>()!!
-            .getMutableMethod()
+        var targetMethod = CustomReportsFingerprint.instructionMatches[2].getMethodCalled()
 
         targetMethod.apply {
             if (is_2026_11_0_or_greater) {

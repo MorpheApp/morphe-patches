@@ -51,7 +51,7 @@ val removeSubRedditDialogPatch = bytecodePatch(
             }
         }
 
-        NSFWAlertShowDialogFingerprint.matchAll().forEach { match ->
+        NSFWAlertShowDialogFingerprint.matchAll(1 .. 2).forEach { match ->
             match.let {
                 it.method.apply {
                     val index = it.instructionMatches[3].index

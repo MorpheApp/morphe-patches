@@ -28,14 +28,12 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversed
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.BuilderOffsetInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
@@ -70,11 +68,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         )
 
         val playbackStartVideoIdMethodName = PlaybackStartDescriptorToStringFingerprint
-            .instructionMatches[1]
-            .getInstruction<ReferenceInstruction>()
-            .getReference<MethodReference>()!!
-            .getMutableMethod()
-            .name
+            .instructionMatches[1].getMethodCalled().name
 
         ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
             0,

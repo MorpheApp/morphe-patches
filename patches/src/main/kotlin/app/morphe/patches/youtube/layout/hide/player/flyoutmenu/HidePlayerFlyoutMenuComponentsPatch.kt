@@ -92,7 +92,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
 
         // region Patch for the Shorts flyout
 
-        CaptionsOldBottomSheetLayoutInflaterFingerprint.matchAll().forEach { match ->
+        CaptionsOldBottomSheetLayoutInflaterFingerprint.matchAll(1 .. 2).forEach { match ->
             match.let {
                 it.method.apply {
                     val footerViewIndex = it.instructionMatches.last().index
@@ -116,7 +116,7 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
             }
         }
 
-        QualityOldBottomSheetLayoutInflaterFingerprint.matchAll().forEach { match ->
+        QualityOldBottomSheetLayoutInflaterFingerprint.matchAll(2 .. 3).forEach { match ->
             match.let {
                 it.method.apply {
                     val footerViewIndex = it.instructionMatches.last().index
