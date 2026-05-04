@@ -45,6 +45,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getFreeRegisterProvider
+import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -591,13 +592,13 @@ val navigationBarPatch = bytecodePatch(
         if (!is_20_31_or_greater) {
             SetWordmarkHeaderFingerprint.let {
                 // Navigate to the method that checks if the YT logo is shown beside the search bar.
-                val shouldShowLogoMethod = with(it.originalMethod) {
-                    val invokeStaticIndex = indexOfFirstInstructionOrThrow {
-                        opcode == Opcode.INVOKE_STATIC &&
-                                getReference<MethodReference>()?.returnType == "Z"
-                    }
-                    navigate(this).to(invokeStaticIndex).stop()
+                val invokeStaticIndex = it.method.indexOfFirstInstructionOrThrow {
+                    opcode == Opcode.INVOKE_STATIC &&
+                            getReference<MethodReference>()?.returnType == "Z"
                 }
+                val shouldShowLogoMethod = it.method.getInstruction(invokeStaticIndex)
+                    .getReference<MethodReference>()!!
+                    .getMutableMethod()
 
                 shouldShowLogoMethod.apply {
                     findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->

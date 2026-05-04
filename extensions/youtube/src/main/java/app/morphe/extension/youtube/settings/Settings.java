@@ -52,6 +52,7 @@ import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
 
+@SuppressWarnings("deprecation")
 public class Settings extends SharedYouTubeSettings {
     // Video
     public static final BooleanSetting ADVANCED_VIDEO_QUALITY_MENU = new BooleanSetting("morphe_advanced_video_quality_menu", TRUE);

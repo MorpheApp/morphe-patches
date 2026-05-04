@@ -1393,7 +1393,10 @@ public class CrossfadeManager {
                 Vibrator vib = (Vibrator) ctx.getSystemService(
                         Context.VIBRATOR_SERVICE);
                 if (vib != null && vib.hasVibrator()) {
-                    vib.vibrate(100);
+                    android.os.VibrationEffect effect =
+                            android.os.VibrationEffect.createOneShot(100,
+                            android.os.VibrationEffect.DEFAULT_AMPLITUDE);
+                    vib.vibrate(effect);
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Ignoring vibration exception", ex);

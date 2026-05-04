@@ -16,6 +16,7 @@ import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -58,11 +59,14 @@ val seekbarColorPatch = bytecodePatch(
             it.method.addColorChangeInstructions(it.instructionMatches.first().index)
         }
 
-        SetSeekbarClickedColorFingerprint.originalMethod.let {
-            val setColorMethodIndex = SetSeekbarClickedColorFingerprint.instructionMatches.first().index + 1
+        SetSeekbarClickedColorFingerprint.let {
+            val setColorMethodIndex = it.instructionMatches.first().index + 1
 
-            navigate(it).to(setColorMethodIndex).stop().apply {
-                val colorRegister = getInstruction<TwoRegisterInstruction>(0).registerA
+            it.method.getInstruction(setColorMethodIndex)
+                .getReference<MethodReference>()!!
+                .getMutableMethod()
+                .apply {
+                    val colorRegister = getInstruction<TwoRegisterInstruction>(0).registerA
                 addInstructions(
                     0,
                     """

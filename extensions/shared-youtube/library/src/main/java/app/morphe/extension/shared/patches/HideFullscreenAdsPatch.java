@@ -51,6 +51,7 @@ public class HideFullscreenAdsPatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("deprecation")
     public static void closeFullscreenAd(Object customDialog, @Nullable byte[] buffer) {
         try {
             if (!SharedYouTubeSettings.HIDE_FULLSCREEN_ADS.get()) {
