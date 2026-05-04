@@ -229,6 +229,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             ),
             SwitchPreference("morphe_hide_album_cards"),
             SwitchPreference("morphe_hide_artist_cards"),
+            SwitchPreference("morphe_hide_auto_dubbed_label"),
             SwitchPreference("morphe_hide_community_posts"),
             SwitchPreference("morphe_hide_compact_banner"),
             if (is_20_26_or_greater) {
@@ -257,6 +258,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 key = "morphe_hide_horizontal_shelves",
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
+            SwitchPreference("morphe_hide_hyped_label"),
             SwitchPreference("morphe_hide_image_shelf"),
             SwitchPreference("morphe_hide_latest_videos_button"),
             SwitchPreference("morphe_hide_mix_playlists"),
