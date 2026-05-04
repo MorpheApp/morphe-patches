@@ -1395,7 +1395,7 @@ public class CrossfadeManager {
                 if (vib != null && vib.hasVibrator()) {
                     android.os.VibrationEffect effect =
                             android.os.VibrationEffect.createOneShot(100,
-                            android.os.VibrationEffect.DEFAULT_AMPLITUDE);
+                                    android.os.VibrationEffect.DEFAULT_AMPLITUDE);
                     vib.vibrate(effect);
                 }
             } catch (Exception ex) {
