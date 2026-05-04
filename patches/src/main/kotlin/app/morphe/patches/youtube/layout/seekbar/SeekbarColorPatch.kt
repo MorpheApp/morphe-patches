@@ -16,7 +16,6 @@ import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
@@ -59,7 +58,13 @@ val seekbarColorPatch = bytecodePatch(
             it.method.addColorChangeInstructions(it.instructionMatches.first().index)
         }
 
-        SetSeekbarClickedColorFingerprint.instructionMatches.first().getMethodCalled().apply {
+        SetSeekbarClickedColorFingerprint.instructionMatches.firstNotNullOfOrNull {
+            try {
+                it.getMethodCalled()
+            } catch (_: IllegalArgumentException) {
+                null
+            }
+        }?.apply {
             val colorRegister = getInstruction<TwoRegisterInstruction>(0).registerA
             addInstructions(
                 0,
@@ -140,7 +145,7 @@ val seekbarColorPatch = bytecodePatch(
                 replaceInstruction(
                     index,
                     "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
-                        "$EXTENSION_CLASS->setSplashAnimationLottie(Lcom/airbnb/lottie/LottieAnimationView;I)V"
+                            "$EXTENSION_CLASS->setSplashAnimationLottie(Lcom/airbnb/lottie/LottieAnimationView;I)V"
                 )
             }
         }

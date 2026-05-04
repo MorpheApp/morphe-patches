@@ -11,6 +11,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.PatchException
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.fiveRegisters
 
@@ -27,19 +28,22 @@ val fixRecycledBitmapPatch = bytecodePatch(
             parameters = listOf("Ljava/lang/String;", "Landroid/graphics/Bitmap;")
         )
 
-        Fingerprint(
-            filters = listOf(putBitmapCall),
-            custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/extension") }
-        ).matchAll().forEach { match ->
-            match.method.apply {
-                findInstructionIndicesReversedOrThrow(putBitmapCall).forEach { index ->
-                    val registers = fiveRegisters(index)
-                    val replacementSmali =
-                        $$"invoke-static {$$registers}, $$EXTENSION_CLASS->putBitmap(Landroid/media/MediaMetadata$Builder;Ljava/lang/String;Landroid/graphics/Bitmap;)Landroid/media/MediaMetadata$Builder;"
+        try {
+            Fingerprint(
+                filters = listOf(putBitmapCall),
+                custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/extension") }
+            ).matchAll().forEach { match ->
+                match.method.apply {
+                    findInstructionIndicesReversedOrThrow(putBitmapCall).forEach { index ->
+                        val registers = fiveRegisters(index)
+                        val replacementSmali =
+                            $$"invoke-static {$$registers}, $$EXTENSION_CLASS->putBitmap(Landroid/media/MediaMetadata$Builder;Ljava/lang/String;Landroid/graphics/Bitmap;)Landroid/media/MediaMetadata$Builder;"
 
-                    replaceInstruction(index, replacementSmali)
+                        replaceInstruction(index, replacementSmali)
+                    }
                 }
             }
+        } catch (_: PatchException) {
         }
     }
 }
