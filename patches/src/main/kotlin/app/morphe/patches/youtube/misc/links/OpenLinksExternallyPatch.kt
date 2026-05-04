@@ -1,15 +1,17 @@
 package app.morphe.patches.youtube.misc.links
 
+import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
-import app.morphe.patcher.extensions.InstructionExtensions.getInstructionOrNull
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findMutableMethodOf
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.StringReference
+
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/OpenLinksExternallyPatch;"
 
 val openLinksExternallyPatch = bytecodePatch(
     name = "Open links externally",
@@ -18,38 +20,25 @@ val openLinksExternallyPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        // TODO: Replace this with Fingerprint.matchAll()
-        classDefForEach { classDef ->
-            if (classDef.type.startsWith("Lapp/morphe/extension")) return@classDefForEach
+        val filter = string("android.support.customtabs.action.CustomTabsService")
 
-            classDef.methods.forEach { method ->
-                val instructionsIterable = method.implementation?.instructions ?: return@forEach
-                val targetIndices = instructionsIterable.mapIndexedNotNull { index, instruction ->
-                    if (instruction is ReferenceInstruction) {
-                        val reference = instruction.reference as? StringReference
-                        if (reference?.string == "android.support.customtabs.action.CustomTabsService") {
-                            return@mapIndexedNotNull index
-                        }
-                    }
-                    null
-                }
+        Fingerprint(
+            filters = listOf(filter),
+            custom = { _, classDef ->
+                !classDef.type.startsWith("Lapp/morphe/")
+            }
+        ).matchAll().forEach { match ->
+            match.method.apply {
+                findInstructionIndicesReversedOrThrow(filter).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                if (targetIndices.isNotEmpty()) {
-                    val mutableMethod = mutableClassDefBy(classDef.type).findMutableMethodOf(method)
-
-                    targetIndices.reversed().forEach { index ->
-                        val instruction = mutableMethod.getInstructionOrNull<OneRegisterInstruction>(index)
-                            ?: return@forEach
-                        val register = instruction.registerA
-
-                        mutableMethod.addInstructions(
-                            index + 1,
-                            """
-                                invoke-static {v$register}, Lapp/morphe/extension/youtube/patches/OpenLinksExternallyPatch;->getIntent(Ljava/lang/String;)Ljava/lang/String;
-                                move-result-object v$register
-                            """
-                        )
-                    }
+                    addInstructions(
+                        index + 1,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->getIntent(Ljava/lang/String;)Ljava/lang/String;
+                            move-result-object v$register
+                        """
+                    )
                 }
             }
         }
