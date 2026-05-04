@@ -7,6 +7,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -14,12 +15,11 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findMutableMethodOf
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.fiveRegisters
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
@@ -40,40 +40,38 @@ val disableHapticFeedbackPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        // TODO: Replace this with Fingerprint.matchAll()
-        classDefForEach { classDef ->
-            if (classDef.type.startsWith(EXTENSION_CLASS_PREFIX)) return@classDefForEach
+        val vibrateEffectCall = methodCall(
+            definingClass = "Landroid/os/Vibrator;",
+            name = "vibrate",
+            parameters = listOf("Landroid/os/VibrationEffect;"),
+            returnType = "V"
+        )
 
-            classDef.methods.forEach { method ->
-                val instructionsIterable = method.implementation?.instructions ?: return@forEach
-                val targetIndices = instructionsIterable.mapIndexedNotNull { index, instruction ->
-                    if (instruction.opcode.name == "invoke-virtual" && instruction is ReferenceInstruction) {
-                        val ref = instruction.reference as? MethodReference
-                        if (ref?.definingClass == "Landroid/os/Vibrator;" && ref.name == "vibrate" && ref.returnType == "V") {
-                            val paramTypes = ref.parameterTypes.joinToString("")
-                            if (paramTypes == "Landroid/os/VibrationEffect;" || paramTypes == "J") {
-                                return@mapIndexedNotNull index
-                            }
-                        }
-                    }
-                    null
-                }
+        val vibrateLongCall = methodCall(
+            definingClass = "Landroid/os/Vibrator;",
+            name = "vibrate",
+            parameters = listOf("J"),
+            returnType = "V"
+        )
 
-                if (targetIndices.isNotEmpty()) {
-                    val mutableMethod = mutableClassDefBy(classDef.type).findMutableMethodOf(method)
-
-                    targetIndices.reversed().forEach { index ->
-                        val instruction = mutableMethod.getInstruction<Instruction35c>(index)
+        listOf(vibrateEffectCall, vibrateLongCall).forEach { callFilter ->
+            Fingerprint(
+                filters = listOf(callFilter),
+                custom = { _, classDef -> !classDef.type.startsWith(EXTENSION_CLASS_PREFIX) }
+            ).matchAll().forEach { match ->
+                match.method.apply {
+                    findInstructionIndicesReversedOrThrow(callFilter).forEach { index ->
+                        val instruction = getInstruction<Instruction35c>(index)
                         val ref = instruction.reference as MethodReference
                         val paramType = ref.parameterTypes.joinToString("")
-                        val registers = mutableMethod.fiveRegisters(index)
+                        val registers = fiveRegisters(index)
                         val replacementSmali = if (paramType == "Landroid/os/VibrationEffect;") {
                             "invoke-static {$registers}, $EXTENSION_CLASS->vibrate(Landroid/os/Vibrator;Landroid/os/VibrationEffect;)V"
                         } else {
                             "invoke-static {$registers}, $EXTENSION_CLASS->vibrate(Landroid/os/Vibrator;J)V"
                         }
 
-                        mutableMethod.replaceInstruction(index, replacementSmali)
+                        replaceInstruction(index, replacementSmali)
                     }
                 }
             }
