@@ -36,41 +36,6 @@ val disableHapticFeedbackPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        arrayOf(
-            methodCall(
-                definingClass = "Landroid/os/Vibrator;",
-                name = "vibrate",
-                parameters = listOf("Landroid/os/VibrationEffect;"),
-                returnType = "V"
-            ),
-            methodCall(
-                definingClass = "Landroid/os/Vibrator;",
-                name = "vibrate",
-                parameters = listOf("J"),
-                returnType = "V"
-            )
-        ).forEach { filter ->
-            Fingerprint(
-                filters = listOf(filter),
-                custom = { _, classDef ->
-                    classDef.type != EXTENSION_CLASS
-                }
-            ).matchAll().forEach { match ->
-                match.method.apply {
-                    findInstructionIndicesReversedOrThrow(filter).forEach { index ->
-                        val instruction = getInstruction<FiveRegisterInstruction>(index)
-                        val registers = fiveRegisters(index)
-
-                        replaceInstruction(
-                            index,
-                            "invoke-static { $registers }, $EXTENSION_CLASS->vibrate(Landroid/os/Vibrator;" +
-                                    filter.parameters!!.joinToString("") + ")V"
-                        )
-                    }
-                }
-            }
-        }
-
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 "morphe_disable_haptic_feedback",
@@ -135,6 +100,41 @@ val disableHapticFeedbackPatch = bytecodePatch(
                         move-result-object v$register
                     """
                 )
+            }
+        }
+
+        arrayOf(
+            methodCall(
+                definingClass = "Landroid/os/Vibrator;",
+                name = "vibrate",
+                parameters = listOf("Landroid/os/VibrationEffect;"),
+                returnType = "V"
+            ),
+            methodCall(
+                definingClass = "Landroid/os/Vibrator;",
+                name = "vibrate",
+                parameters = listOf("J"),
+                returnType = "V"
+            )
+        ).forEach { filter ->
+            Fingerprint(
+                filters = listOf(filter),
+                custom = { _, classDef ->
+                    classDef.type != EXTENSION_CLASS
+                }
+            ).matchAll().forEach { match ->
+                match.method.apply {
+                    findInstructionIndicesReversedOrThrow(filter).forEach { index ->
+                        val instruction = getInstruction<FiveRegisterInstruction>(index)
+                        val registers = fiveRegisters(index)
+
+                        replaceInstruction(
+                            index,
+                            "invoke-static { $registers }, $EXTENSION_CLASS->vibrate(Landroid/os/Vibrator;" +
+                                    filter.parameters!!.joinToString("") + ")V"
+                        )
+                    }
+                }
             }
         }
     }

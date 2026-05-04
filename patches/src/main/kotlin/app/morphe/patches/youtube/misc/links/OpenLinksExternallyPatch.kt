@@ -20,6 +20,10 @@ val openLinksExternallyPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        PreferenceScreen.MISC.addPreferences(
+            SwitchPreference("morphe_external_browser"),
+        )
+
         val filter = string("android.support.customtabs.action.CustomTabsService")
 
         Fingerprint(
@@ -42,9 +46,5 @@ val openLinksExternallyPatch = bytecodePatch(
                 }
             }
         }
-
-        PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_external_browser"),
-        )
     }
 }
