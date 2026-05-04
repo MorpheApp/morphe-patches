@@ -59,17 +59,15 @@ val seekbarColorPatch = bytecodePatch(
             it.method.addColorChangeInstructions(it.instructionMatches.first().index)
         }
 
-        SetSeekbarClickedColorFingerprint.let {
-            it.instructionMatches.first().getMethodCalled().apply {
-                val colorRegister = getInstruction<TwoRegisterInstruction>(0).registerA
-                addInstructions(
-                    0,
-                    """
-                        invoke-static { v$colorRegister }, $EXTENSION_CLASS->getVideoPlayerSeekbarClickedColor(I)I
-                        move-result v$colorRegister
-                    """
-                )
-            }
+        SetSeekbarClickedColorFingerprint.instructionMatches.first().getMethodCalled().apply {
+            val colorRegister = getInstruction<TwoRegisterInstruction>(0).registerA
+            addInstructions(
+                0,
+                """
+                    invoke-static { v$colorRegister }, $EXTENSION_CLASS->getVideoPlayerSeekbarClickedColor(I)I
+                    move-result v$colorRegister
+                """
+            )
         }
 
         lithoColorOverrideHook(EXTENSION_CLASS, "getLithoColor")
