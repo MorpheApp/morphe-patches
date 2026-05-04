@@ -60,13 +60,8 @@ val seekbarColorPatch = bytecodePatch(
         }
 
         SetSeekbarClickedColorFingerprint.let {
-            val setColorMethodIndex = it.instructionMatches.first().index + 1
-
-            it.method.getInstruction(setColorMethodIndex)
-                .getReference<MethodReference>()!!
-                .getMutableMethod()
-                .apply {
-                    val colorRegister = getInstruction<TwoRegisterInstruction>(0).registerA
+            it.instructionMatches.first().getMethodCalled().apply {
+                val colorRegister = getInstruction<TwoRegisterInstruction>(0).registerA
                 addInstructions(
                     0,
                     """
