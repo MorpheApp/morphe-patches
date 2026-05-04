@@ -18,6 +18,7 @@ val openLinksExternallyPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        // TODO: Replace this with Fingerprint.matchAll()
         classDefForEach { classDef ->
             if (classDef.type.startsWith("Lapp/morphe/extension")) return@classDefForEach
 

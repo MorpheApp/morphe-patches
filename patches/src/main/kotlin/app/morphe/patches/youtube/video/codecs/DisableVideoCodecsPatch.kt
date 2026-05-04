@@ -30,6 +30,7 @@ val disableVideoCodecsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        // TODO: Replace this with Fingerprint.matchAll()
         classDefForEach { classDef ->
             if (classDef.type.startsWith("Lapp/morphe/")) return@classDefForEach
 

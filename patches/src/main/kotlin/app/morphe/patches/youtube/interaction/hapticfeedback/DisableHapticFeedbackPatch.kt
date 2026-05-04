@@ -40,6 +40,7 @@ val disableHapticFeedbackPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        // TODO: Replace this with Fingerprint.matchAll()
         classDefForEach { classDef ->
             if (classDef.type.startsWith(EXTENSION_CLASS_PREFIX)) return@classDefForEach
 

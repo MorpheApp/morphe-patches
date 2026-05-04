@@ -21,6 +21,7 @@ val fixRecycledBitmapPatch = bytecodePatch(
     description = "Fixes recycled bitmap crashes by routing putBitmap through the extension class."
 ) {
     execute {
+        // TODO: Replace this with Fingerprint.matchAll()
         classDefForEach { classDef ->
             if (classDef.type.startsWith("Lapp/morphe/extension")) return@classDefForEach
 

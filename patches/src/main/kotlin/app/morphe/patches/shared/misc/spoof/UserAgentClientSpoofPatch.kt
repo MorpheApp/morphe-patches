@@ -20,6 +20,7 @@ fun userAgentClientSpoofPatch(originalPackageName: String) = bytecodePatch(
     description = "Spoofs the user agent client by replacing the application package name."
 ) {
     execute {
+        // TODO: Replace this with Fingerprint.matchAll()
         classDefForEach { classDef ->
             if (classDef.type.startsWith("Lapp/morphe/extension")) return@classDefForEach
 
