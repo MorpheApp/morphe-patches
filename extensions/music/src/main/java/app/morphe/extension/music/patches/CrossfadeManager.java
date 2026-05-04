@@ -1390,8 +1390,17 @@ public class CrossfadeManager {
         Context ctx = Utils.getContext();
         if (ctx != null) {
             try {
-                Vibrator vib = (Vibrator) ctx.getSystemService(
-                        Context.VIBRATOR_SERVICE);
+                Vibrator vib;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                    android.os.VibratorManager vibratorManager = (android.os.VibratorManager)
+                            ctx.getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
+                    vib = vibratorManager != null ? vibratorManager.getDefaultVibrator() : null;
+                } else {
+                    @SuppressWarnings("deprecation")
+                    Vibrator legacyVib = (Vibrator) ctx.getSystemService(Context.VIBRATOR_SERVICE);
+                    vib = legacyVib;
+                }
+
                 if (vib != null && vib.hasVibrator()) {
                     android.os.VibrationEffect effect =
                             android.os.VibrationEffect.createOneShot(100,
