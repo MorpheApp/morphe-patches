@@ -5,18 +5,11 @@ pluginManagement {
         mavenLocal()
         gradlePluginPortal()
         google()
-        // GitHub Packages repository with credentials support
+        // GitHub Packages repository with credentials from environment
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/MorpheApp/registry")
-            credentials {
-                username = providers.gradleProperty("gpr.user").getOrElse(
-                    System.getenv("GITHUB_ACTOR").takeIf { it?.isNotBlank() == true } ?: "nobody"
-                )
-                password = providers.gradleProperty("gpr.key").getOrElse(
-                    System.getenv("GITHUB_TOKEN").takeIf { it?.isNotBlank() == true } ?: "none"
-                )
-            }
+            credentials(PasswordCredentials::class)
         }
         // Obtain baksmali/smali from source builds - https://github.com/iBotPeaches/smali
         // Remove when official smali releases come out again.
