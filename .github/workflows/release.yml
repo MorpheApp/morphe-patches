@@ -31,6 +31,9 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
+      - name: Fetch tags
+        run: git fetch --tags --force origin
+
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
