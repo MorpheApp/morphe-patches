@@ -10,6 +10,8 @@
 
 package app.morphe.extension.shared.spoof.requests;
 
+import androidx.annotation.Nullable;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -68,31 +70,9 @@ public final class PlayerRoutes {
     private PlayerRoutes() {
     }
 
-    static String createInnertubeBody(String detailsToFetch,
-                                      ClientType.Stream clientTypeStream,
-                                      ClientType.Details clientTypeDetails,
+    static String createInnertubeBody(@Nullable String detailsToFetch,
+                                      ClientType.ClientDeviceInformation clientDevice,
                                       String videoId) {
-        class ClientWrapper {
-            final String deviceMake, deviceModel, clientName, clientVersion, osName, osVersion, androidSdkVersion, clientPlatform;
-            final boolean usePlayerEndpoint, requireJS;
-
-            ClientWrapper(ClientType.Stream stream, ClientType.Details details) {
-                boolean isStream = stream != null;
-
-                this.deviceMake = isStream ? stream.deviceMake : details.deviceMake;
-                this.deviceModel = isStream ? stream.deviceModel : details.deviceModel;
-                this.clientName = isStream ? stream.clientName : details.clientName;
-                this.clientVersion = isStream ? stream.clientVersion : details.clientVersion;
-                this.osName = isStream ? stream.osName : details.osName;
-                this.osVersion = isStream ? stream.osVersion : details.osVersion;
-                this.androidSdkVersion = isStream ? stream.androidSdkVersion : details.androidSdkVersion;
-                this.clientPlatform = isStream ? stream.clientPlatform : details.clientPlatform;
-                this.usePlayerEndpoint = isStream ? stream.usePlayerEndpoint : details.usePlayerEndpoint;
-                this.requireJS = isStream ? stream.requireJS : details.requireJS;
-            }
-        }
-        ClientWrapper clientData = new ClientWrapper(clientTypeStream, clientTypeDetails);
-
         JSONObject innerTubeBody = new JSONObject();
 
         try {
@@ -106,23 +86,23 @@ public final class PlayerRoutes {
             Locale streamLocale = language.getLocale();
 
             JSONObject client = new JSONObject();
-            client.put("deviceMake", clientData.deviceMake);
-            client.put("deviceModel", clientData.deviceModel);
-            client.put("clientName", clientData.clientName);
-            client.put("clientVersion", clientData.clientVersion);
-            client.put("osName", clientData.osName);
-            client.put("osVersion", clientData.osVersion);
-            String androidSdkVersion = clientData.androidSdkVersion;
+            client.put("deviceMake", clientDevice.getDeviceMake());
+            client.put("deviceModel", clientDevice.getDeviceModel());
+            client.put("clientName", clientDevice.getClientName());
+            client.put("clientVersion", clientDevice.getClientVersion());
+            client.put("osName", clientDevice.getOsName());
+            client.put("osVersion", clientDevice.getOsVersion());
+            String androidSdkVersion = clientDevice.getAndroidSdkVersion();
             if (androidSdkVersion != null && !androidSdkVersion.isEmpty()) {
                 client.put("androidSdkVersion", androidSdkVersion);
             }
-            String platform = clientData.clientPlatform;
+            String platform = clientDevice.getClientPlatform();
             if (platform != null && !platform.isEmpty()) {
                 client.put("platform", platform);
             }
             JSONObject user = new JSONObject();
             user.put("lockedSafetyMode", false);
-            if (detailsToFetch.isEmpty()) {
+            if (detailsToFetch != null && detailsToFetch.isEmpty()) {
                 client.put("hl", streamLocale.getLanguage());
                 client.put("gl", streamLocale.getCountry());
             } else {
@@ -130,8 +110,7 @@ public final class PlayerRoutes {
             }
             context.put("client", client);
 
-            boolean usePlayerEndpoint = clientData.usePlayerEndpoint;
-            if (usePlayerEndpoint) {
+            if (clientDevice.getUsePlayerEndpoint()) {
                 innerTubeBody.put("contentCheckOk", true);
                 innerTubeBody.put("racyCheckOk", true);
                 innerTubeBody.put("videoId", videoId);
@@ -157,7 +136,7 @@ public final class PlayerRoutes {
                 innerTubeBody.put("disablePlayerResponse", false);
             }
 
-            if (clientData.requireJS) {
+            if (clientDevice.getRequireJS()) {
                 JSONObject configInfo = new JSONObject();
                 configInfo.put("appInstallData", "");
                 client.put("configInfo", configInfo);

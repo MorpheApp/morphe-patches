@@ -181,30 +181,28 @@ public class StreamOrDetailsDataRequest {
     }
 
     private static void handleDebugToast(String toastMessage,
-                                         ClientType.Stream clientTypeStream,
-                                         ClientType.Details clientTypeDetails) {
+                                         ClientType.Stream stream,
+                                         ClientType.EndPoint endPoint) {
         if (BaseSettings.DEBUG.get() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
             Utils.showToastShort(
                 String.format(
                     toastMessage,
-
-                    clientTypeStream != null ? clientTypeStream : clientTypeDetails
+                    stream != null ? stream : endPoint
                 )
             );
         }
     }
 
     @Nullable
-    private static HttpURLConnection send(ClientType.Stream clientTypeStream,
-                                          String detailsToFetch,
-                                          ClientType.Details clientTypeDetails,
+    private static HttpURLConnection send(@Nullable ClientType.Stream stream,
+                                          @Nullable ClientType.EndPoint endPoint,
                                           String videoId,
                                           Map<String, String> playerHeaders,
                                           boolean showErrorToasts) {
         Objects.requireNonNull(videoId);
         Objects.requireNonNull(playerHeaders);
 
-        final boolean isStream = clientTypeStream != null;
+        final boolean isStream = stream != null;
 
         final long startTime = System.currentTimeMillis();
 
@@ -212,26 +210,27 @@ public class StreamOrDetailsDataRequest {
             Route.CompiledRoute route;
             HttpURLConnection connection;
             if (isStream) {
-                Objects.requireNonNull(clientTypeStream);
+                Objects.requireNonNull(stream);
 
-                route = clientTypeStream.usePlayerEndpoint ? GET_PLAYER_STREAMING_DATA : GET_REEL_STREAMING_DATA;
+                route = stream.usePlayerEndpoint ? GET_PLAYER_STREAMING_DATA : GET_REEL_STREAMING_DATA;
                 connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(
                         route,
-                        clientTypeStream.userAgent,
-                        clientTypeStream.clientName,
-                        clientTypeStream.clientVersion
+                        stream.userAgent,
+                        stream.clientName,
+                        stream.clientVersion
                 );
             } else {
-                route = switch (detailsToFetch) {
+                assert endPoint != null;
+                route = switch (endPoint.detailsToFetch) {
                     case saveToWatchLaterDetailsName -> SEND_SAVE_VIDEO_TO_PLAYLIST;
                     case getChannelIDDetailsName -> GET_CHANNEL_FROM_ID;
-                    default -> throw new IllegalStateException("Unexpected detailsToFetch value: " + detailsToFetch);
+                    default -> throw new IllegalStateException("Unexpected detailsToFetch value: " + endPoint);
                 };
                 connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(
                         route,
-                        clientTypeDetails.userAgent,
-                        clientTypeDetails.clientName,
-                        clientTypeDetails.clientVersion
+                        endPoint.userAgent,
+                        endPoint.clientName,
+                        endPoint.clientVersion
                 );
             }
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
@@ -246,7 +245,7 @@ public class StreamOrDetailsDataRequest {
                 if (value != null) {
                     if (key.equals(AUTHORIZATION_HEADER)) {
                         if (isStream) {
-                            if (clientTypeStream.supportsOAuth2) {
+                            if (stream.supportsOAuth2) {
                                 String authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
                                 if (authorization.isEmpty()) {
                                     // Access token is empty, the user has not signed in to VR.
@@ -260,7 +259,7 @@ public class StreamOrDetailsDataRequest {
                                     value = authorization;
                                     authHeadersOverrides = true;
                                 }
-                            } else if (!clientTypeStream.canLogin) {
+                            } else if (!stream.canLogin) {
                                 Logger.printDebug(() -> "Not including request header: " + key);
                                 continue;
                             }
@@ -273,24 +272,20 @@ public class StreamOrDetailsDataRequest {
                 }
             }
 
-            if (isStream && !authHeadersIncludes && clientTypeStream.requireLogin) {
-                Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientTypeStream
+            if (isStream && !authHeadersIncludes && stream.requireLogin) {
+                Logger.printDebug(() -> "Skipping client since user is not logged in: " + stream
                         + " videoId: " + videoId);
                 return null;
             }
 
-            Logger.printDebug(
-                ()
-                    ->
-                String.format(
-                    "Fetching video %s for: " + videoId + " using client: %s",
-
-                    isStream ? "stream" : "details",
-                    isStream ? clientTypeStream : clientTypeDetails
-                )
+            Logger.printDebug(() -> "Fetching video " + (isStream ? "stream" : "details") +
+                    " for: " + videoId + " using client: " + (isStream ? stream : endPoint)
             );
 
-            String innerTubeBody = PlayerRoutes.createInnertubeBody(detailsToFetch, clientTypeStream, clientTypeDetails, videoId);
+            String innerTubeBody = PlayerRoutes.createInnertubeBody(
+                    isStream ? null : endPoint.detailsToFetch,
+                    isStream ? stream : endPoint,
+                    videoId);
             byte[] requestBody = innerTubeBody.getBytes(StandardCharsets.UTF_8);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
@@ -302,7 +297,7 @@ public class StreamOrDetailsDataRequest {
             if (isStream) {
                 // This situation likely means the patches are outdated.
                 // Use a toast message that suggests updating.
-                handleConnectionError("Playback error (App is outdated?) " + clientTypeStream + ": "
+                handleConnectionError("Playback error (App is outdated?) " + stream + ": "
                                 + responseCode + " response: " + connection.getResponseMessage(),
                         null, showErrorToasts);
             }
@@ -321,42 +316,39 @@ public class StreamOrDetailsDataRequest {
 
     @Nullable
     private static Object buildPlayerStreamOrDetailsResponse(String detailsToFetch,
-                                                    ClientType.Stream clientTypeStream,
-                                                    ClientType.Details clientTypeDetails,
-                                                    HttpURLConnection connection) {
-        boolean returnStreamObject = clientTypeStream != null;
+                                                             @Nullable ClientType.Stream stream,
+                                                             @Nullable ClientType.EndPoint endPoint,
+                                                             HttpURLConnection connection) {
+        final boolean returnStreamObject = stream != null;
 
         // gzip encoding doesn't response with content length (-1),
         // but empty response body does.
         if (connection.getContentLength() == 0) {
             handleDebugToast(
-                String.format(
-                    "Debug: Ignoring empty %s client (%s)",
-
-                    returnStreamObject ? "spoof stream" : "get details",
-                    returnStreamObject ? clientTypeStream : clientTypeDetails
-                ),
-
-                clientTypeStream,
-
-                clientTypeDetails
+                    String.format(
+                            "Debug: Ignoring empty %s client (%s)",
+                            returnStreamObject ? "spoof stream" : "get details",
+                            returnStreamObject ? stream : endPoint
+                    ),
+                    stream,
+                    endPoint
             );
             return null;
         }
 
         try (InputStream inputStream = connection.getInputStream()) {
             if (returnStreamObject) {
-                PlayerResponse playerResponse = clientTypeStream.usePlayerEndpoint
+                PlayerResponse playerResponse = stream.usePlayerEndpoint
                         ? PlayerResponse.parseFrom(inputStream)
                         : ReelItemWatchResponse.parseFrom(inputStream).getPlayerResponse();
                 var playabilityStatus = playerResponse.getPlayabilityStatus();
                 String status = playabilityStatus.getStatus().name();
 
                 if (!"OK".equals(status)) {
-                    handleDebugToast("Debug: Ignoring unplayable video (%s)", clientTypeStream, clientTypeDetails);
+                    handleDebugToast("Debug: Ignoring unplayable video (%s)", stream, endPoint);
                     String reason = playabilityStatus.getReason();
                     if (isNotEmpty(reason)) {
-                        Logger.printDebug(() -> String.format("Debug: Ignoring unplayable video (%s), reason: %s", clientTypeStream, reason));
+                        Logger.printDebug(() -> String.format("Debug: Ignoring unplayable video (%s), reason: %s", stream, reason));
                     }
 
                     return null;
@@ -364,7 +356,7 @@ public class StreamOrDetailsDataRequest {
 
                 PlayerResponse.Builder responseBuilder = playerResponse.toBuilder();
                 if (!playerResponse.hasStreamingData()) {
-                    handleDebugToast("Debug: Ignoring empty streaming data (%s)", clientTypeStream, clientTypeDetails);
+                    handleDebugToast("Debug: Ignoring empty streaming data (%s)", stream, endPoint);
                     return null;
                 }
 
@@ -374,14 +366,14 @@ public class StreamOrDetailsDataRequest {
                 // If DASH protocol is not available, the client will be skipped.
                 StreamingData streamingData = playerResponse.getStreamingData();
                 if (streamingData.getAdaptiveFormatsCount() == 0) {
-                    handleDebugToast("Debug: Ignoring empty adaptiveFormat (%s)", clientTypeStream, clientTypeDetails);
+                    handleDebugToast("Debug: Ignoring empty adaptiveFormat (%s)", stream, endPoint);
                     return null;
                 }
 
-                if (clientTypeStream.requireJS) {
+                if (stream.requireJS) {
                     var deobfuscatedStreamingData = getDeobfuscatedStreamingData(streamingData);
                     if (deobfuscatedStreamingData == null) {
-                        handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientTypeStream, clientTypeDetails);
+                        handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", stream, endPoint);
                         return null;
                     }
                     responseBuilder.setStreamingData(deobfuscatedStreamingData);
@@ -426,19 +418,20 @@ public class StreamOrDetailsDataRequest {
 
             // Retry with different client if empty response body is received.
             int i = 0;
-            for (ClientType.Stream clientTypeStream : clientStreamOrderToUse) {
+            for (ClientType.Stream stream : clientStreamOrderToUse) {
                 // Show an error if the last client type fails, or if debug is enabled then show for all attempts.
                 final boolean showErrorToast = (++i == clientStreamOrderToUse.length) || debugEnabled;
 
-                HttpURLConnection connection =
-                    send(clientTypeStream, detailsToFetch, null, videoId, playerHeaders, showErrorToast);
+                HttpURLConnection connection = send(stream, null,
+                        videoId, playerHeaders, showErrorToast);
                 if (connection != null) {
-                    Object playerResponseBuffer = buildPlayerStreamOrDetailsResponse(detailsToFetch, clientTypeStream, null, connection);
+                    Object playerResponseBuffer = buildPlayerStreamOrDetailsResponse(
+                            detailsToFetch, stream, null, connection);
 
                     if (playerResponseBuffer != null) {
-                        lastSpoofedClientType = clientTypeStream;
+                        lastSpoofedClientType = stream;
 
-                        if (clientTypeStream.requireJS) {
+                        if (stream.requireJS) {
                             Logger.printDebug(() -> "End of fetch for JavaScript required client" +
                                     ", video: " + videoId +
                                     ", hash: " + getJavaScriptHash() +
@@ -460,13 +453,13 @@ public class StreamOrDetailsDataRequest {
                 handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
             }
         } else {
-            for (ClientType.Details clientTypeDetails : ClientType.Details.values()) {
-                if (Objects.equals(clientTypeDetails.detailsToFetch, detailsToFetch)) {
+            for (ClientType.EndPoint clientTypeEndPoint : ClientType.EndPoint.values()) {
+                if (Objects.equals(clientTypeEndPoint.detailsToFetch, detailsToFetch)) {
                     HttpURLConnection connection =
-                        send(null, detailsToFetch, clientTypeDetails, videoId, playerHeaders, false);
+                        send(null, clientTypeEndPoint, videoId, playerHeaders, false);
 
                     if (connection != null) {
-                        return buildPlayerStreamOrDetailsResponse(detailsToFetch, null, clientTypeDetails, connection);
+                        return buildPlayerStreamOrDetailsResponse(detailsToFetch, null, clientTypeEndPoint, connection);
                     }
                 }
             }

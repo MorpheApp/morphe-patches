@@ -27,8 +27,22 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 public class ClientType {
+
+    public interface ClientDeviceInformation {
+        String getDeviceMake();
+        String getDeviceModel();
+        String getClientName();
+        String getClientVersion();
+        String getOsName();
+        String getOsVersion();
+        String getAndroidSdkVersion();
+        String getClientPlatform();
+        boolean getUsePlayerEndpoint();
+        boolean getRequireJS();
+    }
+
     @SuppressWarnings("ConstantLocale")
-    public enum Stream {
+    public enum Stream implements ClientDeviceInformation {
         /**
          * Video not playable: Paid, Movie, Private, Age-restricted.
          * Uses non-adaptive bitrate.
@@ -404,9 +418,60 @@ public class ClientType {
             this.packageName = null;
             this.androidSdkVersion = null;
         }
+
+        @Override
+        public String getDeviceMake() {
+            return deviceMake;
+        }
+
+        @Override
+        public String getDeviceModel() {
+            return deviceModel;
+        }
+
+        @Override
+        public String getClientName() {
+            return clientName;
+        }
+
+        @Override
+        public String getClientVersion() {
+            return clientVersion;
+        }
+
+        @Override
+        public String getOsName() {
+            return osName;
+        }
+
+        @Override
+        public String getOsVersion() {
+            return osVersion;
+        }
+
+        @Override
+        public String getAndroidSdkVersion() {
+            return androidSdkVersion;
+        }
+
+        @Override
+        public String getClientPlatform() {
+            return clientPlatform;
+        }
+
+        @Override
+        public boolean getUsePlayerEndpoint() {
+            return usePlayerEndpoint;
+        }
+
+        @Override
+        public boolean getRequireJS() {
+            return requireJS;
+        }
     }
 
-    public enum Details {
+    // TODO: If not messy and not more convoluted, then ideally this is merged into ClientType.
+    public enum EndPoint implements ClientDeviceInformation {
         ANDROID(
             saveToWatchLaterDetailsName,
             String.valueOf(Build.VERSION.SDK_INT),
@@ -439,7 +504,8 @@ public class ClientType {
             null,
             null,
             null,
-            "Mozilla/5.0 (iPad; CPU OS 16_7_10 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1,gzip(gfe)"
+            "Mozilla/5.0 (iPad; CPU OS 16_7_10 like Mac OS X) AppleWebKit/605.1.15 " +
+                    "(KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1,gzip(gfe)"
         );
 
         public final String detailsToFetch;
@@ -457,7 +523,7 @@ public class ClientType {
         public final String osVersion;
         public final String userAgent;
 
-        Details (String detailsToFetch, String androidSdkVersion, int clientID, String clientName,
+        EndPoint(String detailsToFetch, String androidSdkVersion, int clientID, String clientName,
                  String clientPackageName, String clientVersion, String clientPlatform,
                  boolean requireJS, boolean usePlayerEndpoint,
                  String deviceMake, String deviceModel,
@@ -487,7 +553,57 @@ public class ClientType {
                             osBuildID != null ? ("; Build/%s" + osBuildID) : ""
                     )
                     : userAgent;
-            Logger.printDebug(() -> "Details userAgent: " + this.userAgent);
+            Logger.printDebug(() -> "EndPoint userAgent: " + this.userAgent);
+        }
+
+        @Override
+        public String getDeviceMake() {
+            return deviceMake;
+        }
+
+        @Override
+        public String getDeviceModel() {
+            return deviceModel;
+        }
+
+        @Override
+        public String getClientName() {
+            return clientName;
+        }
+
+        @Override
+        public String getClientVersion() {
+            return clientVersion;
+        }
+
+        @Override
+        public String getOsName() {
+            return osName;
+        }
+
+        @Override
+        public String getOsVersion() {
+            return osVersion;
+        }
+
+        @Override
+        public String getAndroidSdkVersion() {
+            return androidSdkVersion;
+        }
+
+        @Override
+        public String getClientPlatform() {
+            return clientPlatform;
+        }
+
+        @Override
+        public boolean getUsePlayerEndpoint() {
+            return usePlayerEndpoint;
+        }
+
+        @Override
+        public boolean getRequireJS() {
+            return requireJS;
         }
     }
 }
