@@ -8,8 +8,8 @@ import static app.morphe.extension.shared.settings.Setting.migrateOldSettingToNe
 import static app.morphe.extension.shared.settings.Setting.parent;
 
 import app.morphe.extension.shared.patches.CustomBrandingPatch;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptClientAvailability;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.JavaScriptHashAvailability;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch.JavaScriptClientAvailability;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch.JavaScriptHashAvailability;
 import app.morphe.extension.shared.spoof.js.JavaScriptVariant;
 
 /**

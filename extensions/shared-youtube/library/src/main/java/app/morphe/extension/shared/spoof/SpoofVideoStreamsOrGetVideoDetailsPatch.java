@@ -18,10 +18,10 @@ import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
+import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
-public class SpoofVideoStreamsPatch {
+public class SpoofVideoStreamsOrGetVideoDetailsPatch {
     public static Map<String, String> currentVideoRequestHeader;
 
     public static final class JavaScriptClientAvailability implements Setting.Availability {
@@ -108,7 +108,7 @@ public class SpoofVideoStreamsPatch {
 
     public static void setClientsToUse(List<ClientType.Stream> availableClients, ClientType.Stream client) {
         preferredClient = Objects.requireNonNull(client);
-        StreamingDataRequest.setClientOrderToUse(availableClients, client);
+        StreamOrDetailsDataRequest.setClientOrderToUse(availableClients, client);
     }
 
     public static ClientType.Stream getPreferredClient() {
@@ -300,7 +300,7 @@ public class SpoofVideoStreamsPatch {
 
                 currentVideoRequestHeader = requestHeaders;
 
-                StreamingDataRequest.fetchStreamRequest(id, currentVideoRequestHeader);
+                StreamOrDetailsDataRequest.fetchStreamRequest(id, currentVideoRequestHeader);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }
@@ -316,18 +316,18 @@ public class SpoofVideoStreamsPatch {
     public static byte[] getStreamingData(String videoId) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
-                StreamingDataRequest request = StreamingDataRequest.getStreamRequestForVideoId(videoId);
+                StreamOrDetailsDataRequest request = StreamOrDetailsDataRequest.getStreamRequestForVideoId(videoId);
                 if (request != null) {
                     // This hook is always called off the main thread,
                     // but this can later be called for the same video ID from the main thread.
                     // This is not a concern, since the fetch will always be finished
                     // and never block the main thread.
                     // But if debugging, then still verify this is the situation.
-                    if (BaseSettings.DEBUG.get() && !request.fetchStreamDetailsCompleted() && Utils.isCurrentlyOnMainThread()) {
+                    if (BaseSettings.DEBUG.get() && !request.fetchStreamOrDetailsCompleted() && Utils.isCurrentlyOnMainThread()) {
                         Logger.printException(() -> "Error: Blocking main thread");
                     }
 
-                    var stream = request.getStreamDetails();
+                    var stream = request.getStreamOrDetails();
                     if (stream != null) {
                         Logger.printDebug(() -> "Overriding video stream: " + videoId);
                         return (byte[]) stream;
@@ -345,16 +345,16 @@ public class SpoofVideoStreamsPatch {
 
     public static void fetchDetails(String detailsToFetch, String videoId) {
         if (currentVideoRequestHeader != null) {
-            StreamingDataRequest.fetchDetailsRequest(detailsToFetch, videoId, currentVideoRequestHeader);
+            StreamOrDetailsDataRequest.fetchDetailsRequest(detailsToFetch, videoId, currentVideoRequestHeader);
         }
     }
 
     @Nullable
     public static String getDetailsData(String videoId) {
         try {
-            StreamingDataRequest request = StreamingDataRequest.getDetailsRequestForVideoId(videoId);
+            StreamOrDetailsDataRequest request = StreamOrDetailsDataRequest.getDetailsRequestForVideoId(videoId);
             if (request != null) {
-                var details = request.getStreamDetails();
+                var details = request.getStreamOrDetails();
                 if (details != null) {
                     Logger.printDebug(() -> "Successfully retrieving details for: " + videoId);
                     return (String) details;
@@ -401,7 +401,7 @@ public class SpoofVideoStreamsPatch {
                     && !TextUtils.isEmpty(videoFormat)) {
                 // Force LTR layout, to match the same LTR video time/length layout YouTube uses for all languages.
                 return "\u202D" + videoFormat + "\u2009(" // u202D = left to right override
-                        + StreamingDataRequest.getLastSpoofedClientName() + ")";
+                        + StreamOrDetailsDataRequest.getLastSpoofedClientName() + ")";
             }
         } catch (Exception ex) {
             Logger.printException(() -> "appendSpoofedClient failure", ex);

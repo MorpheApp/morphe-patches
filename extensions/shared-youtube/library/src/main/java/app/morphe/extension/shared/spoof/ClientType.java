@@ -12,6 +12,8 @@ package app.morphe.extension.shared.spoof;
 
 import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE;
 import static app.morphe.extension.shared.patches.AppCheckPatch.IS_YOUTUBE_MUSIC;
+import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.getChannelIDDetailsName;
+import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.saveToWatchLaterDetailsName;
 
 import android.os.Build;
 
@@ -23,7 +25,6 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
 
 public class ClientType {
     @SuppressWarnings("ConstantLocale")
@@ -407,12 +408,15 @@ public class ClientType {
 
     public enum Details {
         ANDROID(
-            StreamingDataRequest.saveToWatchLaterDetailsName,
+            saveToWatchLaterDetailsName,
             String.valueOf(Build.VERSION.SDK_INT),
             3,
             "ANDROID",
             "com.google.android.youtube",
             Utils.getAppVersionName(),
+            null,
+            false,
+            true,
             Build.MODEL,
             Build.MANUFACTURER,
             Build.DISPLAY,
@@ -421,12 +425,15 @@ public class ClientType {
             null
         ),
         WEB_REMIX(
-            StreamingDataRequest.getChannelIDDetailsName,
+            getChannelIDDetailsName,
             null,
             29,
             "WEB_REMIX",
             null,
             "1.20241218.01.00",
+            null,
+            false,
+            true,
             null,
             null,
             null,
@@ -440,18 +447,24 @@ public class ClientType {
         public final int clientID;
         public final String clientName;
         public final String clientVersion;
+        public final String clientPlatform;
+        public final boolean requireJS;
+        public final boolean usePlayerEndpoint;
         public final String deviceMake;
         public final String deviceModel;
         public final String osBuildID;
         public final String osName;
         public final String osVersion;
         public final String userAgent;
-        Details (String detailsToFetch, String androidSdkVersion, int clientID, String clientName, String clientPackageName, String clientVersion, String deviceMake, String deviceModel, String osBuildID, String osName, String osVersion, String userAgent) {
+        Details (String detailsToFetch, String androidSdkVersion, int clientID, String clientName, String clientPackageName, String clientVersion, String clientPlatform, boolean requireJS, boolean usePlayerEndpoint, String deviceMake, String deviceModel, String osBuildID, String osName, String osVersion, String userAgent) {
             this.detailsToFetch = detailsToFetch;
             this.androidSdkVersion = androidSdkVersion;
             this.clientID = clientID;
             this.clientName = clientName;
             this.clientVersion = clientVersion;
+            this.clientPlatform = clientPlatform;
+            this.requireJS = requireJS;
+            this.usePlayerEndpoint = usePlayerEndpoint;
             this.deviceMake = deviceMake;
             this.deviceModel = deviceModel;
             this.osBuildID = osBuildID;

@@ -8,11 +8,9 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.saveToWatchLaterDetailsName;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 
 import androidx.annotation.NonNull;
 
@@ -21,8 +19,7 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
-import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch;
 
 @SuppressWarnings("unused")
 public final class SaveToWatchLaterPatch {
@@ -60,13 +57,13 @@ public final class SaveToWatchLaterPatch {
      */
     public static void saveVideo() {
         try {
-            SpoofVideoStreamsPatch.fetchDetails(
-                StreamingDataRequest.saveToWatchLaterDetailsName,
+            SpoofVideoStreamsOrGetVideoDetailsPatch.fetchDetails(
+                saveToWatchLaterDetailsName,
 
                 VideoInformation.getVideoId()
             );
 
-            String saveToWatchLaterResponse = SpoofVideoStreamsPatch.getDetailsData(VideoInformation.getVideoId());
+            String saveToWatchLaterResponse = SpoofVideoStreamsOrGetVideoDetailsPatch.getDetailsData(VideoInformation.getVideoId());
 
             if (saveToWatchLaterResponse != null && !saveToWatchLaterResponse.isEmpty()) {
                 Logger.printInfo(() -> saveToWatchLaterResponse);

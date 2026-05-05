@@ -12,6 +12,7 @@ package app.morphe.extension.shared.spoof.requests;
 
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.isNotEmpty;
+import static app.morphe.extension.shared.Utils.submitOnBackgroundThread;
 import static app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport.supportsJavaScriptEngine;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
@@ -20,11 +21,13 @@ import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_CHANNE
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_PLAYER_STREAMING_DATA;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_REEL_STREAMING_DATA;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST;
+import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.getChannelIDDetailsName;
+import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.saveToWatchLaterDetailsName;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.util.Pair;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -39,13 +42,11 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
-import java.util.concurrent.SynchronousQueue;
-import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.stream.Collectors;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -67,10 +68,7 @@ import app.morphe.extension.shared.spoof.ClientType;
  * the extension replace stream hook is called only if YT
  * did use its own client streams.
  */
-public class StreamingDataRequest {
-
-    public static final String getChannelIDDetailsName = "getChannelID";
-    public static final String saveToWatchLaterDetailsName = "saveToWatchLater";
+public class StreamOrDetailsDataRequest {
 
     private static volatile ClientType.Stream[] clientStreamOrderToUse = ClientType.Stream.values();
 
@@ -125,10 +123,10 @@ public class StreamingDataRequest {
      * is somehow still referenced. Each stream is a small array of Strings
      * so memory usage is not a concern.
      */
-    private static final Map<String, StreamingDataRequest> streamCache = Collections.synchronizedMap(
+    private static final Map<String, StreamOrDetailsDataRequest> streamCache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(50));
 
-    private static final Map<String, StreamingDataRequest> detailsCache = Collections.synchronizedMap(
+    private static final Map<String, StreamOrDetailsDataRequest> detailsCache = Collections.synchronizedMap(
             Utils.createSizeRestrictedMap(50));
 
     private static volatile ClientType.Stream lastSpoofedClientType;
@@ -155,25 +153,7 @@ public class StreamingDataRequest {
 
     private final Future<Object> future;
 
-    /**
-     * Debug purpose pool
-     */
-    private static final ThreadPoolExecutor backgroundThreadPool = new ThreadPoolExecutor(
-            5,
-            Integer.MAX_VALUE,
-            10,
-            TimeUnit.SECONDS,
-            new SynchronousQueue<>(),
-            r -> {
-                Thread t = new Thread(r);
-                t.setPriority(Thread.MAX_PRIORITY);
-                return t;
-            });
-    public static <T> Future<T> submitOnBackgroundThread(Callable<T> call) {
-        return backgroundThreadPool.submit(call);
-    }
-
-    private StreamingDataRequest(String detailsToFetch, String videoId, Map<String, String> playerHeaders) {
+    private StreamOrDetailsDataRequest(String detailsToFetch, String videoId, Map<String, String> playerHeaders) {
         Objects.requireNonNull(playerHeaders);
         this.videoId = videoId;
 
@@ -182,21 +162,21 @@ public class StreamingDataRequest {
 
     public static void fetchStreamRequest(String videoId, Map<String, String> fetchHeaders) {
         // Always fetch, even if there is an existing request for the same video.
-        streamCache.put(videoId, new StreamingDataRequest("", videoId, fetchHeaders));
+        streamCache.put(videoId, new StreamOrDetailsDataRequest("", videoId, fetchHeaders));
     }
 
     @Nullable
-    public static StreamingDataRequest getStreamRequestForVideoId(String videoId) {
+    public static StreamOrDetailsDataRequest getStreamRequestForVideoId(String videoId) {
         return streamCache.get(videoId);
     }
 
     public static void fetchDetailsRequest(String detailsToFetch, String videoId, Map<String, String> fetchHeaders) {
         // Always fetch, even if there is an existing request for the same video.
-        detailsCache.put(videoId, new StreamingDataRequest(detailsToFetch, videoId, fetchHeaders));
+        detailsCache.put(videoId, new StreamOrDetailsDataRequest(detailsToFetch, videoId, fetchHeaders));
     }
 
     @Nullable
-    public static StreamingDataRequest getDetailsRequestForVideoId(String videoId) {
+    public static StreamOrDetailsDataRequest getDetailsRequestForVideoId(String videoId) {
         return detailsCache.get(videoId);
     }
 
@@ -205,9 +185,17 @@ public class StreamingDataRequest {
         Logger.printInfo(() -> toastMessage, ex);
     }
 
-    private static void handleDebugToast(String toastMessage, ClientType.Stream clientType) {
+    private static void handleDebugToast(String toastMessage,
+                                         ClientType.Stream clientTypeStream,
+                                         ClientType.Details clientTypeDetails) {
         if (BaseSettings.DEBUG.get() && BaseSettings.DEBUG_TOAST_ON_ERROR.get()) {
-            Utils.showToastShort(String.format(toastMessage, clientType));
+            Utils.showToastShort(
+                String.format(
+                    toastMessage,
+
+                    clientTypeStream != null ? clientTypeStream : clientTypeDetails
+                )
+            );
         }
     }
 
@@ -221,7 +209,7 @@ public class StreamingDataRequest {
         Objects.requireNonNull(videoId);
         Objects.requireNonNull(playerHeaders);
 
-        final boolean isStream = detailsToFetch.isEmpty();
+        final boolean isStream = clientTypeStream != null;
 
         final long startTime = System.currentTimeMillis();
 
@@ -315,40 +303,7 @@ public class StreamingDataRequest {
                 )
             );
 
-            String innerTubeBody =
-                PlayerRoutes.createInnertubeBody(
-                    detailsToFetch,
-
-                    (isStream
-                    ?
-                        List.of(
-                            new Pair<>(clientTypeStream.deviceMake, false),
-                            new Pair<>(clientTypeStream.deviceModel, false),
-                            new Pair<>(clientTypeStream.clientName, false),
-                            new Pair<>(clientTypeStream.clientVersion, false),
-                            new Pair<>(clientTypeStream.osName, false),
-                            new Pair<>(clientTypeStream.osVersion, false),
-                            new Pair<>(clientTypeStream.androidSdkVersion, false),
-                            new Pair<>(clientTypeStream.clientPlatform, false),
-                            new Pair<>("", clientTypeStream.usePlayerEndpoint),
-                            new Pair<>("", clientTypeStream.requireJS)
-                        )
-                    :
-                        List.of(
-                            new Pair<>(clientTypeDetails.deviceMake, false),
-                            new Pair<>(clientTypeDetails.deviceModel, false),
-                            new Pair<>(clientTypeDetails.clientName, false),
-                            new Pair<>(clientTypeDetails.clientVersion, false),
-                            new Pair<>(clientTypeDetails.osName, false),
-                            new Pair<>(clientTypeDetails.osVersion, false),
-                            new Pair<>(clientTypeDetails.androidSdkVersion, false),
-                            new Pair<>("", false),
-                            new Pair<>("", true),
-                            new Pair<>("", false)
-                        )),
-
-                    videoId
-                );
+            String innerTubeBody = PlayerRoutes.createInnertubeBody(detailsToFetch, clientTypeStream, clientTypeDetails, videoId);
             byte[] requestBody = innerTubeBody.getBytes(StandardCharsets.UTF_8);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
@@ -378,62 +333,101 @@ public class StreamingDataRequest {
     }
 
     @Nullable
-    private static byte[] buildPlayerResponseBuffer(ClientType.Stream clientType,
+    private static Object buildPlayerStreamOrDetailsResponse(String detailsToFetch,
+                                                    ClientType.Stream clientTypeStream,
+                                                    ClientType.Details clientTypeDetails,
                                                     HttpURLConnection connection) {
+        boolean returnStreamObject = clientTypeStream != null;
+
         // gzip encoding doesn't response with content length (-1),
         // but empty response body does.
         if (connection.getContentLength() == 0) {
-            handleDebugToast("Debug: Ignoring empty spoof stream client (%s)", clientType);
+            handleDebugToast(
+                String.format(
+                    "Debug: Ignoring empty %s client (%s)",
+
+                    returnStreamObject ? "spoof stream" : "get details",
+                    returnStreamObject ? clientTypeStream : clientTypeDetails
+                ),
+
+                clientTypeStream,
+
+                clientTypeDetails
+            );
             return null;
         }
 
         try (InputStream inputStream = connection.getInputStream()) {
-            PlayerResponse playerResponse = clientType.usePlayerEndpoint
-                    ? PlayerResponse.parseFrom(inputStream)
-                    : ReelItemWatchResponse.parseFrom(inputStream).getPlayerResponse();
-            var playabilityStatus = playerResponse.getPlayabilityStatus();
-            String status = playabilityStatus.getStatus().name();
+            if (returnStreamObject) {
+                PlayerResponse playerResponse = clientTypeStream.usePlayerEndpoint
+                        ? PlayerResponse.parseFrom(inputStream)
+                        : ReelItemWatchResponse.parseFrom(inputStream).getPlayerResponse();
+                var playabilityStatus = playerResponse.getPlayabilityStatus();
+                String status = playabilityStatus.getStatus().name();
 
-            if (!"OK".equals(status)) {
-                handleDebugToast("Debug: Ignoring unplayable video (%s)", clientType);
-                String reason = playabilityStatus.getReason();
-                if (isNotEmpty(reason)) {
-                    Logger.printDebug(() -> String.format("Debug: Ignoring unplayable video (%s), reason: %s", clientType, reason));
-                }
+                if (!"OK".equals(status)) {
+                    handleDebugToast("Debug: Ignoring unplayable video (%s)", clientTypeStream, clientTypeDetails);
+                    String reason = playabilityStatus.getReason();
+                    if (isNotEmpty(reason)) {
+                        Logger.printDebug(() -> String.format("Debug: Ignoring unplayable video (%s), reason: %s", clientTypeStream, reason));
+                    }
 
-                return null;
-            }
-
-            PlayerResponse.Builder responseBuilder = playerResponse.toBuilder();
-            if (!playerResponse.hasStreamingData()) {
-                handleDebugToast("Debug: Ignoring empty streaming data (%s)", clientType);
-                return null;
-            }
-
-            // Android Studio only supports the HLS protocol for live streams.
-            // HLS protocol can theoretically be played with ExoPlayer,
-            // but the related code has not yet been implemented.
-            // If DASH protocol is not available, the client will be skipped.
-            StreamingData streamingData = playerResponse.getStreamingData();
-            if (streamingData.getAdaptiveFormatsCount() == 0) {
-                handleDebugToast("Debug: Ignoring empty adaptiveFormat (%s)", clientType);
-                return null;
-            }
-
-            if (clientType.requireJS) {
-                var deobfuscatedStreamingData = getDeobfuscatedStreamingData(streamingData);
-                if (deobfuscatedStreamingData == null) {
-                    handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientType);
                     return null;
                 }
-                responseBuilder.setStreamingData(deobfuscatedStreamingData);
-            }
 
-            return responseBuilder.build().toByteArray();
+                PlayerResponse.Builder responseBuilder = playerResponse.toBuilder();
+                if (!playerResponse.hasStreamingData()) {
+                    handleDebugToast("Debug: Ignoring empty streaming data (%s)", clientTypeStream, clientTypeDetails);
+                    return null;
+                }
+
+                // Android Studio only supports the HLS protocol for live streams.
+                // HLS protocol can theoretically be played with ExoPlayer,
+                // but the related code has not yet been implemented.
+                // If DASH protocol is not available, the client will be skipped.
+                StreamingData streamingData = playerResponse.getStreamingData();
+                if (streamingData.getAdaptiveFormatsCount() == 0) {
+                    handleDebugToast("Debug: Ignoring empty adaptiveFormat (%s)", clientTypeStream, clientTypeDetails);
+                    return null;
+                }
+
+                if (clientTypeStream.requireJS) {
+                    var deobfuscatedStreamingData = getDeobfuscatedStreamingData(streamingData);
+                    if (deobfuscatedStreamingData == null) {
+                        handleDebugToast("Debug: Ignoring obfuscated streamingData (%s)", clientTypeStream, clientTypeDetails);
+                        return null;
+                    }
+                    responseBuilder.setStreamingData(deobfuscatedStreamingData);
+                }
+
+                return responseBuilder.build().toByteArray();
+            } else {
+                String response = new BufferedReader(new InputStreamReader(inputStream))
+                                    .lines()
+                                    .collect(Collectors.joining("\n"));
+
+                JSONObject jsonResponse = new JSONObject(response);
+
+                switch (detailsToFetch) {
+                    case getChannelIDDetailsName -> {
+                        return jsonResponse
+                                .getJSONObject("videoDetails")
+                                .getString("channelId");
+                    }
+
+                    case saveToWatchLaterDetailsName -> {
+                        return response;
+                    }
+                }
+            }
         } catch (IOException ex) {
-            Logger.printException(() -> "Failed to write player response to buffer array", ex);
+            Logger.printException(() -> "Failed to write player response for video stream or details", ex);
+            return null;
+        } catch (JSONException ex) {
+            Logger.printException(() -> "Failed to create jsonResponse object for video details", ex);
             return null;
         }
+        return null;
     }
 
     private static Object fetch(String detailsToFetch, String videoId, Map<String, String> playerHeaders) {
@@ -445,19 +439,19 @@ public class StreamingDataRequest {
 
             // Retry with different client if empty response body is received.
             int i = 0;
-            for (ClientType.Stream clientType : clientStreamOrderToUse) {
+            for (ClientType.Stream clientTypeStream : clientStreamOrderToUse) {
                 // Show an error if the last client type fails, or if debug is enabled then show for all attempts.
                 final boolean showErrorToast = (++i == clientStreamOrderToUse.length) || debugEnabled;
 
                 HttpURLConnection connection =
-                    send(clientType, detailsToFetch, null, videoId, playerHeaders, showErrorToast);
+                    send(clientTypeStream, detailsToFetch, null, videoId, playerHeaders, showErrorToast);
                 if (connection != null) {
-                    byte[] playerResponseBuffer = buildPlayerResponseBuffer(clientType, connection);
+                    Object playerResponseBuffer = buildPlayerStreamOrDetailsResponse(detailsToFetch, clientTypeStream, null, connection);
 
                     if (playerResponseBuffer != null) {
-                        lastSpoofedClientType = clientType;
+                        lastSpoofedClientType = clientTypeStream;
 
-                        if (clientType.requireJS) {
+                        if (clientTypeStream.requireJS) {
                             Logger.printDebug(() -> "End of fetch for JavaScript required client" +
                                     ", video: " + videoId +
                                     ", hash: " + getJavaScriptHash() +
@@ -479,47 +473,13 @@ public class StreamingDataRequest {
                 handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
             }
         } else {
-            for (ClientType.Details clientType : ClientType.Details.values()) {
-                if (Objects.equals(clientType.detailsToFetch, detailsToFetch)) {
+            for (ClientType.Details clientTypeDetails : ClientType.Details.values()) {
+                if (Objects.equals(clientTypeDetails.detailsToFetch, detailsToFetch)) {
                     HttpURLConnection connection =
-                        send(null, detailsToFetch, clientType, videoId, playerHeaders, false);
+                        send(null, detailsToFetch, clientTypeDetails, videoId, playerHeaders, false);
 
                     if (connection != null) {
-                        try (BufferedReader reader =
-                             new BufferedReader(
-                                 new InputStreamReader(connection.getInputStream())
-                             )
-                        ) {
-                            StringBuilder jsonBuilder = new StringBuilder();
-                            String line;
-
-                            while ((line = reader.readLine()) != null) {
-                                jsonBuilder.append(
-                                    String.format(
-                                        "%s\n",
-
-                                        line
-                                    )
-                                );
-                            }
-
-                            String jsonBuilderString = jsonBuilder.toString();
-                            JSONObject jsonResponse = new JSONObject(jsonBuilderString);
-
-                            switch (detailsToFetch) {
-                                case StreamingDataRequest.getChannelIDDetailsName -> {
-                                    return jsonResponse
-                                            .getJSONObject("videoDetails")
-                                            .getString("channelId");
-                                }
-
-                                case StreamingDataRequest.saveToWatchLaterDetailsName -> {
-                                    return jsonBuilderString;
-                                }
-                            }
-                        } catch (Exception e) {
-                            Logger.printException(() -> "VideoDetailsRequest: ", e);
-                        }
+                        return buildPlayerStreamOrDetailsResponse(detailsToFetch, null, clientTypeDetails, connection);
                     }
                 }
             }
@@ -527,22 +487,22 @@ public class StreamingDataRequest {
         return null;
     }
 
-    public boolean fetchStreamDetailsCompleted() {
+    public boolean fetchStreamOrDetailsCompleted() {
         return future.isDone();
     }
 
 
     @Nullable
-    public Object getStreamDetails() {
+    public Object getStreamOrDetails() {
         try {
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
-            Logger.printInfo(() -> "getStreamDetails timed out", ex);
+            Logger.printInfo(() -> "getStreamOrDetails timed out", ex);
         } catch (InterruptedException ex) {
-            Logger.printException(() -> "getStreamDetails interrupted", ex);
+            Logger.printException(() -> "getStreamOrDetails interrupted", ex);
             Thread.currentThread().interrupt(); // Restore interrupt status flag.
         } catch (ExecutionException ex) {
-            Logger.printException(() -> "getStreamDetails failure", ex);
+            Logger.printException(() -> "getStreamOrDetails failure", ex);
         }
 
         return null;
@@ -551,6 +511,6 @@ public class StreamingDataRequest {
     @NonNull
     @Override
     public String toString() {
-        return "StreamingDataRequest{" + "videoId='" + videoId + '\'' + '}';
+        return "StreamOrDetailsDataRequest{" + "videoId='" + videoId + '\'' + '}';
     }
 }

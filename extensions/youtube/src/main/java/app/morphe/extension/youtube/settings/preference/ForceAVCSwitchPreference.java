@@ -15,18 +15,18 @@ import android.util.AttributeSet;
 
 import java.util.List;import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch;
 
 @SuppressWarnings({"deprecation", "unused"})
 public class ForceAVCSwitchPreference extends SwitchPreference {
 
     // Spoof stream patch is not included/enabled, or is spoofing to a client that forcing AVC works.
-    private static final boolean available = !SpoofVideoStreamsPatch.isPatchIncluded()
+    private static final boolean available = !SpoofVideoStreamsOrGetVideoDetailsPatch.isPatchIncluded()
             || !SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get() || List.of(
             ClientType.Stream.ANDROID_CREATOR,
             ClientType.Stream.ANDROID_VR_1_65,
             ClientType.Stream.ANDROID_VR_1_64,
-            ClientType.Stream.VISIONOS).contains(SpoofVideoStreamsPatch.getPreferredClient());
+            ClientType.Stream.VISIONOS).contains(SpoofVideoStreamsOrGetVideoDetailsPatch.getPreferredClient());
 
     {
         if (!available) {
