@@ -11,7 +11,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patcher.patch.PatchException
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.fiveRegisters
 
@@ -21,29 +22,38 @@ private const val EXTENSION_CLASS =
 val fixRecycledBitmapPatch = bytecodePatch(
     description = "Fixes recycled bitmap crashes by routing putBitmap through the extension class."
 ) {
+
+    dependsOn(versionCheckPatch)
+
     execute {
+        if (!is_20_31_or_greater) {
+            return@execute
+        }
+
         val putBitmapCall = methodCall(
             definingClass = $$"Landroid/media/MediaMetadata$Builder;",
             name = "putBitmap",
             parameters = listOf("Ljava/lang/String;", "Landroid/graphics/Bitmap;")
         )
 
-        try {
-            Fingerprint(
-                filters = listOf(putBitmapCall),
-                custom = { _, classDef -> !classDef.type.startsWith("Lapp/morphe/extension") }
-            ).matchAll().forEach { match ->
-                match.method.apply {
-                    findInstructionIndicesReversedOrThrow(putBitmapCall).forEach { index ->
-                        val registers = fiveRegisters(index)
-                        val replacementSmali =
-                            $$"invoke-static {$$registers}, $$EXTENSION_CLASS->putBitmap(Landroid/media/MediaMetadata$Builder;Ljava/lang/String;Landroid/graphics/Bitmap;)Landroid/media/MediaMetadata$Builder;"
+        Fingerprint(
+            filters = listOf(putBitmapCall),
+            custom = { _, classDef ->
+                !classDef.type.startsWith("Lapp/morphe/extension")
+            }
+        ).matchAll().forEach { match ->
+            match.method.apply {
+                findInstructionIndicesReversedOrThrow(putBitmapCall).forEach { index ->
+                    val registers = fiveRegisters(index)
 
-                        replaceInstruction(index, replacementSmali)
-                    }
+                    replaceInstruction(
+                        index,
+                        $"invoke-static { $registers }, $EXTENSION_CLASS->putBitmap(" +
+                                "Landroid/media/MediaMetadata\$Builder;Ljava/lang/String;Landroid/graphics/Bitmap;)" +
+                                "Landroid/media/MediaMetadata\$Builder;"
+                    )
                 }
             }
-        } catch (_: PatchException) {
         }
     }
 }
