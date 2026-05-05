@@ -203,7 +203,7 @@ val themePatch = baseThemePatch(
         )
 
         val preferences = mutableSetOf(
-            SwitchPreference("morphe_seekbar_custom_color"),
+            SwitchPreference("morphe_seekbar_custom_color", summaryKey = null),
             TextPreference(
                 "morphe_seekbar_custom_color_primary",
                 tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",

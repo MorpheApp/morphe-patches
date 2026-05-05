@@ -45,7 +45,7 @@ private val swipeControlsResourcePatch = resourcePatch {
             SwitchPreference("morphe_swipe_brightness"),
             SwitchPreference("morphe_swipe_volume"),
             SwitchPreference("morphe_swipe_press_to_engage"),
-            SwitchPreference("morphe_swipe_haptic_feedback"),
+            SwitchPreference("morphe_swipe_haptic_feedback", summaryKey = null),
             SwitchPreference("morphe_swipe_save_and_restore_brightness"),
             SwitchPreference("morphe_swipe_lowest_value_enable_auto_brightness"),
             ListPreference("morphe_swipe_overlay_style"),

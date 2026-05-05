@@ -70,8 +70,8 @@ internal val customPlaybackSpeedPatch = bytecodePatch(
     execute {
         settingsMenuVideoSpeedGroup.addAll(
             listOf(
-                SwitchPreference("morphe_custom_speed_menu"),
-                SwitchPreference("morphe_restore_old_speed_menu"),
+                SwitchPreference("morphe_custom_speed_menu", summaryKey = null),
+                SwitchPreference("morphe_restore_old_speed_menu", summaryKey = null),
                 TextPreference(
                     "morphe_custom_playback_speeds",
                     inputType = InputType.TEXT_MULTI_LINE

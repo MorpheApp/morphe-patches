@@ -39,7 +39,7 @@ val loopVideoPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_loop_video"),
+            SwitchPreference("morphe_loop_video", summaryKey = null),
         )
 
         playerStatusMethodRef.get()!!.apply {

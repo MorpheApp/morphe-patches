@@ -1,8 +1,5 @@
 package app.morphe.patches.shared.misc.settings.preference
 
-import app.morphe.patches.util.resource.BaseResource
-import org.w3c.dom.Document
-
 /**
  * A switch preference.
  *
@@ -11,23 +8,15 @@ import org.w3c.dom.Document
  * @param icon The preference icon resource name.
  * @param layout Layout declaration.
  * @param tag The preference tag.
- * @param summaryOnKey The preference summary-on key.
- * @param summaryOffKey The preference summary-off key.
+ * @param summaryKey The preference summary key.
  */
 @Suppress("MemberVisibilityCanBePrivate")
 class SwitchPreference(
     key: String? = null,
     titleKey: String = "${key}_title",
+    summaryKey: String? = "${key}_summary",
     tag: String = "SwitchPreference",
     icon: String? = null,
     iconBold: String? = null,
-    layout: String? = null,
-    val summaryOnKey: String = "${key}_summary_on",
-    val summaryOffKey: String = "${key}_summary_off"
-) : BasePreference(key, titleKey, null, icon, iconBold, layout, tag) {
-    override fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit) =
-        super.serialize(ownerDocument, resourceCallback).apply {
-            addSummary(summaryOnKey, SummaryType.ON)
-            addSummary(summaryOffKey, SummaryType.OFF)
-        }
-}
+    layout: String? = null
+) : BasePreference(key, titleKey, summaryKey, icon, iconBold, layout, tag)

@@ -250,11 +250,11 @@ val settingsPatch = bytecodePatch(
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_settings_search_history"),
+            SwitchPreference("morphe_settings_search_history", summaryKey = null),
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_show_menu_icons")
+            SwitchPreference("morphe_show_menu_icons", summaryKey = null)
         )
 
         PreferenceScreen.MISC.addPreferences(

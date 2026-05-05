@@ -24,8 +24,6 @@ public class ForceOriginalAudioSwitchPreference extends SwitchPreference {
             // Show why force audio is not available.
             String summary = str("morphe_force_original_audio_not_available");
             super.setSummary(summary);
-            super.setSummaryOn(summary);
-            super.setSummaryOff(summary);
             super.setEnabled(false);
         }
     }

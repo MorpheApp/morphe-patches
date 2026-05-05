@@ -44,7 +44,7 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
 
     execute {
         settingsMenuVideoQualityGroup.add(
-            SwitchPreference("morphe_advanced_video_quality_menu")
+            SwitchPreference("morphe_advanced_video_quality_menu", summaryKey = null)
         )
 
         // region Patch for the old type of the video quality menu.

@@ -128,7 +128,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                 Preference preference = new Preference(context);
                 String formatted = SponsorBlockUtils.getNumberOfSkipsString(stats.segmentCount);
                 preference.setTitle(fromHtml(str("morphe_sb_stats_submissions", formatted), FROM_HTML_MODE_COMPACT));
-                preference.setSummary(str("morphe_sb_stats_submissions_sum"));
+                preference.setSummary(str("morphe_sb_stats_submissions_summary"));
                 if (stats.totalSegmentCountIncludingIgnored == 0) {
                     preference.setSelectable(false);
                 } else {
@@ -163,11 +163,11 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                 String stats_saved_sum;
                 if (stats.totalSegmentCountIncludingIgnored == 0) {
                     stats_saved = str("morphe_sb_stats_saved_zero");
-                    stats_saved_sum = str("morphe_sb_stats_saved_sum_zero");
+                    stats_saved_sum = str("morphe_sb_stats_saved_summary_zero");
                 } else {
                     stats_saved = str("morphe_sb_stats_saved",
                             SponsorBlockUtils.getNumberOfSkipsString(stats.viewCount));
-                    stats_saved_sum = str("morphe_sb_stats_saved_sum",
+                    stats_saved_sum = str("morphe_sb_stats_saved_summary",
                             SponsorBlockUtils.getTimeSavedString((long) (60 * stats.minutesSaved)));
                 }
                 preference.setTitle(fromHtml(stats_saved, FROM_HTML_MODE_COMPACT));
@@ -196,7 +196,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
 
             String formattedSaved = SponsorBlockUtils.getTimeSavedString(
                     Settings.SB_LOCAL_TIME_SAVED_MILLISECONDS.get() / 1000);
-            preference.setSummary(fromHtml(str("morphe_sb_stats_self_saved_sum", formattedSaved), FROM_HTML_MODE_COMPACT));
+            preference.setSummary(fromHtml(str("morphe_sb_stats_self_saved_summary", formattedSaved), FROM_HTML_MODE_COMPACT));
         };
         updateStatsSelfSaved.run();
 

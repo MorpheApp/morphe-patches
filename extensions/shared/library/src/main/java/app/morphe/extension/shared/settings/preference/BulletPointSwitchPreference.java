@@ -32,14 +32,4 @@ public class BulletPointSwitchPreference extends SwitchPreference {
     public void setSummary(CharSequence summary) {
         super.setSummary(formatIntoBulletPoints(summary));
     }
-
-    @Override
-    public void setSummaryOn(CharSequence summaryOn) {
-        super.setSummaryOn(formatIntoBulletPoints(summaryOn));
-    }
-
-    @Override
-    public void setSummaryOff(CharSequence summaryOff) {
-        super.setSummaryOff(formatIntoBulletPoints(summaryOff));
-    }
 }

@@ -31,10 +31,11 @@ val disableVideoCodecsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.VIDEO.addPreferences(
-            SwitchPreference("morphe_disable_hdr_video"),
+            SwitchPreference("morphe_disable_hdr_video", summaryKey = null),
             SwitchPreference(
                 key = "morphe_force_avc_codec",
-                tag = "app.morphe.extension.youtube.settings.preference.ForceAVCSwitchPreference"
+                tag = "app.morphe.extension.youtube.settings.preference.ForceAVCSwitchPreference",
+                summaryKey = null
             )
         )
 

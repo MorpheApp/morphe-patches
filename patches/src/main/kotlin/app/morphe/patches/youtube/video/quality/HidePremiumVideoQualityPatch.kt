@@ -28,7 +28,7 @@ internal val hidePremiumVideoQualityPatch = bytecodePatch {
 
     execute {
         settingsMenuVideoQualityGroup.add(
-            SwitchPreference("morphe_hide_premium_video_quality")
+            SwitchPreference("morphe_hide_premium_video_quality", summaryKey = null)
         )
 
         // Class name is obfuscated in 21.02+
