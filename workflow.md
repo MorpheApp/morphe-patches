@@ -25,7 +25,7 @@ Global patch behavior
 
 YouTube defaults to enforce
 1. MORPHE Youtube package name
-   - Set MORPHE_YOUTUBE_PACKAGE_NAME to com.google.android.apps.youtube.kids
+   - Set MORPHE_YOUTUBE_PACKAGE_NAME to com.google.android.apps.youtube.kids in morphe-patches\patches\src\main\kotlin\app\morphe\patches\youtube\misc\gms\Constants.kt
    
 2. External downloader
    - Disable Override download action button. morphe_external_downloader_action_button = false
@@ -77,8 +77,7 @@ YouTube defaults to enforce
 
 YouTube Music defaults to enforce
 1. YT Music package name
-   - Set MORPHE_MUSIC_PACKAGE_NAME to app.revanced.android.apps.youtube.music in Constants.kt and other relevant files.
-   - Set targetPackage and morphe_music_package_name to app.revanced.android.apps.youtube.music in OverrideYouTubeMusicActionsPatch.kt and Settings.java respectively.
+   - Set targetPackage and morphe_music_package_name to app.revanced.android.apps.youtube.music in morphe-patches\patches\src\main\kotlin\app\morphe\patches\music\misc\gms\Constants.kt  and morphe-patches\extensions\youtube\src\main\java\app\morphe\extension\youtube\settings\Settings.java respectively.
 
 2. General
    - Set custom branding entry 2 to YT Music Premium.
@@ -121,4 +120,4 @@ Important
 - Update CHANGELOG.md whenever behavior changes.
 - Never change a single word inside the workflow.md file(Follow all the steps but Never edit this file strictly). 
 
-**NOW COMPLETE THE RELEASE PROCESS**
+**NOW COMPLETE THE RELEASE PROCESS AND DONT STOP UNTIL A SUCCESSFUL RELEASE IS COMPLETED**

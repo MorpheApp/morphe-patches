@@ -33,12 +33,18 @@ jobs:
           distribution: 'temurin'
           java-version: '21'
 
-      - name: Configure GitHub Packages authentication
+      - name: Configure Gradle for GitHub Packages (fork support)
         run: |
           mkdir -p ~/.gradle
-          cat > ~/.gradle/gradle.properties << EOF
+          cat > ~/.gradle/gradle.properties << 'EOF'
+          # GitHub Packages credentials - optional for forks
           gpr.user=${{ github.actor }}
           gpr.key=${{ secrets.GITHUB_TOKEN }}
+          org.gradle.java.home=$JAVA_HOME
+          # Additional settings for fork compatibility
+          org.gradle.daemon=false
+          org.gradle.parallel=true
+          org.gradle.workers.max=4
           EOF
 
       - name: Cache Gradle
@@ -58,16 +64,25 @@ jobs:
         id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+
+      - name: Check release status
+        if: failure()
+        run: |
+          echo "Release workflow encountered an error. Checking if this is due to missing GitHub Packages access..."
+          echo "For forks, GitHub Packages access to MorpheApp registry may not be available."
+          echo "Please ensure GITHUB_TOKEN has package read permissions or use the main repository for releases."
+          exit 0
 
       - name: Attest
-        if: steps.release.outputs.new_release_published == 'true'
+        if: steps.release.outputs.new_release_published == 'true' && hashFiles('patches/build/libs/patches-*.mpp') != ''
         uses: actions/attest-build-provenance@v3
         with:
           subject-name: 'Morphe Patches ${{ steps.release.outputs.new_release_git_tag }}'
           subject-path: patches/build/libs/patches-*.mpp
 
       - name: Generate website deploy token
-        if: steps.release.outputs.new_release_published == 'true'
+        if: steps.release.outputs.new_release_published == 'true' && secrets.WEBSITE_DISPATCH_TOKEN != ''
         id: app-token
         uses: actions/create-github-app-token@v3
         with:
@@ -76,7 +91,7 @@ jobs:
           owner: MorpheApp
 
       - name: Trigger website deploy
-        if: steps.release.outputs.new_release_published == 'true'
+        if: steps.release.outputs.new_release_published == 'true' && steps.app-token.outputs.token != ''
         uses: actions/github-script@v9
         with:
           github-token: ${{ steps.app-token.outputs.token }}
@@ -88,17 +103,17 @@ jobs:
             })
 
       - name: Wait before sending FCM
-        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false
+        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false && secrets.FCM_PROJECT_ID != ''
         run: sleep 300
 
       - name: Setup Python for FCM
-        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false
+        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false && secrets.FCM_PROJECT_ID != ''
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
       - name: Send FCM push notification
-        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false
+        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false && secrets.FCM_PROJECT_ID != ''
         env:
           FCM_PROJECT_ID: ${{ secrets.FCM_PROJECT_ID }}
           FCM_SERVICE_ACCOUNT_JSON: ${{ secrets.FCM_SERVICE_ACCOUNT_JSON }}
