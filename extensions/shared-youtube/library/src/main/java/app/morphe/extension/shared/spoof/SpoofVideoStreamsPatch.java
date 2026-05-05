@@ -21,7 +21,7 @@ import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
-public class SpoofVideoStreamsOrGetVideoDetailsPatch {
+public class SpoofVideoStreamsPatch {
     public static Map<String, String> currentVideoRequestHeader;
 
     public static final class JavaScriptClientAvailability implements Setting.Availability {

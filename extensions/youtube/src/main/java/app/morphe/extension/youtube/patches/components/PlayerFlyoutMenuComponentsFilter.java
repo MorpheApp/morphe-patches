@@ -14,7 +14,7 @@ import java.util.List;
 
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
@@ -26,7 +26,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
     public static final class HideAudioFlyoutMenuAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
-            return !SpoofVideoStreamsOrGetVideoDetailsPatch.spoofingToClientWithNoMultiAudioStreams();
+            return !SpoofVideoStreamsPatch.spoofingToClientWithNoMultiAudioStreams();
         }
 
         @Override

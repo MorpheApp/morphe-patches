@@ -52,7 +52,7 @@ public class SpoofVideoStreamsPatch {
                 ANDROID_CREATOR
         );
 
-        app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch.setClientsToUse(
+        app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(
                 availableClients, client);
     }
 }

@@ -6,14 +6,14 @@ import android.content.Context;
 import android.preference.SwitchPreference;
 import android.util.AttributeSet;
 
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 @SuppressWarnings({"deprecation", "unused"})
 public class HideAudioFlyoutMenuPreference extends SwitchPreference {
 
     {
         // Audio menu is not available if spoofing to most client types.
-        if (SpoofVideoStreamsOrGetVideoDetailsPatch.spoofingToClientWithNoMultiAudioStreams()) {
+        if (SpoofVideoStreamsPatch.spoofingToClientWithNoMultiAudioStreams()) {
             String summary = str("morphe_hide_player_flyout_audio_track_not_available");
             setSummary(summary);
             setSummaryOn(summary);

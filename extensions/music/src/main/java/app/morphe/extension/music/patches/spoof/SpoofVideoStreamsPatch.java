@@ -27,7 +27,7 @@ public class SpoofVideoStreamsPatch {
                 ANDROID_VR_1_65
         );
 
-        app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch.setClientsToUse(
+        app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(
                 availableClients, SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get());
     }
 }

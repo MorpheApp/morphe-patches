@@ -19,7 +19,7 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 @SuppressWarnings("unused")
 public final class SaveToWatchLaterPatch {
@@ -57,13 +57,13 @@ public final class SaveToWatchLaterPatch {
      */
     public static void saveVideo() {
         try {
-            SpoofVideoStreamsOrGetVideoDetailsPatch.fetchDetails(
+            SpoofVideoStreamsPatch.fetchDetails(
                 saveToWatchLaterDetailsName,
 
                 VideoInformation.getVideoId()
             );
 
-            String saveToWatchLaterResponse = SpoofVideoStreamsOrGetVideoDetailsPatch.getDetailsData(VideoInformation.getVideoId());
+            String saveToWatchLaterResponse = SpoofVideoStreamsPatch.getDetailsData(VideoInformation.getVideoId());
 
             if (saveToWatchLaterResponse != null && !saveToWatchLaterResponse.isEmpty()) {
                 Logger.printInfo(() -> saveToWatchLaterResponse);

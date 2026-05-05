@@ -25,7 +25,7 @@ import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.spoof.ClientType;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.js.JavaScriptManager;
 
 public final class PlayerRoutes {
@@ -99,7 +99,7 @@ public final class PlayerRoutes {
         try {
             JSONObject context = new JSONObject();
 
-            AppLanguage language = SpoofVideoStreamsOrGetVideoDetailsPatch.getLanguageOverride();
+            AppLanguage language = SpoofVideoStreamsPatch.getLanguageOverride();
             if (language == null) {
                 // Force original audio has not overridden the language.
                 language = AppLanguage.DEFAULT;

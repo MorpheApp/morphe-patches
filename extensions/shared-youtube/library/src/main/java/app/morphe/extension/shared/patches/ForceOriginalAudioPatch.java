@@ -3,7 +3,7 @@ package app.morphe.extension.shared.patches;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.spoof.ClientType;
-import app.morphe.extension.shared.spoof.SpoofVideoStreamsOrGetVideoDetailsPatch;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 
 @SuppressWarnings("unused")
 public class ForceOriginalAudioPatch {
@@ -25,7 +25,7 @@ public class ForceOriginalAudioPatch {
             // Android VR is spoofing.
             AppLanguage override = AppLanguage.NB; // Norwegian Bokmal.
             Logger.printDebug(() -> "Setting language override: " + override);
-            SpoofVideoStreamsOrGetVideoDetailsPatch.setLanguageOverride(override);
+            SpoofVideoStreamsPatch.setLanguageOverride(override);
         }
     }
 
