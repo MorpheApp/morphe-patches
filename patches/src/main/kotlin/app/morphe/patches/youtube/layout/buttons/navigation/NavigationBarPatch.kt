@@ -16,6 +16,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
@@ -45,9 +46,7 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getFreeRegisterProvider
-import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -590,43 +589,33 @@ val navigationBarPatch = bytecodePatch(
         // This functionality could be restored by adding a search text field to the toolbar
         // with a listener that artificially clicks the toolbar search button.
         if (!is_20_31_or_greater) {
-            SetWordmarkHeaderFingerprint.let {
-                // Navigate to the method that checks if the YT logo is shown beside the search bar.
-                val invokeStaticIndex = it.method.indexOfFirstInstructionOrThrow {
-                    opcode == Opcode.INVOKE_STATIC &&
-                            getReference<MethodReference>()?.returnType == "Z"
-                }
-                val shouldShowLogoMethod = it.method.getInstruction(invokeStaticIndex)
-                    .getReference<MethodReference>()!!
-                    .getMutableMethod()
+            SetWordmarkHeaderFingerprint.instructionMatches.first().getMethodCalled().apply {
+                findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                shouldShowLogoMethod.apply {
-                    findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
-                        val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                        addInstructionsAtControlFlowLabel(
-                            index,
-                            """
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
                             invoke-static { v$register }, ${EXTENSION_CLASS}->enableWideSearchbar(Z)Z
                             move-result v$register
                         """
-                        )
-                    }
+                    )
                 }
             }
 
             // Fix missing left padding when using wide searchbar.
             WideSearchbarLayoutFingerprint.method.apply {
-                findInstructionIndicesReversedOrThrow {
-                    val reference = getReference<MethodReference>()
-                    reference?.definingClass == "Landroid/view/LayoutInflater;"
-                            && reference.name == "inflate"
-                }.forEach { inflateIndex ->
+                findInstructionIndicesReversedOrThrow(
+                    methodCall(
+                        definingClass = "Landroid/view/LayoutInflater;",
+                        name = "inflate"
+                    )
+                ).forEach { inflateIndex ->
                     val register = getInstruction<OneRegisterInstruction>(inflateIndex + 1).registerA
 
                     addInstruction(
                         inflateIndex + 2,
-                        "invoke-static { v$register }, ${EXTENSION_CLASS}->setActionBar(Landroid/view/View;)V"
+                        "invoke-static { v$register }, $EXTENSION_CLASS->setActionBar(Landroid/view/View;)V"
                     )
                 }
             }

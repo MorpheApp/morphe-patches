@@ -4,26 +4,25 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.layout.theme.lithoColorHookPatch
 import app.morphe.patches.shared.layout.theme.lithoColorOverrideHook
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_34_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
@@ -129,17 +128,18 @@ val seekbarColorPatch = bytecodePatch(
             val setAnimationIntMethodName =
                 LottieAnimationViewSetAnimationIntFingerprint.originalMethod.name
 
-            findInstructionIndicesReversedOrThrow {
-                val reference = getReference<MethodReference>()
-                reference?.definingClass == LOTTIE_ANIMATION_VIEW_CLASS_TYPE
-                        && reference.name == setAnimationIntMethodName
-            }.forEach { index ->
+            findInstructionIndicesReversedOrThrow(
+                methodCall(
+                    definingClass = LOTTIE_ANIMATION_VIEW_CLASS_TYPE,
+                    name = setAnimationIntMethodName
+                )
+            ).forEach { index ->
                 val instruction = getInstruction<FiveRegisterInstruction>(index)
 
                 replaceInstruction(
                     index,
                     "invoke-static { v${instruction.registerC}, v${instruction.registerD} }, " +
-                            "$EXTENSION_CLASS->setSplashAnimationLottie(Lcom/airbnb/lottie/LottieAnimationView;I)V"
+                        "$EXTENSION_CLASS->setSplashAnimationLottie(Lcom/airbnb/lottie/LottieAnimationView;I)V"
                 )
             }
         }

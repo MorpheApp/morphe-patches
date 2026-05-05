@@ -16,11 +16,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -536,9 +537,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide YouTube Doodles
 
         YouTubeDoodlesImageViewFingerprint.method.apply {
-            findInstructionIndicesReversedOrThrow {
-                getReference<MethodReference>()?.name == "setImageDrawable"
-            }.forEach { insertIndex ->
+            findInstructionIndicesReversedOrThrow(
+                methodCall(name = "setImageDrawable")
+            ).forEach { insertIndex ->
                 val drawableRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
                 val imageViewRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerC
 

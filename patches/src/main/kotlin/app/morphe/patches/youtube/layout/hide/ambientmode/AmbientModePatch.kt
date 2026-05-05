@@ -3,6 +3,7 @@ package app.morphe.patches.youtube.layout.hide.ambientmode
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -18,7 +19,6 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -56,10 +56,9 @@ val ambientModePatch = bytecodePatch(
         // Bypass ambient mode restrictions.
         //
         fun MutableMethod.hook() {
-            findInstructionIndicesReversedOrThrow {
-                opcode == Opcode.INVOKE_VIRTUAL &&
-                        getReference<MethodReference>()?.toString() == IS_POWER_SAVE_MODE_METHOD_CALL
-            }.forEach { index ->
+            findInstructionIndicesReversedOrThrow(
+                methodCall(IS_POWER_SAVE_MODE_METHOD_CALL)
+            ).forEach { index ->
                 val register = getInstruction<FiveRegisterInstruction>(index).registerC
 
                 replaceInstruction(
