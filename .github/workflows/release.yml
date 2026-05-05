@@ -27,29 +27,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Java
-        uses: actions/setup-java@v5
-        with:
-          distribution: 'temurin'
-          java-version: '21'
-
-      - name: Configure Gradle for GitHub Packages (fork support)
-        run: |
-          mkdir -p ~/.gradle
-          cat > ~/.gradle/gradle.properties << 'EOF'
-          # GitHub Packages credentials - optional for forks
-          gpr.user=${{ github.actor }}
-          gpr.key=${{ secrets.GITHUB_TOKEN }}
-          org.gradle.java.home=$JAVA_HOME
-          # Additional settings for fork compatibility
-          org.gradle.daemon=false
-          org.gradle.parallel=true
-          org.gradle.workers.max=4
-          EOF
-
-      - name: Cache Gradle
-        uses: burrunan/gradle-cache-action@v3
-
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
@@ -64,15 +41,14 @@ jobs:
         id: release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true
+        continue-on-error: false
 
       - name: Check release status
-        if: failure()
+        if: steps.release.outputs.new_release_published == 'true'
         run: |
-          echo "Release workflow encountered an error. Checking if this is due to missing GitHub Packages access..."
-          echo "For forks, GitHub Packages access to MorpheApp registry may not be available."
-          echo "Please ensure GITHUB_TOKEN has package read permissions or use the main repository for releases."
-          exit 0
+          echo "✅ Release published successfully!"
+          echo "Version: ${{ steps.release.outputs.new_release_version }}"
+          echo "Tag: ${{ steps.release.outputs.new_release_git_tag }}"
 
       - name: Attest
         if: steps.release.outputs.new_release_published == 'true' && hashFiles('patches/build/libs/patches-*.mpp') != ''

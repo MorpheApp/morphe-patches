@@ -5,19 +5,20 @@ pluginManagement {
         mavenLocal()
         gradlePluginPortal()
         google()
+        // Obtain baksmali/smali from source builds - https://github.com/iBotPeaches/smali
+        // Remove when official smali releases come out again.
+        maven { url = uri("https://jitpack.io") }
         // GitHub Packages repository with credentials from environment (optional for forks)
+        // This is last so other repos are tried first
         maven {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/MorpheApp/registry")
             credentials(PasswordCredentials::class) {
-                // For forks without access to private packages, this will be skipped
-                username = System.getenv("GITHUB_ACTOR") ?: project.findProperty("gpr.user")?.toString()
-                password = System.getenv("GITHUB_TOKEN") ?: project.findProperty("gpr.key")?.toString()
+                // For forks without access to private packages, use only environment variables
+                username = System.getenv("GITHUB_ACTOR") ?: ""
+                password = System.getenv("GITHUB_TOKEN") ?: ""
             }
         }
-        // Obtain baksmali/smali from source builds - https://github.com/iBotPeaches/smali
-        // Remove when official smali releases come out again.
-        maven { url = uri("https://jitpack.io") }
     }
 }
 
