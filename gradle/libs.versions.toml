@@ -2,7 +2,7 @@
 
 [versions]
 morphe-patcher = "1.5.0"
-morphe-patches-library = "1.3.0-dev.1"
+morphe-patches-library = "1.3.0"
 # Tracking https://github.com/google/smali/issues/100.
 smali = "d92701d947"
 agp = "9.1.0"

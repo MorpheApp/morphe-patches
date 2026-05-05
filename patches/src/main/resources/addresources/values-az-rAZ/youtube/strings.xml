@@ -337,6 +337,9 @@ YouTube Doodles görünməsi xüsusi sərlövhələrin göstərilməsinə mane o
   <string name="morphe_hide_comments_section_title">Şərhlər bölməsini gizlət</string>
   <string name="morphe_hide_comments_section_summary_on">Şərhlər bölməsi gizlidir</string>
   <string name="morphe_hide_comments_section_summary_off">Şərhlər bölməsi göstərilir</string>
+  <string name="morphe_hide_comments_section_in_home_feed_title">Ana səhifədə rəylər bölməsini gizlə</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_on">Ana səhifədəki videoların altındakı rəylər bölməsi gizlədildi</string>
+  <string name="morphe_hide_comments_section_in_home_feed_summary_off">Ana səhifədəki videoların altındakı rəylər bölməsi göstərilir</string>
   <string name="morphe_hide_comments_community_guidelines_title">İcma təlimatlarını gizlət</string>
   <string name="morphe_hide_comments_community_guidelines_summary_on">İcma təlimatları gizlidir</string>
   <string name="morphe_hide_comments_community_guidelines_summary_off">İcma təlimatları görünür</string>
@@ -346,12 +349,18 @@ YouTube Doodles görünməsi xüsusi sərlövhələrin göstərilməsinə mane o
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Emoji və Vaxt damğası düymələrini gizlət</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_on">Emoji və Vaxt damğası düymələri gizlədilib</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_summary_off">Emoji və Vaxt damğası düymələri görünür</string>
+  <string name="morphe_hide_comments_info_button_title">Məlumat düyməsini gizlə</string>
+  <string name="morphe_hide_comments_info_button_summary_on">Məlumat düyməsi gizlədildi</string>
+  <string name="morphe_hide_comments_info_button_summary_off">Məlumat düyməsi göstərilir</string>
   <string name="morphe_hide_comments_preview_comment_title">Önbaxış şərhin gizlət</string>
   <string name="morphe_hide_comments_preview_comment_summary_on">Önbaxış şərhi gizlədilib</string>
   <string name="morphe_hide_comments_preview_comment_summary_off">Önbaxış şərhi göstərilir</string>
   <string name="morphe_hide_comments_thanks_button_title">Təşəkkür Düyməsini Gizlət</string>
   <string name="morphe_hide_comments_thanks_button_summary_on">Təşəkkür düyməsi gizlidir</string>
   <string name="morphe_hide_comments_thanks_button_summary_off">Təşəkkür düyməsi göstərilir</string>
+  <string name="morphe_sanitize_comments_category_bar_title">Kateqoriya panelini təmizlə</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_on">\'Top\' və \'Ən yeni\' xaricindəki kateqoriya düymələri gizlədildi</string>
+  <string name="morphe_sanitize_comments_category_bar_summary_off">Kateqoriya panelindəki bütün düymələr göstərilir</string>
   <string name="morphe_custom_filter_screen_title">Şəxsi filtr</string>
   <string name="morphe_custom_filter_screen_summary">Fərdi filtrlər işlədərək elementləri gizlət</string>
   <string name="morphe_custom_filter_title">Fərdi filtri aktivləşdir</string>
@@ -365,10 +374,14 @@ YouTube Doodles görünməsi xüsusi sərlövhələrin göstərilməsinə mane o
   <string name="morphe_hide_view_count_summary_on">Baxış sayı axın və axtarış nəticələrində gizlidir</string>
   <string name="morphe_hide_view_count_summary_off">Baxış sayı axın və axtarış nəticələrində görünür</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
+  <string name="morphe_hide_view_count_user_dialog_message">"Qısa video rəfləri, kanal səhifələri və axtarış nəticələri hələ də baxış sayını göstərə bilər. • Bu funksiya aşağıdakılarla işləmir "</string>
   <string name="morphe_hide_upload_time_title">Yüklənilmə vaxtını gizlət</string>
   <string name="morphe_hide_upload_time_summary_on">Yüklənilmə vaxtı axın və axtarış nəticələrində gizlidir</string>
   <string name="morphe_hide_upload_time_summary_off">Yüklənilmə vaxtı axın və axtarış nəticələrində göstərilir</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
+  <string name="morphe_hide_upload_time_user_dialog_message">"Qısa video rəfləri, kanal səhifələri və axtarış nəticələri yükləmə vaxtlarını göstərə bilər.
+• Bu funksiya avtomobil forma faktoru ilə işləmir."</string>
+  <string name="morphe_hide_keyword_content_screen_title">Açar söz filtri</string>
   <string name="morphe_hide_keyword_content_screen_summary">Açar söz filtrləri ilə axtarış və axın videolarını gizlət</string>
   <string name="morphe_hide_keyword_content_home_title">Ev videolarını açar sözlərə görə gizlət</string>
   <string name="morphe_hide_keyword_content_home_summary_on">Ev bölməsindəki videolar açar sözlərlə filtrlənir</string>
@@ -438,8 +451,13 @@ Məhdudiyyətlər
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
   <string name="morphe_share_copy_url_button_success">URL buferə köçürüldü</string>
+  <string name="morphe_share_copy_url_button_timestamp_success">Vaxt möhürü olan URL panoya kopyalandı</string>
+  <string name="morphe_copy_video_url_button_title">Video URL-ni kopyalayın</string>
   <string name="morphe_copy_video_url_button_summary_on">Düymə göstərilir. Video URL-ni köçürmək üçün toxun. Vaxt möhürü ilə köçürmək üçün basıb saxlayın</string>
   <string name="morphe_copy_video_url_button_summary_off">Bölümə səsvermə düyməsi göstərilmir</string>
+  <string name="morphe_copy_video_url_button_timestamp_title">Vaxt möhürünü kopyalayın</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_on">Düymə köçürmələri vaxt möhürü ilə video URL\'i köçürür. Vaxt möhürü olmadan köçürmələrdə uzun basın</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary_off">Düymə köçürmələri vaxt möhürü olmadan video URL\'i köçürür. Vaxt möhürü ilə köçürmələrdə uzun basın</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">İzləyici mülahizə dialoqun sil</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary_on">Dialoq silindi</string>
@@ -478,11 +496,17 @@ Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
   <string name="morphe_loop_video_summary_on">Video təkrarlanacaq</string>
   <string name="morphe_loop_video_summary_off">Video təkrarlanmayacaq</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
+  <string name="morphe_loop_video_button_title">Video Təkrarla-nı göstər</string>
   <string name="morphe_loop_video_button_summary_on">Təkrarlama video menyusu göstərilir</string>
   <string name="morphe_loop_video_button_summary_off">Təkrarlama video menyusu göstərilir</string>
   <string name="morphe_loop_video_button_toast_on">Video təkrarlama açıqdır</string>
   <string name="morphe_loop_video_button_toast_off">Video təkrarlama qapalıdır</string>
   <!-- interaction.playall.playAllButtonPatch -->
+  <string name="morphe_play_all_button_title">Hamısını Oynat-ı Göstər</string>
+  <string name="morphe_play_all_button_summary_on">"\"Hamısını oynat\" düyməsi görünür. Kanaldan bütün videoların pleylistini yaratmaq üçün toxun. Geri almaq üçün toxunun və saxlayın
+
+Məlumat: Canlı yayımlarda işləməyə bilər"</string>
+  <string name="morphe_play_all_button_summary_off">\"Hamısın oynat\" düyməsi görünmür</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_summary_on">Videonu təkrar yüklə düyməsi görünür</string>
   <string name="morphe_reload_video_button_summary_off">Videonu təkrar yüklə düyməsi görünmür</string>
