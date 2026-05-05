@@ -37,7 +37,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -75,27 +75,22 @@ public class StreamOrDetailsDataRequest {
     public static void setClientOrderToUse(List<ClientType.Stream> availableClients, ClientType.Stream preferredClient) {
         Objects.requireNonNull(preferredClient);
 
-        int availableClientSize = availableClients.size();
-        if (!availableClients.contains(preferredClient)) {
-            availableClientSize++;
-        }
+        List<ClientType.Stream> orderToUse = new ArrayList<>(availableClients.size());
+        orderToUse.add(preferredClient);
 
-        clientStreamOrderToUse = new ClientType.Stream[availableClientSize];
-        clientStreamOrderToUse[0] = preferredClient;
-
-        int i = 1;
-        for (ClientType.Stream c : availableClients) {
-            if (c.requireJS && !supportsJavaScriptEngine()) {
-                Logger.printDebug(() -> "Could not find JavaScript engine. Skipping JavaScript client: " + c.name());
+        for (ClientType.Stream client : availableClients) {
+            if (client.requireJS && !supportsJavaScriptEngine()) {
+                Logger.printDebug(() -> "Could not find JavaScript engine. Skipping JavaScript client: " + client.name());
                 continue;
             }
 
-            if (c != preferredClient) {
-                clientStreamOrderToUse[i++] = c;
+            if (client != preferredClient) {
+                orderToUse.add(client);
             }
         }
 
-        Logger.printDebug(() -> "Available spoof clients: " + Arrays.toString(clientStreamOrderToUse));
+        clientStreamOrderToUse = orderToUse.toArray(new ClientType.Stream[0]);
+        Logger.printDebug(() -> "Available spoof clients: " + orderToUse);
     }
 
     private static final String AUTHORIZATION_HEADER = "Authorization";
@@ -220,32 +215,24 @@ public class StreamOrDetailsDataRequest {
                 Objects.requireNonNull(clientTypeStream);
 
                 route = clientTypeStream.usePlayerEndpoint ? GET_PLAYER_STREAMING_DATA : GET_REEL_STREAMING_DATA;
-                connection =
-                    PlayerRoutes.getPlayerResponseConnectionFromRoute(
+                connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(
                         route,
-
-                        List.of(
-                            clientTypeStream.userAgent,
-                            clientTypeStream.clientName,
-                            clientTypeStream.clientVersion
-                        )
-                    );
+                        clientTypeStream.userAgent,
+                        clientTypeStream.clientName,
+                        clientTypeStream.clientVersion
+                );
             } else {
                 route = switch (detailsToFetch) {
                     case saveToWatchLaterDetailsName -> SEND_SAVE_VIDEO_TO_PLAYLIST;
                     case getChannelIDDetailsName -> GET_CHANNEL_FROM_ID;
                     default -> throw new IllegalStateException("Unexpected detailsToFetch value: " + detailsToFetch);
                 };
-                connection =
-                    PlayerRoutes.getPlayerResponseConnectionFromRoute(
+                connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(
                         route,
-
-                        List.of(
-                            clientTypeDetails.userAgent,
-                            clientTypeDetails.clientName,
-                            clientTypeDetails.clientVersion
-                        )
-                    );
+                        clientTypeDetails.userAgent,
+                        clientTypeDetails.clientName,
+                        clientTypeDetails.clientVersion
+                );
             }
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);

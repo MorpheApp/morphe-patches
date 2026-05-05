@@ -78,9 +78,9 @@ public final class SaveToWatchLaterPatch {
 
                 Logger.printInfo(() -> saveToWatchLaterResponse);
             }
-        } catch (Exception ignore) {
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch video details", ex);
             Utils.showToastShort(str("morphe_save_to_watch_later_error_toast"));
         }
     }
-
 }

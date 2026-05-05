@@ -456,7 +456,13 @@ public class ClientType {
         public final String osName;
         public final String osVersion;
         public final String userAgent;
-        Details (String detailsToFetch, String androidSdkVersion, int clientID, String clientName, String clientPackageName, String clientVersion, String clientPlatform, boolean requireJS, boolean usePlayerEndpoint, String deviceMake, String deviceModel, String osBuildID, String osName, String osVersion, String userAgent) {
+
+        Details (String detailsToFetch, String androidSdkVersion, int clientID, String clientName,
+                 String clientPackageName, String clientVersion, String clientPlatform,
+                 boolean requireJS, boolean usePlayerEndpoint,
+                 String deviceMake, String deviceModel,
+                 String osBuildID, String osName, String osVersion,
+                 String userAgent) {
             this.detailsToFetch = detailsToFetch;
             this.androidSdkVersion = androidSdkVersion;
             this.clientID = clientID;
@@ -471,20 +477,16 @@ public class ClientType {
             this.osName = osName;
             this.osVersion = osVersion;
 
-            this.userAgent =
-                userAgent == null
-                ?
+            this.userAgent = (userAgent == null) ?
                     String.format(
-                        "%s/%s (Linux; U; Android %s%s%s)",
-
-                        clientPackageName,
-                        clientVersion,
-                        osVersion,
-                        deviceModel != null ? String.format("; %s", deviceModel) : "",
-                        osBuildID != null ? String.format("; Build/%s", osBuildID) : ""
+                            "%s/%s (Linux; U; Android %s%s%s)",
+                            clientPackageName,
+                            clientVersion,
+                            osVersion,
+                            deviceModel != null ? ("; %s" + deviceModel) : "",
+                            osBuildID != null ? ("; Build/%s" + osBuildID) : ""
                     )
-                :
-                    userAgent;
+                    : userAgent;
             Logger.printDebug(() -> "Details userAgent: " + this.userAgent);
         }
     }
