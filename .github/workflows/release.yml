@@ -21,6 +21,9 @@ jobs:
       attestations: write
       actions: write
     runs-on: ubuntu-latest
+    env:
+      WEBSITE_DISPATCH_TOKEN: ${{ secrets.WEBSITE_DISPATCH_TOKEN }}
+      FCM_PROJECT_ID: ${{ secrets.FCM_PROJECT_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -58,7 +61,7 @@ jobs:
           subject-path: patches/build/libs/patches-*.mpp
 
       - name: Generate website deploy token
-        if: steps.release.outputs.new_release_published == 'true' && secrets.WEBSITE_DISPATCH_TOKEN != ''
+        if: steps.release.outputs.new_release_published == 'true' && env.WEBSITE_DISPATCH_TOKEN != ''
         id: app-token
         uses: actions/create-github-app-token@v3
         with:
@@ -79,17 +82,17 @@ jobs:
             })
 
       - name: Wait before sending FCM
-        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false && secrets.FCM_PROJECT_ID != ''
+        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false && env.FCM_PROJECT_ID != ''
         run: sleep 300
 
       - name: Setup Python for FCM
-        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false && secrets.FCM_PROJECT_ID != ''
+        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false && env.FCM_PROJECT_ID != ''
         uses: actions/setup-python@v6
         with:
           python-version: '3.12'
 
       - name: Send FCM push notification
-        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false && secrets.FCM_PROJECT_ID != ''
+        if: steps.release.outputs.new_release_published == 'true' && inputs.send_fcm != false && env.FCM_PROJECT_ID != ''
         env:
           FCM_PROJECT_ID: ${{ secrets.FCM_PROJECT_ID }}
           FCM_SERVICE_ACCOUNT_JSON: ${{ secrets.FCM_SERVICE_ACCOUNT_JSON }}
