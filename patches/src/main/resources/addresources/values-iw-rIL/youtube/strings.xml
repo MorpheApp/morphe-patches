@@ -1504,6 +1504,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">הפעלה ברקע של Shorts תפעיל אוטומטית</string>
   <string name="morphe_shorts_autoplay_background_summary_off">הפעלה ברקע של Shorts תחזור על עצמה</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">השבת המשך נגן מיני</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\'המשך צפייה\' לא יוצג בעת הפעלת האפליקציה</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'חיהום להנהל\' יקול להצג את האתחאלה</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'חיהום להנהל' יקול תאטון המומים המוטבים
+• ההגעה זו אינה לאכוק לאכוק תאט המוטבים זו"</string>
   <string name="morphe_miniplayer_screen_title">מיני-נגן</string>
   <string name="morphe_miniplayer_screen_summary">שנה את הסגנון של הנגן הממוזער בתוך היישום</string>
   <string name="morphe_miniplayer_type_title">סוג מיני-נגן</string>

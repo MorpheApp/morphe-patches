@@ -1504,6 +1504,11 @@ Ograniczenie: Przycisk wstecz na pasku może nie działać"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Następny</string>
   <string name="morphe_shorts_autoplay_background_summary_off">W pętli</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Wznawianie filmu w miniodtwarzaczu</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">Wyłączone</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">Włączone</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• \"Oglądaj dalej\" to funkcja YouTube Premium
+• To ustawienie nie wymusza włączenia tej funkcji Premium"</string>
   <string name="morphe_miniplayer_screen_title">Miniodtwarzacz</string>
   <string name="morphe_miniplayer_screen_summary">Zmień styl miniodtwarzacza w aplikacji</string>
   <string name="morphe_miniplayer_type_title">Typ miniodtwarzacza</string>

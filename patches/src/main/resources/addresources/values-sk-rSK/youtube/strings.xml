@@ -1504,6 +1504,11 @@ Obmedzenie: Používanie tlačidla Späť na paneli nástrojov nemusí fungovať
   <string name="morphe_shorts_autoplay_background_summary_on">Automatické prehrávanie Shorts na pozadí sa zapne</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Automatické prehrávanie Shorts na pozadí sa bude opakovať</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Zakázať obnovovanie mini-prehrávača</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Pokračovať v prehliadaní\" sa nezobrazí pri spustení aplikácie</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">Zobrazenie \"Pokračovať v sledovaní\" sa môže objaviť pri spustení aplikácie</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• \"Pokračovať v sledovaní\" je funkcia YouTube Premium
+• Toto nastavenie nemôže vynútiť túto prémiovú funkciu"</string>
   <string name="morphe_miniplayer_screen_title">Miniprehrávač</string>
   <string name="morphe_miniplayer_screen_summary">Zmeňte štýl minimalizovaného prehrávača v aplikácii</string>
   <string name="morphe_miniplayer_type_title">Typ miniprehrávača</string>

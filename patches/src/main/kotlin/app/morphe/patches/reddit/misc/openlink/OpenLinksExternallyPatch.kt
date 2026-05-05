@@ -49,7 +49,8 @@ val openLinksExternallyPatch = bytecodePatch(
                     "setActivity(Landroid/app/Activity;)V"
         )
 
-        ArticleConstructorFingerprint.let {
+        // Use matchAll() to behave like single()
+        ArticleConstructorFingerprint.matchAll(1 .. 1).first().let {
             it.method.apply {
                 addInstruction(
                     0,

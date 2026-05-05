@@ -1504,6 +1504,11 @@ Limitasyon: Ang paggamit ng pindutan ng back sa toolbar ay maaaring hindi gumana
   <string name="morphe_shorts_autoplay_background_summary_on">Awtomatikong ipapalabas ang Shorts sa background</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Uulitin ang pag-play ng Shorts sa background</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Huwag paganahin ang pagpapatuloy ng miniplayer</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">Hindi ipapakita ang \'Ipagpatuloy ang panonood\' sa paglunsad ng app</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">Ang \"Ipagpatuloy ang panonood\" ay maaaring lumabas sa pag-start ng app</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• Ang \"Ipagpatuloy ang panonood\" ay isang feature ng YouTube Premium
+• Hindi mapipilitan ang setting na ito na i-on ang Premium feature na ito"</string>
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">Baguhin ang estilo ng minimized player sa loob ng app</string>
   <string name="morphe_miniplayer_type_title">Uri ng miniplayer</string>

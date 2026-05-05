@@ -16,12 +16,10 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.shared.YouTubeMainActivityOnBackPressedFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
@@ -52,22 +50,16 @@ internal val fixBackToExitGesturePatch = bytecodePatch(
             )
         }
 
-        ScrollPositionFingerprint.let {
-            it.instructionMatches[1]
-                .getInstruction<ReferenceInstruction>()
-                .getReference<MethodReference>()!!
-                .getMutableMethod()
-                .apply {
-                    val index = indexOfFirstInstructionOrThrow {
-                        opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>()?.definingClass ==
-                                "Landroid/support/v7/widget/RecyclerView;"
-                    }
-
-                    addInstruction(
-                        index,
-                        "invoke-static { }, $EXTENSION_CLASS->onScrollingViews()V"
-                    )
-                }
+        ScrollPositionFingerprint.instructionMatches[1].getMethodCalled().apply {
+            val index = indexOfFirstInstructionOrThrow {
+                opcode == Opcode.INVOKE_VIRTUAL && getReference<MethodReference>()?.definingClass ==
+                        "Landroid/support/v7/widget/RecyclerView;"
+            }
+            
+            addInstruction(
+                index,
+                "invoke-static { }, $EXTENSION_CLASS->onScrollingViews()V"
+            )
         }
 
         YouTubeMainActivityOnBackPressedFingerprint.let {

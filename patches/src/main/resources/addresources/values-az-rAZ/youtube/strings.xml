@@ -33,10 +33,16 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Köhnə tənzimləmələr bölmələri göstərilir</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Köhnə tənzimləmələr bölmələri göstərilmir</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
+  <string name="morphe_remove_background_playback_restrictions_title">Fon oynatma məhdudiyyətlərini təmizlə</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Fon oynatma maneəsizdir</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Fon oynatma məhduddur</string>
   <string name="morphe_shorts_disable_background_playback_title">Shorts arxa plan oynatmasın qapat</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts arxa plan oynatma qapalıdır</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts arxa plan oynatma aktivdir</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_protobuffer_title">Sazlanma qeydi protokol buferi</string>
+  <string name="morphe_debug_protobuffer_summary_on">Sazlanma qeydləri protokol buferləri yerləşdirir</string>
+  <string name="morphe_debug_protobuffer_summary_off">Sazlanma qeydləri protokol buferləri daxil etmir</string>
   <string name="morphe_debug_protobuffer_user_dialog_message">"Bu seçimi aktivləşdirmə bəzi UI quruluşları üçün ekran mətni də olmaqla əlavə tərtibat bazasını daxil edəcək.
 
 Bu, xüsusi filtrlər yaradarkən quruluşları müəyyən etməyə kömək edə bilər.
@@ -46,6 +52,17 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_disable_layout_updates_title">Tərtibat yenilənmələrini qapat</string>
   <string name="morphe_disable_layout_updates_summary_on">Tərtibat server tərəfindən yenilənməyəcək</string>
   <string name="morphe_disable_layout_updates_summary_off">Tərtibat server tərəfindən yenilənəcək</string>
+  <string name="morphe_disable_layout_updates_user_dialog_message">"Tətbiq tərtibatı ilk quraşdırılanda istifadə olunan tərtibata qayıdır.
+
+Bəzi server əsaslı tərtibatlar qayıtmaya bilər.
+
+Dəyişikliklər ehtiva edir:
+• Oynadıcı açılan menyusundakı elementlər (və ya əlaqəli tənzimləmələr) işləməyə bilər.
+• Diyirlənən nömrələr animasiya olunmur.
+• Kitabxana tabeli görünür.
+• Video təsvirinin Musiqi bölməsi işləməyə bilər.
+• Oynadıcı açılan menyu elementləri gizlədilə bilməz.
+• Hesab keçirmə düyməsi Kitabxana tabelində görünməyə bilər."</string>
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Yaradıcı mağaza bölümün gizlət</string>
   <string name="morphe_hide_creator_store_shelf_summary_on">Yaradıcı alış-veriş cərgəsi video oynadıcı altında gizlidir</string>
@@ -62,10 +79,28 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_compact_banner_title">Yığcam afişaları gizlət</string>
   <string name="morphe_hide_compact_banner_summary_on">Yığcam afişalar gizlidir</string>
   <string name="morphe_hide_compact_banner_summary_off">Yığcam afişalar görünür</string>
+  <string name="morphe_hide_expandable_card_title">Genişlənən kartları gizlət</string>
+  <string name="morphe_hide_expandable_card_entry_1">Videoların aşağısı genişlənən kartlar görünür</string>
+  <string name="morphe_hide_expandable_card_entry_2">Videolar aşağısı yalnız məhsul kartı gizlədilib</string>
+  <string name="morphe_hide_expandable_card_entry_3">Videolar aşağısı yalnız xülasə kartı gizlədilib</string>
+  <string name="morphe_hide_expandable_card_entry_4">Videolar aşağısı məhsul və xülasə kartı gizlədilib</string>
+  <string name="morphe_hide_expandable_card_entry_5">Videolar aşağısı genişlənən kartlar gizlidir</string>
   <string name="morphe_hide_floating_microphone_button_title">Üzən mikrofon düyməsini gizlət</string>
   <string name="morphe_hide_floating_microphone_button_summary_on">Axtarışda üzən mikrofon düyməsi gizlidir</string>
   <string name="morphe_hide_floating_microphone_button_summary_off">Üzən mikrofon düyməsi axtarışda göstərilir</string>
   <string name="morphe_hide_horizontal_shelves_title">Üfüqi hissələri gizlət</string>
+  <string name="morphe_hide_horizontal_shelves_summary_on">"Üfüqi cərgələr gizlədilib, məsələn:
+• Son xəbərlər
+• Bəyənə biləcəyiniz icma elanları
+• İzləməyə davam edin
+• Daha çox kanalı kəşf et
+• Daha çox mövzunu kəşf et
+• Sizin üçün
+• Ən son videolar
+• Ən uyğun
+• Yaradıcılar Cəmiyyətindən Elanlar
+• Alış-veriş
+• Yenidən izlə"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Üfüqi cərgələr görünür</string>
   <string name="morphe_hide_image_shelf_title">Şəkil cərgəsin gizlət</string>
   <string name="morphe_hide_image_shelf_summary_on">Şəkil cərgəsi axtarış nəticələrində gizlidir</string>
@@ -89,6 +124,9 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_playables_title">Oynadılan elementləri gizlət</string>
   <string name="morphe_hide_playables_summary_on">Oynadılanlar gizlidir</string>
   <string name="morphe_hide_playables_summary_off">Oynadılanlar göstərilir</string>
+  <string name="morphe_hide_search_term_thumbnails_title">Axtarış termini miniatürlərini gizlət</string>
+  <string name="morphe_hide_search_term_thumbnails_summary_on">Axtarış termini miniatürləri gizlədilib</string>
+  <string name="morphe_hide_search_term_thumbnails_summary_off">Axtarış termini miniatürləri görünür</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'Daha çox göstər\' düyməsini gizlət</string>
@@ -110,12 +148,16 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_web_search_results_title">Veb axtarış nəticələrini gizlət</string>
   <string name="morphe_hide_web_search_results_summary_on">Veb axtarış nəticələri gizlədilir</string>
   <string name="morphe_hide_web_search_results_summary_off">Veb axtarış nəticələri göstərilir</string>
+  <string name="morphe_hide_you_may_like_section_title">\"Bəyənə bilərsiniz\" bölməsini gizlət</string>
   <string name="morphe_hide_you_may_like_section_summary_on">Bəyənə bilərsiniz bölməsi gizlidir</string>
   <string name="morphe_hide_you_may_like_section_summary_off">Bəyənə bilərsiniz bölməsi görünür</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodle-ları gizlət</string>
   <string name="morphe_hide_youtube_doodles_summary_on">YouTube Doodles animasiyası simvolda gizlidir</string>
   <string name="morphe_hide_youtube_doodles_summary_off">YouTube Doodles animasiyası simvolda görünür</string>
+  <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles hər il dünyanın müxtəlif yerlərində bir neçə gün görünür.
+
+YouTube Doodles görünməsi xüsusi sərlövhələrin göstərilməsinə mane ola bilər."</string>
   <string name="morphe_hide_channel_bar_title">Kanal çubuğunu gizlət</string>
   <string name="morphe_hide_channel_bar_summary_on">Kanal çubuğu gizlidir</string>
   <string name="morphe_hide_channel_bar_summary_off">Kanal çubuğu göstərilir</string>
@@ -136,9 +178,14 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_join_membership_button_title">Qoşul düyməsin gizlət</string>
   <string name="morphe_hide_join_membership_button_summary_on">Qoşul düyməsi gizlidir</string>
   <string name="morphe_hide_join_membership_button_summary_off">Qoşul düyməsi görünür</string>
+  <string name="morphe_hide_live_chat_donators_bar_title">Canlı söhbət ianəçiləri tabelin gizlət</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_on">Canlı söhbət ianəçiləri tabeli gizlədilib</string>
+  <string name="morphe_hide_live_chat_donators_bar_summary_off">Canlı söhbət ianəçiləri tabeli görünür</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
-  <string name="morphe_hide_live_chat_replay_button_title">Gizlət \'Canlı sohbet təkrarı\' düyməsini</string>
+  <string name="morphe_hide_live_chat_replay_button_title">\"Canlı söhbət oxudulması\" düyməsin gizlət</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_on">Tam ekranda canlı söhbət oxudulması düyməsi gizlidir</string>
+  <string name="morphe_hide_live_chat_replay_button_summary_off">Tam ekranda canlı söhbət oxudulması düyməsi görünür</string>
   <string name="morphe_hide_medical_panels_title">Tibbi lövhələri gizlət</string>
   <string name="morphe_hide_medical_panels_summary_on">Tibbi lövhələr gizlidir</string>
   <string name="morphe_hide_medical_panels_summary_off">Tibbi lövhələr göstərilir</string>
@@ -149,6 +196,8 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_timed_reactions_summary_on">Zamanlanmış reaksiyalar gizlədilir</string>
   <string name="morphe_hide_timed_reactions_summary_off">Zamanlanmış reaksiyalar göstərilir</string>
   <string name="morphe_hide_video_title_title">Video başlığını gizlət</string>
+  <string name="morphe_hide_video_title_summary_on">Tam ekrandakı video başlığı gizlədilib</string>
+  <string name="morphe_hide_video_title_summary_off">Tam ekrandakı video başlığı görünür</string>
   <string name="morphe_hide_description_components_screen_title">Video təsviri</string>
   <string name="morphe_hide_description_components_screen_summary">Video təsviri elementlərini gizlət və ya göstər</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\"AI ilə yaradılan video xülasəsini\" gizlət</string>
@@ -184,6 +233,11 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_featured_videos_section_title">Seçilən videoları gizlət</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Seçilən videolar bölməsi gizlidir</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Seçilən videolar bölməsi göstərilir</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Axın açılan menyu filtrini aktivləşdir</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">Axın açılan menyu filtri işləkdir</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">Axın açılan menyu filtri qapalıdır</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Axın açılan menyu filtri</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Hər cərgədə biri olmaqla, filtrləmək üçün açılan menyu adlarını qeyd et</string>
   <string name="morphe_hide_gaming_section_title">\"Remiks\"i gizlət</string>
   <string name="morphe_hide_gaming_section_summary_on">Filmlər bölməsi gizlidir</string>
   <string name="morphe_hide_gaming_section_summary_off">Filmlər bölməsi göstərilir</string>
@@ -202,6 +256,9 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_music_section_title">Soruş\'u Gizlət</string>
   <string name="morphe_hide_music_section_summary_on">Filmlər bölməsi gizlidir</string>
   <string name="morphe_hide_music_section_summary_off">Filmlər bölməsi göstərilir</string>
+  <string name="morphe_hide_quizzes_section_title">Testləri Gizlət</string>
+  <string name="morphe_hide_quizzes_section_summary_on">Testlər bölməsi gizlidir</string>
+  <string name="morphe_hide_quizzes_section_summary_off">Testlər bölməsi görünür</string>
   <string name="morphe_hide_subscribe_button_title">Abunə ol düyməsini gizlət</string>
   <string name="morphe_hide_subscribe_button_summary_on">Abunə ol düyməsi gizlidir</string>
   <string name="morphe_hide_subscribe_button_summary_off">Abunə ol düyməsi göstərilir</string>
@@ -224,6 +281,11 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_filter_bar_feed_in_history_summary_off">Baxış tarixçəsində görünür</string>
   <string name="morphe_channel_screen_title">Kanal səhifəsi</string>
   <string name="morphe_channel_screen_summary">Kanal səhifə elementlərini gizlət və ya göstər</string>
+  <string name="morphe_hide_channel_tab_title">Kanal tabel filtrini aktivləşdir</string>
+  <string name="morphe_hide_channel_tab_summary_on">Kanal tabel filtri işləkdir</string>
+  <string name="morphe_hide_channel_tab_summary_off">Kanal tabel filtri qapalıdır</string>
+  <string name="morphe_hide_channel_tab_filter_strings_title">Kanal tabeli filtri</string>
+  <string name="morphe_hide_channel_tab_filter_strings_summary">Hər cərgədə biri olmaqla, filtrləmək üçün kanal tabel adlarını qeyd et</string>
   <!-- 'Community' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_community_button_title">Şərhlər düyməsin gizlət</string>
   <string name="morphe_hide_community_button_summary_on">Şərhlər düyməsi gizlidir</string>
@@ -238,6 +300,9 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_members_shelf_title">Üzvlər cərgəsini gizlət</string>
   <string name="morphe_hide_members_shelf_summary_on">Üzvlər cərgəsi gizlidir</string>
   <string name="morphe_hide_members_shelf_summary_off">Üzvlər cərgəsi görünür</string>
+  <string name="morphe_hide_posts_shelf_title">Postlar tabelin gizlət</string>
+  <string name="morphe_hide_posts_shelf_summary_on">Postlar tabeli gizlədilib</string>
+  <string name="morphe_hide_posts_shelf_summary_off">Postlar tabeli görünür</string>
   <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_store_button_title">Paylaş düyməsini gizlət</string>
   <string name="morphe_hide_store_button_summary_on">Paylaş düyməsi gizlidir</string>
@@ -248,12 +313,24 @@ Hər halda, bunu aktivləşdirmə IP ünvanınız kimi bəzi istifadəçi məlum
   <string name="morphe_hide_subscribe_button_in_channel_page_summary_off">Abunə ol düyməsi göstərilir</string>
   <string name="morphe_comments_screen_title">Şərhlər</string>
   <string name="morphe_comments_screen_summary">Şərhlər bölməsi elementlərin gizlət və ya göstər</string>
+  <string name="morphe_hide_comments_carousel_title">Şərhlər fırlanma filtrini aktivləşdir</string>
+  <string name="morphe_hide_comments_carousel_summary_on">Şərhlər fırlanma filtri işləkdir</string>
+  <string name="morphe_hide_comments_carousel_summary_off">Şərhlər fırlanma filtri qapalıdır</string>
+  <string name="morphe_hide_comments_carousel_user_dialog_message">"Qeyd:
+• Fırlanma elementinin dəqiq adını qeyd etdiyinə əmin ol (məsələn, Soruş, Bu videonu reklam et, YouTube Music-də dinlə və s.).
+• Fırlanma elementlərin gizlətmə gözlənilməz yan təsirlərə malik olmalıdır.
+• Bütün fırlanma elementləri gizlədilibsə, bütün şərhlər bölməsi də gizlədiləcək."</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_title">Şərhlər fırlanma filtri</string>
+  <string name="morphe_hide_comments_carousel_filter_strings_summary">Hər cərgədə biri olmaqla, filtrləmək üçün şərh fırlanma adlarını qeyd et</string>
   <string name="morphe_hide_comments_ai_chat_summary_title">Sİ söhbət xülasəsini gizlət</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_on">Sİ söhbət xülasəsi gizlidir</string>
   <string name="morphe_hide_comments_ai_chat_summary_summary_off">Sİ söhbət xülasəsi görünür</string>
   <string name="morphe_hide_comments_channel_guidelines_title">Kanal təlimatlarını gizlət</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_on">Kanal təlimatları gizlidir</string>
   <string name="morphe_hide_comments_channel_guidelines_summary_off">Kanal təlimatları görünür</string>
+  <string name="morphe_hide_comments_prompts_title">Şərh sorğularını gizlət</string>
+  <string name="morphe_hide_comments_prompts_summary_on">Şərh sorğuları gizlədilib</string>
+  <string name="morphe_hide_comments_prompts_summary_off">Şərh sorğuları görünür</string>
   <string name="morphe_hide_comments_by_members_header_title">\'Üzvlərin şərhləri\' başlığını gizlət</string>
   <string name="morphe_hide_comments_by_members_header_summary_on">Üzvlərin şərhləri başlığı gizlidir</string>
   <string name="morphe_hide_comments_by_members_header_summary_off">Üzvlərin şərhləri başlığı görünür</string>

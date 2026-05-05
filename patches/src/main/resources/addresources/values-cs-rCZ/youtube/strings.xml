@@ -1505,6 +1505,11 @@ Omezení: Použití tlačítka zpět na panelu nástrojů nemusí fungovat"</str
   <string name="morphe_shorts_autoplay_background_summary_on">Přehrávání Shorts v pozadí se bude automaticky přehrávat</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Přehrávání Shorts v pozadí se bude opakovat</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Zakázat obnovení miniplayeru</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\'Pokračovat ve sledování\' se na spuštění aplikace nezobrazí</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'Pokračovat ve sledování\' se může zobrazit při spuštění aplikace</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Pokračovat ve sledování' je funkce YouTube Premium
+• Toto nastavení nemůže tuto funkci Premium vynutit"</string>
   <string name="morphe_miniplayer_screen_title">Mini přehrávač</string>
   <string name="morphe_miniplayer_screen_summary">Změnit styl minimalizovaného přehrávače v aplikaci</string>
   <string name="morphe_miniplayer_type_title">Typ mini přehrávače</string>

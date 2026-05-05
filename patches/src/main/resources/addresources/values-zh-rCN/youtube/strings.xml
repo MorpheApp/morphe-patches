@@ -536,19 +536,19 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">精准定位手势已禁用</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">精准定位手势已启用</string>
   <!-- interaction.seekbar.livestreamDvrPatch -->
-  <string name="morphe_livestream_dvr_title">启用直播 DVR</string>
-  <string name="morphe_livestream_dvr_summary_on">可以在所有直播中搜索</string>
-  <string name="morphe_livestream_dvr_summary_off">直播中可能无法搜索</string>
+  <string name="morphe_livestream_dvr_title">启用直播 DVR 功能</string>
+  <string name="morphe_livestream_dvr_summary_on">直播回放可以在所有直播频道中启用</string>
+  <string name="morphe_livestream_dvr_summary_off">部分直播频道可能无法观看直播回放</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_livestream_dvr_user_dialog_message">启用此功能可能会导致意外的直播回溯行为，如果未启用“欺骗视频流”功能。</string>
+  <string name="morphe_livestream_dvr_user_dialog_message">如果未配合启用“欺骗视频流”功能，启用此功能可能会导致意外的直播回溯行为。</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">启用滑动拖动进度条</string>
   <string name="morphe_slide_to_seek_summary_on">滑动拖动进度条已启用</string>
   <string name="morphe_slide_to_seek_summary_off">滑动拖动进度条未启用</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
-  <string name="morphe_tap_to_seek_title">启用点击以快进</string>
-  <string name="morphe_tap_to_seek_summary_on">点击以启用搜寻</string>
-  <string name="morphe_tap_to_seek_summary_off">点击以快进已禁用</string>
+  <string name="morphe_tap_to_seek_title">启用点按进度条</string>
+  <string name="morphe_tap_to_seek_summary_on">点按定位进度条已启用</string>
+  <string name="morphe_tap_to_seek_summary_off">点按定位进度条已禁用</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_brightness_title">启用亮度控制手势</string>
   <string name="morphe_swipe_brightness_summary_on">"已启用全屏亮度滑动
@@ -1509,6 +1509,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts 背景播放将自动播放</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts 背景播放将重复播放</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">禁用恢复迷你播放器</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">应用启动时将不会显示“继续观看”</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">应用启动时，可显示“继续观看”</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• “继续观看”是 YouTube Premium 的一项功能
+• 此设置无法强制启用此 Premium 功能"</string>
   <string name="morphe_miniplayer_screen_title">小型播放器</string>
   <string name="morphe_miniplayer_screen_summary">更改应用内最小化播放器的样式</string>
   <string name="morphe_miniplayer_type_title">小型播放器类型</string>
@@ -1574,9 +1579,9 @@ Second \"item\" text"</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <string name="morphe_bypass_image_region_restrictions_title">绕过图像区域限制</string>
   <string name="morphe_bypass_image_region_restrictions_summary_on">使用图像主机 yt4.ggpht.com</string>
-  <string name="morphe_bypass_image_region_restrictions_summary_off">"使用原始图片主机
+  <string name="morphe_bypass_image_region_restrictions_summary_off">"使用原始图片主机地址
 
-启用此选项可以修复在某些地区被屏蔽的缺失图片"</string>
+启用此选项可以修复在某些地区因屏蔽而缺失的图片"</string>
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_alt_thumbnail_home_title">首页标签</string>

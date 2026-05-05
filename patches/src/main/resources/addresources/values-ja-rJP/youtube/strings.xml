@@ -1505,6 +1505,11 @@ Automotive レイアウト
   <string name="morphe_shorts_autoplay_background_summary_on">バックグラウンドのショート動画は自動再生されます</string>
   <string name="morphe_shorts_autoplay_background_summary_off">バックグラウンドのショート動画はループ再生されます</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">ミニプレーヤーの再開を無効化</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">アプリ起動時にミニプレーヤーは再開されません (「続きを見る」機能: オフ)</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">アプリ起動時にミニプレーヤーが再開される場合があります (「続きを見る」機能: オン)</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"•「続きを見る」機能は YouTube Premium の特典
+• この設定は Premium 特典を解放するものではない"</string>
   <string name="morphe_miniplayer_screen_title">ミニプレーヤー</string>
   <string name="morphe_miniplayer_screen_summary">アプリ内に表示される小さな画面のプレーヤーのスタイルを変更します</string>
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
@@ -1642,11 +1647,11 @@ Automotive レイアウト
   <string name="morphe_notification_media_screen_title">ロック画面のメディア コントロール</string>
   <string name="morphe_notification_media_screen_summary">通知パネルとロック画面に表示されるメディア コントロールのコンポーネントを非表示にします</string>
   <string name="morphe_hide_notification_media_prev_next_title">前の動画ボタンと次の動画ボタンを非表示</string>
-  <string name="morphe_hide_notification_media_prev_next_summary_on">通知パネルおよびロック画面のメディア コントロールには、前の動画ボタンと次の動画ボタンが表示されません。ヘッドホンからの操作による前の動画 / 次の動画機能も無効です</string>
-  <string name="morphe_hide_notification_media_prev_next_summary_off">通知パネルおよびロック画面のメディア コントロールには、前の動画ボタンと次の動画ボタンが表示されます。ヘッドホンからの操作による前の動画 / 次の動画機能も有効です</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">通知パネルおよびロック画面のメディア コントロールには、前の動画ボタンと次の動画ボタンが表示されません。ヘッドホンからの操作により前の動画 / 次の動画へ移動する機能も無効です</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">通知パネルおよびロック画面のメディア コントロールには、前の動画ボタンと次の動画ボタンが表示されます。ヘッドホンからの操作により前の動画 / 次の動画へ移動する機能も有効です</string>
   <string name="morphe_disable_notification_media_seekbar_title">シークバーを無効化</string>
-  <string name="morphe_disable_notification_media_seekbar_summary_on">通知パネルおよびロック画面のメディア コントロールのシークバーはシーク操作が無効です</string>
-  <string name="morphe_disable_notification_media_seekbar_summary_off">通知パネルおよびロック画面のメディア コントロールのシークバーはシーク操作が有効です</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">通知パネルおよびロック画面のメディア コントロールのシークバーではシーク操作が無効です</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">通知パネルおよびロック画面のメディア コントロールのシークバーではシーク操作が有効です</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">最近アカウントのログイン情報を変更した場合は、MicroG をアンインストールして再インストールしてください。</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

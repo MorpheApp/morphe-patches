@@ -33,9 +33,9 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_summary_on">Eski ayarlar menüsü gösteriliyor</string>
   <string name="morphe_restore_old_settings_menus_summary_off">Eski ayarlar menüsü gösterilmiyor</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
-  <string name="morphe_remove_background_playback_restrictions_title">Arka plan oynatma kısıtlamalarını kaldır</string>
-  <string name="morphe_remove_background_playback_restrictions_summary_on">Arka plan oynatma kısıtlanmamış</string>
-  <string name="morphe_remove_background_playback_restrictions_summary_off">Arka plan oynatma kısıtlanmış</string>
+  <string name="morphe_remove_background_playback_restrictions_title">Arka planda oynatma kısıtlamalarını kaldır</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_on">Arka planda oynatma kısıtlanmamış</string>
+  <string name="morphe_remove_background_playback_restrictions_summary_off">Arka planda oynatma kısıtlanmış</string>
   <string name="morphe_shorts_disable_background_playback_title">Shorts\'un arka planda oynatılmasını devre dışı bırak</string>
   <string name="morphe_shorts_disable_background_playback_summary_on">Shorts\'un arka planda oynatılması devre dışı</string>
   <string name="morphe_shorts_disable_background_playback_summary_off">Shorts\'un arka planda oynatılması etkin</string>
@@ -1504,6 +1504,11 @@ Kısıtlama: Araç çubuğundaki geri düğmesini kullanmak işe yaramayabilir"<
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts arka planda otomatik oynatılacak</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts arka planda döngüde olacak</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Mini oynatıcıyı sürdürmeyi devre dışı bırak</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\'İzlemeye devam et\' uygulama başlatıldığında gösterilmez</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'İzlemeye devam et\' uygulama başlatıldığında gösterilebilir</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'İzlemeye devam et' bir YouTube Premium özelliğidir
+• Bu ayar, bu Premium özelliğini zorla etkinleştiremez"</string>
   <string name="morphe_miniplayer_screen_title">Mini oynatıcı</string>
   <string name="morphe_miniplayer_screen_summary">Uygulama içi küçültülmüş oynatıcının tarzını değiştir</string>
   <string name="morphe_miniplayer_type_title">Mini oynatıcı tipi</string>
@@ -1534,7 +1539,7 @@ Mini oynatıcı, ekranın dışına sağa veya sola sürüklenebilir"</string>
   <string name="morphe_miniplayer_hide_subtext_title">Alt metinleri gizle</string>
   <string name="morphe_miniplayer_hide_subtext_summary_on">Alt metinler gizli</string>
   <string name="morphe_miniplayer_hide_subtext_summary_off">Alt metinler görünür</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">İleri/geri atlama düğmelerini gizle</string>
+  <string name="morphe_miniplayer_hide_rewind_forward_title">İleri ve geri atlama düğmelerini gizle</string>
   <string name="morphe_miniplayer_hide_rewind_forward_summary_on">İleri ve geri atlama düğmeleri gizli</string>
   <string name="morphe_miniplayer_hide_rewind_forward_summary_off">İleri ve geri atlama düğmeleri görünür</string>
   <string name="morphe_miniplayer_width_dip_title">Başlangıç boyutu</string>
@@ -1643,11 +1648,11 @@ Bunu etkinleştirmek daha yüksek video kalitelerini açabilir"</string>
   <string name="morphe_notification_media_screen_title">Bildirim medya kontrolleri</string>
   <string name="morphe_notification_media_screen_summary">Kilit ekranı medya kontrol bileşenlerini gizle</string>
   <string name="morphe_hide_notification_media_prev_next_title">Önceki &amp; Sonraki düğmelerini gizle</string>
-  <string name="morphe_hide_notification_media_prev_next_summary_on">Medya bildiriminde, kilit ekranında ve kulaklık kontrollerinde Önceki &amp; Sonraki düğmeleri gizlidir</string>
-  <string name="morphe_hide_notification_media_prev_next_summary_off">Önceki &amp; Sonraki düğmeleri bildirimde, kilit ekranında ve kulaklık kontrollerinde gösterilir</string>
-  <string name="morphe_disable_notification_media_seekbar_title">Arama çubuğunu devre dışı bırak</string>
-  <string name="morphe_disable_notification_media_seekbar_summary_on">Medya bildirimindeki ve kilit ekranındaki arama çubuğu salt okunurdur</string>
-  <string name="morphe_disable_notification_media_seekbar_summary_off">Medya bildirimindeki ve kilit ekranındaki arama çubuğu sürüklenebilir</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Önceki &amp; Sonraki düğmeleri medya bildiriminde, kilit ekranında ve kulaklık kontrollerinde gizli</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Önceki &amp; Sonraki düğmeleri bildirimde, kilit ekranında ve kulaklık kontrollerinde görünür</string>
+  <string name="morphe_disable_notification_media_seekbar_title">Zaman çubuğunu devre dışı bırak</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_on">Medya bildirimindeki ve kilit ekranındaki zaman çubuğu salt okunur</string>
+  <string name="morphe_disable_notification_media_seekbar_summary_off">Medya bildirimindeki ve kilit ekranındaki zaman çubuğu sürüklenebilir</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Yakın zamanda hesap giriş bilgilerinizi değiştirdiyseniz MicroG\'yi kaldırıp yeniden yükleyin.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->

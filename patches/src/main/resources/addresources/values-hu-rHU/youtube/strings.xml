@@ -1501,6 +1501,11 @@ Ha később kikapcsolja, akkor ajánlott az alkalmazás adatait törölni, hogy 
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts automatikusan elindul a háttérben</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts háttérben történő lejátszása megismétlődik</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">A miniplayer folytatásának letiltása</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">A(z) \"Folytatás\" nem jelenik meg az alkalmazás indításakor</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">Az \"Előzőleg nézett\" megjelenhet az alkalmazás indításakor</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• Az \"Előzőleg nézett\" funkció egy YouTube Premium szolgáltatás
+• Ez a beállítás nem kényszerítheti ezt a Premium funkciót"</string>
   <string name="morphe_miniplayer_screen_title">Minilejátszó</string>
   <string name="morphe_miniplayer_screen_summary">Az alkalmazáson belüli minimalizált lejátszó stílusának módosítása</string>
   <string name="morphe_miniplayer_type_title">Minilejátszó típus</string>

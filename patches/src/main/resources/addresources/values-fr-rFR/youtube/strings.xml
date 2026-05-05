@@ -1504,6 +1504,12 @@ Limitation : Le bouton 'Retour' de la barre d'outils peut ne pas fonctionner."</
   <string name="morphe_shorts_autoplay_background_summary_on">La lecture automatique sera activée pour les Shorts en arrière-plan</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Les Shorts en arrière-plan seront répétés en boucle</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Désactiver la reprise du mini-lecteur</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\'Continuer à regarder\' ne s\'affichera pas au démarrage de l\'application</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'Continuer à regarder\' peut s\'afficher au démarrage de l\'application</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Continuer à regarder' est une fonctionnalité de YouTube Premium.
+• Cette option ne peut pas forcer l'activation de cette fonctionnalité Premium.
+"</string>
   <string name="morphe_miniplayer_screen_title">Mini-lecteur</string>
   <string name="morphe_miniplayer_screen_summary">Modifier le style du mini-lecteur intégré</string>
   <string name="morphe_miniplayer_type_title">Type de mini-lecteur</string>

@@ -36,7 +36,6 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findElementByAttributeValueOrThrow
 import app.morphe.util.forEachLiteralValueInstruction
-import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.removeFromParent
@@ -229,10 +228,7 @@ val hideShortsComponentsPatch = bytecodePatch(
         }
 
         // Hook to hide the pivotBar when the Shorts player is opened.
-        ReelWatchFragmentInitPlaybackFingerprint.instructionMatches.last()
-            .instruction
-            .getReference<MethodReference>()!!
-            .getMutableMethod()
+        ReelWatchFragmentInitPlaybackFingerprint.instructionMatches.last().getMethodCalled()
             .addInstruction(
                 0,
                 "invoke-static { p1 }, $EXTENSION_FILTER->hidePivotBar(Ljava/lang/String;)V",

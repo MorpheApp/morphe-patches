@@ -124,4 +124,7 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
   <string name="morphe_replace_music_with_youtube_title">Rediriger les liens de partage vers youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">Les liens partagés utilisent youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">Les liens partagés utilisent music.youtube.com</string>
+  <string name="morphe_replace_links_with_shortener_title">Modifier les liens de partage vers youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary_on">Les liens partagés pour les diffusions en direct et les Shorts utilisent youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary_off">Les liens partagés pour les diffusions en direct et les Shorts utilisent leurs URL d’origine</string>
 </resources>
