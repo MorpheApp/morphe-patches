@@ -33,7 +33,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import java.util.logging.Logger
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/music/patches/CrossfadeManager;"
 
 private const val COORDINATOR_INTERFACE =
@@ -217,7 +217,7 @@ val crossfadePatch = bytecodePatch(
         StopVideoFingerprint.method.addInstructions(
             0,
             """
-                invoke-static { p0, p1 }, $EXTENSION_CLASS_DESCRIPTOR->onBeforeStopVideo(Ljava/lang/Object;I)Z
+                invoke-static { p0, p1 }, $EXTENSION_CLASS->onBeforeStopVideo(Ljava/lang/Object;I)Z
                 move-result v0
                 if-eqz v0, :allow_stop
                 return-void
@@ -229,7 +229,7 @@ val crossfadePatch = bytecodePatch(
         PlayNextInQueueFingerprint.method.addInstructions(
             0,
             """
-                invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onBeforePlayNext(Ljava/lang/Object;)Z
+                invoke-static { p0 }, $EXTENSION_CLASS->onBeforePlayNext(Ljava/lang/Object;)Z
                 move-result v0
                 if-eqz v0, :allow_next
                 return-void
@@ -241,7 +241,7 @@ val crossfadePatch = bytecodePatch(
         AudioVideoToggleFingerprint.method.addInstructions(
             0,
             """
-                invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->shouldBlockVideoToggle(Ljava/lang/Object;)Z
+                invoke-static { p0 }, $EXTENSION_CLASS->shouldBlockVideoToggle(Ljava/lang/Object;)Z
                 move-result v0
                 if-eqz v0, :allow_toggle
                 return-void
@@ -253,7 +253,7 @@ val crossfadePatch = bytecodePatch(
         PauseVideoFingerprint.method.addInstructions(
             0,
             """
-                invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->onPauseVideo()Z
+                invoke-static {}, $EXTENSION_CLASS->onPauseVideo()Z
                 move-result v0
                 if-eqz v0, :allow_pause
                 return-void
@@ -265,7 +265,7 @@ val crossfadePatch = bytecodePatch(
         PlayVideoFingerprint.method.addInstructions(
             0,
             """
-                invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onPlayVideo(Ljava/lang/Object;)V
+                invoke-static { p0 }, $EXTENSION_CLASS->onPlayVideo(Ljava/lang/Object;)V
             """,
         )
 
@@ -274,14 +274,14 @@ val crossfadePatch = bytecodePatch(
             .addInstructions(
                 0,
                 """
-                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->onActivityStop()V
+                    invoke-static {}, $EXTENSION_CLASS->onActivityStop()V
                 """,
             )
         musicActivityClass.methods.first { it.name == "onStart" && it.parameterTypes.isEmpty() }
             .addInstructions(
                 0,
                 """
-                    invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->onActivityStart()V
+                    invoke-static {}, $EXTENSION_CLASS->onActivityStart()V
                 """,
             )
 

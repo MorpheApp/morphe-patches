@@ -21,6 +21,7 @@ import app.morphe.extension.shared.settings.BaseActivityHook;
  * Hooks {@code com.google.android.gms.common.api.GoogleApiActivity}
  * to inject a custom {@link MusicPreferenceFragment} with a toolbar and search.
  */
+@SuppressWarnings("deprecation")
 public class MusicActivityHook extends BaseActivityHook {
 
     @SuppressLint("StaticFieldLeak")
@@ -36,7 +37,7 @@ public class MusicActivityHook extends BaseActivityHook {
     // TODO: Implement a 'Spoof app version' patch for YouTube Music.
     private static final boolean USE_BOLD_ICONS = VersionCheckPatch.IS_8_40_OR_GREATER
             && (System.currentTimeMillis() - Settings.FIRST_TIME_APP_LAUNCHED.get())
-                > MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS;
+            > MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS;
 
     static {
         Utils.setAppIsUsingBoldIcons(USE_BOLD_ICONS);
@@ -90,7 +91,13 @@ public class MusicActivityHook extends BaseActivityHook {
     @Override
     protected Drawable getNavigationIcon() {
         Drawable navigationIcon = MusicPreferenceFragment.getBackButtonDrawable();
-        navigationIcon.setColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            navigationIcon.setColorFilter(new android.graphics.BlendModeColorFilter(
+                    Utils.getAppForegroundColor(), android.graphics.BlendMode.SRC_IN));
+        } else {
+            navigationIcon.setColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
+        }
+
         return navigationIcon;
     }
 

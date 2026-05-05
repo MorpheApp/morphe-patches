@@ -7,6 +7,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.all.misc.resources.ResourceType
@@ -299,11 +300,13 @@ val miniplayerPatch = bytecodePatch(
             // 21.17+ removed the code to set the non-bold miniplayer pause/play icon,
             // and removed the non bold yt_fill_pause_white_36 icons.
             MiniplayerSetIconsFingerprint.method.apply {
-                findInstructionIndicesReversedOrThrow {
-                    val reference = getReference<MethodReference>()
-                    opcode == Opcode.INVOKE_INTERFACE
-                        && reference?.returnType == "Z" && reference.parameterTypes.isEmpty()
-                }.forEach { index ->
+                findInstructionIndicesReversedOrThrow(
+                    methodCall(
+                        opcode = Opcode.INVOKE_INTERFACE,
+                        returnType = "Z",
+                        parameters = listOf()
+                    )
+                ).forEach { index ->
                     val register = getInstruction<OneRegisterInstruction>(index + 1).registerA
 
                     addInstructions(

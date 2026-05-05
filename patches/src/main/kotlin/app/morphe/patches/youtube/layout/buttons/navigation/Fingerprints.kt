@@ -144,6 +144,7 @@ internal object SetWordmarkHeaderFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/widget/ImageView;"),
     filters = listOf(
+        methodCall(returnType = "Z"),
         resourceLiteral(ResourceType.ATTR, "ytPremiumWordmarkHeader"),
         resourceLiteral(ResourceType.ATTR, "ytWordmarkHeader")
     )

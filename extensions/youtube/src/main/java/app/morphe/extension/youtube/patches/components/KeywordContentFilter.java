@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -48,7 +49,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
  *   will always be hidden.  This patch checks for some words of these words.
  * - When using whole word syntax, some keywords may need additional pluralized variations.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "unchecked"})
 final class KeywordContentFilter extends Filter {
 
     /**
@@ -439,12 +440,17 @@ final class KeywordContentFilter extends Filter {
                 // not allow comparing two different byte arrays using simple plain array indexes.
                 //
                 // Instead, use all common case variations of the words.
+                Locale defaultLocale = Locale.getDefault();
                 String[] phraseVariations = {
                         phrase,
-                        phrase.toLowerCase(),
+                        // Use both root locale and device locale, to cover
+                        // English rules and device locale specific rules.
+                        phrase.toLowerCase(Locale.ROOT),
+                        phrase.toLowerCase(defaultLocale),
                         titleCaseFirstWordOnly(phrase),
                         capitalizeAllFirstLetters(phrase),
-                        phrase.toUpperCase()
+                        phrase.toUpperCase(Locale.ROOT),
+                        phrase.toUpperCase(defaultLocale)
                 };
 
                 if (phrasesWillHideAllVideos(phraseVariations, wholeWordMatching)) {

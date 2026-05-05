@@ -9,14 +9,9 @@ package app.morphe.extension.shared.spoof.js;
 
 import static app.morphe.extension.shared.Utils.isNotEmpty;
 
-import android.os.Build;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URLDecoder;
@@ -24,6 +19,7 @@ import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.regex.Matcher;
@@ -245,7 +241,7 @@ public final class JavaScriptManager {
             }
 
             if (isNotEmpty(cachedPlayerJsHash)) {
-                cachedPlayerJsFile = new File(Utils.getContext().getCacheDir(), "player_js_" + PLAYER_JS_VARIANT.name().toLowerCase() + "_" + cachedPlayerJsHash + ".js");
+                cachedPlayerJsFile = new File(Utils.getContext().getCacheDir(), "player_js_" + PLAYER_JS_VARIANT.name().toLowerCase(Locale.ROOT) + "_" + cachedPlayerJsHash + ".js");
                 cachedPlayerJsUrl = String.format(BASE_JS_PLAYER_URL_FORMAT, cachedPlayerJsHash);
             }
         }
@@ -479,20 +475,9 @@ public final class JavaScriptManager {
     }
 
     private static String readFromFile(File file) {
-        StringBuilder sb = new StringBuilder();
         try {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                //noinspection ReadWriteStringCanBeUsed
-                return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
-            } else {
-                FileInputStream fis = new FileInputStream(file);
-                BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line).append("\n");
-                }
-                return sb.toString();
-            }
+            //noinspection ReadWriteStringCanBeUsed
+            return new String(Files.readAllBytes(file.toPath()), StandardCharsets.UTF_8);
         } catch (IOException ex) {
             Logger.printException(() -> "Failed to read file", ex);
             return null;
