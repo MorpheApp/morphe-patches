@@ -153,13 +153,13 @@ public class StreamOrDetailsDataRequest {
 
     private final Future<Object> future;
 
-    private StreamOrDetailsDataRequest(Route.CompiledRoute endpoint, String videoId, Map<String, String> playerHeaders) {
+    private StreamOrDetailsDataRequest(@Nullable Route.CompiledRoute endpoint,
+                                       String videoId, Map<String, String> playerHeaders) {
         // Strictly require playerHeaders only if endpoint is null (only for Stream fetching)
         if (endpoint == null) {
             Objects.requireNonNull(playerHeaders);
         }
         this.videoId = videoId;
-
         this.future = submitOnBackgroundThread(() -> fetch(endpoint, videoId, playerHeaders));
     }
 
@@ -388,7 +388,8 @@ public class StreamOrDetailsDataRequest {
         return null;
     }
 
-    private static Object fetch(Route.CompiledRoute videoDetailsEndpoint, String videoId, Map<String, String> playerHeaders) {
+    private static Object fetch(@Nullable Route.CompiledRoute videoDetailsEndpoint,
+                                String videoId, Map<String, String> playerHeaders) {
         if (videoDetailsEndpoint == null) {
             final boolean debugEnabled = BaseSettings.DEBUG.get();
             final long fetchStartTime = System.currentTimeMillis();
