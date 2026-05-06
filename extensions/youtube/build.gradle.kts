@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ApplicationExtension
+
 plugins {
     alias(libs.plugins.protobuf)
 }
@@ -12,7 +14,7 @@ dependencies {
     implementation(libs.protobuf.javalite)
 }
 
-android {
+configure<ApplicationExtension> {
     defaultConfig {
         minSdk = 26
     }

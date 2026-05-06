@@ -1501,6 +1501,11 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts видеи ће се аутоматски пуштати у позадини</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts видеи ће се понављати у позадини</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Онемогући наставак репродукције мини-плејера</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">„Настави са гледањем“ неће бити приказано при покретању апликације</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\"Nastavite gledanje\" može da se prikaže pri pokretanju aplikacije</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• \"Nastavite gledanje\" je YouTube Premium funkcija
+• Ova postavka ne može da uključi ovu Premium funkciju"</string>
   <string name="morphe_miniplayer_screen_title">Мини-плејер</string>
   <string name="morphe_miniplayer_screen_summary">Промените стил минимизираног плејера у апликацији</string>
   <string name="morphe_miniplayer_type_title">Тип мини-плејера</string>

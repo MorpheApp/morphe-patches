@@ -1504,6 +1504,11 @@ Teorainn: Seans nach n-oibreoidh úsáid a bhaint as an gcnaipe cúil ar an mbar
   <string name="morphe_shorts_autoplay_background_summary_on">Déanfar súgradh cúlra Shorts go huathoibríoch</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Athdhéanfar athsheinm Shorts cúlra sheinn</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Díchumasaigh atosú an mhionimreoir</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">Ní thaispeánfar \'Lean ort ag breathnú\' nuair a thosófar an aip</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">Féadfar \'Lean ort ag breathnú\' a thaispeáint nuair a thosaíonn an aip</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• Is gné de YouTube Premium é 'Leanúnach a bheith ag féachaint'
+• Ní féidir leis an suíomh seo a chur ar fáil go díreach don gné Premium seo"</string>
   <string name="morphe_miniplayer_screen_title">Mion seinnteoir</string>
   <string name="morphe_miniplayer_screen_summary">Athraigh stíl an imreora íoslaghdaithe in-aip</string>
   <string name="morphe_miniplayer_type_title">Cineál Mion seinnteoir</string>

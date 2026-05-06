@@ -1505,6 +1505,11 @@ YouTube সেটিংস খুলতে ট্যাপ এবং ধরে �
   <string name="morphe_shorts_autoplay_background_summary_on">পটভূমিতে Shorts অটোপ্লে হবে</string>
   <string name="morphe_shorts_autoplay_background_summary_off">পটভূমিতে Shorts পুনরাবৃত্তি হবে</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">মিনিপ্লেয়ারে আবার শুরু করা বন্ধ করুন</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">অ্যাপ শুরু করার সময় \'দেখতে থাকুন\' প্রদর্শিত হবে না</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\"Continue watching\" অ্যাপ চালু করার সময় প্রদর্শিত হতে পারে</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Continue watching' একটি YouTube Premium বৈশিষ্ট্য
+• এই সেটিংস এই Premium বৈশিষ্ট্যটি চালু করতে বাধ্য করতে পারে না"</string>
   <string name="morphe_miniplayer_screen_title">মিনিপ্লেয়ার</string>
   <string name="morphe_miniplayer_screen_summary">ইন-অ্যাপ মিনিমাইজড প্লেয়ারের শৈলী পরিবর্তন করুন</string>
   <string name="morphe_miniplayer_type_title">মিনিপ্লেয়ার ধরণ</string>

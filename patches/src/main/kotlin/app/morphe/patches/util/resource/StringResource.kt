@@ -25,6 +25,7 @@ class StringResource(
     }
 
     companion object {
+        @Suppress("unused")
         fun fromNode(node: Node): StringResource {
             val name = node.attributes.getNamedItem("name").textContent
             val value = node.textContent

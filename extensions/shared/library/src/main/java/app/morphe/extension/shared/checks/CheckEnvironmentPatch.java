@@ -21,7 +21,6 @@ import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_TAGS;
 import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_TYPE;
 import static app.morphe.extension.shared.checks.PatchInfo.Build.PATCH_USER;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
@@ -37,7 +36,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 
@@ -50,7 +49,7 @@ import app.morphe.extension.shared.Utils;
  * <br>
  * Various indicators help to detect if the app was patched by the user.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "deprecation"})
 public final class CheckEnvironmentPatch {
     private static final boolean DEBUG_ALWAYS_SHOW_CHECK_FAILED_DIALOG = debugAlwaysShowWarning();
 
@@ -140,7 +139,6 @@ public final class CheckEnvironmentPatch {
      * If the build properties are different, the app was likely downloaded pre-patched or patched on another device.
      */
     private static class CheckWasPatchedOnSameDevice extends Check {
-        @SuppressLint({"NewApi", "HardwareIds"})
         @Override
         protected Boolean check() {
             if (PATCH_BOARD.isEmpty()) {
@@ -149,7 +147,6 @@ public final class CheckEnvironmentPatch {
                 return null;
             }
 
-            //noinspection deprecation
             final var passed = buildFieldEqualsHash("BOARD", Build.BOARD, PATCH_BOARD) &
                     buildFieldEqualsHash("BOOTLOADER", Build.BOOTLOADER, PATCH_BOOTLOADER) &
                     buildFieldEqualsHash("BRAND", Build.BRAND, PATCH_BRAND) &
@@ -327,8 +324,7 @@ public final class CheckEnvironmentPatch {
                     );
                 }
 
-                //noinspection ComparatorCombinators
-                Collections.sort(failedChecks, (o1, o2) -> o1.uiSortingValue() - o2.uiSortingValue());
+                failedChecks.sort(Comparator.comparingInt(Check::uiSortingValue));
 
                 // FIXME: Nag screen is permanently turned off.
                 //        But still use most of this class just to log the installer source.

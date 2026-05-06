@@ -1504,6 +1504,11 @@ Limitação: Usar o botão voltar na barra de ferramentas pode não funcionar"</
   <string name="morphe_shorts_autoplay_background_summary_on">Reprodução de fundo de Shorts irá reproduzir automaticamente</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Reprodução de fundo de Shorts irá repetir</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Desativar a retomada do miniplayer</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Continuar assistindo\" não será exibido na inicialização do app</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\"Continue watching\" pode ser exibido na inicialização do app</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• \"Continue watching\" é um recurso do YouTube Premium
+• Esta configuração não pode forçar a ativação deste recurso Premium"</string>
   <string name="morphe_miniplayer_screen_title">Minijogador</string>
   <string name="morphe_miniplayer_screen_summary">Altere o estilo do player minimizado no aplicativo</string>
   <string name="morphe_miniplayer_type_title">Tipo de minijogador</string>

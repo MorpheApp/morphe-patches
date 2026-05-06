@@ -43,6 +43,7 @@ import javax.xml.parsers.DocumentBuilderFactory
 /**
  * Checks resource strings for invalid strings that will fail resource compilation.
  */
+@Suppress("unused")
 internal fun main(args: Array<String>) {
     var stringsChecked = 0
 

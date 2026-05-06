@@ -1504,6 +1504,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts будуть автоматично відтворюватися одне за одним у фоновому режимі</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts будуть повторюватися у фоновому режимі</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Вимкнути відновлення мініплеєра</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Продовжити перегляд\" не буде показуватись під час запуску застосунку</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\"Продовжити перегляд\" може показуватись під час запуску застосунку</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• \"Продовжити перегляд\" - це функція YouTube Premium
+• Це налаштування не може примусово ввімкнути цю Premium функцію"</string>
   <string name="morphe_miniplayer_screen_title">Мініплеєр</string>
   <string name="morphe_miniplayer_screen_summary">Змінити стиль згорнутого мініплеєра у застосунку</string>
   <string name="morphe_miniplayer_type_title">Тип мініплеєра</string>

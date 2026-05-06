@@ -5,54 +5,33 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.string
-import app.morphe.patches.all.misc.transformation.IMethodCall
-import app.morphe.patches.all.misc.transformation.filterMapInstruction35c
-import app.morphe.patches.all.misc.transformation.transformInstructionsPatch
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.fiveRegisters
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
-private const val EXTENSION_CLASS_PREFIX =
-    "Lapp/morphe/extension/youtube/patches/DisableHapticFeedbackPatch"
-
-private const val EXTENSION_CLASS = "$EXTENSION_CLASS_PREFIX;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/DisableHapticFeedbackPatch;"
 
 @Suppress("unused")
 val disableHapticFeedbackPatch = bytecodePatch(
     name = "Disable haptic feedback",
     description = "Adds an option to disable haptic feedback in the player for various actions.",
 ) {
-    dependsOn(
-        settingsPatch,
-        transformInstructionsPatch(
-            filterMap = { classDef, _, instruction, instructionIndex ->
-                filterMapInstruction35c<MethodCall>(
-                    EXTENSION_CLASS_PREFIX,
-                    classDef,
-                    instruction,
-                    instructionIndex,
-                )
-            },
-            transform = { method, entry ->
-                val (methodType, _, instructionIndex) = entry
-                methodType.replaceInvokeVirtualWithExtension(
-                    EXTENSION_CLASS,
-                    method,
-                    instructionIndex,
-                )
-            },
-        ),
-    )
+    dependsOn(settingsPatch)
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
@@ -123,27 +102,40 @@ val disableHapticFeedbackPatch = bytecodePatch(
                 )
             }
         }
-    }
-}
 
-// Information about method calls we want to replace
-@Suppress("unused")
-private enum class MethodCall(
-    override val definedClassName: String,
-    override val methodName: String,
-    override val methodParams: Array<String>,
-    override val methodReturnType: String,
-) : IMethodCall {
-    VibrationEffect(
-        "Landroid/os/Vibrator;",
-        "vibrate",
-        arrayOf("Landroid/os/VibrationEffect;"),
-        "V",
-    ),
-    VibrationMilliseconds(
-        "Landroid/os/Vibrator;",
-        "vibrate",
-        arrayOf("J"),
-        "V",
-    ),
+        arrayOf(
+            methodCall(
+                definingClass = "Landroid/os/Vibrator;",
+                name = "vibrate",
+                parameters = listOf("Landroid/os/VibrationEffect;"),
+                returnType = "V"
+            ),
+            methodCall(
+                definingClass = "Landroid/os/Vibrator;",
+                name = "vibrate",
+                parameters = listOf("J"),
+                returnType = "V"
+            )
+        ).forEach { filter ->
+            Fingerprint(
+                filters = listOf(filter),
+                custom = { _, classDef ->
+                    classDef.type != EXTENSION_CLASS
+                }
+            ).matchAll().forEach { match ->
+                match.method.apply {
+                    findInstructionIndicesReversedOrThrow(filter).forEach { index ->
+                        val instruction = getInstruction<FiveRegisterInstruction>(index)
+                        val registers = fiveRegisters(index)
+
+                        replaceInstruction(
+                            index,
+                            "invoke-static { $registers }, $EXTENSION_CLASS->vibrate(Landroid/os/Vibrator;" +
+                                    filter.parameters!!.joinToString("") + ")V"
+                        )
+                    }
+                }
+            }
+        }
+    }
 }

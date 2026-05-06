@@ -1504,6 +1504,11 @@ Einschränkung: Die Verwendung der Zurück-Taste auf der Symbolleiste funktionie
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts-Hintergrund spielen wird automatisch abgespielt</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts-Hintergrundwiedergabe wiederholt sich</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Fortsetzen des Miniplayers deaktivieren</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Fortschauen\" wird beim Starten der App nicht angezeigt werden</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'Fortsetzen der Wiedergabe\' kann beim Starten der App angezeigt werden</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Fortsetzen der Wiedergabe' ist eine YouTube Premium-Funktion
+• Diese Einstellung kann diese Premium-Funktion nicht erzwingen"</string>
   <string name="morphe_miniplayer_screen_title">Minispieler</string>
   <string name="morphe_miniplayer_screen_summary">Das Aussehen des minimierten In-App-Players ändern</string>
   <string name="morphe_miniplayer_type_title">Minispielertyp</string>

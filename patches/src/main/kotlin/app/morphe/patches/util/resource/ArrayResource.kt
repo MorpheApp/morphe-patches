@@ -27,6 +27,7 @@ class ArrayResource(
         }
 
     companion object {
+        @Suppress("unused")
         fun fromNode(node: Node): ArrayResource {
             val key = node.attributes.getNamedItem("name").textContent
             val items = node.childElementsSequence().map { it.textContent }.toList()

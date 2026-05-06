@@ -1504,6 +1504,11 @@ Omejitev: Uporaba gumba nazaj na orodni vrstici morda ne bo delovala"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts se bodo v ozadju samodejno predvajali</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts se bodo v ozadju ponavljali</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Onemogoči nadaljevanje predvajanja v mini predajalniku</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Nadaljuj s gledanjem\" se ne bo prikazalo ob zagonu aplikacije</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\"Nadaljuj z gledanjem\" se lahko prikaže ob zagonu aplikacije</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• \"Nadaljuj z gledanjem\" je funkcija YouTube Premium
+• Te nastavitve ne morejo vključiti te funkcije Premium"</string>
   <string name="morphe_miniplayer_screen_title">Mini predvajalnik</string>
   <string name="morphe_miniplayer_screen_summary">Spremenite slog vgrajenega poslušalnika</string>
   <string name="morphe_miniplayer_type_title">Vrsta predvajalnika</string>

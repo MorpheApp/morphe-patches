@@ -1505,6 +1505,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts 將在背景自動播放</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts 將在背景重複播放</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">停用迷你播放器恢復功能</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">應用程式啟動時不會顯示「繼續觀看」</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'繼續觀看\' 可以在應用程式啟動時顯示</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• '繼續觀看' 是 YouTube Premium 的功能
+• 此設定無法強制啟用此 Premium 功能"</string>
   <string name="morphe_miniplayer_screen_title">迷你播放器</string>
   <string name="morphe_miniplayer_screen_summary">變更應用程式內最小化播放器的樣式</string>
   <string name="morphe_miniplayer_type_title">迷你播放器類型</string>

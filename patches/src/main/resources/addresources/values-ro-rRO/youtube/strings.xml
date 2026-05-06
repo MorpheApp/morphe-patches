@@ -1500,6 +1500,11 @@ Limitare: Utilizarea butonului Înapoi de pe bara de instrumente poate să nu fu
   <string name="morphe_shorts_autoplay_background_summary_on">Redarea în fundal a Shorts-urilor se va reda automat</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Redarea în fundal a Shorts-urilor se va repeta</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Dezactivează reluarea miniplayer-ului</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Continuare vizionare\" nu va apărea la lansarea aplicației</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\"Continuă să urmărești\" poate apărea la pornirea aplicației</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• \"Continuă să urmărești\" este o funcție YouTube Premium
+• Această setare nu poate activa forțat această funcție Premium"</string>
   <string name="morphe_miniplayer_screen_title">Minijucător</string>
   <string name="morphe_miniplayer_screen_summary">Schimbă stilul playerului minimizat în aplicație</string>
   <string name="morphe_miniplayer_type_title">Tip minijucător</string>
