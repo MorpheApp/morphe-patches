@@ -32,6 +32,7 @@ final class DescriptionComponentsFilter extends Filter {
 
         final StringFilterGroup askSection = new StringFilterGroup(
                 Settings.HIDE_ASK_SECTION,
+                "input_composer_button.e",
                 "youchat_entrypoint.e"
         );
 
