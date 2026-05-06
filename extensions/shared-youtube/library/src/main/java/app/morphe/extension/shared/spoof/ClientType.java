@@ -265,7 +265,7 @@ public enum ClientType {
      * App package name.
      */
     @Nullable
-    private String packageName = "";
+    private final String packageName;
 
     /**
      * Player user-agent.
@@ -275,17 +275,17 @@ public enum ClientType {
     /**
      * Device model, equivalent to {@link Build#MANUFACTURER} (System property: ro.product.vendor.manufacturer)
      */
-    public String deviceMake = "";
+    public final String deviceMake;
 
     /**
      * Device model, equivalent to {@link Build#MODEL} (System property: ro.product.vendor.model)
      */
-    public String deviceModel = "";
+    public final String deviceModel;
 
     /**
      * Device OS name.
      */
-    public String osName = "";
+    public final String osName;
 
     /**
      * Device OS version.
@@ -297,43 +297,43 @@ public enum ClientType {
      * Field is null if not applicable.
      */
     @Nullable
-    public String androidSdkVersion = "";
+    public final String androidSdkVersion;
 
     /**
      * App version.
      */
-    public String clientVersion = "";
+    public final String clientVersion;
 
     /**
      * Client platform enum.
      */
-    public String clientPlatform = "";
+    public final String clientPlatform;
 
     /**
      * If the client can access the API logged in.
      */
-    public boolean canLogin = false;
+    public final boolean canLogin;
 
     /**
      * If the client should use authentication if available.
      */
-    public boolean requireLogin = false;
+    public final boolean requireLogin;
 
     /**
      * If the client supports oauth2.0 for limited-input device.
      */
-    public boolean supportsOAuth2 = false;
+    public final boolean supportsOAuth2;
 
     /**
      * If the client supports multiple audio tracks.
      */
-    public boolean supportsMultiAudioTracks = false;
+    public final boolean supportsMultiAudioTracks;
 
     /**
      * The streaming url has an obfuscated 'n' parameter.
      * If true, JavaScript must be fetched to decrypt the 'n' parameter.
      */
-    public boolean requireJS = false;
+    public final boolean requireJS;
 
     /**
      * Whether to use the '/player' endpoint.
@@ -396,6 +396,7 @@ public enum ClientType {
         );
         Logger.printDebug(() -> "userAgent: " + this.userAgent);
     }
+
     ClientType(int id,
                String clientName,
                String osVersion,
@@ -408,6 +409,20 @@ public enum ClientType {
         this.endpoint = endpoint;
         this.userAgent = userAgent;
         this.friendlyName = friendlyName;
+
+        packageName = null;
+        deviceMake = null;
+        deviceModel = null;
+        osName = null;
+        androidSdkVersion = null;
+        clientVersion = null;
+        clientPlatform = null;
+        canLogin = false;
+        requireLogin = false;
+        supportsOAuth2 = false;
+        supportsMultiAudioTracks = false;
+        requireJS = false;
+
         Logger.printDebug(() -> "userAgent: " + this.userAgent);
     }
     ClientType(int id,
@@ -442,7 +457,8 @@ public enum ClientType {
         this.requireJS = requireJS;
         this.endpoint = endpoint;
         this.friendlyName = friendlyName;
-        this.packageName = null;
-        this.androidSdkVersion = null;
+
+        packageName = null;
+        androidSdkVersion = null;
     }
 }
