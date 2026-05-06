@@ -87,7 +87,7 @@ To translate new languages or improve the existing translations, visit morphe.so
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_screen_title">Debugging</string>
     <string name="morphe_debug_screen_summary">Configure advanced developer options and diagnostic logs</string>
-    <string name="morphe_debug_title">Debug logging</string>
+    <string name="morphe_debug_title">Enable debug logging</string>
     <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
     <string name="morphe_debug_stacktrace_summary">Includes stack traces in debug logs to help identify errors</string>
     <string name="morphe_debug_toast_on_error_title">Show toast on Morphe error</string>

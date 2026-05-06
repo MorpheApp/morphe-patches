@@ -109,7 +109,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_hide_description_components_screen",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_ai_generated_video_summary_section", summaryKey = null),
+                    SwitchPreference("morphe_hide_ai_generated_video_summary_section"),
                     SwitchPreference("morphe_hide_ask_section", summaryKey = null),
                     SwitchPreference("morphe_hide_attributes_section"),
                     SwitchPreference("morphe_hide_chapters_section", summaryKey = null),
@@ -121,7 +121,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_featured_places_section", summaryKey = null),
                     SwitchPreference("morphe_hide_featured_videos_section", summaryKey = null),
                     SwitchPreference("morphe_hide_gaming_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_how_this_was_made_section", summaryKey = null),
+                    SwitchPreference("morphe_hide_how_this_was_made_section"),
                     SwitchPreference("morphe_hide_hype_points", summaryKey = null),
                     SwitchPreference("morphe_hide_info_cards_section", summaryKey = null),
                     SwitchPreference("morphe_hide_key_concepts_section", summaryKey = null),
