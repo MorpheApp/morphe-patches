@@ -154,15 +154,18 @@ public class StreamOrDetailsDataRequest {
     private final Future<Object> future;
 
     private StreamOrDetailsDataRequest(Route.CompiledRoute endpoint, String videoId, Map<String, String> playerHeaders) {
-        Objects.requireNonNull(playerHeaders);
+        // Strictly require playerHeaders only if endpoint is null (only for Stream fetching)
+        if (endpoint == null) {
+            Objects.requireNonNull(playerHeaders);
+        }
         this.videoId = videoId;
 
         this.future = submitOnBackgroundThread(() -> fetch(endpoint, videoId, playerHeaders));
     }
 
-    public static void fetchStreamRequest(Route.CompiledRoute endpoint, String videoId, Map<String, String> fetchHeaders) {
+    public static void fetchStreamRequest(String videoId, Map<String, String> fetchHeaders) {
         // Always fetch, even if there is an existing request for the same video.
-        streamCache.put(videoId, new StreamOrDetailsDataRequest(endpoint, videoId, fetchHeaders));
+        streamCache.put(videoId, new StreamOrDetailsDataRequest(null, videoId, fetchHeaders));
     }
 
     @Nullable
@@ -170,9 +173,9 @@ public class StreamOrDetailsDataRequest {
         return streamCache.get(videoId);
     }
 
-    public static void fetchDetailsRequest(Route.CompiledRoute endpoint, String videoId, Map<String, String> fetchHeaders) {
+    public static void fetchDetailsRequest(Route.CompiledRoute videoDetailsEndpoint, String videoId, Map<String, String> fetchHeaders) {
         // Always fetch, even if there is an existing request for the same video.
-        detailsCache.put(videoId, new StreamOrDetailsDataRequest(endpoint, videoId, fetchHeaders));
+        detailsCache.put(videoId, new StreamOrDetailsDataRequest(videoDetailsEndpoint, videoId, fetchHeaders));
     }
 
     @Nullable
@@ -385,27 +388,27 @@ public class StreamOrDetailsDataRequest {
         return null;
     }
 
-    private static Object fetch(Route.CompiledRoute endpoint, String videoId, Map<String, String> playerHeaders) {
-        Logger.printDebug(() -> String.valueOf(endpoint));
-
-        if (endpoint == GET_PLAYER_STREAMING_DATA || endpoint == GET_REEL_STREAMING_DATA) {
+    private static Object fetch(Route.CompiledRoute videoDetailsEndpoint, String videoId, Map<String, String> playerHeaders) {
+        if (videoDetailsEndpoint == null) {
             final boolean debugEnabled = BaseSettings.DEBUG.get();
             final long fetchStartTime = System.currentTimeMillis();
 
             // Retry with different client if empty response body is received.
             int i = 0;
-            for (ClientType clientType : clientStreamOrderToUse) {
+            for (ClientType clientTypeStream : clientStreamOrderToUse) {
+                Logger.printDebug(() -> String.valueOf(clientTypeStream.endpoint));
+
                 // Show an error if the last client type fails, or if debug is enabled then show for all attempts.
                 final boolean showErrorToast = (++i == clientStreamOrderToUse.length) || debugEnabled;
 
-                HttpURLConnection connection = send(clientType, videoId, playerHeaders, showErrorToast);
+                HttpURLConnection connection = send(clientTypeStream, videoId, playerHeaders, showErrorToast);
                 if (connection != null) {
-                    Object playerResponseBuffer = buildPlayerStreamOrDetailsResponse(clientType, connection);
+                    Object playerResponseBuffer = buildPlayerStreamOrDetailsResponse(clientTypeStream, connection);
 
                     if (playerResponseBuffer != null) {
-                        lastSpoofedClientType = clientType;
+                        lastSpoofedClientType = clientTypeStream;
 
-                        if (clientType.requireJS) {
+                        if (clientTypeStream.requireJS) {
                             Logger.printDebug(() -> "End of fetch for JavaScript required client" +
                                     ", video: " + videoId +
                                     ", hash: " + getJavaScriptHash() +
@@ -427,13 +430,15 @@ public class StreamOrDetailsDataRequest {
                 handleConnectionError(str("morphe_spoof_video_streams_no_clients_suggest_vr_toast"), null, true);
             }
         } else {
-            for (ClientType clientType : ClientType.values()) {
-                if (clientType.endpoint == endpoint) {
+            for (ClientType clientTypeDetails : ClientType.values()) {
+                if (clientTypeDetails.endpoint == videoDetailsEndpoint) {
+                    Logger.printDebug(() -> String.valueOf(clientTypeDetails.endpoint));
+
                     HttpURLConnection connection =
-                        send(clientType, videoId, playerHeaders, false);
+                        send(clientTypeDetails, videoId, playerHeaders, false);
 
                     if (connection != null) {
-                        return buildPlayerStreamOrDetailsResponse(clientType, connection);
+                        return buildPlayerStreamOrDetailsResponse(clientTypeDetails, connection);
                     }
                 }
             }
@@ -441,6 +446,7 @@ public class StreamOrDetailsDataRequest {
         return null;
     }
 
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public boolean fetchStreamOrDetailsCompleted() {
         return future.isDone();
     }
@@ -448,6 +454,7 @@ public class StreamOrDetailsDataRequest {
 
     @Nullable
     public Object getStreamOrDetails() {
+
         try {
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {

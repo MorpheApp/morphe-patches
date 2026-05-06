@@ -19,7 +19,6 @@ import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
 import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
@@ -302,7 +301,7 @@ public class SpoofVideoStreamsPatch {
 
                 currentVideoRequestHeader = requestHeaders;
 
-                StreamOrDetailsDataRequest.fetchStreamRequest(PlayerRoutes.GET_PLAYER_STREAMING_DATA, id, currentVideoRequestHeader);
+                StreamOrDetailsDataRequest.fetchStreamRequest(id, currentVideoRequestHeader);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }
@@ -345,9 +344,9 @@ public class SpoofVideoStreamsPatch {
         return null;
     }
 
-    public static void fetchDetails(Route.CompiledRoute endpoint, String videoId) {
+    public static void fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
         if (currentVideoRequestHeader != null) {
-            StreamOrDetailsDataRequest.fetchDetailsRequest(endpoint, videoId, currentVideoRequestHeader);
+            StreamOrDetailsDataRequest.fetchDetailsRequest(videoDetailsEndpoint, videoId, currentVideoRequestHeader);
         }
     }
 
