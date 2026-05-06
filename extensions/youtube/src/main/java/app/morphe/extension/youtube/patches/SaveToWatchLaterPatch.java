@@ -8,7 +8,6 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.saveToWatchLaterDetailsName;
 
 import android.app.Activity;
 
@@ -19,7 +18,9 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
 
 @SuppressWarnings("unused")
 public final class SaveToWatchLaterPatch {
@@ -58,7 +59,7 @@ public final class SaveToWatchLaterPatch {
     public static void saveVideo() {
         try {
             SpoofVideoStreamsPatch.fetchDetails(
-                saveToWatchLaterDetailsName,
+                PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST,
 
                 VideoInformation.getVideoId()
             );

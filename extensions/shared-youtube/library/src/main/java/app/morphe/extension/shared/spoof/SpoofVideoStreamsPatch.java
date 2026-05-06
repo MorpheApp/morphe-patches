@@ -14,10 +14,12 @@ import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.AppLanguage;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
 import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
@@ -72,7 +74,7 @@ public class SpoofVideoStreamsPatch {
     @Nullable
     private static volatile AppLanguage languageOverride;
 
-    private static volatile ClientType.Stream preferredClient = ClientType.Stream.ANDROID_REEL;
+    private static volatile ClientType preferredClient = ClientType.ANDROID_REEL;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
 
@@ -106,12 +108,12 @@ public class SpoofVideoStreamsPatch {
         languageOverride = language;
     }
 
-    public static void setClientsToUse(List<ClientType.Stream> availableClients, ClientType.Stream client) {
+    public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
         preferredClient = Objects.requireNonNull(client);
         StreamOrDetailsDataRequest.setClientOrderToUse(availableClients, client);
     }
 
-    public static ClientType.Stream getPreferredClient() {
+    public static ClientType getPreferredClient() {
         return preferredClient;
     }
 
@@ -300,7 +302,7 @@ public class SpoofVideoStreamsPatch {
 
                 currentVideoRequestHeader = requestHeaders;
 
-                StreamOrDetailsDataRequest.fetchStreamRequest(id, currentVideoRequestHeader);
+                StreamOrDetailsDataRequest.fetchStreamRequest(PlayerRoutes.GET_PLAYER_STREAMING_DATA, id, currentVideoRequestHeader);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }
@@ -343,9 +345,9 @@ public class SpoofVideoStreamsPatch {
         return null;
     }
 
-    public static void fetchDetails(String detailsToFetch, String videoId) {
+    public static void fetchDetails(Route.CompiledRoute endpoint, String videoId) {
         if (currentVideoRequestHeader != null) {
-            StreamOrDetailsDataRequest.fetchDetailsRequest(detailsToFetch, videoId, currentVideoRequestHeader);
+            StreamOrDetailsDataRequest.fetchDetailsRequest(endpoint, videoId, currentVideoRequestHeader);
         }
     }
 
