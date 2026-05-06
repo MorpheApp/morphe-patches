@@ -38,7 +38,7 @@ private val saveToWatchLaterButtonResourcePatch = resourcePatch {
                 resourceDirectoryName = "drawable",
                 "morphe_save_to_watch_later_button.xml",
                 "morphe_save_to_watch_later_button_bold.xml",
-            ),
+            )
         )
     }
 }

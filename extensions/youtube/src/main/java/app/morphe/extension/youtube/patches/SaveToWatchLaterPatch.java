@@ -67,17 +67,17 @@ public final class SaveToWatchLaterPatch {
             String saveToWatchLaterResponse = SpoofVideoStreamsPatch.getDetailsData(VideoInformation.getVideoId());
 
             if (saveToWatchLaterResponse != null && !saveToWatchLaterResponse.isEmpty()) {
-                Logger.printInfo(() -> saveToWatchLaterResponse);
+                Logger.printDebug(() -> saveToWatchLaterResponse);
 
                 if (saveToWatchLaterResponse.contains("STATUS_SUCCEEDED")) {
-                    if (saveToWatchLaterResponse.contains("\"playlistEditResults\"")) {
-                        Utils.showToastShort(str("morphe_save_to_watch_later_success_toast"));
-                    } else {
-                        Utils.showToastShort(str("morphe_save_to_watch_later_already_exists_toast"));
-                    }
+                    Utils.showToastShort(str(
+                            saveToWatchLaterResponse.contains("\"playlistEditResults\"")
+                                    ? "morphe_save_to_watch_later_success_toast"
+                                    : "morphe_save_to_watch_later_already_exists_toast"));
+
                 }
 
-                Logger.printInfo(() -> saveToWatchLaterResponse);
+                Logger.printDebug(() -> saveToWatchLaterResponse);
             }
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not fetch video details", ex);
