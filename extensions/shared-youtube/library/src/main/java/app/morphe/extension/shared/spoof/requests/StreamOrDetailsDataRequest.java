@@ -397,7 +397,7 @@ public class StreamOrDetailsDataRequest {
             // Retry with different client if empty response body is received.
             int i = 0;
             for (ClientType clientTypeStream : clientStreamOrderToUse) {
-                Logger.printDebug(() -> String.valueOf(clientTypeStream.endpoint));
+                Logger.printDebug(() -> "Fetching: " + clientTypeStream.endpoint);
 
                 // Show an error if the last client type fails, or if debug is enabled then show for all attempts.
                 final boolean showErrorToast = (++i == clientStreamOrderToUse.length) || debugEnabled;
