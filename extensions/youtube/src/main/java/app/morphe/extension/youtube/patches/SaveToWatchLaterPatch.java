@@ -56,35 +56,31 @@ public final class SaveToWatchLaterPatch {
      * Use it only when it is guaranteed to be used in situations where the player is active.
      */
     public static void saveVideo() {
-        Utils.submitOnBackgroundThread(() -> {
-            try {
-                SpoofVideoStreamsPatch.fetchDetails(
-                        PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST,
+        try {
+            SpoofVideoStreamsPatch.fetchDetails(
+                    PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST,
+                    VideoInformation.getVideoId()
+            );
 
-                        VideoInformation.getVideoId()
-                );
+            String saveToWatchLaterResponse = SpoofVideoStreamsPatch.getDetailsData(
+                    VideoInformation.getVideoId());
 
-                String saveToWatchLaterResponse = SpoofVideoStreamsPatch.getDetailsData(VideoInformation.getVideoId());
+            if (saveToWatchLaterResponse != null && !saveToWatchLaterResponse.isEmpty()) {
+                Logger.printDebug(() -> "watch later response: " + saveToWatchLaterResponse);
 
-                if (saveToWatchLaterResponse != null && !saveToWatchLaterResponse.isEmpty()) {
-                    Logger.printDebug(() -> saveToWatchLaterResponse);
+                if (saveToWatchLaterResponse.contains("STATUS_SUCCEEDED")) {
+                    Utils.showToastShort(str(
+                            saveToWatchLaterResponse.contains("\"playlistEditResults\"")
+                                    ? "morphe_save_to_watch_later_success_toast"
+                                    : "morphe_save_to_watch_later_already_exists_toast"));
 
-                    if (saveToWatchLaterResponse.contains("STATUS_SUCCEEDED")) {
-                        Utils.showToastShort(str(
-                                saveToWatchLaterResponse.contains("\"playlistEditResults\"")
-                                        ? "morphe_save_to_watch_later_success_toast"
-                                        : "morphe_save_to_watch_later_already_exists_toast"));
-
-                    }
-
-                    Logger.printDebug(() -> saveToWatchLaterResponse);
                 }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Could not fetch video details", ex);
-                Utils.showToastShort(str("morphe_save_to_watch_later_error_toast"));
-            }
 
-            return null;
-        });
+                Logger.printDebug(() -> saveToWatchLaterResponse);
+            }
+        } catch (Exception ex) {
+            Logger.printDebug(() -> "Could not fetch video details", ex);
+            Utils.showToastShort(str("morphe_save_to_watch_later_error_toast"));
+        }
     }
 }

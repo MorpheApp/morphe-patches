@@ -23,7 +23,7 @@ import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
-    public static Map<String, String> currentVideoRequestHeader;
+    public static volatile Map<String, String> currentVideoRequestHeader;
 
     public static final class JavaScriptClientAvailability implements Setting.Availability {
         @Override
@@ -345,8 +345,9 @@ public class SpoofVideoStreamsPatch {
     }
 
     public static void fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
-        if (currentVideoRequestHeader != null) {
-            StreamOrDetailsDataRequest.fetchDetailsRequest(videoDetailsEndpoint, videoId, currentVideoRequestHeader);
+        Map<String, String> headers = currentVideoRequestHeader;
+        if (headers != null) {
+            StreamOrDetailsDataRequest.fetchDetailsRequest(videoDetailsEndpoint, videoId, headers);
         }
     }
 
