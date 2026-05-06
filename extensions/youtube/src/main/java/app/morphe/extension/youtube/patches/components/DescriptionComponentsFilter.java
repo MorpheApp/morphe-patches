@@ -21,6 +21,8 @@ final class DescriptionComponentsFilter extends Filter {
     private final StringFilterGroup featuredVideosSection;
     private final StringFilterGroup subscribeButton;
     private final StringFilterGroup shortsHowThisWasMadeSection;
+    private final StringFilterGroup videoDetails;
+    private final ByteArrayFilterGroup videoDetailsBuffer;
 
     public DescriptionComponentsFilter() {
         final StringFilterGroup aiGeneratedVideoSummarySection = new StringFilterGroup(
@@ -118,6 +120,16 @@ final class DescriptionComponentsFilter extends Filter {
                 "cell_video_attribute.e"
         );
 
+        videoDetails = new StringFilterGroup(
+                null,
+                "linear_layout.e"
+        );
+
+        videoDetailsBuffer = new ByteArrayFilterGroup(
+                Settings.HIDE_VIDEO_DETAILS_SECTION,
+                "section_header"
+        );
+
         addPathCallbacks(
                 aiGeneratedVideoSummarySection,
                 askSection,
@@ -131,7 +143,8 @@ final class DescriptionComponentsFilter extends Filter {
                 playlistSection,
                 shortsHowThisWasMadeSection,
                 subscribeButton,
-                transcriptSection
+                transcriptSection,
+                videoDetails
         );
     }
 
@@ -165,6 +178,10 @@ final class DescriptionComponentsFilter extends Filter {
 
         if (matchedGroup == shortsHowThisWasMadeSection) {
             return ShortsPlayerState.isOpen() && EngagementPanel.isDescription();
+        }
+
+        if (matchedGroup == videoDetails) {
+            return videoDetailsBuffer.check(buffer).isFiltered();
         }
 
         return true;
