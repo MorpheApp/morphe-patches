@@ -100,13 +100,14 @@ public final class PlayerRoutes {
             if (platform != null && !platform.isEmpty()) {
                 client.put("platform", platform);
             }
+
             JSONObject user = new JSONObject();
             user.put("lockedSafetyMode", false);
-            if (detailsToFetch != null && detailsToFetch.isEmpty()) {
+            if (detailsToFetch != null && !detailsToFetch.isEmpty()) {
+                context.put("user", user);
+            } else {
                 client.put("hl", streamLocale.getLanguage());
                 client.put("gl", streamLocale.getCountry());
-            } else {
-                context.put("user", user);
             }
             context.put("client", client);
 
