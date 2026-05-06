@@ -96,7 +96,7 @@ public final class PlayerRoutes {
 
             JSONObject user = new JSONObject();
             user.put("lockedSafetyMode", false);
-            if (clientType.endpoint == GET_PLAYER_STREAMING_DATA || clientType.endpoint == GET_REEL_STREAMING_DATA) {
+            if (clientType.endpoint != GET_PLAYER_STREAMING_DATA && clientType.endpoint != GET_REEL_STREAMING_DATA) {
                 context.put("user", user);
             } else {
                 client.put("hl", streamLocale.getLanguage());
