@@ -641,7 +641,7 @@ public final class AlternativeThumbnailsPatch {
                 }).get();
                 Logger.printDebug(() -> "Verification took: " + (System.currentTimeMillis() - start) + "ms for image: " + imageURL);
             } catch (ExecutionException | InterruptedException ex) {
-                Logger.printInfo(() -> "Could not verify alt URL: " + imageURL, ex);
+                Logger.printDebug(() -> "Could not verify alt URL: " + imageURL, ex);
                 imageFileFound = false;
             }
 

@@ -16,5 +16,6 @@ val disableDRCAudioPatch = disableDRCAudioPatch(
 
         compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     },
-    preferenceScreen = PreferenceScreen.MISC
+    preferenceScreen = PreferenceScreen.MISC,
+    { true }
 )

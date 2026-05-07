@@ -67,6 +67,7 @@ Changes include:
     <string name="morphe_hide_album_cards_summary">Hides the album cards under the artist description</string>
     <string name="morphe_hide_artist_cards_title">Hide artist cards</string>
     <string name="morphe_hide_artist_cards_summary">Hides the artist card at the top of the search results</string>
+    <string name="morphe_hide_auto_dubbed_label_title">Hide \'Auto-dubbed\' label</string>
     <string name="morphe_hide_community_posts_title">Hide community posts</string>
     <string name="morphe_hide_compact_banner_title">Hide compact banners</string>
     <string name="morphe_hide_compact_banner_summary">Hides compact banners and spacing between some components</string>
@@ -79,7 +80,8 @@ Changes include:
     <string name="morphe_hide_floating_microphone_button_title">Hide floating microphone button</string>
     <string name="morphe_hide_floating_microphone_button_summary">Hides floating microphone button in the lower-right corner of search suggestions screen</string>
     <string name="morphe_hide_horizontal_shelves_title">Hide horizontal shelves</string>
-    <string name="morphe_hide_horizontal_shelves_summary">Hides horizontal shelves such as Breaking news, Community posts you may like, Continue watching, Explore more channels, For You, Latest videos, Shopping and Watch it again</string>
+    <string name="morphe_hide_horizontal_shelves_summary">Hides horizontal shelves such as Breaking news, Community posts you may like, Continue watching, Explore more channels, Explore more topics, For You, Latest videos, Most relevant, Posts from Creator\'s Community, Shopping and Watch it again</string>
+    <string name="morphe_hide_hyped_label_title">Hide Hyped label</string>
     <string name="morphe_hide_image_shelf_title">Hide image shelf</string>
     <string name="morphe_hide_image_shelf_summary">Hides image shelves in search results</string>
     <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
@@ -143,6 +145,7 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_attributes_section_title">Hide Attributes section</string>
     <string name="morphe_hide_attributes_section_summary">Hides Featured places, Games, Music, and People mentioned sections</string>
     <string name="morphe_hide_chapters_section_title">Hide Chapters section</string>
+    <string name="morphe_hide_corrections_section_title">Hide Corrections section</string>
     <string name="morphe_hide_course_progress_section_title">Hide \'Course progress\' section</string>
     <string name="morphe_hide_explore_section_title">Hide Explore section</string>
     <string name="morphe_hide_explore_section_summary">Hides the Explore this course and Explore the podcast sections</string>
@@ -164,6 +167,7 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_quizzes_section_title">Hide Quizzes section</string>
     <string name="morphe_hide_subscribe_button_title">Hide Subscribe button</string>
     <string name="morphe_hide_transcript_section_title">Hide Transcript section</string>
+    <string name="morphe_hide_video_details_section_title">Hide \'Video details\' section</string>
 
     <string name="morphe_hide_filter_bar_screen_title">Filter bar</string>
     <string name="morphe_hide_filter_bar_screen_summary">Choose where to hide the scrolling category chips</string>
@@ -356,6 +360,14 @@ Info: May not work on live streams"</string>
     <!-- interaction.reload.reloadVideoPatch -->
     <string name="morphe_reload_video_button_title">Show Reload video button</string>
     <string name="morphe_dismiss_player_not_available_toast">Video ID is unavailable. Please manually reload the video</string>
+
+    <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+    <string name="morphe_save_to_watch_later_button_title">Show Save to watch later</string>
+    <string name="morphe_save_to_watch_later_button_summary_on">Save to watch later button is shown</string>
+    <string name="morphe_save_to_watch_later_button_summary_off">Save to watch later button is not shown</string>
+    <string name="morphe_save_to_watch_later_success_toast">Video successfully saved in watch later playlist</string>
+    <string name="morphe_save_to_watch_later_already_exists_toast">This video is already saved in watch later playlist</string>
+    <string name="morphe_save_to_watch_later_error_toast">Cannot save this video in watch later playlist</string>
 
     <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
     <string name="morphe_disable_precise_seeking_gesture_title">Disable precise seeking gesture</string>
