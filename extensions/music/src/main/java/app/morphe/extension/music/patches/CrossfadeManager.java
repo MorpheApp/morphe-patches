@@ -1413,9 +1413,9 @@ public class CrossfadeManager {
                 Logger.printDebug(() -> "Ignoring vibration exception", ex);
             }
 
-            Utils.showToastShort(isNowPaused
-                    ? str("morphe_music_crossfade_paused_toast")
-                    : str("morphe_music_crossfade_resumed_toast"));
+            Utils.showToastShort(str(isNowPaused
+                    ? "morphe_music_crossfade_paused_toast"
+                    : "morphe_music_crossfade_resumed_toast"));
         }
     }
 
