@@ -319,15 +319,6 @@ public class SpoofVideoStreamsPatch {
             try {
                 StreamOrDetailsDataRequest request = StreamOrDetailsDataRequest.getStreamRequestForVideoId(videoId);
                 if (request != null) {
-                    // This hook is always called off the main thread,
-                    // but this can later be called for the same video ID from the main thread.
-                    // This is not a concern, since the fetch will always be finished
-                    // and never block the main thread.
-                    // But if debugging, then still verify this is the situation.
-                    if (BaseSettings.DEBUG.get() && !request.fetchStreamOrDetailsCompleted() && Utils.isCurrentlyOnMainThread()) {
-                        Logger.printException(() -> "Error: Blocking main thread");
-                    }
-
                     var stream = request.getStreamOrDetails();
                     if (stream != null) {
                         Logger.printDebug(() -> "Overriding video stream: " + videoId);
@@ -344,6 +335,7 @@ public class SpoofVideoStreamsPatch {
         return null;
     }
 
+    @Nullable
     public static StreamOrDetailsDataRequest fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
         Map<String, String> headers = currentVideoRequestHeader;
         if (headers == null) {

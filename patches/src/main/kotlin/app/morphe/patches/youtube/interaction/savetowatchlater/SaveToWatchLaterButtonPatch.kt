@@ -7,7 +7,6 @@
 
 package app.morphe.patches.youtube.interaction.savetowatchlater
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -19,19 +18,11 @@ import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
-import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
 private val saveToWatchLaterButtonResourcePatch = resourcePatch {
-    dependsOn(
-        settingsPatch,
-        legacyPlayerControlsPatch,
-    )
-
     execute {
-
         copyResources(
             "savetowatchlaterbutton",
             ResourceGroup(
@@ -56,8 +47,8 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
 ) {
     dependsOn(
         saveToWatchLaterButtonResourcePatch,
+        settingsPatch,
         legacyPlayerControlsPatch,
-        videoInformationPatch,
         playerOverlayButtonsSettingsPatch,
         bytecodePatch {
             finalize {
@@ -79,11 +70,5 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
 
         initializeTopControl(EXTENSION_BUTTON)
         injectVisibilityCheckCall(EXTENSION_BUTTON)
-
-        // Main activity is used to launch downloader intent.
-        YouTubeActivityOnCreateFingerprint.method.addInstruction(
-            0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->setMainActivity(Landroid/app/Activity;)V"
-        )
     }
 }

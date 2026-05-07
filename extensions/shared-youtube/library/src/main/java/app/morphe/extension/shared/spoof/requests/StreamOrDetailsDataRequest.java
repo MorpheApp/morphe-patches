@@ -450,10 +450,18 @@ public class StreamOrDetailsDataRequest {
         return future.isDone();
     }
 
-
     @Nullable
     public Object getStreamOrDetails() {
         try {
+            // This hook is always called off the main thread,
+            // but this can later be called for the same video ID from the main thread.
+            // This is not a concern, since the fetch will always be finished
+            // and never block the main thread.
+            // But if debugging, then still verify this is the situation.
+            if (BaseSettings.DEBUG.get() && !fetchStreamOrDetailsCompleted() && Utils.isCurrentlyOnMainThread()) {
+                Logger.printException(() -> "Error: Blocking main thread");
+            }
+
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getStreamOrDetails timed out", ex);
