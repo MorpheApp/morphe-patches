@@ -215,15 +215,24 @@ public class CustomBrandingPatch {
     }
 
     public static int getDefaultAppNameIndex() {
-        return userProvidedCustomName()
-                ? numberOfPresetAppNames()
-                : 1;
+        if (userProvidedCustomName()) {
+            // Custom name (last preset index).
+            return numberOfPresetAppNames();
+        }
+
+        // Fork default: preset index 2.
+        // Clamp for safety if custom branding is excluded (defaults to 1).
+        final int numberOfPresetNames = numberOfPresetAppNames();
+        if (numberOfPresetNames <= 1) {
+            return 1;
+        }
+        return Math.min(2, numberOfPresetNames);
     }
 
     public static BrandingTheme getDefaultIconStyle() {
         return userProvidedCustomIcon()
-                ? BrandingTheme.CUSTOM
-                : BrandingTheme.BLACK;
+            ? BrandingTheme.CUSTOM
+            : BrandingTheme.ORIGINAL;
     }
 
     /**

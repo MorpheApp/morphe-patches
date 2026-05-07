@@ -1,12 +1,11 @@
 name: Crowdin pull and merge
 on:
-  schedule:
-    - cron: "0 */12 * * *" # every 12 hours
   workflow_dispatch:
 
 jobs:
   pull:
     name: Pull translations from Crowdin
+    if: ${{ false }}
     permissions:
       contents: write
     runs-on: ubuntu-latest
@@ -34,7 +33,7 @@ jobs:
 
   merge:
     name: Squash merge Crowdin into Dev
-    if: github.event_name == 'workflow_dispatch'
+    if: ${{ false }}
     needs: pull
     permissions:
       contents: write

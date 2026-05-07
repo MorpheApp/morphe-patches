@@ -5,8 +5,13 @@
 * **Fork customization:** Set preferred YouTube and YouTube Music defaults for Premium branding
   - YouTube: Set MORPHE_YOUTUBE_PACKAGE_NAME to `com.google.android.apps.youtube.kids`
   - YouTube Music: Set MORPHE_MUSIC_PACKAGE_NAME to `app.revanced.android.apps.youtube.music`
+  - Default custom branding: app name preset index 2, icon style Original
+  - Branding entries: YouTube "Premium Youtube", Music "YT Music Premium"
+  - Shared settings labels: "Extra Settings" / "Premium Settings" and Premium import/export wording
   - Video quality, playback speed, swipe controls, shorts, and seekbar features enabled by default
   - Disabled environment check warnings in CheckEnvironmentPatch
+  - Disabled Crowdin pull/push workflows for the fork
+  - Release workflow: fix action version pins and use `github.token` for semantic-release
 
 # [1.25.0](https://github.com/MorpheApp/morphe-patches/compare/v1.24.0...v1.25.0) (2026-05-02)
 
