@@ -261,7 +261,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 key = "morphe_hide_horizontal_shelves",
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
-            SwitchPreference("morphe_hide_hyped_label"),
+            SwitchPreference("morphe_hide_hyped_label", summaryKey = null),
             SwitchPreference("morphe_hide_image_shelf"),
             SwitchPreference("morphe_hide_latest_videos_button"),
             SwitchPreference("morphe_hide_mix_playlists", summaryKey = null),
