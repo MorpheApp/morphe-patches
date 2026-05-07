@@ -238,9 +238,7 @@ public abstract class BaseSearchResultItem {
                     return staticSum;
                 }
             }
-            if (preference instanceof SwitchPreference) {
-                return originalSummary != null ? originalSummary : "";
-            } else if (preference instanceof ListPreference listPref) {
+            if (preference instanceof ListPreference listPref) {
                 String value = listPref.getValue();
                 CharSequence[] entries = listPref.getEntries();
                 CharSequence[] entryValues = listPref.getEntryValues();
