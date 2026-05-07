@@ -1505,6 +1505,11 @@ Begrænsning: Brug af tilbage-knappen på værktøjslinjen fungerer muligvis ikk
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts afspilles automatisk i baggrunden</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts i baggrunden gentages</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Deaktiver fortsættelse af miniplayer</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\'Fortsæt med at se\' vises ikke ved app-start</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'Fortsæt med at se\' kan vises ved app-opstart</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Fortsæt med at se' er en YouTube Premium-funktion
+• Denne indstilling kan ikke tvinge denne Premium-funktion til at være aktiveret"</string>
   <string name="morphe_miniplayer_screen_title">Mini-afspiller</string>
   <string name="morphe_miniplayer_screen_summary">Skift stilen på den minimerede afspiller i appen</string>
   <string name="morphe_miniplayer_type_title">Type af miniplayer</string>

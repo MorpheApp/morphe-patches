@@ -1498,6 +1498,11 @@ Beperking: Die terug-knoppie op die nutsbalk werk moontlik nie."</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts agtergrondkijk sal outospel</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts agtergrondkijk sal herhaal</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Deaktiveer hervatting van mini-speler</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\'Gaan kyk\' sal nie vertoon word wanneer die app begin nie</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\"Gaan kyk\" kan by die begin van die app vertoon word</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• \"Gaan kyk\" is 'n YouTube Premium kenmerk
+• Hierdie instelling kan nie hierdie Premium kenmerk aanskakel nie"</string>
   <string name="morphe_miniplayer_screen_title">Mini-speler</string>
   <string name="morphe_miniplayer_screen_summary">Verander die styl van die in-app geminimaliseerde speler</string>
   <string name="morphe_miniplayer_type_title">Mini-speler tipe</string>

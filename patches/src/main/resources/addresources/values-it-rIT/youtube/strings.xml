@@ -1504,6 +1504,11 @@ Limitazione: l'utilizzo del pulsante Indietro sulla barra degli strumenti potreb
   <string name="morphe_shorts_autoplay_background_summary_on">Gli Short in background verranno riprodotti automaticamente</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Gli Short in background si ripeteranno</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Disabilita la ripresa del miniplayer</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Continua a guardare\" non verrà visualizzato all\'avvio dell\'app</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'Continua a guardare\' potrebbe essere visualizzato all\'avvio dell\'app</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Continua a guardare' è una funzionalità di YouTube Premium
+• Questa impostazione non può forzare l'attivazione di questa funzionalità Premium"</string>
   <string name="morphe_miniplayer_screen_title">Miniplayer</string>
   <string name="morphe_miniplayer_screen_summary">Modifica lo stile del player minimizzato in-app</string>
   <string name="morphe_miniplayer_type_title">Tipo di Miniplayer</string>

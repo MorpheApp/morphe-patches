@@ -1508,6 +1508,11 @@ Rajoitus: Työkalupalkin takaisin-painikkeen käyttäminen ei välttämättä to
   <string name="morphe_shorts_autoplay_background_summary_on">Shortsit toistetaan automaattisesti taustalla</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shortsit toistuvat uudelleen taustalla</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Poista minisoittimen jatkamisen käytöstä</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Jatka katselua\" -tekstiä ei näytetä sovelluksen käynnistyessä</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\"Jatka katsomista\" -teksti voi näkyä sovelluksen käynnistyessä</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• \"Jatka katsomista\" on YouTube Premium -ominaisuus
+• Tämän asetuksen avulla ominaisuutta ei voi pakottaa päälle"</string>
   <string name="morphe_miniplayer_screen_title">Minisoitin</string>
   <string name="morphe_miniplayer_screen_summary">Muuta sovelluksen sisäisen pienennetyn soittimen tyyliä</string>
   <string name="morphe_miniplayer_type_title">Minisoittimen tyyppi</string>

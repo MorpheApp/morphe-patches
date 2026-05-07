@@ -38,7 +38,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_summary_off">동영상 광고가 표시됩니다</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">크로스페이드</string>
-  <string name="morphe_music_crossfade_screen_summary">트랙을 서로 부드럽게 이어지도록 재생합니다</string>
+  <string name="morphe_music_crossfade_screen_summary">트랙을 서로 부드럽게 이어지도록 재생할 수 있습니다</string>
   <string name="morphe_music_crossfade_enabled_title">크로스페이드 활성화하기</string>
   <string name="morphe_music_crossfade_enabled_summary_on">트랙이 서로 크로스페이드로 이어집니다</string>
   <string name="morphe_music_crossfade_enabled_summary_off">크로스페이드를 비활성화합니다</string>
@@ -124,8 +124,8 @@ VazerOG에 의해 기능이 구현되었습니다"</string>
   <string name="morphe_music_miniplayer_previous_button_summary_off">미니 플레이어에서 이전 재생 버튼을 표시하지 않습니다</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">강제된 미니 플레이어 활성화하기</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">다른 트랙으로 변경돼도 미니 플레이어는 최소화된 상태로 유지됩니다</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">다른 트랙으로 변경되면 미니 플레이어가 전체 화면으로 펼쳐집니다</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_on">다른 트랙으로 변경되면 미니 플레이어는 최소화된 상태로 유지됩니다</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary_off">다른 트랙으로 변경되면 미니 플레이어는 전체 화면으로 펼쳐집니다</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">하단바</string>
   <string name="morphe_music_navigation_bar_screen_summary">하단바에서 버튼을 숨기거나 변경할 수 있습니다</string>

@@ -10,21 +10,17 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.cloneMutableAndPreserveParameters
 import app.morphe.util.findInstructionIndicesReversed
-import app.morphe.util.getMutableMethod
-import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/RemoveViewerDiscretionDialogPatch;"
+private const val EXTENSION_CLASS =
+    "Lapp/morphe/extension/youtube/patches/RemoveViewerDiscretionDialogPatch;"
 
 val removeViewerDiscretionDialogPatch = bytecodePatch(
     name = "Remove viewer discretion dialog",
     description = "Adds an option to remove the dialog that appears when opening a video that has been age-restricted " +
-        "by accepting it automatically. This does not bypass the age restriction.",
+            "by accepting it automatically. This does not bypass the age restriction.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -39,10 +35,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
         )
 
         AllowControversialContentFingerprint.apply {
-            val allowControversialContentMethod = instructionMatches[2]
-                .getInstruction<ReferenceInstruction>()
-                .getReference<MethodReference>()!!
-                .getMutableMethod()
+            val allowControversialContentMethod = instructionMatches[2].getMethodCalled()
 
             allowControversialContentMethod.apply {
                 findInstructionIndicesReversed(Opcode.RETURN).forEach { index ->

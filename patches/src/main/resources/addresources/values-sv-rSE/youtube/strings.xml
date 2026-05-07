@@ -233,10 +233,10 @@ Om YouTube-doodles visas kan det hindra anpassade sidhuvuden från att visas."</
   <string name="morphe_hide_featured_videos_section_title">Dölj utvalda videor</string>
   <string name="morphe_hide_featured_videos_section_summary_on">Avsnittet med utvalda videor är dolt</string>
   <string name="morphe_hide_featured_videos_section_summary_off">Avsnittet med utvalda videor visas</string>
-  <string name="morphe_hide_feed_flyout_menu_title">Aktivera filter för flyout-menyn i flöden</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_on">Filter för flyout-menyn i flöden är aktiverat</string>
-  <string name="morphe_hide_feed_flyout_menu_summary_off">Filter för flyout-menyn i flöden är inaktiverat</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filter för flyout-menyn i flöden</string>
+  <string name="morphe_hide_feed_flyout_menu_title">Aktivera filter för flyout-meny i flöden</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_on">Filter för flyout-meny i flöden är aktiverat</string>
+  <string name="morphe_hide_feed_flyout_menu_summary_off">Filter för flyout-meny i flöden är inaktiverat</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Filter för flyout-meny i flöden</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Ange namnen på de objekt i flyout-menyn som ska filtreras bort, ett per rad</string>
   <string name="morphe_hide_gaming_section_title">Dölj Gaming</string>
   <string name="morphe_hide_gaming_section_summary_on">Gaming-avsnittet är dolt</string>
@@ -601,8 +601,8 @@ Justera volymen genom att svepa vertikalt till höger på skärmen"</string>
   <string name="morphe_swipe_change_video_summary_off">Svep i helskärmsläge byter inte till nästa/föregående video</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_action_buttons_screen_title">Åtgärdsknappar</string>
-  <string name="morphe_action_buttons_screen_summary">Dölj och visa åtgärdsknappar i helskärmsläget och stående läget</string>
-  <string name="morphe_portrait_buttons">Knappar i stående läget</string>
+  <string name="morphe_action_buttons_screen_summary">Dölj och visa åtgärdsknappar i helskärmsläge och stående läge</string>
+  <string name="morphe_portrait_buttons">Knappar i stående läge</string>
   <string name="morphe_disable_like_subscribe_glow_title">Inaktivera lysande knappar för Gilla och Prenumerera</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Knapparna Gilla och Prenumerera lyser inte när de nämns</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Knapparna Gilla och Prenumerera lyser när de nämns</string>
@@ -668,7 +668,7 @@ Justera volymen genom att svepa vertikalt till höger på skärmen"</string>
   <string name="morphe_hide_save_button_title">Dölj Spara</string>
   <string name="morphe_hide_save_button_summary_on">Knappen Spara är dold</string>
   <string name="morphe_hide_save_button_summary_off">Knappen Spara visas</string>
-  <string name="morphe_fullscreen_buttons">Knappar i helskärmsläget</string>
+  <string name="morphe_fullscreen_buttons">Knappar i helskärmsläge</string>
   <string name="morphe_hide_quick_actions_title">Dölj åtgärdsfält</string>
   <string name="morphe_hide_quick_actions_summary_on">Åtgärdsfältet är dolt</string>
   <string name="morphe_hide_quick_actions_summary_off">Åtgärdsfältet visas</string>
@@ -871,9 +871,9 @@ Tryck länge för att öppna Morphe-inställningarna"</string>
   <string name="morphe_hide_player_flyout_speed_summary_on">Menyn Uppspelningshastighet är dold</string>
   <string name="morphe_hide_player_flyout_speed_summary_off">Menyn Uppspelningshastighet visas</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-  <string name="morphe_hide_player_flyout_lock_screen_title">Dölj Låsa skärmen</string>
-  <string name="morphe_hide_player_flyout_lock_screen_summary_on">Menyn Låsa skärmen är dold</string>
-  <string name="morphe_hide_player_flyout_lock_screen_summary_off">Menyn Låsa skärmen visas</string>
+  <string name="morphe_hide_player_flyout_lock_screen_title">Dölj Lås skärmen</string>
+  <string name="morphe_hide_player_flyout_lock_screen_summary_on">Menyn Lås skärmen är dold</string>
+  <string name="morphe_hide_player_flyout_lock_screen_summary_off">Menyn Lås skärmen visas</string>
   <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Dölj Lyssna med YouTube Music</string>
   <string name="morphe_hide_player_flyout_listen_with_youtube_music_summary_on">Menyn Lyssna med YouTube Music är dold</string>
@@ -1505,6 +1505,11 @@ Begränsning: Bakåtknappen i verktygsfältet kanske inte fungerar"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts-videor spelas upp automatiskt i bakgrunden</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts-videor upprepas i bakgrunden</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Inaktivera att minispelaren fortsätter</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">Fortsätt titta visas inte vid appstart</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">Fortsätt titta kan visas vid appstart</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• Fortsätt titta är en YouTube Premium-funktion
+• Den här inställningen kan inte tvinga aktivering av den här Premium-funktionen"</string>
   <string name="morphe_miniplayer_screen_title">Minispelare</string>
   <string name="morphe_miniplayer_screen_summary">Ändra stilen på den minimerade spelaren i appen</string>
   <string name="morphe_miniplayer_type_title">Minispelartyp</string>
@@ -1641,11 +1646,11 @@ Om du aktiverar detta kan högre videokvaliteter låsas upp"</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_on">Zoomhaptik är inaktiverad</string>
   <string name="morphe_disable_haptic_feedback_zoom_summary_off">Zoomhaptik är aktiverad</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
-  <string name="morphe_notification_media_screen_title">Mediekontroller i aviseringar</string>
-  <string name="morphe_notification_media_screen_summary">Dölj komponenter för mediekontroll på låsskärmen</string>
+  <string name="morphe_notification_media_screen_title">Mediestyrning i aviseringar</string>
+  <string name="morphe_notification_media_screen_summary">Dölj komponenter för mediestyrning på låsskärmen</string>
   <string name="morphe_hide_notification_media_prev_next_title">Dölj knapparna Föregående och Nästa</string>
-  <string name="morphe_hide_notification_media_prev_next_summary_on">Knapparna Föregående och Nästa är dolda i medieaviseringen, på låsskärmen och i hörlurskontroller</string>
-  <string name="morphe_hide_notification_media_prev_next_summary_off">Knapparna Föregående och Nästa visas i aviseringen, på låsskärmen och i hörlurskontroller</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_on">Knapparna Föregående och Nästa är dolda i medieaviseringen, på låsskärmen och för hörlursstyrning</string>
+  <string name="morphe_hide_notification_media_prev_next_summary_off">Knapparna Föregående och Nästa visas i aviseringen, på låsskärmen och för hörlursstyrning</string>
   <string name="morphe_disable_notification_media_seekbar_title">Inaktivera sökreglaget</string>
   <string name="morphe_disable_notification_media_seekbar_summary_on">Sökreglaget i medieaviseringen och på låsskärmen går inte att dra</string>
   <string name="morphe_disable_notification_media_seekbar_summary_off">Sökreglaget i medieaviseringen och på låsskärmen går inte att dra</string>

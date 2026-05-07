@@ -1504,6 +1504,11 @@ Ograničenje: Korišćenje dugmeta „Nazad” na traci sa alatkama možda neće
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts videi će se automatski puštati u pozadini</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts videi će se ponavljati u pozadini</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Onemogući nastavak reprodukcije mini plejera</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Nastavi gledanje\" neće biti prikazano prilikom pokretanja aplikacije</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\"Nastavi gledanje\" može da se prikaže prilikom pokretanja aplikacije</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• \"Nastavi gledanje\" je funkcionalnost YouTube Premium-a
+• Ova postavka ne može da uključi ovu Premium funkcionalnost"</string>
   <string name="morphe_miniplayer_screen_title">Mini-plejer</string>
   <string name="morphe_miniplayer_screen_summary">Promenite stil minimiziranog plejera u aplikaciji</string>
   <string name="morphe_miniplayer_type_title">Tip mini-plejera</string>

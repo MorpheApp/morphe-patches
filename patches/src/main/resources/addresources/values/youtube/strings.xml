@@ -1582,6 +1582,11 @@ Limitation: Using the back button on the toolbar may not work"</string>
     <string name="morphe_shorts_autoplay_background_summary_off">Shorts background play will repeat</string>
 
     <!-- layout.miniplayer.miniplayerPatch -->
+    <string name="morphe_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
+    <string name="morphe_miniplayer_disable_resuming_summary_on">\'Continue watching\' will not show on app startup</string>
+    <string name="morphe_miniplayer_disable_resuming_summary_off">\'Continue watching\' can show on app startup</string>
+    <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Continue watching' is a YouTube Premium feature
+• This setting cannot force on this Premium feature"</string>
     <string name="morphe_miniplayer_screen_title">Miniplayer</string>
     <string name="morphe_miniplayer_screen_summary">Change the style of the in-app minimized player</string>
     <string name="morphe_miniplayer_type_title">Miniplayer type</string>

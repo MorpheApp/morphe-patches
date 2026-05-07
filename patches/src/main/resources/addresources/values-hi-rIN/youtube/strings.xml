@@ -1500,6 +1500,11 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">शॉर्ट्स बैकग्राउंड प्ले ऑटोप्ले होगा</string>
   <string name="morphe_shorts_autoplay_background_summary_off">शॉर्ट्स बैकग्राउंड प्ले दोहराएगा</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">मिनीप्लेयर में फिर से शुरू करने की सुविधा बंद करें</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">ऐप शुरू होने पर \'देखना जारी रखें\' नहीं दिखेगा</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">ऐप शुरू होने पर \'जारी रखना\' दिखाया जा सकता है</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'जारी रखना' YouTube Premium की एक सुविधा है
+• यह सेटिंग इस प्रीमियम सुविधा को बाध्य नहीं कर सकती है"</string>
   <string name="morphe_miniplayer_screen_title">मिनीप्लेयर</string>
   <string name="morphe_miniplayer_screen_summary">ऐप में छोटा खिलाड़ी शैली बदलें</string>
   <string name="morphe_miniplayer_type_title">मिनीप्लेयर प्रकार</string>

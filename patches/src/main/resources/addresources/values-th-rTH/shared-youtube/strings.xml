@@ -124,4 +124,7 @@ Second \"item\" text"</string>
   <string name="morphe_replace_music_with_youtube_title">เปลี่ยนลิงก์การแชร์เป็น youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_on">ลิงก์ที่แชร์ใช้ youtube.com</string>
   <string name="morphe_replace_music_with_youtube_summary_off">ลิงก์ที่แชร์ใช้ music.youtube.com</string>
+  <string name="morphe_replace_links_with_shortener_title">เปลี่ยนลิงก์การแชร์เป็น youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary_on">ลิงก์สตรีมสดและ Shorts ที่แชร์ใช้ youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary_off">ลิงก์ไลฟ์สตรีมและ Shorts ที่แชร์จะใช้ URL เดิม</string>
 </resources>

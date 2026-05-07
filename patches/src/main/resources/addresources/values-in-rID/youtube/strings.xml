@@ -1503,6 +1503,11 @@ Batasan: Menggunakan tombol kembali pada toolbar mungkin tidak berfungsi"</strin
   <string name="morphe_shorts_autoplay_background_summary_on">Pemutaran latar belakang Shorts akan diputar otomatis</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Pemutaran latar belakang Shorts akan diulangi</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Nonaktifkan melanjutkan miniplayer</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Lanjutkan menonton\" tidak akan ditampilkan saat aplikasi dimulai</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'Lanjutkan menonton\' dapat ditampilkan saat aplikasi dimulai</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Lanjutkan menonton' adalah fitur YouTube Premium
+• Pengaturan ini tidak dapat memaksa mengaktifkan fitur Premium ini"</string>
   <string name="morphe_miniplayer_screen_title">Pemutar Mini</string>
   <string name="morphe_miniplayer_screen_summary">Ubah gaya pemutar mini dalam aplikasi</string>
   <string name="morphe_miniplayer_type_title">Jenis pemutar mini</string>

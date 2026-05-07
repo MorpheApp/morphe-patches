@@ -3,6 +3,7 @@
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.StringComparisonType
@@ -10,18 +11,12 @@ import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-
-internal object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
-    returnType = "V",
-    filters = listOf(
-        string("timed_markers_width"),
-    )
-)
 
 internal object PlaybackSpeedOnItemClickFingerprint : Fingerprint(
     classFingerprint = PlaybackSpeedOnItemClickParentFingerprint,
@@ -77,20 +72,28 @@ internal object SeekFingerprint : Fingerprint(
     )
 )
 
+private object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
+    name = "onDraw",
+    returnType = "V",
+    filters = listOf(
+        string("timed_markers_width")
+    )
+)
+
 internal object VideoLengthFingerprint : Fingerprint(
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.MOVE_RESULT_WIDE,
-        Opcode.CMP_LONG,
-        Opcode.IF_LEZ,
-        Opcode.IGET_OBJECT,
-        Opcode.CHECK_CAST,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_WIDE,
-        Opcode.GOTO,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_WIDE,
-        Opcode.CONST_4,
-        Opcode.INVOKE_VIRTUAL,
+    classFingerprint = CreateVideoPlayerSeekbarFingerprint,
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall("Landroid/graphics/Rect;->set(Landroid/graphics/Rect;)V"),
+
+        methodCall(returnType = "J"),
+        methodCall(returnType = "J", location = MatchAfterWithin(5)),
+        methodCall(returnType = "J", location = MatchAfterWithin(10)),
+        methodCall(returnType = "J", location = MatchAfterWithin(10)),
+
+        methodCall(returnType = "Z", parameters = listOf()),
+        opcode(Opcode.CMP_LONG, location = MatchAfterWithin(8))
     )
 )
 

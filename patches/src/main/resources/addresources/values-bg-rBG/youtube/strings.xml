@@ -1496,6 +1496,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Коротките видеа ще се възпроизвеждат в фонови режим</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Коротките видеа ще се повтаряват в фонови режим</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Изключване на продължаването на мини-плеъра</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\"Продължи гледането\" няма да се показва при стартиране на приложението</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'Продължаване на гледането\' може да се показва при стартиране на приложението</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• „Продължаване на гледането“ е функция на YouTube Premium
+• Тази настройка не може да активира принудително тази Premium функция"</string>
   <string name="morphe_miniplayer_screen_title">Миниплеер</string>
   <string name="morphe_miniplayer_screen_summary">Променяване на стила на вграденния плеер</string>
   <string name="morphe_miniplayer_type_title">Тип на миниплеера</string>

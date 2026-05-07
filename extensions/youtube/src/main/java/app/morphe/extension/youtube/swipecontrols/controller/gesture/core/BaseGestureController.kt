@@ -44,6 +44,11 @@ abstract class BaseGestureController(
             return false
         }
 
+        // ignore if status bar is visible
+        if (controller.statusBarVisible) {
+            return false
+        }
+
         // create a copy of the event so we can modify it
         // without causing any issues downstream
         val me = MotionEvent.obtain(motionEvent)

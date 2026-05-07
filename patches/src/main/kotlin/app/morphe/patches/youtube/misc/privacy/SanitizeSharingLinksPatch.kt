@@ -16,5 +16,6 @@ val sanitizeSharingLinksPatch = sanitizeSharingLinksPatch(
 
         compatibleWith(COMPATIBILITY_YOUTUBE)
     },
-    preferenceScreen = PreferenceScreen.MISC
+    preferenceScreen = PreferenceScreen.MISC,
+    replaceLinksWithShortener = true
 )

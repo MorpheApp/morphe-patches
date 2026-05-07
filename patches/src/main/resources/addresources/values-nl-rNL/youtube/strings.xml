@@ -1503,6 +1503,11 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_shorts_autoplay_background_summary_on">Shorts op de achtergrond worden automatisch afgespeeld</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Shorts op de achtergrond worden herhaald</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Schakel het hervatten van de miniplayer uit</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">\'Doorgaan met kijken\' wordt niet weergegeven bij het starten van de app</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">\'Continue watching\' kan getoond worden bij het opstarten van de app</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Continue watching' is een YouTube Premium functie
+• Deze instelling kan deze Premium functie niet activeren"</string>
   <string name="morphe_miniplayer_screen_title">Minispeler</string>
   <string name="morphe_miniplayer_screen_summary">De stijl van de geminimaliseerde speler in de app wijzigen</string>
   <string name="morphe_miniplayer_type_title">\"miniplayer\"-type</string>

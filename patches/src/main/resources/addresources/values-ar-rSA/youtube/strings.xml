@@ -118,9 +118,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_movies_section_summary_off">يتم عرض قسم الأفلام</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
-  <string name="morphe_hide_notify_me_button_title">إخفاء زر \'تنبيهي\'</string>
-  <string name="morphe_hide_notify_me_button_summary_on">تم إخفاء زر تنبيهي</string>
-  <string name="morphe_hide_notify_me_button_summary_off">يتم عرض زر تنبيهي</string>
+  <string name="morphe_hide_notify_me_button_title">إخفاء زر \'إرسال إشعار إليّ\'</string>
+  <string name="morphe_hide_notify_me_button_summary_on">تم إخفاء زر إرسال إشعار إليّ</string>
+  <string name="morphe_hide_notify_me_button_summary_off">يتم عرض زر إشعار إليّ</string>
   <string name="morphe_hide_playables_title">إخفاء هيّا نلعب</string>
   <string name="morphe_hide_playables_summary_on">تم إخفاء هيّا نلعب</string>
   <string name="morphe_hide_playables_summary_off">يتم عرض هيّا نلعب</string>
@@ -1049,9 +1049,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_tagged_products_title">إخفاء المنتجات الموسومة</string>
   <string name="morphe_hide_shorts_tagged_products_summary_on">تم إخفاء المنتجات الموسومة</string>
   <string name="morphe_hide_shorts_tagged_products_summary_off">يتم عرض المنتجات الموسومة</string>
-  <string name="morphe_hide_shorts_upcoming_button_title">إخفاء زر القادم</string>
-  <string name="morphe_hide_shorts_upcoming_button_summary_on">تم إخفاء زر القادم</string>
-  <string name="morphe_hide_shorts_upcoming_button_summary_off">يتم عرض زر القادم</string>
+  <string name="morphe_hide_shorts_upcoming_button_title">إخفاء زر الفيديوهات القادمة</string>
+  <string name="morphe_hide_shorts_upcoming_button_summary_on">تم إخفاء زر الفيديوهات القادمة</string>
+  <string name="morphe_hide_shorts_upcoming_button_summary_off">يتم عرض زر الفيديوهات القادمة</string>
   <string name="morphe_hide_shorts_use_sound_button_title">إخفاء زر \'استخدام هذا الصوت\'</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_on">تم إخفاء زر استخدام هذا الصوت</string>
   <string name="morphe_hide_shorts_use_sound_button_summary_off">يتم عرض زر استخدام هذا الصوت</string>
@@ -1504,6 +1504,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">سيتم تشغيل فيديوهات Shorts تلقائيًا في الخلفية</string>
   <string name="morphe_shorts_autoplay_background_summary_off">سيتم تكرار فيديوهات Shorts في الخلفية</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">تعطيل استئناف مشغل الفيديو المصغر</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">لن يظهر خيار \'متابعة المشاهدة\' عند بدء تشغيل التطبيق</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">يمكن أن يظهر خيار \'متابعة المشاهدة\' عند بدء تشغيل التطبيق</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'متابعة المشاهدة' هي ميزة من YouTube Premium
+• لا يمكن لهذا الإعداد فرض تشغيل ميزة Premium هذه"</string>
   <string name="morphe_miniplayer_screen_title">المشغل المصغر</string>
   <string name="morphe_miniplayer_screen_summary">تغيير نمط المشغل المصغر داخل التطبيق</string>
   <string name="morphe_miniplayer_type_title">نوع المشغل المصغر</string>

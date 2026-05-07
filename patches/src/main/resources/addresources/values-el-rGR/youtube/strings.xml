@@ -1504,6 +1504,11 @@ Second \"item\" text"</string>
   <string name="morphe_shorts_autoplay_background_summary_on">Τα επόμενα Shorts θα αναπαράγονται αυτόματα στο παρασκήνιο</string>
   <string name="morphe_shorts_autoplay_background_summary_off">Τα Shorts στο παρασκήνιο θα επαναλαμβάνονται</string>
   <!-- layout.miniplayer.miniplayerPatch -->
+  <string name="morphe_miniplayer_disable_resuming_title">Απενεργοποίηση συνέχισης του miniplayer</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_on">Το \'Συνέχεια παρακολούθησης\' δεν θα εμφανίζεται κατά την εκκίνηση της εφαρμογής</string>
+  <string name="morphe_miniplayer_disable_resuming_summary_off">Το \"Συνέχισε να παρακολουθείς\" μπορεί να εμφανιστεί κατά την εκκίνηση της εφαρμογής</string>
+  <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• Το \"Συνέχισε να παρακολουθείς\" είναι μια λειτουργία του YouTube Premium
+• Αυτή η ρύθμιση δεν μπορεί να ενεργοποιήσει αυτήν την λειτουργία Premium"</string>
   <string name="morphe_miniplayer_screen_title">Ελαχιστοποιημένη οθόνη αναπαραγωγής</string>
   <string name="morphe_miniplayer_screen_summary">Αλλαγή του στυλ της ελαχιστοποιημένης οθόνης αναπαραγωγής της εφαρμογής</string>
   <string name="morphe_miniplayer_type_title">Τύπος ελαχιστοποιημένης οθόνης αναπαραγωγής</string>
