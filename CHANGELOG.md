@@ -1,3 +1,31 @@
+# [1.27.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.26.1-dev.3...v1.27.0-dev.1) (2026-05-07)
+
+
+### Features
+
+* **YouTube:** Add experimental support for `21.19.280` ([d1c7ac7](https://github.com/MorpheApp/morphe-patches/commit/d1c7ac7b1580ddcc5a2e47211cfb572106b5ffce))
+
+## [1.26.1-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.26.1-dev.2...v1.26.1-dev.3) (2026-05-06)
+
+
+### Bug Fixes
+
+* Add Reddit patch exception message for users who ignore the Manager update prompt ([875f10a](https://github.com/MorpheApp/morphe-patches/commit/875f10ab1bc502a73e271c407138511e37b90fba))
+
+## [1.26.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.26.1-dev.1...v1.26.1-dev.2) (2026-05-06)
+
+
+### Bug Fixes
+
+* Add YouTube patch exception message for users who ignore the Manager update prompt ([296e137](https://github.com/MorpheApp/morphe-patches/commit/296e137e63f79493fedea773c1d415cc1da94064))
+
+## [1.26.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.26.0...v1.26.1-dev.1) (2026-05-06)
+
+
+### Bug Fixes
+
+* Add patch exception message for users who ignore the Manager update prompt ([87beb32](https://github.com/MorpheApp/morphe-patches/commit/87beb32f10b05fd960e86cf393bbd14bba9460b5))
+
 # [1.26.0](https://github.com/MorpheApp/morphe-patches/compare/v1.25.0...v1.26.0) (2026-05-05)
 
 

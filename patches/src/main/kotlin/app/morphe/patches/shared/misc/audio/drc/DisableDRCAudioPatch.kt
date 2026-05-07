@@ -24,6 +24,7 @@ private const val EXTENSION_CLASS =
 internal fun disableDRCAudioPatch(
     block: BytecodePatchBuilder.() -> Unit,
     preferenceScreen: BasePreferenceScreen.Screen,
+    overrideNormalizationFlag: BytecodePatchBuilder.() -> Boolean
 ) = bytecodePatch(
     name = "Disable DRC audio",
     description = "Adds an option to disable DRC (Dynamic Range Compression) audio."
@@ -89,12 +90,14 @@ internal fun disableDRCAudioPatch(
             }
         }
 
-        // If this flag is enabled, the DRC level will depend on other values besides loudnessDb.
-        VolumeNormalizationConfigFingerprint.let {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->disableDrcAudioFeatureFlag(Z)Z"
-            )
+        if (overrideNormalizationFlag()) {
+            // If this flag is enabled, the DRC level will depend on other values besides loudnessDb.
+            VolumeNormalizationConfigFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->disableDrcAudioFeatureFlag(Z)Z"
+                )
+            }
         }
     }
 }

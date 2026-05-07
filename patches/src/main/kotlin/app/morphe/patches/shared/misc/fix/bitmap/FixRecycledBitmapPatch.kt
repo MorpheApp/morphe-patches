@@ -11,8 +11,6 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
-import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.fiveRegisters
 
@@ -23,13 +21,7 @@ val fixRecycledBitmapPatch = bytecodePatch(
     description = "Fixes recycled bitmap crashes by routing putBitmap through the extension class."
 ) {
 
-    dependsOn(versionCheckPatch)
-
     execute {
-        if (!is_20_31_or_greater) {
-            return@execute
-        }
-
         val putBitmapCall = methodCall(
             definingClass = $$"Landroid/media/MediaMetadata$Builder;",
             name = "putBitmap",
@@ -41,7 +33,7 @@ val fixRecycledBitmapPatch = bytecodePatch(
             custom = { _, classDef ->
                 !classDef.type.startsWith("Lapp/morphe/extension")
             }
-        ).matchAll().forEach { match ->
+        ).matchAllOrNull()?.forEach { match ->
             match.method.apply {
                 findInstructionIndicesReversedOrThrow(putBitmapCall).forEach { index ->
                     val registers = fiveRegisters(index)
