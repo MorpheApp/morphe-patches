@@ -20,6 +20,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
+import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
 public final class SaveToWatchLaterPatch {
@@ -57,27 +58,30 @@ public final class SaveToWatchLaterPatch {
      */
     public static void saveVideo() {
         try {
-            SpoofVideoStreamsPatch.fetchDetails(
+            String videoId = VideoInformation.getVideoId();
+            StreamOrDetailsDataRequest request = SpoofVideoStreamsPatch.fetchDetails(
                     PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST,
-                    VideoInformation.getVideoId()
+                    videoId
             );
 
-            String saveToWatchLaterResponse = SpoofVideoStreamsPatch.getDetailsData(
-                    VideoInformation.getVideoId());
-
-            if (saveToWatchLaterResponse != null && !saveToWatchLaterResponse.isEmpty()) {
-                Logger.printDebug(() -> "watch later response: " + saveToWatchLaterResponse);
-
-                if (saveToWatchLaterResponse.contains("STATUS_SUCCEEDED")) {
-                    Utils.showToastShort(str(
-                            saveToWatchLaterResponse.contains("\"playlistEditResults\"")
-                                    ? "morphe_save_to_watch_later_success_toast"
-                                    : "morphe_save_to_watch_later_already_exists_toast"));
-
-                }
-
-                Logger.printDebug(() -> saveToWatchLaterResponse);
+            if (request == null) {
+                Logger.printDebug(() -> "Could not save video, fetch details are null: " + videoId);
+                return;
             }
+
+            Utils.runOnBackgroundThread(() -> {
+                String saveToWatchLaterResponse = (String) request.getStreamOrDetails();
+                if (saveToWatchLaterResponse != null && !saveToWatchLaterResponse.isEmpty()) {
+                    Logger.printDebug(() -> "watch later response: " + saveToWatchLaterResponse);
+
+                    if (saveToWatchLaterResponse.contains("STATUS_SUCCEEDED")) {
+                        Utils.showToastShort(str(
+                                saveToWatchLaterResponse.contains("\"playlistEditResults\"")
+                                        ? "morphe_save_to_watch_later_success_toast"
+                                        : "morphe_save_to_watch_later_already_exists_toast"));
+                    }
+                }
+            });
         } catch (Exception ex) {
             Logger.printDebug(() -> "Could not fetch video details", ex);
             Utils.showToastShort(str("morphe_save_to_watch_later_error_toast"));

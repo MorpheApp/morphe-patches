@@ -173,14 +173,12 @@ public class StreamOrDetailsDataRequest {
         return streamCache.get(videoId);
     }
 
-    public static void fetchDetailsRequest(Route.CompiledRoute videoDetailsEndpoint, String videoId, Map<String, String> fetchHeaders) {
+    public static StreamOrDetailsDataRequest fetchDetailsRequest(Route.CompiledRoute videoDetailsEndpoint,
+                                                                 String videoId, Map<String, String> fetchHeaders) {
         // Always fetch, even if there is an existing request for the same video.
-        detailsCache.put(videoId, new StreamOrDetailsDataRequest(videoDetailsEndpoint, videoId, fetchHeaders));
-    }
-
-    @Nullable
-    public static StreamOrDetailsDataRequest getDetailsRequestForVideoId(String videoId) {
-        return detailsCache.get(videoId);
+        StreamOrDetailsDataRequest request = new StreamOrDetailsDataRequest(videoDetailsEndpoint, videoId, fetchHeaders);
+        detailsCache.put(videoId, request);
+        return request;
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex, boolean showToast) {
@@ -455,7 +453,6 @@ public class StreamOrDetailsDataRequest {
 
     @Nullable
     public Object getStreamOrDetails() {
-
         try {
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {

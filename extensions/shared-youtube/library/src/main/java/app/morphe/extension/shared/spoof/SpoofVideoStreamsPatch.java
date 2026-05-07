@@ -344,31 +344,12 @@ public class SpoofVideoStreamsPatch {
         return null;
     }
 
-    public static void fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
+    public static StreamOrDetailsDataRequest fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
         Map<String, String> headers = currentVideoRequestHeader;
-        if (headers != null) {
-            StreamOrDetailsDataRequest.fetchDetailsRequest(videoDetailsEndpoint, videoId, headers);
+        if (headers == null) {
+            return null;
         }
-    }
-
-    @Nullable
-    public static String getDetailsData(String videoId) {
-        try {
-            StreamOrDetailsDataRequest request = StreamOrDetailsDataRequest.getDetailsRequestForVideoId(videoId);
-            if (request != null) {
-                var details = request.getStreamOrDetails();
-                if (details != null) {
-                    Logger.printDebug(() -> "Successfully retrieving details for: " + videoId);
-                    return (String) details;
-                }
-            }
-
-            Logger.printDebug(() -> "Cannot retrieve details data (video details is null): " + videoId);
-        } catch (Exception ex) {
-            Logger.printException(() -> "getDetailsData failure", ex);
-        }
-
-        return null;
+        return StreamOrDetailsDataRequest.fetchDetailsRequest(videoDetailsEndpoint, videoId, headers);
     }
 
     /**
