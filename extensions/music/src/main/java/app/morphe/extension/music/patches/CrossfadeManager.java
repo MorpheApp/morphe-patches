@@ -1,5 +1,7 @@
 package app.morphe.extension.music.patches;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -1412,8 +1414,8 @@ public class CrossfadeManager {
             }
 
             Utils.showToastShort(isNowPaused
-                    ? "Crossfade paused for this session"
-                    : "Crossfade resumed");
+                    ? str("morphe_music_crossfade_paused_toast")
+                    : str("morphe_music_crossfade_resumed_toast"));
         }
     }
 
@@ -1450,7 +1452,7 @@ public class CrossfadeManager {
 
             if (isAudioMode) {
                 Logger.printDebug(() -> "videoToggle → BLOCK (audio→video while crossfade active)");
-                Utils.showToastShort("Video mode is not available while crossfade is enabled");
+                Utils.showToastShort(str("morphe_music_crossfade_video_mode_disabled_toast"));
                 return true;
             }
 
