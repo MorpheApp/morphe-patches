@@ -246,7 +246,7 @@ val settingsPatch = bytecodePatch(
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_restore_old_settings_menus")
+            SwitchPreference("morphe_restore_old_settings_menus", summaryKey = null)
         )
 
         PreferenceScreen.GENERAL.addPreferences(

@@ -147,12 +147,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         )
                     ),
                     SwitchPreference("morphe_hide_comments_ai_chat_summary", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_channel_guidelines"),
+                    SwitchPreference("morphe_hide_comments_channel_guidelines", summaryKey = null),
                     SwitchPreference("morphe_hide_comments_prompts"),
                     SwitchPreference("morphe_hide_comments_by_members_header", summaryKey = null),
                     SwitchPreference("morphe_hide_comments_section", summaryKey = null),
                     SwitchPreference("morphe_hide_comments_section_in_home_feed", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_community_guidelines"),
+                    SwitchPreference("morphe_hide_comments_community_guidelines", summaryKey = null),
                     SwitchPreference("morphe_hide_comments_create_a_short_button", summaryKey = null),
                     SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons", summaryKey = null),
                     SwitchPreference("morphe_hide_comments_info_button", summaryKey = null),
@@ -170,10 +170,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_join_membership_button", summaryKey = null),
             SwitchPreference("morphe_hide_live_chat_donators_bar", summaryKey = null),
             SwitchPreference("morphe_hide_live_chat_replay_button"),
-            SwitchPreference("morphe_hide_medical_panels"),
+            SwitchPreference("morphe_hide_medical_panels", summaryKey = null),
             SwitchPreference("morphe_hide_subscribers_community_guidelines", summaryKey = null),
             SwitchPreference("morphe_hide_timed_reactions"),
-            SwitchPreference("morphe_hide_video_title"),
+            SwitchPreference("morphe_hide_video_title", summaryKey = null),
         )
 
         PreferenceScreen.FEED.addPreferences(
@@ -269,9 +269,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_subscribed_channels_bar", summaryKey = null),
             SwitchPreference("morphe_hide_surveys", summaryKey = null),
             SwitchPreference("morphe_hide_ticket_shelf", summaryKey = null),
-            SwitchPreference("morphe_hide_upload_time"),
+            SwitchPreference("morphe_hide_upload_time", summaryKey = null),
             SwitchPreference("morphe_hide_video_recommendation_labels"),
-            SwitchPreference("morphe_hide_view_count"),
+            SwitchPreference("morphe_hide_view_count", summaryKey = null),
             SwitchPreference("morphe_hide_web_search_results", summaryKey = null),
             SwitchPreference("morphe_hide_youtube_doodles"),
         )
