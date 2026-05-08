@@ -136,11 +136,11 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_timed_reactions_title">Hide timed reactions</string>
     <string name="morphe_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
     <string name="morphe_hide_video_title_title">Hide video title in fullscreen</string>
+    <string name="morphe_hide_video_title_summary">Hides the video title while in fullscreen mode</string>
 
     <string name="morphe_hide_description_components_screen_title">Video description</string>
     <string name="morphe_hide_description_components_screen_summary">Choose which components appear in the video description</string>
     <string name="morphe_hide_ai_generated_video_summary_section_title">Hide AI video summaries</string>
-    <string name="morphe_hide_ai_generated_video_summary_section_summary">Hides the \'AI-generated video summary\' section</string>
     <string name="morphe_hide_ask_section_title">Hide Ask section</string>
     <string name="morphe_hide_attributes_section_title">Hide Attributes section</string>
     <string name="morphe_hide_attributes_section_summary">Hides Featured places, Games, Music, and People mentioned sections</string>
@@ -151,9 +151,9 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_explore_section_summary">Hides the Explore this course and Explore the podcast sections</string>
     <string name="morphe_hide_explore_course_section_title">Hide \'Explore this course\' section</string>
     <string name="morphe_hide_explore_podcast_section_title">Hide \'Explore the podcast\' section</string>
-    <string name="morphe_hide_featured_links_section_title">Hide Featured links section</string>
+    <string name="morphe_hide_featured_links_section_title">Hide \'Featured links\' section</string>
     <string name="morphe_hide_featured_places_section_title">Hide \'Featured places\' section</string>
-    <string name="morphe_hide_featured_videos_section_title">Hide Featured videos section</string>
+    <string name="morphe_hide_featured_videos_section_title">Hide \'Featured videos\' section</string>
     <string name="morphe_hide_feed_flyout_menu_title">Enable feed flyout menu filter</string>
     <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Feed flyout menu filter</string>
     <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Enter the flyout menu names to filter by, separated by new lines</string>
@@ -188,7 +188,7 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_links_preview_title">Hide links preview</string>
     <string name="morphe_hide_links_preview_summary">Hides the clickable web links in the channel header</string>
     <string name="morphe_hide_members_shelf_title">Hide members shelf</string>
-    <string name="morphe_hide_members_shelf_summary">Hides the members-only videos shelf on the channel page</string>
+    <string name="morphe_hide_members_shelf_summary">Hides the list of channel members</string>
     <string name="morphe_hide_posts_shelf_title">Hide posts shelf</string>
     <!-- 'Store' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_store_button_title">Hide Store button</string>
@@ -207,7 +207,7 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_comments_ai_chat_summary_title">Hide AI chat summary</string>
     <string name="morphe_hide_comments_channel_guidelines_title">Hide channel guidelines</string>
     <string name="morphe_hide_comments_prompts_title">Hide comment prompts</string>
-    <string name="morphe_hide_comments_prompts_summary">Hides suggested reply prompts</string>
+    <string name="morphe_hide_comments_prompts_summary">Hides contextual information messages in the comments section</string>
     <string name="morphe_hide_comments_by_members_header_title">Hide \'Comments by members\' header</string>
     <string name="morphe_hide_comments_section_title">Hide comments section</string>
     <string name="morphe_hide_comments_section_in_home_feed_title">Hide comments section in Home feed</string>
@@ -216,7 +216,7 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Hide Emoji and Timestamp buttons</string>
     <string name="morphe_hide_comments_info_button_title">Hide Info button</string>
     <string name="morphe_hide_comments_preview_comment_title">Hide preview comment</string>
-    <string name="morphe_hide_comments_preview_comment_summary">Hides the comment snippet under video before opening the full comments section</string>
+    <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under video before opening the full comments section</string>
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>
     <string name="morphe_sanitize_comments_category_bar_title">Sanitize category bar</string>
     <string name="morphe_sanitize_comments_category_bar_summary">Hides all comment sorting options except \'Top\' and \'Newest\'</string>
@@ -266,7 +266,7 @@ Limitations:
     <!-- ad.general.hideAdsPatch -->
     <string name="morphe_hide_end_screen_store_banner_title">Hide end screen store banner</string>
     <string name="morphe_hide_general_ads_title">Hide general ads</string>
-    <string name="morphe_hide_general_ads_summary">Hides ads other than video ads</string>
+    <string name="morphe_hide_general_ads_summary">Hides banner and feed ads</string>
     <string name="morphe_hide_merchandise_banners_title">Hide merchandise banners</string>
     <string name="morphe_hide_paid_promotion_label_title">Hide paid promotion label</string>
     <string name="morphe_hide_player_popup_ads_title">Hide player popup ads</string>
@@ -434,7 +434,7 @@ Info: May not work on live streams"</string>
     <!-- 'Share' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_share_button_title">Hide Share button</string>
     <!-- 'Stop ads' should be translated using the same localized wording YouTube displays for the button. -->
-    <string name="morphe_hide_stop_ads_button_title">Hide Stop ads button</string>
+    <string name="morphe_hide_stop_ads_button_title">Hide \'Stop ads\' button</string>
     <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
     <string name="morphe_hide_comments_button_title">Hide Comments button</string>
     <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
@@ -554,9 +554,9 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_hide_toolbar_notification_button_title">Hide Notifications button</string>
     <string name="morphe_hide_toolbar_search_button_title">Hide Search button</string>
     <string name="morphe_show_toolbar_settings_button_title">Show Settings button</string>
-    <string name="morphe_show_toolbar_settings_button_index_title">Settings button index</string>
+    <string name="morphe_show_toolbar_settings_button_index_title">Settings button position</string>
     <string name="morphe_show_toolbar_settings_button_type_title">Settings button action</string>
-    <string name="morphe_show_toolbar_settings_button_type_summary">When enabled, tap opens Morphe settings (long press for YouTube), disable to swap</string>
+    <string name="morphe_show_toolbar_settings_button_type_summary">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
@@ -566,31 +566,31 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_hide_player_flyout_captions_footer_title">Hide Captions menu footer</string>
     <string name="morphe_hide_player_flyout_captions_header_title">Hide Captions menu header</string>
     <!-- 'Additional settings / More' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_additional_settings_title">Hide Additional settings / More menu</string>
+    <string name="morphe_hide_player_flyout_additional_settings_title">Hide \'Additional settings\' / More menu</string>
     <!-- 'Sleep timer' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_sleep_timer_title">Hide Sleep timer menu</string>
+    <string name="morphe_hide_player_flyout_sleep_timer_title">Hide \'Sleep timer\' menu</string>
     <!-- 'Loop video' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_loop_video_title">Hide Loop video menu</string>
+    <string name="morphe_hide_player_flyout_loop_video_title">Hide \'Loop video\' menu</string>
     <!-- 'Ambient mode' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_ambient_mode_title">Hide Ambient mode menu</string>
+    <string name="morphe_hide_player_flyout_ambient_mode_title">Hide \'Ambient mode\' menu</string>
     <!-- 'Stable volume' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_stable_volume_title">Hide Stable volume menu</string>
+    <string name="morphe_hide_player_flyout_stable_volume_title">Hide \'Stable volume\' menu</string>
     <!-- 'Help & feedback' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_help_title">Hide Help &amp; feedback menu</string>
+    <string name="morphe_hide_player_flyout_help_title">Hide \'Help &amp; feedback\' menu</string>
     <!-- 'Playback speed' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_speed_title">Hide Playback speed menu</string>
+    <string name="morphe_hide_player_flyout_speed_title">Hide \'Playback speed\' menu</string>
     <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_lock_screen_title">Hide Lock screen menu</string>
+    <string name="morphe_hide_player_flyout_lock_screen_title">Hide \'Lock screen\' menu</string>
     <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Hide Listen with YouTube Music menu</string>
+    <string name="morphe_hide_player_flyout_listen_with_youtube_music_title">Hide \'Listen with YouTube Music\' menu</string>
     <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
-    <string name="morphe_hide_player_flyout_audio_track_title">Hide Audio track menu</string>
+    <string name="morphe_hide_player_flyout_audio_track_title">Hide \'Audio Track\' menu</string>
     <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
           'Android Reel' and 'TV' must be kept untranslated. -->
-    <string name="morphe_hide_player_flyout_audio_track_not_available">"Audio track menu is hidden
+    <string name="morphe_hide_player_flyout_audio_track_not_available">"\'Audio Track\' menu is hidden
 
 To show the Audio track menu, change \'Spoof video streams\' to \'Android Reel\' or \'TV\'"</string>
-    <string name="morphe_hide_player_flyout_audio_track_footer_title">Hide Audio track menu footer</string>
+    <string name="morphe_hide_player_flyout_audio_track_footer_title">Hide \'Audio Track\' menu footer</string>
     <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_watch_in_vr_title">Hide Watch in VR menu</string>
     <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->

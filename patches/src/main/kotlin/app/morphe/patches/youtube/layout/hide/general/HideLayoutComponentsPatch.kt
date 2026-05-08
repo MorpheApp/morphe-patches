@@ -109,7 +109,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_hide_description_components_screen",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_ai_generated_video_summary_section"),
+                    SwitchPreference("morphe_hide_ai_generated_video_summary_section", summaryKey = null),
                     SwitchPreference("morphe_hide_ask_section", summaryKey = null),
                     SwitchPreference("morphe_hide_attributes_section"),
                     SwitchPreference("morphe_hide_chapters_section", summaryKey = null),
@@ -130,7 +130,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_quizzes_section", summaryKey = null),
                     SwitchPreference("morphe_hide_subscribe_button", summaryKey = null),
                     SwitchPreference("morphe_hide_transcript_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_video_details_section", summaryKey = null)
+                    SwitchPreference("morphe_hide_video_details_section", summaryKey = null),
                 ),
             ),
             PreferenceScreenPreference(
@@ -175,7 +175,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_medical_panels", summaryKey = null),
             SwitchPreference("morphe_hide_subscribers_community_guidelines", summaryKey = null),
             SwitchPreference("morphe_hide_timed_reactions"),
-            SwitchPreference("morphe_hide_video_title", summaryKey = null),
+            SwitchPreference("morphe_hide_video_title"),
         )
 
         PreferenceScreen.FEED.addPreferences(
