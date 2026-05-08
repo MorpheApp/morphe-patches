@@ -318,10 +318,10 @@ public class SpoofVideoStreamsPatch {
             try {
                 StreamOrDetailsDataRequest request = StreamOrDetailsDataRequest.getStreamRequestForVideoId(videoId);
                 if (request != null) {
-                    var stream = request.getStreamOrDetails();
+                    var stream = (byte[]) request.getStreamDetails();
                     if (stream != null) {
                         Logger.printDebug(() -> "Overriding video stream: " + videoId);
-                        return (byte[]) stream;
+                        return stream;
                     }
                 }
 
@@ -334,13 +334,9 @@ public class SpoofVideoStreamsPatch {
         return null;
     }
 
-    @Nullable
     public static StreamOrDetailsDataRequest fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
         Map<String, String> headers = currentVideoRequestHeader;
-        if (headers == null && videoDetailsEndpoint == PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST) {
-            return null;
-        }
-        return StreamOrDetailsDataRequest.fetchDetailsRequest(videoDetailsEndpoint, videoId, headers);
+        return StreamOrDetailsDataRequest.getDetailsRequest(videoDetailsEndpoint, videoId, headers);
     }
 
     /**

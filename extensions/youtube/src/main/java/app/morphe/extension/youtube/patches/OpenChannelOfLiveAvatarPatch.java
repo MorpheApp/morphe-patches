@@ -1,10 +1,13 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.youtube.settings.Settings.OPEN_CHANNEL_OF_LIVE_AVATAR;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.annotation.NonNull;
 
@@ -14,10 +17,10 @@ import java.lang.ref.WeakReference;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
 import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
-import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class OpenChannelOfLiveAvatarPatch {
@@ -52,11 +55,11 @@ public final class OpenChannelOfLiveAvatarPatch {
      * Injection point.
      *
      * @param playbackStartDescriptorMap map containing information about PlaybackStartDescriptor
-     * @param newlyLoadedVideoId         id of the current video
+     * @param videoId         id of the current video
      */
-    public static boolean openChannel(@NonNull Map<Object, Object> playbackStartDescriptorMap, String newlyLoadedVideoId) {
+    public static boolean openChannel(@NonNull Map<Object, Object> playbackStartDescriptorMap, String videoId) {
         try {
-            if (!Settings.OPEN_CHANNEL_OF_LIVE_AVATAR.get()) {
+            if (!OPEN_CHANNEL_OF_LIVE_AVATAR.get()) {
                 return false;
             }
             // Video was opened by clicking the thumbnail
@@ -76,33 +79,31 @@ public final class OpenChannelOfLiveAvatarPatch {
             final boolean containsMatch = contentDescription.toString().contains(liveRingDescription);
             Logger.printDebug(() -> "Litho description: " + contentDescription + "contains Resource description: " + liveRingDescription);
             if (containsMatch) {
-                // Sometimes it may not match:
-                // 1. In some languages, accessibility label is not provided.
-                // 2. Language has changed in the app settings, and the app has not restarted.
-                // In this case, fallback with the legacy method.
-
                 StreamOrDetailsDataRequest request = SpoofVideoStreamsPatch.fetchDetails(
                         PlayerRoutes.GET_CHANNEL_FROM_ID,
-                        newlyLoadedVideoId
+                        videoId
                 );
-                if (request == null) {
-                    Logger.printDebug(() -> "Could not get channel ID, fetch details are null: " + newlyLoadedVideoId);
-                    return true;
-                }
-                var context = mainActivityRef.get();
-
-                Intent videoChannelIntent = new Intent(Intent.ACTION_VIEW);
-                videoChannelIntent.setData(Uri.parse("https://www.youtube.com/@" + request));
-                videoChannelIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                videoChannelIntent.setPackage(context.getPackageName());
-
-                context.startActivity(videoChannelIntent);
+                Utils.runOnBackgroundThread(() -> {
+                    if (request.getStreamDetails() instanceof String channelID && !channelID.isEmpty()) {
+                        new Handler(Looper.getMainLooper()).post(() -> {
+                            var context = mainActivityRef.get();
+                            if (context != null) {
+                                Intent videoChannelIntent = new Intent(Intent.ACTION_VIEW);
+                                videoChannelIntent.setData(Uri.parse("https://www.youtube.com/channel/" + channelID));
+                                videoChannelIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                videoChannelIntent.setPackage(context.getPackageName());
+                                context.startActivity(videoChannelIntent);
+                            }
+                        });
+                    } else {
+                        Logger.printDebug(() -> "Could not get channel ID, string parameter is null: " + videoId);
+                    }
+                });
                 return true;
             }
         } catch (Exception ex) {
             Logger.printException(() -> "fetchVideoInformation failure", ex);
         }
-
         return false;
     }
 }

@@ -30,14 +30,8 @@ public final class SaveToWatchLaterPatch {
                     videoId
             );
 
-            if (request == null) {
-                Logger.printDebug(() -> "Could not save video, fetch details are null: " + videoId);
-                return;
-            }
-
             Utils.runOnBackgroundThread(() -> {
-                String saveToWatchLaterResponse = (String) request.getStreamOrDetails();
-                if (saveToWatchLaterResponse != null && !saveToWatchLaterResponse.isEmpty()) {
+                if (request.getStreamDetails() instanceof String saveToWatchLaterResponse && !saveToWatchLaterResponse.isEmpty()) {
                     Logger.printDebug(() -> "watch later response: " + saveToWatchLaterResponse);
 
                     if (saveToWatchLaterResponse.contains("STATUS_SUCCEEDED")) {
