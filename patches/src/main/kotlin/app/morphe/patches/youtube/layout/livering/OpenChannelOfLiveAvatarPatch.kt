@@ -3,6 +3,7 @@ package app.morphe.patches.youtube.layout.livering
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -11,7 +12,41 @@ import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.copyXmlNode
+import app.morphe.util.inputStreamFromBundledResource
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+
+private val openChannelOfLiveAvatarResourcePatch = resourcePatch(
+    description = "openChannelOfLiveAvatarResourcePatch"
+) {
+    execute {
+        arrayOf(
+            "", "af", "am", "ar", "as", "az", "b+sr+Latn", "be", "bg", "bn", "bs", "ca",
+            "cs", "da", "de", "el", "en-rGB", "en-rIN", "es", "es-rUS", "et", "eu", "fa",
+            "fi", "fr", "fr-rCA", "gl", "gu", "hi", "hr", "hu", "hy", "in", "is", "it",
+            "iw", "ja", "ka", "kk", "km", "kn", "ko", "ky", "lo", "lt", "lv", "mk", "ml",
+            "mn", "mr", "ms", "my", "nb", "ne", "nl", "or", "pa", "pl", "pt", "pt-rBR",
+            "pt-rPT", "ro", "ru", "si", "sk", "sl", "sq", "sr", "sv", "sw", "ta", "te",
+            "th", "tl", "tr", "uk", "ur", "uz", "vi", "zh-rCN", "zh-rHK", "zh-rTW", "zu"
+        ).forEach { locale ->
+            val directory = if (locale.isEmpty())
+                "values"
+            else
+                "values-$locale"
+
+            val targetResource = "$directory/strings.xml"
+            inputStreamFromBundledResource(
+                "livering/host",
+                targetResource
+            )!!.let { inputStream ->
+                "resources".copyXmlNode(
+                    document(inputStream),
+                    document("res/$targetResource")
+                ).close()
+            }
+        }
+    }
+}
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenChannelOfLiveAvatarPatch;"
@@ -25,6 +60,7 @@ val openChannelOfLiveAvatarPatch = bytecodePatch(
 
     dependsOn(
         settingsPatch,
+        openChannelOfLiveAvatarResourcePatch,
         versionCheckPatch,
     )
 
