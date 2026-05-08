@@ -102,7 +102,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         PreferenceScreen.ADS.addPreferences(
             // Uses horizontal shelf and a buffer, which requires managing in a single place in the code
             // to ensure the generic "hide horizontal shelves" doesn't hide when it should show.
-            SwitchPreference("morphe_hide_creator_store_shelf")
+            SwitchPreference("morphe_hide_creator_store_shelf", summaryKey = null)
         )
 
         PreferenceScreen.PLAYER.addPreferences(
@@ -122,7 +122,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_featured_places_section", summaryKey = null),
                     SwitchPreference("morphe_hide_featured_videos_section", summaryKey = null),
                     SwitchPreference("morphe_hide_gaming_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_how_this_was_made_section"),
+                    SwitchPreference("morphe_hide_how_this_was_made_section", summaryKey = null),
                     SwitchPreference("morphe_hide_hype_points", summaryKey = null),
                     SwitchPreference("morphe_hide_info_cards_section", summaryKey = null),
                     SwitchPreference("morphe_hide_key_concepts_section", summaryKey = null),
