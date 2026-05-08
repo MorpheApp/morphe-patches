@@ -241,7 +241,7 @@ public enum ClientType {
             ANDROID_REEL.osName,
             ANDROID_REEL.osVersion,
             Objects.requireNonNull(ANDROID_REEL.androidSdkVersion),
-            Build.ID,
+            ANDROID_REEL.buildID,
             ANDROID_REEL.clientVersion,
             ANDROID_REEL.clientPlatform,
             ANDROID_REEL.canLogin,
@@ -251,7 +251,7 @@ public enum ClientType {
             ANDROID_REEL.requireJS,
             PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST,
             "Save To Watch Later"
-    ),;
+    );
 
     /**
      * YouTube
@@ -300,6 +300,11 @@ public enum ClientType {
     public final String androidSdkVersion;
 
     /**
+     * Device Build id.
+     */
+    public final String buildID;
+
+    /**
      * App version.
      */
     public final String clientVersion;
@@ -343,7 +348,7 @@ public enum ClientType {
     /**
      * Friendly name displayed in stats for nerds.
      */
-    public String friendlyName = "";
+    public final String friendlyName;
 
     /**
      * Android constructor.
@@ -374,6 +379,7 @@ public enum ClientType {
         this.osName = osName;
         this.osVersion = osVersion;
         this.androidSdkVersion = androidSdkVersion;
+        this.buildID = buildId;
         this.clientVersion = clientVersion;
         this.clientPlatform = clientPlatform;
         this.canLogin = canLogin;
@@ -399,13 +405,13 @@ public enum ClientType {
 
     ClientType(int id,
                String clientName,
-               String osVersion,
+               String clientVersion,
                Route.CompiledRoute endpoint,
                String userAgent,
                String friendlyName) {
         this.id = id;
         this.clientName = clientName;
-        this.osVersion = osVersion;
+        this.clientVersion = clientVersion;
         this.endpoint = endpoint;
         this.userAgent = userAgent;
         this.friendlyName = friendlyName;
@@ -414,8 +420,9 @@ public enum ClientType {
         deviceMake = null;
         deviceModel = null;
         osName = null;
+        osVersion = null;
         androidSdkVersion = null;
-        clientVersion = null;
+        buildID = null;
         clientPlatform = null;
         canLogin = false;
         requireLogin = false;
@@ -425,6 +432,7 @@ public enum ClientType {
 
         Logger.printDebug(() -> "userAgent: " + this.userAgent);
     }
+
     ClientType(int id,
                String clientName,
                String deviceMake,
@@ -447,6 +455,7 @@ public enum ClientType {
         this.deviceModel = deviceModel;
         this.osName = osName;
         this.osVersion = osVersion;
+        buildID = null;
         this.clientVersion = clientVersion;
         this.clientPlatform = clientPlatform;
         this.userAgent = userAgent;

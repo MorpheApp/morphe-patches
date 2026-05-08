@@ -79,15 +79,17 @@ public final class PlayerRoutes {
             Locale streamLocale = language.getLocale();
 
             JSONObject client = new JSONObject();
-            client.put("deviceMake", clientType.deviceMake);
-            client.put("deviceModel", clientType.deviceModel);
             client.put("clientName", clientType.clientName);
             client.put("clientVersion", clientType.clientVersion);
-            client.put("osName", clientType.osName);
-            client.put("osVersion", clientType.osVersion);
-            String androidSdkVersion = clientType.androidSdkVersion;
-            if (androidSdkVersion != null && !androidSdkVersion.isEmpty()) {
-                client.put("androidSdkVersion", androidSdkVersion);
+            if (clientType.deviceModel != null) {
+                client.put("deviceMake", clientType.deviceMake);
+                client.put("deviceModel", clientType.deviceModel);
+                client.put("osName", clientType.osName);
+                client.put("osVersion", clientType.osVersion);
+                String androidSdkVersion = clientType.androidSdkVersion;
+                if (androidSdkVersion != null && !androidSdkVersion.isEmpty()) {
+                    client.put("androidSdkVersion", androidSdkVersion);
+                }
             }
             String platform = clientType.clientPlatform;
             if (platform != null && !platform.isEmpty()) {
@@ -115,21 +117,23 @@ public final class PlayerRoutes {
                 playerRequest.put("videoId", videoId);
                 innerTubeBody.put("playerRequest", playerRequest);
                 innerTubeBody.put("disablePlayerResponse", false);
-            } else if (clientType.endpoint == SEND_SAVE_VIDEO_TO_PLAYLIST) {
+            } else {
                 innerTubeBody.put("contentCheckOk", true);
                 innerTubeBody.put("racyCheckOk", true);
                 innerTubeBody.put("videoId", videoId);
-                innerTubeBody.put("playlistId", "WL");
-                innerTubeBody.put("excludeWatchLater", false);
+                if (clientType.endpoint == SEND_SAVE_VIDEO_TO_PLAYLIST) {
+                    innerTubeBody.put("playlistId", "WL");
+                    innerTubeBody.put("excludeWatchLater", false);
 
-                JSONObject action = new JSONObject();
-                action.put("action", "ACTION_ADD_VIDEO");
-                action.put("addedVideoId", videoId);
+                    JSONObject action = new JSONObject();
+                    action.put("action", "ACTION_ADD_VIDEO");
+                    action.put("addedVideoId", videoId);
 
-                JSONArray actions = new JSONArray();
-                actions.put(action);
+                    JSONArray actions = new JSONArray();
+                    actions.put(action);
 
-                innerTubeBody.put("actions", actions);
+                    innerTubeBody.put("actions", actions);
+                }
             }
 
             if (clientType.requireJS) {
@@ -170,18 +174,14 @@ public final class PlayerRoutes {
     }
 
     @SuppressWarnings("SameParameterValue")
-    static HttpURLConnection getPlayerResponseConnectionFromRoute(
-            Route.CompiledRoute route,
-            String userAgent,
-            String clientName,
-            String clientVersion) throws IOException {
-        var connection = Requester.getConnectionFromCompiledRoute(YT_API_URL, route);
+    static HttpURLConnection getPlayerResponseConnectionFromRoute(ClientType clientType) throws IOException {
+        var connection = Requester.getConnectionFromCompiledRoute(YT_API_URL, clientType.endpoint);
 
         connection.setRequestProperty("Content-Type", "application/json");
-        connection.setRequestProperty("User-Agent", userAgent);
+        connection.setRequestProperty("User-Agent", clientType.userAgent);
         // Not a typo. "Client-Name" uses the client type id.
-        connection.setRequestProperty("X-YouTube-Client-Name", clientName);
-        connection.setRequestProperty("X-YouTube-Client-Version", clientVersion);
+        connection.setRequestProperty("X-YouTube-Client-Name", clientType.clientName);
+        connection.setRequestProperty("X-YouTube-Client-Version", clientType.clientVersion);
 
         connection.setUseCaches(false);
         connection.setDoOutput(true);

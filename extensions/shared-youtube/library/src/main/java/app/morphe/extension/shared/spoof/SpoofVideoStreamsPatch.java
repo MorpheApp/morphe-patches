@@ -13,12 +13,11 @@ import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.AppLanguage;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
 import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
@@ -338,7 +337,7 @@ public class SpoofVideoStreamsPatch {
     @Nullable
     public static StreamOrDetailsDataRequest fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
         Map<String, String> headers = currentVideoRequestHeader;
-        if (headers == null) {
+        if (headers == null && videoDetailsEndpoint == PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST) {
             return null;
         }
         return StreamOrDetailsDataRequest.fetchDetailsRequest(videoDetailsEndpoint, videoId, headers);

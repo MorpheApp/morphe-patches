@@ -205,7 +205,6 @@ public class StreamOrDetailsDataRequest {
                                           boolean showErrorToasts) {
         Objects.requireNonNull(clientType);
         Objects.requireNonNull(videoId);
-        Objects.requireNonNull(playerHeaders);
 
         final boolean isStream = clientType.endpoint == GET_PLAYER_STREAMING_DATA || clientType.endpoint == GET_REEL_STREAMING_DATA;
 
@@ -213,55 +212,52 @@ public class StreamOrDetailsDataRequest {
 
         try {
             HttpURLConnection connection;
-            connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(
-                    clientType.endpoint,
-                    clientType.userAgent,
-                    clientType.clientName,
-                    clientType.clientVersion
-            );
+            connection = PlayerRoutes.getPlayerResponseConnectionFromRoute(clientType);
             connection.setConnectTimeout(HTTP_TIMEOUT_MILLISECONDS);
             connection.setReadTimeout(HTTP_TIMEOUT_MILLISECONDS);
 
             boolean authHeadersIncludes = false;
             authHeadersOverrides = false;
 
-            for (String key : REQUEST_HEADER_KEYS) {
-                String value = playerHeaders.get(key);
+            if (playerHeaders != null) {
+                for (String key : REQUEST_HEADER_KEYS) {
+                    String value = playerHeaders.get(key);
 
-                if (value != null) {
-                    if (key.equals(AUTHORIZATION_HEADER)) {
-                        if (isStream) {
-                            if (clientType.supportsOAuth2) {
-                                String authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
-                                if (authorization.isEmpty()) {
-                                    // Access token is empty, the user has not signed in to VR.
-                                    // YouTube/YouTube Music access tokens cannot be used with YouTube VR.
-                                    // Do not set the header.
+                    if (value != null) {
+                        if (key.equals(AUTHORIZATION_HEADER)) {
+                            if (isStream) {
+                                if (clientType.supportsOAuth2) {
+                                    String authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
+                                    if (authorization.isEmpty()) {
+                                        // Access token is empty, the user has not signed in to VR.
+                                        // YouTube/YouTube Music access tokens cannot be used with YouTube VR.
+                                        // Do not set the header.
+                                        Logger.printDebug(() -> "Not including request header: " + key);
+                                        continue;
+                                    } else {
+                                        // Access token is not empty, the user has signed in to VR.
+                                        // Set the header.
+                                        value = authorization;
+                                        authHeadersOverrides = true;
+                                    }
+                                } else if (!clientType.canLogin) {
                                     Logger.printDebug(() -> "Not including request header: " + key);
                                     continue;
-                                } else {
-                                    // Access token is not empty, the user has signed in to VR.
-                                    // Set the header.
-                                    value = authorization;
-                                    authHeadersOverrides = true;
                                 }
-                            } else if (!clientType.canLogin) {
-                                Logger.printDebug(() -> "Not including request header: " + key);
-                                continue;
                             }
+                            authHeadersIncludes = true;
                         }
-                        authHeadersIncludes = true;
+
+                        Logger.printDebug(() -> "Including request header: " + key);
+                        connection.setRequestProperty(key, value);
                     }
-
-                    Logger.printDebug(() -> "Including request header: " + key);
-                    connection.setRequestProperty(key, value);
                 }
-            }
 
-            if (isStream && !authHeadersIncludes && clientType.requireLogin) {
-                Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
-                        + " videoId: " + videoId);
-                return null;
+                if (isStream && !authHeadersIncludes && clientType.requireLogin) {
+                    Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
+                            + " videoId: " + videoId);
+                    return null;
+                }
             }
 
             Logger.printDebug(() -> "Fetching video " + (isStream ? "stream" : "details") +
