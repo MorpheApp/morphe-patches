@@ -111,15 +111,3 @@ internal object MiniPlayerDefaultViewVisibilityFingerprint : Fingerprint(
     name = "a",
     custom = { _, classDef -> classDef.methods.count() == 3 }
 )
-
-internal object BottomSheetSetHideableFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf("Z"),
-    filters = listOf(
-        opcode(Opcode.IGET_BOOLEAN),
-        opcode(Opcode.IF_EQ),
-        opcode(Opcode.IPUT_BOOLEAN),
-        opcode(Opcode.CONST_4),
-        opcode(Opcode.IF_NE)
-    )
-)

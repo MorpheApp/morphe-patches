@@ -185,19 +185,5 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
                 """
             )
         }
-
-        BottomSheetSetHideableFingerprint.method.apply {
-            addInstructions(0, """
-                invoke-static {}, $EXTENSION_CLASS->enableSwipeToDismissMiniplayer()Z
-                move-result v0
-                if-eqz v0, :skip_override
-                
-                # Force the parameter to true (1)
-                const/4 p1, 1
-                
-                :skip_override
-                nop
-            """)
-        }
     }
 }
