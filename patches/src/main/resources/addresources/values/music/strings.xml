@@ -97,7 +97,7 @@ Feature implementation by VazerOG"</string>
     <string name="morphe_music_play_permanent_repeat_summary_on">Permanent repeat is enabled</string>
     <string name="morphe_music_play_permanent_repeat_summary_off">Permanent repeat is disabled</string>
 
-    <!-- layout.buttons.hideButtons -->
+    <!-- layout.buttons.hideButtonsPatch -->
     <string name="morphe_music_hide_cast_button_title">Hide cast button</string>
     <string name="morphe_music_hide_cast_button_summary_on">Cast button is hidden</string>
     <string name="morphe_music_hide_cast_button_summary_off">Cast button is shown</string>
@@ -124,17 +124,17 @@ Feature implementation by VazerOG"</string>
     <string name="morphe_change_start_page_entry_search">Search</string>
     <string name="morphe_change_start_page_entry_subscriptions">Subscriptions</string>
 
-    <!-- layout.compactheader.hideCategoryBar -->
+    <!-- layout.compactheader.hideCategoryBarPatch -->
     <string name="morphe_music_hide_category_bar_title">Hide category bar</string>
     <string name="morphe_music_hide_category_bar_summary_on">Category bar is hidden</string>
     <string name="morphe_music_hide_category_bar_summary_off">Category bar is shown</string>
 
-    <!-- layout.miniplayer.changeMiniplayerColor -->
+    <!-- layout.miniplayer.changeMiniplayerColorPatch -->
     <string name="morphe_music_change_miniplayer_color_title">Change miniplayer color</string>
     <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayer color matches fullscreen player</string>
     <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer uses default color</string>
 
-    <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+    <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
     <string name="morphe_music_miniplayer_next_button_title">Show next button in miniplayer</string>
     <string name="morphe_music_miniplayer_next_button_summary_on">Next button is shown in the miniplayer</string>
     <string name="morphe_music_miniplayer_next_button_summary_off">Next button is not shown in the miniplayer</string>
@@ -142,12 +142,12 @@ Feature implementation by VazerOG"</string>
     <string name="morphe_music_miniplayer_previous_button_summary_on">Previous button is shown in the miniplayer</string>
     <string name="morphe_music_miniplayer_previous_button_summary_off">Previous button is not shown in the miniplayer</string>
 
-    <!-- layout.miniplayer.enableForcedMiniplayer -->
+    <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
     <string name="morphe_music_enable_forced_miniplayer_title">Enable forced miniplayer</string>
     <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer stays minimized when playback changes</string>
     <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer expands to fullscreen when playback changes</string>
 
-    <!-- layout.miniplayer.enableSwipeToDismissMiniplayer -->
+    <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
     <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Enable swipe to dismiss miniplayer</string>
     <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary_on">Swiping down on miniplayer dismisses it</string>
     <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary_off">Swiping down on miniplayer does nothing</string>

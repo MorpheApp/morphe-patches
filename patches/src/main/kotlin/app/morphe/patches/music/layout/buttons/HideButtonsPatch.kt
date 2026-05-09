@@ -21,7 +21,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideButtonsPatch;"
 
 @Suppress("unused")
-val hideButtons = bytecodePatch(
+val hideButtonsPatch = bytecodePatch(
     name = "Hide buttons",
     description = "Adds options to hide the cast, history, notification, and search buttons."
 ) {
