@@ -17,7 +17,7 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.getFreeRegisterProvider
+import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -93,29 +93,42 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
                 getReference<FieldReference>()?.type == "Ljava/util/concurrent/atomic/AtomicBoolean;"
             }
             val primaryRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerB
-            val registerProvider = getFreeRegisterProvider(insertIndex, 3, primaryRegister)
-            val freeRegister = registerProvider.getFreeRegister()
-            val secondaryRegister = registerProvider.getFreeRegister()
-            val tertiaryRegister = registerProvider.getFreeRegister()
+            val freeRegister = findFreeRegister(insertIndex, primaryRegister)
+            val totalRegs = implementation!!.registerCount
+            val clobberRegs = (0 until totalRegs).filter { it != primaryRegister }
+
+            if (clobberRegs.size < 3) {
+                throw IllegalStateException("Method lacks sufficient registers for injection (total: ${totalRegs})")
+            }
+
+            val secondaryRegister = clobberRegs[0]
+            val tertiaryRegister = clobberRegs[1]
+            val nullRegister = clobberRegs[2]
 
             addInstructionsAtControlFlowLabel(
                 insertIndex, """
                     invoke-static {}, $EXTENSION_CLASS->enableSwipeToDismissMiniplayer()Z
                     move-result v$freeRegister
                     if-nez v$freeRegister, :dismiss
+                    
+                    # We are safe to aggressively clobber inside here
                     iget-object v$primaryRegister, v$primaryRegister, $swipeToDismissIGetObjectReference
                     invoke-interface {v$primaryRegister}, $swipeToDismissInvokeInterfacePrimaryReference
                     move-result-object v$primaryRegister
                     check-cast v$primaryRegister, $swipeToDismissCheckCastReference
+                    
                     sget-object v$secondaryRegister, $swipeToDismissSGetObjectReference
                     new-instance v$tertiaryRegister, $swipeToDismissNewInstanceReference
-                    const p0, 0x878b
-                    invoke-static {p0}, $swipeToDismissInvokeStaticReference
-                    move-result-object p0
-                    invoke-direct {v$tertiaryRegister, p0}, $swipeToDismissInvokeDirectReference
-                    const/4 p0, 0x0
-                    invoke-interface {v$primaryRegister, v$secondaryRegister, v$tertiaryRegister, p0}, $swipeToDismissInvokeInterfaceSecondaryReference
+                    
+                    const v$nullRegister, 0x878b
+                    invoke-static {v$nullRegister}, $swipeToDismissInvokeStaticReference
+                    move-result-object v$nullRegister
+                    invoke-direct {v$tertiaryRegister, v$nullRegister}, $swipeToDismissInvokeDirectReference
+                    
+                    const/4 v$nullRegister, 0x0
+                    invoke-interface {v$primaryRegister, v$secondaryRegister, v$tertiaryRegister, v$nullRegister}, $swipeToDismissInvokeInterfaceSecondaryReference
                     return-void
+                    
                     :dismiss
                     nop
                 """
