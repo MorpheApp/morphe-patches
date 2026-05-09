@@ -98,25 +98,25 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
 
             addInstructionsAtControlFlowLabel(
                 insertIndex, """
-            invoke-static {}, $EXTENSION_CLASS->enableSwipeToDismissMiniplayer()Z
-            move-result v$freeRegister
-            if-nez v$freeRegister, :dismiss
-            iget-object v$primaryRegister, v$primaryRegister, $swipeToDismissIGetObjectReference
-            invoke-interface {v$primaryRegister}, $swipeToDismissInvokeInterfacePrimaryReference
-            move-result-object v$primaryRegister
-            check-cast v$primaryRegister, $swipeToDismissCheckCastReference
-            sget-object v$secondaryRegister, $swipeToDismissSGetObjectReference
-            new-instance v$tertiaryRegister, $swipeToDismissNewInstanceReference
-            const p0, 0x878b
-            invoke-static {p0}, $swipeToDismissInvokeStaticReference
-            move-result-object p0
-            invoke-direct {v$tertiaryRegister, p0}, $swipeToDismissInvokeDirectReference
-            const/4 p0, 0x0
-            invoke-interface {v$primaryRegister, v$secondaryRegister, v$tertiaryRegister, p0}, $swipeToDismissInvokeInterfaceSecondaryReference
-            return-void
-            :dismiss
-            nop
-        """
+                    invoke-static {}, $EXTENSION_CLASS->enableSwipeToDismissMiniplayer()Z
+                    move-result v$freeRegister
+                    if-nez v$freeRegister, :dismiss
+                    iget-object v$primaryRegister, v$primaryRegister, $swipeToDismissIGetObjectReference
+                    invoke-interface {v$primaryRegister}, $swipeToDismissInvokeInterfacePrimaryReference
+                    move-result-object v$primaryRegister
+                    check-cast v$primaryRegister, $swipeToDismissCheckCastReference
+                    sget-object v$secondaryRegister, $swipeToDismissSGetObjectReference
+                    new-instance v$tertiaryRegister, $swipeToDismissNewInstanceReference
+                    const p0, 0x878b
+                    invoke-static {p0}, $swipeToDismissInvokeStaticReference
+                    move-result-object p0
+                    invoke-direct {v$tertiaryRegister, p0}, $swipeToDismissInvokeDirectReference
+                    const/4 p0, 0x0
+                    invoke-interface {v$primaryRegister, v$secondaryRegister, v$tertiaryRegister, p0}, $swipeToDismissInvokeInterfaceSecondaryReference
+                    return-void
+                    :dismiss
+                    nop
+                """
             )
         }
 
