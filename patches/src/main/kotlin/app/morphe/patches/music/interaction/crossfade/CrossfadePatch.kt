@@ -162,8 +162,8 @@ val crossfadePatch = bytecodePatch(
         val log = Logger.getLogger(this::class.java.name)
         if (!is_8_05_or_greater || is_9_00_or_greater) {
             return@execute log.warning(
-                "Track crossfade is not yet available for YouTube Music 9.x. " +
-                    "Patch YouTube Music 8.44.54–8.50.51 for crossfade.",
+                "Track crossfade is not supported on YouTube Music 9.x. " +
+                    "Please patch versions 8.44.54 through 8.50.51 for this feature.",
             )
         }
 
