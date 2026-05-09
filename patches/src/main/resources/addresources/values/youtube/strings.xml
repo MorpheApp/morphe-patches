@@ -812,7 +812,7 @@ Cookies will be saved automatically if they are valid"</string>
     <string name="morphe_show_settings_button_summary_off">Settings button is not shown</string>
     <string name="morphe_show_settings_button_index_title">Settings button index</string>
     <string name="morphe_show_settings_button_type_title">Settings button action</string>
-    <string name="morphe_show_settings_button_type_summary_on">Tap to open Morphe settings</string>
+    <string name="morphe_show_settings_button_type_summary_on">Tap to open Premium Youtube settings</string>
     <string name="morphe_show_settings_button_type_summary_off">Tap to open YouTube settings</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create with Notifications</string>
     <string name="morphe_swap_create_with_notifications_button_summary_on">Create button is swapped with Notifications button</string>
@@ -871,8 +871,8 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_show_toolbar_settings_button_summary_off">Settings button is not shown</string>
     <string name="morphe_show_toolbar_settings_button_index_title">Settings button index</string>
     <string name="morphe_show_toolbar_settings_button_type_title">Settings button action</string>
-    <string name="morphe_show_toolbar_settings_button_type_summary_on">"Tap to open Morphe settings
-Tap and hold to open YouTube settings"</string>
+    <string name="morphe_show_toolbar_settings_button_type_summary_on">"Tap to open Premium Youtube settings
+Tap and hold to open Premium Youtube settings"</string>
     <string name="morphe_show_toolbar_settings_button_type_summary_off">"Tap to open YouTube settings
 Tap and hold to open Morphe settings"</string>
 
@@ -1333,8 +1333,8 @@ Limitation: Dislikes may not appear in incognito mode"</string>
     <string name="morphe_sb_api_url_changed">API URL changed</string>
     <string name="morphe_sb_settings_ie">Import / Export settings</string>
     <string name="morphe_sb_settings_copy">Copy</string>
-    <string name="morphe_sb_settings_ie_sum">Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms</string>
-    <string name="morphe_sb_settings_ie_sum_warning">Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms. This includes your private user ID. Be sure to share this wisely</string>
+    <string name="morphe_sb_settings_ie_sum">Your SponsorBlock JSON configuration that can be imported / exported to Premium Youtube and other SponsorBlock platforms</string>
+    <string name="morphe_sb_settings_ie_sum_warning">Your SponsorBlock JSON configuration that can be imported / exported to Premium Youtube and other SponsorBlock platforms. This includes your private user ID. Be sure to share this wisely</string>
     <string name="morphe_sb_settings_import_successful">Settings imported successfully</string>
     <string name="morphe_sb_settings_import_failed">Failed to import: %s</string>
     <string name="morphe_sb_settings_export_failed">Failed to export: %s</string>
@@ -1646,7 +1646,7 @@ Miniplayer can be dragged off-screen to the left or right"</string>
 
     <!-- layout.branding.customBrandingPatch -->
     <string name="morphe_custom_branding_name_entry_2" translatable="false">Premium Youtube</string>
-    <string name="morphe_custom_branding_name_entry_3" translatable="false">YT Morphe</string>
+    <string name="morphe_custom_branding_name_entry_3" translatable="false">Premium YT</string>
     <string name="morphe_custom_branding_name_entry_4" translatable="false">YT</string>
 
     <!-- layout.branding.header.changeHeaderPatch -->
@@ -1654,7 +1654,7 @@ Miniplayer can be dragged off-screen to the left or right"</string>
     <string name="morphe_header_logo_entry_1">Default</string>
     <string name="morphe_header_logo_entry_2">Regular</string>
     <string name="morphe_header_logo_entry_3" translatable="false">Premium</string>
-    <string name="morphe_header_logo_entry_4" translatable="false">Morphe</string>
+    <string name="morphe_header_logo_entry_4" translatable="false">Premium</string>
     <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
     <string name="morphe_header_logo_entry_5">Custom</string>
 

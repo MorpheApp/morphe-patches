@@ -232,16 +232,6 @@ val settingsPatch = bytecodePatch(
         addAppResources("shared-youtube")
         addAppResources("youtube")
 
-        // Add an "About" preference to the top.
-        preferences += NonInteractivePreference(
-            key = "morphe_settings_screen_00_about",
-            icon = "@drawable/morphe_settings_screen_00_about",
-            iconBold = "@drawable/morphe_settings_screen_00_about_bold",
-            layout = "@layout/preference_with_icon",
-            summaryKey = null,
-            tag = "app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference",
-            selectable = true,
-        )
 
         PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_restore_old_settings_menus")

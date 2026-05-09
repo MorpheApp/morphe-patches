@@ -25,17 +25,17 @@ Second \"item\" text"</string>
     <string name="morphe_custom_branding_name_entry_5">Custom</string>
     <string name="morphe_custom_branding_icon_title">App icon</string>
     <string name="morphe_custom_branding_icon_entry_1">Original</string>
-    <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
-    <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
-    <string name="morphe_custom_branding_icon_entry_4">Morphe light</string>
-    <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+    <string name="morphe_custom_branding_icon_entry_2">Premium black</string>
+    <string name="morphe_custom_branding_icon_entry_3">Premium dark</string>
+    <string name="morphe_custom_branding_icon_entry_4">Premium light</string>
+    <string name="morphe_custom_branding_icon_entry_5">Premium play</string>
     <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
     <string name="morphe_custom_branding_icon_entry_6">Custom</string>
     <string name="morphe_custom_branding_notification_icon_title">Notification icon</string>
     <string name="morphe_custom_branding_notification_icon_entry_1">Follow app icon</string>
 
     <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-    <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>
+    <string name="morphe_check_watch_history_domain_name_dialog_title">Premium Youtube Notice</string>
     <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br>&lt;br>This most likely is caused by a DNS ad blocker or network proxy.&lt;br>&lt;br>To fix this, whitelist &lt;b>s.youtube.com&lt;/b> or turn off all DNS blockers and proxies.</string>
     <string name="morphe_check_watch_history_domain_name_dialog_ignore">Do not show again</string>
 
@@ -82,7 +82,7 @@ To sign in, press continue below"</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Successfully signed in</string>
     <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentication saved
 
-• Your Morphe settings will not import/export Android VR authentication
+• Your Premium Youtube settings will not import/export Android VR authentication
 • If this app is unused for 6 months then Google will remove this authentication
 • You will need to sign in again if you change your Google password or deregister this device from your Google settings"</string>
     <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>

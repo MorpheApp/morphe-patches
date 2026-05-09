@@ -191,7 +191,7 @@ public class CustomBrandingPatch {
      */
     private static int numberOfPresetAppNames() {
         // Modified during patching, but requires a default if custom branding is excluded.
-        return 1;
+        return 2;
     }
 
     /**
@@ -215,24 +215,11 @@ public class CustomBrandingPatch {
     }
 
     public static int getDefaultAppNameIndex() {
-        if (userProvidedCustomName()) {
-            // Custom name (last preset index).
-            return numberOfPresetAppNames();
-        }
-
-        // Fork default: preset index 2.
-        // Clamp for safety if custom branding is excluded (defaults to 1).
-        final int numberOfPresetNames = numberOfPresetAppNames();
-        if (numberOfPresetNames <= 1) {
-            return 1;
-        }
-        return Math.min(2, numberOfPresetNames);
+        return 2;
     }
 
     public static BrandingTheme getDefaultIconStyle() {
-        return userProvidedCustomIcon()
-            ? BrandingTheme.CUSTOM
-            : BrandingTheme.ORIGINAL;
+        return BrandingTheme.ORIGINAL;
     }
 
     /**

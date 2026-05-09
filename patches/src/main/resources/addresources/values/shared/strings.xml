@@ -29,7 +29,7 @@ Second \"item\" text"</string>
     <!-- String is also duplicated in Reddit import / export preference -->
     <string name="morphe_settings_import">Import</string>
     <string name="morphe_settings_import_copy">Copy</string>
-    <string name="morphe_settings_import_reset">Premium settings reset to default</string>
+    <string name="morphe_settings_import_reset">Premium Youtube settings reset to default</string>
     <string name="morphe_settings_import_success">Imported %d settings</string>
     <string name="morphe_settings_import_failure_parse">Import failed: %s</string>
     <string name="morphe_settings_search_hint">Search settings</string>
@@ -50,16 +50,16 @@ Second \"item\" text"</string>
     <string name="morphe_settings_search_history_title">Show settings search history</string>
     <string name="morphe_settings_search_history_summary_on">Settings search history is shown</string>
     <string name="morphe_settings_search_history_summary_off">Settings search history is not shown</string>
-    <string name="morphe_show_menu_icons_title">Show Premium setting icons</string>
+    <string name="morphe_show_menu_icons_title">Show Premium Youtube setting icons</string>
     <string name="morphe_show_menu_icons_summary_on">Setting icons are shown</string>
     <string name="morphe_show_menu_icons_summary_off">Setting icons are not shown</string>
-    <string name="morphe_language_title">Premium language</string>
+    <string name="morphe_language_title">Premium Youtube language</string>
     <string name="morphe_language_user_dialog_message">"Translations for some languages may be missing or incomplete.
 
 To translate new languages or improve the existing translations, visit morphe.software/translate"</string>
     <string name="morphe_language_DEFAULT">App language</string>
     <string name="morphe_pref_import_export_title">Import / Export</string>
-    <string name="morphe_pref_import_export_summary">Import / Export Premium settings</string>
+    <string name="morphe_pref_import_export_summary">Import / Export Premium Youtube settings</string>
     <string name="morphe_settings_import_file">Import from file</string>
     <string name="morphe_settings_import_file_success">Settings imported successfully, tap Save to apply</string>
     <string name="morphe_settings_import_file_failed">Failed to import settings</string>
@@ -68,8 +68,8 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_settings_export_file_failed">Failed to export settings</string>
 
     <!-- String is also duplicated in Reddit about preference -->
-    <string name="morphe_settings_about_links_body_version_current">You are using the latest Morphe Patches version &lt;i>%s&lt;/i></string>
-    <string name="morphe_settings_about_links_body_version_outdated">You are using Morphe Patches version &lt;i>%1$s&lt;/i>&lt;br>&lt;br>&lt;b>Update available: &lt;i>%2$s&lt;/i>&lt;/b>&lt;br>&lt;br>To update your patches, use Morphe to repatch this app</string>
+    <string name="morphe_settings_about_links_body_version_current">You are using the latest Premium Youtube Patches version &lt;i>%s&lt;/i></string>
+    <string name="morphe_settings_about_links_body_version_outdated">You are using Premium Youtube Patches version &lt;i>%1$s&lt;/i>&lt;br>&lt;br>&lt;b>Update available: &lt;i>%2$s&lt;/i>&lt;/b>&lt;br>&lt;br>To update your patches, use Premium Youtube to repatch this app</string>
     <string name="morphe_settings_about_links_dev_header">Note</string>
     <string name="morphe_settings_about_links_dev_body">This version is a pre-release and you may experience unexpected issues</string>
     <string name="morphe_settings_about_links_header">Official links</string>
@@ -97,14 +97,14 @@ To translate new languages or improve the existing translations, visit morphe.so
     <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
     <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack traces</string>
     <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack traces</string>
-    <string name="morphe_debug_toast_on_error_title">Show toast on Morphe error</string>
+    <string name="morphe_debug_toast_on_error_title">Show toast on Premium Youtube error</string>
     <string name="morphe_debug_toast_on_error_summary_on">Toast is shown if error occurs</string>
     <string name="morphe_debug_toast_on_error_summary_off">Toast is not shown if error occurs</string>
-    <string name="morphe_debug_toast_on_error_user_dialog_message">"Turning off error toasts hides all Morphe error notifications.
+    <string name="morphe_debug_toast_on_error_user_dialog_message">"Turning off error toasts hides all Premium Youtube error notifications.
 
 You will not be notified of any unexpected events."</string>
     <string name="morphe_debug_export_logs_title">Export debug logs</string>
-    <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
+    <string name="morphe_debug_export_logs_summary">Export Premium Youtube debug logs</string>
     <string name="morphe_debug_export_logs_file">Export to file</string>
     <string name="morphe_debug_export_logs_success">Debug logs exported successfully</string>
     <string name="morphe_debug_export_logs_failed">Failed to export debug logs</string>
