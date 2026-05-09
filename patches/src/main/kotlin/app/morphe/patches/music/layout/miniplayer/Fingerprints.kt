@@ -9,6 +9,7 @@ import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.util.indexOfFirstLiteralInstruction
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -64,4 +65,52 @@ internal object MppWatchWhileLayoutFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
+)
+
+internal object InteractionLoggingEnumFingerprint : Fingerprint(
+    returnType = "V",
+    strings = listOf("INTERACTION_LOGGING_GESTURE_TYPE_SWIPE")
+)
+
+internal object MusicActivityWidgetFingerprint : Fingerprint(
+    custom = { method, classDef ->
+        classDef.type.endsWith("/MusicActivity;") &&
+                method.indexOfFirstLiteralInstruction(79500L) >= 0
+    }
+)
+
+internal object HandleSearchRenderedFingerprint : Fingerprint(
+    returnType = "V",
+    name = "handleSearchRendered"
+)
+
+internal object HandleSignInEventFingerprint : Fingerprint(
+    classFingerprint = HandleSearchRenderedFingerprint,
+    returnType = "V",
+    name = "handleSignInEvent",
+    filters = listOf(opcode(Opcode.INVOKE_VIRTUAL), opcode(Opcode.RETURN_VOID))
+)
+
+internal object MiniPlayerDefaultTextFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;"),
+    filters = listOf(
+        opcode(Opcode.SGET_OBJECT),
+        opcode(Opcode.IF_NE),
+        resourceLiteral(ResourceType.STRING, "mini_player_default_text")
+    )
+)
+
+internal object MiniPlayerDefaultViewVisibilityFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "F"),
+    filters = listOf(
+        opcode(Opcode.IGET_OBJECT),
+        opcode(Opcode.SUB_FLOAT_2ADDR),
+        opcode(Opcode.SGET_OBJECT),
+        opcode(Opcode.INVOKE_VIRTUAL)
+    ),
+    name = "a",
+    custom = { _, classDef -> classDef.methods.count() == 3 }
 )

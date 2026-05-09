@@ -147,6 +147,11 @@ Feature implementation by VazerOG"</string>
     <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer stays minimized when playback changes</string>
     <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer expands to fullscreen when playback changes</string>
 
+    <!-- layout.miniplayer.enableSwipeToDismissMiniplayer -->
+    <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Enable swipe to dismiss miniplayer</string>
+    <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary_on">Swiping down on miniplayer dismisses it</string>
+    <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary_off">Swiping down on miniplayer does nothing</string>
+
     <!-- layout.navigationbar.navigationBarPatch -->
     <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
     <string name="morphe_music_navigation_bar_screen_summary">Hide or change navigation bar buttons</string>
