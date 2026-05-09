@@ -29,6 +29,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
+import com.android.tools.smali.dexlib2.iface.reference.Reference
 import com.android.tools.smali.dexlib2.iface.reference.StringReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/EnableSwipeToDismissMiniplayerPatch;"
@@ -59,7 +60,7 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
         val musicActivityWidgetMethod = MusicActivityWidgetFingerprint.method
         val swipeToDismissWidgetIndex = musicActivityWidgetMethod.indexOfFirstLiteralInstructionOrThrow(79500L)
 
-        fun getSwipeToDismissReference(targetOpcode: Opcode, reversed: Boolean): com.android.tools.smali.dexlib2.iface.reference.Reference {
+        fun getSwipeToDismissReference(targetOpcode: Opcode, reversed: Boolean): Reference {
             val targetIndex = if (reversed)
                 musicActivityWidgetMethod.indexOfFirstInstructionReversedOrThrow(swipeToDismissWidgetIndex) {
                     opcode == targetOpcode
