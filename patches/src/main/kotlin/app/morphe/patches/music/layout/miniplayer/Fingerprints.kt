@@ -93,10 +93,7 @@ internal object HandleSignInEventFingerprint : Fingerprint(
 
 internal object MiniPlayerDefaultTextFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
-        opcode(Opcode.SGET_OBJECT),
-        opcode(Opcode.IF_NE),
         resourceLiteral(ResourceType.STRING, "mini_player_default_text")
     )
 )

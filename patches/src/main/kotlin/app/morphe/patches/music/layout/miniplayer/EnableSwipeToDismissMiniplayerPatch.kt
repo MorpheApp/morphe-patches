@@ -17,6 +17,7 @@ import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -92,9 +93,10 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
                 getReference<FieldReference>()?.type == "Ljava/util/concurrent/atomic/AtomicBoolean;"
             }
             val primaryRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerB
-            val secondaryRegister = primaryRegister + 1
-            val tertiaryRegister = secondaryRegister + 1
-            val freeRegister = implementation!!.registerCount - parameters.size - 2
+            val registerProvider = getFreeRegisterProvider(insertIndex, 3, primaryRegister)
+            val freeRegister = registerProvider.getFreeRegister()
+            val secondaryRegister = registerProvider.getFreeRegister()
+            val tertiaryRegister = registerProvider.getFreeRegister()
 
             addInstructionsAtControlFlowLabel(
                 insertIndex, """
@@ -121,15 +123,23 @@ val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
         }
 
         MiniPlayerDefaultTextFingerprint.method.apply {
-            val insertIndex = indexOfFirstInstructionOrThrow(Opcode.IF_NE)
-            val insertRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerB
+            if (parameters.isEmpty()) {
+                addInstructions(0, """
+                    invoke-static {}, $EXTENSION_CLASS->enableSwipeToDismissMiniplayer()Z
+                    move-result v0
+                    if-eqz v0, :continue_exec
+                    return-void
+                    :continue_exec
+                """)
+            } else {
+                val insertIndex = indexOfFirstInstructionOrThrow(Opcode.IF_NE)
+                val insertRegister = getInstruction<TwoRegisterInstruction>(insertIndex).registerB
 
-            addInstructions(
-                insertIndex, """
+                addInstructions(insertIndex, """
                     invoke-static {v$insertRegister}, $EXTENSION_CLASS->enableSwipeToDismissMiniplayer(Ljava/lang/Object;)Ljava/lang/Object;
                     move-result-object v$insertRegister
-                """
-            )
+                """)
+            }
         }
 
         val targetMethod = MiniPlayerDefaultViewVisibilityFingerprint.classDef.methods.first {
