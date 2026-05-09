@@ -36,7 +36,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/EnableS
 @Suppress("unused")
 val enableSwipeToDismissMiniplayerPatch = bytecodePatch(
     name = "Enable swipe to dismiss miniplayer",
-    description = "Adds an option to enable swipe to dismiss the miniplayer.\n\nIf this patch option is enabled, the empty miniplayer may not show when the miniplayer is dismissed."
+    description = "Adds an option to enable dismissing the miniplayer by swiping down on it."
 ) {
     dependsOn(
         sharedExtensionPatch,
