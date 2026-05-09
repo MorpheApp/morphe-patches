@@ -112,14 +112,26 @@ internal object MiniPlayerDefaultViewVisibilityFingerprint : Fingerprint(
     custom = { _, classDef -> classDef.methods.count() == 3 }
 )
 
-internal object BottomSheetSetHideableFingerprint : Fingerprint(
+internal object RogOnSlideFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("Z"),
+    parameters = listOf("Landroid/view/View;", "F"),
     filters = listOf(
-        opcode(Opcode.IGET_BOOLEAN),
-        opcode(Opcode.IF_EQ),
-        opcode(Opcode.IPUT_BOOLEAN),
+        opcode(Opcode.IGET_OBJECT),
+        opcode(Opcode.IGET_OBJECT),
         opcode(Opcode.CONST_4),
-        opcode(Opcode.IF_NE)
-    )
+        opcode(Opcode.INVOKE_VIRTUAL)
+    ),
+    custom = { method, _ -> method.name == "a" }
+)
+
+internal object RogOnStateChangedFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "I"),
+    filters = listOf(
+        opcode(Opcode.IGET_OBJECT),
+        opcode(Opcode.IGET_OBJECT),
+        opcode(Opcode.CONST_4),
+        opcode(Opcode.INVOKE_VIRTUAL)
+    ),
+    custom = { method, _ -> method.name == "b" }
 )
