@@ -1,9 +1,9 @@
 package app.morphe.patches.youtube.layout.livering
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.all.misc.resources.localesYouTube
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -21,21 +21,10 @@ private val openChannelOfLiveAvatarResourcePatch = resourcePatch(
     description = "openChannelOfLiveAvatarResourcePatch"
 ) {
     execute {
-        arrayOf(
-            "", "af", "am", "ar", "as", "az", "b+sr+Latn", "be", "bg", "bn", "bs", "ca",
-            "cs", "da", "de", "el", "en-rGB", "en-rIN", "es", "es-rUS", "et", "eu", "fa",
-            "fi", "fr", "fr-rCA", "gl", "gu", "hi", "hr", "hu", "hy", "in", "is", "it",
-            "iw", "ja", "ka", "kk", "km", "kn", "ko", "ky", "lo", "lt", "lv", "mk", "ml",
-            "mn", "mr", "ms", "my", "nb", "ne", "nl", "or", "pa", "pl", "pt", "pt-rBR",
-            "pt-rPT", "ro", "ru", "si", "sk", "sl", "sq", "sr", "sv", "sw", "ta", "te",
-            "th", "tl", "tr", "uk", "ur", "uz", "vi", "zh-rCN", "zh-rHK", "zh-rTW", "zu"
-        ).forEach { locale ->
-            val directory = if (locale.isEmpty())
-                "values"
-            else
-                "values-$locale"
-
+        localesYouTube.filter { it.isBuiltInLanguage }.forEach { locale ->
+            val directory = locale.getDestLocaleFolderName()
             val targetResource = "$directory/strings.xml"
+
             inputStreamFromBundledResource(
                 "livering/host",
                 targetResource
