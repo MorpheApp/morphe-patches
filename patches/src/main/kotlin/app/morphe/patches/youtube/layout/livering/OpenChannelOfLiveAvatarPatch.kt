@@ -55,7 +55,7 @@ val openChannelOfLiveAvatarPatch = bytecodePatch(
     )
 
     execute {
-        PreferenceScreen.GENERAL.addPreferences(
+        PreferenceScreen.FEED.addPreferences(
             SwitchPreference("morphe_open_channel_of_live_avatar")
         )
 
