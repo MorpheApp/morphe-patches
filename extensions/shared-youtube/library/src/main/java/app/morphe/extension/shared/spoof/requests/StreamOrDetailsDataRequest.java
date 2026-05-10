@@ -454,13 +454,10 @@ public class StreamOrDetailsDataRequest {
             // This is not a concern, since the fetch will always be finished
             // and never block the main thread.
             // But if debugging, then still verify this is the situation.
-            if (!future.isDone() && Utils.isCurrentlyOnMainThread()) {
-                if (BaseSettings.DEBUG.get()) {
-                    Logger.printException(() -> "Error: Blocking main thread");
-                }
-            } else {
-                return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
+            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
+                Logger.printException(() -> "Debug: Blocking main thread");
             }
+            return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getStreamDetails timed out", ex);
             future.cancel(true);
