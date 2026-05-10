@@ -73,6 +73,9 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_artist_cards_title">Sanatçı kartlarını gizle</string>
   <string name="morphe_hide_artist_cards_summary_on">Sanatçı kartları gizli</string>
   <string name="morphe_hide_artist_cards_summary_off">Sanatçı kartları görünür</string>
+  <string name="morphe_hide_auto_dubbed_label_title">\'Dublajlı\' etiketini gizle</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Dublajlı etiketi gizli</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Dublajlı etiketi görünür</string>
   <string name="morphe_hide_community_posts_title">Topluluk gönderilerini gizle</string>
   <string name="morphe_hide_community_posts_summary_on">Topluluk gönderileri gizli</string>
   <string name="morphe_hide_community_posts_summary_off">Topluluk gönderileri görünür</string>
@@ -102,6 +105,9 @@ Değişiklikler şunları içerir:
 • Alışveriş
 • Tekrar izle"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Yatay raflar görünür</string>
+  <string name="morphe_hide_hyped_label_title">Hyped etiketini gizle</string>
+  <string name="morphe_hide_hyped_label_summary_on">Hyped etiketi gizli</string>
+  <string name="morphe_hide_hyped_label_summary_off">Hyped etiketi görünür</string>
   <string name="morphe_hide_image_shelf_title">Resim rafını gizle</string>
   <string name="morphe_hide_image_shelf_summary_on">Arama sonuçlarındaki resim rafı gizli</string>
   <string name="morphe_hide_image_shelf_summary_off">Arama sonuçlarındaki resim rafı görünür</string>
@@ -212,6 +218,9 @@ YouTube Doodles göstermek, özel başlıkların görüntülenmesini engelleyebi
   <string name="morphe_hide_chapters_section_title">Bölümler\'i gizle</string>
   <string name="morphe_hide_chapters_section_summary_on">Bölümler kısmı gizli</string>
   <string name="morphe_hide_chapters_section_summary_off">Bölümler kısmı görünür</string>
+  <string name="morphe_hide_corrections_section_title">Düzeltmeler\'i gizle</string>
+  <string name="morphe_hide_corrections_section_summary_on">Düzeltmeler bölümü gizli</string>
+  <string name="morphe_hide_corrections_section_summary_off">Düzeltmeler bölümü görünür</string>
   <string name="morphe_hide_course_progress_section_title">\'Kursun ilerleme durumu\'nu gizle</string>
   <string name="morphe_hide_course_progress_section_summary_on">Kursun ilerleme durumu kısmı gizli</string>
   <string name="morphe_hide_course_progress_section_summary_off">Kursun ilerleme durumu kısmı görünür</string>
@@ -265,6 +274,9 @@ YouTube Doodles göstermek, özel başlıkların görüntülenmesini engelleyebi
   <string name="morphe_hide_transcript_section_title">Transkript\'i gizle</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkript kısmı gizli</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkript kısmı görünür</string>
+  <string name="morphe_hide_video_details_section_title">\"Video ayrıntıları\'nı\" gizle</string>
+  <string name="morphe_hide_video_details_section_summary_on">Video ayrıntıları bölümü gizli</string>
+  <string name="morphe_hide_video_details_section_summary_off">Video ayrıntıları bölümü görünür</string>
   <string name="morphe_hide_filter_bar_screen_title">Filtreleme çubuğu</string>
   <string name="morphe_hide_filter_bar_screen_summary">Akışlarda, ilgili videolarda, arama sonuçlarında ve izleme geçmişinde filtre çubuğunu gizle veya göster</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Akışta gizle</string>
@@ -530,6 +542,13 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_reload_video_button_summary_on">Videoyu yeniden yükle düğmesi gösteriliyor</string>
   <string name="morphe_reload_video_button_summary_off">Videoyu yeniden yükle düğmesi gösterilmiyor</string>
   <string name="morphe_dismiss_player_not_available_toast">Video kimliği kullanılamıyor. Lütfen videoyu manuel olarak yeniden yükleyin</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">\"Daha sonra izle\'ye kaydet\"i göster</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Daha sonra izle\'ye kaydet düğmesi gösteriliyor</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Daha sonra izle\'ye kaydet düğmesi gösterilmiyor</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video, daha sonra izle listesine başarıyla kaydedildi</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Bu video daha sonra izle listesinde zaten kayıtlı</string>
+  <string name="morphe_save_to_watch_later_error_toast">Bu video daha sonra izle listesine kaydedilemiyor</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Hassas sardırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Hassas sardırma hareketi devre dışı</string>

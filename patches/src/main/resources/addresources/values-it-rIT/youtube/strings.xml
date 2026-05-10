@@ -73,6 +73,9 @@ I cambiamenti includono:
   <string name="morphe_hide_artist_cards_title">Nascondi le schede artista</string>
   <string name="morphe_hide_artist_cards_summary_on">Le schede artista sono nascoste</string>
   <string name="morphe_hide_artist_cards_summary_off">Le schede artista sono visibili</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Nascondi l\'etichetta \'Doppiato automaticamente\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">L\'etichetta auto-doppiata è nascosta</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">L\'etichetta auto-doppiata è visibile</string>
   <string name="morphe_hide_community_posts_title">Nascondi i post della community</string>
   <string name="morphe_hide_community_posts_summary_on">I post della community sono nascosti</string>
   <string name="morphe_hide_community_posts_summary_off">I post della community sono visibili</string>
@@ -102,6 +105,9 @@ I cambiamenti includono:
 • Shopping
 • Riguardalo"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Le scaffalature orizzontali sono mostrate</string>
+  <string name="morphe_hide_hyped_label_title">Nascondi etichetta \'In evidenza\'</string>
+  <string name="morphe_hide_hyped_label_summary_on">L\'etichetta \'In evidenza\' è nascosta</string>
+  <string name="morphe_hide_hyped_label_summary_off">L\'etichetta \'In evidenza\' è visibile</string>
   <string name="morphe_hide_image_shelf_title">Nascondi sezione immagini</string>
   <string name="morphe_hide_image_shelf_summary_on">La sezione immagini nei risultati di ricerca è nascosta</string>
   <string name="morphe_hide_image_shelf_summary_off">La sezione immagini nei risultati di ricerca è mostrata</string>
@@ -212,6 +218,9 @@ La visualizzazione dei Doodle di YouTube potrebbe impedire la visualizzazione de
   <string name="morphe_hide_chapters_section_title">Nascondi Capitoli</string>
   <string name="morphe_hide_chapters_section_summary_on">La sezione Capitoli è nascosta</string>
   <string name="morphe_hide_chapters_section_summary_off">La sezione Capitoli è visibile</string>
+  <string name="morphe_hide_corrections_section_title">Nascondi correzioni</string>
+  <string name="morphe_hide_corrections_section_summary_on">La sezione correzioni è nascosta</string>
+  <string name="morphe_hide_corrections_section_summary_off">La sezione correzioni è visibile</string>
   <string name="morphe_hide_course_progress_section_title">Nascondi \'Progressi corso\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">La sezione dei progressi del corso è nascosta</string>
   <string name="morphe_hide_course_progress_section_summary_off">La sezione dei progressi del corso è visibile</string>
@@ -265,6 +274,9 @@ La visualizzazione dei Doodle di YouTube potrebbe impedire la visualizzazione de
   <string name="morphe_hide_transcript_section_title">Nascondi Trascrizione</string>
   <string name="morphe_hide_transcript_section_summary_on">La sezione Trascrizione è nascosta</string>
   <string name="morphe_hide_transcript_section_summary_off">La sezione Trascrizione è visibile</string>
+  <string name="morphe_hide_video_details_section_title">Nascondi \'Dettagli video\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">La sezione dettagli video è nascosta</string>
+  <string name="morphe_hide_video_details_section_summary_off">La sezione dettagli video è visibile</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra dei filtri</string>
   <string name="morphe_hide_filter_bar_screen_summary">Nascondi o mostra la barra dei filtri nei feed, nei video correlati, nei risultati di ricerca e nella cronologia delle visualizzazioni</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Nascondi nei feed</string>
@@ -530,6 +542,13 @@ Informazioni: potrebbe non funzionare sui live streaming"</string>
   <string name="morphe_reload_video_button_summary_on">Il pulsante ricarica video è visibile</string>
   <string name="morphe_reload_video_button_summary_off">Il pulsante ricarica video non è visibile</string>
   <string name="morphe_dismiss_player_not_available_toast">ID video non disponibile. Ricarica manualmente il video</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Mostra Salva per dopo</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Il pulsante Salva per dopo è visibile</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Il pulsante Salva per dopo non è visibile</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video salvato con successo nella playlist \"Guardalo dopo\"</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Questo video è già stato salvato nella playlist \"Guardalo dopo\"</string>
+  <string name="morphe_save_to_watch_later_error_toast">Impossibile salvare questo video nella playlist \"Guardalo dopo\"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Disabilita il gesto di ricerca preciso</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Il gesto è disabilitato</string>

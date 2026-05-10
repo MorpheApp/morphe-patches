@@ -1,3 +1,11 @@
+# [1.27.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.27.0-dev.1...v1.27.0-dev.2) (2026-05-08)
+
+
+### Features
+
+* **YouTube - Hide layout components:** Add "Hide Auto-dubbed label", "Hide Corrections section", "Hide Hyped label",  and "Hide Video details section" settings ([#1367](https://github.com/MorpheApp/morphe-patches/issues/1367)) ([43b79c6](https://github.com/MorpheApp/morphe-patches/commit/43b79c6b4679eb7bd5d9983aa4d4e3f8d2ffbb21))
+* **YouTube:** Add `Save to watch later` patch ([#1274](https://github.com/MorpheApp/morphe-patches/issues/1274)) ([45cea2c](https://github.com/MorpheApp/morphe-patches/commit/45cea2c860f7447d643c3c0af59d4517989c9306))
+
 # [1.27.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.26.1-dev.3...v1.27.0-dev.1) (2026-05-07)
 
 

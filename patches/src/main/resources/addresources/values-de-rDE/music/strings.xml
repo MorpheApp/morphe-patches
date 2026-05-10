@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Sitzungssteuerung</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Langes Drücken der Shuffle-Taste zum Anhalten oder Fortsetzen der nahtlosen Wiedergabe"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Sitzungssteuerung ist deaktiviert</string>
+  <string name="morphe_music_crossfade_paused_toast">Übergang pausiert für diese Sitzung</string>
+  <string name="morphe_music_crossfade_resumed_toast">Nahtlose Wiedergabe fortgesetzt</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Der Videomodus ist nicht verfügbar, während die nahtlose Wiedergabe aktiviert ist</string>
   <string name="morphe_music_crossfade_about_title">Über</string>
   <string name="morphe_music_crossfade_about_summary">"Nahtlose Wiedergabe ist mit YouTube Music 8.x verfügbar
 

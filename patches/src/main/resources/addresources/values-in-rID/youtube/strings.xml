@@ -72,6 +72,9 @@ Perubahan termasuk:
   <string name="morphe_hide_artist_cards_title">Sembunyikan kartu artis</string>
   <string name="morphe_hide_artist_cards_summary_on">Kartu artis disembunyikan</string>
   <string name="morphe_hide_artist_cards_summary_off">Kartu artis ditampilkan</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Sembunyikan label \'Sulih suara Otomatis\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Label sulih suara otomatis disembunyikan</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Label sulih suara otomatis ditampilkan</string>
   <string name="morphe_hide_community_posts_title">Sembunyikan postingan komunitas</string>
   <string name="morphe_hide_community_posts_summary_on">Postingan komunitas disembunyikan</string>
   <string name="morphe_hide_community_posts_summary_off">Postingan komunitas ditampilkan</string>
@@ -101,6 +104,9 @@ Perubahan termasuk:
 • Belanja
 • Tonton lagi"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Rak horizontal ditampilkan</string>
+  <string name="morphe_hide_hyped_label_title">Sembunyikan label Populer</string>
+  <string name="morphe_hide_hyped_label_summary_on">Label Populer disembunyikan</string>
+  <string name="morphe_hide_hyped_label_summary_off">Label Populer ditampilkan</string>
   <string name="morphe_hide_image_shelf_title">Sembunyikan rak gambar</string>
   <string name="morphe_hide_image_shelf_summary_on">Rak gambar dalam hasil pencarian disembunyikan</string>
   <string name="morphe_hide_image_shelf_summary_off">Rak gambar dalam hasil pencarian ditampilkan</string>
@@ -211,6 +217,9 @@ Menampilkan YouTube Doodles mungkin mencegah menampilkan header khusus."</string
   <string name="morphe_hide_chapters_section_title">Sembunyikan Bab</string>
   <string name="morphe_hide_chapters_section_summary_on">Bagian Bab disembunyikan</string>
   <string name="morphe_hide_chapters_section_summary_off">Bagian Bab ditampilkan</string>
+  <string name="morphe_hide_corrections_section_title">Sembunyikan Koreksi</string>
+  <string name="morphe_hide_corrections_section_summary_on">Bagian koreksi disembunyikan</string>
+  <string name="morphe_hide_corrections_section_summary_off">Bagian koreksi ditampilkan</string>
   <string name="morphe_hide_course_progress_section_title">Sembunyikan \'Kemajuan kursus\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Bagian kemajuan kursus disembunyikan</string>
   <string name="morphe_hide_course_progress_section_summary_off">Bagian kemajuan kursus ditampilkan</string>
@@ -264,6 +273,9 @@ Menampilkan YouTube Doodles mungkin mencegah menampilkan header khusus."</string
   <string name="morphe_hide_transcript_section_title">Sembunyikan Transkrip</string>
   <string name="morphe_hide_transcript_section_summary_on">Bagian transkrip disembunyikan</string>
   <string name="morphe_hide_transcript_section_summary_off">Bagian transkrip ditampilkan</string>
+  <string name="morphe_hide_video_details_section_title">Sembunyikan \'Detail Video\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">Bagian detail video disembunyikan</string>
+  <string name="morphe_hide_video_details_section_summary_off">Bagian detail video ditampilkan</string>
   <string name="morphe_hide_filter_bar_screen_title">Bilah saring</string>
   <string name="morphe_hide_filter_bar_screen_summary">Sembunyikan atau tampilkan bilah penyaring di feeds, video terkait, hasil pencarian, dan riwayat tontonan</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Sembunyikan di feeds</string>
@@ -529,6 +541,13 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_reload_video_button_summary_on">Tombol muat ulang video ditampilkan</string>
   <string name="morphe_reload_video_button_summary_off">Tombol muat ulang video tidak ditampilkan</string>
   <string name="morphe_dismiss_player_not_available_toast">ID video tidak tersedia. Silakan muat ulang video secara manual</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Tampilkan Simpan untuk ditonton nanti</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Tombol simpan untuk ditonton nanti ditampilkan</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Tombol simpan untuk ditonton nanti tidak ditampilkan</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video berhasil disimpan di daftar tonton nanti</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Video ini sudah disimpan di daftar tonton nanti</string>
+  <string name="morphe_save_to_watch_later_error_toast">Tidak dapat menyimpan video ini di daftar tonton nanti</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Nonaktifkan gerakan pencarian presisi</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gerakan pencarian yang presisi dinonaktifkan</string>

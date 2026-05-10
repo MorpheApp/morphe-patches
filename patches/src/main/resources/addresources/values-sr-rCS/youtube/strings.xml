@@ -73,6 +73,9 @@ Promene uključuju:
   <string name="morphe_hide_artist_cards_title">Sakrij kartice izvođača</string>
   <string name="morphe_hide_artist_cards_summary_on">Kartice izvođača su skrivene</string>
   <string name="morphe_hide_artist_cards_summary_off">Kartice izvođača su prikazane</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Sakrij oznaku \"Automatski sinhronizovano\"</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Automatski dodati natpis je sakriven</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Automatski dodati natpis je prikazan</string>
   <string name="morphe_hide_community_posts_title">Sakrij objave zajednice</string>
   <string name="morphe_hide_community_posts_summary_on">Objave zajednice su skrivene</string>
   <string name="morphe_hide_community_posts_summary_off">Objave zajednice su prikazane</string>
@@ -102,6 +105,9 @@ Promene uključuju:
 • Kupovina
 • Pogledajte ponovo"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Horizontalne police su prikazane</string>
+  <string name="morphe_hide_hyped_label_title">Sakrij popularni natpis</string>
+  <string name="morphe_hide_hyped_label_summary_on">Popularni natpis je sakriven</string>
+  <string name="morphe_hide_hyped_label_summary_off">Popularni natpis je prikazan</string>
   <string name="morphe_hide_image_shelf_title">Sakrij policu sa slikama</string>
   <string name="morphe_hide_image_shelf_summary_on">Polica sa slikama u rezultatima pretrage je skrivena</string>
   <string name="morphe_hide_image_shelf_summary_off">Polica sa slikama u rezultatima pretrage je prikazana</string>
@@ -212,6 +218,9 @@ Prikazivanje YouTube Doodles može sprečiti prikazivanje korisničkih zaglavlja
   <string name="morphe_hide_chapters_section_title">Sakrij poglavlja</string>
   <string name="morphe_hide_chapters_section_summary_on">Odeljak za poglavlja je skriven</string>
   <string name="morphe_hide_chapters_section_summary_off">Odeljak za poglavlja je prikazan</string>
+  <string name="morphe_hide_corrections_section_title">Sakrij ispravke</string>
+  <string name="morphe_hide_corrections_section_summary_on">Odeljak sa ispravkama je sakriven</string>
+  <string name="morphe_hide_corrections_section_summary_off">Odeljak sa ispravkama je prikazan</string>
   <string name="morphe_hide_course_progress_section_title">Sakrij \'Napredak kursa\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Odeljak \'Napredak kursa\' je sakriven</string>
   <string name="morphe_hide_course_progress_section_summary_off">Odeljak \'Napredak kursa\' je prikazan</string>
@@ -265,6 +274,9 @@ Prikazivanje YouTube Doodles može sprečiti prikazivanje korisničkih zaglavlja
   <string name="morphe_hide_transcript_section_title">Sakrij transkript</string>
   <string name="morphe_hide_transcript_section_summary_on">Odeljak za transkripciju je skriven</string>
   <string name="morphe_hide_transcript_section_summary_off">Odeljak za transkripciju je prikazan</string>
+  <string name="morphe_hide_video_details_section_title">Sakrij \'Detalje videa\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">Odeljak sa detaljima videa je sakriven</string>
+  <string name="morphe_hide_video_details_section_summary_off">Odeljak sa detaljima videa je prikazan</string>
   <string name="morphe_hide_filter_bar_screen_title">Traka filtera</string>
   <string name="morphe_hide_filter_bar_screen_summary">Sakrijte ili prikažite traku filtera u fidovima, srodnim videima, rezultatima pretrage i istoriji gledanja</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Sakrij u fidovima</string>
@@ -530,6 +542,13 @@ Info: Možda neće raditi na prenosima uživo"</string>
   <string name="morphe_reload_video_button_summary_on">Dugme za učitavanje videa je prikazano</string>
   <string name="morphe_reload_video_button_summary_off">Dugme za učitavanje videa nije prikazano</string>
   <string name="morphe_dismiss_player_not_available_toast">ID videa nije dostupan. Ručno ponovo učitajte video</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Pokaži Sačuvaj za kasnije</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Dugme za čuvanje za kasnije je prikazano</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Dugme za čuvanje za kasnije nije prikazano</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video je uspešno sačuvan na listi za gledanje kasnije</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Ovaj video je već sačuvan na listi za gledanje kasnije</string>
+  <string name="morphe_save_to_watch_later_error_toast">Nije moguće sačuvati ovaj video na listi za gledanje kasnije</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogući pokret preciznog premotavanja</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Pokret preciznog premotavanja je onemogućen</string>

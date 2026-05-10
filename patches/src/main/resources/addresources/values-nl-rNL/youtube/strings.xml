@@ -73,6 +73,9 @@ Wijzigingen zijn:
   <string name="morphe_hide_artist_cards_title">Verberg artistkaarten</string>
   <string name="morphe_hide_artist_cards_summary_on">De artistkaarten zijn verborgen</string>
   <string name="morphe_hide_artist_cards_summary_off">De artistkaarten worden weergegeven</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Verberg label \'Automatisch nagesproken\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Automatisch ingevoegde label is verborgen</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Automatisch ingevoegde label wordt weergegeven</string>
   <string name="morphe_hide_community_posts_title">Community berichten verbergen</string>
   <string name="morphe_hide_community_posts_summary_on">Community berichten zijn verborgen</string>
   <string name="morphe_hide_community_posts_summary_off">Community berichten worden weergegeven</string>
@@ -102,6 +105,9 @@ Wijzigingen zijn:
 • Shoppen
 • Opnieuw bekijken"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Horizontale planken worden getoond</string>
+  <string name="morphe_hide_hyped_label_title">Verberg Hyped label</string>
+  <string name="morphe_hide_hyped_label_summary_on">Hyped label is verborgen</string>
+  <string name="morphe_hide_hyped_label_summary_off">Hyped label wordt weergegeven</string>
   <string name="morphe_hide_image_shelf_title">Afbeeldingenplank verbergen</string>
   <string name="morphe_hide_image_shelf_summary_on">Afbeeldingenplank in zoekresultaten is verborgen</string>
   <string name="morphe_hide_image_shelf_summary_off">Afbeeldingenplank in zoekresultaten is getoond</string>
@@ -212,6 +218,9 @@ Het tonen van YouTube Doodles kan voorkomen dat aangepaste headers worden weerge
   <string name="morphe_hide_chapters_section_title">Hoofdstukken verbergen</string>
   <string name="morphe_hide_chapters_section_summary_on">Hoofdstukken sectie is verborgen</string>
   <string name="morphe_hide_chapters_section_summary_off">Hoofdstukken sectie wordt getoond</string>
+  <string name="morphe_hide_corrections_section_title">Verberg Correcties</string>
+  <string name="morphe_hide_corrections_section_summary_on">Correcties sectie is verborgen</string>
+  <string name="morphe_hide_corrections_section_summary_off">Correcties sectie wordt weergegeven</string>
   <string name="morphe_hide_course_progress_section_title">Verberg \'Course progress\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Course progress sectie is verborgen</string>
   <string name="morphe_hide_course_progress_section_summary_off">Course progress sectie is getoond</string>
@@ -265,6 +274,9 @@ Het tonen van YouTube Doodles kan voorkomen dat aangepaste headers worden weerge
   <string name="morphe_hide_transcript_section_title">Transcript verbergen</string>
   <string name="morphe_hide_transcript_section_summary_on">Transcriptgedeelte is verborgen</string>
   <string name="morphe_hide_transcript_section_summary_off">Transcriptgedeelte is zichtbaar</string>
+  <string name="morphe_hide_video_details_section_title">Verberg \'Video details\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">Video details sectie is verborgen</string>
+  <string name="morphe_hide_video_details_section_summary_off">Video details sectie wordt weergegeven</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterbaren</string>
   <string name="morphe_hide_filter_bar_screen_summary">Filterbalk verbergen of tonen in feeds, gerelateerde video\'s, zoekresultaten en kijkgeschiedenis</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Verbergen in feeds</string>
@@ -531,6 +543,13 @@ Info: Werkt mogelijk niet bij livestreams"</string>
   <string name="morphe_reload_video_button_summary_on">De knop voor het opnieuw laden van de video wordt weergegeven</string>
   <string name="morphe_reload_video_button_summary_off">De knop voor het opnieuw laden van de video wordt niet weergegeven</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID is niet beschikbaar. Laad de video handmatig opnieuw</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Bekijk later opslaan</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Knop \'Bekijk later opslaan\' wordt weergegeven</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Knop \'Bekijk later opslaan\' wordt niet weergegeven</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video succesvol opgeslagen in afspeellijst \'Bekijk later\'</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Deze video is al opgeslagen in de afspeellijst \'Bekijk later\'</string>
+  <string name="morphe_save_to_watch_later_error_toast">Kan deze video niet opslaan in de afspeellijst \'Bekijk later\'</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Precisie-zoekbeweging uitschakelen</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Beweging is uitgeschakeld</string>

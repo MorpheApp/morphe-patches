@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Műveleti vezérlés</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Hosszan nyomd meg a keverési gombot a kereszthallás szüneteltetéséhez vagy folytatásához"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">A műveleti vezérlés le van tiltva</string>
+  <string name="morphe_music_crossfade_paused_toast">A crossfade szüneteltetve van az aktuális session alatt</string>
+  <string name="morphe_music_crossfade_resumed_toast">A crossfade folytatódik</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">A videó mód nem elérhető, amíg a crossfade engedélyezve van</string>
   <string name="morphe_music_crossfade_about_title">Névjegy</string>
   <string name="morphe_music_crossfade_about_summary">"A kereszthallás a YouTube Music 8.x verziójában elérhető.
 

@@ -73,6 +73,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">Скриване на картите на изпълнителите</string>
   <string name="morphe_hide_artist_cards_summary_on">Картите на изпълнителите са скрити</string>
   <string name="morphe_hide_artist_cards_summary_off">Картите на изпълнителите са показани</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Скрий надпис \"Автоматично озвучени\"</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Автоматично дублираният етикет е скрит</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Автоматично дублираният етикет е показан</string>
   <string name="morphe_hide_community_posts_title">Скриване на публикациите от общността</string>
   <string name="morphe_hide_community_posts_summary_on">Публикациите от общността са скрити</string>
   <string name="morphe_hide_community_posts_summary_off">Публикациите от общността са показани</string>
@@ -102,6 +105,9 @@ Second \"item\" text"</string>
 • Пазаруване
 • Гледайте отново"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Хоризонталните рафтове са показани</string>
+  <string name="morphe_hide_hyped_label_title">Скриване на етикета \"Популярно\"</string>
+  <string name="morphe_hide_hyped_label_summary_on">Етикетът \"Популярно\" е скрит</string>
+  <string name="morphe_hide_hyped_label_summary_off">Етикетът \"Популярно\" е показан</string>
   <string name="morphe_hide_image_shelf_title">Скр. рафтовете със снимки</string>
   <string name="morphe_hide_image_shelf_summary_on">Рафтовете с изображения в резултатите от търсенето е скрита</string>
   <string name="morphe_hide_image_shelf_summary_off">Рафтът с изображения в резултатите от търсенето е показан</string>
@@ -212,6 +218,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">Скрийте \'Части\'</string>
   <string name="morphe_hide_chapters_section_summary_on">Разделът \'Части\' е скрит</string>
   <string name="morphe_hide_chapters_section_summary_off">Разделът \'Части\' е показан</string>
+  <string name="morphe_hide_corrections_section_title">Скриване на корекциите</string>
+  <string name="morphe_hide_corrections_section_summary_on">Разделът с корекции е скрит</string>
+  <string name="morphe_hide_corrections_section_summary_off">Разделът с корекции е показан</string>
   <string name="morphe_hide_course_progress_section_title">Скриване на \'Прогрес на курс\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Раздел \'Прогрес на курс\' е скрит</string>
   <string name="morphe_hide_course_progress_section_summary_off">Раздел \'Прогрес на курс\' е показан</string>
@@ -265,6 +274,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">Скрийте \'Транскрипт\'</string>
   <string name="morphe_hide_transcript_section_summary_on">Разделът \'Транскрипт\' е скрит</string>
   <string name="morphe_hide_transcript_section_summary_off">Разделът \'Транскрипт\' е показан</string>
+  <string name="morphe_hide_video_details_section_title">Скриване на \"Подробности за видеото\"</string>
+  <string name="morphe_hide_video_details_section_summary_on">Разделът с подробности за видеото е скрит</string>
+  <string name="morphe_hide_video_details_section_summary_off">Разделът с подробности за видеото е показан</string>
   <string name="morphe_hide_filter_bar_screen_title">Филтрите филтрите и търсенето в домакинството</string>
   <string name="morphe_hide_filter_bar_screen_summary">Скрийте или покажете филтрите в домакинството, свързани видеоклипове, резултати от търсене и история на гледане</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Скрити в домакинството</string>
@@ -528,6 +540,13 @@ Second \"item\" text"</string>
   <string name="morphe_reload_video_button_summary_on">Показва се бутонът за презареждане на видеото</string>
   <string name="morphe_reload_video_button_summary_off">Не се показва бутонът за презареждане на видеото</string>
   <string name="morphe_dismiss_player_not_available_toast">ID на видеото е недостъпно. Моля, презаредете видеото ръчно</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Покажи Запази за гледане по-късно</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Бутонът Запази за гледане по-късно е показан</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Бутонът Запази за гледане по-късно не е показан</string>
+  <string name="morphe_save_to_watch_later_success_toast">Видеоклипът е запазен успешно в плейлиста Гледай по-късно</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Този видеоклип вече е запазен в плейлиста Гледай по-късно</string>
+  <string name="morphe_save_to_watch_later_error_toast">Не може да се запази този видеоклип в плейлиста Гледай по-късно</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Полето за външен свалик не може да бъде празно</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Изключи прецизно сваляне на позиция</string>

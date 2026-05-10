@@ -73,6 +73,9 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_artist_cards_title">Itago ang mga artist card</string>
   <string name="morphe_hide_artist_cards_summary_on">Nakatago ang mga artist card</string>
   <string name="morphe_hide_artist_cards_summary_off">Ipinapakita ang mga artist card</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Itago ang label na \'Auto-dubbed\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Nakatago ang auto-dubbed label</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Ipinapakita ang auto-dubbed label</string>
   <string name="morphe_hide_community_posts_title">Itago ang mga post ng komunidad</string>
   <string name="morphe_hide_community_posts_summary_on">Nakatago ang mga post ng komunidad</string>
   <string name="morphe_hide_community_posts_summary_off">Ipinapakita ang mga post ng komunidad</string>
@@ -102,6 +105,9 @@ Kasama sa mga pagbabago ang:
 • Shopping
 • Panoorin itong muli"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Ipinapakita ang mga horizontal shelf</string>
+  <string name="morphe_hide_hyped_label_title">Itago ang Hyped label</string>
+  <string name="morphe_hide_hyped_label_summary_on">Nakatago ang Hyped label</string>
+  <string name="morphe_hide_hyped_label_summary_off">Ipinapakita ang Hyped label</string>
   <string name="morphe_hide_image_shelf_title">Itago ang image shelf</string>
   <string name="morphe_hide_image_shelf_summary_on">Nakatago ang image shelf sa mga paghahanap</string>
   <string name="morphe_hide_image_shelf_summary_off">Ipinapakita ang image shelf sa mga paghahanap</string>
@@ -212,6 +218,9 @@ Ang pagpapakita ng mga YouTube Doodle ay maaaring pigilan ang pagpapakita ng mga
   <string name="morphe_hide_chapters_section_title">Itago ang mga kabanata</string>
   <string name="morphe_hide_chapters_section_summary_on">Nakatago ang seksyon na Kabanata</string>
   <string name="morphe_hide_chapters_section_summary_off">Ipinapakita ang seksyon na Kabanata</string>
+  <string name="morphe_hide_corrections_section_title">Itago ang Mga Pagwawasto</string>
+  <string name="morphe_hide_corrections_section_summary_on">Nakatago ang seksyon ng mga pagwawasto</string>
+  <string name="morphe_hide_corrections_section_summary_off">Ipinapakita ang seksyon ng mga pagwawasto</string>
   <string name="morphe_hide_course_progress_section_title">Itago ang \'Pag-unlad ng kurso\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Nakatago ang seksyon na Pag-unlad ng kurso</string>
   <string name="morphe_hide_course_progress_section_summary_off">Ipinapakita ang seksyon na Pag-unlad ng kurso</string>
@@ -265,6 +274,9 @@ Ang pagpapakita ng mga YouTube Doodle ay maaaring pigilan ang pagpapakita ng mga
   <string name="morphe_hide_transcript_section_title">Itago ang Transcript</string>
   <string name="morphe_hide_transcript_section_summary_on">Nakatago ang seksyon na Transcript</string>
   <string name="morphe_hide_transcript_section_summary_off">Ipinapakita ang seksyon na Transcript</string>
+  <string name="morphe_hide_video_details_section_title">Itago ang \'Mga detalye ng video\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">Nakatago ang seksyon ng mga detalye ng video</string>
+  <string name="morphe_hide_video_details_section_summary_off">Ipinapakita ang seksyon ng mga detalye ng video</string>
   <string name="morphe_hide_filter_bar_screen_title">Filter bar</string>
   <string name="morphe_hide_filter_bar_screen_summary">Itago o ipakita ang filter bar sa mga feed, mga kaugnay na video, resulta sa paghahanap, at kasaysayan ng panonood</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Itago sa mga feed</string>
@@ -530,6 +542,13 @@ Info: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_reload_video_button_summary_on">Ipinapakita ang button na i-reload ang video</string>
   <string name="morphe_reload_video_button_summary_off">Hindi ipinapakita ang button na i-reload ang video</string>
   <string name="morphe_dismiss_player_not_available_toast">Hindi available ang Video ID. Pakisuyong i-reload nang manu-mano ang video</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Ipakita ang I-save para manood mamaya</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Ipinapakita ang button na I-save para manood mamaya</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Hindi ipinapakita ang button na I-save para manood mamaya</string>
+  <string name="morphe_save_to_watch_later_success_toast">Matagumpay na naisave ang video sa playlist na I-save para manood mamaya</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Naisave na ang videong ito sa playlist na I-save para manood mamaya</string>
+  <string name="morphe_save_to_watch_later_error_toast">Hindi ma-save ang videong ito sa playlist na I-save para manood mamaya</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">I-disable ang tumpak na pag-ugong ng pag-ugong</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Naka-disable ang tumpak na pag-ugong ng pag-ugong</string>

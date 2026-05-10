@@ -73,6 +73,8 @@ Schimbari incluse:
   <string name="morphe_hide_artist_cards_title">Ascunde cărțile artistului</string>
   <string name="morphe_hide_artist_cards_summary_on">Cartonaşele artistice sunt ascunse</string>
   <string name="morphe_hide_artist_cards_summary_off">Cardurile artistului sunt afișate</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Eticheta video dublată automat este ascunsă</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Eticheta video dublată automat este afișată</string>
   <string name="morphe_hide_community_posts_title">Ascunde postările comunității</string>
   <string name="morphe_hide_community_posts_summary_on">Posturile comunitare sunt ascunse</string>
   <string name="morphe_hide_community_posts_summary_off">Posturile comunitare sunt afișate</string>
@@ -102,6 +104,9 @@ Schimbari incluse:
 • Shopping
 • Vezi din nou"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Sertarele orizontale sunt afișate.</string>
+  <string name="morphe_hide_hyped_label_title">Ascunde eticheta \"În tendințe\"</string>
+  <string name="morphe_hide_hyped_label_summary_on">Eticheta \"În tendințe\" este ascunsă</string>
+  <string name="morphe_hide_hyped_label_summary_off">Eticheta \"În tendințe\" este afișată</string>
   <string name="morphe_hide_image_shelf_title">Ascunde raftul de imagini</string>
   <string name="morphe_hide_image_shelf_summary_on">Raftul de imagini în rezultatele căutării este ascuns</string>
   <string name="morphe_hide_image_shelf_summary_off">Raftul de imagini în rezultatele căutării este afișat</string>
@@ -212,6 +217,9 @@ Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personaliz
   <string name="morphe_hide_chapters_section_title">Ascunde Capitolele</string>
   <string name="morphe_hide_chapters_section_summary_on">Capitolul este ascuns</string>
   <string name="morphe_hide_chapters_section_summary_off">Capitolul este afișat</string>
+  <string name="morphe_hide_corrections_section_title">Ascunde corecții</string>
+  <string name="morphe_hide_corrections_section_summary_on">Secțiunea corecții este ascunsă</string>
+  <string name="morphe_hide_corrections_section_summary_off">Secțiunea corecții este afișată</string>
   <string name="morphe_hide_course_progress_section_title">Ascunde \'Progresul cursului\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Secţiunea progresului cursului este ascunsă</string>
   <string name="morphe_hide_course_progress_section_summary_off">Secţiunea progresului cursului este afișată</string>
@@ -265,6 +273,9 @@ Afisarea Doodle-urilor YouTube poate împiedica afișarea header-elor personaliz
   <string name="morphe_hide_transcript_section_title">Ascunde Transcriere</string>
   <string name="morphe_hide_transcript_section_summary_on">Secțiunea de transcriere este ascunsă</string>
   <string name="morphe_hide_transcript_section_summary_off">Secțiunea de Transcriere este afișată</string>
+  <string name="morphe_hide_video_details_section_title">Ascunde \"Detalii video\"</string>
+  <string name="morphe_hide_video_details_section_summary_on">Secțiunea \"Detalii video\" este ascunsă</string>
+  <string name="morphe_hide_video_details_section_summary_off">Secțiunea \"Detalii video\" este afișată</string>
   <string name="morphe_hide_filter_bar_screen_title">Bară de filtrare</string>
   <string name="morphe_hide_filter_bar_screen_summary">Ascunde sau afișează bara de filtre în fluxuri, videoclipuri similare, rezultate ale căutării și istoricul vizionărilor</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Ascunde în feeduri</string>
@@ -526,6 +537,13 @@ Informații: este posibil să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_reload_video_button_summary_on">Butonul de reîncărcare video este afișat</string>
   <string name="morphe_reload_video_button_summary_off">Butonul de reîncărcare video nu este afișat</string>
   <string name="morphe_dismiss_player_not_available_toast">ID-ul video nu este disponibil. Vă rugăm să reîncărcați manual videoclipul</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Afișează Salvează pentru a viziona mai târziu</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Butonul Salvează pentru a viziona mai târziu este afișat</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Butonul Salvează pentru a viziona mai târziu nu este afișat</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video salvat cu succes în lista de vizionare ulterioară</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Acest video este deja salvat în lista de vizionare ulterioară</string>
+  <string name="morphe_save_to_watch_later_error_toast">Nu se poate salva acest video în lista de vizionare ulterioară</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dezactivează gestul de căutare precis</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gestul este dezactivat</string>

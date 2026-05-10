@@ -73,6 +73,9 @@ Változások:
   <string name="morphe_hide_artist_cards_title">Előadó kártyák elrejtése</string>
   <string name="morphe_hide_artist_cards_summary_on">Előadó kártyák elrejtve</string>
   <string name="morphe_hide_artist_cards_summary_off">A előadó kártyák láthatók</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Rejtse el a \"Automatikus szinkron\" feliratot</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Az automatikusan szinkronizált felirat elrejtve</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Az automatikusan szinkronizált felirat megjelenítve</string>
   <string name="morphe_hide_community_posts_title">Közösségi posztok elrejtése</string>
   <string name="morphe_hide_community_posts_summary_on">Közösségi bejegyzések elrejtve</string>
   <string name="morphe_hide_community_posts_summary_off">A közösségi bejegyzések megjelennek</string>
@@ -102,6 +105,9 @@ Változások:
 • Vásárlás
 • Nézze meg újra"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">A vízszintes polcok láthatók</string>
+  <string name="morphe_hide_hyped_label_title">Rejtsd el a népszerű feliratot</string>
+  <string name="morphe_hide_hyped_label_summary_on">A népszerű felirat elrejtve</string>
+  <string name="morphe_hide_hyped_label_summary_off">A népszerű felirat megjelenítve</string>
   <string name="morphe_hide_image_shelf_title">Képpolc elrejtése</string>
   <string name="morphe_hide_image_shelf_summary_on">A keresési eredményekben lévő képpolc el van rejtve</string>
   <string name="morphe_hide_image_shelf_summary_off">A keresési eredményekben lévő képpolc meg van jelenítve</string>
@@ -212,6 +218,9 @@ A YouTube Doodles megjelenítése megakadályozhatja egyéni fejléc megjelenít
   <string name="morphe_hide_chapters_section_title">Fejezetek elrejtése</string>
   <string name="morphe_hide_chapters_section_summary_on">Fejezetek szekció elrejtve</string>
   <string name="morphe_hide_chapters_section_summary_off">A Fejezetek szekció megjelenik</string>
+  <string name="morphe_hide_corrections_section_title">Rejtsd el a javításokat</string>
+  <string name="morphe_hide_corrections_section_summary_on">A javítások szekció elrejtve</string>
+  <string name="morphe_hide_corrections_section_summary_off">A javítások szekció megjelenítve</string>
   <string name="morphe_hide_course_progress_section_title">Rejt \'Tanfolyam előrehaladás\' szakaszt</string>
   <string name="morphe_hide_course_progress_section_summary_on">A tanfolyam előrehaladás szakasza el van rejtve</string>
   <string name="morphe_hide_course_progress_section_summary_off">A tanfolyam előrehaladás szakasza látható</string>
@@ -265,6 +274,9 @@ A YouTube Doodles megjelenítése megakadályozhatja egyéni fejléc megjelenít
   <string name="morphe_hide_transcript_section_title">Átirat elrejtése</string>
   <string name="morphe_hide_transcript_section_summary_on">Az átirat rész el van rejtve</string>
   <string name="morphe_hide_transcript_section_summary_off">Az átirat rész megjelenik</string>
+  <string name="morphe_hide_video_details_section_title">Rejtsd el a \'Videó részletek\' szekciót</string>
+  <string name="morphe_hide_video_details_section_summary_on">A \'Videó részletek\' szekció elrejtve</string>
+  <string name="morphe_hide_video_details_section_summary_off">A \'Videó részletek\' szekció megjelenítve</string>
   <string name="morphe_hide_filter_bar_screen_title">Szűrősáv</string>
   <string name="morphe_hide_filter_bar_screen_summary">A szűrősáv elrejtése vagy megjelenítése a feedekben, kapcsolódó videókban, keresési eredményekben és a megtekintési előzményekben</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Elrejtés a feedekben</string>
@@ -530,6 +542,13 @@ Információ: Lehet, hogy nem működik élő közvetítéseken"</string>
   <string name="morphe_reload_video_button_summary_on">A videó újraindítás gomb látható</string>
   <string name="morphe_reload_video_button_summary_off">A videó újraindítás gomb nem látható</string>
   <string name="morphe_dismiss_player_not_available_toast">A videóazonosító nem érhető el. Kérjük, töltse újra a videót manuálisan</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Mutasd a „Később megnézem” mentését</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">A „Később megnézem” gomb megjelenik</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">A „Később megnézem” gomb nem jelenik meg</string>
+  <string name="morphe_save_to_watch_later_success_toast">A videó sikeresen mentve a „Később megnézem” lejátszási listára</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Ez a videó már mentve van a „Később megnézem” lejátszási listára</string>
+  <string name="morphe_save_to_watch_later_error_toast">A videó nem menthető a „Később megnézem” lejátszási listára</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Pontos keresési kézmozdulat letiltása</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">A kézmozdulat letiltva</string>

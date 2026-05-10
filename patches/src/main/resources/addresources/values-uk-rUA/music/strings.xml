@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Керування сесією</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Тривале натискання кнопки перемішування призупиняє або відновлює плавний перехід"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Керування сесією вимкнено</string>
+  <string name="morphe_music_crossfade_paused_toast">Плавний перехід призупинено для цієї сесії</string>
+  <string name="morphe_music_crossfade_resumed_toast">Плавний перехід відновлено</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим відео недоступний, коли ввімкнено плавний перехід</string>
   <string name="morphe_music_crossfade_about_title">Інформація</string>
   <string name="morphe_music_crossfade_about_summary">"Плавний перехід доступний з YouTube Music 8.x
 

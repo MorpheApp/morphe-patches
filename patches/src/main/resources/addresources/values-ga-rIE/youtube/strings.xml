@@ -73,6 +73,9 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_artist_cards_title">Folaigh cártaí ealaíontóra</string>
   <string name="morphe_hide_artist_cards_summary_on">Tá cártaí ealaíontóirí i bhfolach</string>
   <string name="morphe_hide_artist_cards_summary_off">Taispeántar cártaí ealaíonta</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Folaigh an lipéad \'Uath-dhubáilte\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Tá an lipéad uath-dhubáilte i bhfolach</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Taispeántar lipéad uath-dhubáilte</string>
   <string name="morphe_hide_community_posts_title">Folaigh poist phobail</string>
   <string name="morphe_hide_community_posts_summary_on">Tá poist phobail i bhfolach</string>
   <string name="morphe_hide_community_posts_summary_off">Taispeántar poist phobail</string>
@@ -102,6 +105,9 @@ I measc na n-athruithe tá:
 • Siopadóireacht
 • Féach air arís"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Taispeántar seilfeanna cothrománacha</string>
+  <string name="morphe_hide_hyped_label_title">Folaigh an lipéad \'hype\'</string>
+  <string name="morphe_hide_hyped_label_summary_on">Tá an lipéad \'hype\' folaithe</string>
+  <string name="morphe_hide_hyped_label_summary_off">Tá an lipéad \'hype\' ar taispeáint</string>
   <string name="morphe_hide_image_shelf_title">Folaigh seilf íomhá</string>
   <string name="morphe_hide_image_shelf_summary_on">Tá seilf íomhá i dtorthaí cuardaigh i bhfolach</string>
   <string name="morphe_hide_image_shelf_summary_off">Taispeántar seilf íomhánna i dtorthaí cuardaigh</string>
@@ -212,6 +218,9 @@ D’fhéadfadh sé go gcuirfí cosc ​​ar cheanntásca saincheaptha a thaispe
   <string name="morphe_hide_chapters_section_title">Folaigh Caibidlí</string>
   <string name="morphe_hide_chapters_section_summary_on">Tá an chuid caibidlí i bhfolach</string>
   <string name="morphe_hide_chapters_section_summary_off">Taispeántar an chuid caibidlí</string>
+  <string name="morphe_hide_corrections_section_title">Folaigh Ceartúcháin</string>
+  <string name="morphe_hide_corrections_section_summary_on">Tá an chuid ceartúcháin folaithe</string>
+  <string name="morphe_hide_corrections_section_summary_off">Tá an chuid ceartúcháin ar taispeáint</string>
   <string name="morphe_hide_course_progress_section_title">Folaigh \'Dul chun cinn an chúrsa\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Tá an chuid dul chun cinn cúrsa i bhfolach</string>
   <string name="morphe_hide_course_progress_section_summary_off">Taispeántar an chuid dul chun cinn cúrsa</string>
@@ -265,6 +274,9 @@ D’fhéadfadh sé go gcuirfí cosc ​​ar cheanntásca saincheaptha a thaispe
   <string name="morphe_hide_transcript_section_title">Folaigh Tras-scríbhinn</string>
   <string name="morphe_hide_transcript_section_summary_on">Tá an chuid trascríbhinne i bhfolach</string>
   <string name="morphe_hide_transcript_section_summary_off">Taispeántar an chuid trascríbhinne</string>
+  <string name="morphe_hide_video_details_section_title">Folaigh \'Sonaiscí Video\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">Tá an chuid sonraí video folaithe</string>
+  <string name="morphe_hide_video_details_section_summary_off">Tá an chuid sonraí video ar taispeáint</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra scagaire</string>
   <string name="morphe_hide_filter_bar_screen_summary">Folaigh nó taispeáin an barra scagaire i bhfothaí, i bhfíseáin ghaolmhara, i dtorthaí cuardaigh agus i stair faire</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Folaigh sna fothaí</string>
@@ -530,6 +542,13 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo."</string>
   <string name="morphe_reload_video_button_summary_on">Taispeántar an cnaipe athlódála físeáin</string>
   <string name="morphe_reload_video_button_summary_off">Ní fheictear an cnaipe athlódála físeáin</string>
   <string name="morphe_dismiss_player_not_available_toast">Níl aitheantas físe ar fáil. Athlódáil an físeán de láimh le do thoil.</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Taispeáin Caomhain chun féachaint níos déanaí</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Tá cnaipe caomhain chun féachaint níos déanaí léirithe</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Ní léirítear cnaipe caomhain chun féachaint níos déanaí</string>
+  <string name="morphe_save_to_watch_later_success_toast">Caomhnaíodh físeán go rathúil i liosta féachaint níos déanaí</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Tá an físeán seo caomhnaithe cheana féin i liosta féachaint níos déanaí</string>
+  <string name="morphe_save_to_watch_later_error_toast">Ní féidir an físeán seo a chaomhnú i liosta féachaint níos déanaí</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Díchumasaigh gotha ​​cuardaigh beacht</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Tá gotha ​​cuardaigh chruinn díchumasaithe</string>

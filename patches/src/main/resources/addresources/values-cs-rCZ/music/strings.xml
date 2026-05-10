@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Ovládání relace</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Dlouze podržte tlačítko pro náhodné přehrávání, abyste pozastavili nebo obnovili vyhlazování"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Ovládání relace je zakázáno</string>
+  <string name="morphe_music_crossfade_paused_toast">Přechod mezi skladbami pozastaven pro tuto relaci</string>
+  <string name="morphe_music_crossfade_resumed_toast">Přechod mezi skladbami obnoven</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Režim videa není dostupný při zapnutém přechodu mezi skladbami</string>
   <string name="morphe_music_crossfade_about_title">O aplikaci</string>
   <string name="morphe_music_crossfade_about_summary">"Vyhlazování je k dispozici s YouTube Music 8.x
 

@@ -73,6 +73,9 @@ Zmiany obejmują:
   <string name="morphe_hide_artist_cards_title">Karty artystów</string>
   <string name="morphe_hide_artist_cards_summary_on">Ukryte</string>
   <string name="morphe_hide_artist_cards_summary_off">Widoczne</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Etykieta automatycznego dubbingu</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Ukryta</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Widoczna</string>
   <string name="morphe_hide_community_posts_title">Posty</string>
   <string name="morphe_hide_community_posts_summary_on">Ukryte</string>
   <string name="morphe_hide_community_posts_summary_off">Widoczne</string>
@@ -102,6 +105,9 @@ Zmiany obejmują:
 • Zakupy
 • Obejrzyj ponownie"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Widoczne</string>
+  <string name="morphe_hide_hyped_label_title">Etykieta podbitych filmów</string>
+  <string name="morphe_hide_hyped_label_summary_on">Ukryta</string>
+  <string name="morphe_hide_hyped_label_summary_off">Widoczna</string>
   <string name="morphe_hide_image_shelf_title">Półka z obrazkami</string>
   <string name="morphe_hide_image_shelf_summary_on">Ukryta w wynikach wyszukiwania</string>
   <string name="morphe_hide_image_shelf_summary_off">Widoczna w wynikach wyszukiwania</string>
@@ -212,6 +218,9 @@ Ich obecność może blokować widoczność własnych logo w nagłówku."</strin
   <string name="morphe_hide_chapters_section_title">Sekcja rozdziałów</string>
   <string name="morphe_hide_chapters_section_summary_on">Ukryta</string>
   <string name="morphe_hide_chapters_section_summary_off">Widoczna</string>
+  <string name="morphe_hide_corrections_section_title">Sekcja poprawek</string>
+  <string name="morphe_hide_corrections_section_summary_on">Ukryta</string>
+  <string name="morphe_hide_corrections_section_summary_off">Widoczna</string>
   <string name="morphe_hide_course_progress_section_title">Sekcja \"Postępy w kursie\"</string>
   <string name="morphe_hide_course_progress_section_summary_on">Ukryta</string>
   <string name="morphe_hide_course_progress_section_summary_off">Widoczna</string>
@@ -265,6 +274,9 @@ Ich obecność może blokować widoczność własnych logo w nagłówku."</strin
   <string name="morphe_hide_transcript_section_title">Sekcja transkrypcji</string>
   <string name="morphe_hide_transcript_section_summary_on">Ukryta</string>
   <string name="morphe_hide_transcript_section_summary_off">Widoczna</string>
+  <string name="morphe_hide_video_details_section_title">Sekcja \"Szczegóły filmu\"</string>
+  <string name="morphe_hide_video_details_section_summary_on">Ukryta</string>
+  <string name="morphe_hide_video_details_section_summary_off">Widoczna</string>
   <string name="morphe_hide_filter_bar_screen_title">Pasek filtrów</string>
   <string name="morphe_hide_filter_bar_screen_summary">Ukryj lub pokaż pasek filtrów na stronie głównej, w powiązanych filmach, wynikach wyszukiwania i historii oglądania</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Na stronie głównej</string>
@@ -530,6 +542,13 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_reload_video_button_summary_on">Widoczny</string>
   <string name="morphe_reload_video_button_summary_off">Ukryty</string>
   <string name="morphe_dismiss_player_not_available_toast">Film jest niedostępny. Otwórz film ponownie ręcznie</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Przycisk Do obejrzenia</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Widoczny</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Ukryty</string>
+  <string name="morphe_save_to_watch_later_success_toast">Zapisano na liście \"Do obejrzenia\"</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Film jest już na liście \"Do obejrzenia\"</string>
+  <string name="morphe_save_to_watch_later_error_toast">Nie udało się zapisać na liście \"Do obejrzenia\"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Gest precyzyjnego przewijania</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Wyłączony</string>

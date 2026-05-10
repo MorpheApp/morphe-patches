@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Управление сеансом</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Долгое нажатие на кнопку перемешивания позволяет приостановить или возобновить плавный переход"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Управление сеансом отключено</string>
+  <string name="morphe_music_crossfade_paused_toast">Воспроизведение с переходом поставлено на паузу для текущей сессии</string>
+  <string name="morphe_music_crossfade_resumed_toast">Воспроизведение с переходом возобновлено</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Видеорежим недоступен при включенном плавном переходе</string>
   <string name="morphe_music_crossfade_about_title">Информация</string>
   <string name="morphe_music_crossfade_about_summary">"Плавный переход доступен с YouTube Music 8.x
 

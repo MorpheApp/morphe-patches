@@ -75,6 +75,9 @@ Guherînan têne xistine:
   <string name="morphe_hide_artist_cards_title">Kartên hunermend hidin</string>
   <string name="morphe_hide_artist_cards_summary_on">Kartên hunermend hidin</string>
   <string name="morphe_hide_artist_cards_summary_off">Kartên hunermend nîşandin</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Pêvekirina nivîsa \'Dublajkirina otomatîkî\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Dublajkirina etiket gizlî ye</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Dublajkirina etiketê tê dîtiye</string>
   <string name="morphe_hide_community_posts_title">Postanên civakî hidin</string>
   <string name="morphe_hide_community_posts_summary_on">Postanên civakî hidin</string>
   <string name="morphe_hide_community_posts_summary_off">Postanên civakî nîşandin</string>
@@ -104,6 +107,9 @@ Guherînan têne xistine:
 • Kirîn
 • Careke din temaşê bike"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Şelfeyên qereziya nîşandinê nîşandin</string>
+  <string name="morphe_hide_hyped_label_title">Etiketa Hêvîkirî veşêrin</string>
+  <string name="morphe_hide_hyped_label_summary_on">Etiketa Hêvîkirî gizlî ye</string>
+  <string name="morphe_hide_hyped_label_summary_off">Etiketa Hêvîkirî tê dîtiye</string>
   <string name="morphe_hide_image_shelf_title">Şelfa wênekê bidin veqêşînin</string>
   <string name="morphe_hide_image_shelf_summary_on">Sernaketin lêgerînê veşartin</string>
   <string name="morphe_hide_image_shelf_summary_off">Sernaketin lêgerînê nîşandin</string>
@@ -208,6 +214,9 @@ Guherînan têne xistine:
   <string name="morphe_hide_chapters_section_title">Biguhejre Babet.</string>
   <string name="morphe_hide_chapters_section_summary_on">Babet gihîşîne ve nebînîne.</string>
   <string name="morphe_hide_chapters_section_summary_off">Babet gihîşîne têne nîşandin.</string>
+  <string name="morphe_hide_corrections_section_title">Rastkirinan veşêrin</string>
+  <string name="morphe_hide_corrections_section_summary_on">Bêja rastkirinan gizlî ye</string>
+  <string name="morphe_hide_corrections_section_summary_off">Bêja rastkirinan tê dîtiye</string>
   <string name="morphe_hide_course_progress_section_title">\'خاڵى پێشكەشكاري ڕاستا\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">خاڵى پێشكەشكارى ڕاستا قایپە</string>
   <string name="morphe_hide_course_progress_section_summary_off">خاڵى پێشكەشكارى ڕاستا نیشان وە</string>
@@ -261,6 +270,9 @@ Guherînan têne xistine:
   <string name="morphe_hide_transcript_section_title">Transkrîpt ve nebînîne.</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkrîpt gihîşîne ve nebînîne.</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkrîpt gihîşîne têne nîşandin.</string>
+  <string name="morphe_hide_video_details_section_title">\'Detayên Vîdyoyê\' veşêrin</string>
+  <string name="morphe_hide_video_details_section_summary_on">Bêja detayên vîdyoyê gizlî ye</string>
+  <string name="morphe_hide_video_details_section_summary_off">Bêja detayên vîdyoyê tê dîtiye</string>
   <string name="morphe_hide_filter_bar_screen_title">Barê Fîltirê.</string>
   <string name="morphe_hide_filter_bar_screen_summary">Barê Fîltirê ve nebînîne an nîşandin di nav govendan, vîdyoyên girêdayî, encamên lêgerînê û dîroka temaşe de.</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Di govendan de ve nebînîne.</string>
@@ -514,6 +526,13 @@ Doza navê pakkê rast be û sepan serdest be"</string>
   <!-- interaction.reload.reloadVideoPatch -->
   <string name="morphe_reload_video_button_summary_on">Baxê vîdyoyê vegerîne destikê nîşan tê.</string>
   <string name="morphe_reload_video_button_summary_off">Sergûşê rewşa videoê qedexe ye</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Dîtina tomar kirina ji bo paşê dîtinê</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Dêstika tomar kirina ji bo paşê dîtinê tê nîşandan</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Dêstika tomar kirina ji bo paşê dîtinê nayê nîşandan</string>
+  <string name="morphe_save_to_watch_later_success_toast">Vîdyo bi serfirazî di lîsteya tomar kirina ji bo paşê dîtinê de hat tomarkirin</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Vîdyo jixwe di lîsteya tomar kirina ji bo paşê dîtinê de hatî tomarkirin</string>
+  <string name="morphe_save_to_watch_later_error_toast">Nikare vî vîdyoyê di lîsteya tomar kirina ji bo paşê dîtinê de tomar bike</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Tiliyê rovnêr a lêkirinê qut bikin</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Tiliyê rovnêr a lêkirinê qut kirî ye</string>

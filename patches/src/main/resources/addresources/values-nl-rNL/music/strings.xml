@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Sessiebediening</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Lang indrukken op de shuffle-knop om crossfade te pauzeren of te hervatten"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Sessiebediening is uitgeschakeld</string>
+  <string name="morphe_music_crossfade_paused_toast">Crossfade gepauzeerd voor deze sessie</string>
+  <string name="morphe_music_crossfade_resumed_toast">Crossfade hervat</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Videomodus is niet beschikbaar wanneer crossfade is ingeschakeld</string>
   <string name="morphe_music_crossfade_about_title">Over</string>
   <string name="morphe_music_crossfade_about_summary">"Crossfade beschikbaar met YouTube Music 8.x
 

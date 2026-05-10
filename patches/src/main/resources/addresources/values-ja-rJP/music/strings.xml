@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">クロスフェードのセッション制御</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"シャッフル ボタンを長押しすると、そのセッションでのクロスフェードを停止 / 再開します"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">クロスフェードのセッションでの一時的なオン / オフの切り替え機能は無効になっています</string>
+  <string name="morphe_music_crossfade_paused_toast">このセッションでのクロスフェードを一時停止します</string>
+  <string name="morphe_music_crossfade_resumed_toast">クロスフェードを再開しました</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">クロスフェードが有効になっている間は、動画モードは利用できません</string>
   <string name="morphe_music_crossfade_about_title">クロスフェードについて</string>
   <string name="morphe_music_crossfade_about_summary">"クロスフェードは YouTube Music 8.x で利用可能です。
 

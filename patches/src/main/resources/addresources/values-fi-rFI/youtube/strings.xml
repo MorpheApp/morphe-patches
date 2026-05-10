@@ -73,6 +73,9 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_artist_cards_title">Piilota artistikortit</string>
   <string name="morphe_hide_artist_cards_summary_on">Artistikortit piilotetaan</string>
   <string name="morphe_hide_artist_cards_summary_off">Artistikortit näytetään</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Piilota \"Automaattisesti jälkiäänitetty\" -merkintä</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Automaattisesti jälkiäänitetty -merkintä piilotetaan</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Automaattisesti jälkiäänitetty -merkintä näytetään</string>
   <string name="morphe_hide_community_posts_title">Piilota yhteisöpostaukset</string>
   <string name="morphe_hide_community_posts_summary_on">Yhteisöpostaukset piilotetaan</string>
   <string name="morphe_hide_community_posts_summary_off">Yhteisöpostaukset näytetään</string>
@@ -102,6 +105,9 @@ Muutoksia ovat muun muassa:
 • Shopping
 • Watch it again"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Vaakasuuntaiset hyllyt näytetään</string>
+  <string name="morphe_hide_hyped_label_title">Piilota Suositut-merkintä</string>
+  <string name="morphe_hide_hyped_label_summary_on">Suositut-merkintä on piilotettu</string>
+  <string name="morphe_hide_hyped_label_summary_off">Suositut-merkintä näytetään</string>
   <string name="morphe_hide_image_shelf_title">Piilota kuvahylly</string>
   <string name="morphe_hide_image_shelf_summary_on">Kuvahylly piilotetaan hakutuloksissa</string>
   <string name="morphe_hide_image_shelf_summary_off">Kuvahylly näytetään hakutuloksissa</string>
@@ -212,6 +218,9 @@ YouTube Doodlen näyttäminen saattaa estää mukautettujen otsikoiden näyttäm
   <string name="morphe_hide_chapters_section_title">Piilota Videon osat</string>
   <string name="morphe_hide_chapters_section_summary_on">Videon osat -osio piilotetaan</string>
   <string name="morphe_hide_chapters_section_summary_off">Videon osat -osio näytetään</string>
+  <string name="morphe_hide_corrections_section_title">Piilota Korjaukset</string>
+  <string name="morphe_hide_corrections_section_summary_on">Korjausosio on piilotettu</string>
+  <string name="morphe_hide_corrections_section_summary_off">Korjausosio näytetään</string>
   <string name="morphe_hide_course_progress_section_title">Piilota \'Kurssin eteneminen\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Kurssin etenemisen osio on piilotettu</string>
   <string name="morphe_hide_course_progress_section_summary_off">Kurssin etenemisen osio on näkyvissä</string>
@@ -265,6 +274,9 @@ YouTube Doodlen näyttäminen saattaa estää mukautettujen otsikoiden näyttäm
   <string name="morphe_hide_transcript_section_title">Piilota transkriptio</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkriptio-osio piilotetaan</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkriptio-osio näytetään</string>
+  <string name="morphe_hide_video_details_section_title">Piilota \'Videotiedot\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">Videotiedot-osio on piilotettu</string>
+  <string name="morphe_hide_video_details_section_summary_off">Videotiedot-osio näytetään</string>
   <string name="morphe_hide_filter_bar_screen_title">Suodatinpalkki</string>
   <string name="morphe_hide_filter_bar_screen_summary">Piilota tai näytä suodatinpalkki syötteissä, liittyvissä videoissa, hakutuloksissa ja katseluhistoriassa</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Piilota syötteissä</string>
@@ -531,6 +543,13 @@ Huomautus: Ei välttämättä toimi suorissa lähetyksissä"</string>
   <string name="morphe_reload_video_button_summary_on">Videon uudelleenlataus -painike näytetään</string>
   <string name="morphe_reload_video_button_summary_off">Videon uudelleenlataus -painiketta ei näytetä</string>
   <string name="morphe_dismiss_player_not_available_toast">Videon tunnus ei ole käytettävissä. Lataa video manuaalisesti</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Näytä Tallenna katsoaksesi myöhemmin</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Tallenna katsoaksesi myöhemmin -painike näytetään</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Tallenna katsoaksesi myöhemmin -painiketta ei näytetä</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video tallennettiin onnistuneesti katsoaksesi myöhemmin -soittolistalle</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Tämä video on jo tallennettu katsoaksesi myöhemmin -soittolistalle</string>
+  <string name="morphe_save_to_watch_later_error_toast">Tätä videota ei voi tallentaa katsoaksesi myöhemmin -soittolistalle</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Poista tarkka etsintäele käytöstä</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Ele ei ole käytössä</string>

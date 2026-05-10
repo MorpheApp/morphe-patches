@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Istunnon ohjaus</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Pyyhkäisyohjaus"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Istunnon ohjaus on poistettu käytöstä</string>
+  <string name="morphe_music_crossfade_paused_toast">Istunnon crossfade-toiminto on tauolla</string>
+  <string name="morphe_music_crossfade_resumed_toast">Crossfade-toiminto jatkettu</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Videon toimitila ei ole käytettävissä, kun crossfade on käytössä</string>
   <string name="morphe_music_crossfade_about_title">Tietoja</string>
   <string name="morphe_music_crossfade_about_summary">"Himmennys on saatavilla YouTube Music 8.x:ssä.
 

@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Oturum kontrolü</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Karıştırma düğmesine uzun basarak geçiş duraklatılır veya devam ettirilir"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Oturum kontrolü devre dışı</string>
+  <string name="morphe_music_crossfade_paused_toast">Bu oturum için geçiş duraklatıldı</string>
+  <string name="morphe_music_crossfade_resumed_toast">Geçiş devam ettirildi</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Geçiş etkinken video modu kullanılamaz</string>
   <string name="morphe_music_crossfade_about_title">Hakkında</string>
   <string name="morphe_music_crossfade_about_summary">"Geçiş YouTube Music 8.x ile kullanılabilir
 

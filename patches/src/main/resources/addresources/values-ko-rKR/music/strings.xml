@@ -70,8 +70,11 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_on_auto_advance_summary_on">자동으로 다음 트랙으로 넘어갈 경우에 크로스페이드을 적용합니다</string>
   <string name="morphe_music_crossfade_on_auto_advance_summary_off">자동으로 다음 트랙으로 넘어갈 경우에 크로스페이드을 적용하지 않습니다</string>
   <string name="morphe_music_crossfade_session_control_title">세션 제어</string>
-  <string name="morphe_music_crossfade_session_control_summary_on">"셔플 버튼을 길게 탭하여 크로스페이드를 일시정지하거나 다시 실행할 수 있습니다"</string>
+  <string name="morphe_music_crossfade_session_control_summary_on">"셔플 버튼을 길게 탭하여 크로스페이드를 일시 중지하거나 다시 실행할 수 있습니다"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">세션 제어를 비활성화합니다</string>
+  <string name="morphe_music_crossfade_paused_toast">이 세션에서 크로스페이드를 일시 중지하였습니다</string>
+  <string name="morphe_music_crossfade_resumed_toast">크로스페이드를 다시 시작하였습니다</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">크로스페이드가 활성화된 동안에는 동영상 모드를 사용할 수 없습니다</string>
   <string name="morphe_music_crossfade_about_title">정보</string>
   <string name="morphe_music_crossfade_about_summary">"크로스페이드는 YouTube Music 8.x에서 사용할 수 있습니다
 

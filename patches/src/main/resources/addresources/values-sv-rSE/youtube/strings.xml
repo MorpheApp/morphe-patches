@@ -73,6 +73,9 @@ Vissa layouter på serversidan kanske inte återställs.
   <string name="morphe_hide_artist_cards_title">Dölj artistkort</string>
   <string name="morphe_hide_artist_cards_summary_on">Artistkort är dolda</string>
   <string name="morphe_hide_artist_cards_summary_off">Artistkort visas</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Dölj etiketten Automatiskt dubbad</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Etiketten Automatiskt dubbad är dold</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Etiketten Automatiskt dubbad visas</string>
   <string name="morphe_hide_community_posts_title">Dölj community-inlägg</string>
   <string name="morphe_hide_community_posts_summary_on">Community-inlägg är dolda</string>
   <string name="morphe_hide_community_posts_summary_off">Community-inlägg visas</string>
@@ -530,6 +533,7 @@ Information: Kanske inte fungerar i livestreamar"</string>
   <string name="morphe_reload_video_button_summary_on">Knappen Läs in video igen visas</string>
   <string name="morphe_reload_video_button_summary_off">Knappen Läs in video igen visas inte</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-id:t är inte tillgängligt. Läs in videon igen manuellt</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Inaktivera gest för exakt sökning</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesten är inaktiverad</string>
@@ -886,7 +890,7 @@ Tryck länge för att öppna Morphe-inställningarna"</string>
           'Android Reel' and 'TV' must be kept untranslated. -->
   <string name="morphe_hide_player_flyout_audio_track_not_available">"Menyn Ljudspår är dold
 
-Om du vill att menyn Ljudspår ska visas ändrar du \"Förfalska videoströmmar\" till \"Android Reel\" eller \"TV\""</string>
+Om du vill att menyn Ljudspår ska visas ändrar du Förfalska videoströmmar till Android Reel eller TV"</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_title">Dölj sidfot för Ljudspår</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_summary_on">Sidfot för menyn Ljudspår är dold</string>
   <string name="morphe_hide_player_flyout_audio_track_footer_summary_off">Sidfot för menyn Ljudspår visas</string>
@@ -1734,7 +1738,7 @@ Begränsningar:
 • HDR-videor använder inte AVC
 • Vissa enheter kan inte tvinga AVC"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_avc_codec_not_available">Om du vill använda den här funktionen ändrar du \"Förfalska videoströmmar\" till Android VR eller Android Studio</string>
+  <string name="morphe_force_avc_codec_not_available">Om du vill använda den här funktionen ändrar du Förfalska videoströmmar till Android VR eller Android Studio</string>
   <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
   <string name="morphe_expand_livestream_dvr_duration_title">Förläng varaktighet för DVR för livestreamar</string>
   <string name="morphe_expand_livestream_dvr_duration_summary_on">Varaktighet för DVR för livestreamar förlängs till upp till 7 dagar</string>

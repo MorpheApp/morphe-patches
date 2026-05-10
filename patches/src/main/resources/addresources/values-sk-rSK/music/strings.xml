@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Ovládanie relácie</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Dlhým stlačením tlačidla náhodného výberu pozastavíte alebo obnovíte prechod"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Ovládanie relácie je vypnuté</string>
+  <string name="morphe_music_crossfade_paused_toast">Prechodové zmiznutie zvuku pozastavené v tejto relácii</string>
+  <string name="morphe_music_crossfade_resumed_toast">Prechodové zmiznutie zvuku obnovené</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Režim videa nie je dostupný, keď je zapnuté prechodové zmiznutie zvuku</string>
   <string name="morphe_music_crossfade_about_title">O aplikácii</string>
   <string name="morphe_music_crossfade_about_summary">"Prechod je dostupný s YouTube Music 8.x
 
