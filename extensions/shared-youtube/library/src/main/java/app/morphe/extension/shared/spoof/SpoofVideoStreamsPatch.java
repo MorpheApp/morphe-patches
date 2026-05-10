@@ -335,8 +335,7 @@ public class SpoofVideoStreamsPatch {
     }
 
     public static StreamOrDetailsDataRequest fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
-        Map<String, String> headers = currentVideoRequestHeader;
-        return StreamOrDetailsDataRequest.getDetailsRequest(videoDetailsEndpoint, videoId, headers);
+        return StreamOrDetailsDataRequest.getDetailsRequest(videoDetailsEndpoint, videoId, currentVideoRequestHeader);
     }
 
     /**

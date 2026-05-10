@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -6,10 +13,6 @@ import static app.morphe.extension.youtube.settings.Settings.OPEN_CHANNEL_OF_LIV
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.os.Handler;
-import android.os.Looper;
-
-import androidx.annotation.NonNull;
 
 import com.facebook.litho.ComponentHost;
 
@@ -57,7 +60,7 @@ public final class OpenChannelOfLiveAvatarPatch {
      * @param playbackStartDescriptorMap map containing information about PlaybackStartDescriptor
      * @param videoId         id of the current video
      */
-    public static boolean openChannel(@NonNull Map<Object, Object> playbackStartDescriptorMap, String videoId) {
+    public static boolean openChannel(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
         try {
             if (!OPEN_CHANNEL_OF_LIVE_AVATAR.get()) {
                 return false;
@@ -76,8 +79,10 @@ public final class OpenChannelOfLiveAvatarPatch {
             if (contentDescription == null) {
                 return false;
             }
+
             final boolean containsMatch = contentDescription.toString().contains(liveRingDescription);
-            Logger.printDebug(() -> "Litho description: " + contentDescription + "contains Resource description: " + liveRingDescription);
+            Logger.printDebug(() -> "Litho description: " + contentDescription
+                    + "contains Resource description: " + liveRingDescription);
             if (containsMatch) {
                 StreamOrDetailsDataRequest request = SpoofVideoStreamsPatch.fetchDetails(
                         PlayerRoutes.GET_CHANNEL_FROM_ID,
@@ -85,7 +90,7 @@ public final class OpenChannelOfLiveAvatarPatch {
                 );
                 Utils.runOnBackgroundThread(() -> {
                     if (request.getStreamDetails() instanceof String channelID && !channelID.isEmpty()) {
-                        new Handler(Looper.getMainLooper()).post(() -> {
+                        Utils.runOnMainThread(() -> {
                             var context = mainActivityRef.get();
                             if (context != null) {
                                 Intent videoChannelIntent = new Intent(Intent.ACTION_VIEW);

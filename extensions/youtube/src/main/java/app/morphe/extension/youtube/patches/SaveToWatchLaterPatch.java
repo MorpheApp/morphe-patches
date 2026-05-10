@@ -31,7 +31,8 @@ public final class SaveToWatchLaterPatch {
             );
 
             Utils.runOnBackgroundThread(() -> {
-                if (request.getStreamDetails() instanceof String saveToWatchLaterResponse && !saveToWatchLaterResponse.isEmpty()) {
+                if (request.getStreamDetails() instanceof String saveToWatchLaterResponse
+                        && !saveToWatchLaterResponse.isEmpty()) {
                     Logger.printDebug(() -> "watch later response: " + saveToWatchLaterResponse);
 
                     if (saveToWatchLaterResponse.contains("STATUS_SUCCEEDED")) {
@@ -40,6 +41,8 @@ public final class SaveToWatchLaterPatch {
                                         ? "morphe_save_to_watch_later_success_toast"
                                         : "morphe_save_to_watch_later_already_exists_toast"));
                     }
+                } else {
+                    Logger.printDebug(() -> "Could not save video, stream details are null: " + videoId);
                 }
             });
         } catch (Exception ex) {

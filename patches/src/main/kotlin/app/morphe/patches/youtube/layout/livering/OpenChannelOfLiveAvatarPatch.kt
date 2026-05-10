@@ -13,6 +13,7 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyXmlNode
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.inputStreamFromBundledResource
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
@@ -76,32 +77,35 @@ val openChannelOfLiveAvatarPatch = bytecodePatch(
                     "setMainActivity(Landroid/app/Activity;)V",
         )
 
-        val playbackStartVideoIdMethod =
-            PlaybackStartDescriptorToStringFingerprint.instructionMatches[1].getMethodCalled()
+        val playbackStartVideoIdMethod = PlaybackStartDescriptorToStringFingerprint
+            .instructionMatches[1].getMethodCalled()
         val playbackStartVideoIdMethodName = playbackStartVideoIdMethod.name
         val playbackStartVideoIdMethodClass = playbackStartVideoIdMethod.definingClass
 
         clientSettingEndpointFingerprint.let {
-            val descriptorMutatorStringIndex = it.instructionMatches[4].index
-            var videoDescriptorMoveResultIndex = descriptorMutatorStringIndex - 1
-            var videoDescriptorMoveResultRegister = it.method.getInstruction<OneRegisterInstruction>(videoDescriptorMoveResultIndex).registerA
-            var firstFreeRegister = it.method.getInstruction<OneRegisterInstruction>(descriptorMutatorStringIndex).registerA
-            var secondFreeRegister = firstFreeRegister + 1
+            it.method.apply {
+                val match = it.instructionMatches[1]
+                var moveResultRegister = match.getInstruction<OneRegisterInstruction>().registerA
+                val insertIndex = match.index + 1
+                val registerProvider = getFreeRegisterProvider(insertIndex, 2, moveResultRegister)
+                var free1 = registerProvider.getFreeRegister()
+                var free2 = registerProvider.getFreeRegister()
 
-            it.method.addInstructionsAtControlFlowLabel(
-                descriptorMutatorStringIndex,
-                """
-                    move-object/from16 v$firstFreeRegister, p2
-                    invoke-virtual { v$videoDescriptorMoveResultRegister }, $playbackStartVideoIdMethodClass->$playbackStartVideoIdMethodName()Ljava/lang/String;
-                    move-result-object v$secondFreeRegister
-                    invoke-static { v$firstFreeRegister, v$secondFreeRegister }, $EXTENSION_CLASS->openChannel(Ljava/util/Map;Ljava/lang/String;)Z
-                    move-result v$firstFreeRegister
-                    if-eqz v$firstFreeRegister, :ignore
-                    return-void
-                    :ignore
-                    nop
-                """
-            )
+                addInstructionsAtControlFlowLabel(
+                    insertIndex,
+                    """
+                        move-object/from16 v$free1, p2
+                        invoke-virtual { v$moveResultRegister }, $playbackStartVideoIdMethodClass->$playbackStartVideoIdMethodName()Ljava/lang/String;
+                        move-result-object v$free2
+                        invoke-static { v$free1, v$free2 }, $EXTENSION_CLASS->openChannel(Ljava/util/Map;Ljava/lang/String;)Z
+                        move-result v$free1
+                        if-eqz v$free1, :ignore
+                        return-void
+                        :ignore
+                        nop
+                    """
+                )
+            }
         }
     }
 }
