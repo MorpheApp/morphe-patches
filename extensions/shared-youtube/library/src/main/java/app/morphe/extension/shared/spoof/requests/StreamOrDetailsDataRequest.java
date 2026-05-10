@@ -469,6 +469,7 @@ public class StreamOrDetailsDataRequest {
             Logger.printInfo(() -> "getStreamDetails was previously cancelled");
         } catch (InterruptedException ex) {
             Logger.printException(() -> "getStreamDetails interrupted", ex);
+            future.cancel(true);
             Thread.currentThread().interrupt(); // Restore interrupt status flag.
         } catch (ExecutionException ex) {
             Logger.printException(() -> "getStreamDetails failure", ex);
