@@ -22,16 +22,21 @@ public final class SaveToWatchLaterPatch {
      * If the player is not active, the layout may break.
      * Use it only when it is guaranteed to be used in situations where the player is active.
      */
+    private static StreamOrDetailsDataRequest saveVideoRequest = null;
     public static void saveVideo() {
         try {
+            // Prevent a new request until the previous (if exists) is not done
+            if (saveVideoRequest != null && !saveVideoRequest.streamDetailsFutureDone()) {
+                return;
+            }
             String videoId = VideoInformation.getVideoId();
-            StreamOrDetailsDataRequest request = SpoofVideoStreamsPatch.fetchDetails(
+            saveVideoRequest = SpoofVideoStreamsPatch.fetchDetails(
                     PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST,
                     videoId
             );
 
             Utils.runOnBackgroundThread(() -> {
-                if (request.getStreamDetails() instanceof String saveToWatchLaterResponse
+                if (saveVideoRequest.getStreamDetails() instanceof String saveToWatchLaterResponse
                         && !saveToWatchLaterResponse.isEmpty()) {
                     Logger.printDebug(() -> "watch later response: " + saveToWatchLaterResponse);
 

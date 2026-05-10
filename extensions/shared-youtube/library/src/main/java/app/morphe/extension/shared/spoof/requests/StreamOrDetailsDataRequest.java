@@ -446,6 +446,10 @@ public class StreamOrDetailsDataRequest {
         return null;
     }
 
+    public boolean streamDetailsFutureDone() {
+        return future.isDone();
+    }
+
     @Nullable
     public Object getStreamDetails() {
         try {

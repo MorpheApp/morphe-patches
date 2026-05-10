@@ -54,6 +54,7 @@ public final class OpenChannelOfLiveAvatarPatch {
     private static final String VIDEO_THUMBNAIL_VIEW_KEY =
             "VideoPresenterConstants.VIDEO_THUMBNAIL_VIEW_KEY";
 
+    private static StreamOrDetailsDataRequest liveAvatarChannelRequest = null;
     /**
      * Injection point.
      *
@@ -63,6 +64,10 @@ public final class OpenChannelOfLiveAvatarPatch {
     public static boolean openChannel(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
         try {
             if (!OPEN_CHANNEL_OF_LIVE_AVATAR.get()) {
+                return false;
+            }
+            // Prevent a new request until the previous (if exists) is not done
+            if (liveAvatarChannelRequest != null && !liveAvatarChannelRequest.streamDetailsFutureDone()) {
                 return false;
             }
             // Video was opened by clicking the thumbnail
@@ -84,12 +89,12 @@ public final class OpenChannelOfLiveAvatarPatch {
             Logger.printDebug(() -> "Litho description: " + contentDescription
                     + "contains Resource description: " + liveRingDescription);
             if (containsMatch) {
-                StreamOrDetailsDataRequest request = SpoofVideoStreamsPatch.fetchDetails(
+                liveAvatarChannelRequest = SpoofVideoStreamsPatch.fetchDetails(
                         PlayerRoutes.GET_CHANNEL_FROM_ID,
                         videoId
                 );
                 Utils.runOnBackgroundThread(() -> {
-                    if (request.getStreamDetails() instanceof String channelID && !channelID.isEmpty()) {
+                    if (liveAvatarChannelRequest.getStreamDetails() instanceof String channelID && !channelID.isEmpty()) {
                         Utils.runOnMainThread(() -> {
                             var context = mainActivityRef.get();
                             if (context != null) {
