@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ApplicationExtension
+
 dependencies {
     compileOnly(libs.morphe.extensions.library)
     compileOnly(project(":extensions:shared-youtube:library"))
@@ -5,7 +7,7 @@ dependencies {
     compileOnly(libs.annotation)
 }
 
-android {
+configure<ApplicationExtension> {
     defaultConfig {
         minSdk = 26
     }

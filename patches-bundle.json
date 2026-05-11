@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-05-08T09:11:23",
-  "description": "# [1.27.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.27.0-dev.1...v1.27.0-dev.2) (2026-05-08)\n\n\n### Features\n\n* **YouTube - Hide layout components:** Add \"Hide Auto-dubbed label\", \"Hide Corrections section\", \"Hide Hyped label\",  and \"Hide Video details section\" settings ([#1367](https://github.com/MorpheApp/morphe-patches/issues/1367)) ([43b79c6](https://github.com/MorpheApp/morphe-patches/commit/43b79c6b4679eb7bd5d9983aa4d4e3f8d2ffbb21))\n* **YouTube:** Add `Save to watch later` patch ([#1274](https://github.com/MorpheApp/morphe-patches/issues/1274)) ([45cea2c](https://github.com/MorpheApp/morphe-patches/commit/45cea2c860f7447d643c3c0af59d4517989c9306))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.27.0-dev.2/patches-1.27.0-dev.2.mpp",
+  "created_at": "2026-05-10T08:58:04",
+  "description": "# [1.27.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.27.0-dev.2...v1.27.0-dev.3) (2026-05-10)\n\n\n### Features\n\n* **Reddit:** Add experimental support for `2026.19.0` ([c4f6058](https://github.com/MorpheApp/morphe-patches/commit/c4f6058872a007624aaafc1456f46733ec6e2212))\n* **YouTube Music:** Add experimental support for `9.18.50` ([5a9ca78](https://github.com/MorpheApp/morphe-patches/commit/5a9ca78ed1354ec415592c63d532bf8d09fb3032))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.27.0-dev.3/patches-1.27.0-dev.3.mpp",
   "signature_download_url": "",
-  "version": "1.27.0-dev.2"
+  "version": "1.27.0-dev.3"
 }

@@ -71,6 +71,6 @@ public class InitializationPatch {
             Dialog dialog = dialogPair.first;
             dialog.setCancelable(false);
             dialog.show();
-        }, 3500);
+        }, 10000);
     }
 }

@@ -1,9 +1,11 @@
+import com.android.build.api.dsl.LibraryExtension
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.protobuf)
 }
 
-android {
+configure<LibraryExtension> {
     namespace = "app.morphe.extension.shared.youtube"
     compileSdk = 36
 

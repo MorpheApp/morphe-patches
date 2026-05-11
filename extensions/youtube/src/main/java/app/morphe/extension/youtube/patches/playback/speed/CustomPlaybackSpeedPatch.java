@@ -20,7 +20,6 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
-import android.graphics.PorterDuff;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -37,6 +36,9 @@ import android.widget.GridLayout;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.core.graphics.BlendModeColorFilterCompat;
+import androidx.core.graphics.BlendModeCompat;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
@@ -345,9 +347,11 @@ public class CustomPlaybackSpeedPatch {
             speedSlider.setMax(speedToProgressValue(customPlaybackSpeedsMax));
             speedSlider.setProgress(speedToProgressValue(currentSpeed));
             speedSlider.getProgressDrawable().setColorFilter(
-                    Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN); // Theme progress bar.
+                    BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+                            Utils.getAppForegroundColor(), BlendModeCompat.SRC_IN)); // Theme progress bar.
             speedSlider.getThumb().setColorFilter(
-                    Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN); // Theme slider thumb.
+                    BlendModeColorFilterCompat.createBlendModeColorFilterCompat(
+                            Utils.getAppForegroundColor(), BlendModeCompat.SRC_IN)); // Theme slider thumb.
             LinearLayout.LayoutParams sliderParams = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             speedSlider.setLayoutParams(sliderParams);
