@@ -62,8 +62,9 @@ public class LinkHandlingPreference extends Preference {
                         getContext().getSystemService(DomainVerificationManager.class);
                 DomainVerificationUserState state =
                         manager.getDomainVerificationUserState(patchedPackage);
-                if (state != null && state.getHostToStateMap().containsValue(
-                        DomainVerificationUserState.DOMAIN_STATE_SELECTED)) {
+                if (state != null && !state.getHostToStateMap().isEmpty()
+                        && state.getHostToStateMap().values().stream()
+                        .allMatch(s -> s == DomainVerificationUserState.DOMAIN_STATE_SELECTED)) {
                     setEnabled(false);
                     setSummary(str("morphe_link_handling_summary_configured"));
                 } else {
