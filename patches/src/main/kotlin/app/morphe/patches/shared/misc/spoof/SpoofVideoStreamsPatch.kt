@@ -360,6 +360,17 @@ internal fun spoofVideoStreamsPatch(
 
         // endregion
 
+        // region get "X-Goog-PageId" or "X-Goog-Visitor-Id" parameters for brand channels
+
+        accountIdentityFingerprint.method.addInstructions(
+            1,
+            """
+                invoke-static {p3, p4}, $EXTENSION_CLASS->setAccountIdentity(Ljava/lang/String;Z)V
+            """
+        )
+
+        // endregion
+
         // region turn off stream config replacement feature flag.
 
         if (fixMediaFetchHotConfig()) {

@@ -31,7 +31,7 @@ public final class SaveToWatchLaterPatch {
             }
             String videoId = VideoInformation.getVideoId();
             saveVideoRequest = SpoofVideoStreamsPatch.fetchDetails(
-                    PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST,
+                    PlayerRoutes.SEND_SAVE_VIDEO_TO_WATCH_LATER,
                     videoId
             );
 

@@ -13,6 +13,7 @@ package app.morphe.extension.shared.spoof.requests;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.isNotEmpty;
 import static app.morphe.extension.shared.Utils.submitOnBackgroundThread;
+import static app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.originalPageIDHeaderValue;
 import static app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport.supportsJavaScriptEngine;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
@@ -20,7 +21,6 @@ import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScri
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_CHANNEL_FROM_ID;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_PLAYER_STREAMING_DATA;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_REEL_STREAMING_DATA;
-import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -101,14 +101,11 @@ public class StreamOrDetailsDataRequest {
         Logger.printDebug(() -> "Available spoof clients: " + orderToUse);
     }
 
-    private static final String AUTHORIZATION_HEADER = "Authorization";
-    private static final String AUTH_USER_HEADER = "X-Goog-AuthUser";
-    private static final String PAGE_ID_HEADER = "X-Goog-PageId";
+    private static final String AUTHORIZATION_HEADER = "Authorization"; // Available only to logged-in users.
+    private static final String PAGE_ID_HEADER = "X-Goog-PageId"; // Available only to logged-in users.
 
     private static final String[] REQUEST_HEADER_KEYS = {
-            AUTHORIZATION_HEADER, // Available only to logged-in users.
-            AUTH_USER_HEADER, // Available only to logged-in users.
-            PAGE_ID_HEADER, // Available only to logged-in users.
+            AUTHORIZATION_HEADER,
             "X-GOOG-API-FORMAT-VERSION",
             "X-Goog-Visitor-Id"
     };
@@ -253,19 +250,17 @@ public class StreamOrDetailsDataRequest {
                             authHeadersIncludes = true;
                         }
 
-                        if (clientType.endpoint != SEND_SAVE_VIDEO_TO_PLAYLIST) {
-                            if (key.equals(PAGE_ID_HEADER) || key.equals(AUTH_USER_HEADER)) {
-                                Logger.printDebug(() -> "Excluding" + key);
-                                continue;
-                            }
-                        }
-
                         Logger.printDebug(() -> "Including request header: " + key);
                         connection.setRequestProperty(key, value);
                     }
                 }
 
-                if (isStream && !authHeadersIncludes && clientType.requireLogin) {
+                if (!originalPageIDHeaderValue.isEmpty()) {
+                    Logger.printDebug(() -> "Including PAGE_ID_HEADER header: " + originalPageIDHeaderValue);
+                    connection.setRequestProperty(PAGE_ID_HEADER, originalPageIDHeaderValue);
+                }
+
+                if (!authHeadersIncludes && clientType.requireLogin) {
                     Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
                             + " videoId: " + videoId);
                     return null;
@@ -376,13 +371,11 @@ public class StreamOrDetailsDataRequest {
 
                 JSONObject jsonResponse = new JSONObject(response);
 
-                Logger.printDebug(() -> String.format("Video details response:\n\n%s", response));
-
                 if (clientType.endpoint.equals(PlayerRoutes.GET_CHANNEL_FROM_ID)) {
                     return jsonResponse
                             .getJSONObject("videoDetails")
                             .getString("channelId");
-                } else if (clientType.endpoint.equals(PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST)) {
+                } else if (clientType.endpoint.equals(PlayerRoutes.SEND_SAVE_VIDEO_TO_WATCH_LATER)) {
                     return response;
                 }
             }

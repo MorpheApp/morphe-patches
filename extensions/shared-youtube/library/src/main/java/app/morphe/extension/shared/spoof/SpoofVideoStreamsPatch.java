@@ -23,6 +23,7 @@ import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
     public static volatile Map<String, String> currentVideoRequestHeader;
+    public static String originalPageIDHeaderValue = "";
 
     public static final class JavaScriptClientAvailability implements Setting.Availability {
         @Override
@@ -313,6 +314,8 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
+
+
                 currentVideoRequestHeader = requestHeaders;
 
                 StreamOrDetailsDataRequest.fetchStreamRequest(id, currentVideoRequestHeader);
@@ -392,5 +395,17 @@ public class SpoofVideoStreamsPatch {
         }
 
         return videoFormat;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setAccountIdentity(@Nullable String newlyPageIDHeaderValue, boolean newlyLoadedIncognitoStatus) {
+        if (newlyPageIDHeaderValue != null && newlyPageIDHeaderValue.isEmpty()) {
+            originalPageIDHeaderValue = "";
+        } else if (!originalPageIDHeaderValue.equals(newlyPageIDHeaderValue)) {
+            originalPageIDHeaderValue = newlyPageIDHeaderValue;
+            Logger.printDebug(() -> "new PageID Header value loaded: " + newlyPageIDHeaderValue);
+        }
     }
 }

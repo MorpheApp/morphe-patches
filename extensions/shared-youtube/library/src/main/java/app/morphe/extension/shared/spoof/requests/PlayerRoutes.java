@@ -49,7 +49,7 @@ public final class PlayerRoutes {
                     "&alt=proto"
     ).compile();
 
-    public static final Route.CompiledRoute SEND_SAVE_VIDEO_TO_PLAYLIST = new Route(
+    public static final Route.CompiledRoute SEND_SAVE_VIDEO_TO_WATCH_LATER = new Route(
             Route.Method.POST,
             "browse/edit_playlist" +
                     "?fields=status,playlistEditResults"
@@ -121,7 +121,7 @@ public final class PlayerRoutes {
                 innerTubeBody.put("contentCheckOk", true);
                 innerTubeBody.put("racyCheckOk", true);
                 innerTubeBody.put("videoId", videoId);
-                if (clientType.endpoint == SEND_SAVE_VIDEO_TO_PLAYLIST) {
+                if (clientType.endpoint == SEND_SAVE_VIDEO_TO_WATCH_LATER) {
                     innerTubeBody.put("playlistId", "WL");
                     innerTubeBody.put("excludeWatchLater", false);
 
