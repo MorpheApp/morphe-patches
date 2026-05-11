@@ -158,6 +158,7 @@ If battery optimizations are not changed then you may experience:
     <!-- misc.gms.linkHandlingPatch -->
     <string name="morphe_link_handling_title">App link handling</string>
     <string name="morphe_link_handling_summary">Configure which app opens links</string>
+    <string name="morphe_link_handling_summary_configured">Links are already configured correctly</string>
     <string name="morphe_link_handling_step1_title">Step 1 of 2: Disable original app links</string>
     <string name="morphe_link_handling_step1_message">Open the original app\'s settings and disable its link associations so that links are no longer handled by it</string>
     <string name="morphe_link_handling_step2_title">Step 2 of 2: Enable patched app links</string>

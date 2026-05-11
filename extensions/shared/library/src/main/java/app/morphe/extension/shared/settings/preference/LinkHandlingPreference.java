@@ -65,6 +65,9 @@ public class LinkHandlingPreference extends Preference {
                 if (state != null && state.getHostToStateMap().containsValue(
                         DomainVerificationUserState.DOMAIN_STATE_SELECTED)) {
                     setEnabled(false);
+                    setSummary(str("morphe_link_handling_summary_configured"));
+                } else {
+                    setSummary(str("morphe_link_handling_summary"));
                 }
             } catch (Exception ex) {
                 Logger.printException(() -> "LinkHandlingPreference: domain check failure", ex);
