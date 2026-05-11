@@ -252,6 +252,7 @@ public class StreamOrDetailsDataRequest {
                         }
 
                         if (clientType.endpoint != SEND_SAVE_VIDEO_TO_PLAYLIST && key.equals(PAGE_ID_HEADER)) {
+                            Logger.printDebug(() -> "Excluding PAGE_ID_HEADER");
                             continue;
                         }
 
