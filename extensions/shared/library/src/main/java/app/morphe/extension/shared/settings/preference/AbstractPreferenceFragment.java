@@ -42,7 +42,6 @@ import java.nio.charset.StandardCharsets;
 import java.text.Collator;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -702,6 +701,24 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        refreshLinkHandlingPreferences(getPreferenceScreen());
+    }
+
+    private static void refreshLinkHandlingPreferences(PreferenceGroup group) {
+        if (group == null) return;
+        for (int i = 0; i < group.getPreferenceCount(); i++) {
+            Preference preference = group.getPreference(i);
+            if (preference instanceof LinkHandlingPreference) {
+                ((LinkHandlingPreference) preference).refreshState();
+            } else if (preference instanceof PreferenceGroup) {
+                refreshLinkHandlingPreferences((PreferenceGroup) preference);
+            }
+        }
+    }
+
+    @Override
     public void onDestroy() {
         if (instance.get() == this) {
             instance = new WeakReference<>(null);
@@ -764,7 +781,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
 
         // Sort the list using locale-specific collation rules.
-        Collections.sort(preferences, (pair1, pair2)
+        preferences.sort((pair1, pair2)
                 -> collator.compare(pair1.first, pair2.first));
 
         // Reassign order values to reflect the new sorted sequence
