@@ -17,6 +17,7 @@ import static app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport.suppo
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptVariant;
+import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_CHANNEL_FROM_ID;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_PLAYER_STREAMING_DATA;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_REEL_STREAMING_DATA;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST;
@@ -101,9 +102,11 @@ public class StreamOrDetailsDataRequest {
     }
 
     private static final String AUTHORIZATION_HEADER = "Authorization";
+    private static final String PAGE_ID_HEADER = "X-Goog-PageId";
 
     private static final String[] REQUEST_HEADER_KEYS = {
             AUTHORIZATION_HEADER, // Available only to logged-in users.
+            PAGE_ID_HEADER,
             "X-GOOG-API-FORMAT-VERSION",
             "X-Goog-Visitor-Id"
     };
@@ -221,7 +224,7 @@ public class StreamOrDetailsDataRequest {
             boolean authHeadersIncludes = false;
             authHeadersOverrides = false;
 
-            if (isStream || clientType.endpoint == SEND_SAVE_VIDEO_TO_PLAYLIST) {
+            if (clientType.endpoint != GET_CHANNEL_FROM_ID) {
                 for (String key : REQUEST_HEADER_KEYS) {
                     String value = playerHeaders.get(key);
 
@@ -248,6 +251,10 @@ public class StreamOrDetailsDataRequest {
                                 }
                             }
                             authHeadersIncludes = true;
+                        }
+
+                        if (clientType.endpoint != SEND_SAVE_VIDEO_TO_PLAYLIST && key.equals(PAGE_ID_HEADER)) {
+                            continue;
                         }
 
                         Logger.printDebug(() -> "Including request header: " + key);
