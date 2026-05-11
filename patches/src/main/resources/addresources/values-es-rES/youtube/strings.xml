@@ -73,6 +73,9 @@ Los cambios incluyen:
   <string name="morphe_hide_artist_cards_title">Ocultar tarjetas de artista</string>
   <string name="morphe_hide_artist_cards_summary_on">Las tarjetas de artista están ocultas</string>
   <string name="morphe_hide_artist_cards_summary_off">Las tarjetas de artista están visibles</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Ocultar etiqueta \"Doblaje automático\"</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">La etiqueta \"Doblaje automático\" está oculta</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">La etiqueta \"Doblaje automático\" está visible</string>
   <string name="morphe_hide_community_posts_title">Ocultar publicaciones de comunidad</string>
   <string name="morphe_hide_community_posts_summary_on">Las publicaciones de la comunidad están ocultas</string>
   <string name="morphe_hide_community_posts_summary_off">Las publicaciones de la comunidad están visibles</string>
@@ -102,6 +105,9 @@ Los cambios incluyen:
 • Compras
 • Volver a ver"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Los estantes horizontales están visibles</string>
+  <string name="morphe_hide_hyped_label_title">Ocultar etiqueta \"En tendencia\"</string>
+  <string name="morphe_hide_hyped_label_summary_on">La etiqueta \"Subtitulado automático\" está oculta</string>
+  <string name="morphe_hide_hyped_label_summary_off">La etiqueta \"Subtitulado automático\" está visible</string>
   <string name="morphe_hide_image_shelf_title">Ocultar estantería de imágenes</string>
   <string name="morphe_hide_image_shelf_summary_on">La estantería de imágenes en los resultados de búsqueda está oculta</string>
   <string name="morphe_hide_image_shelf_summary_off">La estantería de imágenes en los resultados de búsqueda está visible</string>
@@ -212,6 +218,9 @@ Mostrar los Doodles de YouTube puede impedir que se muestren encabezados persona
   <string name="morphe_hide_chapters_section_title">Ocultar \"Capítulos\"</string>
   <string name="morphe_hide_chapters_section_summary_on">La sección \"Capítulos\" está oculta</string>
   <string name="morphe_hide_chapters_section_summary_off">La sección \"Capítulos\" está visible</string>
+  <string name="morphe_hide_corrections_section_title">Ocultar Correcciones</string>
+  <string name="morphe_hide_corrections_section_summary_on">La sección \"Correcciones\" está oculta</string>
+  <string name="morphe_hide_corrections_section_summary_off">La sección \"Correcciones\" está visible</string>
   <string name="morphe_hide_course_progress_section_title">Ocultar \"Progreso del curso\"</string>
   <string name="morphe_hide_course_progress_section_summary_on">La sección \"Progreso del curso\" está oculta</string>
   <string name="morphe_hide_course_progress_section_summary_off">La sección \"Progreso del curso\" está visible</string>
@@ -265,6 +274,9 @@ Mostrar los Doodles de YouTube puede impedir que se muestren encabezados persona
   <string name="morphe_hide_transcript_section_title">Ocultar \"Transcripción\"</string>
   <string name="morphe_hide_transcript_section_summary_on">La sección \"Transcripción\" está oculta</string>
   <string name="morphe_hide_transcript_section_summary_off">La sección \"Transcripción\" está visible</string>
+  <string name="morphe_hide_video_details_section_title">Ocultar \'Detalles del video\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">La sección \"Detalles del video\" está oculta</string>
+  <string name="morphe_hide_video_details_section_summary_off">La sección \"Detalles del video\" está visible</string>
   <string name="morphe_hide_filter_bar_screen_title">Barra de filtros</string>
   <string name="morphe_hide_filter_bar_screen_summary">Oculta o muestra la barra de filtros en los feeds, vídeos relacionados, resultados de búsqueda e historial de reproducciones</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Ocultar en feeds</string>
@@ -530,6 +542,13 @@ Información: Es posible que no funcione en los directos"</string>
   <string name="morphe_reload_video_button_summary_on">El botón de recargar vídeo está visible</string>
   <string name="morphe_reload_video_button_summary_off">El botón de recargar vídeo está oculto</string>
   <string name="morphe_dismiss_player_not_available_toast">El ID del vídeo no está disponible. Vuelve a cargar el vídeo manualmente.</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Mostrar Guardar para ver más tarde</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">El botón Guardar para ver más tarde se muestra</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">El botón Guardar para ver más tarde no se muestra</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video guardado correctamente en la lista de reproducción Ver más tarde</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Este video ya está guardado en la lista de reproducción Ver más tarde</string>
+  <string name="morphe_save_to_watch_later_error_toast">No se puede guardar este video en la lista de reproducción Ver más tarde</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Desactivar gesto de búsqueda precisa</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">El gesto de búsqueda precisa está desactivado</string>

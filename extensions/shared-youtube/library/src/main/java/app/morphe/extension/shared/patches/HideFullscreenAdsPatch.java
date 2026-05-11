@@ -51,6 +51,7 @@ public class HideFullscreenAdsPatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("deprecation")
     public static void closeFullscreenAd(Object customDialog, @Nullable byte[] buffer) {
         try {
             if (!SharedYouTubeSettings.HIDE_FULLSCREEN_ADS.get()) {
@@ -84,8 +85,15 @@ public class HideFullscreenAdsPatch {
                     window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED);
 
                     // Restore decorView visibility
-                    View decorView = window.getDecorView();
-                    decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+                        android.view.WindowInsetsController insetsController = window.getInsetsController();
+                        if (insetsController != null) {
+                            insetsController.show(android.view.WindowInsets.Type.systemBars());
+                        }
+                    } else {
+                        View decorView = window.getDecorView();
+                        decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
+                    }
                 }
 
                 // Dismiss dialog

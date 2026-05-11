@@ -73,6 +73,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">Απόκρυψη \"Κάρτες καλλιτεχνών\"</string>
   <string name="morphe_hide_artist_cards_summary_on">Οι \"Κάρτες καλλιτεχνών\" έχουν αποκρυφτεί</string>
   <string name="morphe_hide_artist_cards_summary_off">Οι \"Κάρτες καλλιτεχνών\" εμφανίζονται</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Απόκρυψη ετικέτας \'Αυτόματου μεταγλωττισμού\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Η αυτόματη υποτιτλισμένη ετικέτα είναι κρυμμένη</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Η αυτόματη υποτιτλισμένη ετικέτα είναι ορατή</string>
   <string name="morphe_hide_community_posts_title">Απόκρυψη \"Δημοσιεύσεις Κοινότητας\"</string>
   <string name="morphe_hide_community_posts_summary_on">Οι \"Δημοσιεύσεις Κοινότητας\" έχουν αποκρυφτεί</string>
   <string name="morphe_hide_community_posts_summary_off">Οι \"Δημοσιεύσεις Κοινότητας\" εμφανίζονται</string>
@@ -102,6 +105,9 @@ Second \"item\" text"</string>
 • Shopping
 • Δείτε το ξανά"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Τα \"Οριζόντια ράφια\" εμφανίζονται</string>
+  <string name="morphe_hide_hyped_label_title">Απόκρυψη ετικέτας \"Δημοφιλή\"</string>
+  <string name="morphe_hide_hyped_label_summary_on">Η ετικέτα \"Δημοφιλή\" είναι κρυμμένη</string>
+  <string name="morphe_hide_hyped_label_summary_off">Η ετικέτα \"Δημοφιλή\" είναι ορατή</string>
   <string name="morphe_hide_image_shelf_title">Απόκρυψη ραφιού \"Εικόνες\" στα αποτελέσματα αναζήτησης</string>
   <string name="morphe_hide_image_shelf_summary_on">Το ράφι \"Εικόνες\" έχει αποκρυφτεί</string>
   <string name="morphe_hide_image_shelf_summary_off">Το ράφι \"Εικόνες\" εμφανίζεται</string>
@@ -212,6 +218,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">Κεφάλαια του βίντεο</string>
   <string name="morphe_hide_chapters_section_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_chapters_section_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_corrections_section_title">Απόκρυψη Διορθώσεων</string>
+  <string name="morphe_hide_corrections_section_summary_on">Η ενότητα Διορθώσεων είναι κρυμμένη</string>
+  <string name="morphe_hide_corrections_section_summary_off">Η ενότητα Διορθώσεων είναι ορατή</string>
   <string name="morphe_hide_course_progress_section_title">Απόκρυψη \'Πρόοδος μαθήματος\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Η ενότητα πρόοδος μαθήματος είναι κρυμμένη</string>
   <string name="morphe_hide_course_progress_section_summary_off">Η ενότητα πρόοδος μαθήματος είναι ορατή</string>
@@ -265,6 +274,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">Ενότητα «Μεταγραφή»</string>
   <string name="morphe_hide_transcript_section_summary_on">Κρυμμένη</string>
   <string name="morphe_hide_transcript_section_summary_off">Εμφανίζεται</string>
+  <string name="morphe_hide_video_details_section_title">Απόκρυψη \'Λεπτομέρειες βίντεο\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">Η ενότητα λεπτομερειών βίντεο είναι κρυμμένη</string>
+  <string name="morphe_hide_video_details_section_summary_off">Η ενότητα λεπτομερειών βίντεο είναι ορατή</string>
   <string name="morphe_hide_filter_bar_screen_title">Γραμμή φίλτρων</string>
   <string name="morphe_hide_filter_bar_screen_summary">Απόκρυψη ή εμφάνιση της γραμμής φίλτρων στις ροές, στα σχετικά βίντεο, στα αποτελέσματα αναζήτησης και στο ιστορικό παρακολούθησης</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Γραμμή φίλτρων στις ροές</string>
@@ -530,6 +542,13 @@ Second \"item\" text"</string>
   <string name="morphe_reload_video_button_summary_on">Εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
   <string name="morphe_reload_video_button_summary_off">Δεν εμφανίζεται το κουμπί επανεξέτασης βίντεο</string>
   <string name="morphe_dismiss_player_not_available_toast">Το ID του βίντεο δεν είναι διαθέσιμο. Παρακαλώ ανανεώστε το βίντεο χειροκίνητα</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Εμφάνιση αποθήκευσης για παρακολούθηση αργότερα</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Το κουμπί αποθήκευσης για παρακολούθηση αργότερα εμφανίζεται</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Το κουμπί αποθήκευσης για παρακολούθηση αργότερα δεν εμφανίζεται</string>
+  <string name="morphe_save_to_watch_later_success_toast">Το βίντεο αποθηκεύτηκε επιτυχώς στη λίστα παρακολούθησης αργότερα</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Αυτό το βίντεο είναι ήδη αποθηκευμένο στη λίστα παρακολούθησης αργότερα</string>
+  <string name="morphe_save_to_watch_later_error_toast">Δεν είναι δυνατή η αποθήκευση αυτού του βίντεο στη λίστα παρακολούθησης αργότερα</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Απενεργοποίηση ακριβής αναζήτησης</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Η χειρονομία αναζήτησης καρέ-καρέ είναι απενεργοποιημένη</string>

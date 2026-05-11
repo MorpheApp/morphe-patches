@@ -73,6 +73,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">ซ่อนบัตรศิลปิน</string>
   <string name="morphe_hide_artist_cards_summary_on">บัตรศิลปินถูกซ่อนไว้</string>
   <string name="morphe_hide_artist_cards_summary_off">บัตรศิลปินแสดงอยู่</string>
+  <string name="morphe_hide_auto_dubbed_label_title">ซ่อนป้ายกำกับ \'พากย์เสียงอัตโนมัติ\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">ป้ายกำกับที่สร้างขึ้นอัตโนมัติถูกซ่อนไว้</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">ป้ายกำกับที่สร้างขึ้นอัตโนมัติแสดงอยู่</string>
   <string name="morphe_hide_community_posts_title">ซ่อนโพสต์ชุมชน</string>
   <string name="morphe_hide_community_posts_summary_on">โพสต์ชุมชนถูกซ่อนไว้</string>
   <string name="morphe_hide_community_posts_summary_off">โพสต์ชุมชนแสดงอยู่</string>
@@ -102,6 +105,9 @@ Second \"item\" text"</string>
 • ช้อปปิ้ง
 • ดูอีกครั้ง"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">ชั้นวางแนวนอนแสดงอยู่</string>
+  <string name="morphe_hide_hyped_label_title">ซ่อนป้ายกำกับ \'กำลังเป็นที่นิยม\'</string>
+  <string name="morphe_hide_hyped_label_summary_on">ป้ายกำกับ \'กำลังเป็นที่นิยม\' ถูกซ่อนไว้</string>
+  <string name="morphe_hide_hyped_label_summary_off">ป้ายกำกับ \'กำลังเป็นที่นิยม\' แสดงอยู่</string>
   <string name="morphe_hide_image_shelf_title">ซ่อนชั้นวางรูปภาพ</string>
   <string name="morphe_hide_image_shelf_summary_on">ชั้นวางรูปภาพในผลการค้นหาถูกซ่อนไว้</string>
   <string name="morphe_hide_image_shelf_summary_off">ชั้นวางรูปภาพในผลการค้นหาแสดงอยู่</string>
@@ -212,6 +218,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">ซ่อนบท</string>
   <string name="morphe_hide_chapters_section_summary_on">ส่วนบทถูกซ่อนไว้</string>
   <string name="morphe_hide_chapters_section_summary_off">ส่วนบทแสดงอยู่</string>
+  <string name="morphe_hide_corrections_section_title">ซ่อนการแก้ไข</string>
+  <string name="morphe_hide_corrections_section_summary_on">ส่วนการแก้ไขถูกซ่อนไว้</string>
+  <string name="morphe_hide_corrections_section_summary_off">ส่วนการแก้ไขแสดงอยู่</string>
   <string name="morphe_hide_course_progress_section_title">ซ่อน \'ความคืบหน้าในคอร์ส\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">ส่วนความคืบหน้าในคอร์สถูกซ่อนไว้</string>
   <string name="morphe_hide_course_progress_section_summary_off">ส่วนความคืบหน้าในคอร์สแสดงอยู่</string>
@@ -265,6 +274,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">ซ่อนบทถอดเสียง</string>
   <string name="morphe_hide_transcript_section_summary_on">ส่วนคำอธิบายถูกซ่อนไว้</string>
   <string name="morphe_hide_transcript_section_summary_off">ส่วนคำอธิบายแสดงอยู่</string>
+  <string name="morphe_hide_video_details_section_title">ซ่อน \'รายละเอียดวิดีโอ\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">ส่วนรายละเอียดวิดีโอถูกซ่อนไว้</string>
+  <string name="morphe_hide_video_details_section_summary_off">ส่วนรายละเอียดวิดีโอแสดงอยู่</string>
   <string name="morphe_hide_filter_bar_screen_title">แถบตัวกรอง</string>
   <string name="morphe_hide_filter_bar_screen_summary">ซ่อนหรือแสดงแถบตัวกรองในฟีด วิดีโอที่เกี่ยวข้อง ผลการค้นหา และประวัติการดู</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">ซ่อนในฟีด</string>
@@ -531,6 +543,13 @@ Second \"item\" text"</string>
   <string name="morphe_reload_video_button_summary_on">ปุ่มโหลดวิดีโอแสดง</string>
   <string name="morphe_reload_video_button_summary_off">ปุ่มโหลดวิดีโอไม่แสดง</string>
   <string name="morphe_dismiss_player_not_available_toast">ไม่สามารถใช้ Video ID ได้ โปรดรีโหลดวิดีโอด้วยตนเอง</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">แสดงปุ่มบันทึกเพื่อดูภายหลัง</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">แสดงปุ่มบันทึกเพื่อดูภายหลัง</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">ไม่แสดงปุ่มบันทึกเพื่อดูภายหลัง</string>
+  <string name="morphe_save_to_watch_later_success_toast">บันทึกวิดีโอลงในรายการดูภายหลังเรียบร้อยแล้ว</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">วิดีโอนี้ถูกบันทึกในรายการดูภายหลังแล้ว</string>
+  <string name="morphe_save_to_watch_later_error_toast">ไม่สามารถบันทึกวิดีโอนี้ลงในรายการดูภายหลังได้</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">ปิดใช้งานท่าทางการค้นหาแบบแม่นยำ</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">ท่าทางถูกปิดใช้งาน</string>

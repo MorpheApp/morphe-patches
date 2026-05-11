@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">การควบคุมเซสชัน</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"กดค้างที่ปุ่ม Shuffle เพื่อหยุดชั่วคราวหรือดำเนินการต่อกับ Fade"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">การควบคุมเซสชันถูกปิดใช้งาน</string>
+  <string name="morphe_music_crossfade_paused_toast">การเปลี่ยนเพลงแบบค่อยๆ จางหายถูกพักไว้สำหรับเซสชันนี้</string>
+  <string name="morphe_music_crossfade_resumed_toast">การเปลี่ยนเพลงแบบค่อยๆ จางหายกลับมาทำงานต่อ</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">โหมดวิดีโอไม่สามารถใช้ได้ขณะเปิดใช้งานการเปลี่ยนเพลงแบบค่อยๆ จางหาย</string>
   <string name="morphe_music_crossfade_about_title">เกี่ยวกับ</string>
   <string name="morphe_music_crossfade_about_summary">"Fade พร้อมใช้งานกับ YouTube Music 8.x
 

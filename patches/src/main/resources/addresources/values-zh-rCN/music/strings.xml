@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">会话控制</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"长按随机播放按钮暂停或恢复淡入"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">会话控制已禁用</string>
+  <string name="morphe_music_crossfade_paused_toast">此会话已暂停交叉淡入</string>
+  <string name="morphe_music_crossfade_resumed_toast">交叉淡入已恢复</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">启用交叉淡入时，视频模式不可用</string>
   <string name="morphe_music_crossfade_about_title">关于</string>
   <string name="morphe_music_crossfade_about_summary">"YouTube Music 8.x版本支持淡入
 

@@ -73,6 +73,9 @@ Změny zahrnují:
   <string name="morphe_hide_artist_cards_title">Skrýt karty umělců</string>
   <string name="morphe_hide_artist_cards_summary_on">Karty umělců jsou skryté</string>
   <string name="morphe_hide_artist_cards_summary_off">Karty umělců jsou zobrazeny</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Skrýt popisek \"Automaticky dabováno\"</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Automaticky nadabovaný štítek je skrytý</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Automaticky nadabovaný štítek je zobrazen</string>
   <string name="morphe_hide_community_posts_title">Skrýt příspěvky komunity</string>
   <string name="morphe_hide_community_posts_summary_on">Příspěvky komunity jsou skryté</string>
   <string name="morphe_hide_community_posts_summary_off">Příspěvky komunity jsou zobrazeny</string>
@@ -102,6 +105,9 @@ Změny zahrnují:
 • Nákupy
 • Znovu si to pustit"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Vodorovné police jsou zobrazeny</string>
+  <string name="morphe_hide_hyped_label_title">Skrýt štítek Hype</string>
+  <string name="morphe_hide_hyped_label_summary_on">Štítek Hype je skrytý</string>
+  <string name="morphe_hide_hyped_label_summary_off">Štítek Hype je zobrazen</string>
   <string name="morphe_hide_image_shelf_title">Skrýt poličku s obrázky</string>
   <string name="morphe_hide_image_shelf_summary_on">Polička s obrázky ve výsledcích vyhledávání je skrytá</string>
   <string name="morphe_hide_image_shelf_summary_off">Polička s obrázky ve výsledcích vyhledávání je zobrazena</string>
@@ -212,6 +218,9 @@ Zobrazování YouTube Doodles může zabránit zobrazení vlastních záhlaví."
   <string name="morphe_hide_chapters_section_title">Skrýt kapitoly</string>
   <string name="morphe_hide_chapters_section_summary_on">Sekce Kapitoly je skrytá</string>
   <string name="morphe_hide_chapters_section_summary_off">Sekce Kapitoly je zobrazena</string>
+  <string name="morphe_hide_corrections_section_title">Skrýt opravy</string>
+  <string name="morphe_hide_corrections_section_summary_on">Sekce oprav je skrytá</string>
+  <string name="morphe_hide_corrections_section_summary_off">Sekce oprav je zobrazena</string>
   <string name="morphe_hide_course_progress_section_title">Skrýt \'Průběh kurzu\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Sekce \'Průběh kurzu\' je skryta</string>
   <string name="morphe_hide_course_progress_section_summary_off">Sekce \'Průběh kurzu\' je zobrazená</string>
@@ -265,6 +274,9 @@ Zobrazování YouTube Doodles může zabránit zobrazení vlastních záhlaví."
   <string name="morphe_hide_transcript_section_title">Skrýt přepis</string>
   <string name="morphe_hide_transcript_section_summary_on">Sekce přepisu je skrytá</string>
   <string name="morphe_hide_transcript_section_summary_off">Sekce přepisu je zobrazena</string>
+  <string name="morphe_hide_video_details_section_title">Skrýt detail videa</string>
+  <string name="morphe_hide_video_details_section_summary_on">Sekce s podrobnostmi o videu je skrytá</string>
+  <string name="morphe_hide_video_details_section_summary_off">Sekce s podrobnostmi o videu je zobrazena</string>
   <string name="morphe_hide_filter_bar_screen_title">Lišta filtrů</string>
   <string name="morphe_hide_filter_bar_screen_summary">Skrýt nebo zobrazit lištu filtru ve zdrojích, souvisejících videích, výsledcích vyhledávání a historii sledování</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Skrýt v kanálech</string>
@@ -531,6 +543,13 @@ Info: Může nefungovat u živých přenosů"</string>
   <string name="morphe_reload_video_button_summary_on">Tlačítko pro obnovení videa je zobrazeno</string>
   <string name="morphe_reload_video_button_summary_off">Tlačítko pro obnovení videa není zobrazeno</string>
   <string name="morphe_dismiss_player_not_available_toast">ID videa není k dispozici. Prosím, video ručně obnovte</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Zobrazit Uložit pro pozdější zhlédnutí</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Tlačítko Uložit pro pozdější zhlédnutí je zobrazeno</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Tlačítko Uložit pro pozdější zhlédnutí není zobrazeno</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video bylo úspěšně uloženo do seznamu pro pozdější zhlédnutí</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Toto video je již uloženo do seznamu pro pozdější zhlédnutí</string>
+  <string name="morphe_save_to_watch_later_error_toast">Nelze uložit toto video do seznamu pro pozdější zhlédnutí</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Zakázat přesné gesto pro vyhledávání</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Přesné gesto pro vyhledávání je zakázáno</string>

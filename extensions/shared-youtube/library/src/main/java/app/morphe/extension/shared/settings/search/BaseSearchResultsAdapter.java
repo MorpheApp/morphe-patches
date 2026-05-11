@@ -29,6 +29,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.lang.reflect.Method;
+import java.util.Locale;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
@@ -346,7 +347,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
                 // Highlight the preference once it is positioned.
                 highlightPreferenceAtPosition(listView, targetPosition);
             } else {
-                // The preference is outside of the current visible range, scroll to it from the top.
+                // The preference is outside the current visible range, scroll to it from the top.
                 listView.smoothScrollToPositionFromTop(targetPosition, 0);
 
                 Handler handler = new Handler(Looper.getMainLooper());
@@ -440,7 +441,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
      */
     protected String normalizeString(String input) {
         if (TextUtils.isEmpty(input)) return "";
-        return input.trim().toLowerCase().replaceAll("\\s+", " ").replaceAll("[^\\w\\s]", "");
+        return input.trim().toLowerCase(Locale.getDefault()).replaceAll("\\s+", " ").replaceAll("[^\\w\\s]", "");
     }
 
     /**

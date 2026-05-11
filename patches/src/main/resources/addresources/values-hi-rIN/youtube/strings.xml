@@ -73,6 +73,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">अल्बम कार्ड छुपाएं</string>
   <string name="morphe_hide_artist_cards_summary_on">अर्टिस्ट कार्ड छिपे हुए हैं</string>
   <string name="morphe_hide_artist_cards_summary_off">अर्टिस्ट कार्ड दिखाए जाते हैं</string>
+  <string name="morphe_hide_auto_dubbed_label_title">\'ऑटो-डब\' लेबल छुपाएं</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">ऑटो-डब लेबल छिपा हुआ है</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">ऑटो-डब लेबल दिखाया गया है</string>
   <string name="morphe_hide_community_posts_title">समुदाय पोस्ट छुपाएं</string>
   <string name="morphe_hide_community_posts_summary_on">समुदाय पोस्ट छिपाई गई हैं</string>
   <string name="morphe_hide_community_posts_summary_off">समुदाय पोस्ट दिखाई जाती हैं</string>
@@ -102,6 +105,9 @@ Second \"item\" text"</string>
 • शॉपिंग
 • इसे फिर से देखें"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">रैखिक शैलियों को दिखाया गया है</string>
+  <string name="morphe_hide_hyped_label_title">हाइप लेबल छुपाएं</string>
+  <string name="morphe_hide_hyped_label_summary_on">हाइप लेबल छिपा हुआ है</string>
+  <string name="morphe_hide_hyped_label_summary_off">हाइप लेबल दिखाया गया है</string>
   <string name="morphe_hide_image_shelf_title">छिपाएं चित्र शेल्फ</string>
   <string name="morphe_hide_image_shelf_summary_on">आईमेज शेल्फ को सर्च रिजल्ट्स में छुपा दिया गया है</string>
   <string name="morphe_hide_image_shelf_summary_off">आईमेज शेल्फ को सर्च रिजल्ट्स में दिखाया जाता है</string>
@@ -212,6 +218,9 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_hide_chapters_section_title">छिपाएं अध्याय</string>
   <string name="morphe_hide_chapters_section_summary_on">चैप्टर्स सैक्शन छुपा हुआ है</string>
   <string name="morphe_hide_chapters_section_summary_off">चैप्टर्स सैक्शन दिखाया जाता है</string>
+  <string name="morphe_hide_corrections_section_title">सुधार छुपाएं</string>
+  <string name="morphe_hide_corrections_section_summary_on">सुधार अनुभाग छुपा हुआ है</string>
+  <string name="morphe_hide_corrections_section_summary_off">सुधार अनुभाग दिखाया गया है</string>
   <string name="morphe_hide_course_progress_section_title">छुपाएं \'कोर्स प्रोग्रेस\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">कोर्स प्रोग्रेस अनुभाग छुपा हुआ है</string>
   <string name="morphe_hide_course_progress_section_summary_off">कोर्स प्रोग्रेस अनुभाग दिखाया गया है</string>
@@ -265,6 +274,9 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_hide_transcript_section_title">ट्रांसक्रिप्ट को छुपाएं</string>
   <string name="morphe_hide_transcript_section_summary_on">ट्रांसक्रिप्ट सैक्शन छुपा हुआ है</string>
   <string name="morphe_hide_transcript_section_summary_off">ट्रांसक्रिप्ट सैक्शन दिखाया गया है</string>
+  <string name="morphe_hide_video_details_section_title">\'वीडियो विवरण\' छुपाएं</string>
+  <string name="morphe_hide_video_details_section_summary_on">वीडियो विवरण अनुभाग छिपा हुआ है</string>
+  <string name="morphe_hide_video_details_section_summary_off">वीडियो विवरण अनुभाग दिखाया गया है</string>
   <string name="morphe_hide_filter_bar_screen_title">फ़िल्टर बार</string>
   <string name="morphe_hide_filter_bar_screen_summary">फ़िल्टर बार को हाइड या शो करें फीड्स, रिलेटेड वीडियो, सर्च रिजल्ट्स, और वॉच हिस्ट्री में</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">फीड्स में छुपाएं</string>
@@ -530,6 +542,13 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_reload_video_button_summary_on">रीलोड वीडियो बटन दिखाया गया है</string>
   <string name="morphe_reload_video_button_summary_off">रीलोड वीडियो बटन नहीं दिखाया गया है</string>
   <string name="morphe_dismiss_player_not_available_toast">वीडियो आईडी अनुपलब्ध है। कृपया वीडियो को मैन्युअल रूप से रीलोड करें</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">बाद में देखने के लिए सहेजें दिखाएं</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">बाद में देखने के लिए सहेजें बटन दिखाया गया है</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">बाद में देखने के लिए सहेजें बटन नहीं दिखाया गया है</string>
+  <string name="morphe_save_to_watch_later_success_toast">वीडियो को बाद में देखने की प्लेलिस्ट में सफलतापूर्वक सहेजा गया</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">यह वीडियो पहले से ही बाद में देखने की प्लेलिस्ट में सहेजा गया है</string>
+  <string name="morphe_save_to_watch_later_error_toast">इस वीडियो को बाद में देखने की प्लेलिस्ट में सहेजा नहीं जा सकता</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">प्रेसिस सीकिंग गेस्टर को अक्षम करना</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">प्रकृतिक खोज गेस्टर को अक्षम करना</string>

@@ -14,7 +14,10 @@ internal object LottieAnimationViewTagFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         methodCall(
-            opcode = Opcode.INVOKE_INTERFACE,
+            opcodes = listOf(
+                Opcode.INVOKE_INTERFACE,
+                Opcode.INVOKE_INTERFACE_RANGE
+            ),
             parameters = listOf(),
             returnType = "Ljava/lang/String;"
         ),

@@ -73,6 +73,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">إخفاء بطاقات الفنان</string>
   <string name="morphe_hide_artist_cards_summary_on">تم إخفاء بطاقات الفنان</string>
   <string name="morphe_hide_artist_cards_summary_off">يتم عرض بطاقات الفنان</string>
+  <string name="morphe_hide_auto_dubbed_label_title">إخفاء علامة \'مُدبلج تلقائيًا\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">تم إخفاء علامة \'مُدبلج تلقائيًا\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">يتم عرض علامة \'مُدبلج تلقائيًا\'</string>
   <string name="morphe_hide_community_posts_title">إخفاء مشاركات المجتمع</string>
   <string name="morphe_hide_community_posts_summary_on">تم إخفاء مشاركات المجتمع</string>
   <string name="morphe_hide_community_posts_summary_off">يتم عرض مشاركات المجتمع</string>
@@ -102,6 +105,9 @@ Second \"item\" text"</string>
 • التسوق
 • أريد أن أشاهدها مرة أخرى"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">يتم عرض الأرفف الأفقية</string>
+  <string name="morphe_hide_hyped_label_title">إخفاء علامة أكبر تشجيع</string>
+  <string name="morphe_hide_hyped_label_summary_on">تم إخفاء علامة أكبر تشجيع</string>
+  <string name="morphe_hide_hyped_label_summary_off">يتم عرض علامة أكبر تشجيع</string>
   <string name="morphe_hide_image_shelf_title">إخفاء رف الصور</string>
   <string name="morphe_hide_image_shelf_summary_on">تم إخفاء رف الصور في نتائج البحث</string>
   <string name="morphe_hide_image_shelf_summary_off">يتم عرض رف الصور في نتائج البحث</string>
@@ -212,6 +218,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">إخفاء الفصول</string>
   <string name="morphe_hide_chapters_section_summary_on">تم إخفاء قسم الفصول</string>
   <string name="morphe_hide_chapters_section_summary_off">يتم عرض قسم الفصول</string>
+  <string name="morphe_hide_corrections_section_title">إخفاء التصحيحات</string>
+  <string name="morphe_hide_corrections_section_summary_on">تم إخفاء قسم التصحيحات</string>
+  <string name="morphe_hide_corrections_section_summary_off">يتم عرض قسم التصحيحات</string>
   <string name="morphe_hide_course_progress_section_title">إخفاء \'تقدّم الدورة التدريبية\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">تم إخفاء قسم تقدّم الدورة التدريبية</string>
   <string name="morphe_hide_course_progress_section_summary_off">يتم عرض قسم تقدّم الدورة التدريبية</string>
@@ -265,6 +274,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">إخفاء النص</string>
   <string name="morphe_hide_transcript_section_summary_on">تم إخفاء قسم النص</string>
   <string name="morphe_hide_transcript_section_summary_off">يتم عرض قسم النص</string>
+  <string name="morphe_hide_video_details_section_title">إخفاء \'تفاصيل الفيديو\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">تم إخفاء قسم \'تفاصيل الفيديو\'</string>
+  <string name="morphe_hide_video_details_section_summary_off">يتم عرض قسم \'تفاصيل الفيديو\'</string>
   <string name="morphe_hide_filter_bar_screen_title">شريط الفئة</string>
   <string name="morphe_hide_filter_bar_screen_summary">إخفاء أو عرض شريط الفئة في الموجزات، الفيديوهات ذات الصلة، نتائج البحث، والسجلّ</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">إخفاء في الموجز</string>
@@ -511,13 +523,13 @@ Second \"item\" text"</string>
   <string name="morphe_play_all_button_type_title">وضع إنشاء قائمة تشغيل</string>
   <string name="morphe_play_all_button_type_entry_0">كل المحتوى (فرز حسب الوقت، تصاعدي)</string>
   <string name="morphe_play_all_button_type_entry_1">كل المحتوى (فرز حسب الوقت)</string>
-  <string name="morphe_play_all_button_type_entry_2">كل المحتوى (فرز حسب الأكثر شيوعًا)</string>
+  <string name="morphe_play_all_button_type_entry_2">كل المحتوى (فرز حسب الأكثر رواجًا)</string>
   <string name="morphe_play_all_button_type_entry_3">الفيديوهات فقط (فرز حسب الوقت)</string>
-  <string name="morphe_play_all_button_type_entry_4">الفيديوهات فقط (فرز حسب الأكثر شيوعًا)</string>
+  <string name="morphe_play_all_button_type_entry_4">الفيديوهات فقط (فرز حسب الأكثر رواجًا)</string>
   <string name="morphe_play_all_button_type_entry_5">Shorts فقط (فرز حسب الوقت)</string>
-  <string name="morphe_play_all_button_type_entry_6">Shorts فقط (فرز حسب الأكثر شيوعًا)</string>
+  <string name="morphe_play_all_button_type_entry_6">Shorts فقط (فرز حسب الأكثر رواجًا)</string>
   <string name="morphe_play_all_button_type_entry_7">الفيديوهات التي تم بثها فقط (فرز حسب الوقت)</string>
-  <string name="morphe_play_all_button_type_entry_8">الفيديوهات التي تم بثها فقط (فرز حسب الأكثر شيوعًا)</string>
+  <string name="morphe_play_all_button_type_entry_8">الفيديوهات التي تم بثها فقط (فرز حسب الأكثر رواجًا)</string>
   <string name="morphe_play_all_button_type_entry_9">محتوى الأعضاء فقط</string>
   <string name="morphe_play_all_button_type_entry_10">فيديوهات الأعضاء فقط</string>
   <string name="morphe_play_all_button_type_entry_11">Shorts الأعضاء فقط</string>
@@ -528,6 +540,13 @@ Second \"item\" text"</string>
   <string name="morphe_reload_video_button_summary_on">يتم عرض زر إعادة تحميل الفيديو</string>
   <string name="morphe_reload_video_button_summary_off">لا يتم عرض زر إعادة تحميل الفيديو</string>
   <string name="morphe_dismiss_player_not_available_toast">معرف الفيديو غير متاح. يرجى إعادة تحميل الفيديو يدويًا</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">عرض الحفظ لمشاهدته لاحقًا</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">يتم عرض زر الحفظ لمشاهدته لاحقًا</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">لا يتم عرض زر الحفظ لمشاهدته لاحقًا</string>
+  <string name="morphe_save_to_watch_later_success_toast">تم حفظ الفيديو بنجاح في قائمة المشاهدة لاحقًا</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">هذا الفيديو محفوظ بالفعل في قائمة المشاهدة لاحقًا</string>
+  <string name="morphe_save_to_watch_later_error_toast">لا يمكن حفظ هذا الفيديو في قائمة المشاهدة لاحقًا</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">تعطيل التحكّم الدقيق بالتمرير</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">تم تعطيل التحكّم الدقيق بالتمرير</string>

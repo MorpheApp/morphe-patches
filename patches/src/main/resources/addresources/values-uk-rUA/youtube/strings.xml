@@ -73,6 +73,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">Приховати картки виконавця</string>
   <string name="morphe_hide_artist_cards_summary_on">Картки виконавця приховано</string>
   <string name="morphe_hide_artist_cards_summary_off">Картки виконавця показуються</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Приховати мітку \"Дубляж\"</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Мітку \"Дубляж\" приховано</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Мітка \"Дубляж\" показується</string>
   <string name="morphe_hide_community_posts_title">Приховати публікації спільноти</string>
   <string name="morphe_hide_community_posts_summary_on">Публікації спільноти приховано</string>
   <string name="morphe_hide_community_posts_summary_off">Публікації спільноти показуються</string>
@@ -102,6 +105,9 @@ Second \"item\" text"</string>
 • Покупки
 • Переглянути знову"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Горизонтальні полиці показуються</string>
+  <string name="morphe_hide_hyped_label_title">Приховати мітку \"У тренді\"</string>
+  <string name="morphe_hide_hyped_label_summary_on">Мітку \"У тренді\" приховано</string>
+  <string name="morphe_hide_hyped_label_summary_off">Мітка \"У тренді\" показується</string>
   <string name="morphe_hide_image_shelf_title">Приховати полицю із зображеннями</string>
   <string name="morphe_hide_image_shelf_summary_on">Полицю із зображеннями в результатах пошуку приховано</string>
   <string name="morphe_hide_image_shelf_summary_off">Полиця із зображеннями в результатах пошуку показується</string>
@@ -212,6 +218,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">Приховати секцію \"Розділи\"</string>
   <string name="morphe_hide_chapters_section_summary_on">Секцію \"Розділи\" приховано</string>
   <string name="morphe_hide_chapters_section_summary_off">Секція \"Розділи\" показується</string>
+  <string name="morphe_hide_corrections_section_title">Приховати \"Виправлення\"</string>
+  <string name="morphe_hide_corrections_section_summary_on">Секцію \"Виправлення\" приховано</string>
+  <string name="morphe_hide_corrections_section_summary_off">Секція \"Виправлення\" показується</string>
   <string name="morphe_hide_course_progress_section_title">Приховати \"Прогрес курсу\"</string>
   <string name="morphe_hide_course_progress_section_summary_on">Розділ \"Прогрес курсу\" приховано</string>
   <string name="morphe_hide_course_progress_section_summary_off">Розділ \"Прогрес курсу\" показується</string>
@@ -265,6 +274,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">Приховати секцію \"Текст відео\"</string>
   <string name="morphe_hide_transcript_section_summary_on">Секцію \"Текст відео\" приховано</string>
   <string name="morphe_hide_transcript_section_summary_off">Секція \"Текст відео\" показується</string>
+  <string name="morphe_hide_video_details_section_title">Приховати \"Інформація про відео\"</string>
+  <string name="morphe_hide_video_details_section_summary_on">Секцію \"Інформація про відео\" приховано</string>
+  <string name="morphe_hide_video_details_section_summary_off">Секція \"Інформація про відео\" показується</string>
   <string name="morphe_hide_filter_bar_screen_title">Панель фільтрів</string>
   <string name="morphe_hide_filter_bar_screen_summary">Приховати або показувати панель фільтрів у стрічках, пов\'язаних відео, результатах пошуку та історії</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Приховати у стрічках</string>
@@ -530,6 +542,13 @@ Second \"item\" text"</string>
   <string name="morphe_reload_video_button_summary_on">Кнопка перезавантаження відео показується</string>
   <string name="morphe_reload_video_button_summary_off">Кнопка перезавантаження відео не показується</string>
   <string name="morphe_dismiss_player_not_available_toast">Ідентифікатор відео недоступний. Будь ласка, вручну повторно відкрийте відео</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Показати \"Зберегти\"</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Кнопка \"Зберегти\" показується</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Кнопка \"Зберегти\" не показується</string>
+  <string name="morphe_save_to_watch_later_success_toast">Відео збережено у списку відтворення \"Подивитися пізніше\"</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Це відео вже збережено у списку відтворення \"Подивитися пізніше\"</string>
+  <string name="morphe_save_to_watch_later_error_toast">Не вдалося зберегти це відео у списку відтворення \"Подивитися пізніше\"</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Вимкнути жест точного перемотування</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Жест для точного покадрового перемотування вимкнено</string>

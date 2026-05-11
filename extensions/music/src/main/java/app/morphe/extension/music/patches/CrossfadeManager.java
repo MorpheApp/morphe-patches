@@ -1,5 +1,7 @@
 package app.morphe.extension.music.patches;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
@@ -1390,18 +1392,30 @@ public class CrossfadeManager {
         Context ctx = Utils.getContext();
         if (ctx != null) {
             try {
-                Vibrator vib = (Vibrator) ctx.getSystemService(
-                        Context.VIBRATOR_SERVICE);
+                Vibrator vib;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+                    android.os.VibratorManager vibratorManager = (android.os.VibratorManager)
+                            ctx.getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
+                    vib = vibratorManager != null ? vibratorManager.getDefaultVibrator() : null;
+                } else {
+                    @SuppressWarnings("deprecation")
+                    Vibrator legacyVib = (Vibrator) ctx.getSystemService(Context.VIBRATOR_SERVICE);
+                    vib = legacyVib;
+                }
+
                 if (vib != null && vib.hasVibrator()) {
-                    vib.vibrate(100);
+                    android.os.VibrationEffect effect =
+                            android.os.VibrationEffect.createOneShot(100,
+                                    android.os.VibrationEffect.DEFAULT_AMPLITUDE);
+                    vib.vibrate(effect);
                 }
             } catch (Exception ex) {
                 Logger.printDebug(() -> "Ignoring vibration exception", ex);
             }
 
-            Utils.showToastShort(isNowPaused
-                    ? "Crossfade paused for this session"
-                    : "Crossfade resumed");
+            Utils.showToastShort(str(isNowPaused
+                    ? "morphe_music_crossfade_paused_toast"
+                    : "morphe_music_crossfade_resumed_toast"));
         }
     }
 
@@ -1438,7 +1452,7 @@ public class CrossfadeManager {
 
             if (isAudioMode) {
                 Logger.printDebug(() -> "videoToggle → BLOCK (audio→video while crossfade active)");
-                Utils.showToastShort("Video mode is not available while crossfade is enabled");
+                Utils.showToastShort(str("morphe_music_crossfade_video_mode_disabled_toast"));
                 return true;
             }
 
@@ -1606,27 +1620,12 @@ public class CrossfadeManager {
         mainHandler.post(longPressAttachRetry);
     }
 
-    @SuppressWarnings("unchecked")
     private static List<View> getAllWindowRoots(Activity activity) {
         List<View> roots = new ArrayList<>();
-        // Always include the main activity window.
-        if (activity.getWindow() != null) {
+        if (activity != null && activity.getWindow() != null) {
             roots.add(activity.getWindow().getDecorView());
         }
-        try {
-            // WindowManagerGlobal.mViews holds the root view of every open Window
-            // (dialogs, bottom sheets, etc.) in this process.
-            Class<?> wmg = Class.forName("android.view.WindowManagerGlobal");
-            Object instance = wmg.getMethod("getInstance").invoke(null);
-            java.lang.reflect.Field mViews = wmg.getDeclaredField("mViews");
-            mViews.setAccessible(true);
-            List<View> allViews = (List<View>) mViews.get(instance);
-            if (allViews != null) {
-                roots.addAll(allViews);
-            }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "getAllWindowRoots: reflection failed", ex);
-        }
+
         return roots;
     }
 

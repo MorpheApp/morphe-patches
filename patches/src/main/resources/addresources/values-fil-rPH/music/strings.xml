@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Kontrol sa sesyon</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Pindutin nang matagal ang button ng shuffle para i-pause o ipagpatuloy ang crossfade"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Ang kontrol sa sesyon ay hindi pinagana</string>
+  <string name="morphe_music_crossfade_paused_toast">Nawala ang crossfade para sa sesyong ito</string>
+  <string name="morphe_music_crossfade_resumed_toast">Ipinagpatuloy ang crossfade</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Hindi magagamit ang video mode habang naka-enable ang crossfade</string>
   <string name="morphe_music_crossfade_about_title">Tungkol</string>
   <string name="morphe_music_crossfade_about_summary">"Available ang Crossfade sa YouTube Music 8.x
 

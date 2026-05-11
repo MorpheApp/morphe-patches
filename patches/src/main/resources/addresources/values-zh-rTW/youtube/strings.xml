@@ -73,6 +73,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">隱藏藝人資訊卡</string>
   <string name="morphe_hide_artist_cards_summary_on">已隱藏藝人資訊卡</string>
   <string name="morphe_hide_artist_cards_summary_off">已顯示藝人資訊卡</string>
+  <string name="morphe_hide_auto_dubbed_label_title">隱藏「自動配音」標籤</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">自動配音標籤已隱藏</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">自動配音標籤已顯示</string>
   <string name="morphe_hide_community_posts_title">隱藏社群貼文</string>
   <string name="morphe_hide_community_posts_summary_on">已隱藏社群貼文</string>
   <string name="morphe_hide_community_posts_summary_off">已顯示社群貼文</string>
@@ -102,6 +105,9 @@ Second \"item\" text"</string>
 • 購物
 • 再次觀看"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">已顯示橫向專區</string>
+  <string name="morphe_hide_hyped_label_title">隱藏熱門標籤</string>
+  <string name="morphe_hide_hyped_label_summary_on">熱門標籤已隱藏</string>
+  <string name="morphe_hide_hyped_label_summary_off">熱門標籤已顯示</string>
   <string name="morphe_hide_image_shelf_title">隱藏圖庫</string>
   <string name="morphe_hide_image_shelf_summary_on">已隱藏搜尋結果中的圖片列</string>
   <string name="morphe_hide_image_shelf_summary_off">已顯示搜尋結果中的圖片列</string>
@@ -212,6 +218,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">隱藏章節</string>
   <string name="morphe_hide_chapters_section_summary_on">已隱藏章節區塊</string>
   <string name="morphe_hide_chapters_section_summary_off">已顯示章節區塊</string>
+  <string name="morphe_hide_corrections_section_title">隱藏更正</string>
+  <string name="morphe_hide_corrections_section_summary_on">更正區已隱藏</string>
+  <string name="morphe_hide_corrections_section_summary_off">更正區已顯示</string>
   <string name="morphe_hide_course_progress_section_title">隱藏「課程進度」</string>
   <string name="morphe_hide_course_progress_section_summary_on">已隱藏課程進度區域</string>
   <string name="morphe_hide_course_progress_section_summary_off">已顯示課程進度區域</string>
@@ -265,6 +274,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">隱藏轉錄稿</string>
   <string name="morphe_hide_transcript_section_summary_on">已隱藏轉錄稿區塊</string>
   <string name="morphe_hide_transcript_section_summary_off">已顯示轉錄稿區塊</string>
+  <string name="morphe_hide_video_details_section_title">隱藏「影片詳情」</string>
+  <string name="morphe_hide_video_details_section_summary_on">影片詳情區已隱藏</string>
+  <string name="morphe_hide_video_details_section_summary_off">影片詳情區已顯示</string>
   <string name="morphe_hide_filter_bar_screen_title">篩選列</string>
   <string name="morphe_hide_filter_bar_screen_summary">在推薦內容、相關影片、搜尋結果和觀看記錄中隱藏或顯示篩選欄</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">在動態中隱藏</string>
@@ -530,6 +542,13 @@ Second \"item\" text"</string>
   <string name="morphe_reload_video_button_summary_on">已顯示重新載入影片按鈕</string>
   <string name="morphe_reload_video_button_summary_off">不顯示「重新載入影片」按鈕</string>
   <string name="morphe_dismiss_player_not_available_toast">影片 ID 無法使用。請手動重新載入影片</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">顯示儲存至稍後觀看</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">已顯示「儲存至稍後觀看」按鈕</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">未顯示「儲存至稍後觀看」按鈕</string>
+  <string name="morphe_save_to_watch_later_success_toast">影片已成功儲存至稍後觀看播放清單</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">此影片已儲存至稍後觀看播放清單</string>
+  <string name="morphe_save_to_watch_later_error_toast">無法將此影片儲存至稍後觀看播放清單</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">停用精準跳轉手勢</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">已停用精準跳轉手勢</string>

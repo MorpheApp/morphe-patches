@@ -73,6 +73,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">הסתר כרטיסי אמן</string>
   <string name="morphe_hide_artist_cards_summary_on">כרטיסי אמן מוסתרים</string>
   <string name="morphe_hide_artist_cards_summary_off">כרטיסי אמן מוצגים</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">תווית דיבוב אוטומטי מוסתרת</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">תווית דיבוב אוטומטי מוצגת</string>
   <string name="morphe_hide_community_posts_title">הסתר פוסטים קהילתיים</string>
   <string name="morphe_hide_community_posts_summary_on">פוסטים קהילתיים מוסתרים</string>
   <string name="morphe_hide_community_posts_summary_off">פוסטים קהילתיים מוצגים</string>
@@ -102,6 +104,9 @@ Second \"item\" text"</string>
 • קניות
 • צפה בזה שוב"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">מדפים אופקיים מוצגים</string>
+  <string name="morphe_hide_hyped_label_title">הסתר תווית \'ויראלי\'</string>
+  <string name="morphe_hide_hyped_label_summary_on">תווית \'ויראלי\' מוסתרת</string>
+  <string name="morphe_hide_hyped_label_summary_off">תווית \'ויראלי\' מוצגת</string>
   <string name="morphe_hide_image_shelf_title">הסתר מדף תמונות</string>
   <string name="morphe_hide_image_shelf_summary_on">מדף תמונות בתוצאות חיפוש מוסתר</string>
   <string name="morphe_hide_image_shelf_summary_off">מדף תמונות בתוצאות חיפוש מוצג</string>
@@ -212,6 +217,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_chapters_section_title">הסתר פרקים</string>
   <string name="morphe_hide_chapters_section_summary_on">מדור הפרקים מוסתר</string>
   <string name="morphe_hide_chapters_section_summary_off">מדור הפרקים מוצג</string>
+  <string name="morphe_hide_corrections_section_title">הסתר תיקונים</string>
+  <string name="morphe_hide_corrections_section_summary_on">מדור התיקונים מוסתר</string>
+  <string name="morphe_hide_corrections_section_summary_off">מדור התיקונים מוצג</string>
   <string name="morphe_hide_course_progress_section_title">הסתר \'התקדמות בקורס\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">מדור התקדמות בקורס מוסתר</string>
   <string name="morphe_hide_course_progress_section_summary_off">מדור התקדמות בקורס מוצג</string>
@@ -265,6 +273,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">הסתר תמליל</string>
   <string name="morphe_hide_transcript_section_summary_on">מדור התמליל מוסתר</string>
   <string name="morphe_hide_transcript_section_summary_off">מדור התמליל מוצג</string>
+  <string name="morphe_hide_video_details_section_title">הסתר \'פרטי סרטון\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">מדור \'פרטי סרטון\' מוסתר</string>
+  <string name="morphe_hide_video_details_section_summary_off">מדור \'פרטי סרטון\' מוצג</string>
   <string name="morphe_hide_filter_bar_screen_title">סרגל סינון</string>
   <string name="morphe_hide_filter_bar_screen_summary">הסתר או הצג את סרגל הסינון בפידים, סרטונים קשורים, תוצאות חיפוש, והיסטוריית צפייה</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">הסתר בפידים</string>
@@ -530,6 +541,13 @@ Second \"item\" text"</string>
   <string name="morphe_reload_video_button_summary_on">לחצן טעינת סרטון מוצג</string>
   <string name="morphe_reload_video_button_summary_off">לחצן טעינת סרטון אינו מוצג</string>
   <string name="morphe_dismiss_player_not_available_toast">מזהה הסרטון אינו זמין. נא לטעון מחדש את הסרטון באופן ידני</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">הצג שמירה לצפייה מאוחרת</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">לחצן \'שמירה לצפייה מאוחרת\' מוצג</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">לחצן \'שמירה לצפייה מאוחרת\' לא מוצג</string>
+  <string name="morphe_save_to_watch_later_success_toast">הסרטון נשמר בהצלחה בפלייליסט \'צפייה מאוחרת\'</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">הסרטון הזה כבר שמור בפלייליסט \'צפייה מאוחרת\'</string>
+  <string name="morphe_save_to_watch_later_error_toast">לא ניתן לשמור סרטון זה בפלייליסט \'צפייה מאוחרת\'.</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">השבת מחוות דילוג מדויקת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">מחווה מושבתת</string>

@@ -73,6 +73,9 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_artist_cards_title">Interpretenkarten ausblenden</string>
   <string name="morphe_hide_artist_cards_summary_on">Interpretenkarten sind ausgeblendet</string>
   <string name="morphe_hide_artist_cards_summary_off">Interpretenkarten werden angezeigt</string>
+  <string name="morphe_hide_auto_dubbed_label_title">\'Auto-Dubbing\'-Beschriftung ausblenden</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Automatisch untertitelte Beschriftung ist ausgeblendet</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Automatisch untertitelte Bezeichnung wird angezeigt</string>
   <string name="morphe_hide_community_posts_title">Communitybeiträge ausblenden</string>
   <string name="morphe_hide_community_posts_summary_on">Communitybeiträge sind ausgeblendet</string>
   <string name="morphe_hide_community_posts_summary_off">Communitybeiträge werden angezeigt</string>
@@ -102,6 +105,9 @@ Folgende Änderungen werden vorgenommen:
 • Einkaufen
 • Noch einmal ansehen"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Horizontale Reihen werden angezeigt</string>
+  <string name="morphe_hide_hyped_label_title">Verstecke Hervorgehobene Bezeichnung</string>
+  <string name="morphe_hide_hyped_label_summary_on">Hervorgehobene Bezeichnung ist ausgeblendet</string>
+  <string name="morphe_hide_hyped_label_summary_off">Hervorgehobene Bezeichnung wird angezeigt</string>
   <string name="morphe_hide_image_shelf_title">Bild-Reihe ausblenden</string>
   <string name="morphe_hide_image_shelf_summary_on">Bild-Reihe in den Suchergebnissen ist ausgeblendet</string>
   <string name="morphe_hide_image_shelf_summary_off">Bild-Reihe in den Suchergebnissen wird angezeigt</string>
@@ -212,6 +218,9 @@ Das Anzeigen von YouTube Doodles kann verhindern, dass benutzerdefinierte Header
   <string name="morphe_hide_chapters_section_title">Kapitel ausblenden</string>
   <string name="morphe_hide_chapters_section_summary_on">Kapitel ist ausgeblendet</string>
   <string name="morphe_hide_chapters_section_summary_off">Kapitel wird angezeigt</string>
+  <string name="morphe_hide_corrections_section_title">Korrekturen ausblenden</string>
+  <string name="morphe_hide_corrections_section_summary_on">Korrekturbereich ist ausgeblendet</string>
+  <string name="morphe_hide_corrections_section_summary_off">Korrekturbereich wird angezeigt</string>
   <string name="morphe_hide_course_progress_section_title">Verbergen \'Fortschritt im Kurs\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Abschnitt \'Fortschritt im Kurs\' ist versteckt</string>
   <string name="morphe_hide_course_progress_section_summary_off">Abschnitt \'Fortschritt im Kurs\' ist angezeigt</string>
@@ -265,6 +274,9 @@ Das Anzeigen von YouTube Doodles kann verhindern, dass benutzerdefinierte Header
   <string name="morphe_hide_transcript_section_title">Transkript ausblenden</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkript-Abschnitt ist ausgeblendet</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkript-Abschnitt wird angezeigt</string>
+  <string name="morphe_hide_video_details_section_title">\"Videoinformationen\" ausblenden</string>
+  <string name="morphe_hide_video_details_section_summary_on">Bereich mit Videoinformationen ist ausgeblendet</string>
+  <string name="morphe_hide_video_details_section_summary_off">Bereich mit Videoinformationen wird angezeigt</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterleiste</string>
   <string name="morphe_hide_filter_bar_screen_summary">Filterleiste in Feeds, ähnlichen Videos, Suchergebnissen und im Wiedergabeverlauf aus- oder einblenden</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">In Feeds ausblenden</string>
@@ -532,6 +544,13 @@ Info: Funktioniert möglicherweise nicht bei Live-Streams"</string>
   <string name="morphe_reload_video_button_summary_on">Schaltfläche „Video wiederholen“ wird angezeigt</string>
   <string name="morphe_reload_video_button_summary_off">Schaltfläche „Video wiederholen“ ist ausgeblendet</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID ist nicht verfügbar. Bitte laden Sie das Video manuell neu</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Zeige \"Später ansehen\" speichern</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Schaltfläche \"Später ansehen\" speichern wird angezeigt</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Schaltfläche \"Später ansehen\" speichern wird nicht angezeigt</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video erfolgreich zur Wiedergabeliste \"Später ansehen\" hinzugefügt</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Dieses Video ist bereits zur Wiedergabeliste \"Später ansehen\" hinzugefügt</string>
+  <string name="morphe_save_to_watch_later_error_toast">Dieses Video kann nicht zur Wiedergabeliste \"Später ansehen\" hinzugefügt werden</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Genaue Suchgeste deaktivieren</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Geste ist deaktiviert</string>

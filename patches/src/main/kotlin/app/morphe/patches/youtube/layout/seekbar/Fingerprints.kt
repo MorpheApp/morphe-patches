@@ -24,7 +24,10 @@ internal object PlayerSeekbarColorFingerprint : Fingerprint(
 
 // class is ControlsOverlayStyle in 20.32 and lower, and obfuscated in 20.33+
 internal object SetSeekbarClickedColorFingerprint : Fingerprint(
-    filters = OpcodesFilter.opcodesToFilters(Opcode.CONST_HIGH16),
+    filters = listOf(
+        opcode(Opcode.CONST_HIGH16),
+        methodCall()
+    ),
     strings = listOf("YOUTUBE", "PREROLL", "POSTROLL", "REMOTE_LIVE", "AD_LARGE_CONTROLS")
 )
 

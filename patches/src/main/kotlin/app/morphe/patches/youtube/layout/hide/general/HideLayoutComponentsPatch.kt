@@ -16,11 +16,12 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.removeInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
@@ -112,6 +113,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_ask_section"),
                     SwitchPreference("morphe_hide_attributes_section"),
                     SwitchPreference("morphe_hide_chapters_section"),
+                    SwitchPreference("morphe_hide_corrections_section"),
                     SwitchPreference("morphe_hide_course_progress_section"),
                     SwitchPreference("morphe_hide_explore_section"),
                     SwitchPreference("morphe_hide_explore_course_section"),
@@ -127,7 +129,8 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_music_section"),
                     SwitchPreference("morphe_hide_quizzes_section"),
                     SwitchPreference("morphe_hide_subscribe_button"),
-                    SwitchPreference("morphe_hide_transcript_section")
+                    SwitchPreference("morphe_hide_transcript_section"),
+                    SwitchPreference("morphe_hide_video_details_section")
                 ),
             ),
             PreferenceScreenPreference(
@@ -229,6 +232,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             ),
             SwitchPreference("morphe_hide_album_cards"),
             SwitchPreference("morphe_hide_artist_cards"),
+            SwitchPreference("morphe_hide_auto_dubbed_label"),
             SwitchPreference("morphe_hide_community_posts"),
             SwitchPreference("morphe_hide_compact_banner"),
             if (is_20_26_or_greater) {
@@ -257,6 +261,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 key = "morphe_hide_horizontal_shelves",
                 tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
             ),
+            SwitchPreference("morphe_hide_hyped_label"),
             SwitchPreference("morphe_hide_image_shelf"),
             SwitchPreference("morphe_hide_latest_videos_button"),
             SwitchPreference("morphe_hide_mix_playlists"),
@@ -536,9 +541,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
         // region hide YouTube Doodles
 
         YouTubeDoodlesImageViewFingerprint.method.apply {
-            findInstructionIndicesReversedOrThrow {
-                getReference<MethodReference>()?.name == "setImageDrawable"
-            }.forEach { insertIndex ->
+            findInstructionIndicesReversedOrThrow(
+                methodCall(name = "setImageDrawable")
+            ).forEach { insertIndex ->
                 val drawableRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
                 val imageViewRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerC
 

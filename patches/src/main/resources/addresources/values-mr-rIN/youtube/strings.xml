@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">कलाकार कार्ड्स लपवा</string>
   <string name="morphe_hide_artist_cards_summary_on">कलाकार कार्ड्स लपविलेले आहेत</string>
   <string name="morphe_hide_artist_cards_summary_off">कलाकार कार्ड्स दर्शविले जातात</string>
+  <string name="morphe_hide_auto_dubbed_label_title">\'ऑटो-डबbed\' लेबल लपवा</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">ऑटो-डब केलेले लेबल लपलेले आहे</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">ऑटो-डब केलेले लेबल दिसत आहे</string>
   <string name="morphe_hide_community_posts_title">समुदाय पोस्ट्स लपवा</string>
   <string name="morphe_hide_community_posts_summary_on">समुदाय पोस्ट्स लपविलेले आहेत</string>
   <string name="morphe_hide_community_posts_summary_off">समुदाय पोस्ट्स दर्शविले जातात</string>
@@ -101,6 +104,9 @@ Second \"item\" text"</string>
 • शॉपिंग
 • पुन्हा पहा"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Horizontal शेल्फ दर्शविले जातात</string>
+  <string name="morphe_hide_hyped_label_title">हायप्ड लेबल लपवा</string>
+  <string name="morphe_hide_hyped_label_summary_on">हायप्ड लेबल लपलेले आहे</string>
+  <string name="morphe_hide_hyped_label_summary_off">हायप्ड लेबल दिसत आहे</string>
   <string name="morphe_hide_image_shelf_title">इमेज शेल्फ लपवा</string>
   <string name="morphe_hide_image_shelf_summary_on">शोध परिणामांमध्ये प्रतिमा शेल्फ लपविला गेला आहे</string>
   <string name="morphe_hide_image_shelf_summary_off">शोध परिणामांमध्ये प्रतिमा शेल्फ दर्शविला गेला आहे</string>
@@ -211,6 +217,9 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_hide_chapters_section_title">अध्याय लपवा</string>
   <string name="morphe_hide_chapters_section_summary_on">अध्याय विभाग लपवला आहे</string>
   <string name="morphe_hide_chapters_section_summary_off">अध्याय विभाग दर्शविला आहे</string>
+  <string name="morphe_hide_corrections_section_title">करेक्शन लपवा</string>
+  <string name="morphe_hide_corrections_section_summary_on">करेक्शन विभाग लपलेला आहे</string>
+  <string name="morphe_hide_corrections_section_summary_off">करेक्शन विभाग दिसत आहे</string>
   <string name="morphe_hide_course_progress_section_title">\'कोर्स प्रगती\' लपवा</string>
   <string name="morphe_hide_course_progress_section_summary_on">कोर्स प्रगती विभाग लपविला आहे</string>
   <string name="morphe_hide_course_progress_section_summary_off">कोर्स प्रगती विभाग दर्शविला आहे</string>
@@ -264,6 +273,9 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_hide_transcript_section_title">परिशिष्ट लपवा</string>
   <string name="morphe_hide_transcript_section_summary_on">परिशिष्ट विभाग लपवला आहे</string>
   <string name="morphe_hide_transcript_section_summary_off">परिशिष्ट विभाग दर्शविला आहे</string>
+  <string name="morphe_hide_video_details_section_title">‘व्हिडिओ तपशील’ लपवा</string>
+  <string name="morphe_hide_video_details_section_summary_on">व्हिडिओ तपशील विभाग लपलेला आहे</string>
+  <string name="morphe_hide_video_details_section_summary_off">व्हिडिओ तपशील विभाग दिसत आहे</string>
   <string name="morphe_hide_filter_bar_screen_title">फिल्टर बार</string>
   <string name="morphe_hide_filter_bar_screen_summary">फीड्स, संबंधित व्हिडिओ, शोध परिणाम आणि पहाण्याच्या इतिहासात फिल्टर बार लपवा किंवा दर्शवा</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">फीडमध्ये लपवा</string>
@@ -516,6 +528,13 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_reload_video_button_summary_on">रीलोड व्हिडिओ बटण दर्शविले जाते</string>
   <string name="morphe_reload_video_button_summary_off">रीलोड व्हिडिओ बटण दर्शविले जात नाही</string>
   <string name="morphe_dismiss_player_not_available_toast">व्हिडिओ आयडी उपलब्ध नाही. कृपया व्हिडिओ व्यक्तिचलितपणे रीलोड करा</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">देखा नंतर जतन करण्यासाठी दर्शवा</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">देखा नंतर जतन करण्यासाठी बटण दर्शविले जात आहे</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">देखा नंतर जतन करण्यासाठी बटण दर्शविले जात नाही</string>
+  <string name="morphe_save_to_watch_later_success_toast">व्हिडिओ यशस्वीरित्या ‘नंतर पहा’ प्लेलिस्टमध्ये जतन केला गेला</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">हा व्हिडिओ ‘नंतर पहा’ प्लेलिस्टमध्ये आधीच जतन केला आहे</string>
+  <string name="morphe_save_to_watch_later_error_toast">हा व्हिडिओ ‘नंतर पहा’ प्लेलिस्टमध्ये जतन करू शकत नाही</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">अचूक शोधण्याची हावभाव अक्षम करा</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">अचूक शोधण्याची हावभाव अक्षम केली आहे</string>

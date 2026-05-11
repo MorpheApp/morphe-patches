@@ -37,13 +37,12 @@ private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/checks/CheckEnvironmentPatch;"
 
 fun checkEnvironmentPatch(
+    @Suppress("unused")
     mainActivityOnCreateFingerprint: Fingerprint,
     extensionPatch: Patch<*>,
-    vararg compatiblePackages: String,
 ) = bytecodePatch(
     description = "Checks, where the application was patched by, otherwise warns the user.",
 ) {
-    compatibleWith(*compatiblePackages)
 
     dependsOn(
         extensionPatch,

@@ -73,6 +73,9 @@ Veranderings sluit in:
   <string name="morphe_hide_artist_cards_title">Verberg kunstenaarskaarte</string>
   <string name="morphe_hide_artist_cards_summary_on">Kunstenaarskaarte word versteek</string>
   <string name="morphe_hide_artist_cards_summary_off">Kunstenaarskaarte word vertoon</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Versteek \'Outomaties naspraak\' etiket</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Outo-gedubbelde etiket is versteek</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Outo-gedubbelde etiket word vertoon</string>
   <string name="morphe_hide_community_posts_title">Verberg gemeenskapboodskappe</string>
   <string name="morphe_hide_community_posts_summary_on">Gemeenskapboodskappe word versteek</string>
   <string name="morphe_hide_community_posts_summary_off">Gemeenskapboodskappe word vertoon</string>
@@ -102,6 +105,9 @@ Veranderings sluit in:
 • Winkel
 • Kyk weer"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Horisontale rakke word vertoon</string>
+  <string name="morphe_hide_hyped_label_title">Versteek Hip-etiket</string>
+  <string name="morphe_hide_hyped_label_summary_on">Hip-etiket is versteek</string>
+  <string name="morphe_hide_hyped_label_summary_off">Hip-etiket word vertoon</string>
   <string name="morphe_hide_image_shelf_title">Verberg prentrak</string>
   <string name="morphe_hide_image_shelf_summary_on">Prentrak in soekresultate is versteek</string>
   <string name="morphe_hide_image_shelf_summary_off">Prentrak in soekresultate is vertoon</string>
@@ -212,6 +218,9 @@ Die vertoon van YouTube Doodles kan verhoed dat pasgemaakte headers vertoon word
   <string name="morphe_hide_chapters_section_title">Verberg Hoofstukke</string>
   <string name="morphe_hide_chapters_section_summary_on">Hoofstukke afdeling is versteek</string>
   <string name="morphe_hide_chapters_section_summary_off">Hoofstukke afdeling is vertoon</string>
+  <string name="morphe_hide_corrections_section_title">Versteek Korreksies</string>
+  <string name="morphe_hide_corrections_section_summary_on">Korreksies afdeling is versteek</string>
+  <string name="morphe_hide_corrections_section_summary_off">Korreksies afdeling word vertoon</string>
   <string name="morphe_hide_course_progress_section_title">Versteek \'Vordering van kursus\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Vordering van kursus-afdeling is versteek</string>
   <string name="morphe_hide_course_progress_section_summary_off">Vordering van kursus-afdeling is wys</string>
@@ -265,6 +274,9 @@ Die vertoon van YouTube Doodles kan verhoed dat pasgemaakte headers vertoon word
   <string name="morphe_hide_transcript_section_title">Verberg Transkripsie</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkripsie afdeling is versteek</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkripsie afdeling is vertoon</string>
+  <string name="morphe_hide_video_details_section_title">Versteek \'Video besonderhede\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">Video besonderhede afdeling is versteek</string>
+  <string name="morphe_hide_video_details_section_summary_off">Video besonderhede afdeling word vertoon</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterbalk</string>
   <string name="morphe_hide_filter_bar_screen_summary">Verberg of wys die filterbalk in feeds, verwante video\'s, soekresultate en kykgeskiedenis</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Verberg in feeds</string>
@@ -524,6 +536,13 @@ Info: Mag nie werk op livestreams nie"</string>
   <string name="morphe_reload_video_button_summary_on">Herlaai video knoppie is wys</string>
   <string name="morphe_reload_video_button_summary_off">Herlaai video knoppie is nie wys nie</string>
   <string name="morphe_dismiss_player_not_available_toast">Video ID is nie beskikbaar nie. Laai asseblief die video handmatig herlaai</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Wysig Spaar om later te kyk</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Spaar om later te kyk knoppie word vertoon</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Spaar om later te kyk knoppie word nie vertoon nie</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video is suksesvol in spaar om later te kyk snitlys gestoor</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Hierdie video is reeds in spaar om later te kyk snitlys gestoor</string>
+  <string name="morphe_save_to_watch_later_error_toast">Kan hierdie video nie in spaar om later te kyk snitlys stoor nie</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Skakel presiese soek gebaar af</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Presiese soek gebaar is afgeskakel</string>

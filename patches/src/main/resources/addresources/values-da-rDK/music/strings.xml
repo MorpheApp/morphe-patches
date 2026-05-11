@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Sessionsstyring</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Lang tryk på shuffle-knappen for at pause eller genoptage crossfade"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Sessionsstyring er deaktiveret</string>
+  <string name="morphe_music_crossfade_paused_toast">Crossfade pauset for denne session</string>
+  <string name="morphe_music_crossfade_resumed_toast">Crossfade genoptaget</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Videotilstand er ikke tilgængelig, når crossfade er aktiveret</string>
   <string name="morphe_music_crossfade_about_title">Om</string>
   <string name="morphe_music_crossfade_about_summary">"Crossfade er tilgængelig med YouTube Music 8.x
 

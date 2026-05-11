@@ -199,24 +199,13 @@ val changePackageNamePatch = resourcePatch(
 
     dependsOn(bytecodePatch {
         execute {
-            try {
-                when (val originalPackageName = packageMetadata.packageName) {
-                    PACKAGE_NAME_REDDIT -> {
-                        applyGetPackageName(
-                            originalPackageName,
-                            "Lcom/google/android/recaptcha/internal"
-                        )
-                    }
+            when (val originalPackageName = packageMetadata.packageName) {
+                PACKAGE_NAME_REDDIT -> {
+                    applyGetPackageName(
+                        originalPackageName,
+                        "Lcom/google/android/recaptcha/internal"
+                    )
                 }
-            } catch (e: Throwable) {
-                // TODO: Eventually remove this check. Early versions of Morphe Manager
-                //       may not auto update if GitHub non auth API blocks the user ip.
-                throw RuntimeException(
-                    "\n\n#####################################\n\n" +
-                            "Your Morphe app is outdated. Please manually update Morphe " +
-                            "by downloading from https://morphe.software\n\n" +
-                            "#####################################\n\n"
-                )
             }
         }
     })

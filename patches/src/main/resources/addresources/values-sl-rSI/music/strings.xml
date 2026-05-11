@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Upravljanje seje</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Dolgo pritisnite gumb za pomikanje, da začnete ali ustavite križno zameglitev"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Upravljanje seje je onemogočeno</string>
+  <string name="morphe_music_crossfade_paused_toast">Prehod je bil zaustavljen za to sejo</string>
+  <string name="morphe_music_crossfade_resumed_toast">Prehod je bil nadaljevan</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Video način ni na voljo, ko je prehod omogočen</string>
   <string name="morphe_music_crossfade_about_title">O aplikaciji</string>
   <string name="morphe_music_crossfade_about_summary">"Križno zameglitev je na voljo z YouTube Music 8.x
 

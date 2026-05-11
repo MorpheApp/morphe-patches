@@ -73,6 +73,9 @@ Nogle server-side layouts kan ikke vende tilbage.
   <string name="morphe_hide_artist_cards_title">Skjul kunstnerkort</string>
   <string name="morphe_hide_artist_cards_summary_on">Kunstnerkort er skjult</string>
   <string name="morphe_hide_artist_cards_summary_off">Kunstnerkort vises</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Skjul labelen \'Automatisk dubbing\'</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on"> \'Auto-dubbed\' label er skjult</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off"> \'Auto-dubbed\' label er vist</string>
   <string name="morphe_hide_community_posts_title">Skjul fællesskabs indlæg</string>
   <string name="morphe_hide_community_posts_summary_on">Fællesskabs indlæg er skjult</string>
   <string name="morphe_hide_community_posts_summary_off">Fællesskabs indlæg er vist</string>
@@ -102,6 +105,9 @@ Nogle server-side layouts kan ikke vende tilbage.
 • Shopping
 • Se det igen"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Vandrette hylder vises</string>
+  <string name="morphe_hide_hyped_label_title">Skjul \'Hyped\' label</string>
+  <string name="morphe_hide_hyped_label_summary_on">\'Hyped\' label er skjult</string>
+  <string name="morphe_hide_hyped_label_summary_off">\'Hyped\' label er vist</string>
   <string name="morphe_hide_image_shelf_title">Skjul billedhylde</string>
   <string name="morphe_hide_image_shelf_summary_on">Billedhylde i søgeresultater er skjult</string>
   <string name="morphe_hide_image_shelf_summary_off">Billedhylde i søgeresultater er vist</string>
@@ -212,6 +218,9 @@ Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at bliv
   <string name="morphe_hide_chapters_section_title">Skjul kapitler</string>
   <string name="morphe_hide_chapters_section_summary_on">Kapitelsektionen er skjult</string>
   <string name="morphe_hide_chapters_section_summary_off">Kapitelsektionen er vist</string>
+  <string name="morphe_hide_corrections_section_title">Skjul Rettelser</string>
+  <string name="morphe_hide_corrections_section_summary_on">Rettelser sektionen er skjult</string>
+  <string name="morphe_hide_corrections_section_summary_off">Rettelser sektionen er vist</string>
   <string name="morphe_hide_course_progress_section_title">Skjul \'Kursusfremgang\'</string>
   <string name="morphe_hide_course_progress_section_summary_on">Kursusfremgangssektion er skjult</string>
   <string name="morphe_hide_course_progress_section_summary_off">Kursusfremgangssektion er vist</string>
@@ -265,6 +274,9 @@ Visning af YouTube Doodles kan forhindre brugerdefinerede overskrifter i at bliv
   <string name="morphe_hide_transcript_section_title">Skjul Udskrift</string>
   <string name="morphe_hide_transcript_section_summary_on">Udskriftsafsnittet er skjult</string>
   <string name="morphe_hide_transcript_section_summary_off">Udskriftsafsnittet er vist</string>
+  <string name="morphe_hide_video_details_section_title">Skjul \'Videooplysninger\'</string>
+  <string name="morphe_hide_video_details_section_summary_on">Videooplysninger sektionen er skjult</string>
+  <string name="morphe_hide_video_details_section_summary_off">Videooplysninger sektionen er vist</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterbjælke</string>
   <string name="morphe_hide_filter_bar_screen_summary">Skjul eller vis filterbjælken i feeds, relaterede videoer, søgeresultater og seerhistorik</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Skjul i feeds</string>
@@ -531,6 +543,13 @@ Info: Fungerer muligvis ikke på live-streams"</string>
   <string name="morphe_reload_video_button_summary_on">Genindlæs video knappen vises</string>
   <string name="morphe_reload_video_button_summary_off">Genindlæs video knappen vises ikke</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID er ikke tilgængeligt. Genindlæs venligst videoen manuelt</string>
+  <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Vis Gem til se senere</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Gem til se senere-knappen vises</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Gem til se senere-knappen vises ikke</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video gemt i afspilningsliste til senere</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Denne video er allerede gemt i afspilningslisten til senere</string>
+  <string name="morphe_save_to_watch_later_error_toast">Kunne ikke gemme denne video i afspilningslisten til senere</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Deaktivér præcis søgemåde</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Bevægelse er deaktiveret</string>
