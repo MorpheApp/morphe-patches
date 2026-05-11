@@ -67,7 +67,7 @@ public final class OpenChannelOfLiveAvatarPatch {
                 return false;
             }
             // Prevent a new request until the previous (if exists) is not done
-            if (liveAvatarChannelRequest != null && !liveAvatarChannelRequest.streamDetailsFutureDone()) {
+            if (liveAvatarChannelRequest != null && !liveAvatarChannelRequest.fetchIsDone()) {
                 return false;
             }
             // Video was opened by clicking the thumbnail

@@ -446,7 +446,8 @@ public class StreamOrDetailsDataRequest {
         return null;
     }
 
-    public boolean streamDetailsFutureDone() {
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    public boolean fetchIsDone() {
         return future.isDone();
     }
 
@@ -458,7 +459,7 @@ public class StreamOrDetailsDataRequest {
             // This is not a concern, since the fetch will always be finished
             // and never block the main thread.
             // But if debugging, then still verify this is the situation.
-            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
+            if (BaseSettings.DEBUG.get() && !fetchIsDone() && Utils.isCurrentlyOnMainThread()) {
                 Logger.printException(() -> "Debug: Blocking main thread");
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);

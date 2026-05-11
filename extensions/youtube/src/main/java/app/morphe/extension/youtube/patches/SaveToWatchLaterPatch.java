@@ -26,7 +26,7 @@ public final class SaveToWatchLaterPatch {
     public static void saveVideo() {
         try {
             // Prevent a new request until the previous (if exists) is not done
-            if (saveVideoRequest != null && !saveVideoRequest.streamDetailsFutureDone()) {
+            if (saveVideoRequest != null && !saveVideoRequest.fetchIsDone()) {
                 return;
             }
             String videoId = VideoInformation.getVideoId();
