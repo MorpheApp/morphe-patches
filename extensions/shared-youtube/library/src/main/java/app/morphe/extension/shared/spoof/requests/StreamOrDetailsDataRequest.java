@@ -102,11 +102,13 @@ public class StreamOrDetailsDataRequest {
     }
 
     private static final String AUTHORIZATION_HEADER = "Authorization";
+    private static final String AUTH_USER_HEADER = "X-Goog-AuthUser";
     private static final String PAGE_ID_HEADER = "X-Goog-PageId";
 
     private static final String[] REQUEST_HEADER_KEYS = {
             AUTHORIZATION_HEADER, // Available only to logged-in users.
-            PAGE_ID_HEADER,
+            AUTH_USER_HEADER, // Available only to logged-in users.
+            PAGE_ID_HEADER, // Available only to logged-in users.
             "X-GOOG-API-FORMAT-VERSION",
             "X-Goog-Visitor-Id"
     };
@@ -251,9 +253,11 @@ public class StreamOrDetailsDataRequest {
                             authHeadersIncludes = true;
                         }
 
-                        if (clientType.endpoint != SEND_SAVE_VIDEO_TO_PLAYLIST && key.equals(PAGE_ID_HEADER)) {
-                            Logger.printDebug(() -> "Excluding PAGE_ID_HEADER");
-                            continue;
+                        if (clientType.endpoint != SEND_SAVE_VIDEO_TO_PLAYLIST) {
+                            if (key.equals(PAGE_ID_HEADER) || key.equals(AUTH_USER_HEADER)) {
+                                Logger.printDebug(() -> "Excluding" + key);
+                                continue;
+                            }
                         }
 
                         Logger.printDebug(() -> "Including request header: " + key);
