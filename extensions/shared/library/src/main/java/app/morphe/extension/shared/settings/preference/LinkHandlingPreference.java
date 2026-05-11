@@ -109,17 +109,14 @@ public class LinkHandlingPreference extends Preference {
 
     private static void openAppLinkSettings(Activity activity, String packageName) {
         try {
-            Intent intent;
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                intent = new Intent(android.provider.Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS);
-            } else {
-                intent = new Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-            }
+            Intent intent = new Intent(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
+                    ? android.provider.Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS
+                    : android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
             intent.setData(Uri.parse("package:" + packageName));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             activity.startActivity(intent);
         } catch (Exception ex) {
-            Logger.printException(() -> "openAppLinkSettings failure for: " + packageName, ex);
+            Logger.printException(() -> "openAppLinkSettings failure: " + packageName, ex);
         }
     }
 }
