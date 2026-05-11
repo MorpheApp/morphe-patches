@@ -13,16 +13,18 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.verify.domain.DomainVerificationManager;
+import android.content.pm.verify.domain.DomainVerificationUserState;
 import android.net.Uri;
 import android.os.Build;
 import android.preference.Preference;
+import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+import android.util.Pair;
 import android.widget.LinearLayout;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import android.util.Pair;
-
 import app.morphe.extension.shared.ui.CustomDialog;
 
 /**
@@ -48,6 +50,26 @@ public class LinkHandlingPreference extends Preference {
 
     public LinkHandlingPreference(Context context) {
         super(context);
+    }
+
+    @Override
+    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
+        super.onAttachedToHierarchy(preferenceManager);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            try {
+                String patchedPackage = Utils.getContext().getPackageName();
+                DomainVerificationManager manager =
+                        getContext().getSystemService(DomainVerificationManager.class);
+                DomainVerificationUserState state =
+                        manager.getDomainVerificationUserState(patchedPackage);
+                if (state != null && state.getHostToStateMap().containsValue(
+                        DomainVerificationUserState.DOMAIN_STATE_SELECTED)) {
+                    setEnabled(false);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "LinkHandlingPreference: domain check failure", ex);
+            }
+        }
     }
 
     @Override
