@@ -230,25 +230,23 @@ public class StreamOrDetailsDataRequest {
 
                     if (value != null) {
                         if (key.equals(AUTHORIZATION_HEADER)) {
-                            if (isStream) {
-                                if (clientType.supportsOAuth2) {
-                                    String authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
-                                    if (authorization.isEmpty()) {
-                                        // Access token is empty, the user has not signed in to VR.
-                                        // YouTube/YouTube Music access tokens cannot be used with YouTube VR.
-                                        // Do not set the header.
-                                        Logger.printDebug(() -> "Not including request header: " + key);
-                                        continue;
-                                    } else {
-                                        // Access token is not empty, the user has signed in to VR.
-                                        // Set the header.
-                                        value = authorization;
-                                        authHeadersOverrides = true;
-                                    }
-                                } else if (!clientType.canLogin) {
+                            if (clientType.supportsOAuth2) {
+                                String authorization = OAuth2Requester.getAndUpdateAccessTokenIfNeeded();
+                                if (authorization.isEmpty()) {
+                                    // Access token is empty, the user has not signed in to VR.
+                                    // YouTube/YouTube Music access tokens cannot be used with YouTube VR.
+                                    // Do not set the header.
                                     Logger.printDebug(() -> "Not including request header: " + key);
                                     continue;
+                                } else {
+                                    // Access token is not empty, the user has signed in to VR.
+                                    // Set the header.
+                                    value = authorization;
+                                    authHeadersOverrides = true;
                                 }
+                            } else if (!clientType.canLogin) {
+                                Logger.printDebug(() -> "Not including request header: " + key);
+                                continue;
                             }
                             authHeadersIncludes = true;
                         }
