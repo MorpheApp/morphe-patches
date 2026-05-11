@@ -28,7 +28,6 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
 
     private String playerJS = "";
     private String playerJSHash = "";
-    private final String repository = "yt-dlp/ejs";
 
     private final Map<ScriptType, String> scriptFilenames;
     private final Map<ScriptType, String> minScriptFilenames;
@@ -53,17 +52,17 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
     );
 
     public JsRuntimeChalBaseJCP() {
-        Map<ScriptType, String> sMap = new HashMap<>();
-        sMap.put(ScriptType.LIB, LIB_PREFIX + "yt.solver.lib.js");
-        sMap.put(ScriptType.CORE, LIB_PREFIX + "yt.solver.core.js");
-        sMap.put(ScriptType.WRAPPER, LIB_PREFIX + "yt.solver.wrapper.js");
-        scriptFilenames = Collections.unmodifiableMap(sMap);
+        scriptFilenames = Map.of(
+                ScriptType.LIB, LIB_PREFIX + "yt.solver.lib.js",
+                ScriptType.CORE, LIB_PREFIX + "yt.solver.core.js",
+                ScriptType.WRAPPER, LIB_PREFIX + "yt.solver.wrapper.js"
+        );
 
-        Map<ScriptType, String> mMap = new HashMap<>();
-        mMap.put(ScriptType.LIB, "yt.solver.lib.min.js");
-        mMap.put(ScriptType.CORE, "yt.solver.core.min.js");
-        mMap.put(ScriptType.WRAPPER, "yt.solver.wrapper.min.js");
-        minScriptFilenames = Collections.unmodifiableMap(mMap);
+        minScriptFilenames = Map.of(
+                ScriptType.LIB, "yt.solver.lib.min.js",
+                ScriptType.CORE, "yt.solver.core.min.js",
+                ScriptType.WRAPPER, "yt.solver.wrapper.min.js"
+        );
     }
 
     @Override
@@ -332,6 +331,7 @@ public abstract class JsRuntimeChalBaseJCP extends JsChallengeProvider {
             synchronized (cache) {
                 String code = cache.get(fileName);
                 if (code == null) {
+                    String repository = "yt-dlp/ejs";
                     String url = "https://github.com/" + repository + "/releases/download/" + SCRIPT_VERSION + "/" + fileName;
                     code = JavaScriptManager.downloadUrl(url);
                     Logger.printDebug(() -> "Downloading challenge solver " + scriptType.getValue() + " script from " + url);
