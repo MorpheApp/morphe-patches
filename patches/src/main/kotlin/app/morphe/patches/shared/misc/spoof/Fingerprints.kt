@@ -126,14 +126,12 @@ internal object HlsCurrentTimeFingerprint : Fingerprint(
     )
 )
 
-internal const val DISABLED_BY_SABR_STREAMING_URI_STRING = "DISABLED_BY_SABR_STREAMING_URI"
-
 internal object MediaFetchEnumConstructorFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf(
         "ENABLED",
         "DISABLED_FOR_PLAYBACK",
-        DISABLED_BY_SABR_STREAMING_URI_STRING
+        "DISABLED_BY_SABR_STREAMING_URI"
     )
 )
 
@@ -156,7 +154,11 @@ val accountIdentityFingerprint = Fingerprint(
         "Null getDataSyncId",
         "Null getGaiaDelegationType",
         "Null getDelegationContext"
-    )
+    ),
+    custom = { method, _ ->
+        val parameterTypes = method.parameterTypes
+        parameterTypes.size > 4 && parameterTypes[2] == "Ljava/lang/String;" && parameterTypes[3] == "Z"
+    }
 )
 
 // Feature flag that turns on Platypus programming language code compiled to native C++.

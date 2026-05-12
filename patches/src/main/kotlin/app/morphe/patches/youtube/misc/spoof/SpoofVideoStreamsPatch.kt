@@ -36,6 +36,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
         // but only recently has been causing issues.
         is_20_31_or_greater
     },
+    hookAccountIdentity = { true },
 
     block = {
         compatibleWith(COMPATIBILITY_YOUTUBE)
