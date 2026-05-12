@@ -1,7 +1,6 @@
 package app.morphe.extension.youtube.patches.spoof;
 
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_CREATOR;
-import static app.morphe.extension.shared.spoof.ClientType.ANDROID_REEL;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_64;
 import static app.morphe.extension.shared.spoof.ClientType.ANDROID_VR_1_65;
 import static app.morphe.extension.shared.spoof.ClientType.TV;
@@ -43,9 +42,9 @@ public class SpoofVideoStreamsPatch {
             client = ANDROID_VR_1_65;
         }
 
-        // For some users No SDK can fail at 1 minute. Only use it if the user has explicitly set it.
+        // Reels can take up to 1 minute for videos start playback.
+        // Only use it if the user has selected it.
         List<ClientType> availableClients = List.of(
-                ANDROID_REEL,
                 TV,
                 ANDROID_VR_1_64,
                 VISIONOS,

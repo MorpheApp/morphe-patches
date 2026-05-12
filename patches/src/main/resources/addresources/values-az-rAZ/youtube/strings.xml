@@ -73,6 +73,9 @@ Dəyişikliklər ehtiva edir:
   <string name="morphe_hide_artist_cards_title">Sənətçi kartlarını gizlət</string>
   <string name="morphe_hide_artist_cards_summary_on">Sənətçi kartları gizlidir</string>
   <string name="morphe_hide_artist_cards_summary_off">Sənətçi kartları göstərilir</string>
+  <string name="morphe_hide_auto_dubbed_label_title">\'Avtomatik dublyaj\' etiketini gizlət</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_on">Avtomatik dublyaj edilib etiketi gizlədilib</string>
+  <string name="morphe_hide_auto_dubbed_label_summary_off">Avtomatik dublyaj edilib etiketi görünür</string>
   <string name="morphe_hide_community_posts_title">İcma elanların gizlət</string>
   <string name="morphe_hide_community_posts_summary_on">İcma elanları gizlədilib</string>
   <string name="morphe_hide_community_posts_summary_off">İcma elanları göstərilir</string>
@@ -102,6 +105,9 @@ Dəyişikliklər ehtiva edir:
 • Alış-veriş
 • Yenidən izlə"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Üfüqi cərgələr görünür</string>
+  <string name="morphe_hide_hyped_label_title">Reklam olunub etiketin gizlət</string>
+  <string name="morphe_hide_hyped_label_summary_on">Reklam olunub etiketi gizlidir</string>
+  <string name="morphe_hide_hyped_label_summary_off">Reklam olunub etiketi görünür</string>
   <string name="morphe_hide_image_shelf_title">Şəkil cərgəsin gizlət</string>
   <string name="morphe_hide_image_shelf_summary_on">Şəkil cərgəsi axtarış nəticələrində gizlidir</string>
   <string name="morphe_hide_image_shelf_summary_off">Şəkil cərgəsi axtarış nəticələrində görünür</string>
@@ -212,6 +218,9 @@ YouTube Doodles görünməsi xüsusi sərlövhələrin göstərilməsinə mane o
   <string name="morphe_hide_chapters_section_title">Fəsilləri Gizlət</string>
   <string name="morphe_hide_chapters_section_summary_on">Bölümlər bölməsi gizlidir</string>
   <string name="morphe_hide_chapters_section_summary_off">Bölümlər bölməsi göstərilir</string>
+  <string name="morphe_hide_corrections_section_title">Düzəlişləri Gizlət</string>
+  <string name="morphe_hide_corrections_section_summary_on">Düzəlişlər bölməsi gizlidir</string>
+  <string name="morphe_hide_corrections_section_summary_off">Düzəlişlər bölməsi görünür</string>
   <string name="morphe_hide_course_progress_section_title">\"Kurs irəliləyişin\"-i Gizlət</string>
   <string name="morphe_hide_course_progress_section_summary_on">Kurs irəliləyiş bölməsi gizlidir</string>
   <string name="morphe_hide_course_progress_section_summary_off">Kurs irəliləyiş bölməsi görünür</string>
@@ -265,6 +274,9 @@ YouTube Doodles görünməsi xüsusi sərlövhələrin göstərilməsinə mane o
   <string name="morphe_hide_transcript_section_title">Transkript-i Gizlət</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkripsiya bölməsi gizlidir</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkripsiya bölməsi göstərilir</string>
+  <string name="morphe_hide_video_details_section_title">\"Video detallarını\" Gizlət</string>
+  <string name="morphe_hide_video_details_section_summary_on">Video detalları bölməsi gizlidir</string>
+  <string name="morphe_hide_video_details_section_summary_off">Video detalları bölməsi görünür</string>
   <string name="morphe_hide_filter_bar_screen_title">Filtr çubuğu</string>
   <string name="morphe_hide_filter_bar_screen_summary">Axınlar, əlaqəli videolar, axtarış nəticələri və baxış tarixçəsində filtr cərgəsin gizlət və ya göstər</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Axınlarda gizlət</string>
@@ -510,16 +522,44 @@ Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
 
 Məlumat: Canlı yayımlarda işləməyə bilər"</string>
   <string name="morphe_play_all_button_summary_off">\"Hamısın oynat\" düyməsi görünmür</string>
+  <string name="morphe_play_all_button_type_title">Pleylist yaratma rejimi</string>
+  <string name="morphe_play_all_button_type_entry_0">Bütün məzmunlar (Vaxta görə çeşidlə, Artan)</string>
+  <string name="morphe_play_all_button_type_entry_1">Bütün məzmunlar (Vaxta görə çeşidlə)</string>
+  <string name="morphe_play_all_button_type_entry_2">Bütün məzmunlar (Populyarlığa görə çeşidlə)</string>
+  <string name="morphe_play_all_button_type_entry_3">Yalnız videolar (Vaxta görə çeşidlə)</string>
+  <string name="morphe_play_all_button_type_entry_4">Yalnız videolar (Populyarlığa görə çeşidlə)</string>
+  <string name="morphe_play_all_button_type_entry_5">Yalnız Shorts (Vaxta görə çeşidlə)</string>
+  <string name="morphe_play_all_button_type_entry_6">Yalnız Shorts (Populyarlığa görə çeşidlə)</string>
+  <string name="morphe_play_all_button_type_entry_7">Yalnız yayımlanan videolar (Vaxta görə çeşidlə)</string>
+  <string name="morphe_play_all_button_type_entry_8">Yalnız yayımlanan videolar (Populyarlığa görə çeşidlə)</string>
+  <string name="morphe_play_all_button_type_entry_9">Bütün üzvlərə xüsusi məzmunlar</string>
+  <string name="morphe_play_all_button_type_entry_10">Üzvlərə məxsus videolar</string>
+  <string name="morphe_play_all_button_type_entry_11">Üzvlərə məxsus Shorts</string>
+  <string name="morphe_play_all_button_type_entry_12">Üzvlərə məxsus canlı yayımlar</string>
+  <string name="morphe_play_all_button_not_available_toast">Kanal ID uyuşmazlığına görə pleylist yaratmaq olmur</string>
   <!-- interaction.reload.reloadVideoPatch -->
+  <string name="morphe_reload_video_button_title">Videonu Təkrar Yüklə-ni göstər</string>
   <string name="morphe_reload_video_button_summary_on">Videonu təkrar yüklə düyməsi görünür</string>
   <string name="morphe_reload_video_button_summary_off">Videonu təkrar yüklə düyməsi görünmür</string>
+  <string name="morphe_dismiss_player_not_available_toast">Video ID-si əlçatmazdır. Xahiş olunur, videonu əl ilə təkrar yüklə</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Daha sonra izləmək üçün Saxla-nı Göstər</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Daha sonra izləmək üçün saxla düyməsi görünür</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Daha sonra izləmək üçün saxla düyməsi görünmür</string>
+  <string name="morphe_save_to_watch_later_success_toast">Video uğurla sonra izləyin pleylistində saxlanıldı</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Bu video artıq sonra izləyin pleylistində saxlanılıb</string>
+  <string name="morphe_save_to_watch_later_error_toast">Bu videonu sonra izləyin pleylistində saxlamaq olmur</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dəqiq axtarış jestini qapadın</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Jest qeyri-aktiv edilib</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_off">Jest aktivləşdirilib</string>
   <!-- interaction.seekbar.livestreamDvrPatch -->
+  <string name="morphe_livestream_dvr_title">Canlı yayım DVR-ni aktivləşdir</string>
+  <string name="morphe_livestream_dvr_summary_on">Axtarış bütün canlı yayımlarda icazə veriləndir</string>
+  <string name="morphe_livestream_dvr_summary_off">Axtarış canlı yayımlarda əlçatan olmaya bilər</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_livestream_dvr_user_dialog_message">\"Video yayımları saxtalaşdır\" işlək deyilsə, bunu aktivləşdirmə gözlənilməz canlı yayım axtarış hərəkətinə səbəb ola bilər.</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">Axtarmaq üçün sürüşdürməni aktiv et</string>
   <string name="morphe_slide_to_seek_summary_on">Axtarmaq üçün sürüşdürmə aktivdir</string>
@@ -581,9 +621,14 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_swipe_change_video_summary_off">Tam ekran rejimində sürüşdürmə növbəti/əvvəlki videoya ötürməyəcək</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_action_buttons_screen_title">Fəaliyyət düymələri</string>
+  <string name="morphe_action_buttons_screen_summary">Tam ekranda və portretdə fəaliyyət düymələrini gizlət və ya göstər</string>
+  <string name="morphe_portrait_buttons">Portret düymələri</string>
   <string name="morphe_disable_like_subscribe_glow_title">Bəyən və Abunə Ol parıltısını söndür</string>
   <string name="morphe_disable_like_subscribe_glow_summary_on">Bəyən və Abunə ol düyməsinə toxunanda parlamayacaq</string>
   <string name="morphe_disable_like_subscribe_glow_summary_off">Bəyən və Abunə ol düyməsinə toxunanda parlayacaq</string>
+  <string name="morphe_hide_action_bar_title">Fəaliyyət tabelin gizlət</string>
+  <string name="morphe_hide_action_bar_summary_on">Fəaliyyət tabeli gizlidir</string>
+  <string name="morphe_hide_action_bar_summary_off">Fəaliyyət tabeli görünür</string>
   <string name="morphe_hide_like_dislike_button_title">\"Bəyənmə\" və \"Bəyənməmə\"ni gizlət</string>
   <string name="morphe_hide_like_dislike_button_summary_on">Bəyənmə və Bəyənməmə düymələri gizlidir</string>
   <string name="morphe_hide_like_dislike_button_summary_off">Bəyənmə və Bəyənməmə düymələri göstərilir</string>
@@ -643,16 +688,37 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_save_button_title">Saxlayın-ı Gizlət</string>
   <string name="morphe_hide_save_button_summary_on">Saxlayın düyməsi gizlidir</string>
   <string name="morphe_hide_save_button_summary_off">Saxlayın düyməsi görünür</string>
+  <string name="morphe_fullscreen_buttons">Tam ekran düymələri</string>
+  <string name="morphe_hide_quick_actions_title">Fəaliyyət tabelin gizlət</string>
+  <string name="morphe_hide_quick_actions_summary_on">Fəaliyyət tabeli gizlidir</string>
+  <string name="morphe_hide_quick_actions_summary_off">Fəaliyyət tabeli görünür</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Soruş\'u Gizlət</string>
   <string name="morphe_hide_quick_actions_ask_button_summary_on">Soruş düyməsi gizlidir</string>
   <string name="morphe_hide_quick_actions_ask_button_summary_off">\"Soruş\" düyməsi göstərilir</string>
   <string name="morphe_hide_quick_actions_comments_button_title">Şərhləri Gizlət</string>
   <string name="morphe_hide_quick_actions_comments_button_summary_on">Şərhlər düyməsi gizlidir</string>
   <string name="morphe_hide_quick_actions_comments_button_summary_off">Şərhlər düyməsi göstərilir</string>
+  <string name="morphe_hide_quick_actions_dislike_button_title">Bəyənməməni Gizlət</string>
   <string name="morphe_hide_quick_actions_dislike_button_summary_on">Bəyənməmə düyməsi gizlidir</string>
   <string name="morphe_hide_quick_actions_dislike_button_summary_off">Bəyənməmə düyməsi göstərilir</string>
+  <string name="morphe_hide_quick_actions_like_button_title">Bəyənməni Gizlət</string>
   <string name="morphe_hide_quick_actions_like_button_summary_on">Bəyənmə düyməsi gizlidir</string>
   <string name="morphe_hide_quick_actions_like_button_summary_off">Bəyənmə düyməsi göstərilir</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_title">\"Canlı söhbəti\" Gizlət</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_on">Canlı söhbət düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_live_chat_button_summary_off">Canlı söhbət düyməsi görünür</string>
+  <string name="morphe_hide_quick_actions_mix_button_title">Miks-i Gizlət</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_on">Miks düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_mix_button_summary_off">Miks düyməsi görünür</string>
+  <string name="morphe_hide_quick_actions_more_button_title">Daha Çoxunu Gizlət</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_on">Daha çox düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_more_button_summary_off">Daha çox düyməsi görünür</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_title">\"Daha çox video\"-nu Gizlət</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_on">Daha çox video düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_more_videos_button_summary_off">Daha çox video düyməsi görünür</string>
+  <string name="morphe_hide_quick_actions_playlist_button_title">Pleylisti Gizlət</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_on">Pleylist düyməsi gizlidir</string>
+  <string name="morphe_hide_quick_actions_playlist_button_summary_off">Pleylist düyməsi görünür</string>
   <string name="morphe_hide_quick_actions_save_button_title">Saxlayın-ı Gizlət</string>
   <string name="morphe_hide_quick_actions_save_button_summary_on">Saxlayın düyməsi gizlidir</string>
   <string name="morphe_hide_quick_actions_save_button_summary_off">Saxlayın düyməsi görünür</string>
@@ -661,6 +727,7 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_quick_actions_share_button_summary_off">Paylaş düyməsi göstərilir</string>
   <!-- layout.captions.captionsPatch -->
   <string name="morphe_captions_screen_title">Titrlər</string>
+  <string name="morphe_captions_screen_summary">Mövcud birbaşa aktivləşdirilən titrləri və ya titr məlumatlarını yerləşdirməyi qapat</string>
   <!-- layout.captions.autoCaptionsPatch -->
   <string name="morphe_auto_captions_style_title">Avtomatik titrlərin görünüşü</string>
   <string name="morphe_auto_captions_style_entry_1">Sessiz və aktiv halda göstər</string>
@@ -670,6 +737,18 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_auto_captions_style_legacy_entry_1">Avtomatik titrləri göstər</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">Avtomatik titrləri gizlət</string>
   <!-- layout.captions.captionCookiesPatch -->
+  <string name="morphe_set_caption_cookies_title">Titr məlumatlarını yerləşdir</string>
+  <string name="morphe_set_caption_cookies_summary_on">Titr bazaları təmin olunubsa yerləşdirilir</string>
+  <string name="morphe_set_caption_cookies_summary_off">"Titr bazaları yerləşdirilməyib
+
+Avtomatik tərcümə olunan titrlər əlçatan olmaya bilər"</string>
+  <string name="morphe_caption_cookies_title">Titr bazaları</string>
+  <string name="morphe_caption_cookies_summary">Vaxtlı Mətn API sorğularında istifadə üçün bazalar</string>
+  <string name="morphe_get_caption_cookies_title">Titr məlumatların əldə et</string>
+  <string name="morphe_get_caption_cookies_summary">"Məlumatları əldə etmək üçün kliklə
+
+Onlar etibarlıdırsa, bazalar birbaşa saxlanılacaq"</string>
+  <string name="morphe_get_caption_cookies_failed">Məlumatları əldə etmək olmadı</string>
   <string name="morphe_get_caption_cookies_duplicate">Bazalar artıq var</string>
   <string name="morphe_get_caption_cookies_success">Bazalar uğurla yeniləndi</string>
   <!-- layout.captions.transcriptPatch -->
@@ -699,21 +778,45 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_notifications_button_title">Bildirişləri Gizlət</string>
   <string name="morphe_hide_notifications_button_summary_on">Bildirişlər düyməsi gizlidir</string>
   <string name="morphe_hide_notifications_button_summary_off">Bildirişlər düyməsi görünür</string>
+  <string name="morphe_show_search_button_title">Axtarış-ı Göstər</string>
   <string name="morphe_show_search_button_summary_on">Axtarış düyməsi görünür</string>
+  <string name="morphe_show_search_button_summary_off">Axtarış düyməsi görünmür</string>
+  <string name="morphe_show_search_button_index_title">Axtarış düyməsi göstərici</string>
+  <string name="morphe_show_settings_button_title">Ayarları Göstər</string>
+  <string name="morphe_show_settings_button_summary_on">Ayarlar düyməsi görünür</string>
+  <string name="morphe_show_settings_button_summary_off">Ayarlar düyməsi görünmür</string>
+  <string name="morphe_show_settings_button_index_title">Ayarlar düyməsi göstəricisi</string>
+  <string name="morphe_show_settings_button_type_title">Ayarlar düyməsi fəaliyyəti</string>
+  <string name="morphe_show_settings_button_type_summary_on">Morphe tənzimləmələrin açmaq üçün toxun</string>
+  <string name="morphe_show_settings_button_type_summary_off">YouTube tənzimləmələrin açmaq üçün toxun</string>
+  <string name="morphe_swap_create_with_notifications_button_title">Yarat-ı Bildirişlər ilə əvəzlə</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_on">Yarat düyməsi Bildirişlər düyməsi ilə əvəzlənir</string>
+  <string name="morphe_swap_create_with_notifications_button_summary_off">Yarat düyməsi Bildirişlər düyməsi ilə əvəzlənmir</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">Əgər bu parametri dəyişdirmə effektiv deyil olsa, Gizli Modda sınamaq cəhd edin.</string>
   <string name="morphe_hide_navigation_button_labels_title">Fəaliyyət düymə etiketlərini gizlət</string>
+  <string name="morphe_hide_navigation_button_labels_summary_on">Fəaliyyət düyməsi etiketləri gizlidir</string>
+  <string name="morphe_hide_navigation_button_labels_summary_off">Fəaliyyət düyməsi etiketləri görünür</string>
   <string name="morphe_hide_navigation_bar_title">Fəaliyyət çubuğunu gizlət</string>
   <string name="morphe_hide_navigation_bar_summary_on">Fəaliyyət çubuğu gizlidir</string>
   <string name="morphe_hide_navigation_bar_summary_off">Fəaliyyət çubuğu göstərilir</string>
+  <string name="morphe_hide_navigation_bar_user_dialog_message">"Bu, \"Siz\" tabeli də daxil olmaqla fəaliyyət cərgəsin tamamilə gizlədir.
+
+Tənzimləmələrə daxil olmaq üçün Ümumi → Alətlər Cərgəsi→ Tənzimləmələri Göstər vasitəsilə Tənzimləmələr düyməsini aktivləşdir."</string>
   <string name="morphe_narrow_navigation_buttons_title">Nəzarət düymələri ucqar olsun</string>
   <string name="morphe_narrow_navigation_buttons_summary_on">Nəzarət düymələri arasında boşluq ucqardır</string>
   <string name="morphe_narrow_navigation_buttons_summary_off">Nəzarət düymələri arasında boşluq normaldır</string>
   <string name="morphe_navigation_bar_animations_title">Naviqasiya paneli animasiyalarını aktivləşdirin</string>
   <string name="morphe_navigation_bar_animations_summary_on">Naviqasiya keçidləri animasiyalıdır</string>
   <string name="morphe_navigation_bar_animations_summary_off">Naviqasiya keçidləri animasiyalı deyil</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_title">Fəaliyyət cərgəsin avtomatik gizlətməsini qapat</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_on">Fəaliyyət cərgəsi sürüşdürərkən gizlənməyəcək</string>
+  <string name="morphe_disable_auto_hide_navigation_bar_summary_off">Fəaliyyət cərgəsi sürüşdürərkən gizlənəcək</string>
   <string name="morphe_disable_translucent_status_bar_title">Yarımşəffaf mövqe cizgisin qapat</string>
   <string name="morphe_disable_translucent_status_bar_summary_on">Mövqe cizgisi qeyri-şəffafdır</string>
   <string name="morphe_disable_translucent_status_bar_summary_off">Mövqe cizgisi qeyri-şəffaf və ya şəffafdır</string>
+  <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Məhdudiyyətlər: 
+• Video oynadıcının yuxarısında qara zolaq görünə bilər.
+• Sistem fəaliyyət cərgəsi şəffaf olaraq dəyişə bilər və videolarda şərh mümkün deyil."</string>
   <string name="morphe_disable_translucent_navigation_bar_light_title">Açıq temada şəffaf cizgini qapat</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_on">İşıqlı rejim fəaliyyət cərgəsi qeyri-şəffafdır</string>
   <string name="morphe_disable_translucent_navigation_bar_light_summary_off">İşıqlı rejim fəaliyyət cərgəsi qeyri-şəffaf və ya şəffafdır</string>
@@ -721,6 +824,8 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_on">Qaranlıq rejimdə fəaliyyət cərgəsi qeyri-şəffafdır</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary_off">Qaranlıq rejim fəaliyyət cərgəsi qeyri-şəffaf və ya şəffafdır</string>
   <string name="morphe_toolbar_screen_title">Alətlər çubuğu</string>
+  <string name="morphe_toolbar_screen_summary">Alət cərgəsi elementlərini gizlət və ya göstər</string>
+  <string name="morphe_hide_toolbar_cast_button_title">Yayımlama-nı Gizlət</string>
   <string name="morphe_hide_toolbar_cast_button_summary_on">Yayım düyməsi gizlidir</string>
   <string name="morphe_hide_toolbar_cast_button_summary_off">Yayım düyməsi görünür</string>
   <string name="morphe_hide_toolbar_create_button_title">\"Yarat\"ı gizlət</string>
@@ -731,6 +836,11 @@ Ekranın sağ tərəfində düzünə sürüşdürərək səs səviyyəsini tənz
   <string name="morphe_hide_toolbar_notification_button_summary_off">Bildirişlər düyməsi görünür</string>
   <string name="morphe_hide_toolbar_search_button_summary_on">Axtarış düyməsi gizlidir</string>
   <string name="morphe_hide_toolbar_search_button_summary_off">Axtarış düyməsi görünür</string>
+  <string name="morphe_show_toolbar_settings_button_title">Ayarları Göstər</string>
+  <string name="morphe_show_toolbar_settings_button_summary_on">Ayarlar düyməsi görünür</string>
+  <string name="morphe_show_toolbar_settings_button_summary_off">Ayarlar düyməsi görünmür</string>
+  <string name="morphe_show_toolbar_settings_button_index_title">Ayarlar düyməsi göstəricisi</string>
+  <string name="morphe_show_toolbar_settings_button_type_title">Ayarlar düyməsi fəaliyyəti</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <string name="morphe_hide_player_flyout_title">Açılan menyu</string>
   <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
@@ -787,11 +897,15 @@ Səs treki menyusunu göstərmək üçün \"Video yayımları saxtalaşdır\"-ı
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_on">VR menyusunda izləmə gizlidir</string>
   <string name="morphe_hide_player_flyout_watch_in_vr_summary_off">VR menyusunda izləmə göstərilir</string>
   <!-- 'Quality' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="morphe_hide_player_flyout_quality_title">Keyfiyyəti Gizlət</string>
+  <string name="morphe_hide_player_flyout_quality_summary_on">Keyfiyyət menyusu gizlidir</string>
+  <string name="morphe_hide_player_flyout_quality_summary_off">Keyfiyyət menyusu görünür</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">Avtomatik önizləmə önizlənməsini gizlət</string>
   <string name="morphe_hide_autoplay_preview_summary_on">Avtomatik önizləmə önizlənməsi gizlidir</string>
   <string name="morphe_hide_autoplay_preview_summary_off">Avtomatik önizləmə önizlənməsi göstərilir</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
+  <string name="morphe_hide_autoplay_button_title">Avtomatik Oynatmanı Gizlət</string>
   <string name="morphe_hide_autoplay_button_summary_on">Avtomatik oynatma düyməsi gizlidir</string>
   <string name="morphe_hide_autoplay_button_summary_off">Avtomatik oynatma düyməsi göstərilir</string>
   <!-- This button does not display any text, but 'Captions' should match the language used in 'morphe_hide_player_flyout_captions_title'. -->
@@ -1495,6 +1609,7 @@ Məhdudiyyətlər:
 • HDR videoları AVC istifadə etməyəcək
 • Bəzi cihazlar AVC-ni zorlaya bilməz"</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_avc_codec_not_available">Bu xüsusiyyəti istifadə etmək üçün \"Video yayımların saxtalaşdır\"-ı Android VR-a və ya Android Studio-ya dəyişdir</string>
   <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- video.quality.advancedVideoQualityMenuPatch -->

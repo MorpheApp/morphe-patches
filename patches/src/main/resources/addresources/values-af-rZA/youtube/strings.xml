@@ -386,10 +386,16 @@ Die vertoon van YouTube Doodles kan verhoed dat pasgemaakte headers vertoon word
   <string name="morphe_hide_view_count_summary_on">Bekykingsaantal is versteek in feed en soekresultate</string>
   <string name="morphe_hide_view_count_summary_off">Bekykingsaantal is vertoon in feed en soekresultate</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
+  <string name="morphe_hide_view_count_user_dialog_message">"Beperkings:
+• Kort skuilplanke, kanaalblaaie en soekresultate kan steeds besigtellingsaantalle vertoon.
+• Hierdie funksie werk nie met motorvormfaktor nie."</string>
   <string name="morphe_hide_upload_time_title">Verberg opylaaibody</string>
   <string name="morphe_hide_upload_time_summary_on">Opylaaibody is versteek in feed en soekresultate</string>
   <string name="morphe_hide_upload_time_summary_off">Opylaaibody is vertoon in feed en soekresultate</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
+  <string name="morphe_hide_upload_time_user_dialog_message">"Beperkings:
+• Kort skuilplanke, kanaalblaaie en soekresultate kan steeds oplaai-tye vertoon.
+• Hierdie funksie werk nie met motorvormfaktor nie."</string>
   <string name="morphe_hide_keyword_content_screen_title">Sleutelwoord filter</string>
   <string name="morphe_hide_keyword_content_screen_summary">Verberg feed en soekvideo\'s met sleutelwoordfilters</string>
   <string name="morphe_hide_keyword_content_home_title">Verberg Tuisfideo\'s met sleutelwoorde</string>
@@ -543,6 +549,11 @@ Info: Mag nie werk op livestreams nie"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video is suksesvol in spaar om later te kyk snitlys gestoor</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Hierdie video is reeds in spaar om later te kyk snitlys gestoor</string>
   <string name="morphe_save_to_watch_later_error_toast">Kan hierdie video nie in spaar om later te kyk snitlys stoor nie</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Maak kanaal van lewende avatar oop</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Lewende avatar sal kanaal oopmaak</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Lewende avatar sal lewendige video oopmaak</string>
+  <string name="morphe_live_ring_description">Tik om lewendig te kyk</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Skakel presiese soek gebaar af</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Presiese soek gebaar is afgeskakel</string>

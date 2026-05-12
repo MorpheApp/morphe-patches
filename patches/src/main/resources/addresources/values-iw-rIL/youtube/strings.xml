@@ -73,6 +73,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_artist_cards_title">הסתר כרטיסי אמן</string>
   <string name="morphe_hide_artist_cards_summary_on">כרטיסי אמן מוסתרים</string>
   <string name="morphe_hide_artist_cards_summary_off">כרטיסי אמן מוצגים</string>
+  <string name="morphe_hide_auto_dubbed_label_title">הסתר תווית \'דיבוב אוטומטי\'</string>
   <string name="morphe_hide_auto_dubbed_label_summary_on">תווית דיבוב אוטומטי מוסתרת</string>
   <string name="morphe_hide_auto_dubbed_label_summary_off">תווית דיבוב אוטומטי מוצגת</string>
   <string name="morphe_hide_community_posts_title">הסתר פוסטים קהילתיים</string>
@@ -548,6 +549,11 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_success_toast">הסרטון נשמר בהצלחה בפלייליסט \'צפייה מאוחרת\'</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">הסרטון הזה כבר שמור בפלייליסט \'צפייה מאוחרת\'</string>
   <string name="morphe_save_to_watch_later_error_toast">לא ניתן לשמור סרטון זה בפלייליסט \'צפייה מאוחרת\'.</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">פתח ערוץ של אווטאר חי</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">אווטאר חי יפתח ערוץ</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">אווטאר חי יפתח וידאו חי</string>
+  <string name="morphe_live_ring_description">הקש לצפייה בשידור חי</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">השבת מחוות דילוג מדויקת</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">מחווה מושבתת</string>

@@ -551,6 +551,11 @@ Info: Funktioniert möglicherweise nicht bei Live-Streams"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video erfolgreich zur Wiedergabeliste \"Später ansehen\" hinzugefügt</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Dieses Video ist bereits zur Wiedergabeliste \"Später ansehen\" hinzugefügt</string>
   <string name="morphe_save_to_watch_later_error_toast">Dieses Video kann nicht zur Wiedergabeliste \"Später ansehen\" hinzugefügt werden</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Öffne den Kanal des Live Avatars </string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Live-Avatar öffnet Kanal</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Live-Avatar öffnet Live-Video</string>
+  <string name="morphe_live_ring_description">Tippen zum Ansehen des Livestreams</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Genaue Suchgeste deaktivieren</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Geste ist deaktiviert</string>

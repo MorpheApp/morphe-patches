@@ -548,6 +548,11 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video berhasil disimpan di daftar tonton nanti</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Video ini sudah disimpan di daftar tonton nanti</string>
   <string name="morphe_save_to_watch_later_error_toast">Tidak dapat menyimpan video ini di daftar tonton nanti</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Buka saluran avatar langsung</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Avatar langsung akan membuka saluran</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Avatar langsung akan membuka video langsung</string>
+  <string name="morphe_live_ring_description">Ketuk untuk menonton langsung</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Nonaktifkan gerakan pencarian presisi</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gerakan pencarian yang presisi dinonaktifkan</string>

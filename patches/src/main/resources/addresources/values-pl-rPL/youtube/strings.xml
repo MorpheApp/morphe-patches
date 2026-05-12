@@ -549,6 +549,11 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_save_to_watch_later_success_toast">Zapisano na liście \"Do obejrzenia\"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Film jest już na liście \"Do obejrzenia\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Nie udało się zapisać na liście \"Do obejrzenia\"</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Kliknięcie awatara z transmisją</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Otwiera profil kanału</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Otwiera transmisję na żywo</string>
+  <string name="morphe_live_ring_description">Stuknij, aby obejrzeć transmisję na żywo</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Gest precyzyjnego przewijania</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Wyłączony</string>
@@ -1026,7 +1031,7 @@ Aby wyświetlić menu ścieżki dźwiękowej, zmień \"Fałszowanie strumieni fi
   <string name="morphe_hide_shorts_effect_button_title">Przycisk Efekt</string>
   <string name="morphe_hide_shorts_effect_button_summary_on">Ukryty</string>
   <string name="morphe_hide_shorts_effect_button_summary_off">Widoczny</string>
-  <string name="morphe_hide_shorts_green_screen_button_title">Przycisk \"Zielony ekran\"</string>
+  <string name="morphe_hide_shorts_green_screen_button_title">Przycisk \"Zielone tło\"</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_on">Ukryty</string>
   <string name="morphe_hide_shorts_green_screen_button_summary_off">Widoczny</string>
   <string name="morphe_hide_shorts_hashtag_button_title">Przycisk Hashtag</string>

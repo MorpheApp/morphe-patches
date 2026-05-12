@@ -549,6 +549,11 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_success_toast">Відео збережено у списку відтворення \"Подивитися пізніше\"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Це відео вже збережено у списку відтворення \"Подивитися пізніше\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Не вдалося зберегти це відео у списку відтворення \"Подивитися пізніше\"</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Відкривати канал замість трансляції</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Натискання на аватар трансляції відкриватиме канал</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Натискання на аватар трансляції відкриватиме  пряму трансляцію</string>
+  <string name="morphe_live_ring_description">Натисніть, аби переглянути трансляцію</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Вимкнути жест точного перемотування</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Жест для точного покадрового перемотування вимкнено</string>

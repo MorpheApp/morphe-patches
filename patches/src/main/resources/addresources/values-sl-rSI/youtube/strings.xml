@@ -549,6 +549,11 @@ Opozorilo: Morda ne deluje v prenosih v živo"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video je uspešno shranjen na seznam za kasnejši ogled</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Ta video je že shranjen na seznam za kasnejši ogled</string>
   <string name="morphe_save_to_watch_later_error_toast">Težava pri shranjevanju videoposnetka na seznam za kasnejši ogled</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Odprite kanal za prenos v živo avatarja</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Avatar v živo bo odprl kanal</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Avatar v živo bo odprl video v živo</string>
+  <string name="morphe_live_ring_description">Tapnite za ogled v živo</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Onemogoči natančen premik z gesto</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Natančen premik z gesto je onemogočen</string>

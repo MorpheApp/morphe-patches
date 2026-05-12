@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Sessionskontroll</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Tryck länge på knappen Shuffla för att pausa eller återuppta övertoningar"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Sessionskontroll är inaktiverad</string>
+  <string name="morphe_music_crossfade_paused_toast">Övertoningar pausades för den här sessionen</string>
+  <string name="morphe_music_crossfade_resumed_toast">Övertoningar återupptogs</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Videoläge är inte tillgängligt när övertoningar är aktiverade</string>
   <string name="morphe_music_crossfade_about_title">Om</string>
   <string name="morphe_music_crossfade_about_summary">"Övertoningar är tillgängliga med YouTube Music 8.x
 

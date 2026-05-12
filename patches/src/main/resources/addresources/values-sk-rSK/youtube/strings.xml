@@ -549,6 +549,11 @@ Info: Môže nefungovať v živých prenosoch"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video bolo úspešne uložené do zoznamu Sledovať neskôr</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Toto video je už uložené v zozname Sledovať neskôr</string>
   <string name="morphe_save_to_watch_later_error_toast">Toto video sa nedá uložiť do zoznamu Sledovať neskôr</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Otvoriť kanál živého avatara</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Živý avatar otvorí kanál</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Živý avatar otvorí live video</string>
+  <string name="morphe_live_ring_description">Ťuknite a sledujte live prenos</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Zakázať presné gesto posúvania</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Presné gesto posúvania je zakázané</string>

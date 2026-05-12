@@ -549,6 +549,11 @@ YouTube Doodles দেখানো কাস্টম হেডার প্র�
   <string name="morphe_save_to_watch_later_success_toast">ভিডিওটি সফলভাবে পরে দেখার প্লেলিস্টে সেভ করা হয়েছে</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">এই ভিডিওটি ইতিমধ্যেই পরে দেখার প্লেলিস্টে সেভ করা আছে</string>
   <string name="morphe_save_to_watch_later_error_toast">এই ভিডিওটি পরে দেখার প্লেলিস্টে সেভ করা যায়নি</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">লাইভ অবতার-এর চ্যানেল খুলুন</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">লাইভ অবতার চ্যানেল খুলবে</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">লাইভ অবতার লাইভ ভিডিও খুলবে</string>
+  <string name="morphe_live_ring_description">লাইভ দেখার জন্য ট্যাপ করুন</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">ভিডিওর নির্দিষ্ট অংশে যাওয়ার অঙ্গভঙ্গি নিষ্ক্রিয় করুন</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">অঙ্গভঙ্গি নিষ্ক্রিয় করা হয়েছে</string>

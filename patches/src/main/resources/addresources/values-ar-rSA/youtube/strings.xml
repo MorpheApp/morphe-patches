@@ -541,12 +541,17 @@ Second \"item\" text"</string>
   <string name="morphe_reload_video_button_summary_off">لا يتم عرض زر إعادة تحميل الفيديو</string>
   <string name="morphe_dismiss_player_not_available_toast">معرف الفيديو غير متاح. يرجى إعادة تحميل الفيديو يدويًا</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
-  <string name="morphe_save_to_watch_later_button_title">عرض الحفظ لمشاهدته لاحقًا</string>
-  <string name="morphe_save_to_watch_later_button_summary_on">يتم عرض زر الحفظ لمشاهدته لاحقًا</string>
-  <string name="morphe_save_to_watch_later_button_summary_off">لا يتم عرض زر الحفظ لمشاهدته لاحقًا</string>
+  <string name="morphe_save_to_watch_later_button_title">عرض الحفظ في المشاهدة لاحقًا</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">يتم عرض زر الحفظ في المشاهدة لاحقًا</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">لا يتم عرض زر الحفظ في المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_success_toast">تم حفظ الفيديو بنجاح في قائمة المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">هذا الفيديو محفوظ بالفعل في قائمة المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_error_toast">لا يمكن حفظ هذا الفيديو في قائمة المشاهدة لاحقًا</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">فتح القناة عبر الصورة الرمزية المباشرة</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">الصورة الرمزية المباشرة تفتح القناة</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">الصورة الرمزية المباشرة تفتح الفيديو المباشر</string>
+  <string name="morphe_live_ring_description">اضغط لمشاهدة البث المباشر</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">تعطيل التحكّم الدقيق بالتمرير</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">تم تعطيل التحكّم الدقيق بالتمرير</string>
@@ -1035,9 +1040,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shorts_join_button_title">إخفاء زر الانضمام</string>
   <string name="morphe_hide_shorts_join_button_summary_on">تم إخفاء زر الانضمام</string>
   <string name="morphe_hide_shorts_join_button_summary_off">يتم عرض زر الانضمام</string>
-  <string name="morphe_hide_shorts_live_preview_title">إخفاء عرض البث المباشر</string>
-  <string name="morphe_hide_shorts_live_preview_summary_on">تم إخفاء عرض البث المباشر</string>
-  <string name="morphe_hide_shorts_live_preview_summary_off">يتم إظهار عرض البث المباشر</string>
+  <string name="morphe_hide_shorts_live_preview_title">إخفاء مشاهدة البث المباشر</string>
+  <string name="morphe_hide_shorts_live_preview_summary_on">تم إخفاء مشاهدة البث المباشر</string>
+  <string name="morphe_hide_shorts_live_preview_summary_off">يتم عرض مشاهدة البث المباشر</string>
   <string name="morphe_hide_shorts_location_label_title">إخفاء تسمية الموقع</string>
   <string name="morphe_hide_shorts_location_label_summary_on">تم إخفاء تسمية الموقع</string>
   <string name="morphe_hide_shorts_location_label_summary_off">يتم عرض تسمية الموقع</string>

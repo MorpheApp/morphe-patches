@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.27.0-dev.3](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.27.0-dev.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;112 patches total
+> **[v1.27.0](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.27.0)**&nbsp;&nbsp;•&nbsp;&nbsp;`main`&nbsp;&nbsp;•&nbsp;&nbsp;113 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;68 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;69 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -93,6 +93,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Miniplayer](#miniplayer) | Adds options to change the in-app minimized player. |  |
 | [Navigation bar](#navigation-bar) | Adds options to hide and change the bottom navigation bar (such as the Shorts button)  and the upper navigation toolbar. Patching version 20.21.37 and lower also adds a setting to use a wide searchbar. |  |
 | [Open Shorts in regular player](#open-shorts-in-regular-player) | Adds options to open Shorts in the regular video player. |  |
+| [Open channel of live avatar](#open-channel-of-live-avatar) | Adds an option to prevent a channel's current live video from opening when tapping its avatar. |  |
 | [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app browser. |  |
 | [Open system share sheet](#open-system-share-sheet) | Adds an option to always open the system share sheet instead of the in-app share sheet. |  |
 | [Open videos fullscreen](#open-videos-fullscreen) | Adds an option to open videos in full screen portrait mode. |  |

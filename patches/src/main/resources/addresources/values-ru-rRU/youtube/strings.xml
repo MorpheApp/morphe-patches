@@ -552,6 +552,11 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_success_toast">Видео успешно сохранено в плейлист \"Смотреть позже\"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Это видео уже сохранено в плейлист \"Смотреть позже\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Не удалось сохранить это видео в плейлист \"Смотреть позже\"</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Открыть канал живого аватара</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Живой аватар откроет канал</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Живой аватар откроет прямую трансляцию</string>
+  <string name="morphe_live_ring_description">Нажмите, чтобы посмотреть прямую трансляцию</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Отключить жест покадровой перемотки</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Жест покадровой перемотки отключен</string>

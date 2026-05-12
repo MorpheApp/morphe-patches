@@ -548,6 +548,11 @@ Informação: Pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_save_to_watch_later_success_toast">Vídeo salvo com sucesso na playlist Assistir mais tarde</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Este vídeo já está salvo na playlist Assistir mais tarde</string>
   <string name="morphe_save_to_watch_later_error_toast">Não foi possível salvar este vídeo na playlist Assistir mais tarde</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Abrir canal do avatar ao vivo</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">O avatar ao vivo abrirá o canal</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">O avatar ao vivo abrirá o vídeo ao vivo</string>
+  <string name="morphe_live_ring_description">Toque para assistir ao vivo</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Desativar gesto de busca precisa</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesto desativado</string>

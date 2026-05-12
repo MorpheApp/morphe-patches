@@ -584,6 +584,12 @@ Info: May not work on live streams"</string>
     <string name="morphe_save_to_watch_later_already_exists_toast">This video is already saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_error_toast">Cannot save this video in watch later playlist</string>
 
+    <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+    <string name="morphe_open_channel_of_live_avatar_title">Open channel of live avatar</string>
+    <string name="morphe_open_channel_of_live_avatar_summary_on">Live avatar will open channel</string>
+    <string name="morphe_open_channel_of_live_avatar_summary_off">Live avatar will open live video</string>
+    <string name="morphe_live_ring_description">Tap to watch live</string>
+
     <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
     <string name="morphe_disable_precise_seeking_gesture_title">Disable precise seeking gesture</string>
     <string name="morphe_disable_precise_seeking_gesture_summary_on">Precise seeking gesture is disabled</string>

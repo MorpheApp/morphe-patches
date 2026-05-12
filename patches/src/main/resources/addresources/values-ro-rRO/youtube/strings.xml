@@ -73,6 +73,7 @@ Schimbari incluse:
   <string name="morphe_hide_artist_cards_title">Ascunde cărțile artistului</string>
   <string name="morphe_hide_artist_cards_summary_on">Cartonaşele artistice sunt ascunse</string>
   <string name="morphe_hide_artist_cards_summary_off">Cardurile artistului sunt afișate</string>
+  <string name="morphe_hide_auto_dubbed_label_title">Ascunde eticheta \"Dublat automat\"</string>
   <string name="morphe_hide_auto_dubbed_label_summary_on">Eticheta video dublată automat este ascunsă</string>
   <string name="morphe_hide_auto_dubbed_label_summary_off">Eticheta video dublată automat este afișată</string>
   <string name="morphe_hide_community_posts_title">Ascunde postările comunității</string>
@@ -544,6 +545,11 @@ Informații: este posibil să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video salvat cu succes în lista de vizionare ulterioară</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Acest video este deja salvat în lista de vizionare ulterioară</string>
   <string name="morphe_save_to_watch_later_error_toast">Nu se poate salva acest video în lista de vizionare ulterioară</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Deschide canalul avatarului live</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Avatarul live va deschide canalul</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Avatarul live va deschide video live</string>
+  <string name="morphe_live_ring_description">Atinge pentru a viziona live</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Dezactivează gestul de căutare precis</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gestul este dezactivat</string>

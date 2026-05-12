@@ -549,6 +549,11 @@ Información: Es posible que no funcione en los directos"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video guardado correctamente en la lista de reproducción Ver más tarde</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Este video ya está guardado en la lista de reproducción Ver más tarde</string>
   <string name="morphe_save_to_watch_later_error_toast">No se puede guardar este video en la lista de reproducción Ver más tarde</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Abrir canal del avatar en directo</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">El avatar en directo abrirá el canal</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">El avatar en directo abrirá el vídeo en directo</string>
+  <string name="morphe_live_ring_description">Pulsa para ver el directo</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Desactivar gesto de búsqueda precisa</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">El gesto de búsqueda precisa está desactivado</string>

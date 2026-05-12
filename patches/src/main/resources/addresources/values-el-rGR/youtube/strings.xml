@@ -549,6 +549,11 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_success_toast">Το βίντεο αποθηκεύτηκε επιτυχώς στη λίστα παρακολούθησης αργότερα</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Αυτό το βίντεο είναι ήδη αποθηκευμένο στη λίστα παρακολούθησης αργότερα</string>
   <string name="morphe_save_to_watch_later_error_toast">Δεν είναι δυνατή η αποθήκευση αυτού του βίντεο στη λίστα παρακολούθησης αργότερα</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Άνοιγμα καναλιού ζωντανού avatar</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Το ζωντανό avatar θα ανοίξει κανάλι</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Το ζωντανό avatar θα ανοίξει ζωντανό βίντεο</string>
+  <string name="morphe_live_ring_description">Πατήστε για να παρακολουθήσετε ζωντανά</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Απενεργοποίηση ακριβής αναζήτησης</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Η χειρονομία αναζήτησης καρέ-καρέ είναι απενεργοποιημένη</string>

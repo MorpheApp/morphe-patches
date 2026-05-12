@@ -105,6 +105,9 @@ Vissa layouter på serversidan kanske inte återställs.
 • Shopping
 • Titta igen"</string>
   <string name="morphe_hide_horizontal_shelves_summary_off">Horisontella hyllor visas</string>
+  <string name="morphe_hide_hyped_label_title">Dölj hajpetikett</string>
+  <string name="morphe_hide_hyped_label_summary_on">Hajpetikett är dold</string>
+  <string name="morphe_hide_hyped_label_summary_off">Hajpetikett visas</string>
   <string name="morphe_hide_image_shelf_title">Dölj bildhylla</string>
   <string name="morphe_hide_image_shelf_summary_on">Bildhylla i sökresultat är dold</string>
   <string name="morphe_hide_image_shelf_summary_off">Bildhylla i sökresultat visas</string>
@@ -215,6 +218,9 @@ Om YouTube-doodles visas kan det hindra anpassade sidhuvuden från att visas."</
   <string name="morphe_hide_chapters_section_title">Dölj Kapitel</string>
   <string name="morphe_hide_chapters_section_summary_on">Avsnittet Kapitel är dolt</string>
   <string name="morphe_hide_chapters_section_summary_off">Avsnittet Kapitel visas</string>
+  <string name="morphe_hide_corrections_section_title">Dölj Korrigeringar</string>
+  <string name="morphe_hide_corrections_section_summary_on">Avsnittet Korrigeringar är dolt</string>
+  <string name="morphe_hide_corrections_section_summary_off">Avsnittet Korrigeringar visas</string>
   <string name="morphe_hide_course_progress_section_title">Dölj Kursförlopp</string>
   <string name="morphe_hide_course_progress_section_summary_on">Avsnittet Kursförlopp är dolt</string>
   <string name="morphe_hide_course_progress_section_summary_off">Avsnittet Kursförlopp visas</string>
@@ -268,6 +274,9 @@ Om YouTube-doodles visas kan det hindra anpassade sidhuvuden från att visas."</
   <string name="morphe_hide_transcript_section_title">Dölj Manuskript</string>
   <string name="morphe_hide_transcript_section_summary_on">Avsnittet Manuskript är dolt</string>
   <string name="morphe_hide_transcript_section_summary_off">Avsnittet Manuskript visas</string>
+  <string name="morphe_hide_video_details_section_title">Dölj Videoinformation</string>
+  <string name="morphe_hide_video_details_section_summary_on">Avsnittet Videoinformation är dolt</string>
+  <string name="morphe_hide_video_details_section_summary_off">Avsnittet Videoinformation visas</string>
   <string name="morphe_hide_filter_bar_screen_title">Filterfält</string>
   <string name="morphe_hide_filter_bar_screen_summary">Dölj eller visa filterfältet i flödena, liknande videor, sökresultaten och visningshistoriken</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">Dölj i flöden</string>
@@ -534,6 +543,13 @@ Information: Kanske inte fungerar i livestreamar"</string>
   <string name="morphe_reload_video_button_summary_off">Knappen Läs in video igen visas inte</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-id:t är inte tillgängligt. Läs in videon igen manuellt</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
+  <string name="morphe_save_to_watch_later_button_title">Visa Spara i Titta senare</string>
+  <string name="morphe_save_to_watch_later_button_summary_on">Knappen Spara i Titta senare visas</string>
+  <string name="morphe_save_to_watch_later_button_summary_off">Knappen Spara i Titta senare visas inte</string>
+  <string name="morphe_save_to_watch_later_success_toast">Videon har sparats i spellistan Titta senare</string>
+  <string name="morphe_save_to_watch_later_already_exists_toast">Den här videon har redan sparats i spellistan Titta senare</string>
+  <string name="morphe_save_to_watch_later_error_toast">Det går inte att spara den här videon i spellistan Titta senare</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Inaktivera gest för exakt sökning</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Gesten är inaktiverad</string>

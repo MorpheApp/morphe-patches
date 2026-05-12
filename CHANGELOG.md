@@ -1,3 +1,51 @@
+# [1.27.0](https://github.com/MorpheApp/morphe-patches/compare/v1.26.0...v1.27.0) (2026-05-12)
+
+
+### Bug Fixes
+
+* Add patch exception message for users who ignore the Manager update prompt ([87beb32](https://github.com/MorpheApp/morphe-patches/commit/87beb32f10b05fd960e86cf393bbd14bba9460b5))
+* Add Reddit patch exception message for users who ignore the Manager update prompt ([875f10a](https://github.com/MorpheApp/morphe-patches/commit/875f10ab1bc502a73e271c407138511e37b90fba))
+* Add YouTube patch exception message for users who ignore the Manager update prompt ([296e137](https://github.com/MorpheApp/morphe-patches/commit/296e137e63f79493fedea773c1d415cc1da94064))
+* **Spoof video streams:** Change default client to Android VR ([cafec9c](https://github.com/MorpheApp/morphe-patches/commit/cafec9c61ec65740358777121172896ed7efdf18))
+* **YouTube - Save to watch later:** Support saving videos to 'brand' accounts, prevent opening live shorts from live avatar ([#1438](https://github.com/MorpheApp/morphe-patches/issues/1438)) ([0b12c81](https://github.com/MorpheApp/morphe-patches/commit/0b12c81793aac544f83aa36ee0c19c88cf81cbda))
+* **YouTube - Spoof video streams:** Resolve Shorts freezing and feed scrolling issues ([#1433](https://github.com/MorpheApp/morphe-patches/issues/1433)) ([85e0b0c](https://github.com/MorpheApp/morphe-patches/commit/85e0b0c08f465e067716d52c66af396f28b267b0))
+
+
+### Features
+
+* **Reddit:** Add experimental support for `2026.19.0` ([c4f6058](https://github.com/MorpheApp/morphe-patches/commit/c4f6058872a007624aaafc1456f46733ec6e2212))
+* **YouTube - Hide layout components:** Add "Hide Auto-dubbed label", "Hide Corrections section", "Hide Hyped label",  and "Hide Video details section" settings ([#1367](https://github.com/MorpheApp/morphe-patches/issues/1367)) ([43b79c6](https://github.com/MorpheApp/morphe-patches/commit/43b79c6b4679eb7bd5d9983aa4d4e3f8d2ffbb21))
+* **YouTube Music:** Add experimental support for `9.18.50` ([5a9ca78](https://github.com/MorpheApp/morphe-patches/commit/5a9ca78ed1354ec415592c63d532bf8d09fb3032))
+* **YouTube:** Add `Open channel of live avatar` patch ([#1408](https://github.com/MorpheApp/morphe-patches/issues/1408)) ([b221097](https://github.com/MorpheApp/morphe-patches/commit/b221097be8f1422f35f69b10d94775a2e245b01b))
+* **YouTube:** Add `Save to watch later` patch ([#1274](https://github.com/MorpheApp/morphe-patches/issues/1274)) ([45cea2c](https://github.com/MorpheApp/morphe-patches/commit/45cea2c860f7447d643c3c0af59d4517989c9306))
+* **YouTube:** Add experimental support for `21.19.280` ([d1c7ac7](https://github.com/MorpheApp/morphe-patches/commit/d1c7ac7b1580ddcc5a2e47211cfb572106b5ffce))
+
+# [1.27.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.27.0-dev.5...v1.27.0-dev.6) (2026-05-12)
+
+
+### Bug Fixes
+
+* **YouTube - Save to watch later:** Support saving videos to 'brand' accounts, prevent opening live shorts from live avatar ([#1438](https://github.com/MorpheApp/morphe-patches/issues/1438)) ([0b12c81](https://github.com/MorpheApp/morphe-patches/commit/0b12c81793aac544f83aa36ee0c19c88cf81cbda))
+
+
+### Features
+
+* **YouTube:** Add `Open channel of live avatar` patch ([#1408](https://github.com/MorpheApp/morphe-patches/issues/1408)) ([b221097](https://github.com/MorpheApp/morphe-patches/commit/b221097be8f1422f35f69b10d94775a2e245b01b))
+
+# [1.27.0-dev.5](https://github.com/MorpheApp/morphe-patches/compare/v1.27.0-dev.4...v1.27.0-dev.5) (2026-05-11)
+
+
+### Bug Fixes
+
+* **Spoof video streams:** Change default client to Android VR ([cafec9c](https://github.com/MorpheApp/morphe-patches/commit/cafec9c61ec65740358777121172896ed7efdf18))
+
+# [1.27.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.27.0-dev.3...v1.27.0-dev.4) (2026-05-11)
+
+
+### Bug Fixes
+
+* **YouTube - Spoof video streams:** Resolve Shorts freezing and feed scrolling issues ([#1433](https://github.com/MorpheApp/morphe-patches/issues/1433)) ([85e0b0c](https://github.com/MorpheApp/morphe-patches/commit/85e0b0c08f465e067716d52c66af396f28b267b0))
+
 # [1.27.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.27.0-dev.2...v1.27.0-dev.3) (2026-05-10)
 
 

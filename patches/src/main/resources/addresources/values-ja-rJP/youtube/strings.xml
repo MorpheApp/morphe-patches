@@ -549,6 +549,11 @@ YouTube Doodle が表示されていると、カスタマイズしたヘッダ�
   <string name="morphe_save_to_watch_later_success_toast">動画を「後で見る」に保存しました</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">この動画は既に「後で見る」に保存されています</string>
   <string name="morphe_save_to_watch_later_error_toast">この動画は「後で見る」に保存できません</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">ライブアバターのチャンネルを開く</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">ライブアバターがチャンネルを開きます</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">ライブアバターがライブビデオを開きます</string>
+  <string name="morphe_live_ring_description">ライブを見るにはタップしてください</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">精密シーク ジェスチャーを無効化</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">精密シーク ジェスチャーは無効です。シークバーを上へスワイプしても、「再生位置の細かい調整」モードにはなりません</string>

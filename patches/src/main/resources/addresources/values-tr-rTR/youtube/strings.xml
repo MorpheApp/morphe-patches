@@ -274,7 +274,7 @@ YouTube Doodles göstermek, özel başlıkların görüntülenmesini engelleyebi
   <string name="morphe_hide_transcript_section_title">Transkript\'i gizle</string>
   <string name="morphe_hide_transcript_section_summary_on">Transkript kısmı gizli</string>
   <string name="morphe_hide_transcript_section_summary_off">Transkript kısmı görünür</string>
-  <string name="morphe_hide_video_details_section_title">\"Video ayrıntıları\'nı\" gizle</string>
+  <string name="morphe_hide_video_details_section_title">\'Video ayrıntıları\'nı gizle</string>
   <string name="morphe_hide_video_details_section_summary_on">Video ayrıntıları bölümü gizli</string>
   <string name="morphe_hide_video_details_section_summary_off">Video ayrıntıları bölümü görünür</string>
   <string name="morphe_hide_filter_bar_screen_title">Filtreleme çubuğu</string>
@@ -549,6 +549,11 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_save_to_watch_later_success_toast">Video, daha sonra izle listesine başarıyla kaydedildi</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Bu video daha sonra izle listesinde zaten kayıtlı</string>
   <string name="morphe_save_to_watch_later_error_toast">Bu video daha sonra izle listesine kaydedilemiyor</string>
+  <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
+  <string name="morphe_open_channel_of_live_avatar_title">Canlı yayın avatarı kanalı açsın</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_on">Canlı yayın avatarı kanalı açacak</string>
+  <string name="morphe_open_channel_of_live_avatar_summary_off">Canlı yayın avatarı canlı videoyu açacak</string>
+  <string name="morphe_live_ring_description">Canlı izlemek için dokunun</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">Hassas sardırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_precise_seeking_gesture_summary_on">Hassas sardırma hareketi devre dışı</string>
