@@ -17,20 +17,118 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">सेटअप पूरा करबाक लेल पुनः आरंभ करू</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">एप्पक नाम</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <string name="morphe_custom_branding_name_entry_5">कस्टम</string>
+  <string name="morphe_custom_branding_icon_title">एप्प आइकन</string>
+  <string name="morphe_custom_branding_icon_entry_1">ओरिजनल</string>
+  <string name="morphe_custom_branding_icon_entry_2">मॉरफे ब्लैक</string>
+  <string name="morphe_custom_branding_icon_entry_3">मॉरफे डार्क</string>
+  <string name="morphe_custom_branding_icon_entry_4">मॉरफे लाइट</string>
+  <string name="morphe_custom_branding_icon_entry_5">मॉरफे प्ले</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_6">कस्टम</string>
+  <string name="morphe_custom_branding_notification_icon_title">नोटिफिकेशन आइकन</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">एप्प आइकनक फॉलो करू</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">मॉरफे नोटिस</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">तहार वाच हिस्ट्री बचायल नाहे।
+
+एह सबसे अधिक DNS एड ब्लॉकर या नेटवर्क प्रॉक्सी के कारण हो सकेला।
+
+एह ठीक करबाक लेल, <b>s.youtube.com</b> whitelist करबा या सभ DNS ब्लॉकर आ प्रॉक्सी बंद करबा।</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">फेर सँ नाहीं देखाउ</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">वीडियो स्ट्रीम स्पूफ करू</string>
+  <string name="morphe_spoof_video_streams_screen_summary">प्लेबैक समस्यास के रोकबाक लेल क्लाइंट वीडियो स्ट्रीम स्पूफ करू।</string>
+  <string name="morphe_spoof_video_streams_title">वीडियो स्ट्रीम स्पूफ करू</string>
+  <string name="morphe_spoof_video_streams_summary_on">"वीडियो स्ट्रीम स्पूफ कयल जा रहल अछि
+
+जहाँ तक YouTube Premium यूजरक बात अछि, एहि सेटिंग के आवश्यकता नाहीं भ’ सकैत।"</string>
+  <string name="morphe_spoof_video_streams_summary_off">"वीडियो स्ट्रीम स्पूफ नहि कयल जा रहल अछि
+
+प्लेबैक काम नहि कर’ सकैत।"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">क्लाइंट स्ट्रीम प्राप्त कर सकल नाहीं</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">एहि सेटिंग बंद करबा से प्लेबैक समस्या हो सकैत अछि।</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">प्रयास करू: स्पूफ वीडियो स्ट्रीम &gt; Android VR साइन इन</string>
+  <string name="morphe_spoof_video_streams_client_type_title">डिफ़ॉल्ट क्लाइंट</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR साइन इन</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR में साइन इन नहि कएल गेल अछि। साइन इन करबाक लेल ई पर टैप करू।</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Android VR में वर्तमान में साइन इन कएल गेल अछि।</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">एहि फीचरक प्रयोग करबाक लेल, ‘डिफ़ॉल्ट क्लाइंट’के Android VR में बदलू।</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR में साइन इन करू</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"कुछ यूजरस के प्लेबैक समस्यास के ठीक करबाक लेल Android VR में साइन इन करबा सकैत अछि
+
+साइन इन करबाक लेल, नीचे जारी रखू पर क्लिक करू।"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">जारी रखू</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">साइन आउट करू</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">निर्देश</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"एक्टिवेशन कोड: %s
+
+1. ‘डिवाइस कनेक्ट करबा’ वेबसाइट खोलबाक लेल नीचे ‘वेबसाइट खोलू’ पर टैप करू।
+2. ऊपर देखायल गेल एक्टिवेशन कोडके क्लिपबोर्ड सँ पेस्ट करू (अथवा टाइप करू)।
+3. संकेतित भए Google में साइन इन करू। यदि तहुँ मे कईटा अकाउंटमे सँ एक चुनुने पडतअ ताहि YouTube अकाउंट चुनु।
+4. ‘YouTube VR एक्सेसक अनुमति देबू’ पर टैप करू।
+5. ‘डिवाइस कनेक्ट कएल गेल’ संदेश पहुँचेला बाद एह एप्प में वापस आउ।"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">वेबसाइट खोलू</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">एक्टिवेशन कोड निर्गमन में विफलता</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">प्रमाणीकरण टोकन निर्गमन में विफलता</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">सफलतापूर्वक साइन इन कएल गेल</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"प्रमाणीकरण बचायल गेल अछि
+
+• Morphe सेटिंग Android VR प्रमाणीकरण आयात/निर्यात नहि करी पाबी।
+• यदि एह एप्प 6 मसीह धरि अप्रयुक्त रहत अछि त Google एह प्रमाणीकरणक हटा देबी।
+• यदि ताहि Google पासवर्ड बदलाब या Google सेटिंग सँ एह डिवाइसके डि-रजिस्टर करेस, ताहि ताहि साइन इन करबाक आवश्यकता होई।"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 अस्थायी रूप सँ अनुपलब्ध अछि (API समय सीमा समाप्त)।</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR साइन इन समाप्त भेल अछि, VR में फेर सँ साइन इन करबाक प्रयास करू।</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 अस्थायी रूप सँ अनुपलब्ध अछि (स्थिति %d)।</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 अस्थायी रूप सँ अनुपलब्ध अछि।</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">VR में साइन इन नहि करी पाउब अछि, वेबसाइट प्रमाणीकरण स्वीकृत नहि कएल गेल अछि।</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">VR में साइन इन नहि करी पाउब अछि: %s</string>
+  <string name="morphe_oauth2_toast_reset">Android VR सँ लॉग आउट कएल गेल</string>
+  <string name="morphe_oauth2_toast_invalid">अवैध VR साइन इन टोकन, VR में फेर सँ साइन इन करबाक प्रयास करू।</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">प्लेयर JavaScript अपडेट अक्षम करू</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"प्लेयर JavaScript अपडेट अक्षम अछि
+
+• एक वैध प्लेयर JavaScript हैश आवश्यक अछि।
+• यदि प्लेयर JavaScript हैश GVS में रद्द कएल गेल अछि त प्लेबैक विफल हो सकैत अछि।"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">प्लेयर JavaScript अपडेट सक्षम अछि।</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">प्लेयर JavaScript हैश लगभग एक महीना तक वैध अछि, आ अप्रचलित हैश GVS द्वारा रद्द कएल जा सकैत अछि।</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">प्लेयर JavaScript हैश</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">एक वैध प्लेयर JavaScript हैश दर्ज करू</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">QUIC प्रोटोकॉल बंद करू</string>
+  <string name="morphe_disable_quic_protocol_summary_on">QUIC प्रोटोकॉल बंद अछि</string>
+  <string name="morphe_disable_quic_protocol_summary_off">QUIC प्रोटोकॉल चालू अछि</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">DRC ऑडियो बंद करू</string>
+  <string name="morphe_disable_drc_audio_summary_on">DRC ऑडियो बंद अछि</string>
+  <string name="morphe_disable_drc_audio_summary_off">DRC ऑडियो चालू अछि</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">ओरिजनल ऑडियो भाषा फ़ोर्स करू</string>
+  <string name="morphe_force_original_audio_summary_on">ओरिजनल ऑडियो भाषाक प्रयोग कएल जा रहल अछि।</string>
+  <string name="morphe_force_original_audio_summary_off">डिफ़ॉल्ट ऑडियोक प्रयोग कएल जा रहल अछि।</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">फुलस्क्रीन विज्ञापन छुपाउ</string>
+  <string name="morphe_hide_fullscreen_ads_summary_on">फुलस्क्रीन विज्ञापन छुपाएल गेल अछि।</string>
+  <string name="morphe_hide_fullscreen_ads_summary_off">फुलस्क्रीन विज्ञापन प्रदर्शित कएल जा रहल अछि।</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">एहि फीचरक प्रयोग करबाक लेल, ‘स्पूफ वीडियो स्ट्रीम’के Android Reel या TV में बदलू।</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">शेयरिंग लिंकसके सेनिटाइज करू</string>
+  <string name="morphe_sanitize_sharing_links_summary_on">साझा कएल गेल लिंकसँ ट्रैकिंग क्वेरी पैरामीटर हटाओल जाईत अछि।</string>
+  <string name="morphe_sanitize_sharing_links_summary_off">साझा कएल गेल लिंकसँ ट्रैकिंग क्वेरी पैरामीटर नहि हटाओल जाईत अछि।</string>
+  <string name="morphe_replace_music_with_youtube_title">शेयर लिंकके youtube.com में बदलू</string>
+  <string name="morphe_replace_music_with_youtube_summary_on">साझा कएल गेल लिंक youtube.comक प्रयोग करैत अछि।</string>
+  <string name="morphe_replace_music_with_youtube_summary_off">साझा कएल गेल लिंक music.youtube.comक प्रयोग करैत अछि।</string>
+  <string name="morphe_replace_links_with_shortener_title">शेअर लिंकके youtu.be में बदलू</string>
+  <string name="morphe_replace_links_with_shortener_summary_on">शेयर कएल गेल लाइव स्ट्रीम आ Shorts लिंक youtu.beक प्रयोग करैत अछि।</string>
+  <string name="morphe_replace_links_with_shortener_summary_off">शेयर कएल गेल लाइव स्ट्रीम आ Shorts लिंक उनके मूल URLक प्रयोग करैत अछि।</string>
 </resources>

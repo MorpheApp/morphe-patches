@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Контрола сесије</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Дугачак притисак на дугме за прескакање да бисте паузирали или наставили прелаз"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Контрола сесије је искључена</string>
+  <string name="morphe_music_crossfade_paused_toast">Prekid prelaznog efekta pauziran za ovu sesiju</string>
+  <string name="morphe_music_crossfade_resumed_toast">Prelazni efekat nastavljen</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Video režim nije dostupan dok je omogućen prelazni efekat</string>
   <string name="morphe_music_crossfade_about_title">O programu</string>
   <string name="morphe_music_crossfade_about_summary">"Прелаз је доступан са YouTube Music 8.x
 

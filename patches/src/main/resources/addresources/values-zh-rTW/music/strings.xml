@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">工作階段控制</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"長按隨機播放按鈕以暫停或恢復淡出"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">工作階段控制已停用</string>
+  <string name="morphe_music_crossfade_paused_toast">已暂停此會話的淡入淡出效果</string>
+  <string name="morphe_music_crossfade_resumed_toast">淡入淡出效果已恢復</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">啟用淡入淡出效果時，視訊模式不可用</string>
   <string name="morphe_music_crossfade_about_title">關於</string>
   <string name="morphe_music_crossfade_about_summary">"YouTube Music 8.x可用於淡出
 

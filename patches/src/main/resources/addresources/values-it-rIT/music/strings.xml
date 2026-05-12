@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Controllo della sessione</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Lungo tocco sul pulsante di miscelazione per mettere in pausa o riprendere il crossfade"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Il controllo della sessione è disabilitato</string>
+  <string name="morphe_music_crossfade_paused_toast">Dissolvenza incrociata in pausa per questa sessione</string>
+  <string name="morphe_music_crossfade_resumed_toast">Dissolvenza incrociata ripresa</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">La modalità video non è disponibile quando la dissolvenza incrociata è abilitata</string>
   <string name="morphe_music_crossfade_about_title">A proposito di</string>
   <string name="morphe_music_crossfade_about_summary">"Il crossfade è disponibile con YouTube Music 8.x
 

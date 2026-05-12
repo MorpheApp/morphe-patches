@@ -7,6 +7,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.spoof.spoofVideoStreamsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
@@ -29,7 +30,13 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     },
     fixMediaSessionFeatureFlag = {
         is_20_39_or_greater
-     },
+    },
+    fixReelItemWatchResponseFeatureFlag = {
+        // Flag has existed since at least 20.05,
+        // but only recently has been causing issues.
+        is_20_31_or_greater
+    },
+    hookAccountIdentity = { true },
 
     block = {
         compatibleWith(COMPATIBILITY_YOUTUBE)

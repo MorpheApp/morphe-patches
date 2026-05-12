@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">التحكم في الجلسة</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"اضغط مع الاستمرار على زر التشغيل العشوائي لإيقاف أو استئناف التعتيم"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">تم تعطيل التحكم في الجلسة</string>
+  <string name="morphe_music_crossfade_paused_toast">تم إيقاف التلاشي التدريجي لهذه الجلسة</string>
+  <string name="morphe_music_crossfade_resumed_toast">تم استئناف التلاشي التدريجي</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">وضع الفيديو غير متاح أثناء تمكين التلاشي التدريجي</string>
   <string name="morphe_music_crossfade_about_title">لمحة</string>
   <string name="morphe_music_crossfade_about_summary">"التعتيم متاح مع YouTube Music 8.x
 

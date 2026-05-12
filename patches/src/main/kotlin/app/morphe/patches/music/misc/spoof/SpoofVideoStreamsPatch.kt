@@ -25,6 +25,8 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     fixMediaFetchHotConfigAlternative = { is_8_11_or_greater && !is_8_15_or_greater },
     fixParsePlaybackResponseFeatureFlag = { is_7_33_or_greater },
     fixMediaSessionFeatureFlag = { is_8_40_or_greater },
+    fixReelItemWatchResponseFeatureFlag = { false },
+    hookAccountIdentity = { false },
 
     block = {
         dependsOn(
@@ -38,7 +40,6 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     },
 
     executeBlock = {
-
         PreferenceScreen.MISC.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_spoof_video_streams_screen",

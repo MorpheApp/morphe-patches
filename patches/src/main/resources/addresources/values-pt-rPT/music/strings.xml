@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Controle da sessão</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Pressione longamente o botão de aleatorização para pausar ou retomar o desvanecimento"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">O controle da sessão está desativado</string>
+  <string name="morphe_music_crossfade_paused_toast">Crossfade pausado para esta sessão</string>
+  <string name="morphe_music_crossfade_resumed_toast">Crossfade retomado</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">O modo de vídeo não está disponível enquanto o crossfade estiver ativado</string>
   <string name="morphe_music_crossfade_about_title">Sobre</string>
   <string name="morphe_music_crossfade_about_summary">"O desvanecimento está disponível com o YouTube Music 8.x
 

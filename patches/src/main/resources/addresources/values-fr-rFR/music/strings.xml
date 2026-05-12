@@ -72,6 +72,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_session_control_title">Contrôle de session</string>
   <string name="morphe_music_crossfade_session_control_summary_on">"Appuyez longuement sur le bouton 'Lecture aléatoire' pour activer ou désactiver le fondu enchaîné"</string>
   <string name="morphe_music_crossfade_session_control_summary_off">Le contrôle de session est désactivé</string>
+  <string name="morphe_music_crossfade_paused_toast">Fondu enchaîné mis en pause pour cette session</string>
+  <string name="morphe_music_crossfade_resumed_toast">Fondu enchaîné repris</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Le mode vidéo n\'est pas disponible lorsque le fondu enchaîné est activé</string>
   <string name="morphe_music_crossfade_about_title">À propos</string>
   <string name="morphe_music_crossfade_about_summary">"Le fondu enchaîné est disponible avec YouTube Music 8.x
 

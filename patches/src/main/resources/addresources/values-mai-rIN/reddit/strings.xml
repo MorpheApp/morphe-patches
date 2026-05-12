@@ -15,4 +15,60 @@
 Second \"item\" text"</string>
 
 -->
-<resources></resources>
+<resources>
+  <string name="morphe_screen_ads_title">विज्ञापन</string>
+  <string name="morphe_hide_post_ads_title">फीड विज्ञापन छुपाउ</string>
+  <string name="morphe_hide_post_ads_summary">फीडमे विज्ञापन छुपाउवेला</string>
+  <string name="morphe_hide_comment_ads_title">टिप्पणी विज्ञापन छुपाउ</string>
+  <string name="morphe_hide_comment_ads_summary">टिप्पणी अनुभागमे विज्ञापन छुपाउवेला</string>
+  <string name="morphe_screen_layout_title">लेआउट</string>
+  <string name="morphe_disable_modern_home_title">आधुनिक होम अक्षम करू</string>
+  <string name="morphe_disable_modern_home_summary">आधुनिक होम यूआई अक्षम करेला</string>
+  <string name="morphe_disable_screenshot_popup_title">स्क्रीनशॉट पॉपअप अक्षम करू</string>
+  <string name="morphe_disable_screenshot_popup_summary">स्क्रीनशॉट लेलावे समयमे देखल जाएवाला पॉपअप अक्षम करेला</string>
+  <string name="morphe_hide_ask_button_title">पूछब बटन छुपाउ</string>
+  <string name="morphe_hide_ask_button_summary">सर्च बारमे पूछब बटन छुपाउवेला</string>
+  <string name="morphe_hide_answers_button_title">उत्तर बटन छुपाउ</string>
+  <string name="morphe_hide_answers_button_summary">नेविगेशन बारमे उत्तर बटन छुपाउवेला</string>
+  <string name="morphe_hide_chat_button_title">चैट बटन छुपाउ</string>
+  <string name="morphe_hide_chat_button_summary">नेविगेशन बारमे चैट बटन छुपाउवेला</string>
+  <string name="morphe_hide_create_button_title">बनाउ बटन छुपाउ</string>
+  <string name="morphe_hide_create_button_summary">नेविगेशन बारमे बनाउ बटन छुपाउवेला</string>
+  <string name="morphe_hide_discover_button_title">डिस्कभर या समुदाय बटन छुपाउ</string>
+  <string name="morphe_hide_discover_button_summary">नेविगेशन बारमे डिस्कभर या समुदाय बटन छुपाउवेला</string>
+  <string name="morphe_hide_games_button_title">गेम्स बटन छुपाउ</string>
+  <string name="morphe_hide_games_button_summary">नेविगेशन बारमे गेम्स बटन छुपाउवेला</string>
+  <string name="morphe_hide_recently_visited_shelf_title">हालमे भेटल गेल शेल्फ छुपाउ</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">साइडबारमे हालमे भेटल गेल शेल्फ छुपाउवेला</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">रेडिटमे गेम्स शेल्फ छुपाउ</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">साइडबारमे रेडिटमे गेम्स शेल्फ छुपाउवेला</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">रेडिट प्रो शेल्फ छुपाउ</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">साइडबारमे रेडिट प्रो शेल्फ छुपाउवेला</string>
+  <string name="morphe_hide_about_shelf_title">बारेमे शेल्फ छुपाउ</string>
+  <string name="morphe_hide_about_shelf_summary">साइडबारमे बारेमे शेल्फ छुपाउवेला</string>
+  <string name="morphe_hide_resources_shelf_title">संसाधन शेल्फ छुपाउ</string>
+  <string name="morphe_hide_resources_shelf_summary">साइडबारमे संसाधन शेल्फ छुपाउवेला</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">सिफारिस करि रहल समुदाय छुपाउ</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">सबरेडिटमे सिफारिस करि रहल समुदाय शेल्फ छुपाउवेला</string>
+  <string name="morphe_hide_trending_today_shelf_title">ट्रेंडिंग आज शेल्फ छुपाउ</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"सर्च सुझावसँ ट्रेंडिंग आज शेल्फ छुपाउवेला
+
+सीमा: विजुअल स्पेसर छुपाएल ना जाएत"</string>
+  <string name="morphe_remove_notification_dialog_title">सूचना सुझाव संवाद अक्षम करू</string>
+  <string name="morphe_remove_notification_dialog_summary">सबरेडिटमे जाएलावे समयमे स्वचालित रूपसँ खारिज करि के सूचना सुझाव संवाद अक्षम करेला</string>
+  <string name="morphe_show_view_count_title">देखब संख्या देखौ</string>
+  <string name="morphe_show_view_count_summary">"पोस्टक संख्या देखौ
+
+सीमा: ए पी आई प्रतिक्रियामे संख्या शामिल भए मात्र देखैल जाएत"</string>
+  <string name="morphe_remove_nsfw_dialog_title">एनएसएफडब्ल्यू चेतावनी संवाद अक्षम करू</string>
+  <string name="morphe_remove_nsfw_dialog_summary">स्वचालित रूपसँ स्वीकृति दे के सबरेडिटमे जाएलावे समयमे एनएसएफडब्ल्यू चेतावनी संवाद अक्षम करेला</string>
+  <string name="morphe_screen_miscellaneous_title">विविध</string>
+  <string name="morphe_about_title">बारेमे</string>
+  <string name="morphe_about_summary">पैच संस्करण एफ्क आधिकारिक लिंक</string>
+  <string name="morphe_sanitize_sharing_links_title">साझा लिंकसँ स्वच्छता कराउ</string>
+  <string name="morphe_sanitize_sharing_links_summary">ट्र्याकिङ क्वेरी पैरामीटर हटा के साझा लिंकसँ स्वच्छता कराउवेला</string>
+  <string name="morphe_open_links_directly_title">सीधा लिंक खोलू</string>
+  <string name="morphe_open_links_directly_summary">बाहरी लिंकमे रीडाइरेक्ट यूआरएल छलांगि केक ओकरा खोलल जाएत</string>
+  <string name="morphe_open_links_externally_title">बाहर लिंक खोलू</string>
+  <string name="morphe_open_links_externally_summary">ऐप-इन ब्राउजरमे बजाय आपके ब्राउजरमे लिंक खोलूवेला</string>
+</resources>

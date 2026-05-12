@@ -1,8 +1,10 @@
+import com.android.build.api.dsl.LibraryExtension
+
 plugins {
     alias(libs.plugins.android.library)
 }
 
-android {
+configure<LibraryExtension> {
     namespace = "app.morphe.extension.shared"
     compileSdk = 36
 

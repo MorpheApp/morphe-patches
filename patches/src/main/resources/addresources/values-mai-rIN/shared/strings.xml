@@ -17,12 +17,146 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">सेटिङहरू</string>
+  <string name="morphe_settings_confirm_user_dialog_title">के तपाईं जारी गर्न चाहनुहुन्छ?</string>
+  <string name="morphe_settings_save">सेभ गर्नुहोस्</string>
+  <string name="morphe_settings_reset">रिसेट गर्नुहोस्</string>
+  <string name="morphe_settings_reset_color">रङ रिसेट गर्नुहोस्</string>
+  <string name="morphe_settings_color_invalid">अवैध रङ</string>
+  <string name="morphe_settings_restart_title">पुनःसुरु आवश्यक</string>
+  <string name="morphe_settings_restart_dialog_message">एपलाई प्रभावमा ल्याउन पुन:सुरु गर्नुहोस्।</string>
+  <string name="morphe_settings_restart">पुनःसुरु गर्नुहोस्</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">आयात गर्नुहोस्</string>
+  <string name="morphe_settings_import_copy">कपि गर्नुहोस्</string>
+  <string name="morphe_settings_import_reset">मर्फ सेटिङहरू पूर्वनिर्धारितमा रिसेट गरियो</string>
+  <string name="morphe_settings_import_success">%d सेटिङहरू आयात गरिए</string>
+  <string name="morphe_settings_import_failure_parse">आयात असफल भयो: %s</string>
+  <string name="morphe_settings_search_hint">सेटिङहरू खोज्नुहोस्</string>
+  <string name="morphe_settings_search_no_results_title">\'%s\' को लागि कुनै परिणाम फेला परेन</string>
+  <string name="morphe_settings_search_no_results_summary">अर्को कीवर्ड प्रयास गर्नुहोस्</string>
+  <string name="morphe_settings_search_recent_searches">हालैका खोजहरू</string>
+  <string name="morphe_settings_search_remove_message">खोज इतिहासबाट हटाउनुहोस्?</string>
+  <string name="morphe_settings_search_clear_history">खोज इतिहास खाली गर्नुहोस्</string>
+  <string name="morphe_settings_search_clear_history_message">के तपाईं सबै खोज इतिहास खाली गर्न निश्चित हुनुहुन्छ?</string>
+  <string name="morphe_settings_search_tips_title">खोज सल्लाहहरू</string>
+  <string name="morphe_settings_search_tips_summary">"• नेभिगेट गर्न एउटा मार्गमा ट्याप गर्नुहोस्
+• नेभिगेट गर्न एउटा सेटिङमा लामो प्रेस गर्नुहोस्
+• इतिहासमा खोज प्रश्न सुरक्षित गर्न Enter थिच्नुहोस्
+• खोजले केस र विरामचिह्नलाई बेवास्ता गर्छ
+• अभिभावक सेटिङहरू असक्षम गरिएका बच्चा सेटिङहरूमाथि देखा पर्दछन्"</string>
+  <string name="morphe_settings_search_empty_history_title">खोज इतिहास खाली छ</string>
+  <string name="morphe_settings_search_empty_history_summary">खोज इतिहास सुरक्षित गर्न, खोज प्रश्न टाइप गर्नुहोस् र Enter थिच्नुहोस्</string>
+  <string name="morphe_settings_search_history_title">सेटिङ खोज इतिहास देखाउनुहोस्</string>
+  <string name="morphe_settings_search_history_summary_on">सेटिङ खोज इतिहास देखाइएको छ</string>
+  <string name="morphe_settings_search_history_summary_off">सेटिङ खोज इतिहास देखाउँदैन</string>
+  <string name="morphe_show_menu_icons_title">मर्फ सेटिङ आइकनहरू देखाउनुहोस्</string>
+  <string name="morphe_show_menu_icons_summary_on">सेटिङ आइकनहरू देखाइँदैछन्</string>
+  <string name="morphe_show_menu_icons_summary_off">सेटिङ आइकनहरू देखाउँदैन</string>
+  <string name="morphe_language_title">मर्फ भाषा</string>
+  <string name="morphe_language_user_dialog_message">"केही भाषाका लागि अनुवादहरू हराइरहेको वा अधूरै हुन सक्छन्।
+
+नयाँ भाषाहरू अनुवाद गर्न वा अवस्थित अनुवादहरू सुधार गर्न, morphe.software/translate मा जानुहोस्"</string>
+  <string name="morphe_language_DEFAULT">एप भाषा</string>
+  <string name="morphe_pref_import_export_title">आयात / निर्यात</string>
+  <string name="morphe_pref_import_export_summary">मर्फ सेटिङहरू आयात / निर्यात गर्नुहोस्</string>
+  <string name="morphe_settings_import_file">फाइलबाट आयात गर्नुहोस्</string>
+  <string name="morphe_settings_import_file_success">सेटिङहरू सफलतापूर्वक आयात गरियो, लागू गर्न सेभमा ट्याप गर्नुहोस्</string>
+  <string name="morphe_settings_import_file_failed">सेटिङहरू आयात गर्न असफल भयो</string>
+  <string name="morphe_settings_export_file">फाइलमा निर्यात गर्नुहोस्</string>
+  <string name="morphe_settings_export_file_success">सेटिङहरू सफलतापूर्वक निर्यात गरियो</string>
+  <string name="morphe_settings_export_file_failed">सेटिङहरू निर्यात गर्न असफल भयो</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">तपाईं नवीनतम Morphe प्याचहरू संस्करण &lt;i&gt;%s&lt;/i&gt; प्रयोग गर्दै हुनुहुन्छ।</string>
+  <string name="morphe_settings_about_links_body_version_outdated">तपाईं मर्फ प्याचहरू संस्करण &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;अपडेट उपलब्ध: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt; आफ्नो प्याचहरू अपडेट गर्न, यो एप प्याच गर्न मर्फ प्रयोग गर्नुहोस्</string>
+  <string name="morphe_settings_about_links_dev_header">नोट</string>
+  <string name="morphe_settings_about_links_dev_body">यो संस्करण एक पूर्व-रिलीज हो र तपाईं अप्रत्याशित समस्याहरूको अनुभव गर्न सक्नुहुन्छ</string>
+  <string name="morphe_settings_about_links_header">आधिकारिक लिङ्कहरू</string>
+  <string name="morphe_settings_about_links_website">वेबसाइट</string>
+  <string name="morphe_settings_about_links_donate">दान गर्नुहोस्</string>
+  <string name="morphe_settings_about_links_translations">अनुवादहरू</string>
+  <string name="morphe_settings_about_links_credits">क्रेडिटहरू</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">अप-टु-डेट</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">अपडेट उपलब्ध</string>
+  <string name="morphe_settings_about_contributors_current">हालको विकास</string>
+  <string name="morphe_settings_about_contributors_prior">अघिल्लो विकास</string>
+  <string name="morphe_settings_about_links_morphe">सक्रिय विकास</string>
+  <string name="morphe_settings_about_links_rvx">२०२२ – २०२५</string>
+  <string name="morphe_settings_about_links_rv">२०२२ – २०२५</string>
+  <string name="morphe_settings_about_links_vanced">२०१९ – २०२२</string>
+  <string name="morphe_settings_about_links_licenses">लाइसेन्स सूचनाहरू</string>
+  <string name="morphe_settings_about_licenses_loading">लोड गर्दै...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">डिबगिङ</string>
+  <string name="morphe_debug_screen_summary">डिबगिङ विकल्पहरू सक्षम गर्नुहोस् वा असक्षम गर्नुहोस्</string>
+  <string name="morphe_debug_title">डिबग लगिङ</string>
+  <string name="morphe_debug_summary_on">डिबग लगहरू सक्षम छन्</string>
+  <string name="morphe_debug_summary_off">डिबग लगहरू असक्षम छन्</string>
+  <string name="morphe_debug_stacktrace_title">डिबग लग स्ट्याक ट्रेस</string>
+  <string name="morphe_debug_stacktrace_summary_on">डिबग लगहरूमा स्ट्याक ट्रेसहरू समावेश छन्</string>
+  <string name="morphe_debug_stacktrace_summary_off">डिबग लगहरूमा स्ट्याक ट्रेसहरू समावेश छैन</string>
+  <string name="morphe_debug_toast_on_error_title">मर्फ त्रुटिमा टोस्ट देखाउनुहोस्</string>
+  <string name="morphe_debug_toast_on_error_summary_on">टोस्ट त्रुटि हुँदा देखाइन्छ</string>
+  <string name="morphe_debug_toast_on_error_summary_off">टोस्ट त्रुटि हुँदा देखाउँदैन</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"त्रुटि टोस्टहरू बन्द गर्नाले सबै मर्फ त्रुटि सूचनाहरू लुकाउँछ।
+
+तपाईंलाई कुनै अप्रत्याशित घटनाहरूको बारेमा जानकारी दिइने छैन।"</string>
+  <string name="morphe_debug_export_logs_title">डिबग लगहरू निर्यात गर्नुहोस्</string>
+  <string name="morphe_debug_export_logs_summary">मर्फ डिबग लगहरू निर्यात गर्नुहोस्</string>
+  <string name="morphe_debug_export_logs_file">फाइलमा निर्यात गर्नुहोस्</string>
+  <string name="morphe_debug_export_logs_success">डिबग लगहरू सफलतापूर्वक निर्यात गरियो</string>
+  <string name="morphe_debug_export_logs_failed">डिबग लगहरू निर्यात गर्न असफल भयो</string>
+  <string name="morphe_debug_logs_search_hint">डिबग लगहरू खोज्नुहोस्...</string>
+  <string name="morphe_debug_export_logs_clear">क्लियर गर्नुहोस्</string>
+  <string name="morphe_debug_logs_disabled">डिबग लगिङ असक्षम गरिएको छ</string>
+  <string name="morphe_debug_logs_none_found">कुनै डिबग लगहरू फेला परेन</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">डिबग लगहरू क्लिपबोर्डमा प्रतिलिपि गरियो</string>
+  <string name="morphe_debug_logs_failed_to_export">डिबग लगहरू निर्यात गर्न असफल: %s</string>
+  <string name="morphe_debug_logs_clear_toast">डिबग लगहरू खाली गरियो</string>
+  <string name="morphe_debug_feature_flags_manager_title">विशेषता झण्डा प्रबन्धक</string>
+  <string name="morphe_debug_feature_flags_manager_summary">बूलियन सुविधा झण्डाहरू प्रबन्ध गर्नुहोस्</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">सक्रिय सुविधा झण्डाहरू (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">अवरुद्ध सुविधा झण्डाहरू (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">सुविधा झण्डाहरू खोज्नुहोस्...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">सुविधा झण्डाहरू सुरक्षित गरियो</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">सुविधा झण्डाहरू रिसेट गरियो</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">सुविधा झण्डाहरू क्लिपबोर्डमा प्रतिलिपि गरियो</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">यो सेटिङ प्रयोग गर्न एप पुनःसुरु गर्नुहोस्</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">माइक्रोज सेटिङहरू खोल्नुहोस्</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG स्थापना गरिएको छैन। यसलाई स्थापना गर्नुहोस्।</string>
+  <string name="gms_core_dialog_title">कारबाही आवश्यक</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG लाई पृष्ठभूमिमा चलाउन अनुमति छैन।
+
+कृपया आफ्नो फोनको लागि \"मेरो एप मार्नुहोस्\" गाइड पालना गर्नुहोस्, र आफ्नो MicroG स्थापनामा निर्देशनहरू लागू गर्नुहोस्।
+
+यो एपलाई काम गर्न आवश्यक छ।"</string>
+  <string name="gms_core_dialog_open_website_text">वेबसाइट खोल्नुहोस्</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG ब्याट्री अप्टिमाइजेसनहरू मुद्दाहरू रोक्नको लागि निष्क्रिय हुनुपर्छ।
+
+MicroG को लागि ब्याट्री अप्टिमाइजेसनहरू निष्क्रिय पार्नाले ब्याट्रीको प्रयोगमा नकारात्मक प्रभाव पर्दैन।
+
+जारी राख्नुहोस् बटनमा ट्याप गर्नुहोस् र अप्टिमाइजेसन परिवर्तनहरूलाई अनुमति दिनुहोस्।"</string>
+  <string name="gms_core_dialog_continue_text">जारी राख्नुहोस्</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">ब्याट्री अनुकूलन संवाद</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">माइक्रोज ब्याट्री अनुकूलन संवाद देखाइन्छ</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">माइक्रोज ब्याट्री अनुकूलन संवाद देखाउँदैन</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"यो अक्षम गर्नाले माइक्रोजी ब्याट्री अनुकूलन प्रम्प्ट लुकाउनेछ।
+
+यदि ब्याट्री अनुकूलनहरू परिवर्तन गरिएको छैन भने तपाईँले अनुभव गर्न सक्नुहुन्छ:
+• एपले अनियमित रूपमा बन्द हुन सक्छ
+• सूचनाहरू काम नगर्न सक्छ
+• पृष्ठभूमि प्लेब्याक काम नगर्न सक्छ"</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 प्रयोगात्मक सचेत 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"तपाईं &lt;b&gt;%1$s&lt;/b&gt; को प्रयोगात्मक एप संस्करण प्रयोग गर्दै हुनुहुन्छ
+&lt;br/&gt;&lt;br/&gt;
+🔧 हामी यस एप संस्करणको लागि प्याचहरूलाई फाइन-ट्यून गर्दा विचित्र एप व्यवहार वा पहिचान नहुने बगहरूको अपेक्षा गर्नुहोस्।
+&lt;br/&gt;&lt;br/&gt;
+यदि तपाईं सबैभन्दा समस्या-मुक्त अनुभव चाहनुहुन्छ भने, &lt;b&gt;अनइन्स्टल&lt;/b&gt; गर्नुहोस् र &lt;b&gt;%2$s&lt;/b&gt; को सिफारिस गरिएको एप संस्करण प्याच गर्नुहोस्।"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ म प्रयोगात्मक चाहन्छु</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ म स्थिर चाहन्छु</string>
 </resources>
