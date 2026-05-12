@@ -1,10 +1,12 @@
 package app.morphe.patches.youtube.layout.livering
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.localesYouTube
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.shortsplayer.ShortsPlaybackIntentFingerprint
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -96,5 +98,21 @@ val openChannelOfLiveAvatarPatch = bytecodePatch(
                 )
             }
         }
+
+        ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                move-object/from16 v0, p1
+                invoke-virtual { v0 }, $playbackStartVideoIdMethodClass->$playbackStartVideoIdMethodName()Ljava/lang/String;
+                move-result-object v1
+                move-object/from16 v0, p2
+                invoke-static { v0, v1 }, $EXTENSION_CLASS->openChannel(Ljava/util/Map;Ljava/lang/String;)Z
+                move-result v0
+                if-eqz v0, :ignore
+                return-void
+                :ignore
+                nop
+            """
+        )
     }
 }
