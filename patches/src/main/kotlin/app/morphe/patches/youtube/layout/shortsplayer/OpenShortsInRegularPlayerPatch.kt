@@ -70,6 +70,9 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         val playbackStartVideoIdMethodName = PlaybackStartDescriptorToStringFingerprint
             .instructionMatches[1].getMethodCalled().name
 
+        // Same method is modified by openChannelOfLiveAvatarPatch,
+        // and by coincidence that patch runs after this patch which is critical
+        // because that patch behavior is prioritized over this patch.
         ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
             0,
             """

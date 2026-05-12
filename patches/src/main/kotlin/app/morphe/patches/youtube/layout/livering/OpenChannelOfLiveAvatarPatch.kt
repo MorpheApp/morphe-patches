@@ -99,6 +99,8 @@ val openChannelOfLiveAvatarPatch = bytecodePatch(
             }
         }
 
+        // Same method is modified by openShortsInRegularPlayerPatch,
+        // and by coincidence that patch runs before this patch which is critical.
         ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
             0,
             """
