@@ -26,15 +26,18 @@ private val openChannelOfLiveAvatarResourcePatch = resourcePatch(
         localesYouTube.filter { it.isBuiltInLanguage }.forEach { locale ->
             val directory = locale.getDestLocaleFolderName()
             val targetResource = "$directory/strings.xml"
+            val destinationPath = "res/$targetResource"
 
-            inputStreamFromBundledResource(
-                "livering/host",
-                targetResource
-            )!!.let { inputStream ->
-                "resources".copyXmlNode(
-                    document(inputStream),
-                    document("res/$targetResource")
-                ).close()
+            if (java.io.File(destinationPath).exists()) {
+                inputStreamFromBundledResource(
+                    "livering/host",
+                    targetResource
+                )!!.let { inputStream ->
+                    "resources".copyXmlNode(
+                        document(inputStream),
+                        document(destinationPath)
+                    ).close()
+                }
             }
         }
     }
