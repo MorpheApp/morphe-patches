@@ -28,7 +28,7 @@ private val openChannelOfLiveAvatarResourcePatch = resourcePatch(
             val targetResource = "$directory/strings.xml"
             val destinationPath = "res/$targetResource"
 
-            if (java.io.File(destinationPath).exists()) {
+            if (this[destinationPath].exists()) {
                 inputStreamFromBundledResource(
                     "livering/host",
                     targetResource
