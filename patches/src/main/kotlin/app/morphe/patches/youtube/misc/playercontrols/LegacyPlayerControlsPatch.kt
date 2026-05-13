@@ -111,7 +111,7 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
                 document(hostingResourceStream),
                 document,
             ).use {
-                /*val insertElement = document.childNodes.findElementByAttributeValueOrThrow(
+                val insertElement = document.childNodes.findElementByAttributeValueOrThrow(
                     androidId,
                     insertElementId,
                 )
@@ -122,21 +122,13 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
                 val insertElementLayoutToStartOf =
                     insertElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue!!
 
-                if (insertElementId == "@id/player_video_heading") {
-                    insertElement.setAttribute("android:layout_marginEnd", "96.0dip")
-                }
-
+                insertElement.setAttribute("android:layout_marginStart", "96.0dip")
                 insertElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue =
                     startElementId
                 endElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue =
                     insertElementLayoutToStartOf
 
-                insertElementId = endElementId*/
-                val insertElement = document.childNodes.findElementByAttributeValueOrThrow(
-                    androidId,
-                    insertElementId,
-                )
-                insertElement.setAttribute("android:layout_marginEnd", "96.0dip")
+                insertElementId = endElementId
             }
         }
 
