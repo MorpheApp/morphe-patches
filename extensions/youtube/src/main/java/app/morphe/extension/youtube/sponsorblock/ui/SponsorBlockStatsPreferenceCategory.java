@@ -65,6 +65,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
             }
 
             Preference loadingPlaceholderPreference = new Preference(getContext());
+            loadingPlaceholderPreference.setSingleLineTitle(false);
             loadingPlaceholderPreference.setEnabled(false);
             addPreference(loadingPlaceholderPreference);
 
@@ -126,6 +127,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
             {
                 // Number of segment submissions (does not include ignored segments).
                 Preference preference = new Preference(context);
+                preference.setSingleLineTitle(false);
                 String formatted = SponsorBlockUtils.getNumberOfSkipsString(stats.segmentCount);
                 preference.setTitle(fromHtml(str("morphe_sb_stats_submissions", formatted), FROM_HTML_MODE_COMPACT));
                 preference.setSummary(str("morphe_sb_stats_submissions_summary"));
@@ -147,6 +149,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
                 // "user reputation".  Usually not useful since it appears most users have zero reputation.
                 // But if there is a reputation then show it here.
                 Preference preference = new Preference(context);
+                preference.setSingleLineTitle(false);
                 preference.setTitle(fromHtml(str("morphe_sb_stats_reputation", stats.reputation), FROM_HTML_MODE_COMPACT));
                 preference.setSelectable(false);
                 preference.setEnabled(Settings.SB_ENABLED.isAvailable());
@@ -158,6 +161,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
             {
                 // Time saved for other users.
                 Preference preference = new Preference(context);
+                preference.setSingleLineTitle(false);
 
                 String stats_saved;
                 String stats_saved_sum;
@@ -189,6 +193,7 @@ public class SponsorBlockStatsPreferenceCategory extends PreferenceCategory {
     private void addLocalUserStats() {
         // Time the user saved by using SB.
         Preference preference = new Preference(getContext());
+        preference.setSingleLineTitle(false);
         Runnable updateStatsSelfSaved = () -> {
             String formatted = SponsorBlockUtils.getNumberOfSkipsString(
                     Settings.SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS.get());
