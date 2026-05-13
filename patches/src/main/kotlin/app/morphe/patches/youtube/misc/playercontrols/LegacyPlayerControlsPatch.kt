@@ -122,12 +122,9 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
                 val insertElementLayoutToStartOf =
                     insertElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue!!
 
-                if (insertElementId == "@id/player_video_heading") {
-                    insertElement.setAttribute("android:layout_marginEnd", "96.0dip")
-                }
-
+                insertElement.setAttribute("android:layout_marginEnd", "96.0dip")
                 insertElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue =
-                    startElementId
+                    "@id/player_overflow_button"
                 endElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue =
                     insertElementLayoutToStartOf
 
