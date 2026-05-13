@@ -111,7 +111,7 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
                 document(hostingResourceStream),
                 document,
             ).use {
-                val insertElement = document.childNodes.findElementByAttributeValueOrThrow(
+                /*val insertElement = document.childNodes.findElementByAttributeValueOrThrow(
                     androidId,
                     insertElementId,
                 )
@@ -122,13 +122,21 @@ internal val legacyPlayerControlsResourcePatch = resourcePatch {
                 val insertElementLayoutToStartOf =
                     insertElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue!!
 
-                insertElement.setAttribute("android:layout_marginEnd", "96.0dip")
+                if (insertElementId == "@id/player_video_heading") {
+                    insertElement.setAttribute("android:layout_marginEnd", "96.0dip")
+                }
+
                 insertElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue =
-                    "@id/player_overflow_button"
+                    startElementId
                 endElement.attributes.getNamedItem(androidLayoutToStartOf).nodeValue =
                     insertElementLayoutToStartOf
 
-                insertElementId = endElementId
+                insertElementId = endElementId*/
+                val insertElement = document.childNodes.findElementByAttributeValueOrThrow(
+                    androidId,
+                    insertElementId,
+                )
+                insertElement.setAttribute("android:layout_marginEnd", "96.0dip")
             }
         }
 
