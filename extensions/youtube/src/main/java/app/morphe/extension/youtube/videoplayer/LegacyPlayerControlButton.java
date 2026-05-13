@@ -115,6 +115,7 @@ public class LegacyPlayerControlButton {
         }
 
         buttonRef = new WeakReference<>(button);
+        PlayerOverlayButton.initializeHeadingFromUpperButton(button);
 
         TextView tempTextOverlay = null;
         if (textOverlayId != null) {
