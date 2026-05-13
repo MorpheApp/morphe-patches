@@ -4,6 +4,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patches.all.misc.resources.AppLocale
+import app.morphe.patches.all.misc.resources.addResourcesPatch
+import app.morphe.patches.all.misc.resources.createResourceDestinationDirectoryIfNeeded
 import app.morphe.patches.all.misc.resources.localesYouTube
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.shortsplayer.ShortsPlaybackIntentFingerprint
@@ -18,26 +21,30 @@ import app.morphe.util.copyXmlNode
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.inputStreamFromBundledResource
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import java.util.logging.Logger
 
 private val openChannelOfLiveAvatarResourcePatch = resourcePatch(
     description = "openChannelOfLiveAvatarResourcePatch"
 ) {
     execute {
+        val logger = Logger.getLogger(AppLocale.Companion::class.java.name)
+
         localesYouTube.filter { it.isBuiltInLanguage }.forEach { locale ->
             val directory = locale.getDestLocaleFolderName()
             val targetResource = "$directory/strings.xml"
             val destinationPath = "res/$targetResource"
+            val destFile = this[destinationPath]
 
-            if (this[destinationPath].exists()) {
-                inputStreamFromBundledResource(
-                    "livering/host",
-                    targetResource
-                )!!.let { inputStream ->
-                    "resources".copyXmlNode(
-                        document(inputStream),
-                        document(destinationPath)
-                    ).close()
-                }
+            createResourceDestinationDirectoryIfNeeded(locale, logger, destinationPath, destFile)
+
+            inputStreamFromBundledResource(
+                "livering/host",
+                targetResource
+            )!!.let { inputStream ->
+                "resources".copyXmlNode(
+                    document(inputStream),
+                    document(destinationPath)
+                ).close()
             }
         }
     }
@@ -54,8 +61,9 @@ val openChannelOfLiveAvatarPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     dependsOn(
-        settingsPatch,
         openChannelOfLiveAvatarResourcePatch,
+        addResourcesPatch,
+        settingsPatch,
         versionCheckPatch,
     )
 
