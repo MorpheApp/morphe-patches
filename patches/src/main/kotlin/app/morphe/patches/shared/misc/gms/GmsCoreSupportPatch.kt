@@ -539,7 +539,8 @@ fun gmsCoreSupportResourcePatch(
     block: ResourcePatchBuilder.() -> Unit = {},
 ) = resourcePatch {
     dependsOn(
-        changePackageNamePatch
+        changePackageNamePatch,
+        linkHandlingPatch(fromPackageName, screen),
     )
 
     execute {
