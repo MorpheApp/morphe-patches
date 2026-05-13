@@ -10,22 +10,19 @@ package app.morphe.extension.shared.settings.preference;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
+import android.app.Application;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.verify.domain.DomainVerificationManager;
-import android.content.pm.verify.domain.DomainVerificationUserState;
 import android.net.Uri;
 import android.os.Build;
 import android.preference.Preference;
-import android.preference.PreferenceManager;
 import android.util.AttributeSet;
+import android.util.Pair;
 import android.widget.LinearLayout;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import android.util.Pair;
-
 import app.morphe.extension.shared.ui.CustomDialog;
 
 /**
@@ -53,35 +50,8 @@ public class LinkHandlingPreference extends Preference {
         super(context);
     }
 
-    @Override
-    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
-        super.onAttachedToHierarchy(preferenceManager);
-        refreshState();
-    }
-
-    /**
-     * Refreshes the enabled state and summary based on the current domain verification state.
-     * Called on attach and on every resume of the parent fragment.
-     */
-    void refreshState() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.S) return;
-        try {
-            String patchedPackage = Utils.getContext().getPackageName();
-            DomainVerificationManager manager =
-                    getContext().getSystemService(DomainVerificationManager.class);
-            DomainVerificationUserState state =
-                    manager.getDomainVerificationUserState(patchedPackage);
-            boolean configured = state != null
-                    && !state.getHostToStateMap().isEmpty()
-                    && state.getHostToStateMap().values().stream()
-                    .allMatch(s -> s == DomainVerificationUserState.DOMAIN_STATE_SELECTED);
-            setEnabled(!configured);
-            setSummary(str(configured
-                    ? "morphe_link_handling_summary_configured"
-                    : "morphe_link_handling_summary"));
-        } catch (Exception ex) {
-            Logger.printException(() -> "LinkHandlingPreference: domain check failure", ex);
-        }
+    private Application getApplication() {
+        return ((Activity) getContext()).getApplication();
     }
 
     @Override
@@ -89,29 +59,30 @@ public class LinkHandlingPreference extends Preference {
         try {
             String key = getKey();
             if (key == null || !key.contains(":")) {
-                Logger.printException(() -> "LinkHandlingPreference: malformed key: " + key);
+                Logger.printException(() -> "LinkHandlingPreference malformed key: " + getKey());
                 return;
             }
-            String originalPackage = key.substring(key.indexOf(':') + 1);
-            String patchedPackage = Utils.getContext().getPackageName();
 
-            Activity activity = (Activity) getContext();
-            showStep1Dialog(activity, originalPackage, patchedPackage);
+            Context context = getContext();
+            String originalPackage = key.substring(key.indexOf(':') + 1);
+            String patchedPackage = context.getPackageName();
+
+            showStep1Dialog(context, originalPackage, patchedPackage);
         } catch (Exception ex) {
-            Logger.printException(() -> "LinkHandlingPreference onClick failure", ex);
+            Logger.printException(() -> "onClick failure", ex);
         }
     }
 
-    private static void showStep1Dialog(Activity activity, String originalPackage, String patchedPackage) {
+    private static void showStep1Dialog(Context context, String originalPackage, String patchedPackage) {
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                activity,
+                context,
                 str("morphe_link_handling_step1_title"),
                 str("morphe_link_handling_step1_message"),
                 null,
                 str("morphe_link_handling_open"),
                 () -> {
-                    openAppLinkSettings(activity, originalPackage);
-                    showStep2Dialog(activity, patchedPackage);
+                    openAppLinkSettings(context, originalPackage);
+                    showStep2Dialog(context, patchedPackage);
                 },
                 null,
                 null,
@@ -122,15 +93,15 @@ public class LinkHandlingPreference extends Preference {
         dialogPair.first.show();
     }
 
-    private static void showStep2Dialog(Activity activity, String patchedPackage) {
+    private static void showStep2Dialog(Context context, String patchedPackage) {
         Utils.runOnMainThreadDelayed(() -> {
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                    activity,
+                    context,
                     str("morphe_link_handling_step2_title"),
                     str("morphe_link_handling_step2_message"),
                     null,
                     str("morphe_link_handling_open"),
-                    () -> openAppLinkSettings(activity, patchedPackage),
+                    () -> openAppLinkSettings(context, patchedPackage),
                     null,
                     null,
                     null,
@@ -141,14 +112,14 @@ public class LinkHandlingPreference extends Preference {
         }, 300);
     }
 
-    private static void openAppLinkSettings(Activity activity, String packageName) {
+    private static void openAppLinkSettings(Context context, String packageName) {
         try {
             Intent intent = new Intent(Build.VERSION.SDK_INT >= Build.VERSION_CODES.S
                     ? android.provider.Settings.ACTION_APP_OPEN_BY_DEFAULT_SETTINGS
                     : android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
             intent.setData(Uri.parse("package:" + packageName));
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            activity.startActivity(intent);
+            context.startActivity(intent);
         } catch (Exception ex) {
             Logger.printException(() -> "openAppLinkSettings failure: " + packageName, ex);
         }

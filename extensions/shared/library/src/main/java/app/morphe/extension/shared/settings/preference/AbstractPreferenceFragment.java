@@ -701,24 +701,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        refreshLinkHandlingPreferences(getPreferenceScreen());
-    }
-
-    private static void refreshLinkHandlingPreferences(PreferenceGroup group) {
-        if (group == null) return;
-        for (int i = 0; i < group.getPreferenceCount(); i++) {
-            Preference preference = group.getPreference(i);
-            if (preference instanceof LinkHandlingPreference) {
-                ((LinkHandlingPreference) preference).refreshState();
-            } else if (preference instanceof PreferenceGroup) {
-                refreshLinkHandlingPreferences((PreferenceGroup) preference);
-            }
-        }
-    }
-
-    @Override
     public void onDestroy() {
         if (instance.get() == this) {
             instance = new WeakReference<>(null);
