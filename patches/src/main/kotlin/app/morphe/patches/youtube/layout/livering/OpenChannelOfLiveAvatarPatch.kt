@@ -71,16 +71,16 @@ val openChannelOfLiveAvatarPatch = bytecodePatch(
         val playbackStartVideoIdMethod = PlaybackStartDescriptorToStringFingerprint
             .instructionMatches[1].getMethodCalled()
         fun patchLogic(mapRegister: String, playerDescriptorClassRegister: String, free1: String, free2: String): String {
-            val playerDescriptorClassHaveAParameterRegister = playerDescriptorClassRegister.startsWith("p")
+            val methodParameter = playerDescriptorClassRegister.startsWith("p")
 
             return """
                 move-object/from16 $free1, $mapRegister
                 ${
-                    if (playerDescriptorClassHaveAParameterRegister) "move-object/from16 $free2, $playerDescriptorClassRegister"
+                    if (methodParameter) "move-object/from16 $free2, $playerDescriptorClassRegister"
                     else ""
                 }
                 invoke-virtual { ${
-                    if (playerDescriptorClassHaveAParameterRegister) free2
+                    if (methodParameter) free2
                     else playerDescriptorClassRegister
                 } }, ${playbackStartVideoIdMethod.definingClass}->${playbackStartVideoIdMethod.name}()Ljava/lang/String;
                 move-result-object $free2
