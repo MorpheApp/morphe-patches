@@ -121,6 +121,7 @@ public final class LayoutComponentsFilter extends Filter {
                 "images_post_root.e",
                 "images_post_root_slim.e",
                 "images_post_slim.e", // may be obsolete and no longer needed.
+                "options_post_root.e",
                 "poll_post_responsive_root.e",
                 "poll_post_root.e",
                 "post_base_wrapper", // may be obsolete and no longer needed.
