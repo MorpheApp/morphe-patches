@@ -13,7 +13,7 @@ package app.morphe.extension.shared.spoof.requests;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.isNotEmpty;
 import static app.morphe.extension.shared.Utils.submitOnBackgroundThread;
-import static app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.originalPageIDHeaderValue;
+import static app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.pageIDHeaderValue;
 import static app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport.supportsJavaScriptEngine;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
@@ -255,15 +255,17 @@ public class StreamOrDetailsDataRequest {
                     }
                 }
 
-                if (!originalPageIDHeaderValue.isEmpty()) {
-                    Logger.printDebug(() -> "Including PAGE_ID_HEADER header: " + originalPageIDHeaderValue);
-                    connection.setRequestProperty(PAGE_ID_HEADER, originalPageIDHeaderValue);
-                }
-
-                if (!authHeadersIncludes && clientType.requireLogin) {
-                    Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
-                            + " videoId: " + videoId);
-                    return null;
+                if (authHeadersIncludes) {
+                    if (!pageIDHeaderValue.isEmpty()) {
+                        Logger.printDebug(() -> "Including PAGE_ID_HEADER header: " + pageIDHeaderValue);
+                        connection.setRequestProperty(PAGE_ID_HEADER, pageIDHeaderValue);
+                    }
+                } else {
+                    if (clientType.requireLogin) {
+                        Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
+                                + " videoId: " + videoId);
+                        return null;
+                    }
                 }
             }
 
