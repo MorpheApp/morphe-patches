@@ -237,7 +237,7 @@ public class PlayerOverlayButton {
         videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, getTotalUpperButtonCount());
     }
 
-    private static boolean skipCallOnce = true;
+    private static boolean skipFirstCall = true;
     /**
      * Called from each {@link LegacyPlayerControlButton} constructor so that the
      * video-heading end margin is initialized and kept correct even when no lower
@@ -245,8 +245,8 @@ public class PlayerOverlayButton {
      */
     public static void initializeHeadingFromUpperButton(View sourceButton) {
         // Useful to prevent initial null error in updateContainerRef() method
-        if (skipCallOnce) {
-            skipCallOnce = false;
+        if (skipFirstCall) {
+            skipFirstCall = false;
             return;
         }
 
@@ -272,9 +272,8 @@ public class PlayerOverlayButton {
             ytSourceButtonRef = new WeakReference<>(sourceButton);
         }
 
-        // Locate each container once; subsequent calls are no-ops.
+        // Locate chapter container once; subsequent calls are no-ops.
         chapterTitleContainer.updateContainerRef(sourceButtonViewGroup);
-        videoHeadingContainer.updateContainerRef(sourceButtonViewGroup);
 
         return sourceButtonViewGroup;
     }
