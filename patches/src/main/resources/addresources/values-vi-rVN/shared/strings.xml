@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Lịch sử tìm kiếm đang trống</string>
   <string name="morphe_settings_search_empty_history_summary">Để lưu lịch sử tìm kiếm, nhập từ khoá tìm kiếm và bấm Enter</string>
   <string name="morphe_settings_search_history_title">Hiện lịch sử tìm kiếm cài đặt</string>
-  <string name="morphe_settings_search_history_summary_on">Lịch sử tìm kiếm cài đặt được hiển thị</string>
-  <string name="morphe_settings_search_history_summary_off">Lịch sử tìm kiếm cài đặt không được hiển thị</string>
   <string name="morphe_show_menu_icons_title">Hiện biểu tượng cài đặt Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Các biểu tượng cài đặt được hiển thị</string>
-  <string name="morphe_show_menu_icons_summary_off">Các biểu tượng cài đặt không được hiển thị</string>
   <string name="morphe_language_title">Ngôn ngữ thiết lập Morphe</string>
   <string name="morphe_language_user_dialog_message">"Một số ngôn ngữ có thể bị thiếu hoặc chưa hoàn thiện.
 
@@ -88,16 +84,11 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_settings_about_licenses_loading">Đang tải...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Gỡ lỗi</string>
-  <string name="morphe_debug_screen_summary">Bật hoặc tắt tùy chọn gỡ lỗi</string>
-  <string name="morphe_debug_title">Nhật ký gỡ lỗi</string>
-  <string name="morphe_debug_summary_on">Nhật ký gỡ lỗi đã bật</string>
-  <string name="morphe_debug_summary_off">Nhật ký gỡ lỗi đã tắt</string>
+  <string name="morphe_debug_screen_summary">Cấu hình các tùy chọn nâng cao cho nhà phát triển và nhật ký chẩn đoán</string>
+  <string name="morphe_debug_title">Bật ghi nhật ký gỡ lỗi</string>
   <string name="morphe_debug_stacktrace_title">Ghi nhật ký gỡ lỗi (Stack Trace)</string>
-  <string name="morphe_debug_stacktrace_summary_on">Nhật ký gỡ lỗi có chứa stack trace</string>
-  <string name="morphe_debug_stacktrace_summary_off">Nhật ký gỡ lỗi không chứa stack trace</string>
+  <string name="morphe_debug_stacktrace_summary">Bao gồm các dấu vết ngăn xếp trong nhật ký gỡ lỗi để giúp xác định lỗi</string>
   <string name="morphe_debug_toast_on_error_title">Hiện thông báo ngắn về lỗi Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Thông báo ngắn sẽ hiện nếu xảy ra lỗi</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Thông báo ngắn không hiện nếu xảy ra lỗi</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Tắt thông báo lỗi sẽ ẩn mọi thông báo lỗi từ Morphe.
 
 Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
@@ -133,15 +124,21 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nBấm tiếp tục để tắt tối ưu hóa."</string>
   <string name="gms_core_dialog_continue_text">Tiếp tục</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Hộp thoại tối ưu hoá pin</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Hộp thoại tối ưu hoá pin MicroG đã được hiển thị</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Hộp thoại tối ưu hoá pin MicroG không được hiển thị</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Hiển thị hộp thoại tối ưu hóa pin</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tắt tùy chọn này sẽ ẩn thông báo tối ưu hoá pin cho MicroG.
 
 Nếu bạn vẫn chưa tắt tối ưu hóa pin, một số lỗi có thể xẩy ra như:
 • Ứng dụng tự tắt bất chợt
 • Không nhận được thông báo
 • Không phát được trong nền"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Xử lý liên kết ứng dụng</string>
+  <string name="morphe_link_handling_summary">Cấu hình ứng dụng nào mở các liên kết</string>
+  <string name="morphe_link_handling_step1_title">Bước 1: Tắt liên kết ứng dụng gốc</string>
+  <string name="morphe_link_handling_step1_message">Mở cài đặt của ứng dụng gốc và tắt tất cả các liên kết miền</string>
+  <string name="morphe_link_handling_step2_title">Bước 2: Bật liên kết ứng dụng đã vá</string>
+  <string name="morphe_link_handling_step2_message">Mở cài đặt của ứng dụng đã vá và bật tất cả các liên kết miền</string>
+  <string name="morphe_link_handling_open">Mở cài đặt</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Cảnh báo thử nghiệm 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Bạn đang dùng phiên bản thử nghiệm là &lt;b&gt;%1$s&lt;/b&gt; ⚠️

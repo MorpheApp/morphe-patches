@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">История поиска пуста</string>
   <string name="morphe_settings_search_empty_history_summary">Для сохранения истории поиска введите поисковый запрос и нажмите Enter</string>
   <string name="morphe_settings_search_history_title">Показать историю поиска настроек</string>
-  <string name="morphe_settings_search_history_summary_on">История поиска настроек показана</string>
-  <string name="morphe_settings_search_history_summary_off">История поиска настроек скрыта</string>
   <string name="morphe_show_menu_icons_title">Показать иконки в настройках Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Иконки в настройках Morphe показаны</string>
-  <string name="morphe_show_menu_icons_summary_off">Иконки в настройках Morphe скрыты</string>
   <string name="morphe_language_title">Язык настроек Morphe</string>
   <string name="morphe_language_user_dialog_message">"Переводы для некоторых языков могут быть неполными или отсутствовать.
 
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">Загрузка...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отладка</string>
-  <string name="morphe_debug_screen_summary">Включить или отключить параметры отладки</string>
+  <string name="morphe_debug_screen_summary">Настроить расширенные параметры разработчика и журналы диагностики</string>
   <string name="morphe_debug_title">Включить журналы отладки</string>
-  <string name="morphe_debug_summary_on">Журналы отладки включены</string>
-  <string name="morphe_debug_summary_off">Журналы отладки отключены</string>
   <string name="morphe_debug_stacktrace_title">Трассировка стека журнала отладки</string>
-  <string name="morphe_debug_stacktrace_summary_on">Журналы отладки содержат трассировку стека</string>
-  <string name="morphe_debug_stacktrace_summary_off">Журналы отладки не содержат трассировку стека</string>
+  <string name="morphe_debug_stacktrace_summary">Включает трассировки стека в журналы отладки, чтобы помочь выявить ошибки</string>
   <string name="morphe_debug_toast_on_error_title">Показать всплывающее уведомление при ошибке Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Всплывающее уведомление при возникновении ошибки Morphe показано</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Всплывающее уведомление при возникновении ошибки Morphe скрыто</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Отключение всплывающих уведомлений об ошибках скроет все сообщения об ошибках Morphe.
 
 Вы не будете уведомлены о каких-либо непредвиденных событиях."</string>
@@ -141,15 +132,21 @@ Second \"item\" text"</string>
 
 Нажмите кнопку \"Продолжить\" и разрешите изменения оптимизации."</string>
   <string name="gms_core_dialog_continue_text">Продолжить</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Диалоговое окно оптимизации батареи</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Диалоговое окно оптимизации батареи MicroG показано</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Диалоговое окно оптимизации батареи MicroG скрыто</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Показать диалоговое окно оптимизации батареи</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Выключение этой функции скроет запрос оптимизации батареи MicroG.
 
 Если оптимизацию батареи не изменить, вы можете столкнуться с такими проблемами:
 • Приложение может случайно закрываться
 • Уведомления могут не работать
 • Фоновое воспроизведение может не работать"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Обработка ссылок в приложении</string>
+  <string name="morphe_link_handling_summary">Настройте приложение, которое будет открывать ссылки</string>
+  <string name="morphe_link_handling_step1_title">Шаг 1: Отключите исходные ссылки приложений</string>
+  <string name="morphe_link_handling_step1_message">Откройте настройки исходного приложения и отключите все доменные ссылки</string>
+  <string name="morphe_link_handling_step2_title">Шаг 2: Включите пропатченные ссылки приложений</string>
+  <string name="morphe_link_handling_step2_message">Откройте настройки пропатченного приложения и включите все доменные ссылки</string>
+  <string name="morphe_link_handling_open">Открыть настройки</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Экспериментальное предупреждение 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Вы используете экспериментальную версию программы⚠️ &lt;b&gt;%1$s&lt;/b&gt;

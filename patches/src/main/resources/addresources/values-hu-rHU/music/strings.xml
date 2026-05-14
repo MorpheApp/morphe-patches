@@ -30,26 +30,19 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_misc_title">Egyéb</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">A „Music Premium beszerzése” címke elrejtése</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">A Zen Music Premium felirat el van rejtve</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">A Zen Music Premium felirat megjelenik</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Videóhirdetések elrejtése</string>
-  <string name="morphe_music_hide_video_ads_summary_on">Videóhirdetések elrejtve</string>
-  <string name="morphe_music_hide_video_ads_summary_off">A videóhirdetések láthatók</string>
   <!-- interaction.crossfade.crossfadePatch -->
-  <string name="morphe_music_crossfade_screen_title">Átváltozás</string>
-  <string name="morphe_music_crossfade_screen_summary">Simán keverje össze a zeneszámokat egymással</string>
-  <string name="morphe_music_crossfade_enabled_title">Engedje be az átváltozást</string>
-  <string name="morphe_music_crossfade_enabled_summary_on">A zeneszámok átváltoznak egymásba</string>
-  <string name="morphe_music_crossfade_enabled_summary_off">Az átváltozás ki van kapcsolva</string>
-  <string name="morphe_music_crossfade_curve_title">Halványulási görbe</string>
-  <string name="morphe_music_crossfade_curve_summary">A zeneszámok közötti hangerőszint átmenete hogyan történik</string>
-  <string name="morphe_music_crossfade_curve_entry_equal_power">Egyenlő erő</string>
-  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Finom tartás</string>
-  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Gyengéd lelassulás</string>
-  <string name="morphe_music_crossfade_curve_entry_smoothstep">Simább S-görbe</string>
+  <string name="morphe_music_crossfade_screen_title">Áttűnés</string>
+  <string name="morphe_music_crossfade_screen_summary">Állítsd be a számok közötti fokozatos áttűnés módját</string>
+  <string name="morphe_music_crossfade_enabled_title">Áttűnés engedélyezése</string>
+  <string name="morphe_music_crossfade_curve_title">Áttűnési görbe</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Egyenletes teljesítmény</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Enyhe kitartás</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Lágy átmenet</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Lágy S-görbe</string>
   <!-- Empty string because custom preference handles the title itself -->
-  <string name="morphe_music_crossfade_duration_title">Áthallás időtartama</string>
+  <string name="morphe_music_crossfade_duration_title">Áttűnés időtartama</string>
   <string name="morphe_crossfade_duration_250ms">250 ezredmásodperc</string>
   <string name="morphe_crossfade_duration_500ms">500 ezredmásodperc</string>
   <string name="morphe_crossfade_duration_750ms">750 ezredmásodperc</string>
@@ -63,43 +56,30 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 másodperc</string>
   <string name="morphe_crossfade_duration_9000ms">9 másodperc</string>
   <string name="morphe_crossfade_duration_10000ms">10 másodperc</string>
-  <string name="morphe_music_crossfade_on_skip_title">Áthallás manuális ugráskor</string>
-  <string name="morphe_music_crossfade_on_skip_summary_on">Ha manuálisan ugrasz, az áthallás lejátszódik</string>
-  <string name="morphe_music_crossfade_on_skip_summary_off">Manuális ugrások nem okoznak áthallást</string>
-  <string name="morphe_music_crossfade_on_auto_advance_title">Áthallás automatikus lejátszáson</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Áthallás lejátszódik, ha egy zeneszám véget ér, és a következőre ugorasz</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Az automatikus lejátszás nem okoz áthallást</string>
-  <string name="morphe_music_crossfade_session_control_title">Műveleti vezérlés</string>
-  <string name="morphe_music_crossfade_session_control_summary_on">"Hosszan nyomd meg a keverési gombot a kereszthallás szüneteltetéséhez vagy folytatásához"</string>
-  <string name="morphe_music_crossfade_session_control_summary_off">A műveleti vezérlés le van tiltva</string>
-  <string name="morphe_music_crossfade_paused_toast">A crossfade szüneteltetve van az aktuális session alatt</string>
-  <string name="morphe_music_crossfade_resumed_toast">A crossfade folytatódik</string>
-  <string name="morphe_music_crossfade_video_mode_disabled_toast">A videó mód nem elérhető, amíg a crossfade engedélyezve van</string>
+  <string name="morphe_music_crossfade_on_skip_title">Áttűnés kézi léptetéskor</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Alkalmazza az áttűnés effektust, amikor kézzel léptetsz a következő számra</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Áttűnés automatikus léptetéskor</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Alkalmazza az áttűnés effektust, amikor egy szám magától véget ér</string>
+  <string name="morphe_music_crossfade_session_control_title">Lejátszás kezelése</string>
+  <string name="morphe_music_crossfade_session_control_summary">Az áttűnés megállításához vagy indításához tartsd nyomva a véletlenszerű lejátszás gombot</string>
+  <string name="morphe_music_crossfade_paused_toast">Az áttűnés szünetel ebben a munkamenetben</string>
+  <string name="morphe_music_crossfade_resumed_toast">Áttűnés folytatva</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Bekapcsolt áttűnés mellett a videómód nem használható</string>
   <string name="morphe_music_crossfade_about_title">Névjegy</string>
-  <string name="morphe_music_crossfade_about_summary">"A kereszthallás a YouTube Music 8.x verziójában elérhető.
+  <string name="morphe_music_crossfade_about_summary">"Az áttűnés a YouTube Music 8.x verziójától érhető el.
 
-Hosszan nyomd meg a keverési gombot a kereszthallás letiltásához/engedélyezéséhez.
+Az áttűnés ki- és bekapcsolásához tartsd nyomva a véletlenszerű lejátszás gombot.
 
-Megvalósította: VazerOG"</string>
+A funkciót készítette: VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
-  <string name="morphe_music_play_permanent_repeat_title">Állandó ismétlés engedélyezése</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">Állandó ismétlés engedélyezve</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">Az állandó ismétlés le van tiltva</string>
+  <string name="morphe_music_play_permanent_repeat_title">Állandó ismétlés bekapcsolása</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Átküldés gomb elrejtése</string>
-  <string name="morphe_music_hide_cast_button_summary_on">Az átküldés gomb elrejtve</string>
-  <string name="morphe_music_hide_cast_button_summary_off">Az átküldés gomb látható</string>
   <string name="morphe_music_hide_history_button_title">Előzmények gomb elrejtése</string>
-  <string name="morphe_music_hide_history_button_summary_on">Előzmények gomb elrejtve</string>
-  <string name="morphe_music_hide_history_button_summary_off">Az előzmények gomb látható</string>
-  <string name="morphe_music_hide_notification_button_title">Értesítési gomb elrejtése</string>
-  <string name="morphe_music_hide_notification_button_summary_on">Értesítési gomb elrejtve</string>
-  <string name="morphe_music_hide_notification_button_summary_off">Az értesítési gomb látható</string>
+  <string name="morphe_music_hide_notification_button_title">Értesítés gomb elrejtése</string>
   <string name="morphe_music_hide_search_button_title">Keresés gomb elrejtése</string>
-  <string name="morphe_music_hide_search_button_summary_on">Keresés gomb elrejtve</string>
-  <string name="morphe_music_hide_search_button_summary_off">A keresés gomb látható</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Kezdőlap módosítása</string>
+  <string name="morphe_change_start_page_title">Kezdőlap</string>
   <string name="morphe_change_start_page_entry_default">Alapértelmezett</string>
   <string name="morphe_change_start_page_entry_charts">Sikerlisták</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Epizódok későbbre</string>
@@ -112,54 +92,30 @@ Megvalósította: VazerOG"</string>
   <string name="morphe_change_start_page_entry_subscriptions">Feliratkozások</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Kategóriasáv elrejtése</string>
-  <string name="morphe_music_hide_category_bar_summary_on">A kategóriasáv rejtve van</string>
-  <string name="morphe_music_hide_category_bar_summary_off">A kategóriasáv látható</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Minilejátszó színének módosítása</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">A minilejátszó színe megegyezik a teljes képernyős lejátszóéval</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">A minilejátszó alapértelmezett színt használ</string>
+  <string name="morphe_music_change_miniplayer_color_summary">A minilejátszó színe megegyezik a teljes képernyős lejátszóéval</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
   <string name="morphe_music_miniplayer_next_button_title">Következő gomb megjelenítése a mini lejátszóban</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">​A következő gomb látható a mini lejátszóban</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">A következő gomb nem látható a mini lejátszóban</string>
   <string name="morphe_music_miniplayer_previous_button_title">Előző gomb megjelenítése a mini lejátszóban</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">Az előző gomb látható a mini lejátszóban</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">Az előző gomb nem látható a mini lejátszóban</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Kényszerített mini lejátszó használata</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">A mini lejátszó kis méretű marad a lejátszás váltásakor</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">A mini lejátszó teljes képernyősre vált a lejátszás váltásakor</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Megakadályozza, hogy a lejátszó automatikusan teljes képernyősre kapcsoljon, amikor egy új szám kezdődik</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigációs sáv</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Navigációs sáv gombjainak elrejtése vagy módosítása</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Válassza ki, mely gombok jelenjenek meg a navigációs sávban</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">Home elrejtése</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Home gomb elrejtve</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">A Home gomb látható</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Rejtse el a Főoldal gombot</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">Minták elrejtése</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Minták gomb elrejtve</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Minták gomb megjelenítve</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Rejtse el a Minták gombot</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">Felfedezés elrejtése</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Felfedezés gomb elrejtve</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">A Felfedezés gomb látható</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Rejtse el a Fedezz fel gombot</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">Könyvtár elrejtése</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">A könyvtár gomb elrejtve</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">A könyvtár gomb megjelenítve</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Rejtse el a Könyvtár gombot</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Frissítés elrejtése</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">A Frissítés gomb elrejtve</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">A Frissítés gomb látható</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Rejtse el a Frissítés gombot</string>
   <string name="morphe_music_hide_navigation_bar_title">Navigációs sáv elrejtése</string>
-  <string name="morphe_music_hide_navigation_bar_summary_on">Navigációs sáv elrejtve</string>
-  <string name="morphe_music_hide_navigation_bar_summary_off">A navigációs sáv látható</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Navigációs gombok feliratainak elrejtése</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Feliratok elrejtve</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">A feliratok láthatóak</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Frissítés gomb elrejtése</string>
-  <string name="morphe_music_hide_upgrade_button_summary_on">A gomb rejtve van</string>
-  <string name="morphe_music_hide_upgrade_button_summary_off">A gomb látható</string>
 </resources>

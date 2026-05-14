@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">História vyhľadávania je prázdna</string>
   <string name="morphe_settings_search_empty_history_summary">Pre uloženie do histórie vyhľadávania zadajte vyhľadávací dotaz a stlačte Enter</string>
   <string name="morphe_settings_search_history_title">Zobraziť históriu vyhľadávania v nastaveniach</string>
-  <string name="morphe_settings_search_history_summary_on">História vyhľadávania v nastaveniach sa zobrazuje</string>
-  <string name="morphe_settings_search_history_summary_off">História vyhľadávania v nastaveniach sa nezobrazuje</string>
   <string name="morphe_show_menu_icons_title">Zobraziť ikony nastavení Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Ikony nastavení sa zobrazujú</string>
-  <string name="morphe_show_menu_icons_summary_off">Ikony nastavení sa nezobrazujú</string>
   <string name="morphe_language_title">Jazyk Morphe</string>
   <string name="morphe_language_user_dialog_message">"Preklady pre niektoré jazyky sa môžu byť neúplné.
 
@@ -88,16 +84,11 @@ Ak chcete prekladať nové jazyky alebo vylepšiť existujúce preklady, navšt�
   <string name="morphe_settings_about_licenses_loading">Načítava sa...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ladenie chýb</string>
-  <string name="morphe_debug_screen_summary">Povoliť alebo zakázať možnosti ladenia</string>
+  <string name="morphe_debug_screen_summary">Konfigurujte rozšírené možnosti pre vývojárov a diagnostické protokoly</string>
   <string name="morphe_debug_title">Zaznamenávanie ladiacich informácií</string>
-  <string name="morphe_debug_summary_on">Záznamy ladenia sú povolené</string>
-  <string name="morphe_debug_summary_off">Záznamy ladenia nie sú povolené</string>
   <string name="morphe_debug_stacktrace_title">Záznamy ladenia budú obsahovať trasovacie stopy</string>
-  <string name="morphe_debug_stacktrace_summary_on">Záznamy ladenia budú obsahovať trasovacie stopy</string>
-  <string name="morphe_debug_stacktrace_summary_off">Záznamy ladenia nebudú obsahovať trasovacie stopy</string>
+  <string name="morphe_debug_stacktrace_summary">Zahrňuje trasovanie zásobníka v protokoloch ladenia, aby sa pomohlo pri identifikácii chýb</string>
   <string name="morphe_debug_toast_on_error_title">Zobraziť oznámenie v prípade chyby Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Ak sa vyskytne chyba, zobrazí sa upozornenie</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Ak sa vyskytne chyba, nezobrazí sa upozornenie</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Vypnutím chybových upozornení skryjete všetky notifikácie Morphe o chybách.
 
 Nebudete informovaný o žiadnych nečakaných udalostiach."</string>
@@ -142,14 +133,20 @@ Vypnutie optimalizácie batérie pre microG neovplyvní spotrebu batérie.
 Ťuknite na tlačidlo pokračovať a povoľte zmeny optimalizácie."</string>
   <string name="gms_core_dialog_continue_text">Pokračovať</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Dialógové okno optimalizácie batérie</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialógové okno optimalizácie batérie pre microG sa zobrazuje</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialógové okno optimalizácie batérie pre MicroG sa nezobrazuje</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Vypnutím sa skryje výzva MicroG na optimalizáciu batérie.
 
 Ak nezmeníte optimalizácie batérie môže sa stať, že:
 • aplikácia sa môže náhodne zatvoriť,
 • upozornenia nebudú fungovať,
 • prehrávanie na pozadí nemusí fungovať"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Obsluha odkazov aplikáciou</string>
+  <string name="morphe_link_handling_summary">Konfigurácia, ktorá aplikácia otvára odkazy</string>
+  <string name="morphe_link_handling_step1_title">Krok 1: Vypnite odkazy pôvodnej aplikácie</string>
+  <string name="morphe_link_handling_step1_message">Otvorte nastavenia pôvodnej aplikácie a vypnite všetky odkazy domén</string>
+  <string name="morphe_link_handling_step2_title">Krok 2: Zapnite odkazy opravenej aplikácie</string>
+  <string name="morphe_link_handling_step2_message">Otvorte nastavenia opravenej aplikácie a zapnite všetky odkazy domén</string>
+  <string name="morphe_link_handling_open">Otvorte nastavenia</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Experimentálna výstraha 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Používate experimentálnu verziu aplikácie ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

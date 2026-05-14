@@ -30,20 +30,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_misc_title">متنوعة</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">إخفاء تسمية \'الحصول على Music Premium\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">\u0625\u0635\u0644\u0645 \u0645\u0648\u0633\u064a\u0643 \u0627\u0644\u0645\u0633\u064a\u062d \u0645\u0635\u0646\u0648\u0627\u0647</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">\u0625\u0635\u0644\u0645 \u0645\u0648\u0633\u064a\u0643 \u0627\u0644\u0645\u0633\u064a\u062d \u0645\u0635\u0646\u0648\u0627\u0647\u0645</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
-  <string name="morphe_music_hide_video_ads_summary_on">تم إخفاء إعلانات الفيديو</string>
-  <string name="morphe_music_hide_video_ads_summary_off">يتم عرض إعلانات الفيديو</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">تلاشي</string>
-  <string name="morphe_music_crossfade_screen_summary">امزج المسارات بسلاسة في بعضها البعض</string>
+  <string name="morphe_music_crossfade_screen_summary">خصّص كيفية انتقال المسارات بسلاسة إلى بعضها البعض</string>
   <string name="morphe_music_crossfade_enabled_title">تفعيل التلاشي</string>
-  <string name="morphe_music_crossfade_enabled_summary_on">تتلاشى المسارات في بعضها البعض</string>
-  <string name="morphe_music_crossfade_enabled_summary_off">التلاشي معطل</string>
   <string name="morphe_music_crossfade_curve_title">منحنى التلاشي</string>
-  <string name="morphe_music_crossfade_curve_summary">كيف ينتقل مستوى الصوت بين المسارات</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">قوة متساوية</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">تأخير لطيف</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">تسهيل لطيف</string>
@@ -64,14 +57,11 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_9000ms">9 ثوانٍ</string>
   <string name="morphe_crossfade_duration_10000ms">10 ثوانٍ</string>
   <string name="morphe_music_crossfade_on_skip_title">التعتيم عند تخطي يدوي</string>
-  <string name="morphe_music_crossfade_on_skip_summary_on">يتم تشغيل التعتيم عند تخطي المسارات يدويًا</string>
-  <string name="morphe_music_crossfade_on_skip_summary_off">لن يتم تشغيل التعتيم عند التخطي اليدوي</string>
+  <string name="morphe_music_crossfade_on_skip_summary">يطبّق تأثير التلاشي التدريجي عند الانتقال يدويًا إلى المسار التالي</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">التعتيم أثناء التقديم التلقائي</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_on">يتم تشغيل التعتيم عند انتهاء المسار والانتقال إلى المسار التالي</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_off">لن يتم تشغيل التعتيم أثناء التقديم التلقائي</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">يطبّق تأثير التلاشي التدريجي عند انتهاء مسار بشكل طبيعي</string>
   <string name="morphe_music_crossfade_session_control_title">التحكم في الجلسة</string>
-  <string name="morphe_music_crossfade_session_control_summary_on">"اضغط مع الاستمرار على زر التشغيل العشوائي لإيقاف أو استئناف التعتيم"</string>
-  <string name="morphe_music_crossfade_session_control_summary_off">تم تعطيل التحكم في الجلسة</string>
+  <string name="morphe_music_crossfade_session_control_summary">اضغط مطولاً على زر التشغيل العشوائي للإيقاف المؤقت أو استئناف التلاشي التدريجي</string>
   <string name="morphe_music_crossfade_paused_toast">تم إيقاف التلاشي التدريجي لهذه الجلسة</string>
   <string name="morphe_music_crossfade_resumed_toast">تم استئناف التلاشي التدريجي</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">وضع الفيديو غير متاح أثناء تمكين التلاشي التدريجي</string>
@@ -83,23 +73,13 @@ Second \"item\" text"</string>
 تنفيذ الميزة بواسطة VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">تمكين التكرار الدائم</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">تم تمكين التكرار الدائم</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">تم تعطيل التكرار الدائم</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">إخفاء زر البث</string>
-  <string name="morphe_music_hide_cast_button_summary_on">تم إخفاء زر البث</string>
-  <string name="morphe_music_hide_cast_button_summary_off">يتم عرض زر البث</string>
   <string name="morphe_music_hide_history_button_title">إخفاء زر السجل</string>
-  <string name="morphe_music_hide_history_button_summary_on">زر السجل مخفي</string>
-  <string name="morphe_music_hide_history_button_summary_off">زر السجل ظاهر</string>
   <string name="morphe_music_hide_notification_button_title">إخفاء زر الإشعارات</string>
-  <string name="morphe_music_hide_notification_button_summary_on">تم إخفاء زر الإشعارات</string>
-  <string name="morphe_music_hide_notification_button_summary_off">يتم عرض زر الإشعارات</string>
   <string name="morphe_music_hide_search_button_title">إخفاء زر البحث</string>
-  <string name="morphe_music_hide_search_button_summary_on">تم إخفاء زر البحث</string>
-  <string name="morphe_music_hide_search_button_summary_off">يتم عرض زر البحث</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">تغيير صفحة البداية</string>
+  <string name="morphe_change_start_page_title">صفحة البدء</string>
   <string name="morphe_change_start_page_entry_default">الافتراضية</string>
   <string name="morphe_change_start_page_entry_charts">الرسوم البيانية</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">حلقات للمشاهدة لاحقًا</string>
@@ -112,54 +92,30 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_subscriptions">الاشتراكات</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">إخفاء شريط الفئات</string>
-  <string name="morphe_music_hide_category_bar_summary_on">تم إخفاء شريط الفئات</string>
-  <string name="morphe_music_hide_category_bar_summary_off">يتم عرض شريط الفئات</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">تغيير لون المشغل المصغر</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">يتطابق لون المشغل المصغر مع المشغل بملء الشاشة</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">يستخدم المشغل المصغر اللون الافتراضي</string>
+  <string name="morphe_music_change_miniplayer_color_summary">يتطابق لون المشغل المصغر مع المشغل بملء الشاشة</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
   <string name="morphe_music_miniplayer_next_button_title">عرض زر التالي في المشغل المصغر</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">يتم عرض زر التالي في المشغل المصغر</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">لا يتم عرض زر التالي في المشغل المصغر</string>
   <string name="morphe_music_miniplayer_previous_button_title">عرض زر السابق في المشغل المصغر</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">يتم عرض زر السابق في المشغل المصغر</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">لا يتم عرض زر السابق في المشغل المصغر</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">تمكين فرض المشغل المصغر</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">يبقى المشغل المصغر مصغرًا عند تغيير التشغيل</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">يتوسع المشغل المصغر إلى ملء الشاشة عند تغيير التشغيل</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">يمنع المشغل من التوسع تلقائيًا إلى ملء الشاشة عند بدء مسار جديد</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">شريط التنقل</string>
-  <string name="morphe_music_navigation_bar_screen_summary">إخفاء أزرار شريط التنقل أو تغييرها</string>
+  <string name="morphe_music_navigation_bar_screen_summary">اختر الأزرار التي تظهر في شريط التنقل</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">إخفاء الصفحة الرئيسية</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">تم إخفاء زر الصفحة الرئيسية</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">يتم عرض زر الصفحة الرئيسية</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">إخفاء زر الصفحة الرئيسية</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">إخفاء المقاطع</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">زر \"المقتطفات\" مخفي</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">زر \"المقتطفات\" ظاهر</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">إخفاء زر النماذج</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">إخفاء استكشاف</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">زر \"استكشاف\" مخفي</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">زر \"استكشاف\" ظاهر</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">إخفاء زر الاستكشاف</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">إخفاء المكتبة</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">زر \"المكتبة\" مخفي</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">زر \"المكتبة\" ظاهر</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">إخفاء زر المكتبة</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">إخفاء ترقية</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">زر \"الترقية\" مخفي</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">زر \"الترقية\" ظاهر</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">إخفاء زر الترقية</string>
   <string name="morphe_music_hide_navigation_bar_title">إخفاء شريط التنقل</string>
-  <string name="morphe_music_hide_navigation_bar_summary_on">شريط التنقل مخفي</string>
-  <string name="morphe_music_hide_navigation_bar_summary_off">شريط التنقل ظاهر</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">إخفاء تسميات أزرار التنقل</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">التسميات مخفية</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">التسميات ظاهرة</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">إخفاء زر الترقية</string>
-  <string name="morphe_music_hide_upgrade_button_summary_on">الزر مخفي</string>
-  <string name="morphe_music_hide_upgrade_button_summary_off">الزر معروض</string>
 </resources>

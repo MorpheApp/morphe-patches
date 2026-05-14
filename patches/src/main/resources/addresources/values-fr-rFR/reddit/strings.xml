@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Limitation : Les séparateurs visuels peuvent ne pas être masqués"</string>
   <string name="morphe_remove_notification_dialog_title">Supprimer la boîte de dialogue de suggestion de notification</string>
-  <string name="morphe_remove_notification_dialog_summary">Supprime automatiquement la boîte de dialogue de suggestion de notifications qui apparaît lors de la visite d’un subreddit en la fermant automatiquement</string>
-  <string name="morphe_show_view_count_title">Afficher le nombre de vues</string>
-  <string name="morphe_show_view_count_summary">"Affiche le nombre de vues des Posts
-
-Limitation : Affiché uniquement si la réponse de l’API inclut le nombre de vues"</string>
+  <string name="morphe_remove_notification_dialog_summary">Ferme automatiquement la boîte de dialogue de suggestion de notifications lors de la visite d’un subreddit</string>
+  <string name="morphe_show_view_count_title">Afficher le nombre de vues sur les posts</string>
+  <string name="morphe_show_view_count_summary">Limitation : Disponible uniquement si la réponse de l’API inclut le nombre de vues</string>
   <string name="morphe_remove_nsfw_dialog_title">Supprimer la boîte de dialogue d’avertissement NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Supprime automatiquement la boîte de dialogue d’avertissement NSFW qui apparaît lors de la visite d’un subreddit en l\'acceptant automatiquement</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Accepte automatiquement l’avertissement de contenu NSFW lors de la visite d’un subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Divers</string>
   <string name="morphe_about_title">À propos</string>
   <string name="morphe_about_summary">Version de patch et liens officiels</string>
   <string name="morphe_sanitize_sharing_links_title">Nettoyer les liens partagés</string>
-  <string name="morphe_sanitize_sharing_links_summary">Nettoie les liens de partage en retirant les paramètres de suivi</string>
+  <string name="morphe_sanitize_sharing_links_summary">Supprime les paramètres de suivi des liens partagés</string>
   <string name="morphe_open_links_directly_title">Ouvrir les liens directement</string>
-  <string name="morphe_open_links_directly_summary">Ignore les URL de redirection dans les liens externes</string>
+  <string name="morphe_open_links_directly_summary">Contourne les URL de redirection lors de l’ouverture de liens externes</string>
   <string name="morphe_open_links_externally_title">Ouvrir les liens à l’extérieur</string>
-  <string name="morphe_open_links_externally_summary">Ouvre les liens dans votre navigateur plutôt que dans le navigateur intégré à l’application</string>
+  <string name="morphe_open_links_externally_summary">Ouvre les liens dans votre navigateur au lieu du navigateur intégré à l’application</string>
 </resources>

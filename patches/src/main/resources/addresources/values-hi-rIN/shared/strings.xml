@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">खोज इतिहास खाली है</string>
   <string name="morphe_settings_search_empty_history_summary">खोज इतिहास को सहेजने के लिए, खोज क्वेरी टाइप करें और एंटर प्रेस करें</string>
   <string name="morphe_settings_search_history_title">सेटिंग्स खोज इतिहास दिखाएं</string>
-  <string name="morphe_settings_search_history_summary_on">सेटिंग्स खोज इतिहास दिखाया जा रहा है</string>
-  <string name="morphe_settings_search_history_summary_off">सेटिंग्स खोज इतिहास दिखाया नहीं जा रहा है</string>
   <string name="morphe_show_menu_icons_title">Morphe सेटिंग आइकन दिखाएं</string>
-  <string name="morphe_show_menu_icons_summary_on">सेटिंग आइकन दिखाए जा रहे हैं</string>
-  <string name="morphe_show_menu_icons_summary_off">सेटिंग आइकन दिखाए नहीं जा रहे हैं</string>
   <string name="morphe_language_title">Morphe भाषा</string>
   <string name="morphe_language_user_dialog_message">"कुछ भाषाओं के अनुवाद可能 अदृश्य या अपूर्ण हो सकते हैं।
 
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">लोड हो रहा है...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">디버깅</string>
-  <string name="morphe_debug_screen_summary">디버깅 옵션을 활성 या 비활성 करें</string>
-  <string name="morphe_debug_title">डिबगिंग</string>
-  <string name="morphe_debug_summary_on">डिबग लॉग्स एनबल किए गए हैं</string>
-  <string name="morphe_debug_summary_off">डिबग लॉग्स डिसेबल किए गए हैं</string>
+  <string name="morphe_debug_screen_summary">उन्नत डेवलपर विकल्पों और नैदानिक लॉग को कॉन्फ़िगर करें</string>
+  <string name="morphe_debug_title">डीबग लॉगिंग सक्षम करें</string>
   <string name="morphe_debug_stacktrace_title">डिबग लॉग स्टैक ट्रेस</string>
-  <string name="morphe_debug_stacktrace_summary_on">डिबग लॉग्स प्रोटो बफर को शामिल करते हैं</string>
-  <string name="morphe_debug_stacktrace_summary_off">डिबग लॉग्स प्रोटो बफर को शामिल नहीं करते हैं</string>
+  <string name="morphe_debug_stacktrace_summary">त्रुटियों की पहचान करने में मदद करने के लिए डीबग लॉग में स्टैक ट्रेस शामिल हैं</string>
   <string name="morphe_debug_toast_on_error_title">Morphe त्रुटि पर टोस्ट दिखाएं</string>
-  <string name="morphe_debug_toast_on_error_summary_on">त्रुटि होने पर टोस्ट दिखाया जाता है</string>
-  <string name="morphe_debug_toast_on_error_summary_off">त्रुटि होने पर टोस्ट नहीं दिखाया जाता है</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"त्रुटि टोस्ट्स को बंद करना मorphe त्रुटि सूचनाओं को छिपाता है।
 
 आप अप्रत्याशित घटनाओं से सूचित नहीं किए जाएंगे।"</string>
@@ -141,15 +132,21 @@ Second \"item\" text"</string>
 
 टाप करें और ऑप्टिमाइज़ेशन बदलने की अनुमति दें।"</string>
   <string name="gms_core_dialog_continue_text">जारी रखें</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">बैटरी अनुकूलन संवाद</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG बैटरी अनुकूलन संवाद दिखाया गया है</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG बैटरी अनुकूलन संवाद नहीं दिखाया गया है</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">बैटरी ऑप्टिमाइज़ेशन संवाद दिखाएं</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"इसे अक्षम करने से MicroG बैटरी अनुकूलन प्रॉम्प्ट छिप जाएगा।
 
 यदि बैटरी अनुकूलन नहीं बदले गए हैं तो आपको निम्नलिखित अनुभव हो सकते हैं:
 • ऐप बेतरतीब ढंग से बंद हो सकता है
 • सूचनाएं काम नहीं कर सकती हैं
 • पृष्ठभूमि प्लेबैक काम नहीं कर सकता है"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">ऐप लिंक हैंडलिंग</string>
+  <string name="morphe_link_handling_summary">लिंक खोलने के लिए ऐप कॉन्फ़िगर करें</string>
+  <string name="morphe_link_handling_step1_title">चरण 1: मूल ऐप लिंक अक्षम करें</string>
+  <string name="morphe_link_handling_step1_message">मूल ऐप की सेटिंग खोलें और सभी डोमेन लिंक अक्षम करें</string>
+  <string name="morphe_link_handling_step2_title">चरण 2: पैच किए गए ऐप लिंक सक्षम करें</string>
+  <string name="morphe_link_handling_step2_message">पैच किए गए ऐप की सेटिंग खोलें और सभी डोमेन लिंक सक्षम करें</string>
+  <string name="morphe_link_handling_open">सेटिंग खोलें</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 प्रयोगात्मक चेतावनी 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"आप ⚠️ &lt;b&gt;%1$s&lt;/b&gt; के प्रायोगिक ऐप संस्करण का उपयोग कर रहे हैं।

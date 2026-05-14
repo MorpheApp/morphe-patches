@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Обмеження: Візуальні роздільники можуть не приховуватися"</string>
   <string name="morphe_remove_notification_dialog_title">Видалити діалог пропозиції сповіщень</string>
-  <string name="morphe_remove_notification_dialog_summary">Видаляє діалог пропозиції сповіщень, який з’являється під час відвідування субреддіту, автоматично відхиляючи його</string>
-  <string name="morphe_show_view_count_title">Показати кількість переглядів</string>
-  <string name="morphe_show_view_count_summary">"Показує кількість переглядів для дописів
-
-Обмеження: Показується лише якщо відповідь API містить кількість переглядів"</string>
+  <string name="morphe_remove_notification_dialog_summary">Автоматично закриває діалогове вікно пропозиції сповіщення при відвідуванні сабредіту</string>
+  <string name="morphe_show_view_count_title">Показати кількість переглядів на публікаціях</string>
+  <string name="morphe_show_view_count_summary">Обмеження: Доступно лише якщо відповідь API містить кількість переглядів.</string>
   <string name="morphe_remove_nsfw_dialog_title">Видалити діалог попередження NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Видаляє діалог попередження NSFW, який з’являється під час відвідування субреддіту, автоматично приймаючи його</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Автоматично приймає попередження про NSFW-контент при відвідуванні сабредіта.</string>
   <string name="morphe_screen_miscellaneous_title">Різне</string>
   <string name="morphe_about_title">Про Morphe</string>
   <string name="morphe_about_summary">Версія патчів та офіційні посилання</string>
   <string name="morphe_sanitize_sharing_links_title">Очищення посилань для поширення</string>
-  <string name="morphe_sanitize_sharing_links_summary">Вилучає параметри запиту відстеження з посилань під час поширення посилань</string>
+  <string name="morphe_sanitize_sharing_links_summary">Видаляє параметри запиту відстеження з поширених посилань.</string>
   <string name="morphe_open_links_directly_title">Відкривати посилання напряму</string>
-  <string name="morphe_open_links_directly_summary">Пропускає URL-переадресації у зовнішніх посиланнях</string>
+  <string name="morphe_open_links_directly_summary">Оминає URL-адреси перенаправлення при відкритті зовнішніх посилань.</string>
   <string name="morphe_open_links_externally_title">Відкривати посилання ззовні</string>
-  <string name="morphe_open_links_externally_summary">Відкриває посилання у вашому браузері, а не у вбудованому браузері застосунку</string>
+  <string name="morphe_open_links_externally_summary">Відкриває посилання у вашому браузері замість вбудованого браузера застосунку.</string>
 </resources>

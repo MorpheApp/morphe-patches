@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Kustom</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikon pemberitahuan</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Ikuti ikon aplikasi</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Cocokkan ikon aplikasi</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Pemberitahuan Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Riwayat tontonan Anda tidak sedang disimpan.&lt;br&gt;&lt;br&gt;Hal ini kemungkinan besar disebabkan oleh pemblokir iklan DNS atau proksi jaringan.&lt;br&gt;&lt;br&gt;Untuk memperbaikinya, masukkan daftar putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua pemblokir DNS dan proksi.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Jangan tampilkan lagi</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Palsukan aliran video</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Palsukan klien aliran video untuk mencegah masalah pemutaran</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Konfigurasikan peniruan klien untuk mencegah masalah pemutaran</string>
   <string name="morphe_spoof_video_streams_title">Palsukan aliran video</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Aliran video dipalsukan
+  <string name="morphe_spoof_video_streams_summary">"Menipu YouTube untuk mengirim aliran video yang kompatibel, yang memperbaiki pemutaran bagi sebagian besar pengguna
 
 Jika Anda adalah pengguna YouTube Premium, pengaturan ini mungkin tidak diperlukan"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Aliran video tidak dipalsukan
-
-Pemutaran mungkin tidak berfungsi"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Tidak dapat mengambil aliran klien apa pun</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan pengaturan ini dapat menyebabkan masalah pemutaran.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Nonaktifkan pembaruan pemutar JavaScript</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Pembaruan pemutar JavaScript dinonaktifkan
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Mengunci JavaScript pemutar ke hash lokal alih-alih mengambil pembaruan
 
-• Diperlukan hash player JavaScript yang sah
-• Pemutaran gagal jika hash pemutar JavaScript dicabut di GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Pembaruan pemutar JavaScript diaktifkan</string>
+• Diperlukan hash JavaScript pemutar yang valid
+• Pemutaran gagal jika hash JavaScript pemutar dicabut di GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Pemutar hash JavaScript berlaku selama kurang lebih satu bulan, dan hash yang kedaluwarsa mungkin dicabut oleh GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash pemutar JavaScript</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Masukkan hash pemutar JavaScript yang sah</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Nonaktifkan protokol QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC dinonaktifkan</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Protokol QUIC diaktifkan</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Nonaktifkan audio DRC</string>
-  <string name="morphe_disable_drc_audio_summary_on">Audio DRC dinonaktifkan</string>
-  <string name="morphe_disable_drc_audio_summary_off">Audio DRC diaktifkan</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Paksa bahasa audio asli</string>
-  <string name="morphe_force_original_audio_summary_on">Menggunakan bahasa audio asli</string>
-  <string name="morphe_force_original_audio_summary_off">Menggunakan audio bawaan</string>
+  <string name="morphe_force_original_audio_summary">Selalu memutar trek audio asli video, bukan versi dubbing</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Sembunyikan iklan layar penuh</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Iklan layar penuh disembunyikan</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Iklan layar penuh ditampilkan</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Untuk menggunakan fitur ini, ubah \'Palsukan aliran video\' ke Android Reel atau TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Bersihkan tautan berbagi</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Parameter kueri pelacakan dihapus dari tautan yang dibagikan</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Parameter kueri pelacakan tidak dihapus dari tautan yang dibagikan</string>
+  <string name="morphe_sanitize_sharing_links_summary">Menghapus parameter kueri pelacakan dari tautan yang dibagikan</string>
   <string name="morphe_replace_music_with_youtube_title">Ubah tautan berbagi ke youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Tautan yang dibagikan menggunakan youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Tautan yang dibagikan menggunakan music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Ubah tautan berbagi ke youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Tautan live stream dan Shorts yang dibagikan menggunakan youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Tautan live stream dan Shorts yang dibagikan menggunakan URL aslinya</string>
+  <string name="morphe_replace_links_with_shortener_summary">Memaksa streaming langsung dan Shorts untuk menggunakan format URL pendek youtu.be</string>
 </resources>

@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 সীমাবদ্ধতা: ভিজ্যুয়াল স্পেসার লুকানো নাও যেতে পারে"</string>
   <string name="morphe_remove_notification_dialog_title">নোটিফিকেশন পরামর্শ ডায়ালগ সরান</string>
-  <string name="morphe_remove_notification_dialog_summary">সাবরেডিট ভিজিট করার সময় যে নোটিফিকেশন পরামর্শ ডায়ালগটি দেখায় সেটি স্বয়ংক্রিয়ভাবে বাতিল করে সরিয়ে দেওয়া হয়েছে</string>
-  <string name="morphe_show_view_count_title">ভিউ গণনা দেখান</string>
-  <string name="morphe_show_view_count_summary">"পোস্টগুলির ভিউ গণনা দেখায়
-
-সীমাবদ্ধতা: শুধুমাত্র যদি API প্রতিক্রিয়াতে ভিউ গণনা অন্তর্ভুক্ত থাকে তবেই দেখানো হবে"</string>
+  <string name="morphe_remove_notification_dialog_summary">সাবরেডিট ভিজিট করার সময় স্বয়ংক্রিয়ভাবে নোটিফিকেশন পরামর্শ ডায়ালগটি খারিজ করে দেয়</string>
+  <string name="morphe_show_view_count_title">পোস্টগুলিতে ভিউ গণনা দেখান</string>
+  <string name="morphe_show_view_count_summary">সীমাবদ্ধতা: শুধুমাত্র API প্রতিক্রিয়াতে ভিউ গণনা অন্তর্ভুক্ত থাকলে উপলব্ধ হবে</string>
   <string name="morphe_remove_nsfw_dialog_title">NSFW সতর্কতা ডায়ালগ সরান</string>
-  <string name="morphe_remove_nsfw_dialog_summary">সাবরেডিট ভিজিট করার সময় যে NSFW সতর্কতা ডায়ালগটি দেখায় সেটি স্বয়ংক্রিয়ভাবে গ্রহণ করে সরিয়ে দেওয়া হয়েছে</string>
+  <string name="morphe_remove_nsfw_dialog_summary">সাবরেডিট ভিজিট করার সময় স্বয়ংক্রিয়ভাবে NSFW বিষয়বস্তু সতর্কতা গ্রহণ করে</string>
   <string name="morphe_screen_miscellaneous_title">বিবিধ</string>
   <string name="morphe_about_title">মর্ফ সম্পর্কে</string>
   <string name="morphe_about_summary">সংস্করণ এবং অফিসিয়াল লিঙ্ক</string>
   <string name="morphe_sanitize_sharing_links_title">শেয়ারিং লিঙ্ক স্যানিটাইজ করুন</string>
-  <string name="morphe_sanitize_sharing_links_summary">শেয়ারিং লিঙ্কগুলি স্যানিটাইজ করা হয়েছে, ট্র্যাকিং ক্যোয়ারী প্যারামিটারগুলি সরানো হয়েছে</string>
+  <string name="morphe_sanitize_sharing_links_summary">শেয়ার করা লিঙ্ক থেকে ট্র্যাকিং ক্যোয়ারি প্যারামিটার সরানো হয়েছে</string>
   <string name="morphe_open_links_directly_title">লিঙ্ক সরাসরি খুলুন</string>
-  <string name="morphe_open_links_directly_summary">এক্সটার্নাল লিঙ্কে রিডাইরেকশন URLগুলি এড়িয়ে চলুন</string>
+  <string name="morphe_open_links_directly_summary">বাহ্যিক লিঙ্ক খোলার সময় রিডাইরেক্ট URLগুলি বাইপাস করে</string>
   <string name="morphe_open_links_externally_title">\'\'</string>
-  <string name="morphe_open_links_externally_summary">Opens links in your browser instead of in the in-app-browser</string>
+  <string name="morphe_open_links_externally_summary">ইন-অ্যাপ ব্রাউজারের পরিবর্তে আপনার ব্রাউজারে লিঙ্ক খোলে</string>
 </resources>

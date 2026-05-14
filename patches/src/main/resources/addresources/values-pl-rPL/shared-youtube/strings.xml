@@ -38,14 +38,11 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nie pokazuj ponownie</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Fałszowanie strumieni filmów</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Fałszuje strumienie filmów klienta, aby zapobiec problemom z odtwarzaniem</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Skonfiguruj fałszowanie klienta, aby zapobiec problemom z odtwarzaniem</string>
   <string name="morphe_spoof_video_streams_title">Fałszowanie strumieni filmów</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Włączone
+  <string name="morphe_spoof_video_streams_summary">"Oszukuje YouTube, wymuszając wysłanie kompatybilnego strumienia filmu, co naprawia odtwarzanie u większości użytkowników
 
 Jeśli jesteś użytkownikiem YouTube Premium, to ustawienie może nie być wymagane"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Wyłączone
-
-Odtwarzanie może nie działać"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nie można przechwycić żadnego ze strumieni klienta</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Wyłączenie tego ustawienia może spowodować problemy z odtwarzaniem.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -90,41 +87,29 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Nie można zalogować się do VR: %s</string>
   <string name="morphe_oauth2_toast_reset">Wylogowano z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nieprawidłowy token logowania VR, spróbuj zalogować się ponownie</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Aktualizacje skryptu JS odtwarzacza</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Wyłączone
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Wyłącz aktualizację JS odtwarzacza</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Blokuje JS odtwarzacza na lokalnym hashu, zamiast pobierać aktualizacje
 
-• Wymagany jest prawidłowy hash skryptu JS odtwarzacza
-• Odtwarzanie nie powiedzie się, jeśli hash skryptu zostanie unieważniony w GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Włączone</string>
+• Wymagany jest prawidłowy hash JS odtwarzacza
+• Odtwarzanie nie powiedzie się, jeśli hash JS odtwarzacza zostanie unieważniony w GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hashe skryptu JS odtwarzacza są ważne przez około miesiąc, a nieaktualne hashe mogą zostać unieważnione przez GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash skryptu JS odtwarzacza</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Wprowadź poprawny hash skryptu JS odtwarzacza</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Protokół QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Wyłączony</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Włączony</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
-  <string name="morphe_disable_drc_audio_title">Kompresja dynamiki (DRC)</string>
-  <string name="morphe_disable_drc_audio_summary_on">Wyłączona</string>
-  <string name="morphe_disable_drc_audio_summary_off">Włączona</string>
+  <string name="morphe_disable_drc_audio_title">Wyłącz kompresję dźwięku</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
-  <string name="morphe_force_original_audio_title">Wymuszanie oryginalnej ścieżki dźwiękowej</string>
-  <string name="morphe_force_original_audio_summary_on">Włączone</string>
-  <string name="morphe_force_original_audio_summary_off">Wyłączone</string>
+  <string name="morphe_force_original_audio_title">Wymuś oryginalny język dźwięku</string>
+  <string name="morphe_force_original_audio_summary">Zawsze odtwarza oryginalną ścieżkę dźwiękową filmu zamiast wersji z dubbingiem</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Pełnoekranowe reklamy</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Ukryte</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Widoczne</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Aby użyć tej funkcji, zmień \"Fałszowanie strumieni filmów\" na Android Reel lub TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">Czyszczenie udostępnianych linków</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Usuwa parametry śledzące z linków</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Pozostawia parametry śledzące w linkach</string>
-  <string name="morphe_replace_music_with_youtube_title">Format udostępnianych linków</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">music.youtube.com</string>
-  <string name="morphe_replace_links_with_shortener_title">Skrócone linki (youtu.be) dla Shorts i transmisji</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Włączone</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Wyłączone</string>
+  <string name="morphe_sanitize_sharing_links_title">Oczyść udostępniane linki</string>
+  <string name="morphe_sanitize_sharing_links_summary">Usuwa parametry śledzące z udostępnianych linków</string>
+  <string name="morphe_replace_music_with_youtube_title">Zmień linki udostępniania na youtube.com</string>
+  <string name="morphe_replace_links_with_shortener_title">Zmień linki udostępniania na youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Wymusza używanie skróconego formatu adresu youtu.be dla transmisji na żywo i Shortsów</string>
 </resources>

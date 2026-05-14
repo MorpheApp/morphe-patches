@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">自定义</string>
   <string name="morphe_custom_branding_notification_icon_title">通知图标</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">关注应用图标</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">匹配应用图标</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">您的观看历史记录未保存。&lt;br&gt;&lt;br&gt;这很可能是由 DNS 广告拦截器或网络代理造成的。&lt;br&gt;&lt;br&gt;要解决此问题，请将 &lt;b&gt;s.youtube.com&lt;/b&gt; 添加到白名单或关闭所有 DNS 广告拦截器和代理。</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">不再显示</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">欺骗视频流</string>
-  <string name="morphe_spoof_video_streams_screen_summary">欺骗客户端视频流以防止播放问题</string>
+  <string name="morphe_spoof_video_streams_screen_summary">配置客户端欺骗以防止播放问题</string>
   <string name="morphe_spoof_video_streams_title">伪造视频流</string>
-  <string name="morphe_spoof_video_streams_summary_on">"视频流已欺骗
+  <string name="morphe_spoof_video_streams_summary">"欺骗 YouTube 以发送兼容的视频流，从而修复大多数用户的问题
 
-如果您是 YouTube Premium 用户，此设置可能不需要"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"未欺骗视频流
-
-播放可能无法正常进行"</string>
+如果您是 YouTube Premium 用户，则可能不需要此设置"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">无法获取任何客户端流</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">关闭此设置可能会导致播放问题。</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_reset">已从 Google VR 登出</string>
   <string name="morphe_oauth2_toast_invalid">无效的 VR 登录令牌，请重新登录 VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">禁用播放器 JavaScript 更新</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"播放器 JavaScript 更新已禁用
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"锁定播放器的 JavaScript 到本地哈希，而不是获取更新
 
-• 需要有效的播放器 JavaScript 哈希值
-• 如果 GVS 中撤销了播放器 JavaScript 哈希，则播放失败"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">播放器 JavaScript 更新已启用</string>
+• 需要有效的播放器 JavaScript 哈希
+• 如果在 GVS 中撤销了播放器 JavaScript 哈希，则播放将失败"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Player JavaScript 哈希有效期约为一个月，过期的哈希可能由 GVS 撤销。</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player JavaScript hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">输入有效的 Player JavaScript 哈希</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">禁用QUIC协议</string>
-  <string name="morphe_disable_quic_protocol_summary_on">QUIC协议已禁用</string>
-  <string name="morphe_disable_quic_protocol_summary_off">QUIC协议已启用</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">禁用 DRC 音频</string>
-  <string name="morphe_disable_drc_audio_summary_on">DRC 音频已禁用</string>
-  <string name="morphe_disable_drc_audio_summary_off">DRC 音频已启用</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">强制使用原始音频语言</string>
-  <string name="morphe_force_original_audio_summary_on">使用原始音频语言</string>
-  <string name="morphe_force_original_audio_summary_off">正在使用默认音频</string>
+  <string name="morphe_force_original_audio_summary">始终播放视频的原始音频轨道，而不是配音版本</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">隐藏全屏广告</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">全屏广告已隐藏</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">全屏广告已显示</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">要使用此功能，请将“伪造视频流”更改为 Android Reel 或 TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">净化分享链接</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">跟踪查询参数已从分享链接中移除</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">跟踪查询参数未从分享链接中移除</string>
+  <string name="morphe_sanitize_sharing_links_summary">从共享链接中删除跟踪查询参数</string>
   <string name="morphe_replace_music_with_youtube_title">将分享链接更改为 youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">分享链接使用 youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">分享链接使用 music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">将分享链接更改为 youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">共享的直播和 Shorts 链接使用 youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">共享的直播和Shorts链接使用其原始网址</string>
+  <string name="morphe_replace_links_with_shortener_summary">强制直播和 Shorts 使用缩短的 youtu.be URL 格式</string>
 </resources>

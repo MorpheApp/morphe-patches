@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Personalizzato</string>
   <string name="morphe_custom_branding_notification_icon_title">Icona notifica</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Segui icona app</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Abbina l\'icona dell\'app</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Avviso Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">La tua cronologia di visualizzazione non sta venendo salvata.&lt;br&gt;&lt;br&gt;Questo è molto probabilmente causato da un blocco annunci DNS o da un proxy di rete.&lt;br&gt;&lt;br&gt;Per risolvere, inserisci nella whitelist &lt;b&gt;s.youtube.com&lt;/b&gt; o disattiva tutti i blocchi DNS e proxy.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Non mostrare più</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsifica i flussi video</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Falsifica i flussi video del client per prevenire problemi di riproduzione</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Configura lo spoofing del client per prevenire problemi di riproduzione</string>
   <string name="morphe_spoof_video_streams_title">Simula il client del flusso video</string>
-  <string name="morphe_spoof_video_streams_summary_on">"I flussi video sono falsificati
+  <string name="morphe_spoof_video_streams_summary">"Inganna YouTube inducendolo a inviare uno stream video compatibile, il che risolve la riproduzione per la maggior parte degli utenti
 
-Se sei un utente YouTube Premium, questa impostazione potrebbe non essere necessaria"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"I flussi video non sono falsificati
-
-La riproduzione potrebbe non funzionare"</string>
+Se sei un utente di YouTube Premium, questa impostazione potrebbe non essere necessaria"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Impossibile recuperare qualsiasi flusso client</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">La disattivazione di questa impostazione potrebbe causare problemi di riproduzione.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Per accedere, premi Continua di seguito"</string>
   <string name="morphe_oauth2_toast_reset">Disconnesso da Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token di accesso a VR non valido, prova ad accedere nuovamente a VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Disabilita l\'aggiornamento JavaScript del player</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"L'aggiornamento JavaScript del player è disabilitato
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Blocca lo script JavaScript del lettore a un hash locale invece di recuperare gli aggiornamenti
 
-• È richiesto un hash JavaScript del player valido
-• La riproduzione non riesce se l'hash JavaScript del Player viene revocato in GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">L\'aggiornamento JavaScript del player è abilitato</string>
+• È necessario un hash JavaScript valido del lettore
+• La riproduzione fallisce se l'hash dello script JavaScript del lettore viene revocato in GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Gli hash JavaScript del lettore sono validi per circa un mese e gli hash obsoleti potrebbero essere revocati da GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript del giocatore</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Inserisci un hash JavaScript del lettore valido</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Disabilita il protocollo QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Il protocollo QUIC è disabilitato</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Il protocollo QUIC è abilitato</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Disabilita l\'audio DRC</string>
-  <string name="morphe_disable_drc_audio_summary_on">L\'audio DRC è disabilitato</string>
-  <string name="morphe_disable_drc_audio_summary_off">L\'audio DRC è abilitato</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forza la lingua audio originale</string>
-  <string name="morphe_force_original_audio_summary_on">Utilizza la lingua audio originale</string>
-  <string name="morphe_force_original_audio_summary_off">Utilizzo audio predefinito</string>
+  <string name="morphe_force_original_audio_summary">Riproduce sempre la traccia audio originale del video invece di una versione doppiata</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Nascondi le pubblicità a schermo intero</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Gli annunci a schermo intero sono nascosti</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Le pubblicità a schermo intero sono visibili</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Per usare questa funzionalità, cambia \"Falsifica i flussi video\" a Android Reel o TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Sanifica collegamenti di condivisione</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Il parametro di query di tracciamento viene rimosso dai collegamenti condivisi</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Il parametro di query di tracciamento non viene rimosso dai collegamenti condivisi</string>
+  <string name="morphe_sanitize_sharing_links_summary">Rimuove i parametri di query di tracciamento dai link condivisi</string>
   <string name="morphe_replace_music_with_youtube_title">Cambia i link di condivisione in youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">I link condivisi usano youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">I link condivisi usano music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Cambia i link di condivisione in youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">I link di live stream e Shorts condivisi utilizzano youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">I link di live stream e Shorts condivisi utilizzano gli URL originali</string>
+  <string name="morphe_replace_links_with_shortener_summary">Forza gli streaming live e Shorts a utilizzare il formato URL abbreviato youtu.be</string>
 </resources>

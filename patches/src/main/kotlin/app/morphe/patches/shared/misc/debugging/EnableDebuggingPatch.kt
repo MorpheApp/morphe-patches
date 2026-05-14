@@ -61,7 +61,7 @@ internal fun enableDebuggingPatch(
         executeBlock()
 
         val preferences = mutableSetOf<BasePreference>(
-            SwitchPreference("morphe_debug"),
+            SwitchPreference("morphe_debug", summaryKey = null),
         )
 
         preferences.addAll(additionalDebugPreferences)
@@ -69,7 +69,7 @@ internal fun enableDebuggingPatch(
         preferences.addAll(
             listOf(
                 SwitchPreference("morphe_debug_stacktrace"),
-                SwitchPreference("morphe_debug_toast_on_error"),
+                SwitchPreference("morphe_debug_toast_on_error", summaryKey = null),
                 NonInteractivePreference(
                     "morphe_debug_export_logs",
                     tag = "app.morphe.extension.shared.settings.preference.ExportLogToClipboardPreference",

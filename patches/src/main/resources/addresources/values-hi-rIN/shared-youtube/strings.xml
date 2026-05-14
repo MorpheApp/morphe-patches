@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">कस्टम</string>
   <string name="morphe_custom_branding_notification_icon_title">सूचना चिह्न</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">अनुप्रयोग चिह्न का अनुसरण करें</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">ऐप आइकन से मिलाएं</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">मorphe नोटिस</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">आपकी देखने की जानकारी सहेजी नहीं जा रही है.&lt;br&gt;&lt;br&gt;यह बहुत अधिक संभावना है कि यह DNS विज्ञापन अवरोधक या नेटवर्क प्रॉक्सी के कारण है.&lt;br&gt;&lt;br&gt;इस समस्या को ठीक करने के लिए, &lt;b&gt;s.youtube.com&lt;/b&gt; को व्हाइटलिस्ट करें या सभी DNS अवरोधकों और प्रॉक्सी को बंद कर दें।</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">दोबारा दिखाएं मत</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">वीडियो स्ट्रीम्स को फर्ज़ करें</string>
-  <string name="morphe_spoof_video_streams_screen_summary">क्लायंट वीडियो स्ट्रीम्स को फर्ज़ करके प्लेबैक समस्याओं को हल करें</string>
+  <string name="morphe_spoof_video_streams_screen_summary">प्लेबैक समस्याओं को रोकने के लिए क्लाइंट स्पूफिंग को कॉन्फ़िगर करें</string>
   <string name="morphe_spoof_video_streams_title">वीडियो स्ट्रीम्स को फर्ज़ करें</string>
-  <string name="morphe_spoof_video_streams_summary_on">"वीडियो स्ट्रीम्स को फर्ज़ किया गया है
+  <string name="morphe_spoof_video_streams_summary">"यह YouTube को एक संगत वीडियो स्ट्रीम भेजने के लिए धोखा देता है, जो अधिकांश उपयोगकर्ताओं के लिए प्लेबैक को ठीक करता है
 
-यदि आप यूट्यूब प्रीमियम उपयोगकर्ता हैं, तो इस सेटिंग की आवश्यकता नहीं हो सकती है"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"वीडियो स्ट्रीम्स को फर्ज़ नहीं किया गया है
-
-प्लेबैक काम नहीं सकता है"</string>
+यदि आप YouTube Premium उपयोगकर्ता हैं, तो यह सेटिंग आवश्यक नहीं हो सकती है"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">कोई क्लायंट स्ट्रीम्स प्राप्त नहीं किए गए</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">इस सेटिंग को बंद करना प्लेबैक समस्याओं को उत्पन्न कर सकता है।</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_reset">एंड्रॉइड वीआर से लॉग आउट किया गया</string>
   <string name="morphe_oauth2_toast_invalid">VR प्रवेश टोकन अमान्य है, कृपया VR में पुनः प्रवेश करें</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">प्लेयर जावास्क्रिप्ट अपडेट को अक्षम करें</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"प्लेयर जावास्क्रिप्ट अपडेट अक्षम है
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"प्लेयर जावास्क्रिप्ट को स्थानीय हैश पर लॉक करता है अपडेट प्राप्त करने के बजाय
 
-• एक मान्य प्लेयर जावास्क्रिप्ट हैश की आवश्यकता है
-• यदि GVS में प्लेयर जावास्क्रिप्ट हैश वापस ले लिया जाता है, तो प्लेबैक विफल हो जाता है"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">प्लेयर जावास्क्रिप्ट अपडेट सक्षम है</string>
+• एक वैध प्लेयर जावास्क्रिप्ट हैश की आवश्यकता है
+• यदि प्लेयर जावास्क्रिप्ट हैश को GVS में रद्द कर दिया जाता है तो प्लेबैक विफल हो जाएगा"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">प्लेयर जावास्क्रिप्ट हैश लगभग एक महीने के लिए मान्य होते हैं, और पुराने हैश को GVS द्वारा रद्द किया जा सकता है।</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">प्लेयर जावास्क्रिप्ट हैश</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">एक मान्य प्लेयर जावास्क्रिप्ट हैश दर्ज करें</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC प्रोटोकॉल को अक्षम करना</string>
-  <string name="morphe_disable_quic_protocol_summary_on">QUIC प्रोटोकॉल अक्षम है</string>
-  <string name="morphe_disable_quic_protocol_summary_off">QUIC प्रोटोकॉल सक्षम है</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC ध्वनि बंद करें</string>
-  <string name="morphe_disable_drc_audio_summary_on">DRC ध्वनि बंद है</string>
-  <string name="morphe_disable_drc_audio_summary_off">DRC ध्वनि सक्षम है</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">ओरिजिनल ऑडियो भाषा को मजबूर करें</string>
-  <string name="morphe_force_original_audio_summary_on">ओरिजिनल ऑडियो भाषा का उपयोग किया जा रहा है</string>
-  <string name="morphe_force_original_audio_summary_off">डिफ़ॉल्ट ऑडियो का उपयोग किया जा रहा है</string>
+  <string name="morphe_force_original_audio_summary">हमेशा वीडियो के मूल ऑडियो ट्रैक को डब किए गए संस्करण के बजाय चलाता है</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">छुपाएं फुलस्क्रीन विज्ञापन</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">फ़ुलस्क्रीन एड्स छुपाए गए हैं</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">फ़ुलस्क्रीन एड्स दिखाई दिए हैं</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">इस सुविधा का उपयोग करने के लिए, \'Spoof वीडियो स्ट्रीम\' को Android Reel या TV में बदलें</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">शेयरिंग लिंक्स को साफ़ करें</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">ट्रैकिंग क्वेरी पैरामीटर को शेयर किए गए लिंक्स से हटा दिया गया है</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">ट्रैकिंग क्वेरी पैरामीटर को शेयर किए गए लिंक्स से हटा नहीं दिया गया है</string>
+  <string name="morphe_sanitize_sharing_links_summary">साझा लिंक से ट्रैकिंग क्वेरी पैरामीटर हटाता है</string>
   <string name="morphe_replace_music_with_youtube_title">शेयर लिंक्स को यूट्यूब कॉम पर बदलें</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">शेयर किए गए लिंक्स यूट्यूब कॉम का उपयोग करते हैं</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">शेयर किए गए लिंक्स म्यूज़िक.यूट्यूब कॉम का उपयोग करते हैं</string>
   <string name="morphe_replace_links_with_shortener_title">youtu.be के साथ शेयर लिंक बदलें</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">शेयर किए गए लाइव स्ट्रीम और Shorts लिंक youtu.be का उपयोग करते हैं</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">साझा किए गए लाइव स्ट्रीम और शॉर्ट्स लिंक उनके मूल URL का उपयोग करते हैं</string>
+  <string name="morphe_replace_links_with_shortener_summary">लाइव स्ट्रीम और Shorts को शॉर्ट किए गए youtu.be URL प्रारूप का उपयोग करने के लिए मजबूर करता है</string>
 </resources>

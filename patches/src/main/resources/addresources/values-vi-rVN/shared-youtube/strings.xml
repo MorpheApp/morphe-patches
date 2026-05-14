@@ -31,7 +31,7 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Morphe tỉ lệ</string>
   <string name="morphe_custom_branding_notification_icon_title">Biểu tượng thông báo</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Theo biểu tượng ứng dụng</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Thay đổi biểu tượng ứng dụng</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Thông báo Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Nhật ký xem của bạn hiện không được lưu lại.&lt;br&gt;&lt;br&gt;Nguyên nhân thường là do DNS chặn quảng cáo hoặc proxy mạng.&lt;br&gt;&lt;br&gt;Vì vậy, hãy thử thêm &lt;b&gt;s.youtube.com&lt;/b&gt; vào danh sách cho phép, hoặc tắt tất cả DNS và proxy.</string>
@@ -40,12 +40,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Giả mạo luồng phát video</string>
   <string name="morphe_spoof_video_streams_screen_summary">Giả mạo luồng phát video của client nhằm ngăn chặn lỗi khi phát</string>
   <string name="morphe_spoof_video_streams_title">Giả mạo luồng phát video</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Luồng phát video đã được giả mạo
+  <string name="morphe_spoof_video_streams_summary">"Lừa YouTube gửi một luồng video tương thích, điều này khắc phục sự cố phát lại cho hầu hết người dùng
 
-Nếu bạn đã mua gói Premium thì cài đặt này có thể không cần thiết"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Luồng phát video không được giả mạo
-
-Có thể gặp lỗi khi phát."</string>
+Nếu bạn là người dùng YouTube Premium, có thể không cần thiết lập này"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Không thể lấy bất kỳ luồng phát nào</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Tắt cài đặt này có thể gây ra lỗi khi phát.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_oauth2_toast_reset">Đã đăng xuất khỏi Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Mã đăng nhập VR không hợp lệ, hãy thử đăng nhập lại vào VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Tắt cập nhật JavaScript của trình phát</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Cập nhật JavaScript của trình phát đã bị tắt
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Khóa JavaScript của trình phát vào một hash cục bộ thay vì lấy cập nhật
 
-• Cần có mã băm JavaScript hợp lệ
-• Video sẽ không phát được nếu mã băm này bị GVS thu hồi"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Cập nhật JavaScript của trình phát đã bật</string>
+• Cần có một hash JavaScript của trình phát hợp lệ
+• Việc phát lại sẽ không thành công nếu hash JavaScript của trình phát bị thu hồi trong GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Mã băm JavaScript của trình phát thường có hiệu lực khoảng một tháng, và các mã băm quá hạn có thể bị GVS thu hồi.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Mã băm JavaScript của trình phát</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Nhập mã băm JavaScript hợp lệ của trình phát</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Tắt giao thức QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Giao thức QUIC đã tắt</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Giao thức QUIC đã bật</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Tắt âm thanh DRC</string>
-  <string name="morphe_disable_drc_audio_summary_on">Tính năng nén dải động đã tắt</string>
-  <string name="morphe_disable_drc_audio_summary_off">Tính năng nén dải động đã bật</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Buộc ngôn ngữ âm thanh gốc</string>
-  <string name="morphe_force_original_audio_summary_on">Đang dùng ngôn ngữ âm thanh gốc</string>
-  <string name="morphe_force_original_audio_summary_off">Đang dùng âm thanh mặc định</string>
+  <string name="morphe_force_original_audio_summary">Luôn phát bản âm thanh gốc của video thay vì phiên bản lồng tiếng</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Ẩn quảng cáo toàn màn hình</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Quảng cáo toàn màn hình đã bị ẩn</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Quảng cáo toàn màn hình được hiển thị</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Để dùng tính năng này, hãy đổi \"Giả mạo luồng phát video\" thành Android Reel hoặc TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Rút gọn liên kết chia sẻ</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Tham số truy vấn theo dõi bị loại bỏ khỏi các liên kết được chia sẻ</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Tham số truy vấn theo dõi không bị loại bỏ khỏi các liên kết được chia sẻ</string>
+  <string name="morphe_sanitize_sharing_links_summary">Loại bỏ các tham số truy vấn theo dõi khỏi các liên kết được chia sẻ</string>
   <string name="morphe_replace_music_with_youtube_title">Đổi liên kết chia sẻ thành youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Liên kết chia sẻ bắt đầu bằng youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Liên kết chia sẻ bắt đầu bằng music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Đổi liên kết chia sẻ thành youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Liên kết chia sẻ luồng trực tiếp và Shorts sử dụng youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Liên kết chia sẻ luồng trực tiếp và Shorts sử dụng URL gốc của chúng</string>
+  <string name="morphe_replace_links_with_shortener_summary">Buộc các luồng phát trực tiếp và Shorts sử dụng định dạng URL rút gọn youtu.be</string>
 </resources>

@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">O histórico de pesquisa está vazio</string>
   <string name="morphe_settings_search_empty_history_summary">Para salvar o histórico de pesquisa, digite uma consulta de pesquisa e pressione Enter</string>
   <string name="morphe_settings_search_history_title">Mostrar histórico de pesquisa de configurações</string>
-  <string name="morphe_settings_search_history_summary_on">O histórico de pesquisa de configurações é exibido</string>
-  <string name="morphe_settings_search_history_summary_off">O histórico de pesquisa de configurações não é exibido</string>
   <string name="morphe_show_menu_icons_title">Mostrar ícones de configuração do Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Os ícones de configuração são mostrados</string>
-  <string name="morphe_show_menu_icons_summary_off">Os ícones de configuração não são mostrados</string>
   <string name="morphe_language_title">Idioma do Morphe</string>
   <string name="morphe_language_user_dialog_message">"As traduções para alguns idiomas podem estar ausentes ou incompletas.
 
@@ -88,16 +84,11 @@ Para traduzir novos idiomas ou melhorar as traduções existentes, visite morphe
   <string name="morphe_settings_about_licenses_loading">A carregar...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuração</string>
-  <string name="morphe_debug_screen_summary">Ativar ou desativar opções de depuração</string>
-  <string name="morphe_debug_title">Registo da depuração</string>
-  <string name="morphe_debug_summary_on">Os registos da depuração estão ativados</string>
-  <string name="morphe_debug_summary_off">Os registos da depuração estão desativados</string>
+  <string name="morphe_debug_screen_summary">Configurar opções avançadas de desenvolvimento e registos de diagnóstico</string>
+  <string name="morphe_debug_title">Ativar registo de depuração</string>
   <string name="morphe_debug_stacktrace_title">Rasto de pilha do registo de depuração</string>
-  <string name="morphe_debug_stacktrace_summary_on">Os registos da depuração incluem rastos de pilha</string>
-  <string name="morphe_debug_stacktrace_summary_off">Os registos da depuração não incluem rastos de pilha</string>
+  <string name="morphe_debug_stacktrace_summary">Inclui rastreios de pilha nos registos de depuração para ajudar a identificar erros</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar toast com erro de Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">O toast é exibido se ocorrer um erro</string>
-  <string name="morphe_debug_toast_on_error_summary_off">O toast não é exibido se ocorrer um erro</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"A desativação dos erros toasts oculta todas as notificações de erro do Morphe.
 
 Não será notificado de quaisquer eventos inesperados."</string>
@@ -141,15 +132,21 @@ A desativação das otimizações de bateria para o MicroG não afetará negativ
 
 Toque no botão continuar e permita as alterações de otimização."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Diálogo de otimização da bateria</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">O diálogo de otimização de bateria do MicroG é exibido</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">O diálogo de otimização de bateria do MicroG não é exibido</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Mostrar a caixa de diálogo de otimização da bateria</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Desativar isso ocultará o prompt de otimização de bateria do MicroG.
 
 Se as otimizações de bateria não forem alteradas, você poderá experimentar:
 • O aplicativo pode fechar aleatoriamente
 • As notificações podem não funcionar
 • A reprodução em segundo plano pode não funcionar"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Gestão de links das aplicações</string>
+  <string name="morphe_link_handling_summary">Configurar qual aplicação abre quais links</string>
+  <string name="morphe_link_handling_step1_title">Passo 1: Desativa os links da aplicação original</string>
+  <string name="morphe_link_handling_step1_message">Abre as definições da aplicação original e desativa todos os links de domínio</string>
+  <string name="morphe_link_handling_step2_title">Passo 2: Ativa os links para a aplicação modificada</string>
+  <string name="morphe_link_handling_step2_message">Abre as definições da aplicação modificada e ativa todos os links de domínio</string>
+  <string name="morphe_link_handling_open">Abrir definições</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Alerta Experimental 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Você está usando uma versão experimental do aplicativo ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

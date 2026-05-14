@@ -22,7 +22,7 @@ private val hideEndScreenCardsResourcePatch = resourcePatch {
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_end_screen_cards"),
+            SwitchPreference("morphe_hide_end_screen_cards", summaryKey = null),
         )
     }
 }

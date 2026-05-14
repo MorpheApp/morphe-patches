@@ -38,37 +38,35 @@ Second \"item\" text"</string>
   <string name="morphe_hide_discover_button_summary">Keşfet veya Topluluklar düğmesini gezinme çubuğunda gizler</string>
   <string name="morphe_hide_games_button_title">Oyunlar düğmesini gizle</string>
   <string name="morphe_hide_games_button_summary">Oyunlar düğmesini gezinme çubuğunda gizler</string>
-  <string name="morphe_hide_recently_visited_shelf_title">Ziyaret edilen öğeler çubuğunu gizle</string>
-  <string name="morphe_hide_recently_visited_shelf_summary">Ziyaret edilen öğeler çubuğunu kenar çubuğunda gizler</string>
-  <string name="morphe_hide_games_on_reddit_shelf_title">Oyunlar (Reddit) çubuğunu gizle</string>
-  <string name="morphe_hide_games_on_reddit_shelf_summary">Oyunlar (Reddit) çubuğunu kenar çubuğunda gizler</string>
-  <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro çubuğunu gizle</string>
-  <string name="morphe_hide_reddit_pro_shelf_summary">Reddit Pro çubuğunu kenar çubuğunda gizler</string>
-  <string name="morphe_hide_about_shelf_title">Hakkında çubuğunu gizle</string>
-  <string name="morphe_hide_about_shelf_summary">Hakkında çubuğunu kenar çubuğunda gizler</string>
-  <string name="morphe_hide_resources_shelf_title">Kaynaklar çubuğunu gizle</string>
-  <string name="morphe_hide_resources_shelf_summary">Kaynaklar çubuğunu kenar çubuğunda gizler</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Son Ziyaret Edilenler rafını gizle</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Son Ziyaret Edilenler rafını kenar çubuğunda gizler</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Reddit\'teki Oyunlar rafını gizle</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Reddit\'teki Oyunlar rafını kenar çubuğunda gizler</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro rafını gizle</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Reddit Pro rafını kenar çubuğunda gizler</string>
+  <string name="morphe_hide_about_shelf_title">Hakkında rafını gizle</string>
+  <string name="morphe_hide_about_shelf_summary">Hakkında rafını kenar çubuğunda gizler</string>
+  <string name="morphe_hide_resources_shelf_title">Kaynaklar rafını gizle</string>
+  <string name="morphe_hide_resources_shelf_summary">Kaynaklar rafını kenar çubuğunda gizler</string>
   <string name="morphe_hide_recommended_communities_shelf_title">Önerilen toplulukları gizle</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Alt başlıkları birleşimlerde önerilen topluluklar çubuklarını gizler</string>
-  <string name="morphe_hide_trending_today_shelf_title">Bugünün trendleri çubuğunu gizle</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Arama önerilerinden Bugünün trendleri çubuğunu gizler.
+  <string name="morphe_hide_recommended_communities_shelf_summary">Subreddit\'lerde önerilen topluluklar raflarını gizler</string>
+  <string name="morphe_hide_trending_today_shelf_title">Bugünün Trendleri rafını gizle</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Arama önerilerinden Bugünün Trendleri rafını gizler
 
 Sınırlama: Görsel ayırıcılar gizlenmeyebilir"</string>
   <string name="morphe_remove_notification_dialog_title">Bildirim öneri iletişim kutusunu kaldır</string>
-  <string name="morphe_remove_notification_dialog_summary">Bir alt başlığı ziyaret ederken görünen bildirim öneri iletişim kutusunu otomatik olarak kabul ederek kaldırır</string>
-  <string name="morphe_show_view_count_title">Görüntü sayısını göster</string>
-  <string name="morphe_show_view_count_summary">"Gönderilerin görüntü sayısını gösterir.
-
-Sınırlama: Sadece API yanıtı görüntü sayısını içeriyorsa gösterilir"</string>
+  <string name="morphe_remove_notification_dialog_summary">Bir subreddit ziyaret edildiğinde bildirim önerisi iletişim kutusunu otomatik olarak kapatır</string>
+  <string name="morphe_show_view_count_title">Gönderilerde görüntüleme sayısını göster</string>
+  <string name="morphe_show_view_count_summary">Sınırlama: Yalnızca API yanıtı görüntüleme sayısını içeriyorsa kullanılabilir</string>
   <string name="morphe_remove_nsfw_dialog_title">NSFW uyarı iletişim kutusunu kaldır</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Bir alt başlığı ziyaret ederken görünen NSFW uyarı iletişim kutusunu otomatik olarak kabul ederek kaldırır</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Bir subreddit\'i ziyaret ederken NSFW içerik uyarısını otomatik olarak kabul eder</string>
   <string name="morphe_screen_miscellaneous_title">Çeşitli</string>
   <string name="morphe_about_title">Hakkında</string>
   <string name="morphe_about_summary">Yama sürümü ve resmi bağlantılar</string>
   <string name="morphe_sanitize_sharing_links_title">Paylaşım bağlantılarını temizle</string>
-  <string name="morphe_sanitize_sharing_links_summary">Paylaşım bağlantılarını izleme sorgu parametrelerini kaldırarak temizler</string>
+  <string name="morphe_sanitize_sharing_links_summary">Paylaşılan bağlantılardan izleme sorgu parametrelerini kaldırır</string>
   <string name="morphe_open_links_directly_title">Bağlantıları doğrudan aç</string>
-  <string name="morphe_open_links_directly_summary">Harici bağlantılardaki yönlendirme URL\'lerini atlar</string>
+  <string name="morphe_open_links_directly_summary">Harici bağlantıları açarken yönlendirme URL\'lerini atlar</string>
   <string name="morphe_open_links_externally_title">Bağlantıları harici olarak aç</string>
   <string name="morphe_open_links_externally_summary">Bağlantıları uygulama içi tarayıcı yerine tarayıcınızda açar</string>
 </resources>

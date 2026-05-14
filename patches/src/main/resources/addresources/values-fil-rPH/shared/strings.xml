@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Walang laman ang kasaysayan sa paghahanap</string>
   <string name="morphe_settings_search_empty_history_summary">Upang i-save ang kasaysayan sa paghahanap, mag-type ng isang paghahanap at pindutin ang Enter</string>
   <string name="morphe_settings_search_history_title">Ipakita ang pagpipilian ng kasaysayan sa paghahanap</string>
-  <string name="morphe_settings_search_history_summary_on">Ipinapakita ang pagpipilian ng kasaysayan sa paghahanap</string>
-  <string name="morphe_settings_search_history_summary_off">Hindi ipinapakita ang pagpipilian ng kasaysayan sa paghahanap</string>
   <string name="morphe_show_menu_icons_title">Ipakita ang mga icon ng pagpipilian ng Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Ipinapakita ang mga icon ng pagpipilian</string>
-  <string name="morphe_show_menu_icons_summary_off">Hindi ipinapakita ang mga icon ng pagpipilian</string>
   <string name="morphe_language_title">Wika ng Morphe</string>
   <string name="morphe_language_user_dialog_message">"Maaaring nawawala o hindi kumpleto ang mga pagsasalin-wika para sa ilang mga wika.
 
@@ -88,16 +84,11 @@ Upang isalin ang mga bagong wika o pagbutihin ang mga kasalukuyang pagsasalin, b
   <string name="morphe_settings_about_licenses_loading">Naglo-load……</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugging</string>
-  <string name="morphe_debug_screen_summary">Paganahin o patayin ang mga pagpipilian sa debugging</string>
-  <string name="morphe_debug_title">Tala ng debug</string>
-  <string name="morphe_debug_summary_on">Pinagana ang mga tala sa debug</string>
-  <string name="morphe_debug_summary_off">Nakapatay ang mga tala sa debug</string>
+  <string name="morphe_debug_screen_summary">I-configure ang mga advanced na opsyon ng developer at diagnostic logs</string>
+  <string name="morphe_debug_title">I-enable ang debug logging</string>
   <string name="morphe_debug_stacktrace_title">Batakan ng log ng debug</string>
-  <string name="morphe_debug_stacktrace_summary_on">Kasama sa mga log ng debug ang mga bakat ng stack</string>
-  <string name="morphe_debug_stacktrace_summary_off">Hindi kasama sa mga log ng debug ang mga bakat ng stack</string>
+  <string name="morphe_debug_stacktrace_summary">Kasama ang mga stack trace sa debug logs upang matulungan na matukoy ang mga error</string>
   <string name="morphe_debug_toast_on_error_title">Ipakita ang abiso sa pagkakamali sa Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Ipinapakita ang abiso kung may naganap na pagkakamali</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Hindi ipinapakita ang abiso kung may naganap na pagkakamali</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Itinatago ang lahat ng abiso ng pagkakamali sa Morphe kung nakapatay ang mga abiso ng pagkakamali.
 
 Hindi ka aabisuhan ng anumang mga hindi inaasahang pangyayari."</string>
@@ -141,15 +132,21 @@ Hindi makakaapekto sa paggamit ng baterya ang pagpatay sa pag-optimize ng batery
 
 Pindutin ang button na magpatuloy at payagan ang mga pagbabago sa pag-optimize."</string>
   <string name="gms_core_dialog_continue_text">Magpatuloy</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Pag-uusap tungkol sa pag-optimize ng baterya</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Ipinapakita ang pag-uusap tungkol sa pag-optimize ng baterya ng MicroG</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Hindi ipinapakita ang pag-uusap tungkol sa pag-optimize ng baterya ng MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Ipakita ang dialog ng pag-optimize ng baterya</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Ang hindi pag-disable nito ay itatago ang prompt ng pag-optimize ng baterya ng MicroG.
 
 Kung hindi nagbago ang pag-optimize sa baterya, maaaring makaranas ka ng:
 • Maaaring biglang magsara ang app
 • Maaaring hindi gumana ang mga notification
 • Maaaring hindi gumana ang background playback"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Paghawak ng link ng app</string>
+  <string name="morphe_link_handling_summary">I-configure kung aling app ang magbubukas ng mga link</string>
+  <string name="morphe_link_handling_step1_title">Hakbang 1: Patayin ang orihinal na mga link ng app</string>
+  <string name="morphe_link_handling_step1_message">Buksan ang mga setting ng orihinal na app at patayin ang lahat ng mga link ng domain</string>
+  <string name="morphe_link_handling_step2_title">Hakbang 2: I-enable ang mga patched na link ng app</string>
+  <string name="morphe_link_handling_step2_message">Buksan ang mga setting ng patched na app at i-enable ang lahat ng mga link ng domain</string>
+  <string name="morphe_link_handling_open">Buksan ang mga setting</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Pang-eksperimentong Alerto 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Gumagamit ka ng pang-eksperimentong bersyon ng aplikasyon ng ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

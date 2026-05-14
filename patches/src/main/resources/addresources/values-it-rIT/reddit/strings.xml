@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Limitazione: I separatori visivi potrebbero non essere nascosti"</string>
   <string name="morphe_remove_notification_dialog_title">Rimuovi il dialogo di suggerimento della notifica</string>
-  <string name="morphe_remove_notification_dialog_summary">Rimuove il dialogo di suggerimento delle notifiche che appare quando si visita un subreddit accettandolo automaticamente</string>
-  <string name="morphe_show_view_count_title">Mostra il numero di visualizzazioni</string>
-  <string name="morphe_show_view_count_summary">"Mostra il numero di visualizzazioni dei Post
-
-Limitazione: visualizzato solo se la risposta API include il numero di visualizzazioni"</string>
+  <string name="morphe_remove_notification_dialog_summary">Chiude automaticamente la finestra di dialogo del suggerimento di notifica quando si visita un subreddit</string>
+  <string name="morphe_show_view_count_title">Mostra il conteggio delle visualizzazioni nei post</string>
+  <string name="morphe_show_view_count_summary">Limitazione: disponibile solo se la risposta dell\'API include il conteggio delle visualizzazioni</string>
   <string name="morphe_remove_nsfw_dialog_title">Rimuovi il dialogo di avviso NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Rimuove il dialogo di avviso NSFW che appare quando si visita un subreddit accettandolo automaticamente</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Accetta automaticamente l\'avviso sui contenuti NSFW durante la visita di un subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Varie</string>
   <string name="morphe_about_title">A proposito di</string>
   <string name="morphe_about_summary">Versione patch e link ufficiali</string>
   <string name="morphe_sanitize_sharing_links_title">Sanifica collegamenti di condivisione</string>
-  <string name="morphe_sanitize_sharing_links_summary">Sanifica i link di condivisione rimuovendo i parametri di tracciamento</string>
+  <string name="morphe_sanitize_sharing_links_summary">Rimuove i parametri di query di tracciamento dai collegamenti condivisi</string>
   <string name="morphe_open_links_directly_title">Apri i link direttamente</string>
-  <string name="morphe_open_links_directly_summary">Salta gli URL di reindirizzamento nei link esterni</string>
+  <string name="morphe_open_links_directly_summary">Aggira gli URL di reindirizzamento aprendo i link esterni</string>
   <string name="morphe_open_links_externally_title">Apri i link esternamente</string>
-  <string name="morphe_open_links_externally_summary">Apre i link nel tuo browser invece che nel browser integrato</string>
+  <string name="morphe_open_links_externally_summary">Apre i link nel browser invece del browser in-app</string>
 </resources>

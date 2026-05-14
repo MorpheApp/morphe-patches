@@ -28,19 +28,13 @@ Second \"item\" text"</string>
   <!-- ad.general.hideAdsPatch -->
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">مخفی کردن تبلیغات ویدیویی</string>
-  <string name="morphe_music_hide_video_ads_summary_on">تبلیغات ویدیویی مخفی هستند</string>
-  <string name="morphe_music_hide_video_ads_summary_off">تبلیغات ویدیویی نمایش داده می شوند</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_about_title">درباره</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">فعال سازی تکرار دائمی</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">تکرار دائمی فعال است</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">تکرار دائمی غیرفعال است</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">دکمه مخفی کردن کست</string>
-  <string name="morphe_music_hide_cast_button_summary_on">دکمه Cast مخفی شده</string>
-  <string name="morphe_music_hide_cast_button_summary_off">دکمه Cast نمایش داده می شود</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <!-- layout.compactheader.hideCategoryBar -->
   <!-- layout.miniplayer.changeMiniplayerColor -->
@@ -48,7 +42,6 @@ Second \"item\" text"</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <!-- layout.navigationbar.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">دکمه خانه نمایش داده می شود</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->

@@ -31,7 +31,7 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">কাস্টম</string>
   <string name="morphe_custom_branding_notification_icon_title">নোটিফিকেশন আইকন</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">অ্যাপ আইকন অনুসরণ করুন</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">অ্যাপ আইকন মেলান</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe নোটিশ</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">আপনার দেখার ইতিহাস সংরক্ষিত হচ্ছে না।&lt;br&gt;&lt;br&gt;এটি সম্ভবত DNS অ্যাড ব্লকার অথবা নেটওয়ার্ক প্রক্সির কারণে।&lt;br&gt;&lt;br&gt;এটি ঠিক করার জন্য, &lt;b&gt;s.youtube.com&lt;/b&gt;  সাদা তালিকাভুক্ত করুন অথবা সকল DNS ব্লকার এবং প্রক্সি বন্ধ করুন।</string>
@@ -40,12 +40,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">ভিডিও স্ট্রিম স্পুফ করুন</string>
   <string name="morphe_spoof_video_streams_screen_summary">প্লেব্যাক সংক্রান্ত সমস্যা রোধ করতে ক্লায়েন্টের ভিডিও স্ট্রিমগুলি স্পুফ করুন</string>
   <string name="morphe_spoof_video_streams_title">ভিডিও স্ট্রিমিং স্পুফ করুন</string>
-  <string name="morphe_spoof_video_streams_summary_on">"ভিডিও স্ট্রিম স্পুফ করা হয়েছে
+  <string name="morphe_spoof_video_streams_summary">"এটি ইউটিউবকে একটি উপযুক্ত ভিডিও স্ট্রিম পাঠাতে বাধ্য করে, যা বেশিরভাগ ব্যবহারকারীর জন্য প্লেব্যাক ঠিক করে।
 
-আপনি যদি YouTube Premium ব্যবহারকারী হন, তাহলে এই সেটিংটির প্রয়োজন নাও হতে পারে"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"ভিডিও স্ট্রিম স্পুফ করা হয়নি
-
-প্লেব্যাক কাজ নাও করতে পারে"</string>
+আপনি যদি ইউটিউব প্রিমিয়াম ব্যবহারকারী হন, তাহলে এই সেটিংসের প্রয়োজন নাও হতে পারে।"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">কোনো ক্লায়েন্ট স্ট্রিম আনতে পারেনি</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">এই সেটিং বন্ধ করলে প্লেব্যাক সমস্যা হতে পারে।</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_reset">অ্যান্ড্রয়েড ভিআর থেকে লগ আউট করা হয়েছে</string>
   <string name="morphe_oauth2_toast_invalid">VR প্রবেশের জন্য অকার্যকর টোকেন, আবার VR এ প্রবেশ করুন</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">প্লেয়ার জাভাস্ক্রিপ্ট আপডেট নিষ্ক্রিয় করুন</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"প্লেয়ার জাভাস্ক্রিপ্ট আপডেট নিষ্ক্রিয় করা হয়েছে
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"প্লেয়ার জাভাস্ক্রিপ্টকে একটি স্থানীয় হ্যাশে লক করে, আপডেটের জন্য ফেচ করা থেকে বিরত রাখে।
 
-• একটি বৈধ প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ প্রয়োজন
-• প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ GVS-এ বাতিল হলে প্লেব্যাক ব্যর্থ হবে"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">প্লেয়ার জাভাস্ক্রিপ্ট আপডেট সক্রিয় করা হয়েছে</string>
+• একটি বৈধ প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ প্রয়োজন।
+• প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ বাতিল করা হলে GVS-এ প্লেব্যাক ব্যর্থ হবে।"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশগুলি প্রায় এক মাসের জন্য বৈধ, এবং মেয়াদোত্তীর্ণ হ্যাশগুলি GVS দ্বারা বাতিল করা হতে পারে।</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">একটি বৈধ প্লেয়ার জাভাস্ক্রিপ্ট হ্যাশ প্রবেশ করুন</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">কিউআইসি প্রোটোকল বন্ধ করুন</string>
-  <string name="morphe_disable_quic_protocol_summary_on">কিউআইসি প্রোটোকল বন্ধ আছে</string>
-  <string name="morphe_disable_quic_protocol_summary_off">কিউআইসি প্রোটোকল চালু আছে</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">ডিআরসি অডিও নিষ্ক্রিয় করুন</string>
-  <string name="morphe_disable_drc_audio_summary_on">ডিআরসি অডিও নিষ্ক্রিয় করা হয়েছে</string>
-  <string name="morphe_disable_drc_audio_summary_off">ডিআরসি অডিও সক্রিয় হয়েছে</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">মূল অডিও ভাষা বলপূর্বক চালু করুন</string>
-  <string name="morphe_force_original_audio_summary_on">মূল অডিও ভাষা ব্যবহার করা হচ্ছে</string>
-  <string name="morphe_force_original_audio_summary_off">ডিফল্ট অডিও ব্যবহার করছে</string>
+  <string name="morphe_force_original_audio_summary">ডাব করা সংস্করণের পরিবর্তে ভিডিওর মূল অডিও ট্র্যাক সবসময় প্লে করে</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">পূর্ণ স্ক্রীন প্যানেল লুকান</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">পূর্ণ স্ক্রীন বিজ্ঞাপন লুকানো হয়েছে</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">পূর্ণ স্ক্রীন বিজ্ঞাপন প্রদর্শিত হয়েছে</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'স্পুফ ভিডিও স্ট্রিম\' অ্যান্ড্রয়েড রিল বা টিভিতে পরিবর্তন করুন</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">শেয়ারিং লিঙ্ক স্যানিটাইজ করুন</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">শেয়ার করা লিঙ্ক থেকে ট্র্যাকিং ক্যোয়ারি প্যারামিটার সরানো হয়েছে</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">শেয়ার করা লিঙ্ক থেকে ট্র্যাকিং ক্যোয়ারি প্যারামিটার সরানো হয়নি</string>
+  <string name="morphe_sanitize_sharing_links_summary">শেয়ার করা লিঙ্ক থেকে ট্র্যাকিং ক্যোয়ারি প্যারামিটার সরানো হয়েছে</string>
   <string name="morphe_replace_music_with_youtube_title">শেয়ার লিঙ্কগুলি youtube.com-এ পরিবর্তন করুন</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">শেয়ার করা লিঙ্কগুলি youtube.com ব্যবহার করে</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">শেয়ার করা লিঙ্কগুলি music.youtube.com ব্যবহার করে</string>
   <string name="morphe_replace_links_with_shortener_title">শেয়ার লিঙ্কগুলি youtu.be-এ পরিবর্তন করুন</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">শেয়ার করা লাইভ স্ট্রিম এবং শর্টস লিঙ্কে youtu.be ব্যবহার করা হয়।</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">শেয়ার করা লাইভ স্ট্রিম এবং শর্টস লিঙ্কের জন্য তাদের আসল URL ব্যবহার করা হবে</string>
+  <string name="morphe_replace_links_with_shortener_summary">লাইভ স্ট্রিম এবং শর্টসগুলি যাতে youtu.be URL ফর্ম্যাট ব্যবহার করে, তা নিশ্চিত করে</string>
 </resources>

@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Beperking: Visuele afstandhouers kan nie weggesteek word nie"</string>
   <string name="morphe_remove_notification_dialog_title">Verwyder kennisgewing-voorstel-dialoog</string>
-  <string name="morphe_remove_notification_dialog_summary">Verwyder die kennisgewing-voorstel-dialoog wat verskyn wanneer \'n subreddit besoek word deur dit outomaties af te wys</string>
-  <string name="morphe_show_view_count_title">Wys vertoon telling</string>
-  <string name="morphe_show_view_count_summary">"Wys die vertoon telling van Plakkate
-
-Beperking: Word slegs gewys as die API-antwoord die vertoon telling insluit"</string>
+  <string name="morphe_remove_notification_dialog_summary">Sluit die kennisgewingvoorstel-dialoog outomaties wanneer \'n subreddit besoek word</string>
+  <string name="morphe_show_view_count_title">Wys vertoon telling op plasings</string>
+  <string name="morphe_show_view_count_summary">Beperking: Slegs beskikbaar as die API-antwoord die vertoontelling insluit</string>
   <string name="morphe_remove_nsfw_dialog_title">Verwyder NSFW waarskuwing-dialoog</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Verwyder die NSFW waarskuwing-dialoog wat verskyn wanneer \'n subreddit besoek word deur dit outomaties te aanvaar</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Outomaties aanvaar die NSFW-inhoudwaarskuwing wanneer \'n subreddit besoek word</string>
   <string name="morphe_screen_miscellaneous_title">Diverse</string>
   <string name="morphe_about_title">Inligting</string>
   <string name="morphe_about_summary">Verandering weergawe en amptelike skakels</string>
   <string name="morphe_sanitize_sharing_links_title">Ontsmet deel skakels</string>
-  <string name="morphe_sanitize_sharing_links_summary">Ontsmet deel skakels deur dopnavraagparameters te verwyder</string>
+  <string name="morphe_sanitize_sharing_links_summary">Verwyder dopnavraagparameters van gedeelde skakels</string>
   <string name="morphe_open_links_directly_title">Maak skakels direk oop</string>
-  <string name="morphe_open_links_directly_summary">Slaan oordirigering-URL\'s in eksterne skakels oor</string>
+  <string name="morphe_open_links_directly_summary">Omseil omskakelings-URL\'s wanneer eksterne skakels oopgemaak word</string>
   <string name="morphe_open_links_externally_title">Maak skakels ekstern oop</string>
-  <string name="morphe_open_links_externally_summary">Maak skakels in jou blaaier oop in plaas van in die in-app-blaaier</string>
+  <string name="morphe_open_links_externally_summary">Maak skakels in jou blaaier oop in plaas van die in-app-blaaier</string>
 </resources>

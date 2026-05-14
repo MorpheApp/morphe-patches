@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Søgehistorikken er tom</string>
   <string name="morphe_settings_search_empty_history_summary">For at gemme søgehistorik skal du skrive en søgeforespørgsel og trykke på Enter</string>
   <string name="morphe_settings_search_history_title">Vis indstillingssøgehistorik</string>
-  <string name="morphe_settings_search_history_summary_on">Indstillingssøgehistorik vises</string>
-  <string name="morphe_settings_search_history_summary_off">Søgehistorik for indstillinger vises ikke</string>
   <string name="morphe_show_menu_icons_title">Vis Morphe-indstillingsikoner</string>
-  <string name="morphe_show_menu_icons_summary_on">Indstillingsikoner vises</string>
-  <string name="morphe_show_menu_icons_summary_off">Indstillingsikoner vises ikke</string>
   <string name="morphe_language_title">Morphe-sprog</string>
   <string name="morphe_language_user_dialog_message">"Oversættelser for nogle sprog kan mangle eller være ufuldstændige.
 
@@ -88,16 +84,11 @@ For at oversætte nye sprog eller forbedre de eksisterende oversættelser, besø
   <string name="morphe_settings_about_licenses_loading">Indlæser...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Fejlfinding</string>
-  <string name="morphe_debug_screen_summary">Aktivér eller deaktiver fejlfindingsindstillinger</string>
-  <string name="morphe_debug_title">Fejlfindingslogning</string>
-  <string name="morphe_debug_summary_on">Fejlfindingslogge er aktiveret</string>
-  <string name="morphe_debug_summary_off">Fejlfindingslogge er deaktiveret</string>
+  <string name="morphe_debug_screen_summary">Konfigurer avancerede udviklerindstillinger og diagnostiklogs</string>
+  <string name="morphe_debug_title">Aktivér fejlfindingslogning</string>
   <string name="morphe_debug_stacktrace_title">Fejlfindingslogge inkluderer stakspor</string>
-  <string name="morphe_debug_stacktrace_summary_on">Fejlfindingslogge inkluderer stakspor</string>
-  <string name="morphe_debug_stacktrace_summary_off">Fejlfindingslogge inkluderer ikke stakspor</string>
+  <string name="morphe_debug_stacktrace_summary">Inkluderer stack traces i fejlfindingslogs for at hjælpe med at identificere fejl</string>
   <string name="morphe_debug_toast_on_error_title">Vis toastbesked ved Morphe-fejl</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Toast vises, hvis der opstår en fejl</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Toast vises ikke, hvis der opstår en fejl</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Hvis du deaktiverer fejl-toasts, skjules alle Morphe-fejlmeddelelser.
 
 Du modtager ikke notifikationer om uventede hændelser."</string>
@@ -141,15 +132,21 @@ Deaktivering af batterioptimeringer for MicroG vil ikke negativt påvirke batter
 
 Tryk på knappen Fortsæt og tillad optimeringsændringer."</string>
   <string name="gms_core_dialog_continue_text">Fortsæt</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Batterioptimeringsdialog</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG batterioptimeringsdialog vises</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG batterioptimeringsdialog vises ikke</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Vis batterioptimeringsdialog</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering af dette skjuler MicroG batterioptimeringsprompten.
 
 Hvis batterioptimeringer ikke ændres, kan du opleve:
 • Appen kan lukke tilfældigt
 • Notifikationer virker muligvis ikke
 • Baggrundsafspilning virker muligvis ikke"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">App-linkshåndtering</string>
+  <string name="morphe_link_handling_summary">Konfigurer hvilken app der åbner links</string>
+  <string name="morphe_link_handling_step1_title">Trin 1: Deaktiver originale app-links</string>
+  <string name="morphe_link_handling_step1_message">Åbn indstillingerne for den originale app og deaktiver alle domænelinks</string>
+  <string name="morphe_link_handling_step2_title">Trin 2: Aktiver patched app-links</string>
+  <string name="morphe_link_handling_step2_message">Åbn indstillingerne for den patched app og aktiver alle domænelinks</string>
+  <string name="morphe_link_handling_open">Åbn indstillinger</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentel Advarsel 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Du bruger en eksperimentel app-version af ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

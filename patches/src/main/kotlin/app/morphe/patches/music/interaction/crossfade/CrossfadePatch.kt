@@ -198,7 +198,7 @@ val crossfadePatch = bytecodePatch(
                 key = "morphe_music_crossfade_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_music_crossfade_enabled"),
+                    SwitchPreference("morphe_music_crossfade_enabled", summaryKey = null),
                     ListPreference("morphe_music_crossfade_curve"),
                     NonInteractivePreference(
                         key = "morphe_music_crossfade_curve_preview",

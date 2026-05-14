@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Tá stair chuardaigh folamh</string>
   <string name="morphe_settings_search_empty_history_summary">Chun stair an chuardaigh a shábháil, clóscríobh iarratas cuardaigh agus brúigh Iontráil</string>
   <string name="morphe_settings_search_history_title">Taispeáin stair cuardaigh na socruithe</string>
-  <string name="morphe_settings_search_history_summary_on">Taispeántar stair chuardaigh na socruithe</string>
-  <string name="morphe_settings_search_history_summary_off">Ní thaispeántar stair chuardaigh na socruithe</string>
   <string name="morphe_show_menu_icons_title">Taispeáin deilbhíní socruithe Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Taispeántar deilbhíní socruithe</string>
-  <string name="morphe_show_menu_icons_summary_off">Ní thaispeántar deilbhíní socraithe</string>
   <string name="morphe_language_title">Teanga Morphe</string>
   <string name="morphe_language_user_dialog_message">"D’fhéadfadh aistriúcháin do roinnt teangacha a bheith ar iarraidh nó neamhiomlán.
 
@@ -88,16 +84,11 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_settings_about_licenses_loading">Ag lódáil...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Dífhabhtú</string>
-  <string name="morphe_debug_screen_summary">Cumasaigh nó díchumasaigh roghanna dífhabhtaithe</string>
-  <string name="morphe_debug_title">Logáil dífhabhtaithe</string>
-  <string name="morphe_debug_summary_on">Tá logaí dífhabhtaithe cumasaithe</string>
-  <string name="morphe_debug_summary_off">Tá logaí dífhabhtaithe díchumasaithe</string>
+  <string name="morphe_debug_screen_summary">Configure roghanna forbaróra agus logaí diagnoischa ardleibhéal</string>
+  <string name="morphe_debug_title">Logáil dífhabhtaithe a chur ar siúl</string>
   <string name="morphe_debug_stacktrace_title">Rian staice loga dífhabhtaithe</string>
-  <string name="morphe_debug_stacktrace_summary_on">Áirítear le logaí dífhabhtaithe rianta cruachta</string>
-  <string name="morphe_debug_stacktrace_summary_off">Ní chuimsíonn logaí dífhabhtaithe rianta cruachta</string>
+  <string name="morphe_debug_stacktrace_summary">San áireamh stack traces i logaí dífhabhtaithe chun cabhrú le saineoladh ar earráidí</string>
   <string name="morphe_debug_toast_on_error_title">Taispeáin tósta ar earráid Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Taispeántar tósta má tharlaíonn earráid</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Ní thaispeántar tósta má tharlaíonn earráid</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Má mhúchtar tóstaí earráide, folaítear gach fógra earráide Morphe.
 
 Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
@@ -141,15 +132,21 @@ Ní bheidh aon tionchar diúltach ag uasmhéaduithe ceallraí do MicroG a dhích
 
 Tapáil an cnaipe lean ar aghaidh agus ceadaigh athruithe uasmhéadaithe."</string>
   <string name="gms_core_dialog_continue_text">Lean ar aghaidh</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialóg uasmhéadú ceallraí</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Taispeántar dialóg optamaithe ceallraí MicroG</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Ní thaispeántar dialóg optamaithe ceallraí MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialóg uasmhéadú ceallraí a thaispeáint</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Má dhíchumasaítear é seo, folófar an leid um optamú ceallraí MicroG.
 
 Mura n-athraítear na hoptamuithe ceallraí, d’fhéadfadh na nithe seo a leanas a bheith i gceist:
 • D’fhéadfadh an aip a dhúnadh go randamach
 • B’fhéidir nach n-oibreoidh fógraí
 • B’fhéidir nach n-oibreoidh athsheinm sa chúlra"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Láimhseáil nasc aip</string>
+  <string name="morphe_link_handling_summary">Cumraigh cén aip a osclaíonn naisc</string>
+  <string name="morphe_link_handling_step1_title">Céim 1: Díchumasaigh naisc bhunaidh an aip</string>
+  <string name="morphe_link_handling_step1_message">Oscail socruithe an aip bhunaidh agus díchumasaigh naisc fearainn go léir</string>
+  <string name="morphe_link_handling_step2_title">Céim 2: Cumasaigh naisc aipeanna paisteáilte</string>
+  <string name="morphe_link_handling_step2_message">Oscail socruithe an aip phaisteáilte agus cumasaigh na naisc fearainn go léir</string>
+  <string name="morphe_link_handling_open">Oscail socruithe</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Foláireamh Turgnamhach 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Tá leagan turgnamhach den aip de ⚠️ &lt;b&gt;%1$s&lt;/b&gt; in úsáid agat

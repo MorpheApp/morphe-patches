@@ -18,24 +18,104 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Header-logo</string>
+  <string name="morphe_header_logo_entry_1">Standard</string>
+  <string name="morphe_header_logo_entry_3">Tilpasset</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">Om</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Annonser</string>
+  <string name="morphe_settings_music_screen_2_general_title">Generelt</string>
+  <string name="morphe_settings_music_screen_3_player_title">Spiller</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Diverse</string>
   <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Skjul «Skaff Music Premium»-etikett</string>
   <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Skjul videoannonser</string>
   <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Overgang</string>
+  <string name="morphe_music_crossfade_screen_summary">Tilpass hvordan spor glir sømløst over i hverandre</string>
+  <string name="morphe_music_crossfade_enabled_title">Aktiver overgang</string>
+  <string name="morphe_music_crossfade_curve_title">Fade-kurve</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Lik effekt</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtil hold</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Mild demping</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Jevn S-kurve</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Overgangsvarighet</string>
+  <string name="morphe_crossfade_duration_250ms">250 millisekunder</string>
+  <string name="morphe_crossfade_duration_500ms">500 millisekunder</string>
+  <string name="morphe_crossfade_duration_750ms">750 millisekunder</string>
+  <string name="morphe_crossfade_duration_1000ms">1 sekund</string>
+  <string name="morphe_crossfade_duration_2000ms">2 sekunder</string>
+  <string name="morphe_crossfade_duration_3000ms">3 sekunder</string>
+  <string name="morphe_crossfade_duration_4000ms">4 sekunder</string>
+  <string name="morphe_crossfade_duration_5000ms">5 sekunder</string>
+  <string name="morphe_crossfade_duration_6000ms">6 sekunder</string>
+  <string name="morphe_crossfade_duration_7000ms">7 sekunder</string>
+  <string name="morphe_crossfade_duration_8000ms">8 sekunder</string>
+  <string name="morphe_crossfade_duration_9000ms">9 sekunder</string>
+  <string name="morphe_crossfade_duration_10000ms">10 sekunder</string>
+  <string name="morphe_music_crossfade_on_skip_title">Crossfade ved manuell hopping</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Bruker kryssfade-effekten når du manuelt hopper til neste spor</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Manuell hopping vil ikke overgå</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Bruker kryssfade-effekten når et spor avsluttes naturlig</string>
+  <string name="morphe_music_crossfade_session_control_title">Autoavansering vil ikke overgå</string>
+  <string name="morphe_music_crossfade_session_control_summary">Hold nede shuffle-knappen for å pause eller gjenoppta kryssfade</string>
+  <string name="morphe_music_crossfade_paused_toast">Overgang pause for denne sesjonen</string>
+  <string name="morphe_music_crossfade_resumed_toast">Overgang gjenopptas</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Videomodus er ikke tilgjengelig når overgang er aktivert</string>
+  <string name="morphe_music_crossfade_about_title">Sesjonskontroll er deaktivert</string>
+  <string name="morphe_music_crossfade_about_summary">"Crossfade er tilgjengelig med Youtube Music 8.x
+
+Trykk og hold shuffle-knappen for å slå det av eller på
+
+Funksjonsimplementering av VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Aktiver permanent gjentakelse</string>
   <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Skjul kast-knapp</string>
+  <string name="morphe_music_hide_history_button_title">Skjul historikk-knapp</string>
+  <string name="morphe_music_hide_notification_button_title">Skjul varslingsknapp</string>
+  <string name="morphe_music_hide_search_button_title">Skjul søkeknapp</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Startside</string>
+  <string name="morphe_change_start_page_entry_default">Standard</string>
+  <string name="morphe_change_start_page_entry_charts">Diagrammer</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Episoder til senere</string>
+  <string name="morphe_change_start_page_entry_explore">Utforsk</string>
+  <string name="morphe_change_start_page_entry_history">Historikk</string>
+  <string name="morphe_change_start_page_entry_library">Bibliotek</string>
+  <string name="morphe_change_start_page_entry_liked_music">Likt musikk</string>
+  <string name="morphe_change_start_page_entry_playlists">Spillelister</string>
+  <string name="morphe_change_start_page_entry_search">Søk</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Abonnementer</string>
   <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Skjul kategorifelt</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Endre minispillerfarge</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Matcher miniplayer-fargen til fullskjermspilleren</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Vis neste-knapp i minispiller</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Vis forrige-knapp i minispiller</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Aktiver tvungen minispiller</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Hindrer spilleren i å automatisk utvides til fullskjerm når et nytt spor starter</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Navigasjonslinje</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Velg hvilke knapper som vises i navigasjonslinjen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Skjul Home-knapp</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Skjul Samples-knapp</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Skjul Explore-knapp</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Skjul Library-knapp</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Skjul Upgrade-knapp</string>
+  <string name="morphe_music_hide_navigation_bar_title">Skjul navigasjonslinjen</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Skjul navigasjonsknappetiketter</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Skjul oppgraderingsknapp</string>
 </resources>

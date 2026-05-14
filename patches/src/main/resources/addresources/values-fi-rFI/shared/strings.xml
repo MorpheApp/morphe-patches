@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Hakuhistoria on tyhjä</string>
   <string name="morphe_settings_search_empty_history_summary">Tallennaaksesi hakuhistorian, kirjoita hakukysely ja paina Enter-näppäintä</string>
   <string name="morphe_settings_search_history_title">Näytä asetusten hakuhistoria</string>
-  <string name="morphe_settings_search_history_summary_on">Asetusten hakuhistoria näytetään</string>
-  <string name="morphe_settings_search_history_summary_off">Asetusten hakuhistoriaa ei näytetä</string>
   <string name="morphe_show_menu_icons_title">Näytä Morphe-asetuskuvakkeet</string>
-  <string name="morphe_show_menu_icons_summary_on">Asetuskuvakkeet näytetään</string>
-  <string name="morphe_show_menu_icons_summary_off">Asetuskuvakkeita ei näytetä</string>
   <string name="morphe_language_title">Morphen kieli</string>
   <string name="morphe_language_user_dialog_message">"Joidenkin kielten käännökset saattavat puuttua tai olla puutteellisia.
 
@@ -88,16 +84,11 @@ Kääntääksesi uusia kieliä tai parantaaksesi olemassa olevia käännöksiä,
   <string name="morphe_settings_about_licenses_loading">Ladataan...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Virheenkorjaus</string>
-  <string name="morphe_debug_screen_summary">Ota tai poista virheenkorjausasetukset käytöstä</string>
-  <string name="morphe_debug_title">Virheenkorjauksen kirjaaminen</string>
-  <string name="morphe_debug_summary_on">Virheenkorjauslokit ovat käytössä</string>
-  <string name="morphe_debug_summary_off">Virheenkorjauslokit eivät ole käytössä</string>
+  <string name="morphe_debug_screen_summary">Määritä kehittyneet kehittäjäasetukset ja diagnostiikkalokit</string>
+  <string name="morphe_debug_title">Ota virheenkorjauksen kirjaaminen käyttöön</string>
   <string name="morphe_debug_stacktrace_title">Vianetsintälokit sisältävät pinojäljet</string>
-  <string name="morphe_debug_stacktrace_summary_on">Vianetsintälokit sisältävät pinojäljet</string>
-  <string name="morphe_debug_stacktrace_summary_off">Vianetsintälokit eivät sisällä pinojälkiä</string>
+  <string name="morphe_debug_stacktrace_summary">Sisältää pinotiedot virheenkorjauslokitiedostoihin virheiden tunnistamisen helpottamiseksi</string>
   <string name="morphe_debug_toast_on_error_title">Näytä toast-ilmoitus Morphen virhetilanteissa</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Toast-ilmoitus näytetään virheen tapahtuessa</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Toast-ilmoitusta ei näytetä virheen tapahtuessa</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Virheilmoitusten poistaminen käytöstä piilottaa kaikki Morphe-virheilmoitukset.
 
 Et saa ilmoituksia mistään odottamattomista tapahtumista."</string>
@@ -141,15 +132,21 @@ Akun optimoinnin poistamisella ei ole kielteistä vaikutusta akun kestoon.
 
 Napauta Jatka-painiketta ja salli muutokset optimointiin."</string>
   <string name="gms_core_dialog_continue_text">Jatka</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Akun optimointi -dialogi</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG:n akun optimointi -dialogi näytetään</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG:n akun optimointi -dialogi ei näytetä</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Näytä akun optimoinnin valintaikkuna</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tämän poistaminen piilottaa MicroG:n akun optimointi -kehotteen.
 
 Jos akun optimointeja ei muuteta, voit kokea:
 • Sovellus saattaa sulkeutua satunnaisesti
 • Ilmoitukset eivät välttämättä toimi
 • Taustalla toistaminen ei välttämättä toimi"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Sovelluksen linkkien käsittely</string>
+  <string name="morphe_link_handling_summary">Määritä, mikä sovellus avaa linkit</string>
+  <string name="morphe_link_handling_step1_title">Vaihe 1: Poista alkuperäisen sovelluksen linkit käytöstä</string>
+  <string name="morphe_link_handling_step1_message">Avaa alkuperäisen sovelluksen asetukset ja poista kaikki toimialueiden linkit käytöstä</string>
+  <string name="morphe_link_handling_step2_title">Vaihe 2: Ota korjatun sovelluksen linkit käyttöön</string>
+  <string name="morphe_link_handling_step2_message">Avaa korjatun sovelluksen asetukset ja ota kaikki toimialueiden linkit käyttöön</string>
+  <string name="morphe_link_handling_open">Asiantuntijan asetukset</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Varoitus: Kokeellinen 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Käytät kokeellista sovellusversiota: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

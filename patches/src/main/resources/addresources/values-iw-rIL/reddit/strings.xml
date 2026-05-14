@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 מגבלה: ייתכן שמרווחים חזותיים לא יוסרו"</string>
   <string name="morphe_remove_notification_dialog_title">הסרת חלון ההצעה של התראות</string>
-  <string name="morphe_remove_notification_dialog_summary">מסירה את חלון ההצעה של ההתראות שמופיע בעת ביקור בתת-רדיט על ידי קבלתו באופן אוטומטי</string>
-  <string name="morphe_show_view_count_title">הצגת ספירת הצפיות</string>
-  <string name="morphe_show_view_count_summary">"מציגה את ספירת הצפיות של פוסטים
-
-מגבלה: מוצג רק אם תגובת ה-API כוללת את ספירת הצפיות"</string>
+  <string name="morphe_remove_notification_dialog_summary">מפטר אוטומטית את תיבת ההצעה להודעה בעת ביקור בתת-פורום</string>
+  <string name="morphe_show_view_count_title">הצג מספר צפיות בפוסטים</string>
+  <string name="morphe_show_view_count_summary">מגבלה: זמין רק אם תגובת ה-API כוללת את מספר הצפיות</string>
   <string name="morphe_remove_nsfw_dialog_title">הסרת חלון האזהרה NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">מסירה את חלון האזהרה NSFW שמופיע בעת ביקור בתת-רדיט על ידי קבלתו באופן אוטומטי</string>
+  <string name="morphe_remove_nsfw_dialog_summary">מקבל אוטומטית את אזהרת התוכן NSFW בעת ביקור בתת-רדיט</string>
   <string name="morphe_screen_miscellaneous_title">שונות</string>
   <string name="morphe_about_title">אודות</string>
   <string name="morphe_about_summary">גרסת תיקון וקישורים רשמיים</string>
   <string name="morphe_sanitize_sharing_links_title">טיהור קישורי שיתוף</string>
-  <string name="morphe_sanitize_sharing_links_summary">טיהור קישורי שיתוף על ידי הסרת פרמטרי מעקב</string>
+  <string name="morphe_sanitize_sharing_links_summary">מסיר פרמטרי שאילתה למעקב מקישורים משותפים</string>
   <string name="morphe_open_links_directly_title">פתיחת קישורים ישירות</string>
-  <string name="morphe_open_links_directly_summary">דילוג על כתובות URL של הפניות בקישורים חיצוניים</string>
+  <string name="morphe_open_links_directly_summary">עוקף כתובות URL של הפניות בעת פתיחת קישורים חיצוניים</string>
   <string name="morphe_open_links_externally_title">פתיחת קישורים מחוץ לאפליקציה</string>
-  <string name="morphe_open_links_externally_summary">פותח קישורים בדפדפן החיצוני שלך במקום בדפדפן המובנה באפליקציה</string>
+  <string name="morphe_open_links_externally_summary">פותח קישורים בדפדפן שלך במקום בדפדפן בתוך האפליקציה</string>
 </resources>

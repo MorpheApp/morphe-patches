@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">搜尋記錄是空的</string>
   <string name="morphe_settings_search_empty_history_summary">若要儲存搜尋記錄，請輸入搜尋查詢並按下 Enter 鍵</string>
   <string name="morphe_settings_search_history_title">顯示設定搜尋記錄</string>
-  <string name="morphe_settings_search_history_summary_on">顯示設定搜尋記錄</string>
-  <string name="morphe_settings_search_history_summary_off">不顯示設定搜尋記錄</string>
   <string name="morphe_show_menu_icons_title">顯示 Morphe 設定圖示</string>
-  <string name="morphe_show_menu_icons_summary_on">已顯示設定圖示</string>
-  <string name="morphe_show_menu_icons_summary_off">不顯示「設定」圖示</string>
   <string name="morphe_language_title">Morphe 語言</string>
   <string name="morphe_language_user_dialog_message">"部分語言的翻譯可能缺少或不完整。
 
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">載入中……</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">偵錯</string>
-  <string name="morphe_debug_screen_summary">啟用或停用偵錯選項</string>
-  <string name="morphe_debug_title">偵錯記錄</string>
-  <string name="morphe_debug_summary_on">已啟用偵錯記錄檔</string>
-  <string name="morphe_debug_summary_off">已停用偵錯記錄檔</string>
+  <string name="morphe_debug_screen_summary">設定進階開發人員選項和診斷記錄</string>
+  <string name="morphe_debug_title">啟用偵錯記錄</string>
   <string name="morphe_debug_stacktrace_title">Debug 記錄檔堆疊追蹤</string>
-  <string name="morphe_debug_stacktrace_summary_on">Debug 記錄檔包含堆疊追蹤</string>
-  <string name="morphe_debug_stacktrace_summary_off">Debug 記錄檔不包含堆疊追蹤</string>
+  <string name="morphe_debug_stacktrace_summary">包含堆疊追蹤於偵錯記錄中，以協助識別錯誤</string>
   <string name="morphe_debug_toast_on_error_title">在 Morphe 發生錯誤時顯示浮動式訊息</string>
-  <string name="morphe_debug_toast_on_error_summary_on">如果發生錯誤，則顯示浮動式訊息</string>
-  <string name="morphe_debug_toast_on_error_summary_off">如果發生錯誤，則不會顯示浮動式訊息</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"關閉錯誤浮動式訊息會隱藏所有 Morphe 的錯誤通知。
 
 你將不會收到任何非預期的事件通知。"</string>
@@ -141,15 +132,21 @@ Second \"item\" text"</string>
 
 點擊繼續按鈕以允許調整相關最佳化設定。"</string>
   <string name="gms_core_dialog_continue_text">繼續</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">電池最佳化對話框</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">顯示 MicroG 電池最佳化對話框</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">不顯示 MicroG 電池最佳化對話框</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">顯示電池最佳化對話方塊</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"停用此功能將隱藏 MicroG 電池最佳化提示。
 
 如果未更改電池最佳化設定，您可能會遇到：
 • 應用程式可能隨機關閉
 • 通知可能無法正常運作
 • 背景播放可能無法正常運作"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">應用程式連結處理</string>
+  <string name="morphe_link_handling_summary">設定哪個應用程式開啟連結</string>
+  <string name="morphe_link_handling_step1_title">步驟 1：停用原始應用程式連結</string>
+  <string name="morphe_link_handling_step1_message">開啟原始應用程式的設定並停用所有網域連結</string>
+  <string name="morphe_link_handling_step2_title">步驟 2：啟用修補應用程式連結</string>
+  <string name="morphe_link_handling_step2_message">開啟修補應用程式的設定並啟用所有網域連結</string>
+  <string name="morphe_link_handling_open">開啟設定</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 實驗性提示 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"您正在使用⚠️ &lt;b&gt;%1$s&lt;/b&gt;應用程式的實驗性版本。

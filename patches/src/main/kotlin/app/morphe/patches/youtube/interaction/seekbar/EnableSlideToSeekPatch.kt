@@ -30,7 +30,7 @@ val enableSlideToSeekPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("morphe_slide_to_seek"),
+            SwitchPreference("morphe_slide_to_seek", summaryKey = null),
         )
 
         var modifiedMethods = false

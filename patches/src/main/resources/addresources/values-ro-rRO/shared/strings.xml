@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Istoricul căutărilor este gol</string>
   <string name="morphe_settings_search_empty_history_summary">Pentru a salva istoricul căutărilor, introduceți o interogare de căutare și apăsați Enter</string>
   <string name="morphe_settings_search_history_title">Afișează istoricul căutărilor în setări</string>
-  <string name="morphe_settings_search_history_summary_on">Se afișează istoricul căutărilor în setări</string>
-  <string name="morphe_settings_search_history_summary_off">Istoricul căutărilor în setări nu este afișat</string>
   <string name="morphe_show_menu_icons_title">Afișați pictogramele de setări Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Pictogramele de setări sunt afișate</string>
-  <string name="morphe_show_menu_icons_summary_off">Pictogramele setărilor nu sunt afișate</string>
   <string name="morphe_language_title">Limba Morphe</string>
   <string name="morphe_language_user_dialog_message">"Traducerile pentru unele limbi pot lipsi sau pot fi incomplete.
 
@@ -88,16 +84,11 @@ Pentru a traduce limbi noi sau pentru a îmbunătăți traducerile existente, vi
   <string name="morphe_settings_about_licenses_loading">Se încarcă...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depanare</string>
-  <string name="morphe_debug_screen_summary">Activează sau dezactivează opțiunile de depanare</string>
-  <string name="morphe_debug_title">Jurnal depanare</string>
-  <string name="morphe_debug_summary_on">Jurnalele de depanare sunt activate</string>
-  <string name="morphe_debug_summary_off">Jurnalele de depanare sunt dezactivate</string>
+  <string name="morphe_debug_screen_summary">Configurați opțiuni avansate pentru dezvoltatori și jurnale de diagnostic</string>
+  <string name="morphe_debug_title">Activați jurnalizarea depanării</string>
   <string name="morphe_debug_stacktrace_title">Urmărirea stivei în jurnalul de depanare</string>
-  <string name="morphe_debug_stacktrace_summary_on">Jurnalele de depanare includ urmăriri de stive</string>
-  <string name="morphe_debug_stacktrace_summary_off">Jurnalele de depanare nu includ urmăriri de stive</string>
+  <string name="morphe_debug_stacktrace_summary">Include urmăririle stivei în jurnalele de depanare pentru a ajuta la identificarea erorilor</string>
   <string name="morphe_debug_toast_on_error_title">Arată toast la eroare Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Se afișează un toast dacă apare o eroare</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Nu se afișează un toast dacă apare o eroare</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Oprirea toasturilor de eroare ascunde toate notificările de eroare Morphe.
 
 Nu veți fi notificat de niciun eveniment neașteptat."</string>
@@ -141,15 +132,21 @@ Dezactivarea optimizărilor bateriei pentru MicroG nu va afecta negativ utilizar
 
 Apăsați butonul Continuare și permiteți modificările de optimizare."</string>
   <string name="gms_core_dialog_continue_text">Continuă</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog de optimizare a bateriei</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialogul de optimizare a bateriei MicroG este afișat</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialogul de optimizare a bateriei MicroG nu este afișat</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Afișați dialogul de optimizare a bateriei</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Dezactivarea acestei opțiuni va ascunde solicitarea de optimizare a bateriei MicroG.
 
 Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următoarele probleme:
 • Aplicația se poate închide aleatoriu
 • Notificările pot să nu funcționeze
 • Redarea în fundal poate să nu funcționeze"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Gestionarea link-urilor aplicației</string>
+  <string name="morphe_link_handling_summary">Configurați ce aplicație deschide link-urile</string>
+  <string name="morphe_link_handling_step1_title">Pasul 1: Dezactivați link-urile originale ale aplicației</string>
+  <string name="morphe_link_handling_step1_message">Deschideți setările aplicației originale și dezactivați toate link-urile de domeniu</string>
+  <string name="morphe_link_handling_step2_title">Pasul 2: Activați link-urile aplicației modificate</string>
+  <string name="morphe_link_handling_step2_message">Deschideți setările aplicației modificate și activați toate link-urile de domeniu</string>
+  <string name="morphe_link_handling_open">Deschide setările</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Alertă Experimentală 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Folosiți o versiune experimentală a aplicației ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

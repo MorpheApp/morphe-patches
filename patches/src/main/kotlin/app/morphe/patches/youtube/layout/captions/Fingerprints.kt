@@ -13,6 +13,7 @@ package app.morphe.patches.youtube.layout.captions
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -30,17 +31,20 @@ internal object StartVideoInformerFingerprint : Fingerprint(
     strings = listOf("pc")
 )
 
-private object SubtitleManagerConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    parameters = listOf(),
+private object SubtitleManagerFingerprintClassFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf("L", "Landroid/view/accessibility/CaptioningManager;"),
     filters = listOf(
-        string("subtitles")
-    )
+        fieldAccess("Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;"),
+        methodCall("Landroid/view/accessibility/CaptioningManager;->isEnabled()Z"),
+    ),
+    custom = { method, _ ->
+        AccessFlags.STATIC.isSet(method.accessFlags)
+    }
 )
 
 internal object SubtitleManagerFingerprint : Fingerprint(
-    classFingerprint = SubtitleManagerConstructorFingerprint,
+    classFingerprint = SubtitleManagerFingerprintClassFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),

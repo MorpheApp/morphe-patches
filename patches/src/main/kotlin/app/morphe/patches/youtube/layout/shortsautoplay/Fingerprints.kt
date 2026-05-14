@@ -24,7 +24,8 @@ internal object ReelEnumConstructorFingerprint : Fingerprint(
 private object ReelPlaybackRepeatParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
-        string("Reels[%s] Playback Time: %d ms")
+        methodCall($$"Lj$/time/Instant;->toEpochMilli()J"),
+        string("r_tr")
     )
 )
 

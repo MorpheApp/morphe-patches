@@ -42,7 +42,6 @@ import java.nio.charset.StandardCharsets;
 import java.text.Collator;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -764,7 +763,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
 
         // Sort the list using locale-specific collation rules.
-        Collections.sort(preferences, (pair1, pair2)
+        preferences.sort((pair1, pair2)
                 -> collator.compare(pair1.first, pair2.first));
 
         // Reassign order values to reflect the new sorted sequence

@@ -15,4 +15,58 @@
 Second \"item\" text"</string>
 
 -->
-<resources></resources>
+<resources>
+  <string name="morphe_screen_ads_title">Annonser</string>
+  <string name="morphe_hide_post_ads_title">Skjul annonser i feeden</string>
+  <string name="morphe_hide_post_ads_summary">Skjuler annonser i feeden</string>
+  <string name="morphe_hide_comment_ads_title">Skjul kommentarfeltannonser</string>
+  <string name="morphe_hide_comment_ads_summary">Skjuler annonser i kommentarfeltet</string>
+  <string name="morphe_screen_layout_title">Oppsett</string>
+  <string name="morphe_disable_modern_home_title">Deaktiver moderne hjem</string>
+  <string name="morphe_disable_modern_home_summary">Deaktiverer det moderne brukergrensesnittet for forsiden</string>
+  <string name="morphe_disable_screenshot_popup_title">Deaktiver skjermbilde-popup</string>
+  <string name="morphe_disable_screenshot_popup_summary">Deaktiverer popup-vinduet som vises når du tar et skjermbilde</string>
+  <string name="morphe_hide_ask_button_title">Skjul Spør-knapp</string>
+  <string name="morphe_hide_ask_button_summary">Skjuler Spør-knappen i søkefeltet</string>
+  <string name="morphe_hide_answers_button_title">Skjul Svar-knapp</string>
+  <string name="morphe_hide_answers_button_summary">Skjuler Svar-knappen i navigasjonslinjen</string>
+  <string name="morphe_hide_chat_button_title">Skjul Chat-knapp</string>
+  <string name="morphe_hide_chat_button_summary">Skjuler Chat-knappen i navigasjonslinjen</string>
+  <string name="morphe_hide_create_button_title">Skjul Opprett-knapp</string>
+  <string name="morphe_hide_create_button_summary">Skjuler Opprett-knappen i navigasjonslinjen</string>
+  <string name="morphe_hide_discover_button_title">Skjul Oppdag eller Samfunn-knapp</string>
+  <string name="morphe_hide_discover_button_summary">Skjuler Oppdag eller Samfunn-knappen i navigasjonslinjen</string>
+  <string name="morphe_hide_games_button_title">Skjul Spill-knapp</string>
+  <string name="morphe_hide_games_button_summary">Skjuler Spill-knappen i navigasjonslinjen</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Skjul Nylig besøkte-hyllen</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Skjuler Nylig besøkte-hyllen i sidepanelet</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Skjul Spill på Reddit-hyllen</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Skjuler Spill på Reddit-hyllen i sidepanelet</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Skjul Reddit Pro-hyllen</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Skjuler Reddit Pro-hyllen i sidepanelet</string>
+  <string name="morphe_hide_about_shelf_title">Skjul Om-hyllen</string>
+  <string name="morphe_hide_about_shelf_summary">Skjuler Om-hyllen i sidepanelet</string>
+  <string name="morphe_hide_resources_shelf_title">Skjul Ressurser-hyllen</string>
+  <string name="morphe_hide_resources_shelf_summary">Skjuler Ressurser-hyllen i sidepanelet</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Skjul anbefalte samfunn</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Skjuler de anbefalte samfunnshyllene i subredditer</string>
+  <string name="morphe_hide_trending_today_shelf_title">Skjul Trending i dag-hyllen</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Skjuler Trending i dag-hyllen fra søkeforslag
+
+Begrensning: Visuelle avstandsholdere skjules kanskje ikke"</string>
+  <string name="morphe_remove_notification_dialog_title">Fjern varslingsforslagsdialog</string>
+  <string name="morphe_remove_notification_dialog_summary">Lukker automatisk dialogboksen for forslag til varsler når du besøker en subreddit</string>
+  <string name="morphe_show_view_count_title">Vis antall visninger på innlegg</string>
+  <string name="morphe_show_view_count_summary">Begrensning: Kun tilgjengelig hvis API-responsen inkluderer antall visninger</string>
+  <string name="morphe_remove_nsfw_dialog_title">Fjern NSFW-varslingsdialog</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Godtar automatisk NSFW-innholdsvarslingen når du besøker en subreddit</string>
+  <string name="morphe_screen_miscellaneous_title">Diverse</string>
+  <string name="morphe_about_title">Om</string>
+  <string name="morphe_about_summary">Patch-versjon og offisielle lenker</string>
+  <string name="morphe_sanitize_sharing_links_title">Sanér delingslenker</string>
+  <string name="morphe_sanitize_sharing_links_summary">Fjerner sporingsparametere fra delte lenker</string>
+  <string name="morphe_open_links_directly_title">Åpne lenker direkte</string>
+  <string name="morphe_open_links_directly_summary">Omgår omdirigerings-URL-er når eksterne lenker åpnes</string>
+  <string name="morphe_open_links_externally_title">Åpne lenker eksternt</string>
+  <string name="morphe_open_links_externally_summary">Åpner lenker i nettleseren din i stedet for nettleseren i appen</string>
+</resources>

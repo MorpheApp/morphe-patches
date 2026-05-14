@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">A keresési előzmények üresek</string>
   <string name="morphe_settings_search_empty_history_summary">A keresési előzmények mentéséhez írjon be egy keresési lekérdezést, majd nyomja meg az Entert</string>
   <string name="morphe_settings_search_history_title">Beállítások keresési előzményeinek megjelenítése</string>
-  <string name="morphe_settings_search_history_summary_on">A beállítások keresési előzményei láthatók</string>
-  <string name="morphe_settings_search_history_summary_off">A beállítások keresési előzményei nincsenek megjelenítve</string>
   <string name="morphe_show_menu_icons_title">Morphe beállításikonok megjelenítése</string>
-  <string name="morphe_show_menu_icons_summary_on">A beállításikonok láthatók</string>
-  <string name="morphe_show_menu_icons_summary_off">A beállítások ikonjai nem jelennek meg</string>
   <string name="morphe_language_title">Morphe nyelve</string>
   <string name="morphe_language_user_dialog_message">"Egyes nyelvek fordításai hiányozhatnak vagy hiányosak lehetnek.
 
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">Betöltés...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Hibakeresés</string>
-  <string name="morphe_debug_screen_summary">Hibakeresési beállítások engedélyezése vagy letiltása</string>
-  <string name="morphe_debug_title">Hibakeresési naplózás</string>
-  <string name="morphe_debug_summary_on">A hibakeresési naplók engedélyezve vannak</string>
-  <string name="morphe_debug_summary_off">A hibakeresési naplók le vannak tiltva</string>
+  <string name="morphe_debug_screen_summary">Konfigurálja a fejlett fejlesztői beállításokat és a részletes naplókat</string>
+  <string name="morphe_debug_title">Hibakeresési naplózás engedélyezése</string>
   <string name="morphe_debug_stacktrace_title">Hibakeresési naplók verem nyomkövetése</string>
-  <string name="morphe_debug_stacktrace_summary_on">Hibakeresési naplók tartalmazzák a verem nyomkövetését</string>
-  <string name="morphe_debug_stacktrace_summary_off">A hibakeresési naplók nem tartalmazzák a verem nyomkövetését</string>
+  <string name="morphe_debug_stacktrace_summary">A hibakeresési naplókba nyomkövetési információkat (stack trace) tartalmaz a hibák azonosításának megkönnyítése érdekében</string>
   <string name="morphe_debug_toast_on_error_title">Üzenet megjelenítése Morphe hiba esetén</string>
-  <string name="morphe_debug_toast_on_error_summary_on">A \"toast\" üzenet jelenik meg, ha hiba történik</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Nem jelenik meg \"toast\" üzenet, ha hiba történik</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"A hibaüzenetek kikapcsolása elrejti az összes Morphe hibaértesítést.
 
 Nem fog értesülni semmilyen váratlan eseményről."</string>
@@ -141,15 +132,21 @@ A MicroG akkumulátor-optimalizálásának letiltása nem befolyásolja negatív
 
 Kattintson a folytatás gombra, és engedélyezze az optimalizálási módosításokat."</string>
   <string name="gms_core_dialog_continue_text">Folytatás</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Akkugenerációs párbeszéd</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Megjelenik a MicroG akkumulátor-optimalizációs párbeszéd</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Nem jelenik meg a MicroG akkumulátor-optimalizációs párbeszéd</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Akkumulátor-optimalizálási párbeszédpanel megjelenítése</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"A letiltás elrejti a MicroG akkumulátor-optimalizációs kérést.
 
 Ha nem módosítják az akkumulátor-optimalizálást, akkor előfordulhat:
 • Az alkalmazás véletlenszerűen lezárulhat
 • Az értesítések nem működhetnek
 • A háttérbeli lejátszás nem működhet"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">App-linkek kezelése</string>
+  <string name="morphe_link_handling_summary">Konfigurálja, melyik alkalmazás nyitja meg a linkeket</string>
+  <string name="morphe_link_handling_step1_title">1. lépés: Tiltse le az eredeti alkalmazás linkjeit</string>
+  <string name="morphe_link_handling_step1_message">Nyissa meg az eredeti alkalmazás beállításait, és tiltsa le az összes tartománylinket</string>
+  <string name="morphe_link_handling_step2_title">2. lépés: Engedélyezze a javított alkalmazás linkjeit</string>
+  <string name="morphe_link_handling_step2_message">Nyissa meg a javított alkalmazás beállításait, és engedélyezze az összes tartománylinket</string>
+  <string name="morphe_link_handling_open">Beállítások megnyitása</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Kísérleti Figyelmeztetés 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Kísérleti alkalmazás verzióját használja, a ⚠️ &lt;b&gt;%1$s&lt;/b&gt;.

@@ -1,3 +1,5 @@
+import com.android.build.api.dsl.ApplicationExtension
+
 dependencies {
     compileOnly(project(":extensions:shared:library"))
     compileOnly(project(":extensions:reddit:stub"))
@@ -10,7 +12,7 @@ dependencies {
     implementation(libs.hiddenapi)
 }
 
-android {
+configure<ApplicationExtension> {
     compileSdk = 36
 
     defaultConfig {

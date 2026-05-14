@@ -30,20 +30,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_misc_title">Різне</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Приховати пункт \"Підписатися на Music Premium\"</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Пункт \"Підписатися на Music Premium\" приховано</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Пункт \"Підписатися на Music Premium\" показується</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Приховати відеорекламу</string>
-  <string name="morphe_music_hide_video_ads_summary_on">Відеорекламу приховано</string>
-  <string name="morphe_music_hide_video_ads_summary_off">Відеореклама показується</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Плавний перехід</string>
-  <string name="morphe_music_crossfade_screen_summary">Плавно зводити треки один в один</string>
+  <string name="morphe_music_crossfade_screen_summary">Налаштуйте, як треки плавно перетікають один в один</string>
   <string name="morphe_music_crossfade_enabled_title">Увімкнути плавний перехід</string>
-  <string name="morphe_music_crossfade_enabled_summary_on">Треки плавно зводяться один в один</string>
-  <string name="morphe_music_crossfade_enabled_summary_off">Плавний перехід вимкнено</string>
   <string name="morphe_music_crossfade_curve_title">Крива згасання</string>
-  <string name="morphe_music_crossfade_curve_summary">Як змінюється гучність між треками</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Рівномірна потужність</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Незначна затримка</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">М’яке згладжування</string>
@@ -64,14 +57,11 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_9000ms">9 секунд</string>
   <string name="morphe_crossfade_duration_10000ms">10 секунд</string>
   <string name="morphe_music_crossfade_on_skip_title">Плавний перехід при ручному перемиканні</string>
-  <string name="morphe_music_crossfade_on_skip_summary_on">Плавний перехід використовується при ручному перемиканні треків</string>
-  <string name="morphe_music_crossfade_on_skip_summary_off">Ручне перемикання не буде використовувати плавний перехід</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Застосовує ефект кросфейду, коли ви вручну переходите до наступного треку</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Плавний перехід при автоматичному переході</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Плавний перехід використовується, коли трек закінчується і починається наступний</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Автоматичний перехід не буде використовувати плавний перехід</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Застосовує ефект кросфейду, коли трек природно закінчується</string>
   <string name="morphe_music_crossfade_session_control_title">Керування сесією</string>
-  <string name="morphe_music_crossfade_session_control_summary_on">"Тривале натискання кнопки перемішування призупиняє або відновлює плавний перехід"</string>
-  <string name="morphe_music_crossfade_session_control_summary_off">Керування сесією вимкнено</string>
+  <string name="morphe_music_crossfade_session_control_summary">Тривале натискання кнопки перемішування призупиняє або відновлює плавний перехід</string>
   <string name="morphe_music_crossfade_paused_toast">Плавний перехід призупинено для цієї сесії</string>
   <string name="morphe_music_crossfade_resumed_toast">Плавний перехід відновлено</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим відео недоступний, коли ввімкнено плавний перехід</string>
@@ -83,23 +73,13 @@ Second \"item\" text"</string>
 Автор реалізації функції: VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Увімкнути постійний повтор</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">Постійний повтор увімкнено</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">Постійний повтор вимкнено</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Приховати кнопку трансляції</string>
-  <string name="morphe_music_hide_cast_button_summary_on">Кнопку трансляції приховано</string>
-  <string name="morphe_music_hide_cast_button_summary_off">Кнопка трансляції показується</string>
   <string name="morphe_music_hide_history_button_title">Приховати кнопку історії</string>
-  <string name="morphe_music_hide_history_button_summary_on">Кнопку історії приховано</string>
-  <string name="morphe_music_hide_history_button_summary_off">Кнопка історії показується</string>
   <string name="morphe_music_hide_notification_button_title">Приховати кнопку сповіщень</string>
-  <string name="morphe_music_hide_notification_button_summary_on">Кнопку сповіщень приховано</string>
-  <string name="morphe_music_hide_notification_button_summary_off">Кнопка сповіщень показується</string>
   <string name="morphe_music_hide_search_button_title">Приховати кнопку пошуку</string>
-  <string name="morphe_music_hide_search_button_summary_on">Кнопку пошуку приховано</string>
-  <string name="morphe_music_hide_search_button_summary_off">Кнопка пошуку показується</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Змінити початкову сторінку</string>
+  <string name="morphe_change_start_page_title">Початкова сторінка</string>
   <string name="morphe_change_start_page_entry_default">За замовчуванням</string>
   <string name="morphe_change_start_page_entry_charts">Хіт-паради</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Послухати пізніше</string>
@@ -112,54 +92,30 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_subscriptions">Підписки</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Приховати панель категорій</string>
-  <string name="morphe_music_hide_category_bar_summary_on">Панель категорій приховано</string>
-  <string name="morphe_music_hide_category_bar_summary_off">Панель категорій показується</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Змінити колір мініплеєра</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">Колір мініплеєра відповідає кольору повноекранного плеєра</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">Мініплеєр використовує колір за замовчуванням</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Колір мініплеєра відповідає кольору повноекранного плеєра</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
   <string name="morphe_music_miniplayer_next_button_title">Показати кнопку наступного треку в мініплеєрі</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">Кнопка наступного треку показується в мініплеєрі</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">Кнопка наступного треку не показується в мініплеєрі</string>
   <string name="morphe_music_miniplayer_previous_button_title">Показати кнопку попереднього треку в мініплеєрі</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">Кнопка попереднього треку показується в мініплеєрі</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">Кнопка попереднього треку не показується в мініплеєрі</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Увімкнути примусово мініплеєр</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">Мініплеєр залишається згорнутим, коли змінюється відтворення</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">Мініплеєр розгортається на весь екран, коли змінюється відтворення</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Запобігає автоматичному розширенню плеєра до повноекранного режиму при початку нового треку</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Панель навігації</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Приховати або змінити кнопки панелі навігації</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Оберіть, які кнопки відображатимуться на панелі навігації</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">Приховати \"Головна\"</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Кнопку \"Головна\" приховано</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Кнопка \"Головна\" показується</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Приховати кнопку \"Додому\"</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">Приховати \"Семпли\"</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Кнопку \"Семпли\" приховано</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Кнопка \"Семпли\" показується</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Приховати кнопку \"Зразки\"</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">Приховати \"Навігація\"</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Кнопку \"Навігація\" приховано</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Кнопка \"Навігація\" показується</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Приховати кнопку \"Досліджувати\"</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">Приховати \"Бібліотека\"</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Кнопку \"Бібліотека\" приховано</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Кнопка \"Бібліотека\" показується</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Приховати кнопку \"Бібліотека\"</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Приховати \"Підписка\"</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Кнопку \"Підписка\" приховано</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Кнопка \"Підписка\" показується</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Приховати кнопку \"Оновити\"</string>
   <string name="morphe_music_hide_navigation_bar_title">Приховати панель навігації</string>
-  <string name="morphe_music_hide_navigation_bar_summary_on">Панель навігації приховано</string>
-  <string name="morphe_music_hide_navigation_bar_summary_off">Панель навігації показується</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Приховати підписи кнопок навігації</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Підписи кнопок навігації приховано</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Підписи кнопок навігації показуються</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Приховати кнопку \"Підписка\"</string>
-  <string name="morphe_music_hide_upgrade_button_summary_on">Кнопку приховано</string>
-  <string name="morphe_music_hide_upgrade_button_summary_off">Кнопка показується</string>
 </resources>

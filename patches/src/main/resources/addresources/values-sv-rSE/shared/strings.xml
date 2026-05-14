@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Sökhistoriken är tom</string>
   <string name="morphe_settings_search_empty_history_summary">Om du vill spara sökhistorik, skriv en sökfråga och tryck på Retur</string>
   <string name="morphe_settings_search_history_title">Visa sökhistorik för inställningar</string>
-  <string name="morphe_settings_search_history_summary_on">Sökhistorik för inställningar visas</string>
-  <string name="morphe_settings_search_history_summary_off">Sökhistorik för inställningar visas inte</string>
   <string name="morphe_show_menu_icons_title">Visa ikoner för Morphe-inställningar</string>
-  <string name="morphe_show_menu_icons_summary_on">Inställningsikoner visas</string>
-  <string name="morphe_show_menu_icons_summary_off">Inställningsikoner visas inte</string>
   <string name="morphe_language_title">Språk för Morphe</string>
   <string name="morphe_language_user_dialog_message">"Översättningar till vissa språk kan vara ofullständiga eller saknas.
 
@@ -88,16 +84,8 @@ Om du vill översätta till nya språk eller förbättra befintliga översättni
   <string name="morphe_settings_about_licenses_loading">Läser in ...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Felsökning</string>
-  <string name="morphe_debug_screen_summary">Aktivera eller inaktivera felsökningsalternativ</string>
-  <string name="morphe_debug_title">Felsökningsloggning</string>
-  <string name="morphe_debug_summary_on">Felsökningsloggar är aktiverade</string>
-  <string name="morphe_debug_summary_off">Felsökningsloggar är inaktiverade</string>
   <string name="morphe_debug_stacktrace_title">Stackspårning i felsökningsloggar</string>
-  <string name="morphe_debug_stacktrace_summary_on">Felsökningsloggar innehåller stackspårningar</string>
-  <string name="morphe_debug_stacktrace_summary_off">Felsökningsloggar innehåller inte stackspårningar</string>
   <string name="morphe_debug_toast_on_error_title">Visa ett popup-meddelande om det uppstår fel med Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Popup-meddelande visas om det uppstår fel</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Popup-meddelande visas inte om det uppstår fel</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Om du stänger av popup-felmeddelanden döljs alla Morphe-felmeddelanden.
 
 Du kommer inte att bli meddelad om oväntade händelser."</string>
@@ -141,15 +129,13 @@ Om du inaktiverar batterioptimeringar för MicroG påverkas inte batteritiden ne
 
 Tryck på knappen Fortsätt och tillåt optimeringsändringar."</string>
   <string name="gms_core_dialog_continue_text">Fortsätt</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialogruta för batterioptimering</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialogrutan för MicroG-batterioptimeringar visas</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialogrutan för MicroG-batterioptimeringar visas inte</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Om du inaktiverar det här döljs meddelandet om MicroG-batterioptimeringar. 
 
 Om batterioptimeringarna inte ändras kan du uppleva att
 • appen stängs slumpmässigt
 • aviseringar inte fungerar
 • uppspelning i bakgrunden inte fungerar"</string>
+  <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Obs! Experimentell version 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Du använder en experimentell appversion av ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

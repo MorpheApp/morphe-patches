@@ -17,20 +17,99 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Start på nytt for å fullføre oppsettet</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">Appnavn</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <string name="morphe_custom_branding_name_entry_5">Tilpass</string>
+  <string name="morphe_custom_branding_icon_title">Appikon</string>
+  <string name="morphe_custom_branding_icon_entry_1">Original</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe svart</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe mørk</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe lys</string>
+  <string name="morphe_custom_branding_icon_entry_5">Morphe spill</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_6">Tilpass</string>
+  <string name="morphe_custom_branding_notification_icon_title">Varslingsikon</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Tilpass app-ikon</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-varsel</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Din seerhistorikk lagres ikke.&lt;br&gt;&lt;br&gt;Dette skyldes mest sannsynlig en DNS-annonsesblokkering eller et nettverksproxy.&lt;br&gt;&lt;br&gt;For å fikse dette, legg til &lt;b&gt;s.youtube.com&lt;/b&gt; på hvitelisten eller slå av alle DNS-blokkeringer og proxyer.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ikke vis igjen</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Forfalske videostrømmer</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Konfigurer klient-spoofing for å unngå avspillingsproblemer</string>
+  <string name="morphe_spoof_video_streams_title">Forfalske videostrømmer</string>
+  <string name="morphe_spoof_video_streams_summary">"Lurer YouTube til å sende en kompatibel videostrøm, noe som fikser avspillingen for de fleste brukere
+
+Hvis du er en YouTube Premium-bruker, er kanskje ikke denne innstillingen nødvendig."</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Kunne ikke hente noen klientstrømmer</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Hvis du slår av denne innstillingen, kan det oppstå avspillingsproblemer.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Prøv å aktivere: Forfalske videostrømmer > Android VR-pålogging</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Standardklient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR-pålogging</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ikke logget inn på Android VR. Trykk her for å logge inn</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Er logget inn på Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">For å bruke denne funksjonen må du endre \'Standardklient\' til Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Logg inn på Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Å logge på Android VR kan fikse avspillingsproblemer for noen brukere
+
+Trykk på Fortsett nedenfor for å logge på"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Fortsett</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Logg ut</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instruksjoner</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktiveringskode: %s
+
+1. Trykk på 'Åpne nettsted' nedenfor for å åpne nettstedet 'Koble til en enhet'
+2. Lim inn fra utklippstavlen (eller skriv inn) aktiveringskoden som vises ovenfor
+3. Logg på Google om du blir bedt om det. Hvis du har flere kontoer, velger du denne YouTube-kontoen
+4. Trykk på 'Tillat YouTube VR-tilgang'
+5. Gå tilbake til denne appen etter at meldingen 'Enhet tilkoblet' vises"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Åpne nettsted</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Kunne ikke utstede en aktiveringskode</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Kunne ikke utstede et autorisasjonstoken</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Logget inn</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Autentisering lagret
+
+• Dine Morphe-innstillinger vil ikke importere/eksportere Android VR-autentisering
+• Hvis denne appen ikke brukes på 6 måneder, vil Google fjerne denne autentiseringen
+• Du må logge inn igjen hvis du endrer Google-passordet ditt eller avregistrerer denne enheten fra Google-innstillingene dine"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er midlertidig ikke tilgjengelig (API-utløp)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR-påloggingen har utløpt, prøv å logge inn på VR igjen</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 er midlertidig ikke tilgjengelig (status %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 er midlertidig ikke tilgjengelig</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Kan ikke logge på VR, nettstedautentiseringen ble ikke godkjent</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Kan ikke logge på VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Logget ut av Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Ugyldig VR-påloggingstoken, prøv å logge inn på VR igjen</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Deaktiver oppdatering av spiller JavaScript</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Låser spillerens JavaScript til en lokal hash i stedet for å hente oppdateringer
+
+• En gyldig spiller JavaScript-hash er nødvendig
+• Avspilling mislykkes hvis spillerens JavaScript-hash tilbakekalles i GVS"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Spiller JavaScript-hasher er gyldige i omtrent en måned, og utdaterte hasher kan tilbakekalles av GVS.</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Spiller JavaScript-hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Skriv inn en gyldig spiller JavaScript-hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokollen</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Deaktiver DRC-lyd</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Tving originalt lydspråk</string>
+  <string name="morphe_force_original_audio_summary">Spiller alltid av videoens originale lydspor i stedet for en dubbet versjon</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Skjul reklamer i fullskjerm</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">For å bruke denne funksjonen må du endre \'Forfalske videostrømmer\' til Android Reel eller TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Sanere delingslenker</string>
+  <string name="morphe_sanitize_sharing_links_summary">Fjerner sporingsparametere fra delte lenker</string>
+  <string name="morphe_replace_music_with_youtube_title">Endre delingslenker til youtube.com</string>
+  <string name="morphe_replace_links_with_shortener_title">Endre delingslenker til youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Tvinger direktesendinger og Shorts til å bruke den forkortede youtu.be URL-formatet</string>
 </resources>

@@ -54,14 +54,14 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_autoplay_button"),
-                    SwitchPreference("morphe_hide_captions_button"),
-                    SwitchPreference("morphe_hide_cast_button"),
-                    SwitchPreference("morphe_hide_collapse_button"),
-                    SwitchPreference("morphe_hide_fullscreen_button"),
+                    SwitchPreference("morphe_hide_autoplay_button", summaryKey = null),
+                    SwitchPreference("morphe_hide_captions_button", summaryKey = null),
+                    SwitchPreference("morphe_hide_cast_button", summaryKey = null),
+                    SwitchPreference("morphe_hide_collapse_button", summaryKey = null),
+                    SwitchPreference("morphe_hide_fullscreen_button", summaryKey = null),
                     SwitchPreference("morphe_hide_player_control_buttons_background"),
-                    SwitchPreference("morphe_hide_player_previous_next_buttons"),
-                    SwitchPreference("morphe_hide_settings_button"),
+                    SwitchPreference("morphe_hide_player_previous_next_buttons", summaryKey = null),
+                    SwitchPreference("morphe_hide_settings_button", summaryKey = null),
                 )
             )
         )

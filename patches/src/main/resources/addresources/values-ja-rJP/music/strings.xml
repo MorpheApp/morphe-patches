@@ -30,20 +30,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_misc_title">その他</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">「Music Premium に登録」ラベルを非表示</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">「Music Premium に登録」ラベルは表示されません</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">「Music Premium に登録」ラベルは表示されます</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">動画広告を非表示</string>
-  <string name="morphe_music_hide_video_ads_summary_on">動画広告は表示されません</string>
-  <string name="morphe_music_hide_video_ads_summary_off">動画広告は表示されます</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">クロスフェード</string>
-  <string name="morphe_music_crossfade_screen_summary">前後のトラックを重ね合わせてなめらかにつなぎます</string>
+  <string name="morphe_music_crossfade_screen_summary">前後のトラックを重ね合わせてなめらかにつなぐクロスフェードの設定をカスタマイズします</string>
   <string name="morphe_music_crossfade_enabled_title">クロスフェードを有効化</string>
-  <string name="morphe_music_crossfade_enabled_summary_on">トラック間でクロスフェードします</string>
-  <string name="morphe_music_crossfade_enabled_summary_off">クロスフェードは無効です</string>
   <string name="morphe_music_crossfade_curve_title">フェードカーブ</string>
-  <string name="morphe_music_crossfade_curve_summary">クロスフェードで前後のトラックが重なる部分の音量の変化の仕方</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">等電力（全体音量一定）</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">ゆるやかなホールド（維持）</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">おだやかなイーズ（緩急）</string>
@@ -64,14 +57,11 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_9000ms">9 秒</string>
   <string name="morphe_crossfade_duration_10000ms">10 秒</string>
   <string name="morphe_music_crossfade_on_skip_title">手動スキップ時のクロスフェード</string>
-  <string name="morphe_music_crossfade_on_skip_summary_on">トラックを手動でスキップしたときにクロスフェードします</string>
-  <string name="morphe_music_crossfade_on_skip_summary_off">トラックを手動でスキップしたときにクロスフェードしません</string>
+  <string name="morphe_music_crossfade_on_skip_summary">手動で次のトラックにスキップしたときにクロスフェードを適用します</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">自動再生時のクロスフェード</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_on">トラックが自動で切り替わるときにクロスフェードします</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_off">トラックが自動で切り替わるときにクロスフェードしません</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">トラックが自動で切り替わるときにクロスフェードを適用します</string>
   <string name="morphe_music_crossfade_session_control_title">クロスフェードのセッション制御</string>
-  <string name="morphe_music_crossfade_session_control_summary_on">"シャッフル ボタンを長押しすると、そのセッションでのクロスフェードを停止 / 再開します"</string>
-  <string name="morphe_music_crossfade_session_control_summary_off">クロスフェードのセッションでの一時的なオン / オフの切り替え機能は無効になっています</string>
+  <string name="morphe_music_crossfade_session_control_summary">シャッフル ボタンを長押しすると、そのセッションでのクロスフェードを停止 / 再開します</string>
   <string name="morphe_music_crossfade_paused_toast">このセッションでのクロスフェードを一時停止します</string>
   <string name="morphe_music_crossfade_resumed_toast">クロスフェードを再開しました</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">クロスフェードが有効になっている間は、動画モードは利用できません</string>
@@ -83,23 +73,13 @@ Second \"item\" text"</string>
 機能実装: VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">常時リピートを有効化</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">常時リピートは有効です\n\nリピート設定が保存され常時適用されます</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">常時リピートは無効です\n\nリピート設定は保存されず毎回リセットされます</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">キャストボタンを非表示</string>
-  <string name="morphe_music_hide_cast_button_summary_on">キャストボタンは表示されません</string>
-  <string name="morphe_music_hide_cast_button_summary_off">キャストボタンは表示されます</string>
   <string name="morphe_music_hide_history_button_title">履歴ボタンを非表示</string>
-  <string name="morphe_music_hide_history_button_summary_on">履歴ボタンは表示されません</string>
-  <string name="morphe_music_hide_history_button_summary_off">履歴ボタンは表示されます</string>
   <string name="morphe_music_hide_notification_button_title">通知ボタンを非表示</string>
-  <string name="morphe_music_hide_notification_button_summary_on">通知ボタンは表示されません</string>
-  <string name="morphe_music_hide_notification_button_summary_off">通知ボタンは表示されます</string>
   <string name="morphe_music_hide_search_button_title">検索ボタンを非表示</string>
-  <string name="morphe_music_hide_search_button_summary_on">検索ボタンは表示されません</string>
-  <string name="morphe_music_hide_search_button_summary_off">検索ボタンは表示されます</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">スタート画面を変更</string>
+  <string name="morphe_change_start_page_title">スタート画面</string>
   <string name="morphe_change_start_page_entry_default">デフォルト</string>
   <string name="morphe_change_start_page_entry_charts">チャート</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">後で視聴するエピソード</string>
@@ -112,54 +92,30 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_subscriptions">登録チャンネル</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">カテゴリバーを非表示</string>
-  <string name="morphe_music_hide_category_bar_summary_on">カテゴリバーは表示されません</string>
-  <string name="morphe_music_hide_category_bar_summary_off">カテゴリバーは表示されます</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">ミニプレーヤーの色を変更</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">ミニプレーヤーはフルスクリーン プレーヤーと同じ色を使用します</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">ミニプレーヤーはデフォルトの色を使用します</string>
+  <string name="morphe_music_change_miniplayer_color_summary">ミニプレーヤーの色をフルスクリーンプレーヤーの色に合わせます</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
   <string name="morphe_music_miniplayer_next_button_title">ミニプレーヤーに次の曲ボタンを表示</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">ミニプレーヤーに次の曲ボタンが表示されます</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">ミニプレーヤーに次の曲ボタンは表示されません</string>
   <string name="morphe_music_miniplayer_previous_button_title">ミニプレーヤーに前の曲ボタンを表示</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">ミニプレーヤーに前の曲ボタンが表示されます</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">ミニプレーヤーに前の曲ボタンは表示されません</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">ミニプレーヤーでの連続再生を有効化</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">ミニプレーヤーでの再生中に次の曲をそのままミニプレーヤーで再生します</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">ミニプレーヤーでの再生中に次の曲をフルスクリーンで再生します</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">新しいトラックが自動的にフルスクリーン プレーヤーで再生されるのを防ぎます</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">ナビゲーション バー</string>
-  <string name="morphe_music_navigation_bar_screen_summary">ナビゲーション バーのボタンを変更または非表示にします</string>
+  <string name="morphe_music_navigation_bar_screen_summary">ナビゲーション バーに表示するボタンを選択します</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">「ホーム」を非表示</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">ホームボタンは表示されません</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">ホームボタンは表示されます</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">ホームボタンを非表示</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">「サンプル」を非表示</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">サンプルボタンは表示されません</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">サンプルボタンは表示されます</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">サンプルボタンを非表示</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">「探索」を非表示</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">探索ボタンは表示されません</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">探索ボタンは表示されます</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">探索ボタンを非表示</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">「ライブラリ」を非表示</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">ライブラリ ボタンは表示されません</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">ライブラリ ボタンは表示されます</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">ライブラリ ボタンを非表示</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">「アップグレード」を非表示</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">アップグレード ボタンは表示されません</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">アップグレード ボタンは表示されます</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">アップグレード ボタンを非表示</string>
   <string name="morphe_music_hide_navigation_bar_title">ナビゲーション バーを非表示</string>
-  <string name="morphe_music_hide_navigation_bar_summary_on">ナビゲーション バーは表示されません</string>
-  <string name="morphe_music_hide_navigation_bar_summary_off">ナビゲーション バーは表示されます</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ボタンをアイコンのみで表示</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">ナビゲーション ボタンはアイコンのみで表示されます</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">ナビゲーション ボタンはアイコンと文字で表示されます</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">アップグレード ボタンを非表示</string>
-  <string name="morphe_music_hide_upgrade_button_summary_on">ボタンは表示されません</string>
-  <string name="morphe_music_hide_upgrade_button_summary_off">ボタンは表示されます</string>
 </resources>

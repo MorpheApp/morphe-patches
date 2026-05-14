@@ -30,20 +30,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_misc_title">เบ็ดเตล็ด</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">ซ่อนป้าย \'รับ Music Premium\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">ป้าย Get Music Premium ถูกซ่อน</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">ป้าย Get Music Premium ถูกแสดง</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
-  <string name="morphe_music_hide_video_ads_summary_on">ซ่อนโฆษณาวิดีโอแล้ว</string>
-  <string name="morphe_music_hide_video_ads_summary_off">แสดงโฆษณาวิดีโอแล้ว</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
-  <string name="morphe_music_crossfade_screen_summary">ผสานแทร็กเข้าหากันอย่างราบรื่น</string>
+  <string name="morphe_music_crossfade_screen_summary">ปรับแต่งการผสมผสานเสียงเพลงที่ต่อเนื่องระหว่างแทร็ก</string>
   <string name="morphe_music_crossfade_enabled_title">เปิดใช้งาน Crossfade</string>
-  <string name="morphe_music_crossfade_enabled_summary_on">แทร็กผสานเข้าหากัน</string>
-  <string name="morphe_music_crossfade_enabled_summary_off">Crossfade ปิดใช้งาน</string>
   <string name="morphe_music_crossfade_curve_title">เส้นโค้ง Fade</string>
-  <string name="morphe_music_crossfade_curve_summary">วิธีการเปลี่ยนระดับเสียงระหว่างแทร็ก</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">พลังงานเท่ากัน</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">การหน่วงเวลาที่ละเอียดอ่อน</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">การผ่อนคลายที่นุ่มนวล</string>
@@ -64,14 +57,11 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_9000ms">9 วินาที</string>
   <string name="morphe_crossfade_duration_10000ms">10 วินาที</string>
   <string name="morphe_music_crossfade_on_skip_title">Fade เมื่อข้ามเพลงด้วยตนเอง</string>
-  <string name="morphe_music_crossfade_on_skip_summary_on">Fade เล่นเมื่อข้ามเพลงด้วยตนเอง</string>
-  <string name="morphe_music_crossfade_on_skip_summary_off">จะไม่ Fade เมื่อข้ามเพลงด้วยตนเอง</string>
+  <string name="morphe_music_crossfade_on_skip_summary">ใช้เอฟเฟกต์การผสมผสานเสียงเมื่อคุณข้ามไปยังแทร็กถัดไปด้วยตนเอง</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Fade เมื่อเปิดใช้งาน Auto-Advance</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Fade เล่นเมื่อเพลงสิ้นสุดและไปยังเพลงถัดไป</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Auto-Advance จะไม่ Fade</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">ใช้เอฟเฟกต์การผสมผสานเสียงเมื่อเพลงสิ้นสุดลงตามธรรมชาติ</string>
   <string name="morphe_music_crossfade_session_control_title">การควบคุมเซสชัน</string>
-  <string name="morphe_music_crossfade_session_control_summary_on">"กดค้างที่ปุ่ม Shuffle เพื่อหยุดชั่วคราวหรือดำเนินการต่อกับ Fade"</string>
-  <string name="morphe_music_crossfade_session_control_summary_off">การควบคุมเซสชันถูกปิดใช้งาน</string>
+  <string name="morphe_music_crossfade_session_control_summary">แตะค้างที่ปุ่มสุ่มเพื่อหยุดหรือเล่นต่อการผสมผสานเสียง</string>
   <string name="morphe_music_crossfade_paused_toast">การเปลี่ยนเพลงแบบค่อยๆ จางหายถูกพักไว้สำหรับเซสชันนี้</string>
   <string name="morphe_music_crossfade_resumed_toast">การเปลี่ยนเพลงแบบค่อยๆ จางหายกลับมาทำงานต่อ</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">โหมดวิดีโอไม่สามารถใช้ได้ขณะเปิดใช้งานการเปลี่ยนเพลงแบบค่อยๆ จางหาย</string>
@@ -83,23 +73,13 @@ Second \"item\" text"</string>
 Feature implementation by VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">เปิดใช้งานเล่นซ้ำถาวร</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">เปิดใช้งานเล่นซ้ำถาวรแล้ว</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">ปิดใช้งานเล่นซ้ำถาวรแล้ว</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">ซ่อนปุ่มแคสต์</string>
-  <string name="morphe_music_hide_cast_button_summary_on">ปุ่มแคสต์ซ่อนอยู่</string>
-  <string name="morphe_music_hide_cast_button_summary_off">ปุ่มแคสต์แสดงอยู่</string>
   <string name="morphe_music_hide_history_button_title">ซ่อนปุ่มประวัติ</string>
-  <string name="morphe_music_hide_history_button_summary_on">ปุ่มประวัติถูกซ่อน</string>
-  <string name="morphe_music_hide_history_button_summary_off">ปุ่มประวัติกำลังแสดง</string>
   <string name="morphe_music_hide_notification_button_title">ซ่อนปุ่มการแจ้งเตือน</string>
-  <string name="morphe_music_hide_notification_button_summary_on">ซ่อนปุ่มการแจ้งเตือนแล้ว</string>
-  <string name="morphe_music_hide_notification_button_summary_off">แสดงปุ่มการแจ้งเตือนแล้ว</string>
   <string name="morphe_music_hide_search_button_title">ซ่อนปุ่มค้นหา</string>
-  <string name="morphe_music_hide_search_button_summary_on">ซ่อนปุ่มค้นหาแล้ว</string>
-  <string name="morphe_music_hide_search_button_summary_off">แสดงปุ่มค้นหาแล้ว</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">เปลี่ยนหน้าเริ่มต้น</string>
+  <string name="morphe_change_start_page_title">หน้าเริ่มต้น</string>
   <string name="morphe_change_start_page_entry_default">ค่าเริ่มต้น</string>
   <string name="morphe_change_start_page_entry_charts">กราฟ</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">ตอนสำหรับภายหลัง</string>
@@ -112,54 +92,30 @@ Feature implementation by VazerOG"</string>
   <string name="morphe_change_start_page_entry_subscriptions">สมัครสมาชิก</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">ซ่อนแถบหมวดหมู่</string>
-  <string name="morphe_music_hide_category_bar_summary_on">ซ่อนแถบหมวดหมู่แล้ว</string>
-  <string name="morphe_music_hide_category_bar_summary_off">แสดงแถบหมวดหมู่แล้ว</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">เปลี่ยนสีมินิเพลเยอร์</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">สีมินิเพลเยอร์ตรงกับเครื่องเล่นแบบเต็มหน้าจอ</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">มินิเพลเยอร์ใช้สีเริ่มต้น</string>
+  <string name="morphe_music_change_miniplayer_color_summary">สีมินิเพลเยอร์ตรงกับเครื่องเล่นแบบเต็มหน้าจอ</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
   <string name="morphe_music_miniplayer_next_button_title">แสดงปุ่มถัดไปในมินิเพลเยอร์</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">ปุ่มถัดไปจะแสดงในมินิเพลเยอร์</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">ปุ่มถัดไปจะไม่แสดงในมินิเพลเยอร์</string>
   <string name="morphe_music_miniplayer_previous_button_title">แสดงปุ่ม ย้อนกลับใน miniplayer</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">ปุ่ม ย้อนกลับแสดงใน miniplayer</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">ปุ่ม ย้อนกลับไม่ได้แสดงใน miniplayer</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">เปิดใช้งานมินิเพลเยอร์แบบบังคับ</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">มินิเพลเยอร์จะยังคงขนาดเล็กเมื่อการเล่นเพลงมีการเปลี่ยนแปลง</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">มินิเพลเยอร์จะขยายเป็นเต็มหน้าจอเมื่อการเล่นเพลงมีการเปลี่ยนแปลง</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">ป้องกันไม่ให้เครื่องเล่นขยายเป็นแบบเต็มหน้าจอโดยอัตโนมัติเมื่อเริ่มแทร็กใหม่</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">แถบนำทาง</string>
-  <string name="morphe_music_navigation_bar_screen_summary">ซ่อนหรือเปลี่ยนปุ่มแถบนำทาง</string>
+  <string name="morphe_music_navigation_bar_screen_summary">เลือกปุ่มที่จะแสดงในแถบนำทาง</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">ซ่อนหน้าแรก</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">ซ่อนปุ่มหน้าแรกแล้ว</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">แสดงปุ่มหน้าแรกแล้ว</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">ซ่อนปุ่มหน้าแรก</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">ซ่อนตัวอย่าง</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">ซ่อนปุ่มตัวอย่างแล้ว</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">แสดงปุ่มตัวอย่างแล้ว</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">ซ่อนปุ่มตัวอย่าง</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">ซ่อนสำรวจ</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">ซ่อนปุ่มสำรวจแล้ว</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">แสดงปุ่มสำรวจแล้ว</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">ซ่อนปุ่มสำรวจ</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">ซ่อนคลัง</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">ซ่อนปุ่มคลังแล้ว</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">แสดงปุ่มคลังแล้ว</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">ซ่อนปุ่มคลังเพลง</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">ซ่อนอัปเกรด</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">ซ่อนปุ่มอัปเกรดแล้ว</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">แสดงปุ่มอัปเกรดแล้ว</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">ซ่อนปุ่มอัปเกรด</string>
   <string name="morphe_music_hide_navigation_bar_title">ซ่อนแถบนำทาง</string>
-  <string name="morphe_music_hide_navigation_bar_summary_on">ซ่อนแถบนำทางแล้ว</string>
-  <string name="morphe_music_hide_navigation_bar_summary_off">แสดงแถบนำทางแล้ว</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">ซ่อนป้ายกำกับปุ่มนำทาง</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">ซ่อนป้ายกำกับแล้ว</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">แสดงป้ายกำกับแล้ว</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">ซ่อนปุ่มอัปเกรด</string>
-  <string name="morphe_music_hide_upgrade_button_summary_on">ซ่อนปุ่มแล้ว</string>
-  <string name="morphe_music_hide_upgrade_button_summary_off">แสดงปุ่มแล้ว</string>
 </resources>

@@ -22,22 +22,22 @@ public final class SaveToWatchLaterPatch {
      * If the player is not active, the layout may break.
      * Use it only when it is guaranteed to be used in situations where the player is active.
      */
+    private static StreamOrDetailsDataRequest saveVideoRequest = null;
     public static void saveVideo() {
         try {
+            // Prevent a new request until the previous (if exists) is not done
+            if (saveVideoRequest != null && !saveVideoRequest.fetchIsDone()) {
+                return;
+            }
             String videoId = VideoInformation.getVideoId();
-            StreamOrDetailsDataRequest request = SpoofVideoStreamsPatch.fetchDetails(
-                    PlayerRoutes.SEND_SAVE_VIDEO_TO_PLAYLIST,
+            saveVideoRequest = SpoofVideoStreamsPatch.fetchDetails(
+                    PlayerRoutes.SEND_SAVE_VIDEO_TO_WATCH_LATER,
                     videoId
             );
 
-            if (request == null) {
-                Logger.printDebug(() -> "Could not save video, fetch details are null: " + videoId);
-                return;
-            }
-
             Utils.runOnBackgroundThread(() -> {
-                String saveToWatchLaterResponse = (String) request.getStreamOrDetails();
-                if (saveToWatchLaterResponse != null && !saveToWatchLaterResponse.isEmpty()) {
+                if (saveVideoRequest.getStreamDetails() instanceof String saveToWatchLaterResponse
+                        && !saveToWatchLaterResponse.isEmpty()) {
                     Logger.printDebug(() -> "watch later response: " + saveToWatchLaterResponse);
 
                     if (saveToWatchLaterResponse.contains("STATUS_SUCCEEDED")) {
@@ -46,6 +46,8 @@ public final class SaveToWatchLaterPatch {
                                         ? "morphe_save_to_watch_later_success_toast"
                                         : "morphe_save_to_watch_later_already_exists_toast"));
                     }
+                } else {
+                    Logger.printDebug(() -> "Could not save video, stream details are null: " + videoId);
                 }
             });
         } catch (Exception ex) {

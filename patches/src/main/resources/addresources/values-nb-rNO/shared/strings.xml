@@ -17,12 +17,143 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
+  <string name="morphe_settings_submenu_title">Innstillinger</string>
+  <string name="morphe_settings_confirm_user_dialog_title">Er du sikker på at du vil fortsette?</string>
+  <string name="morphe_settings_save">Lagre</string>
+  <string name="morphe_settings_reset">Tilbakestill</string>
+  <string name="morphe_settings_reset_color">Tilbakestill farge</string>
+  <string name="morphe_settings_color_invalid">Ugyldig farge</string>
+  <string name="morphe_settings_restart_title">Omstart kreves</string>
+  <string name="morphe_settings_restart_dialog_message">Start appen på nytt for at endringen skal tre i kraft.</string>
+  <string name="morphe_settings_restart">Start på nytt</string>
   <!-- String is also duplicated in Reddit import / export preference -->
+  <string name="morphe_settings_import">Importer</string>
+  <string name="morphe_settings_import_copy">Kopier</string>
+  <string name="morphe_settings_import_reset">Morphe-innstillinger tilbakestilt til standard</string>
+  <string name="morphe_settings_import_success">Importerte %d innstillinger</string>
+  <string name="morphe_settings_import_failure_parse">Import mislyktes: %s</string>
+  <string name="morphe_settings_search_hint">Søk i innstillinger</string>
+  <string name="morphe_settings_search_no_results_title">Ingen resultater funnet for \'%s\'</string>
+  <string name="morphe_settings_search_no_results_summary">Prøv et annet nøkkelord</string>
+  <string name="morphe_settings_search_recent_searches">Nylige søk</string>
+  <string name="morphe_settings_search_remove_message">Fjern fra søkehistorikk?</string>
+  <string name="morphe_settings_search_clear_history">Slett søkehistorikk</string>
+  <string name="morphe_settings_search_clear_history_message">Er du sikker på at du vil slette hele søkehistorikken?</string>
+  <string name="morphe_settings_search_tips_title">Søketips</string>
+  <string name="morphe_settings_search_tips_summary">"• Trykk på en sti for å navigere til den
+• Langtrykk på en innstilling for å navigere til den
+• Trykk Enter for å lagre et søk i historikken
+• Søket ignorerer store og små bokstaver og tegnsetting
+• Overordnede innstillinger vises over deaktiverte underordnede innstillinger"</string>
+  <string name="morphe_settings_search_empty_history_title">Søkehistorikken er tom</string>
+  <string name="morphe_settings_search_empty_history_summary">For å lagre søkehistorikk, skriv inn et søkekriterium og trykk Enter</string>
+  <string name="morphe_settings_search_history_title">Vis innstillingssøkehistorikk</string>
+  <string name="morphe_show_menu_icons_title">Vis Morphe-innstillingsikoner</string>
+  <string name="morphe_language_title">Morphe språk</string>
+  <string name="morphe_language_user_dialog_message">"Oversettelser for noen språk kan mangle eller være ufullstendige.
+
+For å oversette nye språk eller forbedre de eksisterende oversettelsene, besøk morphe.software/translate"</string>
+  <string name="morphe_language_DEFAULT">Appspråk</string>
+  <string name="morphe_pref_import_export_title">Importer / Eksporter</string>
+  <string name="morphe_pref_import_export_summary">Importer / Eksporter Morphe-innstillinger</string>
+  <string name="morphe_settings_import_file">Importer fra fil</string>
+  <string name="morphe_settings_import_file_success">Innstillinger importert, trykk Lagre for å bruke</string>
+  <string name="morphe_settings_import_file_failed">Importering av innstillinger mislyktes</string>
+  <string name="morphe_settings_export_file">Eksporter til fil</string>
+  <string name="morphe_settings_export_file_success">Innstillinger eksportert vellykket</string>
+  <string name="morphe_settings_export_file_failed">Eksportering av innstillinger mislyktes</string>
   <!-- String is also duplicated in Reddit about preference -->
+  <string name="morphe_settings_about_links_body_version_current">Du bruker den nyeste Morphe Patches-versjonen &lt;i&gt;%s&lt;/i&gt;</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Du bruker Morphe Patches-versjon &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Oppdatering tilgjengelig: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;For å oppdatere patchene, bruk Morphe til å patche denne appen på nytt</string>
+  <string name="morphe_settings_about_links_dev_header">Merk</string>
+  <string name="morphe_settings_about_links_dev_body">Denne versjonen er en forhåndsutgivelse, og du kan oppleve uventede problemer</string>
+  <string name="morphe_settings_about_links_header">Offisielle lenker</string>
+  <string name="morphe_settings_about_links_website">Nettsted</string>
+  <string name="morphe_settings_about_links_donate">Doner</string>
+  <string name="morphe_settings_about_links_translations">Oversettelser</string>
+  <string name="morphe_settings_about_links_credits">Kreditter</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Oppdatert</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Oppdatering tilgjengelig</string>
+  <string name="morphe_settings_about_contributors_current">Nåværende utvikling</string>
+  <string name="morphe_settings_about_contributors_prior">Tidligere utvikling</string>
+  <string name="morphe_settings_about_links_morphe">Aktiv utvikling</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Lisensvilkår</string>
+  <string name="morphe_settings_about_licenses_loading">Laster...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
+  <string name="morphe_debug_screen_title">Feilsøking</string>
+  <string name="morphe_debug_screen_summary">Konfigurer avanserte utvikleralternativer og diagnostikklogger</string>
+  <string name="morphe_debug_title">Aktiver feilsøkingslogging</string>
+  <string name="morphe_debug_stacktrace_title">Feilsøkingslogg stakkspor</string>
+  <string name="morphe_debug_stacktrace_summary">Inkluderer stakksporing i feilsøkingslogger for å hjelpe med å identifisere feil</string>
+  <string name="morphe_debug_toast_on_error_title">Vis toast ved Morphe-feil</string>
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Å slå av feilmeldinger skjuler alle Morphe-feilmeldinger.
+
+Du vil ikke bli varslet om uventede hendelser."</string>
+  <string name="morphe_debug_export_logs_title">Eksporter feilsøkingslogger</string>
+  <string name="morphe_debug_export_logs_summary">Eksporter Morphe-feilsøkingslogger</string>
+  <string name="morphe_debug_export_logs_file">Eksporter til fil</string>
+  <string name="morphe_debug_export_logs_success">Feilsøkingslogger eksportert vellykket</string>
+  <string name="morphe_debug_export_logs_failed">Eksportering av feilsøkingslogger mislyktes</string>
+  <string name="morphe_debug_logs_search_hint">Søk i feilsøkingslogger...</string>
+  <string name="morphe_debug_export_logs_clear">Slett</string>
+  <string name="morphe_debug_logs_disabled">Feilsøkingslogging er deaktivert</string>
+  <string name="morphe_debug_logs_none_found">Ingen feilsøkingslogger funnet</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Feilsøkingslogger kopiert</string>
+  <string name="morphe_debug_logs_failed_to_export">Eksportering av feilsøkingslogger mislyktes: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Feilsøkingslogger slettet</string>
+  <string name="morphe_debug_feature_flags_manager_title">Funksjonsflagg-behandler</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Administrer boolske feature flags</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Aktive funksjonsflagg (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Blokkerte funksjonsflagg (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Søk etter feature flags...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Feature flags lagret</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Feature flags tilbakestilt</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Feature flags kopiert til utklippstavlen</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Start appen på nytt for å bruke denne innstillingen</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
+  <string name="microg_settings_summary">Åpne MicroG-innstillingene</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
+  <string name="gms_core_toast_not_installed_message">MicroG er ikke installert. Installer det.</string>
+  <string name="gms_core_dialog_title">Handling nødvendig</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG har ikke tillatelse til å kjøre i bakgrunnen.
+
+Følg «Ikke drep appen min»-veiledningen for telefonen din, og bruk instruksjonene på MicroG-installasjonen din.
+
+Dette er nødvendig for at appen skal fungere."</string>
+  <string name="gms_core_dialog_open_website_text">Åpne nettside</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"MicroG batterioptimaliseringer må deaktiveres for å unngå problemer.
+
+Å deaktivere batterioptimaliseringer for MicroG vil ikke påvirke batteribruken negativt.
+
+Trykk på fortsett-knappen og tillat optimaliseringsendringer."</string>
+  <string name="gms_core_dialog_continue_text">Fortsett</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Vis dialog for batterioptimalisering</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Å deaktivere dette vil skjule MicroG-dialogboksen for batterioptimalisering.
+
+Hvis batterioptimaliseringer ikke endres, kan du oppleve:
+• Appen kan lukkes tilfeldig
+• Varsler fungerer kanskje ikke
+• Bakgrunnsavspilling fungerer kanskje ikke"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Appkoblingshåndtering</string>
+  <string name="morphe_link_handling_summary">Konfigurer hvilken app som åpner lenker</string>
+  <string name="morphe_link_handling_step1_title">Trinn 1: Deaktiver originale applenker</string>
+  <string name="morphe_link_handling_step1_message">Åpne innstillingene for den originale appen og deaktiver alle domenetilknytninger</string>
+  <string name="morphe_link_handling_step2_title">Trinn 2: Aktiver patchede applenker</string>
+  <string name="morphe_link_handling_step2_message">Åpne innstillingene for den patchede appen og aktiver alle domenetilknytninger</string>
+  <string name="morphe_link_handling_open">Åpne innstillinger</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentell varsel 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Du bruker en eksperimentell appversjon av ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Forvent spesiell appoppførsel eller uidentifiserte feil mens vi finjusterer patchene for denne appversjonen.
+&lt;br/&gt;&lt;br/&gt;
+Hvis du vil ha den mest problemfrie opplevelsen, må du &lt;b&gt;avinstallere&lt;/b&gt; denne og patche den anbefalte appversjonen av ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Jeg vil ha eksperimentell</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Jeg vil ha stabil</string>
 </resources>

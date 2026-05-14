@@ -61,7 +61,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
     execute {
         PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(
-            SwitchPreference("morphe_ryd_enabled"),
+            SwitchPreference("morphe_ryd_enabled", summaryKey = null),
             SwitchPreference("morphe_ryd_shorts"),
             SwitchPreference("morphe_ryd_dislike_percentage"),
             SwitchPreference("morphe_ryd_compact_layout"),

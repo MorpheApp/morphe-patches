@@ -12,6 +12,7 @@ import java.util.Locale;
 import java.util.Set;
 
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
@@ -26,7 +27,7 @@ public final class HideTrendingTodayShelfPatch {
     private static final String TRENDING_LABEL = "Trending";
     private static final String TRENDING_LABEL_KEY = "home_revamp_tab_popular";
 
-    private static String[] trendingLabels;
+    private static volatile String[] trendingLabels;
 
     /**
      * @return If this patch was included during patching.
@@ -58,6 +59,11 @@ public final class HideTrendingTodayShelfPatch {
      */
     public static void setContentLanguages(List<Locale> locales) {
         if (trendingLabels == null || trendingLabels.length == 0) {
+            if (Utils.getContext() == null) {
+                Logger.printInfo(() -> "Cannot set content languages, context is null");
+                return;
+            }
+
             Set<String> newTrendingLabels = new HashSet<>(2 * locales.size());
             newTrendingLabels.add(TRENDING_LABEL);
 

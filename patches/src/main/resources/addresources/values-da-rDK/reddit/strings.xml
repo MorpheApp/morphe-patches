@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Begrænsning: Visuelle afstandsstykker vises muligvis ikke"</string>
   <string name="morphe_remove_notification_dialog_title">Fjern notifikationsforslagsdialog</string>
-  <string name="morphe_remove_notification_dialog_summary">Fjerner notifikationsforslagsdialogen, der vises, når man besøger et subreddit ved automatisk at afvise den</string>
-  <string name="morphe_show_view_count_title">Vis antal visninger</string>
-  <string name="morphe_show_view_count_summary">"Viser antallet af visninger for Indlæg
-
-Begrænsning: Vises kun, hvis API-svaret inkluderer antallet af visninger"</string>
+  <string name="morphe_remove_notification_dialog_summary">Lukker automatisk forslag til notifikationsdialogen, når du besøger et subreddit</string>
+  <string name="morphe_show_view_count_title">Vis antal visninger på opslag</string>
+  <string name="morphe_show_view_count_summary">Begrænsning: Kun tilgængelig, hvis API-svaret inkluderer visningstallet</string>
   <string name="morphe_remove_nsfw_dialog_title">Fjern NSFW-advarselsdialog</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Fjerner NSFW-advarselsdialogen, der vises, når man besøger et subreddit ved automatisk at acceptere den</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Accepterer automatisk indholdsadvarslen for NSFW, når du besøger et subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Diverse</string>
   <string name="morphe_about_title">Om</string>
   <string name="morphe_about_summary">Patch version og officielle links</string>
   <string name="morphe_sanitize_sharing_links_title">Rens delingslinks</string>
-  <string name="morphe_sanitize_sharing_links_summary">Renser delingslinks ved at fjerne sporingsforespørgselsparametre</string>
+  <string name="morphe_sanitize_sharing_links_summary">Fjerner sporingsparametre fra delte links</string>
   <string name="morphe_open_links_directly_title">Åbn links direkte</string>
-  <string name="morphe_open_links_directly_summary">Springer over omdirigerings-URL\'er i eksterne links</string>
+  <string name="morphe_open_links_directly_summary">Omgår omdirigerings-URL\'er, når eksterne links åbnes</string>
   <string name="morphe_open_links_externally_title">Åbn links eksternt</string>
-  <string name="morphe_open_links_externally_summary">Åbner links i din browser i stedet for i den interne browser</string>
+  <string name="morphe_open_links_externally_summary">Åbner links i din browser i stedet for browseren i appen</string>
 </resources>

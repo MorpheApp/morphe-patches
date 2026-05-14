@@ -30,20 +30,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_misc_title">Ilghnéitheach</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">Folaigh an lipéad \'Faigh Ceoil Préimhe\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Tá lipéad Get Music Premium i bhfolach</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Taispeántar lipéad Get Music Premium</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Folaigh fógraí físe</string>
-  <string name="morphe_music_hide_video_ads_summary_on">Tá fógraí físe i bhfolach</string>
-  <string name="morphe_music_hide_video_ads_summary_off">Taispeántar fógraí físe</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Traschéimniú</string>
-  <string name="morphe_music_crossfade_screen_summary">Cumasc rianta go réidh lena chéile</string>
+  <string name="morphe_music_crossfade_screen_summary">Cuir in oiriúntú conas a bhfaigheann riananna isteach go smoige ar a chéile</string>
   <string name="morphe_music_crossfade_enabled_title">Cumasaigh traschéimniú</string>
-  <string name="morphe_music_crossfade_enabled_summary_on">Traschéimníonn rianta isteach ina chéile</string>
-  <string name="morphe_music_crossfade_enabled_summary_off">Tá traschéimniú díchumasaithe</string>
   <string name="morphe_music_crossfade_curve_title">Cuar céimnithe</string>
-  <string name="morphe_music_crossfade_curve_summary">Conas a aistríonn an toirt idir rianta</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Cumhacht chomhionann</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Greim chaolchúiseach</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Éasca go réidh</string>
@@ -64,17 +57,14 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_9000ms">9 soicind</string>
   <string name="morphe_crossfade_duration_10000ms">10 soicind</string>
   <string name="morphe_music_crossfade_on_skip_title">Traschéimniú ar scipeáil láimhe</string>
-  <string name="morphe_music_crossfade_on_skip_summary_on">Imrítear traschéimniú nuair a scipeáiltear rianta de láimh</string>
-  <string name="morphe_music_crossfade_on_skip_summary_off">Ní bheidh croschéimniú ar scipeálacha láimhe</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Feidhmíonn sé an éifeacht crossfade nuair a léimeann tú go láimhseach chuig an rian céim sa bhfód</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Traschéimniú ar uath-dhul chun cinn</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_on">Imrítear traschéimniú nuair a chríochnaíonn rian agus téann sé ar aghaidh go dtí an chéad rian eile</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_off">Ní bheidh uath-dhul chun cinn ag céimniú trasna</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Feidhmíonn sé an éifeacht crossfade nuair a chríochnaíonn rian go nádúrtha</string>
   <string name="morphe_music_crossfade_session_control_title">Rialú seisiúin</string>
-  <string name="morphe_music_crossfade_session_control_summary_on">"Brúigh an cnaipe suaitheadh ​​​​fada chun sos a chur air nó chun an traschéimniú a atosú"</string>
-  <string name="morphe_music_crossfade_session_control_summary_off">Tá rialú seisiúin díchumasaithe</string>
-  <string name="morphe_music_crossfade_paused_toast">Tá traschéimniú ar sos don seisiún seo</string>
-  <string name="morphe_music_crossfade_resumed_toast">Tá traschéimniú athruithe</string>
-  <string name="morphe_music_crossfade_video_mode_disabled_toast">Ní féidir mód físe a úsáilleadh nuair a bhíonn traschéimniú curtha ar siúl</string>
+  <string name="morphe_music_crossfade_session_control_summary">Brúigh an cnaipe suaitheadh ​​​​fada chun sos a chur air nó chun an traschéimniú a atosú</string>
+  <string name="morphe_music_crossfade_paused_toast">Traschéimniú curtha ar sos don seisiún seo</string>
+  <string name="morphe_music_crossfade_resumed_toast">Atosaíodh traschéimniú</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Níl mód físe ar fáil agus traschéimniú cumasaithe</string>
   <string name="morphe_music_crossfade_about_title">Maidir</string>
   <string name="morphe_music_crossfade_about_summary">"Tá traschéimniú ar fáil le YouTube Music 8.x
 
@@ -83,23 +73,13 @@ Brúigh an cnaipe suaitheadh ​​​​fada chun é a dhíchumasú/a chumasú
 Cur i bhfeidhm gné ag VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Cumasaigh athrá buan</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">Tá athrá buan cumasaithe</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">Tá athrá buan díchumasaithe</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">Folaigh an cnaipe teilgthe</string>
-  <string name="morphe_music_hide_cast_button_summary_on">Tá an cnaipe teilgthe i bhfolach</string>
-  <string name="morphe_music_hide_cast_button_summary_off">Taispeántar an cnaipe teilgthe</string>
   <string name="morphe_music_hide_history_button_title">Folaigh cnaipe na staire</string>
-  <string name="morphe_music_hide_history_button_summary_on">Tá cnaipe na staire i bhfolach</string>
-  <string name="morphe_music_hide_history_button_summary_off">Taispeántar cnaipe na staire</string>
   <string name="morphe_music_hide_notification_button_title">Folaigh cnaipe fógraí</string>
-  <string name="morphe_music_hide_notification_button_summary_on">Tá cnaipe fógraí i bhfolach</string>
-  <string name="morphe_music_hide_notification_button_summary_off">Taispeántar cnaipe fógraí</string>
   <string name="morphe_music_hide_search_button_title">Folaigh cnaipe cuardaigh</string>
-  <string name="morphe_music_hide_search_button_summary_on">Tá cnaipe cuardaigh i bhfolach</string>
-  <string name="morphe_music_hide_search_button_summary_off">Taispeántar an cnaipe cuardaigh</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Athraigh an leathanach tosaigh</string>
+  <string name="morphe_change_start_page_title">Leathanach tosaithe</string>
   <string name="morphe_change_start_page_entry_default">Réamhshocrú</string>
   <string name="morphe_change_start_page_entry_charts">Cairteacha</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Eipeasóidí le haghaidh níos déanaí</string>
@@ -112,54 +92,30 @@ Cur i bhfeidhm gné ag VazerOG"</string>
   <string name="morphe_change_start_page_entry_subscriptions">Síntiúis</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Folaigh an barra catagóirí</string>
-  <string name="morphe_music_hide_category_bar_summary_on">Tá an barra catagóirí i bhfolach</string>
-  <string name="morphe_music_hide_category_bar_summary_off">Taispeántar an barra catagóirí</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Athraigh dath an mhion-imreora</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">Tá dath an mhion-imreoir ag teacht leis an imreoir lánscáileáin</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">Úsáideann an mhion-imreoir an dath réamhshocraithe</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Tá dath an mhionimreoir ag teacht leis an imreoir lánscáileáin</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
   <string name="morphe_music_miniplayer_next_button_title">Taispeáin an cnaipe seo chugainn sa mhionimreoir</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">Taispeántar an cnaipe Ar Aghaidh sa mhionimreoir</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">Ní fheictear an cnaipe \"Ar Aghaidh\" sa mhionimreoir</string>
   <string name="morphe_music_miniplayer_previous_button_title">Taispeáin an cnaipe roimhe seo sa mhionimreoir</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">Taispeántar an cnaipe roimhe seo sa mhionimreoir</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">Ní thaispeántar an cnaipe roimhe seo sa mhionimreoir</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Cumasaigh mionimreoir éigeantach</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">Fanann an miniimreoir íoslaghdaithe nuair a athraíonn an athsheinm</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">Leathnaíonn an miniimreoir go lánscáileán nuair a athraíonn an athsheinm</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Cuireann sé cosc ar an imreoir ag méadú go lánscáileán go huathoimatic nuair a thosaíonn rian nua</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra nascleanúna</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Folaigh nó athraigh cnaipí an bharra nascleanúna</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Roghnaigh na cnaipí a thaispeántar sa barra nascleanúna</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">Folaigh Baile</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Tá cnaipe Baile folaithe</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Taispeántar an cnaipe baile</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Folaigh cnaipe Baile</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">Folaigh Samplaí</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Tá cnaipe na samplaí i bhfolach</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Taispeántar cnaipe na samplaí</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Folaigh cnaipe Samplaí</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">Folaigh Iniúchadh</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Tá an cnaipe iniúchadh i bhfolach</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Taispeántar an cnaipe iniúchadh</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Folaigh cnaipe Explore</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">Folaigh Leabharlann</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Tá cnaipe na leabharlainne i bhfolach</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Taispeántar cnaipe na leabharlainne</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Folaigh cnaipe Leabharlann</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Folaigh an tUasghrádú</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Tá an cnaipe uasghrádaithe i bhfolach</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Taispeántar an cnaipe uasghrádaithe</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Folaigh cnaipe Uasghrádaithe</string>
   <string name="morphe_music_hide_navigation_bar_title">Folaigh barra nascleanúna</string>
-  <string name="morphe_music_hide_navigation_bar_summary_on">Tá an barra nascleanúna i bhfolach</string>
-  <string name="morphe_music_hide_navigation_bar_summary_off">Taispeántar barra nascleanúna</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Folaigh lipéid cnaipí nascleanúna</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Tá lipéid i bhfolach</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Taispeántar lipéid</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Folaigh an cnaipe uasghrádaithe</string>
-  <string name="morphe_music_hide_upgrade_button_summary_on">Tá an cnaipe i bhfolach</string>
-  <string name="morphe_music_hide_upgrade_button_summary_off">Taispeántar an cnaipe</string>
 </resources>

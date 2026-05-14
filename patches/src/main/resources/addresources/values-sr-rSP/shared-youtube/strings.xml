@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Цустом</string>
   <string name="morphe_custom_branding_notification_icon_title">Икона обавештења</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Икона праћења апликације</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Усклади икона апликације</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe обавештење</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша историја гледања се не чува.&lt;br&gt;&lt;br&gt;Ово је највероватније узроковано DNS блокатором огласа или мрежним проксијем.&lt;br&gt;&lt;br&gt;Да бисте ово поправили, ставите на белу листу &lt;b&gt;s.youtube.com&lt;/b&gt; или искључите све DNS блокаторе и проксије.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не приказуј поново</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Лажирани видео стримови</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Лажирање видео стримова клијента да би се спречили проблеми са репродукцијом</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Конфигуришите лажирање клијента да бисте избегли проблеме са репродукцијом</string>
   <string name="morphe_spoof_video_streams_title">Лажирани видео стримови</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Видео стримови су лажирани
+  <string name="morphe_spoof_video_streams_summary">"Превари YouTube да пошаље компатибилан видео стрим, што поправља репродукцију за већину корисника
 
-Ако сте корисник YouTube Premium-а, ово подешавање можда неће бити потребно"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Видео стримови нису лажирани
-
-Репродукција можда неће радити"</string>
+Ако сте корисник YouTube Premium-а, ова поставка можда није потребна."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не можемо да узмемо било који поток клијента</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Искључивање овог подешавања може изазвати проблеме са репродукцијом.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Da bi se prijavili, pritisnite nastavak ispod"</string>
   <string name="morphe_oauth2_toast_reset">Одјављен са Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Неважећи токен за улаз у VR, покушајте поново да уђете у VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Искукључите ажурирање JavaScript плеера</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Ажурирање JavaScript плеера је искључено
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Блокира JavaScript плејера на локални хаш уместо преузимања ажурирања
 
-• Потребан је валидни JavaScript хеш плеера
-• Репродукција не успева ако је JavaScript хеш плеера опозиван у GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Ажурирање JavaScript плеера је укључено</string>
+• Потребан је важећи хаш JavaScript плејера
+• Репродукција ће неуспети ако се хаш JavaScript плејера поништи у GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript hešovi plejera važe približno jedan mesec, a zastareli hešovi mogu biti opozvani od strane GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Хаш JavaScript играча</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Унесите валидан JavaScript хеш играча</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Oнемогући протокол QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Протокол QUIC је онемогућен</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Протокол QUIC је омогућен</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Онемогућити аудио ДРЦ</string>
-  <string name="morphe_disable_drc_audio_summary_on">Аудио ДРЦ је онемогућено</string>
-  <string name="morphe_disable_drc_audio_summary_off">Аудио ДРЦ је омогућено</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Присили оригинални језик звука</string>
-  <string name="morphe_force_original_audio_summary_on">Коришћење оригиналног језика звука</string>
-  <string name="morphe_force_original_audio_summary_off">Коришћење подразумеваног звука</string>
+  <string name="morphe_force_original_audio_summary">Увек пушта оригиналну аудио нумеру видеа уместо синхронизоване верзије.</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Сакриј огласе преко целог екрана</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Огласи преко целог екрана су приказани</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Огласи преко целог екрана су приказани</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Да бисте користили ову функцију, промените ‘Лажирани видео снимци’ на Андроид Риел или ТВ</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Очисти дељене линкове</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Параметар упита за праћење је уклоњен из дељених линкова</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Параметар упита за праћење није уклоњен из дељених линкова</string>
+  <string name="morphe_sanitize_sharing_links_summary">Уклања параметре упита за праћење из дељених линкова.</string>
   <string name="morphe_replace_music_with_youtube_title">Промени линкове за дељење на youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Дељени линкови користе youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Дељени линкови користе music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Промени линкове за дељење на youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Дељене везе уживо и Shorts користе youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Дељене везе уживо и Shorts-а користе своје оригиналне УРЛ-ове</string>
+  <string name="morphe_replace_links_with_shortener_summary">Приморава директне преносе и Shorts да користе скраћени youtu.be URL формат.</string>
 </resources>

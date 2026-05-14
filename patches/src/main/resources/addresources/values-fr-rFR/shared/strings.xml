@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">L\'historique de recherche est vide</string>
   <string name="morphe_settings_search_empty_history_summary">Pour enregistrer l\'historique de recherche, saisissez une recherche et appuyez sur Entrée.</string>
   <string name="morphe_settings_search_history_title">Afficher l\'historique de recherche dans les paramètres</string>
-  <string name="morphe_settings_search_history_summary_on">L\'historique de recherche dans les paramètres est affiché</string>
-  <string name="morphe_settings_search_history_summary_off">L\'historique de recherche dans les paramètres n\'est pas affiché</string>
   <string name="morphe_show_menu_icons_title">Afficher les icônes des paramètres Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Les icônes des paramètres sont affichées</string>
-  <string name="morphe_show_menu_icons_summary_off">Les icônes des paramètres ne sont pas affichées</string>
   <string name="morphe_language_title">Langue de Morphe</string>
   <string name="morphe_language_user_dialog_message">"Les traductions pour certaines langues peuvent être manquantes ou incomplètes.
 
@@ -89,16 +85,11 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_settings_about_licenses_loading">Chargement...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Débogage</string>
-  <string name="morphe_debug_screen_summary">Activez ou désactivez les options de débogage</string>
-  <string name="morphe_debug_title">Journaux de débogage</string>
-  <string name="morphe_debug_summary_on">Les journaux de débogage sont activés</string>
-  <string name="morphe_debug_summary_off">Les journaux de débogage sont désactivés</string>
+  <string name="morphe_debug_screen_summary">Configurer les options avancées de développement et les journaux de diagnostic</string>
+  <string name="morphe_debug_title">Activer la journalisation de débogage</string>
   <string name="morphe_debug_stacktrace_title">Journal de débogage de trace de pile</string>
-  <string name="morphe_debug_stacktrace_summary_on">Les journaux de débogage incluent les traces de pile</string>
-  <string name="morphe_debug_stacktrace_summary_off">Les journaux de débogage n\'incluent pas les traces de pile</string>
+  <string name="morphe_debug_stacktrace_summary">Inclut les traces de pile dans les journaux de débogage pour aider à identifier les erreurs</string>
   <string name="morphe_debug_toast_on_error_title">Afficher une notification en cas d\'erreur Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Une notification toast est affiché en cas d\'erreur</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Aucune notification toast n\'est affiché en cas d\'erreur</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Désactiver les notifications toast d’erreur masque toutes les notifications d’erreur de Morphe.
 
 Vous ne serez plus averti en cas d’événements inattendus."</string>
@@ -144,15 +135,21 @@ Appuyez sur le bouton Continuer et autorisez la modification des optimisations.
 
 "</string>
   <string name="gms_core_dialog_continue_text">Continuer</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Boîte de dialogue d\'optimisation de la batterie</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">La boîte de dialogue d\'optimisation de la batterie de MicroG est affichée</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">La boîte de dialogue d\'optimisation de la batterie de MicroG n\'est pas affichée</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Afficher la boîte de dialogue d’optimisation de la batterie</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Désactiver cela masquera l'invite d'optimisation de la batterie de MicroG.
 
 Si les optimisations de la batterie ne sont pas modifiées, vous pourriez rencontrer les problèmes suivants :
 • L'application peut se fermer de manière aléatoire
 • Les notifications peuvent ne pas fonctionner
 • La lecture en arrière-plan peut ne pas fonctionner"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Gestion des liens d\'application</string>
+  <string name="morphe_link_handling_summary">Configurer l\'application qui ouvre les liens</string>
+  <string name="morphe_link_handling_step1_title">Étape 1 : Désactiver les liens de l’application originale</string>
+  <string name="morphe_link_handling_step1_message">Ouvrez les paramètres de l’application originale et désactivez tous les liens de domaine</string>
+  <string name="morphe_link_handling_step2_title">Étape 2 : Activer les liens de l\'application patchée</string>
+  <string name="morphe_link_handling_step2_message">Ouvrez les paramètres de l\'application patchée et activez tous les liens de domaine</string>
+  <string name="morphe_link_handling_open">Ouvrir les paramètres</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Alerte expérimentale 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Vous utilisez une version expérimentale de l’application ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">היסטוריית החיפוש ריקה</string>
   <string name="morphe_settings_search_empty_history_summary">כדי לשמור היסטוריית חיפוש, הקלד שאילתת חיפוש ולחץ על Enter</string>
   <string name="morphe_settings_search_history_title">הצג הגדרות היסטוריית חיפוש</string>
-  <string name="morphe_settings_search_history_summary_on">הגדרות היסטוריית חיפוש מוצגות</string>
-  <string name="morphe_settings_search_history_summary_off">הגדרות היסטוריית חיפוש אינן מוצגות</string>
   <string name="morphe_show_menu_icons_title">הצג סמלי הגדרות Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">סמלי ההגדרות מוצגים</string>
-  <string name="morphe_show_menu_icons_summary_off">סמלי ההגדרות אינם מוצגים</string>
   <string name="morphe_language_title">שפת Morphe</string>
   <string name="morphe_language_user_dialog_message">"תרגומים עבור שפות מסוימות עשויים להיות חסרים או לא מלאים.
 
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">טוען...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">איתור באגים</string>
-  <string name="morphe_debug_screen_summary">הפעל או השבת אפשרויות לאיתור באגים</string>
-  <string name="morphe_debug_title">רישום איתור באגים</string>
-  <string name="morphe_debug_summary_on">יומני איתור באגים מופעלים</string>
-  <string name="morphe_debug_summary_off">יומני איתור באגים מושבתים</string>
+  <string name="morphe_debug_screen_summary">הגדרת אפשרויות מפתחים ודיאגנוסטיקה</string>
+  <string name="morphe_debug_title">אפשר הודעות דיבאג</string>
   <string name="morphe_debug_stacktrace_title">עקבות מחסנית באיתור באגים</string>
-  <string name="morphe_debug_stacktrace_summary_on">יומני איתור באגים כוללים עקבות מחסנית</string>
-  <string name="morphe_debug_stacktrace_summary_off">יומני איתור באגים אינם כוללים עקבות מחסנית</string>
+  <string name="morphe_debug_stacktrace_summary">כולל מעקב מחסנית ביומני ניפוי באגים כדי לעזור בזיהוי שגיאות</string>
   <string name="morphe_debug_toast_on_error_title">הצג הודעה קופצת בעת שגיאת Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">הודעה קופצת מוצגת אם מתרחשת שגיאה</string>
-  <string name="morphe_debug_toast_on_error_summary_off">הודעה קופצת אינה מוצגת אם מתרחשת שגיאה</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"השבתת הודעות שגיאה קופצות מסתירה את כל הודעות השגיאה של Morphe.
 
 לא תקבל הודעה על אירועים בלתי צפויים."</string>
@@ -141,15 +132,21 @@ Second \"item\" text"</string>
 
 תMouseEvent על הלחצן 'המשך' ואפשר שינויי מיטוב."</string>
   <string name="gms_core_dialog_continue_text">המשך</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">תיבת דו-שיח אופטימיזציית סוללה</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">מוצג תיבת דו-שיח אופטימיזציית סוללה של MicroG</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">לא מוצג תיבת דו-שיח אופטימיזציית סוללה של MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">הצג תיבת דו-שיח לאופטימיזציית סוללה</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ביטול האפשרות יסתר את ההודעה של MicroG לאופטימיזציית הסוללה.
 
 אם הגדרות האופטימיזציה של הסוללה לא ישונו, ייתכן שתחוו:
 • האפליקציה עלולה להיסגר באופן אקראי
 • התראות עלולות לא לעבוד
 • השמעת מוזיקה ברקע עלולה לא לעבוד"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">טיפול בקישורים באפליקציה</string>
+  <string name="morphe_link_handling_summary">הגדרת האפליקציה שתפתח קישורים</string>
+  <string name="morphe_link_handling_step1_title">שלב 1: השבת קישורים לאפליקציה המקורית</string>
+  <string name="morphe_link_handling_step1_message">פתחו את הגדרות האפליקציה המקורית והשביתו את כל קישורי הדומיין</string>
+  <string name="morphe_link_handling_step2_title">שלב 2: הפעלה של קישורים לאפליקציה המתוקנת</string>
+  <string name="morphe_link_handling_step2_message">פתחו את הגדרות האפליקציה המתוקנת והפעילו את כל קישורי הדומיין</string>
+  <string name="morphe_link_handling_open">פתח הגדרות</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 התראה ניסיונית 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"אתה משתמש בגרסה ניסיונית של האפליקציה ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

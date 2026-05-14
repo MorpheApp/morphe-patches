@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Ограничение: Визуалните разделители може да не бъдат скрити"</string>
   <string name="morphe_remove_notification_dialog_title">Премахване на диалоговия прозорец за предложения за известия</string>
-  <string name="morphe_remove_notification_dialog_summary">Премахва диалоговия прозорец за предложения за известия, който се появява при посещение на подредит, като го затваря автоматично</string>
-  <string name="morphe_show_view_count_title">Показване на броя на прегледите</string>
-  <string name="morphe_show_view_count_summary">"Показва броя на прегледите на Публикациите
-
-Ограничение: Показва се само ако API отговорът включва броя на прегледите"</string>
+  <string name="morphe_remove_notification_dialog_summary">Автоматично затваря диалоговия прозорец за предложение за известие при посещение на подреддит</string>
+  <string name="morphe_show_view_count_title">Покажи броя на преглежданията на публикациите</string>
+  <string name="morphe_show_view_count_summary">Ограничение: Налично само ако отговорът от API включва броя на преглежданията</string>
   <string name="morphe_remove_nsfw_dialog_title">Премахване на диалоговия прозорец за NSFW предупреждение</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Премахва диалоговия прозорец за NSFW предупреждение, който се появява при посещение на подредит, като го приема автоматично</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Автоматично приема предупреждението за NSFW съдържание при посещение на subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Други</string>
   <string name="morphe_about_title">Относно</string>
   <string name="morphe_about_summary">Версия на поправката и официални връзки</string>
   <string name="morphe_sanitize_sharing_links_title">Почистване на споделените връзки</string>
-  <string name="morphe_sanitize_sharing_links_summary">Почиства споделящите връзки чрез премахване на параметри за проследяване</string>
+  <string name="morphe_sanitize_sharing_links_summary">Параметърът за следене е премахнат от споделяни връзки</string>
   <string name="morphe_open_links_directly_title">Отваряне на връзки директно</string>
-  <string name="morphe_open_links_directly_summary">Прескачане на URL адреси за пренасочване във външни връзки</string>
+  <string name="morphe_open_links_directly_summary">Заобикаля пренасочващите URL адреси при отваряне на външни връзки</string>
   <string name="morphe_open_links_externally_title">Oтваряне на линкове външно</string>
-  <string name="morphe_open_links_externally_summary">Oтваря линкове във вашия браузър вместо във вътрешния браузър на приложението</string>
+  <string name="morphe_open_links_externally_summary">Отваря връзките в браузъра ви вместо в браузъра в приложението</string>
 </resources>

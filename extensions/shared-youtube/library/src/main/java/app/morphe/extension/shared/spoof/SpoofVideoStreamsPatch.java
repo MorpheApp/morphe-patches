@@ -13,17 +13,17 @@ import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.AppLanguage;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
 import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
     public static volatile Map<String, String> currentVideoRequestHeader;
+    public static String pageIDHeaderValue = "";
 
     public static final class JavaScriptClientAvailability implements Setting.Availability {
         @Override
@@ -260,6 +260,21 @@ public class SpoofVideoStreamsPatch {
      * Injection point.
      * Turns off a feature flag that interferes with video playback.
      */
+    public static boolean useReelItemWatchResponseFeatureFlag(boolean original) {
+        if (original) {
+            Logger.printDebug(() -> "useReelItemWatchResponse is set on");
+        }
+
+        if (!SPOOF_VIDEO_STREAMS) {
+            return original;
+        }
+        return false;
+    }
+
+    /**
+     * Injection point.
+     * Turns off a feature flag that interferes with video playback.
+     */
     public static boolean useMediaSessionFeatureFlag(boolean original) {
         if (original) {
             Logger.printDebug(() -> "useMediaSessionFeatureFlag is set on");
@@ -299,6 +314,8 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
+
+
                 currentVideoRequestHeader = requestHeaders;
 
                 StreamOrDetailsDataRequest.fetchStreamRequest(id, currentVideoRequestHeader);
@@ -319,10 +336,10 @@ public class SpoofVideoStreamsPatch {
             try {
                 StreamOrDetailsDataRequest request = StreamOrDetailsDataRequest.getStreamRequestForVideoId(videoId);
                 if (request != null) {
-                    var stream = request.getStreamOrDetails();
+                    var stream = (byte[]) request.getStreamDetails();
                     if (stream != null) {
                         Logger.printDebug(() -> "Overriding video stream: " + videoId);
-                        return (byte[]) stream;
+                        return stream;
                     }
                 }
 
@@ -335,13 +352,8 @@ public class SpoofVideoStreamsPatch {
         return null;
     }
 
-    @Nullable
     public static StreamOrDetailsDataRequest fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
-        Map<String, String> headers = currentVideoRequestHeader;
-        if (headers == null) {
-            return null;
-        }
-        return StreamOrDetailsDataRequest.fetchDetailsRequest(videoDetailsEndpoint, videoId, headers);
+        return StreamOrDetailsDataRequest.getDetailsRequest(videoDetailsEndpoint, videoId, currentVideoRequestHeader);
     }
 
     /**
@@ -383,5 +395,20 @@ public class SpoofVideoStreamsPatch {
         }
 
         return videoFormat;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setAccountIdentity(@Nullable String newlyPageIDHeaderValue, boolean newlyLoadedIncognitoStatus) {
+        if (newlyPageIDHeaderValue != null) {
+            var newlyPageIDHeaderEmpty = newlyPageIDHeaderValue.isEmpty();
+
+            pageIDHeaderValue = newlyPageIDHeaderEmpty ? "" : newlyPageIDHeaderValue;
+
+            if (!newlyPageIDHeaderEmpty) {
+                Logger.printDebug(() -> "new PageID Header value loaded: " + newlyPageIDHeaderValue);
+            }
+        }
     }
 }

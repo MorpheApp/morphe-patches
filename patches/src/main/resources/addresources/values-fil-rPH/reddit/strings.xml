@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Limitasyon: Maaaring hindi maitago ang visual spacers"</string>
   <string name="morphe_remove_notification_dialog_title">Alisin ang notification suggestion dialog</string>
-  <string name="morphe_remove_notification_dialog_summary">Inaalis ang mga notifications suggestion dialog na lumalabas kapag binibisita ang isang subreddit sa pamamagitan ng awtomatikong pagtanggap nito</string>
-  <string name="morphe_show_view_count_title">Ipakita ang view count</string>
-  <string name="morphe_show_view_count_summary">"Ipinapakita ang view count ng mga Post
-
-Limitasyon: Ipinapakita lamang kung ang tugon ng API ay kinabibilangan ng view count"</string>
+  <string name="morphe_remove_notification_dialog_summary">Awtomatikong itatanggal ang suhestiyon ng notipikasyon kapag binisita ang isang subreddit</string>
+  <string name="morphe_show_view_count_title">Ipakita ang bilang ng views sa mga post</string>
+  <string name="morphe_show_view_count_summary">Limitasyon: Available lamang kung kasama sa tugon ng API ang bilang ng pagtingin</string>
   <string name="morphe_remove_nsfw_dialog_title">Alisin ang NSFW warning dialog</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Inaalis ang NSFW warning dialog na lumalabas kapag binibisita ang isang subreddit sa pamamagitan ng awtomatikong pagtanggap nito</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Awtomatikong tinatanggap ang babala sa NSFW na nilalaman kapag bumibisita sa isang subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Mga sari-sari</string>
   <string name="morphe_about_title">Tungkol</string>
   <string name="morphe_about_summary">Patch version at opisyal na links</string>
   <string name="morphe_sanitize_sharing_links_title">I-sanitize ang mga nakabahaging link</string>
-  <string name="morphe_sanitize_sharing_links_summary">Nililinis ang mga sharing links sa pamamagitan ng pag-aalis ng mga tracking query parameter</string>
+  <string name="morphe_sanitize_sharing_links_summary">Inalis ang pagsubaybay sa query parameter mula sa nakabahaging link</string>
   <string name="morphe_open_links_directly_title">Buksan ang mga links nang direkta</string>
-  <string name="morphe_open_links_directly_summary">Nilalampasan ang redirection URLs sa mga external link</string>
+  <string name="morphe_open_links_directly_summary">Nilalampasan ang mga URL ng paglipat kapag nagbubukas ng mga panlabas na link</string>
   <string name="morphe_open_links_externally_title">Buksan ang mga link sa labas</string>
-  <string name="morphe_open_links_externally_summary">Binubuksan ang mga link sa iyong browser sa halip na sa in-app-browser</string>
+  <string name="morphe_open_links_externally_summary">Binubuksan ang mga link sa iyong browser sa halip na sa in-app browser</string>
 </resources>
