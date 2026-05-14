@@ -237,7 +237,6 @@ public class PlayerOverlayButton {
         videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, getTotalUpperButtonCount());
     }
 
-    //
     private static boolean skipCallOnce = true;
     /**
      * Called from each {@link LegacyPlayerControlButton} constructor so that the
@@ -245,6 +244,7 @@ public class PlayerOverlayButton {
      * overlay buttons (speed, quality, etc.) have been added.
      */
     public static void initializeHeadingFromUpperButton(View sourceButton) {
+        // Useful to prevent initial null error in updateContainerRef() method
         if (skipCallOnce) {
             skipCallOnce = false;
             return;
