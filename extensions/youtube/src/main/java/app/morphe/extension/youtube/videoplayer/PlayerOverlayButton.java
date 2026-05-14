@@ -242,9 +242,12 @@ public class PlayerOverlayButton {
      * video-heading end margin is initialized and kept correct even when no lower
      * overlay buttons (speed, quality, etc.) have been added.
      */
-    public static void initializeHeadingFromUpperButton(View upperButtonView) {
-        if (!(upperButtonView.getParent() instanceof ViewGroup parent)) return;
-        videoHeadingContainer.updateContainerRef(parent);
+    public static void initializeHeadingFromUpperButton(View sourceButton) {
+        Utils.verifyOnMainThread();
+
+        if (!(sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup)) return;
+
+        videoHeadingContainer.updateContainerRef(sourceButtonViewGroup);
         videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, getTotalUpperButtonCount());
     }
 
