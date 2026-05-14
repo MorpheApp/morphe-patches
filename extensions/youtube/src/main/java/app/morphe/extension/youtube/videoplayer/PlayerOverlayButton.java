@@ -243,8 +243,6 @@ public class PlayerOverlayButton {
      * overlay buttons (speed, quality, etc.) have been added.
      */
     public static void initializeHeadingFromUpperButton(View sourceButton) {
-        Utils.verifyOnMainThread();
-
         if (!(sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup)) return;
 
         videoHeadingContainer.updateContainerRef(sourceButtonViewGroup);
