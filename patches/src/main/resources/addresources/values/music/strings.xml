@@ -37,22 +37,15 @@ Second \"item\" text"</string>
 
     <!-- ad.general.hideAdsPatch -->
     <string name="morphe_music_hide_get_premium_label_title">Hide \'Get Music Premium\' label</string>
-    <string name="morphe_music_hide_get_premium_label_summary_on">Get Music Premium label is hidden</string>
-    <string name="morphe_music_hide_get_premium_label_summary_off">Get Music Premium label is shown</string>
 
     <!-- ad.video.hideVideoAdsPatch -->
     <string name="morphe_music_hide_video_ads_title">Hide video ads</string>
-    <string name="morphe_music_hide_video_ads_summary_on">Video ads are hidden</string>
-    <string name="morphe_music_hide_video_ads_summary_off">Video ads are shown</string>
 
     <!-- interaction.crossfade.crossfadePatch -->
     <string name="morphe_music_crossfade_screen_title">Crossfade</string>
-    <string name="morphe_music_crossfade_screen_summary">Smoothly blend tracks into each other</string>
+    <string name="morphe_music_crossfade_screen_summary">Customize how tracks smoothly blend into each other</string>
     <string name="morphe_music_crossfade_enabled_title">Enable crossfade</string>
-    <string name="morphe_music_crossfade_enabled_summary_on">Tracks crossfade into each other</string>
-    <string name="morphe_music_crossfade_enabled_summary_off">Crossfade is disabled</string>
     <string name="morphe_music_crossfade_curve_title">Fade curve</string>
-    <string name="morphe_music_crossfade_curve_summary">How volume transitions between tracks</string>
     <string name="morphe_music_crossfade_curve_entry_equal_power">Equal power</string>
     <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtle hold</string>
     <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Gentle ease</string>
@@ -74,14 +67,11 @@ Second \"item\" text"</string>
     <string name="morphe_crossfade_duration_9000ms">9 seconds</string>
     <string name="morphe_crossfade_duration_10000ms">10 seconds</string>
     <string name="morphe_music_crossfade_on_skip_title">Crossfade on manual skip</string>
-    <string name="morphe_music_crossfade_on_skip_summary_on">Crossfade plays when manually skipping tracks</string>
-    <string name="morphe_music_crossfade_on_skip_summary_off">Manual skips will not crossfade</string>
+    <string name="morphe_music_crossfade_on_skip_summary">Applies the crossfade effect when you manually skip to the next track</string>
     <string name="morphe_music_crossfade_on_auto_advance_title">Crossfade on auto-advance</string>
-    <string name="morphe_music_crossfade_on_auto_advance_summary_on">Crossfade plays when a track ends and advances to the next</string>
-    <string name="morphe_music_crossfade_on_auto_advance_summary_off">Auto-advance will not crossfade</string>
+    <string name="morphe_music_crossfade_on_auto_advance_summary">Applies the crossfade effect when a track ends naturally</string>
     <string name="morphe_music_crossfade_session_control_title">Session control</string>
-    <string name="morphe_music_crossfade_session_control_summary_on">"Long-press the shuffle button to pause or resume crossfade"</string>
-    <string name="morphe_music_crossfade_session_control_summary_off">Session control is disabled</string>
+    <string name="morphe_music_crossfade_session_control_summary">Long-press the shuffle button to pause or resume crossfade</string>
     <string name="morphe_music_crossfade_paused_toast">Crossfade paused for this session</string>
     <string name="morphe_music_crossfade_resumed_toast">Crossfade resumed</string>
     <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mode is not available while crossfade is enabled</string>
@@ -94,25 +84,15 @@ Feature implementation by VazerOG"</string>
 
     <!-- interaction.permanentrepeat.permanentRepeatPatch -->
     <string name="morphe_music_play_permanent_repeat_title">Enable permanent repeat</string>
-    <string name="morphe_music_play_permanent_repeat_summary_on">Permanent repeat is enabled</string>
-    <string name="morphe_music_play_permanent_repeat_summary_off">Permanent repeat is disabled</string>
 
     <!-- layout.buttons.hideButtons -->
     <string name="morphe_music_hide_cast_button_title">Hide cast button</string>
-    <string name="morphe_music_hide_cast_button_summary_on">Cast button is hidden</string>
-    <string name="morphe_music_hide_cast_button_summary_off">Cast button is shown</string>
     <string name="morphe_music_hide_history_button_title">Hide history button</string>
-    <string name="morphe_music_hide_history_button_summary_on">History button is hidden</string>
-    <string name="morphe_music_hide_history_button_summary_off">History button is shown</string>
     <string name="morphe_music_hide_notification_button_title">Hide notification button</string>
-    <string name="morphe_music_hide_notification_button_summary_on">Notification button is hidden</string>
-    <string name="morphe_music_hide_notification_button_summary_off">Notification button is shown</string>
     <string name="morphe_music_hide_search_button_title">Hide search button</string>
-    <string name="morphe_music_hide_search_button_summary_on">Search button is hidden</string>
-    <string name="morphe_music_hide_search_button_summary_off">Search button is shown</string>
 
     <!-- layout.startpage.changeStartPagePatch -->
-    <string name="morphe_change_start_page_title">Change start page</string>
+    <string name="morphe_change_start_page_title">Start page</string>
     <string name="morphe_change_start_page_entry_default">Default</string>
     <string name="morphe_change_start_page_entry_charts">Charts</string>
     <string name="morphe_change_start_page_entry_episodes_for_later">Episodes for later</string>
@@ -126,59 +106,35 @@ Feature implementation by VazerOG"</string>
 
     <!-- layout.compactheader.hideCategoryBar -->
     <string name="morphe_music_hide_category_bar_title">Hide category bar</string>
-    <string name="morphe_music_hide_category_bar_summary_on">Category bar is hidden</string>
-    <string name="morphe_music_hide_category_bar_summary_off">Category bar is shown</string>
 
     <!-- layout.miniplayer.changeMiniplayerColor -->
     <string name="morphe_music_change_miniplayer_color_title">Change miniplayer color</string>
-    <string name="morphe_music_change_miniplayer_color_summary_on">Miniplayer color matches fullscreen player</string>
-    <string name="morphe_music_change_miniplayer_color_summary_off">Miniplayer uses default color</string>
+    <string name="morphe_music_change_miniplayer_color_summary">Matches the miniplayer color to the fullscreen player</string>
 
     <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
     <string name="morphe_music_miniplayer_next_button_title">Show next button in miniplayer</string>
-    <string name="morphe_music_miniplayer_next_button_summary_on">Next button is shown in the miniplayer</string>
-    <string name="morphe_music_miniplayer_next_button_summary_off">Next button is not shown in the miniplayer</string>
     <string name="morphe_music_miniplayer_previous_button_title">Show previous button in miniplayer</string>
-    <string name="morphe_music_miniplayer_previous_button_summary_on">Previous button is shown in the miniplayer</string>
-    <string name="morphe_music_miniplayer_previous_button_summary_off">Previous button is not shown in the miniplayer</string>
 
     <!-- layout.miniplayer.enableForcedMiniplayer -->
     <string name="morphe_music_enable_forced_miniplayer_title">Enable forced miniplayer</string>
-    <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniplayer stays minimized when playback changes</string>
-    <string name="morphe_music_enable_forced_miniplayer_summary_off">Miniplayer expands to fullscreen when playback changes</string>
+    <string name="morphe_music_enable_forced_miniplayer_summary">Prevents the player from automatically expanding to fullscreen when a new track starts</string>
 
     <!-- layout.navigationbar.navigationBarPatch -->
     <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
-    <string name="morphe_music_navigation_bar_screen_summary">Hide or change navigation bar buttons</string>
+    <string name="morphe_music_navigation_bar_screen_summary">Choose which buttons appear in the navigation bar</string>
     <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-    <string name="morphe_music_hide_navigation_bar_home_button_title">Hide Home</string>
-    <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Home button is hidden</string>
-    <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Home button is shown</string>
+    <string name="morphe_music_hide_navigation_bar_home_button_title">Hide Home button</string>
     <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-    <string name="morphe_music_hide_navigation_bar_samples_button_title">Hide Samples</string>
-    <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Samples button is hidden</string>
-    <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Samples button is shown</string>
+    <string name="morphe_music_hide_navigation_bar_samples_button_title">Hide Samples button</string>
     <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-    <string name="morphe_music_hide_navigation_bar_explore_button_title">Hide Explore</string>
-    <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Explore button is hidden</string>
-    <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Explore button is shown</string>
+    <string name="morphe_music_hide_navigation_bar_explore_button_title">Hide Explore button</string>
     <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-    <string name="morphe_music_hide_navigation_bar_library_button_title">Hide Library</string>
-    <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Library button is hidden</string>
-    <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Library button is shown</string>
+    <string name="morphe_music_hide_navigation_bar_library_button_title">Hide Library button</string>
     <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-    <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Hide Upgrade</string>
-    <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Upgrade button is hidden</string>
-    <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Upgrade button is shown</string>
+    <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Hide Upgrade button</string>
     <string name="morphe_music_hide_navigation_bar_title">Hide navigation bar</string>
-    <string name="morphe_music_hide_navigation_bar_summary_on">Navigation bar is hidden</string>
-    <string name="morphe_music_hide_navigation_bar_summary_off">Navigation bar is shown</string>
     <string name="morphe_music_hide_navigation_bar_labels_title">Hide navigation button labels</string>
-    <string name="morphe_music_hide_navigation_bar_labels_summary_on">Labels are hidden</string>
-    <string name="morphe_music_hide_navigation_bar_labels_summary_off">Labels are shown</string>
 
     <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
     <string name="morphe_music_hide_upgrade_button_title">Hide upgrade button</string>
-    <string name="morphe_music_hide_upgrade_button_summary_on">Button is hidden</string>
-    <string name="morphe_music_hide_upgrade_button_summary_off">Button is shown</string>
 </resources>

@@ -406,6 +406,19 @@ internal object ChannelTabRendererFingerprint : Fingerprint(
     )
 )
 
+internal object ChannelTabAddFingerprint : Fingerprint(
+    classFingerprint = ChannelTabRendererFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "I"
+    ),
+    filters = listOf(
+        methodCall("Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z"),
+    )
+)
+
 internal object EngagementPanelInformationButtonFingerprint : Fingerprint(
     parameters = listOf("Landroid/content/Context;"),
     filters = listOf(

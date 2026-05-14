@@ -39,10 +39,10 @@ val hideButtons = bytecodePatch(
         val topBarMenuItemImageView = getResourceId(ResourceType.ID, "top_bar_menu_item_image_view")
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_music_hide_cast_button"),
-            SwitchPreference("morphe_music_hide_history_button"),
-            SwitchPreference("morphe_music_hide_notification_button"),
-            SwitchPreference("morphe_music_hide_search_button")
+            SwitchPreference("morphe_music_hide_cast_button", summaryKey = null),
+            SwitchPreference("morphe_music_hide_history_button", summaryKey = null),
+            SwitchPreference("morphe_music_hide_notification_button", summaryKey = null),
+            SwitchPreference("morphe_music_hide_search_button", summaryKey = null)
         )
 
         // Region for hide history button in the top bar.

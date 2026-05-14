@@ -28,7 +28,7 @@ val videoAdsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.ADS.addPreferences(
-            SwitchPreference("morphe_hide_video_ads"),
+            SwitchPreference("morphe_hide_video_ads", summaryKey = null),
         )
 
         setOf(

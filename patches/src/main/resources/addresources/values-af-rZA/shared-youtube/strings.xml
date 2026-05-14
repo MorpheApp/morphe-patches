@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Pasgemaak</string>
   <string name="morphe_custom_branding_notification_icon_title">Kennisgewingikoon</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Volg app-ikoon</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Pas app-ikoon</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Kennisgewing</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">U kykgeskiedenis word nie gestoor nie.&lt;br&gt;&lt;br&gt;Dit word heel waarskynlik veroorsaak deur \'n DNS-advertensieblokkeerder of \'n netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit op te los, voeg &lt;b&gt;s.youtube.com&lt;/b&gt; by die witlys of skakel alle DNS-blokkeerders en -proxies af.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Moenie weer wys nie</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Verfraai videostrome</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Verfraai die kliënt videostrome om speelprobleme te voorkom</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Konfigureer kliënt-voorgee om speelprobleme te voorkom</string>
   <string name="morphe_spoof_video_streams_title">Verfraai videostrome</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Videostrome word verfraai
+  <string name="morphe_spoof_video_streams_summary">"Bedrieg YouTube om 'n versoenbare videostroom te stuur, wat speel vir die meeste gebruikers regstel
 
-As u 'n YouTube Premium-gebruiker is, is hierdie instelling dalk nie nodig nie"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Videostrome word nie verfraai nie
-
-Speel kan dalk nie werk nie"</string>
+As jy 'n YouTube Premium-gebruiker is, is hierdie instelling dalk nie nodig nie."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Kon nie enige kliëntstrome ophaal nie</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Om hierdie instelling af te skakel, kan dit speelprobleme veroorsaak.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Om aan te meld, druk voort hieronder"</string>
   <string name="morphe_oauth2_toast_reset">Uitgeklok by Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ongeldige VR-aantekentokken, probeer om weer by VR aan te teken</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Skakel speler JavaScript-opdatering uit</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Speler JavaScript-opdatering is deaktiveer
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Sluit die speler JavaScript tot 'n plaaslike hash in plaas van om opdaterings te haal
 
 • 'n Geldige speler JavaScript-hash is vereis
-• Afspeelings misluk as die Speler JavaScript-hash in GVS ingetrek word"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Speler JavaScript-opdatering is geaktiveer</string>
+• Afspeel sal misluk as die speler JavaScript-hash in GVS ingetrek word"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Speler JavaScript-hashes is ongeveer een maand geldig, en verouderde hashes kan deur GVS ingetrek word.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Speler JavaScript-hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Voer \'n geldige speler JavaScript-hash in</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiveer QUIC-protokol</string>
-  <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokol is gedeaktiveer</string>
-  <string name="morphe_disable_quic_protocol_summary_off">QUIC-protokol is geaktiveer</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Deaktiveer DRC-oudio</string>
-  <string name="morphe_disable_drc_audio_summary_on">DRC-oudio is gedeaktiveer</string>
-  <string name="morphe_disable_drc_audio_summary_off">DRC-oudio is geaktiveer</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Dwing oorspronklike oudiotaal af</string>
-  <string name="morphe_force_original_audio_summary_on">Gebruik oorspronklike oudiotaal</string>
-  <string name="morphe_force_original_audio_summary_off">Gebruik standaard oudio</string>
+  <string name="morphe_force_original_audio_summary">Speel altyd die oorspronklike klou van die video in plaas van \'n dubbingweergawe</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Verberg volskermadvertensies</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Volskermadvertensies is verberg</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Volskermadvertensies word gewys</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Om hierdie funksie te gebruik, verander \'Verfraai videostrome\' na Android Reel of TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Ontsmet deel skakels</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Dopnavraagparameter word uit gedeelde skakels verwyder</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Dopnavraagparameter word nie uit gedeelde skakels verwyder nie</string>
+  <string name="morphe_sanitize_sharing_links_summary">Verwyder dopnavraagparameters van gedeelde skakels</string>
   <string name="morphe_replace_music_with_youtube_title">Verander deel skakels na youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Gedeelde skakels gebruik youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Gedeelde skakels gebruik music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Verander deel skakels na youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Gedeelde regstreekse uitsending en Shorts-skakels gebruik youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Gedeelde regstreekse uitsending en Shorts skakels gebruik hul oorspronklike URL\'s</string>
+  <string name="morphe_replace_links_with_shortener_summary">Dwing lewendige strome en Shorts om die verkorte youtu.be URL-formaat te gebruik</string>
 </resources>

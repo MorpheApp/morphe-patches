@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Περιορισμός: Οι οπτικοί διαχωριστές ενδέχεται να μην αποκρυφτούν"</string>
   <string name="morphe_remove_notification_dialog_title">Αφαίρεση του διαλόγου \"Προτεινόμενη Ειδοποίηση\"</string>
-  <string name="morphe_remove_notification_dialog_summary">Αφαιρεί τον διάλογο \"Προτεινόμενη Ειδοποίηση\" που εμφανίζεται κατά την επίσκεψη σε ένα subreddit απορρίπτοντάς το αυτόματα</string>
-  <string name="morphe_show_view_count_title">Εμφάνιση μετρητή προβολών</string>
-  <string name="morphe_show_view_count_summary">"Εμφανίζει τον μετρητή προβολών για τις δημοσιεύσεις
-
-Περιορισμός: Εμφανίζεται μόνο εάν η απάντηση API περιλαμβάνει τον μετρητή προβολών"</string>
+  <string name="morphe_remove_notification_dialog_summary">Απορρίπτει αυτόματα το παράθυρο διαλόγου υποδείξεων ειδοποιήσεων κατά την επίσκεψη σε ένα subreddit</string>
+  <string name="morphe_show_view_count_title">Εμφάνιση αριθμού προβολών στις δημοσιεύσεις</string>
+  <string name="morphe_show_view_count_summary">Περιορισμός: Διαθέσιμο μόνο εάν η απάντηση του API περιλαμβάνει τον αριθμό προβολών</string>
   <string name="morphe_remove_nsfw_dialog_title">Αφαίρεση διαλόγου προειδοποίησης \"NSFW\"</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Αφαιρεί τον διάλογο προειδοποίησης \"NSFW\" που εμφανίζεται κατά την επίσκεψη σε ένα subreddit αποδέχοντάς το αυτόματα</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Αποδέχεται αυτόματα την προειδοποίηση περιεχομένου NSFW κατά την επίσκεψη σε ένα subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Διάφορα</string>
   <string name="morphe_about_title">Σχετικά με</string>
   <string name="morphe_about_summary">Έκδοση τροποποιήσεων και επίσημοι σύνδεσμοι</string>
   <string name="morphe_sanitize_sharing_links_title">Καθαρισμός συνδέσμων κατά την κοινοποίηση</string>
-  <string name="morphe_sanitize_sharing_links_summary">Καθαρίζει τους συνδέσμους όταν τους κοινοποιείς αφαιρώντας παραμέτρους παρακολούθησης</string>
+  <string name="morphe_sanitize_sharing_links_summary">Αφαιρεί τις παραμέτρους ερωτήματος παρακολούθησης από τους συνδέσμους που κοινοποιούνται</string>
   <string name="morphe_open_links_directly_title">Άνοιγμα συνδέσμων στην εφαρμογή</string>
-  <string name="morphe_open_links_directly_summary">Παρακάμπτει τις ανακατευθύνσεις των συνδέσμων σε εξωτερικούς συνδέσμους</string>
+  <string name="morphe_open_links_directly_summary">Παρακάμπτει τις διευθύνσεις URL ανακατεύθυνσης κατά το άνοιγμα εξωτερικών συνδέσμων</string>
   <string name="morphe_open_links_externally_title">Άνοιγμα συνδέσμων εξωτερικά</string>
-  <string name="morphe_open_links_externally_summary">Άνοιγμα συνδέσμων στο πρόγραμμα περιήγησής σας αντί για το ενσωματωμένο πρόγραμμα περιήγησης</string>
+  <string name="morphe_open_links_externally_summary">Ανοίγει συνδέσμους στο πρόγραμμα περιήγησής σας αντί για το ενσωματωμένο πρόγραμμα περιήγησης</string>
 </resources>

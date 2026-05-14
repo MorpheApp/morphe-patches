@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Soekgeskiedenis is leeg</string>
   <string name="morphe_settings_search_empty_history_summary">Om soekgeskiedenis te stoor, tik \'n soekversoek en druk Enter</string>
   <string name="morphe_settings_search_history_title">Wys soekgeskiedenis</string>
-  <string name="morphe_settings_search_history_summary_on">Soekgeskiedenis word gewys</string>
-  <string name="morphe_settings_search_history_summary_off">Soekgeskiedenis word nie gewys nie</string>
   <string name="morphe_show_menu_icons_title">Wys Morphe instellingsikone</string>
-  <string name="morphe_show_menu_icons_summary_on">Instellingsikone word gewys</string>
-  <string name="morphe_show_menu_icons_summary_off">Instellingsikone word nie gewys nie</string>
   <string name="morphe_language_title">Morphe taal</string>
   <string name="morphe_language_user_dialog_message">"Vertalings vir sommige tale is dalk ontbrekend of onvolledig.
 
@@ -88,16 +84,11 @@ Om nuwe tale te vertaal of bestaande vertalings te verbeter, besoek morphe.softw
   <string name="morphe_settings_about_licenses_loading">Laai tans...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Ontfouting</string>
-  <string name="morphe_debug_screen_summary">Skakel foutopsporingsopsies in of uit</string>
-  <string name="morphe_debug_title">Ontfouting logboek</string>
-  <string name="morphe_debug_summary_on">Ontfouting protokolle is geaktiveer</string>
-  <string name="morphe_debug_summary_off">Ontfouting protokolle is gedeaktiveer</string>
+  <string name="morphe_debug_screen_summary">Konfigureer gevorderde ontwikkelaarsopsies en diagnostiese logs</string>
+  <string name="morphe_debug_title">Aktiveer ontfoutingslogboek</string>
   <string name="morphe_debug_stacktrace_title">Ontfouting logboek stapelspoor</string>
-  <string name="morphe_debug_stacktrace_summary_on">Ontfouting logboeke sluit stapelspore in</string>
-  <string name="morphe_debug_stacktrace_summary_off">Ontfouting logboeke sluit nie stapelspore in nie</string>
+  <string name="morphe_debug_stacktrace_summary">Sluit stapelspore in in ontfoutingslogboeke om foute te help identifiseer</string>
   <string name="morphe_debug_toast_on_error_title">Wys rooster op Morphe fout</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Rooster word gewys as fout voorkom</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Rooster word nie gewys as fout voorkom nie</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Om foutrooster uit te skakel, verberg dit al Morphe foutkennisgewings.
 
 Jy sal nie van enige onverwags gebeurtenisse in kennis gestel word nie."</string>
@@ -141,15 +132,21 @@ Deaktivering van battery optimerings vir MicroG sal nie batterygebruik negatief 
 
 Tik die voortgaan knoppie en laat optimeringsveranderings toe."</string>
   <string name="gms_core_dialog_continue_text">Gaan voort</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Battery optimerings dialoog</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG battery optimerings dialoog word gewys</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG battery optimerings dialoog word nie gewys nie</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Wys battery-optimiseringsdialoog</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering hiervan sal die MicroG battery optimerings prompt verberg.
 
 As battery optimerings nie verander word nie dan mag jy ervaar:
 • Program kan willekeurig sluit
 • Kennisgewings werk dalk nie
 • Agtergrondterugspeel werk dalk nie"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">App skakelhantering</string>
+  <string name="morphe_link_handling_summary">Konfigureer watter app skakels oopmaak</string>
+  <string name="morphe_link_handling_step1_title">Stap 1: Deaktiveer oorspronklike app-skakels</string>
+  <string name="morphe_link_handling_step1_message">Maak die instellings van die oorspronklike app oop en deaktiveer alle domeinskakels</string>
+  <string name="morphe_link_handling_step2_title">Stap 2: Aktiveer gepatchte app-skakels</string>
+  <string name="morphe_link_handling_step2_message">Maak die instellings van die gepatchte app oop en aktiveer alle domeinskakels</string>
+  <string name="morphe_link_handling_open">Maak instellings oop</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentele Waarskuwing 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Jy gebruik 'n eksperimentele program weergawe van ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

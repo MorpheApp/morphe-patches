@@ -31,21 +31,13 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Anpassad</string>
   <string name="morphe_custom_branding_notification_icon_title">Aviseringsikon</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Följ appikon</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-meddelande</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din visningshistorik sparas inte.&lt;br&gt;&lt;br&gt;Detta orsakas troligen av en DNS-annonsblockerare eller nätverksproxy.&lt;br&gt;&lt;br&gt;För att åtgärda detta, vitlista &lt;b&gt;s.youtube.com&lt;/b&gt; eller stäng av alla DNS-blockerare och proxyer.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Visa inte igen</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Förfalska videoströmmar</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Förfalska klientens videoströmmar för att förhindra uppspelningsproblem</string>
   <string name="morphe_spoof_video_streams_title">Förfalska videoströmmar</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Videoströmmar förfalskas
-
-Om du är en YouTube Premium-användare kanske den här inställningen inte behövs"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Videoströmmar förfalskas inte
-
-Uppspelning kanske inte fungerar"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Det gick inte att hämta några klientströmmar</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Om du stänger av den här inställningen kan det leda till problem med uppspelning.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +83,21 @@ Tryck på Fortsätt nedan för att logga in"</string>
   <string name="morphe_oauth2_toast_reset">Utloggad från Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ogiltig VR-inloggningstoken. Försök logga in i VR igen</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Inaktivera JavaScript-uppdatering för spelaren</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"JavaScript-uppdatering för spelaren är inaktiverad
-
-• En giltig JavaScript-hash för spelaren krävs
-• Uppspelningen misslyckas om JavaScript-hashen för spelaren återkallas i GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">JavaScript-uppdatering för spelaren är aktiverad</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript-hashar för spelaren är giltiga i ungefär en månad, och inaktuella hashar kan återkallas av GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">JavaScript-hash för spelaren</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Ange en giltig JavaScript-hash för spelaren</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Inaktivera QUIC-protokoll</string>
-  <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokoll är inaktiverat</string>
-  <string name="morphe_disable_quic_protocol_summary_off">QUIC-protokoll är aktiverat</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Inaktivera dynamisk intervallkomprimering för ljud</string>
-  <string name="morphe_disable_drc_audio_summary_on">Dynamisk intervallkomprimering för ljud är inaktiverad</string>
-  <string name="morphe_disable_drc_audio_summary_off">Dynamisk intervallkomprimering för ljud är aktiverad</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Tvinga ursprungligt ljudspråk</string>
-  <string name="morphe_force_original_audio_summary_on">Använder ursprungligt ljudspråk</string>
-  <string name="morphe_force_original_audio_summary_off">Använder standardljud</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Dölj helskärmsannonser</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Helskärmsannonser är dolda</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Helskärmsannonser visas</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Om du vill använda den här funktionen ändrar du Förfalska videoströmmar till Android Reel eller TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Rensa delningslänkar</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Spårningsfrågeparametern tas bort från delade länkar</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Spårningsfrågeparametern tas inte bort från delade länkar</string>
   <string name="morphe_replace_music_with_youtube_title">Ändra delningslänkar till youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Delade länkar använder youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Delade länkar använder music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Ändra delningslänkar till youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Delade livestream- och Shorts-länkar använder youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Delade livestream- och Shorts-länkar använder sina ursprungliga webbadresser</string>
 </resources>

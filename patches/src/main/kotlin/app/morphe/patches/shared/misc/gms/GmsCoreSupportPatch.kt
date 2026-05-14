@@ -539,7 +539,8 @@ fun gmsCoreSupportResourcePatch(
     block: ResourcePatchBuilder.() -> Unit = {},
 ) = resourcePatch {
     dependsOn(
-        changePackageNamePatch
+        changePackageNamePatch,
+        linkHandlingPatch(fromPackageName, screen),
     )
 
     execute {
@@ -619,7 +620,7 @@ fun gmsCoreSupportResourcePatch(
                     "$GMS_CORE_VENDOR_GROUP_ID.android.gms"
                 }
             ),
-            SwitchPreference("morphe_gms_core_battery_optimization_dialog")
+            SwitchPreference("morphe_gms_core_battery_optimization_dialog", summaryKey = null)
         )
 
         executeBlock()

@@ -21,6 +21,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -70,7 +71,11 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         val playbackStartVideoIdMethodName = PlaybackStartDescriptorToStringFingerprint
             .instructionMatches[1].getMethodCalled().name
 
-        ShortsPlaybackIntentFingerprint.method.addInstructionsWithLabels(
+        // Same method is modified by openChannelOfLiveAvatarPatch,
+        // and by coincidence that patch runs after this patch which is critical
+        // because that patch behavior is prioritized over this patch.
+        (if (is_21_20_or_greater) ShortsPlaybackIntentFingerprint
+        else ShortsPlaybackIntentFingerprintLegacy).method.addInstructionsWithLabels(
             0,
             """
                 move-object/from16 v0, p1

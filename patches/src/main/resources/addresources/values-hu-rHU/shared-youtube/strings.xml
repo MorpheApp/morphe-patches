@@ -31,7 +31,7 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Egyéni</string>
   <string name="morphe_custom_branding_notification_icon_title">Értesítési ikon</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Kövesse az alkalmazás ikonját</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Alkalmazás ikonjának módosítása</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Értesítés</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">A megtekintési előzmények mentése nem történik meg.&lt;br&gt;&lt;br&gt;Ezt valószínűleg egy DNS-hirdetésblokkoló vagy hálózati proxy okozza.&lt;br&gt;&lt;br&gt;A probléma megoldásához vegye fel az engedélyezőlistára az &lt;b&gt;s.youtube.com&lt;/b&gt; domaint vagy kapcsolja ki az összes DNS-blokkolót és proxyt.</string>
@@ -40,12 +40,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Videó streamek hamisítása</string>
   <string name="morphe_spoof_video_streams_screen_summary">A kliens videó streamek hamisítása a lejátszási problémák elkerülése érdekében</string>
   <string name="morphe_spoof_video_streams_title">Hamis videó stream</string>
-  <string name="morphe_spoof_video_streams_summary_on">"A videó adatfolyamok hamisítva vannak
+  <string name="morphe_spoof_video_streams_summary">"Trükközéssel arra készteti a YouTube-ot, hogy kompatibilis videó streamet küldjön, ami a legtöbb felhasználó számára megoldja a lejátszási problémákat
 
-Ha Ön YouTube Premium felhasználó, ez a beállítás nem feltétlenül szükséges"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"A videó streamek nincsenek hamisítva
-
-A lejátszás nem működhet"</string>
+Ha YouTube Premium előfizetője vagy, ez a beállítás nem feltétlenül szükséges."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nem találtunk ügyfelek által megosztott folyamokat</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ennek a beállításnak a kikapcsolása lejátszási problémákat okozhat.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_oauth2_toast_reset">Kijelentkezett az Android VR-ből</string>
   <string name="morphe_oauth2_toast_invalid">Érvénytelen VR bejelentkezési token, próbálja meg újra a bejelentkezést a VR-ba</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Kapcsold ki a lejátszó JavaScript frissítését</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"A lejátszó JavaScript frissítése ki van kapcsolva
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Rögzíti a lejátszó JavaScript kódját egy helyi hash-hez a frissítések letöltése helyett
 
 • Érvényes lejátszó JavaScript hash szükséges
-• A lejátszó JavaScript hash visszavonása a GVS-ben lejátszási hibákhoz vezet"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">A lejátszó JavaScript frissítése engedélyezve van</string>
+• A lejátszás hibás lesz, ha a lejátszó JavaScript hash-ét visszavonják a GVS-ben"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">A lejátszó JavaScript hash-ai kb. egy hónapig érvényesek, és a GVS visszavonhatja a lejárt hash-okat.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Játékos JavaScript hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Adjon meg egy érvényes játékos JavaScript hasht</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokoll letiltása</string>
-  <string name="morphe_disable_quic_protocol_summary_on">QUIC protokoll letiltva</string>
-  <string name="morphe_disable_quic_protocol_summary_off">QUIC protokoll engedélyezve</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC hang letiltása</string>
-  <string name="morphe_disable_drc_audio_summary_on">A DRC hang letiltva van</string>
-  <string name="morphe_disable_drc_audio_summary_off">A DRC hang engedélyezve van</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Eredeti hang kikényszerítése</string>
-  <string name="morphe_force_original_audio_summary_on">Eredeti hang használata a hang nyelvén</string>
-  <string name="morphe_force_original_audio_summary_off">Alapértelmezett hang használata</string>
+  <string name="morphe_force_original_audio_summary">Mindig az eredeti hangszálat játssza le a videóhoz, a szinkronizált helyett</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Teljesképernyős-hirdetések elrejtése</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Teljesképernyős-hirdetések elrejtve</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">A teljesképernyős-hirdetések megjelennek</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">A funkció használatához módosítsa a \"Videóstreamek hamisítása\" beállítást Android Reel vagy TV-re</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Megosztási linkek tisztítása</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">A követési lekérdezési paraméter eltávolításra kerül a megosztott linkekből</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">A követési lekérdezési paraméter nem kerül eltávolításra a megosztott linkekből</string>
+  <string name="morphe_sanitize_sharing_links_summary">Eltávolítja a követési paramétereket a megosztott linkekből</string>
   <string name="morphe_replace_music_with_youtube_title">Módosítsa a megosztási linkeket youtube.com-ra</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">A megosztott linkek a youtube.com-ot használják</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">A megosztott linkek a music.youtube.com-ot használják</string>
   <string name="morphe_replace_links_with_shortener_title">Módosítsa a megosztási linkeket youtu.be-ra</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">A megosztott élő videó és Shorts hivatkozatok youtu.be formátumúak</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">A megosztott élő videó és Shorts linkek az eredeti URL-eket használják</string>
+  <string name="morphe_replace_links_with_shortener_summary">A videók és a Shorts mindig a rövidített youtu.be URL-formátumot használják</string>
 </resources>

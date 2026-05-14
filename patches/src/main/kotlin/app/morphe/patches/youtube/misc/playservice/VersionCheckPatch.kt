@@ -71,6 +71,8 @@ var is_21_18_or_greater : Boolean by Delegates.notNull()
     private set
 var is_21_19_or_greater : Boolean by Delegates.notNull()
     private set
+var is_21_20_or_greater : Boolean by Delegates.notNull()
+    private set
 
 val versionCheckPatch = bytecodePatch {
     execute {
@@ -112,5 +114,6 @@ val versionCheckPatch = bytecodePatch {
         is_21_17_or_greater = isEqualsOrGreaterThan("21.17.000")
         is_21_18_or_greater = isEqualsOrGreaterThan("21.18.000")
         is_21_19_or_greater = isEqualsOrGreaterThan("21.19.000")
+        is_21_20_or_greater = isEqualsOrGreaterThan("21.20.000")
     }
 }

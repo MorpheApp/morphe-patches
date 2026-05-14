@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Suchverlauf ist leer</string>
   <string name="morphe_settings_search_empty_history_summary">Um den Suchverlauf zu speichern, geben Sie eine Suchanfrage ein und drücken Sie Enter</string>
   <string name="morphe_settings_search_history_title">Suchverlauf der Einstellungen anzeigen</string>
-  <string name="morphe_settings_search_history_summary_on">Suchverlauf der Einstellungen wird angezeigt</string>
-  <string name="morphe_settings_search_history_summary_off">Der Suchverlauf der Einstellungen wird nicht angezeigt</string>
   <string name="morphe_show_menu_icons_title">Morphe-Einstellungsicons anzeigen</string>
-  <string name="morphe_show_menu_icons_summary_on">Einstellungsicons werden angezeigt</string>
-  <string name="morphe_show_menu_icons_summary_off">Einstellungsicons werden nicht angezeigt</string>
   <string name="morphe_language_title">Morphe-Sprache</string>
   <string name="morphe_language_user_dialog_message">"Übersetzungen für einige Sprachen fehlen möglicherweise oder sind unvollständig.
 
@@ -88,16 +84,11 @@ Um neue Sprachen zu übersetzen oder die vorhandenen Übersetzungen zu verbesser
   <string name="morphe_settings_about_licenses_loading">Lädt...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugging</string>
-  <string name="morphe_debug_screen_summary">Aktiviert oder deaktiviert Debugging-Optionen</string>
-  <string name="morphe_debug_title">Debug-Protokollierung</string>
-  <string name="morphe_debug_summary_on">Debug-Protokolle sind aktiviert</string>
-  <string name="morphe_debug_summary_off">Debug-Protokolle sind deaktiviert</string>
+  <string name="morphe_debug_screen_summary">Konfigurieren Sie erweiterte Entwickleroptionen und Diagnoseprotokolle</string>
+  <string name="morphe_debug_title">Debug-Protokollierung aktivieren</string>
   <string name="morphe_debug_stacktrace_title">Debug-Log Stack-Trace</string>
-  <string name="morphe_debug_stacktrace_summary_on">Debug-Logs enthalten Stack-Traces</string>
-  <string name="morphe_debug_stacktrace_summary_off">Debug-Logs enthalten keine Stack-Traces</string>
+  <string name="morphe_debug_stacktrace_summary">Enthält Stacktraces in Debugprotokollen, um Fehler zu identifizieren</string>
   <string name="morphe_debug_toast_on_error_title">Pop-Up bei Morphe Fehler anzeigen</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Ein Pop-Up wird angezeigt, wenn ein Fehler auftritt</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Es wird kein Pop-Up angezeigt, wenn ein Fehler auftritt</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Das Ausschalten von Fehler-Pop-Ups blendet alle Benachrichtigungen über Fehler in Morphe aus.
 
 Sie werden nicht über unerwartete Ereignisse informiert."</string>
@@ -141,15 +132,21 @@ Die Deaktivierung der Batterieoptimierungen für MicroG beeinflusst nicht negati
 
 Tippen Sie auf die Schaltfläche „Weiter“ und erlauben Sie die Optimierungsänderungen."</string>
   <string name="gms_core_dialog_continue_text">Weiter</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur Batterieoptimierung</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Der MicroG-Batterieoptimierungsdialog wird angezeigt</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Der MicroG-Batterieoptimierungsdialog wird nicht angezeigt</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur Batterieoptimierung anzeigen</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Das Deaktivieren verbirgt die MicroG-Batterieoptimierungsaufforderung.
 
 Wenn die Batterieoptimierungen nicht geändert werden, kann es zu folgenden Problemen kommen:
 • Die App kann unerwartet geschlossen werden
 • Benachrichtigungen funktionieren möglicherweise nicht
 • Die Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">App-Link-Behandlung</string>
+  <string name="morphe_link_handling_summary">Konfigurieren, welche App Links öffnet</string>
+  <string name="morphe_link_handling_step1_title">Schritt 1: Original App-Links deaktivieren</string>
+  <string name="morphe_link_handling_step1_message">Öffnen Sie die Einstellungen der Original-App und deaktivieren Sie alle Domain-Links</string>
+  <string name="morphe_link_handling_step2_title">Schritt 2: Gepatchte App-Links aktivieren</string>
+  <string name="morphe_link_handling_step2_message">Öffnen Sie die Einstellungen der gepatchten App und aktivieren Sie alle Domain-Links</string>
+  <string name="morphe_link_handling_open">Einstellungen öffnen</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Experimenteller Alarm 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Sie verwenden die experimentelle App-Version ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

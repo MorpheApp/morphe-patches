@@ -31,7 +31,7 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Brugerdefineret</string>
   <string name="morphe_custom_branding_notification_icon_title">Notifikationsikon</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Følg app-ikon</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Match appikon</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Meddelelse</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din afspilningshistorik gemmes ikke.&lt;br&gt;&lt;br&gt;Dette skyldes sandsynligvis en DNS-annonceblokker eller netværksproxy.&lt;br&gt;&lt;br&gt;For at løse dette, whitelist &lt;b&gt;s.youtube.com&lt;/b&gt; eller slå alle DNS-blokkere og proxyservere fra.</string>
@@ -40,12 +40,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Spoof videostreams</string>
   <string name="morphe_spoof_video_streams_screen_summary">Spoof klientens videostreams for at forhindre afspilningsproblemer</string>
   <string name="morphe_spoof_video_streams_title">Spoof videostreams</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Videostreams er spoofede
+  <string name="morphe_spoof_video_streams_summary">"Snyder YouTube til at sende en kompatibel videostream, hvilket løser afspilningen for de fleste brugere
 
-Hvis du er en YouTube Premium-bruger, er denne indstilling muligvis ikke påkrævet"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Videostreams spoofes ikke
-
-Afspilning fungerer muligvis ikke"</string>
+Hvis du er en YouTube Premium-bruger, er denne indstilling muligvis ikke nødvendig"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Kunne ikke hente nogen klient streams</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Deaktivering af denne indstilling kan forårsage afspilningsproblemer.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ For at logge ind, tryk på fortsæt nedenfor"</string>
   <string name="morphe_oauth2_toast_reset">Logget ud af Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Ugyldigt VR-logge-ind token, prøv at logge ind i VR igen</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Deaktiver JavaScript-opdatering for afspiller</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"JavaScript-opdatering for afspiller er deaktiveret
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Låser player JavaScript til et lokalt hash i stedet for at hente opdateringer
 
-• En gyldig JavaScript-hash for afspiller er påkrævet
-• Afspilning mislykkes, hvis JavaScript-hash for afspiller tilbagekaldes i GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">JavaScript-opdatering for afspiller er aktiveret</string>
+• Et gyldigt player JavaScript hash er påkrævet
+• Afspilning mislykkes, hvis Player JavaScript-hashen tilbagekaldes i GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Afspillerens JavaScript-hashes er gyldige i cirka en måned, og forældede hashes kan tilbagekaldes af GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Afspillerens JavaScript hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Indtast en gyldig afspiller JavaScript hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Deaktiver QUIC-protokol</string>
-  <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokol er deaktiveret</string>
-  <string name="morphe_disable_quic_protocol_summary_off">QUIC-protokol er aktiveret</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Deaktiver DRC lyd</string>
-  <string name="morphe_disable_drc_audio_summary_on">DRC lyd er deaktiveret</string>
-  <string name="morphe_disable_drc_audio_summary_off">DRC lyd er aktiveret</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Tving originalt lydsprog</string>
-  <string name="morphe_force_original_audio_summary_on">Bruger originalt lydsprog</string>
-  <string name="morphe_force_original_audio_summary_off">Brug standard lyd</string>
+  <string name="morphe_force_original_audio_summary">Spiller altid videoens originale lydspor i stedet for en dubbet version</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Skjul fuldskærmsannoncer</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Fuldskærmsannoncer er skjulte</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Fuldskærmsannoncer vises</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">For at bruge denne funktion, skal du ændre \'Spoof video streams\' til Android Reel eller TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Rens delingslinks</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Sporingsforespørgselsparameter er fjernet fra delte links</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Sporingsforespørgselsparameter er ikke fjernet fra delte links</string>
+  <string name="morphe_sanitize_sharing_links_summary">Fjerner sporing af forespørgselsparametre fra delte links</string>
   <string name="morphe_replace_music_with_youtube_title">Skift delingslinks til youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Delte links bruger youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Delte links bruger music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Skift delingslinks til youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Delte links til live streams og Shorts bruger youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Delte links til live streams og Shorts bruger deres originale URL\'er</string>
+  <string name="morphe_replace_links_with_shortener_summary">Tvinger live streams og Shorts til at bruge det forkortede youtu.be URL-format</string>
 </resources>

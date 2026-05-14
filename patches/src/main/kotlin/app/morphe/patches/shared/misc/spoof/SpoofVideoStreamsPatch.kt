@@ -69,11 +69,12 @@ private val spoofVideoStreamsResourcePatch = resourcePatch {
 internal fun spoofVideoStreamsPatch(
     extensionClass: String,
     mainActivityOnCreateFingerprint: Fingerprint,
-    fixMediaFetchHotConfig: BytecodePatchBuilder.() -> Boolean = { false },
-    fixMediaFetchHotConfigAlternative: BytecodePatchBuilder.() -> Boolean = { false },
-    fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
-    fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
-    fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
+    fixMediaFetchHotConfig: BytecodePatchBuilder.() -> Boolean,
+    fixMediaFetchHotConfigAlternative: BytecodePatchBuilder.() -> Boolean,
+    fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
+    fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
+    fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
+    hookAccountIdentity: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
@@ -318,45 +319,48 @@ internal fun spoofVideoStreamsPatch(
         // region Disable SABR playback.
         // If SABR is disabled, it seems 'MediaFetchHotConfig' may no longer need an override (not confirmed).
 
-        val (mediaFetchEnumClass, sabrFieldReference) = with(MediaFetchEnumConstructorFingerprint.method) {
-            val stringIndex = MediaFetchEnumConstructorFingerprint.stringMatches.first {
-                it.string == DISABLED_BY_SABR_STREAMING_URI_STRING
-            }.index
-
+        with(MediaFetchEnumConstructorFingerprint.method) {
             val mediaFetchEnumClass = definingClass
+            val stringIndex = MediaFetchEnumConstructorFingerprint.stringMatches.last().index
             val sabrFieldIndex = indexOfFirstInstructionOrThrow(stringIndex) {
                 opcode == Opcode.SPUT_OBJECT &&
                         getReference<FieldReference>()?.type == mediaFetchEnumClass
             }
+            val sabrFieldReference = getInstruction<ReferenceInstruction>(sabrFieldIndex).reference as FieldReference
 
-            Pair(
-                mediaFetchEnumClass,
-                getInstruction<ReferenceInstruction>(sabrFieldIndex).reference
+            Fingerprint(
+                returnType = mediaFetchEnumClass,
+                filters = opcodesToFilters(
+                    Opcode.SGET_OBJECT,
+                    Opcode.RETURN_OBJECT,
+                ),
+                custom = { method, _ ->
+                    !method.parameterTypes.isEmpty()
+                }
+            ).method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->disableSABR()Z
+                    move-result v0
+                    if-eqz v0, :ignore
+                    sget-object v0, $sabrFieldReference
+                    return-object v0
+                    :ignore
+                    nop
+                """
             )
         }
 
-        val sabrFingerprint = Fingerprint(
-            returnType = mediaFetchEnumClass,
-            filters = opcodesToFilters(
-                Opcode.SGET_OBJECT,
-                Opcode.RETURN_OBJECT,
-            ),
-            custom = { method, _ ->
-                !method.parameterTypes.isEmpty()
-            }
-        )
-        sabrFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static { }, $EXTENSION_CLASS->disableSABR()Z
-                move-result v0
-                if-eqz v0, :ignore
-                sget-object v0, $sabrFieldReference
-                return-object v0
-                :ignore
-                nop
-            """
-        )
+        // endregion
+
+        // region get "X-Goog-PageId" or "X-Goog-Visitor-Id" parameters for brand channels
+
+        if (hookAccountIdentity()) {
+            accountIdentityFingerprint.method.addInstruction(
+                0,
+                "invoke-static { p3, p4 }, $EXTENSION_CLASS->setAccountIdentity(Ljava/lang/String;Z)V"
+            )
+        }
 
         // endregion
 

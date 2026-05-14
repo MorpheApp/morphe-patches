@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Limitare: Spațiatorii vizuali pot să nu fie ascunși"</string>
   <string name="morphe_remove_notification_dialog_title">Elimină dialogul de sugestie a notificărilor</string>
-  <string name="morphe_remove_notification_dialog_summary">Elimină dialogul de sugestie a notificărilor care apare la vizitarea unui subreddit, acceptându-l automat</string>
-  <string name="morphe_show_view_count_title">Afișează numărul de vizualizări</string>
-  <string name="morphe_show_view_count_summary">"Afișează numărul de vizualizări pentru Postări
-
-Limitare: Se afișează doar dacă răspunsul API include numărul de vizualizări"</string>
+  <string name="morphe_remove_notification_dialog_summary">Dismissă automat sugestia de notificare când vizitezi un subreddit</string>
+  <string name="morphe_show_view_count_title">Afișează numărul de vizualizări pe postări</string>
+  <string name="morphe_show_view_count_summary">Limitare: Disponibilă doar dacă răspunsul API include numărul de afișări</string>
   <string name="morphe_remove_nsfw_dialog_title">Elimină dialogul de avertisment NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Elimină dialogul de avertisment NSFW care apare la vizitarea unui subreddit, acceptându-l automat</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Acceptă automat avertismentul de conținut NSFW când vizitați un subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Diverse</string>
   <string name="morphe_about_title">Despre</string>
   <string name="morphe_about_summary">Versiunea aplicației și link-uri oficiale</string>
   <string name="morphe_sanitize_sharing_links_title">Igienizează linkurile de partajare</string>
-  <string name="morphe_sanitize_sharing_links_summary">Optimizează link-urile de partajare prin eliminarea parametrilor de urmărire</string>
+  <string name="morphe_sanitize_sharing_links_summary">Elimină parametrii de interogare de urmărire din linkurile partajate</string>
   <string name="morphe_open_links_directly_title">Deschide link-uri direct</string>
-  <string name="morphe_open_links_directly_summary">Ocolește URL-urile de redirecționare în link-urile externe</string>
+  <string name="morphe_open_links_directly_summary">Ocolește URL-urile de redirecționare când deschideți linkuri externe</string>
   <string name="morphe_open_links_externally_title">Deschide link-uri extern</string>
-  <string name="morphe_open_links_externally_summary">Deschide link-uri în browserul tău, în loc de browserul în aplicație</string>
+  <string name="morphe_open_links_externally_summary">Deschide linkurile în browserul dvs. în loc de browserul integrat</string>
 </resources>

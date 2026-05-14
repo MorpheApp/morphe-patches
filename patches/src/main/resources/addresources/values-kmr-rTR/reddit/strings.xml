@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Sînorkar: Ji bo eşkere nekirina wirdayîşên vîzyonê, karanîna dabeşêner rekîr nabe"</string>
   <string name="morphe_remove_notification_dialog_title">Ragihînerê îfadekirinê derxiste</string>
-  <string name="morphe_remove_notification_dialog_summary">Ragihînerê îfadekirinê derxiste. Bi qebûlkirina otomatîk a ragihînerê wê di daxwazên Subreddittan de vicîne</string>
-  <string name="morphe_show_view_count_title">Ji bo nîşana hejmara dîtinê</string>
-  <string name="morphe_show_view_count_summary">"Hejmara dîtina Postan nîşan dide
-
-Sînorkar: Tenê dema ku bersivên API hejmara dîtinê diyar bikin, nîşan tê dayin"</string>
+  <string name="morphe_remove_notification_dialog_summary">Bi serî de pêşniyara daxuyaniya agahiyê paşde dikit dema ku tu subredditê dîsan serdan dikî</string>
+  <string name="morphe_show_view_count_title">Nîşana hejmara dîtinan li ser postan nîşan bide</string>
+  <string name="morphe_show_view_count_summary">Sînordar: Tenê heke bersiva API hejmara dîtinan veda bike, peyda dibe</string>
   <string name="morphe_remove_nsfw_dialog_title">Ragihînerê îfadekirinê ji holê erxe</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Ragihînerê îfadekirinê ji holê erxe.  Bi qebûl otomatîk a ragihînerê wê di daxwazên Subreddit de vicîne</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Otomatîkî pejirandina hişyariya naveroka Nsfw dema serdanek subredditê de</string>
   <string name="morphe_screen_miscellaneous_title">Sazî</string>
   <string name="morphe_about_title">Derbarê</string>
   <string name="morphe_about_summary">Versîona dirêjînê, lînkên fermî veşêrin</string>
   <string name="morphe_sanitize_sharing_links_title">Lînkên parvekirinê paqij bike</string>
-  <string name="morphe_sanitize_sharing_links_summary">Lînkên parvekirinê paqij bike, bi avakirinê ya parametrikên îzbarê</string>
+  <string name="morphe_sanitize_sharing_links_summary">Parametreyên pirsê yên şopandinê ji girêdên parvekirî têne nehevkirin</string>
   <string name="morphe_open_links_directly_title">Lînkên bi rastî veke</string>
-  <string name="morphe_open_links_directly_summary">Dema ku lînkên derve têne pêşîn, URL\'yên veqefandinê bişîne</string>
+  <string name="morphe_open_links_directly_summary">Dema vekirina girêdên derî, Url-ên veguherînî derbas dike</string>
   <string name="morphe_open_links_externally_title">Linskan derve evîn veşartîne</string>
-  <string name="morphe_open_links_externally_summary">Girêjkan di navigînerek tarîstikê de çêdike, ne di tarîstikê navîn de</string>
+  <string name="morphe_open_links_externally_summary">Girêdan di gerînendê da vekirin li şûna gerînendeya nav de</string>
 </resources>

@@ -39,7 +39,7 @@ class MorpheCreditsDialog extends Dialog {
             ),
             new WebLink("ReVanced",
                     str("morphe_settings_about_links_rv"),
-                    "https://github.com/ReVanced/revanced-patches/graphs/contributors?from=3%2F1%2F2022&to=12%2F1%2F2025"
+                    "https://revanced.app/contributors"
             )
     );
 

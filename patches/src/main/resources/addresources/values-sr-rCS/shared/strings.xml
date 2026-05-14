@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Istorija pretrage je prazna</string>
   <string name="morphe_settings_search_empty_history_summary">Da biste sačuvali istoriju pretrage, unesite upit za pretragu i pritisnite Enter</string>
   <string name="morphe_settings_search_history_title">Prikaži istoriju pretrage podešavanja</string>
-  <string name="morphe_settings_search_history_summary_on">Istorija pretrage podešavanja je prikazana</string>
-  <string name="morphe_settings_search_history_summary_off">Istorija pretrage podešavanja nije prikazana</string>
   <string name="morphe_show_menu_icons_title">Prikaži ikonice podešavanja Morphea</string>
-  <string name="morphe_show_menu_icons_summary_on">Ikonice podešavanja su prikazane</string>
-  <string name="morphe_show_menu_icons_summary_off">Ikonice podešavanja nisu prikazane</string>
   <string name="morphe_language_title">Jezik Morphea</string>
   <string name="morphe_language_user_dialog_message">"Prevodi za neke jezike mogu nedostajati ili biti nepotpuni.
 
@@ -88,16 +84,11 @@ Da biste preveli nove jezike ili poboljšali postojeće prevode, posetite morphe
   <string name="morphe_settings_about_licenses_loading">Učitavanje…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Otklanjanje grešaka</string>
-  <string name="morphe_debug_screen_summary">Omogućite ili onemogućite opcije za otklanjanje grešaka</string>
-  <string name="morphe_debug_title">Evidentiranje otklanjanja grešaka</string>
-  <string name="morphe_debug_summary_on">Evidencije otklanjanja grešaka su omogućene</string>
-  <string name="morphe_debug_summary_off">Evidencije otklanjanja grešaka su onemogućene</string>
+  <string name="morphe_debug_screen_summary">Konfiguriši napredne opcije za programere i dnevnike grešaka</string>
+  <string name="morphe_debug_title">Omogući evidentiranje otklanjanja grešaka</string>
   <string name="morphe_debug_stacktrace_title">Traženje steka grešaka</string>
-  <string name="morphe_debug_stacktrace_summary_on">Traženje steka grešaka uključeno</string>
-  <string name="morphe_debug_stacktrace_summary_off">Traženje steka grešaka isključeno</string>
+  <string name="morphe_debug_stacktrace_summary">Uključuje tragove steka u dnevnike za otklanjanje grešaka kako bi se identifikovale greške</string>
   <string name="morphe_debug_toast_on_error_title">Prikaži iskačuće obaveštenje pri grešci s Morpheom</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Iskačuće obaveštenje je prikazano, ako dođe do greške</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Iskačuće obaveštenje nije prikazano, ako dođe do greške</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Isključivanje iskačućih obaveštenja o greškama sakriva sve obaveštenja o greškama u Morpheu.
 
 Nećete biti obavešteni ni o kakvim neočekivanim događajima."</string>
@@ -141,15 +132,21 @@ Onemogućavanje optimizacije baterije za MicroG neće negativno uticati na potro
 
 Dodirnite dugme \"Nastavi\" i dozvolite promene optimizacije."</string>
   <string name="gms_core_dialog_continue_text">Nastavi</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Дијалог о оптимизацији батерије</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Приказан је дијалог о оптимизацији батерије за MicroG</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Дијалог о оптимизацији батерије за MicroG није приказан</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Prikaži dijalog za optimizaciju baterije</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Онеослабљивање ове опције ће скрити промпт за оптимизацију батерије за MicroG.
 
 Ако се оптимизације батерије не промене, могуће је да искусите:
 • Апликација може насумично да се затвори
 • Обавештења можда неће радити
 • Позадинска репродукција можда неће радити"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Obrada poveznica aplikacije</string>
+  <string name="morphe_link_handling_summary">Konfigurišite koja aplikacija otvara poveznice</string>
+  <string name="morphe_link_handling_step1_title">Korak 1: Isključite originalne vezu aplikacije</string>
+  <string name="morphe_link_handling_step1_message">Otvorite podešavanja originalne aplikacije i isključite sve veze domena</string>
+  <string name="morphe_link_handling_step2_title">Korak 2: Omogućite popravljene vezu aplikacije</string>
+  <string name="morphe_link_handling_step2_message">Otvorite podešavanja popravljene aplikacije i uključite sve veze domena</string>
+  <string name="morphe_link_handling_open">Uvezeno podešavanja</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментално упозорење 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Koristite eksperimentalnu verziju aplikacije ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

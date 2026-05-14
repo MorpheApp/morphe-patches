@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">מותאם אישית</string>
   <string name="morphe_custom_branding_notification_icon_title">שeיברין יeיב</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">יeיברין שe איונין</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">התאם את סמל האפליקציה</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">הודעת Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">היסטוריית הצפייה שלך לא נשמרת.&lt;br&gt;&lt;br&gt;סביר להניח שזה נגרם על ידי חוסם מודעות ברמת DNS או פרוקסי רשת.&lt;br&gt;&lt;br&gt;כדי לתקן זאת, רשום את &lt;b&gt;s.youtube.com&lt;/b&gt; ברשימת ההיתרים או כבה את כל חוסמי ה-DNS והפרוקסים.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">אל תציג שוב</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">זיוף זרמי וידאו</string>
-  <string name="morphe_spoof_video_streams_screen_summary">זייף את זרמי הווידאו של הלקוח כדי למנוע בעיות השמעה</string>
+  <string name="morphe_spoof_video_streams_screen_summary">הגדר העלמת זהות לקוח כדי למנוע בעיות בהשמעה</string>
   <string name="morphe_spoof_video_streams_title">זייף זרמי וידאו</string>
-  <string name="morphe_spoof_video_streams_summary_on">"מתבצעת התחזות לזרמי וידאו
+  <string name="morphe_spoof_video_streams_summary">"מרמה את YouTube לשלוח זרם וידאו תואם, מה שתוקן את ההשמעה עבור רוב המשתמשים
 
-אם אתה משתמש YouTube Premium, ייתכן שהגדרה זו אינה נחוצה"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"זרמי וידאו אינם מזויפים
-
-ההשמעה עשויה שלא לפעול"</string>
+אם אתה משתמש ב-YouTube Premium, ייתכן שהגדרת אפשרות זו לא תהיה נחוצה"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не удалось получить доступ к потокам клиента</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">כיבוי הגדרה זו עלול לגרום לבעיות השמעה.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_reset">Вышли из Android VR</string>
   <string name="morphe_oauth2_toast_invalid">טוקן התחברות ל-VR לא חוקי, נסה להתחבר ל-VR שוב</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">לשבט את עדכוני JavaScript של הנגן</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"עדכון JavaScript של הנגן מושבת
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"נעילת ה-JavaScript של הנגן להאש מקומי במקום לאחזר עדכונים
 
-• נדרש hash JavaScript חוקי עבור הנגן
-• ההפעלה תיכשל אם ה-hash של JavaScript של הנגן בוטל ב-GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">עדכון JavaScript של הנגן מופעל</string>
+• יש צורך בהאש JavaScript תקין של הנגן
+• ההשמעה תיכשל אם האש JavaScript של הנגן יבוטל ב-GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript hashes של השחקן תקפים לתקופה של כחודש, ו-hashes מיושנים עשויים להתבטל על ידי GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">‌Ԓ԰՞ԑ JavaScript ԲՈԴ</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">\"הזן hash JavaScript תקף של השחקן</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">השבת פרוטוקול QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">פרוטוקול QUIC מושבת</string>
-  <string name="morphe_disable_quic_protocol_summary_off">פרוטוקול QUIC פעיל</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">השבת אודיו DRC</string>
-  <string name="morphe_disable_drc_audio_summary_on">אודיו DRC מושבת</string>
-  <string name="morphe_disable_drc_audio_summary_off">אודיו DRC מופעל</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">כפה שפת שמע מקורית</string>
-  <string name="morphe_force_original_audio_summary_on">שימוש בשפת שמע מקורית</string>
-  <string name="morphe_force_original_audio_summary_off">שימוש בשמע ברירת מחדל</string>
+  <string name="morphe_force_original_audio_summary">תמיד מנגן את רצועת האודיו המקורית של הסרטון במקום גרסה מדובבת</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">הסתר מודעות מסך מלא</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">מודעות מסך מלא מוסתרות</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">מודעות מסך מלא מוצגות</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">כדי להשתמש בתכונה זו, שנה \'זיוף זרמי וידאו\' ל-Android Reel או TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">טיהור קישורי שיתוף</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">פרמטר מעקב מוסר מקישורי שיתוף</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">פרמטר מעקב אינו מוסר מקישורי שיתוף</string>
+  <string name="morphe_sanitize_sharing_links_summary">מסיר פרמטרים של שאילתות מעקב מקישורי שיתוף</string>
   <string name="morphe_replace_music_with_youtube_title">שנה קישורי שיתוף ל-youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">קישורים משותפים משתמשים ב-youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">קישורים משותפים משתמשים ב-music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">שנה קישורי שיתוף ל-youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">קישורים לשיתוף של שידורים חיים ו-Shorts משתמשים בכתובת youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">קישורים לשידורים חיים וסרטוני Shorts משתמשים בכתובות האתר המקוריות שלהם</string>
+  <string name="morphe_replace_links_with_shortener_summary">מאפשר לשידורים חיים ול-Shorts להשתמש בפורמט הכתובת המקוצר youtu.be</string>
 </resources>

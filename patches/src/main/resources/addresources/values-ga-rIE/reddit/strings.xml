@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Teorainn: Ní féidir spásairí amhairc a cheilt"</string>
   <string name="morphe_remove_notification_dialog_title">Bain an dialóg moladh fógra</string>
-  <string name="morphe_remove_notification_dialog_summary">Baintear an dialóg moltaí fógraí a thaispeántar nuair a thugtar cuairt ar fho-reddit trína dhíbhe go huathoibríoch</string>
-  <string name="morphe_show_view_count_title">Taispeáin líon na n-amharcanna</string>
-  <string name="morphe_show_view_count_summary">"Taispeánann sé líon na n-amharc ar Phoist
-
-Teorainn: Ní thaispeántar é ach amháin má chuimsíonn an freagra API líon na n-amharc"</string>
+  <string name="morphe_remove_notification_dialog_summary">Díscartaíonn go huathoimatic an comhrá le haghaidh moladh an fógra nuair a chuireann tú cuairt ar subreddit</string>
+  <string name="morphe_show_view_count_title">Taispeáin líon na n-amharcanna ar na poist</string>
+  <string name="morphe_show_view_count_summary">Teorainn: Ní bheidh sé ar fáil ach má tá líon na n-amharc san freagra API</string>
   <string name="morphe_remove_nsfw_dialog_title">Bain an comhrá rabhaidh NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Baintear an dialóg rabhaidh NSFW a thaispeántar nuair a thugtar cuairt ar fho-reddit trí ghlacadh leis go huathoibríoch.</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Glacann go huathoimatiche an rabhadh ábhar NSFW nuair a chuireann tú cuairt ar subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Ilghnéitheach</string>
   <string name="morphe_about_title">Maidir</string>
   <string name="morphe_about_summary">Leagan paiste agus naisc oifigiúla</string>
   <string name="morphe_sanitize_sharing_links_title">Glanadh naisc chomhroinnte</string>
-  <string name="morphe_sanitize_sharing_links_summary">Glanann sé naisc chomhroinnte trí pharaiméadair fiosrúcháin rianaithe a bhaint</string>
+  <string name="morphe_sanitize_sharing_links_summary">Baintear paraiméadair fhorchóir rianaithe ó naisc chomhroinnte</string>
   <string name="morphe_open_links_directly_title">Oscail naisc go díreach</string>
-  <string name="morphe_open_links_directly_summary">Léimeann thar URLanna atreoraithe i naisc sheachtracha</string>
+  <string name="morphe_open_links_directly_summary">Baineann seachas URL-anna athmhidir nuair a osclaítear naisc seachtracha</string>
   <string name="morphe_open_links_externally_title">Oscail naisc go seachtrach</string>
-  <string name="morphe_open_links_externally_summary">Osclaíonn sé naisc i do bhrabhsálaí seachas sa bhrabhsálaí san aip</string>
+  <string name="morphe_open_links_externally_summary">Osclaíonn naisc i do bhrabhsálaí seachas sa bhrabhsálaí laistigh den aip</string>
 </resources>

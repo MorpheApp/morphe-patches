@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Povijest pretraživanja je prazna</string>
   <string name="morphe_settings_search_empty_history_summary">Za spremanje povijesti pretraživanja upišite upit za pretraživanje i pritisnite Enter</string>
   <string name="morphe_settings_search_history_title">Prikaži povijest pretraživanja postavki</string>
-  <string name="morphe_settings_search_history_summary_on">Prikazuje se povijest pretraživanja postavki</string>
-  <string name="morphe_settings_search_history_summary_off">Povijest pretraživanja postavki se ne prikazuje</string>
   <string name="morphe_show_menu_icons_title">Prikaži ikone postavki Morphea</string>
-  <string name="morphe_show_menu_icons_summary_on">Ikone postavki su prikazane</string>
-  <string name="morphe_show_menu_icons_summary_off">Ikone postavki nisu prikazane</string>
   <string name="morphe_language_title">Morphe jezik</string>
   <string name="morphe_language_user_dialog_message">"Prijevodi za neke jezike mogu nedostajati ili biti nepotpuni.
 
@@ -86,13 +82,7 @@ Za prevođenje novih jezika ili poboljšanje postojećih prijevoda posjetite mor
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Otklanjanje pogrešaka</string>
-  <string name="morphe_debug_screen_summary">Omogućite ili onemogućite opcije otklanjanja pogrešaka</string>
-  <string name="morphe_debug_title">Zapisivanje otklanjanja grešaka</string>
-  <string name="morphe_debug_summary_on">Zapisivanje otklanjanja grešaka omogućeno</string>
-  <string name="morphe_debug_summary_off">Zapisivanje otklanjanja grešaka onemogućeno</string>
   <string name="morphe_debug_toast_on_error_title">Prikaži obavijest o Morphe pogrešci</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Obavijest se pojavljuje ako se pojavi pogreška</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Obavijest se ne pojavljuje ako se pojavi pogreška</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Isključivanjem obavijesti o pogreškama skrivaju se sve Morphe obavijesti o pogreškama.
 
 Nećete biti obaviješteni ni o kakvim neočekivanim događajima."</string>
@@ -121,6 +111,7 @@ Onemogućavanje optimizacija baterije za MicroG neće negativno utjecati na potr
 
 Dodirnite tipku za nastavak i dopustite promjene optimizacije."</string>
   <string name="gms_core_dialog_continue_text">Nastavi</string>
+  <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Eksperimentalno upozorenje 🚨</string>
 </resources>

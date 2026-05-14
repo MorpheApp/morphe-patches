@@ -31,7 +31,7 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Προσαρμοσμένο</string>
   <string name="morphe_custom_branding_notification_icon_title">Εικονίδιο ειδοποίησης</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Ακολουθήστε το εικονίδιο της εφαρμογής</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Αλλαγή εικονιδίου της εφαρμογής;</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Ειδοποίηση Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Το ιστορικό παρακολούθησης δεν αποθηκεύεται.&lt;br&gt;&lt;br&gt;Πιθανό να συμβαίνει λόγω κάποιας υπηρεσίας DNS που μπλοκάρει διαφημίσεις ή μέσω κάποιου διακομιστή μεσολάβησης δικτύου.&lt;br&gt;&lt;br&gt;Μια λύση γι\'αυτό θα ήταν να προσθέσετε σε whitelist το &lt;b&gt;s.youtube.com&lt;/b&gt; ή να απενεργοποιήστε το DNS και τους διακομιστές μεσολάβησης δικτύου.</string>
@@ -40,12 +40,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Παραποίηση ροών βίντεο</string>
   <string name="morphe_spoof_video_streams_screen_summary">Παραποίηση του προγράμματος ροών βίντεο για την αποφυγή προβλημάτων αναπαραγωγής</string>
   <string name="morphe_spoof_video_streams_title">Παραποίηση ροών βίντεο</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Οι ροές βίντεο παραποιούνται
+  <string name="morphe_spoof_video_streams_summary">"Εξαπατά το YouTube ώστε να στείλει μια συμβατή ροή βίντεο, γεγονός που διορθώνει την αναπαραγωγή για τους περισσότερους χρήστες
 
-Αν είστε χρήστης YouTube Premium, αυτή η ρύθμιση μπορεί να μην απαιτείται"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Οι ροές βίντεο δεν παραποιούνται
-
-Η αναπαραγωγή ενδέχεται να μη λειτουργεί"</string>
+Εάν είστε χρήστης του YouTube Premium, αυτή η ρύθμιση ενδέχεται να μην απαιτείται"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Αδυναμία λήψης προγράμματος ροής</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Η απενεργοποίηση αυτής της ρύθμισης ενδέχεται να προκαλέσει προβλήματα αναπαραγωγής.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_reset">Αποσυνδεθήκατε από το Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Άκυρο κλειδί εισόδου VR, συνδεθείτε ξανά στο VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Απενεργοποίηση ενημέρωσης του προγράμματος αναπαραγωγής JavaScript</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Η ενημέρωση του προγράμματος αναπαραγωγής JavaScript είναι απενεργοποιημένη
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Κλειδώνει το JavaScript του προγράμματος αναπαραγωγής σε μια τοπική κατακερματισμένη τιμή αντί να ανακτά ενημερώσεις
 
-• Απαιτείται έγκυρο hash του προγράμματος αναπαραγωγής JavaScript
-• Η αναπαραγωγή αποτυγχάνει εάν το hash του προγράμματος αναπαραγωγής JavaScript ανακληθεί στο GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Η ενημέρωση JavaScript του προγράμματος αναπαραγωγής είναι ενεργοποιημένη</string>
+• Απαιτείται έγκυρη κατακερματισμένη τιμή JavaScript του προγράμματος αναπαραγωγής
+• Η αναπαραγωγή αποτυγχάνει εάν η κατακερματισμένη τιμή JavaScript του προγράμματος αναπαραγωγής ανακληθεί στο GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Τα hashes για το πρόγραμμα αναπαραγωγής JavaScript είναι έγκυρα για περίπου ένα μήνα, και τα απαρχαιωμένα hashes ενδέχεται να ανακληθούν από το GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash προγράμματος αναπαραγωγής JavaScript</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Εισάγετε ένα έγκυρο hash για το πρόγραμμα αναπαραγωγής JavaScript</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Απενεργοποίηση πρωτοκόλλου QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Το πρωτόκολλο QUIC είναι απενεργοποιημένο</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Το πρωτόκολλο QUIC είναι ενεργοποιημένο</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Απενεργοποίηση ήχου DRC</string>
-  <string name="morphe_disable_drc_audio_summary_on">Ο ήχος DRC είναι απενεργοποιημένος</string>
-  <string name="morphe_disable_drc_audio_summary_off">Ο ήχος DRC είναι ενεργοποιημένος</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Εξαναγκασμός αρχικής γλώσσας ήχου</string>
-  <string name="morphe_force_original_audio_summary_on">Χρησιμοποιείται η αρχική γλώσσα ήχου</string>
-  <string name="morphe_force_original_audio_summary_off">Χρησιμοποιείται ο προεπιλεγμένος ήχος</string>
+  <string name="morphe_force_original_audio_summary">Παίζει πάντα την αρχική ηχητική γραμμή του βίντεο αντί για μια μεταγλωττισμένη έκδοση</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Διαφημίσεις πλήρους οθόνης</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Οι διαφημίσεις πλήρους οθόνης είναι κρυφές</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Οι διαφημίσεις πλήρους οθόνης εμφανίζονται</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Για να χρησιμοποιήσετε αυτήν τη λειτουργία, αλλάξτε τη \"Παραποίηση ροών βίντεο\" σε Android Reel ή TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Καθαρισμός συνδέσμων κατά την κοινοποίηση</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Οι παράμετροι παρακολούθησης αφαιρούνται από τους συνδέσμους κατά την κοινοποίηση</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Οι παράμετροι παρακολούθησης δεν αφαιρούνται από τους συνδέσμους κατά την κοινοποίηση</string>
+  <string name="morphe_sanitize_sharing_links_summary">Οι παράμετροι παρακολούθησης αφαιρούνται από τους συνδέσμους κατά την κοινοποίηση</string>
   <string name="morphe_replace_music_with_youtube_title">Αλλαγή συνδέσμων κοινοποίησης σε youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Οι κοινοποιημένοι σύνδεσμοι χρησιμοποιούν το youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Οι κοινοποιημένοι σύνδεσμοι χρησιμοποιούν το music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Αλλαγή συνδέσμων κοινοποίησης σε youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Οι σύνδεσμοι για ζωντανές ροές και Shorts χρησιμοποιούν το youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Οι σύνδεσμοι ζωντανής ροής και των Shorts χρησιμοποιούν τις αρχικές τους διευθύνσεις URL</string>
+  <string name="morphe_replace_links_with_shortener_summary">Επιβάλλει στις ζωντανές ροές και στα Shorts να χρησιμοποιούν τη συντομευμένη μορφή URL youtu.be</string>
 </resources>

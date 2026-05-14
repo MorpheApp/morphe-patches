@@ -17,6 +17,7 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Dest pê bike ku sazkirinê temam bike</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Navê sepanê</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
@@ -30,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Xwerî</string>
   <string name="morphe_custom_branding_notification_icon_title">Aîkona notifikasyonê</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Îkona sepanê bişîne</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Îkona serîlêdana guhêrîn</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Îlanê Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Sergûzastên we têne parvekirin.&lt;br&gt;&lt;br&gt;Ev bi girîngî ji hêla pêşgirê DNS an proxy-ya danînê ve tê bandor kirin.&lt;br&gt;&lt;br&gt;Ji bo çareserî, s.youtube.com veşêre an hemû pêşgirên DNS û proxy-yên vegirtêrê vanqandin.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ji nûve ne nîşan bide</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Goşiyên wîdyoyê spoof bikin</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Goşiyên wîdyoyê ji bo rêzgirtina kêmasiyên lêxistinê spoof bikin</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Têkbirina mûşekan a serîlêdanê bicîh bîne da ku ji pirsgirêkên lêçînê pêşî bigire</string>
   <string name="morphe_spoof_video_streams_title">Goşiyên wîdyoyê spoof bikin</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Goşiyên wîdyoyê spoof kirin
+  <string name="morphe_spoof_video_streams_summary">"YouTube têk dide ku dîtina vîdyoyek e ku li gorî hewîna we ye, ku ji bo piraniya bikarîneran lêçînê çareser dike
 
-Ger hûn bikarhênerê YouTube Premium in, vê naverokê pêwist nebêje."</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Goşiyên wîdyoyê spoof nakin
-
- Lêxistin dibe ku naçe."</string>
+Ger hûn bikarînerê YouTube Premium nebin, dibe ku ev mîheng hewce nebe"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Tiştekî ji goşiyên klijentê neyê pêşbaz kirin</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Dibe ku birêveçûna vê naverokê kêmasiyên lêxistinê hebe.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -88,40 +86,28 @@ Da ku teqezîya nêzîkê bikin, li jêr bidixin 'bidin pêşbaz'."</string>
   <string name="morphe_oauth2_toast_reset">Ji Android VR derketim.</string>
   <string name="morphe_oauth2_toast_invalid">Teqezîya VR bi derexaneyê, zî dosya teqezîya nêzîkê bî.</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Serê pêşandera JavaScriptê astive</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Serê pêşandera JavaScriptê astive
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"JavaScripta lîstikvanê li ser çepikê qefil dike li şûna girtina nûvekirinan
 
-• Ji bo pêşandera JavaScriptê rasterast rêyên rast hewce ne
-• Heke pêşandera JavaScriptê di GVS de veqetibe, playback têkdidin"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Serê pêşandera JavaScriptê neastive</string>
+• Çepika JavaScripta lîstikvan a valide hewce ye
+• Lêçîn têk dibe ger çepika JavaScripta Lîstikvan di GVS'ê de were betal kirin"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Dîroyên Player JavaScript bi nêzîkê yeka mehan, Û ya ji GVS girêdayî ev zû çûye.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Lepikê JavaScript</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Dîrê dirstyê Player JavaScript vigirin.</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Protocols QUIC qut bikin</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Protocols QUIC qut kirin.</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Protocols QUIC saz kirin.</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Sazîya DRC dengê qut bikin</string>
-  <string name="morphe_disable_drc_audio_summary_on">Denga DRC qut kirin.</string>
-  <string name="morphe_disable_drc_audio_summary_off">Dengê DRC saz kirin.</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Zimanê dengê orjinal timê bike</string>
-  <string name="morphe_force_original_audio_summary_on">Zimanê dengê orjinal tê bikaranîn</string>
-  <string name="morphe_force_original_audio_summary_off">Dengê default tê bikaranîn</string>
+  <string name="morphe_force_original_audio_summary">Her gav şopa dengê orjînal yê vîdyoyê lê dide şûna guhertoyek dublajkirî</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Rekel kiradên ekranê tam</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Reklamên bi ekranê tam veşartin</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Reklamên bi ekranê tam nîşandin</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Bo tem vêjîna vî taybetmendari, \'Qîrkirina rêgên wîdyoyê\' bibe Android Reel an TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Lînkên parvekirinê paqij bike</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Parametereka rêşvekirina ji hevparçeyên parvekirî ve tê avêtin</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Parametereka rêşvekirina ji hevparçeyên parvekirî ve neavêtin</string>
+  <string name="morphe_sanitize_sharing_links_summary">Parametreyên pirsîna şopandinê ji girêdên parvekirî têne çêkirin</string>
   <string name="morphe_replace_music_with_youtube_title">Lînkên parvekirî biguhezîne youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Hevparçeyên parvekirî youtube.com bikar bikin</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Hevparçeyên parvekirî music.youtube.com bikar bikin</string>
   <string name="morphe_replace_links_with_shortener_title">Lînkên parvekirinê biguherîne youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Lînkên veguhêzîna zindî û Shorts youtu.be bikar tînin</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Lînkên stranên zindî û Shorts bi URL-ên wan ên orjînal têne bikar anîn</string>
+  <string name="morphe_replace_links_with_shortener_summary">Her gav her du strana zindî û kurt parvekirî forma URL\'a kurtkirî ya youtu.be danê</string>
 </resources>

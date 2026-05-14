@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Omejitev: Vizualni razdelilci se ne morejo skriti"</string>
   <string name="morphe_remove_notification_dialog_title">Odstrani dialog za predlog obvestil</string>
-  <string name="morphe_remove_notification_dialog_summary">Odstrani dialog za predlog obvestil, ki se pojavi ob obisku podreddita z njegovo samodejnim sprejemanjem</string>
-  <string name="morphe_show_view_count_title">Pokaži prikazovalec številke ogledov</string>
-  <string name="morphe_show_view_count_summary">"Pokaže prikazovalec številke ogledov za objave
-
-Omejitev: Prikazano samo, če API odgovor vsebuje številko ogledov"</string>
+  <string name="morphe_remove_notification_dialog_summary">Samodejno skrije okno z obvestili, ko obiščete subreddit.</string>
+  <string name="morphe_show_view_count_title">Prikaži število ogledov objav</string>
+  <string name="morphe_show_view_count_summary">Omejitev: Na voljo samo, če odziv API vključuje število ogledov</string>
   <string name="morphe_remove_nsfw_dialog_title">Odstrani dialog za opozorilo NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Odstrani dialog za opozorilo NSFW, ki se pojavi ob obisku podreddita z njegovo samodejnim sprejemanjem</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Samodejno potrdi opozorilo o vsebini NSFW pri obisku subreddit-a</string>
   <string name="morphe_screen_miscellaneous_title">Razno</string>
   <string name="morphe_about_title">O</string>
   <string name="morphe_about_summary">Različica popravka in uradni povezave</string>
   <string name="morphe_sanitize_sharing_links_title">Očiščevanje delitvenih povezav</string>
-  <string name="morphe_sanitize_sharing_links_summary">Očišči delitvene povezave z odstranjevanjem parametrov za sledenje</string>
+  <string name="morphe_sanitize_sharing_links_summary">Odstrani parametre sledenja iz URL-jev, ko deliš povezave</string>
   <string name="morphe_open_links_directly_title">Odpiraj povezave neposredno</string>
-  <string name="morphe_open_links_directly_summary">Preskoči URL-je za preusmerjanje v zunanjih povezavah</string>
+  <string name="morphe_open_links_directly_summary">Obide preusmeritvene URL-je pri odpiranju zunanjih povezav</string>
   <string name="morphe_open_links_externally_title">Odpiraj povezave zunaj aplikacije</string>
-  <string name="morphe_open_links_externally_summary">Povezave se odpirajo v vašem brskalniku, namesto v brskalniku znotraj aplikacije</string>
+  <string name="morphe_open_links_externally_summary">Odpre povezave v brskalniku namesto v brskalniku v aplikaciji</string>
 </resources>

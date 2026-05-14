@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Rajaus: Visuaalisia erottimia ei välttämättä piiloteta"</string>
   <string name="morphe_remove_notification_dialog_title">Poista ilmoituspyyntödialogi</string>
-  <string name="morphe_remove_notification_dialog_summary">Poistaa ilmoitusten pyyntödialogin, joka ilmestyy alikommuniteettiin vieraillessa hylkäämällä se automaattisesti</string>
-  <string name="morphe_show_view_count_title">Näytä katselukumara</string>
-  <string name="morphe_show_view_count_summary">"Näyttää viestien katselukerrat
-
-Rajaus: Näytetään vain, jos API-vastaus sisältää katselukerrat"</string>
+  <string name="morphe_remove_notification_dialog_summary">Poistaa ilmoitusehdotusikkunan automaattisesti vieraillessa aliryhmässä</string>
+  <string name="morphe_show_view_count_title">Näytä katselukerrat julkaisuissa</string>
+  <string name="morphe_show_view_count_summary">Rajoitus: Käytettävissä vain, jos API-vastaus sisältää katselukertojen määrän.</string>
   <string name="morphe_remove_nsfw_dialog_title">Poista NSFW-varoitusdialogi</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Poistaa NSFW-varoitusdialogin, joka ilmestyy alikommuniteettiin vieraillessa hyväksymällä se automaattisesti</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Hyväksyy automaattisesti NSFW-sisällön varoituksen vieraillessa subredditissä.</string>
   <string name="morphe_screen_miscellaneous_title">Sekalaiset</string>
   <string name="morphe_about_title">Tietoja</string>
   <string name="morphe_about_summary">Versio ja viralliset linkit</string>
   <string name="morphe_sanitize_sharing_links_title">Puhdista jakamislinkit</string>
-  <string name="morphe_sanitize_sharing_links_summary">Puhdistaa jakamisen linkit poistamalla seurantalinkit</string>
+  <string name="morphe_sanitize_sharing_links_summary">Seurantakyselyparametrit poistetaan jaetuista linkeistä</string>
   <string name="morphe_open_links_directly_title">Avaa linkit suoraan</string>
-  <string name="morphe_open_links_directly_summary">Ohittaa uudelleenohjaus-URL:t ulkoisissa linkeissä</string>
+  <string name="morphe_open_links_directly_summary">Ohittaa uudelleenohjaus-URL:t avattaessa ulkoisia linkkejä.</string>
   <string name="morphe_open_links_externally_title">Avaa linkit ulkoisesti</string>
-  <string name="morphe_open_links_externally_summary">Avaa linkit selaimessa sovelluksen sisäisen selaimen sijaan</string>
+  <string name="morphe_open_links_externally_summary">Avaa linkit selaimessasi sen sijaan, että ne avattaisiin sovelluksen sisäisessä selaimessa.</string>
 </resources>

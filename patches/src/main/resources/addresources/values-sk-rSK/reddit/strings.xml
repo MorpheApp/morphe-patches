@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Obmedzenie: Môžu sa zobrazovať vizuálne medzery"</string>
   <string name="morphe_remove_notification_dialog_title">Skryť návrh notifikácií</string>
-  <string name="morphe_remove_notification_dialog_summary">Skryje dialógové okno návrhu upozornení, ktoré sa zobrazuje pri návšteve subredditu jeho automatickým zavretím.</string>
-  <string name="morphe_show_view_count_title">Zobrazovať počet zhliadnutí</string>
-  <string name="morphe_show_view_count_summary">"Zobrazuje počet zhliadnutí príspevkov
-
-Obmedzenie: Zobrazuje sa len ak odpoveď z API zahŕňa počet zhliadnutí"</string>
+  <string name="morphe_remove_notification_dialog_summary">Automaticky zatvorí dialógové okno s návrhom notifikácie pri návšteve subredditu</string>
+  <string name="morphe_show_view_count_title">Zobrazovať počet zhliadnutí na príspevkoch</string>
+  <string name="morphe_show_view_count_summary">Obmedzenie: Zobrazuje sa iba v prípade, že odpoveď z API zahŕňa počet zobrazení</string>
   <string name="morphe_remove_nsfw_dialog_title">Odstrániť varovanie pre NSFW obsah</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Odstráni varovanie pred NSFW obsahom, ktorá sa zobrazí pri návšteve subredditu jeho automatickým prijatím.</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Automaticky akceptuje upozornenie na NSFW obsah pri návšteve subredditu</string>
   <string name="morphe_screen_miscellaneous_title">Ostatné</string>
   <string name="morphe_about_title">O aplikácii</string>
   <string name="morphe_about_summary">Verzia patchu a oficiálne odkazy</string>
   <string name="morphe_sanitize_sharing_links_title">Vyčistiť odkazy na zdieľanie</string>
-  <string name="morphe_sanitize_sharing_links_summary">Vyčistí odkazy na zdieľanie odstránením sledovacích prvkov</string>
+  <string name="morphe_sanitize_sharing_links_summary">Odstraňuje sledovacie parametre z otázok zo zdieľaných odkazov</string>
   <string name="morphe_open_links_directly_title">Otvárať odkazy priamo</string>
-  <string name="morphe_open_links_directly_summary">Preskočí presmerovacie URL v externých odkazoch</string>
+  <string name="morphe_open_links_directly_summary">Obchádza presmerovacie URL pri otváraní externých odkazov</string>
   <string name="morphe_open_links_externally_title">Otvárať odkazy externe</string>
   <string name="morphe_open_links_externally_summary">Otvára odkazy vo vašom prehliadači namiesto prehliadača v aplikácii</string>
 </resources>

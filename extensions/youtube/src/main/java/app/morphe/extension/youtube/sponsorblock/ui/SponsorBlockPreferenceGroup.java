@@ -98,8 +98,8 @@ public class SponsorBlockPreferenceGroup extends PreferenceGroup {
 
             // If the user has a private user ID, then include a subtext that mentions not to share it.
             String importExportSummary = SponsorBlockSettings.userHasSBPrivateID()
-                    ? str("morphe_sb_settings_ie_sum_warning")
-                    : str("morphe_sb_settings_ie_sum");
+                    ? str("morphe_sb_settings_ie_summary_warning")
+                    : str("morphe_sb_settings_ie_summary");
             importExport.setSummary(importExportSummary);
 
             for (SegmentCategoryPreference category : segmentCategories) {
@@ -130,8 +130,7 @@ public class SponsorBlockPreferenceGroup extends PreferenceGroup {
         if (preference instanceof SwitchPreference switchPref && setting instanceof BooleanSetting boolSetting) {
             switchPref.setChecked(boolSetting.get());
             if (setDetailedSummary) {
-                switchPref.setSummaryOn(str(key + "_sum_on"));
-                switchPref.setSummaryOff(str(key + "_sum_off"));
+                switchPref.setSummary(str(key + "_summary"));
                 shouldSetSummary = false;
             }
         } else if (preference instanceof ResettableEditTextPreference resetPref) {
@@ -145,12 +144,12 @@ public class SponsorBlockPreferenceGroup extends PreferenceGroup {
 
             if (preference instanceof CustomDialogListPreference dialogPref) {
                 // Sets a static summary without overwriting it.
-                dialogPref.setStaticSummary(str(key + "_sum"));
+                dialogPref.setStaticSummary(str(key + "_summary"));
             }
         }
 
         if (shouldSetSummary) {
-            preference.setSummary(str(key + "_sum"));
+            preference.setSummary(str(key + "_summary"));
         }
     }
 
@@ -241,7 +240,7 @@ public class SponsorBlockPreferenceGroup extends PreferenceGroup {
             initializePreference(showSkipToastDuration, Settings.SB_TOAST_ON_SKIP_DURATION,
                     "morphe_sb_toast_on_skip_duration");
             // Sets a static summary without overwriting it.
-            showSkipToastDuration.setStaticSummary(str("morphe_sb_toast_on_skip_duration_sum"));
+            showSkipToastDuration.setStaticSummary(str("morphe_sb_toast_on_skip_duration_summary"));
             showSkipToastDuration.setOnPreferenceChangeListener((preference1, newValue) -> {
                 SponsorBlockDuration newDuration = SponsorBlockDuration.valueOf((String) newValue);
                 Settings.SB_TOAST_ON_SKIP_DURATION.save(newDuration);
@@ -342,7 +341,7 @@ public class SponsorBlockPreferenceGroup extends PreferenceGroup {
 
             Preference guidelinePreferences = new Preference(context);
             guidelinePreferences.setTitle(str("morphe_sb_guidelines_preference_title"));
-            guidelinePreferences.setSummary(str("morphe_sb_guidelines_preference_sum"));
+            guidelinePreferences.setSummary(str("morphe_sb_guidelines_preference_summary"));
             guidelinePreferences.setOnPreferenceClickListener(preference1 -> {
                 openGuidelines();
                 return true;

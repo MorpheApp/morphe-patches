@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Korlátozás: A vizuális elválasztók nem rejtődhetnek el"</string>
   <string name="morphe_remove_notification_dialog_title">Töröljük az értesítés javaslat-párbeszédablakot</string>
-  <string name="morphe_remove_notification_dialog_summary">Automatikusan elutasítva törli az értesítési javaslat-párbeszédablakot, amikor meglátogat egy subreddit-et</string>
-  <string name="morphe_show_view_count_title">Megjelenítjük a megtekintés számot</string>
-  <string name="morphe_show_view_count_summary">"Megjeleníti a bejegyzések megtekintésinek számát.
-
-Korlátozás: Csak akkor jelenik meg, ha az API válasz tartalmazza a megtekintés számát"</string>
+  <string name="morphe_remove_notification_dialog_summary">Automatikusan elutasítja az értesítési javaslat párbeszédablakot egy subreddit meglátogatásakor</string>
+  <string name="morphe_show_view_count_title">Mutassa a bejegyzések megtekintési számát</string>
+  <string name="morphe_show_view_count_summary">Korlátozás: Csak akkor érhető el, ha az API válasz tartalmazza a megtekintések számát.</string>
   <string name="morphe_remove_nsfw_dialog_title">Töröljük az NSFW figyelmeztető párbeszédablakot</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Automatikusan elfogadva törli az NSFW figyelmeztető párbeszédablakot, amikor meglátogat egy subreddit-et</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Automatikus elfogadás a NSFW tartalom figyelmeztetésre, amikor egy subredditet látogat.</string>
   <string name="morphe_screen_miscellaneous_title">Egyéb</string>
   <string name="morphe_about_title">Névjegy</string>
   <string name="morphe_about_summary">Verzió és hivatalos linkek</string>
   <string name="morphe_sanitize_sharing_links_title">Megosztási linkek tisztítása</string>
-  <string name="morphe_sanitize_sharing_links_summary">Tisztítjuk a megosztási linkeket a nyomkövető lekérdezés paraméterek eltávolításával</string>
+  <string name="morphe_sanitize_sharing_links_summary">Eltávolítja a követő paramétereket a megosztott linkekből.</string>
   <string name="morphe_open_links_directly_title">Linkek közvetlenül megnyitása</string>
-  <string name="morphe_open_links_directly_summary">Kikerüljük az átirányítási URL-eket a külső linkekben</string>
+  <string name="morphe_open_links_directly_summary">Megkerüli az átirányítási URL-eket külső linkek megnyitásakor.</string>
   <string name="morphe_open_links_externally_title">Nyitott linkek külső böngészőben</string>
-  <string name="morphe_open_links_externally_summary">A linkek a rendszerböngésződben nyílnak meg, nem az alkalmazáson belüli böngészőben</string>
+  <string name="morphe_open_links_externally_summary">A linkek a böngészőben nyílnak meg a helyett, hogy az alkalmazáson belüli böngészőben nyílnának.</string>
 </resources>

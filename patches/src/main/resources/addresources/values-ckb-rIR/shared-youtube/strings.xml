@@ -36,14 +36,7 @@ Second \"item\" text"</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">یان نێربەڕینەوە</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ</string>
-  <string name="morphe_spoof_video_streams_screen_summary">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ بۆ ڕێگەگرتن لە کێشەکانی پەرباسە</string>
   <string name="morphe_spoof_video_streams_title">گەڕانەوە سەر ڕاستەقینەی ڕاستگۆ</string>
-  <string name="morphe_spoof_video_streams_summary_on">"ڕاستگۆکان ڕەسەمن دەکرێن
-
-کاتێک بەکاردانی YouTube Premium تێکردوویی، هیچ پێتبخۆشێت پێویست بێت."</string>
-  <string name="morphe_spoof_video_streams_summary_off">"ڕاستگۆکان ڕەسەمن ناکرێن
-
-پەڕتباسە کار نەکات."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">هیچ ڕاستگۆیەکی ئەندازی نەیادەخرێت</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">خەڵادانەوەی ئەم ناسنامەیە دەبێتە هۆی کێشە لە پەرباسەدا.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -88,32 +81,18 @@ Da te'îl bikin, li ser berdewam bikin xwarê"</string>
   <string name="morphe_oauth2_toast_reset">Derkirî ji Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Tîkena te\'îlkirinê ji VR serdar nebû, hewildanek te\'îl kirin ji VR ser bike</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">ربووكردنا قوژگاری JavaScriptی خۆراك</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Nûvekirina JavaScript pêlkesera çavkanî kirin
-
-• Hashê JavaScript pêlkesera pêlvedinê yê serdar tê xwes"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Nûvekirina JavaScript pêlkesera serdar kirin</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hashê JavaScript pêlkesera pêlvedinê</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Hashê JavaScript pêlkesera pêlvedinê yê serdar avêjin</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Protokol QUIC çavkanî bike</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC çavkanî kirin</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Protokol QUIC serdar kirin</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC audio çavkanî bike</string>
-  <string name="morphe_disable_drc_audio_summary_on">Audio DRC çavkanî kirin</string>
-  <string name="morphe_disable_drc_audio_summary_off">Audio DRC serdar kirin</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">به‌زانیشتنی زمانی دەنگی ئەسڵی</string>
-  <string name="morphe_force_original_audio_summary_on">بەزانیشتنی زمانی دەنگی ئەسڵی</string>
-  <string name="morphe_force_original_audio_summary_off">بەزانیشتنی دەنگی خەڵات</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Da vê taybetmendariya bikarînin, \'Pêlvedanên dîmenan\' heta Android Reel an TV biguhêrin</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">خەڵەتەکانی هەڵواسانی دەړووستن</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">پارامەتری ڕدی لە هەڵواسانی سیستەم سڕدراوە.</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">پارامەتری ڕدی لە هەڵواسانی سیستەم سڕدراوە.</string>
   <string name="morphe_replace_music_with_youtube_title">گۆڕینەوەی سیستەمەکانی هەڵواسە بۆ youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">سیستەمەکانی هەڵواسە youtube.com دەخوازن</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">سیستەمەکانی هەڵواسە music.youtube.com دەخوازن</string>
 </resources>

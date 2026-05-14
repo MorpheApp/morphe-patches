@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 القيود: قد لا يتم إخفاء الفواصل المرئية"</string>
   <string name="morphe_remove_notification_dialog_title">إزالة مربع حوار اقتراح الإشعارات</string>
-  <string name="morphe_remove_notification_dialog_summary">يزيل مربع حوار اقتراح الإشعارات الذي يظهر عند زيارة subreddits عن طريق رفضه تلقائيًا</string>
+  <string name="morphe_remove_notification_dialog_summary">يقوم بإخفاء حوار اقتراح الإشعار تلقائيًا عند زيارة subreddit</string>
   <string name="morphe_show_view_count_title">إظهار عدد المشاهدات</string>
-  <string name="morphe_show_view_count_summary">"يعرض عدد مشاهدات المنشورات
-
-القيود: يتم عرضه فقط إذا تضمن استجابة واجهة برمجة التطبيقات عدد المشاهدات"</string>
+  <string name="morphe_show_view_count_summary">القيود: متاح فقط إذا كان استجابة واجهة برمجة التطبيقات تتضمن عدد المشاهدات</string>
   <string name="morphe_remove_nsfw_dialog_title">إزالة مربع حوار تحذير NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">يزيل مربع حوار تحذير NSFW الذي يظهر عند زيارة subreddits عن طريق قبوله تلقائيًا</string>
+  <string name="morphe_remove_nsfw_dialog_summary">يقبل تلقائيًا تحذير المحتوى غير اللائق (NSFW) عند زيارة subreddit</string>
   <string name="morphe_screen_miscellaneous_title">خيارات متنوعة</string>
   <string name="morphe_about_title">لمحة</string>
   <string name="morphe_about_summary">إصدار التعديل والروابط الرسمية</string>
   <string name="morphe_sanitize_sharing_links_title">تطهير روابط المشاركة</string>
-  <string name="morphe_sanitize_sharing_links_summary">تنظيف روابط المشاركة عن طريق إزالة معلمات التتبع</string>
+  <string name="morphe_sanitize_sharing_links_summary">يزيل معاملات الاستعلام الخاصة بالتتبع من الروابط المشتركة</string>
   <string name="morphe_open_links_directly_title">فتح الروابط مباشرةً</string>
-  <string name="morphe_open_links_directly_summary">تجاوز عناوين URL لإعادة التوجيه في الروابط الخارجية</string>
+  <string name="morphe_open_links_directly_summary">يتجاوز عناوين URL لإعادة التوجيه عند فتح الروابط الخارجية</string>
   <string name="morphe_open_links_externally_title">فتح الروابط خارجيًا</string>
-  <string name="morphe_open_links_externally_summary">يفتح الروابط في متصفحك بدلًا من المتصفح داخل التطبيق</string>
+  <string name="morphe_open_links_externally_summary">يفتح الروابط في متصفحك بدلاً من المتصفح داخل التطبيق</string>
 </resources>

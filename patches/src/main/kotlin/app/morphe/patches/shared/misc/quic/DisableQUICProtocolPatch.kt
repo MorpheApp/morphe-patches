@@ -27,7 +27,7 @@ internal fun disableQUICProtocolPatch(
 
     execute {
         preferenceScreen.addPreferences(
-            SwitchPreference("morphe_disable_quic_protocol")
+            SwitchPreference("morphe_disable_quic_protocol", summaryKey = null)
         )
 
         arrayOf(

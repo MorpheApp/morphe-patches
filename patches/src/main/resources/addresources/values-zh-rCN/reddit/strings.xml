@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 限制：视觉间隔符可能无法隐藏"</string>
   <string name="morphe_remove_notification_dialog_title">移除通知建议对话框</string>
-  <string name="morphe_remove_notification_dialog_summary">自动通过访问子版块时出现的通知建议对话框</string>
-  <string name="morphe_show_view_count_title">显示帖子观看次数</string>
-  <string name="morphe_show_view_count_summary">"显示帖子的观看次数。
-
-限制：仅当 API 响应包含观看次数时显示"</string>
+  <string name="morphe_remove_notification_dialog_summary">在访问subreddit时自动关闭通知建议对话框</string>
+  <string name="morphe_show_view_count_title">在帖子中显示观看次数</string>
+  <string name="morphe_show_view_count_summary">限制：仅当 API 响应包含观看次数时可用</string>
   <string name="morphe_remove_nsfw_dialog_title">移除 NSFW 警告对话框</string>
-  <string name="morphe_remove_nsfw_dialog_summary">通过自动接受来移除访问子版块时出现的 NSFW 警告对话框</string>
+  <string name="morphe_remove_nsfw_dialog_summary">访问 subreddit 时自动接受 NSFW 内容警告</string>
   <string name="morphe_screen_miscellaneous_title">其他</string>
   <string name="morphe_about_title">关于</string>
   <string name="morphe_about_summary">修补版本和官方链接</string>
   <string name="morphe_sanitize_sharing_links_title">净化分享链接</string>
-  <string name="morphe_sanitize_sharing_links_summary">通过移除跟踪查询参数来净化分享链接</string>
+  <string name="morphe_sanitize_sharing_links_summary">从共享链接中移除跟踪查询参数</string>
   <string name="morphe_open_links_directly_title">直接打开链接</string>
-  <string name="morphe_open_links_directly_summary">在外部链接中跳过重定向 URL</string>
-  <string name="morphe_open_links_externally_title">先不公八充報</string>
-  <string name="morphe_open_links_externally_summary">刕一下刕充報充应软力脚期充報</string>
+  <string name="morphe_open_links_directly_summary">打开外部链接时绕过重定向 URL</string>
+  <string name="morphe_open_links_externally_title">在外部浏览器打开链接</string>
+  <string name="morphe_open_links_externally_summary">在浏览器中打开链接，而不是在应用内浏览器中</string>
 </resources>

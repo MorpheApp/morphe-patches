@@ -48,11 +48,7 @@ Second \"item\" text"</string>
     <string name="morphe_settings_search_empty_history_title">Search history is empty</string>
     <string name="morphe_settings_search_empty_history_summary">To save search history, type a search query and press Enter</string>
     <string name="morphe_settings_search_history_title">Show settings search history</string>
-    <string name="morphe_settings_search_history_summary_on">Settings search history is shown</string>
-    <string name="morphe_settings_search_history_summary_off">Settings search history is not shown</string>
     <string name="morphe_show_menu_icons_title">Show Morphe setting icons</string>
-    <string name="morphe_show_menu_icons_summary_on">Setting icons are shown</string>
-    <string name="morphe_show_menu_icons_summary_off">Setting icons are not shown</string>
     <string name="morphe_language_title">Morphe language</string>
     <string name="morphe_language_user_dialog_message">"Translations for some languages may be missing or incomplete.
 
@@ -90,16 +86,11 @@ To translate new languages or improve the existing translations, visit morphe.so
 
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_screen_title">Debugging</string>
-    <string name="morphe_debug_screen_summary">Enable or disable debugging options</string>
-    <string name="morphe_debug_title">Debug logging</string>
-    <string name="morphe_debug_summary_on">Debug logs are enabled</string>
-    <string name="morphe_debug_summary_off">Debug logs are disabled</string>
+    <string name="morphe_debug_screen_summary">Configure advanced developer options and diagnostic logs</string>
+    <string name="morphe_debug_title">Enable debug logging</string>
     <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
-    <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack traces</string>
-    <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack traces</string>
+    <string name="morphe_debug_stacktrace_summary">Includes stack traces in debug logs to help identify errors</string>
     <string name="morphe_debug_toast_on_error_title">Show toast on Morphe error</string>
-    <string name="morphe_debug_toast_on_error_summary_on">Toast is shown if error occurs</string>
-    <string name="morphe_debug_toast_on_error_summary_off">Toast is not shown if error occurs</string>
     <string name="morphe_debug_toast_on_error_user_dialog_message">"Turning off error toasts hides all Morphe error notifications.
 
 You will not be notified of any unexpected events."</string>
@@ -145,15 +136,22 @@ Disabling battery optimizations for MicroG will not negatively affect battery us
 
 Tap the continue button and allow optimization changes."</string>
     <string name="gms_core_dialog_continue_text">Continue</string>
-    <string name="morphe_gms_core_battery_optimization_dialog_title">Battery optimization dialog</string>
-    <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG battery optimization dialog is shown</string>
-    <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG battery optimization dialog is not shown</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_title">Show battery optimization dialog</string>
     <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabling this will hide the MicroG battery optimization prompt.
 
 If battery optimizations are not changed then you may experience:
 • App may randomly close
 • Notifications may not work
 • Background playback may not work"</string>
+
+    <!-- misc.gms.linkHandlingPatch -->
+    <string name="morphe_link_handling_title">App link handling</string>
+    <string name="morphe_link_handling_summary">Configure which app opens links</string>
+    <string name="morphe_link_handling_step1_title">Step 1: Disable original app links</string>
+    <string name="morphe_link_handling_step1_message">Open the original app\'s settings and disable all domain links</string>
+    <string name="morphe_link_handling_step2_title">Step 2: Enable patched app links</string>
+    <string name="morphe_link_handling_step2_message">Open the patched app\'s settings and enable all domain links</string>
+    <string name="morphe_link_handling_open">Open settings</string>
 
     <!-- misc.checks.experimentalAppNoticePatch -->
     <string name="morphe_experimental_app_version_dialog_title">🚨 Experimental Alert 🚨</string>

@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Personalizat</string>
   <string name="morphe_custom_branding_notification_icon_title">Icon de notificare</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Urmărește pictograma aplicației</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Potrivește pictograma aplicației</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Notificare Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Istoricul de vizionare nu este salvat.&lt;br&gt;&lt;br&gt;Cel mai probabil este cauzată de un DNS de blocare a anunțurilor sau de un proxy de rețea.&lt;br&gt;&lt;br&gt;Pentru a remedia acest lucru, lista albă &lt;b&gt;s.youtube.com&lt;/b&gt; sau pentru a opri toate blocantele DNS și proxy-urile.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Nu mai afișa</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsifică fluxurile video</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Falsifică fluxurile video ale clientului pentru a preveni problemele de redare</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Configurează falsificarea clientului pentru a preveni problemele de redare</string>
   <string name="morphe_spoof_video_streams_title">Spoof video stream-uri</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Fluxurile video sunt simulate
+  <string name="morphe_spoof_video_streams_summary">"Păcălește YouTube-ul să trimită un flux video compatibil, ceea ce rezolvă redarea pentru majoritatea utilizatorilor
 
-Dacă ești utilizator YouTube Premium, această setare ar putea să nu fie necesară"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Fluxurile video nu sunt falsificate
-
-Redarea poate să nu funcționeze"</string>
+Dacă ești un utilizator YouTube Premium, această setare poate să nu fie necesară"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nu s-a putut încărca nicio client stream</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Dezactivarea acestei setări poate cauza probleme de redare.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Pentru a te apăsa, apăsă butonul Continu de mai jos"</string>
   <string name="morphe_oauth2_toast_reset">Delogat din Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Tokenul de autentificare pentru VR este invalid, încercați să vă conectați la VR din nou</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Dezactivează actualizarea JavaScript a player-ului</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Actualizarea JavaScript a player-ului este dezactivată
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Blochează JavaScript-ul playerului la un hash local în loc să preia actualizări
 
-• Este necesară o valoare hash JavaScript validă pentru player
-• Redarea eșuează dacă hash-ul JavaScript al player-ului este revocat în GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Actualizarea JavaScript a player-ului este activată</string>
+• Este necesar un hash JavaScript valid al playerului
+• Redarea eșuează dacă hash-ul JavaScript al playerului este revocat în GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hash-urile JavaScript ale player-ului sunt valide aproximativ o lună, iar hash-urile învechite pot fi revocate de GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScript al juc\u00e3torului</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Introduceți un hash JavaScript al jucătorului valid</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Dezactivați protocolul QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Protocolul QUIC este dezactivat</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Protocolul QUIC este activat</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Dezactivați sunetul DRC</string>
-  <string name="morphe_disable_drc_audio_summary_on">Sunetul DRC este dezactivat</string>
-  <string name="morphe_disable_drc_audio_summary_off">Sunetul DRC este activat</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Forțează limba audio originală</string>
-  <string name="morphe_force_original_audio_summary_on">Folosind limba audio originală</string>
-  <string name="morphe_force_original_audio_summary_off">Utilizează audio implicit</string>
+  <string name="morphe_force_original_audio_summary">Redă întotdeauna piesa audio originală a videoclipului în loc de o versiune dublată</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Ascunde reclame pe tot ecranul</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Reclamele pe ecran complet sunt ascunse</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Reclame pe ecran complet sunt afișate</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Pentru a utiliza această funcție, modificați \"Falsificare fluxuri video\" la Android Reel sau TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Igienizează linkurile de partajare</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Parametrul de interogare de urmărire este eliminat din linkurile partajate</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Parametrul de interogare de urmărire nu este eliminat din linkurile partajate</string>
+  <string name="morphe_sanitize_sharing_links_summary">Elimină parametrii de interogare de urmărire din linkurile partajate</string>
   <string name="morphe_replace_music_with_youtube_title">Schimbați linkurile de partajare la youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Linkurile partajate utilizează youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Linkurile partajate utilizează music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Schimbați linkurile de partajare la youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Link-urile pentru stream-uri live și Shorts folosesc youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Link-urile pentru stream-uri live și Shorts folosesc URL-urile originale</string>
+  <string name="morphe_replace_links_with_shortener_summary">Forțează fluxurile live și Shorts să utilizeze formatul URL scurtat youtu.be</string>
 </resources>

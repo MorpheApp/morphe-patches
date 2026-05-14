@@ -53,18 +53,10 @@ Second \"item\" text"</string>
 
 Ograničenje: Vizualni razmaci ne mogu biti skriveni"</string>
   <string name="morphe_remove_notification_dialog_title">Uklanja  dijalog s prijedlozima obavijesti</string>
-  <string name="morphe_remove_notification_dialog_summary">Uklanja dijalog s prijedlozima obavijesti koji se pojavljuje prilikom posjeta subredditu automatskim odbacivanjem</string>
-  <string name="morphe_show_view_count_title">Pokaži broj pregleda</string>
-  <string name="morphe_show_view_count_summary">"Prikazuje broj pregleda objava
-
-Ograničenje: Prikazuje se samo ako API odgovor uključuje broj pregleda"</string>
   <string name="morphe_remove_nsfw_dialog_title">Uklanja NSFW upozorenje</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Uklanja NSFW upozorenje koje se pojavljuje prilikom posjeta subredditu automatskim prihvaćanjem</string>
   <string name="morphe_screen_miscellaneous_title">Razno</string>
   <string name="morphe_about_title">O aplikaciji</string>
   <string name="morphe_about_summary">Verzija patcha i službene poveznice</string>
   <string name="morphe_sanitize_sharing_links_title">Očisti poveznice za dijeljenje</string>
-  <string name="morphe_sanitize_sharing_links_summary">Sanira poveznice za dijeljenje uklanjanjem parametara upita za praćenje</string>
   <string name="morphe_open_links_directly_title">Otvara poveznice izravno</string>
-  <string name="morphe_open_links_directly_summary">Preskače poveznice preusmjeravanja u vanjskim poveznicama</string>
 </resources>

@@ -121,8 +121,8 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_music_miniplayer_next_button"),
-            SwitchPreference("morphe_music_miniplayer_previous_button"),
+            SwitchPreference("morphe_music_miniplayer_next_button", summaryKey = null),
+            SwitchPreference("morphe_music_miniplayer_previous_button", summaryKey = null),
         )
 
         val playPauseResourceId = getResourceId(ResourceType.ID, "mini_player_play_pause_replay_button")

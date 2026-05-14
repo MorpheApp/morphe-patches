@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Vlastná</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikona upozornenia</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Ikona aplikácie</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Zmeniť ikonu aplikácie</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornenie Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša história sledovania sa neukladá.&lt;br&gt;&lt;br&gt;Toto je s najväčšou pravdepodobnosťou spôsobené DNS blokovačom reklám alebo sieťovým proxy.&lt;br&gt;&lt;br&gt;Ak to chcete vyriešiť, pridajte &lt;b&gt;s.youtube.com&lt;/b&gt; do whitelistu alebo vypnite všetky DNS blokovače a proxy servery.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Už nezobrazovať</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falšovanie toku videa</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Falšovanie toku videa v klientovi pomáha predchádzať problémom s prehrávaním</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Konfigurácia falšovania klienta na zabránenie problémom s prehrávaním</string>
   <string name="morphe_spoof_video_streams_title">Falšovať tok videa</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Toky videa sú falšované
+  <string name="morphe_spoof_video_streams_summary">"Oklame YouTube, aby poslal kompatibilný tok videa, čo opravuje prehrávanie pre väčšinu používateľov
 
-Ak máte aktívne YouTube Premium, toto nastavenie nemusí byť potrebné"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Toky videa nie sú falšované
-
-Prehrávanie nemusí správne fungovať"</string>
+Ak ste používateľ služby YouTube Premium, toto nastavenie nemusí byť potrebné"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nebolo možné načítať žiadne toky klientov</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Vypnutie tohto nastavenia môže spôsobiť problémy s prehrávaním.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Ak sa chcete prihlásiť, stlačte tlačidlo Pokračovať"</string>
   <string name="morphe_oauth2_toast_reset">Odhlásené z Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Neplatný token prihlásenia VR, skúste sa znova prihlásiť do VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Vypnúť aktualizáciu JavaScriptu prehrávača</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Aktualizácia JavaScriptu prehrávača je vypnutá
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Uzamkne JavaScript prehrávača do lokálneho hashu namiesto načítania aktualizácií
 
 • Vyžaduje sa platný hash JavaScriptu prehrávača
-• Prehrávanie zlyhá, ak je hash JavaScriptu prehrávača zamietnutý v GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Aktualizácia JavaScriptu prehrávača je povolená</string>
+• Prehrávanie zlyhá, ak je hash JavaScriptu prehrávača zrušený v GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Hashe JavaScriptu prehrávača sú platné približne jeden mesiac a zastarané hashe môžu byť zrušené GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash JavaScriptu prehrávača</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Zadajte platný hash JavaScriptu prehrávača</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Zakázať protokol QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC je zakázaný</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Protokol QUIC je povolený</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Zakázať zvuk DRC</string>
-  <string name="morphe_disable_drc_audio_summary_on">Zvuk DRC je zakázaný</string>
-  <string name="morphe_disable_drc_audio_summary_off">Zvuk DRC je povolený</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Vynútiť pôvodný jazyk zvukovej stopy</string>
-  <string name="morphe_force_original_audio_summary_on">Používa sa pôvodný jazyk zvukovej stopy</string>
-  <string name="morphe_force_original_audio_summary_off">Používa sa predvolená zvuková stopa</string>
+  <string name="morphe_force_original_audio_summary">Vždy prehráva pôvodnú zvukovu stopu videa namiesto nadabovanej verzie</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Skryť reklamy na celú obrazovku</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Reklamy na celú obrazovku sú skryté</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Reklamy na celú obrazovku sa zobrazujú</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Na používanie tejto funkcie zmeňte \'Falšovanie toku videa\' na Android Reel alebo TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Vyčistiť odkazy na zdieľanie</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Parameter sledovania je odstránený zo zdieľaných odkazov</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Parameter sledovania nie je odstránený zo zdieľaných odkazov</string>
+  <string name="morphe_sanitize_sharing_links_summary">Odstráni parametre sledovania dotazov zo zdieľaných odkazov</string>
   <string name="morphe_replace_music_with_youtube_title">Zmeniť odkazy na zdieľanie na youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Zdieľané odkazy používajú youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Zdieľané odkazy používajú music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Zmeniť odkazy na zdieľanie na youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Zdieľané odkazy na živé prenosy a Shorts používajú youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Zdieľané odkazy na živé vysielanie a Shorts používajú ich pôvodné URL adresy</string>
+  <string name="morphe_replace_links_with_shortener_summary">Vynucuje používanie skráteného formátu URL youtu.be pre živé prenosy a Shorts</string>
 </resources>

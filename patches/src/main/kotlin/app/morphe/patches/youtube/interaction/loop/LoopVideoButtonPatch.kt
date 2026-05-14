@@ -58,7 +58,7 @@ internal val loopVideoButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_loop_video_button")
+            SwitchPreference("morphe_loop_video_button", summaryKey = null)
         )
 
         initializeTopControl(EXTENSION_BUTTON)

@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Beperking: Visuele spatieen worden mogelijk niet verborgen"</string>
   <string name="morphe_remove_notification_dialog_title">Verwijder notificatie suggestie dialoog</string>
-  <string name="morphe_remove_notification_dialog_summary">Verwijdert de notificatie suggestie dialoog die verschijnt bij het bezoeken van een subreddit, door deze automatisch te accepteren</string>
-  <string name="morphe_show_view_count_title">Aantal weergaven tonen</string>
-  <string name="morphe_show_view_count_summary">"Toont het aantal weergaven van Posts
-
-Beperking: Wordt alleen getoond als de API-reactie het aantal weergaven bevat"</string>
+  <string name="morphe_remove_notification_dialog_summary">Sluit de suggestiedialoog voor meldingen automatisch wanneer je een subreddit bezoekt</string>
+  <string name="morphe_show_view_count_title">Toon het aantal weergaven op berichten</string>
+  <string name="morphe_show_view_count_summary">Beperking: alleen beschikbaar als het API-antwoord het aantal weergaven bevat</string>
   <string name="morphe_remove_nsfw_dialog_title">Verwijder NSFW waarschuwing dialoog</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Verwijdert de NSFW waarschuwing dialoog die verschijnt bij het bezoeken van een subreddit, door deze automatisch te accepteren</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Accepteert automatisch de NSFW-waarschuwing bij het bezoeken van een subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Diversen</string>
   <string name="morphe_about_title">Over</string>
   <string name="morphe_about_summary">Patch versie en officiële links</string>
   <string name="morphe_sanitize_sharing_links_title">Deelbare links opschonen</string>
-  <string name="morphe_sanitize_sharing_links_summary">Sanitise deel links door tracking query parameters te verwijderen</string>
+  <string name="morphe_sanitize_sharing_links_summary">Tracking queryparameters worden verwijderd uit gedeelde links</string>
   <string name="morphe_open_links_directly_title">Links direct openen</string>
-  <string name="morphe_open_links_directly_summary">Slaat omleidings-URL\'s in externe links over</string>
+  <string name="morphe_open_links_directly_summary">Omzeilt doorverwijzings-URL\'s bij het openen van externe links</string>
   <string name="morphe_open_links_externally_title">Links extern openen</string>
-  <string name="morphe_open_links_externally_summary">Links openen in uw browser in plaats van in de in-app-browser</string>
+  <string name="morphe_open_links_externally_summary">Opent links in je browser in plaats van in de in-app browser</string>
 </resources>

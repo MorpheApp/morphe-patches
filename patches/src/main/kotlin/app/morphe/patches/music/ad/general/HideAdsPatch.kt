@@ -40,7 +40,7 @@ val hideAdsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.ADS.addPreferences(
-            SwitchPreference("morphe_music_hide_get_premium_label"),
+            SwitchPreference("morphe_music_hide_get_premium_label", summaryKey = null),
         )
 
         // Hide 'Get Music Premium' label

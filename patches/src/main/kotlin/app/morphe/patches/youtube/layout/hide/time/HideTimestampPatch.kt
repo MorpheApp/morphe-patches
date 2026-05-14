@@ -23,7 +23,7 @@ val hideTimestampPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("morphe_hide_timestamp"),
+            SwitchPreference("morphe_hide_timestamp", summaryKey = null),
         )
 
         TimeCounterFingerprint.method.addInstructionsWithLabels(

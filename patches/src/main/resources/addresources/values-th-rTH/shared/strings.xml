@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">ประวัติการค้นหาว่างเปล่า</string>
   <string name="morphe_settings_search_empty_history_summary">หากต้องการบันทึกประวัติการค้นหา ให้พิมพ์คำค้นหาแล้วกด Enter</string>
   <string name="morphe_settings_search_history_title">แสดงประวัติการค้นหาในการตั้งค่า</string>
-  <string name="morphe_settings_search_history_summary_on">ประวัติการค้นหาในการตั้งค่าจะปรากฏ</string>
-  <string name="morphe_settings_search_history_summary_off">ไม่แสดงประวัติการค้นหาการตั้งค่า</string>
   <string name="morphe_show_menu_icons_title">แสดงไอคอนการตั้งค่า Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">ไอคอนการตั้งค่าจะปรากฏขึ้น</string>
-  <string name="morphe_show_menu_icons_summary_off">ไม่แสดงไอคอนการตั้งค่า</string>
   <string name="morphe_language_title">ภาษา Morphe</string>
   <string name="morphe_language_user_dialog_message">"คำแปลสำหรับบางภาษาอาจหายไปหรือไม่สมบูรณ์
 
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">กำลังโหลด...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">ดีบัก</string>
-  <string name="morphe_debug_screen_summary">เปิดใช้งานหรือปิดใช้งานตัวเลือกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_title">การบันทึกการแก้ไขข้อบกพร่อง</string>
-  <string name="morphe_debug_summary_on">การบันทึกการแก้ไขข้อบกพร่องถูกเปิดใช้งาน</string>
-  <string name="morphe_debug_summary_off">การบันทึกการแก้ไขข้อบกพร่องถูกปิดใช้งาน</string>
+  <string name="morphe_debug_screen_summary">กำหนดค่าตัวเลือกขั้นสูงสำหรับนักพัฒนาและบันทึกการวินิจฉัย</string>
+  <string name="morphe_debug_title">เปิดการบันทึกการแก้ไขข้อบกพร่อง</string>
   <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
-  <string name="morphe_debug_stacktrace_summary_on">Debug logs include stack traces</string>
-  <string name="morphe_debug_stacktrace_summary_off">Debug logs do not include stack traces</string>
+  <string name="morphe_debug_stacktrace_summary">รวม stack trace ในบันทึกการแก้ไขข้อบกพร่องเพื่อช่วยระบุข้อผิดพลาด</string>
   <string name="morphe_debug_toast_on_error_title">แสดง  toast  เมื่อเกิดข้อผิดพลาดของ Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Toast จะปรากฏขึ้นหากเกิดข้อผิดพลาด</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Toast จะไม่ปรากฏขึ้นหากเกิดข้อผิดพลาด</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"การปิดการแจ้งเตือนข้อผิดพลาดจะซ่อนการแจ้งเตือนข้อผิดพลาดของ Morphe ทั้งหมด
 
 คุณจะไม่ได้รับแจ้งเกี่ยวกับเหตุการณ์ที่ไม่คาดคิดใดๆ"</string>
@@ -141,15 +132,21 @@ Second \"item\" text"</string>
 
 แตะปุ่มตกลง และอนุญาตการเปลี่ยนแปลงการปรับแต่ง"</string>
   <string name="gms_core_dialog_continue_text">ดำเนินการต่อ</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">กล่องข้อความเพิ่มประสิทธิภาพแบตเตอรี่</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">มีการแสดงกล่องข้อความ MicroG เพิ่มประสิทธิภาพแบตเตอรี่</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">ไม่มีการแสดงกล่องข้อความ MicroG เพิ่มประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">แสดงกล่องโต้ตอบการปรับปรุงประสิทธิภาพแบตเตอรี่</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"การปิดใช้งานนี้จะซ่อนข้อความแจ้ง MicroG เพิ่มประสิทธิภาพแบตเตอรี่
 
 หากการเพิ่มประสิทธิภาพแบตเตอรี่ไม่ได้มีการเปลี่ยนแปลง คุณอาจพบ:
 • แอปพลิเคชันอาจปิดโดยสุ่ม
 • การแจ้งเตือนอาจใช้งานไม่ได้
 • การเล่นเพลง/วิดีโอขณะอยู่เบื้องหลังอาจใช้งานไม่ได้"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">การจัดการลิงก์แอป</string>
+  <string name="morphe_link_handling_summary">กำหนดค่าแอปที่จะเปิดลิงก์</string>
+  <string name="morphe_link_handling_step1_title">ขั้นตอนที่ 1: ปิดการเชื่อมโยงแอปพลิเคชันเดิม</string>
+  <string name="morphe_link_handling_step1_message">เปิดการตั้งค่าของแอปพลิเคชันเดิมและปิดการเชื่อมโยงโดเมนทั้งหมด</string>
+  <string name="morphe_link_handling_step2_title">ขั้นตอนที่ 2: เปิดการเชื่อมโยงแอปพลิเคชันที่แก้ไขแล้ว</string>
+  <string name="morphe_link_handling_step2_message">เปิดการตั้งค่าของแอปพลิเคชันที่แก้ไขแล้วและเปิดการเชื่อมโยงโดเมนทั้งหมด</string>
+  <string name="morphe_link_handling_open">นำเข้าการตั้งค่า </string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 คำเตือนแบบทดลอง 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"คุณกำลังใช้แอปเวอร์ชันทดลองของ ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

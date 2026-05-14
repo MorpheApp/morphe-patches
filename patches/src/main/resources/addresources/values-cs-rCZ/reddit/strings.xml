@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Omezení: Vizuální mezery nemusí být skryty"</string>
   <string name="morphe_remove_notification_dialog_title">Odstranit dialogové okno s návrhem oznámení</string>
-  <string name="morphe_remove_notification_dialog_summary">Odstraní dialogové okno s návrhem oznámení, které se zobrazí při návštěvě subredditu automatickým přijetím</string>
-  <string name="morphe_show_view_count_title">Zobrazit počet zhlédnutí</string>
-  <string name="morphe_show_view_count_summary">"Zobrazuje počet zhlédnutí příspěvků
-
-Omezení: Zobrazuje se pouze pokud API odpověď zahrnuje počet zhlédnutí"</string>
+  <string name="morphe_remove_notification_dialog_summary">Automaticky zavře dialog s návrhy oznámení při návštěvě subredditu</string>
+  <string name="morphe_show_view_count_title">Zobrazit počet zobrazení u příspěvků</string>
+  <string name="morphe_show_view_count_summary">Omezení: Dostupná pouze pokud odpověď API obsahuje počet zobrazení</string>
   <string name="morphe_remove_nsfw_dialog_title">Odstranit dialogové okno s upozorněním NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Odstraní dialogové okno s upozorněním NSFW, které se zobrazí při návštěvě subredditu automatickým přijetím</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Automaticky akceptuje upozornění na obsah NSFW při návštěvě subredditu</string>
   <string name="morphe_screen_miscellaneous_title">Různé</string>
   <string name="morphe_about_title">O aplikaci</string>
   <string name="morphe_about_summary">Verze aplikace a oficiální odkazy</string>
   <string name="morphe_sanitize_sharing_links_title">Vyčistit sdílené odkazy</string>
-  <string name="morphe_sanitize_sharing_links_summary">Čistí sdílecí odkazy odstraněním parametrů sledování</string>
+  <string name="morphe_sanitize_sharing_links_summary">Odstraňuje sledovací parametry dotazu z sdílených odkazů</string>
   <string name="morphe_open_links_directly_title">Otevírat odkazy přímo</string>
-  <string name="morphe_open_links_directly_summary">Přeskakuje přes URL adresy přesměrování ve vnějších odkazech</string>
+  <string name="morphe_open_links_directly_summary">Obejít přesměrovací URL při otevírání externích odkazů</string>
   <string name="morphe_open_links_externally_title">Otevřít odkazy externě</string>
-  <string name="morphe_open_links_externally_summary">Otevírá odkazy ve vašem prohlížeči, nikoli v interním prohlížeči</string>
+  <string name="morphe_open_links_externally_summary">Otevírá odkazy ve vašem prohlížeči namísto vestavěného prohlížeče</string>
 </resources>

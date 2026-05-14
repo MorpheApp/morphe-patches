@@ -50,32 +50,32 @@ import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.youtube.settings.Settings;
 
 public enum SegmentCategory {
-    SPONSOR("sponsor", sf("morphe_sb_segments_sponsor"), sf("morphe_sb_segments_sponsor_sum"), sf("morphe_sb_skip_button_sponsor"), sf("morphe_sb_skipped_sponsor"),
+    SPONSOR("sponsor", sf("morphe_sb_segments_sponsor"), sf("morphe_sb_segments_sponsor_summary"), sf("morphe_sb_skip_button_sponsor"), sf("morphe_sb_skipped_sponsor"),
             SB_CATEGORY_SPONSOR, SB_CATEGORY_SPONSOR_COLOR),
-    SELF_PROMO("selfpromo", sf("morphe_sb_segments_selfpromo"), sf("morphe_sb_segments_selfpromo_sum"), sf("morphe_sb_skip_button_selfpromo"), sf("morphe_sb_skipped_selfpromo"),
+    SELF_PROMO("selfpromo", sf("morphe_sb_segments_selfpromo"), sf("morphe_sb_segments_selfpromo_summary"), sf("morphe_sb_skip_button_selfpromo"), sf("morphe_sb_skipped_selfpromo"),
             SB_CATEGORY_SELF_PROMO, SB_CATEGORY_SELF_PROMO_COLOR),
-    INTERACTION("interaction", sf("morphe_sb_segments_interaction"), sf("morphe_sb_segments_interaction_sum"), sf("morphe_sb_skip_button_interaction"), sf("morphe_sb_skipped_interaction"),
+    INTERACTION("interaction", sf("morphe_sb_segments_interaction"), sf("morphe_sb_segments_interaction_summary"), sf("morphe_sb_skip_button_interaction"), sf("morphe_sb_skipped_interaction"),
             SB_CATEGORY_INTERACTION, SB_CATEGORY_INTERACTION_COLOR),
     /**
      * Unique category that is treated differently than the rest.
      */
-    HIGHLIGHT("poi_highlight", sf("morphe_sb_segments_highlight"), sf("morphe_sb_segments_highlight_sum"), sf("morphe_sb_skip_button_highlight"), sf("morphe_sb_skipped_highlight"),
+    HIGHLIGHT("poi_highlight", sf("morphe_sb_segments_highlight"), sf("morphe_sb_segments_highlight_summary"), sf("morphe_sb_skip_button_highlight"), sf("morphe_sb_skipped_highlight"),
             SB_CATEGORY_HIGHLIGHT, SB_CATEGORY_HIGHLIGHT_COLOR),
-    INTRO("intro", sf("morphe_sb_segments_intro"), sf("morphe_sb_segments_intro_sum"),
+    INTRO("intro", sf("morphe_sb_segments_intro"), sf("morphe_sb_segments_intro_summary"),
             sf("morphe_sb_skip_button_intro_beginning"), sf("morphe_sb_skip_button_intro_middle"), sf("morphe_sb_skip_button_intro_end"),
             sf("morphe_sb_skipped_intro_beginning"), sf("morphe_sb_skipped_intro_middle"), sf("morphe_sb_skipped_intro_end"),
             SB_CATEGORY_INTRO, SB_CATEGORY_INTRO_COLOR),
-    OUTRO("outro", sf("morphe_sb_segments_outro"), sf("morphe_sb_segments_outro_sum"), sf("morphe_sb_skip_button_outro"), sf("morphe_sb_skipped_outro"),
+    OUTRO("outro", sf("morphe_sb_segments_outro"), sf("morphe_sb_segments_outro_summary"), sf("morphe_sb_skip_button_outro"), sf("morphe_sb_skipped_outro"),
             SB_CATEGORY_OUTRO, SB_CATEGORY_OUTRO_COLOR),
-    PREVIEW("preview", sf("morphe_sb_segments_preview"), sf("morphe_sb_segments_preview_sum"),
+    PREVIEW("preview", sf("morphe_sb_segments_preview"), sf("morphe_sb_segments_preview_summary"),
             sf("morphe_sb_skip_button_preview_beginning"), sf("morphe_sb_skip_button_preview_middle"), sf("morphe_sb_skip_button_preview_end"),
             sf("morphe_sb_skipped_preview_beginning"), sf("morphe_sb_skipped_preview_middle"), sf("morphe_sb_skipped_preview_end"),
             SB_CATEGORY_PREVIEW, SB_CATEGORY_PREVIEW_COLOR),
-    HOOK("hook", sf("morphe_sb_segments_hook"), sf("morphe_sb_segments_hook_sum"), sf("morphe_sb_skip_button_hook"), sf("morphe_sb_skipped_hook"),
+    HOOK("hook", sf("morphe_sb_segments_hook"), sf("morphe_sb_segments_hook_summary"), sf("morphe_sb_skip_button_hook"), sf("morphe_sb_skipped_hook"),
             SB_CATEGORY_HOOK, SB_CATEGORY_HOOK_COLOR),
-    FILLER("filler", sf("morphe_sb_segments_filler"), sf("morphe_sb_segments_filler_sum"), sf("morphe_sb_skip_button_filler"), sf("morphe_sb_skipped_filler"),
+    FILLER("filler", sf("morphe_sb_segments_filler"), sf("morphe_sb_segments_filler_summary"), sf("morphe_sb_skip_button_filler"), sf("morphe_sb_skipped_filler"),
             SB_CATEGORY_FILLER, SB_CATEGORY_FILLER_COLOR),
-    MUSIC_OFFTOPIC("music_offtopic", sf("morphe_sb_segments_nomusic"), sf("morphe_sb_segments_nomusic_sum"), sf("morphe_sb_skip_button_nomusic"), sf("morphe_sb_skipped_nomusic"),
+    MUSIC_OFFTOPIC("music_offtopic", sf("morphe_sb_segments_nomusic"), sf("morphe_sb_segments_nomusic_summary"), sf("morphe_sb_skip_button_nomusic"), sf("morphe_sb_skipped_nomusic"),
             SB_CATEGORY_MUSIC_OFFTOPIC, SB_CATEGORY_MUSIC_OFFTOPIC_COLOR),
     UNSUBMITTED("unsubmitted", StringRef.empty, StringRef.empty, sf("morphe_sb_skip_button_unsubmitted"), sf("morphe_sb_skipped_unsubmitted"),
             SB_CATEGORY_UNSUBMITTED, SB_CATEGORY_UNSUBMITTED_COLOR);

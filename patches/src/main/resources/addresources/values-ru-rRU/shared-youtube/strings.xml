@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Пользовательский</string>
   <string name="morphe_custom_branding_notification_icon_title">Значок уведомления</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Следить за иконкой приложения</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Соответствие значку приложения</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша история просмотра не сохраняется.&lt;br&gt;&lt;br&gt; Вероятнее всего это вызвано DNS блокировщиком рекламы или сетевым прокси.&lt;br&gt;&lt;br&gt; Чтобы это исправить, добавьте &lt;b&gt;s.youtube.com&lt;/b&gt; в белый список блокировщика рекламы или отключите все блокировщики DNS и прокси.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Не показывать снова</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Подмена видеопотоков</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Подделка видео потоков клиента для предотвращения проблем с воспроизведением</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Настройте подмену клиента, чтобы предотвратить проблемы с воспроизведением</string>
   <string name="morphe_spoof_video_streams_title">Поддельные видео потоки</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Видео потоки подделаны
+  <string name="morphe_spoof_video_streams_summary">"Обманывает YouTube, чтобы он отправлял совместимый видеопоток, что исправляет воспроизведение для большинства пользователей
 
-Если Вы являетесь пользователем YouTube Premium, эта настройка может не потребоваться"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Видео потоки не подделаны
-
-Воспроизведение может не работать"</string>
+Если вы являетесь пользователем YouTube Premium, эта настройка может не потребоваться"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не удалось получить никаких клиентских потоков</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Выключение этой настройки может привести к возникновению проблем с воспроизведением.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_reset">Вышли из войти Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Недействительный токен входа в VR, попробуйте войти в VR еще раз</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Отключить обновление JavaScript плеера</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Обновление JavaScript плеера выключено
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Блокирует JavaScript-код плеера к локальному хэшу вместо получения обновлений
 
-• Требуется действительный хеш JavaScript плеера
-• Воспроизведение не удается, если хеш JavaScript проигрывателя отменен в GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Обновление JavaScript плеера включено</string>
+• Требуется действительный хэш JavaScript-кода плеера
+• Воспроизведение не удастся, если хэш JavaScript-кода плеера будет отозван в GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Хеши JavaScript плеера действительны примерно один месяц, а устаревший хеш может быть отменен GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Хеш JavaScript плеера</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Введите допустимый хеш JavaScript плеера</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Отключить протокол QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Протокол QUIC отключен</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Протокол QUIC включен</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Отключить DRC аудио</string>
-  <string name="morphe_disable_drc_audio_summary_on">Аудио DRC отключено</string>
-  <string name="morphe_disable_drc_audio_summary_off">Аудио DRC включено</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудительно оригинальная звуковая дорожка</string>
-  <string name="morphe_force_original_audio_summary_on">Используется оригинальная звуковая дорожка</string>
-  <string name="morphe_force_original_audio_summary_off">Используется звуковая дорожка по умолчанию</string>
+  <string name="morphe_force_original_audio_summary">Всегда воспроизводит оригинальную аудиодорожку видео вместо дублированной версии</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Скрыть полноэкранную рекламу</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Полноэкранная реклама скрыта</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Полноэкранная реклама показана</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Чтобы использовать эту функцию, измените \"Подмена видео потоков\" на Android Reel или TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Очищать ссылки для обмена</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Параметр отслеживания запросов удален из ссылок для обмена</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Параметр отслеживания запросов не удален из ссылок для обмена</string>
+  <string name="morphe_sanitize_sharing_links_summary">Удаляет параметры отслеживания запросов из общих ссылок</string>
   <string name="morphe_replace_music_with_youtube_title">Изменить ссылки для обмена на youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Общие ссылки используют youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Общие ссылки используют music.youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Изменить ссылки для обмена на youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Ссылки на прямые трансляции и Shorts используют youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Ссылки на прямые трансляции и Shorts используют свои исходные URL-адреса</string>
+  <string name="morphe_replace_links_with_shortener_summary">Заставляет прямые трансляции и Shorts использовать сокращенный формат URL youtu.be</string>
 </resources>

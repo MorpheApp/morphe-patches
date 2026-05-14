@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 मर्यादा: व्हिज्युअल स्पेसर्स लपवले जाणार नाहीत"</string>
   <string name="morphe_remove_notification_dialog_title">सूचना सूचना संवाद काढून टाका</string>
-  <string name="morphe_remove_notification_dialog_summary">एखादे सबरेडिट भेटताना दिसणारा सूचना संवाद आपोआप स्वीकारून काढून टाकते</string>
-  <string name="morphe_show_view_count_title">व्ह्यू काउंट दर्शवा</string>
-  <string name="morphe_show_view_count_summary">"पोस्ट्सची व्ह्यू काउंट दर्शवते
-
-मर्यादा: केवळ API प्रतिसादामध्ये व्ह्यू काउंट समाविष्ट असल्यास दर्शविले जाते"</string>
+  <string name="morphe_remove_notification_dialog_summary">subredditला भेट देताना सूचना सूचना संवाद आपोआप बंद होतो</string>
+  <string name="morphe_show_view_count_title">पोस्टवर दृश्य संख्या दर्शवा</string>
+  <string name="morphe_show_view_count_summary">मर्यादा: API प्रतिसादामध्ये दृश्य गणना समाविष्ट असल्यास तेच उपलब्ध आहे.</string>
   <string name="morphe_remove_nsfw_dialog_title">NSFW वॉर्निंग संवाद काढून टाका</string>
-  <string name="morphe_remove_nsfw_dialog_summary">एखादे सबरेडिट भेटताना दिसणारा NSFW वॉर्निंग संवाद आपोआप स्वीकारून काढून टाकते</string>
+  <string name="morphe_remove_nsfw_dialog_summary">सबरेडिटला भेट देताना NSFW सामग्रीwarn्निंग आपोआप स्वीकारते.</string>
   <string name="morphe_screen_miscellaneous_title">विविध</string>
   <string name="morphe_about_title">अबाउट</string>
   <string name="morphe_about_summary">पॅच आवृत्ती आणि अधिकृत लिंक्स</string>
   <string name="morphe_sanitize_sharing_links_title">सामायिकरण लिंक्स स्वच्छ करा</string>
-  <string name="morphe_sanitize_sharing_links_summary">ट्रॅकिंग क्वेरी पॅरामीटर्स काढून सामायिकरण लिंक्स स्वच्छ करते</string>
+  <string name="morphe_sanitize_sharing_links_summary">सामायिक केलेल्या दुव्यांमधून ट्रॅकिंग क्वेरी पॅरामीटर्स काढून टाकते.</string>
   <string name="morphe_open_links_directly_title">लिंक्स थेट उघडा</string>
-  <string name="morphe_open_links_directly_summary">बाह्य लिंक्समधील पुनर्निर्देशन URL वगळा</string>
+  <string name="morphe_open_links_directly_summary">बाह्य दुवे उघडताना रीडायरेक्ट URL बायपास करते.</string>
   <string name="morphe_open_links_externally_title">बाह्य दुवे उघडा</string>
-  <string name="morphe_open_links_externally_summary">इन-ॲप-ब्राउझरऐवजी तुमच्या ब्राउझरमध्ये दुवे उघडते</string>
+  <string name="morphe_open_links_externally_summary">दुवे ॲपमधील ब्राउझरऐवजी आपल्या ब्राउझरमध्ये उघडते.</string>
 </resources>

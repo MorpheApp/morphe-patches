@@ -84,7 +84,8 @@ internal object AutoHideNavigationBarFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/support/v7/widget/RecyclerView;", "I", "I"),
     filters = listOf(
-        literal(45677535L)
+        methodCall("Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;"),
+        methodCall("Landroid/view/ViewConfiguration;->getScaledTouchSlop()I", location = MatchAfterWithin(5))
     )
 )
 

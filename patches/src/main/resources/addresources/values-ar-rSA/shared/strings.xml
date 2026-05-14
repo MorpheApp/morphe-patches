@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">سجل البحث فارغ</string>
   <string name="morphe_settings_search_empty_history_summary">لحفظ سجل البحث، اكتب استعلام بحث واضغط على Enter</string>
   <string name="morphe_settings_search_history_title">عرض سجل بحث الإعدادات</string>
-  <string name="morphe_settings_search_history_summary_on">يتم عرض سجل البحث في الإعدادات</string>
-  <string name="morphe_settings_search_history_summary_off">لا يتم عرض سجل البحث في الإعدادات</string>
   <string name="morphe_show_menu_icons_title">عرض أيقونات إعدادات Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">يتم عرض أيقونات الإعدادات</string>
-  <string name="morphe_show_menu_icons_summary_off">لا يتم عرض أيقونات الإعدادات</string>
   <string name="morphe_language_title">لغة Morphe</string>
   <string name="morphe_language_user_dialog_message">"قد تكون ترجمات بعض اللغات مفقودة أو غير مكتملة.
 
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">جارٍ التحميل...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">تصحيح الأخطاء</string>
-  <string name="morphe_debug_screen_summary">تمكين أو تعطيل خيارات تصحيح الأخطاء</string>
-  <string name="morphe_debug_title">تسجيل تصحيح الأخطاء</string>
-  <string name="morphe_debug_summary_on">تم تمكين تسجيلات تصحيح الأخطاء</string>
-  <string name="morphe_debug_summary_off">تم تعطيل تسجيلات تصحيح الأخطاء</string>
+  <string name="morphe_debug_screen_summary">تكوين خيارات المطور المتقدمة وسجلات التشخيص</string>
+  <string name="morphe_debug_title">تمكين سجلات التصحيح</string>
   <string name="morphe_debug_stacktrace_title">مسار التتبع في سجل التصحيح</string>
-  <string name="morphe_debug_stacktrace_summary_on">تتضمن سجلات التصحيح مسارات التتبع</string>
-  <string name="morphe_debug_stacktrace_summary_off">لا تتضمن سجلات التصحيح مسارات التتبع</string>
+  <string name="morphe_debug_stacktrace_summary">تتضمن سجلات تصحيح الأخطاء Stack Traces للمساعدة في تحديد الأخطاء</string>
   <string name="morphe_debug_toast_on_error_title">عرض ملاحظة عند وجود خطأ في Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">يتم عرض ملاحظة في حالة حدوث خطأ</string>
-  <string name="morphe_debug_toast_on_error_summary_off">لا يتم عرض ملاحظة في حالة حدوث خطأ</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"يؤدي إيقاف تشغيل ملاحظات الأخطاء إلى إخفاء كافة إشعارات أخطاء Morphe.
 
 لن يتم إعلامك بأي أخطاء غير متوقعة."</string>
@@ -124,7 +115,7 @@ Second \"item\" text"</string>
   <string name="morphe_debug_feature_flags_manager_toast_no_flags">أعد تشغيل التطبيق لاستخدام هذا الإعداد</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_summary">فتح إعدادات microG</string>
+  <string name="microg_settings_summary">فتح إعدادات MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG لم يتم تثبيته. قم بتثبيته.</string>
   <string name="gms_core_dialog_title">الإجراء مطلوب</string>
@@ -141,15 +132,21 @@ Second \"item\" text"</string>
 
  انقر على زر متابعة و اسمح بتغييرات التحسين."</string>
   <string name="gms_core_dialog_continue_text">متابعة</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">نافذة تحسين البطارية</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">يتم عرض رسالة تحسين البطارية لـ MicroG</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">لا يتم عرض رسالة تحسين البطارية لـ MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">عرض نافذة تحسين البطارية</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"تعطيل هذا سيخفي مطالبة تحسين البطارية لـ MicroG.
 
 إذا لم يتم تغيير تحسينات البطارية فقد تواجه:
 • قد يغلق التطبيق بشكل عشوائي
 • قد لا تعمل الإشعارات
 • قد لا يعمل التشغيل في الخلفية"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">معالجة روابط التطبيق</string>
+  <string name="morphe_link_handling_summary">تكوين التطبيق الذي يفتح الروابط</string>
+  <string name="morphe_link_handling_step1_title">الخطوة 1: تعطيل روابط التطبيق الأصلي</string>
+  <string name="morphe_link_handling_step1_message">افتح إعدادات التطبيق الأصلي وقم بتعطيل كل روابط النطاقات</string>
+  <string name="morphe_link_handling_step2_title">الخطوة 2: تمكين روابط التطبيق المُعدَّل</string>
+  <string name="morphe_link_handling_step2_message">افتح إعدادات التطبيق المُعدَّل وقم بتمكين كل روابط النطاقات</string>
+  <string name="morphe_link_handling_open">فتح الإعدادات</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨  تنبيه نسخة تجريبية 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"أنت تستخدم نسخة تجريبية من التطبيق ⚠️&lt;b&gt;%1$s&lt;/b&gt;

@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Riwayat pencarian kosong</string>
   <string name="morphe_settings_search_empty_history_summary">Untuk menyimpan riwayat pencarian, ketik kueri pencarian dan tekan Enter</string>
   <string name="morphe_settings_search_history_title">Tampilkan pengaturan riwayat pencarian</string>
-  <string name="morphe_settings_search_history_summary_on">Pengaturan riwayat pencarian ditampilkan</string>
-  <string name="morphe_settings_search_history_summary_off">Pengaturan riwayat pencarian tidak ditampilkan</string>
   <string name="morphe_show_menu_icons_title">Tampilkan ikon pengaturan Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Ikon pengaturan ditampilkan</string>
-  <string name="morphe_show_menu_icons_summary_off">Ikon pengaturan tidak ditampilkan</string>
   <string name="morphe_language_title">Bahasa Morphe</string>
   <string name="morphe_language_user_dialog_message">"Terjemahan untuk beberapa bahasa mungkin hilang atau tidak lengkap.
 
@@ -88,16 +84,11 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_settings_about_licenses_loading">Memuat...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
-  <string name="morphe_debug_screen_summary">Aktifkan atau nonaktifkan pilihan debugging</string>
-  <string name="morphe_debug_title">Pencatatan debug</string>
-  <string name="morphe_debug_summary_on">Pencatatan debug diaktifkan</string>
-  <string name="morphe_debug_summary_off">Pencatatan debug dinonaktifkan</string>
+  <string name="morphe_debug_screen_summary">Konfigurasikan opsi pengembang dan log diagnostik tingkat lanjut</string>
+  <string name="morphe_debug_title">Aktifkan pencatatan debug</string>
   <string name="morphe_debug_stacktrace_title">Jejak stack catatan debug</string>
-  <string name="morphe_debug_stacktrace_summary_on">Pencatatan debug menyertakan jejak stack</string>
-  <string name="morphe_debug_stacktrace_summary_off">Pencatatan debug tidak menyertakan jejak stack</string>
+  <string name="morphe_debug_stacktrace_summary">Sertakan jejak tumpukan dalam log debug untuk membantu mengidentifikasi kesalahan</string>
   <string name="morphe_debug_toast_on_error_title">Tampilkan pesan timbul pada kesalahan Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Pesan timbul ditampilkan jika terjadi kesalahan</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Pesan timbul tidak ditampilkan jika terjadi kesalahan</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Mematikan pesan timbul kesalahan menyembunyikan semua pemberitahuan kesalahan Morphe.
 
 Anda tidak akan diberi tahu tentang kejadian yang tidak terduga."</string>
@@ -141,15 +132,21 @@ Menonaktifkan pengoptimalan MicroG tidak akan berdampak buruk pada penggunaan ba
 
 Ketuk tombol lanjutkan dan izinkan perubahan pengoptimalan."</string>
   <string name="gms_core_dialog_continue_text">Lanjutkan</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog optimasi baterai</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dialog optimasi baterai MicroG ditampilkan</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dialog optimasi baterai MicroG tidak ditampilkan</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Tampilkan dialog optimasi baterai</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Menonaktifkan ini akan menyembunyikan perintah optimasi baterai MicroG.
 
 Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
 • Aplikasi mungkin secara acak tertutup
 • Pemberitahuan mungkin tidak berfungsi
 • Pemutaran latar belakang mungkin tidak berfungsi"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Penanganan tautan aplikasi</string>
+  <string name="morphe_link_handling_summary">Konfigurasikan aplikasi mana yang membuka tautan</string>
+  <string name="morphe_link_handling_step1_title">Langkah 1: Nonaktifkan tautan aplikasi asli</string>
+  <string name="morphe_link_handling_step1_message">Buka pengaturan aplikasi asli dan nonaktifkan semua tautan domain</string>
+  <string name="morphe_link_handling_step2_title">Langkah 2: Aktifkan tautan aplikasi yang ditambal</string>
+  <string name="morphe_link_handling_step2_message">Buka pengaturan aplikasi yang ditambal dan aktifkan semua tautan domain</string>
+  <string name="morphe_link_handling_open">Buka pengaturan</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Peringatan Uji Coba 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Anda menggunakan versi aplikasi uji coba ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

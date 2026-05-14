@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Το ιστορικό αναζήτησης είναι κενό</string>
   <string name="morphe_settings_search_empty_history_summary">Για να αποθηκεύσετε το ιστορικό αναζήτησης, πληκτρολογήστε ένα ερώτημα αναζήτησης και πατήστε Enter</string>
   <string name="morphe_settings_search_history_title">Εμφάνιση ιστορικού αναζήτησης ρυθμίσεων</string>
-  <string name="morphe_settings_search_history_summary_on">Το ιστορικό αναζήτησης ρυθμίσεων εμφανίζεται</string>
-  <string name="morphe_settings_search_history_summary_off">Το ιστορικό αναζήτησης ρυθμίσεων δεν εμφανίζεται</string>
   <string name="morphe_show_menu_icons_title">Εμφάνιση εικονιδίων στις ρυθμίσεις του Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Τα εικονίδια ρυθμίσεων εμφανίζονται</string>
-  <string name="morphe_show_menu_icons_summary_off">Τα εικονίδια ρυθμίσεων δεν εμφανίζονται</string>
   <string name="morphe_language_title">Γλώσσα ρυθμίσεων του Morphe</string>
   <string name="morphe_language_user_dialog_message">"Οι μεταφράσεις για κάποιες γλώσσες ενδέχεται να λείπουν ή να είναι ελλιπείς.
 
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">Φόρτωση...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Εντοπισμός σφαλμάτων</string>
-  <string name="morphe_debug_screen_summary">Ενεργοποιεί ή απενεργοποιεί τις επιλογές εντοπισμού σφαλμάτων</string>
-  <string name="morphe_debug_title">Καταγραφή εντοπισμού σφαλμάτων</string>
-  <string name="morphe_debug_summary_on">Η καταγραφή εντοπισμού σφαλμάτων είναι ενεργοποιημένη</string>
-  <string name="morphe_debug_summary_off">Η καταγραφή εντοπισμού σφαλμάτων είναι απενεργοποιημένη</string>
+  <string name="morphe_debug_screen_summary">Ρύθμιση προχωρημένων επιλογών προγραμματιστή και αρχείων καταγραφής διαγνωστικών στοιχείων</string>
+  <string name="morphe_debug_title">Ενεργοποίηση καταγραφής εντοπισμού σφαλμάτων</string>
   <string name="morphe_debug_stacktrace_title">Αρχείο καταγραφής εντοπισμού σφαλμάτων ίχνους στοίβας</string>
-  <string name="morphe_debug_stacktrace_summary_on">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων περιλαμβάνουν ίχνη στοίβας</string>
-  <string name="morphe_debug_stacktrace_summary_off">Τα αρχεία καταγραφής εντοπισμού σφαλμάτων δεν περιλαμβάνουν ίχνη στοίβας</string>
+  <string name="morphe_debug_stacktrace_summary">Περιλαμβάνει ίχνη στοίβας στα αρχεία καταγραφής εντοπισμού σφαλμάτων για να βοηθήσει στον εντοπισμό σφαλμάτων</string>
   <string name="morphe_debug_toast_on_error_title">Εμφάνιση μηνυμάτων σφαλμάτων του Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Εμφανίζεται μήνυμα στο κάτω μέρος της οθόνης αν προκύψει σφάλμα</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Δεν εμφανίζεται μήνυμα στο κάτω μέρος της οθόνης αν προκύψει σφάλμα</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Η απενεργοποίηση των μηνυμάτων σφαλμάτων κρύβει όλες τις ειδοποιήσεις σφαλμάτων που αφορούν το Morphe.
 
 Δε θα ειδοποιηθείτε για τυχόν απρόβλεπτα γεγονότα."</string>
@@ -141,15 +132,21 @@ Second \"item\" text"</string>
 
 Πατήστε το κουμπί \"Συνέχεια\" και επιτρέψτε τις αλλαγές βελτιστοποίησης."</string>
   <string name="gms_core_dialog_continue_text">Συνέχεια</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Διάλογος βελτιστοποίησης μπαταρίας</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Εμφανίζεται ο διάλογος βελτιστοποίησης μπαταρίας του MicroG</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Δεν εμφανίζεται ο διάλογος βελτιστοποίησης μπαταρίας του MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Εμφάνιση παραθύρου διαλόγου βελτιστοποίησης μπαταρίας</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Απενεργοποιώντας αυτό, θα αποκρυφτεί η προτροπή βελτιστοποίησης μπαταρίας MicroG.
 
 Εάν οι βελτιστοποιήσεις μπαταρίας δεν αλλάξουν, ενδέχεται να αντιμετωπίσετε:
 • Η εφαρμογή ενδέχεται να κλείνει τυχαία
 • Οι ειδοποιήσεις ενδέχεται να μην λειτουργούν
 • Η αναπαραγωγή στο παρασκήνιο ενδέχεται να μην λειτουργεί"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Διαχείριση συνδέσμων εφαρμογών</string>
+  <string name="morphe_link_handling_summary">Διαμόρφωση της εφαρμογής που θα ανοίγει συνδέσμους</string>
+  <string name="morphe_link_handling_step1_title">Βήμα 1: Απενεργοποίηση συνδέσμων αρχικής εφαρμογής</string>
+  <string name="morphe_link_handling_step1_message">Ανοίξτε τις ρυθμίσεις της αρχικής εφαρμογής και απενεργοποιήστε όλους τους συνδέσμους τομέα</string>
+  <string name="morphe_link_handling_step2_title">Βήμα 2: Ενεργοποίηση συνδέσμων τροποποιημένης εφαρμογής</string>
+  <string name="morphe_link_handling_step2_message">Ανοίξτε τις ρυθμίσεις της τροποποιημένης εφαρμογής και ενεργοποιήστε όλους τους συνδέσμους τομέα</string>
+  <string name="morphe_link_handling_open">Εξειδικευμένες ρυθμίσεις</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Πειραματική Ειδοποίηση 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Χρησιμοποιείτε μια πειραματική έκδοση της εφαρμογής ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

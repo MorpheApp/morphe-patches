@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Dîroka dizimê vala ye</string>
   <string name="morphe_settings_search_empty_history_summary">Bo raya şewitîna doza lêgerînê şopandî, î reîka lêgerînê binivîsîne û Enter bikşîne</string>
   <string name="morphe_settings_search_history_title">Nîşan da dîroka dizimê</string>
-  <string name="morphe_settings_search_history_summary_on">Dîroka dizimê nîşan da</string>
-  <string name="morphe_settings_search_history_summary_off">Dîroka dizimê nîşan nedane</string>
   <string name="morphe_show_menu_icons_title">Îkonên sazkirina Morphe nîşan da</string>
-  <string name="morphe_show_menu_icons_summary_on">Îkonên sazkirinê nîşan da</string>
-  <string name="morphe_show_menu_icons_summary_off">Îkonên sazkirinê nîşan nedane</string>
   <string name="morphe_language_title">Zimanê Morphe</string>
   <string name="morphe_language_user_dialog_message">"Wergerandin ji bo hin zimanên ku derketine, kêmtir e an tam nakin.
 
@@ -88,19 +84,15 @@ Da ku zimanên nû wergerînin an wergerandinên hebin baş bikin, malpera morph
   <string name="morphe_settings_about_licenses_loading">Barbare...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug kirin</string>
-  <string name="morphe_debug_screen_summary">Serdest amûrên pêşbirkaya bin</string>
-  <string name="morphe_debug_title">Înîştaînu debug</string>
-  <string name="morphe_debug_summary_on">Înîştaînu debug serdest e</string>
-  <string name="morphe_debug_summary_off">Înîştaînu debug serdest nê ye</string>
+  <string name="morphe_debug_screen_summary">Vebijarkirina vebijarkên pêşkeftî yên pêşdebazan û pelên tomara teşhîsê</string>
+  <string name="morphe_debug_title">Çalak kirina tomarên teşhîsê</string>
   <string name="morphe_debug_stacktrace_title">Rêveşeke logsê debug</string>
-  <string name="morphe_debug_stacktrace_summary_on">Logs debug tênî rêşên stackê</string>
-  <string name="morphe_debug_stacktrace_summary_off">Logs debug tênî rêşên stackê nakin</string>
+  <string name="morphe_debug_stacktrace_summary">Hêlanîna şopên pelan di tomarên teşhîsê de da ku alîkariya dîtina xeletiyan bike</string>
   <string name="morphe_debug_toast_on_error_title">Qextinê li toastê ser Morphe error</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Toast diqebîne de belav bibe de serê errorê</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Toast nê diqebîne de belav bibe de serê errorê</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Qextinê ava toastê dixebite gelî ser bibe ê qextinê li hemû qextinê têvene.
 
 Tu nedaî belav bibe de kû dabeş bendê neqezbîn."</string>
+  <string name="morphe_debug_export_logs_title">Rapora logên çepkirinê</string>
   <string name="morphe_debug_export_logs_summary">Logs debug ên Morphe vekişîne</string>
   <string name="morphe_debug_export_logs_file">Bê ser kontrolê vekişîne</string>
   <string name="morphe_debug_export_logs_success">Logs debug bi serketî hatin vekirin</string>
@@ -140,15 +132,21 @@ Quteyîn optimîzasyonên bateriyê ji bo MicroG bê bandora berhetiyê li ser k
 
 Serzêviya pêşveçûna din bitşikîne û guherînên optimîzasyonê pêşî bînin."</string>
   <string name="gms_core_dialog_continue_text">Bidomîne</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Pijdarê dovaniya optimîzasyona bateriyê</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Dîyaloga optimîzasyona bateriyê ya MicroG tê nîşandin</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Dîyaloga optimîzasyona bateriyê ya MicroG tê veşartin</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Nîşana pêşnîyarê optimîzasyona pîlê</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Birçawiya vê, dê ragirinê MicroG optimîzasyona bateriyê veşêre.
 
 Ger optimîzasyonên bateriyê neyhatin guherandin, dê we kêfa:
 • Serlo kêlî wezîneyê bigere
 • Ragirinan neçar bin
 • Lêxistinê paşverê nebêje"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Destûra vekirina lînkan</string>
+  <string name="morphe_link_handling_summary">Konfîgure bike kî appê lînkan veke</string>
+  <string name="morphe_link_handling_step1_title">Gav 1: Bihêz kirina girêdên serîlêdanê yê orjînal</string>
+  <string name="morphe_link_handling_step1_message">Vebijêrka serîlêdana orjînal veke û hemû girêdên domainê bihele</string>
+  <string name="morphe_link_handling_step2_title">Gav 2: Çalak kirina girêdên serîlêdanê yê guhartî</string>
+  <string name="morphe_link_handling_step2_message">Vebijêrka serîlêdana guhartî veke û hemû girêdên domainê çalak bike</string>
+  <string name="morphe_link_handling_open">Vebijêrki veke</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Agahdayî Eksperîmental 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Hûn versiyonek lêgerînî ya ⚠️ &lt;b&gt;%1$s&lt;/b&gt; bikujtine.

@@ -31,21 +31,13 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Fərdi</string>
   <string name="morphe_custom_branding_notification_icon_title">Bildiriş simvolu</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Tətbiq simvolun izlə</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirişi</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanılmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam əngəlləyici və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;Bunu düzəltmək üçün s.youtube.com-u&lt;/b&gt; &lt;b&gt;ağ siyahıya salın və ya bütün DNS əngəlləyiciləri və proksiləri bağlayın.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Təkrar göstərmə</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Video yayımların saxtalaşdır</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Oynatma problemlərin önləmək üçün qəbuledici video yayımların saxtalaşdır</string>
   <string name="morphe_spoof_video_streams_title">Video yayımların saxtalaşdır</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Video yayımları saxtalaşdırılıb
-
-Əgər YouTube Premium istifadəçisisinizsə, bu tənzimlənmə tələb olunmaya bilər"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Video yayımları saxtalaşmayıb
-
-Oynatma işləməyə bilər"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Hər hansı qəbuledici yayımları əldə etmək olmadı</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Bu tənzimləməni qapatmaq oynatma problemlərinə səbəb ola bilər.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +83,21 @@ Daxil olmaq üçün aşağıda davam et-i vurun"</string>
   <string name="morphe_oauth2_toast_reset">Android VR-dan Çıxıldı</string>
   <string name="morphe_oauth2_toast_invalid">Token-dəki etibarsız VR girişi, VR-a təkrar daxil olmağa cəhd et</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Oynadıcı JavaScript yenilənməsini qapat</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Oynadıcı JavaScript yenilənməsi qapadılıb
-
-• Etibarlı oynadıcı JavaScript hash-i tələb olunur
-• GVS-də Oynadıcı JavaScript hash-i ləğv edilərsə, oynatma uğursuz olur"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Oynadıcı JavaScript yenilənməsi işləkdir</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Oynadıcı JavaScript hash-ləri təqribi bir ay müddətində etibarlıdır və köhnələn hash-lər GVS tərəfindən ləğv edilə bilər.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Oynadıcı JavaScript hash-i</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">İşlək oynadıcı JavaScript hash-i qeyd et</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolunu qeyri-aktiv et</string>
-  <string name="morphe_disable_quic_protocol_summary_on">QUIC protokolu qapadılıb</string>
-  <string name="morphe_disable_quic_protocol_summary_off">QUIC protokolu işləkdir</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC səsin qapat</string>
-  <string name="morphe_disable_drc_audio_summary_on">DRC səsi qapalıdır</string>
-  <string name="morphe_disable_drc_audio_summary_off">DRC səsi işləkdir</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Orijinal səs dilini zorla</string>
-  <string name="morphe_force_original_audio_summary_on">Orijinal səs dilini faydalanmaq</string>
-  <string name="morphe_force_original_audio_summary_off">İlkin səs istifadəsi</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Tam ekran reklamlarını gizlət</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Tam ekran reklamları gizlidir</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Tam ekran reklamları görünür</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Bu xüsusiyyəti istifadə etmək üçün \"Video yayımların saxtalaşdır\"-ı Android Reel-ə və ya TV-yə dəyişdir</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Paylaşım keçidlərin təmizlə</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">İzlənmə sorğusu faktoru paylaşılan linklərdən silinir</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">İzlənmə sorğusu faktoru paylaşılan linklərdən silinmir</string>
   <string name="morphe_replace_music_with_youtube_title">Paylaşma keçidlərini youtube.com-a dəyişdir</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Paylaşılan keçidlər youtube.com istifadə edir</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Paylaşılan keçidlər music.youtube.com istifadə edir</string>
   <string name="morphe_replace_links_with_shortener_title">Paylaşma keçidlərini youtu.be-yə dəyişdir</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Paylaşılan canlı yayım və Shorts keçidləri youtu.be istifadə edir</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Paylaşılan canlı yayım və Shorts keçidləri əsil URL-lərin istifadə edir</string>
 </resources>

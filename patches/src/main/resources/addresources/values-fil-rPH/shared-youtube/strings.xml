@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">Pasadya</string>
   <string name="morphe_custom_branding_notification_icon_title">Icon ng abiso</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Sundan ang icon ng aplikasyon</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Itugma ang icon ng app</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Paunawa ng Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Hindi sine-save ang iyong kasaysayan ng panonood.&lt;br&gt;&lt;br&gt;Malamang na ito ay sanhi ng isang DNS ad blocker o network proxy.&lt;br&gt;&lt;br&gt;Upang ayusin ito, i-whitelist ang &lt;b&gt;s.youtube.com&lt;/b&gt; o patayin ang lahat ng DNS blocker at proxy.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Huwag nang ipakita muli</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Gayahin ang mga video stream</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Gayahin ang mga video stream ng kliyente upang maiwasan ang mga isyu sa pag-playback</string>
+  <string name="morphe_spoof_video_streams_screen_summary">I-configure ang client spoofing upang maiwasan ang mga isyu sa pag-playback</string>
   <string name="morphe_spoof_video_streams_title">Gayahin ang mga video stream</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Ginaya ang mga video stream
+  <string name="morphe_spoof_video_streams_summary">"Niloloko ang YouTube para magpadala ng isang compatible na video stream, na inaayos ang pag-playback para sa karamihan ng mga user
 
-Hindi na ito kinakailangan kung isa kang YouTube Premium na tagagamit"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Hindi ginaya ang mga video stream
-
-Maaaring hindi gumana ang playback"</string>
+Kung ikaw ay isang YouTube Premium user, maaaring hindi kinakailangan ang setting na ito"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Hindi makuha ang anumang mga stream ng kliyente</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Maaaring magdulot ng isyu sa playback kung pinatay mo ang pagpipilian na ito</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_oauth2_toast_reset">Nag-log out sa Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Imbalido ang sign in token ng VR, subukang mag-sign in muli sa VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Huwag paganahin ang pag-update ng JavaScript ng player</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Ang pag-update ng JavaScript ng player ay hindi pinagana
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"I-lock ang player JavaScript sa isang lokal na hash sa halip na kumuha ng mga update
 
-• Kinakailangan ang wastong player JavaScript hash
-• Hindi magtatagumpay ang pag-playback kung ang Player JavaScript hash ay binawi sa GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Ang pag-update ng JavaScript ng player ay pinagana</string>
+• Kinakailangan ang isang valid na player JavaScript hash
+• Mabibigo ang pag-playback kung ang Player JavaScript hash ay binawi sa GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Ang mga JavaScript hash ng player ay balido sa loob ng humigit-kumulang isang buwan, at ang mga hindi napapanahong hash ay maaaring i-revoke ng GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash ng JavaScript ng Player</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Ilagay ang isang wastong hash ng JavaScript ng player</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Patayin ang QUIC protocol</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Nakapatay ang QUIC protocol</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Pinagana ang QUIC protocol</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Patayin ang tunog ng DRC</string>
-  <string name="morphe_disable_drc_audio_summary_on">Nakapatay ang tunog ng DRC</string>
-  <string name="morphe_disable_drc_audio_summary_off">Pinagana ang tunog ng DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Puwersahan ang orihinal na tunog ng wika</string>
-  <string name="morphe_force_original_audio_summary_on">Ginagamit ang orihinal na tunog ng wika</string>
-  <string name="morphe_force_original_audio_summary_off">Ginagamit ang default na tunog</string>
+  <string name="morphe_force_original_audio_summary">Palaging pinatutugtog ang orihinal na audio track ng video sa halip na isang dubbed na bersyon</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Itago ang mga patalastas sa fullscreen</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">Nakatago ang mga patalastas sa fullscreen</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">Ipinapakita ang mga patalastas sa fullscreen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Para magamit ang feature na ito, baguhin ang \'Gayahin ang mga video stream\' sa Android Reel o TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">I-sanitize ang mga nakabahaging link</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Inalis ang pagsubaybay sa query parameter mula sa nakabahaging link</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Hindi inaalis ang pagsubaybay sa query parameter sa mga nakabahaging link</string>
+  <string name="morphe_sanitize_sharing_links_summary">Inaalis ang mga parameter ng query sa pagsubaybay mula sa mga ibinahaging link</string>
   <string name="morphe_replace_music_with_youtube_title">Baguhin ang mga nakabahaging link sa youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Gumagamit ng youtube.com ang mga nakabahaging link</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Gumagamit ng music.youtube.com ang mga nakabahaging link</string>
   <string name="morphe_replace_links_with_shortener_title">Baguhin ang mga nakabahaging link sa youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">Ang mga link ng live stream at Shorts na ibinahagi ay gumagamit ng youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">Ang mga link sa live stream at Shorts ay gumagamit ng kanilang orihinal na mga URL</string>
+  <string name="morphe_replace_links_with_shortener_summary">Pinipilit ang mga live stream at Shorts na gamitin ang pinaikling format ng URL na youtu.be</string>
 </resources>

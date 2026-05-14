@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Няма историятя на търсене</string>
   <string name="morphe_settings_search_empty_history_summary">За да запазите история на търсенето, въведете заявка за търсене и натиснете Enter</string>
   <string name="morphe_settings_search_history_title">Покажи история търсене на настройки</string>
-  <string name="morphe_settings_search_history_summary_on">Историята на търсенията в настройките е показана</string>
-  <string name="morphe_settings_search_history_summary_off">Историята на търсенията в настройките не е показана.</string>
   <string name="morphe_show_menu_icons_title">Покажи икони за настройки на Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Иконите на настройките се показват</string>
-  <string name="morphe_show_menu_icons_summary_off">Иконите на настройките не се показват</string>
   <string name="morphe_language_title">Език на Morphe</string>
   <string name="morphe_language_user_dialog_message">"Преводи за някои езици може да липсват или да са незавършени.
 
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">Зареждане...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отстраняване на грешки</string>
-  <string name="morphe_debug_screen_summary">Активиране или деактивиране на отстраняването на грешки</string>
+  <string name="morphe_debug_screen_summary">Конфигуриране на разширени опции за разработчици и диагностични логове</string>
   <string name="morphe_debug_title">Дневник за отчетените грешки</string>
-  <string name="morphe_debug_summary_on">Отчетите за грешки са включени</string>
-  <string name="morphe_debug_summary_off">Отчетите за грешки са изключени</string>
   <string name="morphe_debug_stacktrace_title">Запис на стека на отстраняване на грешки</string>
-  <string name="morphe_debug_stacktrace_summary_on">Записите на отстраняване на грешки включват стекове</string>
-  <string name="morphe_debug_stacktrace_summary_off">Записите на отстраняване на грешки не включват стекове</string>
+  <string name="morphe_debug_stacktrace_summary">Включва стекове от извиквания в дебъг логовете, за да помогне за идентифицирането на грешки</string>
   <string name="morphe_debug_toast_on_error_title">Показване на уведомление при грешка в Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Съобщение ще бъде показано, ако се появи грешка</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Съобщение няма да бъде показано, ако се появи грешка</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Изключването на изскачащи съобщения за грешки крие всички известия за грешки на Morphe.
 
 Няма да бъдете уведомени за неочаквани събития."</string>
@@ -141,15 +132,21 @@ Second \"item\" text"</string>
 
 Докоснете бутона за продължаване и разрешете промени в оптимизацията."</string>
   <string name="gms_core_dialog_continue_text">Продължи</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Диалогово прозорец за оптимизация на батерията</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Показва се диалогов прозорец за оптимизация на батерията MicroG</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Не се показва диалогов прозорец за оптимизация на батерията MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Показване на диалогов прозорец за оптимизация на батерията</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Деактивирането на това ще скрие подканата за оптимизация на батерията MicroG.
 
 Ако оптимизациите на батерията не бъдат променени, може да изпитате:
 • Приложението може случайно да се затвори
 • Известията може да не работят
 • Възпроизвеждането във фонов режим може да не работи"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Обработка връзки в приложението</string>
+  <string name="morphe_link_handling_summary">Конфигуриране кое приложение отваря връзки</string>
+  <string name="morphe_link_handling_step1_title">Стъпка 1: Деактивирайте оригиналните връзки на приложението</string>
+  <string name="morphe_link_handling_step1_message">Отворете настройките на оригиналното приложение и деактивирайте всички връзки към домейни</string>
+  <string name="morphe_link_handling_step2_title">Стъпка 2: Активирайте коригираните връзки на приложението</string>
+  <string name="morphe_link_handling_step2_message">Отворете настройките на коригираното приложение и активирайте всички връзки към домейни</string>
+  <string name="morphe_link_handling_open">Отворете настройки</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментална Обява 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Използвате експериментална версия на приложението ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

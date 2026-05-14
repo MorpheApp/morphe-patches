@@ -55,30 +55,28 @@ val hidePlayerFlyoutMenuComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_hide_player_flyout",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_player_flyout_captions"),
-                    SwitchPreference("morphe_hide_player_flyout_captions_footer"),
-                    SwitchPreference("morphe_hide_player_flyout_captions_header"),
-                    SwitchPreference("morphe_hide_player_flyout_listen_with_youtube_music"),
-                    SwitchPreference("morphe_hide_player_flyout_help"),
-                    SwitchPreference("morphe_hide_player_flyout_speed"),
-                    SwitchPreference("morphe_hide_player_flyout_lock_screen"),
+                    SwitchPreference("morphe_hide_player_flyout_captions", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_captions_footer", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_captions_header", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_listen_with_youtube_music", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_help", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_speed", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_lock_screen", summaryKey = null),
                     SwitchPreference(
                         key = "morphe_hide_player_flyout_audio_track",
-                        tag = "app.morphe.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference"
-                    ),
+                        tag = "app.morphe.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference", summaryKey = null),
                     SwitchPreference(
                         key = "morphe_hide_player_flyout_audio_track_footer",
-                        tag = "app.morphe.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference"
-                    ),
-                    SwitchPreference("morphe_hide_player_flyout_quality"),
-                    SwitchPreference("morphe_hide_player_flyout_quality_footer"),
-                    SwitchPreference("morphe_hide_player_flyout_quality_header"),
-                    SwitchPreference("morphe_hide_player_flyout_additional_settings"),
-                    SwitchPreference("morphe_hide_player_flyout_ambient_mode"),
-                    SwitchPreference("morphe_hide_player_flyout_stable_volume"),
-                    SwitchPreference("morphe_hide_player_flyout_loop_video"),
-                    SwitchPreference("morphe_hide_player_flyout_sleep_timer"),
-                    SwitchPreference("morphe_hide_player_flyout_watch_in_vr"),
+                        tag = "app.morphe.extension.youtube.settings.preference.HideAudioFlyoutMenuPreference", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_quality", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_quality_footer", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_quality_header", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_additional_settings", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_ambient_mode", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_stable_volume", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_loop_video", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_sleep_timer", summaryKey = null),
+                    SwitchPreference("morphe_hide_player_flyout_watch_in_vr", summaryKey = null),
                 )
             )
         )

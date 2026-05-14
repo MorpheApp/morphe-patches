@@ -46,8 +46,8 @@ abstract class BasePreference(
     open fun serialize(ownerDocument: Document, resourceCallback: (BaseResource) -> Unit): Element =
         ownerDocument.createElement(tag).apply {
             key?.let { setAttribute("android:key", it) }
-            titleKey?.let { setAttribute("android:title", "@string/${titleKey}") }
-            summaryKey?.let { addSummary(it) }
+            titleKey?.let { setAttribute("android:title", "@string/$it") }
+            summaryKey?.let { setAttribute("android:summary", "@string/$it") }
 
             if (icon != null || iconBold != null) {
                 setAttribute("android:icon",  icon ?: iconBold)
@@ -56,8 +56,4 @@ abstract class BasePreference(
             layout?.let { setAttribute("android:layout", layout) }
         }
 
-    companion object {
-        fun Element.addSummary(summaryKey: String, summaryType: SummaryType = SummaryType.DEFAULT) =
-            setAttribute("android:${summaryType.type}", "@string/$summaryKey")
-    }
 }

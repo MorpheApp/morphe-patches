@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Einschränkung: Visuelle Abstandshalter werden möglicherweise nicht ausgeblendet"</string>
   <string name="morphe_remove_notification_dialog_title">Benachrichtigungs-Vorschlagsdialog entfernen</string>
-  <string name="morphe_remove_notification_dialog_summary">Entfernt den Benachrichtigungs-Vorschlagsdialog, der beim Besuch eines Subreddits angezeigt wird, indem er automatisch abgelehnt wird</string>
+  <string name="morphe_remove_notification_dialog_summary">Entfernt den Benachrichtigungsvorschlagsdialog automatisch beim Besuch eines Subreddits</string>
   <string name="morphe_show_view_count_title">Anzahl der Aufrufe anzeigen</string>
-  <string name="morphe_show_view_count_summary">"Zeigt die Anzahl der Aufrufe von Beiträgen an
-
-Einschränkung: Wird nur angezeigt, wenn die API-Antwort die Anzahl der Aufrufe enthält"</string>
+  <string name="morphe_show_view_count_summary">Einschränkung: Nur verfügbar, wenn die API-Antwort die Anzahl der Aufrufe enthält</string>
   <string name="morphe_remove_nsfw_dialog_title">NSFW-Warnungsdialog entfernen</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Entfernt den NSFW-Warnungsdialog, der beim Besuch eines Subreddits angezeigt wird, indem er automatisch akzeptiert wird</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Akzeptiert die NSFW-Inhaltswarnung automatisch beim Besuch eines Subreddits</string>
   <string name="morphe_screen_miscellaneous_title">Sonstiges</string>
   <string name="morphe_about_title">Über</string>
   <string name="morphe_about_summary">Patch-Version und offizielle Links</string>
   <string name="morphe_sanitize_sharing_links_title">Freigabe-Links säubern</string>
-  <string name="morphe_sanitize_sharing_links_summary">Bereinigt Freigabe-Links, indem Tracking-Query-Parameter entfernt werden</string>
+  <string name="morphe_sanitize_sharing_links_summary">Entfernt Tracking-Abfrageparameter aus freigegebenen Links</string>
   <string name="morphe_open_links_directly_title">Links direkt öffnen</string>
-  <string name="morphe_open_links_directly_summary">Überspringt Umleitungs-URLs in externen Links</string>
+  <string name="morphe_open_links_directly_summary">Umgeht Weiterleitungs-URLs beim Öffnen externer Links</string>
   <string name="morphe_open_links_externally_title">Links extern öffnen</string>
   <string name="morphe_open_links_externally_summary">Öffnet Links in Ihrem Browser anstatt im In-App-Browser</string>
 </resources>

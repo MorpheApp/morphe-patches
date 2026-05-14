@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">ڕاسته‌ بدره‌، له‌گه‌عى ті بانه‌ لاسه‌ یاێت؟</string>
   <string name="morphe_settings_search_empty_history_summary">بۆو زه‌مه‌نوه‌كه‌ ڕژازكه‌يه‌كه كه‌وه‌، وتاره‌يه‌ك بRoh رباشه‌كه‌ بهدینه‌ه تا هێلفه‌ر تهزتی بالانه‌كه‌ دا lepاهار بهنگرئ</string>
   <string name="morphe_settings_search_history_title">تنتینگِ بهژوکى كه‌ سكيّاره مِن ركبتانكه‌كتانكه‌ كه‌ لاوه‌كانա տրա պեռթըն վեղտερ տሩթռլ</string>
-  <string name="morphe_settings_search_history_summary_on">پێناسەی لێکدانەکان دەبیندرێت</string>
-  <string name="morphe_settings_search_history_summary_off">پێناسەی لێکدانەکان نەدبیندرێت</string>
   <string name="morphe_show_menu_icons_title">نیشانەکانی ڕێکدالەکانی مورفە بنێرن</string>
-  <string name="morphe_show_menu_icons_summary_on">نیشانەکانی ڕێکدالەکان دەبیندرێن</string>
-  <string name="morphe_show_menu_icons_summary_off">نیشانەکانی ڕێکدالەکان نەبیندرێن</string>
   <string name="morphe_language_title">زمانی مورفە</string>
   <string name="morphe_language_user_dialog_message">"فريتة‌ي بة‌شي‌كه‌ي زوانه‌كانيش نه‌بوون، يان بة‌تەواوه‌ نه‌كه‌ون.\n\nبۆ وه‌رگێڕانێكی زوانه‌ تازه‌كان ياخود باشكردنێكی وه‌رگێڕانه‌كانی ئێستا، سه‌رداني morphe.software/translate بكه‌"</string>
   <string name="morphe_language_DEFAULT">زمانی ئەپ</string>
@@ -69,16 +65,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_donate">خۆڵبەخش</string>
   <string name="morphe_settings_about_links_credits">کۆددان</string>
   <string name="morphe_settings_about_links_licenses">دەربارەی نوسینەکانی لایسەنسی</string>
-  <string name="morphe_settings_about_licenses_loading">ءنتفائورك،</string>
+  <string name="morphe_settings_about_licenses_loading">بارگە دەست</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">سەرپێچوان</string>
-  <string name="morphe_debug_screen_summary">هەرێمێک دەوێت دەخاتەوە یا ڕا دەخاتەوە</string>
-  <string name="morphe_debug_title">خه‌ت ووتاره‌</string>
-  <string name="morphe_debug_summary_on">خه‌ت ووتاره‌ى دروۇرته</string>
-  <string name="morphe_debug_summary_off">خه‌ت ووتاره‌ى دروزمايانا</string>
   <string name="morphe_debug_toast_on_error_title">نیشاندانی ڕێوشوێنی Morphe-ی نیشاده</string>
-  <string name="morphe_debug_toast_on_error_summary_on">ئاگاداری دەبیندرێت ئەگەر ڕەشە بێت</string>
-  <string name="morphe_debug_toast_on_error_summary_off">ئاگاداری نەبیندرێت ئەگەر ڕەشە بێت</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"خواردنی ڕەشە ئاگاداری ڕەشە ڕاخشایە.
 
 هیچ ڕاستی ڕاشخراو نەکریتەوە."</string>
@@ -104,14 +94,12 @@ Second \"item\" text"</string>
 خا دەختم بو دەستخاشو دەبنیگۆ.
 "</string>
   <string name="gms_core_dialog_continue_text">خا کەر</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">دیالۆگە کۆتاییهێنانی باتەڕی</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">دیالۆگە کۆتاییهێنانی باتەڕی MicroG دەربخراوە</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">دیالۆگە کۆتاییهێنانی باتەڕی MicroG نمایش نەکراوە</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"خۆراکدانەوەی ئەمەش ڕاگیراوی بونیادنەدانی MicroG کۆتاییهێنانی باتەڕی دەربخات.
 
 ئەگەر کۆتاییهێنانی باتەڕی نەگۆرابێت، ئەوا خەمڵکێش دەبیت:
 • ئەپ دەکرێت بەتاڵ بێت
 • نوتەکە دەکرێت کارنەکات
 • پەربوونەوەی پسخۆر دەکرێت کارنەکات"</string>
+  <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
 </resources>

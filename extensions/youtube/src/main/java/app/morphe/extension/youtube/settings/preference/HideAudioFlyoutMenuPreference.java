@@ -16,8 +16,6 @@ public class HideAudioFlyoutMenuPreference extends SwitchPreference {
         if (SpoofVideoStreamsPatch.spoofingToClientWithNoMultiAudioStreams()) {
             String summary = str("morphe_hide_player_flyout_audio_track_not_available");
             setSummary(summary);
-            setSummaryOn(summary);
-            setSummaryOff(summary);
         }
     }
 

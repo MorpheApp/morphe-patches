@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Ograničenje: Vizuelni razmak ne može da bude sakriven"</string>
   <string name="morphe_remove_notification_dialog_title">Ukloni dijalog predloga obaveštenja</string>
-  <string name="morphe_remove_notification_dialog_summary">Uklanja dijalog predloga obaveštenja koji se pojavljuje prilikom posete podreddit-u automatskim odbijanjem</string>
-  <string name="morphe_show_view_count_title">Pokaži broj pregleda</string>
-  <string name="morphe_show_view_count_summary">"Prikazuje broj pregleda objava
-
-Ograničenje: Prikazuje se samo ako odgovor API-ja uključuje broj pregleda"</string>
+  <string name="morphe_remove_notification_dialog_summary">Automatski zatvara prozor za predlog notifikacije prilikom posete subreditu</string>
+  <string name="morphe_show_view_count_title">Prikaži broj pregleda na objavama</string>
+  <string name="morphe_show_view_count_summary">Ograničenje: Dostupno samo ako odgovor API-ja uključuje broj pregleda.</string>
   <string name="morphe_remove_nsfw_dialog_title">Ukloni dijalog upozorenja NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Uklanja dijalog upozorenja NSFW koji se pojavljuje prilikom posete podreddit-u automatskim prihvatanjem</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Automatski prihvatа upozorenje o sadržaju za odrasle prilikom posete podreditu.</string>
   <string name="morphe_screen_miscellaneous_title">Razno</string>
   <string name="morphe_about_title">O programu</string>
   <string name="morphe_about_summary">Verzija zakrpe i zvanični linkovi</string>
   <string name="morphe_sanitize_sharing_links_title">Očisti deljene linkove</string>
-  <string name="morphe_sanitize_sharing_links_summary">Čisti linkove za deljenje uklanjanjem parametara za praćenje</string>
+  <string name="morphe_sanitize_sharing_links_summary">Uklanja parametre upita za praćenje iz deljenih linkova.</string>
   <string name="morphe_open_links_directly_title">Otvaraj linkove direktno</string>
-  <string name="morphe_open_links_directly_summary">Preskače URL-ove za preusmeravanje u spoljašnjim linkovima</string>
+  <string name="morphe_open_links_directly_summary">Zaobilazi URL adrese za preusmeravanje prilikom otvaranja eksternih linkova.</string>
   <string name="morphe_open_links_externally_title">Otvaraj linkove spolja</string>
-  <string name="morphe_open_links_externally_summary">Otvara linkove u tvom pregledaču umesto u pregledaču u aplikaciji</string>
+  <string name="morphe_open_links_externally_summary">Otvara linkove u vašem pregledaču umesto u pregledaču unutar aplikacije.</string>
 </resources>

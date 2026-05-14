@@ -30,20 +30,13 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_4_misc_title">其他</string>
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_music_hide_get_premium_label_title">隱藏「取得 Music Premium」標籤</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Get Music Premium 標籤已隱藏</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Get Music Premium 標籤已顯示</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">隱藏影片廣告</string>
-  <string name="morphe_music_hide_video_ads_summary_on">影片廣告已隱藏</string>
-  <string name="morphe_music_hide_video_ads_summary_off">影片廣告已顯示</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">漸色混合</string>
-  <string name="morphe_music_crossfade_screen_summary">讓曲目之間無縫過渡</string>
+  <string name="morphe_music_crossfade_screen_summary">自訂音軌平滑過渡的方式</string>
   <string name="morphe_music_crossfade_enabled_title">啟用漸色混合</string>
-  <string name="morphe_music_crossfade_enabled_summary_on">曲目漸色混合</string>
-  <string name="morphe_music_crossfade_enabled_summary_off">已停用漸色混合</string>
   <string name="morphe_music_crossfade_curve_title">淡出曲線</string>
-  <string name="morphe_music_crossfade_curve_summary">音軌之間的音量過渡方式</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">等功率</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">微妙延遲</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">柔和過渡</string>
@@ -64,14 +57,11 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_9000ms">9 秒</string>
   <string name="morphe_crossfade_duration_10000ms">10 秒</string>
   <string name="morphe_music_crossfade_on_skip_title">手動跳過時淡出</string>
-  <string name="morphe_music_crossfade_on_skip_summary_on">手動跳過音軌時播放淡出</string>
-  <string name="morphe_music_crossfade_on_skip_summary_off">手動跳過不會淡出</string>
+  <string name="morphe_music_crossfade_on_skip_summary">手動跳到下一首曲目時適用淡入淡出效果</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">自動循環時淡出</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_on">音軌結束並循環到下一首時播放淡出</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary_off">自動循環不會淡出</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">曲目自然結束時適用淡入淡出效果</string>
   <string name="morphe_music_crossfade_session_control_title">工作階段控制</string>
-  <string name="morphe_music_crossfade_session_control_summary_on">"長按隨機播放按鈕以暫停或恢復淡出"</string>
-  <string name="morphe_music_crossfade_session_control_summary_off">工作階段控制已停用</string>
+  <string name="morphe_music_crossfade_session_control_summary">長按洗牌按鈕以暫停或恢復淡入淡出效果</string>
   <string name="morphe_music_crossfade_paused_toast">已暂停此會話的淡入淡出效果</string>
   <string name="morphe_music_crossfade_resumed_toast">淡入淡出效果已恢復</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">啟用淡入淡出效果時，視訊模式不可用</string>
@@ -83,23 +73,13 @@ Second \"item\" text"</string>
 VazerOG實作此功能"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">啟用永久重複播放</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">已啟用永久重複播放</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">已停用永久重複播放</string>
   <!-- layout.buttons.hideButtons -->
   <string name="morphe_music_hide_cast_button_title">隱藏投放按鈕</string>
-  <string name="morphe_music_hide_cast_button_summary_on">已隱藏投放按鈕</string>
-  <string name="morphe_music_hide_cast_button_summary_off">已顯示投放按鈕</string>
   <string name="morphe_music_hide_history_button_title">隱藏歷史記錄按鈕</string>
-  <string name="morphe_music_hide_history_button_summary_on">已隱藏歷史記錄按鈕</string>
-  <string name="morphe_music_hide_history_button_summary_off">已顯示歷史記錄按鈕</string>
   <string name="morphe_music_hide_notification_button_title">隱藏通知按鈕</string>
-  <string name="morphe_music_hide_notification_button_summary_on">已隱藏通知按鈕</string>
-  <string name="morphe_music_hide_notification_button_summary_off">已顯示通知按鈕</string>
   <string name="morphe_music_hide_search_button_title">隱藏搜尋按鈕</string>
-  <string name="morphe_music_hide_search_button_summary_on">已隱藏搜尋按鈕</string>
-  <string name="morphe_music_hide_search_button_summary_off">已顯示搜尋按鈕</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">變更起始頁面</string>
+  <string name="morphe_change_start_page_title">開始頁面</string>
   <string name="morphe_change_start_page_entry_default">預設</string>
   <string name="morphe_change_start_page_entry_charts">圖表</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">待播清單</string>
@@ -112,54 +92,30 @@ VazerOG實作此功能"</string>
   <string name="morphe_change_start_page_entry_subscriptions">訂閱內容</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">隱藏類別列</string>
-  <string name="morphe_music_hide_category_bar_summary_on">已隱藏類別列</string>
-  <string name="morphe_music_hide_category_bar_summary_off">已顯示類別列</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">變更迷你播放器顏色</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">迷你播放器顏色符合全螢幕播放器</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">迷你播放器使用預設顏色</string>
+  <string name="morphe_music_change_miniplayer_color_summary">迷你播放器顏色符合全螢幕播放器</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
   <string name="morphe_music_miniplayer_next_button_title">顯示下一首按鈕於迷你播放器</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">顯示下一首按鈕於迷你播放器</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">不顯示下一首按鈕於迷你播放器</string>
   <string name="morphe_music_miniplayer_previous_button_title">顯示上一首按鈕於迷你播放器</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">顯示上一首按鈕於迷你播放器</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">不顯示上一首按鈕於迷你播放器</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">啟用強制迷你播放器</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">迷你播放器在播放變更時保持最小化</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">當播放內容變更時，迷你播放器會切換至全螢幕</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">防止播放器在開始新曲目時自動展開至全螢幕</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">導覽列</string>
-  <string name="morphe_music_navigation_bar_screen_summary">隱藏或變更導覽列按鈕</string>
+  <string name="morphe_music_navigation_bar_screen_summary">選擇要在導覽列中顯示哪些按鈕</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">隱藏「首頁」</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">已隱藏「首頁」按鈕</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">已顯示「首頁」按鈕</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">隱藏「首頁」按鈕</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">隱藏「發現」</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">已隱藏「發現」按鈕</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">已顯示「發現」按鈕</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">隱藏「音訊範例」按鈕</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">隱藏「探索」</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">已隱藏「探索」按鈕</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">已顯示「探索」按鈕</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">隱藏「探索」按鈕</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">隱藏媒體庫</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">已隱藏「媒體庫」按鈕</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">已顯示「媒體庫」按鈕</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">隱藏「媒體庫」按鈕</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">隱藏升級</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">已隱藏「升級」按鈕</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">已顯示「升級」按鈕</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">隱藏「升級」按鈕</string>
   <string name="morphe_music_hide_navigation_bar_title">隱藏導覽列</string>
-  <string name="morphe_music_hide_navigation_bar_summary_on">已隱藏導覽列</string>
-  <string name="morphe_music_hide_navigation_bar_summary_off">已顯示導覽列</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">隱藏導覽列按鈕標籤</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">已隱藏「標籤」</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">已顯示「標籤」</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">隱藏升級按鈕</string>
-  <string name="morphe_music_hide_upgrade_button_summary_on">已隱藏按鈕</string>
-  <string name="morphe_music_hide_upgrade_button_summary_off">已顯示按鈕</string>
 </resources>

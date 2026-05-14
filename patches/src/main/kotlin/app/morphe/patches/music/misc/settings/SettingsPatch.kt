@@ -116,7 +116,7 @@ val settingsPatch = bytecodePatch(
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_settings_search_history"),
+            SwitchPreference("morphe_settings_search_history", summaryKey = null),
         )
 
         PreferenceScreen.MISC.addPreferences(

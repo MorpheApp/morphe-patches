@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">搜索历史为空</string>
   <string name="morphe_settings_search_empty_history_summary">要保存搜索历史，请键入搜索查询并按回车键</string>
   <string name="morphe_settings_search_history_title">显示设置搜索历史记录</string>
-  <string name="morphe_settings_search_history_summary_on">设置搜索历史记录已显示</string>
-  <string name="morphe_settings_search_history_summary_off">不显示设置搜索历史记录</string>
   <string name="morphe_show_menu_icons_title">显示Morphe设置图标</string>
-  <string name="morphe_show_menu_icons_summary_on">设置图标已显示</string>
-  <string name="morphe_show_menu_icons_summary_off">未显示设置图标</string>
   <string name="morphe_language_title">Morphe 语言</string>
   <string name="morphe_language_user_dialog_message">"某些语言的翻译可能缺失或不完整。
 
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">正在加载…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">调试</string>
-  <string name="morphe_debug_screen_summary">启用或禁用调试选项</string>
-  <string name="morphe_debug_title">调试日志</string>
-  <string name="morphe_debug_summary_on">已启用调试日志记录</string>
-  <string name="morphe_debug_summary_off">已禁用调试日志记录</string>
+  <string name="morphe_debug_screen_summary">配置高级开发者选项和诊断日志</string>
+  <string name="morphe_debug_title">启用调试日志</string>
   <string name="morphe_debug_stacktrace_title">调试日志堆栈跟踪标题</string>
-  <string name="morphe_debug_stacktrace_summary_on">调试日志包括堆栈跟踪</string>
-  <string name="morphe_debug_stacktrace_summary_off">调试日志不包括堆栈跟踪</string>
+  <string name="morphe_debug_stacktrace_summary">调试日志包含堆栈跟踪，有助于识别错误</string>
   <string name="morphe_debug_toast_on_error_title">在发生 Morphe 错误时显示 Toast</string>
-  <string name="morphe_debug_toast_on_error_summary_on">发生错误时显示Toast</string>
-  <string name="morphe_debug_toast_on_error_summary_off">发生错误时不显示Toast</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"关闭错误 Toast 会隐藏所有 Morphe 错误通知。
 
 您不会收到任何意外事件的通知。"</string>
@@ -141,15 +132,21 @@ Second \"item\" text"</string>
 
 点击继续按钮并允许优化更改。"</string>
   <string name="gms_core_dialog_continue_text">继续</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">电池优化对话框</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">显示 MicroG 电池优化对话框</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">不显示 MicroG 电池优化对话框</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">显示电池优化对话框</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"禁用此功能会隐藏 MicroG 电池优化提示。
 
 如果未更改电池优化设置，您可能会遇到以下情况：
 • 应用可能会随机关闭
 • 通知可能无法正常工作
 • 后台播放可能无法正常工作"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">应用链接处理</string>
+  <string name="morphe_link_handling_summary">配置哪个应用打开链接</string>
+  <string name="morphe_link_handling_step1_title">步骤 1：禁用原始应用链接</string>
+  <string name="morphe_link_handling_step1_message">打开原始应用的设置并禁用所有域名链接</string>
+  <string name="morphe_link_handling_step2_title">步骤 2：启用修补的应用链接</string>
+  <string name="morphe_link_handling_step2_message">打开修补应用的设置并启用所有域名链接</string>
+  <string name="morphe_link_handling_open">导入 设置</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 实验性提示 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"您正在使用⚠️ &lt;b&gt;%1$s&lt;/b&gt;的实验性应用版本。

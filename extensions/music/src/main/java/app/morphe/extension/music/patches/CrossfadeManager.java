@@ -6,9 +6,12 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.os.VibratorManager;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -1393,20 +1396,19 @@ public class CrossfadeManager {
         if (ctx != null) {
             try {
                 Vibrator vib;
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
-                    android.os.VibratorManager vibratorManager = (android.os.VibratorManager)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    @SuppressLint("WrongConstant")
+                    VibratorManager vibratorManager = (VibratorManager)
                             ctx.getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
                     vib = vibratorManager != null ? vibratorManager.getDefaultVibrator() : null;
                 } else {
-                    @SuppressWarnings("deprecation")
-                    Vibrator legacyVib = (Vibrator) ctx.getSystemService(Context.VIBRATOR_SERVICE);
-                    vib = legacyVib;
+                    vib = (Vibrator) ctx.getSystemService(Context.VIBRATOR_SERVICE);
                 }
 
                 if (vib != null && vib.hasVibrator()) {
-                    android.os.VibrationEffect effect =
-                            android.os.VibrationEffect.createOneShot(100,
-                                    android.os.VibrationEffect.DEFAULT_AMPLITUDE);
+                    VibrationEffect effect =
+                            VibrationEffect.createOneShot(100,
+                                    VibrationEffect.DEFAULT_AMPLITUDE);
                     vib.vibrate(effect);
                 }
             } catch (Exception ex) {

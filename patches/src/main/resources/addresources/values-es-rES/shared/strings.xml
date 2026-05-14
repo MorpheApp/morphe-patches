@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">El historial de búsqueda está vacío</string>
   <string name="morphe_settings_search_empty_history_summary">Para guardar el historial de búsqueda, escribe una consulta de búsqueda y pulsa Enter</string>
   <string name="morphe_settings_search_history_title">Mostrar el historial de búsqueda de ajustes</string>
-  <string name="morphe_settings_search_history_summary_on">El historial de búsqueda de los ajustes es visible</string>
-  <string name="morphe_settings_search_history_summary_off">El historial de búsqueda de ajustes está oculto</string>
   <string name="morphe_show_menu_icons_title">Mostrar iconos de configuración de Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Se muestran los iconos de configuración</string>
-  <string name="morphe_show_menu_icons_summary_off">No se muestran los iconos de configuración</string>
   <string name="morphe_language_title">Idioma de Morphe</string>
   <string name="morphe_language_user_dialog_message">"Las traducciones para algunos idiomas pueden faltar o estar incompletas.
 
@@ -88,16 +84,11 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_settings_about_licenses_loading">Cargando...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuración</string>
-  <string name="morphe_debug_screen_summary">Activar o desactivar las opciones de depuración</string>
+  <string name="morphe_debug_screen_summary">Configurar opciones avanzadas de desarrollador y registros de diagnóstico</string>
   <string name="morphe_debug_title">Registro de depuración</string>
-  <string name="morphe_debug_summary_on">Los registros de depuración están habilitados</string>
-  <string name="morphe_debug_summary_off">Los registros de depuración están desactivados</string>
   <string name="morphe_debug_stacktrace_title">Registro de depuración de la traza de pila</string>
-  <string name="morphe_debug_stacktrace_summary_on">Los registros de depuración incluyen trazas de pila</string>
-  <string name="morphe_debug_stacktrace_summary_off">Los registros de depuración no incluyen trazas de pila</string>
+  <string name="morphe_debug_stacktrace_summary">Incluye rastreos de pila en los registros de depuración para ayudar a identificar errores</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar aviso de error en Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Se mostrará un aviso si se produce un error</string>
-  <string name="morphe_debug_toast_on_error_summary_off">No se mostrará un aviso si se produce un error</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar los avisos de error oculta todas las notificaciones de error de Morphe.
 
 No se le notificará de ningún evento inesperado."</string>
@@ -141,15 +132,21 @@ Deshabilitar las optimizaciones de batería para MicroG no tendrá un efecto neg
 
 Toca el botón continuar y permite los cambios de optimización."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Diálogo de optimización de la batería</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">El diálogo de optimización de batería de MicroG está visible</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">El diálogo de optimización de batería de MicroG está oculto</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">El diálogo de optimización de batería de MicroG está visible</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Si desactivas esta opción, se ocultará el mensaje de optimización de la batería de MicroG.
 
 Si no se modifican las optimizaciones de la batería, es posible que se produzcan los siguientes problemas:
 • La aplicación puede cerrarse de forma aleatoria
 • Es posible que las notificaciones no funcionen
 • Es posible que la reproducción en segundo plano no funcione"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Manejo de enlaces de la aplicación</string>
+  <string name="morphe_link_handling_summary">Configura qué aplicación abre los enlaces</string>
+  <string name="morphe_link_handling_step1_title">Paso 1: Desactivar los enlaces de la aplicación original</string>
+  <string name="morphe_link_handling_step1_message">Abra la configuración de la aplicación original y desactive todos los enlaces de dominio</string>
+  <string name="morphe_link_handling_step2_title">Paso 2: Activar los enlaces de la aplicación parcheada</string>
+  <string name="morphe_link_handling_step2_message">Abra la configuración de la aplicación parcheada y active todos los enlaces de dominio</string>
+  <string name="morphe_link_handling_open">Abrir configuración</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 ¡Alerta experimental! 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Estás usando una versión experimental de la app: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

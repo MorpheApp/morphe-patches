@@ -31,21 +31,18 @@ Second \"item\" text"</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
   <string name="morphe_custom_branding_icon_entry_6">सानुकूल</string>
   <string name="morphe_custom_branding_notification_icon_title">सूचना चिन्ह</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">ॲप चिन्ह फॉलो करा</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">ॲप आयकॉन जुळवा</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">मॉर्फे सूचना</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">तुमचा पाहण्याचा इतिहास जतन होत नाही.&lt;br&gt;&lt;br&gt;हे बहुधा डीएनए ब्लॉक किंवा नेटवर्क प्रॉक्सीमुळे झाले आहे.&lt;br&gt;&lt;br&gt;हे ठीक करण्यासाठी, &lt;b&gt;s.youtube.com&lt;/b&gt;ला व्हाईटलिस्ट करा किंवा सर्व डीएनए ब्लॉकर्स आणि प्रॉक्सी बंद करा.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">पुन्हा दाखवू नका</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">व्हिडिओ स्ट्रीम्सचा देखावा करा</string>
-  <string name="morphe_spoof_video_streams_screen_summary">व्हिडिओ स्ट्रीम्सचा देखावा करा</string>
+  <string name="morphe_spoof_video_streams_screen_summary">प्लेबॅक समस्या टाळण्यासाठी क्लायंट स्पूफिंग कॉन्फिगर करा</string>
   <string name="morphe_spoof_video_streams_title">व्हिडिओ स्ट्रीम्सचा देखावा करा</string>
-  <string name="morphe_spoof_video_streams_summary_on">"व्हिडिओ स्ट्रीम्सचा देखावा केला गेला आहे
+  <string name="morphe_spoof_video_streams_summary">"YouTube ला सुसंगत व्हिडिओ स्ट्रीम पाठवण्यासाठी युक्ती दिली जाते, ज्यामुळे बहुतेक वापरकर्त्यांसाठी प्लेबॅक ठीक होते
 
-जर तुम्ही YouTube Premium वापरकर्ता असाल, तर ही सेटिंग आवश्यक नसेल"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"व्हिडिओ स्ट्रीम्सचा देखावा केला गेला नाही
-
-प्लेबॅक कार्य करू शकत नाही"</string>
+जर तुम्ही YouTube Premium वापरकर्ता असाल, तर ही सेटिंग आवश्यक नसेल."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">कोणत्याही क्लायंट स्ट्रीम्स मिळवता आल्या नाहीत</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">हे सेटिंग बंद केल्यास प्लेबॅक समस्या उद्भवू शकतात.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -91,40 +88,28 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_reset">Android VR मधून लॉग आउट झाले</string>
   <string name="morphe_oauth2_toast_invalid">Invalid VR साइन इन टोकन, VR मध्ये पुन्हा साइन इन करण्याचा प्रयत्न करा</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Player JavaScript अपडेट अक्षम करा</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Player JavaScript अपडेट अक्षम आहे
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"प्लेअर JavaScript स्थानिक हॅशवर लॉक करते, अपडेट्स आणत नाही
 
-• वैध Player JavaScript hash आवश्यक आहे
-• Player JavaScript hash GVS मध्ये रद्द झाल्यास प्लेबॅक अयशस्वी होईल"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Player JavaScript अपडेट सक्षम आहे</string>
+• वैध प्लेअर JavaScript हॅश आवश्यक आहे
+• GVS मध्ये प्लेअर JavaScript हॅश रद्द केल्यास प्लेबॅक अयशस्वी होते"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Player JavaScript hashes अंदाजे एक महिन्यासाठी वैध असतात आणि जुने झालेले hashes GVS द्वारे रद्द केले जाऊ शकतात.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player JavaScript hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">वैध Player JavaScript hash एंटर करा</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC प्रोटोकॉल अक्षम करा</string>
-  <string name="morphe_disable_quic_protocol_summary_on">QUIC प्रोटोकॉल अक्षम आहे</string>
-  <string name="morphe_disable_quic_protocol_summary_off">QUIC प्रोटोकॉल सक्षम आहे</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC ऑडिओ अक्षम करा</string>
-  <string name="morphe_disable_drc_audio_summary_on">DRC ऑडिओ अक्षम आहे</string>
-  <string name="morphe_disable_drc_audio_summary_off">DRC ऑडिओ सक्षम आहे</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">मूळ ऑडिओ भाषेचा वापर करा</string>
-  <string name="morphe_force_original_audio_summary_on">मूळ ऑडिओ भाषेचा वापर केला जात आहे</string>
-  <string name="morphe_force_original_audio_summary_off">डीफॉल्ट ऑडिओचा वापर केला जात आहे</string>
+  <string name="morphe_force_original_audio_summary">डब केलेल्या आवृत्तीऐवजी व्हिडिओचा मूळ ऑडिओ ट्रॅक नेहमी प्ले करा</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">पूर्ण स्क्रीन जाहिराती लपवा</string>
-  <string name="morphe_hide_fullscreen_ads_summary_on">पूर्ण स्क्रीन जाहिराती लपवल्या आहेत</string>
-  <string name="morphe_hide_fullscreen_ads_summary_off">पूर्ण स्क्रीन जाहिराती दिसत आहेत</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">हे वैशिष्ट्य वापरण्यासाठी, \'Spoof व्हिडिओ स्ट्रीम\' Android Reel किंवा TV मध्ये बदला</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">सामायिक लिंक संपादित करा</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">ट्रेकिंग क्वेरी पॅरामीटर सामायिक केलेल्या लिंकमधून काढला जातो</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">ट्रेकिंग क्वेरी पॅरामीटर सामायिक केलेल्या लिंकमधून काढला जात नाही</string>
+  <string name="morphe_sanitize_sharing_links_summary">सामायिक लिंक्समधून ट्रॅकिंग क्वेरी पॅरामीटर्स काढून टाकते</string>
   <string name="morphe_replace_music_with_youtube_title">सामायिक लिंक youtube.com वर बदला</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">सामायिक लिंक youtube.com वापरतात</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">सामायिक लिंक music.youtube.com वापरतात</string>
   <string name="morphe_replace_links_with_shortener_title">youtu.be वापरून शेअर लिंक्स बदला</string>
-  <string name="morphe_replace_links_with_shortener_summary_on">सामायिक लाइव्ह स्ट्रीम आणि शॉर्ट्स लिंक्स youtu.be वापरतात</string>
-  <string name="morphe_replace_links_with_shortener_summary_off">शेअर केलेल्या लाइव्ह स्ट्रीम आणि शॉर्ट्सच्या लिंक्स त्यांच्या मूळ URLs वापरतात</string>
+  <string name="morphe_replace_links_with_shortener_summary">लाइव्ह स्ट्रीम आणि Shorts ला संक्षिप्त youtu.be URL फॉरमॅट वापरण्यास भाग पाडते</string>
 </resources>

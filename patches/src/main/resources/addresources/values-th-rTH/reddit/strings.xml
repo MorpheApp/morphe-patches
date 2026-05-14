@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 ข้อจำกัด: สเปซเซอร์ภาพอาจไม่ถูกซ่อน"</string>
   <string name="morphe_remove_notification_dialog_title">นำไดอะล็อกการแจ้งเตือนออก</string>
-  <string name="morphe_remove_notification_dialog_summary">นำไดอะล็อกการแจ้งเตือนออกที่จะปรากฏเมื่อเยี่ยมชมสับเรดดิตโดยการยอมรับโดยอัตโนมัติ</string>
-  <string name="morphe_show_view_count_title">แสดงจำนวนการดู</string>
-  <string name="morphe_show_view_count_summary">"แสดงจำนวนการดูของโพสต์
-
-ข้อจำกัด: จะแสดงเฉพาะถ้าการตอบสนองของ API รวมถึงจำนวนการดู"</string>
+  <string name="morphe_remove_notification_dialog_summary">ปิดกล่องโต้ตอบคำแนะนำการแจ้งเตือนโดยอัตโนมัติเมื่อเข้าสู่ subreddit</string>
+  <string name="morphe_show_view_count_title">แสดงจำนวนการเข้าชมในโพสต์</string>
+  <string name="morphe_show_view_count_summary">ข้อจำกัด: ใช้ได้เฉพาะเมื่อการตอบกลับของ API มีจำนวนการเข้าชม</string>
   <string name="morphe_remove_nsfw_dialog_title">นำไดอะล็อกคำเตือน NSFW ออก</string>
-  <string name="morphe_remove_nsfw_dialog_summary">นำไดอะล็อกคำเตือน NSFW ออกที่จะปรากฏเมื่อเยี่ยมชมสับเรดดิตโดยการยอมรับโดยอัตโนมัติ</string>
+  <string name="morphe_remove_nsfw_dialog_summary">ยอมรับคำเตือนเนื้อหา NSFW โดยอัตโนมัติเมื่อเข้าชม subreddit</string>
   <string name="morphe_screen_miscellaneous_title">เบ็ดเตล็ด</string>
   <string name="morphe_about_title">เกี่ยวกับ</string>
   <string name="morphe_about_summary">เวอร์ชันแพตช์และลิงก์อย่างเป็นทางการ</string>
   <string name="morphe_sanitize_sharing_links_title">ล้างข้อมูลลิงก์ที่แชร์</string>
-  <string name="morphe_sanitize_sharing_links_summary">ทำให้ลิงก์การแชร์สะอาดขึ้นโดยการลบพารามิเตอร์ติดตาม</string>
+  <string name="morphe_sanitize_sharing_links_summary">ลบพารามิเตอร์การติดตามออกจากลิงก์ที่แชร์</string>
   <string name="morphe_open_links_directly_title">เปิดลิงก์โดยตรง</string>
-  <string name="morphe_open_links_directly_summary">ข้าม URL การเปลี่ยนเส้นทางในลิงก์ภายนอก</string>
+  <string name="morphe_open_links_directly_summary">ข้าม URL การเปลี่ยนเส้นทางเมื่อเปิดลิงก์ภายนอก</string>
   <string name="morphe_open_links_externally_title">เปิดลิงก์ภายนอก</string>
-  <string name="morphe_open_links_externally_summary">เปิดลิงก์ในเบราว์เซอร์ของคุณแทนที่จะเปิดในเบราว์เซอร์ในแอป</string>
+  <string name="morphe_open_links_externally_summary">เปิดลิงก์ในเบราว์เซอร์ของคุณแทนที่จะเป็นเบราว์เซอร์ในแอป</string>
 </resources>

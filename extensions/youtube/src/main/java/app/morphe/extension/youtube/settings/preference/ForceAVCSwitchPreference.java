@@ -33,8 +33,6 @@ public class ForceAVCSwitchPreference extends SwitchPreference {
             // Show why force audio is not available.
             String summary = str("morphe_force_avc_codec_not_available");
             super.setSummary(summary);
-            super.setSummaryOn(summary);
-            super.setSummaryOff(summary);
             super.setEnabled(false);
         }
     }

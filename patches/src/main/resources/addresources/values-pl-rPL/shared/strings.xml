@@ -47,12 +47,8 @@ Second \"item\" text"</string>
 • Główne ustawienia wyświetlają się powyżej wyłączonych opcji"</string>
   <string name="morphe_settings_search_empty_history_title">Historia wyszukiwania jest pusta</string>
   <string name="morphe_settings_search_empty_history_summary">Aby zapisać historię wyszukiwania, wpisz zapytanie i naciśnij Enter</string>
-  <string name="morphe_settings_search_history_title">Historia wyszukiwania ustawień</string>
-  <string name="morphe_settings_search_history_summary_on">Widoczna</string>
-  <string name="morphe_settings_search_history_summary_off">Ukryta</string>
-  <string name="morphe_show_menu_icons_title">Ikony ustawień Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Widoczne</string>
-  <string name="morphe_show_menu_icons_summary_off">Ukryte</string>
+  <string name="morphe_settings_search_history_title">Pokaż historię wyszukiwania ustawień</string>
+  <string name="morphe_show_menu_icons_title">Pokaż ikony ustawień Morphe</string>
   <string name="morphe_language_title">Język Morphe</string>
   <string name="morphe_language_user_dialog_message">"Tłumaczenia dla niektórych języków mogą być niekompletne lub może ich brakować.
 
@@ -88,16 +84,11 @@ Aby przetłumaczyć aplikację na nowe języki lub poprawić istniejące tłumac
   <string name="morphe_settings_about_licenses_loading">Wczytywanie...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugowanie</string>
-  <string name="morphe_debug_screen_summary">Włącz lub wyłącz opcje debugowania</string>
-  <string name="morphe_debug_title">Logi debugowania</string>
-  <string name="morphe_debug_summary_on">Włączone</string>
-  <string name="morphe_debug_summary_off">Wyłączone</string>
-  <string name="morphe_debug_stacktrace_title">Logi debugowania śladów stosu</string>
-  <string name="morphe_debug_stacktrace_summary_on">Włączone</string>
-  <string name="morphe_debug_stacktrace_summary_off">Wyłączone</string>
-  <string name="morphe_debug_toast_on_error_title">Komunikaty o błędach Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Widoczne</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Ukryte</string>
+  <string name="morphe_debug_screen_summary">Skonfiguruj zaawansowane opcje programistyczne i logi diagnostyczne</string>
+  <string name="morphe_debug_title">Włącz logi debugowania</string>
+  <string name="morphe_debug_stacktrace_title">Zrzuty stosu w logach debugowania</string>
+  <string name="morphe_debug_stacktrace_summary">Dołącza zrzuty stosu do logów debugowania, aby pomóc w identyfikacji błędów</string>
+  <string name="morphe_debug_toast_on_error_title">Pokaż powiadomienie o błędzie Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Wyłączenie tej opcji ukrywa wszystkie komunikaty o błędach Morphe.
 
 Nie dostaniesz informacji o żadnych nieoczekiwanych zdarzeniach."</string>
@@ -141,15 +132,21 @@ Wyłączenie optymalizacji baterii MicroG nie będzie negatywnie wpływało na z
 
 Stuknij przycisk Kontynuuj i zezwól na zmiany optymalizacji."</string>
   <string name="gms_core_dialog_continue_text">Kontynuuj</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Okno optymalizacji baterii</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Widoczne</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Ukryte</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pokaż okno dialogowe optymalizacji baterii</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Wyłączenie tej opcji spowoduje ukrycie ostrzeżeń dotyczących optymalizacji baterii dla MicroG.
 
 Jeśli ustawienia optymalizacji baterii nie zostaną zmienione, mogą wystąpić następujące problemy:
 • Aplikacja może się nieoczekiwanie zamykać
 • Powiadomienia mogą nie działać
 • Odtwarzanie w tle może nie działać"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Obsługa linków aplikacji</string>
+  <string name="morphe_link_handling_summary">Skonfiguruj, która aplikacja ma otwierać linki</string>
+  <string name="morphe_link_handling_step1_title">Krok 1: Wyłącz linki w oryginalnej aplikacji</string>
+  <string name="morphe_link_handling_step1_message">Otwórz ustawienia oryginalnej aplikacji i wyłącz wszystkie obsługiwane linki</string>
+  <string name="morphe_link_handling_step2_title">Krok 2: Włącz linki w zmodyfikowanej aplikacji</string>
+  <string name="morphe_link_handling_step2_message">Otwórz ustawienia zmodyfikowanej aplikacji i włącz wszystkie obsługiwane linki</string>
+  <string name="morphe_link_handling_open">Otwórz ustawienia</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Wersja eksperymentalna 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Używasz eksperymentalnej wersji ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
