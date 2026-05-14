@@ -87,7 +87,8 @@ public final class OpenChannelOfLiveAvatarPatch {
 
             final boolean containsMatch = contentDescription.toString().contains(liveRingDescription);
             Logger.printDebug(() -> "Litho description: " + contentDescription
-                    + "contains Resource description: " + liveRingDescription);
+                    + "\ncontains Resource description: " + liveRingDescription
+                    + "\n" + containsMatch);
             if (containsMatch) {
                 liveAvatarChannelRequest = SpoofVideoStreamsPatch.fetchDetails(
                         PlayerRoutes.GET_CHANNEL_FROM_ID,
