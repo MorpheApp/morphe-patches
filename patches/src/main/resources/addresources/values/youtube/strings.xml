@@ -38,7 +38,7 @@ Second \"item\" text"</string>
 
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_protobuffer_title">Debug log protocol buffer</string>
-    <string name="morphe_debug_protobuffer_summary">Includes raw protocol buffer data in debug log to help identify UI components</string>
+    <string name="morphe_debug_protobuffer_summary">Adds detailed technical information to error logs to help developers identify app components</string>
     <string name="morphe_debug_protobuffer_user_dialog_message">"Enabling this setting will log additional layout data, including on-screen text for some UI components.
 
 This can help identify components when creating custom filters.
@@ -228,12 +228,12 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
     <string name="morphe_hide_view_count_user_dialog_message">"Limitations:
 • Shorts shelves, channel pages, and search results may still show view counts.
-• This feature does not work with automotive form factor."</string>
+• This feature does not work with automotive layout."</string>
     <string name="morphe_hide_upload_time_title">Hide upload time</string>
     <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
     <string name="morphe_hide_upload_time_user_dialog_message">"Limitations:
 • Shorts shelves, channel pages, and search results may still show upload times.
-• This feature does not work with automotive form factor."</string>
+• This feature does not work with automotive layout."</string>
     <string name="morphe_hide_keyword_content_screen_title">Keyword filter</string>
     <string name="morphe_hide_keyword_content_screen_summary">Choose specific words or phrases to hide videos in feeds and search</string>
     <string name="morphe_hide_keyword_content_home_title">Hide Home videos by keywords</string>
@@ -313,7 +313,7 @@ Limitations:
 
     <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
     <string name="morphe_external_downloader_action_button_title">Override Download action button</string>
-    <string name="morphe_external_downloader_action_button_summary">Routes the Download button to your external downloader instead of the native in-app downloader</string>
+    <string name="morphe_external_downloader_action_button_summary">Replaces YouTube\'s built-in download function with your chosen third-party downloading app</string>
     <string name="morphe_external_downloader_name_title">Downloader package name</string>
     <string name="morphe_external_downloader_name_summary">Package name of your installed external downloader app</string>
     <string name="morphe_external_downloader_other_item_hint">Enter the package name</string>
@@ -496,7 +496,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_caption_cookies_title">Caption cookies</string>
     <string name="morphe_caption_cookies_summary">Cookies used to authenticate Timed Text API requests for captions</string>
     <string name="morphe_get_caption_cookies_title">Get caption cookies</string>
-    <string name="morphe_get_caption_cookies_summary">"Fetches and saves cookies automatically if they are valid"</string>
+    <string name="morphe_get_caption_cookies_summary">Fetches and saves cookies automatically if they are valid</string>
     <string name="morphe_get_caption_cookies_failed">Failed to fetch cookies</string>
     <string name="morphe_get_caption_cookies_duplicate">Cookies already exist</string>
     <string name="morphe_get_caption_cookies_success">Cookies were successfully updated</string>
@@ -568,7 +568,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
           'Android Reel' and 'TV' must be kept untranslated. -->
     <string name="morphe_hide_player_flyout_audio_track_not_available">"\'Audio Track\' menu is hidden
 
-        To show the \'Audio Track\' menu, change \'Spoof video streams\' to \'Android Reel\' or \'TV\'"</string>
+To show the \'Audio Track\' menu, change \'Spoof video streams\' to \'Android Reel\' or \'TV\'"</string>
     <string name="morphe_hide_player_flyout_audio_track_footer_title">Hide \'Audio Track\' menu footer</string>
     <!-- 'Captions' should be translated using the same localized wording YouTube displays for the menu item. -->
     <string name="morphe_hide_player_flyout_captions_title">Hide Captions menu</string>
@@ -838,7 +838,9 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_sb_settings_ie">Import / Export settings</string>
     <string name="morphe_sb_settings_copy">Copy</string>
     <string name="morphe_sb_settings_ie_summary">Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms</string>
-    <string name="morphe_sb_settings_ie_summary_warning">Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms. This includes your private user ID. Be sure to share this wisely</string>
+    <string name="morphe_sb_settings_ie_summary_warning">"Your SponsorBlock JSON configuration that can be imported / exported to Morphe and other SponsorBlock platforms
+    
+This includes your private user ID. Be sure to share this wisely"</string>
     <string name="morphe_sb_settings_import_successful">Settings imported successfully</string>
     <string name="morphe_sb_settings_import_failed">Failed to import: %s</string>
     <string name="morphe_sb_settings_export_failed">Failed to export: %s</string>
@@ -987,7 +989,7 @@ If you\'re not submitting a highlight, tap Cancel and mark the second location"<
     <string name="morphe_sb_about_api_title" translatable="false">sponsor.ajay.app</string>
     <string name="morphe_sb_about_api_summary">Data is provided by the SponsorBlock API. Tap here to learn more and see downloads for other platforms</string>
     <!-- layout.formfactor.changeFormFactorPatch -->
-    <string name="morphe_change_form_factor_title">Layout form factor</string>
+    <string name="morphe_change_form_factor_title">Device layout</string>
     <string name="morphe_change_form_factor_entry_1">Default</string>
     <string name="morphe_change_form_factor_entry_2">Phone</string>
     <string name="morphe_change_form_factor_entry_3">Tablet</string>
