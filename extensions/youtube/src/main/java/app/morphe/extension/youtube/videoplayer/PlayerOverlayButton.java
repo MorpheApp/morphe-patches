@@ -237,12 +237,21 @@ public class PlayerOverlayButton {
         videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, getTotalUpperButtonCount());
     }
 
+    //
+    private static boolean skipCallOnce = true;
     /**
      * Called from each {@link LegacyPlayerControlButton} constructor so that the
      * video-heading end margin is initialized and kept correct even when no lower
      * overlay buttons (speed, quality, etc.) have been added.
      */
     public static void initializeHeadingFromUpperButton(View sourceButton) {
+        if (skipCallOnce) {
+            skipCallOnce = false;
+            return;
+        }
+
+        Utils.verifyOnMainThread();
+
         if (!(sourceButton.getParent() instanceof ViewGroup sourceButtonViewGroup)) return;
 
         videoHeadingContainer.updateContainerRef(sourceButtonViewGroup);
