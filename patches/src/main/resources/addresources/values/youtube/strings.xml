@@ -38,7 +38,7 @@ Second \"item\" text"</string>
 
     <!-- misc.debugging.enableDebuggingPatch -->
     <string name="morphe_debug_protobuffer_title">Debug log protocol buffer</string>
-    <string name="morphe_debug_protobuffer_summary">Adds detailed technical information to error logs to help developers identify app components</string>
+    <string name="morphe_debug_protobuffer_summary">Adds additional logging information for developers to identify app components</string>
     <string name="morphe_debug_protobuffer_user_dialog_message">"Enabling this setting will log additional layout data, including on-screen text for some UI components.
 
 This can help identify components when creating custom filters.
