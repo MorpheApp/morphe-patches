@@ -83,6 +83,8 @@ public class LegacyPlayerControlButton {
                                      PlayerControlButtonStatus enabledStatus,
                                      View.OnClickListener onClickListener,
                                      @Nullable View.OnLongClickListener longClickListener) {
+        PlayerOverlayButton.initializeHeadingFromUpperButton(controlsViewGroup);
+        
         View containerView = Utils.getChildViewByResourceName(controlsViewGroup, viewToHide);
         containerView.setVisibility(View.GONE);
         containerRef = new WeakReference<>(containerView);
@@ -115,7 +117,6 @@ public class LegacyPlayerControlButton {
         }
 
         buttonRef = new WeakReference<>(button);
-        PlayerOverlayButton.initializeHeadingFromUpperButton(button);
 
         TextView tempTextOverlay = null;
         if (textOverlayId != null) {
