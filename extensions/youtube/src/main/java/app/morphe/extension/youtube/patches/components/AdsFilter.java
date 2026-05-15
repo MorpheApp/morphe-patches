@@ -138,6 +138,12 @@ public final class AdsFilter extends Filter {
                 "shopping_carousel.e" // Channel profile shopping shelf.
         );
 
+        final var productSticker = new StringFilterGroup(
+                Settings.HIDE_PRODUCT_STICKER,
+                "stickers_layer.e",
+                "product_sticker.e"
+        );
+
         final var selfSponsor = new StringFilterGroup(
                 Settings.HIDE_SELF_SPONSOR,
                 "cta_shelf_card"
@@ -148,6 +154,7 @@ public final class AdsFilter extends Filter {
                 generalAds,
                 merchandise,
                 movieAds,
+                productSticker,
                 selfSponsor,
                 shoppingLinks,
                 viewProducts

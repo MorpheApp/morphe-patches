@@ -114,7 +114,6 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
                     SwitchPreference("morphe_hide_shorts_tagged_products", summaryKey = null),
                     SwitchPreference("morphe_hide_shorts_search_suggestions", summaryKey = null),
                     SwitchPreference("morphe_hide_shorts_super_thanks_button", summaryKey = null),
-                    SwitchPreference("morphe_hide_shorts_stickers", summaryKey = null),
 
                     // Bottom of the screen.
                     SwitchPreference("morphe_hide_shorts_ai_button", summaryKey = null),

@@ -191,11 +191,6 @@ public final class ShortsFilter extends Filter {
                 "shorts_info_panel_overview"
         );
 
-        StringFilterGroup stickers = new StringFilterGroup(
-                Settings.HIDE_SHORTS_STICKERS,
-                "stickers_layer.e"
-        );
-
         StringFilterGroup likeFountain = new StringFilterGroup(
                 Settings.HIDE_SHORTS_LIKE_FOUNTAIN,
                 "like_fountain.e"
@@ -312,8 +307,8 @@ public final class ShortsFilter extends Filter {
         addPathCallbacks(
                 shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, paidPromotionLabel,
                 livePreview, suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
-                autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, stickers, useButtons,
-                reelCarousel, reelSoundMetadata, likeFountain, likeButton, dislikeButton, shortsActionBar
+                autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, useButtons, likeFountain,
+                reelCarousel, reelSoundMetadata, likeButton, dislikeButton, shortsActionBar
         );
 
         //
