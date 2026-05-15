@@ -138,25 +138,64 @@ internal fun baseThemeResourcePatch(
             }
         }
 
-        fun patchDotColor(resourceFile: String, colorValue: String) {
-            try {
-                document(resourceFile).use { document ->
-                    val shapeNode = document.getElementsByTagName("shape").item(0) as? Element ?: return
-                    shapeNode.forEachChildElement { node ->
-                        if (node.nodeName == "solid" && node.hasAttribute("android:color")) {
-                            node.setAttribute("android:color", colorValue)
+        val isMaterialYouTheme = darkColor!!.startsWith("@android:color/system_") ||
+                lightColor?.startsWith("@android:color/system_") == true
+
+        if (isMaterialYouTheme) {
+            fun patchDotColor(baseDir: String, v31Dir: String, fileName: String, colorValue: String) {
+                try {
+                    val resDir = get("res")
+                    val sourceFile = resDir.resolve("$baseDir/$fileName")
+                    val targetDir = resDir.resolve(v31Dir)
+                    val targetFile = targetDir.resolve(fileName)
+
+                    if (!sourceFile.exists()) return
+                    if (!targetDir.exists()) targetDir.mkdirs()
+                    if (!targetFile.exists()) {
+                        sourceFile.copyTo(targetFile)
+                    }
+
+                    document("res/$v31Dir/$fileName").use { document ->
+                        val shapeNode = document.getElementsByTagName("shape").item(0) as? Element ?: return@use
+                        shapeNode.forEachChildElement { node ->
+                            if (node.nodeName == "solid" && node.hasAttribute("android:color")) {
+                                node.setAttribute("android:color", colorValue)
+                            }
                         }
+                    }
+                } catch (_: Exception) {
+                }
+            }
+
+            arrayOf(
+                "new_content_dot_background.xml",
+                "new_content_dot_background_cairo.xml"
+            ).forEach { fileName ->
+                patchDotColor("drawable", "drawable-night-v31", fileName, "@android:color/system_accent1_100")
+                patchDotColor("drawable", "drawable-v31", fileName, "@android:color/system_accent1_200")
+            }
+
+            arrayOf(
+                "new_content_count_background.xml",
+                "new_content_count_background_cairo.xml"
+            ).forEach { fileName ->
+                patchDotColor("drawable", "drawable-v31", fileName, "@android:color/system_accent1_100")
+            }
+
+            try {
+                val resDir = get("res")
+                val sourceLayout = resDir.resolve("layout/new_content_count.xml")
+                val targetLayoutDir = resDir.resolve("layout-v31")
+                val targetLayoutFile = targetLayoutDir.resolve("new_content_count.xml")
+                if (sourceLayout.exists()) {
+                    if (!targetLayoutDir.exists()) targetLayoutDir.mkdirs()
+                    if (!targetLayoutFile.exists()) sourceLayout.copyTo(targetLayoutFile)
+                    document("res/layout-v31/new_content_count.xml").use { document ->
+                        val textViewNode = document.getElementsByTagName("TextView").item(0) as? Element
+                        textViewNode?.setAttribute("android:textColor", "@android:color/system_neutral1_900")
                     }
                 }
             } catch (_: Exception) {}
-        }
-
-        arrayOf(
-            "res/drawable/new_content_dot_background.xml",
-            "res/drawable/new_content_dot_background_cairo.xml",
-            "res/drawable/new_content_count_background.xml",
-            "res/drawable/new_content_count_background_cairo.xml"
-        ).forEach { patchDotColor(it, "@android:color/system_accent1_100")
         }
     }
 }
