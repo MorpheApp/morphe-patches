@@ -148,31 +148,15 @@ internal fun baseThemeResourcePatch(
                         }
                     }
                 }
-            } catch (_: Exception) {
-            }
+            } catch (_: Exception) {}
         }
 
         arrayOf(
-            "res/drawable-night-v31/new_content_dot_background.xml",
-            "res/drawable-night-v31/new_content_dot_background_cairo.xml"
-        ).forEach { patchDotColor(it, "@android:color/system_accent1_100") }
-
-        arrayOf(
-            "res/drawable-v31/new_content_dot_background.xml",
-            "res/drawable-v31/new_content_dot_background_cairo.xml"
-        ).forEach { patchDotColor(it, "@android:color/system_accent1_200") }
-
-        arrayOf(
-            "res/drawable-v31/new_content_count_background.xml",
-            "res/drawable-v31/new_content_count_background_cairo.xml"
-        ).forEach { patchDotColor(it, "@android:color/system_accent1_100") }
-
-        try {
-            document("res/layout-v31/new_content_count.xml").use { document ->
-                val textViewNode = document.getElementsByTagName("TextView").item(0) as? Element
-                textViewNode?.setAttribute("android:textColor", "@android:color/system_neutral1_900")
-            }
-        } catch (_: Exception) {
+            "res/drawable/new_content_dot_background.xml",
+            "res/drawable/new_content_dot_background_cairo.xml",
+            "res/drawable/new_content_count_background.xml",
+            "res/drawable/new_content_count_background_cairo.xml"
+        ).forEach { patchDotColor(it, "@android:color/system_accent1_100")
         }
     }
 }
