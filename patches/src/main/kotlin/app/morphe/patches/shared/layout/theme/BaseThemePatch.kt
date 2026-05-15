@@ -7,7 +7,9 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.util.childElementsSequence
+import app.morphe.util.forEachChildElement
 import java.util.Locale
+import org.w3c.dom.Element
 
 internal const val THEME_COLOR_OPTION_DESCRIPTION = "Can be a hex color (#RRGGBB) or a color resource reference."
 
@@ -134,6 +136,43 @@ internal fun baseThemeResourcePatch(
                     lightColor != null && name in lightColorNames -> node.textContent = lightColor
                 }
             }
+        }
+
+        fun patchDotColor(resourceFile: String, colorValue: String) {
+            try {
+                document(resourceFile).use { document ->
+                    val shapeNode = document.getElementsByTagName("shape").item(0) as? Element ?: return
+                    shapeNode.forEachChildElement { node ->
+                        if (node.nodeName == "solid" && node.hasAttribute("android:color")) {
+                            node.setAttribute("android:color", colorValue)
+                        }
+                    }
+                }
+            } catch (_: Exception) {
+            }
+        }
+
+        arrayOf(
+            "res/drawable-night-v31/new_content_dot_background.xml",
+            "res/drawable-night-v31/new_content_dot_background_cairo.xml"
+        ).forEach { patchDotColor(it, "@android:color/system_accent1_100") }
+
+        arrayOf(
+            "res/drawable-v31/new_content_dot_background.xml",
+            "res/drawable-v31/new_content_dot_background_cairo.xml"
+        ).forEach { patchDotColor(it, "@android:color/system_accent1_200") }
+
+        arrayOf(
+            "res/drawable-v31/new_content_count_background.xml",
+            "res/drawable-v31/new_content_count_background_cairo.xml"
+        ).forEach { patchDotColor(it, "@android:color/system_accent1_100") }
+
+        try {
+            document("res/layout-v31/new_content_count.xml").use { document ->
+                val textViewNode = document.getElementsByTagName("TextView").item(0) as? Element
+                textViewNode?.setAttribute("android:textColor", "@android:color/system_neutral1_900")
+            }
+        } catch (_: Exception) {
         }
     }
 }
