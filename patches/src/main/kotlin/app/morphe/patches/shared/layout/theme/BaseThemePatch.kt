@@ -155,8 +155,8 @@ internal fun baseThemeResourcePatch(
                         sourceFile.copyTo(targetFile)
                     }
 
-                    if (colorValue != null) {
-                        document("res/$targetDir/$fileName").use { document ->
+                    document("res/$targetDir/$fileName").use { document ->
+                        if (colorValue != null) {
                             val shapeNode = document.getElementsByTagName("shape").item(0) as? Element ?: return@use
                             shapeNode.forEachChildElement { node ->
                                 if (node.nodeName == "solid" && node.hasAttribute("android:color")) {
@@ -194,8 +194,9 @@ internal fun baseThemeResourcePatch(
                     if (!sourceLayout.exists()) return
                     if (!targetLayoutDir.exists()) targetLayoutDir.mkdirs()
                     if (!targetLayoutFile.exists()) sourceLayout.copyTo(targetLayoutFile)
-                    if (colorValue != null) {
-                        document("res/$targetDir/new_content_count.xml").use { document ->
+
+                    document("res/$targetDir/new_content_count.xml").use { document ->
+                        if (colorValue != null) {
                             val textViewNode = document.getElementsByTagName("TextView").item(0) as? Element
                             textViewNode?.setAttribute("android:textColor", colorValue)
                         }
