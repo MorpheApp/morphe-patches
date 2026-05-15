@@ -151,6 +151,49 @@ val themePatch = baseThemePatch(
                         document.getElementsByTagName("resources").item(0) as Element
                     resourcesNode.appendChild(style)
                 }
+
+                arrayOf(
+                    "res/values/styles.xml",
+                    "res/values-v27/styles.xml",
+                    "res/values-v31/styles.xml"
+                ).forEach { stylesPath ->
+                    try {
+                        document(stylesPath).use { document ->
+                            val resourcesNode = document.getElementsByTagName("resources").item(0) as? Element ?: return@use
+                            var themeNode: Element? = null
+
+                            resourcesNode.forEachChildElement { node ->
+                                if (node.nodeName == "style" && node.getAttribute("name") == "Theme.YouTube.Home") {
+                                    themeNode = node
+                                }
+                            }
+
+                            if (themeNode == null) {
+                                themeNode = document.createElement("style").apply {
+                                    setAttribute("name", "Theme.YouTube.Home")
+                                    setAttribute("parent", "@style/Base.V27.Theme.YouTube.Home")
+                                    resourcesNode.appendChild(this)
+                                }
+                            }
+
+                            var hasLightStatusBar = false
+                            themeNode!!.forEachChildElement { node ->
+                                if (node.nodeName == "item" && node.getAttribute("name") == "android:windowLightStatusBar") {
+                                    node.textContent = "true"
+                                    hasLightStatusBar = true
+                                }
+                            }
+
+                            if (!hasLightStatusBar) {
+                                val styleItem = document.createElement("item")
+                                styleItem.setAttribute("name", "android:windowLightStatusBar")
+                                styleItem.textContent = "true"
+                                themeNode.appendChild(styleItem)
+                            }
+                        }
+                    } catch (_: Exception) {
+                    }
+                }
             }
         }
 
