@@ -183,11 +183,6 @@ public final class LayoutComponentsFilter extends Filter {
                 "medical_panel"
         );
 
-        final var paidPromotion = new StringFilterGroup(
-                Settings.HIDE_PAID_PROMOTION_LABEL,
-                "paid_content_overlay"
-        );
-
         final var infoPanel = new StringFilterGroup(
                 Settings.HIDE_INFO_PANELS,
                 "publisher_transparency_panel"
@@ -379,7 +374,6 @@ public final class LayoutComponentsFilter extends Filter {
                 infoPanel,
                 medicalPanel,
                 notifyMe,
-                paidPromotion,
                 playables,
                 postsShelf,
                 searchFriction,
