@@ -272,12 +272,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_search_term_thumbnails"),
             SwitchPreference("morphe_hide_show_more_button"),
             SwitchPreference("morphe_hide_subscribed_channels_bar", summaryKey = null),
-            SwitchPreference("morphe_hide_surveys", summaryKey = null),
+            SwitchPreference("morphe_hide_surveys"),
             SwitchPreference("morphe_hide_ticket_shelf", summaryKey = null),
             SwitchPreference("morphe_hide_upload_time", summaryKey = null),
             SwitchPreference("morphe_hide_video_recommendation_labels"),
             SwitchPreference("morphe_hide_view_count", summaryKey = null),
-            SwitchPreference("morphe_hide_web_search_results", summaryKey = null),
+            SwitchPreference("morphe_hide_web_search_results"),
             SwitchPreference("morphe_hide_youtube_doodles"),
         )
 

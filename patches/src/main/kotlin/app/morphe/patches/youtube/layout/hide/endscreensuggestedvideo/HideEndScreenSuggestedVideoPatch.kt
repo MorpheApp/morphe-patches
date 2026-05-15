@@ -29,7 +29,7 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_end_screen_suggested_video", summaryKey = null),
+            SwitchPreference("morphe_hide_end_screen_suggested_video"),
         )
 
         val autoNavStatusMethod = AutoNavStatusFingerprint.method

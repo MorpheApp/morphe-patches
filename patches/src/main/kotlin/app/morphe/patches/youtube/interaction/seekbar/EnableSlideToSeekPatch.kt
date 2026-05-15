@@ -12,7 +12,6 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.getReference
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
@@ -30,7 +29,7 @@ val enableSlideToSeekPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("morphe_slide_to_seek", summaryKey = null),
+            SwitchPreference("morphe_slide_to_seek"),
         )
 
         var modifiedMethods = false
