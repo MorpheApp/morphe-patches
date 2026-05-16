@@ -3,16 +3,16 @@ package app.morphe.extension.youtube.shared
 import app.morphe.extension.shared.Logger
 
 /**
- * Shorts player state.
+ * Creator channel state.
  */
-class ShortsPlayerState {
+class CreatorChannelState {
     companion object {
 
         @JvmStatic
         fun setOpen(open: Boolean) {
             if (isOpen != open) {
                 isOpen = open
-                Logger.printDebug { "ShortsPlayerState open changed to: $isOpen" }
+                Logger.printDebug { "CreatorChannelState open changed to: $isOpen" }
                 onChange(open)
             }
         }

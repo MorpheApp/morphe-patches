@@ -26,6 +26,15 @@ internal object PlayerTypeEnumFingerprint : Fingerprint(
     )
 )
 
+internal object TabsBarTextTabFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "tabs_bar_text_tab_modern_type"),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterWithin(8))
+    )
+)
+
 internal object ReelWatchPagerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Landroid/view/View;",

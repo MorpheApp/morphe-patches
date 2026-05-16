@@ -32,6 +32,18 @@ val playerTypeHookPatch = bytecodePatch(
             "invoke-static { p1 }, $EXTENSION_CLASS->setPlayerType(Ljava/lang/Enum;)V",
         )
 
+        TabsBarTextTabFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->onCreatorChannelCreate(Landroid/view/View;)V"
+                )
+            }
+        }
+
         ReelWatchPagerFingerprint.let {
             it.method.apply {
                 val index = it.instructionMatches.last().index

@@ -336,7 +336,8 @@ public final class LayoutComponentsFilter extends Filter {
                 "page_header.e"
         );
         channelProfileGroupList = new StringFilterGroupList();
-        channelProfileGroupList.addAll(new StringFilterGroup(
+        channelProfileGroupList.addAll(
+                new StringFilterGroup(
                         Settings.HIDE_COMMUNITY_BUTTON,
                         "community_button"
                 ),

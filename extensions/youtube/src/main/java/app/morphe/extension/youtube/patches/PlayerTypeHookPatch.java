@@ -1,9 +1,11 @@
 package app.morphe.extension.youtube.patches;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import app.morphe.extension.youtube.shared.CreatorChannelState;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 import app.morphe.extension.youtube.shared.VideoState;
@@ -26,6 +28,28 @@ public class PlayerTypeHookPatch {
         if (youTubeVideoState == null) return;
 
         VideoState.setFromString(youTubeVideoState.name());
+    }
+
+    /**
+     * Injection point.
+     *
+     * Add a listener to the Tabs bar of creator channel View.
+     * Triggered when a Tabs bar is attached or detached to Windows.
+     *
+     * @param view shorts player overlay (R.layout.tabs_bar_text_tab_modern_type).
+     */
+    public static void onCreatorChannelCreate(View view) {
+        view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+            @Override
+            public void onViewAttachedToWindow(@Nullable View v) {
+                CreatorChannelState.setOpen(true);
+            }
+
+            @Override
+            public void onViewDetachedFromWindow(@Nullable View v) {
+                CreatorChannelState.setOpen(false);
+            }
+        });
     }
 
     /**
