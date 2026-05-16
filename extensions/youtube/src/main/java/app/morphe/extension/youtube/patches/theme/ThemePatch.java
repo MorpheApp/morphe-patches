@@ -1,8 +1,13 @@
 package app.morphe.extension.youtube.patches.theme;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.view.View;
+
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.theme.BaseThemePatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -110,5 +115,24 @@ public class ThemePatch extends BaseThemePatch {
         }
 
         return replacement;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void applyDynamicTheme(View dotView) {
+        if (dotView == null) return;
+
+        boolean isDark = Utils.isDarkModeEnabled();
+        int targetColor;
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.S) {
+            int colorResId = isDark ? android.R.color.system_accent1_100 : android.R.color.system_accent1_200;
+            targetColor = dotView.getContext().getColor(colorResId);
+        } else {
+            targetColor = Color.parseColor("#FF0000");
+        }
+
+        dotView.setBackgroundTintList(ColorStateList.valueOf(targetColor));
     }
 }
