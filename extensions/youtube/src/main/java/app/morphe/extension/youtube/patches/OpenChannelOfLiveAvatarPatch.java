@@ -7,7 +7,7 @@
 
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.ResourceUtils.getString;
 import static app.morphe.extension.youtube.settings.Settings.OPEN_CHANNEL_OF_LIVE_AVATAR;
 
 import android.app.Activity;
@@ -28,6 +28,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
 import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
 public final class OpenChannelOfLiveAvatarPatch {
@@ -87,29 +88,36 @@ public final class OpenChannelOfLiveAvatarPatch {
             if (!(playbackStartDescriptorMap.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost componentHost)) {
                 return false;
             }
-            // Check content description (accessibility labels) of the live ring.
-            final CharSequence contentDescriptionCharSequence = componentHost.getContentDescription();
-            if (contentDescriptionCharSequence == null) {
-                return false;
+
+            boolean containsMatch;
+
+            if (!ShortsPlayerState.isOpen()) {
+                // Check content description (accessibility labels) of the live ring.
+                final CharSequence contentDescriptionCharSequence = componentHost.getContentDescription();
+                if (contentDescriptionCharSequence == null) {
+                    return false;
+                }
+                final String contentDescriptionString = contentDescriptionCharSequence.toString();
+
+                //If you change the language in the app settings, a string from another language may be used.
+                final String liveRingDescription = getString("morphe_live_ring_description");
+
+                if (!Objects.equals(lastLiveRingDescription, liveRingDescription)) {
+                    String[] words = stringNormalization.apply(liveRingDescription).split("\\s+");
+                    for (int i = 0; i < words.length; i++) words[i] = Pattern.quote(words[i]);
+                    liveRingDescriptionPattern = Pattern.compile(TextUtils.join(".*?", words));
+                    lastLiveRingDescription = liveRingDescription;
+                }
+                containsMatch = liveRingDescriptionPattern.matcher(
+                        stringNormalization.apply(contentDescriptionString)
+                ).find();
+
+                Logger.printDebug(() -> "Litho description: " + contentDescriptionString
+                        + "\ncontains Resource description: " + liveRingDescription
+                        + "\n" + containsMatch);
+            } else {
+                containsMatch = true;
             }
-            final String contentDescriptionString = contentDescriptionCharSequence.toString();
-
-            //If you change the language in the app settings, a string from another language may be used.
-            final String liveRingDescription = str("morphe_live_ring_description");
-
-            if (!Objects.equals(lastLiveRingDescription, liveRingDescription)) {
-                String[] words = stringNormalization.apply(liveRingDescription).split("\\s+");
-                for (int i = 0; i < words.length; i++) words[i] = Pattern.quote(words[i]);
-                liveRingDescriptionPattern = Pattern.compile(TextUtils.join(".*?", words));
-                lastLiveRingDescription = liveRingDescription;
-            }
-            var containsMatch = liveRingDescriptionPattern.matcher(
-                    stringNormalization.apply(contentDescriptionString)
-            ).find();
-
-            Logger.printDebug(() -> "Litho description: " + contentDescriptionString
-                    + "\ncontains Resource description: " + liveRingDescription
-                    + "\n" + containsMatch);
 
             if (containsMatch) {
                 liveAvatarChannelRequest = SpoofVideoStreamsPatch.fetchDetails(
