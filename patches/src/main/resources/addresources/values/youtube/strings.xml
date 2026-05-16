@@ -72,8 +72,8 @@ Changes include:
     <string name="morphe_hide_community_posts_title">Hide community posts</string>
     <string name="morphe_hide_compact_banner_title">Hide compact banners</string>
     <string name="morphe_hide_compact_banner_summary">Hides compact banners and spacing between some components</string>
-    <string name="morphe_hide_expandable_card_title">Expandable cards under videos</string>
-    <string name="morphe_hide_expandable_card_entry_1">Show all</string>
+    <string name="morphe_hide_expandable_card_title">Hide expandable cards under videos</string>
+    <string name="morphe_hide_expandable_card_entry_1">Disabled</string>
     <string name="morphe_hide_expandable_card_entry_2">Hide product card only</string>
     <string name="morphe_hide_expandable_card_entry_3">Hide summary card only</string>
     <string name="morphe_hide_expandable_card_entry_4">Hide product and summary cards</string>
@@ -220,7 +220,7 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_sanitize_comments_category_bar_title">Sanitize category bar</string>
     <string name="morphe_sanitize_comments_category_bar_summary">Hides all comment sorting options except \'Top\' and \'Newest\'</string>
     <string name="morphe_custom_filter_screen_title">Custom filter</string>
-    <string name="morphe_custom_filter_screen_summary">Choose which components to hide using custom filters</string>
+    <string name="morphe_custom_filter_screen_summary">Configure custom filters to hide any component</string>
     <string name="morphe_custom_filter_title">Enable custom filter</string>
     <string name="morphe_custom_filter_strings_title">Custom filter</string>
     <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
@@ -299,8 +299,8 @@ Limitations:
     <string name="morphe_share_copy_url_button_timestamp_success">URL with timestamp copied to clipboard</string>
     <string name="morphe_copy_video_url_button_title">Show Copy video URL button</string>
     <string name="morphe_copy_video_url_button_summary">Tap to copy the video URL, tap and hold to copy with timestamp</string>
-    <string name="morphe_copy_video_url_button_timestamp_title">Copy timestamp</string>
-    <string name="morphe_copy_video_url_button_timestamp_summary">When on, tap copies the URL with timestamp and hold copies without. When off, the behavior is reversed</string>
+    <string name="morphe_copy_video_url_button_timestamp_title">Copy timestamp by default</string>
+    <string name="morphe_copy_video_url_button_timestamp_summary">Reverses the tap and tap-and-hold actions of \'Copy video URL\' button</string>
 
     <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
     <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
@@ -315,14 +315,14 @@ Limitations:
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_title">External downloads</string>
-    <string name="morphe_external_downloader_screen_summary">Choose which external app handles your downloads</string>
+    <string name="morphe_external_downloader_screen_summary">Configure an external downloader app for downloading videos</string>
     <string name="morphe_external_downloader_title">Show external download button</string>
-
+    <string name="morphe_external_downloader_summary">Shows a download button in video player that opens your external downloader</string>
     <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
     <string name="morphe_external_downloader_action_button_title">Override Download action button</string>
-    <string name="morphe_external_downloader_action_button_summary">Replaces YouTube\'s built-in download function with your chosen third-party downloading app</string>
-    <string name="morphe_external_downloader_name_title">Downloader package name</string>
-    <string name="morphe_external_downloader_name_summary">Package name of your installed external downloader app</string>
+    <string name="morphe_external_downloader_action_button_summary">Replaces YouTube\'s built-in download function with your external downloader</string>
+    <string name="morphe_external_downloader_name_title">External downloader package name</string>
+    <string name="morphe_external_downloader_name_summary">Package name of your installed third-party downloading app</string>
     <string name="morphe_external_downloader_other_item_hint">Enter the package name</string>
     <string name="morphe_external_downloader_other_item">Other</string>
     <string name="morphe_external_downloader_not_found_title">App not installed</string>
@@ -391,6 +391,7 @@ Info: May not work on live streams"</string>
 
     <!-- interaction.seekbar.enableTapToSeekPatch -->
     <string name="morphe_tap_to_seek_title">Enable tap to seek</string>
+    <string name="morphe_tap_to_seek_summary">Just tap the seekbar to jump to that position without dragging it</string>
 
     <!-- interaction.swipecontrols.swipeControlsPatch -->
     <string name="morphe_swipe_brightness_title">Enable brightness gesture</string>
@@ -822,8 +823,8 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_sb_create_segment_category">Creating new segments</string>
     <string name="morphe_sb_enable_create_segment">Show \'Create new segment\' button</string>
     <string name="morphe_sb_enable_create_segment_summary">Adds a button to the video player allowing you to submit new SponsorBlock segments</string>
-    <string name="morphe_sb_general_adjusting">Adjust new segment step</string>
-    <string name="morphe_sb_general_adjusting_summary">Set the number of milliseconds for the time adjustment buttons when creating new segments</string>
+    <string name="morphe_sb_general_adjusting">Time adjustment buttons step</string>
+    <string name="morphe_sb_general_adjusting_summary">Number of milliseconds the time adjustment buttons move</string>
     <string name="morphe_sb_general_adjusting_invalid">Value must be a positive number</string>
     <string name="morphe_sb_guidelines_preference_title">Submission guidelines</string>
     <string name="morphe_sb_guidelines_preference_summary">Guidelines contain rules and tips for creating new segments</string>
@@ -1201,7 +1202,7 @@ Tap here to learn more about DeArrow"</string>
 
     <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
     <string name="morphe_spoof_device_dimensions_title">Spoof device dimensions</string>
-    <string name="morphe_spoof_device_dimensions_summary">Tricks the server into providing higher quality options by spoofing device dimensions</string>
+    <string name="morphe_spoof_device_dimensions_summary">May unlock higher video qualities</string>
     <string name="morphe_spoof_device_dimensions_user_dialog_message">Enabling this can cause video playback stuttering, worse battery life, and unknown side effects.</string>
 
     <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
@@ -1230,7 +1231,7 @@ Tap here to learn more about DeArrow"</string>
 
     <!-- misc.links.openLinksExternallyPatch -->
     <string name="morphe_external_browser_title">Open links in browser</string>
-    <string name="morphe_external_browser_summary">Opens links in your browser instead of the in-app browser</string>
+    <string name="morphe_external_browser_summary">Disables the in-app browser (Custom Tabs)</string>
 
     <!-- video.quality.rememberVideoQualityPatch -->
     <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
