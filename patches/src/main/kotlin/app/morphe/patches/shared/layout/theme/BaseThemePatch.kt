@@ -143,7 +143,6 @@ internal fun baseThemeResourcePatch(
 
         if (isMaterialYouDark || isMaterialYouLight) {
             fun patchDotColor(baseDir: String, targetDir: String, fileName: String, colorValue: String?) {
-                if (colorValue == null) return
                 try {
                     val resDir = get("res")
                     val sourceFile = resDir.resolve("$baseDir/$fileName")
@@ -155,6 +154,8 @@ internal fun baseThemeResourcePatch(
                     if (!targetFile.exists()) {
                         sourceFile.copyTo(targetFile)
                     }
+
+                    if (colorValue == null) return
 
                     document("res/$targetDir/$fileName").use { document ->
                         val shapeNode = document.getElementsByTagName("shape").item(0) as? Element ?: return@use
@@ -184,7 +185,6 @@ internal fun baseThemeResourcePatch(
             }
 
             fun patchLayoutTextColor(targetDir: String, colorValue: String?) {
-                if (colorValue == null) return
                 try {
                     val resDir = get("res")
                     val sourceLayout = resDir.resolve("layout/new_content_count.xml")
@@ -194,6 +194,7 @@ internal fun baseThemeResourcePatch(
                     if (!sourceLayout.exists()) return
                     if (!targetLayoutDir.exists()) targetLayoutDir.mkdirs()
                     if (!targetLayoutFile.exists()) sourceLayout.copyTo(targetLayoutFile)
+                    if (colorValue == null) return
 
                     document("res/$targetDir/new_content_count.xml").use { document ->
                         val textViewNode = document.getElementsByTagName("TextView").item(0) as? Element
