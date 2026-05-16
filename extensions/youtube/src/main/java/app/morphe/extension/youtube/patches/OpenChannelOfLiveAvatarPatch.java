@@ -53,8 +53,9 @@ public final class OpenChannelOfLiveAvatarPatch {
     private static final String VIDEO_THUMBNAIL_VIEW_KEY =
             "VideoPresenterConstants.VIDEO_THUMBNAIL_VIEW_KEY";
 
-    private static StreamOrDetailsDataRequest liveAvatarChannelRequest = null;
-    private static String lastLiveRingDescription = null;
+    private static volatile StreamOrDetailsDataRequest liveAvatarChannelRequest;
+    private static volatile String lastLiveRingDescription;
+    private static volatile Pattern liveRingDescriptionPattern;
     private static final UnaryOperator<String> stringNormalization =
             s -> java.text.Normalizer.normalize(
                     s.toLowerCase(),
@@ -63,7 +64,7 @@ public final class OpenChannelOfLiveAvatarPatch {
                     "\\p{M}",
                     ""
             );
-    private static Pattern liveRingDescriptionPattern;
+
     /**
      * Injection point.
      *
@@ -76,7 +77,8 @@ public final class OpenChannelOfLiveAvatarPatch {
                 return false;
             }
             // Prevent a new request until the previous (if exists) is not done
-            if (liveAvatarChannelRequest != null && !liveAvatarChannelRequest.fetchIsDone()) {
+            StreamOrDetailsDataRequest request = liveAvatarChannelRequest;
+            if (request != null && !request.fetchIsDone()) {
                 return false;
             }
             // Video was opened by clicking the thumbnail
@@ -89,7 +91,7 @@ public final class OpenChannelOfLiveAvatarPatch {
                 return false;
             }
 
-            boolean containsMatch;
+            final boolean containsMatch;
 
             if (!ShortsPlayerState.isOpen()) {
                 // Check content description (accessibility labels) of the live ring.
@@ -99,22 +101,26 @@ public final class OpenChannelOfLiveAvatarPatch {
                 }
                 final String contentDescriptionString = contentDescriptionCharSequence.toString();
 
-                //If you change the language in the app settings, a string from another language may be used.
+                // If you change the language in the app settings, a string from another language may be used.
                 final String liveRingDescription = getString("morphe_live_ring_description");
 
-                if (!Objects.equals(lastLiveRingDescription, liveRingDescription)) {
+                final Pattern pattern;
+                if (Objects.equals(lastLiveRingDescription, liveRingDescription)) {
+                    pattern = liveRingDescriptionPattern;
+                } else {
                     String[] words = stringNormalization.apply(liveRingDescription).split("\\s+");
                     for (int i = 0; i < words.length; i++) words[i] = Pattern.quote(words[i]);
-                    liveRingDescriptionPattern = Pattern.compile(TextUtils.join(".*?", words));
+                    pattern = Pattern.compile(TextUtils.join(".*?", words));
                     lastLiveRingDescription = liveRingDescription;
                 }
-                containsMatch = liveRingDescriptionPattern.matcher(
+
+                containsMatch = pattern.matcher(
                         stringNormalization.apply(contentDescriptionString)
                 ).find();
 
                 Logger.printDebug(() -> "Litho description: " + contentDescriptionString
                         + "\ncontains Resource description: " + liveRingDescription
-                        + "\n" + containsMatch);
+                        + "\nmatch: " + containsMatch);
             } else {
                 containsMatch = true;
             }
@@ -145,7 +151,7 @@ public final class OpenChannelOfLiveAvatarPatch {
                 return true;
             }
         } catch (Exception ex) {
-            Logger.printException(() -> "fetchVideoInformation failure", ex);
+            Logger.printException(() -> "openChannel failure", ex);
         }
         return false;
     }
