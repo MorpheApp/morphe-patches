@@ -12,6 +12,8 @@ import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.layout.theme.patchDotColor
+import app.morphe.patches.shared.layout.theme.patchLayoutTextColor
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -194,6 +196,35 @@ val themePatch = baseThemePatch(
                     } catch (_: Exception) {
                     }
                 }
+
+                val isMaterialYouLight = lightThemeBackgroundColor!!.startsWith("@android:color/system_")
+
+                arrayOf(
+                    "new_content_dot_background.xml",
+                    "new_content_dot_background_cairo.xml"
+                ).forEach { fileName ->
+                    patchDotColor(
+                        "drawable-v31",
+                        fileName,
+                        if (isMaterialYouLight) "@android:color/system_accent1_200" else null
+                    )
+                }
+
+                arrayOf(
+                    "new_content_count_background.xml",
+                    "new_content_count_background_cairo.xml"
+                ).forEach { fileName ->
+                    patchDotColor(
+                        "drawable-v31",
+                        fileName,
+                        if (isMaterialYouLight) "@android:color/system_accent1_100" else null
+                    )
+                }
+
+                patchLayoutTextColor(
+                    "layout-v31",
+                    if (isMaterialYouLight) "@android:color/system_neutral1_900" else null
+                )
             }
         }
 
