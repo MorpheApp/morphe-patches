@@ -61,7 +61,6 @@ Changes include:
 • Account switch button may not appear on the Library tab."</string>
 
     <!-- layout.hide.general.hideLayoutComponentsPatch -->
-    <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
     <string name="morphe_hide_feed_flyout_menu_title">Enable feed flyout menu filter</string>
     <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Feed flyout menu filter</string>
     <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Enter the flyout menu names to filter by, separated by new lines</string>
@@ -268,6 +267,7 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
 
     <!-- ad.general.hideAdsPatch -->
+    <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
     <string name="morphe_hide_end_screen_store_banner_title">Hide end screen store banner</string>
     <string name="morphe_hide_general_ads_title">Hide general ads</string>
     <string name="morphe_hide_merchandise_banners_title">Hide merchandise banners</string>
