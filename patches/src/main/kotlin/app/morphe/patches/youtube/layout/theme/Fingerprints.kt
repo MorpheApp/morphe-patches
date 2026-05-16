@@ -7,10 +7,7 @@ import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patches.all.misc.resources.ResourceType
-import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.youtube.shared.YOUTUBE_MAIN_ACTIVITY_CLASS_TYPE
-import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object UseGradientLoadingScreenFingerprint : Fingerprint(
@@ -115,10 +112,15 @@ internal object ShowSplashScreen2Fingerprint : Fingerprint(
 
 internal object NotificationDotControllerFingerprint : Fingerprint(
     name = "<init>",
-    accessFlags = listOf(AccessFlags.PUBLIC),
     returnType = "V",
     filters = listOf(
-        resourceLiteral(ResourceType.DRAWABLE, "new_content_count_background_cairo"),
-        resourceLiteral(ResourceType.DRAWABLE, "new_content_dot_background_cairo")
-    )
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "setImportantForAccessibility"
+        )
+    ),
+    custom = { methodDef, _ ->
+        val parameterTypes = methodDef.parameterTypes
+        parameterTypes.size == 5 && parameterTypes[2] == "Landroid/view/View;"
+    }
 )
