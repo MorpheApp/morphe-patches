@@ -13,11 +13,15 @@ import static app.morphe.extension.youtube.settings.Settings.OPEN_CHANNEL_OF_LIV
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 
 import com.facebook.litho.ComponentHost;
 
 import java.lang.ref.WeakReference;
 import java.util.Map;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -37,12 +41,6 @@ public final class OpenChannelOfLiveAvatarPatch {
     }
 
     /**
-     * If you change the language in the app settings, a string from another language may be used.
-     * In this case, restarting the app will solve it.
-     */
-    private static final String liveRingDescription = str("morphe_live_ring_description");
-
-    /**
      * This key's value is the LithoView that opened the video (Live ring or Thumbnails).
      */
     private static final String ELEMENTS_SENDER_VIEW =
@@ -55,6 +53,16 @@ public final class OpenChannelOfLiveAvatarPatch {
             "VideoPresenterConstants.VIDEO_THUMBNAIL_VIEW_KEY";
 
     private static StreamOrDetailsDataRequest liveAvatarChannelRequest = null;
+    private static String lastLiveRingDescription = null;
+    private static final UnaryOperator<String> stringNormalization =
+            s -> java.text.Normalizer.normalize(
+                    s.toLowerCase(),
+                    java.text.Normalizer.Form.NFD
+            ).replaceAll(
+                    "\\p{M}",
+                    ""
+            );
+    private static Pattern liveRingDescriptionPattern;
     /**
      * Injection point.
      *
@@ -80,15 +88,29 @@ public final class OpenChannelOfLiveAvatarPatch {
                 return false;
             }
             // Check content description (accessibility labels) of the live ring.
-            final CharSequence contentDescription = componentHost.getContentDescription();
-            if (contentDescription == null) {
+            final CharSequence contentDescriptionCharSequence = componentHost.getContentDescription();
+            if (contentDescriptionCharSequence == null) {
                 return false;
             }
+            final String contentDescriptionString = contentDescriptionCharSequence.toString();
 
-            final boolean containsMatch = contentDescription.toString().contains(liveRingDescription);
-            Logger.printDebug(() -> "Litho description: " + contentDescription
+            //If you change the language in the app settings, a string from another language may be used.
+            final String liveRingDescription = str("morphe_live_ring_description");
+
+            if (!Objects.equals(lastLiveRingDescription, liveRingDescription)) {
+                String[] words = stringNormalization.apply(liveRingDescription).split("\\s+");
+                for (int i = 0; i < words.length; i++) words[i] = Pattern.quote(words[i]);
+                liveRingDescriptionPattern = Pattern.compile(TextUtils.join(".*?", words));
+                lastLiveRingDescription = liveRingDescription;
+            }
+            var containsMatch = liveRingDescriptionPattern.matcher(
+                    stringNormalization.apply(contentDescriptionString)
+            ).find();
+
+            Logger.printDebug(() -> "Litho description: " + contentDescriptionString
                     + "\ncontains Resource description: " + liveRingDescription
                     + "\n" + containsMatch);
+
             if (containsMatch) {
                 liveAvatarChannelRequest = SpoofVideoStreamsPatch.fetchDetails(
                         PlayerRoutes.GET_CHANNEL_FROM_ID,
