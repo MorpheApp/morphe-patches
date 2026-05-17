@@ -13,7 +13,6 @@ import static app.morphe.extension.youtube.settings.Settings.OPEN_CHANNEL_OF_LIV
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
-import android.text.TextUtils;
 
 import com.facebook.litho.ComponentHost;
 
@@ -94,66 +93,75 @@ public final class OpenChannelOfLiveAvatarPatch {
             if (!(playbackStartDescriptorMap.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost componentHost)) {
                 return false;
             }
+            // Check content description (accessibility labels) of the live ring.
+            final CharSequence contentDescriptionCharSequence = componentHost.getContentDescription();
+            if (contentDescriptionCharSequence == null) {
+                return false;
+            }
+            final String contentDescriptionString = contentDescriptionCharSequence.toString();
 
             if (!CreatorChannelState.isOpen() || PlayerType.getCurrent() == PlayerType.WATCH_WHILE_MAXIMIZED) {
-                    final boolean containsMatch;
+                final boolean containsMatch;
 
-                    if (!ShortsPlayerState.isOpen()) {
-                        // Check content description (accessibility labels) of the live ring.
-                        final CharSequence contentDescriptionCharSequence = componentHost.getContentDescription();
-                        if (contentDescriptionCharSequence == null) {
-                            return false;
+                // If you change the language in the app settings, a string from another language may be used.
+                final String liveRingDescription = getString("morphe_live_ring_description");
+                if (liveRingDescription == null) {
+                    return false;
+                }
+
+                if (!Objects.equals(lastLiveRingDescription, liveRingDescription)) {
+                    liveRingDescriptionPattern = Pattern.compile(
+                            Arrays.stream(stringNormalization.apply(liveRingDescription).split("\\s+"))
+                                    .map(Pattern::quote)
+                                    .collect(Collectors.joining(".*?"))
+                    );
+                    lastLiveRingDescription = liveRingDescription;
+                }
+
+                final boolean shortsPlayerOpen = ShortsPlayerState.isOpen();
+
+                if (!shortsPlayerOpen) {
+                    // Verify that the expected litho element name is
+                    // contained within the fetched litho name.
+                    containsMatch = liveRingDescriptionPattern.matcher(
+                            stringNormalization.apply(contentDescriptionString)
+                    ).find();
+
+                    Logger.printDebug(() ->
+                            "Fetched litho description: " + contentDescriptionString +
+                            "\nContains Morphe source description: " + liveRingDescription
+                            + "\nMatch: " + containsMatch
+                    );
+                } else {
+                    // Do not check anything, but only for shorts.
+                    containsMatch = true;
+                }
+
+                if (containsMatch) {
+                    liveAvatarChannelRequest = SpoofVideoStreamsPatch.fetchDetails(
+                            PlayerRoutes.GET_CHANNEL_FROM_ID,
+                            videoId
+                    );
+                    Utils.runOnBackgroundThread(() -> {
+                        if (liveAvatarChannelRequest.getStreamDetails() instanceof String channelID && !channelID.isEmpty()) {
+                            Logger.printDebug(() -> "live avatar response: " + channelID);
+
+                            Utils.runOnMainThread(() -> {
+                                var context = mainActivityRef.get();
+                                if (context != null) {
+                                    Intent videoChannelIntent = new Intent(Intent.ACTION_VIEW);
+                                    videoChannelIntent.setData(Uri.parse("https://www.youtube.com/channel/" + channelID));
+                                    videoChannelIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                    videoChannelIntent.setPackage(context.getPackageName());
+                                    context.startActivity(videoChannelIntent);
+                                }
+                            });
+                        } else {
+                            Logger.printDebug(() -> "Could not get channel ID, string parameter is null: " + videoId);
                         }
-                        final String contentDescriptionString = contentDescriptionCharSequence.toString();
-
-                        // If you change the language in the app settings, a string from another language may be used.
-                        final String liveRingDescription = getString("morphe_live_ring_description");
-
-                        if (!Objects.equals(lastLiveRingDescription, liveRingDescription)) {
-                            liveRingDescriptionPattern = Pattern.compile(
-                                    Arrays.stream(stringNormalization.apply(liveRingDescription).split("\\s+"))
-                                            .map(Pattern::quote)
-                                            .collect(Collectors.joining(".*?"))
-                            );
-                            lastLiveRingDescription = liveRingDescription;
-                        }
-
-                        containsMatch = liveRingDescriptionPattern.matcher(
-                                stringNormalization.apply(contentDescriptionString)
-                        ).find();
-
-                        Logger.printDebug(() -> "Litho description: " + contentDescriptionString
-                                + "\ncontains Resource description: " + liveRingDescription
-                                + "\nmatch: " + containsMatch);
-                    } else {
-                        containsMatch = true;
-                    }
-
-                    if (containsMatch) {
-                        liveAvatarChannelRequest = SpoofVideoStreamsPatch.fetchDetails(
-                                PlayerRoutes.GET_CHANNEL_FROM_ID,
-                                videoId
-                        );
-                        Utils.runOnBackgroundThread(() -> {
-                            if (liveAvatarChannelRequest.getStreamDetails() instanceof String channelID && !channelID.isEmpty()) {
-                                Logger.printDebug(() -> "live avatar response: " + channelID);
-
-                                Utils.runOnMainThread(() -> {
-                                    var context = mainActivityRef.get();
-                                    if (context != null) {
-                                        Intent videoChannelIntent = new Intent(Intent.ACTION_VIEW);
-                                        videoChannelIntent.setData(Uri.parse("https://www.youtube.com/channel/" + channelID));
-                                        videoChannelIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        videoChannelIntent.setPackage(context.getPackageName());
-                                        context.startActivity(videoChannelIntent);
-                                    }
-                                });
-                            } else {
-                                Logger.printDebug(() -> "Could not get channel ID, string parameter is null: " + videoId);
-                            }
-                        });
-                        return true;
-                    }
+                    });
+                    return true;
+                }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "openChannel failure", ex);
