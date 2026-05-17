@@ -322,7 +322,7 @@ Limitations:
     <string name="morphe_external_downloader_action_button_title">Override Download action button</string>
     <string name="morphe_external_downloader_action_button_summary">Replaces YouTube\'s built-in download function with your external downloader</string>
     <string name="morphe_external_downloader_name_title">External downloader package name</string>
-    <string name="morphe_external_downloader_name_summary">Package name of your installed third-party downloading app</string>
+    <string name="morphe_external_downloader_name_summary">Package name of your installed external downloader app</string>
     <string name="morphe_external_downloader_other_item_hint">Enter the package name</string>
     <string name="morphe_external_downloader_other_item">Other</string>
     <string name="morphe_external_downloader_not_found_title">App not installed</string>
@@ -342,8 +342,8 @@ Verify the package name is correct and the app is installed"</string>
 
     <!-- interaction.playall.playAllButtonPatch -->
     <string name="morphe_play_all_button_title">Show Play all button</string>
-    <string name="morphe_play_all_button_summary">"Tap to generate a playlist of all videos from channel
-Tap and hold to undo
+    <string name="morphe_play_all_button_summary">"Tap to generate a playlist of all videos from channel, tap and hold to undo
+
 Info: May not work on live streams"</string>
     <string name="morphe_play_all_button_type_title">Generate playlist mode</string>
     <string name="morphe_play_all_button_type_entry_0">All contents (Sort by time, Ascending)</string>
@@ -372,7 +372,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_save_to_watch_later_error_toast">Cannot save this video in watch later playlist</string>
 
     <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
-    <string name="morphe_open_channel_of_live_avatar_title">Open channel of live avatar</string>
+    <string name="morphe_open_channel_of_live_avatar_title">Open channel from live avatar</string>
     <string name="morphe_open_channel_of_live_avatar_summary">Prevents the live stream from opening when tapping the channel\'s avatar</string>
 
     <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
@@ -733,7 +733,7 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_exit_fullscreen_entry_1">Disabled</string>
     <string name="morphe_exit_fullscreen_entry_2">Portrait only</string>
     <string name="morphe_exit_fullscreen_entry_3">Landscape only</string>
-    <string name="morphe_exit_fullscreen_entry_4">Both</string>
+    <string name="morphe_exit_fullscreen_entry_4">Portrait and landscape</string>
 
     <!-- layout.player.fullscreen.openVideosFullscreen -->
     <string name="morphe_open_videos_fullscreen_portrait_title">Open videos in fullscreen portrait</string>
@@ -1231,7 +1231,7 @@ Tap here to learn more about DeArrow"</string>
 
     <!-- misc.links.openLinksExternallyPatch -->
     <string name="morphe_external_browser_title">Open links in browser</string>
-    <string name="morphe_external_browser_summary">Disables the in-app browser (Custom Tabs)</string>
+    <string name="morphe_external_browser_summary">Opens links in external browser instead of the in-app browser</string>
 
     <!-- video.quality.rememberVideoQualityPatch -->
     <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
