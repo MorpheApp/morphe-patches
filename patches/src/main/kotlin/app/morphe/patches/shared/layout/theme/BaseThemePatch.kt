@@ -149,7 +149,7 @@ internal fun baseThemeResourcePatch(
             "new_content_count_background_cairo.xml"
         ).forEach { fileName ->
             patchDotColor(
-                "drawable-night-v31",
+                "drawable-night-anydpi-v31",
                 fileName,
                 if (isMaterialYouDark) "@android:color/system_accent1_100" else null
             )
@@ -163,6 +163,7 @@ internal fun baseThemeResourcePatch(
 }
 
 fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colorValue: String?) {
+    if (colorValue == null) return
     try {
         val resDir = get("res")
         val possibleSourceDirs = listOf(
@@ -186,8 +187,6 @@ fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colo
         if (!targetDirFile.exists()) targetDirFile.mkdirs()
         if (!targetFile.exists()) sourceFile.copyTo(targetFile)
 
-        if (colorValue == null) return
-
         document("res/$targetDir/$fileName").use { document ->
             val shapeNode = document.getElementsByTagName("shape").item(0) as? Element ?: return@use
             shapeNode.forEachChildElement { node ->
@@ -200,6 +199,7 @@ fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colo
 }
 
 fun ResourcePatchContext.patchLayoutTextColor(targetDir: String, colorValue: String?) {
+    if (colorValue == null) return
     try {
         val resDir = get("res")
         val possibleSourceDirs = listOf("layout", "layout-v31", "layout-v26")
@@ -220,8 +220,6 @@ fun ResourcePatchContext.patchLayoutTextColor(targetDir: String, colorValue: Str
 
         if (!targetLayoutDir.exists()) targetLayoutDir.mkdirs()
         if (!targetLayoutFile.exists()) sourceLayout.copyTo(targetLayoutFile)
-
-        if (colorValue == null) return
 
         document("res/$targetDir/new_content_count.xml").use { document ->
             val textViewNode = document.getElementsByTagName("TextView").item(0) as? Element

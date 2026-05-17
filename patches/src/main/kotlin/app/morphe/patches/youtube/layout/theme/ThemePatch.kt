@@ -204,7 +204,7 @@ val themePatch = baseThemePatch(
                     "new_content_dot_background_cairo.xml"
                 ).forEach { fileName ->
                     patchDotColor(
-                        "drawable-v31",
+                        "drawable-anydpi-v31",
                         fileName,
                         if (isMaterialYouLight) "@android:color/system_accent1_200" else null
                     )
@@ -215,7 +215,7 @@ val themePatch = baseThemePatch(
                     "new_content_count_background_cairo.xml"
                 ).forEach { fileName ->
                     patchDotColor(
-                        "drawable-v31",
+                        "drawable-anydpi-v31",
                         fileName,
                         if (isMaterialYouLight) "@android:color/system_accent1_100" else null
                     )
