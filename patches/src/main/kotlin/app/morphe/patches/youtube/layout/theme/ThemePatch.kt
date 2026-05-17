@@ -13,7 +13,6 @@ import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.layout.theme.patchDotColor
-import app.morphe.patches.shared.layout.theme.patchLayoutTextColor
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -220,11 +219,6 @@ val themePatch = baseThemePatch(
                         if (isMaterialYouLight) "@android:color/system_accent1_100" else null
                     )
                 }
-
-                patchLayoutTextColor(
-                    "layout-v31",
-                    if (isMaterialYouLight) "@android:color/system_neutral1_900" else null
-                )
             }
         }
 

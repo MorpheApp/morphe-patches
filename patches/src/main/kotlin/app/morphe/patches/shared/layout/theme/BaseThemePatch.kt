@@ -154,16 +154,10 @@ internal fun baseThemeResourcePatch(
                 if (isMaterialYouDark) "@android:color/system_accent1_100" else null
             )
         }
-
-        patchLayoutTextColor(
-            "layout-night-v31",
-            if (isMaterialYouDark) "@android:color/system_neutral1_900" else null
-        )
     }
 }
 
 fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colorValue: String?) {
-    if (colorValue == null) return
     try {
         val resDir = get("res")
         val possibleSourceDirs = listOf(
@@ -187,6 +181,8 @@ fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colo
         if (!targetDirFile.exists()) targetDirFile.mkdirs()
         if (!targetFile.exists()) sourceFile.copyTo(targetFile)
 
+        if (colorValue == null) return
+
         document("res/$targetDir/$fileName").use { document ->
             val shapeNode = document.getElementsByTagName("shape").item(0) as? Element ?: return@use
             shapeNode.forEachChildElement { node ->
@@ -194,36 +190,6 @@ fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colo
                     node.setAttribute("android:color", colorValue)
                 }
             }
-        }
-    } catch (_: Exception) {}
-}
-
-fun ResourcePatchContext.patchLayoutTextColor(targetDir: String, colorValue: String?) {
-    if (colorValue == null) return
-    try {
-        val resDir = get("res")
-        val possibleSourceDirs = listOf("layout", "layout-v31", "layout-v26")
-        var sourceLayout: File? = null
-
-        for (dir in possibleSourceDirs) {
-            val file = resDir.resolve("$dir/new_content_count.xml")
-            if (file.exists()) {
-                sourceLayout = file
-                break
-            }
-        }
-
-        if (sourceLayout == null) return
-
-        val targetLayoutDir = resDir.resolve(targetDir)
-        val targetLayoutFile = targetLayoutDir.resolve("new_content_count.xml")
-
-        if (!targetLayoutDir.exists()) targetLayoutDir.mkdirs()
-        if (!targetLayoutFile.exists()) sourceLayout.copyTo(targetLayoutFile)
-
-        document("res/$targetDir/new_content_count.xml").use { document ->
-            val textViewNode = document.getElementsByTagName("TextView").item(0) as? Element
-            textViewNode?.setAttribute("android:textColor", colorValue)
         }
     } catch (_: Exception) {}
 }
