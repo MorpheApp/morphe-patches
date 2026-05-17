@@ -336,21 +336,18 @@ val themePatch = baseThemePatch(
             match.method.apply {
                 val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID)
                 val wrapperType = parameterTypes[0]
-                val getMethodRef = implementation!!.instructions
+                val getViewMethodName = implementation!!.instructions
                     .mapNotNull { (it as? ReferenceInstruction)?.reference as? MethodReference }
-                    .first { it.definingClass == wrapperType && it.parameterTypes.isEmpty() }
-
-                val getViewMethodName = getMethodRef.name
-                val getViewReturnType = getMethodRef.returnType
+                    .first { it.definingClass == wrapperType && it.returnType == "Landroid/view/View;" }
+                    .name
 
                 addInstructions(
                     insertIndex,
                     """
-                        invoke-virtual {p1}, $wrapperType->$getViewMethodName()$getViewReturnType
-                        move-result-object v0
-                        check-cast v0, Landroid/view/View;
-                        invoke-static {v0}, Lapp/morphe/extension/youtube/patches/theme/ThemePatch;->applyDynamicTheme(Landroid/view/View;)V
-                    """
+                invoke-virtual {p1}, $wrapperType->$getViewMethodName()Landroid/view/View;
+                move-result-object v0
+                invoke-static {v0}, Lapp/morphe/extension/youtube/patches/theme/ThemePatch;->applyDynamicTheme(Landroid/view/View;)V
+            """
                 )
             }
         }
