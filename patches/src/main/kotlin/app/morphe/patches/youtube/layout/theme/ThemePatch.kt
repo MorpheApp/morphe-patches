@@ -12,6 +12,8 @@ import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.layout.theme.patchDotColor
+import app.morphe.patches.shared.layout.theme.patchLayoutTextColor
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -28,13 +30,9 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.forEachChildElement
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
@@ -198,6 +196,35 @@ val themePatch = baseThemePatch(
                     } catch (_: Exception) {
                     }
                 }
+
+                val isMaterialYouLight = lightThemeBackgroundColor!!.startsWith("@android:color/system_")
+
+                arrayOf(
+                    "new_content_dot_background.xml",
+                    "new_content_dot_background_cairo.xml"
+                ).forEach { fileName ->
+                    patchDotColor(
+                        "drawable-v31",
+                        fileName,
+                        if (isMaterialYouLight) "@android:color/system_accent1_200" else null
+                    )
+                }
+
+                arrayOf(
+                    "new_content_count_background.xml",
+                    "new_content_count_background_cairo.xml"
+                ).forEach { fileName ->
+                    patchDotColor(
+                        "drawable-v31",
+                        fileName,
+                        if (isMaterialYouLight) "@android:color/system_accent1_100" else null
+                    )
+                }
+
+                patchLayoutTextColor(
+                    "layout-v31",
+                    if (isMaterialYouLight) "@android:color/system_neutral1_900" else null
+                )
             }
         }
 
@@ -328,26 +355,6 @@ val themePatch = baseThemePatch(
                         invoke-static { v$registerA, v$registerB }, $EXTENSION_CLASS->showSplashScreen(II)I
                         move-result v$registerA
                     """
-                )
-            }
-        }
-
-        NotificationDotControllerFingerprint.let { match ->
-            match.method.apply {
-                val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID)
-                val wrapperType = parameterTypes[0]
-                val getViewMethodName = implementation!!.instructions
-                    .mapNotNull { (it as? ReferenceInstruction)?.reference as? MethodReference }
-                    .first { it.definingClass == wrapperType && it.returnType == "Landroid/view/View;" }
-                    .name
-
-                addInstructions(
-                    insertIndex,
-                    """
-                invoke-virtual {p1}, $wrapperType->$getViewMethodName()Landroid/view/View;
-                move-result-object v0
-                invoke-static {v0}, Lapp/morphe/extension/youtube/patches/theme/ThemePatch;->applyDynamicTheme(Landroid/view/View;)V
-            """
                 )
             }
         }
