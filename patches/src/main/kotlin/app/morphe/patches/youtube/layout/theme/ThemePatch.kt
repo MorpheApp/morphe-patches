@@ -28,11 +28,12 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.forEachChildElement
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.RegisterRangeInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import org.w3c.dom.Element
@@ -334,24 +335,34 @@ val themePatch = baseThemePatch(
 
         NotificationDotControllerFingerprint.let { match ->
             match.method.apply {
-                val insertIndex = indexOfFirstInstructionReversedOrThrow(Opcode.RETURN_VOID)
-                val wrapperType = parameterTypes[0]
-                val getMethodRef = implementation!!.instructions
-                    .mapNotNull { (it as? ReferenceInstruction)?.reference as? MethodReference }
-                    .first { it.definingClass == wrapperType && it.parameterTypes.isEmpty() }
+                val setBgInstructions = implementation!!.instructions.withIndex().filter { (_, inst) ->
+                    if (inst.opcode == Opcode.INVOKE_VIRTUAL) {
+                        val ref = (inst as ReferenceInstruction).reference as MethodReference
+                        ref.name == "setBackgroundResource"
+                    } else false
+                }
 
-                val getViewMethodName = getMethodRef.name
-                val getViewReturnType = getMethodRef.returnType
+                setBgInstructions.reversed().forEach { (index, inst) ->
+                    val viewReg = when (inst) {
+                        is FiveRegisterInstruction -> {
+                            inst.registerC
+                        }
 
-                addInstructions(
-                    insertIndex,
+                        is RegisterRangeInstruction -> {
+                            inst.startRegister
+                        }
+
+                        else -> {
+                            return@forEach
+                        }
+                    }
+
+                    val smaliToInject = """
+                        invoke-static {v$viewReg}, Lapp/morphe/extension/youtube/patches/theme/ThemePatch;->applyDynamicTheme(Landroid/view/View;)V
                     """
-                        invoke-virtual {p1}, $wrapperType->$getViewMethodName()$getViewReturnType
-                        move-result-object v0
-                        check-cast v0, Landroid/view/View;
-                        invoke-static {v0}, Lapp/morphe/extension/youtube/patches/theme/ThemePatch;->applyDynamicTheme(Landroid/view/View;)V
-                    """
-                )
+
+                    addInstructions(index + 1, smaliToInject)
+                }
             }
         }
     }

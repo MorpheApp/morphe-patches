@@ -120,6 +120,24 @@ public class ThemePatch extends BaseThemePatch {
     /**
      * Injection point.
      */
+    public static void applyDynamicThemeToWrapper(Object wrapper) {
+        if (wrapper == null) return;
+        try {
+            for (java.lang.reflect.Method m : wrapper.getClass().getDeclaredMethods()) {
+                if (View.class.isAssignableFrom(m.getReturnType()) && m.getParameterTypes().length == 0) {
+                    m.setAccessible(true);
+                    View dotView = (View) m.invoke(wrapper);
+                    applyDynamicTheme(dotView);
+                    return;
+                }
+            }
+        } catch (Exception ignored) {
+        }
+    }
+
+    /**
+     * Injection point.
+     */
     public static void applyDynamicTheme(View dotView) {
         if (dotView == null) return;
 
