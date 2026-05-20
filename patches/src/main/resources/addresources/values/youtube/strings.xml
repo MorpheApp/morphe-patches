@@ -315,13 +315,13 @@ Limitations:
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_title">External downloads</string>
-    <string name="morphe_external_downloader_screen_summary">Configure an external downloader app for downloading videos</string>
+    <string name="morphe_external_downloader_screen_summary">Download videos with third-party downloading apps</string>
     <string name="morphe_external_downloader_title">Show external download button</string>
-    <string name="morphe_external_downloader_summary">Shows a download button in video player that opens your external downloader</string>
+    <string name="morphe_external_downloader_summary">Shows an overlay button in video player that opens your external downloader</string>
     <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
     <string name="morphe_external_downloader_action_button_title">Override Download action button</string>
     <string name="morphe_external_downloader_action_button_summary">Replaces YouTube\'s built-in download function with your external downloader</string>
-    <string name="morphe_external_downloader_name_title">External downloader package name</string>
+    <string name="morphe_external_downloader_name_title">Downloader package name</string>
     <string name="morphe_external_downloader_name_summary">Package name of your installed external downloader app</string>
     <string name="morphe_external_downloader_other_item_hint">Enter the package name</string>
     <string name="morphe_external_downloader_other_item">Other</string>
@@ -1202,7 +1202,7 @@ Tap here to learn more about DeArrow"</string>
 
     <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
     <string name="morphe_spoof_device_dimensions_title">Spoof device dimensions</string>
-    <string name="morphe_spoof_device_dimensions_summary">May unlock higher video qualities</string>
+    <string name="morphe_spoof_device_dimensions_summary">Enabling this can unlock higher video qualities</string>
     <string name="morphe_spoof_device_dimensions_user_dialog_message">Enabling this can cause video playback stuttering, worse battery life, and unknown side effects.</string>
 
     <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->

@@ -43,7 +43,7 @@ Second \"item\" text"</string>
     <string name="morphe_spoof_video_streams_screen_title">Spoof video streams</string>
     <string name="morphe_spoof_video_streams_screen_summary">Configure client spoofing to prevent playback issues</string>
     <string name="morphe_spoof_video_streams_title">Spoof video streams</string>
-    <string name="morphe_spoof_video_streams_summary">"Tricks YouTube into sending a compatible video stream, which fixes playback for most users
+    <string name="morphe_spoof_video_streams_summary">"Fixes playback issues for most users by requesting a compatible video stream
 
 If you are a YouTube Premium user, this setting may not be required"</string>
     <string name="morphe_spoof_video_streams_no_clients_toast">Could not fetch any client streams</string>
