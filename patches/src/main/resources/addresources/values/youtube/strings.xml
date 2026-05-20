@@ -658,6 +658,7 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to \'Android Re
     <!-- layout.hide.shorts.hideShortsComponentsPatch -->
     <string name="morphe_shorts_player_screen_title">Shorts player</string>
     <string name="morphe_shorts_player_screen_summary">Choose which components appear in the Shorts player</string>
+    <string name="morphe_preference_category_hide_shorts">Hide Shorts</string>
     <string name="morphe_hide_shorts_channel_title">Hide in channel page</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_shorts_home_title">Hide in Home feed &amp; related videos</string>
