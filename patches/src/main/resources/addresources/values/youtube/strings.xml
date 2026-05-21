@@ -719,7 +719,7 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_hide_player_related_videos_title">Hide related videos</string>
 
     <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-    <string name="morphe_hide_player_related_videos_overlay_title">Hide related videos overlay</string>
+    <string name="morphe_hide_player_related_videos_overlay_title">Hide \'More videos\' overlay</string>
     <string name="morphe_hide_player_related_videos_overlay_summary">Hides \'More videos\' overlay shown when swiping up in the fullscreen mode</string>
 
     <!-- layout.hide.time.hideTimestampPatch -->
@@ -1232,7 +1232,7 @@ Tap here to learn more about DeArrow"</string>
 
     <!-- misc.links.openLinksExternallyPatch -->
     <string name="morphe_external_browser_title">Open links in browser</string>
-    <string name="morphe_external_browser_summary">Opens links in external browser instead of the in-app browser</string>
+    <string name="morphe_external_browser_summary">Opens links in an external browser instead of the in-app browser</string>
 
     <!-- video.quality.rememberVideoQualityPatch -->
     <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
