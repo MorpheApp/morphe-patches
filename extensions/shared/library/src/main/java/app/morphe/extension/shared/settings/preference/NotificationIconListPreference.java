@@ -96,7 +96,7 @@ public class NotificationIconListPreference extends IconListPreference {
             Context context, String suffix, int sizePx, float cornerRadius,
             @ColorInt int fgColor, @ColorInt int bgColor) {
         try {
-            // ORIGINAL — extract the adaptive icon foreground, tint it, render on theme background.
+            // ORIGINAL - extract the adaptive icon foreground, tint it, render on theme background.
             if ("original".equals(suffix)) {
                 Drawable appIcon = resolveOriginalIconDrawable(context);
                 if (appIcon instanceof AdaptiveIconDrawable) {
