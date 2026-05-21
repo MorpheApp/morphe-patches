@@ -85,9 +85,9 @@ public class NotificationIconListPreference extends IconListPreference {
             Context context, String suffix, int sizePx, float cornerRadius,
             @ColorInt int fgColor, @ColorInt int bgColor) {
         try {
-            // FOLLOW and ORIGINAL have no notification icon resource - show the app launcher icon.
+            // FOLLOW and ORIGINAL have no notification icon resource - show the original launcher icon.
             if ("follow".equals(suffix) || "original".equals(suffix)) {
-                Drawable appIcon = context.getPackageManager().getApplicationIcon(context.getApplicationInfo());
+                Drawable appIcon = resolveOriginalIconDrawable(context);
                 return renderToRounded(context.getResources(), appIcon, sizePx, cornerRadius, false);
             }
 

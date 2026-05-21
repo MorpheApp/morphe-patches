@@ -64,6 +64,31 @@ public class IconListPreference extends CustomDialogListPreference {
     static final float ICON_CORNER_RADIUS_FRACTION = 0.22f;
 
     @Nullable
+    private static String originalLauncherIconName;
+
+    /** Called from CustomBrandingPatch.setBranding() at app startup. */
+    public static void setOriginalLauncherIconName(@Nullable String name) {
+        originalLauncherIconName = name;
+    }
+
+    /**
+     * Resolves the original unpatched launcher icon drawable.
+     * Uses the resource name injected at patch time; falls back to the current app icon.
+     */
+    static Drawable resolveOriginalIconDrawable(Context context) {
+        try {
+            if (originalLauncherIconName != null && !originalLauncherIconName.isEmpty()) {
+                int resId = ResourceUtils.getIdentifier(ResourceType.MIPMAP, originalLauncherIconName);
+                if (resId != 0) {
+                    Drawable drawable = context.getDrawable(resId);
+                    if (drawable != null) return drawable;
+                }
+            }
+        } catch (Exception ignored) {}
+        return context.getPackageManager().getApplicationIcon(context.getApplicationInfo());
+    }
+
+    @Nullable
     private Drawable[] iconDrawables;
 
     public IconListPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -134,10 +159,10 @@ public class IconListPreference extends CustomDialogListPreference {
             if (bg != null && fg != null) {
                 source = new LayerDrawable(new Drawable[]{bg, fg});
             } else {
-                // No morphe assets (e.g. ORIGINAL) — use the app's current launcher icon.
+                // No morphe assets (e.g. ORIGINAL) - use the original unpatched launcher icon.
                 source = Objects.requireNonNullElseGet(fg,
                         () -> Objects.requireNonNullElseGet(bg,
-                                () -> context.getPackageManager().getApplicationIcon(context.getApplicationInfo())));
+                                () -> resolveOriginalIconDrawable(context)));
             }
 
             return renderToRounded(context.getResources(), source, sizePx, cornerRadius, isAdaptive);

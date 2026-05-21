@@ -157,6 +157,7 @@ internal fun baseCustomBrandingPatch(
                 NumberOfPresetAppNamesExtensionFingerprint.method.returnEarly(numberOfPresetAppNames)
                 UserProvidedCustomNameExtensionFingerprint.method.returnEarly(customName != null)
                 UserProvidedCustomIconExtensionFingerprint.method.returnEarly(customIcon != null)
+                OriginalLauncherIconNameExtensionFingerprint.method.returnEarly(originalLauncherIconName)
 
                 NotificationBuilderFingerprint.let {
                     it.method.apply {

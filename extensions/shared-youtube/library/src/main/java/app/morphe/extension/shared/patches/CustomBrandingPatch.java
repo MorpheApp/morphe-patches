@@ -28,6 +28,7 @@ import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.IconListPreference;
 
 /**
  * Patch shared by YouTube and YT Music.
@@ -209,6 +210,17 @@ public class CustomBrandingPatch {
     /**
      * Injection point.
      * <p>
+     * The mipmap resource name of the original unpatched launcher icon.
+     * Differs per app: YouTube uses "ic_launcher", YT Music uses "ic_launcher_release".
+     */
+    private static String originalLauncherIconName() {
+        // Modified during patching.
+        return "";
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * If a custom name was provided during patching.
      */
     private static boolean userProvidedCustomName() {
@@ -281,6 +293,8 @@ public class CustomBrandingPatch {
                 componentToEnable = defaultComponent;
                 componentsToDisable.remove(defaultComponent);
             }
+
+            IconListPreference.setOriginalLauncherIconName(originalLauncherIconName());
 
             // Reset cached notification icon so it is re-resolved with the current theme
             // on the next notification. This handles the case where setBranding() is called
