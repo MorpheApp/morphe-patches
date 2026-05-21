@@ -5,6 +5,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -44,6 +45,15 @@ private val swipeControlsResourcePatch = resourcePatch {
         PreferenceScreen.SWIPE_CONTROLS.addPreferences(
             SwitchPreference("morphe_swipe_brightness"),
             SwitchPreference("morphe_swipe_volume"),
+            NonInteractivePreference(
+                key = "morphe_swipe_zone_width",
+                tag = "app.morphe.extension.youtube.settings.preference.SwipeZoneSeekBarPreference",
+            ),
+            NonInteractivePreference(
+                key = "morphe_swipe_zone_preview",
+                summaryKey = null,
+                tag = "app.morphe.extension.youtube.settings.preference.SwipeZonePreference",
+            ),
             SwitchPreference("morphe_swipe_press_to_engage"),
             SwitchPreference("morphe_swipe_haptic_feedback", summaryKey = null),
             SwitchPreference("morphe_swipe_save_and_restore_brightness"),

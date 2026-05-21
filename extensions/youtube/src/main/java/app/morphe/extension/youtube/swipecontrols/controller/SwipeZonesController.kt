@@ -15,6 +15,7 @@ import android.util.TypedValue
 import android.view.View
 import app.morphe.extension.shared.ResourceType
 import app.morphe.extension.shared.ResourceUtils.getIdentifier
+import app.morphe.extension.youtube.settings.Settings
 import app.morphe.extension.youtube.swipecontrols.misc.Rectangle
 import app.morphe.extension.youtube.swipecontrols.misc.applyDimension
 import kotlin.math.min
@@ -35,12 +36,12 @@ import kotlin.math.min
  *        v
  * -------- screenHeight
  *
- * X- Axis:
+ * X- Axis (zone widths controlled by SWIPE_ZONE_WIDTH setting, default 37%):
  *  0    xBrigStart    xBrigEnd    xVolStart     xVolEnd   screenWidth
  *  |          |            |          |            |          |
- *  |   20dp   |    3/8     |    2/8   |    3/8     |   20dp   |
+ *  |   20dp   |  zone_w%   | 100-2*z% |  zone_w%   |   20dp   |
  *  | <------> |  <------>  | <------> |  <------>  | <------> |
- *  |   dead   | brightness |   dead   |   volume   |   dead   |
+ *  |   dead   | brightness | deadzone |   volume   |   dead   |
  *             | <--------------------------------> |
  *                              1/1
  */
@@ -86,7 +87,7 @@ class SwipeZonesController(
             return Rectangle(
                 p.x + _20dp,
                 p.y + _40dp,
-                p.width - _20dp,
+                p.width - 2 * _20dp,
                 p.height - _20dp - _80dp,
             )
         }
@@ -97,7 +98,7 @@ class SwipeZonesController(
     val volume: Rectangle
         get() {
             val eRect = effectiveSwipeRect
-            val zoneWidth = (eRect.width * 3) / 8
+            val zoneWidth = (eRect.width * Settings.SWIPE_ZONE_WIDTH.get().coerceIn(5, 50)) / 100
             return Rectangle(
                 eRect.right - zoneWidth,
                 eRect.top,
@@ -111,12 +112,13 @@ class SwipeZonesController(
      */
     val brightness: Rectangle
         get() {
-            val zoneWidth = (effectiveSwipeRect.width * 3) / 8
+            val eRect = effectiveSwipeRect
+            val zoneWidth = (eRect.width * Settings.SWIPE_ZONE_WIDTH.get().coerceIn(5, 50)) / 100
             return Rectangle(
-                effectiveSwipeRect.left,
-                effectiveSwipeRect.top,
+                eRect.left,
+                eRect.top,
                 zoneWidth,
-                effectiveSwipeRect.height,
+                eRect.height,
             )
         }
 
