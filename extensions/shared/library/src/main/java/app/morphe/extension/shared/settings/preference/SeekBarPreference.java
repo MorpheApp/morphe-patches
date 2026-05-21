@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
@@ -51,6 +52,7 @@ public abstract class SeekBarPreference extends Preference {
 
     protected abstract int getMin();
     protected abstract int getMax();
+    protected abstract int getDefault();
     protected abstract int getStep();
     protected abstract String getUnit();
     protected abstract int readValue();
@@ -149,9 +151,13 @@ public abstract class SeekBarPreference extends Preference {
                 null,
                 () -> writeValue(pending[0]),
                 () -> {},
-                null,
-                null,
-                true
+                StringRef.str("morphe_settings_reset"),
+                () -> {
+                    pending[0] = getDefault();
+                    seekBar.setProgress(valueToProgress(getDefault()));
+                    updateLabel(currentLabel, getDefault());
+                },
+                false
         );
 
         // Insert content between title (index 0) and buttons (index 1).

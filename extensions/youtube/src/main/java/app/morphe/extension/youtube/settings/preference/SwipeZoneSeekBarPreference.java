@@ -27,6 +27,7 @@ public final class SwipeZoneSeekBarPreference extends SeekBarPreference {
 
     @Override protected int getMin() { return 5; }
     @Override protected int getMax() { return 50; }
+    @Override protected int getDefault() { return Settings.SWIPE_ZONE_WIDTH.defaultValue; }
     @Override protected int getStep() { return 1; }
     @Override protected String getUnit() { return "%"; }
     @Override protected int readValue() { return Settings.SWIPE_ZONE_WIDTH.get(); }
