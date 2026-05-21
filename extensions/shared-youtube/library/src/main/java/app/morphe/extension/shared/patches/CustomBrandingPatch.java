@@ -221,6 +221,18 @@ public class CustomBrandingPatch {
     /**
      * Injection point.
      * <p>
+     * The drawable resource name of the original notification icon.
+     * Differs per app: YouTube uses "ic_stat_yt_notification_logo",
+     * YT Music uses "music_push_notification_white".
+     */
+    private static String originalNotificationIconName() {
+        // Modified during patching.
+        return "";
+    }
+
+    /**
+     * Injection point.
+     * <p>
      * If a custom name was provided during patching.
      */
     private static boolean userProvidedCustomName() {
@@ -295,6 +307,7 @@ public class CustomBrandingPatch {
             }
 
             IconListPreference.setOriginalLauncherIconName(originalLauncherIconName());
+            IconListPreference.setOriginalNotificationIconName(originalNotificationIconName());
 
             // Reset cached notification icon so it is re-resolved with the current theme
             // on the next notification. This handles the case where setBranding() is called

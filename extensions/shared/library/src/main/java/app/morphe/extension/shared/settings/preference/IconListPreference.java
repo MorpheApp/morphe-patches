@@ -66,9 +66,22 @@ public class IconListPreference extends CustomDialogListPreference {
     @Nullable
     private static String originalLauncherIconName;
 
+    @Nullable
+    private static String originalNotificationIconName;
+
     /** Called from CustomBrandingPatch.setBranding() at app startup. */
     public static void setOriginalLauncherIconName(@Nullable String name) {
         originalLauncherIconName = name;
+    }
+
+    /** Called from CustomBrandingPatch.setBranding() at app startup. */
+    public static void setOriginalNotificationIconName(@Nullable String name) {
+        originalNotificationIconName = name;
+    }
+
+    @Nullable
+    static String getOriginalNotificationIconName() {
+        return originalNotificationIconName;
     }
 
     /**

@@ -40,6 +40,14 @@ internal object OriginalLauncherIconNameExtensionFingerprint : Fingerprint(
     parameters = listOf()
 )
 
+internal object OriginalNotificationIconNameExtensionFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "originalNotificationIconName",
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf()
+)
+
 // A much simpler fingerprint exists that can set the small icon (contains string "414843287017"),
 // but that has limited usage and this fingerprint allows changing any part of the notification.
 internal object NotificationBuilderFingerprint : Fingerprint(

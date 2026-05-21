@@ -13,7 +13,6 @@ import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
-import android.graphics.drawable.AdaptiveIconDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -35,8 +34,9 @@ import app.morphe.extension.shared.Utils;
  * with the corresponding {@code morphe_notification_icon_{value}} drawable tinted to the
  * contrasting foreground color - mirroring how Android displays notification icons in the shade.
  * <p>
- * FOLLOW and ORIGINAL have no dedicated notification icon resource and fall back to the
- * app's launcher icon instead.
+ * ORIGINAL uses the app's real notification icon resource (e.g. {@code ic_stat_yt_notification_logo}),
+ * injected at patch time via {@link IconListPreference#setOriginalNotificationIconName}.
+ * FOLLOW mirrors the currently selected app icon's notification counterpart.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class NotificationIconListPreference extends IconListPreference {
@@ -96,28 +96,30 @@ public class NotificationIconListPreference extends IconListPreference {
             Context context, String suffix, int sizePx, float cornerRadius,
             @ColorInt int fgColor, @ColorInt int bgColor) {
         try {
-            // ORIGINAL - extract the adaptive icon foreground, tint it, render on theme background.
+            // ORIGINAL - use the app's dedicated notification icon resource (injected at patch time).
             if ("original".equals(suffix)) {
-                Drawable appIcon = resolveOriginalIconDrawable(context);
-                if (appIcon instanceof AdaptiveIconDrawable) {
-                    Drawable fg = ((AdaptiveIconDrawable) appIcon).getForeground();
-                    if (fg != null) {
-                        Bitmap bmp = Bitmap.createBitmap(sizePx, sizePx, Bitmap.Config.ARGB_8888);
-                        Canvas canvas = new Canvas(bmp);
-                        Path clip = new Path();
-                        clip.addRoundRect(0, 0, sizePx, sizePx, cornerRadius, cornerRadius, Path.Direction.CW);
-                        canvas.clipPath(clip);
-                        canvas.drawColor(bgColor);
-                        fg.mutate().setColorFilter(new PorterDuffColorFilter(fgColor, PorterDuff.Mode.SRC_IN));
-                        int scaledSize = Math.round(sizePx * (108f / 72f));
-                        int offset = (scaledSize - sizePx) / 2;
-                        fg.setBounds(-offset, -offset, sizePx + offset, sizePx + offset);
-                        fg.draw(canvas);
-                        return new BitmapDrawable(context.getResources(), bmp);
+                String originalNotifName = IconListPreference.getOriginalNotificationIconName();
+                if (originalNotifName != null && !originalNotifName.isEmpty()) {
+                    int resId = resolveResId(originalNotifName);
+                    if (resId != 0) {
+                        Drawable notif = context.getDrawable(resId);
+                        if (notif != null) {
+                            Bitmap bmp = Bitmap.createBitmap(sizePx, sizePx, Bitmap.Config.ARGB_8888);
+                            Canvas canvas = new Canvas(bmp);
+                            Path clip = new Path();
+                            clip.addRoundRect(0, 0, sizePx, sizePx, cornerRadius, cornerRadius, Path.Direction.CW);
+                            canvas.clipPath(clip);
+                            canvas.drawColor(bgColor);
+                            int notifSize = Math.round(sizePx * NOTIF_ICON_SIZE_FRACTION);
+                            int notifOffset = (sizePx - notifSize) / 2;
+                            notif.mutate().setColorFilter(new PorterDuffColorFilter(fgColor, PorterDuff.Mode.SRC_IN));
+                            notif.setBounds(notifOffset, notifOffset, notifOffset + notifSize, notifOffset + notifSize);
+                            notif.draw(canvas);
+                            return new BitmapDrawable(context.getResources(), bmp);
+                        }
                     }
                 }
-                // Fallback for non-adaptive icons.
-                return renderToRounded(context.getResources(), appIcon, sizePx, cornerRadius, false);
+                return null;
             }
 
             int notifResId = resolveResId("morphe_notification_icon_" + suffix);

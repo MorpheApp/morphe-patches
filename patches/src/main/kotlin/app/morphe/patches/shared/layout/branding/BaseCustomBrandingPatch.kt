@@ -95,6 +95,7 @@ internal const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/Custo
  */
 internal fun baseCustomBrandingPatch(
     originalLauncherIconName: String,
+    originalNotificationIconName: String,
     originalAppName: String,
     originalAppPackageName: String,
     isYouTubeMusic: Boolean,
@@ -158,6 +159,7 @@ internal fun baseCustomBrandingPatch(
                 UserProvidedCustomNameExtensionFingerprint.method.returnEarly(customName != null)
                 UserProvidedCustomIconExtensionFingerprint.method.returnEarly(customIcon != null)
                 OriginalLauncherIconNameExtensionFingerprint.method.returnEarly(originalLauncherIconName)
+                OriginalNotificationIconNameExtensionFingerprint.method.returnEarly(originalNotificationIconName)
 
                 NotificationBuilderFingerprint.let {
                     it.method.apply {
