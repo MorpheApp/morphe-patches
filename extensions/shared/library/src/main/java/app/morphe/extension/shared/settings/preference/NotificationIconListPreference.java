@@ -13,6 +13,7 @@ import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.AdaptiveIconDrawable;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -72,9 +73,19 @@ public class NotificationIconListPreference extends IconListPreference {
         int fgColor = Utils.getAppForegroundColor();
         int bgColor = isLightColor(fgColor) ? 0xFF000000 : 0xFFFFFFFF;
 
+        // Resolve the current app icon style so FOLLOW can mirror it.
+        String currentAppIconSuffix = null;
+        try {
+            String val = getSharedPreferences().getString("morphe_custom_branding_icon", null);
+            if (val != null) currentAppIconSuffix = val.toLowerCase(Locale.US);
+        } catch (Exception ignored) {}
+
         Drawable[] drawables = new Drawable[values.length];
         for (int i = 0; i < values.length; i++) {
             String suffix = values[i].toString().toLowerCase(Locale.US);
+            if ("follow".equals(suffix) && currentAppIconSuffix != null) {
+                suffix = currentAppIconSuffix;
+            }
             drawables[i] = buildNotificationIconDrawable(context, suffix, sizePx, cornerRadius, fgColor, bgColor);
         }
         return drawables;
@@ -85,9 +96,27 @@ public class NotificationIconListPreference extends IconListPreference {
             Context context, String suffix, int sizePx, float cornerRadius,
             @ColorInt int fgColor, @ColorInt int bgColor) {
         try {
-            // FOLLOW and ORIGINAL have no notification icon resource - show the original launcher icon.
-            if ("follow".equals(suffix) || "original".equals(suffix)) {
+            // ORIGINAL — extract the adaptive icon foreground, tint it, render on theme background.
+            if ("original".equals(suffix)) {
                 Drawable appIcon = resolveOriginalIconDrawable(context);
+                if (appIcon instanceof AdaptiveIconDrawable) {
+                    Drawable fg = ((AdaptiveIconDrawable) appIcon).getForeground();
+                    if (fg != null) {
+                        Bitmap bmp = Bitmap.createBitmap(sizePx, sizePx, Bitmap.Config.ARGB_8888);
+                        Canvas canvas = new Canvas(bmp);
+                        Path clip = new Path();
+                        clip.addRoundRect(0, 0, sizePx, sizePx, cornerRadius, cornerRadius, Path.Direction.CW);
+                        canvas.clipPath(clip);
+                        canvas.drawColor(bgColor);
+                        fg.mutate().setColorFilter(new PorterDuffColorFilter(fgColor, PorterDuff.Mode.SRC_IN));
+                        int scaledSize = Math.round(sizePx * (108f / 72f));
+                        int offset = (scaledSize - sizePx) / 2;
+                        fg.setBounds(-offset, -offset, sizePx + offset, sizePx + offset);
+                        fg.draw(canvas);
+                        return new BitmapDrawable(context.getResources(), bmp);
+                    }
+                }
+                // Fallback for non-adaptive icons.
                 return renderToRounded(context.getResources(), appIcon, sizePx, cornerRadius, false);
             }
 
