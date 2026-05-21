@@ -92,7 +92,7 @@ public class CustomDialogListPreference extends ListPreference {
      * Returns entries for display in the dialog.
      * If highlighted entries exist, they are used; otherwise, the original entries are returned.
      */
-    private CharSequence[] getEntriesForDialog() {
+    protected CharSequence[] getEntriesForDialog() {
         return highlightedEntriesForDialog != null ? highlightedEntriesForDialog : getEntries();
     }
 
