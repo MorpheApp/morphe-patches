@@ -51,6 +51,7 @@ public class CustomBrandingPatch {
         DARK,
         BLACK,
         PLAY,
+        PLAY_BLACK,
         /**  User provided custom icon. */
         CUSTOM;
 
@@ -93,6 +94,7 @@ public class CustomBrandingPatch {
         DARK,
         BLACK,
         PLAY,
+        PLAY_BLACK,
         /** * User provided custom PNG notification icon. */
         CUSTOM;
 
