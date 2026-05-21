@@ -97,17 +97,20 @@ public abstract class SeekBarPreference extends Preference {
         // Center column: value label above, seekbar below.
         LinearLayout seekCenter = new LinearLayout(context);
         seekCenter.setOrientation(LinearLayout.VERTICAL);
-        seekCenter.addView(currentLabel,
+
+        LinearLayout.LayoutParams labelParams = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
+        labelParams.topMargin = Dim.dp8;
+        seekCenter.addView(currentLabel, labelParams);
         seekCenter.addView(seekBar,
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        // SeekBar row: min label - [value + seekbar] - max label.
+        // SeekBar row: min label - [value + seekbar] - max label, all bottom-aligned.
         LinearLayout seekRow = new LinearLayout(context);
         seekRow.setOrientation(LinearLayout.HORIZONTAL);
-        seekRow.setGravity(Gravity.CENTER_VERTICAL);
+        seekRow.setGravity(Gravity.BOTTOM);
 
         TextView minLabel = new TextView(context);
         minLabel.setText(String.format(Locale.ROOT, "%d%s", getMin(), getUnit()));
