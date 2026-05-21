@@ -18,7 +18,6 @@ import static app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport.suppo
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptVariant;
-import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_CHANNEL_FROM_ID;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_PLAYER_STREAMING_DATA;
 import static app.morphe.extension.shared.spoof.requests.PlayerRoutes.GET_REEL_STREAMING_DATA;
 
@@ -223,7 +222,7 @@ public class StreamOrDetailsDataRequest {
             boolean authHeadersIncludes = false;
             authHeadersOverrides = false;
 
-            if (clientType.endpoint != GET_CHANNEL_FROM_ID) {
+            if (playerHeaders != null) {
                 for (String key : REQUEST_HEADER_KEYS) {
                     String value = playerHeaders.get(key);
 
@@ -254,18 +253,18 @@ public class StreamOrDetailsDataRequest {
                         connection.setRequestProperty(key, value);
                     }
                 }
+            }
 
-                if (authHeadersIncludes) {
-                    if (!pageIDHeaderValue.isEmpty()) {
-                        Logger.printDebug(() -> "Including PAGE_ID_HEADER header: " + pageIDHeaderValue);
-                        connection.setRequestProperty(PAGE_ID_HEADER, pageIDHeaderValue);
-                    }
-                } else {
-                    if (clientType.requireLogin) {
-                        Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
-                                + " videoId: " + videoId);
-                        return null;
-                    }
+            if (authHeadersIncludes) {
+                if (!pageIDHeaderValue.isEmpty()) {
+                    Logger.printDebug(() -> "Including PAGE_ID_HEADER header: " + pageIDHeaderValue);
+                    connection.setRequestProperty(PAGE_ID_HEADER, pageIDHeaderValue);
+                }
+            } else {
+                if (clientType.requireLogin) {
+                    Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
+                            + " videoId: " + videoId);
+                    return null;
                 }
             }
 

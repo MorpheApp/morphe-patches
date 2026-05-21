@@ -221,12 +221,23 @@ public enum ClientType {
             "visionOS"
     ),
     GET_CHANNEL_FROM_ID(
-            29,
-            "WEB_REMIX",
-            "1.20241218.01.00",
+            ANDROID_REEL_AUTH.id,
+            ANDROID_REEL_AUTH.clientName,
+            Objects.requireNonNull(ANDROID_REEL_AUTH.packageName),
+            ANDROID_REEL_AUTH.deviceMake,
+            ANDROID_REEL_AUTH.deviceModel,
+            ANDROID_REEL_AUTH.osName,
+            ANDROID_REEL_AUTH.osVersion,
+            Objects.requireNonNull(ANDROID_REEL_AUTH.androidSdkVersion),
+            ANDROID_REEL_AUTH.buildID,
+            ANDROID_REEL_AUTH.clientVersion,
+            ANDROID_REEL_AUTH.clientPlatform,
+            false,
+            false,
+            false,
+            ANDROID_REEL_AUTH.supportsOAuth2,
+            ANDROID_REEL_AUTH.requireJS,
             PlayerRoutes.GET_CHANNEL_FROM_ID,
-            "Mozilla/5.0 (iPad; CPU OS 16_7_10 like Mac OS X) AppleWebKit/605.1.15 " +
-                    "(KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1,gzip(gfe)",
             "Get Channel From ID"
     ),
     SAVE_TO_WATCH_LATER(
@@ -397,36 +408,6 @@ public enum ClientType {
                 deviceModel,
                 buildId
         );
-        Logger.printDebug(() -> "userAgent: " + this.userAgent);
-    }
-
-    ClientType(int id,
-               String clientName,
-               String clientVersion,
-               Route.CompiledRoute endpoint,
-               String userAgent,
-               String friendlyName) {
-        this.id = id;
-        this.clientName = clientName;
-        this.clientVersion = clientVersion;
-        this.endpoint = endpoint;
-        this.userAgent = userAgent;
-        this.friendlyName = friendlyName;
-
-        packageName = null;
-        deviceMake = null;
-        deviceModel = null;
-        osName = null;
-        osVersion = null;
-        androidSdkVersion = null;
-        buildID = null;
-        clientPlatform = null;
-        canLogin = false;
-        requireLogin = false;
-        supportsOAuth2 = false;
-        supportsMultiAudioTracks = false;
-        requireJS = false;
-
         Logger.printDebug(() -> "userAgent: " + this.userAgent);
     }
 
