@@ -259,6 +259,7 @@ internal fun baseCustomBrandingPatch(
             )
             preferences += ListPreference(
                 key = "morphe_custom_branding_notification_icon",
+                tag = "app.morphe.extension.shared.settings.preference.NotificationIconListPreference",
                 entriesKey = "morphe_custom_branding_notification_icon_custom_entries",
                 entryValuesKey = "morphe_custom_branding_notification_icon_custom_entry_values"
             )
@@ -267,7 +268,10 @@ internal fun baseCustomBrandingPatch(
                 key = "morphe_custom_branding_icon",
                 tag = "app.morphe.extension.shared.settings.preference.IconListPreference"
             )
-            preferences += ListPreference("morphe_custom_branding_notification_icon")
+            preferences += ListPreference(
+                key = "morphe_custom_branding_notification_icon",
+                tag = "app.morphe.extension.shared.settings.preference.NotificationIconListPreference"
+            )
         }
 
         preferenceScreen.addPreferences(

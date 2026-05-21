@@ -60,8 +60,8 @@ public class IconListPreference extends CustomDialogListPreference {
     public static final int ID_MORPHE_ITEM_ICON = getIdentifierOrThrow(
             ResourceType.ID, "morphe_item_icon");
 
-    private static final float ICON_SIZE_DP = 48f;
-    private static final float ICON_CORNER_RADIUS_FRACTION = 0.22f;
+    static final float ICON_SIZE_DP = 48f;
+    static final float ICON_CORNER_RADIUS_FRACTION = 0.22f;
 
     @Nullable
     private Drawable[] iconDrawables;
@@ -146,14 +146,14 @@ public class IconListPreference extends CustomDialogListPreference {
         }
     }
 
-    private static int resolveResId(String name) {
+    static int resolveResId(String name) {
         int resId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, name);
         if (resId == 0) resId = ResourceUtils.getIdentifier(ResourceType.MIPMAP, name);
         return resId;
     }
 
     @NonNull
-    private static Drawable renderToRounded(
+    static Drawable renderToRounded(
             Resources res, Drawable source, int sizePx, float cornerRadius, boolean isAdaptive) {
         Bitmap bmp = Bitmap.createBitmap(sizePx, sizePx, Bitmap.Config.ARGB_8888);
         Canvas canvas = new Canvas(bmp);
