@@ -108,6 +108,7 @@ public abstract class SeekBarPreference extends Preference {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
         labelParams.topMargin = Dim.dp8;
+        labelParams.bottomMargin = Dim.dp8;
         seekCenter.addView(currentLabel, labelParams);
         seekCenter.addView(seekBar,
                 LinearLayout.LayoutParams.MATCH_PARENT,
@@ -120,7 +121,7 @@ public abstract class SeekBarPreference extends Preference {
 
         TextView minLabel = new TextView(context);
         minLabel.setText(String.format(Locale.ROOT, "%d%s", getMin(), getUnit()));
-        minLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        minLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         seekRow.addView(minLabel,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
