@@ -39,15 +39,7 @@ import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
-    private static final ByteArrayFilterGroup mixPlaylistsBufferExceptions = new ByteArrayFilterGroup(
-            null,
-            "cell_description_body",
-            "channel_profile"
-    );
-    private static final ByteArrayFilterGroup mixPlaylists = new ByteArrayFilterGroup(
-            null,
-            "&list="
-    );
+    private static final ByteArrayFilterGroupList mixPlaylistsBuffers = new ByteArrayFilterGroupList();
 
     private static final List<String> channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
     private static final List<String> flyoutMenuFilterStrings = getFilterStrings(Settings.HIDE_FEED_FLYOUT_MENU_FILTER_STRINGS);
@@ -81,9 +73,6 @@ public final class LayoutComponentsFilter extends Filter {
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
-                "home_video_with_context",
-                "related_video_with_context",
-                "search_video_with_context",
                 "comment_thread", // Whitelist comments
                 "|comment.", // Whitelist comment replies
                 "library_recent_shelf"
@@ -222,6 +211,17 @@ public final class LayoutComponentsFilter extends Filter {
         final var audioTrackButton = new StringFilterGroup(
                 null,
                 "multi_feed_icon_button"
+        );
+
+        mixPlaylistsBuffers.addAll(
+                new ByteArrayFilterGroup(
+                        null,
+                        "Mix8"
+                ),
+                new ByteArrayFilterGroup(
+                        null,
+                        "&list="
+                )
         );
 
         final var artistCard = new StringFilterGroup(
@@ -400,6 +400,11 @@ public final class LayoutComponentsFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
+        // Exceptions are not filtered.
+        if (exceptions.matches(path)) {
+            return false;
+        }
+
         // This identifier is used not only in players but also in search results:
         // Until 2024, medical information panels such as Covid-19 also used this identifier and were shown in the search results.
         // From 2025, the medical information panel is no longer shown in the search results.
@@ -461,8 +466,6 @@ public final class LayoutComponentsFilter extends Filter {
             return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
         }
 
-        if (exceptions.matches(path)) return false; // Exceptions are not filtered.
-
         if (matchedGroup == compactChannelBarInner) {
             return compactChannelBarInnerButton.check(path).isFiltered()
                     // The filter may be broad, but in the context of a compactChannelBarInnerButton,
@@ -482,8 +485,6 @@ public final class LayoutComponentsFilter extends Filter {
      * Called from a different place then the other filters.
      */
     public static boolean filterMixPlaylists(@Nullable byte[] buffer) {
-        // Edit: This hook may no longer be needed, and mix playlist filtering
-        //       might be possible using the existing litho filters.
         try {
             if (!Settings.HIDE_MIX_PLAYLISTS.get()) {
                 return false;
@@ -494,9 +495,7 @@ public final class LayoutComponentsFilter extends Filter {
                 return false;
             }
 
-            if (mixPlaylists.check(buffer).isFiltered()
-                    // Prevent hiding the description of some videos accidentally.
-                    && !mixPlaylistsBufferExceptions.check(buffer).isFiltered()) {
+            if (mixPlaylistsBuffers.check(buffer).isFiltered()) {
                 Logger.printDebug(() -> "Filtered mix playlist");
                 return true;
             }
