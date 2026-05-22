@@ -319,7 +319,11 @@ public final class SwipeZonePreference extends Preference
             float lowerH       = sBottom - speedBottom;
             float lowerCenterY = speedBottom + lowerH / 2f - Dim.dp(3);
             float lowerPctY    = lowerCenterY + Dim.dp(13);
-            float speedLabelY  = padV + speedZoneH / 2f + namePaint.getTextSize() / 3f;
+            boolean speedShowPct = speedZoneH >= Dim.dp(22);
+            float speedLabelY  = speedShowPct
+                    ? padV + speedZoneH / 2f - Dim.dp(3)
+                    : padV + speedZoneH / 2f + namePaint.getTextSize() / 3f;
+            float speedPctY    = speedLabelY + Dim.dp(13);
 
             if (zoneW >= Dim.dp(30)) {
                 namePaint.setColor(brightnessOn
@@ -346,9 +350,13 @@ public final class SwipeZonePreference extends Preference
             if (centerW >= Dim.dp(55)) {
                 float centerX = padH + edgeW + zoneW + centerW / 2f;
 
-                // Speed label centered in the speed strip.
+                // Speed label (and % if strip is tall enough) centered in the speed strip.
                 namePaint.setColor(speedOn ? withAlpha(speedColor, 0xFF) : dimTextColor);
                 canvas.drawText(labelSpeed, centerX, speedLabelY, namePaint);
+                if (speedShowPct) {
+                    percentPaint.setColor(speedOn ? withAlpha(speedColor, 0xBB) : dimTextColor);
+                    canvas.drawText(speedZonePercent + "%", centerX, speedPctY, percentPaint);
+                }
 
                 // Native label in the lower portion of the center column.
                 namePaint.setColor(dimTextColor);
