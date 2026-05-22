@@ -45,6 +45,7 @@ private val swipeControlsResourcePatch = resourcePatch {
         PreferenceScreen.SWIPE_CONTROLS.addPreferences(
             SwitchPreference("morphe_swipe_brightness"),
             SwitchPreference("morphe_swipe_volume"),
+            SwitchPreference("morphe_swipe_speed_gesture"),
             NonInteractivePreference(
                 key = "morphe_swipe_zone_width",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
@@ -53,6 +54,22 @@ private val swipeControlsResourcePatch = resourcePatch {
                 key = "morphe_swipe_zone_preview",
                 summaryKey = null,
                 tag = "app.morphe.extension.youtube.settings.preference.SwipeZonePreference",
+            ),
+            NonInteractivePreference(
+                key = "morphe_swipe_speed_zone_height",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            ),
+            NonInteractivePreference(
+                key = "morphe_swipe_brightness_sensitivity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            ),
+            NonInteractivePreference(
+                key = "morphe_swipe_volume_sensitivity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            ),
+            NonInteractivePreference(
+                key = "morphe_swipe_speed_sensitivity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
             ),
             SwitchPreference("morphe_swipe_press_to_engage"),
             SwitchPreference("morphe_swipe_haptic_feedback", summaryKey = null),
@@ -75,23 +92,6 @@ private val swipeControlsResourcePatch = resourcePatch {
             ),
             TextPreference("morphe_swipe_overlay_timeout", inputType = InputType.NUMBER),
             TextPreference("morphe_swipe_threshold", inputType = InputType.NUMBER),
-            NonInteractivePreference(
-                key = "morphe_swipe_volume_sensitivity",
-                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-            ),
-            NonInteractivePreference(
-                key = "morphe_swipe_brightness_sensitivity",
-                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-            ),
-            SwitchPreference("morphe_swipe_speed_gesture"),
-            NonInteractivePreference(
-                key = "morphe_swipe_speed_sensitivity",
-                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-            ),
-            NonInteractivePreference(
-                key = "morphe_swipe_speed_zone_height",
-                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
-            ),
         )
 
         copyResources(
