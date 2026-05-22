@@ -8,15 +8,15 @@ import app.morphe.extension.youtube.swipecontrols.misc.contains
 import app.morphe.extension.youtube.swipecontrols.misc.toPoint
 
 /**
- * provides the press-to-swipe (PtS) swipe controls experience
+ * Provides the press-to-swipe (PtS) swipe controls experience.
  *
- * @param controller reference to the main swipe controller
+ * @param controller Reference to the main swipe controller.
  */
 class PressToSwipeController(
     private val controller: SwipeControlsHostActivity,
 ) : BaseGestureController(controller) {
     /**
-     * monitors if the user is currently in a swipe session.
+     * Indicates whether the user is currently in a swipe session.
      */
     private var isInSwipeSession = false
 

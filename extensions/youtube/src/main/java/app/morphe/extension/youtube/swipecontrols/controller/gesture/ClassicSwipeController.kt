@@ -10,16 +10,16 @@ import app.morphe.extension.youtube.swipecontrols.misc.contains
 import app.morphe.extension.youtube.swipecontrols.misc.toPoint
 
 /**
- * provides the classic swipe controls experience, as it was with 'XFenster'
+ * Provides the classic swipe controls experience, as it was with 'XFenster'.
  *
- * @param controller reference to the main swipe controller
+ * @param controller Reference to the main swipe controller.
  */
 class ClassicSwipeController(
     private val controller: SwipeControlsHostActivity,
 ) : BaseGestureController(controller),
     PlayerControlsVisibilityObserver by PlayerControlsVisibilityObserverImpl(controller) {
     /**
-     * the last event captured in [onDown]
+     * The last event captured in [onDown].
      */
     private var lastOnDownEvent: MotionEvent? = null
 

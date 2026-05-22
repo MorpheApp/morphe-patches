@@ -9,39 +9,39 @@ import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsOverlay
 import app.morphe.extension.youtube.swipecontrols.misc.applyDimension
 
 /**
- * describes a class that controls volume and brightness based on scrolling events
+ * Describes a class that controls volume and brightness based on scrolling events.
  */
 interface VolumeAndBrightnessScroller {
     /**
-     * submit a scroll for volume adjustment
+     * Submits a scroll for volume adjustment.
      *
-     * @param distance the scroll distance
+     * @param distance The scroll distance.
      */
     fun scrollVolume(distance: Double)
 
     /**
-     * submit a scroll for brightness adjustment
+     * Submits a scroll for brightness adjustment.
      *
-     * @param distance the scroll distance
+     * @param distance The scroll distance.
      */
     fun scrollBrightness(distance: Double)
 
     /**
-     * reset all scroll distances to zero
+     * Resets all scroll distances to zero.
      */
     fun resetScroller()
 }
 
 /**
- * handles scrolling of volume and brightness, adjusts them using the provided controllers and updates the overlay
+ * Handles scrolling of volume and brightness, adjusts them using the provided controllers and updates the overlay.
  *
- * @param context context to create the scrollers in
- * @param volumeController volume controller instance. if null, volume control is disabled
- * @param screenController screen brightness controller instance. if null, brightness control is disabled
- * @param overlayController overlay controller instance
- * @param volumeDistance unit distance for volume scrolling, in dp
- * @param brightnessDistance unit distance for brightness scrolling, in dp; higher = more precise
- * @param volumeSwipeSensitivity how much volume will change by single swipe
+ * @param context Context to create the scrollers in.
+ * @param volumeController Volume controller instance. If null, volume control is disabled.
+ * @param screenController Screen brightness controller instance. If null, brightness control is disabled.
+ * @param overlayController Overlay controller instance.
+ * @param volumeDistance Unit distance for volume scrolling, in dp.
+ * @param brightnessDistance Unit distance for brightness scrolling, in dp; higher = more precise.
+ * @param volumeSwipeSensitivity How much volume will change per swipe.
  */
 class VolumeAndBrightnessScrollerImpl(
     context: Context,

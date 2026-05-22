@@ -5,16 +5,16 @@ import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity
 import app.morphe.extension.youtube.swipecontrols.misc.clamp
 
 /**
- * controller to adjust the screen brightness level
+ * Controller to adjust the screen brightness level.
  *
- * @param host the host activity of which the brightness is adjusted, the main controller instance
+ * @param host The host activity of which the brightness is adjusted, the main controller instance.
  */
 class ScreenBrightnessController(
     val host: SwipeControlsHostActivity,
 ) {
 
     /**
-     * the current screen brightness in percent, ranging from 0.0 to 100.0
+     * The current screen brightness in percent, ranging from 0.0 to 100.0.
      */
     var screenBrightness: Double
         get() = rawScreenBrightness * 100.0
@@ -23,7 +23,7 @@ class ScreenBrightnessController(
         }
 
     /**
-     * restore the screen brightness to the default device brightness
+     * Restores the screen brightness to the default device brightness.
      */
     fun restoreDefaultBrightness() {
         rawScreenBrightness = WindowManager.LayoutParams.BRIGHTNESS_OVERRIDE_NONE
@@ -33,7 +33,7 @@ class ScreenBrightnessController(
     private var isBrightnessRestored = false
 
     /**
-     * save the current screen brightness into settings, to be brought back using [restore]
+     * Saves the current screen brightness into settings, to be brought back using [restore].
      */
     fun save() {
         if (isBrightnessRestored) {
@@ -45,7 +45,7 @@ class ScreenBrightnessController(
     }
 
     /**
-     * restore the screen brightness from settings saved using [save]
+     * Restores the screen brightness from settings saved using [save].
      */
     fun restore() {
         // Restores the screen brightness value from the saved settings
@@ -55,7 +55,7 @@ class ScreenBrightnessController(
     }
 
     /**
-     * wrapper for the raw screen brightness in [WindowManager.LayoutParams.screenBrightness]
+     * Wrapper for the raw screen brightness in [WindowManager.LayoutParams.screenBrightness].
      */
     var rawScreenBrightness: Float
         get() = host.window.attributes.screenBrightness

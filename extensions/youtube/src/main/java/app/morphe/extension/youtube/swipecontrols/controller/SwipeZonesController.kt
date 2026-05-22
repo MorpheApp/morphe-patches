@@ -51,34 +51,34 @@ class SwipeZonesController(
     private val fallbackScreenRect: () -> Rectangle,
 ) {
     /**
-     * 20dp, in pixels
+     * 20dp, in pixels.
      */
     private val _20dp = 20.applyDimension(host, TypedValue.COMPLEX_UNIT_DIP)
 
     /**
-     * 40dp, in pixels
+     * 40dp, in pixels.
      */
     private val _40dp = 40.applyDimension(host, TypedValue.COMPLEX_UNIT_DIP)
 
     /**
-     * 80dp, in pixels
+     * 80dp, in pixels.
      */
     private val _80dp = 80.applyDimension(host, TypedValue.COMPLEX_UNIT_DIP)
 
     /**
-     * id for R.id.inset_controls_overlay_wrapper
+     * ID for R.id.inset_controls_overlay_wrapper.
      */
     private val sizeAdjustableOverlayId = getIdentifier(
         host, ResourceType.ID, "inset_controls_overlay_wrapper"
     )
 
     /**
-     * current bounding rectangle of the player
+     * Current bounding rectangle of the player.
      */
     private var playerRect: Rectangle? = null
 
     /**
-     * rectangle of the area that is effectively usable for swipe controls
+     * Rectangle of the area that is effectively usable for swipe controls.
      */
     private val effectiveSwipeRect: Rectangle
         get() {
@@ -93,7 +93,7 @@ class SwipeZonesController(
         }
 
     /**
-     * the rectangle of the volume control zone
+     * The rectangle of the volume control zone.
      */
     val volume: Rectangle
         get() {
@@ -108,7 +108,7 @@ class SwipeZonesController(
         }
 
     /**
-     * the rectangle of the screen brightness control zone
+     * The rectangle of the screen brightness control zone.
      */
     val brightness: Rectangle
         get() {
@@ -123,8 +123,8 @@ class SwipeZonesController(
         }
 
     /**
-     * try to attach a listener to the player_view and update the player rectangle.
-     * once a listener is attached, this function does nothing
+     * Tries to attach a listener to the player_view and update the player rectangle.
+     * Once a listener is attached, this function does nothing.
      */
     private fun maybeAttachPlayerBoundsListener() {
         if (playerRect != null) return
@@ -137,9 +137,9 @@ class SwipeZonesController(
     }
 
     /**
-     * update the player rectangle on player_view layout
+     * Updates the player rectangle on player_view layout.
      *
-     * @param sizeAdjustableOverlay the player view
+     * @param sizeAdjustableOverlay The player view.
      */
     private fun onPlayerViewLayout(sizeAdjustableOverlay: View) {
         // the player surface is centered in the player view
