@@ -49,6 +49,7 @@ public final class SwipeZonePreference extends Preference
     private int lastZoneWidth = -1;
     private String lastBrightnessColor = null;
     private String lastVolumeColor = null;
+    private String lastSpeedColor = null;
     private boolean lastBrightnessEnabled = false;
     private boolean lastVolumeEnabled = false;
     private boolean lastSpeedEnabled    = false;
@@ -62,6 +63,7 @@ public final class SwipeZonePreference extends Preference
             int zoneWidth = Settings.SWIPE_ZONE_WIDTH.get();
             String brightnessColor = Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get();
             String volumeColor = Settings.SWIPE_OVERLAY_VOLUME_COLOR.get();
+            String speedColor = Settings.SWIPE_OVERLAY_SPEED_COLOR.get();
             boolean brightnessEnabled = Settings.SWIPE_BRIGHTNESS.get();
             boolean volumeEnabled = Settings.SWIPE_VOLUME.get();
             boolean speedEnabled = Settings.SWIPE_SPEED_GESTURE.get();
@@ -70,6 +72,7 @@ public final class SwipeZonePreference extends Preference
             if (zoneWidth != lastZoneWidth
                     || !brightnessColor.equals(lastBrightnessColor)
                     || !volumeColor.equals(lastVolumeColor)
+                    || !speedColor.equals(lastSpeedColor)
                     || brightnessEnabled != lastBrightnessEnabled
                     || volumeEnabled != lastVolumeEnabled
                     || speedEnabled != lastSpeedEnabled
@@ -77,6 +80,7 @@ public final class SwipeZonePreference extends Preference
                 lastZoneWidth = zoneWidth;
                 lastBrightnessColor = brightnessColor;
                 lastVolumeColor = volumeColor;
+                lastSpeedColor = speedColor;
                 lastBrightnessEnabled = brightnessEnabled;
                 lastVolumeEnabled = volumeEnabled;
                 lastSpeedEnabled = speedEnabled;
@@ -247,7 +251,8 @@ public final class SwipeZonePreference extends Preference
                     parseColor(Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get(), 0xFF4FC3F7), 0xFF4FC3F7);
             int volumeColor     = toPreviewColor(
                     parseColor(Settings.SWIPE_OVERLAY_VOLUME_COLOR.get(),     0xFF81C784), 0xFF81C784);
-            int speedColor      = 0xFFFF9100;
+            int speedColor      = toPreviewColor(
+                    parseColor(Settings.SWIPE_OVERLAY_SPEED_COLOR.get(), 0xFFFF9100), 0xFFFF9100);
 
             // The 20 dp edge margins (fixed dead areas) are represented as ~6% of total width.
             float edgeW      = sWidth * 0.06f;
