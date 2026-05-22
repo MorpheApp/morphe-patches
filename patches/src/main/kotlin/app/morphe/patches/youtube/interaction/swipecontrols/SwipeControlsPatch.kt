@@ -51,13 +51,13 @@ private val swipeControlsResourcePatch = resourcePatch {
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
             ),
             NonInteractivePreference(
+                key = "morphe_swipe_speed_zone_height",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            ),
+            NonInteractivePreference(
                 key = "morphe_swipe_zone_preview",
                 summaryKey = null,
                 tag = "app.morphe.extension.youtube.settings.preference.SwipeZonePreference",
-            ),
-            NonInteractivePreference(
-                key = "morphe_swipe_speed_zone_height",
-                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
             ),
             NonInteractivePreference(
                 key = "morphe_swipe_brightness_sensitivity",
