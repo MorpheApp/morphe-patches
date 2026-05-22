@@ -95,6 +95,21 @@ class SwipeControlsConfigurationProvider {
             return sensitivity
         }
 
+    /**
+     * The sensitivity of brightness swipe gestures, determining how much brightness changes per swipe.
+     * Resets to default if set to 0, as it would disable swiping.
+     */
+    val brightnessSwipeSensitivity: Int
+        get() {
+            val sensitivity = Settings.SWIPE_BRIGHTNESS_SENSITIVITY.get()
+
+            if (sensitivity < 1) {
+                return Settings.SWIPE_BRIGHTNESS_SENSITIVITY.resetToDefault()
+            }
+
+            return sensitivity
+        }
+
     //endregion
 
     //region overlay adjustments

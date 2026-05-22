@@ -75,7 +75,14 @@ private val swipeControlsResourcePatch = resourcePatch {
             ),
             TextPreference("morphe_swipe_overlay_timeout", inputType = InputType.NUMBER),
             TextPreference("morphe_swipe_threshold", inputType = InputType.NUMBER),
-            TextPreference("morphe_swipe_volume_sensitivity", inputType = InputType.NUMBER),
+            NonInteractivePreference(
+                key = "morphe_swipe_volume_sensitivity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            ),
+            NonInteractivePreference(
+                key = "morphe_swipe_brightness_sensitivity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            ),
         )
 
         copyResources(

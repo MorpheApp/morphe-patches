@@ -42,6 +42,7 @@ interface VolumeAndBrightnessScroller {
  * @param volumeDistance unit distance for volume scrolling, in dp
  * @param brightnessDistance unit distance for brightness scrolling, in dp
  * @param volumeSwipeSensitivity how much volume will change by single swipe
+ * @param brightnessSwipeSensitivity how much brightness will change by single swipe
  */
 class VolumeAndBrightnessScrollerImpl(
     context: Context,
@@ -51,6 +52,7 @@ class VolumeAndBrightnessScrollerImpl(
     volumeDistance: Int = 10,
     brightnessDistance: Int = 1,
     private val volumeSwipeSensitivity: Int,
+    private val brightnessSwipeSensitivity: Int,
 ) : VolumeAndBrightnessScroller {
 
     // region volume
@@ -86,7 +88,7 @@ class VolumeAndBrightnessScrollerImpl(
                 }
 
                 if (shouldAdjustBrightness) {
-                    screenBrightness += direction
+                    screenBrightness += direction * brightnessSwipeSensitivity
                 } else {
                     restoreDefaultBrightness()
                 }

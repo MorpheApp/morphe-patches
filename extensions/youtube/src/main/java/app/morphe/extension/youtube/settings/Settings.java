@@ -483,6 +483,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting SWIPE_MAGNITUDE_THRESHOLD = new IntegerSetting("morphe_swipe_threshold", 30, true,
             parentsAny(SWIPE_BRIGHTNESS, SWIPE_VOLUME));
     public static final IntegerSetting SWIPE_VOLUME_SENSITIVITY = new IntegerSetting("morphe_swipe_volume_sensitivity", 1, true, parent(SWIPE_VOLUME));
+    public static final IntegerSetting SWIPE_BRIGHTNESS_SENSITIVITY = new IntegerSetting("morphe_swipe_brightness_sensitivity", 1, true, parent(SWIPE_BRIGHTNESS));
     public static final EnumSetting<SwipeOverlayStyle> SWIPE_OVERLAY_STYLE = new EnumSetting<>("morphe_swipe_overlay_style", SwipeOverlayStyle.HORIZONTAL,true,
             parentsAny(SWIPE_BRIGHTNESS, SWIPE_VOLUME));
     public static final IntegerSetting SWIPE_OVERLAY_TEXT_SIZE = new IntegerSetting("morphe_swipe_text_overlay_size", 14, true,
@@ -628,5 +629,11 @@ public class Settings extends SharedYouTubeSettings {
         SeekBarPreference.register("morphe_player_overlay_opacity",
                 new SeekBarPreference.Config(0, 100, PLAYER_OVERLAY_OPACITY.defaultValue, 1, "%",
                         PLAYER_OVERLAY_OPACITY::get, PLAYER_OVERLAY_OPACITY::save));
+        SeekBarPreference.register("morphe_swipe_volume_sensitivity",
+                new SeekBarPreference.Config(1, 10, SWIPE_VOLUME_SENSITIVITY.defaultValue, 1, "",
+                        SWIPE_VOLUME_SENSITIVITY::get, SWIPE_VOLUME_SENSITIVITY::save));
+        SeekBarPreference.register("morphe_swipe_brightness_sensitivity",
+                new SeekBarPreference.Config(1, 10, SWIPE_BRIGHTNESS_SENSITIVITY.defaultValue, 1, "",
+                        SWIPE_BRIGHTNESS_SENSITIVITY::get, SWIPE_BRIGHTNESS_SENSITIVITY::save));
     }
 }

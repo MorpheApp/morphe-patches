@@ -25,6 +25,7 @@ abstract class BaseGestureController(
         10,
         1,
         controller.config.volumeSwipeSensitivity,
+        controller.config.brightnessSwipeSensitivity,
     ) {
 
     /**
