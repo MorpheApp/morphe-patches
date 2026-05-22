@@ -50,6 +50,8 @@ class SwipeZonesController(
     private val host: Activity,
     private val fallbackScreenRect: () -> Rectangle,
 ) {
+    private val zoneWidthPercent = Settings.SWIPE_ZONE_WIDTH.get().coerceIn(5, 50)
+
     /**
      * 20dp, in pixels
      */
@@ -98,7 +100,7 @@ class SwipeZonesController(
     val volume: Rectangle
         get() {
             val eRect = effectiveSwipeRect
-            val zoneWidth = (eRect.width * Settings.SWIPE_ZONE_WIDTH.get().coerceIn(5, 50)) / 100
+            val zoneWidth = (eRect.width * zoneWidthPercent) / 100
             return Rectangle(
                 eRect.right - zoneWidth,
                 eRect.top,
@@ -113,7 +115,7 @@ class SwipeZonesController(
     val brightness: Rectangle
         get() {
             val eRect = effectiveSwipeRect
-            val zoneWidth = (eRect.width * Settings.SWIPE_ZONE_WIDTH.get().coerceIn(5, 50)) / 100
+            val zoneWidth = (eRect.width * zoneWidthPercent) / 100
             return Rectangle(
                 eRect.left,
                 eRect.top,
