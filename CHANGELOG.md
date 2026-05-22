@@ -1,3 +1,20 @@
+## [1.29.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.29.1-dev.1...v1.29.1-dev.2) (2026-05-22)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide ads:** Fix player crash ([d67d1e1](https://github.com/MorpheApp/morphe-patches/commit/d67d1e1fddcada5ca5310294b6be03a32ba636d3))
+
+## [1.29.1-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.29.0...v1.29.1-dev.1) (2026-05-22)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide mix playlists:** improved filtering ([#1526](https://github.com/MorpheApp/morphe-patches/issues/1526)) ([d2eabee](https://github.com/MorpheApp/morphe-patches/commit/d2eabeec1728bd0666e6ec611e5dbeb4062b8960))
+* **YouTube - Open channel of live avatar:** deprecated old WEB_REMIX client in favour of ANDROID_REELS ([#1519](https://github.com/MorpheApp/morphe-patches/issues/1519)) ([e45b769](https://github.com/MorpheApp/morphe-patches/commit/e45b7693e43f8182c84b2b5093c37c2b381cbb2d))
+
+### 🚀 Updated App Support
+
+* **YouTube:** Add experimental support for `21.21.80` ([65c35f1](https://github.com/MorpheApp/morphe-patches/commit/65c35f10536e5e1d1153fd0d3e96d6776683d245))
+
 ## [1.29.0](https://github.com/MorpheApp/morphe-patches/compare/v1.28.0...v1.29.0) (2026-05-21)
 
 ### 🐛 Bug Fixes

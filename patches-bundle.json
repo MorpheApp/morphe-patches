@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-05-21T07:03:48",
-  "description": "## [1.29.0](https://github.com/MorpheApp/morphe-patches/compare/v1.28.0...v1.29.0) (2026-05-21)\n\n### 🐛 Bug Fixes\n\n* **Reddit:** Spoof installation source ([e62b180](https://github.com/MorpheApp/morphe-patches/commit/e62b1803a34ffc3045b93ee5669e0d3441d0a8c1))\n* **YouTube - Open channel of live avatar:** deprecate match with translations ([#1511](https://github.com/MorpheApp/morphe-patches/issues/1511)) ([4264071](https://github.com/MorpheApp/morphe-patches/commit/42640710c8be1b173984a0d052891006960bcbcc))\n* **YouTube - Open channel of live avatar:** Fixed null exception after tap on some shorts player buttons ([#1497](https://github.com/MorpheApp/morphe-patches/issues/1497)) ([6ec2fd4](https://github.com/MorpheApp/morphe-patches/commit/6ec2fd4f8d9e77b8adffb6b91da5ebb61413f58c))\n* **YouTube - PlayerOverlayButton:** Improved containers handling ([1580f02](https://github.com/MorpheApp/morphe-patches/commit/1580f02a0dfe0a75f9f636229bc6d77cab4b3699))\n* **YouTube - Remove background playback restrictions:** Disable client flag that interferes with player overlay buttons ([f24cae5](https://github.com/MorpheApp/morphe-patches/commit/f24cae55007dd00bc061dadcaeb2c2f74baf3816))\n\n### ✨ New Features\n\n* **Reddit:** Add experimental support for `2026.20.0` ([0e6b305](https://github.com/MorpheApp/morphe-patches/commit/0e6b3054b011ac89d99dc7088dc983a1f95e99a4))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.29.0/patches-1.29.0.mpp",
+  "created_at": "2026-05-22T10:50:11",
+  "description": "## [1.29.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.29.1-dev.1...v1.29.1-dev.2) (2026-05-22)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Hide ads:** Fix player crash ([d67d1e1](https://github.com/MorpheApp/morphe-patches/commit/d67d1e1fddcada5ca5310294b6be03a32ba636d3))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.29.1-dev.2/patches-1.29.1-dev.2.mpp",
   "signature_download_url": "",
-  "version": "1.29.0"
+  "version": "1.29.1-dev.2"
 }
