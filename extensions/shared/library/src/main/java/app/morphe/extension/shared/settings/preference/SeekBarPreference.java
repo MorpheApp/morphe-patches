@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.shared.settings.preference;
 
 import android.app.Dialog;
@@ -70,9 +77,6 @@ public abstract class SeekBarPreference extends Preference {
         context.getTheme().resolveAttribute(android.R.attr.colorAccent, tv, true);
         int colorAccent = tv.data;
 
-        context.getTheme().resolveAttribute(android.R.attr.textColorSecondary, tv, true);
-        int colorSecondary = tv.data;
-
         int[] pending = { readValue() };
 
         TextView currentLabel = new TextView(context);
@@ -116,7 +120,6 @@ public abstract class SeekBarPreference extends Preference {
 
         TextView minLabel = new TextView(context);
         minLabel.setText(String.format(Locale.ROOT, "%d%s", getMin(), getUnit()));
-        minLabel.setTextColor(colorSecondary);
         minLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         seekRow.addView(minLabel,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -130,7 +133,6 @@ public abstract class SeekBarPreference extends Preference {
 
         TextView maxLabel = new TextView(context);
         maxLabel.setText(String.format(Locale.ROOT, "%d%s", getMax(), getUnit()));
-        maxLabel.setTextColor(colorSecondary);
         maxLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         seekRow.addView(maxLabel,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
