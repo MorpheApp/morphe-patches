@@ -10,7 +10,7 @@ package app.morphe.extension.youtube.settings.preference;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
+
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -28,6 +28,7 @@ import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 
 import app.morphe.extension.shared.StringRef;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -174,25 +175,14 @@ public final class SwipeZonePreference extends Preference
             labelVolume     = StringRef.str("morphe_swipe_zone_label_volume");
             labelNative     = StringRef.str("morphe_swipe_zone_label_native");
 
-            boolean isNightMode = (context.getResources().getConfiguration().uiMode
-                    & Configuration.UI_MODE_NIGHT_MASK) == Configuration.UI_MODE_NIGHT_YES;
+            int bgColor = Utils.getAppBackgroundColor();
+            int fgColor = Utils.getAppForegroundColor();
 
-            int borderColor;
-            int separatorColor;
-
-            if (isNightMode) {
-                screenBgColor  = 0xFF1C1C2E;
-                edgeBgColor    = 0xFF181828;
-                borderColor    = 0x55FFFFFF;
-                separatorColor = 0x33FFFFFF;
-                dimTextColor   = 0x55FFFFFF;
-            } else {
-                screenBgColor  = 0xFFE8E8F6;
-                edgeBgColor    = 0xFFDDDDEE;
-                borderColor    = 0x55000000;
-                separatorColor = 0x33000000;
-                dimTextColor   = 0x55000000;
-            }
+            screenBgColor  = bgColor;
+            edgeBgColor    = Utils.adjustColorBrightness(bgColor, Utils.isDarkModeEnabled() ? 0.90f : 0.97f);
+            int borderColor    = withAlpha(fgColor, 0x55);
+            int separatorColor = withAlpha(fgColor, 0x33);
+            dimTextColor   = withAlpha(fgColor, 0x55);
 
             fillPaint.setStyle(Paint.Style.FILL);
 
