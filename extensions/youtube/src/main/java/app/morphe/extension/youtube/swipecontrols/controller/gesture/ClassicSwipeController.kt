@@ -24,21 +24,22 @@ class ClassicSwipeController(
     private var lastOnDownEvent: MotionEvent? = null
 
     override val shouldForceInterceptEvents: Boolean
-        get() = currentSwipe == SwipeDetector.SwipeDirection.VERTICAL
+        get() {
+            val swipe = currentSwipe
+            return swipe == SwipeDetector.SwipeDirection.VERTICAL ||
+                    (controller.config.enableSpeedGestureControl &&
+                     swipe == SwipeDetector.SwipeDirection.HORIZONTAL &&
+                     lastOnDownEvent?.let { it.toPoint() in controller.zones.speed } == true)
+        }
 
     override fun isInSwipeZone(motionEvent: MotionEvent): Boolean {
-        val inVolumeZone = if (controller.config.enableVolumeControls) {
+        val inVolumeZone = controller.config.enableVolumeControls &&
             (motionEvent.toPoint() in controller.zones.volume)
-        } else {
-            false
-        }
-        val inBrightnessZone = if (controller.config.enableBrightnessControl) {
+        val inBrightnessZone = controller.config.enableBrightnessControl &&
             (motionEvent.toPoint() in controller.zones.brightness)
-        } else {
-            false
-        }
-
-        return inVolumeZone || inBrightnessZone
+        val inSpeedZone = controller.config.enableSpeedGestureControl &&
+            (motionEvent.toPoint() in controller.zones.speed)
+        return inVolumeZone || inBrightnessZone || inSpeedZone
     }
 
     override fun shouldDropMotion(motionEvent: MotionEvent): Boolean {
@@ -102,17 +103,18 @@ class ClassicSwipeController(
     ): Boolean {
         // cancel if not fullscreen
         if (!controller.config.isFullscreenVideo) return false
-        // cancel if not vertical
+        // cancel if not vertical or not a valid horizontal speed swipe
         if (!shouldForceInterceptEvents) return false
-        return when (from.toPoint()) {
-            in controller.zones.volume -> {
-                scrollVolume(distanceY)
-                true
+        val swipe = currentSwipe
+        val fromPoint = from.toPoint()
+        return when (swipe) {
+            SwipeDetector.SwipeDirection.VERTICAL -> when (fromPoint) {
+                in controller.zones.volume -> { scrollVolume(distanceY); true }
+                in controller.zones.brightness -> { scrollBrightness(distanceY); true }
+                else -> false
             }
-            in controller.zones.brightness -> {
-                scrollBrightness(distanceY)
-                true
-            }
+            SwipeDetector.SwipeDirection.HORIZONTAL ->
+                if (fromPoint in controller.zones.speed) { scrollSpeed(-distanceX); true } else false
             else -> false
         }
     }

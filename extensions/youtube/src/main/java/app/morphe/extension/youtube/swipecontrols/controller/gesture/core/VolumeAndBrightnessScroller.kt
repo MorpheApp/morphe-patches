@@ -2,6 +2,7 @@ package app.morphe.extension.youtube.swipecontrols.controller.gesture.core
 
 import android.content.Context
 import android.util.TypedValue
+import app.morphe.extension.youtube.patches.VideoInformation
 import app.morphe.extension.youtube.swipecontrols.controller.AudioVolumeController
 import app.morphe.extension.youtube.swipecontrols.controller.ScreenBrightnessController
 import app.morphe.extension.youtube.swipecontrols.misc.ScrollDistanceHelper
@@ -9,7 +10,7 @@ import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsOverlay
 import app.morphe.extension.youtube.swipecontrols.misc.applyDimension
 
 /**
- * Describes a class that controls volume and brightness based on scrolling events.
+ * Describes a class that controls volume, brightness, and playback speed based on scrolling events.
  */
 interface VolumeAndBrightnessScroller {
     /**
@@ -27,13 +28,20 @@ interface VolumeAndBrightnessScroller {
     fun scrollBrightness(distance: Double)
 
     /**
+     * Submits a scroll for playback speed adjustment.
+     *
+     * @param distance The scroll distance.
+     */
+    fun scrollSpeed(distance: Double)
+
+    /**
      * Resets all scroll distances to zero.
      */
     fun resetScroller()
 }
 
 /**
- * Handles scrolling of volume and brightness, adjusts them using the provided controllers and updates the overlay.
+ * Handles scrolling of volume, brightness, and playback speed, adjusts them using the provided controllers and updates the overlay.
  *
  * @param context Context to create the scrollers in.
  * @param volumeController Volume controller instance. If null, volume control is disabled.
@@ -42,6 +50,8 @@ interface VolumeAndBrightnessScroller {
  * @param volumeDistance Unit distance for volume scrolling, in dp.
  * @param brightnessDistance Unit distance for brightness scrolling, in dp; higher = more precise.
  * @param volumeSwipeSensitivity How much volume will change per swipe.
+ * @param speedDistance Unit distance for speed scrolling, in dp; higher = more precise.
+ * @param enableSpeedGesture Whether the playback speed swipe gesture is enabled.
  */
 class VolumeAndBrightnessScrollerImpl(
     context: Context,
@@ -51,6 +61,8 @@ class VolumeAndBrightnessScrollerImpl(
     volumeDistance: Int = 10,
     brightnessDistance: Int = 1,
     private val volumeSwipeSensitivity: Int,
+    speedDistance: Int = 10,
+    private val enableSpeedGesture: Boolean = false,
 ) : VolumeAndBrightnessScroller {
 
     // region volume
@@ -97,8 +109,27 @@ class VolumeAndBrightnessScrollerImpl(
     override fun scrollBrightness(distance: Double) = brightnessScroller.add(distance)
     //endregion
 
+    //region speed
+    private val speedScroller =
+        ScrollDistanceHelper(
+            speedDistance.applyDimension(
+                context,
+                TypedValue.COMPLEX_UNIT_DIP,
+            ),
+        ) { _, _, direction ->
+            if (!enableSpeedGesture) return@ScrollDistanceHelper
+            val currentSpeed = VideoInformation.getPlaybackSpeed()
+            val newSpeed = maxOf(0.25f, minOf(8.0f, currentSpeed + direction * 0.25f))
+            VideoInformation.overridePlaybackSpeed(newSpeed)
+            overlayController.onSpeedChanged(newSpeed)
+        }
+
+    override fun scrollSpeed(distance: Double) = speedScroller.add(distance)
+    //endregion
+
     override fun resetScroller() {
         volumeScroller.reset()
         brightnessScroller.reset()
+        speedScroller.reset()
     }
 }

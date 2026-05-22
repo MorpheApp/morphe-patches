@@ -33,7 +33,7 @@ fun Float.toDisplayPixels(): Float {
 }
 
 /**
- * Main overlay layout for displaying volume and brightness level with circular, horizontal and vertical progress bars.
+ * Main overlay layout for displaying volume, brightness, and playback speed level with circular, horizontal and vertical progress bars.
  */
 class SwipeControlsOverlayLayout(
     context: Context,
@@ -52,6 +52,7 @@ class SwipeControlsOverlayLayout(
     private val lowVolumeIcon: Drawable = getDrawable("morphe_ic_sc_volume_low")
     private val normalVolumeIcon: Drawable = getDrawable("morphe_ic_sc_volume_normal")
     private val fullVolumeIcon: Drawable = getDrawable("morphe_ic_sc_volume_high")
+    private val speedIcon: Drawable = getDrawable("morphe_ic_sc_speed")
 
     // Function to retrieve drawable resources by name.
     private fun getDrawable(name: String): Drawable {
@@ -192,6 +193,26 @@ class SwipeControlsOverlayLayout(
         }
     }
 
+    /**
+     * Displays the progress bar for playback speed feedback.
+     * Always uses the horizontal bar (or circular for circular styles) to match the horizontal gesture.
+     */
+    private fun showSpeedFeedbackView(speed: Float) {
+        feedbackHideHandler.removeCallbacks(feedbackHideCallback)
+        feedbackHideHandler.postDelayed(feedbackHideCallback, config.overlayShowTimeoutMillis)
+
+        val displayText = "%.2f".format(speed).trimEnd('0').trimEnd('.')
+        val progress = maxOf(0, minOf(100, ((speed - 0.25f) / (8.0f - 0.25f) * 100).toInt()))
+
+        val viewToShow = if (config.overlayStyle.isCircular) circularProgressView else horizontalProgressView
+        viewToShow.apply {
+            setProgressColor(config.overlaySpeedProgressColor)
+            setProgress(progress, 100, displayText, false)
+            this.icon = speedIcon
+            visibility = VISIBLE
+        }
+    }
+
     // Handle volume change.
     override fun onVolumeChanged(newVolume: Int, maximumVolume: Int) {
         val volumePercentage = (newVolume.toFloat() / maximumVolume) * 100
@@ -222,6 +243,11 @@ class SwipeControlsOverlayLayout(
             val displayText = if (config.overlayStyle.isVertical) "$clampedProgress" else "$clampedProgress%"
             showFeedbackView(displayText, clampedProgress, 100, icon, isBrightness = true)
         }
+    }
+
+    // Handle playback speed change.
+    override fun onSpeedChanged(speed: Float) {
+        showSpeedFeedbackView(speed)
     }
 
     // Begin swipe session.

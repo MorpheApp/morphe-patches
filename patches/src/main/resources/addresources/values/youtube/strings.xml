@@ -420,6 +420,13 @@ Info: May not work on live streams"</string>
     <string name="morphe_swipe_volume_sensitivity_summary">Adjust how the volume changes during a swipe</string>
     <string name="morphe_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
     <string name="morphe_swipe_brightness_sensitivity_summary">Higher values require more swiping per step, for more precise control</string>
+    <string name="morphe_swipe_speed_gesture_title">Enable playback speed gesture</string>
+    <string name="morphe_swipe_speed_gesture_summary">Swipe horizontally in the upper zone to change playback speed</string>
+    <string name="morphe_swipe_speed_sensitivity_title">Speed swipe sensitivity</string>
+    <string name="morphe_swipe_speed_sensitivity_summary">Higher values require more swiping per step, for more precise control</string>
+    <string name="morphe_swipe_speed_zone_height_title">Speed zone height</string>
+    <string name="morphe_swipe_speed_zone_height_summary">Height of the speed gesture zone as a percentage of the player height</string>
+    <string name="morphe_swipe_zone_label_speed">Speed</string>
     <string name="morphe_swipe_overlay_style_title">Swipe overlay style</string>
     <string name="morphe_swipe_overlay_style_entry_1">Horizontal overlay</string>
     <string name="morphe_swipe_overlay_style_entry_2">Horizontal overlay (minimal - top)</string>

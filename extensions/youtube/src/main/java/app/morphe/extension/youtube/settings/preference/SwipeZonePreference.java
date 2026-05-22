@@ -13,6 +13,7 @@ import android.content.SharedPreferences;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
@@ -50,6 +51,8 @@ public final class SwipeZonePreference extends Preference
     private String lastVolumeColor = null;
     private boolean lastBrightnessEnabled = false;
     private boolean lastVolumeEnabled = false;
+    private boolean lastSpeedEnabled    = false;
+    private int     lastSpeedZoneHeight = -1;
 
     private final Runnable pollRunnable = new Runnable() {
         @Override
@@ -61,17 +64,23 @@ public final class SwipeZonePreference extends Preference
             String volumeColor = Settings.SWIPE_OVERLAY_VOLUME_COLOR.get();
             boolean brightnessEnabled = Settings.SWIPE_BRIGHTNESS.get();
             boolean volumeEnabled = Settings.SWIPE_VOLUME.get();
+            boolean speedEnabled = Settings.SWIPE_SPEED_GESTURE.get();
+            int speedZoneHeight = Settings.SWIPE_SPEED_ZONE_HEIGHT.get();
 
             if (zoneWidth != lastZoneWidth
                     || !brightnessColor.equals(lastBrightnessColor)
                     || !volumeColor.equals(lastVolumeColor)
                     || brightnessEnabled != lastBrightnessEnabled
-                    || volumeEnabled != lastVolumeEnabled) {
+                    || volumeEnabled != lastVolumeEnabled
+                    || speedEnabled != lastSpeedEnabled
+                    || speedZoneHeight != lastSpeedZoneHeight) {
                 lastZoneWidth = zoneWidth;
                 lastBrightnessColor = brightnessColor;
                 lastVolumeColor = volumeColor;
                 lastBrightnessEnabled = brightnessEnabled;
                 lastVolumeEnabled = volumeEnabled;
+                lastSpeedEnabled = speedEnabled;
+                lastSpeedZoneHeight = speedZoneHeight;
                 zoneView.invalidate();
             }
 
@@ -152,6 +161,7 @@ public final class SwipeZonePreference extends Preference
         private final Paint fillPaint      = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint borderPaint    = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint separatorPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        private final Paint dashPaint      = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint namePaint      = new Paint(Paint.ANTI_ALIAS_FLAG);
         private final Paint percentPaint   = new Paint(Paint.ANTI_ALIAS_FLAG);
 
@@ -167,6 +177,7 @@ public final class SwipeZonePreference extends Preference
         private final String labelBrightness;
         private final String labelVolume;
         private final String labelNative;
+        private final String labelSpeed;
 
         ZoneView(Context context) {
             super(context);
@@ -174,6 +185,7 @@ public final class SwipeZonePreference extends Preference
             labelBrightness = StringRef.str("morphe_swipe_zone_label_brightness");
             labelVolume     = StringRef.str("morphe_swipe_zone_label_volume");
             labelNative     = StringRef.str("morphe_swipe_zone_label_native");
+            labelSpeed      = StringRef.str("morphe_swipe_zone_label_speed");
 
             int bgColor = Utils.getAppBackgroundColor();
             int fgColor = Utils.getAppForegroundColor();
@@ -193,6 +205,11 @@ public final class SwipeZonePreference extends Preference
             separatorPaint.setStyle(Paint.Style.STROKE);
             separatorPaint.setStrokeWidth(Dim.dp(0.5f));
             separatorPaint.setColor(separatorColor);
+
+            dashPaint.setStyle(Paint.Style.STROKE);
+            dashPaint.setStrokeWidth(Dim.dp(0.5f));
+            dashPaint.setColor(separatorColor);
+            dashPaint.setPathEffect(new DashPathEffect(new float[]{Dim.dp(4), Dim.dp(3)}, 0));
 
             namePaint.setTextAlign(Paint.Align.CENTER);
             namePaint.setTextSize(Dim.dp(11));
@@ -220,20 +237,24 @@ public final class SwipeZonePreference extends Preference
 
             screenRect.set(padH, padV, sRight, sBottom);
 
-            int zonePercent   = Math.max(5, Math.min(50, Settings.SWIPE_ZONE_WIDTH.get()));
+            int zonePercent      = Math.max(5, Math.min(50, Settings.SWIPE_ZONE_WIDTH.get()));
+            int speedZonePercent = Math.max(5, Math.min(75, Settings.SWIPE_SPEED_ZONE_HEIGHT.get()));
             boolean brightnessOn = Settings.SWIPE_BRIGHTNESS.get();
             boolean volumeOn     = Settings.SWIPE_VOLUME.get();
+            boolean speedOn      = Settings.SWIPE_SPEED_GESTURE.get();
 
             int brightnessColor = toPreviewColor(
                     parseColor(Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get(), 0xFF4FC3F7), 0xFF4FC3F7);
             int volumeColor     = toPreviewColor(
                     parseColor(Settings.SWIPE_OVERLAY_VOLUME_COLOR.get(),     0xFF81C784), 0xFF81C784);
+            int speedColor      = 0xFFFF9100;
 
             // The 20 dp edge margins (fixed dead areas) are represented as ~6% of total width.
-            float edgeW = sWidth * 0.06f;
+            float edgeW      = sWidth * 0.06f;
             float effectiveW = sWidth - 2f * edgeW;
-            float zoneW   = effectiveW * zonePercent / 100f;
-            float centerW = effectiveW - 2f * zoneW;
+            float zoneW      = effectiveW * zonePercent / 100f;
+            float centerW    = effectiveW - 2f * zoneW;
+            float speedZoneH = sHeight * speedZonePercent / 100f;
 
             // Clip all zone fills to the rounded screen rect.
             clipPath.reset();
@@ -254,60 +275,87 @@ public final class SwipeZonePreference extends Preference
             zoneRect.set(sRight - edgeW, padV, sRight, sBottom);
             canvas.drawRect(zoneRect, fillPaint);
 
-            // Brightness zone.
+            // Brightness zone (full height).
             zoneRect.set(padH + edgeW, padV, padH + edgeW + zoneW, sBottom);
             fillPaint.setColor(brightnessOn ? withAlpha(brightnessColor, 0x55) : 0x1AFFFFFF);
             canvas.drawRect(zoneRect, fillPaint);
 
-            // Volume zone.
+            // Volume zone (full height).
             zoneRect.set(sRight - edgeW - zoneW, padV, sRight - edgeW, sBottom);
             fillPaint.setColor(volumeOn ? withAlpha(volumeColor, 0x55) : 0x1AFFFFFF);
             canvas.drawRect(zoneRect, fillPaint);
 
-            // Separator lines.
-            float sep1 = padH + edgeW;
-            float sep2 = padH + edgeW + zoneW;
-            float sep3 = sRight - edgeW - zoneW;
-            float sep4 = sRight - edgeW;
+            // Speed zone (top strip, full width between edge dead zones).
+            // Drawn last so it blends naturally over brightness/volume in the overlap areas.
+            zoneRect.set(padH + edgeW, padV, sRight - edgeW, padV + speedZoneH);
+            fillPaint.setColor(speedOn ? withAlpha(speedColor, 0x55) : 0x1AFFFFFF);
+            canvas.drawRect(zoneRect, fillPaint);
+
+            // Separator coordinates.
+            float sep1        = padH + edgeW;
+            float sep2        = padH + edgeW + zoneW;
+            float sep3        = sRight - edgeW - zoneW;
+            float sep4        = sRight - edgeW;
+            float speedBottom = padV + speedZoneH;
+
+            // Edge vertical lines (full height, solid).
             canvas.drawLine(sep1, padV, sep1, sBottom, separatorPaint);
-            canvas.drawLine(sep2, padV, sep2, sBottom, separatorPaint);
-            canvas.drawLine(sep3, padV, sep3, sBottom, separatorPaint);
             canvas.drawLine(sep4, padV, sep4, sBottom, separatorPaint);
 
-            // Zone name and percentage labels — name above, % below, pair centered vertically.
-            float nameY = padV + sHeight / 2f - Dim.dp(3);
-            float pctY  = nameY + Dim.dp(13);
+            // Inner vertical lines: dashed inside the speed zone (overlap area), solid below.
+            canvas.drawLine(sep2, padV, sep2, speedBottom, dashPaint);
+            canvas.drawLine(sep2, speedBottom, sep2, sBottom, separatorPaint);
+            canvas.drawLine(sep3, padV, sep3, speedBottom, dashPaint);
+            canvas.drawLine(sep3, speedBottom, sep3, sBottom, separatorPaint);
+
+            // Horizontal line at the bottom of the speed zone:
+            //   dashed where it crosses brightness/volume (overlap), solid in the center.
+            canvas.drawLine(sep1, speedBottom, sep2, speedBottom, dashPaint);
+            canvas.drawLine(sep2, speedBottom, sep3, speedBottom, separatorPaint);
+            canvas.drawLine(sep3, speedBottom, sep4, speedBottom, dashPaint);
+
+            // Labels: brightness/volume in the non-overlapping lower portion;
+            // speed and native in the center column.
+            float lowerH       = sBottom - speedBottom;
+            float lowerCenterY = speedBottom + lowerH / 2f - Dim.dp(3);
+            float lowerPctY    = lowerCenterY + Dim.dp(13);
+            float speedLabelY  = padV + speedZoneH / 2f + namePaint.getTextSize() / 3f;
 
             if (zoneW >= Dim.dp(30)) {
                 namePaint.setColor(brightnessOn
                         ? withAlpha(brightnessColor, 0xFF) : dimTextColor);
                 canvas.drawText(labelBrightness,
-                        padH + edgeW + zoneW / 2f, nameY, namePaint);
+                        padH + edgeW + zoneW / 2f, lowerCenterY, namePaint);
 
                 percentPaint.setColor(brightnessOn
                         ? withAlpha(brightnessColor, 0xBB) : dimTextColor);
                 canvas.drawText(zonePercent + "%",
-                        padH + edgeW + zoneW / 2f, pctY, percentPaint);
+                        padH + edgeW + zoneW / 2f, lowerPctY, percentPaint);
 
                 namePaint.setColor(volumeOn
                         ? withAlpha(volumeColor, 0xFF) : dimTextColor);
                 canvas.drawText(labelVolume,
-                        sRight - edgeW - zoneW / 2f, nameY, namePaint);
+                        sRight - edgeW - zoneW / 2f, lowerCenterY, namePaint);
 
                 percentPaint.setColor(volumeOn
                         ? withAlpha(volumeColor, 0xBB) : dimTextColor);
                 canvas.drawText(zonePercent + "%",
-                        sRight - edgeW - zoneW / 2f, pctY, percentPaint);
+                        sRight - edgeW - zoneW / 2f, lowerPctY, percentPaint);
             }
 
             if (centerW >= Dim.dp(55)) {
+                float centerX = padH + edgeW + zoneW + centerW / 2f;
+
+                // Speed label centered in the speed strip.
+                namePaint.setColor(speedOn ? withAlpha(speedColor, 0xFF) : dimTextColor);
+                canvas.drawText(labelSpeed, centerX, speedLabelY, namePaint);
+
+                // Native label in the lower portion of the center column.
                 namePaint.setColor(dimTextColor);
-                canvas.drawText(labelNative,
-                        padH + edgeW + zoneW + centerW / 2f, nameY, namePaint);
+                canvas.drawText(labelNative, centerX, lowerCenterY, namePaint);
 
                 percentPaint.setColor(dimTextColor);
-                canvas.drawText((100 - 2 * zonePercent) + "%",
-                        padH + edgeW + zoneW + centerW / 2f, pctY, percentPaint);
+                canvas.drawText((100 - 2 * zonePercent) + "%", centerX, lowerPctY, percentPaint);
             }
 
             canvas.restore();

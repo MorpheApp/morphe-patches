@@ -110,6 +110,26 @@ class SwipeControlsConfigurationProvider {
             return sensitivity
         }
 
+    /**
+     * Indicates whether the horizontal swipe gesture for playback speed control is enabled.
+     */
+    val enableSpeedGestureControl = Settings.SWIPE_SPEED_GESTURE.get()
+
+    /**
+     * The sensitivity of speed swipe gestures, controlling how much physical movement is needed per step.
+     * Resets to default if below 1 to guard against direct SharedPreferences manipulation.
+     */
+    val speedSwipeSensitivity: Int
+        get() {
+            val sensitivity = Settings.SWIPE_SPEED_SENSITIVITY.get()
+
+            if (sensitivity < 1) {
+                return Settings.SWIPE_SPEED_SENSITIVITY.resetToDefault()
+            }
+
+            return sensitivity
+        }
+
     //endregion
 
     //region overlay adjustments
@@ -168,6 +188,11 @@ class SwipeControlsConfigurationProvider {
             return getSettingColor(setting) // Recursively return.
         }
     }
+
+    /**
+     * The color of the progress indicator in the overlay for playback speed.
+     */
+    val overlaySpeedProgressColor = 0xFFFF9100.toInt()
 
     /**
      * The background color used for the filled portion of the progress bar in the overlay.

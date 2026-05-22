@@ -20,6 +20,13 @@ interface SwipeControlsOverlay {
     fun onBrightnessChanged(brightness: Double)
 
     /**
+     * Called when the playback speed was changed via swipe gesture.
+     *
+     * @param speed The new playback speed multiplier.
+     */
+    fun onSpeedChanged(speed: Float)
+
+    /**
      * Called when a new swipe session has started.
      */
     fun onEnterSwipeSession()

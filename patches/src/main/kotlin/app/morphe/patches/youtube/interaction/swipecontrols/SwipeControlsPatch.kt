@@ -83,6 +83,15 @@ private val swipeControlsResourcePatch = resourcePatch {
                 key = "morphe_swipe_brightness_sensitivity",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
             ),
+            SwitchPreference("morphe_swipe_speed_gesture"),
+            NonInteractivePreference(
+                key = "morphe_swipe_speed_sensitivity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            ),
+            NonInteractivePreference(
+                key = "morphe_swipe_speed_zone_height",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            ),
         )
 
         copyResources(
@@ -98,6 +107,7 @@ private val swipeControlsResourcePatch = resourcePatch {
                 "morphe_ic_sc_volume_low.xml",
                 "morphe_ic_sc_volume_mute.xml",
                 "morphe_ic_sc_volume_normal.xml",
+                "morphe_ic_sc_speed.xml",
             )
         )
     }

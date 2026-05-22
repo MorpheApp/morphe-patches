@@ -123,6 +123,22 @@ class SwipeZonesController(
         }
 
     /**
+     * The rectangle of the playback speed control zone (top strip of the effective swipe area).
+     * Height is controlled by [Settings.SWIPE_SPEED_ZONE_HEIGHT] as a percentage of the player height.
+     */
+    val speed: Rectangle
+        get() {
+            val eRect = effectiveSwipeRect
+            val zoneHeight = (eRect.height * maxOf(5, minOf(75, Settings.SWIPE_SPEED_ZONE_HEIGHT.get()))) / 100
+            return Rectangle(
+                eRect.left,
+                eRect.top,
+                eRect.width,
+                zoneHeight,
+            )
+        }
+
+    /**
      * Tries to attach a listener to the player_view and update the player rectangle.
      * Once a listener is attached, this function does nothing.
      */
