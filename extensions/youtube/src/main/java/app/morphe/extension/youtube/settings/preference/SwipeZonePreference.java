@@ -224,8 +224,10 @@ public final class SwipeZonePreference extends Preference
             boolean brightnessOn = Settings.SWIPE_BRIGHTNESS.get();
             boolean volumeOn     = Settings.SWIPE_VOLUME.get();
 
-            int brightnessColor = parseColor(Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get(), 0xFF4FC3F7);
-            int volumeColor     = parseColor(Settings.SWIPE_OVERLAY_VOLUME_COLOR.get(),     0xFF81C784);
+            int brightnessColor = toPreviewColor(
+                    parseColor(Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get(), 0xFF4FC3F7), 0xFF4FC3F7);
+            int volumeColor     = toPreviewColor(
+                    parseColor(Settings.SWIPE_OVERLAY_VOLUME_COLOR.get(),     0xFF81C784), 0xFF81C784);
 
             // The 20 dp edge margins (fixed dead areas) are represented as ~6% of total width.
             float edgeW = sWidth * 0.06f;
@@ -320,6 +322,24 @@ public final class SwipeZonePreference extends Preference
             } catch (Exception e) {
                 return fallback;
             }
+        }
+
+        // Strips the stored alpha (overlay colors are designed for video overlays and may be
+        // near-white, which becomes invisible on a light background). Uses the fully-opaque RGB
+        // for the preview; falls back to a distinct color if contrast with the background is low.
+        private int toPreviewColor(int overlayColor, int fallback) {
+            int opaque = overlayColor | 0xFF000000;
+            float la = relativeLuminance(opaque);
+            float lb = relativeLuminance(screenBgColor);
+            float contrast = (Math.max(la, lb) + 0.05f) / (Math.min(la, lb) + 0.05f);
+            return contrast >= 1.5f ? opaque : fallback;
+        }
+
+        private static float relativeLuminance(int color) {
+            float r = Color.red(color)   / 255f;
+            float g = Color.green(color) / 255f;
+            float b = Color.blue(color)  / 255f;
+            return 0.2126f * r + 0.7152f * g + 0.0722f * b;
         }
 
         private static int withAlpha(int color, int alpha) {
