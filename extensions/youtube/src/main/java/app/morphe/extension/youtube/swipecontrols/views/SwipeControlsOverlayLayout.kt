@@ -2,6 +2,8 @@
 
 package app.morphe.extension.youtube.swipecontrols.views
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
@@ -161,13 +163,39 @@ class SwipeControlsOverlayLayout(
         addView(verticalVolumeProgressView)
     }
 
+    private fun View.fadeIn() {
+        animate().cancel()
+        if (visibility == VISIBLE && alpha == 1f) return
+        if (visibility != VISIBLE) {
+            alpha = 0f
+            visibility = VISIBLE
+        }
+        animate().alpha(1f).setDuration(150).setListener(null).start()
+    }
+
+    private fun View.fadeOut() {
+        animate().cancel()
+        animate().alpha(0f).setDuration(250)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    visibility = GONE
+                    alpha = 1f
+                    animate().setListener(null)
+                }
+                override fun onAnimationCancel(animation: Animator) {
+                    animate().setListener(null)
+                }
+            })
+            .start()
+    }
+
     // Handler and callback for hiding progress bars.
     private val feedbackHideHandler = Handler(Looper.getMainLooper())
     private val feedbackHideCallback = Runnable {
-        circularProgressView.visibility = GONE
-        horizontalProgressView.visibility = GONE
-        verticalBrightnessProgressView.visibility = GONE
-        verticalVolumeProgressView.visibility = GONE
+        circularProgressView.fadeOut()
+        horizontalProgressView.fadeOut()
+        verticalBrightnessProgressView.fadeOut()
+        verticalVolumeProgressView.fadeOut()
     }
 
     /**
@@ -198,7 +226,7 @@ class SwipeControlsOverlayLayout(
             }
             setProgress(progress, max, value, isBrightness)
             this.icon = icon
-            visibility = VISIBLE
+            fadeIn()
         }
     }
 
@@ -218,7 +246,7 @@ class SwipeControlsOverlayLayout(
             setProgressColor(config.overlaySpeedProgressColor)
             setProgress(progress, 100, displayText, false)
             this.icon = speedIcon
-            visibility = VISIBLE
+            fadeIn()
         }
     }
 
