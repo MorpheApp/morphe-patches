@@ -390,7 +390,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_swipe_volume_summary">Swipe vertically on the right side of the fullscreen mode to adjust volume</string>
     <string name="morphe_swipe_zone_preview_title" translatable="false"> </string>
     <string name="morphe_swipe_zone_width_title">Brightness/volume zone width</string>
-    <string name="morphe_swipe_zone_width_summary">Percentage of each screen edge reserved for brightness and volume gestures (5–50)</string>
+    <string name="morphe_swipe_zone_width_summary">Percentage of each screen edge reserved for brightness and volume gestures (5-50)</string>
     <string name="morphe_swipe_zone_label_brightness">Brightness</string>
     <string name="morphe_swipe_zone_label_volume">Volume</string>
     <string name="morphe_swipe_zone_label_native">Native</string>
@@ -419,15 +419,15 @@ Info: May not work on live streams"</string>
     <string name="morphe_swipe_threshold_title">Swipe magnitude threshold</string>
     <string name="morphe_swipe_threshold_summary">Set the required swipe distance before an adjustment triggers</string>
     <string name="morphe_swipe_volume_sensitivity_title">Volume swipe sensitivity</string>
-    <string name="morphe_swipe_volume_sensitivity_summary">Adjust how the volume changes during a swipe</string>
+    <string name="morphe_swipe_volume_sensitivity_summary">Higher values require more swiping per step, for more precise control</string>
     <string name="morphe_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
     <string name="morphe_swipe_brightness_sensitivity_summary">Higher values require more swiping per step, for more precise control</string>
-    <string name="morphe_swipe_speed_gesture_title">Enable playback speed gesture</string>
+    <string name="morphe_swipe_speed_gesture_title">Enable speed gesture</string>
     <string name="morphe_swipe_speed_gesture_summary">Swipe horizontally in the upper zone to change playback speed</string>
     <string name="morphe_swipe_speed_sensitivity_title">Speed swipe sensitivity</string>
     <string name="morphe_swipe_speed_sensitivity_summary">Higher values require more swiping per step, for more precise control</string>
     <string name="morphe_swipe_speed_zone_height_title">Speed zone height</string>
-    <string name="morphe_swipe_speed_zone_height_summary">Height of the speed gesture zone as a percentage of the player height</string>
+    <string name="morphe_swipe_speed_zone_height_summary">Height of the speed gesture zone as a percentage of the player height (5-75)</string>
     <string name="morphe_swipe_zone_label_speed">Speed</string>
     <string name="morphe_swipe_overlay_style_title">Swipe overlay style</string>
     <string name="morphe_swipe_overlay_style_entry_1">Horizontal overlay</string>
