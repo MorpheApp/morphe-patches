@@ -170,12 +170,12 @@ class SwipeControlsOverlayLayout(
             alpha = 0f
             visibility = VISIBLE
         }
-        animate().alpha(1f).setDuration(150).setListener(null).start()
+        animate().alpha(1f).setDuration(100).setListener(null).start()
     }
 
     private fun View.fadeOut() {
         animate().cancel()
-        animate().alpha(0f).setDuration(250)
+        animate().alpha(0f).setDuration(100)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     visibility = GONE
