@@ -41,7 +41,7 @@ import kotlin.math.min
  *  |          |            |          |            |          |
  *  |   20dp   |  zone_w%   | 100-2*z% |  zone_w%   |   20dp   |
  *  | <------> |  <------>  | <------> |  <------>  | <------> |
- *  |   dead   | brightness | deadzone |   volume   |   dead   |
+ *  | deadzone | brightness | deadzone |   volume   | deadzone |
  *             | <--------------------------------> |
  *                              1/1
  */

@@ -387,10 +387,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 Setting.privateSetValueFromString(setting, listPref.getValue());
             }
             updateListPreferenceSummary(listPref, setting);
-        } else if (pref instanceof SeekBarPreference) {
-            // SeekBarPreference manages its own persistence via Config reader/writer.
-        } else if (!pref.getClass().equals(Preference.class)) {
-            // Ignore root preference class because there is no data to sync.
+        } else if (!pref.getClass().equals(Preference.class) && !(pref instanceof SeekBarPreference)) {
+            // Ignore root preference class and SeekBarPreference (manages its own persistence).
             Logger.printException(() -> "Setting cannot be handled: " + pref.getClass() + ": " + pref);
         }
     }
