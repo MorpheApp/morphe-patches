@@ -47,7 +47,7 @@ private val swipeControlsResourcePatch = resourcePatch {
             SwitchPreference("morphe_swipe_volume"),
             NonInteractivePreference(
                 key = "morphe_swipe_zone_width",
-                tag = "app.morphe.extension.youtube.settings.preference.SwipeZoneSeekBarPreference",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
             ),
             NonInteractivePreference(
                 key = "morphe_swipe_zone_preview",
@@ -59,14 +59,20 @@ private val swipeControlsResourcePatch = resourcePatch {
             SwitchPreference("morphe_swipe_save_and_restore_brightness"),
             SwitchPreference("morphe_swipe_lowest_value_enable_auto_brightness"),
             ListPreference("morphe_swipe_overlay_style"),
-            TextPreference("morphe_swipe_overlay_background_opacity", inputType = InputType.NUMBER),
+            NonInteractivePreference(
+                key = "morphe_swipe_overlay_background_opacity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            ),
             TextPreference("morphe_swipe_overlay_progress_brightness_color",
                 tag = "app.morphe.extension.shared.settings.preference.ColorPickerWithOpacitySliderPreference",
                 inputType = InputType.TEXT_CAP_CHARACTERS),
             TextPreference("morphe_swipe_overlay_progress_volume_color",
                 tag = "app.morphe.extension.shared.settings.preference.ColorPickerWithOpacitySliderPreference",
                 inputType = InputType.TEXT_CAP_CHARACTERS),
-            TextPreference("morphe_swipe_text_overlay_size", inputType = InputType.NUMBER),
+            NonInteractivePreference(
+                key = "morphe_swipe_text_overlay_size",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            ),
             TextPreference("morphe_swipe_overlay_timeout", inputType = InputType.NUMBER),
             TextPreference("morphe_swipe_threshold", inputType = InputType.NUMBER),
             TextPreference("morphe_swipe_volume_sensitivity", inputType = InputType.NUMBER),

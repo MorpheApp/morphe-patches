@@ -40,6 +40,7 @@ import app.morphe.extension.shared.settings.LongSetting;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.DeArrowAvailability;
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.StillImagesAvailability;
@@ -607,5 +608,25 @@ public class Settings extends SharedYouTubeSettings {
         }
 
         Setting.addImportExportCallback(SponsorBlockSettings.SB_IMPORT_EXPORT_CALLBACK);
+    }
+
+    // Register SeekBar UI configs so the single shared SeekBarPreference class knows the
+    // range, step, unit, and read/write callbacks for each integer setting that uses it.
+    static {
+        SeekBarPreference.register("morphe_swipe_zone_width",
+                new SeekBarPreference.Config(5, 50, SWIPE_ZONE_WIDTH.defaultValue, 1, "%",
+                        SWIPE_ZONE_WIDTH::get, SWIPE_ZONE_WIDTH::save));
+        SeekBarPreference.register("morphe_swipe_overlay_background_opacity",
+                new SeekBarPreference.Config(0, 100, SWIPE_OVERLAY_OPACITY.defaultValue, 1, "%",
+                        SWIPE_OVERLAY_OPACITY::get, SWIPE_OVERLAY_OPACITY::save));
+        SeekBarPreference.register("morphe_swipe_text_overlay_size",
+                new SeekBarPreference.Config(1, 30, SWIPE_OVERLAY_TEXT_SIZE.defaultValue, 1, "sp",
+                        SWIPE_OVERLAY_TEXT_SIZE::get, SWIPE_OVERLAY_TEXT_SIZE::save));
+        SeekBarPreference.register("morphe_miniplayer_opacity",
+                new SeekBarPreference.Config(0, 100, MINIPLAYER_OPACITY.defaultValue, 1, "%",
+                        MINIPLAYER_OPACITY::get, MINIPLAYER_OPACITY::save));
+        SeekBarPreference.register("morphe_player_overlay_opacity",
+                new SeekBarPreference.Config(0, 100, PLAYER_OVERLAY_OPACITY.defaultValue, 1, "%",
+                        PLAYER_OVERLAY_OPACITY::get, PLAYER_OVERLAY_OPACITY::save));
     }
 }

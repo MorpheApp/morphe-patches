@@ -22,7 +22,15 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.*;
+import android.preference.EditTextPreference;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceGroup;
+import android.preference.PreferenceManager;
+import android.preference.PreferenceScreen;
+import android.preference.SwitchPreference;
+import android.preference.TwoStatePreference;
 import android.text.InputType;
 import android.util.Pair;
 import android.util.TypedValue;
@@ -30,7 +38,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -376,7 +388,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             }
             updateListPreferenceSummary(listPref, setting);
         } else if (pref instanceof SeekBarPreference) {
-            // SeekBarPreference manages its own persistence via readValue()/writeValue().
+            // SeekBarPreference manages its own persistence via Config reader/writer.
         } else if (!pref.getClass().equals(Preference.class)) {
             // Ignore root preference class because there is no data to sync.
             Logger.printException(() -> "Setting cannot be handled: " + pref.getClass() + ": " + pref);

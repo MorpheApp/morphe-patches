@@ -19,18 +19,49 @@ import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
+import java.util.function.IntConsumer;
+import java.util.function.IntSupplier;
 
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
- * Reusable SeekBar preference that opens a SeekBar dialog on click.
- * Subclass and implement the abstract methods to configure range, unit, and persistence.
+ * SeekBar preference that opens a dialog on click.
+ * Register a {@link Config} for each preference key via {@link #register(String, Config)}.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public abstract class SeekBarPreference extends Preference {
+public class SeekBarPreference extends Preference {
+
+    public static final class Config {
+        public final int min;
+        public final int max;
+        public final int defaultValue;
+        public final int step;
+        public final String unit;
+        private final IntSupplier reader;
+        private final IntConsumer writer;
+
+        public Config(int min, int max, int defaultValue, int step, String unit,
+                      IntSupplier reader, IntConsumer writer) {
+            this.min = min;
+            this.max = max;
+            this.defaultValue = defaultValue;
+            this.step = step;
+            this.unit = unit;
+            this.reader = reader;
+            this.writer = writer;
+        }
+    }
+
+    private static final Map<String, Config> REGISTRY = new HashMap<>();
+
+    public static void register(String key, Config config) {
+        REGISTRY.put(key, config);
+    }
 
     public SeekBarPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -57,45 +88,43 @@ public abstract class SeekBarPreference extends Preference {
         setPersistent(false);
     }
 
-    protected abstract int getMin();
-    protected abstract int getMax();
-    protected abstract int getDefault();
-    protected abstract int getStep();
-    protected abstract String getUnit();
-    protected abstract int readValue();
-    protected abstract void writeValue(int value);
-
     @Override
     protected void onClick() {
         showDialog();
     }
 
     private void showDialog() {
+        Config config = REGISTRY.get(getKey());
+        if (config == null) {
+            throw new IllegalStateException("SeekBarPreference: no Config registered for key '" + getKey() + "'");
+        }
+
         Context context = getContext();
 
         TypedValue tv = new TypedValue();
         context.getTheme().resolveAttribute(android.R.attr.colorAccent, tv, true);
         int colorAccent = tv.data;
 
-        int[] pending = { readValue() };
+        int[] pending = {config.reader.getAsInt()};
 
         TextView currentLabel = new TextView(context);
         currentLabel.setGravity(Gravity.CENTER);
         currentLabel.setTextColor(colorAccent);
         currentLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 16);
-        updateLabel(currentLabel, pending[0]);
+        updateLabel(currentLabel, pending[0], config.unit);
 
         SeekBar seekBar = new SeekBar(context);
-        seekBar.setMax((getMax() - getMin()) / getStep());
-        seekBar.setProgress(valueToProgress(pending[0]));
+        seekBar.setMax((config.max - config.min) / config.step);
+        seekBar.setProgress(valueToProgress(config, pending[0]));
         seekBar.setProgressTintList(ColorStateList.valueOf(colorAccent));
         seekBar.setThumbTintList(ColorStateList.valueOf(colorAccent));
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar bar, int progress, boolean fromUser) {
-                pending[0] = progressToValue(progress);
-                updateLabel(currentLabel, pending[0]);
+                pending[0] = progressToValue(config, progress);
+                updateLabel(currentLabel, pending[0], config.unit);
             }
+
             @Override public void onStartTrackingTouch(SeekBar bar) {}
             @Override public void onStopTrackingTouch(SeekBar bar) {}
         });
@@ -114,13 +143,13 @@ public abstract class SeekBarPreference extends Preference {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        // SeekBar row: min label - [value + seekbar] - max label, all bottom-aligned.
+        // SeekBar row: min label — [value label + seekbar] — max label, all bottom-aligned.
         LinearLayout seekRow = new LinearLayout(context);
         seekRow.setOrientation(LinearLayout.HORIZONTAL);
         seekRow.setGravity(Gravity.BOTTOM);
 
         TextView minLabel = new TextView(context);
-        minLabel.setText(String.format(Locale.ROOT, "%d%s", getMin(), getUnit()));
+        minLabel.setText(String.format(Locale.ROOT, "%d%s", config.min, config.unit));
         minLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         seekRow.addView(minLabel,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -133,8 +162,8 @@ public abstract class SeekBarPreference extends Preference {
         seekRow.addView(seekCenter, centerParams);
 
         TextView maxLabel = new TextView(context);
-        maxLabel.setText(String.format(Locale.ROOT, "%d%s", getMax(), getUnit()));
-        maxLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        maxLabel.setText(String.format(Locale.ROOT, "%d%s", config.max, config.unit));
+        maxLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
         seekRow.addView(maxLabel,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -152,13 +181,13 @@ public abstract class SeekBarPreference extends Preference {
                 null,
                 null,
                 null,
-                () -> writeValue(pending[0]),
+                () -> config.writer.accept(pending[0]),
                 () -> {},
                 StringRef.str("morphe_settings_reset"),
                 () -> {
-                    pending[0] = getDefault();
-                    seekBar.setProgress(valueToProgress(getDefault()));
-                    updateLabel(currentLabel, getDefault());
+                    pending[0] = config.defaultValue;
+                    seekBar.setProgress(valueToProgress(config, config.defaultValue));
+                    updateLabel(currentLabel, config.defaultValue, config.unit);
                 },
                 false
         );
@@ -168,15 +197,15 @@ public abstract class SeekBarPreference extends Preference {
         dialogPair.first.show();
     }
 
-    private void updateLabel(TextView label, int value) {
-        label.setText(String.format(Locale.ROOT, "%d%s", value, getUnit()));
+    private static void updateLabel(TextView label, int value, String unit) {
+        label.setText(String.format(Locale.ROOT, "%d%s", value, unit));
     }
 
-    private int valueToProgress(int value) {
-        return (Math.max(getMin(), Math.min(getMax(), value)) - getMin()) / getStep();
+    private static int valueToProgress(Config config, int value) {
+        return (Math.max(config.min, Math.min(config.max, value)) - config.min) / config.step;
     }
 
-    private int progressToValue(int progress) {
-        return getMin() + progress * getStep();
+    private static int progressToValue(Config config, int progress) {
+        return config.min + progress * config.step;
     }
 }
