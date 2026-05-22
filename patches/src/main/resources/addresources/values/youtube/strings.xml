@@ -419,7 +419,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_swipe_volume_sensitivity_title">Volume swipe sensitivity</string>
     <string name="morphe_swipe_volume_sensitivity_summary">Adjust how the volume changes during a swipe</string>
     <string name="morphe_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
-    <string name="morphe_swipe_brightness_sensitivity_summary">Adjust how much brightness changes per swipe gesture</string>
+    <string name="morphe_swipe_brightness_sensitivity_summary">Higher values require more swiping per step, for more precise control</string>
     <string name="morphe_swipe_overlay_style_title">Swipe overlay style</string>
     <string name="morphe_swipe_overlay_style_entry_1">Horizontal overlay</string>
     <string name="morphe_swipe_overlay_style_entry_2">Horizontal overlay (minimal - top)</string>
