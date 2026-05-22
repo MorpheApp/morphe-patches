@@ -77,7 +77,6 @@ class SwipeControlsOverlayLayout(
     @Suppress("JoinDeclarationAndAssignment")
     private val circularProgressView: CircularProgressView
     private val horizontalProgressView: HorizontalProgressView
-    private val speedProgressView: HorizontalProgressView
     private val verticalBrightnessProgressView: VerticalProgressView
     private val verticalVolumeProgressView: VerticalProgressView
 
@@ -123,25 +122,6 @@ class SwipeControlsOverlayLayout(
         }
         addView(horizontalProgressView)
 
-        // Initialize horizontal progress bar for playback speed (bottom).
-        speedProgressView = HorizontalProgressView(
-            context,
-            config.overlayBackgroundOpacity,
-            config.overlayStyle.isMinimal,
-            config.overlaySpeedProgressColor,
-            config.overlayFillBackgroundPaint,
-            config.overlayTextColor,
-            config.overlayTextSize
-        ).apply {
-            layoutParams = LayoutParams(layoutWidth, 32f.toDisplayPixels().toInt()).apply {
-                addRule(CENTER_HORIZONTAL)
-                addRule(ALIGN_PARENT_BOTTOM)
-                bottomMargin = 20f.toDisplayPixels().toInt()
-            }
-            visibility = GONE
-        }
-        addView(speedProgressView)
-
         // Initialize vertical progress bar for brightness (right side).
         verticalBrightnessProgressView = VerticalProgressView(
             context,
@@ -186,7 +166,6 @@ class SwipeControlsOverlayLayout(
     private val feedbackHideCallback = Runnable {
         circularProgressView.visibility = GONE
         horizontalProgressView.visibility = GONE
-        speedProgressView.visibility = GONE
         verticalBrightnessProgressView.visibility = GONE
         verticalVolumeProgressView.visibility = GONE
     }
@@ -234,7 +213,7 @@ class SwipeControlsOverlayLayout(
         val displayText = speedFormatter.format(speed)
         val progress = maxOf(0, minOf(100, ((speed - 0.25f) / (8.0f - 0.25f) * 100).toInt()))
 
-        val viewToShow = if (config.overlayStyle.isCircular) circularProgressView else speedProgressView
+        val viewToShow = if (config.overlayStyle.isCircular) circularProgressView else horizontalProgressView
         viewToShow.apply {
             setProgressColor(config.overlaySpeedProgressColor)
             setProgress(progress, 100, displayText, false)
