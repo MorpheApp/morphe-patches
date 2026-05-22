@@ -86,6 +86,9 @@ private val swipeControlsResourcePatch = resourcePatch {
             TextPreference("morphe_swipe_overlay_progress_volume_color",
                 tag = "app.morphe.extension.shared.settings.preference.ColorPickerWithOpacitySliderPreference",
                 inputType = InputType.TEXT_CAP_CHARACTERS),
+            TextPreference("morphe_swipe_overlay_progress_speed_color",
+                tag = "app.morphe.extension.shared.settings.preference.ColorPickerWithOpacitySliderPreference",
+                inputType = InputType.TEXT_CAP_CHARACTERS),
             NonInteractivePreference(
                 key = "morphe_swipe_text_overlay_size",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",

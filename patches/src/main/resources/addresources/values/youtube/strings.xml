@@ -411,6 +411,8 @@ Info: May not work on live streams"</string>
     <string name="morphe_swipe_overlay_progress_brightness_color_summary">Set the color of the brightness controls progress bar</string>
     <string name="morphe_swipe_overlay_progress_volume_color_title">Swipe overlay volume color</string>
     <string name="morphe_swipe_overlay_progress_volume_color_summary">Set the color of the volume controls progress bar</string>
+    <string name="morphe_swipe_overlay_progress_speed_color_title">Swipe overlay speed color</string>
+    <string name="morphe_swipe_overlay_progress_speed_color_summary">Set the color of the playback speed controls progress bar</string>
     <string name="morphe_swipe_text_overlay_size_title">Swipe overlay text size</string>
     <string name="morphe_swipe_text_overlay_size_summary">Adjust the size of the on-screen text (1-30)</string>
     <string name="morphe_swipe_text_overlay_size_invalid_toast">The text size must be between 1-30</string>

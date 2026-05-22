@@ -192,7 +192,8 @@ class SwipeControlsConfigurationProvider {
     /**
      * The color of the progress indicator in the overlay for playback speed.
      */
-    val overlaySpeedProgressColor = 0xFFFF9100.toInt()
+    val overlaySpeedProgressColor: Int
+        get() = getSettingColor(Settings.SWIPE_OVERLAY_SPEED_COLOR)
 
     /**
      * The background color used for the filled portion of the progress bar in the overlay.
