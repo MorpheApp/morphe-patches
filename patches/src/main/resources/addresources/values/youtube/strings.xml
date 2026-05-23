@@ -311,7 +311,7 @@ Limitations:
 
     <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
     <string name="morphe_disable_chapter_skip_double_tap_title">Disable double-tap chapter skip</string>
-    <string name="morphe_disable_chapter_skip_double_tap_summary">Prevents double-tapping from accidentally skipping to the next or previous chapter</string>
+    <string name="morphe_disable_chapter_skip_double_tap_summary">Disables the two-finger double-tap gesture that skips to the next or previous chapter, which can sometimes be accidentally triggered with a single finger</string>
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_title">External downloads</string>
@@ -1032,7 +1032,7 @@ If later turned off, it is recommended to clear the app data to prevent UI bugs.
     <string name="morphe_spoof_app_version_target_title">Spoof app version target</string>
     <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - Restore old save to playlist</string>
     <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - Disable bold icons</string>
-    <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Show channel name below video player</string>
+    <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - Restore channel name below video player</string>
 
     <!-- misc.sharesheet.openSystemShareSheetPatch -->
     <string name="morphe_open_system_share_sheet_title">Open system share sheet</string>

@@ -119,7 +119,7 @@ To sign in, press continue below"</string>
     <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
     <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
     <string name="morphe_replace_music_with_youtube_title">Change share links to youtube.com</string>
-    <string name="morphe_replace_music_with_youtube_summary">Changes music.youtube.com to youtube.com in shared links</string>
+    <string name="morphe_replace_music_with_youtube_summary">Replaces music.youtube.com to youtube.com in shared links</string>
     <string name="morphe_replace_links_with_shortener_title">Change share links to youtu.be</string>
     <string name="morphe_replace_links_with_shortener_summary">Forces live streams and Shorts to use the shortened youtu.be URL format</string>
 </resources>
