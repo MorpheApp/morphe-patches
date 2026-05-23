@@ -22,45 +22,25 @@ import android.widget.TextView;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.function.IntConsumer;
-import java.util.function.IntSupplier;
 
 import app.morphe.extension.shared.StringRef;
+import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
 /**
  * SeekBar preference that opens a dialog on click.
- * Register a {@link Config} for each preference key via {@link #register(String, Config)}.
+ * Register a {@link SeekBarConfig} for each preference key via {@link #register(SeekBarConfig)}.
  */
 @SuppressWarnings({"unused", "deprecation"})
 public class SeekBarPreference extends Preference {
 
-    public static final class Config {
-        public final int min;
-        public final int max;
-        public final int defaultValue;
-        public final int step;
-        public final String unit;
-        private final IntSupplier reader;
-        private final IntConsumer writer;
+    public record SeekBarConfig(IntegerSetting setting, int min, int max, int step, String unit) { }
 
-        public Config(int min, int max, int defaultValue, int step, String unit,
-                      IntSupplier reader, IntConsumer writer) {
-            this.min = min;
-            this.max = max;
-            this.defaultValue = defaultValue;
-            this.step = step;
-            this.unit = unit;
-            this.reader = reader;
-            this.writer = writer;
-        }
-    }
+    private static final Map<String, SeekBarConfig> REGISTRY = new HashMap<>();
 
-    private static final Map<String, Config> REGISTRY = new HashMap<>();
-
-    public static void register(String key, Config config) {
-        REGISTRY.put(key, config);
+    public static void register(SeekBarConfig config) {
+        REGISTRY.put(config.setting.key, config);
     }
 
     public SeekBarPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
@@ -94,7 +74,7 @@ public class SeekBarPreference extends Preference {
     }
 
     private void showDialog() {
-        Config config = REGISTRY.get(getKey());
+        SeekBarConfig config = REGISTRY.get(getKey());
         if (config == null) {
             throw new IllegalStateException("SeekBarPreference: no Config registered for key '" + getKey() + "'");
         }
@@ -105,7 +85,7 @@ public class SeekBarPreference extends Preference {
         context.getTheme().resolveAttribute(android.R.attr.colorAccent, tv, true);
         int colorAccent = tv.data;
 
-        int[] pending = {config.reader.getAsInt()};
+        int[] pending = {config.setting.get()};
 
         TextView currentLabel = new TextView(context);
         currentLabel.setGravity(Gravity.CENTER);
@@ -181,13 +161,14 @@ public class SeekBarPreference extends Preference {
                 null,
                 null,
                 null,
-                () -> config.writer.accept(pending[0]),
+                () -> config.setting.save(pending[0]),
                 () -> {},
                 StringRef.str("morphe_settings_reset"),
                 () -> {
-                    pending[0] = config.defaultValue;
-                    seekBar.setProgress(valueToProgress(config, config.defaultValue));
-                    updateLabel(currentLabel, config.defaultValue, config.unit);
+                    Integer defaultValue = config.setting.defaultValue;
+                    pending[0] = defaultValue;
+                    seekBar.setProgress(valueToProgress(config, defaultValue));
+                    updateLabel(currentLabel, defaultValue, config.unit);
                 },
                 false
         );
@@ -201,11 +182,11 @@ public class SeekBarPreference extends Preference {
         label.setText(String.format(Locale.ROOT, "%d%s", value, unit));
     }
 
-    private static int valueToProgress(Config config, int value) {
+    private static int valueToProgress(SeekBarConfig config, int value) {
         return (Math.max(config.min, Math.min(config.max, value)) - config.min) / config.step;
     }
 
-    private static int progressToValue(Config config, int progress) {
+    private static int progressToValue(SeekBarConfig config, int progress) {
         return config.min + progress * config.step;
     }
 }

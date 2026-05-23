@@ -41,6 +41,7 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.spoof.ClientType;
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.DeArrowAvailability;
 import app.morphe.extension.youtube.patches.AlternativeThumbnailsPatch.StillImagesAvailability;
@@ -617,34 +618,25 @@ public class Settings extends SharedYouTubeSettings {
     }
 
     // Register SeekBar UI configs so the single shared SeekBarPreference class knows the
-    // range, step, unit, and read/write callbacks for each integer setting that uses it.
+    // range, step, unit, integer setting that uses it.
     static {
-        SeekBarPreference.register(SWIPE_ZONE_WIDTH.key,
-                new SeekBarPreference.Config(5, 50, SWIPE_ZONE_WIDTH.defaultValue, 1, "%",
-                        SWIPE_ZONE_WIDTH::get, SWIPE_ZONE_WIDTH::save));
-        SeekBarPreference.register(SWIPE_OVERLAY_OPACITY.key,
-                new SeekBarPreference.Config(0, 100, SWIPE_OVERLAY_OPACITY.defaultValue, 1, "%",
-                        SWIPE_OVERLAY_OPACITY::get, SWIPE_OVERLAY_OPACITY::save));
-        SeekBarPreference.register(SWIPE_OVERLAY_TEXT_SIZE.key,
-                new SeekBarPreference.Config(1, 30, SWIPE_OVERLAY_TEXT_SIZE.defaultValue, 1, "sp",
-                        SWIPE_OVERLAY_TEXT_SIZE::get, SWIPE_OVERLAY_TEXT_SIZE::save));
-        SeekBarPreference.register(MINIPLAYER_OPACITY.key,
-                new SeekBarPreference.Config(0, 100, MINIPLAYER_OPACITY.defaultValue, 1, "%",
-                        MINIPLAYER_OPACITY::get, MINIPLAYER_OPACITY::save));
-        SeekBarPreference.register(PLAYER_OVERLAY_OPACITY.key,
-                new SeekBarPreference.Config(0, 100, PLAYER_OVERLAY_OPACITY.defaultValue, 1, "%",
-                        PLAYER_OVERLAY_OPACITY::get, PLAYER_OVERLAY_OPACITY::save));
-        SeekBarPreference.register(SWIPE_VOLUME_SENSITIVITY.key,
-                new SeekBarPreference.Config(1, 10, SWIPE_VOLUME_SENSITIVITY.defaultValue, 1, "",
-                        SWIPE_VOLUME_SENSITIVITY::get, SWIPE_VOLUME_SENSITIVITY::save));
-        SeekBarPreference.register(SWIPE_BRIGHTNESS_SENSITIVITY.key,
-                new SeekBarPreference.Config(1, 10, SWIPE_BRIGHTNESS_SENSITIVITY.defaultValue, 1, "",
-                        SWIPE_BRIGHTNESS_SENSITIVITY::get, SWIPE_BRIGHTNESS_SENSITIVITY::save));
-        SeekBarPreference.register(SWIPE_SPEED_SENSITIVITY.key,
-                new SeekBarPreference.Config(1, 20, SWIPE_SPEED_SENSITIVITY.defaultValue, 1, "",
-                        SWIPE_SPEED_SENSITIVITY::get, SWIPE_SPEED_SENSITIVITY::save));
-        SeekBarPreference.register(SWIPE_SPEED_ZONE_HEIGHT.key,
-                new SeekBarPreference.Config(5, 75, SWIPE_SPEED_ZONE_HEIGHT.defaultValue, 1, "%",
-                        SWIPE_SPEED_ZONE_HEIGHT::get, SWIPE_SPEED_ZONE_HEIGHT::save));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_ZONE_WIDTH,
+                5, 50, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_OVERLAY_OPACITY,
+                0, 100, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_OVERLAY_TEXT_SIZE,
+                1, 30, 1, "sp"));
+        SeekBarPreference.register(new SeekBarConfig(MINIPLAYER_OPACITY,
+                0, 100, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(PLAYER_OVERLAY_OPACITY,
+                0, 100, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_VOLUME_SENSITIVITY,
+                1, 10, 1, ""));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_BRIGHTNESS_SENSITIVITY,
+                1, 10, 1, ""));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_SENSITIVITY,
+                1, 20, 1, ""));
+        SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_ZONE_HEIGHT,
+                5, 75, 1, "%"));
     }
 }
