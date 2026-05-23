@@ -71,7 +71,7 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
 
         PreferenceScreen.SHORTS.addPreferences(
             PreferenceCategory(
-                titleKey = "morphe_preference_category_hide_shorts",
+                titleKey = "morphe_hide_shorts_category_title",
                 preferences = setOf(
                     SwitchPreference("morphe_hide_shorts_channel", summaryKey = null),
                     SwitchPreference("morphe_hide_shorts_home", summaryKey = null),

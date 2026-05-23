@@ -72,8 +72,8 @@ Changes include:
     <string name="morphe_hide_community_posts_title">Hide community posts</string>
     <string name="morphe_hide_compact_banner_title">Hide compact banners</string>
     <string name="morphe_hide_compact_banner_summary">Hides compact banners and spacing between some components</string>
-    <string name="morphe_hide_expandable_card_title">Hide expandable cards under videos</string>
-    <string name="morphe_hide_expandable_card_entry_1">Disabled</string>
+    <string name="morphe_hide_expandable_card_title">Expandable cards under videos</string>
+    <string name="morphe_hide_expandable_card_entry_1">Show all</string>
     <string name="morphe_hide_expandable_card_entry_2">Hide product card only</string>
     <string name="morphe_hide_expandable_card_entry_3">Hide summary card only</string>
     <string name="morphe_hide_expandable_card_entry_4">Hide product and summary cards</string>
@@ -105,7 +105,7 @@ Changes include:
     <string name="morphe_hide_show_more_button_summary">Hides the expand button under videos in the search results</string>
     <string name="morphe_hide_subscribed_channels_bar_title">Hide subscribed channels bar</string>
     <string name="morphe_hide_surveys_title">Hide surveys</string>
-    <string name="morphe_hide_surveys_summary">Hides surveys such as \'Is the above video a good recommendation for you?\'</string>
+    <string name="morphe_hide_surveys_summary">Hide surveys and nudges about feed recommendation accuracy</string>
     <string name="morphe_hide_ticket_shelf_title">Hide ticket shelf</string>
     <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
     <string name="morphe_hide_video_recommendation_labels_title">Hide video recommendation labels</string>
@@ -534,8 +534,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_show_settings_button_title">Show Settings button</string>
     <string name="morphe_show_settings_button_index_title">Settings button position</string>
     <string name="morphe_show_settings_button_type_title">Settings button action</string>
-    <string name="morphe_show_settings_button_type_summary">"OFF: Open YouTube settings
-ON: Open Morphe settings"</string>
+    <string name="morphe_show_settings_button_type_summary">Opens Morphe settings when enabled, or YouTube settings when disabled</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create button with Notifications button</string>
     <string name="morphe_swap_create_with_notifications_button_user_dialog_message">If changing this setting does not take effect, try switching to Incognito mode.</string>
     <string name="morphe_hide_navigation_button_labels_title">Hide navigation button labels</string>
@@ -569,8 +568,7 @@ To access Settings, enable the Settings button via General → Toolbar → Show 
     <string name="morphe_show_toolbar_settings_button_title">Show Settings button</string>
     <string name="morphe_show_toolbar_settings_button_index_title">Settings button position</string>
     <string name="morphe_show_toolbar_settings_button_type_title">Settings button action</string>
-    <string name="morphe_show_toolbar_settings_button_type_summary">"OFF: Tap opens YouTube settings and long press opens Morphe settings
-ON: Tap opens Morphe settings and long press opens YouTube settings"</string>
+    <string name="morphe_show_toolbar_settings_button_type_summary">When enabled, tap opens Morphe settings and long press opens YouTube settings, disable to swap</string>
 
     <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
     <string name="morphe_hide_player_flyout_title">Flyout menu</string>
@@ -658,7 +656,7 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to \'Android Re
     <!-- layout.hide.shorts.hideShortsComponentsPatch -->
     <string name="morphe_shorts_player_screen_title">Shorts player</string>
     <string name="morphe_shorts_player_screen_summary">Choose which components appear in the Shorts player</string>
-    <string name="morphe_preference_category_hide_shorts">Hide Shorts</string>
+    <string name="morphe_hide_shorts_category_title">Hide Shorts</string>
     <string name="morphe_hide_shorts_channel_title">Hide in channel page</string>
     <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
     <string name="morphe_hide_shorts_home_title">Hide in Home feed &amp; related videos</string>
@@ -824,8 +822,8 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_sb_create_segment_category">Creating new segments</string>
     <string name="morphe_sb_enable_create_segment">Show \'Create new segment\' button</string>
     <string name="morphe_sb_enable_create_segment_summary">Adds a button to the video player allowing you to submit new SponsorBlock segments</string>
-    <string name="morphe_sb_general_adjusting">Time adjustment buttons step</string>
-    <string name="morphe_sb_general_adjusting_summary">Number of milliseconds the time adjustment buttons move</string>
+    <string name="morphe_sb_general_adjusting">Time adjustment step</string>
+    <string name="morphe_sb_general_adjusting_summary">Seek amount of the time adjustment buttons (in milliseconds)</string>
     <string name="morphe_sb_general_adjusting_invalid">Value must be a positive number</string>
     <string name="morphe_sb_guidelines_preference_title">Submission guidelines</string>
     <string name="morphe_sb_guidelines_preference_summary">Guidelines contain rules and tips for creating new segments</string>
