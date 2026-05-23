@@ -66,7 +66,7 @@ public final class SwipeZonePreference extends Preference
             String speedColor = Settings.SWIPE_OVERLAY_SPEED_COLOR.get();
             boolean brightnessEnabled = Settings.SWIPE_BRIGHTNESS.get();
             boolean volumeEnabled = Settings.SWIPE_VOLUME.get();
-            boolean speedEnabled = Settings.SWIPE_SPEED_GESTURE.get();
+            boolean speedEnabled = Settings.SWIPE_SPEED.get();
             int speedZoneHeight = Settings.SWIPE_SPEED_ZONE_HEIGHT.get();
 
             if (zoneWidth != lastZoneWidth
@@ -245,7 +245,7 @@ public final class SwipeZonePreference extends Preference
             int speedZonePercent = Math.max(5, Math.min(75, Settings.SWIPE_SPEED_ZONE_HEIGHT.get()));
             boolean brightnessOn = Settings.SWIPE_BRIGHTNESS.get();
             boolean volumeOn     = Settings.SWIPE_VOLUME.get();
-            boolean speedOn      = Settings.SWIPE_SPEED_GESTURE.get();
+            boolean speedOn      = Settings.SWIPE_SPEED.get();
 
             int brightnessColor = toPreviewColor(
                     parseColor(Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get(), 0xFF4FC3F7), 0xFF4FC3F7);

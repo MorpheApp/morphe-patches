@@ -113,7 +113,7 @@ class SwipeControlsConfigurationProvider {
     /**
      * Indicates whether the horizontal swipe gesture for playback speed control is enabled.
      */
-    val enableSpeedGestureControl = Settings.SWIPE_SPEED_GESTURE.get()
+    val enableSpeedGestureControl = Settings.SWIPE_SPEED.get()
 
     /**
      * The sensitivity of speed swipe gestures, controlling how much physical movement is needed per step.

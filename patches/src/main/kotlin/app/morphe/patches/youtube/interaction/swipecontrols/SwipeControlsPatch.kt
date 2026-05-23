@@ -45,7 +45,7 @@ private val swipeControlsResourcePatch = resourcePatch {
         PreferenceScreen.SWIPE_CONTROLS.addPreferences(
             SwitchPreference("morphe_swipe_brightness"),
             SwitchPreference("morphe_swipe_volume"),
-            SwitchPreference("morphe_swipe_speed_gesture"),
+            SwitchPreference("morphe_swipe_speed"),
             NonInteractivePreference(
                 key = "morphe_swipe_zone_width",
                 tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
