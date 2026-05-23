@@ -78,6 +78,7 @@ internal fun spoofVideoStreamsPatch(
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     hookAccountIdentity: BytecodePatchBuilder.() -> Boolean,
+    useNewRequestBuilderFingerprint: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
@@ -89,7 +90,6 @@ internal fun spoofVideoStreamsPatch(
     dependsOn(
         fixProtoLibraryPatch,
         spoofVideoStreamsResourcePatch,
-        versionCheckPatch
     )
 
     execute {
@@ -129,7 +129,7 @@ internal fun spoofVideoStreamsPatch(
 
         // region Block /get_watch requests to fall back to /player requests.
 
-        if (is_21_21_or_greater) {
+        if (useNewRequestBuilderFingerprint()) {
             BuildPlayerRequestURIBuilderFingerprint.let {
                 it.method.apply {
                     val index = it.instructionMatches.last().index

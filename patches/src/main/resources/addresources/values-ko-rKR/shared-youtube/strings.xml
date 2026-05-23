@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">설정을 완료하려면 다시 시작하세요</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">앱 이름</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">사용자 정의</string>
   <string name="morphe_custom_branding_icon_title">앱 아이콘</string>
   <string name="morphe_custom_branding_icon_entry_1">원본</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe Black</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe Dark</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe Light</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe Play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe Play Light</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe Play Black</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">사용자 정의</string>
+  <string name="morphe_custom_branding_icon_entry_7">사용자 정의</string>
   <string name="morphe_custom_branding_notification_icon_title">알림 아이콘</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">앱 아이콘과 맞추기</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 알림</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">시청 기록이 저장되지 않습니다.&lt;br&gt;&lt;br&gt; DNS 광고 차단기 또는 네트워크 프록시로 인하여 발생한 문제일 가능성이 높습니다.&lt;br&gt;&lt;br&gt; 이 문제를 해결하려면 &lt;b&gt;s.youtube.com&lt;/b&gt;을 허용 목록에서 제외하거나 모든 DNS 차단기 및 프록시를 해제하세요.</string>

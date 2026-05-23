@@ -1,3 +1,15 @@
+## [1.30.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.29.1-dev.2...v1.30.0-dev.1) (2026-05-23)
+
+### ✨ New Features
+
+* **Custom branding:** Add icon previews to branding selectors and new play black icon ([#1522](https://github.com/MorpheApp/morphe-patches/issues/1522)) ([adc4ec2](https://github.com/MorpheApp/morphe-patches/commit/adc4ec2db07ce0db3ab449d72d979bc52de1286c))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.21.0` ([78d67e0](https://github.com/MorpheApp/morphe-patches/commit/78d67e0c8668b1f8f3bd7e700a9898e319e9403d))
+* **Reddit:** Add support for `2026.14.0` ([2376e91](https://github.com/MorpheApp/morphe-patches/commit/2376e91793f1c3374da937f39bd71d116ff53c8a))
+* **YouTube Music:** Add experimental support for `9.20.52` ([c34abe0](https://github.com/MorpheApp/morphe-patches/commit/c34abe0b20692a3ff4780fde68700625c5494d2a))
+
 ## [1.29.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.29.1-dev.1...v1.29.1-dev.2) (2026-05-22)
 
 ### 🐛 Bug Fixes

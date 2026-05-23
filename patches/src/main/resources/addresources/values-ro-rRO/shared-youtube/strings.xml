@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Reporniți pentru a finaliza configurarea</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Numele aplicației</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Personalizat</string>
   <string name="morphe_custom_branding_icon_title">Pictograma aplicației</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe negru</string>
   <string name="morphe_custom_branding_icon_entry_3">Închis Morphe</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe întunecat</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe joacă ușor</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe joacă negru</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Personalizat</string>
+  <string name="morphe_custom_branding_icon_entry_7">Personalizat</string>
   <string name="morphe_custom_branding_notification_icon_title">Icon de notificare</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Potrivește pictograma aplicației</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Notificare Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Istoricul de vizionare nu este salvat.&lt;br&gt;&lt;br&gt;Cel mai probabil este cauzată de un DNS de blocare a anunțurilor sau de un proxy de rețea.&lt;br&gt;&lt;br&gt;Pentru a remedia acest lucru, lista albă &lt;b&gt;s.youtube.com&lt;/b&gt; sau pentru a opri toate blocantele DNS și proxy-urile.</string>

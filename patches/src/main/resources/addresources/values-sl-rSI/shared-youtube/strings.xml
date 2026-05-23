@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Za dokončanje nastavitve znova zaženite</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Ime aplikacije</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Prilagojeno</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacije</string>
   <string name="morphe_custom_branding_icon_entry_1">Izvirno</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe temno</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe svetlo</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe igra s svetlobo</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe igra s črno</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Prilagojeno</string>
+  <string name="morphe_custom_branding_icon_entry_7">Prilagojeno</string>
   <string name="morphe_custom_branding_notification_icon_title">Vsebnik ikone obvestila</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Ujemite ikono aplikacije</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe predvajaj</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Opozorilo</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša zgodovina ogleda se ne shrani.&lt;br&gt;&lt;br&gt;To je verjetno posledica blokatorja DNS ali omrežnega posrednika.&lt;br&gt;&lt;br&gt;Da to popravite, dovolite &lt;b&gt;s.youtube.com&lt;/b&gt; ali izklopite vse blokatorje DNS in posrednike.</string>

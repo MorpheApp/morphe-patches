@@ -226,9 +226,9 @@ Ich obecność może blokować widoczność własnych logo w nagłówku."</strin
 • Ta funkcja nie działa z interfejsem samochodowym."</string>
   <string name="morphe_hide_keyword_content_screen_title">Filtry słów</string>
   <string name="morphe_hide_keyword_content_screen_summary">Wybierz konkretne słowa lub frazy, aby ukryć filmy na stronie głównej i w wynikach wyszukiwania</string>
-  <string name="morphe_hide_keyword_content_home_title">Ukryj filmy na stronie głównej według słów</string>
-  <string name="morphe_hide_keyword_content_search_title">Ukryj wyniki wyszukiwania według słów</string>
-  <string name="morphe_hide_keyword_content_subscriptions_title">Ukryj filmy na stronie subskrypcji według słów</string>
+  <string name="morphe_hide_keyword_content_home_title">Ukryj filmy na stronie głównej</string>
+  <string name="morphe_hide_keyword_content_search_title">Ukryj wyniki wyszukiwania</string>
+  <string name="morphe_hide_keyword_content_subscriptions_title">Ukryj filmy na stronie subskrypcji</string>
   <string name="morphe_hide_keyword_content_phrases_title">Słowa do ukrycia</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -252,7 +252,7 @@ Ograniczenia:
   <!-- ad.general.hideAdsPatch -->
   <string name="morphe_hide_creator_store_shelf_title">Ukryj sekcję sklepu twórcy</string>
   <string name="morphe_hide_end_screen_store_banner_title">Ukryj baner sklepowy po zakończeniu filmu</string>
-  <string name="morphe_hide_general_ads_title">Ukryj ogólne reklamy</string>
+  <string name="morphe_hide_general_ads_title">Ukryj reklamy ogólne</string>
   <string name="morphe_hide_merchandise_banners_title">Ukryj banery z gadżetami</string>
   <string name="morphe_hide_paid_promotion_label_title">Ukryj etykietę płatnej promocji</string>
   <string name="morphe_hide_player_popup_ads_title">Ukryj wyskakujące reklamy w odtwarzaczu</string>
@@ -260,7 +260,7 @@ Ograniczenia:
   <string name="morphe_hide_shopping_links_title">Ukryj linki do sklepów</string>
   <string name="morphe_hide_youtube_premium_promotions_title">Ukryj promocje YouTube Premium</string>
   <!-- ad.video.videoAdsPatch -->
-  <string name="morphe_hide_video_ads_title">Ukryj reklamy filmu</string>
+  <string name="morphe_hide_video_ads_title">Ukryj reklamy w filmach</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
   <string name="morphe_share_copy_url_button_success">Skopiowano link do schowka</string>
@@ -489,15 +489,15 @@ Aby przejść do ustawień, włącz przycisk w menu: Ogólne → Pasek narzędzi
   <string name="morphe_navigation_bar_animations_summary">Animuje przejścia podczas przełączania między kartami</string>
   <string name="morphe_disable_auto_hide_navigation_bar_title">Wyłącz automatyczne ukrywanie paska nawigacji</string>
   <string name="morphe_disable_auto_hide_navigation_bar_summary">Utrzymuje widoczność paska nawigacji podczas przewijania</string>
-  <string name="morphe_disable_translucent_status_bar_title">Wyłącz półprzezroczysty pasek statusu</string>
-  <string name="morphe_disable_translucent_status_bar_summary">Sprawia, że pasek statusu staje się całkowicie nieprzezroczysty</string>
+  <string name="morphe_disable_translucent_status_bar_title">Wyłącz półprzezroczysty pasek stanu</string>
+  <string name="morphe_disable_translucent_status_bar_summary">Sprawia, że pasek stanu staje się całkowicie nieprzezroczysty</string>
   <string name="morphe_disable_translucent_status_bar_user_dialog_message">"Ograniczenia:
 • Na górze odtwarzacza może pojawić się czarny pasek.
 • Systemowy pasek nawigacji może stać się przezroczysty, co uniemożliwi komentowanie filmów."</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_title">Wyłącz półprzezroczysty pasek w trybie jasnym</string>
-  <string name="morphe_disable_translucent_navigation_bar_light_summary">Sprawia, że pasek nawigacji staje się całkowicie nieprzezroczysty w trybie jasnym</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_title">Wyłącz półprzezroczysty pasek w trybie ciemnym</string>
-  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Sprawia, że pasek nawigacji staje się całkowicie nieprzezroczysty w trybie ciemnym</string>
+  <string name="morphe_disable_translucent_navigation_bar_light_title">Wyłącz jasny półprzezroczysty pasek</string>
+  <string name="morphe_disable_translucent_navigation_bar_light_summary">Sprawia, że pasek nawigacji staje się całkowicie nieprzezroczysty w jasnym motywie</string>
+  <string name="morphe_disable_translucent_navigation_bar_dark_title">Wyłącz ciemny półprzezroczysty pasek</string>
+  <string name="morphe_disable_translucent_navigation_bar_dark_summary">Sprawia, że pasek nawigacji staje się całkowicie nieprzezroczysty w ciemnym motywie</string>
   <string name="morphe_toolbar_screen_title">Pasek narzędzi</string>
   <string name="morphe_toolbar_screen_summary">Zdecyduj, które elementy będą wyświetlane na pasku narzędzi</string>
   <string name="morphe_hide_toolbar_cast_button_title">Ukryj przycisk Przesyłaj</string>
@@ -593,7 +593,7 @@ Aby je wyświetlić, zmień \"Fałszowanie strumieni filmów\" na \"Android Reel
   <string name="morphe_hide_shorts_home_title">Ukryj na stronie głównej i w powiązanych filmach</string>
   <string name="morphe_hide_shorts_search_title">Ukryj w wynikach wyszukiwania</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
-  <string name="morphe_hide_shorts_subscriptions_title">Ukryte na stronie subskrypcji</string>
+  <string name="morphe_hide_shorts_subscriptions_title">Ukryj na stronie subskrypcji</string>
   <string name="morphe_hide_shorts_video_description_title">Ukryj w opisie filmów</string>
   <string name="morphe_hide_shorts_history_title">Ukryj w historii oglądania</string>
   <string name="morphe_hide_shorts_ai_button_title">Ukryj przycisk AI</string>
@@ -936,7 +936,7 @@ Układ samochodowy
 • Shortsy otwierają się w zwykłym odtwarzaczu
 • Pasek akcji filmu nie jest zwinięty"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">Fałszowanie wersji aplikacji</string>
+  <string name="morphe_spoof_app_version_title">Fałszuj wersję aplikacji</string>
   <string name="morphe_spoof_app_version_summary">Oszukuje serwer, że używasz starszej wersji aplikacji, aby przywrócić klasyczne elementy interfejsu</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"Aplikacja będzie przedstawiać się serwerom jako starsza wersja YouTube.
 
@@ -989,10 +989,10 @@ Ograniczenie: Użycie przycisku wstecz na pasku narzędzi może nie działać"</
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <string name="morphe_disable_shorts_resuming_on_startup_title">Wyłącz wznawianie przy starcie aplikacji</string>
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
-  <string name="morphe_shorts_player_type_title">Otwórz Shortsy w</string>
+  <string name="morphe_shorts_player_type_title">Otwieraj Shortsy w</string>
   <string name="morphe_shorts_player_type_shorts">Odtwarzaczu Shortsów</string>
-  <string name="morphe_shorts_player_type_regular_player">Zwykłym odtwarzaczu</string>
-  <string name="morphe_shorts_player_type_regular_player_fullscreen">Zwykłym odtwarzaczu w trybie pełnoekranowym</string>
+  <string name="morphe_shorts_player_type_regular_player">Standardowym odtwarzaczu</string>
+  <string name="morphe_shorts_player_type_regular_player_fullscreen">Standardowym odtwarzaczu (pełny ekran)</string>
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <string name="morphe_shorts_autoplay_title">Włącz autoodtwarzanie Shortsów</string>
   <string name="morphe_shorts_autoplay_summary">Automatycznie przechodzi do następnego Shortsa, zamiast powtarzać bieżący</string>
@@ -1045,7 +1045,7 @@ Ograniczenie: Użycie przycisku wstecz na pasku narzędzi może nie działać"</
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Logo w nagłówku</string>
   <string name="morphe_header_logo_entry_1">Domyślne</string>
-  <string name="morphe_header_logo_entry_2">Zwykłe</string>
+  <string name="morphe_header_logo_entry_2">Standardowe</string>
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
   <string name="morphe_header_logo_entry_5">Własne</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
@@ -1089,7 +1089,7 @@ Dotknij tutaj, aby dowiedzieć się więcej o DeArrow"</string>
   <string name="morphe_restore_old_player_buttons_title">Przywróć stary styl przycisków odtwarzacza</string>
   <string name="morphe_restore_old_player_buttons_summary">Przywraca pogrubione elementy sterujące odtwarzaczem do starszego, cieńszego stylu wizualnego</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
-  <string name="morphe_spoof_device_dimensions_title">Fałszowanie rozdzielczości urządzenia</string>
+  <string name="morphe_spoof_device_dimensions_title">Fałszuj rozdzielczość urządzenia</string>
   <string name="morphe_spoof_device_dimensions_summary">Oszukuje serwer, wymuszając opcje wyższej jakości poprzez fałszowanie wymiarów urządzenia</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">Włączenie tego może spowodować zacinanie się obrazu, szybsze zużycie baterii oraz inne nieprzewidziane skutki uboczne.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->

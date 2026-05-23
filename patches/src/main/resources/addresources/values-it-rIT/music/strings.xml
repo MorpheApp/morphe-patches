@@ -33,16 +33,16 @@ Second \"item\" text"</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Nascondi annunci video</string>
   <!-- interaction.crossfade.crossfadePatch -->
-  <string name="morphe_music_crossfade_screen_title">Crossfade</string>
+  <string name="morphe_music_crossfade_screen_title">Dissolvenza incrociata</string>
   <string name="morphe_music_crossfade_screen_summary">Personalizza la transizione fluida tra un brano e l\'altro</string>
-  <string name="morphe_music_crossfade_enabled_title">Abilita crossfade</string>
-  <string name="morphe_music_crossfade_curve_title">Curva di dissolvenza</string>
-  <string name="morphe_music_crossfade_curve_entry_equal_power">Potenza uguale</string>
+  <string name="morphe_music_crossfade_enabled_title">Abilita dissolvenza incrociata</string>
+  <string name="morphe_music_crossfade_curve_title">Curva della dissolvenza</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Uguale potenza</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Attesa discreta</string>
-  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Facilità delicata</string>
-  <string name="morphe_music_crossfade_curve_entry_smoothstep">Curva S fluida</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Attenuazione delicata</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Curva-S fluida</string>
   <!-- Empty string because custom preference handles the title itself -->
-  <string name="morphe_music_crossfade_duration_title">Durata del crossfade</string>
+  <string name="morphe_music_crossfade_duration_title">Durata della dissolvenza incrociata</string>
   <string name="morphe_crossfade_duration_250ms">250 millisecondi</string>
   <string name="morphe_crossfade_duration_500ms">500 millisecondi</string>
   <string name="morphe_crossfade_duration_750ms">750 millisecondi</string>
@@ -56,25 +56,25 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 secondi</string>
   <string name="morphe_crossfade_duration_9000ms">9 secondi</string>
   <string name="morphe_crossfade_duration_10000ms">10 secondi</string>
-  <string name="morphe_music_crossfade_on_skip_title">Crossfade durante il salto manuale</string>
-  <string name="morphe_music_crossfade_on_skip_summary">Applica l\'effetto crossfade quando salti manualmente al brano successivo</string>
-  <string name="morphe_music_crossfade_on_auto_advance_title">Crossfade durante l\'avanzamento automatico</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary">Applica l\'effetto crossfade quando un brano termina naturalmente</string>
-  <string name="morphe_music_crossfade_session_control_title">Controllo della sessione</string>
-  <string name="morphe_music_crossfade_session_control_summary">Tieni premuto il pulsante di riproduzione casuale per mettere in pausa o riprendere il crossfade</string>
+  <string name="morphe_music_crossfade_on_skip_title">Dissolvenza incrociata con salto manuale</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Applica la dissolvenza incrociata quando si salta manuale al brano successivo</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Dissolvenza incrociata durante l\'avanzamento automatico</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Applica la dissolvenza incrociata al naturale termine del brano</string>
+  <string name="morphe_music_crossfade_session_control_title">Controllo di sessione</string>
+  <string name="morphe_music_crossfade_session_control_summary">Tieni premuto il pulsante di riproduzione casuale per mettere in pausa o riprendere la dissolvenza incrociata</string>
   <string name="morphe_music_crossfade_paused_toast">Dissolvenza incrociata in pausa per questa sessione</string>
   <string name="morphe_music_crossfade_resumed_toast">Dissolvenza incrociata ripresa</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">La modalità video non è disponibile quando la dissolvenza incrociata è abilitata</string>
   <string name="morphe_music_crossfade_about_title">A proposito di</string>
-  <string name="morphe_music_crossfade_about_summary">"Il crossfade è disponibile con YouTube Music 8.x
+  <string name="morphe_music_crossfade_about_summary">"La dissolvenza incrociata è disponibile per YouTube Music 8.x
 
-Premi a lungo il pulsante di miscelazione per disabilitare/abilitare
+Premi a lungo il pulsante di mescolanento per disabilitare/abilitare questa funzionalità
 
-Implementazione della funzione da VazerOG"</string>
+Implementazione della funzione eseguita da VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Abilita ripetizione permanente</string>
   <!-- layout.buttons.hideButtons -->
-  <string name="morphe_music_hide_cast_button_title">Nascondi pulsante trasmissione</string>
+  <string name="morphe_music_hide_cast_button_title">Nascondi pulsante trasmetti</string>
   <string name="morphe_music_hide_history_button_title">Nascondi pulsante cronologia</string>
   <string name="morphe_music_hide_notification_button_title">Nascondi pulsante notifica</string>
   <string name="morphe_music_hide_search_button_title">Nascondi pulsante ricerca</string>
@@ -93,13 +93,13 @@ Implementazione della funzione da VazerOG"</string>
   <!-- layout.compactheader.hideCategoryBar -->
   <string name="morphe_music_hide_category_bar_title">Nascondi barra delle categorie</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
-  <string name="morphe_music_change_miniplayer_color_title">Modifica colore Miniplayer</string>
-  <string name="morphe_music_change_miniplayer_color_summary">Il colore del miniplayer corrisponde a quello del lettore a schermo intero</string>
+  <string name="morphe_music_change_miniplayer_color_title">Modifica il colore del Lettore minimizzato</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Il colore del lettore minimizzato corrisponde a quello del lettore a schermo intero</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
-  <string name="morphe_music_miniplayer_next_button_title">Mostra il pulsante successivo nella miniplayer</string>
-  <string name="morphe_music_miniplayer_previous_button_title">Mostra il pulsante precedente nella miniplayer</string>
+  <string name="morphe_music_miniplayer_next_button_title">Mostra il pulsante successivo nel lettore minimizzato</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Mostra il pulsante precedente nel lettore minimizzato</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
-  <string name="morphe_music_enable_forced_miniplayer_title">Abilita miniplayer forzato</string>
+  <string name="morphe_music_enable_forced_miniplayer_title">Abilita forzatamente il lettore minimizzato</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Impedisce al lettore di espandersi automaticamente a schermo intero quando inizia un nuovo brano</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra di navigazione</string>

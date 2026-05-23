@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Käynnistä uudelleen valituksen suorittamiseksi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Sovelluksen nimi</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Mukautettu</string>
   <string name="morphe_custom_branding_icon_title">Sovelluskuvake</string>
   <string name="morphe_custom_branding_icon_entry_1">Alkuperäinen</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe musta</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tumma</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe vaalea</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe vaalea</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe musta</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Mukautettu</string>
+  <string name="morphe_custom_branding_icon_entry_7">Mukautettu</string>
   <string name="morphe_custom_branding_notification_icon_title">Ilmoituksen kuvake</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Sovelluksen kuvakkeen vaihtaminen</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe musta</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-huomautus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Katseluhistoriaasi ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä johtuu todennäköisesti DNS-mainostenestosta tai verkkovälityspalvelimesta.&lt;br&gt;&lt;br&gt;Korjaa ongelma lisäämällä &lt;b&gt;s.youtube.com&lt;/b&gt; sallittujen listalle tai kytke kaikki DNS-estot ja välityspalvelimet pois päältä.</string>

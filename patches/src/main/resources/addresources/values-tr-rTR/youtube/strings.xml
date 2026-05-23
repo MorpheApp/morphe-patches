@@ -32,7 +32,7 @@ Second \"item\" text"</string>
   <string name="morphe_restore_old_settings_menus_title">Eski ayarlar menüsünü geri getir</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">Arka planda oynatma kısıtlamalarını kaldır</string>
-  <string name="morphe_shorts_disable_background_playback_title">Arka plandaki oynatımı devre dışı bırak</string>
+  <string name="morphe_shorts_disable_background_playback_title">Arka planda oynatmayı devre dışı bırak</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_protobuffer_title">Hata ayıklama protokol arabelleği</string>
   <string name="morphe_debug_protobuffer_summary">Geliştiricilerin uygulamadaki bileşenleri tanımlamasına yardımcı olacak ek günlük bilgileri ekler</string>
@@ -58,46 +58,46 @@ Değişiklikler şunları içerir:
   <!-- layout.hide.general.hideLayoutComponentsPatch -->
   <string name="morphe_hide_feed_flyout_menu_title">Akış açılır menü filtresini etkinleştir</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Akış açılır menü filtresi</string>
-  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Açılır menü adlarını filtrelemek için her satıra bir tane olacak şekilde girin</string>
+  <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Filtrelemek istediğiniz açılır menü adlarını yeni satırlarla ayırarak girin</string>
   <string name="morphe_hide_album_cards_title">Albüm kartlarını gizle</string>
   <string name="morphe_hide_album_cards_summary">Sanatçı açıklamasının altındaki albüm kartlarını gizler</string>
   <string name="morphe_hide_artist_cards_title">Sanatçı kartlarını gizle</string>
-  <string name="morphe_hide_artist_cards_summary">Arama sonuçlarının üstündeki sanatçı kartını gizler</string>
+  <string name="morphe_hide_artist_cards_summary">Arama sonuçlarının en üstündeki sanatçı kartını gizler</string>
   <string name="morphe_hide_auto_dubbed_label_title">\'Dublajlı\' etiketini gizle</string>
   <string name="morphe_hide_community_posts_title">Topluluk gönderilerini gizle</string>
   <string name="morphe_hide_compact_banner_title">Kompakt afişleri gizle</string>
-  <string name="morphe_hide_compact_banner_summary">Dar banner\'ları ve bazı bileşenler arasındaki boşluğu gizler</string>
-  <string name="morphe_hide_expandable_card_title">Videoların altındaki genişletilebilir kartlar</string>
-  <string name="morphe_hide_expandable_card_entry_1">Her şeyi göster</string>
+  <string name="morphe_hide_compact_banner_summary">Kompakt afişleri ve bazı bileşenler arasındaki boşluğu gizler</string>
+  <string name="morphe_hide_expandable_card_title">Videoların altındaki genişletilebilir kart</string>
+  <string name="morphe_hide_expandable_card_entry_1">Tümünü göster</string>
   <string name="morphe_hide_expandable_card_entry_2">Sadece ürün kartını gizle</string>
   <string name="morphe_hide_expandable_card_entry_3">Sadece özet kartını gizle</string>
   <string name="morphe_hide_expandable_card_entry_4">Ürün ve özet kartlarını gizle</string>
-  <string name="morphe_hide_expandable_card_entry_5">Her şeyi gizle</string>
+  <string name="morphe_hide_expandable_card_entry_5">Tümünü gizle</string>
   <string name="morphe_hide_floating_microphone_button_title">Yüzen mikrofon düğmesini gizle</string>
-  <string name="morphe_hide_floating_microphone_button_summary">Arama önerileri ekranının sağ alt köşesindeki kayan mikrofon düğmesini gizler</string>
+  <string name="morphe_hide_floating_microphone_button_summary">Arama önerileri ekranının sağ alt köşesindeki yüzen mikrofon düğmesini gizler</string>
   <string name="morphe_hide_horizontal_shelves_title">Yatay rafları gizle</string>
-  <string name="morphe_hide_horizontal_shelves_summary">Ana sayfadaki \"Son dakika haberleri\", \"Beğenebileceğiniz topluluk gönderileri\", \"İzlemeye devam et\", \"Daha fazla kanal keşfet\", \"Daha fazla konu keşfet\", \"Senin için\", \"En yeni videolar\", \"En alakalı\", \"İçerik Üreticisi Topluluğu\'ndan gönderiler\", \"Alışveriş\" ve \"Tekrar izle\" gibi yatay rafları gizler</string>
+  <string name="morphe_hide_horizontal_shelves_summary">Son dakika haberleri, Beğenebileceğiniz topluluk gönderileri, İzlemeye devam et, Daha fazla kanal keşfet, Daha fazla konu keşfet, Senin için, En yeni videolar, En alakalı, İçerik Üreticisi Topluluğu\'ndan gönderiler, Alışveriş ve Tekrar izle gibi yatay rafları gizler</string>
   <string name="morphe_hide_hyped_label_title">Hyped etiketini gizle</string>
   <string name="morphe_hide_image_shelf_title">Resim rafını gizle</string>
   <string name="morphe_hide_image_shelf_summary">Arama sonuçlarındaki resim raflarını gizler</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Home feed for refreshing the feed. -->
   <string name="morphe_hide_latest_videos_button_title">Son videolar düğmesini gizle</string>
-  <string name="morphe_hide_latest_videos_button_summary">Ana sayfa akışının üst kısmında görünen mavi \"En yeni videolar\" banner\'ını gizler</string>
+  <string name="morphe_hide_latest_videos_button_summary">Ana sayfa akışının üst kısmında görünen mavi \"En yeni videolar\" afişini gizler</string>
   <string name="morphe_hide_mix_playlists_title">Mix oynatma listelerini gizle</string>
   <string name="morphe_hide_movies_section_title">Filmler kısmını gizle</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'Bana hatırlat\' düğmesini gizle</string>
-  <string name="morphe_hide_notify_me_button_summary">Yaklaşan canlı yayınlar ve gösterimler için hatırlatıcı düğmesini gizler</string>
+  <string name="morphe_hide_notify_me_button_summary">Yaklaşan canlı yayınlar ve ön gösterimler için hatırlatıcı düğmesini gizler</string>
   <string name="morphe_hide_playables_title">Hazır Oyunlar\'ı gizle</string>
   <string name="morphe_hide_playables_summary">Oyun oynamanıza olanak tanıyan özelliği gizler</string>
   <string name="morphe_hide_search_term_thumbnails_title">Arama terimi küçük resimlerini gizle</string>
-  <string name="morphe_hide_search_term_thumbnails_summary">Arama otomatik tamamlama listesindeki küçük resim önizlemelerini gizler</string>
+  <string name="morphe_hide_search_term_thumbnails_summary">Arama otomatik tamamlama listesindeki küçük resim ön izlemelerini gizler</string>
   <!-- 'Show more' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when searching for a YouTube creator. -->
   <string name="morphe_hide_show_more_button_title">\'Daha fazla göster\' düğmesini gizle</string>
-  <string name="morphe_hide_show_more_button_summary">Arama sonuçlarındaki videoların altındaki genişlet düğmesini gizler</string>
+  <string name="morphe_hide_show_more_button_summary">Arama sonuçlarında videoların altındaki genişlet düğmesini gizler</string>
   <string name="morphe_hide_subscribed_channels_bar_title">Abone olunmuş kanallar çubuğunu gizle</string>
   <string name="morphe_hide_surveys_title">Anketleri gizle</string>
   <string name="morphe_hide_ticket_shelf_title">Bilet rafını gizle</string>
@@ -108,7 +108,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_you_may_like_section_title">Aramadaki \'Hoşunuza gidebilecekler\' kısmını gizle</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles\'ı gizle</string>
-  <string name="morphe_hide_youtube_doodles_summary">YouTube logosundaki mevsimlik ve etkinlik tabanlı animasyonları gizler</string>
+  <string name="morphe_hide_youtube_doodles_summary">YouTube logosundaki dönemsel ve etkinlik tabanlı animasyonları gizler</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles, yılın çeşitli günlerinde dünyanın çeşitli yerlerinde gösterilir.
 
 YouTube Doodles göstermek, özel başlıkların görüntülenmesini engelleyebilir."</string>
@@ -125,15 +125,15 @@ YouTube Doodles göstermek, özel başlıkların görüntülenmesini engelleyebi
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">\'Canlı sohbeti tekrar oynat\' düğmesini gizle</string>
-  <string name="morphe_hide_live_chat_replay_button_summary">Canlı yayın modunda sohbet tekrar oynatma düğmesini gizler</string>
+  <string name="morphe_hide_live_chat_replay_button_summary">Tam ekran modunda sohbeti tekrar oynatma düğmesini gizler</string>
   <string name="morphe_hide_medical_panels_title">Tıbbi bilgi panellerini gizle</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Abone kurallarını gizle</string>
   <string name="morphe_hide_timed_reactions_title">Süreli tepkileri gizle</string>
-  <string name="morphe_hide_timed_reactions_summary">Yorumlar bölümünde ve canlı sohbette emojilerle tepki vermenize olanak tanıyan özelliği gizler</string>
+  <string name="morphe_hide_timed_reactions_summary">Kullanıcıların yorum bölümünde ve canlı sohbette emojilerle tepki vermesini sağlayan özelliği gizler</string>
   <string name="morphe_hide_video_title_title">Video başlığını gizle</string>
   <string name="morphe_hide_video_title_summary">Tam ekran modunda video başlığını gizler</string>
   <string name="morphe_hide_description_components_screen_title">Video açıklaması</string>
-  <string name="morphe_hide_description_components_screen_summary">Video açıklamasında görünen bileşenleri seçin</string>
+  <string name="morphe_hide_description_components_screen_summary">Video açıklamasında hangi bileşenlerin görüneceğini seçin</string>
   <string name="morphe_hide_ai_generated_video_summary_section_title">\'Yapay zeka tarafından oluşturulmuş video özeti\' bölümünü gizle</string>
   <string name="morphe_hide_ask_section_title">Sor bölümünü gizle</string>
   <string name="morphe_hide_attributes_section_title">Özellikler bölümünü gizle</string>

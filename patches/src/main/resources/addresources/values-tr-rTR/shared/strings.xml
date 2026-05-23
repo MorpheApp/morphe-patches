@@ -126,16 +126,16 @@ Telefonunuz için \"Don't kill my app\" rehberini takip edin ve talimatları Mic
 
 Bu, uygulamanın çalışması için gereklidir."</string>
   <string name="gms_core_dialog_open_website_text">Websitesini aç</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Sorunları önlemek için MicroG GmsCore pil optimizasyonları devre dışı bırakılmalıdır.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Sorunları önlemek için MicroG pil optimizasyonu devre dışı bırakılmalıdır.
 
-MicroG için pil optimizasyonlarını devre dışı bırakmak, pil kullanımını olumsuz etkilemeyecektir.
+MicroG için pil optimizasyonunu devre dışı bırakmak pil kullanımını olumsuz etkilemeyecektir.
 
 Devam düğmesine dokunun ve optimizasyon değişikliklerine izin verin."</string>
   <string name="gms_core_dialog_continue_text">Devam et</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Pil optimizasyonu iletişim kutusunu göster</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Bunu devre dışı bırakmak MicroG pil optimizasyonları istemini gizleyecektir.
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Bunu devre dışı bırakmak MicroG pil optimizasyonu istemini gizleyecektir.
 
-Pil optimizasyonları değiştirilmezse aşağıdaki sorunlarla karşılaşabilirsiniz:
+Pil optimizasyonu değiştirilmezse şu durumlarla karşılaşabilirsiniz:
 • Uygulama rastgele kapanabilir
 • Bildirimler çalışmayabilir
 • Arka planda oynatma çalışmayabilir"</string>

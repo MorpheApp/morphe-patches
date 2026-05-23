@@ -20,18 +20,20 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Tənzimləməni bitirmək üçün yenidən başlat</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Tətbiq adı</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Fərdi</string>
   <string name="morphe_custom_branding_icon_title">Tətbiq simvolu</string>
   <string name="morphe_custom_branding_icon_entry_1">Əsil</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe qara</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe qaranlıq</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe işıqlı</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe oyunu</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Fərdi</string>
+  <string name="morphe_custom_branding_icon_entry_7">Fərdi</string>
   <string name="morphe_custom_branding_notification_icon_title">Bildiriş simvolu</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Uyğun tətbiq simvolu</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe oyunu</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirişi</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Baxış tarixçəniz saxlanılmır.&lt;br&gt;&lt;br&gt;Bu çox güman ki, DNS reklam əngəlləyici və ya şəbəkə proksisinə görədir.&lt;br&gt;&lt;br&gt;Bunu düzəltmək üçün s.youtube.com-u&lt;/b&gt; &lt;b&gt;ağ siyahıya salın və ya bütün DNS əngəlləyiciləri və proksiləri bağlayın.</string>

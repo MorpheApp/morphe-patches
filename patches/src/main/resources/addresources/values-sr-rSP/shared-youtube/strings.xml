@@ -20,18 +20,20 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Поново покрените да бисте завршили постављање</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Назив апликације</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Цустом</string>
   <string name="morphe_custom_branding_icon_title">Иконица апликације</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинална</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe сен</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe тамно</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe светл</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Цустом</string>
+  <string name="morphe_custom_branding_icon_entry_7">Цустом</string>
   <string name="morphe_custom_branding_notification_icon_title">Икона обавештења</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Усклади икона апликације</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe плеј</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe обавештење</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша историја гледања се не чува.&lt;br&gt;&lt;br&gt;Ово је највероватније узроковано DNS блокатором огласа или мрежним проксијем.&lt;br&gt;&lt;br&gt;Да бисте ово поправили, ставите на белу листу &lt;b&gt;s.youtube.com&lt;/b&gt; или искључите све DNS блокаторе и проксије.</string>

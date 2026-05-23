@@ -20,18 +20,20 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Starta om för att slutföra konfigureringen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Appnamn</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Anpassad</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
   <string name="morphe_custom_branding_icon_entry_1">Ursprunglig</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe – svart</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe – mörk</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe – ljus</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe – spela upp</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Anpassad</string>
+  <string name="morphe_custom_branding_icon_entry_7">Anpassad</string>
   <string name="morphe_custom_branding_notification_icon_title">Aviseringsikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Matcha appikonen</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe – spela upp</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-meddelande</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din visningshistorik sparas inte.&lt;br&gt;&lt;br&gt;Detta orsakas troligen av en DNS-annonsblockerare eller nätverksproxy.&lt;br&gt;&lt;br&gt;För att åtgärda detta, vitlista &lt;b&gt;s.youtube.com&lt;/b&gt; eller stäng av alla DNS-blockerare och proxyer.</string>

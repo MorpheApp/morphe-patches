@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-05-22T10:50:11",
-  "description": "## [1.29.1-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.29.1-dev.1...v1.29.1-dev.2) (2026-05-22)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Hide ads:** Fix player crash ([d67d1e1](https://github.com/MorpheApp/morphe-patches/commit/d67d1e1fddcada5ca5310294b6be03a32ba636d3))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.29.1-dev.2/patches-1.29.1-dev.2.mpp",
+  "created_at": "2026-05-23T08:00:45",
+  "description": "## [1.30.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.29.1-dev.2...v1.30.0-dev.1) (2026-05-23)\n\n### ✨ New Features\n\n* **Custom branding:** Add icon previews to branding selectors and new play black icon ([#1522](https://github.com/MorpheApp/morphe-patches/issues/1522)) ([adc4ec2](https://github.com/MorpheApp/morphe-patches/commit/adc4ec2db07ce0db3ab449d72d979bc52de1286c))\n\n### 🚀 Updated App Support\n\n* **Reddit:** Add experimental support for `2026.21.0` ([78d67e0](https://github.com/MorpheApp/morphe-patches/commit/78d67e0c8668b1f8f3bd7e700a9898e319e9403d))\n* **Reddit:** Add support for `2026.14.0` ([2376e91](https://github.com/MorpheApp/morphe-patches/commit/2376e91793f1c3374da937f39bd71d116ff53c8a))\n* **YouTube Music:** Add experimental support for `9.20.52` ([c34abe0](https://github.com/MorpheApp/morphe-patches/commit/c34abe0b20692a3ff4780fde68700625c5494d2a))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.30.0-dev.1/patches-1.30.0-dev.1.mpp",
   "signature_download_url": "",
-  "version": "1.29.1-dev.2"
+  "version": "1.30.0-dev.1"
 }

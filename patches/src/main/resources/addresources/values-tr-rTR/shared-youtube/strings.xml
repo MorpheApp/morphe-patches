@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Ayarları tamamlamak için yeniden başlatın</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Uygulama adı</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Özel</string>
   <string name="morphe_custom_branding_icon_title">Uygulama simgesi</string>
   <string name="morphe_custom_branding_icon_entry_1">Orijinal</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe siyah</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe koyu</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe açık</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play açık</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play siyah</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Özel</string>
+  <string name="morphe_custom_branding_icon_entry_7">Özel</string>
   <string name="morphe_custom_branding_notification_icon_title">Bildirim simgesi</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Uygulama simgesini takip et</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirimi</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">İzleme geçmişiniz kaydedilmiyor.&lt;br&gt;&lt;br&gt;Bu büyük ihtimalle bir reklam engelleyici DNS\'den veya proxy\'den kaynaklanıyor.&lt;br&gt;&lt;br&gt;Bunu düzeltmek için, &lt;b&gt;s.youtube.com&lt;/b&gt; adresini beyaz listeye ekleyin veya bütün engelleyici DNSleri ve proxy\'leri kapatın.</string>
@@ -111,5 +115,5 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_sanitize_sharing_links_summary">Paylaşılan bağlantılardan izleme sorgu parametrelerini kaldırır</string>
   <string name="morphe_replace_music_with_youtube_title">Paylaşım bağlantılarını youtube.com olarak değiştir</string>
   <string name="morphe_replace_links_with_shortener_title">Paylaşım bağlantılarını youtu.be olarak değiştir</string>
-  <string name="morphe_replace_links_with_shortener_summary">Canlı yayınların ve Shorts\'un kısa youtu.be URL formatını kullanmasını zorlar</string>
+  <string name="morphe_replace_links_with_shortener_summary">Canlı yayınları ve Shorts\'u kısaltılmış youtu.be URL formatını kullanmaya zorlar</string>
 </resources>

@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">設定を完了するには再起動してください</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">アプリ名</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">カスタム</string>
   <string name="morphe_custom_branding_icon_title">アプリアイコン</string>
   <string name="morphe_custom_branding_icon_entry_1">オリジナル</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe（ブラック）</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe（ダーク）</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe（ライト）</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe Play（ライト）</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe Play（ブラック）</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">カスタム</string>
+  <string name="morphe_custom_branding_icon_entry_7">カスタム</string>
   <string name="morphe_custom_branding_notification_icon_title">通知アイコン</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">アプリアイコンに合わせる</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe からの通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">再生履歴が保存されていません。&lt;br&gt;&lt;br&gt;これはおそらく、DNS 広告ブロッカーまたはネットワーク プロキシが原因です。&lt;br&gt;&lt;br&gt;この問題を解決するには、&lt;b&gt;s.youtube.com&lt;/b&gt; をホワイトリストに追加するか、すべての DNS ブロッカーとプロキシをオフにしてください。</string>

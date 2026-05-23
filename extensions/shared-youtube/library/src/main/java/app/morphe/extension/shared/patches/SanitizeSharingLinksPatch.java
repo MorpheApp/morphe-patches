@@ -1,13 +1,18 @@
 package app.morphe.extension.shared.patches;
 
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.REPLACE_MUSIC_LINKS_WITH_YOUTUBE;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.SANITIZE_SHARING_LINKS;
+
 import android.net.Uri;
 import android.text.TextUtils;
 
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.privacy.LinkSanitizer;
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 /**
  * YouTube and YouTube Music.
@@ -24,16 +29,32 @@ public final class SanitizeSharingLinksPatch {
     /**
      * Injection point.
      */
-    public static String sanitize(String url) {
-        if (SharedYouTubeSettings.SANITIZE_SHARING_LINKS.get()) {
+    public static String sanitize(String originalURL) {
+        Matcher urlMatcher =
+                Pattern.
+                        compile("https?://[^\\s]+(?<![.!?,-])").
+                        matcher(originalURL);
+        String url;
+        if (urlMatcher.find()) {
+            url = urlMatcher.group();
+        } else {
+            return originalURL;
+        }
+
+        String host = Uri.parse(url).getHost();
+        if (host == null || (!host.equals("youtube.com") && !host.endsWith(".youtube.com"))) {
+            return originalURL;
+        }
+
+        if (SANITIZE_SHARING_LINKS.get()) {
             url = sanitizer.sanitizeURLString(url);
         }
 
-        if (SharedYouTubeSettings.REPLACE_MUSIC_LINKS_WITH_YOUTUBE.get()) {
+        if (REPLACE_MUSIC_LINKS_WITH_YOUTUBE.get()) {
             url = url.replace("music.youtube.com", "youtube.com");
         }
 
-        if (SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER.get()) {
+        if (REPLACE_LINKS_WITH_SHORTENER.get()) {
             url = replaceWithShortenedUrl(url);
         }
 
@@ -43,30 +64,41 @@ public final class SanitizeSharingLinksPatch {
     private static String replaceWithShortenedUrl(String url) {
         try {
             Uri uri = Uri.parse(url);
-            String host = uri.getHost();
-            if (host == null || (!host.equals("youtube.com") && !host.endsWith(".youtube.com"))) {
-                return url;
-            }
             List<String> segments = uri.getPathSegments();
-            if (segments.size() < 2) {
+            int segmentsSize = segments.size();
+            if (segmentsSize == 0) {
                 return url;
             }
             String pathType = segments.get(0);
-            if (!"live".equals(pathType) && !"shorts".equals(pathType)) {
-                return url;
+            String videoId = "";
+            int getQueryAttempts = 0;
+            while (getQueryAttempts <= 3) {
+                videoId = switch (getQueryAttempts) {
+                    case 0 -> uri.getQueryParameter("v");
+                    case 1 -> uri.getQueryParameter("w");
+                    case 2 -> uri.getQueryParameter("s");
+                    default -> segments.get(1);
+                };
+
+                if (!TextUtils.isEmpty(videoId)) {
+                    break;
+                }
+
+                getQueryAttempts++;
             }
-            String videoId = segments.get(1);
             if (TextUtils.isEmpty(videoId)) {
                 return url;
             }
-            return new Uri.Builder()
+            String timeQueryContent = uri.getQueryParameter("t");
+            Uri.Builder finalURL =
+                    new Uri.Builder()
                     .scheme("https")
                     .authority("youtu.be")
-                    .appendPath(videoId)
-                    .encodedQuery(uri.getEncodedQuery())
-                    .encodedFragment(uri.getEncodedFragment())
-                    .build()
-                    .toString();
+                    .appendPath(videoId);
+            if (!TextUtils.isEmpty(timeQueryContent)) {
+                finalURL.appendQueryParameter("t", timeQueryContent);
+            }
+            return finalURL.build().toString();
         } catch (Exception ex) {
             Logger.printException(() -> "replaceWithShortenedUrl failure: " + url, ex);
             return url;

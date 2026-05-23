@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Dest pê bike ku sazkirinê temam bike</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Navê sepanê</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Xwerî</string>
   <string name="morphe_custom_branding_icon_title">Îkonê</string>
   <string name="morphe_custom_branding_icon_entry_1">Yekta</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe reş</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tarî</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe rovê</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Ronahîya kêrê ya Morphe</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Reşê yê Morphe</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Xwerî</string>
+  <string name="morphe_custom_branding_icon_entry_7">Xwerî</string>
   <string name="morphe_custom_branding_notification_icon_title">Aîkona notifikasyonê</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Îkona serîlêdana guhêrîn</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe lîstikê</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Îlanê Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Sergûzastên we têne parvekirin.&lt;br&gt;&lt;br&gt;Ev bi girîngî ji hêla pêşgirê DNS an proxy-ya danînê ve tê bandor kirin.&lt;br&gt;&lt;br&gt;Ji bo çareserî, s.youtube.com veşêre an hemû pêşgirên DNS û proxy-yên vegirtêrê vanqandin.</string>
