@@ -311,7 +311,7 @@ Limitations:
 
     <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
     <string name="morphe_disable_chapter_skip_double_tap_title">Disable double-tap chapter skip</string>
-    <string name="morphe_disable_chapter_skip_double_tap_summary">Disables the two-finger double-tap gesture that skips to the next or previous chapter, which can sometimes be accidentally triggered with a single finger</string>
+    <string name="morphe_disable_chapter_skip_double_tap_summary">Disables the two-finger double-tap gesture that skips chapters, which may be accidentally triggered with one finger</string>
 
     <!-- interaction.downloads.downloadsPatch -->
     <string name="morphe_external_downloader_screen_title">External downloads</string>
