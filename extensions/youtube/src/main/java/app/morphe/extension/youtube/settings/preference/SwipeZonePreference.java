@@ -174,6 +174,7 @@ public final class SwipeZonePreference extends Preference {
         // Theme-resolved colors used in onDraw.
         private final int screenBgColor;
         private final int edgeBgColor;
+        private final int fgColor;
         private final int dimTextColor;
 
         private final String labelBrightness;
@@ -190,19 +191,18 @@ public final class SwipeZonePreference extends Preference {
             labelSpeed      = StringRef.str("morphe_swipe_zone_label_speed");
 
             int bgColor = Utils.getAppBackgroundColor();
-            int fgColor = Utils.getAppForegroundColor();
+            fgColor = Utils.getAppForegroundColor();
 
             screenBgColor  = bgColor;
             edgeBgColor    = Utils.adjustColorBrightness(bgColor, Utils.isDarkModeEnabled() ? 0.90f : 0.97f);
-            int borderColor    = withAlpha(fgColor, 0x55);
-            int separatorColor = withAlpha(fgColor, 0x33);
             dimTextColor   = withAlpha(fgColor, 0x55);
+            int separatorColor = withAlpha(fgColor, 0x33);
 
             fillPaint.setStyle(Paint.Style.FILL);
 
             borderPaint.setStyle(Paint.Style.STROKE);
             borderPaint.setStrokeWidth(Dim.dp1);
-            borderPaint.setColor(borderColor);
+            borderPaint.setColor(dimTextColor);
 
             separatorPaint.setStyle(Paint.Style.STROKE);
             separatorPaint.setStrokeWidth(Dim.dp(0.5f));
@@ -218,7 +218,6 @@ public final class SwipeZonePreference extends Preference {
 
             percentPaint.setTextAlign(Paint.Align.CENTER);
             percentPaint.setTextSize(Dim.dp(10));
-            percentPaint.setColor(dimTextColor);
         }
 
         @Override
@@ -328,23 +327,17 @@ public final class SwipeZonePreference extends Preference {
             final float speedPctY    = speedLabelY + Dim.dp(13);
 
             if (zoneW >= Dim.dp(30)) {
-                namePaint.setColor(brightnessOn
-                        ? withAlpha(brightnessColor, 0xFF) : dimTextColor);
+                namePaint.setColor(brightnessOn ? fgColor : dimTextColor);
+                percentPaint.setColor(brightnessOn ? fgColor : dimTextColor);
                 canvas.drawText(labelBrightness,
                         padH + edgeW + zoneW / 2f, lowerCenterY, namePaint);
-
-                percentPaint.setColor(brightnessOn
-                        ? withAlpha(brightnessColor, 0xBB) : dimTextColor);
                 canvas.drawText(zonePercent + "%",
                         padH + edgeW + zoneW / 2f, lowerPctY, percentPaint);
 
-                namePaint.setColor(volumeOn
-                        ? withAlpha(volumeColor, 0xFF) : dimTextColor);
+                namePaint.setColor(volumeOn ? fgColor : dimTextColor);
+                percentPaint.setColor(volumeOn ? fgColor : dimTextColor);
                 canvas.drawText(labelVolume,
                         sRight - edgeW - zoneW / 2f, lowerCenterY, namePaint);
-
-                percentPaint.setColor(volumeOn
-                        ? withAlpha(volumeColor, 0xBB) : dimTextColor);
                 canvas.drawText(zonePercent + "%",
                         sRight - edgeW - zoneW / 2f, lowerPctY, percentPaint);
             }
@@ -353,18 +346,17 @@ public final class SwipeZonePreference extends Preference {
                 float centerX = padH + edgeW + zoneW + centerW / 2f;
 
                 // Speed label (and % if strip is tall enough) centered in the speed strip.
-                namePaint.setColor(speedOn ? withAlpha(speedColor, 0xFF) : dimTextColor);
+                namePaint.setColor(speedOn ? fgColor : dimTextColor);
+                percentPaint.setColor(speedOn ? fgColor : dimTextColor);
                 canvas.drawText(labelSpeed, centerX, speedLabelY, namePaint);
                 if (speedShowPct) {
-                    percentPaint.setColor(speedOn ? withAlpha(speedColor, 0xBB) : dimTextColor);
                     canvas.drawText(speedZonePercent + "%", centerX, speedPctY, percentPaint);
                 }
 
                 // Native label in the lower portion of the center column.
-                namePaint.setColor(dimTextColor);
+                namePaint.setColor(fgColor);
+                percentPaint.setColor(fgColor);
                 canvas.drawText(labelNative, centerX, lowerCenterY, namePaint);
-
-                percentPaint.setColor(dimTextColor);
                 canvas.drawText((100 - 2 * zonePercent) + "%", centerX, lowerPctY, percentPaint);
             }
 
