@@ -21,29 +21,22 @@ import app.morphe.extension.youtube.swipecontrols.misc.applyDimension
 import kotlin.math.min
 
 /**
- * Y- Axis:
- * -------- 0
- *        ^
- * dead   | 40dp
- *        v
- * -------- yDeadTop
- *        ^
- * swipe  |
- *        v
- * -------- yDeadBtm
- *        ^
- * dead   | 80dp
- *        v
- * -------- screenHeight
+ *  +------------------------------------------------------------------+
+ *  |                         40dp (top dead)                          |
+ *  +----------+-------------+----------------+-------------+----------+
+ *  |          |  brightness |     speed      |   volume    |          |
+ *  |  20dp    |    (↑ ↓)    |     (← →)      |    (↑ ↓)    |  20dp    |
+ *  |          |  + speed    |   speed_h%     |  + speed    |          |
+ *  +- - - - - +- - - - - - -+- - - - - - - - +- - - - - - -+- - - - - +
+ *  |  dead    |  brightness |     dead       |   volume    |  dead    |
+ *  |          |   zone_w%   |   100-2*z%     |   zone_w%   |          |
+ *  +----------+-------------+----------------+-------------+----------+
+ *  |                        60dp (bottom dead)                        |
+ *  +------------------------------------------------------------------+
  *
- * X- Axis (zone widths controlled by SWIPE_ZONE_WIDTH setting, default 37%):
- *  0    xBrigStart    xBrigEnd    xVolStart     xVolEnd   screenWidth
- *  |          |            |          |            |          |
- *  |   20dp   |  zone_w%   | 100-2*z% |  zone_w%   |   20dp   |
- *  | <------> |  <------>  | <------> |  <------>  | <------> |
- *  | deadzone | brightness | deadzone |   volume   | deadzone |
- *             | <--------------------------------> |
- *                              1/1
+ *  brightness / volume - vertical swipe (↑ ↓), span full effective height
+ *  speed               - horizontal swipe (← →), top speed_h% of effective height;
+ *                        overlaps with the top of brightness and volume zones
  */
 @Suppress("PrivatePropertyName")
 class SwipeZonesController(
