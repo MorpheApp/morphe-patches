@@ -10,15 +10,12 @@ package app.morphe.extension.youtube.settings.preference;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.os.Handler;
-import android.os.Looper;
 import android.preference.Preference;
 import android.preference.PreferenceManager;
 import android.util.AttributeSet;
@@ -28,8 +25,10 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -40,57 +39,54 @@ import app.morphe.extension.youtube.settings.Settings;
  * Adapts colors to the active light / dark theme.
  */
 @SuppressWarnings({"unused", "deprecation"})
-public final class SwipeZonePreference extends Preference
-        implements SharedPreferences.OnSharedPreferenceChangeListener {
+public final class SwipeZonePreference extends Preference {
 
     private ZoneView zoneView;
-    private final Handler handler = new Handler(Looper.getMainLooper());
 
+    private boolean lastBrightnessEnabled;
+    private boolean lastVolumeEnabled;
+    private boolean lastSpeedEnabled;
+    private String lastBrightnessColor;
+    private String lastVolumeColor;
+    private String lastSpeedColor;
     private int lastZoneWidth = -1;
-    private String lastBrightnessColor = null;
-    private String lastVolumeColor = null;
-    private String lastSpeedColor = null;
-    private boolean lastBrightnessEnabled = false;
-    private boolean lastVolumeEnabled = false;
-    private boolean lastSpeedEnabled    = false;
-    private int     lastSpeedZoneHeight = -1;
+    private int lastSpeedZoneHeight = -1;
 
-    private final Runnable pollRunnable = new Runnable() {
-        @Override
-        public void run() {
-            if (zoneView == null || !zoneView.isAttachedToWindow()) return;
+    private final SharedPreferences.OnSharedPreferenceChangeListener listener =
+            (sharedPreferences, str) -> Utils.runOnMainThread(this::updateUI);
 
-            int zoneWidth = Settings.SWIPE_ZONE_WIDTH.get();
-            String brightnessColor = Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get();
-            String volumeColor = Settings.SWIPE_OVERLAY_VOLUME_COLOR.get();
-            String speedColor = Settings.SWIPE_OVERLAY_SPEED_COLOR.get();
-            boolean brightnessEnabled = Settings.SWIPE_BRIGHTNESS.get();
-            boolean volumeEnabled = Settings.SWIPE_VOLUME.get();
-            boolean speedEnabled = Settings.SWIPE_SPEED.get();
-            int speedZoneHeight = Settings.SWIPE_SPEED_ZONE_HEIGHT.get();
+    private void updateUI() {
+        if (zoneView == null || !zoneView.isAttachedToWindow()) return;
+        Logger.printDebug(() -> "updateUI");
 
-            if (zoneWidth != lastZoneWidth
-                    || !brightnessColor.equals(lastBrightnessColor)
-                    || !volumeColor.equals(lastVolumeColor)
-                    || !speedColor.equals(lastSpeedColor)
-                    || brightnessEnabled != lastBrightnessEnabled
-                    || volumeEnabled != lastVolumeEnabled
-                    || speedEnabled != lastSpeedEnabled
-                    || speedZoneHeight != lastSpeedZoneHeight) {
-                lastZoneWidth = zoneWidth;
-                lastBrightnessColor = brightnessColor;
-                lastVolumeColor = volumeColor;
-                lastSpeedColor = speedColor;
-                lastBrightnessEnabled = brightnessEnabled;
-                lastVolumeEnabled = volumeEnabled;
-                lastSpeedEnabled = speedEnabled;
-                lastSpeedZoneHeight = speedZoneHeight;
-                zoneView.invalidate();
-            }
+        String brightnessColor = Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get();
+        String volumeColor = Settings.SWIPE_OVERLAY_VOLUME_COLOR.get();
+        String speedColor = Settings.SWIPE_OVERLAY_SPEED_COLOR.get();
+        final boolean volumeEnabled = Settings.SWIPE_VOLUME.get();
+        final boolean speedEnabled = Settings.SWIPE_SPEED.get();
+        final boolean brightnessEnabled = Settings.SWIPE_BRIGHTNESS.get();
+        final int zoneWidth = Settings.SWIPE_ZONE_WIDTH.get();
+        final int speedZoneHeight = Settings.SWIPE_SPEED_ZONE_HEIGHT.get();
 
-            handler.postDelayed(this, 500);
+        if (brightnessEnabled != lastBrightnessEnabled
+                || speedEnabled != lastSpeedEnabled
+                || volumeEnabled != lastVolumeEnabled
+                || zoneWidth != lastZoneWidth
+                || speedZoneHeight != lastSpeedZoneHeight
+                || !brightnessColor.equals(lastBrightnessColor)
+                || !volumeColor.equals(lastVolumeColor)
+                || !speedColor.equals(lastSpeedColor)) {
+            lastZoneWidth = zoneWidth;
+            lastBrightnessColor = brightnessColor;
+            lastVolumeColor = volumeColor;
+            lastSpeedColor = speedColor;
+            lastBrightnessEnabled = brightnessEnabled;
+            lastVolumeEnabled = volumeEnabled;
+            lastSpeedEnabled = speedEnabled;
+            lastSpeedZoneHeight = speedZoneHeight;
+            zoneView.invalidate();
         }
-    };
+    }
 
     public SwipeZonePreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -112,6 +108,27 @@ public final class SwipeZonePreference extends Preference
         init();
     }
 
+    private void addChangeListener() {
+        Setting.preferences.preferences.registerOnSharedPreferenceChangeListener(listener);
+    }
+
+    private void removeChangeListener() {
+        Setting.preferences.preferences.unregisterOnSharedPreferenceChangeListener(listener);
+    }
+
+    @Override
+    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
+        super.onAttachedToHierarchy(preferenceManager);
+        updateUI();
+        addChangeListener();
+    }
+
+    @Override
+    protected void onPrepareForRemoval() {
+        super.onPrepareForRemoval();
+        removeChangeListener();
+    }
+
     private void init() {
         setSelectable(false);
         setPersistent(false);
@@ -128,7 +145,6 @@ public final class SwipeZonePreference extends Preference
         layout.addView(zoneView, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp(130)));
 
-        handler.postDelayed(pollRunnable, 500);
         return layout;
     }
 
@@ -137,24 +153,6 @@ public final class SwipeZonePreference extends Preference
         super.onBindView(view);
         if (zoneView != null) {
             zoneView.invalidate();
-        }
-    }
-
-    @Override
-    protected void onAttachedToHierarchy(PreferenceManager preferenceManager) {
-        super.onAttachedToHierarchy(preferenceManager);
-        try {
-            SharedPreferences prefs = preferenceManager.getSharedPreferences();
-            if (prefs != null) {
-                prefs.registerOnSharedPreferenceChangeListener(this);
-            }
-        } catch (Exception ignored) {}
-    }
-
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sp, String key) {
-        if (key != null && key.startsWith("morphe_swipe") && zoneView != null) {
-            zoneView.postInvalidate();
         }
     }
 
@@ -221,45 +219,44 @@ public final class SwipeZonePreference extends Preference
             percentPaint.setTextAlign(Paint.Align.CENTER);
             percentPaint.setTextSize(Dim.dp(10));
             percentPaint.setColor(dimTextColor);
-
         }
 
         @Override
         protected void onDraw(@NonNull Canvas canvas) {
             super.onDraw(canvas);
 
-            float w = getWidth();
-            float h = getHeight();
-            float padH  = Dim.dp4;
-            float padV  = Dim.dp6;
+            final float w = getWidth();
+            final float h = getHeight();
+            final float padH  = Dim.dp4;
+            final float padV  = Dim.dp6;
 
-            float sRight  = w - padH;
-            float sBottom = h - padV;
-            float sWidth  = sRight - padH;
-            float sHeight = sBottom - padV;
-            float radius  = Dim.dp(5);
+            final float sRight  = w - padH;
+            final float sBottom = h - padV;
+            final float sWidth  = sRight - padH;
+            final float sHeight = sBottom - padV;
+            final float radius  = Dim.dp(5);
 
             screenRect.set(padH, padV, sRight, sBottom);
 
-            int zonePercent      = Math.max(5, Math.min(50, Settings.SWIPE_ZONE_WIDTH.get()));
-            int speedZonePercent = Math.max(5, Math.min(75, Settings.SWIPE_SPEED_ZONE_HEIGHT.get()));
-            boolean brightnessOn = Settings.SWIPE_BRIGHTNESS.get();
-            boolean volumeOn     = Settings.SWIPE_VOLUME.get();
-            boolean speedOn      = Settings.SWIPE_SPEED.get();
+            final int zonePercent      = Math.max(5, Math.min(50, Settings.SWIPE_ZONE_WIDTH.get()));
+            final int speedZonePercent = Math.max(5, Math.min(75, Settings.SWIPE_SPEED_ZONE_HEIGHT.get()));
+            final boolean brightnessOn = Settings.SWIPE_BRIGHTNESS.get();
+            final boolean volumeOn     = Settings.SWIPE_VOLUME.get();
+            final boolean speedOn      = Settings.SWIPE_SPEED.get();
 
-            int brightnessColor = toPreviewColor(
-                    parseColor(Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get(), 0xFF4FC3F7), 0xFF4FC3F7);
-            int volumeColor     = toPreviewColor(
-                    parseColor(Settings.SWIPE_OVERLAY_VOLUME_COLOR.get(),     0xFF81C784), 0xFF81C784);
-            int speedColor      = toPreviewColor(
-                    parseColor(Settings.SWIPE_OVERLAY_SPEED_COLOR.get(), 0xFFFF9100), 0xFFFF9100);
+            final int brightnessColor = toPreviewColor(parseColor(
+                    Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR.get(), 0xFF4FC3F7), 0xFF4FC3F7);
+            final int volumeColor     = toPreviewColor(parseColor(
+                    Settings.SWIPE_OVERLAY_VOLUME_COLOR.get(),     0xFF81C784), 0xFF81C784);
+            final int speedColor      = toPreviewColor(parseColor(
+                    Settings.SWIPE_OVERLAY_SPEED_COLOR.get(), 0xFFFF9100), 0xFFFF9100);
 
             // The 20 dp edge margins (fixed dead areas) are represented as ~6% of total width.
-            float edgeW      = sWidth * 0.06f;
-            float effectiveW = sWidth - 2f * edgeW;
-            float zoneW      = effectiveW * zonePercent / 100f;
-            float centerW    = effectiveW - 2f * zoneW;
-            float speedZoneH = sHeight * speedZonePercent / 100f;
+            final float edgeW      = sWidth * 0.06f;
+            final float effectiveW = sWidth - 2f * edgeW;
+            final float zoneW      = effectiveW * zonePercent / 100f;
+            final float centerW    = effectiveW - 2f * zoneW;
+            final float speedZoneH = sHeight * speedZonePercent / 100f;
 
             // Clip all zone fills to the rounded screen rect.
             clipPath.reset();
@@ -297,11 +294,11 @@ public final class SwipeZonePreference extends Preference
             canvas.drawRect(zoneRect, fillPaint);
 
             // Separator coordinates.
-            float sep1        = padH + edgeW;
-            float sep2        = padH + edgeW + zoneW;
-            float sep3        = sRight - edgeW - zoneW;
-            float sep4        = sRight - edgeW;
-            float speedBottom = padV + speedZoneH;
+            final float sep1        = padH + edgeW;
+            final float sep2        = padH + edgeW + zoneW;
+            final float sep3        = sRight - edgeW - zoneW;
+            final float sep4        = sRight - edgeW;
+            final float speedBottom = padV + speedZoneH;
 
             // Edge vertical lines (full height, solid).
             canvas.drawLine(sep1, padV, sep1, sBottom, separatorPaint);
@@ -321,14 +318,14 @@ public final class SwipeZonePreference extends Preference
 
             // Labels: brightness/volume in the non-overlapping lower portion;
             // speed and native in the center column.
-            float lowerH       = sBottom - speedBottom;
-            float lowerCenterY = speedBottom + lowerH / 2f - Dim.dp(3);
-            float lowerPctY    = lowerCenterY + Dim.dp(13);
-            boolean speedShowPct = speedZoneH >= Dim.dp(22);
-            float speedLabelY  = speedShowPct
+            final float lowerH       = sBottom - speedBottom;
+            final float lowerCenterY = speedBottom + lowerH / 2f - Dim.dp(3);
+            final float lowerPctY    = lowerCenterY + Dim.dp(13);
+            final boolean speedShowPct = speedZoneH >= Dim.dp(22);
+            final float speedLabelY  = speedShowPct
                     ? padV + speedZoneH / 2f - Dim.dp(3)
                     : padV + speedZoneH / 2f + namePaint.getTextSize() / 3f;
-            float speedPctY    = speedLabelY + Dim.dp(13);
+            final float speedPctY    = speedLabelY + Dim.dp(13);
 
             if (zoneW >= Dim.dp(30)) {
                 namePaint.setColor(brightnessOn
