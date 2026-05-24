@@ -351,10 +351,13 @@ public final class SwipeZonePreference extends Preference {
                 }
 
                 // Native label in the lower portion of the center column.
+                // Percentage is only shown when at least one swipe zone is active.
                 namePaint.setColor(fgColor);
-                percentPaint.setColor(fgColor);
                 canvas.drawText(labelNative, centerX, lowerCenterY, namePaint);
-                canvas.drawText((100 - 2 * zonePercent) + "%", centerX, lowerPctY, percentPaint);
+                if (brightnessOn || volumeOn || speedOn) {
+                    percentPaint.setColor(fgColor);
+                    canvas.drawText((100 - 2 * zonePercent) + "%", centerX, lowerPctY, percentPaint);
+                }
             }
 
             canvas.restore();
