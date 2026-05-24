@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -23,10 +25,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.ui.Dim;
@@ -34,7 +36,7 @@ import app.morphe.extension.youtube.settings.Settings;
 
 /**
  * Renders a live preview of the swipe gesture zones inside the preference screen.
- * Shows the brightness (left), deadzone (center), and volume (right) zones
+ * Shows the brightness (left), dead zone (center), and volume (right) zones
  * proportionally to the current SWIPE_ZONE_WIDTH setting.
  * Adapts colors to the active light / dark theme.
  */
@@ -172,31 +174,26 @@ public final class SwipeZonePreference extends Preference {
         private final Path  clipPath   = new Path();
 
         // Theme-resolved colors used in onDraw.
-        private final int screenBgColor;
-        private final int edgeBgColor;
-        private final int fgColor;
-        private final int dimTextColor;
+        private final @ColorInt int screenBgColor;
+        private final @ColorInt int edgeBgColor;
+        private final @ColorInt int fgColor;
+        private final @ColorInt int dimTextColor;
 
-        private final String labelBrightness;
-        private final String labelVolume;
-        private final String labelNative;
-        private final String labelSpeed;
+        private final String labelBrightness = str("morphe_swipe_zone_label_brightness");
+        private final String labelVolume = str("morphe_swipe_zone_label_volume");
+        private final String labelNative = str("morphe_swipe_zone_label_native");
+        private final String labelSpeed = str("morphe_swipe_zone_label_speed");
 
         ZoneView(Context context) {
             super(context);
 
-            labelBrightness = StringRef.str("morphe_swipe_zone_label_brightness");
-            labelVolume     = StringRef.str("morphe_swipe_zone_label_volume");
-            labelNative     = StringRef.str("morphe_swipe_zone_label_native");
-            labelSpeed      = StringRef.str("morphe_swipe_zone_label_speed");
-
-            int bgColor = Utils.getAppBackgroundColor();
             fgColor = Utils.getAppForegroundColor();
+            final int separatorColor = withAlpha(fgColor, 0x33);
 
+            final int bgColor = Utils.getAppBackgroundColor();
             screenBgColor  = bgColor;
             edgeBgColor    = Utils.adjustColorBrightness(bgColor, Utils.isDarkModeEnabled() ? 0.90f : 0.97f);
             dimTextColor   = withAlpha(fgColor, 0x55);
-            int separatorColor = withAlpha(fgColor, 0x33);
 
             fillPaint.setStyle(Paint.Style.FILL);
 
@@ -366,7 +363,8 @@ public final class SwipeZonePreference extends Preference {
             canvas.drawRoundRect(screenRect, radius, radius, borderPaint);
         }
 
-        private static int parseColor(String hex, int fallback) {
+        @ColorInt
+        private static int parseColor(String hex, @ColorInt int fallback) {
             try {
                 return Color.parseColor(hex);
             } catch (Exception e) {
@@ -377,21 +375,23 @@ public final class SwipeZonePreference extends Preference {
         // Strips the stored alpha (overlay colors are designed for video overlays and may be
         // near-white, which becomes invisible on a light background). Uses the fully-opaque RGB
         // for the preview; falls back to a distinct color if contrast with the background is low.
-        private int toPreviewColor(int overlayColor, int fallback) {
-            int opaque = overlayColor | 0xFF000000;
-            float la = relativeLuminance(opaque);
-            float lb = relativeLuminance(screenBgColor);
-            float contrast = (Math.max(la, lb) + 0.05f) / (Math.min(la, lb) + 0.05f);
+        @ColorInt
+        private int toPreviewColor(@ColorInt int overlayColor, @ColorInt int fallback) {
+            final int opaque = overlayColor | 0xFF000000;
+            final float la = relativeLuminance(opaque);
+            final float lb = relativeLuminance(screenBgColor);
+            final float contrast = (Math.max(la, lb) + 0.05f) / (Math.min(la, lb) + 0.05f);
             return contrast >= 1.5f ? opaque : fallback;
         }
 
-        private static float relativeLuminance(int color) {
-            float r = Color.red(color)   / 255f;
-            float g = Color.green(color) / 255f;
-            float b = Color.blue(color)  / 255f;
+        private static float relativeLuminance(@ColorInt int color) {
+            final float r = Color.red(color)   / 255f;
+            final float g = Color.green(color) / 255f;
+            final float b = Color.blue(color)  / 255f;
             return 0.2126f * r + 0.7152f * g + 0.0722f * b;
         }
 
+        @ColorInt
         private static int withAlpha(int color, int alpha) {
             return (color & 0x00FFFFFF) | (alpha << 24);
         }
