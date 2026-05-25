@@ -22,11 +22,16 @@ public class LoopVideoPatch {
     /** Range end in milliseconds. -1 means not set. */
     public static volatile long rangeEndMs = -1;
 
+    /** True when rangeEndMs was set to the video length (user left end field empty). */
+    public static volatile boolean rangeEndIsVideoEnd = false;
+
     /** Video ID at the time the range was set. Used to clear range when the video changes. */
     private static volatile String rangeVideoId = "";
 
     private static volatile long lastSeekTimeMs = 0;
     private static final long SEEK_COOLDOWN_MS = 2000;
+    /** How early to seek before rangeEndMs when rangeEndIsVideoEnd, to avoid the end screen. */
+    private static final long END_SCREEN_BUFFER_MS = 1500;
 
     public static boolean isRangeActive() {
         return rangeStartMs >= 0 && rangeEndMs > rangeStartMs;
@@ -41,6 +46,7 @@ public class LoopVideoPatch {
     public static void clearRange() {
         rangeStartMs = -1;
         rangeEndMs = -1;
+        rangeEndIsVideoEnd = false;
         rangeVideoId = "";
     }
 
@@ -58,7 +64,8 @@ public class LoopVideoPatch {
             return;
         }
 
-        if (time < rangeEndMs) return;
+        final long triggerMs = rangeEndIsVideoEnd ? rangeEndMs - END_SCREEN_BUFFER_MS : rangeEndMs;
+        if (time < triggerMs) return;
 
         final long now = System.currentTimeMillis();
         if (now - lastSeekTimeMs < SEEK_COOLDOWN_MS) return;

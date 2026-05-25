@@ -121,13 +121,21 @@ public class LoopVideoButton {
             final long currentTime = VideoInformation.getVideoTime();
             final long videoLength = VideoInformation.getVideoLength();
 
+            final boolean rangeActive = LoopVideoPatch.isRangeActive();
+            final String startPrefill = rangeActive
+                    ? formatTime(LoopVideoPatch.rangeStartMs)
+                    : (currentTime > 0 ? formatTime(currentTime) : "");
+            final String endPrefill = (rangeActive && !LoopVideoPatch.rangeEndIsVideoEnd)
+                    ? formatTime(LoopVideoPatch.rangeEndMs)
+                    : "";
+
             final EditText startField = buildTimeEditText(context,
                     str("morphe_loop_video_range_hint_start"),
-                    currentTime > 0 ? formatTime(currentTime) : "");
+                    startPrefill);
 
             final EditText endField = buildTimeEditText(context,
                     str("morphe_loop_video_range_hint_end"),
-                    LoopVideoPatch.rangeEndMs > 0 ? formatTime(LoopVideoPatch.rangeEndMs) : "");
+                    endPrefill);
 
             Pair<Dialog, LinearLayout> result = CustomDialog.create(
                     context,
@@ -167,7 +175,8 @@ public class LoopVideoButton {
         }
 
         final long endMs;
-        if (endInput.trim().isEmpty()) {
+        final boolean endIsVideoEnd = endInput.trim().isEmpty();
+        if (endIsVideoEnd) {
             if (videoLengthMs <= 0) {
                 Utils.showToastShort(str("morphe_loop_video_range_invalid_time"));
                 return;
@@ -187,6 +196,7 @@ public class LoopVideoButton {
         }
 
         LoopVideoPatch.setRange(startMs, endMs);
+        LoopVideoPatch.rangeEndIsVideoEnd = endIsVideoEnd;
         Settings.LOOP_VIDEO.save(true);
         Utils.showToastShort(str("morphe_loop_video_range_toast_on",
                 formatTime(startMs), formatTime(endMs)));
