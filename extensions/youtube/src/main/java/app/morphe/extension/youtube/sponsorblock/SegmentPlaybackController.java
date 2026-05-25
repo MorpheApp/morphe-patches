@@ -915,6 +915,7 @@ public class SegmentPlaybackController {
             window.setWindowAnimations(0); // Remove window animations and use custom fade animation.
             window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
             window.addFlags(WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH);
+            window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE);
 
             Utils.setDialogWindowParameters(window, Gravity.BOTTOM, 72, 60, true);
         }
