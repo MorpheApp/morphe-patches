@@ -428,7 +428,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_swipe_threshold_title">Swipe magnitude threshold</string>
     <string name="morphe_swipe_threshold_summary">Set the required swipe distance before an adjustment triggers</string>
     <string name="morphe_swipe_volume_sensitivity_title">Volume swipe sensitivity</string>
-    <string name="morphe_swipe_volume_sensitivity_summary">Adjust how much the volume changes per swipe</string>
+    <string name="morphe_swipe_volume_sensitivity_summary">Higher values increase the volume change per swipe</string>
     <string name="morphe_swipe_brightness_sensitivity_title">Brightness swipe sensitivity</string>
     <string name="morphe_swipe_brightness_sensitivity_summary">Higher values require more swiping per brightness step</string>
     <string name="morphe_swipe_speed_title">Enable speed gesture</string>
