@@ -72,7 +72,7 @@ public final class OpenChannelOfLiveAvatarPatch {
             final int height = componentHost.getHeight();
             // The getDisplayMetrics() properties must be retrieved dynamically to avoid false positives when
             // switching between the inner and outer screens (or vice versa) on foldable devices.
-            DisplayMetrics currentMetrics = componentHost.getContext().getResources().getDisplayMetrics();
+            DisplayMetrics currentMetrics = Dim.getMetrics();
             boolean isLandscapeOrTablet = currentMetrics.widthPixels > currentMetrics.heightPixels;
             int maxAllowedWidth = isLandscapeOrTablet ? Dim.dp40 : Dim.dp48;
             if (width == 0 || width != height || width > maxAllowedWidth) {
