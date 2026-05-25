@@ -1,6 +1,7 @@
 package app.morphe.patches.shared.misc.audio.drc
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -14,11 +15,14 @@ import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/DisableDRCAudioPatch;"
+private const val SET_CONFIG_DISABLED_METHOD = "$EXTENSION_CLASS->disableDrcAudioConfig(Z)Z"
+private const val SET_CONFIG_ENABLED_METHOD = "$EXTENSION_CLASS->enableDrcAudioConfig(Z)Z"
 
 @Suppress("unused")
 internal fun disableDRCAudioPatch(
@@ -92,10 +96,39 @@ internal fun disableDRCAudioPatch(
 
         if (overrideNormalizationFlag()) {
             // If this flag is enabled, the DRC level will depend on other values besides loudnessDb.
-            VolumeNormalizationConfigFingerprint.let {
+            LegacyVolumeNormalizationConfigFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->disableDrcAudioFeatureFlag(Z)Z"
+                    SET_CONFIG_DISABLED_METHOD
+                )
+            }
+        } else {
+            FirstVolumeNormalizationConfigFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    SET_CONFIG_DISABLED_METHOD
+                )
+            }
+
+            SecondVolumeNormalizationConfigFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    SET_CONFIG_DISABLED_METHOD
+                )
+            }
+
+            OptionalVolumeNormalizationConfigFingerprint.let {
+                val mutableMethod = it.method
+
+                val moveResultIndex = it.instructionMatches.first().index
+                val moveResultRegister = mutableMethod.getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+
+                mutableMethod.addInstructionsAtControlFlowLabel(
+                    moveResultIndex + 1,
+                    """
+                        invoke-static { v$moveResultRegister }, $SET_CONFIG_ENABLED_METHOD
+                        move-result v$moveResultRegister
+                    """
                 )
             }
         }

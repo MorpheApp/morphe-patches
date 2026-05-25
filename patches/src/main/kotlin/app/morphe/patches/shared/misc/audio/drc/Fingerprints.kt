@@ -1,6 +1,7 @@
 package app.morphe.patches.shared.misc.audio.drc
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
@@ -45,8 +46,28 @@ internal object CompressionRatioFingerprint : Fingerprint(
     )
 )
 
-internal object VolumeNormalizationConfigFingerprint : Fingerprint(
+internal object LegacyVolumeNormalizationConfigFingerprint : Fingerprint(
     filters = listOf(
         literal(45425391L)
+    )
+)
+
+internal object FirstVolumeNormalizationConfigFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45784793L)
+    )
+)
+
+internal object SecondVolumeNormalizationConfigFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45785775L),
+        opcode(Opcode.MOVE_RESULT, location = MatchAfterWithin(2)),
+    )
+)
+
+internal object OptionalVolumeNormalizationConfigFingerprint : Fingerprint(
+    filters = listOf(
+        opcode(Opcode.MOVE_RESULT),
+        literal(45783491L, location = MatchAfterWithin(2)),
     )
 )

@@ -1,22 +1,28 @@
 package app.morphe.extension.shared.patches;
 
-import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.DISABLE_DRC_AUDIO;
 
 @SuppressWarnings("unused")
 public final class DisableDRCAudioPatch {
-    private static final boolean DISABLE_DRC_AUDIO = SharedYouTubeSettings.DISABLE_DRC_AUDIO.get();
-
     /**
      * Checks if DRC audio should be disabled according to user settings.
      */
     public static boolean disableDrcAudio() {
-        return DISABLE_DRC_AUDIO;
+        return DISABLE_DRC_AUDIO.get();
     }
-
     /**
-     * Override volume normalization feature flag.
+     * Override volume normalization feature flags or optional.
      */
-    public static boolean disableDrcAudioFeatureFlag(boolean original) {
-        return !DISABLE_DRC_AUDIO && original;
+    public static boolean disableDrcAudioConfig(boolean original) {
+        return returnNewConfigValue(original, false);
+    }
+    public static boolean enableDrcAudioConfig(boolean original) {
+        return returnNewConfigValue(original, true);
+    }
+    private static boolean returnNewConfigValue(boolean original, boolean output) {
+        if (!disableDrcAudio()) {
+            return original;
+        }
+        return output;
     }
 }
