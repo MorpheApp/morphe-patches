@@ -195,8 +195,7 @@ public class LoopVideoButton {
             return;
         }
 
-        LoopVideoPatch.setRange(startMs, endMs);
-        LoopVideoPatch.rangeEndIsVideoEnd = endIsVideoEnd;
+        LoopVideoPatch.setRange(startMs, endMs, endIsVideoEnd);
         Settings.LOOP_VIDEO.save(true);
         Utils.showToastShort(str("morphe_loop_video_range_toast_on",
                 formatTime(startMs), formatTime(endMs)));
@@ -407,8 +406,6 @@ public class LoopVideoButton {
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));
 
-        ViewGroup parent = (ViewGroup) field.getParent();
-        if (parent != null) parent.removeView(field);
         field.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT));

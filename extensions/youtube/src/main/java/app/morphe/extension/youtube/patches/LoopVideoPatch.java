@@ -37,9 +37,10 @@ public class LoopVideoPatch {
         return rangeStartMs >= 0 && rangeEndMs > rangeStartMs;
     }
 
-    public static void setRange(long startMs, long endMs) {
+    public static void setRange(long startMs, long endMs, boolean endIsVideoEnd) {
         rangeStartMs = startMs;
         rangeEndMs = endMs;
+        rangeEndIsVideoEnd = endIsVideoEnd;
         rangeVideoId = VideoInformation.getVideoId();
     }
 
@@ -60,6 +61,7 @@ public class LoopVideoPatch {
         final String currentVideoId = VideoInformation.getVideoId();
         if (!rangeVideoId.isEmpty() && !rangeVideoId.equals(currentVideoId)) {
             clearRange();
+            Settings.LOOP_VIDEO.save(false);
             LoopVideoButton.onRangeCleared();
             return;
         }
