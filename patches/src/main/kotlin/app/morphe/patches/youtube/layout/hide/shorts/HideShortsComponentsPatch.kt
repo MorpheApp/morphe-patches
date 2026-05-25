@@ -19,6 +19,7 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
+import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
@@ -69,14 +70,18 @@ private val hideShortsComponentsResourcePatch = resourcePatch {
         val hideShortsWidget by hideShortsWidgetOption
 
         PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("morphe_hide_shorts_channel", summaryKey = null),
-            SwitchPreference("morphe_hide_shorts_home", summaryKey = null),
-            SwitchPreference("morphe_hide_shorts_search", summaryKey = null),
-            SwitchPreference("morphe_hide_shorts_subscriptions", summaryKey = null),
-            SwitchPreference("morphe_hide_shorts_video_description", summaryKey = null),
-            SwitchPreference("morphe_hide_shorts_history", summaryKey = null),
+            PreferenceCategory(
+                titleKey = "morphe_hide_shorts_category_title",
+                preferences = setOf(
+                    SwitchPreference("morphe_hide_shorts_channel", summaryKey = null),
+                    SwitchPreference("morphe_hide_shorts_home", summaryKey = null),
+                    SwitchPreference("morphe_hide_shorts_search", summaryKey = null),
+                    SwitchPreference("morphe_hide_shorts_subscriptions", summaryKey = null),
+                    SwitchPreference("morphe_hide_shorts_video_description", summaryKey = null),
+                    SwitchPreference("morphe_hide_shorts_history", summaryKey = null),
+                )
+            ),
             SwitchPreference("morphe_disable_shorts_double_tap_to_like", summaryKey = null),
-
             PreferenceScreenPreference(
                 key = "morphe_shorts_player_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,

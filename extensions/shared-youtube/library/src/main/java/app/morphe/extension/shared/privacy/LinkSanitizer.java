@@ -24,26 +24,19 @@ public class LinkSanitizer {
                 : List.of(parametersToRemove);
     }
 
-    public String sanitizeURLString(String url) {
-        try {
-            return sanitizeURI(Uri.parse(url)).toString();
-        } catch (Exception ex) {
-            Logger.printException(() -> "sanitizeURLString failure: " + url, ex);
+    public String returnSanitizedURLFromURI(String url) {
+        Uri uri = Uri.parse(url);
+
+        String scheme = uri.getScheme();
+        if (scheme == null || !(scheme.equals("http") || scheme.equals("https"))) {
+            // Opening YouTube share sheet 'other' option passes the video title as a URI.
+            // Checking !uri.isHierarchical() works for all cases, except if the
+            // video title starts with / and then it's hierarchical but still an invalid URI.
+            Logger.printDebug(() -> "Ignoring URL: " + url);
             return url;
         }
-    }
 
-    public Uri sanitizeURI(Uri uri) {
         try {
-            String scheme = uri.getScheme();
-            if (scheme == null || !(scheme.equals("http") || scheme.equals("https"))) {
-                // Opening YouTube share sheet 'other' option passes the video title as a URI.
-                // Checking !uri.isHierarchical() works for all cases, except if the
-                // video title starts with / and then it's hierarchical but still an invalid URI.
-                Logger.printDebug(() -> "Ignoring URI: " + uri);
-                return uri;
-            }
-
             Uri.Builder builder = uri.buildUpon().clearQuery();
 
             if (!parametersToRemove.isEmpty()) {
@@ -56,13 +49,20 @@ public class LinkSanitizer {
                 }
             }
 
-            Uri sanitizedURL = builder.build();
+            // Convert an invite to a common video URL
+            String sanitizedURL =
+                    builder.build().toString().replaceAll(
+                            "sharing/invite/.+?\\?[a-zA-Z]=",
+                            "watch?v="
+                    );
+
+
             Logger.printInfo(() -> "Sanitized URL: " + uri + " to: " + sanitizedURL);
 
             return sanitizedURL;
         } catch (Exception ex) {
-            Logger.printException(() -> "sanitizeURI failure: " + uri, ex);
-            return uri;
+            Logger.printException(() -> "returnSanitizedURLFromURI failure: " + url, ex);
+            return url;
         }
     }
 }

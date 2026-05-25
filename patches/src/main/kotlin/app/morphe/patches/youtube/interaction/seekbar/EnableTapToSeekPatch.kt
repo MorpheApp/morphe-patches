@@ -25,7 +25,7 @@ val enableTapToSeekPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("morphe_tap_to_seek", summaryKey = null),
+            SwitchPreference("morphe_tap_to_seek"),
         )
 
         // Find the required methods to tap the seekbar.

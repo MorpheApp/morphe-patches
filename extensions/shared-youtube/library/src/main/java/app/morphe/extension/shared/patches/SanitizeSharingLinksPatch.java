@@ -32,8 +32,8 @@ public final class SanitizeSharingLinksPatch {
     public static String sanitize(String originalURL) {
         Matcher urlMatcher =
                 Pattern.
-                        compile("https?://[^\\s]+(?<![.!?,-])").
-                        matcher(originalURL);
+                compile("https?://[^\\s]+(?<![.!?,-])").
+                matcher(originalURL);
         String url;
         if (urlMatcher.find()) {
             url = urlMatcher.group();
@@ -47,7 +47,7 @@ public final class SanitizeSharingLinksPatch {
         }
 
         if (SANITIZE_SHARING_LINKS.get()) {
-            url = sanitizer.sanitizeURLString(url);
+            url = sanitizer.returnSanitizedURLFromURI(url);
         }
 
         if (REPLACE_MUSIC_LINKS_WITH_YOUTUBE.get()) {
@@ -61,6 +61,7 @@ public final class SanitizeSharingLinksPatch {
         return url;
     }
 
+    private static final String timeQueryTagName = "t";
     private static String replaceWithShortenedUrl(String url) {
         try {
             Uri uri = Uri.parse(url);
@@ -71,34 +72,33 @@ public final class SanitizeSharingLinksPatch {
             }
             String pathType = segments.get(0);
             String videoId = "";
-            int getQueryAttempts = 0;
-            while (getQueryAttempts <= 3) {
-                videoId = switch (getQueryAttempts) {
+            int currentGetVideoIDAttempts = 0;
+            int maxGetVideoIDAttempts = 3;
+            while (currentGetVideoIDAttempts <= maxGetVideoIDAttempts) {
+                videoId = switch (currentGetVideoIDAttempts) {
                     case 0 -> uri.getQueryParameter("v");
                     case 1 -> uri.getQueryParameter("w");
                     case 2 -> uri.getQueryParameter("s");
-                    default -> segments.get(1);
+                    default -> segments.size() > 1 ? segments.get(1) : "";
                 };
-
                 if (!TextUtils.isEmpty(videoId)) {
                     break;
                 }
-
-                getQueryAttempts++;
+                currentGetVideoIDAttempts++;
             }
-            if (TextUtils.isEmpty(videoId)) {
-                return url;
-            }
-            String timeQueryContent = uri.getQueryParameter("t");
             Uri.Builder finalURL =
                     new Uri.Builder()
                     .scheme("https")
-                    .authority("youtu.be")
-                    .appendPath(videoId);
-            if (!TextUtils.isEmpty(timeQueryContent)) {
-                finalURL.appendQueryParameter("t", timeQueryContent);
+                    .authority("youtu.be");
+            if (currentGetVideoIDAttempts < maxGetVideoIDAttempts + 1) {
+                finalURL.appendPath(videoId);
+                String timeQueryContent = uri.getQueryParameter(timeQueryTagName);
+                if (!TextUtils.isEmpty(timeQueryContent)) {
+                    finalURL.appendQueryParameter(timeQueryTagName, timeQueryContent);
+                }
+                return finalURL.build().toString();
             }
-            return finalURL.build().toString();
+            return url;
         } catch (Exception ex) {
             Logger.printException(() -> "replaceWithShortenedUrl failure: " + url, ex);
             return url;

@@ -136,7 +136,7 @@ Disabling battery optimizations for MicroG will not negatively affect battery us
 
 Tap the continue button and allow optimization changes."</string>
     <string name="gms_core_dialog_continue_text">Continue</string>
-    <string name="morphe_gms_core_battery_optimization_dialog_title">Show battery optimization dialog</string>
+    <string name="morphe_gms_core_battery_optimization_dialog_title">Show MicroG battery optimization dialog</string>
     <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabling this will hide the MicroG battery optimization prompt.
 
 If battery optimizations are not changed then you may experience:
@@ -146,7 +146,7 @@ If battery optimizations are not changed then you may experience:
 
     <!-- misc.gms.linkHandlingPatch -->
     <string name="morphe_link_handling_title">App link handling</string>
-    <string name="morphe_link_handling_summary">Configure which app opens links</string>
+    <string name="morphe_link_handling_summary">Configure links to open in this app</string>
     <string name="morphe_link_handling_step1_title">Step 1: Disable original app links</string>
     <string name="morphe_link_handling_step1_message">Open the original app\'s settings and disable all domain links</string>
     <string name="morphe_link_handling_step2_title">Step 2: Enable patched app links</string>

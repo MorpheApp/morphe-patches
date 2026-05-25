@@ -48,7 +48,7 @@ Second \"item\" text"</string>
     <string name="morphe_spoof_video_streams_screen_title">Spoof video streams</string>
     <string name="morphe_spoof_video_streams_screen_summary">Configure client spoofing to prevent playback issues</string>
     <string name="morphe_spoof_video_streams_title">Spoof video streams</string>
-    <string name="morphe_spoof_video_streams_summary">"Tricks YouTube into sending a compatible video stream, which fixes playback for most users
+    <string name="morphe_spoof_video_streams_summary">"Fixes playback issues for most users by requesting a compatible video stream
 
 If you are a YouTube Premium user, this setting may not be required"</string>
     <string name="morphe_spoof_video_streams_no_clients_toast">Could not fetch any client streams</string>
@@ -124,6 +124,7 @@ To sign in, press continue below"</string>
     <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
     <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
     <string name="morphe_replace_music_with_youtube_title">Change share links to youtube.com</string>
+    <string name="morphe_replace_music_with_youtube_summary">Replaces music.youtube.com to youtube.com in shared links</string>
     <string name="morphe_replace_links_with_shortener_title">Change share links to youtu.be</string>
     <string name="morphe_replace_links_with_shortener_summary">Forces videos to use the shortened youtu.be URL format</string>
 </resources>

@@ -56,6 +56,7 @@ private val hideAdsResourcePatch = resourcePatch {
 
     execute {
         PreferenceScreen.ADS.addPreferences(
+            SwitchPreference("morphe_hide_creator_store_shelf", summaryKey = null),
             SwitchPreference("morphe_hide_end_screen_store_banner", summaryKey = null),
             SwitchPreference("morphe_hide_general_ads", summaryKey = null),
             SwitchPreference("morphe_hide_merchandise_banners", summaryKey = null),

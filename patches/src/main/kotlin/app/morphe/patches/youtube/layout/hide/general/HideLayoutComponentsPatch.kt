@@ -100,12 +100,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.ADS.addPreferences(
-            // Uses horizontal shelf and a buffer, which requires managing in a single place in the code
-            // to ensure the generic "hide horizontal shelves" doesn't hide when it should show.
-            SwitchPreference("morphe_hide_creator_store_shelf", summaryKey = null)
-        )
-
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_hide_description_components_screen",
@@ -258,10 +252,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 )
             ),
             SwitchPreference("morphe_hide_floating_microphone_button"),
-            SwitchPreference(
-                key = "morphe_hide_horizontal_shelves",
-                tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
-            ),
+            SwitchPreference("morphe_hide_horizontal_shelves"),
             SwitchPreference("morphe_hide_hyped_label", summaryKey = null),
             SwitchPreference("morphe_hide_image_shelf"),
             SwitchPreference("morphe_hide_latest_videos_button"),
@@ -272,12 +263,12 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_search_term_thumbnails"),
             SwitchPreference("morphe_hide_show_more_button"),
             SwitchPreference("morphe_hide_subscribed_channels_bar", summaryKey = null),
-            SwitchPreference("morphe_hide_surveys", summaryKey = null),
+            SwitchPreference("morphe_hide_surveys"),
             SwitchPreference("morphe_hide_ticket_shelf", summaryKey = null),
             SwitchPreference("morphe_hide_upload_time", summaryKey = null),
             SwitchPreference("morphe_hide_video_recommendation_labels"),
             SwitchPreference("morphe_hide_view_count", summaryKey = null),
-            SwitchPreference("morphe_hide_web_search_results", summaryKey = null),
+            SwitchPreference("morphe_hide_web_search_results"),
             SwitchPreference("morphe_hide_youtube_doodles"),
         )
 

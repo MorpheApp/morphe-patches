@@ -43,7 +43,7 @@ Second \"item\" text"</string>
 
     <!-- interaction.crossfade.crossfadePatch -->
     <string name="morphe_music_crossfade_screen_title">Crossfade</string>
-    <string name="morphe_music_crossfade_screen_summary">Customize how tracks smoothly blend into each other</string>
+    <string name="morphe_music_crossfade_screen_summary">Smoothly blend tracks into each other</string>
     <string name="morphe_music_crossfade_enabled_title">Enable crossfade</string>
     <string name="morphe_music_crossfade_curve_title">Fade curve</string>
     <string name="morphe_music_crossfade_curve_entry_equal_power">Equal power</string>
@@ -121,7 +121,7 @@ Feature implementation by VazerOG"</string>
 
     <!-- layout.navigationbar.navigationBarPatch -->
     <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
-    <string name="morphe_music_navigation_bar_screen_summary">Choose which buttons appear in the navigation bar</string>
+    <string name="morphe_music_navigation_bar_screen_summary">Choose which buttons appear in the bottom navigation bar</string>
     <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
     <string name="morphe_music_hide_navigation_bar_home_button_title">Hide Home button</string>
     <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

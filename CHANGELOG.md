@@ -1,3 +1,10 @@
+## [1.30.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.30.0-dev.1...v1.30.0-dev.2) (2026-05-24)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Reload video:** Allow reloading video that has not finished starting ([8318079](https://github.com/MorpheApp/morphe-patches/commit/8318079f1b7ec256ba7a738c0cb247ea78567135))
+* **YouTube - Sanitize sharing links:** Sanitize system share sheet ([#1536](https://github.com/MorpheApp/morphe-patches/issues/1536)) ([c0338d8](https://github.com/MorpheApp/morphe-patches/commit/c0338d8bb6802a4b160100abec625a03d7b49f4e))
+
 ## [1.30.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.29.1-dev.2...v1.30.0-dev.1) (2026-05-23)
 
 ### ✨ New Features
