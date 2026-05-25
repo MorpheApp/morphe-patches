@@ -59,41 +59,49 @@ public final class ReloadVideoPatch {
             PlayerInterface playerInterface = playerInterfaceRef.get();
             if (playerInterface == null) {
                 Utils.showToastShort(str("morphe_dismiss_player_not_available_toast"));
-            } else {
-                String videoId = VideoInformation.getVideoId();
-                String playlistId = VideoInformation.getPlaylistId();
-
-                // Dismiss the player.
-                playerInterface.patch_dismissPlayer();
-
-                // Reopens the video after 500ms.
-                // If the video was opened from a playlist, the playlist ID is also used.
-                Utils.runOnMainThreadDelayed(() -> openVideo(playlistId, videoId), 500);
+                return;
             }
+
+            // Must use player response video id, otherwise reloading a video that isn't opening
+            // can use the wrong video id. Response video id may be a feed Short that was scrolled
+            // past but not opened.
+            String videoId = VideoInformation.lastPlayerResponseIsShort()
+                    ? VideoInformation.getVideoId() // Player response may be a Short in the feed.
+                    : VideoInformation.getPlayerResponseVideoId();
+            String playlistId = VideoInformation.getPlaylistId();
+            final long videoTime = VideoInformation.getVideoTime();
+
+            // Dismiss the player.
+            playerInterface.patch_dismissPlayer();
+
+            // Reopens the video after 500ms.
+            Utils.runOnMainThreadDelayed(() -> openVideo(playlistId, videoId, videoTime), 500);
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to reload video", ex);
         }
     }
 
     @SuppressWarnings("ExtractMethodRecommender")
-    private static void openVideo(String playlistId, String videoId) {
+    private static void openVideo(String playlistId, String videoId, long videoTime) {
         try {
             String parameterSeparator = "?";
             StringBuilder builder = new StringBuilder("https://youtu.be/");
             builder.append(videoId);
             if (!playlistId.isEmpty()) {
                 builder.append(parameterSeparator);
-                parameterSeparator = "&";
                 builder.append("list=");
                 builder.append(playlistId);
+                parameterSeparator = "&";
             }
-            long currentVideoTimeInSeconds = VideoInformation.getVideoTime() / 1000;
-            if (currentVideoTimeInSeconds > 0) {
+            if (videoTime > 0) {
                 builder.append(parameterSeparator);
                 builder.append("t=");
-                builder.append(currentVideoTimeInSeconds);
+                builder.append(videoTime / 1000);
+                builder.append('s');
             }
-            Uri content = Uri.parse(builder.toString());
+            String builderString = builder.toString();
+            Uri content = Uri.parse(builderString);
+            Logger.printDebug(() -> "Opening: " + builderString);
 
             // If possible, use the main activity as the context.
             // Otherwise, fall back on using the application context.
@@ -119,5 +127,4 @@ public final class ReloadVideoPatch {
             Logger.printException(() -> "Failed to open video", e);
         }
     }
-
 }
