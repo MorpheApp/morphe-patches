@@ -28,6 +28,8 @@ private val loopVideoButtonResourcePatch = resourcePatch {
                 "morphe_loop_video_button_off.xml",
                 "morphe_loop_video_button_on_bold.xml",
                 "morphe_loop_video_button_off_bold.xml",
+                "morphe_loop_video_button_range.xml",
+                "morphe_loop_video_button_range_bold.xml"
             )
         )
     }
@@ -45,7 +47,7 @@ private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/LoopVideoButton;"
 
 internal val loopVideoButtonPatch = bytecodePatch(
-    description = "Adds an option to display loop video button in the video player.",
+    description = "Adds an option to display loop video button in the video player."
 ) {
     dependsOn(
         sharedExtensionPatch,

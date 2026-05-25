@@ -339,6 +339,15 @@ Verify the package name is correct and the app is installed"</string>
     <string name="morphe_loop_video_button_title">Show Loop video button</string>
     <string name="morphe_loop_video_button_toast_on">Loop video is on</string>
     <string name="morphe_loop_video_button_toast_off">Loop video is off</string>
+    <string name="morphe_loop_video_range_dialog_title">Loop range</string>
+    <string name="morphe_loop_video_range_label_start">Start</string>
+    <string name="morphe_loop_video_range_label_end">End</string>
+    <string name="morphe_loop_video_range_hint_start">mm:ss</string>
+    <string name="morphe_loop_video_range_hint_end">mm:ss (empty = video end)</string>
+    <string name="morphe_loop_video_range_set">Set</string>
+    <string name="morphe_loop_video_range_clear">Clear</string>
+    <string name="morphe_loop_video_range_toast_on">Looping %1$s - %2$s</string>
+    <string name="morphe_loop_video_range_invalid_time">Invalid time range</string>
 
     <!-- interaction.playall.playAllButtonPatch -->
     <string name="morphe_play_all_button_title">Show Play all button</string>
