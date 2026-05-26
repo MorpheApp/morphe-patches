@@ -200,26 +200,13 @@ val themePatch = baseThemePatch(
                 val isMaterialYouLight = lightThemeBackgroundColor!!.startsWith("@android:color/system_")
 
                 // Secondary fix: patches Cairo drawable files (fallback for Cairo rendering path).
-                arrayOf(
-                    "new_content_dot_background.xml",
-                    "new_content_dot_background_cairo.xml"
-                ).forEach { fileName ->
-                    patchDotColor(
-                        "drawable-anydpi-v31",
-                        fileName,
-                        if (isMaterialYouLight) "@android:color/system_accent1_200" else null
-                    )
-                }
-
-                arrayOf(
-                    "new_content_count_background.xml",
-                    "new_content_count_background_cairo.xml"
-                ).forEach { fileName ->
-                    patchDotColor(
-                        "drawable-anydpi-v31",
-                        fileName,
-                        if (isMaterialYouLight) "@android:color/system_accent1_100" else null
-                    )
+                mapOf(
+                    "new_content_dot_background.xml" to "@android:color/system_accent1_200",
+                    "new_content_dot_background_cairo.xml" to "@android:color/system_accent1_200",
+                    "new_content_count_background.xml" to "@android:color/system_accent1_100",
+                    "new_content_count_background_cairo.xml" to "@android:color/system_accent1_100",
+                ).forEach { (fileName, color) ->
+                    patchDotColor("drawable-anydpi-v31", fileName, if (isMaterialYouLight) color else null)
                 }
 
                 // Primary fix: override PivotBar styles so YouTube uses the correct dot drawable
