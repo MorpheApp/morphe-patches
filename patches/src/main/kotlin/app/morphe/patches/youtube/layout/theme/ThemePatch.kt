@@ -196,14 +196,16 @@ val themePatch = baseThemePatch(
                     }
                 }
 
+                val isMaterialYouDark = darkThemeBackgroundColorOption.value!!.startsWith("@android:color/system_")
                 val isMaterialYouLight = lightThemeBackgroundColor!!.startsWith("@android:color/system_")
 
+                // Secondary fix: patches Cairo drawable files (fallback for Cairo rendering path).
                 arrayOf(
                     "new_content_dot_background.xml",
                     "new_content_dot_background_cairo.xml"
                 ).forEach { fileName ->
                     patchDotColor(
-                        "drawable-notnight-anydpi-v31",
+                        "drawable-anydpi-v31",
                         fileName,
                         if (isMaterialYouLight) "@android:color/system_accent1_200" else null
                     )
@@ -214,10 +216,81 @@ val themePatch = baseThemePatch(
                     "new_content_count_background_cairo.xml"
                 ).forEach { fileName ->
                     patchDotColor(
-                        "drawable-notnight-anydpi-v31",
+                        "drawable-anydpi-v31",
                         fileName,
                         if (isMaterialYouLight) "@android:color/system_accent1_100" else null
                     )
+                }
+
+                // Primary fix: override PivotBar styles so YouTube uses the correct dot drawable
+                // regardless of when the night mode flag is applied to the Activity's Resources.
+                // YouTube passes the style ID explicitly to obtainStyledAttributes, so this works
+                // on cold start without depending on the system night mode configuration.
+                if (isMaterialYouDark || isMaterialYouLight) {
+                    fun createNotifDrawable(
+                        resPath: String,
+                        color: String,
+                        shape: String,
+                        hasCorners: Boolean = false,
+                    ) {
+                        val file = get("res").resolve(resPath)
+                        file.parentFile?.mkdirs()
+                        val cornersLine = if (hasCorners)
+                            "\n    <corners android:radius=\"@dimen/new_content_count_radius\" />"
+                        else ""
+                        file.writeText(
+                            "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+                            "<shape android:shape=\"$shape\"\n" +
+                            "  xmlns:android=\"http://schemas.android.com/apk/res/android\">\n" +
+                            "    <solid android:color=\"$color\" />$cornersLine\n" +
+                            "</shape>"
+                        )
+                    }
+
+                    if (isMaterialYouDark) {
+                        createNotifDrawable("drawable/morphe_notif_dot_dark.xml", "@android:color/system_accent1_100", "oval")
+                        createNotifDrawable("drawable/morphe_notif_count_dark.xml", "@android:color/system_accent1_100", "rectangle", hasCorners = true)
+                    }
+                    if (isMaterialYouLight) {
+                        createNotifDrawable("drawable/morphe_notif_dot_light.xml", "@android:color/system_accent1_200", "oval")
+                        createNotifDrawable("drawable/morphe_notif_count_light.xml", "@android:color/system_accent1_100", "rectangle", hasCorners = true)
+                    }
+
+                    document("res/values/styles.xml").use { doc ->
+                        val resources = doc.getElementsByTagName("resources").item(0) as? Element ?: return@use
+
+                        resources.forEachChildElement { style ->
+                            if (style.nodeName != "style") return@forEachChildElement
+
+                            val overrides: Map<String, String> = when (style.getAttribute("name")) {
+                                "PivotBar.Dark" -> if (isMaterialYouDark) mapOf(
+                                    "dotBackground" to "@drawable/morphe_notif_dot_dark",
+                                    "countBackground" to "@drawable/morphe_notif_count_dark"
+                                ) else return@forEachChildElement
+                                "PivotBar.Default" -> if (isMaterialYouLight) mapOf(
+                                    "dotBackground" to "@drawable/morphe_notif_dot_light",
+                                    "countBackground" to "@drawable/morphe_notif_count_light"
+                                ) else return@forEachChildElement
+                                else -> return@forEachChildElement
+                            }
+
+                            overrides.forEach { (attrName, attrValue) ->
+                                var found = false
+                                style.forEachChildElement { item ->
+                                    if (item.nodeName == "item" && item.getAttribute("name") == attrName) {
+                                        item.textContent = attrValue
+                                        found = true
+                                    }
+                                }
+                                if (!found) {
+                                    style.appendChild(doc.createElement("item").apply {
+                                        setAttribute("name", attrName)
+                                        textContent = attrValue
+                                    })
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
