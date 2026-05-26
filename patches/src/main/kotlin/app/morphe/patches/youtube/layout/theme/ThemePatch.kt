@@ -250,6 +250,21 @@ val themePatch = baseThemePatch(
                     if (isMaterialYouDark) {
                         createNotifDrawable("drawable/morphe_notif_dot_dark.xml", "@android:color/system_accent1_100", "oval")
                         createNotifDrawable("drawable/morphe_notif_count_dark.xml", "@android:color/system_accent1_100", "rectangle", hasCorners = true)
+                    } else {
+                        // drawable-anydpi-v31/ is patched with MY light color, so PivotBar.Dark
+                        // must be redirected to copies in drawable/ that keep the original theme attrs.
+                        val resDir = get("res")
+                        listOf(
+                            "new_content_dot_background.xml" to "drawable/morphe_notif_dot_dark.xml",
+                            "new_content_count_background.xml" to "drawable/morphe_notif_count_dark.xml"
+                        ).forEach { (srcName, dstPath) ->
+                            val src = listOf("drawable", "drawable-anydpi-v26", "drawable-anydpi", "drawable-v24", "drawable-v31")
+                                .firstNotNullOfOrNull { dir -> resDir.resolve("$dir/$srcName").takeIf { it.exists() } }
+                                ?: return@forEach
+                            val dst = resDir.resolve(dstPath)
+                            dst.parentFile?.mkdirs()
+                            if (!dst.exists()) src.copyTo(dst)
+                        }
                     }
                     if (isMaterialYouLight) {
                         createNotifDrawable("drawable/morphe_notif_dot_light.xml", "@android:color/system_accent1_200", "oval")
@@ -263,10 +278,10 @@ val themePatch = baseThemePatch(
                             if (style.nodeName != "style") return@forEachChildElement
 
                             val overrides: Map<String, String> = when (style.getAttribute("name")) {
-                                "PivotBar.Dark" -> if (isMaterialYouDark) mapOf(
+                                "PivotBar.Dark" -> mapOf(
                                     "dotBackground" to "@drawable/morphe_notif_dot_dark",
                                     "countBackground" to "@drawable/morphe_notif_count_dark"
-                                ) else return@forEachChildElement
+                                )
                                 "PivotBar.Default" -> if (isMaterialYouLight) mapOf(
                                     "dotBackground" to "@drawable/morphe_notif_dot_light",
                                     "countBackground" to "@drawable/morphe_notif_count_light"
