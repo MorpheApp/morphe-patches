@@ -19,16 +19,14 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/shared/patches/DisableDRCAudioPatch;"
-private const val SET_CONFIG_DISABLED_METHOD = "$EXTENSION_CLASS->disableDrcAudioConfig(Z)Z"
-private const val SET_CONFIG_ENABLED_METHOD = "$EXTENSION_CLASS->enableDrcAudioConfig(Z)Z"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/DisableDRCAudioPatch;"
 
 @Suppress("unused")
 internal fun disableDRCAudioPatch(
     block: BytecodePatchBuilder.() -> Unit,
     preferenceScreen: BasePreferenceScreen.Screen,
-    overrideNormalizationFlag: BytecodePatchBuilder.() -> Boolean
+    useLegacyNormalizationFlag: BytecodePatchBuilder.() -> Boolean,
+    useNormalizationFlag: BytecodePatchBuilder.() -> Boolean
 ) = bytecodePatch(
     name = "Disable DRC audio",
     description = "Adds an option to disable DRC (Dynamic Range Compression) audio."
@@ -94,42 +92,44 @@ internal fun disableDRCAudioPatch(
             }
         }
 
-        if (overrideNormalizationFlag()) {
-            // If this flag is enabled, the DRC level will depend on other values besides loudnessDb.
-            LegacyVolumeNormalizationConfigFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    SET_CONFIG_DISABLED_METHOD
-                )
-            }
-        } else {
-            FirstVolumeNormalizationConfigFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    SET_CONFIG_DISABLED_METHOD
-                )
-            }
+        val setConfigDisabledMethod = "$EXTENSION_CLASS->disableDrcAudioConfig(Z)Z"
 
-            SecondVolumeNormalizationConfigFingerprint.let {
+        if (useLegacyNormalizationFlag()) {
+            // If this flag is enabled, the DRC level will depend on other values besides loudnessDb.
+            VolumeNormalizationConfigLegacyFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    SET_CONFIG_DISABLED_METHOD
+                    setConfigDisabledMethod
+                )
+            }
+        }
+
+        if (useNormalizationFlag()) {
+            VolumeNormalizationConfigFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    setConfigDisabledMethod
                 )
             }
 
             OptionalVolumeNormalizationConfigFingerprint.let {
-                val mutableMethod = it.method
+                it.method.apply {
+                    val moveResultIndex = it.instructionMatches[3].index
+                    val moveResultRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
 
-                val moveResultIndex = it.instructionMatches.first().index
-                val moveResultRegister = mutableMethod.getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+                    addInstructionsAtControlFlowLabel(
+                        moveResultIndex + 1,
+                        """
+                            invoke-static { v$moveResultRegister }, $EXTENSION_CLASS->enableDrcAudioConfig(Z)Z
+                            move-result v$moveResultRegister
+                        """
+                    )
 
-                mutableMethod.addInstructionsAtControlFlowLabel(
-                    moveResultIndex + 1,
-                    """
-                        invoke-static { v$moveResultRegister }, $SET_CONFIG_ENABLED_METHOD
-                        move-result v$moveResultRegister
-                    """
-                )
+                    it.method.insertLiteralOverride(
+                        it.instructionMatches.first().index,
+                        setConfigDisabledMethod
+                    )
+                }
             }
         }
     }
