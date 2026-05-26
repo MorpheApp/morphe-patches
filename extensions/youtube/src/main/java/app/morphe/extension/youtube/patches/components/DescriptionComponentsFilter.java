@@ -43,6 +43,10 @@ final class DescriptionComponentsFilter extends Filter {
 
         featuredSectionGroupList.addAll(
                 new ByteArrayFilterGroup(
+                        Settings.HIDE_FEATURED_CHANNELS_SECTION,
+                        "structured_description_channel_lockup"
+                ),
+                new ByteArrayFilterGroup(
                         Settings.HIDE_FEATURED_LINKS_SECTION,
                         "media_lockup"
                 ),
