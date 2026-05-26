@@ -158,6 +158,7 @@ internal fun baseThemeResourcePatch(
 }
 
 fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colorValue: String?) {
+    if (colorValue == null) return
     try {
         val resDir = get("res")
         val possibleSourceDirs = listOf(
@@ -180,8 +181,6 @@ fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colo
 
         if (!targetDirFile.exists()) targetDirFile.mkdirs()
         if (!targetFile.exists()) sourceFile.copyTo(targetFile)
-
-        if (colorValue == null) return
 
         document("res/$targetDir/$fileName").use { document ->
             val shapeNode = document.getElementsByTagName("shape").item(0) as? Element ?: return@use
