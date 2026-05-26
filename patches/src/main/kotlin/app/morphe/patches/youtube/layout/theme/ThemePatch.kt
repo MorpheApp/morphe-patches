@@ -5,14 +5,13 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.layout.theme.THEME_COLOR_OPTION_DESCRIPTION
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_LIGHT_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
-import app.morphe.patches.all.misc.resources.resourceMappingPatch
-import app.morphe.patches.shared.layout.theme.patchDotColor
 import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -199,20 +198,9 @@ val themePatch = baseThemePatch(
                 val isMaterialYouDark = darkThemeBackgroundColorOption.value!!.startsWith("@android:color/system_")
                 val isMaterialYouLight = lightThemeBackgroundColor!!.startsWith("@android:color/system_")
 
-                // Secondary fix: patches Cairo drawable files (fallback for Cairo rendering path).
-                mapOf(
-                    "new_content_dot_background.xml" to "@android:color/system_accent1_200",
-                    "new_content_dot_background_cairo.xml" to "@android:color/system_accent1_200",
-                    "new_content_count_background.xml" to "@android:color/system_accent1_100",
-                    "new_content_count_background_cairo.xml" to "@android:color/system_accent1_100",
-                ).forEach { (fileName, color) ->
-                    patchDotColor("drawable-anydpi-v31", fileName, if (isMaterialYouLight) color else null)
-                }
-
-                // Primary fix: override PivotBar styles so YouTube uses the correct dot drawable
-                // regardless of when the night mode flag is applied to the Activity's Resources.
-                // YouTube passes the style ID explicitly to obtainStyledAttributes, so this works
-                // on cold start without depending on the system night mode configuration.
+                // YouTube applies CairoLightThemeUpdates/CairoDarkThemeUpdates to the context theme
+                // before Cairo renders, so ?ytRedIndicator in Cairo drawables resolves
+                // from the style - not from night mode resource qualifiers.
                 if (isMaterialYouDark || isMaterialYouLight) {
                     fun createNotifDrawable(
                         resPath: String,
@@ -237,21 +225,6 @@ val themePatch = baseThemePatch(
                     if (isMaterialYouDark) {
                         createNotifDrawable("drawable/morphe_notif_dot_dark.xml", "@android:color/system_accent1_100", "oval")
                         createNotifDrawable("drawable/morphe_notif_count_dark.xml", "@android:color/system_accent1_100", "rectangle", hasCorners = true)
-                    } else {
-                        // drawable-anydpi-v31/ is patched with MY light color, so PivotBar.Dark
-                        // must be redirected to copies in drawable/ that keep the original theme attrs.
-                        val resDir = get("res")
-                        listOf(
-                            "new_content_dot_background.xml" to "drawable/morphe_notif_dot_dark.xml",
-                            "new_content_count_background.xml" to "drawable/morphe_notif_count_dark.xml"
-                        ).forEach { (srcName, dstPath) ->
-                            val src = listOf("drawable", "drawable-anydpi-v26", "drawable-anydpi", "drawable-v24", "drawable-v31")
-                                .firstNotNullOfOrNull { dir -> resDir.resolve("$dir/$srcName").takeIf { it.exists() } }
-                                ?: return@forEach
-                            val dst = resDir.resolve(dstPath)
-                            dst.parentFile?.mkdirs()
-                            if (!dst.exists()) src.copyTo(dst)
-                        }
                     }
                     if (isMaterialYouLight) {
                         createNotifDrawable("drawable/morphe_notif_dot_light.xml", "@android:color/system_accent1_200", "oval")
@@ -265,13 +238,19 @@ val themePatch = baseThemePatch(
                             if (style.nodeName != "style") return@forEachChildElement
 
                             val overrides: Map<String, String> = when (style.getAttribute("name")) {
-                                "PivotBar.Dark" -> mapOf(
+                                "PivotBar.Dark" -> if (isMaterialYouDark) mapOf(
                                     "dotBackground" to "@drawable/morphe_notif_dot_dark",
                                     "countBackground" to "@drawable/morphe_notif_count_dark"
-                                )
+                                ) else return@forEachChildElement
                                 "PivotBar.Default" -> if (isMaterialYouLight) mapOf(
                                     "dotBackground" to "@drawable/morphe_notif_dot_light",
                                     "countBackground" to "@drawable/morphe_notif_count_light"
+                                ) else return@forEachChildElement
+                                "CairoLightThemeUpdates" -> if (isMaterialYouLight) mapOf(
+                                    "ytRedIndicator" to "@android:color/system_accent1_200"
+                                ) else return@forEachChildElement
+                                "CairoDarkThemeUpdates" -> if (isMaterialYouDark) mapOf(
+                                    "ytRedIndicator" to "@android:color/system_accent1_100"
                                 ) else return@forEachChildElement
                                 else -> return@forEachChildElement
                             }
