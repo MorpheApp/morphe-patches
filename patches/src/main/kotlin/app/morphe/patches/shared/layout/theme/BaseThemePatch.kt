@@ -11,7 +11,6 @@ import app.morphe.util.childElementsSequence
 import app.morphe.util.forEachChildElement
 import java.util.Locale
 import org.w3c.dom.Element
-import java.io.File
 
 internal const val THEME_COLOR_OPTION_DESCRIPTION = "Can be a hex color (#RRGGBB) or a color resource reference."
 
@@ -161,20 +160,11 @@ fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colo
     if (colorValue == null) return
     try {
         val resDir = get("res")
-        val possibleSourceDirs = listOf(
+        val sourceFile = listOf(
             "drawable", "drawable-anydpi-v26", "drawable-anydpi", "drawable-v24", "drawable-v31"
-        )
-        var sourceFile: File? = null
-
-        for (dir in possibleSourceDirs) {
-            val file = resDir.resolve("$dir/$fileName")
-            if (file.exists()) {
-                sourceFile = file
-                break
-            }
-        }
-
-        if (sourceFile == null) return
+        ).firstNotNullOfOrNull { dir ->
+            resDir.resolve("$dir/$fileName").takeIf { it.exists() }
+        } ?: return
 
         val targetDirFile = resDir.resolve(targetDir)
         val targetFile = targetDirFile.resolve(fileName)
