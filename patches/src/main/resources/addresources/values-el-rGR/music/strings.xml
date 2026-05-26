@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Απόκρυψη διαφημίσεων βίντεο</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Διασύνδεση</string>
-  <string name="morphe_music_crossfade_screen_summary">Προσαρμόστε τον τρόπο με τον οποίο οι κομματίες συνδυάζονται ομαλά μεταξύ τους</string>
+  <string name="morphe_music_crossfade_screen_summary">Εναρμόνιση κομματιών μεταξύ τους</string>
   <string name="morphe_music_crossfade_enabled_title">Ενεργοποιήστε τη διασύνδεση</string>
   <string name="morphe_music_crossfade_curve_title">Κάμπυλα εξασθένισης</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Ίση ισχύς</string>
@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Αποτρέπει την αυτόματη επέκταση του player σε πλήρη οθόνη όταν ξεκινάει ένα νέο κομμάτι</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Γραμμή πλοήγησης</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Επιλέξτε ποια κουμπιά εμφανίζονται στη γραμμή πλοήγησης</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Επιλέξτε ποια κουμπιά θα εμφανίζονται στη κάτω μπάρα πλοήγησης</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Απόκρυψη κουμπιού \"Αρχική\"</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

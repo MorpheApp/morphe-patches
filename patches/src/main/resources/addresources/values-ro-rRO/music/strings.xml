@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Ascunde anunțurile video</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Estompare încrucișată</string>
-  <string name="morphe_music_crossfade_screen_summary">Personalizează modul în care piesele se amestecă lin una în alta</string>
+  <string name="morphe_music_crossfade_screen_summary">Amestecă lin piesele una în alta</string>
   <string name="morphe_music_crossfade_enabled_title">Activează estomparea încrucișată</string>
   <string name="morphe_music_crossfade_curve_title">Curba de estompare</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Putere egală</string>
@@ -103,7 +103,7 @@ Implementare a funcționalității de către VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Împiedică playerul să se extindă automat pe ecran complet când începe o piesă nouă</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Bară de navigare</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Alege ce butoane apar în bara de navigare</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Alege care butoane apar în bara de navigare de jos</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ascunde butonul Home</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

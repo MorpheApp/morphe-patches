@@ -22,7 +22,6 @@ import java.util.Locale;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
 
@@ -33,7 +32,7 @@ public enum ClientType {
      * Uses non-adaptive bitrate.
      * AV1 codec available.
      */
-    ANDROID_REEL(
+    ANDROID_REEL_AUTH(
             3,
             "ANDROID",
             "com.google.android.youtube",
@@ -44,19 +43,39 @@ public enum ClientType {
             String.valueOf(Build.VERSION.SDK_INT),
             Build.ID,
             // A hardcoded client version is used for YouTube Music.
-            IS_YOUTUBE ? Utils.getAppVersionName() : "20.26.46",
+            "20.26.46",
             null,
             // This client has been used by most open-source YouTube stream extraction tools since 2024, including NewPipe Extractor, SmartTube, and Grayjay.
             // This client can log in, but if an access token is used in the request, GVS can more easily identify the request as coming from Morphe.
             // This means that the GVS server can strengthen its validation of the ANDROID_REEL client.
             // For this reason, ANDROID_REEL is used as a logout client.
-            false,
-            false,
+            IS_YOUTUBE,
+            IS_YOUTUBE,
             true,
             false,
             false,
             PlayerRoutes.GET_REEL_STREAMING_DATA,
-            "Android Reel"
+            "Android Reel auth"
+    ),
+    ANDROID_REEL_NO_AUTH(
+            ANDROID_REEL_AUTH.id,
+            ANDROID_REEL_AUTH.clientName,
+            Objects.requireNonNull(ANDROID_REEL_AUTH.packageName),
+            ANDROID_REEL_AUTH.deviceMake,
+            ANDROID_REEL_AUTH.deviceModel,
+            ANDROID_REEL_AUTH.osName,
+            ANDROID_REEL_AUTH.osVersion,
+            Objects.requireNonNull(ANDROID_REEL_AUTH.androidSdkVersion),
+            ANDROID_REEL_AUTH.buildID,
+            ANDROID_REEL_AUTH.clientVersion,
+            ANDROID_REEL_AUTH.clientPlatform,
+            false,
+            false,
+            ANDROID_REEL_AUTH.supportsMultiAudioTracks,
+            ANDROID_REEL_AUTH.supportsOAuth2,
+            ANDROID_REEL_AUTH.requireJS,
+            ANDROID_REEL_AUTH.endpoint,
+            "Android Reel no auth"
     ),
     /**
      * Video not playable in YouTube: All videos (This client requires login, but cannot log in with YouTube's access token).
@@ -66,10 +85,10 @@ public enum ClientType {
     ANDROID_MUSIC_NO_SDK(
             21,
             "ANDROID_MUSIC",
-            ANDROID_REEL.deviceMake,
-            ANDROID_REEL.deviceModel,
-            ANDROID_REEL.osName,
-            ANDROID_REEL.osVersion,
+            ANDROID_REEL_AUTH.deviceMake,
+            ANDROID_REEL_AUTH.deviceModel,
+            ANDROID_REEL_AUTH.osName,
+            ANDROID_REEL_AUTH.osVersion,
             "7.12.52",
             null,
             "com.google.android.apps.youtube.music/7.12.52 (Linux; U; Android " + Build.VERSION.RELEASE + ") gzip",
@@ -201,54 +220,43 @@ public enum ClientType {
             PlayerRoutes.GET_PLAYER_STREAMING_DATA,
             "visionOS"
     ),
-    /**
-     * Here only to migrate data.
-     */
-    @Deprecated
-    TV_SIMPLY(75,
-            "TVHTML5_SIMPLY",
-            "Microsoft",
-            "Xbox 360",
-            "Xbox",
-            "6.1",
-            "1.0",
-            "GAME_CONSOLE",
-            "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0; Xbox)",
-            true,
-            // PoToken is required to play videos while signed out.
-            true,
-            true,
-            false,
-            true,
-            PlayerRoutes.GET_PLAYER_STREAMING_DATA,
-            "TV Simply"
-    ),
     GET_CHANNEL_FROM_ID(
-            29,
-            "WEB_REMIX",
-            "1.20241218.01.00",
+            ANDROID_REEL_AUTH.id,
+            ANDROID_REEL_AUTH.clientName,
+            Objects.requireNonNull(ANDROID_REEL_AUTH.packageName),
+            ANDROID_REEL_AUTH.deviceMake,
+            ANDROID_REEL_AUTH.deviceModel,
+            ANDROID_REEL_AUTH.osName,
+            ANDROID_REEL_AUTH.osVersion,
+            Objects.requireNonNull(ANDROID_REEL_AUTH.androidSdkVersion),
+            ANDROID_REEL_AUTH.buildID,
+            ANDROID_REEL_AUTH.clientVersion,
+            ANDROID_REEL_AUTH.clientPlatform,
+            false,
+            false,
+            false,
+            ANDROID_REEL_AUTH.supportsOAuth2,
+            ANDROID_REEL_AUTH.requireJS,
             PlayerRoutes.GET_CHANNEL_FROM_ID,
-            "Mozilla/5.0 (iPad; CPU OS 16_7_10 like Mac OS X) AppleWebKit/605.1.15 " +
-                    "(KHTML, like Gecko) Version/16.6 Mobile/15E148 Safari/604.1,gzip(gfe)",
             "Get Channel From ID"
     ),
     SAVE_TO_WATCH_LATER(
-            ANDROID_REEL.id,
-            ANDROID_REEL.clientName,
-            Objects.requireNonNull(ANDROID_REEL.packageName),
-            ANDROID_REEL.deviceMake,
-            ANDROID_REEL.deviceModel,
-            ANDROID_REEL.osName,
-            ANDROID_REEL.osVersion,
-            Objects.requireNonNull(ANDROID_REEL.androidSdkVersion),
-            ANDROID_REEL.buildID,
-            ANDROID_REEL.clientVersion,
-            ANDROID_REEL.clientPlatform,
+            ANDROID_REEL_AUTH.id,
+            ANDROID_REEL_AUTH.clientName,
+            Objects.requireNonNull(ANDROID_REEL_AUTH.packageName),
+            ANDROID_REEL_AUTH.deviceMake,
+            ANDROID_REEL_AUTH.deviceModel,
+            ANDROID_REEL_AUTH.osName,
+            ANDROID_REEL_AUTH.osVersion,
+            Objects.requireNonNull(ANDROID_REEL_AUTH.androidSdkVersion),
+            ANDROID_REEL_AUTH.buildID,
+            ANDROID_REEL_AUTH.clientVersion,
+            ANDROID_REEL_AUTH.clientPlatform,
             true,
             true,
             false,
-            ANDROID_REEL.supportsOAuth2,
-            ANDROID_REEL.requireJS,
+            ANDROID_REEL_AUTH.supportsOAuth2,
+            ANDROID_REEL_AUTH.requireJS,
             PlayerRoutes.SEND_SAVE_VIDEO_TO_WATCH_LATER,
             "Save To Watch Later"
     );
@@ -400,36 +408,6 @@ public enum ClientType {
                 deviceModel,
                 buildId
         );
-        Logger.printDebug(() -> "userAgent: " + this.userAgent);
-    }
-
-    ClientType(int id,
-               String clientName,
-               String clientVersion,
-               Route.CompiledRoute endpoint,
-               String userAgent,
-               String friendlyName) {
-        this.id = id;
-        this.clientName = clientName;
-        this.clientVersion = clientVersion;
-        this.endpoint = endpoint;
-        this.userAgent = userAgent;
-        this.friendlyName = friendlyName;
-
-        packageName = null;
-        deviceMake = null;
-        deviceModel = null;
-        osName = null;
-        osVersion = null;
-        androidSdkVersion = null;
-        buildID = null;
-        clientPlatform = null;
-        canLogin = false;
-        requireLogin = false;
-        supportsOAuth2 = false;
-        supportsMultiAudioTracks = false;
-        requireJS = false;
-
         Logger.printDebug(() -> "userAgent: " + this.userAgent);
     }
 

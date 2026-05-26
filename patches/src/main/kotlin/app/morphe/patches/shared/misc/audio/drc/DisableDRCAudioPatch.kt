@@ -1,6 +1,7 @@
 package app.morphe.patches.shared.misc.audio.drc
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
@@ -14,17 +15,18 @@ import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/shared/patches/DisableDRCAudioPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/DisableDRCAudioPatch;"
 
 @Suppress("unused")
 internal fun disableDRCAudioPatch(
     block: BytecodePatchBuilder.() -> Unit,
     preferenceScreen: BasePreferenceScreen.Screen,
-    overrideNormalizationFlag: BytecodePatchBuilder.() -> Boolean
+    useLegacyNormalizationFlag: BytecodePatchBuilder.() -> Boolean,
+    useNormalizationFlag: BytecodePatchBuilder.() -> Boolean
 ) = bytecodePatch(
     name = "Disable DRC audio",
     description = "Adds an option to disable DRC (Dynamic Range Compression) audio."
@@ -90,13 +92,44 @@ internal fun disableDRCAudioPatch(
             }
         }
 
-        if (overrideNormalizationFlag()) {
+        val setConfigDisabledMethod = "$EXTENSION_CLASS->disableDrcAudioConfig(Z)Z"
+
+        if (useLegacyNormalizationFlag()) {
             // If this flag is enabled, the DRC level will depend on other values besides loudnessDb.
+            VolumeNormalizationConfigLegacyFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    setConfigDisabledMethod
+                )
+            }
+        }
+
+        if (useNormalizationFlag()) {
             VolumeNormalizationConfigFingerprint.let {
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->disableDrcAudioFeatureFlag(Z)Z"
+                    setConfigDisabledMethod
                 )
+            }
+
+            OptionalVolumeNormalizationConfigFingerprint.let {
+                it.method.apply {
+                    val moveResultIndex = it.instructionMatches[3].index
+                    val moveResultRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+
+                    addInstructionsAtControlFlowLabel(
+                        moveResultIndex + 1,
+                        """
+                            invoke-static { v$moveResultRegister }, $EXTENSION_CLASS->enableDrcAudioConfig(Z)Z
+                            move-result v$moveResultRegister
+                        """
+                    )
+
+                    it.method.insertLiteralOverride(
+                        it.instructionMatches.first().index,
+                        setConfigDisabledMethod
+                    )
+                }
             }
         }
     }

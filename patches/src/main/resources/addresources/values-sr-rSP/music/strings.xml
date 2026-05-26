@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Сакриј видео огласе</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Прелазак са превлачењем</string>
-  <string name="morphe_music_crossfade_screen_summary">Прилагодите како нумере плавно прелазе једна у другу</string>
+  <string name="morphe_music_crossfade_screen_summary">Нежно спојите нумере једна у другу</string>
   <string name="morphe_music_crossfade_enabled_title">Омогући прелазак са превлачењем</string>
   <string name="morphe_music_crossfade_curve_title">Зависна крива</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Равна подешавања</string>
@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Спречава да се плејер аутоматски прошири на пуни екран када почне нова нумера</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Трака за навигацију</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Изаберите који дугмићи се појављују у навигационој траци</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Изаберите које дугмад ће се појавити у доњој навигационој траци</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Сакриј дугме „Насловна“</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

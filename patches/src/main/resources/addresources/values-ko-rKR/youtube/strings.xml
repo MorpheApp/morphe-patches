@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">스와이프 제스처</string>
   <string name="morphe_settings_screen_11_misc_title">기타</string>
   <string name="morphe_settings_screen_12_video_title">동영상</string>
-  <string name="morphe_restore_old_settings_menus_title">이전 설정 메뉴 복원하기</string>
+  <string name="morphe_restore_old_settings_menus_title">이전 YouTube 설정 메뉴 복원하기</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">백그라운드 재생 제한 제거하기</string>
   <string name="morphe_shorts_disable_background_playback_title">백그라운드 재생 비활성화하기</string>
@@ -76,8 +76,8 @@ Second \"item\" text"</string>
   <string name="morphe_hide_floating_microphone_button_title">플로팅 마이크 버튼 숨기기</string>
   <string name="morphe_hide_floating_microphone_button_summary">검색 추천 화면 오른쪽 하단에 있는 플로팅 마이크 버튼을 숨깁니다</string>
   <string name="morphe_hide_horizontal_shelves_title">좌우 슬라이드형 선반 숨기기</string>
-  <string name="morphe_hide_horizontal_shelves_summary">다음 선반이 숨겨집니다:\n뉴스 속보, 내가 좋아할 만한 커뮤니티 게시물, 이어서 시청하기, 채널 더 보기, 다른 주제 더 살펴보기, 추천, 최신 동영상, 관련성, 크리에이터 커뮤니티 게시물, 라이브 쇼핑, 다시 시청하기, etc.</string>
-  <string name="morphe_hide_hyped_label_title">Hype 라벨 숨기기</string>
+  <string name="morphe_hide_horizontal_shelves_summary">다음 선반을 숨깁니다:\n뉴스 속보, 내가 좋아할 만한 커뮤니티 게시물, 이어서 시청하기, 채널 더 보기, 다른 주제 더 살펴보기, 추천, 최신 동영상, 관련성, 크리에이터 커뮤니티 게시물, 라이브 쇼핑, 다시 시청하기</string>
+  <string name="morphe_hide_hyped_label_title">Hype 관련 라벨 숨기기</string>
   <string name="morphe_hide_image_shelf_title">이미지 선반 숨기기</string>
   <string name="morphe_hide_image_shelf_summary">검색 결과에서 이미지 선반을 숨깁니다</string>
   <!-- 'Latest videos' should be translated using the same localized wording YouTube displays for the button.
@@ -89,7 +89,7 @@ Second \"item\" text"</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">\'알림 받기\' 버튼 숨기기</string>
-  <string name="morphe_hide_notify_me_button_summary">예정된 라이브 및 Premieres에 대한 알림 버튼을 숨깁니다</string>
+  <string name="morphe_hide_notify_me_button_summary">예정된 라이브 및 Premieres 동영상에 대한 알림 버튼을 숨깁니다</string>
   <string name="morphe_hide_playables_title">게임 룸 숨기기</string>
   <string name="morphe_hide_playables_summary">게임을 할 수 있는 기능을 숨깁니다</string>
   <string name="morphe_hide_search_term_thumbnails_title">검색어 썸네일 숨기기</string>
@@ -100,11 +100,13 @@ Second \"item\" text"</string>
   <string name="morphe_hide_show_more_button_summary">검색 결과에서 동영상 아래에 있는 \'자세히 보기\' 버튼을 숨깁니다</string>
   <string name="morphe_hide_subscribed_channels_bar_title">구독 채널바 숨기기</string>
   <string name="morphe_hide_surveys_title">설문 조사 숨기기</string>
+  <string name="morphe_hide_surveys_summary">피드 추천 정확도에 대한 설문 조사 및 안내 메시지를 숨깁니다</string>
   <string name="morphe_hide_ticket_shelf_title">콘서트 티켓 선반 숨기기</string>
   <!-- 'People also watched' and 'You might also like' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_video_recommendation_labels_title">동영상 추천 라벨 숨기기</string>
   <string name="morphe_hide_video_recommendation_labels_summary">검색 결과에서 다음 라벨을 숨깁니다\n• 시청자가 이 동영상도 시청함\n• 내가 좋아할 만한 동영상</string>
   <string name="morphe_hide_web_search_results_title">웹 검색 결과 숨기기</string>
+  <string name="morphe_hide_web_search_results_summary">검색 결과에서 웹 검색 결과 섹션을 숨깁니다</string>
   <string name="morphe_hide_you_may_like_section_title">추천 콘텐츠 섹션 숨기기</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="morphe_hide_youtube_doodles_title">YouTube Doodles 숨기기</string>
@@ -117,7 +119,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_crowdfunding_box_title">모금 행사 패널 숨기기</string>
   <string name="morphe_hide_emergency_box_title">긴급 정보 패널 숨기기</string>
   <string name="morphe_hide_info_panels_title">정보 패널 숨기기</string>
-  <string name="morphe_hide_info_panels_summary">의료 정보와 같은 정보 컨텍스트 패널을 숨깁니다</string>
+  <string name="morphe_hide_info_panels_summary">보건 정보 출처와 같은 정보 컨텍스트 패널을 숨깁니다</string>
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">가입 버튼 숨기기</string>
@@ -126,7 +128,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
           This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">\'실시간 채팅 다시보기\' 버튼 숨기기</string>
   <string name="morphe_hide_live_chat_replay_button_summary">전체 화면 모드에서 \'실시간 채팅 다시보기\' 버튼을 숨깁니다</string>
-  <string name="morphe_hide_medical_panels_title">보건 정보 패널 숨기기</string>
+  <string name="morphe_hide_medical_panels_title">보건 패널 숨기기</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">구독자를 위한 커뮤니티 가이드라인 숨기기</string>
   <string name="morphe_hide_timed_reactions_title">실시간 이모티콘 리액션 숨기기</string>
   <string name="morphe_hide_timed_reactions_summary">댓글 섹션 및 실시간 채팅에서 이모티콘으로 반응할 수 있는 기능을 숨깁니다</string>
@@ -159,7 +161,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_transcript_section_title">스크립트 섹션 숨기기</string>
   <string name="morphe_hide_video_details_section_title">동영상 세부정보 섹션 숨기기</string>
   <string name="morphe_hide_filter_bar_screen_title">카테고리 바</string>
-  <string name="morphe_hide_filter_bar_screen_summary">카테고리 바를 숨길 위치를 설정할 수 있습니다</string>
+  <string name="morphe_hide_filter_bar_screen_summary">카테고리 바가 숨겨질 위치를 설정할 수 있습니다</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">피드에서 숨기기</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_title">관련 동영상에서 숨기기</string>
   <string name="morphe_hide_filter_bar_feed_in_search_title">검색 결과에서 숨기기</string>
@@ -208,11 +210,11 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_sanitize_comments_category_bar_title">카테고리 바 정리하기</string>
   <string name="morphe_sanitize_comments_category_bar_summary">\'인기순\' 및 \'최신순\'을 제외한 모든 댓글 정렬 옵션을 숨깁니다</string>
   <string name="morphe_custom_filter_screen_title">사용자 정의 필터</string>
-  <string name="morphe_custom_filter_screen_summary">사용자 정의 필터를 사용하여 숨겨질 구성 요소를 설정할 수 있습니다</string>
+  <string name="morphe_custom_filter_screen_summary">원하는 구성 요소를 숨기기 위한 사용자 정의 필터를 설정합니다</string>
   <string name="morphe_custom_filter_title">사용자 정의 필터 활성화하기</string>
   <string name="morphe_custom_filter_strings_title">사용자 정의 필터</string>
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
-  <string name="morphe_custom_filter_strings_summary">필터링할 구성 요소 패스 빌더 문자열 목록을 줄바꿈으로 구분하여 설정하세요</string>
+  <string name="morphe_custom_filter_strings_summary">필터링할 컴포넌트 패스 빌더 문자열을 줄바꿈으로 구분하여 설정하세요</string>
   <string name="morphe_custom_filter_toast_invalid_syntax">잘못된 사용자 정의 필터 값입니다: %s</string>
   <string name="morphe_hide_view_count_title">조회수 숨기기</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
@@ -232,7 +234,11 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_keyword_content_phrases_title">키워드 필터</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
-  <string name="morphe_hide_keyword_content_phrases_summary">필터링할 키워드 또는 채널 이름을 줄바꿈으로 구분하여 입력하세요. 단어 중간에 대문자가 있는 단어는 정확히 일치해야 합니다 (예: iPhone, TikTok, LeBlanc)</string>
+  <string name="morphe_hide_keyword_content_phrases_summary">"필터링할 키워드 및 구문을 줄바꿈으로 구분하여 설정하세요
+
+필터링 키워드는 채널 이름 또는 동영상 제목에 표시되는 모든 텍스트가 될 수 있습니다
+
+대문자가 있는 단어는 대소문자를 함께 입력해야 합니다 (예: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">키워드 필터링 정보</string>
   <string name="morphe_hide_keyword_content_about_summary">"홈 / 구독 / 검색 결과가 필터링되어 키워드 구문과 일치하는 콘텐츠가 숨겨집니다
 
@@ -254,11 +260,11 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_end_screen_store_banner_title">최종 화면 스토어 배너 숨기기</string>
   <string name="morphe_hide_general_ads_title">일반 레이아웃 광고 숨기기</string>
   <string name="morphe_hide_merchandise_banners_title">매장 쇼핑 배너 숨기기</string>
+  <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_paid_promotion_label_title">유료 광고 포함 라벨 숨기기</string>
   <string name="morphe_hide_player_popup_ads_title">플레이어 팝업 광고 숨기기</string>
   <string name="morphe_hide_self_sponsor_ads_title">셀프 스폰서 카드 숨기기</string>
   <string name="morphe_hide_shopping_links_title">쇼핑 링크 숨기기</string>
-  <string name="morphe_hide_view_products_banner_title">\'제품 보기\' 배너 숨기기</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium 프로모션 숨기기</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">동영상 광고 숨기기</string>
@@ -268,8 +274,8 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_share_copy_url_button_timestamp_success">타임스탬프가 표기된 URL을 클립보드에 복사하였습니다</string>
   <string name="morphe_copy_video_url_button_title">동영상 URL 복사 버튼 표시하기</string>
   <string name="morphe_copy_video_url_button_summary">버튼을 탭하여 동영상 URL을 복사할 수 있고, 길게 탭하면 타임스탬프가 표기된 URL이 복사됩니다</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">동영상 URL 복사 동작 설정</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">활성화하면 버튼을 탭하여 타임스탬프가 표기된 URL을 복사할 수 있고, 길게 탭하면 타임스탬프가 표기되지 않은 URL이 복사됩니다. 비활성화하면 동작이 반대로 바뀝니다</string>
+  <string name="morphe_copy_video_url_button_timestamp_title">기본적으로 타임스탬프 복사하기</string>
+  <string name="morphe_copy_video_url_button_timestamp_summary">동영상 URL 복사 버튼의 \'탭하기\'와 \'길게 탭하기\' 동작을 서로 변경합니다</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">시청 경고 다이얼로그 제거하기</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">이 설정은 다이얼로그를 자동으로 허용하기만 하며 연령 제한(성인인증 절차)을 우회할 수 없습니다.</string>
@@ -277,14 +283,15 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_disable_sign_in_to_tv_popup_title">\'TV에 로그인\' 팝업 비활성화하기</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <string name="morphe_disable_chapter_skip_double_tap_title">두 번 탭하여 챕터 건너뛰기 비활성화하기</string>
-  <string name="morphe_disable_chapter_skip_double_tap_summary">실수로 두 번 탭하여 다음 또는 이전 챕터로 건너뛰는 것을 방지할 수 있습니다</string>
+  <string name="morphe_disable_chapter_skip_double_tap_summary">두 손가락으로 두 번 탭하여 챕터를 건너뛰는 제스처를 비활성화하여, 한 손가락으로 실수로 작동되는 것을 방지할 수 있습니다</string>
   <!-- interaction.downloads.downloadsPatch -->
   <string name="morphe_external_downloader_screen_title">외부 다운로드</string>
-  <string name="morphe_external_downloader_screen_summary">다운로드를 처리할 외부 앱을 설정할 수 있습니다</string>
+  <string name="morphe_external_downloader_screen_summary">서드파티 다운로드 앱으로 동영상을 다운로드할 수 있습니다</string>
   <string name="morphe_external_downloader_title">외부 다운로드 버튼 표시하기</string>
+  <string name="morphe_external_downloader_summary">외부 다운로드 앱을 실행할 수 있는 오버레이 버튼을 동영상 플레이어에 표시합니다</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_action_button_title">오프라인 저장 버튼 재정의하기</string>
-  <string name="morphe_external_downloader_action_button_summary">YouTube의 기본 다운로드 기능을 사용자가 선택한 서드파티 다운로드 앱으로 대체합니다</string>
+  <string name="morphe_external_downloader_action_button_summary">YouTube의 기본 다운로드 기능을 사용자가 설정한 외부 다운로더 앱으로 대체합니다</string>
   <string name="morphe_external_downloader_name_title">외부 다운로더 앱 패키지명</string>
   <string name="morphe_external_downloader_name_summary">설치된 외부 다운로더 앱 패키지명을 설정하세요</string>
   <string name="morphe_external_downloader_other_item_hint">앱 패키지명을 입력하세요</string>
@@ -303,10 +310,11 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_loop_video_button_toast_off">동영상 연속 재생을 비활성화합니다</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">모두 재생 버튼 표시하기</string>
-  <string name="morphe_play_all_button_summary">"버튼을 탭하여 채널의 모든 동영상 재생목록을 생성할 수 있습니다. 길게 탭하면 생성이 취소됩니다
+  <string name="morphe_play_all_button_summary">"버튼을 탭하여 채널의 모든 동영상 재생목록을 생성할 수 있습니다
+길게 탭하면 생성이 취소됩니다
 
 알림:
-• 실시간 스트림에서는 작동하지 않을 수 있습니다"</string>
+• 실시간 스트림에서는 작동되지 않을 수 있습니다"</string>
   <string name="morphe_play_all_button_type_title">재생목록 생성 유형</string>
   <string name="morphe_play_all_button_type_entry_0">모든 콘텐츠 (날짜순)</string>
   <string name="morphe_play_all_button_type_entry_1">모든 콘텐츠 (최신순)</string>
@@ -331,8 +339,8 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_save_to_watch_later_already_exists_toast">이 동영상은 이미 \'나중에 볼 동영상\' 재생목록에 저장되어 있습니다</string>
   <string name="morphe_save_to_watch_later_error_toast">이 동영상을 \'나중에 볼 동영상\' 재생목록에 저장할 수 없습니다</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
-  <string name="morphe_open_channel_of_live_avatar_title">라이브 아바타 탭 동작</string>
-  <string name="morphe_open_channel_of_live_avatar_summary">활성화하면 채널 페이지가 열리고, 비활성화하면 실시간 스트림이 열립니다</string>
+  <string name="morphe_open_channel_of_live_avatar_title">라이브 아바타 채널 열기</string>
+  <string name="morphe_open_channel_of_live_avatar_summary">채널 아바타를 탭했을 경우에 실시간 스트림이 재생되지 않도록 합니다</string>
   <!-- interaction.seekbar.disablePreciseSeekingGesturePatch -->
   <string name="morphe_disable_precise_seeking_gesture_title">세밀한 탐색 제스처 비활성화하기</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">재생바를 길게 탭하고 위로 스와이프했을 경우에 활성화되는 세밀한 탐색 모드를 비활성화합니다</string>
@@ -343,13 +351,20 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_livestream_dvr_user_dialog_message">이 기능을 활성화하면 \'동영상 스트림 속이기\'가 활성화되지 않은 경우에는 예상되지 않은 실시간 스트림 탐색 동작이 발생할 수 있습니다.</string>
   <!-- interaction.seekbar.enableSlideToSeekPatch -->
   <string name="morphe_slide_to_seek_title">슬라이드하여 탐색 활성화하기</string>
+  <string name="morphe_slide_to_seek_summary">동영상 플레이어를 길게 탭했을 경우에 \'2배속 재생\'이 아닌 \'슬라이드하여 탐색\'을 사용하도록 설정합니다</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">재생바 터치 조작 활성화하기</string>
+  <string name="morphe_tap_to_seek_summary">드래그하지 않고 재생바를 탭하기만 해도 해당 위치로 이동할 수 있습니다</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_brightness_title">스와이프 제스처로 밝기 조절하기</string>
-  <string name="morphe_swipe_brightness_summary">전체 화면 모드 왼쪽에서 수직으로 스와이프하여 밝기를 조절합니다</string>
+  <string name="morphe_swipe_brightness_summary">전체 화면 모드 왼쪽에서 세로로 스와이프하여 밝기를 조절합니다</string>
   <string name="morphe_swipe_volume_title">스와이프 제스처로 볼륨 조절하기</string>
-  <string name="morphe_swipe_volume_summary">전체 화면 모드 오른쪽에서 수직으로 스와이프하여 볼륨을 조절합니다</string>
+  <string name="morphe_swipe_volume_summary">전체 화면 모드 오른쪽에서 세로로 스와이프하여 볼륨을 조절합니다</string>
+  <string name="morphe_swipe_zone_width_title">밝기/볼륨 영역 너비</string>
+  <string name="morphe_swipe_zone_width_summary">밝기 및 볼륨 제스처에 지정된 각 화면 가장자리의 비율을 설정할 수 있습니다 (5~50)</string>
+  <string name="morphe_swipe_zone_label_brightness">밝기</string>
+  <string name="morphe_swipe_zone_label_volume">볼륨</string>
+  <string name="morphe_swipe_zone_label_native">기본</string>
   <string name="morphe_swipe_press_to_engage_title">길게 탭하여 스와이프 제스처 사용하기</string>
   <string name="morphe_swipe_press_to_engage_summary">스와이프 제스처를 사용하려면 화면을 길게 탭해야 합니다</string>
   <string name="morphe_swipe_haptic_feedback_title">진동 피드백 활성화하기</string>
@@ -367,13 +382,24 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">밝기 조절 진행률 색상을 설정할 수 있습니다</string>
   <string name="morphe_swipe_overlay_progress_volume_color_title">스와이프 오버레이 볼륨 조절바 색상</string>
   <string name="morphe_swipe_overlay_progress_volume_color_summary">볼륨 조절 진행률 색상을 설정할 수 있습니다</string>
+  <string name="morphe_swipe_overlay_progress_speed_color_title">스와이프 오버레이 속도 조절바 색상</string>
+  <string name="morphe_swipe_overlay_progress_speed_color_summary">속도 조절 진행률 색상을 설정할 수 있습니다</string>
   <string name="morphe_swipe_text_overlay_size_title">스와이프 오버레이 텍스트 크기</string>
   <string name="morphe_swipe_text_overlay_size_summary">화면 텍스트 크기를 설정할 수 있습니다 (1-30)</string>
   <string name="morphe_swipe_text_overlay_size_invalid_toast">텍스트 크기는 1-30 사이여야 합니다</string>
   <string name="morphe_swipe_threshold_title">스와이프 한계치</string>
   <string name="morphe_swipe_threshold_summary">제스처 인식을 위해 얼마나 스와이프를 해야 할지를 설정할 수 있습니다</string>
   <string name="morphe_swipe_volume_sensitivity_title">볼륨 스와이프 민감도</string>
-  <string name="morphe_swipe_volume_sensitivity_summary">스와이프하는 동안에 볼륨이 얼마나 변경되는 지를 설정할 수 있습니다</string>
+  <string name="morphe_swipe_volume_sensitivity_summary">값이 높을수록 스와이프 볼륨 변경 폭이 증가합니다</string>
+  <string name="morphe_swipe_brightness_sensitivity_title">밝기 스와이프 민감도</string>
+  <string name="morphe_swipe_brightness_sensitivity_summary">값이 높을수록 밝기 단계가 변경되기 위해 더 많이 스와이프해야 합니다</string>
+  <string name="morphe_swipe_speed_title">스와이프 제스처로 속도 조절하기</string>
+  <string name="morphe_swipe_speed_summary">전체 화면 모드 상단에서 가로로 스와이프하여 재생 속도를 조절합니다</string>
+  <string name="morphe_swipe_speed_sensitivity_title">속도 스와이프 민감도</string>
+  <string name="morphe_swipe_speed_sensitivity_summary">값이 높을수록 속도 단계가 변경되기 위해 더 많이 스와이프해야 합니다</string>
+  <string name="morphe_swipe_speed_zone_height_title">속도 영역 높이</string>
+  <string name="morphe_swipe_speed_zone_height_summary">플레이어 높이 대비 속도 제스처 영역의 높이 비율을 설정할 수 있습니다 (5-75)</string>
+  <string name="morphe_swipe_zone_label_speed">속도</string>
   <string name="morphe_swipe_overlay_style_title">스와이프 오버레이 스타일</string>
   <string name="morphe_swipe_overlay_style_entry_1">가로</string>
   <string name="morphe_swipe_overlay_style_entry_2">가로 (최소화 - 상단)</string>
@@ -382,7 +408,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_swipe_overlay_style_entry_5">원형 (최소화)</string>
   <string name="morphe_swipe_overlay_style_entry_6">세로</string>
   <string name="morphe_swipe_overlay_style_entry_7">세로 (최소화)</string>
-  <string name="morphe_swipe_change_video_title">스와이프 제스처로 동영상 전환 비활성화하기</string>
+  <string name="morphe_swipe_change_video_title">스와이프 제스처로 동영상 전환하기</string>
   <string name="morphe_swipe_change_video_summary">전체 화면 모드에서 스와이프하여 다음 또는 이전 동영상으로 건너뜁니다</string>
   <!-- layout.buttons.action.hideButtonsPatch -->
   <string name="morphe_action_buttons_screen_title">동작 버튼</string>
@@ -447,12 +473,14 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_auto_captions_style_legacy_entry_1">자동 자막을 표시</string>
   <string name="morphe_auto_captions_style_legacy_entry_2">자동 자막을 표시 안 함</string>
   <!-- layout.captions.captionCookiesPatch -->
-  <string name="morphe_set_caption_cookies_title">자막 쿠키 활성화하기</string>
-  <string name="morphe_set_caption_cookies_summary">자막 자동 번역이 제대로 작동하려면 필요합니다</string>
+  <string name="morphe_set_caption_cookies_title">자막 쿠키 설정</string>
+  <string name="morphe_set_caption_cookies_summary">"쿠키 누락으로 인해 자동 번역 자막을 사용할 수 없는 기본 YouTube의 버그를 수정합니다
+
+'자막 쿠키'를 제공해야 합니다"</string>
   <string name="morphe_caption_cookies_title">자막 쿠키</string>
-  <string name="morphe_caption_cookies_summary">자막을 위한 Timed Text API 요청을 인증하는 데 사용되는 쿠키입니다</string>
+  <string name="morphe_caption_cookies_summary">Timed Text API (자막 데이터 API) 요청에 설정될 쿠키입니다</string>
   <string name="morphe_get_caption_cookies_title">자막 쿠키 가져오기</string>
-  <string name="morphe_get_caption_cookies_summary">유효한 경우에 쿠키를 자동으로 가져오고 저장합니다</string>
+  <string name="morphe_get_caption_cookies_summary">쿠키를 가져오려면 여기룰 탭하세요</string>
   <string name="morphe_get_caption_cookies_failed">쿠키를 가져올 수 없습니다</string>
   <string name="morphe_get_caption_cookies_duplicate">이미 쿠키가 존재합니다</string>
   <string name="morphe_get_caption_cookies_success">쿠키를 성공적으로 업데이트하였습니다</string>
@@ -478,7 +506,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_show_settings_button_index_title">설정 버튼 위치</string>
   <string name="morphe_show_settings_button_type_title">설정 버튼 동작</string>
   <string name="morphe_show_settings_button_type_summary">활성화하면 Morphe 설정이 열리고, 비활성화하면 YouTube 설정을 열립니다</string>
-  <string name="morphe_swap_create_with_notifications_button_title">만들기와 알림 위치 교환하기</string>
+  <string name="morphe_swap_create_with_notifications_button_title">만들기 버튼과 알림 버튼의 위치를 교환합니다</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">이 설정을 변경해도 적용되지 않는 경우에는 시크릿 모드로 전환해 보세요.</string>
   <string name="morphe_hide_navigation_button_labels_title">하단바 버튼 라벨 숨기기</string>
   <string name="morphe_hide_navigation_bar_title">하단바 숨기기</string>
@@ -501,7 +529,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_disable_translucent_navigation_bar_dark_title">어두운 반투명 하단바 비활성화하기</string>
   <string name="morphe_disable_translucent_navigation_bar_dark_summary">어두운 테마에서 하단바를 완전히 불투명하게 만듭니다</string>
   <string name="morphe_toolbar_screen_title">툴바</string>
-  <string name="morphe_toolbar_screen_summary">툴바에 표시할 구성 요소를 선택하세요</string>
+  <string name="morphe_toolbar_screen_summary">툴바에 표시할 구성 요소를 설정할 수 있습니다</string>
   <string name="morphe_hide_toolbar_cast_button_title">크롬캐스트 버튼 숨기기</string>
   <string name="morphe_hide_toolbar_create_button_title">만들기 버튼 숨기기</string>
   <string name="morphe_hide_toolbar_microphone_button_title">음성 검색 버튼 숨기기</string>
@@ -552,7 +580,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_player_flyout_quality_header_title">화질 설정 메뉴 헤더 숨기기</string>
   <!-- layout.hide.autoplaypreview.hideAutoplayPreviewPatch -->
   <string name="morphe_hide_autoplay_preview_title">자동재생 미리보기 숨기기</string>
-  <string name="morphe_hide_autoplay_preview_summary">자동 재생이 시작되기 전에 전체 화면에서 다음 동영상 미리보기를 숨깁니다</string>
+  <string name="morphe_hide_autoplay_preview_summary">자동재생이 시작되기 전에 전체 화면에서 다음 동영상 미리보기를 숨깁니다</string>
   <!-- layout.buttons.overlay.hidePlayerOverlayButtonsPatch -->
   <string name="morphe_overlay_buttons_screen_title">오버레이 버튼</string>
   <string name="morphe_overlay_buttons_screen_summary">동영상 플레이어에 표시할 버튼을 설정할 수 있습니다</string>
@@ -583,13 +611,13 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_disable_rolling_number_animations_summary">좋아요 수 및 조회수에 대한 카운팅 애니메이션을 중지합니다</string>
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">동영상 플레이어 재생바 숨기기</string>
-  <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
   <string name="morphe_hide_seekbar_thumbnail_title">동영상 썸네일 재생바 숨기기</string>
-  <string name="morphe_hide_seekbar_thumbnail_summary">피드 및 검색 결과에서 동영상 썸네일에 표시되는 시청 진행률을 숨깁니다</string>
+  <string name="morphe_hide_seekbar_thumbnail_summary">이미 시청한 동영상 썸네일에 표시되는 시청 진행률을 숨깁니다</string>
   <string name="morphe_fullscreen_large_seekbar_title">전체 화면 두꺼운 재생바 활성화하기</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <string name="morphe_shorts_player_screen_title">Shorts 플레이어</string>
   <string name="morphe_shorts_player_screen_summary">Shorts 플레이어에 표시할 구성 요소를 설정할 수 있습니다</string>
+  <string name="morphe_hide_shorts_category_title">Shorts 숨기기</string>
   <string name="morphe_hide_shorts_channel_title">채널 페이지에서 숨기기</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_shorts_home_title">홈 피드 및 관련 동영상에서 숨기기</string>
@@ -614,7 +642,6 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_shorts_save_sound_button_title">음악 저장 버튼 숨기기</string>
   <string name="morphe_hide_shorts_search_suggestions_title">검색 추천 숨기기</string>
   <string name="morphe_hide_shorts_shop_button_title">쇼핑 버튼 숨기기</string>
-  <string name="morphe_hide_shorts_stickers_title">스티커 숨기기</string>
   <string name="morphe_hide_shorts_subscribe_button_title">구독 버튼 숨기기</string>
   <string name="morphe_hide_shorts_tagged_products_title">태그된 제품 숨기기</string>
   <string name="morphe_hide_shorts_upcoming_button_title">예정된 라이브 버튼 숨기기</string>
@@ -639,6 +666,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_shorts_navigation_bar_title">하단바 숨기기</string>
   <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
   <string name="morphe_hide_end_screen_suggested_video_title">최종 화면 추천 동영상 숨기기</string>
+  <string name="morphe_hide_end_screen_suggested_video_summary">동영상 종료 후에 표시되는 추천 동영상 오버레이를 숨깁니다</string>
   <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"이 설정은 '다음 동영상 자동재생'이 꺼져 있을 경우에만 작동합니다.
 
 '다음 동영상 자동재생'은 YouTube 설정에서 변경할 수 있습니다:
@@ -647,7 +675,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_hide_player_related_videos_title">관련 동영상 숨기기</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
   <string name="morphe_hide_player_related_videos_overlay_title">관련 동영상 오버레이 숨기기</string>
-  <string name="morphe_hide_player_related_videos_overlay_summary">전체 화면 모드에서 표시되는 추천 동영상을 숨깁니다</string>
+  <string name="morphe_hide_player_related_videos_overlay_summary">전체 화면 모드에서 위로 스와이프할 경우에 표시되는 관련 동영상 오버레이를 숨깁니다</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">동영상 타임스탬프 숨기기</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
@@ -656,9 +684,9 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <!-- layout.player.fullscreen.exitFullscreenPatch -->
   <string name="morphe_exit_fullscreen_title">동영상 종료 시 전체 화면 모드 나가기</string>
   <string name="morphe_exit_fullscreen_entry_1">사용 안 함</string>
-  <string name="morphe_exit_fullscreen_entry_2">세로 모드만</string>
-  <string name="morphe_exit_fullscreen_entry_3">가로 모드만</string>
-  <string name="morphe_exit_fullscreen_entry_4">둘 다</string>
+  <string name="morphe_exit_fullscreen_entry_2">세로 모드에서만</string>
+  <string name="morphe_exit_fullscreen_entry_3">가로 모드에서만</string>
+  <string name="morphe_exit_fullscreen_entry_4">세로 및 가로 모드</string>
   <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">동영상을 전체 화면 세로 모드로 열기</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
@@ -714,12 +742,12 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_sb_enable_voting">구간 투표 버튼 표시하기</string>
   <string name="morphe_sb_enable_voting_summary">구간 투표 버튼을 추가합니다</string>
   <string name="morphe_sb_square_layout">각진 레이아웃 사용하기</string>
-  <string name="morphe_sb_square_layout_summary">SponsorBlock 버튼 및 컨트롤에 둥근 모서리를 사용합니다</string>
+  <string name="morphe_sb_square_layout_summary">SponsorBlock 버튼 및 컨트롤에 각진 모서리를 사용합니다</string>
   <!-- Translations should match the language used in 'morphe_ryd_compact_layout_title'. -->
   <string name="morphe_sb_enable_compact_skip_button">최소화된 건너뛰기 버튼 표시하기</string>
   <string name="morphe_sb_enable_compact_skip_button_summary">공간을 절약하기 위해 건너뛰기 버튼의 너비를 줄입니다</string>
   <string name="morphe_sb_enable_auto_hide_skip_segment_button">자동으로 건너뛰기 버튼 숨기기</string>
-  <string name="morphe_sb_enable_auto_hide_skip_segment_button_summary">전체 구간 동안 계속 표시하지 않고, 몇 초 후에 건너뛰기 버튼을 숨깁니다</string>
+  <string name="morphe_sb_enable_auto_hide_skip_segment_button_summary">해당 구간이 끝날 때까지 표시하지 않고, 몇 초 후에 건너뛰기 버튼을 숨깁니다</string>
   <string name="morphe_sb_auto_hide_skip_button_duration">건너뛰기 버튼 표시 시간</string>
   <string name="morphe_sb_auto_hide_skip_button_duration_summary">건너뛰기 버튼이 화면에 표시되는 시간을 설정할 수 있습니다</string>
   <string name="morphe_sb_general_skiptoast">건너뛰기 취소 메시지 표시하기</string>
@@ -741,22 +769,22 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_sb_create_segment_category">새 구간 추가하기</string>
   <string name="morphe_sb_enable_create_segment">\'새 구간 만들기\' 버튼 표시하기</string>
   <string name="morphe_sb_enable_create_segment_summary">새 SponsorBlock 구간을 제출할 수 있는 버튼을 동영상 플레이어에 추가합니다</string>
-  <string name="morphe_sb_general_adjusting">구간 추가 시 최소 슬라이더 단위 설정</string>
-  <string name="morphe_sb_general_adjusting_summary">새 구간 추가 시에 시간 앞으로 버튼 또는 뒤로 버튼을 탭하였을 때 이동하는 최소 시간으로, 단위는 밀리초입니다</string>
+  <string name="morphe_sb_general_adjusting">시간 조정 단계</string>
+  <string name="morphe_sb_general_adjusting_summary">시간 조정 버튼의 탐색 이동량을 설정할 수 있습니다 (밀리초)</string>
   <string name="morphe_sb_general_adjusting_invalid">값은 양수여야 합니다</string>
   <string name="morphe_sb_guidelines_preference_title">제출 가이드라인</string>
   <string name="morphe_sb_guidelines_preference_summary">구간 제출 시의 주의사항에 대한 내용을 포함하고 있습니다</string>
   <string name="morphe_sb_guidelines_popup_title">가이드라인 읽어보기</string>
-  <string name="morphe_sb_guidelines_popup_content">새 구간을 만드는 규칙과 팁을 확인하세요</string>
+  <string name="morphe_sb_guidelines_popup_content">광고 구간을 제출하기 전에 SponsorBlock 가이드라인을 읽어보시는 것을 추천합니다</string>
   <string name="morphe_sb_guidelines_popup_already_read">이미 읽음</string>
   <string name="morphe_sb_guidelines_popup_open">보기</string>
   <string name="morphe_sb_general">일반</string>
   <string name="morphe_sb_toast_on_connection_error">연결 오류 알림 표시하기</string>
   <string name="morphe_sb_toast_on_connection_error_summary">SponsorBlock 서버를 사용할 수 없을 경우에 알림을 표시합니다</string>
   <string name="morphe_sb_general_skipcount">건너뛴 횟수 기록 활성화하기</string>
-  <string name="morphe_sb_general_skipcount_summary">건너뛴 시간을 추적하기 위해 건너뛰기 횟수를 SponsorBlock 리더보드에 전송합니다</string>
+  <string name="morphe_sb_general_skipcount_summary">구간 건너뛰기를 통해 절약한 시간을 SponsorBlock의 리더 보드에 전송합니다</string>
   <string name="morphe_sb_general_min_duration">건너뛸 최소 구간 길이</string>
-  <string name="morphe_sb_general_min_duration_summary">구간을 건너뛸 수 있도록 필요한 최소 길이를 초 단위로 설정할 수 있습니다</string>
+  <string name="morphe_sb_general_min_duration_summary">설정한 값(초)보다 작은 구간은 건너뛰지 않으며, 재생바에도 표시되지 않습니다</string>
   <string name="morphe_sb_general_min_duration_invalid">잘못된 표시 시간입니다</string>
   <string name="morphe_sb_general_uuid">비공개 사용자 아이디</string>
   <string name="morphe_sb_general_uuid_summary">이 정보는 비공개로 유지해야 합니다. 비밀번호와 같은 것이므로 누구와도 공유해서는 안 됩니다. 다른 사람이 이 정보를 가지고 있으면 사용자를 사칭할 수 있습니다</string>
@@ -771,7 +799,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_sb_settings_ie_summary">Morphe 및 다른 SponsorBlock 플랫폼에서 가져오거나 내보낼 수 있는 SponsorBlock JSON 설정 파일입니다</string>
   <string name="morphe_sb_settings_ie_summary_warning">"Morphe 및 다른 SponsorBlock 플랫폼으로 가져오거나 내보낼 수 있는 SponsorBlock JSON 설정 파일입니다
     
-여기에는 개인 사용자 ID가 포함되어 있습니다. 이 정보를 신중하게 공유하세요"</string>
+여기에는 개인 사용자 ID가 포함되어 있습니다. 이 정보를 공유하려면 주의하세요"</string>
   <string name="morphe_sb_settings_import_successful">설정을 성공적으로 가져왔습니다</string>
   <string name="morphe_sb_settings_import_failed">설정을 가져올 수 없습니다: %s</string>
   <string name="morphe_sb_settings_export_failed">설정을 내보낼 수 없습니다: %s</string>
@@ -940,7 +968,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
 • 플레이어 동작 버튼바가 접히지 않습니다"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">앱 버전 속이기</string>
-  <string name="morphe_spoof_app_version_summary">서버가 사용 중인 앱 버전을 더 오래된 버전으로 인식하도록 속여, 이전 UI 기능을 다시 복원합니다</string>
+  <string name="morphe_spoof_app_version_summary">서버가 사용 중인 앱 버전을 더 오래된 버전으로 인식하도록 속여, 이전 레이아웃 기능을 다시 복원합니다</string>
   <string name="morphe_spoof_app_version_user_dialog_message">"앱 버전이 YouTube 이전 앱 버전으로 속여집니다.
 
 이 경우 앱 레이아웃과 기능이 변경되지만 알려지지 않은 부작용이 발생할 수 있습니다.
@@ -949,15 +977,15 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_spoof_app_version_target_title">속이기에 사용될 앱 버전</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - 이전 \'재생목록에 저장\'을 복원합니다</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - 굵은 아이콘을 비활성화합니다</string>
-  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 접히지 않은 플레이어 동작 버튼바를 복원합니다</string>
+  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - 동영상 플레이어 아래에서 채널 이름을 복원합니다</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <string name="morphe_open_system_share_sheet_title">공유 시트 변경하기</string>
   <string name="morphe_open_system_share_sheet_summary">콘텐츠를 공유할 경우에 앱 기본 공유 시트가 아닌 시스템 공유 시트를 엽니다</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <string name="morphe_override_youtube_music_buttons_title">YouTube Music 버튼 재정의하기</string>
-  <string name="morphe_override_youtube_music_buttons_summary">Music 버튼을 탭했을 경우에 YouTube Music 앱이 아닌 사용자가 사용하고 싶은 음악 앱을 열 수 있도록 설정할 수 있습니다</string>
+  <string name="morphe_override_youtube_music_buttons_summary">Music 버튼을 탭했을 경우에 YouTube Music 앱이 아닌 사용자가 사용하고 싶은 Music 앱을 열 수 있도록 설정할 수 있습니다</string>
   <string name="morphe_music_package_name_title">재정의에 사용될 Music 앱 패키지 이름</string>
-  <string name="morphe_music_package_name_summary">사용자가 사용할 Music 앱 패키지 이름을 설정하세요</string>
+  <string name="morphe_music_package_name_summary">사용자가 사용하고 싶은 Music 앱 패키지 이름을 설정하세요</string>
   <!-- layout.startpage.changeStartPagePatch -->
   <string name="morphe_change_start_page_title">시작 페이지</string>
   <string name="morphe_change_start_page_entry_default">기본값</string>
@@ -986,7 +1014,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_change_start_page_entry_watch_later">나중에 볼 동영상</string>
   <string name="morphe_change_start_page_entry_your_clips">내 클립</string>
   <string name="morphe_change_start_page_always_title">앱 시작 페이지 항상 변경하기</string>
-  <string name="morphe_change_start_page_always_summary">"앱 실행 시에만이 아니라 항상 선택한 시작 페이지로 리다이렉션합니다
+  <string name="morphe_change_start_page_always_summary">"앱 실행 시뿐만이 아니라 항상 선택한 시작 페이지로 리다이렉션합니다
 
 제한 사항: 툴바에서 '뒤로가기' 버튼이 작동하지 않을 수 있습니다"</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
@@ -1033,7 +1061,7 @@ YouTube Doodles를 표시하면 사용자 정의 헤더가 표시되지 않을 �
   <string name="morphe_miniplayer_opacity_invalid_toast">미니 플레이어 오버레이 불투명도는 0-100 사이여야 합니다</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">그라데이션 색상 로딩 화면 활성화하기</string>
-  <string name="morphe_gradient_loading_screen_summary">로딩 화면에 단색 대신 그라데이션 배경을 표시합니다</string>
+  <string name="morphe_gradient_loading_screen_summary">로딩 화면에 단색이 아닌 그라데이션 배경을 표시합니다</string>
   <string name="morphe_splash_screen_animation_style_title">스플래시 애니메이션 스타일</string>
   <string name="morphe_splash_screen_animation_style_entry_1">사용 안 함</string>
   <string name="morphe_splash_screen_animation_style_entry_2">컬러</string>
@@ -1079,21 +1107,21 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_alt_thumbnail_stills_about_title">스틸 컷 썸네일</string>
   <string name="morphe_alt_thumbnail_stills_about_summary">동영상 스틸 컷 썸네일은 각 동영상의 시작 / 중간 / 끝 부분에서 캡쳐된 이미지입니다. 이러한 이미지는 YouTube에 내장되어 있으며 외부 API는 사용하지 않습니다</string>
   <string name="morphe_alt_thumbnail_stills_fast_title">일반화질 스틸 컷 썸네일 표시하기</string>
-  <string name="morphe_alt_thumbnail_stills_fast_summary">일반화질 이미지를 사용하여 로딩 속도를 향상시킵니다. 실시간 스트림, 비공개 그리고 오래된 동영상에서는 아무것도 표시되지 않은 썸네일이 표시될 수 있습니다.</string>
-  <string name="morphe_alt_thumbnail_stills_time_title">동영상 프레임 추출 위치</string>
-  <string name="morphe_alt_thumbnail_stills_time_entry_1">시작</string>
-  <string name="morphe_alt_thumbnail_stills_time_entry_2">중간</string>
-  <string name="morphe_alt_thumbnail_stills_time_entry_3">끝</string>
+  <string name="morphe_alt_thumbnail_stills_fast_summary">일반화질 이미지를 사용하여 로딩 속도를 향상시킵니다. 실시간 스트림, 비공개 그리고 오래된 동영상에서는 아무것도 표시되지 않은 썸네일이 표시될 수 있습니다</string>
+  <string name="morphe_alt_thumbnail_stills_time_title">스틸 컷 썸네일에서 표시되는 이미지</string>
+  <string name="morphe_alt_thumbnail_stills_time_entry_1">동영상의 시작 부분 이미지</string>
+  <string name="morphe_alt_thumbnail_stills_time_entry_2">동영상의 중간 부분 이미지</string>
+  <string name="morphe_alt_thumbnail_stills_time_entry_3">동영상의 끝 부분 이미지</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="morphe_alt_thumbnail_dearrow_error">DeArrow를 일시적으로 사용할 수 없습니다 (상태 코드: %s)</string>
   <string name="morphe_alt_thumbnail_dearrow_error_generic">DeArrow를 일시적으로 사용할 수 없습니다</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">이전 플레이어 버튼 스타일 복원하기</string>
-  <string name="morphe_restore_old_player_buttons_summary">굵은 동영상 플레이어 컨트롤을 이전의 더 얇은 스타일로 되돌립니다</string>
+  <string name="morphe_restore_old_player_buttons_summary">굵은 동영상 플레이어 컨트롤을 이전의 얇은 스타일로 되돌립니다</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">기기 크기 정보 속이기</string>
-  <string name="morphe_spoof_device_dimensions_summary">기기 크기 정보를 속여 서버가 더 높은 화질 옵션을 제공하도록 합니다</string>
+  <string name="morphe_spoof_device_dimensions_summary">이 설정을 활성화하면 더 높은 동영상 화질 값을 잠금 해제할 수 있습니다</string>
   <string name="morphe_spoof_device_dimensions_user_dialog_message">이 설정을 활성화하면 동영상 재생이 끊기거나 배터리 수명이 단축되고 알려지지 않은 부작용이 발생할 수 있습니다.</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">진동 피드백</string>
@@ -1105,19 +1133,19 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_disable_haptic_feedback_zoom_title">동영상 확대 진동 피드백 비활성화하기</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <string name="morphe_notification_media_screen_title">알림 미디어 컨트롤</string>
-  <string name="morphe_notification_media_screen_summary">잠금 화면 및 알림 패널에 포시되는 재생 컨트롤을 설정할 수 있습니다</string>
+  <string name="morphe_notification_media_screen_summary">잠금 화면 및 알림 패널에 표시되는 재생 컨트롤을 설정할 수 있습니다</string>
   <string name="morphe_hide_notification_media_prev_next_title">이전 &amp; 다음 버튼 숨기기</string>
   <string name="morphe_hide_notification_media_prev_next_summary">미디어 알림, 잠금 화면 그리고 헤드폰 컨트롤에서 이전 및 다음 버튼을 숨깁니다</string>
   <string name="morphe_disable_notification_media_seekbar_title">재생바 비활성화하기</string>
-  <string name="morphe_disable_notification_media_seekbar_summary">잠금 화면과 알림 패널에서 재생바를 드래그하지 못하도록 합니다</string>
+  <string name="morphe_disable_notification_media_seekbar_summary">잠금 화면 및 알림 패널에서 재생바를 드래그하지 못하도록 합니다</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">최근에 계정 로그인 정보를 변경했다면 MicroG를 제거하고 다시 설치하세요.</string>
   <!-- misc.links.bypassURLRedirectsPatch -->
   <string name="morphe_bypass_url_redirects_title">리다이렉션 없이 링크 바로 열기</string>
-  <string name="morphe_bypass_url_redirects_summary">리다이렉션 추적 링크를 거치지 않고 URL 링크를 바로 엽니다</string>
+  <string name="morphe_bypass_url_redirects_summary">앱 내에서 외부 링크를 열 경우에 추적 링크 (youtube.com/redirect)을 거치지 않고 연결됩니다</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">외부 브라우저 사용하기</string>
-  <string name="morphe_external_browser_summary">앱 내에서 외부 링크를 열 경우에 내부 브라우저 대신 외부 브라우저를 사용합니다</string>
+  <string name="morphe_external_browser_summary">앱 내에서 외부 링크를 열 경우에 내부 브라우저가 아닌 외부 브라우저를 사용합니다</string>
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
   <string name="morphe_video_quality_default_entry_1">자동</string>
@@ -1182,7 +1210,7 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <!-- video.quality.hidePremiumVideoQualityPatch -->
   <string name="morphe_hide_premium_video_quality_title">Premium 화질 옵션 숨기기</string>
   <!-- video.quality.prioritizeVideoQualityPatch -->
-  <string name="morphe_prioritize_video_quality_title">동영상 화질 우선순위 지정하기</string>
+  <string name="morphe_prioritize_video_quality_title">동영상 우선순위를 화질로 지정하기</string>
   <string name="morphe_prioritize_video_quality_summary">코덱 효율성보다 최고 화질의 동영상을 우선시합니다</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_av1_title">Android VR AV1 허용하기</string>

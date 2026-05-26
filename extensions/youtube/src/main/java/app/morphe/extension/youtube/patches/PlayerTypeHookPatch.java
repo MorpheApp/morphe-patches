@@ -1,5 +1,6 @@
 package app.morphe.extension.youtube.patches;
 
+import android.util.Log;
 import android.view.View;
 
 import androidx.annotation.Nullable;

@@ -132,7 +132,7 @@ Hindi makakaapekto sa paggamit ng baterya ang pagpatay sa pag-optimize ng batery
 
 Pindutin ang button na magpatuloy at payagan ang mga pagbabago sa pag-optimize."</string>
   <string name="gms_core_dialog_continue_text">Magpatuloy</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Ipakita ang dialog ng pag-optimize ng baterya</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Ipakita ang dialog ng pag-optimize ng baterya ng MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Ang hindi pag-disable nito ay itatago ang prompt ng pag-optimize ng baterya ng MicroG.
 
 Kung hindi nagbago ang pag-optimize sa baterya, maaaring makaranas ka ng:
@@ -141,7 +141,7 @@ Kung hindi nagbago ang pag-optimize sa baterya, maaaring makaranas ka ng:
 • Maaaring hindi gumana ang background playback"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Paghawak ng link ng app</string>
-  <string name="morphe_link_handling_summary">I-configure kung aling app ang magbubukas ng mga link</string>
+  <string name="morphe_link_handling_summary">I-configure ang mga link upang buksan sa app na ito</string>
   <string name="morphe_link_handling_step1_title">Hakbang 1: Patayin ang orihinal na mga link ng app</string>
   <string name="morphe_link_handling_step1_message">Buksan ang mga setting ng orihinal na app at patayin ang lahat ng mga link ng domain</string>
   <string name="morphe_link_handling_step2_title">Hakbang 2: I-enable ang mga patched na link ng app</string>

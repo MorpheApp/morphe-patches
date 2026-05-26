@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">รีสตาร์ทเพื่อดำเนินการตั้งค่าให้เสร็จสิ้น</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">ชื่อแอป</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">กำหนดเอง</string>
   <string name="morphe_custom_branding_icon_title">ไอคอนแอป</string>
   <string name="morphe_custom_branding_icon_entry_1">ต้นฉบับ</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe ดำ</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe มืด</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe แสง</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play light</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play black</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">กำหนดเอง</string>
+  <string name="morphe_custom_branding_icon_entry_7">กำหนดเอง</string>
   <string name="morphe_custom_branding_notification_icon_title">ไอคอนการแจ้งเตือน</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">จับคู่ไอคอนแอป</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">ประกาศ Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">ประวัติการรับชมของคุณไม่ได้ถูกบันทึก&lt;br&gt;&lt;br&gt;สาเหตุที่เป็นไปได้มากที่สุดคือตัวบล็อกโฆษณา DNS หรือพร็อกซีเครือข่าย&lt;br&gt;&lt;br&gt;เพื่อแก้ไขปัญหานี้ ให้เพิ่ม &lt;b&gt;s.youtube.com&lt;/b&gt; ในรายการที่อนุญาต หรือปิดตัวบล็อกโฆษณา DNS และพร็อกซีทั้งหมด</string>
@@ -40,7 +44,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">ปลอมแปลงสตรีมวิดีโอ</string>
   <string name="morphe_spoof_video_streams_screen_summary">ปลอมแปลงสตรีมวิดีโอของไคลเอนต์เพื่อป้องกันปัญหาการเล่น</string>
   <string name="morphe_spoof_video_streams_title">วิดีโอปลอม</string>
-  <string name="morphe_spoof_video_streams_summary">"หลอกให้ YouTube ส่งสตรีมวิดีโอที่เข้ากันได้ ซึ่งจะแก้ไขปัญหาการเล่นสำหรับผู้ใช้ส่วนใหญ่
+  <string name="morphe_spoof_video_streams_summary">"แก้ไขปัญหาการเล่นวิดีโอสำหรับผู้ใช้ส่วนใหญ่ โดยการขอสตรีมวิดีโอที่เข้ากันได้
 
 หากคุณเป็นผู้ใช้ YouTube Premium การตั้งค่านี้อาจไม่จำเป็น"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">ไม่สามารถดึงข้อมูล clinets ทั้งหมดได้</string>
@@ -110,6 +114,7 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_title">ล้างข้อมูลลิงก์ที่แชร์</string>
   <string name="morphe_sanitize_sharing_links_summary">พารามิเตอร์การติดตามจะถูกลบออกจากลิงก์ที่แชร์</string>
   <string name="morphe_replace_music_with_youtube_title">เปลี่ยนลิงก์การแชร์เป็น youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">แทนที่ music.youtube.com ด้วย youtube.com ในลิงก์ที่แชร์</string>
   <string name="morphe_replace_links_with_shortener_title">เปลี่ยนลิงก์การแชร์เป็น youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">บังคับให้สตรีมสดและ Shorts ใช้รูปแบบ URL แบบย่อ youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">บังคับให้วิดีโอใช้รูปแบบ URL แบบสั้น youtu.be</string>
 </resources>

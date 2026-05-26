@@ -55,8 +55,8 @@ Second \"item\" text"</string>
 
 Batasan: Spasi visual mungkin tidak disembunyikan"</string>
   <string name="morphe_remove_notification_dialog_title">Hapus dialog saran notifikasi</string>
-  <string name="morphe_remove_notification_dialog_summary">Secara otomatis menutup dialog saran notifikasi saat mengunjungi subreddit</string>
-  <string name="morphe_show_view_count_title">Tampilkan jumlah tayangan di pos</string>
+  <string name="morphe_remove_notification_dialog_summary">Secara otomatis menutup dialog saran pemberitahuan saat mengunjungi subreddit</string>
+  <string name="morphe_show_view_count_title">Tampilkan jumlah tayangan di postingan</string>
   <string name="morphe_show_view_count_summary">Batasan: Hanya tersedia jika respons API menyertakan jumlah tampilan</string>
   <string name="morphe_remove_nsfw_dialog_title">Hapus dialog peringatan NSFW</string>
   <string name="morphe_remove_nsfw_dialog_summary">Secara otomatis menerima peringatan konten NSFW saat mengunjungi subreddit</string>
@@ -68,5 +68,5 @@ Batasan: Spasi visual mungkin tidak disembunyikan"</string>
   <string name="morphe_open_links_directly_title">Buka tautan secara langsung</string>
   <string name="morphe_open_links_directly_summary">Melewati URL pengalihan saat membuka tautan eksternal</string>
   <string name="morphe_open_links_externally_title">Buka tautan secara eksternal</string>
-  <string name="morphe_open_links_externally_summary">Membuka tautan di browser Anda, bukan browser dalam aplikasi</string>
+  <string name="morphe_open_links_externally_summary">Membuka tautan di peramban Anda daripada peramban dalam aplikasi</string>
 </resources>

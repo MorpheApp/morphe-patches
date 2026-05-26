@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Start på nytt for å fullføre oppsettet</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Appnavn</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Tilpass</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe svart</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe mørk</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe lys</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe spill</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe lek lett</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe lek svart</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Tilpass</string>
+  <string name="morphe_custom_branding_icon_entry_7">Tilpass</string>
   <string name="morphe_custom_branding_notification_icon_title">Varslingsikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Tilpass app-ikon</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe spill</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-varsel</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din seerhistorikk lagres ikke.&lt;br&gt;&lt;br&gt;Dette skyldes mest sannsynlig en DNS-annonsesblokkering eller et nettverksproxy.&lt;br&gt;&lt;br&gt;For å fikse dette, legg til &lt;b&gt;s.youtube.com&lt;/b&gt; på hvitelisten eller slå av alle DNS-blokkeringer og proxyer.</string>
@@ -40,7 +44,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Forfalske videostrømmer</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurer klient-spoofing for å unngå avspillingsproblemer</string>
   <string name="morphe_spoof_video_streams_title">Forfalske videostrømmer</string>
-  <string name="morphe_spoof_video_streams_summary">"Lurer YouTube til å sende en kompatibel videostrøm, noe som fikser avspillingen for de fleste brukere
+  <string name="morphe_spoof_video_streams_summary">"Fikser avspillingsproblemer for de fleste brukere ved å be om en kompatibel videostrøm
 
 Hvis du er en YouTube Premium-bruker, er kanskje ikke denne innstillingen nødvendig."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Kunne ikke hente noen klientstrømmer</string>
@@ -110,6 +114,7 @@ Trykk på Fortsett nedenfor for å logge på"</string>
   <string name="morphe_sanitize_sharing_links_title">Sanere delingslenker</string>
   <string name="morphe_sanitize_sharing_links_summary">Fjerner sporingsparametere fra delte lenker</string>
   <string name="morphe_replace_music_with_youtube_title">Endre delingslenker til youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Erstatter music.youtube.com med youtube.com i delte lenker</string>
   <string name="morphe_replace_links_with_shortener_title">Endre delingslenker til youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Tvinger direktesendinger og Shorts til å bruke den forkortede youtu.be URL-formatet</string>
+  <string name="morphe_replace_links_with_shortener_summary">Tvinger videoer til å bruke den forkortede youtu.be URL-formatet</string>
 </resources>

@@ -132,7 +132,7 @@ Second \"item\" text"</string>
 
 תMouseEvent על הלחצן 'המשך' ואפשר שינויי מיטוב."</string>
   <string name="gms_core_dialog_continue_text">המשך</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">הצג תיבת דו-שיח לאופטימיזציית סוללה</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">הצג תיבת דו-שיח לאופטימיזציית סוללה של MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"ביטול האפשרות יסתר את ההודעה של MicroG לאופטימיזציית הסוללה.
 
 אם הגדרות האופטימיזציה של הסוללה לא ישונו, ייתכן שתחוו:
@@ -141,7 +141,7 @@ Second \"item\" text"</string>
 • השמעת מוזיקה ברקע עלולה לא לעבוד"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">טיפול בקישורים באפליקציה</string>
-  <string name="morphe_link_handling_summary">הגדרת האפליקציה שתפתח קישורים</string>
+  <string name="morphe_link_handling_summary">הגדר קישורים להיפתח באפליקציה זו</string>
   <string name="morphe_link_handling_step1_title">שלב 1: השבת קישורים לאפליקציה המקורית</string>
   <string name="morphe_link_handling_step1_message">פתחו את הגדרות האפליקציה המקורית והשביתו את כל קישורי הדומיין</string>
   <string name="morphe_link_handling_step2_title">שלב 2: הפעלה של קישורים לאפליקציה המתוקנת</string>

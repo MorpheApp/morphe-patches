@@ -5,10 +5,10 @@ import android.view.MotionEvent
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity
 
 /**
- * the common base of all [GestureController] classes.
- * handles most of the boilerplate code needed for gesture detection
+ * The common base of all [GestureController] classes.
+ * Handles most of the boilerplate code needed for gesture detection.
  *
- * @param controller reference to the main swipe controller
+ * @param controller Reference to the main swipe controller.
  */
 abstract class BaseGestureController(
     private val controller: SwipeControlsHostActivity,
@@ -23,18 +23,20 @@ abstract class BaseGestureController(
         controller.screen,
         controller.overlay,
         10,
-        1,
+        controller.config.brightnessSwipeSensitivity,
         controller.config.volumeSwipeSensitivity,
+        controller.config.speedSwipeSensitivity,
+        controller.config.enableSpeedGestureControl,
     ) {
 
     /**
-     * the main gesture detector that powers everything
+     * The main gesture detector that powers everything.
      */
     @Suppress("LeakingThis")
     protected val detector = GestureDetector(controller, this)
 
     /**
-     * were downstream event canceled already? used in [onScroll]
+     * Whether downstream events have been canceled; used in [onScroll].
      */
     private var didCancelDownstream = false
 
@@ -77,9 +79,9 @@ abstract class BaseGestureController(
     }
 
     /**
-     * custom handler for [MotionEvent.ACTION_UP] event, because GestureDetector doesn't offer that :|
+     * Custom handler for [MotionEvent.ACTION_UP] events, since GestureDetector doesn't provide one.
      *
-     * @param motionEvent the motion event
+     * @param motionEvent The motion event.
      */
     open fun onUp(motionEvent: MotionEvent) {
         didCancelDownstream = false
@@ -126,36 +128,36 @@ abstract class BaseGestureController(
     }
 
     /**
-     * should [submitTouchEvent] force-intercept all touch events?
+     * Whether [submitTouchEvent] should force-intercept all touch events.
      */
     abstract val shouldForceInterceptEvents: Boolean
 
     /**
-     * check if provided motion event is in any active swipe zone?
+     * Checks if the provided motion event is in any active swipe zone.
      *
-     * @param motionEvent the event to check
-     * @return is the event in any active swipe zone?
+     * @param motionEvent The event to check.
+     * @return Whether the event is in any active swipe zone.
      */
     abstract fun isInSwipeZone(motionEvent: MotionEvent): Boolean
 
     /**
-     * check if a touch event should be dropped.
-     * when an event is dropped, the gesture detector received a [MotionEvent.ACTION_CANCEL] event and the event is not consumed
+     * Checks if a touch event should be dropped.
+     * When an event is dropped, the gesture detector receives a [MotionEvent.ACTION_CANCEL] event and the event is not consumed.
      *
-     * @param motionEvent the event to check
-     * @return should the event be dropped?
+     * @param motionEvent The event to check.
+     * @return Whether the event should be dropped.
      */
     abstract fun shouldDropMotion(motionEvent: MotionEvent): Boolean
 
     /**
-     * handler for swipe events, once a swipe is detected.
-     * the direction of the swipe can be accessed in [currentSwipe]
+     * Handler for swipe events, once a swipe is detected.
+     * The direction of the swipe can be accessed in [currentSwipe].
      *
-     * @param from start event of the swipe
-     * @param to end event of the swipe
-     * @param distanceX the horizontal distance of the swipe
-     * @param distanceY the vertical distance of the swipe
-     * @return was the event consumed?
+     * @param from Start event of the swipe.
+     * @param to End event of the swipe.
+     * @param distanceX The horizontal distance of the swipe.
+     * @param distanceY The vertical distance of the swipe.
+     * @return Whether the event was consumed.
      */
     abstract fun onSwipe(
         from: MotionEvent,

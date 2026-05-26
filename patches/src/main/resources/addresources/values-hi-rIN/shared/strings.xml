@@ -132,7 +132,7 @@ Second \"item\" text"</string>
 
 टाप करें और ऑप्टिमाइज़ेशन बदलने की अनुमति दें।"</string>
   <string name="gms_core_dialog_continue_text">जारी रखें</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">बैटरी ऑप्टिमाइज़ेशन संवाद दिखाएं</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG बैटरी ऑप्टिमाइज़ेशन संवाद दिखाएं</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"इसे अक्षम करने से MicroG बैटरी अनुकूलन प्रॉम्प्ट छिप जाएगा।
 
 यदि बैटरी अनुकूलन नहीं बदले गए हैं तो आपको निम्नलिखित अनुभव हो सकते हैं:
@@ -141,7 +141,7 @@ Second \"item\" text"</string>
 • पृष्ठभूमि प्लेबैक काम नहीं कर सकता है"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">ऐप लिंक हैंडलिंग</string>
-  <string name="morphe_link_handling_summary">लिंक खोलने के लिए ऐप कॉन्फ़िगर करें</string>
+  <string name="morphe_link_handling_summary">इस ऐप में खोलने के लिए लिंक कॉन्फ़िगर करें</string>
   <string name="morphe_link_handling_step1_title">चरण 1: मूल ऐप लिंक अक्षम करें</string>
   <string name="morphe_link_handling_step1_message">मूल ऐप की सेटिंग खोलें और सभी डोमेन लिंक अक्षम करें</string>
   <string name="morphe_link_handling_step2_title">चरण 2: पैच किए गए ऐप लिंक सक्षम करें</string>

@@ -31,7 +31,7 @@ public class ReloadVideoButton {
     private static LegacyPlayerControlButton instance;
 
     /**
-     * injection point.
+     * Injection point.
      */
     public static void initializeLegacyButton(View controlsView) {
         try {

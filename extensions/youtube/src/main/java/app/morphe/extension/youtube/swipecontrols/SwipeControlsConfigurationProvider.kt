@@ -23,7 +23,7 @@ class SwipeControlsConfigurationProvider {
      * Returns true if either volume or brightness controls are enabled and the video is in fullscreen mode.
      */
     val enableSwipeControls: Boolean
-        get() = (enableVolumeControls || enableBrightnessControl) && (isFullscreenVideo || isVideoSliding)
+        get() = (enableVolumeControls || enableBrightnessControl || enableSpeedGestureControl) && (isFullscreenVideo || isVideoSliding)
 
     /**
      * Indicates whether swipe controls for adjusting volume are enabled.
@@ -84,15 +84,52 @@ class SwipeControlsConfigurationProvider {
      * The sensitivity of volume swipe gestures, determining how much volume changes per swipe.
      * Resets to default if set to 0, as it would disable swiping.
      */
-    val volumeSwipeSensitivity: Int by lazy {
-        val sensitivity = Settings.SWIPE_VOLUME_SENSITIVITY.get()
+    val volumeSwipeSensitivity: Int
+        get() {
+            val sensitivity = Settings.SWIPE_VOLUME_SENSITIVITY.get()
 
-        if (sensitivity < 1) {
-            return@lazy Settings.SWIPE_VOLUME_SENSITIVITY.resetToDefault()
+            if (sensitivity < 1) {
+                return Settings.SWIPE_VOLUME_SENSITIVITY.resetToDefault()
+            }
+
+            return sensitivity
         }
 
-        sensitivity
-    }
+    /**
+     * The sensitivity of brightness swipe gestures, determining how much brightness changes per swipe.
+     * Resets to default if set to 0, as it would disable swiping.
+     */
+    val brightnessSwipeSensitivity: Int
+        get() {
+            val sensitivity = Settings.SWIPE_BRIGHTNESS_SENSITIVITY.get()
+
+            if (sensitivity < 1) {
+                return Settings.SWIPE_BRIGHTNESS_SENSITIVITY.resetToDefault()
+            }
+
+            return sensitivity
+        }
+
+    /**
+     * Indicates whether the horizontal swipe gesture for playback speed control is enabled.
+     */
+    val enableSpeedGestureControl = Settings.SWIPE_SPEED.get()
+
+    /**
+     * The sensitivity of speed swipe gestures, controlling how much physical movement is needed per step.
+     * Resets to default if below 1 to guard against direct SharedPreferences manipulation.
+     */
+    val speedSwipeSensitivity: Int
+        get() {
+            val sensitivity = Settings.SWIPE_SPEED_SENSITIVITY.get()
+
+            if (sensitivity < 1) {
+                return Settings.SWIPE_SPEED_SENSITIVITY.resetToDefault()
+            }
+
+            return sensitivity
+        }
+
     //endregion
 
     //region overlay adjustments
@@ -110,35 +147,32 @@ class SwipeControlsConfigurationProvider {
      * The background opacity of the overlay, converted from a percentage (0-100) to an alpha value (0-255).
      * Resets to default and shows a toast if the value is out of range.
      */
-    val overlayBackgroundOpacity: Int by lazy {
-        var opacity = Settings.SWIPE_OVERLAY_OPACITY.get()
+    val overlayBackgroundOpacity: Int
+        get() {
+            var opacity = Settings.SWIPE_OVERLAY_OPACITY.get()
 
-        if (opacity !in 0..100) {
-            Utils.showToastLong(str("morphe_swipe_overlay_background_opacity_invalid_toast"))
-            opacity = Settings.SWIPE_OVERLAY_OPACITY.resetToDefault()
+            if (opacity !in 0..100) {
+                Utils.showToastLong(str("morphe_swipe_overlay_background_opacity_invalid_toast"))
+                opacity = Settings.SWIPE_OVERLAY_OPACITY.resetToDefault()
+            }
+
+            opacity = opacity * 255 / 100
+            return Color.argb(opacity, 0, 0, 0)
         }
-
-        opacity = opacity * 255 / 100
-        Color.argb(opacity, 0, 0, 0)
-    }
 
     /**
      * The color of the progress bar in the overlay for brightness.
      * Resets to default and shows a toast if the color string is invalid or empty.
      */
-    val overlayBrightnessProgressColor: Int by lazy {
-        // Use lazy to avoid repeat parsing. Changing color requires app restart.
-        getSettingColor(Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR)
-    }
+    val overlayBrightnessProgressColor: Int
+        get() = getSettingColor(Settings.SWIPE_OVERLAY_BRIGHTNESS_COLOR)
 
     /**
      * The color of the progress bar in the overlay for volume.
      * Resets to default and shows a toast if the color string is invalid or empty.
      */
-    val overlayVolumeProgressColor: Int by lazy {
-        // Use lazy to avoid repeat parsing. Changing color requires app restart.
-        getSettingColor(Settings.SWIPE_OVERLAY_VOLUME_COLOR)
-    }
+    val overlayVolumeProgressColor: Int
+        get() = getSettingColor(Settings.SWIPE_OVERLAY_VOLUME_COLOR)
 
     private fun getSettingColor(setting: StringSetting): Int {
         return try {
@@ -156,6 +190,12 @@ class SwipeControlsConfigurationProvider {
     }
 
     /**
+     * The color of the progress indicator in the overlay for playback speed.
+     */
+    val overlaySpeedProgressColor: Int
+        get() = getSettingColor(Settings.SWIPE_OVERLAY_SPEED_COLOR)
+
+    /**
      * The background color used for the filled portion of the progress bar in the overlay.
      */
     val overlayFillBackgroundPaint = 0x80D3D3D3.toInt()
@@ -169,14 +209,15 @@ class SwipeControlsConfigurationProvider {
      * The text size in the overlay, in density-independent pixels (dp).
      * Must be between 1 and 30 dp; resets to default and shows a toast if invalid.
      */
-    val overlayTextSize: Int by lazy {
-        val size = Settings.SWIPE_OVERLAY_TEXT_SIZE.get()
-        if (size !in 1..30) {
-            Utils.showToastLong(str("morphe_swipe_text_overlay_size_invalid_toast"))
-            return@lazy Settings.SWIPE_OVERLAY_TEXT_SIZE.resetToDefault()
+    val overlayTextSize: Int
+        get() {
+            val size = Settings.SWIPE_OVERLAY_TEXT_SIZE.get()
+            if (size !in 1..30) {
+                Utils.showToastLong(str("morphe_swipe_text_overlay_size_invalid_toast"))
+                return Settings.SWIPE_OVERLAY_TEXT_SIZE.resetToDefault()
+            }
+            return size
         }
-        size
-    }
 
     /**
      * Defines the style of the swipe controls overlay, determining its layout and appearance.

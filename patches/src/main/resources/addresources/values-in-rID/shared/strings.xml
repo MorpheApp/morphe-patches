@@ -84,10 +84,10 @@ Untuk menerjemahkan bahasa baru atau meningkatkan terjemahan yang sudah ada, kun
   <string name="morphe_settings_about_licenses_loading">Memuat...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
-  <string name="morphe_debug_screen_summary">Konfigurasikan opsi pengembang dan log diagnostik tingkat lanjut</string>
+  <string name="morphe_debug_screen_summary">Konfigurasikan pilihan pengembang lanjutan dan catatan diagnostik</string>
   <string name="morphe_debug_title">Aktifkan pencatatan debug</string>
   <string name="morphe_debug_stacktrace_title">Jejak stack catatan debug</string>
-  <string name="morphe_debug_stacktrace_summary">Sertakan jejak tumpukan dalam log debug untuk membantu mengidentifikasi kesalahan</string>
+  <string name="morphe_debug_stacktrace_summary">Menyertakan jejak stack dalam catatan debug untuk membantu mengidentifikasi kesalahan</string>
   <string name="morphe_debug_toast_on_error_title">Tampilkan pesan timbul pada kesalahan Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Mematikan pesan timbul kesalahan menyembunyikan semua pemberitahuan kesalahan Morphe.
 
@@ -132,7 +132,7 @@ Menonaktifkan pengoptimalan MicroG tidak akan berdampak buruk pada penggunaan ba
 
 Ketuk tombol lanjutkan dan izinkan perubahan pengoptimalan."</string>
   <string name="gms_core_dialog_continue_text">Lanjutkan</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Tampilkan dialog optimasi baterai</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Tampilkan dialog optimalisasi baterai MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Menonaktifkan ini akan menyembunyikan perintah optimasi baterai MicroG.
 
 Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
@@ -141,7 +141,7 @@ Jika optimasi baterai tidak diubah, Anda mungkin mengalami:
 • Pemutaran latar belakang mungkin tidak berfungsi"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Penanganan tautan aplikasi</string>
-  <string name="morphe_link_handling_summary">Konfigurasikan aplikasi mana yang membuka tautan</string>
+  <string name="morphe_link_handling_summary">Konfigurasi tautan untuk dibuka di aplikasi ini</string>
   <string name="morphe_link_handling_step1_title">Langkah 1: Nonaktifkan tautan aplikasi asli</string>
   <string name="morphe_link_handling_step1_message">Buka pengaturan aplikasi asli dan nonaktifkan semua tautan domain</string>
   <string name="morphe_link_handling_step2_title">Langkah 2: Aktifkan tautan aplikasi yang ditambal</string>

@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">I-restart upang tapusin ang pag-setup</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Pangalan ng aplikasyon</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Pasadya</string>
   <string name="morphe_custom_branding_icon_title">Icon ng aplikasyon</string>
   <string name="morphe_custom_branding_icon_entry_1">Orihinal</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe na itim</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe na maitim</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe na maliwanag</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe na magaan</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe na itim</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Pasadya</string>
+  <string name="morphe_custom_branding_icon_entry_7">Pasadya</string>
   <string name="morphe_custom_branding_notification_icon_title">Icon ng abiso</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Itugma ang icon ng app</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Paunawa ng Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Hindi sine-save ang iyong kasaysayan ng panonood.&lt;br&gt;&lt;br&gt;Malamang na ito ay sanhi ng isang DNS ad blocker o network proxy.&lt;br&gt;&lt;br&gt;Upang ayusin ito, i-whitelist ang &lt;b&gt;s.youtube.com&lt;/b&gt; o patayin ang lahat ng DNS blocker at proxy.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Gayahin ang mga video stream</string>
   <string name="morphe_spoof_video_streams_screen_summary">I-configure ang client spoofing upang maiwasan ang mga isyu sa pag-playback</string>
   <string name="morphe_spoof_video_streams_title">Gayahin ang mga video stream</string>
-  <string name="morphe_spoof_video_streams_summary">"Niloloko ang YouTube para magpadala ng isang compatible na video stream, na inaayos ang pag-playback para sa karamihan ng mga user
+  <string name="morphe_spoof_video_streams_summary">"Inaayos ang mga isyu sa pagpapatugtog para sa karamihan ng mga gumagamit sa pamamagitan ng paghingi ng tugmang video stream
 
-Kung ikaw ay isang YouTube Premium user, maaaring hindi kinakailangan ang setting na ito"</string>
+Kung ikaw ay isang gumagamit ng YouTube Premium, maaaring hindi na kailanganin ang setting na ito."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Hindi makuha ang anumang mga stream ng kliyente</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Maaaring magdulot ng isyu sa playback kung pinatay mo ang pagpipilian na ito</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -110,6 +114,7 @@ Upang mag-sign in, pindutin ang magpatuloy sa ibaba"</string>
   <string name="morphe_sanitize_sharing_links_title">I-sanitize ang mga nakabahaging link</string>
   <string name="morphe_sanitize_sharing_links_summary">Inaalis ang mga parameter ng query sa pagsubaybay mula sa mga ibinahaging link</string>
   <string name="morphe_replace_music_with_youtube_title">Baguhin ang mga nakabahaging link sa youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Pinapalitan ang music.youtube.com sa youtube.com sa mga ibinahaging link</string>
   <string name="morphe_replace_links_with_shortener_title">Baguhin ang mga nakabahaging link sa youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Pinipilit ang mga live stream at Shorts na gamitin ang pinaikling format ng URL na youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Pinipilit ang mga video na gamitin ang pinaikling format ng URL na youtu.be</string>
 </resources>

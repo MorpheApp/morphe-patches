@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Рестартирайте, за да завършите настройката</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Име на приложението</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">По избор</string>
   <string name="morphe_custom_branding_icon_title">Икона на приложението</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригинал</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe light</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe светъл</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe черен</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">По избор</string>
+  <string name="morphe_custom_branding_icon_entry_7">По избор</string>
   <string name="morphe_custom_branding_notification_icon_title">Икона на известие</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Съвпадение на иконата на приложението</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Уведомление Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Историята ви на гледане не се запазва.&lt;br&gt;&lt;br&gt;Това най-вероятно е причинено от DNS блокиращ реклами или мрежов прокси.&lt;br&gt;&lt;br&gt;За да коригирате това, поставете &lt;b&gt;s.youtube в белия списък.com&lt;/b&gt; или изключете всички DNS блокери и проксита.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Подправяне на видео потоци</string>
   <string name="morphe_spoof_video_streams_screen_summary">Подправете клиентските видео потоци, за да предотвратите проблеми с възпроизвеждането</string>
   <string name="morphe_spoof_video_streams_title">Подправяне на видео потоци</string>
-  <string name="morphe_spoof_video_streams_summary">"Заблуждава YouTube да изпрати съвместим видео поток, което оправя възпроизвеждането за повечето потребители
+  <string name="morphe_spoof_video_streams_summary">"Отстранява проблеми с възпроизвеждането за повечето потребители, като поиска съвместим видео поток.
 
-Ако сте потребител на YouTube Premium, тази настройка може да не е необходима"</string>
+Ако сте потребител на YouTube Premium, тази настройка може да не е необходима."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не може да се изтеглят клиентски потоци</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Изключването на тази настройка може да причини проблеми при възпроизвеждане.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -110,6 +114,7 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_title">Почистване на споделените връзки</string>
   <string name="morphe_sanitize_sharing_links_summary">Премахва параметрите за проследяване на заявките от споделени връзки</string>
   <string name="morphe_replace_music_with_youtube_title">Сменете споделяните връзки на youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Заменя music.youtube.com с youtube.com в споделени връзки</string>
   <string name="morphe_replace_links_with_shortener_title">Сменете споделяните връзки на youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Принуждава потоците на живо и Shorts да използват съкратения URL формат youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Принудително използва съкратения URL формат youtu.be за видеа</string>
 </resources>

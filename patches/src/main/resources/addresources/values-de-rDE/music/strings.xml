@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Videowerbungen ausblenden</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Nahtlose Wiedergabe</string>
-  <string name="morphe_music_crossfade_screen_summary">Passe an, wie Titel nahtlos ineinander übergehen</string>
+  <string name="morphe_music_crossfade_screen_summary">Gib die Titel nahtlos wieder</string>
   <string name="morphe_music_crossfade_enabled_title">Nahtlose Wiedergabe aktivieren</string>
   <string name="morphe_music_crossfade_curve_title">Einblend-Niveau</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Gleiche Lautstärke</string>
@@ -103,7 +103,7 @@ Feature-Implementierung von VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Verhindert, dass der Player automatisch in den Vollbildmodus wechselt, wenn ein neuer Titel startet</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigationsleiste</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Wähle aus, welche Schaltflächen in der Navigationsleiste angezeigt werden</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Wählen Sie, welche Schaltflächen in der unteren Navigationsleiste angezeigt werden sollen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Startseite-Button ausblenden</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

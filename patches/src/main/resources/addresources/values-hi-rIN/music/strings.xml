@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">विडियो विज्ञापन छिपाएं</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">क्रॉसफ़ेड</string>
-  <string name="morphe_music_crossfade_screen_summary">ट्रैक एक-दूसरे में कितनी आसानी से घुलमिल जाएं, इसे अनुकूलित करें</string>
+  <string name="morphe_music_crossfade_screen_summary">ट्रैक को आपस में सहजता से मिलाएं</string>
   <string name="morphe_music_crossfade_enabled_title">क्रॉसफ़ेड सक्षम करें</string>
   <string name="morphe_music_crossfade_curve_title">फे़ड वक्र</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">समान शक्ति</string>
@@ -103,7 +103,7 @@ VazerOG द्वारा फीचर कार्यान्वयन"</stri
   <string name="morphe_music_enable_forced_miniplayer_summary">प्लेयर को नए ट्रैक शुरू होने पर स्वचालित रूप से फुलस्क्रीन में विस्तार करने से रोकता है</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">नविगेशन बार</string>
-  <string name="morphe_music_navigation_bar_screen_summary">नेविगेशन बार में दिखने वाले बटनों को चुनें</string>
+  <string name="morphe_music_navigation_bar_screen_summary">नीचे नेविगेशन बार में कौन से बटन दिखाई दें, यह चुनें</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">होम बटन छिपाएं</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Skrýt reklamy ve videu</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Přechodné rozpínání</string>
-  <string name="morphe_music_crossfade_screen_summary">Přizpůsobte si, jak plynule přecházejí skladby jedna do druhé</string>
+  <string name="morphe_music_crossfade_screen_summary">Hladce prolínejte skladby do sebe</string>
   <string name="morphe_music_crossfade_enabled_title">Povolit přechodné rozpínání</string>
   <string name="morphe_music_crossfade_curve_title">Křivka vyhlazování</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Rovnoměrný výkon</string>
@@ -103,7 +103,7 @@ Implementace funkce VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Zabraňuje automatickému rozšíření přehrávače na celou obrazovku při spuštění nové skladby</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigační panel</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Vyberte, která tlačítka se zobrazují v navigačním panelu</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Vyberte, které tlačítka se zobrazí v navigační liště ve spodní části.</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Skrýt tlačítko Domů</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

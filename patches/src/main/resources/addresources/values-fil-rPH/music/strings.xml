@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Itago ang mga patalastas sa video</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
-  <string name="morphe_music_crossfade_screen_summary">Ipasadya kung paano maayos na naghahalo ang mga track sa isa\'t isa</string>
+  <string name="morphe_music_crossfade_screen_summary">Pagsamahin nang maayos ang mga track sa isa\'t isa</string>
   <string name="morphe_music_crossfade_enabled_title">I-enable ang crossfade</string>
   <string name="morphe_music_crossfade_curve_title">Kurba ng pagpaliwanag</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Pantay na kapangyarihan</string>
@@ -103,7 +103,7 @@ Feature implementation by VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Pinipigilan ang player na awtomatikong lumawak sa fullscreen kapag nagsimula ang isang bagong track</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Piliin kung aling mga button ang lilitaw sa navigation bar</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Piliin kung aling mga button ang lalabas sa ibabang navigation bar</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Itago ang Home button</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

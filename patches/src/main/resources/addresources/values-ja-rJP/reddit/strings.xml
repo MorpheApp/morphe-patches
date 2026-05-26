@@ -55,18 +55,18 @@ Second \"item\" text"</string>
 
 制限: 視覚的なスペーサーは非表示にならない場合があります"</string>
   <string name="morphe_remove_notification_dialog_title">通知の提案ダイアログを削除</string>
-  <string name="morphe_remove_notification_dialog_summary">subredditを訪問する際に、通知の提案ダイアログを自動的に閉じます</string>
-  <string name="morphe_show_view_count_title">投稿に表示回数を表示する</string>
-  <string name="morphe_show_view_count_summary">制限：APIレスポンスにビューカウントが含まれている場合のみ利用可能です</string>
+  <string name="morphe_remove_notification_dialog_summary">subredditを開いたときに表示される通知案内のポップアップを自動的に閉じます</string>
+  <string name="morphe_show_view_count_title">投稿に表示回数を表示</string>
+  <string name="morphe_show_view_count_summary">制限事項: API の応答に表示回数が含まれている場合のみ利用可能です</string>
   <string name="morphe_remove_nsfw_dialog_title">NSFW警告ダイアログを削除</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Redditのサブレディットを訪問する際に、NSFWコンテンツ警告を自動的に承認します</string>
+  <string name="morphe_remove_nsfw_dialog_summary">subreddit を開いたときに表示される NSFW コンテンツ警告に自動で同意します</string>
   <string name="morphe_screen_miscellaneous_title">その他</string>
   <string name="morphe_about_title">このアプリについて</string>
   <string name="morphe_about_summary">バージョンと公式リンク</string>
   <string name="morphe_sanitize_sharing_links_title">共有リンクを無害化</string>
   <string name="morphe_sanitize_sharing_links_summary">共有リンクから追跡クエリパラメータを削除します</string>
   <string name="morphe_open_links_directly_title">リンクを直接開く</string>
-  <string name="morphe_open_links_directly_summary">外部リンクを開く際に、リダイレクトURLをバイパスします</string>
+  <string name="morphe_open_links_directly_summary">外部リンクを開く際に、リダイレクト URL を回避します</string>
   <string name="morphe_open_links_externally_title">外部ブラウザでリンクを開く</string>
-  <string name="morphe_open_links_externally_summary">アプリ内ブラウザではなく、ブラウザでリンクを開きます</string>
+  <string name="morphe_open_links_externally_summary">リンクをアプリ内ブラウザではなく外部ブラウザで開きます</string>
 </resources>

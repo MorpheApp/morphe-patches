@@ -132,7 +132,7 @@ Dette er nødvendig for at appen skal fungere."</string>
 
 Trykk på fortsett-knappen og tillat optimaliseringsendringer."</string>
   <string name="gms_core_dialog_continue_text">Fortsett</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Vis dialog for batterioptimalisering</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Vis dialog for MicroG-batterioptimalisering</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Å deaktivere dette vil skjule MicroG-dialogboksen for batterioptimalisering.
 
 Hvis batterioptimaliseringer ikke endres, kan du oppleve:
@@ -141,7 +141,7 @@ Hvis batterioptimaliseringer ikke endres, kan du oppleve:
 • Bakgrunnsavspilling fungerer kanskje ikke"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Appkoblingshåndtering</string>
-  <string name="morphe_link_handling_summary">Konfigurer hvilken app som åpner lenker</string>
+  <string name="morphe_link_handling_summary">Konfigurer lenker for å åpnes i denne appen</string>
   <string name="morphe_link_handling_step1_title">Trinn 1: Deaktiver originale applenker</string>
   <string name="morphe_link_handling_step1_message">Åpne innstillingene for den originale appen og deaktiver alle domenetilknytninger</string>
   <string name="morphe_link_handling_step2_title">Trinn 2: Aktiver patchede applenker</string>

@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Videóhirdetések elrejtése</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Áttűnés</string>
-  <string name="morphe_music_crossfade_screen_summary">Állítsd be a számok közötti fokozatos áttűnés módját</string>
+  <string name="morphe_music_crossfade_screen_summary">Zökkenőmentesen keverd össze a számokat</string>
   <string name="morphe_music_crossfade_enabled_title">Áttűnés engedélyezése</string>
   <string name="morphe_music_crossfade_curve_title">Áttűnési görbe</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Egyenletes teljesítmény</string>
@@ -103,7 +103,7 @@ A funkciót készítette: VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Ne váltson automatikusan teljes képernyőre új szám indításakor</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigációs sáv</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Válaszd ki, mely gombok jelenjenek meg a navigációs sávon</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Válaszd ki, mely gombok jelenjenek meg az alsó navigációs sávban</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Kezdőképernyő gomb elrejtése</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

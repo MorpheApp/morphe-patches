@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Indíts újra a beállítások befejezéséhez</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Alkalmazás neve</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Egyéni</string>
   <string name="morphe_custom_branding_icon_title">Alkalmazás ikonja</string>
   <string name="morphe_custom_branding_icon_entry_1">Eredeti</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe fekete</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe sötét</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe világos</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe világos játék</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe fekete játék</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Egyéni</string>
+  <string name="morphe_custom_branding_icon_entry_7">Egyéni</string>
   <string name="morphe_custom_branding_notification_icon_title">Értesítési ikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Alkalmazás ikonjának módosítása</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe lejátszás</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Értesítés</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">A megtekintési előzmények mentése nem történik meg.&lt;br&gt;&lt;br&gt;Ezt valószínűleg egy DNS-hirdetésblokkoló vagy hálózati proxy okozza.&lt;br&gt;&lt;br&gt;A probléma megoldásához vegye fel az engedélyezőlistára az &lt;b&gt;s.youtube.com&lt;/b&gt; domaint vagy kapcsolja ki az összes DNS-blokkolót és proxyt.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Videó streamek hamisítása</string>
   <string name="morphe_spoof_video_streams_screen_summary">A kliens videó streamek hamisítása a lejátszási problémák elkerülése érdekében</string>
   <string name="morphe_spoof_video_streams_title">Hamis videó stream</string>
-  <string name="morphe_spoof_video_streams_summary">"Trükközéssel arra készteti a YouTube-ot, hogy kompatibilis videó streamet küldjön, ami a legtöbb felhasználó számára megoldja a lejátszási problémákat
+  <string name="morphe_spoof_video_streams_summary">"Javítja a lejátszási problémákat a legtöbb felhasználó számára azáltal, hogy kompatibilis videostreamet kér
 
-Ha YouTube Premium előfizetője vagy, ez a beállítás nem feltétlenül szükséges."</string>
+Ha YouTube Premium-felhasználó vagy, ez a beállítás nem feltétlenül szükséges."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nem találtunk ügyfelek által megosztott folyamokat</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Ennek a beállításnak a kikapcsolása lejátszási problémákat okozhat.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -110,6 +114,7 @@ Belépéshez nyomd meg a folytatást alul"</string>
   <string name="morphe_sanitize_sharing_links_title">Megosztási linkek tisztítása</string>
   <string name="morphe_sanitize_sharing_links_summary">Eltávolítja a követési paramétereket a megosztott linkekből</string>
   <string name="morphe_replace_music_with_youtube_title">Módosítsa a megosztási linkeket youtube.com-ra</string>
+  <string name="morphe_replace_music_with_youtube_summary">A megosztott linkekben lecseréli a music.youtube.com-ot a youtube.com-ra</string>
   <string name="morphe_replace_links_with_shortener_title">Módosítsa a megosztási linkeket youtu.be-ra</string>
-  <string name="morphe_replace_links_with_shortener_summary">A videók és a Shorts mindig a rövidített youtu.be URL-formátumot használják</string>
+  <string name="morphe_replace_links_with_shortener_summary">Erősíti a videók használatát a rövidített youtu.be URL formátummal</string>
 </resources>

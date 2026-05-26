@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Ukryj reklamy w filmach</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Przenikanie</string>
-  <string name="morphe_music_crossfade_screen_summary">Dostosuj, jak utwory mają płynnie przenikać się nawzajem</string>
+  <string name="morphe_music_crossfade_screen_summary">Płynne przejścia między utworami</string>
   <string name="morphe_music_crossfade_enabled_title">Włącz przenikanie</string>
   <string name="morphe_music_crossfade_curve_title">Krzywa przenikania</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Stała moc</string>
@@ -103,7 +103,7 @@ Implementacja funkcji przez VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Zapobiega automatycznemu rozwijaniu odtwarzacza do trybu pełnoekranowego po rozpoczęciu nowego utworu</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Pasek nawigacji</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Zdecyduj, które przyciski będą wyświetlane na pasku nawigacji</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ukryj przycisk Główna</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

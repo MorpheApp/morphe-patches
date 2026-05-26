@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Επανεκκινήστε για να ολοκληρωθεί η διαδικασία</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Όνομα εφαρμογής</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Προσαρμοσμένο</string>
   <string name="morphe_custom_branding_icon_title">Εικονίδιο εφαρμογής</string>
   <string name="morphe_custom_branding_icon_entry_1">Αρχικό</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe μαύρο</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe σκοτεινό</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe φωτεινό</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe παιχνίδι φως</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe παιχνίδι μαύρο</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Προσαρμοσμένο</string>
+  <string name="morphe_custom_branding_icon_entry_7">Προσαρμοσμένο</string>
   <string name="morphe_custom_branding_notification_icon_title">Εικονίδιο ειδοποίησης</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Αλλαγή εικονιδίου της εφαρμογής;</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Ειδοποίηση Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Το ιστορικό παρακολούθησης δεν αποθηκεύεται.&lt;br&gt;&lt;br&gt;Πιθανό να συμβαίνει λόγω κάποιας υπηρεσίας DNS που μπλοκάρει διαφημίσεις ή μέσω κάποιου διακομιστή μεσολάβησης δικτύου.&lt;br&gt;&lt;br&gt;Μια λύση γι\'αυτό θα ήταν να προσθέσετε σε whitelist το &lt;b&gt;s.youtube.com&lt;/b&gt; ή να απενεργοποιήστε το DNS και τους διακομιστές μεσολάβησης δικτύου.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Παραποίηση ροών βίντεο</string>
   <string name="morphe_spoof_video_streams_screen_summary">Παραποίηση του προγράμματος ροών βίντεο για την αποφυγή προβλημάτων αναπαραγωγής</string>
   <string name="morphe_spoof_video_streams_title">Παραποίηση ροών βίντεο</string>
-  <string name="morphe_spoof_video_streams_summary">"Εξαπατά το YouTube ώστε να στείλει μια συμβατή ροή βίντεο, γεγονός που διορθώνει την αναπαραγωγή για τους περισσότερους χρήστες
+  <string name="morphe_spoof_video_streams_summary">"Επιδιορθώνει προβλήματα αναπαραγωγής για τους περισσότερους χρήστες, ζητώντας μια συμβατή ροή βίντεο
 
-Εάν είστε χρήστης του YouTube Premium, αυτή η ρύθμιση ενδέχεται να μην απαιτείται"</string>
+Εάν είστε συνδρομητής του YouTube Premium, αυτή η ρύθμιση ενδέχεται να μην απαιτείται."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Αδυναμία λήψης προγράμματος ροής</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Η απενεργοποίηση αυτής της ρύθμισης ενδέχεται να προκαλέσει προβλήματα αναπαραγωγής.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -110,6 +114,7 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_title">Καθαρισμός συνδέσμων κατά την κοινοποίηση</string>
   <string name="morphe_sanitize_sharing_links_summary">Οι παράμετροι παρακολούθησης αφαιρούνται από τους συνδέσμους κατά την κοινοποίηση</string>
   <string name="morphe_replace_music_with_youtube_title">Αλλαγή συνδέσμων κοινοποίησης σε youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Αντικαθιστά το music.youtube.com με το youtube.com σε κοινόχρηστους συνδέσμους.</string>
   <string name="morphe_replace_links_with_shortener_title">Αλλαγή συνδέσμων κοινοποίησης σε youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Επιβάλλει στις ζωντανές ροές και στα Shorts να χρησιμοποιούν τη συντομευμένη μορφή URL youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Επιβάλλει τη χρήση της συντομευμένης μορφής URL youtu.be για τα βίντεο</string>
 </resources>

@@ -20,7 +20,7 @@ Second \"item\" text"</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <string name="morphe_header_logo_title">Логотип заголовка</string>
   <string name="morphe_header_logo_entry_1">Стандартний</string>
-  <string name="morphe_header_logo_entry_3">Користувацький</string>
+  <string name="morphe_header_logo_entry_3">Власний</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_music_screen_0_about_title">Про Morphe</string>
@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Приховати відеорекламу</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Плавний перехід</string>
-  <string name="morphe_music_crossfade_screen_summary">Налаштування плавного переходу між треками</string>
+  <string name="morphe_music_crossfade_screen_summary">Плавно зводити треки один в інший</string>
   <string name="morphe_music_crossfade_enabled_title">Увімкнути плавний перехід</string>
   <string name="morphe_music_crossfade_curve_title">Крива згасання</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Рівномірна потужність</string>
@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Запобігає автоматичному розгортанню плеєра на весь екран при запуску нового треку</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Панель навігації</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Виберіть, які кнопки будуть показуватися на панелі навігації</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Виберіть кнопки, що будуть показуватися на нижній навігаційній панелі</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Приховати кнопку \"Додому\"</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

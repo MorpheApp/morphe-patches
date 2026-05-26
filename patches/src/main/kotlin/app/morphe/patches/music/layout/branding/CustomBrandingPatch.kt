@@ -58,6 +58,7 @@ private val disableSplashAnimationPatch = bytecodePatch {
 @Suppress("unused")
 val customBrandingPatch = baseCustomBrandingPatch(
     originalLauncherIconName = "ic_launcher_release",
+    originalNotificationIconName = "music_push_notification_white",
     originalAppName = "@string/app_launcher_name",
     originalAppPackageName = MUSIC_PACKAGE_NAME,
     isYouTubeMusic = true,

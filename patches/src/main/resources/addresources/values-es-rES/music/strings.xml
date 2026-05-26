@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Ocultar anuncios de vídeo</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Desvanecimiento cruzado</string>
-  <string name="morphe_music_crossfade_screen_summary">Personaliza cómo las pistas se mezclan suavemente entre sí</string>
+  <string name="morphe_music_crossfade_screen_summary">Mezcla las pistas suavemente entre sí</string>
   <string name="morphe_music_crossfade_enabled_title">Activar desvanecimiento cruzado</string>
   <string name="morphe_music_crossfade_curve_title">Curva de desvanecimiento</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Potencia igual</string>
@@ -103,7 +103,7 @@ Implementación de la función por VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Evita que el reproductor se expanda automáticamente a pantalla completa cuando comienza una nueva pista</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barra de navegación</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Elige qué botones aparecen en la barra de navegación</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Elige qué botones aparecen en la barra de navegación inferior</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ocultar botón de inicio</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

@@ -15,6 +15,7 @@ import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
@@ -37,7 +38,6 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
 
@@ -80,7 +80,10 @@ val miniplayerPatch = bytecodePatch(
         preferences += SwitchPreference("morphe_miniplayer_hide_overlay_buttons", summaryKey = null)
         preferences += SwitchPreference("morphe_miniplayer_hide_rewind_forward", summaryKey = null)
         preferences += TextPreference("morphe_miniplayer_width_dip", inputType = InputType.NUMBER)
-        preferences += TextPreference("morphe_miniplayer_opacity", inputType = InputType.NUMBER)
+        preferences += NonInteractivePreference(
+            key = "morphe_miniplayer_opacity",
+            tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+        )
 
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(

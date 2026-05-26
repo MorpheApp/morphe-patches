@@ -53,6 +53,7 @@ Second \"item\" text"</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <!-- ad.general.hideAdsPatch -->
+  <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- ad.video.videoAdsPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
   <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
@@ -124,7 +125,6 @@ Second \"item\" text"</string>
   <!-- layout.hide.infocards.hideInfocardsPatch -->
   <!-- layout.hide.rollingnumber.disableRollingNumberAnimationPatch -->
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
-  <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->

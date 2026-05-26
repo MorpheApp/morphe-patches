@@ -132,7 +132,7 @@ Second \"item\" text"</string>
 
 點擊繼續按鈕以允許調整相關最佳化設定。"</string>
   <string name="gms_core_dialog_continue_text">繼續</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">顯示電池最佳化對話方塊</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">顯示 MicroG 電池優化對話方塊</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"停用此功能將隱藏 MicroG 電池最佳化提示。
 
 如果未更改電池最佳化設定，您可能會遇到：
@@ -141,7 +141,7 @@ Second \"item\" text"</string>
 • 背景播放可能無法正常運作"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">應用程式連結處理</string>
-  <string name="morphe_link_handling_summary">設定哪個應用程式開啟連結</string>
+  <string name="morphe_link_handling_summary">設定連結在此應用程式中開啟</string>
   <string name="morphe_link_handling_step1_title">步驟 1：停用原始應用程式連結</string>
   <string name="morphe_link_handling_step1_message">開啟原始應用程式的設定並停用所有網域連結</string>
   <string name="morphe_link_handling_step2_title">步驟 2：啟用修補應用程式連結</string>

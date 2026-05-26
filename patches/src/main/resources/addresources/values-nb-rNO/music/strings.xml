@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Skjul videoannonser</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Overgang</string>
-  <string name="morphe_music_crossfade_screen_summary">Tilpass hvordan spor glir sømløst over i hverandre</string>
+  <string name="morphe_music_crossfade_screen_summary">Bland sporene sømløst inn i hverandre</string>
   <string name="morphe_music_crossfade_enabled_title">Aktiver overgang</string>
   <string name="morphe_music_crossfade_curve_title">Fade-kurve</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Lik effekt</string>
@@ -103,7 +103,7 @@ Funksjonsimplementering av VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Hindrer spilleren i å automatisk utvides til fullskjerm når et nytt spor starter</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigasjonslinje</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Velg hvilke knapper som vises i navigasjonslinjen</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Velg hvilke knapper som skal vises i navigasjonslinjen nederst</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Skjul Home-knapp</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

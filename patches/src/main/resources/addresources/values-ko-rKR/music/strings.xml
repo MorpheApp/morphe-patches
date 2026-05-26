@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">동영상 광고 숨기기</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">크로스페이드</string>
-  <string name="morphe_music_crossfade_screen_summary">트랙이 자연스럽게 이어지도록 크로스페이드 방식을 설정할 수 있습니다</string>
+  <string name="morphe_music_crossfade_screen_summary">트랙을 서로 부드럽게 이어지도록 재생할 수 있습니다</string>
   <string name="morphe_music_crossfade_enabled_title">크로스페이드 활성화하기</string>
   <string name="morphe_music_crossfade_curve_title">페이드 곡선</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">동일한 음량</string>
@@ -103,7 +103,7 @@ VazerOG에 의해 기능이 구현되었습니다"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">새 트랙이 시작될 때 플레이어가 자동으로 전체 화면으로 펼쳐지는 것을 방지합니다</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">하단바</string>
-  <string name="morphe_music_navigation_bar_screen_summary">하단바에 표시될 버튼을 선택하세요</string>
+  <string name="morphe_music_navigation_bar_screen_summary">하단바에 표시할 버튼을 설정할 수 있습니다</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">홈 버튼 숨기기</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

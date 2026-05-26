@@ -69,12 +69,12 @@ Second \"item\" text"</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">سەرپێچوان</string>
   <string name="morphe_debug_toast_on_error_title">نیشاندانی ڕێوشوێنی Morphe-ی نیشاده</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"خواردنی ڕەشە ئاگاداری ڕەشە ڕاخشایە.
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"کوژاندنەوەی toastsـی هەڵە هەموو ئاگادارکردنەوەکانی هەڵەی Morphe دەشارێتەوە.
 
-هیچ ڕاستی ڕاشخراو نەکریتەوە."</string>
-  <string name="morphe_debug_logs_disabled">سەرپێچوání دەستوڕانە ڕاخشابن</string>
+ لە هیچ ڕووداوێکی چاوەڕواننەکراو ئاگادار ناکرێیتەوە."</string>
+  <string name="morphe_debug_logs_disabled">تۆمارکردنی چاککردنەوە لەکارخراوە</string>
   <string name="morphe_debug_feature_flags_manager_title">پارێژكاري فڵاگەل و مۆر</string>
-  <string name="morphe_debug_feature_flags_manager_summary">ڕێکخستنی خەڵاتە بە ئەزموونی زمان</string>
+  <string name="morphe_debug_feature_flags_manager_summary">بەڕێوەبردنی ئاڵای تایبەتمەندی بوولی</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -86,20 +86,19 @@ Second \"item\" text"</string>
 ئامۆژگاری \"ئەپیم مەکوێشت بە پاشەوە کارکات\" بۆ مۆبایڵی خۆت ببینە و ڕێنماییەکانی دابخە سەر ناسیناوەی MicroG-ت.
 
 ئەوە بۆ ئەوە پێویستە کە ئەپ کار بکاتەوە."</string>
-  <string name="gms_core_dialog_open_website_text">بکە وبسایتێک تێکده</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"مەتباری بەتاڕی ژیانی MicroG دەبێت راشراو بۆ ئەوەی ڕێگای ڕەشە کار نییە.
+  <string name="gms_core_dialog_open_website_text">کردنەوەی ماڵپەڕ</string>
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"باشترکردنی پاتری MicroG دەبێت لەکاربخرێت بۆ ڕێگریکردن لە کێشەکان.
 
-خەڵاتی لەو ڕەگەزی MicroG نیگەری دەهێت دەبەر بارانگە.
+ لەکارخستنی باشکردنی پاتری بۆ MicroG کاریگەری نەرێنی لەسەر بەکارهێنانی پاتری نابێت.
 
-خا دەختم بو دەستخاشو دەبنیگۆ.
-"</string>
-  <string name="gms_core_dialog_continue_text">خا کەر</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"خۆراکدانەوەی ئەمەش ڕاگیراوی بونیادنەدانی MicroG کۆتاییهێنانی باتەڕی دەربخات.
+ پەنجە بنێ بە دوگمەی بەردەوام و ڕێگە بە گۆڕانکارییەکانی باشترکردن بدە."</string>
+  <string name="gms_core_dialog_continue_text">بەردەوامبوون</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"لەکارخستنی ئەمە دەبێتە هۆی شاردنەوەی پرۆمپتی باشکردنی پاتری MicroG.
 
-ئەگەر کۆتاییهێنانی باتەڕی نەگۆرابێت، ئەوا خەمڵکێش دەبیت:
-• ئەپ دەکرێت بەتاڵ بێت
-• نوتەکە دەکرێت کارنەکات
-• پەربوونەوەی پسخۆر دەکرێت کارنەکات"</string>
+ ئەگەر باشکردنی پاتری نەگۆڕدرا ئەوا لەوانەیە تووشی ئەمانە بیت:
+ • ڕەنگە ئەپەکە بە شێوەیەکی هەڕەمەکی دابخرێت
+ • لەوانەیە ئاگادارکردنەوەکان کار نەکەن
+ • ڕەنگە پەخشکردنی پاشبنەما کار نەکات"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
 </resources>

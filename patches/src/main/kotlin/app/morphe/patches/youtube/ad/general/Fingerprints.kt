@@ -1,6 +1,8 @@
 package app.morphe.patches.youtube.ad.general
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -55,9 +57,8 @@ internal object PlayerOverlayTimelyShelfFingerprint : Fingerprint(
     parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
         string("player_overlay_timely_shelf"),
-        string("innertube_cue_range"),
-        string("Null id"),
-        string("Null onExitActions")
+        methodCall(smali = "Ljava/lang/String;->equals(Ljava/lang/Object;)Z", location = MatchAfterWithin(5)),
+        opcode(Opcode.MOVE_RESULT, MatchAfterImmediately())
     )
 )
 

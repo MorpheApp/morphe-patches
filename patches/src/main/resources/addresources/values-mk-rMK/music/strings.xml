@@ -18,24 +18,104 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Лого на заглавието</string>
+  <string name="morphe_header_logo_entry_1">Поставено</string>
+  <string name="morphe_header_logo_entry_3">Користечко</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">За апликацијата</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Огласи</string>
+  <string name="morphe_settings_music_screen_2_general_title">Општо</string>
+  <string name="morphe_settings_music_screen_3_player_title">Плеер</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Разно</string>
   <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Скриј ознака „Набавете Morphe Premium“</string>
   <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Скриј видео реклами</string>
   <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Преминување</string>
+  <string name="morphe_music_crossfade_screen_summary">Плавно преклопување на патите еден во друг</string>
+  <string name="morphe_music_crossfade_enabled_title">Вклучи преминување</string>
+  <string name="morphe_music_crossfade_curve_title">Крива на засенување</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Равен надморски притисок</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Суптилно држење</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Нежна удобност</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Гладка S-крива</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Траење на преминување</string>
+  <string name="morphe_crossfade_duration_250ms">250 милисекунди</string>
+  <string name="morphe_crossfade_duration_500ms">500 милисекунди</string>
+  <string name="morphe_crossfade_duration_750ms">750 милисекунди</string>
+  <string name="morphe_crossfade_duration_1000ms">1 секунда</string>
+  <string name="morphe_crossfade_duration_2000ms">2 секунди</string>
+  <string name="morphe_crossfade_duration_3000ms">3 секунди</string>
+  <string name="morphe_crossfade_duration_4000ms">4 секунди</string>
+  <string name="morphe_crossfade_duration_5000ms">5 секунди</string>
+  <string name="morphe_crossfade_duration_6000ms">6 секунди</string>
+  <string name="morphe_crossfade_duration_7000ms">7 секунди</string>
+  <string name="morphe_crossfade_duration_8000ms">8 секунди</string>
+  <string name="morphe_crossfade_duration_9000ms">9 секунди</string>
+  <string name="morphe_crossfade_duration_10000ms">10 секунди</string>
+  <string name="morphe_music_crossfade_on_skip_title">Преминување при рачно прескокнување</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Вреди ефектот на преминување кога рачно прескокнувате на следната песна</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Преминување при автоматско прескокнување</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Вреди ефектот на преминување кога песната природно завршува</string>
+  <string name="morphe_music_crossfade_session_control_title">Контрола на сесија</string>
+  <string name="morphe_music_crossfade_session_control_summary">Долго притиснете го копчето за мешање за да паузирате или продолжите преминување</string>
+  <string name="morphe_music_crossfade_paused_toast">Преминувањето е паузирано за оваа сесија</string>
+  <string name="morphe_music_crossfade_resumed_toast">Преминувањето е продолжено</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим на видео не е достапен додека е вклучено преминувањето</string>
+  <string name="morphe_music_crossfade_about_title">За апликацијата</string>
+  <string name="morphe_music_crossfade_about_summary">"Преминување е достапно со YouTube Music 8.x
+
+Долго притиснете го копчето за мешање за да го оневозможите/овозможите
+
+Имплементација на функцијата од VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Вклучи постојано повторување</string>
   <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Скриј копче за пренос</string>
+  <string name="morphe_music_hide_history_button_title">Скриј копче за историја</string>
+  <string name="morphe_music_hide_notification_button_title">Скриј копче за известувања</string>
+  <string name="morphe_music_hide_search_button_title">Скриј копче за пребарување</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Почетна страница</string>
+  <string name="morphe_change_start_page_entry_default">Стандардно</string>
+  <string name="morphe_change_start_page_entry_charts">Графички приказ</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Епизоди за подоцна</string>
+  <string name="morphe_change_start_page_entry_explore">Прегледај</string>
+  <string name="morphe_change_start_page_entry_history">Историја</string>
+  <string name="morphe_change_start_page_entry_library">Библиотека</string>
+  <string name="morphe_change_start_page_entry_liked_music">Сакана музика</string>
+  <string name="morphe_change_start_page_entry_playlists">Плејлисти</string>
+  <string name="morphe_change_start_page_entry_search">Пребарување</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Претплати</string>
   <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Скриј лента со категории</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Промени ја бојата на мини-плеер</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Бојата на мини-плеер се прилагодува на целосен екран</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Прикажи копче „Следна“ во мини-плеер</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Прикажи копче „Претходна“ во мини-плеер</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Вклучи принуден мини-плеер</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Спречува автоматско прекинување на плеер во целосен екран кога почнува нова песна</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Навигациска лента</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Изберете кои копчиња да се појавуваат во долната навигациска лента</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Скриј копче „Почетна“</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Скриј копче „Примери“</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Скриј копче „Прегледај“</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Скриј копче „Библиотека“</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Скриј копче „Надградување“</string>
+  <string name="morphe_music_hide_navigation_bar_title">Скриј навигациска лента</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Скриј ознаки на копчињата за навигација</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Скриј копче за надградба</string>
 </resources>

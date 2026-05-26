@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Piilota videomainokset</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Ristihäivytys</string>
-  <string name="morphe_music_crossfade_screen_summary">Mukauta kappaleiden sujuvan yhdistämisen tapaa</string>
+  <string name="morphe_music_crossfade_screen_summary">Sekoita raidat sujuvasti toisiinsa</string>
   <string name="morphe_music_crossfade_enabled_title">Ota ristihäivytys käyttöön</string>
   <string name="morphe_music_crossfade_curve_title">Himmennyskäyrä</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Tasainen voima</string>
@@ -103,7 +103,7 @@ Ominaisuuden toteutus VazerOG:n toimesta"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Estää soittimen automaattisen laajenemisen kokoruutuun, kun uusi kappale alkaa</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigointipalkki</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Valitse, mitkä painikkeet näkyvät navigointipalkissa</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Valitse mitkä painikkeet näkyvät alavalikossa</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Piilota Kotipainike</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

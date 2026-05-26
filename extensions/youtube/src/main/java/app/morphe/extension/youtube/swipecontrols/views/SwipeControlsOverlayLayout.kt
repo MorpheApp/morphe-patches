@@ -2,6 +2,8 @@
 
 package app.morphe.extension.youtube.swipecontrols.views
 
+import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
@@ -21,6 +23,9 @@ import app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow
 import app.morphe.extension.shared.StringRef.str
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider
 import app.morphe.extension.youtube.swipecontrols.misc.SwipeControlsOverlay
+import java.text.DecimalFormat
+import java.text.DecimalFormatSymbols
+import java.util.Locale
 import kotlin.math.max
 import kotlin.math.min
 import kotlin.math.round
@@ -33,7 +38,7 @@ fun Float.toDisplayPixels(): Float {
 }
 
 /**
- * Main overlay layout for displaying volume and brightness level with circular, horizontal and vertical progress bars.
+ * Main overlay layout for displaying volume, brightness, and playback speed level with circular, horizontal and vertical progress bars.
  */
 class SwipeControlsOverlayLayout(
     context: Context,
@@ -41,6 +46,12 @@ class SwipeControlsOverlayLayout(
 ) : RelativeLayout(context), SwipeControlsOverlay {
 
     constructor(context: Context) : this(context, SwipeControlsConfigurationProvider())
+
+    private val speedFormatter = DecimalFormat().also {
+        it.decimalFormatSymbols = DecimalFormatSymbols(Locale.US)
+        it.minimumFractionDigits = 1
+        it.maximumFractionDigits = 2
+    }
 
     // Drawable icons for brightness and volume.
     private val autoBrightnessIcon: Drawable = getDrawable("morphe_ic_sc_brightness_auto")
@@ -52,6 +63,7 @@ class SwipeControlsOverlayLayout(
     private val lowVolumeIcon: Drawable = getDrawable("morphe_ic_sc_volume_low")
     private val normalVolumeIcon: Drawable = getDrawable("morphe_ic_sc_volume_normal")
     private val fullVolumeIcon: Drawable = getDrawable("morphe_ic_sc_volume_high")
+    private val speedIcon: Drawable = getDrawable("morphe_ic_sc_speed")
 
     // Function to retrieve drawable resources by name.
     private fun getDrawable(name: String): Drawable {
@@ -151,13 +163,39 @@ class SwipeControlsOverlayLayout(
         addView(verticalVolumeProgressView)
     }
 
+    private fun View.fadeIn() {
+        animate().cancel()
+        if (visibility == VISIBLE && alpha == 1f) return
+        if (visibility != VISIBLE) {
+            alpha = 0f
+            visibility = VISIBLE
+        }
+        animate().alpha(1f).setDuration(100).setListener(null).start()
+    }
+
+    private fun View.fadeOut() {
+        animate().cancel()
+        animate().alpha(0f).setDuration(100)
+            .setListener(object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    visibility = GONE
+                    alpha = 1f
+                    animate().setListener(null)
+                }
+                override fun onAnimationCancel(animation: Animator) {
+                    animate().setListener(null)
+                }
+            })
+            .start()
+    }
+
     // Handler and callback for hiding progress bars.
     private val feedbackHideHandler = Handler(Looper.getMainLooper())
     private val feedbackHideCallback = Runnable {
-        circularProgressView.visibility = GONE
-        horizontalProgressView.visibility = GONE
-        verticalBrightnessProgressView.visibility = GONE
-        verticalVolumeProgressView.visibility = GONE
+        circularProgressView.fadeOut()
+        horizontalProgressView.fadeOut()
+        verticalBrightnessProgressView.fadeOut()
+        verticalVolumeProgressView.fadeOut()
     }
 
     /**
@@ -188,7 +226,27 @@ class SwipeControlsOverlayLayout(
             }
             setProgress(progress, max, value, isBrightness)
             this.icon = icon
-            visibility = VISIBLE
+            fadeIn()
+        }
+    }
+
+    /**
+     * Displays the progress bar for playback speed feedback.
+     * Always uses the horizontal bar (or circular for circular styles) to match the horizontal gesture.
+     */
+    private fun showSpeedFeedbackView(speed: Float) {
+        feedbackHideHandler.removeCallbacks(feedbackHideCallback)
+        feedbackHideHandler.postDelayed(feedbackHideCallback, config.overlayShowTimeoutMillis)
+
+        val displayText = speedFormatter.format(speed)
+        val progress = maxOf(0, minOf(100, ((speed - 0.25f) / (8.0f - 0.25f) * 100).toInt()))
+
+        val viewToShow = if (config.overlayStyle.isCircular) circularProgressView else horizontalProgressView
+        viewToShow.apply {
+            setProgressColor(config.overlaySpeedProgressColor)
+            setProgress(progress, 100, displayText, false)
+            this.icon = speedIcon
+            fadeIn()
         }
     }
 
@@ -222,6 +280,11 @@ class SwipeControlsOverlayLayout(
             val displayText = if (config.overlayStyle.isVertical) "$clampedProgress" else "$clampedProgress%"
             showFeedbackView(displayText, clampedProgress, 100, icon, isBrightness = true)
         }
+    }
+
+    // Handle playback speed change.
+    override fun onSpeedChanged(speed: Float) {
+        showSpeedFeedbackView(speed)
     }
 
     // Begin swipe session.

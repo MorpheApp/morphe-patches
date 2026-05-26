@@ -17,78 +17,82 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
-  <string name="morphe_restart_first_run">Za dokončanje nastavitve znova zaženite</string>
+  <string name="morphe_restart_first_run">Za dokončanje nastavitve znova zaženite aplikacijo</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Ime aplikacije</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
-  <string name="morphe_custom_branding_name_entry_5">Prilagojeno</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
+  <string name="morphe_custom_branding_name_entry_5">Prilagoditve</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacije</string>
-  <string name="morphe_custom_branding_icon_entry_1">Izvirno</string>
-  <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
+  <string name="morphe_custom_branding_icon_entry_1">Izvirnik</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe črno</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe temno</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe svetlo</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe igra s svetlobo</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe igra s črno</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Prilagojeno</string>
-  <string name="morphe_custom_branding_notification_icon_title">Vsebnik ikone obvestila</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Ujemite ikono aplikacije</string>
+  <string name="morphe_custom_branding_icon_entry_7">Prilagodljivo</string>
+  <string name="morphe_custom_branding_notification_icon_title">Ikona obvestil</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Uskladite ikono aplikacije</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe predvajaj</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Opozorilo</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša zgodovina ogleda se ne shrani.&lt;br&gt;&lt;br&gt;To je verjetno posledica blokatorja DNS ali omrežnega posrednika.&lt;br&gt;&lt;br&gt;Da to popravite, dovolite &lt;b&gt;s.youtube.com&lt;/b&gt; ali izklopite vse blokatorje DNS in posrednike.</string>
-  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj več</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe opozorilo</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša zgodovina gledanja se ne shranjuje.&lt;br&gt;&lt;br&gt;To je verjetno posledica blokiranja DNS ali omrežnega posrednika.&lt;br&gt;&lt;br&gt;Da to popravite, dovolite &lt;b&gt;s.youtube.com&lt;/b&gt; ali izklopite vse blokatorje DNS in posrednike.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikaži več</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
-  <string name="morphe_spoof_video_streams_screen_title">Posnemanje video pretočnih poti</string>
+  <string name="morphe_spoof_video_streams_screen_title">Ponarejanje video pretočnih poti</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurirajte ponarejanje odjemalca, da preprečite težave s predvajanjem</string>
-  <string name="morphe_spoof_video_streams_title">Posnemanje video pretočnih poti</string>
-  <string name="morphe_spoof_video_streams_summary">"Prevara YouTuba, da pošlje združljiv video tok, kar odpravi težave s predvajanjem za večino uporabnikov
+  <string name="morphe_spoof_video_streams_title">Ponarejanje video pretočnih poti</string>
+  <string name="morphe_spoof_video_streams_summary">"Odpravi težave s predvajanjem za večino uporabnikov z zahtevo po združljivem videoposnetku.
 
-Če ste uporabnik YouTube Premium, morda vam ta nastavitev ni potrebna"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">Ni mogoče pridobiti nobenih pretočnih poti stranke</string>
-  <string name="morphe_spoof_video_streams_user_dialog_message">Onemogočanje te nastavitve lahko povzroči težave pri predvajanju.</string>
+Če ste uporabnik YouTube Premium morda te nastavitve ne potrebujete."</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Ni mogoče pridobiti nobenih pretočnih poti odjemalca</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Onemogočenje te nastavitve lahko povzroči težave pri predvajanju.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Poskusite omogočiti: Posnemanje video pretočnih poti &gt; Prijava v Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Poskusite omogočiti: Ponarejanje video pretočnih poti &gt; Prijava v Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Privzeti odjemalec</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Prijava v Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Niste prijavljeni v Android VR. Dotaknite se tukaj za prijavo</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Trenutno prijavljeni v Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Trenutno ste prijavljeni v Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Če želite uporabljati to funkcijo, spremenite \'Privzetni odjemalec\' v Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Če želite uporabljati to funkcijo, spremenite \'Privzeti odjemalec\' v Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Prijava v Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Prijava v VR lahko odpravi težave pri predvajanju za nekatere uporabnike
 
-Pritisnite nadaljujte, da se prijavite"</string>
+Pritisnite \"nadaljujte\", da se prijavite"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Naprej</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Odjava</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Navodila</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivacijski koda: %s
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Aktivacijska koda: %s
 
-1. Dotaknite 'Odprite spletno mesto' spodaj, da odprete spletno mesto 'Povežite napravo'.
-2. Prilepite iz odložišča (ali vnesti ročno) aktivacijski kodo, prikazano zgoraj.
+1. Kliknite 'Odprite spletno mesto' spodaj, da odprete spletno mesto 'Povežite napravo'.
+2. Prilepite iz odložišča (ali vnesite ročno) aktivacijsko kodo, prikazano zgoraj.
 3. Prijavite se v Google, če vas pozove. Če imate več računov, izberite ta račun YouTube.
-4. Dotaknite 'Dovolj YouTube VR' dostopa.
-5. Vrnite se v to aplikacijo po prejetju sporočila 'Naprava je povezana'."</string>
+4. Dotaknite 'Dovoli YouTube VR' dostop.
+5. Vrnite se v to aplikacijo po prejemu sporočila 'Naprava je povezana'."</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Odprite spletno mesto</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ni bilo mogoče izpisati aktivacijskega kode</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ni bilo mogoče izpisati avtentikacijskega znaka</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Uspešno prijavljeni</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ni bilo mogoče izpisati aktivacijske kode</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ni bilo mogoče izpisati avtentikacijskega ključa</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Uspešno ste prijavljeni</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Shranjeni so avtentikacijski podatki
 
-• Vaše nastavitve Morphe se ne bodo uvažale/izvažale v VR.
-• Če to aplikacijo ne boste uporabljali 6 mesecev, Google bo izbrisal to avtentikacijo.
+• Vaše nastavitve Morphe ne bodo uvažale/izvažale avtentikacije Android VR.
+• Če te aplikacijo ne boste uporabljali 6 mesecev, bo Google izbrisal to avtentikacijo.
 • Ponovno se boste morali prijaviti, če spremenite geslo Google ali odstranite napravo iz nastavitev Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 je začasno nedostopen (API je potekel)</string>
-  <string name="morphe_oauth2_connection_failure_status_400">Iztek priјаve v VR, poskusite znova priјаve v VR</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Iztek prijave v VR, poskusite se znova prijaviti v VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 je začasno nedostopen (status %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 je začasno nedostopen</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ni mogoče priјаvati v VR, avtentikacija na spletnem mestu ni bilaodobrena</string>
-  <string name="morphe_oauth2_connection_failure_auth_error">Ni mogoče priјаvati v VR: %s</string>
-  <string name="morphe_oauth2_toast_reset">Odjavljeni iz VR</string>
-  <string name="morphe_oauth2_toast_invalid">Neveljavni znak priјаve v VR, poskusite znova priјаve v VR</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Onemogoči posodobitev JavaScript predvajalnika</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Zaklene JavaScript predvajalnika na lokalni hash namesto pridobivanja posodobitev
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ni se mogoče prijaviti v VR, avtentikacija na spletnem mestu ni bila odobrena</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Ni se mogoče prijaviti v VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Odjavljeni ste iz VR</string>
+  <string name="morphe_oauth2_toast_invalid">Neveljavni znak prijave v VR, poskusite se znova prijaviti v VR</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Onemogoči JavaScript posodobitev predvajalnika</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Zaklene JavaScript predvajalnik na lokalni hash namesto pridobivanja posodobitev
 
 • Potreben je veljaven hash JavaScript predvajalnika
 • Predvajanje ne bo uspelo, če je hash JavaScript predvajalnika preklican v GVS"</string>
@@ -110,6 +114,7 @@ Pritisnite nadaljujte, da se prijavite"</string>
   <string name="morphe_sanitize_sharing_links_title">Čisti povezave za deljenje</string>
   <string name="morphe_sanitize_sharing_links_summary">Odstrani spremljajoče parametre poizvedbe iz deljenih povezav</string>
   <string name="morphe_replace_music_with_youtube_title">Spremeni povezave za deljenje v youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Nadomešča music.youtube.com z youtube.com v skupnih povezavah.</string>
   <string name="morphe_replace_links_with_shortener_title">Spremenite povezave za deljenje v youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Prisilno uporablja obliko URL-ja youtu.be za pretočne videoposnetke v živo in Shorts</string>
+  <string name="morphe_replace_links_with_shortener_summary">Prisilno uporablja skrajšano obliko URL-jev youtu.be za videe</string>
 </resources>

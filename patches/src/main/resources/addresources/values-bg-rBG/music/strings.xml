@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Скриване на видео рекламите</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Превключване</string>
-  <string name="morphe_music_crossfade_screen_summary">Настройте как песните преливат плавно една в друга</string>
+  <string name="morphe_music_crossfade_screen_summary">Плавно преливане на песните една в друга</string>
   <string name="morphe_music_crossfade_enabled_title">Разреши превключване</string>
   <string name="morphe_music_crossfade_curve_title">Крива на избледняване</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Равно разпределение</string>
@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Предотвратява автоматичното разширяване на плейъра до цял екран, когато започне нова песен.</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Навигационна лента</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Изберете кои бутони да се показват в лентата за навигация.</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Изберете кои бутони да се показват в долната навигационна лента</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Скриване на бутона \"Начало\"</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

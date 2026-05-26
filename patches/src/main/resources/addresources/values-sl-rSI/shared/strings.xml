@@ -23,41 +23,41 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset">Ponastavi</string>
   <string name="morphe_settings_reset_color">Ponastavi barvo</string>
   <string name="morphe_settings_color_invalid">Neveljavna barva</string>
-  <string name="morphe_settings_restart_title">Ponovni zagon je potreben</string>
+  <string name="morphe_settings_restart_title">Potreben je ponovni zagon</string>
   <string name="morphe_settings_restart_dialog_message">Za uveljavitev te spremembe je treba znova zagnati aplikacijo.</string>
   <string name="morphe_settings_restart">Ponovni zagon</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Uvozi</string>
   <string name="morphe_settings_import_copy">Kopiraj</string>
-  <string name="morphe_settings_import_reset">Nastavitve Morphe so ponastavljene na privzete</string>
-  <string name="morphe_settings_import_success">Uvoženi %d nastavitve</string>
+  <string name="morphe_settings_import_reset">Nastavitve Morphe</string>
+  <string name="morphe_settings_import_success">Uvožene %d nastavitve</string>
   <string name="morphe_settings_import_failure_parse">Uvoz je spodletel: %s</string>
-  <string name="morphe_settings_search_hint">Iskanje nastavitve</string>
+  <string name="morphe_settings_search_hint">Iskanje nastavitev</string>
   <string name="morphe_settings_search_no_results_title">Ni rezultatov za \'%s\'</string>
-  <string name="morphe_settings_search_no_results_summary">Poskusite z drugim ključno besedo</string>
-  <string name="morphe_settings_search_recent_searches">Nedavne iskanja</string>
-  <string name="morphe_settings_search_remove_message">Odstraniti iz zgodovine iskanj?</string>
-  <string name="morphe_settings_search_clear_history">Počistiti zgodovino iskanj</string>
+  <string name="morphe_settings_search_no_results_summary">Poskusite z drugo ključno besedo</string>
+  <string name="morphe_settings_search_recent_searches">Nedavna iskanja</string>
+  <string name="morphe_settings_search_remove_message">Odstrani iz zgodovine iskanj?</string>
+  <string name="morphe_settings_search_clear_history">Počisti zgodovino iskanj</string>
   <string name="morphe_settings_search_clear_history_message">Ali res želite izbrisati celotno zgodovino iskanj?</string>
   <string name="morphe_settings_search_tips_title">Nasveti za iskanje</string>
-  <string name="morphe_settings_search_tips_summary">"• Dotaknite se poti, če želite do nje pomladiti
-• Pritisnite dolgo, da se pomaknete do nastavitve
-• Pritisnite Enter, da shranite iskalni poizvedbi v zgodovino
-• Iškanje ignorira male in velike črke ter ločila
+  <string name="morphe_settings_search_tips_summary">"• Dotaknite se poti, če se želite premakniti tja
+• Dolgo držite nastavitev, da jo odprete
+• Pritisnite Enter, da shranite iskalno poizvedbo v zgodovino
+• Iskanje ignorira male in velike črke ter ločila
 • Nastavitve nadrejene skupine se pojavijo nad onemogočenimi nastavitvami podrejenih skupin"</string>
   <string name="morphe_settings_search_empty_history_title">Zgodovina iskanj je prazna</string>
   <string name="morphe_settings_search_empty_history_summary">Če želite shraniti zgodovino iskanj, vnesite iskalno poizvedbo in pritisnite Enter</string>
-  <string name="morphe_settings_search_history_title">Prikaži zgodovino iskanj nastavitve</string>
+  <string name="morphe_settings_search_history_title">Prikaži zgodovino iskanj nastavitev</string>
   <string name="morphe_show_menu_icons_title">Prikaži ikone nastavitev Morphe</string>
   <string name="morphe_language_title">Jezik Morphe</string>
-  <string name="morphe_language_user_dialog_message">"Prevodi za nekatera jezika morda manjajo ali so nepopolni.
+  <string name="morphe_language_user_dialog_message">"Prevodi za nekatere jezike morda manjkajo ali so nepopolni.
 
 Za prevajanje novih jezikov ali izboljšanje že obstoječih prevodov obiščite morphe.software/translate"</string>
   <string name="morphe_language_DEFAULT">Jezik aplikacije</string>
   <string name="morphe_pref_import_export_title">Uvozi/Izvozi</string>
   <string name="morphe_pref_import_export_summary">Uvozi/Izvozi nastavitve Morphe</string>
   <string name="morphe_settings_import_file">Uvozi iz datoteke</string>
-  <string name="morphe_settings_import_file_success">Nastavitve so bile uspešno uvožene, za uporabo tapnite Shrani</string>
+  <string name="morphe_settings_import_file_success">Nastavitve so bile uspešno uvožene, za uporabo kliknite Shrani</string>
   <string name="morphe_settings_import_file_failed">Uvoz nastavitev je spodletel</string>
   <string name="morphe_settings_export_file">Izvozi v datoteko</string>
   <string name="morphe_settings_export_file_success">Nastavitve so bile uspešno izvožene</string>
@@ -66,15 +66,15 @@ Za prevajanje novih jezikov ali izboljšanje že obstoječih prevodov obiščite
   <string name="morphe_settings_about_links_body_version_current">Uporabljate najnovejšo različico Morphe popravkov &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Uporabljate različico Morphe popravkov &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Na voljo je posodobitev: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Za posodobitev popravkov uporabite Morphe za ponovno popravljanje te aplikacije</string>
   <string name="morphe_settings_about_links_dev_header">Opomba</string>
-  <string name="morphe_settings_about_links_dev_body">Ta različica je predizpustna različica in vam lahko povzroči nepričakovane težave</string>
+  <string name="morphe_settings_about_links_dev_body">Ta različica je pred-različica in vam lahko povzroči nepričakovane težave</string>
   <string name="morphe_settings_about_links_header">Uradne povezave</string>
   <string name="morphe_settings_about_links_website">Spletno mesto</string>
   <string name="morphe_settings_about_links_donate">Doniraj</string>
   <string name="morphe_settings_about_links_translations">Prevodi</string>
   <string name="morphe_settings_about_links_credits">Zasluge</string>
-  <string name="morphe_settings_about_links_dev_header_up_to_date">Na dan</string>
-  <string name="morphe_settings_about_links_dev_header_update_available">Na voljo posodobitev</string>
-  <string name="morphe_settings_about_contributors_current">Trenutna razvojanost</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Posodobljeno</string>
+  <string name="morphe_settings_about_links_dev_header_update_available">Na voljo je posodobitev</string>
+  <string name="morphe_settings_about_contributors_current">Trenutni razvoj</string>
   <string name="morphe_settings_about_contributors_prior">Pretekla razvojanost</string>
   <string name="morphe_settings_about_links_morphe">Aktivna razvojanost</string>
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
@@ -132,7 +132,7 @@ Onemogočanje optimizacij baterije za MicroG ne bo negativno vplivalo na porabo 
 
 Tapnite gumb Nadaljuj in dovolite spremembe optimizacij."</string>
   <string name="gms_core_dialog_continue_text">Nadaljuj</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Pokaži pogovorno okno za optimizacijo baterije</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pokaži pogovorno okno za optimizacijo baterije MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Onemogočanje tega bo skrile okno za optimizacijo baterije MicroG.
 
 Če spremembe optimizacij niso spremenjene, lahko izberete:
@@ -141,7 +141,7 @@ Tapnite gumb Nadaljuj in dovolite spremembe optimizacij."</string>
 • Ozadna predvajanja morda ne deluje"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Obdelava povezav aplikacije</string>
-  <string name="morphe_link_handling_summary">Nastavite, katera aplikacija odpira povezave</string>
+  <string name="morphe_link_handling_summary">Konfiguriraj povezave za odpiranje v tej aplikaciji</string>
   <string name="morphe_link_handling_step1_title">1. korak: Onančite povezave izvirne aplikacije</string>
   <string name="morphe_link_handling_step1_message">Odprite nastavitve izvirne aplikacije in onemogočite vse povezave domene</string>
   <string name="morphe_link_handling_step2_title">2. korak: Omogočite popravljene povezave aplikacije</string>

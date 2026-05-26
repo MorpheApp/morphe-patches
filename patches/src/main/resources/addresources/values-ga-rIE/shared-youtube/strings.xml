@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Atosaigh chun an socrú a chríochnú</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Ainm an aip</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Saincheaptha</string>
   <string name="morphe_custom_branding_icon_title">Deilbhín aip</string>
   <string name="morphe_custom_branding_icon_entry_1">Bunaidh</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe dubh</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe dorcha</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe solas</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play solas</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play dubh</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Saincheaptha</string>
+  <string name="morphe_custom_branding_icon_entry_7">Saincheaptha</string>
   <string name="morphe_custom_branding_notification_icon_title">Deilbhín fógra</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Deilbhín aip mheaitseála</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Fógra Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Níl do stair faire á sábháil.&lt;br&gt;&lt;br&gt;Is dóichí gur bacadóir fógraí DNS nó seachfhreastalaí líonra is cúis leis seo.&lt;br&gt;&lt;br&gt;Chun seo a shocrú, cuir &lt;b&gt;s.youtube.com&lt;/b&gt; ar an liosta bán nó múch gach bacadóir agus seachfhreastalaí DNS.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Sruthanna físe bréige</string>
   <string name="morphe_spoof_video_streams_screen_summary">Cumraigh spoofáil cliant chun fadhbanna athsheinm a chosc</string>
   <string name="morphe_spoof_video_streams_title">Sruthanna físe bréige</string>
-  <string name="morphe_spoof_video_streams_summary">"Meallann sé YouTube chun sruth físe comhoiriúnach a sheoladh, rud a shocraíonn athsheinm do fhormhór na n-úsáideoirí
+  <string name="morphe_spoof_video_streams_summary">"Deisíonn sé fadhbanna athsheinm do fhormhór na n-úsáideoirí trí shruth físe comhoiriúnach a iarraidh
 
-Mura bhfuil tú i do úsáideoir YouTube Premium, b'fhéidir nach mbeidh an socrú seo ag teastáil"</string>
+Mura n-úsáideoir YouTube Premium thú, b'fhéidir nach mbeidh an socrú seo ag teastáil"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Níorbh fhéidir aon sruthanna cliant a fháil</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">D’fhéadfadh fadhbanna athsheinm a bheith mar thoradh ar an socrú seo a mhúchadh.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -110,6 +114,7 @@ Chun síniú isteach, brúigh lean ar aghaidh thíos"</string>
   <string name="morphe_sanitize_sharing_links_title">Glanadh naisc chomhroinnte</string>
   <string name="morphe_sanitize_sharing_links_summary">Baintear paraiméadair fiosrúcháin rianaithe as naisc chomhroinnte</string>
   <string name="morphe_replace_music_with_youtube_title">Athraigh naisc chomhroinnte chuig youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Cuireann sé youtube.com in ionad music.youtube.com i naisc chomhroinnte</string>
   <string name="morphe_replace_links_with_shortener_title">Athraigh naisc chomhroinnte chuig youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Éilíonn sé sruthanna beo agus Gearrscannáin chun an fhormáid URL giorraithe youtu.be a úsáid</string>
+  <string name="morphe_replace_links_with_shortener_summary">Éilíonn sé físeáin chun an fhormáid URL giorraithe youtu.be a úsáid</string>
 </resources>

@@ -106,11 +106,7 @@ public final class PlayerRoutes {
             }
             context.put("client", client);
 
-            if (clientType.endpoint == GET_PLAYER_STREAMING_DATA) {
-                innerTubeBody.put("contentCheckOk", true);
-                innerTubeBody.put("racyCheckOk", true);
-                innerTubeBody.put("videoId", videoId);
-            } else if (clientType.endpoint == GET_REEL_STREAMING_DATA) {
+            if (clientType.endpoint == GET_REEL_STREAMING_DATA) {
                 JSONObject playerRequest = new JSONObject();
                 playerRequest.put("contentCheckOk", true);
                 playerRequest.put("racyCheckOk", true);

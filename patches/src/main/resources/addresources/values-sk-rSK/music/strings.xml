@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Skryť videoreklamy</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Prechádzanie skladieb</string>
-  <string name="morphe_music_crossfade_screen_summary">Prispôsobte, ako sa skladby plynulo miešajú do seba</string>
+  <string name="morphe_music_crossfade_screen_summary">Hravo prechádzajte medzi skladbami</string>
   <string name="morphe_music_crossfade_enabled_title">Povoliť prechádzanie skladieb</string>
   <string name="morphe_music_crossfade_curve_title">Priebeh prechodu</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Rovnaká úroveň</string>
@@ -103,7 +103,7 @@ Implementácia funkcie od VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Zabráni automatickému rozbaleniu prehrávača na celú obrazovku, keď sa začne nová skladba</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigačný panel</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Vyberte, ktoré tlačidlá sa zobrazia na navigačnom paneli</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Vyberte, ktoré tlačidlá sa majú zobraziť na spodnej navigačnej lište</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Skryť tlačidlo Domov</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

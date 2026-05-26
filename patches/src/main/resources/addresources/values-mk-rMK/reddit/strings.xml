@@ -15,4 +15,58 @@
 Second \"item\" text"</string>
 
 -->
-<resources></resources>
+<resources>
+  <string name="morphe_screen_ads_title">Огласи</string>
+  <string name="morphe_hide_post_ads_title">Скриј реклами во feed</string>
+  <string name="morphe_hide_post_ads_summary">Ги крие рекламите во feed</string>
+  <string name="morphe_hide_comment_ads_title">Скриј реклами во коментари</string>
+  <string name="morphe_hide_comment_ads_summary">Ги крие рекламите во делот за коментари</string>
+  <string name="morphe_screen_layout_title">Изглед</string>
+  <string name="morphe_disable_modern_home_title">Исклучи модерен почетен екран</string>
+  <string name="morphe_disable_modern_home_summary">Го исклучува модерниот кориснички интерфејс на почетниот екран</string>
+  <string name="morphe_disable_screenshot_popup_title">Исклучи искачувачки прозорец за screenshots</string>
+  <string name="morphe_disable_screenshot_popup_summary">Го исклучува искачувачкиот прозорец што се појавува кога се прави screenshot</string>
+  <string name="morphe_hide_ask_button_title">Скриј копче „Прашај“</string>
+  <string name="morphe_hide_ask_button_summary">Го крие копчето „Прашај“ во лентата за пребарување</string>
+  <string name="morphe_hide_answers_button_title">Скриј копче „Одговори“</string>
+  <string name="morphe_hide_answers_button_summary">Го крие копчето „Одговори“ во навигациската лента</string>
+  <string name="morphe_hide_chat_button_title">Скриј копче „Разговор“</string>
+  <string name="morphe_hide_chat_button_summary">Го крие копчето „Разговор“ во навигациската лента</string>
+  <string name="morphe_hide_create_button_title">Скриј копче „Креирај“</string>
+  <string name="morphe_hide_create_button_summary">Го крие копчето „Креирај“ во навигациската лента</string>
+  <string name="morphe_hide_discover_button_title">Скриј копче „Откриј“ или „Заедници“</string>
+  <string name="morphe_hide_discover_button_summary">Го крие копчето „Откриј“ или „Заедници“ во навигациската лента</string>
+  <string name="morphe_hide_games_button_title">Скриј копче „Игри“</string>
+  <string name="morphe_hide_games_button_summary">Го крие копчето „Игри“ во навигациската лента</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Скриј полица „Неодамна посетени“</string>
+  <string name="morphe_hide_recently_visited_shelf_summary">Го крие полицата „Неодамна посетени“ во страничната лента</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Скриј полица „Игри на Reddit“</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Го крие полицата „Игри на Reddit“ во страничната лента</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Скриј полица „Reddit Pro“</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Го крие полицата „Reddit Pro“ во страничната лента</string>
+  <string name="morphe_hide_about_shelf_title">Скриј полица „За“</string>
+  <string name="morphe_hide_about_shelf_summary">Го крие полицата „За“ во страничната лента</string>
+  <string name="morphe_hide_resources_shelf_title">Скриј полица „Ресурси“</string>
+  <string name="morphe_hide_resources_shelf_summary">Го крие полицата „Ресурси“ во страничната лента</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Скриј препорачани заедници</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Ги крие полиците со препорачани заедници во под-reddit-ите</string>
+  <string name="morphe_hide_trending_today_shelf_title">Скриј полица „Тренди денес“</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Го крие полицата „Тренди денес“ од предлозите за пребарување
+
+Ограничување: Визуалните празнини можеби нема да бидат скриени"</string>
+  <string name="morphe_remove_notification_dialog_title">Уклони дијалог за предлози за известувања</string>
+  <string name="morphe_remove_notification_dialog_summary">Автоматски го отфрла дијалогот за предлози за известувања кога се посетува под-reddit</string>
+  <string name="morphe_show_view_count_title">Прикажи број на прегледи на објавите</string>
+  <string name="morphe_show_view_count_summary">Ограничување: Достапно само ако одговорот на API-то ги вклучува бројот на прегледи</string>
+  <string name="morphe_remove_nsfw_dialog_title">Уклони дијалог за предупредување за NSFW содржина</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Автоматски прифаќа предупредување за NSFW содржина кога се посетува под-reddit</string>
+  <string name="morphe_screen_miscellaneous_title">Разно</string>
+  <string name="morphe_about_title">За</string>
+  <string name="morphe_about_summary">Верзија на patch и официјални линкови</string>
+  <string name="morphe_sanitize_sharing_links_title">Дезинфицирај линкови за споделување</string>
+  <string name="morphe_sanitize_sharing_links_summary">Ги отстранува параметрите за прашање за проследување од споделени линкови</string>
+  <string name="morphe_open_links_directly_title">Отвори линкови директно</string>
+  <string name="morphe_open_links_directly_summary">Ги заобиколува URL-адресите за пренасочување при отворање на надворешни линкови</string>
+  <string name="morphe_open_links_externally_title">Отвори линкови надворешно</string>
+  <string name="morphe_open_links_externally_summary">Отвори линкови во пребарувачот наместо во пребарувачот во апликацијата</string>
+</resources>

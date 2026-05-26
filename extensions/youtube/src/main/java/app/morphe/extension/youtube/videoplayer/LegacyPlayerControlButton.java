@@ -11,10 +11,12 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
+import static app.morphe.extension.youtube.videoplayer.PlayerOverlayButton.initializeHeadingFromUpperButton;
 
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewPropertyAnimator;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -71,8 +73,16 @@ public class LegacyPlayerControlButton {
                                      PlayerControlButtonStatus enabledStatus,
                                      View.OnClickListener onClickListener,
                                      @Nullable View.OnLongClickListener longClickListener) {
-        this(controlsViewGroup, buttonId, buttonId, textOverlayId, imageResourceName,
-                enabledStatus, onClickListener, longClickListener);
+        this(
+                controlsViewGroup,
+                buttonId,
+                buttonId,
+                textOverlayId,
+                imageResourceName,
+                enabledStatus,
+                onClickListener,
+                longClickListener
+        );
     }
 
     public LegacyPlayerControlButton(View controlsViewGroup,
@@ -83,8 +93,6 @@ public class LegacyPlayerControlButton {
                                      PlayerControlButtonStatus enabledStatus,
                                      View.OnClickListener onClickListener,
                                      @Nullable View.OnLongClickListener longClickListener) {
-        PlayerOverlayButton.initializeHeadingFromUpperButton(controlsViewGroup);
-
         View containerView = Utils.getChildViewByResourceName(controlsViewGroup, viewToHide);
         containerView.setVisibility(View.GONE);
         containerRef = new WeakReference<>(containerView);
@@ -210,7 +218,6 @@ public class LegacyPlayerControlButton {
     public void setVisibility(boolean visible, boolean animated) {
         // Ignore this call, otherwise with full screen thumbnails the buttons are visible while seeking.
         if (visible && !animated) return;
-
         privateSetVisibility(visible, animated);
     }
 
@@ -231,6 +238,8 @@ public class LegacyPlayerControlButton {
             }
 
             if (visible && enabledStatus.buttonEnabled()) {
+                initializeHeadingFromUpperButton(container);
+
                 ViewPropertyAnimator animate = container.animate();
                 animate.cancel();
                 container.setVisibility(View.VISIBLE);

@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Herstarten om de installatie te voltooien</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Appnaam</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Aangepast</string>
   <string name="morphe_custom_branding_icon_title">App-pictogram</string>
   <string name="morphe_custom_branding_icon_entry_1">Origineel</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe Zwart</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe donker</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe Licht</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play licht</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play zwart</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Aangepast</string>
+  <string name="morphe_custom_branding_icon_entry_7">Aangepast</string>
   <string name="morphe_custom_branding_notification_icon_title">Meldingen</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Match app-icoon</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Melding</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Uw kijkgeschiedenis wordt niet opgeslagen.&lt;br&gt;&lt;br&gt;Dit wordt hoogstwaarschijnlijk veroorzaakt door een DNS-adblocker of netwerkproxy.&lt;br&gt;&lt;br&gt;Om dit te verhelpen, voegt u &lt;b&gt;s.youtube.com&lt;/b&gt; toe aan de witte lijst of schakelt u alle DNS-blokkers en proxies uit.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Videostreams spoofen</string>
   <string name="morphe_spoof_video_streams_screen_summary">Spoof de client-videostreams om afspeelproblemen te voorkomen</string>
   <string name="morphe_spoof_video_streams_title">Videostreams vervalsen</string>
-  <string name="morphe_spoof_video_streams_summary">"Misleidt YouTube om een compatibele videostream te verzenden, wat het afspelen voor de meeste gebruikers verhelpt
+  <string name="morphe_spoof_video_streams_summary">"Lost problemen met het afspelen voor de meeste gebruikers op door een compatibele videostream aan te vragen.
 
-Als u een YouTube Premium-gebruiker bent, is deze instelling mogelijk niet vereist"</string>
+Als u een YouTube Premium-gebruiker bent, is deze instelling mogelijk niet vereist."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Kon geen client-streams opvragen</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Het uitschakelen van deze instelling kan afspeelproblemen veroorzaken.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -104,6 +108,7 @@ Om in te loggen, druk je op 'doorgaan' onderaan"</string>
   <string name="morphe_sanitize_sharing_links_title">Deelbare links opschonen</string>
   <string name="morphe_sanitize_sharing_links_summary">Tracking queryparameters worden verwijderd uit gedeelde links</string>
   <string name="morphe_replace_music_with_youtube_title">Deelkoppelingen wijzigen naar youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Vervangt music.youtube.com door youtube.com in gedeelde links</string>
   <string name="morphe_replace_links_with_shortener_title">Deelkoppelingen wijzigen naar youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Dwingt livestreams en Shorts om de verkorte youtu.be URL-indeling te gebruiken</string>
+  <string name="morphe_replace_links_with_shortener_summary">Dwingt video\'s om het verkorte youtu.be URL-formaat te gebruiken</string>
 </resources>

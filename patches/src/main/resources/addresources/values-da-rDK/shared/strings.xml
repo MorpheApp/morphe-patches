@@ -132,7 +132,7 @@ Deaktivering af batterioptimeringer for MicroG vil ikke negativt påvirke batter
 
 Tryk på knappen Fortsæt og tillad optimeringsændringer."</string>
   <string name="gms_core_dialog_continue_text">Fortsæt</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Vis batterioptimeringsdialog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Vis batterioptimeringsdialog for MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering af dette skjuler MicroG batterioptimeringsprompten.
 
 Hvis batterioptimeringer ikke ændres, kan du opleve:
@@ -141,7 +141,7 @@ Hvis batterioptimeringer ikke ændres, kan du opleve:
 • Baggrundsafspilning virker muligvis ikke"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-linkshåndtering</string>
-  <string name="morphe_link_handling_summary">Konfigurer hvilken app der åbner links</string>
+  <string name="morphe_link_handling_summary">Konfigurer links, så de åbnes i denne app</string>
   <string name="morphe_link_handling_step1_title">Trin 1: Deaktiver originale app-links</string>
   <string name="morphe_link_handling_step1_message">Åbn indstillingerne for den originale app og deaktiver alle domænelinks</string>
   <string name="morphe_link_handling_step2_title">Trin 2: Aktiver patched app-links</string>

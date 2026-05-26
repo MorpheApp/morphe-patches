@@ -20,29 +20,33 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Mulai ulang untuk menyelesaikan penyiapan</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nama aplikasi</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Khusus</string>
   <string name="morphe_custom_branding_icon_title">Ikon aplikasi</string>
   <string name="morphe_custom_branding_icon_entry_1">Asli</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe hitam</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe gelap</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe terang</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play terang</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play hitam</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Kustom</string>
+  <string name="morphe_custom_branding_icon_entry_7">Kustom</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikon pemberitahuan</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Cocokkan ikon aplikasi</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Pemberitahuan Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Riwayat tontonan Anda tidak sedang disimpan.&lt;br&gt;&lt;br&gt;Hal ini kemungkinan besar disebabkan oleh pemblokir iklan DNS atau proksi jaringan.&lt;br&gt;&lt;br&gt;Untuk memperbaikinya, masukkan daftar putih &lt;b&gt;s.youtube.com&lt;/b&gt; atau matikan semua pemblokir DNS dan proksi.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Jangan tampilkan lagi</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Palsukan aliran video</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Konfigurasikan peniruan klien untuk mencegah masalah pemutaran</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Konfigurasikan pemalsuan klien untuk mencegah masalah pemutaran</string>
   <string name="morphe_spoof_video_streams_title">Palsukan aliran video</string>
-  <string name="morphe_spoof_video_streams_summary">"Menipu YouTube untuk mengirim aliran video yang kompatibel, yang memperbaiki pemutaran bagi sebagian besar pengguna
+  <string name="morphe_spoof_video_streams_summary">"Memperbaiki masalah pemutaran untuk sebagian besar pengguna dengan meminta aliran video yang kompatibel
 
-Jika Anda adalah pengguna YouTube Premium, pengaturan ini mungkin tidak diperlukan"</string>
+Jika Anda pengguna YouTube Premium, pengaturan ini mungkin tidak diperlukan"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Tidak dapat mengambil aliran klien apa pun</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Mematikan pengaturan ini dapat menyebabkan masalah pemutaran.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -88,9 +92,9 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_oauth2_toast_reset">Keluar dari Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Token masuk VR tidak sah, coba masuk ke VR lagi</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Nonaktifkan pembaruan pemutar JavaScript</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Mengunci JavaScript pemutar ke hash lokal alih-alih mengambil pembaruan
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Mengunci JavaScript pemutar ke hash lokal daripada mengambil pembaruan
 
-• Diperlukan hash JavaScript pemutar yang valid
+• Diperlukan hash JavaScript pemutar yang sah
 • Pemutaran gagal jika hash JavaScript pemutar dicabut di GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Pemutar hash JavaScript berlaku selama kurang lebih satu bulan, dan hash yang kedaluwarsa mungkin dicabut oleh GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash pemutar JavaScript</string>
@@ -101,7 +105,7 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_disable_drc_audio_title">Nonaktifkan audio DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Paksa bahasa audio asli</string>
-  <string name="morphe_force_original_audio_summary">Selalu memutar trek audio asli video, bukan versi dubbing</string>
+  <string name="morphe_force_original_audio_summary">Selalu memutar trek audio asli video tersebut daripada versi sulih suara</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Sembunyikan iklan layar penuh</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
@@ -110,6 +114,7 @@ Untuk masuk, tekan lanjutkan di bawah ini"</string>
   <string name="morphe_sanitize_sharing_links_title">Bersihkan tautan berbagi</string>
   <string name="morphe_sanitize_sharing_links_summary">Menghapus parameter kueri pelacakan dari tautan yang dibagikan</string>
   <string name="morphe_replace_music_with_youtube_title">Ubah tautan berbagi ke youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Mengganti music.youtube.com dengan youtube.com di tautan yang dibagikan</string>
   <string name="morphe_replace_links_with_shortener_title">Ubah tautan berbagi ke youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Memaksa streaming langsung dan Shorts untuk menggunakan format URL pendek youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Memaksa video untuk menggunakan format pemendek URL youtu.be</string>
 </resources>

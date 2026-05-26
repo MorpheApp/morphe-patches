@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Скрыть видеорекламу</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Плавный переход</string>
-  <string name="morphe_music_crossfade_screen_summary">Настройте плавность переходов между треками</string>
+  <string name="morphe_music_crossfade_screen_summary">Плавное переключение между треками</string>
   <string name="morphe_music_crossfade_enabled_title">Включить плавный переход</string>
   <string name="morphe_music_crossfade_curve_title">Кривая сглаживания</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Равномерная мощность</string>
@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Предотвращает автоматическое разворачивание плеера на весь экран при запуске нового трека</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Панель навигации</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Выберите, какие кнопки будут отображаться на панели навигации</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Выберите, какие кнопки должны отображаться на нижней навигационной панели</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Скрыть кнопку \"Домой\"</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

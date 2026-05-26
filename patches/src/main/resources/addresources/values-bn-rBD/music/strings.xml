@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">ভিডিও বিজ্ঞাপন লুকান</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">ক্রসফেইড</string>
-  <string name="morphe_music_crossfade_screen_summary">ট্র্যাকগুলি একে অপরের সাথে মসৃণভাবে মিশে যাওয়ার বিষয়টি কাস্টমাইজ করুন</string>
+  <string name="morphe_music_crossfade_screen_summary">ট্র্যাকগুলি একে অপরের সাথে মসৃণভাবে মিশিয়ে দিন।</string>
   <string name="morphe_music_crossfade_enabled_title">ক্রসফেইড চালু করুন</string>
   <string name="morphe_music_crossfade_curve_title">ফেড কার্ভ</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">সমান ক্ষমতা</string>
@@ -103,7 +103,7 @@ VazerOG কর্তৃক ফিচার বাস্তবায়ন।"</s
   <string name="morphe_music_enable_forced_miniplayer_summary">নতুন ট্র্যাক শুরু হলে প্লেয়ারকে স্বয়ংক্রিয়ভাবে ফুলস্ক্রিনে প্রসারিত করা থেকে এটি বাধা দেয়।</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">নেভিগেশন বার</string>
-  <string name="morphe_music_navigation_bar_screen_summary">ন্যাভিগেশন বারে কোন বোতামগুলি প্রদর্শিত হবে তা নির্বাচন করুন।</string>
+  <string name="morphe_music_navigation_bar_screen_summary">নীচের নেভিগেশন বারে কোন বোতামগুলি প্রদর্শিত হবে তা নির্বাচন করুন</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">হোম বোতামটি লুকান</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

@@ -8,7 +8,7 @@ import app.morphe.patcher.string
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.matchAllMethodIndicesForEach
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/OpenLinksExternallyPatch;"
@@ -24,27 +24,23 @@ val openLinksExternallyPatch = bytecodePatch(
             SwitchPreference("morphe_external_browser"),
         )
 
-        val filter = string("android.support.customtabs.action.CustomTabsService")
-
         Fingerprint(
-            filters = listOf(filter),
+            filters = listOf(
+                string("android.support.customtabs.action.CustomTabsService")
+            ),
             custom = { _, classDef ->
                 !classDef.type.startsWith("Lapp/morphe/")
             }
-        ).matchAll().forEach { match ->
-            match.method.apply {
-                findInstructionIndicesReversedOrThrow(filter).forEach { index ->
-                    val register = getInstruction<OneRegisterInstruction>(index).registerA
+        ).matchAllMethodIndicesForEach { index ->
+            val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                    addInstructions(
-                        index + 1,
-                        """
-                            invoke-static { v$register }, $EXTENSION_CLASS->getIntent(Ljava/lang/String;)Ljava/lang/String;
-                            move-result-object v$register
-                        """
-                    )
-                }
-            }
+            addInstructions(
+                index + 1,
+                """
+                    invoke-static { v$register }, $EXTENSION_CLASS->getIntent(Ljava/lang/String;)Ljava/lang/String;
+                    move-result-object v$register
+                """
+            )
         }
     }
 }

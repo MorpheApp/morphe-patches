@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Käynnistä uudelleen valituksen suorittamiseksi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Sovelluksen nimi</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Mukautettu</string>
   <string name="morphe_custom_branding_icon_title">Sovelluskuvake</string>
   <string name="morphe_custom_branding_icon_entry_1">Alkuperäinen</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe musta</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tumma</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe vaalea</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe vaalea</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe musta</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Mukautettu</string>
+  <string name="morphe_custom_branding_icon_entry_7">Mukautettu</string>
   <string name="morphe_custom_branding_notification_icon_title">Ilmoituksen kuvake</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Sovelluksen kuvakkeen vaihtaminen</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe musta</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-huomautus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Katseluhistoriaasi ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä johtuu todennäköisesti DNS-mainostenestosta tai verkkovälityspalvelimesta.&lt;br&gt;&lt;br&gt;Korjaa ongelma lisäämällä &lt;b&gt;s.youtube.com&lt;/b&gt; sallittujen listalle tai kytke kaikki DNS-estot ja välityspalvelimet pois päältä.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Naamioi videovirrat</string>
   <string name="morphe_spoof_video_streams_screen_summary">Asiakasohjelman videovirtojen naamiointi toisto-ongelmien estämiseksi</string>
   <string name="morphe_spoof_video_streams_title">Naamioi videovirrat</string>
-  <string name="morphe_spoof_video_streams_summary">"Huijaa YouTube lähettämään yhteensopiva videovirta, mikä korjaa toiston useimmille käyttäjille
+  <string name="morphe_spoof_video_streams_summary">"Korjaa toistoon liittyviä ongelmia useimmille käyttäjille pyytämällä yhteensopivaa videovirtaa.
 
-Jos olet YouTube Premium -käyttäjä, tämä asetus ei ehkä ole tarpeen"</string>
+Jos olet YouTube Premium -käyttäjä, tämä asetus ei välttämättä ole tarpeen."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Asiakasvirtoja ei voitu hakea</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Tämän asetuksen poistaminen käytöstä voi aiheuttaa toisto-ongelmia.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -110,6 +114,7 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_sanitize_sharing_links_title">Puhdista jakamislinkit</string>
   <string name="morphe_sanitize_sharing_links_summary">Poistaa seuranta-kyselyparametrit jaetuista linkeistä</string>
   <string name="morphe_replace_music_with_youtube_title">Muuta jakolinkit youtube.com-sivustoksi</string>
+  <string name="morphe_replace_music_with_youtube_summary">Korvaa music.youtube.com osoitteella youtube.com jaetuissa linkeissä</string>
   <string name="morphe_replace_links_with_shortener_title">Muuta jakolinkit youtu.be-sivustoksi</string>
-  <string name="morphe_replace_links_with_shortener_summary">Pakottaa suoratoistot ja Shorts-videot käyttämään lyhennettyä youtu.be-URL-muotoa</string>
+  <string name="morphe_replace_links_with_shortener_summary">Pakottaa videot käyttämään lyhennettyä youtu.be-URL-muotoa</string>
 </resources>

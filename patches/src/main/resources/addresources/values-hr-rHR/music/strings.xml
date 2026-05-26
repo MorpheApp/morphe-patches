@@ -33,8 +33,43 @@ Second \"item\" text"</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Sakrij video oglase</string>
   <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Crossfade</string>
+  <string name="morphe_music_crossfade_enabled_title">Omogući Crossfade</string>
+  <string name="morphe_music_crossfade_curve_title">Fade curve</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Jednaka snaga</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Subtilno zadržavanje</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Blago olakšanje</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Glatka S-krivulja</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_duration_title">Trajanje preklapanja</string>
+  <string name="morphe_crossfade_duration_250ms">250 milisekundi</string>
+  <string name="morphe_crossfade_duration_500ms">500 milisekundi</string>
+  <string name="morphe_crossfade_duration_750ms">750 milisekundi</string>
+  <string name="morphe_crossfade_duration_1000ms">1 sekunda</string>
+  <string name="morphe_crossfade_duration_2000ms">2 sekunde</string>
+  <string name="morphe_crossfade_duration_3000ms">3 sekunde</string>
+  <string name="morphe_crossfade_duration_4000ms">4 sekunde</string>
+  <string name="morphe_crossfade_duration_5000ms">5 sekundi</string>
+  <string name="morphe_crossfade_duration_6000ms">6 sekundi</string>
+  <string name="morphe_crossfade_duration_7000ms">7 sekundi</string>
+  <string name="morphe_crossfade_duration_8000ms">8 sekundi</string>
+  <string name="morphe_crossfade_duration_9000ms">9 sekundi</string>
+  <string name="morphe_crossfade_duration_10000ms">10 sekundi</string>
+  <string name="morphe_music_crossfade_on_skip_title">Izblijedi pri ručnom preskakanju</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Primjenjuje efekt preklapanja kada ručno prelazite na sljedeću skladbu</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Crossfade na automatskom prelasku</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Primjenjuje efekt preklapanja kada pjesma prirodno završava</string>
+  <string name="morphe_music_crossfade_session_control_title">Kontrola sesije</string>
+  <string name="morphe_music_crossfade_session_control_summary">Dugim pritiskom na tipku za izmjenu pjesama pauzirajte ili nastavite s prelaženjem s jedne pjesme na drugu</string>
+  <string name="morphe_music_crossfade_paused_toast">Crossfade je pauziran za ovu sesiju</string>
+  <string name="morphe_music_crossfade_resumed_toast">Crossfade nastavljen</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mod nije dostupan dok je omogućeno preklapanje</string>
   <string name="morphe_music_crossfade_about_title">O aplikaciji</string>
+  <string name="morphe_music_crossfade_about_summary">"Crossfade je dostupan s YouTube Music 8.x
+
+Dužim pritiskom na tipku za izmjenu redoslijeda isključite/uključite
+
+Implementacija značajke od VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Omogući stalno ponavljanje</string>
   <!-- layout.buttons.hideButtons -->
@@ -43,6 +78,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_notification_button_title">Skrij tipku obavijesti</string>
   <string name="morphe_music_hide_search_button_title">Sakrij tipku za pretraživanje</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Početna stranica</string>
   <string name="morphe_change_start_page_entry_default">Zadano</string>
   <string name="morphe_change_start_page_entry_charts">Grafikoni</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Epizode za kasnije</string>
@@ -57,16 +93,25 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">Sakrij traku kategorije</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Promijeni boju miniplayera</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Boja miniplayera odgovara boji playera preko cijelog zaslona</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Pokaži sljedeću tipku u miniplayeru</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Pokaži prethodnu tipku u mini playeru</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Omogući prisilni miniplayer</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Sprječava automatsko proširenje na puni zaslon kada započinje nova pjesma</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Traka navigacije</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Sakrij tipku Početna</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Sakrij tipku Uzoraka</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Sakrij tipku Istraži</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Sakrij tipku Knjižnica</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Sakrij tipku za nadogradnju</string>
   <string name="morphe_music_hide_navigation_bar_title">Sakrij traku navigacije</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Sakrij oznake navigacijskih tipki</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->

@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Versteek video-advertensies</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Kruisverdof</string>
-  <string name="morphe_music_crossfade_screen_summary">Pas hoe snelle oorgange tussen liedjies vloeiend in mekaar loop</string>
+  <string name="morphe_music_crossfade_screen_summary">Meng snitte glad in mekaar</string>
   <string name="morphe_music_crossfade_enabled_title">Aktiveer kruisverdof</string>
   <string name="morphe_music_crossfade_curve_title">Vervaagkurwe</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Gelyke krag</string>
@@ -103,7 +103,7 @@ Funksie implementering deur VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Verhoed dat die speler outomaties na volskerm aansit wanneer \'n nuwe liedjie begin</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigasiebalk</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Kies watter knoppies in die navigasiebalk verskyn</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Kies watter knoppies in die onderste navigasiebalk moet verskyn</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Verberg Tuisknoppie</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

@@ -132,7 +132,7 @@ Second \"item\" text"</string>
 
 Додирните дугму \"Настави\" и дозволите промене у оптимизацији батерије."</string>
   <string name="gms_core_dialog_continue_text">Настави</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Прикажи дијалог за оптимизацију батерије</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Прикажи дијалог за оптимизацију батерије за MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Онеомагућивање ове опције спречиће појаву промпта за оптимизацију батерије MicroG.
 
 Ако се оптимизације батерије не промене, може доћи до:
@@ -141,7 +141,7 @@ Second \"item\" text"</string>
 • Неисправног рада музичког плејера у позадини"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Руковање линковима апликације</string>
-  <string name="morphe_link_handling_summary">Конфигуришите која апликација отвара линкове</string>
+  <string name="morphe_link_handling_summary">Конфигуриши линкове да се отворе у овој апликацији</string>
   <string name="morphe_link_handling_step1_title">Корак 1: Искључите оригиналне линкове апликација</string>
   <string name="morphe_link_handling_step1_message">Отворите подешавања оригиналне апликације и деактивирајте све линкове домена</string>
   <string name="morphe_link_handling_step2_title">Корак 2: Омогућите поправљене линкове апликација</string>

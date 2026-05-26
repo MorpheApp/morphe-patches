@@ -222,6 +222,14 @@ public final class AdsFilter extends Filter {
     /**
      * Injection point.
      */
+    public static boolean allowAds(boolean original) {
+        if (Settings.HIDE_GENERAL_ADS.get()) return false;
+        return original;
+    }
+
+    /**
+     * Injection point.
+     */
     public static String hideAds(String osName) {
         return Settings.HIDE_GENERAL_ADS.get()
                 ? "Android Automotive"

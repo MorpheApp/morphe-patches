@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Video reklamlarını gizle</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Geçiş</string>
-  <string name="morphe_music_crossfade_screen_summary">Parçaların birbirine nasıl sorunsuz bir şekilde  karıştığını özelleştirir</string>
+  <string name="morphe_music_crossfade_screen_summary">Parçaları yumuşak bir şekilde birbirine karıştırır</string>
   <string name="morphe_music_crossfade_enabled_title">Geçişi etkinleştir</string>
   <string name="morphe_music_crossfade_curve_title">Solma eğrisi</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Eşit güç</string>
@@ -103,7 +103,7 @@ VazerOG'den özellik uyarlaması"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Yeni bir parça başladığında oynatıcının otomatik olarak tam ekrana geçmesini engeller</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Gezinme çubuğu</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Gezinti çubuğunda hangi düğmelerin görüneceğini seçin</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Alt gezinme çubuğunda hangi düğmelerin görüneceğini seçin</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ana Sayfa düğmesini gizle</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

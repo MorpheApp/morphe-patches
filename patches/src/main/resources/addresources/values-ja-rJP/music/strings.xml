@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">動画広告を非表示</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">クロスフェード</string>
-  <string name="morphe_music_crossfade_screen_summary">前後のトラックを重ね合わせてなめらかにつなぐクロスフェードの設定をカスタマイズします</string>
+  <string name="morphe_music_crossfade_screen_summary">前後のトラックを重ね合わせてなめらかにつなぎます</string>
   <string name="morphe_music_crossfade_enabled_title">クロスフェードを有効化</string>
   <string name="morphe_music_crossfade_curve_title">フェードカーブ</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">等電力（全体音量一定）</string>
@@ -61,7 +61,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">自動再生時のクロスフェード</string>
   <string name="morphe_music_crossfade_on_auto_advance_summary">トラックが自動で切り替わるときにクロスフェードを適用します</string>
   <string name="morphe_music_crossfade_session_control_title">クロスフェードのセッション制御</string>
-  <string name="morphe_music_crossfade_session_control_summary">再生中のセッション (プレイリストなど) 内でのクロスフェードの一時的な停止 / 再開をシャッフル ボタンの長押しによって切り替える機能を有効にします</string>
+  <string name="morphe_music_crossfade_session_control_summary">シャッフル ボタンを長押しすると、再生中のセッション (プレイリストなど) 内でのクロスフェードを一時的に停止 / 再開します</string>
   <string name="morphe_music_crossfade_paused_toast">このセッションでのクロスフェードを一時停止します</string>
   <string name="morphe_music_crossfade_resumed_toast">クロスフェードを再開しました</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">クロスフェードが有効になっている間は、動画モードは利用できません</string>
@@ -103,7 +103,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">新しいトラックが自動的にフルスクリーン プレーヤーで再生されるのを防ぎます</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">ナビゲーション バー</string>
-  <string name="morphe_music_navigation_bar_screen_summary">ナビゲーション バーに表示するボタンを設定します</string>
+  <string name="morphe_music_navigation_bar_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">ホームボタンを非表示</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

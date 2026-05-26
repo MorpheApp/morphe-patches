@@ -34,12 +34,13 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Video reklamlarını gizlət</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Çarpaz solma</string>
+  <string name="morphe_music_crossfade_screen_summary">Parçaları bir-birinə hamarca qarışdır</string>
   <string name="morphe_music_crossfade_enabled_title">Çarpaz solmanı aktivləşdir</string>
-  <string name="morphe_music_crossfade_curve_title">Əyri soldurma</string>
+  <string name="morphe_music_crossfade_curve_title">Soldurma əyrisi</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Bərabər güc</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">İncə saxlanma</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Xəfif yüngülləşmə</string>
-  <string name="morphe_music_crossfade_curve_entry_smoothstep">Hamar S əyrisi</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Hamar S-əyrisi</string>
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_duration_title">Çarpaz soldurma müddəti</string>
   <string name="morphe_crossfade_duration_250ms">250 millisaniyə</string>
@@ -56,7 +57,9 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_9000ms">9 saniyə</string>
   <string name="morphe_crossfade_duration_10000ms">10 saniyə</string>
   <string name="morphe_music_crossfade_on_skip_title">Əl ilə ötürmədə çarpaz soldurma</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Növbəti trekə əl ilə keçdiyinizdə çarpaz solma effektin tətbiq edir</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Birbaşa irəliləmədə çarpaz soldurma</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Bir trek təbii şəkildə bitdikdə çarpaz solma effektini tətbiq edir</string>
   <string name="morphe_music_crossfade_session_control_title">Sessiya nəzarəti</string>
   <string name="morphe_music_crossfade_session_control_summary">Çarpaz Soldurmanı dayandırmaq və ya davam etdirmək üçün qarışdırma düyməsini uzun basın</string>
   <string name="morphe_music_crossfade_paused_toast">Bu sessiya üçün Çarpaz Solma dayandırıldı</string>
@@ -77,6 +80,7 @@ VazerOG tərəfindən xüsusiyyətin tətbiqi
   <string name="morphe_music_hide_notification_button_title">Bildiriş düyməsini gizlət</string>
   <string name="morphe_music_hide_search_button_title">Axtarış düyməsini gizlət</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Başlanğıc səhifəsi</string>
   <string name="morphe_change_start_page_entry_default">İlkin</string>
   <string name="morphe_change_start_page_entry_charts">Diaqramlar</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Sonra üçün epizodlar</string>
@@ -91,18 +95,26 @@ VazerOG tərəfindən xüsusiyyətin tətbiqi
   <string name="morphe_music_hide_category_bar_title">Kateqoriya cizgisin gizlət</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
   <string name="morphe_music_change_miniplayer_color_title">Kiçik səsləndirici rəngini dəyişdir</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Kiçik səsləndirici rəngini tam ekran səsləndiriciyə uyuşdurur</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
   <string name="morphe_music_miniplayer_next_button_title">Kiçik səsləndiricidə növbəti düyməsin göstər</string>
   <string name="morphe_music_miniplayer_previous_button_title">Kiçik səsləndiricidə əvvəlki düyməsin göstər</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Məcburi kiçik səsləndiricini aktivləşdir</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Yeni trek başlayanda səsləndiricini birbaşa tam ekrana genişləndirməsin əngəlləyir</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Fəaliyyət cizgisi</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Aşağı fəaliyyət cərgəsində hansı düymələr görünür seç</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Ev düyməsini gizlət</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Nümunələr düyməsini gizlət</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Kəşf edin düyməsini gizlət</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Kitabxana düyməsini gizlət</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Güncəlləyin düyməsini gizlət</string>
   <string name="morphe_music_hide_navigation_bar_title">Fəaliyyət cizgisin gizlət</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Fəaliyyət düyməsi etiketlərini gizlət</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->

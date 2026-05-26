@@ -132,7 +132,7 @@ Second \"item\" text"</string>
 
 Докоснете бутона за продължаване и разрешете промени в оптимизацията."</string>
   <string name="gms_core_dialog_continue_text">Продължи</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Показване на диалогов прозорец за оптимизация на батерията</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Покажи диалогов за оптимизация на батерията на MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Деактивирането на това ще скрие подканата за оптимизация на батерията MicroG.
 
 Ако оптимизациите на батерията не бъдат променени, може да изпитате:
@@ -141,7 +141,7 @@ Second \"item\" text"</string>
 • Възпроизвеждането във фонов режим може да не работи"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Обработка връзки в приложението</string>
-  <string name="morphe_link_handling_summary">Конфигуриране кое приложение отваря връзки</string>
+  <string name="morphe_link_handling_summary">Конфигуриране на връзките да се отварят в това приложение</string>
   <string name="morphe_link_handling_step1_title">Стъпка 1: Деактивирайте оригиналните връзки на приложението</string>
   <string name="morphe_link_handling_step1_message">Отворете настройките на оригиналното приложение и деактивирайте всички връзки към домейни</string>
   <string name="morphe_link_handling_step2_title">Стъпка 2: Активирайте коригираните връзки на приложението</string>

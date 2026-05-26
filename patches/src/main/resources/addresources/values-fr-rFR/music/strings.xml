@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Masquer les publicités vidéo</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Fondu enchaîné</string>
-  <string name="morphe_music_crossfade_screen_summary">Personnalisez la façon dont les morceaux se fondent harmonieusement les uns dans les autres</string>
+  <string name="morphe_music_crossfade_screen_summary">Enchaîner harmonieusement les morceaux les uns avec les autres</string>
   <string name="morphe_music_crossfade_enabled_title">Activer le fondu enchaîné</string>
   <string name="morphe_music_crossfade_curve_title">Courbe de fondu</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Puissance égale</string>
@@ -103,7 +103,7 @@ Implémentation de la fonctionnalité par VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Empêche le lecteur de passer automatiquement en plein écran lorsqu’un nouveau morceau commence</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barre de navigation</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Choisissez les boutons à afficher sur la barre de navigation</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Choisissez les boutons qui apparaissent dans la barre de navigation inférieure</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Masquer le bouton \'Accueil\'</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

@@ -132,7 +132,7 @@ Second \"item\" text"</string>
 
 点击继续按钮并允许优化更改。"</string>
   <string name="gms_core_dialog_continue_text">继续</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">显示电池优化对话框</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">显示 MicroG 电池优化对话框</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"禁用此功能会隐藏 MicroG 电池优化提示。
 
 如果未更改电池优化设置，您可能会遇到以下情况：
@@ -141,7 +141,7 @@ Second \"item\" text"</string>
 • 后台播放可能无法正常工作"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">应用链接处理</string>
-  <string name="morphe_link_handling_summary">配置哪个应用打开链接</string>
+  <string name="morphe_link_handling_summary">配置链接在此应用中打开</string>
   <string name="morphe_link_handling_step1_title">步骤 1：禁用原始应用链接</string>
   <string name="morphe_link_handling_step1_message">打开原始应用的设置并禁用所有域名链接</string>
   <string name="morphe_link_handling_step2_title">步骤 2：启用修补的应用链接</string>

@@ -132,7 +132,7 @@ Second \"item\" text"</string>
 
  انقر على زر متابعة و اسمح بتغييرات التحسين."</string>
   <string name="gms_core_dialog_continue_text">متابعة</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">عرض نافذة تحسين البطارية</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">عرض نافذة تحسين بطارية MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"تعطيل هذا سيخفي مطالبة تحسين البطارية لـ MicroG.
 
 إذا لم يتم تغيير تحسينات البطارية فقد تواجه:
@@ -141,7 +141,7 @@ Second \"item\" text"</string>
 • قد لا يعمل التشغيل في الخلفية"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">معالجة روابط التطبيق</string>
-  <string name="morphe_link_handling_summary">تكوين التطبيق الذي يفتح الروابط</string>
+  <string name="morphe_link_handling_summary">تكوين الروابط لفتحها في هذا التطبيق</string>
   <string name="morphe_link_handling_step1_title">الخطوة 1: تعطيل روابط التطبيق الأصلي</string>
   <string name="morphe_link_handling_step1_message">افتح إعدادات التطبيق الأصلي وقم بتعطيل كل روابط النطاقات</string>
   <string name="morphe_link_handling_step2_title">الخطوة 2: تمكين روابط التطبيق المُعدَّل</string>

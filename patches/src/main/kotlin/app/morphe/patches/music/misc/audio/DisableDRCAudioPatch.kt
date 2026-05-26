@@ -2,6 +2,7 @@ package app.morphe.patches.music.misc.audio
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.playservice.is_9_19_or_greater
+import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -20,7 +21,7 @@ val disableDRCAudioPatch = disableDRCAudioPatch(
         compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
     },
     preferenceScreen = PreferenceScreen.MISC,
-    // Audio normalization flag was removed in 9.19, but remnants of the old code still exists.
-    // This may require additional changes to turn off code in 9.19+
-    { !is_9_19_or_greater }
+    useLegacyNormalizationFlag = { !is_9_19_or_greater },
+    // Ignore 9.19 because it's missing a flag and requires version specific changes to support.
+    useNormalizationFlag = { is_9_20_or_greater }
 )

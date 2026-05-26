@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
-  <string name="morphe_music_crossfade_screen_summary">ปรับแต่งการผสมผสานเสียงเพลงที่ต่อเนื่องระหว่างแทร็ก</string>
+  <string name="morphe_music_crossfade_screen_summary">ผสมแทร็กต่างๆ เข้าด้วยกันอย่างราบรื่น</string>
   <string name="morphe_music_crossfade_enabled_title">เปิดใช้งาน Crossfade</string>
   <string name="morphe_music_crossfade_curve_title">เส้นโค้ง Fade</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">พลังงานเท่ากัน</string>
@@ -103,7 +103,7 @@ Feature implementation by VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">ป้องกันไม่ให้เครื่องเล่นขยายเป็นแบบเต็มหน้าจอโดยอัตโนมัติเมื่อเริ่มแทร็กใหม่</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">แถบนำทาง</string>
-  <string name="morphe_music_navigation_bar_screen_summary">เลือกปุ่มที่จะแสดงในแถบนำทาง</string>
+  <string name="morphe_music_navigation_bar_screen_summary">เลือกปุ่มที่จะแสดงในแถบนำทางด้านล่าง</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">ซ่อนปุ่มหน้าแรก</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Ajustes</string>
-  <string name="morphe_settings_confirm_user_dialog_title">¿Estás seguro de que quieres continuar?</string>
+  <string name="morphe_settings_confirm_user_dialog_title">¿Realmente quieres continuar?</string>
   <string name="morphe_settings_save">Guardar</string>
   <string name="morphe_settings_reset">Restablecer</string>
   <string name="morphe_settings_reset_color">Restablecer color</string>
@@ -38,7 +38,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_recent_searches">Búsquedas recientes</string>
   <string name="morphe_settings_search_remove_message">¿Eliminar del historial de búsqueda?</string>
   <string name="morphe_settings_search_clear_history">Borrar historial de búsqueda</string>
-  <string name="morphe_settings_search_clear_history_message">¿Estás seguro de que quieres borrar todo el historial de búsqueda?</string>
+  <string name="morphe_settings_search_clear_history_message">¿Realmente quieres borrar todo el historial de búsqueda?</string>
   <string name="morphe_settings_search_tips_title">Consejos de búsqueda</string>
   <string name="morphe_settings_search_tips_summary">"• Toca una ruta para navegar a ella
 • Mantén pulsado un ajuste para navegar a él
@@ -132,7 +132,7 @@ Deshabilitar las optimizaciones de batería para MicroG no tendrá un efecto neg
 
 Toca el botón continuar y permite los cambios de optimización."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">El diálogo de optimización de batería de MicroG está visible</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Mostrar diálogo de optimización de batería de MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Si desactivas esta opción, se ocultará el mensaje de optimización de la batería de MicroG.
 
 Si no se modifican las optimizaciones de la batería, es posible que se produzcan los siguientes problemas:
@@ -141,7 +141,7 @@ Si no se modifican las optimizaciones de la batería, es posible que se produzca
 • Es posible que la reproducción en segundo plano no funcione"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Manejo de enlaces de la aplicación</string>
-  <string name="morphe_link_handling_summary">Configura qué aplicación abre los enlaces</string>
+  <string name="morphe_link_handling_summary">Configurar enlaces para que se abran en esta aplicación</string>
   <string name="morphe_link_handling_step1_title">Paso 1: Desactivar los enlaces de la aplicación original</string>
   <string name="morphe_link_handling_step1_message">Abra la configuración de la aplicación original y desactive todos los enlaces de dominio</string>
   <string name="morphe_link_handling_step2_title">Paso 2: Activar los enlaces de la aplicación parcheada</string>

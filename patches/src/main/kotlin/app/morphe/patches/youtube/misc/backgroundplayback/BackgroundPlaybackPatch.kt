@@ -12,6 +12,8 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_29_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_04_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -115,12 +117,20 @@ val backgroundPlaybackPatch = bytecodePatch(
         ShortsBackgroundPlaybackFeatureFlagFingerprint.addBackgroundPlaybackFeatureFlagHook(true)
 
         // Fix PiP buttons not working after locking/unlocking device screen.
-        PipInputConsumerFeatureFlagFingerprint.addBackgroundPlaybackFeatureFlagHook(false)
+        if (!is_21_21_or_greater) {
+            PipInputConsumerFeatureFlagFingerprint.addBackgroundPlaybackFeatureFlagHook(false)
+        }
 
         if (is_20_29_or_greater) {
             // Client flag that interferes with background playback of some video types.
             // Exact purpose is not clear and it's used in ~ 100 locations.
-            NewPlayerTypeEnumFeatureFlag.addBackgroundPlaybackFeatureFlagHook(false)
+            NewPlayerTypeEnumFeatureFlagFingerprint.addBackgroundPlaybackFeatureFlagHook(false)
+        }
+
+        if (is_21_04_or_greater) {
+            // If NewPlayerTypeEnumFeatureFlagFingerprint is present and forced off then this flag
+            // must also be disabled, otherwise the player is a black screen with no buttons and no playback.
+            NewPlayerOverlaysFeatureFlagFingerprint.addBackgroundPlaybackFeatureFlagHook(false)
         }
     }
 }
