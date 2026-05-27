@@ -34,6 +34,7 @@ import android.preference.TwoStatePreference;
 import android.text.InputType;
 import android.util.Pair;
 import android.util.TypedValue;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -93,6 +94,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             Object item = getAdapter().getItem(position);
 
             if (item instanceof TwoStatePreference) {
+                view.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK);
                 return super.performItemClick(view, position, id);
             }
 
@@ -111,6 +113,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             Object item = parent.getAdapter().getItem(position);
 
             if (item instanceof TwoStatePreference) {
+                view.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK);
                 originalListener.onItemClick(parent, view, position, id);
                 return;
             }
