@@ -342,8 +342,8 @@ Verify the package name is correct and the app is installed"</string>
     <string name="morphe_loop_video_range_dialog_title">Loop range</string>
     <string name="morphe_loop_video_range_label_start">Start</string>
     <string name="morphe_loop_video_range_label_end">End</string>
-    <string name="morphe_loop_video_range_hint_start">mm:ss</string>
-    <string name="morphe_loop_video_range_hint_end">mm:ss (empty = video end)</string>
+    <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
+    <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (empty = video end)</string>
     <string name="morphe_loop_video_range_set">Set</string>
     <string name="morphe_loop_video_range_clear">Clear</string>
     <string name="morphe_loop_video_range_toast_on">Looping %1$s - %2$s</string>
