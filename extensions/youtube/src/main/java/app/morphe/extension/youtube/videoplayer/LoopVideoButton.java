@@ -125,7 +125,7 @@ public class LoopVideoButton {
             final String startPrefill = rangeActive
                     ? formatTime(LoopVideoPatch.rangeStartMs)
                     : (currentTime > 0 ? formatTime(currentTime) : "");
-            final String endPrefill = (rangeActive && !LoopVideoPatch.rangeEndIsVideoEnd)
+            final String endPrefill = rangeActive
                     ? formatTime(LoopVideoPatch.rangeEndMs)
                     : "";
 
@@ -175,7 +175,7 @@ public class LoopVideoButton {
         }
 
         final long endMs;
-        final boolean endIsVideoEnd = endInput.trim().isEmpty();
+        boolean endIsVideoEnd = endInput.trim().isEmpty();
         if (endIsVideoEnd) {
             if (videoLengthMs <= 0) {
                 Utils.showToastShort(str("morphe_loop_video_range_invalid_time"));
@@ -183,10 +183,16 @@ public class LoopVideoButton {
             }
             endMs = videoLengthMs;
         } else {
-            endMs = parseTime(endInput);
-            if (endMs < 0) {
+            final long parsed = parseTime(endInput);
+            if (parsed < 0) {
                 Utils.showToastShort(str("morphe_loop_video_range_invalid_time"));
                 return;
+            }
+            if (videoLengthMs > 0 && parsed >= videoLengthMs) {
+                endMs = videoLengthMs;
+                endIsVideoEnd = true;
+            } else {
+                endMs = parsed;
             }
         }
 
