@@ -34,6 +34,7 @@ import android.preference.TwoStatePreference;
 import android.text.InputType;
 import android.util.Pair;
 import android.util.TypedValue;
+import android.os.Build;
 import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -93,8 +94,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         public boolean performItemClick(View view, int position, long id) {
             Object item = getAdapter().getItem(position);
 
-            if (item instanceof TwoStatePreference) {
-                view.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK);
+            if (item instanceof TwoStatePreference twoState) {
+                int feedbackConstant = Build.VERSION.SDK_INT >= 34
+                        ? (twoState.isChecked() ? HapticFeedbackConstants.TOGGLE_OFF : HapticFeedbackConstants.TOGGLE_ON)
+                        : HapticFeedbackConstants.CLOCK_TICK;
+                view.performHapticFeedback(feedbackConstant);
                 return super.performItemClick(view, position, id);
             }
 
@@ -112,8 +116,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Object item = parent.getAdapter().getItem(position);
 
-            if (item instanceof TwoStatePreference) {
-                view.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK);
+            if (item instanceof TwoStatePreference twoState) {
+                int feedbackConstant = Build.VERSION.SDK_INT >= 34
+                        ? (twoState.isChecked() ? HapticFeedbackConstants.TOGGLE_OFF : HapticFeedbackConstants.TOGGLE_ON)
+                        : HapticFeedbackConstants.CLOCK_TICK;
+                view.performHapticFeedback(feedbackConstant);
                 originalListener.onItemClick(parent, view, position, id);
                 return;
             }
