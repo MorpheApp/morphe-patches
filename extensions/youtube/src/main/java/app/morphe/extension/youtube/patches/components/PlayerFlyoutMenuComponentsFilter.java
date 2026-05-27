@@ -154,7 +154,7 @@ public class PlayerFlyoutMenuComponentsFilter extends Filter {
             if (path.contains("quick_quality_sheet_content.e")) {
                 return Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
             }
-            return false;
+            return path.contains("overflow_menu_item.e");
         }
 
         if (contentIndex != 0) {
