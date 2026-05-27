@@ -10,6 +10,7 @@
 
 package app.morphe.extension.youtube.patches;
 
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.videoplayer.LoopVideoButton;
 
@@ -80,14 +81,19 @@ public class LoopVideoPatch {
      * Injection point.
      */
     public static boolean shouldLoopVideo(Enum<?> status) {
-        boolean isEnded = status != null && "ENDED".equals(status.name())
-                && Settings.LOOP_VIDEO.get();
-        if (!isEnded) return false;
-
-        // Fallback: if the video truly ended while range is active (videoTimeChanged was too slow),
-        // seek to range start so the end screen is dismissed.
-        if (isRangeActive()) return VideoInformation.seekTo(rangeStartMs);
-
-        return VideoInformation.seekTo(0);
+        try {
+            final boolean isEnded = Settings.LOOP_VIDEO.get()
+                    && status != null && "ENDED".equals(status.name());
+            if (isEnded) {
+                return VideoInformation.seekTo(isRangeActive()
+                        // Fallback: if the video truly ended while range is active (videoTimeChanged was too slow),
+                        // seek to range start so the end screen is dismissed.
+                        ? rangeStartMs
+                        : 0);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "shouldLoopVideo failure", ex);
+        }
+        return false;
     }
 }
