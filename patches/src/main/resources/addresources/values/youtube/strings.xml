@@ -502,6 +502,8 @@ Info: May not work on live streams"</string>
     <string name="morphe_hide_quick_actions_playlist_button_title">Hide Playlist button</string>
     <string name="morphe_hide_quick_actions_save_button_title">Hide Save button</string>
     <string name="morphe_hide_quick_actions_share_button_title">Hide Share button</string>
+    <string name="morphe_quick_actions_top_margin_title">Quick actions top margin</string>
+    <string name="morphe_quick_actions_top_margin_summary">Set the top margin of the quick actions bar (0-32 dp)</string>
 
     <!-- layout.captions.captionsPatch -->
     <string name="morphe_captions_screen_title">Captions</string>

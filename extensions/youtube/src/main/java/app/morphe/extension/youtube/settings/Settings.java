@@ -229,6 +229,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_QUICK_ACTIONS_PLAYLIST_BUTTON = new BooleanSetting("morphe_hide_quick_actions_playlist_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_QUICK_ACTIONS_SAVE_BUTTON = new BooleanSetting("morphe_hide_quick_actions_save_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
     public static final BooleanSetting HIDE_QUICK_ACTIONS_SHARE_BUTTON = new BooleanSetting("morphe_hide_quick_actions_share_button", FALSE, parentNot(HIDE_QUICK_ACTIONS));
+    public static final IntegerSetting QUICK_ACTIONS_TOP_MARGIN = new IntegerSetting("morphe_quick_actions_top_margin", 0, true);
 
     // Ambient mode
     public static final BooleanSetting DISABLE_AMBIENT_MODE = new BooleanSetting("morphe_disable_ambient_mode", FALSE, true);
@@ -639,5 +640,7 @@ public class Settings extends SharedYouTubeSettings {
                 1, 20, 1, ""));
         SeekBarPreference.register(new SeekBarConfig(SWIPE_SPEED_ZONE_HEIGHT,
                 5, 75, 1, "%"));
+        SeekBarPreference.register(new SeekBarConfig(QUICK_ACTIONS_TOP_MARGIN,
+                0, 32, 1, "dp"));
     }
 }
