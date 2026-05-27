@@ -24,10 +24,10 @@ public class QuickActionsMarginPatch {
         if (marginDp == 0) {
             return;
         }
-        if (!(view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams params)) {
-            return;
+
+        if (view.getLayoutParams() instanceof ViewGroup.MarginLayoutParams params) {
+            params.topMargin = Math.round(marginDp * view.getResources().getDisplayMetrics().density);
+            view.requestLayout();
         }
-        params.topMargin = Math.round(marginDp * view.getResources().getDisplayMetrics().density);
-        view.requestLayout();
     }
 }

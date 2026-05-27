@@ -28,7 +28,7 @@ internal val quickActionsMarginPatch = bytecodePatch(
     execute {
         QuickActionsElementSyntheticFingerprint.let {
             it.method.apply {
-                val checkCastIndex = it.instructionMatches[1].index
+                val checkCastIndex = it.instructionMatches.last().index
                 val insertRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
 
                 addInstruction(
