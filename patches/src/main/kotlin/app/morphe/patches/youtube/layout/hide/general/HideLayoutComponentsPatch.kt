@@ -778,8 +778,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 )
                 val register = getInstruction<TwoRegisterInstruction>(objectIndex).registerA
                 val insertIndex = objectIndex + 1
-//                val objectReference =
-//                    getInstruction<ReferenceInstruction>(objectIndex).reference
+//              val objectReference = etInstruction<ReferenceInstruction>(objectIndex).reference
                 val free = findFreeRegister(insertIndex, register)
 
                 addInstructionsWithLabels(
@@ -853,5 +852,31 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 )
             }
         }
+
+        // endregion
+
+        // region hide live chat emoji button
+
+        ThumbnailAndEmojiPickerFingerprint.let {
+            it.method.injectHideViewCall(
+                it.instructionMatches.last().index,
+                COMMENTS_FILTER,
+                "hideThumbnailAndEmojiPicker"
+            )
+        }
+
+        // endregion
+
+        // region hide live chat thanks button
+
+        InlineExtraButtonsFingerprint.let {
+            it.method.injectHideViewCall(
+                it.instructionMatches.last().index,
+                LAYOUT_COMPONENTS_FILTER,
+                "hideInlineExtraButtons"
+            )
+        }
+
+        // endregion
     }
 }

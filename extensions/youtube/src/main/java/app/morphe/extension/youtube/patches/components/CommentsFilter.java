@@ -242,4 +242,34 @@ public class CommentsFilter extends Filter {
             Logger.printException(() -> "Failed to sanitize comment category bar", ex);
         }
     }
+
+    /**
+     * Injection point.
+     */
+    public static void hideThumbnailAndEmojiPicker(View view) {
+        if (Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS.get() && view != null) {
+            android.view.ViewGroup.LayoutParams lp = view.getLayoutParams();
+            if (lp != null) {
+                lp.width = 0;
+                lp.height = 0;
+                view.setLayoutParams(lp);
+            }
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideInlineExtraButtons(View view) {
+        if (Settings.HIDE_COMMENTS_THANKS_BUTTON.get() && view != null) {
+            android.view.ViewGroup.LayoutParams lp = view.getLayoutParams();
+            if (lp != null) {
+                lp.width = 0;
+                lp.height = 0;
+                view.setLayoutParams(lp);
+            }
+            view.setVisibility(View.GONE);
+        }
+    }
 }
