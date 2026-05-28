@@ -857,11 +857,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide live chat emoji button
 
-        EmojiPickerIconFingerprint.let {
+        ThumbnailAndEmojiPickerContainerFingerprint.let {
             it.method.injectHideViewCall(
                 it.instructionMatches.last().index,
                 COMMENTS_FILTER,
-                "hideEmojiPickerIcon"
+                "hideLiveChatEmojiButton"
             )
         }
 
@@ -869,11 +869,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide live chat thanks button
 
-        InlineExtraButtonsFingerprint.let {
+        InlineExtraButtonsContainerFingerprint.let {
             it.method.injectHideViewCall(
                 it.instructionMatches.last().index,
                 COMMENTS_FILTER,
-                "hideInlineExtraButtons"
+                "hideLiveChatThanksButton"
             )
         }
 

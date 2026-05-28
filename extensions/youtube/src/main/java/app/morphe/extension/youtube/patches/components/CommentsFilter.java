@@ -246,7 +246,7 @@ public class CommentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideEmojiPickerIcon(View view) {
+    public static void hideLiveChatEmojiButton(View view) {
         if (Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS.get() && view != null) {
             android.view.ViewGroup.LayoutParams lp = view.getLayoutParams();
             if (lp != null) {
@@ -261,7 +261,7 @@ public class CommentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideInlineExtraButtons(View view) {
+    public static void hideLiveChatThanksButton(View view) {
         if (Settings.HIDE_COMMENTS_THANKS_BUTTON.get() && view != null) {
             android.view.ViewGroup.LayoutParams lp = view.getLayoutParams();
             if (lp != null) {
