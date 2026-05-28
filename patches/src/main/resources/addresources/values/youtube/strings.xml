@@ -129,7 +129,6 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
     <string name="morphe_hide_join_membership_button_title">Hide Join button</string>
-    <string name="morphe_hide_live_chat_donators_bar_title">Hide live chat donators bar</string>
     <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
     <string name="morphe_hide_live_chat_replay_button_title">Hide \'Live chat replay\' button</string>
@@ -215,6 +214,7 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_comments_create_a_short_button_title">Hide \'Create a Short\' button</string>
     <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">Hide Emoji and Timestamp buttons</string>
     <string name="morphe_hide_comments_info_button_title">Hide Info button</string>
+    <string name="morphe_hide_comments_live_chat_donators_bar_title">Hide live chat donators bar</string>
     <string name="morphe_hide_comments_preview_comment_title">Hide preview comment</string>
     <string name="morphe_hide_comments_preview_comment_summary">Hides the comment preview under video before opening the full comments section</string>
     <string name="morphe_hide_comments_thanks_button_title">Hide Thanks button</string>

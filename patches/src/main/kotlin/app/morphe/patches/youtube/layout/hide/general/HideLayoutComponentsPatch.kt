@@ -154,6 +154,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     SwitchPreference("morphe_hide_comments_create_a_short_button", summaryKey = null),
                     SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons", summaryKey = null),
                     SwitchPreference("morphe_hide_comments_info_button", summaryKey = null),
+                    SwitchPreference("morphe_hide_comments_live_chat_donators_bar", summaryKey = null),
                     SwitchPreference("morphe_hide_comments_preview_comment"),
                     SwitchPreference("morphe_hide_comments_thanks_button", summaryKey = null),
                     SwitchPreference("morphe_sanitize_comments_category_bar"),
@@ -166,7 +167,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_emergency_box", summaryKey = null),
             SwitchPreference("morphe_hide_info_panels"),
             SwitchPreference("morphe_hide_join_membership_button", summaryKey = null),
-            SwitchPreference("morphe_hide_live_chat_donators_bar", summaryKey = null),
             SwitchPreference("morphe_hide_live_chat_replay_button"),
             SwitchPreference("morphe_hide_medical_panels", summaryKey = null),
             SwitchPreference("morphe_hide_subscribers_community_guidelines", summaryKey = null),
@@ -484,7 +484,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         LiveChatDonatorsBarFingerprint.let {
             it.method.injectHideViewCall(
                 it.instructionMatches.last().index,
-                LAYOUT_COMPONENTS_FILTER,
+                COMMENTS_FILTER,
                 "hideLiveChatDonatorsBar"
             )
         }

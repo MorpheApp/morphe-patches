@@ -12,7 +12,9 @@ package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.Utils.getFilterStrings;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -241,6 +243,26 @@ public class CommentsFilter extends Filter {
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to sanitize comment category bar", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatDonatorsBar(View view) {
+        if (view == null || !Settings.HIDE_COMMENTS_LIVE_CHAT_DONATORS_BAR.get()) {
+            return;
+        }
+
+        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                if (view.getParent() instanceof RecyclerView shelfContainerRecycleView) {
+                    shelfContainerRecycleView.setVisibility(RecyclerView.GONE);
+                }
+            }
+        });
     }
 
     /**
