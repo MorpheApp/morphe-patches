@@ -218,12 +218,19 @@ public class SponsorBlockViewController {
         if (skipHighlight != null) {
             setGenericViewVisibility(skipHighlightButtonRef.get(), !newSegmentLayoutVisible);
         }
-        setGenericViewVisibility(newSegmentLayout, newSegmentLayoutVisible);
+        if (newSegmentLayoutVisible && canShowViewElements) {
+            newSegmentLayout.showWithAnimation();
+        } else {
+            newSegmentLayout.hideWithAnimation();
+        }
     }
 
     public static void hideNewSegmentLayout() {
         newSegmentLayoutVisible = false;
-        setGenericViewVisibility(newSegmentLayoutRef.get(), false);
+        NewSegmentLayout layout = newSegmentLayoutRef.get();
+        if (layout != null && layout.getVisibility() == View.VISIBLE) {
+            layout.hideWithAnimation();
+        }
     }
 
     private static void setGenericViewVisibility(@Nullable View view, boolean visible) {

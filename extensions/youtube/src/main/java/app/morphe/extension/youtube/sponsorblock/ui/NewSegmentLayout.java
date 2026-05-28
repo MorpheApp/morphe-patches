@@ -31,6 +31,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.ViewAnimations;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
@@ -292,6 +293,14 @@ public final class NewSegmentLayout extends FrameLayout {
         Settings.SB_NEW_SEGMENT_PANEL_POSITION.save(
                 (long) Float.floatToIntBits(getTranslationX() / parent.getWidth()) << 32
                         | (Float.floatToIntBits(getTranslationY() / parent.getHeight()) & 0xFFFFFFFFL));
+    }
+
+    void showWithAnimation() {
+        ViewAnimations.fadeIn(this, 100);
+    }
+
+    void hideWithAnimation() {
+        ViewAnimations.fadeOut(this, 100);
     }
 
     @FunctionalInterface
