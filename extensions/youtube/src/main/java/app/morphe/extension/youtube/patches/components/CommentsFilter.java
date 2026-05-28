@@ -246,7 +246,7 @@ public class CommentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideThumbnailAndEmojiPicker(View view) {
+    public static void hideEmojiPickerIcon(View view) {
         if (Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS.get() && view != null) {
             android.view.ViewGroup.LayoutParams lp = view.getLayoutParams();
             if (lp != null) {

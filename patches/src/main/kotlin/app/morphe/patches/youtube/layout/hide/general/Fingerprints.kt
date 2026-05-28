@@ -465,14 +465,15 @@ internal object CreateSearchSuggestionsFingerprint : Fingerprint(
     strings = listOf("ss_rds")
 )
 
-internal object ThumbnailAndEmojiPickerFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Landroid/view/View;",
+internal object EmojiPickerIconFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    returnType = "Landroid/widget/ImageView;",
     parameters = listOf(),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "thumbnail_and_emoji_picker_container"),
+        resourceLiteral(ResourceType.ID, "emoji_picker_icon"),
         methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById"
         ),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
     )
@@ -483,7 +484,7 @@ internal object InlineExtraButtonsFingerprint : Fingerprint(
     returnType = "Landroid/view/ViewGroup;",
     parameters = listOf(),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "inline_extra_buttons"),
+        resourceLiteral(ResourceType.ID, "inline_extra_buttons_container"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             name = "findViewById"
