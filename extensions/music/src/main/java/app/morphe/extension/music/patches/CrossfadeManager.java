@@ -2232,10 +2232,13 @@ public class CrossfadeManager {
         activityRunning = false;
         // Do not stop the auto-advance monitor here — crossfade should continue
         // even when the screen locks or the app is minimised (#1311).
-        if (crossfadeInProgress) {
-            logInfo("onActivityStop: aborting crossfade");
-            abortCrossfadeNow();
-        }
+        //
+        // Do not abort an in-progress crossfade either — YTM is a music app with
+        // a foreground service, so playback continues after onStop. The fade
+        // animations keep ticking on mainHandler and complete naturally in the
+        // background. Aborting here caused the outgoing track to be released
+        // mid-fade when the user pressed the power button during a crossfade
+        // (#1442).
     }
 
     public static void onActivityStart() {
