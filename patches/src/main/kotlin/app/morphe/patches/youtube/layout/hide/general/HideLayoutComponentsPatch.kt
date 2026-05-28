@@ -778,7 +778,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 )
                 val register = getInstruction<TwoRegisterInstruction>(objectIndex).registerA
                 val insertIndex = objectIndex + 1
-//              val objectReference = etInstruction<ReferenceInstruction>(objectIndex).reference
+//              val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
                 val free = findFreeRegister(insertIndex, register)
 
                 addInstructionsWithLabels(
@@ -872,7 +872,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         InlineExtraButtonsFingerprint.let {
             it.method.injectHideViewCall(
                 it.instructionMatches.last().index,
-                LAYOUT_COMPONENTS_FILTER,
+                COMMENTS_FILTER,
                 "hideInlineExtraButtons"
             )
         }
