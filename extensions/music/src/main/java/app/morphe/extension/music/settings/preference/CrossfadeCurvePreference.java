@@ -1,5 +1,7 @@
 package app.morphe.extension.music.settings.preference;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -230,19 +232,19 @@ public final class CrossfadeCurvePreference extends Preference
             canvas.drawCircle(legendX, legendY, dp(4), outPaint);
             outPaint.setStyle(Paint.Style.STROKE);
             textPaint.setTextAlign(Paint.Align.LEFT);
-            canvas.drawText("Outgoing", legendX + dp(8), legendY + dp(3.5f), textPaint);
+            canvas.drawText(str("morphe_music_crossfade_curve_preview_outgoing"), legendX + dp(8), legendY + dp(3.5f), textPaint);
 
             float inLegendX = legendX + dp(80);
             inPaint.setStyle(Paint.Style.FILL);
             canvas.drawCircle(inLegendX, legendY, dp(4), inPaint);
             inPaint.setStyle(Paint.Style.STROKE);
-            canvas.drawText("Incoming", inLegendX + dp(8), legendY + dp(3.5f), textPaint);
+            canvas.drawText(str("morphe_music_crossfade_curve_preview_incoming"), inLegendX + dp(8), legendY + dp(3.5f), textPaint);
 
             String curveName = switch (curve) {
-                case EASE_OUT_CUBIC -> "Subtle hold";
-                case EASE_OUT_QUAD -> "Gentle ease";
-                case SMOOTHSTEP -> "Smooth S-curve";
-                default -> "Equal power";
+                case EASE_OUT_CUBIC -> str("morphe_music_crossfade_curve_entry_ease_out_cubic");
+                case EASE_OUT_QUAD -> str("morphe_music_crossfade_curve_entry_ease_out_quad");
+                case SMOOTHSTEP -> str("morphe_music_crossfade_curve_entry_smoothstep");
+                default -> str("morphe_music_crossfade_curve_entry_equal_power");
             };
             textPaint.setTextAlign(Paint.Align.RIGHT);
             canvas.drawText(curveName, w - padR, legendY + dp(3.5f), textPaint);
