@@ -270,11 +270,12 @@ public class CommentsFilter extends Filter {
      */
     public static void hideLiveChatEmojiButton(View view) {
         if (Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS.get() && view != null) {
+            view.setEnabled(false);
+            view.setClickable(false);
+            view.setFocusable(false);
             if (view instanceof android.view.ViewGroup vg) {
                 for (int i = 0; i < vg.getChildCount(); i++) {
-                    View child = vg.getChildAt(i);
-                    child.setVisibility(View.INVISIBLE);
-                    child.setClickable(false);
+                    vg.getChildAt(i).setVisibility(View.INVISIBLE);
                 }
             }
         }
