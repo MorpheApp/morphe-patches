@@ -1,3 +1,9 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
 package app.morphe.patches.music.interaction.crossfade
 
 import app.morphe.patcher.Fingerprint
@@ -95,4 +101,11 @@ internal object ListenerWrapperClassFingerprint : Fingerprint(
             classDef.fields.any { it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;" } &&
             classDef.fields.count() in 2..6
     },
+)
+
+/** MedialibPlayer loadVideo method (atzq.o). Scoped to StopVideoFingerprint class. */
+internal object LoadVideoFingerprint : Fingerprint(
+    classFingerprint = StopVideoFingerprint,
+    returnType = "V",
+    strings = listOf("MedialibPlayer.loadVideo("),
 )

@@ -68,6 +68,7 @@ Second \"item\" text"</string>
     <string name="morphe_crossfade_duration_8000ms">8 seconds</string>
     <string name="morphe_crossfade_duration_9000ms">9 seconds</string>
     <string name="morphe_crossfade_duration_10000ms">10 seconds</string>
+    <string name="morphe_crossfade_duration_12000ms">12 seconds</string>
     <string name="morphe_music_crossfade_on_skip_title">Crossfade on manual skip</string>
     <string name="morphe_music_crossfade_on_skip_summary">Applies the crossfade effect when you manually skip to the next track</string>
     <string name="morphe_music_crossfade_on_auto_advance_title">Crossfade on auto-advance</string>
@@ -78,9 +79,7 @@ Second \"item\" text"</string>
     <string name="morphe_music_crossfade_resumed_toast">Crossfade resumed</string>
     <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mode is not available while crossfade is enabled</string>
     <string name="morphe_music_crossfade_about_title">About</string>
-    <string name="morphe_music_crossfade_about_summary">"Crossfade is available with YouTube Music 8.x
-
-Long press the shuffle button to disable/enable
+    <string name="morphe_music_crossfade_about_summary">"Long press the shuffle button to disable/enable
 
 Feature implementation by VazerOG"</string>
 

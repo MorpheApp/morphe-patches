@@ -1,3 +1,9 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
 package app.morphe.patches.music.interaction.crossfade
 
 import app.morphe.patcher.Fingerprint
@@ -223,8 +229,7 @@ val crossfadePatch = bytecodePatch(
         //  Hook injection                                                 //
         // -------------------------------------------------------------- //
 
-        // On 9.x, inject sput-boolean to set CrossfadeManager.is9x = true.
-        // Prepend to StopVideoFingerprint so it's set before any crossfade logic runs.
+        // On 9.x, set CrossfadeManager.is9x = true before any crossfade logic runs.
         // sput-boolean is idempotent — safe to execute on every stopVideo call.
         val is9xSmali = if (is_9_00_or_greater) {
             """
@@ -286,6 +291,16 @@ val crossfadePatch = bytecodePatch(
             0,
             """
                 invoke-static { p0 }, $EXTENSION_CLASS->onPlayVideo(Ljava/lang/Object;)V
+            """,
+        )
+
+        // On 9.20.52, atzq.loadVideo has enough locals that `p0` resolves past v15,
+        // exceeding invoke-static's 4-bit register limit. Use invoke-static/range
+        // which supports 16-bit registers so the injection holds on any version.
+        LoadVideoFingerprint.method.addInstructions(
+            0,
+            """
+                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onBeforeLoadVideo(Ljava/lang/Object;)V
             """,
         )
 
@@ -556,8 +571,12 @@ val crossfadePatch = bytecodePatch(
                 // crh.h: the per-player Lcgd event dispatch set.
                 // coordinator_cwh is registered here; we need to remove it before releasing the
                 // outgoing player so its release-time isPlayingChanged(false) doesn't reach
-                // MediaSession via cwh.b. Identify Lcgd by: non-static field on crh whose type
-                // has both a(Object)V (add) and e(Object)V (remove) methods.
+                // MediaSession via cwh.b.
+                //
+                // Identify Lcgd structurally (avoid relying on R8-obfuscated method names
+                // like "a" / "e" which can drift across major YTM versions): the class wraps a
+                // CopyOnWriteArraySet and has at least two methods of signature (Object):V —
+                // one adds, the other removes.  This is the listener-set wrapper pattern.
                 eventDispatchField9x = exoPlayerImplClass.fields.firstOrNull { f ->
                     !AccessFlags.STATIC.isSet(f.accessFlags)
                         && f.type != lctrType
@@ -565,15 +584,13 @@ val crossfadePatch = bytecodePatch(
                         && f.type != EXO_PLAYER_TYPE
                         && try {
                             val cls = classDefBy(f.type)
-                            cls.methods.any { m ->
-                                m.name == "a" && m.parameterTypes.size == 1
-                                    && m.parameterTypes[0].toString() == "Ljava/lang/Object;"
-                                    && m.returnType == "V"
-                            } && cls.methods.any { m ->
-                                m.name == "e" && m.parameterTypes.size == 1
+                            val hasCopyOnWriteSet = cls.fields.any { it.type == "Ljava/util/concurrent/CopyOnWriteArraySet;" }
+                            val objectVoidMethodCount = cls.methods.count { m ->
+                                m.parameterTypes.size == 1
                                     && m.parameterTypes[0].toString() == "Ljava/lang/Object;"
                                     && m.returnType == "V"
                             }
+                            hasCopyOnWriteSet && objectVoidMethodCount >= 2
                         } catch (_: Exception) { false }
                 }.also { f ->
                     if (f == null) log.warning("9.x: crh.h (Lcgd event dispatch) not found — detach-cwh fix skipped")
@@ -833,6 +850,12 @@ val crossfadePatch = bytecodePatch(
 
         // Listener element class (cat) - stored inside cau's CopyOnWriteArraySet.
         // Found by looking for NEW_INSTANCE instructions in cau's methods.
+        //
+        // Match the element class structurally (avoid R8 name "a"): any class allocated
+        // via NEW_INSTANCE inside cau's methods that has an Object-typed field — that
+        // field holds the actual listener reference.  Use the FIRST Object-typed field
+        // (typically there's only one; if there are more, the first is the listener slot
+        // because R8 puts the constructor-assigned field first).
         val cauClass = classDefBy(listenerWrapperField.type)
         val listenerElementType = cauClass.methods
             .filter { it.name != "<clinit>" }
@@ -846,12 +869,12 @@ val crossfadePatch = bytecodePatch(
             .distinct()
             .first { type ->
                 try {
-                    classDefBy(type).fields.any { it.name == "a" && it.type == "Ljava/lang/Object;" }
+                    classDefBy(type).fields.any { it.type == "Ljava/lang/Object;" }
                 } catch (_: Exception) { false }
             }
         val listenerElementClass = mutableClassDefBy(listenerElementType)
         val listenerElementField = listenerElementClass.fields.first {
-            it.name == "a" && it.type == "Ljava/lang/Object;"
+            it.type == "Ljava/lang/Object;"
         }
 
         // -------------------------------------------------------------- //
@@ -897,6 +920,33 @@ val crossfadePatch = bytecodePatch(
         coordinatorClass.addFieldGetter("patch_getSharedCallback", sharedCallbackFieldRef)
 
         coordinatorClass.addFieldGetter("patch_getVideoSurface", videoSurfaceField)
+
+        // patch_playNextInQueueDirect: calls the coordinator's own playNextInQueue (auih.y()V)
+        // directly via invoke-virtual. This is required because the auto-advance monitor and
+        // onBeforePlayNext re-invoke cannot use atad.patch_playNextInQueue() (atzq.p()V) —
+        // that method calls invoke-interface Lausd->y()V, but auih does NOT implement Lausd,
+        // so the call never reaches the hooked auih.y()V and onBeforePlayNext never fires.
+        val coordinatorPlayNextMethod = PlayNextInQueueFingerprint.method
+        coordinatorClass.methods.add(
+            ImmutableMethod(
+                coordinatorType,
+                "patch_playNextInQueueDirect",
+                listOf(),
+                "V",
+                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                null,
+                null,
+                MutableMethodImplementation(1)
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        invoke-virtual { p0 }, $coordinatorPlayNextMethod
+                        return-void
+                    """
+                )
+            }
+        )
 
         // --- Coordinator player-transition bridge (9.x UI binding fix) ---
         // Find the coordinator's internal method that properly handles player transitions.
@@ -1283,8 +1333,28 @@ val crossfadePatch = bytecodePatch(
         // ExoPlayer's crh.h:Lcgd event dispatch set. Called on the OUTGOING player before
         // it is released so its release-time isPlayingChanged(false) doesn't reach MediaSession
         // via cwh.b (the boolean is captured at source and never re-queried from cwh.g).
+        //
+        // The "remove" method on Lcgd is found by bytecode inspection (not by hardcoded
+        // name "e"): among the (Object):V methods on Lcgd, the remove method is the one
+        // whose body invokes CopyOnWriteArraySet.remove() on the wrapped set.  This makes
+        // the patch resilient to R8 renaming "e" to something else across YTM versions.
         if (is_9_00_or_greater && eventDispatchField9x != null && exoPlayerCwhField9x != null) {
             val cgdType = eventDispatchField9x!!.type
+            val cgdClass = classDefBy(cgdType)
+            val cgdRemoveMethodName = cgdClass.methods.firstOrNull { m ->
+                m.parameterTypes.size == 1
+                    && m.parameterTypes[0].toString() == "Ljava/lang/Object;"
+                    && m.returnType == "V"
+                    && m.implementation?.instructions
+                        ?.filterIsInstance<ReferenceInstruction>()
+                        ?.any {
+                            val ref = it.reference.toString()
+                            ref.contains("Ljava/util/concurrent/CopyOnWriteArraySet;->remove(")
+                        } == true
+            }?.name ?: "e"  // fallback to historical name if bytecode scan fails
+
+            log.fine { "9.x: Lcgd remove method resolved → $cgdType->$cgdRemoveMethodName(Object):V" }
+
             exoPlayerImplClass.methods.add(
                 ImmutableMethod(
                     exoPlayerImplClass.type, "patch_detachCwhFromEventDispatch",
@@ -1298,13 +1368,69 @@ val crossfadePatch = bytecodePatch(
                         """
                             iget-object v0, p0, $eventDispatchField9x
                             iget-object v1, p0, $exoPlayerCwhField9x
-                            invoke-virtual { v0, v1 }, $cgdType->e(Ljava/lang/Object;)V
+                            invoke-virtual { v0, v1 }, $cgdType->$cgdRemoveMethodName(Ljava/lang/Object;)V
                             return-void
                         """
                     )
                 }
             )
             log.fine { "9.x: injected patch_detachCwhFromEventDispatch on ${exoPlayerImplClass.type} (crh.h=${eventDispatchField9x}, cwh=${exoPlayerCwhField9x})" }
+        }
+
+        // 9.x only: suppress cwh.U() during crossfade releases.
+        //
+        // Root cause of the pause/seek UI regression:
+        //   crh.P() (ExoPlayer.release()) calls crh.j.U()V on the SHARED singleton cwh.
+        //   cwh.U() posts a Lcvu Runnable to cwh.h (the handler).
+        //   cvu.run() then calls cwh.b.d() — releasing the Lcgd that holds cwh's Lctu
+        //   listeners, including auih.k (the MediaSession listener).
+        //   cgd.d() calls CopyOnWriteArraySet.clear() AND sets cgd.i = true (prevents
+        //   future adds). All listeners are gone; MediaSession can no longer receive any
+        //   events (isPlayingChanged, onPositionDiscontinuity, etc.).
+        //
+        // In normal (non-crossfade) operation there is only one ExoPlayer, so destroying
+        // cwh.b on release is fine — there is no subsequent player to receive events.
+        // In crossfade, two ExoPlayer instances share the SAME cwh singleton. Releasing
+        // the old player must NOT destroy the shared listener infrastructure used by
+        // the new player.
+        //
+        // Fix: inject an early-return at the top of cwh.U()V that checks the static
+        // CrossfadeManager.suppressCwhU flag. releasePlayer() sets it true before
+        // calling patch_release() and false in a finally block — synchronously blocking
+        // the Runnable from ever being posted, leaving cwh.b intact.
+        if (is_9_00_or_greater && eventDispatchField9x != null && forwardingPlayerField9x != null) {
+            val cgdType = eventDispatchField9x!!.type
+            val cwhLctrType = forwardingPlayerField9x!!.type  // = Lctr interface type
+            try {
+                // Find cwh.U()V: the method named "U" with no params/void return on the concrete
+                // class that (a) implements the Lctr interface and (b) has a non-static Lcgd field.
+                // cwh.U() posts a Lcvu Runnable that calls cwh.b.d() destroying the shared
+                // listener set. Inject an early-return guard that checks suppressCwhU.
+                Fingerprint(
+                    name = "U",
+                    returnType = "V",
+                    parameters = emptyList(),
+                    custom = { _, classDef ->
+                        classDef != null &&
+                            cwhLctrType in classDef.interfaces &&
+                            classDef.fields.any { f ->
+                                f.type == cgdType && !AccessFlags.STATIC.isSet(f.accessFlags)
+                            }
+                    }
+                ).method.addInstructions(
+                    0,
+                    """
+                        sget-boolean v0, $EXTENSION_CLASS->suppressCwhU:Z
+                        if-eqz v0, :no_suppress
+                        return-void
+                        :no_suppress
+                        nop
+                    """,
+                )
+                log.fine { "9.x: injected suppressCwhU into cwh.U()V (lctrType=$cwhLctrType, cgdType=$cgdType)" }
+            } catch (e: Exception) {
+                log.warning("9.x: suppressCwhU injection failed: ${e.message}")
+            }
         }
 
         // --- SessionAccess on atgd ---
@@ -1390,6 +1516,54 @@ val crossfadePatch = bytecodePatch(
                     0,
                     """
                         invoke-virtual { p0 }, $playNextInQueueMethod
+                        return-void
+                    """
+                )
+            }
+        )
+        // patch_forceStopVideo: calls atad.stopVideo(REASON_DIRECTOR_RESET=5) through the
+        // hooked method. Used by the 8.x and 9.x auto-advance monitor to trigger early crossfade setup.
+        medialibPlayerClass.methods.add(
+            ImmutableMethod(
+                medialibPlayerClass.type,
+                "patch_forceStopVideo",
+                listOf(),
+                "V",
+                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                null,
+                null,
+                MutableMethodImplementation(2)
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        const/4 v0, 0x5
+                        invoke-virtual { p0, v0 }, ${StopVideoFingerprint.method}
+                        return-void
+                    """
+                )
+            }
+        )
+        // patch_forceLoadVideo: calls atad.stopVideo(REASON_STOP=1) through the hooked method.
+        // On 9.x the monitor calls this after patch_forceStopVideo to drive the loadVideo
+        // chain on the freshly-swapped new player (since stopVideo(5) alone does not call
+        // stopVideo(1), and patch_playNextInQueueDirect defers until natural track end).
+        medialibPlayerClass.methods.add(
+            ImmutableMethod(
+                medialibPlayerClass.type,
+                "patch_forceLoadVideo",
+                listOf(),
+                "V",
+                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                null,
+                null,
+                MutableMethodImplementation(2)
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        const/4 v0, 0x1
+                        invoke-virtual { p0, v0 }, ${StopVideoFingerprint.method}
                         return-void
                     """
                 )
@@ -1680,6 +1854,50 @@ val crossfadePatch = bytecodePatch(
                 )
             }
         )
+
+        // patch_restoreVideoMode (BROADCAST variant) — used when the user pauses crossfade
+        // to resync YTM's subscribers (nmi etc.) that may have stale cached state from
+        // prior silent toggles.  Calling the broadcast setStateMethod fires chxp.mo6606iF
+        // which iterates subscribers; subscribers reconcile, and the next user-initiated
+        // video toggle works properly (no black screen from a no-op short-circuit because
+        // subscribers thought they were already in the target state).
+        videoToggleClass.methods.add(
+            ImmutableMethod(
+                videoToggleClass.type,
+                "patch_restoreVideoMode",
+                listOf(),
+                "V",
+                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                null,
+                null,
+                MutableMethodImplementation(3)
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        iget-object v0, p0, $videoToggleClassStateProviderField
+                        sget-object v1, $omvPreferredField
+                        invoke-virtual { v0, v1 }, $setStateMethod
+                        return-void
+                    """
+                )
+            }
+        )
+
+        // Hook nba constructor so we capture the instance immediately on creation.
+        // Songs loaded from the main feed never trigger shouldBlockVideoToggle (which
+        // only fires on an explicit audio/video toggle interaction), leaving lastNbaRef
+        // null for the entire session. The constructor hook ensures onNbaCreated() runs
+        // as soon as nba is instantiated — before any crossfade is attempted.
+        videoToggleClass.methods
+            .filter { AccessFlags.CONSTRUCTOR.isSet(it.accessFlags) && it.name == "<init>" }
+            .maxByOrNull { it.implementation?.instructions?.size ?: 0 }
+            ?.addInstructions(
+                1, // position 1 = after super.<init> call
+                """
+                    invoke-static { p0 }, $EXTENSION_CLASS->onNbaCreated(Ljava/lang/Object;)V
+                """,
+            ) ?: error("nba <init> not found in ${videoToggleClass.type}")
 
         // --- DelegateAccess on atux (delegate chain base class) ---
         delegateBaseClass.apply {
