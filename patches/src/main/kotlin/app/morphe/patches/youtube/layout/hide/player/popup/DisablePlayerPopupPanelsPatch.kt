@@ -26,7 +26,7 @@ val disablePlayerPopupPanelsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_disable_player_popup_panels"),
+            SwitchPreference("morphe_disable_player_popup_panels", summary = true),
         )
 
         EngagementPanelControllerFingerprint.method.addInstructionsWithLabels(

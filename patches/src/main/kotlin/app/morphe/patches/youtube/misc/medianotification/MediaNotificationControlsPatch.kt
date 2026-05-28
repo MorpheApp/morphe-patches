@@ -32,8 +32,8 @@ val mediaNotificationControlsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_notification_media_screen",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_notification_media_prev_next"),
-                    SwitchPreference("morphe_disable_notification_media_seekbar"),
+                    SwitchPreference("morphe_hide_notification_media_prev_next", summary = true),
+                    SwitchPreference("morphe_disable_notification_media_seekbar", summary = true),
                 )
             )
         )

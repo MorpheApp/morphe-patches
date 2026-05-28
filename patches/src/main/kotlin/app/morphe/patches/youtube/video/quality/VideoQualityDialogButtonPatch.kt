@@ -50,7 +50,7 @@ val videoQualityDialogButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_video_quality_dialog_button")
+            SwitchPreference("morphe_video_quality_dialog_button", summary = true)
         )
 
         addPlayerBottomButton(EXTENSION_BUTTON)

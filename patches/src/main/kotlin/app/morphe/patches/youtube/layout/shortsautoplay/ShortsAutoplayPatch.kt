@@ -46,11 +46,11 @@ val shortsAutoplayPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("morphe_shorts_autoplay"),
+            SwitchPreference("morphe_shorts_autoplay", summary = true),
         )
 
         PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("morphe_shorts_autoplay_background"),
+            SwitchPreference("morphe_shorts_autoplay_background", summary = true),
         )
 
         // Main activity is used to check if app is in pip mode.

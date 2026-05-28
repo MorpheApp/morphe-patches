@@ -66,10 +66,10 @@ val alternativeThumbnailsPatch = bytecodePatch(
                 tag = "app.morphe.extension.youtube.settings.preference.AlternativeThumbnailsAboutDeArrowPreference",
                 selectable = true,
             ),
-            SwitchPreference("morphe_alt_thumbnail_dearrow_connection_toast"),
+            SwitchPreference("morphe_alt_thumbnail_dearrow_connection_toast", summary = true),
             TextPreference("morphe_alt_thumbnail_dearrow_api_url"),
             NonInteractivePreference("morphe_alt_thumbnail_stills_about"),
-            SwitchPreference("morphe_alt_thumbnail_stills_fast"),
+            SwitchPreference("morphe_alt_thumbnail_stills_fast", summary = true),
             ListPreference("morphe_alt_thumbnail_stills_time"),
         )
 

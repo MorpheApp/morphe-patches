@@ -612,7 +612,7 @@ fun gmsCoreSupportResourcePatch(
                     "$GMS_CORE_VENDOR_GROUP_ID.android.gms"
                 }
             ),
-            SwitchPreference("morphe_gms_core_battery_optimization_dialog", summaryKey = null)
+            SwitchPreference("morphe_gms_core_battery_optimization_dialog")
         )
 
         executeBlock()

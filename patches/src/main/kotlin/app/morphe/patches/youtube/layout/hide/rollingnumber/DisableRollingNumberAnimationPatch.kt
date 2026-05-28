@@ -29,7 +29,7 @@ val disableRollingNumberAnimationPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_disable_rolling_number_animations"),
+            SwitchPreference("morphe_disable_rolling_number_animations", summary = true),
         )
 
         // Animations are disabled by preventing an Image from being applied to the text span,

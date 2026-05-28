@@ -27,7 +27,7 @@ val bypassImageRegionRestrictionsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_bypass_image_region_restrictions"),
+            SwitchPreference("morphe_bypass_image_region_restrictions", summary = true),
         )
 
         // A priority hook is not needed, as the image URLs of interest are not modified

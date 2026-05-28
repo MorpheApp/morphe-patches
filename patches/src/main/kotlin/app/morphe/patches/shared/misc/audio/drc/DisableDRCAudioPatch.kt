@@ -36,7 +36,7 @@ internal fun disableDRCAudioPatch(
 
     execute {
         preferenceScreen.addPreferences(
-            SwitchPreference("morphe_disable_drc_audio", summaryKey = null)
+            SwitchPreference("morphe_disable_drc_audio")
         )
 
         val compressionRatioInstructionMatches = CompressionRatioFingerprint.instructionMatches

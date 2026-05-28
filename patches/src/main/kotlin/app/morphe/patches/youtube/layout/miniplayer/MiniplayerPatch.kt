@@ -72,13 +72,13 @@ val miniplayerPatch = bytecodePatch(
                 )
             }
 
-        preferences += SwitchPreference("morphe_miniplayer_disable_resuming")
-        preferences += SwitchPreference("morphe_miniplayer_disable_drag_and_drop")
-        preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_drag")
-        preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners", summaryKey = null)
-        preferences += SwitchPreference("morphe_miniplayer_hide_subtext", summaryKey = null)
-        preferences += SwitchPreference("morphe_miniplayer_hide_overlay_buttons", summaryKey = null)
-        preferences += SwitchPreference("morphe_miniplayer_hide_rewind_forward", summaryKey = null)
+        preferences += SwitchPreference("morphe_miniplayer_disable_resuming", summary = true)
+        preferences += SwitchPreference("morphe_miniplayer_disable_drag_and_drop", summary = true)
+        preferences += SwitchPreference("morphe_miniplayer_disable_horizontal_drag", summary = true)
+        preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners")
+        preferences += SwitchPreference("morphe_miniplayer_hide_subtext")
+        preferences += SwitchPreference("morphe_miniplayer_hide_overlay_buttons")
+        preferences += SwitchPreference("morphe_miniplayer_hide_rewind_forward")
         preferences += TextPreference("morphe_miniplayer_width_dip", inputType = InputType.NUMBER)
         preferences += NonInteractivePreference(
             key = "morphe_miniplayer_opacity",

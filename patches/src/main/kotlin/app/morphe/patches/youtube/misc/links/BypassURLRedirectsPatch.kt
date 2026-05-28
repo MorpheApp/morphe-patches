@@ -27,7 +27,7 @@ val bypassURLRedirectsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_bypass_url_redirects"),
+            SwitchPreference("morphe_bypass_url_redirects", summary = true),
         )
 
         arrayOf(

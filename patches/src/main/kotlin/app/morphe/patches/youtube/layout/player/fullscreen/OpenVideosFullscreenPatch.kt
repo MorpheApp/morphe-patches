@@ -21,7 +21,7 @@ val openVideosFullscreenPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_open_videos_fullscreen_portrait", summaryKey = null)
+            SwitchPreference("morphe_open_videos_fullscreen_portrait")
         )
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)

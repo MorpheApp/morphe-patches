@@ -24,7 +24,7 @@ val announcementsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_announcements", summaryKey = null),
+            SwitchPreference("morphe_announcements"),
         )
 
         YouTubeActivityOnCreateFingerprint.method.addInstruction(

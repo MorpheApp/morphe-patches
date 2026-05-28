@@ -31,7 +31,7 @@ val disableDoubleTapActionsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_disable_chapter_skip_double_tap"),
+            SwitchPreference("morphe_disable_chapter_skip_double_tap", summary = true),
         )
 
         val doubleTapInfoGetSeekSourceFingerprint = Fingerprint(

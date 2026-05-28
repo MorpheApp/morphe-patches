@@ -26,7 +26,7 @@ val disableSignInToTVPopupPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_disable_sign_in_to_tv_popup", summaryKey = null),
+            SwitchPreference("morphe_disable_sign_in_to_tv_popup"),
         )
 
         SignInToTVPopupFingerprint.method.addInstructionsWithLabels(

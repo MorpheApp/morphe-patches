@@ -8,15 +8,15 @@ package app.morphe.patches.shared.misc.settings.preference
  * @param icon The preference icon resource name.
  * @param layout Layout declaration.
  * @param tag The preference tag.
- * @param summaryKey The preference summary key.
+ * @param summary Whether to use a summary.
  */
 @Suppress("MemberVisibilityCanBePrivate")
 class SwitchPreference(
     key: String? = null,
     titleKey: String = "${key}_title",
-    summaryKey: String? = "${key}_summary",
+    summary: Boolean = false,
     tag: String = "SwitchPreference",
     icon: String? = null,
     iconBold: String? = null,
     layout: String? = null
-) : BasePreference(key, titleKey, summaryKey, icon, iconBold, layout, tag)
+) : BasePreference(key, titleKey, if (summary) "${key}_summary" else null, icon, iconBold, layout, tag)

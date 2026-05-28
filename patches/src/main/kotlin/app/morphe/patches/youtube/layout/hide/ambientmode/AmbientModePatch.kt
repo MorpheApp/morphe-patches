@@ -45,9 +45,9 @@ val ambientModePatch = bytecodePatch(
                 key = "morphe_ambient_mode_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_bypass_ambient_mode_restrictions"),
-                    SwitchPreference("morphe_disable_ambient_mode", summaryKey = null),
-                    SwitchPreference("morphe_disable_fullscreen_ambient_mode", summaryKey = null),
+                    SwitchPreference("morphe_bypass_ambient_mode_restrictions", summary = true),
+                    SwitchPreference("morphe_disable_ambient_mode"),
+                    SwitchPreference("morphe_disable_fullscreen_ambient_mode"),
                 )
             )
         )

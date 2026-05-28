@@ -36,7 +36,7 @@ internal fun hideFullscreenAdsPatch(
 
     execute {
         preferenceScreen.addPreferences(
-            SwitchPreference("morphe_hide_fullscreen_ads", summaryKey = null)
+            SwitchPreference("morphe_hide_fullscreen_ads")
         )
 
         // non-litho view, used in some old clients

@@ -53,7 +53,7 @@ val hideRelatedVideosPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_player_related_videos", summaryKey = null)
+            SwitchPreference("morphe_hide_player_related_videos")
         )
 
         val continuationsField = with (WatchNextResponseParserFingerprint) {

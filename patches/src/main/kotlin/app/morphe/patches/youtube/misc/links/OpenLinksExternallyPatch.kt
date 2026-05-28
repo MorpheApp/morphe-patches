@@ -21,7 +21,7 @@ val openLinksExternallyPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_external_browser"),
+            SwitchPreference("morphe_external_browser", summary = true),
         )
 
         Fingerprint(

@@ -70,7 +70,7 @@ val playAllButtonPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
-                    SwitchPreference("morphe_play_all_button"),
+                    SwitchPreference("morphe_play_all_button", summary = true),
                     ListPreference("morphe_play_all_button_type")
                 )
             )

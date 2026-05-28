@@ -321,11 +321,11 @@ val themePatch = baseThemePatch(
 
     executeBlock = {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_gradient_loading_screen")
+            SwitchPreference("morphe_gradient_loading_screen", summary = true)
         )
 
         val preferences = mutableSetOf(
-            SwitchPreference("morphe_seekbar_custom_color", summaryKey = null),
+            SwitchPreference("morphe_seekbar_custom_color"),
             TextPreference(
                 "morphe_seekbar_custom_color_primary",
                 tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
