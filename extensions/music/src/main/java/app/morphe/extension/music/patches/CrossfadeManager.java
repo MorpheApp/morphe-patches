@@ -11,7 +11,9 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
+import android.media.AudioPlaybackConfiguration;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -371,6 +373,14 @@ public class CrossfadeManager {
     private static volatile boolean outgoingFadePreStarted = false;
 
     /**
+     * #1549 cast-investigation placeholder. Currently unused — kept here for the
+     * future Option C fix (skip crossfade while an MDX session is active).  The
+     * flag is not yet wired up to MDX events; the v229 investigation captures
+     * cast disconnects via adb logcat correlation rather than direct hooks.
+     */
+    private static volatile boolean isCasting = false;
+
+    /**
      * Set at patch time via sput-boolean — true when running on YTM 9.x.
      * On 9.x, blocking stopVideo also blocks playVideo (same call chain),
      * so we use a deferred coordinator swap instead of blocking native.
@@ -545,6 +555,16 @@ public class CrossfadeManager {
 
     public static boolean onBeforeStopVideo(Object atadInstance, int reason) {
         if (!CROSSFADE_ENABLED) return false;
+
+        // #1549: skip crossfade when audio is routed to a cast/mirror receiver.
+        // Lets YTM's native gapless transition handle the song change so the
+        // cast layer doesn't see our coordinator-swap MediaSession flicker.
+        // Only gate when no crossfade is already in flight — if one is in
+        // progress (cast started mid-fade), let it complete normally.
+        if (!crossfadeInProgress && isAudioRoutedToCast()) {
+            logInfo("stopVideo(" + reason + "): skip — audio routed to cast/mirror (#1549)");
+            return false;
+        }
 
         int atadId = System.identityHashCode(atadInstance);
         if (atadId != lastAtadIdentity && lastAtadIdentity != 0) {
@@ -1029,6 +1049,13 @@ public class CrossfadeManager {
     public static boolean onBeforePlayNext(Object coordinatorInstance) {
         if (!CROSSFADE_ENABLED) return false;
 
+        // #1549: skip crossfade when audio is routed to a cast/mirror receiver.
+        // Native gapless transition runs unchanged.
+        if (!crossfadeInProgress && isAudioRoutedToCast()) {
+            logInfo("playNext: skip — audio routed to cast/mirror (#1549)");
+            return false;
+        }
+
         // Monitor-triggered native skip: let auih.y()V run so it calls stopVideo(5),
         // which onBeforeStopVideo will intercept for a true overlap crossfade.
         if (monitorTriggeredSkip) {
@@ -1445,6 +1472,15 @@ public class CrossfadeManager {
                         || !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()
                         || crossfadeInProgress
                         || autoAdvanceCrossfadeActive) {
+                    return;
+                }
+
+                // #1549: while audio is routed to a cast/mirror receiver, keep
+                // re-polling but never dispatch MEDIA_NEXT — native gapless
+                // handles the natural-end transition cleanly for the cast layer.
+                // The monitor will pick up again once cast disconnects.
+                if (isAudioRoutedToCast()) {
+                    mainHandler.postDelayed(this, MONITOR_POLL_MS);
                     return;
                 }
 
@@ -2262,6 +2298,118 @@ public class CrossfadeManager {
 
     public static boolean isSessionPaused() {
         return isCrossfadePaused;
+    }
+
+    private static volatile long lastCastCheckMs = 0;
+    private static volatile boolean lastCastResult = false;
+    private static final long CAST_CHECK_TTL_MS = 250;
+
+    /**
+     * #1549: Detect when audio is being routed to a cast/mirror receiver
+     * (Chromecast, Samsung audio mirroring, HDMI mirror, etc.). Crossfade is
+     * disabled in those scenarios because our coordinator player swap causes
+     * MediaSession state thrashing (PAUSED → PLAYING → PAUSED flicker) that
+     * the cast/mirror layer forwards to the receiver as PAUSE+PLAY commands.
+     * Forgiving receivers (e.g. Google Home Mini) absorb this as a brief
+     * audio glitch; stricter ones (e.g. Sony AVRs) treat it as session-end
+     * and drop the cast connection entirely.
+     *
+     * <p>This skip is the defensive fix.  The deeper fix would intercept the
+     * MediaSession state writes during our swap so the cast layer never sees
+     * the flicker — see future task.
+     *
+     * <p>Whitelist of device types that trigger the skip: HDMI, HDMI_ARC,
+     * HDMI_EARC, REMOTE_SUBMIX (Samsung audio mirroring), IP (network audio),
+     * BUS (system bus devices).  Bluetooth A2DP, wired headsets, USB audio,
+     * and BLE audio are NOT in this list — those tolerate the swap fine.
+     *
+     * <p>Returns false on API < 28 (the {@link AudioPlaybackConfiguration#getAudioDeviceInfo()}
+     * method isn't available); pre-Pie devices are rare enough that we accept
+     * the cast-disconnect risk for them.
+     *
+     * <p>Cached with a {@value #CAST_CHECK_TTL_MS}ms TTL since this is queried
+     * on every crossfade-engagement hook fire (manual skip, auto-advance,
+     * monitor tick).
+     */
+    @SuppressWarnings("deprecation")
+    private static boolean isAudioRoutedToCast() {
+        if (Build.VERSION.SDK_INT < 28) return false;
+
+        long now = System.currentTimeMillis();
+        if (now - lastCastCheckMs < CAST_CHECK_TTL_MS) {
+            return lastCastResult;
+        }
+        lastCastCheckMs = now;
+
+        boolean casting = false;
+        StringBuilder probe = new StringBuilder();
+        try {
+            Context ctx = Utils.getContext();
+            if (ctx != null) {
+                // Primary signal: MediaRouter says the selected audio route is REMOTE.
+                // Definition (per Android docs): "the route controls playback on a
+                // remote device" — i.e. decoding happens on the receiver, not locally.
+                // This is exactly the boundary that matters for #1549: when audio is
+                // decoded remotely, the receiver runs its own state machine and our
+                // coordinator-swap MediaSession flicker corrupts its session.  When
+                // decoding happens locally (built-in speaker, BT A2DP, wired, USB),
+                // crossfade works fine — so we LEAVE those alone.
+                //
+                // android.media.MediaRouter is deprecated since API 30 but still
+                // works through API 36+.  The newer MediaRouter2 lives in a separate
+                // module we'd have to bring in via the patcher classpath; deprecated
+                // is the simpler choice here.
+                android.media.MediaRouter mr =
+                        (android.media.MediaRouter) ctx.getSystemService(Context.MEDIA_ROUTER_SERVICE);
+                if (mr != null) {
+                    android.media.MediaRouter.RouteInfo selected = mr.getSelectedRoute(
+                            android.media.MediaRouter.ROUTE_TYPE_LIVE_AUDIO);
+                    if (selected != null) {
+                        int pt = selected.getPlaybackType();
+                        probe.append("route{name=").append(selected.getName(ctx))
+                                .append(",pbType=").append(pt).append("} ");
+                        if (pt == android.media.MediaRouter.RouteInfo.PLAYBACK_TYPE_REMOTE) {
+                            casting = true;
+                        }
+                    } else {
+                        probe.append("route{null} ");
+                    }
+                }
+                // Secondary signal: AudioDeviceInfo-level remote outputs (HDMI mirror,
+                // explicit remote-submix, IP audio, system bus).  These are caught even
+                // if MediaRouter doesn't reflect the routing.
+                if (!casting) {
+                    AudioManager am = (AudioManager) ctx.getSystemService(Context.AUDIO_SERVICE);
+                    if (am != null) {
+                        for (AudioDeviceInfo info : am.getDevices(AudioManager.GET_DEVICES_OUTPUTS)) {
+                            int type = info.getType();
+                            probe.append("dev{type=").append(type)
+                                    .append(",id=").append(info.getId()).append("} ");
+                            if (type == AudioDeviceInfo.TYPE_HDMI
+                                    || type == AudioDeviceInfo.TYPE_HDMI_ARC
+                                    || type == 29 /* TYPE_HDMI_EARC, API 31+ */
+                                    || type == AudioDeviceInfo.TYPE_REMOTE_SUBMIX
+                                    || type == AudioDeviceInfo.TYPE_IP
+                                    || type == AudioDeviceInfo.TYPE_BUS) {
+                                casting = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            logDebug("isAudioRoutedToCast check failed: " + e.getMessage());
+        }
+
+        if (casting != lastCastResult) {
+            logInfo("Cast routing " + (casting ? "ENGAGED" : "RELEASED")
+                    + " — crossfade " + (casting ? "disabled" : "re-enabled")
+                    + " [" + probe.toString().trim() + "]");
+        }
+
+        lastCastResult = casting;
+        return casting;
     }
 
     @SuppressWarnings("deprecation")
