@@ -360,6 +360,15 @@ public class CrossfadeManager {
     private static volatile boolean autoAdvanceCrossfadeActive = false;
     /** Retained for cleanup symmetry only. */
     private static volatile boolean monitorCrossfadeActive = false;
+    /**
+     * 9.x auto-advance: true after onBeforeStopVideo has pre-started the outgoing
+     * player's fade-out at coordinator swap time.  Tells onPendingPlayerReady not
+     * to re-add the outgoing to the fade list (it's already in flight).  Decouples
+     * fade-out integrity from new-player load latency, which can exceed the
+     * remaining audio on the outgoing track and otherwise causes the fade-out to
+     * be shortened or skipped entirely.
+     */
+    private static volatile boolean outgoingFadePreStarted = false;
 
     /**
      * Set at patch time via sput-boolean — true when running on YTM 9.x.
@@ -648,10 +657,13 @@ public class CrossfadeManager {
                 return false;
             }
             // If a manual skip fires while a 9.x volume-fade is running, abort the fade
-            // and fall through to the normal crossfade path.
+            // and fall through to the normal crossfade path. The pre-started outgoing
+            // fade-out (if any) keeps running independently on the original outgoing
+            // player; the new manual skip creates a different outgoing.
             if (is9x && !isAutoAdvance && autoAdvanceCrossfadeActive) {
                 autoAdvanceCrossfadeActive = false;
                 queueAdvancedByMonitor = false;
+                outgoingFadePreStarted = false;
                 logInfo("9.x: manual skip aborted volume-fade — proceeding with normal crossfade");
             }
 
@@ -745,13 +757,14 @@ public class CrossfadeManager {
                 // of this stopVideo, it was YTM-internal (skip setup), not a genuine user pause.
                 // A genuine user pause precedes the next song selection by seconds, so the gap
                 // will be >> 500ms and playerIsPlaying=false will correctly keep the player silent.
+                boolean outgoingWasPlaying = false;
                 try {
                     long msSincePause = System.currentTimeMillis() - lastPauseVideoMs;
-                    boolean wasPlaying = playerIsPlaying
+                    outgoingWasPlaying = playerIsPlaying
                             || msSincePause < PAUSE_TO_STOP_INTERNAL_WINDOW_MS;
                     logInfo("9.x: outgoing player re-enable check: playerIsPlaying=" + playerIsPlaying
-                            + " msSincePause=" + msSincePause + "ms → wasPlaying=" + wasPlaying);
-                    if (wasPlaying) {
+                            + " msSincePause=" + msSincePause + "ms → wasPlaying=" + outgoingWasPlaying);
+                    if (outgoingWasPlaying) {
                         currentExo.patch_setPlayWhenReady(true);
                         currentExo.patch_setVolume(1.0f);
                         logInfo("9.x: re-enabled outgoing player @" + System.identityHashCode(currentExo));
@@ -762,6 +775,26 @@ public class CrossfadeManager {
                     }
                 } catch (Exception e) {
                     logWarn("9.x: could not configure outgoing player: " + e.getMessage());
+                }
+
+                // 9.x auto-advance: start the outgoing fade-out NOW (at swap time)
+                // rather than waiting for the new player to reach READY. On 9.x the
+                // MEDIA_NEXT skip path triggers a cold load, not a pre-warmed gapless
+                // buffer, so new-player READY latency can exceed the remaining audio
+                // on the outgoing track. If we waited for READY, onPendingPlayerReady
+                // would shorten the fade-out to actualRemaining (min 150ms) or skip
+                // it entirely via the trackAlreadyEnded path. Pre-starting decouples
+                // fade-out integrity from load latency: the outgoing always gets the
+                // full configured fade duration and reaches silence gracefully.
+                if (isAutoAdvance && outgoingWasPlaying) {
+                    FadeCurve outCurve = Settings.CROSSFADE_CURVE.get();
+                    long outFadeDuration = getCrossfadeDurationMs();
+                    fadingOutPlayers.add(new FadingPlayer(currentExo, outFadeDuration, outCurve));
+                    outgoingFadePreStarted = true;
+                    ensureFadingLoopRunning();
+                    logInfo("9.x auto-advance: pre-started outgoing fade-out @"
+                            + System.identityHashCode(currentExo)
+                            + " over " + outFadeDuration + "ms");
                 }
 
                 pollForNewTrackReady(newExo);
@@ -1310,45 +1343,54 @@ public class CrossfadeManager {
                 logInfo("onPendingPlayerReady (9.x): coordinator listener already migrated at start");
             }
 
-            // Match fade-out duration to actual remaining audio on the outgoing track.
-            // This is critical for auto-advance: the trigger fires 300ms+ before the
-            // configured fade duration, but READY latency is variable (100-500ms+).
-            // Without this adjustment, the fade-out may start too late, causing the
-            // outgoing track to end at non-zero volume (perceptible cutoff).
-            long fadeOutDuration = fadeDuration;
-            try {
-                long pos = outgoing.patch_getCurrentPosition();
-                long dur = outgoing.patch_getDuration();
-                if (dur > 0 && pos >= 0) {
-                    long actualRemaining = dur - pos;
-                    logInfo("onPendingPlayerReady: outgoing remaining=" + actualRemaining
-                            + "ms fadeDuration=" + fadeDuration + "ms");
-                    if (actualRemaining <= 0) {
-                        // Auto-advance: content only loads after natural track end, so READY
-                        // always arrives after the old track has finished. Release the old player
-                        // immediately — there is no audio to fade out. The new track will fade in
-                        // from silence (true overlap requires intercepting YTM's gapless preload).
-                        trackAlreadyEnded = true;
-                        logInfo("Auto-advance: outgoing track ended before READY — "
-                                + "releasing silently, fade-in only (no overlap possible)");
-                    } else if (actualRemaining < fadeDuration) {
-                        fadeOutDuration = Math.max(150, actualRemaining);
-                        logInfo("Fade-out shortened to " + fadeOutDuration
-                                + "ms to match remaining audio (was " + fadeDuration + "ms)");
-                    }
-                }
-            } catch (Exception e) {
-                logDebug("Could not read outgoing remaining time: " + e.getMessage());
-            }
-            pendingOutPlayer = null;
-            if (trackAlreadyEnded) {
-                releasePlayer(outgoing);
-                logInfo("Original outgoing player @" + System.identityHashCode(outgoing)
-                        + " → released (track ended before READY)");
+            if (outgoingFadePreStarted) {
+                // 9.x auto-advance: fade-out was pre-started at coordinator swap time
+                // in onBeforeStopVideo. The outgoing is already in fadingOutPlayers
+                // running the full configured fade duration. Skip the re-add and the
+                // actualRemaining adjustment — those exist for the legacy path where
+                // fade-out only began once the new player reached READY.
+                logInfo("onPendingPlayerReady: outgoing @" + System.identityHashCode(outgoing)
+                        + " fade-out already in flight (pre-started at swap time)");
+                pendingOutPlayer = null;
+                outgoingFadePreStarted = false;
             } else {
-                fadingOutPlayers.add(new FadingPlayer(outgoing, fadeOutDuration, curve));
-                logInfo("Original outgoing player @" + System.identityHashCode(outgoing)
-                        + " → fade-out list (" + fadeOutDuration + "ms)");
+                // Match fade-out duration to actual remaining audio on the outgoing track.
+                // Used for the legacy path (manual skip, 8.x auto-advance) where the
+                // fade-out only begins here. Without this adjustment, the fade-out may
+                // start too late, causing the outgoing track to end at non-zero volume.
+                long fadeOutDuration = fadeDuration;
+                try {
+                    long pos = outgoing.patch_getCurrentPosition();
+                    long dur = outgoing.patch_getDuration();
+                    if (dur > 0 && pos >= 0) {
+                        long actualRemaining = dur - pos;
+                        logInfo("onPendingPlayerReady: outgoing remaining=" + actualRemaining
+                                + "ms fadeDuration=" + fadeDuration + "ms");
+                        if (actualRemaining <= 0) {
+                            // Content only loads after natural track end, so READY always
+                            // arrives after the old track has finished. Release silently.
+                            trackAlreadyEnded = true;
+                            logInfo("Outgoing track ended before READY — "
+                                    + "releasing silently, fade-in only (no overlap possible)");
+                        } else if (actualRemaining < fadeDuration) {
+                            fadeOutDuration = Math.max(150, actualRemaining);
+                            logInfo("Fade-out shortened to " + fadeOutDuration
+                                    + "ms to match remaining audio (was " + fadeDuration + "ms)");
+                        }
+                    }
+                } catch (Exception e) {
+                    logDebug("Could not read outgoing remaining time: " + e.getMessage());
+                }
+                pendingOutPlayer = null;
+                if (trackAlreadyEnded) {
+                    releasePlayer(outgoing);
+                    logInfo("Original outgoing player @" + System.identityHashCode(outgoing)
+                            + " → released (track ended before READY)");
+                } else {
+                    fadingOutPlayers.add(new FadingPlayer(outgoing, fadeOutDuration, curve));
+                    logInfo("Original outgoing player @" + System.identityHashCode(outgoing)
+                            + " → fade-out list (" + fadeOutDuration + "ms)");
+                }
             }
         }
 
@@ -1585,6 +1627,7 @@ public class CrossfadeManager {
         autoAdvanceCrossfadeActive = false;
         queueAdvancedByMonitor = false;
         monitorCrossfadeActive = false;
+        outgoingFadePreStarted = false;
         deferredSwapPending = false;
         currentFadeInVolume = 0.0f;
 
@@ -2121,6 +2164,7 @@ public class CrossfadeManager {
         autoAdvanceCrossfadeActive = false;
         queueAdvancedByMonitor = false;
         monitorCrossfadeActive = false;
+        outgoingFadePreStarted = false;
         deferredSwapPending = false;
         currentFadeInVolume = 0.0f;
         coordinatorListenerBxi = null;
