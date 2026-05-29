@@ -16,6 +16,7 @@ import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
@@ -277,7 +278,7 @@ public class CommentsFilter extends Filter {
      */
     public static void hideLiveChatEmojiButton(View view) {
         if (Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS.get() && view != null) {
-            if (view instanceof android.view.ViewGroup vg) {
+            if (view instanceof ViewGroup vg) {
                 for (int i = 0; i < vg.getChildCount(); i++) {
                     vg.getChildAt(i).setVisibility(View.INVISIBLE);
                 }
@@ -292,11 +293,14 @@ public class CommentsFilter extends Filter {
                         View editText = parentView.findViewById(EDIT_TEXT_ID);
                         if (editText != null) {
                             editText.requestFocus();
-                            InputMethodManager imm = (InputMethodManager)
-                                    v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                            if (imm != null) {
-                                imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-                            }
+                            editText.post(() -> {
+                                InputMethodManager imm = (InputMethodManager)
+                                        v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                                if (imm != null) {
+                                    imm.showSoftInput(editText, 0);
+                                }
+                            });
                         }
                     }
                 }
@@ -310,7 +314,7 @@ public class CommentsFilter extends Filter {
      */
     public static void hideLiveChatThanksButton(View view) {
         if (Settings.HIDE_COMMENTS_THANKS_BUTTON.get() && view != null) {
-            android.view.ViewGroup.LayoutParams lp = view.getLayoutParams();
+            ViewGroup.LayoutParams lp = view.getLayoutParams();
             if (lp != null) {
                 lp.width = 0;
                 lp.height = 0;
