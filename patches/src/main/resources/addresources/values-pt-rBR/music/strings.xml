@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Facilidade suave</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Curva S suave</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Saída</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Entrada</string>
   <string name="morphe_music_crossfade_duration_title">Duração do desvanecimento</string>
   <string name="morphe_crossfade_duration_250ms">250 milisegundos</string>
   <string name="morphe_crossfade_duration_500ms">500 milisegundos</string>

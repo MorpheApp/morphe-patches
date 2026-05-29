@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">부드러운 완화</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">부드러운 S-곡선</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">나가는 곡</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">들어오는 곡</string>
   <string name="morphe_music_crossfade_duration_title">크로스페이드 지속 시간</string>
   <string name="morphe_crossfade_duration_250ms">250 밀리초</string>
   <string name="morphe_crossfade_duration_500ms">500 밀리초</string>

@@ -2,8 +2,6 @@
 
 package app.morphe.extension.youtube.swipecontrols.views
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
@@ -19,6 +17,7 @@ import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.RelativeLayout
 import app.morphe.extension.shared.ResourceType
+import app.morphe.extension.shared.ui.ViewAnimations
 import app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow
 import app.morphe.extension.shared.StringRef.str
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider
@@ -163,31 +162,8 @@ class SwipeControlsOverlayLayout(
         addView(verticalVolumeProgressView)
     }
 
-    private fun View.fadeIn() {
-        animate().cancel()
-        if (visibility == VISIBLE && alpha == 1f) return
-        if (visibility != VISIBLE) {
-            alpha = 0f
-            visibility = VISIBLE
-        }
-        animate().alpha(1f).setDuration(100).setListener(null).start()
-    }
-
-    private fun View.fadeOut() {
-        animate().cancel()
-        animate().alpha(0f).setDuration(100)
-            .setListener(object : AnimatorListenerAdapter() {
-                override fun onAnimationEnd(animation: Animator) {
-                    visibility = GONE
-                    alpha = 1f
-                    animate().setListener(null)
-                }
-                override fun onAnimationCancel(animation: Animator) {
-                    animate().setListener(null)
-                }
-            })
-            .start()
-    }
+    private fun View.fadeIn() = ViewAnimations.fadeIn(this, 100)
+    private fun View.fadeOut() = ViewAnimations.fadeOut(this, 100)
 
     // Handler and callback for hiding progress bars.
     private val feedbackHideHandler = Handler(Looper.getMainLooper())

@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Jemné zjemnenie</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Hladká S-krivka</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Odchádzajúce</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Prichádzajúce</string>
   <string name="morphe_music_crossfade_duration_title">Dĺžka prechodu</string>
   <string name="morphe_crossfade_duration_250ms">250 milisekúnd</string>
   <string name="morphe_crossfade_duration_500ms">500 milisekúnd</string>

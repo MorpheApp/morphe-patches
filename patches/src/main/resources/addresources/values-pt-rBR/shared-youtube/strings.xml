@@ -51,7 +51,7 @@ Se você for um usuário do YouTube Premium, esta configuração pode não ser n
   <string name="morphe_spoof_video_streams_user_dialog_message">Desativar esta configuração pode causar problemas de reprodução.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Tente habilitar: Simular fluxos de vídeo > Android VR sign in</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Tente habilitar: Simular fluxos de vídeo &gt; Android VR sign in</string>
   <string name="morphe_spoof_video_streams_client_type_title">Cliente padrão</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Conectar ao Android VR</string>

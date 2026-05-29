@@ -36,13 +36,13 @@ internal fun sanitizeSharingLinksPatch(
     execute {
         executeBlock()
 
-        val sanitizePreference = SwitchPreference("morphe_sanitize_sharing_links")
+        val sanitizePreference = SwitchPreference("morphe_sanitize_sharing_links", summary = true)
 
         preferenceScreen.addPreferences(
             if (replaceMusicLinksWithYouTube || replaceLinksWithShortener) {
                 val preferences = mutableSetOf<BasePreference>(sanitizePreference)
-                if (replaceMusicLinksWithYouTube) preferences += SwitchPreference("morphe_replace_music_with_youtube")
-                if (replaceLinksWithShortener) preferences += SwitchPreference("morphe_replace_links_with_shortener")
+                if (replaceMusicLinksWithYouTube) preferences += SwitchPreference("morphe_replace_music_with_youtube", summary = true)
+                if (replaceLinksWithShortener) preferences += SwitchPreference("morphe_replace_links_with_shortener", summary = true)
 
                 PreferenceCategory(
                     titleKey = null,

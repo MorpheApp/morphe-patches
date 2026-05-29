@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Lágy átmenet</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Lágy S-görbe</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Kimenñ</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Bemenñ</string>
   <string name="morphe_music_crossfade_duration_title">Áttűnés időtartama</string>
   <string name="morphe_crossfade_duration_250ms">250 ezredmásodperc</string>
   <string name="morphe_crossfade_duration_500ms">500 ezredmásodperc</string>

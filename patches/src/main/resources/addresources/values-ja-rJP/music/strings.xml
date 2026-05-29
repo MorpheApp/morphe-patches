@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">おだやかなイーズ（緩急）</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">なめらかな S 字カーブ</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">終わる曲</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">始まる曲</string>
   <string name="morphe_music_crossfade_duration_title">クロスフェードする時間</string>
   <string name="morphe_crossfade_duration_250ms">250 ミリ秒</string>
   <string name="morphe_crossfade_duration_500ms">500 ミリ秒</string>

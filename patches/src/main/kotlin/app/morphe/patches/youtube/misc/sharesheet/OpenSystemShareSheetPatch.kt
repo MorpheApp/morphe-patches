@@ -43,7 +43,7 @@ internal fun openSystemShareSheetPatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_open_system_share_sheet")
+            SwitchPreference("morphe_open_system_share_sheet", summary = true)
         )
 
         addRecyclerViewTreeHook(EXTENSION_CLASS)

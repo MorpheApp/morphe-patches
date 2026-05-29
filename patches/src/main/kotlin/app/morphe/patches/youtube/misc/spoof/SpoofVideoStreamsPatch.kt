@@ -58,7 +58,7 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                 key = "morphe_spoof_video_streams_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_spoof_video_streams"),
+                    SwitchPreference("morphe_spoof_video_streams", summary = true),
                     ListPreference("morphe_spoof_video_streams_client_type"),
                     NonInteractivePreference(
                         // Requires a key and title but the actual text is chosen at runtime.
@@ -71,11 +71,11 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
                         tag = "app.morphe.extension.youtube.settings.preference.SpoofVideoStreamsSignInPreference",
                         selectable = true,
                     ),
-                    SwitchPreference("morphe_spoof_video_streams_av1"),
+                    SwitchPreference("morphe_spoof_video_streams_av1", summary = true),
                     ListPreference("morphe_spoof_video_streams_player_js_variant"),
-                    SwitchPreference("morphe_spoof_video_streams_disable_player_js_update"),
+                    SwitchPreference("morphe_spoof_video_streams_disable_player_js_update", summary = true),
                     TextPreference("morphe_spoof_video_streams_player_js_hash_value"),
-                    SwitchPreference("morphe_spoof_video_streams_stats_for_nerds", summaryKey = null),
+                    SwitchPreference("morphe_spoof_video_streams_stats_for_nerds"),
                 )
             )
         )

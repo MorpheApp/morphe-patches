@@ -36,7 +36,7 @@ val openChannelOfLiveAvatarPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.FEED.addPreferences(
-            SwitchPreference("morphe_open_channel_of_live_avatar")
+            SwitchPreference("morphe_open_channel_of_live_avatar", summary = true)
         )
 
         // Activity is used as the context to launch an Intent.

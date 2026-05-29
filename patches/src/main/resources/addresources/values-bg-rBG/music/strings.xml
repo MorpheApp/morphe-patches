@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Нежно улесняване</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Плавно S-образно избледняване</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Изходящ</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Входящ</string>
   <string name="morphe_music_crossfade_duration_title">Продължителност на избледняването</string>
   <string name="morphe_crossfade_duration_250ms">250 милисекунди</string>
   <string name="morphe_crossfade_duration_500ms">500 милисекунди</string>

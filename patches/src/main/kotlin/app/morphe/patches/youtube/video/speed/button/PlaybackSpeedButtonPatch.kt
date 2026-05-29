@@ -54,7 +54,7 @@ val playbackSpeedButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_playback_speed_dialog_button")
+            SwitchPreference("morphe_playback_speed_dialog_button", summary = true)
         )
 
         addPlayerBottomButton(EXTENSION_BUTTON)

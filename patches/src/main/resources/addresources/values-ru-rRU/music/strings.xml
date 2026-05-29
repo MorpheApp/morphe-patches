@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Мягкое сглаживание</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Плавная S-образная кривая</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Исходящий</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Входящий</string>
   <string name="morphe_music_crossfade_duration_title">Длительность плавного перехода</string>
   <string name="morphe_crossfade_duration_250ms">250 миллисекунд</string>
   <string name="morphe_crossfade_duration_500ms">500 миллисекунд</string>

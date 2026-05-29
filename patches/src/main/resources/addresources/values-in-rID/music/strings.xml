@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Ketenangan yang lembut</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Kurva-S yang halus</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Keluar</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Masuk</string>
   <string name="morphe_music_crossfade_duration_title">Durasi pudar silang</string>
   <string name="morphe_crossfade_duration_250ms">250 milidetik</string>
   <string name="morphe_crossfade_duration_500ms">500 milidetik</string>

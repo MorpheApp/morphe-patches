@@ -50,11 +50,11 @@ val backgroundPlaybackPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("morphe_shorts_disable_background_playback", summaryKey = null)
+            SwitchPreference("morphe_shorts_disable_background_playback")
         )
 
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_remove_background_playback_restrictions", summaryKey = null)
+            SwitchPreference("morphe_remove_background_playback_restrictions")
         )
 
         arrayOf(

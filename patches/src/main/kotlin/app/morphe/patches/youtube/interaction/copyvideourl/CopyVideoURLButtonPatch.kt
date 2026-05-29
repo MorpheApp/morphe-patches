@@ -65,8 +65,8 @@ val copyVideoURLButtonPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
-                    SwitchPreference("morphe_copy_video_url_button"),
-                    SwitchPreference("morphe_copy_video_url_button_timestamp")
+                    SwitchPreference("morphe_copy_video_url_button", summary = true),
+                    SwitchPreference("morphe_copy_video_url_button_timestamp", summary = true)
                 )
             )
         )

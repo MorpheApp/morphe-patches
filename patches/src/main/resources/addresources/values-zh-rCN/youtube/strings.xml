@@ -153,7 +153,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_featured_videos_section_title">隐藏“精选视频”部分</string>
   <string name="morphe_hide_gaming_section_title">隐藏“游戏”部分</string>
   <string name="morphe_hide_how_this_was_made_section_title">隐藏“内容制作说明”部分</string>
-  <string name="morphe_hide_hype_points_title">隐藏热度积分</string>
+  <string name="morphe_hide_hype_points_title">隐藏热推积分</string>
   <string name="morphe_hide_info_cards_section_title">隐藏“信息卡片”部分</string>
   <string name="morphe_hide_key_concepts_section_title">隐藏“关键概念”部分</string>
   <string name="morphe_hide_music_section_title">隐藏“音乐”部分</string>
@@ -162,7 +162,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_transcript_section_title">隐藏“字幕”部分</string>
   <string name="morphe_hide_video_details_section_title">隐藏“视频详情”部分</string>
   <string name="morphe_hide_filter_bar_screen_title">筛选栏</string>
-  <string name="morphe_hide_filter_bar_screen_summary">选择隐藏滚动类别芯片的位置</string>
+  <string name="morphe_hide_filter_bar_screen_summary">选择隐藏滚动类别标签的位置</string>
   <string name="morphe_hide_filter_bar_feed_in_feed_title">在动态中隐藏</string>
   <string name="morphe_hide_filter_bar_feed_in_related_videos_title">在相关视频中隐藏</string>
   <string name="morphe_hide_filter_bar_feed_in_search_title">在搜索结果中隐藏</string>
@@ -444,7 +444,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_download_button_title">隐藏下载按钮</string>
   <!-- 'Hype' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on videos uploaded by the logged-in user. -->
-  <string name="morphe_hide_hype_button_title">隐藏 Hype 按钮</string>
+  <string name="morphe_hide_hype_button_title">隐藏“热推”按钮</string>
   <!-- 'Promote' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_promote_button_title">隐藏推广按钮</string>
   <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->

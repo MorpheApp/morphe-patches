@@ -261,7 +261,7 @@ Hạn chế:
   <string name="morphe_hide_general_ads_title">Ẩn quảng cáo chung</string>
   <string name="morphe_hide_merchandise_banners_title">Ẩn biểu ngữ sản phẩm</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
-  <string name="morphe_hide_paid_promotion_label_title">Ẩn nhãn \'Nội dung được trả tiền để quảng cáo\'</string>
+  <string name="morphe_hide_paid_promotion_label_title">Ẩn nhãn \'Chứa nội dung được trả tiền để quảng cáo\'</string>
   <string name="morphe_hide_player_popup_ads_title">Ẩn quảng cáo bật lên trên trình phát</string>
   <string name="morphe_hide_self_sponsor_ads_title">Ẩn thẻ tự tài trợ</string>
   <string name="morphe_hide_shopping_links_title">Ẩn liên kết mua sắm</string>
@@ -304,20 +304,20 @@ Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được
   <string name="morphe_external_downloader_empty_warning">Tên gói không được để trống</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Bật video lặp lại</string>
-  <string name="morphe_do_not_remember_loop_video_title">Không nhớ video lặp lại</string>
-  <string name="morphe_do_not_remember_loop_video_summary">Ngăn trạng thái lặp lại video hiện tại được lưu lại cho các video tiếp theo</string>
+  <string name="morphe_do_not_remember_loop_video_title">Không ghi nhớ trạng thái lặp lại video</string>
+  <string name="morphe_do_not_remember_loop_video_summary">Không lưu trạng thái lặp lại video hiện tại cho các video khác</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
   <string name="morphe_loop_video_button_title">Hiện nút Lặp lại video</string>
   <string name="morphe_loop_video_button_toast_on">Lặp lại video đang bật</string>
   <string name="morphe_loop_video_button_toast_off">Lặp lại video đang tắt</string>
-  <string name="morphe_loop_video_range_dialog_title">Phạm vi lặp lại</string>
+  <string name="morphe_loop_video_range_dialog_title">Lặp đoạn</string>
   <string name="morphe_loop_video_range_label_start">Bắt đầu</string>
-  <string name="morphe_loop_video_range_label_end">Cuối video</string>
+  <string name="morphe_loop_video_range_label_end">Kết thúc</string>
   <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
-  <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (empty = video end)</string>
+  <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (để trống = đến hết video)</string>
   <string name="morphe_loop_video_range_set">Đặt</string>
-  <string name="morphe_loop_video_range_clear">Dọn dẹp</string>
-  <string name="morphe_loop_video_range_toast_on">Đang lặp lại %1$s - %2$s</string>
+  <string name="morphe_loop_video_range_clear">Xóa</string>
+  <string name="morphe_loop_video_range_toast_on">Lặp từ %1$s - %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Thời gian đã đặt không hợp lệ</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Hiện nút Phát tất cả</string>

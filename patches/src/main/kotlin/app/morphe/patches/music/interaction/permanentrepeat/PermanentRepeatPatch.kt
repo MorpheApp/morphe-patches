@@ -36,7 +36,7 @@ val permanentRepeatPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_music_play_permanent_repeat", summaryKey = null),
+            SwitchPreference("morphe_music_play_permanent_repeat"),
         )
 
         val startIndex = RepeatTrackFingerprint.instructionMatches.last().index

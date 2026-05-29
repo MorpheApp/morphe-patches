@@ -60,7 +60,7 @@ val overrideYouTubeMusicButtonsPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
-                    SwitchPreference(key = "morphe_override_youtube_music_buttons"),
+                    SwitchPreference(key = "morphe_override_youtube_music_buttons", summary = true),
                     TextPreference(key = "morphe_music_package_name")
                 )
             )

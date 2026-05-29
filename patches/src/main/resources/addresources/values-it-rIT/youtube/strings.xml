@@ -311,14 +311,14 @@ Verifica che il nome del pacchetto sia corretto e che l'app sia installata"</str
   <string name="morphe_loop_video_button_title">Mostra il pulsante Ripeti video</string>
   <string name="morphe_loop_video_button_toast_on">Ripetizione video attivata</string>
   <string name="morphe_loop_video_button_toast_off">Ripetizione video disattivata</string>
-  <string name="morphe_loop_video_range_dialog_title">Intervallo del ciclo</string>
+  <string name="morphe_loop_video_range_dialog_title">Intervallo della ripetizione</string>
   <string name="morphe_loop_video_range_label_start">Inizio</string>
   <string name="morphe_loop_video_range_label_end">Fine</string>
   <string name="morphe_loop_video_range_hint_start">[hh:]mm:ss</string>
   <string name="morphe_loop_video_range_hint_end">[hh:]mm:ss (vuoto = fine video)</string>
   <string name="morphe_loop_video_range_set">Imposta</string>
-  <string name="morphe_loop_video_range_clear">Reimposta</string>
-  <string name="morphe_loop_video_range_toast_on">Riproduzione in loop da %1$s a %2$s</string>
+  <string name="morphe_loop_video_range_clear">Disattiva</string>
+  <string name="morphe_loop_video_range_toast_on">Ripetizione impostata da %1$s a %2$s</string>
   <string name="morphe_loop_video_range_invalid_time">Intervallo di tempo non valido</string>
   <!-- interaction.playall.playAllButtonPatch -->
   <string name="morphe_play_all_button_title">Mostra pulsante Riproduci tutto</string>

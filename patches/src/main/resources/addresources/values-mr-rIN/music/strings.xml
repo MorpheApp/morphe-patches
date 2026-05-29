@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">सौम्य सहजता</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">स्मूथ एस- curve</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">आउटगोइंग</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">इनकमिंग</string>
   <string name="morphe_music_crossfade_duration_title">क्रॉसफेड अवधि</string>
   <string name="morphe_crossfade_duration_250ms">250 मिलीसेकंद</string>
   <string name="morphe_crossfade_duration_500ms">500 मिलीसेकंद</string>

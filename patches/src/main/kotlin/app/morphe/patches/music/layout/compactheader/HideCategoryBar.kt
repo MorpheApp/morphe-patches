@@ -26,7 +26,7 @@ val hideCategoryBar = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_music_hide_category_bar", summaryKey = null),
+            SwitchPreference("morphe_music_hide_category_bar"),
         )
 
         ChipCloudFingerprint.method.apply {

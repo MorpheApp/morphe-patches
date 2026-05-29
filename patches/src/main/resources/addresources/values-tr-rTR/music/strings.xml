@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Yumuşak geçiş</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Pürüzsüz S-eğrisi</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Giden</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Gelen</string>
   <string name="morphe_music_crossfade_duration_title">Geçiş süresi</string>
   <string name="morphe_crossfade_duration_250ms">250 milisaniye</string>
   <string name="morphe_crossfade_duration_500ms">500 milisaniye</string>

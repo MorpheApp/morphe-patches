@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Lempeä helpotus</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">S-muotoinen käyrä</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Lähtevä</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Saapuva</string>
   <string name="morphe_music_crossfade_duration_title">Himmennyskeston</string>
   <string name="morphe_crossfade_duration_250ms">250 millisekuntia</string>
   <string name="morphe_crossfade_duration_500ms">500 millisekuntia</string>

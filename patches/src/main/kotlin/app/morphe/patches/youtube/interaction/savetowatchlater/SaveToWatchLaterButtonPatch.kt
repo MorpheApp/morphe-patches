@@ -65,7 +65,7 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_save_to_watch_later_button", summaryKey = null)
+            SwitchPreference("morphe_save_to_watch_later_button")
         )
 
         initializeTopControl(EXTENSION_BUTTON)

@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">নরম কোমলতা</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">স্মুথ এস-কার্ভ</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">বহির্গামী</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">অন্তর্গামী</string>
   <string name="morphe_music_crossfade_duration_title">ক্রসফেড সময়কাল</string>
   <string name="morphe_crossfade_duration_250ms">২৫০ মিলিসেকেন্ড</string>
   <string name="morphe_crossfade_duration_500ms">৫০০ মিলিসেকেন্ড</string>

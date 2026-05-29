@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Nežen lahek ton</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Gladka S-krivulja</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Izhodna</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Vhodna</string>
   <string name="morphe_music_crossfade_duration_title">Trajanje prehoda</string>
   <string name="morphe_crossfade_duration_250ms">250 milisekund</string>
   <string name="morphe_crossfade_duration_500ms">500 milisekund</string>
