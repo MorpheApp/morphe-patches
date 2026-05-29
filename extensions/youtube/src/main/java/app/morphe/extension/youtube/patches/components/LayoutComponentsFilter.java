@@ -905,9 +905,7 @@ public final class LayoutComponentsFilter extends Filter {
         String menuTitleString = menuTitleCharSequence.toString();
         boolean matches = false;
         for (String filter : accountMenuFilterStrings) {
-            if (Settings.HIDE_ACCOUNT_MENU_FILTER_TYPE.get()
-                    ? menuTitleString.contains(filter)
-                    : menuTitleString.equalsIgnoreCase(filter)) {
+            if (menuTitleString.equalsIgnoreCase(filter)) {
                 matches = true;
                 break;
             }
