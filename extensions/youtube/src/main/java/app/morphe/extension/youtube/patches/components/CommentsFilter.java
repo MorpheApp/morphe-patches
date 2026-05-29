@@ -23,8 +23,6 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -33,7 +31,6 @@ import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
 @SuppressWarnings("unused")
 public class CommentsFilter extends Filter {
 
-    private static final int EDIT_TEXT_ID = ResourceUtils.getIdentifierOrThrow(ResourceType.ID, "edit_text");
     private static final String CHIP_BAR_PATH_PREFIX = "chip_bar.e";
     private static final String COMMENT_COMPOSER_PATH = "comment_composer.e";
     private static final String VIDEO_LOCKUP_WITH_ATTACHMENT_PATH = "video_lockup_with_attachment.e";
