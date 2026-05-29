@@ -23,17 +23,16 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.music.shared.MusicActivityOnCreateFingerprint
-import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.Field
+import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -176,8 +175,8 @@ val crossfadePatch = bytecodePatch(
 
         fun allMethodsInHierarchy(
             startType: String,
-        ): List<com.android.tools.smali.dexlib2.iface.Method> {
-            val result = mutableListOf<com.android.tools.smali.dexlib2.iface.Method>()
+        ): List<Method> {
+            val result = mutableListOf<Method>()
             var current: String? = startType
             while (current != null && current != "Ljava/lang/Object;") {
                 val classDef = try { classDefBy(current) } catch (_: Exception) { break }
@@ -189,8 +188,8 @@ val crossfadePatch = bytecodePatch(
 
         fun allFieldsInHierarchy(
             startType: String,
-        ): List<com.android.tools.smali.dexlib2.iface.Field> {
-            val result = mutableListOf<com.android.tools.smali.dexlib2.iface.Field>()
+        ): List<Field> {
+            val result = mutableListOf<Field>()
             var current: String? = startType
             while (current != null && current != "Ljava/lang/Object;") {
                 val classDef = try { classDefBy(current) } catch (_: Exception) { break }
@@ -229,19 +228,9 @@ val crossfadePatch = bytecodePatch(
         //  Hook injection                                                 //
         // -------------------------------------------------------------- //
 
-        // On 9.x, set CrossfadeManager.is9x = true before any crossfade logic runs.
-        // sput-boolean is idempotent — safe to execute on every stopVideo call.
-        val is9xSmali = if (is_9_00_or_greater) {
-            """
-                const/4 v0, 0x1
-                sput-boolean v0, $EXTENSION_CLASS->is9x:Z
-            """
-        } else ""
-
         StopVideoFingerprint.method.addInstructions(
             0,
             """
-                $is9xSmali
                 invoke-static { p0, p1 }, $EXTENSION_CLASS->onBeforeStopVideo(Ljava/lang/Object;I)Z
                 move-result v0
                 if-eqz v0, :allow_stop
@@ -291,7 +280,7 @@ val crossfadePatch = bytecodePatch(
             0,
             """
                 invoke-static { p0 }, $EXTENSION_CLASS->onPlayVideo(Ljava/lang/Object;)V
-            """,
+            """
         )
 
         // On 9.20.52, atzq.loadVideo has enough locals that `p0` resolves past v15,
@@ -301,23 +290,23 @@ val crossfadePatch = bytecodePatch(
             0,
             """
                 invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onBeforeLoadVideo(Ljava/lang/Object;)V
-            """,
+            """
         )
 
-        val musicActivityClass = mutableClassDefBy(MusicActivityOnCreateFingerprint.classDef.type)
+        val musicActivityClass = MusicActivityOnCreateFingerprint.classDef
         musicActivityClass.methods.first { it.name == "onStop" && it.parameterTypes.isEmpty() }
             .addInstructions(
                 0,
                 """
                     invoke-static {}, $EXTENSION_CLASS->onActivityStop()V
-                """,
+                """
             )
         musicActivityClass.methods.first { it.name == "onStart" && it.parameterTypes.isEmpty() }
             .addInstructions(
                 0,
                 """
                     invoke-static {}, $EXTENSION_CLASS->onActivityStart()V
-                """,
+                """
             )
 
         // -------------------------------------------------------------- //
@@ -369,7 +358,7 @@ val crossfadePatch = bytecodePatch(
         ).method
 
         // ExoPlayer concrete impl - fingerprinted via the unique "ExoPlayerImpl" log tag.
-        val exoPlayerImplClass = mutableClassDefBy(ExoPlayerImplFingerprint.classDef.type)
+        val exoPlayerImplClass = ExoPlayerImplFingerprint.classDef
         val exoImplMethods = allMethodsInHierarchy(exoPlayerImplClass.type)
 
         // Helper: checks if `type` appears anywhere in the superclass chain starting at `startType`.
@@ -449,7 +438,7 @@ val crossfadePatch = bytecodePatch(
         // The ExoPlayer constructor checks this field (on an abstract superclass of
         // sharedState) and refuses to attach if already set. We clear it before
         // calling the factory so the new player can attach to the coordinator.
-        var guardField: com.android.tools.smali.dexlib2.iface.Field? = null
+        var guardField: Field? = null
         var guardAbstractType: String? = null
         if (is_9_00_or_greater) {
             var current: String? = sharedStateClass.superclass
@@ -506,14 +495,14 @@ val crossfadePatch = bytecodePatch(
         // factory_cwh — NOT coordinator_cwh — so auih.k never gets notified and
         // MediaSession stays permanently PAUSED.
         // Fix: read factory_cwh from factory_exo.j, then register auih.k on factory_cwh.
-        val forwardingPlayerField9x: com.android.tools.smali.dexlib2.iface.Field?
-        var exoPlayerCwhField9x: com.android.tools.smali.dexlib2.iface.Field? = null
+        val forwardingPlayerField9x: Field?
+        var exoPlayerCwhField9x: Field? = null
         var cwhListenerType: String? = null
-        var coordinatorCwhListenerField9x: com.android.tools.smali.dexlib2.iface.Field? = null
+        var coordinatorCwhListenerField9x: Field? = null
         // crh.h:Lcgd — per-player event dispatch set; coordinator_cwh is registered here via crh.C().
         // Removing coordinator_cwh from the outgoing player's crh.h before release prevents the
         // release's isPlayingChanged(false) from propagating to MediaSession via cwh.b.
-        var eventDispatchField9x: com.android.tools.smali.dexlib2.iface.Field? = null
+        var eventDispatchField9x: Field? = null
         if (is_9_00_or_greater) {
             // Find coordinator's cwh field (auih.c:Lctr) to identify the Lctr interface type.
             val playerDelegateTypes = setOf(playerInterfaceType, EXO_PLAYER_TYPE)
@@ -561,7 +550,7 @@ val crossfadePatch = bytecodePatch(
                         !AccessFlags.STATIC.isSet(f.accessFlags)
                             && f.type != exoPlayerField.type
                             && f.type != lctrType
-                            && try { cwhListenerType!! in classDefBy(f.type).interfaces } catch (_: Exception) { false }
+                            && try { cwhListenerType in classDefBy(f.type).interfaces } catch (_: Exception) { false }
                     }.also { f ->
                         if (f == null) log.warning("9.x: coordinator cwh listener field (auih.k) not found — crh.j fix skipped")
                         else log.fine { "9.x: coordinator cwh listener field (auih.k) = $f" }
@@ -1339,7 +1328,7 @@ val crossfadePatch = bytecodePatch(
         // whose body invokes CopyOnWriteArraySet.remove() on the wrapped set.  This makes
         // the patch resilient to R8 renaming "e" to something else across YTM versions.
         if (is_9_00_or_greater && eventDispatchField9x != null && exoPlayerCwhField9x != null) {
-            val cgdType = eventDispatchField9x!!.type
+            val cgdType = eventDispatchField9x.type
             val cgdClass = classDefBy(cgdType)
             val cgdRemoveMethodName = cgdClass.methods.firstOrNull { m ->
                 m.parameterTypes.size == 1
