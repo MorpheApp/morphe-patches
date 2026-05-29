@@ -14,7 +14,7 @@ import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
  * <p>
  * To filter {@link FilterContentType#PROTOBUFFER} or {@link FilterContentType#ACCESSIBILITY}, first add a callback to
  * either an identifier or a path.
- * Then inside {@link #isFiltered(ContextInterface, String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
+ * Then inside {@link #isFiltered(ContextInterface, String, String, String, byte[], String, StringFilterGroup, FilterContentType, int)}
  * search for the buffer content using either a {@link ByteArrayFilterGroup} (if searching for 1 pattern)
  * or a {@link ByteArrayFilterGroupList} (if searching for more than 1 pattern).
  * <p>
@@ -41,7 +41,7 @@ abstract class Filter {
     protected final List<StringFilterGroup> pathCallbacks = new ArrayList<>();
 
     /**
-     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
+     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], String, StringFilterGroup, FilterContentType, int)}
      * if any of the groups are found.
      */
     protected final void addIdentifierCallbacks(StringFilterGroup... groups) {
@@ -49,7 +49,7 @@ abstract class Filter {
     }
 
     /**
-     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], StringFilterGroup, FilterContentType, int)}
+     * Adds callbacks to {@link #isFiltered(ContextInterface, String, String, String, byte[], String, StringFilterGroup, FilterContentType, int)}
      * if any of the groups are found.
      */
     protected final void addPathCallbacks(StringFilterGroup... groups) {
@@ -72,7 +72,7 @@ abstract class Filter {
      * @return True if the litho component should be filtered out.
      */
     boolean isFiltered(ContextInterface contextInterface, String identifier, String accessibility, String path, byte[] buffer,
-                       StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
+                       String clearlyBuffer, StringFilterGroup matchedGroup, FilterContentType contentType, int contentIndex) {
         return true;
     }
 }

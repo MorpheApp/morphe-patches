@@ -123,6 +123,7 @@ public class CommentsFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       String clearlyBuffer,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {

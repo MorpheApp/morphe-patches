@@ -34,6 +34,7 @@ public final class LithoFilterPatch {
         final String path;
         final String accessibility;
         final byte[] buffer;
+        final String clearlyBuffer;
 
         LithoFilterParameters(ContextInterface contextInterface, String identifier,
                               String path, String accessibility, byte[] buffer) {
@@ -42,6 +43,9 @@ public final class LithoFilterPatch {
             this.path = path;
             this.accessibility = accessibility;
             this.buffer = buffer;
+            StringBuilder clearlyBufferBuilder = new StringBuilder();
+            findAsciiStrings(clearlyBufferBuilder, buffer);
+            this.clearlyBuffer = clearlyBufferBuilder.toString();
         }
 
         @NonNull
@@ -60,7 +64,7 @@ public final class LithoFilterPatch {
             builder.append(path);
             if (Settings.DEBUG_PROTOBUFFER.get()) {
                 builder.append(" BufferStrings: ");
-                findAsciiStrings(builder, buffer);
+                builder.append(clearlyBuffer);
             }
 
             return builder.toString();
@@ -192,7 +196,7 @@ public final class LithoFilterPatch {
                             LithoFilterParameters parameters = (LithoFilterParameters) callbackParameter;
                             final boolean isFiltered = filter.isFiltered(parameters.contextInterface,
                                     parameters.identifier, parameters.accessibility, parameters.path,
-                                    parameters.buffer, group, type, matchedStartIndex);
+                                    parameters.buffer, parameters.clearlyBuffer, group, type, matchedStartIndex);
 
                             if (isFiltered && BaseSettings.DEBUG.get()) {
                                 Logger.printDebug(() -> type == Filter.FilterContentType.IDENTIFIER
@@ -233,6 +237,7 @@ public final class LithoFilterPatch {
         try {
             String identifier = contextInterface.patch_getIdentifier();
             StringBuilder pathBuilder = contextInterface.patch_getPathBuilder();
+            //noinspection SizeReplaceableByIsEmpty
             if (identifier.isEmpty() || pathBuilder.length() == 0) {
                 return false;
             }
