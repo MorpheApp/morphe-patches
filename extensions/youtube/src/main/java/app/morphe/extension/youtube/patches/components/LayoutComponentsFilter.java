@@ -875,4 +875,59 @@ public final class LayoutComponentsFilter extends Filter {
         }
         return isSearchHistory;
     }
+
+    private static final List<String> accountMenuFilterStrings = getFilterStrings(Settings.HIDE_ACCOUNT_MENU_FILTER_STRINGS);
+
+    /**
+     * Injection point.
+     */
+    public static void hideAccountTopItem(View view, CharSequence menuTitleCharSequence) {
+        hideAccountItem(view, menuTitleCharSequence, 3);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideAccountBottomItemModern(View view, CharSequence menuTitleCharSequence) {
+        hideAccountItem(view, menuTitleCharSequence, 5);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideAccountBottomItemLegacy(View view, CharSequence menuTitleCharSequence) {
+        hideAccountItem(view, menuTitleCharSequence, 3);
+    }
+
+    private static void hideAccountItem(View textView, CharSequence menuTitleCharSequence, int depth) {
+        if (!Settings.HIDE_ACCOUNT_MENU.get() || menuTitleCharSequence == null) return;
+        if (accountMenuFilterStrings.isEmpty()) return;
+        String menuTitleString = menuTitleCharSequence.toString();
+        boolean matches = false;
+        for (String filter : accountMenuFilterStrings) {
+            if (Settings.HIDE_ACCOUNT_MENU_FILTER_TYPE.get()
+                    ? menuTitleString.contains(filter)
+                    : menuTitleString.equalsIgnoreCase(filter)) {
+                matches = true;
+                break;
+            }
+        }
+
+        if (!matches) return;
+        View current = textView;
+        for (int i = 0; i < depth; i++) {
+            if (current.getParent() instanceof View parentView) {
+                current = parentView;
+            } else {
+                break;
+            }
+        }
+
+        Utils.hideViewByLayoutParams(current);
+        current.setVisibility(View.GONE);
+        if (current.getLayoutParams() instanceof ViewGroup.MarginLayoutParams marginParams) {
+            marginParams.setMargins(0, 0, 0, 0);
+            current.setLayoutParams(marginParams);
+        }
+    }
 }

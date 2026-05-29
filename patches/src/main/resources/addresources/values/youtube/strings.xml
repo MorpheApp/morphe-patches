@@ -64,6 +64,9 @@ Changes include:
     <string name="morphe_hide_feed_flyout_menu_title">Enable feed flyout menu filter</string>
     <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Feed flyout menu filter</string>
     <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Enter the flyout menu names to filter by, separated by new lines</string>
+    <string name="morphe_hide_account_menu_title">Enable Library / You bottom menu filter</string>
+    <string name="morphe_hide_account_menu_filter_strings_title">Library / You bottom menu filter</string>
+    <string name="morphe_hide_account_menu_filter_strings_summary">Enter the Library / You bottom menu names to filter by, separated by new lines</string>
     <string name="morphe_hide_album_cards_title">Hide album cards</string>
     <string name="morphe_hide_album_cards_summary">Hides the album cards under the artist description</string>
     <string name="morphe_hide_artist_cards_title">Hide artist cards</string>
