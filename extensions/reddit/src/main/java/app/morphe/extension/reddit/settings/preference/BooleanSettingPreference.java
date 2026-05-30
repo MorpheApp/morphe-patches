@@ -19,7 +19,11 @@ public class BooleanSettingPreference extends SwitchPreference {
     public BooleanSettingPreference(Context context, BooleanSetting setting) {
         super(context);
         this.setTitle(str(setting.key + "_title"));
-        this.setSummary(str(setting.key + "_summary"));
+        String summaryKey = setting.key + "_summary";
+        int summaryResId = context.getResources().getIdentifier(summaryKey, "string", context.getPackageName());
+        if (summaryResId != 0) {
+            this.setSummary(str(summaryKey));
+        }
         this.setKey(setting.key);
         this.setChecked(setting.get());
     }
