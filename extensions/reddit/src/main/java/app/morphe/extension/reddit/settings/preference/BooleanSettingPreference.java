@@ -11,6 +11,7 @@ import static app.morphe.extension.shared.StringRef.str;
 import android.content.Context;
 import android.preference.SwitchPreference;
 
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.settings.BooleanSetting;
 
 @SuppressWarnings("deprecation")
@@ -20,8 +21,7 @@ public class BooleanSettingPreference extends SwitchPreference {
         super(context);
         this.setTitle(str(setting.key + "_title"));
         String summaryKey = setting.key + "_summary";
-        int summaryResId = context.getResources().getIdentifier(summaryKey, "string", context.getPackageName());
-        if (summaryResId != 0) {
+        if (ResourceUtils.getStringIdentifier(summaryKey) != 0) {
             this.setSummary(str(summaryKey));
         }
         this.setKey(setting.key);
