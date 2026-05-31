@@ -23,23 +23,31 @@ Second \"item\" text"</string>
     <string name="morphe_disable_modern_home_title">Disable modern home UI</string>
     <string name="morphe_disable_screenshot_popup_title">Disable screenshot popup</string>
     <string name="morphe_hide_ask_button_title">Hide Ask button</string>
+    <string name="morphe_hide_ask_button_summary">Hides the Ask button in the search bar</string>
+    <string name="morphe_hide_recommended_communities_shelf_title">Hide recommended communities shelf</string>
+    <string name="morphe_hide_recommended_communities_shelf_summary">Hides the recommended communities shelves in subreddits</string>
+    <string name="morphe_hide_trending_today_shelf_title">Hide Trending Today shelf</string>
+    <string name="morphe_hide_trending_today_shelf_summary">Limitation: May leave blank spaces in the interface</string>
+    <string name="morphe_remove_notification_dialog_title">Auto-dismiss notification popups</string>
+    <string name="morphe_remove_notification_dialog_summary">Automatically dismisses the notification suggestion dialog when visiting a subreddit</string>
+    <string name="morphe_remove_nsfw_dialog_title">Auto-accept NSFW warnings</string>
+    <string name="morphe_remove_nsfw_dialog_summary">Automatically accepts the NSFW content warning when visiting a subreddit</string>
+    <string name="morphe_show_view_count_title">Show view count on posts</string>
+    <string name="morphe_show_view_count_summary">Limitation: Depends on the view count being provided by the API</string>
+
+    <string name="morphe_screen_navigation_bar_title">Navigation bar</string>
     <string name="morphe_hide_answers_button_title">Hide Answers button</string>
     <string name="morphe_hide_chat_button_title">Hide Chat button</string>
     <string name="morphe_hide_create_button_title">Hide Create button</string>
     <string name="morphe_hide_discover_button_title">Hide Discover or Communities button</string>
     <string name="morphe_hide_games_button_title">Hide Games button</string>
-    <string name="morphe_hide_recently_visited_shelf_title">Hide Recently Visited shelf</string>
-    <string name="morphe_hide_games_on_reddit_shelf_title">Hide Games on Reddit shelf</string>
-    <string name="morphe_hide_reddit_pro_shelf_title">Hide Reddit Pro shelf</string>
+
+    <string name="morphe_screen_sidebar_title">Sidebar</string>
     <string name="morphe_hide_about_shelf_title">Hide About shelf</string>
+    <string name="morphe_hide_games_on_reddit_shelf_title">Hide Games on Reddit shelf</string>
+    <string name="morphe_hide_recently_visited_shelf_title">Hide Recently Visited shelf</string>
+    <string name="morphe_hide_reddit_pro_shelf_title">Hide Reddit Pro shelf</string>
     <string name="morphe_hide_resources_shelf_title">Hide Resources shelf</string>
-    <string name="morphe_hide_recommended_communities_shelf_title">Hide recommended communities shelf</string>
-    <string name="morphe_hide_trending_today_shelf_title">Hide Trending Today shelf</string>
-    <string name="morphe_hide_trending_today_shelf_summary">Limitation: May leave blank spaces in the interface</string>
-    <string name="morphe_remove_notification_dialog_title">Auto-dismiss notification popups</string>
-    <string name="morphe_show_view_count_title">Show view count on posts</string>
-    <string name="morphe_show_view_count_summary">Limitation: Depends on the view count being provided by the API</string>
-    <string name="morphe_remove_nsfw_dialog_title">Auto-accept NSFW warnings</string>
 
     <string name="morphe_screen_miscellaneous_title">Miscellaneous</string>
     <string name="morphe_about_title">About</string>
