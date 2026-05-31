@@ -3,14 +3,11 @@ package app.morphe.patches.shared.layout.theme
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.PatchException
-import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.util.childElementsSequence
-import app.morphe.util.forEachChildElement
 import java.util.Locale
-import org.w3c.dom.Element
 
 internal const val THEME_COLOR_OPTION_DESCRIPTION = "Can be a hex color (#RRGGBB) or a color resource reference."
 
@@ -138,48 +135,5 @@ internal fun baseThemeResourcePatch(
                 }
             }
         }
-
-        val isMaterialYouDark = darkColor!!.startsWith("@android:color/system_")
-
-        arrayOf(
-            "new_content_dot_background.xml",
-            "new_content_dot_background_cairo.xml",
-            "new_content_count_background.xml",
-            "new_content_count_background_cairo.xml"
-        ).forEach { fileName ->
-            patchDotColor(
-                "drawable-night-anydpi-v31",
-                fileName,
-                if (isMaterialYouDark) "@android:color/system_accent1_100" else null
-            )
-        }
     }
-}
-
-fun ResourcePatchContext.patchDotColor(targetDir: String, fileName: String, colorValue: String?) {
-    try {
-        val resDir = get("res")
-        val sourceFile = listOf(
-            "drawable", "drawable-anydpi-v26", "drawable-anydpi", "drawable-v24", "drawable-v31"
-        ).firstNotNullOfOrNull { dir ->
-            resDir.resolve("$dir/$fileName").takeIf { it.exists() }
-        } ?: return
-
-        val targetDirFile = resDir.resolve(targetDir)
-        val targetFile = targetDirFile.resolve(fileName)
-
-        if (!targetDirFile.exists()) targetDirFile.mkdirs()
-        if (!targetFile.exists()) sourceFile.copyTo(targetFile)
-
-        if (colorValue == null) return
-
-        document("res/$targetDir/$fileName").use { document ->
-            val shapeNode = document.getElementsByTagName("shape").item(0) as? Element ?: return@use
-            shapeNode.forEachChildElement { node ->
-                if (node.nodeName == "solid" && node.hasAttribute("android:color")) {
-                    node.setAttribute("android:color", colorValue)
-                }
-            }
-        }
-    } catch (_: Exception) {}
 }

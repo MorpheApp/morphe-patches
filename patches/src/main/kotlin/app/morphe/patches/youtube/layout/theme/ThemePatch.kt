@@ -222,13 +222,29 @@ val themePatch = baseThemePatch(
                         )
                     }
 
+                    fun patchCountTextColor(resPath: String, color: String) {
+                        val resDir = get("res")
+                        val sourceFile = listOf("layout-v31", "layout-v26", "layout").firstNotNullOfOrNull {
+                            resDir.resolve("$it/new_content_count.xml").takeIf { f -> f.exists() }
+                        } ?: return
+                        val targetFile = resDir.resolve(resPath)
+                        targetFile.parentFile?.mkdirs()
+                        val patchedXml = sourceFile.readText().replace(
+                            Regex("""android:textColor="[^"]+""""),
+                            """android:textColor="$color""""
+                        )
+                        targetFile.writeText(patchedXml)
+                    }
+
                     if (isMaterialYouDark) {
                         createNotifDrawable("drawable/morphe_notif_dot_dark.xml", "@android:color/system_accent1_100", "oval")
                         createNotifDrawable("drawable/morphe_notif_count_dark.xml", "@android:color/system_accent1_100", "rectangle", hasCorners = true)
+                        patchCountTextColor("layout-v31/new_content_count.xml", "@android:color/system_neutral1_900")
                     }
                     if (isMaterialYouLight) {
                         createNotifDrawable("drawable/morphe_notif_dot_light.xml", "@android:color/system_accent1_200", "oval")
                         createNotifDrawable("drawable/morphe_notif_count_light.xml", "@android:color/system_accent1_100", "rectangle", hasCorners = true)
+                        patchCountTextColor("layout-v31/new_content_count.xml", "@android:color/system_neutral1_900")
                     }
 
                     document("res/values/styles.xml").use { doc ->
