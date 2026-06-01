@@ -111,3 +111,9 @@ internal object NewPlayerOverlaysFeatureFlagFingerprint : Fingerprint(
         literal(45752335L)
     )
 )
+
+internal object PipAutoEnterFeatureFlagFingerprint : Fingerprint(
+    filters = listOf(
+        literal(45685828L)
+    )
+)

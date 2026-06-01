@@ -133,5 +133,8 @@ val backgroundPlaybackPatch = bytecodePatch(
             // must also be disabled, otherwise the player is a black screen with no buttons and no playback.
             NewPlayerOverlaysFeatureFlagFingerprint.addBackgroundPlaybackFeatureFlagHook(false)
         }
+
+        // New YouTube PiP auto-enter flag in the same controller as the PiP input consumer flag above.
+        PipAutoEnterFeatureFlagFingerprint.addBackgroundPlaybackFeatureFlagHook(false)
     }
 }
