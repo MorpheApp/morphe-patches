@@ -308,6 +308,17 @@ val crossfadePatch = bytecodePatch(
                     invoke-static {}, $EXTENSION_CLASS->onActivityStart()V
                 """
             )
+        // Hook onDestroy so we can release in-flight crossfade state when the
+        // user swipe-clears from recents (process may survive via foreground
+        // service; without cleanup our statics inherit orphaned player refs
+        // into the next activity instance).
+        musicActivityClass.methods.firstOrNull { it.name == "onDestroy" && it.parameterTypes.isEmpty() }
+            ?.addInstructions(
+                0,
+                """
+                    invoke-static {}, $EXTENSION_CLASS->onActivityDestroy()V
+                """,
+            )
 
         // -------------------------------------------------------------- //
         //  Discover obfuscated classes and fields                         //

@@ -897,6 +897,17 @@ public class CrossfadeManager {
      * naturally loads the next track onto it.
      */
     private static boolean handleChainedSkip(Object atadInstance) {
+        // When the activity is stopped/destroyed (recents-view, swipe-clear), YTM
+        // emits rapid stopVideo(5) bursts as part of its own teardown.  Treating
+        // those as user chained skips creates factory players that can never
+        // reach READY (the activity is going away), leading to a 10 s timeout
+        // and emergency cleanup.  Decline chained-skip engagement during these
+        // windows and let native through — onActivityDestroy will clean up the
+        // existing in-flight crossfade.
+        if (!activityRunning) {
+            logInfo(() -> "CHAINED SKIP suppressed — activity not running (likely teardown)");
+            return false;
+        }
         logDebug(() -> "stopVideo(5): CHAINED SKIP — creating new player, deferring demotion until READY");
 
         if (is9x) {
@@ -2314,6 +2325,7 @@ public class CrossfadeManager {
 
     public static void onActivityStop() {
         activityRunning = false;
+        logInfo(() -> "onActivityStop");
         // Do not stop the auto-advance monitor here — crossfade should continue
         // even when the screen locks or the app is minimised (#1311).
         //
@@ -2325,8 +2337,55 @@ public class CrossfadeManager {
         // (#1442).
     }
 
+    /**
+     * Called when the MusicActivity is being destroyed (swipe-clear from recents,
+     * explicit finish, OS reclaim).  Distinct from {@link #onActivityStop} which
+     * also fires on screen-lock and minimize.  The process itself may survive via
+     * the foreground service, so we must clean up our static state — otherwise
+     * the next activity instance inherits orphaned references to released or
+     * unreachable players.
+     *
+     * <p>We do NOT release {@code crossfadeInPlayer} because it is the active
+     * coordinator player which YTM owns and manages across activity recreation.
+     * We only release the players we created (factory pendings + fade-outs) and
+     * clear our state flags.
+     */
+    public static void onActivityDestroy() {
+        activityRunning = false;
+        if (!crossfadeInProgress
+                && pendingInPlayer == null
+                && pendingOutPlayer == null
+                && fadingOutPlayers.isEmpty()) {
+            logInfo(() -> "onActivityDestroy — no in-flight crossfade state to release");
+            return;
+        }
+        logInfo(() -> "onActivityDestroy — releasing in-flight crossfade state " + dumpState());
+        stopAutoAdvanceMonitor();
+        if (deferredSwapRunnable != null) {
+            mainHandler.removeCallbacks(deferredSwapRunnable);
+            deferredSwapRunnable = null;
+        }
+        releaseAllFadingPlayers();
+        ExoPlayerAccess pi = pendingInPlayer;
+        if (pi != null) { releasePlayer(pi); pendingInPlayer = null; }
+        ExoPlayerAccess po = pendingOutPlayer;
+        if (po != null) { releasePlayer(po); pendingOutPlayer = null; }
+        crossfadeInPlayer = null;
+        activeCoordinator = null;
+        crossfadeInProgress = false;
+        autoAdvanceCrossfadeActive = false;
+        queueAdvancedByMonitor = false;
+        monitorTriggeredSkip = false;
+        monitorCrossfadeActive = false;
+        outgoingFadePreStarted = false;
+        deferredSwapPending = false;
+        currentFadeInVolume = 0.0f;
+        coordinatorListenerBxi = null;
+    }
+
     public static void onActivityStart() {
         activityRunning = true;
+        logInfo(() -> "onActivityStart");
 
         // Pause is per-session: reset on every activity start so a stale paused state
         // can't survive a process that wasn't actually killed on swipe.
