@@ -57,21 +57,17 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 
         // region patch for hide trending today header.
 
-        SearchSectionHeaderFingerprint.method.apply {
-            val free = findFreeRegister(0)
-
-            addInstructionsWithLabels(
+        SearchSectionHeaderFingerprint.method.addInstructionsWithLabels(
                 0,
-                """
-                    invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->shouldHideSearchSectionHeader(Ljava/lang/Object;)Z
-                    move-result v$free
-                    if-eqz v$free, :ignore
-                    return-void
-                    :ignore
-                    nop
-                """.trimIndent()
-            )
-        }
+            """
+                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->shouldHideSearchSectionHeader(Ljava/lang/Object;)Z
+                move-result v0
+                if-eqz v0, :ignore
+                return-void
+                :ignore
+                nop
+            """
+        )
 
         // endregion
 
