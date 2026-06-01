@@ -19,6 +19,7 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -912,20 +913,14 @@ public final class LayoutComponentsFilter extends Filter {
         }
 
         if (!matches) return;
-        View current = textView;
-        for (int i = 0; i < depth; i++) {
-            if (current.getParent() instanceof View parentView) {
-                current = parentView;
-            } else {
-                break;
+        ViewParent parent = Utils.getParentView(textView, depth);
+        if (parent instanceof View current) {
+            Utils.hideViewByLayoutParams(current);
+            current.setVisibility(View.GONE);
+            if (current.getLayoutParams() instanceof ViewGroup.MarginLayoutParams marginParams) {
+                marginParams.setMargins(0, 0, 0, 0);
+                current.setLayoutParams(marginParams);
             }
-        }
-
-        Utils.hideViewByLayoutParams(current);
-        current.setVisibility(View.GONE);
-        if (current.getLayoutParams() instanceof ViewGroup.MarginLayoutParams marginParams) {
-            marginParams.setMargins(0, 0, 0, 0);
-            current.setLayoutParams(marginParams);
         }
     }
 }
