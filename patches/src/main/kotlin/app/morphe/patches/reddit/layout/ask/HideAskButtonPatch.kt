@@ -13,7 +13,6 @@ import app.morphe.patches.reddit.misc.flag.hookFeatureFlag
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
-import app.morphe.util.findFreeRegister
 import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
@@ -37,14 +36,12 @@ val hideAskButtonPatch = bytecodePatch(
         hookFeatureFlag("$EXTENSION_CLASS->hideAskButton")
 
         AskButtonComposableFingerprint.method.apply {
-            val free = findFreeRegister(0)
-
             addInstructionsWithLabels(
                 0,
                 """
                     invoke-static { }, $EXTENSION_CLASS->shouldHideAskButton()Z
-                    move-result v$free
-                    if-eqz v$free, :ignore
+                    move-result v0
+                    if-eqz v0, :ignore
                     return-void
                     :ignore
                     nop
