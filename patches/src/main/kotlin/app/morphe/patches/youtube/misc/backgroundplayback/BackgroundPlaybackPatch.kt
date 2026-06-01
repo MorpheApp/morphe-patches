@@ -57,11 +57,14 @@ val backgroundPlaybackPatch = bytecodePatch(
             SwitchPreference("morphe_remove_background_playback_restrictions")
         )
 
+        // Verify exactly one match exists because fingerprint is so simple.
+        fun Fingerprint.matchSingle() = matchAll(1 .. 1).first()
+
         arrayOf(
             BackgroundPlaybackManagerFingerprint to "isBackgroundPlaybackAllowed",
             BackgroundPlaybackManagerShortsFingerprint to "isBackgroundShortsPlaybackAllowed",
         ).forEach { (fingerprint, integrationsMethod) ->
-            fingerprint.method.apply {
+            fingerprint.matchSingle().method.apply {
                 findInstructionIndicesReversedOrThrow(Opcode.RETURN).forEach { index ->
                     val register = getInstruction<OneRegisterInstruction>(index).registerA
 
