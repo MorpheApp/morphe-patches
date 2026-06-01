@@ -48,11 +48,11 @@ public final class HideTrendingTodayShelfPatch {
      * Injection point.
      */
     public static boolean shouldHideSearchSectionHeader(Object state) {
-        if (!hideTrendingTodayShelf() || state == null) {
-            return false;
-        }
-
         try {
+            if (state == null || !hideTrendingTodayShelf()) {
+                return false;
+            }
+
             String stateStr = state.toString();
             for (String label : trendingLabels) {
                 if (stateStr.contains(label)) return true;
@@ -68,7 +68,7 @@ public final class HideTrendingTodayShelfPatch {
                 }
             }
         } catch (Exception e) {
-            Logger.printException(() -> "Failed to check search section header");
+            Logger.printException(() -> "shouldHideSearchSectionHeader failure");
         }
 
         return false;
@@ -78,25 +78,29 @@ public final class HideTrendingTodayShelfPatch {
      * Injection point.
      */
     public static void setContentLanguages(List<Locale> locales) {
-        if (trendingLabels == null || trendingLabels.length <= 1) {
-            if (Utils.getContext() == null) {
-                Logger.printInfo(() -> "Cannot set content languages, context is null");
-                return;
-            }
+        try {
+            if (trendingLabels == null || trendingLabels.length <= 1) {
+                if (Utils.getContext() == null) {
+                    Logger.printInfo(() -> "Cannot set content languages, context is null");
+                    return;
+                }
 
-            Set<String> newTrendingLabels = new HashSet<>(2 * locales.size());
-            newTrendingLabels.add(TRENDING_LABEL);
+                Set<String> newTrendingLabels = new HashSet<>(2 * locales.size());
+                newTrendingLabels.add(TRENDING_LABEL);
 
-            for (Locale locale : locales) {
-                if (ResourceUtils.getStringIdentifier(TRENDING_LABEL_KEY) != 0) {
-                    String localizedTrendingLabel = ResourceUtils.getStringByLocale(TRENDING_LABEL_KEY, locale);
-                    if (localizedTrendingLabel != null && !TRENDING_LABEL_KEY.equals(localizedTrendingLabel)) {
-                        newTrendingLabels.add(localizedTrendingLabel);
+                for (Locale locale : locales) {
+                    if (ResourceUtils.getStringIdentifier(TRENDING_LABEL_KEY) != 0) {
+                        String localizedTrendingLabel = ResourceUtils.getStringByLocale(TRENDING_LABEL_KEY, locale);
+                        if (localizedTrendingLabel != null && !TRENDING_LABEL_KEY.equals(localizedTrendingLabel)) {
+                            newTrendingLabels.add(localizedTrendingLabel);
+                        }
                     }
                 }
-            }
 
-            trendingLabels = newTrendingLabels.toArray(new String[0]);
+                trendingLabels = newTrendingLabels.toArray(new String[0]);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "setContentLanguages failure");
         }
     }
 }
