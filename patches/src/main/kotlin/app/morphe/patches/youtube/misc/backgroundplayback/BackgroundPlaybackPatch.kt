@@ -25,6 +25,7 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.matchSingle
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
@@ -56,9 +57,6 @@ val backgroundPlaybackPatch = bytecodePatch(
         PreferenceScreen.MISC.addPreferences(
             SwitchPreference("morphe_remove_background_playback_restrictions")
         )
-
-        // Verify exactly one match exists because fingerprint is so simple.
-        fun Fingerprint.matchSingle() = matchAll(1 .. 1).first()
 
         arrayOf(
             BackgroundPlaybackManagerFingerprint to "isBackgroundPlaybackAllowed",
