@@ -47,7 +47,8 @@ internal object BackgroundPlaybackManagerShortsFingerprint : Fingerprint(
     returnType = "Z",
     parameters = listOf("L"),
     filters = listOf(
-        literal(151635310)
+        literal(151635310),
+        opcode(Opcode.IGET_BOOLEAN, location = MatchAfterWithin(8)),
     )
 )
 
