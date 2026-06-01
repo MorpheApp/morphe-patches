@@ -35,19 +35,17 @@ val hideAskButtonPatch = bytecodePatch(
 
         hookFeatureFlag("$EXTENSION_CLASS->hideAskButton")
 
-        AskButtonComposableFingerprint.method.apply {
-            addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->shouldHideAskButton()Z
-                    move-result v0
-                    if-eqz v0, :ignore
-                    return-void
-                    :ignore
-                    nop
-                """.trimIndent()
-            )
-        }
+        AskButtonComposableFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->shouldHideAskButton()Z
+                move-result v0
+                if-eqz v0, :ignore
+                return-void
+                :ignore
+                nop
+            """
+        )
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
