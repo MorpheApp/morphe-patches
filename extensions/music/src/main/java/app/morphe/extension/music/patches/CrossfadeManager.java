@@ -660,19 +660,35 @@ public class CrossfadeManager {
                 return false;
             }
 
-            boolean isAutoAdvance = false;
+            // Primary signal: the monitor explicitly set queueAdvancedByMonitor=true
+            // before dispatching MEDIA_NEXT.  This is definitive — it doesn't depend
+            // on the position-at-stopVideo-time relative to AUTO_ADVANCE_THRESHOLD_MS,
+            // which fails for any fade duration ≥ 5 s (the monitor triggers at
+            // remaining = fadeDuration + buffer, so for an 8 s fade the stopVideo
+            // arrives with ~8 s remaining and the old remaining-only check
+            // misclassified it as a manual skip — leaving cwh attached on the
+            // outgoing and causing a double-advance when the outgoing naturally
+            // ends in the fade pool).
+            boolean isAutoAdvance = queueAdvancedByMonitor;
             try {
                 long pos = currentExo.patch_getCurrentPosition();
                 long duration = currentExo.patch_getDuration();
                 long remaining = (duration > 0) ? duration - pos : Long.MAX_VALUE;
-                isAutoAdvance = duration > 0 && remaining >= 0
-                        && remaining < AUTO_ADVANCE_THRESHOLD_MS;
+                // Fallback heuristic: covers paths where the monitor flag wasn't set
+                // (e.g. YTM's own natural-end fired before our monitor could).
+                if (!isAutoAdvance) {
+                    isAutoAdvance = duration > 0 && remaining >= 0
+                            && remaining < AUTO_ADVANCE_THRESHOLD_MS;
+                }
                 final boolean isAutoAdvanceFinal = isAutoAdvance;
                 logDebug(() -> "stopVideo(5): pos=" + pos + "ms dur=" + duration
                         + "ms remaining=" + remaining
-                        + "ms → " + (isAutoAdvanceFinal ? "AUTO-ADVANCE" : "MANUAL SKIP"));
+                        + "ms queueAdvancedByMonitor=" + queueAdvancedByMonitor
+                        + " → " + (isAutoAdvanceFinal ? "AUTO-ADVANCE" : "MANUAL SKIP"));
             } catch (Exception e) {
-                logWarn(()-> "Could not read position/duration, assuming manual skip", e);
+                final boolean isAutoAdvanceFinal = isAutoAdvance;
+                logWarn(() -> "Could not read position/duration, assuming "
+                        + (isAutoAdvanceFinal ? "auto-advance" : "manual skip"), e);
             }
 
             if (isAutoAdvance && !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
