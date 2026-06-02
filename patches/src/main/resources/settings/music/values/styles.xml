@@ -3,6 +3,7 @@
     <style name="Theme.Morphe.YouTubeMusic.Settings" parent="@style/Theme.YouTubeMusic.Settings.Compat.Base">
         <item name="android:actionBarSize">@dimen/action_bar_height</item>
         <item name="android:textColorHint">@color/ytm_text_color_secondary</item>
+        <item name="android:textColorTertiary">@color/ytm_text_color_secondary</item>
         <item name="android:listDivider">@null</item>
     </style>
 </resources>
