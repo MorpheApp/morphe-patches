@@ -15,6 +15,7 @@ import static app.morphe.extension.youtube.settings.Settings.OPEN_SYSTEM_SHARE_S
 
 import android.content.Intent;
 import android.os.SystemClock;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,49 +49,69 @@ public final class SystemShareSheetFilter extends Filter {
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
-        if (systemSheetOpened) {
-            return false;
-        }
-        if (clearlyBuffer.startsWith("Eshare_sheet_share_targets_third_party_segment.e")) {
-            Matcher matcher = rawVideoURLRegex.matcher(clearlyBuffer);
-            if (matcher.find()) {
-                systemSheetOpened = true;
-                performClickOutsidePanel(flyoutMenuRecyclerView.get().getRootView());
-                final String rawVideoURL = matcher.group(1);
-                if (!TextUtils.isEmpty(rawVideoURL)) {
-                    int urlIndex = rawVideoURL.indexOf("http");
-                    if (urlIndex > -1) {
-                        final String sanitizedVideoURL =
-                                SanitizeSharingLinksPatch.sanitize(rawVideoURL.substring(urlIndex));
-                        try {
-                            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-                            shareIntent.setType("text/plain");
-                            shareIntent.putExtra(Intent.EXTRA_TEXT, sanitizedVideoURL);
-                            Intent chooserIntent = Intent.createChooser(shareIntent, "");
-                            chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            getContext().startActivity(chooserIntent);
-                        } catch (Exception ex) {
-                            Logger.printException(() -> "Can not open System Share panel: " + sanitizedVideoURL, ex);
-                        }
-                    }
-                }
-                systemSheetOpened = false;
-            }
+        if (!systemSheetOpened && openSystemShareSheet(clearlyBuffer)) {
+            systemSheetOpened = false;
         }
         return true;
     }
 
+    private boolean openSystemShareSheet(String clearlyBuffer) {
+        if (clearlyBuffer.startsWith("Eshare_sheet_share_targets_third_party_segment.e")) {
+            Matcher matcher = rawVideoURLRegex.matcher(clearlyBuffer);
+            if (matcher.find()) {
+                systemSheetOpened = true;
+                RecyclerView shareSheetRecyclerView = flyoutMenuRecyclerView.get();
+                if (shareSheetRecyclerView != null) {
+                    performClickOutsidePanel(shareSheetRecyclerView.getRootView());
+                    final String rawVideoURL = matcher.group(1);
+                    if (!TextUtils.isEmpty(rawVideoURL)) {
+                        int urlIndex = rawVideoURL.indexOf("http");
+                        if (urlIndex > -1) {
+                            final String sanitizedVideoURL =
+                                    SanitizeSharingLinksPatch.sanitize(rawVideoURL.substring(urlIndex));
+                            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                            shareIntent.setType("text/plain");
+                            shareIntent.putExtra(Intent.EXTRA_TEXT, sanitizedVideoURL);
+                            Intent chooserIntent = Intent.createChooser(shareIntent, "");
+                            chooserIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_USER_ACTION);
+                            try {
+                                getContext().startActivity(chooserIntent);
+                            } catch (Exception ex) {
+                                Logger.printException(() -> "Can not open System Share panel delayed: " + sanitizedVideoURL, ex);
+                            }
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     // To close the Share sheet panel, a touch event sent through decorView is needed.
-    private void performClickOutsidePanel(View shareSheetDecorView) {
-        MotionEvent outsidePanelTap = MotionEvent.obtain(
-                SystemClock.uptimeMillis(),
-                SystemClock.uptimeMillis(),
-                MotionEvent.ACTION_OUTSIDE,
-                0.0f,
-                0.0f,
-                0
-        );
-        shareSheetDecorView.dispatchTouchEvent(outsidePanelTap);
-        outsidePanelTap.recycle();
+    private void performClickOutsidePanel(View decorView) {
+        float clickX = decorView.getWidth() * 0.5f;
+        float clickY = decorView.getHeight() * 0.25f;
+
+        if (clickX <= 0 || clickY <= 0) {
+            clickX = 200.0f;
+            clickY = 200.0f;
+        }
+
+        long downTime = SystemClock.uptimeMillis();
+        long eventTime = SystemClock.uptimeMillis();
+
+        for (int i = 0; i < 2; i++) {
+            MotionEvent touchEvent = MotionEvent.obtain(
+                    downTime,
+                    i == 0 ? eventTime : eventTime + 10,
+                    i == 0 ? MotionEvent.ACTION_DOWN : MotionEvent.ACTION_UP,
+                    clickX,
+                    clickY,
+                    0
+            );
+            decorView.dispatchTouchEvent(touchEvent);
+            touchEvent.recycle();
+        }
     }
 }
