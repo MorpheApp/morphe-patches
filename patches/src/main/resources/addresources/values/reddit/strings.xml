@@ -55,21 +55,19 @@ Second \"item\" text"</string>
 
 Limitation: Visual spacers may not be hidden"</string>
     <string name="morphe_remove_notification_dialog_title">Remove notification suggestion dialog</string>
-    <string name="morphe_remove_notification_dialog_summary">Removes the notifications suggestion dialog that appears when visiting a subreddit by dismissing it automatically</string>
-    <string name="morphe_show_view_count_title">Show view count</string>
-    <string name="morphe_show_view_count_summary">"Shows the view count of Posts
-
-Limitation: Only shown if the API response includes the view count"</string>
+    <string name="morphe_remove_notification_dialog_summary">Automatically dismisses the notification suggestion dialog when visiting a subreddit</string>
+    <string name="morphe_show_view_count_title">Show view count on posts</string>
+    <string name="morphe_show_view_count_summary">Limitation: Only available if the API response includes the view count</string>
     <string name="morphe_remove_nsfw_dialog_title">Remove NSFW warning dialog</string>
-    <string name="morphe_remove_nsfw_dialog_summary">Removes the NSFW warning dialog that appears when visiting a subreddit by accepting it automatically</string>
+    <string name="morphe_remove_nsfw_dialog_summary">Automatically accepts the NSFW content warning when visiting a subreddit</string>
 
     <string name="morphe_screen_miscellaneous_title">Miscellaneous</string>
     <string name="morphe_about_title">About</string>
     <string name="morphe_about_summary">Patch version and official links</string>
     <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
-    <string name="morphe_sanitize_sharing_links_summary">Sanitizes sharing links by removing tracking query parameters</string>
+    <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
     <string name="morphe_open_links_directly_title">Open links directly</string>
-    <string name="morphe_open_links_directly_summary">Skips over redirection URLs in external links</string>
+    <string name="morphe_open_links_directly_summary">Bypasses redirect URLs when opening external links</string>
     <string name="morphe_open_links_externally_title">Open links externally</string>
-    <string name="morphe_open_links_externally_summary">Opens links in your browser instead of in the in-app-browser</string>
+    <string name="morphe_open_links_externally_summary">Opens links in your browser instead of the in-app browser</string>
 </resources>

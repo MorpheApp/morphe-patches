@@ -24,7 +24,7 @@ internal val transcriptPatch = bytecodePatch(
 
     execute {
         settingsMenuCaptionGroup.add(
-            SwitchPreference("morphe_fix_transcript")
+            SwitchPreference("morphe_fix_transcript", summary = true)
         )
 
         addClientVersionHook(

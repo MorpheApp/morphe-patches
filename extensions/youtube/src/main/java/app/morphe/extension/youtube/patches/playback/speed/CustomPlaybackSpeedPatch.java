@@ -21,6 +21,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -345,9 +346,9 @@ public class CustomPlaybackSpeedPatch {
             speedSlider.setMax(speedToProgressValue(customPlaybackSpeedsMax));
             speedSlider.setProgress(speedToProgressValue(currentSpeed));
             speedSlider.getProgressDrawable().setColorFilter(
-                    Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN); // Theme progress bar.
+                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme progress bar.
             speedSlider.getThumb().setColorFilter(
-                    Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN); // Theme slider thumb.
+                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme slider thumb.
             LinearLayout.LayoutParams sliderParams = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             speedSlider.setLayoutParams(sliderParams);
@@ -622,6 +623,7 @@ class OutlineSymbolDrawable extends Drawable {
         paint.setColorFilter(colorFilter);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public int getOpacity() {
         return PixelFormat.TRANSLUCENT;

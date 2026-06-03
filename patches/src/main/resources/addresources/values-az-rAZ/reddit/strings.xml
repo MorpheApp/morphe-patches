@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Məhdudiyyət: Vizual boşluqlar gizlədilməyə bilər"</string>
   <string name="morphe_remove_notification_dialog_title">Bildiriş təklifi dialoqunu sil</string>
-  <string name="morphe_remove_notification_dialog_summary">Subreddit-ə daxil olanda görünən bildiriş təklifi dialoqunu birbaşa imtina edərək silir</string>
-  <string name="morphe_show_view_count_title">Baxış sayını göstər</string>
-  <string name="morphe_show_view_count_summary">"Elanların baxış sayı görünür
-
-Məhdudiyyət: Yalnız API cavabı baxış sayını daxil edərsə görünür"</string>
+  <string name="morphe_remove_notification_dialog_summary">Subreddit-i ziyarət etdikdə bildiriş təklifi dialoqun birbaşa ləğv edir</string>
+  <string name="morphe_show_view_count_title">Elanlarda baxış sayını göstər</string>
+  <string name="morphe_show_view_count_summary">Məhdudiyyət: Yalnız API cavabı baxış sayını yerləşdiribsə əlçatan olur</string>
   <string name="morphe_remove_nsfw_dialog_title">NSFW xəbərdarlıq dialoqunu sil</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Subreddit-ə daxil olanda görünən NSFW xəbərdarlıq dialoqu birbaşa qəbul edilərək silinir</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Subreddit-i ziyarət etdikdə NSFW məzmun xəbərdarlığın birbaşa qəbul edir</string>
   <string name="morphe_screen_miscellaneous_title">Çoxvariantlı</string>
   <string name="morphe_about_title">Haqqında</string>
   <string name="morphe_about_summary">Yamaq versiyası və xidməti bağlantılar</string>
   <string name="morphe_sanitize_sharing_links_title">Paylaşım keçidlərin təmizlə</string>
-  <string name="morphe_sanitize_sharing_links_summary">İzlənmə sorğusu faktorların silməklə paylaşma bağlantıların təmizləyir</string>
+  <string name="morphe_sanitize_sharing_links_summary">Paylaşılan keçidlərdən izlənmə sorğusu faktorların silir</string>
   <string name="morphe_open_links_directly_title">Keçidləri birbaşa açın</string>
-  <string name="morphe_open_links_directly_summary">Xarici keçidlərdə yönləndirmə URL-lərindən yan keçir</string>
+  <string name="morphe_open_links_directly_summary">Xarici keçidləri açarkən yönləndirmə URL-lərini yan keç</string>
   <string name="morphe_open_links_externally_title">Xarici olan keçidləri aç</string>
-  <string name="morphe_open_links_externally_summary">Linklər tətbiqdaxili brauzer əvəzinə, brauzerinizdə açılır</string>
+  <string name="morphe_open_links_externally_summary">Linkləri tətbiqdaxili brauzer əvəzinə, brauzerinizdə açır</string>
 </resources>

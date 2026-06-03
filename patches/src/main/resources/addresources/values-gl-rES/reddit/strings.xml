@@ -53,18 +53,10 @@ Second \"item\" text"</string>
 
 Limitación: Os espaciadores visuais poden non ser ocultados"</string>
   <string name="morphe_remove_notification_dialog_title">Eliminar diálogo de suxestión de notificación</string>
-  <string name="morphe_remove_notification_dialog_summary">Elimina o diálogo de suxestión de notificación que aparece ao visitar un subreddit rechazándoa automáticamente</string>
-  <string name="morphe_show_view_count_title">Mostrar conta de visualizacións</string>
-  <string name="morphe_show_view_count_summary">"Mostra a conta de visualizacións das publicacións
-
-Limitación: Só se mostra se a resposta da API inclúe a conta de visualizacións"</string>
   <string name="morphe_remove_nsfw_dialog_title">Eliminar diálogo de aviso NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Elimina o diálogo de aviso por contido NSFW que aparece ao visitar un subreddit aceptándoa automáticamente</string>
   <string name="morphe_screen_miscellaneous_title">Miscelánea</string>
   <string name="morphe_about_title">Acerca de</string>
   <string name="morphe_about_summary">Versión de parche e ligazóns oficiais</string>
   <string name="morphe_sanitize_sharing_links_title">Limpar enlaces compartidos</string>
-  <string name="morphe_sanitize_sharing_links_summary">Limpa os enlaces que se comparten eliminando parámetros de seguimento</string>
   <string name="morphe_open_links_directly_title">Abrir enlaces directamente</string>
-  <string name="morphe_open_links_directly_summary">Salta os URL de redirección en enlaces externos</string>
 </resources>

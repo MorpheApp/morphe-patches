@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 限制：視覺間隔符號可能無法隱藏"</string>
   <string name="morphe_remove_notification_dialog_title">移除通知建議對話框</string>
-  <string name="morphe_remove_notification_dialog_summary">自動接受訪問版塊時出現的通知建議對話框</string>
-  <string name="morphe_show_view_count_title">顯示觀看次數</string>
-  <string name="morphe_show_view_count_summary">"顯示貼文的觀看次數
-
-限制：僅當 API 回應包含觀看次數時才會顯示"</string>
+  <string name="morphe_remove_notification_dialog_summary">前往 subreddit 時自動解除通知建議對話方塊</string>
+  <string name="morphe_show_view_count_title">在貼文中顯示檢視次數</string>
+  <string name="morphe_show_view_count_summary">限制：僅在 API 回應包含檢視次數時可用</string>
   <string name="morphe_remove_nsfw_dialog_title">移除 NSFW 警告對話框</string>
-  <string name="morphe_remove_nsfw_dialog_summary">自動接受訪問版塊時出現的 NSFW 警告對話框</string>
+  <string name="morphe_remove_nsfw_dialog_summary">在造訪 subreddit 時，自動接受 NSFW 內容警告</string>
   <string name="morphe_screen_miscellaneous_title">其他</string>
   <string name="morphe_about_title">關於</string>
   <string name="morphe_about_summary">版本資訊和官方連結</string>
   <string name="morphe_sanitize_sharing_links_title">清理分享連結</string>
-  <string name="morphe_sanitize_sharing_links_summary">清除分享連結中的追蹤查詢參數</string>
+  <string name="morphe_sanitize_sharing_links_summary">已從分享連結中移除追蹤查詢參數</string>
   <string name="morphe_open_links_directly_title">直接開啟連結</string>
-  <string name="morphe_open_links_directly_summary">外部連結時略過重定向網址</string>
+  <string name="morphe_open_links_directly_summary">打開外部連結時，繞過重新導向網址</string>
   <string name="morphe_open_links_externally_title">開啟外部連結</string>
-  <string name="morphe_open_links_externally_summary">連結會在瀏覽器中開啟，而不是在應用程式內建瀏覽器中</string>
+  <string name="morphe_open_links_externally_summary">在您的瀏覽器中打開連結，而不是應用程式內瀏覽器</string>
 </resources>

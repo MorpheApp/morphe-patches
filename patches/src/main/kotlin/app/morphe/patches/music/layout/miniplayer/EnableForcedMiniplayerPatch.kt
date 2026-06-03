@@ -37,7 +37,7 @@ val enableForcedMiniplayerPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_music_enable_forced_miniplayer")
+            SwitchPreference("morphe_music_enable_forced_miniplayer", summary = true)
         )
 
         MinimizedPlayerFingerprint.let {

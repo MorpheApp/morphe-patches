@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Arama geçmişi boş</string>
   <string name="morphe_settings_search_empty_history_summary">Arama geçmişini kaydetmek için bir arama sorgusu yazın ve Enter\'a basın</string>
   <string name="morphe_settings_search_history_title">Ayarlar arama geçmişini göster</string>
-  <string name="morphe_settings_search_history_summary_on">Ayarlar arama geçmişi gösteriliyor</string>
-  <string name="morphe_settings_search_history_summary_off">Ayarlar arama geçmişi gösterilmiyor</string>
   <string name="morphe_show_menu_icons_title">Morphe ayar simgelerini göster</string>
-  <string name="morphe_show_menu_icons_summary_on">Ayar simgeleri gösteriliyor</string>
-  <string name="morphe_show_menu_icons_summary_off">Ayar simgeleri gösterilmiyor</string>
   <string name="morphe_language_title">Morphe dili</string>
   <string name="morphe_language_user_dialog_message">"Bazı diller için çeviriler eksik veya tamamlanmamış olabilir.
 
@@ -88,16 +84,11 @@ Yeni dilleri çevirmek veya mevcut çevirileri iyileştirmek için morphe.softwa
   <string name="morphe_settings_about_licenses_loading">Yükleniyor...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Hata ayıklama</string>
-  <string name="morphe_debug_screen_summary">Hata ayıklama seçeneklerini etkinleştir veya devre dışı bırak</string>
-  <string name="morphe_debug_title">Hata ayıklama kayıtları</string>
-  <string name="morphe_debug_summary_on">Hata ayıklama kayıtları etkin</string>
-  <string name="morphe_debug_summary_off">Hata ayıklama kayıtları devre dışı</string>
+  <string name="morphe_debug_screen_summary">Gelişmiş geliştirici seçeneklerini ve tanılama günlüklerini yapılandırın</string>
+  <string name="morphe_debug_title">Hata ayıklama kayıtlarını etkinleştir</string>
   <string name="morphe_debug_stacktrace_title">Hata ayıklama kaydı stack trace</string>
-  <string name="morphe_debug_stacktrace_summary_on">Hata ayıklama kayıtları stack traces\'i içerir</string>
-  <string name="morphe_debug_stacktrace_summary_off">Hata ayıklama kayıtları stack traces\'i içermez</string>
+  <string name="morphe_debug_stacktrace_summary">Hataları belirlemeye yardımcı olması için hata ayıklama günlüklerine stack traces dahil edilir</string>
   <string name="morphe_debug_toast_on_error_title">Morphe hatası durumunda uyarı göster</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Hata oluşursa uyarı gösterilir</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Hata oluşursa uyarı gösterilmez</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Hata bildirimlerini kapatmak, tüm Morphe hata bildirimlerini gizler.
 
 Beklenmedik olaylar hakkında bilgilendirilmeyeceksiniz."</string>
@@ -135,21 +126,27 @@ Telefonunuz için \"Don't kill my app\" rehberini takip edin ve talimatları Mic
 
 Bu, uygulamanın çalışması için gereklidir."</string>
   <string name="gms_core_dialog_open_website_text">Websitesini aç</string>
-  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Sorunları önlemek için MicroG GmsCore pil optimizasyonları devre dışı bırakılmalıdır.
+  <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Sorunları önlemek için MicroG pil optimizasyonu devre dışı bırakılmalıdır.
 
-MicroG için pil optimizasyonlarını devre dışı bırakmak, pil kullanımını olumsuz etkilemeyecektir.
+MicroG için pil optimizasyonunu devre dışı bırakmak pil kullanımını olumsuz etkilemeyecektir.
 
 Devam düğmesine dokunun ve optimizasyon değişikliklerine izin verin."</string>
   <string name="gms_core_dialog_continue_text">Devam et</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Pil optimizasyonu iletişim kutusu</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG pil optimizasyonu iletişim kutusu gösteriliyor</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG pil optimizasyonu iletişim kutusu gösterilmiyor</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Bunu devre dışı bırakmak MicroG pil optimizasyonları istemini gizleyecektir.
+  <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG pil optimizasyonu iletişim kutusunu göster</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Bunu devre dışı bırakmak MicroG pil optimizasyonu istemini gizleyecektir.
 
-Pil optimizasyonları değiştirilmezse aşağıdaki sorunlarla karşılaşabilirsiniz:
+Pil optimizasyonu değiştirilmezse şu durumlarla karşılaşabilirsiniz:
 • Uygulama rastgele kapanabilir
 • Bildirimler çalışmayabilir
 • Arka planda oynatma çalışmayabilir"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Uygulama bağlantısı yönetimi</string>
+  <string name="morphe_link_handling_summary">Bu uygulamada açılacak bağlantıları yapılandırın</string>
+  <string name="morphe_link_handling_step1_title">Adım 1: Orijinal uygulama bağlantılarını devre dışı bırakın</string>
+  <string name="morphe_link_handling_step1_message">Orijinal uygulamanın ayarlarını açın ve tüm alan adı bağlantılarını devre dışı bırakın</string>
+  <string name="morphe_link_handling_step2_title">Adım 2: Yamalanmış uygulama bağlantılarını etkinleştirin</string>
+  <string name="morphe_link_handling_step2_message">Yamalanmış uygulamanın ayarlarına açın ve tüm alan adı bağlantılarını etkinleştirin</string>
+  <string name="morphe_link_handling_open">Ayarları aç</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Deneysel Uyarı 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Deneysel bir uygulama sürümü olan ⚠️ &lt;b&gt;%1$s&lt;/b&gt; sürümünü kullanıyorsunuz
@@ -157,6 +154,6 @@ Pil optimizasyonları değiştirilmezse aşağıdaki sorunlarla karşılaşabili
 🔧 Biz bu uygulama sürümü için yamaların ince ayarlarını tamamlarken, uygulamada garip davranışlar veya tanımlanmamış hatalarla karşılaşabilirsiniz.
 &lt;br/&gt;&lt;br/&gt;
 En sorunsuz deneyimi istiyorsanız, bunu &lt;b&gt;kaldırın&lt;/b&gt; ve önerilen ✅ &lt;b&gt;%2$s&lt;/b&gt; sürümünü yamalayın"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Deneysel</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Deneysel istiyorum</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Stabil istiyorum</string>
 </resources>

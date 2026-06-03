@@ -24,7 +24,7 @@ val spoofDeviceDimensionsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_spoof_device_dimensions"),
+            SwitchPreference("morphe_spoof_device_dimensions", summary = true),
         )
 
         DeviceDimensionsModelToStringFingerprint

@@ -67,17 +67,6 @@ internal object PreferenceManagerFingerprint : Fingerprint(
     )
 )
 
-internal object RedditInternalFeaturesFingerprint : Fingerprint(
-    returnType = "V",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = listOf(
-        opcode(Opcode.CONST_4),
-        opcode(Opcode.CONST_STRING),
-        string("%s.%d"),
-        string("RELEASE")
-    )
-)
-
 internal object WebBrowserActivityOnCreateFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/webembed/browser/WebBrowserActivity;",
     name = "onCreate",

@@ -12,7 +12,10 @@ package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.Utils.getFilterStrings;
 
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
@@ -20,10 +23,11 @@ import androidx.annotation.NonNull;
 import java.util.List;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.PlayerType;
-import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
 
 @SuppressWarnings("unused")
 public class CommentsFilter extends Filter {
@@ -37,7 +41,8 @@ public class CommentsFilter extends Filter {
 
     private final StringFilterGroup comments;
     private final StringFilterGroup emojiAndTimestampButtons;
-
+    private final StringFilterGroup previewCommentDotsSelector;
+    
     public CommentsFilter() {
         var chatSummary = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_AI_CHAT_SUMMARY,
@@ -90,6 +95,11 @@ public class CommentsFilter extends Filter {
                 "comments_entry_point_simplebox"
         );
 
+        previewCommentDotsSelector = new StringFilterGroup(
+                Settings.HIDE_COMMENTS_PREVIEW_COMMENT,
+                VIDEO_METADATA_CAROUSEL_PATH
+        );
+
         var thanksButton = new StringFilterGroup(
                 Settings.HIDE_COMMENTS_THANKS_BUTTON,
                 "super_thanks_button.e"
@@ -105,6 +115,7 @@ public class CommentsFilter extends Filter {
                 createAShort,
                 emojiAndTimestampButtons,
                 previewComment,
+                previewCommentDotsSelector,
                 thanksButton
 
         );
@@ -116,9 +127,16 @@ public class CommentsFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
+        if (matchedGroup == previewCommentDotsSelector) {
+            return path.contains("carousel_header")
+                        &&
+                    path.endsWith("|ContainerType|ContainerType|ContainerType|");
+        }
+
         if (matchedGroup == comments) {
             if (path.startsWith(VIDEO_LOCKUP_WITH_ATTACHMENT_PATH)) {
                 return Settings.HIDE_COMMENTS_SECTION_IN_HOME_FEED.get();
@@ -227,6 +245,56 @@ public class CommentsFilter extends Filter {
             }
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to sanitize comment category bar", ex);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatDonatorsBar(View view) {
+        if (view == null || !Settings.HIDE_COMMENTS_LIVE_CHAT_DONATORS_BAR.get()) {
+            return;
+        }
+
+        view.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+            @Override
+            public void onGlobalLayout() {
+                view.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+
+                if (view.getParent() instanceof RecyclerView shelfContainerRecycleView) {
+                    shelfContainerRecycleView.setVisibility(RecyclerView.GONE);
+                }
+            }
+        });
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatEmojiButton(View view) {
+        if (Settings.HIDE_COMMENTS_EMOJI_AND_TIMESTAMP_BUTTONS.get() && view != null) {
+            ViewGroup.LayoutParams lp = view.getLayoutParams();
+            if (lp != null) {
+                lp.width = 0;
+                view.setLayoutParams(lp);
+            }
+
+            view.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLiveChatThanksButton(View view) {
+        if (Settings.HIDE_COMMENTS_THANKS_BUTTON.get() && view != null) {
+            ViewGroup.LayoutParams lp = view.getLayoutParams();
+            if (lp != null) {
+                lp.width = 0;
+                lp.height = 0;
+                view.setLayoutParams(lp);
+            }
+            view.setVisibility(View.GONE);
         }
     }
 }

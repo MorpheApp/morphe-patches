@@ -14,7 +14,6 @@ import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.equalsAny;
 import static app.morphe.extension.shared.Utils.hideViewUnderCondition;
 import static app.morphe.extension.shared.settings.BaseActivityHook.MORPHE_SETTINGS_INTENT;
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_45_OR_GREATER;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.app.Activity;
@@ -392,6 +391,8 @@ public final class NavigationBarPatch {
 
     private static final boolean HIDE_TOOLBAR_CREATE_BUTTON = Settings.HIDE_TOOLBAR_CREATE_BUTTON.get();
 
+    private static final boolean HIDE_TOOLBAR_CAST_BUTTON = Settings.HIDE_TOOLBAR_CAST_BUTTON.get();
+
     private static final boolean HIDE_TOOLBAR_NOTIFICATION_BUTTON = Settings.HIDE_TOOLBAR_NOTIFICATION_BUTTON.get();
 
     private static final boolean HIDE_TOOLBAR_SEARCH_BUTTON = Settings.HIDE_TOOLBAR_SEARCH_BUTTON.get();
@@ -415,8 +416,25 @@ public final class NavigationBarPatch {
     /**
      * Injection point.
      */
+    public static boolean hideCastButton(boolean original) {
+        return !HIDE_TOOLBAR_CAST_BUTTON && original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideCastButton(MenuItem menuItem) {
+        if (HIDE_TOOLBAR_CAST_BUTTON) {
+            menuItem.setVisible(false);
+            menuItem.setEnabled(false);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
     public static void hideCreateButton(String enumName, View parentView, ImageView imageView) {
-        boolean shouldHide = HIDE_TOOLBAR_CREATE_BUTTON && equalsAny(enumName, CREATE_BUTTON_ENUMS);
+        final boolean shouldHide = HIDE_TOOLBAR_CREATE_BUTTON && equalsAny(enumName, CREATE_BUTTON_ENUMS);
         hideViewUnderCondition(shouldHide, parentView);
     }
 

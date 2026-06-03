@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Limitação: Espaçadores visuais podem não ser ocultados"</string>
   <string name="morphe_remove_notification_dialog_title">Remover diálogo de sugestão de notificação</string>
-  <string name="morphe_remove_notification_dialog_summary">Remove o diálogo de sugestões de notificações que aparece ao visitar um subreddit, dispensando-o automaticamente</string>
-  <string name="morphe_show_view_count_title">Mostrar contagem de visualizações</string>
-  <string name="morphe_show_view_count_summary">"Mostra a contagem de visualizações de Posts
-
-Limitação: Mostrado apenas se a resposta da API incluir a contagem de visualizações"</string>
+  <string name="morphe_remove_notification_dialog_summary">Fecha automaticamente a caixa de diálogo de sugestão de notificação ao visitar um subreddit</string>
+  <string name="morphe_show_view_count_title">Mostrar contagem de visualizações nas postagens</string>
+  <string name="morphe_show_view_count_summary">Limitação: Disponível apenas se a resposta da API incluir a contagem de visualizações</string>
   <string name="morphe_remove_nsfw_dialog_title">Remover diálogo de aviso NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Remove o diálogo de aviso de NSFW que aparece ao visitar um subreddit, aceitando-o automaticamente</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Aceita automaticamente o aviso de conteúdo NSFW ao visitar um subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Diversos</string>
   <string name="morphe_about_title">Sobre</string>
   <string name="morphe_about_summary">Versão do patch e links oficiais</string>
   <string name="morphe_sanitize_sharing_links_title">Higienizar links de compartilhamento</string>
-  <string name="morphe_sanitize_sharing_links_summary">Higieniza links de compartilhamento, removendo parâmetros de rastreamento</string>
+  <string name="morphe_sanitize_sharing_links_summary">Remove parâmetros de consulta de rastreamento de links compartilhados</string>
   <string name="morphe_open_links_directly_title">Abrir links diretamente</string>
-  <string name="morphe_open_links_directly_summary">Pula sobre URLs de redirecionamento em links externos</string>
+  <string name="morphe_open_links_directly_summary">Ignora URLs de redirecionamento ao abrir links externos</string>
   <string name="morphe_open_links_externally_title">Abrir links externamente</string>
-  <string name="morphe_open_links_externally_summary">Abre links no seu navegador em vez do navegador interno do aplicativo</string>
+  <string name="morphe_open_links_externally_summary">Abre links no seu navegador em vez do navegador integrado</string>
 </resources>

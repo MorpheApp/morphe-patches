@@ -48,15 +48,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">शोध इतिहास रिक्त आहे</string>
   <string name="morphe_settings_search_empty_history_summary">शोध इतिहास जतन करण्यासाठी, शोध क्वेरी टाइप करा आणि एंटर दाबा</string>
   <string name="morphe_settings_search_history_title">शोध इतिहास दर्शवा</string>
-  <string name="morphe_settings_search_history_summary_on">सेटिंग्ज शोध इतिहास दर्शविला जातो</string>
-  <string name="morphe_settings_search_history_summary_off">सेटिंग्ज शोध इतिहास दर्शविला जात नाही</string>
   <string name="morphe_show_menu_icons_title">Morphe सेटिंग्ज चिन्ह दर्शवा</string>
-  <string name="morphe_show_menu_icons_summary_on">सेटिंग्ज चिन्ह दर्शविले जातात</string>
-  <string name="morphe_show_menu_icons_summary_off">सेटिंग्ज चिन्ह दर्शविले जात नाहीत</string>
   <string name="morphe_language_title">Morphe भाषा</string>
-  <string name="morphe_language_user_dialog_message">"काही भाषांसाठी भाषांतर गहाळ किंवा अपूर्ण असू शकतात.
+  <string name="morphe_language_user_dialog_message">"काही भाषांसाठी भाषांतर उपलब्ध नसू शकते किंवा अपूर्ण असू शकते.
 
-नवीन भाषांचे भाषांतर करण्यासाठी किंवा विद्यमान भाषांतरांमध्ये सुधारणा करण्यासाठी, morp.software/translate ला भेट द्या"</string>
+नवीन भाषांतर करण्यासाठी किंवा विद्यमान भाषांतरे सुधारण्यासाठी, morphe.software/translate ला भेट द्या"</string>
   <string name="morphe_language_DEFAULT">ॲप भाषा</string>
   <string name="morphe_pref_import_export_title">आयात / निर्यात</string>
   <string name="morphe_pref_import_export_summary">आयात / निर्यात Morphe सेटिंग्ज</string>
@@ -88,16 +84,11 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">लोड होत आहे...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">डीबगिंग</string>
-  <string name="morphe_debug_screen_summary">डीबगिंग पर्याय सक्षम किंवा अक्षम करा</string>
-  <string name="morphe_debug_title">डीबग लॉगिंग</string>
-  <string name="morphe_debug_summary_on">डीबग लॉग सक्षम आहेत</string>
-  <string name="morphe_debug_summary_off">डीबग लॉग अक्षम आहेत</string>
+  <string name="morphe_debug_screen_summary">प्रगत विकासक पर्याय आणि निदान लॉग कॉन्फिगर करा</string>
+  <string name="morphe_debug_title">डीबग लॉगिंग सक्षम करा</string>
   <string name="morphe_debug_stacktrace_title">डीबग लॉग स्टॅक ट्रेस</string>
-  <string name="morphe_debug_stacktrace_summary_on">डीबग लॉगमध्ये स्टॅक ट्रेस समाविष्ट आहेत</string>
-  <string name="morphe_debug_stacktrace_summary_off">डीबग लॉगमध्ये स्टॅक ट्रेस समाविष्ट नाहीत</string>
+  <string name="morphe_debug_stacktrace_summary">त्रुटी ओळखण्यात मदत करण्यासाठी डीबग लॉगमध्ये स्टॅक ट्रेस समाविष्ट करते</string>
   <string name="morphe_debug_toast_on_error_title">Morphe त्रुटीवर टोस्ट दर्शवा</string>
-  <string name="morphe_debug_toast_on_error_summary_on">त्रुटी आढळल्यास टोस्ट दर्शविला जातो</string>
-  <string name="morphe_debug_toast_on_error_summary_off">त्रुटी आढळल्यास टोस्ट दर्शविला जात नाही</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"त्रुटी टोस्ट बंद केल्याने सर्व Morphe त्रुटी सूचना लपतील.
 
 तुम्हाला कोणत्याही अनपेक्षित घटनांची सूचना मिळणार नाही."</string>
@@ -141,15 +132,21 @@ MicroG साठी बॅटरी ऑप्टिमायझेशन अक�
 
 \"Continue\" बटणावर टॅप करा आणि ऑप्टिमायझेशन बदलांना अनुमती द्या."</string>
   <string name="gms_core_dialog_continue_text">सुरू ठेवा</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">बॅटरी ऑप्टिमायझेशन संवाद</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">MicroG बॅटरी ऑप्टिमायझेशन संवाद दर्शविला जाईल</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">MicroG बॅटरी ऑप्टिमायझेशन संवाद दर्शविला जाणार नाही</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG बॅटरी ऑप्टिमायझेशन डायलॉग दाखवा</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"हे अक्षम केल्यास MicroG बॅटरी ऑप्टिमायझेशन प्रॉम्प्ट लपविला जाईल.
 
 जर बॅटरी ऑप्टिमायझेशन बदलले नाही, तर तुम्हाला खालील समस्या येऊ शकतात:
 • ॲप अनपेक्षितपणे बंद होऊ शकते
 • सूचना कार्य करू शकत नाहीत
 • पार्श्वभूमीवर प्लेबॅक कार्य करू शकत नाही"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">ॲप लिंक हाताळणी</string>
+  <string name="morphe_link_handling_summary">या ॲपमध्ये उघडण्यासाठी लिंक्स कॉन्फिगर करा</string>
+  <string name="morphe_link_handling_step1_title">पायरी 1: मूळ ॲप लिंक अक्षम करा</string>
+  <string name="morphe_link_handling_step1_message">मूळ ॲपची सेटिंग्ज उघडा आणि सर्व डोमेन लिंक्स अक्षम करा</string>
+  <string name="morphe_link_handling_step2_title">पायरी 2: पॅच केलेले ॲप लिंक्स सक्षम करा</string>
+  <string name="morphe_link_handling_step2_message">पॅच केलेले ॲपची सेटिंग्ज उघडा आणि सर्व डोमेन लिंक्स सक्षम करा</string>
+  <string name="morphe_link_handling_open">सेटिंग्ज उघडा</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 प्रायोगिक सूचना 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"तुम्ही ⚠️ &lt;b&gt;%1$s&lt;/b&gt; ह्या प्रायोगिक ॲप आवृत्तीचा वापर करत आहात.

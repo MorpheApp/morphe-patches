@@ -6,7 +6,6 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.layout.branding.addLicensePatch
-import app.morphe.patches.shared.misc.extension.EXTENSION_CLASS
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -90,6 +89,7 @@ fun settingsPatch (
             ),
             ResourceGroup("layout",
                 "morphe_custom_list_item_checked.xml",
+                "morphe_icon_list_item.xml",
                 // Color picker.
                 "morphe_color_dot_widget.xml",
                 "morphe_color_picker.xml",

@@ -16,9 +16,9 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.Document
 import app.morphe.patches.shared.layout.branding.header.CUSTOM_HEADER_RESOURCE_NAME
 import app.morphe.patches.shared.layout.branding.header.baseChangeHeaderPatch
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findElementByAttributeValueOrThrow

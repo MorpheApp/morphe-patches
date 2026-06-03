@@ -18,39 +18,26 @@ internal object Constants {
         ),
         targets = listOf(
             AppTarget(
-                version = "9.14.51",
+                version = "9.22.53",
                 minSdk = 26,
                 isExperimental = true,
             ),
             AppTarget(
-                version = "9.13.50",
+                version = "9.21.51",
                 minSdk = 26,
                 isExperimental = true,
             ),
             AppTarget(
-                version = "9.12.51",
+                version = "9.20.52",
                 minSdk = 26,
                 isExperimental = true,
             ),
             AppTarget(
-                version = "8.50.51",
-                minSdk = 26,
-                isExperimental = true,
-            ),
-            AppTarget(
-                version = "8.47.56",
+                version = "8.51.51",
                 minSdk = 26,
             ),
             AppTarget(
-                version = "8.44.54",
-                minSdk = 26,
-            ),
-            AppTarget(
-                version = "8.40.54",
-                minSdk = 26,
-            ),
-            AppTarget(
-                version = "8.10.52",
+                version = "8.47.56", // TODO: Remove this version
                 minSdk = 26,
             ),
             AppTarget(

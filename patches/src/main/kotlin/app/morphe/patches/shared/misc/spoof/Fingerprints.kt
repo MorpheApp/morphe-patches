@@ -5,7 +5,6 @@ import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -26,6 +25,20 @@ internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
     )
 )
 
+// 21.21+
+internal object BuildPlayerRequestURIBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = $$"Landroid/net/Uri$Builder;",
+    parameters = listOf(),
+    filters = listOf(
+        string("key"),
+        string("asig"),
+        methodCall($$"Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;"),
+        opcode(Opcode.RETURN_OBJECT)
+    )
+)
+
+// 21.20 and lower
 internal object BuildPlayerRequestURIFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     filters = OpcodesFilter.opcodesToFilters(
@@ -128,14 +141,12 @@ internal object HlsCurrentTimeFingerprint : Fingerprint(
     )
 )
 
-internal const val DISABLED_BY_SABR_STREAMING_URI_STRING = "DISABLED_BY_SABR_STREAMING_URI"
-
 internal object MediaFetchEnumConstructorFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf(
         "ENABLED",
         "DISABLED_FOR_PLAYBACK",
-        DISABLED_BY_SABR_STREAMING_URI_STRING
+        "DISABLED_BY_SABR_STREAMING_URI"
     )
 )
 
@@ -146,6 +157,23 @@ internal object NerdsStatsVideoFormatBuilderFingerprint : Fingerprint(
     filters = listOf(
         string("codecs=\"")
     )
+)
+
+val accountIdentityFingerprint = Fingerprint(
+    returnType = "V",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    strings = listOf(
+        "Null getId",
+        "Null getAccountName",
+        "Null getPageId",
+        "Null getDataSyncId",
+        "Null getGaiaDelegationType",
+        "Null getDelegationContext"
+    ),
+    custom = { method, _ ->
+        val parameterTypes = method.parameterTypes
+        parameterTypes.size > 4 && parameterTypes[2] == "Ljava/lang/String;" && parameterTypes[3] == "Z"
+    }
 )
 
 // Feature flag that turns on Platypus programming language code compiled to native C++.
@@ -171,8 +199,6 @@ internal object MediaFetchHotConfigAlternativeFingerprint : Fingerprint(
 // then videos will never start playback and load forever.
 // Flag does not seem to affect playback if spoofing is off.
 internal object PlaybackStartDescriptorFeatureFlagFingerprint : Fingerprint(
-    parameters = listOf(),
-    returnType = "Z",
     filters = listOf(
         literal(45665455L)
     )
@@ -183,6 +209,17 @@ internal object MediaSessionFeatureFlagFingerprint : Fingerprint(
     returnType = "Z",
     filters = listOf(
         literal(45640404L)
+    )
+)
+
+// Feature flag that causes Shorts content to freeze and fail to load when scrolling.
+// Flag does not seem to affect Shorts if spoofing is off.
+internal object ReelItemWatchResponseFeatureFlagFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45638126L)
     )
 )
 

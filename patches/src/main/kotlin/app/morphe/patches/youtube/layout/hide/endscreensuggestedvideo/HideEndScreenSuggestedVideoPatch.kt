@@ -10,12 +10,10 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideEndScreenSuggestedVideoPatch;"
@@ -31,13 +29,13 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_end_screen_suggested_video"),
+            SwitchPreference("morphe_hide_end_screen_suggested_video", summary = true),
         )
 
         val autoNavStatusMethod = AutoNavStatusFingerprint.method
 
         val endScreenMethod = RemoveOnLayoutChangeListenerFingerprint.instructionMatches[1]
-            .instruction.getReference<MethodReference>()!!.getMutableMethod()
+            .getMethodCalled()
 
         val endScreenSuggestedVideoFingerprint = Fingerprint(
             definingClass = endScreenMethod.definingClass,

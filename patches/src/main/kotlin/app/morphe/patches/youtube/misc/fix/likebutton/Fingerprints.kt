@@ -4,8 +4,8 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -14,7 +14,10 @@ internal object LottieAnimationViewTagFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         methodCall(
-            opcode = Opcode.INVOKE_INTERFACE,
+            opcodes = listOf(
+                Opcode.INVOKE_INTERFACE,
+                Opcode.INVOKE_INTERFACE_RANGE
+            ),
             parameters = listOf(),
             returnType = "Ljava/lang/String;"
         ),

@@ -9,8 +9,8 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -24,7 +24,10 @@ internal object PlayerSeekbarColorFingerprint : Fingerprint(
 
 // class is ControlsOverlayStyle in 20.32 and lower, and obfuscated in 20.33+
 internal object SetSeekbarClickedColorFingerprint : Fingerprint(
-    filters = OpcodesFilter.opcodesToFilters(Opcode.CONST_HIGH16),
+    filters = listOf(
+        opcode(Opcode.CONST_HIGH16),
+        methodCall()
+    ),
     strings = listOf("YOUTUBE", "PREROLL", "POSTROLL", "REMOTE_LIVE", "AD_LARGE_CONTROLS")
 )
 

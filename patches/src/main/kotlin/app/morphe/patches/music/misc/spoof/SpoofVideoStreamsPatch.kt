@@ -6,6 +6,7 @@ import app.morphe.patches.music.misc.playservice.is_7_33_or_greater
 import app.morphe.patches.music.misc.playservice.is_8_11_or_greater
 import app.morphe.patches.music.misc.playservice.is_8_15_or_greater
 import app.morphe.patches.music.misc.playservice.is_8_40_or_greater
+import app.morphe.patches.music.misc.playservice.is_9_19_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
@@ -25,6 +26,9 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     fixMediaFetchHotConfigAlternative = { is_8_11_or_greater && !is_8_15_or_greater },
     fixParsePlaybackResponseFeatureFlag = { is_7_33_or_greater },
     fixMediaSessionFeatureFlag = { is_8_40_or_greater },
+    fixReelItemWatchResponseFeatureFlag = { false },
+    hookAccountIdentity = { false },
+    useNewRequestBuilderFingerprint = { is_9_19_or_greater },
 
     block = {
         dependsOn(
@@ -38,20 +42,19 @@ val spoofVideoStreamsPatch = spoofVideoStreamsPatch(
     },
 
     executeBlock = {
-
         PreferenceScreen.MISC.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_spoof_video_streams_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_spoof_video_streams"),
+                    SwitchPreference("morphe_spoof_video_streams", summary = true),
                     ListPreference("morphe_spoof_video_streams_client_type"),
                     NonInteractivePreference(
                         key = "morphe_spoof_video_streams_sign_in_android_vr_about",
                         tag = "app.morphe.extension.music.settings.preference.SpoofVideoStreamsSignInPreference",
                         selectable = true,
                     ),
-                    SwitchPreference("morphe_spoof_video_streams_disable_player_js_update"),
+                    SwitchPreference("morphe_spoof_video_streams_disable_player_js_update", summary = true),
                     TextPreference("morphe_spoof_video_streams_player_js_hash_value"),
                 )
             )

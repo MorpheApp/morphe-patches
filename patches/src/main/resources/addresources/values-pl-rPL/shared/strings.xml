@@ -40,19 +40,15 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_clear_history">Wyczyść historię wyszukiwania</string>
   <string name="morphe_settings_search_clear_history_message">Czy na pewno chcesz wyczyścić całą historię wyszukiwania?</string>
   <string name="morphe_settings_search_tips_title">Wskazówki dotyczące wyszukiwania</string>
-  <string name="morphe_settings_search_tips_summary">"• Stuknij wynik, aby do niej przejść
+  <string name="morphe_settings_search_tips_summary">"• Dotknij ścieżkę, aby do niej przejść
 • Przytrzymaj ustawienie, aby do niego przejść
 • Naciśnij Enter, aby zapisać wyszukiwanie w historii
 • Wyszukiwanie ignoruje wielkość liter i interpunkcję
 • Główne ustawienia wyświetlają się powyżej wyłączonych opcji"</string>
   <string name="morphe_settings_search_empty_history_title">Historia wyszukiwania jest pusta</string>
   <string name="morphe_settings_search_empty_history_summary">Aby zapisać historię wyszukiwania, wpisz zapytanie i naciśnij Enter</string>
-  <string name="morphe_settings_search_history_title">Historia wyszukiwania ustawień</string>
-  <string name="morphe_settings_search_history_summary_on">Widoczna</string>
-  <string name="morphe_settings_search_history_summary_off">Ukryta</string>
-  <string name="morphe_show_menu_icons_title">Ikony ustawień Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Widoczne</string>
-  <string name="morphe_show_menu_icons_summary_off">Ukryte</string>
+  <string name="morphe_settings_search_history_title">Pokaż historię wyszukiwania ustawień</string>
+  <string name="morphe_show_menu_icons_title">Pokaż ikony ustawień Morphe</string>
   <string name="morphe_language_title">Język Morphe</string>
   <string name="morphe_language_user_dialog_message">"Tłumaczenia dla niektórych języków mogą być niekompletne lub może ich brakować.
 
@@ -61,9 +57,9 @@ Aby przetłumaczyć aplikację na nowe języki lub poprawić istniejące tłumac
   <string name="morphe_pref_import_export_title">Import / Eksport</string>
   <string name="morphe_pref_import_export_summary">Importuj / Eksportuj ustawienia Morphe</string>
   <string name="morphe_settings_import_file">Importuj z pliku</string>
-  <string name="morphe_settings_import_file_success">Ustawienia zaimportowane pomyślnie, stuknij Zapisz, aby zastosować</string>
+  <string name="morphe_settings_import_file_success">Zaimportowano. Zapisz, aby zastosować</string>
   <string name="morphe_settings_import_file_failed">Nie udało się zaimportować ustawień</string>
-  <string name="morphe_settings_export_file">Eksportuj do pliku</string>
+  <string name="morphe_settings_export_file">Wyeksportuj do pliku</string>
   <string name="morphe_settings_export_file_success">Ustawienia wyeksportowane pomyślnie</string>
   <string name="morphe_settings_export_file_failed">Nie udało się wyeksportować ustawień</string>
   <!-- String is also duplicated in Reddit about preference -->
@@ -88,22 +84,17 @@ Aby przetłumaczyć aplikację na nowe języki lub poprawić istniejące tłumac
   <string name="morphe_settings_about_licenses_loading">Wczytywanie...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debugowanie</string>
-  <string name="morphe_debug_screen_summary">Włącz lub wyłącz opcje debugowania</string>
-  <string name="morphe_debug_title">Logi debugowania</string>
-  <string name="morphe_debug_summary_on">Włączone</string>
-  <string name="morphe_debug_summary_off">Wyłączone</string>
-  <string name="morphe_debug_stacktrace_title">Logi debugowania śladów stosu</string>
-  <string name="morphe_debug_stacktrace_summary_on">Włączone</string>
-  <string name="morphe_debug_stacktrace_summary_off">Wyłączone</string>
-  <string name="morphe_debug_toast_on_error_title">Komunikaty o błędach Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Widoczne</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Ukryte</string>
+  <string name="morphe_debug_screen_summary">Skonfiguruj zaawansowane opcje programistyczne i logi diagnostyczne</string>
+  <string name="morphe_debug_title">Włącz logi debugowania</string>
+  <string name="morphe_debug_stacktrace_title">Zrzuty stosu w logach debugowania</string>
+  <string name="morphe_debug_stacktrace_summary">Dołącza zrzuty stosu do logów debugowania, aby pomóc w identyfikacji błędów</string>
+  <string name="morphe_debug_toast_on_error_title">Pokaż powiadomienie o błędzie Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Wyłączenie tej opcji ukrywa wszystkie komunikaty o błędach Morphe.
 
 Nie dostaniesz informacji o żadnych nieoczekiwanych zdarzeniach."</string>
   <string name="morphe_debug_export_logs_title">Eksportuj logi debugowania</string>
   <string name="morphe_debug_export_logs_summary">Eksportuj logi debugowania Morphe</string>
-  <string name="morphe_debug_export_logs_file">Eksportuj do pliku</string>
+  <string name="morphe_debug_export_logs_file">Wyeksportuj do pliku</string>
   <string name="morphe_debug_export_logs_success">Logi debugowania wyeksportowane pomyślnie</string>
   <string name="morphe_debug_export_logs_failed">Nie udało się wyeksportować logów debugowania</string>
   <string name="morphe_debug_logs_search_hint">Szukaj logów debugowania...</string>
@@ -139,17 +130,23 @@ To jest wymagane, aby aplikacja mogła funkcjonować."</string>
 
 Wyłączenie optymalizacji baterii MicroG nie będzie negatywnie wpływało na zużycie baterii.
 
-Stuknij przycisk Kontynuuj i zezwól na zmiany optymalizacji."</string>
+Dotknij przycisk Kontynuuj i zezwól na zmiany optymalizacji."</string>
   <string name="gms_core_dialog_continue_text">Kontynuuj</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Okno optymalizacji baterii</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_on">Widoczne</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_summary_off">Ukryte</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Pokaż okno optymalizacji baterii MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Wyłączenie tej opcji spowoduje ukrycie ostrzeżeń dotyczących optymalizacji baterii dla MicroG.
 
 Jeśli ustawienia optymalizacji baterii nie zostaną zmienione, mogą wystąpić następujące problemy:
 • Aplikacja może się nieoczekiwanie zamykać
 • Powiadomienia mogą nie działać
 • Odtwarzanie w tle może nie działać"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Obsługa linków aplikacji</string>
+  <string name="morphe_link_handling_summary">Skonfiguruj linki, aby otwierały się w tej aplikacji</string>
+  <string name="morphe_link_handling_step1_title">Krok 1: Wyłącz linki w oryginalnej aplikacji</string>
+  <string name="morphe_link_handling_step1_message">Otwórz ustawienia oryginalnej aplikacji i wyłącz wszystkie obsługiwane linki</string>
+  <string name="morphe_link_handling_step2_title">Krok 2: Włącz linki w zmodyfikowanej aplikacji</string>
+  <string name="morphe_link_handling_step2_message">Otwórz ustawienia zmodyfikowanej aplikacji i włącz wszystkie obsługiwane linki</string>
+  <string name="morphe_link_handling_open">Otwórz ustawienia</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Wersja eksperymentalna 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Używasz eksperymentalnej wersji ⚠️ &lt;b&gt;%1$s&lt;/b&gt;

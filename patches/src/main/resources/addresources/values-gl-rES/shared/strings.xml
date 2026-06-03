@@ -64,13 +64,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuración</string>
-  <string name="morphe_debug_screen_summary">Activar ou desactivar as opcións de depuración</string>
-  <string name="morphe_debug_title">Rexistro de depuración</string>
-  <string name="morphe_debug_summary_on">Os rexistros de depuración están activados</string>
-  <string name="morphe_debug_summary_off">Os rexistros de depuración están desactivados</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar mensaxe toast en caso de erro de Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">A mensaxe toast mostraráse en caso de erro</string>
-  <string name="morphe_debug_toast_on_error_summary_off">A mensaxe toast non se mostrará en caso de erro</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar as mensaxes toast en caso de erro ocultará tódalas notificacións de erros de Morphe.
 
 Non se lle notificará de ningún evento inesperado."</string>
@@ -84,5 +78,6 @@ Non se lle notificará de ningún evento inesperado."</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_open_website_text">Abrir sitio web</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
+  <!-- misc.gms.linkHandlingPatch -->
   <!-- misc.checks.experimentalAppNoticePatch -->
 </resources>

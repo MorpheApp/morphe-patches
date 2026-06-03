@@ -7,8 +7,8 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -60,8 +60,13 @@ internal object MinimizedPlayerFingerprint : Fingerprint(
  */
 internal object MppWatchWhileLayoutFingerprint : Fingerprint(
     definingClass = "WatchWhileLayout;",
-    name = "onFinishInflate",
-    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "mini_player_play_pause_replay_button"),
+        opcode(Opcode.INVOKE_VIRTUAL)
+    ),
+    custom = { method, _ ->
+        !AccessFlags.STATIC.isSet(method.accessFlags)
+    }
 )

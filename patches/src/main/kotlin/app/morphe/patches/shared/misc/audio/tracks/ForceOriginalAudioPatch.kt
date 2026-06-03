@@ -43,7 +43,8 @@ internal fun forceOriginalAudioPatch(
         preferenceScreen.addPreferences(
             SwitchPreference(
                 key = "morphe_force_original_audio",
-                tag = "app.morphe.extension.shared.settings.preference.ForceOriginalAudioSwitchPreference"
+                tag = "app.morphe.extension.shared.settings.preference.ForceOriginalAudioSwitchPreference",
+                summary = true
             )
         )
 

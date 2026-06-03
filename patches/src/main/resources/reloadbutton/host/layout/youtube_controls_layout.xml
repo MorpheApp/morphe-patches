@@ -11,5 +11,5 @@
         android:layout_marginEnd="0dp"
         android:layout_toStartOf="@id/music_app_deeplink_button"
         android:padding="@dimen/controls_overlay_action_button_padding"
-        android:src="@drawable/morphe_reload_video_bold" />
+        android:src="@drawable/morphe_reload_video_button_bold" />
 </RelativeLayout>

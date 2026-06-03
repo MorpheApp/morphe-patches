@@ -25,7 +25,7 @@ internal val prioritizeVideoQualityPatch = bytecodePatch {
 
     execute {
         settingsMenuVideoQualityGroup.add(
-            SwitchPreference("morphe_prioritize_video_quality")
+            SwitchPreference("morphe_prioritize_video_quality", summary = true)
         )
 
         VideoStreamingDataConstructorFingerprint.let {

@@ -20,8 +20,8 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -41,6 +41,24 @@ internal object CreatePivotBarFingerprint : Fingerprint(
     filters = listOf(
         methodCall(definingClass = "Landroid/widget/TextView;", name = "setText"),
         opcode(Opcode.RETURN_VOID)
+    )
+)
+
+internal object CastMenuItemInitializeFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "castmediaroutebutton"),
+        methodCall(name = "setShowAsAction")
+    )
+)
+
+internal object CastMenuItemVisibilityFingerprint : Fingerprint(
+    classFingerprint = CastMenuItemInitializeFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        methodCall(name = "setVisible")
     )
 )
 
@@ -66,7 +84,8 @@ internal object AutoHideNavigationBarFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/support/v7/widget/RecyclerView;", "I", "I"),
     filters = listOf(
-        literal(45677535L)
+        methodCall("Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;"),
+        methodCall("Landroid/view/ViewConfiguration;->getScaledTouchSlop()I", location = MatchAfterWithin(5))
     )
 )
 
@@ -126,6 +145,7 @@ internal object SetWordmarkHeaderFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/widget/ImageView;"),
     filters = listOf(
+        methodCall(returnType = "Z"),
         resourceLiteral(ResourceType.ATTR, "ytPremiumWordmarkHeader"),
         resourceLiteral(ResourceType.ATTR, "ytWordmarkHeader")
     )

@@ -30,6 +30,17 @@ import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment.SegmentV
 import app.morphe.extension.youtube.sponsorblock.objects.UserStats;
 
 public class SBRequester {
+    public enum SegmentSubmitAction {
+        HIGHLIGHT("poi"),
+        SKIP("skip");
+
+        public final String type;
+
+        SegmentSubmitAction(String type) {
+            this.type = type;
+        }
+    }
+
     private static final String TIME_TEMPLATE = "%.3f";
 
     /**
@@ -163,18 +174,22 @@ public class SBRequester {
         return segments.toArray(new SponsorSegment[0]);
     }
 
-    public static void submitSegments(String videoId, String category,
+    public static void submitSegments(String videoId, SegmentCategory category, SegmentSubmitAction action,
                                       long startTime, long endTime, long videoLength) {
         Utils.verifyOffMainThread();
 
         try {
+            Logger.printDebug(() -> "Submitting videoId: " + videoId + " category: " + category
+                    + " action: " + action.type + " start: " + startTime + " end: " + endTime
+                    + " length: " + videoLength);
+
             String privateUserID = SponsorBlockSettings.getSBPrivateUserID();
             String start = String.format(Locale.US, TIME_TEMPLATE, startTime / 1000f);
             String end = String.format(Locale.US, TIME_TEMPLATE, endTime / 1000f);
             String duration = String.format(Locale.US, TIME_TEMPLATE, videoLength / 1000f);
 
             HttpURLConnection connection = getConnectionFromRoute(SBRoutes.SUBMIT_SEGMENTS,
-                    privateUserID, videoId, category, start, end, duration);
+                    privateUserID, videoId, category.keyValue, start, end, duration, action.type);
             final int responseCode = connection.getResponseCode();
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {

@@ -23,7 +23,10 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethod
+import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.ResourceGroup
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -69,10 +72,13 @@ private val spoofVideoStreamsResourcePatch = resourcePatch {
 internal fun spoofVideoStreamsPatch(
     extensionClass: String,
     mainActivityOnCreateFingerprint: Fingerprint,
-    fixMediaFetchHotConfig: BytecodePatchBuilder.() -> Boolean = { false },
-    fixMediaFetchHotConfigAlternative: BytecodePatchBuilder.() -> Boolean = { false },
-    fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
-    fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean = { false },
+    fixMediaFetchHotConfig: BytecodePatchBuilder.() -> Boolean,
+    fixMediaFetchHotConfigAlternative: BytecodePatchBuilder.() -> Boolean,
+    fixParsePlaybackResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
+    fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
+    fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
+    hookAccountIdentity: BytecodePatchBuilder.() -> Boolean,
+    useNewRequestBuilderFingerprint: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
@@ -123,18 +129,35 @@ internal fun spoofVideoStreamsPatch(
 
         // region Block /get_watch requests to fall back to /player requests.
 
-        BuildPlayerRequestURIFingerprint.let {
-            it.method.apply {
-                val invokeToStringIndex = it.instructionMatches.first().index
-                val uriRegister = getInstruction<FiveRegisterInstruction>(invokeToStringIndex).registerC
+        if (useNewRequestBuilderFingerprint()) {
+            BuildPlayerRequestURIBuilderFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                addInstructions(
-                    invokeToStringIndex,
-                    """
-                        invoke-static { v$uriRegister }, $EXTENSION_CLASS->blockGetWatchRequest(Landroid/net/Uri;)Landroid/net/Uri;
-                        move-result-object v$uriRegister
-                    """
-                )
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->blockGetWatchRequest(Landroid/net/Uri${'$'}Builder;)Landroid/net/Uri${'$'}Builder;
+                            move-result-object v$register
+                        """
+                    )
+                }
+            }
+        } else {
+            BuildPlayerRequestURIFingerprint.let {
+                it.method.apply {
+                    val invokeToStringIndex = it.instructionMatches.first().index
+                    val uriRegister = getInstruction<FiveRegisterInstruction>(invokeToStringIndex).registerC
+
+                    addInstructions(
+                        invokeToStringIndex,
+                        """
+                            invoke-static { v$uriRegister }, $EXTENSION_CLASS->blockGetWatchRequest(Landroid/net/Uri;)Landroid/net/Uri;
+                            move-result-object v$uriRegister
+                        """
+                    )
+                }
             }
         }
 
@@ -317,45 +340,48 @@ internal fun spoofVideoStreamsPatch(
         // region Disable SABR playback.
         // If SABR is disabled, it seems 'MediaFetchHotConfig' may no longer need an override (not confirmed).
 
-        val (mediaFetchEnumClass, sabrFieldReference) = with(MediaFetchEnumConstructorFingerprint.method) {
-            val stringIndex = MediaFetchEnumConstructorFingerprint.stringMatches.first {
-                it.string == DISABLED_BY_SABR_STREAMING_URI_STRING
-            }.index
-
+        with(MediaFetchEnumConstructorFingerprint.method) {
             val mediaFetchEnumClass = definingClass
+            val stringIndex = MediaFetchEnumConstructorFingerprint.stringMatches.last().index
             val sabrFieldIndex = indexOfFirstInstructionOrThrow(stringIndex) {
                 opcode == Opcode.SPUT_OBJECT &&
                         getReference<FieldReference>()?.type == mediaFetchEnumClass
             }
+            val sabrFieldReference = getInstruction<ReferenceInstruction>(sabrFieldIndex).reference as FieldReference
 
-            Pair(
-                mediaFetchEnumClass,
-                getInstruction<ReferenceInstruction>(sabrFieldIndex).reference
+            Fingerprint(
+                returnType = mediaFetchEnumClass,
+                filters = opcodesToFilters(
+                    Opcode.SGET_OBJECT,
+                    Opcode.RETURN_OBJECT,
+                ),
+                custom = { method, _ ->
+                    !method.parameterTypes.isEmpty()
+                }
+            ).method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->disableSABR()Z
+                    move-result v0
+                    if-eqz v0, :ignore
+                    sget-object v0, $sabrFieldReference
+                    return-object v0
+                    :ignore
+                    nop
+                """
             )
         }
 
-        val sabrFingerprint = Fingerprint(
-            returnType = mediaFetchEnumClass,
-            filters = opcodesToFilters(
-                Opcode.SGET_OBJECT,
-                Opcode.RETURN_OBJECT,
-            ),
-            custom = { method, _ ->
-                !method.parameterTypes.isEmpty()
-            }
-        )
-        sabrFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static { }, $EXTENSION_CLASS->disableSABR()Z
-                move-result v0
-                if-eqz v0, :ignore
-                sget-object v0, $sabrFieldReference
-                return-object v0
-                :ignore
-                nop
-            """
-        )
+        // endregion
+
+        // region get "X-Goog-PageId" or "X-Goog-Visitor-Id" parameters for brand channels
+
+        if (hookAccountIdentity()) {
+            accountIdentityFingerprint.method.addInstruction(
+                0,
+                "invoke-static { p3, p4 }, $EXTENSION_CLASS->setAccountIdentity(Ljava/lang/String;Z)V"
+            )
+        }
 
         // endregion
 
@@ -393,6 +419,15 @@ internal fun spoofVideoStreamsPatch(
                 it.method.insertLiteralOverride(
                     it.instructionMatches.first().index,
                     "$EXTENSION_CLASS->useMediaSessionFeatureFlag(Z)Z"
+                )
+            }
+        }
+
+        if (fixReelItemWatchResponseFeatureFlag()) {
+            ReelItemWatchResponseFeatureFlagFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->useReelItemWatchResponseFeatureFlag(Z)Z"
                 )
             }
         }

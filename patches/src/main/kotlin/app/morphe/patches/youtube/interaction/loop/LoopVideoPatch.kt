@@ -19,6 +19,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.video.information.playerStatusMethodRef
 import app.morphe.patches.youtube.video.information.videoInformationPatch
+import app.morphe.patches.youtube.video.information.videoTimeHook
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -40,7 +41,10 @@ val loopVideoPatch = bytecodePatch(
     execute {
         PreferenceScreen.PLAYER.addPreferences(
             SwitchPreference("morphe_loop_video"),
+            SwitchPreference("morphe_do_not_remember_loop_video", summary = true)
         )
+
+        videoTimeHook(EXTENSION_CLASS, "videoTimeChanged")
 
         playerStatusMethodRef.get()!!.apply {
             // Add call to start playback again, but must not allow exit fullscreen patch call

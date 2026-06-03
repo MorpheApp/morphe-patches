@@ -28,7 +28,7 @@ val hideSeekbarPatch = bytecodePatch(
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
             SwitchPreference("morphe_hide_seekbar"),
-            SwitchPreference("morphe_hide_seekbar_thumbnail"),
+            SwitchPreference("morphe_hide_seekbar_thumbnail", summary = true),
             SwitchPreference("morphe_fullscreen_large_seekbar"),
         )
 

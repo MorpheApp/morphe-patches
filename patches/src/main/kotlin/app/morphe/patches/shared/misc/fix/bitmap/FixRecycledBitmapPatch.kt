@@ -7,44 +7,41 @@
 
 package app.morphe.patches.shared.misc.fix.bitmap
 
-import app.morphe.patches.all.misc.transformation.IMethodCall
-import app.morphe.patches.all.misc.transformation.filterMapInstruction35c
-import app.morphe.patches.all.misc.transformation.transformInstructionsPatch
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.util.fiveRegisters
+import app.morphe.util.matchAllMethodIndicesForEach
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/FixRecycledBitmapPatch;"
 
-@Suppress("unused")
-private enum class MethodCall(
-    override val definedClassName: String,
-    override val methodName: String,
-    override val methodParams: Array<String>,
-    override val methodReturnType: String,
-) : IMethodCall {
-    PutBitmapFramework(
-        $$"Landroid/media/MediaMetadata$Builder;",
-        "putBitmap",
-        arrayOf("Ljava/lang/String;", "Landroid/graphics/Bitmap;"),
-        $$"Landroid/media/MediaMetadata$Builder;",
-    );
-}
+val fixRecycledBitmapPatch = bytecodePatch(
+    description = "Fixes recycled bitmap crashes by routing putBitmap through the extension class."
+) {
 
-val fixRecycledBitmapPatch = transformInstructionsPatch(
-    filterMap = { classDef, _, instruction, instructionIndex ->
-        filterMapInstruction35c<MethodCall>(
-            "Lapp/morphe/extension",
-            classDef,
-            instruction,
-            instructionIndex,
-        )
-    },
-    transform = transform@{ mutableMethod, entry ->
-        val (methodCall, _, instructionIndex) = entry
-        
-        methodCall.replaceInvokeVirtualWithExtension(
-            EXTENSION_CLASS,
-            mutableMethod,
-            instructionIndex
-        )
+    execute {
+        Fingerprint(
+            filters = listOf(
+                methodCall(
+                    definingClass = $$"Landroid/media/MediaMetadata$Builder;",
+                    name = "putBitmap",
+                    parameters = listOf("Ljava/lang/String;", "Landroid/graphics/Bitmap;")
+                )
+            ),
+            custom = { _, classDef ->
+                !classDef.type.startsWith("Lapp/morphe/extension")
+            }
+        ).matchAllMethodIndicesForEach(requireMatches = false) { index ->
+            val registers = fiveRegisters(index)
+
+            replaceInstruction(
+                index,
+                $"invoke-static { $registers }, $EXTENSION_CLASS->putBitmap(" +
+                        "Landroid/media/MediaMetadata\$Builder;Ljava/lang/String;Landroid/graphics/Bitmap;)" +
+                        "Landroid/media/MediaMetadata\$Builder;"
+            )
+        }
     }
-)
+}

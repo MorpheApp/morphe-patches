@@ -14,9 +14,10 @@ import app.morphe.extension.youtube.settings.Settings;
 @SuppressWarnings("unused")
 public final class HidePlayerOverlayButtonsPatch {
 
+    public static final int FULLSCREEN_HIDDEN_Y_OFFSET = 100000;
+
     private static final boolean HIDE_AUTOPLAY_BUTTON_ENABLED = Settings.HIDE_AUTOPLAY_BUTTON.get();
     private static final Boolean HIDE_FULLSCREEN_BUTTON_ENABLED = Settings.HIDE_FULLSCREEN_BUTTON.get();
-    public static final int FULLSCREEN_HIDDEN_Y_OFFSET = 100000;
 
     /**
      * Injection point.
@@ -28,15 +29,17 @@ public final class HidePlayerOverlayButtonsPatch {
     /**
      * Injection point.
      */
-    public static int getCastButtonOverrideV2(int original) {
+    public static int hideCastButton(int original) {
         return Settings.HIDE_CAST_BUTTON.get() ? View.GONE : original;
     }
 
     /**
      * Injection point.
      */
-    public static boolean getCastButtonOverrideV2(boolean original) {
-        if (Settings.HIDE_CAST_BUTTON.get()) return false;
+    public static boolean getCastButtonOverride(boolean original) {
+        if (Settings.HIDE_CAST_BUTTON.get()) {
+            return false;
+        }
 
         return original;
     }
@@ -110,6 +113,20 @@ public final class HidePlayerOverlayButtonsPatch {
         });
     }
 
+
+    private static final int PLAYER_OVERFLOW_BUTTON_ID = getIdentifierOrThrow(
+            ResourceType.ID, "player_overflow_button");
+    /**
+     * Injection point.
+     */
+    public static void hideSettingsButton(View parentView) {
+        if (!Settings.HIDE_SETTINGS_BUTTON.get()) {
+            return;
+        }
+
+        Utils.runOnMainThread(() -> hideView(parentView, PLAYER_OVERFLOW_BUTTON_ID));
+    }
+
     /**
      * Injection point.
      */
@@ -133,10 +150,10 @@ public final class HidePlayerOverlayButtonsPatch {
     /**
      * Injection point.
      */
-    public static void hidePlayerControlButtonsBackground(View rootView) {
+    public static View hidePlayerControlButtonsBackground(View rootView) {
         try {
             if (!Settings.HIDE_PLAYER_CONTROL_BUTTONS_BACKGROUND.get()) {
-                return;
+                return rootView;
             }
 
             // Each button is an ImageView with a background set to another drawable.
@@ -144,6 +161,8 @@ public final class HidePlayerOverlayButtonsPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "removePlayerControlButtonsBackground failure", ex);
         }
+
+        return rootView;
     }
 
     private static void hideView(View parentView, int resourceId) {

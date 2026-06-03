@@ -6,6 +6,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
@@ -24,7 +25,8 @@ internal fun sanitizeSharingLinksPatch(
     block: BytecodePatchBuilder.() -> Unit = {},
     executeBlock: BytecodePatchContext.() -> Unit = {},
     preferenceScreen: BasePreferenceScreen.Screen,
-    replaceMusicLinksWithYouTube: Boolean = false
+    replaceMusicLinksWithYouTube: Boolean = false,
+    replaceLinksWithShortener: Boolean = false
 ) = bytecodePatch(
     name = "Sanitize sharing links",
     description = "Removes the tracking query parameters from shared links.",
@@ -34,23 +36,31 @@ internal fun sanitizeSharingLinksPatch(
     execute {
         executeBlock()
 
-        val sanitizePreference = SwitchPreference("morphe_sanitize_sharing_links")
+        val sanitizePreference = SwitchPreference("morphe_sanitize_sharing_links", summary = true)
 
         preferenceScreen.addPreferences(
-            if (replaceMusicLinksWithYouTube) {
+            if (replaceMusicLinksWithYouTube || replaceLinksWithShortener) {
+                val preferences = mutableSetOf<BasePreference>(sanitizePreference)
+                if (replaceMusicLinksWithYouTube) preferences += SwitchPreference("morphe_replace_music_with_youtube", summary = true)
+                if (replaceLinksWithShortener) preferences += SwitchPreference("morphe_replace_links_with_shortener", summary = true)
+
                 PreferenceCategory(
                     titleKey = null,
                     sorting = Sorting.UNSORTED,
                     tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences = setOf(
-                        sanitizePreference,
-                        SwitchPreference("morphe_replace_music_with_youtube")
-                    )
+                    preferences = preferences
                 )
             } else {
                 sanitizePreference
             }
         )
+
+        fun patchLogic(urlStringRegister: Int): String {
+            return """
+                invoke-static { v$urlStringRegister }, $EXTENSION_CLASS->sanitize(Ljava/lang/String;)Ljava/lang/String;
+                move-result-object v$urlStringRegister
+            """
+        }
 
         fun Fingerprint.hookUrlString(matchIndex: Int) {
             val index = instructionMatches[matchIndex].index
@@ -58,10 +68,7 @@ internal fun sanitizeSharingLinksPatch(
 
             method.addInstructions(
                 index + 1,
-                """
-                    invoke-static { v$urlRegister }, $EXTENSION_CLASS->sanitize(Ljava/lang/String;)Ljava/lang/String;
-                    move-result-object v$urlRegister
-                """
+                patchLogic(urlRegister)
             )
         }
 
@@ -71,10 +78,7 @@ internal fun sanitizeSharingLinksPatch(
 
             method.addInstructionsAtControlFlowLabel(
                 index,
-                """
-                    invoke-static { v$urlRegister }, $EXTENSION_CLASS->sanitize(Ljava/lang/String;)Ljava/lang/String;
-                    move-result-object v$urlRegister
-                """
+                patchLogic(urlRegister)
             )
         }
 

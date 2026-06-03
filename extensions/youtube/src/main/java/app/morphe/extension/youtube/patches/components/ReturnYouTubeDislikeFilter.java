@@ -12,6 +12,7 @@ import app.morphe.extension.shared.TrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.ReturnYouTubeDislikePatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
@@ -91,6 +92,7 @@ public final class ReturnYouTubeDislikeFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {

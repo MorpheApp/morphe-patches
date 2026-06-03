@@ -36,10 +36,12 @@ import java.net.URL;
 import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
+import app.morphe.extension.shared.settings.SharedSettings;
 import app.morphe.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("unused")
@@ -137,16 +139,21 @@ public class GmsCoreSupportPatch {
             // Verify the user has not included GmsCore for a root installation.
             // GmsCore Support changes the package name, but with a mounted installation
             // all manifest changes are ignored and the original package name is used.
-            if (isPackageNameOriginal()) {
+            // Must check both original package name and if resources load correctly
+            // to allow changing to original package name with YT Music.
+            if (isPackageNameOriginal() && ResourceUtils.getIdentifier(
+                    ResourceType.STRING, "gms_core_dialog_title") == 0) {
                 Logger.printInfo(() -> "App is mounted with root, but GmsCore patch was included");
                 // Cannot use localize text here, since the app will load resources
                 // from the unpatched app and all patch strings are missing.
-                Utils.showToastLong("The 'GmsCore support' patch breaks mount installations");
+                Utils.showToastLong("Do not include 'GmsCore support' patch with root install");
 
                 // Do not exit. If the app exits before launch completes (and without
                 // opening another activity), then on some devices such as Pixel phone Android 10
                 // no toast will be shown and the app will continually relaunch
                 // with the appearance of a hung app.
+                open("https://morphe.software");
+                return;
             }
 
             // Verify GmsCore is installed.
@@ -170,7 +177,7 @@ public class GmsCoreSupportPatch {
             } else if (batteryOptimizationsEnabled(context)) {
                 Logger.printInfo(() -> "GmsCore is not whitelisted from battery optimizations");
 
-                if (BaseSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
+                if (SharedSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
                     showBatteryOptimizationDialog(context,
                             "gms_core_dialog_not_whitelisted_using_battery_optimizations_message",
                             "gms_core_dialog_continue_text",
@@ -186,7 +193,7 @@ public class GmsCoreSupportPatch {
                 if (client == null) {
                     Logger.printInfo(() -> "GmsCore is not running in the background");
 
-                    if (BaseSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
+                    if (SharedSettings.GMS_CORE_BATTERY_OPTIMIZATION_DIALOG.get()) {
                         checkIfDontKillMyAppSupportsManufacturer();
 
                         showBatteryOptimizationDialog(context,

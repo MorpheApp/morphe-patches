@@ -3,6 +3,7 @@
 package app.morphe.patches.youtube.layout.miniplayer
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.anyInstruction
@@ -11,8 +12,8 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -30,6 +31,14 @@ internal const val MINIPLAYER_DISABLED_FEATURE_KEY = 45657015L
 internal const val MINIPLAYER_ANIMATED_EXPAND_FEATURE_KEY = 45644360L
 // In later targets this feature flag does nothing and is dead code.
 internal const val MINIPLAYER_MODERN_FEATURE_LEGACY_KEY = 45630429L
+
+// 2026.16+ matches to a feature flag method.
+// Earlier targets match to the miniplayer constructor.
+internal object MiniplayerModernFeatureFingerprint : Fingerprint(
+    filters = listOf(
+        literal(MINIPLAYER_MODERN_FEATURE_KEY)
+    )
+)
 
 internal object MiniplayerModernConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
@@ -190,18 +199,26 @@ internal object MiniplayerOnCloseHandlerFingerprint : Fingerprint(
     )
 )
 
-internal const val YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME =
-    "Lcom/google/android/apps/youtube/app/common/player/overlay/YouTubePlayerOverlaysLayout;"
-
-//internal object PlayerOverlaysLayoutFingerprint : Fingerprint(
-//    definingClass = YOUTUBE_PLAYER_OVERLAYS_LAYOUT_CLASS_NAME
-//)
-
 internal object MiniplayerSetIconsFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("I", "Ljava/lang/Runnable;"),
     filters = listOf(
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_white_36"),
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_black_36")
+    )
+)
+
+internal object ShowMiniplayerCommandFingerprint: Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Ljava/util/Map;"),
+    filters = listOf(
+        opcode(Opcode.IF_NEZ),
+        opcode(
+            opcode = Opcode.IF_EQZ,
+            location = MatchAfterImmediately()
+        ),
+        literal(164817L),
+        literal(121253L)
     )
 )

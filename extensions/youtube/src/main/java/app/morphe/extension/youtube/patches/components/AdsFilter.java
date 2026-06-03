@@ -1,13 +1,18 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.ByteTrieSearch.convertStringsToBytes;
 
-import android.app.Dialog;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-
-import androidx.annotation.Nullable;
 
 import java.util.List;
 
@@ -15,18 +20,12 @@ import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 @SuppressWarnings("unused")
 public final class AdsFilter extends Filter {
-    // region Fullscreen ad
-    private static final ByteArrayFilterGroup fullscreenAd = new ByteArrayFilterGroup(
-            null,
-            "_interstitial"
-    );
-
-    // endregion
 
     private static final String[] PLAYER_POPUP_AD_PANEL_IDS = {
             "PAproduct", // Shopping.
@@ -123,7 +122,7 @@ public final class AdsFilter extends Filter {
         );
 
         final var viewProducts = new StringFilterGroup(
-                Settings.HIDE_VIEW_PRODUCTS_BANNER,
+                Settings.HIDE_PLAYER_POPUP_ADS,
                 "product_item",
                 "products_in_video",
                 "shopping_overlay.e" // Video player overlay shopping links.
@@ -140,6 +139,19 @@ public final class AdsFilter extends Filter {
                 "shopping_carousel.e" // Channel profile shopping shelf.
         );
 
+        final var paidPromotionLabel = new StringFilterGroup(
+                Settings.HIDE_PAID_PROMOTION_LABEL,
+                "paid_content_overlay",
+                "reel_player_disclosure.e",
+                "shorts_disclosures.e"
+        );
+
+        final var productSticker = new StringFilterGroup(
+                Settings.HIDE_PLAYER_POPUP_ADS,
+                "stickers_layer.e",
+                "product_sticker.e" // Product sticker that appears on Shorts.
+        );
+
         final var selfSponsor = new StringFilterGroup(
                 Settings.HIDE_SELF_SPONSOR,
                 "cta_shelf_card"
@@ -150,6 +162,8 @@ public final class AdsFilter extends Filter {
                 generalAds,
                 merchandise,
                 movieAds,
+                paidPromotionLabel,
+                productSticker,
                 selfSponsor,
                 shoppingLinks,
                 viewProducts
@@ -162,6 +176,7 @@ public final class AdsFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
@@ -201,58 +216,17 @@ public final class AdsFilter extends Filter {
 
     /**
      * Injection point.
-     * Called from a different place then the other filters.
      */
-    public static void closeFullscreenAd(Object customDialog, @Nullable byte[] buffer) {
-        try {
-            if (!Settings.HIDE_FULLSCREEN_ADS.get()) {
-                return;
-            }
-
-            if (buffer == null) {
-                Logger.printDebug(() -> "buffer is null");
-                return;
-            }
-
-            if (fullscreenAd.check(buffer).isFiltered() &&
-                    customDialog instanceof Dialog dialog) {
-                Logger.printDebug(() -> "Closing fullscreen ad");
-
-                Window window = dialog.getWindow();
-
-                if (window != null) {
-                    // Set the dialog size to 0 before closing
-                    // If the dialog is not resized to 0, it will remain visible for about a second before closing
-                    WindowManager.LayoutParams params = window.getAttributes();
-                    params.height = 0;
-                    params.width = 0;
-
-                    // Change the size of dialog to 0
-                    window.setAttributes(params);
-
-                    // Disable dialog's background dim
-                    window.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-
-                    // Restore window flags
-                    window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_UNSPECIFIED);
-
-                    // Restore decorView visibility
-                    window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-                }
-
-                // Dismiss dialog
-                dialog.dismiss();
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "closeFullscreenAd failure", ex);
-        }
+    public static boolean hideAds() {
+        return Settings.HIDE_GENERAL_ADS.get();
     }
 
     /**
      * Injection point.
      */
-    public static boolean hideAds() {
-        return Settings.HIDE_GENERAL_ADS.get();
+    public static boolean allowAds(boolean original) {
+        if (Settings.HIDE_GENERAL_ADS.get()) return false;
+        return original;
     }
 
     /**

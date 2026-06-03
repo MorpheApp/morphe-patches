@@ -26,8 +26,8 @@ Second \"item\" text"</string>
   <string name="morphe_disable_modern_home_summary">Vô hiệu giao diện hiện đại mới</string>
   <string name="morphe_disable_screenshot_popup_title">Tắt hộp thoại chụp màn hình</string>
   <string name="morphe_disable_screenshot_popup_summary">Vô hiệu hộp thoại xuất hiện khi chụp màn hình</string>
-  <string name="morphe_hide_ask_button_title">Ẩn nút Hỏi</string>
-  <string name="morphe_hide_ask_button_summary">Ẩn nút Hỏi trên thanh tìm kiếm</string>
+  <string name="morphe_hide_ask_button_title">Ẩn nút Đặt câu hỏi</string>
+  <string name="morphe_hide_ask_button_summary">Ẩn nút Đặt câu hỏi trên thanh tìm kiếm</string>
   <string name="morphe_hide_answers_button_title">Ẩn nút Trả lời</string>
   <string name="morphe_hide_answers_button_summary">Ẩn nút Trả lời trên thanh điều hướng</string>
   <string name="morphe_hide_chat_button_title">Ẩn nút Trò chuyện</string>
@@ -55,20 +55,18 @@ Second \"item\" text"</string>
 
 Hạn chế: Có thể không ẩn được các khoảng trống trong giao diện"</string>
   <string name="morphe_remove_notification_dialog_title">Xóa hộp thoại gợi ý thông báo</string>
-  <string name="morphe_remove_notification_dialog_summary">Loại bỏ hộp thoại gợi ý thông báo khi vào subreddit</string>
-  <string name="morphe_show_view_count_title">Hiện số lượt xem</string>
-  <string name="morphe_show_view_count_summary">"Hiển thị số lượt xem của Bài đăng
-
-Hạn chế: Chỉ hiển thị nếu API trả về số lượt xem"</string>
+  <string name="morphe_remove_notification_dialog_summary">Tự động tắt hộp thoại gợi ý thông báo khi vào subreddit</string>
+  <string name="morphe_show_view_count_title">Hiện số lượt xem trên bài đăng</string>
+  <string name="morphe_show_view_count_summary">Hạnchế: Chỉ khả dụng nếu API trả về dữ liệu lượt xem</string>
   <string name="morphe_remove_nsfw_dialog_title">Xóa hộp thoại cảnh báo NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Loại bỏ hộp thoại cảnh báo khi vào subreddit chứa nội dung người lớn (18+)</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Tự động chấp nhận cảnh báo nội dung NSFW khi vào subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Khác</string>
   <string name="morphe_about_title">Giới thiệu</string>
   <string name="morphe_about_summary">Thông tin bản vá và liên kết chính chủ</string>
   <string name="morphe_sanitize_sharing_links_title">Rút gọn liên kết chia sẻ</string>
-  <string name="morphe_sanitize_sharing_links_summary">Xóa các tham số theo dõi khỏi liên kết chia sẻ</string>
+  <string name="morphe_sanitize_sharing_links_summary">Xóa các tham số theo dõi khỏi liên kết được chia sẻ</string>
   <string name="morphe_open_links_directly_title">Mở liên kết trực tiếp</string>
-  <string name="morphe_open_links_directly_summary">Bỏ qua các URL chuyển hướng khi mở các liên kết ngoài</string>
+  <string name="morphe_open_links_directly_summary">Bỏ qua các URL chuyển hướng khi mở liên kết bên ngoài</string>
   <string name="morphe_open_links_externally_title">Mở liên kết bằng ứng dụng ngoài</string>
-  <string name="morphe_open_links_externally_summary">Mở liên kết bằng trình duyệt của bạn thay vì trình duyệt tích hợp trong ứng dụng</string>
+  <string name="morphe_open_links_externally_summary">Mở liên kết trong trình duyệt của bạn thay vì trình duyệt của ứng dụng</string>
 </resources>

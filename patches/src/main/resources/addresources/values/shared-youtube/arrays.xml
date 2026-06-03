@@ -7,6 +7,7 @@
         <item>@string/morphe_custom_branding_icon_entry_3</item>
         <item>@string/morphe_custom_branding_icon_entry_4</item>
         <item>@string/morphe_custom_branding_icon_entry_5</item>
+        <item>@string/morphe_custom_branding_icon_entry_6</item>
     </string-array>
     <string-array name="morphe_custom_branding_icon_entry_values">
         <item>ORIGINAL</item>
@@ -14,6 +15,7 @@
         <item>DARK</item>
         <item>LIGHT</item>
         <item>PLAY</item>
+        <item>PLAY_BLACK</item>
     </string-array>
     <string-array name="morphe_custom_branding_icon_custom_entries">
         <item>@string/morphe_custom_branding_icon_entry_1</item>
@@ -22,6 +24,7 @@
         <item>@string/morphe_custom_branding_icon_entry_4</item>
         <item>@string/morphe_custom_branding_icon_entry_5</item>
         <item>@string/morphe_custom_branding_icon_entry_6</item>
+        <item>@string/morphe_custom_branding_icon_entry_7</item>
     </string-array>
     <string-array name="morphe_custom_branding_icon_custom_entry_values">
         <item>ORIGINAL</item>
@@ -29,39 +32,32 @@
         <item>DARK</item>
         <item>LIGHT</item>
         <item>PLAY</item>
+        <item>PLAY_BLACK</item>
         <item>CUSTOM</item>
     </string-array>
     <string-array name="morphe_custom_branding_notification_icon_entries">
         <item>@string/morphe_custom_branding_notification_icon_entry_1</item>
         <item>@string/morphe_custom_branding_icon_entry_1</item>
-        <item>@string/morphe_custom_branding_icon_entry_2</item>
-        <item>@string/morphe_custom_branding_icon_entry_3</item>
-        <item>@string/morphe_custom_branding_icon_entry_4</item>
-        <item>@string/morphe_custom_branding_icon_entry_5</item>
+        <item>@string/morphe_custom_branding_notification_icon_entry_2</item>
+        <item>@string/morphe_custom_branding_notification_icon_entry_3</item>
     </string-array>
     <string-array name="morphe_custom_branding_notification_icon_entry_values">
         <item>FOLLOW</item>
         <item>ORIGINAL</item>
         <item>BLACK</item>
-        <item>DARK</item>
-        <item>LIGHT</item>
         <item>PLAY</item>
     </string-array>
     <string-array name="morphe_custom_branding_notification_icon_custom_entries">
         <item>@string/morphe_custom_branding_notification_icon_entry_1</item>
         <item>@string/morphe_custom_branding_icon_entry_1</item>
-        <item>@string/morphe_custom_branding_icon_entry_2</item>
-        <item>@string/morphe_custom_branding_icon_entry_3</item>
-        <item>@string/morphe_custom_branding_icon_entry_4</item>
-        <item>@string/morphe_custom_branding_icon_entry_5</item>
-        <item>@string/morphe_custom_branding_icon_entry_6</item>
+        <item>@string/morphe_custom_branding_notification_icon_entry_2</item>
+        <item>@string/morphe_custom_branding_notification_icon_entry_3</item>
+        <item>@string/morphe_custom_branding_icon_entry_7</item>
     </string-array>
     <string-array name="morphe_custom_branding_notification_icon_custom_entry_values">
         <item>FOLLOW</item>
         <item>ORIGINAL</item>
         <item>BLACK</item>
-        <item>DARK</item>
-        <item>LIGHT</item>
         <item>PLAY</item>
         <item>CUSTOM</item>
     </string-array>

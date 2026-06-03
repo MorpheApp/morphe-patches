@@ -8,10 +8,10 @@ import app.morphe.extension.youtube.swipecontrols.misc.clamp
 import kotlin.properties.Delegates
 
 /**
- * controller to adjust the device volume level
+ * Controller to adjust the device volume level.
  *
- * @param context the context to bind the audio service in
- * @param targetStream the stream that is being controlled. Must be one of the STREAM_* constants in [AudioManager]
+ * @param context The context to bind the audio service in.
+ * @param targetStream The stream that is being controlled. Must be one of the STREAM_* constants in [AudioManager].
  */
 class AudioVolumeController(
     context: Context,
@@ -19,7 +19,7 @@ class AudioVolumeController(
 ) {
 
     /**
-     * audio service connection
+     * Audio service connection.
      */
     private lateinit var audioManager: AudioManager
     private var minimumVolumeIndex by Delegates.notNull<Int>()
@@ -45,7 +45,7 @@ class AudioVolumeController(
     }
 
     /**
-     * the current volume, ranging from 0.0 to [maxVolume]
+     * The current volume, ranging from 0.0 to [maxVolume].
      */
     var volume: Int
         get() {
@@ -65,13 +65,13 @@ class AudioVolumeController(
         }
 
     /**
-     * the maximum possible volume
+     * The maximum possible volume.
      */
     val maxVolume: Int
         get() = maximumVolumeIndex - minimumVolumeIndex
 
     /**
-     * the current volume index of the target stream
+     * The current volume index of the target stream.
      */
     private var currentVolumeIndex: Int
         get() = audioManager.getStreamVolume(targetStream)

@@ -34,12 +34,13 @@
 package app.morphe.patches.all.misc.resources
 
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.all.misc.resources.StringResourceSanitizer.sanitizeAndroidResourceString
+import app.morphe.patches.util.resource.StringResourceSanitizer.sanitizeAndroidResourceString
 import app.morphe.util.forEachChildElement
 import app.morphe.util.getNode
 import app.morphe.util.inputStreamFromBundledResource
 import org.w3c.dom.Element
 import org.w3c.dom.Node
+import java.io.File
 import java.util.Locale
 import java.util.logging.Logger
 import kotlin.collections.listOf
@@ -293,6 +294,30 @@ internal fun addAppResources(appId: String) {
     appsToInclude.add(appId)
 }
 
+internal fun createResourceDestinationDirectoryIfNeeded(
+    locale: AppLocale,
+    logger: Logger,
+    destSubPath: String,
+    destFile: File
+) {
+    if (!destFile.exists()) {
+        if (locale.isBuiltInLanguage) {
+            // Either the user provided a bad APKM that doesn't have all languages,
+            // or something changed and YouTube removed a language from the universal APK releases.
+            logger.warning {
+                "!!! Provided app does not contain all region localizations. " +
+                        "Locale: $locale does not exist in provided app file: $destSubPath"
+            }
+        }
+
+        destFile.parentFile?.mkdirs()
+        if (!destFile.createNewFile()) throw IllegalStateException()
+        destFile.writeText(
+            "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>"
+        )
+    }
+}
+
 internal val addResourcesPatch = resourcePatch(
     description = "Add resources such as strings or arrays to the app."
 ) {
@@ -300,7 +325,7 @@ internal val addResourcesPatch = resourcePatch(
     val defaultResourcesAdded = mutableSetOf<String>()
 
     finalize {
-        fun getLogger(): Logger = Logger.getLogger(AppLocale.Companion::class.java.name)
+        val logger = Logger.getLogger(AppLocale.Companion::class.java.name)
 
         fun addResourcesFromFile(
             appId: String,
@@ -326,22 +351,7 @@ internal val addResourcesPatch = resourcePatch(
 
             srcStream.use {
                 val destFile = this@finalize[destSubPath]
-                if (!destFile.exists()) {
-                    if (locale.isBuiltInLanguage) {
-                        // Either the user provided a bad APKM that doesn't have all languages,
-                        // or something changed and YouTube removed a language from the universal APK releases.
-                        getLogger().warning {
-                            "!!! Provided app does not contain all region localizations. " +
-                                    "Locale: $locale does not exist in provided app file: $destSubPath"
-                        }
-                    }
-
-                    destFile.parentFile?.mkdirs()
-                    if (!destFile.createNewFile()) throw IllegalStateException()
-                    destFile.writeText(
-                        "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<resources>\n</resources>"
-                    )
-                }
+                createResourceDestinationDirectoryIfNeeded(locale, logger, destSubPath, destFile)
 
                 document(destSubPath).use { destDoc ->
                     val destResourceNode = destDoc.getNode("resources")
@@ -385,7 +395,7 @@ internal val addResourcesPatch = resourcePatch(
                             }
 
                             if (!localeStringsAdded.add(resourceName)) {
-                                getLogger().warning(
+                                logger.warning(
                                     "Duplicate string resource is declared: $srcFolderName " +
                                             "resource: $resourceName"
                                 )
@@ -396,7 +406,7 @@ internal val addResourcesPatch = resourcePatch(
                                 // Duplicate check already handled above.
                                 defaultResourcesAdded.add(resourceName)
                             } else if (!defaultResourcesAdded.contains(resourceName)) {
-                                getLogger().fine {
+                                logger.fine {
                                     "Ignoring removed default resource for locale " +
                                             "(Issue will be fixed after next Crowdin sync): " +
                                             "$srcFolderName resource: $resourceName"
@@ -432,56 +442,3 @@ internal val addResourcesPatch = resourcePatch(
         }
     }
 }
-
-internal object StringResourceSanitizer {
-    // Matches unescaped double quotes.
-    private val UNESCAPED_DOUBLE_QUOTE = Regex("(?<!\\\\)\"")
-
-    // Matches unescaped single or double quotes.
-    private val UNESCAPED_QUOTE = Regex("(?<!\\\\)['\"]")
-
-    /**
-     * @param key String key
-     * @param value Text to validate and sanitize
-     * @param filePath Path to include in any exception thrown.
-     * @param throwException If true, will throw an exception on problems; otherwise, sanitizes.
-     * @return sanitized string
-     */
-    fun sanitizeAndroidResourceString(
-        key: String,
-        value: String,
-        filePath: String? = null,
-        throwException: Boolean = false
-    ): String {
-        val logger = Logger.getLogger(StringResourceSanitizer::class.java.name)
-        var sanitized = value
-
-        // Could check for other invalid strings, but for now just check quotes.
-        if (value.startsWith('"') && value.endsWith('"')) {
-            // Raw strings allow unescaped single quotes but not double quotes.
-            val inner = value.substring(1, value.length - 1)
-            if (UNESCAPED_DOUBLE_QUOTE.containsMatchIn(inner)) {
-                val message = "$filePath String $key contains unescaped double quotes: $value"
-                if (throwException) throw IllegalArgumentException(message)
-                logger.warning(message)
-                sanitized = "\"" + UNESCAPED_DOUBLE_QUOTE.replace(inner, "") + "\""
-            }
-        } else {
-            if (value.contains('\n')) {
-                val message = "$filePath String $key is not raw but contains newline characters: $value"
-                if (throwException) throw IllegalArgumentException(message)
-                logger.warning(message)
-            }
-
-            if (UNESCAPED_QUOTE.containsMatchIn(value)) {
-                val message = "$filePath String $key contains unescaped quotes: $value"
-                if (throwException) throw IllegalArgumentException(message)
-                logger.warning(message)
-                sanitized = UNESCAPED_QUOTE.replace(value, "")
-            }
-        }
-
-        return sanitized
-    }
-}
-

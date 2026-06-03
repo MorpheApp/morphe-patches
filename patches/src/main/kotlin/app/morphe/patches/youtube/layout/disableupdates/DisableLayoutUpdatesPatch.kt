@@ -32,7 +32,7 @@ val disableLayoutUpdatesPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_disable_layout_updates")
+            SwitchPreference("morphe_disable_layout_updates", summary = true)
         )
 
         CronetHeaderFingerprint.let {

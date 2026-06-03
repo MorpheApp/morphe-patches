@@ -1,6 +1,8 @@
 package app.morphe.patches.youtube.layout.hide.ambientmode
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.anyInstruction
+import app.morphe.patcher.checkCast
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -87,13 +89,13 @@ internal object IntentActionSyntheticAlternativeFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Ljava/lang/Object;"),
     filters = listOf(
-        string("power"),
+        anyInstruction(
+            string("power"),
+            checkCast("Landroid/os/PowerManager;") // 21.21+
+        ),
         methodCall(smali = IS_POWER_SAVE_MODE_METHOD_CALL),
         string(POWER_SAVE_MODE_CHANGED),
-    ),
-    custom = { _, classDef ->
-        AccessFlags.SYNTHETIC.isSet(classDef.accessFlags)
-    }
+    )
 )
 
 internal object PowerSaveModeSyntheticFingerprint : Fingerprint(

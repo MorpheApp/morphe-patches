@@ -31,7 +31,7 @@ internal val captionCookiesPatch = bytecodePatch(
 
     execute {
         settingsMenuCaptionGroup.addAll(listOf(
-            SwitchPreference("morphe_set_caption_cookies"),
+            SwitchPreference("morphe_set_caption_cookies", summary = true),
             TextPreference(
                 "morphe_caption_cookies",
                 inputType = InputType.TEXT_MULTI_LINE

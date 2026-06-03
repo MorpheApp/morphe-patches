@@ -32,6 +32,7 @@ import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 public class PlayerOverlayButton {
+    private static boolean skipFirstExceptionLog = true;
 
     /**
      * Tracks a single container view whose end margin must be kept clear of overlay buttons.
@@ -53,20 +54,35 @@ public class PlayerOverlayButton {
          * Walks up the view hierarchy from {@code sourceButtonViewGroup} to find the
          * target view by resource name. No-op if already resolved or the ID is missing.
          */
-        void updateContainerRef(ViewGroup sourceButtonViewGroup) {
-            if (containerRef.get() != null) return;
+        void updateContainerRef(View sourceButtonView) {
+            View currentContainerView = containerRef.get();
+            if (currentContainerView != null && currentContainerView.isAttachedToWindow()) {
+                return;
+            }
+
+            lastMarginEnd = -1;
 
             final int id = ResourceUtils.getIdentifier(ResourceType.ID, resourceName);
             if (id != 0) {
-                ViewGroup parent = sourceButtonViewGroup;
-                while (parent.getParent() instanceof ViewGroup vg) {
-                    parent = vg;
-                    View found = parent.findViewById(id);
+                View lateParent = sourceButtonView;
+                while (true) {
+                    View found = lateParent.findViewById(id);
                     if (found != null) {
                         containerRef = new WeakReference<>(found);
                         return;
                     }
+                    if (lateParent.getParent() instanceof ViewGroup vg) {
+                        lateParent = vg;
+                    } else {
+                        break;
+                    }
                 }
+            }
+
+            // Useful to prevent initial null error in updateContainerRef() method
+            if (skipFirstExceptionLog) {
+                skipFirstExceptionLog = false;
+                return;
             }
 
             Logger.printException(() -> "Could not find button overlay: " + resourceName);
@@ -142,7 +158,7 @@ public class PlayerOverlayButton {
                     // Fullscreen button has a custom margin layout parameters class
                     // and if used directly causes a broken layout with 21.15+
                     // if quality and speed button are shown. Older app targets
-                    // must use the original layut otherwise app crashes with a cast exception.
+                    // must use the original layout otherwise app crashes with a cast exception.
                     layoutParams = new ViewGroup.MarginLayoutParams(layoutParams);
                 }
                 button.setLayoutParams(layoutParams);
@@ -197,7 +213,10 @@ public class PlayerOverlayButton {
                 button.setVisibility(sourceButtonVisibility);
             }
 
-            updateContainerMargins(source);
+            final int totalLowerButtons = buttonControllers.size() - (HIDE_FULLSCREEN_BUTTON_ENABLED
+                    ? 1
+                    : 0);
+            chapterTitleContainer.updateMargin(source.getWidth(), totalLowerButtons);
         }
     }
 
@@ -227,15 +246,18 @@ public class PlayerOverlayButton {
         };
     }
 
-    private static void updateContainerMargins(View lowerButtonSource) {
-        // Keep both containers' end margins in sync with the current button count.
-        final int totalLowerButtons = buttonControllers.size() - (HIDE_FULLSCREEN_BUTTON_ENABLED
-                ? 1
-                : 0);
-        chapterTitleContainer.updateMargin(lowerButtonSource.getWidth(), totalLowerButtons);
+    /**
+     * Video-heading end margin is initialized and kept correct even when no lower
+     * overlay buttons (speed, quality, etc.) have been added.
+     */
+    public static void initializeHeadingFromUpperButton(View containerView) {
+        Utils.verifyOnMainThread();
+
+        if (!(containerView.getParent() instanceof ViewGroup containerViewGroup)) return;
+
+        videoHeadingContainer.updateContainerRef(containerViewGroup);
         videoHeadingContainer.updateMargin(LegacyPlayerControlButton.buttonWidth, getTotalUpperButtonCount());
     }
-
 
     @Nullable
     private static ViewGroup updateRefsFromSourceButton(View sourceButton) {
@@ -251,9 +273,8 @@ public class PlayerOverlayButton {
             ytSourceButtonRef = new WeakReference<>(sourceButton);
         }
 
-        // Locate each container once; subsequent calls are no-ops.
+        // Locate chapter container once; subsequent calls are no-ops.
         chapterTitleContainer.updateContainerRef(sourceButtonViewGroup);
-        videoHeadingContainer.updateContainerRef(sourceButtonViewGroup);
 
         return sourceButtonViewGroup;
     }

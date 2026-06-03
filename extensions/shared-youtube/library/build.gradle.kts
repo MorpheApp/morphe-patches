@@ -1,11 +1,13 @@
+import com.android.build.api.dsl.LibraryExtension
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.protobuf)
 }
 
-android {
-    namespace = "app.morphe.extension"
-    compileSdk = 35
+configure<LibraryExtension> {
+    namespace = "app.morphe.extension.shared.youtube"
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 26
@@ -18,6 +20,7 @@ android {
 }
 
 dependencies {
+    implementation(libs.morphe.extensions.library)
     implementation(libs.androidx.javascriptengine)
     implementation(libs.gson)
     implementation(libs.protobuf.javalite)

@@ -20,42 +20,43 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">إعادة التشغيل لإنهاء الإعداد</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">اسم التطبيق</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">مُخصّص</string>
   <string name="morphe_custom_branding_icon_title">أيقونة التطبيق</string>
   <string name="morphe_custom_branding_icon_entry_1">الأصلية</string>
   <string name="morphe_custom_branding_icon_entry_2">أسود Morphe</string>
   <string name="morphe_custom_branding_icon_entry_3">داكن Morphe</string>
   <string name="morphe_custom_branding_icon_entry_4">فاتح Morphe</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe Play Light</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe Play Black</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">مُخصّص</string>
+  <string name="morphe_custom_branding_icon_entry_7">مُخصّص</string>
   <string name="morphe_custom_branding_notification_icon_title">رمز الإشعار</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">يتبع أيقونة التطبيق</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">مطابقة أيقونة التطبيق</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">إشعار Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">لم يتم حفظ سجل المشاهدة الخاص بك.&lt;br&gt;&lt;br&gt;من المرجح أن يكون السبب في ذلك هو مانع إعلانات DNS أو وكيل الشبكة.&lt;br&gt;&lt;br&gt;لإصلاح هذه المشكلة، قم بإضافة &lt;b&gt;s.youtube.com&lt;/b&gt; إلى القائمة البيضاء أو قم بإيقاف تشغيل جميع أدوات حظر DNS ووكلاء البروكسي.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">لا تعرض مرة أخرى</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Spoof Video Streams</string>
-  <string name="morphe_spoof_video_streams_screen_summary">تزييف بثوث الفيديو الخاصة بالعميل لمنع مشكلات التشغيل</string>
+  <string name="morphe_spoof_video_streams_screen_summary">ضبط خاصية تمويه هوية العميل لمنع مشاكل التشغيل</string>
   <string name="morphe_spoof_video_streams_title">Spoof Video Streams</string>
-  <string name="morphe_spoof_video_streams_summary_on">"يتم تزييف تدفقات الفيديو
+  <string name="morphe_spoof_video_streams_summary">"يُصلح مشاكل التشغيل لدى معظم المستخدمين عبر طلب تدفق فيديو متوافق
 
-إذا كنت مستخدمًا لـ YouTube Premium، فقد لا يكون هذا الإعداد مطلوبًا"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"لا يتم تزييف تدفقات الفيديو
-
-قد لا يعمل تشغيل الفيديو"</string>
+إذا كنت من مستخدمي YouTube Premium، فقد لا تحتاج إلى هذا الإعداد"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">تعذر جلب أي تدفقات عميل</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">قد يؤدي إيقاف تشغيل هذا الإعداد إلى مشكلات في التشغيل.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">جرب تمكين: تضمين تدفقات الفيديو &gt; تسجيل الدخول إلى Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">جرب تمكين: Spoof Video Streams &gt; تسجيل الدخول إلى Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">العميل الافتراضي</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">تسجيل الدخول إلى Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">لم يتم تسجيل الدخول إلى Android VR. انقر هنا لتسجيل الدخول</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">مسجل حالياً في Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">مسجل حاليًا في Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">للحصول على هذه الميزة، غيّر \'العميل الافتراضي\' إلى Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">تسجيل الدخول إلى Android VR</string>
@@ -91,33 +92,29 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_reset">تم تسجيل خروج Android VR</string>
   <string name="morphe_oauth2_toast_invalid">رمز تسجيل الدخول إلى VR غير صالح، حاول تسجيل الدخول مرة أخرى إلى VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">تعطيل تحديث مشغل JavaScript</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"تم تعطيل تحديث مشغل JavaScript
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"يقفل مشغل JavaScript على قيمة تجزئة محلية بدلًا من جلب التحديثات
 
-• تتطلب تجزئة مشغل JavaScript صالحة.
-• قد يفشل التشغيل إذا تم إلغاء تجزئة مشغل JavaScript في GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">تم تمكين تحديث مشغل JavaScript</string>
+• يلزم وجود قيمة تجزئة صالحة لمشغل JavaScript
+• يفشل التشغيل إذا تم إبطال قيمة تجزئة مشغل JavaScript في GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">تكون تجزئات مشغل JavaScript صالحة لمدة شهر تقريبًا، وقد يتم إلغاء التجزئات القديمة بواسطة GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">تجزئة مشغل JavaScript</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">أدخل تجزئة مشغل JavaScript صالحة</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">تعطيل بروتوكول QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">تم تعطيل بروتوكول QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_off">تم تمكين بروتوكول QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">تعطيل صوت DRC</string>
-  <string name="morphe_disable_drc_audio_summary_on">تم تعطيل صوت DRC</string>
-  <string name="morphe_disable_drc_audio_summary_off">تم تمكين صوت DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">فرض لغة الصوت الأصلية</string>
-  <string name="morphe_force_original_audio_summary_on">استخدام لغة الصوت الأصلية</string>
-  <string name="morphe_force_original_audio_summary_off">استخدام الصوت الافتراضي</string>
+  <string name="morphe_force_original_audio_summary">يقوم دائمًا بتشغيل المقطع الصوتي الأصلي للفيديو بدلًا عن النسخة المدبلجة</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">إخفاء إعلانات ملء الشاشة</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">لاستخدام هذه الميزة، غيّر \'Spoof Video Streams\' إلى Android Reel أو TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
-  <string name="morphe_sanitize_sharing_links_title">تطهير روابط المشاركة</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">تمت إزالة معلمة استعلام التتبع من الروابط عند المشاركة</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">لم تتم إزالة معلمة استعلام التتبع من الروابط عند المشاركة</string>
+  <string name="morphe_sanitize_sharing_links_title">تنظيف روابط المشاركة</string>
+  <string name="morphe_sanitize_sharing_links_summary">يزيل وسيط التتبع من الروابط المُشاركة</string>
   <string name="morphe_replace_music_with_youtube_title">تغيير روابط المشاركة إلى youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">تستخدم روابط المشاركة youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">تستخدم روابط المشاركة music.youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">يستبدل music.youtube.com بـ youtube.com في الروابط المُشاركة</string>
+  <string name="morphe_replace_links_with_shortener_title">تغيير روابط المشاركة إلى youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">يُلزم استخدام تنسيق رابط youtu.be المختصر للفيديوهات</string>
 </resources>

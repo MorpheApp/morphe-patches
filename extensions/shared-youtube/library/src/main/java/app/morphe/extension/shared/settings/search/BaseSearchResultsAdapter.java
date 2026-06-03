@@ -30,6 +30,7 @@ import androidx.annotation.Nullable;
 
 import java.lang.reflect.Method;
 import java.util.List;
+import java.util.Locale;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -235,7 +236,6 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
             holder.switchWidget.setChecked(currentState);
             holder.switchWidget.jumpDrawablesToCurrentState();
         }
-        prefItem.refreshHighlighting();
         holder.summaryView.setText(prefItem.highlightedSummary);
         holder.summaryView.setVisibility(TextUtils.isEmpty(prefItem.highlightedSummary) ? View.GONE : View.VISIBLE);
         setupPreferenceView(view, holder.titleView, holder.summaryView, switchPref,
@@ -243,8 +243,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
                     boolean newState = !switchPref.isChecked();
                     switchPref.setChecked(newState);
                     holder.switchWidget.setChecked(newState);
-                    prefItem.refreshHighlighting();
-                    holder.summaryView.setText(prefItem.getCurrentEffectiveSummary());
+                    holder.summaryView.setText(prefItem.highlightedSummary);
                     holder.summaryView.setVisibility(TextUtils.isEmpty(prefItem.highlightedSummary) ? View.GONE : View.VISIBLE);
                     if (switchPref.getOnPreferenceChangeListener() != null) {
                         switchPref.getOnPreferenceChangeListener().onPreferenceChange(switchPref, newState);
@@ -346,7 +345,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
                 // Highlight the preference once it is positioned.
                 highlightPreferenceAtPosition(listView, targetPosition);
             } else {
-                // The preference is outside of the current visible range, scroll to it from the top.
+                // The preference is outside the current visible range, scroll to it from the top.
                 listView.smoothScrollToPositionFromTop(targetPosition, 0);
 
                 Handler handler = new Handler(Looper.getMainLooper());
@@ -440,7 +439,7 @@ public abstract class BaseSearchResultsAdapter extends ArrayAdapter<BaseSearchRe
      */
     protected String normalizeString(String input) {
         if (TextUtils.isEmpty(input)) return "";
-        return input.trim().toLowerCase().replaceAll("\\s+", " ").replaceAll("[^\\w\\s]", "");
+        return input.trim().toLowerCase(Locale.getDefault()).replaceAll("\\s+", " ").replaceAll("[^\\w\\s]", "");
     }
 
     /**

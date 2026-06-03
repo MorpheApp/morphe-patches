@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
 
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.EngagementPanel;
@@ -87,6 +88,7 @@ final class HorizontalShelvesFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
@@ -97,7 +99,10 @@ final class HorizontalShelvesFilter extends Filter {
             return true;
         }
         if (descriptionBuffers.check(buffer).isFiltered()) {
-            return EngagementPanel.isDescription() || PlayerType.getCurrent().isMaximizedOrFullscreen() || isActionBarVisible.get() || ShortsPlayerState.isOpen();
+            return EngagementPanel.isDescription()
+                    || PlayerType.getCurrent().isMaximizedOrFullscreen()
+                    || isActionBarVisible.get()
+                    || ShortsPlayerState.isOpen();
         }
         return hideShelves(contextInterface);
     }

@@ -24,12 +24,7 @@ internal val accountCredentialsInvalidTextPatch = bytecodePatch {
         // The user can also fix this by deleting the MicroG account but
         // MicroG accounts look almost identical to Google device accounts,
         // and it's more foolproof to instead uninstall/reinstall.
-        val matches = SpecificNetworkErrorViewControllerFingerprint.matchAll()
-        if (matches.size != 2) {
-            throw PatchException("Unexpected number of matches: " + matches.size)
-        }
-
-        matches.forEach { match ->
+        SpecificNetworkErrorViewControllerFingerprint.matchAll(2 .. 2).forEach { match ->
             match.apply {
                 val index = instructionMatches.last().index
                 val register = method.getInstruction<OneRegisterInstruction>(index).registerA

@@ -16,19 +16,8 @@ import com.android.tools.smali.dexlib2.Opcode
 
 internal object ArticleConstructorFingerprint : Fingerprint(
     classFingerprint = ArticleToStringFingerprint,
-    returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    filters = listOf(
-        string("url"),
-        methodCall(
-            opcode = Opcode.INVOKE_STATIC,
-            returnType = "V",
-            parameters = listOf(
-                "L",
-                "Ljava/lang/String;"
-            )
-        )
-    )
+    returnType = "V"
 )
 
 private object ArticleToStringFingerprint : Fingerprint(
@@ -40,7 +29,6 @@ private object ArticleToStringFingerprint : Fingerprint(
 )
 
 internal object CustomReportsFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/safety/report/dialogs/customreports/",
     returnType = "V",
     filters = listOf(
         string("https://www.crisistextline.org/"),

@@ -22,8 +22,8 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.youtube.layout.buttons.navigation.WideSearchbarLayoutFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -166,6 +166,19 @@ internal object CrowdfundingBoxFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     filters = listOf(
         resourceLiteral(ResourceType.LAYOUT, "donation_companion"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "inflate",
+            returnType = "Landroid/view/View;",
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+internal object LiveChatDonatorsBarFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "live_chat_ticker_item"),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             name = "inflate",
@@ -393,6 +406,19 @@ internal object ChannelTabRendererFingerprint : Fingerprint(
     )
 )
 
+internal object ChannelTabAddFingerprint : Fingerprint(
+    classFingerprint = ChannelTabRendererFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(
+        "L",
+        "I"
+    ),
+    filters = listOf(
+        methodCall("Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z"),
+    )
+)
+
 internal object EngagementPanelInformationButtonFingerprint : Fingerprint(
     parameters = listOf("Landroid/content/Context;"),
     filters = listOf(
@@ -437,4 +463,89 @@ internal object CreateSearchSuggestionsFingerprint : Fingerprint(
         )
     ),
     strings = listOf("ss_rds")
+)
+
+internal object ThumbnailAndEmojiPickerContainerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "thumbnail_and_emoji_picker_container"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+internal object InlineExtraButtonsContainerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/ViewGroup;",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "inline_extra_buttons_container"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById"
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+internal object AccountListParentFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "compact_list_item")
+    )
+)
+
+internal object AccountListFingerprint : Fingerprint(
+    classFingerprint = AccountListParentFingerprint,
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL, AccessFlags.SYNTHETIC),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.ATTR, "ytCallToAction")
+    )
+)
+
+internal object AccountMenuParentFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "account_compact_link"),
+        opcode(Opcode.CONST_4, location = MatchAfterWithin(5)),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(5)),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+internal object AccountMenuFingerprint : Fingerprint(
+    classFingerprint = AccountMenuParentFingerprint,
+    returnType = "V",
+    filters = opcodesToFilters(
+        Opcode.INVOKE_STATIC,
+        Opcode.MOVE_RESULT_OBJECT,
+        Opcode.INVOKE_STATIC,
+        Opcode.IGET,
+        Opcode.AND_INT_LIT16
+    )
+)
+
+internal object AccountMenuLegacyParentFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "compact_link"),
+        opcode(Opcode.CONST_4, location = MatchAfterWithin(5)),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(5)),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)
+
+internal object AccountMenuLegacyFingerprint : Fingerprint(
+    classFingerprint = AccountMenuLegacyParentFingerprint,
+    returnType = "V",
+    filters = opcodesToFilters(
+        Opcode.INVOKE_STATIC,
+        Opcode.MOVE_RESULT_OBJECT,
+        Opcode.INVOKE_STATIC,
+        Opcode.IGET,
+        Opcode.AND_INT_LIT16
+    )
 )

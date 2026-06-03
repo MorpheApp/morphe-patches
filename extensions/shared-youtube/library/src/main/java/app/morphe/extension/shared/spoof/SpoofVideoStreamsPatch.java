@@ -13,15 +13,16 @@ import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.requests.Route;
 import app.morphe.extension.shared.settings.AppLanguage;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.spoof.requests.StreamingDataRequest;
+import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
+    public static volatile Map<String, String> currentVideoRequestHeader;
+    public static String pageIDHeaderValue = "";
 
     public static final class JavaScriptClientAvailability implements Setting.Availability {
         @Override
@@ -71,7 +72,7 @@ public class SpoofVideoStreamsPatch {
     @Nullable
     private static volatile AppLanguage languageOverride;
 
-    private static volatile ClientType preferredClient = ClientType.ANDROID_REEL;
+    private static volatile ClientType preferredClient = ClientType.ANDROID_REEL_AUTH;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
 
@@ -107,7 +108,7 @@ public class SpoofVideoStreamsPatch {
 
     public static void setClientsToUse(List<ClientType> availableClients, ClientType client) {
         preferredClient = Objects.requireNonNull(client);
-        StreamingDataRequest.setClientOrderToUse(availableClients, client);
+        StreamOrDetailsDataRequest.setClientOrderToUse(availableClients, client);
     }
 
     public static ClientType getPreferredClient() {
@@ -143,6 +144,24 @@ public class SpoofVideoStreamsPatch {
         }
 
         return playerRequestUri;
+    }
+
+    public static Uri.Builder blockGetWatchRequest(Uri.Builder playerRequestBuilder) {
+        if (SPOOF_VIDEO_STREAMS) {
+            try {
+                String path = playerRequestBuilder.build().getPath();
+
+                if (path != null && path.contains("get_watch")) {
+                    Logger.printDebug(() -> "Blocking 'get_watch' by returning internet connection check URI");
+
+                    return INTERNET_CONNECTION_CHECK_URI.buildUpon();
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "blockGetWatchRequest failure", ex);
+            }
+        }
+
+        return playerRequestBuilder;
     }
 
     /**
@@ -258,6 +277,21 @@ public class SpoofVideoStreamsPatch {
      * Injection point.
      * Turns off a feature flag that interferes with video playback.
      */
+    public static boolean useReelItemWatchResponseFeatureFlag(boolean original) {
+        if (original) {
+            Logger.printDebug(() -> "useReelItemWatchResponse is set on");
+        }
+
+        if (!SPOOF_VIDEO_STREAMS) {
+            return original;
+        }
+        return false;
+    }
+
+    /**
+     * Injection point.
+     * Turns off a feature flag that interferes with video playback.
+     */
     public static boolean useMediaSessionFeatureFlag(boolean original) {
         if (original) {
             Logger.printDebug(() -> "useMediaSessionFeatureFlag is set on");
@@ -297,7 +331,9 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
-                StreamingDataRequest.fetchRequest(id, requestHeaders);
+                currentVideoRequestHeader = requestHeaders;
+
+                StreamOrDetailsDataRequest.fetchStreamRequest(id, currentVideoRequestHeader);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }
@@ -313,18 +349,9 @@ public class SpoofVideoStreamsPatch {
     public static byte[] getStreamingData(String videoId) {
         if (SPOOF_VIDEO_STREAMS) {
             try {
-                StreamingDataRequest request = StreamingDataRequest.getRequestForVideoId(videoId);
+                StreamOrDetailsDataRequest request = StreamOrDetailsDataRequest.getStreamRequestForVideoId(videoId);
                 if (request != null) {
-                    // This hook is always called off the main thread,
-                    // but this can later be called for the same video ID from the main thread.
-                    // This is not a concern, since the fetch will always be finished
-                    // and never block the main thread.
-                    // But if debugging, then still verify this is the situation.
-                    if (BaseSettings.DEBUG.get() && !request.fetchCompleted() && Utils.isCurrentlyOnMainThread()) {
-                        Logger.printException(() -> "Error: Blocking main thread");
-                    }
-
-                    var stream = request.getStream();
+                    var stream = (byte[]) request.getStreamDetails();
                     if (stream != null) {
                         Logger.printDebug(() -> "Overriding video stream: " + videoId);
                         return stream;
@@ -338,6 +365,10 @@ public class SpoofVideoStreamsPatch {
         }
 
         return null;
+    }
+
+    public static StreamOrDetailsDataRequest fetchDetails(Route.CompiledRoute videoDetailsEndpoint, String videoId) {
+        return StreamOrDetailsDataRequest.getDetailsRequest(videoDetailsEndpoint, videoId, currentVideoRequestHeader);
     }
 
     /**
@@ -372,12 +403,27 @@ public class SpoofVideoStreamsPatch {
                     && !TextUtils.isEmpty(videoFormat)) {
                 // Force LTR layout, to match the same LTR video time/length layout YouTube uses for all languages.
                 return "\u202D" + videoFormat + "\u2009(" // u202D = left to right override
-                        + StreamingDataRequest.getLastSpoofedClientName() + ")";
+                        + StreamOrDetailsDataRequest.getLastSpoofedClientName() + ")";
             }
         } catch (Exception ex) {
             Logger.printException(() -> "appendSpoofedClient failure", ex);
         }
 
         return videoFormat;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setAccountIdentity(@Nullable String newlyPageIDHeaderValue, boolean newlyLoadedIncognitoStatus) {
+        if (newlyPageIDHeaderValue != null) {
+            var newlyPageIDHeaderEmpty = newlyPageIDHeaderValue.isEmpty();
+
+            pageIDHeaderValue = newlyPageIDHeaderEmpty ? "" : newlyPageIDHeaderValue;
+
+            if (!newlyPageIDHeaderEmpty) {
+                Logger.printDebug(() -> "new PageID Header value loaded: " + newlyPageIDHeaderValue);
+            }
+        }
     }
 }

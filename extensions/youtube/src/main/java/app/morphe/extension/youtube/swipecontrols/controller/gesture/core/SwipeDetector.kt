@@ -5,21 +5,21 @@ import kotlin.math.abs
 import kotlin.math.pow
 
 /**
- * describes a class that can detect swipes and their directionality
+ * Describes a class that can detect swipes and their directionality.
  */
 interface SwipeDetector {
     /**
-     * the currently detected swipe
+     * The currently detected swipe.
      */
     val currentSwipe: SwipeDirection
 
     /**
-     * submit a onScroll event for swipe detection
+     * Submits an onScroll event for swipe detection.
      *
-     * @param from start event
-     * @param to end event
-     * @param distanceX horizontal scroll distance
-     * @param distanceY vertical scroll distance
+     * @param from Start event.
+     * @param to End event.
+     * @param distanceX Horizontal scroll distance.
+     * @param distanceY Vertical scroll distance.
      */
     fun submitForSwipe(
         from: MotionEvent,
@@ -29,35 +29,35 @@ interface SwipeDetector {
     )
 
     /**
-     * reset the swipe detection
+     * Resets the swipe detection.
      */
     fun resetSwipe()
 
     /**
-     * direction of a swipe
+     * Direction of a swipe.
      */
     enum class SwipeDirection {
         /**
-         * swipe has no direction or no swipe
+         * Swipe has no direction or no swipe detected.
          */
         NONE,
 
         /**
-         * swipe along the X- Axes
+         * Swipe along the X axis.
          */
         HORIZONTAL,
 
         /**
-         * swipe along the Y- Axes
+         * Swipe along the Y axis.
          */
         VERTICAL,
     }
 }
 
 /**
- * detector that can detect swipes and their directionality
+ * Detector that can detect swipes and their directionality.
  *
- * @param swipeMagnitudeThreshold minimum magnitude before a swipe is detected as such
+ * @param swipeMagnitudeThreshold Minimum magnitude before a swipe is detected as such.
  */
 class SwipeDetectorImpl(
     private val swipeMagnitudeThreshold: Double,
