@@ -38,6 +38,7 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
+import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/MiniplayerPatch;"
 
@@ -320,6 +321,22 @@ val miniplayerPatch = bytecodePatch(
                         """
                     )
                 }
+            }
+        }
+
+        // 21.17+ uses a different code path to set the play/pause icon.
+        if (is_21_17_or_greater) {
+            MiniplayerSetIconsFingerprint2117.method.apply {
+                val setImageDrawableIndex = indexOfFirstInstructionOrThrow {
+                    opcode == Opcode.INVOKE_VIRTUAL &&
+                        getReference<MethodReference>()?.name == "setImageDrawable"
+                }
+
+                addInstruction(
+                    setImageDrawableIndex + 1,
+                    "invoke-static { p0, p2 }, $EXTENSION_CLASS->" +
+                        "overrideMiniplayerActionButtonDrawable(Landroid/widget/ImageView;I)V",
+                )
             }
         }
 

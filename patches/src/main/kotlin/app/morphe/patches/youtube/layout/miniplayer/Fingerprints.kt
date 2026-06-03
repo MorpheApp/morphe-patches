@@ -19,9 +19,6 @@ import com.android.tools.smali.dexlib2.Opcode
 
 internal const val MINIPLAYER_MODERN_FEATURE_KEY = 45622882L
 internal const val MINIPLAYER_MODERN_TYPE_1_FEATURE_KEY = 45623000L
-internal const val MINIPLAYER_MODERN_TYPE_2_FEATURE_KEY = 45623273L
-internal const val MINIPLAYER_MODERN_TYPE_3_FEATURE_KEY = 45623076L
-internal const val MINIPLAYER_MODERN_TYPE_4_FEATURE_KEY = 45674402L
 internal const val MINIPLAYER_DOUBLE_TAP_FEATURE_KEY = 45628823L
 internal const val MINIPLAYER_DRAG_DROP_FEATURE_KEY = 45628752L
 internal const val MINIPLAYER_HORIZONTAL_DRAG_FEATURE_KEY = 45658112L
@@ -206,6 +203,19 @@ internal object MiniplayerSetIconsFingerprint : Fingerprint(
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_white_36"),
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_black_36")
     )
+)
+
+// 21.17+ removed the non-bold icon variants used by MiniplayerSetIconsFingerprint.
+private object MiniplayerSetIconsParentFingerprint2117 : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.DRAWABLE, "floatybar_progress_circle_autonav")
+    )
+)
+
+internal object MiniplayerSetIconsFingerprint2117 : Fingerprint(
+    classFingerprint = MiniplayerSetIconsParentFingerprint2117,
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/drawable/Drawable;", "I"),
 )
 
 internal object ShowMiniplayerCommandFingerprint: Fingerprint(

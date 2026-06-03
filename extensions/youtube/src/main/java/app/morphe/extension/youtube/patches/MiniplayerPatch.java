@@ -10,10 +10,14 @@ import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerTyp
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_4;
 
 import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 
 import androidx.annotation.Nullable;
 
@@ -419,6 +423,30 @@ public final class MiniplayerPatch {
     public static void hideMiniplayerActionButton(View view) {
         if (CURRENT_TYPE == MODERN_4) {
             Utils.hideViewByRemovingFromParentUnderCondition(HIDE_OVERLAY_BUTTONS_ENABLED, view);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void overrideMiniplayerActionButtonDrawable(ImageView view, int contentDescriptionId) {
+        if (CURRENT_TYPE != MINIMAL) return;
+
+        String drawableName;
+        if (contentDescriptionId == ResourceUtils.getIdentifier(ResourceType.STRING, "accessibility_pause")) {
+            drawableName = "yt_fill_pause_vd_theme_24";
+        } else if (contentDescriptionId == ResourceUtils.getIdentifier(ResourceType.STRING, "accessibility_play")) {
+            drawableName = "yt_fill_play_arrow_vd_theme_24";
+        } else {
+            return;
+        }
+
+        int drawableId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, drawableName);
+        if (drawableId == 0) return;
+
+        Drawable drawable = Utils.getContext().getDrawable(drawableId);
+        if (drawable != null) {
+            view.setImageDrawable(drawable);
         }
     }
 
