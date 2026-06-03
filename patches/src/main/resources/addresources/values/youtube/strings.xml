@@ -272,9 +272,9 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
 
     <string name="morphe_snackbar_screen_title">Snackbar</string>
-    <string name="morphe_snackbar_screen_summary">Hide or change snackbar related components.</string>
+    <string name="morphe_snackbar_screen_summary">Choose how to customize or hide snackbar</string>
     <string name="morphe_custom_snackbar_theme_title">Enable custom snackbar</string>
-    <string name="morphe_custom_snackbar_theme_summary_on">Custom background, radius, and stroke are applied</string>
+    <string name="morphe_custom_snackbar_theme_summary">Apply custom background, radius, and stroke</string>
     <string name="morphe_custom_snackbar_corner_radius_title">Corner radius</string>
     <string name="morphe_custom_snackbar_corner_radius_summary">Specify a corner radius in dp</string>
     <string name="morphe_custom_snackbar_theme_summary_off">Default YouTube snackbar is used</string>

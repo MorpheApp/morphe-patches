@@ -51,7 +51,7 @@ val snackbarPatch = bytecodePatch(
                 key = "morphe_snackbar_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_custom_snackbar_theme"),
+                    SwitchPreference("morphe_custom_snackbar_theme", summary = true),
                     TextPreference("morphe_custom_snackbar_corner_radius", inputType = InputType.NUMBER_DECIMAL),
                     TextPreference("morphe_custom_snackbar_color_dark",
                         tag = "app.morphe.extension.shared.settings.preference.ColorPickerPreference",
