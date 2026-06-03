@@ -60,6 +60,10 @@ Limitation: Visual spacers may not be hidden"</string>
     <string name="morphe_show_view_count_summary">Limitation: Only available if the API response includes the view count</string>
     <string name="morphe_remove_nsfw_dialog_title">Remove NSFW warning dialog</string>
     <string name="morphe_remove_nsfw_dialog_summary">Automatically accepts the NSFW content warning when visiting a subreddit</string>
+    <string name="morphe_force_system_font_title">Force system font</string>
+    <string name="morphe_force_system_font_summary">"Renders the app using the device's system font instead of Reddit Sans
+
+Restart the app for changes to take effect"</string>
 
     <string name="morphe_screen_miscellaneous_title">Miscellaneous</string>
     <string name="morphe_about_title">About</string>

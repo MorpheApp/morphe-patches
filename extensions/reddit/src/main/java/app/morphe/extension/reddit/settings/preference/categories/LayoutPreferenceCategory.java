@@ -14,6 +14,7 @@ import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
+import app.morphe.extension.reddit.patches.ForceSystemFontPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideNavigationButtonsPatch;
 import app.morphe.extension.reddit.patches.HideRecommendedCommunitiesShelf;
@@ -34,6 +35,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
     @Override
     public boolean getSettingsStatus() {
         return DisableScreenshotPopupPatch.isPatchIncluded() ||
+                ForceSystemFontPatch.isPatchIncluded() ||
                 HideAskButtonPatch.isPatchIncluded() ||
                 HideNavigationButtonsPatch.isPatchIncluded() ||
                 HideSidebarComponentsPatch.isPatchIncluded() ||
@@ -143,6 +145,13 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             addPreference(new BooleanSettingPreference(
                     context,
                     Settings.SHOW_VIEW_COUNT
+            ));
+        }
+
+        if (ForceSystemFontPatch.isPatchIncluded()) {
+            addPreference(new BooleanSettingPreference(
+                    context,
+                    Settings.FORCE_SYSTEM_FONT
             ));
         }
     }
