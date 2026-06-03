@@ -19,10 +19,10 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
@@ -145,6 +145,15 @@ public final class MiniplayerPatch {
 
     private static final boolean MINIPLAYER_HORIZONTAL_DRAG_ENABLED =
             DRAG_AND_DROP_ENABLED && !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get();
+
+    private static final Map<Integer, String> MINIMAL_PLAYER_DRAWABLES = Map.of(
+            ResourceUtils.getStringIdentifier("accessibility_pause"),
+            "yt_fill_pause_vd_theme_24",
+            ResourceUtils.getStringIdentifier("accessibility_play"),
+            "yt_fill_play_arrow_vd_theme_24",
+            ResourceUtils.getStringIdentifier("accessibility_replay"),
+            "yt_outline_replay_arrow_vd_theme_24"
+    );
 
     private static final int OPACITY_LEVEL;
 
@@ -427,20 +436,12 @@ public final class MiniplayerPatch {
             return;
         }
 
-        String drawableName;
-        if (contentDescriptionId == ResourceUtils.getIdentifier(ResourceType.STRING, "accessibility_pause")) {
-            drawableName = "yt_fill_pause_vd_theme_24";
-        } else if (contentDescriptionId == ResourceUtils.getIdentifier(ResourceType.STRING, "accessibility_play")) {
-            drawableName = "yt_fill_play_arrow_vd_theme_24";
-        } else if (contentDescriptionId == ResourceUtils.getIdentifier(ResourceType.STRING, "accessibility_replay")) {
-            drawableName = "yt_outline_replay_arrow_vd_theme_24";
-        } else {
-            return;
-        }
-
-        Drawable drawable = ResourceUtils.getDrawable(drawableName);
-        if (drawable != null) {
-            view.setImageDrawable(drawable);
+        String drawableName = MINIMAL_PLAYER_DRAWABLES.get(contentDescriptionId);
+        if (drawableName != null) {
+            Drawable drawable = ResourceUtils.getDrawable(drawableName);
+            if (drawable != null) {
+                view.setImageDrawable(drawable);
+            }
         }
     }
 
