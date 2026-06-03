@@ -161,15 +161,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_STORE_BUTTON = new BooleanSetting("morphe_hide_store_button", TRUE);
     public static final BooleanSetting HIDE_SUBSCRIBE_BUTTON_IN_CHANNEL_PAGE = new BooleanSetting("morphe_hide_subscribe_button_in_channel_page", FALSE);
 
-    // Snackbar
-    public static final BooleanSetting HIDE_SNACKBAR = new BooleanSetting("morphe_hide_snackbar", FALSE, true);
-    public static final BooleanSetting CUSTOM_SNACKBAR_THEME = new BooleanSetting("morphe_custom_snackbar_theme", FALSE, parentNot(HIDE_SNACKBAR));
-    public static final StringSetting CUSTOM_SNACKBAR_COLOR_DARK = new StringSetting("morphe_custom_snackbar_color_dark", "#FF0F0F0F", true, parent(CUSTOM_SNACKBAR_THEME));
-    public static final StringSetting CUSTOM_SNACKBAR_COLOR_LIGHT = new StringSetting("morphe_custom_snackbar_color_light", "#FFF1F1F1", true, parent(CUSTOM_SNACKBAR_THEME));
-    public static final StringSetting CUSTOM_SNACKBAR_CORNER_RADIUS = new StringSetting("morphe_custom_snackbar_corner_radius", "8.0", true, parent(CUSTOM_SNACKBAR_THEME));
-    public static final StringSetting CUSTOM_SNACKBAR_STROKE_COLOR = new StringSetting("morphe_custom_snackbar_stroke_color", "", true, parent(CUSTOM_SNACKBAR_THEME));
-    public static final StringSetting CUSTOM_SNACKBAR_TEXT_COLOR = new StringSetting("morphe_custom_snackbar_text_color", "", true, parent(CUSTOM_SNACKBAR_THEME));
-
     // Player
     public static final BooleanSetting DISABLE_CHAPTER_SKIP_DOUBLE_TAP = new BooleanSetting("morphe_disable_chapter_skip_double_tap", FALSE);
     public static final BooleanSetting DISABLE_HAPTIC_FEEDBACK_CHAPTERS = new BooleanSetting("morphe_disable_haptic_feedback_chapters", FALSE);
@@ -198,6 +189,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_PLAYER_RELATED_VIDEOS = new BooleanSetting("morphe_hide_player_related_videos", FALSE, true);
     public static final BooleanSetting HIDE_PLAYER_RELATED_VIDEOS_OVERLAY = new BooleanSetting("morphe_hide_player_related_videos_overlay", FALSE, true);
     public static final BooleanSetting HIDE_SETTINGS_BUTTON = new BooleanSetting("morphe_hide_settings_button", FALSE, true);
+    public static final BooleanSetting HIDE_SNACKBAR = new BooleanSetting("morphe_hide_snackbar", FALSE, true);
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_hide_subscribers_community_guidelines", TRUE);
     public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("morphe_hide_timed_reactions", TRUE);
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("morphe_hide_video_title", FALSE);

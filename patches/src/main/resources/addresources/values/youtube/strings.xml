@@ -137,6 +137,7 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_live_chat_replay_button_title">Hide \'Live chat replay\' button</string>
     <string name="morphe_hide_live_chat_replay_button_summary">Hides the chat replay button in the fullscreen mode</string>
     <string name="morphe_hide_medical_panels_title">Hide medical panels</string>
+    <string name="morphe_hide_snackbar_title">Hide snackbar</string>
     <string name="morphe_hide_subscribers_community_guidelines_title">Hide subscribers guidelines</string>
     <string name="morphe_hide_timed_reactions_title">Hide timed reactions</string>
     <string name="morphe_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
@@ -270,25 +271,6 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_conflicting">Keyword has conflicting declarations: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_length">Keyword is too short and requires quotes: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
-
-    <string name="morphe_snackbar_screen_title">Snackbar</string>
-    <string name="morphe_snackbar_screen_summary">Choose how to customize or hide snackbar</string>
-    <string name="morphe_custom_snackbar_theme_title">Enable custom snackbar</string>
-    <string name="morphe_custom_snackbar_theme_summary">Apply custom background, radius, and stroke</string>
-    <string name="morphe_custom_snackbar_corner_radius_title">Corner radius</string>
-    <string name="morphe_custom_snackbar_corner_radius_summary">Specify a corner radius in dp</string>
-    <string name="morphe_custom_snackbar_theme_summary_off">Default YouTube snackbar is used</string>
-    <string name="morphe_custom_snackbar_color_dark_title">Dark theme background color</string>
-    <string name="morphe_custom_snackbar_color_dark_summary">Set the background color for dark mode</string>
-    <string name="morphe_custom_snackbar_color_light_title">Light theme background color</string>
-    <string name="morphe_custom_snackbar_color_light_summary">Set the background color for light mode</string>
-    <string name="morphe_custom_snackbar_stroke_color_title">Stroke color</string>
-    <string name="morphe_custom_snackbar_stroke_color_summary">Set the border stroke color</string>
-    <string name="morphe_custom_snackbar_text_color_title">Text color</string>
-    <string name="morphe_custom_snackbar_text_color_summary">Set the text color</string>
-    <string name="morphe_hide_snackbar_title">Hide snackbar</string>
-    <string name="morphe_hide_snackbar_summary_on">Snackbar is hidden</string>
-    <string name="morphe_hide_snackbar_summary_off">Snackbar is shown</string>
 
     <!-- ad.general.hideAdsPatch -->
     <string name="morphe_hide_creator_store_shelf_title">Hide creator store shelf</string>
