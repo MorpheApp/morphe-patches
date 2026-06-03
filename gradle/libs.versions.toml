@@ -13,7 +13,7 @@ gson = "2.14.0"
 guava = "33.5.0-jre"
 hiddenapi = "6.1"
 protobuf = "0.9.6"
-protoc = "4.34.1"
+protoc = "4.35.0"
 
 [libraries]
 morphe-patches-library = { module = "app.morphe:morphe-patches-library", version.ref = "morphe-patches-library" }
