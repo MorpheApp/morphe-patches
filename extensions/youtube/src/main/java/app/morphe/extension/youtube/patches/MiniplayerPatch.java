@@ -437,6 +437,8 @@ public final class MiniplayerPatch {
             drawableName = "yt_fill_pause_vd_theme_24";
         } else if (contentDescriptionId == ResourceUtils.getIdentifier(ResourceType.STRING, "accessibility_play")) {
             drawableName = "yt_fill_play_arrow_vd_theme_24";
+        } else if (contentDescriptionId == ResourceUtils.getIdentifier(ResourceType.STRING, "accessibility_replay")) {
+            drawableName = "yt_outline_replay_arrow_vd_theme_24";
         } else {
             return;
         }
