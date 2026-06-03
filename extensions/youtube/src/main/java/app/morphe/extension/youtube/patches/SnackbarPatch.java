@@ -12,6 +12,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -31,6 +32,8 @@ public class SnackbarPatch {
 
     private static final int YT_BLACK_TEXT = 0xFF0F0F0F;
     private static final int YT_WHITE_TEXT = 0xFFF1F1F1;
+
+    private static class MorpheSnackbarDrawable extends GradientDrawable {}
 
     public static boolean hideSnackbar() {
         return Settings.HIDE_SNACKBAR.get();
@@ -56,12 +59,12 @@ public class SnackbarPatch {
         }
 
         if (Settings.CUSTOM_SNACKBAR_THEME.get()) {
-            applyCustomThemeToView(view);
+            enforceCustomTheme(view);
 
             view.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
                 @Override
                 public void onViewAttachedToWindow(@NonNull View v) {
-                    applyCustomThemeToView(v);
+                    enforceCustomTheme(v);
                 }
 
                 @Override
@@ -77,18 +80,37 @@ public class SnackbarPatch {
             frameLayout.setBackgroundColor(originalColor);
             return;
         }
-        applyCustomThemeToView(frameLayout);
+
+        enforceCustomTheme(frameLayout);
+    }
+
+    private static void enforceCustomTheme(View view) {
+        applyCustomThemeToView(view);
+
+        view.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
+            @Override
+            public boolean onPreDraw() {
+                if (Settings.CUSTOM_SNACKBAR_THEME.get()) {
+                    if (!(view.getBackground() instanceof MorpheSnackbarDrawable)) {
+                        applyCustomThemeToView(view);
+                    }
+                } else {
+                    view.getViewTreeObserver().removeOnPreDrawListener(this);
+                }
+                return true;
+            }
+        });
     }
 
     private static void applyCustomThemeToView(View view) {
         try {
-            GradientDrawable drawable = new GradientDrawable();
+            MorpheSnackbarDrawable drawable = new MorpheSnackbarDrawable();
 
             boolean isDark = Utils.isDarkModeEnabled();
             String customColorString = isDark ? Settings.CUSTOM_SNACKBAR_COLOR_DARK.get() : Settings.CUSTOM_SNACKBAR_COLOR_LIGHT.get();
 
             int backgroundColor = Utils.isNotEmpty(customColorString)
-                    ? Utils.getColorFromString(customColorString)
+                    ? Color.parseColor(customColorString)
                     : Color.parseColor(isDark ? "#FF0F0F0F" : "#FFF1F1F1");
 
             drawable.setColor(backgroundColor);
@@ -100,7 +122,7 @@ public class SnackbarPatch {
             String strokeColorStr = Settings.CUSTOM_SNACKBAR_STROKE_COLOR.get();
             if (Utils.isNotEmpty(strokeColorStr)) {
                 int strokePx = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1.0f, Utils.getResources().getDisplayMetrics());
-                drawable.setStroke(strokePx, Utils.getColorFromString(strokeColorStr));
+                drawable.setStroke(strokePx, Color.parseColor(strokeColorStr));
             }
 
             view.setBackground(drawable);
@@ -137,7 +159,7 @@ public class SnackbarPatch {
         String customTextString = Settings.CUSTOM_SNACKBAR_TEXT_COLOR.get();
         if (Utils.isNotEmpty(customTextString)) {
             try {
-                return Utils.getColorFromString(customTextString);
+                return Color.parseColor(customTextString);
             } catch (Exception ignored) {}
         }
 
@@ -147,15 +169,17 @@ public class SnackbarPatch {
 
     public static int getLithoColor(int originalColor) {
         if (!Settings.CUSTOM_SNACKBAR_THEME.get()) return originalColor;
+        if (originalColor == YT_BLACK_TEXT || originalColor == YT_WHITE_TEXT ||
+                originalColor == 0xFF000000 || originalColor == 0xFFFFFFFF) {
 
-        if (LITHO_SNACKBAR_ACTIVE.compareAndSet(true, false)) {
             boolean isDark = Utils.isDarkModeEnabled();
+            String customColorString = isDark ? Settings.CUSTOM_SNACKBAR_COLOR_DARK.get() : Settings.CUSTOM_SNACKBAR_COLOR_LIGHT.get();
 
-            int expectedBgColor = isDark ? YT_BLACK_TEXT : YT_WHITE_TEXT;
+            int backgroundColor = Utils.isNotEmpty(customColorString)
+                    ? Color.parseColor(customColorString)
+                    : Color.parseColor(isDark ? "#FF0F0F0F" : "#FFF1F1F1");
 
-            if (originalColor == expectedBgColor) {
-                return Color.TRANSPARENT;
-            }
+            return getCalculatedTextColor(backgroundColor);
         }
 
         return originalColor;

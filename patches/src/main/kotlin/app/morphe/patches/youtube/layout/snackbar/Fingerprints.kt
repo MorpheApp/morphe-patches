@@ -61,7 +61,7 @@ internal object MaterialSnackbarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
     custom = { _, classDef ->
-        classDef.type == "Lcom/google/android/material/snackbar/Snackbar\$SnackbarLayout;"
+        classDef.type == $$"Lcom/google/android/material/snackbar/Snackbar$SnackbarLayout;"
     }
 )
 
