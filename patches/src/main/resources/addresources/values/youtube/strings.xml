@@ -1358,4 +1358,29 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
     <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show spoofing in Stats for nerds</string>
+
+    <!-- Queue manager strings -->
+    <string name="morphe_queue_manager_queue">Queue</string>
+    <string name="morphe_queue_manager_check_failed_auth">Not logged in</string>
+    <string name="morphe_queue_manager_check_failed_playlist_id">No playlist ID</string>
+    <string name="morphe_queue_manager_check_failed_queue">Queue is empty</string>
+    <string name="morphe_queue_manager_check_failed_video_id">No video ID</string>
+    <string name="morphe_queue_manager_check_failed_generic">Failed: %s</string>
+    <string name="morphe_queue_manager_fetch_failed_add">Failed to add to queue</string>
+    <string name="morphe_queue_manager_fetch_failed_create">Failed to create queue</string>
+    <string name="morphe_queue_manager_fetch_failed_remove">Failed to remove from queue</string>
+    <string name="morphe_queue_manager_fetch_failed_save">Failed to save queue</string>
+    <string name="morphe_queue_manager_fetch_succeeded_add">Added to queue</string>
+    <string name="morphe_queue_manager_fetch_succeeded_create">Queue created</string>
+    <string name="morphe_queue_manager_fetch_succeeded_remove">Removed from queue</string>
+    <string name="morphe_queue_manager_fetch_succeeded_save">Queue saved to %s</string>
+    <string name="morphe_queue_manager_add_to_queue">Add to queue</string>
+    <string name="morphe_queue_manager_add_to_queue_and_open_queue">Add to queue and open</string>
+    <string name="morphe_queue_manager_add_to_queue_and_play_video">Add to queue and play</string>
+    <string name="morphe_queue_manager_add_to_queue_and_reload_video">Add and reload video</string>
+    <string name="morphe_queue_manager_remove_from_queue">Remove from queue</string>
+    <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Remove and open queue</string>
+    <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Remove and reload video</string>
+    <string name="morphe_queue_manager_open_queue">Open queue</string>
+    <string name="morphe_queue_manager_save_queue">Save queue to playlist</string>
 </resources>

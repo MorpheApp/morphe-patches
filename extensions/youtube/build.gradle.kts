@@ -11,6 +11,8 @@ dependencies {
     compileOnly(project(":extensions:shared:library"))
     compileOnly(project(":extensions:youtube:stub"))
 
+    implementation(libs.collections4)
+    implementation(libs.lang3)
     implementation(libs.protobuf.javalite)
 }
 

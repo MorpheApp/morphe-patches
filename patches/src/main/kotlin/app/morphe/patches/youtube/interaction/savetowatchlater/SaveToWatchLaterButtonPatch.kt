@@ -15,8 +15,11 @@ import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSet
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
+import app.morphe.patches.youtube.misc.auth.authHookPatch
+import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
@@ -34,9 +37,6 @@ private val saveToWatchLaterButtonResourcePatch = resourcePatch {
     }
 }
 
-private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/SaveToWatchLaterPatch;"
-
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/SaveToWatchLaterButton;"
 
@@ -50,6 +50,9 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
         settingsPatch,
         legacyPlayerControlsPatch,
         playerOverlayButtonsSettingsPatch,
+        sharedExtensionPatch,
+        videoInformationPatch,
+        authHookPatch,
         bytecodePatch {
             finalize {
                 addTopControl(
