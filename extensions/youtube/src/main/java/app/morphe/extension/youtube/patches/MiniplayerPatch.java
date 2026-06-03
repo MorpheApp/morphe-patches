@@ -16,15 +16,14 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import app.morphe.extension.shared.ResourceType;
-import app.morphe.extension.shared.ResourceUtils;
-
 import androidx.annotation.Nullable;
 
 import java.util.List;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
@@ -42,12 +41,6 @@ public final class MiniplayerPatch {
         DISABLED(false, null),
         /** Unmodified type, and same as un-patched. */
         DEFAULT(null, null),
-        /**
-         * Exactly the same as MINIMAL and only here for migration of user settings.
-         * Eventually this should be deleted.
-         */
-        @Deprecated
-        PHONE(false, null),
         MINIMAL(false, null),
         TABLET(true, null),
         MODERN_1(null, 1),
@@ -430,7 +423,9 @@ public final class MiniplayerPatch {
      * Injection point.
      */
     public static void overrideMiniplayerActionButtonDrawable(ImageView view, int contentDescriptionId) {
-        if (CURRENT_TYPE != MINIMAL) return;
+        if (!VersionCheckPatch.IS_21_17_OR_GREATER || CURRENT_TYPE != MINIMAL) {
+            return;
+        }
 
         String drawableName;
         if (contentDescriptionId == ResourceUtils.getIdentifier(ResourceType.STRING, "accessibility_pause")) {
@@ -443,10 +438,7 @@ public final class MiniplayerPatch {
             return;
         }
 
-        int drawableId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE, drawableName);
-        if (drawableId == 0) return;
-
-        Drawable drawable = Utils.getContext().getDrawable(drawableId);
+        Drawable drawable = ResourceUtils.getDrawable(drawableName);
         if (drawable != null) {
             view.setImageDrawable(drawable);
         }

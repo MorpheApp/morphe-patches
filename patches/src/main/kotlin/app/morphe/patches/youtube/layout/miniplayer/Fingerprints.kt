@@ -196,26 +196,30 @@ internal object MiniplayerOnCloseHandlerFingerprint : Fingerprint(
     )
 )
 
+// 21.17+
 internal object MiniplayerSetIconsFingerprint : Fingerprint(
+    classFingerprint = Fingerprint(
+        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+        returnType = "Landroid/graphics/drawable/Drawable;",
+        filters = listOf(
+            resourceLiteral(ResourceType.DRAWABLE, "floatybar_progress_circle_autonav")
+        )
+    ),
+    returnType = "V",
+    parameters = listOf("Landroid/graphics/drawable/Drawable;", "I"),
+    filters = listOf(
+        methodCall(smali = "Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V")
+    )
+)
+
+// 21.16 and lower
+internal object MiniplayerSetIconsLegacyFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("I", "Ljava/lang/Runnable;"),
     filters = listOf(
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_white_36"),
         resourceLiteral(ResourceType.DRAWABLE, "yt_fill_pause_black_36")
     )
-)
-
-// 21.17+ removed the non-bold icon variants used by MiniplayerSetIconsFingerprint.
-private object MiniplayerSetIconsParentFingerprint2117 : Fingerprint(
-    filters = listOf(
-        resourceLiteral(ResourceType.DRAWABLE, "floatybar_progress_circle_autonav")
-    )
-)
-
-internal object MiniplayerSetIconsFingerprint2117 : Fingerprint(
-    classFingerprint = MiniplayerSetIconsParentFingerprint2117,
-    returnType = "V",
-    parameters = listOf("Landroid/graphics/drawable/Drawable;", "I"),
 )
 
 internal object ShowMiniplayerCommandFingerprint: Fingerprint(
