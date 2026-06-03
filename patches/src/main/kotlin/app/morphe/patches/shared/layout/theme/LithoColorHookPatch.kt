@@ -25,8 +25,8 @@ fun lithoColorOverrideHook(targetMethodClass: String, targetMethodName: String) 
     lithoColorOverrideHookRef.get()!!.addInstructions(
         lithoColorOverrideHookInsertIndex,
         """
-        invoke-static { v$colorRegister }, $targetMethodClass->$targetMethodName(I)I
-        move-result v$colorRegister
+            invoke-static { v$colorRegister }, $targetMethodClass->$targetMethodName(I)I
+            move-result v$colorRegister
         """
     )
     lithoColorOverrideHookInsertIndex += 2
