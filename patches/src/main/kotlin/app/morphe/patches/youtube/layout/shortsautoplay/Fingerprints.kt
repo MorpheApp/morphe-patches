@@ -1,7 +1,7 @@
 package app.morphe.patches.youtube.layout.shortsautoplay
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
@@ -53,13 +53,13 @@ internal object ReelPlaybackFingerprint : Fingerprint(
         methodCall(
             name = "<init>",
             parameters = listOf("I", "L", "L"),
-            location = InstructionLocation.MatchAfterWithin(15)
+            location = MatchAfterWithin(15)
         ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             parameters = listOf("L"),
             returnType = "I",
-            location = InstructionLocation.MatchAfterWithin(5)
+            location = MatchAfterWithin(5)
         )
     )
 )

@@ -38,7 +38,7 @@ val changeStartPagePatch = bytecodePatch(
                         key = "morphe_change_start_page",
                         tag = "app.morphe.extension.shared.settings.preference.SortedListPreference"
                     ),
-                    SwitchPreference("morphe_change_start_page_always")
+                    SwitchPreference("morphe_change_start_page_always", summary = true)
                 )
             )
         )

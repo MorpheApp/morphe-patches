@@ -1,7 +1,6 @@
 package app.morphe.patches.youtube.layout.hide.infocards
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation.MatchAfterAnywhere
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string

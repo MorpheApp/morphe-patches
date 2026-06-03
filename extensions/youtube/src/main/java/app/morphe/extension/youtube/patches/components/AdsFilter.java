@@ -20,6 +20,7 @@ import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
@@ -121,7 +122,7 @@ public final class AdsFilter extends Filter {
         );
 
         final var viewProducts = new StringFilterGroup(
-                Settings.HIDE_VIEW_PRODUCTS_BANNER,
+                Settings.HIDE_PLAYER_POPUP_ADS,
                 "product_item",
                 "products_in_video",
                 "shopping_overlay.e" // Video player overlay shopping links.
@@ -138,6 +139,19 @@ public final class AdsFilter extends Filter {
                 "shopping_carousel.e" // Channel profile shopping shelf.
         );
 
+        final var paidPromotionLabel = new StringFilterGroup(
+                Settings.HIDE_PAID_PROMOTION_LABEL,
+                "paid_content_overlay",
+                "reel_player_disclosure.e",
+                "shorts_disclosures.e"
+        );
+
+        final var productSticker = new StringFilterGroup(
+                Settings.HIDE_PLAYER_POPUP_ADS,
+                "stickers_layer.e",
+                "product_sticker.e" // Product sticker that appears on Shorts.
+        );
+
         final var selfSponsor = new StringFilterGroup(
                 Settings.HIDE_SELF_SPONSOR,
                 "cta_shelf_card"
@@ -148,6 +162,8 @@ public final class AdsFilter extends Filter {
                 generalAds,
                 merchandise,
                 movieAds,
+                paidPromotionLabel,
+                productSticker,
                 selfSponsor,
                 shoppingLinks,
                 viewProducts
@@ -160,6 +176,7 @@ public final class AdsFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
@@ -202,6 +219,14 @@ public final class AdsFilter extends Filter {
      */
     public static boolean hideAds() {
         return Settings.HIDE_GENERAL_ADS.get();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean allowAds(boolean original) {
+        if (Settings.HIDE_GENERAL_ADS.get()) return false;
+        return original;
     }
 
     /**

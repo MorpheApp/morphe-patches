@@ -30,7 +30,7 @@ val disableShortsResumingOnStartupPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SHORTS.addPreferences(
-            SwitchPreference("morphe_disable_shorts_resuming_on_startup", summaryKey = null),
+            SwitchPreference("morphe_disable_shorts_resuming_on_startup"),
         )
 
         if (is_21_03_or_greater) {

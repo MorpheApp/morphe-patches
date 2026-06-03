@@ -23,7 +23,10 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.fix.proto.parseByteArrayMethod
+import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.util.ResourceGroup
+import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.copyResources
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -75,6 +78,7 @@ internal fun spoofVideoStreamsPatch(
     fixMediaSessionFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     fixReelItemWatchResponseFeatureFlag: BytecodePatchBuilder.() -> Boolean,
     hookAccountIdentity: BytecodePatchBuilder.() -> Boolean,
+    useNewRequestBuilderFingerprint: BytecodePatchBuilder.() -> Boolean,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {},
 ) = bytecodePatch(
@@ -125,18 +129,35 @@ internal fun spoofVideoStreamsPatch(
 
         // region Block /get_watch requests to fall back to /player requests.
 
-        BuildPlayerRequestURIFingerprint.let {
-            it.method.apply {
-                val invokeToStringIndex = it.instructionMatches.first().index
-                val uriRegister = getInstruction<FiveRegisterInstruction>(invokeToStringIndex).registerC
+        if (useNewRequestBuilderFingerprint()) {
+            BuildPlayerRequestURIBuilderFingerprint.let {
+                it.method.apply {
+                    val index = it.instructionMatches.last().index
+                    val register = getInstruction<OneRegisterInstruction>(index).registerA
 
-                addInstructions(
-                    invokeToStringIndex,
-                    """
-                        invoke-static { v$uriRegister }, $EXTENSION_CLASS->blockGetWatchRequest(Landroid/net/Uri;)Landroid/net/Uri;
-                        move-result-object v$uriRegister
-                    """
-                )
+                    addInstructionsAtControlFlowLabel(
+                        index,
+                        """
+                            invoke-static { v$register }, $EXTENSION_CLASS->blockGetWatchRequest(Landroid/net/Uri${'$'}Builder;)Landroid/net/Uri${'$'}Builder;
+                            move-result-object v$register
+                        """
+                    )
+                }
+            }
+        } else {
+            BuildPlayerRequestURIFingerprint.let {
+                it.method.apply {
+                    val invokeToStringIndex = it.instructionMatches.first().index
+                    val uriRegister = getInstruction<FiveRegisterInstruction>(invokeToStringIndex).registerC
+
+                    addInstructions(
+                        invokeToStringIndex,
+                        """
+                            invoke-static { v$uriRegister }, $EXTENSION_CLASS->blockGetWatchRequest(Landroid/net/Uri;)Landroid/net/Uri;
+                            move-result-object v$uriRegister
+                        """
+                    )
+                }
             }
         }
 

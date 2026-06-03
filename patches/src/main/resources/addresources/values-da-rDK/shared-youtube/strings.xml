@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Genstart for at færdiggøre opsætningen</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Appnavn</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Brugerdefineret</string>
   <string name="morphe_custom_branding_icon_title">Appikon</string>
   <string name="morphe_custom_branding_icon_entry_1">Original</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe mørke</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe mørk</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe lille</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe afspilning af lys</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe afspilning af sort</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Brugerdefineret</string>
+  <string name="morphe_custom_branding_icon_entry_7">Brugerdefineret</string>
   <string name="morphe_custom_branding_notification_icon_title">Notifikationsikon</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Match appikon</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Meddelelse</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Din afspilningshistorik gemmes ikke.&lt;br&gt;&lt;br&gt;Dette skyldes sandsynligvis en DNS-annonceblokker eller netværksproxy.&lt;br&gt;&lt;br&gt;For at løse dette, whitelist &lt;b&gt;s.youtube.com&lt;/b&gt; eller slå alle DNS-blokkere og proxyservere fra.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Spoof videostreams</string>
   <string name="morphe_spoof_video_streams_screen_summary">Spoof klientens videostreams for at forhindre afspilningsproblemer</string>
   <string name="morphe_spoof_video_streams_title">Spoof videostreams</string>
-  <string name="morphe_spoof_video_streams_summary">"Snyder YouTube til at sende en kompatibel videostream, hvilket løser afspilningen for de fleste brugere
+  <string name="morphe_spoof_video_streams_summary">"Løser afspilningsproblemer for de fleste brugere ved at anmode om en kompatibel videostream.
 
-Hvis du er en YouTube Premium-bruger, er denne indstilling muligvis ikke nødvendig"</string>
+Hvis du er en YouTube Premium-bruger, er denne indstilling muligvis ikke nødvendig."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Kunne ikke hente nogen klient streams</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Deaktivering af denne indstilling kan forårsage afspilningsproblemer.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -110,6 +114,7 @@ For at logge ind, tryk på fortsæt nedenfor"</string>
   <string name="morphe_sanitize_sharing_links_title">Rens delingslinks</string>
   <string name="morphe_sanitize_sharing_links_summary">Fjerner sporing af forespørgselsparametre fra delte links</string>
   <string name="morphe_replace_music_with_youtube_title">Skift delingslinks til youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Erstatter music.youtube.com med youtube.com i delte links.</string>
   <string name="morphe_replace_links_with_shortener_title">Skift delingslinks til youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Tvinger live streams og Shorts til at bruge det forkortede youtu.be URL-format</string>
+  <string name="morphe_replace_links_with_shortener_summary">Tvinger videoer til at bruge det forkortede youtu.be URL-format</string>
 </resources>

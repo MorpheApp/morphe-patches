@@ -4,10 +4,10 @@ import kotlin.math.abs
 import kotlin.math.sign
 
 /**
- * helper for scaling onScroll handler
+ * Helper for scaling the onScroll handler.
  *
- * @param unitDistance absolute distance after which the callback is invoked
- * @param callback callback function for when unit distance is reached
+ * @param unitDistance Absolute distance after which the callback is invoked.
+ * @param callback Callback invoked when the unit distance is reached.
  */
 class ScrollDistanceHelper(
     private val unitDistance: Int,
@@ -15,15 +15,15 @@ class ScrollDistanceHelper(
 ) {
 
     /**
-     * total distance scrolled
+     * Total distance scrolled.
      */
     private var scrolledDistance: Double = 0.0
 
     /**
-     * add a scrolled distance to the total.
-     * if the [unitDistance] is reached, this function will also invoke the callback
+     * Adds a scrolled distance to the total.
+     * If the [unitDistance] is reached, also invokes the callback.
      *
-     * @param distance the distance to add
+     * @param distance The distance to add.
      */
     fun add(distance: Double) {
         scrolledDistance += distance
@@ -41,14 +41,14 @@ class ScrollDistanceHelper(
     }
 
     /**
-     * reset the distance scrolled to zero
+     * Resets the distance scrolled to zero.
      */
     fun reset() {
         scrolledDistance = 0.0
     }
 
     /**
-     * subtract the [unitDistance] from the total [scrolledDistance]
+     * Subtracts the [unitDistance] from the total [scrolledDistance].
      */
     private fun subtractUnitDistance() {
         scrolledDistance -= (unitDistance * sign(scrolledDistance))

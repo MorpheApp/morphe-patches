@@ -87,33 +87,33 @@ val navigationBarPatch = bytecodePatch(
 
     execute {
         val navPreferences = mutableSetOf(
-            SwitchPreference("morphe_hide_home_button", summaryKey = null),
-            SwitchPreference("morphe_hide_shorts_button", summaryKey = null),
-            SwitchPreference("morphe_hide_create_button", summaryKey = null),
-            SwitchPreference("morphe_hide_subscriptions_button", summaryKey = null),
-            SwitchPreference("morphe_hide_notifications_button", summaryKey = null),
-            SwitchPreference("morphe_show_search_button", summaryKey = null),
+            SwitchPreference("morphe_hide_home_button"),
+            SwitchPreference("morphe_hide_shorts_button"),
+            SwitchPreference("morphe_hide_create_button"),
+            SwitchPreference("morphe_hide_subscriptions_button"),
+            SwitchPreference("morphe_hide_notifications_button"),
+            SwitchPreference("morphe_show_search_button"),
             ListPreference("morphe_show_search_button_index"),
-            SwitchPreference("morphe_show_settings_button", summaryKey = null),
+            SwitchPreference("morphe_show_settings_button"),
             ListPreference("morphe_show_settings_button_index"),
-            SwitchPreference("morphe_show_settings_button_type"),
-            SwitchPreference("morphe_swap_create_with_notifications_button", summaryKey = null),
-            SwitchPreference("morphe_hide_navigation_button_labels", summaryKey = null),
-            SwitchPreference("morphe_narrow_navigation_buttons"),
-            SwitchPreference("morphe_hide_navigation_bar", summaryKey = null),
+            SwitchPreference("morphe_show_settings_button_type", summary = true),
+            SwitchPreference("morphe_swap_create_with_notifications_button"),
+            SwitchPreference("morphe_hide_navigation_button_labels"),
+            SwitchPreference("morphe_narrow_navigation_buttons", summary = true),
+            SwitchPreference("morphe_hide_navigation_bar"),
         )
 
-        navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_light")
-        navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_dark")
+        navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_light", summary = true)
+        navPreferences += SwitchPreference("morphe_disable_translucent_navigation_bar_dark", summary = true)
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_disable_translucent_status_bar")
+            SwitchPreference("morphe_disable_translucent_status_bar", summary = true)
         )
 
-        navPreferences += SwitchPreference("morphe_navigation_bar_animations")
+        navPreferences += SwitchPreference("morphe_navigation_bar_animations", summary = true)
 
         if (is_20_31_or_greater) {
-            navPreferences += SwitchPreference("morphe_disable_auto_hide_navigation_bar")
+            navPreferences += SwitchPreference("morphe_disable_auto_hide_navigation_bar", summary = true)
         }
 
         PreferenceScreen.GENERAL.addPreferences(
@@ -355,17 +355,17 @@ val navigationBarPatch = bytecodePatch(
         //
 
         val toolbarPreferences = mutableSetOf(
-            SwitchPreference("morphe_hide_toolbar_cast_button", summaryKey = null),
-            SwitchPreference("morphe_hide_toolbar_create_button", summaryKey = null),
-            SwitchPreference("morphe_hide_toolbar_microphone_button", summaryKey = null),
-            SwitchPreference("morphe_hide_toolbar_notification_button", summaryKey = null),
-            SwitchPreference("morphe_hide_toolbar_search_button", summaryKey = null),
-            SwitchPreference("morphe_show_toolbar_settings_button", summaryKey = null),
+            SwitchPreference("morphe_hide_toolbar_cast_button"),
+            SwitchPreference("morphe_hide_toolbar_create_button"),
+            SwitchPreference("morphe_hide_toolbar_microphone_button"),
+            SwitchPreference("morphe_hide_toolbar_notification_button"),
+            SwitchPreference("morphe_hide_toolbar_search_button"),
+            SwitchPreference("morphe_show_toolbar_settings_button"),
             ListPreference("morphe_show_toolbar_settings_button_index"),
-            SwitchPreference("morphe_show_toolbar_settings_button_type")
+            SwitchPreference("morphe_show_toolbar_settings_button_type", summary = true)
         )
         if (!is_20_31_or_greater) {
-            toolbarPreferences += SwitchPreference("morphe_wide_searchbar", summaryKey = null)
+            toolbarPreferences += SwitchPreference("morphe_wide_searchbar")
         }
 
         PreferenceScreen.GENERAL.addPreferences(

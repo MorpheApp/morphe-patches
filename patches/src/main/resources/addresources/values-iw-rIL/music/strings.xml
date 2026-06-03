@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">הסתר מודעות וידאו</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">מעבר הדרגתי</string>
-  <string name="morphe_music_crossfade_screen_summary">התאמה אישית של אופן המעבר החלק בין רצועות</string>
+  <string name="morphe_music_crossfade_screen_summary">ערבבו בצורה חלקה רצועות זו בזו</string>
   <string name="morphe_music_crossfade_enabled_title">הפעלת מעבר הדרגתי</string>
   <string name="morphe_music_crossfade_curve_title">עקומת דעיכה</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">עוצמה שווה</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">התקלות עדינה</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">עקומה חלקה בצורת S</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">יוצא</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">נכנס</string>
   <string name="morphe_music_crossfade_duration_title">משך דעיכה</string>
   <string name="morphe_crossfade_duration_250ms">250 אלפיות שנייה</string>
   <string name="morphe_crossfade_duration_500ms">500 אלפיות שנייה</string>
@@ -56,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 שניות</string>
   <string name="morphe_crossfade_duration_9000ms">9 שניות</string>
   <string name="morphe_crossfade_duration_10000ms">10 שניות</string>
+  <string name="morphe_crossfade_duration_11000ms">11 שניות</string>
+  <string name="morphe_crossfade_duration_12000ms">12 שניות</string>
   <string name="morphe_music_crossfade_on_skip_title">דעיכה בעת דילוג ידני</string>
   <string name="morphe_music_crossfade_on_skip_summary">מפעיל את אפקט ה-crossfade כשאתה מדלג באופן ידני לרצועה הבאה</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">דעיכה בעת מעבר אוטומטי</string>
@@ -66,11 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">המעבר בין השירים התחדש</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">מצב וידאו אינו זמין כאשר מעבר בין השירים מופעל</string>
   <string name="morphe_music_crossfade_about_title">אודות</string>
-  <string name="morphe_music_crossfade_about_summary">"דעיכה זמינה עם YouTube Music 8.x
+  <string name="morphe_music_crossfade_about_summary">"לחץ לחיצה ארוכה על כפתור הערבוב כדי לבטל/להפעיל
 
-לחיצה ארוכה על כפתור ה-shuffle כדי לבטל/להפעיל
-
-יישום התכונה על ידי VazerOG"</string>
+מימוש תכונה על ידי VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">אפשר חזרה קבועה</string>
   <!-- layout.buttons.hideButtons -->
@@ -103,7 +105,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">מונע מהנגן להתרחב אוטומטית למסך מלא כאשר רצועה חדשה מתחילה</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">סרגל ניווט</string>
-  <string name="morphe_music_navigation_bar_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט</string>
+  <string name="morphe_music_navigation_bar_screen_summary">בחר אילו כפתורים יופיעו בסרגל הניווט התחתון</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">הסתר כפתור בית</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

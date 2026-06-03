@@ -5,7 +5,6 @@ plugins {
 }
 
 dependencies {
-    compileOnly(libs.androidx.core)
     compileOnly(libs.annotation)
     compileOnly(libs.morphe.extensions.library)
     compileOnly(project(":extensions:shared-youtube:library"))

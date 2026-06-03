@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">動画広告を非表示</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">クロスフェード</string>
-  <string name="morphe_music_crossfade_screen_summary">前後のトラックを重ね合わせてなめらかにつなぐクロスフェードの設定をカスタマイズします</string>
+  <string name="morphe_music_crossfade_screen_summary">前後のトラックを重ね合わせてなめらかにつなぎます</string>
   <string name="morphe_music_crossfade_enabled_title">クロスフェードを有効化</string>
   <string name="morphe_music_crossfade_curve_title">フェードカーブ</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">等電力（全体音量一定）</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">おだやかなイーズ（緩急）</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">なめらかな S 字カーブ</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">終わる曲</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">始まる曲</string>
   <string name="morphe_music_crossfade_duration_title">クロスフェードする時間</string>
   <string name="morphe_crossfade_duration_250ms">250 ミリ秒</string>
   <string name="morphe_crossfade_duration_500ms">500 ミリ秒</string>
@@ -56,19 +58,19 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 秒</string>
   <string name="morphe_crossfade_duration_9000ms">9 秒</string>
   <string name="morphe_crossfade_duration_10000ms">10 秒</string>
+  <string name="morphe_crossfade_duration_11000ms">11 秒</string>
+  <string name="morphe_crossfade_duration_12000ms">12 秒</string>
   <string name="morphe_music_crossfade_on_skip_title">手動スキップ時のクロスフェード</string>
   <string name="morphe_music_crossfade_on_skip_summary">手動で次のトラックにスキップしたときにクロスフェードを適用します</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">自動再生時のクロスフェード</string>
   <string name="morphe_music_crossfade_on_auto_advance_summary">トラックが自動で切り替わるときにクロスフェードを適用します</string>
   <string name="morphe_music_crossfade_session_control_title">クロスフェードのセッション制御</string>
-  <string name="morphe_music_crossfade_session_control_summary">シャッフル ボタンを長押しすると、そのセッションでのクロスフェードを停止 / 再開します</string>
+  <string name="morphe_music_crossfade_session_control_summary">シャッフル ボタンを長押しすると、再生中のセッション (プレイリストなど) 内でのクロスフェードを一時的に停止 / 再開します</string>
   <string name="morphe_music_crossfade_paused_toast">このセッションでのクロスフェードを一時停止します</string>
   <string name="morphe_music_crossfade_resumed_toast">クロスフェードを再開しました</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">クロスフェードが有効になっている間は、動画モードは利用できません</string>
   <string name="morphe_music_crossfade_about_title">クロスフェードについて</string>
-  <string name="morphe_music_crossfade_about_summary">"クロスフェードは YouTube Music 8.x で利用可能です。
-
-シャッフル ボタンを長押しすると、一時的にオフ / オンを切り替えることができます。
+  <string name="morphe_music_crossfade_about_summary">"シャッフルボタンを長押しすると、一時的にオフ / オンを切り替えることができます
 
 機能実装: VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
@@ -103,7 +105,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">新しいトラックが自動的にフルスクリーン プレーヤーで再生されるのを防ぎます</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">ナビゲーション バー</string>
-  <string name="morphe_music_navigation_bar_screen_summary">ナビゲーション バーに表示するボタンを選択します</string>
+  <string name="morphe_music_navigation_bar_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">ホームボタンを非表示</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

@@ -10,8 +10,6 @@
 
 package app.morphe.extension.youtube.patches.components;
 
-import app.morphe.extension.youtube.patches.VideoInformation;
-import app.morphe.extension.youtube.settings.Settings;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
 
@@ -26,9 +24,12 @@ import java.util.Map;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.ActionButtons;
+import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SecondaryContents;
 import app.morphe.extension.youtube.innertube.NextResponseOuterClass.SingleColumnWatchNextResults;
-import app.morphe.extension.youtube.innertube.NextResponseOuterClass.NewElement;
+import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 @SuppressWarnings("unused")
@@ -158,6 +159,7 @@ public class VideoActionButtonsFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {

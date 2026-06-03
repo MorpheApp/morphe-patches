@@ -20,18 +20,21 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">सेटअप पूर्ण करण्यासाठी रीस्टार्ट करा</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">ॲपचे नाव</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">सानुकूल</string>
   <string name="morphe_custom_branding_icon_title">ॲप चिन्ह</string>
   <string name="morphe_custom_branding_icon_entry_1">मूळ</string>
-  <string name="morphe_custom_branding_icon_entry_2">मॉर्फे काळा</string>
   <string name="morphe_custom_branding_icon_entry_3">मॉर्फे गडद</string>
   <string name="morphe_custom_branding_icon_entry_4">मॉर्फे फिकट</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe प्ले</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe खेळ प्रकाश</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe खेळ काळा</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">सानुकूल</string>
+  <string name="morphe_custom_branding_icon_entry_7">सानुकूल</string>
   <string name="morphe_custom_branding_notification_icon_title">सूचना चिन्ह</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">ॲप आयकॉन जुळवा</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe प्ले</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">मॉर्फे सूचना</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">तुमचा पाहण्याचा इतिहास जतन होत नाही.&lt;br&gt;&lt;br&gt;हे बहुधा डीएनए ब्लॉक किंवा नेटवर्क प्रॉक्सीमुळे झाले आहे.&lt;br&gt;&lt;br&gt;हे ठीक करण्यासाठी, &lt;b&gt;s.youtube.com&lt;/b&gt;ला व्हाईटलिस्ट करा किंवा सर्व डीएनए ब्लॉकर्स आणि प्रॉक्सी बंद करा.</string>
@@ -40,7 +43,7 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">व्हिडिओ स्ट्रीम्सचा देखावा करा</string>
   <string name="morphe_spoof_video_streams_screen_summary">प्लेबॅक समस्या टाळण्यासाठी क्लायंट स्पूफिंग कॉन्फिगर करा</string>
   <string name="morphe_spoof_video_streams_title">व्हिडिओ स्ट्रीम्सचा देखावा करा</string>
-  <string name="morphe_spoof_video_streams_summary">"YouTube ला सुसंगत व्हिडिओ स्ट्रीम पाठवण्यासाठी युक्ती दिली जाते, ज्यामुळे बहुतेक वापरकर्त्यांसाठी प्लेबॅक ठीक होते
+  <string name="morphe_spoof_video_streams_summary">"अधिकांश वापरकर्त्यांसाठी प्लेबॅक समस्यांचे निराकरण करण्यासाठी सुसंगत व्हिडिओ स्ट्रीमची विनंती केली जाते.
 
 जर तुम्ही YouTube Premium वापरकर्ता असाल, तर ही सेटिंग आवश्यक नसेल."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">कोणत्याही क्लायंट स्ट्रीम्स मिळवता आल्या नाहीत</string>
@@ -110,6 +113,7 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_title">सामायिक लिंक संपादित करा</string>
   <string name="morphe_sanitize_sharing_links_summary">सामायिक लिंक्समधून ट्रॅकिंग क्वेरी पॅरामीटर्स काढून टाकते</string>
   <string name="morphe_replace_music_with_youtube_title">सामायिक लिंक youtube.com वर बदला</string>
+  <string name="morphe_replace_music_with_youtube_summary">सामायिक लिंक्समध्ये music.youtube.com ला youtube.com ने बदला.</string>
   <string name="morphe_replace_links_with_shortener_title">youtu.be वापरून शेअर लिंक्स बदला</string>
-  <string name="morphe_replace_links_with_shortener_summary">लाइव्ह स्ट्रीम आणि Shorts ला संक्षिप्त youtu.be URL फॉरमॅट वापरण्यास भाग पाडते</string>
+  <string name="morphe_replace_links_with_shortener_summary">व्हिडिओंना लहान youtu.be URL फॉरमॅट वापरण्यास भाग पाडते</string>
 </resources>

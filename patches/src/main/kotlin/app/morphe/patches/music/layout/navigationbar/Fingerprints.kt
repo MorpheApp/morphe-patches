@@ -7,6 +7,7 @@ import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
@@ -21,7 +22,8 @@ internal object TabLayoutTextFingerprint : Fingerprint(
     filters = listOf(
         anyInstruction(
             string("FEmusic_search"), // 8.49 and lower.
-            string("FEsearch") // 8.50+
+            string("FEsearch"), // 8.50+
+            newInstance("Ljava/util/ArrayList;") // 9.21+
         ),
 
         // Hide navigation label.

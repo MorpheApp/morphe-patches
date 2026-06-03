@@ -11,7 +11,7 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findInstructionIndicesReversedOrThrow
+import app.morphe.util.matchAllMethodIndicesForEach
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -31,11 +31,10 @@ val disableVideoCodecsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.VIDEO.addPreferences(
-            SwitchPreference("morphe_disable_hdr_video", summaryKey = null),
+            SwitchPreference("morphe_disable_hdr_video"),
             SwitchPreference(
                 key = "morphe_force_avc_codec",
-                tag = "app.morphe.extension.youtube.settings.preference.ForceAVCSwitchPreference",
-                summaryKey = null
+                tag = "app.morphe.extension.youtube.settings.preference.ForceAVCSwitchPreference"
             )
         )
 
@@ -51,28 +50,24 @@ val disableVideoCodecsPatch = bytecodePatch(
             """
         )
 
-        val methodCall = methodCall(
-            definingClass = $$"Landroid/view/Display$HdrCapabilities;",
-            name = "getSupportedHdrTypes",
-        )
-
         Fingerprint(
-            filters = listOf(methodCall),
+            filters = listOf(
+                methodCall(
+                    definingClass = $$"Landroid/view/Display$HdrCapabilities;",
+                    name = "getSupportedHdrTypes",
+                )
+            ),
             custom = { _, classDef ->
                 !classDef.type.startsWith("Lapp/morphe/")
             }
-        ).matchAll().forEach { match ->
-            match.method.apply {
-                findInstructionIndicesReversedOrThrow(methodCall).forEach { index ->
-                    val instruction = getInstruction<FiveRegisterInstruction>(index)
-                    val register = instruction.registerC
+        ).matchAllMethodIndicesForEach { index ->
+            val instruction = getInstruction<FiveRegisterInstruction>(index)
+            val register = instruction.registerC
 
-                    replaceInstruction(
-                        index,
-                        "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->disableHdrVideo(Landroid/view/Display\$HdrCapabilities;)[I"
-                    )
-                }
-            }
+            replaceInstruction(
+                index,
+                "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->disableHdrVideo(Landroid/view/Display\$HdrCapabilities;)[I"
+            )
         }
     }
 }

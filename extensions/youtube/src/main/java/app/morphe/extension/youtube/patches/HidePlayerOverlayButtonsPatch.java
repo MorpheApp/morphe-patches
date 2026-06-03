@@ -150,10 +150,10 @@ public final class HidePlayerOverlayButtonsPatch {
     /**
      * Injection point.
      */
-    public static void hidePlayerControlButtonsBackground(View rootView) {
+    public static View hidePlayerControlButtonsBackground(View rootView) {
         try {
             if (!Settings.HIDE_PLAYER_CONTROL_BUTTONS_BACKGROUND.get()) {
-                return;
+                return rootView;
             }
 
             // Each button is an ImageView with a background set to another drawable.
@@ -161,6 +161,8 @@ public final class HidePlayerOverlayButtonsPatch {
         } catch (Exception ex) {
             Logger.printException(() -> "removePlayerControlButtonsBackground failure", ex);
         }
+
+        return rootView;
     }
 
     private static void hideView(View parentView, int resourceId) {

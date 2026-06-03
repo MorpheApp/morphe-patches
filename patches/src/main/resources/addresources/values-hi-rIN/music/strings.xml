@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">विडियो विज्ञापन छिपाएं</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">क्रॉसफ़ेड</string>
-  <string name="morphe_music_crossfade_screen_summary">ट्रैक एक-दूसरे में कितनी आसानी से घुलमिल जाएं, इसे अनुकूलित करें</string>
+  <string name="morphe_music_crossfade_screen_summary">ट्रैक को आपस में सहजता से मिलाएं</string>
   <string name="morphe_music_crossfade_enabled_title">क्रॉसफ़ेड सक्षम करें</string>
   <string name="morphe_music_crossfade_curve_title">फे़ड वक्र</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">समान शक्ति</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">कोमल आसानी</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">चिकना एस-वक्र</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">आउटगोइंग</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">इनकमिंग</string>
   <string name="morphe_music_crossfade_duration_title">क्रॉसफ़ेड अवधि</string>
   <string name="morphe_crossfade_duration_250ms">250 मिलीसेकंड</string>
   <string name="morphe_crossfade_duration_500ms">500 मिलीसेकंड</string>
@@ -56,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 सेकंड</string>
   <string name="morphe_crossfade_duration_9000ms">9 सेकंड</string>
   <string name="morphe_crossfade_duration_10000ms">10 सेकंड</string>
+  <string name="morphe_crossfade_duration_11000ms">11 सेकंड</string>
+  <string name="morphe_crossfade_duration_12000ms">12 सेकंड</string>
   <string name="morphe_music_crossfade_on_skip_title">मैनुअल स्किप पर क्रॉसफ़ेड</string>
   <string name="morphe_music_crossfade_on_skip_summary">जब आप मैन्युअल रूप से अगले ट्रैक पर जाते हैं तो क्रॉसफ़ेड प्रभाव लागू करें</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">ऑटो-एडवांस पर क्रॉसफ़ेड</string>
@@ -66,11 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">क्रॉसफ़ेड फिर से शुरू हुआ</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">क्रॉसफ़ेड सक्षम होने पर वीडियो मोड उपलब्ध नहीं है</string>
   <string name="morphe_music_crossfade_about_title">इसके बारे में</string>
-  <string name="morphe_music_crossfade_about_summary">"YouTube Music 8.x के साथ क्रॉसफ़ेड उपलब्ध है
+  <string name="morphe_music_crossfade_about_summary">"शफल बटन को लंबा दबाकर अक्षम/सक्षम करें
 
-शफल बटन को लंबे समय तक दबाकर क्रॉसफ़ेड को अक्षम/सक्षम करें 
-
-VazerOG द्वारा फीचर कार्यान्वयन"</string>
+फ़ीचर कार्यान्वयन VazerOG द्वारा"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">स्थायी पुनरावृत्ति सक्षम करें</string>
   <!-- layout.buttons.hideButtons -->
@@ -103,7 +105,7 @@ VazerOG द्वारा फीचर कार्यान्वयन"</stri
   <string name="morphe_music_enable_forced_miniplayer_summary">प्लेयर को नए ट्रैक शुरू होने पर स्वचालित रूप से फुलस्क्रीन में विस्तार करने से रोकता है</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">नविगेशन बार</string>
-  <string name="morphe_music_navigation_bar_screen_summary">नेविगेशन बार में दिखने वाले बटनों को चुनें</string>
+  <string name="morphe_music_navigation_bar_screen_summary">नीचे नेविगेशन बार में कौन से बटन दिखाई दें, यह चुनें</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">होम बटन छिपाएं</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Sakrij video oglase</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Prelaženje boja</string>
-  <string name="morphe_music_crossfade_screen_summary">Prilagodite kako numere glatko prelaze jedna u drugu</string>
+  <string name="morphe_music_crossfade_screen_summary">Glako spajanje numera jedna u drugu</string>
   <string name="morphe_music_crossfade_enabled_title">Омогућите прелазак боја</string>
   <string name="morphe_music_crossfade_curve_title">Завијућа крива</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Равна подела</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Нежно олакшавање</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Глатко S-крива</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Одлазећи</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Долазећи</string>
   <string name="morphe_music_crossfade_duration_title">Трајање прелаза</string>
   <string name="morphe_crossfade_duration_250ms">250 милисекунди</string>
   <string name="morphe_crossfade_duration_500ms">500 милисекунди</string>
@@ -56,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 sekundi</string>
   <string name="morphe_crossfade_duration_9000ms">9 sekundi</string>
   <string name="morphe_crossfade_duration_10000ms">10 sekundi</string>
+  <string name="morphe_crossfade_duration_11000ms">11 sekunde</string>
+  <string name="morphe_crossfade_duration_12000ms">12 sekunde</string>
   <string name="morphe_music_crossfade_on_skip_title">Прелаз при ручном прескакивању</string>
   <string name="morphe_music_crossfade_on_skip_summary">Primeni efekat preklapanja kada ručno preskočiš na sledeću numeru</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Прелаз при аутоматском прескакивању</string>
@@ -66,11 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Prelazni efekat nastavljen</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Video režim nije dostupan dok je omogućen prelazni efekat</string>
   <string name="morphe_music_crossfade_about_title">O programu</string>
-  <string name="morphe_music_crossfade_about_summary">"Прелаз је доступан са YouTube Music 8.x
+  <string name="morphe_music_crossfade_about_summary">"Pritisnite i zadržite dugme za nasumično puštanje kako biste onemogućili/omogućili
 
-Дугачак притисак на дугме за прескакање да бисте искључили/укључили
-
-Имплементација функције од ВazerOG"</string>
+Implementacija funkcije od strane VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Omogući trajno ponavljanje</string>
   <!-- layout.buttons.hideButtons -->
@@ -103,7 +105,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Sprečava automatsko širenje plejera na ceo ekran kada nova numera počne</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Traka za navigaciju</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Izaberite koje dugmad se pojavljuju na navigacionoj traci</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Izaberite koje dugmad se pojavljuju u donjoj navigacionoj traci</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Sakrij dugme „Početna”</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

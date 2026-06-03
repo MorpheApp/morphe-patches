@@ -132,7 +132,7 @@ Dezactivarea optimizărilor bateriei pentru MicroG nu va afecta negativ utilizar
 
 Apăsați butonul Continuare și permiteți modificările de optimizare."</string>
   <string name="gms_core_dialog_continue_text">Continuă</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Afișați dialogul de optimizare a bateriei</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Afiřează dialogul de optimizare a bateriei MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Dezactivarea acestei opțiuni va ascunde solicitarea de optimizare a bateriei MicroG.
 
 Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următoarele probleme:
@@ -141,7 +141,7 @@ Dacă optimizările bateriei nu sunt modificate, este posibil să aveți următo
 • Redarea în fundal poate să nu funcționeze"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestionarea link-urilor aplicației</string>
-  <string name="morphe_link_handling_summary">Configurați ce aplicație deschide link-urile</string>
+  <string name="morphe_link_handling_summary">Configurează legăturile pentru a se deschide în această aplicaţie</string>
   <string name="morphe_link_handling_step1_title">Pasul 1: Dezactivați link-urile originale ale aplicației</string>
   <string name="morphe_link_handling_step1_message">Deschideți setările aplicației originale și dezactivați toate link-urile de domeniu</string>
   <string name="morphe_link_handling_step2_title">Pasul 2: Activați link-urile aplicației modificate</string>

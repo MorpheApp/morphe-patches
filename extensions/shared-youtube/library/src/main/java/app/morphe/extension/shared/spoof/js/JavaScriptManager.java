@@ -12,16 +12,21 @@ import static app.morphe.extension.shared.Utils.isNotEmpty;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
+import java.net.URL;
 import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,13 +41,6 @@ import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-
-import java.net.URL;
 
 /**
  * The functions used in this class are referenced below:
@@ -287,31 +285,44 @@ public final class JavaScriptManager {
 
     @Nullable
     public static String downloadUrl(@NonNull String url) {
-        String content = null;
-
         try {
+            Logger.printDebug(() -> "Starting download of: " + url);
+            if (BaseSettings.DEBUG.get() && Utils.isCurrentlyOnMainThread()) {
+                Logger.printException(() -> "Debug: downloadUrl() called on main thread!");
+            }
+
             final long start = System.currentTimeMillis();
-            content = Utils.submitOnBackgroundThread(() -> {
-                final int connectionTimeoutMillis = 5000;
-                HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
-                connection.setFixedLengthStreamingMode(0);
-                connection.setRequestMethod("GET");
-                connection.setRequestProperty("User-Agent", USER_AGENT);
-                connection.setConnectTimeout(connectionTimeoutMillis);
-                connection.setReadTimeout(connectionTimeoutMillis);
-                final int responseCode = connection.getResponseCode();
-                if (responseCode == HttpURLConnection.HTTP_OK) {
-                    return Requester.parseStringAndDisconnect(connection);
-                }
-                connection.disconnect();
-                return null;
-            }).get();
+            final int connectionTimeoutMillis = 5000;
+            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setFixedLengthStreamingMode(0);
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("User-Agent", USER_AGENT);
+            connection.setConnectTimeout(connectionTimeoutMillis);
+            connection.setReadTimeout(connectionTimeoutMillis);
+            final int responseCode = connection.getResponseCode();
+
+            final String content;
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                content = Requester.parseStringAndDisconnect(connection);
+            } else {
+                Logger.printDebug(() -> "Ignoring response code: " + responseCode);
+                content = null;
+            }
+            connection.disconnect();
+
             Logger.printDebug(() -> "Download took: " + (System.currentTimeMillis() - start) + "ms for URL: " + url);
-        } catch (ExecutionException | InterruptedException ex) {
-            Logger.printException(() -> "Could not download URL: " + url, ex);
+            return content;
+        } catch (SocketTimeoutException ex) {
+            Logger.printInfo(() -> "Download timed out: " + url);
+        } catch (IOException ex) {
+            Logger.printInfo(() -> "Could not download URL: " + url, ex);
         }
 
-        return content;
+        if (BaseSettings.DEBUG.get()) {
+            Utils.showToastLong("Could not download URL: " + url);
+        }
+
+        return null;
     }
 
     /**

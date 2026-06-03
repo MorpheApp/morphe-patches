@@ -122,7 +122,6 @@ public class YouTubeActivityHook extends BaseActivityHook {
      * @param toolbar  The configured toolbar.
      * @param fragment The PreferenceFragment associated with the activity.
      */
-    @SuppressWarnings("deprecation")
     @Override
     protected void onPostToolbarSetup(Activity activity, Toolbar toolbar, PreferenceFragment fragment) {
         if (fragment instanceof YouTubePreferenceFragment) {
@@ -134,7 +133,6 @@ public class YouTubeActivityHook extends BaseActivityHook {
     /**
      * Creates a new {@link YouTubePreferenceFragment} for the activity.
      */
-    @SuppressWarnings("deprecation")
     @Override
     protected PreferenceFragment createPreferenceFragment() {
         return new YouTubePreferenceFragment();

@@ -88,7 +88,7 @@ val reloadVideoButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            SwitchPreference("morphe_reload_video_button", summaryKey = null)
+            SwitchPreference("morphe_reload_video_button")
         )
 
         initializeTopControl(EXTENSION_BUTTON)

@@ -376,7 +376,8 @@ public final class VideoInformation {
     }
 
     /**
-     * This is the playlistId of the player response, but since Shorts does not support playlists, it is the same as the current playlistId.
+     * This is the playlistId of the player response, but since Shorts does not support playlists,
+     * it is the same as the current playlistId.
      *
      * @return The playlist id of the video.
      */

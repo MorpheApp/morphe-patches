@@ -6,15 +6,14 @@
  */
 package app.morphe.patches.reddit.layout.ask
 
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.reddit.misc.flag.featureFlagHookPatch
 import app.morphe.patches.reddit.misc.flag.hookFeatureFlag
 import app.morphe.patches.reddit.misc.settings.settingsPatch
-import app.morphe.patches.reddit.misc.version.is_2026_15_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.setExtensionIsPatchIncluded
-import java.util.logging.Logger
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideAskButtonPatch;"
@@ -33,13 +32,20 @@ val hideAskButtonPatch = bytecodePatch(
     )
 
     execute {
-        if (is_2026_15_0_or_greater) {
-            return@execute Logger.getLogger(this::class.java.name).warning(
-                "\"Hide Ask button\" does not yet work with Reddit 2026.15.0+"
-            )
-        }
 
         hookFeatureFlag("$EXTENSION_CLASS->hideAskButton")
+
+        AskButtonComposableFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { }, $EXTENSION_CLASS->shouldHideAskButton()Z
+                move-result v0
+                if-eqz v0, :ignore
+                return-void
+                :ignore
+                nop
+            """
+        )
 
         setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }

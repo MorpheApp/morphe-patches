@@ -132,7 +132,7 @@ Desabilitar as otimizações de bateria para o MicroG não afetará negativament
 
 Toque no botão continuar e permita as mudanças de otimização."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Mostrar diálogo de otimização de bateria</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Mostrar diálogo de otimização de bateria do MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Desativar isso ocultará o prompt de otimização da bateria do MicroG.
 
 Se as otimizações de bateria não forem alteradas, você poderá ter:
@@ -141,7 +141,7 @@ Se as otimizações de bateria não forem alteradas, você poderá ter:
 • A reprodução em segundo plano pode não funcionar"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Manipulação de links do aplicativo</string>
-  <string name="morphe_link_handling_summary">Configure qual aplicativo abre os links</string>
+  <string name="morphe_link_handling_summary">Configurar links para abrir neste aplicativo</string>
   <string name="morphe_link_handling_step1_title">Etapa 1: Desativar links do aplicativo original</string>
   <string name="morphe_link_handling_step1_message">Abra as configurações do aplicativo original e desative todos os links de domínio</string>
   <string name="morphe_link_handling_step2_title">Etapa 2: Habilitar links do aplicativo corrigido</string>

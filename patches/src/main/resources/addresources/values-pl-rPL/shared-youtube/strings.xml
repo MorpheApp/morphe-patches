@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Uruchom ponownie, aby dokończyć konfigurację</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Nazwa aplikacji</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Własna</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacji</string>
   <string name="morphe_custom_branding_icon_entry_1">Oryginalna</string>
-  <string name="morphe_custom_branding_icon_entry_2">Czarny Morphe</string>
-  <string name="morphe_custom_branding_icon_entry_3">Ciemny Morphe</string>
-  <string name="morphe_custom_branding_icon_entry_4">Jasny Morphe</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe Play</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe czarna</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe ciemna</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe jasna</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe Play jasna</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe Play czarna</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Własna</string>
+  <string name="morphe_custom_branding_icon_entry_7">Własna</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikona powiadomienia</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Zgodna z ikoną aplikacji</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe Play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Powiadomienie Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Twoja historia oglądania nie jest zapisywana.&lt;br&gt;&lt;br&gt;Najprawdopodobniej jest to spowodowane przez bloker reklam DNS lub serwer proxy.&lt;br&gt;&lt;br&gt;Aby to naprawić, dodaj do białej listy &lt;b&gt;s.youtube.com&lt;/b&gt; lub wyłącz wszystkie blokery DNS i serwery proxy.</string>
@@ -39,19 +43,19 @@ Second \"item\" text"</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Fałszowanie strumieni filmów</string>
   <string name="morphe_spoof_video_streams_screen_summary">Skonfiguruj fałszowanie klienta, aby zapobiec problemom z odtwarzaniem</string>
-  <string name="morphe_spoof_video_streams_title">Fałszowanie strumieni filmów</string>
-  <string name="morphe_spoof_video_streams_summary">"Oszukuje YouTube, wymuszając wysłanie kompatybilnego strumienia filmu, co naprawia odtwarzanie u większości użytkowników
+  <string name="morphe_spoof_video_streams_title">Fałszuj strumienie filmów</string>
+  <string name="morphe_spoof_video_streams_summary">"Naprawia problemy z odtwarzaniem u większości użytkowników, wymuszając kompatybilny strumień filmów
 
-Jeśli jesteś użytkownikiem YouTube Premium, to ustawienie może nie być wymagane"</string>
+Jeśli masz YouTube Premium, to ustawienie może nie być wymagane"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nie można przechwycić żadnego ze strumieni klienta</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Wyłączenie tego ustawienia może spowodować problemy z odtwarzaniem.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Spróbuj włączyć: Fałszowanie strumieni filmów i Logowanie Android VR</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Spróbuj włączyć: Fałszuj strumienie filmów i Logowanie Android VR</string>
   <string name="morphe_spoof_video_streams_client_type_title">Domyślny klient</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Logowanie Android VR</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nie zalogowano do Android VR. Stuknij tutaj, aby się zalogować</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Nie zalogowano do Android VR. Dotknij tutaj, aby się zalogować</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Obecnie zalogowano do Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">By używać tej funkcji, zmień \"Domyślny klient\" na Android VR</string>
@@ -65,10 +69,10 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Kod aktywacyjny: %s
 
-1. Stuknij \"Otwórz stronę\" poniżej, aby przejść do strony \"Połącz urządzenie\"
+1. Dotknij \"Otwórz stronę\" poniżej, aby przejść do strony \"Połącz urządzenie\"
 2. Wklej (lub wpisz) kod aktywacyjny wyświetlony powyżej
 3. Zaloguj się na konto Google, jeśli pojawi się taki komunikat. Jeśli masz wiele kont Google, użyj tego, którego używasz w YouTube
-4. Stuknij \"Zezwól\" na dostęp YouTube VR
+4. Dotknij \"Zezwól\" na dostęp YouTube VR
 5. Wróć do aplikacji po zobaczeniu \"Urządzenie połączone\""</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Otwórz stronę</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Nie udało się wygenerować kodu aktywacyjnego</string>
@@ -96,20 +100,21 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Hash skryptu JS odtwarzacza</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Wprowadź poprawny hash skryptu JS odtwarzacza</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
-  <string name="morphe_disable_quic_protocol_title">Protokół QUIC</string>
+  <string name="morphe_disable_quic_protocol_title">Wyłącz protokół QUIC</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Wyłącz kompresję dźwięku</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Wymuś oryginalny język dźwięku</string>
   <string name="morphe_force_original_audio_summary">Zawsze odtwarza oryginalną ścieżkę dźwiękową filmu zamiast wersji z dubbingiem</string>
   <!-- ad.hideFullscreenAdsPatch -->
-  <string name="morphe_hide_fullscreen_ads_title">Pełnoekranowe reklamy</string>
+  <string name="morphe_hide_fullscreen_ads_title">Ukryj reklamy pełnoekranowe</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Aby użyć tej funkcji, zmień \"Fałszowanie strumieni filmów\" na Android Reel lub TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Oczyść udostępniane linki</string>
   <string name="morphe_sanitize_sharing_links_summary">Usuwa parametry śledzące z udostępnianych linków</string>
   <string name="morphe_replace_music_with_youtube_title">Zmień linki udostępniania na youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Zamienia music.youtube.com na youtube.com w udostępnianych linkach</string>
   <string name="morphe_replace_links_with_shortener_title">Zmień linki udostępniania na youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Wymusza używanie skróconego formatu adresu youtu.be dla transmisji na żywo i Shortsów</string>
+  <string name="morphe_replace_links_with_shortener_summary">Wymusza używanie skróconych linków youtu.be dla filmów</string>
 </resources>

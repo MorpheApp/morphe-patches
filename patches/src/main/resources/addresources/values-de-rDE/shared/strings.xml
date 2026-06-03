@@ -132,7 +132,7 @@ Die Deaktivierung der Batterieoptimierungen für MicroG beeinflusst nicht negati
 
 Tippen Sie auf die Schaltfläche „Weiter“ und erlauben Sie die Optimierungsänderungen."</string>
   <string name="gms_core_dialog_continue_text">Weiter</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur Batterieoptimierung anzeigen</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialog zur MicroG-Batterieoptimierung anzeigen</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Das Deaktivieren verbirgt die MicroG-Batterieoptimierungsaufforderung.
 
 Wenn die Batterieoptimierungen nicht geändert werden, kann es zu folgenden Problemen kommen:
@@ -141,7 +141,7 @@ Wenn die Batterieoptimierungen nicht geändert werden, kann es zu folgenden Prob
 • Die Wiedergabe im Hintergrund funktioniert möglicherweise nicht"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-Link-Behandlung</string>
-  <string name="morphe_link_handling_summary">Konfigurieren, welche App Links öffnet</string>
+  <string name="morphe_link_handling_summary">Links konfigurieren, um sie in dieser App zu öffnen</string>
   <string name="morphe_link_handling_step1_title">Schritt 1: Original App-Links deaktivieren</string>
   <string name="morphe_link_handling_step1_message">Öffnen Sie die Einstellungen der Original-App und deaktivieren Sie alle Domain-Links</string>
   <string name="morphe_link_handling_step2_title">Schritt 2: Gepatchte App-Links aktivieren</string>

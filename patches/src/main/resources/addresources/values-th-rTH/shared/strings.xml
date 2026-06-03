@@ -132,7 +132,7 @@ Second \"item\" text"</string>
 
 แตะปุ่มตกลง และอนุญาตการเปลี่ยนแปลงการปรับแต่ง"</string>
   <string name="gms_core_dialog_continue_text">ดำเนินการต่อ</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">แสดงกล่องโต้ตอบการปรับปรุงประสิทธิภาพแบตเตอรี่</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">แสดงกล่องโต้ตอบการปรับปรุงประสิทธิภาพแบตเตอรี่ MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"การปิดใช้งานนี้จะซ่อนข้อความแจ้ง MicroG เพิ่มประสิทธิภาพแบตเตอรี่
 
 หากการเพิ่มประสิทธิภาพแบตเตอรี่ไม่ได้มีการเปลี่ยนแปลง คุณอาจพบ:
@@ -141,7 +141,7 @@ Second \"item\" text"</string>
 • การเล่นเพลง/วิดีโอขณะอยู่เบื้องหลังอาจใช้งานไม่ได้"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">การจัดการลิงก์แอป</string>
-  <string name="morphe_link_handling_summary">กำหนดค่าแอปที่จะเปิดลิงก์</string>
+  <string name="morphe_link_handling_summary">กำหนดค่าลิงก์ให้เปิดในแอปนี้</string>
   <string name="morphe_link_handling_step1_title">ขั้นตอนที่ 1: ปิดการเชื่อมโยงแอปพลิเคชันเดิม</string>
   <string name="morphe_link_handling_step1_message">เปิดการตั้งค่าของแอปพลิเคชันเดิมและปิดการเชื่อมโยงโดเมนทั้งหมด</string>
   <string name="morphe_link_handling_step2_title">ขั้นตอนที่ 2: เปิดการเชื่อมโยงแอปพลิเคชันที่แก้ไขแล้ว</string>

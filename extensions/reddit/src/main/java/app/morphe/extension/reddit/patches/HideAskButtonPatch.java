@@ -29,4 +29,11 @@ public final class HideAskButtonPatch {
 
         return original;
     }
+
+    /**
+     * Injection point.
+     */
+    public static boolean shouldHideAskButton() {
+        return Settings.HIDE_ASK_BUTTON.get();
+    }
 }

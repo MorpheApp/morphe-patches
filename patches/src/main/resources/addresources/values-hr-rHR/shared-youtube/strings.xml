@@ -20,23 +20,29 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Ponovno pokrenite da biste dovršili postavljanje</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Naziv aplikacije</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Prilagođeno</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikacije</string>
   <string name="morphe_custom_branding_icon_entry_1">Originalne APK datoteke</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe black</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe dark</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe light</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play svijetla</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play tamna</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Prilagođeno</string>
+  <string name="morphe_custom_branding_icon_entry_7">Prilagođeno</string>
   <string name="morphe_custom_branding_notification_icon_title">Ikona obavijesti</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Podudaranje ikone aplikacije</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe patches</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša povijest gledanja nije spremljena.&lt;br&gt;&lt;br&gt;Ovo je vjerojatno uzrokovano DNS ad blokerom ili mrežnim proxyjem.&lt;br&gt;&lt;br&gt;Da bi to popravili, dodajte u bjelu listu \"s.youtube.com\" ili isključite sve DNS blokere i proxyje.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj ponovno</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Falsificiraj video toke</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Konfigurirajte spoofing klijenta kako biste spriječili probleme s reprodukcijom</string>
   <string name="morphe_spoof_video_streams_title">Falsificiraj video toke</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nije moguće dohvatiti niti jedan klijentski tok</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Isključivanje ove postavke može uzrokovati probleme pri reprodukciji.</string>
@@ -83,6 +89,10 @@ Za prijavu, pritisnite nastavak ispod"</string>
   <string name="morphe_oauth2_toast_reset">Odjavljeni s Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu na VR, pokušajte ponovno se prijaviti na VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Onemogući ažuriranje JavaScripta playera</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Zaključava JavaScript playera na lokalni hash umjesto preuzimanja ažuriranja.
+
+• Potreban je važeći JavaScript hash playera
+• Reprodukcija ne uspijeva ako je JavaScript hash playera opozvan u GVS-u"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript hashevi playera vrijede otprilike mjesec dana, a GVS može opozvati zastarjele hasheve.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player JavaScript hash</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Unesite valjani JavaScript hash playera</string>
@@ -92,11 +102,14 @@ Za prijavu, pritisnite nastavak ispod"</string>
   <string name="morphe_disable_drc_audio_title">Onemogući DRC zvuk</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Sili originalni jezik zvuka</string>
+  <string name="morphe_force_original_audio_summary">Uvijek reproducira izvorni zvučni zapis videozapisa umjesto sinkronizirane verzije</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Sakrij pune zaslonske oglase</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Da biste koristili ovu značajku, promijenite \'Parodija video streamova\' u Android Reel ili TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Očisti poveznice za dijeljenje</string>
+  <string name="morphe_sanitize_sharing_links_summary">Uklanja parametre upita za praćenje iz zajedničkih poveznica</string>
   <string name="morphe_replace_music_with_youtube_title">Promijenite poveznice za dijeljenje na youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">Promijenite poveznice za dijeljenje na youtu.be</string>
 </resources>

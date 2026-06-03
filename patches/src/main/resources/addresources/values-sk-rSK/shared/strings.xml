@@ -132,7 +132,7 @@ Vypnutie optimalizácie batérie pre microG neovplyvní spotrebu batérie.
 
 Ťuknite na tlačidlo pokračovať a povoľte zmeny optimalizácie."</string>
   <string name="gms_core_dialog_continue_text">Pokračovať</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialógové okno optimalizácie batérie</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Zobraziť dialóg pre optimalizáciu batérie pre MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Vypnutím sa skryje výzva MicroG na optimalizáciu batérie.
 
 Ak nezmeníte optimalizácie batérie môže sa stať, že:
@@ -141,7 +141,7 @@ Ak nezmeníte optimalizácie batérie môže sa stať, že:
 • prehrávanie na pozadí nemusí fungovať"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Obsluha odkazov aplikáciou</string>
-  <string name="morphe_link_handling_summary">Konfigurácia, ktorá aplikácia otvára odkazy</string>
+  <string name="morphe_link_handling_summary">Konfigurovať odkazy na otváranie v tejto aplikácii</string>
   <string name="morphe_link_handling_step1_title">Krok 1: Vypnite odkazy pôvodnej aplikácie</string>
   <string name="morphe_link_handling_step1_message">Otvorte nastavenia pôvodnej aplikácie a vypnite všetky odkazy domén</string>
   <string name="morphe_link_handling_step2_title">Krok 2: Zapnite odkazy opravenej aplikácie</string>

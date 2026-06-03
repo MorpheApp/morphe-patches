@@ -132,7 +132,7 @@ A MicroG akkumulátor-optimalizálásának letiltása nem befolyásolja negatív
 
 Kattintson a folytatás gombra, és engedélyezze az optimalizálási módosításokat."</string>
   <string name="gms_core_dialog_continue_text">Folytatás</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Akkumulátor-optimalizálási párbeszédpanel megjelenítése</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG akkumulátor-optimalizálási párbeszédpanel megjelenítése</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"A letiltás elrejti a MicroG akkumulátor-optimalizációs kérést.
 
 Ha nem módosítják az akkumulátor-optimalizálást, akkor előfordulhat:
@@ -141,7 +141,7 @@ Ha nem módosítják az akkumulátor-optimalizálást, akkor előfordulhat:
 • A háttérbeli lejátszás nem működhet"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-linkek kezelése</string>
-  <string name="morphe_link_handling_summary">Konfigurálja, melyik alkalmazás nyitja meg a linkeket</string>
+  <string name="morphe_link_handling_summary">A linkek konfigurálása ebben az alkalmazásban történő megnyitáshoz</string>
   <string name="morphe_link_handling_step1_title">1. lépés: Tiltse le az eredeti alkalmazás linkjeit</string>
   <string name="morphe_link_handling_step1_message">Nyissa meg az eredeti alkalmazás beállításait, és tiltsa le az összes tartománylinket</string>
   <string name="morphe_link_handling_step2_title">2. lépés: Engedélyezze a javított alkalmazás linkjeit</string>

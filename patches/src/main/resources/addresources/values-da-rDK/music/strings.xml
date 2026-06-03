@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Skjul videoannoncer</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Crossfade</string>
-  <string name="morphe_music_crossfade_screen_summary">Tilpas hvordan numre glider glat over i hinanden</string>
+  <string name="morphe_music_crossfade_screen_summary">Bland glatnumre sammen</string>
   <string name="morphe_music_crossfade_enabled_title">Aktivér crossfade</string>
   <string name="morphe_music_crossfade_curve_title">Fade kurve</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Lige effekt</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Blid udskydning</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Jævn S-kurve</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Udgående</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Indgående</string>
   <string name="morphe_music_crossfade_duration_title">Crossfade varighed</string>
   <string name="morphe_crossfade_duration_250ms">250 millisekunder</string>
   <string name="morphe_crossfade_duration_500ms">500 millisekunder</string>
@@ -56,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 sekunder</string>
   <string name="morphe_crossfade_duration_9000ms">9 sekunder</string>
   <string name="morphe_crossfade_duration_10000ms">10 sekunder</string>
+  <string name="morphe_crossfade_duration_11000ms">11 sekunder</string>
+  <string name="morphe_crossfade_duration_12000ms">12 sekunder</string>
   <string name="morphe_music_crossfade_on_skip_title">Crossfade ved manuelt spring</string>
   <string name="morphe_music_crossfade_on_skip_summary">Anvender krydsfade-effekten, når du manuelt springer til næste nummer</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Crossfade ved automatisk afspilning</string>
@@ -66,11 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade genoptaget</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videotilstand er ikke tilgængelig, når crossfade er aktiveret</string>
   <string name="morphe_music_crossfade_about_title">Om</string>
-  <string name="morphe_music_crossfade_about_summary">"Crossfade er tilgængelig med YouTube Music 8.x
+  <string name="morphe_music_crossfade_about_summary">"Tryk og hold på knappen til tilfældig afspilning for at deaktivere/aktivere
 
-Langt tryk på shuffle-knappen for at deaktivere/aktivere
-
-Feature implementering af VazerOG"</string>
+Funktionen er implementeret af VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktiver permanent gentagelse</string>
   <!-- layout.buttons.hideButtons -->
@@ -103,7 +105,7 @@ Feature implementering af VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Forhindrer afspilleren i automatisk at udvide til fuldskærm, når et nyt nummer starter</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigationslinje</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Vælg hvilke knapper der vises i navigationslinjen</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Vælg hvilke knapper der skal vises i nederste navigationslinje</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Skjul hjem-knap</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

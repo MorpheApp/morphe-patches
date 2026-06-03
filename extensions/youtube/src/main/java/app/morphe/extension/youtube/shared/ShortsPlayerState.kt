@@ -11,8 +11,8 @@ class ShortsPlayerState {
         @JvmStatic
         fun setOpen(open: Boolean) {
             if (isOpen != open) {
-                Logger.printDebug { "ShortsPlayerState open changed to: $isOpen" }
                 isOpen = open
+                Logger.printDebug { "ShortsPlayerState open changed to: $isOpen" }
                 onChange(open)
             }
         }

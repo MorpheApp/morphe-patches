@@ -103,6 +103,8 @@
         <item>@string/morphe_crossfade_duration_8000ms</item>
         <item>@string/morphe_crossfade_duration_9000ms</item>
         <item>@string/morphe_crossfade_duration_10000ms</item>
+        <item>@string/morphe_crossfade_duration_11000ms</item>
+        <item>@string/morphe_crossfade_duration_12000ms</item>
     </string-array>
     <string-array name="morphe_music_crossfade_duration_entry_values">
         <item>MILLISECONDS_250</item>
@@ -118,6 +120,8 @@
         <item>MILLISECONDS_8000</item>
         <item>MILLISECONDS_9000</item>
         <item>MILLISECONDS_10000</item>
+        <item>MILLISECONDS_11000</item>
+        <item>MILLISECONDS_12000</item>
     </string-array>
 
     <!-- misc.fix.playback.spoofVideoStreamsPatch -->
@@ -129,7 +133,7 @@
         <item>visionOS</item>
     </string-array>
     <string-array name="morphe_spoof_video_streams_client_type_entry_values">
-        <item>ANDROID_REEL</item>
+        <item>ANDROID_REEL_NO_AUTH</item>
         <item>ANDROID_MUSIC_NO_SDK</item>
         <item>ANDROID_VR_1_64</item>
         <item>TV</item>

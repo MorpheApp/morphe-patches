@@ -15,9 +15,9 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.fiveRegisters
 import app.morphe.util.getReference
+import app.morphe.util.matchAllMethodIndicesForEach
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -40,11 +40,11 @@ val disableHapticFeedbackPatch = bytecodePatch(
             PreferenceScreenPreference(
                 "morphe_disable_haptic_feedback",
                 preferences = setOf(
-                    SwitchPreference("morphe_disable_haptic_feedback_chapters", summaryKey = null),
-                    SwitchPreference("morphe_disable_haptic_feedback_precise_seeking", summaryKey = null),
-                    SwitchPreference("morphe_disable_haptic_feedback_seek_undo", summaryKey = null),
-                    SwitchPreference("morphe_disable_haptic_feedback_tap_and_hold", summaryKey = null),
-                    SwitchPreference("morphe_disable_haptic_feedback_zoom", summaryKey = null),
+                    SwitchPreference("morphe_disable_haptic_feedback_chapters"),
+                    SwitchPreference("morphe_disable_haptic_feedback_precise_seeking"),
+                    SwitchPreference("morphe_disable_haptic_feedback_seek_undo"),
+                    SwitchPreference("morphe_disable_haptic_feedback_tap_and_hold"),
+                    SwitchPreference("morphe_disable_haptic_feedback_zoom"),
                 )
             )
         )
@@ -122,19 +122,15 @@ val disableHapticFeedbackPatch = bytecodePatch(
                 custom = { _, classDef ->
                     classDef.type != EXTENSION_CLASS
                 }
-            ).matchAll().forEach { match ->
-                match.method.apply {
-                    findInstructionIndicesReversedOrThrow(filter).forEach { index ->
-                        val instruction = getInstruction<FiveRegisterInstruction>(index)
-                        val registers = fiveRegisters(index)
+            ).matchAllMethodIndicesForEach { index ->
+                val instruction = getInstruction<FiveRegisterInstruction>(index)
+                val registers = fiveRegisters(index)
 
-                        replaceInstruction(
-                            index,
-                            "invoke-static { $registers }, $EXTENSION_CLASS->vibrate(Landroid/os/Vibrator;" +
-                                    filter.parameters!!.joinToString("") + ")V"
-                        )
-                    }
-                }
+                replaceInstruction(
+                    index,
+                    "invoke-static { $registers }, $EXTENSION_CLASS->vibrate(Landroid/os/Vibrator;" +
+                            filter.parameters!!.joinToString("") + ")V"
+                )
             }
         }
     }

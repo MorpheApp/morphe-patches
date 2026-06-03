@@ -132,7 +132,7 @@ Akun optimoinnin poistamisella ei ole kielteistä vaikutusta akun kestoon.
 
 Napauta Jatka-painiketta ja salli muutokset optimointiin."</string>
   <string name="gms_core_dialog_continue_text">Jatka</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Näytä akun optimoinnin valintaikkuna</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Näytä MicroG:n virransäästöasetusten valintaikkuna</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tämän poistaminen piilottaa MicroG:n akun optimointi -kehotteen.
 
 Jos akun optimointeja ei muuteta, voit kokea:
@@ -141,7 +141,7 @@ Jos akun optimointeja ei muuteta, voit kokea:
 • Taustalla toistaminen ei välttämättä toimi"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Sovelluksen linkkien käsittely</string>
-  <string name="morphe_link_handling_summary">Määritä, mikä sovellus avaa linkit</string>
+  <string name="morphe_link_handling_summary">Määritä linkit avautumaan tässä sovelluksessa</string>
   <string name="morphe_link_handling_step1_title">Vaihe 1: Poista alkuperäisen sovelluksen linkit käytöstä</string>
   <string name="morphe_link_handling_step1_message">Avaa alkuperäisen sovelluksen asetukset ja poista kaikki toimialueiden linkit käytöstä</string>
   <string name="morphe_link_handling_step2_title">Vaihe 2: Ota korjatun sovelluksen linkit käyttöön</string>

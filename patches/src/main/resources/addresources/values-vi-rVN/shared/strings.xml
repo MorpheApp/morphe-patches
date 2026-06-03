@@ -66,7 +66,7 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_settings_about_links_body_version_current">Bạn đang dùng bản vá Morphe phiên bản &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Bạn đang dùng bản vá Morphe phiên bản &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Đã có bản cập nhật mới: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Để cập nhật các bản vá của bạn, hãy dùng Morphe để vá lại ứng dụng này</string>
   <string name="morphe_settings_about_links_dev_header">Lưu ý</string>
-  <string name="morphe_settings_about_links_dev_body">Phiên bản này là bản phát hành trước và bạn có thể gặp phải các sự cố không mong muốn</string>
+  <string name="morphe_settings_about_links_dev_body">Đây là phiên bản phát hành trước và bạn có thể gặp phải các sự cố không mong muốn</string>
   <string name="morphe_settings_about_links_header">Liên kết chính chủ</string>
   <string name="morphe_settings_about_links_website">Trang web</string>
   <string name="morphe_settings_about_links_donate">Ủng hộ</string>
@@ -84,10 +84,10 @@ Bạn có thể yêu cầu thêm ngôn ngữ hoặc cải thiện bản dịch h
   <string name="morphe_settings_about_licenses_loading">Đang tải...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Gỡ lỗi</string>
-  <string name="morphe_debug_screen_summary">Cấu hình các tùy chọn nâng cao cho nhà phát triển và nhật ký chẩn đoán</string>
+  <string name="morphe_debug_screen_summary">Cấu hình các tùy chọn nhà phát triển nâng cao và nhật ký chẩn đoán</string>
   <string name="morphe_debug_title">Bật ghi nhật ký gỡ lỗi</string>
   <string name="morphe_debug_stacktrace_title">Ghi nhật ký gỡ lỗi (Stack Trace)</string>
-  <string name="morphe_debug_stacktrace_summary">Bao gồm các dấu vết ngăn xếp trong nhật ký gỡ lỗi để giúp xác định lỗi</string>
+  <string name="morphe_debug_stacktrace_summary">Thêm stack trace vào nhật ký để dễ tìm nguyên nhân</string>
   <string name="morphe_debug_toast_on_error_title">Hiện thông báo ngắn về lỗi Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Tắt thông báo lỗi sẽ ẩn mọi thông báo lỗi từ Morphe.
 
@@ -124,7 +124,7 @@ Bạn sẽ không được thông báo khi xẩy ra lỗi bất ngờ."</string>
   <string name="gms_core_dialog_open_website_text">Mở trang web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Bạn cần tắt tối ưu hóa pin để tránh phát sinh lỗi.\n\nĐừng lo, tắt tối ưu hóa pin cho microG sẽ không làm hao pin hơn.\n\nBấm tiếp tục để tắt tối ưu hóa."</string>
   <string name="gms_core_dialog_continue_text">Tiếp tục</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Hiển thị hộp thoại tối ưu hóa pin</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Hiện hộp thoại tối ưu hóa pin MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Tắt tùy chọn này sẽ ẩn thông báo tối ưu hoá pin cho MicroG.
 
 Nếu bạn vẫn chưa tắt tối ưu hóa pin, một số lỗi có thể xẩy ra như:
@@ -133,7 +133,7 @@ Nếu bạn vẫn chưa tắt tối ưu hóa pin, một số lỗi có thể x�
 • Không phát được trong nền"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Xử lý liên kết ứng dụng</string>
-  <string name="morphe_link_handling_summary">Cấu hình ứng dụng nào mở các liên kết</string>
+  <string name="morphe_link_handling_summary">Cấu hình liên kết mở trong ứng dụng này</string>
   <string name="morphe_link_handling_step1_title">Bước 1: Tắt liên kết ứng dụng gốc</string>
   <string name="morphe_link_handling_step1_message">Mở cài đặt của ứng dụng gốc và tắt tất cả các liên kết miền</string>
   <string name="morphe_link_handling_step2_title">Bước 2: Bật liên kết ứng dụng đã vá</string>

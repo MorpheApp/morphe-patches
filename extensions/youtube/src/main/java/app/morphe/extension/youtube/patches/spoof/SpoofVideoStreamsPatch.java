@@ -45,10 +45,10 @@ public class SpoofVideoStreamsPatch {
         // Reels can take up to 1 minute for videos start playback.
         // Only use it if the user has selected it.
         List<ClientType> availableClients = List.of(
+                ANDROID_CREATOR,
                 TV,
                 ANDROID_VR_1_64,
-                VISIONOS,
-                ANDROID_CREATOR
+                VISIONOS
         );
 
         app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.setClientsToUse(

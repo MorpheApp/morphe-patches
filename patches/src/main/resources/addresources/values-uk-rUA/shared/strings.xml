@@ -29,7 +29,7 @@ Second \"item\" text"</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Імпорт</string>
   <string name="morphe_settings_import_copy">Копіювати</string>
-  <string name="morphe_settings_import_reset">Налаштування Morphe скинуто до стандартних</string>
+  <string name="morphe_settings_import_reset">Налаштування Morphe скинуто до типових</string>
   <string name="morphe_settings_import_success">Імпортовано %d налаштувань</string>
   <string name="morphe_settings_import_failure_parse">Не вдалося імпортувати: %s</string>
   <string name="morphe_settings_search_hint">Пошук налаштувань</string>
@@ -55,9 +55,9 @@ Second \"item\" text"</string>
 Щоб перекласти нові мови або покращити наявні переклади, відвідайте morphe.software/translate"</string>
   <string name="morphe_language_DEFAULT">Мова застосунку</string>
   <string name="morphe_pref_import_export_title">Імпорт / Експорт налаштувань</string>
-  <string name="morphe_pref_import_export_summary">Імпорт / Експорт налаштувань Morphe\n\nДля збереження налаштувань скопіюйте текст у вікні кнопкою \"Копіювати\" та збережіть його в текстовому файлі.\nДля відновлення налаштувань вставте у вікно збережений раніше текст та натисніть кнопку \"Імпортувати\"</string>
+  <string name="morphe_pref_import_export_summary">Імпортує / Експортує налаштування Morphe</string>
   <string name="morphe_settings_import_file">Імпорт з файлу</string>
-  <string name="morphe_settings_import_file_success">Налаштування успішно імпортовано, натисніть \"Зберегти\", щоб застосувати</string>
+  <string name="morphe_settings_import_file_success">Налаштування успішно імпортовано, натисніть \"Зберегти\" для застосування</string>
   <string name="morphe_settings_import_file_failed">Не вдалося імпортувати налаштування</string>
   <string name="morphe_settings_export_file">Експорт до файлу</string>
   <string name="morphe_settings_export_file_success">Налаштування успішно експортовано</string>
@@ -84,10 +84,10 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">Завантаження...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Налагодження</string>
-  <string name="morphe_debug_screen_summary">Налаштуйте розширені параметри розробника та журнали діагностики</string>
+  <string name="morphe_debug_screen_summary">Налаштування розширених параметрів розробника та журналів діагностики</string>
   <string name="morphe_debug_title">Увімкнути журнал налагодження</string>
   <string name="morphe_debug_stacktrace_title">Журнал налагодження трасування стека</string>
-  <string name="morphe_debug_stacktrace_summary">Включає трасування стеку в журнали налагодження, щоб допомогти ідентифікувати помилки</string>
+  <string name="morphe_debug_stacktrace_summary">Додає трасування стека до журналів налагодження для виявлення помилок</string>
   <string name="morphe_debug_toast_on_error_title">Показати повідомлення про помилку Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Вимкнення повідомлень про помилки приховує всі сповіщення про помилки Morphe.
 
@@ -132,7 +132,7 @@ Second \"item\" text"</string>
 
 Натисніть кнопку \"Продовжити\" та вимкніть оптимізацію."</string>
   <string name="gms_core_dialog_continue_text">Продовжити</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Показувати діалогове вікно оптимізації батареї</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Показати діалог оптимізації батареї MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Якщо вимкнути цю функцію, запит на оптимізацію батареї MicroG буде приховано.
 
 Якщо оптимізацію батареї не змінити, ви можете зіткнутися з такими проблемами:
@@ -141,7 +141,7 @@ Second \"item\" text"</string>
 • Фонове відтворення може не працювати"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Керування відкриттям посилань</string>
-  <string name="morphe_link_handling_summary">Налаштуйте, який застосунок відкриватиме посилання</string>
+  <string name="morphe_link_handling_summary">Налаштувати відкриття посилань у цьому застосунку</string>
   <string name="morphe_link_handling_step1_title">Крок 1: Вимкніть посилання оригінального застосунку</string>
   <string name="morphe_link_handling_step1_message">Відкрийте налаштування оригінального застосунку та вимкніть усі прив’язані домени</string>
   <string name="morphe_link_handling_step2_title">Крок 2: Увімкніть посилання патченого застосунку</string>

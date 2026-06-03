@@ -7,12 +7,12 @@
 
 package app.morphe.extension.youtube.patches;
 
-import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.youtube.settings.Settings.OPEN_CHANNEL_OF_LIVE_AVATAR;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
+import android.util.DisplayMetrics;
 
 import com.facebook.litho.ComponentHost;
 
@@ -24,6 +24,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.shared.spoof.requests.PlayerRoutes;
 import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
+import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("unused")
 public final class OpenChannelOfLiveAvatarPatch {
@@ -36,85 +37,73 @@ public final class OpenChannelOfLiveAvatarPatch {
         mainActivityRef = new WeakReference<>(activity);
     }
 
-    /**
-     * If you change the language in the app settings, a string from another language may be used.
-     * In this case, restarting the app will solve it.
-     */
-    private static final String liveRingDescription = str("morphe_live_ring_description");
-
-    /**
-     * This key's value is the LithoView that opened the video (Live ring or Thumbnails).
-     */
     private static final String ELEMENTS_SENDER_VIEW =
             "com.google.android.libraries.youtube.rendering.elements.sender_view";
-
-    /**
-     * If the video is open by clicking live ring, this key does not exist.
-     */
     private static final String VIDEO_THUMBNAIL_VIEW_KEY =
             "VideoPresenterConstants.VIDEO_THUMBNAIL_VIEW_KEY";
-
-    private static StreamOrDetailsDataRequest liveAvatarChannelRequest = null;
-    /**
-     * Injection point.
-     *
-     * @param playbackStartDescriptorMap map containing information about PlaybackStartDescriptor
-     * @param videoId         id of the current video
-     */
+    private static volatile StreamOrDetailsDataRequest liveAvatarChannelRequest;
     public static boolean openChannel(Map<Object, Object> playbackStartDescriptorMap, String videoId) {
         try {
             if (!OPEN_CHANNEL_OF_LIVE_AVATAR.get()) {
                 return false;
             }
-            // Prevent a new request until the previous (if exists) is not done
-            if (liveAvatarChannelRequest != null && !liveAvatarChannelRequest.fetchIsDone()) {
+            // Prevent a new request until the previous (if exists) is not done.
+            StreamOrDetailsDataRequest request = liveAvatarChannelRequest;
+            if (request != null && !request.fetchIsDone()) {
                 return false;
             }
-            // Video was opened by clicking the thumbnail
+            // Video was opened by clicking a playlist thumbnail.
             if (playbackStartDescriptorMap.containsKey(VIDEO_THUMBNAIL_VIEW_KEY)) {
                 return false;
             }
-            // If the video was opened in the watch history, there is no VIDEO_THUMBNAIL_VIEW_KEY
-            // In this case, check the view that opened the video (Live ring is litho)
+            // Acquire the LithoView that opened the video (Live ring or Thumbnail).
             if (!(playbackStartDescriptorMap.get(ELEMENTS_SENDER_VIEW) instanceof ComponentHost componentHost)) {
                 return false;
             }
-            // Check content description (accessibility labels) of the live ring.
-            final CharSequence contentDescription = componentHost.getContentDescription();
-            if (contentDescription == null) {
+            // If the video was opened via a Live ring, its parent element will be instantiated from ComponentHost.
+            // In this case, the code will continue to open the channel instead of the current live video.
+            if (!(componentHost.getParent() instanceof ComponentHost)) {
+                return false;
+            }
+            // The Live ring object takes up a small portion of the screen and an equivalent
+            // height and width, compared to thumbnails or the header channel avatar.
+            // This check will avoid any false positives.
+            final int width = componentHost.getWidth();
+            final int height = componentHost.getHeight();
+            // The getDisplayMetrics() properties must be retrieved dynamically to avoid false positives when
+            // switching between the inner and outer screens (or vice versa) on foldable devices.
+            DisplayMetrics currentMetrics = Dim.getMetrics();
+            boolean isLandscapeOrTablet = currentMetrics.widthPixels > currentMetrics.heightPixels;
+            int maxAllowedWidth = isLandscapeOrTablet ? Dim.dp40 : Dim.dp48;
+            if (width == 0 || width != height || width > maxAllowedWidth) {
                 return false;
             }
 
-            final boolean containsMatch = contentDescription.toString().contains(liveRingDescription);
-            Logger.printDebug(() -> "Litho description: " + contentDescription
-                    + "contains Resource description: " + liveRingDescription);
-            if (containsMatch) {
-                liveAvatarChannelRequest = SpoofVideoStreamsPatch.fetchDetails(
-                        PlayerRoutes.GET_CHANNEL_FROM_ID,
-                        videoId
-                );
-                Utils.runOnBackgroundThread(() -> {
-                    if (liveAvatarChannelRequest.getStreamDetails() instanceof String channelID && !channelID.isEmpty()) {
-                        Logger.printDebug(() -> "live avatar response: " + channelID);
+            liveAvatarChannelRequest = SpoofVideoStreamsPatch.fetchDetails(
+                    PlayerRoutes.GET_CHANNEL_FROM_ID,
+                    videoId
+            );
+            Utils.runOnBackgroundThread(() -> {
+                if (liveAvatarChannelRequest.getStreamDetails() instanceof String channelID && !channelID.isEmpty()) {
+                    Logger.printDebug(() -> "live avatar response: " + channelID);
 
-                        Utils.runOnMainThread(() -> {
-                            var context = mainActivityRef.get();
-                            if (context != null) {
-                                Intent videoChannelIntent = new Intent(Intent.ACTION_VIEW);
-                                videoChannelIntent.setData(Uri.parse("https://www.youtube.com/channel/" + channelID));
-                                videoChannelIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                videoChannelIntent.setPackage(context.getPackageName());
-                                context.startActivity(videoChannelIntent);
-                            }
-                        });
-                    } else {
-                        Logger.printDebug(() -> "Could not get channel ID, string parameter is null: " + videoId);
-                    }
-                });
-                return true;
-            }
+                    Utils.runOnMainThread(() -> {
+                        var context = mainActivityRef.get();
+                        if (context != null) {
+                            Intent videoChannelIntent = new Intent(Intent.ACTION_VIEW);
+                            videoChannelIntent.setData(Uri.parse("https://www.youtube.com/channel/" + channelID));
+                            videoChannelIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            videoChannelIntent.setPackage(context.getPackageName());
+                            context.startActivity(videoChannelIntent);
+                        }
+                    });
+                } else {
+                    Logger.printDebug(() -> "Could not get channel ID, string parameter is null: " + videoId);
+                }
+            });
+            return true;
         } catch (Exception ex) {
-            Logger.printException(() -> "fetchVideoInformation failure", ex);
+            Logger.printException(() -> "openChannel failure", ex);
         }
         return false;
     }

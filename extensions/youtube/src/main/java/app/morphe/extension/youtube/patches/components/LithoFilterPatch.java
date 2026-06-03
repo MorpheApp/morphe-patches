@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import java.nio.ByteBuffer;
 import java.util.List;
+import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
@@ -25,51 +26,33 @@ import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 
 @SuppressWarnings("unused")
 public final class LithoFilterPatch {
-    /**
-     * Simple wrapper to pass the litho parameters through the prefix search.
-     */
-    private static final class LithoFilterParameters {
-        final ContextInterface contextInterface;
-        final String identifier;
-        final String path;
-        final String accessibility;
-        final byte[] buffer;
 
-        LithoFilterParameters(ContextInterface contextInterface, String identifier,
-                              String path, String accessibility, byte[] buffer) {
-            this.contextInterface = contextInterface;
-            this.identifier = identifier;
-            this.path = path;
-            this.accessibility = accessibility;
-            this.buffer = buffer;
+    /**
+     * Lazy loaded ASCII strings, as found in a byte buffer.
+     */
+    public static class BufferAsciiStrings {
+        private final byte[] bytes;
+        @Nullable
+        private String strings;
+
+        BufferAsciiStrings(byte[] bytes) {
+            this.bytes = Objects.requireNonNull(bytes);
         }
 
-        @NonNull
-        @Override
-        public String toString() {
-            // Estimate the percentage of the buffer that are Strings.
-            StringBuilder builder = new StringBuilder(Math.max(100, buffer.length / 2));
-            builder.append( "ID: ");
-            builder.append(identifier);
-            if (!accessibility.isEmpty()) {
-                // AccessibilityId and AccessibilityText are pieces of BufferStrings.
-                builder.append(" Accessibility: ");
-                builder.append(accessibility);
+        public String getStrings() {
+            String ascii = strings;
+            if (ascii == null) {
+                strings = ascii = findAsciiStrings(bytes);
             }
-            builder.append(" Path: ");
-            builder.append(path);
-            if (Settings.DEBUG_PROTOBUFFER.get()) {
-                builder.append(" BufferStrings: ");
-                findAsciiStrings(builder, buffer);
-            }
-
-            return builder.toString();
+            return ascii;
         }
 
         /**
          * Search through a byte array for all ASCII strings.
          */
-        static void findAsciiStrings(StringBuilder builder, byte[] buffer) {
+        private static String findAsciiStrings(byte[] buffer) {
+            StringBuilder builder = new StringBuilder(buffer.length);
+
             // Valid ASCII values (ignore control characters).
             final int minimumAscii = 32;  // 32 = space character
             final int maximumAscii = 126; // 127 = delete character
@@ -117,8 +100,43 @@ public final class LithoFilterPatch {
                     start = end + 1;
                 }
             }
+
+            return builder.toString();
         }
     }
+
+    /**
+         * Simple wrapper to pass the litho parameters through the prefix search.
+         */
+        private record LithoFilterParameters(ContextInterface contextInterface, String identifier,
+                                             String path, String accessibility, byte[] buffer,
+                                             BufferAsciiStrings asciiStrings) {
+            @NonNull
+            @Override
+            public String toString() {
+                StringBuilder builder = new StringBuilder(identifier.length()
+                        + path.length()
+                        + accessibility.length()
+                        + buffer.length);
+
+                builder.append("ID: ");
+                builder.append(identifier);
+                if (!accessibility.isEmpty()) {
+                    // AccessibilityId and AccessibilityText are pieces of BufferStrings.
+                    builder.append(" Accessibility: ");
+                    builder.append(accessibility);
+                }
+                builder.append(" Path: ");
+                builder.append(path);
+                if (Settings.DEBUG_PROTOBUFFER.get()) {
+                    builder.append(" BufferStrings: ");
+                    builder.append(asciiStrings.getStrings());
+                }
+                Logger.printDebug(() -> "buffer: " + buffer.length + " builder: " + builder.toString().length());
+
+                return builder.toString();
+            }
+        }
 
     /**
      * Placeholder for actual filters.
@@ -192,7 +210,8 @@ public final class LithoFilterPatch {
                             LithoFilterParameters parameters = (LithoFilterParameters) callbackParameter;
                             final boolean isFiltered = filter.isFiltered(parameters.contextInterface,
                                     parameters.identifier, parameters.accessibility, parameters.path,
-                                    parameters.buffer, group, type, matchedStartIndex);
+                                    parameters.buffer, parameters.asciiStrings,
+                                    group, type, matchedStartIndex);
 
                             if (isFiltered && BaseSettings.DEBUG.get()) {
                                 Logger.printDebug(() -> type == Filter.FilterContentType.IDENTIFIER
@@ -233,21 +252,10 @@ public final class LithoFilterPatch {
         try {
             String identifier = contextInterface.patch_getIdentifier();
             StringBuilder pathBuilder = contextInterface.patch_getPathBuilder();
+            //noinspection SizeReplaceableByIsEmpty
             if (identifier.isEmpty() || pathBuilder.length() == 0) {
                 return false;
             }
-
-            byte[] buffer = VersionCheckPatch.IS_20_22_OR_GREATER
-                    ? bytes
-                    : bufferThreadLocal.get();
-
-            // Potentially the buffer may have been null or never set up until now.
-            // Use an empty buffer so the litho id/path filters that do not use a buffer still work.
-            if (buffer == null) {
-                buffer = EMPTY_BYTE_ARRAY;
-            }
-
-            String path = pathBuilder.toString();
 
             String accessibility = "";
             if (accessibilityId != null && !accessibilityId.isBlank()) {
@@ -256,11 +264,23 @@ public final class LithoFilterPatch {
             if (accessibilityText != null && !accessibilityText.isBlank()) {
                 accessibility = accessibilityId + '|' + accessibilityText;
             }
-            LithoFilterParameters parameter = new LithoFilterParameters(contextInterface, identifier, path, accessibility, buffer);
+
+            byte[] buffer = VersionCheckPatch.IS_20_22_OR_GREATER
+                    ? bytes
+                    : bufferThreadLocal.get();
+            // Potentially the buffer may have been null or never set up until now.
+            // Use an empty buffer so the litho id/path filters that do not use a buffer still work.
+            if (buffer == null) {
+                buffer = EMPTY_BYTE_ARRAY;
+            }
+
+            LithoFilterParameters parameter = new LithoFilterParameters(contextInterface,
+                    identifier, pathBuilder.toString(), accessibility,
+                    buffer, new BufferAsciiStrings(buffer));
             Logger.printDebug(() -> "Searching " + parameter);
 
             return identifierSearchTree.matches(identifier, parameter)
-                    || pathSearchTree.matches(path, parameter);
+                    || pathSearchTree.matches(pathBuilder.toString(), parameter);
         } catch (Exception ex) {
             Logger.printException(() -> "isFiltered failure", ex);
         }

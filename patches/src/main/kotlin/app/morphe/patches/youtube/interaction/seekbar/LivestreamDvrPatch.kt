@@ -39,8 +39,8 @@ val livestreamDvrPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
-                    SwitchPreference("morphe_livestream_dvr"),
-                    SwitchPreference("morphe_expand_livestream_dvr_duration")
+                    SwitchPreference("morphe_livestream_dvr", summary = true),
+                    SwitchPreference("morphe_expand_livestream_dvr_duration", summary = true)
                 )
             )
         )

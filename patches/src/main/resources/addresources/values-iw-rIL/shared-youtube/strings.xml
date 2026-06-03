@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">הפעל מחדש כדי לסיים את ההגדרות</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">שם האפליקציה</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">מותאם אישית</string>
   <string name="morphe_custom_branding_icon_title">אייקון האפליקציה</string>
   <string name="morphe_custom_branding_icon_entry_1">מקורי</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe שחור</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe כהה</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe אורות</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe משחק קליל</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe משחק שחור</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">מותאם אישית</string>
+  <string name="morphe_custom_branding_icon_entry_7">מותאם אישית</string>
   <string name="morphe_custom_branding_notification_icon_title">שeיברין יeיב</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">התאם את סמל האפליקציה</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">הודעת Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">היסטוריית הצפייה שלך לא נשמרת.&lt;br&gt;&lt;br&gt;סביר להניח שזה נגרם על ידי חוסם מודעות ברמת DNS או פרוקסי רשת.&lt;br&gt;&lt;br&gt;כדי לתקן זאת, רשום את &lt;b&gt;s.youtube.com&lt;/b&gt; ברשימת ההיתרים או כבה את כל חוסמי ה-DNS והפרוקסים.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">זיוף זרמי וידאו</string>
   <string name="morphe_spoof_video_streams_screen_summary">הגדר העלמת זהות לקוח כדי למנוע בעיות בהשמעה</string>
   <string name="morphe_spoof_video_streams_title">זייף זרמי וידאו</string>
-  <string name="morphe_spoof_video_streams_summary">"מרמה את YouTube לשלוח זרם וידאו תואם, מה שתוקן את ההשמעה עבור רוב המשתמשים
+  <string name="morphe_spoof_video_streams_summary">"מתקן בעיות בהשמעה עבור רוב המשתמשים על ידי בקשת זרם וידאו תואם
 
-אם אתה משתמש ב-YouTube Premium, ייתכן שהגדרת אפשרות זו לא תהיה נחוצה"</string>
+אם אתה משתמש YouTube Premium, ייתכן שהגדרת אפשרות זו לא תהיה נחוצה"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не удалось получить доступ к потокам клиента</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">כיבוי הגדרה זו עלול לגרום לבעיות השמעה.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -110,6 +114,7 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_title">טיהור קישורי שיתוף</string>
   <string name="morphe_sanitize_sharing_links_summary">מסיר פרמטרים של שאילתות מעקב מקישורי שיתוף</string>
   <string name="morphe_replace_music_with_youtube_title">שנה קישורי שיתוף ל-youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">מחליף את music.youtube.com ל-youtube.com בקישורים משותפים</string>
   <string name="morphe_replace_links_with_shortener_title">שנה קישורי שיתוף ל-youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">מאפשר לשידורים חיים ול-Shorts להשתמש בפורמט הכתובת המקוצר youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">כופה על סרטונים להשתמש בפורמט הקיצור youtu.be</string>
 </resources>

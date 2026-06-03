@@ -10,6 +10,7 @@
 
 package app.morphe.extension.youtube.patches.components;
 
+import static app.morphe.extension.shared.ByteTrieSearch.convertStringsToBytes;
 import static app.morphe.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
@@ -22,7 +23,9 @@ import java.lang.ref.WeakReference;
 import java.util.Arrays;
 import java.util.List;
 
+import app.morphe.extension.shared.ByteTrieSearch;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.EngagementPanel;
@@ -74,14 +77,13 @@ public final class ShortsFilter extends Filter {
     private static FrameLayout.LayoutParams originalLayoutParams;
 
     private final StringFilterGroup shortsCompactFeedVideo;
-    private final ByteArrayFilterGroup shortsCompactFeedVideoBuffer;
+    private final ByteTrieSearch shortsCompactFeedVideoBuffer;
     private final StringFilterGroup channelProfile;
     private final ByteArrayFilterGroup channelProfileShelfHeader;
 
     private final StringFilterGroup autoDubbedLabel;
     private final StringFilterGroup subscribeButton;
     private final StringFilterGroup joinButton;
-    private final StringFilterGroup paidPromotionLabel;
     private final StringFilterGroup shelfHeaderIdentifier;
     private final StringFilterGroup shelfHeaderPath;
 
@@ -143,12 +145,16 @@ public final class ShortsFilter extends Filter {
                 // Search results that appear in a horizontal shelf.
                 "video_card.e");
 
-        // Filter out items that use the 'frame0' thumbnail.
-        // This is a valid thumbnail for both regular videos and Shorts,
-        // but it appears these thumbnails are used only for Shorts.
-        shortsCompactFeedVideoBuffer = new ByteArrayFilterGroup(
-                null,
-                "/frame0.jpg");
+        // Filter out items that use the 'frame0' thumbnail and other Shorts specific images.
+        // 'frame0' is a valid thumbnail for both regular videos and Shorts,
+        // but it appears these thumbnails are only used for Shorts.
+        shortsCompactFeedVideoBuffer = new ByteTrieSearch(convertStringsToBytes(
+                "/frame0.jpg",
+                "/oardefault.jpg", // Vertical orientation video.
+                "/oar1.jpg",
+                "/oar2.jpg",
+                "/oar3.jpg")
+        );
 
         shelfHeaderPath = new StringFilterGroup(
                 null,
@@ -189,11 +195,6 @@ public final class ShortsFilter extends Filter {
         StringFilterGroup infoPanel = new StringFilterGroup(
                 Settings.HIDE_SHORTS_INFO_PANEL,
                 "shorts_info_panel_overview"
-        );
-
-        StringFilterGroup stickers = new StringFilterGroup(
-                Settings.HIDE_SHORTS_STICKERS,
-                "stickers_layer.e"
         );
 
         StringFilterGroup likeFountain = new StringFilterGroup(
@@ -242,12 +243,6 @@ public final class ShortsFilter extends Filter {
         subscribeButton = new StringFilterGroup(
                 Settings.HIDE_SHORTS_SUBSCRIBE_BUTTON,
                 "subscribe_button"
-        );
-
-        paidPromotionLabel = new StringFilterGroup(
-                Settings.HIDE_PAID_PROMOTION_LABEL,
-                "reel_player_disclosure.e",
-                "shorts_disclosures.e"
         );
 
         shortsActionBar = new StringFilterGroup(
@@ -310,10 +305,10 @@ public final class ShortsFilter extends Filter {
         );
 
         addPathCallbacks(
-                shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, paidPromotionLabel,
-                livePreview, suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
-                autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, stickers, useButtons,
-                reelCarousel, reelSoundMetadata, likeFountain, likeButton, dislikeButton, shortsActionBar
+                shortsCompactFeedVideo, shelfHeaderPath, joinButton, subscribeButton, livePreview,
+                suggestedAction, pausedOverlayButtons, channelBar, infoPanel, previewComment,
+                autoDubbedLabel, fullVideoLinkLabel, videoTitle, soundButton, useButtons, likeFountain,
+                reelCarousel, reelSoundMetadata, likeButton, dislikeButton, shortsActionBar
         );
 
         //
@@ -428,6 +423,7 @@ public final class ShortsFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
@@ -451,8 +447,7 @@ public final class ShortsFilter extends Filter {
         }
 
         if (contentType == FilterContentType.PATH) {
-            if (matchedGroup == subscribeButton || matchedGroup == joinButton
-                    || matchedGroup == paidPromotionLabel || matchedGroup == autoDubbedLabel) {
+            if (matchedGroup == subscribeButton || matchedGroup == joinButton || matchedGroup == autoDubbedLabel) {
                 // Selectively filter to avoid false positive filtering of other subscribe/join buttons.
                 return path.startsWith(REEL_CHANNEL_BAR_PATH) || path.startsWith(REEL_METAPANEL_PATH)
                         || path.startsWith(REEL_PLAYER_OVERLAY_PATH);
@@ -464,15 +459,14 @@ public final class ShortsFilter extends Filter {
 
             if (matchedGroup == shortsCompactFeedVideo) {
                 return shouldHideShortsFeedItems()
-                        && shortsCompactFeedVideoBuffer.check(buffer).isFiltered()
+                        // When a video is autoplaying in the feed, no new components are drawn on the screen.
+                        // Therefore, filtering is skipped when the current PlayerType is [INLINE_MINIMAL].
+                        && PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL
                         // The litho path of the feed video is 'video_lockup_with_attachment.e'.
                         // It appears [shortsCompactFeedVideoBuffer] is used after 20 seconds during autoplay in the feed in YouTube 20.44.38.
                         // If the Shorts shelf is hidden on the Home feed, the video in the feed will be hidden after 20 seconds have passed since autoplay began in the feed.
                         // See: https://github.com/MorpheApp/morphe-patches/issues/773.
-                        //
-                        // When a video is autoplaying in the feed, no new components are drawn on the screen.
-                        // Therefore, filtering is skipped when the current PlayerType is [INLINE_MINIMAL].
-                        && PlayerType.getCurrent() != PlayerType.INLINE_MINIMAL;
+                        && shortsCompactFeedVideoBuffer.matches(buffer);
             }
 
             if (matchedGroup == shelfHeaderPath) {

@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Ukryj reklamy w filmach</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Przenikanie</string>
-  <string name="morphe_music_crossfade_screen_summary">Dostosuj, jak utwory mają płynnie przenikać się nawzajem</string>
+  <string name="morphe_music_crossfade_screen_summary">Płynne przejścia między utworami</string>
   <string name="morphe_music_crossfade_enabled_title">Włącz przenikanie</string>
   <string name="morphe_music_crossfade_curve_title">Krzywa przenikania</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Stała moc</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Łagodne przejście</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Płynna krzywa S</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Obecny</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Następny</string>
   <string name="morphe_music_crossfade_duration_title">Czas trwania przenikania</string>
   <string name="morphe_crossfade_duration_250ms">250 milisekund</string>
   <string name="morphe_crossfade_duration_500ms">500 milisekund</string>
@@ -56,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 sekund</string>
   <string name="morphe_crossfade_duration_9000ms">9 sekund</string>
   <string name="morphe_crossfade_duration_10000ms">10 sekund</string>
+  <string name="morphe_crossfade_duration_11000ms">11 sekund</string>
+  <string name="morphe_crossfade_duration_12000ms">12 sekund</string>
   <string name="morphe_music_crossfade_on_skip_title">Przenikanie przy ręcznym pominięciu</string>
   <string name="morphe_music_crossfade_on_skip_summary">Stosuje efekt przenikania podczas ręcznego przejścia do następnego utworu</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Przenikanie przy automatycznym przejściu</string>
@@ -66,9 +70,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Przenikanie wznowione</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Tryb teledysku niedostępny podczas przenikania</string>
   <string name="morphe_music_crossfade_about_title">Informacje</string>
-  <string name="morphe_music_crossfade_about_summary">"Przenikanie jest dostępne od wersji YouTube Music 8.x
-
-Przytrzymaj przycisk losowania, aby włączyć lub wyłączyć
+  <string name="morphe_music_crossfade_about_summary">"Przytrzymaj przycisk losowania, aby włączyć lub wyłączyć
 
 Implementacja funkcji przez VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
@@ -103,7 +105,7 @@ Implementacja funkcji przez VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Zapobiega automatycznemu rozwijaniu odtwarzacza do trybu pełnoekranowego po rozpoczęciu nowego utworu</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Pasek nawigacji</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Zdecyduj, które przyciski będą wyświetlane na pasku nawigacji</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Zdecyduj, które przyciski będą wyświetlane na dolnym pasku nawigacji</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ukryj przycisk Główna</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

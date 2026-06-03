@@ -31,9 +31,9 @@ import app.morphe.patches.shared.misc.gms.Constants.PERMISSIONS
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
+import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
@@ -122,24 +122,16 @@ fun gmsCoreSupportPatch(
         // Exact string replacements.
 
         fun replaceStrings(fromString: String, toString: String) {
-            val stringFilter = string(fromString)
-
-            Fingerprint(
-                filters = listOf(string(fromString))
-            ).matchAllOrNull()?.forEach { match ->
-                match.method.apply {
-                    findInstructionIndicesReversedOrThrow(stringFilter).forEach { index ->
-                        val register = getInstruction<OneRegisterInstruction>(index).registerA
-                        replaceInstruction(
-                            index,
-                            BuilderInstruction21c(
-                                Opcode.CONST_STRING,
-                                register,
-                                ImmutableStringReference(toString)
-                            )
-                        )
-                    }
-                }
+            string(fromString).matchAllMethodIndicesForEach(requireMatches = false) { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+                replaceInstruction(
+                    index,
+                    BuilderInstruction21c(
+                        Opcode.CONST_STRING,
+                        register,
+                        ImmutableStringReference(toString)
+                    )
+                )
             }
         }
 
@@ -620,7 +612,7 @@ fun gmsCoreSupportResourcePatch(
                     "$GMS_CORE_VENDOR_GROUP_ID.android.gms"
                 }
             ),
-            SwitchPreference("morphe_gms_core_battery_optimization_dialog", summaryKey = null)
+            SwitchPreference("morphe_gms_core_battery_optimization_dialog")
         )
 
         executeBlock()

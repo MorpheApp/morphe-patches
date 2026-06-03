@@ -31,7 +31,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_remove_viewer_discretion_dialog", summaryKey = null),
+            SwitchPreference("morphe_remove_viewer_discretion_dialog"),
         )
 
         AllowControversialContentFingerprint.apply {

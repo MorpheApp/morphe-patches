@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Dest pê bike ku sazkirinê temam bike</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Navê sepanê</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Xwerî</string>
   <string name="morphe_custom_branding_icon_title">Îkonê</string>
   <string name="morphe_custom_branding_icon_entry_1">Yekta</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe reş</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tarî</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe rovê</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Ronahîya kêrê ya Morphe</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Reşê yê Morphe</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Xwerî</string>
+  <string name="morphe_custom_branding_icon_entry_7">Xwerî</string>
   <string name="morphe_custom_branding_notification_icon_title">Aîkona notifikasyonê</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Îkona serîlêdana guhêrîn</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe lîstikê</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Îlanê Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Sergûzastên we têne parvekirin.&lt;br&gt;&lt;br&gt;Ev bi girîngî ji hêla pêşgirê DNS an proxy-ya danînê ve tê bandor kirin.&lt;br&gt;&lt;br&gt;Ji bo çareserî, s.youtube.com veşêre an hemû pêşgirên DNS û proxy-yên vegirtêrê vanqandin.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Goşiyên wîdyoyê spoof bikin</string>
   <string name="morphe_spoof_video_streams_screen_summary">Têkbirina mûşekan a serîlêdanê bicîh bîne da ku ji pirsgirêkên lêçînê pêşî bigire</string>
   <string name="morphe_spoof_video_streams_title">Goşiyên wîdyoyê spoof bikin</string>
-  <string name="morphe_spoof_video_streams_summary">"YouTube têk dide ku dîtina vîdyoyek e ku li gorî hewîna we ye, ku ji bo piraniya bikarîneran lêçînê çareser dike
+  <string name="morphe_spoof_video_streams_summary">"Pirsgirêkên lêkirinê ji bo piraniya bikarhêneran bi daxwazkirina herîkek vîdyoyê ya li hevdîtinê çareser dike
 
-Ger hûn bikarînerê YouTube Premium nebin, dibe ku ev mîheng hewce nebe"</string>
+Ger hûn bikarhênerê YouTube Premium nebin, ev mîheng dikare pêwîst nebe."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Tiştekî ji goşiyên klijentê neyê pêşbaz kirin</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Dibe ku birêveçûna vê naverokê kêmasiyên lêxistinê hebe.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -108,6 +112,7 @@ Da ku teqezîya nêzîkê bikin, li jêr bidixin 'bidin pêşbaz'."</string>
   <string name="morphe_sanitize_sharing_links_title">Lînkên parvekirinê paqij bike</string>
   <string name="morphe_sanitize_sharing_links_summary">Parametreyên pirsîna şopandinê ji girêdên parvekirî têne çêkirin</string>
   <string name="morphe_replace_music_with_youtube_title">Lînkên parvekirî biguhezîne youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Lînkên parvekirî de music.youtube.com bi youtube.com veguherîne</string>
   <string name="morphe_replace_links_with_shortener_title">Lînkên parvekirinê biguherîne youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Her gav her du strana zindî û kurt parvekirî forma URL\'a kurtkirî ya youtu.be danê</string>
+  <string name="morphe_replace_links_with_shortener_summary">Vîdyoyê neçar dike ku biçîna forma URL\'ê ya kurt a youtu.be</string>
 </resources>

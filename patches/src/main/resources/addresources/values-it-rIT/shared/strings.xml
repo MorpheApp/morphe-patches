@@ -29,12 +29,12 @@ Second \"item\" text"</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importa</string>
   <string name="morphe_settings_import_copy">Copia</string>
-  <string name="morphe_settings_import_reset">Reimposta le impostazioni di Morphe a quelle predefinite</string>
+  <string name="morphe_settings_import_reset">Reimposta le impostazioni di Morphe ai valori predefiniti</string>
   <string name="morphe_settings_import_success">Importate %d impostazioni</string>
   <string name="morphe_settings_import_failure_parse">Importazione non riuscita: %s</string>
   <string name="morphe_settings_search_hint">Cerca impostazioni</string>
   <string name="morphe_settings_search_no_results_title">Nessun risultato trovato per \".%s\"</string>
-  <string name="morphe_settings_search_no_results_summary">Prova un\'altra parola chiave</string>
+  <string name="morphe_settings_search_no_results_summary">Prova con un\'altra parola chiave</string>
   <string name="morphe_settings_search_recent_searches">Ricerche recenti</string>
   <string name="morphe_settings_search_remove_message">Rimuovere dalla cronologia di ricerca?</string>
   <string name="morphe_settings_search_clear_history">Cancella cronologia ricerche</string>
@@ -54,19 +54,19 @@ Second \"item\" text"</string>
 
 Per tradurre nuove lingue o migliorare le traduzioni esistenti, visita morphe.software/translate"</string>
   <string name="morphe_language_DEFAULT">Lingua dell\'app</string>
-  <string name="morphe_pref_import_export_title">Importa / Esporta</string>
-  <string name="morphe_pref_import_export_summary">Importa / Esporta le impostazioni Morphe</string>
+  <string name="morphe_pref_import_export_title">Importa/Esporta</string>
+  <string name="morphe_pref_import_export_summary">Importa/Esporta le impostazioni di Morphe</string>
   <string name="morphe_settings_import_file">Importa da file</string>
   <string name="morphe_settings_import_file_success">Impostazioni importate correttamente, tocca Salva per applicare</string>
   <string name="morphe_settings_import_file_failed">Impossibile importare le impostazioni</string>
   <string name="morphe_settings_export_file">Esporta su file</string>
-  <string name="morphe_settings_export_file_success">Esportazione delle impostazioni riuscita con successo</string>
+  <string name="morphe_settings_export_file_success">Esportazione delle impostazioni avvenuta con successo</string>
   <string name="morphe_settings_export_file_failed">Impossibile esportare le impostazioni</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Stai usando la versione più recente delle Patch Morphe &lt;i&gt;%s&lt;/i&gt;</string>
-  <string name="morphe_settings_about_links_body_version_outdated">Stai usando la versione delle Patch Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Aggiornamento disponibile: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Per aggiornare le tue patch, usa Morphe per ripatchare questa app</string>
+  <string name="morphe_settings_about_links_body_version_outdated">Stai usando la versione delle Patch Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Aggiornamento disponibile: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Per aggiornare le tue patch, usa Morphe per ripatchare quest\'app</string>
   <string name="morphe_settings_about_links_dev_header">Nota</string>
-  <string name="morphe_settings_about_links_dev_body">Questa versione è una pre-release e potresti riscontrare problemi inaspettati</string>
+  <string name="morphe_settings_about_links_dev_body">Questa è una versione pre-rilascio e potresti riscontrare problemi inaspettati</string>
   <string name="morphe_settings_about_links_header">Link ufficiali</string>
   <string name="morphe_settings_about_links_website">Sito web</string>
   <string name="morphe_settings_about_links_donate">Dona</string>
@@ -85,27 +85,27 @@ Per tradurre nuove lingue o migliorare le traduzioni esistenti, visita morphe.so
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Debug</string>
   <string name="morphe_debug_screen_summary">Configura opzioni avanzate per sviluppatori e registri diagnostici</string>
-  <string name="morphe_debug_title">Abilita la registrazione di debug</string>
-  <string name="morphe_debug_stacktrace_title">Debug log stack trace</string>
-  <string name="morphe_debug_stacktrace_summary">Include stack trace nei log di debug per aiutare a identificare gli errori</string>
+  <string name="morphe_debug_title">Abilita i registri di debug</string>
+  <string name="morphe_debug_stacktrace_title">Registra la traccia dello stack</string>
+  <string name="morphe_debug_stacktrace_summary">Include la traccia dello stack nei registri di debug per aiutare a identificare gli errori</string>
   <string name="morphe_debug_toast_on_error_title">Mostra notifica per errore di Morphe</string>
-  <string name="morphe_debug_toast_on_error_user_dialog_message">"Disabilitare i toast di errore nasconde tutte le notifiche di errore di Morphe.
+  <string name="morphe_debug_toast_on_error_user_dialog_message">"Disabilitare i messaggi di errore nasconderà tutte le notifiche di errore di Morphe.
 
 Non sarai notificato di eventi imprevisti."</string>
-  <string name="morphe_debug_export_logs_title">Esporta log di debug</string>
-  <string name="morphe_debug_export_logs_summary">Esporta log di debug Morphe</string>
+  <string name="morphe_debug_export_logs_title">Esporta i registri di debug</string>
+  <string name="morphe_debug_export_logs_summary">Esporta i registri di debug Morphe</string>
   <string name="morphe_debug_export_logs_file">Esporta su file</string>
-  <string name="morphe_debug_export_logs_success">Log di debug esportati con successo</string>
-  <string name="morphe_debug_export_logs_failed">Esportazione dei log di debug non riuscita</string>
-  <string name="morphe_debug_logs_search_hint">Cerca log di debug...</string>
+  <string name="morphe_debug_export_logs_success">Registri di debug esportati con successo</string>
+  <string name="morphe_debug_export_logs_failed">Esportazione dei registri di debug non riuscita</string>
+  <string name="morphe_debug_logs_search_hint">Cerca registro di debug...</string>
   <string name="morphe_debug_export_logs_clear">Cancella</string>
   <string name="morphe_debug_logs_disabled">La registrazione di debug è disabilitata</string>
-  <string name="morphe_debug_logs_none_found">Nessun log di debug trovato</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Log di debug copiati</string>
-  <string name="morphe_debug_logs_failed_to_export">Esportazione dei log non riuscita: %s</string>
-  <string name="morphe_debug_logs_clear_toast">Log di debug cancellati</string>
-  <string name="morphe_debug_feature_flags_manager_title">Manager dei flag di funzionalità</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Gestisci flag di funzionalità booleani</string>
+  <string name="morphe_debug_logs_none_found">Nessun registro di debug trovato</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Registri di debug copiati</string>
+  <string name="morphe_debug_logs_failed_to_export">Esportazione del registro non riuscita: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Registri di debug cancellati</string>
+  <string name="morphe_debug_feature_flags_manager_title">Gestore dei flag di funzionalità</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Gestisci i flag booleani delle funzionalità</string>
   <string name="morphe_debug_feature_flags_manager_active_header">Flag di funzionalità attivi (%d)</string>
   <string name="morphe_debug_feature_flags_manager_blocked_header">Flag di funzionalità bloccati (%d)</string>
   <string name="morphe_debug_feature_flags_manager_search_hint">Cerca flag di funzionalità...</string>
@@ -122,18 +122,18 @@ Non sarai notificato di eventi imprevisti."</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
   <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG non ha l'autorizzazione per essere eseguito in background.
 
-Segui la guida \"Don't kill my app\" per il tuo telefono e applica le istruzioni all'installazione di MicroG.
+Segui la guida \"Don't kill my app\" per il tuo telefono e applica le istruzioni alla tua installazione di MicroG.
 
-Questo è necessario per il funzionamento dell'app."</string>
+Questo è necessario per il corretto funzionamento dell'app."</string>
   <string name="gms_core_dialog_open_website_text">Apri sito web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Le ottimizzazioni della batteria di MicroG devono essere disabilitate per evitare problemi.
 
 Disabilitare le ottimizzazioni della batteria non influirà negativamente sull'utilizzo della batteria.
 
-Clicca \"Continua\" e consenta le modifiche."</string>
+Clicca \"Continua\" per consentire le modifiche."</string>
   <string name="gms_core_dialog_continue_text">Continua</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Mostra la finestra di dialogo di ottimizzazione della batteria</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabilitando questa opzione, verrà nascosto il prompt di ottimizzazione della batteria MicroG.
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Mostra la finestra di dialogo di ottimizzazione della batteria MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Disabilitando questa opzione, verrà nascosto l'avviso di disattivazione dell'ottimizzazione della batteria per MicroG.
 
 Se le ottimizzazioni della batteria non vengono modificate, potrebbero verificarsi i seguenti problemi:
 • L'app potrebbe chiudersi in modo casuale
@@ -141,19 +141,19 @@ Se le ottimizzazioni della batteria non vengono modificate, potrebbero verificar
 • La riproduzione in background potrebbe non funzionare"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestione dei link dell\'app</string>
-  <string name="morphe_link_handling_summary">Configura quale app apre i link</string>
+  <string name="morphe_link_handling_summary">Configura i link per aprirli in questa app</string>
   <string name="morphe_link_handling_step1_title">Passaggio 1: disabilita i link delle app originali</string>
   <string name="morphe_link_handling_step1_message">Apri le impostazioni dell\'app originale e disabilita tutti i link di dominio</string>
   <string name="morphe_link_handling_step2_title">Passaggio 2: abilita i link delle app patchate</string>
   <string name="morphe_link_handling_step2_message">Apri le impostazioni dell\'app patchata e abilita tutti i link di dominio</string>
   <string name="morphe_link_handling_open">Impostazioni avanzate</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Avviso sperimentale 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Avviso versione sperimentale 🚨</string>
   <string name="morphe_experimental_app_version_dialog_message">"Stai utilizzando una versione sperimentale di ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
 🔧 Aspettati comportamenti strani dell'app o bug non identificati mentre affiniamo le patch per questa versione dell'app.
 &lt;br/&gt;&lt;br/&gt;
-Se vuoi l'esperienza con meno problemi, allora &lt;b&gt;disinstalla&lt;/b&gt; questo e patcha la versione consigliata dell'applicazione ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Se desideri un'esperienza più stabile, allora &lt;b&gt;disinstalla&lt;/b&gt; questa versione e passa ad una consigliata ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Voglio la versione sperimentale</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Voglio la versione stabile</string>
 </resources>

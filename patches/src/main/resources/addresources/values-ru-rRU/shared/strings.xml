@@ -132,7 +132,7 @@ Second \"item\" text"</string>
 
 Нажмите кнопку \"Продолжить\" и разрешите изменения оптимизации."</string>
   <string name="gms_core_dialog_continue_text">Продолжить</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Показать диалоговое окно оптимизации батареи</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Показать диалоговое окно оптимизации батареи MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Выключение этой функции скроет запрос оптимизации батареи MicroG.
 
 Если оптимизацию батареи не изменить, вы можете столкнуться с такими проблемами:
@@ -141,7 +141,7 @@ Second \"item\" text"</string>
 • Фоновое воспроизведение может не работать"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Обработка ссылок в приложении</string>
-  <string name="morphe_link_handling_summary">Настройте приложение, которое будет открывать ссылки</string>
+  <string name="morphe_link_handling_summary">Настроить открытие ссылок в этом приложении</string>
   <string name="morphe_link_handling_step1_title">Шаг 1: Отключите исходные ссылки приложений</string>
   <string name="morphe_link_handling_step1_message">Откройте настройки исходного приложения и отключите все доменные ссылки</string>
   <string name="morphe_link_handling_step2_title">Шаг 2: Включите пропатченные ссылки приложений</string>

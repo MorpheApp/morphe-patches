@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Reklamên wîdyoyê veşêre</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Gerhezkirin</string>
-  <string name="morphe_music_crossfade_screen_summary">Li hev de guherîna hûrgulî ya stranê da ku bi hêsanî têne hevkirin</string>
+  <string name="morphe_music_crossfade_screen_summary">Şarkıları bi hev re kêrkirin</string>
   <string name="morphe_music_crossfade_enabled_title">Gerhezkirin çêbike</string>
   <string name="morphe_music_crossfade_curve_title">Pêwaya girîng</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Hêz yekser</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Saçek ku pêşveçûye</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">S-dûrî xemilî</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Derengîn</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Hatimê</string>
   <string name="morphe_music_crossfade_duration_title">Dirêjahiya girtina firqeyî</string>
   <string name="morphe_crossfade_duration_250ms">250 mîlîseconde</string>
   <string name="morphe_crossfade_duration_500ms">500 mîlîseconde</string>
@@ -56,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 senîye</string>
   <string name="morphe_crossfade_duration_9000ms">9 senîye</string>
   <string name="morphe_crossfade_duration_10000ms">10 senîye</string>
+  <string name="morphe_crossfade_duration_11000ms">11 saniye</string>
+  <string name="morphe_crossfade_duration_12000ms">12 saniye</string>
   <string name="morphe_music_crossfade_on_skip_title">Veşartinê ser dîmenê destûrî</string>
   <string name="morphe_music_crossfade_on_skip_summary">Efêkta veguherîna hûrgulî dema ku hûn bi destan berê xwe bidin strana dinê çêdike</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Veşartinê ser pêşandanê otomatîk</string>
@@ -66,11 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Navkirin dubare hat destpêkirin</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Moda vîdyoyê dema navkirinê çalak e, nayê xebitîn</string>
   <string name="morphe_music_crossfade_about_title">Derbarê</string>
-  <string name="morphe_music_crossfade_about_summary">"Girtina firqeyî bi YouTube Music 8.x re heye
+  <string name="morphe_music_crossfade_about_summary">"Karıştırma düğmesine uzun basarak devre dışı bırakın/etkinleştirin
 
-Dirêja şilikeki dirêj ser butona pêşveçûyî da tu pêştirîne/veşartinê bikin
-
-Birkirina taybetî bi VazerOG"</string>
+VazerOG tarafından özellik uygulaması"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Tekrar davim berdewam bike</string>
   <!-- layout.buttons.hideButtons -->
@@ -103,7 +105,7 @@ Birkirina taybetî bi VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Îhtimalê veguherîna lîstikvan bi xweber bo tevahî parastin dema ku strana nû dest pê dike</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Keleka navigasyonê</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Hilbijêrin ku kîjan butonan li bara pêşînê xuya dibin</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Hilbijêrînê ku kîjan butonan li ser barê navîgera jorîn xuya bibin</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Butona Malê veşêrin</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

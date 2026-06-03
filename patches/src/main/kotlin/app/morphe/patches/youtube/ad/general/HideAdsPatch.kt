@@ -38,6 +38,7 @@ import app.morphe.util.findMutableMethodOf
 import app.morphe.util.injectHideViewCall
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction31i
 import com.android.tools.smali.dexlib2.iface.instruction.formats.Instruction35c
@@ -55,15 +56,15 @@ private val hideAdsResourcePatch = resourcePatch {
 
     execute {
         PreferenceScreen.ADS.addPreferences(
-            SwitchPreference("morphe_hide_end_screen_store_banner", summaryKey = null),
-            SwitchPreference("morphe_hide_general_ads", summaryKey = null),
-            SwitchPreference("morphe_hide_merchandise_banners", summaryKey = null),
-            SwitchPreference("morphe_hide_paid_promotion_label", summaryKey = null),
-            SwitchPreference("morphe_hide_player_popup_ads", summaryKey = null),
-            SwitchPreference("morphe_hide_self_sponsor_ads", summaryKey = null),
-            SwitchPreference("morphe_hide_shopping_links", summaryKey = null),
-            SwitchPreference("morphe_hide_view_products_banner", summaryKey = null),
-            SwitchPreference("morphe_hide_youtube_premium_promotions", summaryKey = null),
+            SwitchPreference("morphe_hide_creator_store_shelf"),
+            SwitchPreference("morphe_hide_end_screen_store_banner"),
+            SwitchPreference("morphe_hide_general_ads"),
+            SwitchPreference("morphe_hide_merchandise_banners"),
+            SwitchPreference("morphe_hide_paid_promotion_label"),
+            SwitchPreference("morphe_hide_player_popup_ads"),
+            SwitchPreference("morphe_hide_self_sponsor_ads"),
+            SwitchPreference("morphe_hide_shopping_links"),
+            SwitchPreference("morphe_hide_youtube_premium_promotions"),
         )
 
         addLithoFilter(EXTENSION_CLASS)
@@ -136,17 +137,24 @@ val hideAdsPatch = bytecodePatch(
 
         // Hide player overlay view. This can be hidden with a regular litho filter
         // but an empty space remains.
-        PlayerOverlayTimelyShelfFingerprint.method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static {}, $EXTENSION_CLASS->hideAds()Z
-                move-result v0
-                if-eqz v0, :show
-                return-void
-                :show
-                nop
-            """
-        )
+        PlayerOverlayTimelyShelfFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.last().index
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstructionsWithLabels(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->allowAds(Z)Z
+                        move-result v$register
+                        if-nez v$register, :show
+                        return-void
+                        :show
+                        nop
+                    """
+                )
+            }
+        }
 
         // Hide ad views.
 

@@ -23,9 +23,9 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comment_ads_summary">Nasconde gli annunci nella sezione commenti</string>
   <string name="morphe_screen_layout_title">Layout</string>
   <string name="morphe_disable_modern_home_title">Disabilita la schermata principale moderna</string>
-  <string name="morphe_disable_modern_home_summary">Disabilita l\'interfaccia utente della schermata principale moderna</string>
-  <string name="morphe_disable_screenshot_popup_title">Disabilita la notifica di screenshot</string>
-  <string name="morphe_disable_screenshot_popup_summary">Disabilita la notifica che appare quando si esegue lo screenshot</string>
+  <string name="morphe_disable_modern_home_summary">Disabilita l\'interfaccia utente moderna per la schermata principale</string>
+  <string name="morphe_disable_screenshot_popup_title">Disabilita la notifica di salvataggio schermata</string>
+  <string name="morphe_disable_screenshot_popup_summary">Disabilita la notifica che appare quando si esegue la cattura di una schermata</string>
   <string name="morphe_hide_ask_button_title">Nascondi il pulsante Chiedi</string>
   <string name="morphe_hide_ask_button_summary">Nasconde il pulsante Chiedi nella barra di ricerca</string>
   <string name="morphe_hide_answers_button_title">Nascondi il pulsante Risposte</string>
@@ -54,19 +54,19 @@ Second \"item\" text"</string>
   <string name="morphe_hide_trending_today_shelf_summary">"Nasconde lo scaffale Oggi in tendenza dai suggerimenti di ricerca
 
 Limitazione: I separatori visivi potrebbero non essere nascosti"</string>
-  <string name="morphe_remove_notification_dialog_title">Rimuovi il dialogo di suggerimento della notifica</string>
-  <string name="morphe_remove_notification_dialog_summary">Chiude automaticamente la finestra di dialogo del suggerimento di notifica quando si visita un subreddit</string>
+  <string name="morphe_remove_notification_dialog_title">Rimuovi finestra di dialogo dei suggerimenti di notifica</string>
+  <string name="morphe_remove_notification_dialog_summary">Chiude automaticamente la finestra di dialogo del suggerimenti di notifica, che appaiono quando si visita un subreddit</string>
   <string name="morphe_show_view_count_title">Mostra il conteggio delle visualizzazioni nei post</string>
   <string name="morphe_show_view_count_summary">Limitazione: disponibile solo se la risposta dell\'API include il conteggio delle visualizzazioni</string>
-  <string name="morphe_remove_nsfw_dialog_title">Rimuovi il dialogo di avviso NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Accetta automaticamente l\'avviso sui contenuti NSFW durante la visita di un subreddit</string>
+  <string name="morphe_remove_nsfw_dialog_title">Rimuovi finestra di dialogo di avviso NSFW</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Accetta automaticamente l\'avviso sui contenuti NSFW quando si visualizza un subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Varie</string>
   <string name="morphe_about_title">A proposito di</string>
   <string name="morphe_about_summary">Versione patch e link ufficiali</string>
   <string name="morphe_sanitize_sharing_links_title">Sanifica collegamenti di condivisione</string>
-  <string name="morphe_sanitize_sharing_links_summary">Rimuove i parametri di query di tracciamento dai collegamenti condivisi</string>
+  <string name="morphe_sanitize_sharing_links_summary">Rimuove i parametri di query utilizzati a scopo di tracciamento dai collegamenti condivisi</string>
   <string name="morphe_open_links_directly_title">Apri i link direttamente</string>
   <string name="morphe_open_links_directly_summary">Aggira gli URL di reindirizzamento aprendo i link esterni</string>
   <string name="morphe_open_links_externally_title">Apri i link esternamente</string>
-  <string name="morphe_open_links_externally_summary">Apre i link nel browser invece del browser in-app</string>
+  <string name="morphe_open_links_externally_summary">Apre i link nel browser esterno anzichè in quello in-app</string>
 </resources>

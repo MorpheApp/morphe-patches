@@ -84,10 +84,10 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_settings_about_licenses_loading">Ag lódáil...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Dífhabhtú</string>
-  <string name="morphe_debug_screen_summary">Configure roghanna forbaróra agus logaí diagnoischa ardleibhéal</string>
-  <string name="morphe_debug_title">Logáil dífhabhtaithe a chur ar siúl</string>
+  <string name="morphe_debug_screen_summary">Cumraigh roghanna forbróra ardleibhéil agus logaí diagnóiseacha</string>
+  <string name="morphe_debug_title">Cumasaigh logáil dífhabhtaithe</string>
   <string name="morphe_debug_stacktrace_title">Rian staice loga dífhabhtaithe</string>
-  <string name="morphe_debug_stacktrace_summary">San áireamh stack traces i logaí dífhabhtaithe chun cabhrú le saineoladh ar earráidí</string>
+  <string name="morphe_debug_stacktrace_summary">Áirítear rianta cruachta i logaí dífhabhtaithe chun cabhrú le hearráidí a aithint</string>
   <string name="morphe_debug_toast_on_error_title">Taispeáin tósta ar earráid Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Má mhúchtar tóstaí earráide, folaítear gach fógra earráide Morphe.
 
@@ -132,7 +132,7 @@ Ní bheidh aon tionchar diúltach ag uasmhéaduithe ceallraí do MicroG a dhích
 
 Tapáil an cnaipe lean ar aghaidh agus ceadaigh athruithe uasmhéadaithe."</string>
   <string name="gms_core_dialog_continue_text">Lean ar aghaidh</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Dialóg uasmhéadú ceallraí a thaispeáint</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Taispeáin dialóg optamaithe ceallraí MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Má dhíchumasaítear é seo, folófar an leid um optamú ceallraí MicroG.
 
 Mura n-athraítear na hoptamuithe ceallraí, d’fhéadfadh na nithe seo a leanas a bheith i gceist:
@@ -141,7 +141,7 @@ Mura n-athraítear na hoptamuithe ceallraí, d’fhéadfadh na nithe seo a leana
 • B’fhéidir nach n-oibreoidh athsheinm sa chúlra"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Láimhseáil nasc aip</string>
-  <string name="morphe_link_handling_summary">Cumraigh cén aip a osclaíonn naisc</string>
+  <string name="morphe_link_handling_summary">Cumraigh naisc le hoscailt san aip seo</string>
   <string name="morphe_link_handling_step1_title">Céim 1: Díchumasaigh naisc bhunaidh an aip</string>
   <string name="morphe_link_handling_step1_message">Oscail socruithe an aip bhunaidh agus díchumasaigh naisc fearainn go léir</string>
   <string name="morphe_link_handling_step2_title">Céim 2: Cumasaigh naisc aipeanna paisteáilte</string>

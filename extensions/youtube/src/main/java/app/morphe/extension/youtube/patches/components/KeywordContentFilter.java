@@ -25,6 +25,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.TrieSearch;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -581,6 +582,7 @@ final class KeywordContentFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {

@@ -22,7 +22,7 @@ val disablePreciseSeekingGesturePatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
-            SwitchPreference("morphe_disable_precise_seeking_gesture"),
+            SwitchPreference("morphe_disable_precise_seeking_gesture", summary = true),
         )
 
         AllowSwipingUpGestureFingerprint.method.apply {

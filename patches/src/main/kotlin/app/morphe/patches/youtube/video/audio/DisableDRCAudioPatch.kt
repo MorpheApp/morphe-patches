@@ -20,5 +20,6 @@ val disableDRCAudioPatch = disableDRCAudioPatch(
         compatibleWith(COMPATIBILITY_YOUTUBE)
     },
     preferenceScreen = PreferenceScreen.VIDEO,
-    { !is_21_19_or_greater }
+    useLegacyNormalizationFlag = { !is_21_19_or_greater },
+    useNormalizationFlag = { is_21_19_or_greater }
 )

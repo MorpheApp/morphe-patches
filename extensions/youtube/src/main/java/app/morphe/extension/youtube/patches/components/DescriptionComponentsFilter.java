@@ -2,6 +2,7 @@ package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.youtube.patches.LayoutReloadObserverPatch.isActionBarVisible;
 
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.EngagementPanel;
@@ -42,6 +43,10 @@ final class DescriptionComponentsFilter extends Filter {
         );
 
         featuredSectionGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_FEATURED_CHANNELS_SECTION,
+                        "structured_description_channel_lockup"
+                ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_FEATURED_LINKS_SECTION,
                         "media_lockup"
@@ -166,6 +171,7 @@ final class DescriptionComponentsFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {

@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Απόκρυψη διαφημίσεων βίντεο</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Διασύνδεση</string>
-  <string name="morphe_music_crossfade_screen_summary">Προσαρμόστε τον τρόπο με τον οποίο οι κομματίες συνδυάζονται ομαλά μεταξύ τους</string>
+  <string name="morphe_music_crossfade_screen_summary">Εναρμόνιση κομματιών μεταξύ τους</string>
   <string name="morphe_music_crossfade_enabled_title">Ενεργοποιήστε τη διασύνδεση</string>
   <string name="morphe_music_crossfade_curve_title">Κάμπυλα εξασθένισης</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Ίση ισχύς</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Ήπια ευκολία</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Ομαλή S-καμπύλη</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Εξερχόμενη</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Εισερχόμενη</string>
   <string name="morphe_music_crossfade_duration_title">Διάρκεια εξασθένισης</string>
   <string name="morphe_crossfade_duration_250ms">250 χιλιοστά δευτερολέπτου</string>
   <string name="morphe_crossfade_duration_500ms">500 χιλιοστά δευτερολέπτου</string>
@@ -56,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 δευτερόλεπτα</string>
   <string name="morphe_crossfade_duration_9000ms">9 δευτερόλεπτα</string>
   <string name="morphe_crossfade_duration_10000ms">10 δευτερόλεπτα</string>
+  <string name="morphe_crossfade_duration_11000ms">11 δευτερόλεπτα</string>
+  <string name="morphe_crossfade_duration_12000ms">12 δευτερόλεπτα</string>
   <string name="morphe_music_crossfade_on_skip_title">Εξασθένιση κατά τη χειροκίνητη παράλειψη</string>
   <string name="morphe_music_crossfade_on_skip_summary">Εφαρμόζει το εφέ crossfade όταν παραλείπετε χειροκίνητα το επόμενο κομμάτι</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Εξασθένιση κατά την αυτόματη αναπαραγωγή</string>
@@ -66,11 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Συνέχιση της σταδιακής μετάβασης ήχου</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Η λειτουργία βίντεο δεν είναι διαθέσιμη όταν είναι ενεργοποιημένη η σταδιακή μετάβαση ήχου</string>
   <string name="morphe_music_crossfade_about_title">Σχετικά με</string>
-  <string name="morphe_music_crossfade_about_summary">"Η εξασθένιση είναι διαθέσιμη με το YouTube Music 8.x.
+  <string name="morphe_music_crossfade_about_summary">"Πατήστε παρατεταμένα το κουμπί ανακατέματος για να απενεργοποιήσετε/ενεργοποιήσετε
 
-Παρατεταμένο πάτημα στο κουμπί αναδιάταξης για απενεργοποίηση/ενεργοποίηση
-
-Υλοποίηση λειτουργίας από τον VazerOG"</string>
+Υλοποίηση λειτουργίας από VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Ενεργοποίηση μόνιμης επανάληψης</string>
   <!-- layout.buttons.hideButtons -->
@@ -103,7 +105,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Αποτρέπει την αυτόματη επέκταση του player σε πλήρη οθόνη όταν ξεκινάει ένα νέο κομμάτι</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Γραμμή πλοήγησης</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Επιλέξτε ποια κουμπιά εμφανίζονται στη γραμμή πλοήγησης</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Επιλέξτε ποια κουμπιά θα εμφανίζονται στη κάτω μπάρα πλοήγησης</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Απόκρυψη κουμπιού \"Αρχική\"</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

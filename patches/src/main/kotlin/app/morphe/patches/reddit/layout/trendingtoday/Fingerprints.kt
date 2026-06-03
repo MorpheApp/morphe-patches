@@ -56,29 +56,12 @@ internal object LocaleLanguageManagerContentLanguagesFingerprint : Fingerprint(
     )
 )
 
- private object SearchTypeaheadListDefaultPresentationToStringFingerprint : Fingerprint(
-    name = "toString",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Ljava/lang/String;",
-    parameters = listOf(),
-    filters = listOf(
-        string("OnSearchTypeaheadListDefaultPresentation(", comparison = StringComparisonType.STARTS_WITH)
-    )
-)
-
-internal object SearchTypeaheadListDefaultPresentationConstructorFingerprint : Fingerprint(
-    classFingerprint = SearchTypeaheadListDefaultPresentationToStringFingerprint,
-    name = "<init>",
+internal object SearchSectionHeaderFingerprint : Fingerprint(
     returnType = "V",
-    custom = { method, _ ->
-        parametersMatch(
-            method.parameterTypes,
-            listOf("Ljava/lang/String;")
-        ) || parametersMatch( // 2026.16.0+
-            method.parameterTypes,
-            listOf("Ljava/lang/String;", "Ljava/lang/String;")
-        )
-    }
+    filters = listOf(
+        string("search_section_header"),
+        string("search_section_title")
+    )
 )
 
 internal object TrendingTodayItemFingerprint : Fingerprint(

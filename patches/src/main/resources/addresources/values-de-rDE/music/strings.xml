@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Videowerbungen ausblenden</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Nahtlose Wiedergabe</string>
-  <string name="morphe_music_crossfade_screen_summary">Passe an, wie Titel nahtlos ineinander übergehen</string>
+  <string name="morphe_music_crossfade_screen_summary">Gib die Titel nahtlos wieder</string>
   <string name="morphe_music_crossfade_enabled_title">Nahtlose Wiedergabe aktivieren</string>
   <string name="morphe_music_crossfade_curve_title">Einblend-Niveau</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Gleiche Lautstärke</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Sanfter Übergang</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Glatte S-Kurve</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Ausgehend</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Eingehend</string>
   <string name="morphe_music_crossfade_duration_title">Nahtlose Wiedergabe-Dauer</string>
   <string name="morphe_crossfade_duration_250ms">250 Millisekunden</string>
   <string name="morphe_crossfade_duration_500ms">500 Millisekunden</string>
@@ -56,8 +58,10 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 Sekunden</string>
   <string name="morphe_crossfade_duration_9000ms">9 Sekunden</string>
   <string name="morphe_crossfade_duration_10000ms">10 Sekunden</string>
+  <string name="morphe_crossfade_duration_11000ms">11 Sekunden</string>
+  <string name="morphe_crossfade_duration_12000ms">12 Sekunden</string>
   <string name="morphe_music_crossfade_on_skip_title">Nahtlose Wiedergabe bei manuellem Überspringen</string>
-  <string name="morphe_music_crossfade_on_skip_summary">Wendet den Crossfade-Effekt an, wenn du manuell zum nächsten Titel springst</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Wendet den Crossfade-Effekt an, wenn Sie manuell zum nächsten Titel springen</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Nahtlose Wiedergabe bei automatischer Wiedergabe</string>
   <string name="morphe_music_crossfade_on_auto_advance_summary">Wendet den Crossfade-Effekt an, wenn ein Titel natürlich endet</string>
   <string name="morphe_music_crossfade_session_control_title">Sitzungssteuerung</string>
@@ -66,11 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Nahtlose Wiedergabe fortgesetzt</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Der Videomodus ist nicht verfügbar, während die nahtlose Wiedergabe aktiviert ist</string>
   <string name="morphe_music_crossfade_about_title">Über</string>
-  <string name="morphe_music_crossfade_about_summary">"Nahtlose Wiedergabe ist mit YouTube Music 8.x verfügbar
+  <string name="morphe_music_crossfade_about_summary">"Halten Sie die Shuffle-Taste gedrückt, um die Funktion zu deaktivieren/aktivieren.
 
-Wischen Sie lange über die Shuffle-Taste zum deaktivieren/aktivieren
-
-Feature-Implementierung von VazerOG"</string>
+Funktionsimplementierung von VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Dauerwiederholung aktivieren</string>
   <!-- layout.buttons.hideButtons -->
@@ -103,7 +105,7 @@ Feature-Implementierung von VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Verhindert, dass der Player automatisch in den Vollbildmodus wechselt, wenn ein neuer Titel startet</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigationsleiste</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Wähle aus, welche Schaltflächen in der Navigationsleiste angezeigt werden</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Wählen Sie, welche Schaltflächen in der unteren Navigationsleiste angezeigt werden sollen</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Startseite-Button ausblenden</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

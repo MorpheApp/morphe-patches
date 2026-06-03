@@ -132,7 +132,7 @@ Deaktivering van battery optimerings vir MicroG sal nie batterygebruik negatief 
 
 Tik die voortgaan knoppie en laat optimeringsveranderings toe."</string>
   <string name="gms_core_dialog_continue_text">Gaan voort</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Wys battery-optimiseringsdialoog</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Toon MicroG battery optimerings dialoog</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Deaktivering hiervan sal die MicroG battery optimerings prompt verberg.
 
 As battery optimerings nie verander word nie dan mag jy ervaar:
@@ -141,7 +141,7 @@ As battery optimerings nie verander word nie dan mag jy ervaar:
 • Agtergrondterugspeel werk dalk nie"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App skakelhantering</string>
-  <string name="morphe_link_handling_summary">Konfigureer watter app skakels oopmaak</string>
+  <string name="morphe_link_handling_summary">Konfigureer skakels om in hierdie toepassing oop te maak</string>
   <string name="morphe_link_handling_step1_title">Stap 1: Deaktiveer oorspronklike app-skakels</string>
   <string name="morphe_link_handling_step1_message">Maak die instellings van die oorspronklike app oop en deaktiveer alle domeinskakels</string>
   <string name="morphe_link_handling_step2_title">Stap 2: Aktiveer gepatchte app-skakels</string>

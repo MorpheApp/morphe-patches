@@ -31,6 +31,8 @@ var is_9_10_or_greater: Boolean by Delegates.notNull()
     private set
 var is_9_19_or_greater: Boolean by Delegates.notNull()
     private set
+var is_9_20_or_greater: Boolean by Delegates.notNull()
+    private set
 
 val versionCheckPatch = bytecodePatch {
     execute {
@@ -52,5 +54,6 @@ val versionCheckPatch = bytecodePatch {
         is_9_00_or_greater = isEqualsOrGreaterThan("9.00.00")
         is_9_10_or_greater = isEqualsOrGreaterThan("9.10.00")
         is_9_19_or_greater = isEqualsOrGreaterThan("9.19.00")
+        is_9_20_or_greater = isEqualsOrGreaterThan("9.20.00")
     }
 }

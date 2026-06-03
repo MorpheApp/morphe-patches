@@ -22,10 +22,10 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comment_ads_title">Masquer les publicités dans les commentaires</string>
   <string name="morphe_hide_comment_ads_summary">Masque les publicités dans la section des commentaires</string>
   <string name="morphe_screen_layout_title">Mise en page</string>
-  <string name="morphe_disable_modern_home_title">Désactiver l’accueil moderne</string>
-  <string name="morphe_disable_modern_home_summary">Désactive l’interface de la page d’accueil moderne</string>
+  <string name="morphe_disable_modern_home_title">Désactiver l\'accueil moderne</string>
+  <string name="morphe_disable_modern_home_summary">Désactive l\'interface de la page d’accueil moderne</string>
   <string name="morphe_disable_screenshot_popup_title">Désactiver le pop-up de capture d’écran</string>
-  <string name="morphe_disable_screenshot_popup_summary">Désactive le pop-up qui apparaît lors de la capture d’écran</string>
+  <string name="morphe_disable_screenshot_popup_summary">Désactive le pop-up qui apparaît lors de la capture d\'écran</string>
   <string name="morphe_hide_ask_button_title">Masquer le bouton \'Demander\'</string>
   <string name="morphe_hide_ask_button_summary">Masque le bouton \'Demander\' dans la barre de recherche</string>
   <string name="morphe_hide_answers_button_title">Masquer le bouton \'Answers\'</string>
@@ -57,7 +57,7 @@ Limitation : Les séparateurs visuels peuvent ne pas être masqués"</string>
   <string name="morphe_remove_notification_dialog_title">Supprimer la boîte de dialogue de suggestion de notification</string>
   <string name="morphe_remove_notification_dialog_summary">Ferme automatiquement la boîte de dialogue de suggestion de notifications lors de la visite d’un subreddit</string>
   <string name="morphe_show_view_count_title">Afficher le nombre de vues sur les posts</string>
-  <string name="morphe_show_view_count_summary">Limitation : Disponible uniquement si la réponse de l’API inclut le nombre de vues</string>
+  <string name="morphe_show_view_count_summary">Limitation : Disponible uniquement si la réponse de l\'API inclut le nombre de vues</string>
   <string name="morphe_remove_nsfw_dialog_title">Supprimer la boîte de dialogue d’avertissement NSFW</string>
   <string name="morphe_remove_nsfw_dialog_summary">Accepte automatiquement l’avertissement de contenu NSFW lors de la visite d’un subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Divers</string>
@@ -67,6 +67,6 @@ Limitation : Les séparateurs visuels peuvent ne pas être masqués"</string>
   <string name="morphe_sanitize_sharing_links_summary">Supprime les paramètres de suivi des liens partagés</string>
   <string name="morphe_open_links_directly_title">Ouvrir les liens directement</string>
   <string name="morphe_open_links_directly_summary">Contourne les URL de redirection lors de l’ouverture de liens externes</string>
-  <string name="morphe_open_links_externally_title">Ouvrir les liens à l’extérieur</string>
-  <string name="morphe_open_links_externally_summary">Ouvre les liens dans votre navigateur au lieu du navigateur intégré à l’application</string>
+  <string name="morphe_open_links_externally_title">Ouvrir les liens à l\'extérieur</string>
+  <string name="morphe_open_links_externally_summary">Ouvre les liens dans votre navigateur au lieu du navigateur intégré à l\'application</string>
 </resources>

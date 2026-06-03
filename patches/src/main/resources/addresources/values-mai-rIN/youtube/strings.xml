@@ -29,7 +29,6 @@ Second \"item\" text"</string>
   <string name="morphe_settings_screen_08_swipe_controls_title">स्वाइप नियंत्रण</string>
   <string name="morphe_settings_screen_11_misc_title">विविध</string>
   <string name="morphe_settings_screen_12_video_title">वीडियो</string>
-  <string name="morphe_restore_old_settings_menus_title">पुराने सेटिंग मेनू पुनर्स्थापित करें</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <string name="morphe_remove_background_playback_restrictions_title">पृष्ठभूमि प्ले प्रतिबन्धहरू हटाउनुहोस्</string>
   <!-- misc.debugging.enableDebuggingPatch -->
@@ -97,7 +96,6 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <!-- 'Join' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the video player for certain videos. -->
   <string name="morphe_hide_join_membership_button_title">\'जुड़ें\' बटन छिपाएं</string>
-  <string name="morphe_hide_live_chat_donators_bar_title">लाइभ च्याट दाताहरू बार लुकाउनुहोस्</string>
   <!-- 'Live chat replay' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears when in fullscreen for live streamed videos after opening live chat. -->
   <string name="morphe_hide_live_chat_replay_button_title">“लाइभ च्याट रिप्ले” बटन लुकाउनुहोस्</string>
@@ -154,14 +152,8 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <string name="morphe_custom_filter_toast_invalid_syntax">अमान्य अनुकूलन फिल्टर: %s</string>
   <string name="morphe_hide_view_count_title">होम टैब में वीडियो कीवर्ड द्वारा फ़िल्टर किए गए हैं</string>
   <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
-  <string name="morphe_hide_view_count_user_dialog_message">"प्रतिबन्धहरू:
-• शर्ट्स शेल्फहरू, च्यानल पृष्ठहरू, र खोज परिणामहरूले अझै पनि दृश्य गणनाहरू देखाउन सक्छन्।
-• यो सुविधा अटोमोटिभ फारम कारकको साथ काम गर्दैन।"</string>
   <string name="morphe_hide_upload_time_title">खोज परिणाम कीवर्ड द्वारा फ़िल्टर नहीं किए गए हैं</string>
   <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
-  <string name="morphe_hide_upload_time_user_dialog_message">"प्रतिबन्धहरू:
-• शर्ट्स शेल्फहरू, च्यानल पृष्ठहरू, र खोज परिणामहरूले अझै पनि अपलोड समय देखाउन सक्छन्।
-• यो सुविधा अटोमोटिभ फारम कारकको साथ काम गर्दैन।"</string>
   <string name="morphe_hide_keyword_content_screen_title">कीवर्ड फिल्टर</string>
   <string name="morphe_hide_keyword_content_home_title">होममा भिडियोहरूलाई कीवर्डबाट लुकाउनुहोस्</string>
   <string name="morphe_hide_keyword_content_search_title">कीवर्ड द्वारा खोजी परिणामहरू लुकाउनुहोस्</string>
@@ -190,11 +182,10 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <string name="morphe_hide_end_screen_store_banner_title">एंड स्क्रीन स्टोर बैनर छिपाएं</string>
   <string name="morphe_hide_general_ads_title">सामान्य विज्ञापन छिपाएं</string>
   <string name="morphe_hide_merchandise_banners_title">मर्चेंडाइज बैनर छिपाएं</string>
-  <string name="morphe_hide_paid_promotion_label_title">भुगतान किए गए प्रचार लेबल छिपाएं</string>
+  <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <string name="morphe_hide_player_popup_ads_title">प्लेयर पपअप विज्ञापनहरू लुकाउनुहोस्</string>
   <string name="morphe_hide_self_sponsor_ads_title">स्व-प्रायोजित कार्ड छिपाएं</string>
   <string name="morphe_hide_shopping_links_title">शॉपिंग लिंक छिपाएं</string>
-  <string name="morphe_hide_view_products_banner_title">व्यू प्रोडक्ट्स बैनर छिपाएं</string>
   <string name="morphe_hide_youtube_premium_promotions_title">YouTube Premium प्रमोशन छिपाइ</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">वीडियो विज्ञापन छिपाएं</string>
@@ -202,7 +193,6 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
   <string name="morphe_share_copy_url_button_success">URL क्लिपबोर्ड में कॉपी किया गया</string>
   <string name="morphe_share_copy_url_button_timestamp_success">URL शीर्षकको साथ क्लिपबोर्डमा प्रतिलिपि गरियो</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">समयस्ट्याम्प प्रतिलिपि गर्नुहोस्</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">दर्शक विवेक संवाद हटाएं</string>
   <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">यो आयु प्रतिबन्धलाई बाइपास गर्दैन। यसले यसलाई स्वचालित रूपमा स्वीकार गर्छ।</string>
@@ -339,7 +329,6 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_show_settings_button_type_title">सेटिङ बटन कार्य</string>
-  <string name="morphe_swap_create_with_notifications_button_title">सिर्जनाको साथ सूचनाहरू स्वैप गर्नुहोस्</string>
   <string name="morphe_swap_create_with_notifications_button_user_dialog_message">यदि यो सेटिङ परिवर्तनले प्रभाव पार्दैन भने, कृपया Incognito मोडमा स्विच गर्नुहोस्।</string>
   <string name="morphe_hide_navigation_button_labels_title">नेभिगेशन बटन लेबलहरू लुकाउनुहोस्</string>
   <string name="morphe_hide_navigation_bar_title">नेभिगेसन बार लुकाउनुहोस्</string>
@@ -394,7 +383,6 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <string name="morphe_disable_rolling_number_animations_title">रोलिङ संख्या एनिमेसनहरूलाई अक्षम गर्नुहोस्</string>
   <!-- layout.hide.seekbar.hideSeekbarPatch -->
   <string name="morphe_hide_seekbar_title">भिडियो प्लेयर सीकबार लुकाउनुहोस्</string>
-  <!-- Seekbar shown inside video thumbnails found on the Home / Subscriptions / Search / History.  The seekbar shows the prior watch progress from when the video was last opened. -->
   <string name="morphe_hide_seekbar_thumbnail_title">भिडियो थम्बनेल सीकबार लुकाउनुहोस्</string>
   <string name="morphe_fullscreen_large_seekbar_title">फुलस्क्रिनमा ठूलो सीकबार सक्षम गर्नुहोस्</string>
   <!-- layout.hide.shorts.hideShortsComponentsPatch -->
@@ -417,7 +405,6 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <string name="morphe_hide_shorts_save_sound_button_title">\'संगीत सहेज\' बटन छिपाइ</string>
   <string name="morphe_hide_shorts_search_suggestions_title">साउंड बटन देखाइएको छ</string>
   <string name="morphe_hide_shorts_shop_button_title">सर्च सुझावहरू देखाइका छन्</string>
-  <string name="morphe_hide_shorts_stickers_title">शप बटन देखाइएको छ</string>
   <string name="morphe_hide_shorts_subscribe_button_title">स्टिकरहरू देखाइका छन्</string>
   <string name="morphe_hide_shorts_tagged_products_title">सब्सक्राइब बटन देखाइएको छ</string>
   <string name="morphe_hide_shorts_upcoming_button_title">ट्याग्ड उत्पादनहरू देखाइका छन्</string>
@@ -448,7 +435,6 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
   <string name="morphe_hide_player_related_videos_title">प्लेयर सम्बन्धित भिडियोहरू लुकाउनुहोस्</string>
   <!-- layout.hide.relatedvideooverlay.hideRelatedVideoOverlayPatch -->
-  <string name="morphe_hide_player_related_videos_overlay_title">सम्बन्धित भिडियोहरूको ओभरले लुकाउनुहोस्</string>
   <!-- layout.hide.time.hideTimestampPatch -->
   <string name="morphe_hide_timestamp_title">भिडियो टाइमस्ट्याम्प लुकाउनुहोस्</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
@@ -516,7 +502,6 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <string name="morphe_sb_duration_10s">10 सेकेन्ड</string>
   <string name="morphe_sb_general_time_without">सेग्मेन्ट बिना भिडियोको लम्बाइ देखाउनुहोस्</string>
   <string name="morphe_sb_create_segment_category">नयाँ सेग्मेन्टहरू बनाउँदै</string>
-  <string name="morphe_sb_general_adjusting">सेग्मेन्ट समायोजन गर्नुहोस्</string>
   <string name="morphe_sb_general_adjusting_invalid">मान सकारात्मक हुनुपर्छ</string>
   <string name="morphe_sb_guidelines_popup_title">निर्देशिकाहरूलाई ध्यान दिनुहोस्</string>
   <string name="morphe_sb_guidelines_popup_already_read">देखाउनुहोस्</string>
@@ -664,7 +649,6 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <string name="morphe_sb_about_title">के बारे में</string>
   <string name="morphe_sb_about_api_summary">डेटा स्पोंसरब्लॉक एपीआई द्वारा प्रदान किया गया है। अधिक जानकारी के लिए इहाँ टैप करी और अन्य प्लेटफार्म के लिए डाउनलोड देखें</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
-  <string name="morphe_change_form_factor_title">लेआउट फॉर्म फैक्टर</string>
   <string name="morphe_change_form_factor_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_change_form_factor_entry_2">फ़ोन</string>
   <string name="morphe_change_form_factor_entry_3">टैबलेट</string>
@@ -693,7 +677,6 @@ YouTube डूडलहरू देखाउनुले अनुकूलन 
   <string name="morphe_spoof_app_version_target_title">ऐप संस्करण स्पूफ लक्ष्य</string>
   <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - पुरानो बचतलाई प्लेलिस्टमा पुनर्स्थापित गर्नुहोस्</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">20.28.41 - बोल्ड आइकनहरू अक्षम गर्नुहोस्</string>
-  <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - गैर-संक्षिप्त वीडियो एक्शन बार बहाल करी</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <string name="morphe_open_system_share_sheet_title">सिस्टम सेयर शीट खोल्नुहोस्</string>
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->

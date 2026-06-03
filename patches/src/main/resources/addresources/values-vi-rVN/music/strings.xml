@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Ẩn video quảng cáo</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Chuyển bài</string>
-  <string name="morphe_music_crossfade_screen_summary">Tùy chỉnh cách các bản nhạc chuyển tiếp mượt mà vào nhau</string>
+  <string name="morphe_music_crossfade_screen_summary">Trộn các bài hát với nhau khi chuyển bài</string>
   <string name="morphe_music_crossfade_enabled_title">Bật hiệu ứng chuyển bài</string>
   <string name="morphe_music_crossfade_curve_title">Hiệu ứng làm mờ âm thanh</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Âm lượng cân bằng</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Chuyển âm êm</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Đường cong S mượt</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Bài hiện tại</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Bài tiếp theo</string>
   <string name="morphe_music_crossfade_duration_title">Thời gian chuyển bài</string>
   <string name="morphe_crossfade_duration_250ms">250 mili giây</string>
   <string name="morphe_crossfade_duration_500ms">500 mili giây</string>
@@ -56,21 +58,21 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 giây</string>
   <string name="morphe_crossfade_duration_9000ms">9 giây</string>
   <string name="morphe_crossfade_duration_10000ms">10 giây</string>
+  <string name="morphe_crossfade_duration_11000ms">11 giây</string>
+  <string name="morphe_crossfade_duration_12000ms">12 giây</string>
   <string name="morphe_music_crossfade_on_skip_title">Hiệu ứng khi chuyển bài thủ công</string>
-  <string name="morphe_music_crossfade_on_skip_summary">Áp dụng hiệu ứng chuyển tiếp khi bạn bỏ qua thủ công đến bản nhạc tiếp theo</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Áp dụng hiệu ứng khi bạn tự chuyển bài</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Hiệu ứng khi tự động chuyển bài</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary">Áp dụng hiệu ứng chuyển tiếp khi một bản nhạc kết thúc tự nhiên</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Áp dụng hiệu ứng khi bài hát tự kết thúc</string>
   <string name="morphe_music_crossfade_session_control_title">Điều khiển phiên phát</string>
   <string name="morphe_music_crossfade_session_control_summary">Bấm giữ nút trộn bài để tạm dừng hoặc tiếp tục hiệu ứng chuyển bài</string>
   <string name="morphe_music_crossfade_paused_toast">Hiệu ứng chuyển bài đã tạm dừng cho phiên phát này</string>
   <string name="morphe_music_crossfade_resumed_toast">Hiệu ứng chuyển bài đã được bật lại</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Không thể dùng chế độ video khi đang bật hiệu ứng chuyển bài</string>
   <string name="morphe_music_crossfade_about_title">Giới thiệu</string>
-  <string name="morphe_music_crossfade_about_summary">"Hiệu ứng chuyển bài hiện chỉ có trên YouTube Music 8.x
+  <string name="morphe_music_crossfade_about_summary">"Bấm giữ nút trộn bài để tắt hoặc bật
 
-Bấm giữ nút trộn bài để tắt hoặc bật hiệu ứng
-
-Tính năng do VazerOG phát triển"</string>
+Tính năng được phát triển bởi VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Bật lặp lại vĩnh viễn</string>
   <!-- layout.buttons.hideButtons -->
@@ -100,14 +102,14 @@ Tính năng do VazerOG phát triển"</string>
   <string name="morphe_music_miniplayer_previous_button_title">Hiện nút quay lại trong trình phát thu nhỏ</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
   <string name="morphe_music_enable_forced_miniplayer_title">Bật trình phát thu nhỏ bắt buộc</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary">Ngăn trình phát tự động mở rộng thành chế độ toàn màn hình khi một bản nhạc mới bắt đầu</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Không tự động chuyển sang chế độ toàn màn hình khi phát bài hát mới</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Thanh điều hướng</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Chọn các nút hiển thị trên thanh điều hướng</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Chọn các nút sẽ hiển thị trong thanh điều hướng dưới cùng</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Ẩn nút Trang chủ</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">Ẩn nút Mẫu</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Ẩn nút Đoạn nhạc</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_explore_button_title">Ẩn nút Khám phá</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->

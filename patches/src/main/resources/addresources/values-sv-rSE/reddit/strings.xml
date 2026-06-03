@@ -55,11 +55,18 @@ Second \"item\" text"</string>
 
 Begränsning: Visuella avstånd kan inte döljas"</string>
   <string name="morphe_remove_notification_dialog_title">Ta bort dialogruta för aviseringsförslag</string>
-  <string name="morphe_remove_nsfw_dialog_title">Ta bort varningsdialogruta för 18+-innehåll</string>
+  <string name="morphe_remove_notification_dialog_summary">Avfärdar dialogrutan för aviseringsförslag automatiskt när du besöker en subreddit</string>
+  <string name="morphe_show_view_count_title">Visa antalet visningar på inlägg</string>
+  <string name="morphe_show_view_count_summary">Begränsning: Endast tillgängligt om antalet visningar ingår i API-svaret</string>
+  <string name="morphe_remove_nsfw_dialog_title">Ta bort varningsdialogruta för 18+</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Accepterar varningen för 18+-innehåll automatiskt när du besöker en subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Övrigt</string>
   <string name="morphe_about_title">Om</string>
   <string name="morphe_about_summary">Tilläggsversion och officiella länkar</string>
   <string name="morphe_sanitize_sharing_links_title">Rensa delningslänkar</string>
+  <string name="morphe_sanitize_sharing_links_summary">Tar bort frågeparametrar för spårning från delade länkar</string>
   <string name="morphe_open_links_directly_title">Öppna länkar direkt</string>
+  <string name="morphe_open_links_directly_summary">Kringgår omdirigeringsadresser när du öppnar externa länkar</string>
   <string name="morphe_open_links_externally_title">Öppna länkar externt</string>
+  <string name="morphe_open_links_externally_summary">Öppnar länkar i din webbläsare istället för webbläsaren i appen</string>
 </resources>

@@ -132,7 +132,7 @@ Onemogućavanje optimizacije baterije za MicroG neće negativno uticati na potro
 
 Dodirnite dugme \"Nastavi\" i dozvolite promene optimizacije."</string>
   <string name="gms_core_dialog_continue_text">Nastavi</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Prikaži dijalog za optimizaciju baterije</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Prikaži dijalog za optimizaciju baterije za MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Онеослабљивање ове опције ће скрити промпт за оптимизацију батерије за MicroG.
 
 Ако се оптимизације батерије не промене, могуће је да искусите:
@@ -141,7 +141,7 @@ Dodirnite dugme \"Nastavi\" i dozvolite promene optimizacije."</string>
 • Позадинска репродукција можда неће радити"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Obrada poveznica aplikacije</string>
-  <string name="morphe_link_handling_summary">Konfigurišite koja aplikacija otvara poveznice</string>
+  <string name="morphe_link_handling_summary">Konfiguriši linkove da se otvore u ovoj aplikaciji</string>
   <string name="morphe_link_handling_step1_title">Korak 1: Isključite originalne vezu aplikacije</string>
   <string name="morphe_link_handling_step1_message">Otvorite podešavanja originalne aplikacije i isključite sve veze domena</string>
   <string name="morphe_link_handling_step2_title">Korak 2: Omogućite popravljene vezu aplikacije</string>

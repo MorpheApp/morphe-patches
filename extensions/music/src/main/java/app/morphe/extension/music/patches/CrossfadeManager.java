@@ -1,3 +1,9 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
 package app.morphe.extension.music.patches;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -6,23 +12,36 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
+import android.media.AudioDeviceInfo;
+import android.media.AudioManager;
+import android.media.AudioPlaybackConfiguration;
+import android.media.MediaRouter;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.SystemClock;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
 import android.os.VibratorManager;
-import android.view.MotionEvent;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.lang.ref.WeakReference;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
@@ -30,7 +49,7 @@ import app.morphe.extension.shared.Utils;
 
 /**
  * Player-swap crossfade manager for YouTube Music.
- * <p>
+ *
  * Strategy: when a skip-next is detected (stopVideo reason=5), we
  * preserve the OLD ExoPlayer (which keeps playing the outgoing track)
  * and create a NEW ExoPlayer via YT Music's own factory method so it
@@ -38,14 +57,14 @@ import app.morphe.extension.shared.Utils;
  * player to the new one so the subsequent loadVideo flow uses it.
  * Once the new track reaches STATE_READY we run a configurable
  * crossfade, then release the old player.
- * <p>
+ *
  * Multi-player fade system: when a skip arrives during an active
  * crossfade, the current incoming player is "demoted" to a quick
  * fade-out, a fresh player is created for the next track, and the
  * native loadVideo naturally loads onto it.  Multiple fade-out
  * animations run concurrently via a dedicated fading loop, each
  * player releasing when its volume reaches zero.
- * <p>
+ *
  * Each obfuscated YTM class is accessed through a dedicated interface
  * whose bridge methods are injected at patch time (same pattern as YT
  * VideoInformation).  Each interface maps 1-to-1 with an obfuscated
@@ -54,7 +73,7 @@ import app.morphe.extension.shared.Utils;
  * updating.
  * @noinspection unused
  */
-
+@SuppressLint({"MissingPermission", "PrivateApi", "DiscouragedApi"})
 @SuppressWarnings("unused")
 public class CrossfadeManager {
 
@@ -71,7 +90,9 @@ public class CrossfadeManager {
         MILLISECONDS_7000(7_000),
         MILLISECONDS_8000(8_000),
         MILLISECONDS_9000(9_000),
-        MILLISECONDS_10000(10_000);
+        MILLISECONDS_10000(10_000),
+        MILLISECONDS_11000(11_000),
+        MILLISECONDS_12000(12_000);
 
         public final int milliseconds;
 
@@ -79,6 +100,10 @@ public class CrossfadeManager {
             this.milliseconds = milliseconds;
         }
     }
+
+    // ------------------------------------------------------------------ //
+    //  Interfaces — one per obfuscated class, bound at patch time         //
+    // ------------------------------------------------------------------ //
 
     /**
      * Inner player coordinator (athu).
@@ -88,11 +113,28 @@ public class CrossfadeManager {
     public interface PlayerCoordinatorAccess {
         Object patch_getExoPlayer();
         void patch_setExoPlayer(Object player);
+        /** Calls the coordinator's internal player-transition method (listener migration + field write). */
+        void patch_setPlayerWithBindings(Object player);
         Object patch_getSession();
         Object patch_getLoadControl();
         Object patch_getSharedState();
         Object patch_getSharedCallback();
         Object patch_getVideoSurface();
+        /**
+         * Returns the coordinator's Player.Listener (b field, type Lcou).
+         * This listener is registered into ExoPlayer's direct N set (Lcrh.N)
+         * via O(Lcou;)V, NOT via the cau ListenerHolderSet.
+         * 9.x only — 8.x bridge is not injected.
+         */
+        Object patch_getCoordinatorListener();
+        /**
+         * Calls the coordinator's own playNextInQueue method (auih.y()V) directly.
+         * The auto-advance monitor and onBeforePlayNext re-invoke must use this
+         * instead of atad.patch_playNextInQueue() (which calls atzq.p() → Lausd→y()V).
+         * auih does NOT implement Lausd, so the Lausd dispatch path never reaches
+         * the hooked auih.y()V — meaning onBeforePlayNext would never fire.
+         */
+        void patch_playNextInQueueDirect();
     }
 
     /**
@@ -109,6 +151,32 @@ public class CrossfadeManager {
         Object patch_getListenerSet();
         Object patch_getInternalListener();
         void patch_setDltCallback(Object dlt);
+        /** Registers a raw Player.Listener on this player via ExoPlayer's addListener. */
+        void patch_addListener(Object listener);
+        /**
+         * Adds a listener directly to this player's N set (Lcrh.N —
+         * the direct CopyOnWriteArraySet, NOT the cau ListenerHolderSet).
+         * 9.x only — 8.x bridge is not injected.
+         */
+        void patch_addDirectListener(Object listener);
+        /**
+         * Removes a listener from this player's N set (Lcrh.N).
+         * 9.x only — 8.x bridge is not injected.
+         */
+        void patch_removeDirectListener(Object listener);
+        /**
+         * Removes coordinator_cwh from this player's crh.h:Lcgd event dispatch set.
+         * Must be called on the OUTGOING player before release so its release-time
+         * isPlayingChanged(false) does not propagate through cwh.b to MediaSession.
+         * 9.x only — 8.x bridge is not injected.
+         */
+        void patch_detachCwhFromEventDispatch();
+        /**
+         * Returns the size of this player's direct N set (Lcrh.N).
+         * Diagnostic only — lets us verify patch_addDirectListener actually registered the listener.
+         * 9.x only — 8.x bridge is not injected.
+         */
+        int patch_getDirectListenerCount();
     }
 
     /**
@@ -156,19 +224,25 @@ public class CrossfadeManager {
     public interface MedialibPlayerAccess {
         Object patch_getPlayerChain();
         void patch_playNextInQueue();
+        /** Calls atad.stopVideo(REASON_DIRECTOR_RESET=5) through the hooked method. Used by 8.x and 9.x auto-advance monitor. */
+        void patch_forceStopVideo();
+        /** Calls atad.stopVideo(REASON_STOP=1).  Currently unused — kept for future flows. */
+        void patch_forceLoadVideo();
     }
 
-    /**
-     * Audio / video toggle (nba).
-     * Bridge method queries the internal state provider and returns
-     * whether the player is currently in audio mode.
-     */
+    /** Audio / video toggle (nba). */
     public interface VideoToggleAccess {
         boolean patch_isAudioMode();
         void patch_forceAudioMode();
         void patch_triggerToggle();
         void patch_forceAudioModeSilent();
         void patch_restoreVideoModeSilent();
+        /**
+         * Broadcast variant: calls nlw.setState → chxp.mo6606iF, notifying all
+         * subscribers (including nmi).  Use to resync subscribers whose cached state
+         * is out of sync with chxp after a silent toggle.
+         */
+        void patch_restoreVideoMode();
     }
 
     /**
@@ -185,6 +259,72 @@ public class CrossfadeManager {
      */
     public interface ListenerWrapperAccess {
         Object patch_getWrappedListener();
+    }
+
+    // ------------------------------------------------------------------ //
+    //  Constants and fields                                                //
+    // ------------------------------------------------------------------ //
+
+    private static void logDebug(Logger.LogMessage msg) {
+        Logger.printDebug(msg);
+    }
+
+    private static void logInfo(Logger.LogMessage msg) {
+        Logger.printInfo(msg);
+    }
+
+    private static void logWarn(Logger.LogMessage msg) {
+        Logger.printInfo(msg);
+    }
+
+    private static void logWarn(Logger.LogMessage msg, Exception e) {
+        Logger.printInfo(msg, e);
+    }
+
+    private static void logError(Logger.LogMessage msg) {
+        Logger.printException(msg);
+    }
+
+    private static void logError(Logger.LogMessage msg, Exception e) {
+        Logger.printException(msg, e);
+    }
+
+    private static String stopReasonName(int reason) {
+        switch (reason) {
+            case 1:  return "STOP(1)";
+            case 2:  return "PAUSE(2)";
+            case 3:  return "END_OF_CONTENT(3)";
+            case 4:  return "ERROR(4)";
+            case 5:  return "DIRECTOR_RESET/SKIP(5)";
+            case 6:  return "SEEK(6)";
+            case 7:  return "QUEUE_CHANGED(7)";
+            case 8:  return "PLAYLIST_CHANGED(8)";
+            case 9:  return "UNKNOWN_9(9)";
+            case 10: return "UNKNOWN_10(10)";
+            case 11: return "UNKNOWN_11(11)";
+            case 12: return "RESET_INTERNALLY(12)";
+            default: return "UNKNOWN(" + reason + ")";
+        }
+    }
+
+    private static String dumpState() {
+        return "STATE["
+                + "inProgress=" + crossfadeInProgress
+                + " autoAdv=" + autoAdvanceCrossfadeActive
+                + " deferred=" + deferredSwapPending
+                + " inPlayer=@" + System.identityHashCode(crossfadeInPlayer)
+                + " pendIn=@" + System.identityHashCode(pendingInPlayer)
+                + " pendOut=@" + System.identityHashCode(pendingOutPlayer)
+                + " fadingOut=" + fadingOutPlayers.size()
+                + " inVol=" + String.format(Locale.US, "%.2f", currentFadeInVolume)
+                + " inVideo=" + inVideoMode
+                + " nbaAlive=" + (lastNbaRef != null && lastNbaRef.get() != null)
+                + " atadAlive=" + (lastAtadRef != null && lastAtadRef.get() != null)
+                + " playing=" + playerIsPlaying
+                + " created=" + playersCreated
+                + " released=" + playersReleased
+                + " outstanding=" + (playersCreated - playersReleased)
+                + "]";
     }
 
     /**
@@ -214,22 +354,117 @@ public class CrossfadeManager {
         }
     }
 
-    private static final boolean CROSSFADE_ENABLED = Settings.CROSSFADE_ENABLED.get();
-
-    private static final AtomicBoolean sessionPaused = new AtomicBoolean(false);
+    private static volatile boolean isCrossfadePaused = false;
     private static volatile boolean inVideoMode = false;
     private static volatile long manualToggleSuppressionUntil = 0;
     private static volatile boolean crossfadeInProgress = false;
     private static volatile boolean audioModeWasForced = false;
     private static volatile boolean activityRunning = false;
+    /**
+     * Tracks whether the outer MedialibPlayer is currently in a playing state.
+     * Set to true by onPlayVideo, false by onPauseVideo. Prevents the 9.x crossfade
+     * from resuming a paused outgoing player when the user selects a new song while paused.
+     */
+    private static volatile boolean playerIsPlaying = true;
+    /**
+     * True when a crossfade was initiated by the auto-advance monitor (via onBeforePlayNext).
+     * Used to distinguish the natural track-end stopVideo(5) (which fires ~fadeDuration ms
+     * after the crossfade started) from a genuine user double-skip, avoiding a false
+     * handleChainedSkip call that would corrupt the auto-advance crossfade state.
+     * Cleared whenever crossfadeInProgress is cleared.
+     */
+    private static volatile boolean autoAdvanceCrossfadeActive = false;
+    /** Retained for cleanup symmetry only. */
+    private static volatile boolean monitorCrossfadeActive = false;
+    /**
+     * 9.x auto-advance: true after onBeforeStopVideo has pre-started the outgoing
+     * player's fade-out at coordinator swap time.  Tells onPendingPlayerReady not
+     * to re-add the outgoing to the fade list (it's already in flight).  Decouples
+     * fade-out integrity from new-player load latency, which can exceed the
+     * remaining audio on the outgoing track and otherwise causes the fade-out to
+     * be shortened or skipped entirely.
+     */
+    private static volatile boolean outgoingFadePreStarted = false;
+
+    /**
+     * #1549 cast-investigation placeholder. Currently unused — kept here for the
+     * future Option C fix (skip crossfade while an MDX session is active).  The
+     * flag is not yet wired up to MDX events; the v229 investigation captures
+     * cast disconnects via adb logcat correlation rather than direct hooks.
+     */
+    private static volatile boolean isCasting = false;
+
+    /**
+     * Set at patch time via sput-boolean — true when running on YTM 9.x.
+     * On 9.x, blocking stopVideo also blocks playVideo (same call chain),
+     * so we use a deferred coordinator swap instead of blocking native.
+     */
+    public static final boolean is9x = VersionCheckPatch.IS_9_00_OR_GREATER;
+    
+    /**
+     * 9.x: When true, the injected early-return in cwh.U()V prevents the Lcvu Runnable from
+     * being posted to the handler. This blocks cvu.run() → cwh.b.d() → CopyOnWriteArraySet.clear()
+     * which would otherwise destroy auih.k (MediaSession listener) in the shared cwh.b Lcgd.
+     * Set to true synchronously before patch_release() on an outgoing crossfade player, cleared
+     * in the finally block. Only needed on 9.x (crh.P() calls cwh.U() on the shared singleton).
+     */
+    public static volatile boolean suppressCwhU = false;
+
+    /**
+     * Read once at class init.  Pairs with {@code rebootApp=true} on
+     * {@link Settings#CROSSFADE_ENABLED}: toggling the setting requires
+     * an app restart, so the value is frozen for the process lifetime.
+     * When false, the JIT can dead-code-eliminate every hook body.
+     */
+    private static final boolean CROSSFADE_ENABLED = Settings.CROSSFADE_ENABLED.get();
+
+    /**
+     * True when we have set up crossfade state but deliberately NOT swapped
+     * the coordinator yet (9.x path). The swap is deferred until onPlayVideo
+     * fires (or the postDelayed fallback runs after the native cycle completes).
+     */
+    private static volatile boolean deferredSwapPending = false;
+
+    /**
+     * Fallback Runnable for the 9.x deferred swap.
+     * Scheduled at DEFERRED_SWAP_DELAY_MS after allowing native stopVideo to proceed.
+     * Cancelled if onPlayVideo fires first, or if the crossfade is aborted.
+     */
+    private static Runnable deferredSwapRunnable = null;
+
+    /**
+     * How long to wait after allowing native stopVideo before executing the deferred
+     * coordinator swap (9.x path). The native stopVideo→loadVideo→playVideo cycle
+     * typically completes in ~250ms. 500ms is conservative.
+     */
+    private static final long DEFERRED_SWAP_DELAY_MS = 500;
+
+    /**
+     * Wall-clock time when deferredSwapPending was set to true.
+     * Used to distinguish the 9.x-internal second stopVideo(5) call (arrives ~1ms
+     * after the first) from a genuine user double-skip (arrives 200ms+).
+     */
+    private static volatile long deferredSwapStartTime = 0L;
+
+    /**
+     * Any second REASON_DIRECTOR_RESET that arrives within this window of
+     * deferredSwapStartTime is treated as the 9.x-internal double-call and
+     * allowed through without cancelling the deferred swap.
+     */
+    private static final long INTERNAL_CALL_WINDOW_MS = 100L;
 
     private static final Handler mainHandler = new Handler(Looper.getMainLooper());
 
     private static final int TICK_MS = 50;
+    /** Delay between setting fade-out volume to 0 and releasing the player.
+     *  Lets ExoPlayer's AudioTrack drain its buffered frames (typically ~250ms deep)
+     *  so the abrupt teardown doesn't cut off any still-queued audio. */
+    private static final long RELEASE_DRAIN_DELAY_MS = 150;
     private static final int READY_POLL_MS = 100;
     private static final int READY_TIMEOUT_MS = 10000;
     private static final int STATE_READY = 3;
     private static final int REASON_DIRECTOR_RESET = 5;
+    private static final long AUTO_ADVANCE_THRESHOLD_MS = 5000;
     private static final long MONITOR_POLL_MS = 100;
     // Extra lead time to absorb poll granularity + new-player READY latency (~120-200ms typical).
     // Ensures the fade-out completes before the old track's audio content runs out.
@@ -243,18 +478,43 @@ public class CrossfadeManager {
     private static volatile PlayerCoordinatorAccess activeCoordinator = null;
     private static volatile float currentFadeInVolume = 0.0f;
 
-    private static final List<FadingPlayer> fadingOutPlayers = Collections.synchronizedList(new ArrayList<>());
+    /**
+     * The coordinator's UI listener (bxi) identified on the first successful
+     * {@link #migrateListeners} call by eliminating factory-registered listeners.
+     *
+     * <p>Factory listeners whose bxi is shared (static) across ExoPlayer instances are
+     * filtered via {@code alreadyPresent} identity check.  However, some factory
+     * listeners have a fresh bxi instance per ExoPlayer — these are NOT identity-equal
+     * to the new player's factory cats and would incorrectly pass the filter.
+     *
+     * <p>Once we've identified the real coordinator listener on skip 1, we record it here
+     * and on all subsequent skips only migrate that exact object, ignoring per-player
+     * factory variants regardless of whether they pass the identity check.</p>
+     */
+    private static volatile Object coordinatorListenerBxi = null;
+
+    private static final List<FadingPlayer> fadingOutPlayers =
+            Collections.synchronizedList(new ArrayList<>());
     private static volatile boolean fadingLoopRunning = false;
 
     private static WeakReference<Object> lastAtadRef = new WeakReference<>(null);
     private static WeakReference<Object> lastNbaRef = new WeakReference<>(null);
-    private static final boolean internalToggle = false;
+    private static volatile boolean internalToggle = false;
     private static volatile boolean internalPlayNext = false;
+    /** Marks the auih.y() hook to pass through when the monitor invoked it. */
+    private static volatile boolean monitorTriggeredSkip = false;
+    /**
+     * True when the monitor advanced the queue (MEDIA_NEXT dispatch).  Causes the
+     * OUTGOING's natural-end stopVideo(5) to be BLOCKED instead of allowed — without
+     * this, YTM's gapless code would advance the queue a second time (double-skip).
+     */
+    private static volatile boolean queueAdvancedByMonitor = false;
     private static Runnable autoAdvanceMonitorRunnable = null;
 
     private static int playersCreated = 0;
     private static int playersReleased = 0;
-    private static final List<WeakReference<View>> longPressRefs = new ArrayList<>();
+    private static final List<WeakReference<View>> longPressRefs =
+            new ArrayList<>();
 
     /**
      * Tracks a single player's fade-out animation.
@@ -300,23 +560,57 @@ public class CrossfadeManager {
         }
     }
 
+    // ------------------------------------------------------------------ //
+    //  Public hook: stopVideo (manual skip-next)                          //
+    // ------------------------------------------------------------------ //
+
     private static int lastLoggedReason = -1;
     private static int suppressedReasonCount = 0;
+    private static int lastAtadIdentity = 0;
 
-    /**
-     * Injection point.
-     */
     public static boolean onBeforeStopVideo(Object atadInstance, int reason) {
         if (!CROSSFADE_ENABLED) return false;
 
+        // #1549: skip crossfade when audio is routed to a cast/mirror receiver.
+        // Lets YTM's native gapless transition handle the song change so the
+        // cast layer doesn't see our coordinator-swap MediaSession flicker.
+        // Only gate when no crossfade is already in flight — if one is in
+        // progress (cast started mid-fade), let it complete normally.
+        if (!crossfadeInProgress && isAudioRoutedToCast()) {
+            logDebug(() -> "stopVideo(" + reason + "): skip — audio routed to cast/mirror (#1549)");
+            return false;
+        }
+
+        int atadId = System.identityHashCode(atadInstance);
+        if (atadId != lastAtadIdentity && lastAtadIdentity != 0) {
+            logDebug(() -> "QUEUE-CHANGE DETECTED: atad identity changed @"
+                    + lastAtadIdentity + " → @" + atadId
+                    + " (new session/queue) " + dumpState());
+        }
+        lastAtadIdentity = atadId;
         lastAtadRef = new WeakReference<>(atadInstance);
         tryAttachLongPressHandler();
 
         if (crossfadeInProgress) {
             if (reason == REASON_DIRECTOR_RESET) {
+                if (autoAdvanceCrossfadeActive) {
+                    if (queueAdvancedByMonitor) {
+                        // Block: queue already advanced via MEDIA_NEXT; letting native run
+                        // would double-advance to song N+2.
+                        logDebug(() -> "stopVideo(5): auto-advance + queue already advanced — BLOCKING natural-end");
+                        return true;
+                    }
+                    return false;
+                }
                 return handleChainedSkip(atadInstance);
             }
-            Logger.printDebug(() -> "stopVideo(" + reason + "): BLOCKED — crossfade in progress");
+            if (is9x) {
+                // 9.x: native stopVideo(5) body calls stopVideo(1)/loadVideo/playVideo to
+                // load the next track on the new coordinator player; must pass through.
+                logDebug(() -> "stopVideo/" + stopReasonName(reason) + ": ALLOW — 9.x native cycle (crossfade in progress)");
+                return false;
+            }
+            logDebug(() -> "stopVideo/" + stopReasonName(reason) + ": BLOCKED — crossfade in progress");
             return true;
         }
 
@@ -325,10 +619,10 @@ public class CrossfadeManager {
                 suppressedReasonCount++;
             } else {
                 if (suppressedReasonCount > 0) {
-                    Logger.printDebug(() -> "  (suppressed " + suppressedReasonCount
+                    logDebug(() -> "  (suppressed " + suppressedReasonCount
                                         + " duplicate reason=" + lastLoggedReason + " entries)");
                 }
-                Logger.printDebug(() -> "stopVideo reason=" + reason + " — not a skip, ignoring");
+                logDebug(() -> "stopVideo reason=" + reason + " — not a skip, ignoring");
                 lastLoggedReason = reason;
                 suppressedReasonCount = 0;
             }
@@ -338,18 +632,18 @@ public class CrossfadeManager {
         suppressedReasonCount = 0;
 
         if (System.currentTimeMillis() < manualToggleSuppressionUntil) {
-            Logger.printDebug(() -> "stopVideo(5): skip — within manual toggle suppression window");
+            logDebug(() -> "stopVideo(5): skip — within manual toggle suppression window");
             return false;
         }
 
-        if (sessionPaused.get() || getCrossfadeDurationMs() <= 0) {
-            Logger.printDebug(() -> "stopVideo(5): skip [paused=" + sessionPaused.get()
+        if (isCrossfadePaused || getCrossfadeDurationMs() <= 0) {
+            logDebug(() -> "stopVideo(5): skip [paused=" + isCrossfadePaused
                     + " inVideo=" + isCurrentlyInVideoMode() + "]");
             return false;
         }
 
         if (isFromTaskRemoval()) {
-            Logger.printDebug(() -> "stopVideo(5): skip — triggered by onTaskRemoved (activity killed)");
+            logDebug(() -> "stopVideo(5): skip — triggered by onTaskRemoved (activity killed)");
             if (crossfadeInProgress) cleanupAllPlayers();
             return false;
         }
@@ -357,35 +651,87 @@ public class CrossfadeManager {
         try {
             PlayerCoordinatorAccess coordinator = getCoordinatorFromAtad(atadInstance);
             if (coordinator == null) {
-                Logger.printException(() -> "Could not find coordinator from atad");
+                logError(() -> "Could not find coordinator from atad");
                 return false;
             }
 
             ExoPlayerAccess currentExo = (ExoPlayerAccess) coordinator.patch_getExoPlayer();
             if (currentExo == null) {
-                Logger.printException(() -> "Coordinator ExoPlayer is null");
+                logError(() -> "Coordinator ExoPlayer is null");
                 return false;
             }
 
-            // onBeforeStopVideo is always a manual skip — true auto-advance is handled
-            // exclusively by onBeforePlayNext. The position-based isAutoAdvance heuristic
-            // caused CROSSFADE_ON_SKIP to be bypassed for skips near the end of a track.
-            if (!Settings.CROSSFADE_ON_SKIP.get()) {
-                Logger.printDebug(() -> "stopVideo(5): skip — manual skip crossfade disabled");
+            // Primary signal: the monitor explicitly set queueAdvancedByMonitor=true
+            // before dispatching MEDIA_NEXT.  This is definitive — it doesn't depend
+            // on the position-at-stopVideo-time relative to AUTO_ADVANCE_THRESHOLD_MS,
+            // which fails for any fade duration ≥ 5 s (the monitor triggers at
+            // remaining = fadeDuration + buffer, so for an 8 s fade the stopVideo
+            // arrives with ~8 s remaining and the old remaining-only check
+            // misclassified it as a manual skip — leaving cwh attached on the
+            // outgoing and causing a double-advance when the outgoing naturally
+            // ends in the fade pool).
+            boolean isAutoAdvance = queueAdvancedByMonitor;
+            try {
+                long pos = currentExo.patch_getCurrentPosition();
+                long duration = currentExo.patch_getDuration();
+                long remaining = (duration > 0) ? duration - pos : Long.MAX_VALUE;
+                // Fallback heuristic: covers paths where the monitor flag wasn't set
+                // (e.g. YTM's own natural-end fired before our monitor could).
+                if (!isAutoAdvance) {
+                    isAutoAdvance = duration > 0 && remaining >= 0
+                            && remaining < AUTO_ADVANCE_THRESHOLD_MS;
+                }
+                final boolean isAutoAdvanceFinal = isAutoAdvance;
+                logDebug(() -> "stopVideo(5): pos=" + pos + "ms dur=" + duration
+                        + "ms remaining=" + remaining
+                        + "ms queueAdvancedByMonitor=" + queueAdvancedByMonitor
+                        + " → " + (isAutoAdvanceFinal ? "AUTO-ADVANCE" : "MANUAL SKIP"));
+            } catch (Exception e) {
+                final boolean isAutoAdvanceFinal = isAutoAdvance;
+                logWarn(() -> "Could not read position/duration, assuming "
+                        + (isAutoAdvanceFinal ? "auto-advance" : "manual skip"), e);
+            }
+
+            if (isAutoAdvance && !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
+                logDebug(() -> "stopVideo(5): skip — auto-advance crossfade disabled");
                 return false;
+            }
+            if (!isAutoAdvance && !Settings.CROSSFADE_ON_SKIP.get()) {
+                logDebug(() -> "stopVideo(5): skip — manual skip crossfade disabled");
+                return false;
+            }
+
+            // 9.x volume-fade auto-advance: the monitor started fading out the outgoing
+            // player's volume. Allow the natural transition through — bacw.I() will create
+            // the incoming player and onBeforeLoadVideo will start the fade-in.
+            if (is9x && isAutoAdvance && autoAdvanceCrossfadeActive) {
+                logDebug(() -> "9.x: volume-fade auto-advance — allowing stopVideo(5) (outgoing fade running)");
+                return false;
+            }
+            // If a manual skip fires while a 9.x volume-fade is running, abort the fade
+            // and fall through to the normal crossfade path. The pre-started outgoing
+            // fade-out (if any) keeps running independently on the original outgoing
+            // player; the new manual skip creates a different outgoing.
+            if (is9x && !isAutoAdvance && autoAdvanceCrossfadeActive) {
+                autoAdvanceCrossfadeActive = false;
+                queueAdvancedByMonitor = false;
+                outgoingFadePreStarted = false;
+                logDebug(() -> "9.x: manual skip aborted volume-fade — proceeding with normal crossfade");
             }
 
             boolean wasInVideoMode = isCurrentlyInVideoMode();
 
-            Logger.printDebug(() -> "stopVideo(5): STARTING crossfade [paused=" + sessionPaused.get()
-                    + " wasInVideo=" + wasInVideoMode + "]");
+            logDebug(() -> "stopVideo(5): STARTING crossfade [paused=" + isCrossfadePaused
+                        + " wasInVideo=" + wasInVideoMode
+                        + " is9x=" + is9x + "]");
 
-            Logger.printDebug(() -> "Current player state=" + currentExo.patch_getPlaybackState()
+            int currentState = currentExo.patch_getPlaybackState();
+            logDebug(() -> "Current player state=" + currentState
                     + " class=" + currentExo.getClass().getName());
 
             if (wasInVideoMode) {
                 forceAudioModeIfNeeded();
-                Logger.printDebug(() -> "Silent audio mode set BEFORE factory (video→audio, no nmi broadcast)");
+                logDebug(() -> "Silent audio mode set BEFORE factory (video→audio, no nmi broadcast)");
             }
 
             ExoPlayerAccess newExo = createNewPlayer(coordinator);
@@ -393,28 +739,149 @@ public class CrossfadeManager {
 
             newExo.patch_setVolume(0.0f);
 
-            pendingOutPlayer = currentExo;
-            pendingInPlayer = newExo;
-            activeCoordinator = coordinator;
-            crossfadeInProgress = true;
+            if (is9x) {
+                pendingOutPlayer = currentExo;
+                pendingInPlayer = newExo;
+                activeCoordinator = coordinator;
+                crossfadeInProgress = true;
+                if (isAutoAdvance) {
+                    // Set when the monitor triggers via patch_playNextInQueueDirect → auih.y()V.
+                    // Prevents the natural track-end auih.y() from calling handleChainedSkip
+                    // via onBeforePlayNext, which would corrupt the already-in-flight crossfade.
+                    autoAdvanceCrossfadeActive = true;
+                    logDebug(() -> "9.x: auto-advance crossfade → autoAdvanceCrossfadeActive=true");
 
-            coordinator.patch_setExoPlayer(newExo);
-            Logger.printDebug(() -> "Swapped coordinator ExoPlayer → new player");
+                    // Detach cwh at swap time (auto-advance only): outgoing reaches natural-
+                    // end during the fade and would fire onEnded through the shared
+                    // MedialibPlayerEvents bus, which YTM mis-routes to the INCOMING and
+                    // double-advances the queue.  Manual-skip keeps cwh attached so the
+                    // far-from-end outgoing keeps reporting pause/seek/position events.
+                    try {
+                        currentExo.patch_detachCwhFromEventDispatch();
+                        logDebug(() -> "9.x auto-advance: detached cwh from OUTGOING @"
+                                + System.identityHashCode(currentExo) + " at swap time");
+                    } catch (Exception e) {
+                        logWarn(()-> "9.x auto-advance: cwh detach on outgoing failed: " + e.getMessage());
+                    }
+                }
+                deferredSwapStartTime = System.currentTimeMillis(); // gates internal stopVideo(5) detection
 
-            VideoSurfaceAccess surface = (VideoSurfaceAccess) coordinator.patch_getVideoSurface();
-            if (surface != null) {
-                surface.patch_setPlayerReference(newExo);
-                Logger.printDebug(() -> "Updated video surface → new player");
+                // Pre-remove the coordinator's listener (Lcou) from the outgoing player's direct
+                // listener set (Lcrh.N) BEFORE calling patch_setPlayerWithBindings.
+                // On skip 2+, the outgoing player is a factory player. Without this, the transition
+                // method's internal stop of the factory player fires STOPPAGE_REASON_UNKNOWN via
+                // Lcou (still registered in the factory player's Lcrh.N), triggering a premature
+                // clearQueue → state machine corruption → onPlaying() never fires.
+                Object coordListener = null;
+                try {
+                    coordListener = coordinator.patch_getCoordinatorListener();
+                    if (coordListener != null) {
+                        currentExo.patch_removeDirectListener(coordListener);
+                        logDebug(() -> "9.x: pre-removed coord listener from outgoing @"
+                                + System.identityHashCode(currentExo));
+                    }
+                } catch (Exception e) {
+                    logWarn(()-> "9.x: pre-remove coord listener failed: " + e.getMessage());
+                }
+
+                coordinator.patch_setPlayerWithBindings(newExo);
+                logDebug(() -> "9.x: swapped coordinator → new player @" + System.identityHashCode(newExo)
+                        + " via patch_setPlayerWithBindings (Lcou backref updated)");
+
+                // Re-register Lcou into the new player's Lcrh.N.
+                // patch_setPlayerWithBindings (the coordinator's transition method) only migrates
+                // cau-level listeners — it never touches Lcrh.N. Without this, Lcou is in neither
+                // player's Lcrh.N and MediaSession never receives onIsPlayingChanged(true).
+                if (coordListener != null) {
+                    try {
+                        newExo.patch_addDirectListener(coordListener);
+                    } catch (Exception e) {
+                        logWarn(()-> "9.x: re-register coord listener failed: " + e.getMessage());
+                    }
+                }
+                VideoSurfaceAccess surface = (VideoSurfaceAccess) coordinator.patch_getVideoSurface();
+                if (surface != null) {
+                    surface.patch_setPlayerReference(newExo);
+                }
+
+                // Re-enable the outgoing player for audible fade-out.
+                // Use a timestamp check: if pauseVideo fired within PAUSE_TO_STOP_INTERNAL_WINDOW_MS
+                // of this stopVideo, it was YTM-internal (skip setup), not a genuine user pause.
+                // A genuine user pause precedes the next song selection by seconds, so the gap
+                // will be >> 500ms and playerIsPlaying=false will correctly keep the player silent.
+                boolean outgoingWasPlaying = false;
+                try {
+                    long msSincePause = System.currentTimeMillis() - lastPauseVideoMs;
+                    outgoingWasPlaying = playerIsPlaying
+                            || msSincePause < PAUSE_TO_STOP_INTERNAL_WINDOW_MS;
+                    final boolean outgoingWasPlayingFinal = outgoingWasPlaying;
+                    logDebug(() -> "9.x: outgoing player re-enable check: playerIsPlaying=" + playerIsPlaying
+                                        + " msSincePause=" + msSincePause + "ms → wasPlaying=" + outgoingWasPlayingFinal);
+                    if (outgoingWasPlaying) {
+                        currentExo.patch_setPlayWhenReady(true);
+                        currentExo.patch_setVolume(1.0f);
+                        logDebug(() -> "9.x: re-enabled outgoing player @" + System.identityHashCode(currentExo));
+                    } else {
+                        currentExo.patch_setVolume(0.0f);
+                        logDebug(() -> "9.x: outgoing player was paused (genuine) — keeping silent @"
+                                + System.identityHashCode(currentExo));
+                    }
+                } catch (Exception e) {
+                    logWarn(()-> "9.x: could not configure outgoing player: " + e.getMessage());
+                }
+
+                // 9.x auto-advance: start the outgoing fade-out NOW (at swap time)
+                // rather than waiting for the new player to reach READY. On 9.x the
+                // MEDIA_NEXT skip path triggers a cold load, not a pre-warmed gapless
+                // buffer, so new-player READY latency can exceed the remaining audio
+                // on the outgoing track. If we waited for READY, onPendingPlayerReady
+                // would shorten the fade-out to actualRemaining (min 150ms) or skip
+                // it entirely via the trackAlreadyEnded path. Pre-starting decouples
+                // fade-out integrity from load latency: the outgoing always gets the
+                // full configured fade duration and reaches silence gracefully.
+                if (isAutoAdvance && outgoingWasPlaying) {
+                    FadeCurve outCurve = Settings.CROSSFADE_CURVE.get();
+                    long outFadeDuration = getCrossfadeDurationMs();
+                    fadingOutPlayers.add(new FadingPlayer(currentExo, outFadeDuration, outCurve));
+                    outgoingFadePreStarted = true;
+                    ensureFadingLoopRunning();
+                    logDebug(() -> "9.x auto-advance: pre-started outgoing fade-out @"
+                            + System.identityHashCode(currentExo)
+                            + " over " + outFadeDuration + "ms");
+                }
+
+                pollForNewTrackReady(newExo);
+                return false; // Allow native stopVideo chain → loads track onto newExo
+            } else {
+                // 8.x path: block native, swap coordinator immediately so loadVideo
+                // routes content onto the new player.
+                pendingOutPlayer = currentExo;
+                pendingInPlayer = newExo;
+                activeCoordinator = coordinator;
+                crossfadeInProgress = true;
+                if (isAutoAdvance) {
+                    autoAdvanceCrossfadeActive = true;
+                    logDebug(() -> "8.x: auto-advance crossfade → autoAdvanceCrossfadeActive=true");
+                }
+
+                coordinator.patch_setExoPlayer(newExo);
+                logDebug(() -> "Swapped coordinator ExoPlayer → new player");
+
+                VideoSurfaceAccess surface = (VideoSurfaceAccess) coordinator.patch_getVideoSurface();
+                if (surface != null) {
+                    surface.patch_setPlayerReference(newExo);
+                    logDebug(() -> "Updated video surface → new player");
+                }
+
+                logDebug(() -> "Old player preserved (keeps playing), polling for new track ready"
+                                + " — BLOCKING native stopVideo");
+                pollForNewTrackReady(newExo);
+
+                return true;
             }
 
-            Logger.printDebug(() -> "Old player preserved (keeps playing), polling for new track ready"
-                        + " - BLOCKING native stopVideo");
-            pollForNewTrackReady(newExo);
-
-            return true;
-
-        } catch (Exception ex) {
-            Logger.printException(() -> "onBeforeStopVideo error", ex);
+        } catch (Exception e) {
+            logError(()-> "onBeforeStopVideo error", e);
             cleanupAllPlayers();
             if (audioModeWasForced) {
                 audioModeWasForced = false;
@@ -431,10 +898,33 @@ public class CrossfadeManager {
      * naturally loads the next track onto it.
      */
     private static boolean handleChainedSkip(Object atadInstance) {
-        Logger.printDebug(() -> "stopVideo(5): CHAINED SKIP — creating new player, deferring demotion until READY");
+        // When the activity is stopped/destroyed (recents-view, swipe-clear), YTM
+        // emits rapid stopVideo(5) bursts as part of its own teardown.  Treating
+        // those as user chained skips creates factory players that can never
+        // reach READY (the activity is going away), leading to a 10 s timeout
+        // and emergency cleanup.  Decline chained-skip engagement during these
+        // windows and let native through — onActivityDestroy will clean up the
+        // existing in-flight crossfade.
+        if (!activityRunning) {
+            logInfo(() -> "CHAINED SKIP suppressed — activity not running (likely teardown)");
+            return false;
+        }
+        logDebug(() -> "stopVideo(5): CHAINED SKIP — creating new player, deferring demotion until READY");
 
-        if (sessionPaused.get() || getCrossfadeDurationMs() <= 0) {
-            Logger.printDebug(() -> "Chained skip: crossfade now disabled/paused — aborting crossfade");
+        if (is9x) {
+            long elapsed = System.currentTimeMillis() - deferredSwapStartTime;
+            if (elapsed < INTERNAL_CALL_WINDOW_MS) {
+                // This is the 9.x-internal second stopVideo(5) that always fires ~1ms
+                // after the first as part of the native track-transition sequence.
+                // It is NOT a user double-skip — pass it through untouched.
+                logDebug(() -> "9.x: internal second stopVideo(5) after " + elapsed
+                                + "ms — allowing through");
+                return false;
+            }
+        }
+
+        if (isCrossfadePaused || getCrossfadeDurationMs() <= 0) {
+            logDebug(() -> "Chained skip: crossfade now paused — aborting crossfade");
             abortCrossfadeNow();
             return false;
         }
@@ -444,23 +934,24 @@ public class CrossfadeManager {
             if (coordinator == null) {
                 coordinator = getCoordinatorFromAtad(atadInstance);
                 if (coordinator == null) {
-                    Logger.printException(() -> "Chained skip: coordinator null — aborting");
+                    logError(() -> "Chained skip: coordinator null — aborting");
                     abortCrossfadeNow();
                     return false;
                 }
             }
 
+            // Save and clear pendingInPlayer before factory call.
             ExoPlayerAccess oldPending = pendingInPlayer;
-            if (oldPending != null) {
-                Logger.printDebug(() -> "Chained skip: releasing previous pending player @"
-                        + System.identityHashCode(oldPending)
-                        + " (never reached READY)");
-                releasePlayer(oldPending);
-            }
+            pendingInPlayer = null;
 
             ExoPlayerAccess newExo = createNewPlayer(coordinator);
             if (newExo == null) {
-                Logger.printException(() -> "Chained skip: factory failed — aborting crossfade");
+                logError(() -> "Chained skip: factory failed — aborting crossfade");
+                // Clean up old pending before aborting.
+                if (oldPending != null) {
+                    if (is9x) detachPlayerListeners(oldPending);
+                    releasePlayer(oldPending);
+                }
                 abortCrossfadeNow();
                 return false;
             }
@@ -469,10 +960,43 @@ public class CrossfadeManager {
             pendingInPlayer = newExo;
             activeCoordinator = coordinator;
 
-            coordinator.patch_setExoPlayer(newExo);
-            Logger.printDebug(() -> "Chained skip: swapped coordinator → new player @"
-                    + System.identityHashCode(newExo)
-                    + " (current animation continues uninterrupted)");
+            // Transition coordinator BEFORE releasing oldPending.
+            // coordinator.exoPlayer currently points to oldPending (set during first skip).
+            Object chainedCoordListener = null;
+            if (is9x) {
+                // Pre-remove coord listener from the outgoing player (coordinator's current player
+                // = oldPending = the first skip's factory player) to prevent premature clearQueue.
+                try {
+                    chainedCoordListener = coordinator.patch_getCoordinatorListener();
+                    if (chainedCoordListener != null && oldPending != null) {
+                        oldPending.patch_removeDirectListener(chainedCoordListener);
+                        logDebug(() -> "9.x chained: pre-removed coord listener from @"
+                                + System.identityHashCode(oldPending));
+                    }
+                } catch (Exception e) {
+                    logWarn(()-> "9.x chained: pre-remove coord listener failed: " + e.getMessage());
+                }
+            }
+
+            coordinator.patch_setPlayerWithBindings(newExo);
+            logDebug(() -> "Chained skip: swapped coordinator → new player @"
+                    + System.identityHashCode(newExo));
+
+            // Re-register Lcou into new player's Lcrh.N (9.x only).
+            if (is9x && chainedCoordListener != null) {
+                try {
+                    newExo.patch_addDirectListener(chainedCoordListener);
+                } catch (Exception e) {
+                    logWarn(()-> "9.x chained: re-register coord listener failed: " + e.getMessage());
+                }
+            }
+            if (oldPending != null) {
+                logDebug(() -> "Chained skip: releasing old pending @"
+                        + System.identityHashCode(oldPending)
+                        + " (never reached READY)");
+                if (is9x) detachPlayerListeners(oldPending);
+                releasePlayer(oldPending);
+            }
 
             VideoSurfaceAccess surface = (VideoSurfaceAccess) coordinator.patch_getVideoSurface();
             if (surface != null) {
@@ -481,9 +1005,9 @@ public class CrossfadeManager {
 
             pollForNewTrackReady(newExo);
 
-            return true;
-        } catch (Exception ex) {
-            Logger.printException(() -> "handleChainedSkip error", ex);
+            return !is9x; // 8.x: block native stopVideo; 9.x: allow native chain to load track onto newExo
+        } catch (Exception e) {
+            logError(()-> "handleChainedSkip error", e);
             abortCrossfadeNow();
             return false;
         }
@@ -498,40 +1022,40 @@ public class CrossfadeManager {
         try {
             SessionAccess session = (SessionAccess) coordinator.patch_getSession();
             if (session == null) {
-                Logger.printException(() -> "createNewPlayer: session null");
+                logError(() -> "createNewPlayer: session null");
                 return null; }
 
             PlayerFactoryAccess factory = (PlayerFactoryAccess) session.patch_getFactory();
             if (factory == null) {
-                Logger.printException(() -> "createNewPlayer: factory null");
+                logError(() -> "createNewPlayer: factory null");
                 return null; }
 
             Object loadControl = coordinator.patch_getLoadControl();
             if (loadControl == null) {
-                Logger.printException(() -> "createNewPlayer: loadControl null");
+                logError(() -> "createNewPlayer: loadControl null");
                 return null; }
 
             SharedStateAccess sharedState = (SharedStateAccess) coordinator.patch_getSharedState();
             if (sharedState == null) {
-                Logger.printException(() -> "createNewPlayer: sharedState null");
+                logError(() -> "createNewPlayer: sharedState null");
                 return null; }
 
             SharedCallbackAccess sharedCallback =
                     (SharedCallbackAccess) coordinator.patch_getSharedCallback();
             if (sharedCallback == null) {
-                Logger.printException(() -> "createNewPlayer: sharedCallback null");
+                logError(() -> "createNewPlayer: sharedCallback null");
                 return null; }
             activeSharedCallback = sharedCallback;
 
             Object oldTimeline = sharedState.patch_getTimeline();
             Object oldCqb = sharedCallback.patch_getCqb();
-            Logger.printDebug(() -> "Pre-factory shared state: cqb=" + (oldCqb != null));
+            logDebug(() -> "Pre-factory shared state: cqb=" + (oldCqb != null));
             sharedState.patch_setTimeline(null);
             sharedCallback.patch_setCqb(null);
 
             ExoPlayerAccess newExo = createPlayerViaFactory(factory, coordinator, loadControl);
             if (newExo == null) {
-                Logger.printException(() -> "Factory returned null — restoring");
+                logError(() -> "Factory returned null — restoring");
                 sharedState.patch_setTimeline(oldTimeline);
                 sharedCallback.patch_setCqb(oldCqb);
                 return null;
@@ -539,42 +1063,60 @@ public class CrossfadeManager {
 
             Object postTimeline = sharedState.patch_getTimeline();
             Object postCqb = sharedCallback.patch_getCqb();
-            Logger.printDebug(() -> "Post-factory shared state: cqb=" + (postCqb != null)
+            logDebug(() -> "Post-factory shared state: cqb=" + (postCqb != null)
                     + " newExo=" + System.identityHashCode(newExo));
             if (postTimeline == null) {
-                Logger.printException(() -> "Factory failed to set timeline — aborting");
+                if (!is9x) {
+                    logError(() -> "Factory failed to set timeline — aborting");
+                    sharedState.patch_setTimeline(oldTimeline);
+                    sharedCallback.patch_setCqb(oldCqb);
+                    return null;
+                }
+                // On 9.x the timeline field is final; the factory cannot re-set it.
+                // Restore the old value so the shared state remains coherent.
+                logWarn(()-> "Factory did not re-set timeline (expected on 9.x — field is final, restoring)");
                 sharedState.patch_setTimeline(oldTimeline);
-                sharedCallback.patch_setCqb(oldCqb);
-                return null;
             }
             if (postCqb == null) {
-                Logger.printException(() -> "Factory failed to set cqb — aborting");
+                logError(() -> "Factory failed to set cqb — aborting");
                 sharedState.patch_setTimeline(oldTimeline);
                 sharedCallback.patch_setCqb(oldCqb);
                 return null;
             }
 
             return newExo;
-        } catch (Exception ex) {
-            Logger.printException(() -> "createNewPlayer error", ex);
+        } catch (Exception e) {
+            logError(()-> "createNewPlayer error", e);
             return null;
         }
     }
 
+    // ------------------------------------------------------------------ //
+    //  Public hook: playNextInQueue (gapless auto-advance)                //
+    // ------------------------------------------------------------------ //
+
     /**
-     * Injection point.
-     * <p>
-     * Returns true to BLOCK the native playNextInQueue, false to allow it.
-     * <p>
-     * Strategy: we block the original call, set up our crossfade state, then
-     * invoke playNextInQueue again via patch_playNextInQueue with internalPlayNext=true.
-     * That second call passes through immediately (returns false), allowing the native
-     * to load the next track onto our new player. We then synchronously re-enforce
-     * volume=0 right after the native returns — eliminating the blip that occurred
-     * in the void-hook design where the native ran in the 100ms poll window.
+     * Returns true to block the native playNextInQueue.  Sets up crossfade state and
+     * re-invokes via internalPlayNext=true so native loads the next track on our new
+     * player, then re-enforces volume=0 to prevent a blip.
      */
     public static boolean onBeforePlayNext(Object coordinatorInstance) {
         if (!CROSSFADE_ENABLED) return false;
+
+        // #1549: skip crossfade when audio is routed to a cast/mirror receiver.
+        // Native gapless transition runs unchanged.
+        if (!crossfadeInProgress && isAudioRoutedToCast()) {
+            logDebug(() -> "playNext: skip — audio routed to cast/mirror (#1549)");
+            return false;
+        }
+
+        // Monitor-triggered native skip: let auih.y()V run so it calls stopVideo(5),
+        // which onBeforeStopVideo will intercept for a true overlap crossfade.
+        if (monitorTriggeredSkip) {
+            monitorTriggeredSkip = false;
+            logDebug(() -> "PlayNext: monitor-triggered — allowing native auih.y()V (stopVideo intercepted by onBeforeStopVideo)");
+            return false;
+        }
 
         // Internal re-invoke: let native through immediately.
         if (internalPlayNext) {
@@ -582,16 +1124,26 @@ public class CrossfadeManager {
             return false;
         }
 
-        Logger.printDebug(() -> "onBeforePlayNext called");
+        logDebug(() -> "onBeforePlayNext called [crossfading=" + crossfadeInProgress
+                + " autoAdvance=" + autoAdvanceCrossfadeActive + "]");
         tryAttachLongPressHandler();
 
-        if (sessionPaused.get() || getCrossfadeDurationMs() <= 0
-                || crossfadeInProgress) {
+        if (isCrossfadePaused || getCrossfadeDurationMs() <= 0) {
+            return false;
+        }
+        if (crossfadeInProgress) {
+            if (autoAdvanceCrossfadeActive) {
+                // YTM's native gapless mechanism fired playNextInQueue after our auto-advance
+                // monitor already triggered it. Block this duplicate call to prevent loading
+                // the next-next track onto the incoming player mid-crossfade.
+                logDebug(() -> "PlayNext: auto-advance crossfade in progress — blocking duplicate native call");
+                return true;
+            }
             return false;
         }
 
         if (!Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
-            Logger.printDebug(() -> "PlayNext: skip — auto-advance crossfade disabled");
+            logDebug(() -> "PlayNext: skip — auto-advance crossfade disabled");
             return false;
         }
 
@@ -605,7 +1157,7 @@ public class CrossfadeManager {
             if (currentExo == null) return false;
 
             int currentState = currentExo.patch_getPlaybackState();
-            Logger.printDebug(() -> "PlayNext: current player state=" + currentState
+            logDebug(() -> "PlayNext: current player state=" + currentState
                         + " wasInVideo=" + wasInVideoMode);
 
             ExoPlayerAccess newExo = createNewPlayer(coordinator);
@@ -617,50 +1169,75 @@ public class CrossfadeManager {
             pendingInPlayer = newExo;
             activeCoordinator = coordinator;
             crossfadeInProgress = true;
+            autoAdvanceCrossfadeActive = true;
+            deferredSwapStartTime = System.currentTimeMillis(); // gate 9.x internal stopVideo(5)
 
-            coordinator.patch_setExoPlayer(newExo);
-            Logger.printDebug(() -> "PlayNext: swapped coordinator ExoPlayer → new player");
+            Object playNextCoordListener = null;
+            if (is9x) {
+                // Pre-remove coord listener from outgoing player before transition.
+                try {
+                    playNextCoordListener = coordinator.patch_getCoordinatorListener();
+                    if (playNextCoordListener != null) {
+                        currentExo.patch_removeDirectListener(playNextCoordListener);
+                        logDebug(() -> "9.x PlayNext: pre-removed coord listener from @"
+                                + System.identityHashCode(currentExo));
+                    }
+                } catch (Exception e) {
+                    logWarn(()-> "9.x PlayNext: pre-remove coord listener failed: " + e.getMessage());
+                }
+            }
+            coordinator.patch_setPlayerWithBindings(newExo);
+            logDebug(() -> "PlayNext: swapped coordinator → new player @"
+                    + System.identityHashCode(newExo));
 
+            // Re-register Lcou into new player's Lcrh.N (9.x only).
+            if (is9x && playNextCoordListener != null) {
+                try {
+                    newExo.patch_addDirectListener(playNextCoordListener);
+                } catch (Exception e) {
+                    logWarn(()-> "9.x PlayNext: re-register coord listener failed: " + e.getMessage());
+                }
+            }
             VideoSurfaceAccess surface =
                     (VideoSurfaceAccess) coordinator.patch_getVideoSurface();
             if (surface != null) {
                 surface.patch_setPlayerReference(newExo);
-                Logger.printDebug(() -> "PlayNext: updated video surface → new player");
+                logDebug(() -> "PlayNext: updated video surface → new player");
             }
 
             if (wasInVideoMode) {
                 forceAudioModeIfNeeded();
-                Logger.printDebug(() -> "PlayNext: forced audio mode for incoming track (was in video mode)");
+                logDebug(() -> "PlayNext: forced audio mode for incoming track (was in video mode)");
             }
 
-            // Re-invoke natively so the next track actually loads onto the new player.
-            // internalPlayNext=true causes the hook to pass through immediately.
-            // We then re-enforce volume=0 synchronously, before any poll tick.
+            // Re-invoke via atzq.p()→Lausd→y()V to advance the queue and trigger the
+            // native loadVideo onto the new coordinator player.  internalPlayNext guards
+            // against re-entry if our hook ever fires during the re-invoke.
+            internalPlayNext = true;
             Object atad = lastAtadRef.get();
-            if (atad instanceof MedialibPlayerAccess medialibPlayerAccessObj) {
-                internalPlayNext = true;
+            if (atad instanceof MedialibPlayerAccess) {
                 try {
-                    medialibPlayerAccessObj.patch_playNextInQueue();
-                } catch (Exception ex) {
+                    ((MedialibPlayerAccess) atad).patch_playNextInQueue();
+                } catch (Exception e) {
+                    logWarn(()-> "PlayNext: re-invoke threw: " + e.getMessage());
+                } finally {
                     internalPlayNext = false;
-                    Logger.printDebug(() -> "PlayNext: re-invoke threw exception", ex);
                 }
                 try {
                     newExo.patch_setVolume(0.0f);
-                    Logger.printDebug(() -> "PlayNext: volume re-enforced to 0 after native");
-                } catch (Exception ex) {
-                    Logger.printDebug(() -> "Ignoring patch_setVolume exception", ex);
-                }
+                    logDebug(() -> "PlayNext: volume re-enforced to 0 after native");
+                } catch (Exception ignored) {}
             } else {
-                Logger.printDebug(() -> "PlayNext: atad ref lost — cannot re-invoke native");
+                internalPlayNext = false;
+                logWarn(()-> "PlayNext: atad ref lost — cannot re-invoke native");
             }
 
-            Logger.printDebug(() -> "PlayNext: old player preserved, polling for new track ready");
+            logDebug(() -> "PlayNext: old player preserved, polling for new track ready");
             pollForNewTrackReady(newExo);
             return true; // block original call
 
-        } catch (Exception ex) {
-            Logger.printException(() -> "onBeforePlayNext error", ex);
+        } catch (Exception e) {
+            logError(()-> "onBeforePlayNext error", e);
             cleanupAllPlayers();
             if (audioModeWasForced) {
                 audioModeWasForced = false;
@@ -670,41 +1247,68 @@ public class CrossfadeManager {
         }
     }
 
+    /** 9.x atzq.o (loadVideo) entry hook — diagnostic only; fade-in is driven by onPendingPlayerReady. */
+    public static void onBeforeLoadVideo(Object newAtzqInstance) {
+        if (!is9x) return;
+        logDebug(() -> "9.x: onBeforeLoadVideo atzq=@" + System.identityHashCode(newAtzqInstance)
+                + " crossfadeInProgress=" + crossfadeInProgress
+                + " autoAdvActive=" + autoAdvanceCrossfadeActive);
+    }
+
+    // ------------------------------------------------------------------ //
+    //  Public hooks: pauseVideo / playVideo (MedialibPlayer layer)        //
+    // ------------------------------------------------------------------ //
+
     private static long lastPauseEventMs = 0;
     private static long lastPlayEventMs = 0;
     private static final long EVENT_DEDUP_WINDOW_MS = 100;
+    /**
+     * Wall-clock time of the last onPauseVideo call.
+     * Used to distinguish YTM-internal pauseVideo calls (which arrive ~1–50ms before
+     * a skip-triggered stopVideo) from genuine user pauses (seconds earlier).
+     * If pauseVideo and stopVideo(5) arrive within PAUSE_TO_STOP_INTERNAL_WINDOW_MS,
+     * the pause was internal and we still re-enable the outgoing player for fade-out.
+     */
+    private static volatile long lastPauseVideoMs = System.currentTimeMillis();
+    /**
+     * If pauseVideo fired within this many ms before a crossfade-triggering stopVideo(5),
+     * the pause is treated as YTM-internal (skip setup) not a genuine user pause.
+     * YTM typically calls pauseVideo → stopVideo within ~10–50ms during a skip;
+     * a genuine user pause precedes the next song selection by seconds.
+     */
+    private static final long PAUSE_TO_STOP_INTERNAL_WINDOW_MS = 500;
 
-     /**
-     * Injection point.
-     * <p>
+    /**
      * Hooked at the top of MedialibPlayer.pauseVideo.
      * Returns true to BLOCK the pause, false to allow.
      */
-    @SuppressWarnings("SameReturnValue")
     public static boolean onPauseVideo() {
         if (!CROSSFADE_ENABLED) return false;
 
+        playerIsPlaying = false;
         long now = System.currentTimeMillis();
         if (now - lastPauseEventMs < EVENT_DEDUP_WINDOW_MS) return false;
         lastPauseEventMs = now;
+
+        lastPauseVideoMs = now;
+        logDebug(() -> "onPauseVideo [crossfading=" + crossfadeInProgress + " autoAdv=" + autoAdvanceCrossfadeActive + "]");
 
         if (!crossfadeInProgress) {
             return false;
         }
 
-        Logger.printDebug(() -> "onPauseVideo during crossfade — aborting crossfade, allowing pause");
+        logDebug(() -> "onPauseVideo: aborting crossfade " + dumpState());
         abortCrossfadeNow();
         return false;
     }
 
     /**
-     * Injection point.
-     * <p>
      * Hooked at the top of MedialibPlayer.playVideo.
      */
     public static void onPlayVideo(Object atadInstance) {
         if (!CROSSFADE_ENABLED) return;
 
+        playerIsPlaying = true;
         long now = System.currentTimeMillis();
         if (now - lastPlayEventMs < EVENT_DEDUP_WINDOW_MS) return;
         lastPlayEventMs = now;
@@ -713,12 +1317,29 @@ public class CrossfadeManager {
             lastAtadRef = new WeakReference<>(atadInstance);
         }
 
-        Logger.printDebug(() -> "onPlayVideo [crossfading=" + crossfadeInProgress
-                + ", atad=" + (atadInstance != null) + "]");
+        logDebug(() -> "onPlayVideo [crossfading=" + crossfadeInProgress
+                + " deferred=" + deferredSwapPending
+                + " atad=" + (atadInstance != null)
+                + " nbaAlive=" + (lastNbaRef != null && lastNbaRef.get() != null) + "]");
+
+        // Coerce video → audio at song-start (shouldBlockVideoToggle catches manual
+        // toggles but not auto-loaded video-mode songs like music videos).
+        if (!isCrossfadePaused && isCurrentlyInVideoMode()) {
+            logDebug(() -> "onPlayVideo: coercing video → audio (crossfade active)");
+            forceAudioModeIfNeeded();
+        }
+
         if (!crossfadeInProgress) {
+            logDebug(() -> "onPlayVideo: starting auto-advance monitor");
             startAutoAdvanceMonitor();
+        } else {
+            logDebug(() -> "onPlayVideo: crossfade in progress — skipping auto-advance monitor start");
         }
     }
+
+    // ------------------------------------------------------------------ //
+    //  Poller: waits for new track to reach STATE_READY                   //
+    // ------------------------------------------------------------------ //
 
     private static int lastPollState = -1;
 
@@ -735,22 +1356,18 @@ public class CrossfadeManager {
                 // Keep new player silent while waiting for READY. The native
                 // playNextInQueue (auto-advance) runs after our void hook and
                 // resets the player to volume 1.0 — re-enforce on every tick.
-                try {
-                    newPlayer.patch_setVolume(0.0f);
-                } catch (Exception ex) {
-                    Logger.printDebug(() -> "Ignoring pollForNewTrackReady exception", ex);
-                }
+                try { newPlayer.patch_setVolume(0.0f); } catch (Exception ignored) {}
 
                 try {
                     int state = newPlayer.patch_getPlaybackState();
                     if (state == STATE_READY) {
-                        Logger.printDebug(() -> "Pending track READY — promoting to crossfade");
+                        logDebug(() -> "Pending track READY — promoting to crossfade");
                         onPendingPlayerReady(newPlayer);
                         return;
                     }
 
                     if (state == 4) {
-                        Logger.printException(() -> "Pending player ENDED unexpectedly — aborting");
+                        logError(() -> "Pending player ENDED unexpectedly — aborting");
                         cleanupAllPlayers();
                         if (audioModeWasForced) {
                             audioModeWasForced = false;
@@ -760,12 +1377,12 @@ public class CrossfadeManager {
                     }
 
                     if (state != lastPollState) {
-                        Logger.printDebug(() -> "Poll: state → " + state);
+                        logDebug(() -> "Poll: state → " + state);
                         lastPollState = state;
                     }
 
                     if (System.currentTimeMillis() > deadline) {
-                        Logger.printException(() -> "Timeout waiting for new track");
+                        logError(() -> "Timeout waiting for new track");
                         cleanupAllPlayers();
                         if (audioModeWasForced) {
                             audioModeWasForced = false;
@@ -775,8 +1392,8 @@ public class CrossfadeManager {
                     }
 
                     mainHandler.postDelayed(this, READY_POLL_MS);
-                } catch (Exception ex) {
-                    Logger.printException(() -> "Poll error", ex);
+                } catch (Exception e) {
+                    logError(()-> "Poll error", e);
                     cleanupAllPlayers();
                     if (audioModeWasForced) {
                         audioModeWasForced = false;
@@ -796,37 +1413,68 @@ public class CrossfadeManager {
         FadeCurve curve = Settings.CROSSFADE_CURVE.get();
         long fadeDuration = getCrossfadeDurationMs();
 
+        boolean trackAlreadyEnded = false;
         ExoPlayerAccess outgoing = pendingOutPlayer;
         if (outgoing != null) {
-            // Match fade-out duration to actual remaining audio on the outgoing track.
-            // This is critical for auto-advance: the trigger fires 300ms+ before the
-            // configured fade duration, but READY latency is variable (100-500ms+).
-            // Without this adjustment, the fade-out may start too late, causing the
-            // outgoing track to end at non-zero volume (perceptible cutoff).
-            long fadeOutDuration = fadeDuration;
-            try {
-                long pos = outgoing.patch_getCurrentPosition();
-                long dur = outgoing.patch_getDuration();
-                if (dur > 0 && pos >= 0) {
-                    long actualRemaining = dur - pos;
-                    Logger.printDebug(() -> "onPendingPlayerReady: outgoing remaining=" + actualRemaining
-                                        + "ms fadeDuration=" + fadeDuration + "ms");
-                    if (actualRemaining < fadeDuration) {
-                        fadeOutDuration = Math.max(150, actualRemaining);
-                        final long fadeOutDurationFinal = fadeOutDuration;
-                        Logger.printDebug(() -> "Fade-out shortened to " + fadeOutDurationFinal
-                                                + "ms to match remaining audio (was " + fadeOutDurationFinal + "ms)");
-                    }
-                }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Could not read outgoing remaining time", ex);
+            if (is9x) {
+                // On 9.x the coordinator's UI listener (auge.b:Lcou, in Lcrh.N) was already
+                // moved from the outgoing player to the incoming player at crossfade start time
+                // (in onBeforeStopVideo). No listener migration needed here.
+                // The old player's N set is now empty; it is safe to release after fade-out.
+                logDebug(() -> "onPendingPlayerReady (9.x): coordinator listener already migrated at start");
             }
-            fadingOutPlayers.add(new FadingPlayer(outgoing, fadeOutDuration, curve));
-            pendingOutPlayer = null;
 
-            final long fadeOutDurationFinal = fadeOutDuration;
-            Logger.printDebug(() -> "Original outgoing player @" + System.identityHashCode(outgoing)
-                    + " → fade-out list (" + fadeOutDurationFinal + "ms)");
+            if (outgoingFadePreStarted) {
+                // 9.x auto-advance: fade-out was pre-started at coordinator swap time
+                // in onBeforeStopVideo. The outgoing is already in fadingOutPlayers
+                // running the full configured fade duration. Skip the re-add and the
+                // actualRemaining adjustment — those exist for the legacy path where
+                // fade-out only began once the new player reached READY.
+                logDebug(() -> "onPendingPlayerReady: outgoing @" + System.identityHashCode(outgoing)
+                        + " fade-out already in flight (pre-started at swap time)");
+                pendingOutPlayer = null;
+                outgoingFadePreStarted = false;
+            } else {
+                // Match fade-out duration to actual remaining audio on the outgoing track.
+                // Used for the legacy path (manual skip, 8.x auto-advance) where the
+                // fade-out only begins here. Without this adjustment, the fade-out may
+                // start too late, causing the outgoing track to end at non-zero volume.
+                long fadeOutDuration = fadeDuration;
+                try {
+                    long pos = outgoing.patch_getCurrentPosition();
+                    long dur = outgoing.patch_getDuration();
+                    if (dur > 0 && pos >= 0) {
+                        long actualRemaining = dur - pos;
+                        logDebug(() -> "onPendingPlayerReady: outgoing remaining=" + actualRemaining
+                                                + "ms fadeDuration=" + fadeDuration + "ms");
+                        if (actualRemaining <= 0) {
+                            // Content only loads after natural track end, so READY always
+                            // arrives after the old track has finished. Release silently.
+                            trackAlreadyEnded = true;
+                            logDebug(() -> "Outgoing track ended before READY — "
+                                                        + "releasing silently, fade-in only (no overlap possible)");
+                        } else if (actualRemaining < fadeDuration) {
+                            fadeOutDuration = Math.max(150, actualRemaining);
+                            final long fadeOutDurationFinal = fadeOutDuration;
+                            logDebug(() -> "Fade-out shortened to " + fadeOutDurationFinal
+                                    + "ms to match remaining audio (was " + fadeDuration + "ms)");
+                        }
+                    }
+                } catch (Exception e) {
+                    logDebug(() -> "Could not read outgoing remaining time: " + e.getMessage());
+                }
+                pendingOutPlayer = null;
+                if (trackAlreadyEnded) {
+                    releasePlayer(outgoing);
+                    logDebug(() -> "Original outgoing player @" + System.identityHashCode(outgoing)
+                            + " → released (track ended before READY)");
+                } else {
+                    fadingOutPlayers.add(new FadingPlayer(outgoing, fadeOutDuration, curve));
+                    final long fadeOutDurationFinal = fadeOutDuration;
+                    logDebug(() -> "Original outgoing player @" + System.identityHashCode(outgoing)
+                            + " → fade-out list (" + fadeOutDurationFinal + "ms)");
+                }
+            }
         }
 
         ExoPlayerAccess prevIncoming = crossfadeInPlayer;
@@ -835,13 +1483,13 @@ public class CrossfadeManager {
             long quickDuration = Math.max(200, (long) (QUICK_FADE_MS * vol));
             if (vol > 0.01f) {
                 fadingOutPlayers.add(new FadingPlayer(prevIncoming, vol, quickDuration));
-                Logger.printDebug(() -> "Previous incoming player @"
+                logDebug(() -> "Previous incoming player @"
                         + System.identityHashCode(prevIncoming)
                         + " → quick fade-out from " + String.format(Locale.US, "%.2f", vol)
                         + " over " + quickDuration + "ms");
             } else {
                 releasePlayer(prevIncoming);
-                Logger.printDebug(() -> "Previous incoming player @"
+                logDebug(() -> "Previous incoming player @"
                         + System.identityHashCode(prevIncoming)
                         + " → released (vol ≈ 0)");
             }
@@ -852,19 +1500,43 @@ public class CrossfadeManager {
         currentFadeInVolume = 0.0f;
 
         ensureFadingLoopRunning();
-        animateCrossfade(newPlayer);
+        // When the old track already ended before READY (auto-advance gap), snap in
+        // quickly rather than doing a slow 3s fade from silence.
+        animateCrossfade(newPlayer, trackAlreadyEnded ? QUICK_FADE_MS : 0);
     }
+
+    // ------------------------------------------------------------------ //
+    //  Auto-advance: position monitor & timed crossfade                   //
+    // ------------------------------------------------------------------ //
 
     private static void startAutoAdvanceMonitor() {
         stopAutoAdvanceMonitor();
-        if (!Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) return;
+        if (!isEnabled() || !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
+            logDebug(() -> "startAutoAdvanceMonitor: skipped [enabled=" + isEnabled()
+                    + " onAutoAdvance=" + Settings.CROSSFADE_ON_AUTO_ADVANCE.get() + "]");
+            return;
+        }
+        if (autoAdvanceCrossfadeActive) {
+            logDebug(() -> "startAutoAdvanceMonitor: skipped — 9.x volume-fade in progress");
+            return;
+        }
 
         autoAdvanceMonitorRunnable = new Runnable() {
             @Override
             public void run() {
-                if (sessionPaused.get()
+                if (!isEnabled() || isCrossfadePaused
                         || !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()
-                        || crossfadeInProgress) {
+                        || crossfadeInProgress
+                        || autoAdvanceCrossfadeActive) {
+                    return;
+                }
+
+                // #1549: while audio is routed to a cast/mirror receiver, keep
+                // re-polling but never dispatch MEDIA_NEXT — native gapless
+                // handles the natural-end transition cleanly for the cast layer.
+                // The monitor will pick up again once cast disconnects.
+                if (isAudioRoutedToCast()) {
+                    mainHandler.postDelayed(this, MONITOR_POLL_MS);
                     return;
                 }
 
@@ -904,7 +1576,7 @@ public class CrossfadeManager {
                     long fadeDuration = getCrossfadeDurationMs();
 
                     if (remaining % 5000 < MONITOR_POLL_MS) {
-                        Logger.printDebug(() -> "Auto-advance monitor: pos=" + pos
+                        logDebug(() -> "Auto-advance monitor: pos=" + pos
                                                 + "ms dur=" + dur + "ms remaining=" + remaining
                                                 + "ms trigger@" + (fadeDuration + AUTO_ADVANCE_TRIGGER_BUFFER_MS) + "ms");
                     }
@@ -915,27 +1587,63 @@ public class CrossfadeManager {
                     }
 
                     if (remaining <= fadeDuration + AUTO_ADVANCE_TRIGGER_BUFFER_MS && remaining > 0) {
-                        Logger.printDebug(() -> "Auto-advance: triggering playNextInQueue"
-                                                + " at remaining=" + remaining
+                        logDebug(() -> "Auto-advance: monitor trigger at remaining=" + remaining
                                                 + "ms (fadeDuration=" + fadeDuration + "ms)");
                         stopAutoAdvanceMonitor();
+
+                        // Auto-advance trigger: simulated MEDIA_NEXT key event.  Other paths
+                        // tested (auih.y direct, atzq.p, atad.stopVideo(5) direct) either no-op
+                        // on 9.x or fail to advance the queue.  The MEDIA_NEXT dispatch goes
+                        // through YTM's mediasession skip handler which runs the full
+                        // queue-advance + clearQueue + loadOnesieVideo chain.  onBeforeStopVideo
+                        // intercepts the resulting stopVideo(5) for crossfade setup.
+                        logDebug(() -> "Auto-advance: TRIGGER FIRED is9x=" + is9x
+                                + " outgoing=@" + System.identityHashCode(exo)
+                                + " coordExo=@" + System.identityHashCode(coordinator.patch_getExoPlayer())
+                                + " fadeDur=" + fadeDuration + "ms state=" + state
+                                + " pos=" + pos + " dur=" + dur);
+                        monitorTriggeredSkip = true;
+                        queueAdvancedByMonitor = true;
+                        Context ctx = Utils.getContext();
+                        if (ctx == null) {
+                            monitorTriggeredSkip = false;
+                            queueAdvancedByMonitor = false;
+                            logWarn(()-> "Auto-advance: no Context — cannot dispatch MEDIA_NEXT");
+                            return;
+                        }
+                        AudioManager am = (AudioManager) ctx.getSystemService(Context.AUDIO_SERVICE);
+                        if (am == null) {
+                            monitorTriggeredSkip = false;
+                            queueAdvancedByMonitor = false;
+                            logWarn(()-> "Auto-advance: no AudioManager — cannot dispatch MEDIA_NEXT");
+                            return;
+                        }
                         try {
-                            ((MedialibPlayerAccess) atad).patch_playNextInQueue();
-                        } catch (Exception ex) {
-                            Logger.printDebug(() -> "Ignoring playNextInQueue exceptoin", ex);
+                            long evTime = SystemClock.uptimeMillis();
+                            KeyEvent down = new KeyEvent(evTime, evTime,
+                                    KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_MEDIA_NEXT, 0);
+                            KeyEvent up = new KeyEvent(evTime, evTime,
+                                    KeyEvent.ACTION_UP, KeyEvent.KEYCODE_MEDIA_NEXT, 0);
+                            am.dispatchMediaKeyEvent(down);
+                            am.dispatchMediaKeyEvent(up);
+                            logDebug(() -> "Auto-advance: dispatched MEDIA_NEXT key event");
+                        } catch (Exception e) {
+                            monitorTriggeredSkip = false;
+                            queueAdvancedByMonitor = false;
+                            logWarn(()-> "Auto-advance: dispatchMediaKeyEvent failed: " + e.getMessage());
                         }
                         return;
                     }
 
                     mainHandler.postDelayed(this, MONITOR_POLL_MS);
-                } catch (Exception ex) {
-                    Logger.printDebug(() -> "Auto-advance monitor error", ex);
+                } catch (Exception e) {
+                    logWarn(()-> "Auto-advance monitor error", e);
                     mainHandler.postDelayed(this, MONITOR_POLL_MS * 2);
                 }
             }
         };
         mainHandler.postDelayed(autoAdvanceMonitorRunnable, MONITOR_POLL_MS);
-        Logger.printDebug(() -> "Auto-advance monitor started");
+        logDebug(() -> "Auto-advance monitor started");
     }
 
     private static void stopAutoAdvanceMonitor() {
@@ -945,30 +1653,29 @@ public class CrossfadeManager {
         }
     }
 
+    // ------------------------------------------------------------------ //
+    //  Volume animation (configurable curve)                              //
+    // ------------------------------------------------------------------ //
+
     private static void abortCrossfadeNow() {
         if (!crossfadeInProgress) return;
+        logDebug(() -> "ABORT: " + dumpState());
 
         ExoPlayerAccess inp = crossfadeInPlayer;
         ExoPlayerAccess pending = pendingInPlayer;
         ExoPlayerAccess pendOut = pendingOutPlayer;
         PlayerCoordinatorAccess coord = activeCoordinator;
 
-        ExoPlayerAccess bestPlayer = null;
+        ExoPlayerAccess bestPlayer;
         boolean inpReady = false;
         if (inp != null) {
-            try {
-                inpReady = inp.patch_getPlaybackState() == STATE_READY;
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Ignoring in.patch_getPlaybackState exception", ex);
-            }
+            try { inpReady = inp.patch_getPlaybackState() == STATE_READY; }
+            catch (Exception ignored) {}
         }
         boolean pendingReady = false;
         if (pending != null) {
-            try {
-                pendingReady = pending.patch_getPlaybackState() == STATE_READY;
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Ignoring pending.patch_getPlaybackState exception", ex);
-            }
+            try { pendingReady = pending.patch_getPlaybackState() == STATE_READY; }
+            catch (Exception ignored) {}
         }
 
         if (pendingReady) {
@@ -977,12 +1684,13 @@ public class CrossfadeManager {
             bestPlayer = inp;
         } else if (pendOut != null) {
             bestPlayer = pendOut;
+        } else {
+            bestPlayer = null;
         }
 
         if (bestPlayer != null && coord != null) {
-            final ExoPlayerAccess bestPlayerFinal = bestPlayer;
-            Logger.printDebug(() -> "abortCrossfadeNow: snapping to player @"
-                    + System.identityHashCode(bestPlayerFinal));
+            logDebug(() -> "abortCrossfadeNow: snapping to player @"
+                    + System.identityHashCode(bestPlayer));
             try {
                 bestPlayer.patch_setVolume(1.0f);
                 bestPlayer.patch_setPlayWhenReady(true);
@@ -990,8 +1698,8 @@ public class CrossfadeManager {
                 VideoSurfaceAccess surface =
                         (VideoSurfaceAccess) coord.patch_getVideoSurface();
                 if (surface != null) surface.patch_setPlayerReference(bestPlayer);
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "abortCrossfadeNow: snap failed", ex);
+            } catch (Exception e) {
+                logWarn(()-> "abortCrossfadeNow: snap failed: " + e.getMessage());
             }
         }
 
@@ -1001,11 +1709,20 @@ public class CrossfadeManager {
 
         releaseAllFadingPlayers();
 
+        if (deferredSwapRunnable != null) {
+            mainHandler.removeCallbacks(deferredSwapRunnable);
+            deferredSwapRunnable = null;
+        }
         crossfadeInPlayer = null;
         pendingInPlayer = null;
         pendingOutPlayer = null;
         activeCoordinator = null;
         crossfadeInProgress = false;
+        autoAdvanceCrossfadeActive = false;
+        queueAdvancedByMonitor = false;
+        monitorCrossfadeActive = false;
+        outgoingFadePreStarted = false;
+        deferredSwapPending = false;
         currentFadeInVolume = 0.0f;
 
         if (audioModeWasForced) {
@@ -1019,29 +1736,21 @@ public class CrossfadeManager {
      * Fade-outs are managed independently by the fading loop.
      * Self-terminates if this player is superseded by a chained skip.
      */
-    private static void animateCrossfade(final ExoPlayerAccess inPlayer) {
-        // Re-enforce volume=0 before unmuting the player. For auto-advance,
-        // the native playNextInQueue runs after our hook and may reset the
-        // volume to 1.0. For manual-skip the native is blocked, so the
-        // initial patch_setVolume(0) holds — but we re-enforce here for both.
+    private static void animateCrossfade(final ExoPlayerAccess inPlayer, final long durationOverrideMs) {
+        // Re-enforce volume=0 before unmuting: for auto-advance, the native
+        // playNextInQueue runs after our hook and may reset volume to 1.0.
         try {
             inPlayer.patch_setVolume(0.0f);
-            Logger.printDebug(() -> "fade-in pre-start: @" + System.identityHashCode(inPlayer)
-                    + " volume enforced to 0 before setPlayWhenReady");
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "fade-in pre-start: failed to zero volume", ex);
+        } catch (Exception e) {
+            logWarn(()-> "fade-in pre-start: failed to zero volume: " + e.getMessage());
         }
 
-        try {
-            inPlayer.patch_setPlayWhenReady(true);
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Ignoring inPlayer.patch_setPlayWhenReady exception", ex);
-        }
+        try { inPlayer.patch_setPlayWhenReady(true); } catch (Exception ignored) {}
 
         final long startTime = System.currentTimeMillis();
-        final long duration = getCrossfadeDurationMs();
+        final long duration = (durationOverrideMs > 0) ? durationOverrideMs : getCrossfadeDurationMs();
 
-        Logger.printDebug(() -> "Crossfade fade-in started for @" + System.identityHashCode(inPlayer)
+        logDebug(() -> "Crossfade fade-in started for @" + System.identityHashCode(inPlayer)
                 + ", duration=" + duration + "ms"
                 + ", fading-out players=" + fadingOutPlayers.size());
 
@@ -1062,48 +1771,51 @@ public class CrossfadeManager {
                     inPlayer.patch_setVolume(inVol);
                     if (elapsed % 500 < TICK_MS) {
                         int inState = inPlayer.patch_getPlaybackState();
-                        Logger.printDebug(() -> String.format(Locale.US,
+                        logDebug(() -> String.format(Locale.US,
                                 "fade-in: t=%.2f inVol=%.2f(st=%d) fadingOut=%d",
                                 t, inVol, inState, fadingOutPlayers.size()));
                     }
-                } catch (Exception ex) {
-                    Logger.printException(() -> "Fade-in tick error", ex);
+                } catch (Exception e) {
+                    logError(()-> "Fade-in tick error", e);
                 }
 
                 if (t < 1.0f) {
                     mainHandler.postDelayed(this, TICK_MS);
                 } else {
-                    Logger.printDebug(() -> "Fade-in complete for @" + System.identityHashCode(inPlayer));
+                    logDebug(() -> "Fade-in complete for @" + System.identityHashCode(inPlayer));
                     inVideoMode = false;
                     currentFadeInVolume = 1.0f;
-                    try {
-                        inPlayer.patch_setVolume(1.0f);
-                    } catch (Exception ex) {
-                        Logger.printDebug(() -> "Ignoring inPlayer.patch_setVolume exception", ex);
-                    }
+                    try { inPlayer.patch_setVolume(1.0f); } catch (Exception ignored) {}
 
                     if (pendingInPlayer == null) {
                         crossfadeInProgress = false;
+                        autoAdvanceCrossfadeActive = false;
+                        queueAdvancedByMonitor = false;
+                        monitorCrossfadeActive = false;
                         crossfadeInPlayer = null;
                         activeCoordinator = null;
 
-                        if (audioModeWasForced) {
-                            audioModeWasForced = false;
-                            mainHandler.post(() -> {
-                                if (crossfadeInProgress) return;
-                                restoreVideoModeSilently();
-                            });
-                        }
+                        // Do NOT silently restore video mode here.  Stream loaded by the
+                        // crossfade is audio-only, so chxp must stay at audio-preferred to
+                        // keep the album-art UI subscriber in sync.  Restoring video would
+                        // make YTM's UI swap to the video-player fragment, which has no
+                        // stream to render → black box.  User can restore video by long-
+                        // pressing to pause crossfade (handled in shouldBlockVideoToggle).
+                        audioModeWasForced = false;
 
                         startAutoAdvanceMonitor();
                     } else {
-                        Logger.printDebug(() -> "Fade-in complete but pending player exists - "
-                                + "waiting for it to reach READY");
+                        logDebug(() -> "Fade-in complete but pending player exists — "
+                                                + "waiting for it to reach READY");
                     }
                 }
             }
         });
     }
+
+    // ------------------------------------------------------------------ //
+    //  Player creation via YTM factory                                    //
+    // ------------------------------------------------------------------ //
 
     private static ExoPlayerAccess createPlayerViaFactory(
             PlayerFactoryAccess factory,
@@ -1113,7 +1825,7 @@ public class CrossfadeManager {
             Object player = factory.patch_createPlayer(coordinator, loadControl, 0);
             if (player != null) {
                 playersCreated++;
-                Logger.printDebug(() -> "Factory created player @"
+                logDebug(() -> "Factory created player @"
                         + System.identityHashCode(player)
                         + " [created=" + playersCreated
                         + " released=" + playersReleased
@@ -1121,11 +1833,15 @@ public class CrossfadeManager {
                         + (playersCreated - playersReleased) + "]");
             }
             return (ExoPlayerAccess) player;
-        } catch (Exception ex) {
-            Logger.printException(() -> "createPlayerViaFactory failed", ex);
+        } catch (Exception e) {
+            logError(()-> "createPlayerViaFactory failed", e);
             return null;
         }
     }
+
+    // ------------------------------------------------------------------ //
+    //  Stack trace utilities                                               //
+    // ------------------------------------------------------------------ //
 
     private static boolean isFromTaskRemoval() {
         for (StackTraceElement frame : Thread.currentThread().getStackTrace()) {
@@ -1133,6 +1849,10 @@ public class CrossfadeManager {
         }
         return false;
     }
+
+    // ------------------------------------------------------------------ //
+    //  Coordinator traversal from atad                                    //
+    // ------------------------------------------------------------------ //
 
     /**
      * Quiet variant — no traversal logging.
@@ -1153,8 +1873,7 @@ public class CrossfadeManager {
                 return (PlayerCoordinatorAccess) chain;
             }
             return null;
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "getCoordinatorQuiet failure", ex);
+        } catch (Exception e) {
             return null;
         }
     }
@@ -1169,7 +1888,7 @@ public class CrossfadeManager {
             MedialibPlayerAccess atad = (MedialibPlayerAccess) atadInstance;
             Object chain = atad.patch_getPlayerChain();
             if (chain == null) {
-                Logger.printException(() -> "atad player chain is null");
+                logError(() -> "atad player chain is null");
                 return null;
             }
 
@@ -1181,23 +1900,264 @@ public class CrossfadeManager {
                 depth++;
             }
 
-
             final int depthFinal = depth;
-            final Object chainFinal = chain;
-            Logger.printDebug(() -> "Traversed " + depthFinal + " delegates → "
+            Object chainFinal = chain;
+            logDebug(() -> "Traversed " + depthFinal + " delegates → "
                     + chainFinal.getClass().getName());
 
             if (chain instanceof PlayerCoordinatorAccess) {
                 return (PlayerCoordinatorAccess) chain;
             }
 
-            final Object chainFinal2 = chain;
-            Logger.printException(() -> "Innermost class is not a PlayerCoordinatorAccess: "
-                    + chainFinal2.getClass().getName());
+            logError(() -> "Innermost class is not a PlayerCoordinatorAccess: "
+                    + chainFinal.getClass().getName());
             return null;
-        } catch (Exception ex) {
-            Logger.printException(() -> "getCoordinatorFromAtad error", ex);
+        } catch (Exception e) {
+            logError(()-> "getCoordinatorFromAtad error", e);
             return null;
+        }
+    }
+
+    // ------------------------------------------------------------------ //
+    //  Player lifecycle — release and fading loop                         //
+    // ------------------------------------------------------------------ //
+
+    /**
+     * InvocationHandler that forwards every method call to a captured real listener.
+     * Used by {@link #migrateListeners} to create proxy wrappers around migrated bxi objects.
+     *
+     * <p>Storing the target in a named field (rather than a lambda capture) lets
+     * {@link #unwrapForwardingTarget} recover the original listener and avoid
+     * proxy-of-proxy accumulation on consecutive skips.</p>
+     */
+    private static final class ForwardingHandler implements InvocationHandler {
+        final Object target;
+
+        ForwardingHandler(Object target) {
+            this.target = target;
+        }
+
+        @Override
+        public Object invoke(Object proxy, Method method, Object[] args)
+                throws Throwable {
+            try {
+                return method.invoke(target, args);
+            } catch (InvocationTargetException e) {
+                Throwable cause = e.getCause();
+                throw (cause != null) ? cause : e;
+            }
+        }
+    }
+
+    /**
+     * If {@code listener} is a {@link java.lang.reflect.Proxy} backed by a
+     * {@link ForwardingHandler}, returns the handler's {@code target} (unwrapping one
+     * layer). Recurses until the deepest non-proxy target is reached.
+     * Returns {@code listener} unchanged if it is not a forwarding proxy.
+     */
+    private static Object unwrapForwardingTarget(Object listener) {
+        while (Proxy.isProxyClass(listener.getClass())) {
+            InvocationHandler h = Proxy.getInvocationHandler(listener);
+            if (h instanceof ForwardingHandler) {
+                listener = ((ForwardingHandler) h).target;
+            } else {
+                break; // Foreign proxy — leave it alone.
+            }
+        }
+        return listener;
+    }
+
+    /**
+     * Creates a {@link java.lang.reflect.Proxy} that implements every interface
+     * found in {@code realListener}'s class hierarchy and forwards all calls to it.
+     *
+     * <p>The proxy has a different object identity from {@code realListener}, so
+     * {@link CopyOnWriteArraySet#add} always succeeds even when
+     * {@code realListener} is already in the set.  ExoPlayer's listener dispatch
+     * uses {@code invoke-interface} against the stored Object, so a Proxy that
+     * implements the same interfaces receives the call correctly.</p>
+     *
+     * @return the proxy, or {@code null} if no interfaces are discoverable (should never happen).
+     */
+    private static Object createForwardingProxy(Object realListener) {
+        Set<Class<?>> ifaceSet = new LinkedHashSet<>();
+        for (Class<?> cls = realListener.getClass(); cls != null && cls != Object.class;
+                cls = cls.getSuperclass()) {
+            ifaceSet.addAll(Arrays.asList(cls.getInterfaces()));
+        }
+        if (ifaceSet.isEmpty()) return null;
+        Class<?>[] ifaces = ifaceSet.toArray(new Class<?>[0]);
+        try {
+            return Proxy.newProxyInstance(
+                    realListener.getClass().getClassLoader(),
+                    ifaces,
+                    new ForwardingHandler(realListener));
+        } catch (Exception e) {
+            logWarn(()-> "createForwardingProxy failed: " + e.getMessage());
+            return null;
+        }
+    }
+
+    /**
+     * Transfers the coordinator's UI listener (and any other external Player.Listener
+     * registrations) from the outgoing player to the incoming player, then clears the
+     * outgoing player's listener set so it no longer emits events.
+     *
+     * <p>Called on 9.x only, at STATE_READY time (after the native
+     * stopVideo→loadVideo→playVideo chain has fully completed on the new player).
+     *
+     * <h3>Why this is needed on 9.x</h3>
+     * {@code patch_setPlayerWithBindings} writes the new player into the coordinator's
+     * {@code exoPlayer} field.  When the coordinator's internal player-transition method
+     * is not found at patch time, the bridge falls back to a raw {@code iput-object} that
+     * performs NO listener migration.  The coordinator's MedialibPlayerEvents listener
+     * (which drives the seekbar and play/pause state) therefore remains on the OLD player's
+     * {@link CopyOnWriteArraySet}, causing UI disconnection.
+     *
+     * <h3>Strategy (B2 proxy approach)</h3>
+     * <ol>
+     *   <li>Snapshot the old player's listener set (cats = ListenerHolder wrappers).</li>
+     *   <li>Clear the old player's set — silences it immediately.</li>
+     *   <li>Collect the real bxi from each cat, unwrapping any prior proxy layers
+     *       (avoids proxy-of-proxy accumulation on consecutive skips).</li>
+     *   <li>Build the set of bxi already registered on the new player (factory listeners)
+     *       so we can skip duplicates.</li>
+     *   <li>For each bxi NOT already in the new player: wrap it in a
+     *       {@link ForwardingHandler} {@link java.lang.reflect.Proxy} and register via
+     *       {@code cau.add}.  The proxy has a fresh object identity, bypassing
+     *       {@link CopyOnWriteArraySet}'s equality check, while
+     *       ExoPlayer's {@code invoke-interface} dispatch still reaches the real listener.</li>
+     *   <li>Fallback: if proxy creation or {@code cau.add} fails for every listener,
+     *       copy the original cat objects directly.</li>
+     * </ol>
+     */
+    @SuppressWarnings("unchecked")
+    private static void migrateListeners(ExoPlayerAccess fromPlayer, ExoPlayerAccess toPlayer) {
+        try {
+            Object fromSetObj = fromPlayer.patch_getListenerSet();
+            if (!(fromSetObj instanceof CopyOnWriteArraySet)) {
+                logWarn(()-> "migrateListeners: unexpected set type — clearing only");
+                detachPlayerListeners(fromPlayer);
+                return;
+            }
+            CopyOnWriteArraySet<Object> from = (CopyOnWriteArraySet<Object>) fromSetObj;
+
+            // Snapshot before clearing so we have the original cat objects for the fallback.
+            List<Object> catSnapshot = new ArrayList<>(from);
+
+            // Extract real listeners (unwrap any proxy layers from prior skips).
+            List<Object> realListeners = new ArrayList<>(catSnapshot.size());
+            for (Object cat : catSnapshot) {
+                if (cat instanceof ListenerWrapperAccess) {
+                    Object raw = ((ListenerWrapperAccess) cat).patch_getWrappedListener();
+                    if (raw != null) realListeners.add(unwrapForwardingTarget(raw));
+                }
+            }
+
+            // Silence old player immediately.
+            from.clear();
+
+            // Inspect new player's existing listener set.
+            Object toSetObj = toPlayer.patch_getListenerSet();
+            CopyOnWriteArraySet<Object> toSet =
+                    (toSetObj instanceof CopyOnWriteArraySet)
+                    ? (CopyOnWriteArraySet<Object>) toSetObj : null;
+            int toSizeBefore = toSet != null ? toSet.size() : -1;
+
+            // Build the set of real listeners already in the new player so we can skip
+            // factory duplicates (they are already registered at construction time).
+            Set<Object> alreadyPresent = new HashSet<>();
+            if (toSet != null) {
+                for (Object cat : new ArrayList<>(toSet)) {
+                    if (cat instanceof ListenerWrapperAccess) {
+                        Object raw = ((ListenerWrapperAccess) cat).patch_getWrappedListener();
+                        if (raw != null) alreadyPresent.add(unwrapForwardingTarget(raw));
+                    }
+                }
+            }
+
+            // Identify and proxy only the coordinator's UI listener.
+            //
+            // Two filter passes:
+            //  1. Identity check against new player's factory cats (shared-static bxi):
+            //     filters factory listeners whose bxi is the same instance across all players.
+            //  2. Coordinator-identity check (coordinatorListenerBxi):
+            //     filters per-player factory listeners whose bxi is a fresh instance per
+            //     ExoPlayer and therefore NOT caught by pass 1.  Once we identify the
+            //     coordinator bxi on the first crossfade we record it and only migrate
+            //     that exact object on all subsequent crossfades.
+            int registered = 0;
+            int skipped = 0;
+            for (Object real : realListeners) {
+                if (alreadyPresent.contains(real)) {
+                    // Shared-static factory listener — already in new player, skip.
+                    skipped++;
+                    continue;
+                }
+                if (coordinatorListenerBxi != null && real != coordinatorListenerBxi) {
+                    // Per-player factory listener (different instance per ExoPlayer).
+                    // Migrating it would leak old-player state and cause accumulation.
+                    skipped++;
+                    continue;
+                }
+                // Either coordinatorListenerBxi is null (first crossfade) or real IS it.
+                Object proxy = createForwardingProxy(real);
+                if (proxy == null) {
+                    logWarn(()-> "migrateListeners: proxy creation returned null for "
+                            + real.getClass().getName());
+                    continue;
+                }
+                try {
+                    toPlayer.patch_addListener(proxy);
+                    registered++;
+                    if (coordinatorListenerBxi == null) {
+                        // Record the coordinator bxi on first successful migration.
+                        coordinatorListenerBxi = real;
+                        logDebug(() -> "migrateListeners: identified coordinator bxi: "
+                                + real.getClass().getName()
+                                + "@" + System.identityHashCode(real));
+                    }
+                } catch (Exception e) {
+                    logWarn(()-> "migrateListeners: cau.add threw: " + e.getMessage());
+                }
+            }
+
+            if (registered > 0 || skipped > 0) {
+                final int registeredFinal = registered;
+                final int skippedFinal = skipped;
+                logDebug(() -> "migrateListeners: registered=" + registeredFinal
+                        + " skipped=" + skippedFinal
+                        + " total=" + realListeners.size()
+                        + " toPlayer had=" + toSizeBefore
+                        + " @" + System.identityHashCode(fromPlayer)
+                        + " → @" + System.identityHashCode(toPlayer));
+            } else {
+                // All proxy creations or cau.add calls failed — fall back:
+                // copy the original cat objects directly into the new player's set.
+                logWarn(()-> "migrateListeners: proxy path failed — copying " + catSnapshot.size()
+                        + " original cats to toPlayer (had " + toSizeBefore + ")");
+                if (toSet != null) toSet.addAll(catSnapshot);
+            }
+        } catch (Exception e) {
+            logWarn(()-> "migrateListeners failed", e);
+            detachPlayerListeners(fromPlayer);
+        }
+    }
+
+    /**
+     * Clears the external Player.Listener set on a player being retired from active duty.
+     * Used as a fallback or for players that were never promoted (chained skips).
+     */
+    private static void detachPlayerListeners(ExoPlayerAccess player) {
+        try {
+            Object listenerSet = player.patch_getListenerSet();
+            if (listenerSet instanceof CopyOnWriteArraySet) {
+                ((CopyOnWriteArraySet<?>) listenerSet).clear();
+                logDebug(() -> "Detached @" + System.identityHashCode(player)
+                        + " from UI listeners (cleared listener set)");
+            }
+        } catch (Exception e) {
+            logWarn(()-> "Could not detach player from UI listeners", e);
         }
     }
 
@@ -1205,7 +2165,7 @@ public class CrossfadeManager {
         if (p == null) return;
 
         playersReleased++;
-        Logger.printDebug(() -> "releasePlayer: @" + System.identityHashCode(p)
+        logDebug(() -> "releasePlayer: @" + System.identityHashCode(p)
                 + " [created=" + playersCreated + " released=" + playersReleased
                 + " outstanding=" + (playersCreated - playersReleased) + "]");
 
@@ -1216,16 +2176,37 @@ public class CrossfadeManager {
             savedDlt = callback.patch_getDlt();
         }
 
-        try {
-            p.patch_setDltCallback(null);
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Ignoring p.patch_setDltCallback exception", ex);
+        try { p.patch_setDltCallback(null); } catch (Exception ignored) {}
+
+        // 9.x: detach coordinator_cwh from the player's crh.h event dispatch set at the last
+        // possible moment — just before release(). This prevents the release from firing
+        // isPlayingChanged(false) through crh.h → cwh.b → MediaSession (which would show PAUSED
+        // even though the new player is already playing). Doing this at release time (not at swap
+        // time) preserves normal pause/seek/position events on the active player during crossfade.
+        if (is9x) {
+            try {
+                p.patch_detachCwhFromEventDispatch();
+                logDebug(() -> "releasePlayer: 9.x detached cwh from event dispatch on @"
+                        + System.identityHashCode(p));
+            } catch (Exception e) {
+                logDebug(() -> "releasePlayer: 9.x cwh event dispatch detach failed: " + e.getMessage());
+            }
         }
 
+        // 9.x: suppress cwh.U() for the duration of this release.
+        // crh.P() calls cwh.U() on the SHARED singleton cwh, which asynchronously calls
+        // cwh.b.d() via a posted Runnable (cvu.run()). cwh.b.d() clears the CopyOnWriteArraySet
+        // that holds auih.k (MediaSession listener) and sets cgd.i=true, preventing future adds.
+        // After this, NO player can send events to MediaSession (pause/seek/position all frozen).
+        // The injected early-return in cwh.U()V checks suppressCwhU and skips posting the
+        // Runnable — preserving cwh.b and all its listeners for the new (incoming) player.
+        if (is9x) suppressCwhU = true;
         try {
             p.patch_release();
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "releasePlayer: release() threw exception", ex);
+        } catch (Exception e) {
+            logDebug(() -> "releasePlayer: release() threw: " + e.getMessage());
+        } finally {
+            if (is9x) suppressCwhU = false;
         }
 
         if (callback != null) {
@@ -1233,11 +2214,11 @@ public class CrossfadeManager {
             Object postDlt = callback.patch_getDlt();
             if (savedCqb != null && postCqb == null) {
                 callback.patch_setCqb(savedCqb);
-                Logger.printDebug(() -> "releasePlayer: restored shared cqb");
+                logDebug(() -> "releasePlayer: restored shared cqb");
             }
             if (savedDlt != null && postDlt == null) {
                 callback.patch_setDlt(savedDlt);
-                Logger.printDebug(() -> "releasePlayer: restored shared dlt");
+                logDebug(() -> "releasePlayer: restored shared dlt");
             }
         }
     }
@@ -1245,11 +2226,7 @@ public class CrossfadeManager {
     private static void releaseAllFadingPlayers() {
         synchronized (fadingOutPlayers) {
             for (FadingPlayer fp : fadingOutPlayers) {
-                try {
-                    fp.player.patch_setVolume(0.0f);
-                } catch (Exception ex) {
-                    Logger.printDebug(() -> "Ignoring fp.player.patch_setVolume exception", ex);
-                }
+                try { fp.player.patch_setVolume(0.0f); } catch (Exception ignored) {}
                 releasePlayer(fp.player);
             }
             fadingOutPlayers.clear();
@@ -1262,21 +2239,29 @@ public class CrossfadeManager {
      * Used on errors and when crossfade is disabled/paused.
      */
     private static void cleanupAllPlayers() {
+        logError(() -> "CLEANUP (emergency): " + dumpState());
+        if (deferredSwapRunnable != null) {
+            mainHandler.removeCallbacks(deferredSwapRunnable);
+            deferredSwapRunnable = null;
+        }
         releaseAllFadingPlayers();
         ExoPlayerAccess pi = pendingInPlayer;
-        if (pi != null) {
-            releasePlayer(pi);
-            pendingInPlayer = null;
-        }
+        if (pi != null) { releasePlayer(pi); pendingInPlayer = null; }
         ExoPlayerAccess po = pendingOutPlayer;
-        if (po != null) {
-            releasePlayer(po);
-            pendingOutPlayer = null;
-        }
+        if (po != null) { releasePlayer(po); pendingOutPlayer = null; }
         crossfadeInPlayer = null;
         activeCoordinator = null;
         crossfadeInProgress = false;
+        if (autoAdvanceCrossfadeActive) {
+            logWarn(()-> "cleanupAllPlayers: clearing autoAdvanceCrossfadeActive mid-fade " + dumpState());
+        }
+        autoAdvanceCrossfadeActive = false;
+        queueAdvancedByMonitor = false;
+        monitorCrossfadeActive = false;
+        outgoingFadePreStarted = false;
+        deferredSwapPending = false;
         currentFadeInVolume = 0.0f;
+        coordinatorListenerBxi = null;
     }
 
     /**
@@ -1298,34 +2283,30 @@ public class CrossfadeManager {
                 FadingPlayer fp = it.next();
                 float vol = fp.currentVolume();
                 int playerState = -1;
-                try {
-                    playerState = fp.player.patch_getPlaybackState();
-                } catch (Exception ex) {
-                    Logger.printDebug(() -> "Ignoring fp.player.patch_getPlaybackState exception", ex);
-                }
-                final int playerStateFinal = playerState;
-
+                try { playerState = fp.player.patch_getPlaybackState(); } catch (Exception ignored) {}
                 try {
                     fp.player.patch_setVolume(Math.max(0.0f, vol));
                     long elapsed = System.currentTimeMillis() - fp.startTimeMs;
                     if (elapsed % 500 < TICK_MS) {
-                        Logger.printDebug(() -> String.format(Locale.US,
+                        final int playerStateFinal = playerState;
+                        logDebug(() -> String.format(Locale.US,
                                 "fade-out: @%d vol=%.2f state=%d elapsed=%dms",
                                 System.identityHashCode(fp.player), vol, playerStateFinal, elapsed));
                     }
-                } catch (Exception ex) {
-                    Logger.printDebug(() -> "fade-out setVolume threw: " + ex.getMessage()
+                } catch (Exception e) {
+                    final int playerStateFinal = playerState;
+                    logWarn(()-> "fade-out setVolume threw: " + e.getMessage()
                             + " player=@" + System.identityHashCode(fp.player)
                             + " state=" + playerStateFinal);
                 }
 
                 if (fp.isComplete()) {
-                    try {
-                        fp.player.patch_setVolume(0.0f);
-                    } catch (Exception ex) {
-                        Logger.printDebug(() -> "Ignoring fp.player.patch_setVolume exception", ex);
-                    }
-                    releasePlayer(fp.player);
+                    try { fp.player.patch_setVolume(0.0f); } catch (Exception ignored) {}
+                    // Defer the release so ExoPlayer's AudioTrack buffer can drain the
+                    // now-silent frames before the player is torn down — prevents an
+                    // abrupt cut/click when buffered non-zero-volume audio gets discarded.
+                    final ExoPlayerAccess toRelease = fp.player;
+                    mainHandler.postDelayed(() -> releasePlayer(toRelease), RELEASE_DRAIN_DELAY_MS);
                     it.remove();
                 }
             }
@@ -1335,57 +2316,222 @@ public class CrossfadeManager {
             mainHandler.postDelayed(CrossfadeManager::tickFadingLoop, TICK_MS);
         } else {
             fadingLoopRunning = false;
-            Logger.printDebug(() -> "Fading loop stopped — all fade-outs complete");
+            logDebug(() -> "Fading loop stopped — all fade-outs complete");
         }
     }
 
-    /**
-     * Injection point.
-     */
+    // ------------------------------------------------------------------ //
+    //  Activity lifecycle                                                 //
+    // ------------------------------------------------------------------ //
+
     public static void onActivityStop() {
-        if (!CROSSFADE_ENABLED) return;
-
         activityRunning = false;
-        // Do not stop the auto-advance monitor here — crossfade must continue
-        // working when the screen is locked or the player is minimized (#1311).
-        if (crossfadeInProgress) {
-            Logger.printDebug(() -> "onActivityStop: aborting crossfade");
-            abortCrossfadeNow();
-        }
+        logInfo(() -> "onActivityStop");
+        // Do not stop the auto-advance monitor here — crossfade should continue
+        // even when the screen locks or the app is minimised (#1311).
+        //
+        // Do not abort an in-progress crossfade either — YTM is a music app with
+        // a foreground service, so playback continues after onStop. The fade
+        // animations keep ticking on mainHandler and complete naturally in the
+        // background. Aborting here caused the outgoing track to be released
+        // mid-fade when the user pressed the power button during a crossfade
+        // (#1442).
     }
 
     /**
-     * Injection point.
+     * Called when the MusicActivity is being destroyed (swipe-clear from recents,
+     * explicit finish, OS reclaim).  Distinct from {@link #onActivityStop} which
+     * also fires on screen-lock and minimize.  The process itself may survive via
+     * the foreground service, so we must clean up our static state — otherwise
+     * the next activity instance inherits orphaned references to released or
+     * unreachable players.
+     *
+     * <p>We do NOT release {@code crossfadeInPlayer} because it is the active
+     * coordinator player which YTM owns and manages across activity recreation.
+     * We only release the players we created (factory pendings + fade-outs) and
+     * clear our state flags.
      */
-    public static void onActivityStart() {
-        if (!CROSSFADE_ENABLED) return;
+    public static void onActivityDestroy() {
+        activityRunning = false;
+        if (!crossfadeInProgress
+                && pendingInPlayer == null
+                && pendingOutPlayer == null
+                && fadingOutPlayers.isEmpty()) {
+            logInfo(() -> "onActivityDestroy — no in-flight crossfade state to release");
+            return;
+        }
+        logInfo(() -> "onActivityDestroy — releasing in-flight crossfade state " + dumpState());
+        stopAutoAdvanceMonitor();
+        if (deferredSwapRunnable != null) {
+            mainHandler.removeCallbacks(deferredSwapRunnable);
+            deferredSwapRunnable = null;
+        }
+        releaseAllFadingPlayers();
+        ExoPlayerAccess pi = pendingInPlayer;
+        if (pi != null) { releasePlayer(pi); pendingInPlayer = null; }
+        ExoPlayerAccess po = pendingOutPlayer;
+        if (po != null) { releasePlayer(po); pendingOutPlayer = null; }
+        crossfadeInPlayer = null;
+        activeCoordinator = null;
+        crossfadeInProgress = false;
+        autoAdvanceCrossfadeActive = false;
+        queueAdvancedByMonitor = false;
+        monitorTriggeredSkip = false;
+        monitorCrossfadeActive = false;
+        outgoingFadePreStarted = false;
+        deferredSwapPending = false;
+        currentFadeInVolume = 0.0f;
+        coordinatorListenerBxi = null;
+    }
 
+    public static void onActivityStart() {
         activityRunning = true;
-        if (!sessionPaused.get()) {
+        logInfo(() -> "onActivityStart");
+
+        // Pause is per-session: reset on every activity start so a stale paused state
+        // can't survive a process that wasn't actually killed on swipe.
+        if (isCrossfadePaused) {
+            logDebug(() -> "onActivityStart: auto-resetting isCrossfadePaused to false");
+            isCrossfadePaused = false;
+        }
+
+        // Proactive attach: hot-path hooks alone leave the handler unattached on a
+        // freshly-recreated activity until the user does something else first.
+        tryAttachLongPressHandler();
+
+        if (isEnabled() && !isCrossfadePaused) {
             startAutoAdvanceMonitor();
         }
     }
 
     public static boolean isSessionPaused() {
-        return sessionPaused.get();
+        return isCrossfadePaused;
     }
 
+    private static volatile long lastCastCheckMs = 0;
+    private static volatile boolean lastCastResult = false;
+    private static final long CAST_CHECK_TTL_MS = 250;
+
+    /**
+     * #1549: Detect when audio is being routed to a cast/mirror receiver
+     * (Chromecast, Samsung audio mirroring, HDMI mirror, etc.). Crossfade is
+     * disabled in those scenarios because our coordinator player swap causes
+     * MediaSession state thrashing (PAUSED → PLAYING → PAUSED flicker) that
+     * the cast/mirror layer forwards to the receiver as PAUSE+PLAY commands.
+     * Forgiving receivers (e.g. Google Home Mini) absorb this as a brief
+     * audio glitch; stricter ones (e.g. Sony AVRs) treat it as session-end
+     * and drop the cast connection entirely.
+     *
+     * <p>This skip is the defensive fix.  The deeper fix would intercept the
+     * MediaSession state writes during our swap so the cast layer never sees
+     * the flicker — see future task.
+     *
+     * <p>Whitelist of device types that trigger the skip: HDMI, HDMI_ARC,
+     * HDMI_EARC, REMOTE_SUBMIX (Samsung audio mirroring), IP (network audio),
+     * BUS (system bus devices).  Bluetooth A2DP, wired headsets, USB audio,
+     * and BLE audio are NOT in this list — those tolerate the swap fine.
+     *
+     * <p>Returns false on API < 28 (the {@link AudioPlaybackConfiguration#getAudioDeviceInfo()}
+     * method isn't available); pre-Pie devices are rare enough that we accept
+     * the cast-disconnect risk for them.
+     *
+     * <p>Cached with a {@value #CAST_CHECK_TTL_MS}ms TTL since this is queried
+     * on every crossfade-engagement hook fire (manual skip, auto-advance,
+     * monitor tick).
+     */
+    @SuppressWarnings("deprecation")
+    private static boolean isAudioRoutedToCast() {
+        if (Build.VERSION.SDK_INT < 28) return false;
+
+        long now = System.currentTimeMillis();
+        if (now - lastCastCheckMs < CAST_CHECK_TTL_MS) {
+            return lastCastResult;
+        }
+        lastCastCheckMs = now;
+
+        boolean casting = false;
+        StringBuilder probe = new StringBuilder();
+        try {
+            Context ctx = Utils.getContext();
+            if (ctx != null) {
+                // Primary signal: MediaRouter says the selected audio route is REMOTE.
+                // Definition (per Android docs): "the route controls playback on a
+                // remote device" — i.e. decoding happens on the receiver, not locally.
+                // This is exactly the boundary that matters for #1549: when audio is
+                // decoded remotely, the receiver runs its own state machine and our
+                // coordinator-swap MediaSession flicker corrupts its session.  When
+                // decoding happens locally (built-in speaker, BT A2DP, wired, USB),
+                // crossfade works fine — so we LEAVE those alone.
+                //
+                // MediaRouter is deprecated since API 30 but still
+                // works through API 36+.  The newer MediaRouter2 lives in a separate
+                // module we'd have to bring in via the patcher classpath; deprecated
+                // is the simpler choice here.
+                MediaRouter mr = (MediaRouter) ctx.getSystemService(Context.MEDIA_ROUTER_SERVICE);
+                if (mr != null) {
+                    MediaRouter.RouteInfo selected = mr.getSelectedRoute(MediaRouter.ROUTE_TYPE_LIVE_AUDIO);
+                    if (selected != null) {
+                        int pt = selected.getPlaybackType();
+                        probe.append("route{name=").append(selected.getName(ctx))
+                                .append(",pbType=").append(pt).append("} ");
+                        if (pt == MediaRouter.RouteInfo.PLAYBACK_TYPE_REMOTE) {
+                            casting = true;
+                        }
+                    } else {
+                        probe.append("route{null} ");
+                    }
+                }
+                // Secondary signal: AudioDeviceInfo-level remote outputs (HDMI mirror,
+                // explicit remote-submix, IP audio, system bus).  These are caught even
+                // if MediaRouter doesn't reflect the routing.
+                if (!casting) {
+                    AudioManager am = (AudioManager) ctx.getSystemService(Context.AUDIO_SERVICE);
+                    if (am != null) {
+                        // noinspection WrongConstant
+                        for (AudioDeviceInfo info : am.getDevices(AudioManager.GET_DEVICES_OUTPUTS)) {
+                            int type = info.getType();
+                            probe.append("dev{type=").append(type)
+                                    .append(",id=").append(info.getId()).append("} ");
+                            if (type == AudioDeviceInfo.TYPE_HDMI
+                                    || type == AudioDeviceInfo.TYPE_HDMI_ARC
+                                    || type == 29 /* TYPE_HDMI_EARC, API 31+ */
+                                    || type == AudioDeviceInfo.TYPE_REMOTE_SUBMIX
+                                    || type == AudioDeviceInfo.TYPE_IP
+                                    || type == AudioDeviceInfo.TYPE_BUS) {
+                                casting = true;
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (Exception e) {
+            logDebug(() -> "isAudioRoutedToCast check failed: " + e.getMessage());
+        }
+
+        if (casting != lastCastResult) {
+            final boolean castingFinal = casting;
+            logDebug(() -> "Cast routing " + (castingFinal ? "ENGAGED" : "RELEASED")
+                    + " — crossfade " + (castingFinal ? "disabled" : "re-enabled")
+                    + " [" + probe.toString().trim() + "]");
+        }
+
+        lastCastResult = casting;
+        return casting;
+    }
+
+    @SuppressWarnings("deprecation")
     @SuppressLint("MissingPermission")
     public static void toggleSessionPause() {
-        boolean current;
-        boolean isNowPaused;
-
-        do {
-            current = sessionPaused.get();
-            isNowPaused = !current;
-        } while (!sessionPaused.compareAndSet(current, isNowPaused));
-
-        boolean finalIsNowPaused = isNowPaused;
-        Logger.printDebug(() -> "Session " + (finalIsNowPaused ? "PAUSED" : "RESUMED")
+        isCrossfadePaused = !isCrossfadePaused;
+        logDebug(() -> "Session " + (isCrossfadePaused ? "PAUSED" : "RESUMED")
                 + " [inVideo=" + isCurrentlyInVideoMode()
                 + " inProgress=" + crossfadeInProgress + "]");
 
-        if (isNowPaused) {
+        if (isCrossfadePaused) {
+            // Suppress abortCrossfadeNow's silent restore; video resync is the user's
+            // responsibility via the audio/video toggle (handled in shouldBlockVideoToggle).
+            audioModeWasForced = false;
             abortCrossfadeNow();
             stopAutoAdvanceMonitor();
         } else {
@@ -1411,29 +2557,36 @@ public class CrossfadeManager {
                                     VibrationEffect.DEFAULT_AMPLITUDE);
                     vib.vibrate(effect);
                 }
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Ignoring vibration exception", ex);
-            }
+            } catch (Exception ignored) {}
 
-            Utils.showToastShort(str(isNowPaused
+            Utils.showToastShort(str(isCrossfadePaused
                     ? "morphe_music_crossfade_paused_toast"
                     : "morphe_music_crossfade_resumed_toast"));
         }
     }
 
     public static boolean isCrossfadeActive() {
-        return !sessionPaused.get();
+        return isEnabled() && !isCrossfadePaused;
     }
 
     /**
-     * Injection point.
+     * Called from the nba constructor hook so we always have a valid reference
+     * to the audio/video toggle object even before any toggle interaction fires.
+     * This ensures forceAudioModeIfNeeded() can act on songs loaded from the main
+     * feed without requiring the user to trigger an explicit audio/video toggle.
+     */
+    public static void onNbaCreated(Object nba) {
+        lastNbaRef = new WeakReference<>(nba);
+        logDebug(() -> "onNbaCreated: nba captured @" + System.identityHashCode(nba)
+                + " class=" + nba.getClass().getSimpleName());
+    }
+
+    /**
      * Called by the bytecode hook on the audio/video toggle.
      * Blocks audio→video transitions when crossfade is active.
      * Video→audio transitions are always allowed.
      */
     public static boolean shouldBlockVideoToggle(Object nba) {
-        if (!CROSSFADE_ENABLED) return false;
-
         lastNbaRef = new WeakReference<>(nba);
         if (internalToggle) return false;
         tryAttachLongPressHandler();
@@ -1441,46 +2594,147 @@ public class CrossfadeManager {
             VideoToggleAccess toggle = (VideoToggleAccess) nba;
             boolean isAudioMode = toggle.patch_isAudioMode();
 
-            Logger.printDebug(() -> "videoToggle: isAudioMode=" + isAudioMode
-                    + " paused=" + sessionPaused.get() + " inVideoMode(before)=" + inVideoMode);
+            logDebug(() -> "videoToggle: isAudioMode=" + isAudioMode
+                    + " enabled=" + isEnabled() + " paused=" + isCrossfadePaused
+                    + " inVideoMode(before)=" + inVideoMode);
 
-            if (sessionPaused.get()) {
-                if (!isAudioMode) {
-                    manualToggleSuppressionUntil = System.currentTimeMillis() + 500;
-                }
-                Logger.printDebug(() -> "videoToggle → ALLOW (crossfade inactive)");
+            if (!isEnabled()) {
+                logDebug(() -> "videoToggle → ALLOW (crossfade disabled)");
                 return false;
             }
 
+            // Paused: audio→video must go through patch_restoreVideoMode (broadcast).  The
+            // natural toggle's broadcast can no-op at subscriber level because prior silent
+            // forceAudioModeSilent left subscribers' cached state out of sync with chxp.
+            // Video→audio direction works via the natural toggle.
+            if (isCrossfadePaused) {
+                if (isAudioMode) {
+                    try {
+                        ((VideoToggleAccess) nba).patch_restoreVideoMode();
+                        inVideoMode = true;
+                        audioModeWasForced = false;
+                        manualToggleSuppressionUntil = System.currentTimeMillis() + 500;
+                        logDebug(() -> "videoToggle → INTERCEPTED (audio→video while paused) — applied broadcast restoreVideoMode");
+                        return true;
+                    } catch (Exception e) {
+                        logWarn(()-> "videoToggle intercept failed, allowing natural toggle: " + e.getMessage());
+                        return false;
+                    }
+                }
+                manualToggleSuppressionUntil = System.currentTimeMillis() + 500;
+                logDebug(() -> "videoToggle → ALLOW (video→audio while paused)");
+                return false;
+            }
+
+            // Active crossfade: block audio→video, allow video→audio.
             if (isAudioMode) {
-                Logger.printDebug(() -> "videoToggle → BLOCK (audio→video while crossfade active)");
+                logDebug(() -> "videoToggle → BLOCK (audio→video while crossfade active)");
                 Utils.showToastShort(str("morphe_music_crossfade_video_mode_disabled_toast"));
                 return true;
             }
 
             inVideoMode = false;
             manualToggleSuppressionUntil = System.currentTimeMillis() + 500;
-            Logger.printDebug(() -> "videoToggle → ALLOW (video→audio, suppressing crossfade for 500ms)");
+            logDebug(() -> "videoToggle → ALLOW (video→audio, suppressing crossfade for 500ms)");
             return false;
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not check video toggle state", ex);
+        } catch (Exception e) {
+            logWarn(()-> "Could not check video toggle state", e);
             return false;
         }
     }
 
+
+    /**
+     * Walks the delegate chain from the last known atad instance looking for a
+     * {@link VideoToggleAccess} node (the nba class). Updates {@link #lastNbaRef} on success.
+     *
+     * <p>This is a fallback for sessions where {@link #shouldBlockVideoToggle} was never called
+     * (e.g., songs loaded from the main feed without any audio/video toggle interaction).
+     * Returns the nba object, or null if not found in the chain.</p>
+     */
+    private static Object findNbaInChain() {
+        Object atad = lastAtadRef != null ? lastAtadRef.get() : null;
+        if (atad == null) return null;
+        try {
+            MedialibPlayerAccess player = (MedialibPlayerAccess) atad;
+            Object chain = player.patch_getPlayerChain();
+            int depth = 0;
+            while (chain != null) {
+                if (chain instanceof VideoToggleAccess) {
+                    final int depthFinal = depth;
+                    final Object chainFinal = chain;
+                    logDebug(() -> "findNbaInChain: found nba @" + System.identityHashCode(chainFinal)
+                            + " class=" + chainFinal.getClass().getSimpleName()
+                            + " at depth=" + depthFinal);
+                    lastNbaRef = new WeakReference<>(chain);
+                    return chain;
+                }
+                if (!(chain instanceof DelegateAccess)) break;
+                Object next = ((DelegateAccess) chain).patch_getDelegate();
+                if (next == null || next == chain) break;
+                chain = next;
+                depth++;
+            }
+        } catch (Exception e) {
+            logDebug(() -> "findNbaInChain error: " + e.getMessage());
+        }
+        logWarn(()-> "findNbaInChain: nba not found in delegate chain — audio/video mode unknown");
+        return null;
+    }
+
+
     private static void forceAudioModeIfNeeded() {
         Object nba = lastNbaRef.get();
-        if (nba == null) return;
+        if (nba == null) {
+            nba = findNbaInChain();
+        }
+        if (nba == null) {
+            logWarn(()-> "forceAudioModeIfNeeded: nba not found — cannot force audio mode. "
+                    + "Video mode may be active. " + dumpState());
+            return;
+        }
         try {
             VideoToggleAccess toggle = (VideoToggleAccess) nba;
             if (!toggle.patch_isAudioMode()) {
                 toggle.patch_forceAudioModeSilent();
                 inVideoMode = false;
                 audioModeWasForced = true;
-                Logger.printDebug(() -> "Silently forced audio mode (no reactive broadcast to nmi)");
+                logDebug(() -> "Silently forced audio mode (no reactive broadcast to nmi)");
             }
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not force audio mode", ex);
+        } catch (Exception e) {
+            logWarn(()-> "Could not force audio mode: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Broadcast variant of forceAudioModeIfNeeded — fires the full nmi reactive
+     * broadcast so all YTM subscribers (MediaView, album-art ImageView, content-mode
+     * UI) reconcile their cached state.  Use this when crossfade is becoming active
+     * for the user's session (onPlayVideo) so the UI properly switches to album-art
+     * display.  Cost: brief stream reload to the audio-only stream.  Cannot be used
+     * during the crossfade SWAP itself (onBeforeStopVideo / onBeforePlayNext) because
+     * the broadcast triggers an nmi-driven stopVideo(5) jump that would re-enter our
+     * own hook and corrupt the swap-in-progress.
+     */
+    private static void forceAudioModeBroadcastIfNeeded() {
+        Object nba = lastNbaRef.get();
+        if (nba == null) {
+            nba = findNbaInChain();
+        }
+        if (nba == null) {
+            logWarn(()-> "forceAudioModeBroadcastIfNeeded: nba not found — cannot force audio mode");
+            return;
+        }
+        try {
+            VideoToggleAccess toggle = (VideoToggleAccess) nba;
+            if (!toggle.patch_isAudioMode()) {
+                toggle.patch_forceAudioMode();
+                inVideoMode = false;
+                audioModeWasForced = true;
+                logDebug(() -> "Broadcast forced audio mode — nmi subscribers will reconcile, song will reload as audio-only");
+            }
+        } catch (Exception e) {
+            logWarn(()-> "Could not broadcast force audio mode: " + e.getMessage());
         }
     }
 
@@ -1490,25 +2744,34 @@ public class CrossfadeManager {
         try {
             ((VideoToggleAccess) nba).patch_restoreVideoModeSilent();
             inVideoMode = true;
-            Logger.printDebug(() -> "Silently restored video mode preference (ready for next crossfade)");
-        } catch (Exception ex) {
-            Logger.printDebug(() -> "Could not restore video mode", ex);
+            logDebug(() -> "Silently restored video mode preference (ready for next crossfade)");
+        } catch (Exception e) {
+            logWarn(()-> "Could not restore video mode: " + e.getMessage());
         }
     }
 
     private static boolean isCurrentlyInVideoMode() {
         Object nba = lastNbaRef != null ? lastNbaRef.get() : null;
+        if (nba == null) {
+            nba = findNbaInChain();
+        }
         if (nba != null) {
             try {
                 VideoToggleAccess toggle = (VideoToggleAccess) nba;
                 boolean isAudio = toggle.patch_isAudioMode();
                 inVideoMode = !isAudio;
                 return !isAudio;
-            } catch (Exception ex) {
-                Logger.printDebug(() -> "Could not query live video mode", ex);
+            } catch (Exception e) {
+                logDebug(() -> "Could not query live video mode: " + e.getMessage());
             }
         }
+        logWarn(()-> "isCurrentlyInVideoMode: nba not in chain — returning cached inVideoMode=" + inVideoMode
+                + " (may be stale)");
         return inVideoMode;
+    }
+
+    private static boolean isEnabled() {
+        return Settings.CROSSFADE_ENABLED.get();
     }
 
     private static boolean isSessionControlEnabled() {
@@ -1523,6 +2786,10 @@ public class CrossfadeManager {
         return 800;
     }
 
+    // ------------------------------------------------------------------ //
+    //  Long-press shuffle button to toggle crossfade session               //
+    // ------------------------------------------------------------------ //
+
     private static final String[] SHUFFLE_IDS = {
             "queue_shuffle_button",
             "queue_shuffle",
@@ -1532,172 +2799,138 @@ public class CrossfadeManager {
 
     private static Runnable pendingLongPress;
     private static volatile boolean longPressHandled = false;
-    private static Runnable longPressAttachRetry;
+
+    /** Tracks the currently-registered global layout listener so we can remove it. */
+    private static android.view.ViewTreeObserver.OnGlobalLayoutListener longPressLayoutListener;
+    private static WeakReference<View> longPressLayoutListenerHost = new WeakReference<>(null);
+
+    /** Debounce: skip duplicate posts when hot-path hooks fire in rapid succession. */
+    private static volatile boolean pendingLongPressAttach = false;
 
     private static void tryAttachLongPressHandler() {
-        if (!isSessionControlEnabled()) return;
+        if (!isSessionControlEnabled() || !isEnabled()) return;
+        if (pendingLongPressAttach) return;
+        pendingLongPressAttach = true;
 
-        boolean allAlive = !longPressRefs.isEmpty();
-        for (WeakReference<View> ref : longPressRefs) {
-            View v = ref.get();
-            if (v == null || !v.isAttachedToWindow()) {
-                allAlive = false;
-                break;
-            }
-        }
-        if (allAlive && !longPressRefs.isEmpty()) return;
-
-        // Cancel any pending retry before scheduling a fresh attempt.
-        if (longPressAttachRetry != null) {
-            mainHandler.removeCallbacks(longPressAttachRetry);
-        }
-        longPressAttachRetry = new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Activity activity = Utils.getActivity();
-                    if (activity == null || activity.getWindow() == null) return;
-
-                    Resources res = activity.getResources();
-                    String pkg = activity.getPackageName();
-
-                    // Collect all root views across every open window (main activity +
-                    // any BottomSheetDialogs or overlays). The queue panel opens in its
-                    // own Window, so activity.getWindow().getDecorView() alone misses it.
-                    List<View> roots = getAllWindowRoots(activity);
-
-                    List<View> allButtons = new ArrayList<>();
-                    for (String idName : SHUFFLE_IDS) {
-                        @SuppressLint("DiscouragedApi")
-                        int id = res.getIdentifier(idName, "id", pkg);
-                        if (id == 0) {
-                            Logger.printDebug(() -> "  shuffle id '" + idName + "' → not found in resources");
-                            continue;
-                        }
-                        for (View root : roots) {
-                            List<View> matched = new ArrayList<>();
-                            findAllViewsById(root, id, matched);
-                            for (View v : matched) {
-                                Logger.printDebug(() -> "  shuffle id '" + idName + "' → "
-                                        + v.getClass().getSimpleName()
-                                        + " vis=" + v.getVisibility()
-                                        + " attached=" + v.isAttachedToWindow()
-                                        + " parent=" + (v.getParent() != null
-                                            ? v.getParent().getClass().getSimpleName() : "null"));
-                                if (v.isAttachedToWindow()) {
-                                    allButtons.add(v);
-                                }
-                            }
-                        }
-                    }
-
-                    Logger.printDebug(() -> "Found " + allButtons.size()
-                            + " attached shuffle button instances");
-
-                    if (allButtons.isEmpty()) {
-                        // No attached buttons found — retry in 500ms in case the
-                        // queue panel is still opening or the view hasn't attached yet.
-                        mainHandler.postDelayed(this, 500);
-                        return;
-                    }
-
-                    longPressRefs.clear();
-                    longPressAttachRetry = null;
-
-                    for (View shuffleBtn : allButtons) {
-                        attachTouchLongPress(shuffleBtn);
-                        longPressRefs.add(new WeakReference<>(shuffleBtn));
-
-                        View parent = (View) shuffleBtn.getParent();
-                        if (parent != null && parent.getParent() != null) {
-                            attachTouchLongPress(parent);
-                            longPressRefs.add(new WeakReference<>(parent));
-                        }
-                    }
-                } catch (Exception ex) {
-                    Logger.printDebug(() -> "Long-press attach skipped", ex);
-                }
-            }
-        };
-        mainHandler.post(longPressAttachRetry);
+        mainHandler.post(() -> {
+            pendingLongPressAttach = false;
+            tryAttachLongPressNow();
+            registerLongPressLayoutListener();
+        });
     }
 
-    private static List<View> getAllWindowRoots(Activity activity) {
-        List<View> roots = new ArrayList<>();
-        if (activity != null && activity.getWindow() != null) {
-            roots.add(activity.getWindow().getDecorView());
-        }
+    /**
+     * Walks the current activity's decor view for the shuffle button and attaches the
+     * long-press handler. Returns true if any attachments were made.
+     */
+    private static boolean tryAttachLongPressNow() {
+        try {
+            Activity activity = Utils.getActivity();
+            if (activity == null || activity.getWindow() == null) return false;
 
-        return roots;
+            View decorView = activity.getWindow().getDecorView();
+            Resources res = activity.getResources();
+            String pkg = activity.getPackageName();
+
+            List<View> allButtons = new ArrayList<>();
+            List<String> matchedIds = new ArrayList<>();
+            for (String idName : SHUFFLE_IDS) {
+                int id = res.getIdentifier(idName, "id", pkg);
+                if (id == 0) continue;
+                List<View> matched = new ArrayList<>();
+                findAllViewsById(decorView, id, matched);
+                if (!matched.isEmpty()) {
+                    matchedIds.add(idName + "(" + matched.size() + ")");
+                }
+                allButtons.addAll(matched);
+            }
+
+            if (allButtons.isEmpty()) return false;
+
+            longPressRefs.clear();
+            StringBuilder attachLog = new StringBuilder("Long-press attach: matched=" + matchedIds + " — attaching to:");
+            for (View shuffleBtn : allButtons) {
+                attachTouchLongPress(shuffleBtn, "btn");
+                longPressRefs.add(new WeakReference<>(shuffleBtn));
+                attachLog.append(" btn@").append(System.identityHashCode(shuffleBtn))
+                        .append("(").append(shuffleBtn.getClass().getSimpleName())
+                        .append(" vis=").append(shuffleBtn.getVisibility())
+                        .append(" clickable=").append(shuffleBtn.isClickable())
+                        .append(")");
+
+                View parent = (View) shuffleBtn.getParent();
+                if (parent != null && parent != decorView) {
+                    attachTouchLongPress(parent, "parent");
+                    longPressRefs.add(new WeakReference<>(parent));
+                    attachLog.append(" parent@").append(System.identityHashCode(parent))
+                            .append("(").append(parent.getClass().getSimpleName()).append(")");
+                }
+            }
+            logDebug(() -> attachLog.toString());
+            return true;
+        } catch (Exception e) {
+            logDebug(() -> "tryAttachLongPressNow exception: " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * Registers a global layout listener on the activity's decor view that re-attaches
+     * the long-press handler on every layout pass (does not self-remove — YTM's reactive
+     * UI may rebind handlers at any time).
+     */
+    private static void registerLongPressLayoutListener() {
+        try {
+            Activity activity = Utils.getActivity();
+            if (activity == null || activity.getWindow() == null) return;
+
+            View decorView = activity.getWindow().getDecorView();
+            View prevHost = longPressLayoutListenerHost.get();
+            if (longPressLayoutListener != null && prevHost == decorView) return;
+            if (longPressLayoutListener != null && prevHost != null
+                    && prevHost.getViewTreeObserver() != null
+                    && prevHost.getViewTreeObserver().isAlive()) {
+                try {
+                    prevHost.getViewTreeObserver().removeOnGlobalLayoutListener(longPressLayoutListener);
+                } catch (Exception ignored) {}
+            }
+            longPressLayoutListener = new android.view.ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    tryAttachLongPressNow();
+                }
+            };
+            longPressLayoutListenerHost = new WeakReference<>(decorView);
+            decorView.getViewTreeObserver().addOnGlobalLayoutListener(longPressLayoutListener);
+            logDebug(() -> "Long-press attach: registered GlobalLayoutListener");
+        } catch (Exception e) {
+            logDebug(() -> "registerLongPressLayoutListener exception: " + e.getMessage());
+        }
     }
 
     private static void findAllViewsById(View root, int id,
                                           List<View> out) {
         if (root.getId() == id) out.add(root);
-        if (root instanceof ViewGroup vg) {
-            for (int i = 0, childCount = vg.getChildCount(); i < childCount; i++) {
+        if (root instanceof ViewGroup) {
+            ViewGroup vg = (ViewGroup) root;
+            for (int i = 0; i < vg.getChildCount(); i++) {
                 findAllViewsById(vg.getChildAt(i), id, out);
             }
         }
     }
 
-    private static void attachTouchLongPress(View btn) {
-        final float[] downXY = new float[2];
-        final boolean[] longPressTriggered = {false};
+    private static void attachTouchLongPress(View btn, String tag) {
+        final int viewId = System.identityHashCode(btn);
 
-        btn.setOnTouchListener((v, event) -> {
-            switch (event.getActionMasked()) {
-                case MotionEvent.ACTION_DOWN:
-                    downXY[0] = event.getRawX();
-                    downXY[1] = event.getRawY();
-                    longPressTriggered[0] = false;
-                    longPressHandled = false;
-                    if (pendingLongPress != null) {
-                        mainHandler.removeCallbacks(pendingLongPress);
-                    }
-                    pendingLongPress = () -> {
-                        if (longPressHandled) return;
-                        longPressHandled = true;
-                        longPressTriggered[0] = true;
-                        toggleSessionPause();
-                        Logger.printDebug(() -> "Shuffle long-press fired ("
-                                                + getLongPressThresholdMs() + "ms)");
-                    };
-                    mainHandler.postDelayed(pendingLongPress,
-                            getLongPressThresholdMs());
-                    return true;
-
-                case MotionEvent.ACTION_MOVE:
-                    float dx = event.getRawX() - downXY[0];
-                    float dy = event.getRawY() - downXY[1];
-                    if (Math.sqrt(dx * dx + dy * dy) > 30) {
-                        if (pendingLongPress != null) {
-                            mainHandler.removeCallbacks(pendingLongPress);
-                            pendingLongPress = null;
-                        }
-                    }
-                    return true;
-
-                case MotionEvent.ACTION_UP:
-                    if (pendingLongPress != null) {
-                        mainHandler.removeCallbacks(pendingLongPress);
-                        pendingLongPress = null;
-                    }
-                    if (longPressTriggered[0]) {
-                        return true;
-                    }
-                    v.performClick();
-                    return true;
-
-                case MotionEvent.ACTION_CANCEL:
-                    if (pendingLongPress != null) {
-                        mainHandler.removeCallbacks(pendingLongPress);
-                        pendingLongPress = null;
-                    }
-                    return true;
-            }
-            return false;
+        // setOnLongClickListener coexists with setOnTouchListener / setOnClickListener,
+        // so YTM's normal shuffle-tap keeps working and our handler isn't wiped by YTM's
+        // touch-handler rebinds.
+        btn.setOnLongClickListener(v -> {
+            toggleSessionPause();
+            logDebug(() -> "Shuffle long-press fired on " + tag + "@" + viewId);
+            return true;
         });
+        btn.setLongClickable(true);
     }
 
 }

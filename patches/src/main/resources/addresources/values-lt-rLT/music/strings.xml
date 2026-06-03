@@ -18,24 +18,103 @@ Second \"item\" text"</string>
 <resources>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
+  <string name="morphe_header_logo_title">Antraštės logotipas</string>
+  <string name="morphe_header_logo_entry_1">Numtytinai</string>
+  <string name="morphe_header_logo_entry_3">Savo</string>
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <string name="morphe_settings_music_screen_0_about_title">Apie</string>
+  <string name="morphe_settings_music_screen_1_ads_title">Reklamos</string>
+  <string name="morphe_settings_music_screen_2_general_title">Bendri</string>
+  <string name="morphe_settings_music_screen_3_player_title">Leistuvas</string>
+  <string name="morphe_settings_music_screen_4_misc_title">Įvairūs</string>
   <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Paslėpti \"Gauti Music Premium\" etiketę</string>
   <!-- ad.video.hideVideoAdsPatch -->
+  <string name="morphe_music_hide_video_ads_title">Paslėpti vaizdo reklamas</string>
   <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Kryžminis išnykimas</string>
+  <string name="morphe_music_crossfade_screen_summary">Sklandžiai susijungti takelius vienas su kitu</string>
+  <string name="morphe_music_crossfade_enabled_title">Įjungti kryžminis išnykimo efektą</string>
+  <string name="morphe_music_crossfade_curve_title">Išnykimo kreivė</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Lygi galia</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Švelnus laikymas</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Švelnus palengėjimas</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Lygi S-forma</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Įšeinantys</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Ateinantis</string>
+  <string name="morphe_music_crossfade_duration_title">Perėjimo trukmė</string>
+  <string name="morphe_crossfade_duration_250ms">250 milisekundžių</string>
+  <string name="morphe_crossfade_duration_500ms">500 milisekundžių</string>
+  <string name="morphe_crossfade_duration_750ms">750 milisekundžių</string>
+  <string name="morphe_crossfade_duration_1000ms">1 sekunde</string>
+  <string name="morphe_crossfade_duration_2000ms">2 sekundės</string>
+  <string name="morphe_crossfade_duration_3000ms">3 sekundės</string>
+  <string name="morphe_crossfade_duration_4000ms">4 sekundės</string>
+  <string name="morphe_crossfade_duration_5000ms">5 sekundės</string>
+  <string name="morphe_crossfade_duration_6000ms">6 sekundės</string>
+  <string name="morphe_crossfade_duration_7000ms">7 sekundės</string>
+  <string name="morphe_crossfade_duration_8000ms">8 sekundės</string>
+  <string name="morphe_crossfade_duration_9000ms">9 sekundės</string>
+  <string name="morphe_crossfade_duration_10000ms">10 sekundžių</string>
+  <string name="morphe_crossfade_duration_11000ms">11 sekundės</string>
+  <string name="morphe_crossfade_duration_12000ms">12 sekundės</string>
+  <string name="morphe_music_crossfade_on_skip_title">Perėjimas tarp takelių rankiniu praleidimu</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Taiko kryžminio perdėjimo efektą, kai rankiniu būdu pereinate į kitą takelę</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Perėjimo tarp takelių efektas automatinio perėjimo metu</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Taiko kryžminio blendavimo efektą, kai takelis baigiasi natūraliai</string>
+  <string name="morphe_music_crossfade_session_control_title">Sesijos valdymas</string>
+  <string name="morphe_music_crossfade_session_control_summary">Ilgesiu paliesti mygtuką „shufle“, kad pristabdintumėte arba atnaujintumėte perėjimą</string>
+  <string name="morphe_music_crossfade_paused_toast">Kryžminis išnykimas pristabdytas šiai sesijai</string>
+  <string name="morphe_music_crossfade_resumed_toast">Kryžminis išnykimas atnaujintas</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Vaizdo režimas neprieinamas, kai įjungtas kryžminis išnykimas</string>
+  <string name="morphe_music_crossfade_about_title">Apie</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
+  <string name="morphe_music_play_permanent_repeat_title">Įjungti kartoti viam laikui</string>
   <!-- layout.buttons.hideButtons -->
+  <string name="morphe_music_hide_cast_button_title">Paslėpti transliacijos mygtuką</string>
+  <string name="morphe_music_hide_history_button_title">Slepti istorijos mygtuką</string>
+  <string name="morphe_music_hide_notification_button_title">Paslėpti pranešimo mygtuką</string>
+  <string name="morphe_music_hide_search_button_title">Paslepti paieškos mygtuką</string>
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Pradinis puslapis</string>
+  <string name="morphe_change_start_page_entry_default">Numatytasis</string>
+  <string name="morphe_change_start_page_entry_charts">Diagramos</string>
+  <string name="morphe_change_start_page_entry_episodes_for_later">Episodes vėlasniam laikui</string>
+  <string name="morphe_change_start_page_entry_explore">Išnagrinėti</string>
+  <string name="morphe_change_start_page_entry_history">Istorija</string>
+  <string name="morphe_change_start_page_entry_library">Biblioteka</string>
+  <string name="morphe_change_start_page_entry_liked_music">Patikusi muzika</string>
+  <string name="morphe_change_start_page_entry_playlists">Grojarašiai</string>
+  <string name="morphe_change_start_page_entry_search">Ieškoti</string>
+  <string name="morphe_change_start_page_entry_subscriptions">Prenumeratos</string>
   <!-- layout.compactheader.hideCategoryBar -->
+  <string name="morphe_music_hide_category_bar_title">Paslepti kategorijų juostą</string>
   <!-- layout.miniplayer.changeMiniplayerColor -->
+  <string name="morphe_music_change_miniplayer_color_title">Pakeisti mini grotuvo spalvą</string>
+  <string name="morphe_music_change_miniplayer_color_summary">Atitinka mini grotuvo spalvą visame ekrane</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_miniplayer_next_button_title">Rodyti sekantį mygtuką mini grotuve</string>
+  <string name="morphe_music_miniplayer_previous_button_title">Rodyti ankstesnį mygtuką mini grotuve</string>
   <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <string name="morphe_music_enable_forced_miniplayer_title">Įjungti priverstinį mini grotuvą</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Neleidžia automatiškai pereiti į viso ekrano režimą, kai prasideda naujas takelis</string>
   <!-- layout.navigationbar.navigationBarPatch -->
+  <string name="morphe_music_navigation_bar_screen_title">Naršymo juosta</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apačioje esančioje naravimo juostoje</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_home_button_title">Paslėpti pagrindinį mygtuką</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Paslėpti Pavyzdžius mygtuką</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">Paslepti atrasti mygtuką</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_library_button_title">Paslepti Biblioteką mygtuką</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Paslėpti atnaujinimo mygtuką</string>
+  <string name="morphe_music_hide_navigation_bar_title">Slėpti naršymo juostą</string>
+  <string name="morphe_music_hide_navigation_bar_labels_title">Slėpti naršymo mygtukų etiketes</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
+  <string name="morphe_music_hide_upgrade_button_title">Slėpti atnaujinimo mygtuką</string>
 </resources>

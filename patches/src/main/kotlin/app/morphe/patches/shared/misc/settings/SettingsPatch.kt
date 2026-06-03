@@ -89,6 +89,7 @@ fun settingsPatch (
             ),
             ResourceGroup("layout",
                 "morphe_custom_list_item_checked.xml",
+                "morphe_icon_list_item.xml",
                 // Color picker.
                 "morphe_color_dot_widget.xml",
                 "morphe_color_picker.xml",

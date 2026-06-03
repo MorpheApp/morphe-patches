@@ -15,6 +15,7 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneMutableAndPreserveParameters
 import app.morphe.util.findInstructionIndicesReversedOrThrow
@@ -47,9 +48,11 @@ enum class Endpoint(
     NEXT(NextEndpointParentFingerprint),
     PLAYER(PlayerEndpointParentFingerprint),
     REEL(
-        ReelCreateItemsEndpointConstructorFingerprint,
-        ReelItemWatchEndpointConstructorFingerprint,
-        ReelWatchSequenceEndpointConstructorFingerprint,
+        // 21.21+ removed "reel/create_reel_items" and the replacement isn't clear.
+        *(arrayOf(
+            ReelItemWatchEndpointConstructorFingerprint,
+            ReelWatchSequenceEndpointConstructorFingerprint,
+        ) + if (!is_21_21_or_greater) arrayOf(ReelCreateItemsEndpointConstructorFingerprint) else emptyArray())
     ),
     SEARCH(SearchRequestBuildParametersFingerprint),
     TRANSCRIPT(TranscriptEndpointConstructorFingerprint);

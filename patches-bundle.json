@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-05-14T09:26:36",
-  "description": "# [1.28.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.28.0-dev.1...v1.28.0-dev.2) (2026-05-14)\n\n\n### Bug Fixes\n\n* Update Crowdin translations ([b652e67](https://github.com/MorpheApp/morphe-patches/commit/b652e6731eebe67f1c20cb0e0d83ace9a94167cb))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.28.0-dev.2/patches-1.28.0-dev.2.mpp",
+  "created_at": "2026-06-03T08:56:44",
+  "description": "## [1.31.0-dev.4](https://github.com/MorpheApp/morphe-patches/compare/v1.31.0-dev.3...v1.31.0-dev.4) (2026-06-03)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Hide library/you tab buttons:** patch doesn't work on some versions ([1551524](https://github.com/MorpheApp/morphe-patches/commit/1551524475f0f86ad05cf5689129a6bf6a0cc08f))\n* **YouTube - Open system share sheet:** Prevent PiP from being invoked ([#1635](https://github.com/MorpheApp/morphe-patches/issues/1635)) ([195e749](https://github.com/MorpheApp/morphe-patches/commit/195e749f5afd12e5bdb489a1115b2383651a0f51))\n* **YouTube - Theme:** Apply dark text color to \"Material You\" notification dot count ([#1615](https://github.com/MorpheApp/morphe-patches/issues/1615)) ([5289c6b](https://github.com/MorpheApp/morphe-patches/commit/5289c6b6a64df89fb85c3d6f563a24bd9c7f345e))\n\n### ✨ New Features\n\n* **YouTube Music - Settings:** Add icons to Morphe preference screen ([#1625](https://github.com/MorpheApp/morphe-patches/issues/1625)) ([d51c24f](https://github.com/MorpheApp/morphe-patches/commit/d51c24f846cfd0b028a1b2d31b69913ae1f7dadb))\n\n### 🚀 Updated App Support\n\n* **YouTube Music:** Add  support for `8.51.51` ([73d1d53](https://github.com/MorpheApp/morphe-patches/commit/73d1d53afbe9746bf3d54629553720eac4c89f19))\n* **YouTube Music:** Add experimental support for `9.22.53` ([57f1bda](https://github.com/MorpheApp/morphe-patches/commit/57f1bdae0161748daeb6e3e4460b84938121b479))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.31.0-dev.4/patches-1.31.0-dev.4.mpp",
   "signature_download_url": "",
-  "version": "1.28.0-dev.2"
+  "version": "1.31.0-dev.4"
 }

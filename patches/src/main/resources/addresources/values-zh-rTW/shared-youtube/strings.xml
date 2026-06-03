@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">重新啟動以完成設定</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">應用程式名稱</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">自訂</string>
   <string name="morphe_custom_branding_icon_title">應用程式圖示</string>
   <string name="morphe_custom_branding_icon_entry_1">原始</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe 黑色</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe 深色</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe 淺色</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe 黑色</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe 淺色</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe 黑色</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">自訂</string>
+  <string name="morphe_custom_branding_icon_entry_7">自訂</string>
   <string name="morphe_custom_branding_notification_icon_title">通知圖示</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">變更應用程式圖示？</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe 玩</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe 通知</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">你的觀看記錄未被儲存。&lt;br&gt;&lt;br&gt;這很可能是由 DNS 廣告封鎖器或網路代理所導致。&lt;br&gt;&lt;br&gt;若要解決此問題，請將 &lt;b&gt;s.youtube.com&lt;/b&gt; 加入白名單，或關閉所有 DNS 封鎖器和代理。</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">偽裝影片串流</string>
   <string name="morphe_spoof_video_streams_screen_summary">偽裝客戶端影片串流以避免播放問題</string>
   <string name="morphe_spoof_video_streams_title">偽裝影片串流</string>
-  <string name="morphe_spoof_video_streams_summary">"藉由欺騙 YouTube 傳送相容的影片串流，來修正大多數使用者的播放問題
+  <string name="morphe_spoof_video_streams_summary">"透過要求相容的影片串流，修復大多數使用者的播放問題
 
-如果您是 YouTube Premium 使用者，此設定可能不需要"</string>
+如果您是 YouTube Premium 用戶，則可能不需要此設定"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">未能擷取任何用戶端串流</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">關閉此設定可能會導致播放問題。</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -110,6 +114,7 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_title">清理分享連結</string>
   <string name="morphe_sanitize_sharing_links_summary">已從分享連結中移除追蹤查詢參數</string>
   <string name="morphe_replace_music_with_youtube_title">將分享連結更改為 youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">將分享連結中的 music.youtube.com 取代為 youtube.com</string>
   <string name="morphe_replace_links_with_shortener_title">將分享連結更改為 youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">強制使用縮短的 youtu.be URL 格式來播放直播和 Shorts</string>
+  <string name="morphe_replace_links_with_shortener_summary">強制影片使用縮短的 youtu.be URL 格式</string>
 </resources>

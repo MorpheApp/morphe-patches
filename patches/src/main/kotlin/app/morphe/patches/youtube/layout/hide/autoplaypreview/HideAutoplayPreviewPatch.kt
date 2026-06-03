@@ -36,7 +36,7 @@ val hideAutoplayPreviewPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_hide_autoplay_preview")
+            SwitchPreference("morphe_hide_autoplay_preview", summary = true)
         )
 
         LayoutConstructorFingerprint.method.apply {

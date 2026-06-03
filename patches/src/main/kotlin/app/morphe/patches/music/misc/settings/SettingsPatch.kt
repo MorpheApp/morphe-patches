@@ -31,6 +31,8 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.shared.misc.settings.settingsPatch
 import app.morphe.patches.youtube.misc.settings.modifyActivityForSettingsInjection
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import app.morphe.util.copyXmlNode
 import app.morphe.util.inputStreamFromBundledResource
 import app.morphe.util.insertLiteralOverride
@@ -55,6 +57,25 @@ private val settingsResourcePatch = resourcePatch {
     )
 
     execute {
+        copyResources(
+            "settings",
+            ResourceGroup("drawable",
+                "morphe_settings_screen_00_about.xml",
+                "morphe_settings_screen_00_about_bold.xml",
+                "morphe_settings_screen_01_ads.xml",
+                "morphe_settings_screen_01_ads_bold.xml",
+                "morphe_settings_screen_04_general.xml",
+                "morphe_settings_screen_04_general_bold.xml",
+                "morphe_settings_screen_05_player.xml",
+                "morphe_settings_screen_05_player_bold.xml",
+                "morphe_settings_screen_11_misc.xml",
+                "morphe_settings_screen_11_misc_bold.xml"
+            ),
+            ResourceGroup("layout",
+                "morphe_preference_with_icon.xml"
+            )
+        )
+
         // Set the style for the Morphe settings to follow the style of the music settings,
         // namely: action bar height, menu item padding and remove horizontal dividers.
         val targetResource = "values/styles.xml"
@@ -111,12 +132,16 @@ val settingsPatch = bytecodePatch(
         preferences += NonInteractivePreference(
             key = "morphe_settings_music_screen_0_about",
             summaryKey = null,
+            icon = "@drawable/morphe_settings_screen_00_about",
+            iconBold = "@drawable/morphe_settings_screen_00_about_bold",
+            layout = "@layout/morphe_preference_with_icon",
             tag = "app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference",
-            selectable = true,
+            selectable = true
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_settings_search_history", summaryKey = null),
+            SwitchPreference("morphe_settings_search_history"),
+            SwitchPreference("morphe_show_menu_icons")
         )
 
         PreferenceScreen.MISC.addPreferences(
@@ -165,19 +190,31 @@ fun newIntent(settingsName: String) = IntentPreference.Intent(
 object PreferenceScreen : BasePreferenceScreen() {
     val ADS = Screen(
         key = "morphe_settings_music_screen_1_ads",
-        summaryKey = null
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_01_ads",
+        iconBold = "@drawable/morphe_settings_screen_01_ads_bold",
+        layout = "@layout/morphe_preference_with_icon"
     )
     val GENERAL = Screen(
         key = "morphe_settings_music_screen_2_general",
-        summaryKey = null
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_04_general",
+        iconBold = "@drawable/morphe_settings_screen_04_general_bold",
+        layout = "@layout/morphe_preference_with_icon"
     )
     val PLAYER = Screen(
         key = "morphe_settings_music_screen_3_player",
-        summaryKey = null
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_05_player",
+        iconBold = "@drawable/morphe_settings_screen_05_player_bold",
+        layout = "@layout/morphe_preference_with_icon"
     )
     val MISC = Screen(
         key = "morphe_settings_music_screen_4_misc",
-        summaryKey = null
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_11_misc",
+        iconBold = "@drawable/morphe_settings_screen_11_misc_bold",
+        layout = "@layout/morphe_preference_with_icon"
     )
 
     override fun commit(screen: PreferenceScreenPreference) {

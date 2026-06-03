@@ -4,18 +4,18 @@ import android.view.KeyEvent
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsHostActivity
 
 /**
- * controller for custom volume button behavior
+ * Controller for custom volume button behavior.
  *
- * @param controller main controller instance
+ * @param controller Main controller instance.
  */
 class VolumeKeysController(
     private val controller: SwipeControlsHostActivity,
 ) {
     /**
-     * key event handler
+     * Key event handler.
      *
-     * @param event the key event
-     * @return consume the event?
+     * @param event The key event.
+     * @return Whether to consume the event.
      */
     fun onKeyEvent(event: KeyEvent): Boolean {
         if (!controller.config.overwriteVolumeKeyControls) {
@@ -32,11 +32,11 @@ class VolumeKeysController(
     }
 
     /**
-     * handle a volume up / down key event
+     * Handles a volume up/down key event.
      *
-     * @param event the key event
-     * @param volumeUp was the key pressed the volume up key?
-     * @return consume the event?
+     * @param event The key event.
+     * @param volumeUp Whether the key pressed was the volume up key.
+     * @return Whether to consume the event.
      */
     private fun handleVolumeKeyEvent(event: KeyEvent, volumeUp: Boolean): Boolean {
         if (event.action == KeyEvent.ACTION_DOWN) {

@@ -132,7 +132,7 @@ Uitzchakelen van batterijoptimalisaties voor MicroG heeft geen negatieve invloed
 
 Druk op de knop Door en ga akkoord met wijzigingen in de optimalisatie."</string>
   <string name="gms_core_dialog_continue_text">Doorgaan</string>
-  <string name="morphe_gms_core_battery_optimization_dialog_title">Toon dialoogvenster batterijoptimalisatie</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Toon MicroG dialoog voor batterijoptimalisatie</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Het uitschakelen hiervan verbergt het MicroG-prompt voor batterijoptimalisatie.
 
 Als batterijoptimalisaties niet worden gewijzigd, kunt u het volgende ervaren:
@@ -141,7 +141,7 @@ Als batterijoptimalisaties niet worden gewijzigd, kunt u het volgende ervaren:
 • Achtergrondafspelen werkt mogelijk niet"</string>
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">App-linkbeheer</string>
-  <string name="morphe_link_handling_summary">Configureren welke app links opent</string>
+  <string name="morphe_link_handling_summary">Configureer links om te openen in deze app</string>
   <string name="morphe_link_handling_step1_title">Stap 1: Schakel originele app-koppelingen uit</string>
   <string name="morphe_link_handling_step1_message">Open de instellingen van de originele app en schakel alle domeinkoppelingen uit</string>
   <string name="morphe_link_handling_step2_title">Stap 2: Schakel gepatchte app-koppelingen in</string>

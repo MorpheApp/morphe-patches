@@ -61,10 +61,15 @@ internal object MinimizedPlayerFingerprint : Fingerprint(
  */
 internal object MppWatchWhileLayoutFingerprint : Fingerprint(
     definingClass = "WatchWhileLayout;",
-    name = "onFinishInflate",
-    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "mini_player_play_pause_replay_button"),
+        opcode(Opcode.INVOKE_VIRTUAL)
+    ),
+    custom = { method, _ ->
+        !AccessFlags.STATIC.isSet(method.accessFlags)
+    }
 )
 
 internal object InteractionLoggingEnumFingerprint : Fingerprint(

@@ -33,8 +33,8 @@ Second \"item\" text"</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Masquer les publicités vidéo</string>
   <!-- interaction.crossfade.crossfadePatch -->
-  <string name="morphe_music_crossfade_screen_title">Fondu enchaîné</string>
-  <string name="morphe_music_crossfade_screen_summary">Personnalisez la façon dont les morceaux se fondent harmonieusement les unes dans les autres</string>
+  <string name="morphe_music_crossfade_screen_title">Effacer la transition</string>
+  <string name="morphe_music_crossfade_screen_summary">Enchaîner harmonieusement les morceaux les uns avec les autres</string>
   <string name="morphe_music_crossfade_enabled_title">Activer le fondu enchaîné</string>
   <string name="morphe_music_crossfade_curve_title">Courbe de fondu</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Puissance égale</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Atténuation douce</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Courbe en S douce</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Sortant</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Entrant</string>
   <string name="morphe_music_crossfade_duration_title">Durée du fondu enchaîné</string>
   <string name="morphe_crossfade_duration_250ms">250 millisecondes</string>
   <string name="morphe_crossfade_duration_500ms">500 millisecondes</string>
@@ -56,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 secondes</string>
   <string name="morphe_crossfade_duration_9000ms">9 secondes</string>
   <string name="morphe_crossfade_duration_10000ms">10 secondes</string>
+  <string name="morphe_crossfade_duration_11000ms">11 secondes</string>
+  <string name="morphe_crossfade_duration_12000ms">12 secondes</string>
   <string name="morphe_music_crossfade_on_skip_title">Fondu enchaîné lors des passages manuels</string>
   <string name="morphe_music_crossfade_on_skip_summary">Applique l\'effet de fondu enchaîné lorsque vous passez manuellement au morceau suivant</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Fondu enchaîné lors des passages automatiques</string>
@@ -66,9 +70,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Fondu enchaîné repris</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Le mode vidéo n\'est pas disponible lorsque le fondu enchaîné est activé</string>
   <string name="morphe_music_crossfade_about_title">À propos</string>
-  <string name="morphe_music_crossfade_about_summary">"Le fondu enchaîné est disponible avec YouTube Music 8.x
-
-Appuyez longuement sur le bouton 'Lecture aléatoire' pour le désactiver/l’activer
+  <string name="morphe_music_crossfade_about_summary">"Appuyez longuement sur le bouton 'Lecture aléatoire' pour désactiver/activer
 
 Implémentation de la fonctionnalité par VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
@@ -103,7 +105,7 @@ Implémentation de la fonctionnalité par VazerOG"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Empêche le lecteur de passer automatiquement en plein écran lorsqu’un nouveau morceau commence</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Barre de navigation</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Choisissez les boutons à afficher sur la barre de navigation</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Choisissez les boutons qui apparaissent dans la barre de navigation inférieure</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Masquer le bouton \'Accueil\'</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

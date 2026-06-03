@@ -52,7 +52,7 @@ val spoofAppVersionPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
-                    SwitchPreference("morphe_spoof_app_version"),
+                    SwitchPreference("morphe_spoof_app_version", summary = true),
                     if (is_20_40_or_greater) {
                         ListPreference("morphe_spoof_app_version_target")
                     } else if (is_20_31_or_greater) {

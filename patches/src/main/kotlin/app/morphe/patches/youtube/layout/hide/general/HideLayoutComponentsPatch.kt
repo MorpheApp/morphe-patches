@@ -52,6 +52,7 @@ import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
+import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.injectHideViewCall
 import app.morphe.util.insertLiteralOverride
@@ -100,38 +101,33 @@ val hideLayoutComponentsPatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.ADS.addPreferences(
-            // Uses horizontal shelf and a buffer, which requires managing in a single place in the code
-            // to ensure the generic "hide horizontal shelves" doesn't hide when it should show.
-            SwitchPreference("morphe_hide_creator_store_shelf", summaryKey = null)
-        )
-
         PreferenceScreen.PLAYER.addPreferences(
             PreferenceScreenPreference(
                 key = "morphe_hide_description_components_screen",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_ai_generated_video_summary_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_ask_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_attributes_section"),
-                    SwitchPreference("morphe_hide_chapters_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_corrections_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_course_progress_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_explore_section"),
-                    SwitchPreference("morphe_hide_explore_course_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_explore_podcast_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_featured_links_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_featured_places_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_featured_videos_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_gaming_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_how_this_was_made_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_hype_points", summaryKey = null),
-                    SwitchPreference("morphe_hide_info_cards_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_key_concepts_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_music_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_quizzes_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_subscribe_button", summaryKey = null),
-                    SwitchPreference("morphe_hide_transcript_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_video_details_section", summaryKey = null),
+                    SwitchPreference("morphe_hide_ai_generated_video_summary_section"),
+                    SwitchPreference("morphe_hide_ask_section"),
+                    SwitchPreference("morphe_hide_attributes_section", summary = true),
+                    SwitchPreference("morphe_hide_chapters_section"),
+                    SwitchPreference("morphe_hide_corrections_section"),
+                    SwitchPreference("morphe_hide_course_progress_section"),
+                    SwitchPreference("morphe_hide_explore_section", summary = true),
+                    SwitchPreference("morphe_hide_explore_course_section"),
+                    SwitchPreference("morphe_hide_explore_podcast_section"),
+                    SwitchPreference("morphe_hide_featured_channels_section"),
+                    SwitchPreference("morphe_hide_featured_links_section"),
+                    SwitchPreference("morphe_hide_featured_places_section"),
+                    SwitchPreference("morphe_hide_featured_videos_section"),
+                    SwitchPreference("morphe_hide_gaming_section"),
+                    SwitchPreference("morphe_hide_how_this_was_made_section"),
+                    SwitchPreference("morphe_hide_hype_points"),
+                    SwitchPreference("morphe_hide_info_cards_section"),
+                    SwitchPreference("morphe_hide_key_concepts_section"),
+                    SwitchPreference("morphe_hide_music_section"),
+                    SwitchPreference("morphe_hide_quizzes_section"),
+                    SwitchPreference("morphe_hide_subscribe_button"),
+                    SwitchPreference("morphe_hide_transcript_section"),
+                    SwitchPreference("morphe_hide_video_details_section"),
                 ),
             ),
             PreferenceScreenPreference(
@@ -142,41 +138,41 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         sorting = Sorting.UNSORTED,
                         tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                         preferences = setOf(
-                            SwitchPreference("morphe_hide_comments_carousel", summaryKey = null),
+                            SwitchPreference("morphe_hide_comments_carousel"),
                             TextPreference(
                                 "morphe_hide_comments_carousel_filter_strings",
                                 inputType = InputType.TEXT_MULTI_LINE
                             ),
                         )
                     ),
-                    SwitchPreference("morphe_hide_comments_ai_chat_summary", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_channel_guidelines", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_prompts"),
-                    SwitchPreference("morphe_hide_comments_by_members_header", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_section", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_section_in_home_feed", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_community_guidelines", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_create_a_short_button", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_info_button", summaryKey = null),
-                    SwitchPreference("morphe_hide_comments_preview_comment"),
-                    SwitchPreference("morphe_hide_comments_thanks_button", summaryKey = null),
-                    SwitchPreference("morphe_sanitize_comments_category_bar"),
+                    SwitchPreference("morphe_hide_comments_ai_chat_summary"),
+                    SwitchPreference("morphe_hide_comments_channel_guidelines"),
+                    SwitchPreference("morphe_hide_comments_prompts", summary = true),
+                    SwitchPreference("morphe_hide_comments_by_members_header"),
+                    SwitchPreference("morphe_hide_comments_section"),
+                    SwitchPreference("morphe_hide_comments_section_in_home_feed"),
+                    SwitchPreference("morphe_hide_comments_community_guidelines"),
+                    SwitchPreference("morphe_hide_comments_create_a_short_button"),
+                    SwitchPreference("morphe_hide_comments_emoji_and_timestamp_buttons"),
+                    SwitchPreference("morphe_hide_comments_info_button"),
+                    SwitchPreference("morphe_hide_comments_live_chat_donators_bar"),
+                    SwitchPreference("morphe_hide_comments_preview_comment", summary = true),
+                    SwitchPreference("morphe_hide_comments_thanks_button"),
+                    SwitchPreference("morphe_sanitize_comments_category_bar", summary = true),
                 ),
                 sorting = Sorting.UNSORTED,
             ),
-            SwitchPreference("morphe_hide_channel_bar", summaryKey = null),
-            SwitchPreference("morphe_hide_channel_watermark", summaryKey = null),
-            SwitchPreference("morphe_hide_crowdfunding_box", summaryKey = null),
-            SwitchPreference("morphe_hide_emergency_box", summaryKey = null),
-            SwitchPreference("morphe_hide_info_panels"),
-            SwitchPreference("morphe_hide_join_membership_button", summaryKey = null),
-            SwitchPreference("morphe_hide_live_chat_donators_bar", summaryKey = null),
-            SwitchPreference("morphe_hide_live_chat_replay_button"),
-            SwitchPreference("morphe_hide_medical_panels", summaryKey = null),
-            SwitchPreference("morphe_hide_subscribers_community_guidelines", summaryKey = null),
-            SwitchPreference("morphe_hide_timed_reactions"),
-            SwitchPreference("morphe_hide_video_title"),
+            SwitchPreference("morphe_hide_channel_bar"),
+            SwitchPreference("morphe_hide_channel_watermark"),
+            SwitchPreference("morphe_hide_crowdfunding_box"),
+            SwitchPreference("morphe_hide_emergency_box"),
+            SwitchPreference("morphe_hide_info_panels", summary = true),
+            SwitchPreference("morphe_hide_join_membership_button"),
+            SwitchPreference("morphe_hide_live_chat_replay_button", summary = true),
+            SwitchPreference("morphe_hide_medical_panels"),
+            SwitchPreference("morphe_hide_subscribers_community_guidelines"),
+            SwitchPreference("morphe_hide_timed_reactions", summary = true),
+            SwitchPreference("morphe_hide_video_title", summary = true),
         )
 
         PreferenceScreen.FEED.addPreferences(
@@ -184,9 +180,9 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 key = "morphe_hide_keyword_content_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_keyword_content_home", summaryKey = null),
-                    SwitchPreference("morphe_hide_keyword_content_subscriptions", summaryKey = null),
-                    SwitchPreference("morphe_hide_keyword_content_search", summaryKey = null),
+                    SwitchPreference("morphe_hide_keyword_content_home"),
+                    SwitchPreference("morphe_hide_keyword_content_subscriptions"),
+                    SwitchPreference("morphe_hide_keyword_content_search"),
                     TextPreference("morphe_hide_keyword_content_phrases", inputType = InputType.TEXT_MULTI_LINE),
                     NonInteractivePreference(
                         key = "morphe_hide_keyword_content_about",
@@ -201,10 +197,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_hide_filter_bar_screen",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_filter_bar_feed_in_feed", summaryKey = null),
-                    SwitchPreference("morphe_hide_filter_bar_feed_in_related_videos", summaryKey = null),
-                    SwitchPreference("morphe_hide_filter_bar_feed_in_search", summaryKey = null),
-                    SwitchPreference("morphe_hide_filter_bar_feed_in_history", summaryKey = null),
+                    SwitchPreference("morphe_hide_filter_bar_feed_in_feed"),
+                    SwitchPreference("morphe_hide_filter_bar_feed_in_related_videos"),
+                    SwitchPreference("morphe_hide_filter_bar_feed_in_search"),
+                    SwitchPreference("morphe_hide_filter_bar_feed_in_history"),
                 ),
             ),
             PreferenceScreenPreference(
@@ -215,27 +211,27 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         sorting = Sorting.UNSORTED,
                         tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                         preferences = setOf(
-                            SwitchPreference("morphe_hide_channel_tab", summaryKey = null),
+                            SwitchPreference("morphe_hide_channel_tab"),
                             TextPreference(
                                 "morphe_hide_channel_tab_filter_strings",
                                 inputType = InputType.TEXT_MULTI_LINE
                             ),
                         )
                     ),
-                    SwitchPreference("morphe_hide_community_button", summaryKey = null),
-                    SwitchPreference("morphe_hide_join_button", summaryKey = null),
-                    SwitchPreference("morphe_hide_links_preview"),
-                    SwitchPreference("morphe_hide_members_shelf"),
-                    SwitchPreference("morphe_hide_posts_shelf", summaryKey = null),
-                    SwitchPreference("morphe_hide_store_button", summaryKey = null),
-                    SwitchPreference("morphe_hide_subscribe_button_in_channel_page", summaryKey = null),
+                    SwitchPreference("morphe_hide_community_button"),
+                    SwitchPreference("morphe_hide_join_button"),
+                    SwitchPreference("morphe_hide_links_preview", summary = true),
+                    SwitchPreference("morphe_hide_members_shelf", summary = true),
+                    SwitchPreference("morphe_hide_posts_shelf"),
+                    SwitchPreference("morphe_hide_store_button"),
+                    SwitchPreference("morphe_hide_subscribe_button_in_channel_page"),
                 ),
             ),
-            SwitchPreference("morphe_hide_album_cards"),
-            SwitchPreference("morphe_hide_artist_cards"),
-            SwitchPreference("morphe_hide_auto_dubbed_label", summaryKey = null),
-            SwitchPreference("morphe_hide_community_posts", summaryKey = null),
-            SwitchPreference("morphe_hide_compact_banner"),
+            SwitchPreference("morphe_hide_album_cards", summary = true),
+            SwitchPreference("morphe_hide_artist_cards", summary = true),
+            SwitchPreference("morphe_hide_auto_dubbed_label"),
+            SwitchPreference("morphe_hide_community_posts"),
+            SwitchPreference("morphe_hide_compact_banner", summary = true),
             if (is_20_26_or_greater) {
                 ListPreference("morphe_hide_expandable_card")
             } else {
@@ -250,40 +246,49 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
-                    SwitchPreference("morphe_hide_feed_flyout_menu", summaryKey = null),
+                    SwitchPreference("morphe_hide_feed_flyout_menu"),
                     TextPreference(
                         "morphe_hide_feed_flyout_menu_filter_strings",
                         inputType = InputType.TEXT_MULTI_LINE
                     ),
                 )
             ),
-            SwitchPreference("morphe_hide_floating_microphone_button"),
-            SwitchPreference(
-                key = "morphe_hide_horizontal_shelves",
-                tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
+            PreferenceCategory(
+                titleKey = null,
+                sorting = Sorting.UNSORTED,
+                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+                preferences = setOf(
+                    SwitchPreference("morphe_hide_account_menu"),
+                    TextPreference(
+                        "morphe_hide_account_menu_filter_strings",
+                        inputType = InputType.TEXT_MULTI_LINE
+                    ),
+                ),
             ),
-            SwitchPreference("morphe_hide_hyped_label", summaryKey = null),
-            SwitchPreference("morphe_hide_image_shelf"),
-            SwitchPreference("morphe_hide_latest_videos_button"),
-            SwitchPreference("morphe_hide_mix_playlists", summaryKey = null),
-            SwitchPreference("morphe_hide_movies_section", summaryKey = null),
-            SwitchPreference("morphe_hide_notify_me_button"),
-            SwitchPreference("morphe_hide_playables"),
-            SwitchPreference("morphe_hide_search_term_thumbnails"),
-            SwitchPreference("morphe_hide_show_more_button"),
-            SwitchPreference("morphe_hide_subscribed_channels_bar", summaryKey = null),
-            SwitchPreference("morphe_hide_surveys", summaryKey = null),
-            SwitchPreference("morphe_hide_ticket_shelf", summaryKey = null),
-            SwitchPreference("morphe_hide_upload_time", summaryKey = null),
-            SwitchPreference("morphe_hide_video_recommendation_labels"),
-            SwitchPreference("morphe_hide_view_count", summaryKey = null),
-            SwitchPreference("morphe_hide_web_search_results", summaryKey = null),
-            SwitchPreference("morphe_hide_youtube_doodles"),
+            SwitchPreference("morphe_hide_floating_microphone_button", summary = true),
+            SwitchPreference("morphe_hide_horizontal_shelves", summary = true),
+            SwitchPreference("morphe_hide_hyped_label"),
+            SwitchPreference("morphe_hide_image_shelf", summary = true),
+            SwitchPreference("morphe_hide_latest_videos_button", summary = true),
+            SwitchPreference("morphe_hide_mix_playlists"),
+            SwitchPreference("morphe_hide_movies_section"),
+            SwitchPreference("morphe_hide_notify_me_button", summary = true),
+            SwitchPreference("morphe_hide_playables", summary = true),
+            SwitchPreference("morphe_hide_search_term_thumbnails", summary = true),
+            SwitchPreference("morphe_hide_show_more_button", summary = true),
+            SwitchPreference("morphe_hide_subscribed_channels_bar"),
+            SwitchPreference("morphe_hide_surveys", summary = true),
+            SwitchPreference("morphe_hide_ticket_shelf"),
+            SwitchPreference("morphe_hide_upload_time"),
+            SwitchPreference("morphe_hide_video_recommendation_labels", summary = true),
+            SwitchPreference("morphe_hide_view_count"),
+            SwitchPreference("morphe_hide_web_search_results", summary = true),
+            SwitchPreference("morphe_hide_youtube_doodles", summary = true),
         )
 
         if (is_20_21_or_greater) {
             PreferenceScreen.FEED.addPreferences(
-                SwitchPreference("morphe_hide_you_may_like_section", summaryKey = null)
+                SwitchPreference("morphe_hide_you_may_like_section")
             )
         }
 
@@ -292,7 +297,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 key = "morphe_custom_filter_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_custom_filter", summaryKey = null),
+                    SwitchPreference("morphe_custom_filter"),
                     TextPreference("morphe_custom_filter_strings", inputType = InputType.TEXT_MULTI_LINE),
                 ),
             ),
@@ -492,7 +497,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
         LiveChatDonatorsBarFingerprint.let {
             it.method.injectHideViewCall(
                 it.instructionMatches.last().index,
-                LAYOUT_COMPONENTS_FILTER,
+                COMMENTS_FILTER,
                 "hideLiveChatDonatorsBar"
             )
         }
@@ -786,8 +791,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 )
                 val register = getInstruction<TwoRegisterInstruction>(objectIndex).registerA
                 val insertIndex = objectIndex + 1
-//                val objectReference =
-//                    getInstruction<ReferenceInstruction>(objectIndex).reference
+//              val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
                 val free = findFreeRegister(insertIndex, register)
 
                 addInstructionsWithLabels(
@@ -861,5 +865,80 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 )
             }
         }
+
+        // endregion
+
+        // region hide live chat emoji button
+
+        ThumbnailAndEmojiPickerContainerFingerprint.let {
+            it.method.injectHideViewCall(
+                it.instructionMatches.last().index,
+                COMMENTS_FILTER,
+                "hideLiveChatEmojiButton"
+            )
+        }
+
+        // endregion
+
+        // region hide live chat thanks button
+
+        InlineExtraButtonsContainerFingerprint.let {
+            it.method.injectHideViewCall(
+                it.instructionMatches.last().index,
+                COMMENTS_FILTER,
+                "hideLiveChatThanksButton"
+            )
+        }
+
+        // endregion
+
+        // region hide account menu
+
+        // for you tab
+        AccountListFingerprint.matchOrNull()?.let { match ->
+            match.method.apply {
+                val literalIndex = match.instructionMatches.first().index
+                val targetIndex = indexOfFirstInstructionOrThrow(literalIndex) {
+                    opcode == Opcode.INVOKE_VIRTUAL &&
+                            getReference<MethodReference>()?.name == "setText"
+                }
+                val targetInstruction = getInstruction<FiveRegisterInstruction>(targetIndex)
+
+                addInstruction(
+                    targetIndex + 1,
+                    "invoke-static { v${targetInstruction.registerC}, v${targetInstruction.registerD} }, " +
+                            "$LAYOUT_COMPONENTS_FILTER->hideAccountTopItem(Landroid/view/View;Ljava/lang/CharSequence;)V"
+                )
+            }
+        }
+
+        AccountMenuFingerprint.matchOrNull()?.let { match ->
+            match.method.apply {
+                val targetIndex = match.instructionMatches[2].index
+                val targetInstruction = getInstruction<FiveRegisterInstruction>(targetIndex)
+
+                addInstruction(
+                    targetIndex + 1,
+                    "invoke-static { v${targetInstruction.registerC}, v${targetInstruction.registerD} }, " +
+                            "$LAYOUT_COMPONENTS_FILTER->hideAccountBottomItemModern(Landroid/view/View;Ljava/lang/CharSequence;)V"
+                )
+            }
+        }
+
+        // for you tab bottom items and tablet menus
+        AccountMenuLegacyFingerprint.matchOrNull()?.let { match ->
+            match.method.apply {
+                val targetIndex = match.instructionMatches[2].index
+                val targetInstruction = getInstruction<FiveRegisterInstruction>(targetIndex)
+
+                addInstruction(
+                    targetIndex + 1,
+                    "invoke-static { v${targetInstruction.registerC}, v${targetInstruction.registerD} }, " +
+                            "$LAYOUT_COMPONENTS_FILTER->hideAccountBottomItemLegacy(Landroid/view/View;Ljava/lang/CharSequence;)V"
+                )
+            }
+        }
+
+        // endregion
     }
 }

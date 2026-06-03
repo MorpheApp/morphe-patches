@@ -61,12 +61,12 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
     execute {
         PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(
-            SwitchPreference("morphe_ryd_enabled", summaryKey = null),
-            SwitchPreference("morphe_ryd_shorts"),
-            SwitchPreference("morphe_ryd_dislike_percentage"),
-            SwitchPreference("morphe_ryd_compact_layout"),
-            SwitchPreference("morphe_ryd_estimated_like"),
-            SwitchPreference("morphe_ryd_toast_on_connection_error"),
+            SwitchPreference("morphe_ryd_enabled"),
+            SwitchPreference("morphe_ryd_shorts", summary = true),
+            SwitchPreference("morphe_ryd_dislike_percentage", summary = true),
+            SwitchPreference("morphe_ryd_compact_layout", summary = true),
+            SwitchPreference("morphe_ryd_estimated_like", summary = true),
+            SwitchPreference("morphe_ryd_toast_on_connection_error", summary = true),
             NonInteractivePreference(
                 key = "morphe_ryd_attribution",
                 tag = "app.morphe.extension.youtube.returnyoutubedislike.ui.ReturnYouTubeDislikeAboutPreference",

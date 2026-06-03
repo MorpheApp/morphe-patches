@@ -11,6 +11,7 @@ import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 @Suppress("unused")
 val customBrandingPatch = baseCustomBrandingPatch(
     originalLauncherIconName = "ic_launcher",
+    originalNotificationIconName = "ic_stat_yt_notification_logo",
     originalAppName = "@string/application_name",
     originalAppPackageName = YOUTUBE_PACKAGE_NAME,
     isYouTubeMusic = false,

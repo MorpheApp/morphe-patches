@@ -55,18 +55,18 @@ Second \"item\" text"</string>
 
 Hạn chế: Có thể không ẩn được các khoảng trống trong giao diện"</string>
   <string name="morphe_remove_notification_dialog_title">Xóa hộp thoại gợi ý thông báo</string>
-  <string name="morphe_remove_notification_dialog_summary">Tự động tắt hộp thoại gợi ý thông báo khi truy cập một subreddit</string>
+  <string name="morphe_remove_notification_dialog_summary">Tự động tắt hộp thoại gợi ý thông báo khi vào subreddit</string>
   <string name="morphe_show_view_count_title">Hiện số lượt xem trên bài đăng</string>
-  <string name="morphe_show_view_count_summary">Giới hạn: Chỉ khả dụng nếu phản hồi API bao gồm số lượt xem</string>
+  <string name="morphe_show_view_count_summary">Hạnchế: Chỉ khả dụng nếu API trả về dữ liệu lượt xem</string>
   <string name="morphe_remove_nsfw_dialog_title">Xóa hộp thoại cảnh báo NSFW</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Tự động chấp nhận cảnh báo nội dung NSFW khi truy cập một subreddit</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Tự động chấp nhận cảnh báo nội dung NSFW khi vào subreddit</string>
   <string name="morphe_screen_miscellaneous_title">Khác</string>
   <string name="morphe_about_title">Giới thiệu</string>
   <string name="morphe_about_summary">Thông tin bản vá và liên kết chính chủ</string>
   <string name="morphe_sanitize_sharing_links_title">Rút gọn liên kết chia sẻ</string>
-  <string name="morphe_sanitize_sharing_links_summary">Loại bỏ các tham số truy vấn theo dõi khỏi các liên kết đã chia sẻ</string>
+  <string name="morphe_sanitize_sharing_links_summary">Xóa các tham số theo dõi khỏi liên kết được chia sẻ</string>
   <string name="morphe_open_links_directly_title">Mở liên kết trực tiếp</string>
-  <string name="morphe_open_links_directly_summary">Bỏ qua các URL chuyển hướng khi mở các liên kết bên ngoài</string>
+  <string name="morphe_open_links_directly_summary">Bỏ qua các URL chuyển hướng khi mở liên kết bên ngoài</string>
   <string name="morphe_open_links_externally_title">Mở liên kết bằng ứng dụng ngoài</string>
-  <string name="morphe_open_links_externally_summary">Mở liên kết bằng trình duyệt của bạn thay vì trình duyệt trong ứng dụng</string>
+  <string name="morphe_open_links_externally_summary">Mở liên kết trong trình duyệt của bạn thay vì trình duyệt của ứng dụng</string>
 </resources>

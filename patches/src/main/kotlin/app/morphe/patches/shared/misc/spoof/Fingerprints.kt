@@ -4,6 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -24,6 +25,20 @@ internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
     )
 )
 
+// 21.21+
+internal object BuildPlayerRequestURIBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = $$"Landroid/net/Uri$Builder;",
+    parameters = listOf(),
+    filters = listOf(
+        string("key"),
+        string("asig"),
+        methodCall($$"Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;"),
+        opcode(Opcode.RETURN_OBJECT)
+    )
+)
+
+// 21.20 and lower
 internal object BuildPlayerRequestURIFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     filters = OpcodesFilter.opcodesToFilters(

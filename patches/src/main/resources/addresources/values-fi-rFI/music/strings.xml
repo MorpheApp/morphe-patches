@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Piilota videomainokset</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Ristihäivytys</string>
-  <string name="morphe_music_crossfade_screen_summary">Mukauta kappaleiden sujuvan yhdistämisen tapaa</string>
+  <string name="morphe_music_crossfade_screen_summary">Sekoita raidat sujuvasti toisiinsa</string>
   <string name="morphe_music_crossfade_enabled_title">Ota ristihäivytys käyttöön</string>
   <string name="morphe_music_crossfade_curve_title">Himmennyskäyrä</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Tasainen voima</string>
@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Lempeä helpotus</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">S-muotoinen käyrä</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Lähtevä</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Saapuva</string>
   <string name="morphe_music_crossfade_duration_title">Himmennyskeston</string>
   <string name="morphe_crossfade_duration_250ms">250 millisekuntia</string>
   <string name="morphe_crossfade_duration_500ms">500 millisekuntia</string>
@@ -56,6 +58,8 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 sekuntia</string>
   <string name="morphe_crossfade_duration_9000ms">9 sekuntia</string>
   <string name="morphe_crossfade_duration_10000ms">10 sekuntia</string>
+  <string name="morphe_crossfade_duration_11000ms">11 sekuntia</string>
+  <string name="morphe_crossfade_duration_12000ms">12 sekuntia</string>
   <string name="morphe_music_crossfade_on_skip_title">Himmennys manuaalisella ohituksella</string>
   <string name="morphe_music_crossfade_on_skip_summary">Käyttää yhdistämistehostetta, kun siirryt manuaalisesti seuraavaan kappaleeseen</string>
   <string name="morphe_music_crossfade_on_auto_advance_title">Himmennys automaattisella siirtymällä</string>
@@ -66,11 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade-toiminto jatkettu</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videon toimitila ei ole käytettävissä, kun crossfade on käytössä</string>
   <string name="morphe_music_crossfade_about_title">Tietoja</string>
-  <string name="morphe_music_crossfade_about_summary">"Himmennys on saatavilla YouTube Music 8.x:ssä.
+  <string name="morphe_music_crossfade_about_summary">"Paina ja pidä painettuna sekoituspainiketta poistaaksesi/ottaaksesi sen käyttöön
 
-Pitkä painallus sekoituspainikkeessa poistaa/ottaa käytöstä.
-
-Ominaisuuden toteutus VazerOG:n toimesta"</string>
+Ominaisuuden toteutti VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Ota pysyvä toisto käyttöön</string>
   <!-- layout.buttons.hideButtons -->
@@ -103,7 +105,7 @@ Ominaisuuden toteutus VazerOG:n toimesta"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">Estää soittimen automaattisen laajenemisen kokoruutuun, kun uusi kappale alkaa</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigointipalkki</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Valitse, mitkä painikkeet näkyvät navigointipalkissa</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Valitse mitkä painikkeet näkyvät alavalikossa</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Piilota Kotipainike</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->

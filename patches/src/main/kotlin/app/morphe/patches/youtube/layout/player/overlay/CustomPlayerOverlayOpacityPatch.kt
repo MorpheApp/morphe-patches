@@ -4,8 +4,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
-import app.morphe.patches.shared.misc.settings.preference.InputType
-import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -29,7 +28,10 @@ val customPlayerOverlayOpacityPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            TextPreference("morphe_player_overlay_opacity", inputType = InputType.NUMBER)
+            NonInteractivePreference(
+                key = "morphe_player_overlay_opacity",
+                tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
+            )
         )
 
         CreatePlayerOverviewFingerprint.let {

@@ -20,18 +20,22 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Restartovat pro dokončení nastavení</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Název aplikace</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Vlastní</string>
   <string name="morphe_custom_branding_icon_title">Ikona aplikace</string>
   <string name="morphe_custom_branding_icon_entry_1">Původní</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe černá</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tmavý</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe světlo</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play světlo</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play černá</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Vlastní</string>
+  <string name="morphe_custom_branding_icon_entry_7">Vlastní</string>
   <string name="morphe_custom_branding_notification_icon_title">Oznámení</string>
   <string name="morphe_custom_branding_notification_icon_entry_1">Přizpůsob ikonu aplikace</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe přehrávání</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Upozornění Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaše historie sledování není ukládána.&lt;br&gt;&lt;br&gt;Toto je s největší pravděpodobností způsobeno blokátorem reklam DNS nebo síťovým proxy.&lt;br&gt;&lt;br&gt;Pro opravu toho přidejte na bílý seznam &lt;b&gt;s.youtube.com&lt;/b&gt; nebo vypněte všechny blokátory DNS a proxy.</string>
@@ -40,9 +44,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_screen_title">Falšovat video streamy</string>
   <string name="morphe_spoof_video_streams_screen_summary">Konfigurace maskování klienta pro prevenci problémů s přehráváním</string>
   <string name="morphe_spoof_video_streams_title">Falšovat video streamy</string>
-  <string name="morphe_spoof_video_streams_summary">"Oklame YouTube, aby zaslal kompatibilní video stream, což vyřeší přehrávání pro většinu uživatelů
+  <string name="morphe_spoof_video_streams_summary">"Opravuje problémy s přehráváním pro většinu uživatelů požadavkem na kompatibilní video stream.
 
-Pokud jste uživatelem YouTube Premium, toto nastavení nemusí být potřeba."</string>
+Pokud jste uživatel YouTube Premium, toto nastavení nemusí být potřeba."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nepodařilo se načíst žádné streamy klientů</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Vypnutí tohoto nastavení může způsobit problémy s přehráváním</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -110,6 +114,7 @@ Pro přihlášení stiskněte pokračovat níže"</string>
   <string name="morphe_sanitize_sharing_links_title">Vyčistit sdílené odkazy</string>
   <string name="morphe_sanitize_sharing_links_summary">Odstraňuje sledovací parametry dotazů ze sdílených odkazů</string>
   <string name="morphe_replace_music_with_youtube_title">Změnit odkazy pro sdílení na youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Nahrazuje music.youtube.com za youtube.com v sdílených odkazech.</string>
   <string name="morphe_replace_links_with_shortener_title">Změnit odkazy pro sdílení na youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Vždy používá zkrácený formát URL adresy youtu.be pro živé přenosy a Shorts</string>
+  <string name="morphe_replace_links_with_shortener_summary">Nutí videa používat zkrácený formát URL youtu.be</string>
 </resources>

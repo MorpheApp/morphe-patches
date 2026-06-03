@@ -20,41 +20,45 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Перезавантажте, щоб завершити налаштування</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Назва застосунку</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_6 -->
-  <string name="morphe_custom_branding_name_entry_5">Користувацька</string>
-  <string name="morphe_custom_branding_icon_title">Значок застосунку</string>
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
+  <string name="morphe_custom_branding_name_entry_5">Власна</string>
+  <string name="morphe_custom_branding_icon_title">Іконка застосунку</string>
   <string name="morphe_custom_branding_icon_entry_1">Оригінальна</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe чорна</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe темна</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe світла</string>
-  <string name="morphe_custom_branding_icon_entry_5">Morphe Play</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play світла</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play чорна</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_6">Користувацька</string>
+  <string name="morphe_custom_branding_icon_entry_7">Власна</string>
   <string name="morphe_custom_branding_notification_icon_title">Іконка сповіщення</string>
-  <string name="morphe_custom_branding_notification_icon_entry_1">Змінити іконку застосунку</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Відповідати іконці застосунку</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Повідомлення Morphe</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Ваша історія переглядів не зберігається.&lt;br&gt;&lt;br&gt;Швидше за все, це спричинено блокувальником реклами DNS або мережевим проксі.&lt;br&gt;&lt;br&gt;Щоб це виправити, додайте &lt;b&gt;s.youtube.com&lt;/b&gt; у білий список блокувальника або вимкніть усі DNS блокувальники та проксі.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Більше не показувати</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Підміна відеопотоків</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Підміняти відеопотоки клієнта, щоб уникнути проблем із відтворенням</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Налаштування підміни клієнта для запобігання проблемам з відтворенням</string>
   <string name="morphe_spoof_video_streams_title">Підміна відеопотоків</string>
-  <string name="morphe_spoof_video_streams_summary">"Обманює YouTube, щоб він надсилав сумісний відеопотік, що виправляє відтворення для більшості користувачів
+  <string name="morphe_spoof_video_streams_summary">"Виправляє проблеми з відтворенням для більшості користувачів, запитуючи сумісний відеопотік
 
-Якщо ви є користувачем YouTube Premium, цей параметр може бути непотрібним"</string>
+Якщо ви є користувачем YouTube Premium, це налаштування може не знадобитися"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Не вдалося отримати жодних клієнтських потоків</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Вимкнення цього налаштування може спричинити проблеми з відтворенням.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
   <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Спробуйте увімкнути: Підміна відеопотоків > Android VR з входом</string>
-  <string name="morphe_spoof_video_streams_client_type_title">Клієнт за замовчуванням</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Типовий клієнт</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR з входом</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ви не ввійшли в Android VR. Натисніть тут, щоб увійти</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Наразі ви ввійшли в Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Щоб використовувати цю функцію, змініть \"Клієнт за замовчуванням\" на Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Щоб використовувати цю функцію, змініть \"Типовий клієнт\" на Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Увійти в Android VR</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Вхід в Android VR може виправити проблеми з відтворенням для деяких користувачів
 
@@ -76,9 +80,9 @@ Second \"item\" text"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Вхід виконано успішно</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Автентифікацію збережено
 
-• Ваші налаштування Morphe не імпортуватимуть/експортуватимуть автентифікацію Android VR
-• Якщо цей застосунок не використовуватиметься протягом 6 місяців, Google видалить цю автентифікацію
-• Вам потрібно буде знову ввійти, якщо ви зміните пароль Google або скасуєте реєстрацію цього пристрою в налаштуваннях Google"</string>
+• Налаштування Morphe не імпортують/експортують автентифікацію Android VR
+• Якщо застосунок не використовується 6 місяців, Google видалить цю автентифікацію
+• Вам потрібно буде увійти знову, якщо ви зміните пароль Google або скасуєте реєстрацію цього пристрою в налаштуваннях Google"</string>
   <string name="morphe_oauth2_connection_failure_timeout">OAuth2 тимчасово недоступний (тайм-аут API)</string>
   <string name="morphe_oauth2_connection_failure_status_400">Термін дії входу в Android VR закінчився. Спробуйте ввійти у VR ще раз</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 тимчасово недоступний (статус %d)</string>
@@ -88,10 +92,10 @@ Second \"item\" text"</string>
   <string name="morphe_oauth2_toast_reset">Ви вийшли з Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Недійсний токен входу у VR, спробуйте ввійти у VR ще раз</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Вимкнути оновлення JavaScript плеєра</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Блокує JavaScript плеєра до локального хешу замість отримання оновлень
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Закріплює JavaScript плеєра за локальним хешем замість отримання оновлень
 
-• Необхідний дійсний хеш JavaScript плеєра
-• Відтворення не вдасться, якщо хеш JavaScript плеєра буде скасовано у GVS"</string>
+• Потрібен дійсний хеш JavaScript плеєра
+• Відтворення не працюватиме, якщо хеш JavaScript плеєра буде відкликано у GVS"</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Хеші JavaScript плеєра дійсні приблизно один місяць, а застарілі хеші можуть бути скасовані GVS.</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Хеш JavaScript плеєра</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Введіть дійсний хеш JavaScript плеєра</string>
@@ -101,15 +105,16 @@ Second \"item\" text"</string>
   <string name="morphe_disable_drc_audio_title">Вимкнути аудіо DRC</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Примусово оригінальна мова звукової доріжки</string>
-  <string name="morphe_force_original_audio_summary">Завжди відтворює оригінальну аудіодоріжку відео замість дубльованої версії</string>
+  <string name="morphe_force_original_audio_summary">Завжди відтворює оригінальну аудіодоріжку відео замість дубльованої</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Приховати повноекранну рекламу</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Щоб використати цю функцію, змініть \"Підміна відео потоків\" на Android Reel або TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Очищення посилань для поширення</string>
-  <string name="morphe_sanitize_sharing_links_summary">Видаляє параметри запиту відстеження з поширених посилань</string>
+  <string name="morphe_sanitize_sharing_links_summary">Видаляє параметри відстеження з посилань при поширенні</string>
   <string name="morphe_replace_music_with_youtube_title">Змінити посилання для поширення на youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Замінює music.youtube.com на youtube.com у поширених посиланнях</string>
   <string name="morphe_replace_links_with_shortener_title">Змінити посилання для поширення на youtu.be</string>
-  <string name="morphe_replace_links_with_shortener_summary">Змушує прямі трансляції та Shorts використовувати скорочений формат URL-адреси youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Примусово використовує скорочений формат URL youtu.be для відео</string>
 </resources>
