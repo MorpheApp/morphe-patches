@@ -240,6 +240,7 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_hide_upload_time_user_dialog_message">"Limitations:
 • Shorts shelves, channel pages, and search results may still show upload times.
 • This feature does not work with automotive layout."</string>
+
     <string name="morphe_hide_keyword_content_screen_title">Keyword filter</string>
     <string name="morphe_hide_keyword_content_screen_summary">Choose specific words or phrases to hide videos in feeds and search</string>
     <string name="morphe_hide_keyword_content_home_title">Hide Home videos by keywords</string>
@@ -269,6 +270,7 @@ Limitations:
     <string name="morphe_hide_keyword_toast_invalid_conflicting">Keyword has conflicting declarations: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_length">Keyword is too short and requires quotes: %s</string>
     <string name="morphe_hide_keyword_toast_invalid_broad">Keyword will hide all videos: %s</string>
+
     <string name="morphe_snackbar_screen_title">Snackbar</string>
     <string name="morphe_snackbar_screen_summary">Hide or change snackbar related components.</string>
     <string name="morphe_custom_snackbar_theme_title">Enable custom snackbar</string>
