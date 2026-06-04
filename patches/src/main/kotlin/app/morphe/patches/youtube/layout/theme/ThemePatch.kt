@@ -261,7 +261,6 @@ val themePatch = baseThemePatch(
                             "yt_sys_color_baseline_dark_static_black",
                             "yt_sys_color_baseline_dark_raised_background",
                             "yt_sys_color_baseline_dark_base_background",
-                            "yt_sys_color_baseline_dark_static_black",
                             "yt_sys_color_baseline_light_inverted_background",
                             "yt_sys_color_baseline_light_static_black"
                         ) else emptySet()
