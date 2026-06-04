@@ -140,10 +140,6 @@ class AboutRoutes {
             for (int i = 0, length = socials.length(); i < length; i++) {
                 MorpheAboutPreference.WebLink link = new MorpheAboutPreference.WebLink(socials.getJSONObject(i));
 
-                if (link.url != null && (link.url.toLowerCase().contains("twitter.com") || link.url.toLowerCase().contains("x.com"))) {
-                    continue;
-                }
-
                 links.add(link);
             }
 
