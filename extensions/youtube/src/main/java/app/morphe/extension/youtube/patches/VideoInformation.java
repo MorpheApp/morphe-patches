@@ -63,6 +63,7 @@ public final class VideoInformation {
     private static WeakReference<PlaybackController> playerControllerRef = new WeakReference<>(null);
     private static WeakReference<PlaybackController> mdxPlayerDirectorRef = new WeakReference<>(null);
     private static String channelId = "";
+    private static String channelName = "";
     private static String videoId = "";
     private static long videoLength = 0;
 
@@ -104,6 +105,11 @@ public final class VideoInformation {
      */
     public static final Event<VideoQualityInterface> onQualityChange = new Event<>();
 
+    /**
+     * Fires whenever a new channel ID is extracted for the current video.
+     */
+    public static final Event<String> onChannelIdChange = new Event<>();
+
     @Nullable
     public static VideoQualityInterface[] getCurrentQualities() {
         return currentQualities;
@@ -126,7 +132,7 @@ public final class VideoInformation {
             playerControllerRef = new WeakReference<>(Objects.requireNonNull(playerController));
             videoLength = 0;
             channelId = "";
-            String channelName = "";
+            channelName = "";
             String videoTitle = "";
             boolean isLive = false;
             playbackSpeed = DEFAULT_YOUTUBE_PLAYBACK_SPEED;
@@ -158,6 +164,22 @@ public final class VideoInformation {
     public static void setChannelId(String cId) {
         channelId = cId != null ? cId : "";
         Logger.printDebug(() -> "Extracted Channel ID: " + channelId);
+        if (!channelId.isEmpty()) {
+            onChannelIdChange.invoke(channelId);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setChannelName(String cName) {
+        channelName = cName != null ? cName : "";
+        Logger.printDebug(() -> "Extracted Channel Name: " + channelName);
+    }
+
+    @NonNull
+    public static String getChannelName() {
+        return channelName;
     }
 
     /**

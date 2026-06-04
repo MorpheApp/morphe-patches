@@ -518,6 +518,17 @@ val videoInformationPatch = bytecodePatch(
                     )
                 ).instructionMatches.first().getInstruction<ReferenceInstruction>().getReference<MethodReference>()
 
+                val channelNameMethodCall = Fingerprint(
+                    filters = listOf(
+                        string("setMetadata may only be called once"),
+                        methodCall(
+                            definingClass = playerResponseType,
+                            returnType = "Ljava/lang/String;",
+                            location = MatchAfterWithin(30)
+                        )
+                    )
+                ).instructionMatches.last().getInstruction<ReferenceInstruction>().getReference<MethodReference>()
+
                 methods.add(
                     ImmutableMethod(
                         type,
@@ -539,6 +550,10 @@ val videoInformationPatch = bytecodePatch(
                                 invoke-interface { p1 }, $channelIdMethodCall
                                 move-result-object v0
                                 invoke-static { v0 }, $EXTENSION_CLASS->setChannelId(Ljava/lang/String;)V
+
+                                invoke-interface { p1 }, $channelNameMethodCall
+                                move-result-object v0
+                                invoke-static { v0 }, $EXTENSION_CLASS->setChannelName(Ljava/lang/String;)V
 
                                 return-void
                             """.toInstructions(),

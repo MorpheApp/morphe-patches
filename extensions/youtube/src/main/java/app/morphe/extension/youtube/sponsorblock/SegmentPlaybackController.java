@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.sponsorblock;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -183,6 +190,18 @@ public class SegmentPlaybackController {
 
             return Unit.INSTANCE;
         });
+
+        // Handle the race where setChannelId fires after segments are already loaded.
+        VideoInformation.onChannelIdChange.addObserver((String channelId) -> {
+            Utils.runOnMainThread(() -> {
+                if (currentVideoId != null && segments != null
+                        && SponsorBlockChannelWhitelist.isChannelWhitelisted(channelId)) {
+                    Logger.printDebug(() -> "Channel is whitelisted, discarding loaded segments: " + channelId);
+                    discardSegmentsForWhitelistedChannel();
+                }
+            });
+            return Unit.INSTANCE;
+        });
     }
 
     /**
@@ -285,6 +304,23 @@ public class SegmentPlaybackController {
         hiddenSkipSegmentsForCurrentVideoTime.clear();
     }
 
+    private static void maybeShowWhitelistToast() {
+        if (Settings.SB_TOAST_ON_WHITELISTED_CHANNEL.get()) {
+            Utils.showToastShort(str("morphe_sb_channel_whitelisted_toast"));
+        }
+    }
+
+    /**
+     * Discard segments when a whitelisted channel ID arrives after the download already completed.
+     */
+    private static void discardSegmentsForWhitelistedChannel() {
+        String videoId = currentVideoId;
+        clearData();
+        currentVideoId = videoId;
+        SponsorBlockViewController.hideAll();
+        maybeShowWhitelistToast();
+    }
+
     /**
      * Injection point.
      * Initializes SponsorBlock when the video player starts playing a new video.
@@ -334,6 +370,12 @@ public class SegmentPlaybackController {
             currentVideoId = videoId;
             Logger.printDebug(() -> "New video ID: " + videoId);
 
+            if (SponsorBlockChannelWhitelist.isCurrentChannelWhitelisted()) {
+                Logger.printDebug(() -> "Skipping SponsorBlock request for whitelisted channel");
+                maybeShowWhitelistToast();
+                return;
+            }
+
             Utils.runOnBackgroundThread(() -> {
                 try {
                     executeDownloadSegments(videoId);
@@ -359,6 +401,11 @@ public class SegmentPlaybackController {
             if (!videoId.equals(currentVideoId)) {
                 // user changed videos before get segments network call could complete
                 Logger.printDebug(() -> "Ignoring segments for prior video: " + videoId);
+                return;
+            }
+            if (SponsorBlockChannelWhitelist.isCurrentChannelWhitelisted()) {
+                Logger.printDebug(() -> "Skipping SponsorBlock for whitelisted channel");
+                maybeShowWhitelistToast();
                 return;
             }
             setSegments(segments);

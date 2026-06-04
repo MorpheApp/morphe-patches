@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.sponsorblock;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -7,21 +14,30 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Pair;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 
 import java.lang.ref.WeakReference;
 import java.text.NumberFormat;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,6 +45,8 @@ import java.util.regex.Pattern;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;
+import app.morphe.extension.shared.ui.Dim;
+import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour;
@@ -529,6 +547,197 @@ public class SponsorBlockUtils {
         }
 
         return str("morphe_sb_stats_saved_second_format", secondsFormatted);
+    }
+
+    public static void showChannelWhitelistDialog(Context context) {
+        try {
+            Utils.verifyOnMainThread();
+
+            SheetBottomDialog.DraggableLinearLayout mainLayout =
+                    SheetBottomDialog.createMainLayout(context, null);
+            mainLayout.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
+
+            TextView titleView = new TextView(context);
+            titleView.setText(str("morphe_sb_channel_whitelist_dialog_title"));
+            titleView.setTextSize(18);
+            titleView.setTypeface(Typeface.DEFAULT_BOLD);
+            titleView.setTextColor(Utils.getAppForegroundColor());
+            titleView.setGravity(Gravity.CENTER_HORIZONTAL);
+            LinearLayout.LayoutParams titleParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            titleParams.setMargins(0, Dim.dp8, 0, Dim.dp16);
+            titleView.setLayoutParams(titleParams);
+            mainLayout.addView(titleView);
+
+            LinearLayout dynamicContainer = new LinearLayout(context);
+            dynamicContainer.setOrientation(LinearLayout.VERTICAL);
+            mainLayout.addView(dynamicContainer);
+
+            buildWhitelistContent(context, dynamicContainer);
+
+            SheetBottomDialog.SlideDialog dialog =
+                    SheetBottomDialog.createSlideDialog(context, mainLayout, 300);
+            dialog.show();
+        } catch (Exception ex) {
+            Logger.printException(() -> "showChannelWhitelistDialog failure", ex);
+        }
+    }
+
+    private static void buildWhitelistContent(Context context, LinearLayout container) {
+        container.removeAllViews();
+
+        String currentChannelId = VideoInformation.getChannelId();
+        if (!currentChannelId.isEmpty()) {
+            String currentChannelName = VideoInformation.getChannelName();
+            String currentDisplayName = currentChannelName.isEmpty() ? currentChannelId : currentChannelName;
+
+            TextView sectionLabel = new TextView(context);
+            sectionLabel.setText(str("morphe_sb_channel_whitelist_current_channel"));
+            sectionLabel.setTextSize(13);
+            sectionLabel.setTextColor(Utils.getAppForegroundColor());
+            sectionLabel.setAlpha(0.7f);
+            LinearLayout.LayoutParams labelParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            labelParams.setMargins(0, 0, 0, Dim.dp4);
+            sectionLabel.setLayoutParams(labelParams);
+            container.addView(sectionLabel);
+
+            LinearLayout currentRow = new LinearLayout(context);
+            currentRow.setOrientation(LinearLayout.HORIZONTAL);
+            currentRow.setGravity(Gravity.CENTER_VERTICAL);
+            LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            rowParams.setMargins(0, 0, 0, Dim.dp12);
+            currentRow.setLayoutParams(rowParams);
+
+            TextView channelIdText = new TextView(context);
+            channelIdText.setText(currentDisplayName);
+            channelIdText.setTextSize(14);
+            channelIdText.setTextColor(Utils.getAppForegroundColor());
+            channelIdText.setLayoutParams(new LinearLayout.LayoutParams(
+                    0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
+            channelIdText.setEllipsize(TextUtils.TruncateAt.END);
+            channelIdText.setSingleLine(true);
+            currentRow.addView(channelIdText);
+
+            boolean isWhitelisted = SponsorBlockChannelWhitelist.isChannelWhitelisted(currentChannelId);
+            Button actionBtn = CustomDialog.createButton(
+                    context, null,
+                    isWhitelisted
+                            ? str("morphe_sb_channel_whitelist_remove")
+                            : str("morphe_sb_channel_whitelist_add"),
+                    () -> {
+                        if (SponsorBlockChannelWhitelist.isChannelWhitelisted(currentChannelId)) {
+                            SponsorBlockChannelWhitelist.removeChannel(currentChannelId);
+                            Utils.showToastShort(str("morphe_sb_channel_whitelist_channel_removed"));
+                        } else {
+                            SponsorBlockChannelWhitelist.addChannel(currentChannelId, currentChannelName);
+                            Utils.showToastShort(str("morphe_sb_channel_whitelist_channel_added"));
+                        }
+                        buildWhitelistContent(context, container);
+                    },
+                    !isWhitelisted, false
+            );
+            LinearLayout.LayoutParams btnParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT, Dim.dp36);
+            btnParams.setMargins(Dim.dp8, 0, 0, 0);
+            actionBtn.setLayoutParams(btnParams);
+            currentRow.addView(actionBtn);
+            container.addView(currentRow);
+
+            View divider = new View(context);
+            divider.setBackgroundColor(Utils.isDarkModeEnabled() ? 0x26FFFFFF : 0x26000000);
+            LinearLayout.LayoutParams dividerParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, Dim.dp1);
+            dividerParams.setMargins(0, 0, 0, Dim.dp12);
+            divider.setLayoutParams(dividerParams);
+            container.addView(divider);
+        }
+
+        TextView channelsHeader = new TextView(context);
+        channelsHeader.setText(str("morphe_sb_channel_whitelist_channels_header"));
+        channelsHeader.setTextSize(13);
+        channelsHeader.setTextColor(Utils.getAppForegroundColor());
+        channelsHeader.setAlpha(0.7f);
+        LinearLayout.LayoutParams headerParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        headerParams.setMargins(0, 0, 0, Dim.dp8);
+        channelsHeader.setLayoutParams(headerParams);
+        container.addView(channelsHeader);
+
+        LinkedHashMap<String, String> channels = SponsorBlockChannelWhitelist.getWhitelistedChannels();
+
+        if (channels.isEmpty()) {
+            TextView emptyView = new TextView(context);
+            emptyView.setText(str("morphe_sb_channel_whitelist_empty"));
+            emptyView.setTextSize(14);
+            emptyView.setTextColor(Utils.getAppForegroundColor());
+            emptyView.setAlpha(0.5f);
+            emptyView.setGravity(Gravity.CENTER_HORIZONTAL);
+            LinearLayout.LayoutParams emptyParams = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            emptyParams.setMargins(0, Dim.dp8, 0, Dim.dp8);
+            emptyView.setLayoutParams(emptyParams);
+            container.addView(emptyView);
+        } else {
+            ScrollView scrollView = new ScrollView(context);
+            scrollView.setVerticalScrollBarEnabled(false);
+            scrollView.setOverScrollMode(View.OVER_SCROLL_NEVER);
+            scrollView.setLayoutParams(new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.MATCH_PARENT,
+                    Math.min(Dim.pctHeight(40), channels.size() * Dim.dp(44))));
+
+            LinearLayout listContainer = new LinearLayout(context);
+            listContainer.setOrientation(LinearLayout.VERTICAL);
+
+            for (Map.Entry<String, String> entry : channels.entrySet()) {
+                String id = entry.getKey();
+                String name = entry.getValue();
+                String displayName = name.isEmpty() ? id : name;
+                listContainer.addView(buildChannelRow(context, id, displayName, container));
+            }
+
+            scrollView.addView(listContainer);
+            container.addView(scrollView);
+        }
+    }
+
+    private static LinearLayout buildChannelRow(Context context, String channelId, String displayName, LinearLayout container) {
+        LinearLayout row = new LinearLayout(context);
+        row.setOrientation(LinearLayout.HORIZONTAL);
+        row.setGravity(Gravity.CENTER_VERTICAL);
+        LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        rowParams.setMargins(0, 0, 0, Dim.dp8);
+        row.setLayoutParams(rowParams);
+
+        TextView idText = new TextView(context);
+        idText.setText(displayName);
+        idText.setTextSize(14);
+        idText.setTextColor(Utils.getAppForegroundColor());
+        idText.setLayoutParams(new LinearLayout.LayoutParams(
+                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f));
+        idText.setEllipsize(TextUtils.TruncateAt.END);
+        idText.setSingleLine(true);
+        row.addView(idText);
+
+        Button removeBtn = CustomDialog.createButton(
+                context, null,
+                str("morphe_sb_channel_whitelist_remove"),
+                () -> {
+                    SponsorBlockChannelWhitelist.removeChannel(channelId);
+                    Utils.showToastShort(str("morphe_sb_channel_whitelist_channel_removed"));
+                    buildWhitelistContent(context, container);
+                },
+                false, false
+        );
+        LinearLayout.LayoutParams btnParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, Dim.dp36);
+        btnParams.setMargins(Dim.dp8, 0, 0, 0);
+        removeBtn.setLayoutParams(btnParams);
+        row.addView(removeBtn);
+
+        return row;
     }
 
     private static class EditByHandSaveDialogListener implements DialogInterface.OnClickListener {

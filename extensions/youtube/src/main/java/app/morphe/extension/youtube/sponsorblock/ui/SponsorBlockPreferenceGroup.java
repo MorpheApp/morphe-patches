@@ -37,6 +37,7 @@ import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
+import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
 import app.morphe.extension.youtube.sponsorblock.objects.SegmentCategory;
 import app.morphe.extension.youtube.sponsorblock.objects.SegmentCategoryPreference;
 
@@ -497,6 +498,25 @@ public class SponsorBlockPreferenceGroup extends PreferenceGroup {
                 return true;
             });
             generalCategory.addPreference(apiUrl);
+
+            Preference channelWhitelist = new Preference(context);
+            channelWhitelist.setTitle(str("morphe_sb_channel_whitelist"));
+            channelWhitelist.setSummary(str("morphe_sb_channel_whitelist_summary"));
+            channelWhitelist.setOnPreferenceClickListener(preference1 -> {
+                SponsorBlockUtils.showChannelWhitelistDialog(preference1.getContext());
+                return true;
+            });
+            generalCategory.addPreference(channelWhitelist);
+
+            SwitchPreference toastOnWhitelistedChannel = new SwitchPreference(context);
+            initializePreference(toastOnWhitelistedChannel, Settings.SB_TOAST_ON_WHITELISTED_CHANNEL,
+                    "morphe_sb_toast_on_whitelisted_channel");
+            toastOnWhitelistedChannel.setOnPreferenceChangeListener((preference1, newValue) -> {
+                Settings.SB_TOAST_ON_WHITELISTED_CHANNEL.save((Boolean) newValue);
+                updateUIDelayed();
+                return true;
+            });
+            generalCategory.addPreference(toastOnWhitelistedChannel);
 
             importExport = new EditTextPreference(context) {
                 @Override

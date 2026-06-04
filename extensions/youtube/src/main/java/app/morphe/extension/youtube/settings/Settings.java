@@ -554,6 +554,8 @@ public class Settings extends SharedYouTubeSettings {
     public static final LongSetting SB_LAST_VIP_CHECK = new LongSetting("sb_last_vip_check", 0L, false, false);
     public static final BooleanSetting SB_HIDE_EXPORT_WARNING = new BooleanSetting("sb_hide_export_warning", FALSE, false, false);
     public static final BooleanSetting SB_SEEN_GUIDELINES = new BooleanSetting("sb_seen_guidelines", FALSE, false, false);
+    public static final StringSetting SB_CHANNEL_WHITELIST = new StringSetting("sb_channel_whitelist", "", false, false);
+    public static final BooleanSetting SB_TOAST_ON_WHITELISTED_CHANNEL = new BooleanSetting("sb_toast_on_whitelisted_channel", FALSE, parent(SB_ENABLED));
     public static final StringSetting SB_CATEGORY_SPONSOR = new StringSetting("sb_sponsor", SKIP_AUTOMATICALLY_ONCE.morpheKeyValue, parent(SB_ENABLED));
     public static final StringSetting SB_CATEGORY_SPONSOR_COLOR = new StringSetting("sb_sponsor_color", "#CC00D400");
     public static final StringSetting SB_CATEGORY_SELF_PROMO = new StringSetting("sb_selfpromo", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));

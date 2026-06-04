@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
+import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
 import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 
 @SuppressWarnings("unused")
@@ -37,7 +38,10 @@ public class CreateSegmentButton {
                     "morphe_sb_logo",
                     CreateSegmentButton::isButtonEnabled,
                     v -> SponsorBlockViewController.toggleNewSegmentLayoutVisibility(),
-                    null
+                    v -> {
+                        SponsorBlockUtils.showChannelWhitelistDialog(v.getContext());
+                        return true;
+                    }
             );
         } catch (Exception ex) {
             Logger.printException(() -> "initializeButton failure", ex);
