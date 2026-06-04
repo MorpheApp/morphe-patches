@@ -55,7 +55,15 @@ import kotlin.Pair;
 public class PlaylistPatch {
     private static final long DELAY_MILLISECONDS = 1500L;
 
-    private static volatile String playlistId = Settings.QUEUE_PLAYLIST_ID.get();
+    private static String initPlaylistId() {
+        if (Settings.QUEUE_RESTORE.get()) {
+            return Settings.QUEUE_PLAYLIST_ID.get();
+        }
+        Settings.QUEUE_PLAYLIST_ID.save("");
+        return "";
+    }
+
+    private static volatile String playlistId = initPlaylistId();
     private static volatile String videoId = "";
     private static volatile boolean syncStarted = false;
 
@@ -235,7 +243,9 @@ public class PlaylistPatch {
                                 String setVideoId = playlistIds.getSecond();
                                 if (createdPlaylistId != null && setVideoId != null) {
                                     playlistId = createdPlaylistId;
-                                    Settings.QUEUE_PLAYLIST_ID.save(createdPlaylistId);
+                                    if (Settings.QUEUE_RESTORE.get()) {
+                                        Settings.QUEUE_PLAYLIST_ID.save(createdPlaylistId);
+                                    }
                                     lastVideoIds.putIfAbsent(currentVideoId, setVideoId);
                                     showToast(fetchSucceededCreate);
                                     Logger.printDebug(() -> "Queue created, playlistId: " + createdPlaylistId + ", setVideoId: " + setVideoId);

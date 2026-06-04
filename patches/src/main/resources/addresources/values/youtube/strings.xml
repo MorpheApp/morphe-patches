@@ -382,6 +382,8 @@ Info: May not work on live streams"</string>
     <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
     <string name="morphe_save_to_watch_later_button_title">Show Save to watch later button</string>
     <string name="morphe_save_to_watch_later_button_summary">Tap to save to watch later, tap and hold for queue options</string>
+    <string name="morphe_queue_restore_title">Restore queue between sessions</string>
+    <string name="morphe_queue_restore_summary">Saves the queue playlist ID so the same queue is used across app restarts</string>
     <string name="morphe_save_to_watch_later_success_toast">Video successfully saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_already_exists_toast">This video is already saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_error_toast">Cannot save this video in watch later playlist</string>
