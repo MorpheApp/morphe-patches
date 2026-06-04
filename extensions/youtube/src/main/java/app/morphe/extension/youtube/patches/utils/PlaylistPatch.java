@@ -34,22 +34,22 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
-import kotlin.Pair;
 import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.innertube.utils.AuthUtils;
 import app.morphe.extension.youtube.patches.VideoInformation;
-import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.patches.utils.requests.CreatePlaylistRequest;
-import app.morphe.extension.youtube.patches.utils.requests.GetPlaylistItemsRequest;
 import app.morphe.extension.youtube.patches.utils.requests.EditPlaylistRequest;
+import app.morphe.extension.youtube.patches.utils.requests.GetPlaylistItemsRequest;
 import app.morphe.extension.youtube.patches.utils.requests.GetPlaylistsRequest;
 import app.morphe.extension.youtube.patches.utils.requests.SavePlaylistRequest;
+import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.PlayerType;
+import kotlin.Pair;
 
 @SuppressWarnings({"unused", "StaticFieldLeak"})
 public class PlaylistPatch {
@@ -300,37 +300,40 @@ public class PlaylistPatch {
             GetPlaylistsRequest.fetchRequestIfNeeded(currentPlaylistId, AuthUtils.getRequestHeader());
             runOnMainThreadDelayed(() -> {
                 GetPlaylistsRequest request = GetPlaylistsRequest.getRequestForPlaylistId(currentPlaylistId);
-                if (request != null) {
-                    Context context = Utils.getContext();
-                    Pair<String, String>[] playlists = request.getPlaylists();
-                    if (playlists != null) {
-                        SheetBottomDialog.DraggableLinearLayout mainLayout =
-                                SheetBottomDialog.createMainLayout(context, null);
-                        Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * playlists.length);
-                        int libraryIconId = QueueManager.SAVE_QUEUE.drawableId;
-
-                        for (Pair<String, String> playlist : playlists) {
-                            String listId = playlist.getFirst();
-                            String title = playlist.getSecond();
-                            Runnable action = () -> saveToPlaylist(listId, title);
-                            View itemLayout = createItemLayout(context, title, libraryIconId);
-                            actionsMap.put(itemLayout, action);
-                            mainLayout.addView(itemLayout);
-                        }
-
-                        SheetBottomDialog.SlideDialog dialog =
-                                SheetBottomDialog.createSlideDialog(context, mainLayout, 300);
-                        for (Map.Entry<View, Runnable> entry : actionsMap.entrySet()) {
-                            Runnable action = entry.getValue();
-                            entry.getKey().setOnClickListener(v -> {
-                                dialog.dismiss();
-                                action.run();
-                            });
-                        }
-                        dialog.show();
-                        GetPlaylistsRequest.clear();
-                    }
+                if (request == null) {
+                    return;
                 }
+                Pair<String, String>[] playlists = request.getPlaylists();
+                if (playlists == null) {
+                    return;
+                }
+
+                Context context = Utils.getContext();
+                SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
+                        .createMainLayout(context, null);
+                Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * playlists.length);
+                int libraryIconId = QueueManager.SAVE_QUEUE.drawableId;
+
+                for (Pair<String, String> playlist : playlists) {
+                    String listId = playlist.getFirst();
+                    String title = playlist.getSecond();
+                    Runnable action = () -> saveToPlaylist(listId, title);
+                    View itemLayout = createItemLayout(context, title, libraryIconId);
+                    actionsMap.put(itemLayout, action);
+                    mainLayout.addView(itemLayout);
+                }
+
+                SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
+                        .createSlideDialog(context, mainLayout, 300);
+                for (Map.Entry<View, Runnable> entry : actionsMap.entrySet()) {
+                    Runnable action = entry.getValue();
+                    entry.getKey().setOnClickListener(v -> {
+                        dialog.dismiss();
+                        action.run();
+                    });
+                }
+                dialog.show();
+                GetPlaylistsRequest.clear();
             }, DELAY_MILLISECONDS);
         } catch (Exception ex) {
             Logger.printException(() -> "saveToPlaylist failure", ex);
@@ -347,15 +350,17 @@ public class PlaylistPatch {
 
             runOnMainThreadDelayed(() -> {
                 SavePlaylistRequest request = SavePlaylistRequest.getRequestForLibraryId(libraryId);
-                if (request != null) {
-                    Boolean result = request.getResult();
-                    if (Boolean.TRUE.equals(result)) {
-                        showToast(String.format(fetchSucceededSave, libraryTitle));
-                        SavePlaylistRequest.clear();
-                        return;
-                    }
-                    showToast(fetchFailedSave);
+                if (request == null) {
+                    return;
                 }
+
+                Boolean result = request.getResult();
+                if (Boolean.TRUE.equals(result)) {
+                    showToast(String.format(fetchSucceededSave, libraryTitle));
+                    SavePlaylistRequest.clear();
+                    return;
+                }
+                showToast(fetchFailedSave);
             }, DELAY_MILLISECONDS);
         } catch (Exception ex) {
             Logger.printException(() -> "saveToPlaylist failure", ex);
@@ -466,14 +471,10 @@ public class PlaylistPatch {
         );
 
         public final int drawableId;
-
-        @NonNull
         public final String label;
-
-        @NonNull
         public final Runnable onClickAction;
 
-        QueueManager(@NonNull String label, @NonNull String icon, @NonNull String boldIcon, @NonNull Runnable onClickAction) {
+        QueueManager(String label, String icon, String boldIcon, Runnable onClickAction) {
             this.drawableId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
                     YouTubeActivityHook.USE_BOLD_ICONS ? boldIcon : icon);
             this.label = str(label);

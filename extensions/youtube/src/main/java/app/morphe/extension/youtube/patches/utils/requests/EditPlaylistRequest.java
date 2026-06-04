@@ -130,8 +130,8 @@ public class EditPlaylistRequest {
                     return "";
                 }
                 Object playlistEditResultsElement = json.getJSONArray("playlistEditResults").get(0);
-                if (playlistEditResultsElement instanceof JSONObject) {
-                    return ((JSONObject) playlistEditResultsElement)
+                if (playlistEditResultsElement instanceof JSONObject elementJson) {
+                    return elementJson
                             .getJSONObject("playlistEditVideoAddedResultData")
                             .getString("setVideoId");
                 }

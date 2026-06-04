@@ -111,8 +111,8 @@ public class GetPlaylistsRequest {
     private static Pair<String, String>[] parseResponse(JSONObject json) {
         try {
             Object addToPlaylistRendererElement = json.getJSONArray("contents").get(0);
-            if (addToPlaylistRendererElement instanceof JSONObject) {
-                JSONArray playlistsJsonArray = ((JSONObject) addToPlaylistRendererElement)
+            if (addToPlaylistRendererElement instanceof JSONObject addToPlaylistRendererObj) {
+                JSONArray playlistsJsonArray = addToPlaylistRendererObj
                         .getJSONObject("addToPlaylistRenderer")
                         .getJSONArray("playlists");
 
@@ -121,8 +121,8 @@ public class GetPlaylistsRequest {
 
                 for (int i = 0; i < playlistsLength; i++) {
                     Object elementsElement = playlistsJsonArray.get(i);
-                    if (elementsElement instanceof JSONObject) {
-                        JSONObject renderer = ((JSONObject) elementsElement).getJSONObject("playlistAddToOptionRenderer");
+                    if (elementsElement instanceof JSONObject elementJson) {
+                        JSONObject renderer = elementJson.getJSONObject("playlistAddToOptionRenderer");
                         String id = renderer.getString("playlistId");
                         String title = ((JSONObject) renderer.getJSONObject("title")
                                 .getJSONArray("runs")

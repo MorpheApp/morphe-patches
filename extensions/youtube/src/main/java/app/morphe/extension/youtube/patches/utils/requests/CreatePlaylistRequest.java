@@ -60,8 +60,10 @@ public class CreatePlaylistRequest {
     }
 
     public static void fetchRequestIfNeeded(String videoId, Map<String, String> requestHeader) {
-        Objects.requireNonNull(videoId);
-        cache.computeIfAbsent(videoId, k -> new CreatePlaylistRequest(k, requestHeader));
+        cache.computeIfAbsent(
+                Objects.requireNonNull(videoId),
+                k -> new CreatePlaylistRequest(k, requestHeader)
+        );
     }
 
     @Nullable
@@ -156,8 +158,8 @@ public class CreatePlaylistRequest {
                     .getJSONArray("contents")
                     .get(0);
 
-            if (secondaryContentsElement instanceof JSONObject) {
-                return ((JSONObject) secondaryContentsElement)
+            if (secondaryContentsElement instanceof JSONObject elementJson) {
+                return elementJson
                         .getJSONObject("playlistPanelVideoRenderer")
                         .getString("playlistSetVideoId");
             }
