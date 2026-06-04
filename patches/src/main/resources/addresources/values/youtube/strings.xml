@@ -382,11 +382,33 @@ Info: May not work on live streams"</string>
     <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
     <string name="morphe_save_to_watch_later_button_title">Show Save to watch later button</string>
     <string name="morphe_save_to_watch_later_button_summary">Tap to save to watch later, tap and hold for queue options</string>
-    <string name="morphe_queue_restore_title">Restore queue between sessions</string>
-    <string name="morphe_queue_restore_summary">Saves the queue playlist ID so the same queue is used across app restarts</string>
     <string name="morphe_save_to_watch_later_success_toast">Video successfully saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_already_exists_toast">This video is already saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_error_toast">Cannot save this video in watch later playlist</string>
+    <string name="morphe_queue_restore_title">Restore queue between sessions</string>
+    <string name="morphe_queue_restore_summary">Saves the queue playlist ID so the same queue is used across app restarts</string>
+    <string name="morphe_queue_manager_check_failed_auth">Not logged in</string>
+    <string name="morphe_queue_manager_check_failed_playlist_id">No playlist ID</string>
+    <string name="morphe_queue_manager_check_failed_queue">Queue is empty</string>
+    <string name="morphe_queue_manager_check_failed_video_id">No video ID</string>
+    <string name="morphe_queue_manager_check_failed_generic">Failed: %s</string>
+    <string name="morphe_queue_manager_fetch_failed_add">Failed to add to queue</string>
+    <string name="morphe_queue_manager_fetch_failed_create">Failed to create queue</string>
+    <string name="morphe_queue_manager_fetch_failed_remove">Failed to remove from queue</string>
+    <string name="morphe_queue_manager_fetch_failed_save">Failed to save queue</string>
+    <string name="morphe_queue_manager_fetch_succeeded_add">Added to queue</string>
+    <string name="morphe_queue_manager_fetch_succeeded_create">Queue created</string>
+    <string name="morphe_queue_manager_fetch_succeeded_remove">Removed from queue</string>
+    <string name="morphe_queue_manager_fetch_succeeded_save">Queue saved to %s</string>
+    <string name="morphe_queue_manager_add_to_queue">Add to queue</string>
+    <string name="morphe_queue_manager_add_to_queue_and_open_queue">Add to queue and open</string>
+    <string name="morphe_queue_manager_add_to_queue_and_play_video">Add to queue and play</string>
+    <string name="morphe_queue_manager_add_to_queue_and_reload_video">Add and reload video</string>
+    <string name="morphe_queue_manager_remove_from_queue">Remove from queue</string>
+    <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Remove and open queue</string>
+    <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Remove and reload video</string>
+    <string name="morphe_queue_manager_open_queue">Open queue</string>
+    <string name="morphe_queue_manager_save_queue">Save queue to playlist</string>
 
     <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
     <string name="morphe_open_channel_of_live_avatar_title">Open channel from live avatar</string>
@@ -1361,28 +1383,4 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
     <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show spoofing in Stats for nerds</string>
-
-    <!-- Queue manager strings -->
-    <string name="morphe_queue_manager_check_failed_auth">Not logged in</string>
-    <string name="morphe_queue_manager_check_failed_playlist_id">No playlist ID</string>
-    <string name="morphe_queue_manager_check_failed_queue">Queue is empty</string>
-    <string name="morphe_queue_manager_check_failed_video_id">No video ID</string>
-    <string name="morphe_queue_manager_check_failed_generic">Failed: %s</string>
-    <string name="morphe_queue_manager_fetch_failed_add">Failed to add to queue</string>
-    <string name="morphe_queue_manager_fetch_failed_create">Failed to create queue</string>
-    <string name="morphe_queue_manager_fetch_failed_remove">Failed to remove from queue</string>
-    <string name="morphe_queue_manager_fetch_failed_save">Failed to save queue</string>
-    <string name="morphe_queue_manager_fetch_succeeded_add">Added to queue</string>
-    <string name="morphe_queue_manager_fetch_succeeded_create">Queue created</string>
-    <string name="morphe_queue_manager_fetch_succeeded_remove">Removed from queue</string>
-    <string name="morphe_queue_manager_fetch_succeeded_save">Queue saved to %s</string>
-    <string name="morphe_queue_manager_add_to_queue">Add to queue</string>
-    <string name="morphe_queue_manager_add_to_queue_and_open_queue">Add to queue and open</string>
-    <string name="morphe_queue_manager_add_to_queue_and_play_video">Add to queue and play</string>
-    <string name="morphe_queue_manager_add_to_queue_and_reload_video">Add and reload video</string>
-    <string name="morphe_queue_manager_remove_from_queue">Remove from queue</string>
-    <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Remove and open queue</string>
-    <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Remove and reload video</string>
-    <string name="morphe_queue_manager_open_queue">Open queue</string>
-    <string name="morphe_queue_manager_save_queue">Save queue to playlist</string>
 </resources>
