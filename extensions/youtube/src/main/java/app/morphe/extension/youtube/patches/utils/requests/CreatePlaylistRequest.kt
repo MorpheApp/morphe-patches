@@ -15,7 +15,6 @@ import org.json.JSONException
 import org.json.JSONObject
 import java.io.IOException
 import java.net.SocketTimeoutException
-import java.util.Collections
 import java.util.Objects
 import java.util.concurrent.ExecutionException
 import java.util.concurrent.Future
@@ -49,13 +48,7 @@ class CreatePlaylistRequest private constructor(
         private const val MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000
 
         @GuardedBy("itself")
-        val cache: MutableMap<String, CreatePlaylistRequest> = Collections.synchronizedMap(
-            object : LinkedHashMap<String, CreatePlaylistRequest>(100) {
-                private val CACHE_LIMIT = 50
-                override fun removeEldestEntry(eldest: Map.Entry<String, CreatePlaylistRequest>): Boolean {
-                    return size > CACHE_LIMIT
-                }
-            })
+        val cache: MutableMap<String, CreatePlaylistRequest> = Utils.createSizeRestrictedMap(50);
 
         @JvmStatic
         fun clear() {

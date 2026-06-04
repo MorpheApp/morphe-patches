@@ -51,13 +51,7 @@ class EditPlaylistRequest private constructor(
         private const val MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000
 
         @GuardedBy("itself")
-        val cache: MutableMap<String, EditPlaylistRequest> = Collections.synchronizedMap(
-            object : LinkedHashMap<String, EditPlaylistRequest>(100) {
-                private val CACHE_LIMIT = 50
-                override fun removeEldestEntry(eldest: Map.Entry<String, EditPlaylistRequest>): Boolean {
-                    return size > CACHE_LIMIT
-                }
-            })
+        val cache: MutableMap<String, EditPlaylistRequest> = Utils.createSizeRestrictedMap(50);
 
         @JvmStatic
         fun clear() {
