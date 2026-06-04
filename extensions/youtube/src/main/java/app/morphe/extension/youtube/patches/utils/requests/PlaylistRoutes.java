@@ -50,6 +50,10 @@ public final class PlaylistRoutes {
             Route.Method.POST, "playlist/get_add_to_playlist?prettyPrint=false"
     ).compile();
 
+    public static final Route.CompiledRoute BROWSE_PLAYLIST = new Route(
+            Route.Method.POST, "browse?prettyPrint=false"
+    ).compile();
+
     private PlaylistRoutes() {
     }
 
@@ -140,6 +144,18 @@ public final class PlaylistRoutes {
             return body.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {
             Logger.printException(() -> "getPlaylistsBody failed", ex);
+        }
+        return new byte[0];
+    }
+
+    public static byte[] browsePlaylistBody(String playlistId) {
+        try {
+            JSONObject body = new JSONObject();
+            body.put("context", androidContext());
+            body.put("browseId", "VL" + playlistId);
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "browsePlaylistBody failed", ex);
         }
         return new byte[0];
     }

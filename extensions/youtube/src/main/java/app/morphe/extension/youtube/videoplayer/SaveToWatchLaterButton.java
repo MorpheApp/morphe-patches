@@ -34,6 +34,10 @@ public class SaveToWatchLaterButton {
      */
     public static void initializeLegacyButton(View controlsView) {
         try {
+            // Start syncing queue playlist items in the background so that by the time
+            // the user opens the queue menu, lastVideoIds is already populated.
+            PlaylistPatch.syncIfNeeded();
+
             instance = new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_save_to_watch_later_button",

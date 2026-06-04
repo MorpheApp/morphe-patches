@@ -45,6 +45,7 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.patches.utils.requests.CreatePlaylistRequest;
+import app.morphe.extension.youtube.patches.utils.requests.GetPlaylistItemsRequest;
 import app.morphe.extension.youtube.patches.utils.requests.EditPlaylistRequest;
 import app.morphe.extension.youtube.patches.utils.requests.GetPlaylistsRequest;
 import app.morphe.extension.youtube.patches.utils.requests.SavePlaylistRequest;
@@ -56,6 +57,7 @@ public class PlaylistPatch {
 
     private static volatile String playlistId = Settings.QUEUE_PLAYLIST_ID.get();
     private static volatile String videoId = "";
+    private static volatile boolean syncStarted = false;
 
     private static String checkFailedAuth = "";
     private static String checkFailedPlaylistId = "";
@@ -125,6 +127,31 @@ public class PlaylistPatch {
                 buildBottomSheetDialog(customActionsEntries);
             }
         }
+    }
+
+    /**
+     * Invoked by extension.
+     */
+    public static void syncIfNeeded() {
+        if (!playlistId.isEmpty() && !syncStarted && !AuthUtils.isNotLoggedIn()) {
+            syncStarted = true;
+            syncPlaylistItems();
+        }
+    }
+
+    private static void syncPlaylistItems() {
+        Utils.submitOnBackgroundThread(() -> {
+            Map<String, String> items = GetPlaylistItemsRequest.fetch(playlistId, AuthUtils.getRequestHeader());
+            if (items != null && !items.isEmpty()) {
+                synchronized (lastVideoIds) {
+                    for (Map.Entry<String, String> entry : items.entrySet()) {
+                        lastVideoIds.putIfAbsent(entry.getKey(), entry.getValue());
+                    }
+                }
+                Logger.printDebug(() -> "Synced " + items.size() + " items from queue playlist");
+            }
+            return null;
+        });
     }
 
     private static void buildBottomSheetDialog(QueueManager[] queueManagerEntries) {
