@@ -158,10 +158,10 @@ public class PlaylistPatch {
         Context mContext = Utils.getContext();
         if (mContext == null) return;
 
-        SheetBottomDialog.DraggableLinearLayout mainLayout =
-                SheetBottomDialog.createMainLayout(mContext, null);
+        SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
+                .createMainLayout(mContext, null);
 
-        Map<View, Runnable> actionsMap = new LinkedHashMap<>(queueManagerEntries.length);
+        Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * queueManagerEntries.length);
         for (QueueManager queueManager : queueManagerEntries) {
             View itemLayout = createItemLayout(mContext, queueManager.label, queueManager.drawableId);
             actionsMap.put(itemLayout, queueManager.onClickAction);
@@ -306,7 +306,7 @@ public class PlaylistPatch {
                     if (playlists != null) {
                         SheetBottomDialog.DraggableLinearLayout mainLayout =
                                 SheetBottomDialog.createMainLayout(context, null);
-                        Map<View, Runnable> actionsMap = new LinkedHashMap<>(playlists.length);
+                        Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * playlists.length);
                         int libraryIconId = QueueManager.SAVE_QUEUE.drawableId;
 
                         for (Pair<String, String> playlist : playlists) {

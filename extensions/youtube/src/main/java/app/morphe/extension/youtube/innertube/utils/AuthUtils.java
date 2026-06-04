@@ -66,11 +66,11 @@ public class AuthUtils {
     }
 
     public static Map<String, String> getRequestHeader() {
-        return new HashMap<>() {{
-            put(AUTHORIZATION_HEADER, authorization);
-            put(VISITOR_ID_HEADER, visitorId);
-            put(PAGE_ID_HEADER, pageId);
-        }};
+        return Map.of(
+            AUTHORIZATION_HEADER, authorization,
+            VISITOR_ID_HEADER, visitorId,
+            PAGE_ID_HEADER, pageId
+        );
     }
 
     public static boolean isNotLoggedIn() {

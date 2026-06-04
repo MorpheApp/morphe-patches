@@ -9,6 +9,10 @@ package app.morphe.extension.youtube.patches.utils.requests;
 
 import androidx.annotation.Nullable;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
@@ -17,9 +21,6 @@ import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class GetPlaylistItemsRequest {
 
@@ -28,8 +29,9 @@ public class GetPlaylistItemsRequest {
 
     @Nullable
     public static Map<String, String> fetch(String playlistId, Map<String, String> requestHeader) {
-        long startTime = System.currentTimeMillis();
+        final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching playlist items for: " + playlistId);
+
         try {
             byte[] requestBody = PlaylistRoutes.browsePlaylistBody(playlistId);
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.BROWSE_PLAYLIST, requestHeader);
@@ -38,10 +40,7 @@ public class GetPlaylistItemsRequest {
             int responseCode = connection.getResponseCode();
             if (responseCode == 200) {
                 JSONObject json = Requester.parseJSONObject(connection);
-                if (json != null) {
-                    return parseResponse(json);
-                }
-                return null;
+                return parseResponse(json);
             }
             Logger.printInfo(() -> "Browse playlist failed with code: " + responseCode);
         } catch (SocketTimeoutException ex) {
@@ -58,14 +57,14 @@ public class GetPlaylistItemsRequest {
 
     @Nullable
     private static JSONArray findPlaylistContents(JSONArray sectionContents) throws JSONException {
-        for (int i = 0; i < sectionContents.length(); i++) {
+        for (int i = 0, length = sectionContents.length(); i < length; i++) {
             JSONObject section = sectionContents.getJSONObject(i);
             if (section.has("playlistVideoListRenderer")) {
                 return section.getJSONObject("playlistVideoListRenderer").getJSONArray("contents");
             }
             if (section.has("itemSectionRenderer")) {
                 JSONArray inner = section.getJSONObject("itemSectionRenderer").getJSONArray("contents");
-                for (int j = 0; j < inner.length(); j++) {
+                for (int j = 0, innerLength = inner.length(); j < innerLength; j++) {
                     JSONObject innerItem = inner.getJSONObject(j);
                     if (innerItem.has("playlistVideoListRenderer")) {
                         return innerItem.getJSONObject("playlistVideoListRenderer").getJSONArray("contents");
@@ -102,7 +101,7 @@ public class GetPlaylistItemsRequest {
             }
 
             Map<String, String> result = new HashMap<>();
-            for (int i = 0; i < playlistContents.length(); i++) {
+            for (int i = 0, length = playlistContents.length(); i < length; i++) {
                 JSONObject element = playlistContents.optJSONObject(i);
                 if (element == null) {
                     continue;

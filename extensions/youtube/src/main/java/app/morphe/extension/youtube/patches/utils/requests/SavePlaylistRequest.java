@@ -7,12 +7,15 @@
 
 package app.morphe.extension.youtube.patches.utils.requests;
 
-import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
@@ -23,13 +26,12 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class SavePlaylistRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
 
-    public static final Map<String, SavePlaylistRequest> cache = Utils.createSizeRestrictedMap(50);
+    public static final Map<String, SavePlaylistRequest> cache = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(50));
 
     private final Future<Boolean> future;
 
@@ -53,9 +55,7 @@ public class SavePlaylistRequest {
     }
 
     public static void clear() {
-        synchronized (cache) {
-            cache.clear();
-        }
+        cache.clear();
     }
 
     public static void fetchRequestIfNeeded(
@@ -64,16 +64,12 @@ public class SavePlaylistRequest {
             Map<String, String> requestHeader
     ) {
         Objects.requireNonNull(playlistId);
-        synchronized (cache) {
-            cache.put(libraryId, new SavePlaylistRequest(playlistId, libraryId, requestHeader));
-        }
+        cache.put(libraryId, new SavePlaylistRequest(playlistId, libraryId, requestHeader));
     }
 
     @Nullable
     public static SavePlaylistRequest getRequestForLibraryId(String libraryId) {
-        synchronized (cache) {
-            return cache.get(libraryId);
-        }
+        return cache.get(libraryId);
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {

@@ -7,12 +7,15 @@
 
 package app.morphe.extension.youtube.patches.utils.requests;
 
-import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
@@ -24,14 +27,12 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import kotlin.Pair;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class CreatePlaylistRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
 
-    @GuardedBy("itself")
-    public static final Map<String, CreatePlaylistRequest> cache = Utils.createSizeRestrictedMap(50);
+    public static final Map<String, CreatePlaylistRequest> cache = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(50));
 
     private final Future<Pair<String, String>> future;
 
@@ -55,25 +56,17 @@ public class CreatePlaylistRequest {
     }
 
     public static void clear() {
-        synchronized (cache) {
-            cache.clear();
-        }
+        cache.clear();
     }
 
     public static void fetchRequestIfNeeded(String videoId, Map<String, String> requestHeader) {
         Objects.requireNonNull(videoId);
-        synchronized (cache) {
-            if (!cache.containsKey(videoId)) {
-                cache.put(videoId, new CreatePlaylistRequest(videoId, requestHeader));
-            }
-        }
+        cache.computeIfAbsent(videoId, k -> new CreatePlaylistRequest(k, requestHeader));
     }
 
     @Nullable
     public static CreatePlaylistRequest getRequestForVideoId(String videoId) {
-        synchronized (cache) {
-            return cache.get(videoId);
-        }
+        return cache.get(videoId);
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
@@ -86,8 +79,9 @@ public class CreatePlaylistRequest {
             Map<String, String> requestHeader
     ) {
         Objects.requireNonNull(videoId);
-        long startTime = System.currentTimeMillis();
+        final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching create playlist request for: " + videoId);
+
         try {
             byte[] requestBody = PlaylistRoutes.createPlaylistBody(videoId, "Morphe Queue");
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.CREATE_PLAYLIST, requestHeader);
@@ -117,8 +111,9 @@ public class CreatePlaylistRequest {
             Map<String, String> requestHeader
     ) {
         Objects.requireNonNull(playlistId);
-        long startTime = System.currentTimeMillis();
+        final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching set video id request for: " + playlistId);
+
         try {
             byte[] requestBody = PlaylistRoutes.getSetVideoIdBody(videoId, playlistId);
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.GET_SET_VIDEO_ID, requestHeader);

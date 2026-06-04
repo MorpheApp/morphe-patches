@@ -66,20 +66,26 @@ public final class PlaylistRoutes {
         client.put("osName", "Android");
         client.put("osVersion", Build.VERSION.RELEASE);
         client.put("androidSdkVersion", Build.VERSION.SDK_INT);
-        client.put("hl", Locale.getDefault().getLanguage());
-        client.put("gl", Locale.getDefault().getCountry());
+        Locale localeDefault = Locale.getDefault();
+        client.put("hl", localeDefault.getLanguage());
+        client.put("gl", localeDefault.getCountry());
 
         JSONObject context = new JSONObject();
         context.put("client", client);
         return context;
     }
 
+    private static JSONObject getBaseContentJson() throws JSONException {
+        JSONObject body = new JSONObject();
+        body.put("context", androidContext());
+        body.put("contentCheckOk", true);
+        body.put("racyCheckOk", true);
+        return body;
+    }
+
     public static byte[] createPlaylistBody(String videoId, String title) {
         try {
-            JSONObject body = new JSONObject();
-            body.put("context", androidContext());
-            body.put("contentCheckOk", true);
-            body.put("racyCheckOk", true);
+            JSONObject body = getBaseContentJson();
             body.put("params", "CAQ%3D");
             body.put("title", title);
             JSONArray videoIds = new JSONArray();
@@ -94,10 +100,7 @@ public final class PlaylistRoutes {
 
     public static byte[] getSetVideoIdBody(String videoId, String playlistId) {
         try {
-            JSONObject body = new JSONObject();
-            body.put("context", androidContext());
-            body.put("contentCheckOk", true);
-            body.put("racyCheckOk", true);
+            JSONObject body = getBaseContentJson();
             body.put("videoId", videoId);
             body.put("playlistId", playlistId);
             return body.toString().getBytes(StandardCharsets.UTF_8);
@@ -109,10 +112,7 @@ public final class PlaylistRoutes {
 
     public static byte[] editPlaylistBody(String videoId, String playlistId, String setVideoId) {
         try {
-            JSONObject body = new JSONObject();
-            body.put("context", androidContext());
-            body.put("contentCheckOk", true);
-            body.put("racyCheckOk", true);
+            JSONObject body = getBaseContentJson();
             body.put("playlistId", playlistId);
 
             JSONObject action = new JSONObject();
@@ -135,10 +135,7 @@ public final class PlaylistRoutes {
 
     public static byte[] getPlaylistsBody(String playlistId) {
         try {
-            JSONObject body = new JSONObject();
-            body.put("context", androidContext());
-            body.put("contentCheckOk", true);
-            body.put("racyCheckOk", true);
+            JSONObject body = getBaseContentJson();
             body.put("playlistId", playlistId);
             body.put("excludeWatchLater", false);
             return body.toString().getBytes(StandardCharsets.UTF_8);
@@ -162,10 +159,7 @@ public final class PlaylistRoutes {
 
     public static byte[] savePlaylistBody(String playlistId, String libraryId) {
         try {
-            JSONObject body = new JSONObject();
-            body.put("context", androidContext());
-            body.put("contentCheckOk", true);
-            body.put("racyCheckOk", true);
+            JSONObject body = getBaseContentJson();
             body.put("playlistId", playlistId);
 
             JSONObject action = new JSONObject();
@@ -182,7 +176,7 @@ public final class PlaylistRoutes {
     }
 
     public static HttpURLConnection getConnection(Route.CompiledRoute route, Map<String, String> authHeaders) throws IOException {
-        String userAgent = String.format(Locale.ENGLISH,
+        String userAgent = String.format(Locale.US,
                 "%s/%s (Linux; U; Android %s; %s; %s Build/%s)",
                 PACKAGE_NAME, CLIENT_VERSION, Build.VERSION.RELEASE,
                 Locale.getDefault(), Build.MODEL, Build.ID);

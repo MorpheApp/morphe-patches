@@ -7,13 +7,17 @@
 
 package app.morphe.extension.youtube.patches.utils.requests;
 
-import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -26,15 +30,12 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import kotlin.Pair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class GetPlaylistsRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
 
-    @GuardedBy("itself")
-    public static final Map<String, GetPlaylistsRequest> cache = Utils.createSizeRestrictedMap(50);
+    public static final Map<String, GetPlaylistsRequest> cache = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(50));
 
     private final Future<Pair<String, String>[]> future;
 
@@ -58,25 +59,19 @@ public class GetPlaylistsRequest {
     }
 
     public static void clear() {
-        synchronized (cache) {
-            cache.clear();
-        }
+        cache.clear();
     }
 
     public static void fetchRequestIfNeeded(String playlistId, Map<String, String> requestHeader) {
-        Objects.requireNonNull(playlistId);
-        synchronized (cache) {
-            if (!cache.containsKey(playlistId)) {
-                cache.put(playlistId, new GetPlaylistsRequest(playlistId, requestHeader));
-            }
-        }
+        cache.computeIfAbsent(
+                Objects.requireNonNull(playlistId),
+                k -> new GetPlaylistsRequest(playlistId, requestHeader)
+        );
     }
 
     @Nullable
     public static GetPlaylistsRequest getRequestForPlaylistId(String playlistId) {
-        synchronized (cache) {
-            return cache.get(playlistId);
-        }
+        return cache.get(playlistId);
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
@@ -86,8 +81,9 @@ public class GetPlaylistsRequest {
     @Nullable
     private static JSONObject sendRequest(String playlistId, Map<String, String> requestHeader) {
         Objects.requireNonNull(playlistId);
-        long startTime = System.currentTimeMillis();
+        final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching get playlists request, playlistId: " + playlistId);
+
         try {
             byte[] requestBody = PlaylistRoutes.getPlaylistsBody(playlistId);
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.GET_PLAYLISTS, requestHeader);

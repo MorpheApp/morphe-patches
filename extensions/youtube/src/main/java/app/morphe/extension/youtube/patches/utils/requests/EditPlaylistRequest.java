@@ -7,12 +7,15 @@
 
 package app.morphe.extension.youtube.patches.utils.requests;
 
-import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
+import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 import java.util.concurrent.ExecutionException;
@@ -23,14 +26,12 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class EditPlaylistRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
 
-    @GuardedBy("itself")
-    public static final Map<String, EditPlaylistRequest> cache = Utils.createSizeRestrictedMap(50);
+    public static final Map<String, EditPlaylistRequest> cache = Collections.synchronizedMap(
+            Utils.createSizeRestrictedMap(50));
 
     private final Future<String> future;
 
@@ -59,15 +60,11 @@ public class EditPlaylistRequest {
     }
 
     public static void clear() {
-        synchronized (cache) {
-            cache.clear();
-        }
+        cache.clear();
     }
 
     public static void clearVideoId(String videoId) {
-        synchronized (cache) {
-            cache.remove(videoId);
-        }
+        cache.remove(videoId);
     }
 
     public static void fetchRequestIfNeeded(
@@ -76,19 +73,15 @@ public class EditPlaylistRequest {
             @Nullable String setVideoId,
             Map<String, String> requestHeader
     ) {
-        Objects.requireNonNull(videoId);
-        synchronized (cache) {
-            if (!cache.containsKey(videoId)) {
-                cache.put(videoId, new EditPlaylistRequest(videoId, playlistId, setVideoId, requestHeader));
-            }
-        }
+        cache.computeIfAbsent(
+                Objects.requireNonNull(videoId),
+                k -> new EditPlaylistRequest(k, playlistId, setVideoId, requestHeader)
+        );
     }
 
     @Nullable
     public static EditPlaylistRequest getRequestForVideoId(String videoId) {
-        synchronized (cache) {
-            return cache.get(videoId);
-        }
+        return cache.get(videoId);
     }
 
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
@@ -103,8 +96,10 @@ public class EditPlaylistRequest {
             Map<String, String> requestHeader
     ) {
         Objects.requireNonNull(videoId);
-        long startTime = System.currentTimeMillis();
-        Logger.printDebug(() -> "Fetching edit playlist request, videoId: " + videoId + ", playlistId: " + playlistId + ", setVideoId: " + setVideoId);
+        final long startTime = System.currentTimeMillis();
+        Logger.printDebug(() -> "Fetching edit playlist request, videoId: " + videoId +
+                ", playlistId: " + playlistId + ", setVideoId: " + setVideoId);
+
         try {
             byte[] requestBody = PlaylistRoutes.editPlaylistBody(videoId, playlistId, setVideoId);
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.EDIT_PLAYLIST, requestHeader);
