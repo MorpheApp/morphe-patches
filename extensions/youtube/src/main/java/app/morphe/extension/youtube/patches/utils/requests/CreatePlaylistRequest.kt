@@ -9,7 +9,6 @@ package app.morphe.extension.youtube.patches.utils.requests
 
 import androidx.annotation.GuardedBy
 import app.morphe.extension.shared.Logger
-import app.morphe.extension.shared.StringRef.str
 import app.morphe.extension.shared.Utils
 import app.morphe.extension.shared.requests.Requester
 import org.json.JSONException
@@ -90,7 +89,7 @@ class CreatePlaylistRequest private constructor(
             val startTime = System.currentTimeMillis()
             Logger.printDebug { "Fetching create playlist request for: $videoId" }
             try {
-                val requestBody = PlaylistRoutes.createPlaylistBody(videoId, str("morphe_queue_manager_queue"))
+                val requestBody = PlaylistRoutes.createPlaylistBody(videoId, "Morphe Queue")
                 val connection = PlaylistRoutes.getConnection(PlaylistRoutes.CREATE_PLAYLIST, requestHeader)
                 connection.setFixedLengthStreamingMode(requestBody.size)
                 connection.outputStream.write(requestBody)
