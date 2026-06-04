@@ -201,10 +201,11 @@ val themePatch = baseThemePatch(
 
                     createNotifDrawable(resDir, "drawable/morphe_notif_dot_light.xml", lightDotColor, "oval")
                     createNotifDrawable(resDir, "drawable/morphe_notif_count_light.xml", lightCountBgColor, "rectangle", hasCorners = true)
-                    patchCountTextColor(resDir, "layout-v31/new_content_count.xml", lightCountTextColor)
+                    patchCountTextColor(resDir, lightCountTextColor)
 
-                    try {
-                        document("res/values/styles.xml").use { doc ->
+                    val stylesFile = "res/values/styles.xml"
+                    if (get(stylesFile).exists()) {
+                        document(stylesFile).use { doc ->
                             val resources = doc.getElementsByTagName("resources").item(0) as? Element ?: return@use
 
                             resources.forEachChildElement { style ->
@@ -238,7 +239,7 @@ val themePatch = baseThemePatch(
                                 }
                             }
                         }
-                    } catch (_: Exception) {}
+                    }
                 }
             }
         }

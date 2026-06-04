@@ -55,19 +55,21 @@ fun createNotifDrawable(
 }
 
 /**
- * Common utility to patch the notification count text color.
+ * Common utility to patch the notification count text color across all API levels.
  */
-fun patchCountTextColor(resDir: File, resPath: String, color: String) {
-    val sourceFile = listOf("layout-v31", "layout-v26", "layout").firstNotNullOfOrNull {
-        resDir.resolve("$it/new_content_count.xml").takeIf { f -> f.exists() }
-    } ?: return
-    val targetFile = resDir.resolve(resPath)
-    targetFile.parentFile?.mkdirs()
-    val patchedXml = sourceFile.readText().replace(
-        Regex("""android:textColor="[^"]+""""),
-        """android:textColor="$color""""
-    )
-    targetFile.writeText(patchedXml)
+fun patchCountTextColor(resDir: File, color: String) {
+    val targetFolders = listOf("layout-v31", "layout-v26", "layout")
+
+    targetFolders.forEach { folder ->
+        val file = resDir.resolve("$folder/new_content_count.xml")
+        if (file.exists()) {
+            val patchedXml = file.readText().replace(
+                Regex("""android:textColor="[^"]+""""),
+                """android:textColor="$color""""
+            )
+            file.writeText(patchedXml)
+        }
+    }
 }
 
 /**
@@ -196,7 +198,7 @@ internal fun baseThemeResourcePatch(
 
             createNotifDrawable(resDir, "drawable/morphe_notif_dot_dark.xml", darkDotColor, "oval")
             createNotifDrawable(resDir, "drawable/morphe_notif_count_dark.xml", darkCountBgColor, "rectangle", hasCorners = true)
-            patchCountTextColor(resDir, "layout-v31/new_content_count.xml", darkCountTextColor)
+            patchCountTextColor(resDir, darkCountTextColor)
 
             val ytmDrawables = listOf(
                 "new_content_dot_background.xml",
@@ -233,8 +235,9 @@ internal fun baseThemeResourcePatch(
                 }
             }
 
-            try {
-                document("res/values/styles.xml").use { doc ->
+            val stylesFile = "res/values/styles.xml"
+            if (get(stylesFile).exists()) {
+                document(stylesFile).use { doc ->
                     val resources = doc.getElementsByTagName("resources").item(0) as? Element ?: return@use
 
                     resources.forEachChildElement { style ->
@@ -268,7 +271,7 @@ internal fun baseThemeResourcePatch(
                         }
                     }
                 }
-            } catch (_: Exception) {}
+            }
         }
     }
 }
