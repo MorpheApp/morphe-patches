@@ -40,7 +40,7 @@ internal fun openSystemShareSheetPatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.MISC.addPreferences(
+        PreferenceScreen.GENERAL.addPreferences(
             SwitchPreference("morphe_open_system_share_sheet", summary = true)
         )
 

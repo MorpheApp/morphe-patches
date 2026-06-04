@@ -131,7 +131,6 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_YOU_MAY_LIKE_SECTION = new BooleanSetting("morphe_hide_you_may_like_section", TRUE, true);
     public static final BooleanSetting HIDE_YOUTUBE_DOODLES = new BooleanSetting("morphe_hide_youtube_doodles", TRUE, true, "morphe_hide_youtube_doodles_user_dialog_message");
 
-
     // Alternative thumbnails
     public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_HOME = new EnumSetting<>("morphe_alt_thumbnail_home", ThumbnailOption.ORIGINAL);
     public static final EnumSetting<ThumbnailOption> ALT_THUMBNAIL_SUBSCRIPTIONS = new EnumSetting<>("morphe_alt_thumbnail_subscription", ThumbnailOption.ORIGINAL);
@@ -190,6 +189,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_PLAYER_RELATED_VIDEOS = new BooleanSetting("morphe_hide_player_related_videos", FALSE, true);
     public static final BooleanSetting HIDE_PLAYER_RELATED_VIDEOS_OVERLAY = new BooleanSetting("morphe_hide_player_related_videos_overlay", FALSE, true);
     public static final BooleanSetting HIDE_SETTINGS_BUTTON = new BooleanSetting("morphe_hide_settings_button", FALSE, true);
+    public static final BooleanSetting HIDE_SNACKBAR = new BooleanSetting("morphe_hide_snackbar", FALSE, true);
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_hide_subscribers_community_guidelines", TRUE);
     public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("morphe_hide_timed_reactions", TRUE);
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("morphe_hide_video_title", FALSE);
