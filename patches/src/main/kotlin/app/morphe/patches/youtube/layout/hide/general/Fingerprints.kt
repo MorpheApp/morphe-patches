@@ -563,14 +563,25 @@ internal object BottomUIContainerFingerprint : Fingerprint(
     )
 )
 
-internal object LithoSnackbarFingerprint : Fingerprint(
+internal object LithoSnackbarLayoutFingerprint : Fingerprint(
     returnType = "Landroid/view/View;",
+    parameters = listOf(
+        "Landroid/view/LayoutInflater;",
+        "Landroid/view/ViewGroup;",
+        "Landroid/os/Bundle;"
+    ),
     filters = listOf(
-        methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
-            name = "setBackgroundColor"
-        ),
-        checkCast("Landroid/widget/FrameLayout;")
+        fieldAccess(
+            definingClass = "this",
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Landroid/widget/FrameLayout;"
+        )
+    ),
+    strings = listOf(
+        "instance_action_bar_color",
+        "instance_status_bar_color",
+        "instance_activated_text_color",
+        "instance_secondary_text_color"
     )
 )
 
@@ -579,7 +590,10 @@ internal object MaterialSnackbarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
     filters = listOf(
-        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>"
+        )
     )
 )
 
@@ -588,7 +602,10 @@ internal object AppSnackbarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;"),
     filters = listOf(
-        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>"
+        )
     )
 )
 
@@ -597,7 +614,10 @@ internal object YouTubeSnackbarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;", "I"),
     filters = listOf(
-        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>"
+        )
     )
 )
 
@@ -606,7 +626,10 @@ internal object MealbarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;", "I"),
     filters = listOf(
-        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>"
+        )
     )
 )
 
@@ -615,6 +638,9 @@ internal object QuantumSnackbarFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
     filters = listOf(
-        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>"
+        )
     )
 )

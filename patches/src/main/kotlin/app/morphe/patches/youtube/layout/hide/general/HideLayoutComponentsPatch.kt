@@ -944,21 +944,13 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide snackbar
 
-        LithoSnackbarFingerprint.method.apply {
-            val initMethod = LithoSnackbarFingerprint.originalClassDef.methods.first { m ->
-                m.implementation?.instructions?.any { i ->
-                    i.opcode == Opcode.IPUT_OBJECT &&
-                            (i as? ReferenceInstruction)?.reference?.let { (it as? FieldReference)?.type == "Landroid/widget/FrameLayout;" } == true
-                } == true
-            }.toMutable()
-
-            initMethod.apply {
-                val viewIndex = indexOfFirstInstructionOrThrow {
-                    opcode == Opcode.IPUT_OBJECT && getReference<FieldReference>()?.type == "Landroid/widget/FrameLayout;"
-                }
+        LithoSnackbarLayoutFingerprint.let {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
                 addInstruction(
-                    viewIndex,
-                    "invoke-static {v${getInstruction<TwoRegisterInstruction>(viewIndex).registerA}}, $LAYOUT_COMPONENTS_FILTER->hideLithoSnackBar(Landroid/widget/FrameLayout;)V"
+                    index,
+                    "invoke-static { v$register }, $LAYOUT_COMPONENTS_FILTER->hideLithoSnackBar(Landroid/widget/FrameLayout;)V"
                 )
             }
         }
