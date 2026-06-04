@@ -42,6 +42,7 @@ import app.morphe.extension.shared.ui.Dim;
 import app.morphe.extension.shared.ui.SheetBottomDialog;
 import app.morphe.extension.youtube.innertube.utils.AuthUtils;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.patches.utils.requests.CreatePlaylistRequest;
 import app.morphe.extension.youtube.patches.utils.requests.EditPlaylistRequest;
@@ -53,7 +54,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 public class PlaylistPatch {
     private static final long DELAY_MILLISECONDS = 1500L;
 
-    private static volatile String playlistId = "";
+    private static volatile String playlistId = Settings.QUEUE_PLAYLIST_ID.get();
     private static volatile String videoId = "";
 
     private static String checkFailedAuth = "";
@@ -207,6 +208,7 @@ public class PlaylistPatch {
                                 String setVideoId = playlistIds.getSecond();
                                 if (createdPlaylistId != null && setVideoId != null) {
                                     playlistId = createdPlaylistId;
+                                    Settings.QUEUE_PLAYLIST_ID.save(createdPlaylistId);
                                     lastVideoIds.putIfAbsent(currentVideoId, setVideoId);
                                     showToast(fetchSucceededCreate);
                                     Logger.printDebug(() -> "Queue created, playlistId: " + createdPlaylistId + ", setVideoId: " + setVideoId);
