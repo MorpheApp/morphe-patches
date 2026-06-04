@@ -963,25 +963,31 @@ val hideLayoutComponentsPatch = bytecodePatch(
             }
         }
 
-        BottomUIContainerFingerprint.method.apply {
-            addInstructionsWithLabels(
-                0, """
-                    invoke-static {}, $LAYOUT_COMPONENTS_FILTER->hideSnackbar()Z
-                    move-result v0
-                    if-eqz v0, :show
-                    return-void
-                    """, ExternalLabel("show", getInstruction(0))
-            )
-        }
+        BottomUIContainerFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static {}, $LAYOUT_COMPONENTS_FILTER->hideSnackbar()Z
+                move-result v0
+                if-eqz v0, :show
+                return-void
+                :show
+                nop
+            """
+        )
 
-        sequenceOf(
-            QuantumSnackbarFingerprint, MaterialSnackbarFingerprint,
-            AppSnackbarFingerprint, YouTubeSnackbarFingerprint, MealbarFingerprint
+        arrayOf(
+            QuantumSnackbarFingerprint,
+            MaterialSnackbarFingerprint,
+            AppSnackbarFingerprint,
+            YouTubeSnackbarFingerprint,
+            MealbarFingerprint
         ).forEach { fingerprint ->
-            runCatching {
-                fingerprint.method.apply {
-                    val initIndex = indexOfFirstInstructionOrThrow { opcode == Opcode.INVOKE_DIRECT && getReference<MethodReference>()?.name == "<init>" }
-                    addInstruction(initIndex + 1, "invoke-static { p0 }, $LAYOUT_COMPONENTS_FILTER->handleLegacySnackbar(Landroid/view/View;)V")
+            fingerprint.let {
+                it.method.apply {
+                    addInstruction(
+                        it.instructionMatches.first().index + 1,
+                        "invoke-static { p0 }, $LAYOUT_COMPONENTS_FILTER->handleLegacySnackbar(Landroid/view/View;)V"
+                    )
                 }
             }
         }

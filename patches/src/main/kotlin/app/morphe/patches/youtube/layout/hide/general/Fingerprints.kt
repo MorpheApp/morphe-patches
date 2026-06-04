@@ -551,18 +551,16 @@ internal object AccountMenuLegacyFingerprint : Fingerprint(
 )
 
 internal object BottomUIContainerFingerprint : Fingerprint(
-    returnType = "V",
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
     parameters = listOf("Landroid/view/View;", "L"),
     filters = listOf(
         methodCall(
-            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "this",
             name = "removeAllViews"
         )
-    ),
-    custom = { _, classDef ->
-        classDef.type == "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;"
-    }
+    )
 )
 
 internal object LithoSnackbarFingerprint : Fingerprint(
@@ -577,41 +575,46 @@ internal object LithoSnackbarFingerprint : Fingerprint(
 )
 
 internal object MaterialSnackbarFingerprint : Fingerprint(
+    definingClass = $$"Lcom/google/android/material/snackbar/Snackbar$SnackbarLayout;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
-    custom = { _, classDef ->
-        classDef.type == $$"Lcom/google/android/material/snackbar/Snackbar$SnackbarLayout;"
-    }
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+    )
 )
 
 internal object AppSnackbarFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/AppSnackbar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;"),
-    custom = { _, classDef ->
-        classDef.type == "Lcom/google/android/apps/youtube/app/common/ui/bottomui/AppSnackbar;"
-    }
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+    )
 )
 
 internal object YouTubeSnackbarFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/YouTubeSnackbar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;", "I"),
-    custom = { _, classDef ->
-        classDef.type == "Lcom/google/android/apps/youtube/app/common/ui/bottomui/YouTubeSnackbar;"
-    }
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+    )
 )
 
 internal object MealbarFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/Mealbar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;", "I"),
-    custom = { _, classDef ->
-        classDef.type == "Lcom/google/android/apps/youtube/app/common/ui/bottomui/Mealbar;"
-    }
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+    )
 )
 
 internal object QuantumSnackbarFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/quantum/snackbar/Snackbar;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
-    custom = { _, classDef ->
-        classDef.type == "Lcom/google/android/libraries/quantum/snackbar/Snackbar;"
-    }
+    filters = listOf(
+        methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>")
+    )
 )
