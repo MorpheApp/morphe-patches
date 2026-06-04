@@ -138,7 +138,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         sorting = Sorting.UNSORTED,
                         tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                         preferences = setOf(
-                            SwitchPreference("morphe_hide_comments_carousel"),
+                            SwitchPreference(
+                                "morphe_hide_comments_carousel",
+                                summary = true,
+                                tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
+                            ),
                             TextPreference(
                                 "morphe_hide_comments_carousel_filter_strings",
                                 inputType = InputType.TEXT_MULTI_LINE
@@ -279,9 +283,17 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_subscribed_channels_bar"),
             SwitchPreference("morphe_hide_surveys", summary = true),
             SwitchPreference("morphe_hide_ticket_shelf"),
-            SwitchPreference("morphe_hide_upload_time"),
+            SwitchPreference(
+                "morphe_hide_upload_time",
+                summary = true,
+                tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference",
+            ),
             SwitchPreference("morphe_hide_video_recommendation_labels", summary = true),
-            SwitchPreference("morphe_hide_view_count"),
+            SwitchPreference(
+                "morphe_hide_view_count",
+                summary = true,
+                tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference",
+            ),
             SwitchPreference("morphe_hide_web_search_results", summary = true),
             SwitchPreference("morphe_hide_youtube_doodles", summary = true),
         )

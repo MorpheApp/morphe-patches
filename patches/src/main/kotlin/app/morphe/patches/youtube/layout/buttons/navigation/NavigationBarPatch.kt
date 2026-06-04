@@ -97,7 +97,7 @@ val navigationBarPatch = bytecodePatch(
             SwitchPreference("morphe_show_settings_button"),
             ListPreference("morphe_show_settings_button_index"),
             SwitchPreference("morphe_show_settings_button_type", summary = true),
-            SwitchPreference("morphe_swap_create_with_notifications_button"),
+            SwitchPreference("morphe_swap_create_with_notifications_button", summary = true),
             SwitchPreference("morphe_hide_navigation_button_labels"),
             SwitchPreference("morphe_narrow_navigation_buttons", summary = true),
             SwitchPreference("morphe_hide_navigation_bar"),

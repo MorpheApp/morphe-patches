@@ -119,9 +119,7 @@ Changes include:
     <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
     <string name="morphe_hide_youtube_doodles_title">Hide YouTube Doodles</string>
     <string name="morphe_hide_youtube_doodles_summary">Hides seasonal and event-based animations on the YouTube logo</string>
-    <string name="morphe_hide_youtube_doodles_user_dialog_message">"YouTube Doodles are shown a few days each year in various parts of the world.
-
-Showing YouTube Doodles may prevent custom headers from displaying."</string>
+    <string name="morphe_hide_youtube_doodles_user_dialog_message">Showing YouTube Doodles may prevent custom headers from displaying.</string>
 
     <string name="morphe_hide_channel_bar_title">Hide channel bar</string>
     <string name="morphe_hide_channel_watermark_title">Hide channel watermark</string>
@@ -200,10 +198,9 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_comments_screen_title">Comments</string>
     <string name="morphe_comments_screen_summary">Choose which components appear in the comments section</string>
     <string name="morphe_hide_comments_carousel_title">Enable comments carousel filter</string>
-    <string name="morphe_hide_comments_carousel_user_dialog_message">"Note:
-• Be sure to enter the exact name of the carousel item (e.g. Ask, Hype this video, Listen on YouTube Music, etc.).
-• Hiding carousel items may have unintended side effects.
-• If all carousel items are hidden, the entire comments section will also be hidden."</string>
+    <string name="morphe_hide_comments_carousel_summary">"• Be sure to enter the exact name of the carousel item (e.g. Ask, Hype this video, Listen on YouTube Music, etc.)
+• Hiding carousel items may have unintended side effects
+• If all carousel items are hidden, the entire comments section will also be hidden"</string>
     <string name="morphe_hide_comments_carousel_filter_strings_title">Comments carousel filter</string>
     <string name="morphe_hide_comments_carousel_filter_strings_summary">Enter the comments carousel names to filter by, separated by new lines</string>
     <string name="morphe_hide_comments_ai_chat_summary_title">Hide AI chat summary</string>
@@ -231,15 +228,15 @@ Showing YouTube Doodles may prevent custom headers from displaying."</string>
     <string name="morphe_custom_filter_strings_summary">List of component path builder strings to filter, separated by new lines</string>
     <string name="morphe_custom_filter_toast_invalid_syntax">Invalid custom filter: %s</string>
     <string name="morphe_hide_view_count_title">Hide view count</string>
-    <!-- Translations should match the language used in 'morphe_hide_upload_time_user_dialog_message'. -->
-    <string name="morphe_hide_view_count_user_dialog_message">"Limitations:
-• Shorts shelves, channel pages, and search results may still show view counts.
-• This feature does not work with automotive layout."</string>
+    <!-- Translations should match the language used in 'morphe_hide_upload_time_summary'. -->
+    <string name="morphe_hide_view_count_summary">"Limitations:
+• Shorts shelves, channel pages, and search results may still show view counts
+• This feature does not work with automotive layout"</string>
     <string name="morphe_hide_upload_time_title">Hide upload time</string>
-    <!-- Translations should match the language used in 'morphe_hide_view_count_user_dialog_message'. -->
-    <string name="morphe_hide_upload_time_user_dialog_message">"Limitations:
-• Shorts shelves, channel pages, and search results may still show upload times.
-• This feature does not work with automotive layout."</string>
+    <!-- Translations should match the language used in 'morphe_hide_view_count_summary'. -->
+    <string name="morphe_hide_upload_time_summary">"Limitations:
+• Shorts shelves, channel pages, and search results may still show upload times
+• This feature does not work with automotive layout"</string>
     <string name="morphe_hide_keyword_content_screen_title">Keyword filter</string>
     <string name="morphe_hide_keyword_content_screen_summary">Choose specific words or phrases to hide videos in feeds and search</string>
     <string name="morphe_hide_keyword_content_home_title">Hide Home videos by keywords</string>
@@ -307,7 +304,7 @@ Limitations:
 
     <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
     <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
-    <string name="morphe_remove_viewer_discretion_dialog_user_dialog_message">This does not bypass the age restriction. It just accepts it automatically.</string>
+    <string name="morphe_remove_viewer_discretion_dialog_summary">This does not bypass the age restriction. It just accepts it automatically</string>
 
     <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
     <string name="morphe_disable_sign_in_to_tv_popup_title">Disable \'Sign in to TV\' popup</string>
@@ -395,9 +392,15 @@ Info: May not work on live streams"</string>
 
     <!-- interaction.seekbar.livestreamDvrPatch -->
     <string name="morphe_livestream_dvr_title">Enable livestream DVR</string>
-    <string name="morphe_livestream_dvr_summary">Allows seeking on all livestreams, even those that normally restrict it</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-    <string name="morphe_livestream_dvr_user_dialog_message">Enabling this may cause unexpected livestream seeking behavior if \'Spoof video streams\' is not enabled.</string>
+    <string name="morphe_livestream_dvr_summary">"Allows seeking on all livestreams, even those that normally restrict it
+
+Note: If \'Spoof video streams\' is not enabled, enabling this may cause unexpected livestream seeking behavior"</string>
+    <string name="morphe_expand_livestream_dvr_duration_title">Expand livestream DVR duration</string>
+    <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+    <string name="morphe_expand_livestream_dvr_duration_summary">"Allows you to rewind live broadcasts up to 7 days into the past
+
+Note: If \'Spoof video streams\' is not enabled, enabling this may cause unexpected livestream seeking behavior"</string>
 
     <!-- interaction.seekbar.enableSlideToSeekPatch -->
     <string name="morphe_slide_to_seek_title">Enable slide to seek</string>
@@ -497,7 +500,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_hide_ask_button_title">Hide Ask button</string>
     <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_clip_button_title">Hide Clip button</string>
-    <string name="morphe_hide_clip_button_user_dialog_message">This hide function may not work for some user accounts.</string>
+    <string name="morphe_hide_clip_button_summary">This may not work for some user accounts</string>
     <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
     <string name="morphe_hide_shop_button_title">Hide Shop button</string>
     <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
@@ -569,7 +572,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_show_settings_button_type_title">Settings button action</string>
     <string name="morphe_show_settings_button_type_summary">Opens Morphe settings when enabled, or YouTube settings when disabled</string>
     <string name="morphe_swap_create_with_notifications_button_title">Swap Create button with Notifications button</string>
-    <string name="morphe_swap_create_with_notifications_button_user_dialog_message">If changing this setting does not take effect, try switching to Incognito mode.</string>
+    <string name="morphe_swap_create_with_notifications_button_summary">If changing this setting does not take effect, try switching to Incognito mode</string>
     <string name="morphe_hide_navigation_button_labels_title">Hide navigation button labels</string>
     <string name="morphe_hide_navigation_bar_title">Hide navigation bar</string>
     <string name="morphe_hide_navigation_bar_user_dialog_message">"This completely hides the navigation bar, including the 'You' tab.
@@ -669,7 +672,6 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to \'Android Re
     <string name="morphe_ambient_mode_screen_summary">Manage Ambient mode visibility and power restrictions</string>
     <string name="morphe_bypass_ambient_mode_restrictions_title">Bypass Ambient mode restrictions</string>
     <string name="morphe_bypass_ambient_mode_restrictions_summary">Allows Ambient mode to stay active in battery saver mode</string>
-    <string name="morphe_bypass_ambient_mode_restrictions_user_dialog_message">Enabling this can cause worse battery life.</string>
     <string name="morphe_disable_ambient_mode_title">Disable Ambient mode</string>
     <string name="morphe_disable_fullscreen_ambient_mode_title">Disable Ambient mode in fullscreen</string>
 
@@ -739,10 +741,9 @@ To show the \'Audio Track\' menu, change \'Spoof video streams\' to \'Android Re
 
     <!-- layout.hide.endscreensuggestedvideo.hideEndScreenSuggestedVideoPatch -->
     <string name="morphe_hide_end_screen_suggested_video_title">Hide end screen suggested video</string>
-    <string name="morphe_hide_end_screen_suggested_video_summary">Hides the suggested video overlay that appear after the video ends</string>
-    <string name="morphe_hide_end_screen_suggested_video_user_dialog_message">"This setting only works if 'Autoplay next video' is turned off.
+    <string name="morphe_hide_end_screen_suggested_video_summary">"Hides the suggested video overlay that appears after the video ends
 
-You can change this in YouTube:
+This setting only works if autoplay is turned off. You can change it in YouTube:
 Settings → Playback (or Autoplay) → Autoplay next video"</string>
 
     <!-- layout.hide.relatedvideos.hideRelatedVideosPatch -->
@@ -1125,9 +1126,7 @@ Limitation: Using the back button on the toolbar may not work"</string>
 
     <!-- layout.miniplayer.miniplayerPatch -->
     <string name="morphe_miniplayer_disable_resuming_title">Disable resuming miniplayer</string>
-    <string name="morphe_miniplayer_disable_resuming_summary">Prevents the \'Continue watching\' miniplayer from appearing on app startup</string>
-    <string name="morphe_miniplayer_disable_resuming_user_dialog_message">"• 'Continue watching' is a YouTube Premium feature
-• This setting cannot force on this Premium feature"</string>
+    <string name="morphe_miniplayer_disable_resuming_summary">Disables the \'Continue watching\' miniplayer, a YouTube Premium feature that appears on app startup</string>
     <string name="morphe_miniplayer_screen_title">Miniplayer</string>
     <string name="morphe_miniplayer_screen_summary">Customize the appearance and behavior of the minimized video player</string>
     <string name="morphe_miniplayer_type_title">Miniplayer type</string>
@@ -1323,12 +1322,6 @@ Limitations:
 • Some devices cannot force AVC"</string>
     <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
     <string name="morphe_force_avc_codec_not_available">To use this feature, set \'Spoof video streams\' to Android VR or Android Studio</string>
-
-    <!-- interaction.seekbar.expandLivestreamDvrDurationPatch -->
-    <string name="morphe_expand_livestream_dvr_duration_title">Expand livestream DVR duration</string>
-    <string name="morphe_expand_livestream_dvr_duration_summary">Allows you to rewind live broadcasts up to 7 days into the past</string>
-    <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-    <string name="morphe_expand_livestream_dvr_duration_user_dialog_message">This setting may cause unexpected behavior if \'Spoof video streams\' is not enabled.</string>
 
     <!-- video.quality.advancedVideoQualityMenuPatch -->
     <string name="morphe_advanced_video_quality_menu_title">Show advanced video quality menu</string>
