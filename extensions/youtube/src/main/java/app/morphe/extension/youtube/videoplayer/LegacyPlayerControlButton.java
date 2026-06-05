@@ -315,6 +315,7 @@ public class LegacyPlayerControlButton {
         View button = buttonRef.get();
         if (button instanceof ImageView imageButton) {
             imageButton.setImageResource(resourceId);
+            imageButton.setImageTintList(null);
         }
     }
 
