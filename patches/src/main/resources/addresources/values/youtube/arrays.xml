@@ -447,6 +447,40 @@
         <item>TEN_SECONDS</item>
     </string-array>
 
+    <!-- video.voiceovertranslation.VoiceOverTranslationPatch -->
+    <string-array name="morphe_vot_target_language_entries">
+        <item>Русский</item>
+        <item>English</item>
+        <item>Қазақша</item>
+    </string-array>
+    <string-array name="morphe_vot_target_language_entry_values">
+        <item>ru</item>
+        <item>en</item>
+        <item>kk</item>
+    </string-array>
+    <string-array name="morphe_vot_source_language_entries">
+        <item>@string/morphe_vot_lang_auto</item>
+        <item>English</item>
+        <item>Français</item>
+        <item>Deutsch</item>
+        <item>Español</item>
+        <item>Italiano</item>
+        <item>中文</item>
+        <item>日本語</item>
+        <item>한국어</item>
+    </string-array>
+    <string-array name="morphe_vot_source_language_entry_values">
+        <item>auto</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>de</item>
+        <item>es</item>
+        <item>it</item>
+        <item>zh</item>
+        <item>ja</item>
+        <item>ko</item>
+    </string-array>
+
     <!-- layout.shortsplayer.shortsPlayerTypePatch -->
     <string-array name="morphe_shorts_player_type_entries">
         <item>@string/morphe_shorts_player_type_shorts</item>

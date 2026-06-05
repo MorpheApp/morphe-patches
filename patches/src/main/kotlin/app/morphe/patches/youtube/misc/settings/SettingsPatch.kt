@@ -141,6 +141,8 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_11_misc_bold.xml",
                 "morphe_settings_screen_12_video.xml",
                 "morphe_settings_screen_12_video_bold.xml",
+                "morphe_settings_screen_13_voice_over_translation.xml",
+                "morphe_settings_screen_13_voice_over_translation_bold.xml",
             )
         )
 
@@ -496,6 +498,14 @@ object PreferenceScreen : BasePreferenceScreen() {
         iconBold = "@drawable/morphe_settings_screen_12_video_bold",
         layout = "@layout/preference_with_icon",
         sorting = Sorting.BY_KEY,
+    )
+    val VOICE_OVER_TRANSLATION = Screen(
+        key = "morphe_settings_screen_13_voice_over_translation",
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_13_voice_over_translation",
+        iconBold = "@drawable/morphe_settings_screen_13_voice_over_translation_bold",
+        layout = "@layout/preference_with_icon",
+        sorting = Sorting.UNSORTED,
     )
 
     override fun commit(screen: PreferenceScreenPreference) {

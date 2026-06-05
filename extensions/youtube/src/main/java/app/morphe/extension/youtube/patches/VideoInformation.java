@@ -5,7 +5,9 @@ import androidx.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -64,6 +66,7 @@ public final class VideoInformation {
     private static WeakReference<PlaybackController> mdxPlayerDirectorRef = new WeakReference<>(null);
     private static String channelId = "";
     private static String videoId = "";
+    private static String videoTitle = "";
     private static long videoLength = 0;
 
     private static volatile String playerResponsePlaylistId = "";
@@ -75,6 +78,7 @@ public final class VideoInformation {
      * The current playback speed
      */
     private static float playbackSpeed = DEFAULT_YOUTUBE_PLAYBACK_SPEED;
+    private static final List<Runnable> playbackSpeedChangeListeners = new CopyOnWriteArrayList<>();
 
     private static int desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
 
@@ -103,6 +107,10 @@ public final class VideoInformation {
      * Callback for when the current quality changes.
      */
     public static final Event<VideoQualityInterface> onQualityChange = new Event<>();
+
+    public static void addOnPlaybackSpeedChangeListener(Runnable listener) {
+        if (listener != null) playbackSpeedChangeListeners.add(listener);
+    }
 
     @Nullable
     public static VideoQualityInterface[] getCurrentQualities() {
@@ -496,6 +504,12 @@ public final class VideoInformation {
      */
     public static void overridePlaybackSpeed(float speedOverride) {
         Logger.printDebug(() -> "Overriding playback speed to: " + speedOverride);
+        if (playbackSpeed != speedOverride) {
+            playbackSpeed = speedOverride;
+            for (Runnable r : playbackSpeedChangeListeners) {
+                try { r.run(); } catch (Exception e) { Logger.printException(() -> "Playback speed listener", e); }
+            }
+        }
     }
 
     /**
@@ -507,6 +521,9 @@ public final class VideoInformation {
         if (playbackSpeed != newlyLoadedPlaybackSpeed) {
             Logger.printDebug(() -> "Video speed changed: " + newlyLoadedPlaybackSpeed);
             playbackSpeed = newlyLoadedPlaybackSpeed;
+            for (Runnable r : playbackSpeedChangeListeners) {
+                try { r.run(); } catch (Exception e) { Logger.printException(() -> "Playback speed listener", e); }
+            }
         }
     }
 
@@ -647,4 +664,18 @@ public final class VideoInformation {
         String qualityName = quality.patch_getQualityName();
         return qualityName != null && qualityName.contains(VIDEO_QUALITY_PREMIUM_NAME);
     }
+
+    public static void setVideoTitle(String title) {
+        videoTitle = title != null ? title : "";
+        Logger.printDebug(() -> "Video title: " + videoTitle);
+    }
+
+    @NonNull
+    public static String getVideoTitle() { return videoTitle; }
+
+    public static float getPlaybackSpeedFromPlayer() { return -1f; }
+
+    public static float getPlayerVolume() { return 1.0f; }
+
+    public static void setPlayerVolume(float volume) { }
 }

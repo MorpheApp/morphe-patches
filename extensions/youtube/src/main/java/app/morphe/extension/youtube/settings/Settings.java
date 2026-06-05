@@ -577,6 +577,17 @@ public class Settings extends SharedYouTubeSettings {
     public static final StringSetting SB_CATEGORY_UNSUBMITTED = new StringSetting("sb_unsubmitted", SKIP_AUTOMATICALLY.morpheKeyValue, false, false);
     public static final StringSetting SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("sb_unsubmitted_color", "#FFFFFFFF", false, false);
 
+    // Voice Over Translation
+    public static final BooleanSetting VOT_ENABLED = new BooleanSetting("morphe_vot_enabled", FALSE);
+    public static final StringSetting VOT_SOURCE_LANGUAGE = new StringSetting("morphe_vot_source_language", "auto", false, parent(VOT_ENABLED));
+    public static final StringSetting VOT_TARGET_LANGUAGE = new StringSetting("morphe_vot_target_language", "ru", false, parent(VOT_ENABLED));
+    public static final IntegerSetting VOT_TRANSLATION_VOLUME = new IntegerSetting("morphe_vot_translation_volume", 100, false, parent(VOT_ENABLED));
+    public static final IntegerSetting VOT_ORIGINAL_AUDIO_VOLUME = new IntegerSetting("morphe_vot_original_audio_volume", 30, false, parent(VOT_ENABLED));
+    public static final BooleanSetting VOT_AUDIO_PROXY_ENABLED = new BooleanSetting("morphe_vot_audio_proxy_enabled", TRUE, false, parent(VOT_ENABLED));
+    public static final StringSetting VOT_PROXY_URL = new StringSetting("morphe_vot_proxy_url", "vot-worker.eu.cc", false, parent(VOT_ENABLED));
+    public static final BooleanSetting VOT_USE_LIVE_VOICES = new BooleanSetting("morphe_vot_use_live_voices", TRUE, false, parent(VOT_ENABLED));
+    public static final StringSetting VOT_OAUTH_TOKEN = new StringSetting("morphe_vot_oauth_token", "", false, parent(VOT_ENABLED));
+
     // Migration
     private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL = new BooleanSetting("morphe_copy_video_url", FALSE, true);
     private static final BooleanSetting DEPRECATED_COPY_VIDEO_URL_TIMESTAMP = new BooleanSetting("morphe_copy_video_url_timestamp", TRUE, true, parent(DEPRECATED_COPY_VIDEO_URL));
@@ -648,5 +659,7 @@ public class Settings extends SharedYouTubeSettings {
                 5, 75, 1, "%"));
         SeekBarPreference.register(new SeekBarConfig(QUICK_ACTIONS_TOP_MARGIN,
                 0, 32, 1, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(VOT_TRANSLATION_VOLUME, 0, 100, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(VOT_ORIGINAL_AUDIO_VOLUME, 0, 100, 5, "%"));
     }
 }

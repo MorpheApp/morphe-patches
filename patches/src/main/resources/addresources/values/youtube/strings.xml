@@ -1385,4 +1385,52 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
     <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show spoofing in Stats for nerds</string>
+
+    <!-- Voice Over Translation -->
+    <string name="morphe_settings_screen_13_voice_over_translation_title">Voice Over Translation</string>
+    <string name="morphe_vot_enabled_title">Enable Voice Over Translation</string>
+    <string name="morphe_vot_enabled_summary">Yandex voice-over translation</string>
+    <string name="morphe_vot_enabled_summary_on">Yandex voice-over translation is enabled</string>
+    <string name="morphe_vot_enabled_summary_off">Yandex voice-over translation is disabled</string>
+    <string name="morphe_vot_source_language_title">Source language</string>
+    <string name="morphe_vot_source_language_summary">Select the language of the video audio</string>
+    <string name="morphe_vot_target_language_title">Target language</string>
+    <string name="morphe_vot_target_language_summary">Select the language to translate to</string>
+    <string name="morphe_vot_translation_volume_title">Translation volume</string>
+    <string name="morphe_vot_translation_volume_summary">Volume of the translated audio track (0-100). Default: 100</string>
+    <string name="morphe_vot_original_audio_volume_title">Original audio volume</string>
+    <string name="morphe_vot_original_audio_volume_summary">Volume of the original video track when translation is playing (0-100). Default: 30</string>
+    <string name="morphe_vot_audio_proxy_title">Proxy audio stream</string>
+    <string name="morphe_vot_audio_proxy_enabled_summary">Enable only if Yandex servers are unreachable</string>
+    <string name="morphe_vot_audio_proxy_summary">Enable only if Yandex servers are unreachable</string>
+    <string name="morphe_vot_audio_proxy_summary_on">Audio is routed through a proxy worker</string>
+    <string name="morphe_vot_audio_proxy_summary_off">Audio is downloaded directly from Yandex servers</string>
+    <string name="morphe_vot_proxy_url_title">Proxy server</string>
+    <string name="morphe_vot_proxy_url_summary">VOT worker proxy host. Default: vot-worker.eu.cc</string>
+    <string name="morphe_vot_use_live_voices_title">Live voices</string>
+    <string name="morphe_vot_use_live_voices_summary">Use natural-sounding voices from Yandex</string>
+    <string name="morphe_vot_use_live_voices_summary_on">Natural-sounding voices from Yandex</string>
+    <string name="morphe_vot_use_live_voices_summary_off">Standard TTS voices</string>
+    <string name="morphe_vot_voice_style_title">Voice-over style</string>
+    <string name="morphe_vot_voice_style_standard">Standard</string>
+    <string name="morphe_vot_voice_style_live">Live</string>
+    <string name="morphe_vot_started">Translation started</string>
+    <string name="morphe_vot_stopped">Translation stopped</string>
+    <string name="morphe_vot_playback_error">Failed to play translation audio</string>
+    <string name="morphe_vot_unavailable_live">Translation is not available for live streams</string>
+    <string name="morphe_vot_unavailable_too_long">Video is too long for translation (max 4 hours)</string>
+    <string name="morphe_vot_unavailable_same_language">Video audio is already in the target language</string>
+    <string name="morphe_vot_stream_waiting">Waiting… ~%s</string>
+    <string name="morphe_vot_stream_waiting_status">Translation requested, check back later</string>
+    <string name="morphe_vot_stream_not_ready">Translation not ready. Use the button to enable when ready.</string>
+    <string name="morphe_vot_stream_requesting">Requesting translation for stream…</string>
+    <string name="morphe_vot_stream_ready">Translation ready, playing</string>
+    <string name="morphe_vot_time_sec">%d sec</string>
+    <string name="morphe_vot_time_min">%d min</string>
+    <string name="morphe_vot_live_voices_unavailable">Live voices unavailable, using standard</string>
+    <string name="morphe_vot_lang_auto">Auto-detect</string>
+    <string name="morphe_vot_oauth_token_title">Yandex OAuth token</string>
+    <string name="morphe_vot_oauth_token_summary">Required for live voices.</string>
+    <string name="morphe_vot_auth_required">Authorization required. Add Yandex OAuth token in Morphe settings.</string>
+
 </resources>
