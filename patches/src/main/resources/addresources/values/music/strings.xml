@@ -123,8 +123,7 @@ Feature implementation by VazerOG"</string>
 
     <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
     <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Enable swipe to dismiss miniplayer</string>
-    <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary_on">Swiping down on miniplayer dismisses it</string>
-    <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary_off">Swiping down on miniplayer does nothing</string>
+    <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Allows to dismiss the miniplayer by swiping down on it</string>
 
     <!-- layout.navigationbar.navigationBarPatch -->
     <string name="morphe_music_navigation_bar_screen_title">Navigation bar</string>
