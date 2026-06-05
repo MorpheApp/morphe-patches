@@ -11,7 +11,11 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
+
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
@@ -38,18 +42,30 @@ public class SaveToWatchLaterButton {
             // the user opens the queue menu, lastVideoIds is already populated.
             PlaylistPatch.syncIfNeeded();
 
+            boolean swap = Settings.SWAP_SAVE_AND_QUEUE_ACTIONS.get();
+
             instance = new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_save_to_watch_later_button",
                     null,
-                    "morphe_save_to_watch_later_button",
+                    swap ? null : "morphe_save_to_watch_later_button",
                     Settings.SAVE_TO_WATCH_LATER_BUTTON::get,
-                    v -> SaveToWatchLaterPatch.saveVideo(),
-                    v -> {
-                        PlaylistPatch.prepareDialogBuilder(VideoInformation.getVideoId());
-                        return true;
-                    }
+                    swap
+                            ? v -> PlaylistPatch.prepareDialogBuilder(VideoInformation.getVideoId())
+                            : v -> SaveToWatchLaterPatch.saveVideo(),
+                    swap
+                            ? v -> { SaveToWatchLaterPatch.saveVideo(); return true; }
+                            : v -> { PlaylistPatch.prepareDialogBuilder(VideoInformation.getVideoId()); return true; }
             );
+
+            if (swap) {
+                int iconId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
+                        RESTORE_OLD_PLAYER_BUTTONS
+                                ? "yt_outline_list_add_black_24"
+                                : "yt_outline_experimental_playlist_add_vd_theme_24"
+                );
+                instance.setIcon(iconId);
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
         }

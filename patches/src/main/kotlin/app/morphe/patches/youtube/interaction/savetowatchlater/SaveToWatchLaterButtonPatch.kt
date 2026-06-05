@@ -76,7 +76,8 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
                     SwitchPreference("morphe_save_to_watch_later_button", summary = true),
-                    SwitchPreference("morphe_queue_restore", summary = true)
+                    SwitchPreference("morphe_queue_restore", summary = true),
+                    SwitchPreference("morphe_swap_save_and_queue_actions", summary = true)
                 )
             )
         )
