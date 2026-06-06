@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.videoplayer;
 
+import android.content.Context;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -44,18 +45,23 @@ public class SaveToWatchLaterButton {
 
             boolean swap = Settings.SWAP_SAVE_AND_QUEUE_ACTIONS.get();
 
+            Context context = controlsView.getContext();
+
             instance = new LegacyPlayerControlButton(
                     controlsView,
                     "morphe_save_to_watch_later_button",
                     null,
                     swap ? null : "morphe_save_to_watch_later_button",
                     Settings.SAVE_TO_WATCH_LATER_BUTTON::get,
-                    swap
-                            ? v -> PlaylistPatch.prepareDialogBuilder(VideoInformation.getVideoId())
+                    swap ? v -> PlaylistPatch.prepareDialogBuilder(context, VideoInformation.getVideoId())
                             : v -> SaveToWatchLaterPatch.saveVideo(),
-                    swap
-                            ? v -> { SaveToWatchLaterPatch.saveVideo(); return true; }
-                            : v -> { PlaylistPatch.prepareDialogBuilder(VideoInformation.getVideoId()); return true; }
+                    swap ? v -> {
+                        SaveToWatchLaterPatch.saveVideo();
+                        return true;
+                    } : v -> {
+                        PlaylistPatch.prepareDialogBuilder(context, VideoInformation.getVideoId());
+                        return true;
+                    }
             );
 
             if (swap) {

@@ -50,6 +50,7 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.PlayerType;
 import kotlin.Pair;
+import kotlin.jvm.functions.Function1;
 
 @SuppressWarnings({"unused", "StaticFieldLeak"})
 public class PlaylistPatch {
@@ -110,13 +111,13 @@ public class PlaylistPatch {
     /**
      * Invoked by extension.
      */
-    public static void prepareDialogBuilder(@NonNull String currentVideoId) {
+    public static void prepareDialogBuilder(Context context, @NonNull String currentVideoId) {
         if (AuthUtils.isNotLoggedIn()) {
             handleCheckError(checkFailedAuth);
             return;
         }
         if (currentVideoId.isEmpty()) {
-            buildBottomSheetDialog(QueueManager.noVideoIdQueueEntries);
+            buildBottomSheetDialog(context, QueueManager.noVideoIdQueueEntries);
         } else {
             videoId = currentVideoId;
             synchronized (lastVideoIds) {
@@ -132,7 +133,7 @@ public class PlaylistPatch {
                             ? QueueManager.removeFromQueueWithReloadEntries
                             : QueueManager.removeFromQueueEntries;
                 }
-                buildBottomSheetDialog(customActionsEntries);
+                buildBottomSheetDialog(context, customActionsEntries);
             }
         }
     }
@@ -162,28 +163,25 @@ public class PlaylistPatch {
         });
     }
 
-    private static void buildBottomSheetDialog(QueueManager[] queueManagerEntries) {
-        Context mContext = Utils.getContext();
-        if (mContext == null) return;
-
+    private static void buildBottomSheetDialog(Context context, QueueManager[] queueManagerEntries) {
         SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
-                .createMainLayout(mContext, null);
+                .createMainLayout(context, null);
 
-        Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * queueManagerEntries.length);
+        Map<View, Function1<Context, Void>> actionsMap = new LinkedHashMap<>(2 * queueManagerEntries.length);
         for (QueueManager queueManager : queueManagerEntries) {
-            View itemLayout = createItemLayout(mContext, queueManager.label, queueManager.drawableId);
+            View itemLayout = createItemLayout(context, queueManager.label, queueManager.drawableId);
             actionsMap.put(itemLayout, queueManager.onClickAction);
             mainLayout.addView(itemLayout);
         }
 
-        SheetBottomDialog.SlideDialog dialog =
-                SheetBottomDialog.createSlideDialog(mContext, mainLayout, 300);
+        SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
+                .createSlideDialog(context, mainLayout, 300);
 
-        for (Map.Entry<View, Runnable> entry : actionsMap.entrySet()) {
-            Runnable action = entry.getValue();
+        for (Map.Entry<View, Function1<Context, Void>> entry : actionsMap.entrySet()) {
+            Function1<Context, Void> action = entry.getValue();
             entry.getKey().setOnClickListener(v -> {
                 dialog.dismiss();
-                action.run();
+                action.invoke(context);
             });
         }
 
@@ -226,7 +224,7 @@ public class PlaylistPatch {
         return row;
     }
 
-    private static void fetchQueue(boolean remove, boolean openPlaylist,
+    private static void fetchQueue(Context context, boolean remove, boolean openPlaylist,
                                    boolean openVideo, boolean reload) {
         try {
             String currentPlaylistId = playlistId;
@@ -250,7 +248,7 @@ public class PlaylistPatch {
                                     showToast(fetchSucceededCreate);
                                     Logger.printDebug(() -> "Queue created, playlistId: " + createdPlaylistId + ", setVideoId: " + setVideoId);
                                     if (openPlaylist) {
-                                        openQueue(currentVideoId, openVideo, reload);
+                                        openQueue(context, currentVideoId, openVideo, reload);
                                     }
                                     return;
                                 }
@@ -273,7 +271,7 @@ public class PlaylistPatch {
                                     EditPlaylistRequest.clearVideoId(currentVideoId);
                                     showToast(fetchSucceededRemove);
                                     if (openPlaylist) {
-                                        openQueue(currentVideoId, openVideo, reload);
+                                        openQueue(context, currentVideoId, openVideo, reload);
                                     }
                                     return;
                                 }
@@ -285,7 +283,7 @@ public class PlaylistPatch {
                                     showToast(fetchSucceededAdd);
                                     Logger.printDebug(() -> "Video added, setVideoId: " + fetchedSetVideoId);
                                     if (openPlaylist) {
-                                        openQueue(currentVideoId, openVideo, reload);
+                                        openQueue(context, currentVideoId, openVideo, reload);
                                     }
                                     return;
                                 }
@@ -300,7 +298,7 @@ public class PlaylistPatch {
         }
     }
 
-    private static void saveToPlaylist() {
+    private static void saveToPlaylist(Context context) {
         String currentPlaylistId = playlistId;
         if (currentPlaylistId.isEmpty()) {
             handleCheckError(checkFailedQueue);
@@ -318,7 +316,6 @@ public class PlaylistPatch {
                     return;
                 }
 
-                Context context = Utils.getContext();
                 SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
                         .createMainLayout(context, null);
                 Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * playlists.length);
@@ -377,20 +374,17 @@ public class PlaylistPatch {
         }
     }
 
-    private static void openQueue() {
-        openQueue("", false, false);
+    private static void openQueue(Context context) {
+        openQueue(context, "", false, false);
     }
 
-    private static void openQueue(String currentVideoId, boolean openVideo, boolean reload) {
+    private static void openQueue(Context context, String currentVideoId, boolean openVideo, boolean reload) {
         String currentPlaylistId = playlistId;
         if (currentPlaylistId.isEmpty()) {
             handleCheckError(checkFailedQueue);
             return;
         }
         try {
-            Context context = Utils.getContext();
-            if (context == null) return;
-
             String url;
             if (openVideo) {
                 if (StringUtils.isEmpty(currentVideoId)) {
@@ -429,62 +423,90 @@ public class PlaylistPatch {
                 "morphe_queue_manager_add_to_queue",
                 "yt_outline_list_add_black_24",
                 "yt_outline_experimental_playlist_add_vd_theme_24",
-                () -> fetchQueue(false, false, false, false)
+                context -> {
+                    fetchQueue(context, false, false, false, false);
+                    return null;
+                }
         ),
         ADD_TO_QUEUE_AND_OPEN_QUEUE(
                 "morphe_queue_manager_add_to_queue_and_open_queue",
                 "yt_outline_list_add_black_24",
                 "yt_outline_experimental_playlist_add_vd_theme_24",
-                () -> fetchQueue(false, true, false, false)
+                context -> {
+                    fetchQueue(context, false, true, false, false);
+                    return null;
+                }
         ),
         ADD_TO_QUEUE_AND_PLAY_VIDEO(
                 "morphe_queue_manager_add_to_queue_and_play_video",
                 "yt_outline_list_play_arrow_black_24",
                 "yt_outline_experimental_playlist_vd_theme_24",
-                () -> fetchQueue(false, true, true, false)
+                context -> {
+                    fetchQueue(context, false, true, true, false);
+                    return null;
+                }
         ),
         ADD_TO_QUEUE_AND_RELOAD_VIDEO(
                 "morphe_queue_manager_add_to_queue_and_reload_video",
                 "yt_outline_arrow_circle_black_24",
                 "yt_outline_experimental_replay_vd_theme_24",
-                () -> fetchQueue(false, true, true, true)
+                context -> {
+                    fetchQueue(context, false, true, true, true);
+                    return null;
+                }
         ),
         REMOVE_FROM_QUEUE(
                 "morphe_queue_manager_remove_from_queue",
                 "yt_outline_trash_can_black_24",
                 "yt_outline_experimental_circle_slash_vd_theme_24",
-                () -> fetchQueue(true, false, false, false)
+                context -> {
+                    fetchQueue(context, true, false, false, false);
+                    return null;
+                }
         ),
         REMOVE_FROM_QUEUE_AND_OPEN_QUEUE(
                 "morphe_queue_manager_remove_from_queue_and_open_queue",
                 "yt_outline_trash_can_black_24",
                 "yt_outline_experimental_circle_slash_vd_theme_24",
-                () -> fetchQueue(true, true, false, false)
+                context -> {
+                    fetchQueue(context, true, true, false, false);
+                    return null;
+                }
         ),
         REMOVE_FROM_QUEUE_AND_RELOAD_VIDEO(
                 "morphe_queue_manager_remove_from_queue_and_reload_video",
                 "yt_outline_arrow_circle_black_24",
                 "yt_outline_experimental_replay_vd_theme_24",
-                () -> fetchQueue(true, true, true, true)
+                context -> {
+                    fetchQueue(context, true, true, true, true);
+                    return null;
+                }
         ),
         OPEN_QUEUE(
                 "morphe_queue_manager_open_queue",
                 "yt_outline_list_view_black_24",
                 "yt_outline_experimental_queue_vd_theme_24",
-                PlaylistPatch::openQueue
+                context -> {
+                    PlaylistPatch.openQueue(context);
+                    return null;
+                }
         ),
         SAVE_QUEUE(
                 "morphe_queue_manager_save_queue",
                 "yt_outline_bookmark_black_24",
                 "yt_outline_experimental_bookmark_vd_theme_24",
-                PlaylistPatch::saveToPlaylist
+                context -> {
+                    PlaylistPatch.saveToPlaylist(context);
+                    return null;
+                }
         );
 
         public final int drawableId;
         public final String label;
-        public final Runnable onClickAction;
 
-        QueueManager(String label, String icon, String boldIcon, Runnable onClickAction) {
+        public final Function1<Context, Void> onClickAction;
+
+        QueueManager(String label, String icon, String boldIcon, Function1<Context, Void> onClickAction) {
             this.drawableId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
                     YouTubeActivityHook.USE_BOLD_ICONS ? boldIcon : icon);
             this.label = str(label);
