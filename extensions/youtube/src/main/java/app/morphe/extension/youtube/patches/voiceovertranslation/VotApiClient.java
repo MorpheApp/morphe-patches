@@ -489,6 +489,15 @@ public class VotApiClient {
     }
 
     /**
+     * Clears the OAuth token validation cache.
+     * Call when the user signs out so that a new token can be re-validated.
+     */
+    public static void clearTokenValidationCache() {
+        lastValidatedToken = null;
+        tokenIsValid = false;
+    }
+
+    /**
      * Clears the translation cache. Call when the user changes language, proxy
      * or other translation-related settings to force fresh API requests.
      */

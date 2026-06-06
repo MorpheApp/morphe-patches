@@ -1318,4 +1318,19 @@ Second \"item\" text"</string>
   <string name="morphe_vot_oauth_token_title">Яндекс OAuth токен</string>
   <string name="morphe_vot_oauth_token_summary">Необходим для живых голосов.</string>
   <string name="morphe_vot_auth_required">Требуется авторизация. Добавьте Яндекс OAuth токен в настройках Morphe.</string>
+  <!-- VOT OAuth preference strings -->
+  <string name="morphe_vot_oauth_not_signed_in_summary">Не авторизован</string>
+  <string name="morphe_vot_oauth_signed_in_summary">Вошли как %s</string>
+  <string name="morphe_vot_oauth_auth_method_title">Авторизация Яндекс</string>
+  <string name="morphe_vot_oauth_auth_method_message">Выберите способ авторизации</string>
+  <string name="morphe_vot_oauth_sign_in_button">Войти через Яндекс</string>
+  <string name="morphe_vot_oauth_enter_manually_button">Ввести токен вручную</string>
+  <string name="morphe_vot_oauth_sign_out_button">Выйти</string>
+  <string name="morphe_vot_oauth_switch_token_button">Ввести другой токен</string>
+  <string name="morphe_vot_oauth_enter_token_title">Ввести токен вручную</string>
+  <string name="morphe_vot_oauth_webview_title">Авторизация Яндекс</string>
+  <string name="morphe_vot_oauth_auth_declined">Авторизация отклонена</string>
+  <string name="morphe_vot_oauth_invalid_token">Недействительный токен</string>
+  <string name="morphe_vot_oauth_no_network">Нет подключения к интернету</string>
+  <string name="morphe_vot_oauth_account_management_title">Яндекс OAuth токен</string>
 </resources>

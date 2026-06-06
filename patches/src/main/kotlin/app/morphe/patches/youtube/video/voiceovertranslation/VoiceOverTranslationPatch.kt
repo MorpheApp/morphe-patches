@@ -50,6 +50,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
 import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
@@ -123,9 +124,10 @@ private val voiceOverTranslationResourcePatch = resourcePatch {
                         entryValuesKey = "morphe_vot_target_language_entry_values",
                     ),
                     SwitchPreference("morphe_vot_use_live_voices"),
-                    TextPreference(
+                    NonInteractivePreference(
                         key = "morphe_vot_oauth_token",
-                        inputType = InputType.TEXT,
+                        tag = "app.morphe.extension.youtube.settings.preference.VotOAuthPreference",
+                        selectable = true,
                     ),
                 )
             ),

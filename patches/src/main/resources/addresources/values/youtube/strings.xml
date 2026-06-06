@@ -1432,5 +1432,20 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_vot_oauth_token_title">Yandex OAuth token</string>
     <string name="morphe_vot_oauth_token_summary">Required for live voices.</string>
     <string name="morphe_vot_auth_required">Authorization required. Add Yandex OAuth token in Morphe settings.</string>
+    <!-- VOT OAuth preference strings -->
+    <string name="morphe_vot_oauth_not_signed_in_summary">Not authorized</string>
+    <string name="morphe_vot_oauth_signed_in_summary">Signed in as %s</string>
+    <string name="morphe_vot_oauth_auth_method_title">Yandex authorization</string>
+    <string name="morphe_vot_oauth_auth_method_message">Choose authorization method</string>
+    <string name="morphe_vot_oauth_sign_in_button">Sign in with Yandex</string>
+    <string name="morphe_vot_oauth_enter_manually_button">Enter token manually</string>
+    <string name="morphe_vot_oauth_sign_out_button">Sign out</string>
+    <string name="morphe_vot_oauth_switch_token_button">Use another token</string>
+    <string name="morphe_vot_oauth_enter_token_title">Enter token manually</string>
+    <string name="morphe_vot_oauth_webview_title">Yandex authorization</string>
+    <string name="morphe_vot_oauth_auth_declined">Authorization declined</string>
+    <string name="morphe_vot_oauth_invalid_token">Invalid token</string>
+    <string name="morphe_vot_oauth_no_network">No network connection</string>
+    <string name="morphe_vot_oauth_account_management_title">Yandex OAuth token</string>
 
 </resources>
