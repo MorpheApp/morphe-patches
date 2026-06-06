@@ -22,7 +22,8 @@ public final class SaveToWatchLaterPatch {
      * If the player is not active, the layout may break.
      * Use it only when it is guaranteed to be used in situations where the player is active.
      */
-    private static StreamOrDetailsDataRequest saveVideoRequest = null;
+    private static volatile StreamOrDetailsDataRequest saveVideoRequest;
+
     public static void saveVideo() {
         try {
             // Prevent a new request until the previous (if exists) is not done
