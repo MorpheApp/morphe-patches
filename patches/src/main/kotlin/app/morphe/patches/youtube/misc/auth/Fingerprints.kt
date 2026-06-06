@@ -8,7 +8,10 @@
 package app.morphe.patches.youtube.misc.auth
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 
 internal object AccountIdentityFingerprint : Fingerprint(
     returnType = "V",
@@ -19,10 +22,11 @@ internal object AccountIdentityFingerprint : Fingerprint(
         "Null getPageId",
         "Null getDataSyncId",
         "Null getGaiaDelegationType",
-        "Null getDelegationContext"
+        "Null getDelegationContext",
     ),
-    custom = { method, _ ->
-        val parameterTypes = method.parameterTypes
-        parameterTypes.size > 4 && parameterTypes[2] == "Ljava/lang/String;" && parameterTypes[3] == "Z"
-    }
+    filters = listOf(
+        opcode(Opcode.IF_EQZ, location = InstructionLocation.MatchAfterAnywhere()),
+        opcode(Opcode.IPUT_OBJECT, location = InstructionLocation.MatchAfterImmediately()),
+        opcode(Opcode.IPUT_BOOLEAN, location = InstructionLocation.MatchAfterImmediately()),
+    ),
 )

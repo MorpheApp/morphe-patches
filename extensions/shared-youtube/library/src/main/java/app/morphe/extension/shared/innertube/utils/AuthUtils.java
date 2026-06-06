@@ -54,12 +54,18 @@ public class AuthUtils {
     /**
      * Injection point.
      */
-    public static void setAccountIdentity(@Nullable String newlyPageIDHeaderValue, boolean newlyLoadedIncognitoStatus) {
-        if (newlyPageIDHeaderValue != null) {
+    public static void setPageId(@Nullable String newlyPageIDHeaderValue) {
+        if (newlyPageIDHeaderValue != null && !pageId.equals(newlyPageIDHeaderValue)) {
             pageId = newlyPageIDHeaderValue;
 
             Logger.printDebug(() -> "new PageID Header value loaded: " + newlyPageIDHeaderValue);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setIncognitoStatus(boolean newlyLoadedIncognitoStatus) {
         incognitoStatus = newlyLoadedIncognitoStatus;
     }
 
