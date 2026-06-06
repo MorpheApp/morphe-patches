@@ -25,7 +25,7 @@ internal val authHookPatch = bytecodePatch(
     )
 
     execute {
-        accountIdentityFingerprint.methodOrNull?.addInstruction(
+        AccountIdentityFingerprint.methodOrNull?.addInstruction(
             1,
             "invoke-static { p3, p4 }, $EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR->setAccountIdentity(Ljava/lang/String;Z)V"
         )

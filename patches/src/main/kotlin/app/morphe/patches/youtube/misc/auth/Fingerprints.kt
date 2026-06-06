@@ -10,7 +10,7 @@ package app.morphe.patches.youtube.misc.auth
 import app.morphe.patcher.Fingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 
-val accountIdentityFingerprint = Fingerprint(
+internal object AccountIdentityFingerprint : Fingerprint(
     returnType = "V",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
