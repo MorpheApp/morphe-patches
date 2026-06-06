@@ -33,7 +33,7 @@ if "/" not in repo_full:
 owner, repo = repo_full.split("/", 1)
 
 
-with open(json_path) as f:
+with open(json_path, encoding="utf-8") as f:
     data = json.load(f)
 
 
