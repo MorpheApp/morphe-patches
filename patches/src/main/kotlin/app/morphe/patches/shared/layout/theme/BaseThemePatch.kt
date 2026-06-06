@@ -6,7 +6,11 @@ import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
+import app.morphe.patches.shared.misc.settings.overrideThemeColors
 import app.morphe.util.childElementsSequence
+import app.morphe.util.forEachChildElement
+import org.w3c.dom.Element
+import java.io.File
 import java.util.Locale
 
 internal const val THEME_COLOR_OPTION_DESCRIPTION = "Can be a hex color (#RRGGBB) or a color resource reference."
@@ -15,12 +19,58 @@ internal val THEME_DEFAULT_DARK_COLOR_NAMES = setOf(
     "yt_black0", "yt_black1", "yt_black2", "yt_black3", "yt_black4",
     "yt_black1_opacity95", "yt_black1_opacity98",
     "yt_status_bar_background_dark", "material_grey_850",
+    "yt_sys_color_baseline_mobile_dark_default_base_background",
+    "yt_sys_color_baseline_mobile_dark_default_raised_background"
 )
 
 internal val THEME_DEFAULT_LIGHT_COLOR_NAMES = setOf(
     "yt_white1", "yt_white2", "yt_white3", "yt_white4",
     "yt_white1_opacity95", "yt_white1_opacity98",
+    "yt_sys_color_baseline_mobile_light_default_base_background",
+    "yt_sys_color_baseline_mobile_light_default_raised_background",
 )
+
+/**
+ * Common utility to generate a notification shape drawable.
+ */
+fun createNotifDrawable(
+    resDir: File,
+    resPath: String,
+    color: String,
+    shape: String,
+    hasCorners: Boolean = false,
+) {
+    val file = resDir.resolve(resPath)
+    file.parentFile?.mkdirs()
+    val cornersLine = if (hasCorners)
+        "\n    <corners android:radius=\"@dimen/new_content_count_radius\" />"
+    else ""
+    file.writeText(
+        "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n" +
+                "<shape android:shape=\"$shape\"\n" +
+                "  xmlns:android=\"http://schemas.android.com/apk/res/android\">\n" +
+                "    <solid android:color=\"$color\" />$cornersLine\n" +
+                "</shape>"
+    )
+}
+
+/**
+ * Common utility to patch the notification count text color across all API levels.
+ */
+fun patchCountTextColor(resDir: File, color: String) {
+    val targetFolders = listOf("layout-v31", "layout-v26", "layout")
+
+    targetFolders.forEach { folder ->
+        val file = resDir.resolve("$folder/new_content_count.xml")
+        if (file.exists()) {
+            val patchedXml = file.readText().replace(
+                Regex("""android:textColor="[^"]+""""),
+                """android:textColor="$color""""
+            )
+            file.writeText(patchedXml)
+        }
+    }
+}
 
 /**
  * @param colorString #AARRGGBB #RRGGBB, or an Android color resource name.
@@ -82,6 +132,7 @@ internal val darkThemeBackgroundColorOption = stringOption(
  */
 internal fun baseThemePatch(
     extensionClassDescriptor: String,
+    resolvedLightColor: (() -> String?) = { null },
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {}
 ) = bytecodePatch(
@@ -96,6 +147,8 @@ internal fun baseThemePatch(
     dependsOn(lithoColorHookPatch)
 
     execute {
+        overrideThemeColors(resolvedLightColor(), darkThemeBackgroundColorOption.value!!)
+
         executeBlock()
 
         lithoColorOverrideHook(extensionClassDescriptor, "getValue")
@@ -111,7 +164,7 @@ internal fun baseThemeResourcePatch(
     execute {
         // Patch validators don't work here for unknown reason.
         // This should be changed to a patch option validator.
-        val darkColor by darkThemeBackgroundColorOption
+        val darkColor = darkThemeBackgroundColorOption.value
         if (!validateColorName(darkColor!!)) {
             throw PatchException("Invalid dark theme color: $darkColor")
         }
@@ -123,7 +176,6 @@ internal fun baseThemeResourcePatch(
 
         document("res/values/colors.xml").use { document ->
             val resourcesNode = document.getElementsByTagName("resources").item(0)
-
             val darkColorNames = darkColorNames()
             val lightColorNames = lightColorNames()
 
@@ -132,6 +184,92 @@ internal fun baseThemeResourcePatch(
                 when {
                     name in darkColorNames -> node.textContent = darkColor
                     lightColor != null && name in lightColorNames -> node.textContent = lightColor
+                }
+            }
+        }
+
+        val isMaterialYouDark = darkColor.startsWith("@android:color/system_")
+
+        if (isMaterialYouDark) {
+            val resDir = get("res")
+            val darkDotColor = "@android:color/system_accent1_100"
+            val darkCountBgColor = "@android:color/system_accent1_100"
+            val darkCountTextColor = "@android:color/system_neutral1_900"
+
+            createNotifDrawable(resDir, "drawable/morphe_notif_dot_dark.xml", darkDotColor, "oval")
+            createNotifDrawable(resDir, "drawable/morphe_notif_count_dark.xml", darkCountBgColor, "rectangle", hasCorners = true)
+            patchCountTextColor(resDir, darkCountTextColor)
+
+            val ytmDrawables = listOf(
+                "new_content_dot_background.xml",
+                "new_content_dot_background_cairo.xml",
+                "new_content_count_background.xml",
+                "new_content_count_background_cairo.xml"
+            )
+            val ytmDrawableDirs = listOf("drawable", "drawable-anydpi-v26", "drawable-anydpi", "drawable-v24", "drawable-v31")
+
+            ytmDrawables.forEach { fileName ->
+                ytmDrawableDirs.forEach { dirName ->
+                    val file = resDir.resolve("$dirName/$fileName")
+                    if (file.exists()) {
+                        var xml = file.readText()
+                        xml = xml.replace(
+                            Regex("""<solid\s+android:color="[^"]+""""),
+                            """<solid android:color="$darkDotColor""""
+                        )
+                        file.writeText(xml)
+                    }
+                }
+            }
+
+            val ytmLayoutDirs = listOf("layout", "layout-v26", "layout-v31")
+            ytmLayoutDirs.forEach { dirName ->
+                val file = resDir.resolve("$dirName/new_content_count.xml")
+                if (file.exists()) {
+                    var xml = file.readText()
+                    xml = xml.replace(
+                        Regex("""android:textColor="[^"]+""""),
+                        """android:textColor="$darkCountTextColor""""
+                    )
+                    file.writeText(xml)
+                }
+            }
+
+            val stylesFile = "res/values/styles.xml"
+            if (get(stylesFile).exists()) {
+                document(stylesFile).use { doc ->
+                    val resources = doc.getElementsByTagName("resources").item(0) as? Element ?: return@use
+
+                    resources.forEachChildElement { style ->
+                        if (style.nodeName != "style") return@forEachChildElement
+
+                        val overrides: Map<String, String> = when (style.getAttribute("name")) {
+                            "PivotBar.Dark" -> mapOf(
+                                "dotBackground" to "@drawable/morphe_notif_dot_dark",
+                                "countBackground" to "@drawable/morphe_notif_count_dark"
+                            )
+                            "CairoDarkThemeUpdates" -> mapOf(
+                                "ytRedIndicator" to darkDotColor
+                            )
+                            else -> return@forEachChildElement
+                        }
+
+                        overrides.forEach { (attrName, attrValue) ->
+                            var found = false
+                            style.forEachChildElement { item ->
+                                if (item.nodeName == "item" && item.getAttribute("name") == attrName) {
+                                    item.textContent = attrValue
+                                    found = true
+                                }
+                            }
+                            if (!found) {
+                                style.appendChild(doc.createElement("item").apply {
+                                    setAttribute("name", attrName)
+                                    textContent = attrValue
+                                })
+                            }
+                        }
+                    }
                 }
             }
         }

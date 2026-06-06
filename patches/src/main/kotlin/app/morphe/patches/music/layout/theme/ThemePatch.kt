@@ -5,15 +5,12 @@ import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
-import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
-import app.morphe.patches.shared.misc.settings.overrideThemeColors
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/theme/ThemePatch;"
 
 @Suppress("unused")
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
-
     block = {
         dependsOn(
             sharedExtensionPatch,
@@ -30,12 +27,5 @@ val themePatch = baseThemePatch(
         )
 
         compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
-    },
-
-    executeBlock = {
-        overrideThemeColors(
-            null,
-            darkThemeBackgroundColorOption.value!!
-        )
     }
 )

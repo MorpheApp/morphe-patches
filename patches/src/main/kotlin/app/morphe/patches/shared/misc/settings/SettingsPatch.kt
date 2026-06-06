@@ -109,9 +109,7 @@ fun settingsPatch (
 
     finalize {
         fun Node.addPreference(preference: BasePreference) {
-            preference.serialize(ownerDocument) { resource ->
-                // FIXME? Not needed anymore?
-//                addResource("values", resource)
+            preference.serialize(ownerDocument) { _ ->
             }.let { preferenceNode ->
                 insertFirst(preferenceNode)
             }
