@@ -33,9 +33,9 @@ Second \"item\" text"</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Скриј видео реклами</string>
   <!-- interaction.crossfade.crossfadePatch -->
-  <string name="morphe_music_crossfade_screen_title">Преминување</string>
+  <string name="morphe_music_crossfade_screen_title">Бледеење</string>
   <string name="morphe_music_crossfade_screen_summary">Плавно преклопување на патите еден во друг</string>
-  <string name="morphe_music_crossfade_enabled_title">Вклучи преминување</string>
+  <string name="morphe_music_crossfade_enabled_title">Вклучи бледеење</string>
   <string name="morphe_music_crossfade_curve_title">Крива на бледнеење</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Подеднавка јачина</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Суптилно држење</string>
@@ -58,16 +58,21 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_8000ms">8 секунди</string>
   <string name="morphe_crossfade_duration_9000ms">9 секунди</string>
   <string name="morphe_crossfade_duration_10000ms">10 секунди</string>
-  <string name="morphe_music_crossfade_on_skip_title">Преминување при рачно прескокнување</string>
-  <string name="morphe_music_crossfade_on_skip_summary">Го применува ефектот на постепено преминување кога рачно прескокнувате на следната песна</string>
-  <string name="morphe_music_crossfade_on_auto_advance_title">Постепено преминување при автоматско прескокнување</string>
-  <string name="morphe_music_crossfade_on_auto_advance_summary">Го применува ефектот на постепено преминување кога песната завршува природно</string>
+  <string name="morphe_crossfade_duration_11000ms">11 секунди</string>
+  <string name="morphe_crossfade_duration_12000ms">12 секунди</string>
+  <string name="morphe_music_crossfade_on_skip_title">Фадење при рачно прескокнување</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Го применува ефектот на бледеење кога рачно прескокнувате на следната песна</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Фадење при автоматско прескокнување</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Го применува ефектот на бледеење кога песната завршува природно</string>
   <string name="morphe_music_crossfade_session_control_title">Контрола на сесија</string>
-  <string name="morphe_music_crossfade_session_control_summary">Задржете на копчето за мешање за да паузирате или продолжите постепено преминување</string>
-  <string name="morphe_music_crossfade_paused_toast">Преминувањето е паузирано за оваа сесија</string>
-  <string name="morphe_music_crossfade_resumed_toast">Преминувањето е продолжено</string>
+  <string name="morphe_music_crossfade_session_control_summary">Задржете на копчето за мешање за да паузирате или продолжите бледеење</string>
+  <string name="morphe_music_crossfade_paused_toast">Фадење е паузирано за оваа сесија</string>
+  <string name="morphe_music_crossfade_resumed_toast">Фадење е продолжено</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим на видео не е достапен додека е вклучено преминувањето</string>
   <string name="morphe_music_crossfade_about_title">За апликацијата</string>
+  <string name="morphe_music_crossfade_about_summary">"Долг притисок на копчето за мешање за да го исклучите/вклучите
+
+Функцијата е направена од VazerOG"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Вклучи перманентно повторување</string>
   <!-- layout.buttons.hideButtons -->

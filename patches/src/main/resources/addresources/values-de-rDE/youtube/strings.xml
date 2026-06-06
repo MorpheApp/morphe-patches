@@ -349,9 +349,34 @@ Info: Funktioniert möglicherweise nicht bei Live-Streams"</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID ist nicht verfügbar. Bitte laden Sie das Video manuell neu</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Später speichern-Schaltfläche anzeigen</string>
+  <string name="morphe_save_to_watch_later_button_summary">Tippen zum Speichern für späteres Ansehen, tippen und gedrückt halten für Warteschlangenoptionen</string>
   <string name="morphe_save_to_watch_later_success_toast">Video erfolgreich zur Wiedergabeliste \"Später ansehen\" hinzugefügt</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Dieses Video ist bereits zur Wiedergabeliste \"Später ansehen\" hinzugefügt</string>
   <string name="morphe_save_to_watch_later_error_toast">Dieses Video kann nicht zur Wiedergabeliste \"Später ansehen\" hinzugefügt werden</string>
+  <string name="morphe_queue_restore_title">Warteschlange zwischen Sitzungen beibehalten</string>
+  <string name="morphe_queue_restore_summary">Warteschlange wird nach Neustart der App beibehalten</string>
+  <string name="morphe_queue_manager_check_failed_auth">Nicht angemeldet</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Keine Wiedergabelisten-ID</string>
+  <string name="morphe_queue_manager_check_failed_queue">Warteschlange ist leer</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Keine Video-ID</string>
+  <string name="morphe_queue_manager_check_failed_generic">Fehlgeschlagen: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Fehler beim Hinzufügen zur Warteschlange</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Fehler beim Erstellen der Warteschlange</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Fehler beim Entfernen aus der Warteschlange</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Fehler beim Speichern der Warteschlange</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Zur Warteschlange hinzugefügt</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Warteschlange erstellt</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Aus der Warteschlange entfernt</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Warteschlange gespeichert unter %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Zur Warteschlange hinzufügen</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Zur Warteschlange hinzufügen und öffnen</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Zur Warteschlange hinzufügen und Video abspielen</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Hinzufügen und Video neu laden</string>
+  <string name="morphe_queue_manager_remove_from_queue">Aus der Warteschlange entfernen</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Aus der Warteschlange entfernen und Warteschlange öffnen</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Aus der Warteschlange entfernen und Video neu laden</string>
+  <string name="morphe_queue_manager_open_queue">Warteschlange öffnen</string>
+  <string name="morphe_queue_manager_save_queue">Warteschlange in Wiedergabeliste speichern</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Kanal vom Live-Avatar aus öffnen</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Verhindert, dass der Livestream geöffnet wird, wenn Sie auf das Avatar des Kanals tippen</string>

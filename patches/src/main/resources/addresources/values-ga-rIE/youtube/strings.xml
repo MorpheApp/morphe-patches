@@ -348,9 +348,34 @@ Eolas: Seans nach n-oibreoidh sé ar shruthanna beo"</string>
   <string name="morphe_dismiss_player_not_available_toast">Níl aitheantas físe ar fáil. Athlódáil an físeán de láimh le do thoil.</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Taispeáin an cnaipe Sábháil le féachaint níos déanaí</string>
+  <string name="morphe_save_to_watch_later_button_summary">Tapa chunnaigh chun féar a bhaint as ar ndéanamh ar leathadh, tapa agus coinnigh le roghanna eile</string>
   <string name="morphe_save_to_watch_later_success_toast">Sábháilte go rathúil an físeán i seinmliosta Féach Níos Déanaí</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Tá an físeán seo sábháilte cheana féin sa seinmliosta féach níos déanaí</string>
   <string name="morphe_save_to_watch_later_error_toast">Ní féidir an físeán seo a shábháil sa seinmliosta féach níos déanaí</string>
+  <string name="morphe_queue_restore_title">Coinnigh an sceideálaithe idir seisiúin</string>
+  <string name="morphe_queue_restore_summary">Coinnítear an sceideálaithe tar éis an app a aththosú</string>
+  <string name="morphe_queue_manager_check_failed_auth">Níl tú logáilte isteach</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Níl ID playlist ann</string>
+  <string name="morphe_queue_manager_check_failed_queue">Tá an eolaire folamh</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Níl ID físeáin ann</string>
+  <string name="morphe_queue_manager_check_failed_generic">Theip: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Theip chun an físeán a chur san eolaire</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Theip chun eolaire a chruthú</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Theip chun an físeán a bhaint as an eolaire</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Theip chun an eolaire a shábháil</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Curtha san eolaire</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Cruthaíodh an eolaire</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Baineadh as an eolaire</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Tá an eolaire sábháilte go %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Cur san eolaire</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Cur san eolaire agus oscail an eolaire</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Cur san eolaire agus imirt an físeán</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Cur agus athlódáil an físeán</string>
+  <string name="morphe_queue_manager_remove_from_queue">Bain as an eolaire</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Bain agus oscail an eolaire</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Bain agus athlódáil an físeán</string>
+  <string name="morphe_queue_manager_open_queue">Oscail an eolaire</string>
+  <string name="morphe_queue_manager_save_queue">Sábháil an eolaire go playlist</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Oscail an cainéal ón avatar beo</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Coscann sé seo an sruth beo ó oscailt nuair a thapaítear ar avatar an chainéil.</string>

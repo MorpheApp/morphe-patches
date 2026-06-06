@@ -351,9 +351,34 @@ Second \"item\" text"</string>
   <string name="morphe_dismiss_player_not_available_toast">Идентификатор видео недоступен. Пожалуйста, вручную обновите видео</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Показать кнопку \"Добавить в посмотреть позже\"</string>
+  <string name="morphe_save_to_watch_later_button_summary">Нажмите, чтобы добавить в «Смотреть позже», нажмите и удерживайте для опций очереди</string>
   <string name="morphe_save_to_watch_later_success_toast">Видео успешно сохранено в плейлист \"Смотреть позже\"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Это видео уже сохранено в плейлист \"Смотреть позже\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Не удалось сохранить это видео в плейлист \"Смотреть позже\"</string>
+  <string name="morphe_queue_restore_title">Сохранять очередь между сеансами</string>
+  <string name="morphe_queue_restore_summary">Очередь сохраняется после перезапуска приложения</string>
+  <string name="morphe_queue_manager_check_failed_auth">Не вошел в систему</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">ID плейлиста не указан</string>
+  <string name="morphe_queue_manager_check_failed_queue">Очередь пуста</string>
+  <string name="morphe_queue_manager_check_failed_video_id">ID видео не указан</string>
+  <string name="morphe_queue_manager_check_failed_generic">Ошибка: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Не удалось добавить в очередь</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Не удалось создать очередь</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Не удалось удалить из очереди</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Не удалось сохранить очередь</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Добавлено в очередь</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Очередь создана</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Удалено из очереди</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Очередь сохранена в %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Добавить в очередь</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Добавить в очередь и открыть</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Добавить в очередь и воспроизвести</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Добавить и перезагрузить видео</string>
+  <string name="morphe_queue_manager_remove_from_queue">Удалить из очереди</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Удалить из очереди и открыть</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Удалить из очереди и перезагрузить видео</string>
+  <string name="morphe_queue_manager_open_queue">Открыть очередь</string>
+  <string name="morphe_queue_manager_save_queue">Сохранить очередь в плейлист</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Открыть канал из аватара прямой трансляции</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Запрещает открытие прямой трансляции при нажатии на аватар канала</string>

@@ -9,7 +9,9 @@ agp = "9.1.0"
 annotation = "1.9.1"
 androidx-core = "1.16.0"
 androidx-javascriptengine = "1.1.0-alpha01"
+collections4 = "4.5.0"
 gson = "2.14.0"
+lang3 = "3.20.0"
 guava = "33.5.0-jre"
 hiddenapi = "6.1"
 protobuf = "0.9.6"
@@ -21,7 +23,9 @@ morphe-extensions-library = { module = "app.morphe:morphe-extensions-library", v
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 androidx-javascriptengine = { module = "androidx.javascriptengine:javascriptengine", version.ref = "androidx-javascriptengine" }
+collections4 = { module = "org.apache.commons:commons-collections4", version.ref = "collections4" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "lang3" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 hiddenapi = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapi" }
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protoc" }

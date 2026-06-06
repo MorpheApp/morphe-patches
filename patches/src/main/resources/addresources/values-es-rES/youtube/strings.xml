@@ -350,9 +350,34 @@ Información: Es posible que no funcione en transmisiones en directo"</string>
   <string name="morphe_dismiss_player_not_available_toast">El ID del vídeo no está disponible. Vuelve a cargar el vídeo manualmente.</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Mostrar botón \'Guardar para ver más tarde\'</string>
+  <string name="morphe_save_to_watch_later_button_summary">Toca para guardar para ver más tarde, mantén pulsado para ver las opciones de la cola</string>
   <string name="morphe_save_to_watch_later_success_toast">Video guardado correctamente en la lista de reproducción Ver más tarde</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Este video ya está guardado en la lista de reproducción Ver más tarde</string>
   <string name="morphe_save_to_watch_later_error_toast">No se puede guardar este video en la lista de reproducción Ver más tarde</string>
+  <string name="morphe_queue_restore_title">Mantener la cola entre sesiones</string>
+  <string name="morphe_queue_restore_summary">La cola se mantiene después de reiniciar la aplicación</string>
+  <string name="morphe_queue_manager_check_failed_auth">No ha iniciado sesión</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">No hay ID de lista de reproducción</string>
+  <string name="morphe_queue_manager_check_failed_queue">La cola está vacía</string>
+  <string name="morphe_queue_manager_check_failed_video_id">No hay ID de video</string>
+  <string name="morphe_queue_manager_check_failed_generic">Error: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Error al agregar a la cola</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Error al crear la cola</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Error al eliminar de la cola</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Error al guardar la cola</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Agregado a la cola</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Cola creada</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Eliminado de la cola</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Cola guardada en %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Agregar a la cola</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Agregar a la cola y abrir</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Agregar a la cola y reproducir</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Agregar y recargar vídeo</string>
+  <string name="morphe_queue_manager_remove_from_queue">Eliminar de la cola</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Eliminar de la cola y abrir</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Eliminar de la cola y recargar video</string>
+  <string name="morphe_queue_manager_open_queue">Abrir cola</string>
+  <string name="morphe_queue_manager_save_queue">Guardar cola en lista de reproducción</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Abrir canal del avatar en directo</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Evita que la transmisión en directo se abra al pulsar el avatar del canal</string>

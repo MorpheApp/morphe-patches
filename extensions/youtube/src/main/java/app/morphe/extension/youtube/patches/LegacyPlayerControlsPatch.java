@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 
-import java.lang.ref.WeakReference;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
@@ -27,8 +25,6 @@ public class LegacyPlayerControlsPatch {
 
     public static final boolean RESTORE_OLD_PLAYER_BUTTONS =
             Settings.RESTORE_OLD_PLAYER_BUTTONS.get() || !YouTubeActivityHook.useBoldIcons(true);
-
-    public static WeakReference<View> fullscreenButtonRef = new WeakReference<>(null);
 
     private static boolean fullscreenButtonVisibilityCallbacksExist() {
         return false; // Modified during patching if needed.
@@ -60,12 +56,11 @@ public class LegacyPlayerControlsPatch {
      * Injection point.
      */
     public static void setFullscreenCloseButton(View imageButton) {
-        fullscreenButtonRef = new WeakReference<>(imageButton);
-        Logger.printDebug(() -> "Fullscreen button set");
-
         if (!fullscreenButtonVisibilityCallbacksExist()) {
             return;
         }
+
+        Logger.printDebug(() -> "Fullscreen button set");
 
         // Add a global listener, since the protected method
         // View#onVisibilityChanged() does not have any call backs.

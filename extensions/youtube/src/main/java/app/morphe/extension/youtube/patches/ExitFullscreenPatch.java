@@ -1,7 +1,5 @@
 package app.morphe.extension.youtube.patches;
 
-import android.view.View;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.settings.Settings;
@@ -41,23 +39,7 @@ public class ExitFullscreenPatch {
                     }
                 }
 
-                // If the user cold launches the app and plays a video but does not
-                // tap to show the overlay controls, the fullscreen button is not
-                // set because the overlay controls are not attached.
-                // To fix this, push the perform click to the back fo the main thread,
-                // and by then the overlay controls will be visible since the video is now finished.
-                Utils.runOnMainThreadDelayed(() -> {
-                    View button = LegacyPlayerControlsPatch.fullscreenButtonRef.get();
-                    if (button == null) {
-                        Logger.printDebug(() -> "Fullscreen button is null, cannot click");
-                    } else {
-                        Logger.printDebug(() -> "Clicking fullscreen button");
-                        final boolean soundEffectsEnabled = button.isSoundEffectsEnabled();
-                        button.setSoundEffectsEnabled(false);
-                        button.performClick();
-                        button.setSoundEffectsEnabled(soundEffectsEnabled);
-                    }
-                }, 10);
+                OpenVideosFullscreenHookPatch.exitFullscreenMode();
             }
         } catch (Exception ex) {
             Logger.printException(() -> "endOfVideoReached failure", ex);

@@ -135,6 +135,7 @@ Changes include:
     <string name="morphe_hide_live_chat_replay_button_title">Hide \'Live chat replay\' button</string>
     <string name="morphe_hide_live_chat_replay_button_summary">Hides the chat replay button in the fullscreen mode</string>
     <string name="morphe_hide_medical_panels_title">Hide medical panels</string>
+    <string name="morphe_hide_snackbar_title">Hide snackbar</string>
     <string name="morphe_hide_subscribers_community_guidelines_title">Hide subscribers guidelines</string>
     <string name="morphe_hide_timed_reactions_title">Hide timed reactions</string>
     <string name="morphe_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
@@ -237,6 +238,7 @@ Changes include:
     <string name="morphe_hide_upload_time_summary">"Limitations:
 • Shorts shelves, channel pages, and search results may still show upload times
 • This feature does not work with automotive layout"</string>
+
     <string name="morphe_hide_keyword_content_screen_title">Keyword filter</string>
     <string name="morphe_hide_keyword_content_screen_summary">Choose specific words or phrases to hide videos in feeds and search</string>
     <string name="morphe_hide_keyword_content_home_title">Hide Home videos by keywords</string>
@@ -378,9 +380,34 @@ Info: May not work on live streams"</string>
 
     <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
     <string name="morphe_save_to_watch_later_button_title">Show Save to watch later button</string>
+    <string name="morphe_save_to_watch_later_button_summary">Tap to save to watch later, tap and hold for queue options</string>
     <string name="morphe_save_to_watch_later_success_toast">Video successfully saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_already_exists_toast">This video is already saved in watch later playlist</string>
     <string name="morphe_save_to_watch_later_error_toast">Cannot save this video in watch later playlist</string>
+    <string name="morphe_queue_restore_title">Keep queue between sessions</string>
+    <string name="morphe_queue_restore_summary">Queue is kept after restarting the app</string>
+    <string name="morphe_queue_manager_check_failed_auth">Not logged in</string>
+    <string name="morphe_queue_manager_check_failed_playlist_id">No playlist ID</string>
+    <string name="morphe_queue_manager_check_failed_queue">Queue is empty</string>
+    <string name="morphe_queue_manager_check_failed_video_id">No video ID</string>
+    <string name="morphe_queue_manager_check_failed_generic">Failed: %s</string>
+    <string name="morphe_queue_manager_fetch_failed_add">Failed to add to queue</string>
+    <string name="morphe_queue_manager_fetch_failed_create">Failed to create queue</string>
+    <string name="morphe_queue_manager_fetch_failed_remove">Failed to remove from queue</string>
+    <string name="morphe_queue_manager_fetch_failed_save">Failed to save queue</string>
+    <string name="morphe_queue_manager_fetch_succeeded_add">Added to queue</string>
+    <string name="morphe_queue_manager_fetch_succeeded_create">Queue created</string>
+    <string name="morphe_queue_manager_fetch_succeeded_remove">Removed from queue</string>
+    <string name="morphe_queue_manager_fetch_succeeded_save">Queue saved to %s</string>
+    <string name="morphe_queue_manager_add_to_queue">Add to queue</string>
+    <string name="morphe_queue_manager_add_to_queue_and_open_queue">Add to queue and open</string>
+    <string name="morphe_queue_manager_add_to_queue_and_play_video">Add to queue and play</string>
+    <string name="morphe_queue_manager_add_to_queue_and_reload_video">Add and reload video</string>
+    <string name="morphe_queue_manager_remove_from_queue">Remove from queue</string>
+    <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Remove and open queue</string>
+    <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Remove and reload video</string>
+    <string name="morphe_queue_manager_open_queue">Open queue</string>
+    <string name="morphe_queue_manager_save_queue">Save queue to playlist</string>
 
     <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
     <string name="morphe_open_channel_of_live_avatar_title">Open channel from live avatar</string>

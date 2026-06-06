@@ -349,9 +349,34 @@ Upozornění: Možná nebude fungovat u živých přenosů"</string>
   <string name="morphe_dismiss_player_not_available_toast">ID videa není k dispozici. Prosím, video ručně obnovte</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Zobrazit tlačítko Uložit pro pozdější zhlédnutí</string>
+  <string name="morphe_save_to_watch_later_button_summary">Ťuknutím uložíte do Sledovat později, ťuknutím a podržením zobrazíte možnosti fronty</string>
   <string name="morphe_save_to_watch_later_success_toast">Video bylo úspěšně uloženo do seznamu pro pozdější zhlédnutí</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Toto video je již uloženo do seznamu pro pozdější zhlédnutí</string>
   <string name="morphe_save_to_watch_later_error_toast">Nelze uložit toto video do seznamu pro pozdější zhlédnutí</string>
+  <string name="morphe_queue_restore_title">Udržet frontu mezi relacemi</string>
+  <string name="morphe_queue_restore_summary">Fronta je zachována i po restartu aplikace</string>
+  <string name="morphe_queue_manager_check_failed_auth">Není přihlášen</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Není ID seznamu přehrávání</string>
+  <string name="morphe_queue_manager_check_failed_queue">Fronta je prázdná</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Není ID videa</string>
+  <string name="morphe_queue_manager_check_failed_generic">Chyba: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Nepodařilo se přidat do fronty</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Nepodařilo se vytvořit frontu</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Nepodařilo se odebrat z fronty</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Nepodařilo se uložit frontu</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Přidáno do fronty</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Fronta vytvořena</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Odebráno z fronty</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Fronta uložena do %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Přidat do fronty</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Přidat do fronty a otevřít</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Přidat do fronty a přehrát</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Přidat a znovu načíst video</string>
+  <string name="morphe_queue_manager_remove_from_queue">Odebrat z fronty</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Odebrat a otevřít frontu</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Odebrat a znovu načíst video</string>
+  <string name="morphe_queue_manager_open_queue">Otevřít frontu</string>
+  <string name="morphe_queue_manager_save_queue">Uložit frontu do playlistu</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Otevření kanálu z živé avataru</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Zabraňuje otevření živého přenosu klepnutím na avatar kanálu</string>

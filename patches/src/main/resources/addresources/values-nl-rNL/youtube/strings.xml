@@ -349,9 +349,34 @@ Info: Werkt mogelijk niet op livestreams"</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID is niet beschikbaar. Laad de video handmatig opnieuw</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Toon Opslaan om later te bekijken-knop</string>
+  <string name="morphe_save_to_watch_later_button_summary">Tik om later te bewaren, tik en vasthouden voor wachtrijopties</string>
   <string name="morphe_save_to_watch_later_success_toast">Video succesvol opgeslagen in afspeellijst \'Bekijk later\'</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Deze video is al opgeslagen in de afspeellijst \'Bekijk later\'</string>
   <string name="morphe_save_to_watch_later_error_toast">Kan deze video niet opslaan in de afspeellijst \'Bekijk later\'</string>
+  <string name="morphe_queue_restore_title">Wachtrij behouden tussen sessies</string>
+  <string name="morphe_queue_restore_summary">Wachtrij blijft behouden na het opnieuw starten van de app</string>
+  <string name="morphe_queue_manager_check_failed_auth">Niet ingelogd</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Geen afspeellijst-ID</string>
+  <string name="morphe_queue_manager_check_failed_queue">De wachtrij is leeg</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Geen video-ID</string>
+  <string name="morphe_queue_manager_check_failed_generic">Mislukt: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Kon niet toevoegen aan de wachtrij</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Kon de wachtrij niet maken</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Kon niet verwijderen uit de wachtrij</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Kon de wachtrij niet opslaan</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Toegevoegd aan de wachtrij</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Wachtrij gemaakt</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Verwijderd uit de wachtrij</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Wachtrij opgeslagen naar %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Toevoegen aan wachtrij</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Toevoegen aan wachtrij en openen</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Toevoegen aan wachtrij en afspelen</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Toevoegen en video opnieuw laden</string>
+  <string name="morphe_queue_manager_remove_from_queue">Verwijderen uit de wachtrij</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Verwijderen en wachtrij openen</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Verwijderen en video opnieuw laden</string>
+  <string name="morphe_queue_manager_open_queue">Open wachtrij</string>
+  <string name="morphe_queue_manager_save_queue">Wachtrij opslaan naar afspeellijst</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Open kanaal vanaf live avatar</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Voorkomt dat de livestream wordt geopend wanneer je op de avatar van het kanaal tikt</string>

@@ -348,9 +348,34 @@ Figyelem: Lehet, hogy az élő közvetítéseknél nem működik"</string>
   <string name="morphe_dismiss_player_not_available_toast">A videóazonosító nem érhető el. Kérjük, töltse újra a videót manuálisan</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">„Később megnézem” gomb megjelenítése</string>
+  <string name="morphe_save_to_watch_later_button_summary">Érintse meg a későbbi megtekintéshez való mentéshez, érintse meg és tartsa lenyomva a sorba adási lehetőségekért</string>
   <string name="morphe_save_to_watch_later_success_toast">A videó sikeresen mentve a „Később megnézem” lejátszási listára</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Ez a videó már mentve van a „Később megnézem” lejátszási listára</string>
   <string name="morphe_save_to_watch_later_error_toast">A videó nem menthető a „Később megnézem” lejátszási listára</string>
+  <string name="morphe_queue_restore_title">Tartsa fenn a sorát a munkamenetek között</string>
+  <string name="morphe_queue_restore_summary">A sor az alkalmazás újraindítása után is megőrizhető</string>
+  <string name="morphe_queue_manager_check_failed_auth">Nem jelentkezett be</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Nincs lejálistázás azonosító</string>
+  <string name="morphe_queue_manager_check_failed_queue">A sor üres</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Nincs videóazonosító</string>
+  <string name="morphe_queue_manager_check_failed_generic">Sikertelen: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Sikertelen a sorba adás</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Sikertelen a sor létrehozása</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Sikertelen a sorból való eltávolítás</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Sikertelen a sor mentése</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Hozzáadva a sorhoz</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Sor létrehozva</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Eltávolítva a sorból</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">A sor mentve lett a(z) %s helyre</string>
+  <string name="morphe_queue_manager_add_to_queue">Hozzáadás a sorhoz</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Hozzáadás a sorhoz és megnyitás</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Hozzáadás a sorhoz és lejátszás</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Hozzáadás és videó újratöltése</string>
+  <string name="morphe_queue_manager_remove_from_queue">Eltávolítás a sorból</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Eltávolítás a sorból és a sor megnyitása</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Eltávolítás a sorból és videó újratöltése</string>
+  <string name="morphe_queue_manager_open_queue">Sor megnyitása</string>
+  <string name="morphe_queue_manager_save_queue">A sor mentése lejálistához</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Csatorna megnyitása az élő avatarból</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Megakadályozza, hogy az élő közvetítés megnyíljon a csatorna avatarjára koppintva</string>

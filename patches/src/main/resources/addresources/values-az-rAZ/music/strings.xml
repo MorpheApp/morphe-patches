@@ -42,6 +42,8 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Xəfif yüngülləşmə</string>
   <string name="morphe_music_crossfade_curve_entry_smoothstep">Hamar S-əyrisi</string>
   <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Azalan</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Artan</string>
   <string name="morphe_music_crossfade_duration_title">Çarpaz soldurma müddəti</string>
   <string name="morphe_crossfade_duration_250ms">250 millisaniyə</string>
   <string name="morphe_crossfade_duration_500ms">500 millisaniyə</string>
@@ -68,6 +70,9 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Çarpaz Soldurma yenidən başladı</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Çarpaz Soldurma işlək olduqda video rejimi əlçatan deyil</string>
   <string name="morphe_music_crossfade_about_title">Haqqında</string>
+  <string name="morphe_music_crossfade_about_summary">"Qapatmaq/aktivləşdirmək üçün qarışdırma düyməsini uzun bas
+
+VazerOG tərəfindən xüsusiyyətin tətbiqi"</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Daimi təkrarlamanı aktivləşdir</string>
   <!-- layout.buttons.hideButtons -->

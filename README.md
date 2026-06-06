@@ -35,15 +35,15 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.31.0-dev.4](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.31.0-dev.4)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;113 patches total
+> **[v1.31.0-dev.6](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.31.0-dev.6)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;113 patches total
 <details>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;69 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.22.164 | 🧪&nbsp;21.21.80 | 🧪&nbsp;21.20.400 | 🧪&nbsp;21.05.265 | 20.51.39 | 20.47.62 | 20.31.42 | 20.21.37 |
-| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| 🧪&nbsp;21.23.480 | 🧪&nbsp;21.22.164 | 🧪&nbsp;21.21.80 | 🧪&nbsp;21.20.400 | 🧪&nbsp;21.05.265 | 20.51.39 | 20.47.62 | 20.31.42 | 20.21.37 |
+| :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|

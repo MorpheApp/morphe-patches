@@ -346,9 +346,34 @@ Opozorilo: morda ne deluje na prenosih v živo"</string>
   <string name="morphe_dismiss_player_not_available_toast">ID videa ni na voljo. Ponovno naložite video ročno</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Prikaži gumb \'Shrani za kasnejši ogled\'</string>
+  <string name="morphe_save_to_watch_later_button_summary">Tapnite, da shranite za ogled pozneje, tapnite in pridržite za možnosti vrste</string>
   <string name="morphe_save_to_watch_later_success_toast">Video je uspešno shranjen na seznam za kasnejši ogled</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Ta video je že shranjen na seznam za kasnejši ogled</string>
   <string name="morphe_save_to_watch_later_error_toast">Težava pri shranjevanju videoposnetka na seznam za kasnejši ogled</string>
+  <string name="morphe_queue_restore_title">Ohranite vrsto med sejami</string>
+  <string name="morphe_queue_restore_summary">Vrsta se shrani tudi po ponovnem zagonu aplikacije</string>
+  <string name="morphe_queue_manager_check_failed_auth">Ni prijavljen</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Manjkajoč ID predvajalnega seznama</string>
+  <string name="morphe_queue_manager_check_failed_queue">Vrsta je prazna</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Manjkajoč ID videoposnetka</string>
+  <string name="morphe_queue_manager_check_failed_generic">Napaka: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Dodajanje v vrsto je spodletelo</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Ustvarjanje vrste je spodletelo</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Odstranjevanje iz vrste je spodletelo</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Shranjevanje vrste je spodletelo</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Dodano v vrsto</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Vrsta je ustvarjena</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Odstranjeno iz vrste</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Vrsta je shranjena v %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Dodaj v vrsto</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Dodaj v vrsto in odpri</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Dodaj v vrsto in predvajaj</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Dodaj in ponovno naloži videoposnetek</string>
+  <string name="morphe_queue_manager_remove_from_queue">Odstrani iz vrste</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Odstrani in odpri vrsto</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Odstrani in ponovno naloži videoposnetek</string>
+  <string name="morphe_queue_manager_open_queue">Odpri vrsto</string>
+  <string name="morphe_queue_manager_save_queue">Shrani vrsto v predvajalni seznam</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Odprite kanal iz avatarja v živo</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Preprečuje, da bi se prenos v živo odprl ob dotiku avatarja kanala</string>

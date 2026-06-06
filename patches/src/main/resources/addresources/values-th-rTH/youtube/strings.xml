@@ -349,9 +349,34 @@ Second \"item\" text"</string>
   <string name="morphe_dismiss_player_not_available_toast">ไม่สามารถใช้ Video ID ได้ โปรดรีโหลดวิดีโอด้วยตนเอง</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">แสดงปุ่มบันทึกเพื่อดูภายหลัง</string>
+  <string name="morphe_save_to_watch_later_button_summary">แตะเพื่อบันทึกไว้ดูภายหลัง แตะค้างเพื่อดูตัวเลือกคิว</string>
   <string name="morphe_save_to_watch_later_success_toast">บันทึกวิดีโอลงในรายการดูภายหลังเรียบร้อยแล้ว</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">วิดีโอนี้ถูกบันทึกในรายการดูภายหลังแล้ว</string>
   <string name="morphe_save_to_watch_later_error_toast">ไม่สามารถบันทึกวิดีโอนี้ลงในรายการดูภายหลังได้</string>
+  <string name="morphe_queue_restore_title">คงคิวไว้ระหว่างการใช้งาน</string>
+  <string name="morphe_queue_restore_summary">คิวจะถูกเก็บไว้หลังจากการปิดและเปิดแอปอีกครั้ง</string>
+  <string name="morphe_queue_manager_check_failed_auth">ยังไม่ได้เข้าสู่ระบบ</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">ไม่มี ID เพลย์ลิสต์</string>
+  <string name="morphe_queue_manager_check_failed_queue">คิวว่างเปล่า</string>
+  <string name="morphe_queue_manager_check_failed_video_id">ไม่มี ID วิดีโอ</string>
+  <string name="morphe_queue_manager_check_failed_generic">ล้มเหลว: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">เพิ่มไปยังคิวไม่ได้</string>
+  <string name="morphe_queue_manager_fetch_failed_create">สร้างคิวไม่ได้</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">ลบคิวไม่ได้</string>
+  <string name="morphe_queue_manager_fetch_failed_save">บันทึกคิวไม่ได้</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">เพิ่มไปยังคิวแล้ว</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">สร้างคิวแล้ว</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">ลบออกจากคิวแล้ว</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">บันทึกคิวไปยัง %s</string>
+  <string name="morphe_queue_manager_add_to_queue">เพิ่มไปยังคิว</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">เพิ่มไปยังคิวและเปิด</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">เพิ่มไปยังคิวและเล่น</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">เพิ่มและรีโหลดวิดีโอ</string>
+  <string name="morphe_queue_manager_remove_from_queue">ลบออกจากคิว</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">ลบและเปิดคิว</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">ลบและรีโหลดวิดีโอ</string>
+  <string name="morphe_queue_manager_open_queue">เปิดคิว</string>
+  <string name="morphe_queue_manager_save_queue">บันทึกคิวไปยังเพลย์ลิสต์</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">เปิดช่องจากอวาตาร์สด</string>
   <string name="morphe_open_channel_of_live_avatar_summary">ป้องกันไม่ให้การถ่ายทอดสดเปิดเมื่อแตะที่อวาตาร์ของช่อง</string>

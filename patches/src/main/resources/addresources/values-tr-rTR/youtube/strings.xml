@@ -348,9 +348,34 @@ Bilgi: Canlı yayınlarda çalışmayabilir"</string>
   <string name="morphe_dismiss_player_not_available_toast">Video kimliği kullanılamıyor. Lütfen videoyu manuel olarak yeniden yükleyin</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Daha sonra izle\'ye kaydet düğmesini göster</string>
+  <string name="morphe_save_to_watch_later_button_summary">Daha sonra izleye kaydetmek için dokunun, sıra seçenekleri için basılı tutun</string>
   <string name="morphe_save_to_watch_later_success_toast">Video, daha sonra izle listesine başarıyla kaydedildi</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Bu video daha sonra izle listesinde zaten kayıtlı</string>
   <string name="morphe_save_to_watch_later_error_toast">Bu video daha sonra izle listesine kaydedilemiyor</string>
+  <string name="morphe_queue_restore_title">Sırayı oturumlar arasında koru</string>
+  <string name="morphe_queue_restore_summary">Uygulama yeniden başlatıldığında sıra korunur</string>
+  <string name="morphe_queue_manager_check_failed_auth">Giriş yapılmadı</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Oynatma listesi kimliği yok</string>
+  <string name="morphe_queue_manager_check_failed_queue">Sıra boş</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Video kimliği yok</string>
+  <string name="morphe_queue_manager_check_failed_generic">Başarısız: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Sıraya eklenemedi</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Sıra oluşturulamadı</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Sıradan kaldırılamadı</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Sıra kaydedilemedi</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Sıraya eklendi</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Sıra oluşturuldu</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Sıradan kaldırıldı</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Sıra %s\'ye kaydedildi</string>
+  <string name="morphe_queue_manager_add_to_queue">Sıraya ekle</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Sıraya ekle ve aç</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Sıraya ekle ve oynat</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Ekle ve videoyu yeniden yükle</string>
+  <string name="morphe_queue_manager_remove_from_queue">Sıradan kaldır</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Kaldır ve sırayı aç</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Videoyu kaldır ve yeniden yükle</string>
+  <string name="morphe_queue_manager_open_queue">Sırayı aç</string>
+  <string name="morphe_queue_manager_save_queue">Sırayı oynatma listesine kaydet</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Canlı avatardan kanalı aç</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Kanal avatarına dokunulduğunda canlı yayının açılmasını engeller</string>

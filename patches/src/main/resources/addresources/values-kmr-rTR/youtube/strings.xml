@@ -348,9 +348,34 @@ Info: May not work on live streams"</string>
   <string name="morphe_dismiss_player_not_available_toast">ÎD-ya vîdyoyê peyda nabe. Ji kerema xwe vîdyoyê bi destan nûvekirin</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Butona dîsa ji nûve dubarekirina vîdyoyê nîşan bide</string>
+  <string name="morphe_save_to_watch_later_button_summary">Bikîne da ku paşê temaşe bike, bikîne û bidîse bo vebijarkên lîsteyê</string>
   <string name="morphe_save_to_watch_later_success_toast">Vîdyo bi serfirazî di lîsteya tomar kirina ji bo paşê dîtinê de hat tomarkirin</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Vîdyo jixwe di lîsteya tomar kirina ji bo paşê dîtinê de hatî tomarkirin</string>
   <string name="morphe_save_to_watch_later_error_toast">Nikare vî vîdyoyê di lîsteya tomar kirina ji bo paşê dîtinê de tomar bike</string>
+  <string name="morphe_queue_restore_title">Lîsteyê di nav beşan de bidomîne</string>
+  <string name="morphe_queue_restore_summary">Lîste piştî destkirina serî lêve tê parastin</string>
+  <string name="morphe_queue_manager_check_failed_auth">Tewrê nîşanî dayî ne</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Îd-a lîsteyê tune ye</string>
+  <string name="morphe_queue_manager_check_failed_queue">Lîste vala ye</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Îd-a vîdyoyê tune ye</string>
+  <string name="morphe_queue_manager_check_failed_generic">Tewrê: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Ket lîsteyê kirin têk çû</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Çêkirina lîsteyê têk çû</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Derxistina ji lîsteyê têk çû</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Parastina lîsteyê têk çû</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Ket lîsteyê kirin</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Lîste çêkirin</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Derxistina ji lîsteyê kirin</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Lîste li %s hatî parastin</string>
+  <string name="morphe_queue_manager_add_to_queue">Ket lîsteyê kirin</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Ket lîsteyê kirin û vekirin</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Ket lîsteyê kirin û vîdyoyê bidarxin</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Vîdyoyê ket lîsteyê kirin û dîsa bar kirin</string>
+  <string name="morphe_queue_manager_remove_from_queue">Derxistina ji lîsteyê kirin</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Derxistina ji lîsteyê kirin û vekirin</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Derxistina ji lîsteyê kirin û dîsa bar kirin</string>
+  <string name="morphe_queue_manager_open_queue">Lîsteyê vekirin</string>
+  <string name="morphe_queue_manager_save_queue">Lîsteyê li lîsteyê parastin</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Open channel from live avatar</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Prevents the live stream from opening when tapping the channel\'s avatar</string>

@@ -348,9 +348,34 @@ Avviso: Potrebbe non funzionare sui video in diretta"</string>
   <string name="morphe_dismiss_player_not_available_toast">ID video non disponibile. Ricarica manualmente il video</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Mostra il pulsante Salva in guarda più tardi</string>
+  <string name="morphe_save_to_watch_later_button_summary">Tocca per salvare per dopo, tieni premuto per le opzioni della coda</string>
   <string name="morphe_save_to_watch_later_success_toast">Video salvato con successo nella playlist \"Guarda più tardi\"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Questo video è già stato salvato nella playlist \"Guarda più tardi\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Impossibile salvare questo video nella playlist \"Guardalo più tardi\"</string>
+  <string name="morphe_queue_restore_title">Mantieni la coda tra le sessioni</string>
+  <string name="morphe_queue_restore_summary">La coda viene mantenuta anche riavviando l\'app</string>
+  <string name="morphe_queue_manager_check_failed_auth">Non connesso</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">ID playlist non trovato</string>
+  <string name="morphe_queue_manager_check_failed_queue">Coda vuota</string>
+  <string name="morphe_queue_manager_check_failed_video_id">ID video non trovato</string>
+  <string name="morphe_queue_manager_check_failed_generic">Errore: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Impossibile aggiungere alla coda</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Impossibile creare la coda</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Impossibile rimuovere dalla coda</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Impossibile salvare la coda</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Aggiunto alla coda</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Coda creata</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Rimosso dalla coda</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Coda salvata in %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Aggiungi alla coda</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Aggiungi alla coda e apri</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Aggiungi alla coda e riproduci</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Aggiungi e ricarica video</string>
+  <string name="morphe_queue_manager_remove_from_queue">Rimuovi dalla coda</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Rimuovi e apri coda</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Rimuovi e ricarica video</string>
+  <string name="morphe_queue_manager_open_queue">Apri coda</string>
+  <string name="morphe_queue_manager_save_queue">Salva coda nella playlist</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Apri il canale dall\'avatar in diretta</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Impedisce l\'apertura del video in diretta toccando l\'avatar del canale</string>

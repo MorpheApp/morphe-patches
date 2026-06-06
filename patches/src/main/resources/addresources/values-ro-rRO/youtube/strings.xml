@@ -346,9 +346,34 @@ Info: S-ar putea să nu funcționeze pe transmisiuni live"</string>
   <string name="morphe_dismiss_player_not_available_toast">ID-ul video nu este disponibil. Vă rugăm să reîncărcați manual videoclipul</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Setează culoarea barei de progres a comenzilor de luminozitate</string>
+  <string name="morphe_save_to_watch_later_button_summary">Atingeți pentru a salva pentru vizionare ulterioară, atingeți și mențineți apăsat pentru opțiuni de coadă</string>
   <string name="morphe_save_to_watch_later_success_toast">Video salvat cu succes în lista de vizionare ulterioară</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Acest video este deja salvat în lista de vizionare ulterioară</string>
   <string name="morphe_save_to_watch_later_error_toast">Nu se poate salva acest video în lista de vizionare ulterioară</string>
+  <string name="morphe_queue_restore_title">Menține coada între sesiuni</string>
+  <string name="morphe_queue_restore_summary">Coada este păstrată după repornirea aplicației</string>
+  <string name="morphe_queue_manager_check_failed_auth">Nu ești autentificat</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">ID playlistă inexistent</string>
+  <string name="morphe_queue_manager_check_failed_queue">Coada este goală</string>
+  <string name="morphe_queue_manager_check_failed_video_id">ID video inexistent</string>
+  <string name="morphe_queue_manager_check_failed_generic">Eșuat: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">A adăugat în coadă a eșuat</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Crearea cozii a eșuat</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Înlăturarea din coadă a eșuat</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Salvarea cozii a eșuat</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Adăugat în coadă</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Coada a fost creată</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Înlăturat din coadă</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Coada a fost salvată în %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Adaugă în coadă</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Adaugă în coadă și deschide</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Adaugă în coadă și redă</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Adaugă și reîncarcă video</string>
+  <string name="morphe_queue_manager_remove_from_queue">Înlătură din coadă</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Înlătură din coadă și deschide coada</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Înlătură din coadă și reîncarcă video</string>
+  <string name="morphe_queue_manager_open_queue">Deschide coada</string>
+  <string name="morphe_queue_manager_save_queue">Salvează coada în playlist</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Deschide canalul din avatarul live</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Împiedică deschiderea transmisiunii live atunci când apeși pe avatarul canalului</string>

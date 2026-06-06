@@ -139,6 +139,7 @@ class AboutRoutes {
             JSONArray socials = json.getJSONArray("socials");
             for (int i = 0, length = socials.length(); i < length; i++) {
                 MorpheAboutPreference.WebLink link = new MorpheAboutPreference.WebLink(socials.getJSONObject(i));
+
                 links.add(link);
             }
 

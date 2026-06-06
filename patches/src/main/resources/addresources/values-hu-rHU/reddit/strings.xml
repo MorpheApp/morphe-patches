@@ -40,33 +40,33 @@ Second \"item\" text"</string>
   <string name="morphe_hide_games_button_summary">Elrejtjük a Játékok gombot a navigációs sávban</string>
   <string name="morphe_hide_recently_visited_shelf_title">Elkeresett látogatott polc elrejtése</string>
   <string name="morphe_hide_recently_visited_shelf_summary">Elrejtjük az Elkeresett látogatott polcot az oldalsávban</string>
-  <string name="morphe_hide_games_on_reddit_shelf_title">Játékok a Reddit polcon elrejtése</string>
-  <string name="morphe_hide_games_on_reddit_shelf_summary">Elrejtjük a Játékok a Reddit polcot az oldalsávban</string>
-  <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro polc elrejtése</string>
-  <string name="morphe_hide_reddit_pro_shelf_summary">Elrejtjük a Reddit Pro polcot az oldalsávban</string>
-  <string name="morphe_hide_about_shelf_title">Rólunk polc elrejtése</string>
-  <string name="morphe_hide_about_shelf_summary">Elrejtjük a Rólunk polcot az oldalsávban</string>
-  <string name="morphe_hide_resources_shelf_title">Erőforrások polc elrejtése</string>
-  <string name="morphe_hide_resources_shelf_summary">Elrejtjük az Erőforrások polcot az oldalsávban</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Játékok a Redditen sáv elrejtése</string>
+  <string name="morphe_hide_games_on_reddit_shelf_summary">Elrejti a Játékok a Redditen sávot az oldalsó menüben</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Reddit Pro sáv elrejtése</string>
+  <string name="morphe_hide_reddit_pro_shelf_summary">Elrejti a Reddit Pro sávot az oldalsó menüből</string>
+  <string name="morphe_hide_about_shelf_title">Névjegysáv elrejtése</string>
+  <string name="morphe_hide_about_shelf_summary">Elrejti a névjegysávot az oldalsó menüből</string>
+  <string name="morphe_hide_resources_shelf_title">Források sáv elrejtése</string>
+  <string name="morphe_hide_resources_shelf_summary">Elrejtji az források sávját az oldalsó menüben</string>
   <string name="morphe_hide_recommended_communities_shelf_title">Ajánlott közösségek elrejtése</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Elrejtjük az ajánlott közösségek polcait a subreddit-eken</string>
-  <string name="morphe_hide_trending_today_shelf_title">Ma trendben lévő polc elrejtése</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Elrejtjük a Ma trendben lévő polcot a keresési javaslatokból.
+  <string name="morphe_hide_recommended_communities_shelf_summary">Elrejti az ajánlott közösségek részt a subredditeken belül</string>
+  <string name="morphe_hide_trending_today_shelf_title">Mai felkapott témák sáv elrejtése</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Elrejti a mai felkapott témák sávot a keresési javaslatokból.
 
-Korlátozás: A vizuális elválasztók nem rejtődhetnek el"</string>
-  <string name="morphe_remove_notification_dialog_title">Töröljük az értesítés javaslat-párbeszédablakot</string>
-  <string name="morphe_remove_notification_dialog_summary">Automatikusan elutasítja az értesítési javaslat párbeszédablakot egy subreddit meglátogatásakor</string>
-  <string name="morphe_show_view_count_title">Mutassa a bejegyzések megtekintési számát</string>
-  <string name="morphe_show_view_count_summary">Korlátozás: Csak akkor érhető el, ha az API válasz tartalmazza a megtekintések számát.</string>
-  <string name="morphe_remove_nsfw_dialog_title">Töröljük az NSFW figyelmeztető párbeszédablakot</string>
-  <string name="morphe_remove_nsfw_dialog_summary">Automatikus elfogadás a NSFW tartalom figyelmeztetésre, amikor egy subredditet látogat.</string>
+Korlátozás: A vizuális elválasztók láthatók maradhatnak"</string>
+  <string name="morphe_remove_notification_dialog_title">Értesítési javaslat ablak eltávolítása</string>
+  <string name="morphe_remove_notification_dialog_summary">Automatikusan elutasítja az értesítési javaslatok ablakot egy subreddit felkeresésekor</string>
+  <string name="morphe_show_view_count_title">Megtekintésszám megjelenítése a posztokon</string>
+  <string name="morphe_show_view_count_summary">Korlátozás: Csak akkor érhető el, ha az API-válasz tartalmazza a megtekintések számát</string>
+  <string name="morphe_remove_nsfw_dialog_title">NSFW tartalomra figyelmeztető ablak elrejtése</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Automatikusan elfogadja az NSFW-figyelmeztetést egy subreddit felkeresésekor</string>
   <string name="morphe_screen_miscellaneous_title">Egyéb</string>
   <string name="morphe_about_title">Névjegy</string>
-  <string name="morphe_about_summary">Verzió és hivatalos linkek</string>
+  <string name="morphe_about_summary">Módosítás verziója és hivatalos linkek</string>
   <string name="morphe_sanitize_sharing_links_title">Megosztási linkek tisztítása</string>
-  <string name="morphe_sanitize_sharing_links_summary">Eltávolítja a követő paramétereket a megosztott linkekből.</string>
-  <string name="morphe_open_links_directly_title">Linkek közvetlenül megnyitása</string>
-  <string name="morphe_open_links_directly_summary">Megkerüli az átirányítási URL-eket külső linkek megnyitásakor.</string>
-  <string name="morphe_open_links_externally_title">Nyitott linkek külső böngészőben</string>
-  <string name="morphe_open_links_externally_summary">A linkek a böngészőben nyílnak meg a helyett, hogy az alkalmazáson belüli böngészőben nyílnának.</string>
+  <string name="morphe_sanitize_sharing_links_summary">Eltávolítja a nyomkövetést a megosztott linkekből</string>
+  <string name="morphe_open_links_directly_title">Linkek közvetlen megnyitása</string>
+  <string name="morphe_open_links_directly_summary">Kihagyja az átirányításokat a külső linkek megnyitásakor</string>
+  <string name="morphe_open_links_externally_title">Linkek megnyitása külső alkalmazásban</string>
+  <string name="morphe_open_links_externally_summary">​A linkeket a beépített böngésző helyett a saját böngésződben nyitja meg</string>
 </resources>

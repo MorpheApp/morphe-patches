@@ -348,9 +348,34 @@ YouTube Doodles दिखाने से कस्टम हेडर प्र
   <string name="morphe_dismiss_player_not_available_toast">वीडियो आईडी अनुपलब्ध है। कृपया वीडियो को मैन्युअल रूप से रीलोड करें</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">बाद में देखने के लिए सहेजें बटन दिखाएं</string>
+  <string name="morphe_save_to_watch_later_button_summary">बाद में देखने के लिए टैप करें, विकल्प देखने के लिए टैप करके दबाए रखें</string>
   <string name="morphe_save_to_watch_later_success_toast">वीडियो को बाद में देखने की प्लेलिस्ट में सफलतापूर्वक सहेजा गया</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">यह वीडियो पहले से ही बाद में देखने की प्लेलिस्ट में सहेजा गया है</string>
   <string name="morphe_save_to_watch_later_error_toast">इस वीडियो को बाद में देखने की प्लेलिस्ट में सहेजा नहीं जा सकता</string>
+  <string name="morphe_queue_restore_title">सत्रों के बीच कतार बनाए रखें</string>
+  <string name="morphe_queue_restore_summary">ऐप को पुनरारंभ करने के बाद कतार बनी रहती है</string>
+  <string name="morphe_queue_manager_check_failed_auth">लॉग इन नहीं किया गया</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">प्लेलिस्ट आईडी नहीं</string>
+  <string name="morphe_queue_manager_check_failed_queue">क्यू खाली है</string>
+  <string name="morphe_queue_manager_check_failed_video_id">वीडियो आईडी नहीं</string>
+  <string name="morphe_queue_manager_check_failed_generic">विफल: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">क्यू में जोड़ने में विफल</string>
+  <string name="morphe_queue_manager_fetch_failed_create">क्यू बनाने में विफल</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">क्यू से हटाने में विफल</string>
+  <string name="morphe_queue_manager_fetch_failed_save">क्यू सहेजने में विफल</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">क्यू में जोड़ा गया</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">क्यू बनाया गया</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">क्यू से हटाया गया</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">क्यू को %s में सहेजा गया</string>
+  <string name="morphe_queue_manager_add_to_queue">क्यू में जोड़ें</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">क्यू में जोड़ें और खोलें</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">क्यू में जोड़ें और चलाएं</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">वीडियो जोड़ें और रीलोड करें</string>
+  <string name="morphe_queue_manager_remove_from_queue">क्यू से हटाएं</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">क्यू से हटाएं और खोलें</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">क्यू से हटाएं और वीडियो रीलोड करें</string>
+  <string name="morphe_queue_manager_open_queue">क्यू खोलें</string>
+  <string name="morphe_queue_manager_save_queue">प्लेलिस्ट में क्यू सहेजें</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">लाइव अवतार से चैनल खोलें</string>
   <string name="morphe_open_channel_of_live_avatar_summary">चैनल के अवतार पर टैप करने पर लाइव स्ट्रीम को खुलने से रोकता है</string>

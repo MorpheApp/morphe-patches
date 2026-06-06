@@ -9,10 +9,8 @@ import app.morphe.extension.music.patches.ChangeHeaderPatch.HeaderLogo;
 import app.morphe.extension.music.patches.ChangeStartPagePatch.StartPage;
 import app.morphe.extension.music.patches.CrossfadeManager.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadeManager.FadeCurve;
-import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
-import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 
@@ -60,9 +58,4 @@ public class Settings extends SharedYouTubeSettings {
 
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
 
-    static {
-        // region Migration
-
-        // endregion
-    }
 }

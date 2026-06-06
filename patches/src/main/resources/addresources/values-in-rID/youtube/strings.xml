@@ -58,9 +58,9 @@ Perubahan termasuk:
   <string name="morphe_hide_feed_flyout_menu_title">Aktifkan penyaring menu feed melayang</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_title">Penyaring menu feed melayang</string>
   <string name="morphe_hide_feed_flyout_menu_filter_strings_summary">Masukkan nama menu melayang untuk disaring, dipisahkan oleh baris baru</string>
-  <string name="morphe_hide_account_menu_title">Aktifkan Library / Filter menu bawah Anda</string>
-  <string name="morphe_hide_account_menu_filter_strings_title">Library / Filter menu bawah Anda</string>
-  <string name="morphe_hide_account_menu_filter_strings_summary">Masukkan nama menu Library / Anda yang ingin difilter, dipisahkan oleh baris baru</string>
+  <string name="morphe_hide_account_menu_title">Aktifkan penyaring menu bawah Pustaka / Anda</string>
+  <string name="morphe_hide_account_menu_filter_strings_title">Penyaring menu bawah Pustaka / Anda</string>
+  <string name="morphe_hide_account_menu_filter_strings_summary">Masukkan nama menu Pustaka / Anda yang ingin disaring, dipisahkan oleh baris baru</string>
   <string name="morphe_hide_album_cards_title">Sembunyikan kartu album</string>
   <string name="morphe_hide_album_cards_summary">Menyembunyikan kartu album di bawah deskripsi artis</string>
   <string name="morphe_hide_artist_cards_title">Sembunyikan kartu artis</string>
@@ -347,9 +347,34 @@ Info: Mungkin tidak berfungsi pada siaran langsung"</string>
   <string name="morphe_dismiss_player_not_available_toast">ID video tidak tersedia. Silakan muat ulang video secara manual</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Tampilkan tombol Simpan untuk ditonton nanti</string>
+  <string name="morphe_save_to_watch_later_button_summary">Ketuk untuk menyimpan untuk ditonton nanti, ketuk dan tahan untuk opsi antrean</string>
   <string name="morphe_save_to_watch_later_success_toast">Video berhasil disimpan di daftar tonton nanti</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Video ini sudah disimpan di daftar tonton nanti</string>
   <string name="morphe_save_to_watch_later_error_toast">Tidak dapat menyimpan video ini di daftar tonton nanti</string>
+  <string name="morphe_queue_restore_title">Simpan antrean antar sesi</string>
+  <string name="morphe_queue_restore_summary">Antrean disimpan setelah memulai ulang aplikasi</string>
+  <string name="morphe_queue_manager_check_failed_auth">Belum masuk</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">ID daftar putar tidak ditemukan</string>
+  <string name="morphe_queue_manager_check_failed_queue">Antrean kosong</string>
+  <string name="morphe_queue_manager_check_failed_video_id">ID video tidak ditemukan</string>
+  <string name="morphe_queue_manager_check_failed_generic">Gagal: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Gagal menambahkan ke antrean</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Gagal membuat antrean</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Gagal menghapus dari antrean</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Gagal menyimpan antrean</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Ditambahkan ke antrean</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Antrean dibuat</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Dihapus dari antrean</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Antrean disimpan ke %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Tambahkan ke antrean</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Tambahkan ke antrean dan buka</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Tambahkan ke antrean dan putar</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Tambahkan dan muat ulang video</string>
+  <string name="morphe_queue_manager_remove_from_queue">Hapus dari antrean</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Hapus dan buka antrean</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Hapus dan muat ulang video</string>
+  <string name="morphe_queue_manager_open_queue">Buka antrean</string>
+  <string name="morphe_queue_manager_save_queue">Simpan antrean ke daftar putar</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Buka saluran dari avatar siaran langsung</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Mencegah siaran langsung terbuka saat mengetuk avatar saluran</string>

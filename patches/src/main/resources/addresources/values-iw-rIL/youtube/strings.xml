@@ -347,9 +347,34 @@ Second \"item\" text"</string>
   <string name="morphe_dismiss_player_not_available_toast">מזהה הסרטון אינו זמין. נא לטעון מחדש את הסרטון באופן ידני</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">הגדר את הצבע של פס ההתקדמות של בקרת הבהירות</string>
+  <string name="morphe_save_to_watch_later_button_summary">הקש כדי לשמור לצפייה מאוחרת, הקש והחזק עבור אפשרויות תור</string>
   <string name="morphe_save_to_watch_later_success_toast">הסרטון נשמר בהצלחה בפלייליסט \'צפייה מאוחרת\'</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">הסרטון הזה כבר שמור בפלייליסט \'צפייה מאוחרת\'</string>
   <string name="morphe_save_to_watch_later_error_toast">לא ניתן לשמור סרטון זה בפלייליסט \'צפייה מאוחרת\'.</string>
+  <string name="morphe_queue_restore_title">שמור תור בין הפעלות</string>
+  <string name="morphe_queue_restore_summary">התור נשמר גם לאחר הפעלה מחדש של האפליקציה</string>
+  <string name="morphe_queue_manager_check_failed_auth">לא מחובר</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">מזהה רשימת השמעה לא נמצא</string>
+  <string name="morphe_queue_manager_check_failed_queue">התור ריק</string>
+  <string name="morphe_queue_manager_check_failed_video_id">מזהה וידאו לא נמצא</string>
+  <string name="morphe_queue_manager_check_failed_generic">נכשל: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">נכשל להוסיף לתור</string>
+  <string name="morphe_queue_manager_fetch_failed_create">נכשל ליצור תור</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">נכשל להסיר מהתור</string>
+  <string name="morphe_queue_manager_fetch_failed_save">נכשל לשמור את התור</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">הוסף לתור</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">תור נוצר</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">הוסר מהתור</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">התור נשמר ב-%s</string>
+  <string name="morphe_queue_manager_add_to_queue">הוסף לתור</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">הוסף לתור ופתח</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">הוסף לתור והפעל וידאו</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">הוסף וטען מחדש וידאו</string>
+  <string name="morphe_queue_manager_remove_from_queue">הסר מהתור</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">הסר ופתח תור</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">הסר וטען מחדש וידאו</string>
+  <string name="morphe_queue_manager_open_queue">פתח תור</string>
+  <string name="morphe_queue_manager_save_queue">שמור תור לרשימת השמעה</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">פתח ערוץ מאווטאר חי</string>
   <string name="morphe_open_channel_of_live_avatar_summary">מונע את פתיחת השידור החי בעת הקשה על האווטאר של הערוץ</string>

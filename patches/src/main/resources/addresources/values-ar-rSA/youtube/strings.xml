@@ -349,9 +349,34 @@ Second \"item\" text"</string>
   <string name="morphe_dismiss_player_not_available_toast">معرف الفيديو غير متاح. يرجى إعادة تحميل الفيديو يدويًا</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">عرض زر الحفظ في المشاهدة لاحقًا</string>
+  <string name="morphe_save_to_watch_later_button_summary">اضغط لحفظه لمشاهدته لاحقًا، واضغط مع الاستمرار لخيارات قائمة الانتظار</string>
   <string name="morphe_save_to_watch_later_success_toast">تم حفظ الفيديو بنجاح في قائمة المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">هذا الفيديو محفوظ بالفعل في قائمة المشاهدة لاحقًا</string>
   <string name="morphe_save_to_watch_later_error_toast">لا يمكن حفظ هذا الفيديو في قائمة المشاهدة لاحقًا</string>
+  <string name="morphe_queue_restore_title">احتفظ بقائمة الانتظار بين الجلسات</string>
+  <string name="morphe_queue_restore_summary">تبقى قائمة الانتظار محفوظة بعد إعادة تشغيل التطبيق</string>
+  <string name="morphe_queue_manager_check_failed_auth">تسجيل الدخول غير ممكن</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">لا يوجد معرّف قائمة تشغيل</string>
+  <string name="morphe_queue_manager_check_failed_queue">قائمة الانتظار فارغة</string>
+  <string name="morphe_queue_manager_check_failed_video_id">لا يوجد معرّف فيديو</string>
+  <string name="morphe_queue_manager_check_failed_generic">فشل: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">فشل الإضافة إلى قائمة الانتظار</string>
+  <string name="morphe_queue_manager_fetch_failed_create">فشل إنشاء قائمة الانتظار</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">فشل الإزالة من قائمة الانتظار</string>
+  <string name="morphe_queue_manager_fetch_failed_save">فشل حفظ قائمة الانتظار</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">تمت الإضافة إلى قائمة الانتظار</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">تم إنشاء قائمة الانتظار</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">تمت الإزالة من قائمة الانتظار</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">تم حفظ قائمة الانتظار في %s</string>
+  <string name="morphe_queue_manager_add_to_queue">إضافة إلى قائمة الانتظار</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">إضافة إلى قائمة الانتظار وفتح</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">إضافة إلى قائمة الانتظار وتشغيل</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">إضافة وإعادة تحميل الفيديو</string>
+  <string name="morphe_queue_manager_remove_from_queue">إزالة من قائمة الانتظار</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">إزالة وفتح قائمة الانتظار</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">إزالة وإعادة تحميل الفيديو</string>
+  <string name="morphe_queue_manager_open_queue">فتح قائمة الانتظار</string>
+  <string name="morphe_queue_manager_save_queue">حفظ قائمة الانتظار إلى قائمة تشغيل</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">فتح القناة عبر الصورة الرمزية المباشرة</string>
   <string name="morphe_open_channel_of_live_avatar_summary">يمنع فتح البث المباشر عند النقر على صورة القناة الرمزية</string>

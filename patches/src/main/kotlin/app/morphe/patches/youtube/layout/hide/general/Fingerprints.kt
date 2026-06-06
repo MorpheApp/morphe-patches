@@ -549,3 +549,98 @@ internal object AccountMenuLegacyFingerprint : Fingerprint(
         Opcode.AND_INT_LIT16
     )
 )
+
+internal object BottomUIContainerFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/BottomUiContainer;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/view/View;", "L"),
+    filters = listOf(
+        methodCall(
+            definingClass = "this",
+            name = "removeAllViews"
+        )
+    )
+)
+
+internal object LithoSnackbarLayoutFingerprint : Fingerprint(
+    returnType = "Landroid/view/View;",
+    parameters = listOf(
+        "Landroid/view/LayoutInflater;",
+        "Landroid/view/ViewGroup;",
+        "Landroid/os/Bundle;"
+    ),
+    filters = listOf(
+        fieldAccess(
+            definingClass = "this",
+            opcode = Opcode.IPUT_OBJECT,
+            type = "Landroid/widget/FrameLayout;"
+        )
+    ),
+    strings = listOf(
+        "instance_action_bar_color",
+        "instance_status_bar_color",
+        "instance_activated_text_color",
+        "instance_secondary_text_color"
+    )
+)
+
+internal object MaterialSnackbarFingerprint : Fingerprint(
+    definingClass = $$"Lcom/google/android/material/snackbar/Snackbar$SnackbarLayout;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>"
+        )
+    )
+)
+
+internal object AppSnackbarFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/AppSnackbar;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("Landroid/content/Context;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>"
+        )
+    )
+)
+
+internal object YouTubeSnackbarFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/YouTubeSnackbar;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;", "I"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>"
+        )
+    )
+)
+
+internal object MealbarFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/apps/youtube/app/common/ui/bottomui/Mealbar;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;", "I"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>"
+        )
+    )
+)
+
+internal object QuantumSnackbarFingerprint : Fingerprint(
+    definingClass = "Lcom/google/android/libraries/quantum/snackbar/Snackbar;",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    parameters = listOf("Landroid/content/Context;", "Landroid/util/AttributeSet;"),
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_DIRECT,
+            name = "<init>"
+        )
+    )
+)

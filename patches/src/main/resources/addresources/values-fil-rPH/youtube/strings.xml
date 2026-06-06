@@ -348,9 +348,34 @@ Impormasyon: Maaaring hindi gumana sa mga live stream"</string>
   <string name="morphe_dismiss_player_not_available_toast">Hindi available ang Video ID. Pakisuyong i-reload nang manu-mano ang video</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Ipakita ang button na \'I-save para mapanood mamaya\'</string>
+  <string name="morphe_save_to_watch_later_button_summary">I-tap para i-save para mapanood mamaya, i-tap at pindutin para sa mga opsyon sa pila</string>
   <string name="morphe_save_to_watch_later_success_toast">Matagumpay na naisave ang video sa playlist na I-save para manood mamaya</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Naisave na ang videong ito sa playlist na I-save para manood mamaya</string>
   <string name="morphe_save_to_watch_later_error_toast">Hindi ma-save ang videong ito sa playlist na I-save para manood mamaya</string>
+  <string name="morphe_queue_restore_title">Panatilihin ang pila sa pagitan ng mga sesyon</string>
+  <string name="morphe_queue_restore_summary">Ang pila ay nananatili kahit i-restart ang app</string>
+  <string name="morphe_queue_manager_check_failed_auth">Hindi naka-log in</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Walang ID ng playlist</string>
+  <string name="morphe_queue_manager_check_failed_queue">Walang laman ang queue</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Walang ID ng video</string>
+  <string name="morphe_queue_manager_check_failed_generic">Nabigo: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Nabigong idagdag sa queue</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Nabigong gumawa ng queue</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Nabigong alisin sa queue</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Nabigong i-save ang queue</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Idinagdag sa queue</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Nagawa ang queue</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Inalis sa queue</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Na-save ang queue sa %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Idagdag sa queue</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Idagdag sa queue at buksan</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Idagdag sa queue at i-play</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Idagdag at i-reload ang video</string>
+  <string name="morphe_queue_manager_remove_from_queue">Alisin sa queue</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Alisin at buksan ang queue</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Alisin at i-reload ang video</string>
+  <string name="morphe_queue_manager_open_queue">Buksan ang queue</string>
+  <string name="morphe_queue_manager_save_queue">I-save ang queue sa playlist</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Buksan ang channel mula sa live avatar</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Pinipigilan ang live stream na magbukas kapag tina-tap ang avatar ng channel</string>

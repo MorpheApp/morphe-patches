@@ -348,9 +348,34 @@ Uwaga: Może nie działać na transmisjach na żywo"</string>
   <string name="morphe_dismiss_player_not_available_toast">Film jest niedostępny. Otwórz film ponownie ręcznie</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Pokaż przycisk Do obejrzenia</string>
+  <string name="morphe_save_to_watch_later_button_summary">Dotknij, aby zapisać do obejrzenia później, dotknij i przytrzymaj, aby uzyskać opcje kolejki</string>
   <string name="morphe_save_to_watch_later_success_toast">Zapisano na playliście \"Do obejrzenia\"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Film jest już na playliście \"Do obejrzenia\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Nie udało się zapisać na playliście \"Do obejrzenia\"</string>
+  <string name="morphe_queue_restore_title">Zachowaj kolejność między sesjami</string>
+  <string name="morphe_queue_restore_summary">Kolejka jest zachowywana po ponownym uruchomieniu aplikacji</string>
+  <string name="morphe_queue_manager_check_failed_auth">Nie zalogowano</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Brak identyfikatora playlisty</string>
+  <string name="morphe_queue_manager_check_failed_queue">Kolejka jest pusta</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Brak identyfikatora wideo</string>
+  <string name="morphe_queue_manager_check_failed_generic">Niepowodzenie: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Nie udało się dodać do kolejki</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Nie udało się utworzyć kolejki</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Nie udało się usunąć z kolejki</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Nie udało się zapisać kolejki</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Dodano do kolejki</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Kolejka została utworzona</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Usunięto z kolejki</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Kolejka została zapisana do %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Dodaj do kolejki</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Dodaj do kolejki i otwórz</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Dodaj do kolejki i odtwarzaj</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Dodaj i przeładuj wideo</string>
+  <string name="morphe_queue_manager_remove_from_queue">Usuń z kolejki</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Usuń i otwórz kolejkę</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Usuń i przeładuj wideo</string>
+  <string name="morphe_queue_manager_open_queue">Otwórz kolejkę</string>
+  <string name="morphe_queue_manager_save_queue">Zapisz kolejkę do playlisty</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Otwieraj kanał awatara transmisji na żywo</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Zapobiega otwieraniu transmisji na żywo po dotknięciu awatara kanału</string>

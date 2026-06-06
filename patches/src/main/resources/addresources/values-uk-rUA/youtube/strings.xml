@@ -348,9 +348,34 @@ Second \"item\" text"</string>
   <string name="morphe_dismiss_player_not_available_toast">Ідентифікатор відео недоступний. Будь ласка, вручну повторно відкрийте відео</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Показати кнопку \"Зберегти для перегляду пізніше\"</string>
+  <string name="morphe_save_to_watch_later_button_summary">Натисніть, щоб зберегти для перегляду пізніше, утримуйте для параметрів черги</string>
   <string name="morphe_save_to_watch_later_success_toast">Відео збережено у списку відтворення \"Подивитися пізніше\"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Це відео вже збережено у списку відтворення \"Подивитися пізніше\"</string>
   <string name="morphe_save_to_watch_later_error_toast">Не вдалося зберегти це відео у списку відтворення \"Подивитися пізніше\"</string>
+  <string name="morphe_queue_restore_title">Зберігати чергу між сесіями</string>
+  <string name="morphe_queue_restore_summary">Черга зберігається після перезапуску застосунку</string>
+  <string name="morphe_queue_manager_check_failed_auth">Не увійшли в систему</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Немає ID списку відтворення</string>
+  <string name="morphe_queue_manager_check_failed_queue">Черга порожня</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Немає ID відео</string>
+  <string name="morphe_queue_manager_check_failed_generic">Помилка: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Не вдалося додати до черги</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Не вдалося створити чергу</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Не вдалося видалити з черги</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Не вдалося зберегти чергу</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Додано до черги</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Чергу створено</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Видалено з черги</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Чергу збережено до %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Додати до черги</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Додати до черги та відкрити</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Додати до черги та відтворити</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Додати та перезавантажити відео</string>
+  <string name="morphe_queue_manager_remove_from_queue">Видалити з черги</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Видалити з черги та відкрити</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Видалити з черги та перезавантажити відео</string>
+  <string name="morphe_queue_manager_open_queue">Відкрити чергу</string>
+  <string name="morphe_queue_manager_save_queue">Зберегти чергу як список відтворення</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Відкривати канал через аватар трансляції</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Запобігає відкриттю трансляції при натисканні на аватар каналу</string>

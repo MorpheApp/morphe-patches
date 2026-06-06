@@ -349,9 +349,34 @@ Tieto: Ei välttämättä toimi suoratoistoissa"</string>
   <string name="morphe_dismiss_player_not_available_toast">Videon tunnus ei ole käytettävissä. Lataa video manuaalisesti</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Avaa kanavasivu käytössä olevana tai suoratoisto poissa käytöstä olevana</string>
+  <string name="morphe_save_to_watch_later_button_summary">Napauta tallentaaksesi katsottavaksi myöhemmin, napauta ja pidä saadaksesi jonotusvaihtoehdot</string>
   <string name="morphe_save_to_watch_later_success_toast">Video tallennettiin onnistuneesti katsoaksesi myöhemmin -soittolistalle</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Tämä video on jo tallennettu katsoaksesi myöhemmin -soittolistalle</string>
   <string name="morphe_save_to_watch_later_error_toast">Tätä videota ei voi tallentaa katsoaksesi myöhemmin -soittolistalle</string>
+  <string name="morphe_queue_restore_title">Pidä jono käytössä istuntojen välillä</string>
+  <string name="morphe_queue_restore_summary">Jono säilyy sovelluksen uudelleenkäynnistyksen jälkeen</string>
+  <string name="morphe_queue_manager_check_failed_auth">Kirjauduttu ulos</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Ei soittolistan tunnistetta</string>
+  <string name="morphe_queue_manager_check_failed_queue">Jono on tyhjä</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Ei videon tunnistetta</string>
+  <string name="morphe_queue_manager_check_failed_generic">Epäonnistui: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Jonoon lisääminen epäonnistui</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Jonon luominen epäonnistui</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Jonosta poistaminen epäonnistui</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Jonon tallentaminen epäonnistui</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Lisätty jonoon</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Jono luotu</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Poistettu jonosta</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Jono tallennettu osoitteeseen %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Lisää jonoon</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Lisää jonoon ja avaa</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Lisää jonoon ja toista</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Lisää ja lataa video uudelleen</string>
+  <string name="morphe_queue_manager_remove_from_queue">Poista jonosta</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Poista jonosta ja avaa jono</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Poista jonosta ja lataa video uudelleen</string>
+  <string name="morphe_queue_manager_open_queue">Avaa jono</string>
+  <string name="morphe_queue_manager_save_queue">Tallenna jono soittolistalle</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Avaa kanava suorasta avatartista</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Estää suoratoiston avaamisen, kun napautat kanavan avataria</string>

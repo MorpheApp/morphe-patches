@@ -342,9 +342,34 @@ YouTube डूडल्स दर्शविल्याने कस्टम 
   <string name="morphe_dismiss_player_not_available_toast">व्हिडिओ आयडी उपलब्ध नाही. कृपया व्हिडिओ व्यक्तिचलितपणे रीलोड करा</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">\'नंतर पाहण्यासाठी सेव्ह करा\' बटण दर्शवा</string>
+  <string name="morphe_save_to_watch_later_button_summary">टॅप करून नंतर पाहण्यासाठी सेव्ह करा, रांगेच्या पर्यायांसाठी टॅप आणि होल्ड करा</string>
   <string name="morphe_save_to_watch_later_success_toast">व्हिडिओ यशस्वीरित्या ‘नंतर पहा’ प्लेलिस्टमध्ये जतन केला गेला</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">हा व्हिडिओ ‘नंतर पहा’ प्लेलिस्टमध्ये आधीच जतन केला आहे</string>
   <string name="morphe_save_to_watch_later_error_toast">हा व्हिडिओ ‘नंतर पहा’ प्लेलिस्टमध्ये जतन करू शकत नाही</string>
+  <string name="morphe_queue_restore_title">सत्रांमध्ये रांग ठेवा</string>
+  <string name="morphe_queue_restore_summary">ॲप रीस्टार्ट केल्यानंतर रांग ठेवल्या जाईल</string>
+  <string name="morphe_queue_manager_check_failed_auth">लॉग इन केलेले नाही</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">प्लेलिस्ट आयडी नाही</string>
+  <string name="morphe_queue_manager_check_failed_queue">क्यू रिकामी आहे</string>
+  <string name="morphe_queue_manager_check_failed_video_id">व्हिडिओ आयडी नाही</string>
+  <string name="morphe_queue_manager_check_failed_generic">अयशस्वी: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">क्यू मध्ये जोडण्यात अयशस्वी</string>
+  <string name="morphe_queue_manager_fetch_failed_create">क्यू तयार करण्यात अयशस्वी</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">क्यू मधून काढण्यात अयशस्वी</string>
+  <string name="morphe_queue_manager_fetch_failed_save">क्यू जतन करण्यात अयशस्वी</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">क्यू मध्ये जोडले</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">क्यू तयार केली</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">क्यू मधून काढले</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">क्यू %s वर जतन केली</string>
+  <string name="morphe_queue_manager_add_to_queue">क्यू मध्ये जोडा</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">क्यू मध्ये जोडा आणि उघडा</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">क्यू मध्ये जोडा आणि प्ले करा</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">व्हिडिओ जोडा आणि रीलोड करा</string>
+  <string name="morphe_queue_manager_remove_from_queue">क्यू मधून काढा</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">क्यू मधून काढा आणि उघडा</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">व्हिडिओ काढा आणि रीलोड करा</string>
+  <string name="morphe_queue_manager_open_queue">क्यू उघडा</string>
+  <string name="morphe_queue_manager_save_queue">प्लेलिस्टमध्ये क्यू जतन करा</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">लाइव्ह अवतारमधून चॅनेल उघडा</string>
   <string name="morphe_open_channel_of_live_avatar_summary">चॅनेलच्या अवतारवर टॅप केल्यावर लाइव्ह स्ट्रीम उघडण्यापासून प्रतिबंधित करते</string>

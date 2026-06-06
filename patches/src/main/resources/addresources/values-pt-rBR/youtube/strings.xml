@@ -347,9 +347,34 @@ Informação: pode não funcionar em transmissões ao vivo"</string>
   <string name="morphe_dismiss_player_not_available_toast">ID do vídeo indisponível. Recarregue o vídeo manualmente</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Defina a cor da barra de progresso dos controles de brilho</string>
+  <string name="morphe_save_to_watch_later_button_summary">Toque para salvar para assistir depois, toque e segure para opções de fila</string>
   <string name="morphe_save_to_watch_later_success_toast">Vídeo salvo com sucesso na playlist Assistir mais tarde</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Este vídeo já está salvo na playlist Assistir mais tarde</string>
   <string name="morphe_save_to_watch_later_error_toast">Não foi possível salvar este vídeo na playlist Assistir mais tarde</string>
+  <string name="morphe_queue_restore_title">Manter a fila entre as sessões</string>
+  <string name="morphe_queue_restore_summary">A fila é mantida após reiniciar o aplicativo</string>
+  <string name="morphe_queue_manager_check_failed_auth">Não conectado(a)</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Nenhum ID de playlist</string>
+  <string name="morphe_queue_manager_check_failed_queue">Fila vazia</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Nenhum ID de vídeo</string>
+  <string name="morphe_queue_manager_check_failed_generic">Falha: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Falha ao adicionar à fila</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Falha ao criar fila</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Falha ao remover da fila</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Falha ao salvar fila</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Adicionado(a) à fila</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Fila criada</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Removido(a) da fila</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Fila salva em %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Adicionar à fila</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Adicionar à fila e abrir</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Adicionar à fila e reproduzir</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Adicionar e recarregar vídeo</string>
+  <string name="morphe_queue_manager_remove_from_queue">Remover da fila</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Remover e abrir fila</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Remover e recarregar vídeo</string>
+  <string name="morphe_queue_manager_open_queue">Abrir fila</string>
+  <string name="morphe_queue_manager_save_queue">Salvar fila na playlist</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Abrir canal do avatar ao vivo</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Impede que a transmissão ao vivo seja aberta ao tocar no avatar do canal</string>

@@ -346,9 +346,34 @@ Second \"item\" text"</string>
   <string name="morphe_dismiss_player_not_available_toast">ID на видеото е недостъпно. Моля, презаредете видеото ръчно</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Регулирайте нивото на прозрачност (0 е прозрачно, 100 е непрозрачно)</string>
+  <string name="morphe_save_to_watch_later_button_summary">Докоснете, за да запазите за гледане по-късно, докоснете и задръжте за опции за опашката</string>
   <string name="morphe_save_to_watch_later_success_toast">Видеоклипът е запазен успешно в плейлиста Гледай по-късно</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Този видеоклип вече е запазен в плейлиста Гледай по-късно</string>
   <string name="morphe_save_to_watch_later_error_toast">Не може да се запази този видеоклип в плейлиста Гледай по-късно</string>
+  <string name="morphe_queue_restore_title">Запазване на опашката между сесиите</string>
+  <string name="morphe_queue_restore_summary">Опашката се запазва след рестартиране на приложението</string>
+  <string name="morphe_queue_manager_check_failed_auth">Невход в системата</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Няма ID на плейлист</string>
+  <string name="morphe_queue_manager_check_failed_queue">Опашката е празна</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Няма ID на видео</string>
+  <string name="morphe_queue_manager_check_failed_generic">Грешка: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Неуспешно добавяне към опашката</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Неуспешно създаване на опашка</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Неуспешно премахване от опашката</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Неуспешно запазване на опашката</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Добавено към опашката</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Опашката е създадена</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Премахнато от опашката</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Опашката е запазена в %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Добавяне към опашката</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Добавяне към опашката и отваряне</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Добавяне към опашката и възпроизвеждане</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Добавяне и презареждане на видеото</string>
+  <string name="morphe_queue_manager_remove_from_queue">Премахване от опашката</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Премахване от опашката и отваряне</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Премахване от опашката и презареждане на видеото</string>
+  <string name="morphe_queue_manager_open_queue">Отваряне на опашката</string>
+  <string name="morphe_queue_manager_save_queue">Запазване на опашката в плейлист</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Отворете канал от аватара на живо</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Предотвратява отварянето на излъчването на живо при докосване на аватара на канала</string>

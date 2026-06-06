@@ -348,9 +348,34 @@ Second \"item\" text"</string>
   <string name="morphe_dismiss_player_not_available_toast">Το ID του βίντεο δεν είναι διαθέσιμο. Παρακαλώ ανανεώστε το βίντεο χειροκίνητα</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Ρυθμίστε το επίπεδο διαφάνειας (0 είναι διαφανές, 100 είναι αδιαφανές)</string>
+  <string name="morphe_save_to_watch_later_button_summary">Πατήστε για να αποθηκεύσετε για να παρακολουθήσετε αργότερα, πατήστε και κρατήστε πατημένο για επιλογές ουράς</string>
   <string name="morphe_save_to_watch_later_success_toast">Το βίντεο αποθηκεύτηκε επιτυχώς στη λίστα παρακολούθησης αργότερα</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Αυτό το βίντεο είναι ήδη αποθηκευμένο στη λίστα παρακολούθησης αργότερα</string>
   <string name="morphe_save_to_watch_later_error_toast">Δεν είναι δυνατή η αποθήκευση αυτού του βίντεο στη λίστα παρακολούθησης αργότερα</string>
+  <string name="morphe_queue_restore_title">Διατήρηση ουράς μεταξύ των περιόδων σύνδεσης</string>
+  <string name="morphe_queue_restore_summary">Η ουρά διατηρείται μετά την επανεκκίνηση της εφαρμογής</string>
+  <string name="morphe_queue_manager_check_failed_auth">Δεν έχετε συνδεθεί</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Δεν υπάρχει ID λίστας αναπαραγωγής</string>
+  <string name="morphe_queue_manager_check_failed_queue">Η ουρά είναι άδεια</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Δεν υπάρχει ID βίντεο</string>
+  <string name="morphe_queue_manager_check_failed_generic">Αποτυχία: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Αποτυχία προσθήκης στην ουρά</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Αποτυχία δημιουργίας ουράς</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Αποτυχία αφαίρεσης από την ουρά</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Αποτυχία αποθήκευσης ουράς</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Προστέθηκε στην ουρά</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Δημιουργήθηκε η ουρά</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Αφαιρέθηκε από την ουρά</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Η ουρά αποθηκεύτηκε στο %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Προσθήκη στην ουρά</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Προσθήκη στην ουρά και άνοιγμα</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Προσθήκη στην ουρά και αναπαραγωγή</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Προσθήκη και επαναφόρτωση βίντεο</string>
+  <string name="morphe_queue_manager_remove_from_queue">Αφαίρεση από την ουρά</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Αφαίρεση και άνοιγμα ουράς</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Αφαίρεση και επαναφόρτωση βίντεο</string>
+  <string name="morphe_queue_manager_open_queue">Άνοιγμα ουράς</string>
+  <string name="morphe_queue_manager_save_queue">Αποθήκευση ουράς σε λίστα αναπαραγωγής</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Άνοιγμα καναλιού από ζωντανό avatar</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Αποτρέπει το άνοιγμα της ζωντανής ροής όταν πατάτε το avatar του καναλιού</string>

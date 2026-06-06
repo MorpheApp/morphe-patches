@@ -348,9 +348,34 @@ Napomena: Možda neće raditi na direktnim prenosima"</string>
   <string name="morphe_dismiss_player_not_available_toast">ID videa nije dostupan. Ručno ponovo učitajte video</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Prikaži dugme za čuvanje za gledanje kasnije</string>
+  <string name="morphe_save_to_watch_later_button_summary">Dodirnite da biste sačuvali za gledanje kasnije, dodirnite i zadržite za opcije reda čekanja</string>
   <string name="morphe_save_to_watch_later_success_toast">Video je uspešno sačuvan na listi za gledanje kasnije</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Ovaj video je već sačuvan na listi za gledanje kasnije</string>
   <string name="morphe_save_to_watch_later_error_toast">Nije moguće sačuvati ovaj video na listi za gledanje kasnije</string>
+  <string name="morphe_queue_restore_title">Zadrži red čekanja između sesija</string>
+  <string name="morphe_queue_restore_summary">Red čekanja je sačuvan nakon ponovnog pokretanja aplikacije</string>
+  <string name="morphe_queue_manager_check_failed_auth">Nije prijavljen</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">ID liste za reprodukciju nije naveden</string>
+  <string name="morphe_queue_manager_check_failed_queue">Red je prazan</string>
+  <string name="morphe_queue_manager_check_failed_video_id">ID videa nije naveden</string>
+  <string name="morphe_queue_manager_check_failed_generic">Greška: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Dodavanje u red nije uspelo</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Kreiranje reda nije uspelo</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Uklanjanje iz reda nije uspelo</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Čuvanje reda nije uspelo</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Dodato u red</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Red je kreiran</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Uklonjeno iz reda</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Red je sačuvan u %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Dodaj u red</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Dodaj u red i otvori</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Dodaj u red i reprodukuj</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Dodaj i ponovo učitaj video</string>
+  <string name="morphe_queue_manager_remove_from_queue">Ukloni iz reda</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Ukloni iz reda i otvori red</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Ukloni iz reda i ponovo učitaj video</string>
+  <string name="morphe_queue_manager_open_queue">Otvori red</string>
+  <string name="morphe_queue_manager_save_queue">Sačuvaj red u listu za reprodukciju</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Otvorite kanal iz uživo avatara</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Sprečava otvaranje direktnog prenosa kada dodirnete avatar kanala</string>

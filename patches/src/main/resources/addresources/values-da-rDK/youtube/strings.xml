@@ -348,9 +348,34 @@ Info: Virker muligvis ikke på live streams"</string>
   <string name="morphe_dismiss_player_not_available_toast">Video-ID er ikke tilgængeligt. Genindlæs venligst videoen manuelt</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Juster gennemsigtighedsniveauet (0 er gennemsigtigt, 100 er uigennemsigtigt)</string>
+  <string name="morphe_save_to_watch_later_button_summary">Tryk for at gemme til senere, tryk og hold for køindstillinger</string>
   <string name="morphe_save_to_watch_later_success_toast">Video gemt i afspilningsliste til senere</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Denne video er allerede gemt i afspilningslisten til senere</string>
   <string name="morphe_save_to_watch_later_error_toast">Kunne ikke gemme denne video i afspilningslisten til senere</string>
+  <string name="morphe_queue_restore_title">Behold køen mellem sessioner</string>
+  <string name="morphe_queue_restore_summary">Køen bevares efter genstart af appen</string>
+  <string name="morphe_queue_manager_check_failed_auth">Ikke logget ind</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Intet afspilningslist-id</string>
+  <string name="morphe_queue_manager_check_failed_queue">Køen er tom</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Intet video-id</string>
+  <string name="morphe_queue_manager_check_failed_generic">Fejlet: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Kunne ikke tilføje til køen</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Kunne ikke oprette køen</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Kunne ikke fjerne fra køen</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Kunne ikke gemme køen</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Tilføjet til køen</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Kø oprettet</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Fjernet fra køen</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Kø gemt til %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Tilføj til køen</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Tilføj til køen og åbn</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Tilføj til køen og afspil</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Tilføj og genindlæs video</string>
+  <string name="morphe_queue_manager_remove_from_queue">Fjern fra køen</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Fjern og åbn køen</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Fjern og genindlæs video</string>
+  <string name="morphe_queue_manager_open_queue">Åbn køen</string>
+  <string name="morphe_queue_manager_save_queue">Gem køen til afspilningsliste</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Åbn kanal fra live-avatar</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Forhindrer livestreamingen i at åbne, når du trykker på kanalens avatar</string>

@@ -348,9 +348,34 @@ Info : Peut ne pas fonctionner sur les diffusions en direct"</string>
   <string name="morphe_dismiss_player_not_available_toast">L\'identifiant de la vidéo est indisponible. Veuillez rouvrir la vidéo manuellement</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Afficher un bouton \'Enregistrer dans \"À regarder plus tard\"\'</string>
+  <string name="morphe_save_to_watch_later_button_summary">Appuyez pour enregistrer dans \"À regarder plus tard\", appuyez longuement pour afficher les options de file d\'attente</string>
   <string name="morphe_save_to_watch_later_success_toast">Vidéo enregistrée avec succès dans la playlist \'À regarder plus tard\'</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Cette vidéo est déjà enregistrée dans la playlist \'À regarder plus tard\'</string>
   <string name="morphe_save_to_watch_later_error_toast">Impossible d\'enregistrer cette vidéo dans la playlist \'À regarder plus tard\'</string>
+  <string name="morphe_queue_restore_title">Conserver la file d\'attente entre les sessions</string>
+  <string name="morphe_queue_restore_summary">La file d\'attente est conservée après le redémarrage de l\'application</string>
+  <string name="morphe_queue_manager_check_failed_auth">Non connecté</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Aucun ID de playlist</string>
+  <string name="morphe_queue_manager_check_failed_queue">La file d\'attente est vide</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Aucun ID vidéo</string>
+  <string name="morphe_queue_manager_check_failed_generic">Échec : %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Échec de l\'ajout à la file d\'attente</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Échec de la création de la file d\'attente</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Échec de la suppression de la file d\'attente</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Échec de l’enregistrement de la file d’attente</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Ajouté à la file d\'attente</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">File d\'attente créée</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Supprimé de la file d\'attente</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">File d’attente enregistrée dans %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Ajouter à la file d\'attente</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Ajouter à la file d\'attente et ouvrir</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Ajouter à la file d\'attente et lire</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Ajouter et recharger la vidéo</string>
+  <string name="morphe_queue_manager_remove_from_queue">Supprimer de la file d\'attente</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Supprimer et ouvrir la file d\'attente</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Supprimer et recharger la vidéo</string>
+  <string name="morphe_queue_manager_open_queue">Ouvrir la file d\'attente</string>
+  <string name="morphe_queue_manager_save_queue">Enregistrer la file d’attente dans une playlist</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Ouvrir la chaîne depuis l’avatar du direct</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Empêche l’ouverture du direct lorsqu’on appuie sur l’avatar de la chaîne</string>

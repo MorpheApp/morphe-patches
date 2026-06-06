@@ -127,9 +127,6 @@ public class MorpheAboutPreference extends Preference {
         // GitHub mark
         final String iconGitHub =
                 "<svg viewBox='0 0 16 16'><path d='M8 1a7 7 0 0 0-2.21 13.64c.35.06.48-.15.48-.34v-1.2C4.07 13.54 3.67 12 3.67 12c-.32-.81-.78-1.02-.78-1.02-.63-.43.05-.42.05-.42.7.05 1.07.72 1.07.72.62 1.06 1.63.75 2.03.58.06-.45.24-.75.44-.92C5 10.79 3.37 10.17 3.37 7.5c0-.75.27-1.36.71-1.84-.07-.18-.31-.87.07-1.82 0 0 .58-.18 1.9.71A6.6 6.6 0 0 1 8 4.18c.59 0 1.18.08 1.73.23 1.31-.89 1.9-.71 1.9-.71.38.95.14 1.64.07 1.82.44.48.71 1.09.71 1.84 0 2.68-1.63 3.28-3.19 3.45.25.22.47.65.47 1.31v1.95c0 .19.13.4.48.34A7 7 0 0 0 8 1z'/></svg>";
-        // X / Twitter
-        final String iconX =
-                "<svg viewBox='0 0 16 16'><path d='M2 2l5 5.5L2 13h2l3.5-4 3.5 4h2L8.5 7.5 13 2h-2L8 5.5 5 2z'/></svg>";
         // Reddit - alien head
         final String iconReddit =
                 "<svg viewBox='0 0 16 16'>" +
@@ -149,7 +146,6 @@ public class MorpheAboutPreference extends Preference {
         String u = url.toLowerCase(Locale.US);
         if (u.contains("github.com")) return iconGitHub;
         if (u.contains("reddit.com")) return iconReddit;
-        if (u.contains("twitter.com") || u.contains("x.com")) return iconX;
         if (u.contains("crowdin") || u.contains("translate")) return iconTranslate;
         if (u.contains("donate") || u.contains("donat")) return iconHeart;
         if (u.equals("https://credits/")) return iconPerson;

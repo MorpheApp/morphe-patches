@@ -348,9 +348,34 @@ Info: Werk moontlik nie op regstreekse uitsendings nie"</string>
   <string name="morphe_dismiss_player_not_available_toast">Video ID is nie beskikbaar nie. Laai asseblief die video handmatig herlaai</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Live avatar tik aksie</string>
+  <string name="morphe_save_to_watch_later_button_summary">Tik om later te wys, tik en hou in vir tou opsies</string>
   <string name="morphe_save_to_watch_later_success_toast">Video is suksesvol in spaar om later te kyk snitlys gestoor</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Hierdie video is reeds in spaar om later te kyk snitlys gestoor</string>
   <string name="morphe_save_to_watch_later_error_toast">Kan hierdie video nie in spaar om later te kyk snitlys stoor nie</string>
+  <string name="morphe_queue_restore_title">Behou tou tussen sessies</string>
+  <string name="morphe_queue_restore_summary">Tou word behou na die herbegin van die app</string>
+  <string name="morphe_queue_manager_check_failed_auth">Nie aangemeld</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Geen spyskaart-ID</string>
+  <string name="morphe_queue_manager_check_failed_queue">Waglys is leeg</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Geen video-ID</string>
+  <string name="morphe_queue_manager_check_failed_generic">Het gefaal: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Kon nie by waglys voeg nie</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Kon nie waglys skep nie</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Kon nie van waglys verwyder nie</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Kon nie waglys stoor nie</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">By waglys gevoeg</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Waglys geskep</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Van waglys verwyder</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Waglys gestoor na %s</string>
+  <string name="morphe_queue_manager_add_to_queue">By waglys voeg</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">By waglys voeg en oopmaak</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">By waglys voeg en video speel</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Voeg by en herlaai video</string>
+  <string name="morphe_queue_manager_remove_from_queue">Van waglys verwyder</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Verwyder en oop waglys</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Verwyder en herlaai video</string>
+  <string name="morphe_queue_manager_open_queue">Maak waglys oop</string>
+  <string name="morphe_queue_manager_save_queue">Stoor waglys na spyskaart</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Open kanaal van regstreekse avatar</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Voorkom dat die regstreekse uitsending oopmaak wanneer jy op die kanaal se avatar tik</string>

@@ -348,9 +348,34 @@ Promene uključuju:
   <string name="morphe_dismiss_player_not_available_toast">ИД видеа није доступан. Молимо ручно поново учитајте видео</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">Прикажи дугме „Сачувај за касније гледање”</string>
+  <string name="morphe_save_to_watch_later_button_summary">Додирните да сачувате за гледање касније, додирните и задржите за опције реда чекања</string>
   <string name="morphe_save_to_watch_later_success_toast">Видео успешно сачуван у листу за гледање касније</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">Овај видео је већ сачуван у листу за гледање касније</string>
   <string name="morphe_save_to_watch_later_error_toast">Не може да сачува овај видео у листу за гледање касније</string>
+  <string name="morphe_queue_restore_title">Задржите ред чекања између сесија</string>
+  <string name="morphe_queue_restore_summary">Ред чекања се чува након поновног покретања апликације</string>
+  <string name="morphe_queue_manager_check_failed_auth">Нисте пријављени</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">Немам идентификатор листе за репродукцију</string>
+  <string name="morphe_queue_manager_check_failed_queue">Ред чекања је празан</string>
+  <string name="morphe_queue_manager_check_failed_video_id">Немам идентификатор видеа</string>
+  <string name="morphe_queue_manager_check_failed_generic">Грешка: %s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">Грешка приликом додавања у ред чекања</string>
+  <string name="morphe_queue_manager_fetch_failed_create">Грешка приликом креирања реда чекања</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">Грешка приликом уклањања из реда чекања</string>
+  <string name="morphe_queue_manager_fetch_failed_save">Грешка приликом чувања реда чекања</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">Додато у ред чекања</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">Ред чекања креиран</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">Уклоњено из реда чекања</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">Ред чекања је сачуван на %s</string>
+  <string name="morphe_queue_manager_add_to_queue">Додај у ред чекања</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">Додај у ред чекања и отвори</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">Додај у ред чекања и пусти</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">Додај и преучитај видео</string>
+  <string name="morphe_queue_manager_remove_from_queue">Уклони из реда чекања</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">Уклони из реда чекања и отвори ред чекања</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">Уклони и преучитај видео</string>
+  <string name="morphe_queue_manager_open_queue">Отвори ред чекања</string>
+  <string name="morphe_queue_manager_save_queue">Сачувај ред чекања у листу за репродукцију</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">Отвори канал из аватара уживо</string>
   <string name="morphe_open_channel_of_live_avatar_summary">Спречава отварање ливог стрима приликом додира аватара канала</string>

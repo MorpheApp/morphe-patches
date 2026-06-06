@@ -348,9 +348,34 @@ Second \"item\" text"</string>
   <string name="morphe_dismiss_player_not_available_toast">影片 ID 無法使用。請手動重新載入影片</string>
   <!-- interaction.savetowatchlater.saveToWatchLaterPatch -->
   <string name="morphe_save_to_watch_later_button_title">顯示稍後觀看按鈕</string>
+  <string name="morphe_save_to_watch_later_button_summary">輕點即可儲存稍後觀看，長按以查看佇列選項</string>
   <string name="morphe_save_to_watch_later_success_toast">影片已成功儲存至稍後觀看播放清單</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">此影片已儲存至稍後觀看播放清單</string>
   <string name="morphe_save_to_watch_later_error_toast">無法將此影片儲存至稍後觀看播放清單</string>
+  <string name="morphe_queue_restore_title">在不同工作階段中保留佇列</string>
+  <string name="morphe_queue_restore_summary">重新啟動應用程式後，佇列會保留</string>
+  <string name="morphe_queue_manager_check_failed_auth">未登入</string>
+  <string name="morphe_queue_manager_check_failed_playlist_id">沒有播放列表 ID</string>
+  <string name="morphe_queue_manager_check_failed_queue">佇列是空的</string>
+  <string name="morphe_queue_manager_check_failed_video_id">沒有影片 ID</string>
+  <string name="morphe_queue_manager_check_failed_generic">失敗：%s</string>
+  <string name="morphe_queue_manager_fetch_failed_add">加入佇列失敗</string>
+  <string name="morphe_queue_manager_fetch_failed_create">建立佇列失敗</string>
+  <string name="morphe_queue_manager_fetch_failed_remove">從佇列移除失敗</string>
+  <string name="morphe_queue_manager_fetch_failed_save">儲存佇列失敗</string>
+  <string name="morphe_queue_manager_fetch_succeeded_add">已加入佇列</string>
+  <string name="morphe_queue_manager_fetch_succeeded_create">已建立佇列</string>
+  <string name="morphe_queue_manager_fetch_succeeded_remove">已從佇列移除</string>
+  <string name="morphe_queue_manager_fetch_succeeded_save">佇列已儲存至 %s</string>
+  <string name="morphe_queue_manager_add_to_queue">加入佇列</string>
+  <string name="morphe_queue_manager_add_to_queue_and_open_queue">加入佇列並開啟</string>
+  <string name="morphe_queue_manager_add_to_queue_and_play_video">加入佇列並播放</string>
+  <string name="morphe_queue_manager_add_to_queue_and_reload_video">加入並重新載入影片</string>
+  <string name="morphe_queue_manager_remove_from_queue">從佇列移除</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_open_queue">移除並開啟佇列</string>
+  <string name="morphe_queue_manager_remove_from_queue_and_reload_video">移除並重新載入影片</string>
+  <string name="morphe_queue_manager_open_queue">開啟佇列</string>
+  <string name="morphe_queue_manager_save_queue">將佇列儲存至播放列表</string>
   <!-- interaction.livering.openChannelOfLiveAvatarPatch -->
   <string name="morphe_open_channel_of_live_avatar_title">從直播形象開啟頻道</string>
   <string name="morphe_open_channel_of_live_avatar_summary">防止點擊頻道形象時開啟直播</string>
