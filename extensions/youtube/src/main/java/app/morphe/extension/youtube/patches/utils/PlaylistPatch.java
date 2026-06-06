@@ -32,6 +32,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
@@ -50,7 +51,6 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.settings.YouTubeActivityHook;
 import app.morphe.extension.youtube.shared.PlayerType;
 import kotlin.Pair;
-import kotlin.jvm.functions.Function1;
 
 @SuppressWarnings({"unused", "StaticFieldLeak"})
 public class PlaylistPatch {
@@ -167,7 +167,7 @@ public class PlaylistPatch {
         SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
                 .createMainLayout(context, null);
 
-        Map<View, Function1<Context, Void>> actionsMap = new LinkedHashMap<>(2 * queueManagerEntries.length);
+        Map<View, Function<Context, Void>> actionsMap = new LinkedHashMap<>(2 * queueManagerEntries.length);
         for (QueueManager queueManager : queueManagerEntries) {
             View itemLayout = createItemLayout(context, queueManager.label, queueManager.drawableId);
             actionsMap.put(itemLayout, queueManager.onClickAction);
@@ -177,11 +177,11 @@ public class PlaylistPatch {
         SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
                 .createSlideDialog(context, mainLayout, 300);
 
-        for (Map.Entry<View, Function1<Context, Void>> entry : actionsMap.entrySet()) {
-            Function1<Context, Void> action = entry.getValue();
+        for (Map.Entry<View, Function<Context, Void>> entry : actionsMap.entrySet()) {
+            Function<Context, Void> action = entry.getValue();
             entry.getKey().setOnClickListener(v -> {
                 dialog.dismiss();
-                action.invoke(context);
+                action.apply(context);
             });
         }
 
@@ -504,9 +504,9 @@ public class PlaylistPatch {
         public final int drawableId;
         public final String label;
 
-        public final Function1<Context, Void> onClickAction;
+        public final Function<Context, Void> onClickAction;
 
-        QueueManager(String label, String icon, String boldIcon, Function1<Context, Void> onClickAction) {
+        QueueManager(String label, String icon, String boldIcon, Function<Context, Void> onClickAction) {
             this.drawableId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
                     YouTubeActivityHook.USE_BOLD_ICONS ? boldIcon : icon);
             this.label = str(label);
