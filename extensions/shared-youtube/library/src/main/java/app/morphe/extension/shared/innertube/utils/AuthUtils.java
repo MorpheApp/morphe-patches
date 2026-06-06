@@ -5,13 +5,12 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
-package app.morphe.extension.youtube.innertube.utils;
+package app.morphe.extension.shared.innertube.utils;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import org.apache.commons.collections4.MapUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
@@ -21,6 +20,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public class AuthUtils {
@@ -30,7 +30,7 @@ public class AuthUtils {
     @NonNull
     private static String authorization = "";
     @NonNull
-    private static String pageId = "";
+    public static String pageId = "";
     @NonNull
     private static String visitorId = "";
     private static boolean incognitoStatus = false;
@@ -43,8 +43,8 @@ public class AuthUtils {
             String newlyLoadedAuthorization = requestHeaders.get(AUTHORIZATION_HEADER);
             String newlyLoadedVisitorId = requestHeaders.get(VISITOR_ID_HEADER);
 
-            if (StringUtils.isNotEmpty(newlyLoadedAuthorization) &&
-                    StringUtils.isNotEmpty(newlyLoadedVisitorId)) {
+            if (Utils.isNotEmpty(newlyLoadedAuthorization) &&
+                    Utils.isNotEmpty(newlyLoadedVisitorId)) {
                 authorization = newlyLoadedAuthorization;
                 visitorId = newlyLoadedVisitorId;
             }
@@ -54,13 +54,11 @@ public class AuthUtils {
     /**
      * Injection point.
      */
-    public static void setAccountIdentity(@Nullable String newlyLoadedPageId,
-                                          boolean newlyLoadedIncognitoStatus) {
-        if (StringUtils.isEmpty(newlyLoadedPageId)) {
-            pageId = "";
-        } else if (!pageId.equals(newlyLoadedPageId)) {
-            pageId = newlyLoadedPageId;
-            Logger.printDebug(() -> "new PageId loaded: " + newlyLoadedPageId);
+    public static void setAccountIdentity(@Nullable String newlyPageIDHeaderValue, boolean newlyLoadedIncognitoStatus) {
+        if (newlyPageIDHeaderValue != null) {
+            pageId = newlyPageIDHeaderValue;
+
+            Logger.printDebug(() -> "new PageID Header value loaded: " + newlyPageIDHeaderValue);
         }
         incognitoStatus = newlyLoadedIncognitoStatus;
     }

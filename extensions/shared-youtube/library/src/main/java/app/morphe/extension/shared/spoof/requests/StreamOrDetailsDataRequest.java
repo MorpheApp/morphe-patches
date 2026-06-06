@@ -13,7 +13,7 @@ package app.morphe.extension.shared.spoof.requests;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.Utils.isNotEmpty;
 import static app.morphe.extension.shared.Utils.submitOnBackgroundThread;
-import static app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch.pageIDHeaderValue;
+import static app.morphe.extension.shared.innertube.utils.AuthUtils.pageId;
 import static app.morphe.extension.shared.spoof.js.JavaScriptEngineSupport.supportsJavaScriptEngine;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getDeobfuscatedStreamingData;
 import static app.morphe.extension.shared.spoof.js.JavaScriptManager.getJavaScriptHash;
@@ -256,9 +256,9 @@ public class StreamOrDetailsDataRequest {
             }
 
             if (authHeadersIncludes) {
-                if (!pageIDHeaderValue.isEmpty()) {
-                    Logger.printDebug(() -> "Including PAGE_ID_HEADER header: " + pageIDHeaderValue);
-                    connection.setRequestProperty(PAGE_ID_HEADER, pageIDHeaderValue);
+                if (!pageId.isEmpty()) {
+                    Logger.printDebug(() -> "Including PAGE_ID_HEADER header: " + pageId);
+                    connection.setRequestProperty(PAGE_ID_HEADER, pageId);
                 }
             } else {
                 if (clientType.requireLogin) {

@@ -14,7 +14,7 @@ import app.morphe.patches.youtube.misc.request.buildRequestPatch
 import app.morphe.patches.youtube.misc.request.hookBuildRequest
 
 private const val EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/innertube/utils/AuthUtils;"
+    "Lapp/morphe/extension/shared/innertube/utils/AuthUtils;"
 
 internal val authHookPatch = bytecodePatch(
     description = "authHookPatch"
@@ -25,7 +25,7 @@ internal val authHookPatch = bytecodePatch(
     )
 
     execute {
-        AccountIdentityFingerprint.methodOrNull?.addInstruction(
+        accountIdentityFingerprint.methodOrNull?.addInstruction(
             1,
             "invoke-static { p3, p4 }, $EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR->setAccountIdentity(Ljava/lang/String;Z)V"
         )
