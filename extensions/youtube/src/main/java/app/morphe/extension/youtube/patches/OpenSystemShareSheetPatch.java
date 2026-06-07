@@ -39,9 +39,6 @@ public final class OpenSystemShareSheetPatch {
         flyoutMenuRecyclerView = new WeakReference<>(recyclerView);
     }
 
-    /**
-     * Injection point.
-     */
     public static boolean openSystemShareSheet(String asciiBuffer) {
         if (asciiBuffer.startsWith("Eshare_sheet_share_targets_third_party_segment.e")) {
             Matcher matcher = rawVideoURLRegex.matcher(asciiBuffer);
