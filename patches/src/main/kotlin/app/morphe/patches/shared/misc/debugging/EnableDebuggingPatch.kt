@@ -13,7 +13,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.ResourceGroup
 import app.morphe.util.cloneMutable
-import app.morphe.util.cloneMutableAndPreserveParameters
+import app.morphe.util.cloneParameters
 import app.morphe.util.copyResources
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/patches/EnableDebuggingPatch;"
@@ -123,7 +123,7 @@ internal fun enableDebuggingPatch(
 
         if (hookDoubleFeatureFlag()) ExperimentalDoubleFeatureFlagFingerprint.let {
             // 21.06+ doesn't have enough registers and needs to also clone.
-            it.method.cloneMutableAndPreserveParameters().apply {
+            it.method.cloneParameters().apply {
                 val helperMethod = cloneMutable(name = "patch_getDoubleFeatureFlag")
 
                 it.classDef.methods.add(helperMethod)
@@ -150,7 +150,7 @@ internal fun enableDebuggingPatch(
         }
 
         if (hookLongFeatureFlag()) ExperimentalLongFeatureFlagFingerprint.let {
-            it.method.cloneMutableAndPreserveParameters().apply {
+            it.method.cloneParameters().apply {
                 // Copy the method.
                 val helperMethod = cloneMutable(name = "patch_getLongFeatureFlag")
 

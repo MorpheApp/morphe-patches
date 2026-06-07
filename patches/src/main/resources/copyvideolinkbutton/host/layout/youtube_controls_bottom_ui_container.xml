@@ -7,7 +7,7 @@
     android:layoutDirection="ltr">
 
     <com.google.android.libraries.youtube.common.ui.TouchImageView
-        android:id="@+id/morphe_copy_video_url_button"
+        android:id="@+id/morphe_copy_video_link_button"
         style="@style/YouTubePlayerButton"
         android:layout_width="48.0dip"
         android:layout_height="60.0dip"

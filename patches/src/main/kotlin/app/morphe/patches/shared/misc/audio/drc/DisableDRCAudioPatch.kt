@@ -8,7 +8,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.cloneMutableAndPreserveParameters
+import app.morphe.util.cloneParameters
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.insertLiteralOverride
@@ -47,7 +47,7 @@ internal fun disableDRCAudioPatch(
             compressionRatioInstructionMatches[2].instruction.getReference<FieldReference>()!!
 
         FormatStreamModelConstructorFingerprint.let {
-            it.method.cloneMutableAndPreserveParameters().apply {
+            it.method.cloneParameters().apply {
                 val helperMethod = ImmutableMethod(
                     definingClass,
                     "patch_setLoudnessDb",

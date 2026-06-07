@@ -15,7 +15,7 @@ import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.cloneMutableAndPreserveParameters
+import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -53,7 +53,7 @@ internal fun hideFullscreenAdsPatch(
         }
 
         LithoDialogBuilderFingerprint.let {
-            it.method.cloneMutableAndPreserveParameters().apply {
+            it.method.cloneParameters().apply {
                 val dialogClass = it.instructionMatches.first().instruction
                     .getReference<MethodReference>()!!.definingClass
 

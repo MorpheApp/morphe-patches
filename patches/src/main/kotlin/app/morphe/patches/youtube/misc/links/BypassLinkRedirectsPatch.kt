@@ -12,11 +12,12 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/BypassURLRedirectsPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/BypassLinkRedirectsPatch;"
 
-val bypassURLRedirectsPatch = bytecodePatch(
-    name = "Bypass URL redirects",
-    description = "Adds an option to bypass URL redirects and open the original URL directly.",
+@Suppress("unused")
+val bypassLinkRedirectsPatch = bytecodePatch(
+    name = "Bypass link redirects",
+    description = "Adds an option to bypass redirects and open the original link directly.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -27,14 +28,14 @@ val bypassURLRedirectsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.MISC.addPreferences(
-            SwitchPreference("morphe_bypass_url_redirects", summary = true),
+            SwitchPreference("morphe_bypass_link_redirects", summary = true),
         )
 
         arrayOf(
             HttpUriParserFingerprint to 0,
 
             if (is_20_49_or_greater) {
-                // Code has moved, and now seems to be an account URL
+                // Code has moved, and now seems to be an account link
                 // and may not be anything to do with sharing links.
                 null to -1
             } else if (is_20_37_or_greater) {

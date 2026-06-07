@@ -17,7 +17,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.cloneMutableAndPreserveParameters
+import app.morphe.util.cloneParameters
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -165,7 +165,7 @@ val clientContextHookPatch = bytecodePatch(
 
                 endpointRequestBodyFingerprint.let {
                     // 21.05+ clobbers p0 register.
-                    it.method.cloneMutableAndPreserveParameters().apply {
+                    it.method.cloneParameters().apply {
                         it.classDef.methods.add(
                             ImmutableMethod(
                                 definingClass,
@@ -187,10 +187,10 @@ val clientContextHookPatch = bytecodePatch(
                                         iget-object v1, v0, $clientInfoField
                                         if-eqz v1, :ignore
                                     """ + endpoint.smaliInstructions +
-                                    """
-                                        :ignore
-                                        return-void
-                                    """
+                                            """
+                                                :ignore
+                                                return-void
+                                            """
                                 )
                             }
                         )

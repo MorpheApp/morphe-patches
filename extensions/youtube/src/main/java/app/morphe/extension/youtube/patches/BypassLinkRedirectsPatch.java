@@ -2,11 +2,13 @@ package app.morphe.extension.youtube.patches;
 
 import android.net.Uri;
 
+import java.util.Objects;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class BypassURLRedirectsPatch {
+public class BypassLinkRedirectsPatch {
     private static final String YOUTUBE_REDIRECT_PATH = "/redirect";
 
     /**
@@ -18,7 +20,7 @@ public class BypassURLRedirectsPatch {
     public static Uri parseRedirectUri(String uri) {
         final var parsed = Uri.parse(uri);
 
-        if (Settings.BYPASS_URL_REDIRECTS.get() && parsed.getPath().equals(YOUTUBE_REDIRECT_PATH)) {
+        if (Settings.BYPASS_LINK_REDIRECTS.get() && Objects.equals(parsed.getPath(), YOUTUBE_REDIRECT_PATH)) {
             var query = Uri.parse(Uri.decode(parsed.getQueryParameter("q")));
 
             Logger.printDebug(() -> "Bypassing YouTube redirect URI: " + query);

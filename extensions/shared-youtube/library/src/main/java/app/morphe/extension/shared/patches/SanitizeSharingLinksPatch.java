@@ -1,6 +1,6 @@
 package app.morphe.extension.shared.patches;
 
-import static app.morphe.extension.shared.privacy.LinkSanitizer.replaceWithShortenedUrl;
+import static app.morphe.extension.shared.privacy.LinkSanitizer.replaceWithShortenedURL;
 import static app.morphe.extension.shared.privacy.LinkSanitizer.returnSanitizedURLFromURI;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.REPLACE_LINKS_WITH_SHORTENER;
 import static app.morphe.extension.shared.settings.SharedYouTubeSettings.REPLACE_MUSIC_LINKS_WITH_YOUTUBE;
@@ -51,7 +51,7 @@ public final class SanitizeSharingLinksPatch {
         }
 
         if (REPLACE_LINKS_WITH_SHORTENER.get()) {
-            url = replaceWithShortenedUrl(url);
+            url = replaceWithShortenedURL(url);
             urlChangesApplied = true;
         }
 

@@ -296,13 +296,13 @@ Limitations:
     <string name="morphe_double_tap_length_180s" translatable="false">180</string>
     <string name="morphe_double_tap_length_240s" translatable="false">240</string>
 
-    <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-    <string name="morphe_share_copy_url_button_success">URL copied to clipboard</string>
-    <string name="morphe_share_copy_url_button_timestamp_success">URL with timestamp copied to clipboard</string>
-    <string name="morphe_copy_video_url_button_title">Show Copy video URL button</string>
-    <string name="morphe_copy_video_url_button_summary">Tap to copy the video URL, tap and hold to copy with timestamp</string>
-    <string name="morphe_copy_video_url_button_timestamp_title">Copy timestamp by default</string>
-    <string name="morphe_copy_video_url_button_timestamp_summary">Reverses the tap and tap-and-hold actions of \'Copy video URL\' button</string>
+    <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+    <string name="morphe_share_copy_link_button_success">Link copied to clipboard</string>
+    <string name="morphe_share_copy_link_with_timestamp_button_success">Link with timestamp copied to clipboard</string>
+    <string name="morphe_copy_video_link_button_title">Show Copy video link button</string>
+    <string name="morphe_copy_video_link_button_summary">Tap to copy the video link, tap and hold to copy with timestamp</string>
+    <string name="morphe_copy_video_link_with_timestamp_button_title">Copy timestamp by default</string>
+    <string name="morphe_copy_video_link_with_timestamp_button_summary">Reverses the tap and tap-and-hold actions of \'Copy video link\' button</string>
 
     <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
     <string name="morphe_remove_viewer_discretion_dialog_title">Remove viewer discretion dialog</string>
@@ -1296,9 +1296,9 @@ Tap here to learn more about DeArrow"</string>
     <!-- misc.gms.accountCredentialsInvalidTextPatch -->
     <string name="microg_offline_account_login_error">If you recently changed your account login details, then uninstall and reinstall MicroG.</string>
 
-    <!-- misc.links.bypassURLRedirectsPatch -->
-    <string name="morphe_bypass_url_redirects_title">Bypass URL redirects</string>
-    <string name="morphe_bypass_url_redirects_summary">Opens the original URL directly, bypassing the tracking link (youtube.com/redirect)</string>
+    <!-- misc.links.bypassLinkRedirectsPatch -->
+    <string name="morphe_bypass_link_redirects_title">Bypass link redirects</string>
+    <string name="morphe_bypass_link_redirects_summary">Opens the original link directly, bypassing the tracking link (youtube.com/redirect)</string>
 
     <!-- misc.links.openLinksExternallyPatch -->
     <string name="morphe_external_browser_title">Open links in browser</string>

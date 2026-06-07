@@ -6,12 +6,11 @@ import android.text.TextUtils;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 import app.morphe.extension.shared.Logger;
 
 /**
- * Strips away specific parameters from URLs.
+ * Strips away specific parameters from links.
  */
 public class LinkSanitizer {
 
@@ -39,7 +38,7 @@ public class LinkSanitizer {
                 }
             }
 
-            // Convert an invite to a common video URL
+            // Convert invite link to a common video link
             String sanitizedURL =
                     builder.build().toString().replaceAll(
                             "sharing/invite/.+?\\?[a-zA-Z]=",
@@ -56,7 +55,7 @@ public class LinkSanitizer {
         }
     }
 
-    public static String replaceWithShortenedUrl(String url) {
+    public static String replaceWithShortenedURL(String url) {
         try {
             if (url.contains("sharing/invite/")) {
                 return url;
@@ -100,7 +99,7 @@ public class LinkSanitizer {
 
             return url;
         } catch (Exception ex) {
-            Logger.printException(() -> "replaceWithShortenedUrl failure: " + url, ex);
+            Logger.printException(() -> "replaceWithShortenedURL failure: " + url, ex);
             return url;
         }
     }

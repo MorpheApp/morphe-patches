@@ -1,4 +1,4 @@
-package app.morphe.patches.youtube.interaction.copyvideourl
+package app.morphe.patches.youtube.interaction.copyvideolink
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
@@ -19,9 +19,9 @@ import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
-private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/CopyVideoURLButton;"
+private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/CopyVideoLinkButton;"
 
-private val copyVideoURLButtonResourcePatch = resourcePatch {
+private val copyVideoLinkButtonResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         legacyPlayerControlsPatch
@@ -29,7 +29,7 @@ private val copyVideoURLButtonResourcePatch = resourcePatch {
 
     execute {
         copyResources(
-            "copyvideourlbutton",
+            "copyvideolinkbutton",
             ResourceGroup(
                 resourceDirectoryName = "drawable",
                 "morphe_yt_copy.xml",
@@ -39,17 +39,17 @@ private val copyVideoURLButtonResourcePatch = resourcePatch {
             )
         )
 
-        addLegacyBottomControl("copyvideourlbutton")
+        addLegacyBottomControl("copyvideolinkbutton")
     }
 }
 
 @Suppress("unused")
-val copyVideoURLButtonPatch = bytecodePatch(
-    name = "Copy video URL",
-    description = "Adds options to display buttons in the video player to copy video URLs.",
+val copyVideoLinkButtonPatch = bytecodePatch(
+    name = "Copy video link",
+    description = "Adds options to display buttons in the video player to copy video links.",
 ) {
     dependsOn(
-        copyVideoURLButtonResourcePatch,
+        copyVideoLinkButtonResourcePatch,
         playerOverlayButtonsSettingsPatch,
         playerOverlayButtonsHookPatch,
         legacyPlayerControlsPatch,
@@ -65,8 +65,8 @@ val copyVideoURLButtonPatch = bytecodePatch(
                 sorting = Sorting.UNSORTED,
                 tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
                 preferences = setOf(
-                    SwitchPreference("morphe_copy_video_url_button", summary = true),
-                    SwitchPreference("morphe_copy_video_url_button_timestamp", summary = true)
+                    SwitchPreference("morphe_copy_video_link_button", summary = true),
+                    SwitchPreference("morphe_copy_video_link_with_timestamp_button", summary = true)
                 )
             )
         )
