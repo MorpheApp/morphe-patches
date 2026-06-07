@@ -307,10 +307,6 @@ val crossfadePatch = bytecodePatch(
                 """,
             )
 
-        // -------------------------------------------------------------- //
-        //  Discover obfuscated classes and fields                         //
-        // -------------------------------------------------------------- //
-
         val coordinatorClass = PlayNextInQueueFingerprint.classDef
         val coordinatorType = coordinatorClass.type
         val medialibPlayerClass = StopVideoFingerprint.classDef
@@ -866,10 +862,6 @@ val crossfadePatch = bytecodePatch(
             it.type == "Ljava/lang/Object;"
         }
 
-        // -------------------------------------------------------------- //
-        //  Patch-time discovery summary                                   //
-        // -------------------------------------------------------------- //
-
         log.fine {
             """
                 CrossfadePatch discovery:
@@ -894,10 +886,6 @@ val crossfadePatch = bytecodePatch(
                 guardField     = ${guardField?.let { "$guardAbstractType->${it.name}:${it.type}" } ?: "n/a (8.x)"}
             """.trimIndent()
         }
-
-        // -------------------------------------------------------------- //
-        //  Add interfaces and bridge methods                              //
-        // -------------------------------------------------------------- //
 
         // --- PlayerCoordinatorAccess on athu ---
         coordinatorClass.interfaces.add(COORDINATOR_INTERFACE)

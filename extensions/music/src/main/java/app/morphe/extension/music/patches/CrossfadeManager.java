@@ -576,10 +576,6 @@ public class CrossfadeManager {
         }
     }
 
-    // ------------------------------------------------------------------ //
-    //  Public hook: stopVideo (manual skip-next)                          //
-    // ------------------------------------------------------------------ //
-
     private static int lastLoggedReason = -1;
     private static int suppressedReasonCount = 0;
     private static int lastAtadIdentity = 0;
@@ -1107,10 +1103,6 @@ public class CrossfadeManager {
         }
     }
 
-    // ------------------------------------------------------------------ //
-    //  Public hook: playNextInQueue (gapless auto-advance)                //
-    // ------------------------------------------------------------------ //
-
     /**
      * Returns true to block the native playNextInQueue.  Sets up crossfade state and
      * re-invokes via internalPlayNext=true so native loads the next track on our new
@@ -1271,10 +1263,6 @@ public class CrossfadeManager {
                 + " autoAdvActive=" + autoAdvanceCrossfadeActive);
     }
 
-    // ------------------------------------------------------------------ //
-    //  Public hooks: pauseVideo / playVideo (MedialibPlayer layer)        //
-    // ------------------------------------------------------------------ //
-
     private static long lastPauseEventMs = 0;
     private static long lastPlayEventMs = 0;
     private static final long EVENT_DEDUP_WINDOW_MS = 100;
@@ -1351,10 +1339,6 @@ public class CrossfadeManager {
             logDebug(() -> "onPlayVideo: crossfade in progress — skipping auto-advance monitor start");
         }
     }
-
-    // ------------------------------------------------------------------ //
-    //  Poller: waits for new track to reach STATE_READY                   //
-    // ------------------------------------------------------------------ //
 
     private static int lastPollState = -1;
 
@@ -1520,10 +1504,6 @@ public class CrossfadeManager {
         animateCrossfade(newPlayer, trackAlreadyEnded ? QUICK_FADE_MS : 0);
     }
 
-    // ------------------------------------------------------------------ //
-    //  Auto-advance: position monitor & timed crossfade                   //
-    // ------------------------------------------------------------------ //
-
     private static void startAutoAdvanceMonitor() {
         stopAutoAdvanceMonitor();
         if (!isEnabled() || !Settings.CROSSFADE_ON_AUTO_ADVANCE.get()) {
@@ -1667,10 +1647,6 @@ public class CrossfadeManager {
             autoAdvanceMonitorRunnable = null;
         }
     }
-
-    // ------------------------------------------------------------------ //
-    //  Volume animation (configurable curve)                              //
-    // ------------------------------------------------------------------ //
 
     private static void abortCrossfadeNow() {
         if (!crossfadeInProgress) return;
@@ -1824,10 +1800,6 @@ public class CrossfadeManager {
         });
     }
 
-    // ------------------------------------------------------------------ //
-    //  Player creation via YTM factory                                    //
-    // ------------------------------------------------------------------ //
-
     private static ExoPlayerAccess createPlayerViaFactory(
             PlayerFactoryAccess factory,
             PlayerCoordinatorAccess coordinator,
@@ -1850,20 +1822,12 @@ public class CrossfadeManager {
         }
     }
 
-    // ------------------------------------------------------------------ //
-    //  Stack trace utilities                                               //
-    // ------------------------------------------------------------------ //
-
     private static boolean isFromTaskRemoval() {
         for (StackTraceElement frame : Thread.currentThread().getStackTrace()) {
             if ("onTaskRemoved".equals(frame.getMethodName())) return true;
         }
         return false;
     }
-
-    // ------------------------------------------------------------------ //
-    //  Coordinator traversal from atad                                    //
-    // ------------------------------------------------------------------ //
 
     /**
      * Quiet variant — no traversal logging.
@@ -1928,10 +1892,6 @@ public class CrossfadeManager {
             return null;
         }
     }
-
-    // ------------------------------------------------------------------ //
-    //  Player lifecycle — release and fading loop                         //
-    // ------------------------------------------------------------------ //
 
     /**
          * InvocationHandler that forwards every method call to a captured real listener.
@@ -2325,10 +2285,6 @@ public class CrossfadeManager {
             logDebug(() -> "Fading loop stopped — all fade-outs complete");
         }
     }
-
-    // ------------------------------------------------------------------ //
-    //  Activity lifecycle                                                 //
-    // ------------------------------------------------------------------ //
 
     public static void onActivityStop() {
         activityRunning = false;
@@ -2793,10 +2749,6 @@ public class CrossfadeManager {
     private static long getLongPressThresholdMs() {
         return 800;
     }
-
-    // ------------------------------------------------------------------ //
-    //  Long-press shuffle button to toggle crossfade session               //
-    // ------------------------------------------------------------------ //
 
     private static final String[] SHUFFLE_IDS = {
             "queue_shuffle_button",
