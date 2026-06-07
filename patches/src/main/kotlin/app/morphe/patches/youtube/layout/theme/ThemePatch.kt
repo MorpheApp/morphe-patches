@@ -173,7 +173,7 @@ val themePatch = baseThemePatch(
                     }
                 }
 
-                val isMaterialYouLight = lightThemeBackgroundColorOption.value!!.startsWith("@android:color/system_")
+                val isMaterialYouLight = lightThemeBackgroundColor.startsWith("@android:color/system_")
 
                 if (isMaterialYouLight) {
                     val resDir = get("res")
