@@ -53,11 +53,11 @@ val themePatch = baseThemePatch(
                     colorName: String,
                     colorValue: String,
                 ) {
-                    document(resourceFile).use { doc ->
-                        val resourcesNode = doc.getElementsByTagName("resources").item(0) as Element
+                    document(resourceFile).use { document ->
+                        val resourcesNode = document.getElementsByTagName("resources").item(0) as Element
 
                         resourcesNode.appendChild(
-                            doc.createElement("color").apply {
+                            document.createElement("color").apply {
                                 setAttribute("name", colorName)
                                 setAttribute("category", "color")
                                 textContent = colorValue
@@ -184,8 +184,8 @@ val themePatch = baseThemePatch(
 
                     val stylesFile = "res/values/styles.xml"
                     if (get(stylesFile).exists()) {
-                        document(stylesFile).use { doc ->
-                            val resources = doc.getElementsByTagName("resources").item(0) as? Element ?: return@use
+                        document(stylesFile).use { document ->
+                            val resources = document.getElementsByTagName("resources").item(0) as? Element ?: return@use
 
                             resources.forEachChildElement { style ->
                                 if (style.nodeName != "style") return@forEachChildElement
@@ -210,7 +210,7 @@ val themePatch = baseThemePatch(
                                         }
                                     }
                                     if (!found) {
-                                        style.appendChild(doc.createElement("item").apply {
+                                        style.appendChild(document.createElement("item").apply {
                                             setAttribute("name", attrName)
                                             textContent = attrValue
                                         })

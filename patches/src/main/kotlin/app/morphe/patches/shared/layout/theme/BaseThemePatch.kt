@@ -268,8 +268,8 @@ internal fun baseThemeResourcePatch(
 
             val stylesFile = "res/values/styles.xml"
             if (get(stylesFile).exists()) {
-                document(stylesFile).use { doc ->
-                    val resources = doc.getElementsByTagName("resources").item(0) as? Element ?: return@use
+                document(stylesFile).use { document ->
+                    val resources = document.getElementsByTagName("resources").item(0) as? Element ?: return@use
 
                     resources.forEachChildElement { style ->
                         if (style.nodeName != "style") return@forEachChildElement
@@ -294,7 +294,7 @@ internal fun baseThemeResourcePatch(
                                 }
                             }
                             if (!found) {
-                                style.appendChild(doc.createElement("item").apply {
+                                style.appendChild(document.createElement("item").apply {
                                     setAttribute("name", attrName)
                                     textContent = attrValue
                                 })
