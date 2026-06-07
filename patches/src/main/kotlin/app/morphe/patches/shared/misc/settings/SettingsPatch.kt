@@ -33,12 +33,8 @@ fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: St
 
 private val settingsColorPatch = bytecodePatch {
     finalize {
-        if (lightThemeColor != null) {
-            ThemeLightColorResourceNameFingerprint.method.returnEarly(lightThemeColor!!)
-        }
-        if (darkThemeColor != null) {
-            ThemeDarkColorResourceNameFingerprint.method.returnEarly(darkThemeColor!!)
-        }
+        lightThemeColor?.let { ThemeLightColorResourceNameFingerprint.method.returnEarly(it) }
+        darkThemeColor?.let { ThemeDarkColorResourceNameFingerprint.method.returnEarly(it) }
     }
 }
 

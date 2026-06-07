@@ -39,8 +39,9 @@ val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
     includeLightThemeOption = true,
     block = {
-        lightThemeBackgroundColorOption()
         val themeResourcePatch = resourcePatch {
+            lightThemeBackgroundColorOption()
+            darkThemeBackgroundColorOption()
             dependsOn(resourceMappingPatch)
 
             execute {
@@ -52,12 +53,11 @@ val themePatch = baseThemePatch(
                     colorName: String,
                     colorValue: String,
                 ) {
-                    document(resourceFile).use { document ->
-                        val resourcesNode =
-                            document.getElementsByTagName("resources").item(0) as Element
+                    document(resourceFile).use { doc ->
+                        val resourcesNode = doc.getElementsByTagName("resources").item(0) as Element
 
                         resourcesNode.appendChild(
-                            document.createElement("color").apply {
+                            doc.createElement("color").apply {
                                 setAttribute("name", colorName)
                                 setAttribute("category", "color")
                                 textContent = colorValue
@@ -85,9 +85,7 @@ val themePatch = baseThemePatch(
                     "res/drawable-sw600dp/quantum_launchscreen_youtube.xml",
                 ).forEach editSplashScreen@{ resourceFileName ->
                     document(resourceFileName).use { document ->
-                        document.getElementsByTagName(
-                            "layer-list"
-                        ).item(0).forEachChildElement { node ->
+                        document.getElementsByTagName("layer-list").item(0).forEachChildElement { node ->
                             if (node.hasAttribute("android:drawable")) {
                                 node.setAttribute(
                                     "android:drawable",
@@ -125,8 +123,7 @@ val themePatch = baseThemePatch(
                         style.appendChild(styleItem)
                     }
 
-                    val resourcesNode =
-                        document.getElementsByTagName("resources").item(0) as Element
+                    val resourcesNode = document.getElementsByTagName("resources").item(0) as Element
                     resourcesNode.appendChild(style)
                 }
 
