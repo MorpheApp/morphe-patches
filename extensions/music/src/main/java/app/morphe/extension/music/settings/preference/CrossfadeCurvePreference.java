@@ -24,6 +24,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
+
 import java.util.Locale;
 
 import app.morphe.extension.music.patches.CrossfadeManager.FadeCurve;
@@ -166,7 +168,7 @@ public final class CrossfadeCurvePreference extends Preference
         }
 
         @Override
-        protected void onDraw(Canvas canvas) {
+        protected void onDraw(@NonNull Canvas canvas) {
             super.onDraw(canvas);
 
             float w = getWidth();

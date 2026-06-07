@@ -103,7 +103,7 @@ internal fun validateColorName(colorString: String): Boolean {
 }
 
 /**
- * Dark theme color option for YouTube and YT Music Theme patches.
+ * Dark theme color options for YouTube and YT Music Theme patch.
  */
 internal val darkThemeBackgroundColorOption = stringOption(
     key = "darkThemeBackgroundColor",

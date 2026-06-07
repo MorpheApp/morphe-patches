@@ -36,7 +36,10 @@ import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
-val lightThemeBackgroundColor by stringOption(
+/**
+ * Light theme color options for YouTube Theme patch.
+ */
+internal val lightThemeBackgroundColorOption = stringOption(
     key = "lightThemeBackgroundColor",
     default = "@android:color/white",
     values =  mapOf(
@@ -59,8 +62,9 @@ val lightThemeBackgroundColor by stringOption(
 
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
-    resolvedLightColor = { lightThemeBackgroundColor },
+    resolvedLightColor = { lightThemeBackgroundColorOption.value },
     block = {
+        lightThemeBackgroundColorOption()
         val themeResourcePatch = resourcePatch {
             dependsOn(resourceMappingPatch)
 
@@ -89,7 +93,7 @@ val themePatch = baseThemePatch(
                 addColorResource(
                     "res/values/colors.xml",
                     splashBackgroundColorKey,
-                    lightThemeBackgroundColor!!
+                    lightThemeBackgroundColorOption.value!!
                 )
                 addColorResource(
                     "res/values-night/colors.xml",
@@ -191,7 +195,7 @@ val themePatch = baseThemePatch(
                     }
                 }
 
-                val isMaterialYouLight = lightThemeBackgroundColor!!.startsWith("@android:color/system_")
+                val isMaterialYouLight = lightThemeBackgroundColorOption.value!!.startsWith("@android:color/system_")
 
                 if (isMaterialYouLight) {
                     val resDir = get("res")
@@ -250,7 +254,7 @@ val themePatch = baseThemePatch(
             seekbarColorPatch,
             versionCheckPatch,
             baseThemeResourcePatch(
-                lightColorReplacement = { lightThemeBackgroundColor!! },
+                lightColorReplacement = { lightThemeBackgroundColorOption.value!! },
                 darkColorNames = {
                     THEME_DEFAULT_DARK_COLOR_NAMES + if (is_21_06_or_greater)
                         setOf(
