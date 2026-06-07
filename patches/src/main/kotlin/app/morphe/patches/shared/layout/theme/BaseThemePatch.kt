@@ -128,11 +128,35 @@ internal val darkThemeBackgroundColorOption = stringOption(
 )
 
 /**
+ * For YouTube only.
+ */
+internal val lightThemeBackgroundColorOption = stringOption(
+    key = "lightThemeBackgroundColor",
+    default = "@android:color/white",
+    values =  mapOf(
+        "White" to "@android:color/white",
+        "Material You (Neutral)" to "@android:color/system_neutral1_100",
+        "Material You - Primary" to "@android:color/system_accent1_200",
+        "Material You - Secondary" to "@android:color/system_accent2_200",
+        "Material You - Tertiary" to "@android:color/system_accent3_200",
+        "Catppuccin (Latte)" to "#E6E9EF",
+        "Light pink" to "#FCCFF3",
+        "Light blue" to "#D1E0FF",
+        "Light green" to "#CCFFCC",
+        "Light yellow" to "#FDFFCC",
+        "Light orange" to "#FFE6CC",
+        "Light red" to "#FFD6D6",
+    ),
+    title = "Light theme background color",
+    description = THEME_COLOR_OPTION_DESCRIPTION
+)
+
+/**
  * Shared theme patch for YouTube and YT Music.
  */
 internal fun baseThemePatch(
     extensionClassDescriptor: String,
-    resolvedLightColor: (() -> String?) = { null },
+    includeLightThemeOption: Boolean = false,
     block: BytecodePatchBuilder.() -> Unit,
     executeBlock: BytecodePatchContext.() -> Unit = {}
 ) = bytecodePatch(
@@ -142,12 +166,19 @@ internal fun baseThemePatch(
 ) {
     darkThemeBackgroundColorOption()
 
+    if (includeLightThemeOption) {
+        lightThemeBackgroundColorOption()
+    }
+
     block()
 
     dependsOn(lithoColorHookPatch)
 
     execute {
-        overrideThemeColors(resolvedLightColor(), darkThemeBackgroundColorOption.value!!)
+        overrideThemeColors(
+            if (includeLightThemeOption)
+                lightThemeBackgroundColorOption.value!! else null,
+            darkThemeBackgroundColorOption.value!!)
 
         executeBlock()
 

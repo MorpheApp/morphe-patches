@@ -4,15 +4,14 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patcher.patch.stringOption
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
-import app.morphe.patches.shared.layout.theme.THEME_COLOR_OPTION_DESCRIPTION
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_DARK_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.THEME_DEFAULT_LIGHT_COLOR_NAMES
 import app.morphe.patches.shared.layout.theme.baseThemePatch
 import app.morphe.patches.shared.layout.theme.baseThemeResourcePatch
 import app.morphe.patches.shared.layout.theme.createNotifDrawable
 import app.morphe.patches.shared.layout.theme.darkThemeBackgroundColorOption
+import app.morphe.patches.shared.layout.theme.lightThemeBackgroundColorOption
 import app.morphe.patches.shared.layout.theme.patchCountTextColor
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
@@ -36,39 +35,18 @@ import org.w3c.dom.Element
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/theme/ThemePatch;"
 
-/**
- * Light theme color options for YouTube Theme patch.
- */
-internal val lightThemeBackgroundColorOption = stringOption(
-    key = "lightThemeBackgroundColor",
-    default = "@android:color/white",
-    values =  mapOf(
-        "White" to "@android:color/white",
-        "Material You (Neutral)" to "@android:color/system_neutral1_100",
-        "Material You - Primary" to "@android:color/system_accent1_200",
-        "Material You - Secondary" to "@android:color/system_accent2_200",
-        "Material You - Tertiary" to "@android:color/system_accent3_200",
-        "Catppuccin (Latte)" to "#E6E9EF",
-        "Light pink" to "#FCCFF3",
-        "Light blue" to "#D1E0FF",
-        "Light green" to "#CCFFCC",
-        "Light yellow" to "#FDFFCC",
-        "Light orange" to "#FFE6CC",
-        "Light red" to "#FFD6D6",
-    ),
-    title = "Light theme background color",
-    description = THEME_COLOR_OPTION_DESCRIPTION
-)
-
 val themePatch = baseThemePatch(
     extensionClassDescriptor = EXTENSION_CLASS,
-    resolvedLightColor = { lightThemeBackgroundColorOption.value },
+    includeLightThemeOption = true,
     block = {
         lightThemeBackgroundColorOption()
         val themeResourcePatch = resourcePatch {
             dependsOn(resourceMappingPatch)
 
             execute {
+                val lightThemeBackgroundColor = lightThemeBackgroundColorOption.value!!
+                val darkThemeBackgroundColor = darkThemeBackgroundColorOption.value!!
+
                 fun addColorResource(
                     resourceFile: String,
                     colorName: String,
@@ -93,12 +71,12 @@ val themePatch = baseThemePatch(
                 addColorResource(
                     "res/values/colors.xml",
                     splashBackgroundColorKey,
-                    lightThemeBackgroundColorOption.value!!
+                    lightThemeBackgroundColor
                 )
                 addColorResource(
                     "res/values-night/colors.xml",
                     splashBackgroundColorKey,
-                    darkThemeBackgroundColorOption.value!!
+                    darkThemeBackgroundColor
                 )
 
                 // Edit splash screen files and change the background color.
