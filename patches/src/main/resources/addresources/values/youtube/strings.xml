@@ -1348,8 +1348,8 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_remember_playback_speed_last_selected_toast_summary">Shows a notification when a new default playback speed is saved</string>
     <string name="morphe_playback_speed_default_title">Default playback speed</string>
     <string name="morphe_remember_playback_speed_toast">Changed default playback speed to: %s</string>
-    <string name="morphe_disable_playback_speed_music_title">Disable playback speed for music</string>
-    <string name="morphe_disable_playback_speed_music_summary">Change the default playback speed to 1.0 when playing music</string>
+    <string name="morphe_disable_playback_speed_music_title">Use normal speed for music</string>
+    <string name="morphe_disable_playback_speed_music_summary">Always play music videos at 1.0x speed</string>
 
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>
