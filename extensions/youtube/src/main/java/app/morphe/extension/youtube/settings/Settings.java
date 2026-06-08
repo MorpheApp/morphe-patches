@@ -87,7 +87,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_END_SCREEN_STORE_BANNER = new BooleanSetting("morphe_hide_end_screen_store_banner", TRUE, true);
     public static final BooleanSetting HIDE_GENERAL_ADS = new BooleanSetting("morphe_hide_general_ads", TRUE);
     public static final BooleanSetting HIDE_MERCHANDISE_BANNERS = new BooleanSetting("morphe_hide_merchandise_banners", TRUE);
-    public static final BooleanSetting HIDE_PAID_PROMOTION_LABEL = new BooleanSetting("morphe_hide_paid_promotion_label", TRUE);
+    public static final BooleanSetting HIDE_PAID_PROMOTION_LABEL = new BooleanSetting("morphe_hide_paid_promotion_label", TRUE, true);
     public static final BooleanSetting HIDE_PLAYER_POPUP_ADS = new BooleanSetting("morphe_hide_player_popup_ads", TRUE);
     public static final BooleanSetting HIDE_SELF_SPONSOR = new BooleanSetting("morphe_hide_self_sponsor_ads", TRUE);
     public static final BooleanSetting HIDE_SHOPPING_LINKS = new BooleanSetting("morphe_hide_shopping_links", TRUE);

@@ -62,3 +62,10 @@ internal object PlayerOverlayTimelyShelfFingerprint : Fingerprint(
     )
 )
 
+internal object MiniplayerSubtitleBarFingerprint : Fingerprint(
+    filters = listOf(
+        resourceLiteral(ResourceType.ID, "modern_miniplayer_subtitle_bar"),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)

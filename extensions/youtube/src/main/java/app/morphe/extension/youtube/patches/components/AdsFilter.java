@@ -276,4 +276,11 @@ public final class AdsFilter extends Filter {
         return Settings.HIDE_PLAYER_POPUP_ADS.get()
                 && Utils.containsAny(panelId, PLAYER_POPUP_AD_PANEL_IDS);
     }
+
+    /**
+     * Injection point.
+     */
+    public static void hidePaidPromotionLabelView(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_PAID_PROMOTION_LABEL, view);
+    }
 }

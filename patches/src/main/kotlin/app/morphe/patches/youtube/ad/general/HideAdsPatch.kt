@@ -201,6 +201,22 @@ val hideAdsPatch = bytecodePatch(
             }
         }
 
+        // Hide paid promotion label in miniplayer
+
+        MiniplayerSubtitleBarFingerprint.matchAll().forEach { match ->
+            match.method.apply {
+                val moveResultIndex = match.instructionMatches.last().index
+                val viewRegister = getInstruction<OneRegisterInstruction>(moveResultIndex).registerA
+
+                injectHideViewCall(
+                    moveResultIndex + 1,
+                    viewRegister,
+                    EXTENSION_CLASS,
+                    "hidePaidPromotionLabelView"
+                )
+            }
+        }
+
         setOf(
             Endpoint.BROWSE,
             Endpoint.SEARCH,
