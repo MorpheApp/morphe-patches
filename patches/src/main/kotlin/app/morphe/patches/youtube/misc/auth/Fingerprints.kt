@@ -8,25 +8,27 @@
 package app.morphe.patches.youtube.misc.auth
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
-import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
 
-internal object AccountIdentityFingerprint : Fingerprint(
-    returnType = "V",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+internal const val GET_PAGE_ID_STRING = ", getPageId="
+internal const val IS_INCOGNITO_STRING = ", isIncognito="
+
+internal object AccountIdentityToStringFingerprint : Fingerprint(
+    name = "toString",
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
     strings = listOf(
-        "Null getId",
-        "Null getAccountName",
-        "Null getPageId",
-        "Null getDataSyncId",
-        "Null getGaiaDelegationType",
-        "Null getDelegationContext",
-    ),
+        GET_PAGE_ID_STRING,
+        IS_INCOGNITO_STRING
+    )
+)
+
+internal object AccountIdentityConstructorFingerprint : Fingerprint(
+    classFingerprint = AccountIdentityToStringFingerprint,
+    name = "<init>",
     filters = listOf(
-        opcode(Opcode.IF_EQZ, location = InstructionLocation.MatchAfterAnywhere()),
-        opcode(Opcode.IPUT_OBJECT, location = InstructionLocation.MatchAfterImmediately()),
-        opcode(Opcode.IPUT_BOOLEAN, location = InstructionLocation.MatchAfterImmediately()),
+        string("Null getPageId"),
     ),
 )
