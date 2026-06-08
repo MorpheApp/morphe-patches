@@ -22,6 +22,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.GuardedBy;
@@ -322,14 +323,28 @@ public class PlaylistPatch {
                 Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * playlists.length);
                 int libraryIconId = QueueManager.SAVE_QUEUE.drawableId;
 
+                LinearLayout listContainer = new LinearLayout(context);
+                listContainer.setOrientation(LinearLayout.VERTICAL);
+
                 for (Pair<String, String> playlist : playlists) {
                     String listId = playlist.getFirst();
                     String title = playlist.getSecond();
                     Runnable action = () -> saveToPlaylist(listId, title);
                     View itemLayout = createItemLayout(context, title, libraryIconId);
                     actionsMap.put(itemLayout, action);
-                    mainLayout.addView(itemLayout);
+                    listContainer.addView(itemLayout);
                 }
+
+                ScrollView scrollView = new ScrollView(context) {
+                    @Override
+                    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                        heightMeasureSpec = MeasureSpec.makeMeasureSpec(Dim.pctHeight(50), MeasureSpec.AT_MOST);
+                        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                    }
+                };
+                scrollView.setVerticalScrollBarEnabled(false);
+                scrollView.addView(listContainer);
+                mainLayout.addView(scrollView);
 
                 SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
                         .createSlideDialog(context, mainLayout, 300);
