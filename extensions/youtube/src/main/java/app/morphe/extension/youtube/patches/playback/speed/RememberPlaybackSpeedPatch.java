@@ -82,7 +82,13 @@ public final class RememberPlaybackSpeedPatch {
         if (newVideoStarted) {
             newVideoStarted = false;
 
+            final float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
+
             if (DISABLE_PLAYBACK_SPEED_MUSIC) {
+                if (defaultSpeed == 1.0f) {
+                    return 1.0f;
+                }
+
                 String videoId = VideoInformation.getVideoId();
                 GetMixPlaylistRequest request = GetMixPlaylistRequest.getRequestForVideoId(videoId);
                 boolean isMusic = request != null && Boolean.TRUE.equals(request.getResult());
@@ -91,7 +97,6 @@ public final class RememberPlaybackSpeedPatch {
                 }
             }
 
-            final float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
             if (defaultSpeed > 0) {
                 return defaultSpeed;
             }
