@@ -644,3 +644,16 @@ internal object QuantumSnackbarFingerprint : Fingerprint(
         )
     )
 )
+
+internal object SyncButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "sync_button"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "inflate",
+            returnType = "Landroid/view/View;",
+        ),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately())
+    )
+)

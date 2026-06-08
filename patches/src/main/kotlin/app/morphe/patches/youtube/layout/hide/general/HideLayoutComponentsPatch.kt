@@ -176,6 +176,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_medical_panels"),
             SwitchPreference("morphe_hide_snackbar"),
             SwitchPreference("morphe_hide_subscribers_community_guidelines"),
+            SwitchPreference("morphe_hide_sync_button"),
             SwitchPreference("morphe_hide_timed_reactions", summary = true),
             SwitchPreference("morphe_hide_video_title", summary = true),
         )
@@ -994,6 +995,18 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     )
                 }
             }
+        }
+
+        // endregion
+
+        // region hide sync button
+
+        SyncButtonFingerprint.let {
+            it.method.injectHideViewCall(
+                it.instructionMatches.last().index,
+                LAYOUT_COMPONENTS_FILTER,
+                "hideSyncButton"
+            )
         }
 
         // endregion

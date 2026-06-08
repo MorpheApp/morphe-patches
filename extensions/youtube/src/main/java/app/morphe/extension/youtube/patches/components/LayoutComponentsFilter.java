@@ -961,4 +961,11 @@ public final class LayoutComponentsFilter extends Filter {
             view.setVisibility(View.GONE);
         }
     }
+
+    /**
+     * Injection point.
+     */
+    public static void hideSyncButton(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SYNC_BUTTON, view);
+    }
 }
