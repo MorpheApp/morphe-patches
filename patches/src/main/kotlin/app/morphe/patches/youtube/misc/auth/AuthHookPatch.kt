@@ -7,21 +7,18 @@
 
 package app.morphe.patches.youtube.misc.auth
 
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.request.buildRequestPatch
 import app.morphe.patches.youtube.misc.request.hookBuildRequest
 import app.morphe.util.findFieldFromToString
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionOrThrow
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
-private const val EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/shared/innertube/utils/AuthUtils;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/innertube/utils/AuthUtils;"
 
 internal val authHookPatch = bytecodePatch(
     description = "Hook to get the parameters required for account authentication"
@@ -29,6 +26,7 @@ internal val authHookPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         buildRequestPatch,
+        versionCheckPatch,
     )
 
     execute {
@@ -40,25 +38,36 @@ internal val authHookPatch = bytecodePatch(
                 )
             }
 
-        AccountIdentityConstructorFingerprint.method.apply {
-            val pageIdIndex = indexOfFirstInstructionOrThrow {
-                opcode == Opcode.IPUT_OBJECT && getReference<FieldReference>() == pageIdField
-            }
-            val incognitoIndex = indexOfFirstInstructionOrThrow {
-                opcode == Opcode.IPUT_BOOLEAN && getReference<FieldReference>() == incognitoField
-            }
-            val pageIdRegister = getInstruction<TwoRegisterInstruction>(pageIdIndex).registerA
-            val incognitoRegister = getInstruction<TwoRegisterInstruction>(incognitoIndex).registerA
+        val pageIdFingerprints = mutableListOf(getPageIdFingerprint(pageIdField))
 
-            addInstructions(
-                1,
-                """
-                    invoke-static { v$pageIdRegister }, $EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR->setPageId(Ljava/lang/String;)V
-                    invoke-static { v$incognitoRegister }, $EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR->setIncognitoStatus(Z)V
-                """
-            )
+        if (is_21_02_or_greater) {
+            pageIdFingerprints += isEmptyPageIdFingerprint(pageIdField)
         }
 
-        hookBuildRequest("$EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR->setRequestHeaders(Ljava/lang/String;Ljava/util/Map;)V")
+        pageIdFingerprints.forEach {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->setPageId(Ljava/lang/String;)V"
+                )
+            }
+        }
+
+        getIncognitoStatusFingerprint(incognitoField).matchAll().forEach {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->setIncognitoStatus(Z)V"
+                )
+            }
+        }
+
+        hookBuildRequest("$EXTENSION_CLASS->setRequestHeaders(Ljava/lang/String;Ljava/util/Map;)V")
     }
 }
