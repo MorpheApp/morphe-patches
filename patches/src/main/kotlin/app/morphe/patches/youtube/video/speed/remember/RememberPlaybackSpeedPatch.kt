@@ -27,6 +27,8 @@ import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHoo
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
+import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
+import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
 private const val EXTENSION_CLASS =
@@ -36,6 +38,7 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        videoIdPatch,
         videoInformationPatch,
         customPlaybackSpeedPatch
     )
@@ -51,7 +54,8 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
                     tag = "app.morphe.extension.youtube.settings.preference.CustomVideoSpeedListPreference"
                 ),
                 SwitchPreference("morphe_remember_playback_speed_last_selected", summary = true),
-                SwitchPreference("morphe_remember_playback_speed_last_selected_toast", summary = true)
+                SwitchPreference("morphe_remember_playback_speed_last_selected_toast", summary = true),
+                SwitchPreference("morphe_disable_playback_speed_music", summary = true)
             )
         )
 
@@ -61,6 +65,8 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
             EXTENSION_CLASS,
             "userSelectedPlaybackSpeed",
         )
+
+        hookPlayerResponseVideoId("$EXTENSION_CLASS->newVideoStarted(Ljava/lang/String;Z)V")
 
         /*
          * Hook the code that is called when the playback speeds are initialized, and sets the playback speed
