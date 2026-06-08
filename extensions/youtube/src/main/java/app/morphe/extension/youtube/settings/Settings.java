@@ -189,7 +189,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SETTINGS_BUTTON = new BooleanSetting("morphe_hide_settings_button", FALSE, true);
     public static final BooleanSetting HIDE_SNACKBAR = new BooleanSetting("morphe_hide_snackbar", FALSE, true);
     public static final BooleanSetting HIDE_SUBSCRIBERS_COMMUNITY_GUIDELINES = new BooleanSetting("morphe_hide_subscribers_community_guidelines", TRUE);
-    public static final BooleanSetting HIDE_SYNC_BUTTON = new BooleanSetting("morphe_hide_sync_button", TRUE);
+    public static final BooleanSetting HIDE_SYNC_BUTTON = new BooleanSetting("morphe_hide_sync_button", FALSE, true);
     public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("morphe_hide_timed_reactions", TRUE);
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("morphe_hide_video_title", FALSE);
     public static final BooleanSetting OPEN_VIDEOS_FULLSCREEN_PORTRAIT = new BooleanSetting("morphe_open_videos_fullscreen_portrait", FALSE);
