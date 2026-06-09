@@ -102,6 +102,7 @@ public final class RememberPlaybackSpeedPatch {
                 GetMixPlaylistRequest request = GetMixPlaylistRequest.getRequestForVideoId(videoId);
                 final boolean isMusic = request != null && Boolean.TRUE.equals(request.getResult());
                 if (isMusic) {
+                    Logger.printDebug(() -> "Overriding music video speed to 1.0x: " + videoId);
                     return 1.0f;
                 }
             }
@@ -114,9 +115,10 @@ public final class RememberPlaybackSpeedPatch {
         return -2.0f;
     }
 
-    public static void newVideoStarted(String videoId, boolean isShortAndOpeningOrPlaying) {
+    public static void preloadMusicVideoFetch(String videoId, boolean isShortAndOpeningOrPlaying) {
         if (DISABLE_PLAYBACK_SPEED_MUSIC && !VideoInformation.lastPlayerResponseIsShort() &&
                 !lastFetchedVideoId.equals(videoId) && Settings.PLAYBACK_SPEED_DEFAULT.get() != 1.0f) {
+            Logger.printDebug(() -> "Prefetching music video status: " + videoId);
             lastFetchedVideoId = videoId;
             GetMixPlaylistRequest request = GetMixPlaylistRequest.fetchRequestIfNeeded(
                     videoId, Collections.emptyMap());

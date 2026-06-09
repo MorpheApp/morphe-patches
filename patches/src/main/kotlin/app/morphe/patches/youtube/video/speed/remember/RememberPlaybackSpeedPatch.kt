@@ -66,7 +66,7 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
             "userSelectedPlaybackSpeed",
         )
 
-        hookPlayerResponseVideoId("$EXTENSION_CLASS->newVideoStarted(Ljava/lang/String;Z)V")
+        hookPlayerResponseVideoId("$EXTENSION_CLASS->preloadMusicVideoFetch(Ljava/lang/String;Z)V")
 
         /*
          * Hook the code that is called when the playback speeds are initialized, and sets the playback speed

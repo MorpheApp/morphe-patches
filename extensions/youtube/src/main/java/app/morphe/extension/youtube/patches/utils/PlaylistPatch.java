@@ -8,7 +8,6 @@
 package app.morphe.extension.youtube.patches.utils;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.shared.Utils.runOnMainThreadDelayed;
 import static app.morphe.extension.shared.innertube.utils.AuthUtils.getRequestHeader;
 import static app.morphe.extension.shared.innertube.utils.AuthUtils.isNotLoggedIn;
 
@@ -26,7 +25,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import androidx.annotation.GuardedBy;
-import androidx.annotation.NonNull;
 
 import org.apache.commons.collections4.BidiMap;
 import org.apache.commons.collections4.bidimap.DualHashBidiMap;
@@ -74,17 +72,11 @@ public class PlaylistPatch {
     private static final String fetchSucceededRemove = str("morphe_queue_manager_fetch_succeeded_remove");
     private static final String fetchSucceededSave = str("morphe_queue_manager_fetch_succeeded_save");
 
-    private static volatile String playlistId;
+    private static volatile String playlistId = Settings.QUEUE_RESTORE.get()
+            ? Settings.QUEUE_PLAYLIST_ID.get()
+            : Settings.QUEUE_PLAYLIST_ID.resetToDefault();
     private static volatile String videoId = "";
     private static volatile boolean syncStarted;
-
-    static {
-        if (Settings.QUEUE_RESTORE.get()) {
-            playlistId = Settings.QUEUE_PLAYLIST_ID.get();
-        } else {
-            playlistId = Settings.QUEUE_PLAYLIST_ID.resetToDefault();
-        }
-    }
 
     @GuardedBy("itself")
     private static final BidiMap<String, String> lastVideoIds = new DualHashBidiMap<>();
@@ -92,7 +84,9 @@ public class PlaylistPatch {
     /**
      * Invoked by extension.
      */
-    public static void prepareDialogBuilder(Context context, @NonNull String currentVideoId) {
+    public static void prepareDialogBuilder(Context context, String currentVideoId) {
+        Utils.verifyOnMainThread();
+
         if (isNotLoggedIn()) {
             handleCheckError(checkFailedAuth);
             return;
@@ -100,8 +94,8 @@ public class PlaylistPatch {
         if (currentVideoId.isEmpty()) {
             buildBottomSheetDialog(context, QueueManager.noVideoIdQueueEntries);
         } else {
-            videoId = currentVideoId;
             synchronized (lastVideoIds) {
+                videoId = currentVideoId;
                 QueueManager[] customActionsEntries;
                 boolean canReload = PlayerType.getCurrent().isMaximizedOrFullscreen() &&
                         lastVideoIds.get(VideoInformation.getVideoId()) != null;
@@ -166,7 +160,7 @@ public class PlaylistPatch {
             });
         }
 
-        Utils.runOnMainThread(dialog::show);
+        dialog.show();
     }
 
     @SuppressLint("ResourceType")

@@ -45,7 +45,7 @@ public class CreatePlaylistRequest {
     public Pair<String, String> getPlaylistId() {
         try {
             if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: CreatePlaylistRequest blocking main thread");
+                Logger.printException(() -> "Debug: Blocking main thread");
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {

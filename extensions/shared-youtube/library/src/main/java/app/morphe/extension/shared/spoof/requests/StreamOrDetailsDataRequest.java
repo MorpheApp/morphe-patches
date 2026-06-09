@@ -467,7 +467,7 @@ public class StreamOrDetailsDataRequest {
             // and never block the main thread.
             // But if debugging, then still verify this is the situation.
             if (BaseSettings.DEBUG.get() && !fetchIsDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: StreamOrDetailsDataRequest blocking main thread");
+                Logger.printException(() -> "Debug: blocking main thread");
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {

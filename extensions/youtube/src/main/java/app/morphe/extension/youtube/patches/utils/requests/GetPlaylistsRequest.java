@@ -48,7 +48,7 @@ public class GetPlaylistsRequest {
     public Pair<String, String>[] getPlaylists() {
         try {
             if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: GetPlaylistsRequest blocking main thread");
+                Logger.printException(() -> "Debug: Blocking main thread");
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {

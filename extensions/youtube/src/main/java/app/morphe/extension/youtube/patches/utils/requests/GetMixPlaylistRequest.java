@@ -28,27 +28,43 @@ import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.settings.BaseSettings;
 
 public class GetMixPlaylistRequest {
-    private static final long MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000; // 20 seconds
+    /**
+     * Maximum amount of time to block the UI from updates while waiting for network call to complete.
+     *
+     * Must be less than 5 seconds, as per:
+     * https://developer.android.com/topic/performance/vitals/anr
+     */
+    private static final long MAX_MILLISECONDS_TO_BLOCK_UI_WAITING_FOR_FETCH = 4500;
+
+    private static final long MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 10 * 1000; // 10 seconds
 
     private static final Map<String, GetMixPlaylistRequest> cache =
             Utils.createSizeRestrictedMap(30);
 
+    public final String videoId;
     private final Future<Boolean> future;
 
     private GetMixPlaylistRequest(String videoId, Map<String, String> requestHeader) {
+        this.videoId = videoId;
         this.future = Utils.submitOnBackgroundThread(() -> fetch(videoId, requestHeader));
     }
 
     public Boolean getResult() {
         try {
-            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: GetMixPlaylistRequest blocking main thread");
+            // Speed override can be called concurrently while prefetch is still running.
+            // If on main thread then must use shorter max wait otherwise Android can show ANR warning.
+            final long maxWaitTime = Utils.isCurrentlyOnMainThread()
+                    ? MAX_MILLISECONDS_TO_BLOCK_UI_WAITING_FOR_FETCH
+                    : MAX_MILLISECONDS_TO_WAIT_FOR_FETCH;
+            if (BaseSettings.DEBUG.get() && !future.isDone()) {
+                Logger.printDebug(() -> "Waiting until fetch is complete: " + videoId
+                        + " maxWait: " + maxWaitTime);
             }
-            return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
+            return future.get(maxWaitTime, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
-            Logger.printInfo(() -> "getResult timed out", ex);
+            Logger.printInfo(() -> "getResult timed out: " + videoId, ex);
         } catch (InterruptedException ex) {
-            Logger.printException(() -> "getResult interrupted", ex);
+            Logger.printException(() -> "getResult interrupted: " + videoId, ex);
             Thread.currentThread().interrupt();
         } catch (ExecutionException ex) {
             Logger.printException(() -> "getResult failure", ex);
