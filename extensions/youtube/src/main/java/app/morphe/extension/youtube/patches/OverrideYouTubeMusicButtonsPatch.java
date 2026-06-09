@@ -7,6 +7,7 @@
 
 package app.morphe.extension.youtube.patches;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -59,8 +60,12 @@ public class OverrideYouTubeMusicButtonsPatch {
             return intent.setData(uri);
         }
 
+        if (intent.getBooleanExtra(HIJACK_FLAG, false)) {
+            return intent;
+        }
+
         String uriString = uri.toString();
-        if (uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME)) {
+        if (uriString.contains(YOUTUBE_MUSIC_PACKAGE_NAME) || uriString.contains("music.youtube.com")) {
 
             String target = Settings.MORPHE_MUSIC_PACKAGE_NAME.get().trim();
             if (Utils.isNotEmpty(target) && isAppInstalled(target)) {
@@ -70,13 +75,18 @@ public class OverrideYouTubeMusicButtonsPatch {
                     musicUri = uri;
                 }
 
-                intent.setAction(Intent.ACTION_VIEW);
-                intent.setData(musicUri);
-                intent.setPackage(target);
-                intent.setComponent(null);
-                intent.putExtra(HIJACK_FLAG, true);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                return intent;
+                PackageManager pm = Utils.getContext().getPackageManager();
+                Intent launchIntent = pm.getLaunchIntentForPackage(target);
+
+                if (launchIntent != null) {
+                    intent.setAction(launchIntent.getAction());
+                    intent.setData(musicUri);
+                    intent.setPackage(target);
+                    intent.setComponent(launchIntent.getComponent());
+                    intent.putExtra(HIJACK_FLAG, true);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    return intent;
+                }
             }
 
             intent.setData(Uri.parse("https://music.youtube.com/"));
@@ -86,6 +96,20 @@ public class OverrideYouTubeMusicButtonsPatch {
         }
 
         return intent.setData(uri);
+    }
+
+    public static Intent overrideSetComponent(Intent intent, ComponentName component) {
+        if (intent == null) return null;
+
+        if (!Settings.OVERRIDE_YOUTUBE_MUSIC_BUTTONS.get()) {
+            return intent.setComponent(component);
+        }
+
+        if (intent.getBooleanExtra(HIJACK_FLAG, false)) {
+            return intent;
+        }
+
+        return intent.setComponent(component);
     }
 
     private static boolean isAppInstalled(String packageName) {
