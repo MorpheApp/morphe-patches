@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches.playback.speed;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -83,7 +93,6 @@ public final class RememberPlaybackSpeedPatch {
             newVideoStarted = false;
 
             final float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
-
             if (DISABLE_PLAYBACK_SPEED_MUSIC) {
                 if (defaultSpeed == 1.0f) {
                     return 1.0f;
@@ -91,7 +100,7 @@ public final class RememberPlaybackSpeedPatch {
 
                 String videoId = VideoInformation.getVideoId();
                 GetMixPlaylistRequest request = GetMixPlaylistRequest.getRequestForVideoId(videoId);
-                boolean isMusic = request != null && Boolean.TRUE.equals(request.getResult());
+                final boolean isMusic = request != null && Boolean.TRUE.equals(request.getResult());
                 if (isMusic) {
                     return 1.0f;
                 }
@@ -107,9 +116,13 @@ public final class RememberPlaybackSpeedPatch {
 
     public static void newVideoStarted(String videoId, boolean isShortAndOpeningOrPlaying) {
         if (DISABLE_PLAYBACK_SPEED_MUSIC && !VideoInformation.lastPlayerResponseIsShort() &&
-                !lastFetchedVideoId.equals(videoId)) {
+                !lastFetchedVideoId.equals(videoId) && Settings.PLAYBACK_SPEED_DEFAULT.get() != 1.0f) {
             lastFetchedVideoId = videoId;
-            GetMixPlaylistRequest.fetchRequestIfNeeded(videoId, Collections.emptyMap());
+            GetMixPlaylistRequest request = GetMixPlaylistRequest.fetchRequestIfNeeded(
+                    videoId, Collections.emptyMap());
+            // Must block here off the main thread until fetch is finished,
+            // because the speed override happens on main thread after playback has started.
+            request.getResult();
         }
     }
 }

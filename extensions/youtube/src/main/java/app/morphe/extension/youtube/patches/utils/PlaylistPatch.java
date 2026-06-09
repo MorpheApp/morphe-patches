@@ -58,52 +58,31 @@ import kotlin.Pair;
 public class PlaylistPatch {
     private static final long DELAY_MILLISECONDS = 1500L;
 
-    private static String initPlaylistId() {
-        if (Settings.QUEUE_RESTORE.get()) {
-            return Settings.QUEUE_PLAYLIST_ID.get();
-        }
-        Settings.QUEUE_PLAYLIST_ID.save("");
-        return "";
-    }
+    private static final String checkFailedAuth = str("morphe_queue_manager_check_failed_auth");
+    private static final String checkFailedPlaylistId = str("morphe_queue_manager_check_failed_playlist_id");
+    private static final String checkFailedQueue = str("morphe_queue_manager_check_failed_queue");
+    private static final String checkFailedVideoId = str("morphe_queue_manager_check_failed_video_id");
+    private static final String checkFailedGeneric = str("morphe_queue_manager_check_failed_generic");
 
-    private static volatile String playlistId = initPlaylistId();
+    private static final String fetchFailedAdd = str("morphe_queue_manager_fetch_failed_add");
+    private static final String fetchFailedCreate = str("morphe_queue_manager_fetch_failed_create");
+    private static final String fetchFailedRemove = str("morphe_queue_manager_fetch_failed_remove");
+    private static final String fetchFailedSave = str("morphe_queue_manager_fetch_failed_save");
+
+    private static final String fetchSucceededAdd = str("morphe_queue_manager_fetch_succeeded_add");
+    private static final String fetchSucceededCreate = str("morphe_queue_manager_fetch_succeeded_create");
+    private static final String fetchSucceededRemove = str("morphe_queue_manager_fetch_succeeded_remove");
+    private static final String fetchSucceededSave = str("morphe_queue_manager_fetch_succeeded_save");
+
+    private static volatile String playlistId;
     private static volatile String videoId = "";
-    private static volatile boolean syncStarted = false;
-
-    private static String checkFailedAuth = "";
-    private static String checkFailedPlaylistId = "";
-    private static String checkFailedQueue = "";
-    private static String checkFailedVideoId = "";
-    private static String checkFailedGeneric = "Failed: %s";
-
-    private static String fetchFailedAdd = "";
-    private static String fetchFailedCreate = "";
-    private static String fetchFailedRemove = "";
-    private static String fetchFailedSave = "";
-
-    private static String fetchSucceededAdd = "";
-    private static String fetchSucceededCreate = "";
-    private static String fetchSucceededRemove = "";
-    private static String fetchSucceededSave = "%s";
+    private static volatile boolean syncStarted;
 
     static {
-        Context context = Utils.getContext();
-        if (context != null && context.getResources() != null) {
-            checkFailedAuth = str("morphe_queue_manager_check_failed_auth");
-            checkFailedPlaylistId = str("morphe_queue_manager_check_failed_playlist_id");
-            checkFailedQueue = str("morphe_queue_manager_check_failed_queue");
-            checkFailedVideoId = str("morphe_queue_manager_check_failed_video_id");
-            checkFailedGeneric = str("morphe_queue_manager_check_failed_generic");
-
-            fetchFailedAdd = str("morphe_queue_manager_fetch_failed_add");
-            fetchFailedCreate = str("morphe_queue_manager_fetch_failed_create");
-            fetchFailedRemove = str("morphe_queue_manager_fetch_failed_remove");
-            fetchFailedSave = str("morphe_queue_manager_fetch_failed_save");
-
-            fetchSucceededAdd = str("morphe_queue_manager_fetch_succeeded_add");
-            fetchSucceededCreate = str("morphe_queue_manager_fetch_succeeded_create");
-            fetchSucceededRemove = str("morphe_queue_manager_fetch_succeeded_remove");
-            fetchSucceededSave = str("morphe_queue_manager_fetch_succeeded_save");
+        if (Settings.QUEUE_RESTORE.get()) {
+            playlistId = Settings.QUEUE_PLAYLIST_ID.get();
+        } else {
+            playlistId = Settings.QUEUE_PLAYLIST_ID.resetToDefault();
         }
     }
 
@@ -227,77 +206,82 @@ public class PlaylistPatch {
     }
 
     private static void fetchQueue(Context context, boolean remove, boolean openPlaylist,
-                                   boolean openVideo, boolean reload) {
-        try {
-            String currentPlaylistId = playlistId;
-            String currentVideoId = videoId;
+                                   boolean openVideo, boolean reload, boolean retry) {
+        String currentPlaylistId = playlistId;
+        String currentVideoId = videoId;
+        Utils.runOnBackgroundThread(() -> {
             synchronized (lastVideoIds) {
                 if (currentPlaylistId.isEmpty()) {
                     CreatePlaylistRequest.fetchRequestIfNeeded(currentVideoId, getRequestHeader());
-                    runOnMainThreadDelayed(() -> {
-                        CreatePlaylistRequest request = CreatePlaylistRequest.getRequestForVideoId(currentVideoId);
-                        if (request != null) {
-                            Pair<String, String> playlistIds = request.getPlaylistId();
-                            if (playlistIds != null) {
-                                String createdPlaylistId = playlistIds.getFirst();
-                                String setVideoId = playlistIds.getSecond();
-                                if (createdPlaylistId != null && setVideoId != null) {
-                                    playlistId = createdPlaylistId;
-                                    if (Settings.QUEUE_RESTORE.get()) {
-                                        Settings.QUEUE_PLAYLIST_ID.save(createdPlaylistId);
-                                    }
-                                    lastVideoIds.putIfAbsent(currentVideoId, setVideoId);
-                                    showToast(fetchSucceededCreate);
-                                    Logger.printDebug(() -> "Queue created, playlistId: " + createdPlaylistId + ", setVideoId: " + setVideoId);
-                                    if (openPlaylist) {
-                                        openQueue(context, currentVideoId, openVideo, reload);
-                                    }
-                                    return;
+                    CreatePlaylistRequest request = CreatePlaylistRequest.getRequestForVideoId(currentVideoId);
+                    if (request != null) {
+                        Pair<String, String> playlistIds = request.getPlaylistId();
+                        if (playlistIds != null) {
+                            String createdPlaylistId = playlistIds.getFirst();
+                            String setVideoId = playlistIds.getSecond();
+                            if (createdPlaylistId != null && setVideoId != null) {
+                                playlistId = createdPlaylistId;
+                                if (Settings.QUEUE_RESTORE.get()) {
+                                    Settings.QUEUE_PLAYLIST_ID.save(createdPlaylistId);
                                 }
+                                lastVideoIds.putIfAbsent(currentVideoId, setVideoId);
+                                showToast(fetchSucceededCreate);
+                                Logger.printDebug(() -> "Queue created, playlistId: "
+                                        + createdPlaylistId + ", setVideoId: " + setVideoId);
+                                if (openPlaylist) {
+                                    openQueue(context, currentVideoId, openVideo, reload);
+                                }
+                                return;
                             }
                         }
-                        showToast(fetchFailedCreate);
-                    }, DELAY_MILLISECONDS);
+                    }
+                    showToast(fetchFailedCreate);
                 } else {
                     String setVideoId = lastVideoIds.get(currentVideoId);
-                    EditPlaylistRequest.fetchRequestIfNeeded(currentVideoId, currentPlaylistId, setVideoId, getRequestHeader());
+                    EditPlaylistRequest.fetchRequestIfNeeded(currentVideoId, currentPlaylistId,
+                            setVideoId, getRequestHeader());
+                    EditPlaylistRequest request = EditPlaylistRequest.getRequestForVideoId(currentVideoId);
+                    if (request != null) {
+                        String fetchedSetVideoId = request.getResult();
+                        Logger.printDebug(() -> "fetchedSetVideoId: " + fetchedSetVideoId);
+                        if (remove) {
+                            if ("".equals(fetchedSetVideoId)) {
+                                lastVideoIds.remove(currentVideoId, setVideoId);
+                                EditPlaylistRequest.clearVideoId(currentVideoId);
+                                showToast(fetchSucceededRemove);
+                                if (openPlaylist) {
+                                    openQueue(context, currentVideoId, openVideo, reload);
+                                }
+                                return;
+                            }
+                            showToast(fetchFailedRemove);
+                        } else {
+                            if (fetchedSetVideoId == null || fetchedSetVideoId.isEmpty()) {
+                                Logger.printDebug(() -> "Playlist not available fetchedSetVideoId: "
+                                        + fetchedSetVideoId);
+                                if (!retry) {
+                                    // Already retried, give up.
+                                    showToast(fetchFailedAdd);
+                                    return;
+                                }
+                                // Clear saved playlist and try again.
+                                playlistId = Settings.QUEUE_PLAYLIST_ID.resetToDefault();
+                                fetchQueue(context, false, openPlaylist, openVideo, reload, false);
+                                return;
+                            }
 
-                    runOnMainThreadDelayed(() -> {
-                        EditPlaylistRequest request = EditPlaylistRequest.getRequestForVideoId(currentVideoId);
-                        if (request != null) {
-                            String fetchedSetVideoId = request.getResult();
-                            Logger.printDebug(() -> "fetchedSetVideoId: " + fetchedSetVideoId);
-                            if (remove) {
-                                if ("".equals(fetchedSetVideoId)) {
-                                    lastVideoIds.remove(currentVideoId, setVideoId);
-                                    EditPlaylistRequest.clearVideoId(currentVideoId);
-                                    showToast(fetchSucceededRemove);
-                                    if (openPlaylist) {
-                                        openQueue(context, currentVideoId, openVideo, reload);
-                                    }
-                                    return;
-                                }
-                                showToast(fetchFailedRemove);
-                            } else {
-                                if (fetchedSetVideoId != null && !fetchedSetVideoId.isEmpty()) {
-                                    lastVideoIds.putIfAbsent(currentVideoId, fetchedSetVideoId);
-                                    EditPlaylistRequest.clearVideoId(currentVideoId);
-                                    showToast(fetchSucceededAdd);
-                                    Logger.printDebug(() -> "Video added, setVideoId: " + fetchedSetVideoId);
-                                    if (openPlaylist) {
-                                        openQueue(context, currentVideoId, openVideo, reload);
-                                    }
-                                    return;
-                                }
-                                showToast(fetchFailedAdd);
+                            lastVideoIds.putIfAbsent(currentVideoId, fetchedSetVideoId);
+                            EditPlaylistRequest.clearVideoId(currentVideoId);
+                            Logger.printDebug(() -> "Video added, setVideoId: " + fetchedSetVideoId);
+                            showToast(fetchSucceededAdd);
+                            if (openPlaylist) {
+                                openQueue(context, currentVideoId, openVideo, reload);
                             }
                         }
-                    }, DELAY_MILLISECONDS);
+                    }
                 }
             }
-        } catch (Exception ex) {
-            Logger.printException(() -> "fetchQueue failure", ex);
-        }
+        });
     }
 
     private static void saveToPlaylist(Context context) {
@@ -307,57 +291,55 @@ public class PlaylistPatch {
             return;
         }
         try {
-            GetPlaylistsRequest.fetchRequestIfNeeded(currentPlaylistId, getRequestHeader());
-            runOnMainThreadDelayed(() -> {
-                GetPlaylistsRequest request = GetPlaylistsRequest.getRequestForPlaylistId(currentPlaylistId);
-                if (request == null) {
-                    return;
-                }
+            GetPlaylistsRequest request = GetPlaylistsRequest.fetchRequestIfNeeded(
+                    currentPlaylistId, getRequestHeader());
+            if (request == null) {
+                return;
+            }
+            Utils.runOnBackgroundThread(() ->  {
                 Pair<String, String>[] playlists = request.getPlaylists();
-                if (playlists == null) {
-                    return;
-                }
+                Utils.runOnMainThread(() -> {
+                    SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
+                            .createMainLayout(context, null);
+                    Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * playlists.length);
+                    int libraryIconId = QueueManager.SAVE_QUEUE.drawableId;
 
-                SheetBottomDialog.DraggableLinearLayout mainLayout = SheetBottomDialog
-                        .createMainLayout(context, null);
-                Map<View, Runnable> actionsMap = new LinkedHashMap<>(2 * playlists.length);
-                int libraryIconId = QueueManager.SAVE_QUEUE.drawableId;
+                    LinearLayout listContainer = new LinearLayout(context);
+                    listContainer.setOrientation(LinearLayout.VERTICAL);
 
-                LinearLayout listContainer = new LinearLayout(context);
-                listContainer.setOrientation(LinearLayout.VERTICAL);
-
-                for (Pair<String, String> playlist : playlists) {
-                    String listId = playlist.getFirst();
-                    String title = playlist.getSecond();
-                    Runnable action = () -> saveToPlaylist(listId, title);
-                    View itemLayout = createItemLayout(context, title, libraryIconId);
-                    actionsMap.put(itemLayout, action);
-                    listContainer.addView(itemLayout);
-                }
-
-                ScrollView scrollView = new ScrollView(context) {
-                    @Override
-                    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-                        heightMeasureSpec = MeasureSpec.makeMeasureSpec(Dim.pctHeight(50), MeasureSpec.AT_MOST);
-                        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                    for (Pair<String, String> playlist : playlists) {
+                        String listId = playlist.getFirst();
+                        String title = playlist.getSecond();
+                        Runnable action = () -> saveToPlaylist(listId, title);
+                        View itemLayout = createItemLayout(context, title, libraryIconId);
+                        actionsMap.put(itemLayout, action);
+                        listContainer.addView(itemLayout);
                     }
-                };
-                scrollView.setVerticalScrollBarEnabled(false);
-                scrollView.addView(listContainer);
-                mainLayout.addView(scrollView);
 
-                SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
-                        .createSlideDialog(context, mainLayout, 300);
-                for (Map.Entry<View, Runnable> entry : actionsMap.entrySet()) {
-                    Runnable action = entry.getValue();
-                    entry.getKey().setOnClickListener(v -> {
-                        dialog.dismiss();
-                        action.run();
-                    });
-                }
-                dialog.show();
-                GetPlaylistsRequest.clear();
-            }, DELAY_MILLISECONDS);
+                    ScrollView scrollView = new ScrollView(context) {
+                        @Override
+                        protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+                            heightMeasureSpec = MeasureSpec.makeMeasureSpec(Dim.pctHeight(50), MeasureSpec.AT_MOST);
+                            super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+                        }
+                    };
+                    scrollView.setVerticalScrollBarEnabled(false);
+                    scrollView.addView(listContainer);
+                    mainLayout.addView(scrollView);
+
+                    SheetBottomDialog.SlideDialog dialog = SheetBottomDialog
+                            .createSlideDialog(context, mainLayout, 300);
+                    for (Map.Entry<View, Runnable> entry : actionsMap.entrySet()) {
+                        Runnable action = entry.getValue();
+                        entry.getKey().setOnClickListener(v -> {
+                            dialog.dismiss();
+                            action.run();
+                        });
+                    }
+                    dialog.show();
+                    GetPlaylistsRequest.clear();
+                });
+            });
         } catch (Exception ex) {
             Logger.printException(() -> "saveToPlaylist failure", ex);
         }
@@ -369,14 +351,12 @@ public class PlaylistPatch {
                 handleCheckError(checkFailedPlaylistId);
                 return;
             }
-            SavePlaylistRequest.fetchRequestIfNeeded(playlistId, libraryId, getRequestHeader());
-
-            runOnMainThreadDelayed(() -> {
-                SavePlaylistRequest request = SavePlaylistRequest.getRequestForLibraryId(libraryId);
-                if (request == null) {
-                    return;
-                }
-
+            SavePlaylistRequest request = SavePlaylistRequest.fetchRequestIfNeeded(
+                    playlistId, libraryId, getRequestHeader());
+            if (request == null) {
+                return;
+            }
+            Utils.runOnBackgroundThread(() -> {
                 Boolean result = request.getResult();
                 if (Boolean.TRUE.equals(result)) {
                     showToast(String.format(fetchSucceededSave, libraryTitle));
@@ -384,7 +364,7 @@ public class PlaylistPatch {
                     return;
                 }
                 showToast(fetchFailedSave);
-            }, DELAY_MILLISECONDS);
+            });
         } catch (Exception ex) {
             Logger.printException(() -> "saveToPlaylist failure", ex);
         }
@@ -395,35 +375,37 @@ public class PlaylistPatch {
     }
 
     private static void openQueue(Context context, String currentVideoId, boolean openVideo, boolean reload) {
-        String currentPlaylistId = playlistId;
-        if (currentPlaylistId.isEmpty()) {
-            handleCheckError(checkFailedQueue);
-            return;
-        }
-        try {
-            String url;
-            if (openVideo) {
-                if (StringUtils.isEmpty(currentVideoId)) {
-                    handleCheckError(checkFailedVideoId);
-                    return;
-                }
-                if (reload) {
-                    url = "https://youtu.be/" + VideoInformation.getVideoId()
-                            + "?list=" + currentPlaylistId;
-                } else {
-                    url = "https://youtu.be/" + currentVideoId + "?list=" + currentPlaylistId;
-                }
-            } else {
-                url = "https://www.youtube.com/playlist?list=" + currentPlaylistId;
+        Utils.runOnMainThreadNowOrLater(() -> {
+            String currentPlaylistId = playlistId;
+            if (currentPlaylistId.isEmpty()) {
+                handleCheckError(checkFailedQueue);
+                return;
             }
+            try {
+                String url;
+                if (openVideo) {
+                    if (StringUtils.isEmpty(currentVideoId)) {
+                        handleCheckError(checkFailedVideoId);
+                        return;
+                    }
+                    if (reload) {
+                        url = "https://youtu.be/" + VideoInformation.getVideoId()
+                                + "?list=" + currentPlaylistId;
+                    } else {
+                        url = "https://youtu.be/" + currentVideoId + "?list=" + currentPlaylistId;
+                    }
+                } else {
+                    url = "https://www.youtube.com/playlist?list=" + currentPlaylistId;
+                }
 
-            Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(url));
-            intent.setPackage(context.getPackageName());
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(intent);
-        } catch (Exception ex) {
-            Logger.printException(() -> "openQueue failure", ex);
-        }
+                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(url));
+                intent.setPackage(context.getPackageName());
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+            } catch (Exception ex) {
+                Logger.printException(() -> "openQueue failure", ex);
+            }
+        });
     }
 
     private static void handleCheckError(String reason) {
@@ -440,7 +422,7 @@ public class PlaylistPatch {
                 "yt_outline_list_add_black_24",
                 "yt_outline_experimental_playlist_add_vd_theme_24",
                 context -> {
-                    fetchQueue(context, false, false, false, false);
+                    fetchQueue(context, false, false, false, false, true);
                     return null;
                 }
         ),
@@ -449,7 +431,7 @@ public class PlaylistPatch {
                 "yt_outline_list_add_black_24",
                 "yt_outline_experimental_playlist_add_vd_theme_24",
                 context -> {
-                    fetchQueue(context, false, true, false, false);
+                    fetchQueue(context, false, true, false, false, true);
                     return null;
                 }
         ),
@@ -458,7 +440,7 @@ public class PlaylistPatch {
                 "yt_outline_list_play_arrow_black_24",
                 "yt_outline_experimental_playlist_vd_theme_24",
                 context -> {
-                    fetchQueue(context, false, true, true, false);
+                    fetchQueue(context, false, true, true, false, true);
                     return null;
                 }
         ),
@@ -467,7 +449,7 @@ public class PlaylistPatch {
                 "yt_outline_arrow_circle_black_24",
                 "yt_outline_experimental_replay_vd_theme_24",
                 context -> {
-                    fetchQueue(context, false, true, true, true);
+                    fetchQueue(context, false, true, true, true, true);
                     return null;
                 }
         ),
@@ -476,7 +458,7 @@ public class PlaylistPatch {
                 "yt_outline_trash_can_black_24",
                 "yt_outline_experimental_circle_slash_vd_theme_24",
                 context -> {
-                    fetchQueue(context, true, false, false, false);
+                    fetchQueue(context, true, false, false, false, true);
                     return null;
                 }
         ),
@@ -485,7 +467,7 @@ public class PlaylistPatch {
                 "yt_outline_trash_can_black_24",
                 "yt_outline_experimental_circle_slash_vd_theme_24",
                 context -> {
-                    fetchQueue(context, true, true, false, false);
+                    fetchQueue(context, true, true, false, false, true);
                     return null;
                 }
         ),
@@ -494,7 +476,7 @@ public class PlaylistPatch {
                 "yt_outline_arrow_circle_black_24",
                 "yt_outline_experimental_replay_vd_theme_24",
                 context -> {
-                    fetchQueue(context, true, true, true, true);
+                    fetchQueue(context, true, true, true, true, true);
                     return null;
                 }
         ),

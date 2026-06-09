@@ -208,9 +208,9 @@ public class StreamOrDetailsDataRequest {
                                           boolean showErrorToasts) {
         Objects.requireNonNull(clientType);
         Objects.requireNonNull(videoId);
+        Utils.verifyOffMainThread();
 
         final boolean isStream = clientType.endpoint == GET_PLAYER_STREAMING_DATA || clientType.endpoint == GET_REEL_STREAMING_DATA;
-
         final long startTime = System.currentTimeMillis();
 
         try {
@@ -467,7 +467,7 @@ public class StreamOrDetailsDataRequest {
             // and never block the main thread.
             // But if debugging, then still verify this is the situation.
             if (BaseSettings.DEBUG.get() && !fetchIsDone() && Utils.isCurrentlyOnMainThread()) {
-                Logger.printException(() -> "Debug: Blocking main thread");
+                Logger.printException(() -> "Debug: StreamOrDetailsDataRequest blocking main thread");
             }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {

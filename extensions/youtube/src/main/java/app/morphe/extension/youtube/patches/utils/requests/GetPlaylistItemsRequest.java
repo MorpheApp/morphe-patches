@@ -20,6 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 
 public class GetPlaylistItemsRequest {
@@ -29,6 +30,7 @@ public class GetPlaylistItemsRequest {
 
     @Nullable
     public static Map<String, String> fetch(String playlistId, Map<String, String> requestHeader) {
+        Utils.verifyOffMainThread();
         final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching playlist items for: " + playlistId);
 
@@ -78,6 +80,10 @@ public class GetPlaylistItemsRequest {
     @Nullable
     private static Map<String, String> parseResponse(JSONObject json) {
         try {
+            if (!json.has("contents")) {
+                Logger.printDebug(() -> "JSON contents are missing, cannot parse response");
+                return null;
+            }
             JSONObject contents = json.getJSONObject("contents");
             JSONObject columnRenderer = contents.optJSONObject("singleColumnBrowseResultsRenderer");
             if (columnRenderer == null) {

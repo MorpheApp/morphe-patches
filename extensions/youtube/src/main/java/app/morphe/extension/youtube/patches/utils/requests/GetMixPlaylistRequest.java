@@ -25,6 +25,7 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.BaseSettings;
 
 public class GetMixPlaylistRequest {
     private static final long MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000; // 20 seconds
@@ -40,6 +41,9 @@ public class GetMixPlaylistRequest {
 
     public Boolean getResult() {
         try {
+            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
+                Logger.printException(() -> "Debug: GetMixPlaylistRequest blocking main thread");
+            }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getResult timed out", ex);
@@ -53,11 +57,12 @@ public class GetMixPlaylistRequest {
         return null;
     }
 
-    public static void fetchRequestIfNeeded(String videoId, Map<String, String> requestHeader) {
+    public static GetMixPlaylistRequest fetchRequestIfNeeded(String videoId, Map<String, String> requestHeader) {
         cache.computeIfAbsent(
                 Objects.requireNonNull(videoId),
                 k -> new GetMixPlaylistRequest(videoId, requestHeader)
         );
+        return cache.get(videoId);
     }
 
     @Nullable
@@ -72,6 +77,7 @@ public class GetMixPlaylistRequest {
     @Nullable
     private static JSONObject sendRequest(String videoId, Map<String, String> requestHeader) {
         Objects.requireNonNull(videoId);
+        Utils.verifyOffMainThread();
 
         final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching get mix playlist, videoId: " + videoId);
