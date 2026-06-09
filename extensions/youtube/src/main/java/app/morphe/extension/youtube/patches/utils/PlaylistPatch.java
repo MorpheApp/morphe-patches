@@ -54,8 +54,6 @@ import kotlin.Pair;
 
 @SuppressWarnings({"unused", "StaticFieldLeak"})
 public class PlaylistPatch {
-    private static final long DELAY_MILLISECONDS = 1500L;
-
     private static final String checkFailedAuth = str("morphe_queue_manager_check_failed_auth");
     private static final String checkFailedPlaylistId = str("morphe_queue_manager_check_failed_playlist_id");
     private static final String checkFailedQueue = str("morphe_queue_manager_check_failed_queue");
