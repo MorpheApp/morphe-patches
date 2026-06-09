@@ -8,7 +8,10 @@ public class RemoveViewerDiscretionDialogPatch {
     /**
      * Injection point.
      */
-    public static boolean hideViewDiscretionDialog() {
-        return Settings.REMOVE_VIEWER_DISCRETION_DIALOG.get();
+    public static boolean hideViewDiscretionDialog(boolean originalValue) {
+        if (Settings.REMOVE_VIEWER_DISCRETION_DIALOG.get()) {
+            return true;
+        }
+        return originalValue;
     }
 }

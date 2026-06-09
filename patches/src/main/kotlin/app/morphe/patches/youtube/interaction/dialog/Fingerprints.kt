@@ -1,14 +1,16 @@
 package app.morphe.patches.youtube.interaction.dialog
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object AllowControversialContentFingerprint : Fingerprint(
+internal object AdultContentRunnableFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
@@ -21,5 +23,21 @@ internal object AllowControversialContentFingerprint : Fingerprint(
             location = MatchAfterWithin(4)
         ),
         string("allowAdultContent")
+    )
+)
+
+internal object AdultContentSetPropertiesFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf(),
+    strings = listOf(
+        "onTheGoPanelOpen",
+        "playerVisibility",
+    ),
+    filters = listOf(
+        opcode(Opcode.IGET_BOOLEAN),
+        string("allowAdultContent", location = MatchAfterImmediately()),
+        fieldAccess(opcode = Opcode.IGET_BOOLEAN, location = MatchAfterWithin(2)),
+        string("allowControversialContent", location = MatchAfterImmediately()),
     )
 )
