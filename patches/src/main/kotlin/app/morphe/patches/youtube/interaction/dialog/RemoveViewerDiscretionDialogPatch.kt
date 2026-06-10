@@ -16,9 +16,9 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction22c
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
@@ -42,29 +42,25 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
         )
 
         fun applyPatch(instructionIndex: Int, instructionRegister: Int, method: MutableMethod, isBoolWrapper: Boolean) {
+            val (firstSmali, lastSmali) = if (isBoolWrapper) {
+                """
+                    invoke-virtual { v$instructionRegister }, Ljava/lang/Boolean;->booleanValue()Z
+                    move-result v$instructionRegister
+                """ to """
+                    invoke-static { v$instructionRegister }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+                    move-result-object v$instructionRegister
+                """
+            } else {
+                "" to ""
+            }
+
             method.addInstructions(
                 instructionIndex,
                 """
-                    ${
-                        if (isBoolWrapper)
-                            """
-                                invoke-virtual { v$instructionRegister }, Ljava/lang/Boolean;->booleanValue()Z
-                                move-result v$instructionRegister
-                            """
-                        else
-                            ""
-                    }
+                    $firstSmali
                     invoke-static { v$instructionRegister }, $EXTENSION_CLASS->hideViewDiscretionDialog(Z)Z
                     move-result v$instructionRegister
-                    ${
-                        if (isBoolWrapper)
-                            """
-                                invoke-static { v$instructionRegister }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-                                move-result-object v$instructionRegister
-                            """
-                        else
-                            ""
-                    }
+                    $lastSmali
                 """
             )
         }
@@ -77,7 +73,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             filters = listOf(
                 methodCall(
                     opcode = Opcode.INVOKE_VIRTUAL,
-                    smali = "Ljava/lang/Boolean;->booleanValue()Z",
+                    smali = "Ljava/lang/Boolean;->booleanValue()Z"
                 ),
                 opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
                 opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(2)),
@@ -86,8 +82,8 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
                     opcode = Opcode.INVOKE_DIRECT,
                     name = "<init>",
                     definingClass = AdultContentRunnableFingerprint.method.definingClass,
-                    location = MatchAfterWithin(3),
-                ),
+                    location = MatchAfterWithin(3)
+                )
             )
         )
         skipDialogFingerprint.let { fingerprint ->
@@ -95,10 +91,9 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
                 fingerprint.instructionMatches[3],
                 fingerprint.instructionMatches[1],
             ).forEach { instruction ->
-                val instructionIndex =
-                    instruction.index
-                val instructionRegister =
-                    fingerprint.method.getInstruction<OneRegisterInstruction>(instructionIndex).registerA
+                val instructionIndex = instruction.index
+                val instructionRegister = fingerprint.method
+                    .getInstruction<OneRegisterInstruction>(instructionIndex).registerA
 
                 applyPatch(instructionIndex + 1, instructionRegister, fingerprint.method, false)
             }
@@ -137,16 +132,14 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             filters = listOf(
                 fieldAccess(
                     opcode = Opcode.IPUT_BOOLEAN,
-                    smali = adultContentSetPropertiesMethod.getInstruction<BuilderInstruction22c>(
-                                adultContentSetPropertiesMatches[0].index
-                            ).reference.toString()
+                    smali = adultContentSetPropertiesMatches[0]
+                        .getInstruction<ReferenceInstruction>().reference.toString()
                 ),
                 fieldAccess(
                     opcode = Opcode.IPUT_BOOLEAN,
                     location = MatchAfterWithin(3),
-                    smali = adultContentSetPropertiesMethod.getInstruction<BuilderInstruction22c>(
-                                adultContentSetPropertiesMatches[2].index
-                            ).reference.toString()
+                    smali = adultContentSetPropertiesMatches[2]
+                        .getInstruction<ReferenceInstruction>().reference.toString()
                 ),
             )
         ).let {fingerprint ->
@@ -154,10 +147,9 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
                 fingerprint.instructionMatches[1],
                 fingerprint.instructionMatches[0],
             ).forEach { instruction ->
-                val instructionIndex =
-                    instruction.index
-                val instructionRegister =
-                    fingerprint.method.getInstruction<TwoRegisterInstruction>(instructionIndex).registerA
+                val instructionIndex = instruction.index
+                val instructionRegister = fingerprint.method
+                    .getInstruction<TwoRegisterInstruction>(instructionIndex).registerA
 
                 applyPatch(instructionIndex, instructionRegister, fingerprint.method, false)
             }
