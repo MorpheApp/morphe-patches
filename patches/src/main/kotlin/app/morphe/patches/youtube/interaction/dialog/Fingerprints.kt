@@ -20,7 +20,7 @@ internal object AdultContentRunnableFingerprint : Fingerprint(
         methodCall(
             parameters = listOf(),
             returnType = "Z",
-            location = MatchAfterWithin(4)
+            location = MatchAfterWithin(1)
         ),
         string("allowAdultContent")
     )
@@ -31,8 +31,9 @@ internal object AdultContentSetPropertiesFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     parameters = listOf(),
     strings = listOf(
-        "onTheGoPanelOpen",
-        "playerVisibility",
+        "lastAudioTurnedOnInlinePlaybackId",
+        "lastAudioTurnedOffInlinePlaybackId",
+        "captionsRequested",
     ),
     filters = listOf(
         opcode(Opcode.IGET_BOOLEAN),

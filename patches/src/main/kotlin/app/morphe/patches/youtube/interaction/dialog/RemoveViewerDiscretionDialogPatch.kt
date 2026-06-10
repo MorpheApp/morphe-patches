@@ -121,7 +121,6 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
         // endregion
 
         // region unlock related videos for restricted videos
-        val adultContentSetPropertiesMethod = AdultContentSetPropertiesFingerprint.method
         val adultContentSetPropertiesMatches = AdultContentSetPropertiesFingerprint.instructionMatches
 
         Fingerprint(
