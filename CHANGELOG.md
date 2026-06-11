@@ -1,3 +1,35 @@
+## [1.31.0-dev.12](https://github.com/MorpheApp/morphe-patches/compare/v1.31.0-dev.11...v1.31.0-dev.12) (2026-06-11)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Queue Manager:** Fix black queue icon in legacy player ([7416c24](https://github.com/MorpheApp/morphe-patches/commit/7416c240ca9412b50fd7a26bb638f3ce5fd375cd))
+* **YouTube - Remove viewer discretion dialog:** Dialog cannot be dismissed ([#1710](https://github.com/MorpheApp/morphe-patches/issues/1710)) ([b962bd0](https://github.com/MorpheApp/morphe-patches/commit/b962bd0c485a5bea1b46bd55fee5943aefd797bd))
+
+### ✨ New Features
+
+* **YouTube - Change form factor:** Add `Enable tablet layout in player` setting ([#1695](https://github.com/MorpheApp/morphe-patches/issues/1695)) ([6376142](https://github.com/MorpheApp/morphe-patches/commit/6376142395508e76e64ce8188e4477bb181842ed))
+
+## [1.31.0-dev.11](https://github.com/MorpheApp/morphe-patches/compare/v1.31.0-dev.10...v1.31.0-dev.11) (2026-06-10)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Save to watch later:** Handle saved playlist is no longer available ([#1701](https://github.com/MorpheApp/morphe-patches/issues/1701)) ([bf04fb7](https://github.com/MorpheApp/morphe-patches/commit/bf04fb7c1d5c7e570bb62162066470bbaf6c388a))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add "Hide 'Sync to video' button" setting ([#1694](https://github.com/MorpheApp/morphe-patches/issues/1694)) ([e870d1e](https://github.com/MorpheApp/morphe-patches/commit/e870d1eb3d008065e4700030e2a4c51f6cf4a8a4))
+
+## [1.31.0-dev.10](https://github.com/MorpheApp/morphe-patches/compare/v1.31.0-dev.9...v1.31.0-dev.10) (2026-06-09)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Theme:** Light color theme is not applied ([#1689](https://github.com/MorpheApp/morphe-patches/issues/1689)) ([5925a8e](https://github.com/MorpheApp/morphe-patches/commit/5925a8eb84c2c77903ffba5151730f61c38cd899))
+
+### ✨ New Features
+
+* **YouTube - Hide layout components:** Add path `&` syntax to custom filters ([#1693](https://github.com/MorpheApp/morphe-patches/issues/1693)) ([2ab0366](https://github.com/MorpheApp/morphe-patches/commit/2ab0366c8ae9dc6de3f361ed5a5d7ce446b4e8cd))
+* **YouTube - Playback speed:** Add `Disable playback speed for music` setting ([#1691](https://github.com/MorpheApp/morphe-patches/issues/1691)) ([81c8f50](https://github.com/MorpheApp/morphe-patches/commit/81c8f50f408750e0d8434310d786c1e5fab59872))
+
 ## [1.31.0-dev.9](https://github.com/MorpheApp/morphe-patches/compare/v1.31.0-dev.8...v1.31.0-dev.9) (2026-06-08)
 
 ### 🐛 Bug Fixes

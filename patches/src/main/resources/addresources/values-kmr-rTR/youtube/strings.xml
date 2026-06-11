@@ -133,6 +133,7 @@ Guherînan têne xistine:
   <string name="morphe_hide_medical_panels_title">Panelên tibbî veşêrin</string>
   <string name="morphe_hide_snackbar_title">Liê hejîkirina navnîşê</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Hêbûna rêberiyên nermalina internetê ve nebînîne.</string>
+  <string name="morphe_hide_sync_button_title">Bişînin \'Senkronîzekirina bi vîdyoyê re\' bikirin</string>
   <string name="morphe_hide_timed_reactions_title">Reaksiyonên demdirêj ve nebînîne.</string>
   <string name="morphe_hide_timed_reactions_summary">Taybeta ku dihêle bavêjan emojiyan di beşa şîroveyan de û di chatê de bersîv bidin veşêrin</string>
   <string name="morphe_hide_video_title_title">Sernuke video قایپە</string>
@@ -273,13 +274,13 @@ Sînorgertî:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Reklamên vîdyoyê veşêrin</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL kopî kirin li ser qutikê</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL-a bi demnîşana kopîkirî li klîpbortê</string>
-  <string name="morphe_copy_video_url_button_title">Pişka da ku URL-a vîdyoyê kopye bikî, pişk da bidin ku kopyekî bi demê re bidin</string>
-  <string name="morphe_copy_video_url_button_summary">Ekstra frameya vîdyoyê ji</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Copy timestamp by default</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Reverses the tap and tap-and-hold actions of \'Copy video URL\' button</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Lînkê hat kopîkirin ser klîpbordê</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Lînkê bi demê hat kopîkirin ser klîpbordê</string>
+  <string name="morphe_copy_video_link_button_title">Şîroveka kopîkirina lînkê vîdyoyê nîşan bide</string>
+  <string name="morphe_copy_video_link_button_summary">Vê girêdana vîdyoyê bikirin da ku kopî bikin, bikirin û bidin girtin da ku bi demnivîsê re kopî bikin</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Copy timestamp by default</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Tevgera bikirinê û bikirin û girtinê ya bişêvekirina \'Girêdana vîdyoyê kopî bikin\' bişêvekirin</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Dialoga îgaqê bikêrkirina sêwitan ji holê derxist</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Ev astengê giranbûna temenê neke. Têkiliya temenê otomatîkî qebûl dike</string>
@@ -1026,6 +1027,8 @@ Qeşeyê otomotîvê
 • Dema bi Shortsê re, rêzika lîstinê û konteynerek Dengê nîn in
 • Shorts di xîlstokê asayî de vekirin
 • Barê çalakiyê ya vîdyoyê pêşîne nedin"</string>
+  <string name="morphe_tablet_layout_in_player_title">Rêvekirina sêwirana tabletê di lîstikvan de</string>
+  <string name="morphe_tablet_layout_in_player_summary">Mîzegeha layouta lîstikvanê yê kevnar vegerîne</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Versona asayî</string>
   <string name="morphe_spoof_app_version_summary">Serverê qedexe dike ku bi hesinkirina guhertoyek kevnertirîn ya app-ê, taybetmendiyên berê yên UI-yê vegerîne</string>
@@ -1110,7 +1113,6 @@ Sînordarî: Bikaranîna Butona paşve li ser Toolbarê dibe ku kar neke"</strin
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Tekreng</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Dane serlêdanên dorpelê</string>
   <string name="morphe_miniplayer_hide_subtext_title">Dane metinên kêm</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Dane butonên dirvekînin pêş û paş</string>
   <string name="morphe_miniplayer_width_dip_title">Rengê Sebarê</string>
   <string name="morphe_miniplayer_width_dip_summary">Destbîne ranga sereke ya barkê pêşkeftina vîdeoyê</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Mezinahiya pîksele divê di navbera %1$s û %2$s de be</string>
@@ -1198,9 +1200,9 @@ Li vir bitapîre ji bo bêtir hêsanîyê li ser DeArrow"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Nişana rêjê li ser ekrana qefilê û panela agahdarkirinê rakîr bike</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Dibe ku nûvekirina detalên login-a hesabê xwe kir, MicroG-yê saz bike û ji nûve saz bike.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Ji bo vegînê URL-an derbas bike</string>
-  <string name="morphe_bypass_url_redirects_summary">Opens the original URL directly, bypassing the tracking link (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Berbestkirina veguhastinên girêdanê</string>
+  <string name="morphe_bypass_link_redirects_summary">Girêdana orjînal rasterast vekirin, veguhastina şopandinê dîtin (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Lînkên vekin li navigerê</string>
   <string name="morphe_external_browser_summary">Opens links in an external browser instead of the in-app browser</string>
@@ -1244,6 +1246,8 @@ Li vir bitapîre ji bo bêtir hêsanîyê li ser DeArrow"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Shows a notification when a new default playback speed is saved</string>
   <string name="morphe_playback_speed_default_title">Kêşeya sere ya lêxistinê</string>
   <string name="morphe_remember_playback_speed_toast">Leza hêsîna serî ya pêşînkirina lîstikê hate guherandin: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Mûzîkê bi serîhêdîya normal bikar bine</string>
+  <string name="morphe_disable_playback_speed_music_summary">Vîdyoyên muzîkê her gav bi leza 1.0x bilîzin</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Ji vegirtina vîdyoyê ya HDR qut biqevîne</string>
   <string name="morphe_force_avc_codec_title">Koda AVC (H.264) bi zorê bikar bîne</string>

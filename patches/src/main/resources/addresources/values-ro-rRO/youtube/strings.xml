@@ -131,6 +131,7 @@ Schimbari incluse:
   <string name="morphe_hide_medical_panels_title">Ascunde panourile medicale</string>
   <string name="morphe_hide_snackbar_title">Ascunde bara de gustări</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Ascunde ghidurile comunității abonaților</string>
+  <string name="morphe_hide_sync_button_title">Ascunde butonul „Sincronizare cu video”</string>
   <string name="morphe_hide_timed_reactions_title">Ascunde reacţiile cronologie </string>
   <string name="morphe_hide_timed_reactions_summary">Ascunde funcția care permite utilizatorilor să reacționeze cu emoji-uri în secțiunea de comentarii și chat live</string>
   <string name="morphe_hide_video_title_title">Ascunde titlul videoclipului</string>
@@ -271,13 +272,13 @@ Limitări:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Ascunde reclamele video</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL copiat în clipboard</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">Adresa URL cu marcaj de timp a fost copiată în clipboard</string>
-  <string name="morphe_copy_video_url_button_title">Afișează butonul Copiere URL video</string>
-  <string name="morphe_copy_video_url_button_summary">Atingeți pentru a copia URL-ul video, atingeți și mențineți apăsat pentru a copia cu marcaj temporal</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Copiază timestamp-ul implicit</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Inversează acțiunile de atingere și atingere lungă ale butonului „Copiere URL video”</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Link copiat în clipboard</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Link cu marcaj temporal copiat în clipboard</string>
+  <string name="morphe_copy_video_link_button_title">Afișare buton copie URL</string>
+  <string name="morphe_copy_video_link_button_summary">Atingeți pentru a copia linkul video, atingeți și mențineți apăsat pentru a copia cu marcaj temporal</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Copiază timestamp-ul implicit</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Inversează acțiunile de atingere și atingere-menținere ale butonului \"Copiere link video\"</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Eliminați dialogul discreționar al vizualizatorului</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Aceasta nu ocolește restricția de vârstă. O acceptă automat</string>
@@ -1022,6 +1023,8 @@ Aspectul pentru Automotive
 • Butonul Remix și Butonul Sunet nu sunt disponibile în Shorts
 • Shorts se deschid în playerul normal
 • Bara de acțiuni video nu este pliată"</string>
+  <string name="morphe_tablet_layout_in_player_title">Activează aspectul tabletă în player</string>
+  <string name="morphe_tablet_layout_in_player_summary">Restabilește aspectul vechi al playerului</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Falsifică versiunea aplicației</string>
   <string name="morphe_spoof_app_version_summary">Păcălește serverul să creadă că utilizezi o versiune mai veche a aplicației pentru a restabili funcțiile UI moștenite</string>
@@ -1106,7 +1109,6 @@ Limitare: Utilizarea butonului Înapoi de pe bara de instrumente s-ar putea să 
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Împiedică închiderea miniplayerului prin glisarea lui orizontală în afara ecranului</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Ascunde butoanele suprapuse</string>
   <string name="morphe_miniplayer_hide_subtext_title">Ascunde subtexte</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Ascunde butoanele de omitere înainte şi înapoi</string>
   <string name="morphe_miniplayer_width_dip_title">Dimensiune implicită</string>
   <string name="morphe_miniplayer_width_dip_summary">Stabilește dimensiunea inițială a ecranului, în pixeli</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Dimensiunea pixelului trebuie să fie între %1$s și %2$s</string>
@@ -1194,9 +1196,9 @@ Atingeți aici pentru a afla mai multe despre DeArrow"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Împiedică tragerea barei de căutare pe ecranul de blocare și panoul de notificări</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Dacă ți-ai schimbat recent detaliile de conectare la cont, dezinstalează și reinstalează MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Ignoră redirecționările adreselor URL</string>
-  <string name="morphe_bypass_url_redirects_summary">Deschide direct adresa URL originală, ocolind linkul de urmărire (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Ignoră redirecționările linkurilor</string>
+  <string name="morphe_bypass_link_redirects_summary">Deschide linkul original direct, ignorând linkul de urmărire (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Deschide link-uri în browser</string>
   <string name="morphe_external_browser_summary">Deschide linkurile într-un browser extern în loc de browserul din aplicație</string>
@@ -1240,6 +1242,8 @@ Atingeți aici pentru a afla mai multe despre DeArrow"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Afișează o notificare când se salvează o viteză de redare implicită nouă</string>
   <string name="morphe_playback_speed_default_title">Viteza de redare implicită</string>
   <string name="morphe_remember_playback_speed_toast">Viteza de redare implicită a fost modificată la: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Utilizaţi viteza normală pentru muzică</string>
+  <string name="morphe_disable_playback_speed_music_summary">Reda înviteza videoclipurile muzicale în mod constant la 1.0x</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Dezactivați videoclipurile HDR</string>
   <string name="morphe_force_avc_codec_title">Forțează codec-ul AVC (H.264)</string>

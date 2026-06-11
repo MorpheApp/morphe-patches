@@ -183,9 +183,7 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">वीडियो विज्ञापन छिपाएं</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL क्लिपबोर्ड में कॉपी किया गया</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL शीर्षकको साथ क्लिपबोर्डमा प्रतिलिपि गरियो</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">दर्शक विवेक संवाद हटाएं</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -721,7 +719,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">क्षैतिज ड्रैग जेस्चर डिसेबल करी</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ओवरले बटन छुपावे</string>
   <string name="morphe_miniplayer_hide_subtext_title">सबटेक्स्ट छुपावे</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">फास्ट फॉरवर्ड और बैक बटन छुपावे</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">पिक्सेल आकार %1$s और %2$s के बीच होखे के चाहिए</string>
   <string name="morphe_miniplayer_opacity_title">ओवरले अपारदर्शिता</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">मिनीप्लेयर ओवरले अपारदर्शिता 0 और 100 के बीच होखे के चहिए</string>
@@ -781,8 +778,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_notification_media_seekbar_title">सर्कबार अक्षम गर्नुहोस्</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">यदि तपाईंले हालै आफ्नो खाताको लगइन विवरणहरू परिवर्तन गर्नुभएको छ भने, कृपया MicroG स्थापना रद्द गर्नुहोस् र पुन: स्थापना गर्नुहोस्।</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">URL रीडायरेक्ट बाईपास करी</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">लिंक ब्राउजर में खोलि</string>
   <!-- video.quality.rememberVideoQualityPatch -->

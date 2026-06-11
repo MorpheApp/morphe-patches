@@ -131,6 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_medical_panels_title">মেডিকেল প্যানেল লুকান</string>
   <string name="morphe_hide_snackbar_title">স্ন্যাকবার লুকান</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">সাবস্ক্রাইবার নির্দেশিকা লুকান</string>
+  <string name="morphe_hide_sync_button_title">\'ভিডিওর সাথে সিঙ্ক করুন\' বোতামটি লুকিয়ে রাখুন</string>
   <string name="morphe_hide_timed_reactions_title">সময় অনুযায়ী প্রতিক্রিয়া লুকান</string>
   <string name="morphe_hide_timed_reactions_summary">মন্তব্য এবং লাইভ চ্যাট বিভাগে ইমোজি দিয়ে প্রতিক্রিয়া জানানোর বৈশিষ্ট্যটি লুকায়</string>
   <string name="morphe_hide_video_title_title">ভিডিওর শিরোনাম লুকান</string>
@@ -271,13 +272,13 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">ভিডিও বিজ্ঞাপন লুকান</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">ক্লিপবোর্ডে URL অনুলিপি করা হয়েছে</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">টাইমস্ট্যাম্প সহ URL ক্লিপবোর্ডে অনুলিপি করা হয়েছে</string>
-  <string name="morphe_copy_video_url_button_title">ভিডিও URL কপি বোতাম দেখান</string>
-  <string name="morphe_copy_video_url_button_summary">ভিডিও URL কপি করতে আলতো চাপুন, টাইমস্ট্যাম্প সহ কপি করতে টিপুন এবং ধরে রাখুন</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">ডিফল্টভাবে টাইমস্ট্যাম্প কপি করুন</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">\'ভিডিও URL কপি করুন\' বোতামের ট্যাপ এবং ট্যাপ-এন্ড-হোল্ড অ্যাকশনগুলি বিপরীত করে।</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">ক্লিপবোর্ডে URL অনুলিপি করা হয়েছে</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">লিঙ্কটি ক্লিপবোর্ডে অনুলিপি করা হয়েছে</string>
+  <string name="morphe_copy_video_link_button_title">ভিডিও URL অনুলিপি বোতাম দেখান</string>
+  <string name="morphe_copy_video_link_button_summary">ভিডিও লিঙ্কের প্রতিলিপি করতে ট্যাপ করুন, টাইমস্ট্যাম্প সহ প্রতিলিপি করতে ট্যাপ করে ধরে রাখুন।</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">ডিফল্টভাবে টাইমস্ট্যাম্প কপি করুন</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">\'কপি ভিডিও লিঙ্ক\' বাটনের ট্যাপ এবং ট্যাপ-অ্যান্ড-হোল্ড অ্যাকশনগুলি বিপরীত করে।</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">দর্শকের বিচক্ষণতা ডায়ালগ সরান</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">এটি বয়সের সীমাবদ্ধতাকে বাইপাস করে না। এটা শুধু স্বয়ংক্রিয়ভাবে গ্রহণ করে।</string>
@@ -1006,31 +1007,33 @@ Second \"item\" text"</string>
   <string name="morphe_change_form_factor_entry_1">ডিফল্ট</string>
   <string name="morphe_change_form_factor_entry_2">ফোন</string>
   <string name="morphe_change_form_factor_entry_3">ট্যাবলেট</string>
-  <string name="morphe_change_form_factor_entry_4">স্বয়ংচালিত</string>
-  <string name="morphe_change_form_factor_user_dialog_message">"পরিবর্তনগুলির মধ্যে রয়েছে:
+  <string name="morphe_change_form_factor_entry_4">অটোমোটিভ</string>
+  <string name="morphe_change_form_factor_user_dialog_message">"যেসব পরিবর্তন এসেছে:
 
 ট্যাবলেট লেআউট
-• কমিউনিটি পোস্টগুলি লুকানো হয়েছে
-• ফিডে প্লেব্যাক সেটিংস পাওয়া যাচ্ছে না
-• শর্টসে রিমিক্স বোতাম এবং সাউন্ড বোতাম পাওয়া যাচ্ছে না
-• ভিডিও অ্যাকশন বার সংকুচিত হচ্ছে না
+• কমিউনিটি পোস্টগুলো হাইড বা লুকানো থাকবে
+• ফিডে ভিডিও চালু রাখার সেটিংটি পাওয়া যাবে না
+• শর্টস-এ রিমিক্স এবং সাউন্ড বাটন থাকবে না
+• ভিডিওর অ্যাকশন বারটি ছোট করা হয়নি
 
 অটোমোটিভ লেআউট
-• ফিড বিষয় এবং চ্যানেল অনুসারে সাজানো হয়েছে
-• ফিডে প্লেব্যাক সেটিংস পাওয়া যাচ্ছে না
-• শর্টসে রিমিক্স বোতাম এবং সাউন্ড বোতাম পাওয়া যাচ্ছে না
-• শর্টস নিয়মিত প্লেয়ারে খুলবে
-• ভিডিও অ্যাকশন বার সংকুচিত হচ্ছে না"</string>
+• ফিডটি টপিক এবং চ্যানেলের ভিত্তিতে সাজানো হয়েছে
+• ফিডে ভিডিও চালু রাখার সেটিংটি পাওয়া যাবে না
+• শর্টস-এ রিমিক্স এবং সাউন্ড বাটন থাকবে না
+• শর্টস ভিডিওগুলো নরমাল প্লেয়ারেই চালু হবে
+• ভিডিওর অ্যাকশন বারটি ছোট করা হয়নি"</string>
+  <string name="morphe_tablet_layout_in_player_title">প্লেয়ারে ট্যাবলেট লেআউট চালু করুন</string>
+  <string name="morphe_tablet_layout_in_player_summary">পুরোনো প্লেয়ার লেআউট ফিরিয়ে আনুন</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
-  <string name="morphe_spoof_app_version_title">অ্যাপ সংস্করণ স্পুফ করুন</string>
-  <string name="morphe_spoof_app_version_summary">পুরানো UI বৈশিষ্ট্যগুলি পুনরুদ্ধার করতে সার্ভারটিকে একটি পুরানো অ্যাপ সংস্করণ ব্যবহার করার মতো করে দেখায়</string>
-  <string name="morphe_spoof_app_version_user_dialog_message">"অ্যাপ্লিকেশন সংস্করণটি YouTube-এর পুরনো সংস্করণে ভুয়া হবে।
+  <string name="morphe_spoof_app_version_title">অ্যাপের সংস্করণ স্পুফ করুন</string>
+  <string name="morphe_spoof_app_version_summary">পুরোনো ইউজার ইন্টারফেস (UI) ফিচারগুলো ফিরিয়ে আনতে সার্ভারকে এমনভাবে বিভ্রান্ত করে যেন মনে হয় আপনি অ্যাপের একটি পুরোনো সংস্করণ ব্যবহার করছেন</string>
+  <string name="morphe_spoof_app_version_user_dialog_message">"অ্যাপের ভার্সন বদলে YouTube-এর একটি পুরোনো ভার্সন করে দেওয়া হবে।
 
-এটি অ্যাপ্লিকেশনটির চেহারা এবং বৈশিষ্ট্য পরিবর্তন করবে, তবে অজানা পার্শ্ব প্রতিক্রিয়া হতে পারে।
+এতে অ্যাপের ডিজাইন ও ফিচার পরিবর্তন হবে, তবে কিছু অচেনা সমস্যা দেখা দিতে পারে।
 
-পরে যদি বন্ধ করা হয়, UI বাগ এড়াতে অ্যাপ্লিকেশন ডেটা পরিষ্কার করার পরামর্শ দেওয়া হয়।"</string>
-  <string name="morphe_spoof_app_version_target_title">স্পুফ অ্যাপ সংস্করণ লক্ষ্য</string>
-  <string name="morphe_spoof_app_version_target_entry_20_39">২০.৩৯.৪১ - পুরনো সেভ পুনরুদ্ধার করুন প্লেলিস্টে</string>
+পরে কখনো এটি বন্ধ করলে, অ্যাপের ডিজাইনে কোনো সমস্যা বা বাগ এড়াতে অ্যাপ ডাটা ক্লিয়ার (Clear Data) করার পরামর্শ দেওয়া হচ্ছে।"</string>
+  <string name="morphe_spoof_app_version_target_title">যে অ্যাপ ভার্সনে স্পুফ করবেন</string>
+  <string name="morphe_spoof_app_version_target_entry_20_39">20.39.41 - প্লেলিস্টে পুরোনো সেভ করার অপশন ফিরিয়ে আনুন</string>
   <string name="morphe_spoof_app_version_target_entry_20_28">২০.২৮.৪১ - বোল্ড আইকন ডিসএবল</string>
   <string name="morphe_spoof_app_version_target_entry_20_13">20.13.41 - ভিডিও প্লেয়ারের নিচে চ্যানেল নামটি পুনরুদ্ধার করুন।</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
@@ -1105,7 +1108,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">অনুভূমিকভাবে স্ক্রিন থেকে সোয়াইপ করে মিনিপ্লেয়ার বন্ধ করা থেকে বিরত করে</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ওভারলে বোতাম লুকান</string>
   <string name="morphe_miniplayer_hide_subtext_title">উপপাঠ লুকান</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">সামনে বা পেছনে এড়িয়ে যাওয়ার বোতাম লুকান</string>
   <string name="morphe_miniplayer_width_dip_title">ডিফল্ট আকার</string>
   <string name="morphe_miniplayer_width_dip_summary">শুরুতে স্ক্রিনে আকার, পিক্সেল-এ</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">পিক্সেল আকার %1$s এবং %2$s এর মধ্যে হতে হবে</string>
@@ -1193,9 +1195,9 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="morphe_disable_notification_media_seekbar_summary">লক স্ক্রিন এবং বিজ্ঞপ্তি প্যানেলে Seekbar সরানোর থেকে বিরত করে</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">আপনি যদি সম্প্রতি আপনার অ্যাকাউন্ট লগইন বিশদ পরিবর্তন করে থাকেন, তবে MicroG আনইনস্টল করুন এবং পুনরায় ইনস্টল করুন।</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">URL পুনঃনির্দেশ বাইপাস করুন</string>
-  <string name="morphe_bypass_url_redirects_summary">ট্র্যাকিং লিঙ্ক (youtube.com/redirect) bypass করে সরাসরি মূল URL খোলে।</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">লিঙ্ক রিডাইরেক্টগুলি বাইপাস করুন</string>
+  <string name="morphe_bypass_link_redirects_summary">ট্র্যাকিং লিঙ্ক (youtube.com/redirect) বাইপাস করে সরাসরি আসল লিঙ্ক খোলে।</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">লিংক ব্রাউজারে খুলুন</string>
   <string name="morphe_external_browser_summary">ইন-অ্যাপ ব্রাউজারের পরিবর্তে একটি বাহ্যিক ব্রাউজারে লিঙ্ক খোলে।</string>
@@ -1239,6 +1241,8 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">যখন একটি নতুন ডিফল্ট প্লেব্যাক গতি সঞ্চিত হয় তখন একটি বিজ্ঞপ্তি দেখায়।</string>
   <string name="morphe_playback_speed_default_title">প্লেব্যাকের মূল স্পিড</string>
   <string name="morphe_remember_playback_speed_toast">ডিফল্ট প্লেব্যাক স্পিড পরিবর্তন করা হয়েছে: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">স্বাভাবিক গতিতে গান শুনুন</string>
+  <string name="morphe_disable_playback_speed_music_summary">মিউজিক ভিডিও সর্বদা স্বাভাবিক (১.০x) গতিতে প্লে করুন</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR ভিডিও নিষ্ক্রিয় করুন</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) কোডেক জোর করুন</string>

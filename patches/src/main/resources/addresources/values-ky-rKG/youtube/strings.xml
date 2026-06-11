@@ -60,7 +60,7 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Видео жарнамаларын жашыруу</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -200,7 +200,7 @@ Second \"item\" text"</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <!-- misc.links.bypassURLRedirectsPatch -->
+  <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->

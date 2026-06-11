@@ -57,7 +57,7 @@ public class LinkSanitizer {
 
     public static String replaceWithShortenedURL(String url) {
         try {
-            if (url.contains("sharing/invite/")) {
+            if (url.contains("/sharing/invite/") || url.contains("/post/")) {
                 return url;
             }
             Uri uri = Uri.parse(url);

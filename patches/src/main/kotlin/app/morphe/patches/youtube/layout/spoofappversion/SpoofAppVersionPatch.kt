@@ -7,9 +7,8 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addClientVersionHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
@@ -47,28 +46,23 @@ val spoofAppVersionPatch = bytecodePatch(
         PreferenceScreen.GENERAL.addPreferences(
             // Group the switch and list preference together, since General menu is sorted by name
             // and the preferences can be scattered apart with non-English languages.
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_spoof_app_version", summary = true),
-                    if (is_20_40_or_greater) {
-                        ListPreference("morphe_spoof_app_version_target")
-                    } else if (is_20_31_or_greater) {
-                        ListPreference(
-                            key = "morphe_spoof_app_version_target",
-                            entriesKey = "morphe_spoof_app_version_target_legacy_20_31_entries",
-                            entryValuesKey = "morphe_spoof_app_version_target_legacy_20_31_entry_values"
-                        )
-                    } else {
-                        ListPreference(
-                            key = "morphe_spoof_app_version_target",
-                            entriesKey = "morphe_spoof_app_version_target_legacy_20_14_entries",
-                            entryValuesKey = "morphe_spoof_app_version_target_legacy_20_14_entry_values"
-                        )
-                    }
-                )
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_spoof_app_version", summary = true),
+                if (is_20_40_or_greater) {
+                    ListPreference("morphe_spoof_app_version_target")
+                } else if (is_20_31_or_greater) {
+                    ListPreference(
+                        key = "morphe_spoof_app_version_target",
+                        entriesKey = "morphe_spoof_app_version_target_legacy_20_31_entries",
+                        entryValuesKey = "morphe_spoof_app_version_target_legacy_20_31_entry_values"
+                    )
+                } else {
+                    ListPreference(
+                        key = "morphe_spoof_app_version_target",
+                        entriesKey = "morphe_spoof_app_version_target_legacy_20_14_entries",
+                        entryValuesKey = "morphe_spoof_app_version_target_legacy_20_14_entry_values"
+                    )
+                }
             )
         )
 

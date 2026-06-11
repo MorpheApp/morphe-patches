@@ -131,6 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_medical_panels_title">Πάνελ ιατρικών πληροφοριών</string>
   <string name="morphe_hide_snackbar_title">Απόκρυψη γραμμής γρήγορης ενέργειας</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Οδηγίες συνδρομητών</string>
+  <string name="morphe_hide_sync_button_title">Απόκρυψη κουμπιού \"Συγχρονισμός με βίντεο\"</string>
   <string name="morphe_hide_timed_reactions_title">Συγχρονισμένες αντιδράσεις</string>
   <string name="morphe_hide_timed_reactions_summary">Απόκρυψη της λειτουργίας που επιτρέπει στους χρήστες να αντιδρούν με emoji στην ενότητα σχολίων και στη ζωντανή συνομιλία</string>
   <string name="morphe_hide_video_title_title">Τίτλος του βίντεο</string>
@@ -271,13 +272,13 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Διαφημίσεις βίντεο</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">Η διεύθυνση URL αντιγράφηκε στο πρόχειρο</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">Η διεύθυνση URL με τη χρονική σήμανση αντιγράφηκε στο πρόχειρο</string>
-  <string name="morphe_copy_video_url_button_title">Εμφάνιση κουμπιού Αντιγραφή URL βίντεο</string>
-  <string name="morphe_copy_video_url_button_summary">Πατήστε για να αντιγράψετε το URL βίντεο, πατήστε και κρατήστε πατημένο για να αντιγράψετε με χρονική σήμανση</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Αντιγράφει τη χρονική σήμανση από προεπιλογή</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Αντιστρέφει τις ενέργειες πατήματος και παρατεταμένου πατήματος του κουμπιού \'Αντιγραφή URL βίντεο\'</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Η διεύθυνση URL αντιγράφηκε στο πρόχειρο</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Η διεύθυνση URL με χρονοσήμανση αντιγράφηκε στο πρόχειρο</string>
+  <string name="morphe_copy_video_link_button_title">Εμφάνιση κουμπιού αντιγραφής URL του βίντεο</string>
+  <string name="morphe_copy_video_link_button_summary">Πατήστε για να αντιγράψετε τον σύνδεσμο του βίντεο, πατήστε και κρατήστε πατημένο για να αντιγράψετε με χρονική σήμανση</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Αντιγράφει τη χρονική σήμανση από προεπιλογή</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Αντιστρέφει τις ενέργειες πατήματος και πατήματος-κρατήματος του κουμπιού \'Αντιγραφή συνδέσμου βίντεο\'</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Παράθυρο ηλικιακού περιορισμού</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Αυτό δεν παρακάμπτει τον ηλικιακό περιορισμό. Απλώς τον αποδέχεται αυτόματα</string>
@@ -1022,6 +1023,8 @@ Second \"item\" text"</string>
 • Το κουμπί Remix και το κουμπί Ήχου δεν είναι διαθέσιμα στο Shorts
 • Τα Shorts ανοίγουν στον κανονικό αναπαραγωγέ
 • Η γραμμή ενεργειών βίντεο δεν έχει καταρρεύσει"</string>
+  <string name="morphe_tablet_layout_in_player_title">Ενεργοποίηση διάταξης για tablet στον παίκτη</string>
+  <string name="morphe_tablet_layout_in_player_summary">Επαναφέρει τη παλιά διάταξη του player</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Παραποίηση έκδοσης εφαρμογής</string>
   <string name="morphe_spoof_app_version_summary">Εξαπατά τον διακομιστή ώστε να νομίζει ότι χρησιμοποιείτε μια παλαιότερη έκδοση εφαρμογής για να επαναφέρετε τις παλιότερες λειτουργίες UI</string>
@@ -1106,7 +1109,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Αποτρέπει το κλείσιμο του μίνι αναπαραγωγέα με οριζόντια κύλιση από την οθόνη</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Κουμπιά επικάλυψης οθόνης αναπαραγωγής</string>
   <string name="morphe_miniplayer_hide_subtext_title">Κείμενα οθόνης αναπαραγωγής</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Κουμπιά παράλειψης και επιστροφής</string>
   <string name="morphe_miniplayer_width_dip_title">Προεπιλεγμένο μέγεθος</string>
   <string name="morphe_miniplayer_width_dip_summary">Ορίστε το αρχικό μέγεθος στην οθόνη, σε pixel</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Τα pixel πρέπει να είναι μεταξύ %1$s και %2$s</string>
@@ -1192,9 +1194,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Αποτρέπει τη μεταφορά της γραμμής προόδου στην οθόνη κλειδώματος και στο πλαίσιο ειδοποιήσεων</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Εάν αλλάξατε πρόσφατα τα στοιχεία σύνδεσης του λογαριασμού σας, απεγκαταστήστε και εγκαταστήστε ξανά το MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Παράκαμψη ανακατευθύνσεων συνδέσμων</string>
-  <string name="morphe_bypass_url_redirects_summary">Ανοίγει απευθείας το αρχικό URL, παρακάμπτοντας τον σύνδεσμο παρακολούθησης (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Παράκαμψη ανακατευθύνσεων συνδέσμων</string>
+  <string name="morphe_bypass_link_redirects_summary">Ανοίγει τον αρχικό σύνδεσμο απευθείας, παρακάμπτοντας τον σύνδεσμο παρακολούθησης (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Άνοιγμα συνδέσμων σε πρόγραμμα περιήγησης</string>
   <string name="morphe_external_browser_summary">Ανοίγει συνδέσμους σε έναν εξωτερικό φυλλομετρητή αντί για τον ενσωματωμένο φυλλομετρητή</string>
@@ -1238,6 +1240,8 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Εμφανίζει μια ειδοποίηση όταν αποθηκεύεται μια νέα προεπιλεγμένη ταχύτητα αναπαραγωγής</string>
   <string name="morphe_playback_speed_default_title">Προεπιλεγμένη ταχύτητα αναπαραγωγής</string>
   <string name="morphe_remember_playback_speed_toast">Η προεπιλεγμένη ταχύτητα αναπαραγωγής άλλαξε σε: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Χρήση κανονικής ταχύτητας για μουσική</string>
+  <string name="morphe_disable_playback_speed_music_summary">Αναπαραγωγή μουσικών βίντεο πάντα σε ταχύτητα 1.0x</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Απενεργοποίηση βίντεο HDR</string>
   <string name="morphe_force_avc_codec_title">Εξαναγκάζει τον κωδικοποιητή AVC (H.264)</string>

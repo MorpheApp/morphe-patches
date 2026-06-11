@@ -13,6 +13,8 @@ package app.morphe.extension.youtube.videoplayer;
 import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
 import static app.morphe.extension.youtube.videoplayer.PlayerOverlayButton.initializeHeadingFromUpperButton;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.View;
@@ -315,7 +317,7 @@ public class LegacyPlayerControlButton {
         View button = buttonRef.get();
         if (button instanceof ImageView imageButton) {
             imageButton.setImageResource(resourceId);
-            imageButton.setImageTintList(null);
+            imageButton.setImageTintList(ColorStateList.valueOf(Color.WHITE));
         }
     }
 

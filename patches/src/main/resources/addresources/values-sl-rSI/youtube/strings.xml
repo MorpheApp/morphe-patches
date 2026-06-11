@@ -129,6 +129,7 @@ Spremembe vključujejo:
   <string name="morphe_hide_medical_panels_title">Skrij zdravstvene plošče</string>
   <string name="morphe_hide_snackbar_title">Skrij oglasno vrstico</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Skrij smernice za naročnike</string>
+  <string name="morphe_hide_sync_button_title">Skrij gumb \'Sinhroniziraj z videoposnetkom\'</string>
   <string name="morphe_hide_timed_reactions_title">Skrij časovne reakcije</string>
   <string name="morphe_hide_timed_reactions_summary">Skrije funkcijo, ki uporabnikom omogoča reakcije z emojiji v oddelku za komentarje in klepetu v živo</string>
   <string name="morphe_hide_video_title_title">Skrij naslov videa</string>
@@ -269,13 +270,13 @@ Omejitve:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skrij video oglase</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL je kopiran v odključek</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL z časovno oznako je kopiran v odložišče</string>
-  <string name="morphe_copy_video_url_button_title">Prikaži gumb \'Kopiraj URL videoposnetka\'</string>
-  <string name="morphe_copy_video_url_button_summary">Tapnite, da kopirate URL videoposnetka, tapnite in pridržite, da kopirate s časovno žigo</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Kopiraj časovni žig privzeto</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Obrne potezo tap in dotakni-in-drži za gumb \'Kopiraj URL videoposnetka\'</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Povezava kopirana v odložišče</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Povezava s časovnim žigom kopirana v odložišče</string>
+  <string name="morphe_copy_video_link_button_title">Prikaži gumb Kopiraj povezavo do videoposnetka</string>
+  <string name="morphe_copy_video_link_button_summary">Tapnite za kopiranje povezave do videoposnetka, tapnite in pridržite za kopiranje s časovnim žigom</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Kopiraj časovni žig privzeto</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Obrne delovanje tapnite in tapnite-in-pridržite gumba \'Kopiraj povezavo do videoposnetka\'</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Odstrani dialog o diskretni opozorilni napovedi</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">To ne obide starostne omejitve. Samo samodejno jo sprejme.</string>
@@ -1020,6 +1021,8 @@ Razporeditev za avto
 • Gumb za mešanje in gumb za zvok nista na voljo v Shorts.
 • Shorts se odpirajo v običajnem predvajalniku.
 • Vidna vrstica z dejanji videa ni zamrznjena"</string>
+  <string name="morphe_tablet_layout_in_player_title">Omogoči postavitev za tablične računalnike v predvajalniku</string>
+  <string name="morphe_tablet_layout_in_player_summary">Obnovi prejšnjo postavitev predvajalnika</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Posnami različico aplikacije</string>
   <string name="morphe_spoof_app_version_summary">Triki strežnika, da misli, da uporabljate starejšo različico aplikacije, da obnovite funkcije starejše uporabniške izkušnje</string>
@@ -1104,7 +1107,6 @@ Omejitev: Uporaba gumba za vrnitev v orodni vrstici morda ne bo delovala"</strin
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Preprečuje zaprtje mini predajalnika z drsenjem vodoravno po zaslonu</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skrijite gumbe prekrivnega okna</string>
   <string name="morphe_miniplayer_hide_subtext_title">Skrijte podnapise</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Skrijte gumbe za skok naprej in nazaj</string>
   <string name="morphe_miniplayer_width_dip_title">Privzeta velikost</string>
   <string name="morphe_miniplayer_width_dip_summary">Nastavite začetno velikost na zaslonu, v pikah</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Velikost v pikslih mora biti med %1$s in %2$s</string>
@@ -1192,9 +1194,9 @@ Dotaknite se tukaj, da se seznanite z DeArrow"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Preprečuje vlečenje vrstice za napredovanje na zaklenjenem zaslonu in na nadzorni plošči</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Če ste nedavno spremenili podatke za prijavo v račun, namestite in ponovno namestite MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Bypass URL preusmeritev</string>
-  <string name="morphe_bypass_url_redirects_summary">Odpre izvirno URL-naslov neposredno, s čimer obide sledilno povezavo (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Preskoči preusmeritve povezav</string>
+  <string name="morphe_bypass_link_redirects_summary">Odpre izvirno povezavo neposredno in obide sledilno povezavo (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Odpiraj povezave v brskalniku</string>
   <string name="morphe_external_browser_summary">Odpre povezave v zunanjem brskalniku namesto v brskalniku v aplikaciji</string>
@@ -1238,6 +1240,8 @@ Dotaknite se tukaj, da se seznanite z DeArrow"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Prikaže obvestilo, ko se shrani nova privzeta hitrost predvajanja</string>
   <string name="morphe_playback_speed_default_title">Privzeta hitrost predvajanja</string>
   <string name="morphe_remember_playback_speed_toast">Spremenjena privzeta hitrost predvajanja na: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Uporabi normalno hitrost za glasbo</string>
+  <string name="morphe_disable_playback_speed_music_summary">Vedno predvajaj glasbene videospote s hitrostjo 1,0x</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Onemogoči HDR video</string>
   <string name="morphe_force_avc_codec_title">Prisilna uporaba kodeka AVC (H.264)</string>

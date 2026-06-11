@@ -131,6 +131,7 @@ Endringer inkluderer:
   <string name="morphe_hide_medical_panels_title">Skjul medisinske paneler</string>
   <string name="morphe_hide_snackbar_title">Skjul snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Skjul abonnentretningslinjer</string>
+  <string name="morphe_hide_sync_button_title">Skjul knappen \"Synkroniser til video\"</string>
   <string name="morphe_hide_timed_reactions_title">Skjul tidsstyrte reaksjoner</string>
   <string name="morphe_hide_timed_reactions_summary">Skjuler funksjonen som lar brukere reagere med emojier i kommentarfeltet og direktekamp-chatten</string>
   <string name="morphe_hide_video_title_title">Skjul videotittel</string>
@@ -271,13 +272,13 @@ Begrensninger:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skjul videoannonser</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL kopiert til utklippstavlen</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL med tidsstempel kopiert til utklippstavle</string>
-  <string name="morphe_copy_video_url_button_title">Vis Kopier video-URL-knapp</string>
-  <string name="morphe_copy_video_url_button_summary">Trykk for å kopiere video-URL-en, trykk og hold for å kopiere med tidsstempel</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Kopier tidsstempel som standard</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Snu om trykk- og trykk-og-hold-handlingen til «Kopier video-URL»-knappen</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Koblet til utklippstavlen</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Koblet til utklippstavlen med tidsstempel</string>
+  <string name="morphe_copy_video_link_button_title">Vis kopier videolenke-knapp</string>
+  <string name="morphe_copy_video_link_button_summary">Trykk for å kopiere videolenken, trykk og hold for å kopiere med tidsstempel</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Kopier tidsstempel som standard</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Snur om på trykk- og trykk-og-hold-handlingene for \"Kopier videolenke\"-knappen</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Fjern dialogboks for anbefalt aldersgrense</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Dette omgår ikke aldersbegrensningen. Den aksepterer den bare automatisk</string>
@@ -1022,6 +1023,8 @@ Bilformfaktor
 • Remiks-knappen og Lyd-knappen er ikke tilgjengelig i Shorts
 • Shorts åpnes i den vanlige spilleren
 • Videoaksjonslinjen er ikke sammenfoldet"</string>
+  <string name="morphe_tablet_layout_in_player_title">Aktiver nettbrettlayout i spilleren</string>
+  <string name="morphe_tablet_layout_in_player_summary">Gjenoppretter det gamle spillerlayoutet</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof appversjon</string>
   <string name="morphe_spoof_app_version_summary">Lurer serveren til å tro at du bruker en eldre appversjon for å gjenopprette gamle brukergrensesnittfunksjoner</string>
@@ -1106,7 +1109,6 @@ Begrensning: Bruk av tilbake-knappen på verktøylinjen fungerer kanskje ikke"</
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Forhindrer at du lukker minispilleren ved å sveipe den horisontalt av skjermen</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skjul overlegg-knapper</string>
   <string name="morphe_miniplayer_hide_subtext_title">Skjul undertitler</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Skjul hopp fremover og bakover-knapper</string>
   <string name="morphe_miniplayer_width_dip_title">Standardstørrelse</string>
   <string name="morphe_miniplayer_width_dip_summary">Angi startstørrelsen på skjermen, i piksler</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pikselstørrelsen må være mellom %1$s og %2$s</string>
@@ -1194,9 +1196,9 @@ Trykk her for å lære mer om DeArrow"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Forhindrer at du drar i søkefeltet på låseskjermen og varslingspanelet</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Hvis du nylig har endret innloggingsdetaljene for kontoen din, må du avinstallere og reinstallere MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Omgå URL-omdirigeringer</string>
-  <string name="morphe_bypass_url_redirects_summary">Åpner den opprinnelige URL-en direkte, og omgår sporingslenken (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Omgå lenkeomdirigeringer</string>
+  <string name="morphe_bypass_link_redirects_summary">Åpner den originale lenken direkte, ved å omgå sporingslenken (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Åpne lenker i nettleser</string>
   <string name="morphe_external_browser_summary">Åpner lenker i en ekstern nettleser i stedet for nettleseren i appen</string>
@@ -1240,6 +1242,8 @@ Trykk her for å lære mer om DeArrow"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Viser et varsel når en ny standard avspillingshastighet er lagret</string>
   <string name="morphe_playback_speed_default_title">Standard avspillingshastighet</string>
   <string name="morphe_remember_playback_speed_toast">Endret standard avspillingshastighet til: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Bruk normal hastighet for musikk</string>
+  <string name="morphe_disable_playback_speed_music_summary">Spill alltid av musikkvideoer med 1,0x hastighet</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiver HDR-video</string>
   <string name="morphe_force_avc_codec_title">Tving AVC (H.264) kodek</string>

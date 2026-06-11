@@ -72,22 +72,22 @@ Pour vous connecter, appuyez sur 'Continuer' ci-dessous."</string>
 1. Appuyez sur 'Ouvrir le site web' ci-dessous pour ouvrir la page 'Connecter un appareil'
 2. Collez depuis le presse-papiers (ou saisissez manuellement) le code d’activation affiché ci-dessus
 3. Connectez-vous à Google si demandé. Si vous avez plusieurs comptes, choisissez celui associé à ce compte YouTube
-4. Appuyez sur 'Autoriser l’accès YouTube VR'
+4. Appuyez sur 'Autoriser l'accès YouTube VR'
 5. Revenez à cette application une fois que le message 'Appareil connecté' apparaît"</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Ouvrir le site web</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Échec de l’obtention du code d’activation</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Échec de l’obtention d\'un jeton d\'authentification</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Échec de l\'obtention du code d\'activation</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Échec de l\'obtention d\'un jeton d\'authentification</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Connecté avec succès</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentification enregistrée
 
 • Vos paramètres Morphe n’importeront/exportent pas l'authentification Android VR
 • Si cette application reste inutilisée pendant 6 mois, Google supprimera cette authentification
 • Vous devrez vous reconnecter si vous changez votre mot de passe Google ou si vous dissociez cet appareil de vos paramètres Google"</string>
-  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 est temporairement indisponible (délai d’attente de l’API dépassé)</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 est temporairement indisponible (délai d\'attente de l\'API dépassé)</string>
   <string name="morphe_oauth2_connection_failure_status_400">La connexion à Android VR a expiré, réessayez de vous connecter à VR</string>
   <string name="morphe_oauth2_connection_failure_status">OAuth2 est temporairement indisponible (statut %d)</string>
   <string name="morphe_oauth2_connection_failure_generic">OAuth2 est temporairement indisponible</string>
-  <string name="morphe_oauth2_connection_failure_auth_not_approved">Impossible de se connecter à la VR, l’authentification sur le site web n’a pas été approuvée</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Impossible de se connecter à la VR, l\'authentification sur le site web n\'a pas été approuvée</string>
   <string name="morphe_oauth2_connection_failure_auth_error">Impossible de se connecter à VR : %s</string>
   <string name="morphe_oauth2_toast_reset">Déconnexion de Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Jeton de connexion à VR invalide, veuillez réessayer la connexion à VR</string>

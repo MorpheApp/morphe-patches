@@ -131,6 +131,7 @@ Wijzigingen zijn:
   <string name="morphe_hide_medical_panels_title">Medische panelen verbergen</string>
   <string name="morphe_hide_snackbar_title">Verberg snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Richtlijnen voor abonnees verbergen</string>
+  <string name="morphe_hide_sync_button_title">Verberg knop \'Synchroniseren met video\'</string>
   <string name="morphe_hide_timed_reactions_title">Verberg getimede reacties</string>
   <string name="morphe_hide_timed_reactions_summary">Verbergt de functie waarmee gebruikers kunnen reageren met emoji\'s in de commentaarsectie en livechat</string>
   <string name="morphe_hide_video_title_title">Verberg de videotitel</string>
@@ -271,13 +272,13 @@ Beperkingen:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Video-advertenties verbergen</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL gekopieerd naar klembord</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL met tijdstempel gekopieerd naar klembord</string>
-  <string name="morphe_copy_video_url_button_title">Toon Kopieer video-URL-knop</string>
-  <string name="morphe_copy_video_url_button_summary">Tik om de video-URL te kopiëren, houd ingedrukt om te kopiëren met tijdstempel</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Kopieer timestamp standaard</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Keert de tik- en ingedrukte acties van de knop \'Video-URL kopiëren\' om</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Link naar klembord gekopieerd</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Link met tijdstempel naar klembord gekopieerd</string>
+  <string name="morphe_copy_video_link_button_title">Knop \"Video-link kopiëren\" weergeven</string>
+  <string name="morphe_copy_video_link_button_summary">Tik om de videolink te kopiëren, tik en houd vast om met tijdstempel te kopiëren</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Kopieer timestamp standaard</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Keert de tik- en ingedrukte acties van de knop \'Videolink kopiëren\' om</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Dialog van kijker discretie verwijderen</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Dit omzeilt de leeftijdsbeperking niet. Het accepteert het alleen automatisch</string>
@@ -1022,6 +1023,8 @@ Auto lay-out
 • Remix-knop en Geluidsknop zijn niet beschikbaar in Shorts
 • Shorts openen in de reguliere speler
 • Videobalk is niet ingeklapt"</string>
+  <string name="morphe_tablet_layout_in_player_title">Schakel tabletindeling in de speler in</string>
+  <string name="morphe_tablet_layout_in_player_summary">Herstelt de oude spelerlay-out</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">App-versie vervalsen</string>
   <string name="morphe_spoof_app_version_summary">Misleidt de server om te denken dat je een oudere app-versie gebruikt om verouderde visuele functies terug te zetten</string>
@@ -1104,7 +1107,6 @@ Als het later wordt uitgeschakeld, wordt aanbevolen om de app-gegevens te wissen
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Voorkomt dat de minispeler horizontaal van het scherm wordt weggeveegd</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Overlayknoppen verbergen</string>
   <string name="morphe_miniplayer_hide_subtext_title">Verberg subteksten</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Verberg knoppen voor door- en terugspoelen</string>
   <string name="morphe_miniplayer_width_dip_title">Standaardgrootte</string>
   <string name="morphe_miniplayer_width_dip_summary">Stel de begin afmeting op het scherm in, in pixels</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pixelgrootte moet tussen %1$s en %2$s zijn</string>
@@ -1192,9 +1194,9 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Voorkomt dat de media voortgangsbalk op het vergrendelscherm en meldingspaneel wordt gesleept</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Als u onlangs de inloggegevens van uw account hebt gewijzigd, verwijder dan MicroG en installeer het opnieuw.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Omzeil URL-omleidingen</string>
-  <string name="morphe_bypass_url_redirects_summary">Opent de originele URL direct, waarbij de trackinglink (youtube.com/redirect) wordt omzeild</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Omzeil linkomleidingen</string>
+  <string name="morphe_bypass_link_redirects_summary">Opent de originele link direct, waarbij de trackinglink (youtube.com/redirect) wordt omzeild</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Koppelingen openen in browser</string>
   <string name="morphe_external_browser_summary">Opent links in een externe browser in plaats van de in-app browser</string>
@@ -1238,6 +1240,8 @@ Tik hier om meer te weten te komen over DeArrow"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Toont een melding wanneer een nieuwe standaard afspeelsnelheid is opgeslagen</string>
   <string name="morphe_playback_speed_default_title">Standaard afspeelsnelheid</string>
   <string name="morphe_remember_playback_speed_toast">Standaard afspeelsnelheid gewijzigd naar: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Gebruik normale snelheid voor muziek</string>
+  <string name="morphe_disable_playback_speed_music_summary">Speel muziekvideo\'s altijd af op 1.0x snelheid</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR-video uitschakelen</string>
   <string name="morphe_force_avc_codec_title">Forceer AVC (H.264) codec</string>

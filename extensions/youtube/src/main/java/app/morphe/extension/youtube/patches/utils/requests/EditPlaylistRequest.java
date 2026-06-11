@@ -26,6 +26,7 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.BaseSettings;
 
 public class EditPlaylistRequest {
     private static final int MAX_MILLISECONDS_TO_WAIT_FOR_FETCH = 20 * 1000;
@@ -47,6 +48,9 @@ public class EditPlaylistRequest {
     @Nullable
     public String getResult() {
         try {
+            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
+                Logger.printException(() -> "Debug: Blocking main thread");
+            }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getResult timed out", ex);
@@ -96,6 +100,8 @@ public class EditPlaylistRequest {
             Map<String, String> requestHeader
     ) {
         Objects.requireNonNull(videoId);
+        Utils.verifyOffMainThread();
+
         final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching edit playlist request, videoId: " + videoId +
                 ", playlistId: " + playlistId + ", setVideoId: " + setVideoId);

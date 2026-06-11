@@ -29,6 +29,7 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.BaseSettings;
 import kotlin.Pair;
 
 public class GetPlaylistsRequest {
@@ -46,6 +47,9 @@ public class GetPlaylistsRequest {
     @Nullable
     public Pair<String, String>[] getPlaylists() {
         try {
+            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
+                Logger.printException(() -> "Debug: Blocking main thread");
+            }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getPlaylists timed out", ex);
@@ -62,11 +66,12 @@ public class GetPlaylistsRequest {
         cache.clear();
     }
 
-    public static void fetchRequestIfNeeded(String playlistId, Map<String, String> requestHeader) {
+    public static GetPlaylistsRequest fetchRequestIfNeeded(String playlistId, Map<String, String> requestHeader) {
         cache.computeIfAbsent(
                 Objects.requireNonNull(playlistId),
                 k -> new GetPlaylistsRequest(playlistId, requestHeader)
         );
+        return cache.get(playlistId);
     }
 
     @Nullable
@@ -81,6 +86,8 @@ public class GetPlaylistsRequest {
     @Nullable
     private static JSONObject sendRequest(String playlistId, Map<String, String> requestHeader) {
         Objects.requireNonNull(playlistId);
+        Utils.verifyOffMainThread();
+
         final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching get playlists request, playlistId: " + playlistId);
 

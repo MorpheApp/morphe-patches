@@ -137,6 +137,7 @@ Changes include:
     <string name="morphe_hide_medical_panels_title">Hide medical panels</string>
     <string name="morphe_hide_snackbar_title">Hide snackbar</string>
     <string name="morphe_hide_subscribers_community_guidelines_title">Hide subscribers guidelines</string>
+    <string name="morphe_hide_sync_button_title">Hide \'Sync to video\' button</string>
     <string name="morphe_hide_timed_reactions_title">Hide timed reactions</string>
     <string name="morphe_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
     <string name="morphe_hide_video_title_title">Hide video title</string>
@@ -401,6 +402,7 @@ Info: May not work on live streams"</string>
     <string name="morphe_queue_manager_fetch_succeeded_create">Queue created</string>
     <string name="morphe_queue_manager_fetch_succeeded_remove">Removed from queue</string>
     <string name="morphe_queue_manager_fetch_succeeded_save">Queue saved to %s</string>
+    <string name="morphe_queue_manager_playlist_title">Morphe Queue</string>
     <string name="morphe_queue_manager_add_to_queue">Add to queue</string>
     <string name="morphe_queue_manager_add_to_queue_and_open_queue">Add to queue and open</string>
     <string name="morphe_queue_manager_add_to_queue_and_play_video">Add to queue and play</string>
@@ -1094,6 +1096,8 @@ Automotive layout
 • Remix button and Sound button are not available in Shorts
 • Shorts open in the regular player
 • Video action bar is not collapsed"</string>
+    <string name="morphe_tablet_layout_in_player_title">Enable tablet layout in player</string>
+    <string name="morphe_tablet_layout_in_player_summary">Restores the old player layout</string>
 
     <!-- layout.spoofappversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_title">Spoof app version</string>
@@ -1186,7 +1190,6 @@ Limitation: Using the back button on the toolbar may not work"</string>
     <string name="morphe_miniplayer_disable_horizontal_drag_summary">Prevents closing the miniplayer by swiping it horizontally off-screen</string>
     <string name="morphe_miniplayer_hide_overlay_buttons_title">Hide overlay buttons</string>
     <string name="morphe_miniplayer_hide_subtext_title">Hide subtexts</string>
-    <string name="morphe_miniplayer_hide_rewind_forward_title">Hide skip forward and back buttons</string>
     <string name="morphe_miniplayer_width_dip_title">Default size</string>
     <string name="morphe_miniplayer_width_dip_summary">Set the starting on-screen size, in pixels</string>
     <string name="morphe_miniplayer_width_dip_invalid_toast">Pixel size must be between %1$s and %2$s</string>
@@ -1348,6 +1351,8 @@ Tap here to learn more about DeArrow"</string>
     <string name="morphe_remember_playback_speed_last_selected_toast_summary">Shows a notification when a new default playback speed is saved</string>
     <string name="morphe_playback_speed_default_title">Default playback speed</string>
     <string name="morphe_remember_playback_speed_toast">Changed default playback speed to: %s</string>
+    <string name="morphe_disable_playback_speed_music_title">Use normal speed for music</string>
+    <string name="morphe_disable_playback_speed_music_summary">Always play music videos at 1.0x speed</string>
 
     <!-- video.codecs.disableVideoCodecsPatch -->
     <string name="morphe_disable_hdr_video_title">Disable HDR video</string>

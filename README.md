@@ -35,7 +35,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.31.0-dev.9](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.31.0-dev.9)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;114 patches total
+> **[v1.31.0-dev.12](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.31.0-dev.12)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;114 patches total
 <details>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;69 patches</summary>
 <br>
@@ -49,14 +49,14 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 |----------|----------------|-----------|
 | [Alternative thumbnails](#alternative-thumbnails) | Adds options to replace video thumbnails using the DeArrow API or image captures from the video. |  |
 | [Ambient mode](#ambient-mode) | Adds options to bypass power saving restrictions for Ambient mode and disable it entirely or in fullscreen. |  |
-| [Bypass URL redirects](#bypass-url-redirects) | Adds an option to bypass URL redirects and open the original URL directly. |  |
 | [Bypass image region restrictions](#bypass-image-region-restrictions) | Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries. |  |
+| [Bypass link redirects](#bypass-link-redirects) | Adds an option to bypass redirects and open the original link directly. |  |
 | [Captions](#captions) | Adds an option to disable captions from being automatically enabled or to set caption cookies. |  |
 | [Change form factor](#change-form-factor) | Adds an option to change the UI appearance to a phone, tablet, or automotive device. |  |
 | [Change header](#change-header) | Adds an option to change the header logo in the top left corner of the app. | • Custom header logo |
 | [Change start page](#change-start-page) | Adds an option to set which page the app opens in instead of the homepage. |  |
 | [Check watch history domain name resolution](#check-watch-history-domain-name-resolution) | Checks if the device DNS server is preventing user watch history from being saved. |  |
-| [Copy video URL](#copy-video-url) | Adds options to display buttons in the video player to copy video URLs. |  |
+| [Copy video link](#copy-video-link) | Adds options to display buttons in the video player to copy video links. |  |
 | [Custom branding](#custom-branding) | Adds options to change the app icon and app name. Branding cannot be changed for mounted (root) installations. | • App name<br>• Custom icon |
 | [Custom player overlay opacity](#custom-player-overlay-opacity) | Adds an option to change the opacity of the video player background when player controls are visible. |  |
 | [Disable DRC audio](#disable-drc-audio) | Adds an option to disable DRC (Dynamic Range Compression) audio. |  |
@@ -113,7 +113,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Spoof device dimensions](#spoof-device-dimensions) | Adds an option to spoof the device dimensions which can unlock higher video qualities. |  |
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Swipe controls](#swipe-controls) | Adds options to enable and configure volume and brightness swipe controls. |  |
-| [Theme](#theme) | Adds options for theming and applies a custom background theme (dark background theme defaults to pure black). | • Dark theme background color |
+| [Theme](#theme) | Adds options for theming and applies a custom background theme (dark background theme defaults to pure black). | • Dark theme background color<br>• Light theme background color |
 | [Video ads](#video-ads) | Adds an option to remove ads in the video player. |  |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
 

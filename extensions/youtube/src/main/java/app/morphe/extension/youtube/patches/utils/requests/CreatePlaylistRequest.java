@@ -7,6 +7,8 @@
 
 package app.morphe.extension.youtube.patches.utils.requests;
 
+import static app.morphe.extension.shared.StringRef.str;
+
 import androidx.annotation.Nullable;
 
 import org.json.JSONException;
@@ -26,6 +28,7 @@ import java.util.concurrent.TimeoutException;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.BaseSettings;
 import kotlin.Pair;
 
 public class CreatePlaylistRequest {
@@ -43,6 +46,9 @@ public class CreatePlaylistRequest {
     @Nullable
     public Pair<String, String> getPlaylistId() {
         try {
+            if (BaseSettings.DEBUG.get() && !future.isDone() && Utils.isCurrentlyOnMainThread()) {
+                Logger.printException(() -> "Debug: Blocking main thread");
+            }
             return future.get(MAX_MILLISECONDS_TO_WAIT_FOR_FETCH, TimeUnit.MILLISECONDS);
         } catch (TimeoutException ex) {
             Logger.printInfo(() -> "getPlaylistId timed out", ex);
@@ -81,11 +87,13 @@ public class CreatePlaylistRequest {
             Map<String, String> requestHeader
     ) {
         Objects.requireNonNull(videoId);
+        Utils.verifyOffMainThread();
+
         final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching create playlist request for: " + videoId);
 
         try {
-            byte[] requestBody = PlaylistRoutes.createPlaylistBody(videoId, "Morphe Queue");
+            byte[] requestBody = PlaylistRoutes.createPlaylistBody(videoId, str("morphe_queue_manager_playlist_title"));
             HttpURLConnection connection = PlaylistRoutes.getConnection(PlaylistRoutes.CREATE_PLAYLIST, requestHeader);
             connection.setFixedLengthStreamingMode(requestBody.length);
             connection.getOutputStream().write(requestBody);
@@ -113,6 +121,8 @@ public class CreatePlaylistRequest {
             Map<String, String> requestHeader
     ) {
         Objects.requireNonNull(playlistId);
+        Utils.verifyOffMainThread();
+
         final long startTime = System.currentTimeMillis();
         Logger.printDebug(() -> "Fetching set video id request for: " + playlistId);
 

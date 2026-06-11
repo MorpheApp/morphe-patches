@@ -131,6 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_medical_panels_title">Скрыть медицинские панели</string>
   <string name="morphe_hide_snackbar_title">Скрыть всплывающие сообщения</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Скрыть правила сообщества подписчиков</string>
+  <string name="morphe_hide_sync_button_title">Скрыть кнопку \"Синхронизировать с видео\"</string>
   <string name="morphe_hide_timed_reactions_title">Скрыть временные реакции</string>
   <string name="morphe_hide_timed_reactions_summary">Скрывает функцию, позволяющую пользователям реагировать смайликами в разделе комментариев и в прямом чате</string>
   <string name="morphe_hide_video_title_title">Скрыть название видео</string>
@@ -271,13 +272,13 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Скрыть видеорекламу</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL-адрес скопирован</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL-адрес с меткой времени скопирован в буфер обмена</string>
-  <string name="morphe_copy_video_url_button_title">Показать кнопку копировать URL видео</string>
-  <string name="morphe_copy_video_url_button_summary">Нажмите, чтобы скопировать URL видео, нажмите и удерживайте, чтобы скопировать с меткой времени</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Копировать временную метку по умолчанию</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Изменяет местами нажатие и нажатие с удержанием для кнопки «Копировать URL видео»</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Ссылка скопирована в буфер обмена</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Ссылка с отметкой времени скопирована в буфер обмена</string>
+  <string name="morphe_copy_video_link_button_title">Показать кнопку копирования ссылки на видео</string>
+  <string name="morphe_copy_video_link_button_summary">Нажмите, чтобы скопировать ссылку на видео, нажмите и удерживайте, чтобы скопировать с меткой времени</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Копировать временную метку по умолчанию</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Изменяет действие при нажатии и удержании кнопки \"Копировать ссылку на видео\" на противоположное</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Скрыть диалог о нежелательном контенте</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Данная опция не обходит возрастное ограничение. Она только принимает возрастное ограничение автоматически</string>
@@ -1025,6 +1026,8 @@ Second \"item\" text"</string>
 • Кнопки \"Ремикс\" и \"Звук\" недоступны в Short
 • Short открываются в обычном плеере
 • Панель действий видео не свернута"</string>
+  <string name="morphe_tablet_layout_in_player_title">Включить макет для планшетов в плеере</string>
+  <string name="morphe_tablet_layout_in_player_summary">Восстанавливает предыдущий макет плеера</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Подменить версию приложения</string>
   <string name="morphe_spoof_app_version_summary">Обманывает сервер, заставляя его думать, что вы используете старую версию приложения, чтобы восстановить устаревшие элементы пользовательского интерфейса</string>
@@ -1109,7 +1112,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Предотвращает закрытие миниплеера горизонтальным свайпом</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Скрыть кнопки миниплеера</string>
   <string name="morphe_miniplayer_hide_subtext_title">Скрыть подтексты</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Скрыть кнопки перемотки</string>
   <string name="morphe_miniplayer_width_dip_title">Размер по умолчанию</string>
   <string name="morphe_miniplayer_width_dip_summary">Установите начальный размер на экране, в пикселях</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Размер в пикселях должен быть между %1$s и %2$s</string>
@@ -1197,9 +1199,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Запрещает перетаскивание полосы прогресса на заблокированном экране и панели уведомлений</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Если Вы недавно изменили данные для входа в свою учетную запись, удалите и переустановите MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Обход перенаправлений URL-адресов</string>
-  <string name="morphe_bypass_url_redirects_summary">Открывает исходный URL напрямую, обходя отслеживающую ссылку (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Обход перенаправлений ссылок</string>
+  <string name="morphe_bypass_link_redirects_summary">Открывает исходную ссылку напрямую, обходя отслеживаемую ссылку (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Открывать ссылки в браузере</string>
   <string name="morphe_external_browser_summary">Открывает ссылки во внешнем браузере, а не во встроенном браузере</string>
@@ -1243,6 +1245,8 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Показывает уведомление при сохранении новой скорости воспроизведения по умолчанию</string>
   <string name="morphe_playback_speed_default_title">Скорость воспроизведения по умолчанию</string>
   <string name="morphe_remember_playback_speed_toast">Изменена скорость воспроизведения по умолчанию на: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Использовать нормальную скорость для музыки</string>
+  <string name="morphe_disable_playback_speed_music_summary">Всегда воспроизводить музыкальные видео на скорости 1.0x</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Отключить HDR видео</string>
   <string name="morphe_force_avc_codec_title">Принудительное использование кодека AVC (H.264)</string>

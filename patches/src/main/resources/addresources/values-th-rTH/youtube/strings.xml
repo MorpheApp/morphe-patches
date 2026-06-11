@@ -131,6 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_medical_panels_title">ซ่อนแผงทางการแพทย์</string>
   <string name="morphe_hide_snackbar_title">ซ่อนสแน็กบาร์</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">ซ่อนหลักเกณฑ์สำหรับผู้ติดตาม</string>
+  <string name="morphe_hide_sync_button_title">ซ่อนปุ่ม \"ซิงค์กับวิดีโอ\"</string>
   <string name="morphe_hide_timed_reactions_title">ซ่อนปฏิกิริยาตามเวลา</string>
   <string name="morphe_hide_timed_reactions_summary">ซ่อนคุณสมบัติที่ช่วยให้ผู้ใช้แสดงความรู้สึกด้วยอิโมจิในส่วนความคิดเห็นและแชทสด</string>
   <string name="morphe_hide_video_title_title">ซ่อนชื่อวิดีโอ</string>
@@ -271,13 +272,13 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">ซ่อนโฆษณาวิดีโอ</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">คัดลอก URL ไปยังคลิปบอร์ด</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">คัดลอก URL พร้อมเวลาไปยังคลิปบอร์ด</string>
-  <string name="morphe_copy_video_url_button_title">แสดงปุ่มคัดลอก URL วิดีโอ</string>
-  <string name="morphe_copy_video_url_button_summary">แตะเพื่อคัดลอก URL วิดีโอ แตะค้างไว้เพื่อคัดลอกพร้อมการประทับเวลา</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">คัดลอกไทม์สแตมป์โดยค่าเริ่มต้น</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">สลับการทำงานของการแตะและการแตะค้างของปุ่ม \'คัดลอก URL วิดีโอ\'</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">คัดลอกลิงก์ไปยังคลิปบอร์ด</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">คัดลอกลิงก์ที่มีช่วงเวลาไปยังคลิปบอร์ด</string>
+  <string name="morphe_copy_video_link_button_title">แสดงปุ่มคัดลอก URL วิดีโอ</string>
+  <string name="morphe_copy_video_link_button_summary">แตะเพื่อคัดลอกลิงก์วิดีโอ แตะค้างไว้เพื่อคัดลอกพร้อมการประทับเวลา</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">คัดลอกไทม์สแตมป์โดยค่าเริ่มต้น</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">สลับการทำงานของการแตะและการแตะค้างไว้สำหรับปุ่ม \'คัดลอกลิงก์วิดีโอ\'</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">ลบกล่องโต้ตอบการพิจารณาของผู้ชม</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">ไม่ได้หลีกเลี่ยงข้อจำกัดอายุ เพียงแต่ยอมรับโดยอัตโนมัติ</string>
@@ -1019,6 +1020,8 @@ User id ของคุณเหมือนกับรหัสผ่าน �
 • ปุ่ม Remix และปุ่ม Sound ไม่สามารถใช้ได้ใน Shorts
 • Shorts เปิดในเครื่องเล่นปกติ
 • แถบการดำเนินการวิดีโอไม่ได้ถูกพับเก็บ"</string>
+  <string name="morphe_tablet_layout_in_player_title">เปิดใช้งานรูปแบบแท็บเล็ตในโปรแกรมเล่น</string>
+  <string name="morphe_tablet_layout_in_player_summary">คืนค่ารูปแบบเครื่องเล่นเดิม</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">ปลอมแปลงเวอร์ชันแอป</string>
   <string name="morphe_spoof_app_version_summary">หลอกลวงเซิร์ฟเวอร์เพื่อให้คิดว่าคุณกำลังใช้แอปเวอร์ชันเก่าเพื่อคืนค่าคุณสมบัติ UI เดิม</string>
@@ -1103,7 +1106,6 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">ป้องกันไม่ให้ปิดเครื่องเล่นขนาดเล็กโดยการปัดมันในแนวนอนนอกหน้าจอ</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ซ่อนปุ่มโอเวอร์เลย์</string>
   <string name="morphe_miniplayer_hide_subtext_title">ซ่อนข้อความย่อย</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">ซ่อนปุ่มข้ามไปข้างหน้าและข้างหลัง</string>
   <string name="morphe_miniplayer_width_dip_title">ขนาดเริ่มต้น</string>
   <string name="morphe_miniplayer_width_dip_summary">ตั้งค่าขนาดเริ่มต้นบนหน้าจอเป็นพิกเซล</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">ขนาดพิกเซลต้องอยู่ระหว่าง %1$s ถึง %2$s</string>
@@ -1191,9 +1193,9 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_disable_notification_media_seekbar_summary">ป้องกันการลากแถบเลื่อนบนหน้าจอล็อคและแผงการแจ้งเตือน</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">หากคุณเพิ่งเปลี่ยนรายละเอียดการเข้าสู่ระบบบัญชีของคุณ ให้ถอนการติดตั้งและติดตั้ง MicroG ใหม่อีกครั้ง</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">เลี่ยงการเปลี่ยนเส้นทาง URL</string>
-  <string name="morphe_bypass_url_redirects_summary">เปิด URL เดิมโดยตรง ข้ามลิงก์ติดตาม (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">ข้ามการเปลี่ยนเส้นทางลิงก์</string>
+  <string name="morphe_bypass_link_redirects_summary">เปิดลิงก์ต้นฉบับโดยตรง โดยข้ามลิงก์ติดตาม (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">เปิดลิงก์ในเบราว์เซอร์</string>
   <string name="morphe_external_browser_summary">เปิดลิงก์ในเบราว์เซอร์ภายนอกแทนเบราว์เซอร์ในแอป</string>
@@ -1237,6 +1239,8 @@ User id ของคุณเหมือนกับรหัสผ่าน �
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">แสดงการแจ้งเตือนเมื่อบันทึกความเร็วในการเล่นเริ่มต้นใหม่</string>
   <string name="morphe_playback_speed_default_title">ความเร็วในการเล่นเริ่มต้น</string>
   <string name="morphe_remember_playback_speed_toast">เปลี่ยนความเร็วในการเล่นเริ่มต้นเป็น: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">ใช้ความเร็วปกติสำหรับเพลง</string>
+  <string name="morphe_disable_playback_speed_music_summary">เล่นวิดีโอเพลงด้วยความเร็ว 1.0x เสมอ</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">ปิดใช้งานวิดีโอ HDR</string>
   <string name="morphe_force_avc_codec_title">บังคับใช้ตัวแปลงสัญญาณ AVC (H.264)</string>

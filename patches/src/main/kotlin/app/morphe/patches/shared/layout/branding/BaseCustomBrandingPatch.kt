@@ -27,8 +27,7 @@ import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 import app.morphe.util.findElementByAttributeValueOrThrow
@@ -277,15 +276,7 @@ internal fun baseCustomBrandingPatch(
             )
         }
 
-        preferenceScreen.addPreferences(
-            PreferenceCategory(
-                key = null,
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = preferences
-            )
-        )
+        preferenceScreen.addPreferences(noTitleUnsortedPreferenceCategory(preferences))
 
         iconStyleNames.forEach { style ->
             copyResources(

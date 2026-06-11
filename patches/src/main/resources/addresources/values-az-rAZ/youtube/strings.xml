@@ -245,11 +245,7 @@ Məhdudiyyətlər
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizlət</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL buferə köçürüldü</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">Vaxt möhürü olan URL buferə köçürüldü</string>
-  <string name="morphe_copy_video_url_button_title">Video URL-ni köçürmə düyməsini göstər</string>
-  <string name="morphe_copy_video_url_button_summary">Video URL-ni köçürmək üçün toxun, vaxt möhürü ilə köçürmək üçün toxun və saxla</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">İzləyici mülahizə dialoqun sil</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Bu, yaş məhdudiyyətini ötürmür. Sadəcə birbaşa qəbul edir</string>
@@ -894,7 +890,6 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Üfüqi sürükləmə jestini qapat</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Örtük düymələrini gizlət</string>
   <string name="morphe_miniplayer_hide_subtext_title">Alt mətnləri gizlət</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">İrəli və geri ötür düymələrini gizlət</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Piksel ölçüsü, %1$s - %2$s arası olmalıdır</string>
   <string name="morphe_miniplayer_opacity_title">Örtük qeyri-şəffaflığı</string>
   <string name="morphe_miniplayer_opacity_summary">Şəffaflıq səviyyəsini tənzimlə (0 şəffafdır, 100 qeyri-şəffafdır)</string>
@@ -956,8 +951,7 @@ DeArrow haqqında ətraflı öyrənmək üçün bura toxun"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Bu yaxınlarda hesabınıza giriş məlumatlarınızı dəyişmisinizsə, MicroG-ni silin və təkrar quraşdırın.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">URL yönləndirmələrini ötür</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Bağlantıları brauzerdə aç</string>
   <!-- video.quality.rememberVideoQualityPatch -->

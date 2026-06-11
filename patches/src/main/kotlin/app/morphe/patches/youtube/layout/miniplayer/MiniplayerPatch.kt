@@ -78,7 +78,6 @@ val miniplayerPatch = bytecodePatch(
         preferences += SwitchPreference("morphe_miniplayer_disable_rounded_corners")
         preferences += SwitchPreference("morphe_miniplayer_hide_subtext")
         preferences += SwitchPreference("morphe_miniplayer_hide_overlay_buttons")
-        preferences += SwitchPreference("morphe_miniplayer_hide_rewind_forward")
         preferences += TextPreference("morphe_miniplayer_width_dip", inputType = InputType.NUMBER)
         preferences += NonInteractivePreference(
             key = "morphe_miniplayer_opacity",
@@ -346,8 +345,6 @@ val miniplayerPatch = bytecodePatch(
             MiniplayerModernExpandButtonFingerprint to "hideMiniplayerExpandClose",
             MiniplayerModernCloseButtonFingerprint to "hideMiniplayerExpandClose",
             MiniplayerModernActionButtonFingerprint to "hideMiniplayerActionButton",
-            MiniplayerModernRewindButtonFingerprint to "hideMiniplayerRewindForward",
-            MiniplayerModernForwardButtonFingerprint to "hideMiniplayerRewindForward",
             MiniplayerModernOverlayViewFingerprint to "adjustMiniplayerOpacity"
         ).forEach { (fingerprint, methodName) ->
             fingerprint.method.apply {

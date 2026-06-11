@@ -131,6 +131,7 @@ Promene uključuju:
   <string name="morphe_hide_medical_panels_title">Sakrij okna sa medicinskim informacijama</string>
   <string name="morphe_hide_snackbar_title">Sakrij notifikaciju</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Sakrij smernice pratilaca</string>
+  <string name="morphe_hide_sync_button_title">Sakrij dugme „Sinhronizuj sa videom“</string>
   <string name="morphe_hide_timed_reactions_title">Sakrij vremenske reakcije</string>
   <string name="morphe_hide_timed_reactions_summary">Sakriva funkciju koja omogućava korisnicima da reaguju emojijima u odeljku za komentare i chatu uživo</string>
   <string name="morphe_hide_video_title_title">Sakrij naslov Shorts videa</string>
@@ -271,13 +272,13 @@ Ograničenja:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sakrij video oglase</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">Link je kopiran u privremenu memoriju</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL sa vremenskom oznakom je kopiran u ostavu</string>
-  <string name="morphe_copy_video_url_button_title">Prikaži dugme za kopiranje URL-a videa</string>
-  <string name="morphe_copy_video_url_button_summary">Dodirnite da biste kopirali URL video zapisa, dodirnite i zadržite da biste kopirali sa vremenskom oznakom</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Kopiraj vremensku oznaku podrazumevano</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Obrće akcije dodira i dodira i zadržavanja za dugme \'Kopiraj URL videa\'</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Link kopiran u privremenu memoriju</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Link sa vremenskom oznakom kopiran u privremenu memoriju</string>
+  <string name="morphe_copy_video_link_button_title">Prikaži dugme za kopiranje linka videa</string>
+  <string name="morphe_copy_video_link_button_summary">Dodirnite da biste kopirali link videa, dodirnite i zadržite da biste kopirali link s vremenskom oznakom</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Kopiraj vremensku oznaku podrazumevano</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Obrće akcije dodira i dodira i zadržavanja za dugme \'Kopiraj link videa\'</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Ukloni dijalog o diskreciji gledaoca</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Ovo ne zaobilazi starosno ograničenje. Samo ga automatski prihvata</string>
@@ -1022,6 +1023,8 @@ Automobilski raspored
 • Taster za miksanje i taster za zvuk nisu dostupni u Shorts
 • Shorts se otvaraju u redovnom plejeru
 • Traka sa akcijama za video nije uzeta."</string>
+  <string name="morphe_tablet_layout_in_player_title">Omogući izgled za tablet u plejeru</string>
+  <string name="morphe_tablet_layout_in_player_summary">Vraća stari izgled plejera</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Lažirana verzija aplikacije</string>
   <string name="morphe_spoof_app_version_summary">Prevara server da misli da koristiš stariju verziju aplikacije kako bi povratio legacy UI funkcije</string>
@@ -1106,7 +1109,6 @@ Ograničenje: Korišćenje dugmeta „Nazad” na traci sa alatkama možda neće
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Sprečava zatvaranje mini plejera horizontalnim prevlačenjem sa ekrana</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Sakrij dugmad preklopa</string>
   <string name="morphe_miniplayer_hide_subtext_title">Sakrij podtekstove</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Sakrij dugmad za premotavanje unapred i unazad</string>
   <string name="morphe_miniplayer_width_dip_title">Podrazumevana veličina</string>
   <string name="morphe_miniplayer_width_dip_summary">Postavi početnu veličinu na ekranu, u pikselima</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Veličina piksela mora biti između %1$s i %2$s</string>
@@ -1194,9 +1196,9 @@ Dodirnite ovde da saznate više o DeArrowu"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Sprečava povlačenje trake za traženje na zaključanom ekranu i na kontrolnoj tabli obaveštenja</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ako ste nedavno promenili podatke za prijavu na nalog, deinstalirajte i ponovo instalirajte MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Zaobiđi URL preusmeravanja</string>
-  <string name="morphe_bypass_url_redirects_summary">Otvara originalni URL direktno, zaobilazeći link za praćenje (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Zaobiđi preusmeravanja linkova</string>
+  <string name="morphe_bypass_link_redirects_summary">Otvara originalni link direktno, zaobilazeći link za praćenje (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Otvori linkove u pregledaču</string>
   <string name="morphe_external_browser_summary">Otvara linkove u spoljašnjem pregledaču umesto u ugrađenom pregledaču</string>
@@ -1240,6 +1242,8 @@ Dodirnite ovde da saznate više o DeArrowu"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Prikazuje obaveštenje kada je sačuvana nova podrazumevana brzina reprodukcije</string>
   <string name="morphe_playback_speed_default_title">Podrazumevana brzina reprodukcije</string>
   <string name="morphe_remember_playback_speed_toast">Podrazumevana brzina reprodukcije je promenjena u: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Koristite normalnu brzinu za muziku</string>
+  <string name="morphe_disable_playback_speed_music_summary">Uvek puštajte muzičke spotove brzinom 1.0x</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Onemogući HDR video</string>
   <string name="morphe_force_avc_codec_title">Prisiljava AVC (H.264) kodek</string>

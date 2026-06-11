@@ -131,6 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_medical_panels_title">इन्फो पैनल्स को छुपाएं</string>
   <string name="morphe_hide_snackbar_title">स्नैकबार छिपाएं</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">छुपाएं सदस्यगणितों की निदेशिका</string>
+  <string name="morphe_hide_sync_button_title">\"सिंक टू वीडियो\" बटन छिपाएं</string>
   <string name="morphe_hide_timed_reactions_title">छुपाएं समयबद्ध प्रतिक्रियाएं</string>
   <string name="morphe_hide_timed_reactions_summary">टिप्पणी अनुभाग और लाइव चैट में इमोजी के साथ प्रतिक्रिया देने की अनुमति देने वाली सुविधा को छुपाता है</string>
   <string name="morphe_hide_video_title_title">छुपाएं वीडियो शीर्षक</string>
@@ -271,13 +272,13 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">छुपाएं वीडियो विज्ञापन</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL कॉपी किया गया है क्लिपबोर्ड में</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">टाइमस्टैम्प के साथ URL क्लिपबोर्ड में कॉपी किया गया</string>
-  <string name="morphe_copy_video_url_button_title">वीडियो URL कॉपी बटन दिखाएं</string>
-  <string name="morphe_copy_video_url_button_summary">वीडियो URL कॉपी करने के लिए टैप करें, टाइमस्टैम्प के साथ कॉपी करने के लिए टैप और होल्ड करें</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">डिफ़ॉल्ट रूप से टाइमस्टैम्प कॉपी करें</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">\'वीडियो URL कॉपी करें\' बटन के टैप और टैप-एंड-होल्ड एक्शन को उलट देता है</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">लिंक क्लिपबोर्ड में कॉपी किया गया</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">टाइमस्टैम्प के साथ लिंक क्लिपबोर्ड में कॉपी किया गया</string>
+  <string name="morphe_copy_video_link_button_title">वीडियो URL कॉपी बटन दिखाएँ</string>
+  <string name="morphe_copy_video_link_button_summary">वीडियो लिंक कॉपी करने के लिए टैप करें, टाइमस्टैम्प के साथ कॉपी करने के लिए टैप करके और होल्ड करें</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">डिफ़ॉल्ट रूप से टाइमस्टैम्प कॉपी करें</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">\'कॉपी वीडियो लिंक\' बटन की टैप और टैप-एंड-होल्ड क्रियाओं को उलट देता है</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">दर्शकों के लिए सावधानता डायलॉग हटाएं</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">यह उम्र प्रतिबंध को दरकिनार नहीं करता है। यह इसे स्वचालित रूप से स्वीकार करता है।</string>
@@ -1018,6 +1019,8 @@ Second \"item\" text"</string>
 • शॉर्ट्स में रीमिक्स बटन और साउंड बटन उपलब्ध नहीं हैं
 • शॉर्ट्स नियमित प्लेयर में खुलते हैं
 • वीडियो एक्शन बार संकुचित नहीं होता है"</string>
+  <string name="morphe_tablet_layout_in_player_title">प्लेयर में टैबलेट लेआउट सक्षम करें</string>
+  <string name="morphe_tablet_layout_in_player_summary">पुराने प्लेयर लेआउट को पुनर्स्थापित करता है</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof ऐप संस्करण</string>
   <string name="morphe_spoof_app_version_summary">सर्वर को यह सोचने में धोखा देता है कि आप पुराने ऐप संस्करण का उपयोग कर रहे हैं ताकि विरासत UI सुविधाओं को बहाल किया जा सके</string>
@@ -1102,7 +1105,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">क्षैतिज रूप से स्क्रीन से स्वाइप करके मिनीप्लेयर को बंद करने से रोकता है</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">ओवरले बटन छुपाएं</string>
   <string name="morphe_miniplayer_hide_subtext_title">उपपाठ छुपाएं</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">आगे और पीछे की स्किप बटन छुपाएं</string>
   <string name="morphe_miniplayer_width_dip_title">डिफ़ॉल्ट साइज़</string>
   <string name="morphe_miniplayer_width_dip_summary">शुरुआती ऑन-स्क्रीन साइज़ सेट करें, पिक्सेल में</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">पिक्सेल आकार %1$s और %2$s के बीच होना चाहिए</string>
@@ -1190,9 +1192,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">लॉक स्क्रीन और अधिसूचना पैनल पर सीकबार को खींचने से रोकता है</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">यदि आपने हाल ही में अपना खाता लॉगिन विवरण बदल दिया है, तो MicroG को अनइंस्टॉल और फिर से इंस्टॉल करें।</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">URL रीडायरेक्ट को बायपास करें</string>
-  <string name="morphe_bypass_url_redirects_summary">मूल URL को सीधे खोलता है, ट्रैकिंग लिंक (youtube.com/redirect) को बायपास करता है</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">लिंक रीडायरेक्ट को बायपास करें</string>
+  <string name="morphe_bypass_link_redirects_summary">ट्रैकिंग लिंक (youtube.com/redirect) को बायपास करके मूल लिंक को सीधे खोलता है</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">लिंक को ब्राउज़र में खोलें</string>
   <string name="morphe_external_browser_summary">लिंक को इन-ऐप ब्राउज़र के बजाय बाहरी ब्राउज़र में खोलता है</string>
@@ -1236,6 +1238,8 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">जब एक नई डिफ़ॉल्ट प्लेबैक गति सहेजी जाती है तो एक सूचना दिखाता है</string>
   <string name="morphe_playback_speed_default_title">डिफ़ॉल्ट प्लेबैक स्पीड</string>
   <string name="morphe_remember_playback_speed_toast">डिफ़ॉल्ट प्लेबैक गति बदलकर: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">संगीत के लिए सामान्य गति का उपयोग करें</string>
+  <string name="morphe_disable_playback_speed_music_summary">संगीत वीडियो हमेशा 1.0x की गति से चलाएं</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR वीडियो अक्षम करें</string>
   <string name="morphe_force_avc_codec_title">एवीसी (H.264) कोडेक को बाध्य करें</string>

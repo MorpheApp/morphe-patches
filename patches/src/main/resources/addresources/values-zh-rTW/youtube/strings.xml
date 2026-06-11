@@ -131,6 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_medical_panels_title">隱藏醫療資訊面板</string>
   <string name="morphe_hide_snackbar_title">隱藏小訊息</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">隱藏訂閱者規範</string>
+  <string name="morphe_hide_sync_button_title">隱藏「同步到影片」按鈕</string>
   <string name="morphe_hide_timed_reactions_title">隱藏直播即時反應</string>
   <string name="morphe_hide_timed_reactions_summary">隱藏評論區和直播聊天中以表情符號回覆的功能</string>
   <string name="morphe_hide_video_title_title">隱藏影片標題</string>
@@ -271,13 +272,13 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">隱藏影片廣告</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">已將網址複製到剪貼簿</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">已複製帶有時間戳記的網址至剪貼簿</string>
-  <string name="morphe_copy_video_url_button_title">顯示複製影片網址按鈕</string>
-  <string name="morphe_copy_video_url_button_summary">已顯示按鈕。輕觸以複製影片網址。按住以複製包含時間戳記的影片網址</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">預設複製時間戳</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">反轉「複製影片網址」按鈕的點擊和長按動作</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">已將網址複製到剪貼簿</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">已將帶時間戳的連結複製到剪貼簿</string>
+  <string name="morphe_copy_video_link_button_title">顯示複製影片網址按鈕</string>
+  <string name="morphe_copy_video_link_button_summary">輕觸以複製影片連結，按住以複製包含時間戳記的影片連結</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">預設複製時間戳</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">反轉「複製影片連結」按鈕的輕觸和長按操作</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">移除觀眾謹慎觀看對話方塊</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">這不會繞過年齡限制，只會自動按下同意。</string>
@@ -1021,6 +1022,8 @@ Second \"item\" text"</string>
 • Shorts 中無法使用「混音」按鈕和「音效」按鈕
 • Shorts 在常規播放器中開啟
 • 影片動作欄未摺疊"</string>
+  <string name="morphe_tablet_layout_in_player_title">在播放器中啟用平板版面配置</string>
+  <string name="morphe_tablet_layout_in_player_summary">還原舊版播放器版面配置</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">偽裝應用程式版本</string>
   <string name="morphe_spoof_app_version_summary">欺騙伺服器，讓它以為您正在使用較舊的應用程式版本，以還原舊版 UI 功能</string>
@@ -1105,7 +1108,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">防止通過水平滑動迷你播放器關閉螢幕</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">隱藏暫停時顯示的按鈕</string>
   <string name="morphe_miniplayer_hide_subtext_title">隱藏字幕</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">隱藏「快轉」和「倒帶」按鈕</string>
   <string name="morphe_miniplayer_width_dip_title">預設大小</string>
   <string name="morphe_miniplayer_width_dip_summary">設定開始的螢幕大小（以像素為單位）</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">像素大小必須介於 %1$s 和 %2$s 之間</string>
@@ -1195,9 +1197,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">直接開啟目的地 URL，繞過重新導向追蹤連結</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">如果您最近變更了帳戶登入詳細資訊，請解除安裝並重新安裝 MicroG。</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">繞過網址重新導向</string>
-  <string name="morphe_bypass_url_redirects_summary">直接開啟原始網址，繞過追蹤連結 (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">繞過連結重新導向</string>
+  <string name="morphe_bypass_link_redirects_summary">直接開啟原始連結，繞過追蹤連結 (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">在瀏覽器中開啟連結</string>
   <string name="morphe_external_browser_summary">在外部瀏覽器中開啟連結，而不是應用程式內瀏覽器</string>
@@ -1241,6 +1243,8 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">變更預設播放速度時會顯示提示</string>
   <string name="morphe_playback_speed_default_title">預設播放速度</string>
   <string name="morphe_remember_playback_speed_toast">已將預設播放速度變更為：%s</string>
+  <string name="morphe_disable_playback_speed_music_title">使用正常速度播放音樂</string>
+  <string name="morphe_disable_playback_speed_music_summary">總是使用 1.0 倍速播放音樂影片</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">停用 HDR 影片</string>
   <string name="morphe_force_avc_codec_title">若要使用此功能，請將「偽造視訊串流」設定為 Android VR 或 Android Studio</string>

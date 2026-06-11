@@ -246,11 +246,7 @@ Ograničenja:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sakrij video oglase</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL je kopiran u međuspremnik</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">Poveznica s vremenskim žigom kopirana u međuspremnik</string>
-  <string name="morphe_copy_video_url_button_title">Prikaži tipku Kopiraj poveznicu videozapisa</string>
-  <string name="morphe_copy_video_url_button_summary">Dodirnite za kopiranje poveznice, dodirnite i zadržite za kopiranje s vremenskim žigom</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Ukloni prozor za potvrdu o dozvoljenom prikazu</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -778,7 +774,6 @@ Ako se kasnije isključi, preporuke za UI mogu se izbjeći čišćenjem podataka
   <string name="morphe_miniplayer_disable_horizontal_drag_title">Onemogu horizontalni drag gest</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Sakrij dugmice za nadogradnju</string>
   <string name="morphe_miniplayer_hide_subtext_title">Sakrij podnaslove</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Sakrij dugmice za pomicanje naprijed i nazad</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Veličina piksela mora biti između %1$s i %2$s</string>
   <string name="morphe_miniplayer_opacity_title">Inicijalna veličina</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">Veličina miniplayera mora biti između %1$s i %2$s</string>
@@ -835,8 +830,7 @@ Tapajte ovdje da saznajte više o DeArrow"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ako nedavno ste promijenili računski prijavne detalje, morate deinstalirati i ponovo instalirati MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Bypasiraj URL preusmjere</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Otvori linkove u pregledniku</string>
   <!-- video.quality.rememberVideoQualityPatch -->

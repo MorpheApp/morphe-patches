@@ -244,11 +244,7 @@ Begränsningar:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Dölj videoannonser</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">Videoadress kopierad till urklipp</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">Videoadress med tidsstämpel kopierad till urklipp</string>
-  <string name="morphe_copy_video_url_button_title">Visa knappen Kopiera videoadress</string>
-  <string name="morphe_copy_video_url_button_summary">Tryck för att kopiera videoadressen, tryck länge för att kopiera med tidsstämpel</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Ta bort dialogrutan Känsliga tittare varnas</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Detta kringgår inte åldersbegränsningen. Det bara godkänner automatiskt</string>
@@ -974,7 +970,6 @@ Begränsning: Bakåtknappen i verktygsfältet kanske inte fungerar"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Förhindrar att minispelaren kan stängas genom att svepa den horisontellt bort från skärmen</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Dölj överläggsknappar</string>
   <string name="morphe_miniplayer_hide_subtext_title">Dölj undertexter</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Dölj knapparna för att hoppa framåt och bakåt</string>
   <string name="morphe_miniplayer_width_dip_title">Standardstorlek</string>
   <string name="morphe_miniplayer_width_dip_summary">Ange startstorleken på skärmen i pixlar</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pixelstorlek måste vara mellan %1$s och %2$s</string>
@@ -1061,8 +1056,7 @@ Tryck här för att läsa mer om DeArrow"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Förhindrar att sökreglaget kan dras på låsskärmen och i aviseringspanelen</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Om du nyligen har ändrat dina inloggningsuppgifter, avinstallera och installera om MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Hoppa över webbadressomdirigeringar</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Öppna länkar i webbläsaren</string>
   <!-- video.quality.rememberVideoQualityPatch -->

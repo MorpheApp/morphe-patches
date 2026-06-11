@@ -20,7 +20,14 @@ Second \"item\" text"</string>
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
   <string name="morphe_settings_screen_00_about_title">விபரம்</string>
   <string name="morphe_settings_screen_01_ads_title">விளம்பரங்கள்</string>
+  <string name="morphe_settings_screen_02_alt_thumbnails_title">மாற்று சிறுபடங்கள்</string>
+  <string name="morphe_settings_screen_03_feed_title"> ஊட்டம்</string>
   <string name="morphe_settings_screen_04_general_title">பொது</string>
+  <string name="morphe_settings_screen_05_player_title">பிளேயர்</string>
+  <string name="morphe_settings_screen_06_shorts_title">Shorts</string>
+  <string name="morphe_settings_screen_07_seekbar_title">தேடல்பட்டை</string>
+  <string name="morphe_settings_screen_08_swipe_controls_title">ஸ்வைப் கட்டுப்பாடுகள்</string>
+  <string name="morphe_settings_screen_11_misc_title">இதரவை</string>
   <string name="morphe_settings_screen_12_video_title">காணொளி</string>
   <!-- misc.backgroundplayback.backgroundPlaybackPatch -->
   <!-- misc.debugging.enableDebuggingPatch -->
@@ -53,7 +60,7 @@ Second \"item\" text"</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- ad.video.videoAdsPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -176,7 +183,7 @@ Second \"item\" text"</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <!-- misc.links.bypassURLRedirectsPatch -->
+  <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->

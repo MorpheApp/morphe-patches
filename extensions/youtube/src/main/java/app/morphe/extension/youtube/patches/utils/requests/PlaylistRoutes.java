@@ -54,6 +54,15 @@ public final class PlaylistRoutes {
             Route.Method.POST, "browse?prettyPrint=false"
     ).compile();
 
+    public static final Route.CompiledRoute GET_MIX_PLAYLIST = new Route(
+            Route.Method.POST,
+            "next" +
+                    "?fields=contents.singleColumnWatchNextResults." +
+                    "playlist.playlist.contents.playlistPanelVideoRenderer." +
+                    "navigationEndpoint.coWatchWatchEndpointWrapperCommand." +
+                    "watchEndpoint.watchEndpoint.playerParams&prettyPrint=false"
+    ).compile();
+
     private PlaylistRoutes() {
     }
 
@@ -141,6 +150,18 @@ public final class PlaylistRoutes {
             return body.toString().getBytes(StandardCharsets.UTF_8);
         } catch (JSONException ex) {
             Logger.printException(() -> "getPlaylistsBody failed", ex);
+        }
+        return new byte[0];
+    }
+
+    public static byte[] getMixPlaylistBody(String videoId) {
+        try {
+            JSONObject body = getBaseContentJson();
+            body.put("videoId", videoId);
+            body.put("playlistId", "RD" + videoId);
+            return body.toString().getBytes(StandardCharsets.UTF_8);
+        } catch (JSONException ex) {
+            Logger.printException(() -> "getMixPlaylistBody failed", ex);
         }
         return new byte[0];
     }

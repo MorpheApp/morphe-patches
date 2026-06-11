@@ -131,6 +131,7 @@ Kasama sa mga pagbabago ang:
   <string name="morphe_hide_medical_panels_title">Itago ang mga panel ng medikal</string>
   <string name="morphe_hide_snackbar_title">Itago ang snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Itago ang mga alituntunin ng mga subscriber</string>
+  <string name="morphe_hide_sync_button_title">Itago ang button na \'I-sync sa video\'</string>
   <string name="morphe_hide_timed_reactions_title">Itago ang mga nakatakdang reaksyon</string>
   <string name="morphe_hide_timed_reactions_summary">Itinatago ang feature na nagbibigay-daan sa mga user na mag-react gamit ang mga emoji sa seksyon ng mga komento at live chat</string>
   <string name="morphe_hide_video_title_title">Itago ang pamagat ng video</string>
@@ -271,13 +272,13 @@ Mga Limitasyon:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Itago ang mga patalastas sa video</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">Nakopya ang URL sa clipboard</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">Nakopya ang URL na may timestamp sa clipboard</string>
-  <string name="morphe_copy_video_url_button_title">Ipakita ang button na Kopyahin ang video URL</string>
-  <string name="morphe_copy_video_url_button_summary">I-tap upang kopyahin ang video URL, i-tap at pindutin upang kopyahin gamit ang timestamp</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Kopyahin ang timestamp bilang default</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Binabaligtad ang pag-tap at pag-tap-at-hawak na mga aksyon ng button na \'Kopyahin ang URL ng video\'</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Nakalink sa clipboard</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Nakalink na may timestamp sa clipboard</string>
+  <string name="morphe_copy_video_link_button_title">Ipakita ang kopyahin ang video link button</string>
+  <string name="morphe_copy_video_link_button_summary">I-tap para kopyahin ang link ng video, i-tap at pindutin nang matagal para kopyahin kasama ang timestamp</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Kopyahin ang timestamp bilang default</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Binabaligtad ang tap at tap-and-hold na pagkilos ng \'Kopyahin ang link ng video\' button</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Alisin ang diyalogo ng pagpapasya ng manonood</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Hindi nito nilalampasan ang paghihigpit sa edad. Awtomatiko lang itong tinatanggap</string>
@@ -1022,6 +1023,8 @@ Automotive layout
 • Hindi magagamit ang Remix button at Sound button sa Shorts
 • Ang Shorts ay bumubukas sa regular na player
 • Hindi nakatiklop ang Video action bar"</string>
+  <string name="morphe_tablet_layout_in_player_title">Paganahin ang layout ng tablet sa player</string>
+  <string name="morphe_tablet_layout_in_player_summary">Ibinabalik ang lumang layout ng player</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof app version</string>
   <string name="morphe_spoof_app_version_summary">Dinadaya ang server upang isipin na gumagamit ka ng mas lumang bersyon ng app upang ibalik ang legacy UI features</string>
@@ -1106,7 +1109,6 @@ Limitasyon: Maaaring hindi gumana ang paggamit ng back button sa toolbar"</strin
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Pinipigilan ang pagsasara ng miniplayer sa pamamagitan ng pag-swipe nito pahalang sa screen</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Itago ang mga overlay button</string>
   <string name="morphe_miniplayer_hide_subtext_title">Itago ang mga subtext</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Itago ang mga skip forward at back button</string>
   <string name="morphe_miniplayer_width_dip_title">Default size</string>
   <string name="morphe_miniplayer_width_dip_summary">Itakda ang panimulang on-screen size, sa pixels</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Dapat nasa pagitan ng %1$s at %2$s ang sukat ng pixel</string>
@@ -1194,9 +1196,9 @@ I-tap dito upang matuto nang higit pa tungkol sa DeArrow"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Pinipigilan ang pag-drag ng seekbar sa lock screen at notification panel</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Kung kamakailan mo binago ang iyong mga detalye sa pag-login ng account, i-uninstall at i-reinstall ang MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">I-bypass ang mga paglilipat ng URL</string>
-  <string name="morphe_bypass_url_redirects_summary">Binubuksan ang orihinal na URL nang direkta, na nilalampasan ang link ng pagsubaybay (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Lumaktaw sa mga pagpapalit ng link</string>
+  <string name="morphe_bypass_link_redirects_summary">Binubuksan ang orihinal na link nang direkta, nilalaktawan ang link ng pagsubaybay (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Buksan ang mga link sa browser</string>
   <string name="morphe_external_browser_summary">Binubuksan ang mga link sa isang external browser sa halip na sa in-app browser</string>
@@ -1240,6 +1242,8 @@ I-tap dito upang matuto nang higit pa tungkol sa DeArrow"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Nagpapakita ng notification kapag nai-save ang isang bagong default na bilis ng pag-playback</string>
   <string name="morphe_playback_speed_default_title">Default na bilis ng pag-playback</string>
   <string name="morphe_remember_playback_speed_toast">Binago ang default playback speed sa: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Gamitin ang normal na bilis para sa musika</string>
+  <string name="morphe_disable_playback_speed_music_summary">Laging patugtugin ang mga music video sa bilis na 1.0x</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Patayin ang HDR video</string>
   <string name="morphe_force_avc_codec_title">Puwersahin ang AVC (H.264) codec</string>

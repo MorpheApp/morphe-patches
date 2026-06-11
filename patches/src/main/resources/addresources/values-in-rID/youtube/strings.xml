@@ -130,6 +130,7 @@ Perubahan termasuk:
   <string name="morphe_hide_medical_panels_title">Sembunyikan panel medis</string>
   <string name="morphe_hide_snackbar_title">Sembunyikan snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Sembunyikan panduan pelanggan</string>
+  <string name="morphe_hide_sync_button_title">Sembunyikan tombol \'Sinkronkan ke video\'</string>
   <string name="morphe_hide_timed_reactions_title">Sembunyikan reaksi terjadwal</string>
   <string name="morphe_hide_timed_reactions_summary">Menyembunyikan fitur yang memungkinkan pengguna memberikan reaksi dengan emoji di bagian komentar dan obrolan langsung</string>
   <string name="morphe_hide_video_title_title">Sembunyikan judul video</string>
@@ -270,13 +271,13 @@ Keterbatasan
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Sembunyikan iklan video</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL disalin ke papan klip</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL dengan stempel waktu telah disalin ke papan klip</string>
-  <string name="morphe_copy_video_url_button_title">Tampilkan tombol salin URL video</string>
-  <string name="morphe_copy_video_url_button_summary">Ketuk untuk menyalin URL video, ketuk dan tahan untuk menyalin dengan penanda waktu</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Salin stempel waktu secara bawaan</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Membalikkan tindakan ketuk dan ketuk-dan-tahan dari tombol \'Salin URL video\'</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Tautan disalin ke papan klip</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Tautan dengan tanda waktu disalin ke papan klip</string>
+  <string name="morphe_copy_video_link_button_title">Tampilkan tombol salin tautan video</string>
+  <string name="morphe_copy_video_link_button_summary">Ketuk untuk menyalin tautan video, ketuk dan tahan untuk menyalin dengan stempel waktu</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Salin stempel waktu secara bawaan</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Membalikkan tindakan ketuk dan ketuk-dan-tahan untuk tombol \'Salin tautan video\'</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Hapus dialog pembatasan penonton</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Ini tidak mengabaikan batasan usia. Ini hanya menerimanya secara otomatis</string>
@@ -1021,6 +1022,8 @@ Tata letak Otomotif
 • Tombol Remix dan tombol Suara tidak tersedia di Shorts
 • Shorts terbuka di pemutar reguler
 • Bilah tindakan video tidak diciutkan"</string>
+  <string name="morphe_tablet_layout_in_player_title">Aktifkan tata letak tablet di pemutar</string>
+  <string name="morphe_tablet_layout_in_player_summary">Mengembalikan tampilan pemain lama</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Palsukan versi app</string>
   <string name="morphe_spoof_app_version_summary">Menipu server agar menganggap Anda menggunakan versi aplikasi yang lebih lama untuk memulihkan fitur UI lama</string>
@@ -1105,7 +1108,6 @@ Batasan: Menggunakan tombol kembali pada toolbar mungkin tidak berfungsi"</strin
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Mencegah penutupan pemutar mini dengan menggesernya secara horizontal dari layar</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Sembunyikan tombol hamparan</string>
   <string name="morphe_miniplayer_hide_subtext_title">Sembunyikan subteks</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Sembunyikan tombol maju dan mundur</string>
   <string name="morphe_miniplayer_width_dip_title">Ukuran default</string>
   <string name="morphe_miniplayer_width_dip_summary">Atur ukuran awal di layar, dalam piksel</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Ukuran piksel harus antara %1$s dan %2$s</string>
@@ -1193,9 +1195,9 @@ Ketuk di sini untuk mempelajari lebih lanjut tentang DeArrow"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Mencegah penyeretan bilah pencarian di layar kunci dan panel pemberitahuan</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Jika Anda baru saja mengubah detail login akun Anda, copot pemasangan dan ulangi memasang MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Abaikan pengalihan URL</string>
-  <string name="morphe_bypass_url_redirects_summary">Membuka URL asli secara langsung, melewati tautan pelacakan (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Lewati pengalihan tautan</string>
+  <string name="morphe_bypass_link_redirects_summary">Membuka tautan asli secara langsung, melewati tautan pelacakan (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Buka tautan di peramban</string>
   <string name="morphe_external_browser_summary">Membuka tautan di peramban eksternal daripada peramban dalam aplikasi</string>
@@ -1239,6 +1241,8 @@ Ketuk di sini untuk mempelajari lebih lanjut tentang DeArrow"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Menampilkan pemberitahuan saat kecepatan pemutaran bawaan baru disimpan</string>
   <string name="morphe_playback_speed_default_title">Kecepatan pemutaran bawaan</string>
   <string name="morphe_remember_playback_speed_toast">Mengubah kecepatan bawaan menjadi: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Gunakan kecepatan normal untuk musik</string>
+  <string name="morphe_disable_playback_speed_music_summary">Selalu putar video musik dengan kecepatan 1.0x</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Nonaktifkan video HDR</string>
   <string name="morphe_force_avc_codec_title">Paksa codec AVC (H.264)</string>

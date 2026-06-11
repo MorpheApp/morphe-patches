@@ -9,20 +9,19 @@ package app.morphe.patches.youtube.interaction.savetowatchlater
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
+import app.morphe.patches.youtube.misc.auth.authHookPatch
+import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.auth.authHookPatch
-import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
-import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
@@ -70,15 +69,10 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_save_to_watch_later_button", summary = true),
-                    SwitchPreference("morphe_swap_save_and_queue_actions", summary = true),
-                    SwitchPreference("morphe_queue_restore", summary = true)
-                )
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_save_to_watch_later_button", summary = true),
+                SwitchPreference("morphe_swap_save_and_queue_actions", summary = true),
+                SwitchPreference("morphe_queue_restore", summary = true)
             )
         )
 

@@ -113,7 +113,7 @@ Vous ne serez plus averti en cas d’événements inattendus."</string>
   <string name="morphe_debug_feature_flags_manager_toast_saved">Flags de fonctionnalités enregistrés</string>
   <string name="morphe_debug_feature_flags_manager_toast_reset">Flags de fonctionnalités réinitialisés</string>
   <string name="morphe_debug_feature_flags_manager_toast_copied">Flags de fonctionnalités copiés dans le presse-papiers</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l’application pour appliquer ce paramètre</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l\'application pour appliquer ce paramètre</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Ouvrir les paramètres de MicroG</string>
@@ -121,19 +121,17 @@ Vous ne serez plus averti en cas d’événements inattendus."</string>
   <string name="gms_core_toast_not_installed_message">MicroG n\'est pas installé. Installez-le.</string>
   <string name="gms_core_dialog_title">Action nécessaire</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG n’a pas l’autorisation de fonctionner en arrière-plan.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG n'a pas l'autorisation de fonctionner en arrière-plan.
 
-Suivez le guide 'Don’t kill my app' pour votre téléphone et appliquez les instructions à votre installation de MicroG.
+Suivez le guide 'Don't kill my app' pour votre téléphone et appliquez les instructions à votre installation de MicroG.
 
-Cela est nécessaire pour que l’application fonctionne correctement."</string>
+Cela est nécessaire pour que l'application fonctionne correctement."</string>
   <string name="gms_core_dialog_open_website_text">Ouvrir le site web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Les optimisations de la batterie doivent être désactivées pour MicroG pour éviter des problèmes.
 
-Désactiver les optimisations de batterie pour MicroG n’aura pas d’impact négatif sur l’autonomie de la batterie.
+Désactiver les optimisations de batterie pour MicroG n'aura pas d’impact négatif sur l’autonomie de la batterie.
 
-Appuyez sur le bouton Continuer et autorisez la modification des optimisations.
-
-"</string>
+Appuyez sur le bouton 'Continuer' et autorisez la modification des optimisations."</string>
   <string name="gms_core_dialog_continue_text">Continuer</string>
   <string name="morphe_gms_core_battery_optimization_dialog_title">Afficher la boîte de dialogue d’optimisation de la batterie pour MicroG</string>
   <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Désactiver cela masquera l'invite d'optimisation de la batterie de MicroG.
@@ -145,18 +143,18 @@ Si les optimisations de la batterie ne sont pas modifiées, vous pourriez rencon
   <!-- misc.gms.linkHandlingPatch -->
   <string name="morphe_link_handling_title">Gestion des liens d\'application</string>
   <string name="morphe_link_handling_summary">Configurer les liens pour qu’ils s’ouvrent dans cette application</string>
-  <string name="morphe_link_handling_step1_title">Étape 1 : Désactiver les liens de l’application originale</string>
-  <string name="morphe_link_handling_step1_message">Ouvrez les paramètres de l’application originale et désactivez tous les liens de domaine</string>
+  <string name="morphe_link_handling_step1_title">Étape 1 : Désactiver les liens de l\'application d\'origine</string>
+  <string name="morphe_link_handling_step1_message">Ouvrez les paramètres de l\'application d\'origine et désactivez tous les liens de domaine</string>
   <string name="morphe_link_handling_step2_title">Étape 2 : Activer les liens de l\'application patchée</string>
   <string name="morphe_link_handling_step2_message">Ouvrez les paramètres de l\'application patchée et activez tous les liens de domaine</string>
   <string name="morphe_link_handling_open">Ouvrir les paramètres</string>
   <!-- misc.checks.experimentalAppNoticePatch -->
   <string name="morphe_experimental_app_version_dialog_title">🚨 Alerte expérimentale 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Vous utilisez une version expérimentale de l’application ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+  <string name="morphe_experimental_app_version_dialog_message">"Vous utilisez une version expérimentale de l'application ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
 &lt;br/&gt;&lt;br/&gt;
-🔧 Attendez-vous à des comportements inhabituels ou à des bugs non identifiés pendant que nous peaufinons les patchs pour cette version de l’application.
+🔧 Attendez-vous à des comportements inhabituels ou à des bugs non identifiés pendant que nous peaufinons les patchs pour cette version de l'application.
 &lt;br/&gt;&lt;br/&gt;
-Si vous souhaitez une expérience la plus stable possible, &lt;b&gt;désinstallez&lt;/b&gt; cette version et patchez la version recommandée de l’application ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+Si vous souhaitez une expérience la plus stable possible, &lt;b&gt;désinstallez&lt;/b&gt; cette version et patchez la version recommandée de l'application ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
   <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Je veux l\'expérimentale</string>
   <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Je veux la stable</string>
 </resources>

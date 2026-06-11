@@ -131,6 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_medical_panels_title">إخفاء اللوحات الطبية</string>
   <string name="morphe_hide_snackbar_title">إخفاء شريط التنبيهات السريعة</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">إخفاء إرشادات المشتركين</string>
+  <string name="morphe_hide_sync_button_title">إخفاء زر \'مزامنة مع الفيديو\'</string>
   <string name="morphe_hide_timed_reactions_title">إخفاء ردود الفعل المؤقتة</string>
   <string name="morphe_hide_timed_reactions_summary">يخفي الميزة التي تسمح للمستخدمين بالتفاعل باستخدام الرموز التعبيرية في قسم التعليقات والمحادثة المباشرة</string>
   <string name="morphe_hide_video_title_title">إخفاء عنوان الفيديو</string>
@@ -271,13 +272,13 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">إخفاء إعلانات الفيديو</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">تم نسخ URL إلى الحافظة</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">تم نسخ عنوان URL مع الطابع الزمني إلى الحافظة</string>
-  <string name="morphe_copy_video_url_button_title">عرض زر نسخ عنوان URL الفيديو</string>
-  <string name="morphe_copy_video_url_button_summary">انقر لنسخ عنوان URL للفيديو، واضغط مع الاستمرار لنسخه مع الطابع الزمني</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">نسخ الطابع الزمني افتراضيًا</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">يعكس إجراءات النقر والضغط المطول لزر \'نسخ عنوان URL للفيديو\'</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">تم نسخ الرابط إلى الحافظة</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">تم نسخ الرابط مع الطابع الزمني إلى الحافظة</string>
+  <string name="morphe_copy_video_link_button_title">عرض زر نسخ رابط الفيديو</string>
+  <string name="morphe_copy_video_link_button_summary">انقر لنسخ رابط الفيديو، واضغط مع الاستمرار لنسخه مع الطابع الزمني</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">نسخ الطابع الزمني افتراضيًا</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">يعكس إجراءات النقر والضغط المطول لزر \'نسخ رابط الفيديو\'</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">إزالة نافذة تحذير تقدير المشاهد</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">هذا لا يتجاوز شرط العمر. بل يقبله تلقائيًا</string>
@@ -1026,6 +1027,8 @@ Second \"item\" text"</string>
 • زر ريمكس و زر الصوت غير متوفرين في Shorts
 • فيديوهات Shorts تفتح في المشغل العادي
 • شريط إجراءات الفيديو غير مطوي"</string>
+  <string name="morphe_tablet_layout_in_player_title">تمكين تخطيط الجهاز اللوحي في المشغل</string>
+  <string name="morphe_tablet_layout_in_player_summary">يستعيد تخطيط المشغل القديم</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">إصدار تطبيق وهمي</string>
   <string name="morphe_spoof_app_version_summary">يجعل الخادم يعتقد أنك تستخدم إصدارًا أقدم من التطبيق لاستعادة ميزات الواجهة القديمة</string>
@@ -1110,7 +1113,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">يمنع إغلاق المشغل المصغر عن طريق سحبه أفقيًا خارج الشاشة</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">إخفاء أزرار الواجهة</string>
   <string name="morphe_miniplayer_hide_subtext_title">إخفاء النصوص الفرعية</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">إخفاء أزرار التخطي إلى التالي والسابق</string>
   <string name="morphe_miniplayer_width_dip_title">الحجم الافتراضي</string>
   <string name="morphe_miniplayer_width_dip_summary">تعيين الحجم الأولي على الشاشة، بالبكسل</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">حجم البكسل يجب أن يكون بين %1$s و %2$s</string>
@@ -1198,9 +1200,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">يمنع سحب شريط التقدم على شاشة القفل ولوحة الإشعارات</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">إذا قمت مؤخرًا بتغيير تفاصيل تسجيل الدخول إلى حسابك، فقم بإلغاء تثبيت MicroG وإعادة تثبيته.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">تجاوز إعادة توجيه URL</string>
-  <string name="morphe_bypass_url_redirects_summary">يفتح عنوان URL الأصلي مباشرة، متجاوزًا رابط التتبع (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">تجاوز إعادة توجيه الروابط</string>
+  <string name="morphe_bypass_link_redirects_summary">يفتح الرابط الأصلي مباشرةً، متجاوزًا رابط التتبع (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">فتح الروابط في المتصفح</string>
   <string name="morphe_external_browser_summary">يفتح الروابط في متصفح خارجي بدلًا من المتصفح داخل التطبيق</string>
@@ -1244,6 +1246,8 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">يعرض إشعارًا عند حفظ سرعة تشغيل افتراضية جديدة</string>
   <string name="morphe_playback_speed_default_title">سرعة التشغيل الافتراضية</string>
   <string name="morphe_remember_playback_speed_toast">تم تغيير سرعة التشغيل الافتراضية إلى: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">استخدام السرعة العادية للموسيقى</string>
+  <string name="morphe_disable_playback_speed_music_summary">تشغيل فيديوهات الموسيقى دائمًا بسرعة 1.0x</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">تعطيل فيديو HDR</string>
   <string name="morphe_force_avc_codec_title">فرض برنامج ترميز AVC (H.264)</string>

@@ -2,9 +2,8 @@ package app.morphe.patches.youtube.interaction.copyvideolink
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
@@ -60,14 +59,9 @@ val copyVideoLinkButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_copy_video_link_button", summary = true),
-                    SwitchPreference("morphe_copy_video_link_with_timestamp_button", summary = true)
-                )
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_copy_video_link_button", summary = true),
+                SwitchPreference("morphe_copy_video_link_with_timestamp_button", summary = true)
             )
         )
 

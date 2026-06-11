@@ -9,7 +9,6 @@ package app.morphe.extension.youtube.videoplayer;
 
 import static app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RESTORE_OLD_PLAYER_BUTTONS;
 
-import android.content.Context;
 import android.view.View;
 
 import androidx.annotation.Nullable;
@@ -20,7 +19,6 @@ import java.util.function.Function;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.SaveToWatchLaterPatch;
 import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
@@ -79,12 +77,11 @@ public class SaveToWatchLaterButton {
             );
 
             if (swapSaveAndQueue) {
-                int iconId = ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
+                instance.setIcon(ResourceUtils.getIdentifier(ResourceType.DRAWABLE,
                         RESTORE_OLD_PLAYER_BUTTONS
                                 ? "yt_outline_list_add_black_24"
                                 : "yt_outline_experimental_playlist_add_vd_theme_24"
-                );
-                instance.setIcon(iconId);
+                ));
             }
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);

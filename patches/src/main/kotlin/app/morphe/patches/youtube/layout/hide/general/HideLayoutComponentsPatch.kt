@@ -25,11 +25,11 @@ import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.hide.shelves.hideHorizontalShelvesPatch
 import app.morphe.patches.youtube.layout.hide.updatescreen.hideUpdateScreenPatch
 import app.morphe.patches.youtube.misc.engagement.engagementPanelHookPatch
@@ -133,20 +133,15 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 "morphe_comments_screen",
                 preferences = setOf(
-                    PreferenceCategory(
-                        titleKey = null,
-                        sorting = Sorting.UNSORTED,
-                        tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                        preferences = setOf(
-                            SwitchPreference(
-                                "morphe_hide_comments_carousel",
-                                summary = true,
-                                tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
-                            ),
-                            TextPreference(
-                                "morphe_hide_comments_carousel_filter_strings",
-                                inputType = InputType.TEXT_MULTI_LINE
-                            ),
+                    noTitleUnsortedPreferenceCategory(
+                        SwitchPreference(
+                            "morphe_hide_comments_carousel",
+                            summary = true,
+                            tag = "app.morphe.extension.shared.settings.preference.BulletPointSwitchPreference"
+                        ),
+                        TextPreference(
+                            "morphe_hide_comments_carousel_filter_strings",
+                            inputType = InputType.TEXT_MULTI_LINE
                         )
                     ),
                     SwitchPreference("morphe_hide_comments_ai_chat_summary"),
@@ -176,6 +171,7 @@ val hideLayoutComponentsPatch = bytecodePatch(
             SwitchPreference("morphe_hide_medical_panels"),
             SwitchPreference("morphe_hide_snackbar"),
             SwitchPreference("morphe_hide_subscribers_community_guidelines"),
+            SwitchPreference("morphe_hide_sync_button"),
             SwitchPreference("morphe_hide_timed_reactions", summary = true),
             SwitchPreference("morphe_hide_video_title", summary = true),
         )
@@ -211,16 +207,11 @@ val hideLayoutComponentsPatch = bytecodePatch(
             PreferenceScreenPreference(
                 key = "morphe_channel_screen",
                 preferences = setOf(
-                    PreferenceCategory(
-                        titleKey = null,
-                        sorting = Sorting.UNSORTED,
-                        tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                        preferences = setOf(
-                            SwitchPreference("morphe_hide_channel_tab"),
-                            TextPreference(
-                                "morphe_hide_channel_tab_filter_strings",
-                                inputType = InputType.TEXT_MULTI_LINE
-                            ),
+                    noTitleUnsortedPreferenceCategory(
+                        SwitchPreference("morphe_hide_channel_tab"),
+                        TextPreference(
+                            "morphe_hide_channel_tab_filter_strings",
+                            inputType = InputType.TEXT_MULTI_LINE
                         )
                     ),
                     SwitchPreference("morphe_hide_community_button"),
@@ -246,29 +237,19 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     entryValuesKey = "morphe_hide_expandable_card_legacy_entry_values"
                 )
             },
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_hide_feed_flyout_menu"),
-                    TextPreference(
-                        "morphe_hide_feed_flyout_menu_filter_strings",
-                        inputType = InputType.TEXT_MULTI_LINE
-                    ),
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_hide_feed_flyout_menu"),
+                TextPreference(
+                    "morphe_hide_feed_flyout_menu_filter_strings",
+                    inputType = InputType.TEXT_MULTI_LINE
                 )
             ),
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_hide_account_menu"),
-                    TextPreference(
-                        "morphe_hide_account_menu_filter_strings",
-                        inputType = InputType.TEXT_MULTI_LINE
-                    ),
-                ),
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_hide_account_menu"),
+                TextPreference(
+                    "morphe_hide_account_menu_filter_strings",
+                    inputType = InputType.TEXT_MULTI_LINE
+                )
             ),
             SwitchPreference("morphe_hide_floating_microphone_button", summary = true),
             SwitchPreference("morphe_hide_horizontal_shelves", summary = true),
@@ -994,6 +975,18 @@ val hideLayoutComponentsPatch = bytecodePatch(
                     )
                 }
             }
+        }
+
+        // endregion
+
+        // region hide sync button
+
+        SyncButtonFingerprint.let {
+            it.method.injectHideViewCall(
+                it.instructionMatches.last().index,
+                LAYOUT_COMPONENTS_FILTER,
+                "hideSyncButton"
+            )
         }
 
         // endregion

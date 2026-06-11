@@ -1,18 +1,25 @@
 package app.morphe.patches.youtube.interaction.dialog
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.literal
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.findInstructionIndicesReversed
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/RemoveViewerDiscretionDialogPatch;"
@@ -34,48 +41,119 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
             SwitchPreference("morphe_remove_viewer_discretion_dialog", summary = true),
         )
 
-        AllowControversialContentFingerprint.apply {
-            val allowControversialContentMethod = instructionMatches[2].getMethodCalled()
-
-            allowControversialContentMethod.apply {
-                findInstructionIndicesReversed(Opcode.RETURN).forEach { index ->
-                    addInstructionsWithLabels(
-                        index,
-                        """
-                            invoke-static {}, $EXTENSION_CLASS->hideViewDiscretionDialog()Z
-                            move-result v0
-                            if-eqz v0, :show_controversial_content_confirmation_box
-                            return v0
-                            :show_controversial_content_confirmation_box
-                            nop
-                        """
-                    )
-                }
+        fun applyPatch(instructionIndex: Int, instructionRegister: Int, method: MutableMethod, isBoolWrapper: Boolean) {
+            val (firstSmali, lastSmali) = if (isBoolWrapper) {
+                """
+                    invoke-virtual { v$instructionRegister }, Ljava/lang/Boolean;->booleanValue()Z
+                    move-result v$instructionRegister
+                """ to """
+                    invoke-static { v$instructionRegister }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+                    move-result-object v$instructionRegister
+                """
+            } else {
+                "" to ""
             }
 
-            val allowAdultContentFingerprint = Fingerprint(
-                definingClass = allowControversialContentMethod.definingClass,
-                accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
-                returnType = "Ljava/lang/Boolean;",
-                parameters = listOf(),
-                filters = listOf(
-                    literal(0),
-                    methodCall("Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;"),
-                )
-            )
-
-            allowAdultContentFingerprint.method.addInstructionsWithLabels(
-                0,
+            method.addInstructions(
+                instructionIndex,
                 """
-                    invoke-static {}, $EXTENSION_CLASS->hideViewDiscretionDialog()Z
-                    move-result v0
-                    if-eqz v0, :show_adult_content_confirmation_box
-                    sget-object v0, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
-                    return-object v0
-                    :show_adult_content_confirmation_box
-                    nop
+                    $firstSmali
+                    invoke-static { v$instructionRegister }, $EXTENSION_CLASS->hideViewDiscretionDialog(Z)Z
+                    move-result v$instructionRegister
+                    $lastSmali
                 """
             )
         }
+
+        // region skip discretion dialog
+        val skipDialogFingerprint = Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf("L"),
+            filters = listOf(
+                methodCall(
+                    opcode = Opcode.INVOKE_VIRTUAL,
+                    smali = "Ljava/lang/Boolean;->booleanValue()Z"
+                ),
+                opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+                opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(2)),
+                opcode(Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+                methodCall(
+                    opcode = Opcode.INVOKE_DIRECT,
+                    name = "<init>",
+                    definingClass = AdultContentRunnableFingerprint.method.definingClass,
+                    location = MatchAfterWithin(3)
+                )
+            )
+        )
+        skipDialogFingerprint.let { fingerprint ->
+            listOf(
+                fingerprint.instructionMatches[3],
+                fingerprint.instructionMatches[1],
+            ).forEach { instruction ->
+                val instructionIndex = instruction.index
+                val instructionRegister = fingerprint.method
+                    .getInstruction<OneRegisterInstruction>(instructionIndex).registerA
+
+                applyPatch(instructionIndex + 1, instructionRegister, fingerprint.method, false)
+            }
+        }
+
+        Fingerprint(
+            definingClass = Fingerprint(
+                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
+                returnType = "L",
+                parameters = listOf("Ljava/lang/String;", "L"),
+                strings = listOf(
+                    "Null videoId",
+                    "Null offlineModeType",
+                )
+            ).method.definingClass,
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+            returnType = "V",
+            custom = { method, _ ->
+                method.parameters.count() >= 6
+            }
+        ).let {fingerprint ->
+            applyPatch(1, 6, fingerprint.method, true)
+        }
+
+        // endregion
+
+        // region unlock related videos for restricted videos
+        val adultContentSetPropertiesMatches = AdultContentSetPropertiesFingerprint.instructionMatches
+
+        Fingerprint(
+            definingClass = skipDialogFingerprint.method.definingClass,
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf("L"),
+            filters = listOf(
+                fieldAccess(
+                    opcode = Opcode.IPUT_BOOLEAN,
+                    smali = adultContentSetPropertiesMatches[0]
+                        .getInstruction<ReferenceInstruction>().reference.toString()
+                ),
+                fieldAccess(
+                    opcode = Opcode.IPUT_BOOLEAN,
+                    location = MatchAfterWithin(3),
+                    smali = adultContentSetPropertiesMatches[2]
+                        .getInstruction<ReferenceInstruction>().reference.toString()
+                ),
+            )
+        ).let {fingerprint ->
+            listOf(
+                fingerprint.instructionMatches[1],
+                fingerprint.instructionMatches[0],
+            ).forEach { instruction ->
+                val instructionIndex = instruction.index
+                val instructionRegister = fingerprint.method
+                    .getInstruction<TwoRegisterInstruction>(instructionIndex).registerA
+
+                applyPatch(instructionIndex, instructionRegister, fingerprint.method, false)
+            }
+        }
+
+        // endregion
     }
 }

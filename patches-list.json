@@ -1,5 +1,5 @@
 {
-  "version": "1.31.0-dev.9",
+  "version": "1.31.0-dev.12",
   "patches": [
     {
       "name": "Alternative thumbnails",
@@ -163,10 +163,72 @@
       "options": []
     },
     {
-      "name": "Bypass URL redirects",
-      "description": "Adds an option to bypass URL redirects and open the original URL directly.",
+      "name": "Bypass certificate checks",
+      "description": "Bypasses certificate checks which prevent YouTube Music from working on Android Auto.",
       "default": true,
       "dependencies": [
+        "BytecodePatch",
+        "BytecodePatch"
+      ],
+      "compatiblePackages": [
+        {
+          "packageName": "com.google.android.apps.youtube.music",
+          "name": "YouTube Music",
+          "description": null,
+          "apkFileType": "APK_REQUIRED",
+          "appIconColor": "#FF0000",
+          "signatures": [
+            "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
+            "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
+          ],
+          "targets": [
+            {
+              "version": "9.22.53",
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.21.51",
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "9.20.52",
+              "isExperimental": true,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "8.51.51",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "8.47.56",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            },
+            {
+              "version": "7.29.52",
+              "isExperimental": false,
+              "minSdk": 26,
+              "description": null
+            }
+          ]
+        }
+      ],
+      "options": []
+    },
+    {
+      "name": "Bypass image region restrictions",
+      "description": "Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries.",
+      "default": true,
+      "dependencies": [
+        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],
@@ -242,72 +304,10 @@
       "options": []
     },
     {
-      "name": "Bypass certificate checks",
-      "description": "Bypasses certificate checks which prevent YouTube Music from working on Android Auto.",
+      "name": "Bypass link redirects",
+      "description": "Adds an option to bypass redirects and open the original link directly.",
       "default": true,
       "dependencies": [
-        "BytecodePatch",
-        "BytecodePatch"
-      ],
-      "compatiblePackages": [
-        {
-          "packageName": "com.google.android.apps.youtube.music",
-          "name": "YouTube Music",
-          "description": null,
-          "apkFileType": "APK_REQUIRED",
-          "appIconColor": "#FF0000",
-          "signatures": [
-            "6a2f65ec694a6a632acdcb5080912a565f903d4b8d83f0eb8e44fbdf2660d8e1",
-            "a2a1ad7ba7f41dfca4514e2afeb90691719af6d0fdbed4b09bbf0ed897701ceb"
-          ],
-          "targets": [
-            {
-              "version": "9.22.53",
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.21.51",
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "9.20.52",
-              "isExperimental": true,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "8.51.51",
-              "isExperimental": false,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "8.47.56",
-              "isExperimental": false,
-              "minSdk": 26,
-              "description": null
-            },
-            {
-              "version": "7.29.52",
-              "isExperimental": false,
-              "minSdk": 26,
-              "description": null
-            }
-          ]
-        }
-      ],
-      "options": []
-    },
-    {
-      "name": "Bypass image region restrictions",
-      "description": "Adds an option to use a different host for user avatar and channel images and can fix missing images that are blocked in some countries.",
-      "default": true,
-      "dependencies": [
-        "BytecodePatch",
         "BytecodePatch",
         "BytecodePatch"
       ],
@@ -1091,8 +1091,8 @@
       "options": []
     },
     {
-      "name": "Copy video URL",
-      "description": "Adds options to display buttons in the video player to copy video URLs.",
+      "name": "Copy video link",
+      "description": "Adds options to display buttons in the video player to copy video links.",
       "default": true,
       "dependencies": [
         "ResourcePatch",
@@ -8010,6 +8010,28 @@
             "Dark yellow": "#282900",
             "Dark orange": "#291800",
             "Dark red": "#290000"
+          }
+        },
+        {
+          "key": "lightThemeBackgroundColor",
+          "title": "Light theme background color",
+          "description": "Can be a hex color (#RRGGBB) or a color resource reference.",
+          "required": false,
+          "type": "kotlin.String",
+          "default": "@android:color/white",
+          "values": {
+            "White": "@android:color/white",
+            "Material You (Neutral)": "@android:color/system_neutral1_100",
+            "Material You - Primary": "@android:color/system_accent1_200",
+            "Material You - Secondary": "@android:color/system_accent2_200",
+            "Material You - Tertiary": "@android:color/system_accent3_200",
+            "Catppuccin (Latte)": "#E6E9EF",
+            "Light pink": "#FCCFF3",
+            "Light blue": "#D1E0FF",
+            "Light green": "#CCFFCC",
+            "Light yellow": "#FDFFCC",
+            "Light orange": "#FFE6CC",
+            "Light red": "#FFD6D6"
           }
         }
       ]

@@ -55,7 +55,7 @@ Second \"item\" text"</string>
   <string name="morphe_sanitize_sharing_links_title">共有リンクを無害化</string>
   <string name="morphe_sanitize_sharing_links_summary">共有リンクからトラッキング用のパラメータを削除します</string>
   <string name="morphe_open_links_directly_title">リンクを直接開く</string>
-  <string name="morphe_open_links_directly_summary">外部リンクを開く際に、リダイレクト URL を回避します</string>
+  <string name="morphe_open_links_directly_summary">リダイレクト URL を経由せずに外部リンクを直接開きます</string>
   <string name="morphe_open_links_externally_title">外部ブラウザでリンクを開く</string>
   <string name="morphe_open_links_externally_summary">リンクをアプリ内ブラウザではなく外部ブラウザで開きます</string>
 </resources>

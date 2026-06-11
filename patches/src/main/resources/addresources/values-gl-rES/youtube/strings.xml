@@ -49,7 +49,7 @@ Second \"item\" text"</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- ad.video.videoAdsPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -178,7 +178,7 @@ Second \"item\" text"</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <!-- misc.links.bypassURLRedirectsPatch -->
+  <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->

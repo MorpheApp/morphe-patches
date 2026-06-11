@@ -7,121 +7,67 @@
 
 package app.morphe.patches.youtube.misc.auth
 
-import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
-import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.opcode
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_02_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.request.buildRequestPatch
 import app.morphe.patches.youtube.misc.request.hookBuildRequest
-import app.morphe.util.cloneParameters
-import com.android.tools.smali.dexlib2.AccessFlags
-import com.android.tools.smali.dexlib2.Opcode
+import app.morphe.util.findFieldFromToString
+import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 
-private const val EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR =
-    "Lapp/morphe/extension/shared/innertube/utils/AuthUtils;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/shared/innertube/utils/AuthUtils;"
 
 internal val authHookPatch = bytecodePatch(
-    description = "authHookPatch"
+    description = "Hook to get the parameters required for account authentication"
 ) {
     dependsOn(
         sharedExtensionPatch,
         buildRequestPatch,
+        versionCheckPatch,
     )
 
     execute {
-        val accountIdentityDefiningClass = AccountIdentityFingerprint.method.definingClass
-        val clearlyClassName = accountIdentityDefiningClass.endsWith($$"$AutoValue_AccountIdentity;")
-        val pageIdAccessedField = AccountIdentityFingerprint.instructionMatches[1].getFieldAccessed().toString()
-        val incognitoStatusAccessedField = AccountIdentityFingerprint.instructionMatches.last().getFieldAccessed().toString()
-
-        fun returnRegisterType(register: Int): String =
-            (if (clearlyClassName) "v" else "p") + register
-
-        buildList{
-            if (!clearlyClassName) {
-                add(
-                    Fingerprint(
-                        definingClass = accountIdentityDefiningClass,
-                        returnType = "Z",
-                        accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                        parameters = listOf(),
-                        filters = listOf(
-                            fieldAccess(
-                                opcode = Opcode.IGET_OBJECT,
-                                location = InstructionLocation.MatchFirst(),
-                                smali = pageIdAccessedField
-                            ),
-                            opcode(
-                                Opcode.CONST_STRING,
-                                location = InstructionLocation.MatchAfterImmediately()
-                            ),
-                            opcode(
-                                Opcode.INVOKE_VIRTUAL,
-                                location = InstructionLocation.MatchAfterImmediately()
-                            ),
-                        ),
-                    )
+        val (pageIdField, incognitoField) =
+            with(AccountIdentityToStringFingerprint.method) {
+                Pair(
+                    findFieldFromToString(GET_PAGE_ID_STRING),
+                    findFieldFromToString(IS_INCOGNITO_STRING)
                 )
             }
-            add(
-                Fingerprint(
-                    definingClass = accountIdentityDefiningClass,
-                    returnType = "Ljava/lang/String;",
-                    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-                    parameters = listOf(),
-                    filters = listOf(
-                        fieldAccess(
-                            opcode = Opcode.IGET_OBJECT,
-                            location = InstructionLocation.MatchFirst(),
-                            smali = pageIdAccessedField
-                        ),
-                        opcode(
-                            Opcode.RETURN_OBJECT,
-                            location = InstructionLocation.MatchAfterImmediately()
-                        ),
-                    ),
+
+        val pageIdFingerprints = mutableListOf(getPageIdFingerprint(pageIdField))
+
+        if (is_21_02_or_greater) {
+            pageIdFingerprints += isEmptyPageIdFingerprint(pageIdField)
+        }
+
+        pageIdFingerprints.forEach {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->setPageId(Ljava/lang/String;)V"
                 )
-            )
-        }.forEach { fingerprint ->
-            val method = fingerprint.method
-            val instructionIndex = fingerprint.instructionMatches.first().index
-
-            method.addInstruction(
-                instructionIndex + 1,
-                """
-                invoke-static { ${returnRegisterType(0)} }, $EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR->setPageId(Ljava/lang/String;)V
-            """
-            )
+            }
         }
 
-        Fingerprint(
-            definingClass = accountIdentityDefiningClass,
-            returnType = "Z",
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-            parameters = listOf(),
-            filters = listOf(
-                fieldAccess(
-                    opcode = Opcode.IGET_BOOLEAN,
-                    location = InstructionLocation.MatchFirst(),
-                    smali = incognitoStatusAccessedField
-                ),
-                opcode(Opcode.RETURN, location = InstructionLocation.MatchAfterImmediately()),
-            )
-        ).matchAll().forEach { fingerprint ->
-            val method = fingerprint.method
-            val instructionIndex = fingerprint.instructionMatches.first().index
+        getIncognitoStatusFingerprint(incognitoField).matchAll().forEach {
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<TwoRegisterInstruction>(index).registerA
 
-            method.addInstruction(
-                instructionIndex + 1,
-                """
-                invoke-static { ${returnRegisterType(0)} }, $EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR->setIncognitoStatus(Z)V
-            """
-            )
+                addInstruction(
+                    index + 1,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->setIncognitoStatus(Z)V"
+                )
+            }
         }
 
-        hookBuildRequest("$EXTENSION_AUTH_UTILS_CLASS_DESCRIPTOR->setRequestHeaders(Ljava/lang/String;Ljava/util/Map;)V")
+        hookBuildRequest("$EXTENSION_CLASS->setRequestHeaders(Ljava/lang/String;Ljava/util/Map;)V")
     }
 }

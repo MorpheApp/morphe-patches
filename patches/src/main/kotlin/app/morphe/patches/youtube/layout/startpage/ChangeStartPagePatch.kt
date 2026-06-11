@@ -5,9 +5,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -29,17 +28,12 @@ val changeStartPagePatch = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    ListPreference(
-                        key = "morphe_change_start_page",
-                        tag = "app.morphe.extension.shared.settings.preference.SortedListPreference"
-                    ),
-                    SwitchPreference("morphe_change_start_page_always", summary = true)
-                )
+            noTitleUnsortedPreferenceCategory(
+                ListPreference(
+                    key = "morphe_change_start_page",
+                    tag = "app.morphe.extension.shared.settings.preference.SortedListPreference"
+                ),
+                SwitchPreference("morphe_change_start_page_always", summary = true)
             )
         )
 

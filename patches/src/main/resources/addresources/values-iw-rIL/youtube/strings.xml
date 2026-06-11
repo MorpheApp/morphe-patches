@@ -131,6 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_medical_panels_title">הסתר לוחות רפואיים</string>
   <string name="morphe_hide_snackbar_title">הסתר סנאקבר</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">הסתר את הנחיות המנויים</string>
+  <string name="morphe_hide_sync_button_title">הסתר כפתור \'סנכרן לסרטון\'</string>
   <string name="morphe_hide_timed_reactions_title">הסתר תגובות באמוג\'י מתוזמנות</string>
   <string name="morphe_hide_timed_reactions_summary">מסתיר את התכונה המאפשרת למשתמשים להגיב באמצעות אימוג\'ים בסעיף התגובות ובצ\'אט החי</string>
   <string name="morphe_hide_video_title_title">הסתר כותרת סרטון</string>
@@ -205,6 +206,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_comments_create_a_short_button_title">הסתר לחצן \'יצירת Short\'</string>
   <string name="morphe_hide_comments_emoji_and_timestamp_buttons_title">הסתר לחצני אימוג\'י וחותמת זמן</string>
   <string name="morphe_hide_comments_info_button_title">הסתר לחצן מידע</string>
+  <string name="morphe_hide_comments_live_chat_donators_bar_title">הסתר את סרגל תורמי הצ\'אט החי</string>
   <string name="morphe_hide_comments_preview_comment_title">הסתר תצוגה מקדימה של תגובה</string>
   <string name="morphe_hide_comments_preview_comment_summary">מסתיר את תצוגת המקדימה של תגובות מתחת לסרטון לפני פתיחת סעיף התגובות המלא</string>
   <string name="morphe_hide_comments_thanks_button_title">הסתר לחצן תודה</string>
@@ -270,13 +272,13 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">הסתר מודעות סרטון</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">כתובת URL הועתקה אל הלוח</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">כתובת URL עם חותמת זמן הועתקה ללוח הגזירים</string>
-  <string name="morphe_copy_video_url_button_title">הצג לחצן העתקת כתובת URL של סרטון</string>
-  <string name="morphe_copy_video_url_button_summary">הקש כדי להעתיק את כתובת ה-URL של הסרטון, הקש והחזק כדי להעתיק עם חותמת זמן</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">העתק חותמת זמן כברירת מחדל</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">הופך את הפעולות של הקשה והחזקה על \'העתק כתובת URL של סרטון\'</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">קישור הועתק ללוח הגזירים</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">קישור עם חותמת זמן הועתק ללוח הגזירים</string>
+  <string name="morphe_copy_video_link_button_title">הצג לחצן העתקת קישור לסרטון</string>
+  <string name="morphe_copy_video_link_button_summary">הקש כדי להעתיק את קישור הסרטון, הקש והחזק כדי להעתיק עם חותמת זמן</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">העתק חותמת זמן כברירת מחדל</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">הופך את פעולות ההקשה וההקשה וההחזקה של כפתור \'העתקת קישור הסרטון\'</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">הסר דו-שיח שיקול דעת הצופים</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">זה לא עוקף את מגבלת הגיל. זה רק מסכים לזה באופן אוטומטי</string>
@@ -1019,6 +1021,8 @@ Second \"item\" text"</string>
 • כפתור 'מיזוג' וכפתור 'סאונד' אינם זמינים ב-Shorts
 • Shorts נפתחים בנגן הרגיל
 • שורת הפעולות של הווידאו אינה מקופלת"</string>
+  <string name="morphe_tablet_layout_in_player_title">הפעל פריסת טאבלט בנגן</string>
+  <string name="morphe_tablet_layout_in_player_summary">משחזר את פריסת הנגן הישנה</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">זייף גרסת יישום</string>
   <string name="morphe_spoof_app_version_summary">מרמה את השרת לחשוב שאתה משתמש בגרסת אפליקציה ישנה יותר כדי לשחזר תכונות ממשק משתמש מדור קודם</string>
@@ -1103,7 +1107,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">מונע סגירת הנגן הממוזער על ידי החלקתו אופקית מהמסך</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">הסתר לחצני שכבת-על</string>
   <string name="morphe_miniplayer_hide_subtext_title">הסתר תת-טקסטים</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">הסתר לחצני דילוג קדימה ואחורה</string>
   <string name="morphe_miniplayer_width_dip_title">גודל ברירת מחדל</string>
   <string name="morphe_miniplayer_width_dip_summary">הגדר את הגודל הראשוני על המסך, בפיקסלים</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">גודל פיקסל חייב להיות בין %1$s ו-%2$s</string>
@@ -1191,9 +1194,9 @@ Second \"item\" text"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">מונע גרירת סרגל החיפוש במסך הנעילה ובפאנל ההתראות</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">אם פרטי הכניסה לחשבונך השתנו לאחרונה, אז יש להסיר ולהתקין מחדש את MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">עקוף הפניות מחדש של URL</string>
-  <string name="morphe_bypass_url_redirects_summary">פותח את כתובת ה-URL המקורית ישירות, תוך עקיפת קישור המעקב (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">עקוף הפניות קישורים</string>
+  <string name="morphe_bypass_link_redirects_summary">פותח את הקישור המקורי ישירות, תוך עקיפת קישור המעקב (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">פתח קישורים בדפדפן</string>
   <string name="morphe_external_browser_summary">פותח קישורים בדפדפן חיצוני במקום בדפדפן המובנה</string>
@@ -1237,6 +1240,8 @@ Second \"item\" text"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">מציג הודעה כאשר נשמרת מהירות הפעלה ברירת מחדל</string>
   <string name="morphe_playback_speed_default_title">מהירות הפעלה ברירת מחדל</string>
   <string name="morphe_remember_playback_speed_toast">מהירות ההשמעה המוגדרת כברירת מחדל שונתה ל: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">השתמש במהירות רגילה למוזיקה</string>
+  <string name="morphe_disable_playback_speed_music_summary">נגן תמיד סרטוני מוזיקה במהירות 1.0x</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">השבת סרטון HDR</string>
   <string name="morphe_force_avc_codec_title">כופה קידוד AVC (H.264)</string>

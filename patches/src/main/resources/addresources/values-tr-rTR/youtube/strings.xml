@@ -131,6 +131,7 @@ Değişiklikler şunları içerir:
   <string name="morphe_hide_medical_panels_title">Tıbbi bilgi panellerini gizle</string>
   <string name="morphe_hide_snackbar_title">Snackbar\'ı gizle</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Abone kurallarını gizle</string>
+  <string name="morphe_hide_sync_button_title">\'Videoyla senkronize et\' düğmesini gizle</string>
   <string name="morphe_hide_timed_reactions_title">Süreli tepkileri gizle</string>
   <string name="morphe_hide_timed_reactions_summary">Kullanıcıların yorum bölümünde ve canlı sohbette emojilerle tepki vermesini sağlayan özelliği gizler</string>
   <string name="morphe_hide_video_title_title">Video başlığını gizle</string>
@@ -271,13 +272,13 @@ Sınırlamalar
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Video reklamlarını gizle</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL panoya kopyalandı</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">Zaman damgalı URL panoya kopyalandı</string>
-  <string name="morphe_copy_video_url_button_title">Video URL\'sini kopyala düğmesini göster</string>
-  <string name="morphe_copy_video_url_button_summary">Video URL\'sini kopyalamak için dokunun, zaman damgasıyla kopyalamak için dokunup basılı tutun</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Varsayılan olarak zaman damgasını kopyala</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">\"Video URL\'sini kopyala\" düğmesinin dokunma ve basılı tutma eylemlerini tersine çevirir</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Bağlantı panoya kopyalandı</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Zaman damgasıyla birlikte bağlantı panoya kopyalandı</string>
+  <string name="morphe_copy_video_link_button_title">Video bağlantısını kopyala düğmesini göster</string>
+  <string name="morphe_copy_video_link_button_summary">Video bağlantısını kopyalamak için dokunun, zaman damgasıyla kopyalamak için dokunup basılı tutun</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Varsayılan olarak zaman damgasını kopyala</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">\"Video bağlantısını kopyala\" düğmesinin dokunma ve basılı tutma eylemlerini tersine çevirir</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">İzleyici takdiri iletişim kutusunu kaldır</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Bu, yaş kısıtlamasını kaldırmaz. Sadece otomatik olarak kabul eder</string>
@@ -1022,6 +1023,8 @@ Otomotiv düzeni
 • Remix düğmesi ve Ses düğmesi Shorts'ta kullanılamıyor
 • Shorts normal oynatıcıda açılıyor
 • Video hareket çubuğu katlanmıyor"</string>
+  <string name="morphe_tablet_layout_in_player_title">Oynatıcıda tablet düzenini etkinleştir</string>
+  <string name="morphe_tablet_layout_in_player_summary">Eski oynatıcı düzenini geri yükler</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Uygulama sürümünü taklit et</string>
   <string name="morphe_spoof_app_version_summary">Sunucuya daha eski bir uygulama sürümü kullandığınızı düşündürerek eski arayüz özelliklerini geri yükler</string>
@@ -1087,7 +1090,7 @@ Sınırlama: Araç çubuğundaki geri düğmesini kullanmak işe yaramayabilir"<
   <string name="morphe_shorts_autoplay_background_summary">Arka planda oynatma sırasında otomatik olarak bir sonraki Short\'a geçer</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">Mini oynatıcıyı sürdürmeyi devre dışı bırak</string>
-  <string name="morphe_miniplayer_disable_resuming_summary">Uygulama başlangıcında görünen YouTube Premium özelliği \'İzlemeye devam et\' mini oynatıcısını devre dışı bırakır</string>
+  <string name="morphe_miniplayer_disable_resuming_summary">Uygulama başlangıcında görünen YouTube Premium özelliği \'İzlemeye devam edin\' mini oynatıcısını devre dışı bırakır</string>
   <string name="morphe_miniplayer_screen_title">Mini oynatıcı</string>
   <string name="morphe_miniplayer_screen_summary">Küçültülmüş video oynatıcısının görünümünü ve davranışını özelleştirin</string>
   <string name="morphe_miniplayer_type_title">Mini oynatıcı tipi</string>
@@ -1106,7 +1109,6 @@ Sınırlama: Araç çubuğundaki geri düğmesini kullanmak işe yaramayabilir"<
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Mini oynatıcının yatay olarak ekran dışına kaydırılarak kapatılmasını engeller</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Katman düğmelerini gizle</string>
   <string name="morphe_miniplayer_hide_subtext_title">Alt metinleri gizle</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">İleri ve geri atlama düğmelerini gizle</string>
   <string name="morphe_miniplayer_width_dip_title">Varsayılan boyut</string>
   <string name="morphe_miniplayer_width_dip_summary">Başlangıç ekran boyutunu piksel cinsinden ayarlayın</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Piksel boyutu %1$s ve %2$s arasında olmalıdır</string>
@@ -1194,9 +1196,9 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Bildirim panelindeki ve kilit ekranındaki zaman çubuğunu sürüklemeyi engeller</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Yakın zamanda hesap giriş bilgilerinizi değiştirdiyseniz MicroG\'yi kaldırıp yeniden yükleyin.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">URL yönlendirmelerini atla</string>
-  <string name="morphe_bypass_url_redirects_summary">İzleme bağlantısını atlayarak orijinal URL\'yi doğrudan açar (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Bağlantı yönlendirmelerini atla</string>
+  <string name="morphe_bypass_link_redirects_summary">İzleme bağlantısını (youtube.com/redirect) atlayarak orijinal bağlantıyı doğrudan açar</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Bağlantıları tarayıcıda aç</string>
   <string name="morphe_external_browser_summary">Bağlantıları uygulama içi tarayıcı yerine harici bir tarayıcıda açar</string>
@@ -1240,6 +1242,8 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Yeni bir varsayılan oynatma hızı kaydedildiğinde bir bildirim gösterir</string>
   <string name="morphe_playback_speed_default_title">Varsayılan oynatma hızı</string>
   <string name="morphe_remember_playback_speed_toast">Varsayılan oynatma hızı %s olarak değiştirildi</string>
+  <string name="morphe_disable_playback_speed_music_title">Müzik için normal hızı kullan</string>
+  <string name="morphe_disable_playback_speed_music_summary">Müzik videolarını her zaman 1.0x hızında oynat</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR videoyu devre dışı bırak</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) kodeğini zorla</string>

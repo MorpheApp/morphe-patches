@@ -913,8 +913,9 @@ public final class LayoutComponentsFilter extends Filter {
         String menuTitleString = menuTitleCharSequence.toString();
 
         boolean matches = false;
+        String menuTitleLower = menuTitleString.toLowerCase();
         for (String filter : accountMenuFilterStrings) {
-            if (menuTitleString.equalsIgnoreCase(filter)) {
+            if (menuTitleLower.contains(filter.toLowerCase())) {
                 matches = true;
                 break;
             }
@@ -960,5 +961,12 @@ public final class LayoutComponentsFilter extends Filter {
             Utils.hideViewByLayoutParams(view);
             view.setVisibility(View.GONE);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideSyncButton(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SYNC_BUTTON, view);
     }
 }

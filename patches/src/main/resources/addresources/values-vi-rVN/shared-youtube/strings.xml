@@ -92,14 +92,14 @@ Bấm tiếp tục bên dưới để đăng nhập"</string>
   <string name="morphe_oauth2_toast_reset">Đã đăng xuất khỏi Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Mã đăng nhập VR không hợp lệ, hãy thử đăng nhập lại vào VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Tắt cập nhật JavaScript của trình phát</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Khóa JavaScript của trình phát vào một phiên bản cụ thể
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Cố định phiên bản JavaScript của trình phát
 
-• Yêu cầu giá trị băm JavaScript của trình phát hợp lệ
-• Giá trị băm JavaScript của trình phát hợp lệ trong khoảng một tháng và các giá trị băm đã lỗi thời sẽ bị GVS thu hồi
-• Phát lại sẽ không thành công nếu giá trị băm bị thu hồi."</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Bạn cần cung cấp một giá trị băm JavaScript của trình phát hợp lệ.
+• Yêu cầu mã băm JavaScript hợp lệ
+• Mỗi mã băm thường chỉ có hiệu lực trong khoảng một tháng và bị GVS thu hồi khi hết hạn
+• Khi bị thu hồi, video sẽ không còn phát được nữa"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Bạn cần cung cấp một mã băm JavaScript của trình phát còn hiệu lực.
 
-Phát lại sẽ không thành công nếu giá trị băm JavaScript của trình phát đã lỗi thời."</string>
+Bạn sẽ không còn xem được video nếu mã băm hết hạn."</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_title">Mã băm JavaScript của trình phát</string>
   <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Nhập mã băm JavaScript hợp lệ của trình phát</string>
   <!-- misc.quic.disableQUICProtocolPatch -->

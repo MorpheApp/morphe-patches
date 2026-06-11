@@ -131,6 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_medical_panels_title">보건 패널 숨기기</string>
   <string name="morphe_hide_snackbar_title">스낵바 (팝업메시지바) 숨기기</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">구독자를 위한 커뮤니티 가이드라인 숨기기</string>
+  <string name="morphe_hide_sync_button_title">\'동영상에 동기화\' 버튼 숨기기</string>
   <string name="morphe_hide_timed_reactions_title">실시간 이모티콘 리액션 숨기기</string>
   <string name="morphe_hide_timed_reactions_summary">댓글 섹션 및 실시간 채팅에서 이모티콘으로 반응할 수 있는 기능을 숨깁니다</string>
   <string name="morphe_hide_video_title_title">동영상 제목 숨기기</string>
@@ -271,13 +272,13 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">동영상 광고 숨기기</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL을 클립보드에 복사하였습니다</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">타임스탬프가 표기된 URL을 클립보드에 복사하였습니다</string>
-  <string name="morphe_copy_video_url_button_title">동영상 URL 복사 버튼 표시하기</string>
-  <string name="morphe_copy_video_url_button_summary">버튼을 탭하여 동영상 URL을 복사할 수 있고, 길게 탭하면 타임스탬프가 표기된 URL이 복사됩니다</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">기본적으로 타임스탬프 복사하기</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">동영상 URL 복사 버튼의 \'탭하기\'와 \'길게 탭하기\' 동작을 서로 변경합니다</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">링크를 클립보드에 복사하였습니다</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">타임스탬프가 표기된 링크를 클립보드에 복사하였습니다</string>
+  <string name="morphe_copy_video_link_button_title">동영상 링크 복사 버튼 표시하기</string>
+  <string name="morphe_copy_video_link_button_summary">버튼을 탭하여 동영상 링크를 복사할 수 있고, 길게 탭하면 타임스탬프가 표기된 링크가 복사됩니다</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">기본적으로 타임스탬프 복사하기</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">동영상 링크 복사 버튼의 \'탭하기\'와 \'길게 탭하기\' 동작을 서로 변경합니다</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">시청 경고 다이얼로그 제거하기</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">이 설정은 다이얼로그를 자동으로 허용하기만 하며 연령 제한(성인인증 절차)을 우회할 수 없습니다</string>
@@ -1024,6 +1025,8 @@ Second \"item\" text"</string>
 • Shorts에서 믹스 버튼과 사운드 버튼은 사용할 수 없습니다
 • Shorts가 일반 플레이어에서 열립니다
 • 플레이어 동작 버튼바가 접히지 않습니다"</string>
+  <string name="morphe_tablet_layout_in_player_title">플레이어에서 태블릿 레이아웃 활성화하기</string>
+  <string name="morphe_tablet_layout_in_player_summary">이전 플레이어 레이아웃으로 복원합니다</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">앱 버전 속이기</string>
   <string name="morphe_spoof_app_version_summary">서버가 사용 중인 앱 버전을 더 오래된 버전으로 인식하도록 속여, 이전 레이아웃 기능을 다시 복원합니다</string>
@@ -1108,7 +1111,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">미니 플레이어를 화면 밖으로 가로로 스와이프하여 닫는 것을 방지할 수 있습니다</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">오버레이 버튼 숨기기</string>
   <string name="morphe_miniplayer_hide_subtext_title">서브텍스트 숨기기</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">\'되감기\' &amp; \'빨리 감기\' 버튼 숨기기</string>
   <string name="morphe_miniplayer_width_dip_title">기본 크기</string>
   <string name="morphe_miniplayer_width_dip_summary">초기 화면 크기를 설정할 수 있습니다 (픽셀)</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">픽셀 크기는 %1$s-%2$s 사이여야 합니다</string>
@@ -1196,9 +1198,9 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">잠금 화면 및 알림 패널에서 재생바를 드래그하지 못하도록 합니다</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">최근에 계정 로그인 정보를 변경했다면 MicroG를 제거하고 다시 설치하세요.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">리다이렉션 없이 링크 바로 열기</string>
-  <string name="morphe_bypass_url_redirects_summary">앱 내에서 외부 링크를 열 경우에 추적 링크(youtube.com/redirect)을 거치지 않고 연결됩니다</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">리다이렉션 없이 링크 바로 열기</string>
+  <string name="morphe_bypass_link_redirects_summary">앱 내에서 외부 링크를 열 경우에 추적 링크(youtube.com/redirect)을 거치지 않고 연결됩니다</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">외부 브라우저 사용하기</string>
   <string name="morphe_external_browser_summary">앱 내에서 외부 링크를 열 경우에 내부 브라우저가 아닌 외부 브라우저를 사용합니다</string>
@@ -1242,6 +1244,8 @@ DeArrow에 대해 자세히 알아보려면 여기를 탭하세요"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">기본 동영상 재생 속도 값이 변경될 때마다 알림을 표시합니다</string>
   <string name="morphe_playback_speed_default_title">기본 동영상 재생 속도</string>
   <string name="morphe_remember_playback_speed_toast">기본 동영상 재생 속도 값을 %s로 변경하였습니다</string>
+  <string name="morphe_disable_playback_speed_music_title">음악 일반 동영상 재생 속도 사용하기</string>
+  <string name="morphe_disable_playback_speed_music_summary">음악 동영상을 항상 1.0 배속으로 재생합니다</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 동영상 비활성화하기</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) 강제로 활성화하기</string>

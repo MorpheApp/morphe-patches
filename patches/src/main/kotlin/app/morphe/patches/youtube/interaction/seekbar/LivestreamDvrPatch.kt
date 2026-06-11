@@ -10,9 +10,8 @@ package app.morphe.patches.youtube.interaction.seekbar
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -34,14 +33,9 @@ val livestreamDvrPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.SEEKBAR.addPreferences(
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_livestream_dvr", summary = true),
-                    SwitchPreference("morphe_expand_livestream_dvr_duration", summary = true)
-                )
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_livestream_dvr", summary = true),
+                SwitchPreference("morphe_expand_livestream_dvr_duration", summary = true)
             )
         )
 

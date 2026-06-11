@@ -5,9 +5,8 @@ package app.morphe.patches.youtube.interaction.playall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
 import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
@@ -65,14 +64,9 @@ val playAllButtonPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_play_all_button", summary = true),
-                    ListPreference("morphe_play_all_button_type")
-                )
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_play_all_button", summary = true),
+                ListPreference("morphe_play_all_button_type")
             )
         )
 

@@ -25,7 +25,15 @@ internal val addLicensePatch = rawResourcePatch {
             // Check if target file exists and give a more informative error
             // because Files.copy throws an exception if the file already exists.
             if (Files.exists(targetFile)) {
-                throw PatchException("App is already modified with Morphe patches ($targetFile already exists)")
+                throw PatchException(
+                    "\n\n\n" +
+                            "!!!\n" +
+                            "!!!\n" +
+                            "!!! Provided APK is already modified with Morphe patches\n" +
+                            "!!! (File already exists in target app: $sourceFileName)\n" +
+                            "!!!\n" +
+                            "!!!\n\n"
+                )
             }
 
             Files.copy(inputFileStream, targetFile)

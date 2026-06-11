@@ -15,10 +15,9 @@ import app.morphe.patches.shared.layout.theme.lightThemeBackgroundColorOption
 import app.morphe.patches.shared.layout.theme.patchCountTextColor
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.layout.seekbar.seekbarColorPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_06_or_greater
@@ -279,12 +278,7 @@ val themePatch = baseThemePatch(
         )
 
         PreferenceScreen.SEEKBAR.addPreferences(
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = preferences
-            )
+            noTitleUnsortedPreferenceCategory(preferences)
         )
 
         PreferenceScreen.GENERAL.addPreferences(

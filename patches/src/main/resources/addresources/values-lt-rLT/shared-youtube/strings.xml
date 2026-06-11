@@ -22,6 +22,7 @@ Second \"item\" text"</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_notification_icon_title">Pranešimo piktograma</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -35,4 +36,5 @@ Second \"item\" text"</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_summary">Pašalina sekimo užklausos parametrus iš bendrinamų nuorodų</string>
 </resources>

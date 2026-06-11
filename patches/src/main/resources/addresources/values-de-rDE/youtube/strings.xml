@@ -131,6 +131,7 @@ Folgende Änderungen werden vorgenommen:
   <string name="morphe_hide_medical_panels_title">Verstecke medizinische Panels</string>
   <string name="morphe_hide_snackbar_title">Snackbar ausblenden</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Abonnentenrichtlinien ausblenden</string>
+  <string name="morphe_hide_sync_button_title">\"Synchronisieren mit Video\" Knopf ausblenden</string>
   <string name="morphe_hide_timed_reactions_title">Zeitliche Reaktionen ausblenden</string>
   <string name="morphe_hide_timed_reactions_summary">Verbirgt die Funktion, mit der Nutzer mit Emojis im Kommentarbereich und im Live-Chat reagieren können</string>
   <string name="morphe_hide_video_title_title">Videotitel ausblenden</string>
@@ -271,13 +272,13 @@ Einschränkungen:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Videowerbung ausblenden</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL in Zwischenablage kopiert</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL mit Zeitstempel in die Zwischenablage kopiert</string>
-  <string name="morphe_copy_video_url_button_title">Video-URL-Schaltfläche kopieren anzeigen</string>
-  <string name="morphe_copy_video_url_button_summary">Tippen Sie, um die Video-URL zu kopieren, tippen Sie und halten Sie gedrückt, um sie mit Zeitstempel zu kopieren</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Standardmäßig Zeitstempel kopieren</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Kehrt die Tipp- und Tippen-und-Halten-Aktionen der Schaltfläche „Video-URL kopieren“ um</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Link in Zwischenablage kopiert</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Link mit Zeitstempel in Zwischenablage kopiert</string>
+  <string name="morphe_copy_video_link_button_title">Video-URL-Schaltfläche kopieren anzeigen</string>
+  <string name="morphe_copy_video_link_button_summary">Tippen, um den Videolink zu kopieren. Tippen und gedrückt halten, um ihn mit Zeitstempel zu kopieren.</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Standardmäßig Zeitstempel kopieren</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Kehrt die Tipp- und Tippen-und-Halten-Aktionen der Schaltfläche „Videolink kopieren“ um.</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Diskretion des Betrachters entfernen</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Dies umgeht nicht die Altersbeschränkung, sondern akzeptiert sie nur automatisch</string>
@@ -1022,6 +1023,8 @@ Automobil-Layout
 • Remix-Taste und Sound-Taste sind in Shorts nicht verfügbar
 • Shorts öffnen im regulären Player
 • Video-Aktionenleiste ist nicht zusammengeklappt"</string>
+  <string name="morphe_tablet_layout_in_player_title">Tablet-Layout im Player aktivieren</string>
+  <string name="morphe_tablet_layout_in_player_summary">Stellt das alte Player-Layout wieder her</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Spoof-App-Version</string>
   <string name="morphe_spoof_app_version_summary">Täuscht den Server dazu, dass Sie eine ältere App-Version verwenden, um Legacy-UI-Funktionen wiederherzustellen</string>
@@ -1106,7 +1109,6 @@ Einschränkung: Die Verwendung der Zurück-Taste auf der Symbolleiste funktionie
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Verhindert das Schließen des Miniplayers, indem Sie ihn horizontal vom Bildschirm wischen</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Overlay-Buttons ausblenden</string>
   <string name="morphe_miniplayer_hide_subtext_title">Untertexte ausblenden</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Vorwärts- und Rückwärts-Buttons ausblenden</string>
   <string name="morphe_miniplayer_width_dip_title">Standardgröße</string>
   <string name="morphe_miniplayer_width_dip_summary">Legen Sie die Anfangsgröße auf dem Bildschirm in Pixeln fest</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pixelgröße muss zwischen %1$s und %2$s liegen</string>
@@ -1194,9 +1196,9 @@ Tippen Sie hier, um mehr über DeArrow zu erfahren"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Verhindert das Ziehen der Fortschrittsanzeige auf dem Sperrbildschirm und im Benachrichtigungsfeld</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Wenn Sie kürzlich Ihre Kontoanmeldedaten geändert haben, deinstallieren Sie MicroG und installieren Sie es erneut.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">URL-Weiterleitungen umgehen</string>
-  <string name="morphe_bypass_url_redirects_summary">Öffnet die ursprüngliche URL direkt, um den Tracking-Link (youtube.com/redirect) zu umgehen</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Umgehung von Link-Weiterleitungen</string>
+  <string name="morphe_bypass_link_redirects_summary">Öffnet den ursprünglichen Link direkt, wodurch der Tracking-Link (youtube.com/redirect) umgangen wird.</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Links im Browser öffnen</string>
   <string name="morphe_external_browser_summary">Öffnet Links in einem externen Browser anstelle des In-App-Browsers</string>
@@ -1240,6 +1242,8 @@ Tippen Sie hier, um mehr über DeArrow zu erfahren"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Zeigt eine Benachrichtigung an, wenn eine neue Standard-Wiedergabegeschwindigkeit gespeichert wurde</string>
   <string name="morphe_playback_speed_default_title">Standard Wiedergabegeschwindigkeit</string>
   <string name="morphe_remember_playback_speed_toast">Standard-Wiedergabegeschwindigkeit geändert zu: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Verwende normale Geschwindigkeit für Musik</string>
+  <string name="morphe_disable_playback_speed_music_summary">Spiele Musikvideos immer mit 1,0-facher Geschwindigkeit ab</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Deaktiviere HDR-Video</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264)-Codec erzwingen</string>

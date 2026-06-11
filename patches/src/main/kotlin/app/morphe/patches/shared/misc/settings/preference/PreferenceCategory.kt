@@ -17,7 +17,7 @@ import org.w3c.dom.Document
 @Suppress("MemberVisibilityCanBePrivate")
 open class PreferenceCategory(
     key: String? = null,
-    titleKey: String? = "${key}_title",
+    titleKey: String? = if (key == null) null else "${key}_title",
     icon: String? = null,
     iconBold: String? = null,
     layout: String? = null,
@@ -33,3 +33,18 @@ open class PreferenceCategory(
             }
         }
 }
+
+internal fun noTitleUnsortedPreferenceCategory(
+    vararg preferences: BasePreference
+) = noTitleUnsortedPreferenceCategory(preferences.toSet())
+
+internal fun noTitleUnsortedPreferenceCategory(
+    preferences: Set<BasePreference>
+) = PreferenceCategory(
+    key = null,
+    titleKey = null,
+    sorting = Sorting.UNSORTED,
+    tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
+    preferences = preferences
+)
+

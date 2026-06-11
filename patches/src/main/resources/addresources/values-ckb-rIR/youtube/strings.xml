@@ -161,7 +161,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_shopping_links_title">بەستەرەکانی بازاڕکردن بشارەوە</string>
   <!-- ad.video.videoAdsPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_summary">هقاسي نابي سفاح را مانعي تيستيًد نابي. قاس فاري قبلة ديرياحيدي</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -263,6 +263,7 @@ Second \"item\" text"</string>
   <string name="morphe_fix_transcript_title">ناونیشانی دۆزینەوەی ڕێکخستەکان ڕێکخا</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">دووگمەکانی گەشتکردن</string>
+  <string name="morphe_navigation_buttons_screen_summary">هەڵبژێرە کام دوگمەیە دەردەکەوێت لە شریتی گەشتکردن</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
   <string name="morphe_hide_home_button_title">دوگمەی ماڵەوە بشارەوە</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -644,14 +645,15 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">خۆگرتنەوەی خوارەوەی ڕەڵد بکە</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">خۆگرتنەوەی پشتخاڵەکان بپارێزە</string>
   <string name="morphe_miniplayer_hide_subtext_title">خۆگرتنەوەی بنەماڵەکان پاشخاڵ بپارێزە</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">خۆگرتنەوەی پەخشرکانی ڕاستەقینە و گەڕانەوە \"بەڵ</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">قەرەبایی دەبێت لە نێۆ %1$s و %2$s بێت</string>
   <string name="morphe_miniplayer_opacity_title">شفافی پشتخاڵ</string>
+  <string name="morphe_miniplayer_opacity_summary">ءيجست سير رنغدي - (0 ري رنحانًح, 100 ري دواق)</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">زینەی سەرپۆشەکەی مینیپڵەیەر پێویستە لە نێوان 0-100 بێت</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">سکرینی بارکردنێکی فڕکێنەرەوە سازشە</string>
   <string name="morphe_splash_screen_animation_style_entry_1">نەخوێتە</string>
   <string name="morphe_splash_screen_animation_style_entry_2">ڕەنگ</string>
+  <string name="morphe_splash_screen_animation_style_entry_3">منۆكرۆم</string>
   <string name="morphe_seekbar_custom_color_title">سازشە ڕەنگی دیاری پێ بکە</string>
   <string name="morphe_seekbar_custom_color_invalid">نرخی ڕەنگی سیگبار ناگەڕێت</string>
   <!-- layout.branding.customBrandingPatch -->
@@ -697,8 +699,7 @@ Second \"item\" text"</string>
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">هەركێ ڕوخی نیگەړانت گۆری ڕووخانی دڵسۈکره، پەرگەتەن و كارخوری مایكروجی دەر داسةكی زۆر بۊرى</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">گواھی ڕابلینۆ بۊغلاندنە</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->

@@ -131,6 +131,7 @@ Muutoksia ovat muun muassa:
   <string name="morphe_hide_medical_panels_title">Piilota lääketieteelliset paneelit</string>
   <string name="morphe_hide_snackbar_title">Piilota välipalaikkuna</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Piilota tilaajien säännöt</string>
+  <string name="morphe_hide_sync_button_title">Piilota \"Synkronoi videoon\" -painike</string>
   <string name="morphe_hide_timed_reactions_title">Piilota ajoitetut reaktiot</string>
   <string name="morphe_hide_timed_reactions_summary">Piilottaa ominaisuuden, jonka avulla käyttäjät voivat reagoida emoji-hymiöillä kommenttiosiossa ja suoratoistossa</string>
   <string name="morphe_hide_video_title_title">Piilota videon otsikko</string>
@@ -271,13 +272,13 @@ Rajoitukset:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Piilota videomainokset</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL-osoite kopioitiin leikepöydälle</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">Aikaleimattu URL-osoite kopioitu leikepöydälle</string>
-  <string name="morphe_copy_video_url_button_title">Näytä Videon URL-osoitteen kopiointipainike</string>
-  <string name="morphe_copy_video_url_button_summary">Napauta kopioidaksesi videon URL-osoitteen, napauta ja pidä pohjassa kopioidaksesi aikaleimattuna</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Kopioi aikaleima oletuksena</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Kääntää ’Kopioi videon URL’ -painikkeen napautus- ja pitkäpainallustoiminnot</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Linkki kopioitu leikepöydälle</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Linkki aikaleimalla kopioitu leikepöydälle</string>
+  <string name="morphe_copy_video_link_button_title">Näytä videolinkin kopiointipainike</string>
+  <string name="morphe_copy_video_link_button_summary">Napauta kopioidaksesi videolinkin, napauta ja pidä pohjassa kopioidaksesi aikaleimalla</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Kopioi aikaleima oletuksena</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Kääntää \'Kopioi videolinkki\'-painikkeen napautus- ja pitkäpainallustoiminnot</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Poista sisältövaroitusikkuna</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Tämä ei ohita ikärajoitusta. Se vain hyväksyy sen automaattisesti</string>
@@ -1021,6 +1022,8 @@ Automaattiasettelun
 • Remix-painiketta ja Äänen painiketta ei ole saatavilla Shorts-videossa
 • Shorts-videot avautuvat tavallisessa soittimessa
 • Videotoimintopalkki ei ole piilotettu"</string>
+  <string name="morphe_tablet_layout_in_player_title">Ota tablettiasettelun käyttöön soittimessa</string>
+  <string name="morphe_tablet_layout_in_player_summary">Palauttaa vanhan soittimen asettelun</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Naamioi sovellusversio</string>
   <string name="morphe_spoof_app_version_summary">Huulet palvelimen luulemaan käyttäväsi vanhempaa sovellusversiota palauttaaksesi vanhat UI-ominaisuudet</string>
@@ -1105,7 +1108,6 @@ Rajoitus: Työkalupalkin takaisin-painikkeen käyttäminen ei välttämättä to
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Estää minisoittimen sulkemisen vetämällä sitä vaakasuunnassa näytöltä pois</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Piilota peittokuvan painikkeet</string>
   <string name="morphe_miniplayer_hide_subtext_title">Piilota alatekstit</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Piilota eteenpäin- ja taaksepäin-painikkeet</string>
   <string name="morphe_miniplayer_width_dip_title">Oletuskoko</string>
   <string name="morphe_miniplayer_width_dip_summary">Aseta aloitusnäytän koko pikseleinä</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Pikselikoon tulee olla %1$s ja %2$s välillä</string>
@@ -1193,9 +1195,9 @@ Napauta tästä saadaksesi lisätietoja DeArrowista"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Estää etenemispalkin vetämisen lukitusnäytössä ja ilmoituspaneelissa</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Jos olet äskettäin muuttanut tilisi kirjautumistietoja, poista ja asenna MicroG uudelleen.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Ohita URL-osoitteen uudelleenohjaukset</string>
-  <string name="morphe_bypass_url_redirects_summary">Avaa alkuperäinen URL suoraan ohittaen seurantalinkin (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Ohita linkkien uudelleenohjaukset</string>
+  <string name="morphe_bypass_link_redirects_summary">Avaa alkuperäinen linkki suoraan ohittaen seurantalinkin (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Avaa linkit selaimessa</string>
   <string name="morphe_external_browser_summary">Avaa linkit ulkoisessa selaimessa sovelluksen sisäisen selaimen sijaan</string>
@@ -1239,6 +1241,8 @@ Napauta tästä saadaksesi lisätietoja DeArrowista"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Näyttää ilmoituksen, kun uusi oletustoistonopeus on tallennettu</string>
   <string name="morphe_playback_speed_default_title">Toiston oletusnopeus</string>
   <string name="morphe_remember_playback_speed_toast">Oletusarvoinen toistonopeus muutettu: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Käytä normaalinopeutta musiikille</string>
+  <string name="morphe_disable_playback_speed_music_summary">Toista musiikkivideot aina 1.0x nopeudella</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Poista HDR-video käytöstä</string>
   <string name="morphe_force_avc_codec_title">Pakota AVC (H.264) -koodekki</string>

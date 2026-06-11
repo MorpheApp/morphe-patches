@@ -251,13 +251,8 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Скриј реклами во видеа</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">Врска копирана во привремена меморија</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL со временска ознака е копиран во штипка</string>
-  <string name="morphe_copy_video_url_button_title">Кога е вклучено, допрете го копира URL-то со временска ознака и задржете го за да го копирате без</string>
-  <string name="morphe_copy_video_url_button_summary">Исклучете го брзото прескокнување на глави со двојно допирање</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Копирајте го временскиот печат стандардно</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Ги менува акциите со допир и допир-и-задржување на копчето „Копирај URL на видео“</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Копирајте го временскиот печат стандардно</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Отстранете го дијалогот за дискреција на гледачите</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
@@ -1030,7 +1025,6 @@ Second \"item\" text"</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Спречува затворање на мини-плеер со хоризонтално лизгање надвор од екранот</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Скриј наслаги</string>
   <string name="morphe_miniplayer_hide_subtext_title">Скриј поттекст</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Скриј копчиња за премотување напред и назад</string>
   <string name="morphe_miniplayer_width_dip_title">Стандардна големина</string>
   <string name="morphe_miniplayer_width_dip_summary">Поставете ја почетната големина на екранот, во пиксели</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Големината на пикселите мора да биде помеѓу %1$s и %2$s</string>
@@ -1118,9 +1112,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Спречува влечење на лентата за премотување на заклучениот екран и панелот за известувања</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ако неодамна ги променивте деталите за најава на вашиот акаунт, отстранете ја и повторно инсталирајте MicroG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Поминете ги пренасочувањата на URL-адресите</string>
-  <string name="morphe_bypass_url_redirects_summary">Ја отвора оригиналната URL адреса директно, заобиколувајќи ја линкот за следење (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Отворете ги линковите во прегледувач</string>
   <string name="morphe_external_browser_summary">Отвара линкови во надворешен пребарувач наместо во пребарувач во апликацијата</string>

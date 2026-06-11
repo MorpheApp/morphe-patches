@@ -131,6 +131,7 @@ Zmeny zahŕňajú:
   <string name="morphe_hide_medical_panels_title">Skryť lekárske panely</string>
   <string name="morphe_hide_snackbar_title">Skryť snackbar</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">Skryť pravidlá pre odberateľov</string>
+  <string name="morphe_hide_sync_button_title">Skryť tlačidlo \'Synchronizovať s videom\'</string>
   <string name="morphe_hide_timed_reactions_title">Skryť časované reakcie</string>
   <string name="morphe_hide_timed_reactions_summary">Skryje funkciu, ktorá umožňuje používateľom reagovať emodži v sekcii komentárov a živom chate</string>
   <string name="morphe_hide_video_title_title">Skryť názov videa</string>
@@ -271,13 +272,13 @@ Obmedzenia:
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">Skryť videoreklamy</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL skopírované do schránky</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">URL s časovou pečiatkou skopírované do schránky</string>
-  <string name="morphe_copy_video_url_button_title">Zobraziť tlačidlo Kopírovať URL videa</string>
-  <string name="morphe_copy_video_url_button_summary">Ťuknite na skopírovanie URL videa, ťuknite a podržte na skopírovanie s časovou známkou</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">Kopíruje časovú pečiatku predvolene</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">Otočí akcie ťuknutia a podržania tlačidla „Kopírovať URL adresu videa“</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">Odkaz skopírovaný do schránky</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">Odkaz s časovou pečiatkou skopírovaný do schránky</string>
+  <string name="morphe_copy_video_link_button_title">Zobraziť tlačidlo \'Skopírovať odkaz na video\'</string>
+  <string name="morphe_copy_video_link_button_summary">Ťuknite na kopírovanie odkazu na video, ťuknite a podržte na kopírovanie s časovou pečiatkou</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">Kopíruje časovú pečiatku predvolene</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">Otočí funkcie ťuknutia a ťukania a podržania tlačidla \'Kopírovať odkaz na video\'</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">Odstrániť dialógové okno s upozornením diváka</string>
   <string name="morphe_remove_viewer_discretion_dialog_summary">Týmto sa neobchádza overenie veku. Jednoducho ho automaticky akceptuje</string>
@@ -1022,6 +1023,8 @@ Rozloženie pre automobil
 • Tlačidlá Remixovať a Zvuk nie sú dostupné v Shorts
 • Shorts sa prehrávajú v obyčajnom prehrávači
 • Panel akcií videa je rozbalený"</string>
+  <string name="morphe_tablet_layout_in_player_title">Povoliť rozloženie tabletu v prehrávači</string>
+  <string name="morphe_tablet_layout_in_player_summary">Obnoví staré rozloženie prehrávača</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Sfalšovať verziu aplikácie</string>
   <string name="morphe_spoof_app_version_summary">Oklame server, aby si myslel, že používate staršiu verziu aplikácie na obnovenie starších funkcií používateľského rozhrania</string>
@@ -1106,7 +1109,6 @@ Obmedzenie: Používanie tlačidla späť na paneli nástrojov nemusí fungovať
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">Zabráni ťahaniu časovej osy na obrazovke uzamknutia a v paneloch upozornení</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">Skryť prekryvné tlačidlá</string>
   <string name="morphe_miniplayer_hide_subtext_title">Skryť podtexty</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">Skryť tlačidlá pre rýchlejšie a pomalšie prehliadanie</string>
   <string name="morphe_miniplayer_width_dip_title">Predvolená veľkosť</string>
   <string name="morphe_miniplayer_width_dip_summary">Nastavte počiatočnú veľkosť na obrazovke, v pixeloch</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">Veľkosť v pixeloch musí byť medzi %1$s a %2$s</string>
@@ -1194,9 +1196,9 @@ Klepnutím sem sa dozviete viac o DeArrow"</string>
   <string name="morphe_disable_notification_media_seekbar_summary">Zabráni ťahaniu časovej osy na obrazovke uzamknutia a v paneloch upozornení</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">Ak ste nedávno zmenili svoje prihlasovacie údaje k účtu, odinštalujte a znovu nainštalujte microG.</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">Obísť presmerovania URL</string>
-  <string name="morphe_bypass_url_redirects_summary">Otvára pôvodnú URL adresu priamo a obchádza sledovací odkaz (youtube.com/redirect)</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">Obísť presmerovania URL</string>
+  <string name="morphe_bypass_link_redirects_summary">Otvára pôvodný odkaz priamo, obchádza sledovací odkaz (youtube.com/redirect)</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">Otvárať odkazy v prehliadači</string>
   <string name="morphe_external_browser_summary">Otvára odkazy v externom prehliadači namiesto prehliadača v aplikácii</string>
@@ -1240,6 +1242,8 @@ Klepnutím sem sa dozviete viac o DeArrow"</string>
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">Zobrazí upozornenie, keď sa uloží nová predvolená rýchlosť prehrávania</string>
   <string name="morphe_playback_speed_default_title">Predvolená rýchlosť prehrávania</string>
   <string name="morphe_remember_playback_speed_toast">Predvolená rýchlosť prehrávania bola zmenená na: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">Použite normálnu rýchlosť pre hudbu</string>
+  <string name="morphe_disable_playback_speed_music_summary">Hudobné videá vždy prehrajte rýchlosťou 1.0x</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">Zakázať HDR video</string>
   <string name="morphe_force_avc_codec_title">Vynútiť codec AVC (H.264)</string>

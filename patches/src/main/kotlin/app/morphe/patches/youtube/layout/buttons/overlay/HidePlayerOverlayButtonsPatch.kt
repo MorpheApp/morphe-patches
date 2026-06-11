@@ -9,9 +9,8 @@ import app.morphe.patcher.util.smali.ExternalLabel
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.getResourceId
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -49,20 +48,15 @@ val hidePlayerOverlayButtonsPatch = bytecodePatch(
 
     execute {
         addPlayerOverlayPreferences(
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_hide_autoplay_button"),
-                    SwitchPreference("morphe_hide_captions_button"),
-                    SwitchPreference("morphe_hide_cast_button"),
-                    SwitchPreference("morphe_hide_collapse_button"),
-                    SwitchPreference("morphe_hide_fullscreen_button"),
-                    SwitchPreference("morphe_hide_player_control_buttons_background", summary = true),
-                    SwitchPreference("morphe_hide_player_previous_next_buttons"),
-                    SwitchPreference("morphe_hide_settings_button"),
-                )
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_hide_autoplay_button"),
+                SwitchPreference("morphe_hide_captions_button"),
+                SwitchPreference("morphe_hide_cast_button"),
+                SwitchPreference("morphe_hide_collapse_button"),
+                SwitchPreference("morphe_hide_fullscreen_button"),
+                SwitchPreference("morphe_hide_player_control_buttons_background", summary = true),
+                SwitchPreference("morphe_hide_player_previous_next_buttons"),
+                SwitchPreference("morphe_hide_settings_button"),
             )
         )
 

@@ -17,22 +17,107 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
+  <string name="morphe_restart_first_run">Endurræstu til að lokar á uppsetninguna</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
+  <string name="morphe_custom_branding_name_title">App nafn</string>
   <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
+  <string name="morphe_custom_branding_name_entry_5">Sérsniðin</string>
+  <string name="morphe_custom_branding_icon_title">App tákn</string>
+  <string name="morphe_custom_branding_icon_entry_1">Upprunalegt</string>
+  <string name="morphe_custom_branding_icon_entry_2">Morphe svartur</string>
+  <string name="morphe_custom_branding_icon_entry_3">Morphe dökkur</string>
+  <string name="morphe_custom_branding_icon_entry_4">Morphe ljósur</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe spila ljós</string>
   <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe spila svartur</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
+  <string name="morphe_custom_branding_icon_entry_7">Sérsniðin</string>
+  <string name="morphe_custom_branding_notification_icon_title">Tákn tilkynninga</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Passa við tákn app</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe spila</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+  <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe tilkynning</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_message">Ekki er hægt að vista skoðunarhistórikuna þína.&lt;br&gt;&lt;br&gt;Þetta stafar líklega af DNS auglýsingablokkera eða nettengjum.&lt;br&gt;&lt;br&gt;Til að laga þetta skaltu bæta &lt;b&gt;s.youtube.com&lt;/b&gt; á hvítlista eða slökkva á öllum DNS blokkerum og tengjum.</string>
+  <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ekki sýna aftur</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+  <string name="morphe_spoof_video_streams_screen_title">Spofa myndstreymi</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Stilltu klientakupunni til að koma í veg fyrir vandamál með spilun</string>
+  <string name="morphe_spoof_video_streams_title">Spofa myndstreymi</string>
+  <string name="morphe_spoof_video_streams_summary">"Lagfærir vandamál með spilun fyrir flesta notendur með því að krefjast samhæfra streymis myndbandsins
+
+Ef þú ert YouTube Premium notandi gæti þessi stilling verið óþarf"</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Ekki tókst að sækja klientastreymi</string>
+  <string name="morphe_spoof_video_streams_user_dialog_message">Ef þú slökkvir á þessari stillingu gæti það valdið vandræðum við spilun.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Reyndu að virkja: Spoof myndstreymi > Android VR innskráning</string>
+  <string name="morphe_spoof_video_streams_client_type_title">Sjálfgefið tengiliður</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR innskráning</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Ekki skráð inn á Android VR. Ýttu hér til að skrá þig inn</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Skráður inn á Android VR</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Til að nota þessa eiginleika skaltu breyta \'Sjálfgefa klient\' í Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Skrá þig inn á Android VR</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Að skrá þig inn á Android VR getur lagað vandamál með spilun fyrir suma notendur
+
+Til að skrá þig inn ýttu á halda áfram hér að neðan"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Halda áfram</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Skrá út</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Leiðbeiningar</string>
   <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Virkjunar kóði: %s
+
+1. Ýttu á 'Opna vefsíðu' hér að neðan til að opna vefsíðuna 'Tengja tæki'
+2. Límdu úr klemmuspjalli (eða skrifaðu) virkjunar kóðann sýndur hér að ofan
+3. Skráðu þig inn á Google ef þess er óskað. Ef þú ert með fleiri reikninga skaltu velja þennan YouTube reikning
+4. Ýttu á 'Leyfa YouTube VR' aðgang
+5. Snúðu aftur á þetta forrit eftir að hafa náð 'Tæki tengt' skilaboðinu"</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Opna vefsíðu</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Ekki tókst að gefa út virkjunar kóða</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Ekki tókst að gefa út staðfestingartakann</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Skráning tókst</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Staðfesting vistað
+
+• Morphe stillingar munu ekki flytja / flytja Android VR staðfestingu
+• Ef þetta forrit er ekki notað í 6 mánuði mun Google fjarlægja þessa staðfestingu
+• Þú þarft að skrá þig inn aftur ef þú breytir Google lykilorðinu þínu eða hættir þessu tæki úr Google stillingum þínum"</string>
+  <string name="morphe_oauth2_connection_failure_timeout">OAuth2 er tímabundið ekki í boði (API tímdi út)</string>
+  <string name="morphe_oauth2_connection_failure_status_400">Android VR innskráning er runnin út, prófaðu að skrá þig inn á VR aftur</string>
+  <string name="morphe_oauth2_connection_failure_status">OAuth2 er tímabundið ekki í boði (staða %d)</string>
+  <string name="morphe_oauth2_connection_failure_generic">OAuth2 er tímabundið ekki í boði</string>
+  <string name="morphe_oauth2_connection_failure_auth_not_approved">Ekki hægt að skrá inn á VR, vefsíðu staðfesting var ekki samþykkja</string>
+  <string name="morphe_oauth2_connection_failure_auth_error">Ekki hægt að skrá inn á VR: %s</string>
+  <string name="morphe_oauth2_toast_reset">Skráð út af Android VR</string>
+  <string name="morphe_oauth2_toast_invalid">Ógild VR innskráningartakinn, prófaðu að skrá þig inn á VR aftur</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_title">Óvirkjaðu uppfærslu JavaScript fyrir spilara</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Læsir JavaScript spilara í ákveðna útgáfu
+
+• Er þarf að veita gilda JavaScript hash spilara
+• JavaScript hash spilara er gildir í um það bil mánuði og úrelt hash verður afnumin af GVS
+• Spilun mun bregðast ef hash er afnumin"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Þú þarft að veita gilda JavaScript hash spilara.
+
+Spilun mun bregðast ef Player JavaScript hash er úrelt."</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">JavaScript hash fyrir spilara</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Sláðu inn giltur JavaScript hash fyrir spilara</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
+  <string name="morphe_disable_quic_protocol_title">Slökktu á QUIC samskiptareglum</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
+  <string name="morphe_disable_drc_audio_title">Slökktu á DRC hljóðrás</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+  <string name="morphe_force_original_audio_title">Neysla á upprunalegu hljóðrás</string>
+  <string name="morphe_force_original_audio_summary">Spilar alltaf upprunalega hljóðrás myndbandsins stað þess sem eru dubbuð</string>
   <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Falir auglýsingar á fullri skjánum</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+  <string name="morphe_force_original_audio_not_available">Til að nota þessa eiginleika skaltu breyta \'Spofa myndstreymi\' í Android Reel eða TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
+  <string name="morphe_sanitize_sharing_links_title">Hreinsa deilingshlökki</string>
+  <string name="morphe_sanitize_sharing_links_summary">Fjarlægir rekja breytur úr deilingshlökkum</string>
+  <string name="morphe_replace_music_with_youtube_title">Breyta deilingshlökkum í youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Breyta music.youtube.com í youtube.com í deilingshlökkum</string>
+  <string name="morphe_replace_links_with_shortener_title">Breyta deilingshlökkum í youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Neysla myndbanda til að nota styttri youtu.be URL snið</string>
 </resources>

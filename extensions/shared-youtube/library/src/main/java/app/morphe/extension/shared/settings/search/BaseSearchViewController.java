@@ -10,8 +10,8 @@
 
 package app.morphe.extension.shared.settings.search;
 
-import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.ResourceUtils.getIdentifierOrThrow;
+import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
 import android.content.Context;

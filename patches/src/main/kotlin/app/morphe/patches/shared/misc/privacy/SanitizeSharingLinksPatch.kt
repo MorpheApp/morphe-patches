@@ -8,9 +8,8 @@ import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
@@ -44,12 +43,7 @@ internal fun sanitizeSharingLinksPatch(
                 if (replaceMusicLinksWithYouTube) preferences += SwitchPreference("morphe_replace_music_with_youtube", summary = true)
                 if (replaceLinksWithShortener) preferences += SwitchPreference("morphe_replace_links_with_shortener", summary = true)
 
-                PreferenceCategory(
-                    titleKey = null,
-                    sorting = Sorting.UNSORTED,
-                    tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                    preferences = preferences
-                )
+                noTitleUnsortedPreferenceCategory(preferences)
             } else {
                 sanitizePreference
             }

@@ -208,9 +208,9 @@ public class StreamOrDetailsDataRequest {
                                           boolean showErrorToasts) {
         Objects.requireNonNull(clientType);
         Objects.requireNonNull(videoId);
+        Utils.verifyOffMainThread();
 
         final boolean isStream = clientType.endpoint == GET_PLAYER_STREAMING_DATA || clientType.endpoint == GET_REEL_STREAMING_DATA;
-
         final long startTime = System.currentTimeMillis();
 
         try {

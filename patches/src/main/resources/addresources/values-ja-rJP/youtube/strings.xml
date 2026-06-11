@@ -131,6 +131,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_medical_panels_title">医療情報パネルを非表示</string>
   <string name="morphe_hide_snackbar_title">スナックバー通知を非表示</string>
   <string name="morphe_hide_subscribers_community_guidelines_title">チャンネル登録者のガイドラインを非表示</string>
+  <string name="morphe_hide_sync_button_title">「動画に同期」ボタンを非表示</string>
   <string name="morphe_hide_timed_reactions_title">Timed Reaction を非表示</string>
   <string name="morphe_hide_timed_reactions_summary">コメント欄やライブ配信のチャット欄で絵文字を使ってリアクションする機能 (ハート アイコン ボタン) を非表示にします</string>
   <string name="morphe_hide_video_title_title">動画のタイトルを非表示</string>
@@ -271,16 +272,16 @@ Second \"item\" text"</string>
   <!-- ad.video.videoAdsPatch -->
   <string name="morphe_hide_video_ads_title">動画広告を非表示</string>
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
-  <string name="morphe_share_copy_url_button_success">URL をクリップボードにコピーしました</string>
-  <string name="morphe_share_copy_url_button_timestamp_success">タイムスタンプ付き URL をクリップボードにコピーしました</string>
-  <string name="morphe_copy_video_url_button_title">「動画の URL をコピー」ボタンを表示</string>
-  <string name="morphe_copy_video_url_button_summary">タップすると動画の URL を、長押しするとタイムスタンプ付きの URL をそれぞれコピーします</string>
-  <string name="morphe_copy_video_url_button_timestamp_title">タップ時にタイムスタンプを付けてコピー</string>
-  <string name="morphe_copy_video_url_button_timestamp_summary">「動画の URL をコピー」ボタンのタップと長押しの動作を入れ替えます</string>
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
+  <string name="morphe_share_copy_link_button_success">リンクをコピーしました</string>
+  <string name="morphe_share_copy_link_with_timestamp_button_success">タイムスタンプ付きリンクをコピーしました</string>
+  <string name="morphe_copy_video_link_button_title">「動画のリンクをコピー」ボタンを表示</string>
+  <string name="morphe_copy_video_link_button_summary">タップすると動画のリンクを、長押しするとタイムスタンプ付きリンクをそれぞれコピーします</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">タップ時にタイムスタンプを付けてコピー</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_summary">「動画のリンクをコピー」ボタンのタップと長押しの動作を入れ替えます</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">「ご自身の責任」ダイアログを削除</string>
-  <string name="morphe_remove_viewer_discretion_dialog_summary">この機能は、年齢制限を回避するものではありません。ダイアログの確認に自動的に同意するだけです</string>
+  <string name="morphe_remove_viewer_discretion_dialog_summary">この機能は、年齢制限を回避するものではありません。ダイアログによる確認に対して自動的に同意するだけです</string>
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <string name="morphe_disable_sign_in_to_tv_popup_title">「テレビでログイン」ポップアップを無効化</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -1023,6 +1024,8 @@ Automotive レイアウト
 • ショート動画のリミックス ボタンとサウンドボタンが利用できない
 • ショート動画が通常のプレーヤーで再生される
 • アクション ボタンにボタン名が表示される"</string>
+  <string name="morphe_tablet_layout_in_player_title">プレイヤーでタブレットレイアウトを有効にする</string>
+  <string name="morphe_tablet_layout_in_player_summary">古いプレーヤーレイアウトを復元します</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">アプリのバージョンを偽装</string>
   <string name="morphe_spoof_app_version_summary">古いバージョンのアプリを使用しているとサーバーに認識させて、以前の UI 機能を復元します</string>
@@ -1107,7 +1110,6 @@ Automotive レイアウト
   <string name="morphe_miniplayer_disable_horizontal_drag_summary">画面の左端または右端でミニプレーヤーを画面外の横方向にスワイプして最小化する機能を無効にします</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">オーバーレイ ボタンを非表示</string>
   <string name="morphe_miniplayer_hide_subtext_title">サブテキストを非表示</string>
-  <string name="morphe_miniplayer_hide_rewind_forward_title">早送りボタンと巻き戻しボタンを非表示</string>
   <string name="morphe_miniplayer_width_dip_title">デフォルトのサイズ</string>
   <string name="morphe_miniplayer_width_dip_summary">画面に表示される際の大きさを設定します (ピクセル)</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">ピクセルサイズの範囲は %1$s-%2$s です</string>
@@ -1193,9 +1195,9 @@ Automotive レイアウト
   <string name="morphe_disable_notification_media_seekbar_summary">通知パネルとロック画面に表示されるプレーヤーのシークバーでのシーク操作を無効にします</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">最近アカウントのログイン情報を変更した場合は、MicroG をアンインストールして再インストールしてください。</string>
-  <!-- misc.links.bypassURLRedirectsPatch -->
-  <string name="morphe_bypass_url_redirects_title">URL リダイレクトを回避</string>
-  <string name="morphe_bypass_url_redirects_summary">追跡リンク (youtube.com/redirect) を回避してリンク先の URL を直接開きます</string>
+  <!-- misc.links.bypassLinkRedirectsPatch -->
+  <string name="morphe_bypass_link_redirects_title">リンクのリダイレクトを回避</string>
+  <string name="morphe_bypass_link_redirects_summary">追跡リンク (youtube.com/redirect) を経由せずにリンク先を直接開きます</string>
   <!-- misc.links.openLinksExternallyPatch -->
   <string name="morphe_external_browser_title">リンクをブラウザで開く</string>
   <string name="morphe_external_browser_summary">アプリ内ブラウザではなく外部ブラウザでリンクを開きます</string>
@@ -1239,6 +1241,8 @@ Automotive レイアウト
   <string name="morphe_remember_playback_speed_last_selected_toast_summary">新しいデフォルトの再生速度が保存されたときに通知を表示します</string>
   <string name="morphe_playback_speed_default_title">デフォルトの再生速度</string>
   <string name="morphe_remember_playback_speed_toast">デフォルトの再生速度の変更: %s</string>
+  <string name="morphe_disable_playback_speed_music_title">音楽を通常速度で再生</string>
+  <string name="morphe_disable_playback_speed_music_summary">音楽動画を常に 1.0 倍速で再生します</string>
   <!-- video.codecs.disableVideoCodecsPatch -->
   <string name="morphe_disable_hdr_video_title">HDR 動画を無効化</string>
   <string name="morphe_force_avc_codec_title">AVC (H.264) を強制的に使用</string>

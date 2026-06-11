@@ -60,7 +60,7 @@ Second \"item\" text"</string>
   <!-- 'Includes paid promotion' should be translated using the same localized wording YouTube displays for the label. -->
   <!-- ad.video.videoAdsPatch -->
   <!-- interaction.doubletap.doubleTapLengthPatch -->
-  <!-- interaction.copyvideourlbutton.copyVideoURLButtonPatch -->
+  <!-- interaction.copyvideolink.copyVideoLinkButtonPatch -->
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <!-- layout.hide.signintotv.disableSignInToTVPopupPatch -->
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
@@ -93,19 +93,26 @@ Second \"item\" text"</string>
   <!-- 'Thanks' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Ask' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears if the user IP is from a specific region such as the USA or EU. -->
+  <string name="morphe_hide_ask_button_title">Paslėpti Klausti mygtuką</string>
   <!-- 'Clip' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Shop' should be translated using the same localized wording YouTube displays for the button. -->
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
+  <string name="morphe_hide_quick_actions_ask_button_title">Paslėpti Klausti mygtuką</string>
   <!-- layout.captions.captionsPatch -->
   <!-- layout.captions.autoCaptionsPatch -->
   <!-- layout.captions.captionCookiesPatch -->
   <!-- layout.captions.transcriptPatch -->
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
+  <string name="morphe_navigation_buttons_screen_summary">Pasirinkite, kokie mygtukai turėtų būti rodomi apačioje esančioje naravimo juostoje</string>
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_home_button_title">Paslėpti pagrindinį mygtuką</string>
   <!-- 'Shorts' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Create' has no display name. Translate normally. -->
+  <string name="morphe_hide_create_button_title">Paslėpti Kurti mygtuką</string>
   <!-- 'Subscriptions' should be translated using the same localized wording YouTube displays for the tab. -->
   <!-- 'Notifications' should be translated using the same localized wording YouTube displays for the tab. -->
+  <string name="morphe_hide_navigation_bar_title">Slėpti naršymo juostą</string>
+  <string name="morphe_hide_toolbar_create_button_title">Paslėpti Kurti mygtuką</string>
   <!-- layout.hide.player.flyoutmenupanel.hidePlayerFlyoutMenuPatch -->
   <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <!-- 'Spoof video streams' should match the language used in 'morphe_spoof_video_streams_screen_title'.
@@ -162,14 +169,18 @@ Second \"item\" text"</string>
   <!-- misc.sharesheet.openSystemShareSheetPatch -->
   <!-- layout.music.overrideYouTubeMusicButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
+  <string name="morphe_change_start_page_title">Pradinis puslapis</string>
+  <string name="morphe_change_start_page_entry_shorts">Shorts</string>
   <!-- layout.shortsnoresume.disableShortsResumingOnStartupPatch -->
   <!-- layout.shortsplayer.shortsPlayerTypePatch -->
   <!-- layout.shortsautoplay.shortsAutoplayPatch -->
   <!-- layout.miniplayer.miniplayerPatch -->
   <!-- layout.theme.themePatch -->
+  <string name="morphe_splash_screen_animation_style_entry_3">Vienspalvis</string>
   <!-- layout.branding.customBrandingPatch -->
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- Translations should match the language used in 'morphe_custom_branding_icon_entry_3'. -->
+  <string name="morphe_header_logo_entry_5">Savo</string>
   <!-- layout.thumbnails.bypassImageRegionRestrictionsPatch -->
   <!-- layout.thumbnails.alternativeThumbnailsPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube displays for the tab. -->
@@ -182,7 +193,7 @@ Second \"item\" text"</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <!-- misc.medianotification.mediaNotificationControlsPatch -->
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
-  <!-- misc.links.bypassURLRedirectsPatch -->
+  <!-- misc.links.bypassLinkRedirectsPatch -->
   <!-- misc.links.openLinksExternallyPatch -->
   <!-- video.quality.rememberVideoQualityPatch -->
   <!-- Translations should match the language used in 'morphe_custom_playback_speeds_auto'. -->
