@@ -202,19 +202,6 @@ public final class MiniplayerPatch {
         }
     }
 
-    public static final class MiniplayerHideSubtextsAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
-            return type == MODERN_3 || type == MODERN_4;
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(Settings.MINIPLAYER_TYPE);
-        }
-    }
-
     public static final class MiniplayerOverlayOpacityAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
