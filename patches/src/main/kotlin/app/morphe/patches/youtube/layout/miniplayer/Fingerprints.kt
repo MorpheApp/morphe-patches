@@ -62,13 +62,6 @@ private object MiniplayerModernViewParentFingerprint : Fingerprint(
     )
 )
 
-internal object MiniplayerModernAddViewListenerFingerprint : Fingerprint(
-    classFingerprint = MiniplayerModernViewParentFingerprint,
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "V",
-    parameters = listOf("Landroid/view/View;"),
-)
-
 internal object MiniplayerModernCloseButtonFingerprint : Fingerprint(
     classFingerprint = MiniplayerModernViewParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

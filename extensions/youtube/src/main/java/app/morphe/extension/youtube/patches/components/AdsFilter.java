@@ -280,7 +280,7 @@ public final class AdsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hidePaidPromotionLabelView(View view) {
+    public static void hideMiniplayerPaidPromotionLabelView(View view) {
         Utils.hideViewBy0dpUnderCondition(Settings.HIDE_PAID_PROMOTION_LABEL, view);
     }
 }
