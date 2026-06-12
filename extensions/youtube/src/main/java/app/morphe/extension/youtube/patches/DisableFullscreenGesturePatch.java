@@ -26,6 +26,7 @@ public class DisableFullscreenGesturePatch {
 
         return Settings.DISABLE_FULLSCREEN_GESTURE.get() &&
                         (Objects.equals(nextGestureType, "MAXIMIZED_PULLED_UP") ||
-                        Objects.equals(nextGestureType, "FULLSCREEN_DRAGGED_DOWN"));
+                        Objects.equals(nextGestureType, "FULLSCREEN_DRAGGED_DOWN") ||
+                        Objects.equals(nextGestureType, "MAXIMIZED_TO_FULLSCREEN_SLIDING"));
     }
 }
