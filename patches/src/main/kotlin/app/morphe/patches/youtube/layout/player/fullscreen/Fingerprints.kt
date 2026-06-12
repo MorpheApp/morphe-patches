@@ -9,10 +9,12 @@ package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 /**
@@ -44,5 +46,33 @@ internal object AdPlayerFullscreenFingerprint : Fingerprint(
             returnType = "V",
             location = MatchAfterWithin(10)
         )
+    )
+)
+
+internal object PlayerDragGestureTypeFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.STATIC),
+    returnType = "Ljava/lang/String;",
+    parameters = listOf("I"),
+    strings = listOf(
+        "FULLSCREEN_DRAGGED_DOWN",
+        "MAXIMIZED_PULLED_UP"
+    )
+)
+
+internal object PlayerDragGestureInitFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "I",
+    parameters = listOf("I", "I", "I", "I"),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.IGET_OBJECT,
+        Opcode.IF_EQZ,
+        Opcode.INVOKE_VIRTUAL,
+        Opcode.IGET,
+        Opcode.IF_NE,
+        Opcode.IGET,
+        Opcode.IF_NE,
+        Opcode.CONST_4,
+        Opcode.RETURN,
+        Opcode.IGET_OBJECT,
     )
 )
