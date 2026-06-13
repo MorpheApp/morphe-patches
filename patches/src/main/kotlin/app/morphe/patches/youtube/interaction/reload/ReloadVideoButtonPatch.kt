@@ -33,6 +33,7 @@ import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 import com.android.tools.smali.dexlib2.util.MethodUtil
 
 private val reloadVideoButtonResourcePatch = resourcePatch {
@@ -104,6 +105,8 @@ val reloadVideoButtonPatch = bytecodePatch(
             .instructionMatches.last()
             .getInstruction<ReferenceInstruction>()
             .getReference<MethodReference>()!!
+        val openNewVideoParcelableMethod = OpenNewVideoIntentParcelableFingerprint.method
+        val openNewVideoParcelableDefiningClass = openNewVideoParcelableMethod.definingClass
 
         mutableClassDefBy(dismissPlayerInnerMethod.definingClass).apply {
             // Add interface and helper methods to allow extension code to call obfuscated methods.
@@ -125,6 +128,27 @@ val reloadVideoButtonPatch = bytecodePatch(
                         """
                             invoke-virtual { p0 }, $dismissPlayerInnerMethod
                             return-void
+                        """
+                    )
+                }
+            )
+            methods.add(
+                ImmutableMethod(
+                    type,
+                    "patch_getIntentParcelable",
+                    listOf(ImmutableMethodParameter("Landroid/content/Intent;", null, null)),
+                    "Landroid/os/Parcelable;",
+                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                    null,
+                    null,
+                    MutableMethodImplementation(3),
+                ).toMutable().apply {
+                    addInstructions(
+                        0,
+                        """
+                            invoke-static { p1 }, $openNewVideoParcelableDefiningClass->${openNewVideoParcelableMethod.name}(Landroid/content/Intent;)$openNewVideoParcelableDefiningClass
+                            move-result-object v0
+                            return-object v0
                         """
                     )
                 }

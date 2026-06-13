@@ -10,9 +10,11 @@ package app.morphe.extension.youtube.patches;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
@@ -31,29 +33,31 @@ public final class ReloadVideoPatch {
     public interface PlayerInterface {
         // Method is added during patching.
         void patch_dismissPlayer();
+        Parcelable patch_getIntentParcelable(Intent intent);
     }
 
-    private static WeakReference<Activity> activityRef = new WeakReference<>(null);
+    private static WeakReference<Activity> mainActivityRef = new WeakReference<>(null);
     private static WeakReference<PlayerInterface> playerInterfaceRef = new WeakReference<>(null);
 
     /**
      * Injection point.
      */
     public static void setMainActivity(Activity mainActivity) {
-        activityRef = new WeakReference<>(mainActivity);
+        mainActivityRef = new WeakReference<>(mainActivity);
     }
 
     /**
      * Injection point.
      */
-    public static void initialize(@NonNull PlayerInterface playerInterface) {
-        playerInterfaceRef = new WeakReference<>(Objects.requireNonNull(playerInterface));
+    public static void initialize(@NonNull PlayerInterface playerInterfaceInit) {
+        playerInterfaceRef = new WeakReference<>(Objects.requireNonNull(playerInterfaceInit));
     }
 
     /**
      * If the player is not active, the layout may break.
      * Use it only when it is guaranteed to be used in situations where the player is active.
      */
+    @SuppressWarnings("ExtractMethodRecommender")
     public static void reloadVideo() {
         try {
             PlayerInterface playerInterface = playerInterfaceRef.get();
@@ -70,23 +74,8 @@ public final class ReloadVideoPatch {
                     : VideoInformation.getPlayerResponseVideoId();
             String playlistId = VideoInformation.getPlaylistId();
             final long videoTime = VideoInformation.getVideoTime();
-
-            // Dismiss the player.
-            playerInterface.patch_dismissPlayer();
-
-            // Reopens the video after 500ms.
-            Utils.runOnMainThreadDelayed(() -> openVideo(playlistId, videoId, videoTime), 500);
-        } catch (Exception ex) {
-            Logger.printException(() -> "Failed to reload video", ex);
-        }
-    }
-
-    @SuppressWarnings("ExtractMethodRecommender")
-    private static void openVideo(String playlistId, String videoId, long videoTime) {
-        try {
             String parameterSeparator = "?";
-            StringBuilder builder = new StringBuilder("https://youtu.be/");
-            builder.append(videoId);
+            StringBuilder builder = new StringBuilder(videoId);
             if (!playlistId.isEmpty()) {
                 builder.append(parameterSeparator);
                 builder.append("list=");
@@ -100,31 +89,37 @@ public final class ReloadVideoPatch {
                 builder.append('s');
             }
             String builderString = builder.toString();
-            Uri content = Uri.parse(builderString);
-            Logger.printDebug(() -> "Opening: " + builderString);
+            Logger.printDebug(() -> "Opening: https://www.youtube.com/watch?v=" + builderString);
 
-            // If possible, use the main activity as the context.
-            // Otherwise, fall back on using the application context.
-            Context context = activityRef.get();
-            boolean isActivityContext = true;
-            if (context == null) {
-                // Utils context is the application context, and not an activity context.
-                //
-                // Edit: This check may no longer be needed since YT can now
-                // only be launched from the main Activity (embedded usage in other apps no longer works).
-                context = Utils.getContext();
-                isActivityContext = false;
-            }
+            // Dismiss the player.
+            playerInterface.patch_dismissPlayer();
 
-            Intent intent = new Intent("android.intent.action.VIEW", content);
-            intent.setPackage(context.getPackageName());
-            if (!isActivityContext) {
-                Logger.printDebug(() -> "Using new task intent");
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            }
-            context.startActivity(intent);
-        } catch (Exception e) {
-            Logger.printException(() -> "Failed to open video", e);
+            // Reopens the video after 500ms.
+            Utils.runOnMainThreadDelayed(() -> openVideo(builderString), 500);
+        } catch (Exception ex) {
+            Logger.printException(() -> "Failed to reload video", ex);
         }
+    }
+
+    public static void openVideo(String videoIDWithParams) {
+        PlayerInterface playerInterface = playerInterfaceRef.get();
+        if (playerInterface == null) {
+            Utils.showToastShort(str("morphe_dismiss_player_not_available_toast"));
+            return;
+        }
+
+        Context context = mainActivityRef.get();
+        Intent reloadVideoIntent = new Intent();
+        reloadVideoIntent.setComponent(new ComponentName(
+                context,
+                "com.google.android.apps.youtube.app.watchwhile.InternalMainActivity"
+        ));
+        reloadVideoIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        reloadVideoIntent.putExtra(
+                "android.intent.extra.inventory_identifier", new String[]{"vnd.youtube://" + videoIDWithParams}
+        );
+        reloadVideoIntent.putExtra("watch", playerInterface.patch_getIntentParcelable(reloadVideoIntent));
+
+        context.startActivity(reloadVideoIntent);
     }
 }

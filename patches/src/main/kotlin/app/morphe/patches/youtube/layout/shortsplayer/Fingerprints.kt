@@ -24,7 +24,6 @@ internal object ShortsPlaybackIntentFingerprint : Fingerprint(
     )
 )
 
-
 // 21.19 and lower
 internal object ShortsPlaybackIntentFingerprintLegacy : Fingerprint(
     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
@@ -40,13 +39,5 @@ internal object ShortsPlaybackIntentFingerprintLegacy : Fingerprint(
         string("com.google.android.apps.youtube.app.endpoint.flags"),
         string("ReelWatchFragmentArgs"),
         string("reels_fragment_descriptor")
-    )
-)
-
-internal object ExitVideoPlayerFingerprint : Fingerprint(
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        resourceLiteral(ResourceType.ID, "mdx_drawer_layout")
     )
 )

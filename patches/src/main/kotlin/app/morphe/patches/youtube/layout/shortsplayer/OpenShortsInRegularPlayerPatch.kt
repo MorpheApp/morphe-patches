@@ -12,12 +12,10 @@ package app.morphe.patches.youtube.layout.shortsplayer
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
-import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
-import app.morphe.patcher.extensions.InstructionExtensions.instructions
-import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
+import app.morphe.patches.youtube.interaction.reload.reloadVideoButtonPatch
 import app.morphe.patches.youtube.layout.player.fullscreen.openVideosFullscreenHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
@@ -28,14 +26,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.YouTubeActivityOnCreateFingerprint
 import app.morphe.patches.youtube.video.information.PlaybackStartDescriptorToStringFingerprint
-import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.getReference
-import app.morphe.util.indexOfFirstInstructionReversed
-import app.morphe.util.indexOfFirstInstructionReversedOrThrow
-import com.android.tools.smali.dexlib2.Opcode
-import com.android.tools.smali.dexlib2.builder.BuilderOffsetInstruction
-import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OpenShortsInRegularPlayerPatch;"
@@ -49,6 +39,7 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         openVideosFullscreenHookPatch,
+        reloadVideoButtonPatch,
         navigationBarHookPatch,
         versionCheckPatch,
         resourceMappingPatch
@@ -91,54 +82,5 @@ val openShortsInRegularPlayerPatch = bytecodePatch(
                 nop
             """
         )
-
-        // Fix issue with back button exiting the app instead of minimizing the player.
-        // Note: this patch must be applied on the conditional instructions that contains the return
-        // instruction, to avoid to block the code that minimize the video player.
-        ExitVideoPlayerFingerprint.method.apply {
-            val expectedChanges = 2
-            var changesMade = 0
-            var finishIndex = this.instructions.size
-
-            while (true) {
-                finishIndex = indexOfFirstInstructionReversed(finishIndex - 1) {
-                    val reference = getReference<MethodReference>()
-                    reference?.name == "finish" && reference.parameterTypes.isEmpty()
-                }
-                if (finishIndex < 0) {
-                    break
-                }
-
-                val finishLabels = getInstruction(finishIndex).location.labels
-                val equalsIndex = if (finishLabels.isNotEmpty()) {
-                    // Find conditional instruction that jumps to this instruction.
-                    indexOfFirstInstructionReversedOrThrow(finishIndex - 1) {
-                        if (this !is BuilderOffsetInstruction) {
-                            return@indexOfFirstInstructionReversedOrThrow false
-                        }
-                        val labels = this.target.location.labels
-                        labels.any { finishLabels.contains(it) }
-                    }
-                } else {
-                    indexOfFirstInstructionReversedOrThrow(finishIndex) {
-                        opcode == Opcode.IF_EQZ || opcode == Opcode.IF_NEZ
-                    }
-                }
-
-                val register = getInstruction<OneRegisterInstruction>(equalsIndex).registerA
-                addInstructionsAtControlFlowLabel(
-                    equalsIndex,
-                    """
-                        invoke-static { v$register }, $EXTENSION_CLASS->overrideBackPressToExit(Z)Z
-                        move-result v$register      
-                    """
-                )
-                changesMade++
-            }
-
-            if (changesMade != expectedChanges) {
-                throw PatchException("Expected $expectedChanges changes but instead found: $changesMade")
-            }
-        }
     }
 }
