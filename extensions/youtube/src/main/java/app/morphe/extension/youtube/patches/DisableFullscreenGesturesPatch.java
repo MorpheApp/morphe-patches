@@ -16,17 +16,20 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class DisableFullscreenGesturePatch {
+public class DisableFullscreenGesturesPatch {
 
     /**
      * Injection point.
      */
-    public static boolean disableFullscreenGesture(String nextGestureType) {
+    public static boolean disableFullscreenGestures(String nextGestureType) {
         Logger.printDebug(() -> "The next player gesture will be: " + nextGestureType);
-
-        return Settings.DISABLE_FULLSCREEN_GESTURE.get() &&
-                        (Objects.equals(nextGestureType, "MAXIMIZED_PULLED_UP") ||
-                        Objects.equals(nextGestureType, "FULLSCREEN_DRAGGED_DOWN") ||
-                        Objects.equals(nextGestureType, "MAXIMIZED_TO_FULLSCREEN_SLIDING"));
+        return (Objects.equals(nextGestureType, "MAXIMIZED_PULLED_UP") &&
+                        Settings.DISABLE_FULLSCREEN_PULLED_UP_GESTURE.get())
+                ||
+                (Objects.equals(nextGestureType, "MAXIMIZED_TO_FULLSCREEN_SLIDING") &&
+                        Settings.DISABLE_FULLSCREEN_SLIDING_GESTURE.get())
+                ||
+                (Objects.equals(nextGestureType, "FULLSCREEN_DRAGGED_DOWN") &&
+                        Settings.DISABLE_FULLSCREEN_DRAGGED_DOWN_GESTURE.get());
     }
 }
