@@ -101,6 +101,7 @@ public final class ReloadVideoPatch {
         }
     }
 
+    // This method opens a video based on hardcoded parameters found in an obfuscated class.
     public static void openVideo(String videoIDWithParams) {
         PlayerInterface playerInterface = playerInterfaceRef.get();
         if (playerInterface == null) {
@@ -109,15 +110,21 @@ public final class ReloadVideoPatch {
         }
 
         Context context = mainActivityRef.get();
+        // No videoID is needed to put inside the Intent initialization.
         Intent reloadVideoIntent = new Intent();
         reloadVideoIntent.setComponent(new ComponentName(
                 context,
                 "com.google.android.apps.youtube.app.watchwhile.InternalMainActivity"
         ));
+        // NEW_TASK intent is not needed by this code.
         reloadVideoIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        // Always put 'inventory_identifier' putExtra before 'watch'
+        // putExtra, to ensure the patch works correctly.
         reloadVideoIntent.putExtra(
                 "android.intent.extra.inventory_identifier", new String[]{"vnd.youtube://" + videoIDWithParams}
         );
+        // Get the needed Parcelable object from a static method, which will
+        // read inventory_identifier inside the currently built Intent.
         reloadVideoIntent.putExtra("watch", playerInterface.patch_getIntentParcelable(reloadVideoIntent));
 
         context.startActivity(reloadVideoIntent);
