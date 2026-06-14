@@ -80,7 +80,7 @@ public class OpenShortsInRegularPlayerPatch {
             final boolean forceFullScreen = (type == ShortsPlayerType.REGULAR_PLAYER_FULLSCREEN);
             OpenVideosFullscreenHookPatch.setOpenNextVideoFullscreen(forceFullScreen);
 
-            ReloadVideoPatch.openVideo(videoId);
+            LoadVideoPatch.openVideo(videoId);
             return true;
         } catch (Exception ex) {
             OpenVideosFullscreenHookPatch.setOpenNextVideoFullscreen(null);

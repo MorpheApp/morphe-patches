@@ -15,7 +15,7 @@ import android.view.View;
 import androidx.annotation.Nullable;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.ReloadVideoPatch;
+import app.morphe.extension.youtube.patches.LoadVideoPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
@@ -41,7 +41,7 @@ public class ReloadVideoButton {
                     null,
                     "morphe_reload_video_button",
                     Settings.RELOAD_VIDEO_BUTTON::get,
-                    v -> ReloadVideoPatch.reloadVideo(),
+                    v -> LoadVideoPatch.reloadVideo(),
                     null
             );
         } catch (Exception ex) {

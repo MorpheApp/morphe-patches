@@ -13,7 +13,6 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
@@ -25,7 +24,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
-public final class ReloadVideoPatch {
+public final class LoadVideoPatch {
 
     /**
      * Interface to use obfuscated methods.

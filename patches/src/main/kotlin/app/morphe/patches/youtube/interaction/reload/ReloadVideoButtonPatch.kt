@@ -56,10 +56,10 @@ private val reloadVideoButtonResourcePatch = resourcePatch {
 }
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/ReloadVideoPatch;"
+    "Lapp/morphe/extension/youtube/patches/LoadVideoPatch;"
 
 private const val EXTENSION_PLAYER_INTERFACE =
-    $$"Lapp/morphe/extension/youtube/patches/ReloadVideoPatch$PlayerInterface;"
+    $$"Lapp/morphe/extension/youtube/patches/LoadVideoPatch$PlayerInterface;"
 
 private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/ReloadVideoButton;"
