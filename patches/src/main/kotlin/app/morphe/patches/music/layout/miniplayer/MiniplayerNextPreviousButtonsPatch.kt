@@ -103,7 +103,7 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
                 val findViewByIdIndex = it.instructionMatches[1].index
                 val parentViewRegister = getInstruction<FiveRegisterInstruction>(findViewByIdIndex).registerC
 
-                val insertIndex = it.instructionMatches.first().index - 1
+                val insertIndex = it.instructionMatches.first().index
 
                 addInstruction(
                     insertIndex,
