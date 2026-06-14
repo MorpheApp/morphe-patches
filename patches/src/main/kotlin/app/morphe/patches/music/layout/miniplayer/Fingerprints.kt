@@ -19,11 +19,16 @@ import com.android.tools.smali.dexlib2.Opcode
  * Identified by the play/pause button resource literal and a unique string in the method body.
  */
 internal object MiniPlayerConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
+    name = "<init>",
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "mini_player_play_pause_replay_button")
-    ),
-    strings = listOf("sharedToggleMenuItemMutations")
+        resourceLiteral(ResourceType.ID, "mini_player_play_pause_replay_button"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            name = "findViewById",
+            location = MatchAfterWithin(5)
+        ),
+        string("sharedToggleMenuItemMutations")
+    )
 )
 
 internal object SwitchToggleColorFingerprint : Fingerprint(
@@ -65,12 +70,13 @@ internal object MppWatchWhileLayoutFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "mini_player_play_pause_replay_button"),
-        opcode(Opcode.INVOKE_VIRTUAL)
-    ),
-    custom = { method, _ ->
-        !AccessFlags.STATIC.isSet(method.accessFlags)
-    }
+        opcode(Opcode.NEW_ARRAY),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            parameters = listOf("[Landroid/view/View;"),
+            returnType = "V"
+        )
+    )
 )
 
 internal object InteractionLoggingEnumFingerprint : Fingerprint(

@@ -18,17 +18,17 @@ internal object Constants {
         ),
         targets = listOf(
             AppTarget(
+                version = "9.23.52",
+                minSdk = 26,
+                isExperimental = true,
+            ),
+            AppTarget(
                 version = "9.22.53",
                 minSdk = 26,
                 isExperimental = true,
             ),
             AppTarget(
                 version = "9.21.51",
-                minSdk = 26,
-                isExperimental = true,
-            ),
-            AppTarget(
-                version = "9.20.52",
                 minSdk = 26,
                 isExperimental = true,
             ),

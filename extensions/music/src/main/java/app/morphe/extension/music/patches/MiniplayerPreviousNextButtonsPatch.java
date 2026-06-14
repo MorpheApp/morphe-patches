@@ -7,6 +7,10 @@
 
 package app.morphe.extension.music.patches;
 
+import static android.view.KeyEvent.ACTION_DOWN;
+import static android.view.KeyEvent.ACTION_UP;
+import static android.view.KeyEvent.KEYCODE_MEDIA_NEXT;
+import static android.view.KeyEvent.KEYCODE_MEDIA_PREVIOUS;
 import static app.morphe.extension.shared.Utils.hideViewUnderCondition;
 
 import android.content.Context;
@@ -15,67 +19,61 @@ import android.os.SystemClock;
 import android.view.KeyEvent;
 import android.view.View;
 
-import java.lang.ref.WeakReference;
-
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.ResourceType;
+import app.morphe.extension.shared.ResourceUtils;
 
 @SuppressWarnings("unused")
 public class MiniplayerPreviousNextButtonsPatch {
+    private static int previousButtonId = 0;
+    private static int nextButtonId = 0;
 
-    private static WeakReference<View> nextButtonViewRef = new WeakReference<>(null);
-    private static WeakReference<View> previousButtonViewRef = new WeakReference<>(null);
-
-    // Called from MppWatchWhileLayout.onFinishInflate to store button view references.
-    public static void setNextButtonView(View view) {
-        nextButtonViewRef = new WeakReference<>(view);
-    }
-
-    public static void setPreviousButtonView(View view) {
-        previousButtonViewRef = new WeakReference<>(view);
-    }
-
-    // Called from the miniplayer constructor to register click listeners.
-    public static void setNextButtonOnClickListener(View view) {
-        if (view == null) return;
-        hideViewUnderCondition(!Settings.MINIPLAYER_NEXT_BUTTON.get(), view);
-        view.setOnClickListener(v -> nextButtonClicked());
-    }
-
-    public static void setPreviousButtonOnClickListener(View view) {
-        if (view == null) return;
-        hideViewUnderCondition(!Settings.MINIPLAYER_PREVIOUS_BUTTON.get(), view);
-        view.setOnClickListener(v -> previousButtonClicked());
+    /**
+     * Injection point.
+     */
+    public static void setPreviousNextButtonOnClickListener(View view) {
+        int previousButtonViewId = getPreviousButtonId();
+        if (previousButtonViewId != 0) {
+            View previousButtonView = view.findViewById(previousButtonViewId);
+            hideViewUnderCondition(!Settings.MINIPLAYER_PREVIOUS_BUTTON.get(), previousButtonView);
+            previousButtonView.setOnClickListener(v -> dispatchMediaKeyEvent(v.getContext(), KEYCODE_MEDIA_PREVIOUS));
+        }
+        int nextButtonViewId = getNextButtonId();
+        if (nextButtonViewId != 0) {
+            View nextButtonView = view.findViewById(nextButtonViewId);
+            hideViewUnderCondition(!Settings.MINIPLAYER_NEXT_BUTTON.get(), nextButtonView);
+            nextButtonView.setOnClickListener(v -> dispatchMediaKeyEvent(v.getContext(), KEYCODE_MEDIA_NEXT));
+        }
     }
 
     /**
-     * Appends the next/previous button views to the existing view array
-     * so the miniplayer layout includes them in its managed view set.
+     * Injection point.
      */
-    public static View[] getViewArray(View[] original) {
-        View nextButton = nextButtonViewRef.get();
-        View previousButton = previousButtonViewRef.get();
+    public static View[] setPreviousNextButton(View view, View[] original) {
+        View previousButtonView = null;
+        View nextButtonView = null;
 
-        int extraCount = (nextButton != null ? 1 : 0) + (previousButton != null ? 1 : 0);
+        int previousButtonViewId = getPreviousButtonId();
+        if (previousButtonViewId != 0) {
+            previousButtonView = view.findViewById(previousButtonViewId);
+        }
+        int nextButtonViewId = getNextButtonId();
+        if (nextButtonViewId != 0) {
+            nextButtonView = view.findViewById(nextButtonViewId);
+        }
+
+        int extraCount = (nextButtonView != null ? 1 : 0) + (previousButtonView != null ? 1 : 0);
         if (extraCount == 0) return original;
 
-        View[] extended = new View[original.length + extraCount];
-        System.arraycopy(original, 0, extended, 0, original.length);
+        View[] newArray = new View[original.length + extraCount];
+        System.arraycopy(original, 0, newArray, 0, original.length);
 
         int i = original.length;
-        if (previousButton != null) extended[i++] = previousButton;
-        if (nextButton != null) extended[i] = nextButton;
+        if (previousButtonView != null) newArray[i++] = previousButtonView;
+        if (nextButtonView != null) newArray[i] = nextButtonView;
 
-        return extended;
-    }
-
-    public static void nextButtonClicked() {
-        dispatchMediaKeyEvent(KeyEvent.KEYCODE_MEDIA_NEXT);
-    }
-
-    public static void previousButtonClicked() {
-        dispatchMediaKeyEvent(KeyEvent.KEYCODE_MEDIA_PREVIOUS);
+        return newArray;
     }
 
     /**
@@ -84,22 +82,34 @@ public class MiniplayerPreviousNextButtonsPatch {
      * any special permissions. Both ACTION_DOWN and ACTION_UP are sent,
      * as some players ignore events without a matching up event.
      */
-    private static void dispatchMediaKeyEvent(int keyCode) {
-        try {
-            Context context = Utils.getContext();
-            if (context == null) return;
-
-            AudioManager audioManager = (AudioManager)
-                    context.getSystemService(Context.AUDIO_SERVICE);
-            if (audioManager == null) return;
-
-            long now = SystemClock.uptimeMillis();
-            audioManager.dispatchMediaKeyEvent(
-                    new KeyEvent(now, now, KeyEvent.ACTION_DOWN, keyCode, 0));
-            audioManager.dispatchMediaKeyEvent(
-                    new KeyEvent(now, now, KeyEvent.ACTION_UP, keyCode, 0));
-        } catch (Exception ex) {
-            Logger.printException(() -> "dispatchMediaAction failure", ex);
+    private static void dispatchMediaKeyEvent(Context context, int keyCode) {
+        if (context.getSystemService(Context.AUDIO_SERVICE) instanceof AudioManager audioManager) {
+            try {
+                long now = SystemClock.uptimeMillis();
+                audioManager.dispatchMediaKeyEvent(
+                        new KeyEvent(now, now, ACTION_DOWN, keyCode, 0));
+                audioManager.dispatchMediaKeyEvent(
+                        new KeyEvent(now, now, ACTION_UP, keyCode, 0));
+            } catch (Exception ex) {
+                Logger.printException(() -> "dispatchMediaKeyEvent failure", ex);
+            }
         }
     }
+
+    private static int getPreviousButtonId() {
+        if (previousButtonId == 0) {
+            previousButtonId = ResourceUtils.getIdentifier(ResourceType.ID, "mini_player_previous_button");
+        }
+
+        return previousButtonId;
+    }
+
+    private static int getNextButtonId() {
+        if (nextButtonId == 0) {
+            nextButtonId = ResourceUtils.getIdentifier(ResourceType.ID, "mini_player_next_button");
+        }
+
+        return nextButtonId;
+    }
+
 }
