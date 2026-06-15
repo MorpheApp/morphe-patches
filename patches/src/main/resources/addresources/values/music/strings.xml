@@ -143,4 +143,69 @@ Feature implementation by VazerOG"</string>
 
     <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
     <string name="morphe_music_hide_upgrade_button_title">Hide upgrade button</string>
+
+    <!-- misc.sponsorblock.musicSponsorBlockPatch -->
+    <string name="morphe_music_sb_enabled_title">Enable SponsorBlock</string>
+    <string name="morphe_music_sb_enabled_summary">Automatically skip sponsored segments in YouTube Music</string>
+    <string name="morphe_music_sb_toast_on_skip_title">Show skip notification</string>
+    <string name="morphe_music_sb_toast_on_skip_summary">Shows a notification when a segment is automatically skipped</string>
+    <string name="morphe_music_sb_toast_on_connection_error_title">Show connection error alerts</string>
+    <string name="morphe_music_sb_toast_on_connection_error_summary">Shows a notification when the SponsorBlock server is unavailable</string>
+    <string name="morphe_music_sb_segments_sponsor_title">Sponsor</string>
+    <string name="morphe_music_sb_segments_sponsor_summary">Paid promotion, paid referrals and direct ads</string>
+    <string name="morphe_music_sb_segments_selfpromo_title">Unpaid / Self Promotion</string>
+    <string name="morphe_music_sb_segments_selfpromo_summary">Promotion not directly paid for, including merchandise and donations</string>
+    <string name="morphe_music_sb_segments_interaction_title">Interaction Reminder</string>
+    <string name="morphe_music_sb_segments_interaction_summary">Reminder to like, subscribe or follow</string>
+    <string name="morphe_music_sb_segments_intro_title">Intermission / Intro</string>
+    <string name="morphe_music_sb_segments_intro_summary">Pause, static frame, or repeating animation without content</string>
+    <string name="morphe_music_sb_segments_outro_title">Endcards / Credits</string>
+    <string name="morphe_music_sb_segments_outro_summary">Credits or YouTube endcards</string>
+    <string name="morphe_music_sb_segments_preview_title">Preview / Recap</string>
+    <string name="morphe_music_sb_segments_preview_summary">Preview clips or recaps of other videos in a series</string>
+    <string name="morphe_music_sb_segments_hook_title">Hook / Greetings</string>
+    <string name="morphe_music_sb_segments_hook_summary">Narrated trailers, greetings and goodbyes</string>
+    <string name="morphe_music_sb_segments_filler_title">Tangent / Jokes</string>
+    <string name="morphe_music_sb_segments_filler_summary">Tangential scenes or jokes not required to understand the content</string>
+    <string name="morphe_music_sb_segments_nomusic_title">Non-music section</string>
+    <string name="morphe_music_sb_segments_nomusic_summary">Sections that are not music in a music video</string>
+    <!-- Behaviour descriptions (not currently shown in the UI, kept for completeness). -->
+    <string name="morphe_music_sb_skip_automatically">Skip automatically</string>
+    <string name="morphe_music_sb_skip_ignore">Disabled</string>
+    <!-- Shown briefly when a segment is automatically skipped. -->
+    <string name="morphe_music_sb_skipped_sponsor">Skipped sponsor</string>
+    <string name="morphe_music_sb_skipped_selfpromo">Skipped self-promotion</string>
+    <string name="morphe_music_sb_skipped_interaction">Skipped interaction reminder</string>
+    <string name="morphe_music_sb_skipped_intro">Skipped intro</string>
+    <string name="morphe_music_sb_skipped_outro">Skipped endcards</string>
+    <string name="morphe_music_sb_skipped_preview">Skipped preview</string>
+    <string name="morphe_music_sb_skipped_hook">Skipped hook</string>
+    <string name="morphe_music_sb_skipped_filler">Skipped filler</string>
+    <string name="morphe_music_sb_skipped_nomusic">Skipped non-music section</string>
+    <!-- Connection error alerts. -->
+    <string name="morphe_music_sb_connection_failure_status">SponsorBlock connection error: status %d</string>
+    <string name="morphe_music_sb_connection_failure_timeout">SponsorBlock connection timed out</string>
+    <string name="morphe_music_sb_connection_failure_generic">SponsorBlock connection failed</string>
+    <!-- Dedicated top-level SponsorBlock settings section. -->
+    <string name="morphe_settings_music_screen_5_sponsorblock_title">SponsorBlock</string>
+    <!-- Per-category seekbar color pickers. -->
+    <string name="morphe_music_sb_sponsor_color_title">Sponsor color</string>
+    <string name="morphe_music_sb_sponsor_color_summary">Color shown on the seekbar for sponsor segments</string>
+    <string name="morphe_music_sb_selfpromo_color_title">Self-promotion color</string>
+    <string name="morphe_music_sb_selfpromo_color_summary">Color shown on the seekbar for self-promotion segments</string>
+    <string name="morphe_music_sb_interaction_color_title">Interaction reminder color</string>
+    <string name="morphe_music_sb_interaction_color_summary">Color shown on the seekbar for interaction reminder segments</string>
+    <string name="morphe_music_sb_intro_color_title">Intro color</string>
+    <string name="morphe_music_sb_intro_color_summary">Color shown on the seekbar for intro segments</string>
+    <string name="morphe_music_sb_outro_color_title">Endcards color</string>
+    <string name="morphe_music_sb_outro_color_summary">Color shown on the seekbar for endcards/credits segments</string>
+    <string name="morphe_music_sb_preview_color_title">Preview color</string>
+    <string name="morphe_music_sb_preview_color_summary">Color shown on the seekbar for preview/recap segments</string>
+    <string name="morphe_music_sb_hook_color_title">Hook color</string>
+    <string name="morphe_music_sb_hook_color_summary">Color shown on the seekbar for hook segments</string>
+    <string name="morphe_music_sb_filler_color_title">Filler color</string>
+    <string name="morphe_music_sb_filler_color_summary">Color shown on the seekbar for filler/tangent segments</string>
+    <string name="morphe_music_sb_music_offtopic_color_title">Non-music section color</string>
+    <string name="morphe_music_sb_music_offtopic_color_summary">Color shown on the seekbar for non-music segments</string>
+
 </resources>

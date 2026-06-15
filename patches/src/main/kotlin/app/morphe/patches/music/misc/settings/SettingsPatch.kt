@@ -69,7 +69,12 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_05_player.xml",
                 "morphe_settings_screen_05_player_bold.xml",
                 "morphe_settings_screen_11_misc.xml",
-                "morphe_settings_screen_11_misc_bold.xml"
+                "morphe_settings_screen_11_misc_bold.xml",
+                "morphe_settings_screen_12_sponsorblock.xml",
+                "morphe_settings_screen_12_sponsorblock_bold.xml"
+            ),
+            ResourceGroup("drawable-xxhdpi",
+                "morphe_settings_screen_12_sponsorblock_img.png"
             ),
             ResourceGroup("layout",
                 "morphe_preference_with_icon.xml"
@@ -215,6 +220,14 @@ object PreferenceScreen : BasePreferenceScreen() {
         icon = "@drawable/morphe_settings_screen_11_misc",
         iconBold = "@drawable/morphe_settings_screen_11_misc_bold",
         layout = "@layout/morphe_preference_with_icon"
+    )
+    val SPONSORBLOCK = Screen(
+        key = "morphe_settings_music_screen_5_sponsorblock",
+        summaryKey = null,
+        icon = "@drawable/morphe_settings_screen_12_sponsorblock",
+        iconBold = "@drawable/morphe_settings_screen_12_sponsorblock_bold",
+        layout = "@layout/morphe_preference_with_icon",
+        sorting = PreferenceScreenPreference.Sorting.UNSORTED,
     )
 
     override fun commit(screen: PreferenceScreenPreference) {

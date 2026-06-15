@@ -59,4 +59,10 @@ public class Settings extends SharedYouTubeSettings {
 
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
 
+    static {
+        // Force-load the SponsorBlock settings holder so its switch keys register with the global
+        // Setting registry. Otherwise the preferences screen and import/export silently skip them.
+        MusicSponsorBlockSettings.load();
+    }
+
 }

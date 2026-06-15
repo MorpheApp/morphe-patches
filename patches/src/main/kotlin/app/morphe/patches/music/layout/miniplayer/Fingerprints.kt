@@ -59,13 +59,17 @@ internal object MinimizedPlayerFingerprint : Fingerprint(
  * definingClass uses a contains match, covering class renames across builds:
  *   <= 8.x: MppWatchWhileLayout
  *   >= 9.x: WatchWhileLayout
+ *
+ * In 9.23+, mini_player_play_pause_replay_button moved out of onFinishInflate into a
+ * separate presenter class, so the resourceLiteral filter is replaced with a plain
+ * INVOKE_VIRTUAL filter that matches any call on |this| in the method.
  */
 internal object MppWatchWhileLayoutFingerprint : Fingerprint(
     definingClass = "WatchWhileLayout;",
+    name = "onFinishInflate",
     returnType = "V",
     parameters = listOf(),
     filters = listOf(
-        resourceLiteral(ResourceType.ID, "mini_player_play_pause_replay_button"),
         opcode(Opcode.INVOKE_VIRTUAL)
     ),
     custom = { method, _ ->

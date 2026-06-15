@@ -22,7 +22,9 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.adoptChild
 import app.morphe.util.doRecursively
 import app.morphe.util.findFreeRegister
+import app.morphe.util.indexOfFirstInstruction
 import app.morphe.util.indexOfFirstInstructionOrThrow
+import app.morphe.util.indexOfFirstLiteralInstruction
 import app.morphe.util.indexOfFirstLiteralInstructionOrThrow
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -148,18 +150,25 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
             injectOnClickListener(previousButtonResourceId, "setPreviousButtonOnClickListener")
         }
 
-        // region 2 — onFinishInflate: store button views and extend the view array.
-        // Anchor: play/pause literal if present, otherwise the first const before NEW_ARRAY.
-        // View array is passed to a layout helper via INVOKE_STATIC or INVOKE_DIRECT depending on the build.
+        // region 2 — onFinishInflate: store button views and (on 8.x) extend the view array.
+        // In 8.x the resource literal mini_player_play_pause_replay_button exists here and a
+        // static helper receives a view array we can intercept. In 9.23+ neither exists in this
+        // method, so we fall back to injecting at the first INVOKE_VIRTUAL and skip getViewArray.
         MppWatchWhileLayoutFingerprint.let {
             it.method.apply {
-                // Resolve the parent view register from the first INVOKE_VIRTUAL at/after the anchor.
+                // Resolve the view root register from the first INVOKE_VIRTUAL (p0/this in 9.x).
                 val thisRegister = getInstruction<FiveRegisterInstruction>(
-                    it.instructionMatches.last().index
+                    it.instructionMatches.first().index
                 ).registerC
 
+                // Prefer injecting just before the play/pause literal (8.x). Fall back to
+                // the first INVOKE_VIRTUAL index when the literal is absent (9.23+).
+                val playPauseResourceId = getResourceId(ResourceType.ID, "mini_player_play_pause_replay_button")
+                val playPauseLiteralIdx = indexOfFirstLiteralInstruction(playPauseResourceId)
+                val injectionIndex = if (playPauseLiteralIdx >= 0) playPauseLiteralIdx
+                                     else it.instructionMatches.first().index
+
                 fun injectSetButtonView(viewId: Long, extensionMethod: String) {
-                    val injectionIndex = it.instructionMatches.first().index
                     val freeReg = findFreeRegister(injectionIndex, thisRegister)
 
                     addInstructions(
@@ -176,18 +185,20 @@ val miniplayerPreviousNextButtonsPatch = bytecodePatch(
                 injectSetButtonView(nextButtonResourceId, "setNextButtonView")
                 injectSetButtonView(previousButtonResourceId, "setPreviousButtonView")
 
-                // Wrap the view array before it is passed to the layout helper.
-                val newArrayIndex = indexOfFirstInstructionOrThrow(Opcode.NEW_ARRAY)
-                val arrayPassIndex = indexOfFirstInstructionOrThrow(newArrayIndex, Opcode.INVOKE_STATIC)
-                val viewArrayRegister = getInstruction<FiveRegisterInstruction>(arrayPassIndex).registerC
+                // Wrap the view array before it is passed to the layout helper (8.x only).
+                val newArrayIndex = indexOfFirstInstruction(Opcode.NEW_ARRAY)
+                if (newArrayIndex >= 0) {
+                    val arrayPassIndex = indexOfFirstInstructionOrThrow(newArrayIndex, Opcode.INVOKE_STATIC)
+                    val viewArrayRegister = getInstruction<FiveRegisterInstruction>(arrayPassIndex).registerC
 
-                addInstructions(
-                    arrayPassIndex,
-                    """
-                        invoke-static { v$viewArrayRegister }, $EXTENSION_CLASS->getViewArray([Landroid/view/View;)[Landroid/view/View;
-                        move-result-object v$viewArrayRegister
-                    """
-                )
+                    addInstructions(
+                        arrayPassIndex,
+                        """
+                            invoke-static { v$viewArrayRegister }, $EXTENSION_CLASS->getViewArray([Landroid/view/View;)[Landroid/view/View;
+                            move-result-object v$viewArrayRegister
+                        """
+                    )
+                }
             }
         }
     }
