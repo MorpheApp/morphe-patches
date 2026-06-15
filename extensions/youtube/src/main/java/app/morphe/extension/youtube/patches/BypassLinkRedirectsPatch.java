@@ -9,7 +9,6 @@ import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public class BypassLinkRedirectsPatch {
-    private static final String YOUTUBE_REDIRECT_PATH = "/redirect";
 
     /**
      * Convert the YouTube redirect URI string to the redirect query URI.
@@ -17,17 +16,12 @@ public class BypassLinkRedirectsPatch {
      * @param uri The YouTube redirect URI string.
      * @return The redirect query URI.
      */
-    public static Uri parseRedirectUri(String uri) {
-        final var parsed = Uri.parse(uri);
-
-        if (Settings.BYPASS_LINK_REDIRECTS.get() && Objects.equals(parsed.getPath(), YOUTUBE_REDIRECT_PATH)) {
-            var query = Uri.parse(Uri.decode(parsed.getQueryParameter("q")));
-
+    public static Uri parseRedirectUri(Uri uri) {
+        if (Settings.BYPASS_LINK_REDIRECTS.get() && Objects.equals(uri.getPath(), "/redirect")) {
+            var query = Uri.parse(Uri.decode(uri.getQueryParameter("q")));
             Logger.printDebug(() -> "Bypassing YouTube redirect URI: " + query);
-
             return query;
         }
-
-        return parsed;
+        return uri;
     }
 }
