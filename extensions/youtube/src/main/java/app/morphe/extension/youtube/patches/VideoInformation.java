@@ -691,7 +691,7 @@ public final class VideoInformation {
      */
     public static void setPlaybackSpeed(float newlyLoadedPlaybackSpeed) {
         if (playbackSpeed != newlyLoadedPlaybackSpeed) {
-            Logger.printDebug(() -> "Video speed changed: " + newlyLoadedPlaybackSpeed);
+            Logger.printDebug(() -> "Video speed set to: " + newlyLoadedPlaybackSpeed);
             playbackSpeed = newlyLoadedPlaybackSpeed;
         }
     }
