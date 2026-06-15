@@ -38,29 +38,15 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_remove_viewer_discretion_dialog", summary = true),
+            SwitchPreference("morphe_remove_viewer_discretion_dialog"),
         )
 
-        fun applyPatch(instructionIndex: Int, instructionRegister: Int, method: MutableMethod, isBoolWrapper: Boolean) {
-            val (firstSmali, lastSmali) = if (isBoolWrapper) {
-                """
-                    invoke-virtual { v$instructionRegister }, Ljava/lang/Boolean;->booleanValue()Z
-                    move-result v$instructionRegister
-                """ to """
-                    invoke-static { v$instructionRegister }, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-                    move-result-object v$instructionRegister
-                """
-            } else {
-                "" to ""
-            }
-
+        fun applyPatch(instructionIndex: Int, instructionRegister: Int, method: MutableMethod) {
             method.addInstructions(
                 instructionIndex,
                 """
-                    $firstSmali
                     invoke-static { v$instructionRegister }, $EXTENSION_CLASS->hideViewDiscretionDialog(Z)Z
                     move-result v$instructionRegister
-                    $lastSmali
                 """
             )
         }
@@ -95,27 +81,8 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
                 val instructionRegister = fingerprint.method
                     .getInstruction<OneRegisterInstruction>(instructionIndex).registerA
 
-                applyPatch(instructionIndex + 1, instructionRegister, fingerprint.method, false)
+                applyPatch(instructionIndex + 1, instructionRegister, fingerprint.method)
             }
-        }
-
-        Fingerprint(
-            definingClass = Fingerprint(
-                accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-                returnType = "L",
-                parameters = listOf("Ljava/lang/String;", "L"),
-                strings = listOf(
-                    "Null videoId",
-                    "Null offlineModeType",
-                )
-            ).method.definingClass,
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-            returnType = "V",
-            custom = { method, _ ->
-                method.parameters.count() >= 6
-            }
-        ).let {fingerprint ->
-            applyPatch(1, 6, fingerprint.method, true)
         }
 
         // endregion
@@ -150,7 +117,7 @@ val removeViewerDiscretionDialogPatch = bytecodePatch(
                 val instructionRegister = fingerprint.method
                     .getInstruction<TwoRegisterInstruction>(instructionIndex).registerA
 
-                applyPatch(instructionIndex, instructionRegister, fingerprint.method, false)
+                applyPatch(instructionIndex, instructionRegister, fingerprint.method)
             }
         }
 
