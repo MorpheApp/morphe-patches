@@ -8,6 +8,7 @@
 package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -88,7 +89,8 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
                         opcode = Opcode.INVOKE_VIRTUAL,
                         definingClass = fullScreenDefiningClass,
                         returnType = "V",
-                        parameters = listOf()
+                        parameters = listOf(),
+                        location = MatchAfterWithin(10)
                     )
                 )
             ).instructionMatches.last().getMethodCalled()
