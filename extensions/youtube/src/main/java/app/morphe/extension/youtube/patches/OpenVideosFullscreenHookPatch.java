@@ -51,6 +51,7 @@ public class OpenVideosFullscreenHookPatch {
             return;
         }
 
+        Logger.printDebug(() -> "Exiting fullscreen mode");
         screenInterface.patch_exitFullscreen();
     }
 
@@ -110,6 +111,7 @@ public class OpenVideosFullscreenHookPatch {
                 return;
             }
 
+            Logger.printDebug(() -> "Opening video fullscreen");
             Utils.verifyOnMainThread();
             screenInterface.patch_enterFullscreen();
         } catch (Exception ex) {
