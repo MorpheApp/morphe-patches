@@ -39,13 +39,16 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
     execute {
         val exitFullscreenMethod = AdPlayerFullscreenFingerprint.instructionMatches.last().getMethodCalled()
 
+        val definingClass = exitFullscreenMethod.definingClass
+
         // Implement fullscreen interface.
-        mutableClassDefBy(exitFullscreenMethod.definingClass).apply {
+        mutableClassDefBy(definingClass).apply {
             interfaces.add(EXTENSION_FULLSCREEN_INTERFACE)
-            methods.add(
+
+            fun addInterfaceMethod(name: String, methodCall: String) = methods.add(
                 ImmutableMethod(
                     type,
-                    "patch_exitFullscreen",
+                    name,
                     listOf(),
                     "V",
                     AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
@@ -56,12 +59,15 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
                     addInstructions(
                         0,
                         """
-                            invoke-virtual { p0 }, $exitFullscreenMethod
+                            invoke-virtual { p0 }, $methodCall
                             return-void
                         """
                     )
                 }
             )
+
+            addInterfaceMethod("patch_exitFullscreen", "$exitFullscreenMethod")
+            addInterfaceMethod("patch_enterFullscreen", "$definingClass->h()V")
         }
 
         // Pass the fullscreen interface object to extension code.
@@ -69,7 +75,7 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
             definingClass = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;",
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
             filters = listOf(
-                checkCast(exitFullscreenMethod.definingClass)
+                checkCast(definingClass)
             )
         ).let {
             it.method.apply {
