@@ -8,16 +8,20 @@
 package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.layout.shortsplayer.openShortsInRegularPlayerPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
@@ -37,13 +41,12 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
     )
 
     execute {
-        val exitFullscreenMethod = AdPlayerFullscreenFingerprint.instructionMatches.last().getMethodCalled()
-        val enterFullscreenMethod = EnterFullscreenFingerprint.instructionMatches[3].getMethodCalled()
-
-        val definingClass = exitFullscreenMethod.definingClass
+        val fullScreenMethod = AdPlayerFullscreenFingerprint.instructionMatches
+            .last().getMethodCalled()
+        val fullScreenDefiningClass = fullScreenMethod.definingClass
 
         // Implement fullscreen interface.
-        mutableClassDefBy(definingClass).apply {
+        mutableClassDefBy(fullScreenDefiningClass).apply {
             interfaces.add(EXTENSION_FULLSCREEN_INTERFACE)
 
             fun addInterfaceMethod(name: String, methodCall: String) = methods.add(
@@ -67,7 +70,29 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
                 }
             )
 
-            addInterfaceMethod("patch_exitFullscreen", "$exitFullscreenMethod")
+            addInterfaceMethod("patch_exitFullscreen", "$fullScreenMethod")
+
+            val enterFullscreenMethod = Fingerprint(
+                returnType = "V",
+                parameters = listOf("L", "Ljava/util/Map;"),
+                filters = listOf(
+                    anyInstruction(
+                        fieldAccess(
+                            opcode = Opcode.IGET_OBJECT,
+                            definingClass = "this",
+                            type = fullScreenDefiningClass
+                        ),
+                        checkCast(fullScreenDefiningClass) // 20.21.37
+                    ),
+                    methodCall(
+                        opcode = Opcode.INVOKE_VIRTUAL,
+                        definingClass = fullScreenDefiningClass,
+                        returnType = "V",
+                        parameters = listOf()
+                    )
+                )
+            ).instructionMatches.last().getMethodCalled()
+
             addInterfaceMethod("patch_enterFullscreen", "$enterFullscreenMethod")
         }
 
@@ -76,7 +101,7 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
             definingClass = "Lcom/google/android/apps/youtube/app/watch/nextgenwatch/ui/NextGenWatchLayout;",
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
             filters = listOf(
-                checkCast(definingClass)
+                checkCast(fullScreenDefiningClass)
             )
         ).let {
             it.method.apply {

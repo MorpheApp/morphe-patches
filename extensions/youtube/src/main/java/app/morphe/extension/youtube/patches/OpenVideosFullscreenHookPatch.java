@@ -81,7 +81,7 @@ public class OpenVideosFullscreenHookPatch {
         return Settings.OPEN_VIDEOS_FULLSCREEN.get() != OpenFullscreenMode.PORTRAIT;
     }
 
-    private static volatile boolean shouldEnterFullscreen;
+    private static boolean shouldEnterFullscreen;
 
     /**
      * Injection point.
@@ -102,7 +102,6 @@ public class OpenVideosFullscreenHookPatch {
                 shouldEnterFullscreen = false;
                 return;
             }
-
             shouldEnterFullscreen = false;
 
             FullscreenInterface screenInterface = fullscreenInterfaceRef.get();
@@ -111,7 +110,8 @@ public class OpenVideosFullscreenHookPatch {
                 return;
             }
 
-            Utils.runOnMainThread(screenInterface::patch_enterFullscreen);
+            Utils.verifyOnMainThread();
+            screenInterface.patch_enterFullscreen();
         } catch (Exception ex) {
             Logger.printException(() -> "playerStatusChanged failure", ex);
         }
