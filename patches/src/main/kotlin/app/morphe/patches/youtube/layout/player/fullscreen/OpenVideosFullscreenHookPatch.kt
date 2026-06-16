@@ -9,7 +9,6 @@ package app.morphe.patches.youtube.layout.player.fullscreen
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.checkCast
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -74,26 +73,28 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
             addInterfaceMethod("patch_exitFullscreen", "$fullScreenMethod")
 
             val enterFullscreenMethod = Fingerprint(
+                name = "onClick",
                 returnType = "V",
-                parameters = listOf("L", "Ljava/util/Map;"),
+                parameters = listOf("Landroid/view/View;"),
                 filters = listOf(
-                    anyInstruction(
-                        fieldAccess(
-                            opcode = Opcode.IGET_OBJECT,
-                            definingClass = "this",
-                            type = fullScreenDefiningClass
-                        ),
-                        checkCast(fullScreenDefiningClass) // 20.21.37
+                    fieldAccess(
+                        opcode = Opcode.IGET_OBJECT,
+                        type = fullScreenDefiningClass
                     ),
                     methodCall(
                         opcode = Opcode.INVOKE_VIRTUAL,
                         definingClass = fullScreenDefiningClass,
                         returnType = "V",
                         parameters = listOf(),
+                        location = MatchAfterWithin(3)
+                    ),
+                    methodCall(
+                        opcode = Opcode.INVOKE_VIRTUAL,
+                        smali = fullScreenMethod.toString(),
                         location = MatchAfterWithin(10)
                     )
                 )
-            ).instructionMatches.last().getMethodCalled()
+            ).instructionMatches[1].getMethodCalled()
 
             addInterfaceMethod("patch_enterFullscreen", "$enterFullscreenMethod")
         }
