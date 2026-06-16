@@ -61,6 +61,26 @@ internal object PlayerDragGestureTypeFingerprint : Fingerprint(
     )
 )
 
+internal object EnterFullscreenFingerprint : Fingerprint(
+    filters = listOf(
+        opcode(Opcode.SGET_OBJECT),
+        opcode(Opcode.IF_NE, location = MatchAfterWithin(3)),
+        opcode(Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
+            returnType = "V",
+            location = MatchAfterImmediately()
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            parameters = listOf(),
+            returnType = "V",
+            location = MatchAfterWithin(20)
+        ),
+    )
+)
+
 internal object PlayerDragGestureInitFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "I",

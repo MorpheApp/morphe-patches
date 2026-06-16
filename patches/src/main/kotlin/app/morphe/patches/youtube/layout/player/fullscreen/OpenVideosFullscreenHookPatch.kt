@@ -38,6 +38,7 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
 
     execute {
         val exitFullscreenMethod = AdPlayerFullscreenFingerprint.instructionMatches.last().getMethodCalled()
+        val enterFullscreenMethod = EnterFullscreenFingerprint.instructionMatches[3].getMethodCalled()
 
         val definingClass = exitFullscreenMethod.definingClass
 
@@ -67,7 +68,7 @@ internal val openVideosFullscreenHookPatch = bytecodePatch {
             )
 
             addInterfaceMethod("patch_exitFullscreen", "$exitFullscreenMethod")
-            addInterfaceMethod("patch_enterFullscreen", "$definingClass->h()V")
+            addInterfaceMethod("patch_enterFullscreen", "$enterFullscreenMethod")
         }
 
         // Pass the fullscreen interface object to extension code.
