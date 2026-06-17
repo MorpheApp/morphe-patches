@@ -1538,7 +1538,17 @@ public class CrossfadeManager {
      * the app is force-killed — which was the core #1671 symptom.
      */
     private static void recoverFromFailedLoad() {
-        cleanupAllPlayers();
+        recoverFromFailedLoad(false);
+    }
+
+    /**
+     * @param stopKeptPlayer when true (a dismiss — see {@link #onQueueDismissed}),
+     *        actively pause the kept coordinator player so the dismissed track stops.
+     *        The failed-load / end-of-queue recovery passes false (the incoming never
+     *        loaded content, so there is nothing audible to pause).
+     */
+    private static void recoverFromFailedLoad(boolean stopKeptPlayer) {
+        cleanupAllPlayers(stopKeptPlayer);
         if (audioModeWasForced) {
             audioModeWasForced = false;
             restoreVideoModeSilently();
@@ -1565,9 +1575,13 @@ public class CrossfadeManager {
         logInfo(() -> "onQueueDismissed — crossfade suppressed for the dismiss stop " + dumpState());
         if (crossfadeInProgress) {
             // Dismiss landed during a crossfade already in flight: stop the orphaned
-            // outgoing / fade-out players, keep the coordinator's current player
-            // alive (idle) and at full volume so the next playback is audible.
-            recoverFromFailedLoad();
+            // outgoing / fade-out players AND pause the kept coordinator player.  On a
+            // dismiss the user expects playback to END, but the kept player is our
+            // factory player swapped in at the coordinator level — YTM's dismiss arrives
+            // as a stopVideo(5) director-RESET (advance-to-next, not a halt) against an
+            // empty queue, so it never stops our player and the dismissed song keeps
+            // playing (MrGapi, PR #1773).  stopKeptPlayer=true pauses it ourselves.
+            recoverFromFailedLoad(true);
         }
     }
 
@@ -2494,6 +2508,18 @@ public class CrossfadeManager {
      * Used on errors and when crossfade is disabled/paused.
      */
     private static void cleanupAllPlayers() {
+        cleanupAllPlayers(false);
+    }
+
+    /**
+     * @param stopKeptPlayer when true, pause the kept coordinator player(s) via
+     *        {@code patch_setPlayWhenReady(false)} so a dismissed track actually stops.
+     *        Default (false) preserves the original behavior for the failed-load /
+     *        abort / error teardown paths, which leave the player ready for YTM's next
+     *        load.  Volume is restored to 1.0 either way (silent-playback guard), so a
+     *        paused-then-reused player is not stuck quiet.
+     */
+    private static void cleanupAllPlayers(boolean stopKeptPlayer) {
         // logInfo (not logError): cleanup is a routine recovery/reset action — e.g. a
         // queue dismiss or end-of-queue (#1671) — not a user-facing error.  logError
         // routes through printException which shows a toast when "show toast on error"
@@ -2522,8 +2548,14 @@ public class CrossfadeManager {
         if (pin != null) {
             try {
                 pin.patch_setVolume(1.0f);
-                logInfo(() -> "cleanupAllPlayers: restored kept coordinator player @"
-                        + System.identityHashCode(pin) + " volume → 1.0 (#1671 silent-playback guard)");
+                if (stopKeptPlayer) {
+                    pin.patch_setPlayWhenReady(false);
+                    logInfo(() -> "cleanupAllPlayers: paused kept coordinator player @"
+                            + System.identityHashCode(pin) + " (dismiss — stop dismissed track)");
+                } else {
+                    logInfo(() -> "cleanupAllPlayers: restored kept coordinator player @"
+                            + System.identityHashCode(pin) + " volume → 1.0 (#1671 silent-playback guard)");
+                }
             } catch (Exception ignored) {}
         }
         pendingInPlayer = null;
@@ -2535,7 +2567,10 @@ public class CrossfadeManager {
         // YTM loads onto it isn't quiet (same silent-playback guard as pendingIn).
         ExoPlayerAccess cip = crossfadeInPlayer;
         if (cip != null && cip != pin) {
-            try { cip.patch_setVolume(1.0f); } catch (Exception ignored) {}
+            try {
+                cip.patch_setVolume(1.0f);
+                if (stopKeptPlayer) cip.patch_setPlayWhenReady(false);
+            } catch (Exception ignored) {}
         }
         crossfadeInPlayer = null;
         activeCoordinator = null;
