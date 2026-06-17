@@ -92,7 +92,7 @@ It runs on auto-advance (when a song ends on its own) and on manual skips — ea
 Requires YouTube Music 9.x or newer."</string>
     <string name="morphe_music_crossfade_about_best_title">Works best with</string>
     <string name="morphe_music_crossfade_about_best_summary">Normal song-to-song playback and auto-advance, repeat-one (the song crossfades into itself), and local audio — phone speaker, wired headphones, Bluetooth, or USB.</string>
-    <string name="morphe_music_crossfade_about_quirks_title">Doesn't work quite right</string>
+    <string name="morphe_music_crossfade_about_quirks_title">Doesn\'t work quite right</string>
     <string name="morphe_music_crossfade_about_quirks_summary">"Music videos play as audio-only while crossfade is on (long-press shuffle to pause if you want the video)
 
 Songs shorter than your fade duration may skip the fade
@@ -102,7 +102,7 @@ The lock screen or notification can briefly show a stale state mid-transition"</
     <string name="morphe_music_crossfade_about_known_summary">"A music video set as the first song — or one started from outside the current queue — may briefly show as video before audio-only mode kicks in
 
 Pausing crossfade to watch a music video can leave some videos black (the ones whose audio comes from the video itself). Pausing crossfade before you pick the song avoids it"</string>
-    <string name="morphe_music_crossfade_about_unsupported_title">Doesn't work at all</string>
+    <string name="morphe_music_crossfade_about_unsupported_title">Doesn\'t work at all</string>
     <string name="morphe_music_crossfade_about_unsupported_summary">"Casting or mirroring audio (Chromecast, screen or audio mirroring) — crossfade pauses because it's unstable there and may never be fixable.
 
 YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
