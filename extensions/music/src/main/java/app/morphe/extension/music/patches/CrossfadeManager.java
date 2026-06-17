@@ -2268,27 +2268,11 @@ public class CrossfadeManager {
 
                 if (fp.isComplete()) {
                     try { fp.player.patch_setVolume(0.0f); } catch (Exception ignored) {}
+                    // Defer the release so ExoPlayer's AudioTrack buffer can drain the
+                    // now-silent frames before the player is torn down — prevents an
+                    // abrupt cut/click when buffered non-zero-volume audio gets discarded.
                     final ExoPlayerAccess toRelease = fp.player;
-                    if (is9x) {
-                        // 9.x: defer the release so ExoPlayer's AudioTrack buffer can drain
-                        // the now-silent frames before the player is torn down — prevents an
-                        // audible cut/click when buffered non-zero-volume audio gets
-                        // discarded.  Most pronounced on the 200 ms chained-skip quick-fade
-                        // path, which only exists on 9.x.
-                        //
-                        // 8.x must NOT take this path (#1754): cwh remains attached on the
-                        // outgoing player during fade-out (8.x has no equivalent of the
-                        // patch_detachCwhFromEventDispatch surface), so an extra 150 ms of
-                        // life lets the outgoing's natural-end onEnded fire through the
-                        // shared MedialibPlayerEvents bus.  YTM mis-routes that onto the
-                        // incoming and advances the queue a second time — manifesting as
-                        // "song 1 crossfades to song 2 then jumps to song 3" on every
-                        // auto-advance.  Immediate release on 8.x destroys the AudioTrack
-                        // before onEnded can fire.
-                        mainHandler.postDelayed(() -> releasePlayer(toRelease), RELEASE_DRAIN_DELAY_MS);
-                    } else {
-                        releasePlayer(toRelease);
-                    }
+                    mainHandler.postDelayed(() -> releasePlayer(toRelease), RELEASE_DRAIN_DELAY_MS);
                     it.remove();
                 }
             }

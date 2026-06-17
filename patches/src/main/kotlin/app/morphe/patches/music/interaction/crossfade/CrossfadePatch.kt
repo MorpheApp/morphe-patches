@@ -16,7 +16,6 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.playservice.is_8_05_or_greater
 import app.morphe.patches.music.misc.playservice.is_9_00_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -155,7 +154,8 @@ private fun MutableClass.addFieldSetter(
 @Suppress("unused")
 val crossfadePatch = bytecodePatch(
     name = "Track crossfade",
-    description = "Adds a true dual-player crossfade between consecutive tracks.",
+    description = "Adds a true dual-player crossfade between consecutive tracks. " +
+        "Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op.",
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -167,9 +167,11 @@ val crossfadePatch = bytecodePatch(
 
     execute {
         val log = Logger.getLogger(this::class.java.name)
-        if (!is_8_05_or_greater) {
+        if (!is_9_00_or_greater) {
             return@execute log.warning(
-                "Track crossfade requires YouTube Music 8.05 or newer.",
+                "Track crossfade requires YouTube Music 9.00 or newer. " +
+                    "The 8.x ExoPlayer listener architecture is incompatible " +
+                    "with this patch.",
             )
         }
 
