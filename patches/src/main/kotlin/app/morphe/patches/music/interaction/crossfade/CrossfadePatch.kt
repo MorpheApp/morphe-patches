@@ -297,12 +297,30 @@ val crossfadePatch = bytecodePatch(
         // On 9.20.52, atzq.loadVideo has enough locals that `p0` resolves past v15,
         // exceeding invoke-static's 4-bit register limit. Use invoke-static/range
         // which supports 16-bit registers so the injection holds on any version.
+        // p0 = atzq (MedialibPlayer), p1 = aues (PlaybackStartDescriptor): pass both
+        // so the manager can cache the current track's descriptor for REPEAT_SINGLE
+        // crossfade-onto-self (re-issued via patch_loadVideo).
         LoadVideoFingerprint.method.addInstructions(
             0,
             """
-                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->onBeforeLoadVideo(Ljava/lang/Object;)V
+                invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->onBeforeLoadVideo(Ljava/lang/Object;Ljava/lang/Object;)V
             """
         )
+
+        // REPEAT_SINGLE detection: capture the live loop-state from the MediaSession
+        // loop adapter so the auto-advance monitor knows when to crossfade the song
+        // onto itself instead of advancing the queue.  Graceful: if the adapter isn't
+        // found, repeat-single simply isn't detected (crossfade behaves as before).
+        runCatching {
+            LoopStateAdapterFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->onLoopStateChanged(Ljava/lang/Object;)V
+                """,
+            )
+        }.onFailure {
+            log.warning("Loop-state adapter not found — REPEAT_SINGLE crossfade disabled (#repeat): ${it.message}")
+        }
 
         val musicActivityClass = MusicActivityOnCreateFingerprint.classDef
         musicActivityClass.methods.first { it.name == "onStop" && it.parameterTypes.isEmpty() }
@@ -1563,6 +1581,34 @@ val crossfadePatch = bytecodePatch(
                     """
                         const/4 v0, 0x1
                         invoke-virtual { p0, v0 }, ${StopVideoFingerprint.method}
+                        return-void
+                    """
+                )
+            }
+        )
+        // patch_loadVideoWith: re-issue loadVideo (atzq.o) with a cached descriptor
+        // (the aues PlaybackStartDescriptor).  Used by the REPEAT_SINGLE path to load
+        // the SAME song onto the freshly-swapped crossfade player (crossfade-onto-self)
+        // instead of advancing the queue.  The Object param is cast to the loadVideo
+        // parameter type (the aues descriptor interface).
+        val loadVideoMethod = LoadVideoFingerprint.method
+        val loadVideoDescriptorType = loadVideoMethod.parameterTypes.first().toString()
+        medialibPlayerClass.methods.add(
+            ImmutableMethod(
+                medialibPlayerClass.type,
+                "patch_loadVideoWith",
+                listOf(ImmutableMethodParameter("Ljava/lang/Object;", null, null)),
+                "V",
+                AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                null,
+                null,
+                MutableMethodImplementation(2)
+            ).toMutable().apply {
+                addInstructions(
+                    0,
+                    """
+                        check-cast p1, $loadVideoDescriptorType
+                        invoke-virtual { p0, p1 }, $loadVideoMethod
                         return-void
                     """
                 )

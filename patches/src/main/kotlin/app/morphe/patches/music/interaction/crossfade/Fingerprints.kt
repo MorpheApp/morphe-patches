@@ -74,6 +74,21 @@ internal object LoadVideoFingerprint : Fingerprint(
 )
 
 /**
+ * REPEAT_SINGLE detection: MediaSessionLoopStateAdapter (kyb.a(Ljava/lang/Object;)V).
+ * This adapter converts YTM's loop-state enum (Lnwu: LOOP_OFF=0, LOOP_ALL=1,
+ * LOOP_ONE=2, LOOP_DISABLED=3) into the Android MediaSession repeat int and pushes
+ * it to the session — so it fires on every loop-state change (and init).  Hooking
+ * its entry lets the crossfade manager track the live repeat mode (the native LOCAL
+ * repeat state isn't reachable from the player classes the patch holds).  Anchored
+ * by the globally-unique log string in this method.
+ */
+internal object LoopStateAdapterFingerprint : Fingerprint(
+    returnType = "V",
+    parameters = listOf("Ljava/lang/Object;"),
+    strings = listOf("attempted to update repeat mode but media session was null"),
+)
+
+/**
  * #1671: the DismissWatchEvent handler (iqr.handleDismissWatchEvent) — the single
  * point that processes a watch-page / queue dismissal, regardless of source (stock
  * "Dismiss queue" menu, swipe-to-dismiss miniplayer).  A normal skip never posts a

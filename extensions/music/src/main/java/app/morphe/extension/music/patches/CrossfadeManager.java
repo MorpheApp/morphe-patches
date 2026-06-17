@@ -224,6 +224,8 @@ public class CrossfadeManager {
         void patch_forceStopVideo();
         /** Calls atad.stopVideo(REASON_STOP=1).  Currently unused — kept for future flows. */
         void patch_forceLoadVideo();
+        /** Re-issues loadVideo (atzq.o) with a cached aues descriptor — REPEAT_SINGLE crossfade-onto-self. */
+        void patch_loadVideoWith(Object descriptor);
     }
 
     /** Audio / video toggle (nba). */
@@ -1298,12 +1300,53 @@ public class CrossfadeManager {
         }
     }
 
-    /** 9.x atzq.o (loadVideo) entry hook — diagnostic only; fade-in is driven by onPendingPlayerReady. */
-    public static void onBeforeLoadVideo(Object newAtzqInstance) {
+    // --- REPEAT_SINGLE crossfade-onto-self state ---
+    /** Lnwu loop enum: LOOP_OFF=0, LOOP_ALL=1, LOOP_ONE=2, LOOP_DISABLED=3. */
+    private static final int LOOP_ONE_ORDINAL = 2;
+    /** Live repeat-single state, tracked via the MediaSession loop adapter hook. */
+    private static volatile boolean repeatSingleActive = false;
+    /**
+     * Most recent loadVideo descriptor (aues) — the current track's load intent.
+     * Re-issued via patch_loadVideo to crossfade the song onto itself on REPEAT_SINGLE.
+     */
+    private static volatile Object lastLoadDescriptor = null;
+
+    /**
+     * Hooked at MediaSessionLoopStateAdapter (kyb.a) entry with the Lnwu loop-state
+     * enum.  Tracks whether REPEAT_SINGLE (LOOP_ONE) is active so the auto-advance
+     * monitor can crossfade the song onto itself instead of advancing the queue.
+     */
+    public static void onLoopStateChanged(Object loopState) {
+        try {
+            boolean single = (loopState instanceof Enum)
+                    && ((Enum<?>) loopState).ordinal() == LOOP_ONE_ORDINAL;
+            if (single != repeatSingleActive) {
+                repeatSingleActive = single;
+                final int ord = (loopState instanceof Enum) ? ((Enum<?>) loopState).ordinal() : -1;
+                logInfo(() -> "onLoopStateChanged: repeatSingleActive=" + single
+                        + " (loop ordinal=" + ord + ")");
+            }
+        } catch (Exception e) {
+            logWarn(() -> "onLoopStateChanged error: " + e.getMessage());
+        }
+    }
+
+    /**
+     * 9.x atzq.o (loadVideo) entry hook.  Caches the current track's descriptor
+     * (aues) for REPEAT_SINGLE re-issue; fade-in itself is driven by
+     * onPendingPlayerReady.  Caches unconditionally so {@link #lastLoadDescriptor}
+     * always holds the most-recently-loaded (i.e. current) track's load intent.
+     */
+    public static void onBeforeLoadVideo(Object newAtzqInstance, Object descriptor) {
         if (!is9x) return;
+        if (descriptor != null) {
+            lastLoadDescriptor = descriptor;
+        }
         logDebug(() -> "9.x: onBeforeLoadVideo atzq=@" + System.identityHashCode(newAtzqInstance)
+                + " descriptor=@" + System.identityHashCode(descriptor)
                 + " crossfadeInProgress=" + crossfadeInProgress
-                + " autoAdvActive=" + autoAdvanceCrossfadeActive);
+                + " autoAdvActive=" + autoAdvanceCrossfadeActive
+                + " repeatSingle=" + repeatSingleActive);
     }
 
     private static long lastPauseEventMs = 0;
@@ -1685,6 +1728,20 @@ public class CrossfadeManager {
                                                 + "ms (fadeDuration=" + fadeDuration + "ms)");
                         stopAutoAdvanceMonitor();
 
+                        // #repeat: REPEAT_SINGLE — crossfade the song onto itself instead
+                        // of advancing the queue.  MEDIA_NEXT would skip to the next track
+                        // (it ignores repeat-one), so take the self-crossfade path: swap to
+                        // a fresh player and re-load the SAME song at position 0.  If it
+                        // can't engage (no cached descriptor), fall through to MEDIA_NEXT so
+                        // the song still loops (just without crossfade).
+                        if (repeatSingleActive && is9x) {
+                            logInfo(() -> "Auto-advance: REPEAT_SINGLE — crossfading song onto itself");
+                            if (startRepeatSelfCrossfade(atad, coordinator, exo)) {
+                                return;
+                            }
+                            logWarn(() -> "REPEAT_SINGLE self-crossfade could not engage — falling back to MEDIA_NEXT");
+                        }
+
                         // Auto-advance trigger: simulated MEDIA_NEXT key event.  Other paths
                         // tested (auih.y direct, atzq.p, atad.stopVideo(5) direct) either no-op
                         // on 9.x or fail to advance the queue.  The MEDIA_NEXT dispatch goes
@@ -1744,6 +1801,103 @@ public class CrossfadeManager {
         if (autoAdvanceMonitorRunnable != null) {
             mainHandler.removeCallbacks(autoAdvanceMonitorRunnable);
             autoAdvanceMonitorRunnable = null;
+        }
+    }
+
+    /**
+     * #repeat: REPEAT_SINGLE crossfade-onto-self.  Mirrors the 9.x auto-advance swap
+     * in {@link #onBeforeStopVideo} (factory player → coordinator, detach cwh, migrate
+     * the coordinator listener, re-enable + pre-fade the outgoing), but instead of
+     * advancing the queue it re-issues the CURRENT track's cached load descriptor at
+     * the top via {@code patch_loadVideoWith} — so the ending instance fades out while
+     * a fresh-from-zero instance fades in.  The queue is never touched (correct for
+     * repeat-one).  Returns false if it cannot engage (no descriptor / wrong types),
+     * so the caller can fall back to MEDIA_NEXT.
+     */
+    private static boolean startRepeatSelfCrossfade(Object atad,
+            PlayerCoordinatorAccess coordinator, ExoPlayerAccess currentExo) {
+        if (!is9x) return false;
+        final Object descriptor = lastLoadDescriptor;
+        if (descriptor == null) {
+            logWarn(() -> "repeat-single: no cached load descriptor");
+            return false;
+        }
+        if (!(atad instanceof MedialibPlayerAccess)) {
+            logWarn(() -> "repeat-single: atad is not a MedialibPlayerAccess");
+            return false;
+        }
+        try {
+            ExoPlayerAccess newExo = createNewPlayer(coordinator);
+            if (newExo == null) {
+                logError(() -> "repeat-single: factory failed to create player");
+                return false;
+            }
+            newExo.patch_setVolume(0.0f);
+
+            pendingOutPlayer = currentExo;
+            pendingInPlayer = newExo;
+            activeCoordinator = coordinator;
+            crossfadeInProgress = true;
+            // Treat like an auto-advance crossfade: the outgoing reaches natural end
+            // during the fade, so detach cwh to avoid its onEnded mis-routing.  Do NOT
+            // set queueAdvancedByMonitor — the queue is intentionally NOT advanced.
+            autoAdvanceCrossfadeActive = true;
+            deferredSwapStartTime = System.currentTimeMillis();
+            try {
+                currentExo.patch_detachCwhFromEventDispatch();
+            } catch (Exception e) {
+                logWarn(() -> "repeat-single: cwh detach on outgoing failed: " + e.getMessage());
+            }
+
+            Object coordListener = null;
+            try {
+                coordListener = coordinator.patch_getCoordinatorListener();
+                if (coordListener != null) {
+                    currentExo.patch_removeDirectListener(coordListener);
+                }
+            } catch (Exception e) {
+                logWarn(() -> "repeat-single: pre-remove coord listener failed: " + e.getMessage());
+            }
+
+            coordinator.patch_setPlayerWithBindings(newExo);
+            logDebug(() -> "repeat-single: swapped coordinator → new player @"
+                    + System.identityHashCode(newExo));
+
+            if (coordListener != null) {
+                try {
+                    newExo.patch_addDirectListener(coordListener);
+                } catch (Exception e) {
+                    logWarn(() -> "repeat-single: re-register coord listener failed: " + e.getMessage());
+                }
+            }
+            VideoSurfaceAccess surface = (VideoSurfaceAccess) coordinator.patch_getVideoSurface();
+            if (surface != null) {
+                surface.patch_setPlayerReference(newExo);
+            }
+
+            // Re-enable the outgoing (ending) instance for an audible fade-out, and
+            // pre-start its fade now (auto-advance style) so it reaches silence
+            // gracefully regardless of the new player's load latency.
+            currentExo.patch_setPlayWhenReady(true);
+            currentExo.patch_setVolume(1.0f);
+            FadeCurve outCurve = Settings.CROSSFADE_CURVE.get();
+            long outFadeDuration = getCrossfadeDurationMs();
+            fadingOutPlayers.add(new FadingPlayer(currentExo, outFadeDuration, outCurve));
+            outgoingFadePreStarted = true;
+            ensureFadingLoopRunning();
+
+            // Load the SAME song from the top onto the new (coordinator) player.
+            logInfo(() -> "repeat-single: re-issuing loadVideo (same song) onto @"
+                    + System.identityHashCode(newExo) + " descriptor=@"
+                    + System.identityHashCode(descriptor));
+            ((MedialibPlayerAccess) atad).patch_loadVideoWith(descriptor);
+
+            pollForNewTrackReady(newExo);
+            return true;
+        } catch (Exception e) {
+            logError(() -> "startRepeatSelfCrossfade error", e);
+            cleanupAllPlayers();
+            return true; // we already mutated state; don't also fire MEDIA_NEXT
         }
     }
 
