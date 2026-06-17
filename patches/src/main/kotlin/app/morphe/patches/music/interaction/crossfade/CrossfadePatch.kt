@@ -13,6 +13,9 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import app.morphe.patcher.util.proxy.mutableTypes.MutableClass
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
@@ -151,6 +154,21 @@ private fun MutableClass.addFieldSetter(
 }
 
 
+/**
+ * Ships the crossfade About-screen header graphic: the banner WebP drawable and the
+ * full-width ImageView layout it's shown through.  Kept as a resource patch because
+ * copyResources needs the resource-patch context; crossfadePatch depends on it.
+ */
+private val crossfadeBannerResourcePatch = resourcePatch {
+    execute {
+        copyResources(
+            "crossfade",
+            ResourceGroup("drawable-nodpi", "morphe_crossfade_about_banner.webp"),
+            ResourceGroup("layout", "morphe_crossfade_about_banner.xml"),
+        )
+    }
+}
+
 @Suppress("unused")
 val crossfadePatch = bytecodePatch(
     name = "Track crossfade",
@@ -161,6 +179,7 @@ val crossfadePatch = bytecodePatch(
         sharedExtensionPatch,
         settingsPatch,
         versionCheckPatch,
+        crossfadeBannerResourcePatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -217,7 +236,28 @@ val crossfadePatch = bytecodePatch(
                     SwitchPreference("morphe_music_crossfade_on_skip", summary = true),
                     SwitchPreference("morphe_music_crossfade_on_auto_advance", summary = true),
                     SwitchPreference("morphe_music_crossfade_session_control", summary = true),
-                    NonInteractivePreference("morphe_music_crossfade_about")
+                    // About: tappable sub-screen explaining how crossfade works, when it
+                    // works best, its quirks, and where it isn't supported at all.
+                    PreferenceScreenPreference(
+                        key = "morphe_music_crossfade_about",
+                        sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                        preferences = setOf(
+                            // Header banner (full-width crossfade graphic) — custom
+                            // ImageView layout, no title/summary.
+                            NonInteractivePreference(
+                                key = "morphe_music_crossfade_about_banner",
+                                titleKey = "morphe_music_crossfade_about_banner_title",
+                                summaryKey = null,
+                                layout = "@layout/morphe_crossfade_about_banner",
+                            ),
+                            NonInteractivePreference("morphe_music_crossfade_about_how"),
+                            NonInteractivePreference("morphe_music_crossfade_about_best"),
+                            NonInteractivePreference("morphe_music_crossfade_about_quirks"),
+                            NonInteractivePreference("morphe_music_crossfade_about_known"),
+                            NonInteractivePreference("morphe_music_crossfade_about_unsupported"),
+                            NonInteractivePreference("morphe_music_crossfade_about_credit"),
+                        ),
+                    ),
                 )
             )
         )
