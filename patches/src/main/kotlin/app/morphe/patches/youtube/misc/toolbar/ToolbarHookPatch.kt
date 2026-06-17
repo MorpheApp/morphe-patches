@@ -20,8 +20,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import java.lang.ref.WeakReference
 
-internal const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/ToolBarPatch;"
+internal const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/ToolBarPatch;"
 
 private lateinit var toolbarMethod : WeakReference<MutableMethod>
 
