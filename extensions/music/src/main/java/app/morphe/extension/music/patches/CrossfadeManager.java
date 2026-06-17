@@ -489,16 +489,20 @@ public class CrossfadeManager {
 
     /**
      * #1671: if the pending factory player sits at {@link #STATE_IDLE} continuously
-     * for this long, no content is coming — the queue was dismissed/ended out from
-     * under us (Player.STATE_IDLE means "no media loaded", distinct from
-     * STATE_BUFFERING which a slow network load would show).  Recover fast instead
-     * of waiting out {@link #READY_TIMEOUT_MS}.  A normal load transitions
-     * IDLE→BUFFERING within ~200 ms, so a sustained IDLE streak this long never
-     * trips on a healthy transition — but it does bound how long the re-enabled
-     * outgoing player keeps playing after a dismiss (audible background audio),
-     * so keep it tight.
+     * for this long AND no loadVideo has been issued for the transition
+     * ({@link #pendingLoadIssued}), no content is coming — the queue was dismissed/
+     * ended out from under us — so recover instead of waiting out
+     * {@link #READY_TIMEOUT_MS}.  Once a load HAS been issued this timer is moot
+     * (the IDLE branch is gated on {@code !pendingLoadIssued}); it only bounds the
+     * no-load-at-all case, which is why it can be generous.
+     *
+     * <p>Was 600 ms, which tore down legitimate locked auto-advances: the queue-advance
+     * that issues the load is deferred under background throttling (Xiaomi/MIUI), so the
+     * pre-load IDLE dwell can exceed 600 ms even though content is on its way.  2000 ms
+     * clears any realistic queue-advance latency while still recovering a genuinely
+     * dismissed/ended queue far faster than the 10 s full timeout.
      */
-    private static final long IDLE_LOAD_FAIL_MS = 600;
+    private static final long IDLE_LOAD_FAIL_MS = 2000;
 
     /**
      * #1671: how long after a dismiss-trigger ({@link #onQueueDismissed}) we treat
@@ -1342,6 +1346,11 @@ public class CrossfadeManager {
         if (descriptor != null) {
             lastLoadDescriptor = descriptor;
         }
+        // Mark that content is on its way for an in-flight crossfade transition, so the
+        // STATE_IDLE fast-recovery in pollForNewTrackReady won't abandon a slow load.
+        if (crossfadeInProgress) {
+            pendingLoadIssued = true;
+        }
         logDebug(() -> "9.x: onBeforeLoadVideo atzq=@" + System.identityHashCode(newAtzqInstance)
                 + " descriptor=@" + System.identityHashCode(descriptor)
                 + " crossfadeInProgress=" + crossfadeInProgress
@@ -1428,11 +1437,22 @@ public class CrossfadeManager {
 
     private static int lastPollState = -1;
     private static long pollIdleStreakStartMs = 0;
+    /**
+     * #1671 follow-up (screen-lock reliability): true once YTM has issued a loadVideo
+     * for the current pending crossfade transition.  The STATE_IDLE fast-recovery below
+     * must only fire when NO load was issued (a genuine dismiss / end-of-queue — content
+     * will never arrive).  A slow-but-legitimate load also dwells at STATE_IDLE before
+     * STATE_BUFFERING, and that dwell stretches under aggressive background throttling
+     * (e.g. Xiaomi/MIUI while the screen is locked) — without this guard the 600 ms timer
+     * misfires and tears down a perfectly good locked auto-advance.  Reset per transition.
+     */
+    private static volatile boolean pendingLoadIssued = false;
 
     private static void pollForNewTrackReady(final ExoPlayerAccess newPlayer) {
         final long deadline = System.currentTimeMillis() + READY_TIMEOUT_MS;
         lastPollState = -1;
         pollIdleStreakStartMs = 0;
+        pendingLoadIssued = false;
 
         mainHandler.postDelayed(new Runnable() {
             @Override
@@ -1463,11 +1483,17 @@ public class CrossfadeManager {
                     // ended out from under us — no content will ever load onto this
                     // factory player.  Recover fast (stop the orphaned outgoing,
                     // keep the coordinator's now-idle player) instead of waiting the
-                    // full READY_TIMEOUT_MS.  STATE_IDLE = "no media loaded", which a
-                    // normal transition leaves within ~200 ms; a slow network load
-                    // shows STATE_BUFFERING, not IDLE, so this only fires on a real
-                    // dismiss / end-of-queue.
-                    if (state == STATE_IDLE) {
+                    // full READY_TIMEOUT_MS.
+                    //
+                    // Screen-lock reliability guard (sr-shishir, Xiaomi): only fast-recover
+                    // when NO loadVideo has been issued for this transition.  A legitimate
+                    // auto-advance dwells at STATE_IDLE before STATE_BUFFERING while YTM's
+                    // queue-advance issues the load; that dwell was ~210 ms screen-on but
+                    // stretched to ~400 ms locked on a Samsung and goes further under MIUI's
+                    // background throttling.  The old unconditional 600 ms timer tore down a
+                    // valid locked load.  Once onBeforeLoadVideo has fired (pendingLoadIssued),
+                    // content IS coming — defer to STATE_READY / the full 10 s timeout instead.
+                    if (state == STATE_IDLE && !pendingLoadIssued) {
                         if (pollIdleStreakStartMs == 0) {
                             pollIdleStreakStartMs = System.currentTimeMillis();
                         } else if (System.currentTimeMillis() - pollIdleStreakStartMs >= IDLE_LOAD_FAIL_MS) {
