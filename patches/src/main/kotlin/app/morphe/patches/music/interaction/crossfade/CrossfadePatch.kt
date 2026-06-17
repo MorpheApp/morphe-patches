@@ -7,6 +7,7 @@
 package app.morphe.patches.music.interaction.crossfade
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.literal
@@ -256,8 +257,8 @@ val crossfadePatch = bytecodePatch(
                             NonInteractivePreference("morphe_music_crossfade_about_known"),
                             NonInteractivePreference("morphe_music_crossfade_about_unsupported"),
                             NonInteractivePreference("morphe_music_crossfade_about_credit"),
-                        ),
-                    ),
+                        )
+                    )
                 )
             )
         )
@@ -283,11 +284,9 @@ val crossfadePatch = bytecodePatch(
         // crossfade.  (If this fingerprint ever misses, the poll-STATE_IDLE recovery
         // still cleans up — just a touch slower.)
         runCatching {
-            HandleDismissWatchEventFingerprint.method.addInstructions(
+            HandleDismissWatchEventFingerprint.method.addInstruction(
                 0,
-                """
-                    invoke-static { }, $EXTENSION_CLASS->onQueueDismissed()V
-                """,
+                "invoke-static { }, $EXTENSION_CLASS->onQueueDismissed()V"
             )
         }.onFailure {
             log.warning(
@@ -320,18 +319,14 @@ val crossfadePatch = bytecodePatch(
             """
         )
 
-        PauseVideoFingerprint.method.addInstructions(
+        PauseVideoFingerprint.method.addInstruction(
             0,
-            """
-                invoke-static {}, $EXTENSION_CLASS->onPauseVideo()V
-            """
+            "invoke-static {}, $EXTENSION_CLASS->onPauseVideo()V"
         )
 
         PlayVideoFingerprint.method.addInstructions(
             0,
-            """
-                invoke-static { p0 }, $EXTENSION_CLASS->onPlayVideo(Ljava/lang/Object;)V
-            """
+            "invoke-static { p0 }, $EXTENSION_CLASS->onPlayVideo(Ljava/lang/Object;)V"
         )
 
         // On 9.20.52, atzq.loadVideo has enough locals that `p0` resolves past v15,
@@ -340,11 +335,10 @@ val crossfadePatch = bytecodePatch(
         // p0 = atzq (MedialibPlayer), p1 = aues (PlaybackStartDescriptor): pass both
         // so the manager can cache the current track's descriptor for REPEAT_SINGLE
         // crossfade-onto-self (re-issued via patch_loadVideo).
-        LoadVideoFingerprint.method.addInstructions(
+        LoadVideoFingerprint.method.addInstruction(
             0,
-            """
-                invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->onBeforeLoadVideo(Ljava/lang/Object;Ljava/lang/Object;)V
-            """
+            "invoke-static/range { p0 .. p1 }, $EXTENSION_CLASS->" +
+                    "onBeforeLoadVideo(Ljava/lang/Object;Ljava/lang/Object;)V"
         )
 
         // REPEAT_SINGLE detection: capture the live loop-state from the MediaSession
@@ -352,41 +346,35 @@ val crossfadePatch = bytecodePatch(
         // onto itself instead of advancing the queue.  Graceful: if the adapter isn't
         // found, repeat-single simply isn't detected (crossfade behaves as before).
         runCatching {
-            LoopStateAdapterFingerprint.method.addInstructions(
+            LoopStateAdapterFingerprint.method.addInstruction(
                 0,
-                """
-                    invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->onLoopStateChanged(Ljava/lang/Object;)V
-                """,
+                " invoke-static/range { p1 .. p1 }, $EXTENSION_CLASS->" +
+                        "onLoopStateChanged(Ljava/lang/Object;)V"
             )
         }.onFailure {
-            log.warning("Loop-state adapter not found — REPEAT_SINGLE crossfade disabled (#repeat): ${it.message}")
+            log.warning("Loop-state adapter not found — REPEAT_SINGLE " +
+                    "crossfade disabled (#repeat): ${it.message}")
         }
 
         val musicActivityClass = MusicActivityOnCreateFingerprint.classDef
         musicActivityClass.methods.first { it.name == "onStop" && it.parameterTypes.isEmpty() }
-            .addInstructions(
+            .addInstruction(
                 0,
-                """
-                    invoke-static {}, $EXTENSION_CLASS->onActivityStop()V
-                """
+                "invoke-static {}, $EXTENSION_CLASS->onActivityStop()V"
             )
         musicActivityClass.methods.first { it.name == "onStart" && it.parameterTypes.isEmpty() }
-            .addInstructions(
+            .addInstruction(
                 0,
-                """
-                    invoke-static {}, $EXTENSION_CLASS->onActivityStart()V
-                """
+                "invoke-static {}, $EXTENSION_CLASS->onActivityStart()V"
             )
         // Hook onDestroy so we can release in-flight crossfade state when the
         // user swipe-clears from recents (process may survive via foreground
         // service; without cleanup our statics inherit orphaned player refs
         // into the next activity instance).
-        musicActivityClass.methods.firstOrNull { it.name == "onDestroy" && it.parameterTypes.isEmpty() }
-            ?.addInstructions(
+        musicActivityClass.methods.first { it.name == "onDestroy" && it.parameterTypes.isEmpty() }
+            .addInstruction(
                 0,
-                """
-                    invoke-static {}, $EXTENSION_CLASS->onActivityDestroy()V
-                """,
+                "invoke-static {}, $EXTENSION_CLASS->onActivityDestroy()V"
             )
 
         val coordinatorClass = PlayNextInQueueFingerprint.classDef
@@ -407,7 +395,7 @@ val crossfadePatch = bytecodePatch(
         val sessionFieldRef = playNextMethod.implementation!!.instructions
             .filterIsInstance<ReferenceInstruction>()
             .first { it.opcode == Opcode.IGET_OBJECT }
-            .reference as FieldReference
+            .getReference<FieldReference>()!!
         val sessionClass = mutableClassDefBy(sessionFieldRef.type)
 
         val factoryFieldRef = sessionClass.fields.singleOrNull { field ->
