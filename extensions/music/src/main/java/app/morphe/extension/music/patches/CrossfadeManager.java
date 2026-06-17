@@ -2675,9 +2675,13 @@ public class CrossfadeManager {
      * the flicker — see future task.
      *
      * <p>Whitelist of device types that trigger the skip: HDMI, HDMI_ARC,
-     * HDMI_EARC, REMOTE_SUBMIX (Samsung audio mirroring), IP (network audio),
-     * BUS (system bus devices).  Bluetooth A2DP, wired headsets, USB audio,
-     * and BLE audio are NOT in this list — those tolerate the swap fine.
+     * HDMI_EARC, IP (network audio), BUS (system bus devices).  Bluetooth A2DP,
+     * wired headsets, USB audio, and BLE audio are NOT in this list — those
+     * tolerate the swap fine.  TYPE_REMOTE_SUBMIX is also excluded: it is a
+     * LOCAL-decode capture (Android Auto projection, screen recording, screen
+     * mirroring) where crossfade works correctly — including it disabled
+     * crossfade on Android Auto.  True decode-on-receiver cast is still caught
+     * by the MediaRouter PLAYBACK_TYPE_REMOTE signal.
      *
      * <p>Returns false on API < 28 (the {@link AudioPlaybackConfiguration#getAudioDeviceInfo()}
      * method isn't available); pre-Pie devices are rare enough that we accept
@@ -2740,10 +2744,29 @@ public class CrossfadeManager {
                             int type = info.getType();
                             probe.append("dev{type=").append(type)
                                     .append(",id=").append(info.getId()).append("} ");
+                            // NOTE: TYPE_REMOTE_SUBMIX is intentionally NOT in this list.
+                            // Android Auto (com.google.android.projection.gearhead) opens a
+                            // REMOTE_SUBMIX capture to stream the phone's mixed audio to the
+                            // head unit — but decoding stays LOCAL, so the dual-player
+                            // crossfade works fine and there is no decode-on-receiver session
+                            // to corrupt.  The same is true of screen recording / MediaProjection
+                            // / screen-mirror capture.  Including REMOTE_SUBMIX disabled crossfade
+                            // on Android Auto (a false positive); genuine cast (decode-on-receiver)
+                            // is still caught by the MediaRouter PLAYBACK_TYPE_REMOTE signal above.
+                            //
+                            // TODO(future): this blanket drop also re-enables crossfade during
+                            // non-AA screen/audio mirroring (e.g. Samsung mirroring — the original
+                            // #1549 case).  The surgical fix is to detect Android Auto SPECIFICALLY
+                            // via the public CarConnection API
+                            // (androidx.car.app.connection — query content://androidx.car.app.connection,
+                            // column "CarConnectionState", value 2 = CONNECTION_TYPE_PROJECTION) and
+                            // exempt only AA, while keeping REMOTE_SUBMIX in the disable list for
+                            // other mirror captures.  Deferred because YTM doesn't bundle the
+                            // CarConnection client class and the backing provider didn't query
+                            // cleanly from a shell — needs an in-app query + fallback verified first.
                             if (type == AudioDeviceInfo.TYPE_HDMI
                                     || type == AudioDeviceInfo.TYPE_HDMI_ARC
                                     || type == 29 /* TYPE_HDMI_EARC, API 31+ */
-                                    || type == AudioDeviceInfo.TYPE_REMOTE_SUBMIX
                                     || type == AudioDeviceInfo.TYPE_IP
                                     || type == AudioDeviceInfo.TYPE_BUS) {
                                 casting = true;
