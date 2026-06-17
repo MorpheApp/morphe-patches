@@ -7,6 +7,7 @@
 package app.morphe.patches.music.interaction.crossfade
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -71,3 +72,28 @@ internal object LoadVideoFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf("MedialibPlayer.loadVideo("),
 )
+
+/**
+ * #1671: the DismissWatchEvent handler (iqr.handleDismissWatchEvent) — the single
+ * point that processes a watch-page / queue dismissal, regardless of source (stock
+ * "Dismiss queue" menu, swipe-to-dismiss miniplayer).  A normal skip never posts a
+ * DismissWatchEvent, so this is dismiss-UNIQUE (unlike clearQueue, which also runs
+ * in the normal skip's queue-advance chain).  The handler is anchored by its call
+ * to the UNobfuscated WatchWhileLayout class plus the preserved handler name.
+ *
+ * If this ever fails to match on a future build, crossfade still works — the dismiss
+ * just falls back to the slower poll-STATE_IDLE recovery in pollForNewTrackReady.
+ */
+internal object HandleDismissWatchEventFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            definingClass = "Lcom/google/android/apps/youtube/music/watchpage/ui/WatchWhileLayout;",
+        ),
+    ),
+    custom = { method, _ ->
+        method.name == "handleDismissWatchEvent" && method.parameterTypes.size == 1
+    },
+)
+

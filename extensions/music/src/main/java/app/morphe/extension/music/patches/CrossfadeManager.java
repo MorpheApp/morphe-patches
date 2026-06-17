@@ -480,8 +480,38 @@ public class CrossfadeManager {
     private static final long RELEASE_DRAIN_DELAY_MS = 150;
     private static final int READY_POLL_MS = 100;
     private static final int READY_TIMEOUT_MS = 10000;
+    private static final int STATE_IDLE = 1;
+    private static final int STATE_ENDED = 4;
     private static final int STATE_READY = 3;
     private static final int REASON_DIRECTOR_RESET = 5;
+
+    /**
+     * #1671: if the pending factory player sits at {@link #STATE_IDLE} continuously
+     * for this long, no content is coming — the queue was dismissed/ended out from
+     * under us (Player.STATE_IDLE means "no media loaded", distinct from
+     * STATE_BUFFERING which a slow network load would show).  Recover fast instead
+     * of waiting out {@link #READY_TIMEOUT_MS}.  A normal load transitions
+     * IDLE→BUFFERING within ~200 ms, so a sustained IDLE streak this long never
+     * trips on a healthy transition — but it does bound how long the re-enabled
+     * outgoing player keeps playing after a dismiss (audible background audio),
+     * so keep it tight.
+     */
+    private static final long IDLE_LOAD_FAIL_MS = 600;
+
+    /**
+     * #1671: how long after a dismiss-trigger ({@link #onQueueDismissed}) we treat
+     * an incoming stopVideo as part of the dismiss (and pass it through WITHOUT
+     * starting a crossfade).  YTM tears down playback on dismiss via the same
+     * stopVideo(5) a manual skip uses, so the dismiss UI triggers set this window
+     * to tell us "the next stop is a dismiss, not a skip."  Kept short so a real
+     * skip moments after a dismiss isn't wrongly suppressed.  On 9.x the stock
+     * "Dismiss queue" path fires its stopVideo(5) ASYNChronously after clearQueue,
+     * so the window must comfortably cover that dispatch; 1.5 s is safe because a
+     * dismiss empties the queue — a real skip can't occur until the user starts a
+     * whole new queue, which takes far longer than this window.
+     */
+    private static final long DISMISS_WINDOW_MS = 1500;
+    private static volatile long dismissWindowUntilMs = 0;
     private static final long AUTO_ADVANCE_THRESHOLD_MS = 5000;
     private static final long MONITOR_POLL_MS = 100;
     // Extra lead time to absorb poll granularity + new-player READY latency (~120-200ms typical).
@@ -582,6 +612,19 @@ public class CrossfadeManager {
 
     public static boolean onBeforeStopVideo(Object atadInstance, int reason) {
         if (!CROSSFADE_ENABLED) return false;
+
+        // #1671: the user just dismissed the queue / swipe-dismissed the miniplayer
+        // (signalled by onQueueDismissed from the dismiss UI triggers).  YTM tears
+        // down playback via this same stopVideo(5), which is otherwise
+        // indistinguishable from a manual skip — engaging crossfade here spins up a
+        // phantom factory player that never loads (queue is empty) and leaves the
+        // outgoing playing in the background.  Pass the stop through untouched so
+        // playback ends and the queue clears cleanly.  The window is left to expire
+        // by time so the 1-2 internal stops of the dismiss sequence are all covered.
+        if (SystemClock.uptimeMillis() < dismissWindowUntilMs) {
+            logInfo(() -> "stopVideo(" + reason + "): within dismiss window — passing through, no crossfade");
+            return false;
+        }
 
         // #1549: skip crossfade when audio is routed to a cast/mirror receiver.
         // Lets YTM's native gapless transition handle the song change so the
@@ -1341,10 +1384,12 @@ public class CrossfadeManager {
     }
 
     private static int lastPollState = -1;
+    private static long pollIdleStreakStartMs = 0;
 
     private static void pollForNewTrackReady(final ExoPlayerAccess newPlayer) {
         final long deadline = System.currentTimeMillis() + READY_TIMEOUT_MS;
         lastPollState = -1;
+        pollIdleStreakStartMs = 0;
 
         mainHandler.postDelayed(new Runnable() {
             @Override
@@ -1365,14 +1410,31 @@ public class CrossfadeManager {
                         return;
                     }
 
-                    if (state == 4) {
+                    if (state == STATE_ENDED) {
                         logError(() -> "Pending player ENDED unexpectedly — aborting");
-                        cleanupAllPlayers();
-                        if (audioModeWasForced) {
-                            audioModeWasForced = false;
-                            restoreVideoModeSilently();
-                        }
+                        recoverFromFailedLoad();
                         return;
+                    }
+
+                    // #1671: persistent STATE_IDLE means the queue was dismissed or
+                    // ended out from under us — no content will ever load onto this
+                    // factory player.  Recover fast (stop the orphaned outgoing,
+                    // keep the coordinator's now-idle player) instead of waiting the
+                    // full READY_TIMEOUT_MS.  STATE_IDLE = "no media loaded", which a
+                    // normal transition leaves within ~200 ms; a slow network load
+                    // shows STATE_BUFFERING, not IDLE, so this only fires on a real
+                    // dismiss / end-of-queue.
+                    if (state == STATE_IDLE) {
+                        if (pollIdleStreakStartMs == 0) {
+                            pollIdleStreakStartMs = System.currentTimeMillis();
+                        } else if (System.currentTimeMillis() - pollIdleStreakStartMs >= IDLE_LOAD_FAIL_MS) {
+                            logInfo(() -> "Pending player stuck IDLE — queue dismissed/ended; "
+                                    + "recovering " + dumpState());
+                            recoverFromFailedLoad();
+                            return;
+                        }
+                    } else {
+                        pollIdleStreakStartMs = 0;
                     }
 
                     if (state != lastPollState) {
@@ -1382,25 +1444,62 @@ public class CrossfadeManager {
 
                     if (System.currentTimeMillis() > deadline) {
                         logError(() -> "Timeout waiting for new track");
-                        cleanupAllPlayers();
-                        if (audioModeWasForced) {
-                            audioModeWasForced = false;
-                            restoreVideoModeSilently();
-                        }
+                        recoverFromFailedLoad();
                         return;
                     }
 
                     mainHandler.postDelayed(this, READY_POLL_MS);
                 } catch (Exception e) {
                     logError(()-> "Poll error", e);
-                    cleanupAllPlayers();
-                    if (audioModeWasForced) {
-                        audioModeWasForced = false;
-                        restoreVideoModeSilently();
-                    }
+                    recoverFromFailedLoad();
                 }
             }
         }, READY_POLL_MS);
+    }
+
+    /**
+     * #1671: graceful recovery when the pending factory player never loads
+     * content (queue dismissed via 3-dot "Dismiss queue" or swipe-to-dismiss
+     * miniplayer; or end-of-queue).  Stops the orphaned outgoing player and any
+     * fade-out animations, then resets crossfade state — but crucially does NOT
+     * release the pending factory player, because on 9.x the coordinator was
+     * already swapped to it ({@code patch_setPlayerWithBindings}) and YTM now
+     * owns it as the current (idle) player.  Releasing it would leave the
+     * coordinator referencing a dead player, wedging all future playback until
+     * the app is force-killed — which was the core #1671 symptom.
+     */
+    private static void recoverFromFailedLoad() {
+        cleanupAllPlayers();
+        if (audioModeWasForced) {
+            audioModeWasForced = false;
+            restoreVideoModeSilently();
+        }
+    }
+
+    /**
+     * #1671: invoked the instant the user dismisses playback — from the stock
+     * "Dismiss queue" menu action and the swipe-to-dismiss miniplayer gesture
+     * (both hooked in CrossfadePatch).  This is the clean fix: rather than letting
+     * the imminent stopVideo(5) masquerade as a manual skip and trigger a phantom
+     * crossfade (which we'd then have to recover from), we know up front this is a
+     * dismiss.  We open a short suppression window so {@link #onBeforeStopVideo}
+     * passes the stop through, and — if a crossfade is already in flight (the user
+     * dismissed mid-fade) — tear it down now so nothing keeps playing in the
+     * background.
+     *
+     * <p>Safe to call when crossfade is disabled or no crossfade is active; it
+     * simply arms the window (cheap) and returns.
+     */
+    public static void onQueueDismissed() {
+        if (!CROSSFADE_ENABLED) return;
+        dismissWindowUntilMs = SystemClock.uptimeMillis() + DISMISS_WINDOW_MS;
+        logInfo(() -> "onQueueDismissed — crossfade suppressed for the dismiss stop " + dumpState());
+        if (crossfadeInProgress) {
+            // Dismiss landed during a crossfade already in flight: stop the orphaned
+            // outgoing / fade-out players, keep the coordinator's current player
+            // alive (idle) and at full volume so the next playback is audible.
+            recoverFromFailedLoad();
+        }
     }
 
     /**
@@ -2205,16 +2304,49 @@ public class CrossfadeManager {
      * Used on errors and when crossfade is disabled/paused.
      */
     private static void cleanupAllPlayers() {
-        logError(() -> "CLEANUP (emergency): " + dumpState());
+        // logInfo (not logError): cleanup is a routine recovery/reset action — e.g. a
+        // queue dismiss or end-of-queue (#1671) — not a user-facing error.  logError
+        // routes through printException which shows a toast when "show toast on error"
+        // is enabled, so using it here popped a spurious "cleanup" toast on every
+        // dismiss.  Genuine error callers already log their own error before calling.
+        logInfo(() -> "CLEANUP (reset crossfade state): " + dumpState());
         if (deferredSwapRunnable != null) {
             mainHandler.removeCallbacks(deferredSwapRunnable);
             deferredSwapRunnable = null;
         }
         releaseAllFadingPlayers();
-        ExoPlayerAccess pi = pendingInPlayer;
-        if (pi != null) { releasePlayer(pi); pendingInPlayer = null; }
+        // #1671: do NOT release pendingInPlayer.  On 9.x the coordinator was
+        // already swapped to it (patch_setPlayerWithBindings) before polling
+        // began, so YTM owns it as the current player.  Releasing it here is
+        // exactly what left the coordinator pointing at a dead player and wedged
+        // playback until app-kill.  Drop our reference only; YTM keeps the player
+        // (idle, ready to receive the next loadVideo).
+        //
+        // BUT we zeroed this player's volume at crossfade setup (newExo.setVolume(0))
+        // and re-zeroed it on every poll tick.  If we just drop the reference, the
+        // coordinator's current player stays at volume 0 — so the next track YTM
+        // loads onto it plays silently (AudioTrack runs, position advances, no
+        // sound: the "playing but no audio" zombie).  Restore it to full volume so
+        // the next playback is audible.
+        ExoPlayerAccess pin = pendingInPlayer;
+        if (pin != null) {
+            try {
+                pin.patch_setVolume(1.0f);
+                logInfo(() -> "cleanupAllPlayers: restored kept coordinator player @"
+                        + System.identityHashCode(pin) + " volume → 1.0 (#1671 silent-playback guard)");
+            } catch (Exception ignored) {}
+        }
+        pendingInPlayer = null;
         ExoPlayerAccess po = pendingOutPlayer;
         if (po != null) { releasePlayer(po); pendingOutPlayer = null; }
+        // #1671: crossfadeInPlayer is the coordinator's current (promoted) player —
+        // YTM owns it, so we only drop our ref, never release it.  But if we tear
+        // down mid fade-in its volume may be < 1.0; restore it so the next track
+        // YTM loads onto it isn't quiet (same silent-playback guard as pendingIn).
+        ExoPlayerAccess cip = crossfadeInPlayer;
+        if (cip != null && cip != pin) {
+            try { cip.patch_setVolume(1.0f); } catch (Exception ignored) {}
+        }
         crossfadeInPlayer = null;
         activeCoordinator = null;
         crossfadeInProgress = false;

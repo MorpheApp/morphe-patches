@@ -234,6 +234,28 @@ val crossfadePatch = bytecodePatch(
             """
         )
 
+        // #1671: notify the crossfade manager the instant a watch-page / queue
+        // dismissal is processed (DismissWatchEvent handler).  This is dismiss-UNIQUE
+        // — the stock "Dismiss queue" menu and swipe-to-dismiss both post a
+        // DismissWatchEvent, while a normal skip never does.  It fires before the
+        // dismiss's stopVideo(5), so onQueueDismissed() arms a window that makes
+        // onBeforeStopVideo pass that stop through instead of starting a phantom
+        // crossfade.  (If this fingerprint ever misses, the poll-STATE_IDLE recovery
+        // still cleans up — just a touch slower.)
+        runCatching {
+            HandleDismissWatchEventFingerprint.method.addInstructions(
+                0,
+                """
+                    invoke-static { }, $EXTENSION_CLASS->onQueueDismissed()V
+                """,
+            )
+        }.onFailure {
+            log.warning(
+                "DismissWatchEvent handler not found — dismiss handling falls back to " +
+                    "poll-STATE_IDLE recovery (#1671): ${it.message}",
+            )
+        }
+
         PlayNextInQueueFingerprint.method.addInstructions(
             0,
             """
