@@ -1987,6 +1987,16 @@ public class CrossfadeManager {
 
         try { inPlayer.patch_setPlayWhenReady(true); } catch (Exception ignored) {}
 
+        // #1671 follow-up: the crossfade drives the incoming track to play WITHOUT going
+        // through MedialibPlayer.playVideo, so the onPlayVideo hook never fires to clear
+        // playerIsPlaying. After a swipe-dismiss (which fires onPauseVideo → false), the
+        // flag would otherwise stay stale-false for the rest of the process, making the
+        // next skip's re-enable check silence the outgoing player → an audible ~0.5s gap
+        // until the new track buffers. A force-close "fixed" it only by resetting the
+        // process default (true). Mirror what onPlayVideo would do: the incoming player
+        // is now the active, audibly-playing track.
+        playerIsPlaying = true;
+
         final long startTime = System.currentTimeMillis();
         final long duration = (durationOverrideMs > 0) ? durationOverrideMs : getCrossfadeDurationMs();
 
