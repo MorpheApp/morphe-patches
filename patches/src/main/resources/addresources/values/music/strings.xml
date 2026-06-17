@@ -79,6 +79,7 @@ Second \"item\" text"</string>
     <string name="morphe_music_crossfade_paused_toast">Crossfade paused for this session</string>
     <string name="morphe_music_crossfade_resumed_toast">Crossfade resumed</string>
     <string name="morphe_music_crossfade_video_mode_disabled_toast">Video mode is not available while crossfade is enabled</string>
+    <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade is paused while casting or mirroring audio. Crossfade over cast/mirror is unstable and may never be fixable.</string>
     <string name="morphe_music_crossfade_about_title">About</string>
     <string name="morphe_music_crossfade_about_summary">"Requires YouTube Music 9.00 or newer.
 

@@ -2659,6 +2659,12 @@ public class CrossfadeManager {
     private static volatile long lastCastCheckMs = 0;
     private static volatile boolean lastCastResult = false;
     private static final long CAST_CHECK_TTL_MS = 250;
+    /**
+     * One-time-per-process guard for the "crossfade unstable while casting" toast.
+     * Static so it fires once per app/listening session (never reset in-process),
+     * avoiding repeat toasts on every track transition while cast routing is active.
+     */
+    private static volatile boolean castUnstableToastShown = false;
 
     /**
      * #1549: Detect when audio is being routed to a cast/mirror receiver
@@ -2785,6 +2791,17 @@ public class CrossfadeManager {
             logDebug(() -> "Cast routing " + (castingFinal ? "ENGAGED" : "RELEASED")
                     + " — crossfade " + (castingFinal ? "disabled" : "re-enabled")
                     + " [" + probe.toString().trim() + "]");
+            // One-time-per-session notice: when genuine cast/mirror routing is first
+            // detected (decode-on-receiver, or HDMI/IP/BUS), crossfade is disabled.
+            // Tell the user once that crossfade over cast/mirror is unstable and may
+            // never be fixable, so the silently-disabled crossfade isn't a mystery.
+            // (Android Auto no longer trips this — REMOTE_SUBMIX was dropped.)
+            if (casting && !castUnstableToastShown) {
+                castUnstableToastShown = true;
+                try {
+                    Utils.showToastShort(str("morphe_music_crossfade_cast_unstable_toast"));
+                } catch (Exception ignored) {}
+            }
         }
 
         lastCastResult = casting;
