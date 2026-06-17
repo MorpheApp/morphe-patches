@@ -890,18 +890,37 @@ val crossfadePatch = bytecodePatch(
                 } == true
         }
 
-        // Delegate base class (atux) - implements the playerChain interface
-        // and has a self-typed delegate field (the decorator pattern base).
+        // Delegate chain classes - every class that DIRECTLY implements the
+        // playerChain interface AND directly holds a self-typed "next" field
+        // (the decorator pattern).  The runtime delegate-walk in
+        // getCoordinatorFromAtad hops chain.patch_getDelegate() until it reaches
+        // a non-DelegateAccess (the coordinator), so EVERY decorator class in the
+        // chain must carry DelegateAccess.
+        //
+        // 9.10-9.21: a single recursively-wrapped decorator (atux/auyx) - one match.
+        // 9.23+: multiple distinct decorators (e.g. avel + avfa) - all must match,
+        // else the walk dies on the first uncovered hop (#9.23 "Traversed 0 → avfa").
+        // Subclasses that only INHERIT the interface+field (e.g. avfg extends avel)
+        // are intentionally NOT matched here - they inherit DelegateAccess and the
+        // delegate field from their injected base.
         val playerChainInterfaceType = playerChainField.type
-        val delegateBaseClass = Fingerprint(
-            custom = { _, classDef ->
-                classDef.type != playerChainInterfaceType
-                    && !AccessFlags.INTERFACE.isSet(classDef.accessFlags)
-                    && playerChainInterfaceType in classDef.interfaces
-                    && classDef.fields.any { it.type == playerChainInterfaceType }
+        val delegateClasses = mutableListOf<Pair<MutableClass, Field>>()
+        classDefForEach { classDef ->
+            if (classDef.type != playerChainInterfaceType &&
+                !AccessFlags.INTERFACE.isSet(classDef.accessFlags) &&
+                playerChainInterfaceType in classDef.interfaces &&
+                classDef.fields.any { it.type == playerChainInterfaceType }
+            ) {
+                val field = classDef.fields.first { it.type == playerChainInterfaceType }
+                delegateClasses.add(mutableClassDefBy(classDef.type) to field)
             }
-        ).classDef
-        val delegateField = delegateBaseClass.fields.first { it.type == playerChainInterfaceType }
+        }
+        if (delegateClasses.isEmpty()) {
+            error(
+                "No delegate chain class implementing $playerChainInterfaceType " +
+                    "with a self-typed field was found"
+            )
+        }
 
         // Listener element class (cat) - stored inside cau's CopyOnWriteArraySet.
         // Found by looking for NEW_INSTANCE instructions in cau's methods.
@@ -944,7 +963,7 @@ val crossfadePatch = bytecodePatch(
                 videoSurface   = ${videoSurfaceClass.type}
                 medialibPlayer = ${medialibPlayerClass.type}
                 videoToggle    = ${videoToggleClass.type}
-                delegateBase   = ${delegateBaseClass.type} (field: $delegateField)
+                delegateChain  = ${delegateClasses.joinToString { "${it.first.type}(${it.second})" }}
                 listenerElem   = ${listenerElementClass.type} (field: $listenerElementField)
                 timelineField  = $timelineField (bxk type: $bxkType)
                 cqbField       = $cqbField (definingClass: ${cqbField.definingClass})
@@ -1972,10 +1991,15 @@ val crossfadePatch = bytecodePatch(
                 """,
             ) ?: error("nba <init> not found in ${videoToggleClass.type}")
 
-        // --- DelegateAccess on atux (delegate chain base class) ---
-        delegateBaseClass.apply {
-            interfaces.add(DELEGATE_INTERFACE)
-            addFieldGetter("patch_getDelegate", delegateField)
+        // --- DelegateAccess on every delegate chain class ---
+        // One class on 9.10-9.21 (byte-for-byte identical to the old single-class
+        // injection); multiple on 9.23+ (covers e.g. avel + avfa) so the runtime
+        // delegate-walk can traverse every hop to the coordinator.
+        for ((delegateClass, delegateField) in delegateClasses) {
+            delegateClass.apply {
+                interfaces.add(DELEGATE_INTERFACE)
+                addFieldGetter("patch_getDelegate", delegateField)
+            }
         }
 
         // --- ListenerWrapperAccess on cat (listener element class) ---
