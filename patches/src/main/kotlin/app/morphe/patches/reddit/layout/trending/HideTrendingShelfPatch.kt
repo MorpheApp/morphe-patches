@@ -4,7 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
-package app.morphe.patches.reddit.layout.trendingtoday
+package app.morphe.patches.reddit.layout.trending
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
@@ -19,12 +19,12 @@ import app.morphe.util.findFreeRegister
 import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/reddit/patches/HideTrendingTodayShelfPatch;"
+    "Lapp/morphe/extension/reddit/patches/HideTrendingShelfPatch;"
 
 @Suppress("unused")
 val hideTrendingTodayShelfPatch = bytecodePatch(
-    name = "Hide Trending Today shelf",
-    description = "Adds an option to hide the Trending Today shelf from search suggestions."
+    name = "Hide Trending shelf",
+    description = "Adds an option to hide the Trending shelf from search suggestions."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
@@ -55,12 +55,12 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 
         // endregion
 
-        // region patch for hide trending today header.
+        // region patch for hide trending header.
 
         SearchSectionHeaderFingerprint.method.addInstructionsWithLabels(
                 0,
             """
-                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->shouldHideSearchSectionHeader(Ljava/lang/Object;)Z
+                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->hideTrendingHeader(Ljava/lang/Object;)Z
                 move-result v0
                 if-eqz v0, :ignore
                 return-void
@@ -71,13 +71,13 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
 
         // endregion
 
-        // region patch for hide trending today contents.
+        // region patch for hide trending contents.
 
-        fun Fingerprint.applyHideTrendingToday() {
+        fun Fingerprint.applyHideTrending() {
             method.addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static { }, $EXTENSION_CLASS->hideTrendingTodayShelf()Z
+                    invoke-static { }, $EXTENSION_CLASS->hideTrendingShelf()Z
                     move-result v0
                     if-eqz v0, :ignore
                     return-void
@@ -87,11 +87,12 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
             )
         }
 
-        TrendingTodayItemFingerprint.applyHideTrendingToday()
+        TrendingItemFingerprint.applyHideTrending()
+        TypeaheadSuggestionItemFingerprint.applyHideTrending()
 
         if (!is_2026_11_0_or_greater) {
             // Legacy seems to be removed in 2026.11.0+
-            TrendingTodayItemLegacyFingerprint.applyHideTrendingToday()
+            TrendingItemLegacyFingerprint.applyHideTrending()
         }
 
         // endregion

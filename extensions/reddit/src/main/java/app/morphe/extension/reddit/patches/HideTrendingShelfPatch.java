@@ -18,7 +18,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
-public final class HideTrendingTodayShelfPatch {
+public final class HideTrendingShelfPatch {
 
     /**
      * 'home_revamp_tab_popular' may be removed or changed at any time,
@@ -40,16 +40,16 @@ public final class HideTrendingTodayShelfPatch {
     /**
      * Injection point.
      */
-    public static boolean hideTrendingTodayShelf() {
-        return Settings.HIDE_TRENDING_TODAY_SHELF.get();
+    public static boolean hideTrendingShelf() {
+        return Settings.HIDE_TRENDING_SHELF.get();
     }
 
     /**
      * Injection point.
      */
-    public static boolean shouldHideSearchSectionHeader(Object state) {
+    public static boolean hideTrendingHeader(Object state) {
         try {
-            if (state == null || !hideTrendingTodayShelf()) {
+            if (state == null || !hideTrendingShelf()) {
                 return false;
             }
 
