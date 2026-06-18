@@ -70,6 +70,7 @@ val hideVideoActionButtonsPatch = bytecodePatch(
                             SwitchPreference("morphe_hide_download_button"),
                             SwitchPreference("morphe_hide_hype_button"),
                             SwitchPreference("morphe_hide_like_dislike_button"),
+                            SwitchPreference("morphe_hide_more_button"),
                             SwitchPreference("morphe_hide_promote_button"),
                             SwitchPreference("morphe_hide_remix_button"),
                             SwitchPreference("morphe_hide_report_button"),
