@@ -225,7 +225,7 @@ val settingsPatch = bytecodePatch(
             recommendedAppVersion = COMPATIBILITY_YOUTUBE.targets.first { !it.isExperimental }.version!!
         ),
         initializationPatch(
-            mainActivityFingerprint = YouTubeActivityOnCreateFingerprint
+            extensionPatch = sharedExtensionPatch
         )
     )
 

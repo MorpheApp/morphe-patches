@@ -25,12 +25,13 @@ import app.morphe.extension.shared.ui.CustomDialog;
 public class InitializationPatch {
 
     /**
-     * Some layouts that depend on litho do not load when the app is first installed.
-     * (Also reproduced on un-patched YouTube)
+     * In YouTube and YouTube Music, some layouts may break until global config is fetched.
      * <p>
-     * To fix this, show the restart dialog when the app is installed for the first time.
+     * The UI Context is not updated due to ReentrantLock even when global config is updated.
+     * <p>
+     * As a workaround, show a restart dialog when a global config update is detected.
      */
-    public static void onCreate(Activity ignored) {
+    public static void onGlobalConfigUpdated() {
         if (SharedYouTubeSettings.SETTINGS_INITIALIZED.get()) {
             return;
         }
@@ -38,13 +39,13 @@ public class InitializationPatch {
         SharedYouTubeSettings.SETTINGS_INITIALIZED.save(true);
 
         runOnMainThreadDelayed(() -> {
-            Activity context = Utils.getActivity();
-            if (context == null) {
+            Activity activity = Utils.getActivity();
+            if (activity == null) {
                 Logger.printInfo(() -> "Activity is null, skipping restart dialog");
                 return;
             }
 
-            if (context.isFinishing()) {
+            if (activity.isFinishing()) {
                 Logger.printInfo(() -> "Activity is finishing, skipping restart dialog");
                 return;
             }
@@ -56,21 +57,21 @@ public class InitializationPatch {
                     : null;
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
-                    context,
+                    activity,
                     str("morphe_settings_restart_title"),   // Title.
                     str("morphe_restart_first_run"),        // Message.
-                    null,                                       // No EditText.
+                    null,                                      // No EditText.
                     str("morphe_settings_restart"),         // OK button text.
-                    () -> Utils.restartApp(context),            // OK button action.
-                    cancel,                                     // Cancel button.
-                    null,                                       // No Neutral button text.
-                    null,                                       // No Neutral button action.
-                    true                                        // Dismiss dialog when onNeutralClick.
+                    () -> Utils.restartApp(activity),          // OK button action.
+                    cancel,                                    // Cancel button.
+                    null,                                      // No Neutral button text.
+                    null,                                      // No Neutral button action.
+                    true                                       // Dismiss dialog when onNeutralClick.
             );
 
             Dialog dialog = dialogPair.first;
             dialog.setCancelable(false);
             dialog.show();
-        }, 10000);
+        }, 1000);
     }
 }
