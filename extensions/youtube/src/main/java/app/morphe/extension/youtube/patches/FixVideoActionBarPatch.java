@@ -11,6 +11,8 @@ import app.morphe.extension.youtube.settings.Settings;
 public class FixVideoActionBarPatch {
 
     private static final boolean FIX_VIDEO_ACTION_BAR = Settings.FIX_VIDEO_ACTION_BAR.get()
+            // If 'Disable layout updates' is enabled, fix is not required.
+            && !Settings.DISABLE_LAYOUT_UPDATES.get()
             // Tablets already have a non-collapsed video action bar.
             // If it does not work on a foldable device, please remove this.
             && !Utils.isTablet();
