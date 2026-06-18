@@ -9,6 +9,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.fix.videoactionbar.fixVideoActionBarPatch
 import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.youtube.misc.litho.context.conversionContextClassDef
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
@@ -55,6 +56,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         lithoFilterPatch,
         videoIdPatch,
         playerTypeHookPatch,
+        fixVideoActionBarPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

@@ -1106,7 +1106,9 @@ Automotive layout
 • Shorts open in the regular player
 • Video action bar is not collapsed"</string>
     <string name="morphe_tablet_layout_in_player_title">Enable tablet layout in player</string>
-    <string name="morphe_tablet_layout_in_player_summary">Restores the old player layout</string>
+    <string name="morphe_tablet_layout_in_player_summary">"Restores the old player layout
+
+Limitations: If 'Fix video action bar' is turned off, 'More videos' overlay may not be available"</string>
 
     <!-- layout.spoofappversion.spoofAppVersionPatch -->
     <string name="morphe_spoof_app_version_title">Spoof app version</string>
@@ -1405,4 +1407,10 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_about_no_force_original_audio">• Force original audio is not available</string>
     <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show spoofing in Stats for nerds</string>
+
+    <!-- misc.fix.videoactionbar.fixVideoActionBarPatch -->
+    <string name="morphe_fix_video_action_bar_title">Fix video action bar</string>
+    <string name="morphe_fix_video_action_bar_summary">"Fixes an issue where 'Hide video action buttons' and 'Return YouTube Dislike' are not working
+
+Limitations: Reverts to old style 'More videos' overlay"</string>
 </resources>

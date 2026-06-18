@@ -19,6 +19,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.fix.videoactionbar.fixVideoActionBarPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.litho.node.treeNodeElementHookPatch
@@ -47,7 +48,8 @@ val hideVideoActionButtonsPatch = bytecodePatch(
         treeNodeElementHookPatch,
         fixProtoLibraryPatch,
         videoInformationPatch,
-        quickActionsMarginPatch
+        quickActionsMarginPatch,
+        fixVideoActionBarPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
