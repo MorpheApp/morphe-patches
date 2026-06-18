@@ -49,6 +49,7 @@ public class VideoActionButtonsFilter extends Filter {
                 "yt_outline_experimental_text_bubble",
                 "yt_outline_message_bubble"
         ),
+        CONNECT(Settings.HIDE_CONNECT_BUTTON.get()),
         DISLIKE(Settings.HIDE_LIKE_DISLIKE_BUTTON.get()),
         DOWNLOAD(Settings.HIDE_DOWNLOAD_BUTTON.get()),
         HYPE(
@@ -368,6 +369,8 @@ public class VideoActionButtonsFilter extends Filter {
                                 Logger.printDebug(() -> "Unknown iconName: " + iconName + ", videoId: " + videoId);
                             }
                         }
+                    } else if (primaryButtonViewModel.hasAccountLinkButtonViewModel()) {
+                        actionButton = ActionButton.CONNECT;
                     } else if (primaryButtonViewModel.hasAddToPlaylistButtonViewModel()) {
                         actionButton = ActionButton.SAVE;
                     } else if (primaryButtonViewModel.hasClipButtonViewModel()) {

@@ -513,6 +513,8 @@ Note: If \'Spoof video streams\' is not enabled, enabling this may cause unexpec
     <string name="morphe_hide_stop_ads_button_title">Hide \'Stop ads\' button</string>
     <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
     <string name="morphe_hide_comments_button_title">Hide Comments button</string>
+    <!-- 'Connect' should be translated using the same localized wording YouTube displays for the button. -->
+    <string name="morphe_hide_connect_button_title">Hide Connect button</string>
     <!-- 'Report' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears on live streamed videos. -->
     <string name="morphe_hide_report_button_title">Hide Report button</string>

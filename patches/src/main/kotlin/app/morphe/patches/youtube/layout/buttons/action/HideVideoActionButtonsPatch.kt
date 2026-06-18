@@ -67,6 +67,7 @@ val hideVideoActionButtonsPatch = bytecodePatch(
                             SwitchPreference("morphe_hide_ask_button"),
                             SwitchPreference("morphe_hide_clip_button", summary = true),
                             SwitchPreference("morphe_hide_comments_button"),
+                            SwitchPreference("morphe_hide_connect_button"),
                             SwitchPreference("morphe_hide_download_button"),
                             SwitchPreference("morphe_hide_hype_button"),
                             SwitchPreference("morphe_hide_like_dislike_button"),

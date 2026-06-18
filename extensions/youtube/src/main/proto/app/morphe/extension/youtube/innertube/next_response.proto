@@ -212,6 +212,7 @@ message ActionButtons {
 
 message PrimaryButtonViewModel {
     oneof data {
+        AccountLinkButtonViewModel accountLinkButtonViewModel = 492031756;
         AddToPlaylistButtonViewModel addToPlaylistButtonViewModel = 484598023;
         SecondaryButtonViewModel secondaryButtonViewModel = 461054335;
         ClipButtonViewModel clipButtonViewModel = 490025863;
@@ -222,6 +223,10 @@ message PrimaryButtonViewModel {
         OverflowMenuButtonViewModel overflowMenuButtonViewModel = 37098;
         SegmentedLikeDislikeButtonViewModel segmentedLikeDislikeButtonViewModel = 484586709;
     }
+}
+
+message AccountLinkButtonViewModel {
+    string accountLinkStatusEntityKey = 2;
 }
 
 message AddToPlaylistButtonViewModel {

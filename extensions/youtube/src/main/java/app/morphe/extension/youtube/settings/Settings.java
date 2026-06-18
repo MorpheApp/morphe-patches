@@ -316,6 +316,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_ASK_BUTTON = new BooleanSetting("morphe_hide_ask_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
     public static final BooleanSetting HIDE_CLIP_BUTTON = new BooleanSetting("morphe_hide_clip_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
     public static final BooleanSetting HIDE_COMMENTS_BUTTON = new BooleanSetting("morphe_hide_comments_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
+    public static final BooleanSetting HIDE_CONNECT_BUTTON = new BooleanSetting("morphe_hide_connect_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
     public static final BooleanSetting HIDE_DOWNLOAD_BUTTON = new BooleanSetting("morphe_hide_download_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
     public static final BooleanSetting HIDE_HYPE_BUTTON = new BooleanSetting("morphe_hide_hype_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
     public static final BooleanSetting HIDE_LIKE_DISLIKE_BUTTON = new BooleanSetting("morphe_hide_like_dislike_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
