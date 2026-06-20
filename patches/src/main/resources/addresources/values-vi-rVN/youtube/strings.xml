@@ -248,7 +248,7 @@ Từ có chữ in hoa ở giữa phải được nhập chính xác (ví dụ: i
 Hạn chế:
 • Không thể ẩn Shorts theo tên kênh
 • Một số thành phần giao diện có thể không bị ẩn
-• Tìm kiếm từ khóa có thể không hiện kết quả nào"</string>
+• Khi tìm kiếm từ khóa đó có thể không cho kết quả nào"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Khớp toàn bộ từ</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Đặt từ hoặc cụm từ cần lọc trong dấu ngoặc kép sẽ ngăn chặn các kết quả chỉ trùng một phần với tiêu đề video và tên kênh&lt;br&gt;&lt;br&gt;Ví dụ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; sẽ ẩn video: &lt;b&gt;AI hoạt động ra sao?&lt;/b&gt;&lt;br&gt;nhưng sẽ không ẩn: &lt;b&gt;Hai lai nghĩa là gì?&lt;/b&gt;</string>

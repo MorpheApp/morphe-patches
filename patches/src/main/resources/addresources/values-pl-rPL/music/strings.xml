@@ -34,7 +34,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_video_ads_title">Ukryj reklamy w filmach</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <string name="morphe_music_crossfade_screen_title">Przenikanie</string>
-  <string name="morphe_music_crossfade_screen_summary">Płynne przejścia między utworami</string>
+  <string name="morphe_music_crossfade_screen_summary">Płynne miksowanie między utworami</string>
   <string name="morphe_music_crossfade_enabled_title">Włącz przenikanie</string>
   <string name="morphe_music_crossfade_curve_title">Krzywa przenikania</string>
   <string name="morphe_music_crossfade_curve_entry_equal_power">Stała moc</string>
@@ -62,17 +62,41 @@ Second \"item\" text"</string>
   <string name="morphe_crossfade_duration_12000ms">12 sekund</string>
   <string name="morphe_music_crossfade_on_skip_title">Przenikanie przy ręcznym pominięciu</string>
   <string name="morphe_music_crossfade_on_skip_summary">Stosuje efekt przenikania podczas ręcznego przejścia do następnego utworu</string>
-  <string name="morphe_music_crossfade_on_auto_advance_title">Przenikanie przy automatycznym przejściu</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Przenikanie przy automatycznym przełączaniu</string>
   <string name="morphe_music_crossfade_on_auto_advance_summary">Stosuje efekt przenikania, gdy utwór naturalnie dobiega końca</string>
   <string name="morphe_music_crossfade_session_control_title">Kontrola sesji</string>
   <string name="morphe_music_crossfade_session_control_summary">Przytrzymaj przycisk losowania, aby wstrzymać lub wznowić przenikanie</string>
   <string name="morphe_music_crossfade_paused_toast">Przenikanie wstrzymane w tej sesji</string>
   <string name="morphe_music_crossfade_resumed_toast">Przenikanie wznowione</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Tryb teledysku niedostępny podczas przenikania</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Przenikanie jest wstrzymane podczas przesyłania lub klonowaniu dźwięku. Przenikanie w tych trybach jest niestabilne i być może nigdy nie uda się tego naprawić</string>
   <string name="morphe_music_crossfade_about_title">Informacje</string>
-  <string name="morphe_music_crossfade_about_summary">"Przytrzymaj przycisk losowania, aby włączyć lub wyłączyć
+  <string name="morphe_music_crossfade_about_summary">Jak działa przenikanie - i kiedy nie działa</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Jak to działa</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Przenikanie nakłada koniec jednego utworu na początek następnego, wyciszając pierwszy, podczas gdy drugi zgłaśnia się zgodnie z wybranym czasem trwania i krzywą
 
-Implementacja funkcji przez VazerOG"</string>
+​Działa to przy automatycznym przechodzeniu (gdy utwór sam się kończy) i przy ręcznym pomijaniu - obie opcje mają własne przełączniki powyżej. Przy automatycznym przełączaniu miksowanie zaczyna się kilka sekund przed końcem utworu
+
+​Wymaga YouTube Music w wersji 9.x lub nowszej"</string>
+  <string name="morphe_music_crossfade_about_best_title">Działa najlepiej przy</string>
+  <string name="morphe_music_crossfade_about_best_summary">Zwykłym odtwarzaniu utwór po utworze i automatycznym przełączaniu, zapętleniu jednego utworu (utwór przenika sam w siebie) oraz przy lokalnym dźwięku - z głośnika telefonu, słuchawek przewodowych, Bluetooth lub USB</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Co nie działa idealnie</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Gdy włączone jest przenikanie, teledyski odtwarzają się tylko w formie dźwiękowej (przytrzymaj przycisk losowania, aby je wstrzymać, jeśli chcesz zobaczyć film)
+
+Utwory krótsze niż ustawiony czas przenikania mogą pominąć ten efekt
+
+Ekran blokady lub powiadomienie może przez chwilę pokazywać nieaktualny stan w trakcie przejścia"</string>
+  <string name="morphe_music_crossfade_about_known_title">Znane problemy</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Teledysk ustawiony jako pierwszy utwór, lub odpalony spoza obecnej kolejki - może przez chwilę wyświetlać obraz, zanim wskoczy tryb samego dźwięku
+
+​Wstrzymanie przenikania, żeby obejrzeć teledysk, może skutkować czarnym ekranem w niektórych filmach (tych, w których dźwięk pochodzi bezpośrednio z filmu). Wstrzymanie przenikania przed wybraniem utworu pozwala tego uniknąć"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">W ogóle nie działa</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Przesyłanie lub klonowanie dźwięku (Chromecast, klonowanie ekranu lub dźwięku) - przenikanie jest wstrzymywane, ponieważ działa tam niestabilnie i być może nigdy nie uda się tego naprawić
+
+​YouTube Music 8.x - przenikanie działa tylko na wersjach 9.x i nowszych"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Podziękowanie</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Funkcja przenikania autorstwa VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Włącz ciągłe zapętlanie</string>
   <!-- layout.buttons.hideButtonsPatch -->

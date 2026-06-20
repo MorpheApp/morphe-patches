@@ -17,6 +17,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.fix.proto.fixProtoLibraryPatch
@@ -480,10 +481,18 @@ val navigationBarPatch = bytecodePatch(
                     null,
                     MutableMethodImplementation(2),
                 ).toMutable().apply {
+                    // 21.25+ has an ignored MenuItem parameter.
+                    val parameters = when (it.method.parameters.size) {
+                        0 -> ""
+                        1 -> ", v0"
+                        else -> throw PatchException("Unpexpected number of parameters")
+                    }
+
                     addInstructions(
                         0,
                         """
-                            invoke-virtual { p0 }, ${it.method}
+                            const/4 v0, 0x0
+                            invoke-virtual { p0 $parameters }, ${it.method}
                             return-void
                         """
                     )

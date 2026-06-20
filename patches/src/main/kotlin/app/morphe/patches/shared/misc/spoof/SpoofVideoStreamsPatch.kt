@@ -44,7 +44,7 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethodParameter
 
-internal const val EXTENSION_CLASS =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/spoof/SpoofVideoStreamsPatch;"
 
 private val spoofVideoStreamsResourcePatch = resourcePatch {

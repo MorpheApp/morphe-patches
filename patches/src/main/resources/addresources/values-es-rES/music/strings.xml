@@ -69,10 +69,35 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Desvanecimiento cruzado pausado para esta sesión</string>
   <string name="morphe_music_crossfade_resumed_toast">Desvanecimiento cruzado reanudado</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">El modo de vídeo no está disponible mientras el desvanecimiento cruzado está activado</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">La transición cruzada se pausa al reproducir o duplicar audio. La transición cruzada al reproducir/duplicar es inestable y es posible que nunca se pueda solucionar.</string>
   <string name="morphe_music_crossfade_about_title">Información</string>
-  <string name="morphe_music_crossfade_about_summary">"Mantenga pulsado el botón de reproducción aleatoria para desactivar/activar
+  <string name="morphe_music_crossfade_about_summary">Cómo funciona la transición cruzada, y cuándo no.</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Cómo funciona</string>
+  <string name="morphe_music_crossfade_about_how_summary">"La transición cruzada superpone el final de una canción con el comienzo de la siguiente, reduciendo el volumen de una mientras aumenta el volumen de la otra durante la duración y la curva que hayas elegido.
 
-Implementación de la función por VazerOG"</string>
+Funciona con el avance automático (cuando una canción termina por sí sola) y con los saltos manuales, cada uno tiene su propio botón de activación.
+Con el avance automático, la mezcla comienza unos segundos antes de que termine la canción.
+
+Requiere YouTube Music 9.x o posterior."</string>
+  <string name="morphe_music_crossfade_about_best_title">Funciona mejor con</string>
+  <string name="morphe_music_crossfade_about_best_summary">La reproducción normal de canción a canción y el avance automático, la repetición de una canción (la canción se funde consigo misma) y el audio local (altavoz del teléfono, auriculares con cable, Bluetooth o USB).</string>
+  <string name="morphe_music_crossfade_about_quirks_title">No funciona del todo bien</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Los videos musicales se reproducen solo con audio cuando se activa el efecto de fundido cruzado (mantén presionado el botón de aleatorio para pausar si quieres ver el video).
+
+Las canciones más cortas que la duración del fundido pueden omitir el efecto.
+
+La pantalla de bloqueo o la notificación puede mostrar brevemente un estado antiguo durante la transición."</string>
+  <string name="morphe_music_crossfade_about_known_title">Problemas conocidos</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Un video musical configurado como la primera canción, o uno que se haya iniciado desde fuera de la cola actual, puede mostrarse brevemente como video antes de entrar en modo de solo audio.
+
+Pausar el fundido cruzado para ver un video musical puede dejar algunos videos en negro (los que obtienen el audio directamente del video). Pausar el fundido cruzado antes de seleccionar la canción lo evita."</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">No funciona en absoluto</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Emitir o duplicar audio (Chromecast, duplicación de pantalla o audio) hará que el fundido cruzado se pause porque es inestable y es posible que nunca se solucione.
+
+YouTube Music 8.x: el fundido cruzado solo funciona en la versión 9.x o posterior"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Créditos</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Función de fundido cruzado de VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Habilitar repetición permanente</string>
   <!-- layout.buttons.hideButtonsPatch -->

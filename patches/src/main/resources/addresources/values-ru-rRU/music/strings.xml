@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Воспроизведение с переходом поставлено на паузу для текущей сессии</string>
   <string name="morphe_music_crossfade_resumed_toast">Воспроизведение с переходом возобновлено</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Видеорежим недоступен при включенном плавном переходе</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Во время воспроизведения аудио в режиме трансляции или зеркального отображения плавный переход между треками приостанавливается. Плавный переход при трансляции/зеркальном отображении может быть нестабильным и, возможно, никогда не будет исправлен.</string>
   <string name="morphe_music_crossfade_about_title">Информация</string>
-  <string name="morphe_music_crossfade_about_summary">"Длительное нажатие на кнопку перемешивания позволяет отключить/включить функцию
+  <string name="morphe_music_crossfade_about_summary">Как работает плавный переход между треками — и в каких случаях он не работает</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Как это работает</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Плавный переход между треками накладывает конец одной песни на начало следующей, постепенно уменьшая громкость одной песни, одновременно увеличивая громкость другой в течение выбранной вами продолжительности и с выбранной кривой.
 
-Реализация функции VazerOG"</string>
+Он работает в режиме автоматического воспроизведения (когда песня заканчивается сама по себе) и при ручном пропуске — для каждого из них есть отдельный переключатель выше. В режиме автоматического воспроизведения смешивание начинается за несколько секунд до конца песни.
+
+Требуется YouTube Music версии 9.x или более поздней."</string>
+  <string name="morphe_music_crossfade_about_best_title">Лучше всего работает с</string>
+  <string name="morphe_music_crossfade_about_best_summary">Обычное воспроизведение песен, автоматическое воспроизведение, повтор одной песни (песня плавно переходит в саму себя) и локальное аудио — динамик телефона, проводные наушники, Bluetooth или USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Работает не совсем корректно</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Музыкальные видео воспроизводятся только в аудио режиме при включенном плавном переходе (удерживайте кнопку перемешивания, чтобы приостановить, если хотите видеть видео)
+
+Песни короче длительности затухания могут пропускать затухание
+
+Экран блокировки или уведомление могут кратковременно отображать устаревшее состояние во время перехода"</string>
+  <string name="morphe_music_crossfade_about_known_title">Известные проблемы</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Музыкальное видео, установленное в качестве первой песни — или запущенное извне текущего плейлиста — может ненадолго отображаться как видео перед переходом в аудио режим
+
+Приостановка плавного перехода для просмотра музыкального видео может привести к тому, что некоторые видео будут черными (особенно те, у которых звук исходит из самого видео). Чтобы избежать этого, приостановите плавный переход перед выбором песни"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Не работает вообще</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Трансляция или зеркалирование аудио (Chromecast, зеркалирование экрана или аудио) — плавный переход приостанавливается, поскольку это нестабильно и, возможно, никогда не будет исправлено.
+
+YouTube Music 8.x — плавный переход работает только в 9.x и более новых версиях"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Источник</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Функция плавного перехода от VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Включить постоянный повтор</string>
   <!-- layout.buttons.hideButtonsPatch -->

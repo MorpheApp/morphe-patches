@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">המעבר בין השירים הופסק עבור סשן זה</string>
   <string name="morphe_music_crossfade_resumed_toast">המעבר בין השירים התחדש</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">מצב וידאו אינו זמין כאשר מעבר בין השירים מופעל</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">המעבר הדרגתי מושהה בזמן שידור או מראה שמע. מעבר הדרגתי בשידור/מראה אינו יציב וייתכן שלא ניתן יהיה לתקן אותו.</string>
   <string name="morphe_music_crossfade_about_title">אודות</string>
-  <string name="morphe_music_crossfade_about_summary">"לחץ לחיצה ארוכה על כפתור הערבוב כדי לבטל/להפעיל
+  <string name="morphe_music_crossfade_about_summary">איך מעבר הדרגתי עובד – ומתי הוא לא עובד</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">איך זה עובד</string>
+  <string name="morphe_music_crossfade_about_how_summary">"מעבר הדרגתי חופף את סוף השיר אחד לתחילת השיר הבא, דועך את אחד בעוד השני עולה במהלך משך הזמן והעקומה שבחרת.
 
-מימוש תכונה על ידי VazerOG"</string>
+הוא פועל במצב של מעבר אוטומטי (כאשר שיר מסתיים מעצמו) ובדילוגים ידניים – לכל אחד מהם יש מתג משלו למעלה. במצב של מעבר אוטומטי, הערבוב מתחיל כמה שניות לפני שהשיר מסתיים.
+
+דורש YouTube Music 9.x ומעלה."</string>
+  <string name="morphe_music_crossfade_about_best_title">עובד הכי טוב עם</string>
+  <string name="morphe_music_crossfade_about_best_summary">השמעה רגילה של שיר לשיר ומעבר אוטומטי, חזרה על שיר אחד (השיר עובר מעבר הדרגתי לתוך עצמו), ושמע מקומי – רמקול הטלפון, אוזניות חוטיות, Bluetooth או USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">לא עובד בצורה חלקה</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"סרטוני מוזיקה מתנגנים רק עם אודיו כאשר מעבר צלילים פעיל (לחיצה ארוכה על כפתור הערבוב תעצור את הוידאו אם תרצו לראות אותו).
+
+שירים שקצרים יותר ממשך ההעמעום עשויים לדלג על ההעמעום.
+
+מסך הנעילה או ההתראה עשויים להציג באופן זמני מצב מיושן באמצע המעבר."</string>
+  <string name="morphe_music_crossfade_about_known_title">בעיות ידועות</string>
+  <string name="morphe_music_crossfade_about_known_summary">"סרטון מוזיקה שהוגדר כשיר הראשון - או כזה שהתחיל מחוץ לתור הנוכחי - עשוי להופיע לרגע כסרטון לפני שמצב האודיו-בלבד נכנס לפעולה.
+
+השהיית מעבר הצלילים כדי לצפות בסרטון מוזיקה עלולה לגרום לכך שחלק מהסרטונים יהיו שחורים (אלו שהאודיו שלהם מגיע מהסרטון עצמו). השהיית מעבר הצלילים לפני שאתה בוחר את השיר תמנע זאת."</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">לא עובד בכלל</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"שידור או מראה אודיו (Chromecast, מראה מסך או אודיו) - מעבר הצלילים נעצר מכיוון שהוא לא יציב שם וייתכן שלעולם לא יתוקן.
+
+YouTube Music 8.x - מעבר הצלילים פועל רק בגרסה 9.x ומעלה"</string>
+  <string name="morphe_music_crossfade_about_credit_title">קרדיט</string>
+  <string name="morphe_music_crossfade_about_credit_summary">תכונת מעבר הצלילים על ידי VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">אפשר חזרה קבועה</string>
   <!-- layout.buttons.hideButtonsPatch -->

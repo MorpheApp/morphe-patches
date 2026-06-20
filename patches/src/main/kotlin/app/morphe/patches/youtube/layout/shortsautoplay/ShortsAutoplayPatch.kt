@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.layout.shortsautoplay
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -12,6 +19,7 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_10_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_17_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -77,7 +85,12 @@ val shortsAutoplayPatch = bytecodePatch(
         ReelPlaybackRepeatFingerprint.method.apply {
             // The behavior enums are looked up from an ordinal value to an enum type.
             findInstructionIndicesReversedOrThrow(
-                if (is_21_10_or_greater) {
+                if (is_21_25_or_greater) {
+                    methodCall(
+                        returnType = reelEnumClass,
+                        parameters = listOf("L", "L")
+                    )
+                } else if (is_21_10_or_greater) {
                     methodCall(
                         returnType = reelEnumClass,
                         parameters = listOf("L")

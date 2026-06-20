@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Плавний перехід призупинено для цієї сесії</string>
   <string name="morphe_music_crossfade_resumed_toast">Плавний перехід відновлено</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Режим відео недоступний, коли ввімкнено плавний перехід</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Відтворення з перехльостуванням призупинено під час трансляції або дзеркалювання аудіо. Перехльостування під час трансляції/дзеркалювання нестабільне та може бути не виправлене</string>
   <string name="morphe_music_crossfade_about_title">Інформація</string>
-  <string name="morphe_music_crossfade_about_summary">"Натисніть і утримуйте кнопку перемішування, щоб вимкнути/увімкнути
+  <string name="morphe_music_crossfade_about_summary">Як працює перехльостування — і коли воно не працює</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Як це працює</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Перехльостування накладає кінець однієї пісні на початок наступної, плавно приглушуючи одну, коли інша наростає протягом вибраної тривалості та кривої.
 
-Реалізація функції: VazerOG"</string>
+Воно працює в режимі автоматичного відтворення (коли пісня закінчується сама по собі) та при ручному переключенні — для кожного є окремий перемикач вище. У режимі автоматичного відтворення змішування починається за кілька секунд до кінця пісні.
+
+Потрібна YouTube Music версії 9.x або новішої."</string>
+  <string name="morphe_music_crossfade_about_best_title">Працює найкраще з</string>
+  <string name="morphe_music_crossfade_about_best_summary">Звичайне відтворення пісень, автоматичне відтворення, повторення однієї пісні (пісня переходить сама в себе) та локальне аудіо — динамік телефону, дротові навушники, Bluetooth або USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Працює не зовсім коректно</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Музичні відео відтворюються лише як аудіо під час увімкнення плавного переходу (натисніть і утримуйте кнопку випадкового відтворення, щоб призупинити, якщо потрібно відео)
+
+Пісні, коротші за тривалість переходу, можуть пропускати перехід
+
+Екран блокування або сповіщення можуть на короткий час відображати застарілий стан під час переходу"</string>
+  <string name="morphe_music_crossfade_about_known_title">Відомі проблеми</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Музичне відео, встановлене як перша пісня, або пісня, запущена з-за межами поточного списку відтворення, може на короткий час відображатися як відео перед тим, як перейде в режим лише аудіо
+
+Призупинення плавного переходу для перегляду музичного відео може призвести до того, що деякі відео будуть чорними (ті, чиє аудіо надходить з самого відео). Призупинення плавного переходу перед вибором пісні дозволить цього уникнути"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Не працює зовсім</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Трансляція або дзеркалювання аудіо (Chromecast, дзеркалювання екрану або аудіо) — плавний перехід призупиняється, оскільки там він нестабільний і може ніколи не бути виправлений.
+
+YouTube Music 8.x — плавний перехід працює лише в 9.x і новіших версіях"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Подяки</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Функція плавного переходу від VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Увімкнути постійний повтор</string>
   <!-- layout.buttons.hideButtonsPatch -->

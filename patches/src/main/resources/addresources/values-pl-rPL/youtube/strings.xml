@@ -234,7 +234,7 @@ Zmiany obejmują:
   <string name="morphe_hide_keyword_content_home_title">Ukryj filmy na stronie głównej</string>
   <string name="morphe_hide_keyword_content_search_title">Ukryj wyniki wyszukiwania</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Ukryj filmy na stronie subskrypcji</string>
-  <string name="morphe_hide_keyword_content_comments_title">Ukryj komentarze po słowach kluczowych</string>
+  <string name="morphe_hide_keyword_content_comments_title">Ukryj komentarze</string>
   <string name="morphe_hide_keyword_content_phrases_title">Słowa do ukrycia</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -244,12 +244,12 @@ Słowem może być dowolny tekst wyświetlany w tytułach filmów lub nazwach ka
 
 Słowa z wielkimi literami w środku muszą pasować dokładnie (np. iPhone, TikTok, InPost)"</string>
   <string name="morphe_hide_keyword_content_about_title">O filtrowaniu słów</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Strona główna / Subskrypcje / Wyszukiwanie / Komentarze są filtrowane, aby ukryć treści pasujące do słów kluczowych
+  <string name="morphe_hide_keyword_content_about_summary">"Strona główna / Subskrypcje / Wyniki wyszukiwania / Komentarze są filtrowane, aby ukryć treści, które zawierają słowa z filtra
 
 Ograniczenia:
 • Shortsy nie mogą być ukryte po nazwie kanału
 • Niektóre elementy interfejsu mogą nie być ukryte
-• Wyszukiwanie słowa kluczowego może nie pokazać żadnych wyników"</string>
+• Wyszukiwanie słowa z filtru może nie pokazywać żadnych wyników"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Dopasuj całe wyrazy</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Otoczenie słowa/frazy cudzysłowem zapobiegnie częściowym dopasowaniom w tytułach filmów i nazwach kanałów&lt;br&gt;&lt;br&gt;Na przykład,&lt;br&gt;&lt;b&gt;\"kot\"&lt;/b&gt; ukryje film: &lt;b&gt;Jak zachowuje się kot?&lt;/b&gt;&lt;br&gt;lecz nie ukryje: &lt;b&gt;Wielki bojkot znanej marki&lt;/b&gt;</string>

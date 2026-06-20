@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade pauset for denne session</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade genoptaget</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videotilstand er ikke tilgængelig, når crossfade er aktiveret</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade er sat på pause under casting eller afspilning via skærmdeling. Crossfade over casting/skærmdeling er ustabil og kan muligvis aldrig blive rettet.</string>
   <string name="morphe_music_crossfade_about_title">Om</string>
-  <string name="morphe_music_crossfade_about_summary">"Tryk og hold på knappen til tilfældig afspilning for at deaktivere/aktivere
+  <string name="morphe_music_crossfade_about_summary">Sådan fungerer crossfade – og hvornår det ikke gør det</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Sådan fungerer det</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade overlapper slutningen af en sang med starten af den næste, og dæmper den ene ned, mens den anden tones op over den valgte varighed og kurve.
 
-Funktionen er implementeret af VazerOG"</string>
+Det kører på auto-avance (når en sang slutter af sig selv) og på manuelle spring – hver har sin egen kontakt øverst. Ved auto-avance starter overgangen et par sekunder før sangen slutter.
+
+Kræver YouTube Music 9.x eller nyere."</string>
+  <string name="morphe_music_crossfade_about_best_title">Fungerer bedst med</string>
+  <string name="morphe_music_crossfade_about_best_summary">Normal sang-til-sang afspilning og auto-avance, gentag én (sangen crossfades ind i sig selv), og lokal lyd – telefonhøjttaler, kablede hovedtelefoner, Bluetooth eller USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Fungerer ikke helt som den skal</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Musikvideoer afspilles kun med lyd, når crossfade er aktiveret (hold lang tryk på afspilningslisten for at pause, hvis du vil se videoen)
+
+Sange, der er kortere end din fade-varighed, springer muligvis fadet over
+
+Låseskærmen eller notifikationen kan kortvarigt vise en forældet status under overgangen"</string>
+  <string name="morphe_music_crossfade_about_known_title">Kendte problemer</string>
+  <string name="morphe_music_crossfade_about_known_summary">"En musikvideo, der er indstillet som den første sang – eller en, der er startet uden for den aktuelle kø – kan kortvarigt vises som video, før lyd-kun-tilstanden træder i kraft
+
+Pausning af crossfade for at se en musikvideo kan efterlade nogle videoer sorte (dem, hvis lyd kommer fra videoen selv). Pausning af crossfade, før du vælger sangen, undgår dette"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Fungerer slet ikke</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting eller mirroring af lyd (Chromecast, skærm eller lydmirroring) – crossfade pauseres, fordi det er ustabilt og muligvis aldrig kan rettes.
+
+YouTube Music 8.x – crossfade kører kun på 9.x og nyere"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Kreditering</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade-funktionen er lavet af VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktiver permanent gentagelse</string>
   <!-- layout.buttons.hideButtonsPatch -->

@@ -224,6 +224,8 @@ public class CrossfadeManager {
         void patch_forceStopVideo();
         /** Calls atad.stopVideo(REASON_STOP=1).  Currently unused — kept for future flows. */
         void patch_forceLoadVideo();
+        /** Re-issues loadVideo (atzq.o) with a cached aues descriptor — REPEAT_SINGLE crossfade-onto-self. */
+        void patch_loadVideoWith(Object descriptor);
     }
 
     /** Audio / video toggle (nba). */
@@ -480,8 +482,42 @@ public class CrossfadeManager {
     private static final long RELEASE_DRAIN_DELAY_MS = 150;
     private static final int READY_POLL_MS = 100;
     private static final int READY_TIMEOUT_MS = 10000;
+    private static final int STATE_IDLE = 1;
+    private static final int STATE_ENDED = 4;
     private static final int STATE_READY = 3;
     private static final int REASON_DIRECTOR_RESET = 5;
+
+    /**
+     * #1671: if the pending factory player sits at {@link #STATE_IDLE} continuously
+     * for this long AND no loadVideo has been issued for the transition
+     * ({@link #pendingLoadIssued}), no content is coming — the queue was dismissed/
+     * ended out from under us — so recover instead of waiting out
+     * {@link #READY_TIMEOUT_MS}.  Once a load HAS been issued this timer is moot
+     * (the IDLE branch is gated on {@code !pendingLoadIssued}); it only bounds the
+     * no-load-at-all case, which is why it can be generous.
+     *
+     * <p>Was 600 ms, which tore down legitimate locked auto-advances: the queue-advance
+     * that issues the load is deferred under background throttling (Xiaomi/MIUI), so the
+     * pre-load IDLE dwell can exceed 600 ms even though content is on its way.  2000 ms
+     * clears any realistic queue-advance latency while still recovering a genuinely
+     * dismissed/ended queue far faster than the 10 s full timeout.
+     */
+    private static final long IDLE_LOAD_FAIL_MS = 2000;
+
+    /**
+     * #1671: how long after a dismiss-trigger ({@link #onQueueDismissed}) we treat
+     * an incoming stopVideo as part of the dismiss (and pass it through WITHOUT
+     * starting a crossfade).  YTM tears down playback on dismiss via the same
+     * stopVideo(5) a manual skip uses, so the dismiss UI triggers set this window
+     * to tell us "the next stop is a dismiss, not a skip."  Kept short so a real
+     * skip moments after a dismiss isn't wrongly suppressed.  On 9.x the stock
+     * "Dismiss queue" path fires its stopVideo(5) ASYNChronously after clearQueue,
+     * so the window must comfortably cover that dispatch; 1.5 s is safe because a
+     * dismiss empties the queue — a real skip can't occur until the user starts a
+     * whole new queue, which takes far longer than this window.
+     */
+    private static final long DISMISS_WINDOW_MS = 1500;
+    private static volatile long dismissWindowUntilMs = 0;
     private static final long AUTO_ADVANCE_THRESHOLD_MS = 5000;
     private static final long MONITOR_POLL_MS = 100;
     // Extra lead time to absorb poll granularity + new-player READY latency (~120-200ms typical).
@@ -582,6 +618,19 @@ public class CrossfadeManager {
 
     public static boolean onBeforeStopVideo(Object atadInstance, int reason) {
         if (!CROSSFADE_ENABLED) return false;
+
+        // #1671: the user just dismissed the queue / swipe-dismissed the miniplayer
+        // (signalled by onQueueDismissed from the dismiss UI triggers).  YTM tears
+        // down playback via this same stopVideo(5), which is otherwise
+        // indistinguishable from a manual skip — engaging crossfade here spins up a
+        // phantom factory player that never loads (queue is empty) and leaves the
+        // outgoing playing in the background.  Pass the stop through untouched so
+        // playback ends and the queue clears cleanly.  The window is left to expire
+        // by time so the 1-2 internal stops of the dismiss sequence are all covered.
+        if (SystemClock.uptimeMillis() < dismissWindowUntilMs) {
+            logInfo(() -> "stopVideo(" + reason + "): within dismiss window — passing through, no crossfade");
+            return false;
+        }
 
         // #1549: skip crossfade when audio is routed to a cast/mirror receiver.
         // Lets YTM's native gapless transition handle the song change so the
@@ -1255,12 +1304,58 @@ public class CrossfadeManager {
         }
     }
 
-    /** 9.x atzq.o (loadVideo) entry hook — diagnostic only; fade-in is driven by onPendingPlayerReady. */
-    public static void onBeforeLoadVideo(Object newAtzqInstance) {
+    // --- REPEAT_SINGLE crossfade-onto-self state ---
+    /** Lnwu loop enum: LOOP_OFF=0, LOOP_ALL=1, LOOP_ONE=2, LOOP_DISABLED=3. */
+    private static final int LOOP_ONE_ORDINAL = 2;
+    /** Live repeat-single state, tracked via the MediaSession loop adapter hook. */
+    private static volatile boolean repeatSingleActive = false;
+    /**
+     * Most recent loadVideo descriptor (aues) — the current track's load intent.
+     * Re-issued via patch_loadVideo to crossfade the song onto itself on REPEAT_SINGLE.
+     */
+    private static volatile Object lastLoadDescriptor = null;
+
+    /**
+     * Hooked at MediaSessionLoopStateAdapter (kyb.a) entry with the Lnwu loop-state
+     * enum.  Tracks whether REPEAT_SINGLE (LOOP_ONE) is active so the auto-advance
+     * monitor can crossfade the song onto itself instead of advancing the queue.
+     */
+    public static void onLoopStateChanged(Object loopState) {
+        try {
+            boolean single = (loopState instanceof Enum)
+                    && ((Enum<?>) loopState).ordinal() == LOOP_ONE_ORDINAL;
+            if (single != repeatSingleActive) {
+                repeatSingleActive = single;
+                final int ord = (loopState instanceof Enum) ? ((Enum<?>) loopState).ordinal() : -1;
+                logInfo(() -> "onLoopStateChanged: repeatSingleActive=" + single
+                        + " (loop ordinal=" + ord + ")");
+            }
+        } catch (Exception e) {
+            logWarn(() -> "onLoopStateChanged error: " + e.getMessage());
+        }
+    }
+
+    /**
+     * 9.x atzq.o (loadVideo) entry hook.  Caches the current track's descriptor
+     * (aues) for REPEAT_SINGLE re-issue; fade-in itself is driven by
+     * onPendingPlayerReady.  Caches unconditionally so {@link #lastLoadDescriptor}
+     * always holds the most-recently-loaded (i.e. current) track's load intent.
+     */
+    public static void onBeforeLoadVideo(Object newAtzqInstance, Object descriptor) {
         if (!is9x) return;
+        if (descriptor != null) {
+            lastLoadDescriptor = descriptor;
+        }
+        // Mark that content is on its way for an in-flight crossfade transition, so the
+        // STATE_IDLE fast-recovery in pollForNewTrackReady won't abandon a slow load.
+        if (crossfadeInProgress) {
+            pendingLoadIssued = true;
+        }
         logDebug(() -> "9.x: onBeforeLoadVideo atzq=@" + System.identityHashCode(newAtzqInstance)
+                + " descriptor=@" + System.identityHashCode(descriptor)
                 + " crossfadeInProgress=" + crossfadeInProgress
-                + " autoAdvActive=" + autoAdvanceCrossfadeActive);
+                + " autoAdvActive=" + autoAdvanceCrossfadeActive
+                + " repeatSingle=" + repeatSingleActive);
     }
 
     private static long lastPauseEventMs = 0;
@@ -1341,10 +1436,23 @@ public class CrossfadeManager {
     }
 
     private static int lastPollState = -1;
+    private static long pollIdleStreakStartMs = 0;
+    /**
+     * #1671 follow-up (screen-lock reliability): true once YTM has issued a loadVideo
+     * for the current pending crossfade transition.  The STATE_IDLE fast-recovery below
+     * must only fire when NO load was issued (a genuine dismiss / end-of-queue — content
+     * will never arrive).  A slow-but-legitimate load also dwells at STATE_IDLE before
+     * STATE_BUFFERING, and that dwell stretches under aggressive background throttling
+     * (e.g. Xiaomi/MIUI while the screen is locked) — without this guard the 600 ms timer
+     * misfires and tears down a perfectly good locked auto-advance.  Reset per transition.
+     */
+    private static volatile boolean pendingLoadIssued = false;
 
     private static void pollForNewTrackReady(final ExoPlayerAccess newPlayer) {
         final long deadline = System.currentTimeMillis() + READY_TIMEOUT_MS;
         lastPollState = -1;
+        pollIdleStreakStartMs = 0;
+        pendingLoadIssued = false;
 
         mainHandler.postDelayed(new Runnable() {
             @Override
@@ -1365,14 +1473,37 @@ public class CrossfadeManager {
                         return;
                     }
 
-                    if (state == 4) {
+                    if (state == STATE_ENDED) {
                         logError(() -> "Pending player ENDED unexpectedly — aborting");
-                        cleanupAllPlayers();
-                        if (audioModeWasForced) {
-                            audioModeWasForced = false;
-                            restoreVideoModeSilently();
-                        }
+                        recoverFromFailedLoad();
                         return;
+                    }
+
+                    // #1671: persistent STATE_IDLE means the queue was dismissed or
+                    // ended out from under us — no content will ever load onto this
+                    // factory player.  Recover fast (stop the orphaned outgoing,
+                    // keep the coordinator's now-idle player) instead of waiting the
+                    // full READY_TIMEOUT_MS.
+                    //
+                    // Screen-lock reliability guard (sr-shishir, Xiaomi): only fast-recover
+                    // when NO loadVideo has been issued for this transition.  A legitimate
+                    // auto-advance dwells at STATE_IDLE before STATE_BUFFERING while YTM's
+                    // queue-advance issues the load; that dwell was ~210 ms screen-on but
+                    // stretched to ~400 ms locked on a Samsung and goes further under MIUI's
+                    // background throttling.  The old unconditional 600 ms timer tore down a
+                    // valid locked load.  Once onBeforeLoadVideo has fired (pendingLoadIssued),
+                    // content IS coming — defer to STATE_READY / the full 10 s timeout instead.
+                    if (state == STATE_IDLE && !pendingLoadIssued) {
+                        if (pollIdleStreakStartMs == 0) {
+                            pollIdleStreakStartMs = System.currentTimeMillis();
+                        } else if (System.currentTimeMillis() - pollIdleStreakStartMs >= IDLE_LOAD_FAIL_MS) {
+                            logInfo(() -> "Pending player stuck IDLE — queue dismissed/ended; "
+                                    + "recovering " + dumpState());
+                            recoverFromFailedLoad();
+                            return;
+                        }
+                    } else {
+                        pollIdleStreakStartMs = 0;
                     }
 
                     if (state != lastPollState) {
@@ -1382,25 +1513,76 @@ public class CrossfadeManager {
 
                     if (System.currentTimeMillis() > deadline) {
                         logError(() -> "Timeout waiting for new track");
-                        cleanupAllPlayers();
-                        if (audioModeWasForced) {
-                            audioModeWasForced = false;
-                            restoreVideoModeSilently();
-                        }
+                        recoverFromFailedLoad();
                         return;
                     }
 
                     mainHandler.postDelayed(this, READY_POLL_MS);
                 } catch (Exception e) {
                     logError(()-> "Poll error", e);
-                    cleanupAllPlayers();
-                    if (audioModeWasForced) {
-                        audioModeWasForced = false;
-                        restoreVideoModeSilently();
-                    }
+                    recoverFromFailedLoad();
                 }
             }
         }, READY_POLL_MS);
+    }
+
+    /**
+     * #1671: graceful recovery when the pending factory player never loads
+     * content (queue dismissed via 3-dot "Dismiss queue" or swipe-to-dismiss
+     * miniplayer; or end-of-queue).  Stops the orphaned outgoing player and any
+     * fade-out animations, then resets crossfade state — but crucially does NOT
+     * release the pending factory player, because on 9.x the coordinator was
+     * already swapped to it ({@code patch_setPlayerWithBindings}) and YTM now
+     * owns it as the current (idle) player.  Releasing it would leave the
+     * coordinator referencing a dead player, wedging all future playback until
+     * the app is force-killed — which was the core #1671 symptom.
+     */
+    private static void recoverFromFailedLoad() {
+        recoverFromFailedLoad(false);
+    }
+
+    /**
+     * @param stopKeptPlayer when true (a dismiss — see {@link #onQueueDismissed}),
+     *        actively pause the kept coordinator player so the dismissed track stops.
+     *        The failed-load / end-of-queue recovery passes false (the incoming never
+     *        loaded content, so there is nothing audible to pause).
+     */
+    private static void recoverFromFailedLoad(boolean stopKeptPlayer) {
+        cleanupAllPlayers(stopKeptPlayer);
+        if (audioModeWasForced) {
+            audioModeWasForced = false;
+            restoreVideoModeSilently();
+        }
+    }
+
+    /**
+     * #1671: invoked the instant the user dismisses playback — from the stock
+     * "Dismiss queue" menu action and the swipe-to-dismiss miniplayer gesture
+     * (both hooked in CrossfadePatch).  This is the clean fix: rather than letting
+     * the imminent stopVideo(5) masquerade as a manual skip and trigger a phantom
+     * crossfade (which we'd then have to recover from), we know up front this is a
+     * dismiss.  We open a short suppression window so {@link #onBeforeStopVideo}
+     * passes the stop through, and — if a crossfade is already in flight (the user
+     * dismissed mid-fade) — tear it down now so nothing keeps playing in the
+     * background.
+     *
+     * <p>Safe to call when crossfade is disabled or no crossfade is active; it
+     * simply arms the window (cheap) and returns.
+     */
+    public static void onQueueDismissed() {
+        if (!CROSSFADE_ENABLED) return;
+        dismissWindowUntilMs = SystemClock.uptimeMillis() + DISMISS_WINDOW_MS;
+        logInfo(() -> "onQueueDismissed — crossfade suppressed for the dismiss stop " + dumpState());
+        if (crossfadeInProgress) {
+            // Dismiss landed during a crossfade already in flight: stop the orphaned
+            // outgoing / fade-out players AND pause the kept coordinator player.  On a
+            // dismiss the user expects playback to END, but the kept player is our
+            // factory player swapped in at the coordinator level — YTM's dismiss arrives
+            // as a stopVideo(5) director-RESET (advance-to-next, not a halt) against an
+            // empty queue, so it never stops our player and the dismissed song keeps
+            // playing (MrGapi, PR #1773).  stopKeptPlayer=true pauses it ourselves.
+            recoverFromFailedLoad(true);
+        }
     }
 
     /**
@@ -1586,6 +1768,20 @@ public class CrossfadeManager {
                                                 + "ms (fadeDuration=" + fadeDuration + "ms)");
                         stopAutoAdvanceMonitor();
 
+                        // #repeat: REPEAT_SINGLE — crossfade the song onto itself instead
+                        // of advancing the queue.  MEDIA_NEXT would skip to the next track
+                        // (it ignores repeat-one), so take the self-crossfade path: swap to
+                        // a fresh player and re-load the SAME song at position 0.  If it
+                        // can't engage (no cached descriptor), fall through to MEDIA_NEXT so
+                        // the song still loops (just without crossfade).
+                        if (repeatSingleActive && is9x) {
+                            logInfo(() -> "Auto-advance: REPEAT_SINGLE — crossfading song onto itself");
+                            if (startRepeatSelfCrossfade(atad, coordinator, exo)) {
+                                return;
+                            }
+                            logWarn(() -> "REPEAT_SINGLE self-crossfade could not engage — falling back to MEDIA_NEXT");
+                        }
+
                         // Auto-advance trigger: simulated MEDIA_NEXT key event.  Other paths
                         // tested (auih.y direct, atzq.p, atad.stopVideo(5) direct) either no-op
                         // on 9.x or fail to advance the queue.  The MEDIA_NEXT dispatch goes
@@ -1645,6 +1841,103 @@ public class CrossfadeManager {
         if (autoAdvanceMonitorRunnable != null) {
             mainHandler.removeCallbacks(autoAdvanceMonitorRunnable);
             autoAdvanceMonitorRunnable = null;
+        }
+    }
+
+    /**
+     * #repeat: REPEAT_SINGLE crossfade-onto-self.  Mirrors the 9.x auto-advance swap
+     * in {@link #onBeforeStopVideo} (factory player → coordinator, detach cwh, migrate
+     * the coordinator listener, re-enable + pre-fade the outgoing), but instead of
+     * advancing the queue it re-issues the CURRENT track's cached load descriptor at
+     * the top via {@code patch_loadVideoWith} — so the ending instance fades out while
+     * a fresh-from-zero instance fades in.  The queue is never touched (correct for
+     * repeat-one).  Returns false if it cannot engage (no descriptor / wrong types),
+     * so the caller can fall back to MEDIA_NEXT.
+     */
+    private static boolean startRepeatSelfCrossfade(Object atad,
+            PlayerCoordinatorAccess coordinator, ExoPlayerAccess currentExo) {
+        if (!is9x) return false;
+        final Object descriptor = lastLoadDescriptor;
+        if (descriptor == null) {
+            logWarn(() -> "repeat-single: no cached load descriptor");
+            return false;
+        }
+        if (!(atad instanceof MedialibPlayerAccess)) {
+            logWarn(() -> "repeat-single: atad is not a MedialibPlayerAccess");
+            return false;
+        }
+        try {
+            ExoPlayerAccess newExo = createNewPlayer(coordinator);
+            if (newExo == null) {
+                logError(() -> "repeat-single: factory failed to create player");
+                return false;
+            }
+            newExo.patch_setVolume(0.0f);
+
+            pendingOutPlayer = currentExo;
+            pendingInPlayer = newExo;
+            activeCoordinator = coordinator;
+            crossfadeInProgress = true;
+            // Treat like an auto-advance crossfade: the outgoing reaches natural end
+            // during the fade, so detach cwh to avoid its onEnded mis-routing.  Do NOT
+            // set queueAdvancedByMonitor — the queue is intentionally NOT advanced.
+            autoAdvanceCrossfadeActive = true;
+            deferredSwapStartTime = System.currentTimeMillis();
+            try {
+                currentExo.patch_detachCwhFromEventDispatch();
+            } catch (Exception e) {
+                logWarn(() -> "repeat-single: cwh detach on outgoing failed: " + e.getMessage());
+            }
+
+            Object coordListener = null;
+            try {
+                coordListener = coordinator.patch_getCoordinatorListener();
+                if (coordListener != null) {
+                    currentExo.patch_removeDirectListener(coordListener);
+                }
+            } catch (Exception e) {
+                logWarn(() -> "repeat-single: pre-remove coord listener failed: " + e.getMessage());
+            }
+
+            coordinator.patch_setPlayerWithBindings(newExo);
+            logDebug(() -> "repeat-single: swapped coordinator → new player @"
+                    + System.identityHashCode(newExo));
+
+            if (coordListener != null) {
+                try {
+                    newExo.patch_addDirectListener(coordListener);
+                } catch (Exception e) {
+                    logWarn(() -> "repeat-single: re-register coord listener failed: " + e.getMessage());
+                }
+            }
+            VideoSurfaceAccess surface = (VideoSurfaceAccess) coordinator.patch_getVideoSurface();
+            if (surface != null) {
+                surface.patch_setPlayerReference(newExo);
+            }
+
+            // Re-enable the outgoing (ending) instance for an audible fade-out, and
+            // pre-start its fade now (auto-advance style) so it reaches silence
+            // gracefully regardless of the new player's load latency.
+            currentExo.patch_setPlayWhenReady(true);
+            currentExo.patch_setVolume(1.0f);
+            FadeCurve outCurve = Settings.CROSSFADE_CURVE.get();
+            long outFadeDuration = getCrossfadeDurationMs();
+            fadingOutPlayers.add(new FadingPlayer(currentExo, outFadeDuration, outCurve));
+            outgoingFadePreStarted = true;
+            ensureFadingLoopRunning();
+
+            // Load the SAME song from the top onto the new (coordinator) player.
+            logInfo(() -> "repeat-single: re-issuing loadVideo (same song) onto @"
+                    + System.identityHashCode(newExo) + " descriptor=@"
+                    + System.identityHashCode(descriptor));
+            ((MedialibPlayerAccess) atad).patch_loadVideoWith(descriptor);
+
+            pollForNewTrackReady(newExo);
+            return true;
+        } catch (Exception e) {
+            logError(() -> "startRepeatSelfCrossfade error", e);
+            cleanupAllPlayers();
+            return true; // we already mutated state; don't also fire MEDIA_NEXT
         }
     }
 
@@ -1733,6 +2026,16 @@ public class CrossfadeManager {
         }
 
         try { inPlayer.patch_setPlayWhenReady(true); } catch (Exception ignored) {}
+
+        // #1671 follow-up: the crossfade drives the incoming track to play WITHOUT going
+        // through MedialibPlayer.playVideo, so the onPlayVideo hook never fires to clear
+        // playerIsPlaying. After a swipe-dismiss (which fires onPauseVideo → false), the
+        // flag would otherwise stay stale-false for the rest of the process, making the
+        // next skip's re-enable check silence the outgoing player → an audible ~0.5s gap
+        // until the new track buffers. A force-close "fixed" it only by resetting the
+        // process default (true). Mirror what onPlayVideo would do: the incoming player
+        // is now the active, audibly-playing track.
+        playerIsPlaying = true;
 
         final long startTime = System.currentTimeMillis();
         final long duration = (durationOverrideMs > 0) ? durationOverrideMs : getCrossfadeDurationMs();
@@ -2205,16 +2508,70 @@ public class CrossfadeManager {
      * Used on errors and when crossfade is disabled/paused.
      */
     private static void cleanupAllPlayers() {
-        logError(() -> "CLEANUP (emergency): " + dumpState());
+        cleanupAllPlayers(false);
+    }
+
+    /**
+     * @param stopKeptPlayer when true, pause the kept coordinator player(s) via
+     *        {@code patch_setPlayWhenReady(false)} so a dismissed track actually stops.
+     *        Default (false) preserves the original behavior for the failed-load /
+     *        abort / error teardown paths, which leave the player ready for YTM's next
+     *        load.  Volume is restored to 1.0 either way (silent-playback guard), so a
+     *        paused-then-reused player is not stuck quiet.
+     */
+    private static void cleanupAllPlayers(boolean stopKeptPlayer) {
+        // logInfo (not logError): cleanup is a routine recovery/reset action — e.g. a
+        // queue dismiss or end-of-queue (#1671) — not a user-facing error.  logError
+        // routes through printException which shows a toast when "show toast on error"
+        // is enabled, so using it here popped a spurious "cleanup" toast on every
+        // dismiss.  Genuine error callers already log their own error before calling.
+        logInfo(() -> "CLEANUP (reset crossfade state): " + dumpState());
         if (deferredSwapRunnable != null) {
             mainHandler.removeCallbacks(deferredSwapRunnable);
             deferredSwapRunnable = null;
         }
         releaseAllFadingPlayers();
-        ExoPlayerAccess pi = pendingInPlayer;
-        if (pi != null) { releasePlayer(pi); pendingInPlayer = null; }
+        // #1671: do NOT release pendingInPlayer.  On 9.x the coordinator was
+        // already swapped to it (patch_setPlayerWithBindings) before polling
+        // began, so YTM owns it as the current player.  Releasing it here is
+        // exactly what left the coordinator pointing at a dead player and wedged
+        // playback until app-kill.  Drop our reference only; YTM keeps the player
+        // (idle, ready to receive the next loadVideo).
+        //
+        // BUT we zeroed this player's volume at crossfade setup (newExo.setVolume(0))
+        // and re-zeroed it on every poll tick.  If we just drop the reference, the
+        // coordinator's current player stays at volume 0 — so the next track YTM
+        // loads onto it plays silently (AudioTrack runs, position advances, no
+        // sound: the "playing but no audio" zombie).  Restore it to full volume so
+        // the next playback is audible.
+        ExoPlayerAccess pin = pendingInPlayer;
+        if (pin != null) {
+            try {
+                pin.patch_setVolume(1.0f);
+                if (stopKeptPlayer) {
+                    pin.patch_setPlayWhenReady(false);
+                    logInfo(() -> "cleanupAllPlayers: paused kept coordinator player @"
+                            + System.identityHashCode(pin) + " (dismiss — stop dismissed track)");
+                } else {
+                    logInfo(() -> "cleanupAllPlayers: restored kept coordinator player @"
+                            + System.identityHashCode(pin) + " volume → 1.0 (#1671 silent-playback guard)");
+                }
+            } catch (Exception ignored) {}
+        }
+        pendingInPlayer = null;
         ExoPlayerAccess po = pendingOutPlayer;
         if (po != null) { releasePlayer(po); pendingOutPlayer = null; }
+        // #1671: crossfadeInPlayer is the coordinator's current (promoted) player —
+        // YTM owns it, so we only drop our ref, never release it.  But if we tear
+        // down mid fade-in its volume may be < 1.0; restore it so the next track
+        // YTM loads onto it isn't quiet (same silent-playback guard as pendingIn).
+        ExoPlayerAccess cip = crossfadeInPlayer;
+        if (cip != null && cip != pin) {
+            try {
+                cip.patch_setVolume(1.0f);
+                if (stopKeptPlayer) cip.patch_setPlayWhenReady(false);
+            } catch (Exception ignored) {}
+        }
         crossfadeInPlayer = null;
         activeCoordinator = null;
         crossfadeInProgress = false;
@@ -2373,6 +2730,12 @@ public class CrossfadeManager {
     private static volatile long lastCastCheckMs = 0;
     private static volatile boolean lastCastResult = false;
     private static final long CAST_CHECK_TTL_MS = 250;
+    /**
+     * One-time-per-process guard for the "crossfade unstable while casting" toast.
+     * Static so it fires once per app/listening session (never reset in-process),
+     * avoiding repeat toasts on every track transition while cast routing is active.
+     */
+    private static volatile boolean castUnstableToastShown = false;
 
     /**
      * #1549: Detect when audio is being routed to a cast/mirror receiver
@@ -2389,9 +2752,13 @@ public class CrossfadeManager {
      * the flicker — see future task.
      *
      * <p>Whitelist of device types that trigger the skip: HDMI, HDMI_ARC,
-     * HDMI_EARC, REMOTE_SUBMIX (Samsung audio mirroring), IP (network audio),
-     * BUS (system bus devices).  Bluetooth A2DP, wired headsets, USB audio,
-     * and BLE audio are NOT in this list — those tolerate the swap fine.
+     * HDMI_EARC, IP (network audio), BUS (system bus devices).  Bluetooth A2DP,
+     * wired headsets, USB audio, and BLE audio are NOT in this list — those
+     * tolerate the swap fine.  TYPE_REMOTE_SUBMIX is also excluded: it is a
+     * LOCAL-decode capture (Android Auto projection, screen recording, screen
+     * mirroring) where crossfade works correctly — including it disabled
+     * crossfade on Android Auto.  True decode-on-receiver cast is still caught
+     * by the MediaRouter PLAYBACK_TYPE_REMOTE signal.
      *
      * <p>Returns false on API < 28 (the {@link AudioPlaybackConfiguration#getAudioDeviceInfo()}
      * method isn't available); pre-Pie devices are rare enough that we accept
@@ -2454,10 +2821,29 @@ public class CrossfadeManager {
                             int type = info.getType();
                             probe.append("dev{type=").append(type)
                                     .append(",id=").append(info.getId()).append("} ");
+                            // NOTE: TYPE_REMOTE_SUBMIX is intentionally NOT in this list.
+                            // Android Auto (com.google.android.projection.gearhead) opens a
+                            // REMOTE_SUBMIX capture to stream the phone's mixed audio to the
+                            // head unit — but decoding stays LOCAL, so the dual-player
+                            // crossfade works fine and there is no decode-on-receiver session
+                            // to corrupt.  The same is true of screen recording / MediaProjection
+                            // / screen-mirror capture.  Including REMOTE_SUBMIX disabled crossfade
+                            // on Android Auto (a false positive); genuine cast (decode-on-receiver)
+                            // is still caught by the MediaRouter PLAYBACK_TYPE_REMOTE signal above.
+                            //
+                            // TODO(future): this blanket drop also re-enables crossfade during
+                            // non-AA screen/audio mirroring (e.g. Samsung mirroring — the original
+                            // #1549 case).  The surgical fix is to detect Android Auto SPECIFICALLY
+                            // via the public CarConnection API
+                            // (androidx.car.app.connection — query content://androidx.car.app.connection,
+                            // column "CarConnectionState", value 2 = CONNECTION_TYPE_PROJECTION) and
+                            // exempt only AA, while keeping REMOTE_SUBMIX in the disable list for
+                            // other mirror captures.  Deferred because YTM doesn't bundle the
+                            // CarConnection client class and the backing provider didn't query
+                            // cleanly from a shell — needs an in-app query + fallback verified first.
                             if (type == AudioDeviceInfo.TYPE_HDMI
                                     || type == AudioDeviceInfo.TYPE_HDMI_ARC
                                     || type == 29 /* TYPE_HDMI_EARC, API 31+ */
-                                    || type == AudioDeviceInfo.TYPE_REMOTE_SUBMIX
                                     || type == AudioDeviceInfo.TYPE_IP
                                     || type == AudioDeviceInfo.TYPE_BUS) {
                                 casting = true;
@@ -2476,6 +2862,17 @@ public class CrossfadeManager {
             logDebug(() -> "Cast routing " + (castingFinal ? "ENGAGED" : "RELEASED")
                     + " — crossfade " + (castingFinal ? "disabled" : "re-enabled")
                     + " [" + probe.toString().trim() + "]");
+            // One-time-per-session notice: when genuine cast/mirror routing is first
+            // detected (decode-on-receiver, or HDMI/IP/BUS), crossfade is disabled.
+            // Tell the user once that crossfade over cast/mirror is unstable and may
+            // never be fixable, so the silently-disabled crossfade isn't a mystery.
+            // (Android Auto no longer trips this — REMOTE_SUBMIX was dropped.)
+            if (casting && !castUnstableToastShown) {
+                castUnstableToastShown = true;
+                try {
+                    Utils.showToastShort(str("morphe_music_crossfade_cast_unstable_toast"));
+                } catch (Exception ignored) {}
+            }
         }
 
         lastCastResult = casting;

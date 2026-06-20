@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">此会话已暂停交叉淡入</string>
   <string name="morphe_music_crossfade_resumed_toast">交叉淡入已恢复</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">启用交叉淡入时，视频模式不可用</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">在投射或镜像音频时，交叉淡入淡出已暂停。通过投射/镜像的交叉淡入淡出不稳定，可能无法修复。</string>
   <string name="morphe_music_crossfade_about_title">关于</string>
-  <string name="morphe_music_crossfade_about_summary">"长按洗牌按钮可禁用/启用
+  <string name="morphe_music_crossfade_about_summary">交叉淡入淡出的工作原理及其不适用的情况</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">它的工作原理</string>
+  <string name="morphe_music_crossfade_about_how_summary">"交叉淡入淡出将一首歌的结尾与下一首歌的开头重叠，在您选择的持续时间和曲线中逐渐降低一首歌的音量，同时逐渐提高另一首歌的音量。
 
-功能实现者：VazerOG"</string>
+它在自动前进（一首歌自动结束时）和手动跳过时运行——两者都有自己独立的切换选项。在自动前进的情况下，混合会在歌曲结束前几秒钟开始。
+
+需要 YouTube Music 9.x 或更高版本。"</string>
+  <string name="morphe_music_crossfade_about_best_title">最佳使用场景</string>
+  <string name="morphe_music_crossfade_about_best_summary">正常的歌曲播放和自动前进、单曲循环（歌曲淡入淡出到自身）、本地音频——手机扬声器、有线耳机、蓝牙或 USB。</string>
+  <string name="morphe_music_crossfade_about_quirks_title">效果不太好</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"在开启交叉淡入时，音乐视频仅播放音频（如果您想暂停视频，请长按“随机播放”按钮）
+
+短于淡入持续时间的歌曲可能会跳过淡入
+
+锁屏或通知可能会短暂显示过时的状态，尤其是在过渡期间"</string>
+  <string name="morphe_music_crossfade_about_known_title">已知问题</string>
+  <string name="morphe_music_crossfade_about_known_summary">"将音乐视频设置为第一首歌曲，或者从当前队列外部启动的歌曲，可能会在仅音频模式开始之前短暂显示为视频
+
+暂停交叉淡入以观看音乐视频可能会导致一些视频画面变黑（那些音频来自视频本身的视频）。在选择歌曲之前暂停交叉淡入可以避免这种情况"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">完全无法工作</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"投屏或镜像音频（Chromecast、屏幕或音频镜像）——交叉淡入会暂停，因为它在那里的稳定性较差，并且可能无法修复。
+
+YouTube Music 8.x —— 交叉淡入仅在 9.x 及更高版本上运行"</string>
+  <string name="morphe_music_crossfade_about_credit_title">鸣谢</string>
+  <string name="morphe_music_crossfade_about_credit_summary">交叉淡入功能由 VazerOG 提供</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">启用永久重复播放</string>
   <!-- layout.buttons.hideButtonsPatch -->

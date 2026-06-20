@@ -724,3 +724,13 @@ fun userSelectedPlaybackSpeedHook(targetMethodClass: String, targetMethodName: S
         "invoke-static { v$speedSelectionValueRegister }, $targetMethodClass->$targetMethodName(F)V",
     )
 }
+
+fun playerStatusHook(targetMethodClass: String, targetMethodName: String) {
+    playerStatusMethodRef.get()!!.apply {
+        val insertIndex = indexOfFirstInstructionOrThrow(Opcode.SGET_OBJECT) + 1
+        addInstruction(
+            insertIndex,
+            "invoke-static/range { p1 .. p1 }, $targetMethodClass->$targetMethodName(Ljava/lang/Enum;)V"
+        )
+    }
+}

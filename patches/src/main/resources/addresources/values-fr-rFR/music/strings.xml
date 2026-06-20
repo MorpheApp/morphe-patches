@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Fondu enchaîné mis en pause pour cette session</string>
   <string name="morphe_music_crossfade_resumed_toast">Fondu enchaîné repris</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Le mode vidéo n\'est pas disponible lorsque le fondu enchaîné est activé</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Le fondu enchaîné est mis en pause lors de la diffusion ou du partage d\'écran audio. Le fondu enchaîné lors de la diffusion/du partage d\'écran est instable et pourrait ne jamais être corrigé.</string>
   <string name="morphe_music_crossfade_about_title">À propos</string>
-  <string name="morphe_music_crossfade_about_summary">"Appuyez longuement sur le bouton 'Lecture aléatoire' pour désactiver/activer
+  <string name="morphe_music_crossfade_about_summary">Fonctionnement du fondu enchaîné — et quand il ne fonctionne pas</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Comment ça marche</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Le fondu enchaîné superpose la fin d'une chanson au début de la suivante, en atténuant le son de la première pendant que le son de la seconde augmente progressivement sur la durée et la courbe que vous avez choisies.
 
-Implémentation de la fonctionnalité par VazerOG"</string>
+Il fonctionne avec le passage automatique (lorsqu'une chanson se termine d'elle-même) et avec les sauts manuels — chacun possède son propre commutateur ci-dessus. Avec le passage automatique, le mélange commence quelques secondes avant la fin de la chanson.
+
+Requiert YouTube Music 9.x ou une version ultérieure."</string>
+  <string name="morphe_music_crossfade_about_best_title">Fonctionne le mieux avec</string>
+  <string name="morphe_music_crossfade_about_best_summary">La lecture normale de chanson en chanson et le passage automatique, la répétition d\'une chanson (la chanson s\'enchaîne avec elle-même), et l\'audio local — haut-parleur du téléphone, casque filaire, Bluetooth ou USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Ne fonctionne pas parfaitement</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Les vidéos musicales sont lues en mode audio uniquement lorsque le fondu enchaîné est activé (appuyez longuement sur la lecture aléatoire pour mettre en pause si vous voulez la vidéo)
+
+Les morceaux plus courts que la durée de votre fondu peuvent sauter le fondu
+
+L'écran de verrouillage ou la notification peut brièvement afficher un état obsolète en cours de transition"</string>
+  <string name="morphe_music_crossfade_about_known_title">Problèmes connus</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Une vidéo musicale définie comme premier morceau — ou lancée depuis l'extérieur de la file d'attente actuelle — peut brièvement s'afficher en mode vidéo avant que le mode audio uniquement ne soit activé
+
+Mettre le fondu enchaîné en pause pour regarder une vidéo musicale peut laisser certaines vidéos noires (celles dont l'audio provient de la vidéo elle-même). Mettre le fondu enchaîné en pause avant de choisir le morceau permet d'éviter ce problème"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Ne fonctionne pas du tout</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"La diffusion ou le partage d'audio (Chromecast, mise en miroir d'écran ou audio) — le fondu enchaîné est mis en pause car il est instable et pourrait ne jamais être corrigé.
+
+YouTube Music 8.x — le fondu enchaîné ne fonctionne qu'à partir de la version 9.x"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Crédits</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Fonctionnalité de fondu enchaîné par VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activer la lecture en boucle permanente</string>
   <!-- layout.buttons.hideButtonsPatch -->

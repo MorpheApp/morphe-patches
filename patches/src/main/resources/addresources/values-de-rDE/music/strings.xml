@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Übergang pausiert für diese Sitzung</string>
   <string name="morphe_music_crossfade_resumed_toast">Nahtlose Wiedergabe fortgesetzt</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Der Videomodus ist nicht verfügbar, während die nahtlose Wiedergabe aktiviert ist</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade ist während des Castings oder Mirrorings von Audio pausiert. Crossfade über Cast/Mirror ist instabil und kann möglicherweise nicht behoben werden.</string>
   <string name="morphe_music_crossfade_about_title">Über</string>
-  <string name="morphe_music_crossfade_about_summary">"Halten Sie die Shuffle-Taste gedrückt, um die Funktion zu deaktivieren/aktivieren
+  <string name="morphe_music_crossfade_about_summary">Wie Crossfade funktioniert – und wann es nicht funktioniert</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Wie es funktioniert</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade überlagert das Ende eines Songs mit dem Anfang des nächsten, wobei einer ausfadet, während der andere über Ihre gewählte Dauer und Kurve einblendet.
 
-Implementierung durch VazerOG"</string>
+Es läuft auf Auto-Weiter (wenn ein Song von selbst endet) und auf manuelle Übersprünge – jeder hat einen eigenen Umschalter oben. Bei Auto-Weiter beginnt das Blenden ein paar Sekunden bevor der Song endet.
+
+Benötigt YouTube Music 9.x oder neuer."</string>
+  <string name="morphe_music_crossfade_about_best_title">Funktioniert am besten mit</string>
+  <string name="morphe_music_crossfade_about_best_summary">Normaler Song-zu-Song-Wiedergabe und Auto-Weiter, Wiederholung eines Songs (der Song blendet in sich selbst ein) und lokales Audio – Smartphone-Lautsprecher, kabelgebundene Kopfhörer, Bluetooth oder USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Funktioniert nicht ganz richtig</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Musikvideos werden als Audio-only wiedergegeben, während der Crossfade aktiv ist (halten Sie die Shuffle-Taste gedrückt, um die Wiedergabe anzuhalten, falls Sie das Video sehen möchten).
+
+Songs, die kürzer sind als Ihre Fade-Dauer, überspringen möglicherweise den Fade.
+
+Der Sperrbildschirm oder die Benachrichtigung können kurz einen veralteten Zustand während des Übergangs anzeigen."</string>
+  <string name="morphe_music_crossfade_about_known_title">Bekannte Probleme</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Ein Musikvideo, das als erster Song festgelegt wurde – oder das von außerhalb der aktuellen Warteschlange gestartet wurde – kann kurz als Video angezeigt werden, bevor der Audio-only-Modus aktiviert wird.
+
+Das Anhalten des Crossfades zum Ansehen eines Musikvideos kann dazu führen, dass einige Videos schwarz bleiben (diejenigen, deren Audio aus dem Video selbst stammt). Vermeiden Sie dies, indem Sie den Crossfade pausieren, bevor Sie den Song auswählen."</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Funktioniert überhaupt nicht</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Casting oder Spiegelung von Audio (Chromecast, Bildschirm- oder Audiospiegelung) – der Crossfade wird pausiert, da er dort instabil ist und möglicherweise nie behoben wird.
+
+YouTube Music 8.x – der Crossfade funktioniert nur ab Version 9.x."</string>
+  <string name="morphe_music_crossfade_about_credit_title">Credits</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade-Funktion von VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Dauerwiederholung aktivieren</string>
   <!-- layout.buttons.hideButtonsPatch -->

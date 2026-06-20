@@ -25,6 +25,7 @@ Second \"item\" text"</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_about_title">Quant a</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->

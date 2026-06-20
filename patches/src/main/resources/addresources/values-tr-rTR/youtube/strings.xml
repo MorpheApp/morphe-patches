@@ -244,11 +244,11 @@ Anahtar kelimeler, video başlıklarında veya kanal adlarında görünen herhan
 
 Ortasında büyük harf bulunan kelimeler tam olarak eşleşmelidir (örneğin: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Anahtar kelimeyle filtreleme hakkında</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Ana Sayfa / Abonelikler / Arama / Yorumlar, anahtar kelime öbekleriyle eşleşen içeriği gizlemek için filtrelenir
+  <string name="morphe_hide_keyword_content_about_summary">"Ana Sayfa / Abonelikler / Arama / Yorumlar anahtar kelime öbekleriyle eşleşen içeriği gizlemek için filtrelenir
 
 Sınırlamalar:
 • Shorts, kanal adına göre gizlenemez
-• Bazı kullanıcı arayüzü bileşenleri gizlenemeyebilir
+• Bazı arayüz bileşenleri gizlenemeyebilir
 • Bir anahtar kelime araması sonuç göstermeyebilir"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Tam kelimeleri eşleştir</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->

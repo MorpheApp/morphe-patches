@@ -68,6 +68,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_resumed_toast">Övertoningar återupptogs</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videoläge är inte tillgängligt när övertoningar är aktiverade</string>
   <string name="morphe_music_crossfade_about_title">Om</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktivera permanent upprepning</string>
   <!-- layout.buttons.hideButtonsPatch -->

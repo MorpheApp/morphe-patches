@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Prehod je bil zaustavljen za to sejo</string>
   <string name="morphe_music_crossfade_resumed_toast">Prehod se nadaljuje</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Video način ni na voljo, ko je prehod omogočen</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Prehod med skladbami je onemogočen med oddajanjem ali zrcaljenjem zvoka. Prehod med skladbami pri oddajanju/zrcaljenju je nestabilen in ga morda ne bo mogoče rešiti.</string>
   <string name="morphe_music_crossfade_about_title">O nas</string>
-  <string name="morphe_music_crossfade_about_summary">"Dolgo pritisnite gumb za naključni vrstni red za onemogočenje/omogočenje
+  <string name="morphe_music_crossfade_about_summary">Kako deluje prehod med skladbami in kdaj ne</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Kako to deluje</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Prehod med skladbami prekriva konec ene pesmi s začetkom naslednje, z zmanjševanjem glasnosti ene pesmi, medtem ko se glasnost druge pesmi povečuje, v skladu z izbrano dolžino in krivuljo.
 
-Izvedba funkcije s strani VazerOG"</string>
+Deluje pri samodejnem predvajanju (ko se pesem samodejno konča) in pri ročnih preskokih – vsak ima svoj gumb za vklop/izklop zgoraj. Pri samodejnem predvajanju se prehod začne nekaj sekund pred koncem pesmi.
+
+Zahteva YouTube Music različico 9.x ali novejšo."</string>
+  <string name="morphe_music_crossfade_about_best_title">Deluje najbolje z</string>
+  <string name="morphe_music_crossfade_about_best_summary">Navadno predvajanje pesmi od pesmi in samodejno predvajanje, ponavljanje ene pesmi (pesem prehaja sama vase) ter lokalna zvočna datoteka – zvočnik telefona, žične slušalke, Bluetooth ali USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Ne deluje povsem pravilno</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Glasbeni videi se predvajajo samo z zvokom, ko je vključen prehod (dolgo pritisnite naključni vrstni red, če želite videoposnetek ustaviti).
+
+Pesmi, ki so krajše od trajanja izklopa, lahko preskočijo izklapljanje.
+
+Zaklenjeni zaslon ali obvestilo lahko na kratko pokaže zastarel status med prehodom."</string>
+  <string name="morphe_music_crossfade_about_known_title">Znane težave</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Glasbeni video, nastavljen kot prva pesem – ali pa začet izven trenutne vrste – se lahko na kratko prikaže kot video, preden se aktivira način samo zvoka.
+
+Če prekinete prehod za ogled glasbenega videa, lahko nekateri videoposnetki ostanejo črni (tisti, katerih zvok je neposredno iz videoposnetka). Če prekinete prehod, preden izberete pesem, se temu izognete."</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Ne deluje sploh</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Predvajanje ali zrcaljenje zvoka (Chromecast, zrcaljenje zaslona ali zvoka) – prehod se ustavi, ker je tam nestabilen in ga morda ni mogoče popraviti.
+
+YouTube Music 8.x – prehod deluje samo v 9.x in novejših različicah."</string>
+  <string name="morphe_music_crossfade_about_credit_title">Avtorstvo</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Funkcija prehoda VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Omogoči trajno ponavljanje</string>
   <!-- layout.buttons.hideButtonsPatch -->

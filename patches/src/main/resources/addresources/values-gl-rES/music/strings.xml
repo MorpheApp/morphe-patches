@@ -35,6 +35,7 @@ Second \"item\" text"</string>
   <!-- interaction.crossfade.crossfadePatch -->
   <!-- Empty string because custom preference handles the title itself -->
   <string name="morphe_music_crossfade_about_title">Acerca de</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activar repetición permanente</string>
   <!-- layout.buttons.hideButtonsPatch -->

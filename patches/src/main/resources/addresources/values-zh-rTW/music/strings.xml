@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">已暂停此會話的淡入淡出效果</string>
   <string name="morphe_music_crossfade_resumed_toast">淡入淡出效果已恢復</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">啟用淡入淡出效果時，視訊模式不可用</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">在投放或鏡像音頻時，淡入淡出功能已暫停。在投放/鏡像上使用淡入淡出功能不穩定，可能無法修復。</string>
   <string name="morphe_music_crossfade_about_title">關於</string>
-  <string name="morphe_music_crossfade_about_summary">"長按隨機播放按鈕可停用/啟用
+  <string name="morphe_music_crossfade_about_summary">淡入淡出功能如何運作 — 以及何時無法運作</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">運作方式</string>
+  <string name="morphe_music_crossfade_about_how_summary">"淡入淡出功能會將一首歌的結尾與下一首歌的開頭重疊，在您選擇的時長和曲線之上，逐漸降低一首歌的音量，同時逐漸提高另一首歌的音量。
 
-功能實作由 VazerOG 提供"</string>
+它在自動進階（歌曲自行結束時）和手動跳過時運作 — 上方各有自己的切換開關。在自動進階時，淡入淡出效果會在歌曲結束前幾秒開始。
+
+需要 YouTube Music 9.x 或更新版本。"</string>
+  <string name="morphe_music_crossfade_about_best_title">最適合</string>
+  <string name="morphe_music_crossfade_about_best_summary">正常的歌曲播放和自動進階、單曲循環（歌曲會淡入淡出自身）、以及本地音頻 — 手機揚聲器、有線耳機、藍牙或 USB。</string>
+  <string name="morphe_music_crossfade_about_quirks_title">運作不太順暢</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"播放音樂影片時，僅播放音訊（如果您想暫停影片，請長按隨機播放按鈕）
+
+低於淡出時長的歌曲可能會跳過淡出效果
+
+鎖定畫面或通知可能會短暫顯示過時的狀態，尤其是在轉換過程中"</string>
+  <string name="morphe_music_crossfade_about_known_title">已知問題</string>
+  <string name="morphe_music_crossfade_about_known_summary">"將音樂影片設定為第一首歌曲，或從目前佇列外部啟動的音樂影片，可能會在僅播放音訊模式開始前短暫顯示影片
+
+暫停淡出效果以觀看音樂影片可能會導致部分影片畫面變黑（那些音訊來自影片本身的影片）。在選擇歌曲之前暫停淡出效果可以避免此情況"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">完全無法運作</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"串流或鏡像音訊（Chromecast、螢幕或音訊鏡像）—淡出效果會暫停，因為在那裡並不穩定，而且可能無法修正。
+
+YouTube Music 8.x — 淡出效果僅在 9.x 及更高版本中運行"</string>
+  <string name="morphe_music_crossfade_about_credit_title">鳴謝</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade 功能由 VazerOG 提供</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">啟用永久重複播放</string>
   <!-- layout.buttons.hideButtonsPatch -->

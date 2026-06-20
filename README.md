@@ -35,7 +35,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.32.0-dev.2](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.32.0-dev.2)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;115 patches total
+> **[v1.32.0-dev.3](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.32.0-dev.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;115 patches total
 <details>
 <summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;70 patches</summary>
 <br>
@@ -126,7 +126,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;9.23.52 | 🧪&nbsp;9.22.53 | 🧪&nbsp;9.21.51 | 9.15.51 | 8.51.51 | 7.29.52 |
+| 🧪&nbsp;9.24.51 | 🧪&nbsp;9.23.52 | 🧪&nbsp;9.22.53 | 9.15.51 | 8.51.51 | 7.29.52 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -156,7 +156,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Sanitize sharing links](#sanitize-sharing-links) | Removes the tracking query parameters from shared links. |  |
 | [Spoof video streams](#spoof-video-streams) | Adds options to spoof the client video streams to fix playback. |  |
 | [Theme](#theme) | Adds options for theming and applies a custom background theme (dark background theme defaults to pure black). | • Dark theme background color |
-| [Track crossfade](#track-crossfade) | Adds a true dual-player crossfade between consecutive tracks. |  |
+| [Track crossfade](#track-crossfade) | Adds a true dual-player crossfade between consecutive tracks. Requires YouTube Music 9.00 or newer; on older versions the patch is a no-op. |  |
 
 </details>
 

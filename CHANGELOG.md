@@ -1,3 +1,13 @@
+## [1.32.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.32.0-dev.2...v1.32.0-dev.3) (2026-06-18)
+
+### 🐛 Bug Fixes
+
+* **YouTube Music - Track crossfade:** Dismissing the queue does not stop playback, fix songs incorrectly skipped ([#1773](https://github.com/MorpheApp/morphe-patches/issues/1773)) ([206b84e](https://github.com/MorpheApp/morphe-patches/commit/206b84eb6b20f873edee53253fd8460a993a30ab))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.24.51` ([d30738a](https://github.com/MorpheApp/morphe-patches/commit/d30738a771222c8181623371a2f3b27b442dc478))
+
 ## [1.32.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.32.0-dev.1...v1.32.0-dev.2) (2026-06-17)
 
 ### 🐛 Bug Fixes
@@ -27,8 +37,11 @@
 
 ### ✨ New Features
 
-* **YouTube Music:** Add experimental support for `9.23.52` ([#1747](https://github.com/MorpheApp/morphe-patches/issues/1747)) ([31f0c4a](https://github.com/MorpheApp/morphe-patches/commit/31f0c4a503226ce7e6ffa58eb8f32af2f1f92f8c))
 * **YouTube:** Add `Disable fullscreen gesture` patch ([#1724](https://github.com/MorpheApp/morphe-patches/issues/1724)) ([00ec593](https://github.com/MorpheApp/morphe-patches/commit/00ec59355d57c66f1189b779ab6806c7dcdd5fd3))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.23.52` ([#1747](https://github.com/MorpheApp/morphe-patches/issues/1747)) ([31f0c4a](https://github.com/MorpheApp/morphe-patches/commit/31f0c4a503226ce7e6ffa58eb8f32af2f1f92f8c))
 
 ## [1.31.0](https://github.com/MorpheApp/morphe-patches/compare/v1.30.0...v1.31.0) (2026-06-13)
 

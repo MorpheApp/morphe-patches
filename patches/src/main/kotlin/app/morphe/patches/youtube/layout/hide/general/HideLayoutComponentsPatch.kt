@@ -42,6 +42,7 @@ import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_26_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_11_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_20_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.proto.elementProtoParserHookPatch
 import app.morphe.patches.youtube.misc.proto.hookElement
@@ -771,13 +772,15 @@ val hideLayoutComponentsPatch = bytecodePatch(
 
         // region hide channel tab
 
-        val channelTabBuilderMethod = ChannelTabBuilderFingerprint.method
         if (is_21_20_or_greater) {
             ChannelTabAddFingerprint.method.apply {
+                val channelTabBuilderMethod = if (is_21_25_or_greater)
+                    ChannelTabBuilderFingerprint.method
+                else ChannelTabBuilderLegacyFingerprint.method
+
                 val targetIndex = indexOfFirstInstructionReversedOrThrow {
                     val reference = getReference<MethodReference>()
-                    opcode == Opcode.INVOKE_INTERFACE &&
-                            reference?.returnType == channelTabBuilderMethod.returnType &&
+                    reference?.returnType == channelTabBuilderMethod.returnType &&
                             reference.parameterTypes == channelTabBuilderMethod.parameterTypes
                 }
                 val objectIndex = indexOfFirstInstructionReversedOrThrow(
@@ -786,7 +789,6 @@ val hideLayoutComponentsPatch = bytecodePatch(
                 )
                 val register = getInstruction<TwoRegisterInstruction>(objectIndex).registerA
                 val insertIndex = objectIndex + 1
-//              val objectReference = getInstruction<ReferenceInstruction>(objectIndex).reference
                 val free = findFreeRegister(insertIndex, register)
 
                 addInstructionsWithLabels(
@@ -808,10 +810,10 @@ val hideLayoutComponentsPatch = bytecodePatch(
                         getReference<MethodReference>()?.name == "hasNext"
                     }
 
+                    val channelTabBuilderMethod = ChannelTabBuilderLegacyFingerprint.method
                     val iteratorRegister = getInstruction<FiveRegisterInstruction>(iteratorIndex).registerC
                     val targetIndex = indexOfFirstInstructionReversedOrThrow {
                         val reference = (this as? ReferenceInstruction)?.reference as? MethodReference
-
                         opcode == Opcode.INVOKE_INTERFACE &&
                                 reference?.returnType == channelTabBuilderMethod.returnType &&
                                 reference.parameterTypes == channelTabBuilderMethod.parameterTypes

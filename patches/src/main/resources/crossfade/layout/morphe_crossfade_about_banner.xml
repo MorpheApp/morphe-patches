@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- #crossfade About-screen header banner: full-width crossfade graphic. -->
+<ImageView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:adjustViewBounds="true"
+    android:scaleType="fitCenter"
+    android:importantForAccessibility="no"
+    android:src="@drawable/morphe_crossfade_about_banner" />

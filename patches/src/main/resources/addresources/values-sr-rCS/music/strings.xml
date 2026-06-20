@@ -69,10 +69,33 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Prekid prelaznog efekta pauziran za ovu sesiju</string>
   <string name="morphe_music_crossfade_resumed_toast">Prelazni efekat nastavljen</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Video režim nije dostupan dok je omogućen prelazni efekat</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Preklapanje pesama je pauzirano tokom emitovanja ili ogledanja zvuka. Preklapanje tokom emitovanja/ogledanja je nestabilno i možda nikada neće biti rešeno.</string>
   <string name="morphe_music_crossfade_about_title">O programu</string>
-  <string name="morphe_music_crossfade_about_summary">"Pritisnite i zadržite dugme za nasumično puštanje kako biste onemogućili/omogućili
+  <string name="morphe_music_crossfade_about_summary">Kako funkcioniše preklapanje pesama – i kada ne funkcioniše</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Kako funkcioniše</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Preklapanje pesama preklapa kraj jedne pesme sa početkom sledeće, postepeno smanjujući jačinu jedne dok se druga povećava u toku trajanja i krive koju ste odabrali.
 
-Implementacija funkcije od strane VazerOG"</string>
+Radi na automatskom prelasku (kada pesma završi sama od sebe) i na ručnim preskokima – svaki ima sopstvenu opciju za uključivanje/isključivanje iznad. Na automatskom prelasku, prelazak počinje nekoliko sekundi pre kraja pesme.
+
+Zahteva YouTube Music verziju 9.x ili noviju."</string>
+  <string name="morphe_music_crossfade_about_best_title">Najbolje funkcioniše sa</string>
+  <string name="morphe_music_crossfade_about_best_summary">Normalnim puštanjem pesama i automatskim prelazom, ponavljanjem jedne pesme (pesma se preklapa sama sa sobom) i lokalnim audio fajlovima – zvučnik telefona, žičane slušalice, Bluetooth ili USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Ne radi baš kako treba</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Muzički spotovi se reprodukuju samo kao audio tokom prelaznog efekta (dugim pritiskom na dugme za mešanje pauzirajte ako želite video)
+
+Pesme kraće od trajanja prelaznog efekta mogu preskočiti prelaz
+
+Zaključani ekran ili obaveštenje mogu na kratko prikazati zastarelo stanje tokom tranzicije"</string>
+  <string name="morphe_music_crossfade_about_known_title">Poznati problemi</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Muzički spot postavljen kao prva pesma — ili pokrenut van trenutne liste — može na trenutak prikazati video pre nego što se aktivira režim samo za zvuk
+Pauziranje prelaznog efekta za gledanje muzičkog spota može ostaviti neke spotove crne (oni čiji je zvuk direktno iz spota). Pauziranje prelaznog efekta pre odabira pesme rešava problem"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Ne radi uopšte</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Emitovanje ili ogledanje zvuka (Chromecast, ogledanje ekrana ili zvuka) — prelazni efekat se pauzira jer je nestabilan i možda se nikada ne može rešiti.
+
+YouTube Music 8.x — prelazni efekat radi samo na 9.x i novijim verzijama"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Zasluge</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Funkcija prelaznog efekta od strane VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Omogući trajno ponavljanje</string>
   <!-- layout.buttons.hideButtonsPatch -->

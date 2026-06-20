@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Estomparea încrucișată întreruptă pentru această sesiune</string>
   <string name="morphe_music_crossfade_resumed_toast">Estomparea încrucișată reluată</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Modul video nu este disponibil când estomparea încrucișată este activată</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Redarea este pusă în pauză în timpul transmiterii sau oglindirii audio. Efectul de crossfade în timpul transmiterii/oglinirii este instabil și s-ar putea să nu poată fi reparat niciodată.</string>
   <string name="morphe_music_crossfade_about_title">Despre</string>
-  <string name="morphe_music_crossfade_about_summary">"Apăsați lung butonul de amestecare pentru a dezactiva/activa
+  <string name="morphe_music_crossfade_about_summary">Cum funcționează crossfade-ul — și când nu funcționează</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Cum funcționează</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade suprapune sfârșitul unei melodii cu începutul celei următoare, diminuând volumul uneia în timp ce volumul celeilalte crește, pe durata și curba alese de tine.
 
-Implementare funcționalitate de VazerOG"</string>
+Funcționează cu avansarea automată (când o melodie se termină singură) și cu salturile manuale — fiecare are propriul buton de activare/dezactivare mai sus. În cazul avansării automate, amestecul începe cu câteva secunde înainte de sfârșitul melodiei.
+
+Necesită YouTube Music 9.x sau o versiune mai nouă."</string>
+  <string name="morphe_music_crossfade_about_best_title">Funcționează cel mai bine cu</string>
+  <string name="morphe_music_crossfade_about_best_summary">Redarea normală a melodiilor, avansarea automată, repetarea unei singure melodii (melodia trece în ea însăși) și audio local — difuzoarele telefonului, căști cu fir, Bluetooth sau USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Nu funcționează perfect</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Videoclipurile muzicale se redau doar cu audio în timpul estompării încrucișate (ține apăsat butonul de amestecare pentru a pune pauză dacă dorești videoclipul)
+
+Cântecele mai scurte decât durata de estompare pot să sară peste estompare
+
+Ecranul de blocare sau notificarea poate afișa temporar o stare veche în timpul tranziției"</string>
+  <string name="morphe_music_crossfade_about_known_title">Probleme cunoscute</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Un videoclip muzical setat ca prim cântec — sau unul pornit din afara cozii curente — poate apărea scurt ca videoclip înainte ca modul doar audio să intre în funcțiune
+
+Pauza estompării încrucișate pentru a urmări un videoclip muzical poate lăsa unele videoclipuri negre (cele al cărui audio provine din videoclipul însuși). Pauza estompării încrucișate înainte de a alege cântecul evită acest lucru"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Nu funcționează deloc</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Difuzarea sau oglindirea audio (Chromecast, oglindirea ecranului sau audio) — estomparea încrucișată se pune în pauză deoarece este instabilă acolo și s-ar putea să nu poată fi reparată niciodată.
+
+YouTube Music 8.x — estomparea încrucișată funcționează doar pe 9.x și versiunile ulterioare"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Credit</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Funcția de estompare încrucișată de VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Activează repetarea permanentă</string>
   <!-- layout.buttons.hideButtonsPatch -->

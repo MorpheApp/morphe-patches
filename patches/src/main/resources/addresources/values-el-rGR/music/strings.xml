@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Διακοπή της σταδιακής μετάβασης ήχου για αυτήν την περίοδο λειτουργίας</string>
   <string name="morphe_music_crossfade_resumed_toast">Συνέχιση της σταδιακής μετάβασης ήχου</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Η λειτουργία βίντεο δεν είναι διαθέσιμη όταν είναι ενεργοποιημένη η σταδιακή μετάβαση ήχου</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Η διαβάθμιση παύεται κατά τη διάρκεια μετάδοσης ή αναπαραγωγής ήχου. Η διαβάθμιση κατά τη διάρκεια μετάδοσης/αναπαραγωγής είναι ασταθής και ενδέχεται να μην είναι ποτέ διορθώσιμη.</string>
   <string name="morphe_music_crossfade_about_title">Πληροφορίες</string>
-  <string name="morphe_music_crossfade_about_summary">"Πατήστε παρατεταμένα το κουμπί ανακατέματος για να απενεργοποιήσετε/ενεργοποιήσετε
+  <string name="morphe_music_crossfade_about_summary">Πώς λειτουργεί η διαβάθμιση — και πότε δεν λειτουργεί</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Πώς λειτουργεί</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Η διαβάθμιση επικαλύπτει το τέλος ενός τραγουδιού με την αρχή του επόμενου, μειώνοντας σταδιακά την ένταση του πρώτου καθώς αυξάνεται η ένταση του δεύτερου, ανάλογα με τη διάρκεια και την καμπύλη που έχετε επιλέξει.
 
-Υλοποίηση λειτουργίας από VazerOG"</string>
+Λειτουργεί με αυτόματη μετάβαση (όταν ένα τραγούδι τελειώνει μόνο του) και με χειροκίνητη παράλειψη — κάθε λειτουργία έχει το δικό της διακόπτη παραπάνω. Στην αυτόματη μετάβαση, η ανάμειξη ξεκινά λίγα δευτερόλεπτα πριν το τέλος του τραγουδιού.
+
+Απαιτείται YouTube Music 9.x ή νεότερη έκδοση."</string>
+  <string name="morphe_music_crossfade_about_best_title">Λειτουργεί καλύτερα με</string>
+  <string name="morphe_music_crossfade_about_best_summary">Κανονική αναπαραγωγή τραγουδιού, αυτόματη μετάβαση, επανάληψη ενός τραγουδιού (το τραγούδι διαβαθμίζεται στον εαυτό του) και τοπικό ήχο — ηχείο τηλεφώνου, ενσύρματα ακουστικά, Bluetooth ή USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Δεν λειτουργεί απολύτως σωστά</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Τα μουσικά βίντεο παίζουν μόνο ήχο κατά τη διάρκεια του crossfade (πατήστε παρατεταμένα το κουμπί ανακατέματος για να κάνετε παύση αν θέλετε να δείτε το βίντεο).
+
+Τραγούδια με διάρκεια μικρότερη από τη διάρκεια του crossfade ενδέχεται να παραλείψουν το crossfade.
+
+Η κλειδωμένη οθόνη ή η ειδοποίηση ενδέχεται να δείξουν στιγμιαία την προηγούμενη κατάσταση κατά τη μετάβαση."</string>
+  <string name="morphe_music_crossfade_about_known_title">Γνωστά προβλήματα</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Ένα μουσικό βίντεο που έχει οριστεί ως το πρώτο τραγούδι — ή ένα που ξεκίνησε από έξω από την τρέχουσα λίστα αναπαραγώγησης — ενδέχεται να εμφανιστεί στιγμιαία ως βίντεο πριν ενεργοποιηθεί η λειτουργία αναπαραγωγής μόνο ήχου.
+
+Η παύση του crossfade για να παρακολουθήσετε ένα μουσικό βίντεο μπορεί να αφήσει ορισμένα βίντεο μαύρα (αυτά των οποίων ο ήχος προέρχεται από το ίδιο το βίντεο). Η παύση του crossfade πριν επιλέξετε το τραγούδι το αποφεύγει."</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Δεν λειτουργεί καθόλου</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Μετάδοση ή κατοπτρισμός ήχου (Chromecast, κατοπτρισμός οθόνης ή ήχου) — το crossfade κάνει παύση επειδή είναι ασταθές εκεί και ενδέχεται να μην διορθωθεί ποτέ.
+
+YouTube Music 8.x — το crossfade λειτουργεί μόνο στις εκδόσεις 9.x και νεότερες"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Εύσημα</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Λειτουργία Crossfade από τον VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Ενεργοποίηση μόνιμης επανάληψης</string>
   <!-- layout.buttons.hideButtonsPatch -->

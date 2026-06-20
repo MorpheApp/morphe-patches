@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade gepauzeerd voor deze sessie</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade hervat</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videomodus is niet beschikbaar wanneer crossfade is ingeschakeld</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Crossfade is gepauzeerd tijdens het casten of spiegelen van audio. Crossfade over cast/mirror is instabiel en kan mogelijk niet worden opgelost.</string>
   <string name="morphe_music_crossfade_about_title">Over</string>
-  <string name="morphe_music_crossfade_about_summary">"Houd de shuffle-knop ingedrukt om in/uit te schakelen
+  <string name="morphe_music_crossfade_about_summary">Hoe crossfade werkt – en wanneer het niet werkt</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Hoe het werkt</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade laat het einde van het ene nummer overlappen met het begin van het volgende, waarbij het ene nummer zachter wordt terwijl het andere omhoog komt over de door jou gekozen duur en curve.
 
-Functie-implementatie door VazerOG"</string>
+Het werkt op automatisch doorspelen (wanneer een nummer vanzelf eindigt) en op handmatig overslaan - elk heeft zijn eigen schakelaar hierboven. Bij automatisch doorspelen begint de overgang een paar seconden voordat het nummer eindigt.
+
+Vereist YouTube Music 9.x of nieuwer."</string>
+  <string name="morphe_music_crossfade_about_best_title">Werkt het beste met</string>
+  <string name="morphe_music_crossfade_about_best_summary">Normaal afspelen van nummer naar nummer en automatisch doorspelen, herhaal-één (het nummer vervaagt in zichzelf), en lokale audio – telefoonspeaker, bedrade hoofdtelefoon, Bluetooth of USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Werkt niet helemaal goed</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Muziekvideo's worden afgespeeld als audio-only terwijl crossfade is ingeschakeld (houd shuffle ingedrukt om te pauzeren als je de video wilt zien)
+
+Nummers die korter zijn dan de duur van je fade, kunnen de fade overslaan
+
+Het vergrendelscherm of de melding kan kort een verouderde status laten zien tijdens de overgang"</string>
+  <string name="morphe_music_crossfade_about_known_title">Bekende problemen</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Een muziekvideo die als eerste nummer is ingesteld - of die van buiten de huidige wachtrij is gestart - kan kort als video worden weergegeven voordat de audio-only modus wordt ingeschakeld
+
+Pauzeren van crossfade om een muziekvideo te bekijken, kan sommige video's zwart maken (de video's waarvan de audio rechtstreeks van de video komt). Pauzeren van crossfade voordat je het nummer kiest, voorkomt dit"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Werkt helemaal niet</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Casten of spiegelen van audio (Chromecast, scherm of audiospiegeling) - crossfade pauzeert omdat het daar onstabiel is en mogelijk nooit kan worden opgelost.
+
+YouTube Music 8.x - crossfade werkt alleen op 9.x en nieuwer"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Credit</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade-functie door VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Permanent herhalen inschakelen</string>
   <!-- layout.buttons.hideButtonsPatch -->

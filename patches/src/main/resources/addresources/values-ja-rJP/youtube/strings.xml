@@ -44,9 +44,9 @@ Second \"item\" text"</string>
   <!-- layout.disableLayoutUpdatesPatch -->
   <string name="morphe_disable_layout_updates_title">レイアウトの更新を無効化</string>
   <string name="morphe_disable_layout_updates_summary">サーバーによるアプリのレイアウトの更新を防ぎます</string>
-  <string name="morphe_disable_layout_updates_user_dialog_message">"アプリのレイアウトは、初回インストール時に使用されていたレイアウトに戻ります。
+  <string name="morphe_disable_layout_updates_user_dialog_message">"アプリのレイアウトは、初回インストール時に使用されるレイアウトに戻ります。
 
-一部のサーバー側からのレイアウトの更新が初回インストールの状態に戻らない場合があります。
+サーバー側からのレイアウトの更新の一部が残り、初回インストールの状態に戻らない場合があります。
 
 以下の変更を伴います:
 • プレイヤーのフライアウト メニュー (または関連設定) 内のコンポーネントが正常に動作しない場合がある。
@@ -234,7 +234,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_home_title">ホームの動画をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_search_title">検索結果の動画をキーワードで除外</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">登録チャンネルの動画をキーワードで除外</string>
-  <string name="morphe_hide_keyword_content_comments_title">キーワードでコメントを非表示</string>
+  <string name="morphe_hide_keyword_content_comments_title">コメントをキーワードで除外</string>
   <string name="morphe_hide_keyword_content_phrases_title">キーワード</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -244,7 +244,7 @@ Second \"item\" text"</string>
 
 単語の途中に大文字が含まれる場合は、大文字のまま入力する必要があります (例: iPhone、TikTok、LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">キーワード フィルタリングについて</string>
-  <string name="morphe_hide_keyword_content_about_summary">"ホーム / 登録チャンネル / 検索でキーワードに合致する動画を除外します
+  <string name="morphe_hide_keyword_content_about_summary">"ホーム / 登録チャンネル / 検索結果でキーワードに合致する動画を除外します。また、キーワードに合致する、コメント欄のコメントも除外することができます
 
 制限事項:
 • ショート動画はチャンネル名の合致では除外できない
@@ -278,7 +278,7 @@ Second \"item\" text"</string>
   <string name="morphe_share_copy_link_with_timestamp_button_success">タイムスタンプ付きリンクをコピーしました</string>
   <string name="morphe_copy_video_link_button_title">「動画のリンクをコピー」ボタンを表示</string>
   <string name="morphe_copy_video_link_button_summary">タップすると動画のリンクを、長押しするとタイムスタンプ付きリンクをそれぞれコピーします</string>
-  <string name="morphe_copy_video_link_with_timestamp_button_title">タップ時にタイムスタンプを付けてコピー</string>
+  <string name="morphe_copy_video_link_with_timestamp_button_title">タップ時にタイムスタンプ付きをコピー</string>
   <string name="morphe_copy_video_link_with_timestamp_button_summary">「動画のリンクをコピー」ボタンのタップと長押しの動作を入れ替えます</string>
   <!-- interaction.dialog.removeViewerDiscretionDialogPatch -->
   <string name="morphe_remove_viewer_discretion_dialog_title">「ご自身の責任」ダイアログを削除</string>
@@ -353,7 +353,7 @@ Second \"item\" text"</string>
   <string name="morphe_save_to_watch_later_already_exists_toast">この動画は既に「後で見る」に保存されています</string>
   <string name="morphe_save_to_watch_later_error_toast">この動画は「後で見る」に保存できません</string>
   <string name="morphe_queue_restore_title">セッションをまたいでキューを保持</string>
-  <string name="morphe_queue_restore_summary">アプリを終了または再起動してもキューを保持します</string>
+  <string name="morphe_queue_restore_summary">アプリを終了または再起動したときにキューを保持します</string>
   <string name="morphe_swap_save_and_queue_actions_title">「後で見るに保存」ボタンの動作を入れ替える</string>
   <string name="morphe_swap_save_and_queue_actions_summary">タップするとキュー オプションを表示します。長押しすると、動画を「後で見る」に保存します。</string>
   <string name="morphe_queue_manager_check_failed_auth">ログインしていません</string>
@@ -386,7 +386,7 @@ Second \"item\" text"</string>
   <string name="morphe_disable_precise_seeking_gesture_title">精密シーク ジェスチャーを無効化</string>
   <string name="morphe_disable_precise_seeking_gesture_summary">シークバーを上にスワイプすると有効になる「再生位置の細かい調整」モードを無効にします</string>
   <!-- interaction.seekbar.livestreamDvrPatch -->
-  <string name="morphe_livestream_dvr_title">ライブ配信で DVR を強制的に有効化</string>
+  <string name="morphe_livestream_dvr_title">すべてのライブ配信で DVR を有効化</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_livestream_dvr_summary">"本来はシーク機能が制限される場合も含め、すべてのライブ配信でシーク機能が利用可能になります
 
@@ -401,7 +401,7 @@ Second \"item\" text"</string>
   <string name="morphe_slide_to_seek_summary">動画プレーヤーの画面を長押ししたときに倍速再生ではなくスライドによるシークが有効になります。</string>
   <!-- interaction.seekbar.enableTapToSeekPatch -->
   <string name="morphe_tap_to_seek_title">タップによるシークを有効化</string>
-  <string name="morphe_tap_to_seek_summary">シークバーをタップすると、ドラッグなしでタップした位置に移動します</string>
+  <string name="morphe_tap_to_seek_summary">シークバーをタップすると、タップした位置に移動します</string>
   <!-- interaction.swipecontrols.swipeControlsPatch -->
   <string name="morphe_swipe_brightness_title">明るさジェスチャーを有効化</string>
   <string name="morphe_swipe_brightness_summary">全画面表示モードで画面左側を縦にスワイプして明るさを調節します</string>
@@ -423,16 +423,16 @@ Second \"item\" text"</string>
   <string name="morphe_swipe_overlay_timeout_title">オーバーレイの表示時間</string>
   <string name="morphe_swipe_overlay_timeout_summary">スワイプ オーバーレイが表示される時間 (ミリ秒)</string>
   <string name="morphe_swipe_overlay_background_opacity_title">オーバーレイの背景の透明度</string>
-  <string name="morphe_swipe_overlay_background_opacity_summary">オーバーレイの背景の透明度を設定します (0-100: 0が透明)</string>
+  <string name="morphe_swipe_overlay_background_opacity_summary">スワイプ オーバーレイの背景の透明度を設定します (0-100: 0が透明)</string>
   <string name="morphe_swipe_overlay_background_opacity_invalid_toast">スワイプの透明度の範囲: 0-100</string>
-  <string name="morphe_swipe_overlay_progress_brightness_color_title">オーバーレイの明るさグラフの色</string>
+  <string name="morphe_swipe_overlay_progress_brightness_color_title">明るさグラフの色</string>
   <string name="morphe_swipe_overlay_progress_brightness_color_summary">明るさジェスチャー中の現在値を視覚的に表示するグラフの色を設定します</string>
-  <string name="morphe_swipe_overlay_progress_volume_color_title">オーバーレイの音量グラフの色</string>
+  <string name="morphe_swipe_overlay_progress_volume_color_title">音量グラフの色</string>
   <string name="morphe_swipe_overlay_progress_volume_color_summary">音量ジェスチャー中の現在値を視覚的に表示するグラフの色を設定します</string>
-  <string name="morphe_swipe_overlay_progress_speed_color_title">オーバーレイの再生速度グラフの色</string>
+  <string name="morphe_swipe_overlay_progress_speed_color_title">再生速度グラフの色</string>
   <string name="morphe_swipe_overlay_progress_speed_color_summary">再生速度ジェスチャー中の現在値を視覚的に表示するグラフの色を設定します</string>
   <string name="morphe_swipe_text_overlay_size_title">オーバーレイのテキストサイズ</string>
-  <string name="morphe_swipe_text_overlay_size_summary">画面上のテキストの大きさを設定します (1-30)</string>
+  <string name="morphe_swipe_text_overlay_size_summary">スワイプ オーバーレイに表示されるテキストの大きさを設定します (1-30)</string>
   <string name="morphe_swipe_text_overlay_size_invalid_toast">テキストサイズの範囲は 1-30 です</string>
   <string name="morphe_swipe_threshold_title">スワイプのしきい値</string>
   <string name="morphe_swipe_threshold_summary">ジェスチャーとして判定される最小のスワイプ距離を設定します</string>
@@ -525,16 +525,16 @@ Second \"item\" text"</string>
   <string name="morphe_set_caption_cookies_title">字幕 Cookie を使用</string>
   <string name="morphe_set_caption_cookies_summary">"必要な Cookie が足りないために自動翻訳字幕が利用できない場合がある、という純正 YouTube アプリの不具合を修正します
 
-「字幕 Cookie」を取得する必要があります"</string>
+[字幕 Cookie] を設定する必要があります"</string>
   <string name="morphe_caption_cookies_title">字幕 Cookie</string>
-  <string name="morphe_caption_cookies_summary">Timed Text API (字幕データ API) リクエストの送信に使用される Cookie</string>
+  <string name="morphe_caption_cookies_summary">Timed Text API (字幕データ API) リクエストの送信に必要な Cookie</string>
   <string name="morphe_get_caption_cookies_title">字幕 Cookie を取得</string>
   <string name="morphe_get_caption_cookies_summary">Cookie を取得するには、ここをタップしてください</string>
   <string name="morphe_get_caption_cookies_failed">Cookie の取得に失敗しました</string>
   <string name="morphe_get_caption_cookies_duplicate">Cookie が既に存在します</string>
   <string name="morphe_get_caption_cookies_success">Cookie の更新に成功しました</string>
   <!-- layout.captions.transcriptPatch -->
-  <string name="morphe_fix_transcript_title">文字起こしを修正</string>
+  <string name="morphe_fix_transcript_title">文字起こしの不具合を修正</string>
   <string name="morphe_fix_transcript_summary">文字起こしの読み込み失敗の原因となる前提条件チェックのエラーを修正します</string>
   <!-- layout.buttons.navigation.navigationButtonsPatch -->
   <string name="morphe_navigation_buttons_screen_title">ナビゲーション ボタン</string>
@@ -726,7 +726,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_player_related_videos_overlay_title">「その他の動画」オーバーレイを非表示</string>
   <string name="morphe_hide_player_related_videos_overlay_summary">横画面の全画面表示モードで画面を上にスワイプすると表示される、横一列のスクロールする「その他の動画」のリストを非表示にします</string>
   <!-- layout.hide.time.hideTimestampPatch -->
-  <string name="morphe_hide_timestamp_title">動画のタイムスタンプを非表示</string>
+  <string name="morphe_hide_timestamp_title">動画の再生位置 (時間) を非表示</string>
   <!-- layout.panels.popup.disablePlayerPopupPanelsPatch -->
   <string name="morphe_disable_player_popup_panels_title">プレーヤー ポップアップ パネルを無効化</string>
   <string name="morphe_disable_player_popup_panels_summary">プレイリストやライブ配信のチャット欄の自動表示を無効にします</string>
@@ -746,7 +746,7 @@ Second \"item\" text"</string>
   <string name="morphe_open_videos_fullscreen_portrait_title">縦画面の全画面表示で動画を開く</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->
   <string name="morphe_player_overlay_opacity_title">プレーヤー オーバーレイの透明度</string>
-  <string name="morphe_player_overlay_opacity_summary">オーバーレイの透明度を設定します (0-100: 0 が透明)</string>
+  <string name="morphe_player_overlay_opacity_summary">プレーヤー オーバーレイの透明度を設定します (0-100: 0 が透明)</string>
   <string name="morphe_player_overlay_opacity_invalid_toast">プレーヤーの透明度の範囲: 0-100</string>
   <!-- layout.returnyoutubedislike.returnYouTubeDislikePatch -->
   <!-- Brief notification (toast) shown if network connection times out. Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
@@ -886,7 +886,7 @@ Second \"item\" text"</string>
   <string name="morphe_sb_segments_intro">幕間 / オープニング (OP)</string>
   <string name="morphe_sb_segments_intro_summary">実際のコンテンツを含まない区間。一時停止、静止画、繰り返しアニメーションなど。情報を含むトランジッション (場面転換) は、このカテゴリには含まれません</string>
   <string name="morphe_sb_segments_outro">終了画面 / クレジット (ED)</string>
-  <string name="morphe_sb_segments_outro_summary">クレジットまたは YouTube の終了画面が表示される場面。情報を含む、動画の結論、まとめ部分は、このカテゴリには含まれません</string>
+  <string name="morphe_sb_segments_outro_summary">クレジットまたは YouTube の終了画面が表示される場面。動画の結論、まとめ部分などの情報を含む場面は、このカテゴリには含まれません</string>
   <string name="morphe_sb_segments_hook">フック / あいさつ</string>
   <string name="morphe_sb_segments_hook_summary">今後の動画の、ナレーション付きの予告編および開幕と別れのあいさつ。他の部分に存在しない内容や情報を追加する場面は、このカテゴリには含まれません</string>
   <string name="morphe_sb_segments_preview">予告編 / 総集編</string>
@@ -1100,7 +1100,7 @@ Automotive レイアウト
   <string name="morphe_shorts_autoplay_background_summary">バックグラウンドでのショート動画の再生方法を、一つの動画をくりかえし再生する「ループ再生」から、次々と動画を移動しながら再生する「自動再生」に変更します</string>
   <!-- layout.miniplayer.miniplayerPatch -->
   <string name="morphe_miniplayer_disable_resuming_title">ミニプレーヤーの再開を無効化</string>
-  <string name="morphe_miniplayer_disable_resuming_summary">アプリの起動にミニプレーヤーで動画を再開する、YouTube Premium 機能「続きを見る」を無効にします</string>
+  <string name="morphe_miniplayer_disable_resuming_summary">アプリの起動にミニプレーヤーで動画を再開する YouTube Premium 機能「続きを見る」を無効にします</string>
   <string name="morphe_miniplayer_screen_title">ミニプレーヤー</string>
   <string name="morphe_miniplayer_screen_summary">アプリ内に表示される小さな画面のプレーヤーの外観と動作をカスタマイズします</string>
   <string name="morphe_miniplayer_type_title">ミニプレーヤーの種類</string>
@@ -1114,15 +1114,15 @@ Automotive レイアウト
   <string name="morphe_miniplayer_type_entry_7">新タイプ 4</string>
   <string name="morphe_miniplayer_disable_rounded_corners_title">ミニプレーヤーを直角化</string>
   <string name="morphe_miniplayer_disable_drag_and_drop_title">ドラッグ &amp; ドロップを無効化</string>
-  <string name="morphe_miniplayer_disable_drag_and_drop_summary">ミニプレーヤーをドラッグして画面の四隅に移動する機能を無効にします</string>
+  <string name="morphe_miniplayer_disable_drag_and_drop_summary">ミニプレーヤーをドラッグして画面の四隅を移動する機能を無効にします</string>
   <string name="morphe_miniplayer_disable_horizontal_drag_title">横方向ドラッグ ジェスチャーを無効化</string>
-  <string name="morphe_miniplayer_disable_horizontal_drag_summary">画面の左端または右端でミニプレーヤーを画面外の横方向にスワイプして最小化する機能を無効にします</string>
+  <string name="morphe_miniplayer_disable_horizontal_drag_summary">ミニプレーヤーを横方向に画面外までドラッグして最小化および一時停止する機能を無効にします</string>
   <string name="morphe_miniplayer_hide_overlay_buttons_title">オーバーレイ ボタンを非表示</string>
   <string name="morphe_miniplayer_width_dip_title">デフォルトのサイズ</string>
-  <string name="morphe_miniplayer_width_dip_summary">画面に表示される際の大きさを設定します (ピクセル)</string>
+  <string name="morphe_miniplayer_width_dip_summary">呼び出される際のミニプレーヤーの横幅を設定します (ピクセル)</string>
   <string name="morphe_miniplayer_width_dip_invalid_toast">ピクセルサイズの範囲は %1$s-%2$s です</string>
   <string name="morphe_miniplayer_opacity_title">オーバーレイの透明度</string>
-  <string name="morphe_miniplayer_opacity_summary">オーバーレイの透明度を設定します (0-100: 0 が透明)</string>
+  <string name="morphe_miniplayer_opacity_summary">ミニプレーヤー オーバーレイの透明度を設定します (0-100: 0 が透明)</string>
   <string name="morphe_miniplayer_opacity_invalid_toast">ミニプレーヤーの透明度の範囲: 0-100</string>
   <!-- layout.theme.themePatch -->
   <string name="morphe_gradient_loading_screen_title">グラデーションの読み込み画面を有効化</string>
@@ -1188,7 +1188,7 @@ Automotive レイアウト
   <string name="morphe_spoof_device_dimensions_user_dialog_message">この機能を有効にすると、動画のカクつき、バッテリー消費の悪化、および予期せぬ副作用を引き起こす可能性があります。</string>
   <!-- misc.hapticfeedback.disableHapticFeedbackPatch -->
   <string name="morphe_disable_haptic_feedback_title">触覚フィードバック</string>
-  <string name="morphe_disable_haptic_feedback_summary">デバイスを振動させて触覚で伝える機能に対応する操作を設定します</string>
+  <string name="morphe_disable_haptic_feedback_summary">デバイスが反応して振動するユーザー操作を設定します</string>
   <string name="morphe_disable_haptic_feedback_chapters_title">チャプターの触覚フィードバックを無効化</string>
   <string name="morphe_disable_haptic_feedback_precise_seeking_title">精密シークの触覚フィードバックを無効化</string>
   <string name="morphe_disable_haptic_feedback_seek_undo_title">シーク取り消しの触覚フィードバックを無効化</string>
@@ -1199,7 +1199,7 @@ Automotive レイアウト
   <string name="morphe_notification_media_screen_summary">通知パネルとロック画面に表示されるプレーヤーのコントロールをカスタマイズします</string>
   <string name="morphe_hide_notification_media_prev_next_title">前の動画ボタンと次の動画ボタンを非表示</string>
   <string name="morphe_hide_notification_media_prev_next_summary">通知パネルとロック画面に表示されるプレーヤーの前の動画ボタンと次の動画ボタンを非表示にします。ヘッドホンからの操作によって前の動画 / 次の動画へ移動する機能も無効にします</string>
-  <string name="morphe_disable_notification_media_seekbar_title">シークバーを無効化</string>
+  <string name="morphe_disable_notification_media_seekbar_title">シークバーでのシーク操作を無効化</string>
   <string name="morphe_disable_notification_media_seekbar_summary">通知パネルとロック画面に表示されるプレーヤーのシークバーでのシーク操作を無効にします</string>
   <!-- misc.gms.accountCredentialsInvalidTextPatch -->
   <string name="microg_offline_account_login_error">最近アカウントのログイン情報を変更した場合は、MicroG をアンインストールして再インストールしてください。</string>

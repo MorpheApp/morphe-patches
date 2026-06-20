@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Overgang pause for denne sesjonen</string>
   <string name="morphe_music_crossfade_resumed_toast">Overgang gjenopptas</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videomodus er ikke tilgjengelig når overgang er aktivert</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Overganger er satt på pause under avspilling eller speiling av lyd. Overganger under avspilling/speiling er ustabile og kan være umulige å fikse.</string>
   <string name="morphe_music_crossfade_about_title">Sesjonskontroll er deaktivert</string>
-  <string name="morphe_music_crossfade_about_summary">"Trykk og hold inne blandingsknappen for å deaktivere/aktivere
+  <string name="morphe_music_crossfade_about_summary">Hvordan overganger fungerer – og når de ikke gjør det</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Hvordan det fungerer</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Overganger overlapper slutten av en sang med starten på den neste, og demper den ene ned mens den andre tones opp over den valgte varigheten og kurven.
 
-Funksjonsimplementering av VazerOG"</string>
+Det kjøres på auto-avansering (når en sang slutter av seg selv) og på manuelle hopp – hver har sin egen bryter ovenfor. Ved auto-avansering starter overgangen noen sekunder før sangen slutter.
+
+Krever YouTube Music 9.x eller nyere."</string>
+  <string name="morphe_music_crossfade_about_best_title">Fungerer best med</string>
+  <string name="morphe_music_crossfade_about_best_summary">Normal sang-til-sang-avspilling og auto-avansering, gjenta én (sangen tones over i seg selv), og lokal lyd – telefonhøyttaler, kablede hodetelefoner, Bluetooth eller USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Fungerer ikke helt som den skal</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Musikkvideoer spilles av som lyd-kun mens crossfade er på (trykk lenge på shuffle for å pause hvis du vil ha videoen)
+
+Sanger som er kortere enn varigheten på falefunksjonen kan hoppe over falefunksjonen
+
+Låseskjermen eller varslingsfeltet kan kort vise en utdatert tilstand midt i overgangen"</string>
+  <string name="morphe_music_crossfade_about_known_title">Kjente problemer</string>
+  <string name="morphe_music_crossfade_about_known_summary">"En musikkvideo som er satt som den første sangen – eller en som startes utenfor den gjeldende køen – kan kort vises som video før lyd-kun-modus trer i kraft
+
+Paus crossfade for å se en musikkvideo kan føre til at noen videoer blir svarte (de der lyden kommer fra selve videoen). Å stanse crossfade før du velger sangen unngår dette"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Fungerer ikke i det hele tatt</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Kasting eller speiling av lyd (Chromecast, skjerm- eller lydspeiling) – crossfade pauses fordi det er ustabilt der og kan hende det aldri blir fikset.
+
+YouTube Music 8.x – crossfade kjører bare på 9.x og nyere"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Credit</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade-funksjon av VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktiver permanent gjentakelse</string>
   <!-- layout.buttons.hideButtonsPatch -->

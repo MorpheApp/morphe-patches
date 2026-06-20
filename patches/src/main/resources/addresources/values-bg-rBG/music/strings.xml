@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Прекъснато преливане за тази сесия</string>
   <string name="morphe_music_crossfade_resumed_toast">Преливането е възобновено</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Видео режимът не е достъпен, докато преливането е активирано</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Възпроизвеждането с преливане се спира при излъчване или споделяне на аудио. Преливането при излъчване/споделяне е нестабилно и може никога да не бъде поправено.</string>
   <string name="morphe_music_crossfade_about_title">Относно</string>
-  <string name="morphe_music_crossfade_about_summary">"Натиснете и задръжте бутона за разбъркване, за да деактивирате/активирате
+  <string name="morphe_music_crossfade_about_summary">Как работи преливането — и кога не работи</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Как работи</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Преливането наслагва края на една песен с началото на следващата, намалявайки силата на звука на едната, докато другата се увеличава в рамките на избраната от вас продължителност и крива.
 
-Изпълнение на функцията от VazerOG"</string>
+Работи с автоматично преминаване към следващата песен (когато една песен приключи от само себе си) и с ръчно прескачане — всяко от тях има собствен превключвател отгоре. При автоматично преминаване към следващата песен смесването започва няколко секунди преди края на песента.
+
+Изисква YouTube Music 9.x или по-нова версия."</string>
+  <string name="morphe_music_crossfade_about_best_title">Най-добре работи с</string>
+  <string name="morphe_music_crossfade_about_best_summary">Стандартно възпроизвеждане на песен след песен и автоматично преминаване към следващата, повторение на една песен (песента преминава в себе си) и локално аудио — вграден говорител на телефона, живи слушалки, Bluetooth или USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Не работи съвсем правилно</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Музикалните видеа се възпроизвеждат само с аудио, докато е включен кросфейд (натиснете дълго бутона за разбъркване, за да ги спрете, ако искате да видите видеото)
+
+Песните, които са по-кратки от продължителността на избледняването, може да пропуснат избледняването
+
+Заключеният екран или известието може за кратко да покаже остаряло състояние по време на прехода"</string>
+  <string name="morphe_music_crossfade_about_known_title">Известни проблеми</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Музикално видео, зададено като първа песен — или стартирано извън текущата опашка — може за кратко да се покаже като видео, преди да се включи режимът само с аудио
+
+Спирането на кросфейда, за да гледате музикално видео може да направи някои видеа черни (тези, чийто звук идва от самото видео). Спирането на кросфейда, преди да изберете песента, ще избегне това"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Не работи изобщо</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Предаването или огледалното изображение на аудио (Chromecast, екранно или аудио огледално изображение) — кросфейдът спира, защото е нестабилен там и може никога да не бъде поправен.
+
+YouTube Music 8.x — кросфейдът работи само в 9.x и по-нови версии"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Заслуга</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Функция за кросфейд от VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Включи постоянно повтаряне</string>
   <!-- layout.buttons.hideButtonsPatch -->

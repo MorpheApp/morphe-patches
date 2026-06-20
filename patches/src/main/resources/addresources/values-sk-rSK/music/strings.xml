@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Prechodové zmiznutie zvuku pozastavené v tejto relácii</string>
   <string name="morphe_music_crossfade_resumed_toast">Prechodové zmiznutie zvuku obnovené</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Režim videa nie je dostupný, keď je zapnuté prechodové zmiznutie zvuku</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Funkcia plynulého prechodu je pozastavená počas vysielania alebo zrkadlenia zvuku. Plynulý prechod počas vysielania/zrkadlenia je nestabilný a nemusí sa to nikdy podariť opraviť.</string>
   <string name="morphe_music_crossfade_about_title">O aplikácii</string>
-  <string name="morphe_music_crossfade_about_summary">"Dlhým stlačením tlačidla náhodného výberu zapnete/vypnete funkciu.
+  <string name="morphe_music_crossfade_about_summary">Ako funguje plynulý prechod – a kedy nefunguje</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Ako to funguje</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Plynulý prechod prekrýva koniec jednej skladby s začiatkom ďalšej, pričom postupne znižuje hlasitosť jednej skladby a zvyšuje hlasitosť druhej počas vami zvolenej dĺžky a krivky.
 
-Implementácia funkcie od VazerOG"</string>
+Funguje pri automatickom prechode (keď sa skladba skončí sama) a pri manuálnom preskočení – obe majú svoje vlastné prepínače vyššie. Pri automatickom prechode sa miešanie začne niekoľko sekúnd pred koncom skladby.
+
+Vyžaduje YouTube Music 9.x alebo novší."</string>
+  <string name="morphe_music_crossfade_about_best_title">Najlepšie funguje s</string>
+  <string name="morphe_music_crossfade_about_best_summary">Štandardné prehrávanie skladieb, automatický prechod, opakovanie jednej skladby (skladba plynulo prechádza do seba) a lokálne audio – reproduktor telefónu, káblové slúchadlá, Bluetooth alebo USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Nefunguje celkom správne</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Hudobné videá sa počas zapnutého crossfade prehrávajú iba so zvukom (dlhým stlačením tlačidla náhodného výberu pozastavíte, ak chcete aj video)
+
+Piesne kratšie ako trvanie prechodu môžu vynechať plynulý prechod
+
+Obrazovka uzamknutia alebo notifikácia môžu na krátky čas zobrazovať zastaraný stav počas prechodu"</string>
+  <string name="morphe_music_crossfade_about_known_title">Známe problémy</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Hudobné video nastavené ako prvá pieseň – alebo spustené mimo aktuálnej fronty – sa môže na krátky čas zobraziť ako video, kým sa neaktivuje režim iba so zvukom
+
+Pauznutie crossfade na prezeranie hudobného videa môže spôsobiť, že niektoré videá zostanú čierne (tie, ktorých zvuk pochádza priamo z videa). Pauznutie crossfade pred výberom skladby tomu zabráni"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Nefunguje vôbec</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Prehrávanie obsahu pomocou technológie Cast alebo zrkadlenie obrazovky (Chromecast, zrkadlenie obrazovky alebo zvuku) – crossfade sa pozastaví, pretože to nie je stabilné a nemusí to byť nikdy opravené.
+
+YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Poďakovanie</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Funkcia Crossfade od VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Zapnúť permanentné opakovanie prehrávania</string>
   <!-- layout.buttons.hideButtonsPatch -->

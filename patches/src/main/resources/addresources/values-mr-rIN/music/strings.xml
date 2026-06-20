@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">या सत्रासाठी क्रॉसफेड थांबवले</string>
   <string name="morphe_music_crossfade_resumed_toast">क्रॉसफेड पुन्हा सुरू झाले</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">क्रॉसफेड सक्षम असताना व्हिडिओ मोड उपलब्ध नाही</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">गाणी किंवा ऑडिओ मिरर करताना क्रॉसफेड थांबवले जाते. कास्ट/मिररवरील क्रॉसफेड अस्थिर आहे आणि ते कदाचित कधीही ठीक होऊ शकत नाही.</string>
   <string name="morphe_music_crossfade_about_title">बद्दल</string>
-  <string name="morphe_music_crossfade_about_summary">"शफल बटण दाबून ठेवा, ज्यामुळे ते अक्षम/सक्षम होईल
+  <string name="morphe_music_crossfade_about_summary">क्रॉसफेड कसे कार्य करते - आणि ते कधी कार्य करत नाही</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">हे कसे कार्य करते</string>
+  <string name="morphe_music_crossfade_about_how_summary">"क्रॉसफेड एका गाण्याच्या शेवटी आणि पुढील गाण्याच्या सुरुवातीला overlap करतो, एका गाण्याचा आवाज कमी करतो आणि दुसरा तुमच्या निवडलेल्या कालावधी आणि वक्रानुसार वाढवतो.
 
-हे वैशिष्ट्य VazerOG द्वारे लागू केले गेले आहे"</string>
+हे ऑटो-ॲडव्हान्सवर (जेव्हा गाणे स्वतःच संपते) आणि मॅन्युअल स्किपवर चालते - प्रत्येकासाठी वरील स्वतंत्र टॉगल आहेत. ऑटो-ॲडव्हान्सवर, गाणे संपण्यापूर्वी काही सेकंदांपूर्वी ब्लेंडिंग सुरू होते.
+
+YouTube Music 9.x किंवा त्याहून नवीन आवृत्ती आवश्यक आहे."</string>
+  <string name="morphe_music_crossfade_about_best_title">हे कशासोबत सर्वोत्तम काम करते</string>
+  <string name="morphe_music_crossfade_about_best_summary">सामान्य गाणे-ते-गाणे प्लेबॅक आणि ऑटो-ॲडव्हान्स, रिपीट-वन (गाणे स्वतःमध्ये क्रॉसफेड होते) आणि लोकल ऑडिओ - फोन स्पीकर, वायर्ड हेडफोन, ब्लूटूथ किंवा USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">अपेक्षितप्रमाणे काम करत नाही</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"क्रॉसFade चालू असताना म्युझिक व्हिडिओ फक्त ऑडिओ म्हणून प्ले होतात (व्हिडिओ थांबवण्यासाठी शफलवर लाँग-प्रेस करा).
+
+तुमच्या फेड वेळेपेक्षा गाणी लहान असल्यास, फेड वगळले जाऊ शकते.
+
+ट्रान्झिशन दरम्यान लॉक स्क्रीन किंवा नोटिफिकेशनमध्ये थोडा वेळ जुना डेटा दिसू शकतो."</string>
+  <string name="morphe_music_crossfade_about_known_title">ज्ञात समस्या</string>
+  <string name="morphe_music_crossfade_about_known_summary">"पहिलं गाणं म्हणून सेट केलेला म्युझिक व्हिडिओ – किंवा रांगेतून बाहेरून सुरू केलेला व्हिडिओ – ऑडिओ-ओन्ली मोड सुरू होण्यापूर्वी थोडा वेळ व्हिडिओ म्हणून दिसू शकतो.
+
+ म्युझिक व्हिडिओ पाहण्यासाठी क्रॉसFade थांबवल्यास काही व्हिडिओ काळे दिसू शकतात (ज्या व्हिडिओचा ऑडिओ व्हिडिओमधून येतो). गाणं निवडण्यापूर्वी क्रॉसFade थांबवल्यास हे टाळता येईल."</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">काहीच काम करत नाही</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"ऑडिओ कास्टिंग किंवा मिररिंग (Chromecast, स्क्रीन किंवा ऑडिओ मिररिंग) - क्रॉसFade अस्थिर असल्याने pause होईल आणि ते ठीक करणं शक्य नसेल.
+
+YouTube Music 8.x – क्रॉसFade फक्त 9.x आणि त्यावरील आवृत्त्यांमध्ये चालते."</string>
+  <string name="morphe_music_crossfade_about_credit_title">श्रेय</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade वैशिष्ट्य VazerOG द्वारे</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">कायमची पुनरावृत्ती सक्षम करा</string>
   <!-- layout.buttons.hideButtonsPatch -->

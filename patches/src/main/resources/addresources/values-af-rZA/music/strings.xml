@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Die oorgangsvervaging is vir hierdie sessie gestop</string>
   <string name="morphe_music_crossfade_resumed_toast">Die oorgangsvervaging hervat</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videoweergave is nie beskikbaar terwyl oorgangsvervaging geaktiveer is nie</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Kruisvervaging is gepouseer tydens uitsending of spiegeling van klank. Kruisvervaging oor uitsending/spieëling is onstabiel en kan moontlik nooit reggestel word nie.</string>
   <string name="morphe_music_crossfade_about_title">Inligting</string>
-  <string name="morphe_music_crossfade_about_summary">"Druk lank op die shuffle-knoppie om te deaktiveer/aktiveer
+  <string name="morphe_music_crossfade_about_summary">Hoe kruisvervaging werk — en wanneer dit nie werk nie</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Hoe dit werk</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Kruisvervaging oorvleuel die einde van een liedjie met die begin van die volgende, en laat een wegval terwyl die ander oor jou gekose duur en kurwe begin.
 
-Funksie implementering deur VazerOG"</string>
+Dit werk op outo-vooruitgang (wanneer 'n liedjie op sy eie eindig) en op handmatige oorslae — elkeen het sy eie skakelaar boaan. By outo-vooruitgang begin die mengsel 'n paar sekondes voor die einde van die liedjie.
+
+Vereis YouTube Music 9.x of nuwer."</string>
+  <string name="morphe_music_crossfade_about_best_title">Werk die beste met</string>
+  <string name="morphe_music_crossfade_about_best_summary">Normale liedjie-tot-liedjie-weergawe en outo-vooruitgang, herhaal-een (die liedjie kruisvervaag in sy eie), en plaaslike klank — foonluidspreker, bedrade oorfone, Bluetooth of USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Werk nie heeltemal reg nie</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Musiekvideo's speel as klank-alleen terwyl vervaag aan is (druk lank op skud om te pouse as jy die video wil hê)
+
+Liedjies wat korter as jou vervaagduur is, kan die vervaag oorslaan
+
+Die sluitskerm of kennisgewing kan kortliks 'n verouderde status midde-oorgang wys"</string>
+  <string name="morphe_music_crossfade_about_known_title">Bekende probleme</string>
+  <string name="morphe_music_crossfade_about_known_summary">"‘n Musiekvideo wat as die eerste liedjie gestel is — of een wat van buite die huidige lys begin is — kan kortliks as video wys voordat klank-alleen modus begin
+
+Pauseer vervaag om ‘n musiekvideo te kyk kan sommige video's swart laat (die wat se klank van die video self kom). Pauseer vervaag voordat jy die liedjie kies om dit te vermy"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Werk glad nie</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Klank-oordra of spiegel (Chromecast, skerm- of klankspieëling) — vervaag pouseer omdat dit daar onstabiel is en moontlik nooit reggestel kan word nie.
+
+YouTube Music 8.x — vervaag loop slegs op 9.x en nuwer"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Erkenning</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Vervaag-funksie deur VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktiveer permanente herhaling</string>
   <!-- layout.buttons.hideButtonsPatch -->

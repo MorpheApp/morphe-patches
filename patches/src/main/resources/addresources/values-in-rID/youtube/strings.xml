@@ -735,11 +735,11 @@ Pengaturan → Pemutaran (atau Pemutaran Otomatis) → Putar video berikutnya se
   <string name="morphe_exit_fullscreen_entry_3">Lanskap saja</string>
   <string name="morphe_exit_fullscreen_entry_4">Potret dan lanskap</string>
   <!-- layout.player.fullscreen.disableFullscreenGesturesPatch -->
-  <string name="morphe_disable_fullscreen_gestures_title">Gestur layar penuh</string>
-  <string name="morphe_disable_fullscreen_gestures_summary">Gestur pemutar untuk masuk atau keluar dari mode layar penuh</string>
-  <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Nonaktifkan gestur geser ke atas dalam mode potret</string>
-  <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Nonaktifkan gerakan geser ke bawah saat potret</string>
-  <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Nonaktifkan gerakan geser ke bawah saat lanskap</string>
+  <string name="morphe_disable_fullscreen_gestures_title">Gerakan layar penuh</string>
+  <string name="morphe_disable_fullscreen_gestures_summary">Gerakan pemutar untuk masuk atau keluar dari mode layar penuh</string>
+  <string name="morphe_disable_fullscreen_pulled_up_gesture_title">Nonaktifkan gerakan geser ke atas dalam mode potret</string>
+  <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Nonaktifkan gerakan geser ke bawah saat mode potret</string>
+  <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Nonaktifkan gerakan geser ke bawah saat mode lanskap</string>
   <!-- layout.player.fullscreen.openVideosFullscreen -->
   <string name="morphe_open_videos_fullscreen_portrait_title">Buka video dalam potret layar penuh</string>
   <!-- layout.player.overlay.customPlayerOverlayOpacityPatch -->

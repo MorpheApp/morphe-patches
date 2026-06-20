@@ -234,7 +234,7 @@ Second \"item\" text"</string>
   <string name="morphe_hide_keyword_content_home_title">কীওয়ার্ড ব্যবহার করে প্রধান পাতার ভিডিও লুকান</string>
   <string name="morphe_hide_keyword_content_search_title">কীওয়ার্ড ব্যবহার করে অনুসন্ধান ফলাফল লুকান</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">কীওয়ার্ড ব্যবহার করে সাবস্ক্রিপশন ভিডিও লুকান</string>
-  <string name="morphe_hide_keyword_content_comments_title">কীওয়ার্ড ব্যবহার করে মন্তব্য লুকান</string>
+  <string name="morphe_hide_keyword_content_comments_title">নির্দিষ্ট শব্দ দিয়ে মন্তব্যগুলো হাইড করুন</string>
   <string name="morphe_hide_keyword_content_phrases_title">লুকানোর জন্য কীওয়ার্ড</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -244,12 +244,12 @@ Second \"item\" text"</string>
 
 শব্দগুলির মধ্যে বড় হাতের অক্ষর থাকলে সেগুলি অবশ্যই সঠিকভাবে লিখতে হবে (যেমন: iPhone, TikTok, LeBlanc)।"</string>
   <string name="morphe_hide_keyword_content_about_title">কীওয়ার্ড ফিল্টারিং সম্পর্কে</string>
-  <string name="morphe_hide_keyword_content_about_summary">"হোম / সাবস্ক্রিপশন / অনুসন্ধান / মন্তব্যগুলি কিওয়ার্ড বাক্যাংশের সাথে মিলে যাওয়া সামগ্রী লুকানোর জন্য ফিল্টার করা হয়
+  <string name="morphe_hide_keyword_content_about_summary">"হোম / সাবস্ক্রিপশন / সার্চ / মন্তব্যগুলো এমনভাবে ফিল্টার করা হয়েছে যেন কিওয়ার্ড ফ্রেজের সাথে মিলে যাওয়া কনটেন্ট হাইড করা যায়
 
-সীমাবদ্ধতা:
-• চ্যানেলের নাম দ্বারা Shorts লুকানো যাবে না
-• কিছু UI উপাদান লুকানো নাও হতে পারে
-• কোনও কিওয়ার্ড অনুসন্ধান করলে কোনও ফলাফল নাও দেখাতে পারে"</string>
+সীমাবদ্ধতাসমূহ:
+• চ্যানেলের নাম দিয়ে শর্টস (Shorts) হাইড করা যাবে না
+• কিছু ইউজার ইন্টারফেস (UI) উপাদান হয়তো হাইড করা সম্ভব নাও হতে পারে
+• কোনো কিওয়ার্ড লিখে সার্চ করলে কোনো ফলাফল নাও দেখাতে পারে"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">সম্পূর্ণ শব্দ মেলাও</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">ডাবল কোটের মধ্যে একটি কীওয়ার্ড/ফ্রেজ রাখলে ভিডিও শিরোনাম এবং চ্যানেলের নামের আংশিক মিল সনাক্ত করা বন্ধ হয়ে যাবে&lt;br&gt;&lt;br&gt;উদাহরণস্বরূপ,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ভিডিওটি লুকিয়ে দেবে: &lt;b&gt;How does AI work?&lt;/b&gt;&lt;br&gt;কিন্তু লুকিয়ে দেবে না: &lt;b&gt;What does fair use mean?&lt;/b&gt;</string>

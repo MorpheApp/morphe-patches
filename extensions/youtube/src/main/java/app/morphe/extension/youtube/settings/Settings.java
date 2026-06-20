@@ -12,6 +12,7 @@ import static app.morphe.extension.youtube.patches.ChangeHeaderPatch.HeaderLogo;
 import static app.morphe.extension.youtube.patches.ChangeStartPagePatch.ChangeStartPageTypeAvailability;
 import static app.morphe.extension.youtube.patches.ChangeStartPagePatch.StartPage;
 import static app.morphe.extension.youtube.patches.ExitFullscreenPatch.FullscreenMode;
+import static app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch.OpenFullscreenMode;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerAnyModernAvailability;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerHideOverlayButtonsAvailability;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerOverlayOpacityAvailability;
@@ -197,7 +198,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_SYNC_BUTTON = new BooleanSetting("morphe_hide_sync_button", FALSE, true);
     public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("morphe_hide_timed_reactions", TRUE);
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("morphe_hide_video_title", FALSE);
-    public static final BooleanSetting OPEN_VIDEOS_FULLSCREEN_PORTRAIT = new BooleanSetting("morphe_open_videos_fullscreen_portrait", FALSE);
+    public static final EnumSetting<OpenFullscreenMode> OPEN_VIDEOS_FULLSCREEN = new EnumSetting<>("morphe_open_videos_fullscreen", OpenFullscreenMode.DISABLED);
 
     // Overlay buttons
     public static final BooleanSetting COPY_VIDEO_LINK_BUTTON = new BooleanSetting("morphe_copy_video_link_button", FALSE, true);

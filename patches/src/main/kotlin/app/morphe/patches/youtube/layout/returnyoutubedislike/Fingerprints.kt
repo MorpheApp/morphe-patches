@@ -7,7 +7,6 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.string
-import app.morphe.patches.youtube.layout.returnyoutubedislike.TextComponentConstructorFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -36,6 +35,19 @@ internal object RollingNumberMeasureAnimatedTextFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Lj$/util/Optional;",
     parameters = listOf("L", "Ljava/lang/String;", "L"),
+    // Same as below, but code was removed with 21.25+ and doesn't seem to be required anymore.
+//    filters = listOf(
+//        fieldAccess(
+//            opcode = Opcode.IGET,
+//            type = "F",
+//            location = MatchFirst()
+//        ),
+//        literal(1.0f),
+//        methodCall("Ljava/lang/Math;->max(FF)F"),
+//        opcode(Opcode.AGET),
+//        literal(0),
+//        literal(0)
+//    )
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.IGET, // First instruction of method
         Opcode.IGET_OBJECT,

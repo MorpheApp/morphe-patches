@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Crossfade hefur verið hvílt fyrir þennan tíma</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade hefur verið endurrært</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Myndbandsstilling er ekki í boði þegar crossfade er virkt</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Því miður er crossfade á pausa þegar tekið er á móti eða endursendur hljóð. Crossfade yfir sendingu/endursendingu er óstöðugt og það er mögulegt að það verði aldrei lagfært.</string>
   <string name="morphe_music_crossfade_about_title">Um</string>
-  <string name="morphe_music_crossfade_about_summary">"Langt ýttu á blöndunarh nappinn til að slækkja/kveikja á
+  <string name="morphe_music_crossfade_about_summary">Hvernig crossfade virkar - og þegar það virkar ekki</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Hvernig það virkar</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Crossfade setur lok hluta efnislags álag á upphaf næsta lags, með því að dempa eitt lag og hækka hinu yfir þann tíma og lögun sem valin hefur verið.
 
-Gerð af VazerOG"</string>
+Það virkar við sjálfvirka áframhald (þegar lag fer af sjálfu sér) og handvirka umskipti - hvert hefur sína eigin stillingu hér að ofan. Við sjálfvirkt áframhald byrjar blöndunin nokkrum sekúndum áður en lagið lýkur.
+
+Krefst YouTube Music 9.x eða nýrri útgáfu."</string>
+  <string name="morphe_music_crossfade_about_best_title">Virkar best með</string>
+  <string name="morphe_music_crossfade_about_best_summary">Venjulegum lagaspilun og sjálfvirka áframhald, endurtöku (lagið crossfade-ar inn í sjálft sig) og staðbundnu hljóði - símtalara, þráðlaus heyrna tól, Bluetooth eða USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Virkar ekki alveg rétt</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Tónlistarvídeó spila bara með hljóði á meðan crossfade er virkt (langt ýta á blanda til að pausa ef þú vilt myndina)
+
+Lög sem eru styttri en fade tími þinn gætu sleppt fade
+
+Loka skjárinn eða tilkynningin geta stutt sýnt áfram gamlan ástandi á milli ábreiða"</string>
+  <string name="morphe_music_crossfade_about_known_title">Þekktir vandamál</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Tónlistarvídeó sem er stillt sem fyrsta lagið — eða eitt sem er byrjað utan núverandi biðlista — gæti stuttlega sýnt mynd áður en aðeins hljóðstillingu er krafist
+
+Pausa crossfade til að horfa á tónlistarvídeó getur skilið sum vídeó svört (þau sem hljóðið kemur frá myndinni sjálfri). Pausa crossfade áður en þú velur lagið forðast það"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Virkar alls ekki</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Sending eða speglun hljóðs (Chromecast, skjá- eða hljóðspeglun) — crossfade fer í pausa því það er óstöðugt þar og gæti aldrei verið lagað.
+
+YouTube Music 8.x — crossfade virkar bara á 9.x og nýrri útgáfum"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Kredit</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade virkni af VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Virkja endurtekningu</string>
   <!-- layout.buttons.hideButtonsPatch -->

@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Nawala ang crossfade para sa sesyong ito</string>
   <string name="morphe_music_crossfade_resumed_toast">Ipinagpatuloy ang crossfade</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Hindi magagamit ang video mode habang naka-enable ang crossfade</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Ang crossfade ay naka-pause habang nagka-cast o nagmi-mirror ng audio. Hindi stable ang crossfade sa pagka-cast/mirror at maaaring hindi ito maayos.</string>
   <string name="morphe_music_crossfade_about_title">Tungkol</string>
-  <string name="morphe_music_crossfade_about_summary">"Pindutin nang matagal ang pindutan ng shuffle upang i-disable/i-enable
+  <string name="morphe_music_crossfade_about_summary">Paano gumagana ang crossfade — at kung kailan hindi</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Paano ito gumagana</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Nagpapatong ang crossfade ng dulo ng isang kanta sa simula ng susunod, pinapahina ang isa habang lumalakas ang isa pa ayon sa iyong napiling tagal at kurba.
 
-Pagpapatupad ng feature ni VazerOG"</string>
+Gumagana ito sa auto-advance (kapag natapos ang isang kanta nang mag-isa) at sa manual skips — bawat isa ay may sariling toggle sa itaas. Sa auto-advance, nagsisimula ang paghalo ilang segundo bago matapos ang kanta.
+
+Kinakailangan ang YouTube Music 9.x o mas bago."</string>
+  <string name="morphe_music_crossfade_about_best_title">Pinakamahusay na gumagana sa</string>
+  <string name="morphe_music_crossfade_about_best_summary">Normal na pag-playback ng kanta-sa-kanta at auto-advance, repeat-one (ang kanta ay nag-crossfade sa sarili nito), at lokal na audio — speaker ng telepono, naka-wire na headphone, Bluetooth, o USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Hindi gumagana nang maayos</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Nagpe-play bilang audio-only ang mga music video habang naka-on ang crossfade (i-long press ang shuffle para i-pause kung gusto mo ang video)
+
+Ang mga kanta na mas maikli sa iyong tagal ng fade ay maaaring laktawan ang fade
+
+Ang lock screen o notification ay maaaring pansamantalang magpakita ng lumang estado sa kalagitnaan ng transisyon"</string>
+  <string name="morphe_music_crossfade_about_known_title">Mga kilalang isyu</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Ang music video na itinakda bilang unang kanta — o ang isa na sinimulan mula sa labas ng kasalukuyang queue — ay maaaring pansamantalang lumabas bilang video bago magsimula ang audio-only mode
+
+Ang pag-pause ng crossfade para manood ng music video ay maaaring mag-iwan ng ilang video na blangko (ang mga ang audio ay mula sa video mismo). Maiiwasan ito sa pamamagitan ng pag-pause ng crossfade bago piliin ang kanta"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Hindi gumagana</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Ang pag-cast o pag-mirror ng audio (Chromecast, screen o audio mirroring) — nagpa-pause ang crossfade dahil hindi ito stable doon at maaaring hindi na maayos.
+
+YouTube Music 8.x — tumatakbo lamang ang crossfade sa 9.x at mas bago"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Credit</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade feature ni VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Paganahin ang permanenteng paulit-ulit</string>
   <!-- layout.buttons.hideButtonsPatch -->

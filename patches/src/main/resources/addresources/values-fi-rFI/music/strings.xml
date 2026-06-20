@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Istunnon crossfade-toiminto on tauolla</string>
   <string name="morphe_music_crossfade_resumed_toast">Crossfade-toiminto jatkettu</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Videon toimitila ei ole käytettävissä, kun crossfade on käytössä</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Äänenvoimakkuuden säätö on keskeytetty lähetyksen tai peilauksen aikana. Äänenvoimakkuuden säätö lähetyksen/peilauksen aikana on epävakaa, eikä sitä ehkä voida korjata.</string>
   <string name="morphe_music_crossfade_about_title">Tietoja</string>
-  <string name="morphe_music_crossfade_about_summary">"Paina ja pidä painettuna sekoituspainiketta poistaaksesi/ottaaksesi sen käyttöön
+  <string name="morphe_music_crossfade_about_summary">Miten äänenvoimakkuuden säätö toimii – ja milloin se ei toimi</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Miten se toimii</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Äänenvoimakkuuden säätö yhdistää yhden kappaleen lopun seuraavan kappaleen alkuun, vaimentamalla toisen samalla kun toinen vahvistuu valitsemasi keston ja käyrän mukaan.
 
-Ominaisuuden toteutti VazerOG"</string>
+Se toimii automaattisen toiston (kun kappale päättyy itsestään) ja manuaalisten ohitusten kanssa – molemmille on omat kytkimet yllä. Automaattisessa toistossa yhdistäminen alkaa muutama sekunti ennen kappaleen loppua.
+
+Vaatii YouTube Music -version 9.x tai uudemman."</string>
+  <string name="morphe_music_crossfade_about_best_title">Toimii parhaiten</string>
+  <string name="morphe_music_crossfade_about_best_summary">Normaali kappaleesta toiseen -toisto ja automaattinen toisto, toista yksi (kappale yhdistyy itseensä) sekä paikallinen ääni – puhelimen kaiutin, johdolliset kuulokkeet, Bluetooth tai USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Ei toimi aivan oikein</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Musiikkivideot toistetaan ääni-vain-tilassa, kun crossfade on päällä (pidä shuffle-painiketta pohjassa pysäyttääksesi videon, jos haluat nähdä sen).
+
+Lyhyemmät kappaleet kuin haalistusaikasi voivat ohittaa haalistuksen.
+
+Lukitusnäyttö tai ilmoitus voi hetkellisesti näyttää vanhentuneen tilan siirtymän aikana."</string>
+  <string name="morphe_music_crossfade_about_known_title">Tunnetut ongelmat</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Musiikkivideo, joka on asetettu ensimmäiseksi kappaleeksi – tai joka on aloitettu jonon ulkopuolelta – saattaa hetkellisesti näkyä videon muodossa ennen kuin ääni-vain-tila aktivoituu.
+
+Crossfaden pysäyttäminen musiikkivideon katselua varten voi jättää osan videoista mustiksi (ne, joiden ääni tulee itse videosta). Vältä tätä pysäyttämällä crossfade ennen kappaleen valintaa."</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Ei toimi ollenkaan</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Äänen lähettäminen tai peilaaminen (Chromecast, näytön tai äänen peilaaminen) – crossfade pysähtyy, koska se on epävakaa ja sen korjaaminen ei välttämättä onnistu.
+
+YouTube Music 8.x – crossfade toimii vain versiossa 9.x ja uudemmissa."</string>
+  <string name="morphe_music_crossfade_about_credit_title">Lähde</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade-ominaisuuden on kehittänyt VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Ota pysyvä toisto käyttöön</string>
   <!-- layout.buttons.hideButtonsPatch -->

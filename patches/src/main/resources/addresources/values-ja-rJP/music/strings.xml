@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">このセッションでのクロスフェードを一時停止します</string>
   <string name="morphe_music_crossfade_resumed_toast">クロスフェードを再開しました</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">クロスフェードが有効になっている間は、動画モードは利用できません</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">オーディオのキャストまたはミラーリング中は、クロスフェードが一時停止されます。キャスト/ミラー時のクロスフェードは不安定であり、修正できない場合があります。</string>
   <string name="morphe_music_crossfade_about_title">クロスフェードについて</string>
-  <string name="morphe_music_crossfade_about_summary">"シャッフルボタンを長押しすると、一時的にオフ / オンを切り替えることができます
+  <string name="morphe_music_crossfade_about_summary">クロスフェードの仕組みと、機能しない場合について</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">仕組み</string>
+  <string name="morphe_music_crossfade_about_how_summary">"クロスフェードは、ある曲の終わりと次の曲の始まりを重ね合わせ、選択した時間とカーブで一方の曲の音量を下げながら、もう一方の曲の音量を上げていきます。
 
-機能実装: VazerOG"</string>
+自動スキップ（曲が自動的に終了した場合）と手動スキップの両方で動作し、それぞれに上記で個別の切り替えがあります。自動スキップでは、ブレンドは曲の終了数秒前に開始されます。
+
+YouTube Music 9.x 以降が必要です。"</string>
+  <string name="morphe_music_crossfade_about_best_title">最適な動作環境</string>
+  <string name="morphe_music_crossfade_about_best_summary">通常の曲から曲への再生、自動スキップ、リピート再生（曲が自分自身にクロスフェード）、およびローカルオーディオ（電話スピーカー、有線ヘッドホン、Bluetooth、またはUSB）で最適に動作します。</string>
+  <string name="morphe_music_crossfade_about_quirks_title">完全には機能しません</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"クロスフェードがオンのとき、音楽ビデオは音声のみで再生されます（ビデオを一時停止したい場合は、シャッフルを長押ししてください）。
+
+フェード時間より短い曲は、フェードをスキップする場合があります。
+
+ロック画面または通知に、移行中に古い状態が一時的に表示されることがあります。"</string>
+  <string name="morphe_music_crossfade_about_known_title">既知の問題</string>
+  <string name="morphe_music_crossfade_about_known_summary">"最初の曲として設定された音楽ビデオ、または現在のキュー外から開始された音楽ビデオは、音声のみモードに切り替わる前に、一時的にビデオとして表示されることがあります。
+
+クロスフェードを一時停止して音楽ビデオを視聴すると、一部のビデオが黒く表示されることがあります（ビデオ自体から音声が出力されるもの）。曲を選択する前にクロスフェードを一時停止すると、これを回避できます。"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">全く機能しない</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"オーディオのキャストまたはミラーリング（Chromecast、画面またはオーディオのミラーリング）—クロスフェードは不安定なため一時停止し、修正されない可能性があります。
+
+YouTube Music 8.x — クロスフェードは9.x以降でのみ実行されます。"</string>
+  <string name="morphe_music_crossfade_about_credit_title">クレジット</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Crossfade機能はVazerOGによるものです</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">常時リピートを有効化</string>
   <!-- layout.buttons.hideButtonsPatch -->
@@ -96,7 +120,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_hide_category_bar_title">カテゴリバーを非表示</string>
   <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">ミニプレーヤーの色を変更</string>
-  <string name="morphe_music_change_miniplayer_color_summary">ミニプレーヤーの色をフルスクリーンプレーヤーの色に合わせます</string>
+  <string name="morphe_music_change_miniplayer_color_summary">ミニプレーヤーの色をフルスクリーン プレーヤーの色に合わせます</string>
   <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <string name="morphe_music_miniplayer_next_button_title">ミニプレーヤーに次の曲ボタンを表示</string>
   <string name="morphe_music_miniplayer_previous_button_title">ミニプレーヤーに前の曲ボタンを表示</string>
@@ -105,7 +129,7 @@ Second \"item\" text"</string>
   <string name="morphe_music_enable_forced_miniplayer_summary">新しいトラックが自動的にフルスクリーン プレーヤーで再生されるのを防ぎます</string>
   <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
   <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">ミニプレーヤーをスワイプで閉じる</string>
-  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">ミニプレーヤーを下にスワイプして閉じられるようにします</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">ミニプレーヤーを下にスワイプして閉じる機能を有効にします</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">ナビゲーション バー</string>
   <string name="morphe_music_navigation_bar_screen_summary">画面最下部のバーであるナビゲーション バーに表示するボタンを設定します</string>

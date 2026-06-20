@@ -19,6 +19,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import app.morphe.patches.all.misc.resources.ResourceType
 import app.morphe.patches.all.misc.resources.resourceLiteral
@@ -302,7 +303,6 @@ internal object TopBarRendererSecondaryFilterFingerprint : Fingerprint(
 internal object SettingIntentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
@@ -340,5 +340,14 @@ internal object SettingIntentFingerprint : Fingerprint(
             parameters = listOf("I"),
             location = MatchAfterWithin(5)
         )
-    )
+    ),
+    custom = { method, _ ->
+        parametersMatch( // 21.25+
+            method.parameters,
+            listOf("Landroid/view/MenuItem;")
+        ) || parametersMatch( // 21.24 and older
+            method.parameters,
+            listOf()
+        )
+    }
 )

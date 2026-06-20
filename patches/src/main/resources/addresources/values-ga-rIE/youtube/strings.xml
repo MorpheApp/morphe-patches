@@ -234,7 +234,7 @@ I measc na n-athruithe tá:
   <string name="morphe_hide_keyword_content_home_title">Folaigh físeáin Baile de réir eochairfhocail</string>
   <string name="morphe_hide_keyword_content_search_title">Folaigh torthaí cuardaigh de réir eochairfhocail</string>
   <string name="morphe_hide_keyword_content_subscriptions_title">Folaigh físeáin Síntiúis de réir eochairfhocail</string>
-  <string name="morphe_hide_keyword_content_comments_title">Ceileann sonraí cománta de réir eochairfhocail</string>
+  <string name="morphe_hide_keyword_content_comments_title">Folaigh tuairimí de réir eochairfhocail</string>
   <string name="morphe_hide_keyword_content_phrases_title">Eochairfhocail le cur i bhfolach</string>
   <!-- For localization, it is preferred, but not required, if 'LeBlanc' is replaced with a localized name or a familiar word that has upper case letters in the middle of the word.
          This is because keywords can be in any language, and showing an example in the localized script helps convey this. -->
@@ -244,12 +244,12 @@ Is féidir le heochairfhocail a bheith in aon téacs a thaispeántar i dteidil f
 
 Ní mór focail a bhfuil litreacha móra sa lár acu a bheith ag teacht go díreach (m.sh.: iPhone, TikTok, LeBlanc)"</string>
   <string name="morphe_hide_keyword_content_about_title">Maidir le scagadh eochairfhocal</string>
-  <string name="morphe_hide_keyword_content_about_summary">"Baile / Síntiúis / Tá cuardach agus comántaí scagtha chun ábhar a cheilt a comhthéiteann frásaí eochairfhocail
+  <string name="morphe_hide_keyword_content_about_summary">"Baile / Síntiúis / Cuardaigh / Déantar tráchtanna a scagadh chun ábhar a mheaitseálann frásaí eochairfhocail a cheilt
 
 Teorainneacha:
-• Ní féidir Shorts a cheilt de réir ainm cainéil
-• Ní fhéadfar roinnt comhpháirteanna UI a cheilt
-• D'fhéadfadh nach dtaispeánfar torthaí má chuirtear cuardach ar fhocal eochair"</string>
+• Ní féidir gearrscannáin a cheilt de réir ainm an chainéil
+• Seans nach mbeidh roinnt comhpháirteanna den Chomhéadan Úsáideora i bhfolach
+• Seans nach dtaispeánfar aon torthaí nuair a chuardaítear eochairfhocal"</string>
   <string name="morphe_hide_keyword_content_about_whole_words_title">Meaitseáil focail iomlána</string>
   <!-- Translations must use a localized example. For languages that do not use spaces between words (Chinese, Japanese, etc.) the English AI example should be used since no localized examples exist. Or if using machine translations, or if nobody wants to think of a localized example, then the English 'ai' example should be left as-is. -->
   <string name="morphe_hide_keyword_content_about_whole_words_summary">Má bhaineann tú eochairfhocal/frása le comharthaí athfhriotail dhúbailte, cuirfear cosc ​​ar mheaitseáil pháirteach de theidil físeáin agus ainmneacha cainéal&lt;br&gt;&lt;br&gt;Mar shampla,&lt;br&gt;&lt;b&gt;\"ai\"&lt;/b&gt; ceilteoidh sé an físeán: &lt;b&gt;Conas a oibríonn AI?&lt;/b&gt;&lt;br&gt;ach ní cheiltfidh sé: &lt;b&gt;Cad is brí le hainm féinig?&lt;/b&gt;</string>

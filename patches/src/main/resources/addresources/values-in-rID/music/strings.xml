@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">Pudar silang dijeda untuk sesi ini</string>
   <string name="morphe_music_crossfade_resumed_toast">Pudar silang dilanjutkan</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">Mode video tidak tersedia saat pudar silang diaktifkan</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Pudar silang dijeda saat melakukan penayangan atau pencerminan audio. Pudar silang saat penayangan/pencerminan tidak stabil dan mungkin tidak akan pernah bisa diperbaiki</string>
   <string name="morphe_music_crossfade_about_title">Tentang</string>
-  <string name="morphe_music_crossfade_about_summary">"Tekan lama tombol acak untuk menonaktifkan/mengaktifkan
+  <string name="morphe_music_crossfade_about_summary">Cara kerja pudar silang — dan kapan pudar silang tidak berfungsi</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Cara kerjanya</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Pudar silang menggabungkan akhir satu lagu dengan bagian awal lagu berikutnya, dengan secara bertahap meredupkan volume lagu pertama saat volume lagu berikutnya mulai naik sesuai durasi dan kurva yang Anda pilih.
 
-Implementasi fitur oleh VazerOG"</string>
+Hal ini berjalan secara otomatis (ketika lagu berakhir dengan sendirinya) dan saat Anda melompat ke lagu berikutnya secara manual — masing-masing memiliki tombol pengatur di bagian atas. Pada mode otomatis, proses perpaduan dimulai beberapa detik sebelum lagu berakhir.
+
+Membutuhkan YouTube Music versi 9.x atau yang lebih baru."</string>
+  <string name="morphe_music_crossfade_about_best_title">Paling baik digunakan dengan</string>
+  <string name="morphe_music_crossfade_about_best_summary">Pemutaran lagu ke lagu secara normal dan pemutaran otomatis ke lagu berikutnya, pengulangan satu lagu (lagu tersebut beralih secara bertahap ke lagu yang sama), serta pemutaran audio lokal — speaker ponsel, headphone berkabel, Bluetooth, atau USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Tidak berfungsi dengan baik</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Video musik akan diputar hanya sebagai audio saat fitur pudar silang aktif (tekan dan tahan tombol acak untuk menjeda jika Anda ingin menonton videonya)
+
+Lagu yang durasinya lebih pendek dari durasi pemudaran mungkin akan melewati efek pemudaran
+
+Layar kunci atau pemberitahuan mungkin sebentar menampilkan tampilan yang sudah ketinggalan di tengah perpindahan"</string>
+  <string name="morphe_music_crossfade_about_known_title">Masalah yang diketahui</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Video musik yang ditetapkan sebagai lagu pertama — atau yang dimulai dari luar antrian saat ini — mungkin akan ditampilkan sebentar sebagai video sebelum mode audio saja mulai berlaku
+
+Menjeda pudar silang untuk menonton video musik dapat menyebabkan beberapa video tampil hitam (yaitu video yang audionya berasal dari video itu sendiri). Menjeda pudar silang sebelum memilih lagu dapat mencegah hal tersebut"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Tidak berfungsi sama sekali</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Menayangkan atau menampilkan audio (Chromecast, pencerminan layar atau audio) — pudar silang terhenti karena fitur tersebut tidak stabil di sana dan mungkin tidak akan pernah bisa diperbaiki.
+
+YouTube Music 8.x — pudar silang hanya berfungsi pada versi 9.x dan yang lebih baru"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Kredit</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Fitur pudar silang oleh VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Aktifkan pengulangan permanen</string>
   <!-- layout.buttons.hideButtonsPatch -->

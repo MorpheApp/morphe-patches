@@ -69,10 +69,34 @@ Second \"item\" text"</string>
   <string name="morphe_music_crossfade_paused_toast">تم إيقاف التلاشي التدريجي لهذه الجلسة</string>
   <string name="morphe_music_crossfade_resumed_toast">تم استئناف التلاشي التدريجي</string>
   <string name="morphe_music_crossfade_video_mode_disabled_toast">وضع الفيديو غير متاح أثناء تمكين التلاشي التدريجي</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">تم إيقاف التشغيل التدريجي أثناء البث أو انعكاس الصوت. التلاشي التدريجي عبر البث/الانعكاس غير مستقر وقد لا يمكن إصلاحه أبدًا.</string>
   <string name="morphe_music_crossfade_about_title">لمحة</string>
-  <string name="morphe_music_crossfade_about_summary">"اضغط مع الاستمرار على زر التشغيل العشوائي لتعطيل/تمكين الميزة
+  <string name="morphe_music_crossfade_about_summary">كيف يعمل التشغيل التدريجي — ومتى لا يعمل</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">كيف يعمل</string>
+  <string name="morphe_music_crossfade_about_how_summary">"يؤدي التشغيل التدريجي إلى تداخل نهاية إحدى الأغاني مع بداية الأغنية التالية، مع خفض صوت الأولى تدريجيًا أثناء ارتفاع صوت الأخرى خلال المدة والمنحنى اللذين اخترتهما.
 
-تنفيذ الميزة بواسطة VazerOG"</string>
+يعمل على التقديم التلقائي (عندما تنتهي الأغنية من تلقاء نفسها) وعلى عمليات التخطي اليدوي — ولكل منهما مفتاح تشغيل/إيقاف خاص به أعلاه. في التقديم التلقائي، يبدأ المزج قبل ثوانٍ قليلة من نهاية الأغنية.
+
+يتطلب YouTube Music الإصدار 9.x أو أحدث."</string>
+  <string name="morphe_music_crossfade_about_best_title">يعمل بشكل أفضل مع</string>
+  <string name="morphe_music_crossfade_about_best_summary">التشغيل العادي للأغاني من أغنية إلى أخرى، والتقديم التلقائي، والتكرار الواحد (حيث تتلاشى الأغنية في نفسها)، والصوت المحلي — مكبر صوت الهاتف، وسماعات الرأس السلكية، والبلوتوث، أو USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">لا يعمل بشكل صحيح</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"تعمل مقاطع فيديو الموسيقى كصوت فقط أثناء تشغيل الانتقال التدريجي (اضغط مع الاستمرار على زر التشغيل العشوائي للإيقاف إذا كنت تريد الفيديو)
+
+قد تتخطى الأغاني الأقصر من مدة التلاشي عملية التلاشي
+
+قد يعرض شاشة القفل أو الإشعار حالة قديمة لفترة وجيزة أثناء الانتقال"</string>
+  <string name="morphe_music_crossfade_about_known_title">مشاكل معروفة</string>
+  <string name="morphe_music_crossfade_about_known_summary">"قد تظهر مقاطع فيديو الموسيقى المعينة كأول أغنية - أو التي بدأت من خارج قائمة الانتظار الحالية - كفيديو لفترة وجيزة قبل أن يبدأ وضع الصوت فقط
+
+قد يؤدي إيقاف الانتقال التدريجي لمشاهدة مقطع فيديو موسيقي إلى ظهور بعض مقاطع الفيديو باللون الأسود (تلك التي يأتي صوتها من الفيديو نفسه). تجنب ذلك عن طريق إيقاف الانتقال التدريجي قبل اختيار الأغنية"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">لا يعمل على الإطلاق</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"البث أو عكس الصوت (Chromecast، أو عكس الشاشة أو الصوت) - يتوقف الانتقال التدريجي لأنه غير مستقر هناك وقد لا يتم إصلاحه أبدًا.
+
+YouTube Music 8.x - يعمل الانتقال التدريجي فقط على الإصدار 9.x والإصدارات الأحدث"</string>
+  <string name="morphe_music_crossfade_about_credit_title">حقوق الملكية</string>
+  <string name="morphe_music_crossfade_about_credit_summary">ميزة Transitions مقدمة من VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">تمكين التكرار الدائم</string>
   <!-- layout.buttons.hideButtonsPatch -->
