@@ -1,3 +1,9 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
 package app.morphe.extension.youtube.patches;
 
 import java.util.HashMap;
@@ -8,9 +14,9 @@ import app.morphe.extension.youtube.patches.utils.requests.ConfigRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class FixVideoActionBarPatch {
+public class RestoreOldVideoActionBarPatch {
 
-    private static final boolean FIX_VIDEO_ACTION_BAR = Settings.FIX_VIDEO_ACTION_BAR.get()
+    private static final boolean FIX_VIDEO_ACTION_BAR = Settings.RESTORE_OLD_VIDEO_ACTION_BAR.get()
             // If 'Disable layout updates' is enabled, fix is not required.
             && !Settings.DISABLE_LAYOUT_UPDATES.get()
             // Tablets already have a non-collapsed video action bar.

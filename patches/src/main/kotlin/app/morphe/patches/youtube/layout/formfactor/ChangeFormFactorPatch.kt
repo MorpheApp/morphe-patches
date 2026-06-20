@@ -23,7 +23,7 @@ import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addClientFormFactorHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.fix.videoactionbar.fixVideoActionBarPatch
+import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
 import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -44,7 +44,7 @@ val changeFormFactorPatch = bytecodePatch(
         settingsPatch,
         clientContextHookPatch,
         navigationBarHookPatch,
-        fixVideoActionBarPatch
+        restoreOldVideoActionBarPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)

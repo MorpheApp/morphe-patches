@@ -1103,14 +1103,14 @@ Tablet layout
 • Community posts are hidden
 • Playback in feeds setting is not available
 • Remix button and Sound button are not available in Shorts
-• Video action bar is not collapsed
+• Non collapsed old video action bar is shown
 
 Automotive layout
 • Feed is organized by topics and channels
 • Playback in feeds setting is not available
 • Remix button and Sound button are not available in Shorts
 • Shorts open in the regular player
-• Video action bar is not collapsed"</string>
+• Non collapsed old video action bar is shown"</string>
     <string name="morphe_tablet_layout_in_player_title">Enable tablet layout in player</string>
     <string name="morphe_tablet_layout_in_player_summary">"Restores the old player layout
 
@@ -1414,9 +1414,9 @@ Video playback with AV1 may stutter or drop frames."</string>
     <string name="morphe_spoof_video_streams_player_js_variant_title">Player JavaScript variant</string>
     <string name="morphe_spoof_video_streams_stats_for_nerds_title">Show spoofing in Stats for nerds</string>
 
-    <!-- misc.fix.videoactionbar.fixVideoActionBarPatch -->
-    <string name="morphe_fix_video_action_bar_title">Fix video action bar</string>
-    <string name="morphe_fix_video_action_bar_summary">"Fixes an issue where 'Hide video action buttons' and 'Return YouTube Dislike' are not working
+    <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
+    <string name="morphe_restore_old_video_action_bar_title">Restore old video action bar</string>
+    <string name="morphe_restore_old_video_action_bar_summary">"Fixes dislikes not shown and video action buttons cannot be hidden
 
 Limitations: Reverts to old style 'More videos' overlay"</string>
 </resources>

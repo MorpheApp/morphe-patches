@@ -20,10 +20,10 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.insertLiteralOverride
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/FixVideoActionBarPatch;"
+    "Lapp/morphe/extension/youtube/patches/RestoreOldVideoActionBarPatch;"
 
-internal val fixVideoActionBarPatch = bytecodePatch(
-    description = "To fix 'Hide video action buttons' and 'Return YouTube Dislike', overrides 'X-Youtube-Cold-Config-Data'."
+internal val restoreOldVideoActionBarPatch = bytecodePatch(
+    description = "Overrides 'X-Youtube-Cold-Config-Data', fixes 'Hide video action buttons' and 'Return YouTube Dislike', "
 ) {
     dependsOn(
         sharedExtensionPatch,
@@ -35,7 +35,7 @@ internal val fixVideoActionBarPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_fix_video_action_bar", summary = true)
+            SwitchPreference("morphe_restore_old_video_action_bar", summary = true)
         )
 
         // If cold config data is overridden, the related video overlay breaks in fullscreen.
