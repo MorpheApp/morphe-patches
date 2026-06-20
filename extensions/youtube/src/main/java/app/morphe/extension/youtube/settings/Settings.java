@@ -331,7 +331,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_STOP_ADS_BUTTON = new BooleanSetting("morphe_hide_stop_ads_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
     public static final BooleanSetting HIDE_THANKS_BUTTON = new BooleanSetting("morphe_hide_thanks_button", FALSE, true, parentNot(HIDE_ACTION_BAR));
     public static final BooleanSetting FIX_VIDEO_ACTION_BAR = new BooleanSetting("morphe_fix_video_action_bar", TRUE, true);
-    public static final StringSetting COLD_CONFIG_DATA = new StringSetting("morphe_cold_config_data", "", parent(FIX_VIDEO_ACTION_BAR));
+    public static final StringSetting COLD_CONFIG_DATA = new StringSetting("morphe_cold_config_data", "", false, false, null, parent(FIX_VIDEO_ACTION_BAR));
 
     // Player flyout menu
     public static final BooleanSetting HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS = new BooleanSetting("morphe_hide_player_flyout_additional_settings", FALSE);
