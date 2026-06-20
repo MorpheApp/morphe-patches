@@ -80,14 +80,30 @@ internal object CollapsingToolbarLayoutFeatureFlagFingerprint : Fingerprint(
     )
 )
 
-internal object AutoHideNavigationBarFingerprint : Fingerprint(
+internal object AutoHideNavigationBarOnFeedScrollingFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Landroid/support/v7/widget/RecyclerView;", "I", "I"),
     filters = listOf(
         methodCall("Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;"),
-        methodCall("Landroid/view/ViewConfiguration;->getScaledTouchSlop()I", location = MatchAfterWithin(5))
+        methodCall(
+            "Landroid/view/ViewConfiguration;->getScaledTouchSlop()I",
+            location = MatchAfterWithin(5)
+        )
     )
+)
+
+internal object AutoHideNavigationBarOnDismissMiniplayerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("F"),
+    filters = OpcodesFilter.opcodesToFilters(
+        Opcode.IGET_OBJECT,
+        Opcode.INVOKE_INTERFACE,
+        Opcode.MOVE_RESULT_OBJECT,
+        Opcode.CHECK_CAST,
+        Opcode.INVOKE_VIRTUAL,
+    ) + listOf(methodCall(smali = "Ljava/util/Iterator;->hasNext()Z"))
 )
 
 internal object PivotBarStyleFingerprint : Fingerprint(
