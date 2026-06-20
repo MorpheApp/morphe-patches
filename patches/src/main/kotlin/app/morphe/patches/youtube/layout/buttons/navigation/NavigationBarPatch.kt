@@ -210,6 +210,7 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
+        println("AutoHideNavigationBarOnDismissMiniplayerFingerprint: " + AutoHideNavigationBarOnDismissMiniplayerFingerprint.method)
         if (is_20_31_or_greater) {
             listOf(
                 AutoHideNavigationBarOnFeedScrollingFingerprint,
@@ -218,13 +219,13 @@ val navigationBarPatch = bytecodePatch(
                 it.method.addInstructionsWithLabels(
                     0,
                     """
-                    invoke-static { }, $EXTENSION_CLASS->disableAutoHidingNavigationBar()Z
-                    move-result v0      
-                    if-eqz v0, :show
-                    return-void      
-                    :show
-                    nop      
-                """
+                        invoke-static { }, $EXTENSION_CLASS->disableAutoHidingNavigationBar()Z
+                        move-result v0      
+                        if-eqz v0, :show
+                        return-void      
+                        :show
+                        nop      
+                    """
                 )
             }
         }
