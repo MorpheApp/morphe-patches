@@ -11,10 +11,14 @@
 package app.morphe.patches.youtube.layout.formfactor
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.InstructionLocation
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
@@ -28,8 +32,11 @@ import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.getFreeRegisterProvider
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction22c
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
+import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ChangeFormFactorPatch;"
@@ -95,6 +102,72 @@ val changeFormFactorPatch = bytecodePatch(
             addClientFormFactorHook(
                 endpoint,
                 "$EXTENSION_CLASS->replaceBrokenFormFactor(I)I",
+            )
+        }
+
+        val playerLithoElementsListFingerprint = Fingerprint(
+            accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+            returnType = "V",
+            strings = listOf("Number of sectionList models must be equal to the number of section states"),
+            filters = listOf(
+                fieldAccess(
+                    opcode = Opcode.IGET_OBJECT,
+                    type = "Ljava/util/List;",
+                ),
+                methodCall(
+                    opcode = Opcode.INVOKE_INTERFACE,
+                    smali = "Ljava/util/List;->get(I)Ljava/lang/Object;",
+                    location = InstructionLocation.MatchAfterImmediately(),
+                ),
+                opcode(
+                    Opcode.MOVE_RESULT_OBJECT,
+                    location = InstructionLocation.MatchAfterImmediately(),
+                ),
+                opcode(
+                    Opcode.CHECK_CAST,
+                    location = InstructionLocation.MatchAfterImmediately(),
+                ),
+                opcode(
+                    Opcode.INVOKE_VIRTUAL,
+                    location = InstructionLocation.MatchAfterImmediately(),
+                ),
+                opcode(
+                    Opcode.INSTANCE_OF,
+                    location = InstructionLocation.MatchAfterImmediately(),
+                ),
+                opcode(
+                    Opcode.IF_EQZ,
+                    location = InstructionLocation.MatchAfterImmediately(),
+                ),
+                opcode(
+                    Opcode.CHECK_CAST,
+                    location = InstructionLocation.MatchAfterImmediately(),
+                ),
+                opcode(
+                    Opcode.IGET_OBJECT,
+                    location = InstructionLocation.MatchAfterImmediately(),
+                ),
+            ),
+        )
+
+        playerLithoElementsListFingerprint.let {
+            val instructionIndex = it.instructionMatches.first().index
+            val instructionRegister =
+                it.method.getInstruction<BuilderInstruction22c>(instructionIndex).registerA
+            val freeRegister = it.method.getFreeRegisterProvider(
+                instructionIndex, 1, instructionRegister
+            ).getFreeRegister()
+
+            it.method.addInstructionsWithLabels(
+                instructionIndex + 1,
+                """
+                    invoke-static { v$instructionRegister }, $EXTENSION_CLASS->checkPlayerLithoElementsListSize(Ljava/util/List;)Z
+                    move-result v$freeRegister
+                    if-eqz v$freeRegister, :empty_list_check
+                    return-void
+                    :empty_list_check
+                    nop
+                """
             )
         }
     }
