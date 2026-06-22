@@ -13,6 +13,7 @@ package app.morphe.patches.youtube.layout.captions
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -30,7 +31,20 @@ internal object StartVideoInformerFingerprint : Fingerprint(
     strings = listOf("pc")
 )
 
+private object SubtitleManagerFingerprintClassFingerprint : Fingerprint(
+    returnType = "Z",
+    parameters = listOf("L", "Landroid/view/accessibility/CaptioningManager;"),
+    filters = listOf(
+        fieldAccess("Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;"),
+        methodCall("Landroid/view/accessibility/CaptioningManager;->isEnabled()Z"),
+    ),
+    custom = { method, _ ->
+        AccessFlags.STATIC.isSet(method.accessFlags)
+    }
+)
+
 internal object SubtitleManagerFingerprint : Fingerprint(
+    classFingerprint = SubtitleManagerFingerprintClassFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
@@ -42,15 +56,6 @@ internal object SubtitleManagerFingerprint : Fingerprint(
             returnType = "Z"
         ),
         opcode(opcode = Opcode.IF_EQZ, location = MatchAfterWithin(3))
-    )
-)
-
-internal object SubtitleManagerConstructorFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
-    returnType = "V",
-    parameters = listOf(),
-    filters = listOf(
-        string("subtitles")
     )
 )
 
@@ -72,7 +77,7 @@ internal object TimedTextUrlFingerprint : Fingerprint(
     filters = listOf(
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Lorg/chromium/net/CronetEngine;->newUrlRequestBuilder(Ljava/lang/String;Lorg/chromium/net/UrlRequest\$Callback;Ljava/util/concurrent/Executor;)Lorg/chromium/net/UrlRequest\$Builder;",
+            smali = $$"Lorg/chromium/net/CronetEngine;->newUrlRequestBuilder(Ljava/lang/String;Lorg/chromium/net/UrlRequest$Callback;Ljava/util/concurrent/Executor;)Lorg/chromium/net/UrlRequest$Builder;",
         ),
         methodCall(
             opcode = Opcode.INVOKE_STATIC,

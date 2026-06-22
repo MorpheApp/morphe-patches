@@ -1,3 +1,10 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.sponsorblock;
 
 import static app.morphe.extension.shared.StringRef.str;
@@ -183,6 +190,18 @@ public class SegmentPlaybackController {
 
             return Unit.INSTANCE;
         });
+
+        // Handle the race where setChannelId fires after segments are already loaded.
+        VideoInformation.onChannelIdChange.addObserver((String channelId) -> {
+            Utils.runOnMainThread(() -> {
+                if (currentVideoId != null && segments != null
+                        && SponsorBlockChannelWhitelist.isChannelWhitelisted(channelId)) {
+                    Logger.printDebug(() -> "Channel is whitelisted, discarding loaded segments: " + channelId);
+                    discardSegmentsForWhitelistedChannel();
+                }
+            });
+            return Unit.INSTANCE;
+        });
     }
 
     /**
@@ -285,6 +304,23 @@ public class SegmentPlaybackController {
         hiddenSkipSegmentsForCurrentVideoTime.clear();
     }
 
+    private static void maybeShowWhitelistToast() {
+        if (Settings.SB_TOAST_ON_WHITELISTED_CHANNEL.get()) {
+            Utils.showToastShort(str("morphe_sb_channel_whitelisted_toast"));
+        }
+    }
+
+    /**
+     * Discard segments when a whitelisted channel ID arrives after the download already completed.
+     */
+    private static void discardSegmentsForWhitelistedChannel() {
+        String videoId = currentVideoId;
+        clearData();
+        currentVideoId = videoId;
+        SponsorBlockViewController.hideAll();
+        maybeShowWhitelistToast();
+    }
+
     /**
      * Injection point.
      * Initializes SponsorBlock when the video player starts playing a new video.
@@ -307,11 +343,16 @@ public class SegmentPlaybackController {
      */
     public static void setCurrentVideoId(@Nullable String videoId) {
         try {
+            if (videoId == null || videoId.isBlank()) {
+                Logger.printDebug(() -> "Ignoring blank videoId");
+                return;
+            }
+
             if (Objects.equals(currentVideoId, videoId)) {
                 return;
             }
             clearData();
-            if (videoId == null || !Settings.SB_ENABLED.get()) {
+            if (!Settings.SB_ENABLED.get()) {
                 return;
             }
             // Cannot use PlayerType to check because on some newer targets
@@ -328,6 +369,12 @@ public class SegmentPlaybackController {
 
             currentVideoId = videoId;
             Logger.printDebug(() -> "New video ID: " + videoId);
+
+            if (SponsorBlockChannelWhitelist.isCurrentChannelWhitelisted()) {
+                Logger.printDebug(() -> "Skipping SponsorBlock request for whitelisted channel");
+                maybeShowWhitelistToast();
+                return;
+            }
 
             Utils.runOnBackgroundThread(() -> {
                 try {
@@ -354,6 +401,11 @@ public class SegmentPlaybackController {
             if (!videoId.equals(currentVideoId)) {
                 // user changed videos before get segments network call could complete
                 Logger.printDebug(() -> "Ignoring segments for prior video: " + videoId);
+                return;
+            }
+            if (SponsorBlockChannelWhitelist.isCurrentChannelWhitelisted()) {
+                Logger.printDebug(() -> "Skipping SponsorBlock for whitelisted channel");
+                maybeShowWhitelistToast();
                 return;
             }
             setSegments(segments);
@@ -617,12 +669,12 @@ public class SegmentPlaybackController {
                         }
                     }, delayUntilSkip);
                 }
+            }
 
-                // Clear undo range if video time is outside the segment.  Must check last.
-                if (undoAutoSkipRange != null && !undoAutoSkipRange.contains(millis)) {
-                    Logger.printDebug(() -> "Clearing undo range as current time is now outside range: " + undoAutoSkipRange);
-                    undoAutoSkipRange = null;
-                }
+            // Clear undo range if video time is outside the segment. Must check last.
+            if (undoAutoSkipRange != null && !undoAutoSkipRange.contains(millis)) {
+                Logger.printDebug(() -> "Clearing undo range as current time is now outside range: " + undoAutoSkipRange);
+                undoAutoSkipRange = null;
             }
         } catch (Exception e) {
             Logger.printException(() -> "setVideoTime failure", e);
@@ -704,6 +756,8 @@ public class SegmentPlaybackController {
             }
 
             // Set or update undo skip range.
+            Range<Long> oldRange = undoAutoSkipRange;
+            Range<Long> oldUndoAutoSkipRangeToast = undoAutoSkipRangeToast;
             Range<Long> range = segmentToSkip.getUndoRange();
             if (undoAutoSkipRange == null) {
                 Logger.printDebug(() -> "Setting new undo range to: " + range);
@@ -721,6 +775,10 @@ public class SegmentPlaybackController {
             if (!seekSuccessful) {
                 // Can happen when switching videos and is normal.
                 Logger.printDebug(() -> "Could not skip segment (seek unsuccessful): " + segmentToSkip);
+                // Must restore prior undo otherwise manually seeking into
+                // an auto skip always segment breaks always autoskip with newer app targets.
+                undoAutoSkipRange = oldRange;
+                undoAutoSkipRangeToast = oldUndoAutoSkipRangeToast;
                 return;
             }
 

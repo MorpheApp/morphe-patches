@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.settings;
 
 import android.annotation.SuppressLint;
@@ -7,7 +17,7 @@ import android.preference.PreferenceFragment;
 import android.view.View;
 import android.widget.Toolbar;
 
-import com.google.android.gms.common.api.GoogleApiActivity.GoogleApiActivity;
+import com.google.android.gms.common.api.GoogleApiActivity;
 
 import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
@@ -22,21 +32,12 @@ import app.morphe.extension.youtube.settings.search.YouTubeSearchViewController;
  * Hooks {@link GoogleApiActivity} to inject a custom {@link YouTubePreferenceFragment}
  * with a toolbar and search functionality.
  */
-@SuppressWarnings("deprecation")
 public class YouTubeActivityHook extends BaseActivityHook {
 
-    /**
-     * How much time has passed since the first launch of the app. Simple check to prevent
-     * forcing bold icons on first launch where the settings menu is partially broken
-     * due to missing icon resources the client has not yet received.
-     */
-    private static final long MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS = 30 * 1000; // 30 seconds.
-
-    private static final boolean USE_BOLD_ICONS = VersionCheckPatch.IS_20_31_OR_GREATER
-            && !Settings.RESTORE_OLD_SETTINGS_MENUS.get()
-            && (System.currentTimeMillis() - Settings.FIRST_TIME_APP_LAUNCHED.get())
-                > MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS
-            && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00");
+    public static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
+            && VersionCheckPatch.IS_20_31_OR_GREATER
+            && !SpoofAppVersionPatch.isSpoofingToLessThan("20.31.00")
+            && !Settings.RESTORE_OLD_SETTINGS_MENUS.get();
 
     static {
         Utils.setAppIsUsingBoldIcons(USE_BOLD_ICONS);
@@ -74,10 +75,14 @@ public class YouTubeActivityHook extends BaseActivityHook {
      */
     @Override
     protected int getToolbarBackgroundColor() {
-        final String colorName = Utils.isDarkModeEnabled()
+        final boolean darkModeEnabled = Utils.isDarkModeEnabled();
+        final String colorName = darkModeEnabled
                 ? "yt_black3"
                 : "yt_white1";
-        return Utils.getColorFromString(colorName);
+        final int defaultColor = darkModeEnabled
+                ? 0xFFFFFF
+                : 0x000000;
+        return ResourceUtils.getColor(colorName, defaultColor);
     }
 
     /**
@@ -93,7 +98,13 @@ public class YouTubeActivityHook extends BaseActivityHook {
      */
     @Override
     protected View.OnClickListener getNavigationClickListener(Activity activity) {
-        return null;
+        return view -> {
+            if (searchViewController != null && searchViewController.isSearchActive()) {
+                searchViewController.handleBackPress();
+            } else {
+                activity.finish();
+            }
+        };
     }
 
     /**
@@ -124,10 +135,6 @@ public class YouTubeActivityHook extends BaseActivityHook {
      */
     @SuppressWarnings("unused")
     public static boolean useCairoSettingsFragment(boolean original) {
-        // Early targets have layout issues and it's better to always force off.
-        if (!VersionCheckPatch.IS_19_34_OR_GREATER) {
-            return false;
-        }
         if (Settings.RESTORE_OLD_SETTINGS_MENUS.get()) {
             return false;
         }
@@ -136,9 +143,9 @@ public class YouTubeActivityHook extends BaseActivityHook {
             return false;
         }
 
-        // On the first launch of a clean install, forcing the cairo menu can give a
+        // On the first launch of a clean install, forcing the Cairo menu can give a
         // half broken appearance because all the preference icons may not be available yet.
-        // 19.34+ cairo settings are always on, so it doesn't need to be forced anyway.
+        // 19.34+ Cairo settings are always on, so it doesn't need to be forced anyway.
         // Cairo setting will show on the next launch of the app.
         return original;
     }
@@ -167,13 +174,16 @@ public class YouTubeActivityHook extends BaseActivityHook {
      */
     @SuppressWarnings("unused")
     public static boolean handleBackPress() {
-        return YouTubeSearchViewController.handleFinish(searchViewController);
+        if (searchViewController != null && searchViewController.isSearchActive()) {
+            return searchViewController.handleBackPress();
+        }
+        return false;
     }
 
     /**
      * Injection point.
      */
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "BooleanMethodIsAlwaysInverted"})
     public static boolean useBoldIcons(boolean original) {
         return USE_BOLD_ICONS;
     }

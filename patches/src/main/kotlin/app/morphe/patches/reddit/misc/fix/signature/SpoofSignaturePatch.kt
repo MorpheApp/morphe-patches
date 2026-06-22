@@ -7,10 +7,11 @@
 package app.morphe.patches.reddit.misc.fix.signature
 
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.all.misc.fix.changepackageinstaller.changePackageInstallerPatch
 import app.morphe.patches.reddit.misc.extension.sharedExtensionPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/SpoofSignaturePatch;"
 
 @Suppress("unused")
@@ -20,9 +21,9 @@ val spoofSignaturePatch = bytecodePatch(
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
-    dependsOn(sharedExtensionPatch)
+    dependsOn(sharedExtensionPatch, changePackageInstallerPatch())
 
     execute {
-        ApplicationFingerprint.classDef.setSuperClass(EXTENSION_CLASS_DESCRIPTOR)
+        ApplicationFingerprint.classDef.setSuperClass(EXTENSION_CLASS)
     }
 }

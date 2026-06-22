@@ -1,7 +1,8 @@
 package app.morphe.patches.youtube.layout.shortsautoplay
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
@@ -20,21 +21,23 @@ internal object ReelEnumConstructorFingerprint : Fingerprint(
     )
 )
 
-internal object ReelPlaybackRepeatParentFingerprint : Fingerprint(
+private object ReelPlaybackRepeatParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
-        string("Reels[%s] Playback Time: %d ms")
+        methodCall($$"Lj$/time/Instant;->toEpochMilli()J"),
+        string("r_tr")
     )
 )
 
-/**
- * Matches class found in [reelPlaybackRepeatParentFingerprint].
- */
 internal object ReelPlaybackRepeatFingerprint : Fingerprint(
+    classFingerprint = ReelPlaybackRepeatParentFingerprint,
     returnType = "V",
     parameters = listOf("L"),
     filters = listOf(
-        methodCall(smali = "Lcom/google/common/util/concurrent/ListenableFuture;->isDone()Z")
+        anyInstruction(
+            methodCall(smali = "Lcom/google/common/util/concurrent/ListenableFuture;->isDone()Z"),
+            methodCall(smali = $$"Lj$/util/Optional;->ofNullable(Ljava/lang/Object;)Lj$/util/Optional;") // 21.17+
+        )
     )
 )
 
@@ -50,13 +53,13 @@ internal object ReelPlaybackFingerprint : Fingerprint(
         methodCall(
             name = "<init>",
             parameters = listOf("I", "L", "L"),
-            location = InstructionLocation.MatchAfterWithin(15)
+            location = MatchAfterWithin(15)
         ),
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             parameters = listOf("L"),
             returnType = "I",
-            location = InstructionLocation.MatchAfterWithin(5)
+            location = MatchAfterWithin(5)
         )
     )
 )

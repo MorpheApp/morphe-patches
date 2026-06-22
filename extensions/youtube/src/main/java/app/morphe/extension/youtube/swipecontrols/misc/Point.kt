@@ -3,7 +3,7 @@ package app.morphe.extension.youtube.swipecontrols.misc
 import android.view.MotionEvent
 
 /**
- * a simple 2D point class
+ * A simple 2D point class.
  */
 data class Point(
     val x: Int,
@@ -11,7 +11,7 @@ data class Point(
 )
 
 /**
- * convert the motion event coordinates to a point
+ * Converts the motion event coordinates to a point.
  */
 fun MotionEvent.toPoint(): Point =
     Point(x.toInt(), y.toInt())

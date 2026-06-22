@@ -1,8 +1,8 @@
 package app.morphe.patches.youtube.layout.hide.signintotvpopup
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 
 internal object SignInToTVPopupFingerprint : Fingerprint(
     returnType = "Z",

@@ -21,7 +21,7 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController;
 import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
-import app.morphe.extension.youtube.videoplayer.PlayerControlButton;
+import app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton;
 import kotlin.Unit;
 
 public class SponsorBlockViewController {
@@ -33,7 +33,7 @@ public class SponsorBlockViewController {
     private static WeakReference<NewSegmentLayout> newSegmentLayoutRef = new WeakReference<>(null);
     private static WeakReference<SkipSponsorButton> skipSponsorButtonRef = new WeakReference<>(null);
     @Nullable
-    private static PlayerControlButton skipSponsorPlayerButton;
+    private static LegacyPlayerControlButton skipSponsorPlayerButton;
     private static boolean canShowViewElements;
     private static boolean newSegmentLayoutVisible;
     @Nullable
@@ -97,9 +97,10 @@ public class SponsorBlockViewController {
                     ResourceUtils.getIdentifier(ResourceType.ID, "morphe_sb_skip_sponsor_button"))));
 
             // Handles fading in/out with the player overlay.
-            skipSponsorPlayerButton = new PlayerControlButton(
+            skipSponsorPlayerButton = new LegacyPlayerControlButton(
                     layout,
                     "morphe_sb_skip_sponsor_button",
+                    null,
                     null,
                     () -> canShowViewElements && SegmentPlaybackController.currentlyInsideSkippableSegment(),
                     view -> {
@@ -114,6 +115,8 @@ public class SponsorBlockViewController {
             NewSegmentLayout newSegmentLayout = Objects.requireNonNull(layout.findViewById(
                     ResourceUtils.getIdentifier(ResourceType.ID, "morphe_sb_new_segment_view")));
             newSegmentLayoutRef = new WeakReference<>(newSegmentLayout);
+
+
             newSegmentLayout.updateLayout();
 
             newSegmentLayoutVisible = false;
@@ -215,12 +218,19 @@ public class SponsorBlockViewController {
         if (skipHighlight != null) {
             setGenericViewVisibility(skipHighlightButtonRef.get(), !newSegmentLayoutVisible);
         }
-        setGenericViewVisibility(newSegmentLayout, newSegmentLayoutVisible);
+        if (newSegmentLayoutVisible && canShowViewElements) {
+            newSegmentLayout.showWithAnimation();
+        } else {
+            newSegmentLayout.hideWithAnimation();
+        }
     }
 
     public static void hideNewSegmentLayout() {
         newSegmentLayoutVisible = false;
-        setGenericViewVisibility(newSegmentLayoutRef.get(), false);
+        NewSegmentLayout layout = newSegmentLayoutRef.get();
+        if (layout != null && layout.getVisibility() == View.VISIBLE) {
+            layout.hideWithAnimation();
+        }
     }
 
     private static void setGenericViewVisibility(@Nullable View view, boolean visible) {

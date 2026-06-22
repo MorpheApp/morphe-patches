@@ -6,11 +6,10 @@ import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addClientVersionHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_06_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/TranscriptPatch;"
 
 internal val transcriptPatch = bytecodePatch(
@@ -24,17 +23,13 @@ internal val transcriptPatch = bytecodePatch(
     )
 
     execute {
-        if (!is_20_06_or_greater) {
-            return@execute
-        }
-
         settingsMenuCaptionGroup.add(
-            SwitchPreference("morphe_fix_transcript")
+            SwitchPreference("morphe_fix_transcript", summary = true)
         )
 
         addClientVersionHook(
             Endpoint.TRANSCRIPT,
-            "$EXTENSION_CLASS_DESCRIPTOR->getTranscriptAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
+            "$EXTENSION_CLASS->getTranscriptAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
         )
     }
 }

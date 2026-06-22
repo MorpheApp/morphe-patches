@@ -6,7 +6,6 @@ import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.all.misc.resources.addAppResources
 import app.morphe.patches.all.misc.resources.addResourcesPatch
 import app.morphe.patches.shared.layout.branding.addLicensePatch
-import app.morphe.patches.shared.misc.extension.EXTENSION_CLASS_DESCRIPTOR
 import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -16,6 +15,8 @@ import app.morphe.util.getNode
 import app.morphe.util.insertFirst
 import app.morphe.util.returnEarly
 import org.w3c.dom.Node
+
+const val MORPHE_SETTINGS_INTENT = "morphe_settings_intent"
 
 private var lightThemeColor : String? = null
 private var darkThemeColor : String? = null
@@ -32,13 +33,8 @@ fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: St
 
 private val settingsColorPatch = bytecodePatch {
     finalize {
-        val extensionClassDef = mutableClassDefBy(EXTENSION_CLASS_DESCRIPTOR)
-        if (lightThemeColor != null) {
-            ThemeLightColorResourceNameFingerprint.match(extensionClassDef).method.returnEarly(lightThemeColor!!)
-        }
-        if (darkThemeColor != null) {
-            ThemeDarkColorResourceNameFingerprint.match(extensionClassDef).method.returnEarly(darkThemeColor!!)
-        }
+        lightThemeColor?.let { ThemeLightColorResourceNameFingerprint.method.returnEarly(it) }
+        darkThemeColor?.let { ThemeDarkColorResourceNameFingerprint.method.returnEarly(it) }
     }
 }
 
@@ -89,6 +85,7 @@ fun settingsPatch (
             ),
             ResourceGroup("layout",
                 "morphe_custom_list_item_checked.xml",
+                "morphe_icon_list_item.xml",
                 // Color picker.
                 "morphe_color_dot_widget.xml",
                 "morphe_color_picker.xml",
@@ -108,9 +105,7 @@ fun settingsPatch (
 
     finalize {
         fun Node.addPreference(preference: BasePreference) {
-            preference.serialize(ownerDocument) { resource ->
-                // FIXME? Not needed anymore?
-//                addResource("values", resource)
+            preference.serialize(ownerDocument) { _ ->
             }.let { preferenceNode ->
                 insertFirst(preferenceNode)
             }

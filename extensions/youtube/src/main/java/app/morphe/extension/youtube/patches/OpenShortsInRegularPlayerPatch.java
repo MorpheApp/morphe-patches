@@ -3,8 +3,6 @@ package app.morphe.extension.youtube.patches;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
 
 import java.lang.ref.WeakReference;
 
@@ -29,13 +27,6 @@ public class OpenShortsInRegularPlayerPatch {
      */
     public static void setMainActivity(Activity activity) {
         mainActivityRef = new WeakReference<>(activity);
-    }
-
-    /**
-     * Injection point.
-     */
-    public static boolean overrideBackPressToExit() {
-        return overrideBackPressToExit(true);
     }
 
     /**
@@ -77,7 +68,7 @@ public class OpenShortsInRegularPlayerPatch {
                 overrideBackPressToExit = false;
                 return false;
             }
-            
+
             if (NavigationButton.getSelectedNavigationButton() == NavigationButton.SHORTS) {
                 overrideBackPressToExit = false;
                 return false; // Always use Shorts player for the Shorts nav button.
@@ -89,20 +80,7 @@ public class OpenShortsInRegularPlayerPatch {
             final boolean forceFullScreen = (type == ShortsPlayerType.REGULAR_PLAYER_FULLSCREEN);
             OpenVideosFullscreenHookPatch.setOpenNextVideoFullscreen(forceFullScreen);
 
-            // Can use the application context and add intent flags of
-            // FLAG_ACTIVITY_NEW_TASK and FLAG_ACTIVITY_CLEAR_TOP
-            // But the activity context seems to fix random app crashes
-            // if Shorts URLs are opened outside the app.
-            var context = mainActivityRef.get();
-
-            Intent videoPlayerIntent = new Intent(
-                    Intent.ACTION_VIEW,
-                    Uri.parse("https://youtube.com/watch?v=" + videoId)
-            );
-            videoPlayerIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            videoPlayerIntent.setPackage(context.getPackageName());
-
-            context.startActivity(videoPlayerIntent);
+            LoadVideoPatch.openVideo(videoId);
             return true;
         } catch (Exception ex) {
             OpenVideosFullscreenHookPatch.setOpenNextVideoFullscreen(null);

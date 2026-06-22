@@ -9,7 +9,7 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.patches.youtube.shared.EngagementPanelControllerFingerprint
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/DisablePlayerPopupPanelsPatch;"
 
 @Suppress("unused")
@@ -26,16 +26,15 @@ val disablePlayerPopupPanelsPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_disable_player_popup_panels"),
+            SwitchPreference("morphe_disable_player_popup_panels", summary = true),
         )
 
         EngagementPanelControllerFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->disablePlayerPopupPanels()Z
+                invoke-static/range { p3 .. p4 }, $EXTENSION_CLASS->disablePlayerPopupPanels(ZZ)Z
                 move-result v0
                 if-eqz v0, :player_popup_panels
-                if-eqz p4, :player_popup_panels
                 const/4 v0, 0x0
                 return-object v0
                 :player_popup_panels

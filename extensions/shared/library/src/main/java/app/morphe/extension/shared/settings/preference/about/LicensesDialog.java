@@ -41,6 +41,8 @@ public class LicensesDialog extends Dialog {
                     "https://raw.githubusercontent.com/LSPosed/AndroidHiddenApiBypass/main/LICENSE"),
             new License("AndroidX JavaScriptEngine",
                     "https://raw.githubusercontent.com/androidx/androidx/androidx-main/LICENSE.txt"),
+            new License("Google Material Design icons",
+                    "https://raw.githubusercontent.com/google/material-design-icons/refs/heads/master/LICENSE"),
             new License("Gson",
                     "https://raw.githubusercontent.com/google/gson/main/LICENSE"),
             new License("Guava",
@@ -48,8 +50,12 @@ public class LicensesDialog extends Dialog {
             new License("Morphe",
                     "https://raw.githubusercontent.com/MorpheApp/morphe-patches/refs/heads/main/LICENSE",
                     "https://raw.githubusercontent.com/MorpheApp/morphe-patches/refs/heads/main/NOTICE"),
+            new License("Smali/multidexlib2",
+                    "https://raw.githubusercontent.com/MorpheApp/multidexlib2/refs/heads/main/LICENSE.txt",
+                    "https://raw.githubusercontent.com/MorpheApp/multidexlib2/refs/heads/main/NOTICE.txt"),
             new License("Protocol Buffers",
                     "https://raw.githubusercontent.com/protocolbuffers/protobuf/main/LICENSE")
+
     );
 
     private record License(String name, List<String> licenseUrls, List<String> noticeUrls) {
@@ -69,6 +75,7 @@ public class LicensesDialog extends Dialog {
         super(context, android.R.style.Theme_DeviceDefault_NoActionBar);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -2,11 +2,12 @@ package app.morphe.patches.youtube.misc.gms
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AccountCredentialsInvalidTextPatch;"
 
 internal val accountCredentialsInvalidTextPatch = bytecodePatch {
@@ -23,18 +24,15 @@ internal val accountCredentialsInvalidTextPatch = bytecodePatch {
         // The user can also fix this by deleting the MicroG account but
         // MicroG accounts look almost identical to Google device accounts,
         // and it's more foolproof to instead uninstall/reinstall.
-        arrayOf(
-            SpecificNetworkErrorViewControllerFingerprint,
-            LoadingFrameLayoutControllerFingerprint
-        ).forEach { fingerprint ->
-            fingerprint.apply {
+        SpecificNetworkErrorViewControllerFingerprint.matchAll(2 .. 2).forEach { match ->
+            match.apply {
                 val index = instructionMatches.last().index
                 val register = method.getInstruction<OneRegisterInstruction>(index).registerA
 
                 method.addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getOfflineNetworkErrorString(Ljava/lang/String;)Ljava/lang/String;
+                        invoke-static { v$register }, $EXTENSION_CLASS->getOfflineNetworkErrorString(Ljava/lang/String;)Ljava/lang/String;
                         move-result-object v$register  
                     """
                 )

@@ -7,12 +7,8 @@ import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.util.getMutableMethod
-import app.morphe.util.getReference
-import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/music/patches/HideVideoAdsPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/HideVideoAdsPatch;"
 
 @Suppress("unused")
 val hideVideoAdsPatch = bytecodePatch(
@@ -31,16 +27,12 @@ val hideVideoAdsPatch = bytecodePatch(
             SwitchPreference("morphe_music_hide_video_ads"),
         )
 
-        ShowVideoAdsParentFingerprint.instructionMatches[1]
-            .getInstruction<ReferenceInstruction>()
-            .getReference<MethodReference>()!!
-            .getMutableMethod()
-            .addInstructions(
-                0,
-                """
-                    invoke-static { p1 }, $EXTENSION_CLASS_DESCRIPTOR->showVideoAds(Z)Z
-                    move-result p1
-                """
-            )
+        ShowVideoAdsFingerprint.instructionMatches[1].getMethodCalled().addInstructions(
+            0,
+            """
+                invoke-static { p1 }, $EXTENSION_CLASS->showVideoAds(Z)Z
+                move-result p1
+            """
+        )
     }
 }

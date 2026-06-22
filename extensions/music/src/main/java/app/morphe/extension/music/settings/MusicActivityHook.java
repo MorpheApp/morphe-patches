@@ -18,7 +18,7 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
 
 /**
- * Hooks {@link com.google.android.gms.common.api.GoogleApiActivity}
+ * Hooks {@code com.google.android.gms.common.api.GoogleApiActivity}
  * to inject a custom {@link MusicPreferenceFragment} with a toolbar and search.
  */
 public class MusicActivityHook extends BaseActivityHook {
@@ -26,17 +26,9 @@ public class MusicActivityHook extends BaseActivityHook {
     @SuppressLint("StaticFieldLeak")
     public static MusicSearchViewController searchViewController;
 
-    /**
-     * How much time has passed since the first launch of the app. Simple check to prevent
-     * forcing bold icons on first launch where the settings menu is partially broken
-     * due to missing icon resources the client has not yet received.
-     */
-    private static final long MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS = 30 * 1000; // 30 seconds.
-
     // TODO: Implement a 'Spoof app version' patch for YouTube Music.
-    private static final boolean USE_BOLD_ICONS = VersionCheckPatch.IS_8_40_OR_GREATER
-            && (System.currentTimeMillis() - Settings.FIRST_TIME_APP_LAUNCHED.get())
-                > MINIMUM_TIME_AFTER_FIRST_LAUNCH_BEFORE_ALLOWING_BOLD_ICONS;
+    private static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
+            && VersionCheckPatch.IS_8_40_OR_GREATER;
 
     static {
         Utils.setAppIsUsingBoldIcons(USE_BOLD_ICONS);
@@ -47,6 +39,13 @@ public class MusicActivityHook extends BaseActivityHook {
      */
     @SuppressWarnings("unused")
     public static void initialize(Activity parentActivity) {
+
+        // Prevent opening multiple settings activities if menu is double tapped quickly.
+        if (Utils.isFastClick()) {
+            parentActivity.finish();
+            return;
+        }
+
         // Must touch the Music settings to ensure the settings class is loaded and
         // the values can be found when setting the UI preferences.
         // Logging anything under non debug ensures this is set.
@@ -83,7 +82,13 @@ public class MusicActivityHook extends BaseActivityHook {
     @Override
     protected Drawable getNavigationIcon() {
         Drawable navigationIcon = MusicPreferenceFragment.getBackButtonDrawable();
-        navigationIcon.setColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            navigationIcon.setColorFilter(new android.graphics.BlendModeColorFilter(
+                    Utils.getAppForegroundColor(), android.graphics.BlendMode.SRC_IN));
+        } else {
+            navigationIcon.setColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN);
+        }
+
         return navigationIcon;
     }
 

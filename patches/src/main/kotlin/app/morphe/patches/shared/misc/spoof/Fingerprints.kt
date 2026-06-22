@@ -4,6 +4,7 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstruction
@@ -13,7 +14,7 @@ import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
 internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
-    returnType = "Lorg/chromium/net/UrlRequest\$Builder;",
+    returnType = $$"Lorg/chromium/net/UrlRequest$Builder;",
     filters = OpcodesFilter.opcodesToFilters(
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.IGET_OBJECT, // Moves the request URI string to a register to build the request with.
@@ -24,6 +25,20 @@ internal object BuildInitPlaybackRequestFingerprint : Fingerprint(
     )
 )
 
+// 21.21+
+internal object BuildPlayerRequestURIBuilderFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = $$"Landroid/net/Uri$Builder;",
+    parameters = listOf(),
+    filters = listOf(
+        string("key"),
+        string("asig"),
+        methodCall($$"Landroid/net/Uri$Builder;->appendQueryParameter(Ljava/lang/String;Ljava/lang/String;)Landroid/net/Uri$Builder;"),
+        opcode(Opcode.RETURN_OBJECT)
+    )
+)
+
+// 21.20 and lower
 internal object BuildPlayerRequestURIFingerprint : Fingerprint(
     returnType = "Ljava/lang/String;",
     filters = OpcodesFilter.opcodesToFilters(
@@ -94,9 +109,9 @@ internal object CreateStreamingDataFingerprint : Fingerprint(
         Opcode.SGET_OBJECT,
         Opcode.IPUT_OBJECT,
     ),
-    custom = { method, classDef ->
+    custom = { _, classDef ->
         classDef.fields.any { field ->
-            field.name == "a" && field.type.endsWith("/StreamingDataOuterClass\$StreamingData;")
+            field.name == "a" && field.type.endsWith($$"/StreamingDataOuterClass$StreamingData;")
         }
     }
 )
@@ -126,14 +141,12 @@ internal object HlsCurrentTimeFingerprint : Fingerprint(
     )
 )
 
-internal const val DISABLED_BY_SABR_STREAMING_URI_STRING = "DISABLED_BY_SABR_STREAMING_URI"
-
 internal object MediaFetchEnumConstructorFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf(
         "ENABLED",
         "DISABLED_FOR_PLAYBACK",
-        DISABLED_BY_SABR_STREAMING_URI_STRING
+        "DISABLED_BY_SABR_STREAMING_URI"
     )
 )
 
@@ -169,8 +182,6 @@ internal object MediaFetchHotConfigAlternativeFingerprint : Fingerprint(
 // then videos will never start playback and load forever.
 // Flag does not seem to affect playback if spoofing is off.
 internal object PlaybackStartDescriptorFeatureFlagFingerprint : Fingerprint(
-    parameters = listOf(),
-    returnType = "Z",
     filters = listOf(
         literal(45665455L)
     )
@@ -184,12 +195,23 @@ internal object MediaSessionFeatureFlagFingerprint : Fingerprint(
     )
 )
 
+// Feature flag that causes Shorts content to freeze and fail to load when scrolling.
+// Flag does not seem to affect Shorts if spoofing is off.
+internal object ReelItemWatchResponseFeatureFlagFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Z",
+    parameters = listOf(),
+    filters = listOf(
+        literal(45638126L)
+    )
+)
+
 internal fun indexOfNewUrlRequestBuilderInstruction(method: Method) = method.indexOfFirstInstruction {
     val reference = getReference<MethodReference>()
     opcode == Opcode.INVOKE_VIRTUAL && reference?.definingClass == "Lorg/chromium/net/CronetEngine;"
             && reference.name == "newUrlRequestBuilder"
             && reference.parameterTypes.size == 3
             && reference.parameterTypes[0] == "Ljava/lang/String;"
-            && reference.parameterTypes[1] == "Lorg/chromium/net/UrlRequest\$Callback;"
+            && reference.parameterTypes[1] == $$"Lorg/chromium/net/UrlRequest$Callback;"
             && reference.parameterTypes[2] == "Ljava/util/concurrent/Executor;"
 }

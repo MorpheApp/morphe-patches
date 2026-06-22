@@ -6,32 +6,29 @@
  */
 package app.morphe.extension.reddit.patches;
 
-import androidx.annotation.Nullable;
+import java.lang.reflect.Field;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
 
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class HideTrendingTodayShelfPatch {
-    private static final boolean HIDE_TRENDING_TODAY_SHELF =
-            Settings.HIDE_TRENDING_TODAY_SHELF.get();
+
     /**
      * 'home_revamp_tab_popular' may be removed or changed at any time,
      * as Reddit frequently changes string keys.
      * Use a hardcoded string as a fallback.
      */
     private static final String TRENDING_LABEL = "Trending";
+    private static final String TRENDING_LABEL_KEY = "home_revamp_tab_popular";
 
-    @Nullable
-    private static String TRENDING_LABEL_LOCALIZED;
-
-    // Must be lazy loaded otherwise context may not be set.
-    private static String getTrendingLabelLocalized() {
-        if (TRENDING_LABEL_LOCALIZED == null) {
-            TRENDING_LABEL_LOCALIZED = ResourceUtils.getString("home_revamp_tab_popular");
-        }
-        return TRENDING_LABEL_LOCALIZED;
-    }
+    private static volatile String[] trendingLabels = new String[]{ TRENDING_LABEL };
 
     /**
      * @return If this patch was included during patching.
@@ -44,19 +41,66 @@ public final class HideTrendingTodayShelfPatch {
      * Injection point.
      */
     public static boolean hideTrendingTodayShelf() {
-        return HIDE_TRENDING_TODAY_SHELF;
+        return Settings.HIDE_TRENDING_TODAY_SHELF.get();
     }
 
     /**
      * Injection point.
      */
-    public static String removeTrendingLabel(String label) {
-        if (HIDE_TRENDING_TODAY_SHELF && label != null) {
-            if (label.startsWith(TRENDING_LABEL) || label.startsWith(getTrendingLabelLocalized())) {
-                return "";
+    public static boolean shouldHideSearchSectionHeader(Object state) {
+        try {
+            if (state == null || !hideTrendingTodayShelf()) {
+                return false;
             }
+
+            String stateStr = state.toString();
+            for (String label : trendingLabels) {
+                if (stateStr.contains(label)) return true;
+            }
+
+            for (Field field : state.getClass().getDeclaredFields()) {
+                if (field.getType() == String.class) {
+                    field.setAccessible(true);
+                    String value = (String) field.get(state);
+                    if (value != null && Utils.startsWithAny(value, trendingLabels)) {
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            Logger.printException(() -> "shouldHideSearchSectionHeader failure");
         }
 
-        return label;
+        return false;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setContentLanguages(List<Locale> locales) {
+        try {
+            if (trendingLabels == null || trendingLabels.length <= 1) {
+                if (Utils.getContext() == null) {
+                    Logger.printInfo(() -> "Cannot set content languages, context is null");
+                    return;
+                }
+
+                Set<String> newTrendingLabels = new HashSet<>(2 * locales.size());
+                newTrendingLabels.add(TRENDING_LABEL);
+
+                for (Locale locale : locales) {
+                    if (ResourceUtils.getStringIdentifier(TRENDING_LABEL_KEY) != 0) {
+                        String localizedTrendingLabel = ResourceUtils.getStringByLocale(TRENDING_LABEL_KEY, locale);
+                        if (localizedTrendingLabel != null && !TRENDING_LABEL_KEY.equals(localizedTrendingLabel)) {
+                            newTrendingLabels.add(localizedTrendingLabel);
+                        }
+                    }
+                }
+
+                trendingLabels = newTrendingLabels.toArray(new String[0]);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "setContentLanguages failure");
+        }
     }
 }

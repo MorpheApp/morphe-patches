@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package app.morphe.extension.youtube.innertube;
+
+option optimize_for = LITE_RUNTIME;
+option java_package = "app.morphe.extension.youtube.innertube";
+
+message ConfigResponse {
+    Context context = 1;
+}
+
+message Context {
+    optional GlobalConfigGroup globalConfigGroup = 16;
+}
+
+message GlobalConfigGroup {
+    optional RawColdConfigGroup rawColdConfigGroup = 6;
+}
+
+message RawColdConfigGroup {
+    optional string configData = 1;
+}

@@ -7,6 +7,8 @@
 package app.morphe.extension.reddit.patches;
 
 import app.morphe.extension.reddit.settings.Settings;
+import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class ShowViewCountPatch {
@@ -23,7 +25,14 @@ public final class ShowViewCountPatch {
      * Injection point.
      */
     public static boolean showViewCount(String experimentName, boolean original) {
-        if (Settings.SHOW_VIEW_COUNT.get() && experimentName != null && experimentName.startsWith(ANDROID_POST_UNIT_VIEWS_COUNT)) {
+        // Can be called before app context is set.
+        if (Utils.getContext() == null) {
+            Logger.printInfo(() -> "Cannot show view count, context is not yet set");
+            return original;
+        }
+
+        if (Settings.SHOW_VIEW_COUNT.get() && experimentName != null
+                && experimentName.startsWith(ANDROID_POST_UNIT_VIEWS_COUNT)) {
             return true;
         }
 

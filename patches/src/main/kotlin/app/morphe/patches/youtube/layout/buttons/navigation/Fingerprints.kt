@@ -19,9 +19,10 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import app.morphe.patches.youtube.layout.hide.general.YouTubeDoodlesImageViewFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -44,6 +45,24 @@ internal object CreatePivotBarFingerprint : Fingerprint(
     )
 )
 
+internal object CastMenuItemInitializeFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "castmediaroutebutton"),
+        methodCall(name = "setShowAsAction")
+    )
+)
+
+internal object CastMenuItemVisibilityFingerprint : Fingerprint(
+    classFingerprint = CastMenuItemInitializeFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    filters = listOf(
+        methodCall(name = "setVisible")
+    )
+)
+
 internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
@@ -52,12 +71,50 @@ internal object AnimatedNavigationTabsFeatureFlagFingerprint : Fingerprint(
     )
 )
 
-internal object CollapsingToolbarLayoutFeatureFlag : Fingerprint(
+internal object CollapsingToolbarLayoutFeatureFlagFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
     parameters = listOf(),
     filters = listOf(
         literal(45736608L)
+    )
+)
+
+internal object AutoHideNavigationBarOnFeedScrollingFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("Landroid/support/v7/widget/RecyclerView;", "I", "I"),
+    filters = listOf(
+        methodCall("Landroid/view/ViewConfiguration;->get(Landroid/content/Context;)Landroid/view/ViewConfiguration;"),
+        methodCall(
+            smali = "Landroid/view/ViewConfiguration;->getScaledTouchSlop()I",
+            location = MatchAfterWithin(5)
+        )
+    )
+)
+
+internal object AutoHideNavigationBarOnDismissMiniplayerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("F"),
+    filters = listOf(
+        literal(2),
+        methodCall(
+            smali = "Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;",
+            location = MatchAfterWithin(5)
+        ),
+        methodCall(
+            smali = "Ljava/util/Set;->iterator()Ljava/util/Iterator;",
+            location = MatchAfterWithin(5)
+        ),
+        methodCall(
+            smali = "Ljava/util/Iterator;->hasNext()Z",
+            location = MatchAfterWithin(5)
+        ),
+        methodCall(
+            smali = "Ljava/util/Iterator;->next()Ljava/lang/Object;",
+            location = MatchAfterWithin(5)
+        )
     )
 )
 
@@ -117,6 +174,7 @@ internal object SetWordmarkHeaderFingerprint : Fingerprint(
     returnType = "V",
     parameters = listOf("Landroid/widget/ImageView;"),
     filters = listOf(
+        methodCall(returnType = "Z"),
         resourceLiteral(ResourceType.ATTR, "ytPremiumWordmarkHeader"),
         resourceLiteral(ResourceType.ATTR, "ytWordmarkHeader")
     )
@@ -134,7 +192,7 @@ internal object WideSearchbarLayoutFingerprint : Fingerprint(
     )
 )
 
-internal object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
+private object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Ljava/lang/CharSequence;",
     parameters = listOf(),
@@ -143,10 +201,8 @@ internal object OldSearchButtonAccessibilityLabelFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches to class found in [OldSearchButtonAccessibilityLabelFingerprint].
- */
 internal object OldSearchButtonVisibilityFingerprint : Fingerprint(
+    classFingerprint = OldSearchButtonAccessibilityLabelFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     filters = listOf(
@@ -164,15 +220,21 @@ internal object SearchResultButtonVisibilityFingerprint : Fingerprint(
         literal(45423782L), // lens search button feature flags.
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
-            smali = "Landroid/view/View;->setOnClickListener(Landroid/view/View\$OnClickListener;)V"
+            smali = $$"Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V"
         ),
     )
 )
 
-/**
- * Matches to class found in [SearchFragmentFingerprint].
- */
+private object SearchFragmentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    filters = listOf(
+        string("search-lens-button")
+    )
+)
+
 internal object SearchButtonsVisibilityFingerprint : Fingerprint(
+    classFingerprint = SearchFragmentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("Ljava/lang/String;"),
@@ -187,18 +249,10 @@ internal object SearchButtonsVisibilityFingerprint : Fingerprint(
     )
 )
 
-internal object SearchFragmentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Landroid/view/View;",
-    filters = listOf(
-        string("search-lens-button")
-    )
-)
-
 internal object PivotBarRendererFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     parameters = listOf("L"),
-    returnType = "Lj\$/util/Optional;",
+    returnType = "Lj$/util/Optional;",
     filters = listOf(
         literal(117501096L),
         opcode(Opcode.IF_NE),
@@ -277,7 +331,6 @@ internal object TopBarRendererSecondaryFilterFingerprint : Fingerprint(
 internal object SettingIntentFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "Z",
-    parameters = listOf(),
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
@@ -315,5 +368,14 @@ internal object SettingIntentFingerprint : Fingerprint(
             parameters = listOf("I"),
             location = MatchAfterWithin(5)
         )
-    )
+    ),
+    custom = { method, _ ->
+        parametersMatch( // 21.25+
+            method.parameters,
+            listOf("Landroid/view/MenuItem;")
+        ) || parametersMatch( // 21.24 and older
+            method.parameters,
+            listOf()
+        )
+    }
 )

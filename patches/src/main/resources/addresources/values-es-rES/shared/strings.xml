@@ -18,7 +18,7 @@ Second \"item\" text"</string>
 <resources>
   <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">Ajustes</string>
-  <string name="morphe_settings_confirm_user_dialog_title">¿Estás seguro de que quieres continuar?</string>
+  <string name="morphe_settings_confirm_user_dialog_title">¿Realmente quieres continuar?</string>
   <string name="morphe_settings_save">Guardar</string>
   <string name="morphe_settings_reset">Restablecer</string>
   <string name="morphe_settings_reset_color">Restablecer color</string>
@@ -38,7 +38,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_recent_searches">Búsquedas recientes</string>
   <string name="morphe_settings_search_remove_message">¿Eliminar del historial de búsqueda?</string>
   <string name="morphe_settings_search_clear_history">Borrar historial de búsqueda</string>
-  <string name="morphe_settings_search_clear_history_message">¿Estás seguro de que quieres borrar todo el historial de búsqueda?</string>
+  <string name="morphe_settings_search_clear_history_message">¿Realmente quieres borrar todo el historial de búsqueda?</string>
   <string name="morphe_settings_search_tips_title">Consejos de búsqueda</string>
   <string name="morphe_settings_search_tips_summary">"• Toca una ruta para navegar a ella
 • Mantén pulsado un ajuste para navegar a él
@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">El historial de búsqueda está vacío</string>
   <string name="morphe_settings_search_empty_history_summary">Para guardar el historial de búsqueda, escribe una consulta de búsqueda y pulsa Enter</string>
   <string name="morphe_settings_search_history_title">Mostrar el historial de búsqueda de ajustes</string>
-  <string name="morphe_settings_search_history_summary_on">El historial de búsqueda de los ajustes es visible</string>
-  <string name="morphe_settings_search_history_summary_off">El historial de búsqueda de ajustes está oculto</string>
   <string name="morphe_show_menu_icons_title">Mostrar iconos de configuración de Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Se muestran los iconos de configuración</string>
-  <string name="morphe_show_menu_icons_summary_off">No se muestran los iconos de configuración</string>
   <string name="morphe_language_title">Idioma de Morphe</string>
   <string name="morphe_language_user_dialog_message">"Las traducciones para algunos idiomas pueden faltar o estar incompletas.
 
@@ -88,37 +84,35 @@ Para traducir nuevos idiomas o mejorar las traducciones existentes, visita morph
   <string name="morphe_settings_about_licenses_loading">Cargando...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Depuración</string>
-  <string name="morphe_debug_screen_summary">Activar o desactivar las opciones de depuración</string>
+  <string name="morphe_debug_screen_summary">Configurar opciones avanzadas de desarrollador y registros de diagnóstico</string>
   <string name="morphe_debug_title">Registro de depuración</string>
-  <string name="morphe_debug_summary_on">Los registros de depuración están habilitados</string>
-  <string name="morphe_debug_summary_off">Los registros de depuración están desactivados</string>
-  <string name="morphe_debug_stacktrace_title">Registrar stack traces</string>
-  <string name="morphe_debug_stacktrace_summary_on">Los registros de depuración incluyen stack trace</string>
-  <string name="morphe_debug_stacktrace_summary_off">Los registros de depuración no incluyen stack trace</string>
+  <string name="morphe_debug_stacktrace_title">Registro de depuración de la traza de pila</string>
+  <string name="morphe_debug_stacktrace_summary">Incluye rastreos de pila en los registros de depuración para ayudar a identificar errores</string>
   <string name="morphe_debug_toast_on_error_title">Mostrar aviso de error en Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Se mostrará un aviso si se produce un error</string>
-  <string name="morphe_debug_toast_on_error_summary_off">No se mostrará un aviso si se produce un error</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Desactivar los avisos de error oculta todas las notificaciones de error de Morphe.
 
 No se le notificará de ningún evento inesperado."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exportar registros de depuración</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Copia los registros de depuración de Morphe al portapapeles</string>
+  <string name="morphe_debug_export_logs_title">Exportar registros de depuración</string>
+  <string name="morphe_debug_export_logs_summary">Exportar registros de depuración de Morphe</string>
+  <string name="morphe_debug_export_logs_file">Exportar a archivo</string>
+  <string name="morphe_debug_export_logs_success">Registros de depuración exportados correctamente</string>
+  <string name="morphe_debug_export_logs_failed">Error al exportar los registros de depuración</string>
+  <string name="morphe_debug_logs_search_hint">Buscar registros de depuración...</string>
+  <string name="morphe_debug_export_logs_clear">Borrar</string>
   <string name="morphe_debug_logs_disabled">El registro de depuración está desactivado</string>
-  <string name="morphe_debug_logs_none_found">No se encontraron registros</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Registros copiados</string>
-  <string name="morphe_debug_logs_failed_to_export">Error al exportar registros: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Borrar registros de depuración</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Borra todos los registros de depuración de Morphe almacenados</string>
-  <string name="morphe_debug_logs_clear_toast">Registros borrados</string>
+  <string name="morphe_debug_logs_none_found">No se encontraron registros de depuración</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Registros de depuración copiados</string>
+  <string name="morphe_debug_logs_failed_to_export">Error al exportar los registros de depuración: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Registros de depuración borrados</string>
   <string name="morphe_debug_feature_flags_manager_title">Manager de indicadores de funciones</string>
   <string name="morphe_debug_feature_flags_manager_summary">Gestionar indicadores de funciones booleanos</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Banderas activas (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Banderas bloqueadas (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Buscar banderas...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Banderas guardadas</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Banderas restablecidas</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Banderas copiadas al portapapeles</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicia la aplicación para usar esta característica</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Indicadores de funciones activas (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Indicadores de funciones bloqueadas (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Buscar indicadores de funciones...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Indicadores de funciones guardados</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Indicadores de funciones restablecidos</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Indicadores de funciones copiados al portapapeles</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Reinicie la app para usar este ajuste</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Abrir la configuración de MicroG</string>
@@ -138,4 +132,28 @@ Deshabilitar las optimizaciones de batería para MicroG no tendrá un efecto neg
 
 Toca el botón continuar y permite los cambios de optimización."</string>
   <string name="gms_core_dialog_continue_text">Continuar</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Mostrar diálogo de optimización de batería de MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Si desactivas esta opción, se ocultará el mensaje de optimización de la batería de MicroG.
+
+Si no se modifican las optimizaciones de la batería, es posible que se produzcan los siguientes problemas:
+• La aplicación puede cerrarse de forma aleatoria
+• Es posible que las notificaciones no funcionen
+• Es posible que la reproducción en segundo plano no funcione"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Manejo de enlaces de la aplicación</string>
+  <string name="morphe_link_handling_summary">Configurar enlaces para que se abran en esta aplicación</string>
+  <string name="morphe_link_handling_step1_title">Paso 1: Desactivar los enlaces de la aplicación original</string>
+  <string name="morphe_link_handling_step1_message">Abra la configuración de la aplicación original y desactive todos los enlaces de dominio</string>
+  <string name="morphe_link_handling_step2_title">Paso 2: Activar los enlaces de la aplicación parcheada</string>
+  <string name="morphe_link_handling_step2_message">Abra la configuración de la aplicación parcheada y active todos los enlaces de dominio</string>
+  <string name="morphe_link_handling_open">Abrir configuración</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 ¡Alerta experimental! 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Estás usando una versión experimental de la app: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Puede que la app se comporte de forma extraña o que se produzcan errores no identificados mientras afinamos los parches para esta versión de la app.
+&lt;br/&gt;&lt;br/&gt;
+Si deseas disfrutar de una experiencia sin problemas, &lt;b&gt;desinstala&lt;/b&gt; esta versión y actualiza la app a la versión recomendada: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Quiero experimental</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Quiero estable</string>
 </resources>

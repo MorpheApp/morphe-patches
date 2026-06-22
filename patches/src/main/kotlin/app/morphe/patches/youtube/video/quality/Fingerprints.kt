@@ -18,7 +18,8 @@ import app.morphe.patcher.literal
 import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
-import app.morphe.util.customLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -78,12 +79,13 @@ internal object PlaybackStartParametersToStringFingerprint : Fingerprint(
 )
 
 internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
+    classFingerprint = VideoStreamingDataToStringFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     filters = listOf(
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;"
+            definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
         ),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
@@ -93,7 +95,7 @@ internal object VideoStreamingDataConstructorFingerprint : Fingerprint(
         newInstance("Ljava/util/ArrayList;"),
         fieldAccess(
             opcode = Opcode.IGET_OBJECT,
-            definingClass = "Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass\$StreamingData;"
+            definingClass = $$"Lcom/google/protos/youtube/api/innertube/StreamingDataOuterClass$StreamingData;"
         )
     ),
 )
@@ -107,17 +109,15 @@ internal object VideoStreamingDataToStringFingerprint : Fingerprint(
     )
 )
 
-internal object VideoQualityItemOnClickParentFingerprint : Fingerprint(
+private object VideoQualityItemOnClickParentFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("VIDEO_QUALITIES_MENU_BOTTOM_SHEET_FRAGMENT")
     )
 )
 
-/**
- * Resolves to class found in [VideoQualityItemOnClickFingerprint].
- */
 internal object VideoQualityItemOnClickFingerprint : Fingerprint(
+    classFingerprint = VideoQualityItemOnClickParentFingerprint,
     name = "onItemClick",
     returnType = "V",
     parameters = listOf(
@@ -138,8 +138,9 @@ internal object VideoQualityMenuOptionsFingerprint : Fingerprint(
         Opcode.IF_EQZ,
         Opcode.IGET_BOOLEAN, // Use the quality menu, that contains the advanced menu.
         Opcode.IF_NEZ,
-    ),
-    custom = customLiteral { videoQualityQuickMenuAdvancedMenuDescription } // TODO: Convert this to an instruction filter
+    ) + resourceLiteral(
+        ResourceType.STRING, "video_quality_quick_menu_advanced_menu_description"
+    )
 )
 
 internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
@@ -161,6 +162,7 @@ internal object VideoQualityMenuViewInflateFingerprint : Fingerprint(
         Opcode.INVOKE_VIRTUAL,
         Opcode.MOVE_RESULT_OBJECT,
         Opcode.CHECK_CAST,
-    ),
-    custom = customLiteral { videoQualityBottomSheetListFragmentTitle } // TODO: Convert this to an instruction filter
+    ) + resourceLiteral(
+        ResourceType.LAYOUT, "video_quality_bottom_sheet_list_fragment_title"
+    )
 )

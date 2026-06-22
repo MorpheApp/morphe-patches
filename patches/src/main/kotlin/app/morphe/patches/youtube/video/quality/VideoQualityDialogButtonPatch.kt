@@ -3,33 +3,36 @@ package app.morphe.patches.youtube.video.quality
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.layout.buttons.overlay.addPlayerOverlayPreferences
+import app.morphe.patches.youtube.layout.buttons.overlay.playerOverlayButtonsSettingsPatch
+import app.morphe.patches.youtube.layout.player.buttons.addPlayerBottomButton
+import app.morphe.patches.youtube.layout.player.buttons.playerOverlayButtonsHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playercontrols.addBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.addLegacyBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeLegacyBottomControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
-import app.morphe.patches.youtube.misc.settings.PreferenceScreen
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.util.ResourceGroup
 import app.morphe.util.copyResources
 
 private val videoQualityButtonResourcePatch = resourcePatch {
-    dependsOn(playerControlsPatch)
+    dependsOn(legacyPlayerControlsPatch)
 
     execute {
         copyResources(
             "qualitybutton",
             ResourceGroup(
                 "drawable",
-                "morphe_video_quality_dialog_button_rectangle.xml",
+                "morphe_video_quality_dialog_button_rectangle.xml"
             ),
         )
 
-        addBottomControl("qualitybutton")
+        addLegacyBottomControl("qualitybutton")
     }
 }
 
-private const val QUALITY_BUTTON_CLASS_DESCRIPTOR =
+private const val EXTENSION_BUTTON =
     "Lapp/morphe/extension/youtube/videoplayer/VideoQualityDialogButton;"
 
 val videoQualityDialogButtonPatch = bytecodePatch(
@@ -38,17 +41,21 @@ val videoQualityDialogButtonPatch = bytecodePatch(
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        playerOverlayButtonsSettingsPatch,
         rememberVideoQualityPatch,
         videoQualityButtonResourcePatch,
-        playerControlsPatch,
+        playerOverlayButtonsHookPatch,
+        legacyPlayerControlsPatch,
     )
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_video_quality_dialog_button"),
+        addPlayerOverlayPreferences(
+            SwitchPreference("morphe_video_quality_dialog_button", summary = true)
         )
 
-        initializeBottomControl(QUALITY_BUTTON_CLASS_DESCRIPTOR)
-        injectVisibilityCheckCall(QUALITY_BUTTON_CLASS_DESCRIPTOR)
+        addPlayerBottomButton(EXTENSION_BUTTON)
+
+        initializeLegacyBottomControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
     }
 }

@@ -20,20 +20,25 @@ Second \"item\" text"</string>
   <!-- layout.branding.header.changeHeaderPatch -->
   <!-- misc.settings.settingsPatch -->
   <!-- In languages where "About" is ambiguous, translate this as "About Morphe" (i.e., About this app). -->
+  <!-- ad.general.hideAdsPatch -->
   <!-- ad.video.hideVideoAdsPatch -->
+  <!-- interaction.crossfade.crossfadePatch -->
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_about_title">Quant a</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
-  <!-- layout.buttons.hideButtons -->
+  <!-- layout.buttons.hideButtonsPatch -->
   <!-- layout.startpage.changeStartPagePatch -->
-  <!-- layout.compactheader.hideCategoryBar -->
-  <!-- layout.miniplayer.changeMiniplayerColor -->
-  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
-  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <!-- layout.compactheader.hideCategoryBarPatch -->
+  <!-- layout.miniplayer.changeMiniplayerColorPatch -->
+  <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
+  <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
+  <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
   <!-- layout.navigationbar.navigationBarPatch -->
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <!-- layout.premium.hideGetPremiumPatch -->
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
 </resources>

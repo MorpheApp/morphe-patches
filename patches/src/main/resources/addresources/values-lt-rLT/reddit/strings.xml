@@ -15,4 +15,45 @@
 Second \"item\" text"</string>
 
 -->
-<resources></resources>
+<resources>
+  <string name="morphe_screen_ads_title">Reklamos</string>
+  <string name="morphe_hide_post_ads_title">Paslėpti vaizdo reklamas</string>
+  <string name="morphe_hide_comment_ads_title">Paslėpti komentaro reklamas</string>
+  <string name="morphe_screen_navigation_bar_title">Naršymo juosta</string>
+  <string name="morphe_hide_answers_button_title">Slepti Atsakymų mygtuką</string>
+  <string name="morphe_hide_chat_button_title">Paslėpti Pokalbių mygtuką</string>
+  <string name="morphe_hide_create_button_title">Paslėpti Kurti mygtuką</string>
+  <string name="morphe_hide_discover_button_title">Paslėpti Discover arba Communities mygtuką</string>
+  <string name="morphe_hide_games_button_title">Paslėpti Žaidimus mygtuką</string>
+  <string name="morphe_hide_recently_visited_shelf_title">Paslepti Neseniai aplankytą lentyną</string>
+  <string name="morphe_hide_games_on_reddit_shelf_title">Paslepti žaidimus Reddit lentynėlėje</string>
+  <string name="morphe_hide_reddit_pro_shelf_title">Paslepti Reddit Pro lentyną</string>
+  <string name="morphe_hide_about_shelf_title">Paslepti Apie lentyną</string>
+  <string name="morphe_hide_resources_shelf_title">Paslepti Išteklių lentynę</string>
+  <string name="morphe_screen_layout_title">Išdėstymas</string>
+  <string name="morphe_disable_screenshot_popup_title">Išjungti ekrano nuotraukos išokantį langą</string>
+  <string name="morphe_disable_screenshot_popup_summary">Išjungia išokanį langą kuris pasirodo kai padarai ekrano nuotrauką</string>
+  <string name="morphe_hide_ask_button_title">Paslėpti Klausti mygtuką</string>
+  <string name="morphe_hide_ask_button_summary">Paslepia Paklausti mygtuką paieškos juostoje</string>
+  <string name="morphe_hide_recommended_communities_shelf_title">Slėpti rekomenduojamas bendruomenes</string>
+  <string name="morphe_hide_recommended_communities_shelf_summary">Slepias rekomenduojamus bendruomenių puslapius subreddituose</string>
+  <string name="morphe_hide_trending_today_shelf_title">Paslepti Populiariausia šiandien sekciją</string>
+  <string name="morphe_hide_trending_today_shelf_summary">"Slepią Populiariausia šiandien sekciją paieškos pasiūlymose
+
+Apribojimas: Vizualieji tarpai gali nebūti paslepti"</string>
+  <string name="morphe_remove_notification_dialog_title">Pašalinti pranešimo pasiūlymą dialogo langas</string>
+  <string name="morphe_remove_notification_dialog_summary">Automatiškai uždaro pranešimo pasiūlymo dialogo langą, kai aplankyta subredditas</string>
+  <string name="morphe_show_view_count_title">Rodyti peržiūrų skaičių įrašuose</string>
+  <string name="morphe_show_view_count_summary">Apribojimas: Prieinama tik tuomet, kai API atsakyme yra parodyta skaičių suma.</string>
+  <string name="morphe_remove_nsfw_dialog_title">paslėpti NSFW ispėjimą</string>
+  <string name="morphe_remove_nsfw_dialog_summary">Automatiškai sutinka įspėjimą dėl SFW turinio, kai lankomas subredditas</string>
+  <string name="morphe_screen_miscellaneous_title">Įvairūs</string>
+  <string name="morphe_about_title">Apie</string>
+  <string name="morphe_about_summary">Atnaujinimo versija ir oficialios nuorodos</string>
+  <string name="morphe_sanitize_sharing_links_title">Nuvalyti bendrinimo nuorodas</string>
+  <string name="morphe_sanitize_sharing_links_summary">Pašalina sekimo užklausos parametrus iš bendrinamų nuorodų</string>
+  <string name="morphe_open_links_directly_title">Atverti nuorodas tiesiogiai</string>
+  <string name="morphe_open_links_directly_summary">Apeina peradresavimo URL adresus, kai atidaroma išorinės nuorodos</string>
+  <string name="morphe_open_links_externally_title">Atverti nuorodas išorėje</string>
+  <string name="morphe_open_links_externally_summary">Atidaryti nuorodoas jūsų naršyklėje, o ne programoje integruotoje naršyklėje</string>
+</resources>

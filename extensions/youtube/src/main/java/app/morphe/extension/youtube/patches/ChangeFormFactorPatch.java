@@ -10,12 +10,15 @@
 
 package app.morphe.extension.youtube.patches;
 
+import static app.morphe.extension.youtube.patches.ChangeFormFactorPatch.FormFactor.LARGE;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import androidx.annotation.Nullable;
 
+import java.util.List;
 import java.util.Optional;
 
+import app.morphe.extension.shared.settings.Setting;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.NavigationBar;
 import app.morphe.extension.youtube.shared.PlayerType;
@@ -61,6 +64,20 @@ public class ChangeFormFactorPatch {
     @Nullable
     private static final Integer FORM_FACTOR_TYPE = FORM_FACTOR.formFactorType;
     private static final boolean IS_BROKEN_FORM_FACTOR = FORM_FACTOR.isBroken;
+    private static final boolean TABLET_LAYOUT_IN_PLAYER =
+            FORM_FACTOR != LARGE && Settings.TABLET_LAYOUT_IN_PLAYER.get();
+
+    public static final class TabletLayoutInPlayerAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return Settings.CHANGE_FORM_FACTOR.get() != LARGE;
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(Settings.CHANGE_FORM_FACTOR);
+        }
+    }
 
     /**
      * Injection point.
@@ -84,7 +101,7 @@ public class ChangeFormFactorPatch {
                     // Do this check last since the current navigation button is required.
                     || NavigationButton.getSelectedNavigationButton() == NavigationButton.LIBRARY) {
                 // The form factor most similar to AUTOMOTIVE is LARGE, so it is replaced with LARGE.
-                return Optional.ofNullable(FormFactor.LARGE.formFactorType).orElse(original);
+                return Optional.ofNullable(LARGE.formFactorType).orElse(original);
             }
         }
 
@@ -110,14 +127,23 @@ public class ChangeFormFactorPatch {
      * the Shorts comment panel will not open.
      */
     public static int replaceBrokenFormFactor(int original) {
-        if (FORM_FACTOR_TYPE == null) {
-            return original;
-        }
-        if (IS_BROKEN_FORM_FACTOR) {
+        if (IS_BROKEN_FORM_FACTOR || TABLET_LAYOUT_IN_PLAYER) {
             // The form factor most similar to AUTOMOTIVE is LARGE, so it is replaced with LARGE.
-            return Optional.ofNullable(FormFactor.LARGE.formFactorType).orElse(original);
+            return Optional.ofNullable(LARGE.formFactorType).orElse(original);
         } else {
             return original;
         }
+    }
+
+    /**
+     * Injection point.
+     * <p>
+     * This method check whatever the list of player's litho elements is empty, when the tablet
+     * layout setting is set to off but the app is not restarted correctly, by running in
+     * onResume() mode instead of onCreate().
+     * <p>
+     **/
+     public static boolean checkPlayerLithoElementsListSize(List<?> list) {
+        return list.isEmpty();
     }
 }

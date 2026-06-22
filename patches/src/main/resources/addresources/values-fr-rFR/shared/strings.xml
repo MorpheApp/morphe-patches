@@ -23,16 +23,16 @@ Second \"item\" text"</string>
   <string name="morphe_settings_reset">Réinitialiser</string>
   <string name="morphe_settings_reset_color">Réinitialiser la couleur</string>
   <string name="morphe_settings_color_invalid">Couleur invalide</string>
-  <string name="morphe_settings_restart_title">Redémarrage requis</string>
+  <string name="morphe_settings_restart_title">Redémarrage nécessaire</string>
   <string name="morphe_settings_restart_dialog_message">Redémarrez l\'application pour que cette modification prenne effet.</string>
   <string name="morphe_settings_restart">Redémarrer</string>
   <!-- String is also duplicated in Reddit import / export preference -->
   <string name="morphe_settings_import">Importer</string>
   <string name="morphe_settings_import_copy">Copier</string>
-  <string name="morphe_settings_import_reset">Réinitialisation des paramètres Morphe aux valeurs par défaut</string>
+  <string name="morphe_settings_import_reset">Réinitialisation des paramètres de Morphe aux valeurs par défaut</string>
   <string name="morphe_settings_import_success">%d paramètres importés</string>
   <string name="morphe_settings_import_failure_parse">Importation échouée : %s</string>
-  <string name="morphe_settings_search_hint">Recherche de paramètres</string>
+  <string name="morphe_settings_search_hint">Rechercher des paramètres</string>
   <string name="morphe_settings_search_no_results_title">Aucun résultat trouvé pour \"%s\"</string>
   <string name="morphe_settings_search_no_results_summary">Essayez un autre mot-clé</string>
   <string name="morphe_settings_search_recent_searches">Recherches récentes</string>
@@ -48,18 +48,14 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">L\'historique de recherche est vide</string>
   <string name="morphe_settings_search_empty_history_summary">Pour enregistrer l\'historique de recherche, saisissez une recherche et appuyez sur Entrée.</string>
   <string name="morphe_settings_search_history_title">Afficher l\'historique de recherche dans les paramètres</string>
-  <string name="morphe_settings_search_history_summary_on">L\'historique de recherche dans les paramètres est affiché</string>
-  <string name="morphe_settings_search_history_summary_off">L\'historique de recherche dans les paramètres n\'est pas affiché</string>
-  <string name="morphe_show_menu_icons_title">Afficher les icônes des paramètres Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Les icônes des paramètres sont affichées</string>
-  <string name="morphe_show_menu_icons_summary_off">Les icônes des paramètres ne sont pas affichées</string>
+  <string name="morphe_show_menu_icons_title">Afficher les icônes des paramètres de Morphe</string>
   <string name="morphe_language_title">Langue de Morphe</string>
   <string name="morphe_language_user_dialog_message">"Les traductions pour certaines langues peuvent être manquantes ou incomplètes.
 
 Pour traduire de nouvelles langues ou améliorer les traductions existantes, visitez morphe.software/translate
 "</string>
   <string name="morphe_language_DEFAULT">Langue de l\'application</string>
-  <string name="morphe_pref_import_export_title">Importer / Exporter</string>
+  <string name="morphe_pref_import_export_title">Importer/Exporter</string>
   <string name="morphe_pref_import_export_summary">Importer / Exporter les paramètres Morphe</string>
   <string name="morphe_settings_import_file">Importer depuis un fichier</string>
   <string name="morphe_settings_import_file_success">Paramètres importés avec succès, appuyez sur Enregistrer pour appliquer</string>
@@ -71,7 +67,7 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_settings_about_links_body_version_current">Vous utilisez la dernière version des Patchs Morphe &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Vous utilisez la version des Patchs Morphe &lt;i&gt;%1$s&lt;/i&gt;&lt;br&gt;&lt;br&gt;&lt;b&gt;Mise à jour disponible : &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Pour mettre à jour vos patchs, utilisez Morphe pour repatcher cette application</string>
   <string name="morphe_settings_about_links_dev_header">Remarque</string>
-  <string name="morphe_settings_about_links_dev_body">Cette version est une pré-version et vous pourriez rencontrer des problèmes inattendus.</string>
+  <string name="morphe_settings_about_links_dev_body">Cette version est une préversion et vous pourriez rencontrer des problèmes inattendus</string>
   <string name="morphe_settings_about_links_header">Liens officiels</string>
   <string name="morphe_settings_about_links_website">Site Web</string>
   <string name="morphe_settings_about_links_donate">Faire un don</string>
@@ -89,56 +85,76 @@ Pour traduire de nouvelles langues ou améliorer les traductions existantes, vis
   <string name="morphe_settings_about_licenses_loading">Chargement...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Débogage</string>
-  <string name="morphe_debug_screen_summary">Activez ou désactivez les options de débogage</string>
-  <string name="morphe_debug_title">Journaux de débogage</string>
-  <string name="morphe_debug_summary_on">Les journaux de débogage sont activés</string>
-  <string name="morphe_debug_summary_off">Les journaux de débogage sont désactivés</string>
-  <string name="morphe_debug_stacktrace_title">Journaliser les traces de pile</string>
-  <string name="morphe_debug_stacktrace_summary_on">Les journaux de débogage incluent la trace de pile</string>
-  <string name="morphe_debug_stacktrace_summary_off">Les journaux de débogage n\'incluent pas la trace de pile</string>
-  <string name="morphe_debug_toast_on_error_title">Afficher une notification en cas d\'erreur Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Une notification toast est affiché en cas d\'erreur</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Aucune notification toast n\'est affiché en cas d\'erreur</string>
+  <string name="morphe_debug_screen_summary">Configurer les options avancées de développement et les journaux de diagnostic</string>
+  <string name="morphe_debug_title">Activer la journalisation de débogage</string>
+  <string name="morphe_debug_stacktrace_title">Journal de débogage de trace de pile</string>
+  <string name="morphe_debug_stacktrace_summary">Inclut les traces de pile dans les journaux de débogage pour aider à identifier les erreurs</string>
+  <string name="morphe_debug_toast_on_error_title">Afficher une notification en cas d\'erreur de Morphe</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Désactiver les notifications toast d’erreur masque toutes les notifications d’erreur de Morphe.
 
 Vous ne serez plus averti en cas d’événements inattendus."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Exporter les journaux de débogage</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Copie les journaux de débogage Morphe dans le presse-papiers</string>
+  <string name="morphe_debug_export_logs_title">Exporter les journaux de débogage</string>
+  <string name="morphe_debug_export_logs_summary">Exporter les journaux de débogage de Morphe</string>
+  <string name="morphe_debug_export_logs_file">Exporter vers un fichier</string>
+  <string name="morphe_debug_export_logs_success">Les journaux de débogage ont été exportés avec succès</string>
+  <string name="morphe_debug_export_logs_failed">Échec de l\'exportation des journaux de débogage</string>
+  <string name="morphe_debug_logs_search_hint">Rechercher des journaux de débogage...</string>
+  <string name="morphe_debug_export_logs_clear">Effacer</string>
   <string name="morphe_debug_logs_disabled">La journalisation de débogage est désactivée</string>
-  <string name="morphe_debug_logs_none_found">Aucuns journaux trouvés</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Journaux copiés</string>
-  <string name="morphe_debug_logs_failed_to_export">Échec de l\'exportation des journaux : %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Effacer les journaux de débogage</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Efface tous les journaux de débogage Morphe stockés</string>
-  <string name="morphe_debug_logs_clear_toast">Journaux effacés</string>
-  <string name="morphe_debug_feature_flags_manager_title">Gestionnaire de drapeaux de fonctionnalités</string>
-  <string name="morphe_debug_feature_flags_manager_summary">Gérer les drapeaux de fonctionnalités booléens</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Drapeaux actifs (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Drapeaux bloqués (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des drapeaux...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Drapeaux enregistrés</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Drapeaux réinitialisés</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Drapeaux copiés dans le presse-papiers</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l\'application pour utiliser cette fonctionnalité</string>
+  <string name="morphe_debug_logs_none_found">Aucun journal de débogage trouvé</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Journaux de débogage copiés</string>
+  <string name="morphe_debug_logs_failed_to_export">Échec de l\'exportation des journaux de débogage : %s</string>
+  <string name="morphe_debug_logs_clear_toast">Journaux de débogage effacés</string>
+  <string name="morphe_debug_feature_flags_manager_title">Gestionnaire de flags de fonctionnalités</string>
+  <string name="morphe_debug_feature_flags_manager_summary">Gérer les flags de fonctionnalités booléens</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Flags de fonctionnalités actifs (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Flags de fonctionnalités bloqués (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Rechercher des flags de fonctionnalités…</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Flags de fonctionnalités enregistrés</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Flags de fonctionnalités réinitialisés</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Flags de fonctionnalités copiés dans le presse-papiers</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Redémarrez l\'application pour appliquer ce paramètre</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
-  <string name="microg_settings_summary">Ouvrir les paramètres MicroG</string>
+  <string name="microg_settings_summary">Ouvrir les paramètres de MicroG</string>
   <!-- Translations of this should not be longer than the original English text, otherwise the text can be clipped and not entirely shown. -->
   <string name="gms_core_toast_not_installed_message">MicroG n\'est pas installé. Installez-le.</string>
-  <string name="gms_core_dialog_title">Action requise</string>
+  <string name="gms_core_dialog_title">Action nécessaire</string>
   <!-- "Don't kill my app" should be kept in English and not translated -->
-  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG n’a pas l’autorisation de fonctionner en arrière-plan.
+  <string name="gms_core_dialog_not_whitelisted_not_allowed_in_background_message">"MicroG n'a pas l'autorisation de fonctionner en arrière-plan.
 
-Suivez le guide 'Don’t kill my app' pour votre téléphone et appliquez les instructions à votre installation de MicroG.
+Suivez le guide 'Don't kill my app' pour votre téléphone et appliquez les instructions à votre installation de MicroG.
 
-Cela est indispensable pour que l’application fonctionne correctement."</string>
-  <string name="gms_core_dialog_open_website_text">Ouvrir le site Web</string>
+Cela est nécessaire pour que l'application fonctionne correctement."</string>
+  <string name="gms_core_dialog_open_website_text">Ouvrir le site web</string>
   <string name="gms_core_dialog_not_whitelisted_using_battery_optimizations_message">"Les optimisations de la batterie doivent être désactivées pour MicroG pour éviter des problèmes.
 
-Désactiver les optimisations de batterie pour MicroG n’aura pas d’impact négatif sur l’autonomie de la batterie.
+Désactiver les optimisations de batterie pour MicroG n'aura pas d’impact négatif sur l’autonomie de la batterie.
 
-Appuyez sur le bouton Continuer et autorisez la modification des optimisations.
-
-"</string>
+Appuyez sur le bouton 'Continuer' et autorisez la modification des optimisations."</string>
   <string name="gms_core_dialog_continue_text">Continuer</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Afficher la boîte de dialogue d’optimisation de la batterie pour MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Désactiver cela masquera l'invite d'optimisation de la batterie de MicroG.
+
+Si les optimisations de la batterie ne sont pas modifiées, vous pourriez rencontrer les problèmes suivants :
+• L'application peut se fermer de manière aléatoire
+• Les notifications peuvent ne pas fonctionner
+• La lecture en arrière-plan peut ne pas fonctionner"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Gestion des liens d\'application</string>
+  <string name="morphe_link_handling_summary">Configurer les liens pour qu’ils s’ouvrent dans cette application</string>
+  <string name="morphe_link_handling_step1_title">Étape 1 : Désactiver les liens de l\'application d\'origine</string>
+  <string name="morphe_link_handling_step1_message">Ouvrez les paramètres de l\'application d\'origine et désactivez tous les liens de domaine</string>
+  <string name="morphe_link_handling_step2_title">Étape 2 : Activer les liens de l\'application patchée</string>
+  <string name="morphe_link_handling_step2_message">Ouvrez les paramètres de l\'application patchée et activez tous les liens de domaine</string>
+  <string name="morphe_link_handling_open">Ouvrir les paramètres</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Alerte expérimentale 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Vous utilisez une version expérimentale de l'application ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Attendez-vous à des comportements inhabituels ou à des bugs non identifiés pendant que nous peaufinons les patchs pour cette version de l'application.
+&lt;br/&gt;&lt;br/&gt;
+Si vous souhaitez une expérience la plus stable possible, &lt;b&gt;désinstallez&lt;/b&gt; cette version et patchez la version recommandée de l'application ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Je veux l\'expérimentale</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Je veux la stable</string>
 </resources>

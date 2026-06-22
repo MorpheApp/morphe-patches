@@ -11,7 +11,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/VideoAdsPatch;"
 
 val videoAdsPatch = bytecodePatch(
@@ -38,7 +38,7 @@ val videoAdsPatch = bytecodePatch(
             fingerprint.method.addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->hideVideoAds()Z
+                    invoke-static { }, $EXTENSION_CLASS->hideVideoAds()Z
                     move-result v0
                     if-eqz v0, :show_video_ads
                     return-void
@@ -55,7 +55,7 @@ val videoAdsPatch = bytecodePatch(
         ).forEach { endpoint ->
             addOSNameHook(
                 endpoint,
-                "$EXTENSION_CLASS_DESCRIPTOR->hideVideoAds(Ljava/lang/String;)Ljava/lang/String;",
+                "$EXTENSION_CLASS->hideVideoAds(Ljava/lang/String;)Ljava/lang/String;",
             )
         }
     }

@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">Tá stair chuardaigh folamh</string>
   <string name="morphe_settings_search_empty_history_summary">Chun stair an chuardaigh a shábháil, clóscríobh iarratas cuardaigh agus brúigh Iontráil</string>
   <string name="morphe_settings_search_history_title">Taispeáin stair cuardaigh na socruithe</string>
-  <string name="morphe_settings_search_history_summary_on">Taispeántar stair chuardaigh na socruithe</string>
-  <string name="morphe_settings_search_history_summary_off">Ní thaispeántar stair chuardaigh na socruithe</string>
   <string name="morphe_show_menu_icons_title">Taispeáin deilbhíní socruithe Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Taispeántar deilbhíní socruithe</string>
-  <string name="morphe_show_menu_icons_summary_off">Ní thaispeántar deilbhíní socraithe</string>
   <string name="morphe_language_title">Teanga Morphe</string>
   <string name="morphe_language_user_dialog_message">"D’fhéadfadh aistriúcháin do roinnt teangacha a bheith ar iarraidh nó neamhiomlán.
 
@@ -60,12 +56,12 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_language_DEFAULT">Teanga an aip</string>
   <string name="morphe_pref_import_export_title">Iompórtáil / Easpórtáil</string>
   <string name="morphe_pref_import_export_summary">Socruithe Morphe a Iompórtáil / Easpórtáil</string>
-  <string name="morphe_settings_import_file">Importáil ón bhfile</string>
-  <string name="morphe_settings_import_file_success">D\'éirigh leis na socruithe a iompórtáil, tap Save chun iarratas a chur ar cheann</string>
-  <string name="morphe_settings_import_file_failed">Theip ar na socruithe a iompórtáil</string>
-  <string name="morphe_settings_export_file">Easpórtáil go dtí an bhfile</string>
-  <string name="morphe_settings_export_file_success">D\'éirigh leis na socruití a onnmhairiú</string>
-  <string name="morphe_settings_export_file_failed">Theip ar na socruití a onnmhairiú</string>
+  <string name="morphe_settings_import_file">Iompórtáil ó chomhad</string>
+  <string name="morphe_settings_import_file_success">D’éirigh le hiompórtáil na socruithe, tapáil Sábháil le cur i bhfeidhm</string>
+  <string name="morphe_settings_import_file_failed">Theip ar shocruithe a iompórtáil</string>
+  <string name="morphe_settings_export_file">Easpórtáil chuig comhad</string>
+  <string name="morphe_settings_export_file_success">Easpórtáladh na socruithe go rathúil</string>
+  <string name="morphe_settings_export_file_failed">Theip ar shocruithe a easpórtáil</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Tá tú ag baint úsáide as an leagan is déanaí de Morphe Patches &lt;i&gt;%s&lt;/i&gt;</string>
   <string name="morphe_settings_about_links_body_version_outdated">Tá tú ag baint úsáide as leagan &lt;i&gt;%1$s&lt;/i&gt; Morphe Patches&lt;br&gt;&lt;br&gt;&lt;b&gt;Nuashonrú ar fáil: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;Chun do phaisteanna a nuashonrú, bain úsáid as Morphe chun an aip seo a athphaisteáil</string>
@@ -75,49 +71,48 @@ Chun teangacha nua a aistriú nó chun na haistriúcháin atá ann cheana a fhea
   <string name="morphe_settings_about_links_website">Suíomh Gréasáin</string>
   <string name="morphe_settings_about_links_donate">Tabhair Síntiús</string>
   <string name="morphe_settings_about_links_translations">Aistriúcháin</string>
-  <string name="morphe_settings_about_links_credits">Crèidteacha</string>
-  <string name="morphe_settings_about_links_dev_header_up_to_date">Faoin dáta</string>
+  <string name="morphe_settings_about_links_credits">Creidmheasanna</string>
+  <string name="morphe_settings_about_links_dev_header_up_to_date">Suas chun dáta</string>
   <string name="morphe_settings_about_links_dev_header_update_available">Nuashonrú ar fáil</string>
   <string name="morphe_settings_about_contributors_current">Forbairt reatha</string>
-  <string name="morphe_settings_about_contributors_prior">Forbairt roimhe</string>
-  <string name="morphe_settings_about_links_morphe">Forbairt ghinearálta</string>
-  <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
-  <string name="morphe_settings_about_links_rv">2022 – 2025</string>
-  <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_contributors_prior">Forbairt roimhe seo</string>
+  <string name="morphe_settings_about_links_morphe">Forbairt ghníomhach</string>
+  <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
+  <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">Fógraí ceadúnais</string>
   <string name="morphe_settings_about_licenses_loading">Ag lódáil...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Dífhabhtú</string>
-  <string name="morphe_debug_screen_summary">Cumasaigh nó díchumasaigh roghanna dífhabhtaithe</string>
-  <string name="morphe_debug_title">Logáil dífhabhtaithe</string>
-  <string name="morphe_debug_summary_on">Tá logaí dífhabhtaithe cumasaithe</string>
-  <string name="morphe_debug_summary_off">Tá logaí dífhabhtaithe díchumasaithe</string>
-  <string name="morphe_debug_stacktrace_title">Rianta cruachta loga</string>
-  <string name="morphe_debug_stacktrace_summary_on">Áirítear rian cruachta i logaí dífhabhtaithe</string>
-  <string name="morphe_debug_stacktrace_summary_off">Ní chuimsíonn logaí dífhabhtaithe rian cruachta</string>
+  <string name="morphe_debug_screen_summary">Cumraigh roghanna forbróra ardleibhéil agus logaí diagnóiseacha</string>
+  <string name="morphe_debug_title">Cumasaigh logáil dífhabhtaithe</string>
+  <string name="morphe_debug_stacktrace_title">Rian staice loga dífhabhtaithe</string>
+  <string name="morphe_debug_stacktrace_summary">Áirítear rianta cruachta i logaí dífhabhtaithe chun cabhrú le hearráidí a aithint</string>
   <string name="morphe_debug_toast_on_error_title">Taispeáin tósta ar earráid Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Taispeántar tósta má tharlaíonn earráid</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Ní thaispeántar tósta má tharlaíonn earráid</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Má mhúchtar tóstaí earráide, folaítear gach fógra earráide Morphe.
 
 Ní chuirfear ar an eolas thú faoi aon imeachtaí gan choinne."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Easpórtáil logaí dífhabhtaithe</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Cóipeálann sé logaí dífhabhtaithe Morphe chuig an gearrthaisce</string>
+  <string name="morphe_debug_export_logs_title">Easpórtáil logaí dífhabhtaithe</string>
+  <string name="morphe_debug_export_logs_summary">Export Morphe debug logs</string>
+  <string name="morphe_debug_export_logs_file">Easpórtáil chuig comhad</string>
+  <string name="morphe_debug_export_logs_success">Easpórtáladh logaí dífhabhtaithe go rathúil</string>
+  <string name="morphe_debug_export_logs_failed">Theip ar logaí dífhabhtaithe a onnmhairiú</string>
+  <string name="morphe_debug_logs_search_hint">Cuardaigh logaí dífhabhtaithe...</string>
+  <string name="morphe_debug_export_logs_clear">Glan</string>
   <string name="morphe_debug_logs_disabled">Tá logáil dífhabhtaithe díchumasaithe</string>
-  <string name="morphe_debug_logs_none_found">Níor aimsíodh aon logaí</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Lógaí cóipeáilte</string>
-  <string name="morphe_debug_logs_failed_to_export">Theip ar logaí a easpórtáil: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Glan logaí dífhabhtaithe</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Glanann sé gach loga dífhabhtaithe Morphe stóráilte</string>
-  <string name="morphe_debug_logs_clear_toast">Glanadh logaí</string>
+  <string name="morphe_debug_logs_none_found">Níor aimsíodh aon logaí dífhabhtaithe</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Logaí dífhabhtaithe cóipeáilte</string>
+  <string name="morphe_debug_logs_failed_to_export">Theip ar logaí dífhabhtaithe a onnmhairiú: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Glanadh logaí dífhabhtaithe</string>
   <string name="morphe_debug_feature_flags_manager_title">Bainisteoir bratacha gnéithe</string>
   <string name="morphe_debug_feature_flags_manager_summary">Bainistigh bratacha gné booléacha</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Bratacha gníomhacha (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Bratacha blocáilte (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Cuardaigh bratacha...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Bratacha sábháilte</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Athshocraíodh bratacha</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Bratacha cóipeáilte chuig an ngearrthaisce</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Atosaigh an aip chun an ghné seo a úsáid</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Bratacha gné gníomhacha (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Bratacha gné blocáilte (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Bratacha gné cuardaigh...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Bratacha gné sábháilte</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Athshocrú bratacha gnéithe</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Bratacha gné cóipeáilte chuig an ghearrthaisce</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Atosaigh an aip chun an socrú seo a úsáid</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Oscail na socruithe MicroG</string>
@@ -137,4 +132,28 @@ Ní bheidh aon tionchar diúltach ag uasmhéaduithe ceallraí do MicroG a dhích
 
 Tapáil an cnaipe lean ar aghaidh agus ceadaigh athruithe uasmhéadaithe."</string>
   <string name="gms_core_dialog_continue_text">Lean ar aghaidh</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Taispeáin dialóg optamaithe ceallraí MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Má dhíchumasaítear é seo, folófar an leid um optamú ceallraí MicroG.
+
+Mura n-athraítear na hoptamuithe ceallraí, d’fhéadfadh na nithe seo a leanas a bheith i gceist:
+• D’fhéadfadh an aip a dhúnadh go randamach
+• B’fhéidir nach n-oibreoidh fógraí
+• B’fhéidir nach n-oibreoidh athsheinm sa chúlra"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Láimhseáil nasc aip</string>
+  <string name="morphe_link_handling_summary">Cumraigh naisc le hoscailt san aip seo</string>
+  <string name="morphe_link_handling_step1_title">Céim 1: Díchumasaigh naisc bhunaidh an aip</string>
+  <string name="morphe_link_handling_step1_message">Oscail socruithe an aip bhunaidh agus díchumasaigh naisc fearainn go léir</string>
+  <string name="morphe_link_handling_step2_title">Céim 2: Cumasaigh naisc aipeanna paisteáilte</string>
+  <string name="morphe_link_handling_step2_message">Oscail socruithe an aip phaisteáilte agus cumasaigh na naisc fearainn go léir</string>
+  <string name="morphe_link_handling_open">Oscail socruithe</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Foláireamh Turgnamhach 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Tá leagan turgnamhach den aip de ⚠️ &lt;b&gt;%1$s&lt;/b&gt; in úsáid agat
+&lt;br/&gt;&lt;br/&gt;
+🔧 Bí ag súil le hiompar aisteach nó fabhtanna anaithnid agus muid ag feabhsú na paistí don leagan seo den aip.
+&lt;br/&gt;&lt;br/&gt;
+Más mian leat an taithí is saoire, ansin &lt;b&gt;díshuiteáil&lt;/b&gt; seo agus paisteáil an leagan molta den aip de ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Ba mhaith liom turgnamhach</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Ba mhaith liom cobhsaíocht</string>
 </resources>

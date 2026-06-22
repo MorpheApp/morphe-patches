@@ -1,7 +1,7 @@
 {
-  "created_at": "2026-03-19T06:34:18",
-  "description": "# [1.20.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.20.0-dev.2...v1.20.0-dev.3) (2026-03-19)\n\n\n### Bug Fixes\n\n* **YouTube - Swipe controls:** Swipe controls sometimes do not work ([#905](https://github.com/MorpheApp/morphe-patches/issues/905)) ([bd23813](https://github.com/MorpheApp/morphe-patches/commit/bd23813b31ade167e4b1cff3b636163c41696c49))\n\n\n### Features\n\n* **YouTube - Hide layout components:** Add \"Comments carousel filter\" setting ([#909](https://github.com/MorpheApp/morphe-patches/issues/909)) ([4239720](https://github.com/MorpheApp/morphe-patches/commit/42397200183b8c4b5edd6bd3d27cd8f2b6706756))\n* **YouTube Music:** Add experimental support for `9.11.54` ([73eb7f1](https://github.com/MorpheApp/morphe-patches/commit/73eb7f1475161517a965c0d9ebbb0f8e67a7af93))\n* **YouTube:** Add support for `20.45.36` ([c22a6df](https://github.com/MorpheApp/morphe-patches/commit/c22a6dfd07a9e1e980e5f5eb9ad22565b1da7f42))",
-  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.20.0-dev.3/patches-1.20.0-dev.3.mpp",
+  "created_at": "2026-06-22T08:04:45",
+  "description": "## [1.32.0-dev.6](https://github.com/MorpheApp/morphe-patches/compare/v1.32.0-dev.5...v1.32.0-dev.6) (2026-06-22)\n\n### 🐛 Bug Fixes\n\n* **YouTube - Disable player popup panels:** Patch doesn't work in some circumstances ([6d6018c](https://github.com/MorpheApp/morphe-patches/commit/6d6018cf4a4ee6f79a283001aebe5b9d21767741))\n* **YouTube - Spoof video streams:** Always allow details fetching ([6bc0eee](https://github.com/MorpheApp/morphe-patches/commit/6bc0eeefe02fa89a5d0669698ceb2fffc5bc51c7))",
+  "download_url": "https://github.com/MorpheApp/morphe-patches/releases/download/v1.32.0-dev.6/patches-1.32.0-dev.6.mpp",
   "signature_download_url": "",
-  "version": "1.20.0-dev.3"
+  "version": "1.32.0-dev.6"
 }

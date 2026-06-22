@@ -1,3 +1,13 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.patches.youtube.video.quality
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -5,9 +15,9 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.PatchException
 import app.morphe.patcher.patch.bytecodePatch
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.getResourceId
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.getResourceId
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
@@ -17,15 +27,10 @@ import app.morphe.patches.youtube.misc.recyclerviewtree.hook.recyclerViewTreeHoo
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-internal var videoQualityBottomSheetListFragmentTitle = -1L
-    private set
-internal var videoQualityQuickMenuAdvancedMenuDescription = -1L
-    private set
-
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/quality/AdvancedVideoQualityMenuPatch;"
 
-private const val FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/AdvancedVideoQualityMenuFilter;"
 
 internal val advancedVideoQualityMenuPatch = bytecodePatch {
@@ -42,28 +47,18 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
             SwitchPreference("morphe_advanced_video_quality_menu")
         )
 
-        // Used for the old type of the video quality menu.
-        videoQualityBottomSheetListFragmentTitle = getResourceId(
-            ResourceType.LAYOUT,
-            "video_quality_bottom_sheet_list_fragment_title",
-        )
-
-        videoQualityQuickMenuAdvancedMenuDescription = getResourceId(
-            ResourceType.STRING,
-            "video_quality_quick_menu_advanced_menu_description",
-        )
-
         // region Patch for the old type of the video quality menu.
         // Used for regular videos when spoofing to old app version,
         // and for the Shorts quality flyout on newer app versions.
         VideoQualityMenuViewInflateFingerprint.let {
             it.method.apply {
-                val checkCastIndex = it.instructionMatches.last().index
+                val matches = it.instructionMatches
+                val checkCastIndex = matches[matches.lastIndex - 1].index
                 val listViewRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
 
                 addInstruction(
                     checkCastIndex + 1,
-                    "invoke-static { v$listViewRegister }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "invoke-static { v$listViewRegister }, $EXTENSION_CLASS->" +
                             "addVideoQualityListMenuListener(Landroid/widget/ListView;)V",
                 )
             }
@@ -71,9 +66,9 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
 
         // Force YT to add the 'advanced' quality menu for Shorts.
         VideoQualityMenuOptionsFingerprint.let {
-            val patternMatch = it.instructionMatches
-            val startIndex = patternMatch.first().index
-            val insertIndex = patternMatch.last().index
+            val matches = it.instructionMatches
+            val startIndex = matches.first().index
+            val insertIndex = matches[matches.lastIndex - 1].index
             if (startIndex != 0) throw PatchException("Unexpected opcode start index: $startIndex")
 
             it.method.apply {
@@ -84,7 +79,7 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
                 addInstructions(
                     insertIndex,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->forceAdvancedVideoQualityMenuCreation(Z)Z
+                        invoke-static { v$register }, $EXTENSION_CLASS->forceAdvancedVideoQualityMenuCreation(Z)Z
                         move-result v$register
                     """
                 )
@@ -95,10 +90,10 @@ internal val advancedVideoQualityMenuPatch = bytecodePatch {
 
         // region Patch for the new type of the video quality menu.
 
-        addRecyclerViewTreeHook(EXTENSION_CLASS_DESCRIPTOR)
+        addRecyclerViewTreeHook(EXTENSION_CLASS)
 
         // Required to check if the video quality menu is currently shown in order to click on the "Advanced" item.
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
 
         // endregion
     }

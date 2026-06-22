@@ -1,24 +1,31 @@
 # Dependencies must also be addded to LicensesDialog.java
 
 [versions]
-morphe-patcher = "1.2.0"
+morphe-patcher = "1.5.1"
+morphe-patches-library = "1.4.0-dev.8"
 # Tracking https://github.com/google/smali/issues/100.
-smali = "b6365a84f4"
-agp = "8.2.2"
+smali = "d92701d947"
+agp = "9.1.0"
 annotation = "1.9.1"
 androidx-core = "1.16.0"
 androidx-javascriptengine = "1.1.0-alpha01"
-gson = "2.13.2"
+collections4 = "4.5.0"
+gson = "2.14.0"
+lang3 = "3.20.0"
 guava = "33.5.0-jre"
 hiddenapi = "6.1"
 protobuf = "0.9.6"
-protoc = "4.34.0"
+protoc = "4.35.0"
 
 [libraries]
+morphe-patches-library = { module = "app.morphe:morphe-patches-library", version.ref = "morphe-patches-library" }
+morphe-extensions-library = { module = "app.morphe:morphe-extensions-library", version.ref = "morphe-patches-library" }
 annotation = { module = "androidx.annotation:annotation", version.ref = "annotation" }
 androidx-core = { module = "androidx.core:core", version.ref = "androidx-core" }
 androidx-javascriptengine = { module = "androidx.javascriptengine:javascriptengine", version.ref = "androidx-javascriptengine" }
+collections4 = { module = "org.apache.commons:commons-collections4", version.ref = "collections4" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
+lang3 = { module = "org.apache.commons:commons-lang3", version.ref = "lang3" }
 guava = { module = "com.google.guava:guava", version.ref = "guava" }
 hiddenapi = { module = "org.lsposed.hiddenapibypass:hiddenapibypass", version.ref = "hiddenapi" }
 protobuf-javalite = { module = "com.google.protobuf:protobuf-javalite", version.ref = "protoc" }

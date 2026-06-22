@@ -11,7 +11,6 @@
 package app.morphe.extension.youtube.patches.components;
 
 import static app.morphe.extension.shared.Utils.getFilterStrings;
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_20_21_OR_GREATER;
 import static app.morphe.extension.youtube.shared.NavigationBar.NavigationButton;
 
 import android.graphics.drawable.Drawable;
@@ -20,6 +19,7 @@ import android.text.SpannableStringBuilder;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewParent;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,24 +27,28 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.ChangeHeaderPatch;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
-import app.morphe.extension.youtube.shared.NavigationBar;
-import app.morphe.extension.youtube.shared.PlayerType;
 
 @SuppressWarnings("unused")
 public final class LayoutComponentsFilter extends Filter {
-    private static final ByteArrayFilterGroup mixPlaylistsBufferExceptions = new ByteArrayFilterGroup(
+    private static final ByteArrayFilterGroup mixPlaylistsBuffersExceptions = new ByteArrayFilterGroup(
             null,
             "cell_description_body",
             "channel_profile"
     );
-    private static final ByteArrayFilterGroup mixPlaylists = new ByteArrayFilterGroup(
+    private static final ByteArrayFilterGroup mix8Buffer = new ByteArrayFilterGroup(
+            null,
+            "Mix8"
+    );
+    private static final ByteArrayFilterGroup playlistListTagBuffer = new ByteArrayFilterGroup(
             null,
             "&list="
     );
@@ -56,20 +60,31 @@ public final class LayoutComponentsFilter extends Filter {
     private final StringFilterGroup communityPosts;
     private final StringFilterGroup surveys;
     private final StringFilterGroup notifyMe;
+    private final StringFilterGroup searchFriction;
     private final StringFilterGroup singleItemInformationPanel;
+    private static final AtomicInteger singleItemInformationPanelIndex = new AtomicInteger(-1);
     private final StringFilterGroup expandableMetadata;
+    private final ByteArrayFilterGroup productCardBuffer;
+    private final ByteArrayFilterGroup summaryCardBuffer;
     private final StringFilterGroup compactChannelBarInner;
     private final StringFilterGroup compactChannelBarInnerButton;
     private final ByteArrayFilterGroup joinMembershipButton;
     private final StringFilterGroup chipBar;
     private final StringFilterGroup channelProfile;
     private final StringFilterGroupList channelProfileGroupList;
+    private final StringFilterGroup videoLabels;
+    private final ByteArrayFilterGroupList videoLabelsGroupList = new ByteArrayFilterGroupList();
+
+    public enum ExpandableCardStyle {
+        SHOW_ALL,
+        HIDE_PRODUCT_ONLY,
+        HIDE_SUMMARY_ONLY,
+        HIDE_PRODUCT_AND_SUMMARY,
+        HIDE_ALL
+    }
 
     public LayoutComponentsFilter() {
         exceptions.addPatterns(
-                "home_video_with_context",
-                "related_video_with_context",
-                "search_video_with_context",
                 "comment_thread", // Whitelist comments
                 "|comment.", // Whitelist comment replies
                 "library_recent_shelf"
@@ -79,12 +94,13 @@ public final class LayoutComponentsFilter extends Filter {
 
         final var cellDivider = new StringFilterGroup(
                 Settings.HIDE_COMPACT_BANNER,
-                // Empty padding and a relic from very old YT versions. Not related to compact banner but included here to avoid adding another setting.
+                // Empty padding and a relic from very old YT versions.
+                // Not related to compact banner but included here to avoid adding another setting.
                 "cell_divider"
         );
 
-        final var chipsShelf = new StringFilterGroup(
-                Settings.HIDE_CHIPS_SHELF,
+        final var exploreTopicsShelf = new StringFilterGroup(
+                Settings.HIDE_HORIZONTAL_SHELVES,
                 "chips_shelf"
         );
 
@@ -95,7 +111,7 @@ public final class LayoutComponentsFilter extends Filter {
 
         addIdentifierCallbacks(
                 cellDivider,
-                chipsShelf,
+                exploreTopicsShelf,
                 liveChatReplay
         );
 
@@ -103,20 +119,22 @@ public final class LayoutComponentsFilter extends Filter {
 
         communityPosts = new StringFilterGroup(
                 Settings.HIDE_COMMUNITY_POSTS,
-                "post_base_wrapper", // may be obsolete and no longer needed.
-                "text_post_root.e",
                 "images_post_root.e",
-                "images_post_slim.e", // may be obsolete and no longer needed.
                 "images_post_root_slim.e",
-                "text_post_root_slim.e",
-                "post_base_wrapper_slim.e",
-                "poll_post_root.e",
-                "videos_post_root.e",
-                "post_shelf_slim.e",
-                "videos_post_responsive_root.e",
-                "text_post_responsive_root.e",
+                "images_post_slim.e", // may be obsolete and no longer needed.
+                "options_post_root.e",
                 "poll_post_responsive_root.e",
-                "shared_post_root.e"
+                "poll_post_root.e",
+                "post_base_wrapper", // may be obsolete and no longer needed.
+                "post_base_wrapper_slim.e",
+                "post_shelf_slim.e",
+                "shared_post_responsive_root.e",
+                "shared_post_root.e",
+                "text_post_responsive_root.e",
+                "text_post_root.e",
+                "text_post_root_slim.e",
+                "videos_post_responsive_root.e",
+                "videos_post_root.e"
         );
 
         final var subscribersCommunityGuidelines = new StringFilterGroup(
@@ -166,14 +184,14 @@ public final class LayoutComponentsFilter extends Filter {
                 "medical_panel"
         );
 
-        final var paidPromotion = new StringFilterGroup(
-                Settings.HIDE_PAID_PROMOTION_LABEL,
-                "paid_content_overlay"
-        );
-
         final var infoPanel = new StringFilterGroup(
                 Settings.HIDE_INFO_PANELS,
                 "publisher_transparency_panel"
+        );
+
+        searchFriction = new StringFilterGroup(
+                Settings.HIDE_INFO_PANELS,
+                "search_friction"
         );
 
         singleItemInformationPanel = new StringFilterGroup(
@@ -181,8 +199,8 @@ public final class LayoutComponentsFilter extends Filter {
                 "single_item_information_panel"
         );
 
-        final var latestPosts = new StringFilterGroup(
-                Settings.HIDE_LATEST_POSTS,
+        final var postsShelf = new StringFilterGroup(
+                Settings.HIDE_POSTS_SHELF,
                 "post_shelf"
         );
 
@@ -213,8 +231,18 @@ public final class LayoutComponentsFilter extends Filter {
         );
 
         expandableMetadata = new StringFilterGroup(
-                Settings.HIDE_EXPANDABLE_CARD,
-                "inline_expander"
+                null,
+                "expandable_metadata"
+        );
+
+        productCardBuffer = new ByteArrayFilterGroup(
+                null,
+                "gstatic.com/shopping"
+        );
+
+        summaryCardBuffer = new ByteArrayFilterGroup(
+                null,
+                "PAfeedback_genai"
         );
 
         final var compactChannelBar = new StringFilterGroup(
@@ -222,20 +250,10 @@ public final class LayoutComponentsFilter extends Filter {
                 "compact_channel_bar"
         );
 
-        final var relatedVideos = new StringFilterGroup(
-                Settings.HIDE_QUICK_ACTIONS_RELATED_VIDEOS,
-                "fullscreen_related_videos"
-        );
-
         final var playables = new StringFilterGroup(
                 Settings.HIDE_PLAYABLES,
                 "horizontal_gaming_shelf.e",
                 "mini_game_card.e"
-        );
-
-        final var quickActions = new StringFilterGroup(
-                Settings.HIDE_QUICK_ACTIONS,
-                "quick_actions"
         );
 
         final var imageShelf = new StringFilterGroup(
@@ -256,7 +274,8 @@ public final class LayoutComponentsFilter extends Filter {
 
         compactChannelBarInner = new StringFilterGroup(
                 Settings.HIDE_JOIN_MEMBERSHIP_BUTTON,
-                "compact_channel_bar_inner"
+                "compact_channel_bar_inner",
+                "video_description_header"
         );
 
         compactChannelBarInnerButton = new StringFilterGroup(
@@ -295,13 +314,31 @@ public final class LayoutComponentsFilter extends Filter {
                 "web_result_panel"
         );
 
+        videoLabels = new StringFilterGroup(
+                null,
+                "|badge.e"
+        );
+        videoLabelsGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_AUTO_DUBBED_LABEL,
+                        "yt_outline_person_radar",
+                        "yt_outline_experimental_person_waves"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_HYPED_LABEL,
+                        "yt_fill_star_shooting",
+                        "yt_fill_experimental_hype"
+                )
+        );
+
         channelProfile = new StringFilterGroup(
                 null,
                 "channel_profile.e",
                 "page_header.e"
         );
         channelProfileGroupList = new StringFilterGroupList();
-        channelProfileGroupList.addAll(new StringFilterGroup(
+        channelProfileGroupList.addAll(
+                new StringFilterGroup(
                         Settings.HIDE_COMMUNITY_BUTTON,
                         "community_button"
                 ),
@@ -337,19 +374,18 @@ public final class LayoutComponentsFilter extends Filter {
                 forYouShelf,
                 imageShelf,
                 infoPanel,
-                latestPosts,
                 medicalPanel,
                 notifyMe,
-                paidPromotion,
                 playables,
-                quickActions,
-                relatedVideos,
+                postsShelf,
+                searchFriction,
                 singleItemInformationPanel,
                 subscribedChannelsBar,
                 subscribersCommunityGuidelines,
                 subscriptionsChipBar,
                 surveys,
                 timedReactions,
+                videoLabels,
                 videoTitle,
                 videoRecommendationLabels,
                 webLinkPanel
@@ -362,21 +398,67 @@ public final class LayoutComponentsFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
+        // Exceptions are not filtered.
+        if (exceptions.matches(path)) {
+            return false;
+        }
+
         // This identifier is used not only in players but also in search results:
         // Until 2024, medical information panels such as Covid-19 also used this identifier and were shown in the search results.
         // From 2025, the medical information panel is no longer shown in the search results.
         // Therefore, this identifier does not filter when the search bar is activated.
+        if (matchedGroup == searchFriction) {
+            singleItemInformationPanelIndex.set(0);
+            return false;
+        }
         if (matchedGroup == singleItemInformationPanel) {
-            return PlayerType.getCurrent().isMaximizedOrFullscreen() || !NavigationBar.isSearchBarActive();
+            int currentIndex = singleItemInformationPanelIndex.get();
+            if (currentIndex >= 0) {
+                if (currentIndex < 9) {
+                    singleItemInformationPanelIndex.incrementAndGet();
+                } else {
+                    singleItemInformationPanelIndex.set(-1);
+                }
+                return false;
+            } else {
+                return true;
+            }
         }
 
         // The groups are excluded from the filter due to the exceptions list below.
         // Filter them separately here.
-        if (matchedGroup == notifyMe || matchedGroup == surveys || matchedGroup == expandableMetadata) {
+        if (matchedGroup == notifyMe || matchedGroup == surveys) {
             return true;
+        }
+
+        if (matchedGroup == expandableMetadata) {
+            ExpandableCardStyle style = Settings.HIDE_EXPANDABLE_CARD.get();
+            switch (style) {
+                case HIDE_ALL -> {
+                    return true;
+                }
+                case HIDE_PRODUCT_ONLY -> {
+                    return productCardBuffer.check(buffer).isFiltered();
+                }
+                case HIDE_SUMMARY_ONLY -> {
+                    return summaryCardBuffer.check(buffer).isFiltered();
+                }
+                case HIDE_PRODUCT_AND_SUMMARY -> {
+                    return summaryCardBuffer.check(buffer).isFiltered()
+                            || productCardBuffer.check(buffer).isFiltered();
+                }
+                default -> {
+                    return false;
+                }
+            }
+        }
+
+        if (matchedGroup == videoLabels) {
+            return videoLabelsGroupList.check(buffer).isFiltered();
         }
 
         if (matchedGroup == channelProfile) {
@@ -386,8 +468,6 @@ public final class LayoutComponentsFilter extends Filter {
         if (matchedGroup == communityPosts) {
             return contextInterface.isHomeFeedOrRelatedVideo() || contextInterface.isSubscriptionOrLibrary();
         }
-
-        if (exceptions.matches(path)) return false; // Exceptions are not filtered.
 
         if (matchedGroup == compactChannelBarInner) {
             return compactChannelBarInnerButton.check(path).isFiltered()
@@ -408,8 +488,6 @@ public final class LayoutComponentsFilter extends Filter {
      * Called from a different place then the other filters.
      */
     public static boolean filterMixPlaylists(@Nullable byte[] buffer) {
-        // Edit: This hook may no longer be needed, and mix playlist filtering
-        //       might be possible using the existing litho filters.
         try {
             if (!Settings.HIDE_MIX_PLAYLISTS.get()) {
                 return false;
@@ -420,9 +498,9 @@ public final class LayoutComponentsFilter extends Filter {
                 return false;
             }
 
-            if (mixPlaylists.check(buffer).isFiltered()
-                    // Prevent hiding the description of some videos accidentally.
-                    && !mixPlaylistsBufferExceptions.check(buffer).isFiltered()) {
+            if (!mixPlaylistsBuffersExceptions.check(buffer).isFiltered() &&
+                    mix8Buffer.check(buffer).isFiltered() &&
+                    playlistListTagBuffer.check(buffer).isFiltered()) {
                 Logger.printDebug(() -> "Filtered mix playlist");
                 return true;
             }
@@ -458,7 +536,6 @@ public final class LayoutComponentsFilter extends Filter {
      * Injection point.
      */
     public static boolean hideFloatingMicrophoneButton(final boolean original) {
-        // FIXME? Is this feature still relevant? When/where does this microphone appear?
         return original || Settings.HIDE_FLOATING_MICROPHONE_BUTTON.get();
     }
 
@@ -493,26 +570,33 @@ public final class LayoutComponentsFilter extends Filter {
     /**
      * Injection point.
      */
-    public static void hideInRelatedVideos(View chipView) {
-        // Cannot use 0dp hide with later targets, otherwise the suggested videos
-        // can be shown in full screen mode.
-        // This behavior may also be present in earlier app targets.
-        if (IS_20_21_OR_GREATER) {
-            // FIXME: The filter bar is still briefly shown when dragging the suggested videos
-            //        below the video player.
-            Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
-        } else {
-            Utils.hideViewBy0dpUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
-        }
+    public static int hideInRelatedVideos(int height) {
+        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED
+                ? 0
+                : height;
     }
 
-    private static final boolean HIDE_DOODLES_ENABLED = Settings.HIDE_DOODLES.get();
+    /**
+     * Injection point.
+     */
+    public static boolean hideInRelatedVideos(boolean original) {
+        return HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED || original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideInRelatedVideos(View chipView) {
+        Utils.hideViewUnderCondition(HIDE_FILTER_BAR_FEED_IN_RELATED_VIDEOS_ENABLED, chipView);
+    }
+
+    private static final boolean HIDE_YOUTUBE_DOODLES_ENABLED = Settings.HIDE_YOUTUBE_DOODLES.get();
 
     /**
      * Injection point.
      */
     public static void setDoodleDrawable(ImageView imageView, Drawable original) {
-        Drawable replacement = HIDE_DOODLES_ENABLED
+        Drawable replacement = HIDE_YOUTUBE_DOODLES_ENABLED
                 ? ChangeHeaderPatch.getDrawable(original)
                 : original;
         imageView.setImageDrawable(replacement);
@@ -759,6 +843,13 @@ public final class LayoutComponentsFilter extends Filter {
 
     /**
      * Injection point.
+     */
+    public static boolean hideSearchTermThumbnails() {
+        return Settings.HIDE_SEARCH_TERM_THUMBNAILS.get();
+    }
+
+    /**
+     * Injection point.
      *
      * @param typedString   Keywords typed in the search bar.
      * @return              Whether the setting is enabled and the typed string is empty.
@@ -787,5 +878,95 @@ public final class LayoutComponentsFilter extends Filter {
             Logger.printDebug(() -> "Remove search suggestion: " + searchTerm);
         }
         return isSearchHistory;
+    }
+
+    private static final List<String> accountMenuFilterStrings = getFilterStrings(Settings.HIDE_ACCOUNT_MENU_FILTER_STRINGS);
+    private static final int[] accountTopItemDepths = new int[]{3, 2}; // Start from the highest depth to avoid hiding the wrong parent first
+    private static final int[] accountBottomItemModernDepths = new int[]{4, 3}; // Start from the highest depth to avoid hiding the wrong parent first
+    private static final int[] accountBottomItemLegacyDepths = new int[]{3, 2}; // Start from the highest depth to avoid hiding the wrong parent first
+
+    /**
+     * Injection point.
+     */
+    public static void hideAccountTopItem(View view, CharSequence menuTitleCharSequence) {
+        hideAccountItem(view, menuTitleCharSequence, accountTopItemDepths);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideAccountBottomItemModern(View view, CharSequence menuTitleCharSequence) {
+        hideAccountItem(view, menuTitleCharSequence, accountBottomItemModernDepths);
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideAccountBottomItemLegacy(View view, CharSequence menuTitleCharSequence) {
+        hideAccountItem(view, menuTitleCharSequence, accountBottomItemLegacyDepths);
+    }
+
+    private static void hideAccountItem(View textView, CharSequence menuTitleCharSequence, int[] depths) {
+        if (!Settings.HIDE_ACCOUNT_MENU.get() || menuTitleCharSequence == null) return;
+        if (accountMenuFilterStrings.isEmpty()) return;
+
+        String menuTitleString = menuTitleCharSequence.toString();
+
+        boolean matches = false;
+        String menuTitleLower = menuTitleString.toLowerCase();
+        for (String filter : accountMenuFilterStrings) {
+            if (menuTitleLower.contains(filter.toLowerCase())) {
+                matches = true;
+                break;
+            }
+        }
+        if (!matches) return;
+
+        // Not all versions have the same depth. So perform a scan
+        // along all available depths, to find the right one.
+        for (int depth : depths) {
+            ViewParent parent = Utils.getParentView(textView, depth);
+            if (parent instanceof View current) {
+                Utils.hideViewByLayoutParams(current);
+                current.setVisibility(View.GONE);
+                if (current.getLayoutParams() instanceof ViewGroup.MarginLayoutParams marginParams) {
+                    marginParams.setMargins(0, 0, 0, 0);
+                    current.setLayoutParams(marginParams);
+                }
+            }
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideSnackbar() {
+        return Settings.HIDE_SNACKBAR.get();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideLithoSnackBar(FrameLayout frameLayout) {
+        if (Settings.HIDE_SNACKBAR.get()) {
+            Utils.hideViewByLayoutParams(frameLayout);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void handleLegacySnackbar(View view) {
+        if (Settings.HIDE_SNACKBAR.get()) {
+            Utils.hideViewByLayoutParams(view);
+            view.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void hideSyncButton(View view) {
+        Utils.hideViewBy0dpUnderCondition(Settings.HIDE_SYNC_BUTTON, view);
     }
 }

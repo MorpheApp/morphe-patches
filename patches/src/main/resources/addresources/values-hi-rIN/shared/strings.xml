@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">खोज इतिहास खाली है</string>
   <string name="morphe_settings_search_empty_history_summary">खोज इतिहास को सहेजने के लिए, खोज क्वेरी टाइप करें और एंटर प्रेस करें</string>
   <string name="morphe_settings_search_history_title">सेटिंग्स खोज इतिहास दिखाएं</string>
-  <string name="morphe_settings_search_history_summary_on">सेटिंग्स खोज इतिहास दिखाया जा रहा है</string>
-  <string name="morphe_settings_search_history_summary_off">सेटिंग्स खोज इतिहास दिखाया नहीं जा रहा है</string>
   <string name="morphe_show_menu_icons_title">Morphe सेटिंग आइकन दिखाएं</string>
-  <string name="morphe_show_menu_icons_summary_on">सेटिंग आइकन दिखाए जा रहे हैं</string>
-  <string name="morphe_show_menu_icons_summary_off">सेटिंग आइकन दिखाए नहीं जा रहे हैं</string>
   <string name="morphe_language_title">Morphe भाषा</string>
   <string name="morphe_language_user_dialog_message">"कुछ भाषाओं के अनुवाद可能 अदृश्य या अपूर्ण हो सकते हैं।
 
@@ -84,39 +80,39 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">2022 – 2025</string>
   <string name="morphe_settings_about_links_rv">2022 – 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 – 2022</string>
+  <string name="morphe_settings_about_links_licenses">लाइसेंस सूचनाएँ</string>
+  <string name="morphe_settings_about_licenses_loading">लोड हो रहा है...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">디버깅</string>
-  <string name="morphe_debug_screen_summary">디버깅 옵션을 활성 या 비활성 करें</string>
-  <string name="morphe_debug_title">डिबगिंग</string>
-  <string name="morphe_debug_summary_on">डिबग लॉग्स एनबल किए गए हैं</string>
-  <string name="morphe_debug_summary_off">डिबग लॉग्स डिसेबल किए गए हैं</string>
-  <string name="morphe_debug_stacktrace_title">स्टैक ट्रेस दिखाएं</string>
-  <string name="morphe_debug_stacktrace_summary_on">डिबग लॉग्स स्टैक ट्रेस शामिल करते हैं</string>
-  <string name="morphe_debug_stacktrace_summary_off">डिबग लॉग्स स्टैक ट्रेस शामिल नहीं करते हैं</string>
+  <string name="morphe_debug_screen_summary">उन्नत डेवलपर विकल्पों और नैदानिक लॉग को कॉन्फ़िगर करें</string>
+  <string name="morphe_debug_title">डीबग लॉगिंग सक्षम करें</string>
+  <string name="morphe_debug_stacktrace_title">डिबग लॉग स्टैक ट्रेस</string>
+  <string name="morphe_debug_stacktrace_summary">त्रुटियों की पहचान करने में मदद करने के लिए डीबग लॉग में स्टैक ट्रेस शामिल हैं</string>
   <string name="morphe_debug_toast_on_error_title">Morphe त्रुटि पर टोस्ट दिखाएं</string>
-  <string name="morphe_debug_toast_on_error_summary_on">त्रुटि होने पर टोस्ट दिखाया जाता है</string>
-  <string name="morphe_debug_toast_on_error_summary_off">त्रुटि होने पर टोस्ट नहीं दिखाया जाता है</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"त्रुटि टोस्ट्स को बंद करना मorphe त्रुटि सूचनाओं को छिपाता है।
 
 आप अप्रत्याशित घटनाओं से सूचित नहीं किए जाएंगे।"</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">डिबग लॉग्स निर्यात करें</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe डिबग लॉग्स क्लिपबोर्ड में कॉपी किए जाते हैं</string>
+  <string name="morphe_debug_export_logs_title">डीबग लॉग एक्सपोर्ट करें</string>
+  <string name="morphe_debug_export_logs_summary">Morphe डिबग लॉग्स एक्सपोर्ट करें</string>
+  <string name="morphe_debug_export_logs_file">फ़ाइल में एक्सपोर्ट करें</string>
+  <string name="morphe_debug_export_logs_success">डिबग लॉग्स सफलतापूर्वक एक्सपोर्ट किए गए</string>
+  <string name="morphe_debug_export_logs_failed">डिबग लॉग्स एक्सपोर्ट करने में विफल।</string>
+  <string name="morphe_debug_logs_search_hint">डिबग लॉग्स खोजें...</string>
+  <string name="morphe_debug_export_logs_clear">खाली करें</string>
   <string name="morphe_debug_logs_disabled">डिबगिंग डिसेबल किया गया है</string>
-  <string name="morphe_debug_logs_none_found">कोई लॉग नहीं मिला</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">लॉग्स कॉपी किए गए</string>
-  <string name="morphe_debug_logs_failed_to_export">लॉग्स निर्यात करना विफल हुआ: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">डिबग लॉग्स मिटाएं</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">सभी स्टोर किए गए Morphe डिबग लॉग्स मिटाए जाते हैं</string>
-  <string name="morphe_debug_logs_clear_toast">लॉग्स मिटाए गए</string>
+  <string name="morphe_debug_logs_none_found">डिबग लॉग्स नहीं मिले</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">डिबग लॉग्स कॉपी किए गए</string>
+  <string name="morphe_debug_logs_failed_to_export">डिबग लॉग्स एक्सपोर्ट करने में विफल: %s</string>
+  <string name="morphe_debug_logs_clear_toast">डिबग लॉग्स साफ़ किए गए</string>
   <string name="morphe_debug_feature_flags_manager_title">फ़ीचर फ़्लैग्स मैनेजर</string>
   <string name="morphe_debug_feature_flags_manager_summary">बूलियन फ़ीचर फ़्लैग्स को मैनेज करें</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">सक्रिय फ़्लैग्स (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">ब्लॉक किए गए फ़्लैग्स (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">फ़्लैग्स खोजें...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">फ़्लैग्स सहेजे गए</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">फ़्लैग्स रीसेट किए गए</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">फ़्लैग्स क्लिपबोर्ड में कॉपी किए गए</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">इस सुविधा का उपयोग करने के लिए ऐप को पुनःारंभ करें</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">सक्रिय फ़ीचर फ़्लैग (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">ब्लॉक किए गए फ़ीचर फ़्लैग (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">फ़ीचर फ़्लैग खोजें...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">फ़ीचर फ़्लैग सेव किए गए</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">फ़ीचर फ़्लैग रीसेट किए गए</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">फ़ीचर फ़्लैग क्लिपबोर्ड पर कॉपी किए गए</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">इस सेटिंग का उपयोग करने के लिए ऐप को पुनः आरंभ करें</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">माइक्रोजी सेटिंग्स खोलें</string>
@@ -136,4 +132,28 @@ Second \"item\" text"</string>
 
 टाप करें और ऑप्टिमाइज़ेशन बदलने की अनुमति दें।"</string>
   <string name="gms_core_dialog_continue_text">जारी रखें</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG बैटरी ऑप्टिमाइज़ेशन संवाद दिखाएं</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"इसे अक्षम करने से MicroG बैटरी अनुकूलन प्रॉम्प्ट छिप जाएगा।
+
+यदि बैटरी अनुकूलन नहीं बदले गए हैं तो आपको निम्नलिखित अनुभव हो सकते हैं:
+• ऐप बेतरतीब ढंग से बंद हो सकता है
+• सूचनाएं काम नहीं कर सकती हैं
+• पृष्ठभूमि प्लेबैक काम नहीं कर सकता है"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">ऐप लिंक हैंडलिंग</string>
+  <string name="morphe_link_handling_summary">इस ऐप में खोलने के लिए लिंक कॉन्फ़िगर करें</string>
+  <string name="morphe_link_handling_step1_title">चरण 1: मूल ऐप लिंक अक्षम करें</string>
+  <string name="morphe_link_handling_step1_message">मूल ऐप की सेटिंग खोलें और सभी डोमेन लिंक अक्षम करें</string>
+  <string name="morphe_link_handling_step2_title">चरण 2: पैच किए गए ऐप लिंक सक्षम करें</string>
+  <string name="morphe_link_handling_step2_message">पैच किए गए ऐप की सेटिंग खोलें और सभी डोमेन लिंक सक्षम करें</string>
+  <string name="morphe_link_handling_open">सेटिंग खोलें</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 प्रयोगात्मक चेतावनी 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"आप ⚠️ &lt;b&gt;%1$s&lt;/b&gt; के प्रायोगिक ऐप संस्करण का उपयोग कर रहे हैं।
+&lt;br/&gt;&lt;br/&gt;
+🔧 इस ऐप संस्करण के लिए पैच को ठीक करते समय हमें अजीब ऐप व्यवहार या अज्ञात बग की अपेक्षा है।
+&lt;br/&gt;&lt;br/&gt;
+यदि आप सबसे परेशानी मुक्त अनुभव चाहते हैं, तो इस ऐप को &lt;b&gt;अनइंस्टॉल&lt;/b&gt; कर दें और ✅ &lt;b&gt;%2$s&lt;/b&gt; के अनुशंसित ऐप संस्करण को पैच करें।"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ मुझे प्रायोगिक चाहिए</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ मुझे स्थिर चाहिए</string>
 </resources>

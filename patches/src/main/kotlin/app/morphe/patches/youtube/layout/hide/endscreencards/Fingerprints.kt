@@ -3,11 +3,12 @@ package app.morphe.patches.youtube.layout.hide.endscreencards
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
-import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
-import app.morphe.util.customLiteral
+import app.morphe.patcher.opcode
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -15,41 +16,36 @@ internal object LayoutCircleFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(),
     returnType = "Landroid/view/View;",
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.CONST,
-        Opcode.CONST_4,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CHECK_CAST,
-    ),
-    custom = customLiteral { layoutCircle } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "endscreen_element_layout_circle"),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(10)),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately())
+    )
 )
 
 internal object LayoutIconFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     parameters = listOf(),
     returnType = "Landroid/view/View;",
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CHECK_CAST,
-
-        ),
-    custom = customLiteral { layoutIcon } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "endscreen_element_layout_icon"),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(10)),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately())
+    )
 )
 
 internal object LayoutVideoFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC),
     parameters = listOf(),
     returnType = "Landroid/view/View;",
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.CONST,
-        Opcode.CONST_4,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_OBJECT,
-        Opcode.CHECK_CAST,
-    ),
-    custom = customLiteral { layoutVideo } // TODO: Convert this to an instruction filter
+    filters = listOf(
+        resourceLiteral(ResourceType.LAYOUT, "endscreen_element_layout_video"),
+        opcode(Opcode.INVOKE_VIRTUAL, location = MatchAfterWithin(10)),
+        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately())
+    )
 )
 
 internal object ShowEndscreenCardsFingerprint : Fingerprint(

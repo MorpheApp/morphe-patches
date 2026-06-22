@@ -17,28 +17,25 @@ Second \"item\" text"</string>
 -->
 <resources>
   <!-- misc.initialization.initializationPatch -->
-  <string name="morphe_restart_first_run">Ayarları tamamlamak için yeniden başlatın</string>
+  <string name="morphe_restart_first_run">Kurulumu tamamlamak için yeniden başlatın</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Uygulama adı</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Özel</string>
   <string name="morphe_custom_branding_icon_title">Uygulama simgesi</string>
   <string name="morphe_custom_branding_icon_entry_1">Orijinal</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe siyah</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe koyu</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe açık</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe play açık</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe play siyah</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Özel</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Deneysel Uyarı 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Deneysel bir uygulama sürümü olan ⚠️ &lt;b&gt;%1$s&lt;/b&gt; sürümünü kullanıyorsunuz
-&lt;br/&gt;&lt;br/&gt;
-🔧 Biz bu uygulama sürümü için yamaların ince ayarlarını tamamlarken, uygulamada garip davranışlar veya tanımlanmadık hatalarla karşılaşabilirsiniz.
-&lt;br/&gt;&lt;br/&gt;
-En sorunsuz deneyimi istiyorsanız, bunu &lt;b&gt;kaldırın&lt;/b&gt; ve önerilen ✅ &lt;b&gt;%2$s&lt;/b&gt; sürümünü yamalayın"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Deneysel istiyorum</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Stabil istiyorum</string>
+  <string name="morphe_custom_branding_icon_entry_7">Özel</string>
+  <string name="morphe_custom_branding_notification_icon_title">Bildirim simgesi</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Uygulama simgesini takip et</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Bildirimi</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">İzleme geçmişiniz kaydedilmiyor.&lt;br&gt;&lt;br&gt;Bu büyük ihtimalle bir reklam engelleyici DNS\'den veya proxy\'den kaynaklanıyor.&lt;br&gt;&lt;br&gt;Bunu düzeltmek için, &lt;b&gt;s.youtube.com&lt;/b&gt; adresini beyaz listeye ekleyin veya bütün engelleyici DNSleri ve proxy\'leri kapatın.</string>
@@ -47,24 +44,21 @@ En sorunsuz deneyimi istiyorsanız, bunu &lt;b&gt;kaldırın&lt;/b&gt; ve öneri
   <string name="morphe_spoof_video_streams_screen_title">Video akışlarını taklit et</string>
   <string name="morphe_spoof_video_streams_screen_summary">Oynatma sorunlarını önlemek için istemci video akışlarını taklit et</string>
   <string name="morphe_spoof_video_streams_title">Video akışlarını taklit et</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Video akışları taklit ediliyor.
+  <string name="morphe_spoof_video_streams_summary">"Çoğu kullanıcı için oynatma sorunlarını uyumlu bir video akışı isteyerek düzeltir
 
 YouTube Premium kullanıcısıysanız, bu ayar gerekli olmayabilir"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Video akışları taklit edilmez
-
-Oynatma çalışmayabilir"</string>
-  <string name="morphe_spoof_video_streams_no_clients_toast">Hiçbir istemci akışı alınamadı.</string>
+  <string name="morphe_spoof_video_streams_no_clients_toast">Hiçbir istemci akışı alınamadı</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Bu ayarı devre dışı bırakmak oynatma sorunlarına yol açabilir.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
          "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Şunu etkinleştirmeyi dene: Video akışlarını taklit et (Spoof) > Android VR oturum açma</string>
+  <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Şunu etkinleştirmeyi dene: Video akışlarını taklit et &gt; Android VR oturum açma</string>
   <string name="morphe_spoof_video_streams_client_type_title">Varsayılan istemci</string>
   <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
   <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR oturum açma</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR oturumu açılmadı. Oturum açmak için buraya dokunun.</string>
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Şu anda Android VR oturumu açık.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Android VR oturumu açılmadı. Oturum açmak için buraya dokunun</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Şu anda Android VR oturumu açık</string>
   <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi Android VR olarak değiştirin.</string>
+  <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">Bu özelliği kullanmak için \'Varsayılan istemci\'yi Android VR olarak değiştirin</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Android VR\'da oturum aç</string>
   <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Android VR'de oturum açmak, bazı kullanıcılar için oynatma sorunlarını çözebilir.
 
@@ -98,33 +92,32 @@ Oturum açmak için, devam et butonuna basın."</string>
   <string name="morphe_oauth2_toast_reset">Android VR oturumu kapatıldı</string>
   <string name="morphe_oauth2_toast_invalid">Geçersiz VR oturum açma belirteci, VR\'da tekrar oturum açmayı deneyin</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Oynatıcı JavaScript güncellemesini devre dışı bırak</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Oynatıcı JavaScript güncellemesi devre dışı
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Oynatıcı JavaScript'ini belirli bir sürüme kilitler
 
 • Geçerli bir oynatıcı JavaScript hash'i gereklidir
-• GVS'de Oynatıcı JavaScript hash'i iptal edilirse oynatma başarısız olur"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Oynatıcı JavaScript güncellemesi etkin</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Oynatıcı JavaScript hash\'leri yaklaşık bir ay süreyle geçerlidir ve süresi geçmiş hash\'ler GVS tarafından iptal edilebilir.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Oynatıcı JavaScript hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Geçerli bir oynatıcı JavaScript hash değeri girin</string>
+• Oynatıcı JavaScript hash'leri yaklaşık bir ay geçerlidir ve eski hash'ler GVS tarafından iptal edilir
+• Hash iptal edilirse oynatma başarısız olur"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Geçerli bir oynatıcı JavaScript hash'i sağlamanız gerekir.
+
+Oynatıcı JavaScript hash'i güncel değilse oynatma başarısız olur."</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Oynatıcı JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Geçerli bir oynatıcı JavaScript hash değeri girin</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">QUIC protokolünü devre dışı bırak</string>
-  <string name="morphe_disable_quic_protocol_summary_on">QUIC protokolü devre dışı</string>
-  <string name="morphe_disable_quic_protocol_summary_off">QUIC protokolü etkin</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">DRC sesi devre dışı bırak</string>
-  <string name="morphe_disable_drc_audio_summary_on">DRC sesi devre dışı</string>
-  <string name="morphe_disable_drc_audio_summary_off">DRC sesi etkin</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Orijinal ses dilini zorla</string>
-  <string name="morphe_force_original_audio_summary_on">Orijinal ses dili kullanılıyor</string>
-  <string name="morphe_force_original_audio_summary_off">Varsayılan ses kullanılıyor</string>
+  <string name="morphe_force_original_audio_summary">Videoda dublajlı versiyon yerine her zaman orijinal ses parçasını oynatır</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Tam ekran reklamları gizle</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-  <string name="morphe_force_original_audio_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\' ayarını Android Reel veya TV\'ye değiştirin</string>
+  <string name="morphe_force_original_audio_not_available">Bu özelliği kullanmak için \'Video akışlarını taklit et\' ayarını Android Reel veya TV olarak değiştirin</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Paylaşım bağlantılarını temizle</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Paylaşılan bağlantılardan izleyici sorgu parametresi kaldırılır</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Paylaşılan bağlantılardan izleyici sorgu parametresi kaldırılmaz</string>
+  <string name="morphe_sanitize_sharing_links_summary">Paylaşılan bağlantılardan izleme sorgu parametrelerini kaldırır</string>
   <string name="morphe_replace_music_with_youtube_title">Paylaşım bağlantılarını youtube.com olarak değiştir</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Paylaşılan bağlantılar youtube.com kullanır</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Paylaşılan bağlantılar music.youtube.com kullanır</string>
+  <string name="morphe_replace_music_with_youtube_summary">Paylaşılan bağlantılarda music.youtube.com adresini youtube.com ile değiştirir</string>
+  <string name="morphe_replace_links_with_shortener_title">Paylaşım bağlantılarını youtu.be olarak değiştir</string>
+  <string name="morphe_replace_links_with_shortener_summary">Videoları kısaltılmış youtu.be URL formatını kullanmaya zorlar</string>
 </resources>

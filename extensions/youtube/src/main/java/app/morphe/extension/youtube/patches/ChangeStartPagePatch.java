@@ -28,14 +28,12 @@ public final class ChangeStartPagePatch {
          */
         ALL_SUBSCRIPTIONS("FEchannels", TRUE),
         BROWSE("FEguide_builder", TRUE),
-        EXPLORE("FEexplore", TRUE),
         HISTORY("FEhistory", TRUE),
         LIBRARY("FElibrary", TRUE),
         MOVIE("FEstorefront", TRUE),
         NOTIFICATIONS("FEactivity", TRUE),
         PLAYLISTS("FEplaylist_aggregation", TRUE),
         SUBSCRIPTIONS("FEsubscriptions", TRUE),
-        TRENDING("FEtrending", TRUE),
         YOUR_CLIPS("FEclips", TRUE),
 
         /**

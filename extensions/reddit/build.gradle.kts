@@ -1,6 +1,9 @@
+import com.android.build.api.dsl.ApplicationExtension
+
 dependencies {
     compileOnly(project(":extensions:shared:library"))
     compileOnly(project(":extensions:reddit:stub"))
+    compileOnly(libs.morphe.extensions.library)
 
     // Used by MorpheSettingsIconVectorDrawable.
     implementation(libs.androidx.core)
@@ -9,8 +12,8 @@ dependencies {
     implementation(libs.hiddenapi)
 }
 
-android {
-    compileSdk = 35
+configure<ApplicationExtension> {
+    compileSdk = 36
 
     defaultConfig {
         minSdk = 28

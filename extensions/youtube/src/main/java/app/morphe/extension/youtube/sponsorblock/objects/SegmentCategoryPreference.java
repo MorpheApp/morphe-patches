@@ -31,7 +31,6 @@ public class SegmentCategoryPreference extends ColorPickerPreference {
     private int selectedDialogEntryIndex;
     private CharSequence[] entryValues;
 
-
     public SegmentCategoryPreference(Context context, SegmentCategory category) {
         super(context);
         this.category = Objects.requireNonNull(category);
@@ -50,6 +49,11 @@ public class SegmentCategoryPreference extends ColorPickerPreference {
         // Sync initial color from category.
         setText(category.getColorStringWithOpacity());
         updateUI();
+    }
+
+    @Override
+    protected boolean cancelDialogOnTouchOutside() {
+        return true;
     }
 
     @Override

@@ -1,51 +1,25 @@
+@file:Suppress("SpellCheckingInspection")
+
 package app.morphe.patches.youtube.video.information
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
-import app.morphe.patcher.InstructionLocation.MatchFirst
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.OpcodesFilter
 import app.morphe.patcher.StringComparisonType
 import app.morphe.patcher.anyInstruction
 import app.morphe.patcher.fieldAccess
+import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.youtube.shared.PlaybackSpeedOnItemClickParentFingerprint
 import app.morphe.patches.youtube.shared.VideoQualityChangedFingerprint
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
-    returnType = "V",
-    filters = listOf(
-        string("timed_markers_width"),
-    )
-)
-
-internal object OnPlaybackSpeedItemClickParentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
-    returnType = "L",
-    parameters = listOf("L", "Ljava/lang/String;"),
-    filters = listOf(
-        methodCall(name = "getSupportFragmentManager", location = MatchFirst()),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        methodCall(
-            returnType = "L",
-            parameters = listOf("Ljava/lang/String;"),
-            location = MatchAfterImmediately()
-        ),
-        opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
-        opcode(Opcode.IF_EQZ, location = MatchAfterImmediately()),
-        opcode(Opcode.CHECK_CAST, location = MatchAfterImmediately()),
-    ),
-    custom = { _, classDef ->
-        classDef.methods.count() == 8
-    }
-)
-
-/**
- * Resolves using the method found in [OnPlaybackSpeedItemClickParentFingerprint].
- */
-internal object OnPlaybackSpeedItemClickFingerprint : Fingerprint(
+internal object PlaybackSpeedOnItemClickFingerprint : Fingerprint(
+    classFingerprint = PlaybackSpeedOnItemClickParentFingerprint,
     name = "onItemClick",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
@@ -54,13 +28,21 @@ internal object OnPlaybackSpeedItemClickFingerprint : Fingerprint(
 
 internal object PlayerControllerSetTimeReferenceFingerprint : Fingerprint(
     filters = OpcodesFilter.opcodesToFilters(
-Opcode.INVOKE_DIRECT_RANGE, Opcode.IGET_OBJECT),
+        Opcode.INVOKE_DIRECT_RANGE, Opcode.IGET_OBJECT
+    ),
     strings = listOf("Media progress reported outside media playback: ")
 )
 
 internal object PlayerInitFingerprint : Fingerprint(
     filters = listOf(
         string("playVideo called on player response with no videoStreamingData."),
+    )
+)
+
+internal object ChannelInformationFingerprint : Fingerprint(
+    classFingerprint = PlayerInitFingerprint,
+    filters = listOf(
+        string("loadVideo() called on LocalDirector in wrong state"),
     )
 )
 
@@ -78,10 +60,8 @@ internal object PlayerStatusEnumFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matched using class found in [PlayerInitFingerprint].
- */
 internal object SeekFingerprint : Fingerprint(
+    classFingerprint = PlayerInitFingerprint,
     filters = listOf(
         anyInstruction(
             // 20.xx
@@ -92,20 +72,28 @@ internal object SeekFingerprint : Fingerprint(
     )
 )
 
+private object CreateVideoPlayerSeekbarFingerprint : Fingerprint(
+    name = "onDraw",
+    returnType = "V",
+    filters = listOf(
+        string("timed_markers_width")
+    )
+)
+
 internal object VideoLengthFingerprint : Fingerprint(
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.MOVE_RESULT_WIDE,
-        Opcode.CMP_LONG,
-        Opcode.IF_LEZ,
-        Opcode.IGET_OBJECT,
-        Opcode.CHECK_CAST,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_WIDE,
-        Opcode.GOTO,
-        Opcode.INVOKE_VIRTUAL,
-        Opcode.MOVE_RESULT_WIDE,
-        Opcode.CONST_4,
-        Opcode.INVOKE_VIRTUAL,
+    classFingerprint = CreateVideoPlayerSeekbarFingerprint,
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall("Landroid/graphics/Rect;->set(Landroid/graphics/Rect;)V"),
+
+        methodCall(returnType = "J"),
+        methodCall(returnType = "J", location = MatchAfterWithin(5)),
+        methodCall(returnType = "J", location = MatchAfterWithin(10)),
+        methodCall(returnType = "J", location = MatchAfterWithin(10)),
+
+        methodCall(returnType = "Z", parameters = listOf()),
+        opcode(Opcode.CMP_LONG, location = MatchAfterWithin(8))
     )
 )
 
@@ -148,10 +136,8 @@ internal object MdxSeekRelativeFingerprint : Fingerprint(
     )
 )
 
-/**
- * Matches using class found in [PlayerInitFingerprint].
- */
 internal object SeekRelativeFingerprint : Fingerprint(
+    classFingerprint = PlayerInitFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     // Return type is boolean up to 19.39, and void with 19.39+.
     parameters = listOf("J", "L"),
@@ -161,10 +147,23 @@ internal object SeekRelativeFingerprint : Fingerprint(
     )
 )
 
-/**
- * Resolves with the class found in [VideoQualityChangedFingerprint].
- */
+internal object GetVideoTimeFingerprint : Fingerprint(
+    classFingerprint = PlayerInitFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "V",
+    filters = listOf(
+        methodCall(  // getVideoTime()
+            definingClass = "this",
+            returnType = "J",
+            parameters = listOf(),
+        ),
+        literal(69, location = MatchAfterWithin(5))
+    )
+)
+
 internal object PlaybackSpeedMenuSpeedChangedFingerprint : Fingerprint(
+    classFingerprint = VideoQualityChangedFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf("L"),
@@ -181,20 +180,6 @@ internal object PlaybackSpeedClassFingerprint : Fingerprint(
         Opcode.RETURN_OBJECT
     ),
     strings = listOf("PLAYBACK_RATE_MENU_BOTTOM_SHEET_FRAGMENT")
-)
-
-/**
- * YouTube 20.19 and lower.
- */
-internal object VideoQualityLegacyFingerprint : Fingerprint(
-    definingClass = "Lcom/google/android/libraries/youtube/innertube/model/media/VideoQuality;",
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
-    parameters = listOf(
-        "I", // Resolution.
-        "Ljava/lang/String;", // Human readable resolution: "480p", "1080p Premium", etc
-        "Z",
-        "L"
-    )
 )
 
 internal object PlaybackStartDescriptorToStringFingerprint : Fingerprint(
@@ -239,6 +224,7 @@ internal object VideoQualitySetterFingerprint : Fingerprint(
  * Matches with the class found in [VideoQualitySetterFingerprint].
  */
 internal object SetVideoQualityFingerprint : Fingerprint(
+    classFingerprint = VideoQualitySetterFingerprint,
     returnType = "V",
     parameters = listOf("L"),
     filters = OpcodesFilter.opcodesToFilters(

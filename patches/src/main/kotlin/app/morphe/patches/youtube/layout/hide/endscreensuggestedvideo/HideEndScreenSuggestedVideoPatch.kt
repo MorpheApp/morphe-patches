@@ -10,14 +10,12 @@ import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.getMutableMethod
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.reference.FieldReference
-import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/HideEndScreenSuggestedVideoPatch;"
 
 @Suppress("unused")
@@ -31,15 +29,13 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
 
     execute {
         PreferenceScreen.PLAYER.addPreferences(
-            SwitchPreference("morphe_end_screen_suggested_video"),
+            SwitchPreference("morphe_hide_end_screen_suggested_video", summary = true),
         )
 
-        val autoNavStatusMethod = AutoNavStatusFingerprint.match(
-            AutoNavConstructorFingerprint.originalClassDef
-        ).method
+        val autoNavStatusMethod = AutoNavStatusFingerprint.method
 
         val endScreenMethod = RemoveOnLayoutChangeListenerFingerprint.instructionMatches[1]
-            .instruction.getReference<MethodReference>()!!.getMutableMethod()
+            .getMethodCalled()
 
         val endScreenSuggestedVideoFingerprint = Fingerprint(
             definingClass = endScreenMethod.definingClass,
@@ -68,7 +64,7 @@ val hideEndScreenSuggestedVideoPatch = bytecodePatch(
                 addInstructionsWithLabels(
                     0,
                     """
-                        invoke-static {}, $EXTENSION_CLASS_DESCRIPTOR->hideEndScreenSuggestedVideo()Z
+                        invoke-static {}, $EXTENSION_CLASS->hideEndScreenSuggestedVideo()Z
                         move-result v0
                         if-eqz v0, :ignore
 

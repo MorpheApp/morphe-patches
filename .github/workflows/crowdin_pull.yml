@@ -32,10 +32,6 @@ jobs:
           CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
           CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
 
-      - name: Push crowdin branch
-        run: |
-          git checkout -B crowdin
-          git push --force origin crowdin
   merge:
     name: Squash merge Crowdin into Dev
     if: github.event_name == 'workflow_dispatch'
@@ -52,11 +48,14 @@ jobs:
           fetch-depth: 0
           clean: true
 
+      - name: Cache Gradle
+        uses: burrunan/gradle-cache-action@v3
+
       # Step 2: Run string checks on the crowdin branch
       - name: Check strings on crowdin
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: ./gradlew clean checkStringResources
+        run: ./gradlew checkStringResources -PnoProguard
 
       # Step 3: Checkout dev branch to prepare for merging
       - name: Checkout dev branch for merge

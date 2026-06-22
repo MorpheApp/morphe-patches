@@ -20,39 +20,33 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Ponovo pokrenite da biste završili postavljanje</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Naziv aplikacije</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Prilagođeno</string>
   <string name="morphe_custom_branding_icon_title">Ikonica aplikacije</string>
   <string name="morphe_custom_branding_icon_entry_1">Originalna</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe crni</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tamno</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe ljuti</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe svetlo</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe crno</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Prilagođeno</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Експериментално упозорење 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Koristite eksperimentalnu verziju aplikacije ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Očekujte neobično ponašanje aplikacije ili neidentifikovane greške dok usavršavamo ispravke za ovu verziju aplikacije.
-&lt;br/&gt;&lt;br/&gt;
-Ako želite najmanje problema, &lt;b&gt;deinstalirajte&lt;/b&gt; ovu i popravite preporučenu verziju aplikacije ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Želim eksperimentalnu verziju</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Želim stabilnu verziju</string>
+  <string name="morphe_custom_branding_icon_entry_7">Prilagođeno</string>
+  <string name="morphe_custom_branding_notification_icon_title">Ikona obaveštenja</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Uparite ikonu aplikacije</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe pleј</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe obaveštenje</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Vaša istorija gledanja se ne čuva.&lt;br&gt;&lt;br&gt;Ovo je najverovatnije uzrokovano DNS blokatorom oglasa ili mrežnim proksijem.&lt;br&gt;&lt;br&gt;Da biste ovo popravili, stavite na belu listu &lt;b&gt;s.youtube.com&lt;/b&gt; ili isključite sve DNS blokatore i proksije.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Ne prikazuj ponovo</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Lažirani video strimovi</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Lažiranje video strimova klijenta da bi se sprečili problemi sa reprodukcijom</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Konfigurišite lažiranje klijenta kako biste sprečili probleme sa reprodukcijom</string>
   <string name="morphe_spoof_video_streams_title">Lažirani video strimovi</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Video strimovi su lažirani
+  <string name="morphe_spoof_video_streams_summary">"Исправља проблеме са репродукцијом за већину корисника захтевањем компатибилног видео тока
 
-Ako ste korisnik YouTube Premiuma, ovo podešavanje možda neće biti potrebno"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Video strimovi nisu lažirani
-
-Reprodukcija možda neće raditi"</string>
+Ако сте корисник YouTube Premium-а, ова опција вам можда неће бити потребна"</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Nije moguće učitati streame za klijente</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Isključivanje ovog podešavanja može izazvati probleme sa reprodukcijom.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -98,33 +92,32 @@ Da bi se prijavili, pritisnite nastavi ispod"</string>
   <string name="morphe_oauth2_toast_reset">Odjavljen sa Android VR</string>
   <string name="morphe_oauth2_toast_invalid">Nevažeći token za prijavu na VR, pokušajte se ponovno prijaviti na VR</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Искукључите ажурирање JavaScript плеера</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Ажурирање JavaScript плеера је искључено
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Blokira JavaScript plejera na odreƁenu verziju
 
-• Потребан је валидан JavaScript hash плеера
-• Репродукција ће отказати ако је JavaScript hash плеера опзван у GVS"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Ажурирање JavaScript плеера је укључено</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">JavaScript hešovi plejera su važeći otprilike jedan mesec, a zastareli hešovi mogu biti poništeni od strane GVS.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Player JavaScript hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Unesite validan hash JavaScript igrača</string>
+• Zahteva vaƁan heš kőda JavaScript plejera
+• Heš kődovi JavaScript plejera vaƁe oko mesec dana, a istekli heš kődovi će biti opozvani od strane GVS-a
+• Reprodukcija će neuspešno ako je heš kőd opozvan"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Morate uneti vaƁan heš kőd JavaScript plejera.
+
+Reprodukcija će neće uspeti ako je heš kőd JavaScript plejera zastareo."</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player JavaScript hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Unesite validan hash JavaScript igrača</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Onemogući protokol QUIC</string>
-  <string name="morphe_disable_quic_protocol_summary_on">Protokol QUIC je onemogućen</string>
-  <string name="morphe_disable_quic_protocol_summary_off">Protokol QUIC je omogućen</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Onemogući DRC audio</string>
-  <string name="morphe_disable_drc_audio_summary_on">DRC audio je onemogućen</string>
-  <string name="morphe_disable_drc_audio_summary_off">DRC audio je omogućen</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Prisili originalni jezik zvuka</string>
-  <string name="morphe_force_original_audio_summary_on">Korišćenje originalnog jezika zvuka</string>
-  <string name="morphe_force_original_audio_summary_off">Korišćenje podrazumevanog zvuka</string>
+  <string name="morphe_force_original_audio_summary">Uvek reprodukuje originalnu audio traku videa umesto sinhronizovane verzije</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Sakrij oglase preko celog ekrana</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Da biste koristili ovu funkciju, promenite \'Lažirani video strimovi\' na Android Reel ili TV</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Očisti deljene linkove</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Parametar upita za praćenje je uklonjen iz deljenih linkova</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Parametar upita za praćenje nije uklonjen iz deljenih linkova</string>
+  <string name="morphe_sanitize_sharing_links_summary">Uklanja parametre upita za praćenje iz deljenih linkova</string>
   <string name="morphe_replace_music_with_youtube_title">Promeni linkove za deljenje na youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Deljeni linkovi koriste youtube.com</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Deljeni linkovi koriste music.youtube.com</string>
+  <string name="morphe_replace_music_with_youtube_summary">Замењује music.youtube.com са youtube.com у дељеним линковима</string>
+  <string name="morphe_replace_links_with_shortener_title">Promeni linkove za deljenje na youtu.be</string>
+  <string name="morphe_replace_links_with_shortener_summary">Forsira video zapise da koriste skraćeni format URL-a youtu.be</string>
 </resources>

@@ -3,6 +3,7 @@ package app.morphe.patches.youtube.layout.hide.ambientmode
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -18,12 +19,11 @@ import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
 import app.morphe.util.insertLiteralOverride
-import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AmbientModePatch;"
 
 @Suppress("unused")
@@ -45,7 +45,7 @@ val ambientModePatch = bytecodePatch(
                 key = "morphe_ambient_mode_screen",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_bypass_ambient_mode_restrictions"),
+                    SwitchPreference("morphe_bypass_ambient_mode_restrictions", summary = true),
                     SwitchPreference("morphe_disable_ambient_mode"),
                     SwitchPreference("morphe_disable_fullscreen_ambient_mode"),
                 )
@@ -56,15 +56,14 @@ val ambientModePatch = bytecodePatch(
         // Bypass ambient mode restrictions.
         //
         fun MutableMethod.hook() {
-            findInstructionIndicesReversedOrThrow {
-                opcode == Opcode.INVOKE_VIRTUAL &&
-                        getReference<MethodReference>()?.toString() == IS_POWER_SAVE_MODE_METHOD_CALL
-            }.forEach { index ->
+            findInstructionIndicesReversedOrThrow(
+                methodCall(IS_POWER_SAVE_MODE_METHOD_CALL)
+            ).forEach { index ->
                 val register = getInstruction<FiveRegisterInstruction>(index).registerC
 
                 replaceInstruction(
                     index,
-                    "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS_DESCRIPTOR->" +
+                    "invoke-static/range { v$register .. v$register }, $EXTENSION_CLASS->" +
                             "bypassAmbientModeRestrictions(Landroid/os/PowerManager;)Z",
                 )
             }
@@ -104,7 +103,7 @@ val ambientModePatch = bytecodePatch(
         AmbientModeFeatureFlagFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
-                "$EXTENSION_CLASS_DESCRIPTOR->disableAmbientMode(Z)Z"
+                "$EXTENSION_CLASS->disableAmbientMode(Z)Z"
             )
         }
 
@@ -120,7 +119,7 @@ val ambientModePatch = bytecodePatch(
             addInstructions(
                 insertIndex,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getFullScreenBackgroundColor(I)I
+                    invoke-static { v$register }, $EXTENSION_CLASS->getFullScreenBackgroundColor(I)I
                     move-result v$register
                 """,
             )

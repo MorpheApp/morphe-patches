@@ -21,8 +21,8 @@ import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.Method
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-internal const val CLIENT_INFO_CLASS_DESCRIPTOR =
-    "Lcom/google/protos/youtube/api/innertube/InnertubeContext\$ClientInfo;"
+internal const val CLIENT_INFO_CLASS =
+    $$"Lcom/google/protos/youtube/api/innertube/InnertubeContext$ClientInfo;"
 
 internal object AuthenticationChangeListenerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
@@ -42,7 +42,7 @@ internal fun indexOfMessageLiteBuilderReference(method: Method, type: String = "
                 reference.returnType.startsWith(type)
     }
 
-internal object BuildClientContextBodyConstructorFingerprint : Fingerprint(
+private object BuildClientContextBodyConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.CONSTRUCTOR),
     returnType = "V",
     filters = listOf(
@@ -55,12 +55,13 @@ internal object BuildClientContextBodyConstructorFingerprint : Fingerprint(
 )
 
 internal object BuildClientContextBodyFingerprint : Fingerprint(
+    classFingerprint = BuildClientContextBodyConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "L",
     parameters = listOf(),
     filters = listOf(
         fieldAccess(opcode = Opcode.SGET, name = "SDK_INT"),
-        fieldAccess(opcode = Opcode.IPUT_OBJECT, definingClass = CLIENT_INFO_CLASS_DESCRIPTOR, type = "Ljava/lang/String;"),
+        fieldAccess(opcode = Opcode.IPUT_OBJECT, definingClass = CLIENT_INFO_CLASS, type = "Ljava/lang/String;"),
         opcode(Opcode.OR_INT_LIT16),
     )
 )
@@ -71,18 +72,18 @@ internal object BuildDummyClientContextBodyFingerprint : Fingerprint(
         string("10.29", location = MatchAfterWithin(10)),
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
-            definingClass = CLIENT_INFO_CLASS_DESCRIPTOR,
+            definingClass = CLIENT_INFO_CLASS,
             type = "Ljava/lang/String;",
             location = MatchAfterImmediately()
         ),
         fieldAccess(
             opcode = Opcode.IPUT_OBJECT,
-            type = CLIENT_INFO_CLASS_DESCRIPTOR,
+            type = CLIENT_INFO_CLASS,
         ),
     )
 )
 
-internal object ClientFormFactorEnumConstructorFingerprint : Fingerprint(
+private object ClientFormFactorEnumConstructorFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.STATIC, AccessFlags.CONSTRUCTOR),
     strings = listOf(
         "UNKNOWN_FORM_FACTOR",
@@ -94,6 +95,7 @@ internal object ClientFormFactorEnumConstructorFingerprint : Fingerprint(
 )
 
 internal object ClientFormFactorEnumOrdinalFingerprint : Fingerprint(
+    classFingerprint = ClientFormFactorEnumConstructorFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "L",
     parameters = listOf("I")

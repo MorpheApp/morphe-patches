@@ -9,16 +9,14 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.fix.videoactionbar.restoreOldVideoActionBarPatch
 import app.morphe.patches.youtube.misc.litho.context.EXTENSION_CONTEXT_INTERFACE
 import app.morphe.patches.youtube.misc.litho.context.conversionContextClassDef
 import app.morphe.patches.youtube.misc.litho.context.conversionContextPatch
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
 import app.morphe.patches.youtube.misc.litho.filter.lithoFilterPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_33_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_07_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_20_10_or_greater
-import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_25_or_greater
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -27,7 +25,7 @@ import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
 import app.morphe.patches.youtube.video.videoid.hookVideoId
 import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.cloneMutableAndPreserveParameters
+import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
@@ -42,10 +40,10 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 import com.android.tools.smali.dexlib2.iface.reference.TypeReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ReturnYouTubeDislikePatch;"
 
-private const val FILTER_CLASS_DESCRIPTOR =
+private const val EXTENSION_FILTER =
     "Lapp/morphe/extension/youtube/patches/components/ReturnYouTubeDislikeFilter;"
 
 val returnYouTubeDislikePatch = bytecodePatch(
@@ -59,7 +57,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
         lithoFilterPatch,
         videoIdPatch,
         playerTypeHookPatch,
-        versionCheckPatch,
+        restoreOldVideoActionBarPatch,
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -67,11 +65,11 @@ val returnYouTubeDislikePatch = bytecodePatch(
     execute {
         PreferenceScreen.RETURN_YOUTUBE_DISLIKE.addPreferences(
             SwitchPreference("morphe_ryd_enabled"),
-            SwitchPreference("morphe_ryd_shorts"),
-            SwitchPreference("morphe_ryd_dislike_percentage"),
-            SwitchPreference("morphe_ryd_compact_layout"),
-            SwitchPreference("morphe_ryd_estimated_like"),
-            SwitchPreference("morphe_ryd_toast_on_connection_error"),
+            SwitchPreference("morphe_ryd_shorts", summary = true),
+            SwitchPreference("morphe_ryd_dislike_percentage", summary = true),
+            SwitchPreference("morphe_ryd_compact_layout", summary = true),
+            SwitchPreference("morphe_ryd_estimated_like", summary = true),
+            SwitchPreference("morphe_ryd_toast_on_connection_error", summary = true),
             NonInteractivePreference(
                 key = "morphe_ryd_attribution",
                 tag = "app.morphe.extension.youtube.returnyoutubedislike.ui.ReturnYouTubeDislikeAboutPreference",
@@ -87,10 +85,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // region Inject newVideoLoaded event handler to update dislikes when a new video is loaded.
 
-        hookVideoId("$EXTENSION_CLASS_DESCRIPTOR->newVideoLoaded(Ljava/lang/String;)V")
+        hookVideoId("$EXTENSION_CLASS->newVideoLoaded(Ljava/lang/String;)V")
 
         // Hook the player response video ID, to start loading RYD sooner in the background.
-        hookPlayerResponseVideoId("$EXTENSION_CLASS_DESCRIPTOR->preloadVideoId(Ljava/lang/String;Z)V")
+        hookPlayerResponseVideoId("$EXTENSION_CLASS->preloadVideoId(Ljava/lang/String;Z)V")
 
         // endregion
 
@@ -105,7 +103,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 0,
                 """
                     const/4 v0, ${vote.value}
-                    invoke-static { v0 }, $EXTENSION_CLASS_DESCRIPTOR->sendVote(I)V
+                    invoke-static { v0 }, $EXTENSION_CLASS->sendVote(I)V
                 """
             )
         }
@@ -119,46 +117,28 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // This hook handles all situations, as it's where the created Spans are stored and later reused.
 
         // Find the field name of the conversion context.
-        val textComponentConversionContextField = TextComponentConstructorFingerprint.originalClassDef.fields.find {
-            it.type == conversionContextClassDef.type
-        } ?: throw PatchException("Could not find conversion context field")
+        val textComponentConversionContextField = TextComponentConstructorFingerprint
+            .originalClassDef.fields.find {
+                it.type == conversionContextClassDef.type
+            } ?: throw PatchException("Could not find conversion context field")
 
         // Old pre 20.40 and lower hook.
-        TextComponentLookupFingerprint.match(TextComponentConstructorFingerprint.originalClassDef).let {
+        TextComponentLookupFingerprint.let {
             // 21.05 clobbers p0 (this) register.
             // Add additional registers so all parameters including p0 are free to use anywhere in the method.
-            it.method.cloneMutableAndPreserveParameters().apply {
+            it.method.cloneParameters().apply {
                 // Find the instruction for creating the text data object.
                 val textDataClassType = TextComponentDataFingerprint.originalClassDef.type
-
-                val insertIndex: Int
-                val charSequenceRegister: Int
-
-                if (is_19_33_or_greater && !is_20_10_or_greater) {
-                    val index = indexOfFirstInstructionOrThrow {
-                        (opcode == Opcode.INVOKE_STATIC || opcode == Opcode.INVOKE_STATIC_RANGE)
-                                && getReference<MethodReference>()?.returnType == textDataClassType
-                    }
-
-                    insertIndex = indexOfFirstInstructionOrThrow(index) {
-                        opcode == Opcode.INVOKE_VIRTUAL &&
-                                getReference<MethodReference>()?.parameterTypes?.firstOrNull() == "Ljava/lang/CharSequence;"
-                    }
-
-                    charSequenceRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
-                } else {
-                    insertIndex = indexOfFirstInstructionOrThrow {
-                        opcode == Opcode.NEW_INSTANCE &&
-                                getReference<TypeReference>()?.type == textDataClassType
-                    }
-
-                    val charSequenceIndex = indexOfFirstInstructionOrThrow(insertIndex) {
-                        opcode == Opcode.IPUT_OBJECT &&
-                                getReference<FieldReference>()?.type == "Ljava/lang/CharSequence;"
-                    }
-                    charSequenceRegister = getInstruction<TwoRegisterInstruction>(charSequenceIndex).registerA
+                val insertIndex: Int = indexOfFirstInstructionOrThrow {
+                    opcode == Opcode.NEW_INSTANCE &&
+                            getReference<TypeReference>()?.type == textDataClassType
                 }
 
+                val charSequenceIndex = indexOfFirstInstructionOrThrow(insertIndex) {
+                    opcode == Opcode.IPUT_OBJECT &&
+                            getReference<FieldReference>()?.type == "Ljava/lang/CharSequence;"
+                }
+                val charSequenceRegister = getInstruction<TwoRegisterInstruction>(charSequenceIndex).registerA
                 val conversionContext = findFreeRegister(insertIndex, charSequenceRegister)
 
                 addInstructionsAtControlFlowLabel(
@@ -167,7 +147,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                         # Copy conversion context.
                         move-object/from16 v$conversionContext, p0
                         iget-object v$conversionContext, v$conversionContext, $textComponentConversionContextField
-                        invoke-static { v$conversionContext, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        invoke-static { v$conversionContext, v$charSequenceRegister }, $EXTENSION_CLASS->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                         move-result-object v$charSequenceRegister
                         
                         :ignore
@@ -178,36 +158,34 @@ val returnYouTubeDislikePatch = bytecodePatch(
         }
 
         // Hook new litho text creation code.
-        if (is_20_07_or_greater) {
-            TextComponentFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS_DESCRIPTOR->useNewLithoTextCreation(Z)Z"
+        TextComponentFeatureFlagFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->useNewLithoTextCreation(Z)Z"
+            )
+        }
+
+        LithoSpannableStringCreationFingerprint.let {
+            val conversionContextField = it.classDef.type +
+                    "->" + textComponentConversionContextField.name +
+                    ":" + textComponentConversionContextField.type
+
+            // 21.05+ clobbers p0 and must clone to preserve it.
+            it.method.cloneParameters().apply {
+                // Must offset match indexes since cloning adds additional move instructions.
+                val insertIndex = it.instructionMatches[1].index + numberOfParameterRegistersLogical
+                val charSequenceRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
+                val conversionContextRegister = findFreeRegister(insertIndex, charSequenceRegister)
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        move-object/from16 v$conversionContextRegister, p0
+                        iget-object v$conversionContextRegister, v$conversionContextRegister, $conversionContextField
+                        invoke-static { v$conversionContextRegister, v$charSequenceRegister }, $EXTENSION_CLASS->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        move-result-object v$charSequenceRegister
+                    """
                 )
-            }
-
-            LithoSpannableStringCreationFingerprint.let {
-                val conversionContextField = it.classDef.type +
-                        "->" + textComponentConversionContextField.name +
-                        ":" + textComponentConversionContextField.type
-
-                // 21.05+ clobbers p0 and must clone to preserve it.
-                it.method.cloneMutableAndPreserveParameters().apply {
-                    // Must offset match indexes since cloning adds additional move instructions.
-                    val insertIndex = it.instructionMatches[1].index + numberOfParameterRegistersLogical
-                    val charSequenceRegister = getInstruction<FiveRegisterInstruction>(insertIndex).registerD
-                    val conversionContextRegister = findFreeRegister(insertIndex, charSequenceRegister)
-
-                    addInstructions(
-                        insertIndex,
-                        """
-                            move-object/from16 v$conversionContextRegister, p0
-                            iget-object v$conversionContextRegister, v$conversionContextRegister, $conversionContextField
-                            invoke-static { v$conversionContextRegister, v$charSequenceRegister }, $EXTENSION_CLASS_DESCRIPTOR->onLithoTextLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
-                            move-result-object v$charSequenceRegister
-                        """
-                    )
-                }
             }
         }
 
@@ -216,10 +194,10 @@ val returnYouTubeDislikePatch = bytecodePatch(
         // region Hook Shorts
 
         // Filter that parses the video ID from the UI
-        addLithoFilter(FILTER_CLASS_DESCRIPTOR)
+        addLithoFilter(EXTENSION_FILTER)
 
         // Player response video ID is needed to search for the video IDs in Shorts litho components.
-        hookPlayerResponseVideoId("$FILTER_CLASS_DESCRIPTOR->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
+        hookPlayerResponseVideoId("$EXTENSION_FILTER->newPlayerResponseVideoId(Ljava/lang/String;Z)V")
 
         // endregion
 
@@ -228,20 +206,16 @@ val returnYouTubeDislikePatch = bytecodePatch(
         RollingNumberSetterFingerprint.method.apply {
             val insertIndex = 1
             val dislikesIndex = RollingNumberSetterFingerprint.instructionMatches.last().index
-            val charSequenceInstanceRegister =
-                getInstruction<OneRegisterInstruction>(0).registerA
-            val charSequenceFieldReference =
-                getInstruction<ReferenceInstruction>(dislikesIndex).reference
-
+            val charSequenceInstanceRegister = getInstruction<OneRegisterInstruction>(0).registerA
+            val charSequenceFieldReference = getInstruction<ReferenceInstruction>(dislikesIndex).reference
             val conversionContextRegister = implementation!!.registerCount - parameters.size + 1
-
             val freeRegister = findFreeRegister(insertIndex, charSequenceInstanceRegister, conversionContextRegister)
 
             addInstructions(
                 insertIndex,
                 """
                     iget-object v$freeRegister, v$charSequenceInstanceRegister, $charSequenceFieldReference
-                    invoke-static { v$conversionContextRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$conversionContextRegister, v$freeRegister }, $EXTENSION_CLASS->onRollingNumberLoaded(${EXTENSION_CONTEXT_INTERFACE}Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$freeRegister
                     iput-object v$freeRegister, v$charSequenceInstanceRegister, $charSequenceFieldReference
                 """
@@ -250,7 +224,8 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Rolling Number text views use the measured width of the raw string for layout.
         // Modify the measure text calculation to include the left drawable separator if needed.
-        RollingNumberMeasureAnimatedTextFingerprint.let {
+        // 21.25+ removed the method and doesn't seem to have a replacement.
+        if (!is_21_25_or_greater) RollingNumberMeasureAnimatedTextFingerprint.let {
             // Additional check to verify the opcodes are at the start of the method
             if (it.instructionMatches.first().index != 0) throw PatchException("Unexpected opcode location")
             val endIndex = it.instructionMatches.last().index
@@ -261,7 +236,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 addInstructions(
                     endIndex + 1,
                     """
-                        invoke-static { p1, v$measuredTextWidthRegister }, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberMeasured(Ljava/lang/String;F)F
+                        invoke-static { p1, v$measuredTextWidthRegister }, $EXTENSION_CLASS->onRollingNumberMeasured(Ljava/lang/String;F)F
                         move-result v$measuredTextWidthRegister
                     """
                 )
@@ -270,9 +245,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Additional text measurement method. Used if YouTube decides not to animate the likes count
         // and sometimes used for initial video load.
-        RollingNumberMeasureStaticLabelFingerprint.match(
-            RollingNumberMeasureStaticLabelParentFingerprint.originalClassDef,
-        ).let {
+        RollingNumberMeasureStaticLabelFingerprint.let {
             val measureTextIndex = it.instructionMatches.first().index + 1
             it.method.apply {
                 val freeRegister = getInstruction<TwoRegisterInstruction>(0).registerA
@@ -281,7 +254,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                     measureTextIndex + 1,
                     """
                         move-result v$freeRegister
-                        invoke-static { p1, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->onRollingNumberMeasured(Ljava/lang/String;F)F
+                        invoke-static { p1, v$freeRegister }, $EXTENSION_CLASS->onRollingNumberMeasured(Ljava/lang/String;F)F
                     """
                 )
             }
@@ -307,7 +280,7 @@ val returnYouTubeDislikePatch = bytecodePatch(
                 addInstructions(
                     setTextIndex,
                     """
-                        invoke-static { v$textViewRegister, v$textSpanRegister }, $EXTENSION_CLASS_DESCRIPTOR->updateRollingNumber(Landroid/widget/TextView;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
+                        invoke-static { v$textViewRegister, v$textSpanRegister }, $EXTENSION_CLASS->updateRollingNumber(Landroid/widget/TextView;Ljava/lang/CharSequence;)Ljava/lang/CharSequence;
                         move-result-object v$textSpanRegister
                     """
                 )

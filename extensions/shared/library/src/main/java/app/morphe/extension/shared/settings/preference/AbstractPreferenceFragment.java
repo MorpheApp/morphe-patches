@@ -11,15 +11,17 @@
 package app.morphe.extension.shared.settings.preference;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.settings.preference.ExportLogToClipboardPreference.saveLogsToUri;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.ComponentCallbacks2;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -28,11 +30,17 @@ import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.preference.SwitchPreference;
-import android.util.AttributeSet;
+import android.preference.TwoStatePreference;
+import android.text.InputType;
 import android.util.Pair;
+import android.util.TypedValue;
+import android.os.Build;
+import android.view.HapticFeedbackConstants;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -43,7 +51,14 @@ import androidx.annotation.Nullable;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.ref.WeakReference;
 import java.nio.charset.StandardCharsets;
+import java.text.Collator;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -54,13 +69,14 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.SharedSettings;
+import app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference;
 import app.morphe.extension.shared.ui.CustomDialog;
+import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractPreferenceFragment extends PreferenceFragment {
-
     private static class DebouncedListView extends ListView {
-        private long lastClick;
 
         public DebouncedListView(Context context) {
             super(context);
@@ -76,18 +92,71 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
         @Override
         public boolean performItemClick(View view, int position, long id) {
-            final long now = SystemClock.elapsedRealtime();
-            if (now - lastClick < 500) {
+            Object item = getAdapter().getItem(position);
+
+            if (item instanceof TwoStatePreference twoState) {
+                int feedbackConstant = Build.VERSION.SDK_INT >= 34
+                        ? (twoState.isChecked() ? HapticFeedbackConstants.TOGGLE_OFF : HapticFeedbackConstants.TOGGLE_ON)
+                        : HapticFeedbackConstants.CLOCK_TICK;
+                view.performHapticFeedback(feedbackConstant);
+                return super.performItemClick(view, position, id);
+            }
+
+            if (Utils.isFastClick()) {
                 return true; // Ignore fast double click.
             }
-            lastClick = now;
-
             return super.performItemClick(view, position, id);
         }
     }
 
-    @SuppressLint("StaticFieldLeak")
-    public static AbstractPreferenceFragment instance;
+    private record DebouncedItemClickListener(
+            AdapterView.OnItemClickListener originalListener) implements AdapterView.OnItemClickListener {
+
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Object item = parent.getAdapter().getItem(position);
+
+            if (item instanceof TwoStatePreference twoState) {
+                int feedbackConstant = Build.VERSION.SDK_INT >= 34
+                        ? (twoState.isChecked() ? HapticFeedbackConstants.TOGGLE_OFF : HapticFeedbackConstants.TOGGLE_ON)
+                        : HapticFeedbackConstants.CLOCK_TICK;
+                view.performHapticFeedback(feedbackConstant);
+                originalListener.onItemClick(parent, view, position, id);
+                return;
+            }
+
+            if (Utils.isFastClick()) {
+                return; // Ignore fast double click.
+            }
+            originalListener.onItemClick(parent, view, position, id);
+        }
+    }
+
+    @Override
+    public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {
+        if (preference instanceof PreferenceScreen) {
+            Dialog dialog = ((PreferenceScreen) preference).getDialog();
+            if (dialog != null) {
+                ListView listView = dialog.findViewById(android.R.id.list);
+                if (listView != null) {
+                    AdapterView.OnItemClickListener originalListener = listView.getOnItemClickListener();
+                    if (originalListener != null && !(originalListener instanceof DebouncedItemClickListener)) {
+                        listView.setOnItemClickListener(new DebouncedItemClickListener(originalListener));
+                    }
+                }
+            }
+        }
+        return super.onPreferenceTreeClick(preferenceScreen, preference);
+    }
+
+    // Cached Collator instance with its locale.
+    @Nullable
+    private static Locale cachedCollatorLocale;
+
+    @Nullable
+    private static Collator cachedCollator;
+
+    public static WeakReference<AbstractPreferenceFragment> instance = new WeakReference<>(null);
 
     /**
      * Indicates that if a preference changes,
@@ -112,6 +181,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Nullable
     protected static CharSequence restartDialogTitle, restartDialogMessage, restartDialogButtonText, confirmDialogTitle;
 
+    private ComponentCallbacks2 configurationListener;
+    private int currentUiMode = -1;
     private static final int READ_REQUEST_CODE = 42;
     private static final int WRITE_REQUEST_CODE = 43;
     private String existingSettings = "";
@@ -166,8 +237,13 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
      * so all app specific {@link Setting} instances are loaded before this method returns.
      */
     protected void initialize() {
+        // Must use utils modified language context if language override is active.
+        if (!BaseSettings.MORPHE_LANGUAGE.isSetToDefault()) {
+            ResourceUtils.useActivityContextIfAvailable = false;
+        }
+
         String preferenceResourceName;
-        if (BaseSettings.SHOW_MENU_ICONS.get()) {
+        if (SharedSettings.SHOW_MENU_ICONS.get()) {
             preferenceResourceName = Utils.appIsUsingBoldIcons()
                     ? "morphe_prefs_icons_bold"
                     : "morphe_prefs_icons";
@@ -180,7 +256,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         addPreferencesFromResource(identifier);
 
         PreferenceScreen screen = getPreferenceScreen();
-        Utils.sortPreferenceGroups(screen);
+        sortPreferenceGroups(screen);
         Utils.setPreferenceTitlesToMultiLineIfNeeded(screen);
     }
 
@@ -321,8 +397,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                 Setting.privateSetValueFromString(setting, listPref.getValue());
             }
             updateListPreferenceSummary(listPref, setting);
-        } else if (!pref.getClass().equals(Preference.class)) {
-            // Ignore root preference class because there is no data to sync.
+        } else if (!pref.getClass().equals(Preference.class) && !(pref instanceof SeekBarPreference)) {
+            // Ignore root preference class and SeekBarPreference (manages its own persistence).
             Logger.printException(() -> "Setting cannot be handled: " + pref.getClass() + ": " + pref);
         }
     }
@@ -396,34 +472,6 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     /**
      * Import / Export Subroutines
      */
-    @NonNull
-    private Button createDialogButton(Context context, String text, int marginLeft, int marginRight, View.OnClickListener listener) {
-        int height = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 36f, context.getResources().getDisplayMetrics());
-        int paddingHorizontal = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
-        float radius = android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 20f, context.getResources().getDisplayMetrics());
-
-        Button btn = new Button(context, null, 0);
-        btn.setText(text);
-        btn.setAllCaps(false);
-        btn.setTextSize(14);
-        btn.setSingleLine(true);
-        btn.setEllipsize(android.text.TextUtils.TruncateAt.END);
-        btn.setGravity(android.view.Gravity.CENTER);
-        btn.setPadding(paddingHorizontal, 0, paddingHorizontal, 0);
-        btn.setTextColor(Utils.isDarkModeEnabled() ? android.graphics.Color.WHITE : android.graphics.Color.BLACK);
-
-        android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable();
-        bg.setCornerRadius(radius);
-        bg.setColor(Utils.getCancelOrNeutralButtonBackgroundColor());
-        btn.setBackground(bg);
-
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(0, height, 1.0f);
-        params.setMargins(marginLeft, 0, marginRight, 0);
-        btn.setLayoutParams(params);
-        btn.setOnClickListener(listener);
-
-        return btn;
-    }
     public void showImportExportTextDialog() {
         try {
             Activity context = getActivity();
@@ -446,12 +494,20 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     true // Dismiss dialog when onNeutralClick.
             );
 
+            final int margin = Dim.dp4;
+
+            Button btnExport = CustomDialog.createButton(context, null, str("morphe_settings_export_file"), this::exportActivity, false, false);
+            Button btnImport = CustomDialog.createButton(context, null, str("morphe_settings_import_file"), this::importActivity, false, false);
+
+            LinearLayout.LayoutParams exportParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+            exportParams.setMargins(0, 0, margin, 0);
+            btnExport.setLayoutParams(exportParams);
+
+            LinearLayout.LayoutParams importParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+            importParams.setMargins(margin, 0, 0, 0);
+            btnImport.setLayoutParams(importParams);
+
             LinearLayout fileButtonsContainer = getLinearLayout(context);
-            int margin = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 4f, context.getResources().getDisplayMetrics());
-
-            Button btnExport = createDialogButton(context, str("morphe_settings_export_file"), 0, margin, v -> exportActivity());
-            Button btnImport = createDialogButton(context, str("morphe_settings_import_file"), margin, 0, v -> importActivity());
-
             fileButtonsContainer.addView(btnExport);
             fileButtonsContainer.addView(btnImport);
 
@@ -466,8 +522,8 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
                     currentImportExportEditText.postDelayed(() -> {
                         if (currentImportExportEditText != null) {
                             currentImportExportEditText.requestFocus();
-                            android.view.inputmethod.InputMethodManager imm = (android.view.inputmethod.InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                            if (imm != null) imm.showSoftInput(currentImportExportEditText, android.view.inputmethod.InputMethodManager.SHOW_IMPLICIT);
+                            InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                            if (imm != null) imm.showSoftInput(currentImportExportEditText, InputMethodManager.SHOW_IMPLICIT);
                         }
                     }, 100);
                 }
@@ -486,7 +542,7 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         fileButtonsContainer.setOrientation(LinearLayout.HORIZONTAL);
         LinearLayout.LayoutParams fbParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
-        int marginTop = (int) android.util.TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
+        int marginTop = (int) TypedValue.applyDimension(android.util.TypedValue.COMPLEX_UNIT_DIP, 16f, context.getResources().getDisplayMetrics());
         fbParams.setMargins(0, marginTop, 0, 0);
         fileButtonsContainer.setLayoutParams(fbParams);
         return fileButtonsContainer;
@@ -496,12 +552,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     private EditText getEditText(Context context) {
         EditText editText = new EditText(context);
         editText.setText(existingSettings);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            editText.setAutofillHints((String) null);
-        }
-        editText.setInputType(android.text.InputType.TYPE_CLASS_TEXT |
-                android.text.InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS |
-                android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE);
+        editText.setAutofillHints((String) null);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT |
+                InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS |
+                InputType.TYPE_TEXT_FLAG_MULTI_LINE);
         editText.setSingleLine(false);
         editText.setTextSize(14);
         return editText;
@@ -510,9 +564,10 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     public void exportActivity() {
         try {
             Setting.exportToJson(getActivity());
-
-            String formatDate = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.US).format(new java.util.Date());
-            String fileName = "Morphe_Settings_" + formatDate + ".txt";
+            String appName = Utils.getApplicationName();
+            String safeAppName = appName.replaceAll("\\s+", "_");
+            String formatDate = new SimpleDateFormat("yyyy-MM-dd", Locale.US).format(new Date());
+            String fileName = safeAppName + "_Settings_" + formatDate + ".txt";
 
             Intent intent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
             intent.addCategory(Intent.CATEGORY_OPENABLE);
@@ -543,10 +598,12 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == WRITE_REQUEST_CODE && resultCode == android.app.Activity.RESULT_OK && data != null) {
+        if (requestCode == WRITE_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             exportTextToFile(data.getData());
-        } else if (requestCode == READ_REQUEST_CODE && resultCode == android.app.Activity.RESULT_OK && data != null) {
+        } else if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
             importTextFromFile(data.getData());
+        } else if (requestCode == ExportLogToClipboardPreference.WRITE_LOGS_REQUEST_CODE && resultCode == Activity.RESULT_OK && data != null) {
+            saveLogsToUri(getContext(), data.getData());
         }
     }
 
@@ -558,16 +615,14 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
         }
     }
 
-    private void exportTextToFile(android.net.Uri uri) {
-        try {
-            OutputStream out = getContext().getContentResolver().openOutputStream(uri);
+    private void exportTextToFile(Uri uri) {
+        try (OutputStream out = getContext().getContentResolver().openOutputStream(uri, "rwt")) {
             if (out != null) {
                 String textToExport = existingSettings;
                 if (currentImportExportEditText != null) {
                     textToExport = currentImportExportEditText.getText().toString();
                 }
                 out.write(textToExport.getBytes(StandardCharsets.UTF_8));
-                out.close();
 
                 showLocalizedToast("morphe_settings_export_file_success", "Settings exported successfully");
             }
@@ -578,13 +633,11 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     }
 
     @SuppressWarnings("CharsetObjectCanBeUsed")
-    private void importTextFromFile(android.net.Uri uri) {
-        try {
-            InputStream in = getContext().getContentResolver().openInputStream(uri);
+    private void importTextFromFile(Uri uri) {
+        try (InputStream in = getContext().getContentResolver().openInputStream(uri)) {
             if (in != null) {
                 Scanner scanner = new Scanner(in, StandardCharsets.UTF_8.name()).useDelimiter("\\A");
                 String result = scanner.hasNext() ? scanner.next() : "";
-                in.close();
 
                 if (currentImportExportEditText != null) {
                     currentImportExportEditText.setText(result);
@@ -621,7 +674,38 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        instance = this;
+        currentUiMode = getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+        instance = new WeakReference<>(this);
+
+        configurationListener = new ComponentCallbacks2() {
+            @SuppressLint("ChromeOsOnConfigurationChanged")
+            @Override
+            public void onConfigurationChanged(@NonNull android.content.res.Configuration newConfig) {
+                int newUiMode = newConfig.uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+                if (currentUiMode != -1 && newUiMode != currentUiMode) {
+                    currentUiMode = newUiMode;
+                    Utils.setIsDarkModeEnabled(newUiMode == android.content.res.Configuration.UI_MODE_NIGHT_YES);
+
+                    Activity activity = getActivity();
+                    if (activity != null) {
+                        Intent intent = activity.getIntent();
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                        activity.finish();
+                        activity.overridePendingTransition(0, 0);
+                        startActivity(intent);
+                        activity.overridePendingTransition(0, 0);
+                    }
+                }
+            }
+
+            @Override
+            public void onLowMemory() {}
+
+            @Override
+            public void onTrimMemory(int level) {}
+        };
+        getActivity().getApplicationContext().registerComponentCallbacks(configurationListener);
+
         try {
             PreferenceManager preferenceManager = getPreferenceManager();
             preferenceManager.setSharedPreferencesName(Setting.preferences.name);
@@ -640,10 +724,136 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
 
     @Override
     public void onDestroy() {
-        if (instance == this) {
-            instance = null;
+        if (instance.get() == this) {
+            instance = new WeakReference<>(null);
+        }
+        if (configurationListener != null && getActivity() != null) {
+            getActivity().getApplicationContext().unregisterComponentCallbacks(configurationListener);
         }
         getPreferenceManager().getSharedPreferences().unregisterOnSharedPreferenceChangeListener(listener);
         super.onDestroy();
+    }
+
+    /**
+     * Sorts a {@link PreferenceGroup} and all nested subgroups by title or key.
+     * <p>
+     * The sort order is controlled by the {@link Sort} suffix present in the preference key.
+     * Preferences without a key or without a {@link Sort} suffix remain in their original order.
+     * <p>
+     * Sorting is performed using {@link Collator} with the current user locale,
+     * ensuring correct alphabetical ordering for all supported languages
+     * (e.g., Ukrainian "і", German "ß", French accented characters, etc.).
+     *
+     * @param group the {@link PreferenceGroup} to sort
+     */
+    @SuppressWarnings("deprecation")
+    protected static void sortPreferenceGroups(PreferenceGroup group) {
+        Sort groupSort = Sort.fromKey(group.getKey(), Sort.UNSORTED);
+        List<Pair<String, Preference>> preferences = new ArrayList<>();
+
+        // Get cached Collator for locale-aware string comparison.
+        Collator collator = getCollator();
+
+        for (int i = 0, prefCount = group.getPreferenceCount(); i < prefCount; i++) {
+            Preference preference = group.getPreference(i);
+
+            final Sort preferenceSort;
+            if (preference instanceof PreferenceGroup subGroup) {
+                sortPreferenceGroups(subGroup);
+                preferenceSort = groupSort; // Sort value for groups is for it's content, not itself.
+            } else {
+                // Allow individual preferences to set a key sorting.
+                // Used to force a preference to the top or bottom of a group.
+                preferenceSort = Sort.fromKey(preference.getKey(), groupSort);
+            }
+
+            final String sortValue;
+            switch (preferenceSort) {
+                case BY_TITLE:
+                    sortValue = Utils.removePunctuationToLowercase(preference.getTitle());
+                    break;
+                case BY_KEY:
+                    sortValue = preference.getKey();
+                    break;
+                case UNSORTED:
+                    continue; // Keep original sorting.
+                default:
+                    throw new IllegalStateException();
+            }
+
+            preferences.add(new Pair<>(sortValue, preference));
+        }
+
+        // Sort the list using locale-specific collation rules.
+        preferences.sort((pair1, pair2)
+                -> collator.compare(pair1.first, pair2.first));
+
+        // Reassign order values to reflect the new sorted sequence
+        int index = 0;
+        for (Pair<String, Preference> pair : preferences) {
+            int order = index++;
+            Preference pref = pair.second;
+
+            // Move any screens, intents, and the one off About preference to the top.
+            if (pref instanceof PreferenceScreen || pref instanceof MorpheAboutPreference
+                    || pref.getIntent() != null) {
+                // Any arbitrary large number.
+                order -= 1000;
+            }
+
+            pref.setOrder(order);
+        }
+    }
+
+    /**
+     * {@link PreferenceScreen} and {@link PreferenceGroup} sorting styles.
+     */
+    private enum Sort {
+        /**
+         * Sort by the localized preference title.
+         */
+        BY_TITLE("_sort_by_title"),
+
+        /**
+         * Sort by the preference keys.
+         */
+        BY_KEY("_sort_by_key"),
+
+        /**
+         * Unspecified sorting.
+         */
+        UNSORTED("_sort_by_unsorted");
+
+        final String keySuffix;
+
+        Sort(String keySuffix) {
+            this.keySuffix = keySuffix;
+        }
+
+        static Sort fromKey(@Nullable String key, Sort defaultSort) {
+            if (key != null) {
+                for (Sort sort : values()) {
+                    if (key.endsWith(sort.keySuffix)) {
+                        return sort;
+                    }
+                }
+            }
+            return defaultSort;
+        }
+    }
+
+    /**
+     * Returns a cached Collator for the current locale, or creates a new one if locale changed.
+     */
+    private static Collator getCollator() {
+        Locale currentLocale = BaseSettings.MORPHE_LANGUAGE.get().getLocale();
+
+        if (cachedCollator == null || !currentLocale.equals(cachedCollatorLocale)) {
+            cachedCollatorLocale = currentLocale;
+            cachedCollator = Collator.getInstance(currentLocale);
+            cachedCollator.setStrength(Collator.SECONDARY); // Case-insensitive, diacritic-insensitive.
+        }
+
+        return cachedCollator;
     }
 }

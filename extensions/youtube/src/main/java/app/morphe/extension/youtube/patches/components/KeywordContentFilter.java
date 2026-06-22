@@ -1,3 +1,24 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original first edition code:
+ * https://github.com/ReVanced/revanced-integrations/pull/584
+ * https://github.com/ReVanced/revanced-integrations/commit/0cbad9820577c476f1f29b6ac77611b38afbb950
+ * https://github.com/ReVanced/revanced-integrations/commit/1ee99aa6f0b4af15eeca25c7e21e8a0f5e9d189a
+ * https://github.com/ReVanced/revanced-integrations/commit/c3bfa77d62b15dedfed8f697583f2f0805f0c2c1
+ * https://github.com/ReVanced/revanced-integrations/commit/75fa5797f70123f68d4676201503cf35dcef46dc
+ * https://github.com/ReVanced/revanced-integrations/commit/3a3ceec4b596354dcccbf3516ef1634bd8819b90
+ * https://github.com/ReVanced/revanced-integrations/commit/cda1f3160c12d239df1183799ead39526cbac20f
+ * https://github.com/ReVanced/revanced-integrations/commit/d8d2a852d3879060bd95cc43d66c7cf195e82b43
+ * https://github.com/ReVanced/revanced-integrations/commit/2f2eeea5a722b6b7053eb2825d16fa37938b4e9e
+ * https://github.com/ReVanced/revanced-integrations/commit/5314dd90d16dc8565331c4cddce114956d85a173
+ * https://github.com/MorpheApp/morphe-patches/commit/f5371ca998c019609c2b5558b3408ab1fec065c8
+ * https://github.com/MorpheApp/morphe-patches/commit/017eac71a3f9542b8ad6221e3600797d6b97fae4
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches.components;
 
 import static java.lang.Character.UnicodeBlock.CJK_UNIFIED_IDEOGRAPHS;
@@ -16,6 +37,7 @@ import androidx.annotation.Nullable;
 
 import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -24,6 +46,7 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringTrieSearch;
 import app.morphe.extension.shared.TrieSearch;
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
 import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
 import app.morphe.extension.youtube.shared.NavigationBar;
@@ -48,7 +71,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
  *   will always be hidden.  This patch checks for some words of these words.
  * - When using whole word syntax, some keywords may need additional pluralized variations.
  */
-@SuppressWarnings("unused")
+@SuppressWarnings({"unused", "unchecked"})
 final class KeywordContentFilter extends Filter {
 
     /**
@@ -123,6 +146,11 @@ final class KeywordContentFilter extends Filter {
             "modern_type_shelf_header_content.e",
             "shorts_lockup_cell.e", // Part of 'shorts_shelf_carousel.e'
             "video_card.e" // Shorts that appear in a horizontal shelf.
+    );
+
+    private final StringFilterGroup commentsFilter = new StringFilterGroup(
+            Settings.HIDE_KEYWORD_CONTENT_COMMENTS,
+                "comment_thread.eml"
     );
 
     /**
@@ -335,20 +363,24 @@ final class KeywordContentFilter extends Filter {
 
     public static boolean isValidUtf8(byte[] data, int startIndex, int numberOfBytes) {
         switch (numberOfBytes) {
-            case 1: // 0xxxxxxx (ASCII)
-                return (data[startIndex] & 0x80) == 0;
-            case 2: // 110xxxxx, 10xxxxxx
+            case 1 -> {
+                return (data[startIndex] & 0x80) == 0; // 0xxxxxxx (ASCII)
+            }
+            case 2 -> {
                 return (data[startIndex] & 0xE0) == 0xC0
-                        && (data[startIndex + 1] & 0xC0) == 0x80;
-            case 3: // 1110xxxx, 10xxxxxx, 10xxxxxx
+                        && (data[startIndex + 1] & 0xC0) == 0x80; // 110xxxxx, 10xxxxxx
+            }
+            case 3 -> {
                 return (data[startIndex] & 0xF0) == 0xE0
                         && (data[startIndex + 1] & 0xC0) == 0x80
-                        && (data[startIndex + 2] & 0xC0) == 0x80;
-            case 4: // 11110xxx, 10xxxxxx, 10xxxxxx, 10xxxxxx
+                        && (data[startIndex + 2] & 0xC0) == 0x80; // 1110xxxx, 10xxxxxx, 10xxxxxx
+            }
+            case 4 -> {
                 return (data[startIndex] & 0xF8) == 0xF0
                         && (data[startIndex + 1] & 0xC0) == 0x80
                         && (data[startIndex + 2] & 0xC0) == 0x80
                         && (data[startIndex + 3] & 0xC0) == 0x80;
+            }
         }
 
         throw new IllegalArgumentException("numberOfBytes: " + numberOfBytes);
@@ -356,20 +388,24 @@ final class KeywordContentFilter extends Filter {
 
     public static int decodeUtf8ToCodePoint(byte[] data, int startIndex, int numberOfBytes) {
         switch (numberOfBytes) {
-            case 1:
+            case 1 -> {
                 return data[startIndex];
-            case 2:
+            }
+            case 2 -> {
                 return ((data[startIndex] & 0x1F) << 6) |
                         (data[startIndex + 1] & 0x3F);
-            case 3:
+            }
+            case 3 -> {
                 return ((data[startIndex] & 0x0F) << 12) |
                         ((data[startIndex + 1] & 0x3F) << 6) |
                         (data[startIndex + 2] & 0x3F);
-            case 4:
+            }
+            case 4 -> {
                 return ((data[startIndex] & 0x07) << 18) |
                         ((data[startIndex + 1] & 0x3F) << 12) |
                         ((data[startIndex + 2] & 0x3F) << 6) |
                         (data[startIndex + 3] & 0x3F);
+            }
         }
         throw new IllegalArgumentException("numberOfBytes: " + numberOfBytes);
     }
@@ -431,12 +467,17 @@ final class KeywordContentFilter extends Filter {
                 // not allow comparing two different byte arrays using simple plain array indexes.
                 //
                 // Instead, use all common case variations of the words.
+                Locale defaultLocale = Locale.getDefault();
                 String[] phraseVariations = {
                         phrase,
-                        phrase.toLowerCase(),
+                        // Use both root locale and device locale, to cover
+                        // English rules and device locale specific rules.
+                        phrase.toLowerCase(Locale.ROOT),
+                        phrase.toLowerCase(defaultLocale),
                         titleCaseFirstWordOnly(phrase),
                         capitalizeAllFirstLetters(phrase),
-                        phrase.toUpperCase()
+                        phrase.toUpperCase(Locale.ROOT),
+                        phrase.toUpperCase(defaultLocale)
                 };
 
                 if (phrasesWillHideAllVideos(phraseVariations, wholeWordMatching)) {
@@ -496,7 +537,7 @@ final class KeywordContentFilter extends Filter {
 
     public KeywordContentFilter() {
         // Keywords are parsed on first call to isFiltered()
-        addPathCallbacks(startsWithFilter, containsFilter);
+        addPathCallbacks(startsWithFilter, containsFilter, commentsFilter);
     }
 
     private boolean hideKeywordSettingIsActive() {
@@ -567,6 +608,7 @@ final class KeywordContentFilter extends Filter {
                        String accessibility,
                        String path,
                        byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
                        StringFilterGroup matchedGroup,
                        FilterContentType contentType,
                        int contentIndex) {
@@ -581,7 +623,7 @@ final class KeywordContentFilter extends Filter {
             parseKeywords();
         }
 
-        if (!hideKeywordSettingIsActive()) return false;
+        if (matchedGroup != commentsFilter && !hideKeywordSettingIsActive()) return false;
 
         if (exceptions.matches(path)) {
             return false; // Do not update statistics.

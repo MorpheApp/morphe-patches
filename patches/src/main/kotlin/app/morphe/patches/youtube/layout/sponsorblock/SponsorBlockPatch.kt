@@ -5,7 +5,7 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
@@ -13,13 +13,11 @@ import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
 import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.patches.youtube.shared.LayoutConstructorFingerprint
-import app.morphe.patches.youtube.shared.SeekbarFingerprint
 import app.morphe.patches.youtube.shared.SeekbarOnDrawFingerprint
 import app.morphe.patches.youtube.video.information.onCreateHook
 import app.morphe.patches.youtube.video.information.videoInformationPatch
@@ -41,7 +39,7 @@ private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
         settingsPatch,
         resourceMappingPatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
     )
 
     execute {
@@ -83,14 +81,21 @@ private val sponsorBlockResourcePatch = resourcePatch {
             ResourceGroup(
                 "drawable",
                 "morphe_sb_adjust.xml",
+                "morphe_sb_adjust_bold.xml",
                 "morphe_sb_backward.xml",
+                "morphe_sb_backward_bold.xml",
                 "morphe_sb_compare.xml",
+                "morphe_sb_compare_bold.xml",
                 "morphe_sb_edit.xml",
+                "morphe_sb_edit_bold.xml",
                 "morphe_sb_forward.xml",
+                "morphe_sb_forward_bold.xml",
                 "morphe_sb_logo.xml",
                 "morphe_sb_logo_bold.xml",
                 "morphe_sb_publish.xml",
+                "morphe_sb_publish_bold.xml",
                 "morphe_sb_voting.xml",
+                "morphe_sb_voting_bold.xml",
             )
         ).forEach { resourceGroup ->
             copyResources("sponsorblock", resourceGroup)
@@ -104,13 +109,13 @@ private val sponsorBlockResourcePatch = resourcePatch {
     }
 }
 
-internal const val EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR =
+internal const val EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/SegmentPlaybackController;"
-private const val EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS_DESCRIPTOR =
+private const val EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/CreateSegmentButton;"
-private const val EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS_DESCRIPTOR =
+private const val EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/VotingButton;"
-private const val EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS_DESCRIPTOR =
+private const val EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS =
     "Lapp/morphe/extension/youtube/sponsorblock/ui/SponsorBlockViewController;"
 
 @Suppress("unused")
@@ -122,11 +127,9 @@ val sponsorBlockPatch = bytecodePatch(
         sharedExtensionPatch,
         resourceMappingPatch,
         videoIdPatch,
-        // Required to skip segments on time.
         videoInformationPatch,
-        // Used to prevent SponsorBlock from running on Shorts because SponsorBlock does not yet support Shorts.
         playerTypeHookPatch,
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
         sponsorBlockResourcePatch,
     )
 
@@ -135,20 +138,18 @@ val sponsorBlockPatch = bytecodePatch(
     execute {
         // Hook the video time methods.
         videoTimeHook(
-            EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR,
+            EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS,
             "setVideoTime",
         )
 
         hookBackgroundPlayVideoId(
-            EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR +
+            EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS +
                 "->setCurrentVideoId(Ljava/lang/String;)V",
         )
 
         // Set seekbar draw rectangle.
         val rectangleFieldName: FieldReference
-        RectangleFieldInvalidatorFingerprint.match(
-            SeekbarFingerprint.originalClassDef
-        ).let {
+        RectangleFieldInvalidatorFingerprint.let {
             it.method.apply {
                 val rectangleIndex = indexOfFirstInstructionReversedOrThrow(
                     it.instructionMatches.first().index
@@ -165,7 +166,7 @@ val sponsorBlockPatch = bytecodePatch(
         SeekbarOnDrawFingerprint.clearMatch()
         // Cannot match using original immutable class because
         // class may have been modified by other patches
-        SeekbarOnDrawFingerprint.match(SeekbarFingerprint.classDef).let {
+        SeekbarOnDrawFingerprint.let {
             it.method.apply {
                 // Set seekbar thickness.
                 val thicknessIndex = it.instructionMatches.last().index
@@ -173,7 +174,7 @@ val sponsorBlockPatch = bytecodePatch(
                 addInstruction(
                     thicknessIndex + 1,
                     "invoke-static { v$thicknessRegister }, " +
-                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR->setSeekbarThickness(I)V",
+                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setSeekbarThickness(I)V",
                 )
 
                 // Find the drawCircle call and draw the segment before it.
@@ -187,7 +188,7 @@ val sponsorBlockPatch = bytecodePatch(
                 addInstruction(
                     drawCircleIndex,
                     "invoke-static { v$canvasInstanceRegister, v$centerYRegister }, " +
-                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR->" +
+                            "$EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->" +
                             "drawSegmentTimeBars(Landroid/graphics/Canvas;F)V",
                 )
 
@@ -197,21 +198,21 @@ val sponsorBlockPatch = bytecodePatch(
                     """
                         move-object/from16 v0, p0
                         iget-object v0, v0, $rectangleFieldName
-                        invoke-static { v0 }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR->setSeekbarRectangle(Landroid/graphics/Rect;)V
+                        invoke-static { v0 }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setSeekbarRectangle(Landroid/graphics/Rect;)V
                     """
                 )
             }
         }
 
         // Change visibility of the buttons.
-        initializeTopControl(EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS_DESCRIPTOR)
-        injectVisibilityCheckCall(EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS_DESCRIPTOR)
+        initializeTopControl(EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS)
+        injectVisibilityCheckCall(EXTENSION_CREATE_SEGMENT_BUTTON_CONTROLLER_CLASS)
 
-        initializeTopControl(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS_DESCRIPTOR)
-        injectVisibilityCheckCall(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS_DESCRIPTOR)
+        initializeTopControl(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS)
+        injectVisibilityCheckCall(EXTENSION_VOTING_BUTTON_CONTROLLER_CLASS)
 
         // Show skip button when player overlay is active.
-        injectVisibilityCheckCall(EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS_DESCRIPTOR)
+        injectVisibilityCheckCall(EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS)
 
         // Append the new time to the player layout.
         AppendTimeFingerprint.let {
@@ -222,7 +223,7 @@ val sponsorBlockPatch = bytecodePatch(
                 addInstructions(
                     index + 1,
                     """
-                        invoke-static { v$register }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR->appendTimeWithoutSegments(Ljava/lang/String;)Ljava/lang/String;
+                        invoke-static { v$register }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->appendTimeWithoutSegments(Ljava/lang/String;)Ljava/lang/String;
                         move-result-object v$register
                     """
                 )
@@ -230,16 +231,16 @@ val sponsorBlockPatch = bytecodePatch(
         }
 
         // Initialize the player controller.
-        onCreateHook(EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR, "initialize")
+        onCreateHook(EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS, "initialize")
 
         // Initialize the SponsorBlock view.
-        ControlsOverlayFingerprint.match(LayoutConstructorFingerprint.originalClassDef).let {
-            val checkCastIndex = it.instructionMatches.last().index
+        ControlsOverlayFingerprint.let {
             it.method.apply {
+                val checkCastIndex = it.instructionMatches.last().index
                 val frameLayoutRegister = getInstruction<OneRegisterInstruction>(checkCastIndex).registerA
                 addInstruction(
                     checkCastIndex + 1,
-                    "invoke-static {v$frameLayoutRegister}, $EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS_DESCRIPTOR->initialize(Landroid/view/ViewGroup;)V",
+                    "invoke-static {v$frameLayoutRegister}, $EXTENSION_SPONSORBLOCK_VIEW_CONTROLLER_CLASS->initialize(Landroid/view/ViewGroup;)V",
                 )
             }
         }
@@ -250,7 +251,7 @@ val sponsorBlockPatch = bytecodePatch(
 
             addInstructionsAtControlFlowLabel(
                 index,
-                "invoke-static { v$register }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS_DESCRIPTOR->setAdProgressTextVisibility(I)V"
+                "invoke-static { v$register }, $EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS->setAdProgressTextVisibility(I)V"
             )
         }
     }

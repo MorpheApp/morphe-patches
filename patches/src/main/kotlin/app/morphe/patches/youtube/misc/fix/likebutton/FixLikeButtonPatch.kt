@@ -13,7 +13,7 @@ import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.reference.MethodReference
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/FixLikeButtonPatch;"
 
 /**
@@ -75,7 +75,7 @@ internal val fixLikeButtonPatch = bytecodePatch{
                 addInstructions(
                     index,
                     """
-                        invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->fixThemedLikeAnimations(Ljava/lang/String;)Ljava/lang/String;
+                        invoke-static { v$register }, $EXTENSION_CLASS->fixThemedLikeAnimations(Ljava/lang/String;)Ljava/lang/String;
                         move-result-object v$register
                     """
                 )

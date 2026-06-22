@@ -20,39 +20,33 @@ Second \"item\" text"</string>
   <string name="morphe_restart_first_run">Käynnistä uudelleen valituksen suorittamiseksi</string>
   <!-- layout.branding.baseCustomBrandingPatch -->
   <string name="morphe_custom_branding_name_title">Sovelluksen nimi</string>
-  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_5 -->
+  <!-- Translations of this should be identical to morphe_custom_branding_icon_entry_7 -->
   <string name="morphe_custom_branding_name_entry_5">Mukautettu</string>
   <string name="morphe_custom_branding_icon_title">Sovelluskuvake</string>
   <string name="morphe_custom_branding_icon_entry_1">Alkuperäinen</string>
   <string name="morphe_custom_branding_icon_entry_2">Morphe musta</string>
   <string name="morphe_custom_branding_icon_entry_3">Morphe tumma</string>
   <string name="morphe_custom_branding_icon_entry_4">Morphe vaalea</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_5">Morphe vaalea</string>
+  <!-- Translation should match morphe_custom_branding_notification_icon_entry_3 -->
+  <string name="morphe_custom_branding_icon_entry_6">Morphe musta</string>
   <!-- Translations of this should be identical to morphe_custom_branding_name_entry_5 -->
-  <string name="morphe_custom_branding_icon_entry_5">Mukautettu</string>
-  <!-- If any of these experimental strings are changed then also change the hard coded values in the patch for Reddit -->
-  <!-- misc.checks.experimentalAppNoticePatch -->
-  <string name="morphe_experimental_app_version_dialog_title">🚨 Varoitus: Kokeellinen 🚨</string>
-  <string name="morphe_experimental_app_version_dialog_message">"Käytät kokeellista sovellusversiota: ⚠️ &lt;b&gt;%1$s&lt;/b&gt;
-&lt;br/&gt;&lt;br/&gt;
-🔧 Varaudu erikoiseen käytökseen tai tunnistamattomiin virheisiin, sillä hienosäädämme parhaillaan muokkauksia tälle sovellusversiolle.
-&lt;br/&gt;&lt;br/&gt;
-Jos haluat mahdollisimman toimintavarman kokemuksen, &lt;b&gt;poista&lt;/b&gt; tämä asennus ja muokkaa suositeltu sovellusversio: ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
-  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Haluan kokeellisen</string>
-  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Haluan vakaan</string>
+  <string name="morphe_custom_branding_icon_entry_7">Mukautettu</string>
+  <string name="morphe_custom_branding_notification_icon_title">Ilmoituksen kuvake</string>
+  <string name="morphe_custom_branding_notification_icon_entry_1">Sovelluksen kuvakkeen vaihtaminen</string>
+  <string name="morphe_custom_branding_notification_icon_entry_3">Morphe musta</string>
   <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
   <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe-huomautus</string>
   <string name="morphe_check_watch_history_domain_name_dialog_message">Katseluhistoriaasi ei tallenneta.&lt;br&gt;&lt;br&gt;Tämä johtuu todennäköisesti DNS-mainostenestosta tai verkkovälityspalvelimesta.&lt;br&gt;&lt;br&gt;Korjaa ongelma lisäämällä &lt;b&gt;s.youtube.com&lt;/b&gt; sallittujen listalle tai kytke kaikki DNS-estot ja välityspalvelimet pois päältä.</string>
   <string name="morphe_check_watch_history_domain_name_dialog_ignore">Älä näytä uudelleen</string>
   <!-- misc.fix.playback.spoofVideoStreamsPatch -->
   <string name="morphe_spoof_video_streams_screen_title">Naamioi videovirrat</string>
-  <string name="morphe_spoof_video_streams_screen_summary">Naamioi asiakasohjelman videovirrat toisto-ongelmien estämiseksi</string>
+  <string name="morphe_spoof_video_streams_screen_summary">Asiakasohjelman videovirtojen naamiointi toisto-ongelmien estämiseksi</string>
   <string name="morphe_spoof_video_streams_title">Naamioi videovirrat</string>
-  <string name="morphe_spoof_video_streams_summary_on">"Videovirrat on naamioitu
+  <string name="morphe_spoof_video_streams_summary">"Korjaa toistoon liittyviä ongelmia useimmille käyttäjille pyytämällä yhteensopivaa videovirtaa.
 
-Jos olet YouTube Premium -käyttäjä, tätä asetusta ei välttämättä tarvita"</string>
-  <string name="morphe_spoof_video_streams_summary_off">"Videovirtoja ei naamioida
-
-Toisto ei välttämättä toimi"</string>
+Jos olet YouTube Premium -käyttäjä, tämä asetus ei välttämättä ole tarpeen."</string>
   <string name="morphe_spoof_video_streams_no_clients_toast">Asiakasvirtoja ei voitu hakea</string>
   <string name="morphe_spoof_video_streams_user_dialog_message">Tämän asetuksen poistaminen käytöstä voi aiheuttaa toisto-ongelmia.</string>
   <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
@@ -98,33 +92,32 @@ Kirjaudu sisään painamalla alta Jatka-painiketta."</string>
   <string name="morphe_oauth2_toast_reset">Kirjauduttu ulos Android VR -tilasta</string>
   <string name="morphe_oauth2_toast_invalid">Virheellinen VR-kirjautumistunniste, yritä kirjautua uudelleen VR-tilaan</string>
   <string name="morphe_spoof_video_streams_disable_player_js_update_title">Poista käytöstä pelaajan JavaScript-päivitys</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_on">"Pelaajan JavaScript-päivitys on poistettu käytöstä
+  <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Lukitsee pelaajan JavaScript-version tiettyyn versioon
 
-• Toimiva pelaajan JavaScript-hash on vaadittu
-• Toisto epäonnistuu, jos pelaajan JavaScript-hash on peruutettu GVS:ssä"</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_summary_off">Pelaajan JavaScript-päivitys on käytössä</string>
-  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">Pelaajan JavaScript-hashit ovat voimassa noin kuukauden, ja vanhentuneet hashit voidaan mitätöidä GVS:n toimesta.</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_title">Pelaajan JavaScript-hash</string>
-  <string name="morphe_spoof_video_streams_player_js_hash_summary">Anna kelpoinen pelaajan JavaScript-hash</string>
+• Kelvollinen pelaajan JavaScript-hash on vaadittu
+• Pelaajan JavaScript-hashet ovat voimassa noin kuukauden, jonka jälkeen GVS mitätöi vanhentuneet hashet
+• Toisto epäonnistuu, jos hash on mitätöity"</string>
+  <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"Sinun on annettava kelvollinen pelaajan JavaScript-hash.
+
+Toisto epäonnistuu, jos pelaajan JavaScript-hash on vanhentunut."</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_title">Pelaajan JavaScript-hash</string>
+  <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Anna kelpoinen pelaajan JavaScript-hash</string>
   <!-- misc.quic.disableQUICProtocolPatch -->
   <string name="morphe_disable_quic_protocol_title">Poista QUIC-protokolla käytöstä</string>
-  <string name="morphe_disable_quic_protocol_summary_on">QUIC-protokolla on poistettu käytöstä</string>
-  <string name="morphe_disable_quic_protocol_summary_off">QUIC-protokolla on käytössä</string>
   <!-- misc.audio.drc.disableDRCAudioPatch  -->
   <string name="morphe_disable_drc_audio_title">Poista DRC-ääni käytöstä</string>
-  <string name="morphe_disable_drc_audio_summary_on">DRC-ääni on poistettu käytöstä</string>
-  <string name="morphe_disable_drc_audio_summary_off">DRC-ääni on käytössä</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Pakota alkuperäinen äänen kieli</string>
-  <string name="morphe_force_original_audio_summary_on">Käytetään alkuperäistä äänen kieltä</string>
-  <string name="morphe_force_original_audio_summary_off">Käytetään oletusääntä</string>
+  <string name="morphe_force_original_audio_summary">Toistaa aina videon alkuperäisen ääniraidan dubatun version sijaan</string>
+  <!-- ad.hideFullscreenAdsPatch -->
+  <string name="morphe_hide_fullscreen_ads_title">Piilota koko näytön mainokset</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
   <string name="morphe_force_original_audio_not_available">Käyttääksesi tätä ominaisuutta, muuta \'Naamioi videovirrat\' Android Reel tai TV:ksi</string>
   <!-- misc.privacy.sanitizeSharingLinksPatch -->
   <string name="morphe_sanitize_sharing_links_title">Puhdista jakamislinkit</string>
-  <string name="morphe_sanitize_sharing_links_summary_on">Seurantakyselyparametrit poistetaan jaetuista linkeistä</string>
-  <string name="morphe_sanitize_sharing_links_summary_off">Seurantakyselyparametrejä ei poisteta jaetuista linkeistä</string>
+  <string name="morphe_sanitize_sharing_links_summary">Poistaa seuranta-kyselyparametrit jaetuista linkeistä</string>
   <string name="morphe_replace_music_with_youtube_title">Muuta jakolinkit youtube.com-sivustoksi</string>
-  <string name="morphe_replace_music_with_youtube_summary_on">Jaetut linkit käyttävät youtube.com-sivustoa</string>
-  <string name="morphe_replace_music_with_youtube_summary_off">Jaetut linkit käyttävät music.youtube.com-sivustoa</string>
+  <string name="morphe_replace_music_with_youtube_summary">Korvaa music.youtube.com osoitteella youtube.com jaetuissa linkeissä</string>
+  <string name="morphe_replace_links_with_shortener_title">Muuta jakolinkit youtu.be-sivustoksi</string>
+  <string name="morphe_replace_links_with_shortener_summary">Pakottaa videot käyttämään lyhennettyä youtu.be-URL-muotoa</string>
 </resources>

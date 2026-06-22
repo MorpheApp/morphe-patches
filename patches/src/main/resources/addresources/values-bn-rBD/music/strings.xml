@@ -28,29 +28,84 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">সাধারণ</string>
   <string name="morphe_settings_music_screen_3_player_title">প্লেয়ার</string>
   <string name="morphe_settings_music_screen_4_misc_title">বিবিধ</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">\'গেট মিউজিক প্রিমিয়াম\' লেবেল লুকান</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">ভিডিও বিজ্ঞাপন লুকান</string>
-  <string name="morphe_music_hide_video_ads_summary_on">ভিডিও বিজ্ঞাপন লুকানো আছে</string>
-  <string name="morphe_music_hide_video_ads_summary_off">ভিডিও বিজ্ঞাপন দেখানো আছে</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">ক্রসফেইড</string>
+  <string name="morphe_music_crossfade_screen_summary">ট্র্যাকগুলি একে অপরের সাথে মসৃণভাবে মিশিয়ে দিন।</string>
+  <string name="morphe_music_crossfade_enabled_title">ক্রসফেইড চালু করুন</string>
+  <string name="morphe_music_crossfade_curve_title">ফেড কার্ভ</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">সমান ক্ষমতা</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">সূক্ষ্ম বিলম্ব</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">নরম কোমলতা</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">স্মুথ এস-কার্ভ</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">বহির্গামী</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">অন্তর্গামী</string>
+  <string name="morphe_music_crossfade_duration_title">ক্রসফেড সময়কাল</string>
+  <string name="morphe_crossfade_duration_250ms">২৫০ মিলিসেকেন্ড</string>
+  <string name="morphe_crossfade_duration_500ms">৫০০ মিলিসেকেন্ড</string>
+  <string name="morphe_crossfade_duration_750ms">৭৫০ মিলিসেকেন্ড</string>
+  <string name="morphe_crossfade_duration_1000ms">১ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_2000ms">২ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_3000ms">৩ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_4000ms">৪ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_5000ms">৫ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_6000ms">৬ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_7000ms">৭ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_8000ms">৮ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_9000ms">৯ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_10000ms">১০ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_11000ms">১১ সেকেন্ড</string>
+  <string name="morphe_crossfade_duration_12000ms">১২ সেকেন্ড</string>
+  <string name="morphe_music_crossfade_on_skip_title">ম্যানুয়াল স্কিপে ক্রসফেড</string>
+  <string name="morphe_music_crossfade_on_skip_summary">আপনি যখন ম্যানুয়ালি পরবর্তী ট্র্যাকে যান তখন ক্রসফেড প্রভাব প্রয়োগ করে।</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">অটো-অ্যাডভান্সে ক্রসফেড</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">যখন একটি ট্র্যাক স্বাভাবিকভাবে শেষ হয় তখন ক্রসফেড প্রভাব প্রয়োগ করে।</string>
+  <string name="morphe_music_crossfade_session_control_title">সেশন কন্ট্রোল</string>
+  <string name="morphe_music_crossfade_session_control_summary">ক্রসফেড পজ বা পুনরায় শুরু করতে শাফেল বোতামটি লং-প্রেস করুন।</string>
+  <string name="morphe_music_crossfade_paused_toast">এই সেশনের জন্য ক্রসফেড সাময়িকভাবে বন্ধ করা হয়েছে</string>
+  <string name="morphe_music_crossfade_resumed_toast">ক্রসফেড পুনরায় শুরু করা হয়েছে</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">ক্রসফেড চালু থাকা অবস্থায় ভিডিও মোড উপলব্ধ নয়</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">কাস্টিং বা অডিও মিররিং করার সময় ক্রসফেড সাময়িকভাবে বন্ধ থাকে। কাস্ট অথবা মিরর চলাকালীন ক্রসফেড ফিচারটি কিছুটা অস্থিতিশীল এবং এটি হয়তো কখনোই পুরোপুরি ঠিক করা সম্ভব নাও হতে পারে।</string>
+  <string name="morphe_music_crossfade_about_title">মর্ফ সম্পর্কে</string>
+  <string name="morphe_music_crossfade_about_summary">ক্রসফেড যেভাবে কাজ করে — এবং এটি যখন কাজ করে না</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">এটি যেভাবে কাজ করে</string>
+  <string name="morphe_music_crossfade_about_how_summary">"ক্রসফেড ফিচারটি আপনার পছন্দ করা সময় এবং কার্ভ অনুযায়ী একটি গানের ভলিউম কমিয়ে অন্য গানটি চালু করার মাধ্যমে প্রথম গানের শেষের সাথে পরের গানের শুরুকে মিলিয়ে দেয়।
+
+এটি অটো-অ্যাডভান্স (যখন একটি গান নিজে থেকেই শেষ হয়) এবং ম্যানুয়াল স্কিপ — উভয় ক্ষেত্রেই কাজ করে। ওপরের টগলগুলো থেকে প্রতিটির জন্য আলাদা সেটিংস বেছে নেওয়া যাবে। অটো-অ্যাডভান্সের ক্ষেত্রে গানটি শেষ হওয়ার কয়েক সেকেন্ড আগেই মিশ্রণটি শুরু হয়ে যায়।
+
+এর জন্য ইউটিউব মিউজিক ৯.এক্স (YouTube Music 9.x) বা এর চেয়ে নতুন সংস্করণের প্রয়োজন হবে।"</string>
+  <string name="morphe_music_crossfade_about_best_title">সবচেয়ে ভালো কাজ করে যার সাথে</string>
+  <string name="morphe_music_crossfade_about_best_summary">স্বাভাবিকভাবে একের পর এক গান বাজালে এবং অটো-অ্যাডভান্সের ক্ষেত্রে, রিপিট-ওয়ান (যেখানে গানটি নিজের সাথেই ক্রসফেড হয়) চালু থাকলে, এবং লোকাল অডিও — যেমন ফোনের স্পিকার, তারযুক্ত হেডফোন, ব্লুটুথ কিংবা ইউএসবি-র মাধ্যমে শোনার সময়।</string>
+  <string name="morphe_music_crossfade_about_quirks_title">ঠিকঠাক কাজ করছে না</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"ক্রসফেড চালু থাকা অবস্থায় মিউজিক ভিডিওগুলো শুধু অডিও হিসেবে চলবে (ভিডিও দেখতে চাইলে শাফেল বাটনে লং-প্রেস করে এটি পজ করে নিন)
+
+আপনার সেট করা ফেড টাইমের চেয়ে ছোট গানের ক্ষেত্রে ফেড স্কিপ হতে পারে
+
+গান পরিবর্তনের মাঝামাঝি সময়ে লক স্ক্রিন বা নোটিফিকেশনে সাময়িকভাবে আগের তথ্য দেখাতে পারে"</string>
+  <string name="morphe_music_crossfade_about_known_title">পরিচিত সমস্যাগুলো</string>
+  <string name="morphe_music_crossfade_about_known_summary">"প্রথম গান হিসেবে কোনো মিউজিক ভিডিও প্লে করলে — অথবা বর্তমান কিউ-এর (Queue) বাইরে থেকে কোনো গান শুরু করলে — অডিও-অনলি মোড চালু হওয়ার আগে সেটি অল্প সময়ের জন্য ভিডিও হিসেবে দেখা যেতে পারে
+
+মিউজিক ভিডিও দেখার জন্য ক্রসফেড পজ করলে কিছু ভিডিওর স্ক্রিন কালো হয়ে থাকতে পারে (বিশেষ করে যেসব ভিডিওর অডিও সরাসরি ভিডিও ফাইল থেকেই আসে)। গানটি প্লে করার আগেই ক্রসফেড পজ করে নিলে এই সমস্যাটি এড়ানো সম্ভব"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">একদমই কাজ করছে না</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"অডিও কাস্ট বা মিরর করার সময় (যেমন ক্রোমকাস্ট, স্ক্রিন বা অডিও মিররিং) — ক্রসফেড সাময়িকভাবে বন্ধ থাকে, কারণ এই মোডে এটি ঠিকঠাক কাজ করে না এবং সমস্যাটি হয়তো কখনোই পুরোপুরি ঠিক করা যাবে না।
+
+ইউটিউব মিউজিক ৮.এক্স (YouTube Music 8.x) সংস্করণে — ক্রসফেড ফিচারটি কেবল ৯.এক্স বা এর চেয়ে নতুন সংস্করণে কাজ করে"</string>
+  <string name="morphe_music_crossfade_about_credit_title">কৃতজ্ঞতা স্বীকার</string>
+  <string name="morphe_music_crossfade_about_credit_summary">VazerOG-এর তৈরি ক্রসফেড ফিচার</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">স্থায়ী পুনরাবৃত্তি সক্ষম করুন</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">স্থায়ী পুনরাবৃত্তি সক্ষম করা হয়েছে</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">স্থায়ী পুনরাবৃত্তি অক্ষম করা হয়েছে</string>
-  <!-- layout.buttons.hideButtons -->
+  <!-- layout.buttons.hideButtonsPatch -->
   <string name="morphe_music_hide_cast_button_title">কাস্ট বোতাম লুকান</string>
-  <string name="morphe_music_hide_cast_button_summary_on">কাস্ট বোতাম লুকানো আছে</string>
-  <string name="morphe_music_hide_cast_button_summary_off">কাস্ট বোতাম দেখানো আছে</string>
   <string name="morphe_music_hide_history_button_title">ইতিহাস বোতাম লুকান</string>
-  <string name="morphe_music_hide_history_button_summary_on">ইতিহাস বোতাম লুকানো আছে</string>
-  <string name="morphe_music_hide_history_button_summary_off">ইতিহাস বোতাম দেখানো আছে</string>
   <string name="morphe_music_hide_notification_button_title">বিজ্ঞপ্তি বাটন লুকান</string>
-  <string name="morphe_music_hide_notification_button_summary_on">বিজ্ঞপ্তি বাটন লুকানো আছে</string>
-  <string name="morphe_music_hide_notification_button_summary_off">বিজ্ঞপ্তি বাটন দেখানো হয়েছে</string>
   <string name="morphe_music_hide_search_button_title">অনুসন্ধান বাটন লুকান</string>
-  <string name="morphe_music_hide_search_button_summary_on">অনুসন্ধান বাটন লুকানো আছে</string>
-  <string name="morphe_music_hide_search_button_summary_off">অনুসন্ধান বাটন দেখানো হয়েছে</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">শুরুর পৃষ্ঠা পরিবর্তন করুন</string>
+  <string name="morphe_change_start_page_title">শুরুর পৃষ্ঠা</string>
   <string name="morphe_change_start_page_entry_default">পূর্ব-নির্ধারিত</string>
   <string name="morphe_change_start_page_entry_charts">চার্টস</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">পরে দেখার 에পিসোডস</string>
@@ -61,60 +116,35 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">চ্লাস ন৊টিস্য়াসেগ</string>
   <string name="morphe_change_start_page_entry_search">অনুসন্ধান</string>
   <string name="morphe_change_start_page_entry_subscriptions">সদস্যতা</string>
-  <!-- layout.compactheader.hideCategoryBar -->
+  <!-- layout.compactheader.hideCategoryBarPatch -->
   <string name="morphe_music_hide_category_bar_title">ক্যাটাগরি বার লুকান</string>
-  <string name="morphe_music_hide_category_bar_summary_on">ক্যাটাগরি বার লুকানো আছে</string>
-  <string name="morphe_music_hide_category_bar_summary_off">ক্যাটাগরি বার দেখানো আছে</string>
-  <!-- layout.miniplayer.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">মিনিপ্লেয়ারের রঙ পরিবর্তন করুন</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">মিনিপ্লেয়ারের রঙ ফুলস্ক্রিন প্লেয়ারের সাথে মেলে</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">মিনিপ্লেয়ার ডিফল্ট রঙ ব্যবহার করে</string>
-  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_change_miniplayer_color_summary">মিনিপ্লেয়ারের রঙ ফুলস্ক্রিন প্লেয়ারের সাথে মেলে।</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <string name="morphe_music_miniplayer_next_button_title">নিচের বোতামটি মিনিপ্লেয়ারে দেখান</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">মিনিপ্লেয়ারে পরবর্তী বোতামটি দেখানো হচ্ছে</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">মিনিপ্লেয়ারে পরবর্তী বোতামটি দেখানো হচ্ছে না</string>
   <string name="morphe_music_miniplayer_previous_button_title">মিউজিক মিনিপ্লেয়ারে আগের বোতাম</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">মিনিপ্লেয়ারে আগের বোতাম দেখানো হচ্ছে</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">মিনিপ্লেয়ারে আগের বোতাম দেখানো হচ্ছে না</string>
-  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title"> compelled মিনিপ্লেয়ার সক্রিয় করুন</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">প্লেব্যাক পরিবর্তনের সময় মিনিপ্লেয়ার ছোট অবস্থায় থাকে</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">প্লেব্যাক পরিবর্তনের সময় মিনিপ্লেয়ার ফুলস্ক্রিনে প্রসারিত হয়</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">নতুন ট্র্যাক শুরু হলে প্লেয়ারকে স্বয়ংক্রিয়ভাবে ফুলস্ক্রিনে প্রসারিত করা থেকে এটি বাধা দেয়।</string>
+  <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">ছোটপ্লেয়ার সরিয়ে ফেলার জন্য সোয়াইপ সক্রিয় করুন</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">এটি আপনাকে ছোটপ্লেয়ারটি নিচে সোয়াইপ করে সরিয়ে ফেলতে দেয়</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">নেভিগেশন বার</string>
-  <string name="morphe_music_navigation_bar_screen_summary">নেভিগেশন বারের বোতামগুলি লুকান বা পরিবর্তন করুন</string>
+  <string name="morphe_music_navigation_bar_screen_summary">নীচের নেভিগেশন বারে কোন বোতামগুলি প্রদর্শিত হবে তা নির্বাচন করুন</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_home_button_title">হোম লুকান</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">হোম বোতাম লুকানো আছে</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">হোম বোতাম দেখানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_home_button_title">হোম বোতামটি লুকান</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">স্যাম্পল লুকান</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">স্যাম্পল বোতাম লুকানো আছে</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">স্যাম্পল বোতাম দেখানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">স্যাম্পল বোতামটি লুকান</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_explore_button_title">এক্সপ্লোর লুকান</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">অনুসন্ধান বোতাম লুকানো আছে</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">অনুসন্ধান বোতাম দেখানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_explore_button_title">এক্সপ্লোর বোতামটি লুকান</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_library_button_title">লাইব্রেরি লুকান</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">লাইব্রেরি বোতাম লুকানো আছে</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">লাইব্রেরি বোতাম দেখানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_library_button_title">লাইব্রেরি বোতামটি লুকান</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">আপগ্রেড লুকান</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">আপগ্রেড বোতাম লুকানো আছে</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">আপগ্রেড বোতাম দেখানো আছে</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">আপগ্রেড বোতামটি লুকান</string>
   <string name="morphe_music_hide_navigation_bar_title">নেভিগেশন বার লুকান</string>
-  <string name="morphe_music_hide_navigation_bar_summary_on">নেভিগেশন বার লুকানো আছে</string>
-  <string name="morphe_music_hide_navigation_bar_summary_off">নেভিগেশন বার দেখানো আছে</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">নেভিগেশন বোতামের লেবেলগুলি লুকান</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">লেবেলগুলি লুকানো আছে</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">লেবেলগুলি দেখানো আছে</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">\'গেট মিউজিক প্রিমিয়াম\' লেবেল লুকান</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">লেবেল লুকানো আছে</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">লেবেল দেখানো আছে</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">আপগ্রেড বাটন লুকান</string>
-  <string name="morphe_music_hide_upgrade_button_summary_on">বাটন লুকানো আছে</string>
-  <string name="morphe_music_hide_upgrade_button_summary_off">বাটন দেখানো আছে</string>
 </resources>

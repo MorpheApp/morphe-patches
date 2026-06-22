@@ -12,6 +12,7 @@ package app.morphe.patches.shared.misc.gms
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.instructions
 import app.morphe.patcher.extensions.InstructionExtensions.replaceInstruction
 import app.morphe.patcher.patch.BytecodePatchBuilder
@@ -21,6 +22,7 @@ import app.morphe.patcher.patch.ResourcePatchBuilder
 import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
+import app.morphe.patcher.string
 import app.morphe.patches.all.misc.packagename.changePackageNamePatch
 import app.morphe.patches.all.misc.packagename.setOrGetFallbackPackageName
 import app.morphe.patches.shared.misc.gms.Constants.ACTIONS
@@ -31,6 +33,7 @@ import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.util.findMutableMethodOf
 import app.morphe.util.getReference
+import app.morphe.util.matchAllMethodIndicesForEach
 import app.morphe.util.returnEarly
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction21c
@@ -41,7 +44,7 @@ import com.android.tools.smali.dexlib2.immutable.reference.ImmutableStringRefere
 import org.w3c.dom.Element
 import org.w3c.dom.Node
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/patches/GmsCoreSupportPatch;"
 
 /**
@@ -110,25 +113,46 @@ fun gmsCoreSupportPatch(
                             Opcode.CONST_STRING,
                             instruction.registerA,
                             ImmutableStringReference(transformedString),
-                        ),
+                        )
                     )
                 }
             }
         }
 
-        // region Collection of transformations that are applied to all strings.
+        // Exact string replacements.
 
-        fun commonTransform(referencedString: String): String? = when (referencedString) {
-            "com.google",
-            "com.google.android.gms",
-            in PERMISSIONS,
-            in ACTIONS,
-            in AUTHORITIES,
-                -> referencedString.replace("com.google", GMS_CORE_VENDOR_GROUP_ID)
+        fun replaceStrings(fromString: String, toString: String) {
+            string(fromString).matchAllMethodIndicesForEach(requireMatches = false) { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+                replaceInstruction(
+                    index,
+                    BuilderInstruction21c(
+                        Opcode.CONST_STRING,
+                        register,
+                        ImmutableStringReference(toString)
+                    )
+                )
+            }
+        }
 
+        arrayOf(
+            "com.google" to GMS_CORE_VENDOR_GROUP_ID,
+            "com.google.android.gms" to "$GMS_CORE_VENDOR_GROUP_ID.android.gms",
             // No vendor prefix for whatever reason...
-            "subscribedfeeds" -> "$GMS_CORE_VENDOR_GROUP_ID.subscribedfeeds"
-            else -> null
+            "subscribedfeeds" to "$GMS_CORE_VENDOR_GROUP_ID.subscribedfeeds",
+
+            // Package names.
+            "$fromPackageName.SuggestionProvider" to "$toPackageName.SuggestionProvider",
+            "$fromPackageName.fileprovider" to "$toPackageName.fileprovider"
+        ).forEach { (fromString, toString) ->
+            replaceStrings(fromString, toString)
+        }
+
+        (PERMISSIONS + ACTIONS + AUTHORITIES).forEach { fromString ->
+            replaceStrings(
+                fromString,
+                fromString.replace("com.google", GMS_CORE_VENDOR_GROUP_ID),
+            )
         }
 
         fun contentUrisTransform(str: String): String? {
@@ -155,16 +179,6 @@ fun gmsCoreSupportPatch(
             return null
         }
 
-        fun packageNameTransform(fromPackageName: String, toPackageName: String): (String) -> String? = { string ->
-            when (string) {
-                "$fromPackageName.SuggestionProvider",
-                "$fromPackageName.fileprovider",
-                    -> string.replace(fromPackageName, toPackageName)
-
-                else -> null
-            }
-        }
-
         fun transformPrimeMethod(packageName: String) {
             primeMethodFingerprint!!.method.apply {
                 var register = 2
@@ -184,18 +198,9 @@ fun gmsCoreSupportPatch(
 
         val packageName = setOrGetFallbackPackageName(toPackageName)
 
-        // Transform all strings using all provided transforms, first match wins.
-        val transformations = arrayOf(
-            ::commonTransform,
-            ::contentUrisTransform,
-            packageNameTransform(fromPackageName, packageName),
-        )
+        // TODO: Change this to use Fingerprint.matchAllOrNull()
         transformStringReferences transform@{ string ->
-            transformations.forEach { transform ->
-                transform(string)?.let { transformedString -> return@transform transformedString }
-            }
-
-            return@transform null
+            return@transform contentUrisTransform(string)
         }
 
         // Specific method that needs to be patched.
@@ -224,7 +229,7 @@ fun gmsCoreSupportPatch(
         // Verify GmsCore is installed and whitelisted for power optimizations and background usage.
         mainActivityOnCreateFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->" +
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->" +
                     "checkGmsCore(Landroid/app/Activity;)V"
         )
 
@@ -526,7 +531,8 @@ fun gmsCoreSupportResourcePatch(
     block: ResourcePatchBuilder.() -> Unit = {},
 ) = resourcePatch {
     dependsOn(
-        changePackageNamePatch
+        changePackageNamePatch,
+        linkHandlingPatch(fromPackageName, screen),
     )
 
     execute {

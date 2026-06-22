@@ -1,6 +1,6 @@
 package app.morphe.patches.shared.misc.settings.preference
 
-import app.morphe.util.resource.BaseResource
+import app.morphe.patches.util.resource.BaseResource
 import org.w3c.dom.Document
 
 /**
@@ -61,7 +61,7 @@ open class PreferenceScreenPreference(
         UNSORTED("_sort_by_unsorted");
 
         /**
-         * @return The key with this sort type appended to to the end,
+         * @return The key with this sort type appended to the end,
          *         or if key is null then null is returned.
          */
         fun appendSortType(key: String?): String? {

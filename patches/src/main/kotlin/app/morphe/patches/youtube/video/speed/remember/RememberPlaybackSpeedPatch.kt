@@ -27,15 +27,18 @@ import app.morphe.patches.youtube.video.information.userSelectedPlaybackSpeedHoo
 import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.patches.youtube.video.speed.custom.customPlaybackSpeedPatch
 import app.morphe.patches.youtube.video.speed.settingsMenuVideoSpeedGroup
+import app.morphe.patches.youtube.video.videoid.hookPlayerResponseVideoId
+import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/playback/speed/RememberPlaybackSpeedPatch;"
 
 internal val rememberPlaybackSpeedPatch = bytecodePatch {
     dependsOn(
         sharedExtensionPatch,
         settingsPatch,
+        videoIdPatch,
         videoInformationPatch,
         customPlaybackSpeedPatch
     )
@@ -50,17 +53,20 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
                     entryValuesKey = null,
                     tag = "app.morphe.extension.youtube.settings.preference.CustomVideoSpeedListPreference"
                 ),
-                SwitchPreference("morphe_remember_playback_speed_last_selected"),
-                SwitchPreference("morphe_remember_playback_speed_last_selected_toast")
+                SwitchPreference("morphe_remember_playback_speed_last_selected", summary = true),
+                SwitchPreference("morphe_remember_playback_speed_last_selected_toast", summary = true),
+                SwitchPreference("morphe_disable_playback_speed_music", summary = true)
             )
         )
 
-        onCreateHook(EXTENSION_CLASS_DESCRIPTOR, "newVideoStarted")
+        onCreateHook(EXTENSION_CLASS, "newVideoStarted")
 
         userSelectedPlaybackSpeedHook(
-            EXTENSION_CLASS_DESCRIPTOR,
+            EXTENSION_CLASS,
             "userSelectedPlaybackSpeed",
         )
+
+        hookPlayerResponseVideoId("$EXTENSION_CLASS->preloadMusicVideoFetch(Ljava/lang/String;Z)V")
 
         /*
          * Hook the code that is called when the playback speeds are initialized, and sets the playback speed
@@ -73,7 +79,7 @@ internal val rememberPlaybackSpeedPatch = bytecodePatch {
             addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static { }, $EXTENSION_CLASS_DESCRIPTOR->getPlaybackSpeedOverride()F
+                    invoke-static { }, $EXTENSION_CLASS->getPlaybackSpeedOverride()F
                     move-result v0
                     
                     # Check if the playback speed is not auto (-2.0f)

@@ -9,7 +9,17 @@ import app.morphe.patcher.opcode
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
+private object VideoIdParentFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "[L",
+    parameters = listOf("L"),
+    filters = listOf(
+        literal(524288L)
+    )
+)
+
 internal object VideoIdFingerprint : Fingerprint(
+    classFingerprint = VideoIdParentFingerprint,
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
     parameters = listOf("L"),
@@ -42,13 +52,4 @@ internal object VideoIdBackgroundPlayFingerprint : Fingerprint(
                 (classDef.methods.count() == 17 // 20.39 and lower.
                         || classDef.methods.count() == 16) // 20.40+
     }
-)
-
-internal object VideoIdParentFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "[L",
-    parameters = listOf("L"),
-    filters = listOf(
-        literal(524288L)
-    )
 )

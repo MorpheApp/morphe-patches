@@ -23,6 +23,7 @@ public final class VideoInformation {
         // Methods are added during patching.
         boolean patch_seekTo(long videoTime);
         void patch_seekToRelative(long videoTimeOffset);
+        long patch_getVideoTime();
     }
 
     /**
@@ -61,10 +62,10 @@ public final class VideoInformation {
 
     private static WeakReference<PlaybackController> playerControllerRef = new WeakReference<>(null);
     private static WeakReference<PlaybackController> mdxPlayerDirectorRef = new WeakReference<>(null);
-
+    private static String channelId = "";
+    private static String channelName = "";
     private static String videoId = "";
     private static long videoLength = 0;
-    private static long videoTime = -1;
 
     private static volatile String playerResponsePlaylistId = "";
     private static volatile String playerResponseVideoId = "";
@@ -104,6 +105,11 @@ public final class VideoInformation {
      */
     public static final Event<VideoQualityInterface> onQualityChange = new Event<>();
 
+    /**
+     * Fires whenever a new channel ID is extracted for the current video.
+     */
+    public static final Event<String> onChannelIdChange = new Event<>();
+
     @Nullable
     public static VideoQualityInterface[] getCurrentQualities() {
         return currentQualities;
@@ -124,8 +130,11 @@ public final class VideoInformation {
             Logger.printDebug(() -> "newVideoStarted");
 
             playerControllerRef = new WeakReference<>(Objects.requireNonNull(playerController));
-            videoTime = -1;
             videoLength = 0;
+            channelId = "";
+            channelName = "";
+            String videoTitle = "";
+            boolean isLive = false;
             playbackSpeed = DEFAULT_YOUTUBE_PLAYBACK_SPEED;
             desiredVideoResolution = AUTOMATIC_VIDEO_QUALITY_VALUE;
             currentQualities = null;
@@ -141,12 +150,36 @@ public final class VideoInformation {
      *
      * @param mdxPlayerDirector MDX player director object (casting mode).
      */
-    public static void initializeMDX(@NonNull PlaybackController mdxPlayerDirector) {
+    public static void initializeMDX(PlaybackController mdxPlayerDirector) {
         try {
             mdxPlayerDirectorRef = new WeakReference<>(Objects.requireNonNull(mdxPlayerDirector));
         } catch (Exception ex) {
             Logger.printException(() -> "Failed to initialize MDX", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setChannelId(String cId) {
+        channelId = cId != null ? cId : "";
+        Logger.printDebug(() -> "Extracted Channel ID: " + channelId);
+        if (!channelId.isEmpty()) {
+            onChannelIdChange.invoke(channelId);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setChannelName(String cName) {
+        channelName = cName != null ? cName : "";
+        Logger.printDebug(() -> "Extracted Channel Name: " + channelName);
+    }
+
+    @NonNull
+    public static String getChannelName() {
+        return channelName;
     }
 
     /**
@@ -244,16 +277,6 @@ public final class VideoInformation {
             Logger.printDebug(() -> "Current video length: " + length);
             videoLength = length;
         }
-    }
-
-    /**
-     * Injection point.
-     * Called on the main thread every 1000ms.
-     *
-     * @param currentPlaybackTime The current playback time of the video in milliseconds.
-     */
-    public static void setVideoTime(final long currentPlaybackTime) {
-        videoTime = currentPlaybackTime;
     }
 
     /**
@@ -356,9 +379,18 @@ public final class VideoInformation {
     }
 
     /**
+     * @return The channel ID of the current video.
+     */
+    @NonNull
+    public static String getChannelId() {
+        return channelId;
+    }
+
+    /**
      * ID of the last video opened. Includes Shorts.
      *
      * @return The ID of the video, or an empty string if no videos have been opened yet.
+     *         With 21.15+ this returns an empty string if no video is currently opened.
      */
     @NonNull
     public static String getVideoId() {
@@ -366,7 +398,8 @@ public final class VideoInformation {
     }
 
     /**
-     * This is the playlistId of the player response, but since Shorts does not support playlists, it is the same as the current playlistId.
+     * This is the playlistId of the player response, but since Shorts does not support playlists,
+     * it is the same as the current playlistId.
      *
      * @return The playlist id of the video.
      */
@@ -422,23 +455,46 @@ public final class VideoInformation {
      *         then this returns zero.
      */
     public static long getVideoLength() {
-       return videoLength;
+        return videoLength;
     }
 
     /**
-     * Playback time of the current video playing.  Includes Shorts.
-     * <p>
-     * Value will lag behind the actual playback time by a variable amount based on the playback speed.
-     * <p>
-     * If playback speed is 2.0x, this value may be up to 2000ms behind the actual playback time.
-     * If playback speed is 1.0x, this value may be up to 1000ms behind the actual playback time.
-     * If playback speed is 0.5x, this value may be up to 500ms behind the actual playback time.
-     * Etc.
+     * @return The current non casting player time. Value is zero if casting.
+     */
+    private static long getPlayerVideoTime() {
+        PlaybackController controller = playerControllerRef.get();
+        return controller != null
+                ? controller.patch_getVideoTime()
+                : -1;
+    }
+
+    /**
+     * @return The current casting player time. Value is zero if not casting.
+     */
+    private static long getMdxVideoTime() {
+        PlaybackController controller = mdxPlayerDirectorRef.get();
+        return controller != null
+                ? controller.patch_getVideoTime()
+                : -1;
+    }
+
+    /**
+     * Playback time of the current video playing. Includes Shorts.
+     * If casting then the time is always rounded down to the nearest whole second.
      *
-     * @return The time of the video in milliseconds. -1 if not set yet.
+     * @return The time of the video in milliseconds, or -1 if not the player is not available.
      */
     public static long getVideoTime() {
-        return videoTime;
+        final long playerTime = getPlayerVideoTime();
+        // If time is zero, then playback may be casting.
+        if (playerTime > 0) {
+            return playerTime;
+        }
+
+        final long mdxTime = getMdxVideoTime();
+        return mdxTime >= 0
+                ? mdxTime
+                : playerTime;
     }
 
     /**
@@ -453,7 +509,7 @@ public final class VideoInformation {
      */
     @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean isAtEndOfVideo() {
-        return videoTime >= videoLength && videoLength > 0;
+        return getVideoTime() >= videoLength && videoLength > 0;
     }
 
     /**

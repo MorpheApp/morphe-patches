@@ -6,7 +6,6 @@
  */
 package app.morphe.extension.reddit.settings.preference.categories;
 
-import static app.morphe.extension.reddit.patches.VersionCheckPatch.is_2025_52_or_greater;
 import static app.morphe.extension.shared.StringRef.str;
 
 import android.content.Context;
@@ -14,9 +13,8 @@ import android.preference.PreferenceScreen;
 
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
-import app.morphe.extension.reddit.patches.HideNavigationButtonsPatch;
+import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideRecommendedCommunitiesShelf;
-import app.morphe.extension.reddit.patches.HideSidebarComponentsPatch;
 import app.morphe.extension.reddit.patches.HideTrendingTodayShelfPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
@@ -32,9 +30,9 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
 
     @Override
     public boolean getSettingsStatus() {
-        return DisableScreenshotPopupPatch.isPatchIncluded() ||
-                HideNavigationButtonsPatch.isPatchIncluded() ||
-                HideSidebarComponentsPatch.isPatchIncluded() ||
+        return DisableModernHomePatch.isPatchIncluded() ||
+                DisableScreenshotPopupPatch.isPatchIncluded() ||
+                HideAskButtonPatch.isPatchIncluded() ||
                 HideRecommendedCommunitiesShelf.isPatchIncluded() ||
                 HideTrendingTodayShelfPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded();
@@ -56,53 +54,11 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (HideNavigationButtonsPatch.isPatchIncluded()) {
+        if (HideAskButtonPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_ANSWERS_BUTTON
+                    Settings.HIDE_ASK_BUTTON
             ));
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_CHAT_BUTTON
-            ));
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_CREATE_BUTTON
-            ));
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_DISCOVER_BUTTON
-            ));
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_GAMES_BUTTON
-            ));
-        }
-
-        if (HideSidebarComponentsPatch.isPatchIncluded()) {
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_RECENTLY_VISITED_SHELF
-            ));
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_GAMES_ON_REDDIT_SHELF
-            ));
-            addPreference(new BooleanSettingPreference(
-                    context,
-                    Settings.HIDE_REDDIT_PRO_SHELF
-            ));
-
-            if (is_2025_52_or_greater) {
-                addPreference(new BooleanSettingPreference(
-                        context,
-                        Settings.HIDE_ABOUT_SHELF
-                ));
-                addPreference(new BooleanSettingPreference(
-                        context,
-                        Settings.HIDE_RESOURCES_SHELF
-                ));
-            }
         }
 
         if (HideRecommendedCommunitiesShelf.isPatchIncluded()) {

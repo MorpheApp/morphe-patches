@@ -17,7 +17,7 @@ private val SHOULD_SHOW_BANNER_FILTERS = listOf(
     fieldAccess(
         opcode = Opcode.IGET_OBJECT,
         definingClass = "this",
-        name = "\$shouldShowBanner\$delegate"
+        name = $$"$shouldShowBanner$delegate"
     ),
     fieldAccess(
         opcode = Opcode.SGET_OBJECT,
@@ -32,7 +32,7 @@ private val SHOULD_SHOW_BANNER_FILTERS = listOf(
 )
 
 internal object RedditScreenshotTriggerSharingListenerFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/sharing/screenshot/RedditScreenshotTriggerSharingListener\$ScreenshotBanner$",
+    definingClass = $$"Lcom/reddit/sharing/screenshot/RedditScreenshotTriggerSharingListener$ScreenshotBanner$",
     name = "invokeSuspend",
     returnType = "Ljava/lang/Object;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -41,7 +41,7 @@ internal object RedditScreenshotTriggerSharingListenerFingerprint : Fingerprint(
 )
 
 internal object ScreenshotTakenBannerFingerprint : Fingerprint(
-    definingClass = "Lcom/reddit/sharing/screenshot/composables/ScreenshotTakenBannerKt\$ScreenshotTakenBanner$",
+    definingClass = $$"Lcom/reddit/sharing/screenshot/composables/ScreenshotTakenBannerKt$ScreenshotTakenBanner$",
     name = "invokeSuspend",
     returnType = "Ljava/lang/Object;",
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),

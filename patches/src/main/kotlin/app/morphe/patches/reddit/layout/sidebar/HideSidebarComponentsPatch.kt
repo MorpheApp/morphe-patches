@@ -16,12 +16,13 @@ import app.morphe.util.setExtensionIsPatchIncluded
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
+import java.util.logging.Logger
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideSidebarComponentsPatch;"
 
 private const val EXTENSION_HEADER_ITEM_INTERFACE =
-    "Lapp/morphe/extension/reddit/patches/HideSidebarComponentsPatch\$HeaderItemInterface;"
+    $$"Lapp/morphe/extension/reddit/patches/HideSidebarComponentsPatch$HeaderItemInterface;"
 
 @Suppress("unused")
 val hideSidebarComponentsPatch = bytecodePatch(
@@ -33,15 +34,16 @@ val hideSidebarComponentsPatch = bytecodePatch(
     dependsOn(settingsPatch)
 
     execute {
-        CommunityDrawerBuilderFingerprint.match(
-            CommunityDrawerBuilderParentFingerprint.originalClassDef
-        ).method.addInstructions(
-            0,
-            """
-                invoke-static/range { p2 .. p3 }, $EXTENSION_CLASS_DESCRIPTOR->hideComponents(Ljava/util/Collection;$EXTENSION_HEADER_ITEM_INTERFACE)Ljava/util/Collection;
-                move-result-object p2
-            """
-        )
+        CommunityDrawerBuilderFingerprint.method.apply {
+            val collectionParameter = parameterTypes.indexOf("Ljava/util/Collection;")
+            addInstructions(
+                0,
+                """
+                    invoke-static/range { p$collectionParameter .. p${collectionParameter + 1} }, $EXTENSION_CLASS->hideComponents(Ljava/util/Collection;$EXTENSION_HEADER_ITEM_INTERFACE)Ljava/util/Collection;
+                    move-result-object p$collectionParameter
+                """
+            )
+        }
 
         HeaderItemUiModelToStringFingerprint.let {
             it.classDef.apply {
@@ -81,6 +83,6 @@ val hideSidebarComponentsPatch = bytecodePatch(
             }
         }
 
-        setExtensionIsPatchIncluded(EXTENSION_CLASS_DESCRIPTOR)
+        setExtensionIsPatchIncluded(EXTENSION_CLASS)
     }
 }

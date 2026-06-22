@@ -1,7 +1,7 @@
 package app.morphe.extension.youtube.swipecontrols.misc
 
 /**
- * a simple rectangle class
+ * A simple rectangle class.
  */
 data class Rectangle(
     val x: Int,
@@ -16,7 +16,7 @@ data class Rectangle(
 }
 
 /**
- * is the point within this rectangle?
+ * Checks if the point is within this rectangle.
  */
 operator fun Rectangle.contains(p: Point): Boolean =
     p.x in left..right && p.y in top..bottom

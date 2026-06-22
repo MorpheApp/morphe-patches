@@ -8,10 +8,10 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPrefer
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
-import app.morphe.patches.youtube.misc.playercontrols.addBottomControl
-import app.morphe.patches.youtube.misc.playercontrols.initializeBottomControl
+import app.morphe.patches.youtube.misc.playercontrols.addTopControl
+import app.morphe.patches.youtube.misc.playercontrols.initializeTopControl
 import app.morphe.patches.youtube.misc.playercontrols.injectVisibilityCheckCall
-import app.morphe.patches.youtube.misc.playercontrols.playerControlsPatch
+import app.morphe.patches.youtube.misc.playercontrols.legacyPlayerControlsPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
@@ -22,7 +22,7 @@ import app.morphe.util.copyResources
 
 private val downloadsResourcePatch = resourcePatch {
     dependsOn(
-        playerControlsPatch,
+        legacyPlayerControlsPatch,
         settingsPatch,
     )
 
@@ -32,28 +32,36 @@ private val downloadsResourcePatch = resourcePatch {
                 key = "morphe_external_downloader_screen",
                 sorting = Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference("morphe_external_downloader"),
-                    SwitchPreference("morphe_external_downloader_action_button"),
+                    SwitchPreference("morphe_external_downloader", summary = true),
+                    SwitchPreference("morphe_external_downloader_action_button", summary = true),
                     TextPreference(
                         "morphe_external_downloader_name",
                         tag = "app.morphe.extension.youtube.settings.preference.ExternalDownloaderPreference",
-                    ),
-                ),
-            ),
+                    )
+                )
+            )
         )
 
         copyResources(
             "downloads",
-            ResourceGroup("drawable", "morphe_yt_download_button.xml"),
+            ResourceGroup(
+                "drawable",
+                "morphe_yt_download_button.xml",
+                "morphe_yt_download_button_bold.xml",
+            )
         )
+    }
 
-        addBottomControl("downloads")
+    finalize {
+        addTopControl("downloads",
+            "@+id/morphe_external_download_button",
+            "@+id/morphe_external_download_button")
     }
 }
 
-private const val EXTENSION_CLASS_DESCRIPTOR = "Lapp/morphe/extension/youtube/patches/DownloadsPatch;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/youtube/patches/DownloadsPatch;"
 
-internal const val BUTTON_DESCRIPTOR = "Lapp/morphe/extension/youtube/videoplayer/ExternalDownloadButton;"
+private const val EXTENSION_BUTTON = "Lapp/morphe/extension/youtube/videoplayer/ExternalDownloadButton;"
 
 @Suppress("unused")
 val downloadsPatch = bytecodePatch(
@@ -63,33 +71,33 @@ val downloadsPatch = bytecodePatch(
 ) {
     dependsOn(
         downloadsResourcePatch,
-        playerControlsPatch,
         videoInformationPatch,
+        legacyPlayerControlsPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        initializeBottomControl(BUTTON_DESCRIPTOR)
-        injectVisibilityCheckCall(BUTTON_DESCRIPTOR)
+        initializeTopControl(EXTENSION_BUTTON)
+        injectVisibilityCheckCall(EXTENSION_BUTTON)
 
         // Main activity is used to launch downloader intent.
         YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, ${EXTENSION_CLASS_DESCRIPTOR}->setMainActivity(Landroid/app/Activity;)V"
+            "invoke-static/range { p0 .. p0 }, ${EXTENSION_CLASS}->setMainActivity(Landroid/app/Activity;)V"
         )
 
         OfflineVideoEndpointFingerprint.method.apply {
             addInstructionsWithLabels(
                 0,
                 """
-                    invoke-static/range {p3 .. p3}, $EXTENSION_CLASS_DESCRIPTOR->inAppDownloadButtonOnClick(Ljava/lang/String;)Z
+                    invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->inAppDownloadButtonOnClick(Ljava/lang/String;)Z
                     move-result v0
                     if-eqz v0, :show_native_downloader
                     return-void
                     :show_native_downloader
                     nop
-                """,
+                """
             )
         }
     }

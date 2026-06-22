@@ -28,29 +28,84 @@ Second \"item\" text"</string>
   <string name="morphe_settings_music_screen_2_general_title">Všeobecné</string>
   <string name="morphe_settings_music_screen_3_player_title">Prehrávač</string>
   <string name="morphe_settings_music_screen_4_misc_title">Ostatné</string>
+  <!-- ad.general.hideAdsPatch -->
+  <string name="morphe_music_hide_get_premium_label_title">Skryť tlačidlo \'Získať Music Premium\'</string>
   <!-- ad.video.hideVideoAdsPatch -->
   <string name="morphe_music_hide_video_ads_title">Skryť videoreklamy</string>
-  <string name="morphe_music_hide_video_ads_summary_on">Videoreklamy sú skryté</string>
-  <string name="morphe_music_hide_video_ads_summary_off">Videoreklamy sa zobrazujú</string>
+  <!-- interaction.crossfade.crossfadePatch -->
+  <string name="morphe_music_crossfade_screen_title">Prechádzanie skladieb</string>
+  <string name="morphe_music_crossfade_screen_summary">Hravo prechádzajte medzi skladbami</string>
+  <string name="morphe_music_crossfade_enabled_title">Povoliť prechádzanie skladieb</string>
+  <string name="morphe_music_crossfade_curve_title">Priebeh prechodu</string>
+  <string name="morphe_music_crossfade_curve_entry_equal_power">Rovnaká úroveň</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_cubic">Jemné oneskorenie</string>
+  <string name="morphe_music_crossfade_curve_entry_ease_out_quad">Jemné zjemnenie</string>
+  <string name="morphe_music_crossfade_curve_entry_smoothstep">Hladká S-krivka</string>
+  <!-- Empty string because custom preference handles the title itself -->
+  <string name="morphe_music_crossfade_curve_preview_outgoing">Odchádzajúce</string>
+  <string name="morphe_music_crossfade_curve_preview_incoming">Prichádzajúce</string>
+  <string name="morphe_music_crossfade_duration_title">Dĺžka prechodu</string>
+  <string name="morphe_crossfade_duration_250ms">250 milisekúnd</string>
+  <string name="morphe_crossfade_duration_500ms">500 milisekúnd</string>
+  <string name="morphe_crossfade_duration_750ms">750 milisekúnd</string>
+  <string name="morphe_crossfade_duration_1000ms">1 sekunda</string>
+  <string name="morphe_crossfade_duration_2000ms">2 sekundy</string>
+  <string name="morphe_crossfade_duration_3000ms">3 sekundy</string>
+  <string name="morphe_crossfade_duration_4000ms">4 sekundy</string>
+  <string name="morphe_crossfade_duration_5000ms">5 sekúnd</string>
+  <string name="morphe_crossfade_duration_6000ms">6 sekúnd</string>
+  <string name="morphe_crossfade_duration_7000ms">7 sekúnd</string>
+  <string name="morphe_crossfade_duration_8000ms">8 sekúnd</string>
+  <string name="morphe_crossfade_duration_9000ms">9 sekúnd</string>
+  <string name="morphe_crossfade_duration_10000ms">10 sekúnd</string>
+  <string name="morphe_crossfade_duration_11000ms">11 sekúnd</string>
+  <string name="morphe_crossfade_duration_12000ms">12 sekúnd</string>
+  <string name="morphe_music_crossfade_on_skip_title">Prechod pri manuálnom preskočení</string>
+  <string name="morphe_music_crossfade_on_skip_summary">Aplikuje efekt prechodu medzi skladbami, keď manuálne preskočíte na ďalšiu skladbu</string>
+  <string name="morphe_music_crossfade_on_auto_advance_title">Prechod pri automatickom postupe</string>
+  <string name="morphe_music_crossfade_on_auto_advance_summary">Aplikuje efekt prechodu medzi skladbami, keď sa skladba prirodzene skončí</string>
+  <string name="morphe_music_crossfade_session_control_title">Ovládanie relácie</string>
+  <string name="morphe_music_crossfade_session_control_summary">Dlhým stlačením tlačidla náhodného výberu pozastavíte alebo obnovíte prechod medzi skladbami</string>
+  <string name="morphe_music_crossfade_paused_toast">Prechodové zmiznutie zvuku pozastavené v tejto relácii</string>
+  <string name="morphe_music_crossfade_resumed_toast">Prechodové zmiznutie zvuku obnovené</string>
+  <string name="morphe_music_crossfade_video_mode_disabled_toast">Režim videa nie je dostupný, keď je zapnuté prechodové zmiznutie zvuku</string>
+  <string name="morphe_music_crossfade_cast_unstable_toast">Funkcia plynulého prechodu je pozastavená počas vysielania alebo zrkadlenia zvuku. Plynulý prechod počas vysielania/zrkadlenia je nestabilný a nemusí sa to nikdy podariť opraviť.</string>
+  <string name="morphe_music_crossfade_about_title">O aplikácii</string>
+  <string name="morphe_music_crossfade_about_summary">Ako funguje plynulý prechod – a kedy nefunguje</string>
+  <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
+  <string name="morphe_music_crossfade_about_how_title">Ako to funguje</string>
+  <string name="morphe_music_crossfade_about_how_summary">"Plynulý prechod prekrýva koniec jednej skladby s začiatkom ďalšej, pričom postupne znižuje hlasitosť jednej skladby a zvyšuje hlasitosť druhej počas vami zvolenej dĺžky a krivky.
+
+Funguje pri automatickom prechode (keď sa skladba skončí sama) a pri manuálnom preskočení – obe majú svoje vlastné prepínače vyššie. Pri automatickom prechode sa miešanie začne niekoľko sekúnd pred koncom skladby.
+
+Vyžaduje YouTube Music 9.x alebo novší."</string>
+  <string name="morphe_music_crossfade_about_best_title">Najlepšie funguje s</string>
+  <string name="morphe_music_crossfade_about_best_summary">Štandardné prehrávanie skladieb, automatický prechod, opakovanie jednej skladby (skladba plynulo prechádza do seba) a lokálne audio – reproduktor telefónu, káblové slúchadlá, Bluetooth alebo USB.</string>
+  <string name="morphe_music_crossfade_about_quirks_title">Nefunguje celkom správne</string>
+  <string name="morphe_music_crossfade_about_quirks_summary">"Hudobné videá sa počas zapnutého crossfade prehrávajú iba so zvukom (dlhým stlačením tlačidla náhodného výberu pozastavíte, ak chcete aj video)
+
+Piesne kratšie ako trvanie prechodu môžu vynechať plynulý prechod
+
+Obrazovka uzamknutia alebo notifikácia môžu na krátky čas zobrazovať zastaraný stav počas prechodu"</string>
+  <string name="morphe_music_crossfade_about_known_title">Známe problémy</string>
+  <string name="morphe_music_crossfade_about_known_summary">"Hudobné video nastavené ako prvá pieseň – alebo spustené mimo aktuálnej fronty – sa môže na krátky čas zobraziť ako video, kým sa neaktivuje režim iba so zvukom
+
+Pauznutie crossfade na prezeranie hudobného videa môže spôsobiť, že niektoré videá zostanú čierne (tie, ktorých zvuk pochádza priamo z videa). Pauznutie crossfade pred výberom skladby tomu zabráni"</string>
+  <string name="morphe_music_crossfade_about_unsupported_title">Nefunguje vôbec</string>
+  <string name="morphe_music_crossfade_about_unsupported_summary">"Prehrávanie obsahu pomocou technológie Cast alebo zrkadlenie obrazovky (Chromecast, zrkadlenie obrazovky alebo zvuku) – crossfade sa pozastaví, pretože to nie je stabilné a nemusí to byť nikdy opravené.
+
+YouTube Music 8.x – crossfade funguje iba vo verzii 9.x a novších"</string>
+  <string name="morphe_music_crossfade_about_credit_title">Poďakovanie</string>
+  <string name="morphe_music_crossfade_about_credit_summary">Funkcia Crossfade od VazerOG</string>
   <!-- interaction.permanentrepeat.permanentRepeatPatch -->
   <string name="morphe_music_play_permanent_repeat_title">Zapnúť permanentné opakovanie prehrávania</string>
-  <string name="morphe_music_play_permanent_repeat_summary_on">Permanentné opakovanie prehrávania je zapnuté</string>
-  <string name="morphe_music_play_permanent_repeat_summary_off">Permanentné opakovanie prehrávania je vypnuté</string>
-  <!-- layout.buttons.hideButtons -->
-  <string name="morphe_music_hide_cast_button_title">Skryť tlačidlo prenosu</string>
-  <string name="morphe_music_hide_cast_button_summary_on">Tlačidlo prenosu je skryté</string>
-  <string name="morphe_music_hide_cast_button_summary_off">Tlačidlo prenosu sa zobrazuje</string>
+  <!-- layout.buttons.hideButtonsPatch -->
+  <string name="morphe_music_hide_cast_button_title">Skryť tlačidlo Prenos</string>
   <string name="morphe_music_hide_history_button_title">Skryť tlačidlo histórie</string>
-  <string name="morphe_music_hide_history_button_summary_on">Tlačidlo histórie je skryté</string>
-  <string name="morphe_music_hide_history_button_summary_off">Tlačidlo histórie sa zobrazuje</string>
   <string name="morphe_music_hide_notification_button_title">Skryť tlačidlo upozornení</string>
-  <string name="morphe_music_hide_notification_button_summary_on">Tlačidlo upozornení je skryté</string>
-  <string name="morphe_music_hide_notification_button_summary_off">Tlačidlo upozornení sa zobrazuje</string>
   <string name="morphe_music_hide_search_button_title">Skryť tlačidlo vyhľadávania</string>
-  <string name="morphe_music_hide_search_button_summary_on">Tlačidlo vyhľadávania je skryté</string>
-  <string name="morphe_music_hide_search_button_summary_off">Tlačidlo vyhľadávania sa zobrazuje</string>
   <!-- layout.startpage.changeStartPagePatch -->
-  <string name="morphe_change_start_page_title">Zmeniť úvodnú stránku</string>
+  <string name="morphe_change_start_page_title">Úvodná stránka</string>
   <string name="morphe_change_start_page_entry_default">Predvolené</string>
   <string name="morphe_change_start_page_entry_charts">Rebríčky</string>
   <string name="morphe_change_start_page_entry_episodes_for_later">Epizódy na neskôr</string>
@@ -61,60 +116,35 @@ Second \"item\" text"</string>
   <string name="morphe_change_start_page_entry_playlists">Zoznamy</string>
   <string name="morphe_change_start_page_entry_search">Hľadať</string>
   <string name="morphe_change_start_page_entry_subscriptions">Odbery</string>
-  <!-- layout.compactheader.hideCategoryBar -->
+  <!-- layout.compactheader.hideCategoryBarPatch -->
   <string name="morphe_music_hide_category_bar_title">Skryť panel kategórií</string>
-  <string name="morphe_music_hide_category_bar_summary_on">Panel kategórií je skrytý</string>
-  <string name="morphe_music_hide_category_bar_summary_off">Panel kategórií sa zobrazuje</string>
-  <!-- layout.miniplayer.changeMiniplayerColor -->
+  <!-- layout.miniplayer.changeMiniplayerColorPatch -->
   <string name="morphe_music_change_miniplayer_color_title">Zmeniť farbu miniprehrávača</string>
-  <string name="morphe_music_change_miniplayer_color_summary_on">Farba miniprehrávača zodpovedá farbe prehrávača na celú obrazovku</string>
-  <string name="morphe_music_change_miniplayer_color_summary_off">Miniprehrávač používa predvolenú farbu</string>
-  <!-- layout.miniplayer.miniplayerNextPreviousButtons -->
+  <string name="morphe_music_change_miniplayer_color_summary">Farba miniprehrávača zodpovedá farbe prehrávača na celú obrazovku</string>
+  <!-- layout.miniplayer.miniplayerNextPreviousButtonsPatch -->
   <string name="morphe_music_miniplayer_next_button_title">Zobraziť tlačidlo \'Ďalšia skladba\' v miniprehrávači</string>
-  <string name="morphe_music_miniplayer_next_button_summary_on">Tlačidlo \'Ďalšia skladba\' sa zobrazuje v miniprehrávači</string>
-  <string name="morphe_music_miniplayer_next_button_summary_off">Tlačidlo \'Ďalšia skladba\' sa nezobrazuje v miniprehrávači</string>
   <string name="morphe_music_miniplayer_previous_button_title">Zobraziť tlačidlo \'Predošlá skladba\' v miniprehrávači</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_on">Tlačidlo \'Predošlá skladba\' sa zobrazuje v miniprehrávači</string>
-  <string name="morphe_music_miniplayer_previous_button_summary_off">Tlačidlo \'Predošlá skladba\' sa nezobrazuje v miniprehrávači</string>
-  <!-- layout.miniplayer.enableForcedMiniplayer -->
+  <!-- layout.miniplayer.enableForcedMiniplayerPatch -->
   <string name="morphe_music_enable_forced_miniplayer_title">Povoliť vynútenie miniprehrávača</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_on">Miniprehrávač zostane aktívny aj počas zmeny prehrávania</string>
-  <string name="morphe_music_enable_forced_miniplayer_summary_off">Prehrávač prejde do režimu na celú obrazovku pri zmene prehrávania</string>
+  <string name="morphe_music_enable_forced_miniplayer_summary">Zabráni automatickému rozbaleniu prehrávača na celú obrazovku, keď sa začne nová skladba</string>
+  <!-- layout.miniplayer.enableSwipeToDismissMiniplayerPatch -->
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_title">Povoliť zatiahnutie prstom na zatvorenie miniaplikácie</string>
+  <string name="morphe_music_enable_swipe_to_dismiss_miniplayer_summary">Umožňuje zatvoriť miniaplikáciu ťahom smerom nadol</string>
   <!-- layout.navigationbar.navigationBarPatch -->
   <string name="morphe_music_navigation_bar_screen_title">Navigačný panel</string>
-  <string name="morphe_music_navigation_bar_screen_summary">Skryť alebo zmeniť tlačidlá navigačného panela</string>
+  <string name="morphe_music_navigation_bar_screen_summary">Vyberte, ktoré tlačidlá sa majú zobraziť na spodnej navigačnej lište</string>
   <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_home_button_title">Skryť tlačidlo Domov</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_on">Tlačidlo Domov je skryté</string>
-  <string name="morphe_music_hide_navigation_bar_home_button_summary_off">Tlačidlo Domov sa zobrazuje</string>
   <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_samples_button_title">Skryť tlačidlo Samples</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_on">Tlačidlo Samples je skryté</string>
-  <string name="morphe_music_hide_navigation_bar_samples_button_summary_off">Tlačidlo Samples sa zobrazuje</string>
+  <string name="morphe_music_hide_navigation_bar_samples_button_title">Skryť tlačidlo Vzorky</string>
   <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_explore_button_title">Skryť tlačidlo Preskúmať</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_on">Tlačidlo Preskúmať je skryté</string>
-  <string name="morphe_music_hide_navigation_bar_explore_button_summary_off">Tlačidlo Preskúmať sa zobrazuje</string>
   <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
   <string name="morphe_music_hide_navigation_bar_library_button_title">Skryť tlačidlo Knižnica</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_on">Tlačidlo Knižnica je skryté</string>
-  <string name="morphe_music_hide_navigation_bar_library_button_summary_off">Tlačidlo Knižnica sa zobrazuje</string>
   <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Skryť tlačidlo Povýšiť</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_on">Tlačidlo Povýšiť je skryté</string>
-  <string name="morphe_music_hide_navigation_bar_upgrade_button_summary_off">Tlačidlo Povýšiť sa zobrazuje</string>
+  <string name="morphe_music_hide_navigation_bar_upgrade_button_title">Skryť tlačidlo Upgrade</string>
   <string name="morphe_music_hide_navigation_bar_title">Skryť navigačný panel</string>
-  <string name="morphe_music_hide_navigation_bar_summary_on">Navigačný panel je skrytý</string>
-  <string name="morphe_music_hide_navigation_bar_summary_off">Navigačný panel sa zobrazuje</string>
   <string name="morphe_music_hide_navigation_bar_labels_title">Skryť označenia tlačidiel navigačného panela</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_on">Označenia sú skryté</string>
-  <string name="morphe_music_hide_navigation_bar_labels_summary_off">Označenia sa zobrazujú</string>
-  <!-- layout.premium.hideGetPremiumPatch -->
-  <string name="morphe_music_hide_get_premium_label_title">Skryť tlačidlo \'Získať Music Premium\'</string>
-  <string name="morphe_music_hide_get_premium_label_summary_on">Tlačidlo je skryté</string>
-  <string name="morphe_music_hide_get_premium_label_summary_off">Tlačidlo sa zobrazuje</string>
   <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
   <string name="morphe_music_hide_upgrade_button_title">Skryť tlačidlo Povýšiť</string>
-  <string name="morphe_music_hide_upgrade_button_summary_on">Tlačidlo Povýšiť je skryté</string>
-  <string name="morphe_music_hide_upgrade_button_summary_off">Tlačidlo Povýšiť sa zobrazuje</string>
 </resources>

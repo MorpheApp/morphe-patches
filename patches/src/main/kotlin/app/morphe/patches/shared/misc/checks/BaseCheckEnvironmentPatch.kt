@@ -33,17 +33,16 @@ import java.security.MessageDigest
 import kotlin.io.encoding.Base64
 import kotlin.io.encoding.ExperimentalEncodingApi
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/shared/checks/CheckEnvironmentPatch;"
 
 fun checkEnvironmentPatch(
+    @Suppress("unused")
     mainActivityOnCreateFingerprint: Fingerprint,
     extensionPatch: Patch<*>,
-    vararg compatiblePackages: String,
 ) = bytecodePatch(
     description = "Checks, where the application was patched by, otherwise warns the user.",
 ) {
-    compatibleWith(*compatiblePackages)
 
     dependsOn(
         extensionPatch,
@@ -97,7 +96,7 @@ fun checkEnvironmentPatch(
 
         fun invokeCheck() = YouTubeActivityOnCreateFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS_DESCRIPTOR->check(Landroid/app/Activity;)V",
+            "invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->check(Landroid/app/Activity;)V",
         )
 
         setPatchInfo()

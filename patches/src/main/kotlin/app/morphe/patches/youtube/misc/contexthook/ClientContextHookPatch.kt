@@ -15,8 +15,9 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_21_21_or_greater
 import app.morphe.util.addInstructionsAtControlFlowLabel
-import app.morphe.util.cloneMutableAndPreserveParameters
+import app.morphe.util.cloneParameters
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -47,9 +48,11 @@ enum class Endpoint(
     NEXT(NextEndpointParentFingerprint),
     PLAYER(PlayerEndpointParentFingerprint),
     REEL(
-        ReelCreateItemsEndpointConstructorFingerprint,
-        ReelItemWatchEndpointConstructorFingerprint,
-        ReelWatchSequenceEndpointConstructorFingerprint,
+        // 21.21+ removed "reel/create_reel_items" and the replacement isn't clear.
+        *(arrayOf(
+            ReelItemWatchEndpointConstructorFingerprint,
+            ReelWatchSequenceEndpointConstructorFingerprint,
+        ) + if (!is_21_21_or_greater) arrayOf(ReelCreateItemsEndpointConstructorFingerprint) else emptyArray())
     ),
     SEARCH(SearchRequestBuildParametersFingerprint),
     TRANSCRIPT(TranscriptEndpointConstructorFingerprint);
@@ -101,9 +104,7 @@ val clientContextHookPatch = bytecodePatch(
         }
 
         val osNameField : FieldReference
-        BuildClientContextBodyFingerprint.match(
-            BuildClientContextBodyConstructorFingerprint.originalClassDef
-        ).let {
+        BuildClientContextBodyFingerprint.let {
             it.method.apply {
                 val osNameIndex = it.instructionMatches[1].index
                 osNameField = getInstruction<ReferenceInstruction>(
@@ -113,9 +114,7 @@ val clientContextHookPatch = bytecodePatch(
             }
         }
 
-        val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.match(
-            ClientFormFactorEnumConstructorFingerprint.originalClassDef
-        ).method as MethodReference
+        val clientFormFactorOrdinalReference = ClientFormFactorEnumOrdinalFingerprint.method as MethodReference
 
         val setClientFormFactorFingerprint = Fingerprint(
             accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -124,7 +123,7 @@ val clientContextHookPatch = bytecodePatch(
             filters = listOf(
                 fieldAccess(
                     opcode = Opcode.IGET,
-                    definingClass = CLIENT_INFO_CLASS_DESCRIPTOR,
+                    definingClass = CLIENT_INFO_CLASS,
                     type = "I"
                 ),
                 methodCall(
@@ -158,16 +157,15 @@ val clientContextHookPatch = bytecodePatch(
                 // Use locally declared fingerprint because internally fingerprint caches the match.
                 // Could use Fingerprint.clearMatch() but creating a new instance also works.
                 val endpointRequestBodyFingerprint = Fingerprint(
+                    classFingerprint = parentFingerprint,
                     accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
                     returnType = "V",
                     parameters = listOf(),
                 )
 
-                endpointRequestBodyFingerprint.match(
-                    parentFingerprint.originalClassDef
-                ).let {
+                endpointRequestBodyFingerprint.let {
                     // 21.05+ clobbers p0 register.
-                    it.method.cloneMutableAndPreserveParameters().apply {
+                    it.method.cloneParameters().apply {
                         it.classDef.methods.add(
                             ImmutableMethod(
                                 definingClass,
@@ -189,10 +187,10 @@ val clientContextHookPatch = bytecodePatch(
                                         iget-object v1, v0, $clientInfoField
                                         if-eqz v1, :ignore
                                     """ + endpoint.smaliInstructions +
-                                    """
-                                        :ignore
-                                        return-void
-                                    """
+                                            """
+                                                :ignore
+                                                return-void
+                                            """
                                 )
                             }
                         )

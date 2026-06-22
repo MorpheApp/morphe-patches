@@ -1,16 +1,33 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
 package app.morphe.extension.youtube.patches.playback.speed;
 
 import static app.morphe.extension.shared.StringRef.str;
 
+import java.util.Collections;
+
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.youtube.patches.utils.requests.GetMixPlaylistRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class RememberPlaybackSpeedPatch {
 
+    private static final boolean DISABLE_PLAYBACK_SPEED_MUSIC = Settings.DISABLE_PLAYBACK_SPEED_MUSIC.get();
+
     private static final long TOAST_DELAY_MILLISECONDS = 750;
+
+    private static volatile String lastFetchedVideoId = "";
 
     private static volatile boolean newVideoStarted;
 
@@ -76,6 +93,20 @@ public final class RememberPlaybackSpeedPatch {
             newVideoStarted = false;
 
             final float defaultSpeed = Settings.PLAYBACK_SPEED_DEFAULT.get();
+            if (DISABLE_PLAYBACK_SPEED_MUSIC) {
+                if (defaultSpeed == 1.0f) {
+                    return 1.0f;
+                }
+
+                String videoId = VideoInformation.getVideoId();
+                GetMixPlaylistRequest request = GetMixPlaylistRequest.getRequestForVideoId(videoId);
+                final boolean isMusic = request != null && Boolean.TRUE.equals(request.getResult());
+                if (isMusic) {
+                    Logger.printDebug(() -> "Overriding music video speed to 1.0x: " + videoId);
+                    return 1.0f;
+                }
+            }
+
             if (defaultSpeed > 0) {
                 return defaultSpeed;
             }
@@ -84,4 +115,16 @@ public final class RememberPlaybackSpeedPatch {
         return -2.0f;
     }
 
+    public static void preloadMusicVideoFetch(String videoId, boolean isShortAndOpeningOrPlaying) {
+        if (DISABLE_PLAYBACK_SPEED_MUSIC && !VideoInformation.lastPlayerResponseIsShort() &&
+                !lastFetchedVideoId.equals(videoId) && Settings.PLAYBACK_SPEED_DEFAULT.get() != 1.0f) {
+            Logger.printDebug(() -> "Prefetching music video status: " + videoId);
+            lastFetchedVideoId = videoId;
+            GetMixPlaylistRequest request = GetMixPlaylistRequest.fetchRequestIfNeeded(
+                    videoId, Collections.emptyMap());
+            // Must block here off the main thread until fetch is finished,
+            // because the speed override happens on main thread after playback has started.
+            request.getResult();
+        }
+    }
 }

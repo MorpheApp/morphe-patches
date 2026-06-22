@@ -129,7 +129,7 @@ val videoIdPatch = bytecodePatch(
     )
 
     execute {
-        VideoIdFingerprint.match(VideoIdParentFingerprint.originalClassDef).let {
+        VideoIdFingerprint.let {
             it.method.apply {
                 videoIdMethodRef = WeakReference(this)
                 val index = it.instructionMatches[1].index

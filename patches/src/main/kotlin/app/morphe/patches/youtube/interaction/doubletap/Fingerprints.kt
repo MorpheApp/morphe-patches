@@ -17,6 +17,6 @@ internal object DoubleTapInfoCtorFingerprint : Fingerprint(
         "Landroid/view/MotionEvent;",
         "I",
         "Z",
-        "Lj\$/time/Duration;"
+        "Lj$/time/Duration;"
     )
 )

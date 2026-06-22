@@ -8,24 +8,20 @@ import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerTyp
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_2;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_3;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType.MODERN_4;
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_19_20_OR_GREATER;
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_19_21_OR_GREATER;
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_19_26_OR_GREATER;
-import static app.morphe.extension.youtube.patches.VersionCheckPatch.IS_19_29_OR_GREATER;
 
+import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.ResourceType;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.Setting;
@@ -44,12 +40,6 @@ public final class MiniplayerPatch {
         DISABLED(false, null),
         /** Unmodified type, and same as un-patched. */
         DEFAULT(null, null),
-        /**
-         * Exactly the same as MINIMAL and only here for migration of user settings.
-         * Eventually this should be deleted.
-         */
-        @Deprecated
-        PHONE(false, null),
         MINIMAL(false, null),
         TABLET(true, null),
         MODERN_1(null, 1),
@@ -121,12 +111,8 @@ public final class MiniplayerPatch {
         MINIPLAYER_SIZE = dipWidth;
     }
 
-    /**
-     * Modern subtitle overlay for {@link MiniplayerType#MODERN_2}.
-     * Resource is not present in older targets, and this field will be zero.
-     */
-    private static final int MODERN_OVERLAY_SUBTITLE_TEXT
-            = ResourceUtils.getIdentifier(ResourceType.ID, "modern_miniplayer_subtitle_text");
+    private static final boolean DISABLE_RESUMING_MINIPLAYER =
+            Settings.MINIPLAYER_DISABLE_RESUMING.get();
 
     private static final MiniplayerType CURRENT_TYPE = Settings.MINIPLAYER_TYPE.get();
 
@@ -134,10 +120,8 @@ public final class MiniplayerPatch {
      * Cannot turn off double tap with modern 2 or 3 with later targets,
      * as forcing it off breakings tapping the miniplayer.
      */
-    private static final boolean DOUBLE_TAP_ACTION_ENABLED =
-            // 19.29+ is very broken if double tap is not enabled.
-            IS_19_29_OR_GREATER ||
-                    (CURRENT_TYPE.isModern() && Settings.MINIPLAYER_DOUBLE_TAP_ACTION.get());
+    private static final boolean DOUBLE_TAP_ACTION_ENABLED = true;
+
 
     private static final boolean DRAG_AND_DROP_ENABLED =
             CURRENT_TYPE.isModern() && !Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP.get();
@@ -146,27 +130,20 @@ public final class MiniplayerPatch {
             Settings.MINIPLAYER_HIDE_OVERLAY_BUTTONS.get()
                     && Settings.MINIPLAYER_HIDE_OVERLAY_BUTTONS.isAvailable();
 
-    private static final boolean HIDE_SUBTEXT_ENABLED =
-            (CURRENT_TYPE == MODERN_1 || CURRENT_TYPE == MODERN_3 || CURRENT_TYPE == MODERN_4)
-                    && Settings.MINIPLAYER_HIDE_SUBTEXT.get();
-
-    // 19.25 is last version that uses forward/back buttons for phones,
-    // but buttons still show for tablets/foldable devices, and they don't work well so always hide.
-    private static final boolean HIDE_REWIND_FORWARD_ENABLED = CURRENT_TYPE == MODERN_1
-            && (VersionCheckPatch.IS_19_34_OR_GREATER || Settings.MINIPLAYER_HIDE_REWIND_FORWARD.get());
-
     private static final boolean MINIPLAYER_ROUNDED_CORNERS_ENABLED =
             CURRENT_TYPE.isModern() && !Settings.MINIPLAYER_DISABLE_ROUNDED_CORNERS.get();
 
     private static final boolean MINIPLAYER_HORIZONTAL_DRAG_ENABLED =
             DRAG_AND_DROP_ENABLED && !Settings.MINIPLAYER_DISABLE_HORIZONTAL_DRAG.get();
 
-    /**
-     * Remove a broken and always present subtitle text that is only
-     * present with {@link MiniplayerType#MODERN_2}. Bug was fixed in 19.21.
-     */
-    private static final boolean HIDE_BROKEN_MODERN_2_SUBTITLE =
-            CURRENT_TYPE == MODERN_2 && !IS_19_21_OR_GREATER;
+    private static final Map<Integer, String> MINIMAL_PLAYER_DRAWABLES = Map.of(
+            ResourceUtils.getStringIdentifier("accessibility_pause"),
+            "yt_fill_pause_vd_theme_24",
+            ResourceUtils.getStringIdentifier("accessibility_play"),
+            "yt_fill_play_arrow_vd_theme_24",
+            ResourceUtils.getStringIdentifier("accessibility_replay"),
+            "yt_outline_replay_arrow_vd_theme_24"
+    );
 
     private static final int OPACITY_LEVEL;
 
@@ -200,18 +177,13 @@ public final class MiniplayerPatch {
         @Override
         public boolean isAvailable() {
             MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
-            return type == MODERN_4
-                    || (!IS_19_20_OR_GREATER && (type == MODERN_1 || type == MODERN_3))
-                    || (!IS_19_26_OR_GREATER && type == MODERN_1
-                    && !Settings.MINIPLAYER_DOUBLE_TAP_ACTION.get() && Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP.get())
-                    || (IS_19_29_OR_GREATER && type == MODERN_3);
+            return type == MODERN_4 || type == MODERN_3;
         }
 
         @Override
         public List<Setting<?>> getParentSettings() {
             return List.of(
                     Settings.MINIPLAYER_TYPE,
-                    Settings.MINIPLAYER_DOUBLE_TAP_ACTION,
                     Settings.MINIPLAYER_DISABLE_DRAG_AND_DROP
             );
         }
@@ -230,20 +202,7 @@ public final class MiniplayerPatch {
         }
     }
 
-    public static final class MiniplayerHideSubtextsAvailability implements Setting.Availability {
-        @Override
-        public boolean isAvailable() {
-            MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
-            return type == MODERN_3 || type == MODERN_4;
-        }
-
-        @Override
-        public List<Setting<?>> getParentSettings() {
-            return List.of(Settings.MINIPLAYER_TYPE);
-        }
-    }
-
-    public static final class MiniplayerHideRewindOrOverlayOpacityAvailability implements Setting.Availability {
+    public static final class MiniplayerOverlayOpacityAvailability implements Setting.Availability {
         @Override
         public boolean isAvailable() {
             MiniplayerType type = Settings.MINIPLAYER_TYPE.get();
@@ -254,6 +213,13 @@ public final class MiniplayerPatch {
         public List<Setting<?>> getParentSettings() {
             return List.of(Settings.MINIPLAYER_TYPE);
         }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean disableResumingStartupMiniPlayer(boolean original) {
+        return !DISABLE_RESUMING_MINIPLAYER && original;
     }
 
     /**
@@ -410,6 +376,21 @@ public final class MiniplayerPatch {
 
     /**
      * Injection point.
+     * <p>
+     * Fixes the fullscreen button tint when the minimal miniplayer type is selected.
+     * The minimal type applies a theme where {@code ytOverlayButtonPrimary} resolves to gray
+     * instead of white, making the fullscreen button appear gray.
+     */
+    public static void fixMinimalMiniplayerFullscreenButtonTint(View view) {
+        if (CURRENT_TYPE != MINIMAL) return;
+
+        if (view instanceof ImageView imageView) {
+            imageView.setImageTintList(ColorStateList.valueOf(0xFFFFFFFF));
+        }
+    }
+
+    /**
+     * Injection point.
      */
     public static void hideMiniplayerExpandClose(View view) {
         Utils.hideViewByRemovingFromParentUnderCondition(HIDE_OVERLAY_BUTTONS_ENABLED, view);
@@ -427,43 +408,17 @@ public final class MiniplayerPatch {
     /**
      * Injection point.
      */
-    public static void hideMiniplayerRewindForward(View view) {
-        Utils.hideViewByRemovingFromParentUnderCondition(HIDE_REWIND_FORWARD_ENABLED, view);
-    }
-
-    /**
-     * Injection point.
-     */
-    public static void hideMiniplayerSubTexts(View view) {
-        try {
-            // Different subviews are passed in, but only TextView is of interest here.
-            if (HIDE_SUBTEXT_ENABLED && view instanceof TextView) {
-                Logger.printDebug(() -> "Hiding subtext view");
-                Utils.hideViewByRemovingFromParentUnderCondition(true, view);
-            }
-        } catch (Exception ex) {
-            Logger.printException(() -> "hideMiniplayerSubTexts failure", ex);
+    public static void overrideMiniplayerActionButtonDrawable(ImageView view, int contentDescriptionId) {
+        if (!VersionCheckPatch.IS_21_17_OR_GREATER || CURRENT_TYPE != MINIMAL) {
+            return;
         }
-    }
 
-    /**
-     * Injection point.
-     */
-    public static void playerOverlayGroupCreated(View group) {
-        try {
-            if (HIDE_BROKEN_MODERN_2_SUBTITLE && MODERN_OVERLAY_SUBTITLE_TEXT != 0) {
-                if (group instanceof ViewGroup) {
-                    View subtitleText = Utils.getChildView((ViewGroup) group, true,
-                            view -> view.getId() == MODERN_OVERLAY_SUBTITLE_TEXT);
-
-                    if (subtitleText != null) {
-                        subtitleText.setVisibility(View.GONE);
-                        Logger.printDebug(() -> "Modern overlay subtitle view set to hidden");
-                    }
-                }
+        String drawableName = MINIMAL_PLAYER_DRAWABLES.get(contentDescriptionId);
+        if (drawableName != null) {
+            Drawable drawable = ResourceUtils.getDrawable(drawableName);
+            if (drawable != null) {
+                view.setImageDrawable(drawable);
             }
-        } catch (Exception ex) {
-            Logger.printException(() -> "playerOverlayGroupCreated failure", ex);
         }
     }
 }

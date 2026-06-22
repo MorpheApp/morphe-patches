@@ -5,15 +5,19 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
-import app.morphe.patches.shared.misc.mapping.ResourceType
-import app.morphe.patches.shared.misc.mapping.resourceLiteral
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object MediaRouteButtonFingerprint : Fingerprint(
-    definingClass = "/MediaRouteButton;",
-    name = "setVisibility",
-    parameters = listOf("I")
+internal object PlayerButtonFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        methodCall(name = "setVisibility"),
+        literal(11208L)
+    )
 )
 
 internal object CastButtonPlayerFeatureFlagFingerprint : Fingerprint(

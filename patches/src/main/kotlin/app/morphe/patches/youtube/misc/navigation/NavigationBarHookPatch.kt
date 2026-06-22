@@ -19,10 +19,9 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playertype.playerTypeHookPatch
-import app.morphe.patches.youtube.misc.playservice.is_19_35_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_21_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_28_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
@@ -44,12 +43,12 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 import com.android.tools.smali.dexlib2.util.MethodUtil
 import java.lang.ref.WeakReference
 
-internal const val EXTENSION_CLASS_DESCRIPTOR =
+internal const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/shared/NavigationBar;"
-internal const val EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR =
-    "Lapp/morphe/extension/youtube/shared/NavigationBar\$NavigationButton;"
+internal const val EXTENSION_NAVIGATION_BUTTON_CLASS =
+    $$"Lapp/morphe/extension/youtube/shared/NavigationBar$NavigationButton;"
 private const val EXTENSION_TOOLBAR_INTERFACE =
-    "Lapp/morphe/extension/youtube/shared/NavigationBar${'$'}AppCompatToolbarPatchInterface;"
+    $$"Lapp/morphe/extension/youtube/shared/NavigationBar$AppCompatToolbarPatchInterface;"
 
 private lateinit var hookNavigationButtonCreatedMethodRef : WeakReference<MutableMethod>
 
@@ -80,7 +79,7 @@ fun hookNavigationButtonCreated(extensionClassDescriptor: String) {
     hookNavigationButtonCreatedMethodRef.get()!!.addInstruction(
         0,
         "invoke-static { p0, p1 }, $extensionClassDescriptor->navigationTabCreated" +
-                "(${EXTENSION_NAVIGATION_BUTTON_DESCRIPTOR}Landroid/view/View;)V",
+                "(${EXTENSION_NAVIGATION_BUTTON_CLASS}Landroid/view/View;)V",
     )
 }
 
@@ -115,12 +114,12 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
                 addInstruction(
                     insertIndex,
                     "invoke-static { v$register }, " +
-                        "$EXTENSION_CLASS_DESCRIPTOR->${hook.methodName}(${hook.parameters})V",
+                        "$EXTENSION_CLASS->${hook.methodName}(${hook.parameters})V",
                 )
             }
         }
 
-        InitializeButtonsFingerprint.match(PivotBarConstructorFingerprint.originalClassDef).method.apply {
+        InitializeButtonsFingerprint.method.apply {
             // Hook the current navigation bar enum value. Note, the 'You' tab does not have an enum value.
             val navigationEnumClassName = NavigationEnumFingerprint.classDef.type
             addHook(NavigationHook.SET_LAST_APP_NAVIGATION_ENUM) {
@@ -166,7 +165,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
                 addInstruction(
                     index + 1,
                     "invoke-static { v$viewRegister, v$isSelectedRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->navigationTabSelected(Landroid/view/View;Z)V",
+                            "$EXTENSION_CLASS->navigationTabSelected(Landroid/view/View;Z)V",
                 )
             }
         }
@@ -175,7 +174,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         // Litho filtering based on navigation tab before the tab is updated.
         YouTubeMainActivityOnBackPressedFingerprint.method.addInstruction(
             0,
-            "invoke-static { p0 }, $EXTENSION_CLASS_DESCRIPTOR->onBackPressed(Landroid/app/Activity;)V",
+            "invoke-static { p0 }, $EXTENSION_CLASS->onBackPressed(Landroid/app/Activity;)V",
         )
 
         // Hook the search bar.
@@ -192,7 +191,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
                 addInstruction(
                     instructionIndex,
                     "invoke-static { v$viewRegister }, " +
-                            "$EXTENSION_CLASS_DESCRIPTOR->searchBarResultsViewLoaded(Landroid/view/View;)V",
+                            "$EXTENSION_CLASS->searchBarResultsViewLoaded(Landroid/view/View;)V",
                 )
             }
         }
@@ -206,7 +205,7 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
 
                 addInstruction(
                     index + 1,
-                    "invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->setToolbar(Landroid/widget/FrameLayout;)V"
+                    "invoke-static { v$register }, $EXTENSION_CLASS->setToolbar(Landroid/widget/FrameLayout;)V"
                 )
             }
         }
@@ -258,25 +257,23 @@ val navigationBarHookPatch = bytecodePatch(description = "Hooks the active navig
         }
 
         // Fix YT bug of notification tab missing the filled icon.
-        if (is_19_35_or_greater) {
-            val cairoNotificationEnumReference = ImageEnumConstructorFingerprint
-                .instructionMatches.last().getInstruction<ReferenceInstruction>().reference
+        val cairoNotificationEnumReference = ImageEnumConstructorFingerprint
+            .instructionMatches.last().getInstruction<ReferenceInstruction>().reference
 
-            SetEnumMapFingerprint.let {
-                it.method.apply {
-                    val setEnumIntegerIndex = it.instructionMatches.last().index
-                    val enumMapRegister = getInstruction<FiveRegisterInstruction>(setEnumIntegerIndex).registerC
-                    val insertIndex = setEnumIntegerIndex + 1
-                    val freeRegister = findFreeRegister(insertIndex, enumMapRegister)
+        SetEnumMapFingerprint.let {
+            it.method.apply {
+                val setEnumIntegerIndex = it.instructionMatches.last().index
+                val enumMapRegister = getInstruction<FiveRegisterInstruction>(setEnumIntegerIndex).registerC
+                val insertIndex = setEnumIntegerIndex + 1
+                val freeRegister = findFreeRegister(insertIndex, enumMapRegister)
 
-                    addInstructions(
-                        insertIndex,
-                        """
-                            sget-object v$freeRegister, $cairoNotificationEnumReference
-                            invoke-static { v$enumMapRegister, v$freeRegister }, $EXTENSION_CLASS_DESCRIPTOR->setCairoNotificationFilledIcon(Ljava/util/EnumMap;Ljava/lang/Enum;)V
-                        """
-                    )
-                }
+                addInstructions(
+                    insertIndex,
+                    """
+                        sget-object v$freeRegister, $cairoNotificationEnumReference
+                        invoke-static { v$enumMapRegister, v$freeRegister }, $EXTENSION_CLASS->setCairoNotificationFilledIcon(Ljava/util/EnumMap;Ljava/lang/Enum;)V
+                    """
+                )
             }
         }
     }

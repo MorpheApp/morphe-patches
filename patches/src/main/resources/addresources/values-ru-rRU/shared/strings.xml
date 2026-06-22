@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">История поиска пуста</string>
   <string name="morphe_settings_search_empty_history_summary">Для сохранения истории поиска введите поисковый запрос и нажмите Enter</string>
   <string name="morphe_settings_search_history_title">Показать историю поиска настроек</string>
-  <string name="morphe_settings_search_history_summary_on">История поиска настроек показана</string>
-  <string name="morphe_settings_search_history_summary_off">История поиска настроек скрыта</string>
   <string name="morphe_show_menu_icons_title">Показать иконки в настройках Morphe</string>
-  <string name="morphe_show_menu_icons_summary_on">Иконки в настройках Morphe показаны</string>
-  <string name="morphe_show_menu_icons_summary_off">Иконки в настройках Morphe скрыты</string>
   <string name="morphe_language_title">Язык настроек Morphe</string>
   <string name="morphe_language_user_dialog_message">"Переводы для некоторых языков могут быть неполными или отсутствовать.
 
@@ -88,37 +84,35 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_licenses_loading">Загрузка...</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">Отладка</string>
-  <string name="morphe_debug_screen_summary">Включить или отключить параметры отладки</string>
+  <string name="morphe_debug_screen_summary">Настроить расширенные параметры разработчика и журналы диагностики</string>
   <string name="morphe_debug_title">Включить журналы отладки</string>
-  <string name="morphe_debug_summary_on">Журналы отладки включены</string>
-  <string name="morphe_debug_summary_off">Журналы отладки отключены</string>
-  <string name="morphe_debug_stacktrace_title">Журнал трассировки стека</string>
-  <string name="morphe_debug_stacktrace_summary_on">В журналы отладки включена трассировка стека</string>
-  <string name="morphe_debug_stacktrace_summary_off">В журналы отладки не включена трассировка стека</string>
+  <string name="morphe_debug_stacktrace_title">Трассировка стека журнала отладки</string>
+  <string name="morphe_debug_stacktrace_summary">Включает трассировки стека в журналы отладки, чтобы помочь выявить ошибки</string>
   <string name="morphe_debug_toast_on_error_title">Показать всплывающее уведомление при ошибке Morphe</string>
-  <string name="morphe_debug_toast_on_error_summary_on">Всплывающее уведомление при возникновении ошибки Morphe показано</string>
-  <string name="morphe_debug_toast_on_error_summary_off">Всплывающее уведомление при возникновении ошибки Morphe скрыто</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"Отключение всплывающих уведомлений об ошибках скроет все сообщения об ошибках Morphe.
 
 Вы не будете уведомлены о каких-либо непредвиденных событиях."</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">Экспортировать журналы отладки</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Копирует журналы отладки Morphe в буфер обмена</string>
+  <string name="morphe_debug_export_logs_title">Экспорт журналов отладки</string>
+  <string name="morphe_debug_export_logs_summary">Экспорт журналов отладки Morphe</string>
+  <string name="morphe_debug_export_logs_file">Экспорт в файл</string>
+  <string name="morphe_debug_export_logs_success">Журналы отладки успешно экспортированы</string>
+  <string name="morphe_debug_export_logs_failed">Не удалось экспортировать журналы отладки</string>
+  <string name="morphe_debug_logs_search_hint">Поиск журналов отладки...</string>
+  <string name="morphe_debug_export_logs_clear">Очистить</string>
   <string name="morphe_debug_logs_disabled">Журналы отладки отключены</string>
-  <string name="morphe_debug_logs_none_found">Журналы не найдены</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">Журналы скопированы</string>
-  <string name="morphe_debug_logs_failed_to_export">Не удалось экспортировать журналы: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">Очистить журналы отладки</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">Очищает все сохраненные журналы отладки Morphe</string>
-  <string name="morphe_debug_logs_clear_toast">Журналы очищены</string>
+  <string name="morphe_debug_logs_none_found">Журналы отладки не найдены</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">Журналы отладки скопированы</string>
+  <string name="morphe_debug_logs_failed_to_export">Не удалось экспортировать журналы отладки: %s</string>
+  <string name="morphe_debug_logs_clear_toast">Журналы отладки очищены</string>
   <string name="morphe_debug_feature_flags_manager_title">Флаги функций Manager</string>
   <string name="morphe_debug_feature_flags_manager_summary">Управление логическими флагами функций</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">Активные флаги (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">Заблокированные флаги (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">Поиск флагов...</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">Флаги сохранены</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">Флаги сброшены</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">Флаги скопированы в буфер обмена</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустите приложение, чтобы использовать эту функцию</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">Флажки активных функций (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">Флажки заблокированных функций (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">Поиск флажков функций...</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">Флажки функций сохранены</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">Флажки функций сброшены</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">Флажки функций скопированы в буфер обмена</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">Перезапустите приложение, чтобы использовать эту настройку</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">Откройте настройки MicroG</string>
@@ -138,4 +132,28 @@ Second \"item\" text"</string>
 
 Нажмите кнопку \"Продолжить\" и разрешите изменения оптимизации."</string>
   <string name="gms_core_dialog_continue_text">Продолжить</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">Показать диалоговое окно оптимизации батареи MicroG</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"Выключение этой функции скроет запрос оптимизации батареи MicroG.
+
+Если оптимизацию батареи не изменить, вы можете столкнуться с такими проблемами:
+• Приложение может случайно закрываться
+• Уведомления могут не работать
+• Фоновое воспроизведение может не работать"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">Обработка ссылок в приложении</string>
+  <string name="morphe_link_handling_summary">Настроить открытие ссылок в этом приложении</string>
+  <string name="morphe_link_handling_step1_title">Шаг 1: Отключите исходные ссылки приложений</string>
+  <string name="morphe_link_handling_step1_message">Откройте настройки исходного приложения и отключите все доменные ссылки</string>
+  <string name="morphe_link_handling_step2_title">Шаг 2: Включите пропатченные ссылки приложений</string>
+  <string name="morphe_link_handling_step2_message">Откройте настройки пропатченного приложения и включите все доменные ссылки</string>
+  <string name="morphe_link_handling_open">Открыть настройки</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 Экспериментальное предупреждение 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"Вы используете экспериментальную версию программы⚠️ &lt;b&gt;%1$s&lt;/b&gt;
+&lt;br/&gt;&lt;br/&gt;
+🔧 Ожидайте странного поведения программы или необнаруженных ошибок, пока мы усовершенствуем патчи для этой версии программы.
+&lt;br/&gt;&lt;br/&gt;
+Если вы хотите получить максимально беспроблемный опыт, тогда &lt;b&gt;удалите&lt;/b&gt; это и пропатчите рекомендованную версию программы ✅ &lt;b&gt;%2$s&lt;/b&gt;"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ Я хочу экспериментальную</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ Я хочу стабильную</string>
 </resources>

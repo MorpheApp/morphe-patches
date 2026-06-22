@@ -11,8 +11,8 @@
 package app.morphe.extension.youtube.patches.playback.speed;
 
 import static app.morphe.extension.shared.StringRef.str;
-import static app.morphe.extension.youtube.videoplayer.PlayerControlButton.fadeInDuration;
-import static app.morphe.extension.youtube.videoplayer.PlayerControlButton.getDialogBackgroundColor;
+import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.fadeInDuration;
+import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getDialogBackgroundColor;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -21,6 +21,7 @@ import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
@@ -139,6 +140,13 @@ public class CustomPlaybackSpeedPatch {
      */
     public static boolean disableTapAndHoldSpeed(boolean original) {
         return !DISABLE_TAP_AND_HOLD_SPEED && original;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean restoreOldPlaybackSpeedMenu() {
+        return Settings.RESTORE_OLD_SPEED_MENU.get();
     }
 
     /**
@@ -263,12 +271,12 @@ public class CustomPlaybackSpeedPatch {
         lastTimePlaybackMenuInvoked = now;
 
         // Dismiss View [R.id.touch_outside] is the 1st ChildView of the 4th ParentView.
-        // This only shows in phone layout.
-        var touchInsidedView = parentView4th.getChildAt(0);
-        touchInsidedView.setSoundEffectsEnabled(false);
-        touchInsidedView.performClick();
+        // This only shows in phone layout of YouTube 21.11 or lower.
+        View touchInsidedView = parentView4th.getChildAt(0);
+        touchInsidedView.callOnClick();
 
-        // In tablet layout there is no Dismiss View, instead we just hide all two parent views.
+        // In tablet layout and phone layout of YouTube 21.12 or higher,
+        // there no Dismiss View. Just hide two parent views.
         parentView3rd.setVisibility(View.GONE);
         parentView4th.setVisibility(View.GONE);
 
@@ -338,9 +346,9 @@ public class CustomPlaybackSpeedPatch {
             speedSlider.setMax(speedToProgressValue(customPlaybackSpeedsMax));
             speedSlider.setProgress(speedToProgressValue(currentSpeed));
             speedSlider.getProgressDrawable().setColorFilter(
-                    Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN); // Theme progress bar.
+                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme progress bar.
             speedSlider.getThumb().setColorFilter(
-                    Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN); // Theme slider thumb.
+                    new PorterDuffColorFilter(Utils.getAppForegroundColor(), PorterDuff.Mode.SRC_IN)); // Theme slider thumb.
             LinearLayout.LayoutParams sliderParams = new LinearLayout.LayoutParams(
                     0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             speedSlider.setLayoutParams(sliderParams);
@@ -615,6 +623,7 @@ class OutlineSymbolDrawable extends Drawable {
         paint.setColorFilter(colorFilter);
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public int getOpacity() {
         return PixelFormat.TRANSLUCENT;

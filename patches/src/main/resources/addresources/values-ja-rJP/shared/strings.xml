@@ -19,9 +19,9 @@ Second \"item\" text"</string>
   <!-- misc.settings.settingsResourcePatch -->
   <string name="morphe_settings_submenu_title">設定</string>
   <string name="morphe_settings_confirm_user_dialog_title">本当に続行してもよろしいですか？</string>
-  <string name="morphe_settings_save">保存</string>
+  <string name="morphe_settings_save">適用</string>
   <string name="morphe_settings_reset">リセット</string>
-  <string name="morphe_settings_reset_color">色をリセット</string>
+  <string name="morphe_settings_reset_color">色を初期化</string>
   <string name="morphe_settings_color_invalid">色の値が無効です</string>
   <string name="morphe_settings_restart_title">再起動が必要です</string>
   <string name="morphe_settings_restart_dialog_message">この変更を反映するには、アプリを再起動してください。</string>
@@ -48,11 +48,7 @@ Second \"item\" text"</string>
   <string name="morphe_settings_search_empty_history_title">検索履歴はありません</string>
   <string name="morphe_settings_search_empty_history_summary">検索履歴を保存するには、検索クエリを入力して Enter キーを押してください</string>
   <string name="morphe_settings_search_history_title">設定の検索履歴を表示</string>
-  <string name="morphe_settings_search_history_summary_on">設定の検索履歴が表示されます</string>
-  <string name="morphe_settings_search_history_summary_off">設定の検索履歴は表示されません</string>
   <string name="morphe_show_menu_icons_title">Morphe の設定にアイコンを表示</string>
-  <string name="morphe_show_menu_icons_summary_on">Morphe の設定メニューにはアイコンが表示されます</string>
-  <string name="morphe_show_menu_icons_summary_off">Morphe の設定メニューにはアイコンは表示されません</string>
   <string name="morphe_language_title">Morphe の言語</string>
   <string name="morphe_language_user_dialog_message">"一部の言語では、翻訳が存在しない、または不完全である可能性があります。
 
@@ -60,12 +56,12 @@ Second \"item\" text"</string>
   <string name="morphe_language_DEFAULT">アプリの言語</string>
   <string name="morphe_pref_import_export_title">インポート / エクスポート</string>
   <string name="morphe_pref_import_export_summary">Morphe の設定をインポート / エクスポートします</string>
-  <string name="morphe_settings_import_file">ファイルからインポート</string>
-  <string name="morphe_settings_import_file_success">インポート成功: [保存] を押すと反映します</string>
-  <string name="morphe_settings_import_file_failed">設定のインポートに失敗しました</string>
-  <string name="morphe_settings_export_file">ファイルにエクスポート</string>
-  <string name="morphe_settings_export_file_success">設定のエクスポートに成功しました</string>
-  <string name="morphe_settings_export_file_failed">設定のエクスポートに失敗しました</string>
+  <string name="morphe_settings_import_file">ファイル入力</string>
+  <string name="morphe_settings_import_file_success">ファイル入力: [適用] を押して設定に反映</string>
+  <string name="morphe_settings_import_file_failed">設定のファイル入力に失敗しました</string>
+  <string name="morphe_settings_export_file">ファイル出力</string>
+  <string name="morphe_settings_export_file_success">設定のファイル出力に成功しました</string>
+  <string name="morphe_settings_export_file_failed">設定のファイル出力に失敗しました</string>
   <!-- String is also duplicated in Reddit about preference -->
   <string name="morphe_settings_about_links_body_version_current">Morphe Patches の最新バージョン &lt;i&gt;%s&lt;/i&gt; を使用しています</string>
   <string name="morphe_settings_about_links_body_version_outdated">Morphe Patches のバージョン &lt;i&gt;%1$s&lt;/i&gt; を使用しています&lt;br&gt;&lt;br&gt;&lt;b&gt;更新が利用可能です: &lt;i&gt;%2$s&lt;/i&gt;&lt;/b&gt;&lt;br&gt;&lt;br&gt;パッチを更新するには、Morphe を使ってアプリを再パッチしてください</string>
@@ -84,40 +80,39 @@ Second \"item\" text"</string>
   <string name="morphe_settings_about_links_rvx">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_rv">2022 &#8209; 2025</string>
   <string name="morphe_settings_about_links_vanced">2019 &#8209; 2022</string>
+  <string name="morphe_settings_about_links_licenses">オープンソース ライセンス</string>
   <string name="morphe_settings_about_licenses_loading">読み込み中…</string>
   <!-- misc.debugging.enableDebuggingPatch -->
   <string name="morphe_debug_screen_title">デバッグ</string>
-  <string name="morphe_debug_screen_summary">デバッグ オプションを有効または無効にします</string>
+  <string name="morphe_debug_screen_summary">診断ログなどの高度な開発者向けオプションを設定します</string>
   <string name="morphe_debug_title">デバッグログを有効化</string>
-  <string name="morphe_debug_summary_on">デバッグログは有効です</string>
-  <string name="morphe_debug_summary_off">デバッグログは無効です</string>
-  <string name="morphe_debug_stacktrace_title">スタック トレースをログに保存</string>
-  <string name="morphe_debug_stacktrace_summary_on">デバッグログにはスタック トレースが含まれます</string>
-  <string name="morphe_debug_stacktrace_summary_off">デバッグログにはスタック トレースは含まれません</string>
+  <string name="morphe_debug_stacktrace_title">スタック トレースをデバッグログに追加</string>
+  <string name="morphe_debug_stacktrace_summary">エラーの特定に役立つスタック トレースをデバッグログに追加します</string>
   <string name="morphe_debug_toast_on_error_title">Morphe のエラー時にトーストを表示</string>
-  <string name="morphe_debug_toast_on_error_summary_on">エラーが発生した場合にトースト通知が表示されます</string>
-  <string name="morphe_debug_toast_on_error_summary_off">エラーが発生した場合にトースト通知は表示されません</string>
   <string name="morphe_debug_toast_on_error_user_dialog_message">"エラーのトースト通知をオフにすると、Morphe のすべてのエラー通知が表示されなくなります。
 
 予期しないイベントが発生した場合でも通知されません。"</string>
-  <string name="morphe_debug_export_logs_to_clipboard_title">デバッグログのエクスポート</string>
-  <string name="morphe_debug_export_logs_to_clipboard_summary">Morphe のデバッグログをクリップボードにコピーします</string>
+  <string name="morphe_debug_export_logs_title">デバッグログのエクスポート</string>
+  <string name="morphe_debug_export_logs_summary">Morphe のデバッグログをエクスポートします</string>
+  <string name="morphe_debug_export_logs_file">ファイル出力</string>
+  <string name="morphe_debug_export_logs_success">デバッグログのエクスポートに成功しました</string>
+  <string name="morphe_debug_export_logs_failed">デバッグログのエクスポートに失敗しました</string>
+  <string name="morphe_debug_logs_search_hint">デバッグログを検索</string>
+  <string name="morphe_debug_export_logs_clear">消去</string>
   <string name="morphe_debug_logs_disabled">デバッグログが無効になっています</string>
-  <string name="morphe_debug_logs_none_found">ログが見つかりません</string>
-  <string name="morphe_debug_logs_copied_to_clipboard">ログをコピーしました</string>
-  <string name="morphe_debug_logs_failed_to_export">ログのエクスポートに失敗しました: %s</string>
-  <string name="morphe_debug_logs_clear_buffer_title">デバッグログを消去</string>
-  <string name="morphe_debug_logs_clear_buffer_summary">保存されているすべての Morphe のデバッグログを消去します</string>
-  <string name="morphe_debug_logs_clear_toast">ログを消去しました</string>
+  <string name="morphe_debug_logs_none_found">デバッグログが見つかりません</string>
+  <string name="morphe_debug_logs_copied_to_clipboard">デバッグログをコピーしました</string>
+  <string name="morphe_debug_logs_failed_to_export">デバッグログのエクスポートに失敗しました: %s</string>
+  <string name="morphe_debug_logs_clear_toast">デバッグログを消去しました</string>
   <string name="morphe_debug_feature_flags_manager_title">feature flag マネージャー</string>
   <string name="morphe_debug_feature_flags_manager_summary">各機能のオン / オフを制御する feature flag を管理します</string>
-  <string name="morphe_debug_feature_flags_manager_active_header">有効な flag (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_blocked_header">無効な flag (%d)</string>
-  <string name="morphe_debug_feature_flags_manager_search_hint">flag を検索</string>
-  <string name="morphe_debug_feature_flags_manager_toast_saved">flag を保存しました</string>
-  <string name="morphe_debug_feature_flags_manager_toast_reset">flag をリセットしました</string>
-  <string name="morphe_debug_feature_flags_manager_toast_copied">flag をクリップボードにコピーしました</string>
-  <string name="morphe_debug_feature_flags_manager_toast_no_flags">この機能を使用するにはアプリを再起動してください</string>
+  <string name="morphe_debug_feature_flags_manager_active_header">有効な feature flag (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_blocked_header">無効な feature flag (%d)</string>
+  <string name="morphe_debug_feature_flags_manager_search_hint">feature flag を検索</string>
+  <string name="morphe_debug_feature_flags_manager_toast_saved">feature flag を保存しました</string>
+  <string name="morphe_debug_feature_flags_manager_toast_reset">feature flag をリセットしました</string>
+  <string name="morphe_debug_feature_flags_manager_toast_copied">feature flag をクリップボードにコピーしました</string>
+  <string name="morphe_debug_feature_flags_manager_toast_no_flags">この機能を設定するにはアプリを再起動してください</string>
   <!-- Could be its own resource file, but for simplicity it's shared among all apps. -->
   <!-- misc.gms.gmsCoreSupportResourcePatch -->
   <string name="microg_settings_summary">MicroG の設定メニューを開く</string>
@@ -137,4 +132,28 @@ MicroG に対して電池の最適化を無効にしても、バッテリー消�
 
 [続行] をタップして電池の最適化を無効にしてください"</string>
   <string name="gms_core_dialog_continue_text">続行</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_title">MicroG の電池の最適化ダイアログを表示</string>
+  <string name="morphe_gms_core_battery_optimization_dialog_user_dialog_message">"このダイアログを無効にすると、MicroG の電池の最適化に関する通知が表示されなくなります。
+
+電池の最適化の設定を変更しない場合、次のような問題が発生する可能性があります:
+• アプリが突然終了する
+• 通知が機能しない
+• バックグラウンド再生が正常に動作しない"</string>
+  <!-- misc.gms.linkHandlingPatch -->
+  <string name="morphe_link_handling_title">対応リンクの関連付け</string>
+  <string name="morphe_link_handling_summary">このアプリで対応リンクを開くように設定します</string>
+  <string name="morphe_link_handling_step1_title">手順1: 純正アプリの関連付けを無効にする</string>
+  <string name="morphe_link_handling_step1_message">デバイスの「設定」から純正アプリの設定を開き、すべての対応リンクのドメインを無効にします</string>
+  <string name="morphe_link_handling_step2_title">手順2: パッチ適用済みアプリの関連付けを有効にする</string>
+  <string name="morphe_link_handling_step2_message">デバイスの「設定」からパッチ適用済みアプリの設定を開き、すべての対応リンクのドメインを有効にします</string>
+  <string name="morphe_link_handling_open">「設定」を開く</string>
+  <!-- misc.checks.experimentalAppNoticePatch -->
+  <string name="morphe_experimental_app_version_dialog_title">🚨 実験的バージョンの警告 🚨</string>
+  <string name="morphe_experimental_app_version_dialog_message">"あなたは現在、実験的アプリ バージョンである ⚠️ &lt;b&gt;%1$s&lt;/b&gt; を使用しています。
+&lt;br/&gt;&lt;br/&gt;
+🔧 このバージョンへのパッチの適用は調整中のため、アプリの動作が不安定になったり未確認の不具合が発生する可能性があります。
+&lt;br/&gt;&lt;br/&gt;
+できるだけ問題の少ない環境を希望する場合は、このアプリを &lt;b&gt;アンインストール&lt;/b&gt; して推奨アプリ バージョンである ✅ &lt;b&gt;%2$s&lt;/b&gt; にパッチを適用してください。"</string>
+  <string name="morphe_experimental_app_version_dialog_confirm">⚠️ 実験版にします</string>
+  <string name="morphe_experimental_app_version_dialog_open_homepage">✅ 安定版にします</string>
 </resources>

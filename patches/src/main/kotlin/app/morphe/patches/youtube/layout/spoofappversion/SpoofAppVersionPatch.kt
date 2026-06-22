@@ -5,16 +5,14 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.smali.ExternalLabel
-import app.morphe.patches.shared.misc.mapping.resourceMappingPatch
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.shared.misc.settings.preference.ListPreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference.Sorting
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.noTitleUnsortedPreferenceCategory
 import app.morphe.patches.youtube.misc.contexthook.Endpoint
 import app.morphe.patches.youtube.misc.contexthook.addClientVersionHook
 import app.morphe.patches.youtube.misc.contexthook.clientContextHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_14_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_31_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_20_40_or_greater
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
@@ -26,7 +24,7 @@ import app.morphe.patches.youtube.shared.ToolBarButtonFingerprint
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/spoof/SpoofAppVersionPatch;"
 
 val spoofAppVersionPatch = bytecodePatch(
@@ -48,34 +46,23 @@ val spoofAppVersionPatch = bytecodePatch(
         PreferenceScreen.GENERAL.addPreferences(
             // Group the switch and list preference together, since General menu is sorted by name
             // and the preferences can be scattered apart with non-English languages.
-            PreferenceCategory(
-                titleKey = null,
-                sorting = Sorting.UNSORTED,
-                tag = "app.morphe.extension.shared.settings.preference.NoTitlePreferenceCategory",
-                preferences = setOf(
-                    SwitchPreference("morphe_spoof_app_version"),
-                    if (is_20_40_or_greater) {
-                        ListPreference("morphe_spoof_app_version_target")
-                    } else if (is_20_31_or_greater) {
-                        ListPreference(
-                            key = "morphe_spoof_app_version_target",
-                            entriesKey = "morphe_spoof_app_version_target_legacy_20_31_entries",
-                            entryValuesKey = "morphe_spoof_app_version_target_legacy_20_31_entry_values"
-                        )
-                    } else if (is_20_14_or_greater) {
-                        ListPreference(
-                            key = "morphe_spoof_app_version_target",
-                            entriesKey = "morphe_spoof_app_version_target_legacy_20_14_entries",
-                            entryValuesKey = "morphe_spoof_app_version_target_legacy_20_14_entry_values"
-                        )
-                    } else {
-                        ListPreference(
-                            key = "morphe_spoof_app_version_target",
-                            entriesKey = "morphe_spoof_app_version_target_legacy_19_02_entries",
-                            entryValuesKey = "morphe_spoof_app_version_target_legacy_19_02_entry_values"
-                        )
-                    }
-                )
+            noTitleUnsortedPreferenceCategory(
+                SwitchPreference("morphe_spoof_app_version", summary = true),
+                if (is_20_40_or_greater) {
+                    ListPreference("morphe_spoof_app_version_target")
+                } else if (is_20_31_or_greater) {
+                    ListPreference(
+                        key = "morphe_spoof_app_version_target",
+                        entriesKey = "morphe_spoof_app_version_target_legacy_20_31_entries",
+                        entryValuesKey = "morphe_spoof_app_version_target_legacy_20_31_entry_values"
+                    )
+                } else {
+                    ListPreference(
+                        key = "morphe_spoof_app_version_target",
+                        entriesKey = "morphe_spoof_app_version_target_legacy_20_14_entries",
+                        entryValuesKey = "morphe_spoof_app_version_target_legacy_20_14_entry_values"
+                    )
+                }
             )
         )
 
@@ -106,7 +93,7 @@ val spoofAppVersionPatch = bytecodePatch(
             method.addInstructions(
                 index + 1,
                 """
-                    invoke-static { v$register }, $EXTENSION_CLASS_DESCRIPTOR->getUniversalAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;
+                    invoke-static { v$register }, $EXTENSION_CLASS->getUniversalAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;
                     move-result-object v$register
                 """
             )
@@ -122,7 +109,7 @@ val spoofAppVersionPatch = bytecodePatch(
             // the Shorts endpoint will use app version 20.30.40 to fix the Shorts no overlay.
             addClientVersionHook(
                 Endpoint.REEL,
-                "$EXTENSION_CLASS_DESCRIPTOR->getShortsAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
+                "$EXTENSION_CLASS->getShortsAppVersionOverride(Ljava/lang/String;)Ljava/lang/String;",
             )
         } else if (is_20_31_or_greater) {
             // There are an experimental flags in YouTube 20.31 to 21.04, so simply turn it off.
@@ -133,7 +120,7 @@ val spoofAppVersionPatch = bytecodePatch(
                 fingerprint.let {
                     it.method.insertLiteralOverride(
                         it.instructionMatches.first().index,
-                        "$EXTENSION_CLASS_DESCRIPTOR->disableShortsBoldIcons(Z)Z"
+                        "$EXTENSION_CLASS->disableShortsBoldIcons(Z)Z"
                     )
                 }
             }

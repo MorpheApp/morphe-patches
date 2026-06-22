@@ -15,7 +15,7 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 
-private const val EXTENSION_CLASS_DESCRIPTOR =
+private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/AlternativeThumbnailsPatch;"
 
 val alternativeThumbnailsPatch = bytecodePatch(
@@ -66,15 +66,15 @@ val alternativeThumbnailsPatch = bytecodePatch(
                 tag = "app.morphe.extension.youtube.settings.preference.AlternativeThumbnailsAboutDeArrowPreference",
                 selectable = true,
             ),
-            SwitchPreference("morphe_alt_thumbnail_dearrow_connection_toast"),
+            SwitchPreference("morphe_alt_thumbnail_dearrow_connection_toast", summary = true),
             TextPreference("morphe_alt_thumbnail_dearrow_api_url"),
             NonInteractivePreference("morphe_alt_thumbnail_stills_about"),
-            SwitchPreference("morphe_alt_thumbnail_stills_fast"),
+            SwitchPreference("morphe_alt_thumbnail_stills_fast", summary = true),
             ListPreference("morphe_alt_thumbnail_stills_time"),
         )
 
-        addImageURLHook(EXTENSION_CLASS_DESCRIPTOR)
-        addImageURLSuccessCallbackHook(EXTENSION_CLASS_DESCRIPTOR)
-        addImageURLErrorCallbackHook(EXTENSION_CLASS_DESCRIPTOR)
+        addImageURLHook(EXTENSION_CLASS)
+        addImageURLSuccessCallbackHook(EXTENSION_CLASS)
+        addImageURLErrorCallbackHook(EXTENSION_CLASS)
     }
 }

@@ -1,0 +1,197 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * Original hard forked code:
+ * https://github.com/ReVanced/revanced-patches/commit/724e6d61b2ecd868c1a9a37d465a688e83a74799
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
+package app.morphe.extension.youtube.patches.components;
+
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS;
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_AMBIENT_MODE;
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK;
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_AUDIO_TRACK_FOOTER;
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_CAPTIONS;
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_HELP;
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC;
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_LOCK_SCREEN;
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_LOOP_VIDEO;
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_QUALITY_FOOTER;
+import static app.morphe.extension.youtube.settings.Settings.HIDE_PLAYER_FLYOUT_SPEED;
+import static app.morphe.extension.youtube.settings.Settings.LOOP_VIDEO_BUTTON;
+
+import java.util.List;
+
+import app.morphe.extension.shared.settings.Setting;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
+import app.morphe.extension.youtube.patches.VersionCheckPatch;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch.BufferAsciiStrings;
+import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.youtube.shared.ConversionContext.ContextInterface;
+import app.morphe.extension.youtube.shared.ShortsPlayerState;
+
+@SuppressWarnings("unused")
+public class PlayerFlyoutMenuComponentsFilter extends Filter {
+
+    public static final class HideAudioFlyoutMenuAvailability implements Setting.Availability {
+        @Override
+        public boolean isAvailable() {
+            return !SpoofVideoStreamsPatch.spoofingToClientWithNoMultiAudioStreams();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(SharedYouTubeSettings.SPOOF_VIDEO_STREAMS);
+        }
+    }
+
+    private final ByteArrayFilterGroup flyoutLoopVideoButton = new ByteArrayFilterGroup(
+            null,
+            "yt_outline_arrow_repeat_1_",
+            "yt_outline_experimental_repeat1_",
+            "yt_outline_experimental_play_circle_black_"
+    );
+    private final ByteArrayFilterGroupList flyoutFilterGroupList = new ByteArrayFilterGroupList();
+    private final StringFilterGroup audioTrackMenuFooter;
+    private final StringFilterGroup divider;
+    private final StringFilterGroup qualityMenuFooter;
+
+    public PlayerFlyoutMenuComponentsFilter() {
+        audioTrackMenuFooter = new StringFilterGroup(
+                HIDE_PLAYER_FLYOUT_AUDIO_TRACK_FOOTER,
+                "audio_track_sheet_footer.e"
+        );
+
+        divider = new StringFilterGroup(
+                null,
+                "|divider.e"
+        );
+
+        qualityMenuFooter = new StringFilterGroup(
+                HIDE_PLAYER_FLYOUT_QUALITY_FOOTER,
+                "quality_sheet_footer.e"
+        );
+
+        addPathCallbacks(
+                audioTrackMenuFooter,
+                divider,
+                qualityMenuFooter,
+                new StringFilterGroup(null, "overflow_menu_item.e")
+        );
+
+        flyoutFilterGroupList.addAll(
+                new ByteArrayFilterGroup(
+                        HIDE_PLAYER_FLYOUT_CAPTIONS,
+                        "closed_caption_",
+                        "yt_outline_experimental_closed_captions_"
+                ),
+                new ByteArrayFilterGroup(
+                        HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC,
+                        "yt_outline_youtube_music_",
+                        "yt_outline_experimental_youtube_music_"
+                ),
+                new ByteArrayFilterGroup(
+                        HIDE_PLAYER_FLYOUT_HELP,
+                        "yt_outline_question_circle_",
+                        "yt_outline_experimental_help_circle_"
+                ),
+                new ByteArrayFilterGroup(
+                        HIDE_PLAYER_FLYOUT_LOCK_SCREEN,
+                        "yt_outline_lock_",
+                        "yt_outline_experimental_lock_"
+                ),
+                new ByteArrayFilterGroup(
+                        HIDE_PLAYER_FLYOUT_SPEED,
+                        "yt_outline_play_arrow_half_circle_",
+                        "yt_outline_experimental_play_circle_half_dashed_"
+                ),
+                new ByteArrayFilterGroup(
+                        HIDE_PLAYER_FLYOUT_AUDIO_TRACK,
+                        "yt_outline_person_",
+                        "yt_outline_experimental_person_"
+                ),
+                new ByteArrayFilterGroup(
+                        HIDE_PLAYER_FLYOUT_ADDITIONAL_SETTINGS,
+                        "yt_outline_gear_",
+                        "yt_outline_experimental_gear_"
+                ),
+                new ByteArrayFilterGroup(
+                        HIDE_PLAYER_FLYOUT_AMBIENT_MODE,
+                        "yt_outline_screen_light_",
+                        "yt_outline_experimental_ambient_mode_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_STABLE_VOLUME,
+                        "volume_stable_",
+                        "yt_fill_experimental_stable_volume_",
+                        "yt_outline_experimental_stable_volume_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_SLEEP_TIMER,
+                        "yt_outline_moon_z_",
+                        "yt_outline_experimental_sleep_timer_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_WATCH_IN_VR,
+                        "yt_outline_vr_",
+                        "yt_outline_experimental_vr_"
+                ),
+                new ByteArrayFilterGroup(
+                        Settings.HIDE_PLAYER_FLYOUT_QUALITY,
+                        "yt_outline_adjust_",
+                        "yt_outline_experimental_adjust_"
+                )
+        );
+    }
+
+    @Override
+    boolean isFiltered(ContextInterface contextInterface,
+                       String identifier,
+                       String accessibility,
+                       String path,
+                       byte[] buffer,
+                       BufferAsciiStrings asciiStrings,
+                       StringFilterGroup matchedGroup,
+                       FilterContentType contentType,
+                       int contentIndex) {
+        if (matchedGroup == audioTrackMenuFooter || matchedGroup == qualityMenuFooter) {
+            return true;
+        }
+
+        if (matchedGroup == divider) {
+            if (path.contains("captions_sheet_content.e")) {
+                return Settings.HIDE_PLAYER_FLYOUT_CAPTIONS_FOOTER.get();
+            }
+            if (path.contains("quick_quality_sheet_content.e")) {
+                return HIDE_PLAYER_FLYOUT_QUALITY_FOOTER.get();
+            }
+            return path.contains("overflow_menu_item.e");
+        }
+
+        if (contentIndex != 0) {
+            return false; // Overflow menu is always the start of the path.
+        }
+
+        // Shorts also use this player flyout panel
+        if (ShortsPlayerState.isOpen()) {
+            return false;
+        }
+
+        // 21.x+ fix.
+        if (VersionCheckPatch.IS_20_31_OR_GREATER && path.contains("bottom_sheet_list_option.e")) {
+            return false;
+        }
+
+        if (HIDE_PLAYER_FLYOUT_LOOP_VIDEO.get() || LOOP_VIDEO_BUTTON.get()) {
+            if (flyoutLoopVideoButton.check(buffer).isFiltered()) {
+                return true;
+            }
+        }
+
+        return flyoutFilterGroupList.check(buffer).isFiltered();
+    }
+}
