@@ -11,7 +11,7 @@
 package app.morphe.patches.youtube.layout.formfactor
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLabels
@@ -32,11 +32,11 @@ import app.morphe.patches.youtube.misc.navigation.navigationBarHookPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
-import app.morphe.util.getFreeRegisterProvider
+import app.morphe.util.findFreeRegister
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction22c
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
-import com.android.tools.smali.dexlib2.Opcode
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/ChangeFormFactorPatch;"
@@ -117,58 +117,57 @@ val changeFormFactorPatch = bytecodePatch(
                 methodCall(
                     opcode = Opcode.INVOKE_INTERFACE,
                     smali = "Ljava/util/List;->get(I)Ljava/lang/Object;",
-                    location = InstructionLocation.MatchAfterImmediately(),
+                    location = MatchAfterImmediately(),
                 ),
                 opcode(
                     Opcode.MOVE_RESULT_OBJECT,
-                    location = InstructionLocation.MatchAfterImmediately(),
+                    location = MatchAfterImmediately(),
                 ),
                 opcode(
                     Opcode.CHECK_CAST,
-                    location = InstructionLocation.MatchAfterImmediately(),
+                    location = MatchAfterImmediately(),
                 ),
                 opcode(
                     Opcode.INVOKE_VIRTUAL,
-                    location = InstructionLocation.MatchAfterImmediately(),
+                    location = MatchAfterImmediately(),
                 ),
                 opcode(
                     Opcode.INSTANCE_OF,
-                    location = InstructionLocation.MatchAfterImmediately(),
+                    location = MatchAfterImmediately(),
                 ),
                 opcode(
                     Opcode.IF_EQZ,
-                    location = InstructionLocation.MatchAfterImmediately(),
+                    location = MatchAfterImmediately(),
                 ),
                 opcode(
                     Opcode.CHECK_CAST,
-                    location = InstructionLocation.MatchAfterImmediately(),
+                    location = MatchAfterImmediately(),
                 ),
                 opcode(
                     Opcode.IGET_OBJECT,
-                    location = InstructionLocation.MatchAfterImmediately(),
-                ),
-            ),
+                    location = MatchAfterImmediately(),
+                )
+            )
         )
 
         playerLithoElementsListFingerprint.let {
-            val instructionIndex = it.instructionMatches.first().index
-            val instructionRegister =
-                it.method.getInstruction<BuilderInstruction22c>(instructionIndex).registerA
-            val freeRegister = it.method.getFreeRegisterProvider(
-                instructionIndex, 1, instructionRegister
-            ).getFreeRegister()
+            it.method.apply {
+                val index = it.instructionMatches.first().index
+                val register = getInstruction<BuilderInstruction22c>(index).registerA
+                val free = findFreeRegister(index, register)
 
-            it.method.addInstructionsWithLabels(
-                instructionIndex + 1,
-                """
-                    invoke-static { v$instructionRegister }, $EXTENSION_CLASS->checkPlayerLithoElementsListSize(Ljava/util/List;)Z
-                    move-result v$freeRegister
-                    if-eqz v$freeRegister, :empty_list_check
-                    return-void
-                    :empty_list_check
-                    nop
-                """
-            )
+                addInstructionsWithLabels(
+                    index + 1,
+                    """
+                        invoke-static { v$register }, $EXTENSION_CLASS->checkPlayerLithoElementsListSize(Ljava/util/List;)Z
+                        move-result v$free
+                        if-eqz v$free, :empty_list_check
+                        return-void
+                        :empty_list_check
+                        nop
+                    """
+                )
+            }
         }
     }
 }
