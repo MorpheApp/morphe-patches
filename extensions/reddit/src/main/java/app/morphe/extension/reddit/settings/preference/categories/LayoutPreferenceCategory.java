@@ -15,7 +15,7 @@ import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
 import app.morphe.extension.reddit.patches.HideRecommendedCommunitiesShelf;
-import app.morphe.extension.reddit.patches.HideTrendingShelfPatch;
+import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
 import app.morphe.extension.reddit.settings.Settings;
@@ -34,7 +34,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
                 DisableScreenshotPopupPatch.isPatchIncluded() ||
                 HideAskButtonPatch.isPatchIncluded() ||
                 HideRecommendedCommunitiesShelf.isPatchIncluded() ||
-                HideTrendingShelfPatch.isPatchIncluded() ||
+                HideTrendingShelvesPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded();
     }
 
@@ -68,10 +68,10 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (HideTrendingShelfPatch.isPatchIncluded()) {
+        if (HideTrendingShelvesPatch.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_TRENDING_SHELF
+                    Settings.HIDE_TRENDING_SHELVES
             ));
         }
 

@@ -19,12 +19,12 @@ import app.morphe.util.findFreeRegister
 import app.morphe.util.setExtensionIsPatchIncluded
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/reddit/patches/HideTrendingShelfPatch;"
+    "Lapp/morphe/extension/reddit/patches/HideTrendingShelvesPatch;"
 
 @Suppress("unused")
-val hideTrendingTodayShelfPatch = bytecodePatch(
-    name = "Hide Trending shelf",
-    description = "Adds an option to hide the Trending shelf from search suggestions."
+val hideTrendingShelvesPatch = bytecodePatch(
+    name = "Hide Trending shelves",
+    description = "Adds an option to hide all Trending shelves from search suggestions"
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
@@ -88,12 +88,23 @@ val hideTrendingTodayShelfPatch = bytecodePatch(
         }
 
         TrendingItemFingerprint.applyHideTrending()
-        TypeaheadSuggestionItemFingerprint.applyHideTrending()
 
         if (!is_2026_11_0_or_greater) {
             // Legacy seems to be removed in 2026.11.0+
             TrendingItemLegacyFingerprint.applyHideTrending()
         }
+
+        TypeaheadSuggestionItemFingerprint.method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->hideTrendingCommunitiesShelf(Ljava/lang/Object;)Z
+                move-result v0
+                if-eqz v0, :ignore
+                return-void
+                :ignore
+                nop
+            """
+        )
 
         // endregion
 

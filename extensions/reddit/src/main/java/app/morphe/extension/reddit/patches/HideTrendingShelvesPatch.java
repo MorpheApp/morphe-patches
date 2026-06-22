@@ -18,7 +18,7 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
-public final class HideTrendingShelfPatch {
+public final class HideTrendingShelvesPatch {
 
     /**
      * 'home_revamp_tab_popular' may be removed or changed at any time,
@@ -30,6 +30,8 @@ public final class HideTrendingShelfPatch {
 
     private static volatile String[] trendingLabels = new String[]{ TRENDING_LABEL };
 
+    private static boolean isTrendingSection = false;
+
     /**
      * @return If this patch was included during patching.
      */
@@ -40,8 +42,9 @@ public final class HideTrendingShelfPatch {
     /**
      * Injection point.
      */
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
     public static boolean hideTrendingShelf() {
-        return Settings.HIDE_TRENDING_SHELF.get();
+        return Settings.HIDE_TRENDING_SHELVES.get();
     }
 
     /**
@@ -50,28 +53,51 @@ public final class HideTrendingShelfPatch {
     public static boolean hideTrendingHeader(Object state) {
         try {
             if (state == null || !hideTrendingShelf()) {
+                isTrendingSection = false;
                 return false;
             }
 
             String stateStr = state.toString();
+            boolean isTrending = false;
+
             for (String label : trendingLabels) {
-                if (stateStr.contains(label)) return true;
+                if (stateStr.contains(label)) {
+                    isTrending = true;
+                    break;
+                }
             }
 
-            for (Field field : state.getClass().getDeclaredFields()) {
-                if (field.getType() == String.class) {
-                    field.setAccessible(true);
-                    String value = (String) field.get(state);
-                    if (value != null && Utils.startsWithAny(value, trendingLabels)) {
-                        return true;
+            if (!isTrending) {
+                for (Field field : state.getClass().getDeclaredFields()) {
+                    if (field.getType() == String.class) {
+                        field.setAccessible(true);
+                        String value = (String) field.get(state);
+                        if (value != null && Utils.startsWithAny(value, trendingLabels)) {
+                            isTrending = true;
+                            break;
+                        }
                     }
                 }
             }
+
+            isTrendingSection = isTrending;
+            return isTrending;
+
         } catch (Exception e) {
-            Logger.printException(() -> "shouldHideSearchSectionHeader failure");
+            Logger.printException(() -> "hideTrendingHeader failure");
         }
 
+        isTrendingSection = false;
         return false;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideTrendingCommunitiesShelf(Object unused) {
+        if (!hideTrendingShelf()) return false;
+
+        return isTrendingSection;
     }
 
     /**
