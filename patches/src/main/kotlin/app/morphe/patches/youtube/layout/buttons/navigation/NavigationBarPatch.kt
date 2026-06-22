@@ -210,7 +210,6 @@ val navigationBarPatch = bytecodePatch(
             }
         }
 
-        println("AutoHideNavigationBarOnDismissMiniplayerFingerprint: " + AutoHideNavigationBarOnDismissMiniplayerFingerprint.method)
         if (is_20_31_or_greater) {
             listOf(
                 AutoHideNavigationBarOnFeedScrollingFingerprint,

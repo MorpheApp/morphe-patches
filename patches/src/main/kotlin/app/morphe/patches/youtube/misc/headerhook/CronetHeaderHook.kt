@@ -33,6 +33,6 @@ fun addHeaderHook(descriptor: String) {
         """
             invoke-static { p1, p2 }, $descriptor
             move-result-object p2
-        """,
+        """
     )
 }

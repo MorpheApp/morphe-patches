@@ -21,7 +21,6 @@ import app.morphe.extension.shared.spoof.requests.StreamOrDetailsDataRequest;
 
 @SuppressWarnings("unused")
 public class SpoofVideoStreamsPatch {
-    public static volatile Map<String, String> currentVideoRequestHeader;
 
     public static final class JavaScriptClientAvailability implements Setting.Availability {
         @Override
@@ -68,12 +67,23 @@ public class SpoofVideoStreamsPatch {
 
     private static final boolean SPOOF_VIDEO_STREAMS = SharedYouTubeSettings.SPOOF_VIDEO_STREAMS.get();
 
+    public static volatile Map<String, String> currentVideoRequestHeader;
+
+    public static boolean overrideSpoofStreamFlagsForHeaders = SPOOF_VIDEO_STREAMS;
+
     @Nullable
     private static volatile AppLanguage languageOverride;
 
     private static volatile ClientType preferredClient = ClientType.ANDROID_REEL_AUTH;
 
     private static WeakReference<Application> mainActivityRef = new WeakReference<>(null);
+
+    public static void setOverrideSpoofStreamFlagsForHeaders() {
+        if (!overrideSpoofStreamFlagsForHeaders) {
+            Logger.printDebug(() -> "Forcing override of spoof stream flags with spoofing off");
+            overrideSpoofStreamFlagsForHeaders = true;
+        }
+    }
 
     /**
      * Injection point.
@@ -245,14 +255,16 @@ public class SpoofVideoStreamsPatch {
     /**
      * Injection point.
      * Turns off a feature flag that interferes with spoofing.
-     * Note: Always keep this enabled to allow other patches to work properly.
      */
     public static boolean useMediaFetchHotConfigReplacement(boolean original) {
         if (original) {
             Logger.printDebug(() -> "useMediaFetchHotConfigReplacement is set on");
         }
 
-        return false;
+        if (overrideSpoofStreamFlagsForHeaders) {
+            return false;
+        }
+        return original;
     }
 
     /**
@@ -288,14 +300,16 @@ public class SpoofVideoStreamsPatch {
     /**
      * Injection point.
      * Turns off a feature flag that interferes with video playback.
-     * Note: Always keep this enabled to allow other patches to work properly.
      */
     public static boolean useMediaSessionFeatureFlag(boolean original) {
         if (original) {
             Logger.printDebug(() -> "useMediaSessionFeatureFlag is set on");
         }
 
-        return false;
+        if (overrideSpoofStreamFlagsForHeaders) {
+            return false;
+        }
+        return original;
     }
 
     /**
@@ -328,7 +342,7 @@ public class SpoofVideoStreamsPatch {
                     return;
                 }
 
-                StreamOrDetailsDataRequest.fetchStreamRequest(id, currentVideoRequestHeader);
+                StreamOrDetailsDataRequest.fetchStreamRequest(id, requestHeaders);
             } catch (Exception ex) {
                 Logger.printException(() -> "buildRequest failure", ex);
             }

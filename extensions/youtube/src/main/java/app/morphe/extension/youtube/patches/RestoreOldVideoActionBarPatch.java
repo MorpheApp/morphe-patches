@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import app.morphe.extension.shared.Utils;
+import app.morphe.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.morphe.extension.youtube.patches.utils.requests.ConfigRequest;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -31,6 +32,13 @@ public class RestoreOldVideoActionBarPatch {
     private static final String COLD_CONFIG_DATA_HEADER = "X-Youtube-Cold-Config-Data";
     private static final String VISITOR_ID_HEADER = "X-Goog-Visitor-Id";
     private static boolean needFetch = true;
+
+    static {
+        if (FIX_VIDEO_ACTION_BAR) {
+            // Must override some spoof stream flags so the headers are available.
+            SpoofVideoStreamsPatch.setOverrideSpoofStreamFlagsForHeaders();
+        }
+    }
 
     /**
      * Injection point.
