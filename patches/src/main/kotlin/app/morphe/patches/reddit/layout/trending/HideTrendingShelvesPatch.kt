@@ -26,7 +26,7 @@ import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/reddit/patches/HideTrendingShelvesPatch;"
 private const val EXTENSION_TRENDING_INTERFACE =
-    $$"Lapp/morphe/extension/reddit/patches/HideTrendingShelvesPatch$TrendingStateInterface;"
+    $$"Lapp/morphe/extension/reddit/patches/HideTrendingShelvesPatch$TrendingInterface;"
 
 @Suppress("unused")
 val hideTrendingShelvesPatch = bytecodePatch(
@@ -62,10 +62,11 @@ val hideTrendingShelvesPatch = bytecodePatch(
 
         // endregion
 
+        // Implement trending interface.
+
         val stateParamType = SearchSectionHeaderFingerprint.method.parameters.first().type
         val stateClassDef = mutableClassDefBy(stateParamType)
 
-        // Implement trending interface.
         stateClassDef.apply {
             interfaces.add(EXTENSION_TRENDING_INTERFACE)
 
@@ -100,7 +101,7 @@ val hideTrendingShelvesPatch = bytecodePatch(
         SearchSectionHeaderFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->hideTrendingHeader(Ljava/lang/Object;)Z
+                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->hideTrendingHeader($EXTENSION_TRENDING_INTERFACE)Z
                 move-result v0
                 if-eqz v0, :ignore
                 return-void
@@ -137,7 +138,7 @@ val hideTrendingShelvesPatch = bytecodePatch(
         TypeaheadSuggestionItemFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->hideTrendingCommunitiesShelf(Ljava/lang/Object;)Z
+                invoke-static { }, $EXTENSION_CLASS->hideTrendingCommunitiesShelf()Z
                 move-result v0
                 if-eqz v0, :ignore
                 return-void

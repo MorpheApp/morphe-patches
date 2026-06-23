@@ -54,7 +54,7 @@ public final class HideTrendingShelvesPatch {
     /**
      * Injection point.
      */
-    public static boolean hideTrendingHeader(Object state) {
+    public static boolean hideTrendingHeader(TrendingStateInterface state) {
         try {
             if (state == null || !hideTrendingShelf()) {
                 isTrendingSection = false;
@@ -72,11 +72,9 @@ public final class HideTrendingShelvesPatch {
             }
 
             if (!isTrending) {
-                if (state instanceof TrendingStateInterface) {
-                    String value = ((TrendingStateInterface) state).patch_getTrendingLabel();
-                    if (value != null && Utils.startsWithAny(value, trendingLabels)) {
-                        isTrending = true;
-                    }
+                String value = state.patch_getTrendingLabel();
+                if (value != null && Utils.startsWithAny(value, trendingLabels)) {
+                    isTrending = true;
                 }
             }
 
@@ -94,7 +92,7 @@ public final class HideTrendingShelvesPatch {
     /**
      * Injection point.
      */
-    public static boolean hideTrendingCommunitiesShelf(Object unused) {
+    public static boolean hideTrendingCommunitiesShelf() {
         if (!hideTrendingShelf()) return false;
 
         return isTrendingSection;
