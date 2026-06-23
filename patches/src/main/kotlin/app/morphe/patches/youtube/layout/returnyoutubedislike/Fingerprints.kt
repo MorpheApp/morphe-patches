@@ -1,11 +1,15 @@
 package app.morphe.patches.youtube.layout.returnyoutubedislike
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -17,19 +21,57 @@ internal object DislikeFingerprint : Fingerprint(
     )
 )
 
-internal object LikeFingerprint : Fingerprint(
-    returnType = "V",
+internal object EndpointServiceNameFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "L",
     filters = listOf(
-        string("like/like")
+        string("serviceName"),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        )
     )
 )
 
-internal object RemoveLikeFingerprint : Fingerprint(
+internal fun likeEndpointParserFingerprint(definingClass: String) = object : Fingerprint(
+    definingClass = definingClass,
     returnType = "V",
     filters = listOf(
-        string("like/removelike")
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            location = MatchFirst()
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this"
+        ),
+        string("")
     )
-)
+) {}
+
+internal fun requestParameterCheckFingerprint(definingClass: String) = object : Fingerprint(
+    definingClass = definingClass,
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    parameters = listOf(),
+    filters = listOf(
+        // playlistId
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/String;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Ljava/lang/String;->isEmpty()Z"
+        ),
+        // videoId
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/String;"
+        )
+    )
+) {}
 
 internal object RollingNumberMeasureAnimatedTextFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
@@ -160,11 +202,11 @@ internal object LithoSpannableStringCreationFingerprint : Fingerprint(
         newInstance(type = "Landroid/text/SpannableString;"),
         methodCall(
             smali = "Landroid/text/SpannableString;-><init>(Ljava/lang/CharSequence;)V",
-            location = InstructionLocation.MatchAfterWithin(5)
+            location = MatchAfterWithin(5)
         ),
         methodCall(
             smali = "Landroid/text/SpannableString;->getSpans(IILjava/lang/Class;)[Ljava/lang/Object;",
-            location = InstructionLocation.MatchAfterWithin(5)
+            location = MatchAfterWithin(5)
         ),
 
         methodCall(

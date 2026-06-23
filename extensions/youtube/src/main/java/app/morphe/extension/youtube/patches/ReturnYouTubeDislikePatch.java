@@ -21,8 +21,6 @@ import android.widget.TextView;
 import androidx.annotation.GuardedBy;
 import androidx.annotation.Nullable;
 
-import java.util.Objects;
-
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.components.ReturnYouTubeDislikeFilter;
@@ -498,11 +496,16 @@ public class ReturnYouTubeDislikePatch {
      * <p>
      * Called when the user likes or dislikes.
      *
-     * @param vote int that matches {@link Vote#value}
+     * @param endpoint      string that matches {@link Vote#endpoint}
+     * @param videoId       video ID included in the endpoint request body
      */
-    public static void sendVote(int vote) {
+    public static void sendVote(String endpoint, String videoId) {
         try {
             if (!Settings.RYD_ENABLED.get()) {
+                return;
+            }
+            if (!Utils.isNotEmpty(videoId)) {
+                Logger.printDebug(() -> "Ignore playlist votes");
                 return;
             }
 
@@ -515,16 +518,20 @@ public class ReturnYouTubeDislikePatch {
             if (videoData == null) {
                 Logger.printDebug(() -> "Cannot send vote, as current video data is null");
                 return; // User enabled RYD while a regular video was minimized.
+            } else if (!videoIdIsSame(videoData, videoId)) {
+                Logger.printDebug(() -> "Cannot vote for video, as video id does not match"
+                        + " videoData: " + videoData.getVideoId() + ", endPoint: " + videoId);
+                return;
             }
 
             for (Vote v : Vote.values()) {
-                if (v.value == vote) {
+                if (v.endpoint.equals(endpoint)) {
                     videoData.sendVote(v);
                     return;
                 }
             }
 
-            Logger.printException(() -> "Unknown vote type: " + vote);
+            Logger.printException(() -> "Unknown endpoint: " + endpoint);
         } catch (Exception ex) {
             Logger.printException(() -> "sendVote failure", ex);
         }

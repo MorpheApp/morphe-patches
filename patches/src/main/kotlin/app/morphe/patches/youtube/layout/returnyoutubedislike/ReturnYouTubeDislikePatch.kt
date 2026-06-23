@@ -27,6 +27,7 @@ import app.morphe.patches.youtube.video.videoid.videoIdPatch
 import app.morphe.util.addInstructionsAtControlFlowLabel
 import app.morphe.util.cloneParameters
 import app.morphe.util.findFreeRegister
+import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionOrThrow
 import app.morphe.util.insertLiteralOverride
@@ -94,18 +95,32 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // region Hook like/dislike/remove like button clicks to send votes to the API.
 
-        arrayOf(
-            LikeFingerprint to Vote.LIKE,
-            DislikeFingerprint to Vote.DISLIKE,
-            RemoveLikeFingerprint to Vote.REMOVE_LIKE,
-        ).forEach { (fingerprint, vote) ->
-            fingerprint.method.addInstructions(
-                0,
-                """
-                    const/4 v0, ${vote.value}
-                    invoke-static { v0 }, $EXTENSION_CLASS->sendVote(I)V
-                """
-            )
+        val endPointServiceNameField = EndpointServiceNameFingerprint
+            .instructionMatches.last().instruction.getReference<FieldReference>()!!
+        val likeEndpointParserClass = DislikeFingerprint.classDef.superclass!!
+        val videoIdField = requestParameterCheckFingerprint(likeEndpointParserClass)
+            .instructionMatches.last().instruction.getReference<FieldReference>()!!
+
+        likeEndpointParserFingerprint(likeEndpointParserClass).let {
+            it.method.apply {
+                val insertIndex = it.instructionMatches[1].index + 1
+                val likeEndpointTargetClassRegister =
+                    getInstruction<TwoRegisterInstruction>(insertIndex - 1).registerA
+                val registerProvider = getFreeRegisterProvider(
+                    insertIndex, 2, likeEndpointTargetClassRegister
+                )
+                val endPointServiceNameRegister = registerProvider.getFreeRegister()
+                val videoIdRegister = registerProvider.getFreeRegister()
+
+                addInstructions(
+                    insertIndex,
+                    """
+                        iget-object v$endPointServiceNameRegister, p0, $endPointServiceNameField
+                        iget-object v$videoIdRegister, v$likeEndpointTargetClassRegister, $videoIdField
+                        invoke-static { v$endPointServiceNameRegister, v$videoIdRegister }, $EXTENSION_CLASS->sendVote(Ljava/lang/String;Ljava/lang/String;)V
+                    """
+                )
+            }
         }
 
         // endregion
@@ -289,10 +304,4 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // endregion
     }
-}
-
-enum class Vote(val value: Int) {
-    LIKE(1),
-    DISLIKE(-1),
-    REMOVE_LIKE(0),
 }
