@@ -20,7 +20,7 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public final class HideTrendingShelvesPatch {
 
-    public interface TrendingStateInterface {
+    public interface TrendingInterface {
         String patch_getTrendingLabel();
     }
 
@@ -54,7 +54,7 @@ public final class HideTrendingShelvesPatch {
     /**
      * Injection point.
      */
-    public static boolean hideTrendingHeader(TrendingStateInterface state) {
+    public static boolean hideTrendingHeader(TrendingInterface state) {
         try {
             if (state == null || !hideTrendingShelf()) {
                 isTrendingSection = false;
