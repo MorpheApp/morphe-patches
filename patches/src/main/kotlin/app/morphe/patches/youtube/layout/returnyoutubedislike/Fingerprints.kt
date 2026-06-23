@@ -73,34 +73,81 @@ internal fun requestParameterCheckFingerprint(definingClass: String) = object : 
     )
 ) {}
 
+/**
+ * 21.25+
+ */
 internal object RollingNumberMeasureAnimatedTextFingerprint : Fingerprint(
+    classFingerprint = RollingNumberMeasureStaticLabelParentFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "F",
+    parameters = listOf("Ljava/lang/String;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchFirst(),
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "[F",
+            location = MatchAfterWithin(3),
+        ),
+        opcode(
+            opcode = Opcode.AGET,
+            location = MatchAfterWithin(5),
+        ),
+        literal(
+            literal = 0,
+            location = MatchAfterImmediately(),
+        ),
+        // Measured text width
+        literal(
+            literal = 0,
+            location = MatchAfterImmediately(),
+        )
+    )
+)
+
+/**
+ * ~ 21.24
+ */
+internal object RollingNumberMeasureAnimatedTextLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Lj$/util/Optional;",
     parameters = listOf("L", "Ljava/lang/String;", "L"),
-    // Same as below, but code was removed with 21.25+ and doesn't seem to be required anymore.
-//    filters = listOf(
-//        fieldAccess(
-//            opcode = Opcode.IGET,
-//            type = "F",
-//            location = MatchFirst()
-//        ),
-//        literal(1.0f),
-//        methodCall("Ljava/lang/Math;->max(FF)F"),
-//        opcode(Opcode.AGET),
-//        literal(0),
-//        literal(0)
-//    )
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IGET, // First instruction of method
-        Opcode.IGET_OBJECT,
-        Opcode.IGET_OBJECT,
-        Opcode.CONST_HIGH16,
-        Opcode.INVOKE_STATIC,
-        Opcode.MOVE_RESULT,
-        Opcode.CONST_4,
-        Opcode.AGET,
-        Opcode.CONST_4,
-        Opcode.CONST_4, // Measured text width
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET,
+            type = "F",
+            location = MatchFirst(),
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "[F",
+            location = MatchAfterWithin(3),
+        ),
+        literal(
+            literal = 1.0f,
+            location = MatchAfterWithin(3),
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = "Ljava/lang/Math;->max(FF)F",
+            location = MatchAfterWithin(3),
+        ),
+        opcode(
+            opcode = Opcode.AGET,
+            location = MatchAfterWithin(5),
+        ),
+        literal(
+            literal = 0,
+            location = MatchAfterImmediately(),
+        ),
+        // Measured text width
+        literal(
+            literal = 0,
+            location = MatchAfterImmediately(),
+        )
     )
 )
 

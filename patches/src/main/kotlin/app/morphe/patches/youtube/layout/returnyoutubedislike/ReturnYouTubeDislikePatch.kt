@@ -239,13 +239,14 @@ val returnYouTubeDislikePatch = bytecodePatch(
 
         // Rolling Number text views use the measured width of the raw string for layout.
         // Modify the measure text calculation to include the left drawable separator if needed.
-        // 21.25+ removed the method and doesn't seem to have a replacement.
-        if (!is_21_25_or_greater) RollingNumberMeasureAnimatedTextFingerprint.let {
-            // Additional check to verify the opcodes are at the start of the method
-            if (it.instructionMatches.first().index != 0) throw PatchException("Unexpected opcode location")
-            val endIndex = it.instructionMatches.last().index
+        val rollingNumberMeasureAnimatedTextFingerprint = if (is_21_25_or_greater)
+            RollingNumberMeasureAnimatedTextFingerprint
+        else
+            RollingNumberMeasureAnimatedTextLegacyFingerprint
 
+        rollingNumberMeasureAnimatedTextFingerprint.let {
             it.method.apply {
+                val endIndex = it.instructionMatches.last().index
                 val measuredTextWidthRegister = getInstruction<OneRegisterInstruction>(endIndex).registerA
 
                 addInstructions(
