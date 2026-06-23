@@ -4,6 +4,7 @@
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
+
 package app.morphe.patches.reddit.layout.trending
 
 import app.morphe.patcher.Fingerprint

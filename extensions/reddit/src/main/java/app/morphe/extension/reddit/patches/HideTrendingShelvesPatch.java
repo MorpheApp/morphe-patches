@@ -4,9 +4,9 @@
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
+
 package app.morphe.extension.reddit.patches;
 
-import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -19,6 +19,10 @@ import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
 public final class HideTrendingShelvesPatch {
+
+    public interface TrendingStateInterface {
+        String patch_getTrendingLabel();
+    }
 
     /**
      * 'home_revamp_tab_popular' may be removed or changed at any time,
@@ -68,14 +72,10 @@ public final class HideTrendingShelvesPatch {
             }
 
             if (!isTrending) {
-                for (Field field : state.getClass().getDeclaredFields()) {
-                    if (field.getType() == String.class) {
-                        field.setAccessible(true);
-                        String value = (String) field.get(state);
-                        if (value != null && Utils.startsWithAny(value, trendingLabels)) {
-                            isTrending = true;
-                            break;
-                        }
+                if (state instanceof TrendingStateInterface) {
+                    String value = ((TrendingStateInterface) state).patch_getTrendingLabel();
+                    if (value != null && Utils.startsWithAny(value, trendingLabels)) {
+                        isTrending = true;
                     }
                 }
             }
