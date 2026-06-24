@@ -4,6 +4,8 @@
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
+@file:Suppress("ClassName")
+
 package app.morphe.patches.reddit.layout.communities
 
 import app.morphe.patcher.Fingerprint
@@ -47,4 +49,10 @@ internal object CommunityRecommendationSectionLegacyFingerprint : Fingerprint(
     filters = listOf(
         string("feedContext")
     )
+)
+
+internal object CommunityRecommendationsComposeMethodFingerprint : Fingerprint(
+    classFingerprint = CommunityRecommendationSectionParentFingerprint,
+    returnType = "V",
+    parameters = listOf("L", "L", "I")
 )
