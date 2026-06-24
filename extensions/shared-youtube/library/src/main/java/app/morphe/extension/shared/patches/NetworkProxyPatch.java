@@ -5,7 +5,15 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches;
+package app.morphe.extension.shared.patches;
+
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_ALLOW_DIRECT_FALLBACK;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_AUTH_PASSWORD;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_AUTH_USERNAME;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_ENABLED;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_HOST;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_HTTPS;
+import static app.morphe.extension.shared.settings.SharedYouTubeSettings.PROXY_PORT;
 
 import android.util.Base64;
 import android.util.Pair;
@@ -25,12 +33,12 @@ import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.requests.Requester;
+import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 
 @SuppressWarnings("unused")
-public final class ProxyPatch {
+public final class NetworkProxyPatch {
     private static final int ALL_PROXIES_FAILED_BEHAVIOR_DISALLOW_DIRECT = 0;
     private static final int ALL_PROXIES_FAILED_BEHAVIOR_ALLOW_DIRECT = 1;
     private static final String PROXY_AUTHORIZATION_HEADER = "Proxy-Authorization";
@@ -53,14 +61,21 @@ public final class ProxyPatch {
         }
     };
 
-    private ProxyPatch() {
+    private NetworkProxyPatch() {
+    }
+
+    /**
+     * Injection point.
+     */
+    private static boolean useProxyListInt() {
+        return false; // Modify during patching,
     }
 
     /**
      * Injection point.
      */
     public static void applyProxyOptions(CronetEngine.Builder builder) {
-        if (!Settings.PROXY_ENABLED.get()) {
+        if (!PROXY_ENABLED.get()) {
             Requester.setConnectionProvider(null);
             return;
         }
@@ -74,42 +89,35 @@ public final class ProxyPatch {
                 return;
             }
 
-            int scheme = config.httpsProxy
+            final int scheme = config.httpsProxy
                     ? Proxy.SCHEME_HTTPS
                     : Proxy.SCHEME_HTTP;
             ArrayList<Proxy> proxies = new ArrayList<>(config.allowDirectFallback ? 2 : 1);
             proxies.add(Proxy.createHttpProxy(scheme, config.host, config.port, DIRECT_EXECUTOR, CONNECT_CALLBACK));
 
             builder.setProxyOptions(createProxyOptions(proxies, config.allowDirectFallback));
-            Requester.setConnectionProvider(ProxyPatch::openUrlConnection);
+            Requester.setConnectionProvider(NetworkProxyPatch::openUrlConnection);
         } catch (Throwable ex) {
             Requester.setConnectionProvider(null);
             Logger.printException(() -> "applyProxyOptions failure", ex);
         }
     }
 
-    private static ProxyOptions createProxyOptions(ArrayList<Proxy> proxies, boolean allowDirectFallback)
-            throws ReflectiveOperationException {
-        try {
-            return (ProxyOptions) ProxyOptions.class
-                    .getMethod("fromProxyList", List.class, Integer.TYPE)
-                    .invoke(
-                            null,
-                            proxies,
-                            allowDirectFallback
-                                    ? ALL_PROXIES_FAILED_BEHAVIOR_ALLOW_DIRECT
-                                    : ALL_PROXIES_FAILED_BEHAVIOR_DISALLOW_DIRECT
-                    );
-        } catch (NoSuchMethodException ex) {
-            if (allowDirectFallback) {
-                // Legacy Cronet proxy APIs use a null proxy as the direct fallback sentinel.
-                proxies.add(null);
-            }
-
-            return (ProxyOptions) ProxyOptions.class
-                    .getMethod("fromProxyList", List.class)
-                    .invoke(null, proxies);
+    private static ProxyOptions createProxyOptions(ArrayList<Proxy> proxies, boolean allowDirectFallback) {
+        if (useProxyListInt()) {
+            return ProxyOptions.fromProxyList(
+                    proxies,
+                    allowDirectFallback
+                            ? ALL_PROXIES_FAILED_BEHAVIOR_ALLOW_DIRECT
+                            : ALL_PROXIES_FAILED_BEHAVIOR_DISALLOW_DIRECT
+            );
         }
+
+        if (allowDirectFallback) {
+            // Legacy Cronet proxy APIs use a null proxy as the direct fallback sentinel.
+            proxies.add(null);
+        }
+        return ProxyOptions.fromProxyList(proxies);
     }
 
     private static HttpURLConnection openUrlConnection(URL url) throws IOException {
@@ -141,10 +149,10 @@ public final class ProxyPatch {
 
     private static ProxyConfig getProxyConfig() {
         return new ProxyConfig(
-                Settings.PROXY_HOST.get().trim(),
-                Settings.PROXY_PORT.get(),
-                Settings.PROXY_HTTPS.get(),
-                Settings.PROXY_ALLOW_DIRECT_FALLBACK.get()
+                PROXY_HOST.get().trim(),
+                PROXY_PORT.get(),
+                PROXY_HTTPS.get(),
+                PROXY_ALLOW_DIRECT_FALLBACK.get()
         );
     }
 
@@ -168,12 +176,12 @@ public final class ProxyPatch {
     }
 
     private static String getProxyAuthorizationHeader() {
-        if (!Settings.PROXY_AUTH_ENABLED.get()) {
+        if (!SharedYouTubeSettings.PROXY_AUTH_ENABLED.get()) {
             return null;
         }
 
-        String username = Settings.PROXY_AUTH_USERNAME.get();
-        String password = Settings.PROXY_AUTH_PASSWORD.get();
+        String username = PROXY_AUTH_USERNAME.get();
+        String password = PROXY_AUTH_PASSWORD.get();
 
         if (username.isEmpty() && password.isEmpty()) {
             Logger.printException(() -> "Proxy authentication is enabled but credentials are empty");
@@ -189,21 +197,11 @@ public final class ProxyPatch {
         return BASIC_AUTHORIZATION_PREFIX + encodedCredentials;
     }
 
-    private static final class ProxyConfig {
-        private final String host;
-        private final int port;
-        private final boolean httpsProxy;
-        private final boolean allowDirectFallback;
-
-        ProxyConfig(String host, int port, boolean httpsProxy, boolean allowDirectFallback) {
-            this.host = host;
-            this.port = port;
-            this.httpsProxy = httpsProxy;
-            this.allowDirectFallback = allowDirectFallback;
+    private record ProxyConfig(String host, int port, boolean httpsProxy,
+                               boolean allowDirectFallback) {
+        @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+            boolean isValid() {
+                return !host.isEmpty() && port >= 1 && port <= 65535;
+            }
         }
-
-        boolean isValid() {
-            return !host.isEmpty() && port >= 1 && port <= 65535;
-        }
-    }
 }

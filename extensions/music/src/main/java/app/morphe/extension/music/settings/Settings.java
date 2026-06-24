@@ -11,9 +11,7 @@ import app.morphe.extension.music.patches.CrossfadeManager.CrossFadeDuration;
 import app.morphe.extension.music.patches.CrossfadeManager.FadeCurve;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
-import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
-import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.spoof.ClientType;
 
 @SuppressWarnings("deprecation")
@@ -58,15 +56,6 @@ public class Settings extends SharedYouTubeSettings {
     // Miscellaneous
     public static final EnumSetting<ClientType> SPOOF_VIDEO_STREAMS_CLIENT_TYPE = new EnumSetting<>("morphe_spoof_video_streams_client_type",
             ClientType.ANDROID_REEL_NO_AUTH, true, parent(SPOOF_VIDEO_STREAMS));
-
-    public static final BooleanSetting PROXY_ENABLED = new BooleanSetting("morphe_music_proxy_enabled", FALSE, true);
-    public static final StringSetting PROXY_HOST = new StringSetting("morphe_music_proxy_host", "", true, parent(PROXY_ENABLED));
-    public static final IntegerSetting PROXY_PORT = new IntegerSetting("morphe_music_proxy_port", 8080, true, parent(PROXY_ENABLED));
-    public static final BooleanSetting PROXY_HTTPS = new BooleanSetting("morphe_music_proxy_https", FALSE, true, parent(PROXY_ENABLED));
-    public static final BooleanSetting PROXY_AUTH_ENABLED = new BooleanSetting("morphe_music_proxy_auth_enabled", FALSE, true, parent(PROXY_ENABLED));
-    public static final StringSetting PROXY_AUTH_USERNAME = new StringSetting("morphe_music_proxy_auth_username", "", true, parent(PROXY_AUTH_ENABLED));
-    public static final StringSetting PROXY_AUTH_PASSWORD = new StringSetting("morphe_music_proxy_auth_password", "", true, false, null, parent(PROXY_AUTH_ENABLED));
-    public static final BooleanSetting PROXY_ALLOW_DIRECT_FALLBACK = new BooleanSetting("morphe_music_proxy_allow_direct_fallback", FALSE, true, parent(PROXY_ENABLED));
 
     public static final BooleanSetting FORCE_ORIGINAL_AUDIO = new BooleanSetting("morphe_force_original_audio", TRUE, true);
 

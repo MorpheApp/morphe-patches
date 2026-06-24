@@ -35,26 +35,6 @@ Second \"item\" text"</string>
     <string name="morphe_settings_music_screen_3_player_title">Player</string>
     <string name="morphe_settings_music_screen_4_misc_title">Miscellaneous</string>
 
-    <!-- misc.proxy.proxyPatch -->
-    <string name="morphe_music_proxy_screen_title">Network proxy</string>
-    <string name="morphe_music_proxy_screen_summary">Route supported network requests through a proxy</string>
-    <string name="morphe_music_proxy_enabled_title">Enable proxy</string>
-    <string name="morphe_music_proxy_enabled_summary">Routes supported network requests through a configured HTTP or HTTPS proxy. Restart required.</string>
-    <string name="morphe_music_proxy_host_title">Proxy host</string>
-    <string name="morphe_music_proxy_host_summary">Hostname or IP address of the proxy server</string>
-    <string name="morphe_music_proxy_port_title">Proxy port</string>
-    <string name="morphe_music_proxy_port_summary">Port of the proxy server</string>
-    <string name="morphe_music_proxy_https_title">Use HTTPS proxy</string>
-    <string name="morphe_music_proxy_https_summary">Use HTTPS to connect to the proxy server instead of HTTP</string>
-    <string name="morphe_music_proxy_auth_enabled_title">Proxy authentication</string>
-    <string name="morphe_music_proxy_auth_enabled_summary">Sends Basic authentication with proxy requests</string>
-    <string name="morphe_music_proxy_auth_username_title">Proxy username</string>
-    <string name="morphe_music_proxy_auth_username_summary">Username for Basic proxy authentication</string>
-    <string name="morphe_music_proxy_auth_password_title">Proxy password</string>
-    <string name="morphe_music_proxy_auth_password_summary">Password for Basic proxy authentication</string>
-    <string name="morphe_music_proxy_allow_direct_fallback_title">Allow direct fallback</string>
-    <string name="morphe_music_proxy_allow_direct_fallback_summary">Connect directly if the proxy fails</string>
-
     <!-- ad.general.hideAdsPatch -->
     <string name="morphe_music_hide_get_premium_label_title">Hide \'Get Music Premium\' label</string>
 

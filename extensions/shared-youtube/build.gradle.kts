@@ -2,6 +2,7 @@ import com.android.build.api.dsl.ApplicationExtension
 
 dependencies {
     implementation(project(":extensions:shared-youtube:library"))
+    compileOnly(project(":extensions:shared-youtube:stub"))
 }
 
 configure<ApplicationExtension> {

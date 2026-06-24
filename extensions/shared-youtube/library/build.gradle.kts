@@ -26,6 +26,7 @@ dependencies {
     implementation(libs.collections4)
     implementation(libs.protobuf.javalite)
     implementation(project(":extensions:shared:library"))
+    compileOnly(project(":extensions:shared-youtube:stub"))
 }
 
 protobuf {

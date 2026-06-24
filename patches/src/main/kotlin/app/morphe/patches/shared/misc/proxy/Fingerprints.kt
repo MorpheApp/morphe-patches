@@ -1,4 +1,11 @@
-package app.morphe.patches.music.misc.proxy
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
+package app.morphe.patches.shared.misc.proxy
 
 import app.morphe.patcher.Fingerprint
 
@@ -42,7 +49,7 @@ internal object FromProxyListFingerprint : Fingerprint(
     parameters = listOf("Ljava/util/List;")
 )
 
-internal object FromProxyListWithFallbackBehaviorFingerprint : Fingerprint(
+internal object FromProxyListLegacyFingerprint : Fingerprint(
     definingClass = PROXY_OPTIONS_CLASS,
     name = "fromProxyList",
     returnType = PROXY_OPTIONS_CLASS,
@@ -50,4 +57,11 @@ internal object FromProxyListWithFallbackBehaviorFingerprint : Fingerprint(
         "Ljava/util/List;",
         "I"
     )
+)
+
+internal object ExtensionProxyPatchUsProxyListIntFingerprint : Fingerprint(
+    definingClass = EXTENSION_CLASS,
+    name = "useProxyListInt",
+    returnType = "Z",
+    parameters = listOf()
 )
