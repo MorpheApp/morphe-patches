@@ -3,6 +3,9 @@ package app.morphe.patches.music.misc.proxy
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.playservice.is_8_50_or_greater
+import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
+import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
@@ -10,6 +13,7 @@ import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import java.util.logging.Logger
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ProxyPatch;"
 
@@ -20,19 +24,30 @@ val proxyPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        settingsPatch
+        settingsPatch,
+        versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
-        if (SetProxyOptionsFingerprint.methodOrNull == null ||
-            CreateHttpProxyFingerprint.methodOrNull == null ||
-            (FromProxyListFingerprint.methodOrNull == null &&
-                    FromProxyListWithFallbackBehaviorFingerprint.methodOrNull == null)
-        ) {
-            return@execute
+        if (!is_8_50_or_greater) {
+            return@execute Logger.getLogger(this::class.java.name).warning(
+                "Proxy requires YouTube Music 8.50 or newer. " +
+                    "The bundled Cronet version does not include the required proxy APIs.",
+            )
         }
+
+        val fromProxyListFingerprint =
+            if (is_9_20_or_greater) FromProxyListWithFallbackBehaviorFingerprint
+            else FromProxyListFingerprint
+
+        // Ensure all required Cronet proxy API fingerprints resolve on supported versions.
+        listOf(
+            SetProxyOptionsFingerprint,
+            CreateHttpProxyFingerprint,
+            fromProxyListFingerprint,
+        ).forEach { it.method }
 
         PreferenceScreen.MISC.addPreferences(
             PreferenceScreenPreference(
