@@ -1,0 +1,138 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
+package app.morphe.patches.youtube.layout.buttons.flyout
+
+import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
+import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.settings.settingsPatch
+import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.util.getFreeRegisterProvider
+import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction22c
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
+import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+
+private const val EXTENSION_CLASS =
+    "Lapp/morphe/extension/youtube/patches/OverrideFeedFlyoutButtonRunnablePatch;"
+
+@Suppress("unused")
+val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
+    name = "Override feed flyout buttons runnable",
+    description = "In combination with other patches, this allows replacing the runnable (used for the onClick method) of buttons in the feed flyout."
+) {
+    dependsOn(
+        settingsPatch,
+        sharedExtensionPatch,
+    )
+
+    compatibleWith(COMPATIBILITY_YOUTUBE)
+
+    execute {
+        FeedFlyoutButtonsContainerFingerprint.matchAll().forEach {
+            it.method.addInstructions(
+                0,
+                """
+                invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V
+            """
+            )
+        }
+
+        val feedFlyoutButtonsInitializerMethod = FeedFlyoutButtonsInitializerFingerprint.methodOrNull
+
+        if (feedFlyoutButtonsInitializerMethod != null) {
+            FeedFlyoutButtonsInitializerFingerprint.let { fingerprint ->
+                val enumClassInstructionIndex = fingerprint.instructionMatches[1].index
+                val enumClassInstructionRegister =
+                    feedFlyoutButtonsInitializerMethod.getInstruction<OneRegisterInstruction>(
+                        enumClassInstructionIndex
+                    ).registerA
+                val charSequenceCheckIndex = fingerprint.instructionMatches[5].index
+                val charSequenceCheckRegister =
+                    feedFlyoutButtonsInitializerMethod.getInstruction<OneRegisterInstruction>(
+                        charSequenceCheckIndex
+                    ).registerA
+                val freeRegister = feedFlyoutButtonsInitializerMethod.getFreeRegisterProvider(
+                    enumClassInstructionIndex,
+                    1,
+                    listOf(
+                        enumClassInstructionRegister,
+                        charSequenceCheckRegister,
+                        feedFlyoutButtonsInitializerMethod.getInstruction<OneRegisterInstruction>(
+                            fingerprint.instructionMatches[4].index
+                        ).registerA
+                    )
+                ).getFreeRegister()
+                val enumIntFieldReference =
+                    feedFlyoutButtonsInitializerMethod.getInstruction<BuilderInstruction22c>(
+                        fingerprint.instructionMatches[7].index
+                    ).reference
+                val enumMethodCallReference =
+                    feedFlyoutButtonsInitializerMethod.getInstruction<BuilderInstruction35c>(
+                        fingerprint.instructionMatches[8].index
+                    ).reference
+                val runnableObjectInstructionIndex = fingerprint.instructionMatches.last().index
+                val runnableObjectInstructionRegister =
+                    feedFlyoutButtonsInitializerMethod.getInstruction<BuilderInstruction22c>(
+                        runnableObjectInstructionIndex
+                    ).registerA
+
+                listOf(
+                    """
+                        invoke-static { v$runnableObjectInstructionRegister }, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;)Ljava/lang/Runnable;
+                        move-result-object v$runnableObjectInstructionRegister
+                    """,
+                    """
+                        iget v$freeRegister, v$enumClassInstructionRegister, $enumIntFieldReference
+                        invoke-static { v$freeRegister }, $enumMethodCallReference
+                        move-result-object v$freeRegister
+                        invoke-static { v$freeRegister, v$charSequenceCheckRegister }, $EXTENSION_CLASS->setCurrentHandledButtonInfo(Ljava/lang/Enum;Ljava/lang/CharSequence;)V
+                    """,
+                ).forEachIndexed { index, patchLogic ->
+                    feedFlyoutButtonsInitializerMethod.addInstructions(
+                        if (index == 0) runnableObjectInstructionIndex else charSequenceCheckIndex,
+                        patchLogic
+                    )
+                }
+            }
+
+            val onItemClickFingerprint = Fingerprint(
+                definingClass = feedFlyoutButtonsInitializerMethod.definingClass,
+                custom = { method, _ ->
+                    method.name == "onItemClick"
+                }
+            )
+            if (onItemClickFingerprint.matchOrNull() != null) {
+                // Not all versions use Runnables to execute onClick
+                // operations for flyout buttons.
+                onItemClickFingerprint.method.addInstructions(
+                    0,
+                        """
+                        invoke-static { p3 }, $EXTENSION_CLASS->replaceOnItemClick(I)Z
+                        move-result p2
+                        if-eqz p2, :block_item_click
+                        return-void
+                        :block_item_click
+                        nop
+                    """
+                )
+
+                // This literal override allows the execution of flyout
+                // buffer method on older YouTube versions.
+                FlyoutBufferDisablerLiteralFingerprint.let {
+                    it.method.insertLiteralOverride(
+                        it.instructionMatches.first().index,
+                        "$EXTENSION_CLASS->overrideFlyoutBufferDisabler(Z)Z"
+                    )
+                }
+            }
+        }
+    }
+}
