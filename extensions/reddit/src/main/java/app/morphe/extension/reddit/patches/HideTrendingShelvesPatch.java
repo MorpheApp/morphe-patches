@@ -56,37 +56,54 @@ public final class HideTrendingShelvesPatch {
      */
     public static boolean hideTrendingHeader(TrendingInterface state) {
         try {
-            if (state == null || !hideTrendingShelf()) {
-                isTrendingSection = false;
-                return false;
-            }
+            if (state == null) return processTrendingState(null, null);
+            return processTrendingState(state.toString(), state.patch_getTrendingLabel());
+        } catch (Exception e) {
+            Logger.printException(() -> "hideTrendingHeader failure");
+            return processTrendingState(null, null);
+        }
+    }
 
-            String stateStr = state.toString();
-            boolean isTrending = false;
+    /**
+     * Injection point.
+     */
+    public static boolean hideTrendingHeaderLegacy(String headerTitle) {
+        try {
+            return processTrendingState(headerTitle, null);
+        } catch (Exception e) {
+            Logger.printException(() -> "hideTrendingHeaderLegacy failure");
+            return processTrendingState(null, null);
+        }
+    }
 
+    /**
+     * Centralized logic engine for both Legacy and Modern versions.
+     */
+    private static boolean processTrendingState(String rawString, String exactLabel) {
+        if (!hideTrendingShelf()) {
+            isTrendingSection = false;
+            return false;
+        }
+
+        boolean isTrending = false;
+
+        if (rawString != null) {
             for (String label : trendingLabels) {
-                if (stateStr.contains(label)) {
+                if (rawString.contains(label)) {
                     isTrending = true;
                     break;
                 }
             }
-
-            if (!isTrending) {
-                String value = state.patch_getTrendingLabel();
-                if (value != null && Utils.startsWithAny(value, trendingLabels)) {
-                    isTrending = true;
-                }
-            }
-
-            isTrendingSection = isTrending;
-            return isTrending;
-
-        } catch (Exception e) {
-            Logger.printException(() -> "hideTrendingHeader failure");
         }
 
-        isTrendingSection = false;
-        return false;
+        if (!isTrending && exactLabel != null) {
+            if (Utils.startsWithAny(exactLabel, trendingLabels)) {
+                isTrending = true;
+            }
+        }
+
+        isTrendingSection = isTrending;
+        return isTrending;
     }
 
     /**

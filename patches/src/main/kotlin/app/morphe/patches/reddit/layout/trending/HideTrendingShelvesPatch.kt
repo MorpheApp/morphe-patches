@@ -65,33 +65,40 @@ val hideTrendingShelvesPatch = bytecodePatch(
         // Implement trending interface.
 
         val stateParamType = SearchSectionHeaderFingerprint.method.parameters.first().type
-        val stateClassDef = mutableClassDefBy(stateParamType)
+        val isLegacy = stateParamType == "Ljava/lang/String;"
 
-        stateClassDef.apply {
-            interfaces.add(EXTENSION_TRENDING_INTERFACE)
+        val targetMethod = if (isLegacy) "hideTrendingHeaderLegacy" else "hideTrendingHeader"
+        val targetParam = if (isLegacy) "Ljava/lang/String;" else EXTENSION_TRENDING_INTERFACE
 
-            val stringField = fields.first { it.type == "Ljava/lang/String;" }
+        if (!isLegacy) {
+            val stateClassDef = mutableClassDefBy(stateParamType)
 
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_getTrendingLabel",
-                    emptyList(),
-                    "Ljava/lang/String;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(1),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            iget-object v0, p0, $type->${stringField.name}:Ljava/lang/String;
-                            return-object v0
-                        """
-                    )
-                }
-            )
+            stateClassDef.apply {
+                interfaces.add(EXTENSION_TRENDING_INTERFACE)
+
+                val stringField = fields.first { it.type == "Ljava/lang/String;" }
+
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_getTrendingLabel",
+                        emptyList(),
+                        "Ljava/lang/String;",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(1),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                iget-object v0, p0, $type->${stringField.name}:Ljava/lang/String;
+                                return-object v0
+                            """
+                        )
+                    }
+                )
+            }
         }
 
         // endregion
@@ -101,7 +108,7 @@ val hideTrendingShelvesPatch = bytecodePatch(
         SearchSectionHeaderFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->hideTrendingHeader($EXTENSION_TRENDING_INTERFACE)Z
+                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->$targetMethod($targetParam)Z
                 move-result v0
                 if-eqz v0, :ignore
                 return-void
