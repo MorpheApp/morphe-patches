@@ -19,7 +19,7 @@ private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/ProxyPa
 
 @Suppress("unused")
 val proxyPatch = bytecodePatch(
-    name = "Proxy",
+    name = "Network proxy",
     description = "Adds settings to route supported YouTube Music network requests through an HTTP or HTTPS proxy."
 ) {
     dependsOn(

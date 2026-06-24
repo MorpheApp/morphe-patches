@@ -36,7 +36,7 @@ Second \"item\" text"</string>
     <string name="morphe_settings_music_screen_4_misc_title">Miscellaneous</string>
 
     <!-- misc.proxy.proxyPatch -->
-    <string name="morphe_music_proxy_screen_title">Proxy</string>
+    <string name="morphe_music_proxy_screen_title">Network proxy</string>
     <string name="morphe_music_proxy_screen_summary">Route supported network requests through a proxy</string>
     <string name="morphe_music_proxy_enabled_title">Enable proxy</string>
     <string name="morphe_music_proxy_enabled_summary">Routes supported network requests through a configured HTTP or HTTPS proxy. Restart required.</string>
