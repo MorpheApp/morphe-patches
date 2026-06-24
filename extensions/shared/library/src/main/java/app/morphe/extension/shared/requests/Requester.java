@@ -14,7 +14,17 @@ import java.net.URL;
 import app.morphe.extension.shared.Utils;
 
 public class Requester {
+    public interface ConnectionProvider {
+        HttpURLConnection openConnection(URL url) throws IOException;
+    }
+
+    private static volatile ConnectionProvider connectionProvider;
+
     private Requester() {
+    }
+
+    public static void setConnectionProvider(ConnectionProvider provider) {
+        connectionProvider = provider;
     }
 
     public static HttpURLConnection getConnectionFromRoute(String apiUrl, Route route, String... params) throws IOException {
@@ -23,7 +33,7 @@ public class Requester {
 
     public static HttpURLConnection getConnectionFromCompiledRoute(String apiUrl, Route.CompiledRoute route) throws IOException {
         String url = apiUrl + route.getCompiledRoute();
-        HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+        HttpURLConnection connection = openConnection(url);
         // This request sends data via URL query parameters. No request body is included.
         // If a request body is added, the caller must set the appropriate Content-Length header.
         connection.setFixedLengthStreamingMode(0);
@@ -34,6 +44,19 @@ public class Requester {
         connection.setRequestProperty("User-Agent", agentString);
 
         return connection;
+    }
+
+    public static HttpURLConnection openConnection(String url) throws IOException {
+        return openConnection(new URL(url));
+    }
+
+    private static HttpURLConnection openConnection(URL url) throws IOException {
+        ConnectionProvider provider = connectionProvider;
+        if (provider != null) {
+            return provider.openConnection(url);
+        }
+
+        return (HttpURLConnection) url.openConnection();
     }
 
     /**
