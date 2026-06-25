@@ -52,7 +52,7 @@ val addToQueuePatch = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
-        PreferenceScreen.PLAYER.addPreferences(
+        PreferenceScreen.FEED.addPreferences(
             SwitchPreference("morphe_queue_override_flyout_menu", summary = true),
         )
 
