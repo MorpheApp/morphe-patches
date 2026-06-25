@@ -11,13 +11,13 @@ import static app.morphe.extension.shared.Utils.getContext;
 
 import android.util.Pair;
 
+import androidx.annotation.Nullable;
+
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -72,10 +72,9 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
 
             if (index >= 0) {
                 final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
-                final int videoIdEnd = videoIdStart + 11;
+                final int videoIdEnd = videoIdStart + 11; // YouTube video id is 11 characters.
 
                 if (videoIdEnd <= flyoutBuffer.length) {
-                    // Assumes 11 character video id.
                     flyoutVideoId = new String(flyoutBuffer, videoIdStart, 11,
                             StandardCharsets.US_ASCII);
                     Logger.printDebug(() -> "Found flyout videoId: " + flyoutVideoId);
@@ -120,8 +119,8 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
      */
     public static Runnable replaceButtonRunnable(Runnable original) {
         return Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get() &&
-                Objects.equals(currentHandledButtonName, queueButtonName)
-                ? invokeQueueFlyout()
+                currentHandledButtonName.equals(queueButtonName)
+                ? invokeQueueFlyout(original)
                 : original;
     }
 
@@ -130,12 +129,11 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
      */
     public static boolean replaceOnItemClick(int index) {
         try {
-            if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
-                if (!visibleFlyoutButtons.isEmpty() && queueButtonName.equals(
-                        visibleFlyoutButtons.get(index).first)) {
-                    invokeQueueFlyout().run();
-                    return true;
-                }
+            if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get() && flyoutVideoId.isEmpty()
+                    && !visibleFlyoutButtons.isEmpty()
+                    && queueButtonName.equals(visibleFlyoutButtons.get(index).first)) {
+                invokeQueueFlyout(null).run();
+                return true;
             }
         } catch (Exception ex) {
             Logger.printException(() -> "replaceOnItemClick failure", ex);
@@ -143,10 +141,11 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
         return false;
     }
 
-    private static Runnable invokeQueueFlyout() {
+    private static Runnable invokeQueueFlyout(@Nullable Runnable original) {
         return () -> {
             if (flyoutVideoId.isEmpty()) {
                 Logger.printDebug(() -> "Cannot opening custom queue flyout with an empty videoId");
+                if (original != null) original.run();
                 return;
             }
             Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
