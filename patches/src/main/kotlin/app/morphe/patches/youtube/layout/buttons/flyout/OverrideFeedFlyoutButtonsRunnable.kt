@@ -88,41 +88,35 @@ val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
 
         FeedFlyoutButtonsInitializerFingerprint.let {
             it.method.apply {
-                val runnableObjectInstructionIndex = it.instructionMatches.last().index
-                val runnableObjectInstructionRegister = it.instructionMatches.last()
-                    .getInstruction<TwoRegisterInstruction>().registerA
+                val runnableIndex = it.instructionMatches.last().index
+                val runnableRegister = getInstruction<TwoRegisterInstruction>(runnableIndex).registerA
                 addInstructions(
-                    runnableObjectInstructionIndex,
+                    runnableIndex,
                     """
-                        invoke-static { v$runnableObjectInstructionRegister }, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;)Ljava/lang/Runnable;
-                        move-result-object v$runnableObjectInstructionRegister
+                        invoke-static { v$runnableRegister }, $EXTENSION_CLASS->replaceButtonRunnable(Ljava/lang/Runnable;)Ljava/lang/Runnable;
+                        move-result-object v$runnableRegister
                     """
                 )
 
-                val charSequenceCheckIndex = it.instructionMatches[5].index
-                val charSequenceCheckRegister = getInstruction<OneRegisterInstruction>(
-                    charSequenceCheckIndex
-                ).registerA
-                val enumClassInstructionRegister = it.instructionMatches[1]
-                    .getInstruction<OneRegisterInstruction>().registerA
+                val charCheckIndex = it.instructionMatches[5].index
+                val enumClassRegister = it.instructionMatches[1].getInstruction<OneRegisterInstruction>().registerA
+                val charCheckRegister = getInstruction<OneRegisterInstruction>(charCheckIndex).registerA
                 val freeRegister = findFreeRegister(
-                    charSequenceCheckIndex,
-                    charSequenceCheckRegister,
-                    enumClassInstructionRegister
+                    charCheckIndex,
+                    charCheckRegister,
+                    enumClassRegister
                 )
 
-                val enumIntFieldReference = it.instructionMatches[7]
-                    .getInstruction<ReferenceInstruction>().reference
-                val enumMethodCallReference = it.instructionMatches[8]
-                    .getInstruction<ReferenceInstruction>().reference
+                val enumIntField = it.instructionMatches[7].getInstruction<ReferenceInstruction>().reference
+                val enumMethodCall = it.instructionMatches[8].getInstruction<ReferenceInstruction>().reference
 
                 addInstructions(
-                    charSequenceCheckIndex,
+                    charCheckIndex,
                     """
-                        iget v$freeRegister, v$enumClassInstructionRegister, $enumIntFieldReference
-                        invoke-static { v$freeRegister }, $enumMethodCallReference
+                        iget v$freeRegister, v$enumClassRegister, $enumIntField
+                        invoke-static { v$freeRegister }, $enumMethodCall
                         move-result-object v$freeRegister
-                        invoke-static { v$freeRegister, v$charSequenceCheckRegister }, $EXTENSION_CLASS->setCurrentHandledButtonInfo(Ljava/lang/Enum;Ljava/lang/CharSequence;)V
+                        invoke-static { v$freeRegister, v$charCheckRegister }, $EXTENSION_CLASS->setCurrentHandledButtonInfo(Ljava/lang/Enum;Ljava/lang/CharSequence;)V
                     """
                 )
             }
