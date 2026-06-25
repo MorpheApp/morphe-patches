@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.youtube.layout.buttons.flyout
+package app.morphe.patches.youtube.layout.flyout
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
@@ -33,11 +33,6 @@ internal object FeedFlyoutButtonsContainerFingerprint : Fingerprint(
 
 internal object FeedFlyoutButtonsInitializerFingerprint : Fingerprint(
     parameters = listOf("L"),
-    strings = listOf(
-        "ElementTransformer cannot be null",
-        "Text missing for BottomSheetMenuItem.",
-        "Text missing for BottomSheetMenuItem with iconType: ",
-    ),
     filters = listOf(
         opcode(Opcode.INVOKE_STATIC),
         opcode(Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
@@ -50,6 +45,11 @@ internal object FeedFlyoutButtonsInitializerFingerprint : Fingerprint(
         methodCall(opcode = Opcode.INVOKE_STATIC, parameters = listOf("I"), location = MatchAfterImmediately()),
         methodCall(opcode = Opcode.INVOKE_DIRECT, name = "<init>"),
         fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Ljava/lang/Runnable;"),
+    ),
+    strings = listOf(
+        "ElementTransformer cannot be null",
+        "Text missing for BottomSheetMenuItem.",
+        "Text missing for BottomSheetMenuItem with iconType: ",
     )
 )
 

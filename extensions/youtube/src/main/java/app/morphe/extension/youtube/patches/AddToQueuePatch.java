@@ -22,7 +22,7 @@ import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public final class OverrideFeedFlyoutButtonRunnablePatch {
+public final class AddToQueuePatch {
 
     /**
      * Interface to use obfuscated methods.

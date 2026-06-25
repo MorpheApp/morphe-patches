@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
-package app.morphe.patches.youtube.layout.buttons.flyout
+package app.morphe.patches.youtube.layout.flyout
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
@@ -14,9 +14,11 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstructionsWithLa
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
+import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findFreeRegister
@@ -29,26 +31,31 @@ import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
 import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
-    "Lapp/morphe/extension/youtube/patches/OverrideFeedFlyoutButtonRunnablePatch;"
+    "Lapp/morphe/extension/youtube/patches/AddToQueuePatch;"
 
 private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
-    $$"Lapp/morphe/extension/youtube/patches/OverrideFeedFlyoutButtonRunnablePatch$ProtocolBufferFieldInterface;"
+    $$"Lapp/morphe/extension/youtube/patches/AddToQueuePatch$ProtocolBufferFieldInterface;"
 
 
 @Suppress("unused")
-val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
-    name = "Override feed flyout buttons runnable",
-    description = "In combination with other patches, this allows replacing the runnable (used for the onClick method) of buttons in the feed flyout."
+val addToQueuePatch = bytecodePatch(
+    name = "Add to queue",
+    description = "Overrides the feed flyout 'Play next in queue' with the Morphe video queue."
 ) {
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,
+        settingsPatch,
         versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        PreferenceScreen.PLAYER.addPreferences(
+            SwitchPreference("morphe_queue_override_flyout_menu", summary = true),
+        )
+
         // Add interface method to get protocol buffer.
         InteractiveStickerRendererGetEditViewFingerprint.let {
             val bufferField = it.instructionMatches.last().getFieldAccessed()
