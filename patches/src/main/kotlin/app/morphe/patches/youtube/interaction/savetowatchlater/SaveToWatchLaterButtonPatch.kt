@@ -72,7 +72,7 @@ val saveToWatchLaterButtonPatch = bytecodePatch(
             noTitleUnsortedPreferenceCategory(
                 SwitchPreference("morphe_save_to_watch_later_button", summary = true),
                 SwitchPreference("morphe_swap_save_and_queue_actions", summary = true),
-                SwitchPreference("morphe_redirect_flyout_queue_button", summary = true),
+                SwitchPreference("morphe_queue_override_flyout_menu", summary = true),
                 SwitchPreference("morphe_queue_restore", summary = true)
             )
         )

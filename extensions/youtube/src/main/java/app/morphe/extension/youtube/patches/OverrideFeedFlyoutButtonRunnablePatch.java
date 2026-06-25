@@ -11,7 +11,6 @@ import static app.morphe.extension.shared.Utils.getContext;
 
 import android.util.Pair;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -19,7 +18,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.components.LithoFilterPatch;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
@@ -50,7 +48,7 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
      * Injection point.
      */
     public static boolean overrideFlyoutBufferDisabler(boolean originalValue) {
-        if (Settings.REDIRECT_FLYOUT_QUEUE_BUTTON.get()) {
+        if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
             return false;
         }
         return originalValue;
@@ -100,7 +98,7 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
      * Injection point.
      */
     public static Runnable replaceButtonRunnable(Runnable original) {
-        return Settings.REDIRECT_FLYOUT_QUEUE_BUTTON.get() &&
+        return Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get() &&
                 Objects.equals(currentHandledButtonName, queueButtonName)
                 ? invokeQueueFlyout()
                 : original;
@@ -110,7 +108,7 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
      * Injection point.
      */
     public static boolean replaceOnItemClick(int index) {
-        if (Settings.REDIRECT_FLYOUT_QUEUE_BUTTON.get()) {
+        if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
             if (Objects.equals(visibleFlyoutButtons.get(index).first, queueButtonName)) {
                 invokeQueueFlyout().run();
                 return true;
