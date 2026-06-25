@@ -66,16 +66,20 @@ public final class AddToQueuePatch {
             visibleFlyoutButtons.clear();
 
             byte[] flyoutBuffer = bufferInterface.patch_getBuffer();
-            if (flyoutBuffer == null) return;
+            if (flyoutBuffer == null) {
+                Logger.printDebug(() ->"flyoutBuffer is null"); // Should never happen.
+                return;
+            }
 
             final int index = indexOf(flyoutBuffer, VIDEO_ID_PREFIX_BYTES);
 
             if (index >= 0) {
+                final int youTubeVideoIdLength = 11;
                 final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
-                final int videoIdEnd = videoIdStart + 11; // YouTube video id is 11 characters.
+                final int videoIdEnd = videoIdStart + youTubeVideoIdLength;
 
                 if (videoIdEnd <= flyoutBuffer.length) {
-                    flyoutVideoId = new String(flyoutBuffer, videoIdStart, 11,
+                    flyoutVideoId = new String(flyoutBuffer, videoIdStart, youTubeVideoIdLength,
                             StandardCharsets.US_ASCII);
                     Logger.printDebug(() -> "Found flyout videoId: " + flyoutVideoId);
                 }
@@ -126,12 +130,18 @@ public final class AddToQueuePatch {
 
     /**
      * Injection point.
+     *
+     * 21.04 and older.
      */
     public static boolean replaceOnItemClick(int index) {
         try {
-            if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get() &&
-                    !visibleFlyoutButtons.isEmpty() &&
-                    queueButtonName.equals(visibleFlyoutButtons.get(index).first)) {
+            if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()
+                    && queueButtonName.equals(visibleFlyoutButtons.get(index).first)) {
+                if (flyoutVideoId.isEmpty()) {
+                    Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
+                    return false;
+                }
+
                 invokeQueueFlyout(null).run();
                 return true;
             }

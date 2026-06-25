@@ -19,6 +19,8 @@ import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
 internal object FlyoutBufferDisablerLiteralFingerprint : Fingerprint(
+    parameters = listOf(),
+    returnType = "Z",
     filters = listOf(
         literal(45386415L)
     )

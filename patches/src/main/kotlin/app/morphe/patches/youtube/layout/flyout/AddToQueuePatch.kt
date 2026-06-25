@@ -16,7 +16,7 @@ import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
-import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
@@ -53,7 +53,7 @@ val addToQueuePatch = bytecodePatch(
 
     execute {
         PreferenceScreen.FEED.addPreferences(
-            SwitchPreference("morphe_queue_override_flyout_menu", summary = true),
+            SwitchPreference("morphe_queue_override_flyout_menu", summary = true)
         )
 
         // Add interface method to get protocol buffer.
@@ -86,7 +86,7 @@ val addToQueuePatch = bytecodePatch(
         }
 
         // Hook flyout menu protocol buffer.
-        FeedFlyoutButtonsContainerFingerprint.matchAll(3 .. 3).forEach {
+        FeedFlyoutButtonsContainerFingerprint.matchAll(3..3).forEach {
             it.method.addInstruction(
                 0,
                 "invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
@@ -129,32 +129,27 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        // Old versions like 20.21.37 need to replace on item click
-        // TODO (message by 0xrxL): The following patch is needed for 20.51.xx too (at least on my account/emulator).
-        //  Find the first version that doesn't have onItemClick() method, to set a better target.
-        Fingerprint(
-            definingClass = FeedFlyoutButtonsInitializerFingerprint.method.definingClass,
-            name = "onItemClick"
-        ).method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static { p3 }, $EXTENSION_CLASS->replaceOnItemClick(I)Z
-                move-result p2
-                if-eqz p2, :block_item_click
-                return-void
-                :block_item_click
-                nop
-            """
-        )
-
-        // Turn off feature flag to allow th execution of flyout
-        // buffer method on older YouTube versions.
-        // TODO (message by 0xrxL): The following flag override is needed for 20.51.xx too (at least on my account/emulator).
-        //  Find the first version that doesn't have onItemClick() method, to set a better target.
         FlyoutBufferDisablerLiteralFingerprint.let {
             it.method.insertLiteralOverride(
                 it.instructionMatches.first().index,
                 "$EXTENSION_CLASS->overrideFlyoutBufferDisabler(Z)Z"
+            )
+        }
+
+        if (!is_21_05_or_greater) {
+            Fingerprint(
+                classFingerprint = FeedFlyoutButtonsInitializerFingerprint,
+                name = "onItemClick"
+            ).method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { p3 }, $EXTENSION_CLASS->replaceOnItemClick(I)Z
+                    move-result p2
+                    if-eqz p2, :block_item_click
+                    return-void
+                    :block_item_click
+                    nop
+                """
             )
         }
     }
