@@ -22,8 +22,10 @@ import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findFreeRegister
+import app.morphe.util.findInstructionIndicesReversedOrThrow
 import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
@@ -85,23 +87,18 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        FeedFlyoutDialogFingerprint.let {
-            val returnInstructionIndex = it.instructionMatches.last().index
-            val returnInstructionRegister = it.method.getInstruction<OneRegisterInstruction>(
-                returnInstructionIndex
-            ).registerA
-
-            it.method.addInstruction(
-                returnInstructionIndex,
-                "invoke-static { v$returnInstructionRegister }, $EXTENSION_CLASS->setFlyoutDialog(Landroid/app/Dialog;)V"
-            )
-        }
-
         // Hook flyout menu protocol buffer.
         FeedFlyoutButtonsContainerFingerprint.matchAll(3..3).forEach {
             it.method.addInstruction(
                 0,
                 "invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
+            )
+        }
+
+        FlyoutBufferDisablerLiteralFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->overrideFlyoutBufferDisabler(Z)Z"
             )
         }
 
@@ -141,11 +138,15 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        FlyoutBufferDisablerLiteralFingerprint.let {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->overrideFlyoutBufferDisabler(Z)Z"
-            )
+        FeedFlyoutDialogFingerprint.method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->setFlyoutDialog(Landroid/app/Dialog;)V"
+                )
+            }
         }
 
         if (!is_21_05_or_greater) {
