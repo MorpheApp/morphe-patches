@@ -129,31 +129,33 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        if (!is_20_39_or_greater) {
-            // Old versions like 20.21.37 need to replace on item click
-            Fingerprint(
-                definingClass = FeedFlyoutButtonsInitializerFingerprint.method.definingClass,
-                name = "onItemClick"
-            ).method.addInstructionsWithLabels(
-                0,
-                """
-                    invoke-static { p3 }, $EXTENSION_CLASS->replaceOnItemClick(I)Z
-                    move-result p2
-                    if-eqz p2, :block_item_click
-                    return-void
-                    :block_item_click
-                    nop
-                """
-            )
+        // Old versions like 20.21.37 need to replace on item click
+        // TODO (message by 0xrxL): The following patch is needed for 20.51.xx too (at least on my account/emulator).
+        //  Find the first version that doesn't have onItemClick() method, to set a better target.
+        Fingerprint(
+            definingClass = FeedFlyoutButtonsInitializerFingerprint.method.definingClass,
+            name = "onItemClick"
+        ).method.addInstructionsWithLabels(
+            0,
+            """
+                invoke-static { p3 }, $EXTENSION_CLASS->replaceOnItemClick(I)Z
+                move-result p2
+                if-eqz p2, :block_item_click
+                return-void
+                :block_item_click
+                nop
+            """
+        )
 
-            // Turn off feature flag to allow th execution of flyout
-            // buffer method on older YouTube versions.
-            FlyoutBufferDisablerLiteralFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->overrideFlyoutBufferDisabler(Z)Z"
-                )
-            }
+        // Turn off feature flag to allow th execution of flyout
+        // buffer method on older YouTube versions.
+        // TODO (message by 0xrxL): The following flag override is needed for 20.51.xx too (at least on my account/emulator).
+        //  Find the first version that doesn't have onItemClick() method, to set a better target.
+        FlyoutBufferDisablerLiteralFingerprint.let {
+            it.method.insertLiteralOverride(
+                it.instructionMatches.first().index,
+                "$EXTENSION_CLASS->overrideFlyoutBufferDisabler(Z)Z"
+            )
         }
     }
 }

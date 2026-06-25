@@ -129,9 +129,9 @@ public final class AddToQueuePatch {
      */
     public static boolean replaceOnItemClick(int index) {
         try {
-            if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get() && flyoutVideoId.isEmpty()
-                    && !visibleFlyoutButtons.isEmpty()
-                    && queueButtonName.equals(visibleFlyoutButtons.get(index).first)) {
+            if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get() &&
+                    !visibleFlyoutButtons.isEmpty() &&
+                    queueButtonName.equals(visibleFlyoutButtons.get(index).first)) {
                 invokeQueueFlyout(null).run();
                 return true;
             }
@@ -145,7 +145,9 @@ public final class AddToQueuePatch {
         return () -> {
             if (flyoutVideoId.isEmpty()) {
                 Logger.printDebug(() -> "Cannot opening custom queue flyout with an empty videoId");
-                if (original != null) original.run();
+                if (original != null) {
+                    original.run();
+                }
                 return;
             }
             Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
