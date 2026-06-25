@@ -1,7 +1,7 @@
 package app.morphe.patches.music.misc.proxy
 
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
-import app.morphe.patches.music.misc.playservice.is_8_50_or_greater
+import app.morphe.patches.music.misc.playservice.is_8_51_or_greater
 import app.morphe.patches.music.misc.playservice.is_9_20_or_greater
 import app.morphe.patches.music.misc.playservice.versionCheckPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
@@ -16,11 +16,10 @@ val networkProxyPatch = baseNetworkProxyPatch(
         is_9_20_or_greater
     },
     patchNotCompatibleMessage = {
-        if (is_8_50_or_greater) {
+        if (is_8_51_or_greater) {
             null
         } else {
-            "Network proxy requires YouTube Music 8.50 or newer. " +
-                    "The bundled Cronet version does not include the required proxy APIs."
+            "Network proxy requires YouTube Music 8.51.51 or newer."
         }
     },
     block = {
