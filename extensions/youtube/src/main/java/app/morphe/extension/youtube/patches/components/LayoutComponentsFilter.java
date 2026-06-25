@@ -44,13 +44,10 @@ public final class LayoutComponentsFilter extends Filter {
             "cell_description_body",
             "channel_profile"
     );
-    private static final ByteArrayFilterGroup mix8Buffer = new ByteArrayFilterGroup(
+    private static final ByteArrayFilterGroup mixPlaylistUrlBuffer = new ByteArrayFilterGroup(
             null,
-            "Mix8"
-    );
-    private static final ByteArrayFilterGroup playlistListTagBuffer = new ByteArrayFilterGroup(
-            null,
-            "&list="
+            "?list=RD",
+            "&list=RD"
     );
 
     private static final List<String> channelTabFilterStrings = getFilterStrings(Settings.HIDE_CHANNEL_TAB_FILTER_STRINGS);
@@ -499,8 +496,7 @@ public final class LayoutComponentsFilter extends Filter {
             }
 
             if (!mixPlaylistsBuffersExceptions.check(buffer).isFiltered() &&
-                    mix8Buffer.check(buffer).isFiltered() &&
-                    playlistListTagBuffer.check(buffer).isFiltered()) {
+                    mixPlaylistUrlBuffer.check(buffer).isFiltered()) {
                 Logger.printDebug(() -> "Filtered mix playlist");
                 return true;
             }
