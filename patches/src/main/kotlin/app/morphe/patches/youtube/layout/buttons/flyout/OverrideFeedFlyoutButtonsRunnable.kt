@@ -91,11 +91,11 @@ val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
         ).matchSingle().classDef.type
 
         Fingerprint(
-            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
             returnType = "V",
             parameters = listOf("L", "Landroid/view/View;", "Ljava/lang/Object;", "L"),
-            custom = { _, classDef ->
-                classDef.superclass == feedFlyoutButtonsContainerSuperclass
+            custom = { method, classDef ->
+                !AccessFlags.STATIC.isSet(method.accessFlags) &&
+                        classDef.superclass == feedFlyoutButtonsContainerSuperclass
             }
         ).method.addInstruction(
             0,
