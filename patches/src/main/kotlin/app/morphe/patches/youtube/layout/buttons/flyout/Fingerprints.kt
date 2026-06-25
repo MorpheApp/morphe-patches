@@ -14,6 +14,7 @@ import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -50,3 +51,14 @@ internal object FeedFlyoutButtonsInitializerFingerprint : Fingerprint(
         fieldAccess(opcode = Opcode.IPUT_OBJECT, type = "Ljava/lang/Runnable;"),
     )
 )
+
+internal object InteractiveStickerRendererGetEditViewFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "Landroid/view/View;",
+    parameters = listOf(),
+    filters = listOf(
+        string("getEditView called without setting interactiveStickerRenderer"),
+        fieldAccess(opcode = Opcode.IGET_OBJECT, type = "[B") // The only byte array accessed in the method.
+    )
+)
+

@@ -19,12 +19,21 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.components.LithoFilterPatch;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
 public final class OverrideFeedFlyoutButtonRunnablePatch {
+
+    /**
+     * Interface to use obfuscated methods.
+     */
+    public interface ProtocolBufferFieldInterface {
+        // Method is added during patching.
+        byte[] patch_getBuffer();
+    }
 
     private static final String queueButtonName = "QUEUE_PLAY_NEXT";
 
@@ -50,33 +59,27 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
     /**
      * Injection point.
      */
-    public static void extractVideoIdFromFlyoutBuffer(Object argfObject) {
+    public static void extractVideoIdFromFlyoutBuffer(Object bufferObject) {
         try {
-            visibleFlyoutButtons.clear();
-
-            byte[] flyoutBuffer = null;
-
-            for (Field field : argfObject.getClass().getDeclaredFields()) {
-                if (field.getType() == byte[].class) {
-                    field.setAccessible(true);
-                    flyoutBuffer = (byte[]) field.get(argfObject);
-                    break;
-                }
+            if (!(bufferObject instanceof ProtocolBufferFieldInterface bufferInterface)) {
+                return;
             }
 
+            visibleFlyoutButtons.clear();
+
+            byte[] flyoutBuffer = bufferInterface.patch_getBuffer();
             if (flyoutBuffer == null) return;
 
-            Matcher matcher =
-                    Pattern.compile(
-                            "https://i\\.ytimg\\.com/vi/([a-zA-Z0-9_-]{11})"
-                    ).matcher(new LithoFilterPatch.BufferAsciiStrings(flyoutBuffer).getStrings());
+            Matcher matcher = Pattern.compile(
+                    "https://i\\.ytimg\\.com/vi/([a-zA-Z0-9_-]{11})"
+            ).matcher(new LithoFilterPatch.BufferAsciiStrings(flyoutBuffer).getStrings());
 
             if (matcher.find()) {
                 flyoutVideoId = matcher.group(1);
                 Logger.printDebug(() -> "extractVideoIdFromFlyout: VideoId extracted: " + flyoutVideoId);
             }
-        } catch (Exception e) {
-            Logger.printDebug(() -> "extractVideoIdFromFlyout: Cannot get videoId from feed flyout");
+        } catch (Exception ex) {
+            Logger.printException(() -> "extractVideoIdFromFlyoutBuffer failure", ex);
         }
     }
 

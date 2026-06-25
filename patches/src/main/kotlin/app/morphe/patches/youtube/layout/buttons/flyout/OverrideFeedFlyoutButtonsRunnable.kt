@@ -8,20 +8,29 @@
 package app.morphe.patches.youtube.layout.buttons.flyout
 
 import app.morphe.patcher.Fingerprint
+import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.insertLiteralOverride
+import com.android.tools.smali.dexlib2.AccessFlags
+import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction22c
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
+import com.android.tools.smali.dexlib2.immutable.ImmutableMethod
 
 private const val EXTENSION_CLASS =
     "Lapp/morphe/extension/youtube/patches/OverrideFeedFlyoutButtonRunnablePatch;"
+
+private const val EXTENSION_PROTOCOL_BUFFER_INTERFACE =
+    $$"Lapp/morphe/extension/youtube/patches/OverrideFeedFlyoutButtonRunnablePatch$ProtocolBufferFieldInterface;"
+
 
 @Suppress("unused")
 val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
@@ -36,12 +45,40 @@ val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
     compatibleWith(COMPATIBILITY_YOUTUBE)
 
     execute {
+        // Add interface method to get protocol buffer.
+        InteractiveStickerRendererGetEditViewFingerprint.let {
+            val bufferField = it.instructionMatches.last().getFieldAccessed()
+
+            mutableClassDefBy(bufferField.definingClass).apply {
+                interfaces.add(EXTENSION_PROTOCOL_BUFFER_INTERFACE)
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_getBuffer",
+                        listOf(),
+                        "[B",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(2),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                iget-object v0, p0, $bufferField
+                                return-object v0      
+                            """
+                        )
+                    }
+                )
+            }
+        }
+
         FeedFlyoutButtonsContainerFingerprint.matchAll().forEach {
-            it.method.addInstructions(
+            println("method: ${it.method}")
+            it.method.addInstruction(
                 0,
-                """
-                invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V
-            """
+                "invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
             )
         }
 
