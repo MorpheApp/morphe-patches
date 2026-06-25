@@ -85,6 +85,18 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
+        FeedFlyoutDialogFingerprint.let {
+            val returnInstructionIndex = it.instructionMatches.last().index
+            val returnInstructionRegister = it.method.getInstruction<OneRegisterInstruction>(
+                returnInstructionIndex
+            ).registerA
+
+            it.method.addInstruction(
+                returnInstructionIndex,
+                "invoke-static { v$returnInstructionRegister }, $EXTENSION_CLASS->setFlyoutDialog(Landroid/app/Dialog;)V"
+            )
+        }
+
         // Hook flyout menu protocol buffer.
         FeedFlyoutButtonsContainerFingerprint.matchAll(3..3).forEach {
             it.method.addInstruction(

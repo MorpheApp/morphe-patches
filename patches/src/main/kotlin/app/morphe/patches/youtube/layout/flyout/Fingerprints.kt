@@ -26,6 +26,23 @@ internal object FlyoutBufferDisablerLiteralFingerprint : Fingerprint(
     )
 )
 
+internal object FeedFlyoutDialogFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC),
+    returnType = "Landroid/app/Dialog;",
+    parameters = listOf("Landroid/os/Bundle;"),
+    filters = listOf(
+        opcode(opcode = Opcode.INVOKE_VIRTUAL),
+        opcode(opcode = Opcode.MOVE_RESULT_OBJECT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IGET_OBJECT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IF_EQZ, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.MOVE_RESULT, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.IPUT_BOOLEAN),
+        opcode(opcode = Opcode.INVOKE_VIRTUAL, location = MatchAfterImmediately()),
+        opcode(opcode = Opcode.RETURN_OBJECT, location = MatchAfterImmediately()),
+    ),
+)
+
 // This could be more precise, but is difficult to fingerprint.
 internal object FeedFlyoutButtonsContainerFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
@@ -64,4 +81,3 @@ internal object InteractiveStickerRendererGetEditViewFingerprint : Fingerprint(
         fieldAccess(opcode = Opcode.IGET_OBJECT, type = "[B") // The only byte array accessed in the method.
     )
 )
-

@@ -9,6 +9,7 @@ package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.Utils.getContext;
 
+import android.app.Dialog;
 import android.util.Pair;
 
 import androidx.annotation.Nullable;
@@ -32,6 +33,8 @@ public final class AddToQueuePatch {
         byte[] patch_getBuffer();
     }
 
+    private static Dialog flyoutDialog = null;
+
     private static final String queueButtonName = "QUEUE_PLAY_NEXT";
 
     private static final byte[] VIDEO_ID_PREFIX_BYTES =
@@ -43,6 +46,20 @@ public final class AddToQueuePatch {
     private static int currentHandledButtonIndex;
 
     // All methods are called on main thread.
+
+    /**
+     * Injection point.
+     */
+    public static void setFlyoutDialog(Dialog dialog) {
+        flyoutDialog = dialog;
+    }
+
+    public static void dismissFlyoutDialog() {
+        if (flyoutDialog == null) {
+            return;
+        }
+        flyoutDialog.dismiss();
+    }
 
     /**
      * Injection point.
@@ -161,6 +178,7 @@ public final class AddToQueuePatch {
                 return;
             }
             Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
+            dismissFlyoutDialog();
             PlaylistPatch.prepareDialogBuilder(getContext(), flyoutVideoId);
         };
     }
