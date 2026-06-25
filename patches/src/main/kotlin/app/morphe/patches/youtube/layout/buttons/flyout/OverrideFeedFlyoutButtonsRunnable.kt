@@ -11,13 +11,18 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
+import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
+import app.morphe.patches.all.misc.resources.resourceMappingPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.insertLiteralOverride
+import app.morphe.util.matchSingle
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
 import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction22c
@@ -40,6 +45,7 @@ val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
     dependsOn(
         settingsPatch,
         sharedExtensionPatch,
+        resourceMappingPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -74,13 +80,27 @@ val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
             }
         }
 
-        FeedFlyoutButtonsContainerFingerprint.matchAll().forEach {
-            println("method: ${it.method}")
-            it.method.addInstruction(
-                0,
-                "invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
-            )
-        }
+        val feedFlyoutButtonsContainerSuperclass = Fingerprint(
+            filters = listOf(
+                resourceLiteral(ResourceType.DIMEN, "innertube_menu_width_increment_dp"),
+                methodCall("Landroid/widget/ListPopupWindow;->show()V")
+            ),
+            custom = { method, _ ->
+                !AccessFlags.STATIC.isSet(method.accessFlags)
+            }
+        ).matchSingle().classDef.type
+
+        Fingerprint(
+            accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+            returnType = "V",
+            parameters = listOf("L", "Landroid/view/View;", "Ljava/lang/Object;", "L"),
+            custom = { _, classDef ->
+                classDef.superclass == feedFlyoutButtonsContainerSuperclass
+            }
+        ).method.addInstruction(
+            0,
+            "invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
+        )
 
         val feedFlyoutButtonsInitializerMethod = FeedFlyoutButtonsInitializerFingerprint.methodOrNull
 
