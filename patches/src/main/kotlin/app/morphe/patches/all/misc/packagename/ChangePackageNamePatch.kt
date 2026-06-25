@@ -42,15 +42,14 @@ import app.morphe.patcher.methodCall
 import app.morphe.patcher.patch.BytecodePatchContext
 import app.morphe.patcher.patch.Option
 import app.morphe.patcher.patch.OptionException
-import app.morphe.patcher.patch.ResourcePatchContext
 import app.morphe.patcher.patch.booleanOption
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patcher.patch.stringOption
 import app.morphe.util.asSequence
+import app.morphe.util.findElementByAttributeValue
 import app.morphe.util.findInstructionIndicesReversed
 import app.morphe.util.findMutableMethodOf
-import app.morphe.util.getNode
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import org.w3c.dom.Element
@@ -127,25 +126,6 @@ private fun applyGetPackageName(oldPackageName: String, vararg classesToChange: 
     }
 }
 
-
-context(patchContext: ResourcePatchContext)
-private fun applyProvidersStrings(oldPackageName: String, newPackageName: String) {
-    patchContext.document("res/values/strings.xml").use { document ->
-        val children = document.documentElement.childNodes
-        for (i in 0 until children.length) {
-            val node = children.item(i) as? Element ?: continue
-
-            node.textContent = when (node.getAttribute("name")) {
-                "provider_authority_appdata", "provider_authority_file",
-                "provider_authority_userdata", "provider_workmanager_init"
-                    -> node.textContent.replace(oldPackageName, newPackageName)
-
-                else -> continue
-            }
-        }
-    }
-}
-
 @Suppress("unused")
 val changePackageNamePatch = resourcePatch(
     name = "Change package name",
@@ -168,8 +148,8 @@ val changePackageNamePatch = resourcePatch(
         key = "updatePermissions",
         default = false,
         title = "Update permissions",
-        description = "Update compatibility receiver permissions. " +
-            "Enabling this can fix installation errors, but this can also break features in certain apps.",
+        description = "Update custom permissions declared by the app. " +
+            "Enabling this can fix installation conflicts, but this can also break features in certain apps.",
     )
 
     val updateProvidersOption = booleanOption(
@@ -177,15 +157,7 @@ val changePackageNamePatch = resourcePatch(
         default = false,
         title = "Update providers",
         description = "Update provider names declared by the app. " +
-            "Enabling this can fix installation errors, but this can also break features in certain apps.",
-    )
-
-    val updateProvidersStringsOption = booleanOption(
-        key = "updateProvidersStrings",
-        default = false,
-        title = "Update providers strings",
-        description = "Update additional provider names declared by the app in the strings.xml file. " +
-                "Enabling this can fix installation errors, but this can also break features in certain apps.",
+            "Enabling this can fix installation conflicts, but this can also break features in certain apps.",
     )
 
     fun getReplacementPackageName(originalPackageName: String) : String {
@@ -216,79 +188,107 @@ val changePackageNamePatch = resourcePatch(
          * This is not an exhaustive list, and is only the apps with
          * Morphe specific patches and are confirmed incompatible with this patch.
          */
-        val incompatibleAppPackages = setOf<String>()
+        val incompatibleAppPackages = setOf(
+            // Crashes when opening posts
+            "com.twitter.android",
+
+            // Video stories only play audios
+            "com.instagram.android",
+
+            // Patches and installs but crashes on launch.
+            "com.duolingo",
+            "tv.twitch.android.app",
+        )
 
         val packageName = packageMetadata.packageName
         val newPackageName = getReplacementPackageName(packageName)
 
+        if (incompatibleAppPackages.contains(packageName)) {
+            return@finalize Logger.getLogger(this::class.java.name).severe(
+                "'$packageName' does not work correctly with \"Change package name\"",
+            )
+        }
+
         val applyUpdatePermissions : Boolean
         val applyUpdateProviders : Boolean
-        val applyUpdateProvidersStrings : Boolean
 
         // Override user options with known working values for specific apps.
         when (packageName) {
             PACKAGE_NAME_REDDIT -> {
                 applyUpdatePermissions = true
                 applyUpdateProviders = true
-                applyUpdateProvidersStrings = true
+            }
+            "com.google.android.youtube", "com.google.android.apps.youtube.music",
+            "com.google.android.apps.photos", "com.google.android.apps.magazines" -> {
+                // Permissions and providers are updated by "GmsCore support" patch
+                applyUpdatePermissions = false
+                applyUpdateProviders = false
             }
             else -> {
                 applyUpdatePermissions = updatePermissionsOption.value!!
                 applyUpdateProviders = updateProvidersOption.value!!
-                applyUpdateProvidersStrings = updateProvidersStringsOption.value!!
             }
         }
 
-        if (applyUpdateProvidersStrings) {
-            applyProvidersStrings(packageName, newPackageName)
-        }
+        val providerStringResources = mutableSetOf<String>()
 
         document("AndroidManifest.xml").use { document ->
-            val manifest = document.getNode("manifest") as Element
-
-            if (incompatibleAppPackages.contains(packageName)) {
-                return@finalize Logger.getLogger(this::class.java.name).severe(
-                    "'$packageName' does not work correctly with \"Change package name\"",
-                )
-            }
-
-            val newPackageName = getReplacementPackageName(packageName)
-            manifest.setAttribute("package", newPackageName)
+            document.documentElement.setAttribute("package", newPackageName)
 
             if (applyUpdatePermissions) {
-                val permissions = manifest.getElementsByTagName("permission").asSequence()
-                val usesPermissions = manifest.getElementsByTagName("uses-permission").asSequence()
+                val permissions = document.getElementsByTagName("permission")
+                val usesPermissions = document.getElementsByTagName("uses-permission")
 
-                val receiverNotExported = "DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-                val androidName = "android:name"
-                val oldName = "$packageName.$receiverNotExported"
-                val newName = "$newPackageName.$receiverNotExported"
+                permissions.asSequence().map { it as Element }.forEach {
+                    val oldName = it.getAttribute("android:name")
+                    val newName = when {
+                        oldName.startsWith('.') -> return@forEach
+                        oldName.startsWith("$packageName.") -> oldName.replaceFirst(packageName, newPackageName)
+                        else -> "${newPackageName}_$oldName"
+                    }
+                    it.setAttribute("android:name", newName)
 
-                (permissions + usesPermissions)
-                    .map { it as Element }
-                    .filter {
-                        it.getAttribute(androidName) == oldName
-                    }
-                    .forEach {
-                        it.setAttribute(androidName, newName)
-                    }
+                    // Update a corresponding <uses-permission> as well if it exists
+                    usesPermissions
+                        .findElementByAttributeValue("android:name", oldName)
+                        ?.setAttribute("android:name", newName)
+                }
             }
 
             if (applyUpdateProviders) {
-                val providers = manifest.getElementsByTagName("provider").asSequence()
+                val providers =
+                    document.getElementsByTagName("provider").asSequence().map { it as Element }
 
-                val androidAuthority = "android:authorities"
-                val authorityPrefix = "$packageName."
+                for (provider in providers) {
+                    val authorities = provider.getAttribute("android:authorities").split(';')
+                    val newAuthorities = authorities.map {
+                        when {
+                            it.startsWith("$packageName.") -> it.replaceFirst(packageName, newPackageName)
+                            it.startsWith('@') -> {
+                                providerStringResources.add(it.removePrefix("@string/"))
+                                it
+                            }
+                            else -> "${newPackageName}_$it"
+                        }
+                    }
+                    provider.setAttribute("android:authorities", newAuthorities.joinToString(";"))
+                }
+            }
+        }
 
-                for (node in providers) {
-                    val provider = node as Element
+        if (providerStringResources.isNotEmpty()) {
+            document("res/values/strings.xml").use { document ->
+                val children = document.documentElement.childNodes
+                for (i in 0 until children.length) {
+                    val node = children.item(i) as? Element ?: continue
 
-                    val authorities = provider.getAttribute(androidAuthority)
-                    if (authorities.startsWith(authorityPrefix)) {
-                        provider.setAttribute(
-                            androidAuthority,
-                            authorities.replace(packageName, newPackageName)
-                        )
+                    if (node.getAttribute("name") in providerStringResources) {
+                        val authority = node.textContent
+                        node.textContent = if (authority.startsWith("$packageName.")) {
+                            authority.replaceFirst(packageName, newPackageName)
+                        } else {
+                            "${newPackageName}_$authority"
+                        }
                     }
                 }
             }
