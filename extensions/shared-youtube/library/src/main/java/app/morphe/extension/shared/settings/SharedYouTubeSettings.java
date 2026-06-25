@@ -54,6 +54,15 @@ public class SharedYouTubeSettings extends BaseSettings {
 
     public static final StringSetting DISABLED_FEATURE_FLAGS = new StringSetting("morphe_disabled_feature_flags", "", true, parent(DEBUG));
 
+    public static final BooleanSetting PROXY_ENABLED = new BooleanSetting("morphe_proxy_enabled", FALSE, true);
+    public static final StringSetting PROXY_HOST = new StringSetting("morphe_proxy_host", "", true, parent(PROXY_ENABLED));
+    public static final IntegerSetting PROXY_PORT = new IntegerSetting("morphe_proxy_port", 8080, true, parent(PROXY_ENABLED));
+    public static final BooleanSetting PROXY_HTTPS = new BooleanSetting("morphe_proxy_https", FALSE, true, parent(PROXY_ENABLED));
+    public static final BooleanSetting PROXY_AUTH_ENABLED = new BooleanSetting("morphe_proxy_auth_enabled", FALSE, true, parent(PROXY_ENABLED));
+    public static final StringSetting PROXY_AUTH_USERNAME = new StringSetting("morphe_proxy_auth_username", "", true, parent(PROXY_AUTH_ENABLED));
+    public static final StringSetting PROXY_AUTH_PASSWORD = new StringSetting("morphe_proxy_auth_password", "", true, false, null, parent(PROXY_AUTH_ENABLED));
+    public static final BooleanSetting PROXY_ALLOW_DIRECT_FALLBACK = new BooleanSetting("morphe_proxy_allow_direct_fallback", FALSE, true, parent(PROXY_ENABLED));
+
     // Renamed settings
     private static final BooleanSetting DEPRECATED_SANITIZE_URL_QUERY = new BooleanSetting("morphe_sanitize_url_query", TRUE);
 

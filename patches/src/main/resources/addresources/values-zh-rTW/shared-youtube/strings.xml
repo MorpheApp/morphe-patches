@@ -109,6 +109,25 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">強制使用原始音訊語言</string>
   <string name="morphe_force_original_audio_summary">一律播放影片的原始音軌，而非配音版本</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">網路代理</string>
+  <string name="morphe_proxy_screen_summary">透過代理路由支援網路請求</string>
+  <string name="morphe_proxy_enabled_title">啟用代理</string>
+  <string name="morphe_proxy_enabled_summary">透過已設定的 HTTP 或 HTTPS 代理伺服器路由受支援的網路請求</string>
+  <string name="morphe_proxy_host_title">代理伺服器主機</string>
+  <string name="morphe_proxy_host_summary">代理伺服器的hostname 或 IP 位址</string>
+  <string name="morphe_proxy_port_title">代理伺服器端口</string>
+  <string name="morphe_proxy_port_summary">代理伺服器的端口</string>
+  <string name="morphe_proxy_https_title">使用 HTTPS 代理伺服器</string>
+  <string name="morphe_proxy_https_summary">改用 HTTPS 連接至代理伺服器，而不是 HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">代理伺服器驗證</string>
+  <string name="morphe_proxy_auth_enabled_summary">在代理伺服器請求中傳送基本驗證</string>
+  <string name="morphe_proxy_auth_username_title">您的使用者名稱：</string>
+  <string name="morphe_proxy_auth_username_summary">用於基本代理伺服器驗證的使用者名稱</string>
+  <string name="morphe_proxy_auth_password_title">代理伺服器密碼</string>
+  <string name="morphe_proxy_auth_password_summary">用於基本代理伺服器驗證的密碼</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">允許直接回退</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">如果代理伺服器失敗，則直接連線</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">隱藏全螢幕廣告</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

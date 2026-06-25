@@ -109,6 +109,25 @@ Teipfidh ar an athsheinm má tá hais JavaScript an imreora as dáta."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Fórsaigh teanga fuaime bhunaidh</string>
   <string name="morphe_force_original_audio_summary">Seinneann sé rian fuaime bunaidh an fhíseáin i gcónaí in ionad leagan dubáilte</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Prócsí líonra</string>
+  <string name="morphe_proxy_screen_summary">Seol iarratais líonra taca ar thréimhse prócsí</string>
+  <string name="morphe_proxy_enabled_title">Cumasú prócsí</string>
+  <string name="morphe_proxy_enabled_summary">Díríocht ar sheanachaíocht iarrataí líonra trí ionadaithe HTTP nó HTTPS cumraithe</string>
+  <string name="morphe_proxy_host_title">Óstach comhairle</string>
+  <string name="morphe_proxy_host_summary">Ainm fearainn nó seoladh IP an freastalaí comhairle</string>
+  <string name="morphe_proxy_port_title">Port comhairle</string>
+  <string name="morphe_proxy_port_summary">Port an freastalaí comhairle</string>
+  <string name="morphe_proxy_https_title">Úsáid comhairle HTTPS</string>
+  <string name="morphe_proxy_https_summary">Úsáid HTTPS chun ceangal leis an freastalaí comhairle in ionad HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Fíordheimhniú comhairle</string>
+  <string name="morphe_proxy_auth_enabled_summary">Seolann fíordheimhniú Bunúsach le hiarrataí comhairle</string>
+  <string name="morphe_proxy_auth_username_title">Ainm úsáideora comhairle</string>
+  <string name="morphe_proxy_auth_username_summary">Ainm úsáideora le hagann fíordheimhniú comhairle Bunúsach</string>
+  <string name="morphe_proxy_auth_password_title">Pasfhocal comhairle</string>
+  <string name="morphe_proxy_auth_password_summary">Pasfhocal le hagann fíordheimhniú comhairle Bunúsach</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Ceadaigh teip dhíreach</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Ceangail go díreach má theipeann an comhairle</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Folaigh fógraí lánscáileáin</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

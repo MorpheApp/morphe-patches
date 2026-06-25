@@ -87,7 +87,6 @@ val versionCheckPatch = bytecodePatch {
             return versionName >= version
         }
 
-        // All bug fix releases always seem to use the same play store version as the minor version.
         is_20_21_or_greater = isEqualsOrGreaterThan("20.21.00")
         is_20_22_or_greater = isEqualsOrGreaterThan("20.22.00")
         is_20_26_or_greater = isEqualsOrGreaterThan("20.26.00")
@@ -123,6 +122,6 @@ val versionCheckPatch = bytecodePatch {
         is_21_19_or_greater = isEqualsOrGreaterThan("21.19.000")
         is_21_20_or_greater = isEqualsOrGreaterThan("21.20.000")
         is_21_21_or_greater = isEqualsOrGreaterThan("21.21.00")
-        is_21_25_or_greater = isEqualsOrGreaterThan("21.25.00")
+        is_21_25_or_greater = isEqualsOrGreaterThan("21.25.000")
     }
 }

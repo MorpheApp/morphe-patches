@@ -109,6 +109,25 @@ Voorstelling sal misluk as die speler JavaScript hash verouder is."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Dwing oorspronklike oudiotaal af</string>
   <string name="morphe_force_original_audio_summary">Speel altyd die oorspronklike klou van die video in plaas van \'n dubbingweergawe</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Netwerkproxy</string>
+  <string name="morphe_proxy_screen_summary">Lei die netwerkversoeke deur \'n proxy</string>
+  <string name="morphe_proxy_enabled_title">Aktiveer proxy</string>
+  <string name="morphe_proxy_enabled_summary">Routes ondersteunde netwerkversoeke deur \'n gekonfigureerde HTTP- of HTTPS-proxy</string>
+  <string name="morphe_proxy_host_title">Proxy-gasheer</string>
+  <string name="morphe_proxy_host_summary">Gasheernaam of IP-adres van die proxy-bediener</string>
+  <string name="morphe_proxy_port_title">Proxy-poort</string>
+  <string name="morphe_proxy_port_summary">Poort van die proxy-bediener</string>
+  <string name="morphe_proxy_https_title">Gebruik HTTPS-proxy</string>
+  <string name="morphe_proxy_https_summary">Gebruik HTTPS om aan te sluit by die proxy-bediener in plaas van HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Proxy-verifikasie</string>
+  <string name="morphe_proxy_auth_enabled_summary">Stuur Basiese verifikasie met proxy-versoeke</string>
+  <string name="morphe_proxy_auth_username_title">Proxy-gebruikersnaam</string>
+  <string name="morphe_proxy_auth_username_summary">Gebruikersnaam vir Basiese proxy-verifikasie</string>
+  <string name="morphe_proxy_auth_password_title">Proxy-wagwoord</string>
+  <string name="morphe_proxy_auth_password_summary">Wagwoord vir Basiese proxy-verifikasie</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Laat direkte terugval toe</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Sluit direk aan as die proxy misluk</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Verberg volskermadvertensies</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

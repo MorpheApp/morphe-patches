@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Вимикає спливаюче вікно, яке з\'являється під час створення знімка екрана</string>
   <string name="morphe_hide_ask_button_title">Приховати кнопку \"Запитати\"</string>
   <string name="morphe_hide_ask_button_summary">Приховує кнопку \"Запитати\" у рядку пошуку</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Приховати рекомендовані спільноти</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Приховує полиці з рекомендованими спільнотами у субреддітах</string>
-  <string name="morphe_hide_trending_today_shelf_title">Приховати полицю \"Тренди сьогодні\"</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Приховує полицю \"Тренди сьогодні\" з пропозицій пошуку
-
-Обмеження: Візуальні роздільники можуть не приховуватися"</string>
+  <string name="morphe_hide_communities_shelf_title">Приховати полицю спільнот</string>
+  <string name="morphe_hide_communities_shelf_summary">Приховує полиці зі спільнотами, пов’язаними або рекомендованими у субредітах</string>
+  <string name="morphe_hide_trending_shelves_title">Приховати полиці \"Популярне\"</string>
+  <string name="morphe_hide_trending_shelves_summary">Приховує полиці \"Популярне\" з пошукових підказок</string>
   <string name="morphe_remove_notification_dialog_title">Видалити діалог пропозиції сповіщень</string>
   <string name="morphe_remove_notification_dialog_summary">Автоматично закриває діалог пропозиції сповіщень при відвідуванні субредіту</string>
   <string name="morphe_show_view_count_title">Показувати кількість переглядів у публікаціях</string>

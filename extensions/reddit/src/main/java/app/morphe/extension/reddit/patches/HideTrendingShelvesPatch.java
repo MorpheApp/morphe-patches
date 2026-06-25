@@ -4,9 +4,9 @@
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
+
 package app.morphe.extension.reddit.patches;
 
-import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
@@ -18,7 +18,11 @@ import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 
 @SuppressWarnings("unused")
-public final class HideTrendingTodayShelfPatch {
+public final class HideTrendingShelvesPatch {
+
+    public interface TrendingInterface {
+        String patch_getTrendingLabel();
+    }
 
     /**
      * 'home_revamp_tab_popular' may be removed or changed at any time,
@@ -30,6 +34,8 @@ public final class HideTrendingTodayShelfPatch {
 
     private static volatile String[] trendingLabels = new String[]{ TRENDING_LABEL };
 
+    private static boolean isTrendingSection = false;
+
     /**
      * @return If this patch was included during patching.
      */
@@ -40,38 +46,73 @@ public final class HideTrendingTodayShelfPatch {
     /**
      * Injection point.
      */
-    public static boolean hideTrendingTodayShelf() {
-        return Settings.HIDE_TRENDING_TODAY_SHELF.get();
+    @SuppressWarnings("BooleanMethodIsAlwaysInverted")
+    public static boolean hideTrendingShelf() {
+        return Settings.HIDE_TRENDING_SHELVES.get();
     }
 
     /**
      * Injection point.
      */
-    public static boolean shouldHideSearchSectionHeader(Object state) {
+    public static boolean hideTrendingHeader(TrendingInterface state) {
         try {
-            if (state == null || !hideTrendingTodayShelf()) {
-                return false;
-            }
-
-            String stateStr = state.toString();
-            for (String label : trendingLabels) {
-                if (stateStr.contains(label)) return true;
-            }
-
-            for (Field field : state.getClass().getDeclaredFields()) {
-                if (field.getType() == String.class) {
-                    field.setAccessible(true);
-                    String value = (String) field.get(state);
-                    if (value != null && Utils.startsWithAny(value, trendingLabels)) {
-                        return true;
-                    }
-                }
-            }
+            if (state == null) return processTrendingState(null, null);
+            return processTrendingState(state.toString(), state.patch_getTrendingLabel());
         } catch (Exception e) {
-            Logger.printException(() -> "shouldHideSearchSectionHeader failure");
+            Logger.printException(() -> "hideTrendingHeader failure");
+            return processTrendingState(null, null);
+        }
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideTrendingHeaderLegacy(String headerTitle) {
+        try {
+            return processTrendingState(headerTitle, null);
+        } catch (Exception e) {
+            Logger.printException(() -> "hideTrendingHeaderLegacy failure");
+            return processTrendingState(null, null);
+        }
+    }
+
+    /**
+     * Centralized logic engine for both Legacy and Modern versions.
+     */
+    private static boolean processTrendingState(String rawString, String exactLabel) {
+        if (!hideTrendingShelf()) {
+            isTrendingSection = false;
+            return false;
         }
 
-        return false;
+        boolean isTrending = false;
+
+        if (rawString != null) {
+            for (String label : trendingLabels) {
+                if (rawString.contains(label)) {
+                    isTrending = true;
+                    break;
+                }
+            }
+        }
+
+        if (!isTrending && exactLabel != null) {
+            if (Utils.startsWithAny(exactLabel, trendingLabels)) {
+                isTrending = true;
+            }
+        }
+
+        isTrendingSection = isTrending;
+        return isTrending;
+    }
+
+    /**
+     * Injection point.
+     */
+    public static boolean hideTrendingCommunitiesShelf() {
+        if (!hideTrendingShelf()) return false;
+
+        return isTrendingSection;
     }
 
     /**

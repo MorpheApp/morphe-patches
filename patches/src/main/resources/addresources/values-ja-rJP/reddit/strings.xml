@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">スクリーンショットを撮影したときに表示されるポップアップを無効にします</string>
   <string name="morphe_hide_ask_button_title">質問ボタンを非表示</string>
   <string name="morphe_hide_ask_button_summary">検索バー内の質問ボタンを非表示にします</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">おすすめのコミュニティを非表示</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">subreddit の推奨コミュニティ欄を非表示にします</string>
-  <string name="morphe_hide_trending_today_shelf_title">今日のトレンド欄を非表示</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"検索候補から今日のトレンド欄を非表示にします
-
-制限: 空白が非表示にならずに残ってしまう場合があります"</string>
+  <string name="morphe_hide_communities_shelf_title">コミュニティの棚を非表示</string>
+  <string name="morphe_hide_communities_shelf_summary">subreddit の関連コミュニティまたはおすすめコミュニティの棚を非表示にします</string>
+  <string name="morphe_hide_trending_shelves_title">トレンド欄を非表示</string>
+  <string name="morphe_hide_trending_shelves_summary">検索候補のトレンド欄を非表示にします</string>
   <string name="morphe_remove_notification_dialog_title">通知の提案ダイアログを削除</string>
   <string name="morphe_remove_notification_dialog_summary">subreddit を開いたときに表示される通知案内のポップアップを自動的に閉じます</string>
   <string name="morphe_show_view_count_title">投稿に表示回数を表示</string>

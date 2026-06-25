@@ -416,7 +416,7 @@ Not: 'Video akışlarını taklit et' etkin değilse, bu özelliği etkinleştir
   <string name="morphe_swipe_press_to_engage_summary">Kaydırma hareketinin algılanması için önce basılı tutulması gerekir</string>
   <string name="morphe_swipe_haptic_feedback_title">Titreşimli geri bildirimi etkinleştir</string>
   <string name="morphe_swipe_save_and_restore_brightness_title">Parlaklığı kaydet ve geri yükle</string>
-  <string name="morphe_swipe_save_and_restore_brightness_summary">Tam ekran moduna girerken/çıkarken parlaklık seviyesini hatırlar</string>
+  <string name="morphe_swipe_save_and_restore_brightness_summary">Tam ekran moduna girerken / çıkarken parlaklık seviyesini hatırlar</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_title">Otomatik parlaklık hareketini etkinleştir</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_summary">Parlaklığı en düşük değere kaydırmak sistem otomatik parlaklığını etkinleştirir</string>
   <string name="morphe_swipe_lowest_value_enable_auto_brightness_overlay_text">Oto</string>
@@ -497,7 +497,7 @@ Not: 'Video akışlarını taklit et' etkin değilse, bu özelliği etkinleştir
   <string name="morphe_hide_shop_button_title">Alışveriş düğmesini gizle</string>
   <!-- 'Save' should be translated using the same localized wording YouTube displays for the button. -->
   <string name="morphe_hide_save_button_title">Kaydet düğmesini gizle</string>
-  <string name="morphe_hide_more_button_title">Daha düğmesini gizle</string>
+  <string name="morphe_hide_more_button_title">Daha fazla düğmesini gizle</string>
   <string name="morphe_fullscreen_buttons">Tam ekran düğmeleri</string>
   <string name="morphe_hide_quick_actions_title">Eylem çubuğunu gizle</string>
   <string name="morphe_hide_quick_actions_ask_button_title">Soru düğmesini gizle</string>
@@ -745,7 +745,7 @@ Ayarlar → Oynatma (veya Otomatik Oynatma) → Sonraki videoyu otomatik oynat"<
   <string name="morphe_disable_fullscreen_sliding_down_gesture_title">Dikey modda aşağı kaydırma hareketini devre dışı bırak</string>
   <string name="morphe_disable_fullscreen_dragged_down_gesture_title">Yatay modda aşağı kaydırma hareketini devre dışı bırak</string>
   <!-- layout.player.fullscreen.openVideosFullscreenPatch -->
-  <string name="morphe_open_videos_fullscreen_title">Videoları tam ekran modda aç</string>
+  <string name="morphe_open_videos_fullscreen_title">Videoları tam ekran modunda aç</string>
   <string name="morphe_open_videos_fullscreen_entry_1">Devre dışı</string>
   <string name="morphe_open_videos_fullscreen_entry_2">Dikey</string>
   <string name="morphe_open_videos_fullscreen_entry_3">Yatay</string>
@@ -1028,21 +1028,21 @@ Bir vurgu göndermiyorsanız, İptal'e dokunun ve ikinci konumu işaretleyin"</s
 
 Tablet düzeni
 • Topluluk gönderileri gizlenmiştir
-• Akışta oynatma ayarı kullanılamıyor
-• Shorts'ta Remix düğmesi ve Ses düğmesi bulunmuyor
-• Eski video işlem çubuğu daraltılmamış şekilde gösteriliyor
+• Akış ayarlarında oynatma mevcut değildir
+• Remix düğmesi ve Ses düğmesi Shorts'ta mevcut değildir
+• Daraltılmamış, eski video eylem çubuğu gösterilir
 
 Otomotiv düzeni
 • Akış konulara ve kanallara göre düzenlenmiştir
-• Akışta oynatma ayarı kullanılamıyor
-• Shorts'ta Remix düğmesi ve Ses düğmesi bulunmuyor
-• Shorts normal oynatıcıda açılıyor
-• Eski video işlem çubuğu daraltılmamış şekilde gösteriliyor"</string>
+• Akış ayarlarında oynatma mevcut değildir
+• Remix düğmesi ve Ses düğmesi Shorts'ta mevcut değildir
+• Shorts normal oynatıcıda açılır
+• Daraltılmamış, eski video eylem çubuğu gösterilir"</string>
   <string name="morphe_tablet_layout_in_player_title">Oynatıcıda tablet düzenini etkinleştir</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
   <string name="morphe_tablet_layout_in_player_summary">"Eski oynatıcı düzenini geri yükler
 
-Kısıtlamalar: \"Eski video işlem çubuğunu geri yükle\" devre dışı bırakılırsa, \"Daha fazla video\" katmanı kullanılamayabilir."</string>
+Sınırlamalar: 'Eski video eylem çubuğunu geri yükle' kapatılırsa, 'Daha fazla video' katmanı kullanılamayabilir"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Uygulama sürümünü taklit et</string>
   <string name="morphe_spoof_app_version_summary">Sunucuya daha eski bir uygulama sürümü kullandığınızı düşündürerek eski arayüz özelliklerini geri yükler</string>
@@ -1191,7 +1191,7 @@ DeArrow hakkında daha fazla bilgi edinmek için buraya dokunun"</string>
   <!-- misc.announcements.announcementsPatch -->
   <!-- misc.playercontrols.playerControlsPatch -->
   <string name="morphe_restore_old_player_buttons_title">Eski oynatıcı düğmesi stilini geri getir</string>
-  <string name="morphe_restore_old_player_buttons_summary">Kalın video oynatıcı kontrollerini eski, daha ince görsel stile geri döndürür</string>
+  <string name="morphe_restore_old_player_buttons_summary">Kalın video oynatıcı kontrollerini eski, daha ince görünüme geri döndürür</string>
   <!-- misc.dimensions.spoof.spoofDeviceDimensionsPatch -->
   <string name="morphe_spoof_device_dimensions_title">Cihaz boyutlarını taklit et</string>
   <string name="morphe_spoof_device_dimensions_summary">Bunu etkinleştirmek daha yüksek video kalitelerini açabilir</string>
@@ -1302,7 +1302,7 @@ AV1 ile video oynatma takılabilir veya kare atlayabilir."</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Meraklısı için istatistikler\'de takliti göster</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
   <string name="morphe_restore_old_video_action_bar_title">Eski video eylem çubuğunu geri yükle</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Dislike'ların gösterilmemesi ve video eylem düğmelerinin gizlenememesi sorununu düzeltir.
+  <string name="morphe_restore_old_video_action_bar_summary">"Beğenmemelerin görünmemesi ve video eylem düğmelerinin gizlenememesi sorunlarını düzeltir
 
-Sınırlamalar: Eski 'Daha fazla video' katmanı görünümüne geri döner."</string>
+Sınırlamalar: Eski 'Daha fazla video' katmanı görünümüne geri döner"</string>
 </resources>

@@ -4,7 +4,8 @@
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
-package app.morphe.patches.reddit.layout.trendingtoday
+
+package app.morphe.patches.reddit.layout.trending
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
@@ -65,17 +66,24 @@ internal object SearchSectionHeaderFingerprint : Fingerprint(
     )
 )
 
-internal object TrendingTodayItemFingerprint : Fingerprint(
+internal object TrendingItemFingerprint : Fingerprint(
     returnType = "V",
     filters = listOf(
         string("search_trending_item")
     )
 )
 
-internal object TrendingTodayItemLegacyFingerprint : Fingerprint(
+internal object TrendingItemLegacyFingerprint : Fingerprint(
     definingClass = "Lcom/reddit/typeahead/ui/zerostate/composables",
     returnType = "V",
     filters = listOf(
         string("search_trending_item")
+    )
+)
+
+internal object TypeaheadSuggestionItemFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("typeahead_suggestion_item")
     )
 )

@@ -109,6 +109,25 @@ Die Wiedergabe schlägt fehl, wenn der Player JavaScript Hash veraltet ist."</st
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Original Audio erzwingen</string>
   <string name="morphe_force_original_audio_summary">Spielt immer die Original-Audiospur des Videos ab, anstatt eine synchronisierte Version</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Netzwerkproxy</string>
+  <string name="morphe_proxy_screen_summary">Leite unterstützte Netzwerkabfragen über einen Proxy weiter</string>
+  <string name="morphe_proxy_enabled_title">Proxy aktivieren</string>
+  <string name="morphe_proxy_enabled_summary">Leitet Netzwerk-Anfragen über einen konfigurierten HTTP- oder HTTPS-Proxy weiter</string>
+  <string name="morphe_proxy_host_title">Proxy-Host</string>
+  <string name="morphe_proxy_host_summary">Hostname oder IP-Adresse des Proxyservers</string>
+  <string name="morphe_proxy_port_title">Proxy-Port</string>
+  <string name="morphe_proxy_port_summary">Port des Proxyservers</string>
+  <string name="morphe_proxy_https_title">HTTPS-Proxy verwenden</string>
+  <string name="morphe_proxy_https_summary">Verwendet HTTPS, um sich mit dem Proxyserver statt mit HTTP zu verbinden</string>
+  <string name="morphe_proxy_auth_enabled_title">Proxy-Authentifizierung</string>
+  <string name="morphe_proxy_auth_enabled_summary">Sendet eine Basis-Authentifizierung mit Proxy-Anfragen</string>
+  <string name="morphe_proxy_auth_username_title">Ihr Benutzername</string>
+  <string name="morphe_proxy_auth_username_summary">Benutzername für die Basis-Proxy-Authentifizierung</string>
+  <string name="morphe_proxy_auth_password_title">Passwort speichern</string>
+  <string name="morphe_proxy_auth_password_summary">Passwort für die Basis-Proxy-Authentifizierung</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Direkten Fallback zulassen</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Direkt verbinden, wenn der Proxy fehlschlägt</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Vollbild-Werbung ausblenden</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

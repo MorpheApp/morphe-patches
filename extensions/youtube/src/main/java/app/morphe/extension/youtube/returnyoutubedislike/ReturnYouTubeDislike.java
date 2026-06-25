@@ -54,13 +54,15 @@ import app.morphe.extension.youtube.shared.PlayerType;
 public class ReturnYouTubeDislike {
 
     public enum Vote {
-        LIKE(1),
-        DISLIKE(-1),
-        LIKE_REMOVE(0);
+        LIKE("like/like", 1),
+        DISLIKE("like/dislike", -1),
+        LIKE_REMOVE("like/removelike", 0);
 
+        public final String endpoint;
         public final int value;
 
-        Vote(int value) {
+        Vote(String endpoint, int value) {
+            this.endpoint = endpoint;
             this.value = value;
         }
     }

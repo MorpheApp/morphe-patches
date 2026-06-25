@@ -1,11 +1,15 @@
 package app.morphe.patches.youtube.layout.returnyoutubedislike
 
 import app.morphe.patcher.Fingerprint
-import app.morphe.patcher.InstructionLocation
+import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
+import app.morphe.patcher.InstructionLocation.MatchAfterWithin
+import app.morphe.patcher.InstructionLocation.MatchFirst
 import app.morphe.patcher.OpcodesFilter
+import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.newInstance
+import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
@@ -17,48 +21,133 @@ internal object DislikeFingerprint : Fingerprint(
     )
 )
 
-internal object LikeFingerprint : Fingerprint(
-    returnType = "V",
+internal object EndpointServiceNameFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    parameters = listOf(),
+    returnType = "L",
     filters = listOf(
-        string("like/like")
+        string("serviceName"),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            type = "Ljava/lang/String;"
+        )
     )
 )
 
-internal object RemoveLikeFingerprint : Fingerprint(
+internal fun likeEndpointParserFingerprint(definingClass: String) = object : Fingerprint(
+    definingClass = definingClass,
     returnType = "V",
     filters = listOf(
-        string("like/removelike")
+        fieldAccess(
+            opcode = Opcode.SGET_OBJECT,
+            location = MatchFirst()
+        ),
+        fieldAccess(
+            opcode = Opcode.IPUT_OBJECT,
+            definingClass = "this"
+        ),
+        string("")
     )
-)
+) {}
 
+internal fun requestParameterCheckFingerprint(definingClass: String) = object : Fingerprint(
+    definingClass = definingClass,
+    accessFlags = listOf(AccessFlags.PROTECTED, AccessFlags.FINAL),
+    parameters = listOf(),
+    filters = listOf(
+        // playlistId
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/String;"
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = "Ljava/lang/String;->isEmpty()Z"
+        ),
+        // videoId
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "Ljava/lang/String;"
+        )
+    )
+) {}
+
+/**
+ * 21.25+
+ */
 internal object RollingNumberMeasureAnimatedTextFingerprint : Fingerprint(
+    classFingerprint = RollingNumberMeasureStaticLabelParentFingerprint,
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "F",
+    parameters = listOf("Ljava/lang/String;"),
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            definingClass = "this",
+            location = MatchFirst(),
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "[F",
+            location = MatchAfterWithin(3),
+        ),
+        opcode(
+            opcode = Opcode.AGET,
+            location = MatchAfterWithin(5),
+        ),
+        literal(
+            literal = 0,
+            location = MatchAfterImmediately(),
+        ),
+        // Measured text width
+        literal(
+            literal = 0,
+            location = MatchAfterImmediately(),
+        )
+    )
+)
+
+/**
+ * ~ 21.24
+ */
+internal object RollingNumberMeasureAnimatedTextLegacyFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.STATIC),
     returnType = "Lj$/util/Optional;",
     parameters = listOf("L", "Ljava/lang/String;", "L"),
-    // Same as below, but code was removed with 21.25+ and doesn't seem to be required anymore.
-//    filters = listOf(
-//        fieldAccess(
-//            opcode = Opcode.IGET,
-//            type = "F",
-//            location = MatchFirst()
-//        ),
-//        literal(1.0f),
-//        methodCall("Ljava/lang/Math;->max(FF)F"),
-//        opcode(Opcode.AGET),
-//        literal(0),
-//        literal(0)
-//    )
-    filters = OpcodesFilter.opcodesToFilters(
-        Opcode.IGET, // First instruction of method
-        Opcode.IGET_OBJECT,
-        Opcode.IGET_OBJECT,
-        Opcode.CONST_HIGH16,
-        Opcode.INVOKE_STATIC,
-        Opcode.MOVE_RESULT,
-        Opcode.CONST_4,
-        Opcode.AGET,
-        Opcode.CONST_4,
-        Opcode.CONST_4, // Measured text width
+    filters = listOf(
+        fieldAccess(
+            opcode = Opcode.IGET,
+            type = "F",
+            location = MatchFirst(),
+        ),
+        fieldAccess(
+            opcode = Opcode.IGET_OBJECT,
+            type = "[F",
+            location = MatchAfterWithin(3),
+        ),
+        literal(
+            literal = 1.0f,
+            location = MatchAfterWithin(3),
+        ),
+        methodCall(
+            opcode = Opcode.INVOKE_STATIC,
+            smali = "Ljava/lang/Math;->max(FF)F",
+            location = MatchAfterWithin(3),
+        ),
+        opcode(
+            opcode = Opcode.AGET,
+            location = MatchAfterWithin(5),
+        ),
+        literal(
+            literal = 0,
+            location = MatchAfterImmediately(),
+        ),
+        // Measured text width
+        literal(
+            literal = 0,
+            location = MatchAfterImmediately(),
+        )
     )
 )
 
@@ -160,11 +249,11 @@ internal object LithoSpannableStringCreationFingerprint : Fingerprint(
         newInstance(type = "Landroid/text/SpannableString;"),
         methodCall(
             smali = "Landroid/text/SpannableString;-><init>(Ljava/lang/CharSequence;)V",
-            location = InstructionLocation.MatchAfterWithin(5)
+            location = MatchAfterWithin(5)
         ),
         methodCall(
             smali = "Landroid/text/SpannableString;->getSpans(IILjava/lang/Class;)[Ljava/lang/Object;",
-            location = InstructionLocation.MatchAfterWithin(5)
+            location = MatchAfterWithin(5)
         ),
 
         methodCall(

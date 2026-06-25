@@ -109,6 +109,25 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">فرض لغة الصوت الأصلية</string>
   <string name="morphe_force_original_audio_summary">يقوم دائمًا بتشغيل المقطع الصوتي الأصلي للفيديو بدلًا عن النسخة المدبلجة</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">وكيل الشبكة</string>
+  <string name="morphe_proxy_screen_summary">توجيه طلبات الشبكة المدعومة عبر وكيل</string>
+  <string name="morphe_proxy_enabled_title">تفعيل الوكيل</string>
+  <string name="morphe_proxy_enabled_summary">يوجه طلبات الشبكة المدعومة من خلال وكيل HTTP أو HTTPS مُعدّ</string>
+  <string name="morphe_proxy_host_title">مضيف الوكيل</string>
+  <string name="morphe_proxy_host_summary">اسم المضيف أو عنوان IP لخادم الوكيل</string>
+  <string name="morphe_proxy_port_title">منفذ الوكيل</string>
+  <string name="morphe_proxy_port_summary">منفذ خادم الوكيل</string>
+  <string name="morphe_proxy_https_title">استخدام وكيل HTTPS</string>
+  <string name="morphe_proxy_https_summary">استخدم HTTPS للاتصال بخادم الوكيل بدلاً من HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">مصادقة الوكيل</string>
+  <string name="morphe_proxy_auth_enabled_summary">يرسل المصادقة الأساسية مع طلبات الوكيل</string>
+  <string name="morphe_proxy_auth_username_title">اسم مستخدم الوكيل</string>
+  <string name="morphe_proxy_auth_username_summary">اسم المستخدم للمصادقة الأساسية للوكيل</string>
+  <string name="morphe_proxy_auth_password_title">كلمة مرور الوكيل</string>
+  <string name="morphe_proxy_auth_password_summary">كلمة المرور للمصادقة الأساسية للوكيل</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">السماح بالرجوع المباشر</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">الاتصال مباشرةً إذا فشل الوكيل</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">إخفاء إعلانات ملء الشاشة</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

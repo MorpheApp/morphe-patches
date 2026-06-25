@@ -109,6 +109,25 @@ Pemutaran akan gagal jika hash pemutar JavaScript sudah kedaluwarsa."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Paksa bahasa audio asli</string>
   <string name="morphe_force_original_audio_summary">Selalu memutar trek audio asli video tersebut daripada versi sulih suara</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Proksi jaringan</string>
+  <string name="morphe_proxy_screen_summary">Arahkan permintaan jaringan yang didukung melalui proksi</string>
+  <string name="morphe_proxy_enabled_title">Aktifkan proksi</string>
+  <string name="morphe_proxy_enabled_summary">Merutekan permintaan jaringan yang didukung melalui proxy HTTP atau HTTPS yang dikonfigurasi</string>
+  <string name="morphe_proxy_host_title">Host proxy</string>
+  <string name="morphe_proxy_host_summary">Nama host atau alamat IP server proxy</string>
+  <string name="morphe_proxy_port_title">Port proxy</string>
+  <string name="morphe_proxy_port_summary">Port server proxy</string>
+  <string name="morphe_proxy_https_title">Gunakan proxy HTTPS</string>
+  <string name="morphe_proxy_https_summary">Gunakan HTTPS untuk terhubung ke server proxy, bukan HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Autentikasi proxy</string>
+  <string name="morphe_proxy_auth_enabled_summary">Mengirim autentikasi Basic dengan permintaan proxy</string>
+  <string name="morphe_proxy_auth_username_title">Nama pengguna proxy</string>
+  <string name="morphe_proxy_auth_username_summary">Nama pengguna untuk autentikasi Basic proxy</string>
+  <string name="morphe_proxy_auth_password_title">Kata sandi proxy</string>
+  <string name="morphe_proxy_auth_password_summary">Kata sandi untuk autentikasi Basic proxy</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Izinkan fallback langsung</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Terhubung secara langsung jika proxy gagal</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Sembunyikan iklan layar penuh</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

@@ -109,6 +109,25 @@ Oynatıcı JavaScript hash'i güncel değilse oynatma başarısız olur."</strin
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Orijinal ses dilini zorla</string>
   <string name="morphe_force_original_audio_summary">Videoda dublajlı versiyon yerine her zaman orijinal ses parçasını oynatır</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Ağ proxy\'si</string>
+  <string name="morphe_proxy_screen_summary">Proxy üzerinden ağ isteklerini yönlendir</string>
+  <string name="morphe_proxy_enabled_title">Proxy\'yi etkinleştir</string>
+  <string name="morphe_proxy_enabled_summary">Yapılandırılmış bir HTTP veya HTTPS proxy\'si üzerinden desteklenen ağ istekleri yönlendirilir</string>
+  <string name="morphe_proxy_host_title">Proxy sunucusu</string>
+  <string name="morphe_proxy_host_summary">Proxy sunucusunun ana bilgisayar adı veya IP adresi</string>
+  <string name="morphe_proxy_port_title">Proxy portu</string>
+  <string name="morphe_proxy_port_summary">Proxy sunucusunun portu</string>
+  <string name="morphe_proxy_https_title">HTTPS proxy\'sini kullan</string>
+  <string name="morphe_proxy_https_summary">Proxy sunucusuna bağlanmak için HTTP yerine HTTPS kullanın</string>
+  <string name="morphe_proxy_auth_enabled_title">Proxy kimlik doğrulaması</string>
+  <string name="morphe_proxy_auth_enabled_summary">Proxy istekleriyle birlikte Temel kimlik doğrulaması gönderir</string>
+  <string name="morphe_proxy_auth_username_title">Proxy kullanıcı adı</string>
+  <string name="morphe_proxy_auth_username_summary">Temel proxy kimlik doğrulaması için kullanıcı adı</string>
+  <string name="morphe_proxy_auth_password_title">Proxy parolası</string>
+  <string name="morphe_proxy_auth_password_summary">Temel proxy kimlik doğrulaması için parola</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Doğrudan geri dönüşe izin ver</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Proxy başarısız olursa doğrudan bağlan</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Tam ekran reklamları gizle</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

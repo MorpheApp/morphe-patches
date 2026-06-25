@@ -109,6 +109,25 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">บังคับใช้ภาษาเสียงต้นฉบับ</string>
   <string name="morphe_force_original_audio_summary">เล่นแทร็กเสียงต้นฉบับของวิดีโอเสมอแทนที่จะเป็นฉบับพากย์</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">พร็อกซีเครือข่าย</string>
+  <string name="morphe_proxy_screen_summary">กำหนดเส้นทางคำขอเครือข่ายผ่านพร็อกซี</string>
+  <string name="morphe_proxy_enabled_title">เปิดใช้งานพร็อกซี</string>
+  <string name="morphe_proxy_enabled_summary">กำหนดเส้นทางการร้องขอเครือข่ายผ่านพร็อกซี HTTP หรือ HTTPS ที่กำหนดค่าไว้</string>
+  <string name="morphe_proxy_host_title">โฮสต์พร็อกซี</string>
+  <string name="morphe_proxy_host_summary">ชื่อโฮสต์หรือที่อยู่ IP ของเซิร์ฟเวอร์พร็อกซี</string>
+  <string name="morphe_proxy_port_title">พอร์ตพร็อกซี</string>
+  <string name="morphe_proxy_port_summary">พอร์ตของเซิร์ฟเวอร์พร็อกซี</string>
+  <string name="morphe_proxy_https_title">ใช้พร็อกซี HTTPS</string>
+  <string name="morphe_proxy_https_summary">ใช้ HTTPS เพื่อเชื่อมต่อกับเซิร์ฟเวอร์พร็อกซีแทน HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">การยืนยันตัวตนพร็อกซี</string>
+  <string name="morphe_proxy_auth_enabled_summary">ส่งการยืนยันตัวตนแบบ Basic พร้อมกับคำขอพร็อกซี</string>
+  <string name="morphe_proxy_auth_username_title">ชื่อผู้ใช้พร็อกซี</string>
+  <string name="morphe_proxy_auth_username_summary">ชื่อผู้ใช้สำหรับการยืนยันตัวตนพร็อกซีแบบ Basic</string>
+  <string name="morphe_proxy_auth_password_title">รหัสผ่านพร็อกซี</string>
+  <string name="morphe_proxy_auth_password_summary">รหัสผ่านสำหรับการยืนยันตัวตนพร็อกซีแบบ Basic</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">อนุญาตให้Fallbackโดยตรง</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">เชื่อมต่อโดยตรงหากพร็อกซีล้มเหลว</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">ซ่อนโฆษณาแบบเต็มหน้าจอ</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

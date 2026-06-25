@@ -109,6 +109,25 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">强制使用原始音频语言</string>
   <string name="morphe_force_original_audio_summary">始终播放视频的原始音频轨道，而不是配音版本</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">网络代理</string>
+  <string name="morphe_proxy_screen_summary">通过代理路由支持的网络请求</string>
+  <string name="morphe_proxy_enabled_title">启用代理</string>
+  <string name="morphe_proxy_enabled_summary">通过配置的 HTTP 或 HTTPS 代理路由支持的网络请求</string>
+  <string name="morphe_proxy_host_title">代理主机</string>
+  <string name="morphe_proxy_host_summary">代理服务器的主机名或 IP 地址</string>
+  <string name="morphe_proxy_port_title">代理端口</string>
+  <string name="morphe_proxy_port_summary">代理服务器的端口</string>
+  <string name="morphe_proxy_https_title">使用 HTTPS 代理</string>
+  <string name="morphe_proxy_https_summary">使用 HTTPS 连接到代理服务器，而不是 HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">代理身份验证</string>
+  <string name="morphe_proxy_auth_enabled_summary">使用 Basic 身份验证发送代理请求</string>
+  <string name="morphe_proxy_auth_username_title">您的用户名</string>
+  <string name="morphe_proxy_auth_username_summary">Basic 代理身份验证的用户名</string>
+  <string name="morphe_proxy_auth_password_title">显示密码</string>
+  <string name="morphe_proxy_auth_password_summary">Basic 代理身份验证的密码</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">允许直接回退</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">如果代理失败，则直接连接</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">隐藏全屏广告</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

@@ -109,6 +109,25 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Εξαναγκασμός αρχικής γλώσσας ήχου</string>
   <string name="morphe_force_original_audio_summary">Παίζει πάντα την αρχική ηχητική γραμμή του βίντεο αντί για μια μεταγλωττισμένη έκδοση</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Διακομιστής μεσολάβησης</string>
+  <string name="morphe_proxy_screen_summary">Δρομολογήστε τα υποστηριζόμενα αιτήματα δικτύου μέσω ενός διακομιστή μεσολάβησης</string>
+  <string name="morphe_proxy_enabled_title">Ενεργοποίηση μεσολάβησης</string>
+  <string name="morphe_proxy_enabled_summary">Δρομολογεί αιτήματα δικτύου μέσω ενός διαμορφωμένου διακομιστή μεσολάβησης HTTP ή HTTPS</string>
+  <string name="morphe_proxy_host_title">Διεύθυνση διακομιστή μεσολάβησης</string>
+  <string name="morphe_proxy_host_summary">Όνομα κεντρικού υπολογιστή ή διεύθυνση IP του διακομιστή μεσολάβησης</string>
+  <string name="morphe_proxy_port_title">Θύρα διακομιστή μεσολάβησης</string>
+  <string name="morphe_proxy_port_summary">Θύρα του διακομιστή μεσολάβησης</string>
+  <string name="morphe_proxy_https_title">Χρήση μεσολάβησης HTTPS</string>
+  <string name="morphe_proxy_https_summary">Χρήση HTTPS για σύνδεση στον διακομιστή μεσολάβησης αντί για HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Έλεγχος ταυτότητας μεσολάβησης</string>
+  <string name="morphe_proxy_auth_enabled_summary">Αποστολή βασικού ελέγχου ταυτότητας με αιτήματα μεσολάβησης</string>
+  <string name="morphe_proxy_auth_username_title">Όνομα χρήστη μεσολάβησης</string>
+  <string name="morphe_proxy_auth_username_summary">Όνομα χρήστη για βασικό έλεγχο ταυτότητας μεσολάβησης</string>
+  <string name="morphe_proxy_auth_password_title">Κωδικός πρόσβασης μεσολάβησης</string>
+  <string name="morphe_proxy_auth_password_summary">Κωδικός πρόσβασης για βασικό έλεγχο ταυτότητας μεσολάβησης</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Επιτρέψτε άμεση ανακατεύθυνση</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Συνδεθείτε απευθείας εάν η μεσολάβηση αποτύχει</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Διαφημίσεις πλήρους οθόνης</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

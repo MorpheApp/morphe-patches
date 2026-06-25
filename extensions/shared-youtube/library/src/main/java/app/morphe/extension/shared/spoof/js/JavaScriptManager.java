@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
-import java.net.URL;
 import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -293,7 +292,7 @@ public final class JavaScriptManager {
 
             final long start = System.currentTimeMillis();
             final int connectionTimeoutMillis = 5000;
-            HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+            HttpURLConnection connection = Requester.openConnection(url);
             connection.setFixedLengthStreamingMode(0);
             connection.setRequestMethod("GET");
             connection.setRequestProperty("User-Agent", USER_AGENT);

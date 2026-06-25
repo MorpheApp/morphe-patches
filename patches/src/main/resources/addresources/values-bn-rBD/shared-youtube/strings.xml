@@ -109,6 +109,25 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">মূল অডিও ভাষা বলপূর্বক চালু করুন</string>
   <string name="morphe_force_original_audio_summary">ডাব করা সংস্করণের পরিবর্তে ভিডিওর মূল অডিও ট্র্যাক সবসময় প্লে করে</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">নেটওয়ার্ক প্রক্সি</string>
+  <string name="morphe_proxy_screen_summary">একটি প্রক্সির মাধ্যমে সমর্থিত নেটওয়ার্ক অনুরোধগুলি পাঠান</string>
+  <string name="morphe_proxy_enabled_title">প্রক্সি সক্রিয় করুন</string>
+  <string name="morphe_proxy_enabled_summary">কনফিগার করা HTTP অথবা HTTPS প্রক্সি এর মাধ্যমে রুটেড নেটওয়ার্ক অনুরোধগুলি</string>
+  <string name="morphe_proxy_host_title">প্রক্সি হোস্ট</string>
+  <string name="morphe_proxy_host_summary">প্রক্সি সার্ভারের হোস্টনাম অথবা IP ঠিকানা</string>
+  <string name="morphe_proxy_port_title">প্রক্সি পোর্ট</string>
+  <string name="morphe_proxy_port_summary">প্রক্সি সার্ভারের পোর্ট</string>
+  <string name="morphe_proxy_https_title">HTTPS প্রক্সি ব্যবহার করুন</string>
+  <string name="morphe_proxy_https_summary">HTTP এর পরিবর্তে প্রক্সি সার্ভারের সাথে সংযোগ স্থাপনের জন্য HTTPS ব্যবহার করুন</string>
+  <string name="morphe_proxy_auth_enabled_title">প্রক্সি প্রমাণীকরণ</string>
+  <string name="morphe_proxy_auth_enabled_summary">প্রক্সি অনুরোধের সাথে বেসিক প্রমাণীকরণ প্রেরণ করে</string>
+  <string name="morphe_proxy_auth_username_title">প্রক্সি ব্যবহারকারীর নাম</string>
+  <string name="morphe_proxy_auth_username_summary">বেসিক প্রক্সি প্রমাণীকরণের জন্য ব্যবহারকারীর নাম</string>
+  <string name="morphe_proxy_auth_password_title">প্রক্সি পাসওয়ার্ড</string>
+  <string name="morphe_proxy_auth_password_summary">বেসিক প্রক্সি প্রমাণীকরণের জন্য পাসওয়ার্ড</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">সরাসরি ফলব্যাক করার অনুমতি দিন</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">প্রক্সি ব্যর্থ হলে সরাসরি সংযোগ করুন</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">পূর্ণ স্ক্রীন প্যানেল লুকান</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

@@ -109,6 +109,25 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Примусово оригінальна мова звукової доріжки</string>
   <string name="morphe_force_original_audio_summary">Завжди відтворює оригінальну аудіодоріжку відео замість дубльованої</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Проксі мережі</string>
+  <string name="morphe_proxy_screen_summary">Налаштуйте проксі для перенаправлення мережевих запитів</string>
+  <string name="morphe_proxy_enabled_title">Увімкнути проксі</string>
+  <string name="morphe_proxy_enabled_summary">Налаштований HTTP- або HTTPS-проксі обробляє мережеві запити</string>
+  <string name="morphe_proxy_host_title">Адреса проксі-сервера</string>
+  <string name="morphe_proxy_host_summary">Ім\'я хоста або IP-адреса проксі-сервера</string>
+  <string name="morphe_proxy_port_title">Порт проксі-сервера</string>
+  <string name="morphe_proxy_port_summary">Порт проксі-сервера</string>
+  <string name="morphe_proxy_https_title">Використовувати HTTPS-проксі</string>
+  <string name="morphe_proxy_https_summary">Використовувати HTTPS для підключення до проксі-сервера замість HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Аутентифікація проксі</string>
+  <string name="morphe_proxy_auth_enabled_summary">Надсилає базову (Basic) аутентифікацію з проксі-запитами</string>
+  <string name="morphe_proxy_auth_username_title">Ім\'я користувача проксі</string>
+  <string name="morphe_proxy_auth_username_summary">Ім\'я користувача для базової (Basic) аутентифікації проксі</string>
+  <string name="morphe_proxy_auth_password_title">Пароль проксі</string>
+  <string name="morphe_proxy_auth_password_summary">Пароль для базової (Basic) аутентифікації проксі</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Дозволити пряме резервне підключення</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Підключатися безпосередньо, якщо проксі-сервер не відповідає</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Приховати повноекранну рекламу</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

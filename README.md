@@ -35,9 +35,9 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.32.0-dev.7](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.32.0-dev.7)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;115 patches total
+> **[v1.33.0-dev.1](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.33.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;117 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;70 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;71 patches</summary>
 <br>
 
 **🎯 Supported versions:**
@@ -93,6 +93,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Media notification controls](#media-notification-controls) | Adds options to disable the seekbar and previous/next buttons in the media notification and headphone controls. |  |
 | [Miniplayer](#miniplayer) | Adds options to change the in-app minimized player. |  |
 | [Navigation bar](#navigation-bar) | Adds options to hide and change the bottom navigation bar (such as the Shorts button)  and the upper navigation toolbar. Patching version 20.21.37 and lower also adds a setting to use a wide searchbar. |  |
+| [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. |  |
 | [Open Shorts in regular player](#open-shorts-in-regular-player) | Adds options to open Shorts in the regular video player. |  |
 | [Open channel of live avatar](#open-channel-of-live-avatar) | Adds an option to prevent a channel's current live video from opening when tapping its avatar. |  |
 | [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app browser. |  |
@@ -121,12 +122,12 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 </details>
 
 <details>
-<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;26 patches</summary>
+<summary>📦 YouTube Music&nbsp;&nbsp;•&nbsp;&nbsp;27 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;9.24.51 | 🧪&nbsp;9.23.52 | 🧪&nbsp;9.22.53 | 9.15.51 | 8.51.51 | 7.29.52 |
+| 🧪&nbsp;9.25.50 | 🧪&nbsp;9.24.51 | 🧪&nbsp;9.23.52 | 9.15.51 | 8.51.51 | 7.29.52 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -151,6 +152,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Hide music video ads](#hide-music-video-ads) | Adds an option to hide ads that appear while listening to or streaming music videos, podcasts, or songs. |  |
 | [Miniplayer previous and next buttons](#miniplayer-previous-and-next-buttons) | Adds options to show previous and next track buttons in the miniplayer. |  |
 | [Navigation bar](#navigation-bar) | Adds options to hide navigation bar, labels and buttons. |  |
+| [Network proxy](#network-proxy) | Adds settings to route supported network requests through an HTTP or HTTPS proxy. |  |
 | [Permanent repeat](#permanent-repeat) | Adds an option to always repeat even if the playlist ends or another track is played. |  |
 | [Remove background playback restrictions](#remove-background-playback-restrictions) | Removes restrictions on background playback, including playing kids videos in the background. |  |
 | [Sanitize sharing links](#sanitize-sharing-links) | Removes the tracking query parameters from shared links. |  |
@@ -176,10 +178,10 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Disable screenshot popup](#disable-screenshot-popup) | Adds an option to disable the popup that appears when taking a screenshot. |  |
 | [Hide Ask button](#hide-ask-button) | Adds an option to hide Ask button in the search bar. |  |
 | [Hide Reddit search](#hide-reddit-search) | Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting |  |
-| [Hide Trending Today shelf](#hide-trending-today-shelf) | Adds an option to hide the Trending Today shelf from search suggestions. |  |
+| [Hide Trending shelves](#hide-trending-shelves) | Adds an option to hide Trending shelves from search suggestions. |  |
 | [Hide ads](#hide-ads) | Adds options to hide ads. |  |
+| [Hide communities shelf](#hide-communities-shelf) | Adds an option to hide the related or suggested communities shelf in subreddits. |  |
 | [Hide navigation buttons](#hide-navigation-buttons) | Adds options to hide buttons in the navigation bar. |  |
-| [Hide recommended communities shelf](#hide-recommended-communities-shelf) | Adds an option to hide the recommended communities shelves in subreddits. |  |
 | [Hide sidebar components](#hide-sidebar-components) | Adds options to hide the sidebar components. |  |
 | [Open links directly](#open-links-directly) | Adds an option to skip over redirection URLs in external links. |  |
 | [Open links externally](#open-links-externally) | Adds an option to always open links in your browser instead of with the in-app-browser. |  |

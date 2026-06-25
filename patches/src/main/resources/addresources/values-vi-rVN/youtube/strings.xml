@@ -1038,9 +1038,9 @@ Giao diện màn hình ô tô
 • Thanh thao tác video không thu gọn được"</string>
   <string name="morphe_tablet_layout_in_player_title">Bật bố cục máy tính bảng trong trình phát</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Khôi phục bố cục trình phát cũ
+  <string name="morphe_tablet_layout_in_player_summary">"Khôi phục giao diện trình phát cũ
 
-Giới hạn: Nếu tùy chọn \"Khôi phục thanh tác vụ video cũ\" bị tắt, lớp phủ \"Thêm video\" có thể không khả dụng"</string>
+Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị tắt, lớp phủ \"Thêm video\" có thể không xuất hiện"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Giả mạo phiên bản ứng dụng</string>
   <string name="morphe_spoof_app_version_summary">Khiến server nghĩ rằng bạn đang sử dụng phiên bản cũ để khôi phục giao diện cũ</string>
@@ -1299,8 +1299,8 @@ Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Biến thể JavaScript của trình phát</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Hiện thông tin giả mạo trong Thống kê chi tiết</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Khôi phục thanh thao tác video mở rộng</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Sửa lỗi dislike không hiển thị và nút thao tác video không thể ẩn
+  <string name="morphe_restore_old_video_action_bar_title">Khôi phục thanh thao tác video cũ</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Sửa lỗi không hiển thị số lượt không thích và không ẩn được các nút thao tác của video
 
-Giới hạn: Trả lại giao diện 'Thêm video' kiểu cũ"</string>
+Hạn chế: Khôi phục giao diện lớp phủ \"Thêm video\" cũ"</string>
 </resources>

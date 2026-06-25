@@ -109,6 +109,25 @@ YouTube Premium 사용자는 이 설정이 필요하지 않을 수 있습니다"
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">원본 오디오 언어 강제로 활성화하기</string>
   <string name="morphe_force_original_audio_summary">더빙 버전이 아닌 동영상의 원본 오디오 트랙을 항상 재생합니다</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">네트워크 프록시</string>
+  <string name="morphe_proxy_screen_summary">프록시를 통해 지원되는 네트워크 요청을 라우팅합니다</string>
+  <string name="morphe_proxy_enabled_title">프록시 활성화하기</string>
+  <string name="morphe_proxy_enabled_summary">설정된 HTTP 또는 HTTPS 프록시를 통해 지원되는 네트워크 요청을 라우팅합니다</string>
+  <string name="morphe_proxy_host_title">프록시 호스트</string>
+  <string name="morphe_proxy_host_summary">프록시 서버의 호스트 이름 또는 IP 주소</string>
+  <string name="morphe_proxy_port_title">프록시 포트</string>
+  <string name="morphe_proxy_port_summary">프록시 서버 포트</string>
+  <string name="morphe_proxy_https_title">HTTPS 프록시 사용하기</string>
+  <string name="morphe_proxy_https_summary">HTTP 대신 HTTPS를 사용하여 프록시 서버에 연결합니다</string>
+  <string name="morphe_proxy_auth_enabled_title">프록시 인증</string>
+  <string name="morphe_proxy_auth_enabled_summary">프록시 요청과 함께 기본 인증을 전송합니다</string>
+  <string name="morphe_proxy_auth_username_title">프록시 사용자 이름</string>
+  <string name="morphe_proxy_auth_username_summary">기본 프록시 인증을 위한 사용자 이름</string>
+  <string name="morphe_proxy_auth_password_title">프록시 비밀번호</string>
+  <string name="morphe_proxy_auth_password_summary">기본 프록시 인증을 위한 비밀번호</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">직접 연결 허용하기</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">프록시 연결에 실패하면 직접 연결합니다</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">전체 화면 광고 숨기기</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

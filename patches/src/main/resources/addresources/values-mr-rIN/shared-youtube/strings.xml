@@ -108,6 +108,25 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">मूळ ऑडिओ भाषेचा वापर करा</string>
   <string name="morphe_force_original_audio_summary">डब केलेल्या आवृत्तीऐवजी व्हिडिओचा मूळ ऑडिओ ट्रॅक नेहमी प्ले करा</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">नेटवर्क प्रॉक्सी</string>
+  <string name="morphe_proxy_screen_summary">प्रॉक्सीद्वारे नेटवर्क विनंत्या पाठवा</string>
+  <string name="morphe_proxy_enabled_title">प्रॉक्सी सक्षम करा</string>
+  <string name="morphe_proxy_enabled_summary">कॉन्फिगर केलेल्या HTTP किंवा HTTPS प्रॉक्सीद्वारे रूटेड नेटवर्क विनंत्या</string>
+  <string name="morphe_proxy_host_title">प्रॉक्सी होस्ट</string>
+  <string name="morphe_proxy_host_summary">प्रॉक्सी सर्व्हरचे होस्टनाव किंवा IP ॲड्रेस</string>
+  <string name="morphe_proxy_port_title">प्रॉक्सी पोर्ट</string>
+  <string name="morphe_proxy_port_summary">प्रॉक्सी सर्व्हरचा पोर्ट</string>
+  <string name="morphe_proxy_https_title">HTTPS प्रॉक्सी वापरा</string>
+  <string name="morphe_proxy_https_summary">HTTP ऐवजी HTTPS वापरून प्रॉक्सी सर्व्हरशी कनेक्ट करा</string>
+  <string name="morphe_proxy_auth_enabled_title">प्रॉक्सी प्रमाणीकरण</string>
+  <string name="morphe_proxy_auth_enabled_summary">प्रॉक्सी विनंत्यांसह मूलभूत प्रमाणीकरण पाठवते</string>
+  <string name="morphe_proxy_auth_username_title">प्रॉक्सी वापरकर्तानाव</string>
+  <string name="morphe_proxy_auth_username_summary">प्रॉक्सी मूलभूत प्रमाणीकरणासाठी वापरकर्तानाव</string>
+  <string name="morphe_proxy_auth_password_title">प्रॉक्सी पासवर्ड</string>
+  <string name="morphe_proxy_auth_password_summary">प्रॉक्सी मूलभूत प्रमाणीकरणासाठी पासवर्ड</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">डायरेक्ट फॉलबॅकची परवानगी द्या</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">प्रॉक्सी अयशस्वी झाल्यास थेट कनेक्ट करा</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">पूर्ण स्क्रीन जाहिराती लपवा</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
