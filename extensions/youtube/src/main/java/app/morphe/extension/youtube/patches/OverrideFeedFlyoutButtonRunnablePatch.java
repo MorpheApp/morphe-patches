@@ -37,11 +37,10 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
     private static final byte[] VIDEO_ID_PREFIX_BYTES =
             "https://i.ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII);
 
-     private static String flyoutVideoId = "";
+    private static String flyoutVideoId = "";
     private static String currentHandledButtonName = "";
-    private static int currentHandledButtonIndex = 0;
-    private static final List<Pair<String, Integer>> visibleFlyoutButtons
-            = Collections.synchronizedList(new ArrayList<>());
+    private static int currentHandledButtonIndex;
+    private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
 
     // All methods are called on main thread.
 

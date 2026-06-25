@@ -24,6 +24,13 @@ internal object FlyoutBufferDisablerLiteralFingerprint : Fingerprint(
     )
 )
 
+// This could be more precise, but is difficult to fingerprint.
+internal object FeedFlyoutButtonsContainerFingerprint : Fingerprint(
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf("L", "Landroid/view/View;", "Ljava/lang/Object;", "L"),
+)
+
 internal object FeedFlyoutButtonsInitializerFingerprint : Fingerprint(
     parameters = listOf("L"),
     strings = listOf(
