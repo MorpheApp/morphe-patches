@@ -15,6 +15,8 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
+import app.morphe.patches.youtube.misc.playservice.is_20_39_or_greater
+import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findFreeRegister
@@ -40,7 +42,8 @@ val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
 ) {
     dependsOn(
         settingsPatch,
-        sharedExtensionPatch
+        sharedExtensionPatch,
+        versionCheckPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -76,7 +79,7 @@ val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
         }
 
         // Hook flyout menu protocol buffer.
-        FeedFlyoutButtonsContainerFingerprint.matchAll().forEach {
+        FeedFlyoutButtonsContainerFingerprint.matchAll(3 .. 3).forEach {
             it.method.addInstruction(
                 0,
                 "invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
@@ -125,29 +128,31 @@ val overrideFeedFlyoutButtonsRunnable = bytecodePatch(
             }
         }
 
-        // Old versions like 20.21.37 need to replace on item click
-        Fingerprint(
-            definingClass = FeedFlyoutButtonsInitializerFingerprint.method.definingClass,
-            name = "onItemClick"
-        ).method.addInstructionsWithLabels(
-            0,
-            """
-                invoke-static { p3 }, $EXTENSION_CLASS->replaceOnItemClick(I)Z
-                move-result p2
-                if-eqz p2, :block_item_click
-                return-void
-                :block_item_click
-                nop
-            """
-        )
-
-        // Turn off feature flag to allow th execution of flyout
-        // buffer method on older YouTube versions.
-        FlyoutBufferDisablerLiteralFingerprint.let {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->overrideFlyoutBufferDisabler(Z)Z"
+        if (!is_20_39_or_greater) {
+            // Old versions like 20.21.37 need to replace on item click
+            Fingerprint(
+                definingClass = FeedFlyoutButtonsInitializerFingerprint.method.definingClass,
+                name = "onItemClick"
+            ).method.addInstructionsWithLabels(
+                0,
+                """
+                    invoke-static { p3 }, $EXTENSION_CLASS->replaceOnItemClick(I)Z
+                    move-result p2
+                    if-eqz p2, :block_item_click
+                    return-void
+                    :block_item_click
+                    nop
+                """
             )
+
+            // Turn off feature flag to allow th execution of flyout
+            // buffer method on older YouTube versions.
+            FlyoutBufferDisablerLiteralFingerprint.let {
+                it.method.insertLiteralOverride(
+                    it.instructionMatches.first().index,
+                    "$EXTENSION_CLASS->overrideFlyoutBufferDisabler(Z)Z"
+                )
+            }
         }
     }
 }

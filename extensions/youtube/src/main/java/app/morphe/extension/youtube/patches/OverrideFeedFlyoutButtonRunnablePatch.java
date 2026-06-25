@@ -13,11 +13,11 @@ import android.util.Pair;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -37,10 +37,10 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
     private static final byte[] VIDEO_ID_PREFIX_BYTES =
             "https://i.ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII);
 
+    private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
     private static String flyoutVideoId = "";
     private static String currentHandledButtonName = "";
     private static int currentHandledButtonIndex;
-    private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
 
     // All methods are called on main thread.
 
@@ -68,13 +68,14 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
             byte[] flyoutBuffer = bufferInterface.patch_getBuffer();
             if (flyoutBuffer == null) return;
 
-            int index = indexOf(flyoutBuffer, VIDEO_ID_PREFIX_BYTES);
+            final int index = indexOf(flyoutBuffer, VIDEO_ID_PREFIX_BYTES);
 
-            if (index != -1) {
+            if (index >= 0) {
                 final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
                 final int videoIdEnd = videoIdStart + 11;
 
                 if (videoIdEnd <= flyoutBuffer.length) {
+                    // Assumes 11 character video id.
                     flyoutVideoId = new String(flyoutBuffer, videoIdStart, 11,
                             StandardCharsets.US_ASCII);
                     Logger.printDebug(() -> "Found flyout videoId: " + flyoutVideoId);
@@ -128,11 +129,16 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
      * Injection point.
      */
     public static boolean replaceOnItemClick(int index) {
-        if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
-            if (Objects.equals(visibleFlyoutButtons.get(index).first, queueButtonName)) {
-                invokeQueueFlyout().run();
-                return true;
+        try {
+            if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
+                if (!visibleFlyoutButtons.isEmpty() && queueButtonName.equals(
+                        visibleFlyoutButtons.get(index).first)) {
+                    invokeQueueFlyout().run();
+                    return true;
+                }
             }
+        } catch (Exception ex) {
+            Logger.printException(() -> "replaceOnItemClick failure", ex);
         }
         return false;
     }
@@ -140,7 +146,7 @@ public final class OverrideFeedFlyoutButtonRunnablePatch {
     private static Runnable invokeQueueFlyout() {
         return () -> {
             if (flyoutVideoId.isEmpty()) {
-                Logger.printDebug(() -> "Cannot opening custom queue flyout with an empty videoId.");
+                Logger.printDebug(() -> "Cannot opening custom queue flyout with an empty videoId");
                 return;
             }
             Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
