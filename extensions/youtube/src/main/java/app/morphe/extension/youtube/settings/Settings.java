@@ -22,13 +22,13 @@ import static app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatc
 import static app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAudioFlyoutMenuAvailability;
 import static app.morphe.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
 import static app.morphe.extension.youtube.patches.theme.ThemePatch.SplashScreenAnimationStyle;
+import static app.morphe.extension.shared.sponsorblock.SegmentPlaybackController.SponsorBlockDuration;
+import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.IGNORE;
+import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.MANUAL_SKIP;
+import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
+import static app.morphe.extension.shared.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY_ONCE;
 import static app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch.MyMemoryServiceAvailability;
 import static app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch.OpenRouterServiceAvailability;
-import static app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController.SponsorBlockDuration;
-import static app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour.IGNORE;
-import static app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour.MANUAL_SKIP;
-import static app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
-import static app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY_ONCE;
 import static app.morphe.extension.youtube.videoplayer.PlayAllButton.PlaylistIDPrefix;
 
 import app.morphe.extension.shared.Logger;
@@ -56,6 +56,7 @@ import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
 import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
+import app.morphe.extension.youtube.sponsorblock.YouTubeSponsorBlockConfig;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
 
 public class Settings extends SharedYouTubeSettings {
@@ -659,6 +660,9 @@ public class Settings extends SharedYouTubeSettings {
 
         Setting.addImportExportCallback(SponsorBlockSettings.SB_IMPORT_EXPORT_CALLBACK);
         Setting.addImportExportCallback(VoiceOverTranslationPatch.VOT_IMPORT_EXPORT_CALLBACK);
+
+        // Must run before any code reads a SegmentCategory setting.
+        YouTubeSponsorBlockConfig.install();
     }
 
     // Register SeekBar UI configs so the single shared SeekBarPreference class knows the

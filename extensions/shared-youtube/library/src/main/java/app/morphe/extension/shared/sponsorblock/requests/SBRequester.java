@@ -1,4 +1,4 @@
-package app.morphe.extension.youtube.sponsorblock.requests;
+package app.morphe.extension.shared.sponsorblock.requests;
 
 import static app.morphe.extension.shared.StringRef.str;
 
@@ -21,13 +21,16 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.requests.Requester;
 import app.morphe.extension.shared.requests.Route;
-import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
-import app.morphe.extension.youtube.sponsorblock.SponsorBlockUtils;
-import app.morphe.extension.youtube.sponsorblock.objects.SegmentCategory;
-import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment;
-import app.morphe.extension.youtube.sponsorblock.objects.SponsorSegment.SegmentVote;
-import app.morphe.extension.youtube.sponsorblock.objects.UserStats;
+import app.morphe.extension.shared.settings.BooleanSetting;
+import app.morphe.extension.shared.settings.FloatSetting;
+import app.morphe.extension.shared.settings.LongSetting;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockApi;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockApi.SettingsAdapter;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockHelpers;
+import app.morphe.extension.shared.sponsorblock.objects.SegmentCategory;
+import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment;
+import app.morphe.extension.shared.sponsorblock.objects.SponsorSegment.SegmentVote;
+import app.morphe.extension.shared.sponsorblock.objects.UserStats;
 
 public class SBRequester {
     public enum SegmentSubmitAction {
@@ -44,17 +47,17 @@ public class SBRequester {
     private static final String TIME_TEMPLATE = "%.3f";
 
     /**
-     * TCP timeout
+     * TCP timeout.
      */
     private static final int TIMEOUT_TCP_DEFAULT_MILLISECONDS = 7000;
 
     /**
-     * HTTP response timeout
+     * HTTP response timeout.
      */
     private static final int TIMEOUT_HTTP_DEFAULT_MILLISECONDS = 10000;
 
     /**
-     * Response code of a successful API call
+     * Response code of a successful API call.
      */
     private static final int HTTP_STATUS_CODE_SUCCESS = 200;
 
@@ -64,8 +67,12 @@ public class SBRequester {
     private SBRequester() {
     }
 
+    private static SettingsAdapter settings() {
+        return SponsorBlockApi.config().settings();
+    }
+
     private static void handleConnectionError(String toastMessage, @Nullable Exception ex) {
-        if (Settings.SB_TOAST_ON_CONNECTION_ERROR.get()) {
+        if (settings().toastOnConnectionError().get()) {
             Utils.showToastShort(toastMessage);
         }
         if (ex != null) {
@@ -83,7 +90,10 @@ public class SBRequester {
 
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
                 JSONArray responseArray = Requester.parseJSONArray(connection);
-                final long minSegmentDuration = (long) (Settings.SB_SEGMENT_MIN_DURATION.get() * 1000);
+                FloatSetting minDurationSetting = settings().segmentMinDurationSeconds();
+                final long minSegmentDuration = minDurationSetting == null
+                        ? 0
+                        : (long) (minDurationSetting.get() * 1000);
                 for (int i = 0, length = responseArray.length(); i < length; i++) {
                     JSONObject obj = (JSONObject) responseArray.get(i);
                     JSONArray segment = obj.getJSONArray("segment");
@@ -183,7 +193,7 @@ public class SBRequester {
                     + " action: " + action.type + " start: " + startTime + " end: " + endTime
                     + " length: " + videoLength);
 
-            String privateUserID = SponsorBlockSettings.getSBPrivateUserID();
+            String privateUserID = SponsorBlockHelpers.getOrGenerateSBPrivateUserID();
             String start = String.format(Locale.US, TIME_TEMPLATE, startTime / 1000f);
             String end = String.format(Locale.US, TIME_TEMPLATE, endTime / 1000f);
             String duration = String.format(Locale.US, TIME_TEMPLATE, videoLength / 1000f);
@@ -210,7 +220,7 @@ public class SBRequester {
 
             // Message might be about the users account or an error too large to show in a toast.
             // Use a dialog instead.
-            SponsorBlockUtils.showErrorDialog(userErrorMessage);
+            SponsorBlockApi.config().ui().showErrorDialog(userErrorMessage);
         } catch (SocketTimeoutException ex) {
             Logger.printDebug(() -> "Timeout", ex);
             Utils.showToastLong(str("morphe_sb_submit_failed_timeout"));
@@ -253,7 +263,7 @@ public class SBRequester {
         Utils.runOnBackgroundThread(() -> {
             try {
                 String segmentUuid = segment.UUID;
-                String uuid = SponsorBlockSettings.getSBPrivateUserID();
+                String uuid = SponsorBlockHelpers.getOrGenerateSBPrivateUserID();
                 HttpURLConnection connection = (voteOption == SegmentVote.CATEGORY_CHANGE)
                         ? getConnectionFromRoute(SBRoutes.VOTE_ON_SEGMENT_CATEGORY, uuid, segmentUuid, categoryToVoteFor.keyValue)
                         : getConnectionFromRoute(SBRoutes.VOTE_ON_SEGMENT_QUALITY, uuid, segmentUuid, String.valueOf(voteOption.apiVoteType));
@@ -274,7 +284,7 @@ public class SBRequester {
                         break;
                 }
 
-                SponsorBlockUtils.showErrorDialog(userMessage);
+                SponsorBlockApi.config().ui().showErrorDialog(userMessage);
             } catch (SocketTimeoutException ex) {
                 Utils.showToastShort(str("morphe_sb_vote_failed_timeout"));
             } catch (IOException ex) {
@@ -297,7 +307,7 @@ public class SBRequester {
                 return stats;
             }
 
-            String privateUserID = SponsorBlockSettings.getSBPrivateUserID();
+            String privateUserID = SponsorBlockHelpers.getOrGenerateSBPrivateUserID();
             UserStats fetchedStats = new UserStats(privateUserID,
                     getJSONObject(SBRoutes.GET_USER_STATS, privateUserID));
             Logger.printDebug(() -> "user stats: " + fetchedStats);
@@ -318,7 +328,7 @@ public class SBRequester {
     public static String setUsername(String username) {
         Utils.verifyOffMainThread();
         try {
-            HttpURLConnection connection = getConnectionFromRoute(SBRoutes.CHANGE_USERNAME, SponsorBlockSettings.getSBPrivateUserID(), username);
+            HttpURLConnection connection = getConnectionFromRoute(SBRoutes.CHANGE_USERNAME, SponsorBlockHelpers.getOrGenerateSBPrivateUserID(), username);
             final int responseCode = connection.getResponseCode();
             String responseMessage = connection.getResponseMessage();
             if (responseCode == HTTP_STATUS_CODE_SUCCESS) {
@@ -332,19 +342,24 @@ public class SBRequester {
     }
 
     public static void runVipCheckInBackgroundIfNeeded() {
-        if (!SponsorBlockSettings.userHasSBPrivateID()) {
+        BooleanSetting vipSetting = settings().userIsVip();
+        LongSetting lastCheckSetting = settings().lastVipCheck();
+        if (vipSetting == null || lastCheckSetting == null) {
+            return; // VIP tracking is disabled in this host app.
+        }
+        if (!SponsorBlockHelpers.userHasSBPrivateID()) {
             return; // User cannot be a VIP. User has never voted, created any segments, or has imported an SB user ID.
         }
         long now = System.currentTimeMillis();
-        if (now < (Settings.SB_LAST_VIP_CHECK.get() + TimeUnit.DAYS.toMillis(3))) {
+        if (now < (lastCheckSetting.get() + TimeUnit.DAYS.toMillis(3))) {
             return;
         }
         Utils.runOnBackgroundThread(() -> {
             try {
-                JSONObject json = getJSONObject(SBRoutes.IS_USER_VIP, SponsorBlockSettings.getSBPrivateUserID());
+                JSONObject json = getJSONObject(SBRoutes.IS_USER_VIP, SponsorBlockHelpers.getOrGenerateSBPrivateUserID());
                 boolean vip = json.getBoolean("vip");
-                Settings.SB_USER_IS_VIP.save(vip);
-                Settings.SB_LAST_VIP_CHECK.save(now);
+                vipSetting.save(vip);
+                lastCheckSetting.save(now);
             } catch (IOException ex) {
                 Logger.printInfo(() -> "Failed to check VIP (network error)", ex); // info, so no error toast is shown
             } catch (Exception ex) {
@@ -356,7 +371,7 @@ public class SBRequester {
     // helpers
 
     private static HttpURLConnection getConnectionFromRoute(Route route, String... params) throws IOException {
-        HttpURLConnection connection = Requester.getConnectionFromRoute(Settings.SB_API_URL.get(), route, params);
+        HttpURLConnection connection = Requester.getConnectionFromRoute(settings().apiUrl().get(), route, params);
         connection.setConnectTimeout(TIMEOUT_TCP_DEFAULT_MILLISECONDS);
         connection.setReadTimeout(TIMEOUT_HTTP_DEFAULT_MILLISECONDS);
         return connection;

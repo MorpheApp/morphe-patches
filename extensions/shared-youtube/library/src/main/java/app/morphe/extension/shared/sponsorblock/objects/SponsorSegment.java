@@ -1,4 +1,4 @@
-package app.morphe.extension.youtube.sponsorblock.objects;
+package app.morphe.extension.shared.sponsorblock.objects;
 
 import static app.morphe.extension.shared.StringRef.sf;
 
@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 import java.util.Objects;
 
 import app.morphe.extension.shared.StringRef;
-import app.morphe.extension.youtube.patches.VideoInformation;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockApi;
 
 public class SponsorSegment implements Comparable<SponsorSegment> {
 
@@ -96,13 +96,6 @@ public class SponsorSegment implements Comparable<SponsorSegment> {
     }
 
     /**
-     * @return If the range has any overlap with this segment.
-     */
-    public boolean intersectsRange(Range<Long> range) {
-        return range.getLower() < end && range.getUpper() >= start;
-    }
-
-    /**
      * @return The start/end time in range form.
      * Range times are adjusted since it uses inclusive and Segments use exclusive.
      * <p>
@@ -128,7 +121,7 @@ public class SponsorSegment implements Comparable<SponsorSegment> {
      */
     @NonNull
     public String getSkipButtonText() {
-        return category.getSkipButtonText(start, VideoInformation.getVideoLength()).toString();
+        return category.getSkipButtonText(start, SponsorBlockApi.config().video().getVideoLength()).toString();
     }
 
     /**
@@ -136,7 +129,7 @@ public class SponsorSegment implements Comparable<SponsorSegment> {
      */
     @NonNull
     public String getSkippedToastText() {
-        return category.getSkippedToastText(start, VideoInformation.getVideoLength()).toString();
+        return category.getSkippedToastText(start, SponsorBlockApi.config().video().getVideoLength()).toString();
     }
 
     @Override

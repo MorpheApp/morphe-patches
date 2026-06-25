@@ -1,28 +1,6 @@
-package app.morphe.extension.youtube.sponsorblock.objects;
+package app.morphe.extension.shared.sponsorblock.objects;
 
 import static app.morphe.extension.shared.StringRef.sf;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_FILLER;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_FILLER_COLOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_HIGHLIGHT;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_HIGHLIGHT_COLOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_HOOK;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_HOOK_COLOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_INTERACTION;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_INTERACTION_COLOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_INTRO;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_INTRO_COLOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_MUSIC_OFFTOPIC;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_MUSIC_OFFTOPIC_COLOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_OUTRO;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_OUTRO_COLOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_PREVIEW;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_PREVIEW_COLOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_SELF_PROMO;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_SELF_PROMO_COLOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_SPONSOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_SPONSOR_COLOR;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_UNSUBMITTED;
-import static app.morphe.extension.youtube.settings.Settings.SB_CATEGORY_UNSUBMITTED_COLOR;
 
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -47,38 +25,31 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.StringRef;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.StringSetting;
-import app.morphe.extension.youtube.settings.Settings;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockApi;
 
+/**
+ * SponsorBlock segment category. The enum is host-app agnostic - {@link StringSetting} bindings
+ * for behavior and color are resolved on demand via {@link SponsorBlockApi.CategorySettingsProvider}.
+ */
 public enum SegmentCategory {
-    SPONSOR("sponsor", sf("morphe_sb_segments_sponsor"), sf("morphe_sb_segments_sponsor_summary"), sf("morphe_sb_skip_button_sponsor"), sf("morphe_sb_skipped_sponsor"),
-            SB_CATEGORY_SPONSOR, SB_CATEGORY_SPONSOR_COLOR),
-    SELF_PROMO("selfpromo", sf("morphe_sb_segments_selfpromo"), sf("morphe_sb_segments_selfpromo_summary"), sf("morphe_sb_skip_button_selfpromo"), sf("morphe_sb_skipped_selfpromo"),
-            SB_CATEGORY_SELF_PROMO, SB_CATEGORY_SELF_PROMO_COLOR),
-    INTERACTION("interaction", sf("morphe_sb_segments_interaction"), sf("morphe_sb_segments_interaction_summary"), sf("morphe_sb_skip_button_interaction"), sf("morphe_sb_skipped_interaction"),
-            SB_CATEGORY_INTERACTION, SB_CATEGORY_INTERACTION_COLOR),
+    SPONSOR("sponsor", sf("morphe_sb_segments_sponsor"), sf("morphe_sb_segments_sponsor_summary"), sf("morphe_sb_skip_button_sponsor"), sf("morphe_sb_skipped_sponsor")),
+    SELF_PROMO("selfpromo", sf("morphe_sb_segments_selfpromo"), sf("morphe_sb_segments_selfpromo_summary"), sf("morphe_sb_skip_button_selfpromo"), sf("morphe_sb_skipped_selfpromo")),
+    INTERACTION("interaction", sf("morphe_sb_segments_interaction"), sf("morphe_sb_segments_interaction_summary"), sf("morphe_sb_skip_button_interaction"), sf("morphe_sb_skipped_interaction")),
     /**
      * Unique category that is treated differently than the rest.
      */
-    HIGHLIGHT("poi_highlight", sf("morphe_sb_segments_highlight"), sf("morphe_sb_segments_highlight_summary"), sf("morphe_sb_skip_button_highlight"), sf("morphe_sb_skipped_highlight"),
-            SB_CATEGORY_HIGHLIGHT, SB_CATEGORY_HIGHLIGHT_COLOR),
+    HIGHLIGHT("poi_highlight", sf("morphe_sb_segments_highlight"), sf("morphe_sb_segments_highlight_summary"), sf("morphe_sb_skip_button_highlight"), sf("morphe_sb_skipped_highlight")),
     INTRO("intro", sf("morphe_sb_segments_intro"), sf("morphe_sb_segments_intro_summary"),
             sf("morphe_sb_skip_button_intro_beginning"), sf("morphe_sb_skip_button_intro_middle"), sf("morphe_sb_skip_button_intro_end"),
-            sf("morphe_sb_skipped_intro_beginning"), sf("morphe_sb_skipped_intro_middle"), sf("morphe_sb_skipped_intro_end"),
-            SB_CATEGORY_INTRO, SB_CATEGORY_INTRO_COLOR),
-    OUTRO("outro", sf("morphe_sb_segments_outro"), sf("morphe_sb_segments_outro_summary"), sf("morphe_sb_skip_button_outro"), sf("morphe_sb_skipped_outro"),
-            SB_CATEGORY_OUTRO, SB_CATEGORY_OUTRO_COLOR),
+            sf("morphe_sb_skipped_intro_beginning"), sf("morphe_sb_skipped_intro_middle"), sf("morphe_sb_skipped_intro_end")),
+    OUTRO("outro", sf("morphe_sb_segments_outro"), sf("morphe_sb_segments_outro_summary"), sf("morphe_sb_skip_button_outro"), sf("morphe_sb_skipped_outro")),
     PREVIEW("preview", sf("morphe_sb_segments_preview"), sf("morphe_sb_segments_preview_summary"),
             sf("morphe_sb_skip_button_preview_beginning"), sf("morphe_sb_skip_button_preview_middle"), sf("morphe_sb_skip_button_preview_end"),
-            sf("morphe_sb_skipped_preview_beginning"), sf("morphe_sb_skipped_preview_middle"), sf("morphe_sb_skipped_preview_end"),
-            SB_CATEGORY_PREVIEW, SB_CATEGORY_PREVIEW_COLOR),
-    HOOK("hook", sf("morphe_sb_segments_hook"), sf("morphe_sb_segments_hook_summary"), sf("morphe_sb_skip_button_hook"), sf("morphe_sb_skipped_hook"),
-            SB_CATEGORY_HOOK, SB_CATEGORY_HOOK_COLOR),
-    FILLER("filler", sf("morphe_sb_segments_filler"), sf("morphe_sb_segments_filler_summary"), sf("morphe_sb_skip_button_filler"), sf("morphe_sb_skipped_filler"),
-            SB_CATEGORY_FILLER, SB_CATEGORY_FILLER_COLOR),
-    MUSIC_OFFTOPIC("music_offtopic", sf("morphe_sb_segments_nomusic"), sf("morphe_sb_segments_nomusic_summary"), sf("morphe_sb_skip_button_nomusic"), sf("morphe_sb_skipped_nomusic"),
-            SB_CATEGORY_MUSIC_OFFTOPIC, SB_CATEGORY_MUSIC_OFFTOPIC_COLOR),
-    UNSUBMITTED("unsubmitted", StringRef.empty, StringRef.empty, sf("morphe_sb_skip_button_unsubmitted"), sf("morphe_sb_skipped_unsubmitted"),
-            SB_CATEGORY_UNSUBMITTED, SB_CATEGORY_UNSUBMITTED_COLOR);
+            sf("morphe_sb_skipped_preview_beginning"), sf("morphe_sb_skipped_preview_middle"), sf("morphe_sb_skipped_preview_end")),
+    HOOK("hook", sf("morphe_sb_segments_hook"), sf("morphe_sb_segments_hook_summary"), sf("morphe_sb_skip_button_hook"), sf("morphe_sb_skipped_hook")),
+    FILLER("filler", sf("morphe_sb_segments_filler"), sf("morphe_sb_segments_filler_summary"), sf("morphe_sb_skip_button_filler"), sf("morphe_sb_skipped_filler")),
+    MUSIC_OFFTOPIC("music_offtopic", sf("morphe_sb_segments_nomusic"), sf("morphe_sb_segments_nomusic_summary"), sf("morphe_sb_skip_button_nomusic"), sf("morphe_sb_skipped_nomusic")),
+    UNSUBMITTED("unsubmitted", StringRef.empty, StringRef.empty, sf("morphe_sb_skip_button_unsubmitted"), sf("morphe_sb_skipped_unsubmitted"));
 
     private static final StringRef skipSponsorTextCompact = sf("morphe_sb_skip_button_compact");
     private static final StringRef skipSponsorTextCompactHighlight = sf("morphe_sb_skip_button_compact_highlight");
@@ -92,7 +63,7 @@ public enum SegmentCategory {
             PREVIEW,
             HOOK,
             FILLER,
-            MUSIC_OFFTOPIC,
+            MUSIC_OFFTOPIC
     };
 
     private static final SegmentCategory[] categoriesWithoutUnsubmitted = new SegmentCategory[]{
@@ -105,7 +76,7 @@ public enum SegmentCategory {
             PREVIEW,
             HOOK,
             FILLER,
-            MUSIC_OFFTOPIC,
+            MUSIC_OFFTOPIC
     };
 
     public static final String COLOR_DOT_STRING = "⬤";
@@ -139,6 +110,22 @@ public enum SegmentCategory {
     }
 
     /**
+     * Categories the current host app actually consumes. Drives setting loading and the API request.
+     * Filtered by {@link SponsorBlockApi.Configuration#includesHighlight()}; {@link #UNSUBMITTED}
+     * is always excluded (used internally only).
+     */
+    @NonNull
+    public static SegmentCategory[] activeCategories() {
+        SponsorBlockApi.Configuration config = SponsorBlockApi.config();
+        List<SegmentCategory> active = new ArrayList<>(categoriesWithoutUnsubmitted.length);
+        for (SegmentCategory cat : categoriesWithoutUnsubmitted) {
+            if (cat == HIGHLIGHT && !config.includesHighlight()) continue;
+            active.add(cat);
+        }
+        return active.toArray(new SegmentCategory[0]);
+    }
+
+    /**
      * Retrieves a category by its key.
      */
     @Nullable
@@ -152,7 +139,7 @@ public enum SegmentCategory {
     public static void updateEnabledCategories() {
         Utils.verifyOnMainThread();
         Logger.printDebug(() -> "updateEnabledCategories");
-        SegmentCategory[] categories = categoriesWithoutUnsubmitted();
+        SegmentCategory[] categories = activeCategories();
         List<String> enabledCategories = new ArrayList<>(categories.length);
         for (SegmentCategory category : categories) {
             if (category.behaviour != CategoryBehaviour.IGNORE) {
@@ -171,15 +158,13 @@ public enum SegmentCategory {
      * Loads all category settings from persistent storage.
      */
     public static void loadAllCategoriesFromSettings() {
-        for (SegmentCategory category : values()) {
+        for (SegmentCategory category : activeCategories()) {
             category.loadFromSettings();
         }
         updateEnabledCategories();
     }
 
     public final String keyValue;
-    public final StringSetting behaviorSetting;
-    public final StringSetting colorSetting;
 
     public final StringRef title;
     public final StringRef description;
@@ -212,6 +197,17 @@ public enum SegmentCategory {
     public final Paint paint;
 
     /**
+     * Lazily-resolved StringSetting backing this category's behavior. Cached so that the hot
+     * playback loops do not pay for the {@code SponsorBlockApi.config().categorySettings()} chain
+     * on every access. Enum constants are singletons, so the cache lives for the app's lifetime —
+     * configure() is called once per APK launch and never replaced.
+     */
+    @Nullable
+    private StringSetting cachedBehaviorSetting;
+    @Nullable
+    private StringSetting cachedColorSetting;
+
+    /**
      * Category color with opacity applied.
      */
     @ColorInt
@@ -220,26 +216,25 @@ public enum SegmentCategory {
     /**
      * Value must be changed using {@link #setBehaviour(CategoryBehaviour)}.
      * Caller must also call {@link #updateEnabledCategories()}.
+     * <p>
+     * Marked {@code volatile} because the field is written from the settings UI thread and read
+     * from the player playback thread (notably the Music media-player background thread that
+     * dispatches the {@code setVideoTime} hook); without it, toggling a category off may not be
+     * observed promptly in the hot iteration loop.
      */
-    public CategoryBehaviour behaviour = CategoryBehaviour.IGNORE;
+    public volatile CategoryBehaviour behaviour = CategoryBehaviour.IGNORE;
 
     SegmentCategory(String keyValue, StringRef title, StringRef description,
                     StringRef skipButtonText,
-                    StringRef skippedToastText,
-                    StringSetting behavior,
-                    StringSetting color) {
+                    StringRef skippedToastText) {
         this(keyValue, title, description,
                 skipButtonText, skipButtonText, skipButtonText,
-                skippedToastText, skippedToastText, skippedToastText,
-                behavior,
-                color);
+                skippedToastText, skippedToastText, skippedToastText);
     }
 
     SegmentCategory(String keyValue, StringRef title, StringRef description,
                     StringRef skipButtonTextBeginning, StringRef skipButtonTextMiddle, StringRef skipButtonTextEnd,
-                    StringRef skippedToastBeginning, StringRef skippedToastMiddle, StringRef skippedToastEnd,
-                    StringSetting behavior,
-                    StringSetting color) {
+                    StringRef skippedToastBeginning, StringRef skippedToastMiddle, StringRef skippedToastEnd) {
         this.keyValue = Objects.requireNonNull(keyValue);
         this.title = Objects.requireNonNull(title);
         this.description = Objects.requireNonNull(description);
@@ -249,16 +244,40 @@ public enum SegmentCategory {
         this.skippedToastBeginning = Objects.requireNonNull(skippedToastBeginning);
         this.skippedToastMiddle = Objects.requireNonNull(skippedToastMiddle);
         this.skippedToastEnd = Objects.requireNonNull(skippedToastEnd);
-        this.behaviorSetting = Objects.requireNonNull(behavior);
-        this.colorSetting = Objects.requireNonNull(color);
         this.paint = new Paint();
-        loadFromSettings();
+    }
+
+    /**
+     * @return The host app's behavior {@link StringSetting} backing this category.
+     */
+    @NonNull
+    public StringSetting behaviorSetting() {
+        StringSetting s = cachedBehaviorSetting;
+        if (s == null) {
+            s = SponsorBlockApi.config().categorySettings().behaviorFor(this);
+            cachedBehaviorSetting = s;
+        }
+        return s;
+    }
+
+    /**
+     * @return The host app's color {@link StringSetting} backing this category.
+     */
+    @NonNull
+    public StringSetting colorSetting() {
+        StringSetting s = cachedColorSetting;
+        if (s == null) {
+            s = SponsorBlockApi.config().categorySettings().colorFor(this);
+            cachedColorSetting = s;
+        }
+        return s;
     }
 
     /**
      * Loads the category's behavior and color from settings.
      */
     private void loadFromSettings() {
+        StringSetting behaviorSetting = behaviorSetting();
         String behaviorString = behaviorSetting.get();
         CategoryBehaviour savedBehavior = CategoryBehaviour.byMorpheKeyValue(behaviorString);
         if (savedBehavior == null) {
@@ -269,6 +288,7 @@ public enum SegmentCategory {
         }
         this.behaviour = savedBehavior;
 
+        StringSetting colorSetting = colorSetting();
         String colorString = colorSetting.get();
         try {
             setColorWithOpacity(colorString);
@@ -284,7 +304,8 @@ public enum SegmentCategory {
      */
     public void setBehaviour(CategoryBehaviour behaviour) {
         this.behaviour = Objects.requireNonNull(behaviour);
-        this.behaviorSetting.save(behaviour.morpheKeyValue);
+        Logger.printDebug(() -> "SegmentCategory " + keyValue + " behaviour -> " + behaviour.morpheKeyValue);
+        behaviorSetting().save(behaviour.morpheKeyValue);
     }
 
     /**
@@ -292,7 +313,7 @@ public enum SegmentCategory {
      */
     public void setColorWithOpacity(String colorString) throws IllegalArgumentException {
         int colorWithOpacity = Color.parseColor(colorString);
-        colorSetting.save(String.format(Locale.US, "#%08X", colorWithOpacity));
+        colorSetting().save(String.format(Locale.US, "#%08X", colorWithOpacity));
         color = colorWithOpacity;
         paint.setColor(color);
     }
@@ -318,14 +339,7 @@ public enum SegmentCategory {
      */
     @ColorInt
     public int getDefaultColorWithOpacity() {
-        return Color.parseColor(colorSetting.defaultValue);
-    }
-
-    /**
-     * Gets the color as a hex string with opacity (#AARRGGBB).
-     */
-    public String getColorStringWithOpacity() {
-        return String.format(Locale.US, "#%08X", getColorWithOpacity());
+        return Color.parseColor(colorSetting().defaultValue);
     }
 
     /**
@@ -384,8 +398,8 @@ public enum SegmentCategory {
      * @param videoLength      Length of the video.
      * @return The skip button text.
      */
-    StringRef getSkipButtonText(long segmentStartTime, long videoLength) {
-        if (Settings.SB_COMPACT_SKIP_BUTTON.get()) {
+    public StringRef getSkipButtonText(long segmentStartTime, long videoLength) {
+        if (SponsorBlockApi.config().compactSkipButtonEnabled()) {
             return (this == SegmentCategory.HIGHLIGHT)
                     ? skipSponsorTextCompactHighlight
                     : skipSponsorTextCompact;
@@ -410,7 +424,7 @@ public enum SegmentCategory {
      * @param videoLength      Length of the video.
      * @return The skipped segment toast message.
      */
-    StringRef getSkippedToastText(long segmentStartTime, long videoLength) {
+    public StringRef getSkippedToastText(long segmentStartTime, long videoLength) {
         if (videoLength == 0) {
             return skippedToastBeginning; // Video is still loading. Assume it's the beginning.
         }

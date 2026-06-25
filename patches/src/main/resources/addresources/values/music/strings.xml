@@ -83,7 +83,7 @@ Second \"item\" text"</string>
     <string name="morphe_music_crossfade_about_title">About</string>
     <string name="morphe_music_crossfade_about_summary">How crossfade works — and when it does not</string>
     <!-- Banner row has no text; it shows a full-width graphic via a custom layout. -->
-    <string name="morphe_music_crossfade_about_banner_title" translatable="false"></string>
+    <string name="morphe_music_crossfade_about_banner_title" translatable="false"> </string>
     <string name="morphe_music_crossfade_about_how_title">How it works</string>
     <string name="morphe_music_crossfade_about_how_summary">"Crossfade overlaps the end of one song with the start of the next, fading one down as the other comes up over your chosen duration and curve.
 
@@ -168,4 +168,7 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
 
     <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
     <string name="morphe_music_hide_upgrade_button_title">Hide upgrade button</string>
+
+    <!-- misc.sponsorblock.musicSponsorBlockPatch -->
+    <string name="morphe_settings_music_screen_5_sponsorblock_title" translatable="false">SponsorBlock</string>
 </resources>

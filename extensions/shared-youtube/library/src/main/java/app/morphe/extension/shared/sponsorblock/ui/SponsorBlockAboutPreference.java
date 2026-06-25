@@ -1,4 +1,11 @@
-package app.morphe.extension.youtube.sponsorblock.ui;
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
+ */
+
+package app.morphe.extension.shared.sponsorblock.ui;
 
 import android.content.Context;
 import android.util.AttributeSet;

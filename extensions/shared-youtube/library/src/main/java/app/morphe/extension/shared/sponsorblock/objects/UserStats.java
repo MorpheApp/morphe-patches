@@ -1,11 +1,11 @@
-package app.morphe.extension.youtube.sponsorblock.objects;
+package app.morphe.extension.shared.sponsorblock.objects;
 
 import androidx.annotation.NonNull;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
+import app.morphe.extension.shared.sponsorblock.SponsorBlockHelpers;
 
 /**
  * SponsorBlock user stats
@@ -56,8 +56,8 @@ public class UserStats {
         }
 
         // User changed their SB private user ID.
-        return !SponsorBlockSettings.userHasSBPrivateID()
-                || !SponsorBlockSettings.getSBPrivateUserID().equals(privateUserID);
+        return !SponsorBlockHelpers.userHasSBPrivateID()
+                || !SponsorBlockHelpers.getOrGenerateSBPrivateUserID().equals(privateUserID);
     }
 
     @NonNull
