@@ -132,8 +132,8 @@ public final class AddToQueuePatch {
     /**
      * Injection point.
      */
-    public static void setCurrentHandledButtonInfo(Enum<?> buttonEnum, CharSequence buttonText) {
-        if (buttonEnum == null || buttonText.toString().isEmpty()) {
+    public static void setCurrentHandledButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable CharSequence buttonText) {
+        if (buttonEnum == null || buttonText == null || buttonText.toString().isEmpty()) {
             return;
         }
         currentHandledButtonName = buttonEnum.name();
