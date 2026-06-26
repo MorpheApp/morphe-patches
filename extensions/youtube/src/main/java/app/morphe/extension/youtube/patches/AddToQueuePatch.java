@@ -11,6 +11,7 @@ import static app.morphe.extension.shared.Utils.getContext;
 
 import android.app.Dialog;
 import android.util.Pair;
+import android.widget.PopupWindow;
 
 import androidx.annotation.Nullable;
 
@@ -35,6 +36,7 @@ public final class AddToQueuePatch {
     }
 
     private static Dialog flyoutDialog = null;
+    private static PopupWindow flyoutPopupWindow = null;
 
     private static final String queueButtonName = "QUEUE_PLAY_NEXT";
 
@@ -51,15 +53,29 @@ public final class AddToQueuePatch {
     /**
      * Injection point.
      */
-    public static void setFlyoutDialog(Dialog dialog) {
+    public static void setBottomSheetFlyout(Dialog dialog) {
         flyoutDialog = dialog;
     }
 
-    public static void dismissFlyoutDialog() {
+    public static void dismissBottomSheetFlyout() {
         if (flyoutDialog == null) {
             return;
         }
         flyoutDialog.dismiss();
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void setPopupWindowFlyout(PopupWindow popupWindow) {
+        flyoutPopupWindow = popupWindow;
+    }
+
+    public static void dismissPopupWindowFlyout() {
+        if (flyoutPopupWindow == null) {
+            return;
+        }
+        flyoutPopupWindow.dismiss();
     }
 
     /**
@@ -186,18 +202,9 @@ public final class AddToQueuePatch {
                 return;
             }
             Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
-            dismissFlyoutDialog();
+            dismissBottomSheetFlyout();
+            dismissPopupWindowFlyout();
             PlaylistPatch.prepareDialogBuilder(getContext(), flyoutVideoId);
         };
-    }
-
-    /**
-     * Injection point.
-     */
-    public static boolean allowNewFlyoutMenuStyle(boolean original) {
-        if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
-            return false;
-        }
-        return original;
     }
 }

@@ -11,14 +11,16 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
+import app.morphe.patcher.newInstance
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
+import app.morphe.patches.all.misc.resources.ResourceType
+import app.morphe.patches.all.misc.resources.resourceLiteral
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 
-internal object FeedFlyoutDialogFingerprint : Fingerprint (
+internal object FeedBottomSheetFlyoutFingerprint : Fingerprint (
     classFingerprint = Fingerprint(
         parameters = listOf("Landroid/os/Bundle;"),
         filters = listOf(
@@ -30,6 +32,19 @@ internal object FeedFlyoutDialogFingerprint : Fingerprint (
     accessFlags = listOf(AccessFlags.PUBLIC),
     returnType = "Landroid/app/Dialog;",
     parameters = listOf("Landroid/os/Bundle;")
+)
+
+internal object FeedPopupWindowFlyoutFingerprint : Fingerprint (
+    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
+    returnType = "V",
+    parameters = listOf(),
+    filters = listOf(
+        resourceLiteral(ResourceType.DRAWABLE, "menu_drop_shadow"),
+        methodCall(
+            opcode = Opcode.INVOKE_VIRTUAL,
+            smali = $$"Landroid/widget/PopupWindow;->setOnDismissListener(Landroid/widget/PopupWindow$OnDismissListener;)V",
+        ),
+    )
 )
 
 internal object FeedFlyoutBufferObjectFingerprint : Fingerprint(
@@ -73,15 +88,5 @@ internal object InteractiveStickerRendererGetEditViewFingerprint : Fingerprint(
     filters = listOf(
         string("getEditView called without setting interactiveStickerRenderer"),
         fieldAccess(opcode = Opcode.IGET_OBJECT, type = "[B") // The only byte array accessed in the method.
-    )
-)
-
-// 21.07+
-internal object NewFlyoutMenuFeatureFlagFingerprint : Fingerprint(
-    accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
-    returnType = "Z",
-    parameters = listOf(),
-    filters = listOf(
-        literal(45748489)
     )
 )

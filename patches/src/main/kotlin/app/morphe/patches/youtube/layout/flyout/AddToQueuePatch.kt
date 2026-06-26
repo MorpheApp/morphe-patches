@@ -17,17 +17,16 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
-import app.morphe.patches.youtube.misc.playservice.is_21_07_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
+import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -130,13 +129,27 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        FeedFlyoutDialogFingerprint.method.apply {
+        FeedBottomSheetFlyoutFingerprint.method.apply {
             findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
                 val register = getInstruction<OneRegisterInstruction>(index).registerA
 
                 addInstruction(
                     index,
-                    "invoke-static { v$register }, $EXTENSION_CLASS->setFlyoutDialog(Landroid/app/Dialog;)V"
+                    "invoke-static { v$register }, $EXTENSION_CLASS->setBottomSheetFlyout(Landroid/app/Dialog;)V"
+                )
+            }
+        }
+
+        FeedPopupWindowFlyoutFingerprint.matchAll().forEach {
+            it.let {
+                val instructionIndex = it.instructionMatches.last().index
+                val instructionRegister = it.method.getInstruction<BuilderInstruction35c>(
+                    instructionIndex
+                ).registerC
+
+                it.method.addInstruction(
+                    instructionIndex,
+                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->setPopupWindowFlyout(Landroid/widget/PopupWindow;)V"
                 )
             }
         }
@@ -156,17 +169,6 @@ val addToQueuePatch = bytecodePatch(
                     nop
                 """
             )
-        }
-
-        // New flyout menu cannot be forcefully dismissed yet.
-        // Turn off the new style until a way is found.
-        if (is_21_07_or_greater) {
-            NewFlyoutMenuFeatureFlagFingerprint.let {
-                it.method.insertLiteralOverride(
-                    it.instructionMatches.first().index,
-                    "$EXTENSION_CLASS->allowNewFlyoutMenuStyle(Z)Z"
-                )
-            }
         }
     }
 }
