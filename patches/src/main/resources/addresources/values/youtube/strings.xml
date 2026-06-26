@@ -133,6 +133,8 @@ Changes include:
     <string name="morphe_hide_timed_reactions_summary">Hides the feature that allows users to react with emojis in the comments section and live chat</string>
     <string name="morphe_hide_video_title_title">Hide video title</string>
     <string name="morphe_hide_video_title_summary">Hides the video title in the fullscreen mode</string>
+    <string name="morphe_sanitize_video_subtitle_title">Sanitize video subtitle</string>
+    <string name="morphe_sanitize_video_subtitle_summary">Sanitizes phrases like \'#\', \'Fundraiser\', \'Shop\', and \'products\' from video subtitles</string>
 
     <string name="morphe_hide_description_components_screen_title">Video description</string>
     <string name="morphe_hide_description_components_screen_summary">Choose which components appear in the video description</string>

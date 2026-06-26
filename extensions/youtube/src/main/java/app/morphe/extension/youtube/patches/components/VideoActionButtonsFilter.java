@@ -38,7 +38,7 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.settings.Settings;
 
 @SuppressWarnings("unused")
-public class VideoActionButtonsFilter extends Filter {
+public final class VideoActionButtonsFilter extends Filter {
 
     public enum ActionButton {
         UNKNOWN(false),

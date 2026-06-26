@@ -23,7 +23,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
-final class HorizontalShelvesFilter extends Filter {
+public final class HorizontalShelvesFilter extends Filter {
     private final ByteArrayFilterGroupList descriptionBuffers = new ByteArrayFilterGroupList();
     private final ByteArrayFilterGroupList generalBuffers = new ByteArrayFilterGroupList();
 

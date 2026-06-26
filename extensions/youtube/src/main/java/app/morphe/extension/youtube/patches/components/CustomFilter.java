@@ -81,7 +81,7 @@ import app.morphe.extension.youtube.settings.Settings;
  * </pre>
  */
 @SuppressWarnings("unused")
-final class CustomFilter extends Filter {
+public final class CustomFilter extends Filter {
 
     private static void showInvalidSyntaxToast(String expression) {
         Utils.showToastLong(str("morphe_custom_filter_toast_invalid_syntax", expression));

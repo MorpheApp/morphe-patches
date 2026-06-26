@@ -14,7 +14,7 @@ import app.morphe.extension.youtube.shared.PlayerType;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
-final class DescriptionComponentsFilter extends Filter {
+public final class DescriptionComponentsFilter extends Filter {
 
     private static final String INFOCARDS_SECTION_PATH = "infocards_section.e";
 

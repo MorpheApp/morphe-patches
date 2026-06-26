@@ -39,7 +39,7 @@ import app.morphe.extension.youtube.settings.Settings;
 import app.morphe.extension.youtube.shared.ShortsPlayerState;
 
 @SuppressWarnings("unused")
-public class PlayerFlyoutMenuComponentsFilter extends Filter {
+public final class PlayerFlyoutMenuComponentsFilter extends Filter {
 
     public static final class HideAudioFlyoutMenuAvailability implements Setting.Availability {
         @Override

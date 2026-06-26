@@ -33,7 +33,6 @@ import static app.morphe.extension.youtube.videoplayer.PlayAllButton.PlaylistIDP
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
-import app.morphe.extension.shared.settings.BaseSettings;
 import app.morphe.extension.shared.settings.BooleanSetting;
 import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.FloatSetting;
@@ -202,6 +201,7 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting HIDE_TIMED_REACTIONS = new BooleanSetting("morphe_hide_timed_reactions", TRUE);
     public static final BooleanSetting HIDE_VIDEO_TITLE = new BooleanSetting("morphe_hide_video_title", FALSE);
     public static final EnumSetting<OpenFullscreenMode> OPEN_VIDEOS_FULLSCREEN = new EnumSetting<>("morphe_open_videos_fullscreen", OpenFullscreenMode.DISABLED);
+    public static final BooleanSetting SANITIZE_VIDEO_SUBTITLE = new BooleanSetting("morphe_sanitize_video_subtitle", FALSE);
 
     // Overlay buttons
     public static final BooleanSetting COPY_VIDEO_LINK_BUTTON = new BooleanSetting("morphe_copy_video_link_button", FALSE, true);

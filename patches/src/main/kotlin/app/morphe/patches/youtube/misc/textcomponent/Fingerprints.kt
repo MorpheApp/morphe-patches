@@ -15,8 +15,12 @@ import com.android.tools.smali.dexlib2.Opcode
 
 internal object TextComponentConstructorFingerprint : Fingerprint(
     returnType = "V",
-    accessFlags = listOf(AccessFlags.PRIVATE, AccessFlags.CONSTRUCTOR),
-    filters = listOf(string("TextComponent"))
+    parameters = emptyList(),
+    filters = listOf(
+        string("TextComponent"),
+        opcode(Opcode.SGET_OBJECT),
+        opcode(Opcode.IPUT_OBJECT)
+    )
 )
 
 internal object TextComponentContextFingerprint : Fingerprint(
