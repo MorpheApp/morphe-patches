@@ -43,5 +43,3 @@ internal object ZoomHapticsFingerprint : Fingerprint(
     returnType = "V",
     strings = listOf("Failed to haptics vibrate for video zoom")
 )
-
-

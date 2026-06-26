@@ -20,5 +20,3 @@ internal object DoubleTapInfoCtorFingerprint : Fingerprint(
         "Lj$/time/Duration;"
     )
 )
-
-

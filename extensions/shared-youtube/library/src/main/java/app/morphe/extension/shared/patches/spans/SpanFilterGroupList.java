@@ -72,4 +72,3 @@ public abstract class SpanFilterGroupList<V, T extends SpanFilterGroup<V>> imple
 
     protected abstract TrieSearch<V> createSearchGraph();
 }
-

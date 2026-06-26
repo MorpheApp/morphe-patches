@@ -160,5 +160,3 @@ internal object InitializeBottomBarContainerFingerprint : Fingerprint(
         )
     )
 )
-
-

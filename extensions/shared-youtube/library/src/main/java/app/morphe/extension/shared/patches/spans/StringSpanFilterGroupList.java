@@ -14,4 +14,3 @@ public final class StringSpanFilterGroupList extends SpanFilterGroupList<String,
         return new StringTrieSearch();
     }
 }
-

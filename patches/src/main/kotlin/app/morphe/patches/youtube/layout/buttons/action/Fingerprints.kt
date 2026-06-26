@@ -27,5 +27,3 @@ internal object QuickActionsElementSyntheticFingerprint : Fingerprint(
         checkCast("Landroid/view/ViewGroup;", location = MatchAfterWithin(10))
     )
 )
-
-

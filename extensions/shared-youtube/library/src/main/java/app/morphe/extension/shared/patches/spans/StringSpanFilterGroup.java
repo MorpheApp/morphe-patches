@@ -32,4 +32,3 @@ public class StringSpanFilterGroup extends SpanFilterGroup<String> {
         return new SpanFilterGroup.FilterGroupResult(setting, matchedIndex);
     }
 }
-
