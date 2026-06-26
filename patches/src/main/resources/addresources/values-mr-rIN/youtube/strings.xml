@@ -306,6 +306,59 @@ Second \"item\" text"</string>
 
 कृपया पॅकेजचे नाव तपासा आणि ॲप स्थापित आहे का ते तपासा"</string>
   <string name="morphe_external_downloader_empty_warning">पॅकेजचे नाव रिकामे असू शकत नाही</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">व्हॉईस ओव्हर भाषांतर</string>
+  <string name="morphe_vot_screen_summary">डिव्हाइसवरील टेक्स्ट-टू-स्पीच वापरून व्हिडिओ कॅप्शन मोठ्याने वाचा, जे प्लेबॅकसह सिंक्रोनाइझ केलेले असेल.</string>
+  <string name="morphe_vot_enabled_title">व्हॉईस ओव्हर भाषांतर</string>
+  <string name="morphe_vot_caption_language_title">भाषा</string>
+  <string name="morphe_vot_translation_service_title">भाषांतर प्रदाता</string>
+  <string name="morphe_vot_original_audio_volume_title">मूळ ऑडिओचे प्रमाण</string>
+  <string name="morphe_vot_original_audio_volume_summary">भाषांतर बोलत असताना मूळ YouTube ऑडिओचे प्रमाण</string>
+  <string name="morphe_vot_translation_volume_title">भाषांतर प्रमाण</string>
+  <string name="morphe_vot_translation_volume_summary">डब केलेल्या भाषांतराच्या आवाजाचे प्रमाण</string>
+  <string name="morphe_vot_max_speech_rate_title">जास्तीत जास्त भाषण गती</string>
+  <string name="morphe_vot_max_speech_rate_summary">उपशीर्षक स्लॉटमध्ये भाषण जुळवताना जास्तीत जास्त गती गुणक</string>
+  <string name="morphe_vot_mymemory_info_summary">"मोफत भाषांतर API, API की आवश्यक नाही. विनामूल्य स्तरावर दररोज 5,000 वर्णांपर्यंत किंवा ईमेल पत्त्यासह दररोज 50,000 वर्णांपर्यंत.
+
+MyMemory.translated.net उघडण्यासाठी येथे टॅप करा"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory ईमेल</string>
+  <string name="morphe_vot_mymemory_email_summary">ऐच्छिक. दररोजची मर्यादा 5,000 वरून 50,000 वर्णांपर्यंत वाढवण्यासाठी तुमचा MyMemory ईमेल पत्ता प्रविष्ट करा.匿名 मर्यादा वापरण्यासाठी रिक्त ठेवा</string>
+  <string name="morphe_vot_openrouter_info_summary">"OpenRouter द्वारे सशुल्क AI भाषांतर. एकदा पैसे भरा आणि हजारो व्हिडिओंचे भाषांतर करा. Mistral Nemo हा सर्वात स्वस्त पर्याय आहे, Gemma 4 उच्च गुणवत्ता प्रदान करते.
+
+OpenRouter.ai उघडण्यासाठी येथे टॅप करा"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API की</string>
+  <string name="morphe_vot_openrouter_api_key_summary">तुमची OpenRouter API की. OpenRouter.ai > Workspace > API Keys येथे की तयार करा.</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter मॉडेल</string>
+  <string name="morphe_vot_openrouter_model_custom">सानुकूल</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter कॉन्फिगर केलेले नाही</string>
+  <string name="morphe_vot_openrouter_not_configured_message">हा प्रदाता निवडण्यापूर्वी सेटिंग्जमध्ये तुमची OpenRouter API की प्रविष्ट करा</string>
+  <string name="morphe_vot_cost_free">मोफत</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s प्रति 100 व्हिडिओ तास</string>
+  <string name="morphe_vot_tts_voice_type">आवाज</string>
+  <string name="morphe_vot_tts_system">सिस्टम</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">बहुभाषिक पुरुष</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">बहुभाषिक स्त्री</string>
+  <string name="morphe_vot_voice_gender_male">पुरुष</string>
+  <string name="morphe_vot_voice_gender_female">स्त्री</string>
+  <string name="morphe_vot_tts_sample">बदलण्याची वेळ आली आहे!</string>
+  <string name="morphe_vot_http_error_title">भाषांतर उपलब्ध नाही</string>
+  <string name="morphe_vot_http_error_message">"भाषांतर सेवेने HTTP त्रुटी %s परत केली. तुमचा IP पत्ता 24 तासांपर्यंत मर्यादित केला गेला आहे.
+
+भाषांतर वापरणे सुरू ठेवण्यासाठी, सेटिंग्जमध्ये भिन्न भाषांतर प्रदाता स्विच करा किंवा VPN वापरा"</string>
+  <string name="morphe_vot_do_not_show_again">पुन्हा दाखवू नका</string>
+  <string name="morphe_vot_export_api_key_warning">"तुमच्या सेटिंग्जमध्ये OpenRouter API की आहे.
+
+तुमची API की कधीही सामायिक करू नये. ज्यांच्याकडे त्याचा ऍक्सेस आहे ते तुमचा OpenRouter क्रेडिट वापरू शकतात"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter क्रेडिट मर्यादा पोहोचली</string>
+  <string name="morphe_vot_openrouter_credits_message">तुमची OpenRouter क्रेडिट मर्यादा ओलांडली गेली आहे. OpenRouter.ai वर तुमची शिल्लक रक्कम भरा किंवा तुमची की खर्च मर्यादा वाढवा</string>
+  <string name="morphe_vot_openrouter_open_website">OpenRouter.ai उघडा</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter भाषांतर अयशस्वी झाले (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory दैनिक मर्यादा पोहोचली</string>
+  <string name="morphe_vot_mymemory_quota_next_available">पुढील उपलब्धता %s वाजता.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">तुम्ही आजचे विनामूल्य MyMemory भाषांतर कोटा (5,000 वर्ण) वापरले आहे. दररोजची मर्यादा 50,000 वर्णांपर्यंत वाढवण्यासाठी सेटिंग्जमध्ये MyMemory ईमेल जोडा, किंवा भिन्न भाषांतर सेवा स्विच करा</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">तुम्ही आजचे MyMemory भाषांतर कोटा (50,000 वर्ण) वापरले आहे. भिन्न भाषांतर सेवा स्विच करा किंवा उद्या पुन्हा प्रयत्न करा</string>
+  <string name="morphe_vot_mymemory_error">MyMemory भाषांतर अयशस्वी झाले (स्थिती %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">व्हिडिओ लूप करा</string>
   <string name="morphe_do_not_remember_loop_video_title">लूप व्हिडिओ लक्षात ठेवू नका</string>
@@ -774,7 +827,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">ज्या निर्मात्याने लाईक्स अक्षम केले आहेत अशा व्हिडिओवर अंदाजित लाईक संख्या दर्शवते</string>
   <string name="morphe_ryd_toast_on_connection_error_title">कनेक्शन त्रुटी सूचना दर्शवा</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike सर्व्हर उपलब्ध नसल्यास सूचना दर्शवते</string>
-  <string name="morphe_ryd_attribution_summary">डेटा Return YouTube Dislike API द्वारे प्रदान केला जातो. अधिक माहितीसाठी येथे टॅप करा</string>
+  <string name="morphe_ryd_attribution_summary">"डेटा Return YouTube Dislike API द्वारे प्रदान केला जातो.
+
+ReturnYouTubeDislike.com उघडण्यासाठी येथे टॅप करा"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">या डिव्हाइसचे Return YouTube Dislike API आकडेवारी</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API प्रतिसाद वेळ, सरासरी</string>
@@ -1012,7 +1067,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">अपारदर्शिता:</string>
   <string name="morphe_sb_color_dot_label">रंग:</string>
   <string name="morphe_sb_about_title">बद्दल</string>
-  <string name="morphe_sb_about_api_summary">डेटा SponsorBlock API द्वारे प्रदान केला आहे. अधिक माहिती पाहण्यासाठी आणि इतर प्लॅटफॉर्मसाठी डाउनलोड पाहण्यासाठी येथे टॅप करा</string>
+  <string name="morphe_sb_about_api_summary">"डेटा SponsorBlock API द्वारे प्रदान केला जातो.
+
+इतर प्लॅटफॉर्मसाठी डाउनलोड पाहण्यासाठी Sponsor.ajay.app उघडण्यासाठी येथे टॅप करा"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">डिव्हाइस लेआउट</string>
   <string name="morphe_change_form_factor_entry_1">डीफॉल्ट</string>
@@ -1163,7 +1220,11 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow आणि मूळ थंबनेल</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow आणि स्टिल कॅप्चर</string>
   <string name="morphe_alt_thumbnail_options_entry_4">स्टिल कॅप्चर</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow व्हिडिओसाठी YouTube व्हिडिओसाठी जमा-आधारित थंबनेल प्रदान करते. हे थंबनेल YouTube द्वारे प्रदान केलेल्यांपेक्षा अधिक समर्पक असू शकतात \n\nहे सक्षम केल्यास, व्हिडिओ URL API सर्व्हरला पाठविले जातील आणि इतर कोणताही डेटा पाठविला जाणार नाही. जर व्हिडिओमध्ये DeArrow थंबनेल नसेल, तर मूळ किंवा स्टिल कॅप्चर दर्शविले जातात \n\nअधिक माहितीसाठी DeArrow वर टॅप करा"</string>
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow YouTube व्हिडिओंसाठी crowdsourced थंबनेल प्रदान करते. हे थंबनेल बहुतेक वेळा YouTube द्वारे प्रदान केलेल्या थंबनेलपेक्षा अधिक संबंधित असतात.
+
+सक्षम केल्यास, व्हिडिओ URL API सर्व्हरवर पाठवले जातील आणि इतर कोणताही डेटा पाठवला जाणार नाही. व्हिडिओमध्ये DeArrow थंबनेल नसल्यास, मूळ किंवा स्थिर कॅप्चर दर्शविले जातात.
+
+DeArrow.ajay.app उघडण्यासाठी येथे टॅप करा"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">कनेक्शन त्रुटी सूचना दर्शवा</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">DeArrow सर्व्हर उपलब्ध नसल्यास सूचना दर्शवते</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API एंडपॉइंट</string>

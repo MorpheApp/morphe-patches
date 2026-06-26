@@ -87,3 +87,17 @@ internal object TypeaheadSuggestionItemFingerprint : Fingerprint(
         string("typeahead_suggestion_item")
     )
 )
+
+internal object TrendingFeedUnitSectionFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("trending_feed_unit_section")
+    )
+)
+
+internal object TrendingFeedUnitDismissedSectionFingerprint : Fingerprint(
+    returnType = "V",
+    filters = listOf(
+        string("trending_feed_unit_dismissed_section")
+    )
+)

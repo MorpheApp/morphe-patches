@@ -15,13 +15,15 @@ import static app.morphe.extension.youtube.patches.ExitFullscreenPatch.Fullscree
 import static app.morphe.extension.youtube.patches.OpenVideosFullscreenHookPatch.OpenFullscreenMode;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerAnyModernAvailability;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerHideOverlayButtonsAvailability;
-import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerOverlayOpacityAvailability;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerHorizontalDragAvailability;
+import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerOverlayOpacityAvailability;
 import static app.morphe.extension.youtube.patches.MiniplayerPatch.MiniplayerType;
 import static app.morphe.extension.youtube.patches.OpenShortsInRegularPlayerPatch.ShortsPlayerType;
 import static app.morphe.extension.youtube.patches.components.PlayerFlyoutMenuComponentsFilter.HideAudioFlyoutMenuAvailability;
 import static app.morphe.extension.youtube.patches.spoof.SpoofVideoStreamsPatch.SpoofClientAv1Availability;
 import static app.morphe.extension.youtube.patches.theme.ThemePatch.SplashScreenAnimationStyle;
+import static app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch.MyMemoryServiceAvailability;
+import static app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch.OpenRouterServiceAvailability;
 import static app.morphe.extension.youtube.sponsorblock.SegmentPlaybackController.SponsorBlockDuration;
 import static app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour.IGNORE;
 import static app.morphe.extension.youtube.sponsorblock.objects.CategoryBehaviour.MANUAL_SKIP;
@@ -52,6 +54,7 @@ import app.morphe.extension.youtube.patches.ChangeFormFactorPatch.TabletLayoutIn
 import app.morphe.extension.youtube.patches.LegacyPlayerControlsPatch.RestoreOldPlayerButtonsAvailability;
 import app.morphe.extension.youtube.patches.VersionCheckPatch;
 import app.morphe.extension.youtube.patches.components.LayoutComponentsFilter;
+import app.morphe.extension.youtube.patches.voiceovertranslation.VoiceOverTranslationPatch;
 import app.morphe.extension.youtube.sponsorblock.SponsorBlockSettings;
 import app.morphe.extension.youtube.swipecontrols.SwipeControlsConfigurationProvider.SwipeOverlayStyle;
 
@@ -523,6 +526,22 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting SWIPE_ZONE_WIDTH = new IntegerSetting("morphe_swipe_zone_width", 37, true,
             parentsAny(SWIPE_BRIGHTNESS, SWIPE_VOLUME));
 
+    // VoiceOverTranslation
+    public static final BooleanSetting VOT_ENABLED = new BooleanSetting("morphe_vot_enabled", FALSE, true);
+    public static final BooleanSetting VOT_SESSION_ENABLED = new BooleanSetting("morphe_vot_session_enabled", FALSE);
+    public static final StringSetting VOT_CAPTION_LANGUAGE = new StringSetting("morphe_vot_caption_language", "app", parent(VOT_ENABLED));
+    public static final StringSetting VOT_TTS_VOICE_TYPE = new StringSetting("morphe_vot_tts_voice_type", "auto", parent(VOT_ENABLED));
+    public static final IntegerSetting VOT_ORIGINAL_AUDIO_VOLUME = new IntegerSetting("morphe_vot_original_audio_volume", 50, parent(VOT_ENABLED));
+    public static final IntegerSetting VOT_TRANSLATION_VOLUME = new IntegerSetting("morphe_vot_translation_volume", 100, parent(VOT_ENABLED));
+    public static final IntegerSetting VOT_MAX_SPEECH_RATE = new IntegerSetting("morphe_vot_max_speech_rate", 15, parent(VOT_ENABLED));
+    public static final StringSetting VOT_TRANSLATION_SERVICE = new StringSetting("morphe_vot_translation_service", "google", parent(VOT_ENABLED));
+    public static final StringSetting VOT_OPENROUTER_API_KEY = new StringSetting("morphe_vot_openrouter_api_key", "", new OpenRouterServiceAvailability());
+    public static final StringSetting VOT_OPENROUTER_MODEL = new StringSetting("morphe_vot_openrouter_model", "mistralai/mistral-nemo", new OpenRouterServiceAvailability());
+    public static final StringSetting VOT_MYMEMORY_EMAIL = new StringSetting("morphe_vot_mymemory_email", "", new MyMemoryServiceAvailability());
+    public static final BooleanSetting VOT_USE_NATIVE_TTS = new BooleanSetting("morphe_vot_use_native_tts", FALSE, parent(VOT_ENABLED));
+    public static final BooleanSetting VOT_SHOW_HTTP_ERROR_DIALOG = new BooleanSetting("morphe_vot_show_http_error_dialog", TRUE);
+    public static final BooleanSetting VOT_HIDE_EXPORT_WARNING = new BooleanSetting("morphe_vot_hide_export_warning", FALSE, false, false);
+
     // ReturnYoutubeDislike
     public static final BooleanSetting RYD_ENABLED = new BooleanSetting("morphe_ryd_enabled", TRUE);
     public static final StringSetting RYD_USER_ID = new StringSetting("morphe_ryd_user_id", "", false, false);
@@ -637,6 +656,7 @@ public class Settings extends SharedYouTubeSettings {
         }
 
         Setting.addImportExportCallback(SponsorBlockSettings.SB_IMPORT_EXPORT_CALLBACK);
+        Setting.addImportExportCallback(VoiceOverTranslationPatch.VOT_IMPORT_EXPORT_CALLBACK);
     }
 
     // Register SeekBar UI configs so the single shared SeekBarPreference class knows the
@@ -662,5 +682,11 @@ public class Settings extends SharedYouTubeSettings {
                 5, 75, 1, "%"));
         SeekBarPreference.register(new SeekBarConfig(QUICK_ACTIONS_TOP_MARGIN,
                 0, 32, 1, "dp"));
+        SeekBarPreference.register(new SeekBarConfig(VOT_ORIGINAL_AUDIO_VOLUME,
+                0, 100, 10, "%"));
+        SeekBarPreference.register(new SeekBarConfig(VOT_TRANSLATION_VOLUME,
+                0, 100, 10, "%"));
+        SeekBarPreference.register(new SeekBarConfig(VOT_MAX_SPEECH_RATE,
+                10, 25, 1, "x", 10));
     }
 }

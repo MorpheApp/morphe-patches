@@ -37,12 +37,10 @@ Second \"item\" text"</string>
   <string name="morphe_disable_screenshot_popup_summary">Vô hiệu hộp thoại xuất hiện khi chụp màn hình</string>
   <string name="morphe_hide_ask_button_title">Ẩn nút Đặt câu hỏi</string>
   <string name="morphe_hide_ask_button_summary">Ẩn nút Đặt câu hỏi trên thanh tìm kiếm</string>
-  <string name="morphe_hide_recommended_communities_shelf_title">Ẩn các cộng đồng được đề xuất</string>
-  <string name="morphe_hide_recommended_communities_shelf_summary">Ẩn kệ cộng đồng được đề xuất trong subreddit</string>
-  <string name="morphe_hide_trending_today_shelf_title">Ẩn kệ Xu hướng hôm nay</string>
-  <string name="morphe_hide_trending_today_shelf_summary">"Ẩn kệ Xu hướng hôm nay khỏi gợi ý tìm kiếm
-
-Hạn chế: Có thể không ẩn được các khoảng trống trong giao diện"</string>
+  <string name="morphe_hide_communities_shelf_title">Ẩn kệ cộng đồng</string>
+  <string name="morphe_hide_communities_shelf_summary">Ẩn kệ cộng đồng liên quan hoặc được đề xuất trong subreddit</string>
+  <string name="morphe_hide_trending_shelves_title">Ẩn kệ Xu hướng</string>
+  <string name="morphe_hide_trending_shelves_summary">Ẩn các danh mục đang thịnh hành khỏi gợi ý tìm kiếm</string>
   <string name="morphe_remove_notification_dialog_title">Xóa hộp thoại gợi ý thông báo</string>
   <string name="morphe_remove_notification_dialog_summary">Tự động tắt hộp thoại gợi ý thông báo khi vào subreddit</string>
   <string name="morphe_show_view_count_title">Hiện số lượt xem trên bài đăng</string>

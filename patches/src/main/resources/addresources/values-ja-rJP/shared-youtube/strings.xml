@@ -109,6 +109,25 @@ YouTube Premiumのユーザーの場合、この設定は必要ない場合が�
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">オリジナルの音声を強制的に使用</string>
   <string name="morphe_force_original_audio_summary">常にオリジナルの音声トラック (言語) を再生します。オートダビングを含む吹き替えの音声トラックは再生されなくなります</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">ネットワーク プロキシ</string>
+  <string name="morphe_proxy_screen_summary">対応しているネットワーク リクエストをプロキシ経由で送信します</string>
+  <string name="morphe_proxy_enabled_title">プロキシを有効化</string>
+  <string name="morphe_proxy_enabled_summary">対応しているネットワーク リクエストを、設定した HTTP / HTTPS プロキシ経由で送信します</string>
+  <string name="morphe_proxy_host_title">プロキシホスト</string>
+  <string name="morphe_proxy_host_summary">プロキシ サーバーのホスト名または IP アドレス</string>
+  <string name="morphe_proxy_port_title">プロキシポート</string>
+  <string name="morphe_proxy_port_summary">プロキシ サーバーのポート番号</string>
+  <string name="morphe_proxy_https_title">HTTPS プロキシを使用</string>
+  <string name="morphe_proxy_https_summary">プロキシ サーバーへの接続を HTTP から HTTPS に変更します</string>
+  <string name="morphe_proxy_auth_enabled_title">プロキシ認証</string>
+  <string name="morphe_proxy_auth_enabled_summary">Basic 認証を使用してプロキシ サーバーへの認証を行います</string>
+  <string name="morphe_proxy_auth_username_title">ユーザー名</string>
+  <string name="morphe_proxy_auth_username_summary">プロキシ サーバーへの Basic 認証で使用するユーザー名</string>
+  <string name="morphe_proxy_auth_password_title">パスワード</string>
+  <string name="morphe_proxy_auth_password_summary">プロキシ サーバーへの Basic 認証で使用するパスワード</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">失敗時に直接接続に切り替える</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">プロキシ接続に失敗したときに直接接続に切り替えます</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">全画面広告を非表示</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

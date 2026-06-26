@@ -14,7 +14,7 @@ import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
 import app.morphe.extension.shared.spoof.ClientType;
 
-@SuppressWarnings("deprecation")
+@SuppressWarnings({"deprecation", "RedundantSuppression"})
 public class Settings extends SharedYouTubeSettings {
 
     // Ads

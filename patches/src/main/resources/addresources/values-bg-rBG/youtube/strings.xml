@@ -304,6 +304,59 @@ Second \"item\" text"</string>
   <string name="morphe_external_downloader_not_installed_warning">Външен свалик</string>
   <string name="morphe_external_downloader_package_not_found_warning">"Външен свалик не е инсталиран. Инсталирайте го."</string>
   <string name="morphe_external_downloader_empty_warning">Името на пакета не може да бъде празно</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Превод на глас зад кадър</string>
+  <string name="morphe_vot_screen_summary">Четете надписите на видеото на глас, използвайки вграден текстов говор, синхронизиран с възпроизвеждането</string>
+  <string name="morphe_vot_enabled_title">Превод на глас зад кадър</string>
+  <string name="morphe_vot_caption_language_title">Език</string>
+  <string name="morphe_vot_translation_service_title">Доставчик на превод</string>
+  <string name="morphe_vot_original_audio_volume_title">Сила на звука на оригиналния звук</string>
+  <string name="morphe_vot_original_audio_volume_summary">Сила на звука на оригиналния звук на YouTube, докато преводът говори</string>
+  <string name="morphe_vot_translation_volume_title">Сила на звука на превода</string>
+  <string name="morphe_vot_translation_volume_summary">Сила на звука на дублирания превод</string>
+  <string name="morphe_vot_max_speech_rate_title">Максимална скорост на речта</string>
+  <string name="morphe_vot_max_speech_rate_summary">Максимален множител на скоростта, когато се побира речта в слота за субтитри</string>
+  <string name="morphe_vot_mymemory_info_summary">"Безплатен API за превод, не се изисква API ключ. До 5000 знака на ден в безплатната версия или до 50 000 знака на ден с имейл адрес.
+
+Натиснете тук, за да отворите MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory имейл</string>
+  <string name="morphe_vot_mymemory_email_summary">По избор. Въведете своя имейл адрес на MyMemory, за да увеличите дневния лимит от 5000 на 50 000 знака. Оставете празно, за да използвате анонимния лимит</string>
+  <string name="morphe_vot_openrouter_info_summary">"Платен AI превод чрез OpenRouter. Заредете веднъж и превеждайте хиляди видеа. Mistral Nemo е най-евтината опция, Gemma 4 предлага най-високо качество.
+
+Натиснете тук, за да отворите OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API ключ</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Вашият OpenRouter API ключ. Създайте ключ в OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter Модел</string>
+  <string name="morphe_vot_openrouter_model_custom">По избор</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter не е конфигуриран</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Въведете своя OpenRouter API ключ в настройките, преди да изберете този доставчик</string>
+  <string name="morphe_vot_cost_free">Безплатен</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s на 100 видео часа</string>
+  <string name="morphe_vot_tts_voice_type">Глас</string>
+  <string name="morphe_vot_tts_system">Система</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Многоезичен мъжки</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Многоезичен женски</string>
+  <string name="morphe_vot_voice_gender_male">Мъжки</string>
+  <string name="morphe_vot_voice_gender_female">Женски</string>
+  <string name="morphe_vot_tts_sample">Време е за трансформация!</string>
+  <string name="morphe_vot_http_error_title">Преводът не е достъпен</string>
+  <string name="morphe_vot_http_error_message">"Услугата за превод върна HTTP грешка %s. Вашият IP адрес вероятно е ограничен за до 24 часа.
+
+За да продължите да използвате преводи, превключете към друг доставчик на превод в настройките или използвайте VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Не показвай отново</string>
+  <string name="morphe_vot_export_api_key_warning">"Вашите настройки съдържат OpenRouter API ключ.
+
+Вашият API ключ никога не трябва да се споделя. Всеки, който има достъп до него, може да използва вашите кредити на OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Достигнат кредитен лимит на OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Вашият кредитен лимит на OpenRouter е достигнат. Заредете баланса си или увеличете лимита за разходите на вашия ключ в OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Отворете OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter преводът не успя (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Достигнат дневен лимит на MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Наличност отново на %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Използвахте дневната безплатна квота за превод на MyMemory (5000 знака). Добавете имейл адрес на MyMemory в настройките, за да увеличите дневния лимит до 50 000 знака, или превключете към друга услуга за превод</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Използвахте дневната квота за превод на MyMemory (50 000 знака). Превключете към друга услуга за превод или опитайте отново утре</string>
+  <string name="morphe_vot_mymemory_error">MyMemory преводът не успя (състояние %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Версията е фалшира</string>
   <string name="morphe_do_not_remember_loop_video_title">Не запомни цикъла на видеото</string>
@@ -773,7 +826,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Показва приблизителен брой харесвания за видеа, при които създателят е деактивирал харесванията</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Показвай предупреждения за грешки в връзката</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Показва известие, когато сървърът на Return YouTube Dislike не е достъпен</string>
-  <string name="morphe_ryd_attribution_summary">Дублирането на видеа е скрито</string>
+  <string name="morphe_ryd_attribution_summary">"Данните са предоставени от Return YouTube Dislike API.
+
+Натиснете тук, за да отворите ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Дублирането на видеа се показва</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Скрий дублиране на видеа</string>
@@ -1015,7 +1070,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">Непрозрачност</string>
   <string name="morphe_sb_color_dot_label">Цвят</string>
   <string name="morphe_sb_about_title">Отношение</string>
-  <string name="morphe_sb_about_api_summary">Информацията е предоставена от API на SponsorBlock. Натиснете тук, за да научите повече и вижте други платформи</string>
+  <string name="morphe_sb_about_api_summary">"Данните са предоставени от SponsorBlock API.
+
+Натиснете тук, за да отворите Sponsor.ajay.app и да видите изтеглянията за други платформи"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Оформление на устройството</string>
   <string name="morphe_change_form_factor_entry_1">По подразбиране</string>
@@ -1166,7 +1223,7 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">Still video captures</string>
   <string name="morphe_alt_thumbnail_options_entry_3">Включете бързо still captures</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Неподвижни кадри</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow осигурява crowdsourced превью за видеоклипове на YouTube. Тези превю са често по-релевантни от тези, предоставени от YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow осигурява crowdsourced превю за видеоклипове на YouTube. Тези превю са често по-релевантни от тези, предоставени от YouTube
 
 Ако е включено, URL-овете на видеоклиповете ще бъдат изпращани към сървъра на API и няма да се изпращат други данни. Ако видеоклип не има DeArrow превю, тогава ще се показват оригиналните или превю с кадри
 

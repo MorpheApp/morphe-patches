@@ -22,6 +22,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
@@ -76,7 +77,31 @@ import app.morphe.extension.shared.ui.Dim;
 
 @SuppressWarnings("deprecation")
 public abstract class AbstractPreferenceFragment extends PreferenceFragment {
+    private static void performToggleHaptic(View view, TwoStatePreference pref) {
+        int feedbackConstant = Build.VERSION.SDK_INT >= 34
+                ? (pref.isChecked() ? HapticFeedbackConstants.TOGGLE_OFF : HapticFeedbackConstants.TOGGLE_ON)
+                : HapticFeedbackConstants.CLOCK_TICK;
+        view.performHapticFeedback(feedbackConstant);
+    }
+
+    private static class ClickDebouncer {
+        private static final long FAST_CLICK_MS = 300;
+        private int lastPosition = AdapterView.INVALID_POSITION;
+        private long lastTimeMs;
+
+        boolean isFastRepeat(int position) {
+            final long now = SystemClock.elapsedRealtime();
+            if (position == lastPosition && now - lastTimeMs < FAST_CLICK_MS) {
+                return true;
+            }
+            lastPosition = position;
+            lastTimeMs = now;
+            return false;
+        }
+    }
+
     private static class DebouncedListView extends ListView {
+        private final ClickDebouncer debouncer = new ClickDebouncer();
 
         public DebouncedListView(Context context) {
             super(context);
@@ -95,39 +120,36 @@ public abstract class AbstractPreferenceFragment extends PreferenceFragment {
             Object item = getAdapter().getItem(position);
 
             if (item instanceof TwoStatePreference twoState) {
-                int feedbackConstant = Build.VERSION.SDK_INT >= 34
-                        ? (twoState.isChecked() ? HapticFeedbackConstants.TOGGLE_OFF : HapticFeedbackConstants.TOGGLE_ON)
-                        : HapticFeedbackConstants.CLOCK_TICK;
-                view.performHapticFeedback(feedbackConstant);
+                performToggleHaptic(view, twoState);
                 return super.performItemClick(view, position, id);
             }
 
-            if (Utils.isFastClick()) {
-                return true; // Ignore fast double click.
-            }
+            // Only debounce repeated taps on the same item to prevent accidental double-clicks.
+            if (debouncer.isFastRepeat(position)) return true;
             return super.performItemClick(view, position, id);
         }
     }
 
-    private record DebouncedItemClickListener(
-            AdapterView.OnItemClickListener originalListener) implements AdapterView.OnItemClickListener {
+    private static class DebouncedItemClickListener implements AdapterView.OnItemClickListener {
+        private final AdapterView.OnItemClickListener originalListener;
+        private final ClickDebouncer debouncer = new ClickDebouncer();
+
+        DebouncedItemClickListener(AdapterView.OnItemClickListener originalListener) {
+            this.originalListener = originalListener;
+        }
 
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             Object item = parent.getAdapter().getItem(position);
 
             if (item instanceof TwoStatePreference twoState) {
-                int feedbackConstant = Build.VERSION.SDK_INT >= 34
-                        ? (twoState.isChecked() ? HapticFeedbackConstants.TOGGLE_OFF : HapticFeedbackConstants.TOGGLE_ON)
-                        : HapticFeedbackConstants.CLOCK_TICK;
-                view.performHapticFeedback(feedbackConstant);
+                performToggleHaptic(view, twoState);
                 originalListener.onItemClick(parent, view, position, id);
                 return;
             }
 
-            if (Utils.isFastClick()) {
-                return; // Ignore fast double click.
-            }
+            // Only debounce repeated taps on the same item to prevent accidental double-clicks.
+            if (debouncer.isFastRepeat(position)) return;
             originalListener.onItemClick(parent, view, position, id);
         }
     }

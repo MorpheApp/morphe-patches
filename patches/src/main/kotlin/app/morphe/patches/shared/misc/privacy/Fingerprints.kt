@@ -7,6 +7,7 @@ import app.morphe.patcher.checkCast
 import app.morphe.patcher.fieldAccess
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
+import app.morphe.patcher.parametersMatch
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.Opcode
 
@@ -56,7 +57,6 @@ internal object YouTubeSystemShareSheetFingerprint : Fingerprint(
 
 internal object YouTubeShareSheetFingerprint : Fingerprint(
     returnType = "V",
-    parameters = listOf("L", "Ljava/util/Map;"),
     filters = listOf(
         opcode(Opcode.IGET_OBJECT),
         checkCast("Ljava/lang/String;", location = MatchAfterImmediately()),
@@ -65,5 +65,11 @@ internal object YouTubeShareSheetFingerprint : Fingerprint(
         methodCall(smali = "Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;"),
 
         string("YTShare_Logging_Share_Intent_Endpoint_Byte_Array")
-    )
+    ),
+    custom = { method, _ ->
+        // 21.25 and older
+        parametersMatch(method.parameters, listOf("L", "Ljava/util/Map;"))
+                // 21.26+
+                || parametersMatch(method.parameters, listOf("L"))
+    }
 )

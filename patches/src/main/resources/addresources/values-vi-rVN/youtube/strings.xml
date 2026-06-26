@@ -305,6 +305,59 @@ Hạn chế:
 
 Vui lòng kiểm tra lại tên gói và đảm bảo ứng dụng đã được cài trên thiết bị"</string>
   <string name="morphe_external_downloader_empty_warning">Tên gói không được để trống</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Dịch giọng nói</string>
+  <string name="morphe_vot_screen_summary">Đọc to phụ đề video bằng tính năng chuyển văn bản thành giọng nói trên thiết bị, đồng bộ với quá trình phát lại</string>
+  <string name="morphe_vot_enabled_title">Dịch giọng nói</string>
+  <string name="morphe_vot_caption_language_title">Ngôn ngữ</string>
+  <string name="morphe_vot_translation_service_title">Nhà cung cấp dịch thuật</string>
+  <string name="morphe_vot_original_audio_volume_title">Âm lượng âm thanh gốc</string>
+  <string name="morphe_vot_original_audio_volume_summary">Âm lượng của âm thanh YouTube gốc khi bản dịch đang phát</string>
+  <string name="morphe_vot_translation_volume_title">Âm lượng bản dịch</string>
+  <string name="morphe_vot_translation_volume_summary">Âm lượng của giọng nói dịch lồng tiếng</string>
+  <string name="morphe_vot_max_speech_rate_title">Tốc độ nói tối đa</string>
+  <string name="morphe_vot_max_speech_rate_summary">Hệ số nhân tốc độ tối đa khi điều chỉnh lời nói cho vừa với một ô phụ đề</string>
+  <string name="morphe_vot_mymemory_info_summary">"API dịch thuật miễn phí, không yêu cầu khóa API. Tối đa 5.000 ký tự mỗi ngày ở gói miễn phí, hoặc tối đa 50.000 ký tự mỗi ngày nếu có địa chỉ email.
+
+Nhấn vào đây để mở MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">Email MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Tùy chọn. Nhập địa chỉ email MyMemory của bạn để tăng giới hạn hàng ngày từ 5.000 lên 50.000 ký tự. Để trống để sử dụng giới hạn ẩn danh</string>
+  <string name="morphe_vot_openrouter_info_summary">"Dịch thuật AI trả phí qua OpenRouter. Nạp tiền một lần và dịch hàng nghìn video. Mistral Nemo là tùy chọn rẻ nhất, Gemma 4 cung cấp chất lượng cao nhất.
+
+Nhấn vào đây để mở OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Khóa API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Khóa API OpenRouter của bạn. Tạo khóa tại OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Mô hình OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Tùy chỉnh</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter chưa được cấu hình</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Nhập khóa API OpenRouter của bạn trong cài đặt trước khi chọn nhà cung cấp này</string>
+  <string name="morphe_vot_cost_free">Miễn phí</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s cho mỗi 100 giờ video</string>
+  <string name="morphe_vot_tts_voice_type">Giọng nói</string>
+  <string name="morphe_vot_tts_system">Hệ thống</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Nam đa ngôn ngữ</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Nữ đa ngôn ngữ</string>
+  <string name="morphe_vot_voice_gender_male">Nam</string>
+  <string name="morphe_vot_voice_gender_female">Nữ</string>
+  <string name="morphe_vot_tts_sample">Đã đến lúc biến hình!</string>
+  <string name="morphe_vot_http_error_title">Bản dịch không khả dụng</string>
+  <string name="morphe_vot_http_error_message">"Dịch vụ dịch thuật đã trả về lỗi HTTP %s. Địa chỉ IP của bạn có thể đã bị giới hạn tốc độ trong tối đa 24 giờ.
+
+Để tiếp tục sử dụng dịch thuật, hãy chuyển sang nhà cung cấp dịch thuật khác trong cài đặt hoặc sử dụng VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Không hiện lại nữa</string>
+  <string name="morphe_vot_export_api_key_warning">"Cài đặt của bạn có chứa khóa API OpenRouter.
+
+Khóa API của bạn tuyệt đối không được chia sẻ. Bất kỳ ai có quyền truy cập đều có thể sử dụng tín dụng OpenRouter của bạn"</string>
+  <string name="morphe_vot_openrouter_credits_title">Đã đạt giới hạn tín dụng OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Giới hạn tín dụng OpenRouter của bạn đã đạt mức tối đa. Hãy nạp thêm số dư hoặc tăng giới hạn chi tiêu cho khóa của bạn tại OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Mở OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Dịch thuật OpenRouter thất bại (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Đã đạt giới hạn hàng ngày của MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Khả dụng tiếp theo lúc %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Bạn đã sử dụng hết hạn mức dịch thuật MyMemory miễn phí của ngày hôm nay (5.000 ký tự). Thêm email MyMemory trong cài đặt để nâng giới hạn hàng ngày lên 50.000 ký tự, hoặc chuyển sang dịch vụ dịch thuật khác</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Bạn đã sử dụng hết hạn mức dịch thuật MyMemory của ngày hôm nay (50.000 ký tự). Hãy chuyển sang dịch vụ dịch thuật khác hoặc thử lại vào ngày mai</string>
+  <string name="morphe_vot_mymemory_error">Dịch thuật MyMemory thất bại (trạng thái %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Bật video lặp lại</string>
   <string name="morphe_do_not_remember_loop_video_title">Không ghi nhớ trạng thái lặp lại video</string>
@@ -774,7 +827,9 @@ Cài đặt → Phát (hoặc Tự động phát) → tự động phát video t
   <string name="morphe_ryd_estimated_like_summary">Hiển thị số lượt thích ước tính trên các video mà người sáng tạo đã ẩn lượt thích</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Hiện cảnh báo lỗi kết nối</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Hiển thị thông báo khi máy chủ Return YouTube Dislike không khả dụng</string>
-  <string name="morphe_ryd_attribution_summary">Dữ liệu được cung cấp bởi API Return YouTube Dislike. Bấm vào đây để tìm hiểu thêm</string>
+  <string name="morphe_ryd_attribution_summary">"Dữ liệu được cung cấp bởi Return YouTube Dislike API.
+
+Nhấn vào đây để mở ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Thống kê API ReturnYouTubeDislike của thiết bị này</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Thời gian phản hồi API, trung binh</string>
@@ -1015,7 +1070,9 @@ Nếu bạn chưa muốn gửi đoạn nổi bật, hãy bấm Hủy và đánh 
   <string name="morphe_sb_color_opacity_label">Độ mờ:</string>
   <string name="morphe_sb_color_dot_label">Màu:</string>
   <string name="morphe_sb_about_title">Giới thiệu</string>
-  <string name="morphe_sb_about_api_summary">Dữ liệu được cung cấp bởi API SponsorBlock. Bấm vào đây để tìm hiểu thêm và xem các bản tải cho các nền tảng khác</string>
+  <string name="morphe_sb_about_api_summary">"Dữ liệu được cung cấp bởi API SponsorBlock.
+
+Nhấn vào đây để mở Sponsor.ajay.app và xem các bản tải cho các nền tảng khác"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Bố cục thiết bị</string>
   <string name="morphe_change_form_factor_entry_1">Mặc định</string>
@@ -1038,9 +1095,9 @@ Giao diện màn hình ô tô
 • Thanh thao tác video không thu gọn được"</string>
   <string name="morphe_tablet_layout_in_player_title">Bật bố cục máy tính bảng trong trình phát</string>
   <!-- "Restore old video action bar" must be translated the same as morphe_restore_old_video_action_bar_title -->
-  <string name="morphe_tablet_layout_in_player_summary">"Khôi phục bố cục trình phát cũ
+  <string name="morphe_tablet_layout_in_player_summary">"Khôi phục giao diện trình phát cũ
 
-Giới hạn: Nếu tùy chọn \"Khôi phục thanh tác vụ video cũ\" bị tắt, lớp phủ \"Thêm video\" có thể không khả dụng"</string>
+Hạn chế: Nếu tùy chọn \"Khôi phục thanh thao tác video cũ\" bị tắt, lớp phủ \"Thêm video\" có thể không xuất hiện"</string>
   <!-- layout.spoofappversion.spoofAppVersionPatch -->
   <string name="morphe_spoof_app_version_title">Giả mạo phiên bản ứng dụng</string>
   <string name="morphe_spoof_app_version_summary">Khiến server nghĩ rằng bạn đang sử dụng phiên bản cũ để khôi phục giao diện cũ</string>
@@ -1170,7 +1227,7 @@ Hạn chế: Nút quay lại trên thanh công cụ có thể không hoạt đ�
 
 Nếu được bật, URL video sẽ được gửi đến máy chủ API và không có dữ liệu nào khác được gửi. Nếu video không có hình thu nhỏ DeArrow, thì hình thu nhỏ gốc hoặc ảnh chụp tĩnh sẽ được hiển thị
 
-Bấm vào đây để tìm hiểu thêm về DeArrow"</string>
+Nhấn vào đây để mở DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Hiện cảnh báo lỗi kết nối</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Hiển thị thông báo khi máy chủ DeArrow không khả dụng</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Điểm cuối API DeArrow</string>
@@ -1299,8 +1356,8 @@ Phát video bằng AV1 có thể bị giật hoặc tụt khung hình."</string>
   <string name="morphe_spoof_video_streams_player_js_variant_title">Biến thể JavaScript của trình phát</string>
   <string name="morphe_spoof_video_streams_stats_for_nerds_title">Hiện thông tin giả mạo trong Thống kê chi tiết</string>
   <!-- misc.fix.videoactionbar.restoreOldVideoActionBarPatch -->
-  <string name="morphe_restore_old_video_action_bar_title">Khôi phục thanh thao tác video mở rộng</string>
-  <string name="morphe_restore_old_video_action_bar_summary">"Sửa lỗi dislike không hiển thị và nút thao tác video không thể ẩn
+  <string name="morphe_restore_old_video_action_bar_title">Khôi phục thanh thao tác video cũ</string>
+  <string name="morphe_restore_old_video_action_bar_summary">"Sửa lỗi không hiển thị số lượt không thích và không ẩn được các nút thao tác của video
 
-Giới hạn: Trả lại giao diện 'Thêm video' kiểu cũ"</string>
+Hạn chế: Khôi phục giao diện lớp phủ \"Thêm video\" cũ"</string>
 </resources>

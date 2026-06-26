@@ -306,6 +306,59 @@ Second \"item\" text"</string>
 
 Επιβεβαιώστε ότι το όνομα πακέτου είναι σωστό και ότι η εφαρμογή είναι εγκατεστημένη"</string>
   <string name="morphe_external_downloader_empty_warning">Το όνομα πακέτου δεν μπορεί να είναι κενό</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Μετάφραση φωνής</string>
+  <string name="morphe_vot_screen_summary">Διαβάστε τις λεζάντες του βίντεο δυνατά χρησιμοποιώντας το text-to-speech της συσκευής, συγχρονισμένα με την αναπαραγωγή</string>
+  <string name="morphe_vot_enabled_title">Μετάφραση φωνής</string>
+  <string name="morphe_vot_caption_language_title">Γλώσσα</string>
+  <string name="morphe_vot_translation_service_title">Πάροχος μετάφρασης</string>
+  <string name="morphe_vot_original_audio_volume_title">Ένταση αρχικού ήχου</string>
+  <string name="morphe_vot_original_audio_volume_summary">Ένταση του αρχικού ήχου του YouTube κατά τη διάρκεια της μετάφρασης</string>
+  <string name="morphe_vot_translation_volume_title">Ένταση μετάφρασης</string>
+  <string name="morphe_vot_translation_volume_summary">Ένταση της φωνής της μεταγλωττισμένης μετάφρασης</string>
+  <string name="morphe_vot_max_speech_rate_title">Μέγιστη ταχύτητα ομιλίας</string>
+  <string name="morphe_vot_max_speech_rate_summary">Μέγιστος πολλαπλασιαστής ταχύτητας κατά την προσαρμογή της ομιλίας σε μια υποτιτλισμένη θέση</string>
+  <string name="morphe_vot_mymemory_info_summary">"Δωρεάν API μετάφρασης, δεν απαιτείται κλειδί API. Έως 5.000 χαρακτήρες την ημέρα στο δωρεάν πρόγραμμα, ή έως 50.000 χαρακτήρες την ημέρα με μια διεύθυνση email.
+
+Πατήστε εδώ για να ανοίξετε το MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">Email MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Προαιρετικό. Εισαγάγετε τη διεύθυνση email του MyMemory σας για να αυξήσετε το ημερήσιο όριο από 5.000 σε 50.000 χαρακτήρες. Αφήστε το κενό για να χρησιμοποιήσετε το ανώνυμο όριο</string>
+  <string name="morphe_vot_openrouter_info_summary">"Επι πληρωμή μετάφραση AI μέσω OpenRouter. Προσθέστε χρήματα μία φορά και μεταφράστε χιλιάδες βίντεο. Το Mistral Nemo είναι η φθηνότερη επιλογή, το Gemma 4 προσφέρει την υψηλότερη ποιότητα.
+
+Πατήστε εδώ για να ανοίξετε το OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Κλειδί API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Το κλειδί API OpenRouter σας. Δημιουργήστε ένα κλειδί στο OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Μοντέλο OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Προσαρμοσμένο</string>
+  <string name="morphe_vot_openrouter_not_configured_title">Το OpenRouter δεν έχει διαμορφωθεί</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Εισαγάγετε το κλειδί API OpenRouter σας στις ρυθμίσεις πριν επιλέξετε αυτόν τον πάροχο</string>
+  <string name="morphe_vot_cost_free">Δωρεάν</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s ανά 100 ώρες βίντεο</string>
+  <string name="morphe_vot_tts_voice_type">Φωνή</string>
+  <string name="morphe_vot_tts_system">Σύστημα</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Πολυγλωσσικός άνδρας</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Πολυγλωσσική γυναίκα</string>
+  <string name="morphe_vot_voice_gender_male">Άνδρας</string>
+  <string name="morphe_vot_voice_gender_female">Γυναίκα</string>
+  <string name="morphe_vot_tts_sample">Ώρα μεταμόρφωσης!</string>
+  <string name="morphe_vot_http_error_title">Μετάφραση μη διαθέσιμη</string>
+  <string name="morphe_vot_http_error_message">"Η υπηρεσία μετάφρασης επέστρεψε σφάλμα HTTP %s. Η διεύθυνση IP σας έχει πιθανώς περιοριστεί για έως και 24 ώρες.
+
+Για να συνεχίσετε να χρησιμοποιείτε μεταφράσεις, αλλάξτε σε έναν άλλο πάροχο μετάφρασης στις ρυθμίσεις ή χρησιμοποιήστε ένα VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Να μην εμφανιστεί ξανά</string>
+  <string name="morphe_vot_export_api_key_warning">"Οι ρυθμίσεις σας περιέχουν ένα κλειδί API OpenRouter.
+
+Το κλειδί API σας δεν πρέπει ποτέ να κοινοποιείται. Όποιος έχει πρόσβαση σε αυτό μπορεί να χρησιμοποιήσει τα credits του OpenRouter σας"</string>
+  <string name="morphe_vot_openrouter_credits_title">Επιτεύχθηκε το όριο πίστωσης OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Έχετε φτάσει στο όριο πίστωσης OpenRouter σας. Προσθέστε χρήματα στο υπόλοιπό σας ή αυξήστε το όριο δαπανών του κλειδιού σας στο OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Άνοιγμα OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Αποτυχία μετάφρασης OpenRouter (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Επιτεύχθηκε το ημερήσιο όριο MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Διαθέσιμο στις %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Έχετε χρησιμοποιήσει το σημερινό δωρεάν ποσοστωτικό μετάφρασης MyMemory (5.000 χαρακτήρες). Προσθέστε ένα email MyMemory στις ρυθμίσεις για να αυξήσετε το ημερήσιο όριο σε 50.000 χαρακτήρες ή αλλάξτε σε μια άλλη υπηρεσία μετάφρασης</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Έχετε χρησιμοποιήσει το σημερινό ποσοστωτικό μετάφρασης MyMemory (50.000 χαρακτήρες). Αλλάξτε σε μια άλλη υπηρεσία μετάφρασης ή δοκιμάστε ξανά αύριο</string>
+  <string name="morphe_vot_mymemory_error">Αποτυχία μετάφρασης MyMemory (κατάσταση %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Αυτόματη επανάληψη βίντεο</string>
   <string name="morphe_do_not_remember_loop_video_title">Μην απομνημονεύεται η επαναλαμβανόμενη αναπαραγωγή βίντεο</string>
@@ -775,7 +828,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Εμφανίζει μια εκτιμώμενη καταμέτρηση των likes σε βίντεο όπου ο δημιουργός έχει απενεργοποιήσει τα likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Εμφάνιση ειδοποιήσεων σφάλματος σύνδεσης</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Εμφανίζει μια ειδοποίηση όταν ο διακομιστής Return YouTube Dislike δεν είναι διαθέσιμος</string>
-  <string name="morphe_ryd_attribution_summary">Τα δεδομένα Dislike παρέχονται από το API του Return YouTube Dislike. Πατήστε εδώ για να μάθετε περισσότερα</string>
+  <string name="morphe_ryd_attribution_summary">"Τα δεδομένα παρέχονται από το Return YouTube Dislike API.
+
+Πατήστε εδώ για να ανοίξετε το ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Στατιστικά ReturnYouTubeDislike API αυτής της συσκευής</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Χρόνος απόκρισης API, μέσος όρος</string>
@@ -1017,7 +1072,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">Αδιαφάνεια:</string>
   <string name="morphe_sb_color_dot_label">Χρώμα:</string>
   <string name="morphe_sb_about_title">Σχετικά με</string>
-  <string name="morphe_sb_about_api_summary">Τα δεδομένα παρέχονται από το SponsorBlock API. Πατήστε για να μάθετε περισσότερα και να δείτε λήψεις για άλλες πλατφόρμες</string>
+  <string name="morphe_sb_about_api_summary">"Τα δεδομένα παρέχονται από το SponsorBlock API.
+
+Πατήστε εδώ για να ανοίξετε το Sponsor.ajay.app και να δείτε λήψεις για άλλες πλατφόρμες"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Διάταξη συσκευής</string>
   <string name="morphe_change_form_factor_entry_1">Προεπιλογή</string>
@@ -1168,7 +1225,9 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Αρχικές μικρογραφίες</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Ακίνητα καρέ</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Ακίνητα καρέ</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"Το DeArrow παρέχει μικρογραφίες από το κοινό για τα βίντεο. Οι μικρογραφίες αυτές είναι συχνά πιο σχετικές από εκείνες που παρέχει το ίδιο το YouTube. Αν ενεργοποιηθεί, οι διευθύνσεις URL των βίντεο θα στέλνονται στον διακομιστή API χωρίς να στέλνονται άλλα δεδομένα. Αν κάποιο βίντεο δεν έχει μικρογραφίες DeArrow, θα εμφανιστούν είτε οι αρχικές του μικρογραφίες είτε λήψεις ακίνητων καρέ.
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"Το DeArrow παρέχει μικρογραφίες από το κοινό για τα βίντεο. Οι μικρογραφίες αυτές είναι συχνά πιο σχετικές από εκείνες που παρέχει το ίδιο το YouTube.
+
+Αν ενεργοποιηθεί, οι διευθύνσεις URL των βίντεο θα στέλνονται στον διακομιστή API χωρίς να στέλνονται άλλα δεδομένα. Αν κάποιο βίντεο δεν έχει μικρογραφίες DeArrow, θα εμφανιστούν είτε οι αρχικές του μικρογραφίες είτε λήψεις ακίνητων καρέ.
 
 Πατήστε για να μάθετε περισσότερα για το DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Εμφάνιση ειδοποιήσεων σφάλματος σύνδεσης</string>

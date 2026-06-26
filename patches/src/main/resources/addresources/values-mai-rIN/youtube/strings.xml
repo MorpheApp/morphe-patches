@@ -198,6 +198,8 @@ Second \"item\" text"</string>
 
 कृपया सत्यापित करें कि पैकेज नाम सही है और ऐप इंस्टॉल है"</string>
   <string name="morphe_external_downloader_empty_warning">पैकेज नाम खाली नहीं हो सकता</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">लूप वीडियो सक्षम करी</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
@@ -438,7 +440,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_shorts_title">शर्ट्समा Dislikes देखाउनुहोस्</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_estimated_like_title">अनुमानित लाइकहरू देखाउनुहोस्</string>
-  <string name="morphe_ryd_attribution_summary">डेटा Return YouTube Dislike API द्वारा प्रदान गरिएको छ। थप जान्न यहाँ ट्याप गर्नुहोस्</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">यस उपकरणको Return YouTube Dislike API तथ्याङ्क</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API प्रतिक्रिया समय, औसत</string>
@@ -626,7 +627,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">अपारदर्शिता:</string>
   <string name="morphe_sb_color_dot_label">रंग:</string>
   <string name="morphe_sb_about_title">के बारे में</string>
-  <string name="morphe_sb_about_api_summary">डेटा स्पोंसरब्लॉक एपीआई द्वारा प्रदान किया गया है। अधिक जानकारी के लिए इहाँ टैप करी और अन्य प्लेटफार्म के लिए डाउनलोड देखें</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_entry_1">डिफ़ॉल्ट</string>
   <string name="morphe_change_form_factor_entry_2">फ़ोन</string>
@@ -727,11 +727,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow र मौलिक थम्बनेलहरू</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow र स्थिर क्याप्चरहरू</string>
   <string name="morphe_alt_thumbnail_options_entry_4">अभी के कैप्चर</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow YouTube वीडियो खातिर क्राउडसोर्स्ड थंबनेल प्रदान करेला। एह थंबनेल अक्सर YouTube द्वारा प्रदान किए गए से अधिक प्रासंगिक होला
-
-अगर सक्षम कइल गइल, तो वीडियो URL एपीआई सर्वर के भेजल जाई और कवनो अउर डेटा नइखे भेजा। अगर वीडियो में DeArrow थंबनेल नइखे, तो मूल या अभी के कैप्चर दिखवले जाई
-
-अधिक जानकारी के लिए इहाँ टैप करी"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API अन्त बिन्दु</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">DeArrow थम्बनेल क्याशे endpoint क URL</string>
   <string name="morphe_alt_thumbnail_stills_about_title">स्टिल वीडियो कैप्चर</string>

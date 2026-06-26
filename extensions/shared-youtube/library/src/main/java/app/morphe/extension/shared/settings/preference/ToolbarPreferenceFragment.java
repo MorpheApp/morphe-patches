@@ -20,10 +20,9 @@ import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.ResourceUtils;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.settings.BaseActivityHook;
-import app.morphe.extension.shared.settings.preference.AbstractPreferenceFragment;
 import app.morphe.extension.shared.ui.Dim;
 
-@SuppressWarnings({"deprecation", "NewApi"})
+@SuppressWarnings({"deprecation", "RedundantSuppression"})
 public class ToolbarPreferenceFragment extends AbstractPreferenceFragment {
 
     /**

@@ -264,6 +264,11 @@ Dəyişikliklər ehtiva edir:
 
 Paket adının düzgün olduğun yoxla və tətbiqi quraşdırın"</string>
   <string name="morphe_external_downloader_empty_warning">Paket adı boş ola bilməz</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_openrouter_model_custom">Fərdi</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_tts_system">Sistem</string>
+  <string name="morphe_vot_do_not_show_again">Təkrar göstərmə</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Video təkrarlamanı aktivləşdir</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
@@ -627,7 +632,6 @@ Tənzimləmələrə daxil olmaq üçün Ümumi → Alətlər Cərgəsi→ Tənzi
   <string name="morphe_ryd_shorts_title">\"Shorts\"da bəyənməmə sayını göstər</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_estimated_like_title">Təxmini bəyənmələri göstər</string>
-  <string name="morphe_ryd_attribution_summary">Məlumat Return YouTube Dislike API vasitəsilə alınır. Ətraflı öyrənmək üçün bura toxun</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Bu cihazda Return YouTube Dislike API statistikası</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Orta hesabla API cavab müddəti</string>
@@ -822,7 +826,6 @@ Təqdim etməyə hazırdır?"</string>
   <string name="morphe_sb_color_opacity_label">Qeyri-şəffaflıq:</string>
   <string name="morphe_sb_color_dot_label">Rəng:</string>
   <string name="morphe_sb_about_title">Haqqında</string>
-  <string name="morphe_sb_about_api_summary">Məlumat SponsorBlock API tərəfindən təqdim edilir. Daha ətraflı öyrənmək və digər platformalar üzrə yükləmələrə baxmaq üçün bura toxunun</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_entry_1">İlkin</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
@@ -920,11 +923,6 @@ Sonradan qapadılarsa, UI səhvlərin önləmək üçün tətbiq məlumatların 
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Orijinal miniatürlər</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Kadr çəkilişlər</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Kadr çəkilişləri</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow YouTube videoları üçün çox mənbəli miniatürlər təqdim edir. Bu miniatürlər YouTube tərəfindən təqdim edilənlərdən dəfələrlə daha uyğundur.
-
-Aktivləşdirilərsə, video URL-lər API alıcısına göndəriləcək və başqa məlumat göndərilməyəcək. Videonun DeArrow miniatürləri yoxdursa, orijinal və ya hələ də çəkilişlər göstərilir.
-
-DeArrow haqqında ətraflı öyrənmək üçün bura toxun"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API\'nin sonuncu əlaqəsi</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">DeArrow miniatür keşinin son əlaqəsinin URL-si</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Statik video kadrları</string>

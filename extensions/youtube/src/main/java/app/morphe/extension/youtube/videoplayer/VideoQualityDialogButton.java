@@ -11,6 +11,8 @@
 package app.morphe.extension.youtube.videoplayer;
 
 import static app.morphe.extension.shared.StringRef.str;
+import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.DRAWABLE_CHECKMARK;
+import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.DRAWABLE_CHECKMARK_BOLD;
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_CHECK_ICON;
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_CHECK_ICON_PLACEHOLDER;
 import static app.morphe.extension.shared.settings.preference.CustomDialogListPreference.ID_MORPHE_ITEM_TEXT;
@@ -22,6 +24,7 @@ import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton
 import static app.morphe.extension.youtube.videoplayer.LegacyPlayerControlButton.getDialogBackgroundColor;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
@@ -50,9 +53,8 @@ import app.morphe.extension.youtube.patches.VideoInformation;
 import app.morphe.extension.youtube.patches.VideoInformation.VideoQualityInterface;
 import app.morphe.extension.youtube.patches.playback.quality.RememberVideoQualityPatch;
 import app.morphe.extension.youtube.settings.Settings;
-import app.morphe.extension.youtube.shared.PlayerType;
+import app.morphe.extension.youtube.shared.PipDismissHelper;
 import kotlin.Unit;
-import kotlin.jvm.functions.Function1;
 
 @SuppressWarnings("unused")
 public class VideoQualityDialogButton {
@@ -71,11 +73,6 @@ public class VideoQualityDialogButton {
             return Unit.INSTANCE;
         });
     }
-
-    /**
-     * Weak reference to the currently open dialog.
-     */
-    private static WeakReference<SheetBottomDialog.SlideDialog> currentDialog;
 
     /**
      * Injection point.
@@ -331,7 +328,6 @@ public class VideoQualityDialogButton {
 
             // Create dialog.
             SheetBottomDialog.SlideDialog dialog = SheetBottomDialog.createSlideDialog(context, mainLayout, fadeInDuration);
-            currentDialog = new WeakReference<>(dialog);
 
             listView.setOnItemClickListener((parent, view, which, id) -> {
                 try {
@@ -348,33 +344,8 @@ public class VideoQualityDialogButton {
 
             mainLayout.addView(listView);
 
-            // Create observer for PlayerType changes.
-            Function1<PlayerType, Unit> playerTypeObserver = new Function1<>() {
-                @Override
-                public Unit invoke(PlayerType type) {
-                    SheetBottomDialog.SlideDialog current = currentDialog.get();
-                    if (current == null || !current.isShowing()) {
-                        // Should never happen.
-                        PlayerType.getOnChange().removeObserver(this);
-                        Logger.printException(() -> "Removing player type listener as dialog is null or closed");
-                    } else if (type == PlayerType.WATCH_WHILE_PICTURE_IN_PICTURE) {
-                        current.dismiss();
-                        Logger.printDebug(() -> "Playback speed dialog dismissed due to PiP mode");
-                    }
-                    return Unit.INSTANCE;
-                }
-            };
-
-            // Add observer to dismiss dialog when entering PiP mode.
-            PlayerType.getOnChange().addObserver(playerTypeObserver);
-
-            // Remove observer when dialog is dismissed.
-            dialog.setOnDismissListener(d -> {
-                PlayerType.getOnChange().removeObserver(playerTypeObserver);
-                Logger.printDebug(() -> "PlayerType observer removed on dialog dismiss");
-            });
-
-            dialog.show(); // Show the dialog.
+            PipDismissHelper.dismissOnPip(dialog);
+            dialog.show();
         } catch (Exception ex) {
             Logger.printException(() -> "showVideoQualityDialog failure", ex);
         }
@@ -428,9 +399,15 @@ public class VideoQualityDialogButton {
             }
 
             viewHolder.textView.setText(getItem(position));
+            viewHolder.textView.setTypeface(Utils.appIsUsingBoldIcons()
+                    ? Typeface.DEFAULT_BOLD
+                    : Typeface.DEFAULT);
             final boolean isSelected = position == selectedPosition;
             viewHolder.checkIcon.setVisibility(isSelected ? View.VISIBLE : View.GONE);
             viewHolder.placeholder.setVisibility(isSelected ? View.GONE : View.INVISIBLE);
+            viewHolder.checkIcon.setImageResource(Utils.appIsUsingBoldIcons()
+                    ? DRAWABLE_CHECKMARK_BOLD
+                    : DRAWABLE_CHECKMARK);
 
             return convertView;
         }

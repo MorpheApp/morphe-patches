@@ -2,6 +2,7 @@ package app.morphe.extension.youtube.shared
 
 import app.morphe.extension.shared.Logger
 import app.morphe.extension.youtube.patches.VideoInformation
+import app.morphe.extension.youtube.shared.Event
 
 /**
  * VideoState playback state.
@@ -25,6 +26,9 @@ enum class VideoState {
         private val nameToVideoState = VideoState.entries.associateBy { it.name }
 
         @JvmStatic
+        val onChange = Event<VideoState>()
+
+        @JvmStatic
         fun setFromString(enumName: String) {
             val state = nameToVideoState[enumName]
             if (state == null) {
@@ -32,6 +36,7 @@ enum class VideoState {
             } else if (currentVideoState != state) {
                 Logger.printDebug { "VideoState changed to: $state" }
                 currentVideoState = state
+                onChange(state)
             }
         }
 

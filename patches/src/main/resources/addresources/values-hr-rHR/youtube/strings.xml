@@ -301,6 +301,10 @@ Slova iz velikih slova u sredini riječi moraju točno odgovarati (npr: iPhone, 
 
 Potvrdite da naziv paketa je tačan i da je aplikacija instalirana."</string>
   <string name="morphe_external_downloader_empty_warning">Naziv paketa ne može biti prazan</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_openrouter_model_custom">Prilagođeno</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_tts_system">Sustav</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Omogu petljati video</string>
   <string name="morphe_do_not_remember_loop_video_title">Ne pamtim loop video</string>
@@ -580,7 +584,6 @@ Info: Možda neće raditi na prijenosima uživo"</string>
   <string name="morphe_ryd_shorts_title">Prikaži dislajke na kratkim videoima</string>
   <!-- Translations should match the language used in 'morphe_sb_enable_compact_skip_button'. -->
   <string name="morphe_ryd_estimated_like_title">Automatski sakrij dugmice za Like</string>
-  <string name="morphe_ryd_attribution_summary">Podaci su dobavljeni od API-ja Return YouTube Dislike. Kliknite ovdje da saznate više.</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistike API-ja Return YouTube Dislike za ovaj uređaj</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Vrijeme trajanja za dohvatiti odgovor API-a, prosjekno</string>
@@ -764,7 +767,6 @@ Gotovo je li spreman za slanje?"</string>
   <string name="morphe_sb_color_opacity_label">Prozirnost</string>
   <string name="morphe_sb_color_dot_label">Boja</string>
   <string name="morphe_sb_about_title">O aplikaciji</string>
-  <string name="morphe_sb_about_api_summary">Podaci su dobavljeni od API-ja SponsorBlock. Kliknite ovdje da saznajte više i pogledajte preuzimke za druge platforme</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_entry_1">Zadano</string>
   <string name="morphe_change_form_factor_entry_2">Telefon</string>
@@ -863,11 +865,6 @@ Ako se kasnije isključi, preporuke za UI mogu se izbjeći čišćenjem podataka
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Originalne minijature</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Still captures</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Still captures</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow pružuje crowdsourced minijature za YouTube video. Ove minijature su često relevantnije od one koje pružuje YouTube
-
-Ako je video nema DeArrow minijature, tada se prikazuju originalne ili still captures
-
-Tapajte ovdje da saznajte više o DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API endpoint</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_summary">URL DeArrow minijatura keša endpointa</string>
   <string name="morphe_alt_thumbnail_stills_about_title">Still video captures</string>

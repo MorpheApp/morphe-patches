@@ -306,6 +306,59 @@ Second \"item\" text"</string>
 
 请验证包名是否正确且应用已安装"</string>
   <string name="morphe_external_downloader_empty_warning">包名不能为空</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">语音旁白翻译</string>
+  <string name="morphe_vot_screen_summary">使用设备上的文本转语音功能朗读视频字幕，并与播放同步</string>
+  <string name="morphe_vot_enabled_title">语音旁白翻译</string>
+  <string name="morphe_vot_caption_language_title">语言</string>
+  <string name="morphe_vot_translation_service_title">翻译提供商</string>
+  <string name="morphe_vot_original_audio_volume_title">原始音频音量</string>
+  <string name="morphe_vot_original_audio_volume_summary">翻译语音播放时原始 YouTube 音频的音量</string>
+  <string name="morphe_vot_translation_volume_title">翻译音量</string>
+  <string name="morphe_vot_translation_volume_summary">配音翻译语音的音量</string>
+  <string name="morphe_vot_max_speech_rate_title">最大语速</string>
+  <string name="morphe_vot_max_speech_rate_summary">将语音适应字幕时，最大语速倍数</string>
+  <string name="morphe_vot_mymemory_info_summary">"免费翻译 API，无需 API 密钥。免费套餐每天最多 5,000 个字符，或使用电子邮件地址每天最多 50,000 个字符。
+
+点击此处打开 MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory 邮箱</string>
+  <string name="morphe_vot_mymemory_email_summary">可选。输入您的 MyMemory 邮箱地址以将每日限制从 5,000 个字符提高到 50,000 个字符。留空以使用匿名限制</string>
+  <string name="morphe_vot_openrouter_info_summary">"通过 OpenRouter 付费 AI 翻译。一次充值，即可翻译数千个视频。Mistral Nemo 是最便宜的选项，Gemma 4 提供最高的质量。
+
+点击此处打开 OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API 密钥</string>
+  <string name="morphe_vot_openrouter_api_key_summary">您的 OpenRouter API 密钥。在 OpenRouter.ai &gt; 工作区 &gt; API 密钥处创建密钥</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter 模型</string>
+  <string name="morphe_vot_openrouter_model_custom">自定义</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter 未配置</string>
+  <string name="morphe_vot_openrouter_not_configured_message">在设置中输入您的 OpenRouter API 密钥，然后再选择此提供商</string>
+  <string name="morphe_vot_cost_free">免费</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">每 100 小时 %s</string>
+  <string name="morphe_vot_tts_voice_type">语音</string>
+  <string name="morphe_vot_tts_system">系统</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">多语言男声</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">多语言女声</string>
+  <string name="morphe_vot_voice_gender_male">男声</string>
+  <string name="morphe_vot_voice_gender_female">女声</string>
+  <string name="morphe_vot_tts_sample">变身时间到了！</string>
+  <string name="morphe_vot_http_error_title">翻译不可用</string>
+  <string name="morphe_vot_http_error_message">"翻译服务返回 HTTP 错误 %s。您的 IP 地址可能已被限制速率，最长 24 小时。
+
+要继续使用翻译，请在设置中切换到不同的翻译提供商，或使用 VPN"</string>
+  <string name="morphe_vot_do_not_show_again">不再显示</string>
+  <string name="morphe_vot_export_api_key_warning">"您的设置包含 OpenRouter API 密钥。
+
+您的 API 密钥绝不能共享。任何访问它的人都可以使用您的 OpenRouter 积分"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter 信用额度已用完</string>
+  <string name="morphe_vot_openrouter_credits_message">您的 OpenRouter 信用额度已用完。在 OpenRouter.ai 上充值或增加您的密钥支出限制</string>
+  <string name="morphe_vot_openrouter_open_website">打开 OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter 翻译失败 (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory 每日限制已达到</string>
+  <string name="morphe_vot_mymemory_quota_next_available">下次可用时间为 %s。</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">您已使用今天的免费 MyMemory 翻译配额（5,000 个字符）。在设置中添加 MyMemory 邮箱以将每日限制提高到 50,000 个字符，或切换到其他翻译服务</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">您已使用今天的 MyMemory 翻译配额（50,000 个字符）。切换到其他翻译服务或明天再试</string>
+  <string name="morphe_vot_mymemory_error">MyMemory 翻译失败 (状态 %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">启用循环播放视频</string>
   <string name="morphe_do_not_remember_loop_video_title">不记住循环视频</string>
@@ -775,7 +828,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">显示在禁用点赞的视频上估算的赞数</string>
   <string name="morphe_ryd_toast_on_connection_error_title">显示连接错误提醒</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">当 Return YouTube Dislike 服务器不可用时显示通知</string>
-  <string name="morphe_ryd_attribution_summary">数据由 Return YouTube Dislike API 提供。点击此处了解更多</string>
+  <string name="morphe_ryd_attribution_summary">"数据由 Return YouTube Dislike API 提供。
+
+点击此处打开 ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">ReturnYouTubeDislike API 设备统计信息</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API 响应时间，平均值</string>
@@ -1019,7 +1074,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">不透明度：</string>
   <string name="morphe_sb_color_dot_label">颜色:</string>
   <string name="morphe_sb_about_title">关于</string>
-  <string name="morphe_sb_about_api_summary">数据由 SponsorBlock API 提供。点击这里了解更多信息并查看其他平台的下载内容</string>
+  <string name="morphe_sb_about_api_summary">"数据由 SponsorBlock API 提供。
+
+点击此处打开 Sponsor.ajay.app，查看其他平台的下载内容"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">设备布局</string>
   <string name="morphe_change_form_factor_entry_1">默认</string>

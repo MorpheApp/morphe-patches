@@ -109,6 +109,23 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудительно оригинальная звуковая дорожка</string>
   <string name="morphe_force_original_audio_summary">Всегда воспроизводит оригинальную аудиодорожку видео вместо дублированной версии</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Сетевой прокси</string>
+  <string name="morphe_proxy_screen_summary">Настройте маршрутизацию сетевых запросов через прокси</string>
+  <string name="morphe_proxy_enabled_title">Включить прокси</string>
+  <string name="morphe_proxy_enabled_summary">Перенаправляет сетевые запросы через настроенный HTTP или HTTPS прокси-сервер</string>
+  <string name="morphe_proxy_host_title">Хост прокси-сервера</string>
+  <string name="morphe_proxy_host_summary">Имя хоста или IP-адрес прокси-сервера</string>
+  <string name="morphe_proxy_port_title">Порт прокси-сервера</string>
+  <string name="morphe_proxy_port_summary">Порт прокси-сервера</string>
+  <string name="morphe_proxy_https_title">Использовать HTTPS прокси</string>
+  <string name="morphe_proxy_https_summary">Использовать HTTPS для подключения к прокси-серверу вместо HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Аутентификация прокси-сервера</string>
+  <string name="morphe_proxy_auth_enabled_summary">Отправляет базовую аутентификацию с запросами прокси-сервера</string>
+  <string name="morphe_proxy_auth_username_title">Ваше имя пользователя</string>
+  <string name="morphe_proxy_auth_username_summary">Имя пользователя для базовой аутентификации прокси-сервера</string>
+  <string name="morphe_proxy_auth_password_title">Пароль прокси-сервера</string>
+  <string name="morphe_proxy_auth_password_summary">Пароль для базовой аутентификации прокси-сервера</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Скрыть полноэкранную рекламу</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

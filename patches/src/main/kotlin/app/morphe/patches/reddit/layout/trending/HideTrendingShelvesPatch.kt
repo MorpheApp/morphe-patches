@@ -15,6 +15,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_11_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_16_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_21_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findFreeRegister
@@ -31,7 +32,7 @@ private const val EXTENSION_TRENDING_INTERFACE =
 @Suppress("unused")
 val hideTrendingShelvesPatch = bytecodePatch(
     name = "Hide Trending shelves",
-    description = "Adds an option to hide Trending shelves from search suggestions."
+    description = "Adds an option to hide the Trending shelves from feed and search suggestions."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
@@ -65,33 +66,40 @@ val hideTrendingShelvesPatch = bytecodePatch(
         // Implement trending interface.
 
         val stateParamType = SearchSectionHeaderFingerprint.method.parameters.first().type
-        val stateClassDef = mutableClassDefBy(stateParamType)
+        val isLegacy = stateParamType == "Ljava/lang/String;"
 
-        stateClassDef.apply {
-            interfaces.add(EXTENSION_TRENDING_INTERFACE)
+        val targetMethod = if (isLegacy) "hideTrendingHeaderLegacy" else "hideTrendingHeader"
+        val targetParam = if (isLegacy) "Ljava/lang/String;" else EXTENSION_TRENDING_INTERFACE
 
-            val stringField = fields.first { it.type == "Ljava/lang/String;" }
+        if (!isLegacy) {
+            val stateClassDef = mutableClassDefBy(stateParamType)
 
-            methods.add(
-                ImmutableMethod(
-                    type,
-                    "patch_getTrendingLabel",
-                    emptyList(),
-                    "Ljava/lang/String;",
-                    AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
-                    null,
-                    null,
-                    MutableMethodImplementation(1),
-                ).toMutable().apply {
-                    addInstructions(
-                        0,
-                        """
-                            iget-object v0, p0, $type->${stringField.name}:Ljava/lang/String;
-                            return-object v0
-                        """
-                    )
-                }
-            )
+            stateClassDef.apply {
+                interfaces.add(EXTENSION_TRENDING_INTERFACE)
+
+                val stringField = fields.first { it.type == "Ljava/lang/String;" }
+
+                methods.add(
+                    ImmutableMethod(
+                        type,
+                        "patch_getTrendingLabel",
+                        emptyList(),
+                        "Ljava/lang/String;",
+                        AccessFlags.PUBLIC.value or AccessFlags.FINAL.value,
+                        null,
+                        null,
+                        MutableMethodImplementation(1),
+                    ).toMutable().apply {
+                        addInstructions(
+                            0,
+                            """
+                                iget-object v0, p0, $type->${stringField.name}:Ljava/lang/String;
+                                return-object v0
+                            """
+                        )
+                    }
+                )
+            }
         }
 
         // endregion
@@ -101,7 +109,7 @@ val hideTrendingShelvesPatch = bytecodePatch(
         SearchSectionHeaderFingerprint.method.addInstructionsWithLabels(
             0,
             """
-                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->hideTrendingHeader($EXTENSION_TRENDING_INTERFACE)Z
+                invoke-static/range { p0 .. p0 }, $EXTENSION_CLASS->$targetMethod($targetParam)Z
                 move-result v0
                 if-eqz v0, :ignore
                 return-void
@@ -146,6 +154,11 @@ val hideTrendingShelvesPatch = bytecodePatch(
                 nop
             """
         )
+
+        if (is_2026_21_0_or_greater) {
+            TrendingFeedUnitSectionFingerprint.applyHideTrending()
+            TrendingFeedUnitDismissedSectionFingerprint.applyHideTrending()
+        }
 
         // endregion
 

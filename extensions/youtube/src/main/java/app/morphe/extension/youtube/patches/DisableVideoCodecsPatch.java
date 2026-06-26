@@ -4,7 +4,7 @@ import android.view.Display;
 
 import app.morphe.extension.youtube.settings.Settings;
 
-@SuppressWarnings({"unused", "deprecation"})
+@SuppressWarnings({"unused", "deprecation", "RedundantSuppression"})
 public class DisableVideoCodecsPatch {
 
     /**

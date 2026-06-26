@@ -109,6 +109,25 @@ Spilun mun bregðast ef Player JavaScript hash er úrelt."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Neysla á upprunalegu hljóðrás</string>
   <string name="morphe_force_original_audio_summary">Spilar alltaf upprunalega hljóðrás myndbandsins stað þess sem eru dubbuð</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Staðanets umboð</string>
+  <string name="morphe_proxy_screen_summary">Leiða samsetningu nettbeiðna í gegnum umboð</string>
+  <string name="morphe_proxy_enabled_title">Virkja umboð</string>
+  <string name="morphe_proxy_enabled_summary">Rútar netbeiðnir í gegnum stilltan HTTP eða HTTPS staðsettu netþjón</string>
+  <string name="morphe_proxy_host_title">Proxy netfang</string>
+  <string name="morphe_proxy_host_summary">Netfang eða IP-tölu staðsettu netþjónsins</string>
+  <string name="morphe_proxy_port_title">Proxy port</string>
+  <string name="morphe_proxy_port_summary">Portur staðsettu netþjónsins</string>
+  <string name="morphe_proxy_https_title">Nota HTTPS proxy</string>
+  <string name="morphe_proxy_https_summary">Nota HTTPS til að tengja við staðsettan netþjón, í stað HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Proxy auðkenning</string>
+  <string name="morphe_proxy_auth_enabled_summary">Sendir Basic auðkenningu með proxy beiðnum</string>
+  <string name="morphe_proxy_auth_username_title">Proxy notendanafn</string>
+  <string name="morphe_proxy_auth_username_summary">Notendanafn fyrir Basic proxy auðkenningu</string>
+  <string name="morphe_proxy_auth_password_title">Proxy lykilorð</string>
+  <string name="morphe_proxy_auth_password_summary">Lykilorð fyrir Basic proxy auðkenningu</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Leyfa beina afturköllun</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Tengist beint ef proxy virkar ekki</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Falir auglýsingar á fullri skjánum</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

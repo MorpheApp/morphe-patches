@@ -109,6 +109,25 @@ A lejátszás meghiúsul, ha a lejátszó JavaScript hash elavult."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Eredeti hang kikényszerítése</string>
   <string name="morphe_force_original_audio_summary">Mindig az eredeti hangszálat játssza le a videóhoz, a szinkronizált helyett</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Hálózati proxy</string>
+  <string name="morphe_proxy_screen_summary">A hálózati kérések proxy-n keresztül történő irányítása.</string>
+  <string name="morphe_proxy_enabled_title">Proxy engedélyezése</string>
+  <string name="morphe_proxy_enabled_summary">A konfigurált HTTP vagy HTTPS proxy segítségével továbbítja a hálózati kéréseket.</string>
+  <string name="morphe_proxy_host_title">Proxy szerver címe</string>
+  <string name="morphe_proxy_host_summary">A proxy szerver hosztneve vagy IP-címe</string>
+  <string name="morphe_proxy_port_title">Proxy port</string>
+  <string name="morphe_proxy_port_summary">A proxy szerver portja</string>
+  <string name="morphe_proxy_https_title">HTTPS proxy használata</string>
+  <string name="morphe_proxy_https_summary">HTTP helyett HTTPS használata a proxy szerverhez való csatlakozáshoz</string>
+  <string name="morphe_proxy_auth_enabled_title">Proxy hitelesítés</string>
+  <string name="morphe_proxy_auth_enabled_summary">Alap hitelesítést küld a proxy kérésekkel</string>
+  <string name="morphe_proxy_auth_username_title">Proxy felhasználónév</string>
+  <string name="morphe_proxy_auth_username_summary">Felhasználónév az alap proxy hitelesítéshez</string>
+  <string name="morphe_proxy_auth_password_title">Proxy jelszó</string>
+  <string name="morphe_proxy_auth_password_summary">Jelszó az alap proxy hitelesítéshez</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Közvetlen kapcsolódás engedélyezése</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Közvetlenül csatlakozzon, ha a proxy nem válaszol.</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Teljesképernyős-hirdetések elrejtése</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

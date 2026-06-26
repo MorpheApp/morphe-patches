@@ -117,6 +117,26 @@ Playback will fail if the Player JavaScript hash is outdated."</string>
     <string name="morphe_force_original_audio_title">Force original audio language</string>
     <string name="morphe_force_original_audio_summary">Always plays the video\'s original audio track instead of a dubbed version</string>
 
+    <!-- misc.proxy.networkProxyPatch -->
+    <string name="morphe_proxy_screen_title">Network proxy</string>
+    <string name="morphe_proxy_screen_summary">Route supported network requests through a proxy</string>
+    <string name="morphe_proxy_enabled_title">Enable proxy</string>
+    <string name="morphe_proxy_enabled_summary">Routes supported network requests through a configured HTTP or HTTPS proxy</string>
+    <string name="morphe_proxy_host_title">Proxy host</string>
+    <string name="morphe_proxy_host_summary">Hostname or IP address of the proxy server</string>
+    <string name="morphe_proxy_port_title">Proxy port</string>
+    <string name="morphe_proxy_port_summary">Port of the proxy server</string>
+    <string name="morphe_proxy_https_title">Use HTTPS proxy</string>
+    <string name="morphe_proxy_https_summary">Use HTTPS to connect to the proxy server instead of HTTP</string>
+    <string name="morphe_proxy_auth_enabled_title">Proxy authentication</string>
+    <string name="morphe_proxy_auth_enabled_summary">Sends Basic authentication with proxy requests</string>
+    <string name="morphe_proxy_auth_username_title">Proxy username</string>
+    <string name="morphe_proxy_auth_username_summary">Username for Basic proxy authentication</string>
+    <string name="morphe_proxy_auth_password_title">Proxy password</string>
+    <string name="morphe_proxy_auth_password_summary">Password for Basic proxy authentication</string>
+    <string name="morphe_proxy_allow_direct_fallback_title">Allow direct fallback</string>
+    <string name="morphe_proxy_allow_direct_fallback_summary">Connect directly if the proxy fails</string>
+
     <!-- ad.hideFullscreenAdsPatch -->
     <string name="morphe_hide_fullscreen_ads_title">Hide fullscreen ads</string>
 

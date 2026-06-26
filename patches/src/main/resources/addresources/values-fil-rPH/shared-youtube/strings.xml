@@ -109,6 +109,25 @@ Ang playback ay mabibigo kung ang Player JavaScript hash ay outdated."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Puwersahan ang orihinal na tunog ng wika</string>
   <string name="morphe_force_original_audio_summary">Palaging pinatutugtog ang orihinal na audio track ng video sa halip na isang dubbed na bersyon</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Proxy ng network</string>
+  <string name="morphe_proxy_screen_summary">Iruta ang mga suportadong kahilingan ng network sa pamamagitan ng isang proxy</string>
+  <string name="morphe_proxy_enabled_title">Paganahin ang proxy</string>
+  <string name="morphe_proxy_enabled_summary">Dinadala ng mga ruta ang mga kahilingan sa network sa pamamagitan ng isang naka-configure na HTTP o HTTPS proxy</string>
+  <string name="morphe_proxy_host_title">Host ng proxy</string>
+  <string name="morphe_proxy_host_summary">Pangalan ng host o IP address ng proxy server</string>
+  <string name="morphe_proxy_port_title">Port ng proxy</string>
+  <string name="morphe_proxy_port_summary">Port ng proxy server</string>
+  <string name="morphe_proxy_https_title">Gumamit ng HTTPS proxy</string>
+  <string name="morphe_proxy_https_summary">Gumamit ng HTTPS upang kumonekta sa proxy server sa halip na HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Pagpapatunay ng proxy</string>
+  <string name="morphe_proxy_auth_enabled_summary">Nagpapadala ng Basic authentication kasama ng mga kahilingan sa proxy</string>
+  <string name="morphe_proxy_auth_username_title">Pangalan ng gumagamit ng proxy</string>
+  <string name="morphe_proxy_auth_username_summary">Pangalan ng gumagamit para sa Basic proxy authentication</string>
+  <string name="morphe_proxy_auth_password_title">Password ng proxy</string>
+  <string name="morphe_proxy_auth_password_summary">Password para sa Basic proxy authentication</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Payagan ang direktang fallback</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Kumonekta nang direkta kung nabigo ang proxy</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Itago ang mga patalastas sa fullscreen</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

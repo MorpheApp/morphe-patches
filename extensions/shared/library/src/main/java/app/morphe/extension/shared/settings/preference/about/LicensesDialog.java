@@ -75,7 +75,8 @@ public class LicensesDialog extends Dialog {
         super(context, android.R.style.Theme_DeviceDefault_NoActionBar);
     }
 
-    @SuppressWarnings("deprecation")
+    @SuppressWarnings({"deprecation", "RedundantSuppression"})
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

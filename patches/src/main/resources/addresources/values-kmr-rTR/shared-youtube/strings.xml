@@ -107,6 +107,25 @@ Lêkirin têk diçe eger hash-a JavaScriptê ya lîstikvanê kevn be."</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Zimanê dengê orjinal timê bike</string>
   <string name="morphe_force_original_audio_summary">Her gav şopa dengê orjînal yê vîdyoyê lê dide şûna guhertoyek dublajkirî</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Nûnerê pêvekirî</string>
+  <string name="morphe_proxy_screen_summary">Daxistina hejarekê da ku daxwazên torê yên piştgirîkirî bidin</string>
+  <string name="morphe_proxy_enabled_title">Proxy çalak bike</string>
+  <string name="morphe_proxy_enabled_summary">Daxwazên torê yên piştgirîkirî tên rêberkirin bi rêya proxy-ê HTTP an HTTPS-ê yê ku hatî konfîgkirin</string>
+  <string name="morphe_proxy_host_title">Hostê proxy-ê</string>
+  <string name="morphe_proxy_host_summary">Navê hostê an adresa IP-ya serverê proxy-ê</string>
+  <string name="morphe_proxy_port_title">Porta proxy-ê</string>
+  <string name="morphe_proxy_port_summary">Porta serverê proxy-ê</string>
+  <string name="morphe_proxy_https_title">Bikar bîne proxy-ê HTTPS</string>
+  <string name="morphe_proxy_https_summary">Bikar bîne HTTPS-ê da ku bi serverê proxy-ê ve girêdayî bibe li şûna HTTP-yê</string>
+  <string name="morphe_proxy_auth_enabled_title">Authentication-a proxy-ê</string>
+  <string name="morphe_proxy_auth_enabled_summary">Şandina authentication-a Basic bi daxwazên proxy-ê re</string>
+  <string name="morphe_proxy_auth_username_title">Navê notrê proxy-ê</string>
+  <string name="morphe_proxy_auth_username_summary">Navê notrê bo authentication-a Basic a proxy-ê</string>
+  <string name="morphe_proxy_auth_password_title">Şîfreya proxy-ê</string>
+  <string name="morphe_proxy_auth_password_summary">Şîfre bo authentication-a Basic a proxy-ê</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Destûr dayê fallback-a rasterast</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Têkeve rasterast heke proxy têk bibe</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Rekel kiradên ekranê tam</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

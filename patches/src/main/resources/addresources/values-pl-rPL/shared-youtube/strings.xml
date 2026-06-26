@@ -109,6 +109,25 @@ Aby się zalogować, naciśnij \"Kontynuuj\" poniżej"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Wymuś oryginalny język dźwięku</string>
   <string name="morphe_force_original_audio_summary">Zawsze odtwarza oryginalną ścieżkę dźwiękową filmu zamiast wersji z dubbingiem</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Serwer proxy</string>
+  <string name="morphe_proxy_screen_summary">Kieruj obsługiwane żądania sieciowe przez serwer proxy</string>
+  <string name="morphe_proxy_enabled_title">Włącz proxy</string>
+  <string name="morphe_proxy_enabled_summary">Kieruje obsługiwane żądania sieciowe przez skonfigurowany serwer proxy HTTP lub HTTPS</string>
+  <string name="morphe_proxy_host_title">Host proxy</string>
+  <string name="morphe_proxy_host_summary">Nazwa hosta lub adres IP serwera proxy</string>
+  <string name="morphe_proxy_port_title">Port proxy</string>
+  <string name="morphe_proxy_port_summary">Port serwera proxy</string>
+  <string name="morphe_proxy_https_title">Używaj proxy HTTPS</string>
+  <string name="morphe_proxy_https_summary">Używaj protokołu HTTPS do łączenia się z serwerem proxy zamiast HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Uwierzytelnianie proxy</string>
+  <string name="morphe_proxy_auth_enabled_summary">Wysyła dane uwierzytelniania podstawowego wraz z żądaniami proxy</string>
+  <string name="morphe_proxy_auth_username_title">Nazwa użytkownika proxy</string>
+  <string name="morphe_proxy_auth_username_summary">Nazwa użytkownika do uwierzytelniania podstawowego proxy</string>
+  <string name="morphe_proxy_auth_password_title">Hasło proxy</string>
+  <string name="morphe_proxy_auth_password_summary">Hasło do uwierzytelniania podstawowego proxy</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Zezwalaj na połączenie bezpośrednie</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Łączy się bezpośrednio w przypadku awarii proxy</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Ukryj reklamy pełnoekranowe</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

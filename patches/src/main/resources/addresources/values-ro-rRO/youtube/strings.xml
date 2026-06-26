@@ -306,6 +306,59 @@ Limitări:
 
 Verificați dacă numele pachetului este corect și dacă aplicația este instalată"</string>
   <string name="morphe_external_downloader_empty_warning">Numele pachetului nu poate fi gol</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Traducere cu voce peste</string>
+  <string name="morphe_vot_screen_summary">Citește cu voce tare subtitrările video folosind text-to-speech pe dispozitiv, sincronizat cu redarea</string>
+  <string name="morphe_vot_enabled_title">Traducere cu voce peste</string>
+  <string name="morphe_vot_caption_language_title">Limba</string>
+  <string name="morphe_vot_translation_service_title">Furnizor de traducere</string>
+  <string name="morphe_vot_original_audio_volume_title">Volumul audio original</string>
+  <string name="morphe_vot_original_audio_volume_summary">Volumul audio original de pe YouTube în timp ce traducerea vorbește</string>
+  <string name="morphe_vot_translation_volume_title">Volumul traducerii</string>
+  <string name="morphe_vot_translation_volume_summary">Volumul vocii traduse dublate</string>
+  <string name="morphe_vot_max_speech_rate_title">Viteză maximă de vorbire</string>
+  <string name="morphe_vot_max_speech_rate_summary">Multiplicatorul de viteză maxim când se potrivește vorbirea într-un slot de subtitlu</string>
+  <string name="morphe_vot_mymemory_info_summary">"API de traducere gratuit, fără cheie API necesară. Până la 5.000 de caractere pe zi pe nivelul gratuit sau până la 50.000 de caractere pe zi cu o adresă de e-mail.
+
+Atingeți aici pentru a deschide MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">E-mail MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Opțional. Introduceți adresa de e-mail MyMemory pentru a crește limita zilnică de la 5.000 la 50.000 de caractere. Lăsați câmpul gol pentru a utiliza limita anonimă</string>
+  <string name="morphe_vot_openrouter_info_summary">"Traducere AI plătită prin OpenRouter. Reîncarcă o dată și traduce mii de videoclipuri. Mistral Nemo este cea mai ieftină opțiune, Gemma 4 oferă cea mai bună calitate.
+
+Atingeți aici pentru a deschide OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Cheie API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Cheia API OpenRouter. Creează o cheie la OpenRouter.ai > Workspace > Chei API</string>
+  <string name="morphe_vot_openrouter_model_title">Model OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Personalizat</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter nu este configurat</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Introduceți cheia API OpenRouter în setări înainte de a selecta acest furnizor</string>
+  <string name="morphe_vot_cost_free">Gratuit</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s per 100 de ore de video</string>
+  <string name="morphe_vot_tts_voice_type">Voce</string>
+  <string name="morphe_vot_tts_system">Sistem</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Masculin multilingual</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Feminin multilingual</string>
+  <string name="morphe_vot_voice_gender_male">Masculin</string>
+  <string name="morphe_vot_voice_gender_female">Feminin</string>
+  <string name="morphe_vot_tts_sample">Este timpul să te transformi!</string>
+  <string name="morphe_vot_http_error_title">Traducere indisponibilă</string>
+  <string name="morphe_vot_http_error_message">"Serviciul de traducere a returnat o eroare HTTP %s. Adresa dvs. IP a fost probabil limitată pentru până la 24 de ore.
+
+Pentru a continua să utilizați traduceri, schimbați la un alt furnizor de traducere în setări sau utilizați un VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Nu mai afișa</string>
+  <string name="morphe_vot_export_api_key_warning">"Setările dvs. conțin o cheie API OpenRouter.
+
+Cheia API nu trebuie niciodată distribuită. Oricine are acces la aceasta poate utiliza creditele dvs. OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Limita de credit OpenRouter a fost atinsă</string>
+  <string name="morphe_vot_openrouter_credits_message">Limita de credit OpenRouter a fost atinsă. Reîncarcă-ți soldul sau mărește limita de cheltuieli a cheii la OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Deschide OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Traducerea OpenRouter a eșuat (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Limita zilnică MyMemory a fost atinsă</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Disponibilă din nou la %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Ai folosit cota gratuită de traducere MyMemory de astăzi (5.000 de caractere). Adaugă un e-mail MyMemory în setări pentru a crește limita zilnică la 50.000 de caractere sau schimbă la un alt serviciu de traducere</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Ai folosit cota de traducere MyMemory de astăzi (50.000 de caractere). Schimbă la un alt serviciu de traducere sau încearcă mâine</string>
+  <string name="morphe_vot_mymemory_error">Traducerea MyMemory a eșuat (stare %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Activează bucla video</string>
   <string name="morphe_do_not_remember_loop_video_title">Nu-ți aminti video în buclă</string>
@@ -775,7 +828,9 @@ Setări → Redare (sau Redare automată) → Redare automată următorul videoc
   <string name="morphe_ryd_estimated_like_summary">Afișează un număr estimat de aprecieri pe videoclipurile în care creatorul a dezactivat aprecierile</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Afișează alerte de eroare de conexiune</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Afișează o notificare atunci când serverul Return YouTube Dislike este indisponibil</string>
-  <string name="morphe_ryd_attribution_summary">Datele sunt furnizate de API-ul Returnare YouTube Dislike. Atinge aici pentru a afla mai multe</string>
+  <string name="morphe_ryd_attribution_summary">"Datele sunt furnizate de API-ul Return YouTube Dislike.
+
+Atingeți aici pentru a deschide ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">ReturnYouTubeDislike statistici API ale acestui dispozitiv</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Timp de răspuns API, medie</string>
@@ -1017,7 +1072,9 @@ Dacă nu trimiteți o evidențiere, apăsați Anulare și marcați a doua locaț
   <string name="morphe_sb_color_opacity_label">Opacitate:</string>
   <string name="morphe_sb_color_dot_label">Culoare:</string>
   <string name="morphe_sb_about_title">Despre</string>
-  <string name="morphe_sb_about_api_summary">Datele sunt furnizate de API-ul SponsorBlock. Apasă aici pentru a afla mai multe și a vedea descărcările pentru alte platforme</string>
+  <string name="morphe_sb_about_api_summary">"Datele sunt furnizate de API-ul SponsorBlock.
+
+Atingeți aici pentru a deschide Sponsor.ajay.app și a vedea descărcările pentru alte platforme"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Aspect dispozitiv</string>
   <string name="morphe_change_form_factor_entry_1">Implicit</string>

@@ -327,6 +327,67 @@ Limitations:
 Verify the package name is correct and the app is installed"</string>
     <string name="morphe_external_downloader_empty_warning">The package name cannot be empty</string>
 
+    <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+    <string name="morphe_vot_screen_title">Voice over translation</string>
+    <string name="morphe_vot_screen_summary">Read video captions aloud using on-device text-to-speech, synchronized with playback</string>
+    <string name="morphe_vot_enabled_title">Voice over translation</string>
+    <string name="morphe_vot_caption_language_title">Language</string>
+    <string name="morphe_vot_translation_service_title">Translation provider</string>
+    <string name="morphe_vot_original_audio_volume_title">Original audio volume</string>
+    <string name="morphe_vot_original_audio_volume_summary">Volume of the original YouTube audio while the translation is speaking</string>
+    <string name="morphe_vot_translation_volume_title">Translation volume</string>
+    <string name="morphe_vot_translation_volume_summary">Volume of the dubbed translation voice</string>
+    <string name="morphe_vot_max_speech_rate_title">Max speech rate</string>
+    <string name="morphe_vot_max_speech_rate_summary">Maximum speed multiplier when fitting speech into a subtitle slot</string>
+    <string name="morphe_vot_service_google" translatable="false">Google Translate</string>
+    <string name="morphe_vot_service_mymemory" translatable="false">MyMemory</string>
+    <string name="morphe_vot_mymemory_info_summary">"Free translation API, no API key required. Up to 5,000 characters per day on the free tier, or up to 50,000 characters per day with an email address.
+
+Tap here to open MyMemory.translated.net"</string>
+    <string name="morphe_vot_mymemory_email_title">MyMemory email</string>
+    <string name="morphe_vot_mymemory_email_summary">Optional. Enter your MyMemory email address to increase the daily limit from 5,000 to 50,000 characters. Leave empty to use the anonymous limit</string>
+    <string name="morphe_vot_service_openrouter" translatable="false">OpenRouter</string>
+    <string name="morphe_vot_openrouter_info_summary">"Paid AI translation via OpenRouter. Top up once and translate thousands of videos. Mistral Nemo is the cheapest option, Gemma 4 offers the highest quality.
+
+Tap here to open OpenRouter.ai"</string>
+    <string name="morphe_vot_openrouter_api_key_title">OpenRouter API key</string>
+    <string name="morphe_vot_openrouter_api_key_summary">Your OpenRouter API key. Create a key at OpenRouter.ai > Workspace > API Keys</string>
+    <string name="morphe_vot_openrouter_model_title">OpenRouter Model</string>
+    <string name="morphe_vot_openrouter_model_mistral_nemo" translatable="false">Mistral Nemo</string>
+    <string name="morphe_vot_openrouter_model_gemma4_26b_a4b" translatable="false">Gemma 4</string>
+    <string name="morphe_vot_openrouter_model_deepseek_flash_v4" translatable="false">DeepSeek V4 Flash</string>
+    <string name="morphe_vot_openrouter_model_custom">Custom</string>
+    <string name="morphe_vot_openrouter_model_hint" translatable="false">e.g. qwen/qwen3.5-flash-02-23</string>
+    <string name="morphe_vot_openrouter_not_configured_title">OpenRouter not configured</string>
+    <string name="morphe_vot_openrouter_not_configured_message">Enter your OpenRouter API key in settings before selecting this provider</string>
+    <string name="morphe_vot_cost_free">Free</string>
+    <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+    <string name="morphe_vot_cost_per_hour">%s per 100 video hours</string>
+    <string name="morphe_vot_tts_voice_type">Voice</string>
+    <string name="morphe_vot_tts_system">System</string>
+    <string name="morphe_vot_voice_gender_male_multilingual">Multilingual male</string>
+    <string name="morphe_vot_voice_gender_female_multilingual">Multilingual female</string>
+    <string name="morphe_vot_voice_gender_male">Male</string>
+    <string name="morphe_vot_voice_gender_female">Female</string>
+    <string name="morphe_vot_tts_sample">It\'s morphing time!</string>
+    <string name="morphe_vot_http_error_title">Translation unavailable</string>
+    <string name="morphe_vot_http_error_message">"The translation service returned HTTP error %s. Your IP address has likely been rate-limited for up to 24 hours.
+
+To continue using translations, switch to a different translation provider in settings or use a VPN"</string>
+    <string name="morphe_vot_do_not_show_again">Do not show again</string>
+    <string name="morphe_vot_export_api_key_warning">"Your settings contain an OpenRouter API key.
+
+Your API key should never be shared. Anyone with access to it can use your OpenRouter credits"</string>
+    <string name="morphe_vot_openrouter_credits_title">OpenRouter credit limit reached</string>
+    <string name="morphe_vot_openrouter_credits_message">Your OpenRouter credit limit has been reached. Top up your balance or increase your key spending limit at OpenRouter.ai</string>
+    <string name="morphe_vot_openrouter_open_website">Open OpenRouter.ai</string>
+    <string name="morphe_vot_openrouter_error">OpenRouter translation failed (HTTP %s)</string>
+    <string name="morphe_vot_mymemory_quota_title">MyMemory daily limit reached</string>
+    <string name="morphe_vot_mymemory_quota_next_available">Next available at %s.</string>
+    <string name="morphe_vot_mymemory_quota_message_no_email">You\'ve used today\'s free MyMemory translation quota (5,000 characters). Add a MyMemory email in settings to raise the daily limit to 50,000 characters, or switch to a different translation service</string>
+    <string name="morphe_vot_mymemory_quota_message_with_email">You\'ve used today\'s MyMemory translation quota (50,000 characters). Switch to a different translation service or try again tomorrow</string>
+    <string name="morphe_vot_mymemory_error">MyMemory translation failed (status %s)</string>
+
     <!-- interaction.loop.loopVideoPatch -->
     <string name="morphe_loop_video_title">Enable loop video</string>
     <string name="morphe_do_not_remember_loop_video_title">Don\'t remember loop video</string>
@@ -834,8 +895,10 @@ Settings → Playback (or Autoplay) → Autoplay next video"</string>
     <string name="morphe_ryd_estimated_like_summary">Shows an estimated like count on videos where the creator has disabled likes</string>
     <string name="morphe_ryd_toast_on_connection_error_title">Show connection error alerts</string>
     <string name="morphe_ryd_toast_on_connection_error_summary">Shows a notification when the Return YouTube Dislike server is unavailable</string>
-    <string name="morphe_ryd_attribution_title" translatable="false">ReturnYouTubeDislike.com</string>
-    <string name="morphe_ryd_attribution_summary">Data is provided by the Return YouTube Dislike API. Tap here to learn more</string>
+    <string name="morphe_ryd_attribution_title" translatable="false">ReturnYouTubeDislike</string>
+    <string name="morphe_ryd_attribution_summary">"Data is provided by the Return YouTube Dislike API.
+
+Tap here to open ReturnYouTubeDislike.com"</string>
     <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
     <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistics of this device</string>
     <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API response time, average</string>
@@ -1080,8 +1143,10 @@ If you\'re not submitting a highlight, tap Cancel and mark the second location"<
     <string name="morphe_sb_color_opacity_label">Opacity:</string>
     <string name="morphe_sb_color_dot_label">Color:</string>
     <string name="morphe_sb_about_title">About</string>
-    <string name="morphe_sb_about_api_title" translatable="false">sponsor.ajay.app</string>
-    <string name="morphe_sb_about_api_summary">Data is provided by the SponsorBlock API. Tap here to learn more and see downloads for other platforms</string>
+    <string name="morphe_sb_about_api_title" translatable="false">SponsorBlock</string>
+    <string name="morphe_sb_about_api_summary">"Data is provided by the SponsorBlock API.
+
+Tap here to open Sponsor.ajay.app and see downloads for other platforms"</string>
     <!-- layout.formfactor.changeFormFactorPatch -->
     <string name="morphe_change_form_factor_title">Device layout</string>
     <string name="morphe_change_form_factor_entry_1">Default</string>
@@ -1255,7 +1320,7 @@ Limitation: Using the back button on the toolbar may not work"</string>
 
 If enabled, video URLs will be sent to the API server and no other data is sent. If a video does not have DeArrow thumbnails, then the original or still captures are shown
 
-Tap here to learn more about DeArrow"</string>
+Tap here to open DeArrow.ajay.app"</string>
     <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Show connection error alerts</string>
     <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Shows a notification when the DeArrow server is unavailable</string>
     <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API endpoint</string>

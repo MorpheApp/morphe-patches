@@ -1,3 +1,30 @@
+## [1.33.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.1...v1.33.0-dev.2) (2026-06-26)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:**  Match `RD` playlist URLs to improve "Hide mix playlists" filter ([#1835](https://github.com/MorpheApp/morphe-patches/issues/1835)) ([1172ce0](https://github.com/MorpheApp/morphe-patches/commit/1172ce044f14cc842eb6390d997d7793f8e2b4c3))
+
+### ✨ New Features
+
+* **YouTube:** Add `Voice over translation` patch ([#1685](https://github.com/MorpheApp/morphe-patches/issues/1685)) ([d811a32](https://github.com/MorpheApp/morphe-patches/commit/d811a3264878d01697eb75bd05185d9359603a4a))
+
+## [1.33.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.32.0...v1.33.0-dev.1) (2026-06-25)
+
+### 🐛 Bug Fixes
+
+* **Reddit - Hide communities shelf:** Communities shelf not being hidden on experimental versions ([#1828](https://github.com/MorpheApp/morphe-patches/issues/1828)) ([0f05846](https://github.com/MorpheApp/morphe-patches/commit/0f0584668a38f7ba721a2eb9c4daec9c00de8466))
+* **Reddit - Hide Trending shelves:** Hide 'Trending communities' shelf in search suggestions ([#1785](https://github.com/MorpheApp/morphe-patches/issues/1785)) ([a9a58fb](https://github.com/MorpheApp/morphe-patches/commit/a9a58fb2069437dbcbe6613f740881ca21cfd45c))
+* **YouTube - Disable player popup panels:** patch doesn't work for some users ([#1821](https://github.com/MorpheApp/morphe-patches/issues/1821)) ([2d34625](https://github.com/MorpheApp/morphe-patches/commit/2d34625cb3e6635fa5381ded1e38c464b8d9e269))
+* **YouTube - Return YouTube Dislike:** Unnecessary RYD API requests in playlist ([#1815](https://github.com/MorpheApp/morphe-patches/issues/1815)) ([219114a](https://github.com/MorpheApp/morphe-patches/commit/219114aaa3ae0e67993457a9f706bb5f7c397257))
+
+### ✨ New Features
+
+* Add `Network proxy` patch ([#1823](https://github.com/MorpheApp/morphe-patches/issues/1823)) ([6bf4d9f](https://github.com/MorpheApp/morphe-patches/commit/6bf4d9f436a9056b4af7df700ef5b91499b2c1eb))
+
+### 🚀 Updated App Support
+
+* **YouTube Music:** Add experimental support for `9.25.50` ([bc6d8aa](https://github.com/MorpheApp/morphe-patches/commit/bc6d8aa3517cfa7918d0ac5849ccff42c7340ad6))
+
 ## [1.32.0](https://github.com/MorpheApp/morphe-patches/compare/v1.31.0...v1.32.0) (2026-06-23)
 
 ### 🐛 Bug Fixes

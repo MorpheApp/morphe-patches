@@ -14,7 +14,7 @@ import android.preference.PreferenceScreen;
 import app.morphe.extension.reddit.patches.DisableModernHomePatch;
 import app.morphe.extension.reddit.patches.DisableScreenshotPopupPatch;
 import app.morphe.extension.reddit.patches.HideAskButtonPatch;
-import app.morphe.extension.reddit.patches.HideRecommendedCommunitiesShelf;
+import app.morphe.extension.reddit.patches.HideCommunitiesShelf;
 import app.morphe.extension.reddit.patches.HideTrendingShelvesPatch;
 import app.morphe.extension.reddit.patches.RemoveSubRedditDialogPatch;
 import app.morphe.extension.reddit.patches.ShowViewCountPatch;
@@ -33,7 +33,7 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
         return DisableModernHomePatch.isPatchIncluded() ||
                 DisableScreenshotPopupPatch.isPatchIncluded() ||
                 HideAskButtonPatch.isPatchIncluded() ||
-                HideRecommendedCommunitiesShelf.isPatchIncluded() ||
+                HideCommunitiesShelf.isPatchIncluded() ||
                 HideTrendingShelvesPatch.isPatchIncluded() ||
                 RemoveSubRedditDialogPatch.isPatchIncluded();
     }
@@ -61,10 +61,10 @@ public class LayoutPreferenceCategory extends ConditionalPreferenceCategory {
             ));
         }
 
-        if (HideRecommendedCommunitiesShelf.isPatchIncluded()) {
+        if (HideCommunitiesShelf.isPatchIncluded()) {
             addPreference(new BooleanSettingPreference(
                     context,
-                    Settings.HIDE_RECOMMENDED_COMMUNITIES_SHELF
+                    Settings.HIDE_COMMUNITIES_SHELF
             ));
         }
 

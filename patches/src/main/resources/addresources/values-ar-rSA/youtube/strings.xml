@@ -306,6 +306,62 @@ Second \"item\" text"</string>
 
 تأكد من أن اسم الحزمة صحيح وأن التطبيق مثبت"</string>
   <string name="morphe_external_downloader_empty_warning">لا يمكن أن يكون اسم الحزمة فارغًا</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">الترجمة الصوتية</string>
+  <string name="morphe_vot_screen_summary">قراءة نصوص ترجمة الفيديو بصوت عالٍ باستخدام تحويل النص إلى كلام على الجهاز، بالتزامن مع التشغيل</string>
+  <string name="morphe_vot_enabled_title">الترجمة الصوتية</string>
+  <string name="morphe_vot_caption_language_title">اللغة</string>
+  <string name="morphe_vot_translation_service_title">مزوّد الترجمة</string>
+  <string name="morphe_vot_original_audio_volume_title">مستوى صوت الصوت الأصلي</string>
+  <string name="morphe_vot_original_audio_volume_summary">مستوى صوت الصوت الأصلي في YouTube أثناء نطق الترجمة</string>
+  <string name="morphe_vot_translation_volume_title">مستوى صوت الترجمة</string>
+  <string name="morphe_vot_translation_volume_summary">مستوى صوت الترجمة المدبلجة</string>
+  <string name="morphe_vot_max_speech_rate_title">الحد الأقصى لسرعة النطق</string>
+  <string name="morphe_vot_max_speech_rate_summary">أقصى سرعة تُستخدم عند ضبط الكلام ليتناسب مع خانة الترجمة</string>
+  <string name="morphe_vot_mymemory_info_summary">"واجهة برمجة تطبيقات ترجمة مجانية، لا يلزم مفتاح API. حتى 5000 حرف يوميًا في الخطة المجانية، أو حتى 50000 حرف يوميًا عند استخدام عنوان بريد إلكتروني.
+
+انقر هنا لفتح MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">بريد MyMemory الإلكتروني</string>
+  <string name="morphe_vot_mymemory_email_summary">اختياري. أدخل بريدك الإلكتروني في MyMemory لزيادة الحد اليومي من 5000 إلى 50000 حرف. اتركه فارغًا لاستخدام الحد غير المسجّل</string>
+  <string name="morphe_vot_openrouter_info_summary">"ترجمة مدفوعة بالذكاء الاصطناعي عبر OpenRouter.
+أضف رصيدًا مرة واحدة لترجمة آلاف الفيديوهات.
+Mistral Nemo هو الخيار الأرخص، بينما توفر Gemma 4 أعلى جودة.
+
+انقر هنا لفتح OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">مفتاح OpenRouter API</string>
+  <string name="morphe_vot_openrouter_api_key_summary">مفتاح OpenRouter API الخاص بك. قم بإنشاء مفتاح على OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">نموذج OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">مخصص</string>
+  <string name="morphe_vot_openrouter_not_configured_title">لم يتم تكوين OpenRouter</string>
+  <string name="morphe_vot_openrouter_not_configured_message">أدخل مفتاح OpenRouter API الخاص بك في الإعدادات قبل تحديد هذا المزود</string>
+  <string name="morphe_vot_cost_free">مجاني</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">‎%s لكل 100 ساعة فيديو‎</string>
+  <string name="morphe_vot_tts_voice_type">الصوت</string>
+  <string name="morphe_vot_tts_system">النظام</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">ذكر متعدد اللغات</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">أنثى متعددة اللغات</string>
+  <string name="morphe_vot_voice_gender_male">ذكر</string>
+  <string name="morphe_vot_voice_gender_female">أنثى</string>
+  <string name="morphe_vot_tts_sample">حان وقت التحول!</string>
+  <string name="morphe_vot_http_error_title">الترجمة غير متوفرة</string>
+  <string name="morphe_vot_http_error_message">"خدمة الترجمة أعادت خطأ HTTP ‏%s.
+يبدو أن عنوان IP الخاص بك قد خضع لتقييد مؤقت لمدة تصل إلى 24 ساعة.
+
+لمتابعة استخدام الترجمات، بدّل إلى مزود ترجمة آخر من الإعدادات أو استخدم VPN"</string>
+  <string name="morphe_vot_do_not_show_again">لا تعرض مرة أخرى</string>
+  <string name="morphe_vot_export_api_key_warning">"تحتوي إعداداتك على مفتاح OpenRouter API.
+
+يجب ألا تتم مشاركة مفتاح API الخاص بك أبدًا. يمكن لأي شخص لديه حق الوصول إليه استخدام أرصدة OpenRouter الخاصة بك"</string>
+  <string name="morphe_vot_openrouter_credits_title">تم الوصول إلى حد رصيد OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">لقد وصل رصيد OpenRouter الخاص بك إلى الحد المسموح به. أضف رصيدًا أو ارفع حد الإنفاق الخاص بمفتاحك على OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">فتح OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">فشلت ترجمة OpenRouter (HTTP ‏%s)</string>
+  <string name="morphe_vot_mymemory_quota_title">تم الوصول إلى الحد اليومي لـ MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">متاح مرة أخرى في %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">لقد استخدمت حصة الترجمة المجانية اليومية لـ MyMemory (5000 حرف). أضف بريدًا إلكترونيًا لـ MyMemory في الإعدادات لرفع الحد اليومي إلى 50000 حرف، أو قم بالتبديل إلى خدمة ترجمة مختلفة</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">لقد استخدمت حصة ترجمة MyMemory اليومية (50000 حرف). قم بالتبديل إلى خدمة ترجمة مختلفة أو حاول مرة أخرى غدًا</string>
+  <string name="morphe_vot_mymemory_error">فشلت ترجمة MyMemory (الحالة %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">تمكين تكرار الفيديو</string>
   <string name="morphe_do_not_remember_loop_video_title">لا تتذكر حالة تكرار الفيديو</string>
@@ -777,7 +833,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">يعرض عددًا تقديريًا للإعجابات في الفيديوهات التي قام المنشئ بتعطيل الإعجابات فيها</string>
   <string name="morphe_ryd_toast_on_connection_error_title">عرض تنبيهات خطأ الاتصال</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">يعرض إشعارًا عند تعذر توفر خادم Return YouTube Dislike</string>
-  <string name="morphe_ryd_attribution_summary">يتم توفير البيانات بواسطة the Return YouTube Dislike API. اضغط هنا لمعرفة المزيد</string>
+  <string name="morphe_ryd_attribution_summary">"يتم توفير البيانات بواسطة Return YouTube Dislike API.
+
+انقر هنا لفتح ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">إحصائيات واجهة برمجيات ReturnYouTubeDislike لهذا الجهاز</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">وقت استجابة API، متوسط</string>
@@ -1021,7 +1079,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">الشفافية:</string>
   <string name="morphe_sb_color_dot_label">اللون:</string>
   <string name="morphe_sb_about_title">لمحة</string>
-  <string name="morphe_sb_about_api_summary">يتم توفير البيانات بواسطة SponsorBlock API. انقر هنا لمعرفة المزيد والتنزيل لمنصات أخرى</string>
+  <string name="morphe_sb_about_api_summary">"يتم توفير البيانات بواسطة SponsorBlock API.
+
+انقر هنا لفتح Sponsor.ajay.app والاطلاع على التنزيلات المتاحة للمنصات الأخرى"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">تخطيط الجهاز</string>
   <string name="morphe_change_form_factor_entry_1">الافتراضي</string>
@@ -1172,11 +1232,11 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; المصغرات الأصلية</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; اللقطات الثابتة</string>
   <string name="morphe_alt_thumbnail_options_entry_4">اللقطات الثابتة</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"يوفر DeArrow مصغرات فيديو من مصادر جماعية لفيديوهات YouTube. هذه المصغرات غالبًا ما تكون أكثر صلة من تلك المقدمة من YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"يقدّم DeArrow مصغرات من إعداد المستخدمين لفيديوهات YouTube. وغالبًا ما تكون أكثر ارتباطًا بالمحتوى من مصغرات YouTube الأصلية
 
-إذا تم تفعيلها، سيتم إرسال روابط الفيديو إلى خادم API ولن يتم إرسال أي بيانات أخرى. إذا كان الفيديو لا يحتوي على مصغرات DeArrow، سيتم عرض المقاطع الأصلية أو اللقطات الثابتة
+إذا تم تمكينها، سيتم إرسال عناوين URL للفيديو إلى خادم API ولن يتم إرسال أي بيانات أخرى. إذا لم يكن للفيديو مصغرات DeArrow، فسيتم عرض المصغرات الأصلية أو اللقطات الثابتة
 
-اضغط هنا لمعرفة المزيد عن DeArrow"</string>
+انقر هنا لمعرفة المزيد عن DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">عرض تنبيهات خطأ الاتصال</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">يعرض إشعارًا عند تعذر توفر خادم DeArrow</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API Endpoint</string>

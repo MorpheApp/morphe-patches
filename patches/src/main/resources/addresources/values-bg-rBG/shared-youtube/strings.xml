@@ -109,6 +109,25 @@ Second \"item\" text"</string>
   <!-- misc.audio.tracks.forceOriginalAudioPatch -->
   <string name="morphe_force_original_audio_title">Принудително оригинален аудио език</string>
   <string name="morphe_force_original_audio_summary">Винаги възпроизвежда оригиналната аудио пътека на видеото вместо дублирана версия</string>
+  <!-- misc.proxy.networkProxyPatch -->
+  <string name="morphe_proxy_screen_title">Мрежов прокси</string>
+  <string name="morphe_proxy_screen_summary">Маршрутизиране на поддържаните мрежови заявки през прокси</string>
+  <string name="morphe_proxy_enabled_title">Активиране на прокси</string>
+  <string name="morphe_proxy_enabled_summary">Маршрутизира мрежови заявки през конфигуриран HTTP или HTTPS прокси</string>
+  <string name="morphe_proxy_host_title">Прокси хост</string>
+  <string name="morphe_proxy_host_summary">Име на хост или IP адрес на прокси сървъра</string>
+  <string name="morphe_proxy_port_title">Прокси порт</string>
+  <string name="morphe_proxy_port_summary">Порт на прокси сървъра</string>
+  <string name="morphe_proxy_https_title">Използвай HTTPS прокси</string>
+  <string name="morphe_proxy_https_summary">Използвай HTTPS за свързване към прокси сървъра вместо HTTP</string>
+  <string name="morphe_proxy_auth_enabled_title">Прокси удостоверяване</string>
+  <string name="morphe_proxy_auth_enabled_summary">Изпраща Basic удостоверяване с прокси заявки</string>
+  <string name="morphe_proxy_auth_username_title">Потребителско име за прокси</string>
+  <string name="morphe_proxy_auth_username_summary">Потребителско име за Basic прокси удостоверяване</string>
+  <string name="morphe_proxy_auth_password_title">Прокси парола</string>
+  <string name="morphe_proxy_auth_password_summary">Парола за Basic прокси удостоверяване</string>
+  <string name="morphe_proxy_allow_direct_fallback_title">Разреши директен fallback</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Свържи се директно, ако проксито не успее</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Скриване на целите реклами</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

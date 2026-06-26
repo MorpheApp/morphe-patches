@@ -32,6 +32,7 @@ import app.morphe.extension.youtube.settings.search.YouTubeSearchViewController;
  * Hooks {@link GoogleApiActivity} to inject a custom {@link YouTubePreferenceFragment}
  * with a toolbar and search functionality.
  */
+@SuppressWarnings({"deprecation", "RedundantSuppression"})
 public class YouTubeActivityHook extends BaseActivityHook {
 
     public static final boolean USE_BOLD_ICONS = Settings.SETTINGS_INITIALIZED.get()
