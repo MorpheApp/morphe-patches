@@ -220,6 +220,8 @@ public final class AddToQueuePatch {
                 return;
             }
             if (buttonName.equals(shareButtonName)) {
+                // Required to differentiate the Share
+                // Flyout button from the Action button.
                 enableIsFlyoutShareButton();
             }
 
