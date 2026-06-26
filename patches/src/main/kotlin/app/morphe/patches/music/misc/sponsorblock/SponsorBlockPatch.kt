@@ -23,6 +23,7 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -98,15 +99,33 @@ val musicSponsorBlockPatch = bytecodePatch(
                 titleKey = "morphe_sb_diff_segments",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    categoryPreference("morphe_music_sb_sponsor_color"),
-                    categoryPreference("morphe_music_sb_selfpromo_color"),
-                    categoryPreference("morphe_music_sb_interaction_color"),
-                    categoryPreference("morphe_music_sb_intro_color"),
-                    categoryPreference("morphe_music_sb_outro_color"),
-                    categoryPreference("morphe_music_sb_preview_color"),
-                    categoryPreference("morphe_music_sb_hook_color"),
-                    categoryPreference("morphe_music_sb_filler_color"),
-                    categoryPreference("morphe_music_sb_music_offtopic_color")
+                    categoryPreference("morphe_sb_sponsor_color"),
+                    categoryPreference("morphe_sb_selfpromo_color"),
+                    categoryPreference("morphe_sb_interaction_color"),
+                    categoryPreference("morphe_sb_intro_color"),
+                    categoryPreference("morphe_sb_outro_color"),
+                    categoryPreference("morphe_sb_preview_color"),
+                    categoryPreference("morphe_sb_hook_color"),
+                    categoryPreference("morphe_sb_filler_color"),
+                    categoryPreference("morphe_sb_music_offtopic_color")
+                )
+            ),
+
+            PreferenceCategory(
+                key = null,
+                titleKey = "morphe_sb_general",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference(
+                        key = "morphe_sb_toast_on_connection_error",
+                        titleKey = "morphe_sb_toast_on_connection_error",
+                        summary = true
+                    ),
+                    TextPreference(
+                        key = "morphe_sb_api_url",
+                        titleKey = "morphe_sb_general_api_url",
+                        summaryKey = "morphe_sb_general_api_url_summary"
+                    )
                 )
             ),
 

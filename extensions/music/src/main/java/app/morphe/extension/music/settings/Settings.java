@@ -66,26 +66,26 @@ public class Settings extends SharedYouTubeSettings {
     // SponsorBlock
     public static final BooleanSetting SB_ENABLED = new BooleanSetting("morphe_sb_enabled", TRUE);
     public static final BooleanSetting SB_TOAST_ON_SKIP = new BooleanSetting("morphe_sb_toast_on_skip", TRUE, parent(SB_ENABLED));
-    public static final BooleanSetting SB_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("morphe_music_sb_toast_on_connection_error", TRUE, parent(SB_ENABLED));
-    public static final StringSetting SB_API_URL = new StringSetting("morphe_music_sb_api_url", "https://sponsor.ajay.app", parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_SPONSOR = new StringSetting("morphe_music_sb_sponsor", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_SPONSOR_COLOR = new StringSetting("morphe_music_sb_sponsor_color", "#FF00D400", parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_SELF_PROMO = new StringSetting("morphe_music_sb_selfpromo", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_SELF_PROMO_COLOR = new StringSetting("morphe_music_sb_selfpromo_color", "#FFFFFF00", parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_INTERACTION = new StringSetting("morphe_music_sb_interaction", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_INTERACTION_COLOR = new StringSetting("morphe_music_sb_interaction_color", "#FFCC00FF", parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_INTRO = new StringSetting("morphe_music_sb_intro", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_INTRO_COLOR = new StringSetting("morphe_music_sb_intro_color", "#FF00FFFF", parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_OUTRO = new StringSetting("morphe_music_sb_outro", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_OUTRO_COLOR = new StringSetting("morphe_music_sb_outro_color", "#FF0202ED", parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_PREVIEW = new StringSetting("morphe_music_sb_preview", IGNORE.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_PREVIEW_COLOR = new StringSetting("morphe_music_sb_preview_color", "#FF008FD6", parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_HOOK = new StringSetting("morphe_music_sb_hook", IGNORE.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_HOOK_COLOR = new StringSetting("morphe_music_sb_hook_color", "#FF395699", parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_FILLER = new StringSetting("morphe_music_sb_filler", IGNORE.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_FILLER_COLOR = new StringSetting("morphe_music_sb_filler_color", "#FF7300FF", parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC = new StringSetting("morphe_music_sb_music_offtopic", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("morphe_music_sb_music_offtopic_color", "#FFFF9900", parent(SB_ENABLED));
+    public static final BooleanSetting SB_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("morphe_sb_toast_on_connection_error", TRUE, parent(SB_ENABLED));
+    public static final StringSetting SB_API_URL = new StringSetting("morphe_sb_api_url", "https://sponsor.ajay.app", parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_SPONSOR = new StringSetting("morphe_sb_sponsor", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_SPONSOR_COLOR = new StringSetting("morphe_sb_sponsor_color", "#FF00D400", parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_SELF_PROMO = new StringSetting("morphe_sb_selfpromo", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_SELF_PROMO_COLOR = new StringSetting("morphe_sb_selfpromo_color", "#FFFFFF00", parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_INTERACTION = new StringSetting("morphe_sb_interaction", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_INTERACTION_COLOR = new StringSetting("morphe_sb_interaction_color", "#FFCC00FF", parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_INTRO = new StringSetting("morphe_sb_intro", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_INTRO_COLOR = new StringSetting("morphe_sb_intro_color", "#FF00FFFF", parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_OUTRO = new StringSetting("morphe_sb_outro", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_OUTRO_COLOR = new StringSetting("morphe_sb_outro_color", "#FF0202ED", parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_PREVIEW = new StringSetting("morphe_sb_preview", IGNORE.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_PREVIEW_COLOR = new StringSetting("morphe_sb_preview_color", "#FF008FD6", parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_HOOK = new StringSetting("morphe_sb_hook", IGNORE.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_HOOK_COLOR = new StringSetting("morphe_sb_hook_color", "#FF395699", parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_FILLER = new StringSetting("morphe_sb_filler", IGNORE.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_FILLER_COLOR = new StringSetting("morphe_sb_filler_color", "#FF7300FF", parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC = new StringSetting("morphe_sb_music_offtopic", SKIP_AUTOMATICALLY.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("morphe_sb_music_offtopic_color", "#FFFF9900", parent(SB_ENABLED));
 
     static {
         // Must run before any code reads a SegmentCategory setting.
