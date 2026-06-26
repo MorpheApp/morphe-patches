@@ -124,13 +124,13 @@ public final class LoadVideoPatch {
             return;
         }
 
-        int loadVideoDelay = 500;
+        int loadVideoDelay = 0;
 
         // Close the current player instance.
         if (closeCurrentPlayerInstance) {
             closeVideo();
 
-            loadVideoDelay = 0;
+            loadVideoDelay = 500;
         }
 
         // Reopens the video after 0ms or 500ms.
