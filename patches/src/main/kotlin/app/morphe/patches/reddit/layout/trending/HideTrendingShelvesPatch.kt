@@ -15,6 +15,7 @@ import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMuta
 import app.morphe.patches.reddit.misc.settings.settingsPatch
 import app.morphe.patches.reddit.misc.version.is_2026_11_0_or_greater
 import app.morphe.patches.reddit.misc.version.is_2026_16_0_or_greater
+import app.morphe.patches.reddit.misc.version.is_2026_21_0_or_greater
 import app.morphe.patches.reddit.misc.version.versionCheckPatch
 import app.morphe.patches.reddit.shared.Constants.COMPATIBILITY_REDDIT
 import app.morphe.util.findFreeRegister
@@ -31,7 +32,7 @@ private const val EXTENSION_TRENDING_INTERFACE =
 @Suppress("unused")
 val hideTrendingShelvesPatch = bytecodePatch(
     name = "Hide Trending shelves",
-    description = "Adds an option to hide Trending shelves from search suggestions."
+    description = "Adds an option to hide the Trending shelves from feed and search suggestions."
 ) {
     compatibleWith(COMPATIBILITY_REDDIT)
 
@@ -153,6 +154,11 @@ val hideTrendingShelvesPatch = bytecodePatch(
                 nop
             """
         )
+
+        if (is_2026_21_0_or_greater) {
+            TrendingFeedUnitSectionFingerprint.applyHideTrending()
+            TrendingFeedUnitDismissedSectionFingerprint.applyHideTrending()
+        }
 
         // endregion
 
