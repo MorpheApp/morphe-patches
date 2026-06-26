@@ -55,7 +55,7 @@ public class SponsorBlockPrivateUserIdPreference extends EditTextPreference {
         setOnPreferenceChangeListener((p, newValue) -> {
             String newUUID = newValue.toString();
             if (!SponsorBlockHelpers.isValidSBUserID(newUUID)) {
-                Utils.showToastLong(str("morphe_sb_general_uuid_invalid"));
+                Utils.showToastLong(str("morphe_sb_private_user_id_Do_Not_Share_invalid"));
                 return false;
             }
             return true;

@@ -52,7 +52,7 @@ public class SponsorBlockSegmentStepPreference extends ResettableEditTextPrefere
             } catch (NumberFormatException ex) {
                 Logger.printInfo(() -> "Invalid new segment step", ex);
             }
-            Utils.showToastLong(str("morphe_sb_general_adjusting_invalid"));
+            Utils.showToastLong(str("morphe_sb_create_new_segment_step_invalid"));
             return false;
         });
     }

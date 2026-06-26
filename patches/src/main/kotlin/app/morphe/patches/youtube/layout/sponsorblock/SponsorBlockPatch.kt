@@ -12,6 +12,7 @@ import app.morphe.patches.shared.misc.settings.preference.ListPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
+import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playercontrols.addTopControl
@@ -43,141 +44,95 @@ private const val SB_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.sponsor
 private const val SEGMENT_CATEGORY_PREFERENCE_TAG =
     "app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference"
 
-private class SbPreference(
-    settingKey: String,
-    titleResourceKey: String,
-    summaryResourceKey: String?,
-    tag: String
-) : BasePreference(settingKey, titleResourceKey, summaryResourceKey, null, null, null, tag)
-
-private fun sbSwitch(
-    settingKey: String,
-    resourceKey: String,
-    tag: String = "SwitchPreference"
-): BasePreference = SbPreference(settingKey, resourceKey, "${resourceKey}_summary", tag)
-
-private fun sbSwitch(settingKey: String): BasePreference = SbPreference(
-    settingKey = settingKey,
-    titleResourceKey = "morphe_${settingKey}_title",
-    summaryResourceKey = "morphe_${settingKey}_summary",
-    tag = "SwitchPreference"
-)
-
-private fun sbDurationList(settingKey: String, resourceKey: String) = ListPreference(
-    key = settingKey,
-    titleKey = resourceKey,
-    entriesKey = "${resourceKey}_entries",
-    entryValuesKey = "${resourceKey}_entry_values"
-)
-
-private fun sbClickPreference(settingKey: String, resourceKey: String, className: String) =
-    NonInteractivePreference(
-        key = settingKey,
-        titleKey = resourceKey,
-        summaryKey = "${resourceKey}_summary",
-        tag = "$SB_PREFERENCES_PACKAGE.$className",
-        selectable = true
-    )
-
-private fun sbCategoryColorPreference(settingKey: String): BasePreference =
+private fun categoryPreference(settingKey: String): BasePreference =
     object : BasePreference(settingKey, null, null, null, null, null, SEGMENT_CATEGORY_PREFERENCE_TAG) {}
 
-private fun sbMasterToggle() = sbSwitch("sb_enabled")
-
-private fun sbAppearanceCategory() = PreferenceCategory(
-    key = null,
-    titleKey = "morphe_sb_appearance_category",
+private fun appearanceCategory() = PreferenceCategory(
+    key = "morphe_sb_appearance_category",
     sorting = PreferenceScreenPreference.Sorting.UNSORTED,
     preferences = setOf(
-        sbSwitch("sb_voting_button", "morphe_sb_enable_voting"),
-        sbSwitch("sb_compact_skip_button", "morphe_sb_enable_compact_skip_button"),
-        sbSwitch("sb_auto_hide_skip_button", "morphe_sb_enable_auto_hide_skip_segment_button"),
-        sbDurationList("sb_auto_hide_skip_button_duration", "morphe_sb_auto_hide_skip_button_duration"),
-        sbSwitch("sb_toast_on_skip"),
-        sbDurationList("sb_toast_on_skip_duration", "morphe_sb_toast_on_skip_duration"),
-        sbSwitch("sb_video_length_without_segments", "morphe_sb_general_time_without"),
-        sbSwitch("sb_square_layout", "morphe_sb_square_layout")
+        SwitchPreference("morphe_sb_voting_button", summary = true),
+        SwitchPreference("morphe_sb_compact_skip_button", summary = true),
+        SwitchPreference("morphe_sb_auto_hide_skip_button", summary = true),
+        ListPreference(key = "morphe_sb_auto_hide_skip_button_duration"),
+        SwitchPreference("morphe_sb_toast_on_skip", summary = true),
+        ListPreference(key = "morphe_sb_toast_on_skip_duration"),
+        SwitchPreference("morphe_sb_video_length_without_segments", summary = true),
+        SwitchPreference("morphe_sb_square_layout", summary = true)
     )
 )
 
-private fun sbSegmentsCategory() = PreferenceCategory(
-    key = null,
-    titleKey = "morphe_sb_diff_segments",
+private fun segmentsCategory() = PreferenceCategory(
+    key = "morphe_sb_diff_segments",
     sorting = PreferenceScreenPreference.Sorting.UNSORTED,
     preferences = setOf(
-        sbCategoryColorPreference("sb_sponsor_color"),
-        sbCategoryColorPreference("sb_selfpromo_color"),
-        sbCategoryColorPreference("sb_interaction_color"),
-        sbCategoryColorPreference("sb_highlight_color"),
-        sbCategoryColorPreference("sb_intro_color"),
-        sbCategoryColorPreference("sb_outro_color"),
-        sbCategoryColorPreference("sb_preview_color"),
-        sbCategoryColorPreference("sb_hook_color"),
-        sbCategoryColorPreference("sb_filler_color"),
-        sbCategoryColorPreference("sb_music_offtopic_color")
+        categoryPreference("morphe_sb_sponsor_color"),
+        categoryPreference("morphe_sb_selfpromo_color"),
+        categoryPreference("morphe_sb_interaction_color"),
+        categoryPreference("morphe_sb_highlight_color"),
+        categoryPreference("morphe_sb_intro_color"),
+        categoryPreference("morphe_sb_outro_color"),
+        categoryPreference("morphe_sb_preview_color"),
+        categoryPreference("morphe_sb_hook_color"),
+        categoryPreference("morphe_sb_filler_color"),
+        categoryPreference("morphe_sb_music_offtopic_color")
     )
 )
 
-private fun sbCreateSegmentCategory() = PreferenceCategory(
-    key = null,
-    titleKey = "morphe_sb_create_segment_category",
+private fun createSegmentCategory() = PreferenceCategory(
+    key = "morphe_sb_create_segment_category",
     sorting = PreferenceScreenPreference.Sorting.UNSORTED,
     preferences = setOf(
-        sbSwitch(
-            settingKey = "sb_create_new_segment",
-            resourceKey = "morphe_sb_enable_create_segment",
+        SwitchPreference(
+            key = "morphe_sb_create_new_segment",
+            summary = true,
             tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockCreateSegmentSwitchPreference"
         ),
         TextPreference(
-            key = "sb_create_new_segment_step",
-            titleKey = "morphe_sb_general_adjusting",
-            summaryKey = "morphe_sb_general_adjusting_summary",
+            key = "morphe_sb_create_new_segment_step",
             tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockSegmentStepPreference",
             inputType = InputType.NUMBER
         ),
         NonInteractivePreference(
             key = "morphe_sb_guidelines",
-            titleKey = "morphe_sb_guidelines_preference_title",
-            summaryKey = "morphe_sb_guidelines_preference_summary",
             tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockGuidelinesPreference",
             selectable = true
         )
     )
 )
 
-private fun sbGeneralCategory() = PreferenceCategory(
-    key = null,
-    titleKey = "morphe_sb_general",
+private fun generalCategory() = PreferenceCategory(
+    key = "morphe_sb_general",
     sorting = PreferenceScreenPreference.Sorting.UNSORTED,
     preferences = setOf(
-        sbSwitch("sb_toast_on_connection_error", "morphe_sb_toast_on_connection_error"),
-        sbSwitch("sb_track_skip_count", "morphe_sb_general_skipcount"),
+        SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
+        SwitchPreference("morphe_sb_track_skip_count", summary = true),
         TextPreference(
-            key = "sb_min_segment_duration",
-            titleKey = "morphe_sb_general_min_duration",
-            summaryKey = "morphe_sb_general_min_duration_summary",
+            key = "morphe_sb_min_segment_duration",
             inputType = InputType.NUMBER_DECIMAL
         ),
         TextPreference(
-            key = "sb_private_user_id_Do_Not_Share",
-            titleKey = "morphe_sb_general_uuid",
-            summaryKey = "morphe_sb_general_uuid_summary",
-            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockPrivateUserIdPreference",
+            key = "morphe_sb_private_user_id_Do_Not_Share",
+            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockPrivateUserIdPreference"
         ),
-        sbClickPreference(
-            settingKey = "morphe_sb_change_api_url",
-            resourceKey = "morphe_sb_general_api_url",
-            className = "SponsorBlockApiUrlPreference",
+        NonInteractivePreference(
+            key = "morphe_sb_change_api_url",
+            titleKey = "morphe_sb_api_url_title",
+            summaryKey = "morphe_sb_api_url_summary",
+            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockApiUrlPreference",
+            selectable = true
         ),
-        sbClickPreference(
-            settingKey = "morphe_sb_channel_whitelist",
-            resourceKey = "morphe_sb_channel_whitelist",
-            className = "SponsorBlockChannelWhitelistPreference"
+        NonInteractivePreference(
+            key = "morphe_sb_open_channel_whitelist",
+            titleKey = "morphe_sb_channel_whitelist_title",
+            summaryKey = "morphe_sb_channel_whitelist_summary",
+            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockChannelWhitelistPreference",
+            selectable = true
         ),
-        sbSwitch("sb_toast_on_whitelisted_channel", "morphe_sb_toast_on_whitelisted_channel"),
+        SwitchPreference("morphe_sb_toast_on_whitelisted_channel", summary = true),
         TextPreference(
             key = null,
-            titleKey = "morphe_sb_settings_ie",
+            titleKey = "morphe_sb_settings_ie_title",
             summaryKey = "morphe_sb_settings_ie_summary",
             tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockImportExportPreference"
         )
@@ -193,11 +148,11 @@ private val sponsorBlockResourcePatch = resourcePatch {
 
     execute {
         PreferenceScreen.SPONSORBLOCK.addPreferences(
-            sbMasterToggle(),
-            sbAppearanceCategory(),
-            sbSegmentsCategory(),
-            sbCreateSegmentCategory(),
-            sbGeneralCategory(),
+            SwitchPreference("morphe_sb_enabled", summary = true),
+            appearanceCategory(),
+            segmentsCategory(),
+            createSegmentCategory(),
+            generalCategory(),
             PreferenceCategory(
                 key = "morphe_sb_stats",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,

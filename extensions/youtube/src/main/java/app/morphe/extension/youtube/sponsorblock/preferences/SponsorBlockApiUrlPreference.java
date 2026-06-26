@@ -58,7 +58,7 @@ public class SponsorBlockApiUrlPreference extends Preference {
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
-                    str("morphe_sb_general_api_url"),
+                    str("morphe_sb_api_url_title"),
                     null,
                     editText,
                     null,

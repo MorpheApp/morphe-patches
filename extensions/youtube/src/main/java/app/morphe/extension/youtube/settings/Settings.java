@@ -555,57 +555,57 @@ public class Settings extends SharedYouTubeSettings {
     public static final BooleanSetting RYD_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("morphe_ryd_toast_on_connection_error", TRUE, parent(RYD_ENABLED));
 
     // SponsorBlock
-    public static final BooleanSetting SB_ENABLED = new BooleanSetting("sb_enabled", TRUE);
+    public static final BooleanSetting SB_ENABLED = new BooleanSetting("morphe_sb_enabled", TRUE);
     /** Do not use id setting directly. Instead, use {@link SponsorBlockSettings}. */
-    public static final StringSetting SB_PRIVATE_USER_ID = new StringSetting("sb_private_user_id_Do_Not_Share", "", true, parent(SB_ENABLED));
-    public static final IntegerSetting SB_CREATE_NEW_SEGMENT_STEP = new IntegerSetting("sb_create_new_segment_step", 150, parent(SB_ENABLED));
-    public static final LongSetting SB_NEW_SEGMENT_PANEL_POSITION = new LongSetting("sb_new_segment_panel_position", 0L);
-    public static final BooleanSetting SB_VOTING_BUTTON = new BooleanSetting("sb_voting_button", FALSE, parent(SB_ENABLED));
-    public static final BooleanSetting SB_CREATE_NEW_SEGMENT = new BooleanSetting("sb_create_new_segment", FALSE, parent(SB_ENABLED));
-    public static final BooleanSetting SB_SQUARE_LAYOUT = new BooleanSetting("sb_square_layout", FALSE, parent(SB_ENABLED));
-    public static final BooleanSetting SB_COMPACT_SKIP_BUTTON = new BooleanSetting("sb_compact_skip_button", FALSE, parent(SB_ENABLED));
-    public static final BooleanSetting SB_AUTO_HIDE_SKIP_BUTTON = new BooleanSetting("sb_auto_hide_skip_button", TRUE, parent(SB_ENABLED));
-    public static final EnumSetting<SponsorBlockDuration> SB_AUTO_HIDE_SKIP_BUTTON_DURATION = new EnumSetting<>("sb_auto_hide_skip_button_duration",
+    public static final StringSetting SB_PRIVATE_USER_ID = new StringSetting("morphe_sb_private_user_id_Do_Not_Share", "", true, parent(SB_ENABLED));
+    public static final IntegerSetting SB_CREATE_NEW_SEGMENT_STEP = new IntegerSetting("morphe_sb_create_new_segment_step", 150, parent(SB_ENABLED));
+    public static final LongSetting SB_NEW_SEGMENT_PANEL_POSITION = new LongSetting("morphe_sb_new_segment_panel_position", 0L);
+    public static final BooleanSetting SB_VOTING_BUTTON = new BooleanSetting("morphe_sb_voting_button", FALSE, parent(SB_ENABLED));
+    public static final BooleanSetting SB_CREATE_NEW_SEGMENT = new BooleanSetting("morphe_sb_create_new_segment", FALSE, parent(SB_ENABLED));
+    public static final BooleanSetting SB_SQUARE_LAYOUT = new BooleanSetting("morphe_sb_square_layout", FALSE, parent(SB_ENABLED));
+    public static final BooleanSetting SB_COMPACT_SKIP_BUTTON = new BooleanSetting("morphe_sb_compact_skip_button", FALSE, parent(SB_ENABLED));
+    public static final BooleanSetting SB_AUTO_HIDE_SKIP_BUTTON = new BooleanSetting("morphe_sb_auto_hide_skip_button", TRUE, parent(SB_ENABLED));
+    public static final EnumSetting<SponsorBlockDuration> SB_AUTO_HIDE_SKIP_BUTTON_DURATION = new EnumSetting<>("morphe_sb_auto_hide_skip_button_duration",
             SponsorBlockDuration.FOUR_SECONDS, parent(SB_ENABLED));
-    public static final BooleanSetting SB_TOAST_ON_SKIP = new BooleanSetting("sb_toast_on_skip", TRUE, parent(SB_ENABLED));
-    public static final EnumSetting<SponsorBlockDuration> SB_TOAST_ON_SKIP_DURATION = new EnumSetting<>("sb_toast_on_skip_duration",
+    public static final BooleanSetting SB_TOAST_ON_SKIP = new BooleanSetting("morphe_sb_toast_on_skip", TRUE, parent(SB_ENABLED));
+    public static final EnumSetting<SponsorBlockDuration> SB_TOAST_ON_SKIP_DURATION = new EnumSetting<>("morphe_sb_toast_on_skip_duration",
             SponsorBlockDuration.FOUR_SECONDS, parentsAll(SB_ENABLED, SB_TOAST_ON_SKIP));
-    public static final BooleanSetting SB_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("sb_toast_on_connection_error", TRUE, parent(SB_ENABLED));
-    public static final BooleanSetting SB_TRACK_SKIP_COUNT = new BooleanSetting("sb_track_skip_count", TRUE, parent(SB_ENABLED));
-    public static final FloatSetting SB_SEGMENT_MIN_DURATION = new FloatSetting("sb_min_segment_duration", 0F, parent(SB_ENABLED));
-    public static final BooleanSetting SB_VIDEO_LENGTH_WITHOUT_SEGMENTS = new BooleanSetting("sb_video_length_without_segments", FALSE, parent(SB_ENABLED));
-    public static final StringSetting SB_API_URL = new StringSetting("sb_api_url", "https://sponsor.ajay.app", parent(SB_ENABLED));
-    public static final BooleanSetting SB_USER_IS_VIP = new BooleanSetting("sb_user_is_vip", FALSE);
-    public static final IntegerSetting SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS = new IntegerSetting("sb_local_time_saved_number_segments", 0, parent(SB_ENABLED));
-    public static final LongSetting SB_LOCAL_TIME_SAVED_MILLISECONDS = new LongSetting("sb_local_time_saved_milliseconds", 0L, parent(SB_ENABLED));
-    public static final LongSetting SB_LAST_VIP_CHECK = new LongSetting("sb_last_vip_check", 0L, false, false);
-    public static final BooleanSetting SB_HIDE_EXPORT_WARNING = new BooleanSetting("sb_hide_export_warning", FALSE, false, false);
-    public static final BooleanSetting SB_SEEN_GUIDELINES = new BooleanSetting("sb_seen_guidelines", FALSE, false, false);
-    public static final StringSetting SB_CHANNEL_WHITELIST = new StringSetting("sb_channel_whitelist", "", false, false);
-    public static final BooleanSetting SB_TOAST_ON_WHITELISTED_CHANNEL = new BooleanSetting("sb_toast_on_whitelisted_channel", FALSE, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_SPONSOR = new StringSetting("sb_sponsor", SKIP_AUTOMATICALLY_ONCE.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_SPONSOR_COLOR = new StringSetting("sb_sponsor_color", "#CC00D400");
-    public static final StringSetting SB_CATEGORY_SELF_PROMO = new StringSetting("sb_selfpromo", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_SELF_PROMO_COLOR = new StringSetting("sb_selfpromo_color", "#CCFFFF00");
-    public static final StringSetting SB_CATEGORY_INTERACTION = new StringSetting("sb_interaction", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_INTERACTION_COLOR = new StringSetting("sb_interaction_color", "#CCCC00FF");
-    public static final StringSetting SB_CATEGORY_HIGHLIGHT = new StringSetting("sb_highlight", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_HIGHLIGHT_COLOR = new StringSetting("sb_highlight_color", "#CCFF1684");
-    public static final StringSetting SB_CATEGORY_HOOK = new StringSetting("sb_hook", IGNORE.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_HOOK_COLOR = new StringSetting("sb_hook_color", "#CC395699");
-    public static final StringSetting SB_CATEGORY_INTRO = new StringSetting("sb_intro", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_INTRO_COLOR = new StringSetting("sb_intro_color", "#CC00FFFF");
-    public static final StringSetting SB_CATEGORY_OUTRO = new StringSetting("sb_outro", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_OUTRO_COLOR = new StringSetting("sb_outro_color", "#CC0202ED");
-    public static final StringSetting SB_CATEGORY_PREVIEW = new StringSetting("sb_preview", IGNORE.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_PREVIEW_COLOR = new StringSetting("sb_preview_color", "#CC008FD6");
-    public static final StringSetting SB_CATEGORY_FILLER = new StringSetting("sb_filler", IGNORE.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_FILLER_COLOR = new StringSetting("sb_filler_color", "#CC7300FF");
-    public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC = new StringSetting("sb_music_offtopic", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
-    public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("sb_music_offtopic_color", "#CCFF9900");
+    public static final BooleanSetting SB_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("morphe_sb_toast_on_connection_error", TRUE, parent(SB_ENABLED));
+    public static final BooleanSetting SB_TRACK_SKIP_COUNT = new BooleanSetting("morphe_sb_track_skip_count", TRUE, parent(SB_ENABLED));
+    public static final FloatSetting SB_SEGMENT_MIN_DURATION = new FloatSetting("morphe_sb_min_segment_duration", 0F, parent(SB_ENABLED));
+    public static final BooleanSetting SB_VIDEO_LENGTH_WITHOUT_SEGMENTS = new BooleanSetting("morphe_sb_video_length_without_segments", FALSE, parent(SB_ENABLED));
+    public static final StringSetting SB_API_URL = new StringSetting("morphe_sb_api_url", "https://sponsor.ajay.app", parent(SB_ENABLED));
+    public static final BooleanSetting SB_USER_IS_VIP = new BooleanSetting("morphe_sb_user_is_vip", FALSE);
+    public static final IntegerSetting SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS = new IntegerSetting("morphe_sb_local_time_saved_number_segments", 0, parent(SB_ENABLED));
+    public static final LongSetting SB_LOCAL_TIME_SAVED_MILLISECONDS = new LongSetting("morphe_sb_local_time_saved_milliseconds", 0L, parent(SB_ENABLED));
+    public static final LongSetting SB_LAST_VIP_CHECK = new LongSetting("morphe_sb_last_vip_check", 0L, false, false);
+    public static final BooleanSetting SB_HIDE_EXPORT_WARNING = new BooleanSetting("morphe_sb_hide_export_warning", FALSE, false, false);
+    public static final BooleanSetting SB_SEEN_GUIDELINES = new BooleanSetting("morphe_sb_seen_guidelines", FALSE, false, false);
+    public static final StringSetting SB_CHANNEL_WHITELIST = new StringSetting("morphe_sb_channel_whitelist", "", false, false);
+    public static final BooleanSetting SB_TOAST_ON_WHITELISTED_CHANNEL = new BooleanSetting("morphe_sb_toast_on_whitelisted_channel", FALSE, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_SPONSOR = new StringSetting("morphe_sb_sponsor", SKIP_AUTOMATICALLY_ONCE.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_SPONSOR_COLOR = new StringSetting("morphe_sb_sponsor_color", "#CC00D400");
+    public static final StringSetting SB_CATEGORY_SELF_PROMO = new StringSetting("morphe_sb_selfpromo", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_SELF_PROMO_COLOR = new StringSetting("morphe_sb_selfpromo_color", "#CCFFFF00");
+    public static final StringSetting SB_CATEGORY_INTERACTION = new StringSetting("morphe_sb_interaction", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_INTERACTION_COLOR = new StringSetting("morphe_sb_interaction_color", "#CCCC00FF");
+    public static final StringSetting SB_CATEGORY_HIGHLIGHT = new StringSetting("morphe_sb_highlight", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_HIGHLIGHT_COLOR = new StringSetting("morphe_sb_highlight_color", "#CCFF1684");
+    public static final StringSetting SB_CATEGORY_HOOK = new StringSetting("morphe_sb_hook", IGNORE.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_HOOK_COLOR = new StringSetting("morphe_sb_hook_color", "#CC395699");
+    public static final StringSetting SB_CATEGORY_INTRO = new StringSetting("morphe_sb_intro", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_INTRO_COLOR = new StringSetting("morphe_sb_intro_color", "#CC00FFFF");
+    public static final StringSetting SB_CATEGORY_OUTRO = new StringSetting("morphe_sb_outro", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_OUTRO_COLOR = new StringSetting("morphe_sb_outro_color", "#CC0202ED");
+    public static final StringSetting SB_CATEGORY_PREVIEW = new StringSetting("morphe_sb_preview", IGNORE.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_PREVIEW_COLOR = new StringSetting("morphe_sb_preview_color", "#CC008FD6");
+    public static final StringSetting SB_CATEGORY_FILLER = new StringSetting("morphe_sb_filler", IGNORE.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_FILLER_COLOR = new StringSetting("morphe_sb_filler_color", "#CC7300FF");
+    public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC = new StringSetting("morphe_sb_music_offtopic", MANUAL_SKIP.morpheKeyValue, parent(SB_ENABLED));
+    public static final StringSetting SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("morphe_sb_music_offtopic_color", "#CCFF9900");
     // Dummy setting. Category is not exposed in the UI nor does it ever change.
-    public static final StringSetting SB_CATEGORY_UNSUBMITTED = new StringSetting("sb_unsubmitted", SKIP_AUTOMATICALLY.morpheKeyValue, false, false);
-    public static final StringSetting SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("sb_unsubmitted_color", "#FFFFFFFF", false, false);
+    public static final StringSetting SB_CATEGORY_UNSUBMITTED = new StringSetting("morphe_sb_unsubmitted", SKIP_AUTOMATICALLY.morpheKeyValue, false, false);
+    public static final StringSetting SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("morphe_sb_unsubmitted_color", "#FFFFFFFF", false, false);
 
     // Migration
     private static final BooleanSetting DEPRECATED_BYPASS_URL_REDIRECTS = new BooleanSetting("morphe_bypass_url_redirects", TRUE);
@@ -621,6 +621,57 @@ public class Settings extends SharedYouTubeSettings {
     private static final BooleanSetting DEPRECATED_RELOAD_VIDEO = new BooleanSetting("morphe_reload_video", FALSE);
     private static final BooleanSetting DEPRECATED_SEEKBAR_TAPPING = new BooleanSetting("morphe_seekbar_tapping", FALSE);
 
+    // Unified SponsorBlock keys under the morphe_sb_* namespace (previously raw sb_*).
+    private static final BooleanSetting DEPRECATED_SB_ENABLED = new BooleanSetting("sb_enabled", TRUE);
+    private static final StringSetting  DEPRECATED_SB_PRIVATE_USER_ID = new StringSetting("sb_private_user_id_Do_Not_Share", "");
+    private static final IntegerSetting DEPRECATED_SB_CREATE_NEW_SEGMENT_STEP = new IntegerSetting("sb_create_new_segment_step", 150);
+    private static final LongSetting    DEPRECATED_SB_NEW_SEGMENT_PANEL_POSITION = new LongSetting("sb_new_segment_panel_position", 0L);
+    private static final BooleanSetting DEPRECATED_SB_VOTING_BUTTON = new BooleanSetting("sb_voting_button", FALSE);
+    private static final BooleanSetting DEPRECATED_SB_CREATE_NEW_SEGMENT = new BooleanSetting("sb_create_new_segment", FALSE);
+    private static final BooleanSetting DEPRECATED_SB_SQUARE_LAYOUT = new BooleanSetting("sb_square_layout", FALSE);
+    private static final BooleanSetting DEPRECATED_SB_COMPACT_SKIP_BUTTON = new BooleanSetting("sb_compact_skip_button", FALSE);
+    private static final BooleanSetting DEPRECATED_SB_AUTO_HIDE_SKIP_BUTTON = new BooleanSetting("sb_auto_hide_skip_button", TRUE);
+    private static final EnumSetting<SponsorBlockDuration> DEPRECATED_SB_AUTO_HIDE_SKIP_BUTTON_DURATION =
+            new EnumSetting<>("sb_auto_hide_skip_button_duration", SponsorBlockDuration.FOUR_SECONDS);
+    private static final BooleanSetting DEPRECATED_SB_TOAST_ON_SKIP = new BooleanSetting("sb_toast_on_skip", TRUE);
+    private static final EnumSetting<SponsorBlockDuration> DEPRECATED_SB_TOAST_ON_SKIP_DURATION =
+            new EnumSetting<>("sb_toast_on_skip_duration", SponsorBlockDuration.FOUR_SECONDS);
+    private static final BooleanSetting DEPRECATED_SB_TOAST_ON_CONNECTION_ERROR = new BooleanSetting("sb_toast_on_connection_error", TRUE);
+    private static final BooleanSetting DEPRECATED_SB_TRACK_SKIP_COUNT = new BooleanSetting("sb_track_skip_count", TRUE);
+    private static final FloatSetting   DEPRECATED_SB_SEGMENT_MIN_DURATION = new FloatSetting("sb_min_segment_duration", 0F);
+    private static final BooleanSetting DEPRECATED_SB_VIDEO_LENGTH_WITHOUT_SEGMENTS = new BooleanSetting("sb_video_length_without_segments", FALSE);
+    private static final StringSetting  DEPRECATED_SB_API_URL = new StringSetting("sb_api_url", "https://sponsor.ajay.app");
+    private static final BooleanSetting DEPRECATED_SB_USER_IS_VIP = new BooleanSetting("sb_user_is_vip", FALSE);
+    private static final IntegerSetting DEPRECATED_SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS = new IntegerSetting("sb_local_time_saved_number_segments", 0);
+    private static final LongSetting    DEPRECATED_SB_LOCAL_TIME_SAVED_MILLISECONDS = new LongSetting("sb_local_time_saved_milliseconds", 0L);
+    private static final LongSetting    DEPRECATED_SB_LAST_VIP_CHECK = new LongSetting("sb_last_vip_check", 0L, false, false);
+    private static final BooleanSetting DEPRECATED_SB_HIDE_EXPORT_WARNING = new BooleanSetting("sb_hide_export_warning", FALSE, false, false);
+    private static final BooleanSetting DEPRECATED_SB_SEEN_GUIDELINES = new BooleanSetting("sb_seen_guidelines", FALSE, false, false);
+    private static final StringSetting  DEPRECATED_SB_CHANNEL_WHITELIST = new StringSetting("sb_channel_whitelist", "", false, false);
+    private static final BooleanSetting DEPRECATED_SB_TOAST_ON_WHITELISTED_CHANNEL = new BooleanSetting("sb_toast_on_whitelisted_channel", FALSE);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_SPONSOR = new StringSetting("sb_sponsor", SKIP_AUTOMATICALLY_ONCE.morpheKeyValue);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_SPONSOR_COLOR = new StringSetting("sb_sponsor_color", "#CC00D400");
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_SELF_PROMO = new StringSetting("sb_selfpromo", MANUAL_SKIP.morpheKeyValue);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_SELF_PROMO_COLOR = new StringSetting("sb_selfpromo_color", "#CCFFFF00");
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_INTERACTION = new StringSetting("sb_interaction", MANUAL_SKIP.morpheKeyValue);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_INTERACTION_COLOR = new StringSetting("sb_interaction_color", "#CCCC00FF");
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_HIGHLIGHT = new StringSetting("sb_highlight", MANUAL_SKIP.morpheKeyValue);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_HIGHLIGHT_COLOR = new StringSetting("sb_highlight_color", "#CCFF1684");
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_HOOK = new StringSetting("sb_hook", IGNORE.morpheKeyValue);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_HOOK_COLOR = new StringSetting("sb_hook_color", "#CC395699");
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_INTRO = new StringSetting("sb_intro", MANUAL_SKIP.morpheKeyValue);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_INTRO_COLOR = new StringSetting("sb_intro_color", "#CC00FFFF");
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_OUTRO = new StringSetting("sb_outro", MANUAL_SKIP.morpheKeyValue);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_OUTRO_COLOR = new StringSetting("sb_outro_color", "#CC0202ED");
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_PREVIEW = new StringSetting("sb_preview", IGNORE.morpheKeyValue);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_PREVIEW_COLOR = new StringSetting("sb_preview_color", "#CC008FD6");
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_FILLER = new StringSetting("sb_filler", IGNORE.morpheKeyValue);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_FILLER_COLOR = new StringSetting("sb_filler_color", "#CC7300FF");
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_MUSIC_OFFTOPIC = new StringSetting("sb_music_offtopic", MANUAL_SKIP.morpheKeyValue);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_MUSIC_OFFTOPIC_COLOR = new StringSetting("sb_music_offtopic_color", "#CCFF9900");
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_UNSUBMITTED = new StringSetting("sb_unsubmitted", SKIP_AUTOMATICALLY.morpheKeyValue, false, false);
+    private static final StringSetting  DEPRECATED_SB_CATEGORY_UNSUBMITTED_COLOR = new StringSetting("sb_unsubmitted_color", "#FFFFFFFF", false, false);
+
     static {
         migrateOldSettingToNew(DEPRECATED_BYPASS_URL_REDIRECTS , BYPASS_LINK_REDIRECTS );
         migrateOldSettingToNew(DEPRECATED_COPY_VIDEO_URL, DEPRECATED_COPY_VIDEO_URL_BUTTON);
@@ -634,6 +685,55 @@ public class Settings extends SharedYouTubeSettings {
         migrateOldSettingToNew(DEPRECATED_OVERRIDE_YOUTUBE_MUSIC_BUTTON, OVERRIDE_YOUTUBE_MUSIC_BUTTONS);
         migrateOldSettingToNew(DEPRECATED_RELOAD_VIDEO, RELOAD_VIDEO_BUTTON);
         migrateOldSettingToNew(DEPRECATED_SEEKBAR_TAPPING, TAP_TO_SEEK);
+
+        // SponsorBlock key namespace unification (sb_* -> morphe_sb_*).
+        migrateOldSettingToNew(DEPRECATED_SB_ENABLED, SB_ENABLED);
+        migrateOldSettingToNew(DEPRECATED_SB_PRIVATE_USER_ID, SB_PRIVATE_USER_ID);
+        migrateOldSettingToNew(DEPRECATED_SB_CREATE_NEW_SEGMENT_STEP, SB_CREATE_NEW_SEGMENT_STEP);
+        migrateOldSettingToNew(DEPRECATED_SB_NEW_SEGMENT_PANEL_POSITION, SB_NEW_SEGMENT_PANEL_POSITION);
+        migrateOldSettingToNew(DEPRECATED_SB_VOTING_BUTTON, SB_VOTING_BUTTON);
+        migrateOldSettingToNew(DEPRECATED_SB_CREATE_NEW_SEGMENT, SB_CREATE_NEW_SEGMENT);
+        migrateOldSettingToNew(DEPRECATED_SB_SQUARE_LAYOUT, SB_SQUARE_LAYOUT);
+        migrateOldSettingToNew(DEPRECATED_SB_COMPACT_SKIP_BUTTON, SB_COMPACT_SKIP_BUTTON);
+        migrateOldSettingToNew(DEPRECATED_SB_AUTO_HIDE_SKIP_BUTTON, SB_AUTO_HIDE_SKIP_BUTTON);
+        migrateOldSettingToNew(DEPRECATED_SB_AUTO_HIDE_SKIP_BUTTON_DURATION, SB_AUTO_HIDE_SKIP_BUTTON_DURATION);
+        migrateOldSettingToNew(DEPRECATED_SB_TOAST_ON_SKIP, SB_TOAST_ON_SKIP);
+        migrateOldSettingToNew(DEPRECATED_SB_TOAST_ON_SKIP_DURATION, SB_TOAST_ON_SKIP_DURATION);
+        migrateOldSettingToNew(DEPRECATED_SB_TOAST_ON_CONNECTION_ERROR, SB_TOAST_ON_CONNECTION_ERROR);
+        migrateOldSettingToNew(DEPRECATED_SB_TRACK_SKIP_COUNT, SB_TRACK_SKIP_COUNT);
+        migrateOldSettingToNew(DEPRECATED_SB_SEGMENT_MIN_DURATION, SB_SEGMENT_MIN_DURATION);
+        migrateOldSettingToNew(DEPRECATED_SB_VIDEO_LENGTH_WITHOUT_SEGMENTS, SB_VIDEO_LENGTH_WITHOUT_SEGMENTS);
+        migrateOldSettingToNew(DEPRECATED_SB_API_URL, SB_API_URL);
+        migrateOldSettingToNew(DEPRECATED_SB_USER_IS_VIP, SB_USER_IS_VIP);
+        migrateOldSettingToNew(DEPRECATED_SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS, SB_LOCAL_TIME_SAVED_NUMBER_SEGMENTS);
+        migrateOldSettingToNew(DEPRECATED_SB_LOCAL_TIME_SAVED_MILLISECONDS, SB_LOCAL_TIME_SAVED_MILLISECONDS);
+        migrateOldSettingToNew(DEPRECATED_SB_LAST_VIP_CHECK, SB_LAST_VIP_CHECK);
+        migrateOldSettingToNew(DEPRECATED_SB_HIDE_EXPORT_WARNING, SB_HIDE_EXPORT_WARNING);
+        migrateOldSettingToNew(DEPRECATED_SB_SEEN_GUIDELINES, SB_SEEN_GUIDELINES);
+        migrateOldSettingToNew(DEPRECATED_SB_CHANNEL_WHITELIST, SB_CHANNEL_WHITELIST);
+        migrateOldSettingToNew(DEPRECATED_SB_TOAST_ON_WHITELISTED_CHANNEL, SB_TOAST_ON_WHITELISTED_CHANNEL);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_SPONSOR, SB_CATEGORY_SPONSOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_SPONSOR_COLOR, SB_CATEGORY_SPONSOR_COLOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_SELF_PROMO, SB_CATEGORY_SELF_PROMO);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_SELF_PROMO_COLOR, SB_CATEGORY_SELF_PROMO_COLOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_INTERACTION, SB_CATEGORY_INTERACTION);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_INTERACTION_COLOR, SB_CATEGORY_INTERACTION_COLOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_HIGHLIGHT, SB_CATEGORY_HIGHLIGHT);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_HIGHLIGHT_COLOR, SB_CATEGORY_HIGHLIGHT_COLOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_HOOK, SB_CATEGORY_HOOK);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_HOOK_COLOR, SB_CATEGORY_HOOK_COLOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_INTRO, SB_CATEGORY_INTRO);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_INTRO_COLOR, SB_CATEGORY_INTRO_COLOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_OUTRO, SB_CATEGORY_OUTRO);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_OUTRO_COLOR, SB_CATEGORY_OUTRO_COLOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_PREVIEW, SB_CATEGORY_PREVIEW);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_PREVIEW_COLOR, SB_CATEGORY_PREVIEW_COLOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_FILLER, SB_CATEGORY_FILLER);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_FILLER_COLOR, SB_CATEGORY_FILLER_COLOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_MUSIC_OFFTOPIC, SB_CATEGORY_MUSIC_OFFTOPIC);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_MUSIC_OFFTOPIC_COLOR, SB_CATEGORY_MUSIC_OFFTOPIC_COLOR);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_UNSUBMITTED, SB_CATEGORY_UNSUBMITTED);
+        migrateOldSettingToNew(DEPRECATED_SB_CATEGORY_UNSUBMITTED_COLOR, SB_CATEGORY_UNSUBMITTED_COLOR);
 
 
         // 20.37+ YT removed parts of the code for the legacy tablet miniplayer.

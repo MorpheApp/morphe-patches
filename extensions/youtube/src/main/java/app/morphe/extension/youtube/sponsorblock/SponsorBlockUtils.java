@@ -545,7 +545,7 @@ public class SponsorBlockUtils {
             mainLayout.setPadding(Dim.dp16, 0, Dim.dp16, Dim.dp16);
 
             TextView titleView = new TextView(context);
-            titleView.setText(str("morphe_sb_channel_whitelist"));
+            titleView.setText(str("morphe_sb_channel_whitelist_title"));
             titleView.setTextSize(18);
             titleView.setTypeface(Typeface.DEFAULT_BOLD);
             titleView.setTextColor(Utils.getAppForegroundColor());

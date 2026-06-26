@@ -93,7 +93,7 @@ public class SponsorBlockImportExportPreference extends EditTextPreference {
 
             Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
-                    str("morphe_sb_settings_ie"),
+                    str("morphe_sb_settings_ie_title"),
                     null,
                     editText,
                     str("morphe_settings_import"),

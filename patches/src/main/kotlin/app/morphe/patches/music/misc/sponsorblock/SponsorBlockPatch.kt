@@ -95,8 +95,7 @@ val musicSponsorBlockPatch = bytecodePatch(
             SwitchPreference("morphe_sb_toast_on_skip", summary = true),
 
             PreferenceCategory(
-                key = null,
-                titleKey = "morphe_sb_diff_segments",
+                key = "morphe_sb_diff_segments",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
                     categoryPreference("morphe_sb_sponsor_color"),
@@ -112,20 +111,11 @@ val musicSponsorBlockPatch = bytecodePatch(
             ),
 
             PreferenceCategory(
-                key = null,
-                titleKey = "morphe_sb_general",
+                key = "morphe_sb_general",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
                 preferences = setOf(
-                    SwitchPreference(
-                        key = "morphe_sb_toast_on_connection_error",
-                        titleKey = "morphe_sb_toast_on_connection_error",
-                        summary = true
-                    ),
-                    TextPreference(
-                        key = "morphe_sb_api_url",
-                        titleKey = "morphe_sb_general_api_url",
-                        summaryKey = "morphe_sb_general_api_url_summary"
-                    )
+                    SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
+                    TextPreference("morphe_sb_api_url"),
                 )
             ),
 
