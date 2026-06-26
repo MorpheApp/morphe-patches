@@ -190,4 +190,14 @@ public final class AddToQueuePatch {
             PlaylistPatch.prepareDialogBuilder(getContext(), flyoutVideoId);
         };
     }
+
+    /**
+     * Injection point.
+     */
+    public static boolean allowNewFlyoutMenuStyle(boolean original) {
+        if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
+            return false;
+        }
+        return original;
+    }
 }
