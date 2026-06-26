@@ -9,7 +9,7 @@ package app.morphe.patches.youtube.misc.sharesheet
 
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.youtube.layout.flyout.AddToQueuePatch
+import app.morphe.patches.youtube.layout.flyout.addToQueuePatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.litho.filter.addLithoFilter
