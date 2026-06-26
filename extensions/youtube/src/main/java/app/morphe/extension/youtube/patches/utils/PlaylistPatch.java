@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -384,10 +385,15 @@ public class PlaylistPatch {
                         return;
                     }
                     if (reload) {
+                        final long videoTime = VideoInformation.getVideoTime();
+
+                        Log.d("LOLOLOLO", String.valueOf(videoTime));
+
                         url = "https://youtu.be/" +
                                 VideoInformation.getVideoId() +
                                 "?list=" +
-                                currentPlaylistId;
+                                currentPlaylistId +
+                                (videoTime > 0 ? "&t=" + (videoTime / 1000) : "");
 
                         closeVideo();
 
