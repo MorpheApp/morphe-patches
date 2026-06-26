@@ -42,11 +42,10 @@ public final class AddToQueuePatch {
     private static final String queueButtonName = "QUEUE_PLAY_NEXT";
     private static final String shareButtonName = "SHARE_ARROW";
 
-    private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES =
-            List.of(
-                    "https://i.ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII),
-                    "https://www.youtube.com/watch?v=".getBytes(StandardCharsets.US_ASCII)
-            );
+    private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES = List.of(
+            // Can be i.ytimg.com, i2.ytimg.com, i3, etc.
+            ".ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII),
+            "youtube.com/watch?v=".getBytes(StandardCharsets.US_ASCII));
 
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
     private static String flyoutVideoId = "";
@@ -108,7 +107,7 @@ public final class AddToQueuePatch {
 
             byte[] flyoutBuffer = bufferInterface.patch_getBuffer();
             if (flyoutBuffer == null) {
-                Logger.printDebug(() -> "flyoutBuffer is null"); // Should never happen.
+                Logger.printDebug(() -> "FlyoutBuffer is null"); // Should never happen.
                 return;
             }
 
