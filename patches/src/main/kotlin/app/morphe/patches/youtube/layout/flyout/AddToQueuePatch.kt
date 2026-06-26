@@ -128,7 +128,7 @@ val addToQueuePatch = bytecodePatch(
                         iget v$freeRegister, v$enumClassRegister, $enumIntField
                         invoke-static { v$freeRegister }, $enumMethodCall
                         move-result-object v$freeRegister
-                        invoke-static { v$freeRegister, v$charCheckRegister }, $EXTENSION_CLASS->setCurrentHandledButtonInfo(Ljava/lang/Enum;Ljava/lang/CharSequence;)V
+                        invoke-static { v$freeRegister, v$charCheckRegister }, $EXTENSION_CLASS->setCurrentButtonInfo(Ljava/lang/Enum;Ljava/lang/CharSequence;)V
                     """
                 )
             }

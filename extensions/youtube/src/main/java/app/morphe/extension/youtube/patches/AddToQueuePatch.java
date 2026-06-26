@@ -8,9 +8,9 @@
 package app.morphe.extension.youtube.patches;
 
 import static app.morphe.extension.shared.Utils.getContext;
+import static app.morphe.extension.youtube.patches.OpenSystemShareSheetPatch.enableIsFlyoutShareButton;
 
 import android.app.Dialog;
-import android.util.Log;
 import android.util.Pair;
 import android.widget.PopupWindow;
 
@@ -40,6 +40,7 @@ public final class AddToQueuePatch {
     private static PopupWindow flyoutPopupWindow = null;
 
     private static final String queueButtonName = "QUEUE_PLAY_NEXT";
+    private static final String shareButtonName = "SHARE_ARROW";
 
     private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES =
             List.of(
@@ -49,8 +50,8 @@ public final class AddToQueuePatch {
 
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
     private static String flyoutVideoId = "";
-    private static String currentHandledButtonName = "";
-    private static int currentHandledButtonIndex;
+    private static String currentButtonName = "";
+    private static int currentButtonIndex;
 
     // All methods are called on main thread.
 
@@ -155,24 +156,30 @@ public final class AddToQueuePatch {
     /**
      * Injection point.
      */
-    public static void setCurrentHandledButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable CharSequence buttonText) {
+    public static void setCurrentButtonInfo(@Nullable Enum<?> buttonEnum, @Nullable CharSequence buttonText) {
         if (buttonEnum == null || buttonText == null || buttonText.toString().isEmpty()) {
             return;
         }
-        currentHandledButtonName = buttonEnum.name();
-        currentHandledButtonIndex++;
+        currentButtonName = buttonEnum.name();
+        currentButtonIndex++;
 
-        visibleFlyoutButtons.add(new Pair<>(currentHandledButtonName, currentHandledButtonIndex));
+        visibleFlyoutButtons.add(new Pair<>(currentButtonName, currentButtonIndex));
     }
 
     /**
      * Injection point.
      */
     public static Runnable replaceButtonRunnable(Runnable original) {
-        return Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get() &&
-                currentHandledButtonName.equals(queueButtonName)
-                ? invokeQueueFlyout(original)
-                : original;
+        if (!Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
+            return original;
+        }
+
+        if (flyoutVideoId.isEmpty()) {
+            Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
+            return original;
+        }
+
+        return invokeQueueFlyout(original, currentButtonName);
     }
 
     /**
@@ -181,37 +188,47 @@ public final class AddToQueuePatch {
      * 21.04 and older.
      */
     public static boolean replaceOnItemClick(int index) {
-        try {
-            if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()
-                    && !visibleFlyoutButtons.isEmpty()
-                    && queueButtonName.equals(visibleFlyoutButtons.get(index).first)) {
-                if (flyoutVideoId.isEmpty()) {
-                    Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
-                    return false;
-                }
+        if (!Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
+            return false;
+        }
 
-                invokeQueueFlyout(null).run();
-                return true;
-            }
+        if (flyoutVideoId.isEmpty()) {
+            Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
+            return false;
+        }
+
+        try {
+            String currentIndexedButtonName = visibleFlyoutButtons.get(index).first;
+
+            invokeQueueFlyout(null, currentIndexedButtonName).run();
+            return true;
         } catch (Exception ex) {
             Logger.printException(() -> "replaceOnItemClick failure", ex);
         }
         return false;
     }
 
-    private static Runnable invokeQueueFlyout(@Nullable Runnable original) {
+    private static Runnable invokeQueueFlyout(@Nullable Runnable original, String buttonName) {
+        if (currentButtonName.equals(shareButtonName)) {
+            enableIsFlyoutShareButton();
+        }
+
         return () -> {
-            if (flyoutVideoId.isEmpty()) {
-                Logger.printDebug(() -> "Cannot opening custom queue flyout with an empty videoId");
-                if (original != null) {
-                    original.run();
-                }
+            if (currentButtonName.equals(buttonName)) {
+                Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
+                dismissBottomSheetFlyout();
+                dismissPopupWindowFlyout();
+                PlaylistPatch.prepareDialogBuilder(getContext(), flyoutVideoId);
                 return;
             }
-            Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
-            dismissBottomSheetFlyout();
-            dismissPopupWindowFlyout();
-            PlaylistPatch.prepareDialogBuilder(getContext(), flyoutVideoId);
+
+            if (original != null) {
+                original.run();
+            }
         };
+    }
+
+    public static String getFlyoutVideoId() {
+        return flyoutVideoId;
     }
 }
