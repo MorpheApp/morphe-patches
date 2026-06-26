@@ -160,6 +160,7 @@ public final class AddToQueuePatch {
     public static boolean replaceOnItemClick(int index) {
         try {
             if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()
+                    && !visibleFlyoutButtons.isEmpty()
                     && queueButtonName.equals(visibleFlyoutButtons.get(index).first)) {
                 if (flyoutVideoId.isEmpty()) {
                     Logger.printDebug(() -> "Cannot replace on item click, flyoutVideoId is empty");
