@@ -99,6 +99,23 @@ public final class LoadVideoPatch {
         }
     }
 
+    private static PlayerInterface checkedPlayerInterfaceInstance(PlayerInterface playerInterface) {
+        if (playerInterface == null) {
+            Utils.showToastShort(str("morphe_dismiss_player_not_available_toast"));
+            return null;
+        }
+        return playerInterface;
+    }
+
+    public static void closeVideo() {
+        PlayerInterface checkedPlayerInterface =
+                checkedPlayerInterfaceInstance(playerInterfaceRef.get());
+
+        if (checkedPlayerInterface != null) {
+            checkedPlayerInterface.patch_dismissPlayer();
+        }
+    }
+
     // This method opens a video based on hardcoded parameters found in an obfuscated class.
     public static void reloadVideo(String videoIDWithParams, boolean closeCurrentPlayerInstance) {
         PlayerInterface playerInterface = playerInterfaceRef.get();
@@ -107,13 +124,13 @@ public final class LoadVideoPatch {
             return;
         }
 
-        int delayMillis = 500;
+        int loadVideoDelay = 500;
 
         // Close the current player instance.
         if (closeCurrentPlayerInstance) {
-            playerInterface.patch_dismissPlayer();
+            closeVideo();
 
-            delayMillis = 0;
+            loadVideoDelay = 0;
         }
 
         // Reopens the video after 0ms or 500ms.
@@ -137,7 +154,7 @@ public final class LoadVideoPatch {
             reloadVideoIntent.putExtra("watch", playerInterface.patch_getIntentParcelable(reloadVideoIntent));
 
             context.startActivity(reloadVideoIntent);
-        }, delayMillis);
+        }, loadVideoDelay);
     }
 
     private static boolean checkDismissPlayerAvailability(PlayerInterface playerInterface) {

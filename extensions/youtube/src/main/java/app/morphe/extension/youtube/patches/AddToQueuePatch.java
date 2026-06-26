@@ -198,10 +198,12 @@ public final class AddToQueuePatch {
         }
 
         try {
-            String currentIndexedButtonName = visibleFlyoutButtons.get(index).first;
+            if (!visibleFlyoutButtons.isEmpty()) {
+                String currentIndexedButtonName = visibleFlyoutButtons.get(index).first;
 
-            invokeQueueFlyout(null, currentIndexedButtonName).run();
-            return true;
+                invokeQueueFlyout(null, currentIndexedButtonName).run();
+                return true;
+            }
         } catch (Exception ex) {
             Logger.printException(() -> "replaceOnItemClick failure", ex);
         }
@@ -209,17 +211,16 @@ public final class AddToQueuePatch {
     }
 
     private static Runnable invokeQueueFlyout(@Nullable Runnable original, String buttonName) {
-        if (currentButtonName.equals(shareButtonName)) {
-            enableIsFlyoutShareButton();
-        }
-
         return () -> {
-            if (currentButtonName.equals(buttonName)) {
+            if (buttonName.equals(queueButtonName)) {
                 Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
                 dismissBottomSheetFlyout();
                 dismissPopupWindowFlyout();
                 PlaylistPatch.prepareDialogBuilder(getContext(), flyoutVideoId);
                 return;
+            }
+            if (buttonName.equals(shareButtonName)) {
+                enableIsFlyoutShareButton();
             }
 
             if (original != null) {
