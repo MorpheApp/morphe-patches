@@ -21,16 +21,10 @@ import app.morphe.extension.shared.Utils;
 @SuppressWarnings("unused")
 public final class VideoInformation {
 
-    private static final float DEFAULT_PLAYBACK_SPEED = 1.0f;
-
     @NonNull
     private static String videoId = "";
     private static long videoLength = 0;
     private static long videoTime = -1;
-    private static float playbackSpeed = DEFAULT_PLAYBACK_SPEED;
-
-    @NonNull
-    private static volatile String playerResponseVideoId = "";
 
     /** Injection point. */
     public static void initialize() {
@@ -39,16 +33,11 @@ public final class VideoInformation {
         Logger.printDebug(() -> "VideoInformation: initialized");
     }
 
-    /** Injection point. */
+    /** Injection point. Stored for downstream patches; SponsorBlock routes its own id hook. */
     public static void setVideoId(@NonNull String newVideoId) {
         if (Objects.equals(newVideoId, videoId)) return;
         Logger.printDebug(() -> "VideoInformation: new video id: " + newVideoId);
         videoId = newVideoId;
-    }
-
-    /** Injection point. Called off main thread. */
-    public static void setPlayerResponseVideoId(@NonNull String id) {
-        if (!playerResponseVideoId.equals(id)) playerResponseVideoId = id;
     }
 
     /** Injection point. Called on main thread ~every 1000ms. */
@@ -61,23 +50,10 @@ public final class VideoInformation {
         if (videoLength != length) videoLength = length;
     }
 
-    /** Injection point. */
-    public static void setPlaybackSpeed(float speed) {
-        playbackSpeed = speed;
-    }
-
-    @NonNull
-    public static String getVideoId() { return videoId; }
-
-    @NonNull
-    public static String getPlayerResponseVideoId() { return playerResponseVideoId; }
-
     public static long getVideoLength() { return videoLength; }
 
     /** Returns playback time in ms, or -1 if not yet initialized. */
     public static long getVideoTime() { return videoTime; }
-
-    public static float getPlaybackSpeed() { return playbackSpeed; }
 
     /**
      * Seeks the player to the given position in milliseconds.

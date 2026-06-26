@@ -122,7 +122,7 @@ public final class MusicSponsorBlockConfig implements Configuration {
     private static final VideoInformationAdapter MUSIC_VIDEO = new VideoInformationAdapter() {
         @Override public long  getVideoTime()     { return VideoInformation.getVideoTime(); }
         @Override public long  getVideoLength()   { return VideoInformation.getVideoLength(); }
-        @Override public float getPlaybackSpeed() { return VideoInformation.getPlaybackSpeed(); }
+        @Override public float getPlaybackSpeed() { return 1.0f; } // Music has no playback-speed hook.
         @Override public boolean seekTo(long pos) { return VideoInformation.seekTo(pos); }
     };
 
