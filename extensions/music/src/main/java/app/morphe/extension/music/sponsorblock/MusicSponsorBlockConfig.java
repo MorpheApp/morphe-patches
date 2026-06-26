@@ -72,10 +72,17 @@ public final class MusicSponsorBlockConfig implements Configuration {
         SegmentPlaybackController.setCurrentVideoId(videoId);
     }
 
-    /** Injection point. */
+    /** Injection point. Inset by the rounded-end radius so segment markers align with the
+     * visible track instead of the full measured bar. */
     @SuppressWarnings("unused")
     public static void setSeekbarRectangle(@Nullable Rect rect) {
-        SegmentPlaybackController.setSeekbarRectangle(rect);
+        if (rect == null) {
+            SegmentPlaybackController.setSeekbarRectangle(null);
+            return;
+        }
+        final int inset = rect.height() / 2;
+        Rect insetRect = new Rect(rect.left + inset, rect.top, rect.right - inset, rect.bottom);
+        SegmentPlaybackController.setSeekbarRectangle(insetRect);
     }
 
     /** Injection point. Draws centered on the stored rect (no posY argument). */
