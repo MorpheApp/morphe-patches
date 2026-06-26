@@ -43,7 +43,7 @@ internal object FeedPopupWindowFlyoutFingerprint : Fingerprint (
         methodCall(
             opcode = Opcode.INVOKE_VIRTUAL,
             smali = $$"Landroid/widget/PopupWindow;->setOnDismissListener(Landroid/widget/PopupWindow$OnDismissListener;)V",
-        ),
+        )
     )
 )
 

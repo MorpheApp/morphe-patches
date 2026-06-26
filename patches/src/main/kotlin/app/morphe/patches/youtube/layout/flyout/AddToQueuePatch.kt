@@ -15,18 +15,21 @@ import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patcher.util.proxy.mutableTypes.MutableMethod.Companion.toMutable
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.youtube.misc.auth.authHookPatch
 import app.morphe.patches.youtube.misc.extension.sharedExtensionPatch
 import app.morphe.patches.youtube.misc.playservice.is_21_05_or_greater
+import app.morphe.patches.youtube.misc.playservice.is_21_12_or_greater
 import app.morphe.patches.youtube.misc.playservice.versionCheckPatch
 import app.morphe.patches.youtube.misc.settings.PreferenceScreen
 import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
+import app.morphe.patches.youtube.video.information.videoInformationPatch
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
-import com.android.tools.smali.dexlib2.builder.instruction.BuilderInstruction35c
+import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.OneRegisterInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.ReferenceInstruction
 import com.android.tools.smali.dexlib2.iface.instruction.TwoRegisterInstruction
@@ -48,7 +51,9 @@ val addToQueuePatch = bytecodePatch(
         settingsPatch,
         sharedExtensionPatch,
         settingsPatch,
-        versionCheckPatch
+        versionCheckPatch,
+        videoInformationPatch,
+        authHookPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE)
@@ -129,31 +134,6 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        FeedBottomSheetFlyoutFingerprint.method.apply {
-            findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
-                val register = getInstruction<OneRegisterInstruction>(index).registerA
-
-                addInstruction(
-                    index,
-                    "invoke-static { v$register }, $EXTENSION_CLASS->setBottomSheetFlyout(Landroid/app/Dialog;)V"
-                )
-            }
-        }
-
-        FeedPopupWindowFlyoutFingerprint.matchAll().forEach {
-            it.let {
-                val instructionIndex = it.instructionMatches.last().index
-                val instructionRegister = it.method.getInstruction<BuilderInstruction35c>(
-                    instructionIndex
-                ).registerC
-
-                it.method.addInstruction(
-                    instructionIndex,
-                    "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->setPopupWindowFlyout(Landroid/widget/PopupWindow;)V"
-                )
-            }
-        }
-
         if (!is_21_05_or_greater) {
             Fingerprint(
                 classFingerprint = FeedFlyoutButtonsInitializerFingerprint,
@@ -169,6 +149,31 @@ val addToQueuePatch = bytecodePatch(
                     nop
                 """
             )
+        }
+
+        FeedBottomSheetFlyoutFingerprint.method.apply {
+            findInstructionIndicesReversedOrThrow(Opcode.RETURN_OBJECT).forEach { index ->
+                val register = getInstruction<OneRegisterInstruction>(index).registerA
+
+                addInstruction(
+                    index,
+                    "invoke-static { v$register }, $EXTENSION_CLASS->setBottomSheetFlyout(Landroid/app/Dialog;)V"
+                )
+            }
+        }
+
+        if (is_21_12_or_greater) {
+            FeedPopupWindowFlyoutFingerprint.matchAll(2..2).forEach {
+                it.method.apply {
+                    val instructionIndex = it.instructionMatches.last().index
+                    val instructionRegister = getInstruction<FiveRegisterInstruction>(instructionIndex).registerC
+
+                    addInstruction(
+                        instructionIndex,
+                        "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->setPopupWindowFlyout(Landroid/widget/PopupWindow;)V"
+                    )
+                }
+            }
         }
     }
 }
