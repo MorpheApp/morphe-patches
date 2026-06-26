@@ -23,7 +23,6 @@ import app.morphe.patches.youtube.misc.settings.settingsPatch
 import app.morphe.patches.youtube.shared.Constants.COMPATIBILITY_YOUTUBE
 import app.morphe.util.findFreeRegister
 import app.morphe.util.findInstructionIndicesReversedOrThrow
-import app.morphe.util.insertLiteralOverride
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
 import com.android.tools.smali.dexlib2.builder.MutableMethodImplementation
@@ -87,20 +86,11 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        // Hook flyout menu protocol buffer.
-        FeedFlyoutButtonsContainerFingerprint.matchAll(3..3).forEach {
-            it.method.addInstruction(
-                0,
-                "invoke-static/range { p3 .. p3 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
-            )
-        }
-
-        FlyoutBufferDisablerLiteralFingerprint.let {
-            it.method.insertLiteralOverride(
-                it.instructionMatches.first().index,
-                "$EXTENSION_CLASS->overrideFlyoutBufferDisabler(Z)Z"
-            )
-        }
+        // Hook flyout menu protocol buffer object.
+        FeedFlyoutBufferObjectFingerprint.method.addInstruction(
+            0,
+            "invoke-static/range { p2 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/util/Map;)V"
+        )
 
         FeedFlyoutButtonsInitializerFingerprint.let {
             it.method.apply {

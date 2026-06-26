@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
@@ -74,8 +75,10 @@ public final class AddToQueuePatch {
     /**
      * Injection point.
      */
-    public static void extractVideoIdFromFlyoutBuffer(Object bufferObject) {
+    public static void extractVideoIdFromFlyoutBuffer(Map<?, ?> map) {
         try {
+            Object bufferObject = map.get("com.google.android.libraries.youtube.innertube.endpoint.tag");
+
             if (!(bufferObject instanceof ProtocolBufferFieldInterface bufferInterface)) {
                 return;
             }
@@ -84,7 +87,7 @@ public final class AddToQueuePatch {
 
             byte[] flyoutBuffer = bufferInterface.patch_getBuffer();
             if (flyoutBuffer == null) {
-                Logger.printDebug(() ->"flyoutBuffer is null"); // Should never happen.
+                Logger.printDebug(() -> "flyoutBuffer is null"); // Should never happen.
                 return;
             }
 
@@ -96,8 +99,12 @@ public final class AddToQueuePatch {
                 final int videoIdEnd = videoIdStart + youTubeVideoIdLength;
 
                 if (videoIdEnd <= flyoutBuffer.length) {
-                    flyoutVideoId = new String(flyoutBuffer, videoIdStart, youTubeVideoIdLength,
-                            StandardCharsets.US_ASCII);
+                    flyoutVideoId = new String(
+                            flyoutBuffer,
+                            videoIdStart,
+                            youTubeVideoIdLength,
+                            StandardCharsets.US_ASCII
+                    );
                     Logger.printDebug(() -> "Found flyout videoId: " + flyoutVideoId);
                 }
             }
@@ -147,7 +154,7 @@ public final class AddToQueuePatch {
 
     /**
      * Injection point.
-     *
+     * -
      * 21.04 and older.
      */
     public static boolean replaceOnItemClick(int index) {

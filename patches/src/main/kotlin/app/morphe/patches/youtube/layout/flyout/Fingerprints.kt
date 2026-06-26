@@ -11,20 +11,11 @@ import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.InstructionLocation.MatchAfterImmediately
 import app.morphe.patcher.InstructionLocation.MatchAfterWithin
 import app.morphe.patcher.fieldAccess
-import app.morphe.patcher.literal
 import app.morphe.patcher.methodCall
 import app.morphe.patcher.opcode
 import app.morphe.patcher.string
 import com.android.tools.smali.dexlib2.AccessFlags
 import com.android.tools.smali.dexlib2.Opcode
-
-internal object FlyoutBufferDisablerLiteralFingerprint : Fingerprint(
-    parameters = listOf(),
-    returnType = "Z",
-    filters = listOf(
-        literal(45386415L)
-    )
-)
 
 internal object FeedFlyoutDialogFingerprint : Fingerprint (
     classFingerprint = Fingerprint(
@@ -40,11 +31,16 @@ internal object FeedFlyoutDialogFingerprint : Fingerprint (
     parameters = listOf("Landroid/os/Bundle;")
 )
 
-// This could be more precise, but is difficult to fingerprint.
-internal object FeedFlyoutButtonsContainerFingerprint : Fingerprint(
+internal object FeedFlyoutBufferObjectFingerprint : Fingerprint(
     accessFlags = listOf(AccessFlags.PUBLIC, AccessFlags.FINAL),
     returnType = "V",
-    parameters = listOf("L", "Landroid/view/View;", "Ljava/lang/Object;", "L"),
+    parameters = listOf("L", "Ljava/util/Map;"),
+    strings = listOf(
+        "com.google.android.libraries.youtube.rendering.elements.sender_view",
+        "com.google.android.libraries.youtube.innertube.endpoint.tag",
+        "com.google.android.libraries.youtube.innertube.bundle",
+        "com.google.android.libraries.youtube.logging.interaction_logger"
+    )
 )
 
 internal object FeedFlyoutButtonsInitializerFingerprint : Fingerprint(
