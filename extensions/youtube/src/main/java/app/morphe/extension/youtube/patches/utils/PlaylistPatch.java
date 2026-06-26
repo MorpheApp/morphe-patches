@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches.utils;
 import static app.morphe.extension.shared.StringRef.str;
 import static app.morphe.extension.shared.innertube.utils.AuthUtils.getRequestHeader;
 import static app.morphe.extension.shared.innertube.utils.AuthUtils.isNotLoggedIn;
+import static app.morphe.extension.youtube.patches.LoadVideoPatch.reloadVideo;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -382,19 +383,25 @@ public class PlaylistPatch {
                         return;
                     }
                     if (reload) {
-                        url = "https://youtu.be/" + VideoInformation.getVideoId()
-                                + "?list=" + currentPlaylistId;
+                        url = VideoInformation.getVideoId() +
+                                "?list=" +
+                                currentPlaylistId;
                     } else {
-                        url = "https://youtu.be/" + currentVideoId + "?list=" + currentPlaylistId;
+                        url = currentVideoId +
+                                "?list=" +
+                                currentPlaylistId;
                     }
-                } else {
-                    url = "https://www.youtube.com/playlist?list=" + currentPlaylistId;
-                }
 
-                Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(url));
-                intent.setPackage(context.getPackageName());
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
+                    reloadVideo(url, reload);
+                } else {
+                    url = "https://www.youtube.com/playlist?list=" +
+                            currentPlaylistId;
+
+                    Intent intent = new Intent("android.intent.action.VIEW", Uri.parse(url));
+                    intent.setPackage(context.getPackageName());
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
             } catch (Exception ex) {
                 Logger.printException(() -> "openQueue failure", ex);
             }

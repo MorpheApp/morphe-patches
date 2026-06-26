@@ -41,7 +41,7 @@ public class ReloadVideoButton {
                     null,
                     "morphe_reload_video_button",
                     Settings.RELOAD_VIDEO_BUTTON::get,
-                    v -> LoadVideoPatch.reloadVideo(),
+                    v -> LoadVideoPatch.initializeReloadVideo(),
                     null
             );
         } catch (Exception ex) {
