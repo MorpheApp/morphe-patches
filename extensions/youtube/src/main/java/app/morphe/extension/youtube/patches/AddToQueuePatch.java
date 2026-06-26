@@ -10,6 +10,7 @@ package app.morphe.extension.youtube.patches;
 import static app.morphe.extension.shared.Utils.getContext;
 
 import android.app.Dialog;
+import android.util.Log;
 import android.util.Pair;
 import android.widget.PopupWindow;
 
@@ -40,8 +41,11 @@ public final class AddToQueuePatch {
 
     private static final String queueButtonName = "QUEUE_PLAY_NEXT";
 
-    private static final byte[] VIDEO_ID_PREFIX_BYTES =
-            "https://i.ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII);
+    private static final List<byte[]> VIDEO_ID_PREFIXES_BYTES =
+            List.of(
+                    "https://i.ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII),
+                    "https://www.youtube.com/watch?v=".getBytes(StandardCharsets.US_ASCII)
+            );
 
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
     private static String flyoutVideoId = "";
@@ -107,21 +111,24 @@ public final class AddToQueuePatch {
                 return;
             }
 
-            final int index = indexOf(flyoutBuffer, VIDEO_ID_PREFIX_BYTES);
+            for (byte[] VIDEO_ID_PREFIX_BYTES : VIDEO_ID_PREFIXES_BYTES) {
+                final int index = indexOf(flyoutBuffer, VIDEO_ID_PREFIX_BYTES);
 
-            if (index >= 0) {
-                final int youTubeVideoIdLength = 11;
-                final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
-                final int videoIdEnd = videoIdStart + youTubeVideoIdLength;
+                if (index >= 0) {
+                    final int youTubeVideoIdLength = 11;
+                    final int videoIdStart = index + VIDEO_ID_PREFIX_BYTES.length;
+                    final int videoIdEnd = videoIdStart + youTubeVideoIdLength;
 
-                if (videoIdEnd <= flyoutBuffer.length) {
-                    flyoutVideoId = new String(
-                            flyoutBuffer,
-                            videoIdStart,
-                            youTubeVideoIdLength,
-                            StandardCharsets.US_ASCII
-                    );
-                    Logger.printDebug(() -> "Found flyout videoId: " + flyoutVideoId);
+                    if (videoIdEnd <= flyoutBuffer.length) {
+                        flyoutVideoId = new String(
+                                flyoutBuffer,
+                                videoIdStart,
+                                youTubeVideoIdLength,
+                                StandardCharsets.US_ASCII
+                        );
+                        Logger.printDebug(() -> "Found flyout videoId: " + flyoutVideoId);
+                        break;
+                    }
                 }
             }
         } catch (Exception ex) {
