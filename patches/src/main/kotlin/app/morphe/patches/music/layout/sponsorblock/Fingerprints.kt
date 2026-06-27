@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to Morphe contributions.
  */
 
-package app.morphe.patches.music.misc.sponsorblock
+package app.morphe.patches.music.layout.sponsorblock
 
 import app.morphe.patcher.Fingerprint
 

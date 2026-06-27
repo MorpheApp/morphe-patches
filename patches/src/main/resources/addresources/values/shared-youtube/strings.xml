@@ -39,119 +39,7 @@ Second \"item\" text"</string>
     <string name="morphe_custom_branding_notification_icon_entry_2" translatable="false">Morphe</string>
     <string name="morphe_custom_branding_notification_icon_entry_3">Morphe play</string>
 
-    <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
-    <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>
-    <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br>&lt;br>This most likely is caused by a DNS ad blocker or network proxy.&lt;br>&lt;br>To fix this, whitelist &lt;b>s.youtube.com&lt;/b> or turn off all DNS blockers and proxies.</string>
-    <string name="morphe_check_watch_history_domain_name_dialog_ignore">Do not show again</string>
-
-    <!-- misc.fix.playback.spoofVideoStreamsPatch -->
-    <string name="morphe_spoof_video_streams_screen_title">Spoof video streams</string>
-    <string name="morphe_spoof_video_streams_screen_summary">Configure client spoofing to prevent playback issues</string>
-    <string name="morphe_spoof_video_streams_title">Spoof video streams</string>
-    <string name="morphe_spoof_video_streams_summary">"Fixes playback issues for most users by requesting a compatible video stream
-
-If you are a YouTube Premium user, this setting may not be required"</string>
-    <string name="morphe_spoof_video_streams_no_clients_toast">Could not fetch any client streams</string>
-    <string name="morphe_spoof_video_streams_user_dialog_message">Turning off this setting may cause playback issues.</string>
-    <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
-         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
-    <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Try enabling: Spoof video streams > Android VR sign in</string>
-    <string name="morphe_spoof_video_streams_client_type_title">Default client</string>
-    <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR sign in</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Not signed in to Android VR. Tap here to sign in</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Currently signed into Android VR</string>
-    <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">To use this feature, change \'Default client\' to Android VR</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sign in to Android VR</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Signing in to Android VR can fix playback issues for some users
-
-To sign in, press continue below"</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continue</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Sign out</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructions</string>
-    <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activation code: %s
-
-1. Tap 'Open website' below to open the 'Connect a device' website
-2. Paste from the clipboard (or type out) the activation code shown above
-3. Sign in to Google if prompted. If you have multiple accounts then choose this YouTube account
-4. Tap 'Allow YouTube VR' access
-5. Return to this app after reaching the 'Device connected' message"</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Open website</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Failed to issue an activation code</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Failed to issue an authentication token</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Successfully signed in</string>
-    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentication saved
-
-• Your Morphe settings will not import/export Android VR authentication
-• If this app is unused for 6 months then Google will remove this authentication
-• You will need to sign in again if you change your Google password or deregister this device from your Google settings"</string>
-    <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
-    <string name="morphe_oauth2_connection_failure_status_400">Android VR sign in expired, try signing in to VR again</string>
-    <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %d)</string>
-    <string name="morphe_oauth2_connection_failure_generic">OAuth2 is temporarily not available</string>
-    <string name="morphe_oauth2_connection_failure_auth_not_approved">Cannot sign in to VR, website authentication was not approved</string>
-    <string name="morphe_oauth2_connection_failure_auth_error">Cannot sign in to VR: %s</string>
-    <string name="morphe_oauth2_toast_reset">Logged out of Android VR</string>
-    <string name="morphe_oauth2_toast_invalid">Invalid VR sign in token, try signing in to VR again</string>
-    <string name="morphe_spoof_video_streams_disable_player_js_update_title">Disable player JavaScript update</string>
-    <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Locks the player JavaScript to a specific version
-
-• A valid player JavaScript hash is required
-• Player JavaScript hashes are valid for approximately one month, and outdated hashes will be revoked by GVS
-• Playback fails if the hash is revoked"</string>
-    <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"You need to provide a valid player JavaScript hash.
-
-Playback will fail if the Player JavaScript hash is outdated."</string>
-    <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player JavaScript hash</string>
-    <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Enter a valid player JavaScript hash</string>
-
-    <!-- misc.quic.disableQUICProtocolPatch -->
-    <string name="morphe_disable_quic_protocol_title">Disable QUIC protocol</string>
-
-    <!-- misc.audio.drc.disableDRCAudioPatch  -->
-    <string name="morphe_disable_drc_audio_title">Disable DRC audio</string>
-
-    <!-- misc.audio.tracks.forceOriginalAudioPatch -->
-    <string name="morphe_force_original_audio_title">Force original audio language</string>
-    <string name="morphe_force_original_audio_summary">Always plays the video\'s original audio track instead of a dubbed version</string>
-
-    <!-- misc.proxy.networkProxyPatch -->
-    <string name="morphe_proxy_screen_title">Network proxy</string>
-    <string name="morphe_proxy_screen_summary">Route supported network requests through a proxy</string>
-    <string name="morphe_proxy_enabled_title">Enable proxy</string>
-    <string name="morphe_proxy_enabled_summary">Routes supported network requests through a configured HTTP or HTTPS proxy</string>
-    <string name="morphe_proxy_host_title">Proxy host</string>
-    <string name="morphe_proxy_host_summary">Hostname or IP address of the proxy server</string>
-    <string name="morphe_proxy_port_title">Proxy port</string>
-    <string name="morphe_proxy_port_summary">Port of the proxy server</string>
-    <string name="morphe_proxy_https_title">Use HTTPS proxy</string>
-    <string name="morphe_proxy_https_summary">Use HTTPS to connect to the proxy server instead of HTTP</string>
-    <string name="morphe_proxy_auth_enabled_title">Proxy authentication</string>
-    <string name="morphe_proxy_auth_enabled_summary">Sends Basic authentication with proxy requests</string>
-    <string name="morphe_proxy_auth_username_title">Proxy username</string>
-    <string name="morphe_proxy_auth_username_summary">Username for Basic proxy authentication</string>
-    <string name="morphe_proxy_auth_password_title">Proxy password</string>
-    <string name="morphe_proxy_auth_password_summary">Password for Basic proxy authentication</string>
-    <string name="morphe_proxy_allow_direct_fallback_title">Allow direct fallback</string>
-    <string name="morphe_proxy_allow_direct_fallback_summary">Connect directly if the proxy fails</string>
-
-    <!-- ad.hideFullscreenAdsPatch -->
-    <string name="morphe_hide_fullscreen_ads_title">Hide fullscreen ads</string>
-
-    <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
-    <string name="morphe_force_original_audio_not_available">To use this feature, change \'Spoof video streams\' to Android Reel or TV</string>
-
-    <!-- misc.privacy.sanitizeSharingLinksPatch -->
-    <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
-    <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
-    <string name="morphe_replace_music_with_youtube_title">Change share links to youtube.com</string>
-    <string name="morphe_replace_music_with_youtube_summary">Replaces music.youtube.com to youtube.com in shared links</string>
-    <string name="morphe_replace_links_with_shortener_title">Change share links to youtu.be</string>
-    <string name="morphe_replace_links_with_shortener_summary">Forces videos to use the shortened youtu.be URL format</string>
-
-    <!-- misc.sponsorblock.sponsorBlockPatch -->
+    <!-- layout.sponsorblock.sponsorBlockPatch -->
     <string name="morphe_sb_enabled_title">Enable SponsorBlock</string>
     <string name="morphe_sb_enabled_summary">SponsorBlock is a crowdsourced system for skipping annoying parts of YouTube videos</string>
     <string name="morphe_sb_appearance_category_title">Appearance</string>
@@ -377,4 +265,116 @@ If you\'re not submitting a highlight, tap Cancel and mark the second location"<
     <string name="morphe_sb_about_api_summary">"Data is provided by the SponsorBlock API.
 
 Tap here to open Sponsor.ajay.app and see downloads for other platforms"</string>
+
+    <!-- misc.dns.checkWatchHistoryDomainNameResolutionPatch -->
+    <string name="morphe_check_watch_history_domain_name_dialog_title">Morphe Notice</string>
+    <string name="morphe_check_watch_history_domain_name_dialog_message">Your watch history is not being saved.&lt;br>&lt;br>This most likely is caused by a DNS ad blocker or network proxy.&lt;br>&lt;br>To fix this, whitelist &lt;b>s.youtube.com&lt;/b> or turn off all DNS blockers and proxies.</string>
+    <string name="morphe_check_watch_history_domain_name_dialog_ignore">Do not show again</string>
+
+    <!-- misc.fix.playback.spoofVideoStreamsPatch -->
+    <string name="morphe_spoof_video_streams_screen_title">Spoof video streams</string>
+    <string name="morphe_spoof_video_streams_screen_summary">Configure client spoofing to prevent playback issues</string>
+    <string name="morphe_spoof_video_streams_title">Spoof video streams</string>
+    <string name="morphe_spoof_video_streams_summary">"Fixes playback issues for most users by requesting a compatible video stream
+
+If you are a YouTube Premium user, this setting may not be required"</string>
+    <string name="morphe_spoof_video_streams_no_clients_toast">Could not fetch any client streams</string>
+    <string name="morphe_spoof_video_streams_user_dialog_message">Turning off this setting may cause playback issues.</string>
+    <!-- "Spoof video streams" must use the same translation as morphe_spoof_video_streams_title.
+         "Sign in to Android VR" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_about_title -->
+    <string name="morphe_spoof_video_streams_no_clients_suggest_vr_toast">Try enabling: Spoof video streams > Android VR sign in</string>
+    <string name="morphe_spoof_video_streams_client_type_title">Default client</string>
+    <!-- Ensure this translation matches the translation of morphe_spoof_video_streams_no_clients_suggest_vr_toast -->
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_title">Android VR sign in</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary">Not signed in to Android VR. Tap here to sign in</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_signed_in">Currently signed into Android VR</string>
+    <!-- "Default client" must be the same translated text as morphe_spoof_video_streams_client_type_title -->
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_about_summary_disabled">To use this feature, change \'Default client\' to Android VR</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_title">Sign in to Android VR</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_not_signed_in_message">"Signing in to Android VR can fix playback issues for some users
+
+To sign in, press continue below"</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_continue">Continue</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_dialog_reset">Sign out</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_title">Instructions</string>
+    <!-- "Open website" must use the same translation as morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website -->
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_message">"Activation code: %s
+
+1. Tap 'Open website' below to open the 'Connect a device' website
+2. Paste from the clipboard (or type out) the activation code shown above
+3. Sign in to Google if prompted. If you have multiple accounts then choose this YouTube account
+4. Tap 'Allow YouTube VR' access
+5. Return to this app after reaching the 'Device connected' message"</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_activation_code_dialog_open_website">Open website</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_activation_code_failed">Failed to issue an activation code</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_toast_get_authorization_code_failed">Failed to issue an authentication token</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_title">Successfully signed in</string>
+    <string name="morphe_spoof_video_streams_sign_in_android_vr_success_dialog_message">"Authentication saved
+
+• Your Morphe settings will not import/export Android VR authentication
+• If this app is unused for 6 months then Google will remove this authentication
+• You will need to sign in again if you change your Google password or deregister this device from your Google settings"</string>
+    <string name="morphe_oauth2_connection_failure_timeout">OAuth2 is temporarily not available (API timed out)</string>
+    <string name="morphe_oauth2_connection_failure_status_400">Android VR sign in expired, try signing in to VR again</string>
+    <string name="morphe_oauth2_connection_failure_status">OAuth2 is temporarily not available (status %d)</string>
+    <string name="morphe_oauth2_connection_failure_generic">OAuth2 is temporarily not available</string>
+    <string name="morphe_oauth2_connection_failure_auth_not_approved">Cannot sign in to VR, website authentication was not approved</string>
+    <string name="morphe_oauth2_connection_failure_auth_error">Cannot sign in to VR: %s</string>
+    <string name="morphe_oauth2_toast_reset">Logged out of Android VR</string>
+    <string name="morphe_oauth2_toast_invalid">Invalid VR sign in token, try signing in to VR again</string>
+    <string name="morphe_spoof_video_streams_disable_player_js_update_title">Disable player JavaScript update</string>
+    <string name="morphe_spoof_video_streams_disable_player_js_update_summary">"Locks the player JavaScript to a specific version
+
+• A valid player JavaScript hash is required
+• Player JavaScript hashes are valid for approximately one month, and outdated hashes will be revoked by GVS
+• Playback fails if the hash is revoked"</string>
+    <string name="morphe_spoof_video_streams_disable_player_js_update_user_dialog_message">"You need to provide a valid player JavaScript hash.
+
+Playback will fail if the Player JavaScript hash is outdated."</string>
+    <string name="morphe_spoof_video_streams_player_js_hash_value_title">Player JavaScript hash</string>
+    <string name="morphe_spoof_video_streams_player_js_hash_value_summary">Enter a valid player JavaScript hash</string>
+
+    <!-- misc.quic.disableQUICProtocolPatch -->
+    <string name="morphe_disable_quic_protocol_title">Disable QUIC protocol</string>
+
+    <!-- misc.audio.drc.disableDRCAudioPatch  -->
+    <string name="morphe_disable_drc_audio_title">Disable DRC audio</string>
+
+    <!-- misc.audio.tracks.forceOriginalAudioPatch -->
+    <string name="morphe_force_original_audio_title">Force original audio language</string>
+    <string name="morphe_force_original_audio_summary">Always plays the video\'s original audio track instead of a dubbed version</string>
+
+    <!-- misc.proxy.networkProxyPatch -->
+    <string name="morphe_proxy_screen_title">Network proxy</string>
+    <string name="morphe_proxy_screen_summary">Route supported network requests through a proxy</string>
+    <string name="morphe_proxy_enabled_title">Enable proxy</string>
+    <string name="morphe_proxy_enabled_summary">Routes supported network requests through a configured HTTP or HTTPS proxy</string>
+    <string name="morphe_proxy_host_title">Proxy host</string>
+    <string name="morphe_proxy_host_summary">Hostname or IP address of the proxy server</string>
+    <string name="morphe_proxy_port_title">Proxy port</string>
+    <string name="morphe_proxy_port_summary">Port of the proxy server</string>
+    <string name="morphe_proxy_https_title">Use HTTPS proxy</string>
+    <string name="morphe_proxy_https_summary">Use HTTPS to connect to the proxy server instead of HTTP</string>
+    <string name="morphe_proxy_auth_enabled_title">Proxy authentication</string>
+    <string name="morphe_proxy_auth_enabled_summary">Sends Basic authentication with proxy requests</string>
+    <string name="morphe_proxy_auth_username_title">Proxy username</string>
+    <string name="morphe_proxy_auth_username_summary">Username for Basic proxy authentication</string>
+    <string name="morphe_proxy_auth_password_title">Proxy password</string>
+    <string name="morphe_proxy_auth_password_summary">Password for Basic proxy authentication</string>
+    <string name="morphe_proxy_allow_direct_fallback_title">Allow direct fallback</string>
+    <string name="morphe_proxy_allow_direct_fallback_summary">Connect directly if the proxy fails</string>
+
+    <!-- ad.hideFullscreenAdsPatch -->
+    <string name="morphe_hide_fullscreen_ads_title">Hide fullscreen ads</string>
+
+    <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->
+    <string name="morphe_force_original_audio_not_available">To use this feature, change \'Spoof video streams\' to Android Reel or TV</string>
+
+    <!-- misc.privacy.sanitizeSharingLinksPatch -->
+    <string name="morphe_sanitize_sharing_links_title">Sanitize sharing links</string>
+    <string name="morphe_sanitize_sharing_links_summary">Removes tracking query parameters from shared links</string>
+    <string name="morphe_replace_music_with_youtube_title">Change share links to youtube.com</string>
+    <string name="morphe_replace_music_with_youtube_summary">Replaces music.youtube.com to youtube.com in shared links</string>
+    <string name="morphe_replace_links_with_shortener_title">Change share links to youtu.be</string>
+    <string name="morphe_replace_links_with_shortener_summary">Forces videos to use the shortened youtu.be URL format</string>
 </resources>
