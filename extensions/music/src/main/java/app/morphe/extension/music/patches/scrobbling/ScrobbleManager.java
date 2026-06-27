@@ -64,24 +64,57 @@ public class ScrobbleManager {
     private String cleanTitle(String title) {
         if (title == null) return null;
         String clean = title;
-        clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](official\\s+)?(video|audio|music\\s+video|lyric\\s+video|visualizer)[\uFF09\\)\\]]", "");
-        clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](\\d{4}\\s+)?remaster(ed)?(\\s+\\d{4})?[\uFF09\\)\\]]", "");
-        clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[]live(\\s+at\\s+.*|\\s+\\d{4})?[\uFF09\\)\\]]", "");
-        clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](mono|stereo|hq|hd)[\uFF09\\)\\]]", "");
+        if (Settings.SCROBBLING_METADATA_CLEANUP.get()) {
+            clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](official\\s+)?(video|audio|music\\s+video|lyric\\s+video|visualizer)[\uFF09\\)\\]]", "");
+            clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](\\d{4}\\s+)?remaster(ed)?(\\s+\\d{4})?[\uFF09\\)\\]]", "");
+            clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[]live(\\s+at\\s+.*|\\s+\\d{4})?[\uFF09\\)\\]]", "");
+            clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](mono|stereo|hq|hd)[\uFF09\\)\\]]", "");
+
+            String customRegex = Settings.SCROBBLING_CUSTOM_REGEX.get();
+            if (customRegex != null && !customRegex.isBlank()) {
+                try {
+                    clean = clean.replaceAll(customRegex, "");
+                } catch (Exception e) {
+                    Logger.printException(() -> "Error applying custom regex: " + customRegex, e);
+                }
+            }
+        }
         return clean.replaceAll("\\s+", " ").trim();
     }
 
     private String cleanArtist(String artist) {
         if (artist == null) return null;
         String clean = artist;
-        clean = clean.replaceAll("(?i)\\s*-\\s*topic$", "");
+        if (Settings.SCROBBLING_METADATA_CLEANUP.get()) {
+            clean = clean.replaceAll("(?i)\\s*-\\s*topic$", "");
+
+            String customRegex = Settings.SCROBBLING_CUSTOM_REGEX.get();
+            if (customRegex != null && !customRegex.isBlank()) {
+                try {
+                    clean = clean.replaceAll(customRegex, "");
+                } catch (Exception e) {
+                    Logger.printException(() -> "Error applying custom regex: " + customRegex, e);
+                }
+            }
+        }
         return clean.replaceAll("\\s+", " ").trim();
     }
 
     private String cleanAlbum(String album) {
         if (album == null) return null;
         String clean = album;
-        clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](\\d{4}\\s+)?remaster(ed)?(\\s+\\d{4})?[\uFF09\\)\\]]", "");
+        if (Settings.SCROBBLING_METADATA_CLEANUP.get()) {
+            clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](\\d{4}\\s+)?remaster(ed)?(\\s+\\d{4})?[\uFF09\\)\\]]", "");
+
+            String customRegex = Settings.SCROBBLING_CUSTOM_REGEX.get();
+            if (customRegex != null && !customRegex.isBlank()) {
+                try {
+                    clean = clean.replaceAll(customRegex, "");
+                } catch (Exception e) {
+                    Logger.printException(() -> "Error applying custom regex: " + customRegex, e);
+                }
+            }
+        }
         return clean.replaceAll("\\s+", " ").trim();
     }
 

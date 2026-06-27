@@ -20,6 +20,7 @@ import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreferen
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
+import app.morphe.patches.shared.misc.settings.preference.TextPreference
 import app.morphe.patches.youtube.layout.returnyoutubedislike.DislikeFingerprint
 import app.morphe.patches.youtube.layout.returnyoutubedislike.EndpointServiceNameFingerprint
 import app.morphe.patches.youtube.layout.returnyoutubedislike.likeEndpointParserFingerprint
@@ -124,6 +125,13 @@ val scrobblingPatch = bytecodePatch(
                     )
                 )
             ),
+            PreferenceCategory(
+                key = "morphe_settings_music_scrobbling_metadata",
+                preferences = setOf(
+                    SwitchPreference("morphe_music_scrobbling_metadata_cleanup"),
+                    TextPreference("morphe_music_scrobbling_custom_regex")
+                )
+            ),
             PreferenceScreenPreference(
                 key = "morphe_music_scrobbling_about",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
@@ -138,6 +146,7 @@ val scrobblingPatch = bytecodePatch(
                     NonInteractivePreference("morphe_music_scrobbling_about_battery"),
                     NonInteractivePreference("morphe_music_scrobbling_about_love"),
                     NonInteractivePreference("morphe_music_scrobbling_about_rules"),
+                    NonInteractivePreference("morphe_music_scrobbling_about_cleanup"),
                     NonInteractivePreference("morphe_music_scrobbling_about_credit")
                 )
             )
