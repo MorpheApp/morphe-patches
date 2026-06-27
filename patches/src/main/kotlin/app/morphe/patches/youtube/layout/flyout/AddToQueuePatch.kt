@@ -92,11 +92,25 @@ val addToQueuePatch = bytecodePatch(
             }
         }
 
-        // Hook flyout menu protocol buffer object.
+        // region Hook flyout menu protocol buffer object.
         FeedFlyoutBufferObjectFingerprint.method.addInstruction(
             0,
             "invoke-static/range { p2 .. p2 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/util/Map;)V"
         )
+
+        FullHistoryFlyoutBufferObjectFingerprint.let {
+            val instructionIndex = it.instructionMatches[2].index
+            val instructionRegister = it.method.getInstruction<OneRegisterInstruction>(
+                instructionIndex
+            ).registerA
+
+            it.method.addInstruction(
+                instructionIndex + 1,
+                "invoke-static { v$instructionRegister }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/lang/Object;)V"
+            )
+        }
+
+        // end region
 
         FeedFlyoutButtonsInitializerFingerprint.let {
             it.method.apply {

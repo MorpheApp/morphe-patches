@@ -70,7 +70,6 @@ public final class AddToQueuePatch {
             return;
         }
         flyoutDialog.dismiss();
-        flyoutVideoId = "";
     }
 
     /**
@@ -85,15 +84,23 @@ public final class AddToQueuePatch {
             return;
         }
         flyoutPopupWindow.dismiss();
-        flyoutVideoId = "";
     }
 
     /**
      * Injection point.
      */
     public static void extractVideoIdFromFlyoutBuffer(Map<?, ?> map) {
+        extractVideoIdFromFlyoutBuffer(map.get("com.google.android.libraries.youtube.innertube.endpoint.tag"));
+    }
+
+    /**
+     * Injection point.
+     */
+    public static void extractVideoIdFromFlyoutBuffer(Object bufferObject) {
         try {
-            Object bufferObject = map.get("com.google.android.libraries.youtube.innertube.endpoint.tag");
+            flyoutVideoId = "";
+
+            Logger.printDebug(() -> "FlyoutBuffer class is: " + bufferObject.getClass());
 
             if (!(bufferObject instanceof ProtocolBufferFieldInterface bufferInterface)) {
                 return;
