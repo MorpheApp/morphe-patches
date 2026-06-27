@@ -5,15 +5,16 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.listenbrainz;
+package app.morphe.extension.music.patches.scrobbling;
 
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.os.Handler;
 import android.os.Looper;
+import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
+import app.morphe.extension.music.patches.scrobbling.lastfm.LastFMTokenStore;
+import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainz;
 import app.morphe.extension.music.settings.Settings;
-import app.morphe.extension.music.patches.lastfm.LastFM;
-import app.morphe.extension.music.patches.lastfm.LastFMTokenStore;
 import app.morphe.extension.shared.Logger;
 
 public class ScrobbleManager {

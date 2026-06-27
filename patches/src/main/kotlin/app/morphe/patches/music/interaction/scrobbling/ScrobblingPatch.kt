@@ -19,7 +19,7 @@ import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/listenbrainz/ListenBrainzHook;"
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/scrobbling/ScrobbleHook;"
 
 @Suppress("unused")
 val scrobblingPatch = bytecodePatch(

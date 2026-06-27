@@ -26,8 +26,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import app.morphe.extension.music.patches.listenbrainz.ListenBrainz;
-import app.morphe.extension.music.patches.listenbrainz.ListenBrainzTokenStore;
+import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainz;
+import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainzTokenStore;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;

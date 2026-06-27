@@ -5,18 +5,18 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.listenbrainz;
+package app.morphe.extension.music.patches.scrobbling;
 
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import app.morphe.extension.shared.Logger;
 
-public class ListenBrainzHook {
+public class ScrobbleHook {
     public static void onSetMetadata(MediaMetadata metadata) {
         try {
             ScrobbleManager.getInstance().onSetMetadata(metadata);
         } catch (Throwable t) {
-            Logger.printException(() -> "ListenBrainzHook: onSetMetadata failed", t);
+            Logger.printException(() -> "ScrobbleHook: onSetMetadata failed", t);
         }
     }
 
@@ -24,7 +24,7 @@ public class ListenBrainzHook {
         try {
             ScrobbleManager.getInstance().onSetPlaybackState(state);
         } catch (Throwable t) {
-            Logger.printException(() -> "ListenBrainzHook: onSetPlaybackState failed", t);
+            Logger.printException(() -> "ScrobbleHook: onSetPlaybackState failed", t);
         }
     }
 }

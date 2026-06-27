@@ -25,8 +25,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import app.morphe.extension.music.patches.lastfm.LastFM;
-import app.morphe.extension.music.patches.lastfm.LastFMTokenStore;
+import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
+import app.morphe.extension.music.patches.scrobbling.lastfm.LastFMTokenStore;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;

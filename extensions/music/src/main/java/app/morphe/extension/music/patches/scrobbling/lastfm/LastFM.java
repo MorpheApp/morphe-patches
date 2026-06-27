@@ -5,7 +5,7 @@
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
 
-package app.morphe.extension.music.patches.lastfm;
+package app.morphe.extension.music.patches.scrobbling.lastfm;
 
 import com.google.gson.Gson;
 
