@@ -67,6 +67,7 @@ public final class AddToQueuePatch {
             return;
         }
         flyoutDialog.dismiss();
+        flyoutVideoId = "";
     }
 
     /**
@@ -81,6 +82,7 @@ public final class AddToQueuePatch {
             return;
         }
         flyoutPopupWindow.dismiss();
+        flyoutVideoId = "";
     }
 
     /**
@@ -214,9 +216,9 @@ public final class AddToQueuePatch {
         return () -> {
             if (buttonName.equals(queueButtonName)) {
                 Logger.printDebug(() -> "Opening custom queue flyout with videoId: " + flyoutVideoId);
-                dismissBottomSheetFlyout();
-                dismissPopupWindowFlyout();
                 PlaylistPatch.prepareDialogBuilder(getContext(), flyoutVideoId);
+                dismissBottomSheetFlyout(); // Must dismiss after showing dialog.
+                dismissPopupWindowFlyout();
                 return;
             }
             if (buttonName.equals(shareButtonName)) {
