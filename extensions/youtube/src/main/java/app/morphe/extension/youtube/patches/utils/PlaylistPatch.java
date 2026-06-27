@@ -18,7 +18,6 @@ import android.content.Intent;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -386,8 +385,6 @@ public class PlaylistPatch {
                     }
                     if (reload) {
                         final long videoTime = VideoInformation.getVideoTime();
-
-                        Log.d("LOLOLOLO", String.valueOf(videoTime));
 
                         url = "https://youtu.be/" +
                                 VideoInformation.getVideoId() +

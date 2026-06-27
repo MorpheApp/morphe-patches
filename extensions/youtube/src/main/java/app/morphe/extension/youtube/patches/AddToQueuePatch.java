@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
-import app.morphe.extension.youtube.patches.components.LithoFilterPatch;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
