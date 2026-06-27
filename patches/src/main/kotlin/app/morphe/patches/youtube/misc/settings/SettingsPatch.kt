@@ -140,7 +140,7 @@ private val settingsResourcePatch = resourcePatch {
                 "morphe_settings_screen_11_misc.xml",
                 "morphe_settings_screen_11_misc_bold.xml",
                 "morphe_settings_screen_12_video.xml",
-                "morphe_settings_screen_12_video_bold.xml",
+                "morphe_settings_screen_12_video_bold.xml"
             )
         )
 
@@ -242,7 +242,7 @@ val settingsPatch = bytecodePatch(
             layout = "@layout/preference_with_icon",
             summaryKey = null,
             tag = "app.morphe.extension.shared.settings.preference.about.MorpheAboutPreference",
-            selectable = true,
+            selectable = true
         )
 
         PreferenceScreen.GENERAL.addPreferences(
@@ -250,7 +250,7 @@ val settingsPatch = bytecodePatch(
         )
 
         PreferenceScreen.GENERAL.addPreferences(
-            SwitchPreference("morphe_settings_search_history"),
+            SwitchPreference("morphe_settings_search_history")
         )
 
         PreferenceScreen.GENERAL.addPreferences(
@@ -413,7 +413,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_01_ads",
         iconBold = "@drawable/morphe_settings_screen_01_ads_bold",
-        layout = "@layout/preference_with_icon",
+        layout = "@layout/preference_with_icon"
     )
     val ALTERNATIVE_THUMBNAILS = Screen(
         key = "morphe_settings_screen_02_alt_thumbnails",
@@ -421,42 +421,42 @@ object PreferenceScreen : BasePreferenceScreen() {
         icon = "@drawable/morphe_settings_screen_02_alt_thumbnails",
         iconBold = "@drawable/morphe_settings_screen_02_alt_thumbnails_bold",
         layout = "@layout/preference_with_icon",
-        sorting = Sorting.UNSORTED,
+        sorting = Sorting.UNSORTED
     )
     val FEED = Screen(
         key = "morphe_settings_screen_03_feed",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_03_feed",
         iconBold = "@drawable/morphe_settings_screen_03_feed_bold",
-        layout = "@layout/preference_with_icon",
+        layout = "@layout/preference_with_icon"
     )
     val GENERAL = Screen(
         key = "morphe_settings_screen_04_general",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_04_general",
         iconBold = "@drawable/morphe_settings_screen_04_general_bold",
-        layout = "@layout/preference_with_icon",
+        layout = "@layout/preference_with_icon"
     )
     val PLAYER = Screen(
         key = "morphe_settings_screen_05_player",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_05_player",
         iconBold = "@drawable/morphe_settings_screen_05_player_bold",
-        layout = "@layout/preference_with_icon",
+        layout = "@layout/preference_with_icon"
     )
     val SHORTS = Screen(
         key = "morphe_settings_screen_06_shorts",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_06_shorts",
         iconBold = "@drawable/morphe_settings_screen_06_shorts_bold",
-        layout = "@layout/preference_with_icon",
+        layout = "@layout/preference_with_icon"
     )
     val SEEKBAR = Screen(
         key = "morphe_settings_screen_07_seekbar",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_07_seekbar",
         iconBold = "@drawable/morphe_settings_screen_07_seekbar_bold",
-        layout = "@layout/preference_with_icon",
+        layout = "@layout/preference_with_icon"
     )
     val SWIPE_CONTROLS = Screen(
         key = "morphe_settings_screen_08_swipe_controls",
@@ -464,7 +464,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         icon = "@drawable/morphe_settings_screen_08_swipe_controls",
         iconBold = "@drawable/morphe_settings_screen_08_swipe_controls_bold",
         layout = "@layout/preference_with_icon",
-        sorting = Sorting.UNSORTED,
+        sorting = Sorting.UNSORTED
     )
     val RETURN_YOUTUBE_DISLIKE = Screen(
         key = "morphe_settings_screen_09_return_youtube_dislike",
@@ -472,7 +472,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         icon = "@drawable/morphe_settings_screen_09_return_youtube_dislike",
         iconBold = "@drawable/morphe_settings_screen_09_return_youtube_dislike_bold",
         layout = "@layout/preference_with_icon",
-        sorting = Sorting.UNSORTED,
+        sorting = Sorting.UNSORTED
     )
     val SPONSORBLOCK = Screen(
         key = "morphe_settings_screen_10_sponsorblock",
@@ -480,14 +480,14 @@ object PreferenceScreen : BasePreferenceScreen() {
         icon = "@drawable/morphe_settings_screen_10_sponsorblock",
         iconBold = "@drawable/morphe_settings_screen_10_sponsorblock_bold",
         layout = "@layout/preference_with_icon",
-        sorting = Sorting.UNSORTED,
+        sorting = Sorting.UNSORTED
     )
     val MISC = Screen(
         key = "morphe_settings_screen_11_misc",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_11_misc",
         iconBold = "@drawable/morphe_settings_screen_11_misc_bold",
-        layout = "@layout/preference_with_icon",
+        layout = "@layout/preference_with_icon"
     )
     val VIDEO = Screen(
         key = "morphe_settings_screen_12_video",
@@ -495,7 +495,7 @@ object PreferenceScreen : BasePreferenceScreen() {
         icon = "@drawable/morphe_settings_screen_12_video",
         iconBold = "@drawable/morphe_settings_screen_12_video_bold",
         layout = "@layout/preference_with_icon",
-        sorting = Sorting.BY_KEY,
+        sorting = Sorting.BY_KEY
     )
 
     override fun commit(screen: PreferenceScreenPreference) {

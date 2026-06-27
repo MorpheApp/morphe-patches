@@ -18,12 +18,12 @@ import app.morphe.patches.music.video.information.musicVideoIdHook
 import app.morphe.patches.music.video.information.musicVideoInformationPatch
 import app.morphe.patches.music.video.information.musicVideoTimeHook
 import app.morphe.patches.music.video.information.onMusicCreateHook
-import app.morphe.patches.shared.misc.settings.preference.BasePreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
+import app.morphe.patches.youtube.layout.sponsorblock.categoryPreference
 import app.morphe.util.findFreeRegister
 import app.morphe.util.getReference
 import app.morphe.util.indexOfFirstInstructionReversedOrThrow
@@ -33,12 +33,6 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_SEGMENT_PLAYBACK_CONTROLLER_CLASS =
     "Lapp/morphe/extension/music/sponsorblock/MusicSponsorBlockConfig;"
-
-private const val SEGMENT_CATEGORY_PREFERENCE_TAG =
-    "app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference"
-
-private fun categoryPreference(key: String): BasePreference =
-    object : BasePreference(key, null, null, null, null, null, SEGMENT_CATEGORY_PREFERENCE_TAG) {}
 
 @Suppress("unused")
 val musicSponsorBlockPatch = bytecodePatch(

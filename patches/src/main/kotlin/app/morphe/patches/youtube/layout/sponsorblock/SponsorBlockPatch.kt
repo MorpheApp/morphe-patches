@@ -44,100 +44,8 @@ private const val SB_PREFERENCES_PACKAGE = "app.morphe.extension.youtube.sponsor
 private const val SEGMENT_CATEGORY_PREFERENCE_TAG =
     "app.morphe.extension.shared.sponsorblock.objects.SegmentCategoryPreference"
 
-private fun categoryPreference(settingKey: String): BasePreference =
+public fun categoryPreference(settingKey: String): BasePreference =
     object : BasePreference(settingKey, null, null, null, null, null, SEGMENT_CATEGORY_PREFERENCE_TAG) {}
-
-private fun appearanceCategory() = PreferenceCategory(
-    key = "morphe_sb_appearance_category",
-    sorting = PreferenceScreenPreference.Sorting.UNSORTED,
-    preferences = setOf(
-        SwitchPreference("morphe_sb_voting_button", summary = true),
-        SwitchPreference("morphe_sb_compact_skip_button", summary = true),
-        SwitchPreference("morphe_sb_auto_hide_skip_button", summary = true),
-        ListPreference(key = "morphe_sb_auto_hide_skip_button_duration"),
-        SwitchPreference("morphe_sb_toast_on_skip", summary = true),
-        ListPreference(key = "morphe_sb_toast_on_skip_duration"),
-        SwitchPreference("morphe_sb_video_length_without_segments", summary = true),
-        SwitchPreference("morphe_sb_square_layout", summary = true)
-    )
-)
-
-private fun segmentsCategory() = PreferenceCategory(
-    key = "morphe_sb_diff_segments",
-    sorting = PreferenceScreenPreference.Sorting.UNSORTED,
-    preferences = setOf(
-        categoryPreference("morphe_sb_sponsor_color"),
-        categoryPreference("morphe_sb_selfpromo_color"),
-        categoryPreference("morphe_sb_interaction_color"),
-        categoryPreference("morphe_sb_highlight_color"),
-        categoryPreference("morphe_sb_intro_color"),
-        categoryPreference("morphe_sb_outro_color"),
-        categoryPreference("morphe_sb_preview_color"),
-        categoryPreference("morphe_sb_hook_color"),
-        categoryPreference("morphe_sb_filler_color"),
-        categoryPreference("morphe_sb_music_offtopic_color")
-    )
-)
-
-private fun createSegmentCategory() = PreferenceCategory(
-    key = "morphe_sb_create_segment_category",
-    sorting = PreferenceScreenPreference.Sorting.UNSORTED,
-    preferences = setOf(
-        SwitchPreference(
-            key = "morphe_sb_create_new_segment",
-            summary = true,
-            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockCreateSegmentSwitchPreference"
-        ),
-        TextPreference(
-            key = "morphe_sb_create_new_segment_step",
-            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockSegmentStepPreference",
-            inputType = InputType.NUMBER
-        ),
-        NonInteractivePreference(
-            key = "morphe_sb_guidelines",
-            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockGuidelinesPreference",
-            selectable = true
-        )
-    )
-)
-
-private fun generalCategory() = PreferenceCategory(
-    key = "morphe_sb_general",
-    sorting = PreferenceScreenPreference.Sorting.UNSORTED,
-    preferences = setOf(
-        SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
-        SwitchPreference("morphe_sb_track_skip_count", summary = true),
-        TextPreference(
-            key = "morphe_sb_min_segment_duration",
-            inputType = InputType.NUMBER_DECIMAL
-        ),
-        TextPreference(
-            key = "morphe_sb_private_user_id_Do_Not_Share",
-            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockPrivateUserIdPreference"
-        ),
-        NonInteractivePreference(
-            key = "morphe_sb_change_api_url",
-            titleKey = "morphe_sb_api_url_title",
-            summaryKey = "morphe_sb_api_url_summary",
-            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockApiUrlPreference",
-            selectable = true
-        ),
-        NonInteractivePreference(
-            key = "morphe_sb_open_channel_whitelist",
-            titleKey = "morphe_sb_channel_whitelist_title",
-            summaryKey = "morphe_sb_channel_whitelist_summary",
-            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockChannelWhitelistPreference",
-            selectable = true
-        ),
-        SwitchPreference("morphe_sb_toast_on_whitelisted_channel", summary = true),
-        TextPreference(
-            key = null,
-            titleKey = "morphe_sb_settings_ie_title",
-            summaryKey = "morphe_sb_settings_ie_summary",
-            tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockImportExportPreference"
-        )
-    )
-)
 
 private val sponsorBlockResourcePatch = resourcePatch {
     dependsOn(
@@ -149,10 +57,94 @@ private val sponsorBlockResourcePatch = resourcePatch {
     execute {
         PreferenceScreen.SPONSORBLOCK.addPreferences(
             SwitchPreference("morphe_sb_enabled", summary = true),
-            appearanceCategory(),
-            segmentsCategory(),
-            createSegmentCategory(),
-            generalCategory(),
+            PreferenceCategory(
+                key = "morphe_sb_appearance_category",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_sb_voting_button", summary = true),
+                    SwitchPreference("morphe_sb_compact_skip_button", summary = true),
+                    SwitchPreference("morphe_sb_auto_hide_skip_button", summary = true),
+                    ListPreference(key = "morphe_sb_auto_hide_skip_button_duration"),
+                    SwitchPreference("morphe_sb_toast_on_skip", summary = true),
+                    ListPreference(key = "morphe_sb_toast_on_skip_duration"),
+                    SwitchPreference("morphe_sb_video_length_without_segments", summary = true),
+                    SwitchPreference("morphe_sb_square_layout", summary = true)
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_sb_diff_segments",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    categoryPreference("morphe_sb_sponsor_color"),
+                    categoryPreference("morphe_sb_selfpromo_color"),
+                    categoryPreference("morphe_sb_interaction_color"),
+                    categoryPreference("morphe_sb_highlight_color"),
+                    categoryPreference("morphe_sb_intro_color"),
+                    categoryPreference("morphe_sb_outro_color"),
+                    categoryPreference("morphe_sb_preview_color"),
+                    categoryPreference("morphe_sb_hook_color"),
+                    categoryPreference("morphe_sb_filler_color"),
+                    categoryPreference("morphe_sb_music_offtopic_color")
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_sb_create_segment_category",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference(
+                        key = "morphe_sb_create_new_segment",
+                        summary = true,
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockCreateSegmentSwitchPreference"
+                    ),
+                    TextPreference(
+                        key = "morphe_sb_create_new_segment_step",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockSegmentStepPreference",
+                        inputType = InputType.NUMBER
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_sb_guidelines",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockGuidelinesPreference",
+                        selectable = true
+                    )
+                )
+            ),
+            PreferenceCategory(
+                key = "morphe_sb_general",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    SwitchPreference("morphe_sb_toast_on_connection_error", summary = true),
+                    SwitchPreference("morphe_sb_track_skip_count", summary = true),
+                    TextPreference(
+                        key = "morphe_sb_min_segment_duration",
+                        inputType = InputType.NUMBER_DECIMAL
+                    ),
+                    TextPreference(
+                        key = "morphe_sb_private_user_id_Do_Not_Share",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockPrivateUserIdPreference"
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_sb_change_api_url",
+                        titleKey = "morphe_sb_api_url_title",
+                        summaryKey = "morphe_sb_api_url_summary",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockApiUrlPreference",
+                        selectable = true
+                    ),
+                    NonInteractivePreference(
+                        key = "morphe_sb_open_channel_whitelist",
+                        titleKey = "morphe_sb_channel_whitelist_title",
+                        summaryKey = "morphe_sb_channel_whitelist_summary",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockChannelWhitelistPreference",
+                        selectable = true
+                    ),
+                    SwitchPreference("morphe_sb_toast_on_whitelisted_channel", summary = true),
+                    TextPreference(
+                        key = null,
+                        titleKey = "morphe_sb_settings_ie_title",
+                        summaryKey = "morphe_sb_settings_ie_summary",
+                        tag = "$SB_PREFERENCES_PACKAGE.SponsorBlockImportExportPreference"
+                    )
+                )
+            ),
             PreferenceCategory(
                 key = "morphe_sb_stats",
                 sorting = PreferenceScreenPreference.Sorting.UNSORTED,
