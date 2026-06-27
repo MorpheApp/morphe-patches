@@ -306,6 +306,59 @@ Second \"item\" text"</string>
 
 パッケージ名が正しいこと、およびアプリがインストールされていることを確認してください"</string>
   <string name="morphe_external_downloader_empty_warning">パッケージ名は空欄にはできません</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">音声翻訳</string>
+  <string name="morphe_vot_screen_summary">デバイス上のテキスト読み上げ機能を使用して、ビデオの字幕を再生と同期して読み上げます。</string>
+  <string name="morphe_vot_enabled_title">音声翻訳</string>
+  <string name="morphe_vot_caption_language_title">言語</string>
+  <string name="morphe_vot_translation_service_title">翻訳プロバイダー</string>
+  <string name="morphe_vot_original_audio_volume_title">元の音声ボリューム</string>
+  <string name="morphe_vot_original_audio_volume_summary">翻訳中に元のYouTube音声のボリューム</string>
+  <string name="morphe_vot_translation_volume_title">翻訳ボリューム</string>
+  <string name="morphe_vot_translation_volume_summary">吹き替え翻訳ボイスのボリューム</string>
+  <string name="morphe_vot_max_speech_rate_title">最大発話速度</string>
+  <string name="morphe_vot_max_speech_rate_summary">字幕スロットに発話を合わせる際の最大速度乗数</string>
+  <string name="morphe_vot_mymemory_info_summary">"無料の翻訳API。APIキーは不要です。無料プランでは1日あたり最大5,000文字、またはEメールアドレスを使用すると1日あたり最大50,000文字です。
+
+MyMemory.translated.netを開くには、ここをタップしてください"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemoryメールアドレス</string>
+  <string name="morphe_vot_mymemory_email_summary">オプション。毎日の制限を5,000文字から50,000文字に増やすには、MyMemoryのEメールアドレスを入力してください。空のままにすると、匿名制限が使用されます</string>
+  <string name="morphe_vot_openrouter_info_summary">"OpenRouterによる有料AI翻訳。一度チャージすれば、数千本のビデオを翻訳できます。Mistral Nemoが最も安価なオプションであり、Gemma 4が最高の品質を提供します。
+
+OpenRouter.aiを開くには、ここをタップしてください"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter APIキー</string>
+  <string name="morphe_vot_openrouter_api_key_summary">OpenRouter API キーです。OpenRouter.ai > Workspace > API Keys でキーを作成してください</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouterモデル</string>
+  <string name="morphe_vot_openrouter_model_custom">カスタム</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouterが構成されていません</string>
+  <string name="morphe_vot_openrouter_not_configured_message">このプロバイダーを選択する前に、設定でOpenRouter APIキーを入力してください</string>
+  <string name="morphe_vot_cost_free">無料</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">100ビデオ時間あたり%s</string>
+  <string name="morphe_vot_tts_voice_type">音声</string>
+  <string name="morphe_vot_tts_system">システム</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">多言語男性</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">多言語女性</string>
+  <string name="morphe_vot_voice_gender_male">男性</string>
+  <string name="morphe_vot_voice_gender_female">女性</string>
+  <string name="morphe_vot_tts_sample">変身する時間だ！</string>
+  <string name="morphe_vot_http_error_title">翻訳できません</string>
+  <string name="morphe_vot_http_error_message">"翻訳サービスはHTTPエラー%sを返しました。あなたのIPアドレスは最大24時間レート制限されている可能性があります。
+
+翻訳を継続するには、設定で別の翻訳プロバイダーに切り替えたり、VPNを使用してください"</string>
+  <string name="morphe_vot_do_not_show_again">今後表示しない</string>
+  <string name="morphe_vot_export_api_key_warning">"設定にOpenRouter APIキーが含まれています。
+
+APIキーは決して共有しないでください。アクセス権を持つ人は誰でもOpenRouterのクレジットを使用できます"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouterクレジット制限に達しました</string>
+  <string name="morphe_vot_openrouter_credits_message">OpenRouterクレジット制限に達しました。OpenRouter.aiで残高をチャージするか、キーの支出制限を増やしてください</string>
+  <string name="morphe_vot_openrouter_open_website">OpenRouter.aiを開く</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter翻訳が失敗しました（HTTP %s）</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemoryの毎日の制限に達しました</string>
+  <string name="morphe_vot_mymemory_quota_next_available">次の利用可能時間は%sです</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">今日の無料MyMemory翻訳枠（5,000文字）を超えました。設定でMyMemoryのEメールアドレスを追加して、毎日の制限を50,000文字に増やすか、別の翻訳サービスに切り替えてください</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">今日のMyMemory翻訳枠（50,000文字）を超えました。別の翻訳サービスに切り替え、または明日もう一度お試しください</string>
+  <string name="morphe_vot_mymemory_error">MyMemory翻訳が失敗しました（ステータス %s）</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">動画のループ再生を有効化</string>
   <string name="morphe_do_not_remember_loop_video_title">「動画のループ再生」を保存しない</string>
@@ -776,7 +829,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">動画投稿者が高評価数を非公開に設定している動画で、高評価の推定値を表示します</string>
   <string name="morphe_ryd_toast_on_connection_error_title">接続エラーの通知を表示</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike サーバーが利用できない場合に通知を表示します</string>
-  <string name="morphe_ryd_attribution_summary">データは Return YouTube Dislike API によって提供されています。詳細は、ここをタップしてください</string>
+  <string name="morphe_ryd_attribution_summary">"データはReturn YouTube Dislike APIによって提供されています。
+
+ReturnYouTubeDislike.comを開くには、ここをタップしてください"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">このデバイスの ReturnYouTubeDislike API 統計情報</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API の応答時間 (平均)</string>
@@ -1018,7 +1073,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">透明度:</string>
   <string name="morphe_sb_color_dot_label">色:</string>
   <string name="morphe_sb_about_title">SponsorBlock について</string>
-  <string name="morphe_sb_about_api_summary">データは SponsorBlock API によって提供されています。詳細を確認するまたは他のプラットフォーム版をダウンロードするには、ここをタップしてください</string>
+  <string name="morphe_sb_about_api_summary">"データはSponsorBlock APIによって提供されています。
+
+Sponsor.ajay.appを開いて、他のプラットフォーム用のダウンロードを確認してください"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">レイアウトの種類</string>
   <string name="morphe_change_form_factor_entry_1">デフォルト</string>
@@ -1169,7 +1226,9 @@ Automotive レイアウト
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; デフォルト</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; 静止画</string>
   <string name="morphe_alt_thumbnail_options_entry_4">静止画サムネイル</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow は、YouTube 動画のサムネイルをクラウドソーシングで提供する機能です。DeArrow のサムネイルは、YouTube が提供するサムネイルよりも適切なことが多いです。これを有効にすると、動画の URL が API サーバーに送信されますが、他のデータは送信されません。動画に DeArrow サムネイルがない場合は、デフォルトのサムネイルまたは静止画サムネイルが表示されます
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow は、YouTube 動画のサムネイルをクラウドソーシングで提供する機能です。これらのサムネイルは、YouTube が提供するサムネイルよりも適切なことが多いです。
+
+有効にすると、動画の URL が API サーバーに送信されますが、他のデータは送信されません。動画に DeArrow サムネイルがない場合は、デフォルトのサムネイルまたは静止画サムネイルが表示されます。
 
 詳細については、ここをタップしてください"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">接続エラーの通知を表示</string>

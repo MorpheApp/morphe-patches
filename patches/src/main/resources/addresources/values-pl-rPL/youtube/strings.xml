@@ -306,6 +306,59 @@ Ograniczenia:
 
 Upewnij się, że nazwa pakietu jest poprawna, a aplikacja została zainstalowana"</string>
   <string name="morphe_external_downloader_empty_warning">Nazwa pakietu nie może być pusta</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Tłumaczenie głosowe</string>
+  <string name="morphe_vot_screen_summary">Czyta napisy na głos przy użyciu wbudowanego syntezatora mowy, synchronizując je z odtwarzaniem obrazu</string>
+  <string name="morphe_vot_enabled_title">Tłumaczenie głosowe</string>
+  <string name="morphe_vot_caption_language_title">Język</string>
+  <string name="morphe_vot_translation_service_title">Dostawca tłumaczeń</string>
+  <string name="morphe_vot_original_audio_volume_title">Głośność oryginalnego dźwięku</string>
+  <string name="morphe_vot_original_audio_volume_summary">Głośność oryginalnego dźwięku z YouTube podczas odtwarzania tłumaczenia</string>
+  <string name="morphe_vot_translation_volume_title">Głośność tłumaczenia</string>
+  <string name="morphe_vot_translation_volume_summary">Głośność nałożonego głosu tłumaczenia</string>
+  <string name="morphe_vot_max_speech_rate_title">Maksymalne tempo mowy</string>
+  <string name="morphe_vot_max_speech_rate_summary">Maksymalny mnożnik szybkości podczas wpasowywania mowy w czas wyświetlania napisu</string>
+  <string name="morphe_vot_mymemory_info_summary">"Darmowe API do tłumaczeń, nie wymaga klucza. Do 5000 znaków dziennie w darmowym planie lub do 50 000 znaków dziennie po podaniu adresu e-mail.
+
+​Dotknij tutaj, aby otworzyć MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">Adres e-mail MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Opcjonalne. Wprowadź swój adres e-mail z MyMemory, aby zwiększyć dzienny limit z 5000 do 50 000 znaków. Zostaw puste, aby korzystać z limitu dla anonimowych użytkowników</string>
+  <string name="morphe_vot_openrouter_info_summary">"Płatne tłumaczenia AI przez OpenRouter. Doładuj konto raz i tłumacz tysiące filmów. Mistral Nemo to najtańsza opcja, a Gemma 4 oferuje najwyższą jakość.
+
+​Dotknij tutaj, aby otworzyć OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Klucz API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Twój klucz API OpenRouter. Utwórz klucz na stronie OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Model OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Własny</string>
+  <string name="morphe_vot_openrouter_not_configured_title">Brak konfiguracji OpenRouter</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Wprowadź klucz API OpenRouter w ustawieniach, zanim wybierzesz tego dostawcę</string>
+  <string name="morphe_vot_cost_free">Darmowe</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s za 100 godzin filmu</string>
+  <string name="morphe_vot_tts_voice_type">Głos</string>
+  <string name="morphe_vot_tts_system">Systemowy</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Męski wielojęzyczny</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Żeński wielojęzyczny</string>
+  <string name="morphe_vot_voice_gender_male">Męski</string>
+  <string name="morphe_vot_voice_gender_female">Żeński</string>
+  <string name="morphe_vot_tts_sample">Czas na morfowanie!</string>
+  <string name="morphe_vot_http_error_title">Tłumaczenie niedostępne</string>
+  <string name="morphe_vot_http_error_message">"Usługa tłumaczenia zwróciła błąd HTTP %s. Prawdopodobnie nałożono limit na Twój adres IP na maksymalnie 24 godziny.
+
+​Aby kontynuować korzystanie z tłumaczeń, zmień dostawcę w ustawieniach lub użyj VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Nie pokazuj ponownie</string>
+  <string name="morphe_vot_export_api_key_warning">"Twoje ustawienia zawierają klucz API OpenRouter.
+
+​Nigdy nie udostępniaj swojego klucza API. Każdy, kto ma do niego dostęp, może wykorzystać Twoje środki na OpenRouterze"</string>
+  <string name="morphe_vot_openrouter_credits_title">Osiągnięto limit środków OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Osiągnięto limit środków na koncie OpenRouter. Doładuj saldo lub zwiększ limit wydatków dla klucza na stronie OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Otwórz OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Tłumaczenie OpenRouter nie powiodło się (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Osiągnięto dzienny limit MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Dostępne ponownie o %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Wykorzystano dzisiejszy darmowy limit tłumaczeń MyMemory (5000 znaków). Dodaj adres e-mail MyMemory w ustawieniach, aby zwiększyć dzienny limit do 50 000 znaków, lub zmień usługę tłumaczenia</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Wykorzystano dzisiejszy limit tłumaczeń MyMemory (50 000 znaków). Zmień usługę tłumaczenia lub spróbuj ponownie jutro</string>
+  <string name="morphe_vot_mymemory_error">Tłumaczenie MyMemory nie powiodło się (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Włącz zapętlanie filmu</string>
   <string name="morphe_do_not_remember_loop_video_title">Nie zapamiętuj zapętlania</string>
@@ -774,7 +827,9 @@ To ustawienie działa tylko wtedy, gdy autoodtwarzanie jest wyłączone. Możesz
   <string name="morphe_ryd_estimated_like_summary">Wyświetla przybliżoną liczbę polubień w filmach, w których twórca ukrył statystyki</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Pokaż powiadomienia o błędach połączenia</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Wyświetla powiadomienie, gdy serwer Return YouTube Dislike jest niedostępny</string>
-  <string name="morphe_ryd_attribution_summary">Dane są dostarczane przez API Return YouTube Dislike. Dotknij tutaj, aby dowiedzieć się więcej</string>
+  <string name="morphe_ryd_attribution_summary">"Dane są dostarczane przez API Return YouTube Dislike.
+
+Dotknij tutaj, aby otworzyć ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statystyki API Return YouTube Dislike tego urządzenia</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Średni czas odpowiedzi API</string>
@@ -1016,7 +1071,9 @@ Jeśli nie wysyłasz wyróżnienia, dotknij Anuluj i zaznacz drugi punkt"</strin
   <string name="morphe_sb_color_opacity_label">Przezroczystość:</string>
   <string name="morphe_sb_color_dot_label">Kolor:</string>
   <string name="morphe_sb_about_title">Informacje</string>
-  <string name="morphe_sb_about_api_summary">Dane są dostarczane przez API SponsorBlock. Dotknij tutaj, aby dowiedzieć się więcej i pobrać na inne platformy</string>
+  <string name="morphe_sb_about_api_summary">"Dane są dostarczane przez API SponsorBlock.
+
+Dotknij tutaj, aby otworzyć Sponsor.ajay.app i zobaczyć wersje na inne platformy"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Układ urządzenia</string>
   <string name="morphe_change_form_factor_entry_1">Domyślny</string>
@@ -1171,7 +1228,7 @@ Ograniczenie: Użycie przycisku wstecz na pasku narzędzi może nie działać"</
 
 Jeśli opcja ta jest włączona, do serwera API wysyłane są wyłącznie adresy filmów. W przypadku braku miniaturek DeArrow, wyświetlana jest miniaturka oryginalna lub kadr z filmu
 
-Dotknij tutaj, aby dowiedzieć się więcej o DeArrow"</string>
+Dotknij tutaj, aby otworzyć DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Pokaż powiadomienia o błędach połączenia</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Wyświetla powiadomienie, gdy serwer DeArrow jest niedostępny</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Punkt końcowy API DeArrow</string>

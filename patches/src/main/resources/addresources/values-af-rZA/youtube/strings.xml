@@ -306,6 +306,59 @@ Beperkings:
 
 Vind die pakketnaam en maak seker dat die app geïnstalleer is"</string>
   <string name="morphe_external_downloader_empty_warning">Die pakketnaam kan nie leeg wees nie</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Vertaalde stem over</string>
+  <string name="morphe_vot_screen_summary">Lees video-onderskrifte hardop voor met behulp van teks-na-spraak op die toestel, gesinkroniseer met die afspeel</string>
+  <string name="morphe_vot_enabled_title">Vertaalde stem oor</string>
+  <string name="morphe_vot_caption_language_title">Taal</string>
+  <string name="morphe_vot_translation_service_title">Dienstverskaffer vir vertaling</string>
+  <string name="morphe_vot_original_audio_volume_title">Volume van die oorspronklike klank</string>
+  <string name="morphe_vot_original_audio_volume_summary">Volume van die oorspronklike YouTube-klank terwyl die vertaling praat</string>
+  <string name="morphe_vot_translation_volume_title">Vertalingsvolume</string>
+  <string name="morphe_vot_translation_volume_summary">Volume van die vertaalde stem</string>
+  <string name="morphe_vot_max_speech_rate_title">Maksimum spraakspoed</string>
+  <string name="morphe_vot_max_speech_rate_summary">Maksimum snelheidvermenigvuldiger wanneer spraak in \'n ondertitelgleuf pas</string>
+  <string name="morphe_vot_mymemory_info_summary">"Gratis vertaling-API, geen API-sleutel vereis nie. Tot 5,000 karakters per dag op die gratis vlak, of tot 50,000 karakters per dag met 'n e-posadres.
+
+Tik hier om MyMemory.translated.net oop te maak"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory e-pos</string>
+  <string name="morphe_vot_mymemory_email_summary">Opsioneel. Voer jou MyMemory e-posadres in om die daaglikse limiet van 5,000 tot 50,000 karakters te verhoog. Laat leeg om die anonieme limiet te gebruik</string>
+  <string name="morphe_vot_openrouter_info_summary">"Betaalde AI-vertaling via OpenRouter. Vul een keer aan en vertaal duisende video's. Mistral Nemo is die goedkoopste opsie, Gemma 4 bied die hoogste kwaliteit.
+
+Tik hier om OpenRouter.ai oop te maak"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API-sleutel</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Jou OpenRouter API-sleutel. Skep \'n sleutel by OpenRouter.ai > Werkspasie > API-sleutels</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter-model</string>
+  <string name="morphe_vot_openrouter_model_custom">Pasgemaak</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter nie gekonfigureer nie</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Voer jou OpenRouter API-sleutel in instellings in voordat jy hierdie verskaffer kies</string>
+  <string name="morphe_vot_cost_free">Gratis</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s per 100 video-ure</string>
+  <string name="morphe_vot_tts_voice_type">Stem</string>
+  <string name="morphe_vot_tts_system">Stelsel</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Veeltalige manlik</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Veeltalige vroulik</string>
+  <string name="morphe_vot_voice_gender_male">Manlik</string>
+  <string name="morphe_vot_voice_gender_female">Vroulik</string>
+  <string name="morphe_vot_tts_sample">Dit is metamorfose tyd!</string>
+  <string name="morphe_vot_http_error_title">Vertaling nie beskikbaar nie</string>
+  <string name="morphe_vot_http_error_message">"Die vertaaldienstes het HTTP-fout %s teruggegee. Jou IP-adres is waarskynlik vir tot 24 uur beperk.
+
+Om aan te hou om vertalings te gebruik, skakel na 'n ander vertaaldienstes in instellings of gebruik 'n VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Moenie weer wys nie</string>
+  <string name="morphe_vot_export_api_key_warning">"Jou instellings bevat 'n OpenRouter API-sleutel.
+
+Jou API-sleutel moet nooit gedeel word nie. Enigeen met toegang daartoe kan jou OpenRouter-krediete gebruik"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter-kredietlimiet bereik</string>
+  <string name="morphe_vot_openrouter_credits_message">Jou OpenRouter-kredietlimiet is bereik. Vul jou saldo aan of verhoog jou sleutelbestedingslimiet by OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Open OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter-vertaling misluk (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory daaglikse limiet bereik</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Volgende beskikbaar om %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Jy het vandag se gratis MyMemory-vertaalquotum (5,000 karakters) gebruik. Voeg \'n MyMemory-e-pos in instellings in om die daaglikse limiet te verhoog tot 50,000 karakters, of skakel na \'n ander vertaaldienstes</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Jy het vandag se MyMemory-vertaalquotum (50,000 karakters) gebruik. Skakel na \'n ander vertaaldienstes of probeer môre weer</string>
+  <string name="morphe_vot_mymemory_error">MyMemory-vertaling misluk (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Aktiveer lusvideo</string>
   <string name="morphe_do_not_remember_loop_video_title">Moenie lusvideo onthou nie</string>
@@ -775,7 +828,9 @@ Instellings → Weergawe (of outoplay) → Speel volgende video outomaties"</str
   <string name="morphe_ryd_estimated_like_summary">Wys \'n beraamde like-telling op video\'s waar die skepper likes gedeaktiveer het</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Wys konneksiefoutwaarskuwings</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Wys \'n kennisgewing wanneer die Return YouTube Dislike-bediener nie beskikbaar is nie</string>
-  <string name="morphe_ryd_attribution_summary">Data word verskaf deur die Return YouTube Dislike API. Tik hier om meer te leer</string>
+  <string name="morphe_ryd_attribution_summary">"Data word verskaf deur die Return YouTube Dislike API.
+
+Tik hier om ReturnYouTubeDislike.com oop te maak"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistiek van hierdie toestel</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API reaksietyd, gemiddeld</string>
@@ -1017,7 +1072,9 @@ As jy nie 'n hoogtepunt indien nie, tik Kanselleer en merk die tweede plek"</str
   <string name="morphe_sb_color_opacity_label">Dekking:</string>
   <string name="morphe_sb_color_dot_label">Kleur:</string>
   <string name="morphe_sb_about_title">Oor</string>
-  <string name="morphe_sb_about_api_summary">Data word verskaf deur die SponsorBlock API. Tik hier om meer te leer en aflaaie vir ander platforms te sien</string>
+  <string name="morphe_sb_about_api_summary">"Data word verskaf deur die SponsorBlock API.
+
+Tik hier om Sponsor.ajay.app oop te maak en laai aflaai vir ander platforms"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Toestel uitleg</string>
   <string name="morphe_change_form_factor_entry_1">Verstek</string>
@@ -1168,11 +1225,11 @@ Beperking: Die gebruik van die terugknoppie op die nutsbalk werk dalk nie"</stri
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Oorspronklike foto\'s</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Stil vasleggings</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Stil vasleggings</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow verskaf aan die gemeenskap foto's vir YouTube video's. Hierdie foto's is dikwels meer relevant as dié verskaf deur YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow verskaf geamptelike duimnaels vir YouTube-video's. Hierdie duimnaels is dikwels relevanter as dié wat deur YouTube verskaf word
 
-Indien geaktiveer, sal video URL's na die API bediener gestuur word en geen ander data gestuur word nie. Indien 'n video nie DeArrow foto's het nie, dan word die oorspronklike of stil vasleggings gewys
+Indien geaktiveer, sal video-URL's na die API-bediener gestuur word en geen ander data gestuur nie. Indien 'n video nie DeArrow-duimnaels het nie, word die oorspronklike of nog beelde vertoon
 
-Tik hier om meer te leer oor DeArrow"</string>
+Tik hier om DeArrow.ajay.app oop te maak"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Wys konneksiefoutwaarskuwings</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Wys \'n kennisgewing wanneer die DeArrow-bediener nie beskikbaar is nie</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API-eindpunt</string>

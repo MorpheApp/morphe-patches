@@ -67,6 +67,10 @@ Second \"item\" text"</string>
   <!-- interaction.doubletap.disableDoubleTapActionsPatch -->
   <!-- interaction.downloads.downloadsPatch -->
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_openrouter_model_custom">ផ្ទាល់ខ្លួន</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_tts_system">ប្រព័ន្ធ</string>
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
   <!-- interaction.playall.playAllButtonPatch -->

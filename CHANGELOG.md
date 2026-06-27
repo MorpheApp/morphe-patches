@@ -1,3 +1,25 @@
+## [1.33.0-dev.3](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.2...v1.33.0-dev.3) (2026-06-27)
+
+### 🐛 Bug Fixes
+
+* **Change package name:** Add incompatible apps, update all permissions and providers ([#1847](https://github.com/MorpheApp/morphe-patches/issues/1847)) ([ff5359a](https://github.com/MorpheApp/morphe-patches/commit/ff5359ac6d61b7b7274a7d7ed7c06198c1ed3b7f))
+* **Reddit - Hide Trending shelves:** Hide 'Trending on Reddit' shelf ([#1849](https://github.com/MorpheApp/morphe-patches/issues/1849)) ([5dfff49](https://github.com/MorpheApp/morphe-patches/commit/5dfff49c21f0aad61e997ad1ef31c65af58f85ab))
+
+### 🚀 Updated App Support
+
+* **Reddit:** Add experimental support for `2026.26.0` ([de01fad](https://github.com/MorpheApp/morphe-patches/commit/de01fadca647632390ecf4148986880d924434b5))
+* **YouTube:** Add experimental support for `21.26.360` ([197e9ce](https://github.com/MorpheApp/morphe-patches/commit/197e9ce272515002787a41c919ff7ea8ec698f30))
+
+## [1.33.0-dev.2](https://github.com/MorpheApp/morphe-patches/compare/v1.33.0-dev.1...v1.33.0-dev.2) (2026-06-26)
+
+### 🐛 Bug Fixes
+
+* **YouTube - Hide layout components:**  Match `RD` playlist URLs to improve "Hide mix playlists" filter ([#1835](https://github.com/MorpheApp/morphe-patches/issues/1835)) ([1172ce0](https://github.com/MorpheApp/morphe-patches/commit/1172ce044f14cc842eb6390d997d7793f8e2b4c3))
+
+### ✨ New Features
+
+* **YouTube:** Add `Voice over translation` patch ([#1685](https://github.com/MorpheApp/morphe-patches/issues/1685)) ([d811a32](https://github.com/MorpheApp/morphe-patches/commit/d811a3264878d01697eb75bd05185d9359603a4a))
+
 ## [1.33.0-dev.1](https://github.com/MorpheApp/morphe-patches/compare/v1.32.0...v1.33.0-dev.1) (2026-06-25)
 
 ### 🐛 Bug Fixes

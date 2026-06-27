@@ -306,6 +306,59 @@ Second \"item\" text"</string>
 
 প্যাকেজের নামটি সঠিক এবং অ্যাপটি ইনস্টল করা আছে কিনা তা যাচাই করুন"</string>
   <string name="morphe_external_downloader_empty_warning">প্যাকেজের নাম খালি রাখা যাবে না</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">ভয়েস ওভার অনুবাদ</string>
+  <string name="morphe_vot_screen_summary">ডিভাইসের টেক্সট-টু-স্পিচ ব্যবহার করে ভিডিওর ক্যাপশন জোরে পড়ুন, যা প্লেব্যাকের সাথে সিঙ্ক্রোনাইজ করা হবে।</string>
+  <string name="morphe_vot_enabled_title">ভয়েস ওভার অনুবাদ</string>
+  <string name="morphe_vot_caption_language_title">ভাষা</string>
+  <string name="morphe_vot_translation_service_title">অনুবাদ পরিষেবা</string>
+  <string name="morphe_vot_original_audio_volume_title">মূল অডিওর ভলিউম</string>
+  <string name="morphe_vot_original_audio_volume_summary">অনুবাদ চালানোর সময় মূল YouTube অডিওর ভলিউম</string>
+  <string name="morphe_vot_translation_volume_title">অনুবাদ ভলিউম</string>
+  <string name="morphe_vot_translation_volume_summary">ডাব করা অনুবাদের ভয়েসের ভলিউম</string>
+  <string name="morphe_vot_max_speech_rate_title">সর্বোচ্চ speech হার</string>
+  <string name="morphe_vot_max_speech_rate_summary">সাবটাইটেল স্লটে speech ফিট করার সময় সর্বোচ্চ গতি গুণক</string>
+  <string name="morphe_vot_mymemory_info_summary">"ফ্রি অনুবাদ API, কোনো API কী প্রয়োজন নেই। বিনামূল্যে স্তরে প্রতিদিন 5,000 অক্ষর পর্যন্ত, অথবা ইমেল ঠিকানা দিয়ে প্রতিদিন 50,000 অক্ষর পর্যন্ত।
+
+MyMemory.translated.net খুলতে এখানে ট্যাপ করুন"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory ইমেল</string>
+  <string name="morphe_vot_mymemory_email_summary">ঐচ্ছিক। দৈনিক সীমা 5,000 থেকে 50,000 অক্ষরে বাড়ানোর জন্য আপনার MyMemory ইমেল ঠিকানা লিখুন। বেনামী সীমা ব্যবহার করতে ফাঁকা রাখুন</string>
+  <string name="morphe_vot_openrouter_info_summary">"OpenRouter এর মাধ্যমে পেইড AI অনুবাদ। একবার টপ আপ করুন এবং হাজার হাজার ভিডিও অনুবাদ করুন। Mistral Nemo হল সবচেয়ে সস্তা বিকল্প, Gemma 4 সর্বোচ্চ মানের প্রস্তাব করে।
+
+OpenRouter.ai খুলতে এখানে ট্যাপ করুন"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API কী</string>
+  <string name="morphe_vot_openrouter_api_key_summary">আপনার OpenRouter API কী। OpenRouter.ai > Workspace > API Keys এ একটি কী তৈরি করুন</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter মডেল</string>
+  <string name="morphe_vot_openrouter_model_custom">কাস্টম</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter কনফিগার করা হয়নি</string>
+  <string name="morphe_vot_openrouter_not_configured_message">এই প্রদানকারী নির্বাচন করার আগে সেটিংসে আপনার OpenRouter API কী প্রবেশ করুন</string>
+  <string name="morphe_vot_cost_free">ফ্রি</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">প্রতি 100 ভিডিও ঘণ্টার জন্য %s</string>
+  <string name="morphe_vot_tts_voice_type">ভয়েস</string>
+  <string name="morphe_vot_tts_system">সিস্টেম</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">বহুভাষিক পুরুষ</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">বহুভাষিক মহিলা</string>
+  <string name="morphe_vot_voice_gender_male">পুরুষ</string>
+  <string name="morphe_vot_voice_gender_female">মহিলা</string>
+  <string name="morphe_vot_tts_sample">এটা রূপান্তরের সময়!</string>
+  <string name="morphe_vot_http_error_title">অনুবাদ পাওয়া যায়নি</string>
+  <string name="morphe_vot_http_error_message">"অনুবাদ পরিষেবা HTTP ত্রুটি %s ফেরত দিয়েছে। আপনার IP ঠিকানা সম্ভবত 24 ঘন্টা পর্যন্ত রেট-সীমিত হয়েছে।
+
+অনুবাদ ব্যবহার করা চালিয়ে যেতে, সেটিংসে একটি ভিন্ন অনুবাদ প্রদানকারী নির্বাচন করুন অথবা VPN ব্যবহার করুন"</string>
+  <string name="morphe_vot_do_not_show_again">আবার দেখাবেন না</string>
+  <string name="morphe_vot_export_api_key_warning">"আপনার সেটিংসে একটি OpenRouter API কী রয়েছে।
+
+আপনার API কী কখনই শেয়ার করা উচিত নয়। এটির অ্যাক্সেস আছে যে কেউ আপনার OpenRouter ক্রেডিট ব্যবহার করতে পারে"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter ক্রেডিট সীমা পৌঁছেছে</string>
+  <string name="morphe_vot_openrouter_credits_message">আপনার OpenRouter ক্রেডিট সীমা পৌঁছেছে। OpenRouter.ai এ আপনার ব্যালেন্স টপ আপ করুন অথবা আপনার কী ব্যয় সীমা বাড়ান</string>
+  <string name="morphe_vot_openrouter_open_website">OpenRouter.ai খুলুন</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter অনুবাদ ব্যর্থ (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory দৈনিক সীমা পৌঁছেছে</string>
+  <string name="morphe_vot_mymemory_quota_next_available">পরবর্তী উপলভ্যতা: %s।</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">আপনি আজকের MyMemory অনুবাদ কোটা (5,000 অক্ষর) ব্যবহার করেছেন। দৈনিক সীমা 50,000 অক্ষরে বাড়ানোর জন্য সেটিংসে একটি MyMemory ইমেল যোগ করুন, অথবা অন্য অনুবাদ পরিষেবাতে স্যুইচ করুন</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">আপনি আজকের MyMemory অনুবাদ কোটা (50,000 অক্ষর) ব্যবহার করেছেন। অন্য অনুবাদ পরিষেবাতে স্যুইচ করুন অথবা আগামীকাল আবার চেষ্টা করুন</string>
+  <string name="morphe_vot_mymemory_error">MyMemory অনুবাদ ব্যর্থ (অবস্থা %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">লুপ ভিডিও সক্ষম করুন</string>
   <string name="morphe_do_not_remember_loop_video_title">লুপ ভিডিও মনে রাখবেন না</string>
@@ -775,7 +828,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">স্রষ্টা লাইকগুলি নিষ্ক্রিয় করে দিলে ভিডিওতে একটি আনুমানিক লাইকের গণনা দেখায়</string>
   <string name="morphe_ryd_toast_on_connection_error_title">সংযোগ ত্রুটি সতর্কতা দেখান</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Return YouTube Dislike সার্ভার উপলব্ধ না থাকলে একটি বিজ্ঞপ্তি দেখায়</string>
-  <string name="morphe_ryd_attribution_summary">তথ্য প্রদান করা হয় Return YouTube Dislike API দ্বারা। আরও জানতে এখানে ট্যাপ করুন</string>
+  <string name="morphe_ryd_attribution_summary">"ডেটা Return YouTube Dislike API দ্বারা সরবরাহ করা হয়।
+
+ReturnYouTubeDislike.com খুলতে এখানে ট্যাপ করুন"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">এই ডিভাইসের ReturnYouTubeDislike API পরিসংখ্যান</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API প্রতিক্রিয়া সময়, স্বাভাবিক</string>
@@ -1016,7 +1071,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">স্বচ্ছতা:</string>
   <string name="morphe_sb_color_dot_label">রং:</string>
   <string name="morphe_sb_about_title">সম্পর্কিত</string>
-  <string name="morphe_sb_about_api_summary">ডেটা SponsorBlock API দ্বারা সরবরাহ করা হয়। আরও জানতে এবং অন্যান্য প্ল্যাটফর্মের ডাউনলোড দেখতে এখানে ট্যাপ করুন</string>
+  <string name="morphe_sb_about_api_summary">"ডেটা SponsorBlock API দ্বারা সরবরাহ করা হয়।
+
+আরও জানতে এবং অন্যান্য প্ল্যাটফর্মের ডাউনলোড দেখতে Sponsor.ajay.app খুলতে এখানে ট্যাপ করুন"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">ডিভাইস লেআউট</string>
   <string name="morphe_change_form_factor_entry_1">ডিফল্ট</string>

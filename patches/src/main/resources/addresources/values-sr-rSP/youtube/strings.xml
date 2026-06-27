@@ -306,6 +306,59 @@ Promene uključuju:
 
 Проверите да ли је назив пакета исправан и да ли је апликација инсталирана"</string>
   <string name="morphe_external_downloader_empty_warning">Назив пакета не може бити празан</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Превод гласовног надзора</string>
+  <string name="morphe_vot_screen_summary">Учитавајте титлове видео записа наглас користећи текст у говор на уређају, синхронизовано са репродукцијом</string>
+  <string name="morphe_vot_enabled_title">Превод гласовног надзора</string>
+  <string name="morphe_vot_caption_language_title">Језик</string>
+  <string name="morphe_vot_translation_service_title">Пружалац превода</string>
+  <string name="morphe_vot_original_audio_volume_title">Јачина оригиналног аудио записа</string>
+  <string name="morphe_vot_original_audio_volume_summary">Јачина оригиналног YouTube аудио записа док превод говори</string>
+  <string name="morphe_vot_translation_volume_title">Јачина превода</string>
+  <string name="morphe_vot_translation_volume_summary">Јачина гласа синхронизованог превода</string>
+  <string name="morphe_vot_max_speech_rate_title">Макс. брзина говора</string>
+  <string name="morphe_vot_max_speech_rate_summary">Максимални множилац брзине при прилагођавању говора у слот за титл</string>
+  <string name="morphe_vot_mymemory_info_summary">"Бесплатан API за превод, API кључ није потребан. До 5.000 карактера по дану у бесплатном плану, или до 50.000 карактера по дану са имејл адресом.
+
+Додирните овде да отворите MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory имејл</string>
+  <string name="morphe_vot_mymemory_email_summary">Опционо. Унесите своју MyMemory имејл адресу да повећате дневни лимит са 5.000 на 50.000 карактера. Оставите празно да бисте користили анонимни лимит</string>
+  <string name="morphe_vot_openrouter_info_summary">"Плаћен AI превод преко OpenRouter-а. Допуните једном и преводите хиљаде видео записа. Mistral Nemo је најјефтинија опција, Gemma 4 нуди највиши квалитет.
+
+Додирните овде да отворите OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API кључ</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Ваш OpenRouter API кључ. Креирајте кључ на OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter модел</string>
+  <string name="morphe_vot_openrouter_model_custom">Прилагођено</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter није конфигурисан</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Унесите свој OpenRouter API кључ у подешавањима пре него што одаберете овог пружаоца</string>
+  <string name="morphe_vot_cost_free">Бесплатно</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s на 100 сати видео записа</string>
+  <string name="morphe_vot_tts_voice_type">Глас</string>
+  <string name="morphe_vot_tts_system">Систем</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Вишејезични мушки</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Вишејезични женски</string>
+  <string name="morphe_vot_voice_gender_male">Мушки</string>
+  <string name="morphe_vot_voice_gender_female">Женски</string>
+  <string name="morphe_vot_tts_sample">Време је за морфирање!</string>
+  <string name="morphe_vot_http_error_title">Превод није доступан</string>
+  <string name="morphe_vot_http_error_message">"Сервис за превод је вратио HTTP грешку %s. Ваша IP адреса је вероватно ограничена на до 24 сата.
+
+Да бисте наставили да користите преводе, пребаците се на другог пружаоца превода у подешавањима или користите VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Не приказуј поново</string>
+  <string name="morphe_vot_export_api_key_warning">"Ваша подешавања садрже OpenRouter API кључ.
+
+Ваш API кључ не би смео никада бити подељен. Свако ко има приступ њему може користити ваше OpenRouter кредите"</string>
+  <string name="morphe_vot_openrouter_credits_title">Достигнут лимит OpenRouter кредита</string>
+  <string name="morphe_vot_openrouter_credits_message">Достигли сте свој лимит OpenRouter кредита. Допуните салдо или повећајте лимит трошења кључа на OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Отвори OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter превод није успео (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Достигнут MyMemory дневни лимит</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Следећи доступно у %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Искористили сте данашњу бесплатну MyMemory квоту за превод (5.000 карактера). Додајте MyMemory имејл у подешавањима да повећате дневни лимит на 50.000 карактера, или пребаците се на други сервис за превод</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Искористили сте данашњу MyMemory квоту за превод (50.000 карактера). Пребаците се на други сервис за превод или покушајте поново сутра</string>
+  <string name="morphe_vot_mymemory_error">MyMemory превод није успео (статус %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Омогући понављање видеа</string>
   <string name="morphe_do_not_remember_loop_video_title">Не памти управо петљу видеа</string>
@@ -775,7 +828,9 @@ Promene uključuju:
   <string name="morphe_ryd_estimated_like_summary">Приказује процењени број свиђања на видео снимцима на којима је креатор деактивирао свиђања</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Прикажи упозорења о грешци у вези</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Приказује обавештење када је сервер Return YouTube Dislike недоступан</string>
-  <string name="morphe_ryd_attribution_summary">Податке обезбеђује Return YouTube Dislike API. Додирните овде да сазнате више</string>
+  <string name="morphe_ryd_attribution_summary">"Податке пружа Return YouTube Dislike API.
+
+Додирните овде да отворите ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистике ReturnYouTubeDislike API-ја за овај уређај</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Време одговора API-ја, просечно</string>
@@ -1015,7 +1070,9 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
   <string name="morphe_sb_color_opacity_label">Непрозирност:</string>
   <string name="morphe_sb_color_dot_label">Боја:</string>
   <string name="morphe_sb_about_title">О програму</string>
-  <string name="morphe_sb_about_api_summary">Податке обезбеђује SponsorBlock API. Додирните овде да сазнате више и видите преузимања за друге платформе</string>
+  <string name="morphe_sb_about_api_summary">"Податке обезбеђује SponsorBlock API.
+
+Додирните овде да отворите Sponsor.ajay.app и видите преузимања за друге платформе"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Изглед уређаја</string>
   <string name="morphe_change_form_factor_entry_1">Подразумевани</string>
@@ -1170,7 +1227,7 @@ Vaš korisnički ID je kao lozinka i nikada ga ne treba deliti."</string>
 
 Ако је омогућено, линкови видеа ће бити послати на API сервер и никакви други подаци се неће слати. Ако видео нема DeArrow сличице, онда се приказују оригиналне или захвати кадра
 
-Додирните овде да сазнате више о DeArrow-у"</string>
+Додирните овде да отворите DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Прикажи упозорења о грешци у вези</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Приказује обавештење када је сервер DeArrow недоступан</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Крајња тачка DeArrow API-ја</string>

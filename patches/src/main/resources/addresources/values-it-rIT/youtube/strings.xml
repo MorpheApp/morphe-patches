@@ -116,7 +116,6 @@ I cambiamenti riguarderanno:
   <string name="morphe_hide_youtube_doodles_summary">Nasconde le animazioni stagionali e basate su eventi sul logo di YouTube</string>
   <string name="morphe_hide_youtube_doodles_user_dialog_message">Mostrare i Doodle di YouTube potrebbe impedire la visualizzazione degli header personalizzati.</string>
   <string name="morphe_hide_channel_bar_title">Nascondi barra del canale</string>
-  <string name="morphe_vot_tts_sample">Sono io, Mario. È ora di trasformarsi!</string>
   <string name="morphe_hide_channel_watermark_title">Nascondi la filigrana del canale</string>
   <string name="morphe_hide_crowdfunding_box_title">Nascondi il riquadro Raccolta fondi</string>
   <string name="morphe_hide_emergency_box_title">Nascondi riquadri di emergenza</string>
@@ -307,6 +306,59 @@ Limitazioni:
 
 Verifica che il nome del pacchetto sia corretto e che l'app sia installata"</string>
   <string name="morphe_external_downloader_empty_warning">Il nome del pacchetto non può essere vuoto</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Traduzione voice over</string>
+  <string name="morphe_vot_screen_summary">Leggi ad alta voce i sottotitoli del video utilizzando la sintesi vocale del dispositivo, sincronizzata con la riproduzione</string>
+  <string name="morphe_vot_enabled_title">Traduzione voice over</string>
+  <string name="morphe_vot_caption_language_title">Lingua</string>
+  <string name="morphe_vot_translation_service_title">Fornitore di traduzione</string>
+  <string name="morphe_vot_original_audio_volume_title">Volume audio originale</string>
+  <string name="morphe_vot_original_audio_volume_summary">Volume dell\'audio originale di YouTube durante la riproduzione della traduzione</string>
+  <string name="morphe_vot_translation_volume_title">Volume della traduzione</string>
+  <string name="morphe_vot_translation_volume_summary">Volume della voce doppiata della traduzione</string>
+  <string name="morphe_vot_max_speech_rate_title">Velocità di pronuncia massima</string>
+  <string name="morphe_vot_max_speech_rate_summary">Moltiplicatore di velocità massima quando si adatta la pronuncia a uno spazio dei sottotitoli</string>
+  <string name="morphe_vot_mymemory_info_summary">"API di traduzione gratuita, non è richiesta alcuna chiave API. Fino a 5.000 caratteri al giorno nel piano gratuito, oppure fino a 50.000 caratteri al giorno con un indirizzo email.
+
+Tocca qui per aprire MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">Email di MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Facoltativo. Inserisci il tuo indirizzo email di MyMemory per aumentare il limite giornaliero da 5.000 a 50.000 caratteri. Lasciare vuoto per utilizzare il limite anonimo</string>
+  <string name="morphe_vot_openrouter_info_summary">"Traduzione AI a pagamento tramite OpenRouter. Ricarica una volta e traduci migliaia di video. Mistral Nemo è l'opzione più economica, Gemma 4 offre la massima qualità.
+
+Tocca qui per aprire OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Chiave API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">La tua chiave API OpenRouter. Crea una chiave su OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Modello OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Personalizzato</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter non configurato</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Inserisci la tua chiave API OpenRouter nelle impostazioni prima di selezionare questo provider</string>
+  <string name="morphe_vot_cost_free">Gratuito</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s per 100 ore di video</string>
+  <string name="morphe_vot_tts_voice_type">Voce</string>
+  <string name="morphe_vot_tts_system">Sistema</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Multilingue maschile</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Multilingue femminile</string>
+  <string name="morphe_vot_voice_gender_male">Maschile</string>
+  <string name="morphe_vot_voice_gender_female">Femminile</string>
+  <string name="morphe_vot_tts_sample">È tempo di trasformazione!</string>
+  <string name="morphe_vot_http_error_title">Traduzione non disponibile</string>
+  <string name="morphe_vot_http_error_message">"Il servizio di traduzione ha restituito un errore HTTP %s. Il tuo indirizzo IP probabilmente è stato limitato per un massimo di 24 ore.
+
+Per continuare a utilizzare le traduzioni, passa a un altro provider di traduzione nelle impostazioni o utilizza una VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Non mostrare più</string>
+  <string name="morphe_vot_export_api_key_warning">"Le tue impostazioni contengono una chiave API OpenRouter.
+
+La tua chiave API non deve mai essere condivisa. Chiunque vi abbia accesso può utilizzare i tuoi crediti OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Limite di credito OpenRouter raggiunto</string>
+  <string name="morphe_vot_openrouter_credits_message">Il tuo limite di credito OpenRouter è stato raggiunto. Ricarica il tuo saldo o aumenta il limite di spesa della tua chiave su OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Apri OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Traduzione OpenRouter non riuscita (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Limite giornaliero di MyMemory raggiunto</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Disponibile di nuovo alle %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Hai utilizzato la quota di traduzione gratuita giornaliera di MyMemory (5.000 caratteri). Aggiungi un\'email di MyMemory nelle impostazioni per aumentare il limite giornaliero a 50.000 caratteri, oppure passa a un altro servizio di traduzione</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Hai utilizzato la quota di traduzione di MyMemory (50.000 caratteri) di oggi. Passa a un altro servizio di traduzione o riprova domani</string>
+  <string name="morphe_vot_mymemory_error">Traduzione MyMemory non riuscita (stato %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Abilita ripetizione video</string>
   <string name="morphe_do_not_remember_loop_video_title">Non ricordare il loop video</string>
@@ -776,7 +828,9 @@ Impostazioni → Riproduzione (o Autoplay) → Riproduci il video successivo aut
   <string name="morphe_ryd_estimated_like_summary">Mostra un conteggio approssimativo dei Mi piace su video in cui il creatore ha disabilitato i Mi piace</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostra avvisi di errore di connessione</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra una notifica quando il server Return YouTube Dislike non è disponibile</string>
-  <string name="morphe_ryd_attribution_summary">I dati vengono forniti dall\'API Return YouTube Dislike. Tocca qui per saperne di più</string>
+  <string name="morphe_ryd_attribution_summary">"I dati sono forniti dall'API Return YouTube Dislike.
+
+Tocca qui per aprire ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistiche dell\'API di ReturnYouTubeDislike per questo dispositivo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Tempo di risposta dell\'API, media</string>
@@ -1018,7 +1072,9 @@ Se non stai inviando un momento saliente, tocca Annulla e contrassegna la second
   <string name="morphe_sb_color_opacity_label">Opacità:</string>
   <string name="morphe_sb_color_dot_label">Colore:</string>
   <string name="morphe_sb_about_title">Informazioni</string>
-  <string name="morphe_sb_about_api_summary">I dati sono forniti dall\'API di SponsorBlock. Tocca qui per saperne di più e vedere i download per altre piattaforme</string>
+  <string name="morphe_sb_about_api_summary">"I dati sono forniti dall'API SponsorBlock.
+
+Tocca qui per aprire Sponsor.ajay.app e visualizzare i download per altre piattaforme"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Layout del dispositivo</string>
   <string name="morphe_change_form_factor_entry_1">Predefinito</string>

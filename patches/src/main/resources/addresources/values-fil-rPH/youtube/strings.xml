@@ -306,6 +306,59 @@ Mga Limitasyon:
 
 Suriin kung tama ang pangalan ng package at naka-install ang app"</string>
   <string name="morphe_external_downloader_empty_warning">Hindi maaaring walang laman ang pangalan ng package</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Pagsasalin ng boses</string>
+  <string name="morphe_vot_screen_summary">Basahin nang malakas ang mga caption ng video gamit ang text-to-speech sa iyong device, na naka-synchronize sa pagpapatugtog</string>
+  <string name="morphe_vot_enabled_title">Pagsasalin ng boses</string>
+  <string name="morphe_vot_caption_language_title">Wika</string>
+  <string name="morphe_vot_translation_service_title">Tagapagbigay ng pagsasalin</string>
+  <string name="morphe_vot_original_audio_volume_title">Dami ng orihinal na audio</string>
+  <string name="morphe_vot_original_audio_volume_summary">Dami ng orihinal na audio ng YouTube habang nagsasalita ang pagsasalin</string>
+  <string name="morphe_vot_translation_volume_title">Dami ng pagsasalin</string>
+  <string name="morphe_vot_translation_volume_summary">Dami ng dubbed na boses ng pagsasalin</string>
+  <string name="morphe_vot_max_speech_rate_title">Pinakamataas na bilis ng pagsasalita</string>
+  <string name="morphe_vot_max_speech_rate_summary">Pinakamataas na multiplier ng bilis kapag umaangkop sa pagsasalita sa isang slot ng subtitle</string>
+  <string name="morphe_vot_mymemory_info_summary">"Libreng API ng pagsasalin, walang kinakailangang API key. Hanggang 5,000 karakter bawat araw sa libreng tier, o hanggang 50,000 karakter bawat araw gamit ang isang email address.
+
+I-tap dito upang buksan ang MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">Email ng MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Opsyonal. Ipasok ang iyong email address ng MyMemory upang madagdagan ang pang-araw-araw na limitasyon mula 5,000 hanggang 50,000 karakter. Iwanang blangko upang gamitin ang limitasyon ng anonymous</string>
+  <string name="morphe_vot_openrouter_info_summary">"Bayad na AI pagsasalin sa pamamagitan ng OpenRouter. Mag-top up nang isang beses at isalin ang libu-libong video. Ang Mistral Nemo ang pinakamurang opsyon, ang Gemma 4 ay nag-aalok ng pinakamataas na kalidad.
+
+I-tap dito upang buksan ang OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">API key ng OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Ang iyong API key ng OpenRouter. Gumawa ng key sa OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Modelo ng OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Pasadya</string>
+  <string name="morphe_vot_openrouter_not_configured_title">Hindi naka-configure ang OpenRouter</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Ipasok ang iyong API key ng OpenRouter sa mga setting bago piliin ang tagapagbigay na ito</string>
+  <string name="morphe_vot_cost_free">Libre</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s bawat 100 oras ng video</string>
+  <string name="morphe_vot_tts_voice_type">Boses</string>
+  <string name="morphe_vot_tts_system">Sistema</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Multilingual na lalaki</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Multilingual na babae</string>
+  <string name="morphe_vot_voice_gender_male">Lalaki</string>
+  <string name="morphe_vot_voice_gender_female">Babae</string>
+  <string name="morphe_vot_tts_sample">Panahon na para magbago!</string>
+  <string name="morphe_vot_http_error_title">Hindi magagamit ang pagsasalin</string>
+  <string name="morphe_vot_http_error_message">"Ang serbisyo ng pagsasalin ay nagbalik ng HTTP error %s. Malamang na nalimitahan ang iyong IP address sa loob ng hanggang 24 na oras.
+
+Upang magpatuloy sa paggamit ng mga pagsasalin, lumipat sa ibang tagapagbigay ng pagsasalin sa mga setting o gumamit ng VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Huwag nang ipakita muli</string>
+  <string name="morphe_vot_export_api_key_warning">"Mayroong API key ng OpenRouter sa iyong mga setting.
+
+Hindi dapat ibahagi ang iyong API key. Sinumang may access dito ay maaaring gumamit ng iyong mga kredito ng OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Naabot na ang limitasyon ng kredito ng OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">Naabot mo na ang iyong limitasyon ng kredito ng OpenRouter. Mag-top up ng iyong balanse o taasan ang iyong limitasyon sa paggastos ng key sa OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Buksan ang OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Nabigo ang pagsasalin ng OpenRouter (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Naabot na ang pang-araw-araw na limitasyon ng MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Available muli sa %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Ginagamit mo na ang pang-araw-araw na libreng quota ng pagsasalin ng MyMemory (5,000 character). Magdagdag ng email ng MyMemory sa mga setting upang itaas ang pang-araw-araw na limitasyon sa 50,000 character, o lumipat sa ibang serbisyo ng pagsasalin</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Ginagamit mo na ang quota ng pagsasalin ng MyMemory ngayong araw (50,000 character). Lumipat sa ibang serbisyo ng pagsasalin o subukan muli bukas</string>
+  <string name="morphe_vot_mymemory_error">Nabigo ang pagsasalin ng MyMemory (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">I-enable ang loop video</string>
   <string name="morphe_do_not_remember_loop_video_title">Huwag tandaan ang pag-uulit ng video</string>
@@ -775,7 +828,9 @@ Mga Setting → Playback (o Autoplay) → Autoplay ng susunod na video."</string
   <string name="morphe_ryd_estimated_like_summary">Ipinapakita ang tinantyang bilang ng like sa mga video kung saan hindi pinagana ng creator ang mga like</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Ipakita ang mga alerto ng error sa koneksyon</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Ipinapakita ang isang notification kapag ang Return YouTube Dislike server ay hindi magagamit</string>
-  <string name="morphe_ryd_attribution_summary">Ang datos ay ibinibigay ng Return YouTube Dislike API. I-tap ang dito para matuto pa</string>
+  <string name="morphe_ryd_attribution_summary">"Ang data ay ibinibigay ng Return YouTube Dislike API.
+
+I-tap dito upang buksan ang ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistics ng device na ito</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Oras ng tugon ng API, average</string>
@@ -1017,7 +1072,9 @@ Kung hindi ka nagsumite ng highlight, pindutin ang Kanselahin at markahan ang pa
   <string name="morphe_sb_color_opacity_label">Opacity:</string>
   <string name="morphe_sb_color_dot_label">Kulay:</string>
   <string name="morphe_sb_about_title">Tungkol</string>
-  <string name="morphe_sb_about_api_summary">Ang data ay ibinibigay ng SponsorBlock API. I-tap dito para malaman pa at makita ang mga downloads para sa ibang plataporma</string>
+  <string name="morphe_sb_about_api_summary">"Ang data ay ibinibigay ng SponsorBlock API.
+
+I-tap dito upang buksan ang Sponsor.ajay.app at tingnan ang mga pag-download para sa iba pang mga platform"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Layout ng device</string>
   <string name="morphe_change_form_factor_entry_1">Panimula</string>
@@ -1168,11 +1225,11 @@ Limitasyon: Maaaring hindi gumana ang paggamit ng back button sa toolbar"</strin
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Mga orihinal na thumbnail</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Kinukuha pa rin</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Kinukuha pa rin</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"Ang DeArrow ay nagbibigay ng mga thumbnail na pinagsama-sama ng mga tao para sa mga video sa YouTube. Ang mga thumbnail na ito ay madalas na mas may kaugnayan kaysa sa mga ibinigay ng YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"Ang DeArrow ay nagbibigay ng mga thumbnail na pinagsama-sama ng publiko para sa mga video sa YouTube. Ang mga thumbnail na ito ay madalas na mas may kaugnayan kaysa sa mga ibinigay ng YouTube
 
-Kung naka-enable, ang mga URL ng video ay ipapadala sa API server at walang ibang data ang ipapadala. Kung ang isang video ay walang mga thumbnail ng DeArrow, ipinapakita ang orihinal o still captures
+Kung pinagana, ang mga URL ng video ay ipapadala sa server ng API at walang ibang data ang ipapadala. Kung ang isang video ay walang mga thumbnail ng DeArrow, kung gayon ang mga orihinal o still captures ang ipinapakita
 
-I-tap dito upang matuto nang higit pa tungkol sa DeArrow"</string>
+I-tap dito upang buksan ang DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Ipakita ang mga alerto ng error sa koneksyon</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Ipinapakita ang isang notification kapag hindi magagamit ang DeArrow server</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API endpoint</string>

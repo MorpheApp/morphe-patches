@@ -35,14 +35,14 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 ## 🩹 Patches list
 
 <!-- PATCHES_START -->
-> **[v1.33.0-dev.1](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.33.0-dev.1)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;117 patches total
+> **[v1.33.0-dev.3](https://github.com/MorpheApp/morphe-patches/releases/tag/v1.33.0-dev.3)**&nbsp;&nbsp;•&nbsp;&nbsp;`dev`&nbsp;&nbsp;•&nbsp;&nbsp;118 patches total
 <details>
-<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;71 patches</summary>
+<summary>📦 YouTube&nbsp;&nbsp;•&nbsp;&nbsp;72 patches</summary>
 <br>
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;21.25.523 | 🧪&nbsp;21.24.360 | 🧪&nbsp;21.23.480 | 🧪&nbsp;21.05.265 | 20.51.39 | 20.31.42 | 20.21.37 |
+| 🧪&nbsp;21.26.360 | 🧪&nbsp;21.25.523 | 🧪&nbsp;21.24.360 | 🧪&nbsp;21.05.265 | 20.51.39 | 20.31.42 | 20.21.37 |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -118,6 +118,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Theme](#theme) | Adds options for theming and applies a custom background theme (dark background theme defaults to pure black). | • Dark theme background color<br>• Light theme background color |
 | [Video ads](#video-ads) | Adds an option to remove ads in the video player. |  |
 | [Video quality](#video-quality) | Adds options to set default video qualities and always use the advanced video quality menu. |  |
+| [Voice over translation](#voice-over-translation) | Adds additional voice over languages using text-to-speech synchronized to the video playback. |  |
 
 </details>
 
@@ -168,7 +169,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 **🎯 Supported versions:**
 
-| 🧪&nbsp;2026.25.0 | 🧪&nbsp;2026.24.0 | 🧪&nbsp;2026.23.0 | 2026.14.0 | 2026.04.0 |
+| 🧪&nbsp;2026.26.0 | 🧪&nbsp;2026.25.0 | 🧪&nbsp;2026.24.0 | 2026.14.0 | 2026.04.0 |
 | :---: | :---: | :---: | :---: | :---: |
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
@@ -178,7 +179,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 | [Disable screenshot popup](#disable-screenshot-popup) | Adds an option to disable the popup that appears when taking a screenshot. |  |
 | [Hide Ask button](#hide-ask-button) | Adds an option to hide Ask button in the search bar. |  |
 | [Hide Reddit search](#hide-reddit-search) | Permanently hides the Reddit search in the contextual menu. This patch does not work with root mounting |  |
-| [Hide Trending shelves](#hide-trending-shelves) | Adds an option to hide Trending shelves from search suggestions. |  |
+| [Hide Trending shelves](#hide-trending-shelves) | Adds an option to hide the Trending shelves from feed and search suggestions. |  |
 | [Hide ads](#hide-ads) | Adds options to hide ads. |  |
 | [Hide communities shelf](#hide-communities-shelf) | Adds an option to hide the related or suggested communities shelf in subreddits. |  |
 | [Hide navigation buttons](#hide-navigation-buttons) | Adds options to hide buttons in the navigation bar. |  |
@@ -198,7 +199,7 @@ All modifications made by Morphe, along with their dates, can be found in the Gi
 
 | 💊&nbsp;Patch | 📜&nbsp;Description | ⚙️&nbsp;Options |
 |----------|----------------|-----------|
-| [Change package name](#change-package-name) | Appends ".morphe" to the package name by default. Changing the package name of the app can lead to unexpected issues. | • Package name<br>• Update permissions<br>• Update providers<br>• Update providers strings |
+| [Change package name](#change-package-name) | Appends ".morphe" to the package name by default. Changing the package name of the app can lead to unexpected issues. | • Package name<br>• Update permissions<br>• Update providers |
 | [Disable Play Store updates](#disable-play-store-updates) | Disables Play Store updates by setting the version code to the maximum allowed. This patch does not work if the app is installed by mounting and may cause unexpected issues with some apps. |  |
 | [Override certificate pinning](#override-certificate-pinning) | Overrides certificate pinning, allowing to inspect traffic via a proxy. |  |
 

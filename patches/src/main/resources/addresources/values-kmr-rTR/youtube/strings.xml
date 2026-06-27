@@ -308,6 +308,59 @@ Sînorkirin:
 
 Doza navê pakkê rast be û sepan serdest be"</string>
   <string name="morphe_external_downloader_empty_warning">Navê pakkê nikare vala be</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Wergerê dîtinî</string>
+  <string name="morphe_vot_screen_summary">Jê wergirê nivîskên vîdyoyê bi teknolojîya veguherandina nivîsê ya cîhazê, bi hevdîtina lîstikê, bi dengî bixîne</string>
+  <string name="morphe_vot_enabled_title">Wergerê dîtinî</string>
+  <string name="morphe_vot_caption_language_title">Ziman</string>
+  <string name="morphe_vot_translation_service_title">Pêşangeha wergerê</string>
+  <string name="morphe_vot_original_audio_volume_title">Hêza dengê ya orjînal</string>
+  <string name="morphe_vot_original_audio_volume_summary">Hêza dengê ya YouTube-yê ya orjînal dema werger parve dike</string>
+  <string name="morphe_vot_translation_volume_title">Hêza wergerê</string>
+  <string name="morphe_vot_translation_volume_summary">Hêza dengê dublajkirî yê wergerê</string>
+  <string name="morphe_vot_max_speech_rate_title">Rêjeya herî bilind a axaftinê</string>
+  <string name="morphe_vot_max_speech_rate_summary">Herî zêde zêdekirina lezê dema danîna axaftinê di cîhê jêrnavan de</string>
+  <string name="morphe_vot_mymemory_info_summary">"API-ya wergerê ya belaş, ne hewce ye anahtara API-yê. Bi heya 5,000 karakteran di rojê de li ser qadê belaş, an bi heya 50,000 karakteran di rojê de bi adreseya e-mailê.
+
+Bike li vir da vekirina MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">E-maila MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Dibe ku ne hewce ye. E-maila xwe ya MyMemory-yê têkeve da zêdekirina sînorê rojane ji 5,000 berbi 50,000 karakteran. Bi vala bihêle da bikarbîne sînorê nebê navdar</string>
+  <string name="morphe_vot_openrouter_info_summary">"Wergera AI-yê ya parêkirî bi rêya OpenRouter. Çêbîne carekê û wergera hezar vîdeoyên din. Mistral Nemo ya herî hêsan e, Gemma 4 ji bo kalîteya herî zêde teklîf dike.
+
+Bike li vir da vekirina OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Anahtara API-yê ya OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Anahtara API-yê ya OpenRouter-ê ya we. Çêbike anahtarê li OpenRouter.ai > Karûbar > Anahtarên API-yê</string>
+  <string name="morphe_vot_openrouter_model_title">Modela OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Xas</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter ne hatiye saz kirin</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Têkeve anahtara API-ya OpenRouter-ê ya te li ser mîhengên berê ji bo hilbijartina dabînkerê vê</string>
+  <string name="morphe_vot_cost_free">Belaş</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s her 100 saet vîdeoyê</string>
+  <string name="morphe_vot_tts_voice_type">Deng</string>
+  <string name="morphe_vot_tts_system">Sîstem</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Nirxê mêr ya zimanên pirjimar</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Nirxê jin ya zimanên pirjimar</string>
+  <string name="morphe_vot_voice_gender_male">Mêr</string>
+  <string name="morphe_vot_voice_gender_female">Jin</string>
+  <string name="morphe_vot_tts_sample">Wextê guhertinê ye!</string>
+  <string name="morphe_vot_http_error_title">Werger ne berdest e</string>
+  <string name="morphe_vot_http_error_message">"Hizmeta wergerê xeletiya HTTP-yê %s da. Adresa IP-ya te bi heya 24 saetan hatiye bindir kirin.
+
+Da ku bikar bînin wergeran, guhêrîne dabînkerê wergerê din li ser mîhengên, an bikarbîne VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Ne nîşan de bide dîsa</string>
+  <string name="morphe_vot_export_api_key_warning">"Mîhengên we anahtara API-ya OpenRouter bin. 
+
+Divê anahtara we ne were parve kirin. Kesê ku bigihe wê dikare bikar bîne kredîyên OpenRouter-ê we"</string>
+  <string name="morphe_vot_openrouter_credits_title">Sînore kredîyê ya OpenRouter gihîştiye</string>
+  <string name="morphe_vot_openrouter_credits_message">Sînore kredîyê ya OpenRouter-ê ya we gihîştiye. Serkirin balanse we an zêde kirin sînore xerckirina anahtara we li OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Veke OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Wergera OpenRouter çê bû (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Sînore rojane ya MyMemory gihîştiye</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Berdest dibe li %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Hêj we bikar hînê kotaya wergerê ya belaş a MyMemory-yê ya roja îro (5,000 karakteran). Zêde bike e-maila we ya MyMemory-yê li ser mîhengên da zêde bike sînorê rojane berbi 50,000 karakteran, an guhêrîne dabînkerê wergerê din</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Hêj we bikar hînê kotaya wergerê ya MyMemory-yê (50,000 karakteran). Guhêrîne dabînkerê wergerê din an bicerîbîne dîsa yarîn</string>
+  <string name="morphe_vot_mymemory_error">Wergera MyMemory çê bû (hewl %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Çalak bikin loop vîdyoyê</string>
   <string name="morphe_do_not_remember_loop_video_title">Vîdeoya dawî kirinê ji bîr neke</string>
@@ -778,7 +831,9 @@ Settings → Playback (an Autoplay) → Autoplay next video"</string>
   <string name="morphe_ryd_estimated_like_summary">Hejmara hezkirî ya tê texmîn kirin li ser vîdeoyên ku afirîner hezkirinê dezaktîv kirine nîşan bide</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Îşaretên xeletêya têkiliyê nîşan bide</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Îşaretê nîşan dide gava ku servera Return YouTube Dislike hewîr be</string>
-  <string name="morphe_ryd_attribution_summary">Datek ji API-ya Return YouTube Dislike tê peyda kirin. Li vir biketina zêde besînîne</string>
+  <string name="morphe_ryd_attribution_summary">"Daneyan ji aliyê API-ya Return YouTube Dislike-ê ve hatine peyda kirin.
+
+Bike li vir da vekirina ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statîstîkên API-ya Return YouTube Dislike ji vê alavê re.</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Demerê bersiva API, seraverî</string>
@@ -1021,7 +1076,9 @@ Ger hûn ne dixwin ronahîyek, bikirtînin Betal kirin û cîhê duyemîn nîşa
   <string name="morphe_sb_color_opacity_label">Astorî:</string>
   <string name="morphe_sb_color_dot_label">Reng:</string>
   <string name="morphe_sb_about_title">Derbarê</string>
-  <string name="morphe_sb_about_api_summary">Agahdariyê ji API-ya SponsorBlock tê kirin. Li vir amadebibin bêtir bifikirin û daxûwanên ji bo platformên din bibînin</string>
+  <string name="morphe_sb_about_api_summary">"Daneyan ji aliyê API-ya SponsorBlock-ê ve hatine peyda kirin.
+
+Bike li vir da vekirina Sponsor.ajay.app û dîsa dîtina platformên din"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Sêwirana cîhazê</string>
   <string name="morphe_change_form_factor_entry_1">Bixwe</string>
@@ -1172,11 +1229,11 @@ Sînordarî: Bikaranîna Butona paşve li ser Toolbarê dibe ku kar neke"</strin
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Thumbnailên orîjinal</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Gîrkirinên statik</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Gîrkirinên statik</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow thumbnailên ji aliyê hemwelatiyan ve peyda dike ji bo vîdyoyên YouTube-yê. Ev thumbnailên heta nêzîktir in li ser wan ku YouTube peyda dike.
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow diyare resmên çêkerîn ji bo vîdeoyên YouTube-yê. Van resman pir caran ji ya pêşniyar kirina YouTube-yê têne hejkirin
 
-Ger were vekirin, serlêdêrên vîdyoyê dê were şandin ser seranserê API serverê û tu dane din nemêve. Ger vîdyoyek thumbnailên DeArrow tune bin, dê orîjinal an gîrkirina statik were nîşandin.
+Ger hatiye saz kirin, URL-ên vîdeoyê dê bên şandina serverê API-yê, û ne heya din daneyan tên şandin. Ger vîdeoyek wenda nîne resmên DeArrow, paşiya resmên orjînal an wan hatine girtin tên nîşan dîsa
 
-Li vir bitapîre ji bo bêtir hêsanîyê li ser DeArrow"</string>
+Bike li vir da vekirina DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Pêstirî dîsêne berî nebeko şok û sînûse şîn-şûşê bikar bici kîrinê. Giritik ne tiştek şûşin kîninî dîşker di heşîn de şêrîne.</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Îşaretên xeletêya têkiliyê nîşan bide</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Xwecihê API DeArrow</string>

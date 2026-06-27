@@ -277,6 +277,10 @@ Second \"item\" text"</string>
 
 Проверете дали името на пакетот е правилно и дали апликацијата е инсталирана"</string>
   <string name="morphe_external_downloader_empty_warning">Името на пакетот не може да биде празно</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_openrouter_model_custom">По нарачка</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_tts_system">Систем</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Вклучи повторување на видеото</string>
   <string name="morphe_do_not_remember_loop_video_title">Не се сеќавам видео во повторување</string>
@@ -693,7 +697,6 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">Прикажува приближен број на Likes на видеа на кои креаторот ги деактивирал Likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Прикажи известувања за грешки во поврзувањето</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Прикажува известување кога серверот Return YouTube Dislike не е достапен</string>
-  <string name="morphe_ryd_attribution_summary">Податоците се дадени од Return YouTube Dislike API. Кликнете овде за да дознаете повеќе</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Статистика на Return YouTube Dislike API на овој уред</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Време за одговор на API, просек</string>
@@ -924,7 +927,6 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">Непровидност:</string>
   <string name="morphe_sb_color_dot_label">Боја:</string>
   <string name="morphe_sb_about_title">Филмови</string>
-  <string name="morphe_sb_about_api_summary">Вести</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Поставување на уред</string>
   <string name="morphe_change_form_factor_entry_1">Плејлисти</string>
@@ -1054,11 +1056,6 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Оригинални слики</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Снимки од екранот</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Снимки од екранот</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow обезбедува слики на минијатури од други корисници за видеа на YouTube.
-
-Ако е активирано, URL-адресите на видеата ќе бидат испратени до API сервер и не се испраќаат други податоци. Ако видеото нема минијатури од DeArrow, ќе се прикажат оригиналните или сликите од екранот.
-
-Допрете овде за да дознаете повеќе за DeArrow."</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Прикажи известувања за грешка во поврзувањето</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Прикажува известување кога серверот DeArrow не е достапен</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Конечно место на DeArrow API</string>

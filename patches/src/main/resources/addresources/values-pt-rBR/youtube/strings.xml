@@ -305,6 +305,59 @@ Limitações:
 
 Verifique se o nome do pacote está correto e se o aplicativo está instalado"</string>
   <string name="morphe_external_downloader_empty_warning">O nome do pacote não pode estar vazio</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Tradução por voz</string>
+  <string name="morphe_vot_screen_summary">Leia as legendas do vídeo em voz alta usando a conversão de texto em fala no dispositivo, sincronizada com a reprodução</string>
+  <string name="morphe_vot_enabled_title">Tradução por voz</string>
+  <string name="morphe_vot_caption_language_title">Idioma</string>
+  <string name="morphe_vot_translation_service_title">Provedor de tradução</string>
+  <string name="morphe_vot_original_audio_volume_title">Volume do áudio original</string>
+  <string name="morphe_vot_original_audio_volume_summary">Volume do áudio original do YouTube enquanto a tradução está sendo reproduzida</string>
+  <string name="morphe_vot_translation_volume_title">Volume da tradução</string>
+  <string name="morphe_vot_translation_volume_summary">Volume da voz dublada da tradução</string>
+  <string name="morphe_vot_max_speech_rate_title">Velocidade máxima da fala</string>
+  <string name="morphe_vot_max_speech_rate_summary">Multiplicador máximo de velocidade ao ajustar a fala a um espaço de legenda</string>
+  <string name="morphe_vot_mymemory_info_summary">"API de tradução gratuita, sem chave de API necessária. Até 5.000 caracteres por dia no plano gratuito, ou até 50.000 caracteres por dia com um endereço de e-mail.
+
+Toque aqui para abrir MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">E-mail do MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Opcional. Insira seu endereço de e-mail do MyMemory para aumentar o limite diário de 5.000 para 50.000 caracteres. Deixe em branco para usar o limite anônimo</string>
+  <string name="morphe_vot_openrouter_info_summary">"Tradução de IA paga via OpenRouter. Recarregue uma vez e traduza milhares de vídeos. Mistral Nemo é a opção mais barata, Gemma 4 oferece a maior qualidade.
+
+Toque aqui para abrir OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">Chave de API OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Sua chave de API OpenRouter. Crie uma chave em OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">Modelo OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Personalizado</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter não configurado</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Insira sua chave de API OpenRouter nas configurações antes de selecionar este provedor</string>
+  <string name="morphe_vot_cost_free">Gratuito</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s por 100 horas de vídeo</string>
+  <string name="morphe_vot_tts_voice_type">Voz</string>
+  <string name="morphe_vot_tts_system">Sistema</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Masculino multilíngue</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Feminino multilíngue</string>
+  <string name="morphe_vot_voice_gender_male">Masculino</string>
+  <string name="morphe_vot_voice_gender_female">Feminino</string>
+  <string name="morphe_vot_tts_sample">É hora de transformar!</string>
+  <string name="morphe_vot_http_error_title">Tradução não disponível</string>
+  <string name="morphe_vot_http_error_message">"O serviço de tradução retornou um erro HTTP %s. Seu endereço IP provavelmente foi limitado por até 24 horas.
+
+Para continuar usando as traduções, altere para um provedor de tradução diferente nas configurações ou use uma VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Não exibir novamente</string>
+  <string name="morphe_vot_export_api_key_warning">"Suas configurações contêm uma chave de API OpenRouter.
+
+Sua chave de API nunca deve ser compartilhada. Qualquer pessoa com acesso a ela pode usar seus créditos OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Limite de crédito OpenRouter atingido</string>
+  <string name="morphe_vot_openrouter_credits_message">Seu limite de crédito OpenRouter foi atingido. Recarregue seu saldo ou aumente o limite de gastos da sua chave em OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Abrir OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Falha na tradução do OpenRouter (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Limite diário do MyMemory atingido</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Disponível novamente em %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Você usou a cota de tradução gratuita do MyMemory (5.000 caracteres) de hoje. Adicione um e-mail do MyMemory nas configurações para aumentar o limite diário para 50.000 caracteres, ou altere para um serviço de tradução diferente</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Você usou a cota de tradução do MyMemory (50.000 caracteres) de hoje. Altere para um serviço de tradução diferente ou tente novamente amanhã</string>
+  <string name="morphe_vot_mymemory_error">Falha na tradução do MyMemory (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Ativar vídeo em loop</string>
   <string name="morphe_do_not_remember_loop_video_title">Não lembrar vídeo em loop</string>
@@ -774,7 +827,9 @@ Configurações → Reprodução (ou Reprodução automática) → Reproduzir o 
   <string name="morphe_ryd_estimated_like_summary">Exibe uma contagem de likes estimada em vídeos onde o criador desativou likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostra uma notificação quando o servidor Return YouTube Dislike estiver indisponível</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Mostra uma notificação quando o servidor Return YouTube Dislike estiver indisponível</string>
-  <string name="morphe_ryd_attribution_summary">Os dados são fornecidos pela API do Return Dislike YouTube. Toque aqui para saber mais</string>
+  <string name="morphe_ryd_attribution_summary">"Os dados são fornecidos pela API Return YouTube Dislike.
+
+Toque aqui para abrir ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Estatísticas da API do Return YouTube Dislike deste dispositivo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Tempo de resposta da API, média</string>
@@ -1014,7 +1069,9 @@ Se você não estiver enviando um destaque, toque em Cancelar e marque a segunda
   <string name="morphe_sb_color_opacity_label">Opacidade:</string>
   <string name="morphe_sb_color_dot_label">Cor:</string>
   <string name="morphe_sb_about_title">Sobre</string>
-  <string name="morphe_sb_about_api_summary">Os dados são fornecidos pela API do SponsorBlock. Toque aqui para aprender mais e ver como baixar para outras plataformas</string>
+  <string name="morphe_sb_about_api_summary">"Os dados são fornecidos pela API SponsorBlock.
+
+Toque aqui para abrir Sponsor.ajay.app e veja downloads para outras plataformas"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Layout do dispositivo</string>
   <string name="morphe_change_form_factor_entry_1">Padrão</string>
@@ -1165,11 +1222,11 @@ Limitação: Usar o botão Voltar na barra de ferramentas pode não funcionar"</
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Miniaturas originais</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; captura estática</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Captura estática</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow fornece miniaturas de crowdsourcing para vídeos do YouTube. Essas miniaturas costumam ser mais relevantes do que as fornecidas pelo YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow fornece miniaturas de crowdsourcing para vídeos do YouTube. Essas miniaturas são frequentemente mais relevantes do que as fornecidas pelo YouTube
 
-Se ativado, os URLs dos vídeos serão enviados ao servidor API e nenhum outro dado será enviado. Se um vídeo não tiver miniaturas DeArrow, as originais ou capturas fixas serão exibidas 
+Se ativado, os URLs dos vídeos serão enviados ao servidor API e nenhum outro dado será enviado. Se um vídeo não tiver miniaturas DeArrow, as originais ou capturas fixas serão exibidas
 
-Toque aqui para saber mais sobre DeArrow"</string>
+Toque aqui para abrir DeArrow.ajay.app"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Mostrar alertas de erro de conexão</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Mostra uma notificação quando o servidor DeArrow estiver indisponível</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">Endpoint da API DeArrow</string>

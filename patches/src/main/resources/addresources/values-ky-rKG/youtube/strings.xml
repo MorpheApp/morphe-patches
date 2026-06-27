@@ -68,6 +68,8 @@ Second \"item\" text"</string>
   <!-- 'Download action button' should match the language used in 'morphe_hide_download_button_title'. -->
   <string name="morphe_external_downloader_not_found_title">Тиркеме көчүрүлгөн жок</string>
   <string name="morphe_external_downloader_not_installed_warning">%s көчкөн эмес. Сураныч аны көчүрүңүз</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
   <!-- interaction.loop.loopVideoPatch -->
   <!-- interaction.loop.loopVideoButtonPatch -->
   <!-- interaction.playall.playAllButtonPatch -->

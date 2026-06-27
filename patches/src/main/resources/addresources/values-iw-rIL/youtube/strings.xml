@@ -306,6 +306,59 @@ Second \"item\" text"</string>
 
 יש לוודא ששם החבילה נכון ושהיישום מותקן"</string>
   <string name="morphe_external_downloader_empty_warning">שם החבילה אינו יכול להיות ריק</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">תרגום דיבוב</string>
+  <string name="morphe_vot_screen_summary">קריאת כתוביות הסרטון בקול רם באמצעות טקסט לדיבור מקומי, בסנכרון עם ההפעלה</string>
+  <string name="morphe_vot_enabled_title">תרגום דיבוב</string>
+  <string name="morphe_vot_caption_language_title">שפה</string>
+  <string name="morphe_vot_translation_service_title">ספק תרגום</string>
+  <string name="morphe_vot_original_audio_volume_title">עוצמת שמע מקורית</string>
+  <string name="morphe_vot_original_audio_volume_summary">עוצמת השמע המקורית של YouTube בזמן שהתרגום מדבר</string>
+  <string name="morphe_vot_translation_volume_title">עוצמת תרגום</string>
+  <string name="morphe_vot_translation_volume_summary">עוצמת הקול של התרגום המדובב</string>
+  <string name="morphe_vot_max_speech_rate_title">קצב דיבור מקסימלי</string>
+  <string name="morphe_vot_max_speech_rate_summary">מכפיל המהירות המקסימלי להתאמת הדיבור לחריץ כתוביות</string>
+  <string name="morphe_vot_mymemory_info_summary">"API תרגום חינמי, ללא מפתח API נדרש. עד 5,000 תווים ליום בתוכנית החינמית, או עד 50,000 תווים ליום עם כתובת דוא\"ל.
+
+הקש כאן כדי לפתוח את MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">דוא\"ל MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">אופציונלי. הזן את כתובת הדוא\"ל שלך ב-MyMemory כדי להגדיל את המגבלה היומית מ-5,000 ל-50,000 תווים. השאר ריק כדי להשתמש במגבלה האנונימית</string>
+  <string name="morphe_vot_openrouter_info_summary">"תרגום AI בתשלום דרך OpenRouter. טען כסף פעם אחת ותרגם אלפי סרטונים. Mistral Nemo היא האפשרות הזולה ביותר, Gemma 4 מציעה את האיכות הגבוהה ביותר.
+
+הקש כאן כדי לפתוח את OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">מפתח API של OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">מפתח ה-API שלך ב-OpenRouter. צור מפתח ב-OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">מודל OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">מותאם אישית</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter לא מוגדר</string>
+  <string name="morphe_vot_openrouter_not_configured_message">הזן את מפתח ה-API של OpenRouter בהגדרות לפני בחירת ספק זה</string>
+  <string name="morphe_vot_cost_free">חינם</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s לכל 100 שעות וידאו</string>
+  <string name="morphe_vot_tts_voice_type">קול</string>
+  <string name="morphe_vot_tts_system">מערכת</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">גבר רב לשוני</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">אישה רב לשונית</string>
+  <string name="morphe_vot_voice_gender_male">גבר</string>
+  <string name="morphe_vot_voice_gender_female">אישה</string>
+  <string name="morphe_vot_tts_sample">זה זמן מורפינג!</string>
+  <string name="morphe_vot_http_error_title">תרגום לא זמין</string>
+  <string name="morphe_vot_http_error_message">"שירות התרגום החזיר שגיאת HTTP %s. כתובת ה-IP שלך כנראה הוגבלה לתעבורה עד 24 שעות.
+
+כדי להמשיך להשתמש בתרגומים, החלף לספק תרגום אחר בהגדרות או השתמש ב-VPN"</string>
+  <string name="morphe_vot_do_not_show_again">אל תציג שוב</string>
+  <string name="morphe_vot_export_api_key_warning">"ההגדרות שלך מכילות מפתח API של OpenRouter.
+
+לעולם אסור לשתף את מפתח ה-API שלך. כל מי שיש לו גישה אליו יכול להשתמש בזכויות שלך ב-OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">הגיעה מגבלת האשראי של OpenRouter</string>
+  <string name="morphe_vot_openrouter_credits_message">הגיעה מגבלת האשראי שלך ב-OpenRouter. טען את היתרה שלך או הגדל את מגבלת ההוצאות של המפתח שלך ב-OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">פתח את OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">תרגום OpenRouter נכשל (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">הגיעה מגבלת היומית של MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">זמין שוב ב-%s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">השתמשת במכסת התרגום החינמית של MyMemory להיום (5,000 תווים). הוסף דוא\"ל MyMemory בהגדרות כדי להעלות את המגבלה היומית ל-50,000 תווים, או החלף לשירות תרגום אחר</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">השתמשת במכסת התרגום של MyMemory להיום (50,000 תווים). החלף לשירות תרגום אחר או נסה שוב מחר</string>
+  <string name="morphe_vot_mymemory_error">תרגום MyMemory נכשל (סטטוס %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">הפעל סרטון בלולאה</string>
   <string name="morphe_do_not_remember_loop_video_title">אל תזכור את סרטון הלולאה</string>
@@ -774,7 +827,9 @@ Second \"item\" text"</string>
   <string name="morphe_ryd_estimated_like_summary">מציג ספירת לייקים משוערת בסרטונים שבהם היוצר ביטל לייקים</string>
   <string name="morphe_ryd_toast_on_connection_error_title">הצג התראות שגיאת חיבור</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">מציג התראה כאשר שרת Return YouTube Dislike אינו זמין</string>
-  <string name="morphe_ryd_attribution_summary">הנתונים מסופקים על ידי Return YouTube Dislike API. הקש כאן כדי ללמוד עוד</string>
+  <string name="morphe_ryd_attribution_summary">"הנתונים מסופקים על ידי ה-Return YouTube Dislike API.
+
+הקש כאן כדי לפתוח את ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">סטטיסטיקת ReturnYouTubeDislike API של מכשיר זה</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">זמן תגובת API, ממוצע</string>
@@ -1014,7 +1069,9 @@ Second \"item\" text"</string>
   <string name="morphe_sb_color_opacity_label">אטימות:</string>
   <string name="morphe_sb_color_dot_label">צבע:</string>
   <string name="morphe_sb_about_title">אודות</string>
-  <string name="morphe_sb_about_api_summary">הנתונים מסופקים על ידי SponsorBlock API. הקש כאן כדי ללמוד עוד ולראות הורדות עבור פלטפורמות אחרות</string>
+  <string name="morphe_sb_about_api_summary">"הנתונים מסופקים על ידי ה-SponsorBlock API.
+
+הקש כאן כדי לפתוח את Sponsor.ajay.app ולראות הורדות עבור פלטפורמות אחרות"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">פריסת מכשיר</string>
   <string name="morphe_change_form_factor_entry_1">ברירת מחדל</string>
@@ -1165,9 +1222,9 @@ Second \"item\" text"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">תמונות ממוזערות מקוריות &amp; DeArrow</string>
   <string name="morphe_alt_thumbnail_options_entry_3">לכידות דוממות &amp; DeArrow</string>
   <string name="morphe_alt_thumbnail_options_entry_4">לכידות דוממות</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"השירות DeArrow מספק תמונות ממוזערות של מיקור המונים עבור סרטוני YouTube. תמונות ממוזערות אלה הן לעתים קרובות רלוונטיות יותר מאלה שסופקו על ידי YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow מספק תמונות ממוזערות שנאספו בהמונים לסרטוני YouTube. תמונות ממוזערות אלה רלוונטיות לרוב מאלו שסיפק YouTube
 
-אם מופעל, כתובות URL של סרטונים יישלחו לשרת ה-API ושום נתונים אחרים לא יישלחו. אם לסרטון אין תמונות ממוזערות של DeArrow, אז מוצגות התמונות המקוריות או לכידות דוממות
+אם מופעל, כתובות URL של סרטונים יישלחו לשרת ה-API ושום נתונים אחרים לא יישלחו. אם לסרטון אין תמונות ממוזערות של DeArrow, יוצגו התמונות המקוריות או הצילומים המצולמים
 
 הקש כאן כדי ללמוד עוד על DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">הצג התראות שגיאת חיבור</string>

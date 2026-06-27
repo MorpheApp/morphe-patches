@@ -306,6 +306,59 @@ Begrænsninger:
 
 Kontrollér at pakkenavnet er korrekt og at appen er installeret"</string>
   <string name="morphe_external_downloader_empty_warning">Pakkenavnet må ikke være tomt</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Tekstlæsning</string>
+  <string name="morphe_vot_screen_summary">Læs videoundertitler højt ved hjælp af tekst-til-tale på enheden, synkroniseret med afspilningen</string>
+  <string name="morphe_vot_enabled_title">Tekstlæsning</string>
+  <string name="morphe_vot_caption_language_title">Sprog</string>
+  <string name="morphe_vot_translation_service_title">Oversættelsestjeneste</string>
+  <string name="morphe_vot_original_audio_volume_title">Original lydstyrke</string>
+  <string name="morphe_vot_original_audio_volume_summary">Lydstyrken af den originale YouTube-lyd, mens oversættelsen taler</string>
+  <string name="morphe_vot_translation_volume_title">Oversættelsesstyrke</string>
+  <string name="morphe_vot_translation_volume_summary">Lydstyrken af den dubberede oversættelsesstemme</string>
+  <string name="morphe_vot_max_speech_rate_title">Maksimal talefrekvens</string>
+  <string name="morphe_vot_max_speech_rate_summary">Maksimal hastighedsmultiplikator, når der tilpasses tale til en undertekstplads</string>
+  <string name="morphe_vot_mymemory_info_summary">"Gratis oversættelses-API, ingen API-nøgle påkrævet. Op til 5.000 tegn pr. dag på den gratis plan, eller op til 50.000 tegn pr. dag med en e-mailadresse.
+
+Tryk her for at åbne MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory-e-mail</string>
+  <string name="morphe_vot_mymemory_email_summary">Valgfrit. Indtast din MyMemory-e-mailadresse for at øge den daglige grænse fra 5.000 til 50.000 tegn. Lad feltet være tomt for at bruge den anonyme grænse</string>
+  <string name="morphe_vot_openrouter_info_summary">"Betalt AI-oversættelse via OpenRouter. Top op én gang og oversæt tusindvis af videoer. Mistral Nemo er den billigste mulighed, Gemma 4 tilbyder den højeste kvalitet.
+
+Tryk her for at åbne OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API-nøgle</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Din OpenRouter API-nøgle. Opret en nøgle på OpenRouter.ai > Workspace > API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter-model</string>
+  <string name="morphe_vot_openrouter_model_custom">Brugerdefineret</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter ikke konfigureret</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Indtast din OpenRouter API-nøgle i indstillingerne, før du vælger denne udbyder</string>
+  <string name="morphe_vot_cost_free">Gratis</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s pr. 100 videotimer</string>
+  <string name="morphe_vot_tts_voice_type">Stemme</string>
+  <string name="morphe_vot_tts_system">System</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Multisproget mandlig</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Multisproget kvindelig</string>
+  <string name="morphe_vot_voice_gender_male">Mandlig</string>
+  <string name="morphe_vot_voice_gender_female">Kvindelig</string>
+  <string name="morphe_vot_tts_sample">Det er tid til morphing!</string>
+  <string name="morphe_vot_http_error_title">Oversættelse ikke tilgængelig</string>
+  <string name="morphe_vot_http_error_message">"Oversættelsestjenesten returnerede en HTTP-fejl %s. Din IP-adresse er sandsynligvis blevet begrænset i op til 24 timer.
+
+For at fortsætte med at bruge oversættelser skal du skifte til en anden oversættelsesudbyder i indstillingerne eller bruge en VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Vis ikke igen</string>
+  <string name="morphe_vot_export_api_key_warning">"Dine indstillinger indeholder en OpenRouter API-nøgle.
+
+Din API-nøgle bør aldrig deles. Enhver med adgang til den kan bruge dine OpenRouter-kreditter"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter-kreditgrænse nået</string>
+  <string name="morphe_vot_openrouter_credits_message">Din OpenRouter-kreditgrænse er nået. Top din saldo op eller øg din nøglebrugsgrænse på OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Åbn OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter-oversættelse mislykkedes (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory daglig grænse nået</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Tilgængelig igen den %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Du har brugt dagens gratis MyMemory-oversættelseskvote (5.000 tegn). Tilføj en MyMemory-e-mail i indstillingerne for at hæve den daglige grænse til 50.000 tegn, eller skift til en anden oversættelsestjeneste</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Du har brugt dagens MyMemory-oversættelseskvote (50.000 tegn). Skift til en anden oversættelsestjeneste eller prøv igen i morgen</string>
+  <string name="morphe_vot_mymemory_error">MyMemory-oversættelse mislykkedes (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Aktiver loop-video</string>
   <string name="morphe_do_not_remember_loop_video_title">Husk ikke loop-video</string>
@@ -775,7 +828,9 @@ Indstillinger → Afspilning (eller Automatisk afspilning) → Afspil næste vid
   <string name="morphe_ryd_estimated_like_summary">Viser et estimeret antal likes på videoer, hvor skaberen har deaktiveret likes</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Vis forbindelsesfejlmeddelelser</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Viser en notifikation, når Return YouTube Dislike-serveren er utilgængelig</string>
-  <string name="morphe_ryd_attribution_summary">Data leveres af Return YouTube Dislike API. Tryk her for at få mere at vide</string>
+  <string name="morphe_ryd_attribution_summary">"Data leveres af Return YouTube Dislike API.
+
+Tryk her for at åbne ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API statistikker for denne enhed</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API svartid, gennemsnit</string>
@@ -1017,7 +1072,9 @@ Hvis du ikke sender en fremhævning, skal du trykke på Annuller og markere den 
   <string name="morphe_sb_color_opacity_label">Opacitet:</string>
   <string name="morphe_sb_color_dot_label">Farve:</string>
   <string name="morphe_sb_about_title">Om</string>
-  <string name="morphe_sb_about_api_summary">Data leveres af SponsorBlock API. Tryk her for at få flere oplysninger og se downloads til andre platforme</string>
+  <string name="morphe_sb_about_api_summary">"Data leveres af SponsorBlock API.
+
+Tryk her for at åbne Sponsor.ajay.app og se downloads til andre platforme"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Enhedslayout</string>
   <string name="morphe_change_form_factor_entry_1">Standard</string>

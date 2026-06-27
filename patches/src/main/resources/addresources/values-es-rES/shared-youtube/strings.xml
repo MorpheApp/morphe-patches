@@ -119,15 +119,15 @@ La reproducción fallará si el hash de JavaScript del reproductor está desactu
   <string name="morphe_proxy_port_title">Puerto del proxy</string>
   <string name="morphe_proxy_port_summary">Puerto del servidor proxy</string>
   <string name="morphe_proxy_https_title">Usar proxy HTTPS</string>
-  <string name="morphe_proxy_https_summary">Utilice HTTPS para conectarse al servidor proxy en lugar de HTTP</string>
+  <string name="morphe_proxy_https_summary">Usar HTTPS para conectarse al servidor proxy en lugar de HTTP</string>
   <string name="morphe_proxy_auth_enabled_title">Autenticación de proxy</string>
   <string name="morphe_proxy_auth_enabled_summary">Envía autenticación básica con las solicitudes de proxy</string>
-  <string name="morphe_proxy_auth_username_title">Tu nombre de usuario</string>
+  <string name="morphe_proxy_auth_username_title">Nombre de usuario del proxy</string>
   <string name="morphe_proxy_auth_username_summary">Nombre de usuario para la autenticación básica de proxy</string>
   <string name="morphe_proxy_auth_password_title">Contraseña del proxy</string>
   <string name="morphe_proxy_auth_password_summary">Contraseña para la autenticación básica de proxy</string>
   <string name="morphe_proxy_allow_direct_fallback_title">Permitir copia de seguridad directa</string>
-  <string name="morphe_proxy_allow_direct_fallback_summary">Conéctese directamente si el proxy falla</string>
+  <string name="morphe_proxy_allow_direct_fallback_summary">Conectar directamente si falla el proxy</string>
   <!-- ad.hideFullscreenAdsPatch -->
   <string name="morphe_hide_fullscreen_ads_title">Ocultar anuncios en pantalla completa</string>
   <!-- 'Spoof video streams' should be the same translation used for 'morphe_spoof_video_streams_screen_title'. -->

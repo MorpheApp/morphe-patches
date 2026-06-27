@@ -306,6 +306,59 @@ Begrensninger:
 
 Vennligst sjekk at pakkenavnet er riktig og at appen er installert"</string>
   <string name="morphe_external_downloader_empty_warning">Pakkenavnet kan ikke være tomt</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Taleoversettelse</string>
+  <string name="morphe_vot_screen_summary">Les opp tekstingen til videoen ved hjelp av tekst-til-tale på enheten, synkronisert med avspillingen</string>
+  <string name="morphe_vot_enabled_title">Taleoversettelse</string>
+  <string name="morphe_vot_caption_language_title">Språk</string>
+  <string name="morphe_vot_translation_service_title">Oversettelsestjeneste</string>
+  <string name="morphe_vot_original_audio_volume_title">Original lydstyrke</string>
+  <string name="morphe_vot_original_audio_volume_summary">Volum på original YouTube-lyd mens oversettelsen snakker</string>
+  <string name="morphe_vot_translation_volume_title">Oversettelsesvolum</string>
+  <string name="morphe_vot_translation_volume_summary">Volum på den dubberte oversettelsesstemmen</string>
+  <string name="morphe_vot_max_speech_rate_title">Maks talehastighet</string>
+  <string name="morphe_vot_max_speech_rate_summary">Maksimal hastighetsmultiplikator når talen tilpasses en undertekstposisjon</string>
+  <string name="morphe_vot_mymemory_info_summary">"Gratis oversettelses-API, ingen API-nøkkel kreves. Opptil 5 000 tegn per dag på gratisnivå, eller opptil 50 000 tegn per dag med en e-postadresse.
+
+Trykk her for å åpne MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">MyMemory-epost</string>
+  <string name="morphe_vot_mymemory_email_summary">Valgfritt. Skriv inn din MyMemory-e-postadresse for å øke den daglige grensen fra 5 000 til 50 000 tegn. La stå tomt for å bruke den anonyme grensen</string>
+  <string name="morphe_vot_openrouter_info_summary">"Betalt AI-oversettelse via OpenRouter. Fyll på en gang og oversett tusenvis av videoer. Mistral Nemo er det billigste alternativet, Gemma 4 tilbyr høyest kvalitet.
+
+Trykk her for å åpne OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">OpenRouter API-nøkkel</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Din OpenRouter API-nøkkel. Opprett en nøkkel på OpenRouter.ai &gt; Workspace &gt; API Keys</string>
+  <string name="morphe_vot_openrouter_model_title">OpenRouter-modell</string>
+  <string name="morphe_vot_openrouter_model_custom">Tilpasset</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter ikke konfigurert</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Angi din OpenRouter API-nøkkel i innstillingene før du velger denne leverandøren</string>
+  <string name="morphe_vot_cost_free">Gratis</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s per 100 videotimer</string>
+  <string name="morphe_vot_tts_voice_type">Stemme</string>
+  <string name="morphe_vot_tts_system">System</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Flerstemt mannlig</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Flerstemt kvinnelig</string>
+  <string name="morphe_vot_voice_gender_male">Mannlig</string>
+  <string name="morphe_vot_voice_gender_female">Kvinnelig</string>
+  <string name="morphe_vot_tts_sample">Det er morfingtid!</string>
+  <string name="morphe_vot_http_error_title">Oversettelse ikke tilgjengelig</string>
+  <string name="morphe_vot_http_error_message">"Oversettelsestjenesten returnerte HTTP-feil %s. Din IP-adresse er sannsynligvis begrenset i opptil 24 timer.
+
+For å fortsette å bruke oversettelser, bytt til en annen oversettelsesleverandør i innstillingene eller bruk en VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Ikke vis igjen</string>
+  <string name="morphe_vot_export_api_key_warning">"Innstillingene dine inneholder en OpenRouter API-nøkkel.
+
+API-nøkkelen din bør aldri deles. Alle med tilgang til den kan bruke OpenRouter-kredittene dine"</string>
+  <string name="morphe_vot_openrouter_credits_title">OpenRouter-kredittgrense nådd</string>
+  <string name="morphe_vot_openrouter_credits_message">OpenRouter-kredittgrensen din er nådd. Fyll på saldoen eller øk nøkkels pennegrensen på OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Åpne OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">OpenRouter-oversettelse mislyktes (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">MyMemory-daglig grense nådd</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Neste tilgjengelig kl. %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Du har brukt dagens gratis MyMemory-oversettelseskvote (5 000 tegn). Legg til en MyMemory-e-post i innstillingene for å heve den daglige grensen til 50 000 tegn, eller bytt til en annen oversettelsestjeneste</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Du har brukt dagens MyMemory-oversettelseskvote (50 000 tegn). Bytt til en annen oversettelsestjeneste eller prøv igjen i morgen</string>
+  <string name="morphe_vot_mymemory_error">MyMemory-oversettelse mislyktes (status %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Aktiver video i sløyfe</string>
   <string name="morphe_do_not_remember_loop_video_title">Husk ikke løkkevideo</string>
@@ -775,7 +828,9 @@ Innstillinger → Avspilling (eller Autoplay) → Spill av neste video automatis
   <string name="morphe_ryd_estimated_like_summary">Viser et estimert likerklikk-antall på videoer der skaperen har deaktivert likerklikk</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Vis tilkoblingsfeilvarsler</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Viser en varsling når Return YouTube Dislike-serveren ikke er tilgjengelig</string>
-  <string name="morphe_ryd_attribution_summary">Dataene er levert av Return YouTube Dislike API. Trykk her for å lære mer</string>
+  <string name="morphe_ryd_attribution_summary">"Data leveres av Return YouTube Dislike API.
+
+Trykk her for å åpne ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike API-statistikk for denne enheten</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-responstid, gjennomsnitt</string>
@@ -1017,7 +1072,9 @@ Hvis du ikke sender inn et utvalg, trykk Avbryt og marker det andre stedet"</str
   <string name="morphe_sb_color_opacity_label">Opasitet:</string>
   <string name="morphe_sb_color_dot_label">Farge:</string>
   <string name="morphe_sb_about_title">Om</string>
-  <string name="morphe_sb_about_api_summary">Data leveres av SponsorBlock API. Trykk her for å lære mer og se nedlastinger for andre plattformer</string>
+  <string name="morphe_sb_about_api_summary">"Data leveres av SponsorBlock API.
+
+Trykk her for å åpne Sponsor.ajay.app og se nedlastinger for andre plattformer"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Enhetslayout</string>
   <string name="morphe_change_form_factor_entry_1">Standard</string>
@@ -1168,11 +1225,9 @@ Begrensning: Bruk av tilbake-knappen på verktøylinjen fungerer kanskje ikke"</
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Originale miniatyrbilder</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Stillbilder</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Stillbilder</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow tilbyr crowdsourced miniatyrbilder for YouTube-videoer. Disse miniatyrbildene er ofte mer relevante enn de som tilbys av YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow leverer crowdsourcet miniatyrbilder for YouTube-videoer. Disse miniatyrbildene er ofte mer relevante enn de som leveres av YouTube
 
-Hvis det er aktivert, vil video-URL-er bli sendt til API-serveren, og ingen andre data sendes. Hvis en video ikke har DeArrow-miniatyrbilder, vises de originale eller stillbildene
-
-Trykk her for å lære mer om DeArrow"</string>
+Hvis aktivert, sendes videourler til API-serveren og ingen andre data sendes. Hvis en video ikke har DeArrow-miniatyrbilder, vises de originale eller stillbilder"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Viser en varsling når DeArrow-serveren ikke er tilgjengelig</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Forbedrer lastingshastigheten ved å bruke bilder av middels kvalitet. Live-strømmer, ikke utgitte og eldre videoer kan vise tomme miniatyrbilder</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">DeArrow API-endepunkt</string>

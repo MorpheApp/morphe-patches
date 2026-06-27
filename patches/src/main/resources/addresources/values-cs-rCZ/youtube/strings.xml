@@ -306,6 +306,59 @@ Omezení:
 
 Zkontrolujte, zda je název balíčku správný a aplikace je nainstalována"</string>
   <string name="morphe_external_downloader_empty_warning">Název balíčku nemůže být prázdný</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Hlasový překlad</string>
+  <string name="morphe_vot_screen_summary">Přečte titulky videa nahlas pomocí text-to-speech v zařízení, synchronizovaně s přehráváním</string>
+  <string name="morphe_vot_enabled_title">Hlasový překlad</string>
+  <string name="morphe_vot_caption_language_title">Jazyk</string>
+  <string name="morphe_vot_translation_service_title">Poskytovatel překladu</string>
+  <string name="morphe_vot_original_audio_volume_title">Hlasitost původního zvuku</string>
+  <string name="morphe_vot_original_audio_volume_summary">Hlasitost původního zvuku YouTube během překladu</string>
+  <string name="morphe_vot_translation_volume_title">Hlasitost překladu</string>
+  <string name="morphe_vot_translation_volume_summary">Hlasitost namluveného překladu</string>
+  <string name="morphe_vot_max_speech_rate_title">Maximální rychlost řeči</string>
+  <string name="morphe_vot_max_speech_rate_summary">Maximální multiplikátor rychlosti řeči při umisťování řeči do slotu titulku</string>
+  <string name="morphe_vot_mymemory_info_summary">"Bezplatné překladatelské API, nevyžaduje se žádný API klíč. Až 5 000 znaků denně v bezplatné verzi nebo až 50 000 znaků denně s e-mailovou adresou.
+
+Klepnutím zde otevřete MyMemory.translated.net"</string>
+  <string name="morphe_vot_mymemory_email_title">E-mail MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Volitelné. Zadejte svou e-mailovou adresu MyMemory a zvyšte denní limit z 5 000 na 50 000 znaků. Nechte prázdné, pokud chcete použít anonymní limit</string>
+  <string name="morphe_vot_openrouter_info_summary">"Placené překlady pomocí AI přes OpenRouter. Doplňte kredit a přeložte tisíce videí. Mistral Nemo je nejlevnější možnost, Gemma 4 nabízí nejvyšší kvalitu.
+
+Klepnutím zde otevřete OpenRouter.ai"</string>
+  <string name="morphe_vot_openrouter_api_key_title">API klíč OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Váš API klíč OpenRouter. Vytvořte klíč na OpenRouter.ai > Pracovní prostor > API klíče</string>
+  <string name="morphe_vot_openrouter_model_title">Model OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Vlastní</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter není nakonfigurován</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Zadejte svůj API klíč OpenRouter v nastavení a poté vyberte tohoto poskytovatele</string>
+  <string name="morphe_vot_cost_free">Zdarma</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s za 100 hodin videa</string>
+  <string name="morphe_vot_tts_voice_type">Hlas</string>
+  <string name="morphe_vot_tts_system">Systém</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Multijazyčný mužský</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Multijazyčná ženská</string>
+  <string name="morphe_vot_voice_gender_male">Mužský</string>
+  <string name="morphe_vot_voice_gender_female">Ženský</string>
+  <string name="morphe_vot_tts_sample">Je čas na přeměnu! </string>
+  <string name="morphe_vot_http_error_title">Překlad nedostupný</string>
+  <string name="morphe_vot_http_error_message">"Překladatelská služba vrátila chybu HTTP %s. Vaše IP adresa byla pravděpodobně omezena až na 24 hodin.
+
+Pro pokračování v používání překladů přepněte v nastavení jiného poskytovatele překladů nebo použijte VPN"</string>
+  <string name="morphe_vot_do_not_show_again">Už se to nezobrazovat</string>
+  <string name="morphe_vot_export_api_key_warning">"Vaše nastavení obsahuje API klíč OpenRouter.
+
+API klíč by se nikdy neměl sdílet. Kdokoli s přístupem k němu může používat vaše kredity OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Limit kreditu OpenRouter byl dosažen</string>
+  <string name="morphe_vot_openrouter_credits_message">Byl vyčerpán limit kreditu OpenRouter. Doplňte zůstatek nebo zvyšte limit výdajů klíče na OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Otevřít OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Překlad OpenRouter selhal (HTTP %s)</string>
+  <string name="morphe_vot_mymemory_quota_title">Dosažen denní limit MyMemory</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Dostupné opět v %s. </string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Využili jste dnešní bezplatnou kvótu překladů MyMemory (5 000 znaků). Přidejte e-mail MyMemory v nastavení a zvyšte denní limit na 50 000 znaků, nebo přepněte na jinou překladatelskou službu</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Využili jste dnešní kvótu překladů MyMemory (50 000 znaků). Přepněte na jinou překladatelskou službu nebo zkusím zítra</string>
+  <string name="morphe_vot_mymemory_error">Překlad MyMemory selhal (stav %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Povolit smyčku videa</string>
   <string name="morphe_do_not_remember_loop_video_title">Nezapomenout přehrávání videa ve smyčce</string>
@@ -775,7 +828,9 @@ Nastavení → Přehrávání (nebo Automatické přehrávání) → Automaticky
   <string name="morphe_ryd_estimated_like_summary">Zobrazuje odhadovaný počet lajků na videích, kde tvůrce zakázal lajky</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Zobrazit upozornění na chyby připojení</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Zobrazí se upozornění, když server Return YouTube Dislike není k dispozici</string>
-  <string name="morphe_ryd_attribution_summary">Data jsou poskytována API Return YouTube Dislike. Klepnutím se dozvíte více</string>
+  <string name="morphe_ryd_attribution_summary">"Data poskytuje Return YouTube Dislike API.
+
+Klepnutím sem otevřete ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Statistiky API Return YouTube Dislike tohoto zařízení</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Doba odezvy API, průměr</string>
@@ -1017,7 +1072,9 @@ Pokud neodesíláte zvýraznění, klepněte na Zrušit a označte druhou polohu
   <string name="morphe_sb_color_opacity_label">Průhlednost:</string>
   <string name="morphe_sb_color_dot_label">Barva:</string>
   <string name="morphe_sb_about_title">O aplikaci</string>
-  <string name="morphe_sb_about_api_summary">Data poskytuje rozhraní API SponsorBlock. Klepněte zde, abyste se dozvěděli více a zobrazili si soubory ke stažení pro další platformy</string>
+  <string name="morphe_sb_about_api_summary">"Data poskytuje SponsorBlock API.
+
+Klepnutím sem otevřete Sponsor.ajay.app a zobrazte si soubory ke stažení pro jiné platformy"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Rozložení zařízení</string>
   <string name="morphe_change_form_factor_entry_1">Výchozí</string>
@@ -1168,9 +1225,9 @@ Omezení: Použití tlačítka zpět na panelu nástrojů nemusí fungovat"</str
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow &amp; Původní náhledy</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow &amp; Zachycení snímků</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Zachycení snímků</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow poskytuje miniatury videí YouTube z crowdsourcingu. Tyto miniatury jsou často relevantnější než ty, které poskytuje YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow poskytuje crowdsourced miniatury pro videa YouTube. Tyto miniatury jsou často relevantnější než ty poskytované YouTube
 
-Pokud je tato funkce povolena, budou adresy URL videí odeslány na server API a nebudou odesílány žádné další údaje. Pokud video nemá miniatury DeArrow, zobrazí se originální nebo statické snímky
+Pokud je povoleno, adresy URL videí budou odeslány na server API a nebudou odeslány žádné další údaje. Pokud video nemá miniatury DeArrow, zobrazí se originální nebo statické snímky
 
 Klepnutím sem se dozvíte více o DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Zobrazit upozornění na chyby připojení</string>

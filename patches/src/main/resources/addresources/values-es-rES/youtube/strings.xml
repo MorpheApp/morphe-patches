@@ -89,7 +89,6 @@ Los cambios incluyen:
   <string name="morphe_hide_latest_videos_button_summary">Oculta el banner azul de \"Vídeos recientes\" que aparece en la parte superior del feed Inicio</string>
   <string name="morphe_hide_mix_playlists_title">Ocultar listas de reproducción Mix</string>
   <string name="morphe_hide_movies_section_title">Ocultar sección de películas</string>
-  <string name="morphe_vot_tts_sample">¡Es la hora de metamorfosearse!</string>
   <!-- 'Notify me' should be translated using the same localized wording YouTube displays for the button.
           This button usually appears in the Subscriptions feed for future livestreams or unreleased videos. -->
   <string name="morphe_hide_notify_me_button_title">Ocultar botón \"Notificarme\"</string>
@@ -307,6 +306,59 @@ Limitaciones:
 
 Verifica que el nombre del paquete sea correcto y que la aplicación esté instalada"</string>
   <string name="morphe_external_downloader_empty_warning">El nombre del paquete no puede estar vacío</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_screen_title">Traducción con voz en off</string>
+  <string name="morphe_vot_screen_summary">Lee en voz alta los subtítulos del video utilizando la conversión de texto a voz del dispositivo, sincronizada con la reproducción</string>
+  <string name="morphe_vot_enabled_title">Traducción con voz en off</string>
+  <string name="morphe_vot_caption_language_title">Idioma</string>
+  <string name="morphe_vot_translation_service_title">Proveedor de traducción</string>
+  <string name="morphe_vot_original_audio_volume_title">Volumen de audio original</string>
+  <string name="morphe_vot_original_audio_volume_summary">Volumen del audio original de YouTube mientras se reproduce la traducción</string>
+  <string name="morphe_vot_translation_volume_title">Volumen de traducción</string>
+  <string name="morphe_vot_translation_volume_summary">Volumen de la voz de la traducción doblada</string>
+  <string name="morphe_vot_max_speech_rate_title">Velocidad máxima de voz</string>
+  <string name="morphe_vot_max_speech_rate_summary">Multiplicador máximo de velocidad para que la voz encaje en el subtítulo</string>
+  <string name="morphe_vot_mymemory_info_summary">"API de traducción gratuita, sin necesidad de clave API. Hasta 5000 caracteres al día en el plan gratuito, o hasta 50.000 caracteres al día proporcionando una dirección de correo electrónico.
+
+Toca aquí para abrir MyMemory.translated.net."</string>
+  <string name="morphe_vot_mymemory_email_title">Correo electrónico de MyMemory</string>
+  <string name="morphe_vot_mymemory_email_summary">Opcional. Introduzca su dirección de correo electrónico de MyMemory para aumentar el límite diario de 5000 a 50.000 caracteres. Déjelo vacío para utilizar el límite anónimo</string>
+  <string name="morphe_vot_openrouter_info_summary">"Traducción con IA de pago mediante OpenRouter. Recarga saldo una sola vez y traduce miles de vídeos. Mistral Nemo es la opción más económica, mientras que Gemma 4 ofrece la mayor calidad.
+
+Toca aquí para abrir OpenRouter.ai."</string>
+  <string name="morphe_vot_openrouter_api_key_title">Clave API de OpenRouter</string>
+  <string name="morphe_vot_openrouter_api_key_summary">Tu clave de API de OpenRouter. Crea una clave en OpenRouter.ai &gt; Espacio de trabajo &gt; Claves de API</string>
+  <string name="morphe_vot_openrouter_model_title">Modelo OpenRouter</string>
+  <string name="morphe_vot_openrouter_model_custom">Personalizado</string>
+  <string name="morphe_vot_openrouter_not_configured_title">OpenRouter no configurado</string>
+  <string name="morphe_vot_openrouter_not_configured_message">Ingrese su clave de API de OpenRouter en la configuración antes de seleccionar este proveedor</string>
+  <string name="morphe_vot_cost_free">Gratis</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_cost_per_hour">%s por 100 horas de video</string>
+  <string name="morphe_vot_tts_voice_type">Voz</string>
+  <string name="morphe_vot_tts_system">Sistema</string>
+  <string name="morphe_vot_voice_gender_male_multilingual">Multilingüe masculino</string>
+  <string name="morphe_vot_voice_gender_female_multilingual">Multilingüe femenino</string>
+  <string name="morphe_vot_voice_gender_male">Masculino</string>
+  <string name="morphe_vot_voice_gender_female">Femenino</string>
+  <string name="morphe_vot_tts_sample">¡Que empiece el cambio!</string>
+  <string name="morphe_vot_http_error_title">Traducción no disponible</string>
+  <string name="morphe_vot_http_error_message">"El servicio de traducción devolvió un error HTTP %s. Su dirección IP probablemente haya sido limitada por velocidad hasta por 24 horas.
+
+Para continuar utilizando traducciones, cambie a un proveedor de traducción diferente en la configuración o use una VPN"</string>
+  <string name="morphe_vot_do_not_show_again">No volver a mostrar</string>
+  <string name="morphe_vot_export_api_key_warning">"Sus configuraciones contienen una clave API de OpenRouter.
+
+Su clave API nunca debe compartirse. Cualquiera que tenga acceso a ella puede usar sus créditos de OpenRouter"</string>
+  <string name="morphe_vot_openrouter_credits_title">Límite de crédito de OpenRouter alcanzado</string>
+  <string name="morphe_vot_openrouter_credits_message">Su límite de crédito de OpenRouter se ha alcanzado. Recargue su saldo o aumente el límite de gasto de su clave en OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_open_website">Abrir OpenRouter.ai</string>
+  <string name="morphe_vot_openrouter_error">Falló la traducción con OpenRouter (HTTP %s).</string>
+  <string name="morphe_vot_mymemory_quota_title">Límite diario de MyMemory alcanzado</string>
+  <string name="morphe_vot_mymemory_quota_next_available">Próximo disponible en %s.</string>
+  <string name="morphe_vot_mymemory_quota_message_no_email">Ha utilizado la cuota diaria gratuita de traducción de MyMemory (5.000 caracteres). Agregue una dirección de correo electrónico de MyMemory en la configuración para aumentar el límite diario a 50.000 caracteres o cambie a un servicio de traducción diferente</string>
+  <string name="morphe_vot_mymemory_quota_message_with_email">Ha utilizado la cuota de traducción de MyMemory de hoy (50.000 caracteres). Cambie a un servicio de traducción diferente o inténtelo de nuevo mañana</string>
+  <string name="morphe_vot_mymemory_error">Falló la traducción con MyMemory (estado %s)</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Activar vídeo en bucle</string>
   <string name="morphe_do_not_remember_loop_video_title">No recordar video en bucle</string>
@@ -778,7 +830,9 @@ Configuración → Reproducción (o Reproducción automática) → Reproducción
   <string name="morphe_ryd_estimated_like_summary">Muestra un recuento estimado de me gusta en los vídeos donde el creador ha desactivado los me gusta</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Mostrar alertas de error de conexión</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Muestra una notificación cuando el servidor de Return YouTube Dislike no esté disponible</string>
-  <string name="morphe_ryd_attribution_summary">Los datos son proporcionados por la API de Return YouTube Dislike. Pulsa aquí para obtener más información</string>
+  <string name="morphe_ryd_attribution_summary">"Los datos son proporcionados por la API de Return YouTube Dislike.
+
+Toca aquí para abrir ReturnYouTubeDislike.com"</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Estadísticas de la API de Return YouTube Dislike de este dispositivo</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">Tiempo de respuesta de la API, promedio</string>
@@ -1020,7 +1074,9 @@ Si no vas a enviar un destacado, pulsa Cancelar y marca la segunda ubicación."<
   <string name="morphe_sb_color_opacity_label">Opacidad:</string>
   <string name="morphe_sb_color_dot_label">Color:</string>
   <string name="morphe_sb_about_title">Información</string>
-  <string name="morphe_sb_about_api_summary">Los datos son proporcionados por la API de SponsorBlock. Pulsa aquí para aprender más y ver las descargas para otras plataformas</string>
+  <string name="morphe_sb_about_api_summary">"Los datos son proporcionados por la API de SponsorBlock.
+
+Pulsa aquí para abrir Sponsor.ajay.app y ver las descargas para otras plataformas"</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Diseño del dispositivo</string>
   <string name="morphe_change_form_factor_entry_1">Predeterminado</string>
@@ -1171,9 +1227,9 @@ Limitación: Usar el botón de retroceso en la barra de herramientas puede que n
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow y miniaturas originales</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow y capturas fijas</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Capturas fijas</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow proporciona miniaturas de origen colectivo para los vídeos de YouTube. Estas miniaturas son a menudo más relevantes que las proporcionadas por YouTube
+  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow proporciona miniaturas de la comunidad para los vídeos de YouTube. Estas miniaturas son a menudo más relevantes que las proporcionadas por YouTube
 
-Si se activa, las URL de vídeo se enviarán al servidor de la API y no se enviará ningún otro dato. Si un video no tiene miniaturas de DeArrow, entonces se muestran las capturas originales o fijas
+Si se activa, las URL de vídeo se enviarán al servidor de la API y no se enviará ningún otro dato. Si un vídeo no tiene miniaturas de DeArrow, entonces se muestran las capturas originales o fijas
 
 Pulsa aquí para saber más sobre DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Mostrar alertas de error de conexión</string>

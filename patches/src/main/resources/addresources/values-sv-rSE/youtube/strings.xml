@@ -261,6 +261,11 @@ Vissa layouter på serversidan kanske inte återställs.
 
 Kontrollera att paketnamnet är korrekt och att appen är installerad"</string>
   <string name="morphe_external_downloader_empty_warning">Paketnamnet får inte vara tomt</string>
+  <!-- video.voiceovertranslation.voiceOverTranslationPatch -->
+  <string name="morphe_vot_openrouter_model_custom">Anpassad</string>
+  <!-- %s is dollar cost, e.g. $0.10 per 100 hours -->
+  <string name="morphe_vot_tts_system">System</string>
+  <string name="morphe_vot_do_not_show_again">Visa inte igen</string>
   <!-- interaction.loop.loopVideoPatch -->
   <string name="morphe_loop_video_title">Aktivera videoslinga</string>
   <!-- interaction.loop.loopVideoButtonPatch -->
@@ -639,7 +644,6 @@ Om du vill att menyn Ljudspår ska visas ändrar du Förfalska videostreamar til
   <string name="morphe_ryd_estimated_like_summary">Visar ett uppskattat antal gilla-markeringar för videor där kreatören har inaktiverat gilla-markeringar</string>
   <string name="morphe_ryd_toast_on_connection_error_title">Visa meddelanden om anslutningsfel</string>
   <string name="morphe_ryd_toast_on_connection_error_summary">Visar ett meddelande när Return YouTube Dislike-servern inte är tillgänglig</string>
-  <string name="morphe_ryd_attribution_summary">Data tillhandahålls av Return YouTube Dislike-API:et. Tryck här för att läsa mer</string>
   <!-- Statistic strings are shown in the settings only when Morphe debug mode is enabled. Typical users will never see these. -->
   <string name="morphe_ryd_statistics_category_title">Return YouTube Dislike-API-statistik för denna enhet</string>
   <string name="morphe_ryd_statistics_getFetchCallResponseTimeAverage_title">API-svarstid, genomsnittlig</string>
@@ -865,7 +869,6 @@ Om du inte vill skicka in en höjdpunkt trycker du på Avbryt och markerar den a
   <string name="morphe_sb_color_opacity_label">Opacitet:</string>
   <string name="morphe_sb_color_dot_label">Färg:</string>
   <string name="morphe_sb_about_title">Om</string>
-  <string name="morphe_sb_about_api_summary">Data tillhandahålls av SponsorBlock-API:et. Tryck här för att läsa mer och se nedladdningar för andra plattformar</string>
   <!-- layout.formfactor.changeFormFactorPatch -->
   <string name="morphe_change_form_factor_title">Enhetslayout</string>
   <string name="morphe_change_form_factor_entry_1">Standard</string>
@@ -996,11 +999,6 @@ Begränsning: Bakåtknappen i verktygsfältet kanske inte fungerar"</string>
   <string name="morphe_alt_thumbnail_options_entry_2">DeArrow och ursprungliga miniatyrer</string>
   <string name="morphe_alt_thumbnail_options_entry_3">DeArrow och stillbilder</string>
   <string name="morphe_alt_thumbnail_options_entry_4">Stillbilder</string>
-  <string name="morphe_alt_thumbnail_dearrow_about_summary">"DeArrow tillhandahåller crowdsourcing-baserade miniatyrbilder för YouTube-videor. Dessa miniatyrbilder är ofta mer relevanta än de som tillhandahålls av YouTube
-
-Om detta aktiveras skickas videoadresser till API-servern och inga andra data skickas. Om en video inte har DeArrow-miniatyrer visas den ursprungliga bilden eller stillbilder
-
-Tryck här för att läsa mer om DeArrow"</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_title">Visa meddelanden om anslutningsfel</string>
   <string name="morphe_alt_thumbnail_dearrow_connection_toast_summary">Visar ett meddelande när DeArrow-servern inte är tillgänglig</string>
   <string name="morphe_alt_thumbnail_dearrow_api_url_title">API-slutpunkt för DeArrow</string>
