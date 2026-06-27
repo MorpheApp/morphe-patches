@@ -231,28 +231,11 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_scrobbling_metadata_cleanup_title">Clean up metadata</string>
     <string name="morphe_music_scrobbling_metadata_cleanup_summary">Automatically clean common clutter (like \"Official Video\", \"Remaster\", \"Live\") from titles, artists, and albums before scrobbling</string>
     <string name="morphe_music_scrobbling_custom_regex_title">Custom regex cleanup</string>
-    <string name="morphe_music_scrobbling_custom_regex_summary">Enter a custom regular expression (regex) to match and remove additional text from song titles, artists, or albums</string>
+    <string name="morphe_music_scrobbling_custom_regex_summary">"Enter a custom regular expression (regex) to match and remove additional text from song titles, artists, or albums.
+Example: (?i)\\s*\\((clean|explicit)\\)"</string>
 
-    <string name="morphe_music_scrobbling_about_title">About</string>
-    <string name="morphe_music_scrobbling_about_summary">How scrobbling works, background requirements, and rules</string>
-    <string name="morphe_music_scrobbling_about_banner_title" translatable="false"> </string>
-    <string name="morphe_music_scrobbling_about_how_title">How scrobbling works</string>
-    <string name="morphe_music_scrobbling_about_how_summary">Morphe monitors your playback lifecycle to automatically submit played songs to Last.fm and ListenBrainz. Once a song crosses the specified play threshold, a scrobble is sent securely using your authorized credentials.</string>
-    <string name="morphe_music_scrobbling_about_battery_title">Background execution</string>
-    <string name="morphe_music_scrobbling_about_battery_summary">Android\'s Doze Mode and battery optimization can halt background scrobbling when YT Music is playing in the background. To ensure continuous scrobbling, go to your system settings for YouTube Music, select Battery, and change the usage restriction to \"Unrestricted\".</string>
-    <string name="morphe_music_scrobbling_about_love_title">Love liked tracks</string>
-    <string name="morphe_music_scrobbling_about_love_summary">When \"Love liked tracks\" is enabled, tapping the Like button in YouTube Music automatically marks the track as loved/liked on Last.fm. Unliking or disliking the track will likewise remove it from your loved list.</string>
-    <string name="morphe_music_scrobbling_about_rules_title">Scrobble trigger rules</string>
-    <string name="morphe_music_scrobbling_about_rules_summary">A song is eligible for scrobbling only if its duration exceeds the minimum duration limit. The scrobble will trigger when you reach the target percentage or the maximum delay seconds (whichever is reached first).</string>
-    <string name="morphe_music_scrobbling_about_cleanup_title">Metadata cleanup &amp; custom regex</string>
-    <string name="morphe_music_scrobbling_about_cleanup_summary">"To ensure clean scrobbles, Morphe can strip common video-related suffixes from song titles and names (like \"(Official Music Video)\", \"- Topic\", etc.).
+    <string name="morphe_music_scrobbling_about_title">About scrobbling</string>
+    <string name="morphe_music_scrobbling_about_summary">"Scrobbling automatically tracks the music you play on YouTube Music and syncs it to your Last.fm or ListenBrainz profile.
 
-You can also specify a custom regular expression (regex) to remove any other unwanted text. When matched, the matching text is replaced with nothing."</string>
-    <string name="morphe_music_scrobbling_about_regex_examples_title">Regex examples</string>
-    <string name="morphe_music_scrobbling_about_regex_examples_summary">"• Remove featuring artists: (?i)\\s*[\\(\\[](feat\\.|ft\\.)[^\\)]*[\\)\\]]
-• Remove clean/explicit tags: (?i)\\s*\\((clean|explicit)\\)
-• Remove specific text: \\s*-\\s*Single"</string>
-    <string name="morphe_music_scrobbling_about_credit_title">Credit</string>
-    <string name="morphe_music_scrobbling_about_credit_summary">Scrobbling feature by Prathxm</string>
-
+To ensure scrobbling runs reliably in the background, please verify that YouTube Music's system battery usage is set to \"Unrestricted\"."</string>
 </resources>

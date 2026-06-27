@@ -36,16 +36,6 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/scrobbling/ScrobblePatch;"
 
-private val scrobblingBannerResourcePatch = resourcePatch {
-    execute {
-        copyResources(
-            "scrobbling",
-            ResourceGroup("drawable-nodpi", "morphe_scrobbling_about_banner.webp"),
-            ResourceGroup("layout", "morphe_scrobbling_about_banner.xml"),
-        )
-    }
-}
-
 @Suppress("unused")
 val scrobblingPatch = bytecodePatch(
     name = "Scrobbling",
@@ -53,14 +43,18 @@ val scrobblingPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        settingsPatch,
-        scrobblingBannerResourcePatch
+        settingsPatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
 
     execute {
         PreferenceScreen.SCROBBLING.addPreferences(
+            NonInteractivePreference(
+                key = "morphe_music_scrobbling_about",
+                titleKey = "morphe_music_scrobbling_about_title",
+                summaryKey = "morphe_music_scrobbling_about_summary"
+            ),
             PreferenceCategory(
                 key = "morphe_music_listenbrainz",
                 preferences = setOf(
@@ -131,25 +125,6 @@ val scrobblingPatch = bytecodePatch(
                 preferences = setOf(
                     SwitchPreference("morphe_music_scrobbling_metadata_cleanup"),
                     TextPreference("morphe_music_scrobbling_custom_regex")
-                )
-            ),
-            PreferenceScreenPreference(
-                key = "morphe_music_scrobbling_about",
-                sorting = Sorting.UNSORTED,
-                preferences = setOf(
-                    NonInteractivePreference(
-                        key = "morphe_music_scrobbling_about_banner",
-                        titleKey = "morphe_music_scrobbling_about_banner_title",
-                        summaryKey = null,
-                        layout = "@layout/morphe_scrobbling_about_banner"
-                    ),
-                    NonInteractivePreference("morphe_music_scrobbling_about_how"),
-                    NonInteractivePreference("morphe_music_scrobbling_about_battery"),
-                    NonInteractivePreference("morphe_music_scrobbling_about_love"),
-                    NonInteractivePreference("morphe_music_scrobbling_about_rules"),
-                    NonInteractivePreference("morphe_music_scrobbling_about_cleanup"),
-                    NonInteractivePreference("morphe_music_scrobbling_about_regex_examples"),
-                    NonInteractivePreference("morphe_music_scrobbling_about_credit")
                 )
             )
         )
