@@ -38,6 +38,19 @@ public class LastFM {
         public int subscriber;
     }
 
+    public static class LastFMApiException extends Exception {
+        private final int errorCode;
+
+        public LastFMApiException(String message, int errorCode) {
+            super(message + " (Code: " + errorCode + ")");
+            this.errorCode = errorCode;
+        }
+
+        public int getErrorCode() {
+            return errorCode;
+        }
+    }
+
     private static String calculateApiSig(Map<String, String> params) {
         List<String> sortedKeys = new ArrayList<>(params.keySet());
         Collections.sort(sortedKeys);
@@ -63,6 +76,9 @@ public class LastFM {
 
     @SuppressWarnings("CharsetObjectCanBeUsed")
     private static String executePostRequest(Map<String, String> params) throws Exception {
+        String method = params.get("method");
+        Logger.printDebug(() -> "Last.fm: Executing API call for method: " + method);
+
         Map<String, String> paramsForSig = new HashMap<>(params);
         String apiSig = calculateApiSig(paramsForSig);
 
@@ -94,6 +110,8 @@ public class LastFM {
         }
 
         int code = conn.getResponseCode();
+        Logger.printDebug(() -> "Last.fm: Response code: " + code + " for method: " + method);
+
         if (code >= 200 && code < 300) {
             try (InputStreamReader reader = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)) {
                 StringBuilder response = new StringBuilder();
@@ -113,11 +131,14 @@ public class LastFM {
                     response.append(buffer, 0, read);
                 }
                 String errResponse = response.toString();
+                Logger.printInfo(() -> "Last.fm: API error response: " + errResponse + " (HTTP Code: " + code + ")");
                 try {
                     JSONObject errorObj = new JSONObject(errResponse);
-                    if (errorObj.has("message")) {
-                        throw new Exception(errorObj.getString("message") + " (Code: " + errorObj.optInt("error") + ")");
+                    if (errorObj.has("error")) {
+                        throw new LastFMApiException(errorObj.optString("message", "API Error"), errorObj.getInt("error"));
                     }
+                } catch (LastFMApiException e) {
+                    throw e;
                 } catch (Exception ignored) {}
                 throw new Exception("HTTP error " + code + ": " + errResponse);
             }
@@ -159,10 +180,57 @@ public class LastFM {
 
                 executePostRequest(params);
                 Logger.printDebug(() -> "Updated Now Playing for " + artist + " - " + track);
+            } catch (LastFMApiException ex) {
+                Logger.printException(() -> "Last.fm API error during updateNowPlaying", ex);
+                if (ex.getErrorCode() == 9) {
+                    Logger.printInfo(() -> "Last.fm: Session key is invalid. Logging out.");
+                    app.morphe.extension.music.settings.Settings.LASTFM_SESSION_KEY.resetToDefault();
+                    app.morphe.extension.music.settings.Settings.LASTFM_USERNAME.resetToDefault();
+                }
             } catch (Exception ex) {
                 Logger.printException(() -> "Failed to update Now Playing", ex);
             }
         });
+    }
+
+    private static void logScrobbleResponse(String jsonResponse, String artist, String track) {
+        try {
+            JSONObject root = new JSONObject(jsonResponse);
+            if (root.has("scrobbles")) {
+                JSONObject scrobbles = root.getJSONObject("scrobbles");
+                JSONObject attr = scrobbles.optJSONObject("@attr");
+                int accepted = attr != null ? attr.optInt("accepted", 0) : 0;
+                int ignored = attr != null ? attr.optInt("ignored", 0) : 0;
+
+                if (ignored > 0) {
+                    String ignoredMsg = "Unknown reason";
+                    if (scrobbles.has("scrobble")) {
+                        Object scrobbleObj = scrobbles.get("scrobble");
+                        JSONObject scrobble = null;
+                        if (scrobbleObj instanceof JSONObject) {
+                            scrobble = (JSONObject) scrobbleObj;
+                        } else if (scrobbleObj instanceof org.json.JSONArray) {
+                            org.json.JSONArray scrobbleArray = (org.json.JSONArray) scrobbleObj;
+                            if (scrobbleArray.length() > 0) {
+                                scrobble = scrobbleArray.optJSONObject(0);
+                            }
+                        }
+                        if (scrobble != null && scrobble.has("ignoredMessage")) {
+                            JSONObject msgObj = scrobble.getJSONObject("ignoredMessage");
+                            ignoredMsg = msgObj.optString("#text", "Code " + msgObj.optString("code"));
+                        }
+                    }
+                    final String finalIgnoredMsg = ignoredMsg;
+                    Logger.printInfo(() -> "Last.fm: Scrobble ignored for " + artist + " - " + track + ". Reason: " + finalIgnoredMsg);
+                } else {
+                    Logger.printDebug(() -> "Last.fm: Scrobbled track: " + artist + " - " + track + " (accepted)");
+                }
+            } else {
+                Logger.printDebug(() -> "Last.fm: Scrobbled track (raw response): " + jsonResponse);
+            }
+        } catch (Exception ex) {
+            Logger.printException(() -> "Last.fm: Failed to parse scrobble response: " + jsonResponse, ex);
+        }
     }
 
     public static void scrobble(String sessionKey, String artist, String track, String album, Integer duration, long timestamp) {
@@ -179,8 +247,15 @@ public class LastFM {
                 if (album != null && !album.isBlank()) params.put("album[0]", album);
                 if (duration != null && duration > 0) params.put("duration[0]", String.valueOf(duration));
 
-                executePostRequest(params);
-                Logger.printDebug(() -> "Scrobbled track: " + artist + " - " + track);
+                String response = executePostRequest(params);
+                logScrobbleResponse(response, artist, track);
+            } catch (LastFMApiException ex) {
+                Logger.printException(() -> "Last.fm API error during scrobble", ex);
+                if (ex.getErrorCode() == 9) {
+                    Logger.printInfo(() -> "Last.fm: Session key is invalid. Logging out.");
+                    app.morphe.extension.music.settings.Settings.LASTFM_SESSION_KEY.resetToDefault();
+                    app.morphe.extension.music.settings.Settings.LASTFM_USERNAME.resetToDefault();
+                }
             } catch (Exception ex) {
                 Logger.printException(() -> "Failed to scrobble track", ex);
             }
@@ -200,6 +275,13 @@ public class LastFM {
 
                 executePostRequest(params);
                 Logger.printInfo(() -> "Last.fm: Loved track: " + artist + " - " + track);
+            } catch (LastFMApiException ex) {
+                Logger.printException(() -> "Last.fm API error during love", ex);
+                if (ex.getErrorCode() == 9) {
+                    Logger.printInfo(() -> "Last.fm: Session key is invalid. Logging out.");
+                    app.morphe.extension.music.settings.Settings.LASTFM_SESSION_KEY.resetToDefault();
+                    app.morphe.extension.music.settings.Settings.LASTFM_USERNAME.resetToDefault();
+                }
             } catch (Exception e) {
                 Logger.printException(() -> "Last.fm: Failed to love track", e);
             }
@@ -219,6 +301,13 @@ public class LastFM {
 
                 executePostRequest(params);
                 Logger.printInfo(() -> "Last.fm: Unloved track: " + artist + " - " + track);
+            } catch (LastFMApiException ex) {
+                Logger.printException(() -> "Last.fm API error during unlove", ex);
+                if (ex.getErrorCode() == 9) {
+                    Logger.printInfo(() -> "Last.fm: Session key is invalid. Logging out.");
+                    app.morphe.extension.music.settings.Settings.LASTFM_SESSION_KEY.resetToDefault();
+                    app.morphe.extension.music.settings.Settings.LASTFM_USERNAME.resetToDefault();
+                }
             } catch (Exception e) {
                 Logger.printException(() -> "Last.fm: Failed to unlove track", e);
             }

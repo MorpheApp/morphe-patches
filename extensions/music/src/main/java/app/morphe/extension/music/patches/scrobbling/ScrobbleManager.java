@@ -46,6 +46,7 @@ public class ScrobbleManager {
 
     private long songStartedAtSeconds;
     private boolean songStarted;
+    private boolean isPlayerPlaying;
 
     // ListenBrainz Timer State
     private long lbScrobbleRemainingMillis;
@@ -68,7 +69,7 @@ public class ScrobbleManager {
             clean = clean.replaceAll("(?i)\\s*[（(\\[](official\\s+)?(video|audio|music\\s+video|lyric\\s+video|visualizer)[）)\\]]", "");
             clean = clean.replaceAll("(?i)\\s*[（(\\[](\\d{4}\\s+)?remaster(ed)?(\\s+\\d{4})?[）)\\]]", "");
             clean = clean.replaceAll("(?i)\\s*[（(\\[]live(\\s+at\\s+.*|\\s+\\d{4})?[）)\\]]", "");
-            clean = clean.replaceAll("(?i)\\s*[（(\\[](mono|stereo|hq|hd)[）)\\]]", "");
+            clean = clean.replaceAll("(?i)\\s*[（(\\[]mono|stereo|hq|hd)[）)\\]]", "");
             clean = applyCustomRegex(clean);
         }
         return clean.replaceAll("\\s+", " ").trim();
@@ -134,6 +135,54 @@ public class ScrobbleManager {
                 currentAlbum = album;
                 currentSongId = songId;
                 currentDurationSeconds = duration;
+
+                if (isPlayerPlaying) {
+                    onSongStart();
+                }
+            } else {
+                // If it is the same song, but some metadata got updated (e.g. duration, album, songId)
+                boolean updated = false;
+                if (duration > currentDurationSeconds) {
+                    currentDurationSeconds = duration;
+                    updated = true;
+                    Logger.printDebug(() -> "Updated duration for " + title + ": " + duration + "s");
+                }
+                if (album != null && !album.isBlank() && (currentAlbum == null || currentAlbum.isBlank())) {
+                    currentAlbum = album;
+                    updated = true;
+                    Logger.printDebug(() -> "Updated album for " + title + ": " + album);
+                }
+                if (songId != null && !songId.isBlank() && (currentSongId == null || currentSongId.isBlank())) {
+                    currentSongId = songId;
+                    updated = true;
+                    Logger.printDebug(() -> "Updated songId for " + title + ": " + songId);
+                }
+
+                if (updated && songStarted) {
+                    if (isPlayerPlaying) {
+                        // If playback is already active, check if we need to start/update the scrobble timers
+                        // because they might have been skipped initially due to 0/invalid duration.
+                        if (Settings.LISTENBRAINZ_SCROBBLING.get()) {
+                            if (!lbScrobbled && lbRunnable == null && lbScrobbleTimerStartedAt == 0L) {
+                                startListenBrainzTimer();
+                            }
+                            if (Settings.LISTENBRAINZ_NOW_PLAYING.get()) {
+                                ListenBrainz.updateNowPlayingAsync(currentArtist, currentTitle, currentSongId, currentAlbum, currentDurationSeconds);
+                            }
+                        }
+                        if (Settings.LASTFM_SCROBBLING.get()) {
+                            String sk = Settings.LASTFM_SESSION_KEY.get();
+                            if (!sk.isBlank()) {
+                                if (!lfScrobbled && lfRunnable == null && lfScrobbleTimerStartedAt == 0L) {
+                                    startLastFMTimer();
+                                }
+                                if (Settings.LASTFM_NOW_PLAYING.get()) {
+                                    LastFM.updateNowPlaying(sk, currentArtist, currentTitle, currentAlbum, currentDurationSeconds);
+                                }
+                            }
+                        }
+                    }
+                }
             }
         } catch (Exception ex) {
             Logger.printException(() -> "onSetMetadata failure", ex);
@@ -143,8 +192,8 @@ public class ScrobbleManager {
     public void onSetPlaybackState(PlaybackState state) {
         Utils.verifyOnMainThread();
         if (state == null) return;
-        boolean isPlaying = state.getState() == PlaybackState.STATE_PLAYING;
-        onPlayerStateChanged(isPlaying);
+        isPlayerPlaying = state.getState() == PlaybackState.STATE_PLAYING;
+        onPlayerStateChanged(isPlayerPlaying);
     }
 
     public void onLikeClicked(String serviceName, String videoId) {
@@ -257,15 +306,24 @@ public class ScrobbleManager {
         final int delaySeconds = Settings.LISTENBRAINZ_DELAY_SECONDS.get();
 
         final long thresholdMs = (long) (currentDurationSeconds * 1000L * delayPercent);
-        lbScrobbleRemainingMillis = Math.min(thresholdMs, (long) delaySeconds * 1000L);
+        long totalDelayMs = Math.min(thresholdMs, (long) delaySeconds * 1000L);
+
+        long elapsedMs = System.currentTimeMillis() - (songStartedAtSeconds * 1000L);
+        if (elapsedMs < 0) elapsedMs = 0;
+
+        lbScrobbleRemainingMillis = totalDelayMs - elapsedMs;
 
         if (lbScrobbleRemainingMillis <= 0) {
             scrobbleListenBrainz();
             return;
         }
 
-        lbScrobbleTimerStartedAt = System.currentTimeMillis();
-        scheduleListenBrainzScrobble(lbScrobbleRemainingMillis);
+        if (isPlayerPlaying) {
+            lbScrobbleTimerStartedAt = System.currentTimeMillis();
+            scheduleListenBrainzScrobble(lbScrobbleRemainingMillis);
+        } else {
+            lbScrobbleTimerStartedAt = 0L;
+        }
     }
 
     private void startLastFMTimer() {
@@ -282,15 +340,24 @@ public class ScrobbleManager {
         final int delaySeconds = Settings.LASTFM_DELAY_SECONDS.get();
 
         final long thresholdMs = (long) (currentDurationSeconds * 1000L * delayPercent);
-        lfScrobbleRemainingMillis = Math.min(thresholdMs, (long) delaySeconds * 1000L);
+        long totalDelayMs = Math.min(thresholdMs, (long) delaySeconds * 1000L);
+
+        long elapsedMs = System.currentTimeMillis() - (songStartedAtSeconds * 1000L);
+        if (elapsedMs < 0) elapsedMs = 0;
+
+        lfScrobbleRemainingMillis = totalDelayMs - elapsedMs;
 
         if (lfScrobbleRemainingMillis <= 0) {
             scrobbleLastFM();
             return;
         }
 
-        lfScrobbleTimerStartedAt = System.currentTimeMillis();
-        scheduleLastFMScrobble(lfScrobbleRemainingMillis);
+        if (isPlayerPlaying) {
+            lfScrobbleTimerStartedAt = System.currentTimeMillis();
+            scheduleLastFMScrobble(lfScrobbleRemainingMillis);
+        } else {
+            lfScrobbleTimerStartedAt = 0L;
+        }
     }
 
     private void pauseTimers() {
