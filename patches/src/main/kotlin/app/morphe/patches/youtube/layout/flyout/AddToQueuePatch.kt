@@ -95,7 +95,7 @@ val addToQueuePatch = bytecodePatch(
         // Hook flyout menu protocol buffer object.
         FeedFlyoutBufferObjectFingerprint.method.addInstruction(
             0,
-            "invoke-static/range { p2 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/util/Map;)V"
+            "invoke-static/range { p2 .. p2 }, $EXTENSION_CLASS->extractVideoIdFromFlyoutBuffer(Ljava/util/Map;)V"
         )
 
         FeedFlyoutButtonsInitializerFingerprint.let {

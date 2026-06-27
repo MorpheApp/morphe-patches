@@ -39,7 +39,7 @@ public final class OpenSystemShareSheetPatch {
         flyoutMenuRecyclerView = new WeakReference<>(recyclerView);
     }
 
-    public static boolean openSystemShareSheet(String asciiBuffer) {
+    public static boolean openSystemShareSheet() {
         systemSheetOpened = true;
         final String videoID = (isFlyoutShareButton ? getFlyoutVideoId() : VideoInformation.getVideoId());
         isFlyoutShareButton = false;

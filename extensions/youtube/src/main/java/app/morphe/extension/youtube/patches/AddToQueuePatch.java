@@ -91,16 +91,6 @@ public final class AddToQueuePatch {
     /**
      * Injection point.
      */
-    public static boolean overrideFlyoutBufferDisabler(boolean originalValue) {
-        if (Settings.QUEUE_OVERRIDE_FLYOUT_MENU.get()) {
-            return false;
-        }
-        return originalValue;
-    }
-
-    /**
-     * Injection point.
-     */
     public static void extractVideoIdFromFlyoutBuffer(Map<?, ?> map) {
         try {
             Object bufferObject = map.get("com.google.android.libraries.youtube.innertube.endpoint.tag");
@@ -239,8 +229,8 @@ public final class AddToQueuePatch {
                 return;
             }
             if (buttonName.equals(shareButtonName)) {
-                // Required to differentiate the Share
-                // Flyout button from the Action button.
+                // It is necessary to check whether the Share
+                // button is of type Flyout or Action.
                 enableIsFlyoutShareButton();
             }
 
