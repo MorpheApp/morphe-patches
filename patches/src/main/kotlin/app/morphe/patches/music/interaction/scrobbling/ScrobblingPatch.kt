@@ -4,22 +4,23 @@
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
-package app.morphe.patches.music.interaction.listenbrainz
+
+package app.morphe.patches.music.interaction.scrobbling
 
 import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
+import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
+import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
-import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
-import app.morphe.patches.music.misc.settings.PreferenceScreen
-import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
 
-// Scrobbling integration patch (ListenBrainz & Last.fm)
+private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/listenbrainz/ListenBrainzHook;"
+
 @Suppress("unused")
 val scrobblingPatch = bytecodePatch(
     name = "Scrobbling support",
@@ -34,7 +35,7 @@ val scrobblingPatch = bytecodePatch(
 
     execute {
         val listenBrainzCategory = PreferenceCategory(
-            key = "morphe_settings_music_screen_5_listenbrainz",
+            key = "morphe_settings_music_listenbrainz",
             preferences = setOf(
                 NonInteractivePreference(
                     key = "morphe_music_listenbrainz_token_ui",
@@ -67,8 +68,7 @@ val scrobblingPatch = bytecodePatch(
         )
 
         val lastfmCategory = PreferenceCategory(
-            key = "morphe_music_lastfm_category",
-            titleKey = "morphe_settings_music_lastfm_title",
+            key = "morphe_settings_music_lastfm",
             preferences = setOf(
                 NonInteractivePreference(
                     key = "morphe_music_lastfm_token_ui",
@@ -100,18 +100,11 @@ val scrobblingPatch = bytecodePatch(
             )
         )
 
-        val scrobblingScreen = PreferenceScreenPreference(
-            key = "morphe_settings_music_screen_5_scrobbling",
-            titleKey = "morphe_settings_music_screen_scrobbling_title",
-            summaryKey = "morphe_settings_music_screen_scrobbling_summary",
-            preferences = setOf(
-                listenBrainzCategory,
-                lastfmCategory
-            )
+        PreferenceScreen.SCROBBLING.addPreferences(
+            listenBrainzCategory,
+            lastfmCategory
         )
 
-        PreferenceScreen.MISC.addPreferences(scrobblingScreen
-        )
         MediaSessionSetPlaybackStateFingerprint.let {
             it.method.apply {
                 it.instructionMatches.reversed().forEach { match ->
@@ -119,7 +112,7 @@ val scrobblingPatch = bytecodePatch(
                     val register = getInstruction<FiveRegisterInstruction>(index).registerD
                     addInstruction(
                         index,
-                        "invoke-static { v$register }, Lapp/morphe/extension/music/patches/listenbrainz/ListenBrainzHook;->onSetPlaybackState(Landroid/media/session/PlaybackState;)V"
+                        "invoke-static { v$register }, $EXTENSION_CLASS->onSetPlaybackState(Landroid/media/session/PlaybackState;)V"
                     )
                 }
             }
@@ -132,7 +125,7 @@ val scrobblingPatch = bytecodePatch(
                     val register = getInstruction<FiveRegisterInstruction>(index).registerD
                     addInstruction(
                         index,
-                        "invoke-static { v$register }, Lapp/morphe/extension/music/patches/listenbrainz/ListenBrainzHook;->onSetMetadata(Landroid/media/MediaMetadata;)V"
+                        "invoke-static { v$register }, $EXTENSION_CLASS->onSetMetadata(Landroid/media/MediaMetadata;)V"
                     )
                 }
             }

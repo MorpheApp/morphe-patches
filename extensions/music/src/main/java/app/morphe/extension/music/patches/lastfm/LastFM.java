@@ -4,10 +4,11 @@
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
+
 package app.morphe.extension.music.patches.lastfm;
 
 import com.google.gson.Gson;
-import com.google.gson.annotations.SerializedName;
+
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
 import app.morphe.extension.shared.Logger;
 
 public class LastFM {

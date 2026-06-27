@@ -1,14 +1,25 @@
+/*
+ * Copyright 2026 Morphe.
+ * https://github.com/MorpheApp/morphe-patches
+ *
+ * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
+ */
+
 package app.morphe.extension.music.settings.preference;
+
+import static app.morphe.extension.shared.StringRef.str;
 
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RoundRectShape;
 import android.net.Uri;
 import android.preference.Preference;
 import android.util.AttributeSet;
 import android.util.Pair;
 import android.util.TypedValue;
-import android.view.Gravity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -22,7 +33,11 @@ import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
 
+@SuppressWarnings({"unused", "deprecation"})
 public class ListenBrainzTokenPreference extends Preference {
+
+    private static final int STATUS_COLOR_ERROR = 0xFFE53935;
+    private static final int STATUS_COLOR_SUCCESS = 0xFF43A047;
 
     public ListenBrainzTokenPreference(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
@@ -51,12 +66,15 @@ public class ListenBrainzTokenPreference extends Preference {
     }
 
     private void updateSummary() {
-        String token = ListenBrainzTokenStore.retrieve();
-        if (token == null || token.trim().isEmpty()) {
-            setSummary("Not logged in. Tap to configure.");
+        if (isLoggedIn()) {
+            setSummary(str("morphe_music_listenbrainz_token_summary_logged_in"));
         } else {
-            setSummary("Logged in. Tap to manage account.");
+            setSummary(str("morphe_music_scrobbling_summary_logged_out"));
         }
+    }
+
+    private static boolean isLoggedIn() {
+        return !ListenBrainzTokenStore.retrieve().trim().isEmpty();
     }
 
     @Override
@@ -67,135 +85,171 @@ public class ListenBrainzTokenPreference extends Preference {
     private void showDialog() {
         Context context = getContext();
         String currentToken = ListenBrainzTokenStore.retrieve();
+        boolean loggedIn = !currentToken.trim().isEmpty();
 
         LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
-        content.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp8);
 
         TextView instruction = new TextView(context);
-        instruction.setText("Enter your ListenBrainz User Token to enable scrobbling.");
+        instruction.setText(str("morphe_music_listenbrainz_token_dialog_instruction"));
         instruction.setTextSize(TypedValue.COMPLEX_UNIT_SP, 14);
-        content.addView(instruction);
+        instruction.setTextColor(Utils.getAppForegroundColor());
+        LinearLayout.LayoutParams instructionParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        instructionParams.bottomMargin = Dim.dp12;
+        content.addView(instruction, instructionParams);
 
-        EditText tokenInput = new EditText(context);
-        tokenInput.setHint("Token");
-        if (currentToken != null) {
+        EditText tokenInput = createThemedEditText(context);
+        tokenInput.setHint(str("morphe_music_listenbrainz_token_dialog_hint"));
+        if (loggedIn) {
             tokenInput.setText(currentToken);
             tokenInput.setSelection(currentToken.length());
         }
-        LinearLayout.LayoutParams inputParams = new LinearLayout.LayoutParams(
+        content.addView(tokenInput, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        inputParams.topMargin = Dim.dp8;
-        content.addView(tokenInput, inputParams);
-
-        LinearLayout buttonRow = new LinearLayout(context);
-        buttonRow.setOrientation(LinearLayout.HORIZONTAL);
-        LinearLayout.LayoutParams rowParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        rowParams.topMargin = Dim.dp8;
-        content.addView(buttonRow, rowParams);
-
-        Button getBtn = new Button(context);
-        getBtn.setText("Get Token");
-        LinearLayout.LayoutParams btnParams = new LinearLayout.LayoutParams(
-                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
-        btnParams.rightMargin = Dim.dp8;
-        buttonRow.addView(getBtn, btnParams);
-
-        Button verifyBtn = new Button(context);
-        verifyBtn.setText("Verify");
-        LinearLayout.LayoutParams verifyParams = new LinearLayout.LayoutParams(
-                0, LinearLayout.LayoutParams.WRAP_CONTENT, 1.0f);
-        buttonRow.addView(verifyBtn, verifyParams);
-
-        getBtn.setOnClickListener(v -> {
-            try {
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://listenbrainz.org/profile/"));
-                context.startActivity(intent);
-            } catch (Exception e) {
-                Logger.printException(() -> "ListenBrainzTokenPreference failed to open browser", e);
-            }
-        });
+                LinearLayout.LayoutParams.WRAP_CONTENT));
 
         TextView status = new TextView(context);
         status.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-        LinearLayout.LayoutParams statusParams = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT);
-        statusParams.topMargin = Dim.dp8;
-        content.addView(status, statusParams);
-
-        verifyBtn.setOnClickListener(v -> {
-            String token = tokenInput.getText().toString().trim();
-            if (token.isEmpty()) {
-                status.setText("Please enter a token");
-                status.setTextColor(0xFFFF0000);
-                return;
-            }
-            status.setText("Validating...");
-            status.setTextColor(0xFF888888);
-            Utils.runOnBackgroundThread(() -> {
-                try {
-                    ListenBrainz.TokenValidation validation = ListenBrainz.validateToken(token);
-                    Utils.runOnMainThread(() -> {
-                        if (validation.valid) {
-                            status.setText("Valid token! User: " + validation.userName);
-                            status.setTextColor(0xFF00FF00);
-                        } else {
-                            status.setText("Invalid token: " + (validation.message != null ? validation.message : "unknown"));
-                            status.setTextColor(0xFFFF0000);
-                        }
-                    });
-                } catch (Exception e) {
-                    Utils.runOnMainThread(() -> {
-                        status.setText("Verification failed: " + e.getMessage());
-                        status.setTextColor(0xFFFF0000);
-                    });
-                }
-            });
-        });
+        status.setTextColor(Utils.getAppForegroundColor());
+        status.setVisibility(View.GONE);
 
         Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                 context,
-                "ListenBrainz Account",
+                str("morphe_music_listenbrainz_token_title"),
                 null,
                 null,
-                "Save",
+                str("morphe_settings_save"),
                 () -> {
                     String token = tokenInput.getText().toString().trim();
                     if (token.isEmpty()) {
                         ListenBrainzTokenStore.clear();
                         updateSummary();
-                        Toast.makeText(context, "Token cleared", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, str("morphe_music_listenbrainz_token_toast_cleared"), Toast.LENGTH_SHORT).show();
                     } else {
                         ListenBrainzTokenStore.store(token);
                         updateSummary();
-                        Toast.makeText(context, "Token saved", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, str("morphe_music_listenbrainz_token_toast_saved"), Toast.LENGTH_SHORT).show();
                         Utils.runOnBackgroundThread(() -> {
                             try {
                                 ListenBrainz.TokenValidation validation = ListenBrainz.validateToken(token);
                                 if (!validation.valid) {
-                                    Utils.runOnMainThread(() -> {
-                                        Toast.makeText(context, "Warning: Saved token is invalid!", Toast.LENGTH_LONG).show();
-                                    });
+                                    Utils.runOnMainThread(() ->
+                                            Toast.makeText(context, str("morphe_music_listenbrainz_token_toast_invalid_warning"), Toast.LENGTH_LONG).show());
                                 }
                             } catch (Exception ignored) {}
                         });
                     }
                 },
-                () -> {},
-                currentToken != null ? "Log Out" : null,
-                () -> {
+                null,
+                loggedIn ? str("morphe_music_scrobbling_log_out") : null,
+                loggedIn ? () -> {
                     ListenBrainzTokenStore.clear();
                     updateSummary();
-                    Toast.makeText(context, "Logged out", Toast.LENGTH_SHORT).show();
-                },
+                    Toast.makeText(context, str("morphe_music_scrobbling_logged_out_toast"), Toast.LENGTH_SHORT).show();
+                } : null,
                 true
         );
 
-        dialogPair.second.addView(content, 1);
-        dialogPair.first.show();
+        Dialog dialog = dialogPair.first;
+        LinearLayout mainLayout = dialogPair.second;
+
+        Button getBtn = CustomDialog.createButton(context, null,
+                str("morphe_music_listenbrainz_token_dialog_get_token"),
+                () -> {
+                    try {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://listenbrainz.org/profile/"));
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+                    } catch (Exception e) {
+                        Logger.printException(() -> "ListenBrainzTokenPreference failed to open browser", e);
+                    }
+                },
+                false, false);
+
+        Button verifyBtn = CustomDialog.createButton(context, null,
+                str("morphe_music_listenbrainz_token_dialog_verify"),
+                () -> {
+                    String token = tokenInput.getText().toString().trim();
+                    if (token.isEmpty()) {
+                        showStatus(status, str("morphe_music_listenbrainz_token_status_empty"), STATUS_COLOR_ERROR);
+                        return;
+                    }
+                    showStatus(status, str("morphe_music_listenbrainz_token_status_validating"), Utils.getAppForegroundColor());
+                    Utils.runOnBackgroundThread(() -> {
+                        try {
+                            ListenBrainz.TokenValidation validation = ListenBrainz.validateToken(token);
+                            Utils.runOnMainThread(() -> {
+                                if (validation.valid) {
+                                    showStatus(status,
+                                            str("morphe_music_listenbrainz_token_status_valid", validation.userName),
+                                            STATUS_COLOR_SUCCESS);
+                                } else {
+                                    String reason = validation.message != null
+                                            ? validation.message
+                                            : str("morphe_music_listenbrainz_token_status_invalid_unknown");
+                                    showStatus(status,
+                                            str("morphe_music_listenbrainz_token_status_invalid", reason),
+                                            STATUS_COLOR_ERROR);
+                                }
+                            });
+                        } catch (Exception e) {
+                            Utils.runOnMainThread(() ->
+                                    showStatus(status,
+                                            str("morphe_music_listenbrainz_token_status_failed", e.getMessage()),
+                                            STATUS_COLOR_ERROR));
+                        }
+                    });
+                },
+                false, false);
+
+        LinearLayout actionRow = new LinearLayout(context);
+        actionRow.setOrientation(LinearLayout.HORIZONTAL);
+        LinearLayout.LayoutParams actionRowParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        actionRowParams.topMargin = Dim.dp12;
+        LinearLayout.LayoutParams leftParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+        leftParams.rightMargin = Dim.dp4;
+        LinearLayout.LayoutParams rightParams = new LinearLayout.LayoutParams(0, Dim.dp36, 1.0f);
+        rightParams.leftMargin = Dim.dp4;
+        actionRow.addView(getBtn, leftParams);
+        actionRow.addView(verifyBtn, rightParams);
+        content.addView(actionRow, actionRowParams);
+
+        LinearLayout.LayoutParams statusParams = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT);
+        statusParams.topMargin = Dim.dp12;
+        content.addView(status, statusParams);
+
+        // CustomDialog layout order: [title, buttonContainer]. Insert custom content before the buttons.
+        mainLayout.addView(content, mainLayout.getChildCount() - 1,
+                new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        dialog.show();
+    }
+
+    private static void showStatus(TextView status, CharSequence text, int color) {
+        status.setText(text);
+        status.setTextColor(color);
+        status.setVisibility(View.VISIBLE);
+    }
+
+    private static EditText createThemedEditText(Context context) {
+        EditText editText = new EditText(context);
+        editText.setSingleLine(true);
+        editText.setTextSize(16);
+        editText.setTextColor(Utils.getAppForegroundColor());
+        ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
+                Dim.roundedCorners(10), null, null));
+        background.getPaint().setColor(Utils.getEditTextBackground());
+        editText.setPadding(Dim.dp12, Dim.dp8, Dim.dp12, Dim.dp8);
+        editText.setBackground(background);
+        editText.setClipToOutline(true);
+        return editText;
     }
 }

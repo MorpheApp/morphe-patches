@@ -4,7 +4,8 @@
  *
  * See the included NOTICE file for GPLv3 §7(b) and §7(c) terms that apply to this code.
  */
-package app.morphe.patches.music.interaction.listenbrainz
+
+package app.morphe.patches.music.interaction.scrobbling
 
 import app.morphe.patcher.Fingerprint
 import app.morphe.patcher.methodCall

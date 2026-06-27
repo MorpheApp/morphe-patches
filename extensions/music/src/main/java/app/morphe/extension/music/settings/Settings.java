@@ -14,6 +14,8 @@ import app.morphe.extension.shared.settings.EnumSetting;
 import app.morphe.extension.shared.settings.IntegerSetting;
 import app.morphe.extension.shared.settings.StringSetting;
 import app.morphe.extension.shared.settings.SharedYouTubeSettings;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference;
+import app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig;
 import app.morphe.extension.shared.spoof.ClientType;
 
 @SuppressWarnings({"deprecation", "RedundantSuppression"})
@@ -79,36 +81,17 @@ public class Settings extends SharedYouTubeSettings {
     public static final IntegerSetting LASTFM_DELAY_SECONDS = new IntegerSetting("morphe_music_lastfm_delay_seconds", 180, true);
 
     static {
-        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
-                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
-                        LISTENBRAINZ_MIN_SONG_DURATION, 10, 60, 5, "s"
-                )
-        );
-        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
-                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
-                        LISTENBRAINZ_DELAY_PERCENT, 30, 95, 5, "%"
-                )
-        );
-        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
-                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
-                        LISTENBRAINZ_DELAY_SECONDS, 30, 360, 10, "s"
-                )
-        );
-
-        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
-                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
-                        LASTFM_MIN_SONG_DURATION, 10, 60, 5, "s"
-                )
-        );
-        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
-                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
-                        LASTFM_DELAY_PERCENT, 30, 95, 5, "%"
-                )
-        );
-        app.morphe.extension.shared.settings.preference.SeekBarPreference.register(
-                new app.morphe.extension.shared.settings.preference.SeekBarPreference.SeekBarConfig(
-                        LASTFM_DELAY_SECONDS, 30, 360, 10, "s"
-                )
-        );
+        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_MIN_SONG_DURATION,
+                10, 60, 5, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_DELAY_PERCENT,
+                30, 95, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(LISTENBRAINZ_DELAY_SECONDS,
+                30, 360, 10, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LASTFM_MIN_SONG_DURATION,
+                10, 60, 5, "s"));
+        SeekBarPreference.register(new SeekBarConfig(LASTFM_DELAY_PERCENT,
+                30, 95, 5, "%"));
+        SeekBarPreference.register(new SeekBarConfig(LASTFM_DELAY_SECONDS,
+                30, 360, 10, "s"));
     }
 }

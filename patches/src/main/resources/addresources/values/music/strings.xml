@@ -34,8 +34,7 @@ Second \"item\" text"</string>
     <string name="morphe_settings_music_screen_2_general_title">General</string>
     <string name="morphe_settings_music_screen_3_player_title">Player</string>
     <string name="morphe_settings_music_screen_4_misc_title">Miscellaneous</string>
-    <string name="morphe_settings_music_screen_scrobbling_title">Scrobbling</string>
-    <string name="morphe_settings_music_screen_scrobbling_summary">Configure Last.fm and ListenBrainz integration</string>
+    <string name="morphe_settings_music_screen_5_scrobbling_title">Scrobbling</string>
 
     <!-- ad.general.hideAdsPatch -->
     <string name="morphe_music_hide_get_premium_label_title">Hide \'Get Music Premium\' label</string>
@@ -171,21 +170,52 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <!-- layout.upgradebutton.hideUpgradeButtonPatch -->
     <string name="morphe_music_hide_upgrade_button_title">Hide upgrade button</string>
 
-    <!-- interaction.listenbrainz -->
-    <string name="morphe_settings_music_screen_5_listenbrainz_title">ListenBrainz</string>
+    <!-- interaction.scrobbling.scrobblingPatch -->
+    <string name="morphe_music_scrobbling_title">Scrobbling</string>
+    <string name="morphe_music_scrobbling_summary">Configure Last.fm and ListenBrainz integration</string>
+    <string name="morphe_music_scrobbling_summary_logged_out">Not logged in. Tap to configure</string>
+    <string name="morphe_music_scrobbling_log_out">Log out</string>
+    <string name="morphe_music_scrobbling_logged_out_toast">Logged out</string>
+
+    <string name="morphe_settings_music_listenbrainz_title" translatable="false">ListenBrainz</string>
     <string name="morphe_music_listenbrainz_enabled_title">Enable scrobbling</string>
     <string name="morphe_music_listenbrainz_now_playing_title">Submit \"Now Playing\" status</string>
     <string name="morphe_music_listenbrainz_min_song_duration_title">Minimum song duration</string>
     <string name="morphe_music_listenbrainz_delay_percent_title">Scrobble delay percent</string>
     <string name="morphe_music_listenbrainz_delay_seconds_title">Scrobble delay seconds</string>
     <string name="morphe_music_listenbrainz_token_title">ListenBrainz Account</string>
-    <!-- interaction.lastfm -->
-    <string name="morphe_settings_music_lastfm_title">Last.fm</string>
+    <string name="morphe_music_listenbrainz_token_summary_logged_in">Logged in. Tap to manage account</string>
+    <string name="morphe_music_listenbrainz_token_dialog_instruction">Enter your ListenBrainz User Token to enable scrobbling</string>
+    <string name="morphe_music_listenbrainz_token_dialog_hint">Token</string>
+    <string name="morphe_music_listenbrainz_token_dialog_get_token">Get token</string>
+    <string name="morphe_music_listenbrainz_token_dialog_verify">Verify</string>
+    <string name="morphe_music_listenbrainz_token_status_empty">Please enter a token</string>
+    <string name="morphe_music_listenbrainz_token_status_validating">Validating...</string>
+    <string name="morphe_music_listenbrainz_token_status_valid">Valid token! User: %s</string>
+    <string name="morphe_music_listenbrainz_token_status_invalid">Invalid token: %s</string>
+    <string name="morphe_music_listenbrainz_token_status_invalid_unknown">unknown</string>
+    <string name="morphe_music_listenbrainz_token_status_failed">Verification failed: %s</string>
+    <string name="morphe_music_listenbrainz_token_toast_cleared">Token cleared</string>
+    <string name="morphe_music_listenbrainz_token_toast_saved">Token saved</string>
+    <string name="morphe_music_listenbrainz_token_toast_invalid_warning">Warning: Saved token is invalid!</string>
+
+    <string name="morphe_settings_music_lastfm_title" translatable="false">Last.fm</string>
     <string name="morphe_music_lastfm_enabled_title">Enable scrobbling</string>
     <string name="morphe_music_lastfm_now_playing_title">Submit \"Now Playing\" status</string>
     <string name="morphe_music_lastfm_min_song_duration_title">Minimum song duration</string>
     <string name="morphe_music_lastfm_delay_percent_title">Scrobble delay percent</string>
     <string name="morphe_music_lastfm_delay_seconds_title">Scrobble delay seconds</string>
     <string name="morphe_music_lastfm_token_title">Last.fm Account</string>
+    <string name="morphe_music_lastfm_token_summary_logged_in">Logged in as %s. Tap to manage account</string>
+    <string name="morphe_music_lastfm_token_dialog_instruction">Enter your Last.fm credentials to log in</string>
+    <string name="morphe_music_lastfm_token_dialog_username_hint">Username</string>
+    <string name="morphe_music_lastfm_token_dialog_password_hint">Password</string>
+    <string name="morphe_music_lastfm_token_dialog_login">Log in</string>
+    <string name="morphe_music_lastfm_token_status_empty">Please enter username and password</string>
+    <string name="morphe_music_lastfm_token_status_logging_in">Logging in...</string>
+    <string name="morphe_music_lastfm_token_status_success">Logged in successfully!</string>
+    <string name="morphe_music_lastfm_token_status_no_session">Failed to get session from Last.fm</string>
+    <string name="morphe_music_lastfm_token_status_failed">Login failed: %s</string>
+    <string name="morphe_music_lastfm_token_toast_saved">Last.fm credentials saved!</string>
 
 </resources>
