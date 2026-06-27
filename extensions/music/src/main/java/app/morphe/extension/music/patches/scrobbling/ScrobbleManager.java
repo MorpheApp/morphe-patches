@@ -61,14 +61,38 @@ public class ScrobbleManager {
 
     private ScrobbleManager() {}
 
+    private String cleanTitle(String title) {
+        if (title == null) return null;
+        String clean = title;
+        clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](official\\s+)?(video|audio|music\\s+video|lyric\\s+video|visualizer)[\uFF09\\)\\]]", "");
+        clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](\\d{4}\\s+)?remaster(ed)?(\\s+\\d{4})?[\uFF09\\)\\]]", "");
+        clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[]live(\\s+at\\s+.*|\\s+\\d{4})?[\uFF09\\)\\]]", "");
+        clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](mono|stereo|hq|hd)[\uFF09\\)\\]]", "");
+        return clean.replaceAll("\\s+", " ").trim();
+    }
+
+    private String cleanArtist(String artist) {
+        if (artist == null) return null;
+        String clean = artist;
+        clean = clean.replaceAll("(?i)\\s*-\\s*topic$", "");
+        return clean.replaceAll("\\s+", " ").trim();
+    }
+
+    private String cleanAlbum(String album) {
+        if (album == null) return null;
+        String clean = album;
+        clean = clean.replaceAll("(?i)\\s*[\uFF08\\(\\[](\\d{4}\\s+)?remaster(ed)?(\\s+\\d{4})?[\uFF09\\)\\]]", "");
+        return clean.replaceAll("\\s+", " ").trim();
+    }
+
     public void onSetMetadata(MediaMetadata metadata) {
         Utils.verifyOnMainThread();
         if (metadata == null) return;
 
         try {
-            String title = metadata.getString(MediaMetadata.METADATA_KEY_TITLE);
-            String artist = metadata.getString(MediaMetadata.METADATA_KEY_ARTIST);
-            String album = metadata.getString(MediaMetadata.METADATA_KEY_ALBUM);
+            String title = cleanTitle(metadata.getString(MediaMetadata.METADATA_KEY_TITLE));
+            String artist = cleanArtist(metadata.getString(MediaMetadata.METADATA_KEY_ARTIST));
+            String album = cleanAlbum(metadata.getString(MediaMetadata.METADATA_KEY_ALBUM));
             String songId = metadata.getString(MediaMetadata.METADATA_KEY_MEDIA_ID);
             long durationMs = metadata.getLong(MediaMetadata.METADATA_KEY_DURATION);
             int duration = (int) (durationMs / 1000);
