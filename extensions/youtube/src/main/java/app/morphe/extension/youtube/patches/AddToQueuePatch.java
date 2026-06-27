@@ -112,9 +112,6 @@ public final class AddToQueuePatch {
                 return;
             }
 
-            Logger.printDebug(() -> "Flyout buffer: " +
-                    new LithoFilterPatch.BufferAsciiStrings(flyoutBuffer).getStrings());
-
             for (byte[] VIDEO_ID_PREFIX_BYTES : VIDEO_ID_PREFIXES_BYTES) {
                 final int index = indexOf(flyoutBuffer, VIDEO_ID_PREFIX_BYTES);
 
