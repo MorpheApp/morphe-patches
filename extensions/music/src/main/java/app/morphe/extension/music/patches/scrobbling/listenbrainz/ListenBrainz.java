@@ -182,18 +182,22 @@ public class ListenBrainz {
 
     private static boolean postRequest(String path, String token, String jsonBody) throws Exception {
         Utils.verifyOffMainThread();
+        byte[] jsonBodyBytes = jsonBody.getBytes(StandardCharsets.UTF_8);
+
+        //noinspection ExtractMethodRecommender
         URL url = new URL(BASE_URL + path);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
         conn.setRequestProperty("User-Agent", USER_AGENT);
         conn.setRequestProperty("Authorization", "Token " + token);
         conn.setRequestProperty("Content-Type", "application/json");
+        conn.setFixedLengthStreamingMode(jsonBodyBytes.length);
         conn.setDoOutput(true);
         conn.setConnectTimeout(10000);
         conn.setReadTimeout(10000);
 
         try (OutputStream os = conn.getOutputStream()) {
-            os.write(jsonBody.getBytes(StandardCharsets.UTF_8));
+            os.write(jsonBodyBytes);
         }
 
         final int code = conn.getResponseCode();
