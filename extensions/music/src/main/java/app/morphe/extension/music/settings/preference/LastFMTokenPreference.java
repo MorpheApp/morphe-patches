@@ -26,7 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
-import app.morphe.extension.music.patches.scrobbling.lastfm.LastFMTokenStore;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;
 import app.morphe.extension.shared.ui.Dim;
@@ -65,15 +65,14 @@ public class LastFMTokenPreference extends Preference {
 
     private void updateSummary() {
         if (isLoggedIn()) {
-            setSummary(str("morphe_music_lastfm_token_summary_logged_in", LastFMTokenStore.retrieveUsername()));
+            setSummary(str("morphe_music_lastfm_token_summary_logged_in", Settings.LASTFM_USERNAME.get()));
         } else {
             setSummary(str("morphe_music_scrobbling_summary_logged_out"));
         }
     }
 
     private static boolean isLoggedIn() {
-        return !LastFMTokenStore.retrieveSessionKey().trim().isEmpty()
-                && !LastFMTokenStore.retrieveUsername().trim().isEmpty();
+        return !Settings.LASTFM_SESSION_KEY.get().isBlank() && !Settings.LASTFM_USERNAME.get().isBlank();
     }
 
     @Override
@@ -84,7 +83,7 @@ public class LastFMTokenPreference extends Preference {
     private void showDialog() {
         Context context = getContext();
         boolean loggedIn = isLoggedIn();
-        String currentUsername = LastFMTokenStore.retrieveUsername();
+        String currentUsername = Settings.LASTFM_USERNAME.get();
 
         LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
@@ -138,7 +137,8 @@ public class LastFMTokenPreference extends Preference {
                 () -> {},
                 loggedIn ? str("morphe_music_scrobbling_log_out") : null,
                 loggedIn ? () -> {
-                    LastFMTokenStore.clear();
+                    Settings.LASTFM_SESSION_KEY.resetToDefault();
+                    Settings.LASTFM_USERNAME.resetToDefault();
                     updateSummary();
                     Toast.makeText(context, str("morphe_music_scrobbling_logged_out_toast"), Toast.LENGTH_SHORT).show();
                 } : null,
@@ -164,7 +164,8 @@ public class LastFMTokenPreference extends Preference {
                             Utils.runOnMainThread(() -> {
                                 if (session != null && session.key != null) {
                                     showStatus(status, str("morphe_music_lastfm_token_status_success"), STATUS_COLOR_SUCCESS);
-                                    LastFMTokenStore.store(session.key, session.name);
+                                    Settings.LASTFM_SESSION_KEY.save(session.key);
+                                    Settings.LASTFM_USERNAME.save(session.name);
                                     updateSummary();
                                     Toast.makeText(context, str("morphe_music_lastfm_token_toast_saved"), Toast.LENGTH_SHORT).show();
                                 } else {

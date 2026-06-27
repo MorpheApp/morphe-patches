@@ -27,7 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainz;
-import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainzTokenStore;
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
 import app.morphe.extension.shared.ui.CustomDialog;
@@ -74,7 +74,7 @@ public class ListenBrainzTokenPreference extends Preference {
     }
 
     private static boolean isLoggedIn() {
-        return !ListenBrainzTokenStore.retrieve().trim().isEmpty();
+        return !Settings.LISTENBRAINZ_USER_TOKEN.get().isBlank();
     }
 
     @Override
@@ -84,8 +84,8 @@ public class ListenBrainzTokenPreference extends Preference {
 
     private void showDialog() {
         Context context = getContext();
-        String currentToken = ListenBrainzTokenStore.retrieve();
-        boolean loggedIn = !currentToken.trim().isEmpty();
+        String currentToken = Settings.LISTENBRAINZ_USER_TOKEN.get();
+        final boolean loggedIn = !currentToken.isBlank();
 
         LinearLayout content = new LinearLayout(context);
         content.setOrientation(LinearLayout.VERTICAL);
@@ -124,11 +124,11 @@ public class ListenBrainzTokenPreference extends Preference {
                 () -> {
                     String token = tokenInput.getText().toString().trim();
                     if (token.isEmpty()) {
-                        ListenBrainzTokenStore.clear();
+                        Settings.LISTENBRAINZ_USER_TOKEN.resetToDefault();
                         updateSummary();
                         Toast.makeText(context, str("morphe_music_listenbrainz_token_toast_cleared"), Toast.LENGTH_SHORT).show();
                     } else {
-                        ListenBrainzTokenStore.store(token);
+                        Settings.LISTENBRAINZ_USER_TOKEN.save(token);
                         updateSummary();
                         Toast.makeText(context, str("morphe_music_listenbrainz_token_toast_saved"), Toast.LENGTH_SHORT).show();
                         Utils.runOnBackgroundThread(() -> {
@@ -145,7 +145,7 @@ public class ListenBrainzTokenPreference extends Preference {
                 null,
                 loggedIn ? str("morphe_music_scrobbling_log_out") : null,
                 loggedIn ? () -> {
-                    ListenBrainzTokenStore.clear();
+                    Settings.LISTENBRAINZ_USER_TOKEN.resetToDefault();
                     updateSummary();
                     Toast.makeText(context, str("morphe_music_scrobbling_logged_out_toast"), Toast.LENGTH_SHORT).show();
                 } : null,
@@ -162,8 +162,8 @@ public class ListenBrainzTokenPreference extends Preference {
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://listenbrainz.org/profile/"));
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
-                    } catch (Exception e) {
-                        Logger.printException(() -> "ListenBrainzTokenPreference failed to open browser", e);
+                    } catch (Exception ex) {
+                        Logger.printException(() -> "ListenBrainzTokenPreference failed to open browser", ex);
                     }
                 },
                 false, false);
@@ -194,10 +194,10 @@ public class ListenBrainzTokenPreference extends Preference {
                                             STATUS_COLOR_ERROR);
                                 }
                             });
-                        } catch (Exception e) {
+                        } catch (Exception ex) {
                             Utils.runOnMainThread(() ->
                                     showStatus(status,
-                                            str("morphe_music_listenbrainz_token_status_failed", e.getMessage()),
+                                            str("morphe_music_listenbrainz_token_status_failed", ex.getMessage()),
                                             STATUS_COLOR_ERROR));
                         }
                     });

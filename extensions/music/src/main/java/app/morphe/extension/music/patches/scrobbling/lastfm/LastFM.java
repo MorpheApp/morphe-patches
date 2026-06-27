@@ -151,7 +151,7 @@ public class LastFM {
     }
 
     public static void updateNowPlaying(String sessionKey, String artist, String track, String album, Integer duration) {
-        if (sessionKey == null || sessionKey.trim().isEmpty()) return;
+        if (sessionKey == null || sessionKey.isBlank()) return;
         executor.submit(() -> {
             try {
                 Map<String, String> params = new HashMap<>();
@@ -160,7 +160,7 @@ public class LastFM {
                 params.put("sk", sessionKey);
                 params.put("artist", artist);
                 params.put("track", track);
-                if (album != null && !album.trim().isEmpty()) params.put("album", album);
+                if (album != null && !album.isBlank()) params.put("album", album);
                 if (duration != null && duration > 0) params.put("duration", String.valueOf(duration));
 
                 executePostRequest(params);
@@ -172,7 +172,7 @@ public class LastFM {
     }
 
     public static void scrobble(String sessionKey, String artist, String track, String album, Integer duration, long timestamp) {
-        if (sessionKey == null || sessionKey.trim().isEmpty()) return;
+        if (sessionKey == null || sessionKey.isBlank()) return;
         executor.submit(() -> {
             try {
                 Map<String, String> params = new HashMap<>();
@@ -182,7 +182,7 @@ public class LastFM {
                 params.put("artist[0]", artist);
                 params.put("track[0]", track);
                 params.put("timestamp[0]", String.valueOf(timestamp));
-                if (album != null && !album.trim().isEmpty()) params.put("album[0]", album);
+                if (album != null && !album.isBlank()) params.put("album[0]", album);
                 if (duration != null && duration > 0) params.put("duration[0]", String.valueOf(duration));
 
                 executePostRequest(params);

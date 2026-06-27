@@ -26,7 +26,6 @@ import app.morphe.patches.shared.misc.settings.preference.BasePreferenceScreen
 import app.morphe.patches.shared.misc.settings.preference.InputType
 import app.morphe.patches.shared.misc.settings.preference.IntentPreference
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
-import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
 import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.shared.misc.settings.preference.TextPreference
@@ -212,17 +211,15 @@ object PreferenceScreen : BasePreferenceScreen() {
         iconBold = "@drawable/morphe_settings_screen_05_player_bold",
         layout = "@layout/morphe_preference_with_icon"
     )
-
     val SCROBBLING = Screen(
-        key = "morphe_settings_music_screen_5_scrobbling",
+        key = "morphe_settings_music_screen_4_scrobbling",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_scrobbling",
         iconBold = "@drawable/morphe_settings_screen_scrobbling_bold",
         layout = "@layout/morphe_preference_with_icon"
     )
-
     val MISC = Screen(
-        key = "morphe_settings_music_screen_4_misc",
+        key = "morphe_settings_music_screen_5_misc",
         summaryKey = null,
         icon = "@drawable/morphe_settings_screen_11_misc",
         iconBold = "@drawable/morphe_settings_screen_11_misc_bold",

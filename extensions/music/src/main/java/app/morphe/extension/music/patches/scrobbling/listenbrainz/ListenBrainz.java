@@ -9,6 +9,7 @@ package app.morphe.extension.music.patches.scrobbling.listenbrainz;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
@@ -18,7 +19,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.shared.Utils;
 
 public class ListenBrainz {
     private static final String BASE_URL = "https://api.listenbrainz.org/";
@@ -78,7 +82,9 @@ public class ListenBrainz {
      * Must be called from a background thread.
      */
     public static TokenValidation validateToken(String token) throws Exception {
-        if (token == null || token.trim().isEmpty()) {
+        Utils.verifyOffMainThread();
+        //noinspection ExtractMethodRecommender
+        if (token == null || token.isBlank()) {
             throw new IllegalArgumentException("User token is missing or blank");
         }
         URL url = new URL(BASE_URL + "1/validate-token");
@@ -89,7 +95,7 @@ public class ListenBrainz {
         conn.setConnectTimeout(10000);
         conn.setReadTimeout(10000);
 
-        int code = conn.getResponseCode();
+        final int code = conn.getResponseCode();
         if (code == 200) {
             try (InputStreamReader reader = new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8)) {
                 return gson.fromJson(reader, TokenValidation.class);
@@ -105,11 +111,11 @@ public class ListenBrainz {
     /**
      * Submits a scrobble asynchronously on a background thread.
      */
-    public static void scrobbleAsync(final String artist, final String track, final long timestamp,
-                                     final String songId, final String album, final int duration) {
-        final String token = ListenBrainzTokenStore.retrieve();
-        if (token == null || token.trim().isEmpty()) {
-            Logger.printInfo(() -> "ListenBrainz: cannot scrobble, token not set or invalid");
+    public static void scrobbleAsync(String artist, String track, long timestamp,
+                                     String songId, String album, int duration) {
+        String token = Settings.LISTENBRAINZ_USER_TOKEN.get();
+        if (token.isBlank()) {
+            Logger.printDebug(() -> "ListenBrainz: cannot scrobble, token not set or invalid");
             return;
         }
         executor.submit(() -> {
@@ -123,10 +129,11 @@ public class ListenBrainz {
                 req.payload = Collections.singletonList(payload);
 
                 String jsonBody = gson.toJson(req);
-                postRequest("1/submit-listens", token, jsonBody);
-                Logger.printInfo(() -> "ListenBrainz: successfully scrobbled '" + track + "' by " + artist);
-            } catch (Exception e) {
-                Logger.printException(() -> "ListenBrainz scrobble failed", e);
+                if (postRequest("1/submit-listens", token, jsonBody)) {
+                    Logger.printDebug(() -> "Successfully scrobbled: '" + track + "' by: " + artist);
+                }
+            } catch (Exception ex) {
+                Logger.printException(() -> "ListenBrainz scrobble failure", ex);
             }
         });
     }
@@ -134,11 +141,11 @@ public class ListenBrainz {
     /**
      * Updates the Now Playing status asynchronously on a background thread.
      */
-    public static void updateNowPlayingAsync(final String artist, final String track,
-                                             final String songId, final String album, final int duration) {
-        final String token = ListenBrainzTokenStore.retrieve();
-        if (token == null || token.trim().isEmpty()) {
-            Logger.printInfo(() -> "ListenBrainz: cannot update Now Playing, token not set or invalid");
+    public static void updateNowPlayingAsync(String artist, String track,
+                                             String songId, String album, int duration) {
+        String token = Settings.LISTENBRAINZ_USER_TOKEN.get();
+        if (token.isBlank()) {
+            Logger.printDebug(() -> "ListenBrainz: cannot update Now Playing, token not set or invalid");
             return;
         }
         executor.submit(() -> {
@@ -152,31 +159,33 @@ public class ListenBrainz {
 
                 String jsonBody = gson.toJson(req);
                 postRequest("1/submit-listens?return_msid=true", token, jsonBody);
-                Logger.printInfo(() -> "ListenBrainz: updated Now Playing status to '" + track + "'");
+                Logger.printDebug(() -> "ListenBrainz: updated Now Playing status to '" + track + "'");
             } catch (Exception e) {
-                Logger.printException(() -> "ListenBrainz Now Playing update failed", e);
+                Logger.printException(() -> "ListenBrainz Now Playing update failure", e);
             }
         });
     }
 
-    private static TrackMetadata createTrackMetadata(String artist, String track, String songId, String album, int duration) {
+    private static TrackMetadata createTrackMetadata(String artist, String track,
+                                                     String songId, String album, int duration) {
         TrackMetadata metadata = new TrackMetadata();
         metadata.artistName = artist;
         metadata.trackName = track;
-        metadata.releaseName = (album != null && !album.trim().isEmpty()) ? album : null;
+        metadata.releaseName = (album != null && !album.isBlank()) ? album : null;
 
         AdditionalInfo info = new AdditionalInfo();
         if (duration > 0) {
             info.durationMs = (long) duration * 1000;
         }
-        if (songId != null && !songId.trim().isEmpty()) {
+        if (songId != null && !songId.isBlank()) {
             info.originUrl = "https://music.youtube.com/watch?v=" + songId;
         }
         metadata.additionalInfo = info;
         return metadata;
     }
 
-    private static void postRequest(String path, String token, String jsonBody) throws Exception {
+    private static boolean postRequest(String path, String token, String jsonBody) throws Exception {
+        Utils.verifyOffMainThread();
         URL url = new URL(BASE_URL + path);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("POST");
@@ -191,9 +200,11 @@ public class ListenBrainz {
             os.write(jsonBody.getBytes(StandardCharsets.UTF_8));
         }
 
-        int code = conn.getResponseCode();
-        if (code != 200) {
-            throw new Exception("ListenBrainz server returned code: " + code);
+        final int code = conn.getResponseCode();
+        if (code == 200) {
+            return true;
         }
+        Logger.printException(() -> "ListenBrainz server returned code: " + code);
+        return false;
     }
 }

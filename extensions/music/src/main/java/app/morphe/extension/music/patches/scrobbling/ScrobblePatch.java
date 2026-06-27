@@ -9,22 +9,30 @@ package app.morphe.extension.music.patches.scrobbling;
 
 import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
+
 import app.morphe.extension.shared.Logger;
 
-public class ScrobbleHook {
+@SuppressWarnings("unused")
+public class ScrobblePatch {
+    /**
+     * Injection point.
+     */
     public static void onSetMetadata(MediaMetadata metadata) {
         try {
             ScrobbleManager.getInstance().onSetMetadata(metadata);
-        } catch (Throwable t) {
-            Logger.printException(() -> "ScrobbleHook: onSetMetadata failed", t);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onSetMetadata failure", ex);
         }
     }
 
+    /**
+     * Injection point.
+     */
     public static void onSetPlaybackState(PlaybackState state) {
         try {
             ScrobbleManager.getInstance().onSetPlaybackState(state);
-        } catch (Throwable t) {
-            Logger.printException(() -> "ScrobbleHook: onSetPlaybackState failed", t);
+        } catch (Exception ex) {
+            Logger.printException(() -> "onSetPlaybackState failure", ex);
         }
     }
 }
