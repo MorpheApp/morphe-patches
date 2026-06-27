@@ -11,6 +11,10 @@ import android.media.MediaMetadata;
 import android.media.session.PlaybackState;
 import android.os.Handler;
 import android.os.Looper;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import app.morphe.extension.music.patches.scrobbling.lastfm.LastFM;
 import app.morphe.extension.music.patches.scrobbling.listenbrainz.ListenBrainz;
 import app.morphe.extension.music.settings.Settings;
@@ -32,6 +36,7 @@ public class ScrobbleManager {
     }
 
     private final Handler handler = new Handler(Looper.getMainLooper());
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     private String currentTitle;
     private String currentArtist;
@@ -74,7 +79,7 @@ public class ScrobbleManager {
 
             // Check if it is a new song
             if (!title.equals(currentTitle) || !artist.equals(currentArtist)) {
-                Logger.printDebug(() -> "ScrobbleManager: new song detected: " + title + " - " + artist);
+                Logger.printDebug(() -> "new song detected: " + title + " - " + artist);
                 stopTimers();
                 songStarted = false;
                 lbScrobbled = false;
@@ -101,7 +106,7 @@ public class ScrobbleManager {
     public void onLikeClicked(String serviceName, String videoId) {
         Utils.verifyOnMainThread();
         if (serviceName == null || videoId == null) return;
-        Logger.printInfo(() -> "ScrobbleManager: onLikeClicked - serviceName: " + serviceName + ", videoId: " + videoId);
+        Logger.printDebug(() -> "onLikeClicked - serviceName: " + serviceName + " videoId: " + videoId);
 
         // Check if Last.fm scrobbling and love-on-like are enabled
         if (!Settings.LASTFM_SCROBBLING.get() || !Settings.LASTFM_LOVE_ON_LIKE.get()) {
@@ -118,7 +123,7 @@ public class ScrobbleManager {
         }
 
         String sk = Settings.LASTFM_SESSION_KEY.get();
-        if (sk == null || sk.isBlank()) {
+        if (sk.isBlank()) {
             return;
         }
 
@@ -131,6 +136,7 @@ public class ScrobbleManager {
 
 
     private void onPlayerStateChanged(boolean isPlaying) {
+        Utils.verifyOnMainThread();
         if (currentTitle == null || currentArtist == null) return;
 
         if (isPlaying) {
@@ -145,6 +151,7 @@ public class ScrobbleManager {
     }
 
     private void onSongStart() {
+        Utils.verifyOnMainThread();
         songStartedAtSeconds = System.currentTimeMillis() / 1000;
         songStarted = true;
 
@@ -321,5 +328,12 @@ public class ScrobbleManager {
                     currentDurationSeconds, songStartedAtSeconds);
         }
         lfScrobbled = true;
+    }
+
+    /**
+     * Safe to call from any thread.
+     */
+    public void runOnBackgroundThread(Runnable runnable) {
+        executor.submit(runnable);
     }
 }

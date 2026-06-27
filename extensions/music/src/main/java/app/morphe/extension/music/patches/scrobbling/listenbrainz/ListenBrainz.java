@@ -15,11 +15,8 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
+import app.morphe.extension.music.patches.scrobbling.ScrobbleManager;
 import app.morphe.extension.music.settings.Settings;
 import app.morphe.extension.shared.Logger;
 import app.morphe.extension.shared.Utils;
@@ -28,8 +25,6 @@ public class ListenBrainz {
     private static final String BASE_URL = "https://api.listenbrainz.org/";
     private static final String USER_AGENT = "YT Music Morphe (https://github.com/MorpheApp/morphe-patches)";
     
-    private static final ExecutorService executor = Executors.newSingleThreadExecutor();
-
     public static class TokenValidation {
         public boolean valid;
         public String userName;
@@ -88,7 +83,7 @@ public class ListenBrainz {
             Logger.printDebug(() -> "Cannot scrobble, token not set or invalid");
             return;
         }
-        executor.submit(() -> {
+        ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
                 JSONObject req = new JSONObject();
                 req.put("listen_type", "single");
@@ -121,7 +116,7 @@ public class ListenBrainz {
             Logger.printDebug(() -> "Cannot update Now Playing, token not set or invalid");
             return;
         }
-        executor.submit(() -> {
+        ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
                 JSONObject req = new JSONObject();
                 req.put("listen_type", "playing_now");

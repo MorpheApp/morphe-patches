@@ -21,9 +21,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
+import app.morphe.extension.music.patches.scrobbling.ScrobbleManager;
 import app.morphe.extension.shared.Logger;
 
 public class LastFM {
@@ -32,8 +31,6 @@ public class LastFM {
     
     public static final String API_KEY = "986d00852eea80eda8b2930e0abf5c46";
     public static final String SECRET = "1d802c749ccec53103400582fcaebd01";
-
-    private static final ExecutorService executor = Executors.newSingleThreadExecutor();
 
     public static class Session {
         public String name;
@@ -149,7 +146,7 @@ public class LastFM {
 
     public static void updateNowPlaying(String sessionKey, String artist, String track, String album, Integer duration) {
         if (sessionKey == null || sessionKey.isBlank()) return;
-        executor.submit(() -> {
+        ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "track.updateNowPlaying");
@@ -170,7 +167,7 @@ public class LastFM {
 
     public static void scrobble(String sessionKey, String artist, String track, String album, Integer duration, long timestamp) {
         if (sessionKey == null || sessionKey.isBlank()) return;
-        executor.submit(() -> {
+        ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "track.scrobble");
@@ -192,7 +189,7 @@ public class LastFM {
 
     public static void love(String sessionKey, String artist, String track) {
         if (sessionKey == null || sessionKey.isBlank()) return;
-        executor.submit(() -> {
+        ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "track.love");
@@ -211,7 +208,7 @@ public class LastFM {
 
     public static void unlove(String sessionKey, String artist, String track) {
         if (sessionKey == null || sessionKey.isBlank()) return;
-        executor.submit(() -> {
+        ScrobbleManager.getInstance().runOnBackgroundThread(() -> {
             try {
                 Map<String, String> params = new HashMap<>();
                 params.put("method", "track.unlove");
