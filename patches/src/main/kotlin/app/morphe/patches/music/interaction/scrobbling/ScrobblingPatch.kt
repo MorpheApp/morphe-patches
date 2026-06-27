@@ -69,19 +69,19 @@ val scrobblingPatch = bytecodePatch(
                     SwitchPreference("morphe_music_listenbrainz_now_playing"),
                     NonInteractivePreference(
                         key = "morphe_music_listenbrainz_min_song_duration",
-                        summaryKey = null,
+                        summaryKey = "morphe_music_listenbrainz_min_song_duration_summary",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
                     ),
                     NonInteractivePreference(
                         key = "morphe_music_listenbrainz_delay_percent",
-                        summaryKey = null,
+                        summaryKey = "morphe_music_listenbrainz_delay_percent_summary",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
                     ),
                     NonInteractivePreference(
                         key = "morphe_music_listenbrainz_delay_seconds",
-                        summaryKey = null,
+                        summaryKey = "morphe_music_listenbrainz_delay_seconds_summary",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
                     )
@@ -102,19 +102,19 @@ val scrobblingPatch = bytecodePatch(
                     SwitchPreference("morphe_music_lastfm_love_on_like", summary = true),
                     NonInteractivePreference(
                         key = "morphe_music_lastfm_min_song_duration",
-                        summaryKey = null,
+                        summaryKey = "morphe_music_lastfm_min_song_duration_summary",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
                     ),
                     NonInteractivePreference(
                         key = "morphe_music_lastfm_delay_percent",
-                        summaryKey = null,
+                        summaryKey = "morphe_music_lastfm_delay_percent_summary",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
                     ),
                     NonInteractivePreference(
                         key = "morphe_music_lastfm_delay_seconds",
-                        summaryKey = null,
+                        summaryKey = "morphe_music_lastfm_delay_seconds_summary",
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
                     )
