@@ -220,4 +220,19 @@ YouTube Music 8.x — crossfade only runs on 9.x and newer"</string>
     <string name="morphe_music_lastfm_token_status_failed">Login failed: %s</string>
     <string name="morphe_music_lastfm_token_toast_saved">Last.fm credentials saved!</string>
 
+    <!-- Scrobbling About Page -->
+    <string name="morphe_music_scrobbling_about_title">About</string>
+    <string name="morphe_music_scrobbling_about_summary">How scrobbling works, background requirements, and rules</string>
+    <string name="morphe_music_scrobbling_about_banner_title" translatable="false"></string>
+    <string name="morphe_music_scrobbling_about_how_title">How scrobbling works</string>
+    <string name="morphe_music_scrobbling_about_how_summary">Morphe monitors your playback lifecycle to automatically submit played songs to Last.fm and ListenBrainz. Once a song crosses the specified play threshold, a scrobble is sent securely using your authorized credentials.</string>
+    <string name="morphe_music_scrobbling_about_battery_title">Background execution</string>
+    <string name="morphe_music_scrobbling_about_battery_summary">Android\'s Doze Mode and battery optimization can halt background scrobbling when YT Music is playing in the background. To ensure continuous scrobbling, go to your system settings for YouTube Music, select Battery, and change the usage restriction to \"Unrestricted\".</string>
+    <string name="morphe_music_scrobbling_about_love_title">Love liked tracks</string>
+    <string name="morphe_music_scrobbling_about_love_summary">When \"Love liked tracks\" is enabled, tapping the Like button in YouTube Music automatically marks the track as loved/liked on Last.fm. Unliking or disliking the track will likewise remove it from your loved list.</string>
+    <string name="morphe_music_scrobbling_about_rules_title">Scrobble trigger rules</string>
+    <string name="morphe_music_scrobbling_about_rules_summary">A song is eligible for scrobbling only if its duration exceeds the minimum duration limit. The scrobble will trigger when you reach the target percentage or the maximum delay seconds (whichever is reached first).</string>
+    <string name="morphe_music_scrobbling_about_credit_title">Credit</string>
+    <string name="morphe_music_scrobbling_about_credit_summary">Scrobbling feature by Prathxm</string>
+
 </resources>

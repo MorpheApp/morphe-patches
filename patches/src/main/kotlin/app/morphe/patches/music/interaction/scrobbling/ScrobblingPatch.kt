@@ -11,17 +11,21 @@ import app.morphe.patcher.extensions.InstructionExtensions.addInstruction
 import app.morphe.patcher.extensions.InstructionExtensions.addInstructions
 import app.morphe.patcher.extensions.InstructionExtensions.getInstruction
 import app.morphe.patcher.patch.bytecodePatch
+import app.morphe.patcher.patch.resourcePatch
 import app.morphe.patches.music.misc.extension.sharedExtensionPatch
 import app.morphe.patches.music.misc.settings.PreferenceScreen
 import app.morphe.patches.music.misc.settings.settingsPatch
 import app.morphe.patches.music.shared.Constants.COMPATIBILITY_YOUTUBE_MUSIC
 import app.morphe.patches.shared.misc.settings.preference.NonInteractivePreference
 import app.morphe.patches.shared.misc.settings.preference.PreferenceCategory
+import app.morphe.patches.shared.misc.settings.preference.PreferenceScreenPreference
 import app.morphe.patches.shared.misc.settings.preference.SwitchPreference
 import app.morphe.patches.youtube.layout.returnyoutubedislike.DislikeFingerprint
 import app.morphe.patches.youtube.layout.returnyoutubedislike.EndpointServiceNameFingerprint
 import app.morphe.patches.youtube.layout.returnyoutubedislike.likeEndpointParserFingerprint
 import app.morphe.patches.youtube.layout.returnyoutubedislike.requestParameterCheckFingerprint
+import app.morphe.util.ResourceGroup
+import app.morphe.util.copyResources
 import app.morphe.util.getFreeRegisterProvider
 import app.morphe.util.getReference
 import com.android.tools.smali.dexlib2.iface.instruction.FiveRegisterInstruction
@@ -30,6 +34,16 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 
 private const val EXTENSION_CLASS = "Lapp/morphe/extension/music/patches/scrobbling/ScrobblePatch;"
 
+private val scrobblingBannerResourcePatch = resourcePatch {
+    execute {
+        copyResources(
+            "scrobbling",
+            ResourceGroup("drawable-nodpi", "morphe_scrobbling_about_banner.webp"),
+            ResourceGroup("layout", "morphe_scrobbling_about_banner.xml"),
+        )
+    }
+}
+
 @Suppress("unused")
 val scrobblingPatch = bytecodePatch(
     name = "Scrobbling",
@@ -37,7 +51,8 @@ val scrobblingPatch = bytecodePatch(
 ) {
     dependsOn(
         sharedExtensionPatch,
-        settingsPatch
+        settingsPatch,
+        scrobblingBannerResourcePatch
     )
 
     compatibleWith(COMPATIBILITY_YOUTUBE_MUSIC)
@@ -107,6 +122,23 @@ val scrobblingPatch = bytecodePatch(
                         tag = "app.morphe.extension.shared.settings.preference.SeekBarPreference",
                         selectable = true
                     )
+                )
+            ),
+            PreferenceScreenPreference(
+                key = "morphe_music_scrobbling_about",
+                sorting = PreferenceScreenPreference.Sorting.UNSORTED,
+                preferences = setOf(
+                    NonInteractivePreference(
+                        key = "morphe_music_scrobbling_about_banner",
+                        titleKey = "morphe_music_scrobbling_about_banner_title",
+                        summaryKey = null,
+                        layout = "@layout/morphe_scrobbling_about_banner"
+                    ),
+                    NonInteractivePreference("morphe_music_scrobbling_about_how"),
+                    NonInteractivePreference("morphe_music_scrobbling_about_battery"),
+                    NonInteractivePreference("morphe_music_scrobbling_about_love"),
+                    NonInteractivePreference("morphe_music_scrobbling_about_rules"),
+                    NonInteractivePreference("morphe_music_scrobbling_about_credit")
                 )
             )
         )
