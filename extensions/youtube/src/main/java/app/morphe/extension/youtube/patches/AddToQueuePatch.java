@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import app.morphe.extension.shared.Logger;
+import app.morphe.extension.youtube.patches.components.LithoFilterPatch;
 import app.morphe.extension.youtube.patches.utils.PlaylistPatch;
 import app.morphe.extension.youtube.settings.Settings;
 
@@ -46,6 +47,9 @@ public final class AddToQueuePatch {
             // Can be i.ytimg.com, i2.ytimg.com, i3, etc.
             ".ytimg.com/vi/".getBytes(StandardCharsets.US_ASCII),
             "youtube.com/watch?v=".getBytes(StandardCharsets.US_ASCII));
+
+    private static final byte[] HORIZONTAL_SHELF_BYTES =
+            "horizontal_shelf.e".getBytes(StandardCharsets.US_ASCII);
 
     private static final List<Pair<String, Integer>> visibleFlyoutButtons = new ArrayList<>();
     private static String flyoutVideoId = "";
@@ -110,6 +114,20 @@ public final class AddToQueuePatch {
             byte[] flyoutBuffer = bufferInterface.patch_getBuffer();
             if (flyoutBuffer == null) {
                 Logger.printDebug(() -> "FlyoutBuffer is null"); // Should never happen.
+                return;
+            }
+
+            if (Settings.DEBUG_PROTOBUFFER.get()) {
+                Logger.printDebug(() -> "Flyout buffer: " +
+                        new LithoFilterPatch.BufferAsciiStrings(flyoutBuffer).getStrings());
+            }
+
+            if (indexOf(flyoutBuffer, HORIZONTAL_SHELF_BYTES) >= 0) {
+                // The buffer contains the video id of all items in the shelf,
+                // meaning when the flyout queue button is used it needs to figure out
+                // which of those video id's the flyout belongs to.
+                // The major place this is an issue is the 'You' tab horizontal history shelf.
+                Logger.printDebug(() -> "Ignoring flyout buffer containing a horizontal shelf");
                 return;
             }
 

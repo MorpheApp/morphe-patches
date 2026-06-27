@@ -452,8 +452,9 @@ Info: May not work on live streams"</string>
     <string name="morphe_swap_save_and_queue_actions_title">Swap Save and Queue actions</string>
     <string name="morphe_swap_save_and_queue_actions_summary">Tap for queue options, tap and hold to save to watch later</string>
     <string name="morphe_queue_override_flyout_menu_title">Override feed flyout queue button</string>
-    <!-- 'Play next in queue' should be translated using the same localized wording YouTube displays for the flyout menu item. -->
-    <string name="morphe_queue_override_flyout_menu_summary">Opens the Morphe queue instead of the built-in \'Play next in queue\'</string>
+    <string name="morphe_queue_override_flyout_menu_summary">"Opens the Morphe queue instead of the YouTube queue
+
+Limitation: Adding videos from your watch history or a horizontal shelf may not work"</string>
     <string name="morphe_queue_manager_check_failed_auth">Not logged in</string>
     <string name="morphe_queue_manager_check_failed_playlist_id">No playlist ID</string>
     <string name="morphe_queue_manager_check_failed_queue">Queue is empty</string>
